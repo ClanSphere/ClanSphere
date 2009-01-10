@@ -1,0 +1,32 @@
+<?php
+$cs_lang['mod_name']	= 'Newsletter';
+$cs_lang['mod_text']	= 'Administration des Newsletter';
+$cs_lang['mod']	= 'Newsletter';
+$cs_lang['head_manage']	= 'Newsletter';
+$cs_lang['head_newsletter']	= 'Newsletter';
+$cs_lang['head_newslettertoall']	= 'Créer une Newsletter';
+$cs_lang['head_create']	= 'Créer une Newsletter';
+$cs_lang['head_remove']	= 'Supprimer';
+$cs_lang['toall']		= 'Nouvelle Newsletter pour tous';
+$cs_lang['tosquad']	= 'Nouvelle Newsletter pour une section';
+$cs_lang['subject']		= 'Sujet :';
+$cs_lang['from'] = 'Edité par :';
+$cs_lang['newsletter'] = 'Newsletter';
+$cs_lang['field_missing']= 'Saisissez un sujet et un texte';
+$cs_lang['all']='Tous';
+$cs_lang['squads']='Sections';
+$cs_lang['squad']='Section';
+$cs_lang['empty']='Newsletter introuvable';
+$cs_lang['new_manage']='Nouvelle Newsletter';
+$cs_lang['ac_group']='Groupe d\'utilisateur';
+$cs_lang['clan']='Clan';
+$cs_lang['require'] = 'Veuillez remplir les champs marqués d\'une étoile';
+$cs_lang['text'] = 'Texte :';
+$cs_lang['to'] = 'Destinataire';
+$cs_lang['all2']='Total :';
+$cs_lang['new_newsletter']='Nouvelle Newsletter';
+$cs_lang['sucessfull']='%s Mails envoyées.';
+$cs_lang['next']='Continuer';
+$cs_lang['details'] = 'Détails';
+$cs_lang['from2'] = 'Expéditeur';
+?>

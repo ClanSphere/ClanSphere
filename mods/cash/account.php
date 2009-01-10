@@ -1,0 +1,99 @@
+<?php
+$cs_lang = cs_translate('cash');
+
+$data['if']['form'] = 0;
+$data['if']['ready'] = 0;
+$data['if']['id'] = 0;
+
+
+if(isset($_POST['submit'])) {
+	$data['account']['account_owner'] = $_POST['owner'];
+	$data['account']['account_number'] = $_POST['number'];
+	$data['account']['account_bcn'] = $_POST['bcn'];
+	$data['account']['account_bank'] = $_POST['bank'];
+	$data['account']['account_iban'] = $_POST['iban'];
+	$data['account']['account_bic'] = $_POST['bic'];
+	if(!empty($_POST['id'])) {
+  	  $data['id']['account_id'] = $_POST['id'];
+	  $data['if']['id'] = 1;
+	}
+	
+	$error = 0;
+	$errormsg = $cs_lang['error'] . cs_html_br(1);
+	
+	if(empty($data['account']['account_owner'])) {
+	  $error++;
+	  $errormsg .= $cs_lang['no_owner'] . cs_html_br(1);
+	}
+	if(empty($data['account']['account_number'])) {
+	  $error++;
+	  $errormsg .= $cs_lang['no_number'] . cs_html_br(1);
+	}
+	if(empty($data['account']['account_bcn'])) {
+	  $error++;
+	  $errormsg .= $cs_lang['no_bcn'] . cs_html_br(1);
+	}	
+	if(empty($data['account']['account_bank'])) {
+	  $error++;
+	  $errormsg .= $cs_lang['no_bank'] . cs_html_br(1);
+	}
+
+} else {
+
+  $konto_daten = cs_sql_select(__FILE__,'account','*',0,0,0);
+  $konto_count = count($konto_daten);
+  if(!empty($konto_count)) {
+    $data['if']['id'] = 1;
+    $data['account']['account_owner'] = $konto_daten['account_owner'];
+    $data['account']['account_number'] = $konto_daten['account_number'];
+    $data['account']['account_bcn'] = $konto_daten['account_bcn'];
+    $data['account']['account_bank'] = $konto_daten['account_bank'];
+    $data['account']['account_iban'] = $konto_daten['account_iban'];
+    $data['account']['account_bic'] = $konto_daten['account_bic'];  
+	$data['id']['account_id'] = $konto_daten['account_id'];
+  } else {
+    $data['account']['account_owner'] = '';
+    $data['account']['account_number'] = '';
+    $data['account']['account_bcn'] = '';
+    $data['account']['account_bank'] = '';
+    $data['account']['account_iban'] = '';
+    $data['account']['account_bic'] = '';
+  }
+}
+
+if(!isset($_POST['submit'])) {
+  $data['table']['body'] = $cs_lang['body_create'];
+}
+elseif(!empty($error)) {
+  $data['table']['body'] = $errormsg;
+}
+else {
+  $data['if']['form'] = 0;
+  $data['table']['body'] = $cs_lang['create_done'];
+}
+
+
+
+
+if(!empty($error) OR !isset($_POST['submit'])) {
+  $data['if']['form'] = 1;
+} else {
+  $data['if']['ready'] = 1;
+  
+  if(!empty($data['if']['id'])) {
+    $cash_cells = array_keys($data['account']);
+    $cash_save = array_values($data['account']);
+    cs_sql_update(__FILE__,'account',$cash_cells,$cash_save,$data['id']['account_id']);
+
+	cs_redirect($cs_lang['edit_done'],'cash','manage');
+  } else { 
+    $cash_cells = array_keys($data['account']);
+    $cash_save = array_values($data['account']);
+    cs_sql_insert(__FILE__,'account',$cash_cells,$cash_save);
+	
+	cs_redirect($cs_lang['create_done'],'cash','manage');
+  }
+}
+echo cs_subtemplate(__FILE__,$data,'cash','account');
+
+?>

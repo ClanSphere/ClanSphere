@@ -1,0 +1,38 @@
+<div class="container" style="width:{page:width}">
+  <div class="headb">{lang:shoutbox} - {lang:options}</div>
+  <div class="leftb">{lang:info}</div>
+</div>
+<br />
+{lang:getmsg}
+<form method="post" action="{form:options}">
+<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+ <tr>
+  <td class="leftc">{icon:kedit} {lang:max_text}</td>
+  <td class="leftb"><input type="text" name="max_text" value="{op:max_text}" maxlength="4" size="4"  /> {lang:figures}</td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:wizard} {lang:linebreak}</td>
+  <td class="leftb">{lang:after} <input type="text" name="linebreak" value="{op:linebreak}" maxlength="4" size="4"  /> {lang:entries2}</td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:agt_reload} {lang:order}</td>
+  <td class="leftb">
+    <select name="order" >
+     <option value="ASC" {selected:asc}>{lang:newest_bottom}</option>
+     <option value="DESC" {selected:desc}>{lang:newest_top}</option>
+    </select>
+  </td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:enumList} {lang:display_limit}</td>
+  <td class="leftb"><input type="text" name="limit" value="{op:limit}" maxlength="4" size="4"  /> {lang:entries}</td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:ksysguard} {lang:options}</td>
+  <td class="leftb">
+    <input type="submit" name="submit" value="{lang:save}" />
+    <input type="reset" name="reset" value="{lang:reset}" />
+  </td>
+ </tr>
+</table>
+</form>

@@ -1,0 +1,241 @@
+/* $Id$ */
+
+body {
+	background-color:#252533;
+	color:#F2F2F2;
+	font-family:Verdana,Helvetica,sans-serif;
+	font-size:8pt;
+	margin:20px;
+	text-align:center;
+}
+a:link, a:visited {
+	background-color:inherit;
+	color:#8787B2;
+	text-decoration:none;
+}
+a:active, a:hover {
+	background-color:inherit;
+	color:#B2B2D7;
+	text-decoration:underline;
+}
+div,span {
+	background-color:inherit;
+	color:#E4E4E4;
+	font-family:Verdana,Helvetica,sans-serif;
+}
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+/* End hide from IE-mac */
+input, textarea, select {
+	background-color:#252533;
+	border:2px ridge #585858;
+	color:#B3B3B3;
+	font-family:Verdana,Helvetica,sans-serif;
+	font-size:8pt;
+	margin:2px;
+	padding-left:3px;
+	}
+img {
+	border:0px;
+}
+form {
+	display:inline;
+}
+td {
+	background-color:inherit;
+	color:#E4E4E4;
+	font-size:8pt;
+	vertical-align:top;
+}
+textarea {
+	width:90%;
+}
+ul {
+	margin:0px;
+}
+
+#nav-left,#content,#bottom {
+	float:left;
+	margin:auto;
+}
+
+#nav-left {
+	width:14%;
+}
+#nav-right {
+	float:right;
+	width:20%;
+}
+#content {
+	background-color:inherit;
+	color:#222222;
+	text-align:center;
+	width:66%;
+}
+#bottom {
+	background:#323242;
+	border:2px ridge #585858;
+	color:#C2C2C2;
+	margin-top:20px;
+	padding:4px 0px 4px 0px;
+	width:100%;
+}
+#head {
+	background:#323242;
+	border:2px ridge #585858;
+	color:#C2C2C2;
+	font-size:25pt;
+	height:100px;
+	margin-bottom:20px;
+	text-align:center;
+	width:100%;
+}
+#debug {
+	height:150px;
+	margin-bottom:20px;
+	overflow:auto;
+	padding-left:4px;
+	width:100%;
+	text-align:left;
+}
+#errors {
+	color:#CC0000;
+}
+#sql {
+	color:#666666;
+}
+.h1 {
+	color: #F2F2F2;
+	font-size: 14pt;
+	font-weight: bold;
+	text-decoration: none;
+}
+.h2 {
+	color: #F2F2F2;
+	font-size: 16pt;
+	font-weight: normal;
+	text-decoration: none;
+}
+.h3 {
+	color: #F2F2F2;
+	font-size: 20pt;
+	font-weight: normal;
+	text-decoration: none;
+}
+.forum {
+	background-color:#252533;
+	color:#C2C2C2;
+	margin:auto;
+	border-collapse:seperate;
+	border-spacing:1px;
+}
+.headb {
+	background-color:#224477;
+	border:2px ridge #585858;
+	color:#E4E4E4;
+	font-weight:bold;
+	padding:4px;
+	text-align:left;
+}
+.bottom {
+	background-color:#252533;
+	border:2px ridge #585858;
+	color:#C2C2C2;
+	padding:4px 6px 4px 8px;
+	text-align:left;
+}
+.newshead {
+	background-color:#224477;
+	border:2px ridge #585858;
+	color:#E4E4E4;
+	font-size:11pt;
+	font-weight:bold;
+	padding:4px 6px 4px 8px;
+	text-align:left;
+}
+.left,.center,.right {
+	padding:1px;
+}
+.leftb,.centerb,.rightb {
+	background-color:#323242;
+	border:2px ridge #585858;
+	color:#E4E4E4;
+	padding:4px 6px 4px 8px;
+}
+.leftc,.centerc,.rightc {
+	background-color:#424252;
+	border:2px ridge #585858;
+	color:#E4E4E4;
+	padding:4px 6px 4px 8px;
+}
+.left,.leftb,.leftc {
+	text-align:left;
+}
+.center,.centerb,.centerc {
+	text-align:center;
+}
+.right,.rightb,.rightc {
+	text-align:right;
+}
+.quote {
+	background-color:#525262;
+	border:2px ridge #585858;
+	color:#F2F2F2;
+	padding:6px;
+	text-align:left;
+}
+.navhead,.navhead2 {
+	background-color:#224477;
+	border:2px ridge #585858;
+	color:#E4E4E4;
+	font-weight:bold;
+	padding:4px;
+	text-align:center;
+}
+.navbodyb,.navbody2b {
+	background-color:#323242;
+	border:2px ridge #585858;
+	color:inherit;
+	list-style:none;
+	padding:4px 6px 4px 8px;
+	text-align:left;
+}
+.calhead {
+	background-color:#323242;
+	border:2px ridge #585858;
+	color:inherit;
+	padding:4px 2px 4px 2px;
+	text-align:center;
+}
+.calday,.calevent,.caltoday, .calweek {
+	padding:4px 2px 4px 2px;
+	text-align:right;
+}
+.calday {
+	background-color:#424252;
+	border:2px ridge #585858;
+	color:inherit;
+}
+.calevent {
+	background-color:#525262;
+	border:2px ridge #585858;
+	color:inherit;
+}
+.caltoday {
+	background-color:#626272;
+	border:2px ridge #585858;
+	color:inherit;
+}
+.calweek {
+	background-color:#727282;
+	border:2px ridge #585858;
+	color:inherit;
+}

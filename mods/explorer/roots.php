@@ -1,0 +1,120 @@
+<?php
+// ClanSphere 2008 - www.clansphere.net
+// $Id$
+
+$cs_lang = cs_translate('explorer');
+
+$max_data = $account['users_limit'];
+
+empty($_GET['start']) ? $start = 0 : $start = $_GET['start'];
+empty($_GET['dir']) ? $var = '.' : $var = $_GET['dir'];
+if(!empty($_GET['where'])) { $var = $_GET['where']; }
+$var = str_replace('..','',$var);
+$count = 0;
+empty($_GET['where']) ? $var = $var : $var = $var . '/';
+
+if (@chdir($cs_main['def_path'].'/'.$var)) {
+
+	$goal = opendir('.');
+	$success = 1;
+	$dirs = array();
+	$files = array();
+	
+	while(false !== ($curr_data = readdir($goal))) {
+		if($curr_data != '..' && $curr_data != '.' && $curr_data != '.svn') {
+			if (is_dir($curr_data)) {
+				$dirs[] = $curr_data;
+			} else {
+				$files[] = $curr_data;
+			}
+		}
+	}
+	closedir($goal);
+	sort($dirs);
+	sort($files);
+	
+	$data = array_merge($dirs,$files);
+	$count = count($data);
+	chdir($cs_main['def_path']);
+}
+
+$more = $var == '.' ? '' : 'dir='.$var;
+$var2 = $var == '.' ? '0' : $var;
+
+$data['lang']['getmsg'] = cs_getmsg();
+$data['lang']['explorer'] = $cs_lang['mod'];
+$data['lang']['manage'] = $cs_lang['manage'];
+$data['icon']['editpaste'] = cs_icon('editpaste');
+$data['link']['new_file'] = cs_link($cs_lang['new_file'],'explorer','create',$more);
+$data['icon']['folder_yellow'] = cs_icon('folder_yellow');
+$data['link']['new_dir'] = cs_link($cs_lang['new_dir'],'explorer','create_dir',$more);
+$data['icon']['download'] = cs_icon('download');
+$data['link']['upload_file'] = cs_link($cs_lang['upload_file'],'explorer','upload',$more);
+$data['pages']['show'] = cs_pages('explorer','roots',$count,$start,$var2,'',$max_data);
+
+$data['lang']['type'] = $cs_lang['type'];
+$data['lang']['name'] = $cs_lang['name'];
+$data['lang']['chmod'] = $cs_lang['chmod'];
+$data['lang']['options'] = $cs_lang['options'];
+
+$data['icon']['fileopen'] = cs_icon('fileopen');
+
+$data['path']['show'] = cs_link($cs_lang['home'],'explorer','roots') . '/';
+
+if ($var != '.') {
+  $output_folder = '';
+  $folders = explode('/',substr($var,0,-1));
+  
+  foreach ($folders AS $folder) {
+    $output_folder .= $folder . '/';
+  	$data['path']['show'] .= cs_link($folder,'explorer','roots','dir='.$output_folder) . '/';
+  }
+}
+
+if(!empty($success)) {
+	
+	$img_edit = cs_icon('editpaste');
+	$img_access = cs_icon('access');
+	$img_del = cs_icon('editdelete');
+	$img_info = cs_icon('documentinfo');
+	
+	$y = -1;
+	
+	for($x = $start; ($x < $count) && ($y < $max_data); $x++) {
+	
+		$y++;
+    
+    $file = $var == '.' ? $data[$x] : $var . $data[$x];
+    
+    chdir($cs_main['def_path'].'/'.$var);
+    $type = is_dir($data[$x]) ? 'dir' : strtolower(substr(strrchr($data[$x],'.'),1));
+		chdir($cs_main['def_path']);
+		
+		$save[$y]['name'] = $data[$x];
+		$save[$y]['chmod'] = substr(sprintf('%o', fileperms($file)), -4);
+		$save[$y]['access'] = cs_link($img_access,'explorer','chmod','file='.$file);
+		$save[$y]['remove'] = cs_link($img_del,'explorer','remove','file='.$file,0,$cs_lang['remove']);
+		$save[$y]['info'] = cs_link($img_info,'explorer','information','file='.$file);
+    $save[$y]['edit'] = $type != 'dir' ? cs_link($img_edit,'explorer','edit','file='.$file) : '';
+		
+		$view = cs_link($data[$x],'explorer','view','file='.$file);
+
+    $save[$y]['symbol'] = file_exists('symbols/files/filetypes/'.$type.'.gif')
+        ? cs_html_img('symbols/files/filetypes/'.$type.'.gif')
+        : cs_html_img('symbols/files/filetypes/unknown.gif');
+    if ($type == 'jpg' || $type == 'jpeg' || $type == 'png' || $type == 'gif' || $type == 'bmp') {
+      $save[$y]['name'] = cs_link($data[$x],'explorer','view','file='.$file);
+    } elseif ($type == 'dir') {
+      $save[$y]['name'] = cs_link($data[$x],'explorer','roots','dir='.$file.'/');
+    } elseif ($type == 'html' || $type == 'htm' || $type = 'php' || $type == 'txt' || $type == 'sql') {
+      $save[$y]['name'] = cs_link($data[$x],'explorer','view','file='.$file);
+    }
+	}
+  $data['files'] = $save;
+} else {
+  $data['files'] = '';
+}
+
+echo cs_subtemplate(__FILE__,$data,'explorer','roots');
+
+?>

@@ -1,0 +1,241 @@
+/* $Id$ */
+
+body {
+	background-color:#224488;
+	color:#F2F2F2;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:9pt;
+	margin:20px;
+	text-align:center;
+}
+a:link, a:visited {
+	background-color:inherit;
+	color:#88C2F2;
+	text-decoration:none;
+}
+a:active, a:hover {
+	background-color:#225599;
+	color:#88C2F2;
+	text-decoration:none;
+}
+div,span {
+	background-color:inherit;
+	color:#E2E2E2;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+/* End hide from IE-mac */
+input, textarea, select {
+	background-color:#386282;
+	border:1px dotted #88BBF2;
+	color:#CCCCCC;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:9pt;
+	margin:2px;
+	padding-left:3px;
+}
+input:hover, textarea:hover, select:hover {
+	background-color:#356690;
+}
+img {
+	border:0px;
+}
+form {
+	display:inline;
+}
+td {
+	background-color:inherit;
+	color:#F2F2F2;
+	font-size:9pt;
+	vertical-align:top;
+}
+textarea {
+	width:90%;
+}
+ul {
+	margin:0px;
+}
+
+#nav-left,#content,#bottom {
+	float:left;
+	margin:auto;
+}
+
+#nav-left {
+	width:14%;
+}
+#nav-right {
+	float:right;
+	width:20%;
+}
+#content {
+	background-color:inherit;
+	color:#222222;
+	text-align:center;
+	width:66%;
+}
+#bottom {
+	background-color:#446688;
+	color:inherit;
+	margin-top:20px;
+	padding:4px 0px 4px 0px;
+	width:100%;
+	-moz-border-radius:12px 12px 0px 0px;
+}
+#head {
+	background-color:#446688;
+	color:#F2F2F2;
+	font-size:30pt;
+	height:100px;
+	margin-bottom:20px;
+	text-align:center;
+	width:100%;
+	-moz-border-radius:12px 12px 0px 0px;
+}
+#debug {
+	height:150px;
+	margin-bottom:20px;
+	overflow:auto;
+	padding-left:4px;
+	width:100%;
+	text-align:left;
+}
+#errors {
+	color:#CC0000;
+}
+#sql {
+	color:#777777;
+}
+.h1 {
+	color: #F2F2F2;
+	font-size: 14pt;
+	font-weight: bold;
+	text-decoration: none;
+}
+.h2 {
+	color: #F2F2F2;
+	font-size: 16pt;
+	font-weight: normal;
+	text-decoration: none;
+}
+.h3 {
+	color: #F2F2F2;
+	font-size: 20pt;
+	font-weight: normal;
+	text-decoration: none;
+}
+.forum {
+	background-color:inherit;
+	color:#E2E2E2;
+	margin:auto;
+	border-collapse:seperate;
+	border-spacing:1px;
+}
+.headb {
+	background-color:#3366B2;
+	color:#F2F2F2;
+	font-weight:bold;
+	padding:4px;
+	text-align:left;
+	-moz-border-radius:12px 12px 0px 0px;
+}
+.bottom {
+	background-color:#224477;
+	color:inherit;
+	padding:4px 6px 4px 8px;
+	text-align:left;
+}
+.newshead {
+	background-color:#3366B2;
+	color:#F2F2F2;
+	font-size:12pt;
+	font-weight:bold;
+	padding:4px 6px 4px 8px;
+	text-align:left;
+	-moz-border-radius:12px 12px 0px 0px;
+}
+.left,.center,.right {
+	padding:1px;
+}
+.leftb,.centerb,.rightb {
+	background-color:#487294;
+	color:inherit;
+	padding:4px 6px 4px 8px;
+}
+.leftc,.centerc,.rightc {
+	background-color:#446688;
+	color:inherit;
+	padding:4px 6px 4px 8px;
+}
+.left,.leftb,.leftc {
+	text-align:left;
+}
+.center,.centerb,.centerc {
+	text-align:center;
+}
+.right,.rightb,.rightc {
+	text-align:right;
+}
+.quote {
+	background-color:#446688;
+	border:1px solid #88BBF2;
+	color:inherit;
+	padding:6px;
+	text-align:left;
+}
+.navhead,.navhead2 {
+	background-color:#3366B2;
+	border:1px solid #224488;
+	border-width:1px 1px 0px 1px;
+	color:inherit;
+	font-weight:bold;
+	padding:4px;
+	text-align:center;
+	-moz-border-radius:12px 12px 0px 0px;
+}
+.navbodyb,.navbody2b {
+	background-color:#446688;
+	border:1px solid #224488;
+	color:inherit;
+	list-style:none;
+	padding:4px 6px 4px 8px;
+	text-align:left;
+}
+.navbodyb:hover,.navbody2b:hover {
+	background-color:#356694;
+}
+.calhead {
+	background-color:#446688;
+	color:inherit;
+	padding:4px 2px 4px 2px;
+	text-align:center;
+}
+.calday,.calevent,.caltoday, .calweek {
+	padding:4px 2px 4px 2px;
+	text-align:right;
+}
+.calday {
+	background-color:#487294;
+	color:inherit;
+}
+.calevent {
+	background-color:#385878;
+	color:inherit;
+}
+.caltoday {
+	background-color:#224477;
+	color:inherit;
+}
+.calweek {
+	background-color:#445566;
+	color:inherit;
+}

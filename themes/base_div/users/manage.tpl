@@ -1,0 +1,65 @@
+<div class="container" style="width:{page:width}">
+  <div class="headb">{lang:users} - {lang:manage}</div>
+  <div class="headc clearfix">
+    <div class="leftb fl">{icon:editpaste} <a href="{url:new_user}">{lang:new_user}</a></div>
+    <div class="rightb fr">{head:pages} </div>
+  </div>
+  <div class="headc clearfix">
+    <div class="leftb fr">{icon:contents} {lang:total}: {head:total}</div>
+  </div>
+    <div class="centerb"> 
+      <a href="{url:users_manage,where=a}">A</a> - 
+      <a href="{url:users_manage,where=b}">B</a> - 
+      <a href="{url:users_manage,where=c}">C</a> - 
+      <a href="{url:users_manage,where=d}">D</a> - 
+      <a href="{url:users_manage,where=e}">E</a> - 
+      <a href="{url:users_manage,where=f}">F</a> - 
+      <a href="{url:users_manage,where=g}">G</a> - 
+      <a href="{url:users_manage,where=h}">H</a> - 
+      <a href="{url:users_manage,where=i}">I</a> - 
+      <a href="{url:users_manage,where=j}">J</a> - 
+      <a href="{url:users_manage,where=k}">K</a> - 
+      <a href="{url:users_manage,where=l}">L</a> - 
+      <a href="{url:users_manage,where=m}">M</a> - 
+      <a href="{url:users_manage,where=n}">N</a> - 
+      <a href="{url:users_manage,where=o}">O</a> - 
+      <a href="{url:users_manage,where=p}">P</a> - 
+      <a href="{url:users_manage,where=q}">Q</a> - 
+      <a href="{url:users_manage,where=r}">R</a> - 
+      <a href="{url:users_manage,where=s}">S</a> - 
+      <a href="{url:users_manage,where=t}">T</a> - 
+      <a href="{url:users_manage,where=u}">U</a> - 
+      <a href="{url:users_manage,where=v}">V</a> - 
+      <a href="{url:users_manage,where=w}">W</a> - 
+      <a href="{url:users_manage,where=x}">X</a> - 
+      <a href="{url:users_manage,where=y}">Y</a> - 
+      <a href="{url:users_manage,where=z}">Z</a> - 
+      <a href="{url:users_manage}">{lang:all}</a>
+    </div>
+</div>
+<br />
+{head:message}
+<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+  <tr>
+    <td class="headb" style="width:30px"> {lang:country}</td>
+    <td class="headb"> {sort:nick} {lang:nick}</td>
+    <td class="headb" style="width:125px"> {sort:laston} {lang:laston}</td>
+    <td class="headb" style="width:50px"> {lang:page}</td>
+    <td class="headb"> {sort:active} {lang:active}</td>
+	<td class="headb"> {sort:access} {lang:access}</td>
+    <td class="headb" colspan="3" style="width:50px"> {lang:options} </td>
+  </tr>
+  {loop:users}
+  <tr>
+    <td class="centerc"><img src="{page:path}{users:country}" style="height:11px;width:16px" alt="" /></td>
+    <td class="leftc"><a href="{users:url_view}" title="{lang:show}">{users:nick}</a></td>
+    <td class="rightc">{users:laston}</td>
+    <td class="centerc">{users:page}</td>
+    <td class="leftc">{users:active}</td>
+	<td class="leftc">{users:access}</td>
+    <td class="leftc"><a href="{users:url_picture}" title="{lang:picture_edit}">{icon:camera_unmount}</a></td>
+    <td class="leftc"><a href="{users:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
+    <td class="leftc"><a href="{users:url_delete}" title="{lang:remove}">{icon:editdelete}</a> </td>
+  </tr>
+  {stop:users}
+</table>

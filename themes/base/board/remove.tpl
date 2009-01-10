@@ -1,0 +1,25 @@
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb">{lang:mod} - {lang:remove}</td>
+  </tr>
+  <form method="post" name="board_remove" action="{action:form}">
+    <tr>
+      <td class="leftb">{lang:body}
+        {if:threads_loop}
+        <br />
+        <br />
+        <input type="checkbox" name="change_threads" value="1" {remove:checked} />
+        {lang:change_threads}<br />
+        {lang:change_board}
+       {remove:dropdown}
+        {stop:threads_loop}
+      </td>
+    </tr>
+    <tr>
+      <td class="centerc"><input type="hidden" name="id" value="{remove:id}" />
+        <input type="submit" name="agree" value="{lang:confirm}" />
+        <input type="submit" name="cancel" value="{lang:cancel}" />
+  </form>
+  </td>
+  </tr>
+</table>

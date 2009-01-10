@@ -1,0 +1,4 @@
+AuthUserFile /.htpasswd
+AuthName Secutity
+AuthType Basic
+require valid-user

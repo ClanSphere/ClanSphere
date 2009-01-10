@@ -1,0 +1,34 @@
+<?php
+// ClanSphere 2008 - www.clansphere.net
+// Id: view.php (Sat Nov 15 13:35:28 CET 2008) fAY-pA!N
+
+$cs_lang = cs_translate('comments');
+
+$data = array();
+
+$com_id = $_GET['id'];
+settype($com_id,'integer');
+$select =  'comments_id, users_id, comments_fid, comments_mod, comments_text, comments_time, comments_ip';
+$cs_com = cs_sql_select(__FILE__,'comments',$select,"comments_id = '" . $com_id . "'");
+
+$cs_user = cs_sql_select(__FILE__,'users','users_id, users_nick, users_active',"users_id ='".$cs_com['users_id']."'",0,0);
+$data['com']['user'] = cs_user($cs_com['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+
+$data['com']['time'] = cs_date('unix',$cs_com['comments_time'],1);
+$data['com']['ip'] = $cs_com['comments_ip'];
+
+$com_mod = $cs_com['comments_mod'];
+$modules = cs_checkdirs('mods');
+foreach($modules as $mods) {
+	if($mods['dir'] == $com_mod) {
+ 		$data['com']['mod'] = $mods['name'];
+	}
+}
+
+$data['com']['fid'] = $cs_com['comments_fid'];
+$data['com']['text'] = cs_secure($cs_com['comments_text'],1,1);
+
+
+echo cs_subtemplate(__FILE__,$data,'comments','view');
+
+?>

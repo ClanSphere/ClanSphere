@@ -1,0 +1,7 @@
+<limit get>
+   order allow,deny
+   deny from all
+</limit>
+<FilesMatch ".log$" >
+  ForceType application/octet-stream
+</FilesMatch>

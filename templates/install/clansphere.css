@@ -1,0 +1,84 @@
+body {
+  background-color: #F2F2F2;
+  padding: 20px;
+  color: #898989;
+  font-family: Tahoma;
+  font-size: 12px;
+}
+
+#slogan {
+  margin-top: 3px;
+  padding-left: 2px;
+}
+
+#navigation, #content {
+  background-color: #FFFFFF;
+  border: 1px solid #AEAEAE;
+}
+
+#navigation {
+  float: left;
+  width: 19%;
+  height: 500px;
+}
+
+#nav_padding {
+  height: 30px;
+  border-bottom: 1px solid #898989;
+  font-size: 24px;
+  padding: 10px;
+}
+
+.nav_content {
+  padding: 5px 5px 5px 20px;
+  border-bottom: 1px solid #898989;
+}
+#nav_active {
+  color: #B91F1D;
+}
+
+#content {
+  float: right;
+  width: 57%;
+  margin-right: 19%;
+  padding: 10px 10px 40px 10px;
+}
+
+#headline {
+  font-size: 24px;
+  padding-bottom:3px;
+}
+
+
+a:link, a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+a:active, a:hover {
+  color: #B91F1D;
+  text-decoration:underline;
+}
+
+/** Clansphere **/
+
+input, textarea, select {
+  background-color: #F2F2F2;
+  border: 1px solid #000000;
+}
+
+.headb {
+  font-weight: bold;
+  color: #000000;
+  font-size: 12px;
+}
+
+.leftc, .leftb {
+  font-size: 12px;
+  padding:1px 0px 0px 2px;
+}
+.leftc {
+  background-color: #E8E8E8;
+}
+.leftb {
+  background-color: #F3F3F3;
+}

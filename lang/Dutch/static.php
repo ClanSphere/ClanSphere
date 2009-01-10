@@ -1,0 +1,36 @@
+<?php
+$cs_lang['mod_name']	= 'Statistiek paginas';
+$cs_lang['mod_text']	= 'Beheer statistiek pagina online';
+$cs_lang['mod']	= 'Statistiek';
+$cs_lang['head_create'] = 'Aanmaken';
+$cs_lang['body_create'] = 'Vul alle velden met een * in.';
+$cs_lang['head_edit'] = 'Bewerk';
+$cs_lang['body_edit'] = 'Vul alle velden met een * in.';
+$cs_lang['body_com_edit']	= 'Geef wijzigingen aan.';
+$cs_lang['head_com_edit']	= 'Bewerk commentaar';
+$cs_lang['head_com_remove']	= 'Verwijder commentaar';
+$cs_lang['head_remove']	= 'Verwijder';
+$cs_lang['title'] = 'Titel';
+$cs_lang['access'] = 'Toegang';
+$cs_lang['content'] = 'Content';
+$cs_lang['config'] = 'Configuratie';
+$cs_lang['tablelayout'] = 'Gebruik tabel layout';
+$cs_lang['activate_comments'] = 'Commentaren toestaan';
+$cs_lang['admins_only'] = 'Gebruik PHP-Code (Alleen beheerder)';
+$cs_lang['no_access'] = 'Je hebt niet de juiste toegangsrechten om deze pagina te bekijken';
+$cs_lang['new_staticpage'] = 'Nieuwe statistiek pagina';
+$cs_lang['id'] = '#ID';
+$cs_lang['all'] = 'Alle';
+$cs_lang['no_title'] = '- Selecteer een titel';
+$cs_lang['edit_done'] = 'Successvol bewerkt';
+$cs_lang['lev_0'] = 'Alle';
+$cs_lang['lev_1'] = 'Bezoekers =>';
+$cs_lang['lev_2'] = 'Gebruikers =>';
+$cs_lang['lev_3'] = 'Leden =>';
+$cs_lang['lev_4'] = 'Organisator =>';
+$cs_lang['lev_5'] = 'Beheerder';
+$cs_lang['not_able']	= '- Het doel staat geen commentaren toe.';
+$cs_lang['place']			= 'Locatie:';
+$cs_lang['posts']			= 'Posts:';
+$cs_lang['text']		= 'Tekst';
+?>

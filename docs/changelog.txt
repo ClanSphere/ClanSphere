@@ -1,0 +1,555 @@
+CHANGELOG
+--------------------------
+
+ClanSphere 2008.3_svn >> 0000-00-00
+___________________________________________________________
+
+-> Fixed preview of signatures in board (BugtrackerID: 209, Denni)
+-> Fixed removing of uploaded files in some modules (BugtrackerID: 198 and 211, Denni)
+-> Added function create_user to create every user in the same way (Denni)
+-> Completely reworked AJAX solution (duriel, schiri)
+-> Added Auto Update function (alcatraz)
+-> When changing templates clansphere now again provides changing to the theme with the same name (duriel)
+-> Added some navlists and themes (fay-pain)
+-> Added cups navlist (duriel)
+-> Added rank feature to boardmods module (fay-pain)
+-> Added security function for server variables to avoid get or post injections in the future (duriel)
+-> Added comment functions to create/edit/remove comments in the same way (fay-pain)
+-> Added search navlist and articles search as default now (fay-pain)
+-> Added categories access check in articles module (duriel)
+-> Added default user pictures (duriel)
+-> Added global cellspacing variable (duriel)
+-> Added pictures mod that allows implementing pictures to all mods easily (duriel)
+-> Added the possibility to add automatically created news about a clanwar (duriel)
+-> Set httponly flag in cookies [available in PHP 5.2.0 or higher] (Denni)
+-> Used some more caching to enhance the performance (duriel)
+
+
+ClanSphere 2008.2.1 >> 2008-09-20
+___________________________________________________________
+
+>> Security: Fixed security bug using javascript insert abcode listimg (fr33z3m4n)
+>> Security: Fixed security bug using javascript insert getusers (mc.alcatraz)
+
+-> Added complete AJAX solution (duriel)
+-> Added board statistics (duriel)
+-> Added infos notification from csp-team (fr33z3m4n)
+-> Fixed allowed commas in urls (duriel)
+-> Fixed round generation in cup module (drag0n)
+-> Fixed logging in on different clansphere installations on the same webserver (duriel)
+-> Fixed showing html element strong in members module (ThreadID: 7852, duriel)
+-> Fixed squads or clan msg (fr33z3m4n)
+-> Fixed static pages comment removement (duriel)
+-> Fixed users listing in messages to allow line breaks (duriel)
+-> Fixed users templates and templates preview (duriel)
+
+-> Made debug also allow attributes in html body tag (duriel)
+-> News short text is now only shown when activated (duriel)
+-> Limited mootools and slimbox to load only in gallery module (duriel)
+-> Votes navlist now displays all current votes randomly (duriel)
+
+
+ClanSphere 2008.2 >> 2008-08-15
+___________________________________________________________
+
+>> Security: Fixed security bug using javascript insert abcode url function Bugtracker ID: 171 (fr33z3m4n)
+
+-> Added abcode Options @news (fr33z3m4n)
+-> Added invisible mode for users (fay-pain
+-> Added no caching spamimage (fr33z3m4n)
+-> Added template switch for users access_clansphere < 4 (drag0n, fr33z3m4n)
+-> Added possibility to show avatars in comments by an option (duriel)
+-> Added possibility to split threads (duriel)
+-> Added readmore function for news (drag0n)
+-> Added related links for news (drag0n)
+-> Added rules checkbox for joinus (fr33z3m4n)
+-> Added users registration with code and email option (fr33z3m4n)
+-> Added invisible-mode to users setup (fAY-pA!N)
+
+-> Fixed a wrong image for the savedatas Bugtracker id 172 (drag0n)
+-> Fixed abcode @rules listcat (ThreadID: 6156, fr33z3m4n)
+-> Fixed def_admin setting noch working for new installations (hajo)
+-> Fixed delete not own pic @usersgallery (fr33z3m4n)
+-> Fixed edit email as Webmaster Bugtracker ID: 181 (fr33z3m4n)
+-> Fixed empty lang_view placeholder Bugtracker ID: 178 (fr33z3m4n)
+-> Fixed gallery folder order Bugtracker ID: 176 (fr33z3m4n)
+-> Fixed many SQL issues which caused crashes in other databases (duriel)
+-> Fixed php warnings for empty mail adress contents (hajo)
+-> Made the board toplist also count created threads (duriel)
+-> Optimized div & themes (tam, x-r4y)
+-> Update lang Slovenian (Mesko)
+
+- /mods/gallery/com_view: fixed thumbnail, download and lightbox link for mod_rewrite Bugtracker id 184 ( Thx @ -=FC=- Cry )
+
+-> Fixed most bugtracker entries (look at bugtracker-archiv for any infos)
+
+ClanSphere 2008.1 >> 2008-05-02
+___________________________________________________________
+
+>> Security: Removed file access to upper directories in install.php (duriel)
+
+-> Added a new template [ClanSphere] (duriel)
+-> Added board stats (fr33z3m4n)
+-> Added count - Amcharts without xml (sickboy)
+-> Added different text e-mail register & captcha register (taM*)
+-> Added gbook un/lock entrys (fr33z3m4n)
+-> Added options for wars navlist, news navlist and news recent limits (taM*)
+-> Added multi voting (fr33z3m4n)
+-> Added simple debug modus without adding error div and more (fr33z3m4n)
+-> Added sql function cs_sql_error for all db types to allow viewing errors within all databases (duriel)
+-> Added subcategories and implemented them in board module (duriel)
+-> Added title for the rules module (fAY-pA!N)
+-> Changed .form to associate directly to the input-, textarea- and select-tags (x-r4y)
+-> Created some more subtemplates (dragon)
+-> Fixed an empty site in wars edit [BugtrackerID: 106] (drag0n)
+-> Fixed category access in faq module [BugtrackerID: 93] (fr33z3m4n)
+-> Fixed database not to import install.sql file (fr33z3m4n)
+-> Fixed empty place holders for the wizard [BugtrackerID: 105] (drag0n)
+-> Fixed missing argument 3 for make_folders_head() [ThreadID: 5843] (fr33z3m4n)
+-> Fixed show bf2 & bf2142 (mods) game variants (fr33z3m4n)
+-> Fixed usersgalley lightbox bug (fr33z3m4n)
+-> Hide users_email original syntax for bots (fr33z3m4n, duriel)
+-> Removed form class and cellpadding and cellspacing attributes (x-r4y)
+
+- /mods/abcode/options.php: Implemented cs_redirect [BugtrackerID: 108] (drag0n)
+- /mods/members/teams.php: Fixed squad_members loop (sickboy), fixed a dot bug [BugtrackerID: 100] (drag0n)
+- /mods/users/edit.php: Avoided showing a zero in height and icq field [BugtrackerID: 94] (drag0n)
+- /mods/users/view.php: Added posts per day (fr33z3m4n)
+- /mods/users/manage.php: Added search field (fr33z3m4n)
+- /mods/shoutbox/create.php: Made it impossible to use other users nicknames with spaces at the end or the beginning (duriel)
+- /system/core/abcode.php: Fixed email recognition not to search emails within more then one line (duriel)
+- PHP tags are no longer required within abcode php (duriel)
+
+
+ClanSphere 2008.0 >> 2008-02-08
+___________________________________________________________
+
+-> Added abcode field @linkus list (fr33z3m4n)
+-> Added amstats (sickboy)
+-> Added anchor @board threads (fr33z3m4n)
+-> Added cache in list for better navigation (x-ray)
+-> Added cod4 servers class (fr33z3m4n)
+-> Added lightbox @usersgallery (fr33z3m4n)
+-> Added modular installation (josch, fr33z3m4n)
+-> Added msn field @contact module (fr33z3m4n)
+-> Added navlogin4 with userpic or avatar (fr33z3m4n)
+-> Added navnextbirthday (fr33z3m4n)
+-> Added only read board function (fr33z3m4n)
+-> Added possibility to leave links to moved threads (fr33z3m4n)
+-> Added security check for fckeditor filemanager usage (hajo)
+-> Changed servers mod to make adding new server classes easy (fr33z3m4n)
+-> Changed name updates to database (fr33z3m4n)
+-> Created some more subtemplates (dragon)
+-> Fixed board sort (fr33z3m4n)
+-> Fixed ecard link <-> Bugtracker ID: 80 (fr33z3m4n)
+-> Fixed error msg at navcal.php <-> Bugtracker ID: 76 (fr33z3m4n)
+-> Fixed explorer-mod with mod_rewrite support (fr33z3m4n)
+-> Fixed servers navlist / added id at manage overview (fr33z3m4n)
+-> Removed by clansphere not supported languages from fckeditor (hajo)
+-> Updated fckeditor to 2.5 final (hajo)
+-> Updated fckeditor, faster fckeditor load by using createhtml method (hajo)
+
+
+ClanSphere 2007.4.4 >> 2007-12-12
+___________________________________________________________
+
+-> Added bf2142 servers class (fr33z3m4n)
+-> Added download link for server maps (fr33z3m4n)
+-> added lightbox optional @gallery (fr33z3m4n)
+-> Added new lang: dutch (zoeff)
+-> Added new mod: fckeditor (hajo)
+-> Added new templates: new_panther and black vision (x-r4y)
+-> Added password field at join us (fr33z3m4n)
+-> Added preview articles mod create/edit (fr33z3m4n)
+-> Changed default installation language to English (duriel)
+-> Fixed buddys module (fr33z3m4n)
+-> Fixed cs_cachegen error message inside installation (hajo)
+-> Fixed server class & description (fr33z3m4n)
+-> Fixed translation display problem (hajo)
+-> Fixed gallery picture_edit.php watermake error offset 1 [bugtracker id 35] (drag0n)
+-> Fixed gallery watermark for ie6 (fr33z3m4n)
+-> Fixed shoutbox multiremove (duriel)
+-> Fixed users navlogin to not allow html usage [reported by: siyb@projectx-thegame.de]
+-> Fixed wrong game img at maps create (fr33z3m4n)
+-> Reworked docs to html version (fr33z3m4n)
+-> Reworked installation, espacially its look (duriel)
+-> Updated icq image from 11 to 21 and changed image size (hajo)
+-> Updated import.php new feature the cache was now emptied on import [bugtracker id 45] (drag0n)
+-> Updated rss mod to meet the current rss feed validator recommendations (hajo)
+
+
+ClanSphere 2007.4.3 >> 2007-10-19
+___________________________________________________________
+
+-> Added cache functionality for storing info.php file information and a system page to clear it (hajo)
+-> Added cat-picture at news view (fr33z3m4n)
+-> Added create automatic password for joinus (fr33z3m4n)
+-> Added hidden squads at joinus and fightus (fr33z3m4n)
+-> Added function cs_timediff to calculate the difference between sql and output time (hajo)
+-> Added functions at users modul (fr33z3m4n)
+-> HTML <link> tags inside template files must now link the href directly for ease of use (hajo) 
+-> Now displaying who closed a thread in the board (duriel)
+-> Removed internal support for HTML 4 output (hajo)
+-> Reworked RSS mod to support mod_rewrite setting and added options for feed title and description (hajo)
+
+- /system/core/templates.php: Improved inner url rewriting for html tag <link> (hajo)
+
+
+ClanSphere 2007.4.2 >> 2007-09-30
+___________________________________________________________
+
+-> Added functions for fast messages with redirect (duriel)
+-> Now using fast messages in all modules (schiri)
+-> Added Message-Box to all Mods in the manage.php/.tpl (schiri)
+-> Added placeholder page:path for themes to insert the real directory (hajo)
+-> Added Redirection with Success/Error Message to mods/*/edit.php & mods/*/remove.php (schiri)
+-> Fixed files size at modules files (fr33z3m4n)
+-> Fixed many theme forms for correct action usage (duriel)
+-> Fixed Success-Message in mods/explorer/remove.php (schiri)
+-> Fixed user picture and avatar image to be displayed again (hajo)
+-> Fixed wrong image path calculations due to mod_rewrite inclusion (hajo)
+-> Fixed contact/delete to work again (denni)
+-> Reworked function cs_html_form to support mod_rewrite usage (hajo)
+
+- /mods/wars/stats.php: Fixed SQL queries to work under postgresql (duriel)
+- /mods/awards/view.php: Fixed lang output and removed wrong text output (duriel)
+
+
+ClanSphere 2007.4.1 >> 2007-09-27
+___________________________________________________________
+
+>> Security: Fixed sql injection possibilities inside banners navlist (duriel)
+
+-> Added Apache mod_rewrite support for search engine optimized and virtual directory based links (hajo)
+-> Added needed database extensions to installation and a system check for error handling (hajo) 
+-> Added database size and number of tables information for sqlite and pdo_sqlite extension (hajo)
+-> Added cs_textarea_resize function to resize textareas with javascript on the fly (hajo)
+-> Added php_self subarray to array cs_main that contains real path information (hajo)
+-> Improved template placeholder path management and made it more solid (hajo)
+-> Removed unsupported DISTINCT functionality in cs_sql_count for sqlite extension (hajo)
+
+
+ClanSphere 2007.4 >> 2007-08-22
+___________________________________________________________
+
+>> Security: Added settype in usersgallery com_view on cat_id [reported by xsign.dll@gravediggers.eu]
+>> Security: Fixed settype double dollar typo in files mod download part [reported by xsign.dll@gravediggers.eu]
+>> Security: Fixed sql injection possibilities inside articles mod manage/remove [reported by xsign.dll@gravediggers.eu]
+>> Security: Fixed sql injection possibilities inside board mod attachments [reported by xsign.dll@gravediggers.eu]
+>> Security: Fixed sql injection possibilities inside maps mod create [reported by xsign.dll@gravediggers.eu]
+>> Security: Fixed sql injection possibilities inside news mod create/edit [reported by xsign.dll@gravediggers.eu]
+>> Security: Fixed sql injection possibilities inside ranks mod create/edit [reported by xsign.dll@gravediggers.eu]
+>> Security: Fixed sql injection possibilities inside whole search mod [reported by xsign.dll@gravediggers.eu]
+
+-> Added new function cs_unlink to replace nearly all calls to unlink (hajo)
+-> Added PAD informations to docs at the new pad directory (hajo)
+-> Added PHP version recommendation to use 5.2.0 or newer for installation (hajo)
+-> Added sql-file to Update from BXCP 0.3.2.2 (Fr33z3m4n)
+-> Added themes files mod lanpartys (Drag0n)
+-> Added themes files mod shoutbox (Drag0n)
+-> Fixed abcode secure in comments to use all functions without HTML (Fr33z3m4n)
+-> Fixed all require/include functions with complete path Mod:board (Fr33z3m4n)
+-> Fixed cash mod with Access, sql sort by nick and new overview with users entrys (Fr33z3m4n)
+-> Fixed clip function mod clans/create (Fr33z3m4n)
+-> Fixed empty $_GET pid Partner Mod (Fr33z3m4n)
+-> Fixed gallery zip file upload and top voted pics  (NosNos)
+-> Fixed get ID in Partner Navlist Mod (Fr33z3m4n)
+-> Fixed html to be no longer parsed inside sql at updates mod and values in navglobal tool (hajo)
+-> Fixed missing SQL var at new installation mod board func. boardfiles_downloaded (Fr33z3m4n)
+-> Fixed sql update with empty array for delete avatar (Fr33z3m4n)
+-> Fixed update instructions in readme files (Denni)
+-> Removed old bxcp, bxls and pre final clansphere updates (hajo)
+-> Reworked mod and added theme files: buddys (Denni)
+-> Reworked mod and added theme files: contact (Denni)
+-> Updated warning message for deprecated html functions (hajo)
+-> Updated warning message pool to contain more functions (hajo)
+
+- /mods/gbook/entry.php: Fixed captcha check error (Denni)
+- /mods/updates/import.php: Faster query splitting (hajo)
+- /mods/updates/export.php: Backups are now preventing sql injection on imports (hajo)
+- /mods/updates/optimize.php: Tables can now be edited again (hajo)
+
+
+ClanSphere 2007.3.1 >> 2007-07-27
+___________________________________________________________
+
+-> Fixed attachments errors with wrong Log Path (Fr33z3m4n)
+-> Fixed install.sql banners (Fr33z3m4n)
+-> Fixed some lang errors (Fr33z3m4n)
+-> Fixed static modul to add/view comments (Fr33z3m4n)
+-> updated abcode buttons to use own function (Fr33z3m4n)
+-> Updated count stats to use archiv (hajo)
+-> Updated language: Slovenian (Mesko)
+-> Updated language: Spanish (quema0)
+
+- /mods/board/list.php: Fixed multiple output of squad boards (hajo)
+- /mods/updates/export.php: Fixed truncate sql command to contain table prefix (hajo)
+
+
+ClanSphere 2007.3 >> 2007-07-20
+___________________________________________________________
+
+-> Added categories for banners mod and rotation file (Fr33z3m4n)
+-> Added clanwar statistics inside the user profile (fr33z3m4n)
+-> Added export and statistics page to mod updates (hajo)
+-> Added half hour times to UTC dropdowns (hajo)
+-> Added template placeholder {users:navlogin3} (Denni)
+-> Added themes for clans (Drag0n)
+-> Added themes for count (Denni)
+-> Added themes for games (Drag0n)
+-> Added themes for lanrooms and lanvotes (Drag0n)
+-> Added Password Security Check (andreas.martin, Fr33z3m4n)
+-> Fixed answer contact send to contact-email (fr33z3m4n)
+-> Fixed awards update error by set a new or get an old gametype (pHaeno*)
+-> Fixed counter stats/module (Denni)
+-> Fixed lang error with gallery watermarks in other translations (globalteam-dom)
+-> Fixed not showing some entries inside clan management (Drag0n)
+-> Fixed rules order (fr33z3m4n)
+-> Fixed translation of "an/aus" in Spanish translation (quema0)
+-> Reworked updates mod to start on a navigation page that lists all other pages (hajo)
+-> Updated language: Frensh (globalteam-dom)
+-> Updated language: Spanish (quema0)
+-> Updated license information to exactly match "new bsd license" definition (hajo)
+
+- /mods/articles/navlist.php: Fixed error when no entries are found (fr33z3m4n)
+- /mods/members/list.php: Fixed broken game images (Drag0n)
+- /mods/users/list.php: Fixed multiple linking and html escape applied on user nicks (fr33z3m4n)
+- /mods/users/view.php: Added short link to edit the own picture/profile (hajo)
+- /system/output/rss_20.php: clansphere version is now set via database option (hajo)
+
+
+ClanSphere 2007.2.1 >> 2007-06-26
+___________________________________________________________
+
+- /mods/board/list.php: Fixed board icon display to show the correct image (hajo)
+- /mods/explorer/create.php: Added filetypes .htm, .html and .tpl for creation (duriel)
+- /system/core/abcode.php: Changed abcode image buttons to have a space after them (hajo)
+
+
+ClanSphere 2007.2 >> 2007-06-25
+___________________________________________________________
+
+-> Added automatic/manual toggle for def_path option (hajo)
+-> Added function cs_user that returns a link to the user page when id and nick is given (hajo)
+-> Added information about open_basedir and allow_url_fopen setting to install and the software page (hajo)
+-> Added navbirth file in users mod to show user birthdays for the current date (hajo)
+-> Added sql options to clansphere that contain information about the current version used (hajo)
+-> Added support page that lists some important services provided by the ClanSphere Project (hajo)
+-> Added template placeholder func:memory to get the size of used script memory (hajo)
+-> Added users/navlang2.php that lists the languages by their flag in a single row (hajo)
+-> Changed abcode buttons to be an image link with title text (hajo/duriel)
+-> Changed symbols theme from crystal and crystal_clear to mostly use crystal project (hajo)
+-> Fixed board navlist for guests (duriel)
+-> Fixed board squad access problems (hajo)
+-> Moved error message for missed custom theme files to warning list (hajo)
+-> Reworked convert function inside installation by making it able to support more systems (hajo)
+-> Reworked cs_sql_option to keep results in a static array having just one sql query per mod (hajo)
+-> Reworked error level "warning" to only show every message once (hajo)
+-> Some code changes for more performance (duriel)
+
+- /mods/captcha/generate.php: Fixed path handling (hajo)
+- /mods/gallery/image.php: Fixed path handling and notice errors (hajo)
+- /system/core/abcode.php: Fixed old mail function (duriel)
+- /system/core/tools.php: Reworked error detections and fixed possible notice errors in function cs_checkdirs (hajo)
+
+
+ClanSphere 2007.1 >> 2007-06-10
+___________________________________________________________
+
+-> Added automatic mode for global and user daylight saving time setting (hajo)
+-> Added error level "warning" that is not logged, but displayed when activated (hajo)
+-> Added functions cs_html_table, cs_html_roco and cs_html_form to warning list, because they are deprecated (hajo)
+-> Added list of abcode features to the docs (duriel)
+-> Added maps list (duriel)
+-> Added users_readtime to specify how many days an unread thread should be highlighted (hajo)
+-> Fixed abcode style parameters reported by SCHIRI (duriel)
+-> Fixed attachements view to be compatible with older versions in list for users and admins (mc.alcatraz)
+-> Fixed check for required next round if multiple cups exist and fixed check for displaying admin cupmatches edit (duriel)
+-> Fixed converting bxcp 0.2 boards to clansphere (hajo)
+-> Fixed login message to be displayed on cookie reactivation (hajo)
+-> Fixed many errors in gallery and usersgallery (hajo/duriel)
+-> Fixed some errors in messages module and removed static german words (duriel)
+-> Fixed user activation email and activation page to work (hajo)
+-> Fixed word cut (duriel)
+-> Improved session-cookie and cookie settings to enhance security (hajo)
+-> Reworked all panels to use a function [cs_manage] and themes (hajo)
+-> Reworked read functionality inside the board to only contain threads as delivered by users_readtime setting (hajo)
+-> Removed some message queries from login-boxes to increase usuability and performance (hajo)
+
+- /mods/articles/view.php: Fixed navlist and some error notices (duriel)
+
+
+ClanSphere 2007.0 service pack 1 >> 2007-05-31
+___________________________________________________________
+
+-> Added gallery_rc3_to_final.sql file to fix the folder problem in gallery (hajo)
+-> Fixed access check in gallery (duriel)
+-> Fixed articles to show pages again (mc.alcatraz)
+-> Fixed attachements view to be compatible with older versions (freezeman)
+-> Fixed listing of gallery folders when no folder exists (duriel)
+-> Fixed url abcode feature to work again (duriel)
+-> Fixed user registration headline in template (duriel)
+-> Removed category support in gallery (freezeman)
+
+
+ClanSphere 2007.0 FINAL >> 2007-05-30
+___________________________________________________________
+
+-> Added abcode features: auto detecting of links and e-mails and flags (duriel)
+-> Added access view to show users their current access details (hajo)
+-> Added admin features for editing cup matches (duriel)
+-> Added cs_logs variable to place logs in other directorys then just 'logs' (hajo)
+-> Added installation page for admin account details (hajo)
+-> Added login possibility to page when not public via 'login.htm' template file (hajo)
+-> Added min letters of user nicks to user options (duriel)
+-> Added mod: partner (honig)
+-> Added mod: wizard (hajo)
+-> Added multi-remove for shoutbox (duriel)
+-> Added possibility to view wars in events module (duriel)
+-> Added preview function for templates in core and template management (hajo)
+-> Added public option to switch between page mode active and maintenance (phaeno/hajo)
+-> Added reporting feature to board mod with own administration pages (hajo)
+-> Added sql distinct to all sql files (duriel)
+-> Added squad support for boards (mc.alcatraz/hajo)
+-> Added template 'rainbow' to show hyperlinks and templates of intrasphere (hajo)
+-> Added some options to installation (duriel)
+-> Added summary page for news to display the last few grouped by days (hajo)
+-> Added version check to look at for the most current release (hajo)
+-> Added possibility to disable registration for new users (Denni)
+-> Fixed archiving count data to avoid errors with big databases (duriel)
+-> Fixed captcha mini check (duriel)
+-> Fixed create index problems with older and bad configured mysql servers (hajo)
+-> Fixed PDO extension support to work again and some small bugs in PDO database files (hajo)
+-> Fixed some problems using replacement characters in content (duriel)
+
+- /system/core/templates.php: Added parameters to nav file includes (duriel)
+- /system/core/templates.php: Added support for </head> in upper-case letters (duriel)
+- /system/core/abcode.php: Fixed PHP highlighting (no more smileys) (duriel)
+
+
+ClanSphere 2007 RC3 >> 2007-03-30
+___________________________________________________________
+
+-> Added titles to many links on simple icons (duriel)
+-> Added option to allow double postings in the board (duriel)
+-> Added parameters option to clansphere to specify the start site (duriel)
+-> Allowed HTML in articles module (duriel)
+-> Added important options to shoutbox module (duriel)
+-> Added conditions to the themes (duriel)
+-> Added brackets feature to the cup module (duriel)
+-> Added navwon.php, navdraw.php and navlost.php to war module to show stats in navigation (duriel)
+-> Added database index and data size informations to software page [supported by MySQL extensions only] (hajo)
+-> Added possibility to remove teams or players of a cup (duriel)
+-> Extended war stats (duriel)
+-> Added choice of the label of the clans mod: clan / association / club / guild / enterprise (duriel)
+-> Added choice of the label of the squads mod: squad / group / section (duriel)
+-> Added choice of the label of the members mod: members / employees / teammates (duriel)
+-> Added possibility for cs_sql_select to return false if the query was unsuccessful (duriel)
+-> Added management of the access of a simple module (duriel)
+-> Added mark function to board (alcatraz)
+-> Changed maps create and edit so entered text will stay if an error occured (duriel)
+-> SQL will no longer get uninstalled when an index error occures (duriel)
+-> Removed many double entries in the german lang files (duriel)
+-> Fixed captcha check for 2 or more captchas
+-> Reworked ajax implementation (duriel)
+-> Added option for wordwrap function (alcatraz)
+
+- /system/templates.php: Important changes to get more performance (duriel)
+- /system/ajax/ajax.js: Fixed errors reported by worstbull, support in most browsers now (alcatraz)
+- /mods/wars/rounds.php: Only maps of the current game are displayed (duriel)
+- /mods/squads/news.php: Added possibility to create a clan when creating a squad (duriel)
+- /mods/board/avatar.php: Fixed avatar resize (duriel)
+- /mods/votes/view.php: Fixed view of ended votes (nosnos)
+- /mods/wars/remove.php: Now removing war rounds and players too when removing a war (duriel)
+- /mods/members/list.php: Fixed view when no members are in a listed squad (duriel)
+- /mods/cups/list.php: Added choice for games (duriel)
+
+
+ClanSphere 2007 RC2 >> 2007-01-14
+___________________________________________________________
+
+-> Updated the English translation (1tchy)
+-> Now using Ajax in messages modul (alcatraz)
+-> Added management of metatags using {clansphere:navmeta} (h0n1g)
+-> Added HTML function (alcatraz, duriel)
+-> Fixed count of the user comments to be equal everywhere (duriel)
+-> Reworked members list (duriel)
+-> Clansphere now turns magic_quotes_runtime off to view templates without problems (duriel)
+-> Fixed many bugs in cup module (duriel)
+-> Seperated modules information to an extra module to add more features (duriel)
+-> Added mod: modules (duriel)
+-> Added possibility to write a file automatically in the access.php when uploading with explorer module (duriel)
+-> Added the possibility to manage the order of rounds of a clanwar (duriel)
+-> Added the possibility to change daylight saving time for all users (duriel)
+-> Changed the round description to be much bigger (duriel)
+
+- /mods/fightus/new.php: No longer displaying a game icon when no game is selected (duriel)
+- /mods/files/view.php: Fixed some W3C errors (duriel)
+- /mods/users/navlogin.php: Fixed some W3C errors (duriel)
+- /mods/abcode/manage.php: Some little changes for more performance (duriel)
+- /system/core/abcode.php: Added the possibility to use the abcode features in the abcode module replace (duriel)
+
+
+ClanSphere 2007 RC1 >> 2006-12-30
+___________________________________________________________
+
+>>> Official renamed and improved BXCP Release based on 0.3.2.2
+
+-> Added cs_subtemplate function to use html templates on mod files (hajo)
+-> Added language quick switch for users and guests (hajo)
+-> Added last sql error message as 'last_error' to $cs_db array (hajo)
+-> Added mod: cups (duriel)
+-> Added mod: explorer (duriel)
+-> Added news option to automatically set the publish checkbox at creation (hajo)
+-> Added views of most active and newest uncommented threads to board mod (hajo)
+-> Clans are protected from squad joins by a password (hajo)
+-> Clans can be managed by users when owned by them (hajo)
+-> Clans can use a picture and the settings are integrated into options (hajo)
+-> Languages are now using a symbol of the country flag they belong to (hajo)
+-> Fixed country sql columns to contain longer country shorthandles (hajo)
+-> Fixed protected news are showing its comments to lower permissions (hajo)
+-> Fixed url path manipulation attempt with html_escape on PHP_SELF (hajo)
+-> Fixed users to be only displayed when active inside the userlist (hajo)
+-> Main files like 'debug.php' now try to set the php display_errors setting (hajo)
+-> Member management by users changed from squads to members mod (hajo)
+-> Members with the admin flag set are now displayed with a bold font-weight (hajo)
+-> Squads of the homepage dont need to be in the clan with id 1 anymore (duriel)
+-> Renamed bxcp and bx to clansphere and cs in whole repository (hajo)
+-> Reworked PDO to seperate functions that are equal in all database drivers (hajo)
+-> Added a small war statistic (duriel)
+-> Added a selection of the number of players of a clanwar (duriel)
+-> Changed the management of the players of a clanwar (duriel)
+-> Added a text field for the players of the opponent of a clanwar (duriel)
+-> Added the board toplist (duriel)
+-> Added a image resize function for the board and the guestbook (duriel)
+-> Features of the features.php are added to the input box on click (duriel)
+-> Added a strike text function to the abcode with [s] and [/s] (duriel)
+-> Added a option for the maximum text length in the shoutbox (duriel)
+-> Inserted the shoutbox in a scrollable div, removed the abcode features (duriel)
+-> Reworked captcha image creation and added mini mode with three char length (hajo)
+-> Reworked cs_checkdirs to be more strict and deliver better error messages (hajo)
+-> Added the captcha in mini mode to the shoutbox for guests (duriel)
+-> Reworked SQL logging to be called in best positions (hajo)
+-> Users can now hide most of the details in their account (hajo)
+-> Added a check to disable voting for ended votes (duriel)
+-> Added directory sizes to the storage (devils butt)
+
+- /mods/board/navlist.php: Viewed threads are no more listed when actually visited (hajo)
+- /mods/messages/create.php: Removed the bug when sending yourself a message (duriel)
+- /mods/board/users_home.php: Viewed threads are no more listed when actually visited (hajo)
+- /mods/board/users.php: Fixed View of the Rank title and having more performance (duriel)
+- /mods/clansphere/navglobals.php: Arrays are now displayed with key count (hajo)
+- /mods/news/com_edit.php: Fixed target anchor to be correct (hajo)
+- /mods/news/recent.php: Clicking on comments now targets the start of them (hajo)
+- /mods/news/view.php: Added new anchor to allow jumping to comments start (hajo)
+- /mods/wars/view.php: Changed view of the rounds of a clanwar (duriel)
+- /system/core/abcode.php: The php abcode has been entirely reworked:
+---- Abcode inside it is no longer parsed and overflow is handled by a div container (hajo)
+---- Line numbers are displayed and it is inside a table (hajo)
+- /system/core/content.php: If timezone handling is available it will be set to 'UTC' (hajo)
+- /system/core/tools.php: Added _svn to the ignore list of cs_paths (duriel)
+- /mods/shoutbox/create.php: Added a check for already taken nicknames (duriel)
+
+___________________________________________________________
+END OF FILE
+___________________________________________________________

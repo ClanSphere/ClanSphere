@@ -1,0 +1,31 @@
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb" colspan="3"> {lang:mod} - {lang:head_manage}</td>
+  </tr>
+  <tr>
+    <td class="leftb">{icon:editpaste} {lang:create}</td>
+    <td class="leftb">{icon:contents} {lang:total}: {lang:count}</td>
+    <td class="rightb">{pages:list}</td>
+  </tr>
+</table>
+<br />
+<center>
+  {lang:getmsg}
+</center>
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb">{sort:question} {lang:frage}</td>
+    <td class="headb">{lang:user}</td>
+    <td class="headb">{sort:categorie} {lang:cat}</td>
+    <td class="headb" colspan="2">{lang:options}</td>
+  </tr>
+  {loop:faq}
+  <tr>
+    <td class="leftc">{faq:question}</td>
+    <td class="leftc">{faq:user}</td>
+    <td class="leftc">{faq:cat}</td>
+    <td class="leftc">{faq:edit}</td>
+    <td class="leftc">{faq:remove}</td>
+  </tr>
+  {stop:faq}
+</table>

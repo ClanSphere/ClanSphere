@@ -1,0 +1,68 @@
+<!-- $Id$ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{func:title}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset={func:charset}" />
+	{clansphere:navmeta}
+	<link href="clansphere.css" rel="stylesheet" type="text/css" />
+	<link rel="alternate" type="application/rss+xml" href="../../uploads/rss/news.xml" />
+</head>
+<body>
+	<div id="debug">
+		<span id="errors">{func:errors}</span>
+		<span id="sql">{func:sql}</span>
+	</div>
+   	<div id="nav-left">
+		<div class="navhead2">Login</div>
+		<div class="navbody2b">{users:navlogin}</div><br />
+		<div class="navhead2">Language</div>
+		<div class="navbody2b">{users:navlang}</div><br />
+		<div class="navhead2">Globals</div>
+		<div class="navbody2b" style="overflow:auto">{clansphere:navglobals}</div>
+	</div>
+	<div id="nav-right">
+		<div class="navhead">Main</div>
+		<ul class="navbodyb">
+			<li><a href="debug.php?mod=news&amp;action=recent">News</a></li>
+			<li><a href="debug.php?mod=gbook">Gbook</a></li>
+			<li><a href="debug.php?mod=board">Board</a></li>
+			<li><a href="debug.php?mod=search">Search</a></li>
+		</ul><br />
+		<div class="navhead">Clan</div>
+		<ul class="navbodyb">
+			<li><a href="debug.php?mod=members&amp;action=teams">Teams</a></li>
+			<li><a href="debug.php?mod=members">Members</a></li>
+			<li><a href="debug.php?mod=wars">Clanwars</a></li>
+			<li><a href="debug.php?mod=awards">Awards</a></li>
+			<li><a href="debug.php?mod=history">History</a></li>
+			<li><a href="debug.php?mod=rules">Rules</a></li>
+			<li><a href="debug.php?mod=links&amp;action=sponsors">Sponsors</a></li>
+		</ul><br />
+		<div class="navhead">Service</div>
+		<ul class="navbodyb">
+			<li><a href="debug.php?mod=events&amp;action=calendar">Events</a></li>
+			<li><a href="debug.php?mod=servers">Servers</a></li>
+			<li><a href="debug.php?mod=users">Community</a></li>
+			<li><a href="debug.php?mod=files">Downloads</a></li>
+			<li><a href="debug.php?mod=replays">Replays</a></li>
+			<li><a href="debug.php?mod=links">Links</a></li>
+			<li><a href="debug.php?mod=quotes">Quotes</a></li>
+			<li><a href="debug.php?mod=faq">Faq</a></li>
+			<li><a href="debug.php?mod=articles">Articles</a></li>
+			<li><a href="debug.php?mod=gallery">Gallery</a></li>
+		</ul><br />
+		<div class="navhead">Contact</div>
+		<ul class="navbodyb">
+			<li><a href="debug.php?mod=joinus&amp;action=new">Joinus</a></li>
+			<li><a href="debug.php?mod=fightus&amp;action=new">Fightus</a></li>
+			<li><a href="debug.php?mod=contact&amp;action=mail">Mailus</a></li>
+			<li><a href="debug.php?mod=contact&amp;action=imprint">Imprint</a></li>
+			<li><a href="debug.php?mod=clansphere&amp;action=about">Scriptinfo</a></li>
+		</ul>
+	</div>
+    	<div id="content">{func:show}</div>
+
+	<div id="bottom">{clansphere:navtime} - Load: {func:parse}ms - Queries: {func:queries}</div>
+</body>
+</html>

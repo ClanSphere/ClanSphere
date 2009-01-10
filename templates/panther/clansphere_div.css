@@ -1,0 +1,29 @@
+.container {
+	background-color:#c4c4c4;
+	color:inherit;
+	margin:auto;
+	clear:both;
+	border-width:1px 0 0 1px;
+	border-color:#c4c4c4;
+	border-style:solid;
+}
+.container div {
+	margin:0px;
+	border-width:0 1px 1px 0;
+	border-color:#c4c4c4;
+	border-style:solid;
+}
+.container div div {
+	border-width:0;
+}
+.fl {
+	float:left;
+}
+.fr {
+	float:right;
+}
+.headc {
+	background-color:#3e3e3e;
+	color:inherit;
+	text-align:left;
+}

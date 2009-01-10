@@ -1,0 +1,19 @@
+<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+	<tr>
+		<td class="headb">{lang:mod_name} - {lang:close}</td>
+	</tr>
+	<tr>
+		<td class="leftb">{lang:close_confirm}<br />
+			<br />
+			{lang:close_info}
+ 		</td>
+	</tr>
+	<tr>
+		<td class="centerc">
+			<form method="post" name="users_close" action="{url:users_close}">
+				<input type="submit" name="agree" value="{lang:confirm}" class="form"/>
+				<input type="submit" name="cancel" value="{lang:cancel}" class="form"/>
+			</form>
+		</td>
+	</tr>
+</table>

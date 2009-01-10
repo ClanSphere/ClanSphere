@@ -1,0 +1,25 @@
+.container {
+	color:inherit;
+	margin:auto;
+	clear:both;
+}
+.container div {
+	margin:2px;
+	border-width:1px;
+	border-color:#bbbbdd;
+	border-style:solid;
+}
+.container div div {
+	border-width:0;
+}
+.fl {
+	float:left;
+}
+.fr {
+	float:right;
+}
+.headc {
+	background-color:#323242;
+	color:inherit;
+	text-align:left;
+}

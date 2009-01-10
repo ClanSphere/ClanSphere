@@ -1,0 +1,93 @@
+[html]HTML[/html]
+
+HTML is allowed in this area. This feature is deactivated in most modules and is not public.
+
+[phpcode]Code[/phpcode]
+
+PHP-Code is interpreted by the webserver in this area. This feature can be used in the admin pages of the static pages module only. The code has to be written without <?php and ?>.
+
+[php]Code[/php]
+
+This feature is for dispaying PHP-code with colors. The code has to be written with <?php and ?>.
+
+[u]Text[/u]
+
+This text is displayed underlined.
+
+[b]Text[/b]
+
+This text is displayed bold.
+
+[i]Text[/i]
+
+This text is displayed italic.
+
+[s]Text[/s]
+
+This text is displayed in strikes.                       ??
+
+[img]Path[/img]
+
+This feature displays the image of the given path.
+
+[img width=Width height=Height]Path[/img]
+
+This feature displays the image of the given path in the given height and width.
+
+[mail]Address[/mail]
+
+This feature creates a hyperlink for an e-mail adress. The usual e-mail browser is opened on click. But this happens automatically in the meantime so it isn't really needed anymore.
+
+[url]Adress[/url]
+
+This feature creates a hyperlink for the given address. But valid Addresses get detected automatically in the meantime, so this isnt needed anymore, in most cases at least.
+
+[url=Address]Text[/url]
+
+Creates a hyperlink for the given address with the given text.
+
+[size=Size]Text[/size]
+
+This text is displayed in the given size. Biggest size is 50.
+
+[left]Text[/left]
+[center]Text[/center]
+[right]Text[/right]
+[justify]Text[/justify]
+
+This text is left-aligned, right-aligned, center-aligned or justified.
+
+[list]
+[*]List-Entry 1
+[*]List-Entry 2
+[/list]
+
+Creates a list. Each entry begins with [*].
+
+[flag=Shortcut]
+
+Displays an Icon of the flag of the given country. The shortcut of the country is required. Here you got a complete list: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
+[indent=Number]Text[/indent]
+
+Indents the text by the given number of whitespace.
+
+[hr]
+
+Displays a horizontal rule.
+
+[quote]Text[/quote]
+
+Displays a text in a highlighted area and is made for quotes.
+
+[quote=Information]Text[/quote]
+
+Displays a text in a highlighted area and is made for quotes. Displays additional information above the quote.
+
+[clip]Text[/clip]
+
+Clips a text. After clicking More, the text is displayed. After clicking again, it is hidden.
+
+[clip=Shortcut]Text[/clip]
+
+Clips a text. After clicking the given shortcut, the text is displayed. After clicking again, it is hidden.

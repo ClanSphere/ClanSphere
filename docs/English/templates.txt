@@ -1,0 +1,162 @@
+SYSTEM TEMPLATES
+------------------------
+
+{func:charset}
+
+Displays the charset used by the active language, default is ISO-8859-15
+
+{func:errors}
+
+Displays errors that occur while running the script (use for development)
+
+{func:memory}
+
+Memory usage of the script
+
+{func:parse}
+
+Time needed to run the script is shown
+
+{func:queries}
+
+Number of used sql queries is shown
+
+{func:show}
+
+Loads the content file specified by mod= and action= within the URL
+
+{func:sql}
+
+List of used sql queries (use for development)
+
+{func:title}
+
+The title that is specified within the options dialog
+
+MOD TEMPLATES
+--------------------------
+
+{articles:navlist}
+
+Displays some articles
+
+{banners:navlist}
+
+All banners are listed line by line
+
+{banners:navright}
+
+All banners are listed without new line calls
+
+{board:navlist}
+
+Lists the most current board discussions
+
+{buddys:navlist}
+
+Shows online buddys
+
+{clansphere:navglobals}
+
+Holds many superglobal variables inside clipboxes
+
+{clansphere:navtime}
+
+Time, date and timezone is shown
+
+{count:navall}
+
+Total page visits as a number
+
+{count:navday}
+
+Page visits of the current day
+
+{count:navmon}
+
+Page visits of the current month
+
+{count:navone}
+
+Actual number of online visitors
+
+{count:navyes}
+
+Visitors of yesterday as a number
+
+{events:navcal}
+
+Calendar of the actual month with events in it
+
+{events:navnext}
+
+Upcoming events with name and date
+
+{gallery:navlist}
+
+Random picture from gallery is shown
+
+{files:navlist}
+
+Latest 4 Downloads
+
+{gallery:navlist}
+
+The 4 most downloaded files
+
+{lanpartys:navnext}
+
+Informations of the following lan-party
+Number of guests with its status is shown by a graphical bar
+
+{news:navlist}
+
+Last published news with headline and date
+
+{shoutbox:navlist}
+
+Displays a shoutbox
+
+{users:navbirth}
+
+Lists users that have their birthday on the current date
+
+{users:navlang}
+
+Lists all available languages with flag and name, also contains a quick change function for users and visitors
+
+{users:navlang2}
+
+Lists all available languages with flag in a single row, also contains a quick change function for users and visitors
+
+{users:navlast}
+
+Last few registrations of users
+
+{users:navlogin}
+
+login form when logged out, list of account functions when logged in (line by line)
+
+{users:navlogin2}
+
+login hyperlinks when logged out, list of account functions when logged in (single line)
+
+{users:navlogin3}
+
+login form when logged out, list of account functions with icons when logged in (line by line)
+
+{users:navonline}
+
+Users who are actually watching the page
+
+{votes:navlist}
+
+Most current running vote is displayed
+
+{wars:navlist}
+
+Last few clanwars with game, enemy and scores
+
+{wars:navnext}
+
+Next few clanwars with date, game and enemy

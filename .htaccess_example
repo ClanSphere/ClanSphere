@@ -1,0 +1,28 @@
+## Comment out the needed lines and save it as ".htaccess" to use ClanSphere with mod_rewrite
+## You need at least Apache 1.3 or newer to use the following!
+## Documentation = http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html
+
+## Uncomment the next line when symlinks are not set in Apache configuration
+
+#Options +FollowSymLinks
+
+## Uncomment the next line to enable the usage of mod_rewrite (needed)
+
+RewriteEngine on
+
+## Uncomment the next line to inherit mod_rewrite rules set in Apache configuration
+
+#RewriteOptions inherit
+
+## Uncomment the next line and update the path to use the clansphere directory if you move this file
+
+#RewriteBase /
+
+## Uncomment this to prevent overcuttings between real directories/files and virtual ones (needed)
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+## Uncomment the line and edit the php index files that should be accessible by the mod_rewrite rule (needed)
+
+RewriteRule ^(admin|board|debug|index|content)(.*)$ $1.php?params=$2 [NC,L]

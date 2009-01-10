@@ -1,0 +1,5 @@
+Heute hat unser Squad [url={SQUADURL}]{SQUADNAME}[/url] gegen {OPPONENTNAME} in einen Clanwar gespielt.
+
+Endstand: {SCORE_1} : {SCORE_2}
+
+[url={MATCH_URL}]Matchdetails[/url]

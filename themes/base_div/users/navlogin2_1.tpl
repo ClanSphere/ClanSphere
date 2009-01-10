@@ -1,0 +1,1 @@
+<a href="{link:login}">{lang:login}</a> - <a href="{link:register}">{lang:register}</a> - <a href="{link:sendpw}">{lang:sendpw}</a>

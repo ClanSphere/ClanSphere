@@ -1,0 +1,116 @@
+body {
+  background-color: #E5E5E5;
+  padding: 10px 10px 0 10px;
+  font-size: 12px;
+}
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+/* End hide from IE-mac */
+
+a {
+	color: #000000;
+}
+a:hover {
+	text-decoration: none;
+}
+#head, #debug {
+	width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #888888;
+  height: 100px;
+  padding: 10px 0 0 0;
+  color: #757575;
+  font-family: Tahoma;
+}
+#head {
+  font-size: 60px;
+  letter-spacing: 5px;
+  text-align: center;
+}
+#debug {
+  overflow: auto;
+  font-size: 10px;
+}
+#head span {
+	color: #B91F1D;
+}
+#head div {
+	font-size: 12px;
+	font-family: Tahoma;
+	letter-spacing: 1px;
+}
+
+#nav-left {
+  float: left;
+  width: 16%;
+}
+
+#nav-left a {
+  border-right: 1px solid #888888;
+  border-left: 1px solid #888888;
+  border-bottom: 1px solid #888888;
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  padding-left: 15px;
+  background-color: #FFFFFF;
+  font-family: Arial;
+  font-size: 13px;
+}
+.dark {
+	background-color: #F0F0F0 !important;
+}
+#nav-left a:hover {
+  padding-left: 3px;
+  border-right: 4px solid #BA1616;
+}
+#nav-left a:hover:before {
+  content:"» ";
+}
+* html #nav-left a:hover, *:first-child+html #nav-left a:hover { padding-left: 15px; }
+#content {
+  float: left;
+  width:64%;
+  margin-top: 20px;
+  font-size: 12px;
+  font-family: Tahoma;
+  position: relative;
+}
+#nav-right {
+  float: right;
+  width: 20%;
+}
+#nav-right div {
+  border-left: 1px solid #888888;
+  border-right: 1px solid #888888;
+  border-bottom: 1px solid #888888;
+  background-color: #FFFFFF;
+  padding: 1px 2px 1px 2px;
+}
+#nav-left div, .navhead {
+  margin-top: 20px;
+  border: 1px solid #888888;
+  color: #B91F1D;
+  border-right: 4px solid #BA1616 !important;
+  font-family: Tahoma;
+  letter-spacing: 3px;
+  padding: 1px 0 1px 5px !important;
+  background-color: #FFFFFF;
+  font-size: 16px;
+}
+#upcoming { letter-spacing: 1px; }
+#counter span { float: right; }
+
+#ajax_loading {
+  position:absolute;
+  top:20px;
+  right:60px;
+}

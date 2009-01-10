@@ -1,0 +1,37 @@
+UPDATE {pre}_options SET options_value = '2008.3_svn' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
+UPDATE {pre}_options SET options_value = '2008-09-20' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
+UPDATE {pre}_options SET options_value = '35' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
+
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('articles','max_navlist','4');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','ajax_navlists','');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','cellspacing','1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_picture', '0');
+
+CREATE TABLE {pre}_updates (
+  updates_id {serial},
+  updates_packet int(5) NOT NULL default '0',
+  updates_name text NOT NULL,
+  updates_date int(22) NOT NULL default '0',
+  updates_error text NOT NULL,
+  PRIMARY KEY (updates_id)
+) {engine};
+
+CREATE TABLE {pre}_pictures (
+  pictures_id {serial},
+  pictures_mod varchar(20) NOT NULL DEFAULT '',
+  pictures_fid int(9) NOT NULL DEFAULT '0',
+  pictures_file varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (pictures_id)
+) {engine};
+
+ALTER TABLE {pre}_access ADD access_updates int(2) NOT NULL default '0';
+ALTER TABLE {pre}_access ADD access_ajax int(2) NOT NULL default '0';
+
+ALTER TABLE {pre}_boardmods ADD categories_id int(8) NOT NULL default '0';
+CREATE INDEX {pre}_boardmods_categories_id_index ON {pre}_boardmods (categories_id);
+
+ALTER TABLE {pre}_count ADD INDEX (count_ip,count_id,count_time);
+ALTER TABLE {pre}_captcha ADD INDEX (captcha_ip,captcha_time,captcha_id);
+ALTER TABLE {pre}_comments ADD INDEX (comments_mod,comments_fid,comments_id);
+
+ALTER TABLE {pre}_faq DROP faq_time;

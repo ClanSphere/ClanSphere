@@ -1,0 +1,31 @@
+<div class="container" style="width:{page:width}">
+  <div class="headb">{lang:mod} - {lang:list}</div>
+  <div class="leftc">{icon:contents} {lang:total}: {count:all}</div>
+  <div class="leftb">
+    <form method="post" name="gamechoice" action="{url:cups_list}">
+    {lang:game}:
+    <select name="games_id" >
+      <option value="0">----</option>{loop:games}
+      <option value="{games:games_id}"{games:selection}>{games:games_name}</option>{stop:games}
+    </select>
+    <input type="submit" name="submit" value="{lang:show}" /></form>
+  </div>
+</div>
+<br />
+
+<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+ <tr>
+  <td class="headb">{lang:game}</td>
+  <td class="headb">{lang:name}</td>
+  <td class="headb">{lang:join_end}</td>
+  <td class="headb">{lang:teams}</td>
+  <td class="headb">{lang:matchlist}</td>
+ </tr>{loop:cups}
+ <tr>
+  <td class="leftb"></td>
+  <td class="leftb"><a href="{url:cups_view,id={cups:cups_id}}">{cups:cups_name}</a></td>
+  <td class="leftb">{cups:start}</td>
+  <td class="leftb">{cups:cups_joined} {lang:of} {cups:cups_teams}</td>
+  <td class="leftb"><a href="{url:cups_matchlist,where={cups:cups_id}}">{icon:demo}</a></td>
+ </tr>{stop:cups}
+</table>

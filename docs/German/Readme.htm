@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>ClanSphere Readme</title>
+<link href="layout.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<a name="top"></a>
+<div id="container">
+	<div id="header"></div>
+	<div id="main_text"><br />
+	  <div id="main_help">
+		<strong>ClanSphere 2007 - 2008</strong>
+		<ul>
+		  <li><a href="#vorraussetzungen">Voraussetzungen</a></li>
+		  <li><a href="#installation">Installation</a></li>
+	   	  <li><a href="#update_old">Update von älteren Versionen</a></li>
+		  <li><a href="#update_bxcp">Update vom BXCP 0.3.2.2</a></li>
+		  <li><a href="#templates">Templates Platzhalter</a>
+		  	<ul>
+			  <li><a href="#templates_sys">System</a></li>
+			  <li><a href="#templates_mod">Module</a></li>
+			</ul>
+		  </li>
+  	      <li><a href="#abcodes">Abcodes</a></li>
+   		  <li><a href="#servers">Unterst&uuml;tzte Server </a></li>
+   	   </ul>
+	  </div>
+	  <div id="other_help">
+	   <strong>Weitere Hilfen</strong>
+		<ul>
+		  <li><a href="functions.htm">Funktionen</a></li>
+	    </ul>
+	  </div>
+	  <div style="clear: both;"></div>
+		<br />
+		<hr style="width: 75%;" />
+		<br />
+		<table cellspacing="0" cellpadding="2" width="100%">
+		  <tr>
+		    <td class="head"><a name="vorraussetzungen"></a>Vorraussetzungen</td>
+			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
+		  </tr>
+		  <tr>
+		    <td colspan="2">- Webspace (m&ouml;glichst mit FTP-Zugang)<br />
+				  - PHP 4.3.0+ auf dem Webserver<br />
+				  - PHP Option &quot;Dateien hochladen&quot; aktiviert<br />
+				  - Eine der folgenden Datenbanken (Dabei unterstütze PHP-Erweiterungen):<br />
+					-- MySQL ab 4.0 (mysql, mysqli, pdo_mysql)<br />
+					-- PostgreSQL ab 8.1 (pgsql, pdo_pgsql)<br />
+					-- SQLite ab 2 (sqlite, pdo_sqlite)<br />
+					-- Microsoft SQL Server ab 2000 (mssql)
+		  </td></tr>
+	 	</table>
+		<br />
+		<hr style="width: 75%;" />
+		<br />
+		<table cellspacing="0" cellpadding="2" width="100%">
+		  <tr>
+		    <td class="head"><a name="installation"></a>Installation</td>
+			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
+		  </tr>
+		  <tr><td colspan="2">Laden Sie den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'docs' und 'updates') auf Ihren Webspace 
+		  		und setzen Sie die entsprechenden Dateirechte in übergeordneten Verzeichnissen, um der install.php das Schreiben einer setup.php
+				zu erlauben. Diese wird während der Installation angelegt, um die Datenbankverbindungsdaten zu sichern. Das Verzeichnis 'convert'
+				ist nur nötig, wenn eine alte BXCP 0.2 Installation aktualisiert werden soll. Als nächstes öffnen Sie einen Browser Ihrer Wahl 
+				und rufen die install.php auf. Diese liefert nun alle folgenden Instruktionen, welche für die Installation notwendig sind.
+		  </td></tr>
+		</table>
+		<br />
+		<hr style="width: 75%;" />
+		<br />
+		<table cellspacing="0" cellpadding="2" width="100%">
+		  <tr>
+		    <td class="head"><a name="update_old"></a>Update von älteren ClanSphere Versionen</td>
+			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
+		  </tr>
+		  <tr><td colspan="2">Führen Sie den SQL Patch (wenn ein Neuer im 'updates' Verzeichnis vorhanden sein sollte, ansonsten überspringen
+		  		Sie diesen Punkt) aus, indem dieser über das Browserfenster ausgeführt wird (Eingeloggt als Admin, zu finden unter dem Menüpunkt: 
+				System -> Updates). Laden Sie als nächstes den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'convert', 
+				'docs' und 'updates') auf Ihren Webspace und setzen Sie am 'uploads' Verzeichnis rekursiv die nötigen Dateirechte um Dateien 
+				hochladen zu können.
+		  </td></tr>
+		</table>
+		<br />
+		<hr style="width: 75%;" />
+		<br />
+		<table cellspacing="0" cellpadding="2" width="100%">
+		  <tr>
+		    <td class="head"><a name="update_bxcp"></a>Update vom BXCP 0.3.2.2</td>
+			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
+		  </tr>		  
+		  <tr><td colspan="2">Aufgrund interner Umstellungen, die den Kern betreffen, ist es nötig, als Vorsichtsmaßnahme die Datenbank, sowie bisher 
+		  		vorhandenen FTP Inhalt im Installationsverzeichnis zu sichern und eine Liste manuell geänderter Dateien anzufertigen. 
+				Als zweites muss die Datei 'bxcp_0322_to_clansphere.sql', eingeloggt als Admin, unter dem Menüpunkt System -> Updates 
+				ausgeführt werden. Entfernen Sie nun den alten Inhalt vom FTP, ausgenommen die Verzeichnisse logs, templates und uploads. 
+				Laden Sie als viertes jetzt alle neuen Dateien auf den Webspace und öffnen Sie die setup.php zum bearbeiten mit einem Texteditor. 
+				Jedes $bx_db nun zu $cs_db und jedes $bx_log zu $cs_log ändern und die Datei abspeichern. Sollten nachfolgend noch Probleme 
+				auftauchen, schauen Sie bitte in die Instruktionen zur Hilfe.
+		  </td></tr>
+		</table>
+		<br />
+		<hr style="width: 75%;" />
+		<br />
+		<table cellspacing="0" cellpadding="2" width="100%">	
+		  <tr>
+		    <td class="head"><a name="templates"></a>Templates Platzhalter</td>
+		    <td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
+		  </tr>
+		  <tr><td colspan="2"><a name="templates_sys"></a><em>System Templates</em></td></tr>
+		  <tr><td style="width: 125px;">{func:charset}</td><td>Das Charset der aktiven Sprache wird ausgegeben, Standard ist ISO-8859-15</td></tr>
+		  <tr><td>{func:errors}</td><td>Vom System erkannte Fehler werden ausgegeben (für Entwickler gedacht)</td></tr>
+		  <tr><td>{func:memory}</td><td>Vom Script aktuell genutzter Arbeitsspeicher</td></tr>
+		  <tr><td>{func:parse}</td><td>Anzeige der benötigten Ladezeit für die generierte Ausgabe</td></tr>
+		  <tr><td>{func:queries}</td><td>Gibt die Anzahl der durchgeführten SQL-Queries aus</td></tr>
+		  <tr><td>{func:show}</td><td>Zeigt die über mod= und action= definierte Unterseite an</td></tr>
+		  <tr><td>{func:sql}</td><td>Ausgabe der durchgeführten SQL-Queries (für Entwickler gedacht)</td></tr>
+		  <tr><td>{func:title}</td><td>Der in den Optionen eingestellte Seiten-Titel wird angezeigt</td></tr>
+		  <tr><td colspan="2"><a name="templates_mod"></a><em>Module Templates</em></td></tr>
+		  <tr><td style="width: 125px;">{func:charset}</td><td>Das Charset der aktiven Sprache wird ausgegeben, Standard ist ISO-8859-15</td></tr>
+		  <tr><td>{articles:navlist}</td><td>Zeigt aktuelle Artikel an</td></tr>
+		  <tr><td>{banners:navlist}</td><td>Auflistung aller eingetragenen Banner untereinander</td></tr>
+		  <tr><td>{banners:navright}</td><td>Auflistung aller eingetragenen Banner nebeneinander</td></tr>
+		  <tr><td>{board:navlist}</td><td>Zeigt aktuelle Forum-Themen an</td></tr>
+		  <tr><td>{buddys:navlist}</td><td>Zeigt Buddys an, die online sind</td></tr>
+		  <tr><td>{clansphere:navglobals}</td><td>Gibt als Klapptexte die meisten superglobalen Variablen aus</td></tr>
+		  <tr><td>{clansphere:navtime}</td><td>Zeigt die aktuelle Uhrzeit mit Datum und Zeitzone an</td></tr>
+		  <tr><td>{count:navall}</td><td>Zeigt die Gesamtzahl an Besuchern</td></tr>
+		  <tr><td>{count:navday}</td><td>Zeigt die Besucheranzahl des laufenden Tages</td></tr>
+		  <tr><td>{count:navmon}</td><td>Zeigt die Besucheranzahl des laufenden Monats</td></tr>
+		  <tr><td>{count:navone}</td><td>Zeigt die Anzahl an Besuchern, die aktuell online sind</td></tr>
+		  <tr><td>{count:navyes}</td><td>Zeigt die Besucheranzahl des Vortags</td></tr>
+		  <tr><td>{events:navcal}</td><td>Kalender des aktuellen Monats mit Terminen</td></tr>
+		  <tr><td>{events:navnext}</td><td>Zeigt die kommenden Termine mit Namen und Datum</td></tr>
+		  <tr><td>{files:navlist}</td><td>Zeigt die 4 zuletzt eingetragenen Downloads an</td></tr>
+		  <tr><td>{files:navtop}</td><td>Zeigt die 4 Top Downloads an</td></tr>
+		  <tr><td>{gallery:navlist}</td><td>Zeigt per Zufall ein Bild aus der Gallery</td></tr>
+		  <tr><td>{lanpartys:navnext}</td><td>Informationen zur folgenden LAN-Party mit Balken und Belegung</td></tr>
+		  <tr>
+		    <td>{members:navrand}</td>
+		    <td>Zeigt einen zuf&auml;lligen Member, mit Bild, Nickname, Namen, Funktion und dabei seit</td>
+		  </tr>
+		  <tr><td>{news:navlist}</td><td>Die letzten vier News mit Datum und Kopfzeile</td></tr>
+		  <tr><td>{shoutbox:navlist}</td><td>Anzeige einer Shoutbox</td></tr>
+		  <tr><td>{users:navbirth}</td><td>Zeigt Benutzer, die am aktuellen Tag ihren Geburtstag haben</td></tr>
+		  <tr><td>{users:navlang}</td><td>Auflistung der Sprachen, mit Flagge und Name, untereinander, sowie Wechselfunktion für Besucher 
+		  	und Benutzer</td></tr>
+		  <tr><td>{users:navlang2}</td><td>Auflistung der Sprachen, mit Flagge, nebeneinander, sowie Wechselfunktion für Besucher und Benutzer</td></tr>
+		  <tr><td>{users:navlast}</td><td>Benutzer, die sich zuletzt registriert haben</td></tr>
+		  <tr><td>{users:navlogin}</td><td>Zeigt Extern ein Login-Formular und Intern eine Funktionsliste</td></tr>
+		  <tr><td>{users:navlogin2}</td><td>Zeigt Extern diverse Links, wie z.B. Login und Intern eine Funktionsliste</td></tr>
+		  <tr><td>{users:navlogin3}</td><td>Zeigt Extern ein Login-Formular und Intern eine Funktionsliste mit Icons</td></tr>
+		  <tr><td>{users:navlogin4}</td><td>Zeigt Extern ein Login-Formular und Intern eine Funktionsliste mit Icons, sowie dem eigenem Bild oder Avatar</td></tr>
+		  <tr><td>{users:navonline}</td><td>Benutzer, die aktuell Online sind</td></tr>
+		  <tr><td>{votes:navlist}</td><td>Zeigt die derzeit aktuelle Abstimmung an</td></tr>
+		  <tr><td>{wars:navlist}</td><td>Die letzten vier Wars mit Spiel, Gegner und Ergebnis</td></tr>
+		  <tr><td>{wars:navnext}</td><td>Zeigt anstehende Wars mit Datum, Spiel und Gegner</td></tr>
+		</table>
+		<br />
+		<hr style="width: 75%;" />
+		<br />
+		<table cellspacing="0" cellpadding="2" width="100%">		
+		  <tr>
+		    <td class="head"><a name="abcodes"></a>Abcodes</td>
+			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
+		  </tr>
+		  <tr><td class="leftc" colspan="2">[html]HTML[/html]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">In diesem Bereich ist HTML erlaubt. Diese Funktion ist in den meisten Modulen gesperrt 
+		 	und ist nicht öffentlich zugänglich.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>
+		  <tr><td class="leftc" colspan="2">[phpcode]Code[/phpcode]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">In diesem Bereich wird PHP-Code vom Webserver interpretiert. Diese Funktion kann man 
+		 	ausschließlich im Statische Seiten Modul verwenden und dort nur auf Admin-Seiten ab Level 5. Der Code ist ohne 
+			<?php und ?> anzugeben.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>
+		  <tr><td class="leftc" colspan="2">[php]Code[/php]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion dient der Anzeige von PHP-Code mit farbigen Hervorhebung 
+		 	bestimmter Zeichen. <?php und ?> sind mit anzugeben.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>		 
+		  <tr><td class="leftc" colspan="2">[u]Text[/u]</td></tr>
+	 	  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird unterstrichen dargestellt (underline).</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[b]Text[/b]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird fett dargestellt (bold).</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[i]Text[/i]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird kursiv dargestellt (italic).</td></tr>
+ 	 	  <tr><td style="height: 10px; border: 0;"></td></tr>			
+		  <tr><td class="leftc" colspan="2">[s]Text[/s]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird durchgestrichen dargestellt (strike).</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>			
+		  <tr><td class="leftc" colspan="2">[img]Pfad[/img]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion zeigt ein Bild des angegebenen Pfades an (image).</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>			
+		  <tr><td class="leftc" colspan="2">[img width=Breite height=Höhe]Pfad[/img]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion zeigt ein Bild des angegeben Pfades mit angegebener H&ouml;he und Breite an.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>			
+		  <tr><td class="leftc" colspan="2">[mail]Adresse[/mail]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion erstellt einen Hyperlink auf eine E-Mail-Adresse. Bei Klick wird der Standard
+		 	E-Mail-Browser geöffnet. Dies geschieht inzwischen allerdings auch automatisch, ist also nicht mehr notwendig.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>					
+		  <tr><td class="leftc" colspan="2">[url]Adresse[/url]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion erstellt einen Hyperlink auf die angegebene Adresse. Valide Adressen 
+			werden aber inzwischen automatisch erkannt, ist in den meisten Fällen also unnötig.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>					
+		  <tr><td class="leftc" colspan="2">[url=Adresse]Anzeige[/url]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Erstellt einen Hyperlink auf die angegebene Adresse mit der angegebenen Anzeige.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[size=Größe]Text[/size]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird in der angegebenen Größe angezeigt. Maximale Größe ist 50.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[left]Text[/left]<br />[center]Text[/center]<br />[right]Text[/right]<br />[justify]Text[/justify]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird links (left), rechts (right) oder mittig (center) angeordnet. Bei justify 
+			erscheint der Text als Blocksatz.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[list]<br />[*]Listen-Eintrag 1<br />[*]Listen-Eintrag 2<br />[/list]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Erstellt eine Liste. Für jeden Eintrag muss ein [*] geschrieben werden.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[flag=Kürzel]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt ein Icon mit der Flagge des angegebenen Landes an. Es ist das Kürzel des Landes 
+		  	anzugeben. Eine vollständige Liste ist bei Wikipedia zu finden: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[indent=Anzahl]Text[/indent]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Rückt den Text um die angegebene Anzahl an Leerzeichen ein.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[hr]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt eine horizontale Trennlinie an.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[quote]Text[/quote]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt einen Text in einem hervorgehobenen Bereich an. Diese Funktion ist f&uuml;r Zitate gedacht.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[quote=Zusatzinformationen]Text[/quote]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt einen Text in einem hervorgehobenen Bereich an. Diese Funktion ist f&uuml;r Zitate gedacht. Die Zusatzinformationen erscheinen &uuml;ber dem Zitat.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[clip]Text[/clip]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt einen Text als Klapptext bzw. anfangs nicht an. Bei Klick auf Mehr, wird der 
+			Text auf- bzw zugeklappt.</td></tr>
+ 		  <tr><td style="height: 10px; border: 0;"></td></tr>	
+		  <tr><td class="leftc" colspan="2">[clip=Anzeige]Text[/clip]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt einen Text als Klapptext bzw. anfangs nicht an. Bei Klick auf die angegebene
+		  	Anzeige, wird der Text auf- bzw zugeklappt.</td></tr>
+	  	</table>
+		<br />
+		<hr style="width: 75%;" />
+		<br />
+		<table cellspacing="0" cellpadding="2" width="100%">		
+		  <tr>
+		    <td class="head"><a name="servers"></a>Server Classes</td>
+			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
+		  </tr>	
+		  <tr><td class="leftc" colspan="2">Stand: 24.10.2007<br />
+		  	Die folgenden Spiele und Programme werden derzeit im Server-Modul mit "Live-Stats" versorgt:</td></tr>
+		  <tr><td colspan="2">
+		    <ul>
+			  <li>Americans Army</li>
+			  <li>Armagetronad</li>
+			  <li>Battlefield</li>
+			  <li>Battlefield 2</li>
+    		  <li>Battlefield 2142</li>
+    		  <li>Battlefield Vietnam</li>
+			  <li>Call of Duty</li>
+			  <li>Call of Duty 2</li>
+			  <li>Call of Duty 4</li>
+			  <li>C&amp;C Renegade</li>
+			  <li>Doom 3</li>
+			  <li>Descent 3</li>
+			  <li>Descent 3 Gamespy</li>
+			  <li>Enemy Territory</li>
+ 			  <li>Enemy Territory : Quake Wars</li>
+			  <li>Fear</li>
+			  <li>Halo</li>
+  			  <li>Hiddem &amp; Dangerous 2</li>
+			  <li>Half-Life &amp; Mods</li>
+			  <li>Half-Life Old</li>
+			  <li>Half-Life 2</li>
+			  <li>Jedi Knight: Jedi Academy</li>
+			  <li>Jedi Knight 2</li>
+			  <li>Medal Of Honor</li>
+			  <li>No One Lives Forever</li>
+			  <li>Painkiller</li>
+			  <li>Quake 1 / Quakeworld</li>
+			  <li>Quake 2</li>
+			  <li>Quake 3 Arena</li>
+			  <li>Quake 4</li>
+			  <li>Return to Castle Wolfenstein</li>
+			  <li>Rune</li>
+			  <li>Soldier of Fortune</li>
+			  <li>S.W.A.T.</li>
+			  <li>TeamSpeak 2</li>
+			  <li>Unreal Tournament 2003</li>
+			  <li>Unreal Tournament 2004</li>
+			  <li>Unreal Tournament Red Orchestra</li>			  
+			  <li>Warsow</li>
+			</ul>
+		  </td></tr>
+		</table>
+		<table cellspacing="0" cellpadding="2" width="100%">
+		  <tr><td style="float:right; font-size: 8pt;"><i>Letzte Aktualisierung: 23.03.2008</i></td></tr>
+		</table>
+	</div>
+	<div id="footer">Copyright 2004-2008 clansphere.net. All rights reserved.</div>	
+</div>
+</body>
+</html>
