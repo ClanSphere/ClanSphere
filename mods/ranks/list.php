@@ -3,52 +3,43 @@
 // $Id$
 
 $cs_lang = cs_translate('ranks');
+$cs_post = cs_post('start,sort');
+$cs_get = cs_get('start,sort');
+$data = array();
 
-$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
+$start = empty($cs_get['start']) ? 0 : $cs_get['start'];
+if (!empty($cs_post['start']))  $start = $cs_post['start'];
+$sort = empty($cs_get['sort']) ? 2 : $cs_get['sort'];
+if (!empty($cs_post['sort']))  $sort = $cs_post['sort'];
+
 $cs_sort[1] = 'ranks_name DESC';
 $cs_sort[2] = 'ranks_name ASC';
-$sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $ranks_count = cs_sql_count(__FILE__,'ranks');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,3);
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_list'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo sprintf($cs_lang['all'],$ranks_count);
-echo cs_html_roco(2,'rightb');
-echo cs_pages('ranks','list',$ranks_count,$start,0,$sort);
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+$data['head']['body'] = sprintf($cs_lang['all'],$ranks_count);
+$data['head']['pages'] = cs_pages('ranks','list',$ranks_count,$start,0,$sort);
+
+$data['sort']['name'] = cs_sort('ranks','list',$start,0,1,$sort);
 
 $select = 'ranks_id, ranks_name, ranks_url, ranks_img, ranks_code';
-$cs_ranks = cs_sql_select(__FILE__,'ranks',$select,0,$order,$start,$account['users_limit']);
-$ranks_loop = count($cs_ranks);
+$data['ranks'] = cs_sql_select(__FILE__,'ranks',$select,0,$order,$start,$account['users_limit']);
+$ranks_loop = count($data['ranks']);
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo cs_sort('ranks','list',$start,0,1,$sort);
-echo $cs_lang['name'];
-echo cs_html_roco(2,'headb');
-echo $cs_lang['content'];
-echo cs_html_roco(0);
 
 for($run=0; $run<$ranks_loop; $run++) {
 
-	echo cs_html_roco(1,'leftc');
-  echo cs_secure($cs_ranks[$run]['ranks_name']);
-	echo cs_html_roco(2,'leftc');
-  if(!empty($cs_ranks[$run]['ranks_url']) AND !empty($cs_ranks[$run]['ranks_url'])) {
-    $picture = cs_html_img($cs_ranks[$run]['ranks_img']);
-	  echo cs_html_link('http://' . $cs_ranks[$run]['ranks_url'],$picture);
-  }
-  else {
-    echo $cs_ranks[$run]['ranks_code'];
-  }
-	echo cs_html_roco(0);
+ 	$data['ranks'][$run]['name'] = cs_secure($data['ranks'][$run]['ranks_name']);
+
+	$data['ranks'][$run]['picture'] = '';
+	if(!empty($data['ranks'][$run]['ranks_url']) AND !empty($data['ranks'][$run]['ranks_url'])) {
+		$picture = cs_html_img($data['ranks'][$run]['ranks_img']);
+		$data['ranks'][$run]['picture'] = cs_html_link('http://' . $data['ranks'][$run]['ranks_url'],$picture);
+	}
+	else {
+		$data['ranks'][$run]['picture'] = $data['ranks'][$run]['ranks_code'];
+	}
 }
-echo cs_html_table(0);
+echo cs_subtemplate(__FILE__,$data,'ranks','list');
 
 ?>

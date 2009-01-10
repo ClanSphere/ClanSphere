@@ -1,0 +1,42 @@
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+	<tr>
+		<td class="headb">{lang:mod} - {lang:edit}</td>
+	</tr>
+	<tr>
+		<td class="leftc">{head:body}</td>
+	</tr>
+</table>
+<br />
+
+<form method="post" name="ranks_edit" action="{url:ranks_edit}" enctype="multipart/form-data">
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+	<tr>
+		<td class="leftc">{icon:playlist} {lang:name} *</td>
+		<td class="leftb"><input type="text" name="ranks_name" value="{ranks:ranks_name}" maxlength="80" size="40" /></td>
+	</tr>
+	<tr>
+		<td class="leftc">{icon:gohome} {lang:url} *</td>
+		<td class="leftb">http://<input type="text" name="ranks_url" value="{ranks:ranks_url}" maxlength="80" size="50" /></td>
+	</tr>
+	<tr>
+		<td class="leftc">{icon:images} {lang:img} *</td>
+		<td class="leftb"><input type="text" name="ranks_img" value="{ranks:ranks_img}" maxlength="80" size="50" /></td>
+	</tr>
+	<tr>
+		<td class="leftc">{icon:html} {lang:code}</td>
+		<td class="leftb">
+			<textarea name="ranks_code" cols="50" rows="12" id="ranks_code">{ranks:ranks_code}</textarea><br />
+			<br />
+			{lang:code_info}
+		</td>
+	</tr>
+	<tr>
+		<td class="leftc">{icon:ksysguard} {lang:options}</td>
+		<td class="leftb">
+			<input type="hidden" name="id" value="{ranks:id}" />
+			<input type="submit" name="submit" value="{lang:edit}" />
+			<input type="reset" name="reset" value="{lang:reset}" />
+		</td>
+	</tr>
+</table>
+</form>
