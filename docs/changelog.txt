@@ -6,6 +6,7 @@ ___________________________________________________________
 
 -> Fixed preview of signatures in board (BugtrackerID: 209, Denni)
 -> Fixed removing of uploaded files in some modules (BugtrackerID: 198 and 211, Denni)
+-> Fixed users hide function in users view (fay-pain)
 -> Added function create_user to create every user in the same way (Denni)
 -> Completely reworked AJAX solution (duriel, schiri)
 -> Added Auto Update function (alcatraz)
