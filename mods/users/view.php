@@ -24,7 +24,11 @@ else {
 	echo cs_subtemplate(__FILE__,$data,'users','head');
 
 	$hidden = explode(',',$cs_user['users_hidden']);
-	$allow = $users_id == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
+	#$allow = $users_id == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
+	$allow = 0;
+	if($users_id == $account['users_id'] OR $account['access_users'] > 4) {
+		$allow = 1;
+	}
 
 	$data['if']['own_profile'] = $users_id == $account['users_id'] ? true : false;
   $data['url']['picture'] = cs_url('users','picture');
