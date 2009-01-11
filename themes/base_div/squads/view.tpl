@@ -24,7 +24,7 @@
   <td class="leftb"><a href="{url:users_view,id={members:users_id}}">{members:users_nick_tag}</a></td>
   <td class="leftb">{members:members_task}</td>
   <td class="leftb">{members:members_since}</td>
-  <td class="leftb"><img src="{page:path}{members:page}" alt="" /></td>
+  <td class="leftb">{members:page}</td>
  </tr>
  {stop:members}
 </table>
