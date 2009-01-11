@@ -8,7 +8,7 @@ $cs_get = cs_get('id');
 $categories_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 $cs_categories = cs_sql_select(__FILE__,'categories','*',"categories_id = '" . $categories_id . "'");
 
-$data['cat']['name'] cs_secure($cs_categories['categories_name']);
+$data['cat']['name'] = cs_secure($cs_categories['categories_name']);
 
 #$cat_mod = empty($_POST['cat_mod']) ? $cs_categories['categories_mod'] : $_POST['cat_mod'];
 $cat_mod = $cs_categories['categories_mod'];

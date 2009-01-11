@@ -100,7 +100,7 @@ if(!empty($error) OR empty($_FILES['picture']['tmp_name']) AND empty($del)) {
 	$matches[2] .= $cs_lang['filetypes'] . $return_types;
 	$data['users']['picup_clip'] = cs_abcode_clip($matches);
 
-	$data['users']['id'] = $users_id,'hidden');
+	$data['users']['id'] = $users_id;
 	
 	
   echo cs_subtemplate(__FILE__,$data,'users','picture_edit');
