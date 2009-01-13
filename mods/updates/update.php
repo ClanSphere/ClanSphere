@@ -8,19 +8,13 @@ global $com_lang;
 $cs_lang = cs_translate('updates');
 $update_server = "http://update.clansphere.de/"; 
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,2);
-echo 'ClanSphere - ' .$cs_lang['mod'];
-echo cs_html_roco(0); 
-echo cs_html_roco(1,'leftb',0,2);
-echo $cs_lang['mod_text'];
-echo cs_html_roco(0); 
-echo cs_html_table(0); 
-echo cs_html_br(1);
-
 $value = explode('.', cs_sql_escape($_GET['file']));
 $errormsg = '';
 $actions = '';
+
+$data = array();
+$data['if']['error'] = FALSE;
+$data['if']['no_error'] = FALSE;
 
 //Get Packet
 if(!@copy($update_server.'packets/'.$value[0].'.zip', $value[0].'.zip')) { 
@@ -112,32 +106,22 @@ cs_sql_insert(__FILE__, 'updates', $insert_keys, $insert_values);
 
 
 if(!empty($errormsg)) {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftb');
+
+  $data['if']['error'] = TRUE;
+
   $errormsg = explode('/', $errormsg); 
   $errormsg_count = (count($errormsg)-1);
   unset($errormsg[$errormsg_count]); 
   foreach($errormsg AS $value) {
-    echo cs_secure($value,1).cs_html_br(1);
-  }  
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);  
+    $data['updates']['errors'] = cs_secure($value,1).cs_html_br(1);
+  }   
 } 
 
 if(empty($errormsg)) {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'centerb');
-  echo $cs_lang['success_update'];
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);  
-} 
+  $data['if']['no_error'] = TRUE;
+}
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'centerc');
-echo cs_link($cs_lang['continue'],'updates','roots');
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);  
+echo cs_subtemplate(__FILE__,$data,'updates','update');
+
+
 ?>
