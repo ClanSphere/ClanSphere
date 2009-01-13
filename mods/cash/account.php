@@ -1,4 +1,7 @@
 <?php
+// ClanSphere 2008 - www.clansphere.net
+// $Id$
+
 $cs_lang = cs_translate('cash');
 
 $data['if']['form'] = 0;
@@ -18,24 +21,19 @@ if(isset($_POST['submit'])) {
 	  $data['if']['id'] = 1;
 	}
 	
-	$error = 0;
-	$errormsg = $cs_lang['error'] . cs_html_br(1);
+	$error = '';
 	
 	if(empty($data['account']['account_owner'])) {
-	  $error++;
-	  $errormsg .= $cs_lang['no_owner'] . cs_html_br(1);
+	  $error .= $cs_lang['no_owner'] . cs_html_br(1);
 	}
 	if(empty($data['account']['account_number'])) {
-	  $error++;
-	  $errormsg .= $cs_lang['no_number'] . cs_html_br(1);
+	  $error .= $cs_lang['no_number'] . cs_html_br(1);
 	}
 	if(empty($data['account']['account_bcn'])) {
-	  $error++;
-	  $errormsg .= $cs_lang['no_bcn'] . cs_html_br(1);
+	  $error .= $cs_lang['no_bcn'] . cs_html_br(1);
 	}	
 	if(empty($data['account']['account_bank'])) {
-	  $error++;
-	  $errormsg .= $cs_lang['no_bank'] . cs_html_br(1);
+	  $error .= $cs_lang['no_bank'] . cs_html_br(1);
 	}
 
 } else {
@@ -65,15 +63,12 @@ if(!isset($_POST['submit'])) {
   $data['table']['body'] = $cs_lang['body_create'];
 }
 elseif(!empty($error)) {
-  $data['table']['body'] = $errormsg;
+  $data['table']['body'] = $error;
 }
 else {
   $data['if']['form'] = 0;
   $data['table']['body'] = $cs_lang['create_done'];
 }
-
-
-
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   $data['if']['form'] = 1;

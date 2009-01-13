@@ -1,25 +1,23 @@
 <?php
+// ClanSphere 2008 - www.clansphere.net
+// $Id$
 
 $cs_lang['mod_name']	= 'Finances';
 $cs_lang['mod_text']	= 'Administration of Clan cashdesk';
+
 $cs_lang['mod']	= 'Finances';
-$cs_lang['head']= 'Administration';
 $cs_lang['head_create'] = 'Add';
 $cs_lang['head_view'] = 'Details';
-$cs_lang['head_remove']	= 'Remove';
-$cs_lang['head_edit'] = 'Change';
-$cs_lang['body_edit'] =  'All fields with * are required.';
-$cs_lang['error_occurred'] = 'An error occurred.';
-$cs_lang['error_count'] = 'Required information missing.';
-$cs_lang['edit_done'] = 'Successfully changed';
-$cs_lang['body_create'] =  'All fields with * are required.';
+$cs_lang['head_center'] = 'Center';
+$cs_lang['body_info'] =  'All fields with * are required.';
 $cs_lang['money'] = 'Amount';
 $cs_lang['for'] = 'Purpose';
 $cs_lang['euro'] = 'Euro';
 $cs_lang['info'] = 'Infos';
-$cs_lang['inout'] = 'Description';
+$cs_lang['inout'] = 'Kind';
 $cs_lang['new_cash'] = 'New payment';
 $cs_lang['overview'] = 'Overview';
+$cs_lang['payments_in'] = 'Payments-in:';
 $cs_lang['in'] = 'Income:';
 $cs_lang['drop_in'] = 'Income';
 $cs_lang['out'] = 'Outcome:';
@@ -30,6 +28,16 @@ $cs_lang['mycash'] = 'My payments';
 $cs_lang['user_money'] = 'Monthly outgo/user:';
 $cs_lang['akt_users_month'] = 'Payed this month:';
 $cs_lang['user_cash_month'] = 'Users Payments/nonpayments';
+$cs_lang['body_details'] = 'Detail of the selected payment';
+$cs_lang['low_access'] = 'You have not enough access to view this payment';
+$cs_lang['payments_where_user'] = 'Show only payments of this user';
+
+// Errors
+$cs_lang['no_inout'] = '- The type of the payment must be determined.';
+$cs_lang['no_money'] = '- No amount was indicated.';
+$cs_lang['no_text'] = '- The purpose of the payment must be indicated.';
+$cs_lang['no_date'] = '- The date payment must be selected.';
+$cs_lang['no_user'] = '- An user must be selected.';
 
 // Kontodaten
 $cs_lang['kt'] = 'Bank account data';
@@ -49,7 +57,6 @@ $cs_lang['nonumber'] = 'No bank account data given';
 
 // Options
 $cs_lang['month_out'] = 'Monthly outgo:';
-$cs_lang['no_month_out'] = '- No monthly outgo given.';
 $cs_lang['create_options'] = 'Options successfully changed.';
 
 // Users_view

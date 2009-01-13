@@ -3,204 +3,80 @@
 // $Id$
 
 $cs_lang = cs_translate('cash');
-
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_create'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo $cs_lang['body_create'];
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
-
-$cash_error = 6; 
-$cash_form = 1; 
-
-if(empty($_POST['datum_month']) OR empty($_POST['datum_day']) OR empty($_POST['datum_year'])) {
-    $cash_time = '';
-  }
-  else {
-    $cash_time = cs_datepost('datum','date');
-    $cash_error--;
-  }
-
-$cash_text = '';
-$cash_info = '';
-$cash_inout = '';
-$cash_money = '';
-$cash_user = '';
-
-
-if(!empty($_POST['cash_inout'])) {
-	$cash_inout = $_POST['cash_inout'];
-	$cash_error--;
-}
-if(!empty($_POST['cash_money'])) {
-	$cash_money = $_POST['cash_money'];
-	$cash_error--;
-}
-if(!empty($_POST['cash_info'])) {
-	$cash_info = $_POST['cash_info'];
-	$cash_error--;
-}
-
-if(!empty($_POST['cash_text'])) {
-	$cash_text = $_POST['cash_text'];
-	$cash_error--;
-}
-if(!empty($_POST['users_id'])) {
-	$cash_user = $_POST['users_id'];
-	$cash_error--;
-}
+$data = array();
 
 if(isset($_POST['submit'])) {
-	if(empty($cash_error)) {
-		$cash_form = 0;
-		
-    $cash_cells = array('users_id','cash_text','cash_time','cash_info','cash_money','cash_inout');
-    $cash_save = array($cash_user,$cash_text,$cash_time,$cash_info,$cash_money,$cash_inout);
-    cs_sql_insert(__FILE__,'cash',$cash_cells,$cash_save);
-    
-		cs_redirect($cs_lang['create_done'],'cash');
-	}
-	else {  
-        echo cs_html_table(1,'forum',1);
-		echo cs_html_roco(1,'leftc');
-		echo cs_icon('important');
-		echo $cs_lang['error_occurred'];
-		echo ' - ';
-		echo cs_secure ($cash_error).' '.$cs_lang['error_count'];
-		echo cs_html_roco(0);
-		echo cs_html_table(0);
-		echo cs_html_br(1);
-	}
-}
-
-if(isset($_POST['preview'])) {
-	if(empty($cash_error)) {
- 
-	echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,3);
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head'];
-echo cs_html_roco(0);
-
-echo cs_html_roco(1,'leftc');
-echo cs_icon('personal') . $cs_lang['nick'];
-echo cs_html_roco(2,'leftb');
-$data_users = cs_sql_select(__FILE__,'users','users_nick, users_id',"users_id = '" . $cash_user . "'",'users_nick',0);
-echo $data_users['users_nick'];
-echo cs_html_roco(0);
-
-echo cs_html_roco(1,'leftc');
-echo cs_icon('money') .$cs_lang['money'];
-echo cs_html_roco(2,'leftb',0,2);
-echo cs_secure ($cash_money .' '. $cs_lang['euro']);
-echo cs_html_roco(0);
-
-echo cs_html_roco(1,'leftc');
-echo cs_icon('kate') .$cs_lang['for'];
-echo cs_html_roco(2,'leftb',0,2);
-echo cs_secure($cash_text); 
-echo cs_html_roco(0);
-
-echo cs_html_roco(1,'leftc');
-echo cs_icon('folder_yellow') .$cs_lang['inout'];
-echo cs_html_roco(2,'leftb',0,2);
-$inout = $cash_inout;
-echo cs_secure ($cs_lang[$inout]); 
-echo cs_html_roco(0);
-
-echo cs_html_roco(1,'leftc');
-echo cs_icon('1day') .$cs_lang['date'];
-echo cs_html_roco(2,'leftb',0,2);
-echo cs_date('date',$cash_time);
-echo cs_html_roco(0);
-
-echo cs_html_roco(1,'headb',0,2);
-echo $cs_lang['info']; 
-echo cs_html_roco(0);
-
-echo cs_html_roco(1,'leftc',0,2);
-echo cs_secure($cash_info,1,1);
-echo cs_html_roco(0);
-
-echo cs_html_table(0);
-
-		echo cs_html_br(2);
-	}
-else {
-		echo cs_html_table(1,'forum',1);
-		echo cs_html_roco(1,'leftc');
-		echo cs_icon('important');
-		echo $cs_lang['error_occurred'];
-		echo ' - ';
-		echo cs_secure ($cash_error).' '.$cs_lang['error_count'];
-		echo cs_html_roco(0);
-		echo cs_html_table(0);
-		echo cs_html_br(1);
-	}
-}
-
-if(!empty($cash_form)) {
-
-	echo cs_html_form (1,'cash_create','cash','create');
-	echo cs_html_table(1,'forum',1);
-
-    echo cs_html_roco(1,'leftc');
-    echo cs_icon('personal') . $cs_lang['nick'];
-    echo cs_html_roco(2,'leftb');
-    $data_users = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
-    echo cs_dropdown('users_id','users_nick',$data_users,$cash_user);
-    echo cs_html_roco(0);
-
-	echo cs_html_roco(1,'leftc');
-	echo cs_icon('money') . $cs_lang['money']. ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_input('cash_money',$cash_money,'text',14,10);
-	echo ' '. $cs_lang['euro'];
-	echo cs_html_roco(0);
-        
-    echo cs_html_roco(1,'leftc');
-	echo cs_icon('folder_yellow') . $cs_lang['inout']. ' *'; 
-	echo cs_html_roco(2,'leftb');
-	$inoutlist[0]['cash_inout'] = 'in';
-    $inoutlist[0]['name'] = $cs_lang['drop_in'];
-    $inoutlist[1]['cash_inout'] = 'out';
-    $inoutlist[1]['name'] = $cs_lang['drop_out'];
-	echo cs_dropdown('cash_inout','name',$inoutlist,$cash_inout);
-	echo cs_html_select(0);
-        
-    echo cs_html_roco(1,'leftc');
-	echo cs_icon('1day') . $cs_lang['date']. ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_dateselect('datum','date',$cash_time,2000);
-	echo cs_html_roco(0);
 	
-	echo cs_html_roco(1,'leftc');
-	echo cs_icon('kedit') . $cs_lang['for']. ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_input('cash_text',$cash_text,'text',200,50);
-	echo cs_html_roco(0);
+	$cs_cash['cash_inout'] = $_POST['cash_inout'];
+	$cs_cash['cash_money'] = $_POST['cash_money'];
+	$cs_cash['cash_text'] = $_POST['cash_text'];
+	$cs_cash['cash_info'] = $_POST['cash_info'];
+	$cs_cash['users_id'] = $_POST['users_id'];
+	$cs_cash['cash_time'] = cs_datepost('datum','date');
+	
+	$error = '';
+	
+	if(empty($cs_cash['cash_inout'])) {
+		$error .= $cs_lang['no_inout'] . cs_html_br(1);
+	}
+	if(empty($cs_cash['cash_money'])) {
+		$error .= $cs_lang['no_money'] . cs_html_br(1);
+	}
+	if(empty($cs_cash['cash_text'])) {
+		$error .= $cs_lang['no_text'] . cs_html_br(1);
+	}
+	if(empty($cs_cash['cash_time'])) {
+		$error .= $cs_lang['no_date'] . cs_html_br(1);
+	}
+	if(empty($cs_cash['users_id'])) {
+		$error .= $cs_lang['no_user'] . cs_html_br(1);
+	}
+	
+}
+else {
 
-	echo cs_html_roco(1,'leftc');
-	echo cs_icon('kate') . $cs_lang['info']. ' *';
-    echo cs_html_br(2);
-    echo cs_abcode_smileys('cash_info');
-	echo cs_html_roco(2,'leftb');
-    echo cs_abcode_features('cash_info');
-	echo cs_html_textarea('cash_info',$cash_info,'50','20');
-	echo cs_html_roco(0);
+  $cs_cash['cash_inout'] = '';
+  $cs_cash['cash_money'] = '';
+  $cs_cash['cash_text'] = '';
+  $cs_cash['cash_info'] = '';
+  $cs_cash['users_id'] = $account['users_id'];
+  $cs_cash['cash_time'] = '';
+}
 
-	echo cs_html_roco(1,'leftc');
-	echo cs_icon('ksysguard') . $cs_lang['options'];
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_vote('submit',$cs_lang['create'],'submit');
-	echo cs_html_vote('preview',$cs_lang['preview'],'submit');
-	echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-	echo cs_html_roco(0);
-	echo cs_html_table(0);
-	echo cs_html_form (0);
+if(!isset($_POST['submit']) AND empty($error)) {
+	$data['head']['body'] = $cs_lang['body_info'];
+} elseif (!empty($error)) {
+	$data['head']['body'] = $error;
+}
+
+if(!empty($error) OR !isset($_POST['submit'])) {
+	
+	$data['cash'] = $cs_cash;
+
+ 	$cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
+ 	$data['cash']['users_sel'] = cs_dropdown('users_id','users_nick',$cs_users,$cs_cash['users_id']);
+
+	$inoutlist[0]['cash_inout'] = 'in';
+	$inoutlist[0]['name'] = $cs_lang['drop_in'];
+	$inoutlist[1]['cash_inout'] = 'out';
+	$inoutlist[1]['name'] = $cs_lang['drop_out'];
+	$data['cash']['inout_sel'] = cs_dropdown('cash_inout','name',$inoutlist,$cs_cash['cash_inout']);
+
+	$data['cash']['date_sel'] = cs_dateselect('datum','date',$cs_cash['cash_time'],2000);
+
+ 	$data['cash']['abcode_smileys'] = cs_abcode_smileys('cash_info');
+ 	$data['cash']['abcode_features'] = cs_abcode_features('cash_info');
+
+
+  echo cs_subtemplate(__FILE__,$data,'cash','create');
+}
+else {
+	
+	$cash_cells = array_keys($cs_cash);
+	$cash_save = array_values($cs_cash);
+  cs_sql_insert(__FILE__,'cash',$cash_cells,$cash_save);
+
+  cs_redirect($cs_lang['create_done'],'cash');
 }
 
 ?>
