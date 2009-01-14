@@ -4,6 +4,9 @@
 
 $cs_lang = cs_translate('database');
 
+$data['if']['form'] = FALSE;
+$data['if']['output_text'] = FALSE;
+
 $tables = empty($_POST['tables']) ? 0 : $_POST['tables'];
 $prefix = empty($_POST['prefix']) ? '{pre}' : $_POST['prefix'];
 $truncate = empty($_POST['truncate']) ? 0 : $_POST['truncate'];
@@ -12,37 +15,20 @@ $output = empty($_POST['output']) ? 'text' : $_POST['output'];
 if($output != 'file' OR empty($_POST['tables'])) {
 
   if(!empty($_POST['submit']) AND empty($tables)) {
-    $msg = $cs_lang['no_tables'];
+    $data['head']['body'] = $cs_lang['no_tables'];
   }
   else {
-    $msg = $cs_lang['body_export'];
+    $data['head']['body'] = $cs_lang['body_export'];
   }
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb');
-  echo $cs_lang['mod'] . ' - ' . $cs_lang['export'];
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'leftc');
-  echo $msg;
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);
+  $data['if']['head'] = TRUE; # ????
 }
 
 if(empty($_POST['tables'])) {
 
-  echo cs_html_form(1,'database_export','database','export');
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb',0,0,'200px');
-  echo $cs_lang['sql_tables'];
-  echo cs_html_roco(2,'headb',0,2);
-  echo $cs_lang['sql_options'];
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'centerb',4,0);
+  $data['if']['form'] = TRUE;
 
   $modules = cs_checkdirs('mods');
   $static = array();
-
-  echo cs_html_select(1, 'tables[]', 'id="sql_tables" multiple="multiple" size="8" style="width:90%"');
 
   foreach($modules as $mod) {
 
@@ -61,42 +47,21 @@ if(empty($_POST['tables'])) {
   }
 
   ksort($static);
+  $run = 0;
   foreach($static AS $sql_table => $mod) {
-    echo cs_html_option($sql_table, $sql_table);
+    $data['tables'][$run]['option'] = cs_html_option($sql_table, $sql_table);
+	$run++;
   }
 
-  echo cs_html_select(0);
-  echo cs_html_link("javascript:cs_select_multiple('sql_tables',1)",$cs_lang['all'],0) . ' - ';
-  echo cs_html_link("javascript:cs_select_multiple('sql_tables',0)",$cs_lang['none'],0) . ' - ';
-  echo cs_html_link("javascript:cs_select_multiple('sql_tables','reverse')",$cs_lang['reverse'],0);
-  echo cs_html_roco(2,'leftc');
-  echo $cs_lang['prefix'];
-  echo cs_html_roco(3,'leftb');
-  echo cs_html_input('prefix',$prefix,'text',20,20);
-  echo cs_html_roco(0);
+  $data['output']['prefix'] = $prefix;
 
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['datasets'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('truncate',1,'checkbox',$truncate) . ' ' . $cs_lang['send_truncate'];
-  echo cs_html_roco(0);
+  $checked = 'checked="checked"';
+  $data['output']['truncate_check'] = empty($truncate) ? '' : $checked;
 
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['output'];
-  echo cs_html_roco(2,'leftb');
   $array = $output == 'file' ? array('text' => 0, 'file' => 1) : array('text' => 1, 'file' => 0);
-  echo cs_html_vote('output','text','radio',$array['text']) . ' ' . $cs_lang['text'];
-  echo cs_html_vote('output','file','radio',$array['file']) . ' ' . $cs_lang['file'];
-  echo cs_html_roco(0);
+  $data['output']['text_check'] = empty($array['text']) ? '' : $checked;
+  $data['output']['file_check'] = empty($array['file']) ? '' : $checked;
 
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('submit',$cs_lang['export'],'submit');
-  echo cs_html_roco(0);
-
-  echo cs_html_table(0);
-  echo cs_html_form(0);
 }
 else {
 
@@ -134,12 +99,11 @@ else {
   }
   else {
     global $com_lang;
-    echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'leftb');
-    echo nl2br(htmlentities($sql_content, ENT_QUOTES, $com_lang['charset']));
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
+	$data['if']['output_text'] = TRUE;
+	$data['output']['text'] = nl2br(htmlentities($sql_content, ENT_QUOTES, $com_lang['charset']));
   }
 }
+
+echo cs_subtemplate(__FILE__,$data,'database','export');
 
 ?>
