@@ -15,7 +15,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kcmdf} {lang:modul}</td>
-		<td class="leftb">{cat:mod} <!--<input type="hidden" name="cat_mod" value="replays"/>--></td>
+		<td class="leftb">{cat:mod}</td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:gohome} {lang:url}</td>
@@ -27,6 +27,6 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:images} {lang:picture}</td>
-		<td class="leftb">Kein Bild vorhanden</td>
+		<td class="leftb">{cat:pic}</td>
 	</tr>
 </table>
