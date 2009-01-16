@@ -27,6 +27,8 @@ CREATE TABLE {pre}_pictures (
 ALTER TABLE {pre}_access ADD access_updates int(2) NOT NULL default '0';
 ALTER TABLE {pre}_access ADD access_ajax int(2) NOT NULL default '0';
 
+ALTER TABLE {pre}_squads ADD squads_text text;
+
 ALTER TABLE {pre}_boardmods ADD categories_id int(8) NOT NULL default '0';
 CREATE INDEX {pre}_boardmods_categories_id_index ON {pre}_boardmods (categories_id);
 

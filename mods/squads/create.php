@@ -20,7 +20,8 @@ if(isset($_POST['submit'])) {
   $cs_squads['squads_pwd'] = $_POST['squads_pwd'];
   $cs_squads['squads_fightus'] = empty($_POST['squads_fightus']) ? 0 : 1;
   $cs_squads['squads_joinus'] = empty($_POST['squads_joinus']) ? 0 : 1;
-
+  $cs_squads['squads_text'] = $_POST['squads_text'];
+  
   $error = '';
 
   if(!empty($files['picture']['tmp_name']))
@@ -70,6 +71,7 @@ else {
   $cs_squads['squads_pwd'] = '';
   $cs_squads['squads_fightus'] = 0;
   $cs_squads['squads_joinus'] = 0;
+  $cs_squads['squads_text'] = '';
 }
 
 if(!isset($_POST['submit'])) {
@@ -84,6 +86,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 	
 	$data['squads'] = $cs_squads;
 	$data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
+	$data['squads']['abcode'] = cs_abcode_features('squads_text');
 
 	$data['lang']['own_label'] = $cs_lang['own_'.$op_clans['label']];
 	$checked = 'checked="checked"';

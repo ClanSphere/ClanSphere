@@ -33,6 +33,10 @@
   <td class="leftb">{members:status}</td>
  </tr>
  {stop:members}
+ {if:text}
+ <tr>
+  <td class="leftc" colspan="5">{squads:squads_text}</td>
+ </tr>{stop:text}
 </table>
 <br />
 {stop:squads}

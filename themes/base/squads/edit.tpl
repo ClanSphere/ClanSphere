@@ -83,6 +83,10 @@
 	</tr>
 	{stop:advanced}
 	<tr>
+	  <td class="leftc">{icon:kate} {lang:text}</td>
+	  <td class="leftb">{squads:abcode} <textarea name="squads_text" id="squads_text" cols="50" rows="10">{squads:squads_text}</textarea></td>
+	</tr>
+	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
 			<input type="hidden" name="id" value="{squads:id}" />

@@ -29,6 +29,7 @@ if(isset($_POST['submit'])) {
   $cs_squads['squads_picture'] = $_POST['squads_picture'];
   $cs_squads['squads_fightus'] = empty($_POST['squads_fightus']) ? 0 : 1;
   $cs_squads['squads_joinus'] = empty($_POST['squads_joinus']) ? 0 : 1;
+  $cs_squads['squads_text'] = $_POST['squads_text'];
   
   $error = '';
 
@@ -88,8 +89,9 @@ if(isset($_POST['submit'])) {
   }
 }
 else {
-  $cells = 'squads_id, clans_id, games_id, squads_name, squads_order, squads_pwd, squads_picture, squads_own, squads_joinus, squads_fightus';
-  $cs_squads = cs_sql_select(__FILE__,'squads',$cells,"squads_id = '" . $squads_id . "'");
+  $cells  = 'squads_id, clans_id, games_id, squads_name, squads_order, squads_pwd, squads_picture, ';
+  $cells .= 'squads_own, squads_joinus, squads_fightus, squads_text';
+  $cs_squads = cs_sql_select(__FILE__,'squads',$cells,'squads_id = "' . $squads_id . '"');
 }
 if(!isset($_POST['submit'])) {
 	$data['head']['body'] = $cs_lang['errors_here'];
@@ -103,6 +105,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
 	$data['squads'] = $cs_squads;
 	$data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
+	
+	$data['squads']['abcode'] = cs_abcode_features('squads_text');
   
 	$data['lang']['own_label'] = $cs_lang['own_'.$op_clans['label']];
 	$checked = 'checked="checked"';
