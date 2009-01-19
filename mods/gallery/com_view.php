@@ -84,7 +84,8 @@ if(empty($gallery_loop)) {
 	$data['if']['vote'] = (empty($cs_gallery['gallery_vote']) == '1') ? false : true;
     if(!empty($cs_gallery['gallery_vote']) == '1') {
 	if(empty($check_user_voted) && empty($_POST['submit'])) {
-		$var = cs_html_form(1,'com_view','gallery','com_view&amp;where=' . $cs_gallery['gallery_id']);
+		$var = cs_html_form(1,'com_view','gallery','com_view');
+		$var .= cs_html_vote('where', $cs_gallery['gallery_id'], 'hidden');
 		$var .= cs_html_select(1,'voted_answer');
 		$levels = 0;
 		while($levels < 6) {
@@ -249,7 +250,7 @@ if(empty($gallery_loop)) {
 
 	echo cs_subtemplate(__FILE__,$data,'gallery','com_view');
 
-	$where3 = "comments_mod = 'gallery' AND comments_fid = '" . $id . "'";
+	$where3 = "comments_mod = 'gallery' AND comments_fid = \"" . $id . "\"";
 	$count_com = cs_sql_count(__FILE__,'comments',$where3);
 	include_once('mods/comments/functions.php');
 
