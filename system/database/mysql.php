@@ -90,8 +90,12 @@ function cs_sql_option($cs_file, $mod)
   if (empty($options[$mod])) {
     
   	global $cs_db;
-    $filename = 'uploads/cache/op_' . $mod . '.tmp';
-    
+  	global $cs_main;
+  	
+  	if (empty($cs_main)) $cs_main['def_path'] = getcwd();
+  	
+  	$filename = $cs_main['def_path'] . '/uploads/cache/op_' . $mod . '.tmp';
+  	
   	if (!file_exists($filename)) {
 	    $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
 	    $sql_query .= " WHERE options_mod = '" . $mod . "'";
