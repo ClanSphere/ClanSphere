@@ -1,4 +1,4 @@
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb" colspan="2">{lang:mod} - {lang:manage}</td>
 	</tr>
@@ -18,7 +18,7 @@
 <br />
 {head:getmsg}
 
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb">{sort:comments_id} {lang:id}</td>
 		<td class="headb">{sort:users_id} {lang:user}</td>

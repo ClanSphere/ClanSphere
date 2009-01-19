@@ -1,4 +1,4 @@
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb">{lang:mod} - {lang:details}</td>
 	</tr>
@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftc">{icon:personal} {lang:user}</td>
 		<td class="leftb">{com:user}</td>

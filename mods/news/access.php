@@ -9,7 +9,7 @@ $axx_file['summary']	= 1;
 
 $axx_file['center']		= 2;
 $axx_file['report']		= 2;
-$axx_file['com_create']	= 2;
+$axx_file['com_create']	= 1;
 $axx_file['com_edit']	= 2;
 
 $axx_file['picture']	= 3;

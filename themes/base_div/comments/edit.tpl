@@ -1,4 +1,4 @@
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb">{lang:mod} - {lang:head_com_edit}</td>
 	</tr>
@@ -9,7 +9,7 @@
 <br />
 
 {if:preview}
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftb" style="width:150px">
 			{prev:flag} {prev:user}<br />
@@ -30,7 +30,7 @@
 {stop:preview}
 
 <form method="post" name="comments_edit" action="{url:comments_edit}">
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:kate} {lang:text} *<br /><br />
 			{com:smileys}

@@ -1,5 +1,5 @@
 <form method="post" name="{com:form_name}" action="{com:form_url}">
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb">{head:mod} - {lang:head_com_remove}</td>
 	</tr>

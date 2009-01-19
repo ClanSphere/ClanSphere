@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2008 - www.clansphere.net
-// Id: comments.php (Fri Nov 14 19:40:06 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang['mod']			= 'Comments';
 $cs_lang['mod_text']	= 'Adds a discussion function to modules';
@@ -19,8 +19,10 @@ $cs_lang['place']	= 'Location';
 $cs_lang['posts']	= 'Posts';
 $cs_lang['lastcom']	= 'Last edited by %s on %s (Edited %sx)';
 $cs_lang['quote']	= 'Quote';
+$cs_lang['guest']	= '(Guest)';
 
 //Add
+$cs_lang['guestnick'] = 'Guestnick';
 $cs_lang['adv_com']	= 'Create advanced comment';
 $cs_lang['comment']	= 'Comment';
 
@@ -35,6 +37,9 @@ $cs_lang['head_com_remove']	= 'Remove comment';
 $cs_lang['need_user']	= 'Please log in before writing comments.';
 $cs_lang['closed']		= 'This data set does not permit (further) comments';
 $cs_lang['low_axx']		= '- Your access level is too low to complete this action.';
+$cs_lang['no_guestnick'] = '- Es muss ein Gastnick angegeben werden.';
+$cs_lang['short_guestnick'] = '- Your guestnick is too short (min. %d Zeichen).';
+$cs_lang['nick_exists'] = '- Your guestnick is already a registered username.';
 
 //Options
 $cs_lang['show_avatars'] = 'Show avatars';

@@ -5,6 +5,7 @@ UPDATE {pre}_options SET options_value = '35' WHERE options_mod = 'clansphere' A
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('articles','max_navlist','4');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','ajax_navlists','');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','cellspacing','1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_picture', '0');
 
 CREATE TABLE {pre}_updates (
@@ -27,6 +28,7 @@ CREATE TABLE {pre}_pictures (
 ALTER TABLE {pre}_access ADD access_updates int(2) NOT NULL default '0';
 ALTER TABLE {pre}_access ADD access_ajax int(2) NOT NULL default '0';
 
+ALTER TABLE {pre}_comments ADD comments_guestnick varchar(40) NOT NULL default '';
 ALTER TABLE {pre}_squads ADD squads_text text;
 
 ALTER TABLE {pre}_boardmods ADD categories_id int(8) NOT NULL default '0';

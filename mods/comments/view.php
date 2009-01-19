@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2008 - www.clansphere.net
-// Id: view.php (Sat Nov 15 13:35:28 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('comments');
 
@@ -8,11 +8,15 @@ $data = array();
 
 $com_id = $_GET['id'];
 settype($com_id,'integer');
-$select =  'comments_id, users_id, comments_fid, comments_mod, comments_text, comments_time, comments_ip';
+$select =  'comments_id, users_id, comments_fid, comments_mod, comments_text, comments_time, comments_ip, comments_guestnick';
 $cs_com = cs_sql_select(__FILE__,'comments',$select,"comments_id = '" . $com_id . "'");
 
-$cs_user = cs_sql_select(__FILE__,'users','users_id, users_nick, users_active',"users_id ='".$cs_com['users_id']."'",0,0);
-$data['com']['user'] = cs_user($cs_com['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+if(!empty($cs_com['users_id'])) {
+	$cs_user = cs_sql_select(__FILE__,'users','users_id, users_nick, users_active',"users_id ='".$cs_com['users_id']."'",0,0);
+	$data['com']['user'] = cs_user($cs_com['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+} else {
+	$data['com']['user'] = $cs_com['comments_guestnick'] . ' ' . $cs_lang['guest'];
+}
 
 $data['com']['time'] = cs_date('unix',$cs_com['comments_time'],1);
 $data['com']['ip'] = $cs_com['comments_ip'];

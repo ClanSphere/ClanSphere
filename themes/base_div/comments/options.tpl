@@ -1,4 +1,4 @@
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb">{lang:mod} - {lang:options}</td>
  </tr>
@@ -9,10 +9,20 @@
 <br />
 
 <form method="post" action="{url:comments_options}">
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:babelfish} {lang:show_avatars}</td>
-  <td class="leftb"><input type="radio" name="show_avatar" value="1"{selected:show_avatar} />{lang:yes} <input type="radio" name="show_avatar" value="0"{selected:show_avatar_no} />{lang:no}</td>
+  <td class="leftb">
+    <input type="radio" name="show_avatar" value="1" {checked:show_avatar} />{lang:yes}
+    <input type="radio" name="show_avatar" value="0" {checked:show_avatar_no} />{lang:no}
+  </td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:personal} {lang:allow_unreg}</td>
+  <td class="leftb">
+    <input type="radio" name="allow_unreg" value="1" {checked:allow_unreg} />{lang:yes}
+    <input type="radio" name="allow_unreg" value="0" {checked:allow_unreg_no} />{lang:no}
+  </td>
  </tr>
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>

@@ -13,7 +13,7 @@ $axx_file['manage']		= 3;
 $axx_file['remove']		= 5;
 $axx_file['roots']		= 5;
 
-$axx_file['com_create']	= 2;
+$axx_file['com_create']	= 1;
 $axx_file['linkf']	= 2;
 $axx_file['com_edit']		= 2;
 $axx_file['com_remove']	= 5;
