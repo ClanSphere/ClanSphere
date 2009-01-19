@@ -43,5 +43,6 @@ $cs_lang['nick_exists'] = '- Your guestnick is already a registered username.';
 
 //Options
 $cs_lang['show_avatars'] = 'Show avatars';
+$cs_lang['allow_unreg'] = 'Allow visitors to write comments';
 
 ?>
