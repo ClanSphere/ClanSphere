@@ -14,36 +14,37 @@ if (substr(phpversion(), 0, 3) >= '5.1') {
   @date_default_timezone_set('Europe/Berlin');
 }
 
-
 $cs_micro = explode(' ', microtime()); # starting parsetime
 $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 0, 'dir' => 'logs');
 
-require('system/core/functions.php');
-@set_error_handler("php_error");
-
 $install_link = '<a href="install.php">Installation required</a>';
+
 if(file_exists('setup.php')) {
-	require('setup.php');
-	require('system/database/' . $cs_db['type'] . '.php');
-	$cs_db['con'] = cs_sql_connect($cs_db);
+  
+  require('system/core/functions.php');
+  @set_error_handler("php_error");
+  
+  require('setup.php');
+  require('system/database/' . $cs_db['type'] . '.php');
+  $cs_db['con'] = cs_sql_connect($cs_db);
 
-	$cs_main = @cs_sql_option(__FILE__,'clansphere') OR die($install_link . ' or database error');
+  $cs_main = @cs_sql_option(__FILE__,'clansphere') OR die($install_link . ' or database error');
 
-        require('system/core/servervars.php');
-	require('system/output/xhtml_10_old.php');
-	require('system/core/templates.php');
-	require('system/core/content.php');
-	require('system/core/tools.php');
-	require('system/core/account.php');
-	require('system/core/abcode.php');
+  require('system/core/servervars.php');
+  require('system/output/xhtml_10_old.php');
+  require('system/core/templates.php');
+  require('system/core/content.php');
+  require('system/core/tools.php');
+  require('system/core/account.php');
+  require('system/core/abcode.php');
 
-	cs_tasks('system/extensions', 1); # load extensions
-	cs_tasks('system/runstartup'); # load startup files
+  cs_tasks('system/extensions', 1); # load extensions
+  cs_tasks('system/runstartup'); # load startup files
 
-	echo cs_template($cs_micro,$cs_main,$account,'board.htm');
+  echo cs_template($cs_micro,$cs_main,$account,'board.htm');
 }
 else {
-	echo $install_link . ' or missing setup.php';
+  echo $install_link . ' or missing setup.php';
 }
 
 ?>
