@@ -16,7 +16,7 @@ ___________________________________________________________
 -> Added rank feature to boardmods module (fay-pain)
 -> Added security function for server variables to avoid get or post injections in the future (duriel)
 -> Added comment functions to create/edit/remove comments in the same way (fay-pain)
--> Added optional feature that allows users to create comments in all modules (fay-pain)
+-> Added optional feature that allows guets to create comments in all modules (fay-pain)
 -> Added search navlist and articles search as default now (fay-pain)
 -> Added categories access check in articles module (duriel)
 -> Added default user pictures (duriel)
