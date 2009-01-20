@@ -282,7 +282,7 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
       if (!empty($ajaxes)) {
         if (strpos($cs_temp_get,'id="cs_users_navlogin"') === false)
           $cs_temp_get = str_replace(array('{users:navlogin}','{users:navlogin2}','{users:navlogin}3','{users:navlogin4}'),array('<div id="cs_users_navlogin">{users:navlogin}</div>','<div id="cs_users_navlogin2">{users:navlogin2}</div>','<div id="cs_users_navlogin3">{users:navlogin3}</div>','<div id="cs_users_navlogin4">{users:navlogin4}</div>'),$cs_temp_get);
-        $spans = array('count_navday','count_navone','count_navall','count_navmon');
+        $spans = array('count_navday','count_navone','count_navall','count_navmon','func_parse','func_queries');
         foreach ($ajaxes as $ajax) {
           $placeholder = '{'.str_replace('_',':',$ajax).'}';
           if (strpos($cs_temp_get,'id="cs_'.$ajax.'"') === false) {

@@ -65,6 +65,7 @@ function cs_ajax_start() {
 
 var anch = "__START__";
 var done = 1;
+var debug = 0;
 var away;
 var lastmove;
 var mod_rewrite;
@@ -80,6 +81,7 @@ function initializeAJAX(modrewrite, navinterval) {
     cont = cont.replace(/href=\"([a-zA-Z\/\.\-\_]*)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"");
   document.getElementsByTagName('body')[0].innerHTML = cont;
   lastmove = GetMins();
+  if (window.location.href.indexOf('debug.php') != -1) debug = 1;
   
   window.setInterval("checkanch()",50);
   
@@ -95,6 +97,7 @@ function checkanch() {
   anch_new = window.location.hash;
   if (anch_new == anch) return;
   subanch = (!mod_rewrite) ? anch_new.substr(1) : "params=/" + anch_new.substr(1);
+  if (debug) subanch += '&debug';
   url = anch != "__START__" ? 'content.php?'+ subanch : 'content.php?'+subanch+'&first';
   document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
   
