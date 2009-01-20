@@ -13,8 +13,9 @@ function cs_sql_connect($cs_db) {
 function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
 
 	global $cs_db;
-// Next line is not supported by database server
-// $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
+
+  $row = '*'; // Not supported: $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
+  $sql_where = str_replace('"', '\'', $sql_where);
   
 	$sql_query = 'SELECT COUNT(*) FROM ' . $cs_db['prefix'] . '_' . $sql_table;
 	$sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;

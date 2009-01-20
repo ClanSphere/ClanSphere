@@ -4,14 +4,12 @@
 
 function cs_sql_connect($cs_db) {
 
-    if(!extension_loaded('mssql')) {
-        cs_error_sql(__FILE__, 'cs_sql_connect', 'mssql extension must be activated!',1);
-    }
-	$connect = @mssql_connect($cs_db['place'],$cs_db['user'],$cs_db['pwd']) OR 
-		cs_error_sql(__FILE__, 'mssql_connect', mssql_get_last_message(),1);
+  if (!extension_loaded('mssql')) {
+    cs_error_sql(__FILE__, 'cs_sql_connect', 'mssql extension must be activated!', 1);
+  }
+	$connect = @mssql_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd']) or cs_error_sql(__FILE__, 'mssql_connect', mssql_get_last_message(), 1);
 
-	mssql_select_db($cs_db['name']) OR 
-		cs_error_sql(__FILE__, 'mssql_select_db', mssql_get_last_message(),1);
+	mssql_select_db($cs_db['name']) or cs_error_sql(__FILE__, 'mssql_select_db', mssql_get_last_message(), 1);
 	return $connect;
 }
 
@@ -19,6 +17,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
 
 	global $cs_db;
   $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
+  $sql_where = str_replace('"', '\'', $sql_where);
   
 	$sql_query = 'SELECT COUNT('.$row.') FROM ' . $cs_db['prefix'] . '_' . $sql_table;
 	$sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
