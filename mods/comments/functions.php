@@ -219,10 +219,6 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
 				if(!empty($search_nick)) {
 					$error .= $cs_lang['nick_exists'] . cs_html_br(1);
 				}
-				$search_nick = strpos($guestnick, '&#9829;');
-				if(!empty($search_nick)) {
-					$error .= $cs_lang['chars_in_nick'] . cs_html_br(1);
-				}
 			}
 			if (!cs_captchacheck($_POST['captcha'])) {
 				$error .= $cs_lang['captcha_false'] . cs_html_br(1);
