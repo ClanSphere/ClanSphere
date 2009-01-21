@@ -29,8 +29,11 @@ if(is_array($birthdays)) {
 	}
 }
 
+$from = 'events evs INNER JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
+$select = 'evs.events_time AS events_time';
 $between = "events_time >= '" . $min . "' AND events_time <= '" . $max . "'";
-$actions = cs_sql_select(__FILE__,'events','events_time',$between,0,0,0);
+$between .= " AND cat.categories_access <= " . $account['access_events'];
+$actions = cs_sql_select(__FILE__,$from,$select,$between,0,0,0);
 
 if (!empty($op_events['show_wars'])) {
   $between = 'wars_date >= \'' . $min . '\' AND wars_date <= \'' . $max . '\'';
