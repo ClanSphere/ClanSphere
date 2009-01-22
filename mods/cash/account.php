@@ -60,7 +60,7 @@ if(isset($_POST['submit'])) {
 }
 
 if(!isset($_POST['submit'])) {
-  $data['table']['body'] = $cs_lang['body_create'];
+  $data['table']['body'] = $cs_lang['body_info'];
 }
 elseif(!empty($error)) {
   $data['table']['body'] = $error;

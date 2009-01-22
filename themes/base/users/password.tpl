@@ -3,7 +3,7 @@
 		<td class="headb">{lang:mod_name} - {lang:password}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{head:bdoy}</td>
+		<td class="leftb">{head:body}</td>
 	</tr>
 </table>
 <br />
