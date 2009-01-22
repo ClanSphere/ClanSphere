@@ -8,7 +8,7 @@ $mod_info['released']	= $cs_main['version_date'];
 $mod_info['creator']	= 'FCKEditor';
 $mod_info['team']		= 'ClanSphere';
 $mod_info['url']		= 'www.clansphere.net';
-$mod_info['text']		= 'Version 2.5';
+$mod_info['text']		= 'Version 2.6.4 beta';
 $mod_info['icon']		= 'package_editors';
 $mod_info['show']		= array('options/roots' => 5);
 $mod_info['categories'] = FALSE;
