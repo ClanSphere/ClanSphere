@@ -25,6 +25,7 @@ ___________________________________________________________
 -> Added the possibility to add automatically created news about a clanwar (duriel)
 -> Added squad text (duriel)
 -> Set httponly flag in cookies [available in PHP 5.2.0 or higher] (Denni)
+-> Updated fckeditor to version 2.6.4 beta (hajo)
 -> Used some more caching to enhance the performance (duriel)
 
 
