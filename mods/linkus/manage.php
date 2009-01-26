@@ -3,67 +3,47 @@
 // $Id$
 
 $cs_lang = cs_translate('linkus');
+$cs_post = cs_post('start,sort');
+$cs_get = cs_get('start,sort');
+$data = array();
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($cs_get['start']) ? 0 : $cs_get['start'];
+if (!empty($cs_post['start']))  $start = $cs_post['start'];
+$sort = empty($cs_get['sort']) ? 2 : $cs_get['sort'];
+if (!empty($cs_post['sort']))  $sort = $cs_post['sort'];
+
 $cs_sort[1] = 'linkus_name DESC';
 $cs_sort[2] = 'linkus_name ASC';  
 $cs_sort[3] = 'linkus_banner DESC';
 $cs_sort[4] = 'linkus_banner ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $linkus_count = cs_sql_count(__FILE__,'linkus');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,3);
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo cs_icon('editpaste') . cs_link($cs_lang['new_banner'],'linkus','create');
-echo cs_html_roco(2,'leftb');
-echo cs_icon('contents') . $cs_lang['all'] . $linkus_count;
-echo cs_html_roco(2,'rightb');
-echo cs_pages('linkus','manage',$linkus_count,$start,0,$sort);
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
 
-echo cs_getmsg();
+$data['head']['count'] = $linkus_count;
+$data['head']['pages'] = cs_pages('linkus','manage',$linkus_count,$start,0,$sort);
+$data['head']['getmsg'] = cs_getmsg();
 
-$cs_linkus = cs_sql_select(__FILE__,'linkus','*',0,$order,$start,$account['users_limit']);
-$linkus_loop = count($cs_linkus);
+$data['sort']['name'] = cs_sort('linkus','manage',$start,0,1,$sort);
+$data['sort']['banner'] = cs_sort('linkus','manage',$start,0,3,$sort);
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo cs_sort('linkus','manage',$start,0,1,$sort);
-echo $cs_lang['name'];
-echo cs_html_roco(2,'headb');
-echo cs_sort('linkus','manage',$start,0,3,$sort);
-echo $cs_lang['banner'];
-echo cs_html_roco(2,'headb');
-echo $cs_lang['mass'];
-echo cs_html_roco(4,'headb',0,2);
-echo $cs_lang['options'];
-echo cs_html_roco(0);
+$select = 'linkus_id, linkus_name, linkus_banner';
+$data['linkus'] = cs_sql_select(__FILE__,'linkus',$select,0,$order,$start,$account['users_limit']);
+$linkus_loop = count($data['linkus']);
+
 
 for($run=0; $run<$linkus_loop; $run++) {
 
-	echo cs_html_roco(1,'leftc');
-	echo cs_secure($cs_linkus[$run]['linkus_name']);
-	echo cs_html_roco(2,'leftc');
-        echo cs_secure($cs_linkus[$run]['linkus_banner']);
-        echo cs_html_roco(3,'leftc');
-        $place = 'uploads/linkus/' .$cs_linkus[$run]['linkus_banner'];
-        $mass = getimagesize($place);
-        echo cs_secure($mass[0] .' x '. $mass[1]);
-	echo cs_html_roco(4,'leftc');
-        $img_edit = cs_icon('edit');
-	echo cs_link($img_edit,'linkus','edit','id=' . $cs_linkus[$run]['linkus_id'],0,$cs_lang['edit']);
-        echo cs_html_roco(5,'leftc');
-	$img_del = cs_icon('editdelete');
-        echo cs_link($img_del,'linkus','remove','id=' . $cs_linkus[$run]['linkus_id'],0,$cs_lang['remove']);
-	echo cs_html_roco(0);
+	$data['linkus'][$run]['name'] = cs_secure($data['linkus'][$run]['linkus_name']);
+	$data['linkus'][$run]['banner'] = cs_secure($data['linkus'][$run]['linkus_banner']);
+	
+	$place = 'uploads/linkus/' .$data['linkus'][$run]['linkus_banner'];
+	$mass = getimagesize($place);
+	$data['linkus'][$run]['mass'] = cs_secure($mass[0] .' x '. $mass[1]);
+	$data['linkus'][$run]['id'] = $data['linkus'][$run]['linkus_id'];
+
 }
 
-echo cs_html_table(0);
+echo cs_subtemplate(__FILE__,$data,'linkus','manage');
 
 ?>

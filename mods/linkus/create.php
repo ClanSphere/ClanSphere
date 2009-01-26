@@ -18,14 +18,14 @@ if(isset($_POST['submit'])) {
 
 	$error = '';
 	
-	if(empty($cs_linkus['linkus_'])) {
+	if(empty($cs_linkus['linkus_name'])) {
 		$error .= $cs_lang['no_name'] . cs_html_br(1);
 	}
-	if(empty($cs_linkus['linkus_'])) {
+	if(empty($cs_linkus['linkus_url'])) {
 		$error .= $cs_lang['no_url'] . cs_html_br(1);
 	}
 	if(empty($_FILES['symbol']['tmp_name'])) {
-		$error .= $cs_lang['no_symbol'] . cs_html_br(1);
+		$error .= $cs_lang['no_pic'] . cs_html_br(1);
 	}
 	elseif(!empty($_FILES['symbol']['tmp_name'])) {
 		$error .= $cs_lang['ext_error'] . cs_html_br(1);
@@ -60,15 +60,8 @@ if(!isset($_POST['submit'])) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	#echo $cs_lang['mod'] . ' - ' . $cs_lang['head'];
-    echo cs_icon('wp') . $cs_lang['name']. ' *';
-    echo cs_html_input('linkus_name',$linkus_name,'text',200,50);
-    
-    echo cs_icon('gohome') . $cs_lang['url']. ' *';
-    echo cs_html_input('linkus_url',$linkus_url,'text',200,50);
-    
-    echo cs_icon('images') . $cs_lang['icon']. ' *';
-    echo cs_html_input('symbol',$symbol,'file');
+	$data['linkus'] = $cs_linkus;
+
     $matches[1] = $cs_lang['pic_infos'];
 	$return_types = '';
 	foreach($img_filetypes AS $add => $value) {
@@ -84,13 +77,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 }
 else{
 	
-	$linkus_cells = array('linkus_name','linkus_url');
-	$linkus_save = array($linkus_name,$linkus_url);
+	$linkus_cells = array_keys($cs_linkus);
+	$linkus_save = array_values($cs_linkus);
   cs_sql_insert(__FILE__,'linkus',$linkus_cells,$linkus_save);
     
         
 	if(!empty($_FILES['symbol']['tmp_name'])) {
-		$where = "linkus_name = '" . cs_sql_escape($linkus_name) . "'";
+		$where = "linkus_name = '" . cs_sql_escape($cs_linkus['linkus_name']) . "'";
 		$getid = cs_sql_select(__FILE__,'linkus','linkus_id',$where);
 		$filename = $getid['linkus_id'] . '.' . $extension;
 	  cs_upload('linkus',$filename,$_FILES['symbol']['tmp_name']);
