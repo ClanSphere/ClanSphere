@@ -44,7 +44,7 @@ function addEditForm($cs_lang,$edit = 0, $data = 0, $highlight = 0)
 	{
 		echo cs_html_option('-' .$value['squads_name'],'3?' .$value['squads_id']);	 	
 	}	 
-	echo cs_html_option('-->' .$cs_lang['clans'],'');
+	echo cs_html_option('-->' .$cs_lang['clan'],'');
 	$usergroups = cs_sql_select(__FILE__,'clans','clans_id,clans_name',0,0,0,0);
 	foreach($usergroups as $value)
 	{
