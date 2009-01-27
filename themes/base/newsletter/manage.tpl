@@ -3,7 +3,7 @@
 		<td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:editpaste} <a href="{url:newsletter_create}">{lang:new_manage}</a></td>
+		<td class="leftb">{icon:editpaste} <a href="{url:newsletter_create}">{lang:new_newsletter}</a></td>
 		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
 		<td class="rightb">{head:pages}</td>
 	</tr>
@@ -21,9 +21,9 @@
 	</tr>
 	{loop:newsletter}
 	<tr>
-		<td class="leftc">fay-pain</td>
-		<td class="leftc">test</td>
-		<td class="leftc">26.01.2009 um 15:24 Uhr</td>
+		<td class="leftc">{newsletter:user}</td>
+		<td class="leftc">{newsletter:subject}</td>
+		<td class="leftc">{newsletter:date}</td>
 		<td class="centerc"><a href="{url:newsletter_view:id={newsletter:id}}" >{icon:info}</a></td>
 		<td class="centerc"><a href="{url:newsletter_remove:id={newsletter:id}}" >{icon:editdelete}</a></td>
 	</tr>
