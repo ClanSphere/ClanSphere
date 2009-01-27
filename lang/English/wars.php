@@ -33,6 +33,7 @@ $cs_lang['score'] = 'Result';
 $cs_lang['url'] = 'Website';
 $cs_lang['report'] = 'Report';
 $cs_lang['add_player'] = 'Add player';
+$cs_lang['add_news'] = 'Add news';
 
 $cs_lang['no_game'] = '- Select a game';
 $cs_lang['no_cat'] = '- Select a category';
@@ -71,6 +72,15 @@ $cs_lang['max_size'] = 'Maximum size';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['max_navlist'] = 'Dataset in the navlist';
+$cs_lang['news_text'] = 'News text';
+$cs_lang['placeholders'] = 'Placeholders';
+$cs_lang['op_squadurl'] = 'Referral to own squad';
+$cs_lang['op_squadname'] = 'Name of own squad';
+$cs_lang['op_opponentname'] = 'Name of opponent clan';
+$cs_lang['op_score1'] = 'Own score';
+$cs_lang['op_score2'] = 'Opponent score';
+$cs_lang['op_matchurl'] = 'Referral to match';
+$cs_lang['op_catname'] = 'Name of category';
 
 // Picture
 $cs_lang['body_picture']	= 'Manage clanwar pictures here.';
@@ -92,18 +102,11 @@ $cs_lang['new_round'] = 'New Round';
 $cs_lang['map'] = 'Map';
 $cs_lang['result'] = 'Result';
 $cs_lang['short_description'] = 'Short description';
-$cs_lang['errors'] = 'Following errors occorrued:';
-$cs_lang['no_map'] = 'No map';
+$cs_lang['no_map'] = '- You have to select or create a map';
 $cs_lang['edit_round'] = 'Edit a round';
 $cs_lang['rounds_edit'] = 'Edit rounds';
 $cs_lang['delete_round'] = 'Remove round';
-$cs_lang['really_delete'] = 'Really remove round?';
-
-// Remove
-$cs_lang['remove_rly'] = 'Really delete dataset No. %s ?';
-
-// Statusedit
-$cs_lang['edit_status'] = 'Edit status';
+$cs_lang['really_delete'] = 'Really remove round (ID:%s)?';
 
 // View
 $cs_lang['details']	= 'Details';

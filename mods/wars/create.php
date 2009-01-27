@@ -53,33 +53,21 @@ if(isset($_POST['submit'])) {
   
   }
   
-  $error = 0;
-  $errormsg = '';
+  $error = '';
 
-  if(empty($cs_wars['games_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_game'] . cs_html_br(1);
-  }
-  if(empty($cs_wars['categories_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_cat'] . cs_html_br(1);
-  }
-  if(empty($cs_wars['clans_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_enemy'] . cs_html_br(1);
-  }
-  if(empty($cs_wars['squads_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_squad'] . cs_html_br(1);
-  }
-  if(empty($cs_wars['wars_date'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_date'] . cs_html_br(1);
-  }
-  if(empty($cs_wars['wars_status'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_status'] . cs_html_br(1);
-  }
+  if(empty($cs_wars['games_id']))
+    $error .= $cs_lang['no_game'] . cs_html_br(1);
+  if(empty($cs_wars['categories_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
+  if(empty($cs_wars['clans_id']))
+    $error .= $cs_lang['no_enemy'] . cs_html_br(1);
+  if(empty($cs_wars['squads_id']))
+    $error .= $cs_lang['no_squad'] . cs_html_br(1);
+  if(empty($cs_wars['wars_date']))
+    $error .= $cs_lang['no_date'] . cs_html_br(1);
+  if(empty($cs_wars['wars_status']))
+    $error .= $cs_lang['no_status'] . cs_html_br(1);
+
 } else {
   $cs_wars['games_id'] = 0;
   $cs_wars['categories_id'] = 0;
@@ -115,7 +103,7 @@ if(isset($_POST['submit'])) {
 if(!isset($_POST['submit'])) {
   $data['var']['message'] = $cs_lang['body_create'];
 } elseif(!empty($error)) {
-  $data['var']['message'] = $cs_lang['error_occured'] . cs_html_br(1) . $errormsg;
+  $data['var']['message'] = $cs_lang['error_occured'] . cs_html_br(1) . $error;
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {

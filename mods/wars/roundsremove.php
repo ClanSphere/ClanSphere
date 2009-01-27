@@ -3,36 +3,29 @@
 // $Id$
 
 $cs_lang = cs_translate('wars');
+$cs_get = cs_get('id');
+$data = array();
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['delete_round'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftc');
+$rounds_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+$cs_rounds = cs_sql_select(__FILE__,'rounds','wars_id',"rounds_id = '" . $rounds_id ."'");
 
-if (!empty($_POST['submit'])) {
-	
-	$roundid = (int) $_POST['id'];
-	
-	$warid = cs_sql_select(__FILE__,'rounds','wars_id','rounds_id = \''.$roundid.'\'');
-	
-	cs_sql_delete(__FILE__,'rounds',$roundid);
-	
-	cs_redirect($cs_lang['del_true'],'wars','rounds','id='.$warid['wars_id']);
+if (isset($_GET['agree'])) {
 
-} else {
+  cs_sql_delete(__FILE__,'rounds',$rounds_id);
 	
-	echo $cs_lang['really_delete'];
-	echo cs_html_roco(0);
-	echo cs_html_roco(1,'centerb');
-	echo cs_html_form(1,'roundsremove','wars','roundsremove');
-	echo cs_html_vote('id',$_GET['id'],'hidden');
-	echo cs_html_vote('submit',$cs_lang['confirm'],'submit');
-	echo cs_html_form(0);
+  cs_redirect($cs_lang['del_true'],'wars','rounds','id='.$cs_rounds['wars_id']);
 
 }
+if(isset($_GET['cancel']))
+  cs_redirect($cs_lang['del_false'],'wars','rounds','id='.$cs_rounds['wars_id']);
 
-echo cs_html_roco(0);
-echo cs_html_table(0);
+else {
+	
+	$data['head']['body'] = sprintf($cs_lang['really_delete'],$rounds_id);
+	$data['url']['agree'] = cs_url('wars','roundsremove','id=' . $rounds_id . '&amp;agree');
+	$data['url']['cancel'] = cs_url('wars','roundsremove','id=' . $rounds_id . '&amp;cancel');
+
+  echo cs_subtemplate(__FILE__,$data,'wars','remove');
+}
 
 ?>

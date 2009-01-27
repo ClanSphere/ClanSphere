@@ -102,18 +102,11 @@ $cs_lang['new_round'] = 'Neue Runde';
 $cs_lang['map'] = 'Karte';
 $cs_lang['result'] = 'Ergebnis';
 $cs_lang['short_description'] = 'Kurzbeschreibung';
-$cs_lang['errors'] = 'Folgende Fehler sind aufgetreten:';
-$cs_lang['no_map'] = 'Keine Karte angegeben';
+$cs_lang['no_map'] = '- Keine Karte angegeben';
 $cs_lang['edit_round'] = 'Bearbeiten einer Clanwarrunde';
 $cs_lang['rounds_edit'] = 'Runde bearbeiten';
 $cs_lang['delete_round'] = 'Runde entfernen';
-$cs_lang['really_delete'] = 'Soll die Runde wirklich entfernt werden?';
-
-// Remove
-$cs_lang['remove_rly'] = 'Datensatz Nr. %s wirklich l&ouml;schen?';
-
-// Statusedit
-$cs_lang['edit_status'] = 'Status &auml;ndern';
+$cs_lang['really_delete'] = 'Soll die Runde (ID:%s) wirklich entfernt werden?';
 
 // View
 $cs_lang['details']	= 'Details';
