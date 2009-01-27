@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('wars');
 
+$wars['if']['squadmember'] = FALSE;
+
 $wars_id = empty($_REQUEST['where']) ? (int) $_GET['id'] : (int) $_REQUEST['where'];
 $cells  = 'games_id, categories_id, clans_id, wars_opponents, squads_id, wars_status, wars_players1, wars_players2, ';
 $cells .= 'wars_score1, wars_score2, wars_url, wars_pictures, wars_report, wars_date, wars_status, wars_close';
@@ -112,7 +114,7 @@ if(!empty($wars['rounds'])) {
 } else {
   $wars['rounds'] = '';
 }
-echo cs_subtemplate(__FILE__,$wars,'wars','view');
+
 
 if ($wars_status == 'upcoming') {
 	
@@ -123,65 +125,81 @@ if ($wars_status == 'upcoming') {
 	
 	if (!empty($squadmember) OR $wars_access >= 3) {
 	
-		echo cs_html_br(1);
-		echo cs_html_table(1,'forum',1);
-		echo cs_html_roco(1,'headb',0,3);
-		echo $cs_lang['players'];
-		echo cs_html_roco(0);
-		
-		echo cs_html_roco(1,'leftc');
-		echo $cs_lang['player'];
-		echo cs_html_roco(2,'leftc');
-		echo $cs_lang['plays'];
-		echo cs_html_roco(3,'leftc');
-		echo $cs_lang['date'];
-		echo cs_html_roco(0);
+		$wars['if']['squadmember'] = TRUE;
+		$wars['if']['no_players'] = FALSE;
+		$wars['if']['status'] = FALSE;
 		
 		$tables = 'players ply INNER JOIN {pre}_users usr ON ply.users_id = usr.users_id';
 		$cells = 'ply.users_id AS users_id, ply.players_status AS players_status, '
 				.'ply.players_time AS players_time, usr.users_nick AS users_nick, usr.users_active AS users_active';
 		
-		$players = cs_sql_select(__FILE__,$tables,$cells,'ply.wars_id = \''.$wars_id.'\'','ply.players_status DESC',0,0);
+		$nplayers = cs_sql_select(__FILE__,$tables,$cells,'ply.wars_id = \''.$wars_id.'\'','ply.players_status DESC',0,0);
 		
-		if (empty($players)) {
-			echo cs_html_roco(1,'leftb',0,3);
-			echo $cs_lang['no_players'];
-			echo cs_html_roco(0);
+		if (empty($nplayers)) {
+			$wars['if']['no_players'] = TRUE;
+			$wars['nplayers'] = array();
 		} else {
 			$in_list = 0;
+			$pl = 0;
+			foreach ($nplayers AS $player) {
 			
-			foreach ($players AS $player) {
-				
-				echo cs_html_roco(1,'leftb');
-				echo cs_user($player['users_id'],$player['users_nick'], $player['users_active']);
-				echo cs_html_roco(2,'leftb');
-				echo $cs_lang[$player['players_status']];
-				echo cs_html_roco(3,'leftb');
-				echo cs_date('unix',$player['players_time'],1);
-				echo cs_html_roco(0);
+				$wars['nplayers'][$pl]['user'] = cs_user($player['users_id'],$player['users_nick'],$player['users_active']);
+				$wars['nplayers'][$pl]['status'] = $cs_lang[$player['players_status']];
+				$wars['nplayers'][$pl]['date'] = cs_date('unix',$player['players_time'],1);
 				
 				if ($player['users_id'] == $account['users_id']) {
 					$in_list = 1;
 				}
+				$pl++;
 			}
 		}
 	
 		if (!empty($squadmember)) {
-			echo cs_html_roco(1,'centerc',0,3);
-			
-			if (empty($in_list)) {
-				echo cs_link($cs_lang['join_war'],'wars','join','id='.$wars_id);
-			} else {
-				echo cs_link($cs_lang['edit_status'],'wars','statusedit','id='.$wars_id);
-			}
-
-			echo cs_html_roco(0);
-		}
 		
-		echo cs_html_table(0);
-	}
+			$wars['if']['status'] = TRUE;
+
+			if(!isset($_POST['status'])) {
+				$condition = 'users_id = \''.$account['users_id'].'\' AND wars_id = \''.$wars_id.'\'';
+				$select = cs_sql_select(__FILE__,'players','players_id, players_status',$condition);
 	
+				$wars['status']['yes'] = '';
+				$wars['status']['maybe'] = '';
+				$wars['status']['no'] = '';
+				$sel = 'selected="selected"';
+	
+				if($select['players_status'] == 'yes')
+					$wars['status']['yes'] = $sel;
+				if($select['players_status'] == 'maybe')
+					$wars['status']['maybe'] = $sel;
+				if($select['players_status'] == 'no')
+					$wars['status']['no'] = $sel;		
+
+				$wars['status']['players_id'] = $select['players_id'];
+				$wars['status']['wars_id'] = $wars_id;
+				$wars['lang']['submit'] = empty($in_list) ? $cs_lang['confirm'] : $cs_lang['edit'];
+			} 
+			else {
+				$players_id = (int) $_POST['players_id'];
+				$wars_id = (int) $_POST['wars_id'];
+				$status = $_POST['players_status'];
+				$time = cs_time();
+				
+				if(empty($in_list)) {
+					$cells = array('wars_id','users_id','players_status','players_time');
+					$values = array($wars_id,$account['users_id'],$status,$time);
+				  cs_sql_insert(__FILE__,'players',$cells,$values);
+				} else {
+					$cells = array('players_status','players_time');
+					$values = array($status,$time);
+				  cs_sql_update(__FILE__,'players',$cells,$values,$players_id);
+				}
+			  cs_redirect($cs_lang['success'],'wars','view','id='.$wars_id);
+			}
+		}
+	}
 }
+
+echo cs_subtemplate(__FILE__,$wars,'wars','view');
 
 $where_com = "comments_mod = 'wars' AND comments_fid = '" . $wars_id . "'";
 $count_com = cs_sql_count(__FILE__,'comments',$where_com);

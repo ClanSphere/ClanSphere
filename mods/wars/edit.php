@@ -3,16 +3,15 @@
 // $Id$
 
 $cs_lang = cs_translate('wars');
+$cs_post = cs_post('id');
+$cs_get = cs_get('id');
+$data = array();
 
 require_once('mods/categories/functions.php');
 
-$wars_id = (int)$_REQUEST['id'];
+$wars_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $wars_id = $cs_post['id'];
 
-echo cs_html_table(1, 'forum', 1);
-echo cs_html_roco(1, 'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['edit'];
-echo cs_html_roco(0);
-echo cs_html_roco(1, 'leftb');
 
 if (isset($_POST['submit'])) {
 
@@ -72,47 +71,30 @@ if (isset($_POST['submit'])) {
     }
   }
   
-  $error = 0;
-  $errormsg = '';
+  $error = '';
   
-  if (empty($cs_wars['games_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_game'] . cs_html_br(1);
-  }
-  if (empty($cs_wars['categories_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_cat'] . cs_html_br(1);
-  }
-  if (empty($cs_wars['clans_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_enemy'] . cs_html_br(1);
-  }
-  if (empty($cs_wars['squads_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_squad'] . cs_html_br(1);
-  }
-  if (empty($cs_wars['wars_date'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_date'] . cs_html_br(1);
-  }
-  if (empty($cs_wars['wars_status'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_status'] . cs_html_br(1);
-  }
+  if (empty($cs_wars['games_id']))
+    $error .= $cs_lang['no_game'] . cs_html_br(1);
+  if (empty($cs_wars['categories_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
+  if (empty($cs_wars['clans_id']))
+    $error .= $cs_lang['no_enemy'] . cs_html_br(1);
+  if (empty($cs_wars['squads_id']))
+    $error .= $cs_lang['no_squad'] . cs_html_br(1);
+  if (empty($cs_wars['wars_date']))
+    $error .= $cs_lang['no_date'] . cs_html_br(1);
+  if (empty($cs_wars['wars_status']))
+    $error .= $cs_lang['no_status'] . cs_html_br(1);
+
 } else {
   $cells = 'games_id, clans_id, squads_id, wars_date, wars_status, wars_url, wars_report, ';
   $cells .= 'wars_score1, wars_score2, wars_players1, wars_players2, wars_opponents';
   $cs_wars = cs_sql_select(__FILE__, 'wars', 'categories_id, ' . $cells, "wars_id = '" . $wars_id . "'");
 }
-if (!isset($_POST['submit'])) {
-  echo $cs_lang['errors_here'];
-} elseif (!empty($error)) {
-  echo $errormsg;
-}
-
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+if (!isset($_POST['submit']))
+ 	$data['head']['body'] = $cs_lang['errors_here'];
+elseif (!empty($error))
+ 	$data['head']['body'] = $error;
 
 if (!empty($error) or !isset($_POST['submit'])) {
   $tables = 'members mrs INNER JOIN {pre}_users usr ON mrs.users_id = usr.users_id ';
@@ -148,128 +130,56 @@ if (!empty($error) or !isset($_POST['submit'])) {
     }
   }
   
-  echo cs_html_form(1, 'wars_edit', 'wars', 'edit');
-  echo cs_html_table(1, 'forum', 1);
+  	$data['wars'] = $cs_wars;
+
+	$cs_games = cs_sql_select(__FILE__, 'games', 'games_name,games_id', 0, 'games_name', 0, 0);
+	$games_count = count($cs_games);
+	for ($run = 0; $run < $games_count; $run++) {
+		$sel = $cs_games[$run]['games_id'] == $cs_wars['games_id'] ? 1 : 0;
+		$data['games'][$run]['choose'] = cs_html_option($cs_games[$run]['games_name'], $cs_games[$run]['games_id'], $sel);
+	}
+	$url = 'uploads/games/' . $cs_wars['games_id'] . '.gif';
+	$data['wars']['game_img'] = cs_html_img($url, 0, 0, 'id="game_1"');
   
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('package_games') . $cs_lang['game'] . ' *';
-  echo cs_html_roco(2, 'leftb');
-  echo cs_html_select(1, 'games_id', "onchange=\"cs_gamechoose(this.form)\"");
-  echo cs_html_option('----', 0, 0);
-  $cs_games = cs_sql_select(__FILE__, 'games', 'games_name,games_id', 0, 'games_name', 0, 0);
-  $games_count = count($cs_games);
-  for ($run = 0; $run < $games_count; $run++) {
-    $sel = $cs_games[$run]['games_id'] == $cs_wars['games_id'] ? 1 : 0;
-    echo cs_html_option($cs_games[$run]['games_name'], $cs_games[$run]['games_id'], $sel);
-  }
-  echo cs_html_select(0) . ' ';
-  $url = 'uploads/games/' . $cs_wars['games_id'] . '.gif';
-  echo cs_html_img($url, 0, 0, 'id="game_1"');
-  echo cs_html_roco(0);
+	$data['wars']['category_sel'] = cs_categories_dropdown('wars', $cs_wars['categories_id']);
   
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('folder_yellow') . $cs_lang['category'] . ' *';
-  echo cs_html_roco(2, 'leftb');
-  echo cs_categories_dropdown('wars', $cs_wars['categories_id']);
-  echo cs_html_roco(0);
+	$cid = "clans_id != '1'";
+	$clans_data = cs_sql_select(__FILE__, 'clans', 'clans_name,clans_id', $cid, 'clans_name', 0, 0);
+	$data['wars']['enemy_sel'] = cs_dropdown('clans_id', 'clans_name', $clans_data, $cs_wars['clans_id']);
   
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('kdmconfig') . $cs_lang['enemy'] . ' *';
-  echo cs_html_roco(2, 'leftb');
-  $cid = "clans_id != '1'";
-  $clans_data = cs_sql_select(__FILE__, 'clans', 'clans_name,clans_id', $cid, 'clans_name', 0, 0);
-  echo cs_dropdown('clans_id', 'clans_name', $clans_data, $cs_wars['clans_id']);
-  echo cs_html_br(1);
-  echo $cs_lang['players'] . ':' . cs_html_input('wars_opponents', $cs_wars['wars_opponents'], 'text', 90, 50);
-  echo cs_html_roco(0);
+	$where = 'squads_own = \'1\'';
+	$squads_data = cs_sql_select(__FILE__, 'squads', 'squads_name,squads_id', $where, 'squads_name', 0, 0);
+	$data['wars']['squad_sel'] = cs_dropdown('squads_id', 'squads_name', $squads_data, $cs_wars['squads_id']);
+
   
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('yast_group_add') . $cs_lang['squad'] . ' *';
-  echo cs_html_roco(2, 'leftb');
-  $where = 'squads_own = \'1\'';
-  $squads_data = cs_sql_select(__FILE__, 'squads', 'squads_name,squads_id', $where, 'squads_name', 0, 0);
-  echo cs_dropdown('squads_id', 'squads_name', $squads_data, $cs_wars['squads_id']);
-  echo ' - ' . cs_link($cs_lang['manage'], 'squads', 'manage');
-  echo ' - ' . cs_link($cs_lang['new'], 'squads', 'create');
-  echo cs_html_roco(0);
+	for ($x = 0; $x < $players; $x++) {
+		$data['player'][$x]['x'] = $x + 1;
+		$data['player'][$x]['player_name'] = $cs_players[$x];
+		$data['player'][$x]['user_sel'] = cs_dropdown('playerid' . $x, 'users_nick', $cs_members, 0, 'users_id');
+	}
   
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('kdmconfig') . $cs_lang['players'];
-  echo cs_html_roco(2, 'leftb');
-  echo cs_html_input('wars_players1', $cs_wars['wars_players1'], 'text', 4, 4);
-  echo ' ' . $cs_lang['on'] . ' ';
-  echo cs_html_input('wars_players2', $cs_wars['wars_players2'], 'text', 4, 4);
-  echo cs_html_roco(0);
+	$data['wars']['date_sel'] = cs_dateselect('date', 'unix', $cs_wars['wars_date'], 1995);
   
-  for ($x = 0; $x < $players; $x++) {
-    echo cs_html_roco(1, 'leftc');
-    echo cs_icon('personal') . $cs_lang['players'] . ' ';
-    echo $x + 1;
-    echo cs_html_roco(2, 'leftb');
-    echo cs_html_input('player' . $x, $cs_players[$x], 'text', 35, 25);
-    echo ' - ';
-    echo cs_dropdown('playerid' . $x, 'users_nick', $cs_members, 0, 'users_id');
-    echo ' - ';
-    echo cs_html_vote('playeradd', $cs_lang['add_player'], 'submit');
-    echo cs_html_roco(0);
-  }
-  
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('1day') . $cs_lang['date'] . ' *';
-  echo cs_html_roco(2, 'leftb');
-  echo cs_dateselect('date', 'unix', $cs_wars['wars_date'], 1995);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('demo') . $cs_lang['status'] . ' *';
-  echo cs_html_roco(2, 'leftb');
-  $status = array();
-  $status[0]['wars_status'] = 'upcoming';
-  $status[0]['name'] = $cs_lang['upcoming'];
-  $status[1]['wars_status'] = 'running';
-  $status[1]['name'] = $cs_lang['running'];
-  $status[2]['wars_status'] = 'canceled';
-  $status[2]['name'] = $cs_lang['canceled'];
-  $status[3]['wars_status'] = 'played';
-  $status[3]['name'] = $cs_lang['played'];
-  echo cs_dropdown('wars_status', 'name', $status, $cs_wars['wars_status']);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('smallcal') . $cs_lang['score'];
-  echo cs_html_roco(2, 'leftb');
-  echo cs_html_input('wars_score1', $cs_wars['wars_score1'], 'text', 5, 5);
-  echo ' : ' . cs_html_input('wars_score2', $cs_wars['wars_score2'], 'text', 5, 5);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('gohome') . $cs_lang['url'];
-  echo cs_html_roco(2, 'leftb', 0, 2);
-  echo 'http://' . cs_html_input('wars_url', $cs_wars['wars_url'], 'text', 80, 50);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('kate') . $cs_lang['report'];
-  echo cs_html_br(2);
-  echo cs_abcode_smileys('wars_report');
-  echo cs_html_roco(2, 'leftb');
-  echo cs_abcode_features('wars_report');
-  echo cs_html_textarea('wars_report', $cs_wars['wars_report'], '50', '8');
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1, 'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2, 'leftb');
-  //echo cs_html_vote('players',$players,'hidden');
-  echo !empty($players) ? cs_html_vote('players', $players, 'hidden') : cs_html_vote('players', 1, 'hidden');
-  echo cs_html_vote('id', $wars_id, 'hidden');
-  echo cs_html_vote('submit', $cs_lang['edit'], 'submit');
-  echo cs_html_vote('reset', $cs_lang['reset'], 'reset');
-  echo cs_html_vote('playeradd', $cs_lang['add_player'], 'submit');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
-} else {
+	$status = array();
+	$status[0]['wars_status'] = 'upcoming';
+	$status[0]['name'] = $cs_lang['upcoming'];
+	$status[1]['wars_status'] = 'running';
+	$status[1]['name'] = $cs_lang['running'];
+	$status[2]['wars_status'] = 'canceled';
+	$status[2]['name'] = $cs_lang['canceled'];
+	$status[3]['wars_status'] = 'played';
+	$status[3]['name'] = $cs_lang['played'];
+	$data['wars']['status_dropdown'] = cs_dropdown('wars_status', 'name', $status, $cs_wars['wars_status']);
+
+	$data['abcode']['smileys'] = cs_abcode_smileys('wars_report');
+	$data['abcode']['features'] = cs_abcode_features('wars_report');
+
+	$data['wars']['check_player'] = !empty($players) ? $players : 1;
+	$data['wars']['id'] = $wars_id;
+
+  echo cs_subtemplate(__FILE__,$data,'wars','edit');
+}
+else {
   settype($cs_wars['wars_score1'], 'integer');
   settype($cs_wars['wars_score2'], 'integer');
   
