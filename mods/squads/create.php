@@ -104,7 +104,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 	$games_count = count($cs_games);
 	for($run = 0; $run < $games_count; $run++) {
 		$sel = $cs_games[$run]['games_id'] == $cs_squads['games_id'] ? 1 : 0;
-		$data['squads']['games_sel'] = cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
+		$data['games'][$run]['sel'] = cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
 	}
 	$url = 'uploads/games/' . $cs_squads['games_id'] . '.gif';
 	$data['squads']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');

@@ -18,6 +18,11 @@ $data['if']['advanced'] = FALSE;
 
 $img_filetypes = array('gif','jpg','png');
 
+$cells  = 'squads_id, clans_id, games_id, squads_name, squads_order, squads_pwd, squads_picture, ';
+$cells .= 'squads_own, squads_joinus, squads_fightus, squads_text';
+$cs_squads = cs_sql_select(__FILE__,'squads',$cells,'squads_id = "' . $squads_id . '"');
+
+
 if(isset($_POST['submit'])) {
 
   $cs_squads['clans_id'] = $_POST['clans_id'];
@@ -88,11 +93,7 @@ if(isset($_POST['submit'])) {
     $error .= $cs_lang['squad_exists'] . cs_html_br(1);
   }
 }
-else {
-  $cells  = 'squads_id, clans_id, games_id, squads_name, squads_order, squads_pwd, squads_picture, ';
-  $cells .= 'squads_own, squads_joinus, squads_fightus, squads_text';
-  $cs_squads = cs_sql_select(__FILE__,'squads',$cells,'squads_id = "' . $squads_id . '"');
-}
+
 if(!isset($_POST['submit'])) {
 	$data['head']['body'] = $cs_lang['errors_here'];
 }
@@ -124,7 +125,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 	$games_count = count($cs_games);
 	for($run = 0; $run < $games_count; $run++) {
 		$sel = $cs_games[$run]['games_id'] == $cs_squads['games_id'] ? 1 : 0;
-		$data['squads']['games_sel'] = cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
+		$data['games'][$run]['sel'] = cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
 	}
 	$url = 'uploads/games/' . $cs_squads['games_id'] . '.gif';
 	$data['squads']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');
