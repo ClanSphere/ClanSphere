@@ -6,6 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset={func:charset}" />
 	{clansphere:navmeta}
 	<link href="clansphere.css" rel="stylesheet" type="text/css" />
+	<link href="clansphere_div.css" rel="stylesheet" type="text/css" />
 	<link rel="alternate" type="application/rss+xml" href="../../uploads/rss/news.xml" />
 </head>
 <body>
@@ -13,54 +14,72 @@
 		<span id="errors">{func:errors}</span>
 		<span id="sql">{func:sql}</span>
 	</div>
+	<div id="head">{func:title}</div>
 	<div id="nav-left" style="clear:both">
 		<div class="navhead">Main</div>
 		<ul class="navbodyb">
-			<li><a href="debug.php?mod=news&amp;action=recent">News</a></li>
-			<li><a href="debug.php?mod=gbook">Gbook</a></li>
-			<li><a href="debug.php?mod=board">Board</a></li>
-			<li><a href="debug.php?mod=search">Search</a></li>
+			<li><a href="{url:news_recent}">News</a></li>
+			<li><a href="{url:gbook}">Gbook</a></li>
+			<li><a href="{url:board}">Board</a></li>
+			<li><a href="{url:search}">Search</a></li>
 		</ul><br />
 		<div class="navhead">LAN-Party</div>
     <ul class="navbodyb">
-			<li><a href="debug.php?mod=lanpartys&amp;action=signin&amp;id=1">Anmelden</a></li>
-			<li><a href="debug.php?mod=lanpartys&amp;action=view&amp;id=1">Informationen</a></li>
-			<li><a href="debug.php?mod=languests&amp;action=lanpartys&amp;id=1">Teilnehmer</a></li>
-			<li><a href="debug.php?mod=lanrooms&amp;action=lanpartys&amp;id=1">Sitzplan</a></li>
-			<li><a href="debug.php?mod=lanvotes&amp;action=lanpartys&amp;id=1">Umfragen</a></li>
-			<li><a href="debug.php?mod=members">Team</a></li>
-			<li><a href="debug.php?mod=history">History</a></li>
-			<li><a href="debug.php?mod=rules">Rules</a></li>
-			<li><a href="debug.php?mod=links&amp;action=sponsors">Sponsors</a></li>
+			<li><a href="{url:lanpartys_signin:id=1}">Anmelden</a></li>
+			<li><a href="{url:lanpartys_view:id=1}">Informationen</a></li>
+			<li><a href="{url:languests_lanpartys:id=1}">Teilnehmer</a></li>
+			<li><a href="{url:lanrooms_lanpartys:id=1}">Sitzplan</a></li>
+			<li><a href="{url:lanvotes_lanpartys:id=1}">Umfragen</a></li>
+			<li><a href="{url:members_list}">Team</a></li>
+			<li><a href="{url:history_list}">History</a></li>
+			<li><a href="{url:rules_list}">Rules</a></li>
+			<li><a href="{url:links_sponsors}">Sponsors</a></li>
 		</ul><br />
 		<div class="navhead">Service</div>
 		<ul class="navbodyb">
-			<li><a href="debug.php?mod=events&amp;action=calendar">Events</a></li>
-			<li><a href="debug.php?mod=servers">Servers</a></li>
-			<li><a href="debug.php?mod=users">Community</a></li>
-			<li><a href="debug.php?mod=files">Downloads</a></li>
-			<li><a href="debug.php?mod=replays">Replays</a></li>
-			<li><a href="debug.php?mod=links">Links</a></li>
-			<li><a href="debug.php?mod=quotes">Quotes</a></li>
-			<li><a href="debug.php?mod=faq">Faq</a></li>
-			<li><a href="debug.php?mod=articles">Articles</a></li>
-			<li><a href="debug.php?mod=gallery">Gallery</a></li>
+			<li><a href="{url:events_calendar}">Events</a></li>
+			<li><a href="{url:servers_list}">Servers</a></li>
+			<li><a href="{url:users_list}">Community</a></li>
+			<li><a href="{url:files_list}">Downloads</a></li>
+			<li><a href="{url:replays_list}">Replays</a></li>
+			<li><a href="{url:links_list}">Links</a></li>
+			<li><a href="{url:quotes_list}">Quotes</a></li>
+			<li><a href="{url:faq_list}">Faq</a></li>
+			<li><a href="{url:articles_list}">Articles</a></li>
+			<li><a href="{url:gallery_list}">Gallery</a></li>
 		</ul><br />
 		<div class="navhead">Contact</div>
 		<ul class="navbodyb">
-			<li><a href="debug.php?mod=contact&amp;action=mail">Mailus</a></li>
-			<li><a href="debug.php?mod=contact&amp;action=imprint">Imprint</a></li>
-			<li><a href="debug.php?mod=clansphere&amp;action=about">Scriptinfo</a></li>
-		</ul>
+			<li><a href="{url:contact_mail}">Mailus</a></li>
+			<li><a href="{url:contact_imprint}">Imprint</a></li>
+			<li><a href="{url:clansphere_about}">Scriptinfo</a></li>
+		</ul><br />
+		<div class="navhead">Banners</div>
+		<div class="navbodyb">{banners:navlist}</div>
 	</div>
 	<div id="content">{func:show}</div>
 	<div id="nav-right">
 		<div class="navhead2">Login</div>
 		<div class="navbody2b">{users:navlogin}</div><br />
-		<div class="navhead2">Language</div>
-		<div class="navbody2b">{users:navlang2}</div><br />
-		<div class="navhead2">Globals</div>
-		<div class="navbody2b" style="overflow:auto">{clansphere:navglobals}</div>
+		<div class="navhead2">Next LAN-Party</div>
+		<div class="navbody2b">{lanpartys:navnext}</div><br />
+		<div class="navhead2">Next Events</div>
+		<div class="navbody2b">{events:navnext}</div><br />
+		<div class="navhead2">Votes</div>
+		<div class="navbody2b">{votes:navlist}</div><br />
+		<div class="navhead2">Calendar</div>
+		{events:navcal}<br />
+		<div class="navhead2">Counter</div>
+		<div class="navbody2b">
+			<span style="float:right">{count:navone}</span>
+			<a href="{url:count_online}">Online</a><br />
+			<span style="float:right">{count:navday}</span>
+			Heute<br />
+			<span style="float:right">{count:navmon}</span>
+			Monat<br />
+			<span style="float:right">{count:navall}</span>
+			<a href="{url:count_stats}">Gesamt</a>
+		</div>
 	</div>
 	<div id="bottom">{clansphere:navtime} - Load: {func:parse}ms - Queries: {func:queries} - Memory: {func:memory}</div>
 </body>
