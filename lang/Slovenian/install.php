@@ -51,7 +51,7 @@ $cs_lang['head_complete']	= 'Zaključeno';
 $cs_lang['rem_install']	= '- Odstranjene namestitvene datoteke';
 $cs_lang['set_chmod']	= '- Nastavljene pravice za mape (CHMOD)';
 $cs_lang['remove_file'] = 'Prosim odstrani te datoteke ročno:';
-$cs_lang['err_chmod']	= 'Napaka: Prosim nastavi pravice mapam "logs", "system/cache" in "uploads",';
+$cs_lang['err_chmod']	= 'Napaka: Prosim nastavi pravice mapam in "uploads",';
 $cs_lang['err_chmod']	.= ' kot tudi njihove podmape na CHMOD 777';
 
 //$cs_lang['login']	= 'Prijava';

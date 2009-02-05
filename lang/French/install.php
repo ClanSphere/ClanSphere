@@ -36,7 +36,7 @@ $cs_lang['head_complete']	= 'Fin';
 $cs_lang['rem_install']	= '- Suppression des fichiers d\'installation';
 $cs_lang['set_chmod']	= '- Des répertoires reçoivent de nouveaux droits';
 $cs_lang['remove_file'] = 'Supprimer le fichier manuellement :';
-$cs_lang['err_chmod']	= 'Erreur: Changer les accès CHMOD pour "logs", "system/cache" et "uploads",';
+$cs_lang['err_chmod']	= 'Erreur: Changer les accès CHMOD pour "logs" et "uploads",';
 $cs_lang['err_chmod']	.= ' ainsi que les sous-répertoires en CHMOD 777';
 
 $cs_lang['login']	= 'Connexion';

@@ -50,7 +50,7 @@ $cs_lang['head_complete']	= 'Ende';
 $cs_lang['rem_install']	= '- Installations-Dateien werden entfernt';
 $cs_lang['set_chmod']	= '- Verzeichnisse erhalten neue Rechte';
 $cs_lang['remove_file'] = 'Datei bitte manuell entfernen:';
-$cs_lang['err_chmod']	= 'Fehler: Setzen Sie die Rechte der Verzeichnisse "logs", "system/cache" und "uploads",';
+$cs_lang['err_chmod']	= 'Fehler: Setzen Sie die Rechte der Verzeichnisse "logs" und "uploads",';
 $cs_lang['err_chmod']	.= ' sowie deren Unterverzeichnisse, bitte Manuell auf CHMOD 777';
 
 $cs_lang['login']	= 'Login';
