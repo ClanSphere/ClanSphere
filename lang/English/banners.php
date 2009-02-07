@@ -19,6 +19,7 @@ $cs_lang['nopic'] = 'No picture available';
 $cs_lang['no_pic'] = '- Please select a picture';
 $cs_lang['no_name'] = '- A name is required';
 $cs_lang['no_url'] = '- A website is required';
+$cs_lang['no_banners'] = 'no banners added';
 $cs_lang['pic_current']	= 'Current picture';
 $cs_lang['pic_up'] = 'Upload picture';
 $cs_lang['or_img_url'] = 'Or image URL:';
