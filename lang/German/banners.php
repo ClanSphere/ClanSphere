@@ -18,6 +18,7 @@ $cs_lang['nopic'] = 'Kein Bild vorhanden';
 $cs_lang['no_pic'] = '- Es muss ein Bild ausgew&auml;hlt werden';
 $cs_lang['no_name'] = '- Der Name darf nicht Leer sein';
 $cs_lang['no_url'] = '- Es muss eine Webseite angegeben werden';
+$cs_lang['no_banners']	= 'Keine Banner eingestellt';
 $cs_lang['pic_current']	= 'Aktuelles Bild';
 $cs_lang['pic_up'] = 'Bild hochladen';
 $cs_lang['or_img_url'] = 'oder URL angeben:';
