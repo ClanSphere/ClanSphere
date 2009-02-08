@@ -21,8 +21,7 @@ if(empty($cs_articles)) {
 else {
   $run = 0;
   foreach ($cs_articles AS $articles) {
-    $format = ($cs_main['def_tpl'] == 'apple') ? "d.m." : 0;
-    $data['articles'][$run]['articles_time'] = cs_date('unix',$articles['articles_time'],1,1,$format);
+    $data['articles'][$run]['articles_time'] = cs_date('unix',$articles['articles_time'],1,1,0);
     $short = strlen($articles['articles_headline']) <= $figures ? $articles['articles_headline'] : substr($articles['articles_headline'],0,$figures) . '...';
     $data['articles'][$run]['articles_url'] = cs_url('articles','view','id=' . $articles['articles_id']);
     $data['articles'][$run]['articles_short'] = cs_secure($short);
