@@ -47,6 +47,12 @@ a:hover {
 	font-family: Tahoma;
 	letter-spacing: 1px;
 }
+#errors {
+	color:#DD3300;
+}
+#sql {
+	color:#666666;
+}
 
 #nav-left {
   float: left;
