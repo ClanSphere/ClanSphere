@@ -62,9 +62,6 @@ $cs_lang['err_chmod']	.= ' y del todos los subarchivos de estos, manualmente al 
 
 $cs_lang['login']	= 'Login';
 
-$cs_lang['head_convert']	= 'Convertir';
-$cs_lang['body_convert']	= 'Datos importados de BXCP 0.2';
-
 $cs_lang['head_license']	= 'Licencia';
 $cs_lang['body_license']	= 'Acceptar las Condiciones del Uso';
 
@@ -77,9 +74,9 @@ $cs_lang['head_settings']	= 'Cofiguración';
 $cs_lang['body_settings']	= 'Crear el Setup Archivo (setup.php) para el Portal';
 
 $cs_lang['hash'] = 'Encriptación';
-$cs_lang['hash_info'] = 'Sha1 Recomendado, Si hace un Update de BXCP 0.2 -> Use Md5!';
+$cs_lang['hash_info'] = 'Sha1 Recomendado, Si hace un Update de BXCP -> Use Md5!';
 $cs_lang['type'] = 'Servidor del Banco de Datos';
-$cs_lang['type_info'] = 'Si hace un Update de BXCP 0.2 -> Use MySQL (mysql)!';
+$cs_lang['type_info'] = 'Si hace un Update de BXCP -> Use MySQL (mysql)!';
 $cs_lang['place'] = 'Lugar del Banco de Datos';
 $cs_lang['place_info'] = 'Incriba IP, DNS, o nada si usa un UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'Para SQLite protegido, incriba el Nombre de la senda';
@@ -116,7 +113,6 @@ $cs_lang['short_nick'] = '- El Nick es mui corto (min. 4)';
 $cs_lang['short_pwd'] = '- La Contrase&ntilde;a es mui corta (min. 4)';
 $cs_lang['email_false'] = '- La E-Mail no es valida';
 
-$cs_lang['rescue']	= 'Convertir los Datos de BXCP 0.2';
 $cs_lang['user_pwd']	= 'Use Nick "admin" y Contrase&ntilde;a "admin" para el Primer Login';
 
 $cs_lang['db_error'] = 'Error del Banco de Datos';
@@ -152,19 +148,4 @@ $cs_lang['employees'] = 'Empleado';
 $cs_lang['teammates'] = 'Compa&ntilde;ero de Equipo';
 $cs_lang['classmates'] = 'Compa&ntilde;ero de Clase';
 
-// Convert
-
-$cs_lang['convert_from_other_system']	= 'Convertir los Datos de otro Sistema';
-$cs_lang['convert_head']	= 'Convertir';
-$cs_lang['convert_body']	= 'Salvar Datos del Sistema curriente';
-$cs_lang['convert_done']	= 'Instrucciones acabadas';
-$cs_lang['directory']	= 'Archivador';
-$cs_lang['old_pre']	= 'Prefix de las Tablas';
-$cs_lang['run']	= 'Arrancar';
-$cs_lang['error_same_pre']	= '- El Prefix viejo no puede ser el mismo que el de la instalación actual';
-$cs_lang['error_no_dir']	= '- Tiene que escojer un archivador para hacer las istucciones';
-
-
-
 ?>
-

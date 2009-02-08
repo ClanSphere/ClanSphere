@@ -41,9 +41,6 @@ $cs_lang['err_chmod']	.= ' ainsi que les sous-répertoires en CHMOD 777';
 
 $cs_lang['login']	= 'Connexion';
 
-$cs_lang['head_convert']	= 'Convertir';
-$cs_lang['body_convert']	= 'Importer les données du BXCP 0.2';
-
 $cs_lang['head_license']	= 'Licence';
 $cs_lang['body_license']	= 'Accepter les conditions d\'utilisation ';
 
@@ -56,9 +53,9 @@ $cs_lang['head_settings']	= 'Configuration';
 $cs_lang['body_settings']	= 'Mise en place du fichier Setup pour le portail';
 
 $cs_lang['hash'] = 'Cryptage';
-$cs_lang['hash_info'] = 'Cryptage Sha1 recommandé, utiliser le cryptage MD5 si vous faites une mise à jour du BXCP 0.2!';
+$cs_lang['hash_info'] = 'Cryptage Sha1 recommandé, utiliser le cryptage MD5 si vous faites une mise à jour du BXCP!';
 $cs_lang['type'] = 'Serveur banque de données';
-$cs_lang['type_info'] = 'Utilisez MySQL (mysql) pour une mise à jour du BXCP 0.2!';
+$cs_lang['type_info'] = 'Utilisez MySQL (mysql) pour une mise à jour du BXCP!';
 $cs_lang['place'] = 'Chemin de la banque de donnée';
 $cs_lang['place_info'] = 'Indication d\'une IP, de DNS, ou non avec le domain UNIX Socket';
 $cs_lang['sqlite_info'] = 'Indiquer le chemin protégé pour les fichiers si vous utilisez SQLite';
@@ -95,7 +92,6 @@ $cs_lang['short_nick'] = '- Le pseudo doit contenir au moins 4 caractères';
 $cs_lang['short_pwd'] = '- Le mot de passe doit contenir au moins 4 caractères';
 $cs_lang['email_false'] = '- Adresse E-Mail invalide';
 
-$cs_lang['rescue']	= 'Convertir les données BXCP 0.2';
 $cs_lang['user_pwd']	= 'Nick "admin" et mot de passe "admin" quand vous vous connecterez la première fois';
 
 $cs_lang['db_error'] = 'Erreur de banque de données';
@@ -130,17 +126,5 @@ $cs_lang['community']	= 'Utilisateurs';
 $cs_lang['member']	= 'Membres';
 $cs_lang['orga']	= 'Organisateurs';
 $cs_lang['admin']	= 'Administrateur du site';
-
-// Convert
-
-$cs_lang['convert_from_other_system']	= 'Conversion des données d\'un autre système';
-$cs_lang['convert_head']	= 'Convertir';
-$cs_lang['convert_body']	= 'Réparer les données actuelles du systèmes';
-$cs_lang['convert_done']	= 'Instruktions saisies';
-$cs_lang['directory']	= 'Répertoire';
-$cs_lang['old_pre']	= 'Préfixe de table';
-$cs_lang['run']	= 'Executer';
-$cs_lang['error_same_pre']	= '- L\ancien préfixe ne peut pas correspondre à celui de la nouvelle installation.';
-$cs_lang['error_no_dir']	= '- Saisissez un répertoire';
 
 ?>

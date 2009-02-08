@@ -67,9 +67,9 @@ $cs_lang['head_settings']	= 'Configuration';
 $cs_lang['body_settings']	= 'Creating a setup file for the portal';
 
 $cs_lang['hash'] = 'Encryption type';
-$cs_lang['hash_info'] = 'If updating from BXCP 0.2 please use MD5!';
+$cs_lang['hash_info'] = 'If updating from BXCP please use MD5!';
 $cs_lang['type'] = 'Database Server';
-$cs_lang['type_info'] = 'If importing from BXCP 0.2 use MySQL (mysql)!';
+$cs_lang['type_info'] = 'If importing from BXCP use MySQL (mysql)!';
 $cs_lang['place'] = 'Location of Database';
 $cs_lang['place_info'] = 'Angabe von IP, DNS, oder nichts bei UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'If SQLite please enter the total path to the database file.';
@@ -138,18 +138,6 @@ $cs_lang['members'] = 'Members';
 $cs_lang['employees'] = 'Employees';
 $cs_lang['teammates'] = 'Teammates';
 $cs_lang['classmates'] = 'Classmates';
-
-// Convert
-
-$cs_lang['convert_from_other_system']	= 'Convert data from other system';
-$cs_lang['convert_head']	= 'Convert';
-$cs_lang['convert_body']	= 'Rescue data from another system';
-$cs_lang['convert_done']	= 'Instructions done';
-$cs_lang['directory']	= 'Directory';
-$cs_lang['old_pre']	= 'Table Prefix';
-$cs_lang['run']	= 'Run';
-$cs_lang['error_same_pre']	= '- The old prefix must not be the one of the new installation';
-$cs_lang['error_no_dir']	= '- You have to select a directory with convert files';
 
 $cs_lang['full_install'] = 'Complete Installation';
 $cs_lang['module_select'] = 'Select Module';

@@ -68,9 +68,9 @@ $cs_lang['head_settings']	= 'Nastavitve';
 $cs_lang['body_settings']	= 'Izdelava nastavitvene datoteke za portal';
 
 $cs_lang['hash'] = 'Način enkripcije';
-$cs_lang['hash_info'] = 'Če nadgradjuješ iz BXCP 0.2 uporabi MD5!';
+$cs_lang['hash_info'] = 'Če nadgradjuješ iz BXCP uporabi MD5!';
 $cs_lang['type'] = 'Server baze podatkov';
-$cs_lang['type_info'] = 'Če nadgradjuješ iz BXCP 0.2 uporabi MySQL (mysql)!';
+$cs_lang['type_info'] = 'Če nadgradjuješ iz BXCP uporabi MySQL (mysql)!';
 $cs_lang['place'] = 'Lokacija serverja';
 $cs_lang['place_info'] = 'IP, DNS od serverja';
 $cs_lang['sqlite_info'] = 'Če uporabiš SQLite prosim vnesi celotno pot do datoteke baze.';
@@ -139,18 +139,6 @@ $cs_lang['members'] = 'Člani';
 $cs_lang['employees'] = 'Delavci';
 $cs_lang['teammates'] = 'Sodelavci';
 $cs_lang['classmates'] = 'Sošolci';
-
-// Convert
-
-$cs_lang['convert_from_other_system']	= 'Pretvori podatke iz drugih sistemov';
-$cs_lang['convert_head']	= 'Pretvarjanje';
-$cs_lang['convert_body']	= 'Reši podatke iz drugih sistemov';
-$cs_lang['convert_done']	= 'Pretvarjanje končano';
-$cs_lang['directory']	= 'Mapa';
-$cs_lang['old_pre']	= 'Star predpis tabel';
-$cs_lang['run']	= 'Zaženi';
-$cs_lang['error_same_pre']	= '- Star predpis tabel ne sme biti kot nov predpis tabel za svežo namestitev';
-$cs_lang['error_no_dir']	= '- Izbrati moraš mapo s datotekami za pretvorbo';
 
 $cs_lang['full_install'] = 'Namestitev končana';
 $cs_lang['module_select'] = 'Izberi modul';

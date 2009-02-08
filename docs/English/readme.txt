@@ -3,7 +3,7 @@ README
 
 Install:
 
-Upload all content of the main directory, excluding 'debug.php' and the directorys 'docs' and 'updates', to your webserver and grant higher directorys enough access to let install.php create an setup.php file during the installation that keeps your database-settings. The directory 'convert' is just needed if you are going to rescue old BXCP 0.2 installations. Next open your browser and point it to the install.php file that gives you further instructions.
+Upload all content of the main directory, excluding 'debug.php' and the directorys 'docs' and 'updates', to your webserver and grant higher directorys enough access to let install.php create an setup.php file during the installation that keeps your database-settings. Next open your browser and point it to the install.php file that gives you further instructions.
 
 
 Update from older ClanSphere Versions:

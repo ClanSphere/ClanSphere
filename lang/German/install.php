@@ -67,9 +67,9 @@ $cs_lang['head_settings']	= 'Konfiguration';
 $cs_lang['body_settings']	= 'Erstellung einer Setup Datei f&uuml;r das Portal';
 
 $cs_lang['hash'] = 'Verschl&uuml;sselung';
-$cs_lang['hash_info'] = 'Sha1 empfohlen, bei Update von BXCP 0.2 Md5 benutzen!';
+$cs_lang['hash_info'] = 'Sha1 empfohlen, bei Update von BXCP Md5 benutzen!';
 $cs_lang['type'] = 'Datenbank Server';
-$cs_lang['type_info'] = 'Bei Update von BXCP 0.2 MySQL (mysql) benutzen!';
+$cs_lang['type_info'] = 'Bei Update von BXCP MySQL (mysql) benutzen!';
 $cs_lang['place'] = 'Ort der Datenbank';
 $cs_lang['place_info'] = 'Angabe von IP, DNS, oder nichts bei UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'Bei SQLite gesch&uuml;tzten Pfad mit Dateinamen angeben';
@@ -138,18 +138,6 @@ $cs_lang['members'] = 'Mitglieder';
 $cs_lang['employees'] = 'Mitarbeiter';
 $cs_lang['teammates'] = 'Mitspieler';
 $cs_lang['classmates'] = 'Mitsch&uuml;ler';
-
-// Convert
-
-$cs_lang['convert_from_other_system']	= 'Daten aus anderem System konvertieren';
-$cs_lang['convert_head']	= 'Konvertieren';
-$cs_lang['convert_body']	= 'Daten aus einem bestehenden System retten';
-$cs_lang['convert_done']	= 'Instruktionen abgearbeitet';
-$cs_lang['directory']	= 'Verzeichnis';
-$cs_lang['old_pre']	= 'Tabellenpr&auml;fix';
-$cs_lang['run']	= 'Ausf&uuml;hren';
-$cs_lang['error_same_pre']	= '- Der alte Pr&auml;fix darf nicht dem der neuen Installation entsprechen';
-$cs_lang['error_no_dir']	= '- Es muss ein Verzeichnis zum Abarbeiten ausgew&auml;hlt werden';
 
 $cs_lang['database_modselect'] = 'Datenbank &raquo; Module ausw&auml;hlen';
 $cs_lang['full_install'] = 'Komplettinstallation';

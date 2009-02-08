@@ -1,5 +1,5 @@
 <?php
-// bx clanportal - www.bxcp.com
+// ClanSphere 2008 - www.clansphere.net
 // $Id$
 
 // FAMFAMFAM Flags - www.famfamfam.com

@@ -70,9 +70,9 @@ $cs_lang['head_settings']	= 'Configuratie';
 $cs_lang['body_settings']	= 'Setup file te maken voor het portaal';
 
 $cs_lang['hash'] = 'Encryptie type';
-$cs_lang['hash_info'] = 'Wanneer je update van BXCP 0.2 gebruik dan MD5!';
+$cs_lang['hash_info'] = 'Wanneer je update van BXCP gebruik dan MD5!';
 $cs_lang['type'] = 'Database Server';
-$cs_lang['type_info'] = 'Wanneer je importeert van BXCP 0.2 gebruik dan MySQL (mysql)!';
+$cs_lang['type_info'] = 'Wanneer je importeert van BXCP gebruik dan MySQL (mysql)!';
 $cs_lang['place'] = 'Locatie van de Database';
 $cs_lang['place_info'] = 'Aanwijze van IP, DNS, of niets bij UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'Wanneer je SQLite gebruikt, geeft dan het hele pad weer naar de database file.';
@@ -141,17 +141,5 @@ $cs_lang['members'] = 'Leden';
 $cs_lang['employees'] = 'Werknemers';
 $cs_lang['teammates'] = 'Teamgenoten';
 $cs_lang['classmates'] = 'Klasgenoten';
-
-// Convert
-
-$cs_lang['convert_from_other_system']	= 'Converteer data van een ander systeem';
-$cs_lang['convert_head']	= 'Converteer';
-$cs_lang['convert_body']	= 'Red data van een ander systeem';
-$cs_lang['convert_done']	= 'Instructies gedaan';
-$cs_lang['directory']	= 'Directorie';
-$cs_lang['old_pre']	= 'Tabel Prefix';
-$cs_lang['run']	= 'Draai';
-$cs_lang['error_same_pre']	= '- De oude prefix mag er geen zijn van de nieuwe installatie';
-$cs_lang['error_no_dir']	= '- Je moet een directorie selecteren met converteer files';
 
 ?>
