@@ -1,1 +1,0 @@
-{lang:no_users}

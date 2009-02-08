@@ -1,1 +1,0 @@
-<div>{data:country} {data:nick} {data:age}</div>

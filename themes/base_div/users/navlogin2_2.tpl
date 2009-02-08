@@ -1,1 +1,0 @@
-<a href="{link:home}">{lang:home}</a> - <a href="{link:messages}">{lang:messages}</a> ({messages:count_new}) - <a href="{link:settings}">{lang:settings}</a> - {link:admin} {link:system} {link:panel} <a href="{link:logout}">{lang:logout}</a>
