@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
   $cs_user['users_readtime'] = $_POST['users_readtime'];
   $cs_user['users_homelimit'] = $_POST['users_homelimit'];
   $cs_user['users_invisible'] = $_POST['users_invisible'];
-  $cs_user['users_ajax'] = $_POST['users_ajax'];
+  $cs_user['users_ajax'] = isset($_POST['users_ajax']) ? $_POST['users_ajax'] : 0;
 
   settype($cs_user['users_limit'],'integer');
   settype($cs_user['users_homelimit'],'integer');
