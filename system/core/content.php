@@ -43,10 +43,10 @@ if(empty($cs_main['def_path'])) {
 $cs_main['php_self'] = pathinfo($_SERVER['PHP_SELF']);
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
 
-if (stristr(PHP_OS, 'WIN')) {
+/*if (stristr(PHP_OS, 'WIN')) {
     $cs_main['php_self']['dirname'] = str_replace($cs_main['php_self']['dirname'], '\\' , '');
     $cs_main['php_self']['dirname'] = str_replace($cs_main['php_self']['dirname'], '\/\/' , '/');
-}
+}*/
 
 $_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES);
 
