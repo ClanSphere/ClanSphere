@@ -969,6 +969,7 @@ CREATE TABLE {pre}_squads (
   squads_own int(2) NOT NULL default '0',
   squads_joinus int(1) NOT NULL default '0',
   squads_fightus int(1) NOT NULL default '0',
+  aquads_text text,
   PRIMARY KEY (squads_id),
   UNIQUE (squads_name)
 ){engine};
