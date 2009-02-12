@@ -41,7 +41,7 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
   $data['squads'][$sq_run]['count_members'] = $members_loop;
 
   if(empty($members_loop)) {
-	$data['members'] = array();
+	$data['squads'][$sq_run]['members'] = array();
   }
 
   $tr = 0;
