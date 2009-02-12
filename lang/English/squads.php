@@ -144,6 +144,17 @@ $cs_lang['nick']	= 'Nickname';
 $cs_lang['page']	= 'Status';
 $cs_lang['since']	= 'Member since';
 
+$cs_lang['ranks']	= 'Rankings';
+$cs_lang['image']	= 'Image';
+
+$cs_lang['awards'] = 'Awards';
+$cs_lang['event'] = 'Event';
+$cs_lang['place'] = 'Rank';
+
+$cs_lang['wars']	= 'Clanwars';
+$cs_lang['enemy']	= 'Enemy';
+$cs_lang['score'] = 'Result';
+
 // Join
 $cs_lang['head_join']	= 'Join';
 $cs_lang['body_join']	= 'Create new membership';

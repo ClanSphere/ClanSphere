@@ -38,4 +38,7 @@ ALTER TABLE {pre}_count ADD INDEX (count_ip,count_id,count_time);
 ALTER TABLE {pre}_captcha ADD INDEX (captcha_ip,captcha_time,captcha_id);
 ALTER TABLE {pre}_comments ADD INDEX (comments_mod,comments_fid,comments_id);
 
+ALTER TABLE {pre}_awards ADD squads_id int(8) NOT NULL DEFAULT '0';
+ALTER TABLE {pre}_ranks ADD squads_id int(8) NOT NULL DEFAULT '0';
+
 ALTER TABLE {pre}_faq DROP faq_time;

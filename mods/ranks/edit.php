@@ -2,6 +2,7 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
+$cs_lang = cs_translate('squads');
 $cs_lang = cs_translate('ranks');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
@@ -13,6 +14,7 @@ if (!empty($cs_post['id']))  $ranks_id = $cs_post['id'];
 if(isset($_POST['submit'])) {
 
   $cs_ranks['ranks_name'] = $_POST['ranks_name'];
+	$cs_ranks['squads_id'] = $_POST['squads_id'];
   $cs_ranks['ranks_url'] = $_POST['ranks_url'];
   $cs_ranks['ranks_img'] = $_POST['ranks_img'];
   $cs_ranks['ranks_code'] = $_POST['ranks_code'];
@@ -37,7 +39,7 @@ if(isset($_POST['submit'])) {
   }
 }
 else {
-  $cells = 'ranks_name, ranks_url, ranks_img, ranks_code';
+  $cells = 'ranks_name, squads_id, ranks_url, ranks_img, ranks_code';
   $cs_ranks = cs_sql_select(__FILE__,'ranks',$cells,"ranks_id = '" . $ranks_id . "'");
 }
 if(!isset($_POST['submit'])) {
@@ -51,6 +53,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
 	$data['ranks'] = $cs_ranks;
 	$data['ranks']['id'] = $ranks_id;
+
+	$data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id',0,'squads_name',0,0);
+	$data['squads'] = cs_dropdownsel($data_squads, $cs_ranks['squads_id'], 'squads_id');
 
   echo cs_subtemplate(__FILE__,$data,'ranks','edit');
 }

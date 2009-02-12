@@ -136,6 +136,7 @@ CREATE TABLE {pre}_awards (
   awards_rank int(8) NOT NULL default '0',
   awards_time varchar(14) NOT NULL default '',
   games_id int(8) NOT NULL default '0',
+  squads_id int(8) NOT NULL default '0',
   awards_event text,
   awards_event_url text,
   PRIMARY KEY (awards_id)
@@ -871,6 +872,7 @@ CREATE TABLE {pre}_ranks (
   ranks_id {serial},
   ranks_name varchar(80) NOT NULL default '',
   ranks_url varchar(80) NOT NULL default '',
+  squads_id int(8) NOT NULL default '0',
   ranks_img varchar(80) NOT NULL default '',
   ranks_code text,
   PRIMARY KEY (ranks_id)

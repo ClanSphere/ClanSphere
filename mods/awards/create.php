@@ -2,6 +2,7 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
+$cs_lang = cs_translate('squads');
 $cs_lang = cs_translate('awards');
 
 $cs_awards['users_id'] = $account['users_id'];
@@ -13,6 +14,8 @@ $cs_awards['games_id'] =  isset($_POST['games_id']) ? $_POST['games_id'] : '';
 $cs_awards['awards_rank'] =  isset($_POST['awards_rank']) ? $_POST['awards_rank'] : '';
 $cs_awards['awards_event'] =  isset($_POST['awards_event']) ? $_POST['awards_event'] : '';
 $cs_awards['awards_event_url'] =  isset($_POST['awards_event_url']) ? $_POST['awards_event_url'] : '';
+
+$cs_awards['squads_id'] =  isset($_POST['squads_id']) ? $_POST['squads_id'] : '';
 
 $cs_games['games_name'] =  isset($_POST['games_name']) ? $_POST['games_name'] : '';
 
@@ -64,6 +67,9 @@ if(!isset($_POST['submit']))
 	
 	$games = cs_sql_select(__FILE__,'games','*',0,1,1,0);
   $data['select']['game'] = cs_dropdown('games_id','games_name',$games,$cs_awards['games_id']);
+
+  $data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id',0,'squads_name',0,0);
+	$data['squads'] = cs_dropdownsel($data_squads, $cs_awards['squads_id'], 'squads_id');
   
   $data['select']['date'] = cs_dateselect('datum','date',$cs_awards['awards_time']);
 	echo cs_subtemplate(__FILE__,$data,'awards','create');

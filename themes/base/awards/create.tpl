@@ -23,6 +23,15 @@
 		<td class="leftb">{select:game} - <input type="text" name="games_name" value="" maxlength="200" size="25"  /></td>
 	</tr>
 	<tr>
+  <td class="leftc">{icon:yast_group_add} {lang:squad}</td>
+  <td class="leftb">
+    <select name="squads_id" >
+     <option value="0">----</option>{loop:squads}
+     <option value="{squads:squads_id}"{squads:selection}>{squads:squads_name}</option>{stop:squads}
+    </select>
+  </td>
+ </tr>
+	<tr>
 		<td class="leftc">{icon:1day} {lang:date} *</td>
 		<td class="leftb">{select:date}</td>
 	</tr>

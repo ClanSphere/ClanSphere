@@ -138,11 +138,22 @@ $cs_lang['def_order'] = 'Standard Priorit&auml;t';
 
 // View
 $cs_lang['head_list']	= 'Liste';
-$cs_lang['body_list'] = 'Teil von %s.';
+$cs_lang['body_list'] = 'Teil von %s';
 $cs_lang['country']	= 'Land';
 $cs_lang['nick']	= 'Nick';
 $cs_lang['page']	= 'Status';
 $cs_lang['since']	= 'Dabei seit';
+
+$cs_lang['ranks']	= 'Ranglisten';
+$cs_lang['image']	= 'Bild';
+
+$cs_lang['awards']	= 'Auszeichnungen';
+$cs_lang['event'] = 'Veranstaltung';
+$cs_lang['place'] = 'Platz';
+
+$cs_lang['wars']	= 'Clanwars';
+$cs_lang['enemy']	= 'Gegner';
+$cs_lang['score'] = 'Ergebnis';
 
 // Join
 $cs_lang['head_join']	= 'Beitreten';
