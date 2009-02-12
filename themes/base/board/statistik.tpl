@@ -36,6 +36,8 @@
   </tr>  
 </table> 
 {stop:listcat}
+<br />
+
 <table style="width:{page:width}" class="forum" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
     <td class="headb" colspan="2">{lang:board_stats}</td>
