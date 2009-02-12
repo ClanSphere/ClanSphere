@@ -2,7 +2,6 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang = cs_translate('squads');
 $cs_lang = cs_translate('ranks');
 $data = array();
 

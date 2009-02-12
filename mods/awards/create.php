@@ -2,7 +2,6 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang = cs_translate('squads');
 $cs_lang = cs_translate('awards');
 
 $cs_awards['users_id'] = $account['users_id'];
@@ -10,12 +9,11 @@ $awards_year = isset($_POST['datum_year']) ? $_POST['datum_year'] : '';
 $awards_month = isset($_POST['datum_month']) ? $_POST['datum_month'] : '';
 $awards_day = isset($_POST['datum_day']) ? $_POST['datum_day'] : '';
 $cs_awards['awards_time'] = $awards_year . '-' . $awards_month . '-' .  $awards_day;
-$cs_awards['games_id'] =  isset($_POST['games_id']) ? $_POST['games_id'] : '';
-$cs_awards['awards_rank'] =  isset($_POST['awards_rank']) ? $_POST['awards_rank'] : '';
+$cs_awards['games_id'] =  isset($_POST['games_id']) ? (int)$_POST['games_id'] : 0;
+$cs_awards['awards_rank'] =  isset($_POST['awards_rank']) ? (int)$_POST['awards_rank'] : 0;
 $cs_awards['awards_event'] =  isset($_POST['awards_event']) ? $_POST['awards_event'] : '';
 $cs_awards['awards_event_url'] =  isset($_POST['awards_event_url']) ? $_POST['awards_event_url'] : '';
-
-$cs_awards['squads_id'] =  isset($_POST['squads_id']) ? $_POST['squads_id'] : '';
+$cs_awards['squads_id'] =  isset($_POST['squads_id']) ? (int)$_POST['squads_id'] : 0;
 
 $cs_games['games_name'] =  isset($_POST['games_name']) ? $_POST['games_name'] : '';
 

@@ -28,5 +28,6 @@ $cs_lang['no_event_url'] = '- Es muss eine Veranstaltungs-Homepage angegeben wer
 $cs_lang['no_game'] = '- Es wurde kein Spiel ausgew&auml;hlt oder angelegt';
 $cs_lang['no_rank'] = '- Es muss eine Platzierung angegeben werden';
 $cs_lang['remove_rly']		= 'Datensatz Nr. %s wirklich entfernen?';
+$cs_lang['squad'] = 'Squad';
 
 ?>

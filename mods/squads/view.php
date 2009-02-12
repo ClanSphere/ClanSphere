@@ -82,7 +82,7 @@ for($run = 0; $run < $data['squad']['members']; $run++) {
 }
 
 $cells = 'ranks_id, ranks_name, ranks_url, ranks_img, ranks_code';
-$data['ranks'] = cs_sql_select(__FILE__,'ranks',$cells, 'squads_id = "' . $squads_id . '"', 'ranks_name', 0, 5);
+$data['ranks'] = cs_sql_select(__FILE__,'ranks',$cells, "squads_id = '" . $squads_id . "'", 'ranks_name', 0, 5);
 $ranks_loop = count($data['ranks']);
 
 for($run=0; $run<$ranks_loop; $run++) {
@@ -104,24 +104,19 @@ $data['awards'] = array();
 $from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id';
 $select = 'aws.awards_id AS awards_id, aws.awards_time AS awards_time, aws.awards_event AS awards_event, aws.awards_event_url AS awards_event_url, aws.awards_rank AS awards_rank';
 
-$cs_awards = cs_sql_select(__FILE__,$from,$select,'squads_id = "' . $squads_id . '"','awards_time',0,5);
-$awards_loop = count($cs_awards);
+$data['awards'] = cs_sql_select(__FILE__,$from,$select,"squads_id = '" . $squads_id . "'",'awards_time',0,5);
+$awards_loop = count($data['awards']);
+
+$medals = array(1 => 'gold', 2 => 'silber', 3 => 'bronze');
 
 
 for($run=0; $run < $awards_loop; $run++) {
 
-	$data['awards'][$run]['awards_id'] = $cs_awards[$run]['awards_id'];
-	$data['awards'][$run]['awards_time'] = cs_date('date',$cs_awards[$run]['awards_time']);
-	$data['awards'][$run]['awards_event'] = cs_secure($cs_awards[$run]['awards_event']);
-	$data['awards'][$run]['awards_event_url'] = $cs_awards[$run]['awards_event_url'];
-	
-	$cs_awards_place = $cs_awards[$run]['awards_rank'];
-	if ($cs_awards_place == 1){
-	$data['awards'][$run]['awards_place'] = cs_html_img("symbols/awards/pokal_gold.png"); } else if ($cs_awards_place == 2) {
-	$data['awards'][$run]['awards_place'] = cs_html_img ("symbols/awards/pokal_silber.png"); } else if ($cs_awards_place == 3) {
-	$data['awards'][$run]['awards_place'] = cs_html_img ("symbols/awards/pokal_bronze.png"); } else if ($cs_awards_place >= 4) {
-	$data['awards'][$run]['awards_place'] = cs_secure($cs_awards[$run]['awards_rank']);
-	}
+	$data['awards'][$run]['awards_id'] = $data['awards'][$run]['awards_id'];
+	$data['awards'][$run]['awards_time'] = cs_date('date',$data['awards'][$run]['awards_time']);
+	$data['awards'][$run]['awards_event'] = cs_secure($data['awards'][$run]['awards_event']);
+	$data['awards'][$run]['awards_event_url'] = $data['awards'][$run]['awards_event_url'];	
+	$data['awards'][$run]['awards_place'] = $data['awards'][$run]['awards_rank'] < 4 ? cs_html_img("symbols/awards/pokal_" . $medals[$data['awards'][$run]['awards_rank']] . ".png" : cs_secure($data['awards'][$run]['awards_rank']);
 	
 }/*
 $data['awards'] = $cs_awards;*/
