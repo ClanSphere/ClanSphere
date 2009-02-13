@@ -53,12 +53,10 @@ a:hover {
 #sql {
 	color:#666666;
 }
-
 #nav-left {
   float: left;
   width: 16%;
 }
-
 #nav-left a {
   border-right: 1px solid #888888;
   border-left: 1px solid #888888;
@@ -66,7 +64,7 @@ a:hover {
   display: block;
   text-decoration: none;
   color: #000000;
-  padding-left: 15px;
+  padding: 2px 0 2px 15px;
   background-color: #FFFFFF;
   font-family: Arial;
   font-size: 13px;
@@ -94,16 +92,18 @@ a:hover {
   float: right;
   width: 20%;
 }
-#nav-right div {
+.navbody { 
   border-left: 1px solid #888888;
   border-right: 1px solid #888888;
   border-bottom: 1px solid #888888;
   background-color: #FFFFFF;
-  padding: 1px 2px 1px 2px;
+  padding:4px 6px 4px 8px;
   color: #000000;
   font-family: Arial;
-  font-size: 13px;
-  
+  font-size: 13px; 
+}
+.navbody td {
+  font-size: 13px; 
 }
 #nav-left div, .navhead {
   margin-top: 20px;
@@ -112,13 +112,11 @@ a:hover {
   border-right: 4px solid #BA1616 !important;
   font-family: Tahoma;
   letter-spacing: 3px;
-  padding: 1px 0 1px 5px !important;
+  padding:4px 6px 4px 8px !important;
   background-color: #FFFFFF;
   font-size: 16px;
 }
-#upcoming { letter-spacing: 1px; }
 #counter span { float: right; }
-
 #ajax_loading {
   position:absolute;
   top:20px;
