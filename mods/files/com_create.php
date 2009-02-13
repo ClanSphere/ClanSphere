@@ -12,6 +12,6 @@ $quote_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 $cs_files = cs_sql_select(__FILE__,'files','files_close',"files_id = '" . $fid . "'");
 
 require_once('mods/comments/functions.php');
-cs_commments_create($fid,'files','view',$quote_id,$cs_lang['mod'],$cs_files['files_close']);
+cs_commments_create($fid,'files','view',$quote_id,$cs_lang['mod'],$cs_files['files_close'],'where');
 
 ?>
