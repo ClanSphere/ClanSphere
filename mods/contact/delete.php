@@ -3,39 +3,27 @@
 // $Id$
 
 $cs_lang = cs_translate('contact');
+$cs_get = cs_get('id');
+$data = array();
 
-$form = 1;
+$contact_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
-if(isset($_POST['agree'])) {
-	$form = 0;
-  $data['if']['agree']  = TRUE;
-  $data['if']['cancel'] = FALSE;
-  $data['if']['form']   = FALSE;
-  $id                   = $_POST['id'];
-  settype($id,'integer');
-  
-  cs_sql_delete(__FILE__,'mail',$id);
-
+if(isset($_GET['agree'])) {
+  cs_sql_delete(__FILE__,'contact',$contact_id);
+  cs_redirect($cs_lang['del_true_join'], 'contact');
 }
 
-if(isset($_POST['cancel'])) {
-	$form = 0;
-  $data['if']['agree']  = FALSE;
-  $data['if']['cancel'] = TRUE;
-  $data['if']['form']   = FALSE;
-}
+elseif(isset($_GET['cancel'])) 	
+  cs_redirect($cs_lang['del_false'], 'contact');
 
-if(!empty($form)) {
-  $data['if']['agree']  = FALSE;
-  $data['if']['cancel'] = FALSE;
-  $data['if']['form']   = TRUE;
-  
-  $id                         = $_GET['id'];
-  settype($id,'integer');
-  $data['remove']['confirm']  = sprintf($cs_lang['really'],$id);
-  $data['remove']['id']       = $id;
+else{
+	
+	$data['head']['body'] = sprintf($cs_lang['del_rly'],$contact_id);
+	$data['url']['agree'] = cs_url('contact','delete','id=' . $contact_id . '&amp;agree');
+	$data['url']['cancel'] = cs_url('contact','delete','id=' . $contact_id . '&amp;cancel');
+	
+  echo cs_subtemplate(__FILE__,$data,'contact','delete');
+	
 }
-
-echo cs_subtemplate(__FILE__,$data,'contact','delete');
 
 ?>
