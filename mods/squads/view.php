@@ -116,10 +116,9 @@ for($run=0; $run < $awards_loop; $run++) {
 	$data['awards'][$run]['awards_time'] = cs_date('date',$data['awards'][$run]['awards_time']);
 	$data['awards'][$run]['awards_event'] = cs_secure($data['awards'][$run]['awards_event']);
 	$data['awards'][$run]['awards_event_url'] = $data['awards'][$run]['awards_event_url'];	
-	$data['awards'][$run]['awards_place'] = $data['awards'][$run]['awards_rank'] < 4 ? cs_html_img("symbols/awards/pokal_" . $medals[$data['awards'][$run]['awards_rank']] . ".png" : cs_secure($data['awards'][$run]['awards_rank']);
+	$data['awards'][$run]['awards_place'] = $data['awards'][$run]['awards_rank'] < 4 ? cs_html_img("symbols/awards/pokal_" . $medals[$data['awards'][$run]['awards_rank']] . ".png") : cs_secure($data['awards'][$run]['awards_rank']);
 	
-}/*
-$data['awards'] = $cs_awards;*/
+}
 
 $data['wars'] = array();
 

@@ -10,14 +10,12 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{game:icon} {squad:squads_name}</td>
+  <td class="headb" colspan="2">{game:icon} {squad:squads_name}</td>
  </tr>
 <tr>
   <td class="leftc">{squad:squads_pic}</td>
- </tr>
- <tr>
-  <td class="leftc">{squad:squads_text}</td>
- </tr>
+	<td class="leftc">{squad:squads_text}</td>
+</tr>
 </table>
 <br />
 
