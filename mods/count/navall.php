@@ -11,5 +11,5 @@ if(!empty($counte_archiv))
 		$archiv = $archiv + $value['count_num'];
 	}
 }    	        
-echo cs_sql_count(__FILE__,'count') + $archiv;
+echo number_format(cs_sql_count(__FILE__,'count') + $archiv,0,',','.');
 ?>

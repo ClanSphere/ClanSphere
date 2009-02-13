@@ -10,6 +10,6 @@ $var = $var - $account['users_timezone'];
 $daystart = empty($account['users_dstime']) ?	$var : $var - 3600;
 
 $where = 'count_time > \'' . $daystart . '\'';
-echo cs_sql_count(__FILE__,'count',$where);
+echo number_format(cs_sql_count(__FILE__,'count',$where),0,',','.');
 
 ?>
