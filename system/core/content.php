@@ -3,11 +3,12 @@
 // $Id$
 
 $mq_gpc = ini_get('magic_quotes_gpc');
+
 if(!empty($mq_gpc)) {
-	function cs_stripslashes($content) {
-	 	$result = is_array($content) ? array_map('cs_stripslashes', $content) : stripslashes($content);
-		return $result;
-	}
+  function cs_stripslashes($content) {
+    $result = is_array($content) ? array_map('cs_stripslashes', $content) : stripslashes($content);
+    return $result;
+  }
   $_GET = cs_stripslashes($_GET);
   $_POST = cs_stripslashes($_POST);
   $_COOKIE = cs_stripslashes($_COOKIE);
@@ -15,29 +16,32 @@ if(!empty($mq_gpc)) {
 }
 
 if(!empty($_GET['params']{1})) {
-    $params = explode('/', $_GET['params']);
-    $_GET['mod'] = $params[1];
-    $_GET['action'] = empty($params[2]) ? 'list' : $params[2];
-    $pm_cnt = count($params);
-    for($i=3;$i<$pm_cnt;$i++) {
-        if(!empty($params[$i]) AND !empty($params[($i+1)]) OR !isset($params[($i+1)])) {
-            $value = isset($params[($i+1)]) ? $params[($i+1)] : 1;
-            $_GET['' . $params[$i] . ''] = $value;
-            $_REQUEST['' . $params[$i] . ''] = $value;
-            $i++;
-        }
+  
+  $params = explode('/', $_GET['params']);
+  $_GET['mod'] = $params[1];
+  $_GET['action'] = empty($params[2]) ? 'list' : $params[2];
+  $pm_cnt = count($params);
+  
+  for($i=3;$i<$pm_cnt;$i++) {
+    if(!empty($params[$i]) AND !empty($params[($i+1)]) OR !isset($params[($i+1)])) {
+      $value = isset($params[($i+1)]) ? $params[($i+1)] : 1;
+      $_GET['' . $params[$i] . ''] = $value;
+      $_REQUEST['' . $params[$i] . ''] = $value;
+      $i++;
     }
-    if($_GET['mod'] == 'explorer') {
-        $_GET['dir'] = substr(stristr($_GET['params'],'dir/'),4);
-    }
+  }
+  if($_GET['mod'] == 'explorer') {
+    $_GET['dir'] = substr(stristr($_GET['params'],'dir/'),4);
+  }
 }
 
 settype($_GET['id'],'integer');
 settype($_REQUEST['id'],'integer');
 settype($_REQUEST['fid'],'integer');
+settype($_GET['cat_id'], 'integer');
 
 if(empty($cs_main['def_path'])) {
-	$cs_main['def_path'] = getcwd();
+  $cs_main['def_path'] = getcwd();
 }
 
 $cs_main['php_self'] = pathinfo($_SERVER['PHP_SELF']);
@@ -56,8 +60,8 @@ if(isset($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template'])
 }
 
 if(!empty($_GET['mod'])) {
-	$cs_main['mod'] = $_GET['mod'];
-	$cs_main['action'] = empty($_GET['action']) ? 'list' : $_GET['action'];  
+  $cs_main['mod'] = $_GET['mod'];
+  $cs_main['action'] = empty($_GET['action']) ? 'list' : $_GET['action'];  
 }
 else {
   $cs_main['mod'] = $cs_main['def_mod'];
@@ -73,7 +77,7 @@ else {
 }
 
 if(!preg_match("=^[_a-z0-9-]+$=i",$cs_main['mod']) OR !preg_match("=^[_a-z0-9-]+$=i",$cs_main['action'])) {
-	$cs_main['mod'] = 'errors';
+  $cs_main['mod'] = 'errors';
   $cs_main['action'] = '404';
 }
 $cs_main['show'] = 'mods/' . $cs_main['mod'] . '/' . $cs_main['action'] . '.php';
