@@ -30,7 +30,7 @@
 	</tr>
 	{loop:squads}
 	<tr>
-		<td class="leftc"><a href="{url:squads_view:{squads:id}}">{squads:name}</a></td>
+		<td class="leftc"><a href="{url:squads_view:id={squads:id}}">{squads:name}</a></td>
 		<td class="leftc">{squads:members_task}</td>
 		{if:no_squad_admin}
 		<td class="leftc" colspan="3">--</td>
