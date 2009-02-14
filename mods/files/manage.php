@@ -94,7 +94,7 @@ for($run=0; $run<$files_loop; $run++)
 		echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
 	}
 	echo cs_html_roco(2,'leftc');
-	echo cs_secure($cs_files[$run]['files_name']);
+	echo cs_link($cs_files[$run]['files_name'],'files','view','where=' .$cs_files[$run]['files_id']);
 	echo cs_html_roco(3,'leftc');
 	$cs_files_user = cs_secure($cs_files[$run]['users_nick']);
 	echo cs_user($cs_files[$run]['users_id'],$cs_files[$run]['users_nick'], $cs_files[$run]['users_active']);

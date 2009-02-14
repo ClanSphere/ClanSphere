@@ -82,8 +82,7 @@ echo cs_html_roco(1,'leftc');
 echo cs_icon('kedit');
 echo $cs_lang['name'];
 echo cs_html_roco(2,'leftb',0,0,'60%'); 
-echo cs_secure($cs_file['files_name']);
-echo cs_datacontrol($file_id);    
+echo cs_secure($cs_file['files_name']);   
 echo cs_html_roco(0);
 
 echo cs_html_roco(1,'leftc');

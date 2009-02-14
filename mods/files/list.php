@@ -33,6 +33,13 @@ for($run=0; $run<$categories_loop; $run++) {
 	echo cs_html_roco(0);
   }
   
+  if(!empty($categories_data[$run]['categories_picture'])) {
+    echo cs_html_roco(1,'leftb');
+	echo cs_html_img('uploads/categories/' . $categories_data[$run]['categories_picture']);
+	echo cs_html_roco(0);
+  }
+  
+  
   $sub_where = "categories_mod = 'files' AND categories_access <= '" . $account['access_files'] . "'";
   $sub_where .= " AND categories_subid = '" . $categories_data[$run]['categories_id'] . "'";
   $sub_data = cs_sql_select(__FILE__,'categories','*',$sub_where,'categories_name',0,0);
