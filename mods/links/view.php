@@ -37,17 +37,17 @@ if ($cs_links['links_stats'] == 'on') {
 echo cs_html_roco(0);
 
 if(!empty($cs_links['links_banner'])) {
-echo cs_html_roco(1,'leftc',0,2);
+echo cs_html_roco(1,'leftc',0,3);
 $place = 'uploads/links/' .$cs_links['links_banner'];
 echo cs_html_img($place);
 echo cs_html_roco(0); 
 }
 
-echo cs_html_roco(1,'headb',0,2);
+echo cs_html_roco(1,'headb',0,3);
 echo $cs_lang['info']; 
 echo cs_html_roco(0);
 
-echo cs_html_roco(1,'leftc',0,2);
+echo cs_html_roco(1,'leftc',0,3);
 echo cs_secure ($cs_links['links_info'],1,1,1,1);
 echo cs_html_roco(0);
 
