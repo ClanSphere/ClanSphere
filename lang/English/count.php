@@ -34,6 +34,7 @@ $cs_lang['yearmon']	    = 'Year - Month';
 $cs_lang['average']	    = 'Daily average';
 $cs_lang['count']	    = 'Number';
 $cs_lang['barp']	    = 'Graph';
+$cs_lang['difference']	= 'Difference';
 $cs_lang['jan']	        = 'January';
 $cs_lang['feb']	        = 'February';
 $cs_lang['mar']	        = 'March';

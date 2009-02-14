@@ -42,9 +42,9 @@ $monthstart = mktime(0,0,0,$tmonth,1,$tyear);
 $count_navmon = cs_sql_count(__FILE__,'count','count_time > ' . $monthstart);
 $count_navday = cs_sql_count(__FILE__,'count','count_time > ' . $daystart);
 
-$data['head']['all']    = $count_navall + $archive;
-$data['head']['month']  = $count_navmon;
-$data['head']['today']  = $count_navday;
+$data['head']['all']  = number_format($count_navall + $archive,0,',','.');
+$data['head']['month']  = number_format($count_navmon,0,',','.');
+$data['head']['today']  = number_format($count_navday,0,',','.');
 
 $mon = array(1 => $cs_lang['jan'], 2 => $cs_lang['feb'], 3 => $cs_lang['mar'], 4 => $cs_lang['apr'],
 5 => $cs_lang['mai'], 6 => $cs_lang['jun'], 7 => $cs_lang['jul'], 8 => $cs_lang['aug'], 9 => $cs_lang['sept'],
@@ -82,16 +82,34 @@ for($run=0; $run < $levels; $run++) {
 }
 $run = 0;
 $count = $data['count'][0]['count'];
-foreach($data['count'] AS $dc) {
-  $data['count'][$run]['barp'] = round($data['count'][$run]['count'] / $comnr_max * 200);
-  $data['count'][$run]['size'] = cs_html_img('symbols/clansphere/bar2.gif', 12, $data['count'][$run]['barp']);
-  $diff = empty($count) ? ($data['count'][$run]['count'] * 100) . '%' : round($data['count'][$run]['count'] / $count * 100 - 100,2) . '%';
-  $data['count'][$run]['diff'] = substr($diff,0,1) == '-' ? $diff : '+' . $diff;
-  $count = $data['count'][$run]['count'];
+foreach($data['count'] AS $dc) {  
+  
+  if ($data['count'][$run]['count'] == 0){
+    $data['count'][$run]['size'] = '-';
+	$data['count'][$run]['diff'] = '-';
+	$data['count'][$run]['barp_start'] = '';
+    $data['count'][$run]['barp_end'] = '';
+  }
+  else {
+    $data['count'][$run]['barp'] = round($data['count'][$run]['count'] / $comnr_max * 200);
+    $data['count'][$run]['size'] = cs_html_img('symbols/clansphere/bar2.gif', 12, $data['count'][$run]['barp']);
+	
+	if ($data['count'][$run-1]['count'] == 0) {
+	  $data['count'][$run]['diff'] = '-';
+	}	
+	else {
+	  $diff = empty($count) ? ($data['count'][$run]['count'] * 100) . '%' : round($data['count'][$run]['count'] / $count * 100 - 100,2) . '%';
+      $data['count'][$run]['diff'] = substr($diff,0,1) == '-' ? $diff : '+ ' . $diff;
+	}
+	
+	$data['count'][$run]['barp_start'] = cs_html_img('symbols/clansphere/bar1.gif',12,2);
+    $data['count'][$run]['barp_end'] = cs_html_img('symbols/clansphere/bar3.gif',12,2);
+  }  
+  
+  $count = $data['count'][$run]['count']; 
   $run++;
 }
-$data['barp']['start'] = cs_html_img('symbols/clansphere/bar1.gif',12,2);
-$data['barp']['end'] = cs_html_img('symbols/clansphere/bar3.gif',12,2);
+
 if ($op_count['view'] == 'stats'){
 	echo cs_subtemplate(__FILE__,$data,'count','stats');
 }
