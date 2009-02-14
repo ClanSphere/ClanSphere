@@ -42,6 +42,8 @@ $cs_lang['no_squad'] = '- Es muss ein Squad ausgew&auml;hlt werden';
 $cs_lang['no_date'] = '- Es muss ein Datum festgelegt werden';
 $cs_lang['no_status'] = '- Der Status darf nicht Leer sein';
 
+$cs_lang['close'] = 'Kommentare sperren';
+
 // Join
 $cs_lang['join'] = 'Teilnehmen';
 $cs_lang['not_upcoming'] = '- Der Clanwar steht nicht bevor';

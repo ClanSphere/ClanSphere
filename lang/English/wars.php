@@ -42,6 +42,8 @@ $cs_lang['no_squad'] = '- No squad';
 $cs_lang['no_date'] = '- Define a date';
 $cs_lang['no_status'] = '- Status must not be empty';
 
+$cs_lang['close'] = 'Close for comments';
+
 // Join
 $cs_lang['join'] = 'Join';
 $cs_lang['not_upcoming'] = '- Clanwar is not upcoming';

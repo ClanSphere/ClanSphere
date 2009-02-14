@@ -72,6 +72,8 @@ $cs_lang['multi'] = 'Multi entry';
 $cs_lang['multi_info'] = 'Respectively + 1 week';
 $cs_lang['multix'] = 'How often additionally?';
 
+$cs_lang['close'] = 'Close for comments';
+
 // options.php
 $cs_lang['extended'] = 'Extended';
 

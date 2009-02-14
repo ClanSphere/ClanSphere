@@ -110,6 +110,10 @@
     <textarea name="wars_report" cols="50" rows="8" id="wars_report" >{value:report}</textarea>
   </td>
  </tr>
+ 	<tr>
+		<td class="leftc">{icon:configure} {lang:more}</td>
+		<td class="leftb"><input type="checkbox" name="replays_close" value="1" {replays:close_check} /> {lang:close}</td>
+	</tr>
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>
   <td class="leftb">

@@ -97,6 +97,10 @@
 		</td>
 	</tr>
 	<tr>
+		<td class="leftc">{icon:configure} {lang:more}</td>
+		<td class="leftb"><input type="checkbox" name="replays_close" value="1" {replays:close_check} /> {lang:close}</td>
+	</tr>
+	<tr>
 		<td class="leftb">{icon:ksysguard} {lang:options}</td>
 		<td class="leftc">
 			<input type="hidden" name="players" value="{wars:check_player}" />

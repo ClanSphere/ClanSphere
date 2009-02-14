@@ -66,6 +66,8 @@ $cs_lang['multi'] = 'Mehrfacheintragung';
 $cs_lang['multi_info'] = 'Jeweils + 1 Woche';
 $cs_lang['multix'] = 'Wie oft zus&auml;tzlich?';
 
+$cs_lang['close'] = 'Kommentare sperren';
+
 // edit.php
 $cs_lang['head_edit']	= 'Bearbeiten';
 $cs_lang['body_edit']	= 'Hier erscheinen etwaige Fehler nach dem Absenden.';
