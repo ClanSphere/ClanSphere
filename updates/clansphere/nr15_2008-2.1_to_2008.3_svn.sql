@@ -42,3 +42,5 @@ ALTER TABLE {pre}_awards ADD squads_id int(8) NOT NULL DEFAULT '0';
 ALTER TABLE {pre}_ranks ADD squads_id int(8) NOT NULL DEFAULT '0';
 
 ALTER TABLE {pre}_faq DROP faq_time;
+
+ALTER TABLE {pre}_events ADD events_close int(2) NOT NULL default '0';

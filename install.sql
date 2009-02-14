@@ -392,6 +392,7 @@ CREATE TABLE {pre}_events (
   events_name varchar(40) NOT NULL default '',
   events_url varchar(80) NOT NULL default '',
   events_time varchar(14) NOT NULL default '',
+  events_close int(2) NOT NULL default '0',
   events_more text,
   PRIMARY KEY (events_id)
 ){engine};
@@ -400,7 +401,6 @@ CREATE TABLE {pre}_faq (
   faq_id {serial},
   users_id int(8) NOT NULL default '0',
   categories_id int(8) NOT NULL default '0',
-  faq_time varchar(14) default NULL,
   faq_question text,
   faq_answer text,
   PRIMARY KEY (faq_id)
