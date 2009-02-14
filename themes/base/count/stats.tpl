@@ -18,8 +18,7 @@
   <td class="leftc">{lang:yearmon}</td>
   <td class="leftc">{lang:average}</td>
   <td class="leftc">{lang:count}</td>
-  <td class="leftc">{lang:barp}</td>
-  <td class="leftc">{lang:difference}</td>
+  <td class="leftc" colspan="2">{lang:barp}</td>
 </tr>
 {loop:count}
 <tr>
