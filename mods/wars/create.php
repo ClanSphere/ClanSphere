@@ -25,6 +25,7 @@ if(isset($_POST['submit'])) {
   $cs_wars['wars_url'] = strpos($_POST['wars_url'],'http://') === false ? $_POST['wars_url'] : substr($_POST['wars_url'],7);
   $cs_wars['wars_report'] = $_POST['wars_report'];
   $cs_wars['wars_date'] = cs_datepost('date','unix');
+  $cs_wars['wars_close'] = isset($_POST['wars_close']) ? $_POST['wars_close'] : 0;
   
   $players = empty($_POST['players']) ? 1 : (int) $_POST['players'];
   
@@ -82,6 +83,7 @@ if(isset($_POST['submit'])) {
   $cs_wars['wars_opponents'] = '';
   $cs_wars['wars_url'] = '';
   $cs_wars['wars_report'] = '';
+  $cs_wars['wars_close'] = 0;
 
   if(!empty($_GET['fightus'])) {
     $fightus_where = "fightus_id = '" . cs_sql_escape($_GET['fightus']) . "'";
@@ -201,6 +203,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['played']['selection'] = $cs_wars['wars_status'] != 'played' ? '' : ' selected="selected"';
 
   $data['img']['game'] = cs_html_img('uploads/games/0.gif',0,0,'id="game_1"');
+
+  $data['value']['close_check'] = empty($cs_wars['wars_close']) ? '' : 'checked="checked"';
 
   echo cs_subtemplate(__FILE__,$data,'wars','create_1');
   

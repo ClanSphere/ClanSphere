@@ -26,8 +26,9 @@ ___________________________________________________________
 -> Added squad text (duriel)
 -> Improved Squad View with text, wars, awards and ranks (GaHero)
 -> Set httponly flag in cookies [available in PHP 5.2.0 or higher] (Denni)
--> Updated fckeditor to version 2.6.4 beta (hajo)
 -> Used some more caching to enhance the performance (duriel)
+-> Updated fckeditor to version 2.6.4 beta (hajo)
+-> Added close for comments feature to wars (hajo)
 
 
 ClanSphere 2008.2.1 >> 2008-09-20
