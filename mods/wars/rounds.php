@@ -106,6 +106,7 @@ if (!empty($error) OR empty($_POST['submit'])) {
 	$count = count($cs_rounds);
 	
 	if (!empty($cs_rounds)) {
+	    $data['if']['rounds'] = true;
 		$img_up = cs_html_img('symbols/clansphere/up_arrow.png');
 		$img_down = cs_html_img('symbols/clansphere/down_arrow.png');
 		$run = 0;
@@ -119,7 +120,11 @@ if (!empty($error) OR empty($_POST['submit'])) {
 			$down= $run2 != $count ? cs_link($img_down,'wars','rounds','id='.$wars_id.'&amp;down='.$round['rounds_id']) : '-';
 			$data['maps'][$run]['up_down'] = $up . ' ' . $down;
 			$run++;
-		}
+		}		
+	}
+	else
+	{
+       $data['if']['rounds'] = false;      
 	}
 	
   echo cs_subtemplate(__FILE__,$data,'wars','rounds');

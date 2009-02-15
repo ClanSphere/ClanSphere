@@ -57,6 +57,7 @@
 
 {get:msg}
 
+{if:rounds}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb">{lang:map}</td>
@@ -73,3 +74,4 @@
 	</tr>
 	{stop:maps}
 </table>
+{stop:rounds}
