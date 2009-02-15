@@ -15,6 +15,7 @@ if(isset($_POST['submit'])) {
   $cs_events['events_url'] = $_POST['events_url'];
   $cs_events['events_more'] = $_POST['events_more'];
   $cs_events['events_time'] = cs_datepost('time','unix');
+  $cs_events['events_close'] = isset($_POST['events_close']) ? $_POST['events_close'] : 0;
   
   if(!empty($cs_main['fckeditor'])) {
     $cs_events['events_more'] = '[html]' . $_POST['events_more'] . '[/html]';
@@ -42,6 +43,7 @@ else {
   $cs_events['events_time'] = cs_time();
   $cs_events['events_url'] = '';
   $cs_events['events_more'] = '';
+  $cs_events['events_close'] = 0;
   $_POST['events_multix'] = '';
   $_POST['events_multi'] = '';
 }
@@ -125,6 +127,12 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   echo cs_icon('7days') . $cs_lang['multix']  . ' *';
   echo cs_html_roco(2,'leftb');
   echo cs_html_input('events_multix',$_POST['events_multix'],'text','2','3');
+  echo cs_html_roco(0);
+  
+  echo cs_html_roco(1,'leftc');
+  echo cs_icon('configure') . $cs_lang['more'];
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_vote('events_close', 1, 'checkbox', $cs_events['events_close']) . ' ' . $cs_lang['close'];
   echo cs_html_roco(0);
 	
   echo cs_html_roco(1,'leftc');

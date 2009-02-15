@@ -23,6 +23,7 @@ if(isset($_POST['submit'])) {
   $cs_events['events_url'] = $_POST['events_url'];
   $cs_events['events_more'] = $_POST['events_more'];
   $cs_events['events_time'] = cs_datepost('time','unix');
+  $cs_events['events_close'] = isset($_POST['events_close']) ? $_POST['events_close'] : 0;
   
   if(!empty($cs_main['fckeditor'])) {
     $cs_events['events_more'] = '[html]' . $_POST['events_more'] . '[/html]';
@@ -46,7 +47,7 @@ if(isset($_POST['submit'])) {
 }
 else {
 
-  $cells = 'events_name, categories_id, events_time, events_url, events_more';
+  $cells = 'events_name, categories_id, events_time, events_url, events_more, events_close';
   $cs_events = cs_sql_select(__FILE__,'events',$cells,"events_id = '" . $events_id . "'");
 }
 if(!isset($_POST['submit'])) {
@@ -105,7 +106,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 	echo cs_fckeditor('events_more',$cs_events['events_more']);
 	echo cs_html_roco(0);
   }
-  
+
+  echo cs_html_roco(1,'leftc');
+  echo cs_icon('configure') . $cs_lang['more'];
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_vote('events_close', 1, 'checkbox', $cs_events['events_close']) . ' ' . $cs_lang['close'];
+  echo cs_html_roco(0);
+
   echo cs_html_roco(1,'leftc');
   echo cs_icon('ksysguard') . $cs_lang['options'];
   echo cs_html_roco(2,'leftb');
