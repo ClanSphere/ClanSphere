@@ -19,11 +19,19 @@
 
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
  <tr>
-  <td class="headb">{sort:name} {lang:name}</td>
   <td class="headb">{sort:date} {lang:date}</td>
+  <td class="headb">{sort:name} {lang:name}</td>
+  <td class="headb">{lang:venue}</td>
  </tr>{loop:events}
  <tr>
-  <td class="leftc"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
-  <td class="leftc">{events:time}</td>
+  <td class="leftc">
+    <span style="float:left; padding-right:8px">
+    <a href="{url:categories_view:id={events:categories_id}}">{events:categories_picture}</a>
+    </span> {events:time}
+  </td>
+  <td class="leftc">
+    <a href="{url:events_view:id={events:events_id}}">{events:events_name}</a>
+  </td>
+  <td class="leftc">{events:events_venue}</td>
  </tr>{stop:events}
 </table>

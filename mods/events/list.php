@@ -13,6 +13,8 @@ $cs_sort[1] = 'events_time DESC';
 $cs_sort[2] = 'events_time ASC';
 $cs_sort[3] = 'events_name DESC';
 $cs_sort[4] = 'events_name ASC';
+$cs_sort[5] = 'categories_name DESC';
+$cs_sort[6] = 'categories_name ASC';
 $sort = empty($_REQUEST['sort']) ? 1 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
@@ -28,12 +30,22 @@ $data['head']['dropdown'] = cs_dropdown('where','categories_name',$categories_da
 $data['sort']['name'] = cs_sort('events','list',$start,$categories_id,3,$sort);
 $data['sort']['date'] = cs_sort('events','list',$start,$categories_id,1,$sort);
 
-$cells = 'events_name, events_time, events_id';
-$data['events'] = cs_sql_select(__FILE__,'events',$cells,$where,$order,$start,$account['users_limit']);
+$cells = 'evs.events_name AS events_name, evs.events_time AS events_time, evs.events_venue AS events_venue, evs.events_id AS events_id, evs.categories_id AS categories_id, cat.categories_name AS categories_name, cat.categories_picture AS categories_picture';
+$tables = 'events evs INNER JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
+$data['events'] = cs_sql_select(__FILE__,$tables,$cells,$where,$order,$start,$account['users_limit']);
 $events_count = count($data['events']);
 
 for ($i = 0; $i < $events_count; $i++) {
+
 	$data['events'][$i]['time'] = cs_date('unix',$data['events'][$i]['events_time'],1);
+
+	if(empty($data['events'][$i]['categories_picture'])) {
+		$data['events'][$i]['categories_picture'] = '';
+	} else {
+		$place = 'uploads/categories/' . $data['events'][$i]['categories_picture'];
+		$size = getimagesize($cs_main['def_path'] . '/' . $place);
+		$data['events'][$i]['categories_picture'] = cs_html_img($place,$size[1],$size[0]);
+	}	
 }
 
 echo cs_subtemplate(__FILE__, $data, 'events');
