@@ -21,7 +21,7 @@ $cs_events = cs_sql_select(__FILE__,'events','*',"events_id = '" . $events_id . 
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'leftc');
 echo cs_icon('cal') . $cs_lang['name'];
-echo cs_html_roco(2,'leftb',0,2);
+echo cs_html_roco(2,'leftb');
 echo cs_secure($cs_events['events_name']);
 echo cs_html_roco(0);
 
@@ -40,8 +40,14 @@ echo cs_date('unix',$cs_events['events_time'],1);
 echo cs_html_roco(0);
 
 echo cs_html_roco(1,'leftc');
+echo cs_icon('starthere') . $cs_lang['venue'];
+echo cs_html_roco(2,'leftb');
+echo cs_secure($cs_events['events_venue']);
+echo cs_html_roco(0);
+
+echo cs_html_roco(1,'leftc');
 echo cs_icon('gohome') . $cs_lang['url'];
-echo cs_html_roco(2,'leftb',0,2);
+echo cs_html_roco(2,'leftb');
 $events_url = cs_secure($cs_events['events_url']);
 echo cs_html_link('http://' . $events_url,$events_url);
 echo cs_html_roco(0);

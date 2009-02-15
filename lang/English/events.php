@@ -68,6 +68,8 @@ $cs_lang['no_name'] = '- Name must be entered';
 $cs_lang['no_cat'] = '- Category must be selected';
 $cs_lang['no_date'] = '- Date must be entered';
 
+$cs_lang['venue'] = 'Venue';
+
 $cs_lang['multi'] = 'Multi entry';
 $cs_lang['multi_info'] = 'Respectively + 1 week';
 $cs_lang['multix'] = 'How often additionally?';

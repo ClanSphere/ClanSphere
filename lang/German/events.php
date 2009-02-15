@@ -62,6 +62,8 @@ $cs_lang['no_name'] = '- Es muss ein Name angegeben werden.';
 $cs_lang['no_cat'] = '- Es muss eine Kategorie ausgew&auml;hlt werden.';
 $cs_lang['no_date'] = '- Es muss ein Datum festgelegt werden.';
 
+$cs_lang['venue'] = 'Treffpunkt (Ort)';
+
 $cs_lang['multi'] = 'Mehrfacheintragung';
 $cs_lang['multi_info'] = 'Jeweils + 1 Woche';
 $cs_lang['multix'] = 'Wie oft zus&auml;tzlich?';

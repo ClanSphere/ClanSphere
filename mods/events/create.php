@@ -12,6 +12,7 @@ if(isset($_POST['submit'])) {
 	cs_categories_create('events',$_POST['categories_name']);
 
   $cs_events['events_name'] = $_POST['events_name'];
+  $cs_events['events_venue'] = $_POST['events_venue'];
   $cs_events['events_url'] = $_POST['events_url'];
   $cs_events['events_more'] = $_POST['events_more'];
   $cs_events['events_time'] = cs_datepost('time','unix');
@@ -41,6 +42,7 @@ else {
   $cs_events['events_name'] = '';
   $cs_events['categories_id'] = 0;
   $cs_events['events_time'] = cs_time();
+  $cs_events['events_venue'] = '';
   $cs_events['events_url'] = '';
   $cs_events['events_more'] = '';
   $cs_events['events_close'] = 0;
@@ -87,6 +89,12 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   echo cs_icon('1day') . $cs_lang['date'] . ' *';
   echo cs_html_roco(2,'leftb');
   echo cs_dateselect('time','unix',$cs_events['events_time'],1995);
+  echo cs_html_roco(0);
+
+  echo cs_html_roco(1,'leftc');
+  echo cs_icon('starthere') . $cs_lang['venue'];
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_input('events_venue',$cs_events['events_venue'],'text',40,40);
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'leftc');
