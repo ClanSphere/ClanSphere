@@ -15,7 +15,10 @@
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="newshead">{news:news_headline}</td>
+  <td class="newshead">
+   <div style="float:left">{news:news_headline}</div>
+   <div style="float:right">{news:categories_name}</div>
+  </td>
  </tr>
  <tr>
   <td class="bottom">
@@ -26,7 +29,7 @@
  <tr>
   <td class="leftb">{if:catimg}
     <img src="{page:path}{news:url_catimg}" style="float:right" alt="" />{stop:catimg}
-    {news:news_readmore}{news:news_text}<br />
+    {news:news_readmore}<a href="{news:news_readmore_link}">{lang:readmore_go}</a>{news:news_text}<br />
 {news:pictures}
   </td>
  </tr>

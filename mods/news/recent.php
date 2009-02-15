@@ -52,7 +52,7 @@ for($run = 0; $run < $news_loop; $run++) {
 
   if(!empty($cs_news[$run]['news_readmore']) and $cs_news[$run]['news_readmore_active'] == '1') {
     $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . cs_html_br(2);
-	$cs_news[$run]['news_readmore'] .= cs_link($cs_lang['readmore_go'], 'news', 'view', 'id=' . $cs_news[$run]['news_id']);
+	$cs_news[$run]['news_readmore_link'] .= cs_url('news', 'view', 'id=' . $cs_news[$run]['news_id']);
 	$cs_news[$run]['news_text'] = '';
   }
   elseif(!empty($cs_news[$run]['news_readmore']) and  $cs_news[$run]['news_readmore_active'] == '0'){
