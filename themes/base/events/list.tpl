@@ -7,12 +7,11 @@
   <td class="rightb">{head:pages}</td>
  </tr>
  <tr>
-  <td class="leftb">{lang:category} 
+  <td class="leftb" colspan="2">{lang:category} 
     <form method="post" name="events_list" action="{url:events_list}">
     {head:dropdown}
     <input name="submit" value="{lang:show}" class="form" type="submit" /></form>
    </td>
-  <td class="rightb"><a href="{url:events_calendar}">{lang:calendar}</a></td>
  </tr>
 </table>
 <br />

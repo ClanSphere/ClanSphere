@@ -15,7 +15,7 @@ $unix = cs_datereal('U',$unix);
 $max = $unix + 86399;
 
 echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,2);
+echo cs_html_roco(1,'headb');
 echo $cs_lang['mod'] . ' - ' . $cs_lang['head_timer'];
 echo cs_html_roco(0);
 echo cs_html_roco(1,'leftb');
@@ -24,8 +24,6 @@ echo cs_html_form(1,'events_timer','events','timer');
 echo cs_dateselect('date','date',cs_datereal('Y-m-d',$unix),2000);
 echo cs_html_vote('submit',$cs_lang['show'],'submit');
 echo cs_html_form(0);
-echo cs_html_roco(2,'rightb');
-echo cs_link($cs_lang['calendar'],'events','calendar');
 echo cs_html_roco(0);
 echo cs_html_table(0);
 echo cs_html_br(1);
