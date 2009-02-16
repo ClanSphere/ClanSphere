@@ -4,6 +4,8 @@
 
 // Publish News when time has come
 
+global $cs_main;
+
 if ($cs_main['mod'] == 'news') {
   
 	$filename = 'uploads/cache/news_publish.tmp';
