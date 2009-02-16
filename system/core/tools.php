@@ -324,7 +324,7 @@ function cs_notify($email='', $title='', $message='', $users_id=0, $notification
 
 function cs_pages($mod,$action,$records,$start,$where = 0,$sort = 0, $limit = 0, $small = 0) {
 
-	global $account;
+	global $account, $cs_lang;
 	$limit = empty($limit) ? $account['users_limit'] : $limit;
 	$add_where = empty($where) ? '' : '&amp;where=' . $where;
 	$add_sort = empty($sort) ? '' : '&amp;sort=' . $sort;
@@ -362,6 +362,8 @@ function cs_pages($mod,$action,$records,$start,$where = 0,$sort = 0, $limit = 0,
   }
   $more = 'start=' . $next . $add_where . $add_sort;
   $result .= empty($small) ? ' ' . cs_link('&gt;',$mod,$action,$more): '';
+  $result = $cs_lang['page'] . ' ' . $result;
+
   return $result;
 }
 
@@ -529,7 +531,6 @@ function cs_user($users_id, $users_nick, $users_active = 1) {
   settype($users_id, 'integer');
 
   return !empty($users_active) ? cs_link($users_nick, 'users', 'view', 'id=' . $users_id) : $users_nick;
-
 }
 
 function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
@@ -553,6 +554,5 @@ function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
   return $mode == 2 ? $icon . ' ' . $text : $icon;
 
 }
-
 
 ?>

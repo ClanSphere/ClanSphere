@@ -42,7 +42,9 @@ $cs_lang['text']	= 'Text';
 $cs_lang['total']	= 'Total';
 $cs_lang['upload']	= 'Upload';
 $cs_lang['yes']	= 'Yes';
+
 $cs_lang['head_com_create']	= 'Create comments';
 $cs_lang['body_com_create']	= 'Please fill out all fields.';
+$cs_lang['page'] = 'Page';
 
 ?>

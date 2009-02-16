@@ -144,6 +144,7 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   		$errortype['2048'] = 'Strict Notice/Error';
 	}
   $error = $errortype[$errno] . ": " . $errmsg . " in " . $filename . " on line " . $linenum . "\r\n";
-  $cs_logs['php_errors'] .= '<b>PHP-Warning:</b> ' . $error . "<br />";
+  $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
 }
+
 ?>
