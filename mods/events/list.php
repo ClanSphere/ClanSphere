@@ -7,7 +7,7 @@ $data = array();
 
 $categories_id = empty($_REQUEST['where']) ? 0 : (int) $_REQUEST['where'];
 $where = empty($categories_id) ? 0 : "categories_id = '" . $categories_id . "'";
-$where2 = 'evs.' . $where;
+$where2 = empty($categories_id) ? 0 : 'evs.' . $where;
 
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'evs.events_time DESC';
