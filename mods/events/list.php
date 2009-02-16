@@ -7,14 +7,13 @@ $data = array();
 
 $categories_id = empty($_REQUEST['where']) ? 0 : (int) $_REQUEST['where'];
 $where = empty($categories_id) ? 0 : "categories_id = '" . $categories_id . "'";
+$where2 = 'evs.' . $where;
 
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
-$cs_sort[1] = 'events_time DESC';
-$cs_sort[2] = 'events_time ASC';
-$cs_sort[3] = 'events_name DESC';
-$cs_sort[4] = 'events_name ASC';
-$cs_sort[5] = 'categories_name DESC';
-$cs_sort[6] = 'categories_name ASC';
+$cs_sort[1] = 'evs.events_time DESC';
+$cs_sort[2] = 'evs.events_time ASC';
+$cs_sort[3] = 'evs.events_name DESC';
+$cs_sort[4] = 'evs.events_name ASC';
 $sort = empty($_REQUEST['sort']) ? 1 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
@@ -32,7 +31,7 @@ $data['sort']['date'] = cs_sort('events','list',$start,$categories_id,1,$sort);
 
 $cells = 'evs.events_name AS events_name, evs.events_time AS events_time, evs.events_venue AS events_venue, evs.events_id AS events_id, evs.categories_id AS categories_id, cat.categories_name AS categories_name, cat.categories_picture AS categories_picture';
 $tables = 'events evs INNER JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
-$data['events'] = cs_sql_select(__FILE__,$tables,$cells,$where,$order,$start,$account['users_limit']);
+$data['events'] = cs_sql_select(__FILE__,$tables,$cells,$where2,$order,$start,$account['users_limit']);
 $events_count = count($data['events']);
 
 for ($i = 0; $i < $events_count; $i++) {
