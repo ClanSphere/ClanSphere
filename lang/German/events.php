@@ -10,6 +10,7 @@ $cs_lang['all']         = 'Gesamt: ';
 
 // agenda.php
 $cs_lang['agenda']	= 'Programm';
+$cs_lang['year']	= 'Jahr';
 
 // manage.php
 $cs_lang['head_manage']	= 'Verwaltung';
