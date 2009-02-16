@@ -35,9 +35,9 @@
 
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
  <tr>
-  <td class="headb" style="width:170px">{lang:date}</td>
-  <td class="headb" >{lang:name}</td>
-  <td class="headb" style="width:170px">{lang:venue}</td>
+  <td class="headb" style="width:20%">{lang:date}</td>
+  <td class="headb">{lang:name}</td>
+  <td class="headb" style="width:30%">{lang:venue}</td>
  </tr>{loop:events}
  <tr>
   <td class="leftc">

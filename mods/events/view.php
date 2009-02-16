@@ -58,6 +58,7 @@ echo cs_html_roco(2,'leftb');
 echo cs_secure($cs_events['events_more'],1,1,1,1);
 echo cs_html_roco(0);
 echo cs_html_table(0);
+echo cs_html_br(1);
 
 $where_com = "comments_mod = 'events' AND comments_fid = '" . $events_id . "'";
 $count_com = cs_sql_count(__FILE__,'comments',$where_com);
