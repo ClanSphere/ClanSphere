@@ -168,13 +168,15 @@ function cs_getmsg()
 
 function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $icon = 0)
 {    
-    cs_redirectmsg($message, $id, $icon);
+	if($mod != "install") {
+    	cs_redirectmsg($message, $mod, $id, $icon);
+	}
     
     $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
     header('Location: ' . $url);
     exit();
 }
-function cs_redirectmsg($message, $id = 0, $icon = 0) {
+function cs_redirectmsg($message, $mod, $id = 0, $icon = 0) {
 	
 	global $cs_logs;
 	global $cs_main;
