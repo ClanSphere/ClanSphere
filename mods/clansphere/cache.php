@@ -13,7 +13,9 @@ $data['link']['empty_cache'] = cs_url('clansphere','cache','clear=1');
 
 if(!empty($_GET['clear'])) {
   foreach($content AS $file => $name) {
-    unlink('uploads/cache/' . $file);
+  	if($file != ".htaccess") {
+        unlink('uploads/cache/' . $file);
+  	}
   }
   
   $content = array();
@@ -29,15 +31,17 @@ if(empty($content)) {
 }
 
 foreach($content AS $file => $name) {
-  $date = filemtime('uploads/cache/' . $file);
-  $size = filesize('uploads/cache/' . $file);
-  $space = $space + $size;
-  $files++;
+	if($file != ".htaccess") {
+    $date = filemtime('uploads/cache/' . $file);
+    $size = filesize('uploads/cache/' . $file);
+    $space = $space + $size;
+    $files++;
 
-  $data['cache'][$run]['file'] = $file;
-  $data['cache'][$run]['date'] = cs_date('unix',$date,1);
-  $data['cache'][$run]['size'] = cs_filesize($size);
-  $run++;
+    $data['cache'][$run]['file'] = $file;
+    $data['cache'][$run]['date'] = cs_date('unix',$date,1);
+    $data['cache'][$run]['size'] = cs_filesize($size);
+    $run++;
+	}
 }
 
 $data['count']['files'] = $files;
