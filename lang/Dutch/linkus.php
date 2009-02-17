@@ -2,9 +2,9 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'LinkOns';
-$cs_lang['mod_name']	= 'LinkOns';
-$cs_lang['mod_text']	= 'Sla een paar afbeeldignen op die anderen kunnen gebruiken om naar jouw page te linken';
+$cs_lang['mod']  = 'LinkOns';
+$cs_lang['mod_name']  = 'LinkOns';
+$cs_lang['mod_text']  = 'Sla een paar afbeeldignen op die anderen kunnen gebruiken om naar jouw page te linken';
 
 $cs_lang['head'] = 'Toevoegen'; 
 $cs_lang['head1'] = 'Details';
@@ -40,7 +40,7 @@ $cs_lang['mass'] = 'Massa';
 $cs_lang['new_banner'] = 'Nieuwe LinkOns banner';
 
 //remove.php
-$cs_lang['head_remove']	= 'Verwijder';
+$cs_lang['head_remove']  = 'Verwijder';
 
 //edit.php
 $cs_lang['head'] = 'Bewerk'; 

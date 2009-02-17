@@ -23,10 +23,10 @@ $cs_lang['change_settings'] = 'Verander hier de shoutbox instellingen.';
 $cs_lang['max_text'] = 'Maximum Tekst lengte';
 $cs_lang['figures'] = 'Karakters';
 
-$cs_lang['ip']			= 'IP';
+$cs_lang['ip']      = 'IP';
 
 $cs_lang['extended'] = 'Uitgebreid';
-$cs_lang['refresh']		= 'Ververs datum';
+$cs_lang['refresh']    = 'Ververs datum';
 
 $cs_lang['really'] = 'Weet je zeker dat je dataset Nr. %s wilt verwijderen?';
 $cs_lang['ip_is'] = 'Het IP van gebruiker %s is %s';

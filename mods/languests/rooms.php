@@ -11,29 +11,29 @@ $lanparty = cs_sql_select(__FILE__,'languests','languests_status, lanpartys_id, 
 $lanpartys_id = $lanparty['lanpartys_id'];
 
 if(empty($_GET['save_id'])) {
-	$where = "lanpartys_id = '" . $lanpartys_id . "'";
-	$first_room = cs_sql_select(__FILE__,'lanrooms','lanrooms_id',$where,'lanrooms_name');
-	$lanrooms_id = empty($_REQUEST['lanrooms_id']) ? $first_room['lanrooms_id'] : $_REQUEST['lanrooms_id'];
+  $where = "lanpartys_id = '" . $lanpartys_id . "'";
+  $first_room = cs_sql_select(__FILE__,'lanrooms','lanrooms_id',$where,'lanrooms_name');
+  $lanrooms_id = empty($_REQUEST['lanrooms_id']) ? $first_room['lanrooms_id'] : $_REQUEST['lanrooms_id'];
 }
 else {
-	settype($_GET['save_id'],'integer');
+  settype($_GET['save_id'],'integer');
 
-	$where = "lanroomd_id = '" . $_GET['save_id'] . "'";
-	$save_room = cs_sql_select(__FILE__,'lanroomd','lanrooms_id',$where);
-	$lanrooms_id = $save_room['lanrooms_id'];
+  $where = "lanroomd_id = '" . $_GET['save_id'] . "'";
+  $save_room = cs_sql_select(__FILE__,'lanroomd','lanrooms_id',$where);
+  $lanrooms_id = $save_room['lanrooms_id'];
 
-	$error = 0;
-	$errormsg = '';
+  $error = 0;
+  $errormsg = '';
 
-	if(empty($lanrooms_id)) {
+  if(empty($lanrooms_id)) {
     $error++;
     $errormsg .= $cs_lang['no_room'] . cs_html_br(1);
   }
-	if(empty($lanpartys_id)) {
+  if(empty($lanpartys_id)) {
     $error++;
     $errormsg .= $cs_lang['no_party'] . cs_html_br(1);
   }
-	if(empty($languests_id)) {
+  if(empty($languests_id)) {
     $error++;
     $errormsg .= $cs_lang['no_guest'] . cs_html_br(1);
   }
@@ -50,12 +50,12 @@ else {
     $errormsg .= $cs_lang['target_denied'] . cs_html_br(1);
   }
 
-	if(empty($error)) {
-  	$languests_cells = array('lanroomd_id');
-  	$languests_save = array($_GET['save_id']);
-  	cs_sql_update(__FILE__,'languests',$languests_cells,$languests_save,$languests_id);
-		$lanparty['lanroomd_id'] = $_GET['save_id'];
-	}
+  if(empty($error)) {
+    $languests_cells = array('lanroomd_id');
+    $languests_save = array($_GET['save_id']);
+    cs_sql_update(__FILE__,'languests',$languests_cells,$languests_save,$languests_id);
+    $lanparty['lanroomd_id'] = $_GET['save_id'];
+  }
 }
 
 
@@ -77,13 +77,13 @@ $data['data']['id'] = $lanpartys_id;
 
 
 if(empty($_GET['save_id'])) {
-	$data['lang']['body'] = $cs_lang['body_rooms'];
+  $data['lang']['body'] = $cs_lang['body_rooms'];
 }
 elseif(!empty($error)) {
-	$data['lang']['body'] = $errormsg;
+  $data['lang']['body'] = $errormsg;
 }
 else {
-	$data['lang']['body'] = $cs_lang['target_done'];
+  $data['lang']['body'] = $cs_lang['target_done'];
 }
 
 

@@ -3,8 +3,8 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'Partner';
-$cs_lang['text']	= 'Upravljanje partnerjev in sponzorjev';
+$cs_lang['mod']  = 'Partner';
+$cs_lang['text']  = 'Upravljanje partnerjev in sponzorjev';
 
 $cs_lang['body_text'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
 $cs_lang['list'] =  'Seznam';

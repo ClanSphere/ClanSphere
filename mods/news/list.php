@@ -15,7 +15,7 @@ if (!empty($cs_post['sort']))  $sort = $cs_post['sort'];
 
 $where = "nws.news_public > 0 AND cat.categories_access <= '" . $account['access_news'] . "'";
 if(!empty($cat_id)) {
-	$where .= " AND cat.categories_id = '" . $cat_id . "'";
+  $where .= " AND cat.categories_id = '" . $cat_id . "'";
 }
 
 $cs_sort[1] = 'news_time DESC';
@@ -47,9 +47,9 @@ $data['lang']['headline'] = $cs_lang['headline'];
 
 for($run=0; $run<$news_loop; $run++) {
 
-	$cs_news[$run]['news_time'] = cs_date('unix',$cs_news[$run]['news_time'],1);
-	$sec_head = cs_secure($cs_news[$run]['news_headline']);
-	$cs_news[$run]['news_headline'] = cs_link($sec_head,'news','view','id=' . $cs_news[$run]['news_id']);
+  $cs_news[$run]['news_time'] = cs_date('unix',$cs_news[$run]['news_time'],1);
+  $sec_head = cs_secure($cs_news[$run]['news_headline']);
+  $cs_news[$run]['news_headline'] = cs_link($sec_head,'news','view','id=' . $cs_news[$run]['news_id']);
 }
 
 $data['news'] = $cs_news;

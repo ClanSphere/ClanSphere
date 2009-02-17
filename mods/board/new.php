@@ -49,58 +49,58 @@ $order = 'thr.threads_last_time DESC';
 $cs_threads = cs_sql_select(__FILE__,$from,$select,$conditions,$order,$start,$account['users_limit']);
 
 if(empty($cs_threads)) {
-	echo cs_html_roco(1,'centerb',0,6);
-	echo $cs_lang['no_threads'];
-	echo cs_html_roco(0);
+  echo cs_html_roco(1,'centerb',0,6);
+  echo $cs_lang['no_threads'];
+  echo cs_html_roco(0);
 }
 else {
-	foreach($cs_threads AS $thread) {
+  foreach($cs_threads AS $thread) {
 
-		if(empty($thread['threads_comments'])) {
-			include_once('mods/board/repair.php');
-			$thread['threads_comments'] = cs_threads_comments($thread['threads_id']);
-		}
-		echo cs_html_roco(1,'leftb',0,0,'36px');
-		$icon = 'post_';
-		$tid = $thread['threads_id']; 
-		if(!empty($account['users_id']) AND $thread['threads_last_time'] > $thread['read_since'])
-			$icon .= 'unread_';
-		if(!empty($thread['threads_close'])) 
-			$icon .= 'close_';
-		if($thread['threads_important'])
-			$icon .= 'important_';	
-			echo cs_html_img('symbols/board/' .$icon. '.png');
-		echo cs_html_roco(2,'leftb');
-		echo cs_html_big(1);
-		if(!empty($thread['threads_important'])) {
-			echo $cs_lang['important'] . ' ';
-		}
-		$headline = cs_secure($thread['threads_headline']);
-		echo cs_link($headline,'board','thread','where=' . $thread['threads_id']);
-		echo cs_html_big(0);
-		if($thread['threads_comments'] > $account['users_limit']) {
-			echo cs_html_br(1);
-			echo $cs_lang['page'] . ' ';
-			echo cs_pages('board','thread',$thread['threads_comments'],0,$thread['threads_id'],0,0,1);
-		}
-		echo cs_html_roco(3,'rightb',0,0,'60px');
-		echo $thread['threads_comments'];
-		echo cs_html_roco(4,'rightb',0,0,'60px');
-		echo $thread['threads_view'];
-		echo cs_html_roco(5,'leftb',0,0,'180px');
-		if(!empty($thread['threads_last_time'])) {
-			$date = cs_date('unix',$thread['threads_last_time'],1);
-			$goto = floor($thread['threads_comments'] / $account['users_limit']) * $account['users_limit'];
-			$goto .= '#' . $thread['threads_comments'];
-			echo cs_link($date,'board','thread','where=' . $thread['threads_id'] . '&amp;start=' . $goto);
-			if(!empty($thread['users_id'])) {
-				echo cs_html_br(1);
-				echo $cs_lang['from'] . ' ';
-				echo cs_user($thread['users_id'],$thread['users_nick'], $thread['users_active']);
-			}
-		}
-		echo cs_html_roco(0);
-	}
+    if(empty($thread['threads_comments'])) {
+      include_once('mods/board/repair.php');
+      $thread['threads_comments'] = cs_threads_comments($thread['threads_id']);
+    }
+    echo cs_html_roco(1,'leftb',0,0,'36px');
+    $icon = 'post_';
+    $tid = $thread['threads_id']; 
+    if(!empty($account['users_id']) AND $thread['threads_last_time'] > $thread['read_since'])
+      $icon .= 'unread_';
+    if(!empty($thread['threads_close'])) 
+      $icon .= 'close_';
+    if($thread['threads_important'])
+      $icon .= 'important_';  
+      echo cs_html_img('symbols/board/' .$icon. '.png');
+    echo cs_html_roco(2,'leftb');
+    echo cs_html_big(1);
+    if(!empty($thread['threads_important'])) {
+      echo $cs_lang['important'] . ' ';
+    }
+    $headline = cs_secure($thread['threads_headline']);
+    echo cs_link($headline,'board','thread','where=' . $thread['threads_id']);
+    echo cs_html_big(0);
+    if($thread['threads_comments'] > $account['users_limit']) {
+      echo cs_html_br(1);
+      echo $cs_lang['page'] . ' ';
+      echo cs_pages('board','thread',$thread['threads_comments'],0,$thread['threads_id'],0,0,1);
+    }
+    echo cs_html_roco(3,'rightb',0,0,'60px');
+    echo $thread['threads_comments'];
+    echo cs_html_roco(4,'rightb',0,0,'60px');
+    echo $thread['threads_view'];
+    echo cs_html_roco(5,'leftb',0,0,'180px');
+    if(!empty($thread['threads_last_time'])) {
+      $date = cs_date('unix',$thread['threads_last_time'],1);
+      $goto = floor($thread['threads_comments'] / $account['users_limit']) * $account['users_limit'];
+      $goto .= '#' . $thread['threads_comments'];
+      echo cs_link($date,'board','thread','where=' . $thread['threads_id'] . '&amp;start=' . $goto);
+      if(!empty($thread['users_id'])) {
+        echo cs_html_br(1);
+        echo $cs_lang['from'] . ' ';
+        echo cs_user($thread['users_id'],$thread['users_nick'], $thread['users_active']);
+      }
+    }
+    echo cs_html_roco(0);
+  }
 }
 
 echo cs_html_roco(1,'bottom',0,6); 

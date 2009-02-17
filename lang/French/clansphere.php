@@ -2,11 +2,11 @@
 // ClanSphere 2006 - www.clansphere.net - Traduction francaise >>> www.globalteam-esports.info 
 // $Id$
 
-$cs_lang['mod']	= 'ClanSphere';
-$cs_lang['modinfo']	= 'Module principal du noyau cms';
-$cs_lang['modules_list']	= 'Tous les modules sont accessibles à partir de ce module.';
-$cs_lang['languages']	= 'Langages';
-$cs_lang['languages_list']	= 'Liste des %s traductions disponibles.';
+$cs_lang['mod']  = 'ClanSphere';
+$cs_lang['modinfo']  = 'Module principal du noyau cms';
+$cs_lang['modules_list']  = 'Tous les modules sont accessibles à partir de ce module.';
+$cs_lang['languages']  = 'Langages';
+$cs_lang['languages_list']  = 'Liste des %s traductions disponibles.';
 
 $cs_lang['cache'] = 'Cache';
 $cs_lang['body_cache'] = 'Toujours le vider, si vous avez modifié, ajouté ou supprimé le répertoire "info.php"!';
@@ -28,22 +28,22 @@ $cs_lang['page_mode'] = 'Mode de page';
 
 $cs_lang['creator'] = 'Créateur';
 
-$cs_lang['head_lang_view']	= 'Détails du langage';
-$cs_lang['body_lang_view']	= 'Informations sur la traduction.';
+$cs_lang['head_lang_view']  = 'Détails du langage';
+$cs_lang['body_lang_view']  = 'Informations sur la traduction.';
 
-$cs_lang['mod_released']		= 'Date';
-$cs_lang['mod_team']				= 'Equipe';
-$cs_lang['mod_url']					= 'Page d\'accueil';
-$cs_lang['mod_desc']				= 'Description';
+$cs_lang['mod_released']    = 'Date';
+$cs_lang['mod_team']        = 'Equipe';
+$cs_lang['mod_url']          = 'Page d\'accueil';
+$cs_lang['mod_desc']        = 'Description';
 
-$cs_lang['translation_status']	= 'Status de la traduction';
-$cs_lang['file']								= 'Fichier';
-$cs_lang['diff']								= 'Différence';
-$cs_lang['missing_file']				= 'Fichier introuvable';
-$cs_lang['total_diff']					= 'Différence de traduction trouvée dans %s fichier(s)';
+$cs_lang['translation_status']  = 'Status de la traduction';
+$cs_lang['file']                = 'Fichier';
+$cs_lang['diff']                = 'Différence';
+$cs_lang['missing_file']        = 'Fichier introuvable';
+$cs_lang['total_diff']          = 'Différence de traduction trouvée dans %s fichier(s)';
 
-$cs_lang['head_system']	= 'Système';
-$cs_lang['body_system']	= 'Informations et réglages importants.';
+$cs_lang['head_system']  = 'Système';
+$cs_lang['body_system']  = 'Informations et réglages importants.';
 $cs_lang['templates'] = 'Templates';
 $cs_lang['software'] = 'Software';
 $cs_lang['storage'] = 'Stockage';
@@ -53,7 +53,7 @@ $cs_lang['themes'] = 'Thèmes';
 $cs_lang['using'] = 'après';
 $cs_lang['dstime'] = 'Heure d\'été';
 
-$cs_lang['body_options']	= 'Administration et réglages du portail.';
+$cs_lang['body_options']  = 'Administration et réglages du portail.';
 $cs_lang['off'] = 'arrêt';
 $cs_lang['on'] = 'marche';
 $cs_lang['automatic'] = 'automatique';
@@ -81,20 +81,20 @@ $cs_lang['integrated'] = 'Integré';
 $cs_lang['separated'] = 'Séparé';
 
 
-$cs_lang['head_software']	= 'Software';
-$cs_lang['body_software']	= 'Les modules suivants sont présents sur le serveur.';
+$cs_lang['head_software']  = 'Software';
+$cs_lang['body_software']  = 'Les modules suivants sont présents sur le serveur.';
 
 $cs_lang['arch'] = 'Architecture';
-$cs_lang['display_err']	= 'Affichage d\'erreur';
+$cs_lang['display_err']  = 'Affichage d\'erreur';
 $cs_lang['m_quotes'] = 'Quote magique';
 $cs_lang['os'] = 'Système d\'explotation';
-$cs_lang['php_extensions']	= 'Extension PHP';
-$cs_lang['php_mod']	= 'Module PHP';
-$cs_lang['php_setup']	= 'Réglages PHP';
+$cs_lang['php_extensions']  = 'Extension PHP';
+$cs_lang['php_mod']  = 'Module PHP';
+$cs_lang['php_setup']  = 'Réglages PHP';
 $cs_lang['reg_global'] = 'Enregistrement global';
 $cs_lang['allow_url_fopen'] = 'Télécharger du contenu extérieur';
 $cs_lang['basedir_restriction'] = 'Environnement sécurisée (racine)';
-$cs_lang['tables']	= 'Tables';
+$cs_lang['tables']  = 'Tables';
 $cs_lang['post_max_size'] = 'Capacitité maximale de formulaire';
 $cs_lang['upload_max_filesize'] = 'Taille maximale de téléchargement';
 $cs_lang['memory_limit'] = 'Limite maximale de mémoire';
@@ -113,30 +113,30 @@ $cs_lang['usage'] = 'Utilisation';
 $cs_lang['data'] = 'Données';
 $cs_lang['indexe'] = 'Index';
 
-$cs_lang['body_storage']	= 'Informations et statistiques importantes';
+$cs_lang['body_storage']  = 'Informations et statistiques importantes';
 
 $cs_lang['space_total'] = 'Capacité de stockage';
 $cs_lang['space_free'] = 'Capacité libre';
-$cs_lang['space_used']	= 'Capacité utilisée';
+$cs_lang['space_used']  = 'Capacité utilisée';
 $cs_lang['space_mods'] = 'Taille du module';
 $cs_lang['space_sym'] = 'Taille de symbole';
 $cs_lang['space_up'] = 'Taille de téléchargement';
 $cs_lang['space_temp'] = 'Taille de template';
 
-$cs_lang['body_temp_list']	= 'Liste des %s design(s) existant(s).';
+$cs_lang['body_temp_list']  = 'Liste des %s design(s) existant(s).';
 $cs_lang['theme_found'] = 'Un thème existe déjà sous ce nom, voulez vous le renommer?';
 
-$cs_lang['head_temp_view']	= 'Détails de template';
-$cs_lang['body_temp_view']	= 'Informations sur un design.';
+$cs_lang['head_temp_view']  = 'Détails de template';
+$cs_lang['body_temp_view']  = 'Informations sur un design.';
 
 $cs_lang['themes_list'] = 'Liste des thèmes';
 $cs_lang['themes_listed'] = 'Liste des %s thèmes disponibles.';
 
-$cs_lang['head_variables']	= 'Variables';
-$cs_lang['body_variables']	= 'Données qui sont généralement disponibles';
+$cs_lang['head_variables']  = 'Variables';
+$cs_lang['body_variables']  = 'Données qui sont généralement disponibles';
 
-$cs_lang['key']		= 'Clef';
-$cs_lang['value']	= 'Valeur';
+$cs_lang['key']    = 'Clef';
+$cs_lang['value']  = 'Valeur';
 
 $cs_lang['extended'] = 'Option';
 $cs_lang['change_dstime_for_all'] = 'Changer l\'heure d\'été pour tous les utilisateurs';
@@ -149,8 +149,8 @@ $cs_lang['text'] = 'Texte';
 $cs_lang['old_value'] = 'Ancienne valeur';
 $cs_lang['repetition'] = 'Repétition';
 $cs_lang['overwrite'] = 'Ecraser';
-$cs_lang['global']	= 'global';
-$cs_lang['internal']	= 'interne';
+$cs_lang['global']  = 'global';
+$cs_lang['internal']  = 'interne';
 
 $cs_lang['more_languages'] = 'Télécharger d\'autre langage';
 $cs_lang['more_templates'] = 'Télécharger d\'autre langage thème';
@@ -191,17 +191,17 @@ $cs_lang['name_wiki'] = 'Wiki';
 $cs_lang['text_wiki'] = 'Aides et informations concernant le projet.';
 
 // Metatags
-$cs_lang['metatags']	= 'Metatags';
-$cs_lang['generate_metatags']	= 'Vous pouvez générer ici les MetaTags';
-$cs_lang['charset']	= 'Charset';
-$cs_lang['description']	= 'Description';
-$cs_lang['keywords']	= 'Termes clef';
-$cs_lang['author']	= 'Auteur';
+$cs_lang['metatags']  = 'Metatags';
+$cs_lang['generate_metatags']  = 'Vous pouvez générer ici les MetaTags';
+$cs_lang['charset']  = 'Charset';
+$cs_lang['description']  = 'Description';
+$cs_lang['keywords']  = 'Termes clef';
+$cs_lang['author']  = 'Auteur';
 $cs_lang['visit_dlpage'] = ' Visitez la page de téléchargement';
-$cs_lang['designer']	= 'Administrateur du site';
-$cs_lang['publisher']	= 'Editeur';
-$cs_lang['robots']	= 'Robots';
-$cs_lang['distribution']	= 'Distribution';
-$cs_lang['edit_done']	= 'Changement réussi';
-$cs_lang['too_many_chars']	= '- Votre message comporte "%s" caractères, cela représente plus de 200 caractères';
+$cs_lang['designer']  = 'Administrateur du site';
+$cs_lang['publisher']  = 'Editeur';
+$cs_lang['robots']  = 'Robots';
+$cs_lang['distribution']  = 'Distribution';
+$cs_lang['edit_done']  = 'Changement réussi';
+$cs_lang['too_many_chars']  = '- Votre message comporte "%s" caractères, cela représente plus de 200 caractères';
 ?>

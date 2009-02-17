@@ -31,10 +31,10 @@ $computers_loop = count($cs_computers);
 
 for($run=0; $run<$computers_loop; $run++) {
 
-	$data['com'][$run]['name'] = cs_secure($cs_computers[$run]['computers_name']);
-	$data['com'][$run]['url_view'] = cs_url('computers','view','id=' . $cs_computers[$run]['computers_id']);
-	$data['com'][$run]['since'] = cs_date('unix',$cs_computers[$run]['computers_since'],1);
-	
+  $data['com'][$run]['name'] = cs_secure($cs_computers[$run]['computers_name']);
+  $data['com'][$run]['url_view'] = cs_url('computers','view','id=' . $cs_computers[$run]['computers_id']);
+  $data['com'][$run]['since'] = cs_date('unix',$cs_computers[$run]['computers_since'],1);
+  
 }
 
 echo cs_subtemplate(__FILE__,$data,'computers','list');

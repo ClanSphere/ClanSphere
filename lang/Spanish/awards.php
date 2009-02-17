@@ -7,13 +7,13 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_text']	= 'Colocaciónes conseguidas';
-$cs_lang['mod']	= 'Conderaciones';
+$cs_lang['mod_text']  = 'Colocaciónes conseguidas';
+$cs_lang['mod']  = 'Conderaciones';
 $cs_lang['head']= 'Administración';
 $cs_lang['head_view'] = 'Detalles';
 $cs_lang['head_create'] = 'Agregar';
 $cs_lang['head_edit'] = 'Editar';
-$cs_lang['head_remove']	= 'Remover';
+$cs_lang['head_remove']  = 'Remover';
 $cs_lang['body_create'] =  'Por favor rellene las casillas con *';
 $cs_lang['body_edit'] =  'No han sido rellenadas todas las casillas necesitadas';
 $cs_lang['error_occurred'] = 'Faltan casillas necesitadas';
@@ -32,6 +32,6 @@ $cs_lang['no_event'] = '- Tiene que apuntarse un Espectáculo';
 $cs_lang['no_event_url'] = '- Tiene que apuntarse la Pagina Web del Espectáculo';
 $cs_lang['no_game'] = '- No a escogido o creado un Juego';
 $cs_lang['no_rank'] = '- Tiene que apuntarse una colocacción';
-$cs_lang['remove_rly']		= 'Remover Informacion Nr. %s de verdad ?';
+$cs_lang['remove_rly']    = 'Remover Informacion Nr. %s de verdad ?';
 
 ?>

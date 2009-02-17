@@ -7,8 +7,8 @@ $cs_lang = cs_translate('quotes');
 $cat_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
 $where = '';
 if(!empty($cat_id)) {
-	settype($cat_id,'integer');
-	$where .= "cat.categories_id = '" . $cat_id . "'";
+  settype($cat_id,'integer');
+  $where .= "cat.categories_id = '" . $cat_id . "'";
 }
 
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
@@ -42,9 +42,9 @@ $data['lang']['headline'] = $cs_lang['headline'];
 
 for($run=0; $run<$quotes_loop; $run++) {
 
-	$cs_quotes[$run]['quotes_time'] = cs_date('unix',$cs_quotes[$run]['quotes_time'],1);
-	$sec_head = cs_secure($cs_quotes[$run]['quotes_headline']);
-	$cs_quotes[$run]['quotes_headline'] = cs_link($sec_head,'quotes','view','id=' . $cs_quotes[$run]['quotes_id']);
+  $cs_quotes[$run]['quotes_time'] = cs_date('unix',$cs_quotes[$run]['quotes_time'],1);
+  $sec_head = cs_secure($cs_quotes[$run]['quotes_headline']);
+  $cs_quotes[$run]['quotes_headline'] = cs_link($sec_head,'quotes','view','id=' . $cs_quotes[$run]['quotes_id']);
 }
 
 $data['quotes'] = $cs_quotes;

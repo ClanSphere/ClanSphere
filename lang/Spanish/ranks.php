@@ -8,19 +8,19 @@
 // $Id$
 
 
-$cs_lang['mod_name']	= 'Lista de Escalafones';
-$cs_lang['mod_text']	= 'Verweise auf Ligen und Wettbewerbe';
-$cs_lang['mod']	= 'Lista de Escalafones';
-$cs_lang['head_manage']	= 'Administración';
-$cs_lang['head_remove']	= 'Remover';
-$cs_lang['head_create']	= 'Crear';
-$cs_lang['body_create']	= 'A&ntilde;adir nueva Lista de Escalafones';
-$cs_lang['head_edit']	= 'Editar';
-$cs_lang['body_edit']	= 'Aqui aparecen los errores despues de eviar';
-$cs_lang['head_list']	= 'Lista';
-$cs_lang['new_rank']	= 'Nuevo Escalafón';
+$cs_lang['mod_name']  = 'Lista de Escalafones';
+$cs_lang['mod_text']  = 'Verweise auf Ligen und Wettbewerbe';
+$cs_lang['mod']  = 'Lista de Escalafones';
+$cs_lang['head_manage']  = 'Administración';
+$cs_lang['head_remove']  = 'Remover';
+$cs_lang['head_create']  = 'Crear';
+$cs_lang['body_create']  = 'A&ntilde;adir nueva Lista de Escalafones';
+$cs_lang['head_edit']  = 'Editar';
+$cs_lang['body_edit']  = 'Aqui aparecen los errores despues de eviar';
+$cs_lang['head_list']  = 'Lista';
+$cs_lang['new_rank']  = 'Nuevo Escalafón';
 $cs_lang['all'] = 'Por ahora existen %s datos';
-$cs_lang['content']	= 'Contenido';
+$cs_lang['content']  = 'Contenido';
 $cs_lang['url'] = 'Pagina de Web';
 $cs_lang['img'] = 'URL de la Imagen';
 $cs_lang['code'] = 'Código Fuente';

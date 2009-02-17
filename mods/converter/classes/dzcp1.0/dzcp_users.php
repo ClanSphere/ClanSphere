@@ -73,7 +73,7 @@ for($run=0; $run<count($data); $run++) {
   for($runb=0; $runb<count($data_cells); $runb++) {
     $set = $runb == 0 ? '' : ', ';
     $new_data_cells .= $set . $data_cells[$runb];
-	$new_data_saves .= $set . "'" . $data_saves[$runb] . "'";
+  $new_data_saves .= $set . "'" . $data_saves[$runb] . "'";
   }
   $sql_query = "INSERT INTO " . $csp_db['prf'] . "users (" . $new_data_cells . ") VALUES (" . $new_data_saves . ");";
   $result = mysql_query($sql_query, $csp_connect);

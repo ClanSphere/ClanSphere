@@ -3,14 +3,14 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'Zgodovina';
-$cs_lang['mod_text']	= 'Urejanje zgodovine';
-$cs_lang['mod']	= 'Zgodovina';
-$cs_lang['mod_list']	= 'Zgodovina';
-$cs_lang['head_manage']	= 'Administracija';
-$cs_lang['head_edit']	= 'Uredi';
-$cs_lang['head_remove']	= 'Odstrani';
-$cs_lang['head_create']	= 'Dodaj';
+$cs_lang['mod_name']  = 'Zgodovina';
+$cs_lang['mod_text']  = 'Urejanje zgodovine';
+$cs_lang['mod']  = 'Zgodovina';
+$cs_lang['mod_list']  = 'Zgodovina';
+$cs_lang['head_manage']  = 'Administracija';
+$cs_lang['head_edit']  = 'Uredi';
+$cs_lang['head_remove']  = 'Odstrani';
+$cs_lang['head_create']  = 'Dodaj';
 $cs_lang['body_create'] =  'Polja ozna&#269;ena z * so obvezna.';
 $cs_lang['body_edit'] =  'Polja ozna&#269;ena z * so obvezna.';
 $cs_lang['error_occurred'] = 'Nisi izpolnil vseh obveznih polj.';

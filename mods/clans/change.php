@@ -71,7 +71,7 @@ if(isset($_POST['submit'])) {
       cs_unlink('clans', $cs_clans['clans_picture']);
     }
     
-	$cs_clans['clans_picture'] = $filename;
+  $cs_clans['clans_picture'] = $filename;
   }
   else {
     $message .= $cs_lang['up_error'];
@@ -158,7 +158,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['clans']['pic'] = $cs_lang['nopic'];
   }
   else {
-	$place = 'uploads/clans/' . $cs_clans['clans_picture'];
+  $place = 'uploads/clans/' . $cs_clans['clans_picture'];
     $size = getimagesize($cs_main['def_path'] . '/' . $place);
     $data['clans']['pic'] = cs_html_img($place,$size[1],$size[0]);
   }

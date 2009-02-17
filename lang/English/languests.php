@@ -2,11 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	            = 'LAN-Guests';
-$cs_lang['mod_info']	    = 'Manage LAN-Guests here';
+$cs_lang['mod']              = 'LAN-Guests';
+$cs_lang['mod_info']      = 'Manage LAN-Guests here';
 
 // Create
-$cs_lang['body_create']	    = 'Add new guest.';
+$cs_lang['body_create']      = 'Add new guest.';
 
 $cs_lang['lanparty']        = 'LAN-Party';
 $cs_lang['user']            = 'User';
@@ -28,21 +28,21 @@ $cs_lang['lan_full']        = '- LAN-Party is already full';
 
 // Lanpartys
 $cs_lang['head_lanpartys']  = 'LAN-Parties';
-$cs_lang['stats']	        = 'Registered: %s/%s (Payed: %s)';
-$cs_lang['chair']		    = 'Chair';
+$cs_lang['stats']          = 'Registered: %s/%s (Payed: %s)';
+$cs_lang['chair']        = 'Chair';
 $cs_lang['nick']            = 'Nickname';
 
 // Manage
 $cs_lang['new_languest']    = 'New lan guest';
-$cs_lang['notices']		    = 'Note';
+$cs_lang['notices']        = 'Note';
 
-$cs_lang['select_lan']	    = 'LAN-Party: ';
-$cs_lang['since']		    = 'Since';
-$cs_lang['map']			    = 'Map';
+$cs_lang['select_lan']      = 'LAN-Party: ';
+$cs_lang['since']        = 'Since';
+$cs_lang['map']          = 'Map';
 
 // Rooms
-$cs_lang['head_rooms']	    = 'Seating Plan';
-$cs_lang['body_rooms']	    = 'View and reserver a chair';
+$cs_lang['head_rooms']      = 'Seating Plan';
+$cs_lang['body_rooms']      = 'View and reserver a chair';
 
 $cs_lang['area']            = 'Area:';
 

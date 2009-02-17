@@ -20,15 +20,15 @@ $signature = $signature_sql['users_signature'];
 $signature_form = 1;
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
-	$signature = $_POST['signature'];
+  $signature = $_POST['signature'];
 } 
 
 if(isset($_POST['submit'])) {
   $signature_form = 0;
-		
+    
   $signature = preg_replace_callback("=\[img\](.*?)\[/img\]=si","cs_abcode_resize",$signature);
   $signature = preg_replace_callback("=\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]=si","cs_abcode_resize",$signature);
-	  
+    
   $signature_cells = array('users_signature');
   $signature_save = array($signature);
   cs_sql_update(__FILE__,'users',$signature_cells,$signature_save,$account['users_id']);
@@ -37,14 +37,14 @@ if(isset($_POST['submit'])) {
 }
 
 if(isset($_POST['preview'])) {               
-	
+  
   if(!empty($signature)) {
-	$signature = $_POST['signature'];
-	$_SESSION['signature'] = $signature;
-	cs_redirect(cs_secure($signature,1,1), 'board','signature');
+  $signature = $_POST['signature'];
+  $_SESSION['signature'] = $signature;
+  cs_redirect(cs_secure($signature,1,1), 'board','signature');
   }
   else {  
-	cs_redirect($cs_lang['nosig'], 'board','signature');
+  cs_redirect($cs_lang['nosig'], 'board','signature');
   }
 }
 

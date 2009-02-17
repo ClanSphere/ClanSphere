@@ -8,12 +8,12 @@ $data = array();
 
 if(isset($_POST['submit'])) {
   
-	require 'mods/clansphere/func_options.php';
-	
-	$save = array();
-	$save['max_navlist'] = (int) $_POST['max_navlist'];
-	
-	cs_optionsave('articles', $save);
+  require 'mods/clansphere/func_options.php';
+  
+  $save = array();
+  $save['max_navlist'] = (int) $_POST['max_navlist'];
+  
+  cs_optionsave('articles', $save);
 
   cs_redirect($cs_lang['changes_done'],'options','roots');
   

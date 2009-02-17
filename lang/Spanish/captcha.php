@@ -7,7 +7,7 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Codigos de Seguridad';
-$cs_lang['text']	= 'Seguridad anti Robotes';
+$cs_lang['mod_name']  = 'Codigos de Seguridad';
+$cs_lang['text']  = 'Seguridad anti Robotes';
 
 ?>

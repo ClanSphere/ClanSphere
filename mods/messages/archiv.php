@@ -23,33 +23,33 @@ $max_space = $cs_messages_option['max_space'];
 
 if($archivbox_count >= $max_space)
 {
-	$error++;
+  $error++;
 }
 if(empty($error))
 {
-	if($messages_users_id == $users_id)
-	{
-		$messages_archiv_sender = '1';
-		$messages_show_sender = '0';
-		$messages_cells = array('messages_show_sender','messages_archiv_sender');
-		$messages_content = array($messages_show_sender,$messages_archiv_sender);
-		cs_sql_update(__FILE__,'messages',$messages_cells,$messages_content,$messages_id);
-	}
-	if($messages_users_id_2 == $users_id)
-	{
-		$messages_archiv_receiver = '1';
-		$messages_show_receiver = '0';
-		$messages_cells = array('messages_show_receiver','messages_archiv_receiver');
-		$messages_content = array($messages_show_receiver,$messages_archiv_receiver);
-		cs_sql_update(__FILE__,'messages',$messages_cells,$messages_content,$messages_id);
-	}
-	
-	cs_redirect($cs_lang['arch_true'],'messages','center');
+  if($messages_users_id == $users_id)
+  {
+    $messages_archiv_sender = '1';
+    $messages_show_sender = '0';
+    $messages_cells = array('messages_show_sender','messages_archiv_sender');
+    $messages_content = array($messages_show_sender,$messages_archiv_sender);
+    cs_sql_update(__FILE__,'messages',$messages_cells,$messages_content,$messages_id);
+  }
+  if($messages_users_id_2 == $users_id)
+  {
+    $messages_archiv_receiver = '1';
+    $messages_show_receiver = '0';
+    $messages_cells = array('messages_show_receiver','messages_archiv_receiver');
+    $messages_content = array($messages_show_receiver,$messages_archiv_receiver);
+    cs_sql_update(__FILE__,'messages',$messages_cells,$messages_content,$messages_id);
+  }
+  
+  cs_redirect($cs_lang['arch_true'],'messages','center');
 }
 else
 {
 
-	
-	cs_redirect(cs_icon('important') . ' ' . $cs_lang['arch_max'],'messages','center');
+  
+  cs_redirect(cs_icon('important') . ' ' . $cs_lang['arch_max'],'messages','center');
 }
 ?>

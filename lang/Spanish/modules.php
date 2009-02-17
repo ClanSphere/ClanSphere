@@ -19,16 +19,16 @@ $cs_lang['creator'] = 'Realizador';
 $cs_lang['version'] = 'Version';
 
 $cs_lang['mods_details'] = 'Detalles del Modulo';
-$cs_lang['body_mods_view']	= 'Informaciones de un Avanzado';
+$cs_lang['body_mods_view']  = 'Informaciones de un Avanzado';
 
-$cs_lang['mod_released']		= 'Fecha';
+$cs_lang['mod_released']    = 'Fecha';
 $cs_lang['icons']           = 'Icons';
 $cs_lang['extended']        = 'Avanzado';
 $cs_lang['jump_to_explorer']= 'Cambiar al Explorer';
 
-$cs_lang['access_files']	= 'Paginas Existentes';
-$cs_lang['file_name']			= 'Archivo';
-$cs_lang['access_from']		= 'Level de Acceso';
+$cs_lang['access_files']  = 'Paginas Existentes';
+$cs_lang['file_name']      = 'Archivo';
+$cs_lang['access_from']    = 'Level de Acceso';
 
 $cs_lang['lev_0'] = 'Bloqueado';
 $cs_lang['lev_1'] = 'Leer';

@@ -42,7 +42,7 @@ if(empty($board_loop)) {
 for($run=0; $run<$board_loop; $run++) {
   $img_edit = cs_icon('edit',16,$cs_lang['edit']);
   $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-	
+  
   $data['board'][$run]['name'] = cs_secure($cs_board[$run]['board_name']);
   $data['board'][$run]['cat'] = cs_secure($cs_board[$run]['categories_name']);
   $data['board'][$run]['edit'] = cs_url('board','edit','id=' . $cs_board[$run]['board_id']);

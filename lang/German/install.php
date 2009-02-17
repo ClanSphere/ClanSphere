@@ -2,11 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Installation';
-$cs_lang['modtext']	= 'Richtet das Portalsystem ein';
+$cs_lang['mod']  = 'Installation';
+$cs_lang['modtext']  = 'Richtet das Portalsystem ein';
 
-$cs_lang['head_list']	= 'Liste';
-$cs_lang['body_list']	= 'Willkommen bei der Installation von Clansphere!' . cs_html_br(2) . 'Bitte w&auml;hlen Sie eine Sprache:';
+$cs_lang['head_list']  = 'Liste';
+$cs_lang['body_list']  = 'Willkommen bei der Installation von Clansphere!' . cs_html_br(2) . 'Bitte w&auml;hlen Sie eine Sprache:';
 
 $cs_lang['lang'] = 'Sprache';
 
@@ -27,10 +27,10 @@ $cs_lang['last_check'] = 'Letzte &Uuml;berpr&uuml;fung';
 $cs_lang['check'] = 'Pr&uuml;fung';
 $cs_lang['found'] = 'Vorhanden';
 $cs_lang['required'] = 'Ben&ouml;tigt';
-$cs_lang['any']	= 'Irgendeine';
+$cs_lang['any']  = 'Irgendeine';
 $cs_lang['recommend'] = 'Empfohlen';
-$cs_lang['php_mod']	= 'PHP Modul';
-$cs_lang['db_support']	= 'Datenbankunterst&uuml;tzung';
+$cs_lang['php_mod']  = 'PHP Modul';
+$cs_lang['db_support']  = 'Datenbankunterst&uuml;tzung';
 $cs_lang['file_uploads'] = 'Dateien hochladen';
 $cs_lang['reg_global'] = 'Globale Registrierung';
 $cs_lang['magic_quotes'] = 'Magische Anf&uuml;hrungszeichen';
@@ -39,32 +39,32 @@ $cs_lang['trans_sid'] = 'Transparente SessionID';
 $cs_lang['basedir_restriction'] = 'Abgesicherte Pfadumgebung';
 $cs_lang['allow_url_fopen'] = 'Externe Inhalte laden';
 $cs_lang['gd_extension'] = 'GD Erweiterung';
-$cs_lang['off']	= 'aus';
+$cs_lang['off']  = 'aus';
 $cs_lang['on'] = 'an';
 
 $cs_lang['check_perfect'] = 'Die gepr&uuml;ften Einstellungen sind perfekt f&uuml;r die Benutzung von ClanSphere!';
 $cs_lang['check_ok'] = 'ClanSphere sollte auf diesem Webserver einwandfrei funktionieren, allerdings sind einige Einstellungen nicht optimal.';
 $cs_lang['check_failed'] = 'Aufgrund der oben markierten Gr&uuml;nde ist es leider nicht m&ouml;glich, ClanSphere zu installieren!';
 
-$cs_lang['head_complete']	= 'Ende';
-$cs_lang['rem_install']	= '- Installations-Dateien werden entfernt';
-$cs_lang['set_chmod']	= '- Verzeichnisse erhalten neue Rechte';
+$cs_lang['head_complete']  = 'Ende';
+$cs_lang['rem_install']  = '- Installations-Dateien werden entfernt';
+$cs_lang['set_chmod']  = '- Verzeichnisse erhalten neue Rechte';
 $cs_lang['remove_file'] = 'Datei bitte manuell entfernen:';
-$cs_lang['err_chmod']	= 'Fehler: Setzen Sie die Rechte der Verzeichnisse "logs" und "uploads",';
-$cs_lang['err_chmod']	.= ' sowie deren Unterverzeichnisse, bitte Manuell auf CHMOD 777';
+$cs_lang['err_chmod']  = 'Fehler: Setzen Sie die Rechte der Verzeichnisse "logs" und "uploads",';
+$cs_lang['err_chmod']  .= ' sowie deren Unterverzeichnisse, bitte Manuell auf CHMOD 777';
 
-$cs_lang['login']	= 'Login';
+$cs_lang['login']  = 'Login';
 
-$cs_lang['head_license']	= 'Lizenz';
-$cs_lang['body_license']	= 'Akzeptieren der Nutzungsbedingungen';
+$cs_lang['head_license']  = 'Lizenz';
+$cs_lang['body_license']  = 'Akzeptieren der Nutzungsbedingungen';
 
 $cs_lang['accept_done'] = 'Bedingungen erfolgreich akzeptiert';
 $cs_lang['accept_license'] = 'Gelesen und akzeptiert';
 $cs_lang['not_accepted'] = '- Sie m&uuml;ssen den Bedingungen zustimmen';
 $cs_lang['send'] = 'Senden';
 
-$cs_lang['head_settings']	= 'Konfiguration';
-$cs_lang['body_settings']	= 'Erstellung einer Setup Datei f&uuml;r das Portal';
+$cs_lang['head_settings']  = 'Konfiguration';
+$cs_lang['body_settings']  = 'Erstellung einer Setup Datei f&uuml;r das Portal';
 
 $cs_lang['hash'] = 'Verschl&uuml;sselung';
 $cs_lang['hash_info'] = 'Sha1 empfohlen, bei Update von BXCP Md5 benutzen!';
@@ -93,12 +93,12 @@ $cs_lang['save_file'] = 'Den Inhalt bitte kopieren und als "setup.php" auf dem W
 $cs_lang['setup_exists'] = 'Es wurde eine bestehende Setup Datei gefunden.';
 $cs_lang['inst_create_done'] = 'Datenbank gefunden und Setup Datei erstellt.';
 
-$cs_lang['head_sql']	= 'Datenbank';
-$cs_lang['body_sql']	= 'Tabellen und Eintr&auml;ge werden angelegt';
+$cs_lang['head_sql']  = 'Datenbank';
+$cs_lang['body_sql']  = 'Tabellen und Eintr&auml;ge werden angelegt';
 
-$cs_lang['create_admin']	= 'Hier wird ein Administratorkonto erstellt.';
-$cs_lang['nick']	= 'Nick';
-$cs_lang['email']	= 'E-Mail';
+$cs_lang['create_admin']  = 'Hier wird ein Administratorkonto erstellt.';
+$cs_lang['nick']  = 'Nick';
+$cs_lang['email']  = 'E-Mail';
 $cs_lang['password'] = 'Passwort';
 $cs_lang['admin_done'] = 'Administrator erfolgreich hinzugef&uuml;gt.';
 
@@ -108,11 +108,11 @@ $cs_lang['email_false'] = '- Die E-Mail-Adresse ist ung&uuml;ltig';
 
 $cs_lang['db_error'] = 'Datenbank Fehler';
 
-$cs_lang['guest']	= 'Besucher';
-$cs_lang['community']	= 'Benutzer';
-$cs_lang['member']	= 'Mitglied';
-$cs_lang['orga']	= 'Organisator';
-$cs_lang['admin']	= 'Webmaster';
+$cs_lang['guest']  = 'Besucher';
+$cs_lang['community']  = 'Benutzer';
+$cs_lang['member']  = 'Mitglied';
+$cs_lang['orga']  = 'Organisator';
+$cs_lang['admin']  = 'Webmaster';
 
 // Labels
 $cs_lang['show_groups_as'] = 'Zeige Gruppen als';

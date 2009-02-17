@@ -24,9 +24,9 @@ if(isset($_GET['agree']) AND $clans_id != 1) {
     $where = "clans_id = '" . $clans_id . "'";
     $getpic = cs_sql_select(__FILE__,'clans','clans_picture',$where);
     if(!empty($getpic['clans_picture'])) {
-	    cs_unlink('clans', $getpic['clans_picture']);
+      cs_unlink('clans', $getpic['clans_picture']);
     }
-	
+  
     $where = "clans_id = '" . $clans_id . "'";
     $cs_squads = cs_sql_select(__FILE__,'squads','squads_id',$where,0,0,0);
     if(is_array($cs_squads)) {
@@ -38,13 +38,13 @@ if(isset($_GET['agree']) AND $clans_id != 1) {
     cs_sql_delete(__FILE__,'clans',$clans_id);
     $msg = sprintf($cs_lang['del_true_clan'],$cs_lang[$op_clans['label']]);
   }
-	
+  
   cs_redirect($msg,'clans','center');
 }
 
 if(isset($_GET['cancel']) OR $clans_id == 1) {
   $clans_form = 0;
-	
+  
   cs_redirect($cs_lang['del_false'],'clans','center');
 }
 
@@ -54,7 +54,7 @@ if(!empty($clans_form)) {
   $data['lang']['content'] = cs_link($cs_lang['confirm'],'clans','delete','id=' . $clans_id . '&amp;agree');
   $data['lang']['content'] .= ' - ';
   $data['lang']['content'] .= cs_link($cs_lang['cancel'],'clans','delete','id=' . $clans_id . '&amp;cancel');
-	
+  
   echo cs_subtemplate(__FILE__,$data,'clans','remove');
 }
 ?>

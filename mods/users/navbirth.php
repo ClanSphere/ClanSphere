@@ -10,16 +10,16 @@ $order = 'users_nick ASC';
 $cs_users = cs_sql_select(__FILE__,'users',$select,$where,$order,0,4);
 
 if(empty($cs_users)) {
-	echo $cs_lang['no_data'];
+  echo $cs_lang['no_data'];
 }
 else {
-	foreach ($cs_users AS $users) {
-		echo cs_user($users['users_id'], $users['users_nick'], $users['users_active']);
-		$birth = explode ('-', $users['users_age']);
-		$age = cs_datereal('Y') - $birth[0];
-		echo ' (' . $age . ')';
-		echo cs_html_br(1);
-	}
+  foreach ($cs_users AS $users) {
+    echo cs_user($users['users_id'], $users['users_nick'], $users['users_active']);
+    $birth = explode ('-', $users['users_age']);
+    $age = cs_datereal('Y') - $birth[0];
+    echo ' (' . $age . ')';
+    echo cs_html_br(1);
+  }
 }
 
 ?>

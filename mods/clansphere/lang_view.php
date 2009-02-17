@@ -58,7 +58,7 @@ foreach($lang_mods AS $mods) {
         }
       }      
     }
-	else {
+  else {
       $diff = $missing_file;
     }
   }

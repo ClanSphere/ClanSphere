@@ -1,12 +1,12 @@
 <?php
-$cs_lang['mod_name']	= 'Historique';
-$cs_lang['mod_text']	= 'Administration et création des historiques';
-$cs_lang['mod']	= 'Historique';
-$cs_lang['mod_list']	= 'Historique';
-$cs_lang['head_manage']	= 'Administration';
-$cs_lang['head_edit']	= 'Editer';
-$cs_lang['head_remove']	= 'Supprimer';
-$cs_lang['head_create']	= 'Enregistrer';
+$cs_lang['mod_name']  = 'Historique';
+$cs_lang['mod_text']  = 'Administration et création des historiques';
+$cs_lang['mod']  = 'Historique';
+$cs_lang['mod_list']  = 'Historique';
+$cs_lang['head_manage']  = 'Administration';
+$cs_lang['head_edit']  = 'Editer';
+$cs_lang['head_remove']  = 'Supprimer';
+$cs_lang['head_create']  = 'Enregistrer';
 $cs_lang['body_create'] =  'Veuillez remplir les champs marqués d\'une étoile.';
 $cs_lang['body_edit'] =  'Veuillez remplir les champs marqués d\'une étoile.';
 $cs_lang['error_occurred'] = 'Remplissez correctement les champs.';

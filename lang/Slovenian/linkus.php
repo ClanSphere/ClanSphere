@@ -3,9 +3,9 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'Na&scaron;e pasice';
-$cs_lang['mod_name']	= 'Na&scaron;e pasice';
-$cs_lang['mod_text']	= 'Shranjuje pasice, ki jih lahko drugi uporabijo na svojih straneh';
+$cs_lang['mod']  = 'Na&scaron;e pasice';
+$cs_lang['mod_name']  = 'Na&scaron;e pasice';
+$cs_lang['mod_text']  = 'Shranjuje pasice, ki jih lahko drugi uporabijo na svojih straneh';
 
 $cs_lang['head'] = 'Dodaj'; 
 $cs_lang['head1'] = 'Podrobnosti';
@@ -41,7 +41,7 @@ $cs_lang['mass'] = 'Velikost';
 $cs_lang['new_banner'] = 'Nova pasica';
 
 //remove.php
-$cs_lang['head_remove']	= 'Odstrani';
+$cs_lang['head_remove']  = 'Odstrani';
 
 //edit.php
 $cs_lang['head'] = 'Uredi'; 

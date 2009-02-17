@@ -14,16 +14,16 @@ $data['cat']['name'] = cs_secure($cs_categories['categories_name']);
 $cat_mod = $cs_categories['categories_mod'];
 $modules = cs_checkdirs('mods');
 foreach($modules as $mods) {
-	if($mods['dir'] == $cat_mod) {
- 		$data['cat']['mod'] = $mods['name'];
-	}
+  if($mods['dir'] == $cat_mod) {
+     $data['cat']['mod'] = $mods['name'];
+  }
 }
 #echo cs_html_vote('cat_mod',$cat_mod,'hidden');
 
 $data['cat']['url'] = '';
 if(!empty($cs_categories['categories_url'])) {
-	$cs_cat_url = cs_secure($cs_categories['categories_url']);
-	$data['cat']['url'] = cs_html_link('http://' . $cs_cat_url,$cs_cat_url);
+  $cs_cat_url = cs_secure($cs_categories['categories_url']);
+  $data['cat']['url'] = cs_html_link('http://' . $cs_cat_url,$cs_cat_url);
 }
 
 
@@ -31,9 +31,9 @@ $data['cat']['text'] = cs_secure($cs_categories['categories_text'],1,1);
 
 $data['cat']['pic'] = '';
 if(!empty($cs_categories['categories_picture'])) {
-	$place = 'uploads/categories/' . $cs_categories['categories_picture'];
-	$size = getimagesize($cs_main['def_path'] . '/' . $place);
-	$data['cat']['pic'] = cs_html_img($place,$size[1],$size[0]);
+  $place = 'uploads/categories/' . $cs_categories['categories_picture'];
+  $size = getimagesize($cs_main['def_path'] . '/' . $place);
+  $data['cat']['pic'] = cs_html_img($place,$size[1],$size[0]);
 }
 
 echo cs_subtemplate(__FILE__,$data,'categories','view');

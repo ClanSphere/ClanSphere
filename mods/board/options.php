@@ -9,9 +9,9 @@ $board_form = 1;
 
 $data['lang']['getmsg'] = cs_getmsg();
 
-if(isset($_POST['submit'])) {	
+if(isset($_POST['submit'])) {  
   
-	$board_form = 0;
+  $board_form = 0;
   
   $save = array();
   $save['max_text'] = $_POST['max_text'] < 65000 ? (int) $_POST['max_text'] : 65000;
@@ -32,12 +32,12 @@ if(isset($_POST['submit'])) {
   
 }
 
-if(!empty($board_form)) {	
+if(!empty($board_form)) {  
   $data['action']['form'] = cs_url('board','options');
-	
+  
   $size = $cs_board['avatar_size'] / 1024;
   $size2 = $cs_board['file_size'] / 1024;
-	
+  
   $data['options']['max_text'] = $cs_board['max_text'];
   $data['options']['max_signatur'] = $cs_board['max_signatur'];
   $data['options']['max_high'] = $cs_board['avatar_height'];
@@ -46,21 +46,21 @@ if(!empty($board_form)) {
   $data['options']['max_filesize'] = $size2;
   $data['options']['filetypes'] = $cs_board['file_types'];
 
-	
+  
   if($cs_board['sort'] == 'DESC') {
     $data['check']['desc'] = 'selected="selected"';
   }
   else {
     $data['check']['desc'] = '';
   }
-	
+  
   if($cs_board['sort'] == 'ASC') {
     $data['check']['asc'] = 'selected="selected"';
   }
   else {
     $data['check']['asc'] = '';
   }
-	
+  
   if($cs_board['doubleposts'] == -1) {
     $doubleposts = 0;
     $visibility = 'hidden';
@@ -71,7 +71,7 @@ if(!empty($board_form)) {
     $doubleposts = $cs_board['doubleposts'] / 86400;
     $checked = 'checked="checked"';
   }
-	
+  
   $data['options']['double_posts'] = $checked;
   $data['options']['visible'] = $visibility;
   $data['options']['doubleposts'] = $doubleposts;

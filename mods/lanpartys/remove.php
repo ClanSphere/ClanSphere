@@ -16,7 +16,7 @@ if(isset($_GET['agree'])) {
 }
 
 if(isset($_GET['cancel'])) 
-  	cs_redirect($cs_lang['del_false'], 'lanpartys');
+    cs_redirect($cs_lang['del_false'], 'lanpartys');
 
 if(!empty($lanpartys_form)) {
   $data['lang']['remove'] = $cs_lang['head_remove']; 
@@ -25,7 +25,7 @@ if(!empty($lanpartys_form)) {
   $data['lang']['content'] = cs_link($cs_lang['confirm'],'lanpartys','remove','id=' . $lanpartys_id . '&amp;agree');
   $data['lang']['content'] .= ' - ';
   $data['lang']['content'] .= cs_link($cs_lang['cancel'],'lanpartys','remove','id=' . $lanpartys_id . '&amp;cancel');
-	
+  
   echo cs_subtemplate(__FILE__,$data,'lanpartys','remove');
 }
 ?>

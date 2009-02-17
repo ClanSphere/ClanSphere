@@ -37,18 +37,18 @@ $data['sort']['time'] = cs_sort('gbook','center',$start,0,1,$sort);
 $data['lang']['time'] = $cs_lang['date'];
 
 for($run=0; $run<$gbook_loop; $run++) {
-	if($cs_gbook[$run]['users_id'] > 0) {
-		$gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['users_nick']);
-		$gbook[$run]['email'] = cs_secure($cs_gbook[$run]['users_email']);
-	} else {
-		$gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['gbook_nick']);
-		$gbook[$run]['email'] = cs_secure($cs_gbook[$run]['gbook_email']);
-	}
-	$gbook[$run]['time'] = cs_date('unix',$cs_gbook[$run]['gbook_time'],1);
-	$img_edit = cs_icon('edit',16,$cs_lang['edit']);
-	$gbook[$run]['edit'] = cs_link($img_edit,'gbook','users_edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
-	$img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-	$gbook[$run]['remove'] = cs_link($img_del,'gbook','users_remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
+  if($cs_gbook[$run]['users_id'] > 0) {
+    $gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['users_nick']);
+    $gbook[$run]['email'] = cs_secure($cs_gbook[$run]['users_email']);
+  } else {
+    $gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['gbook_nick']);
+    $gbook[$run]['email'] = cs_secure($cs_gbook[$run]['gbook_email']);
+  }
+  $gbook[$run]['time'] = cs_date('unix',$cs_gbook[$run]['gbook_time'],1);
+  $img_edit = cs_icon('edit',16,$cs_lang['edit']);
+  $gbook[$run]['edit'] = cs_link($img_edit,'gbook','users_edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
+  $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
+  $gbook[$run]['remove'] = cs_link($img_del,'gbook','users_remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
 }
 $data['gbook'] = empty($gbook) ? '' : $gbook;
 echo cs_subtemplate(__FILE__,$data,'gbook','center');

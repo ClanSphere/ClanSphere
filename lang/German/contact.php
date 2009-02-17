@@ -1,7 +1,7 @@
 <?php
 
 $cs_lang['mod']           = 'Kontakt';
-$cs_lang['mod_text']			= 'Kontakt zu den Webmastern aufnehmen';
+$cs_lang['mod_text']      = 'Kontakt zu den Webmastern aufnehmen';
 
 $cs_lang['wizard'] = 'Assistent';
 $cs_lang['task_done'] = 'Aufgabe erledigt markieren';
@@ -22,22 +22,22 @@ $cs_lang['head_archive'] = 'Archiv';
 $cs_lang['body_archive'] = 'Hier finden Sie alle bereits beantworteten Nachrichten.';
 
 // mail.php
-$cs_lang['head_mail']	= 'Anfrage Formular';
-$cs_lang['body_mail']	= 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
-$cs_lang['design']	= 'Design';
-$cs_lang['general']	= 'Allgemein';
-$cs_lang['head']	= 'Betreff';
-$cs_lang['help']	= 'Hilfe';
-$cs_lang['tech']	= 'Technik';
+$cs_lang['head_mail']  = 'Anfrage Formular';
+$cs_lang['body_mail']  = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
+$cs_lang['design']  = 'Design';
+$cs_lang['general']  = 'Allgemein';
+$cs_lang['head']  = 'Betreff';
+$cs_lang['help']  = 'Hilfe';
+$cs_lang['tech']  = 'Technik';
 
 // imprint.php
 $cs_lang['imprint'] = 'Impressum';
 $cs_lang['stand'] = 'Stand:';
 
 // imp_edit.php
-$cs_lang['mod_imp']	= 'Impressum';
-$cs_lang['head_edit']	= 'Bearbeiten';
-$cs_lang['body_edit']	= 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
+$cs_lang['mod_imp']  = 'Impressum';
+$cs_lang['head_edit']  = 'Bearbeiten';
+$cs_lang['body_edit']  = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
 $cs_lang['error_occurred'] = 'Ein Fehler ist aufgetreten';
 $cs_lang['headline'] = 'Text';
 $cs_lang['text'] = 'Antwort';
@@ -60,7 +60,7 @@ $cs_lang['receiver'] = 'Empf&auml;gner';
 $cs_lang['in_response'] = 'Antwort auf Ihre Nachricht vom %s:';
 
 // users_home.php
-$cs_lang['last_mails']		= 'Aktuelle Kontakt-Anfragen';
+$cs_lang['last_mails']    = 'Aktuelle Kontakt-Anfragen';
 
 // view.php
 $cs_lang['view'] = 'Ansehen';
@@ -74,15 +74,15 @@ $cs_lang['editor'] = 'Bearbeiter';
 
 
 // send.php
-$cs_lang['err_direct']		= 'Diese Datei kann nicht direkt aufgerufen werden!';
+$cs_lang['err_direct']    = 'Diese Datei kann nicht direkt aufgerufen werden!';
 $cs_lang['email']   = 'E-Mail';
 $cs_lang['icq']     = 'ICQ Nummer';
 $cs_lang['msn']     = 'MSN';
 $cs_lang['empty']   = 'nicht angegeben';
-$cs_lang['na']		= 'Nicht Verf&uuml;gbar';
-$cs_lang['all']		= 'Allgemein';
-$cs_lang['gfx']		= 'Design';
-$cs_lang['15min']	= '- Es kann nur alle 15 Min eine Nachricht geschrieben werden.';
+$cs_lang['na']    = 'Nicht Verf&uuml;gbar';
+$cs_lang['all']    = 'Allgemein';
+$cs_lang['gfx']    = 'Design';
+$cs_lang['15min']  = '- Es kann nur alle 15 Min eine Nachricht geschrieben werden.';
 $cs_lang['error_name'] = '- Der Name darf nicht leer sein.';
 $cs_lang['error_subject'] = '- Der Betreff darf nicht leer sein.';
 $cs_lang['error_message'] = '- Der Text darf nicht leer sein.';

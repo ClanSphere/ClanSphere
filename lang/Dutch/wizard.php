@@ -1,6 +1,6 @@
 <?php
-$cs_lang['mod_name']	= 'Wizard';
-$cs_lang['mod_text']	= 'Helpt je bij het optimaliseren en geeft je een kijkje in de portaal functies.';
+$cs_lang['mod_name']  = 'Wizard';
+$cs_lang['mod_text']  = 'Helpt je bij het optimaliseren en geeft je een kijkje in de portaal functies.';
 $cs_lang['wizard']    = 'Wizard';
 
 $cs_lang['lang_name'] = 'Talen';
@@ -33,10 +33,10 @@ $cs_lang['done']        = 'Gedaan';
 $cs_lang['next_step']   = 'Volgende stap';
 
 // users_home.php
-$cs_lang['wizard_welcome']	= 'Welkom binnen in de ClanSphere omgeving';
-$cs_lang['wizard_info']	    = 'We raden je aan om de wizard te gebruiken voor de eerste stappen na de installatie!';
-$cs_lang['wizard_start']	  = 'Start assistent';
-$cs_lang['wizard_turnoff']	= 'Schakel dit bericht uit';
+$cs_lang['wizard_welcome']  = 'Welkom binnen in de ClanSphere omgeving';
+$cs_lang['wizard_info']      = 'We raden je aan om de wizard te gebruiken voor de eerste stappen na de installatie!';
+$cs_lang['wizard_start']    = 'Start assistent';
+$cs_lang['wizard_turnoff']  = 'Schakel dit bericht uit';
 
 // welcome.php
 $cs_lang['welcome']   = 'Welkom';

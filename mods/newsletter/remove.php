@@ -17,10 +17,10 @@ if(isset($_GET['cancel']))
   cs_redirect($cs_lang['del_false'],'newsletter');
 
 else {
-	$data['head']['body'] = sprintf($cs_lang['del_rly'],$newsletter_id);
-	$data['url']['agree'] = cs_url('newsletter','remove','id=' . $newsletter_id . '&amp;agree');
-	$data['url']['cancel'] = cs_url('newsletter','remove','id=' . $newsletter_id . '&amp;cancel');
-	
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$newsletter_id);
+  $data['url']['agree'] = cs_url('newsletter','remove','id=' . $newsletter_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('newsletter','remove','id=' . $newsletter_id . '&amp;cancel');
+  
   echo cs_subtemplate(__FILE__,$data,'newsletter','remove');
 }
 

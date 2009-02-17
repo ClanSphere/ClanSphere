@@ -5,7 +5,7 @@
 $cs_lang['mod_name'] = 'LinkUs';
 $cs_lang['mod_text'] = 'Bilder speichern die Andere verwenden k&ouml;nnen um zu diese Seite zu verlinken';
 
-$cs_lang['mod']	= 'LinkUs';
+$cs_lang['mod']  = 'LinkUs';
 $cs_lang['add'] = 'Hinzuf&uuml;gen'; 
 $cs_lang['body_create'] = 'Bitte alle Felder mit * ausf&uuml;llen.';
 

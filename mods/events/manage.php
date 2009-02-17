@@ -59,18 +59,18 @@ echo cs_html_roco(0);
 
 for($run=0; $run<$events_loop; $run++) {
 
-	echo cs_html_roco(1,'leftc');
-	$events_view = cs_secure($cs_events[$run]['events_name']);
+  echo cs_html_roco(1,'leftc');
+  $events_view = cs_secure($cs_events[$run]['events_name']);
   echo cs_link($events_view,'events','view','id=' . $cs_events[$run]['events_id']);
-	echo cs_html_roco(2,'leftc');
-	echo cs_date('unix',$cs_events[$run]['events_time']);
-	echo cs_html_roco(3,'leftc');
+  echo cs_html_roco(2,'leftc');
+  echo cs_date('unix',$cs_events[$run]['events_time']);
+  echo cs_html_roco(3,'leftc');
   $img_edit = cs_icon('edit',16,$cs_lang['edit']);
-	echo cs_link($img_edit,'events','edit','id=' . $cs_events[$run]['events_id'],0,$cs_lang['edit']);
+  echo cs_link($img_edit,'events','edit','id=' . $cs_events[$run]['events_id'],0,$cs_lang['edit']);
   echo cs_html_roco(4,'leftc');
-	$img_del = cs_icon('editdelete',16,$cs_lang['remove']);
+  $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
   echo cs_link($img_del,'events','remove','id=' . $cs_events[$run]['events_id'],0,$cs_lang['remove']);
-	echo cs_html_roco(0);
+  echo cs_html_roco(0);
 }
 
 echo cs_html_table(0);

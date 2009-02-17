@@ -3,13 +3,13 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'Banka';
-$cs_lang['mod_text']	= 'Administracija prora&#269;una klana';
-$cs_lang['mod']	= 'Banka';
+$cs_lang['mod_name']  = 'Banka';
+$cs_lang['mod_text']  = 'Administracija prora&#269;una klana';
+$cs_lang['mod']  = 'Banka';
 $cs_lang['head']= 'Administracija';
 $cs_lang['head_create'] = 'Dodaj';
 $cs_lang['head_view'] = 'Podrobnosti';
-$cs_lang['head_remove']	= 'Odstrani';
+$cs_lang['head_remove']  = 'Odstrani';
 $cs_lang['head_edit'] = 'Uredi';
 $cs_lang['body_edit'] =  'Vsa polja ozna&#269;ena z * so obvezna.';
 $cs_lang['error_occurred'] = 'Napaka.';

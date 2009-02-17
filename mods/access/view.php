@@ -20,14 +20,14 @@ foreach($modules as $mod) {
     if(!empty($mod['icon'])) {
       $data['access'][$run]['icon'] = cs_icon($mod['icon']);
     }
-	else {
-	  $data['access'][$run]['icon'] = '';
-	}
-	
+  else {
+    $data['access'][$run]['icon'] = '';
+  }
+  
     $data['access'][$run]['name'] = $mod['name'];
     $mod_acc = $cs_access[$acc_dir];
     $data['access'][$run]['access'] =  $mod_acc . ' - ' . $cs_lang['lev_' . $mod_acc];
-	$run++;
+  $run++;
   }
 }
 

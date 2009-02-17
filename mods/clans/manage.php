@@ -41,7 +41,7 @@ for($run = 0; $run < $count_clans; $run++) {
   $data['clans'][$run]['edit'] = cs_link(cs_icon('edit',16,$cs_lang['edit']),'clans','edit','id=' . $clans_data[$run]['clans_id'],0,$cs_lang['edit']);
   
   if($clans_data[$run]['clans_id'] == 1) {
-	$data['clans'][$run]['remove'] = '-';
+  $data['clans'][$run]['remove'] = '-';
   }
   else {
     $data['clans'][$run]['remove'] = cs_link(cs_icon('editdelete',16,$cs_lang['remove']),'clans','delete','id=' . $clans_data[$run]['clans_id'],0,$cs_lang['remove']);
@@ -51,12 +51,12 @@ for($run = 0; $run < $count_clans; $run++) {
 $data['if']['done'] = false;
 
 if($account['access_wizard'] == 5) {
-	$wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_clan' AND options_value = '1'");
-	if(empty($wizard)) {
-		$data['if']['done'] = true;
-		$data['link']['wizard'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=clan&amp;done=1');
-	}
-}	
+  $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_clan' AND options_value = '1'");
+  if(empty($wizard)) {
+    $data['if']['done'] = true;
+    $data['link']['wizard'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=clan&amp;done=1');
+  }
+}  
 
 echo cs_subtemplate(__FILE__,$data,'clans','manage');
 ?>

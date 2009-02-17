@@ -70,44 +70,44 @@ $img_picture = cs_icon('image',16,$cs_lang['preview']);
 
 for($run=0; $run<$files_loop; $run++)
 {       
-	echo cs_html_roco(1,'leftc');
-	$files_mirror = $cs_files[$run]['files_mirror'];
-	$temp = explode("-----", $files_mirror);
-	$temp_loop = count($temp);
-	$file_typ_array = array();
-	$run_3 = '0';
-	for ($run_2 = 1; $run_2 < $temp_loop; $run_2++)
-	{
-	  	$temp_a = explode("\n", $temp[$run_2]);
-		if(in_array($temp_a['3'],$file_typ_array,TRUE))
-		{}
-		else
-		{
-			$file_typ_array[$run_3] = $temp_a['3'];
-			$run_3++;
-		}
-	}
-	$loop_file_typ_array = count($file_typ_array);
-	for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++)
-	{
-		$ext = $file_typ_array[$run_2];
-		echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
-	}
-	echo cs_html_roco(2,'leftc');
-	echo cs_link($cs_files[$run]['files_name'],'files','view','where=' .$cs_files[$run]['files_id']);
-	echo cs_html_roco(3,'leftc');
-	$cs_files_user = cs_secure($cs_files[$run]['users_nick']);
-	echo cs_user($cs_files[$run]['users_id'],$cs_files[$run]['users_nick'], $cs_files[$run]['users_active']);
-	echo cs_html_roco(4,'leftc');
-	echo cs_date('unix',$cs_files[$run]['files_time'],1);
-	echo cs_html_roco(5,'leftc');
-	echo cs_link($img_picture,'files','picture','id=' . $cs_files[$run]['files_id'],0,$cs_lang['preview']);
-	echo cs_html_roco(5,'leftc');
-	echo cs_link($img_edit,'files','edit','id=' . $cs_files[$run]['files_id'],0,$cs_lang['edit']);
-	echo cs_html_roco(6,'leftc');
-	
-	echo cs_link($img_del,'files','remove','id=' . $cs_files[$run]['files_id'],0,$cs_lang['remove']);
-	echo cs_html_roco(0);
+  echo cs_html_roco(1,'leftc');
+  $files_mirror = $cs_files[$run]['files_mirror'];
+  $temp = explode("-----", $files_mirror);
+  $temp_loop = count($temp);
+  $file_typ_array = array();
+  $run_3 = '0';
+  for ($run_2 = 1; $run_2 < $temp_loop; $run_2++)
+  {
+      $temp_a = explode("\n", $temp[$run_2]);
+    if(in_array($temp_a['3'],$file_typ_array,TRUE))
+    {}
+    else
+    {
+      $file_typ_array[$run_3] = $temp_a['3'];
+      $run_3++;
+    }
+  }
+  $loop_file_typ_array = count($file_typ_array);
+  for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++)
+  {
+    $ext = $file_typ_array[$run_2];
+    echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
+  }
+  echo cs_html_roco(2,'leftc');
+  echo cs_link($cs_files[$run]['files_name'],'files','view','where=' .$cs_files[$run]['files_id']);
+  echo cs_html_roco(3,'leftc');
+  $cs_files_user = cs_secure($cs_files[$run]['users_nick']);
+  echo cs_user($cs_files[$run]['users_id'],$cs_files[$run]['users_nick'], $cs_files[$run]['users_active']);
+  echo cs_html_roco(4,'leftc');
+  echo cs_date('unix',$cs_files[$run]['files_time'],1);
+  echo cs_html_roco(5,'leftc');
+  echo cs_link($img_picture,'files','picture','id=' . $cs_files[$run]['files_id'],0,$cs_lang['preview']);
+  echo cs_html_roco(5,'leftc');
+  echo cs_link($img_edit,'files','edit','id=' . $cs_files[$run]['files_id'],0,$cs_lang['edit']);
+  echo cs_html_roco(6,'leftc');
+  
+  echo cs_link($img_del,'files','remove','id=' . $cs_files[$run]['files_id'],0,$cs_lang['remove']);
+  echo cs_html_roco(0);
 }
 echo cs_html_table(0);
 ?>

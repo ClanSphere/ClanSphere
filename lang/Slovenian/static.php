@@ -3,17 +3,17 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'Stati&#269;ne strani';
-$cs_lang['mod_text']	= 'Urejanje stati&#269;nih strani';
-$cs_lang['mod']	= 'Stati&#269;na';
+$cs_lang['mod_name']  = 'Stati&#269;ne strani';
+$cs_lang['mod_text']  = 'Urejanje stati&#269;nih strani';
+$cs_lang['mod']  = 'Stati&#269;na';
 $cs_lang['head_create'] = 'Dodaj';
 $cs_lang['body_create'] = 'Prosim izpolni vsa polja ozna&#269;ena z *.';
 $cs_lang['head_edit'] = 'Uredi';
 $cs_lang['body_edit'] = 'Prosim izpolni vsa polja ozna&#269;ena z *.';
-$cs_lang['body_com_edit']	= 'Prosim, da druge obvesti&scaron; o svojih spremembah.';
-$cs_lang['head_com_edit']	= 'Uredi komentar';
-$cs_lang['head_com_remove']	= 'Odstrani komentar';
-$cs_lang['head_remove']	= 'Odstrani';
+$cs_lang['body_com_edit']  = 'Prosim, da druge obvesti&scaron; o svojih spremembah.';
+$cs_lang['head_com_edit']  = 'Uredi komentar';
+$cs_lang['head_com_remove']  = 'Odstrani komentar';
+$cs_lang['head_remove']  = 'Odstrani';
 $cs_lang['title'] = 'Naslov';
 $cs_lang['access'] = 'Dostop';
 $cs_lang['content'] = 'Vsebina';
@@ -33,8 +33,8 @@ $cs_lang['lev_2'] = 'Uporabniki =>';
 $cs_lang['lev_3'] = '&#268;lani =>';
 $cs_lang['lev_4'] = 'Oranizatorji =>';
 $cs_lang['lev_5'] = 'Webmaster';
-$cs_lang['not_able']	= '- Cilj ne dovoljuje komentarjev.';
-$cs_lang['place']			= 'Kraj:';
-$cs_lang['posts']			= 'Komentarji:';
-$cs_lang['text']		= 'Besedilo';
+$cs_lang['not_able']  = '- Cilj ne dovoljuje komentarjev.';
+$cs_lang['place']      = 'Kraj:';
+$cs_lang['posts']      = 'Komentarji:';
+$cs_lang['text']    = 'Besedilo';
 ?>

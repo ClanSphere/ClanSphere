@@ -24,7 +24,7 @@ if(isset($_POST['submit'])) {
 
   $error = 0;
   $errormsg = '';
-	
+  
   if(empty($cs_lanpartys['lanpartys_name'])) {
     $error++;
     $errormsg .= $cs_lang['no_name'] . cs_html_br(1);
@@ -87,7 +87,7 @@ else {
   $lanpartys_save = array_values($cs_lanpartys);
   cs_sql_insert(__FILE__,'lanpartys',$lanpartys_cells,$lanpartys_save);
 
-	
+  
   cs_redirect($cs_lang['create_done'],'lanpartys');
 }
 ?>

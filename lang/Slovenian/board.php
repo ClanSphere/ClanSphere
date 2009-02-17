@@ -61,8 +61,8 @@ $cs_lang['up_error'] = '- Pojavila se je neznana napaka, prosim kontaktiraj Webm
 $cs_lang['nopic'] = 'Nisi izbral avatarja';
 $cs_lang['current']    = 'Trenurna slika';
 $cs_lang['more']    = 'Ve&#269;';
-$cs_lang['glob_sig']	= 'Globalni podpis';
-$cs_lang['glob_sig1']	= 'Mo&#382;ni nizi: {post_nick} in {post_date}';
+$cs_lang['glob_sig']  = 'Globalni podpis';
+$cs_lang['glob_sig1']  = 'Mo&#382;ni nizi: {post_nick} in {post_date}';
 
 //center.php
 $cs_lang['cat']    = 'Kategorija';

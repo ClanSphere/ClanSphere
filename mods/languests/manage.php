@@ -62,7 +62,7 @@ for($run=0; $run<$languests_loop; $run++) {
   else {
     $data['languests'][$run]['status'] = cs_link($cs_lang['chair'] . ' ' . $cs_languests[$run]['lanroomd_number'],'lanrooms','view','lanroomd_id=' . $cs_languests[$run]['lanroomd_id']);
   }
-	
+  
   $data['languests'][$run]['map'] = cs_link(cs_icon('kjumpingcube',16,$cs_lang['map']),'languests','rooms','languests_id=' . $cs_languests[$run]['languests_id']);
 
   $data['languests'][$run]['edit'] = cs_link(cs_icon('edit',16,$cs_lang['edit']),'languests','edit','id=' . $cs_languests[$run]['languests_id'],0,$cs_lang['edit']);

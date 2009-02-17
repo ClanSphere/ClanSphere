@@ -13,106 +13,106 @@ echo cs_html_roco(0);
 echo cs_html_roco(1,'leftc');
 
 if (!empty($_POST['reduce'])) {
-	
-	$id = (int) $_POST['id'];
-	
-	$cs_cups['cups_teams'] = (int) $_POST['teams'];
-	
-	$cells = array_keys($cs_cups);
-	$values = array_values($cs_cups);
-	
-	cs_sql_update(__FILE__,'cups',$cells,$values,$id);
-	
+  
+  $id = (int) $_POST['id'];
+  
+  $cs_cups['cups_teams'] = (int) $_POST['teams'];
+  
+  $cells = array_keys($cs_cups);
+  $values = array_values($cs_cups);
+  
+  cs_sql_update(__FILE__,'cups',$cells,$values,$id);
+  
 }
 
 if (!empty($_POST['start'])) {
-	
-	$id = (int) $_POST['id'];
-	
-	$maxteams = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$id.'\'');
-	$halfmax = $maxteams['cups_teams'] / 2;
-	$select = cs_sql_select(__FILE__,'cupsquads','squads_id','cups_id = \''.$id.'\'',0,0,0);
-	
+  
+  $id = (int) $_POST['id'];
+  
+  $maxteams = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$id.'\'');
+  $halfmax = $maxteams['cups_teams'] / 2;
+  $select = cs_sql_select(__FILE__,'cupsquads','squads_id','cups_id = \''.$id.'\'',0,0,0);
+  
   if(!empty($select)) {
-  	$x = 0;
-  	shuffle($select);
-  	foreach ($select AS $squad) {
-  		$x++;
-  		$z = $x > $halfmax ? $x - $halfmax : $x;
-  		$y = $x > $halfmax ? 2 : 1;
-  		$matches[$z][$y] = $squad['squads_id'];
-  	}
-  	// this is the result of the loop above: $matches[group][team 1 or 2] = squadid
+    $x = 0;
+    shuffle($select);
+    foreach ($select AS $squad) {
+      $x++;
+      $z = $x > $halfmax ? $x - $halfmax : $x;
+      $y = $x > $halfmax ? 2 : 1;
+      $matches[$z][$y] = $squad['squads_id'];
+    }
+    // this is the result of the loop above: $matches[group][team 1 or 2] = squadid
   }
 
   if(!empty($matches)) {
-  	foreach ($matches AS $match) {
-  		$cs_cups['cups_id'] = $id;
-  		$cs_cups['squad1_id'] = $match[1];
-  		$cs_cups['squad2_id'] = empty($match[2]) ? 0 : $match[2];
-  		$cs_cups['cupmatches_round'] = strlen(decbin($maxteams['cups_teams'])) - 1;
-  		
-  		if (empty($match[2])) {
-  			$cs_cups['cupmatches_winner'] = $match[1];
-  			$cs_cups['cupmatches_accepted1'] = 1;
-  			$cs_cups['cupmatches_accepted2'] = 1;
-  		}
-  		
-  		$cells = array_keys($cs_cups);
-  		$values = array_values($cs_cups);
-  		cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
-  	}
+    foreach ($matches AS $match) {
+      $cs_cups['cups_id'] = $id;
+      $cs_cups['squad1_id'] = $match[1];
+      $cs_cups['squad2_id'] = empty($match[2]) ? 0 : $match[2];
+      $cs_cups['cupmatches_round'] = strlen(decbin($maxteams['cups_teams'])) - 1;
+      
+      if (empty($match[2])) {
+        $cs_cups['cupmatches_winner'] = $match[1];
+        $cs_cups['cupmatches_accepted1'] = 1;
+        $cs_cups['cupmatches_accepted2'] = 1;
+      }
+      
+      $cells = array_keys($cs_cups);
+      $values = array_values($cs_cups);
+      cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
+    }
   }
 
-	cs_redirect($cs_lang['started_successfully'],'cups','manage');
-	
+  cs_redirect($cs_lang['started_successfully'],'cups','manage');
+  
 } else {
-	
-	$id = (int) $_GET['id'];
-	
-	$cupsel = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$id.'\'');
-	$squads_count = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$id.'\'');
-	
-	if (($cupsel['cups_teams'] / 2) > $squads_count) {
-		
-		$bin = decbin($squads_count);
-		if (substr_count($bin,'1') != 1) {
-			// Get the smallest potency of 2 bigger then the team count
-			$new = '1';
-			for ($x = 0; $x < strlen($bin); $x++) {
-				$new .= '0';
-			}
-			settype($new,'integer');
-			$new = bindec($new);
-		} else {
-			// If the team count is a potency of 2 already
-			$new = $squads_count;
-		}
-		
-		echo $cs_lang['more_teams_required'];
-		echo $cs_lang['reduce_1'];
-		echo $new;
-		echo $cs_lang['reduce_2'];
-		echo cs_html_roco(0);
-		echo cs_html_roco(1,'centerb');
-		echo cs_html_form(1,'cupsreduce','cups','start');
-		echo cs_html_vote('id',$id,'hidden');
-		echo cs_html_vote('teams',$new,'hidden');
-		echo cs_html_vote('reduce',$cs_lang['confirm'],'submit');
-		echo cs_html_form(0);
-		
-	} else {
-		
-		echo $cs_lang['start_now'];
-		echo cs_html_roco(0);
-		echo cs_html_roco(1,'centerb');
-		echo cs_html_form(1,'cupsstart','cups','start');
-		echo cs_html_vote('id',$id,'hidden');
-		echo cs_html_vote('start',$cs_lang['confirm'],'submit');
-		echo cs_html_form(0);
-		
-	}	
-	
+  
+  $id = (int) $_GET['id'];
+  
+  $cupsel = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$id.'\'');
+  $squads_count = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$id.'\'');
+  
+  if (($cupsel['cups_teams'] / 2) > $squads_count) {
+    
+    $bin = decbin($squads_count);
+    if (substr_count($bin,'1') != 1) {
+      // Get the smallest potency of 2 bigger then the team count
+      $new = '1';
+      for ($x = 0; $x < strlen($bin); $x++) {
+        $new .= '0';
+      }
+      settype($new,'integer');
+      $new = bindec($new);
+    } else {
+      // If the team count is a potency of 2 already
+      $new = $squads_count;
+    }
+    
+    echo $cs_lang['more_teams_required'];
+    echo $cs_lang['reduce_1'];
+    echo $new;
+    echo $cs_lang['reduce_2'];
+    echo cs_html_roco(0);
+    echo cs_html_roco(1,'centerb');
+    echo cs_html_form(1,'cupsreduce','cups','start');
+    echo cs_html_vote('id',$id,'hidden');
+    echo cs_html_vote('teams',$new,'hidden');
+    echo cs_html_vote('reduce',$cs_lang['confirm'],'submit');
+    echo cs_html_form(0);
+    
+  } else {
+    
+    echo $cs_lang['start_now'];
+    echo cs_html_roco(0);
+    echo cs_html_roco(1,'centerb');
+    echo cs_html_form(1,'cupsstart','cups','start');
+    echo cs_html_vote('id',$id,'hidden');
+    echo cs_html_vote('start',$cs_lang['confirm'],'submit');
+    echo cs_html_form(0);
+    
+  }  
+  
 }
 
 echo cs_html_roco(0);

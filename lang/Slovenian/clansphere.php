@@ -3,11 +3,11 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'ClanSphere';
-$cs_lang['modinfo']	= 'Glavni modul z CMS-Jedrom';
-$cs_lang['modules_list']	= 'Vsi name&scaron;&#269;eni moduli.';
-$cs_lang['languages']	= 'Jeziki';
-$cs_lang['languages_list']	= 'Seznam %s jezikov.';
+$cs_lang['mod']  = 'ClanSphere';
+$cs_lang['modinfo']  = 'Glavni modul z CMS-Jedrom';
+$cs_lang['modules_list']  = 'Vsi name&scaron;&#269;eni moduli.';
+$cs_lang['languages']  = 'Jeziki';
+$cs_lang['languages_list']  = 'Seznam %s jezikov.';
 
 $cs_lang['cache'] = 'Cache';
 $cs_lang['body_cache'] = 'Cache mora&scaron; o&#269;istiti vsaki&#269; ko doda&scaron;, spremeni&scaron; ali odstrani&scaron; "info.php" datoteko!';
@@ -29,22 +29,22 @@ $cs_lang['lang_list'] = 'Jeziki';
 
 $cs_lang['creator'] = 'Avtor';
 
-$cs_lang['head_lang_view']	= 'Informacije';
-$cs_lang['body_lang_view']	= 'Informacije o prevodu.';
+$cs_lang['head_lang_view']  = 'Informacije';
+$cs_lang['body_lang_view']  = 'Informacije o prevodu.';
 
-$cs_lang['mod_released']		= 'Datum';
-$cs_lang['mod_team']				= 'Ekipa';
-$cs_lang['mod_url']					= 'Spletna stran';
-$cs_lang['mod_desc']				= 'Opis';
+$cs_lang['mod_released']    = 'Datum';
+$cs_lang['mod_team']        = 'Ekipa';
+$cs_lang['mod_url']          = 'Spletna stran';
+$cs_lang['mod_desc']        = 'Opis';
 
-$cs_lang['translation_status']	= 'Status prevoda';
-$cs_lang['file']				= 'Datoteke';
-$cs_lang['diff']				= 'Razlike';
-$cs_lang['missing_file']		= 'Ni datoteke';
-$cs_lang['total_diff']			= 'Razlike najdene v %s datotekah';
+$cs_lang['translation_status']  = 'Status prevoda';
+$cs_lang['file']        = 'Datoteke';
+$cs_lang['diff']        = 'Razlike';
+$cs_lang['missing_file']    = 'Ni datoteke';
+$cs_lang['total_diff']      = 'Razlike najdene v %s datotekah';
 
-$cs_lang['head_system']	= 'Sistem';
-$cs_lang['body_system']	= 'Pomembne informacije in nastavitve.';
+$cs_lang['head_system']  = 'Sistem';
+$cs_lang['body_system']  = 'Pomembne informacije in nastavitve.';
 $cs_lang['templates'] = 'Preobleke';
 $cs_lang['software'] = 'Software';
 $cs_lang['storage'] = 'Prostor';
@@ -54,7 +54,7 @@ $cs_lang['themes'] = 'Teme';
 $cs_lang['using'] = 'porabljeno';
 $cs_lang['dstime'] = 'Poletni &#269;as';
 
-$cs_lang['body_options']	= 'Clansphere mo&#382;nosti portala.';
+$cs_lang['body_options']  = 'Clansphere mo&#382;nosti portala.';
 $cs_lang['off'] = 'izklju&#269;eno';
 $cs_lang['on'] = 'vklju&#269;eno';
 $cs_lang['automatic'] = 'avtomatsko';
@@ -81,15 +81,15 @@ $cs_lang['modul'] = 'Modul';
 $cs_lang['action'] = 'Akcija';
 $cs_lang['parameters'] = 'Parametri';
 
-$cs_lang['head_software']	= 'Software';
-$cs_lang['body_software']	= 'Na serverju je name&scaron;&#269;ena naslednja programska oprema.';
+$cs_lang['head_software']  = 'Software';
+$cs_lang['body_software']  = 'Na serverju je name&scaron;&#269;ena naslednja programska oprema.';
 
-$cs_lang['display_err']	= 'Error handling';
+$cs_lang['display_err']  = 'Error handling';
 $cs_lang['m_quotes'] = 'Magic Quotes';
 $cs_lang['os'] = 'Operacijski sistem';
-$cs_lang['php_extensions']	= 'PHP Extensions';
-$cs_lang['php_mod']	= 'PHP Module';
-$cs_lang['php_setup']	= 'PHP Nastavitve';
+$cs_lang['php_extensions']  = 'PHP Extensions';
+$cs_lang['php_mod']  = 'PHP Module';
+$cs_lang['php_setup']  = 'PHP Nastavitve';
 $cs_lang['reg_global'] = 'Register Globals';
 $cs_lang['safe_mode'] = 'Safe Mode';
 $cs_lang['trans_sid'] = 'Transparent SessionID';
@@ -101,7 +101,7 @@ $cs_lang['type'] = 'Database Server';
 $cs_lang['client'] = 'Client Version';
 $cs_lang['host'] = 'Database host';
 $cs_lang['server'] = 'Server Version';
-$cs_lang['tables']	= 'Tabele';
+$cs_lang['tables']  = 'Tabele';
 $cs_lang['post_max_size'] = 'Max. Formdatasize';
 $cs_lang['upload_max_filesize'] = 'Max. Upload-Filesize';
 $cs_lang['memory_limit'] = 'Max. Memoryconsumption';
@@ -110,49 +110,49 @@ $cs_lang['usage'] = 'Poraba';
 $cs_lang['data'] = 'Podatkov';
 $cs_lang['indexe'] = 'Indeksov';
 
-$cs_lang['body_storage']	= 'Pomembna statistika in informacije';
+$cs_lang['body_storage']  = 'Pomembna statistika in informacije';
 
 $cs_lang['space_total'] = 'Skupaj prostora';
 $cs_lang['space_free'] = 'Prost prostor';
-$cs_lang['space_used']	= 'Zaseden prostor';
+$cs_lang['space_used']  = 'Zaseden prostor';
 $cs_lang['space_mods'] = 'Module prostor';
 $cs_lang['space_sym'] = 'Symbol prostor';
 $cs_lang['space_up'] = 'Upload prostor';
 $cs_lang['space_temp'] = 'Prostor preoblek';
 
-$cs_lang['body_temp_list']	= 'Seznam %s-ih preoblek.';
+$cs_lang['body_temp_list']  = 'Seznam %s-ih preoblek.';
 $cs_lang['theme_found'] = 'Tema z enakim imenom najdena. Zamenjam temo?';
 
-$cs_lang['head_temp_view']	= 'Informacije';
-$cs_lang['body_temp_view']	= 'Informacije o preobleki.';
+$cs_lang['head_temp_view']  = 'Informacije';
+$cs_lang['body_temp_view']  = 'Informacije o preobleki.';
 
 $cs_lang['themes_list'] = 'Seznam tem';
 $cs_lang['themes_listed'] = 'Seznam %s-ih tem.';
 
-$cs_lang['head_variables']	= 'Spremenljivke';
-$cs_lang['body_variables']	= 'Splo&scaron;ni podatki';
+$cs_lang['head_variables']  = 'Spremenljivke';
+$cs_lang['body_variables']  = 'Splo&scaron;ni podatki';
 
-$cs_lang['key']		= 'Klju&#269;';
-$cs_lang['value']	= 'Vrednost';
+$cs_lang['key']    = 'Klju&#269;';
+$cs_lang['value']  = 'Vrednost';
 
 $cs_lang['extended'] = 'Napredno';
 $cs_lang['change_dstime_for_all'] = 'Zamenjaj poletni &#269;as vsem uporabnikom';
 
 // Metatags
-$cs_lang['metatags']	= 'Metatagi';
-$cs_lang['generate_metatags']	= 'Tukaj lahko generira&scaron; metatage';
-$cs_lang['charset']	= 'Charset';
-$cs_lang['description']	= 'Opis';
-$cs_lang['keywords']	= 'Klju&#269;ne besede';
-$cs_lang['author']	= 'Avtor';
-$cs_lang['designer']	= 'Webmaster';
-$cs_lang['publisher']	= 'Publisher';
-$cs_lang['robots']	= 'Robots';
-$cs_lang['distribution']	= 'Distribucija';
-$cs_lang['edit_done']	= 'Uspe&scaron;no urejeno';
-$cs_lang['too_many_chars']	= '- Tvoj vnos v "%s" vsebuje ve&#269; kot 200 znakov';
-$cs_lang['global']	= 'splo&scaron;no';
-$cs_lang['internal']	= 'interno';
+$cs_lang['metatags']  = 'Metatagi';
+$cs_lang['generate_metatags']  = 'Tukaj lahko generira&scaron; metatage';
+$cs_lang['charset']  = 'Charset';
+$cs_lang['description']  = 'Opis';
+$cs_lang['keywords']  = 'Klju&#269;ne besede';
+$cs_lang['author']  = 'Avtor';
+$cs_lang['designer']  = 'Webmaster';
+$cs_lang['publisher']  = 'Publisher';
+$cs_lang['robots']  = 'Robots';
+$cs_lang['distribution']  = 'Distribucija';
+$cs_lang['edit_done']  = 'Uspe&scaron;no urejeno';
+$cs_lang['too_many_chars']  = '- Tvoj vnos v "%s" vsebuje ve&#269; kot 200 znakov';
+$cs_lang['global']  = 'splo&scaron;no';
+$cs_lang['internal']  = 'interno';
 
 // Lang Validator
 $cs_lang['validator'] = 'Validator';

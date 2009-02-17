@@ -78,21 +78,21 @@ class rune
     function connect()
     {
         if (($this->socket = fsockopen('udp://'. $this->host, $this->port, $errno, $errstr, 30)))
-	{
-	    return true;
-	}
-	
-	return false;
+  {
+      return true;
+  }
+  
+  return false;
     }
 
     function disconnect()
     {
         if ((fclose($this->socket)))
-	{
-	    return true;
-	}
+  {
+      return true;
+  }
 
-	return false;
+  return false;
     }
 
     function get_info()
@@ -100,62 +100,62 @@ class rune
         $write = "\\info\\";
         $stream = $this->get_status($write);
 
-	return $stream;
+  return $stream;
     }
 
     function get_players()
     {
         $write = "\\players\\";
-	$stream = $this->get_status($write);
+  $stream = $this->get_status($write);
 
-	return $stream;
+  return $stream;
     }
     
     function get_status($write)
     {
         if ($this->connect() === false)
-	{
-	    return false;
-	}
+  {
+      return false;
+  }
         
-	socket_set_timeout($this->socket, 3);
-	
-	$time_begin = $this->microtime_float();
-        	
+  socket_set_timeout($this->socket, 3);
+  
+  $time_begin = $this->microtime_float();
+          
         fwrite($this->socket, $write);
-	
+  
         $info = fread($this->socket, 1);
-	$status = socket_get_status($this->socket);
-	$length = $status['unread_bytes'];
-	
-	if ($length > 0)
-	{
+  $status = socket_get_status($this->socket);
+  $length = $status['unread_bytes'];
+  
+  if ($length > 0)
+  {
             $info = fread($this->socket, $length);
-	}
+  }
 
-	$time_end = $this->microtime_float();
+  $time_end = $this->microtime_float();
 
-	if (empty($info))
-	{
-	    return false;
-	}
+  if (empty($info))
+  {
+      return false;
+  }
 
         /*while (substr($info, -6) != "\final")
         {
             $info .= fread($this->socket, 1);
         }*/
-	
-	// response time
-	$this->response = $time_end - $time_begin;
-	$this->response = ($this->response * 1000);
-	$this->response = (int)$this->response;
+  
+  // response time
+  $this->response = $time_end - $time_begin;
+  $this->response = ($this->response * 1000);
+  $this->response = (int)$this->response;
         
-	if ($this->disconnect() === false)
-	{
-	    return false;
-	}
+  if ($this->disconnect() === false)
+  {
+      return false;
+  }
 
-	return $info;
+  return $info;
     }
 
     function getstream($host, $port, $queryport)
@@ -172,19 +172,19 @@ class rune
         $this->host = $host;
 
         // get the infostream from server
-	$this->s_info = $this->get_info();
-	$this->s_info .= $this->get_players();
-        	
-	if ($this->s_info)
-	{
-	    $this->splitdata();
-	
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+  $this->s_info = $this->get_info();
+  $this->s_info .= $this->get_players();
+          
+  if ($this->s_info)
+  {
+      $this->splitdata();
+  
+      return true;
+  }
+  else
+  {
+      return false;
+  }
     }
 
     function check_color($text)
@@ -231,47 +231,47 @@ class rune
     function getrules($phgdir)
     {
         $srv_rules['sets'] = false;
-	
+  
         // response time
-	$srv_rules['response'] = $this->response . ' ms';
-	
+  $srv_rules['response'] = $this->response . ' ms';
+  
         // rune setting pics
-	$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+  $sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
         
-	// get the info strings from server info stream
-	$srv_rules['hostname']     = $this->getvalue('hostname',   $this->g_info);
-	$srv_rules['gametype']     = $this->getvalue('gametype',   $this->g_info);
-	$srv_rules['gamename']     = $this->getvalue('gamename',   $this->g_info);
-	$srv_rules['version']      = $this->getvalue('gamever',    $this->g_info);
-	$srv_rules['mapname']      = $this->getvalue('mapname',    $this->g_info);
-	$srv_rules['maxplayers']   = $this->getvalue('maxplayers', $this->g_info);
-	$srv_rules['needpass']     = $this->getvalue('password',   $this->g_info);
+  // get the info strings from server info stream
+  $srv_rules['hostname']     = $this->getvalue('hostname',   $this->g_info);
+  $srv_rules['gametype']     = $this->getvalue('gametype',   $this->g_info);
+  $srv_rules['gamename']     = $this->getvalue('gamename',   $this->g_info);
+  $srv_rules['version']      = $this->getvalue('gamever',    $this->g_info);
+  $srv_rules['mapname']      = $this->getvalue('mapname',    $this->g_info);
+  $srv_rules['maxplayers']   = $this->getvalue('maxplayers', $this->g_info);
+  $srv_rules['needpass']     = $this->getvalue('password',   $this->g_info);
         
-	// path to map picture and default info picture
-	$srv_rules['map_path'] = 'maps/rune';
-	$srv_rules['map_default'] = 'default.jpg';
-	
-	// get the connected player
-	$srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
+  // path to map picture and default info picture
+  $srv_rules['map_path'] = 'maps/rune';
+  $srv_rules['map_default'] = 'default.jpg';
+  
+  // get the connected player
+  $srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
         
-	// complete the gamename
+  // complete the gamename
         $srv_rules['gamename'] = 'Rune<br>Version ' . $srv_rules['version'];
-	
-	// server privileges
-	if ($srv_rules['needpass'] == 'True')
-	{
-	    $srv_rules['sets'] .= $sets['pass'];
-	}
-	
-	if ($srv_rules['sets'] === false)
-	{
+  
+  // server privileges
+  if ($srv_rules['needpass'] == 'True')
+  {
+      $srv_rules['sets'] .= $sets['pass'];
+  }
+  
+  if ($srv_rules['sets'] === false)
+  {
             $srv_rules['sets'] = '-';
-	}
+  }
 
 // General server Info
         global $cs_lang;
         $srv_rules['htmlinfo'] = cs_html_roco(1,'rightb',0,0,'50%') . $cs_lang['map:'];
-		$srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
+    $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['players'];
         $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['response'];
@@ -294,15 +294,15 @@ class rune
         $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['sets'] . cs_html_roco(0);
 
         // return all server rules
-	return $srv_rules;	    
+  return $srv_rules;      
     }
      
     
     function getplayers()
     {
         $players = array();
-	
-	// set html thead for playerlist without teams
+  
+  // set html thead for playerlist without teams
     global $cs_lang;
     $thead = cs_html_roco(1,'headb');
     $thead .= cs_html_div(1,'text-align:center');
@@ -333,68 +333,68 @@ class rune
     $thead .= $cs_lang['ping'];
     $thead .= cs_html_div(0);
     $thead .= cs_html_roco(0);
-	
+  
         // how many players must search
         $nowplayers = $this->getvalue('numplayers', $this->g_info);
-	$nowplayers = $nowplayers - 1;
+  $nowplayers = $nowplayers - 1;
         $clients = 0;
        
         // get the data of each player and add the team status
         while ($nowplayers != -1)
         {
-	    $pl       = $this->getvalue("player_$clients", $this->g_info);
-	    $pl_frags = $this->getvalue("frags_$clients",  $this->g_info);
-	    $pl_team  = $this->getvalue("team_$clients",   $this->g_info);
-	    $pl_mesh  = $this->getvalue("mesh_$clients",   $this->g_info);
-	    $pl_skin  = $this->getvalue("skin_$clients",   $this->g_info);
-	    $pl_ping  = $this->getvalue("ping_$clients",   $this->g_info);
-	     
+      $pl       = $this->getvalue("player_$clients", $this->g_info);
+      $pl_frags = $this->getvalue("frags_$clients",  $this->g_info);
+      $pl_team  = $this->getvalue("team_$clients",   $this->g_info);
+      $pl_mesh  = $this->getvalue("mesh_$clients",   $this->g_info);
+      $pl_skin  = $this->getvalue("skin_$clients",   $this->g_info);
+      $pl_ping  = $this->getvalue("ping_$clients",   $this->g_info);
+       
             $players[$clients] = $pl_frags  . ' ' . 
-	                         $pl_team   . ' ' .
-				 $pl_mesh   . ' ' .
-				 $pl_skin   . 
-				 $pl_ping   . ' ' .
-				 "\"$pl\"";
-	    $nowplayers--;
-	    $clients++;
+                           $pl_team   . ' ' .
+         $pl_mesh   . ' ' .
+         $pl_skin   . 
+         $pl_ping   . ' ' .
+         "\"$pl\"";
+      $nowplayers--;
+      $clients++;
         }
         
-	// check the connected players and sort the ranking
-	if ($players == false)
-	{
-	    $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
+  // check the connected players and sort the ranking
+  if ($players == false)
+  {
+      $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(5,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(6,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(7,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0) . cs_html_roco(0);
-	}
-	else
-	{
-	    sort($players, SORT_NUMERIC);
-	}
+  }
+  else
+  {
+      sort($players, SORT_NUMERIC);
+  }
 
-	// store the html table line to the info array
-	$srv_player = $thead;
+  // store the html table line to the info array
+  $srv_player = $thead;
         
-	// manage the player data in the following code
-	$index = 1;
+  // manage the player data in the following code
+  $index = 1;
 
-	while ($clients)
-	{
-	     $clients--;
-	     
-	     list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
-	     list ($frags[$index],
-	           $team[$index],
-		   $mesh[$index],
-		   $skin[$index],
-		   $ping[$index])  = split (' ',  $cache[$index]);
+  while ($clients)
+  {
+       $clients--;
+       
+       list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
+       list ($frags[$index],
+             $team[$index],
+       $mesh[$index],
+       $skin[$index],
+       $ping[$index])  = split (' ',  $cache[$index]);
              
-	     $player[$index] = htmlentities($player[$index]);
-	     $ping[$index]   = $this->check_color($ping[$index]);
-	     
+       $player[$index] = htmlentities($player[$index]);
+       $ping[$index]   = $this->check_color($ping[$index]);
+       
             $tdata = cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . $index . cs_html_div(0);
             $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . $player[$index] . cs_html_div(0);
             $tdata .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . $frags[$index] . cs_html_div(0);
@@ -403,9 +403,9 @@ class rune
             $tdata .= cs_html_roco(6,'leftb') . cs_html_div(1,'text-align:center') . $skin[$index] . cs_html_div(0);
             $tdata .= cs_html_roco(7,'leftb') . cs_html_div(1,'text-align:center') . $ping[$index] . cs_html_div(0) . cs_html_roco(0);
                  
-	     $srv_player = $srv_player . $tdata;
-	     $index++;
-	}
+       $srv_player = $srv_player . $tdata;
+       $index++;
+  }
 
         return $srv_player;
     }

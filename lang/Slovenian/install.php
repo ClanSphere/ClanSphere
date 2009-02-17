@@ -3,11 +3,11 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'Namestitev';
-$cs_lang['modtext']	= 'Namesti ClanSphere';
+$cs_lang['mod']  = 'Namestitev';
+$cs_lang['modtext']  = 'Namesti ClanSphere';
 
-$cs_lang['head_list']	= 'Seznam';
-$cs_lang['body_list']	= 'Dobrodošel v namestitev ClanSphera!' . cs_html_br(2) . 'Prosim izberi jezik namestitve:';
+$cs_lang['head_list']  = 'Seznam';
+$cs_lang['body_list']  = 'Dobrodošel v namestitev ClanSphera!' . cs_html_br(2) . 'Prosim izberi jezik namestitve:';
 
 $cs_lang['lang'] = 'Jezik';
 
@@ -28,10 +28,10 @@ $cs_lang['last_check'] = 'Nazadnje preverjeno';
 $cs_lang['check'] = 'Preveri';
 $cs_lang['found'] = 'Najdeno';
 $cs_lang['required'] = 'Potrebno';
-$cs_lang['any']	= 'Katerikoli';
+$cs_lang['any']  = 'Katerikoli';
 $cs_lang['recommend'] = 'Priporočeno';
-$cs_lang['php_mod']	= 'PHP Modul';
-$cs_lang['db_support']	= 'Podprte baze podatkov';
+$cs_lang['php_mod']  = 'PHP Modul';
+$cs_lang['db_support']  = 'Podprte baze podatkov';
 $cs_lang['file_uploads'] = 'Nalaganje datotek';
 $cs_lang['reg_global'] = 'Register Globals';
 $cs_lang['magic_quotes'] = 'Magic Quotes';
@@ -40,32 +40,32 @@ $cs_lang['trans_sid'] = 'Transparent SessionID';
 $cs_lang['basedir_restriction'] = 'Zapisljiv root';
 $cs_lang['allow_url_fopen'] = 'Dovoli oddaljene datoteke';
 $cs_lang['gd_extension'] = 'GD Extension';
-$cs_lang['off']	= 'izključeno';
+$cs_lang['off']  = 'izključeno';
 $cs_lang['on'] = 'vključeno';
 
 $cs_lang['check_perfect'] = 'Preverjene nastavitve strežnika so optimalne za namestitev ClanSphera!';
 $cs_lang['check_ok'] = 'ClanSphere bo lahko deloval na strežniku, ampak nekatere stvari ne bodo pravilno delovale.';
 $cs_lang['check_failed'] = 'Na ta strežnik je nemogoče namestiti ClanSphere dokler ne popraviš zgornjih napak!';
 
-$cs_lang['head_complete']	= 'Zaključeno';
-$cs_lang['rem_install']	= '- Odstranjene namestitvene datoteke';
-$cs_lang['set_chmod']	= '- Nastavljene pravice za mape (CHMOD)';
+$cs_lang['head_complete']  = 'Zaključeno';
+$cs_lang['rem_install']  = '- Odstranjene namestitvene datoteke';
+$cs_lang['set_chmod']  = '- Nastavljene pravice za mape (CHMOD)';
 $cs_lang['remove_file'] = 'Prosim odstrani te datoteke ročno:';
-$cs_lang['err_chmod']	= 'Napaka: Prosim nastavi pravice mapam in "uploads",';
-$cs_lang['err_chmod']	.= ' kot tudi njihove podmape na CHMOD 777';
+$cs_lang['err_chmod']  = 'Napaka: Prosim nastavi pravice mapam in "uploads",';
+$cs_lang['err_chmod']  .= ' kot tudi njihove podmape na CHMOD 777';
 
-//$cs_lang['login']	= 'Prijava';
+//$cs_lang['login']  = 'Prijava';
 
-$cs_lang['head_license']	= 'Licenca';
-$cs_lang['body_license']	= 'Pogoji uporabe';
+$cs_lang['head_license']  = 'Licenca';
+$cs_lang['body_license']  = 'Pogoji uporabe';
 
 $cs_lang['accept_done'] = 'Uspešno si sprejel pogoje uporabe';
 $cs_lang['accept_license'] = 'Prebral in sprejmem pogoje';
 $cs_lang['not_accepted'] = '- Sprejeti moraš pogoje uporabe';
 $cs_lang['send'] = 'Pošlji';
 
-$cs_lang['head_settings']	= 'Nastavitve';
-$cs_lang['body_settings']	= 'Izdelava nastavitvene datoteke za portal';
+$cs_lang['head_settings']  = 'Nastavitve';
+$cs_lang['body_settings']  = 'Izdelava nastavitvene datoteke za portal';
 
 $cs_lang['hash'] = 'Način enkripcije';
 $cs_lang['hash_info'] = 'Če nadgradjuješ iz BXCP uporabi MD5!';
@@ -94,12 +94,12 @@ $cs_lang['save_file'] = 'Prosim kopiraj in prilepi vsebino v datoteko z imenom "
 $cs_lang['setup_exists'] = 'Najdena nastavitvena datoteka "setup.php".';
 $cs_lang['inst_create_done'] = 'Baza podatkov je bila uspešno najdena in nastavitvena datoteka je bila uspešno ustvarjena.';
 
-$cs_lang['head_sql']	= 'Baza podatkov';
-$cs_lang['body_sql']	= 'Tabele in vnosi uspešno končani';
+$cs_lang['head_sql']  = 'Baza podatkov';
+$cs_lang['body_sql']  = 'Tabele in vnosi uspešno končani';
 
-$cs_lang['create_admin']	= 'Ustvarjanje administratorskega računa.';
-$cs_lang['nick']	= 'Vzdevek';
-$cs_lang['email']	= 'E-Mail';
+$cs_lang['create_admin']  = 'Ustvarjanje administratorskega računa.';
+$cs_lang['nick']  = 'Vzdevek';
+$cs_lang['email']  = 'E-Mail';
 $cs_lang['password'] = 'Geslo';
 $cs_lang['admin_done'] = 'Administrator uspešno ustvarjen';
 
@@ -109,11 +109,11 @@ $cs_lang['email_false'] = '- Email naslov je neveljaven';
 
 $cs_lang['db_error'] = 'Napaka baze podatkov:';
 
-$cs_lang['guest']	= 'Gost';
-$cs_lang['community']	= 'Uporabnik';
-$cs_lang['member']	= 'Član';
-$cs_lang['orga']	= 'Organizator';
-$cs_lang['admin']	= 'Administrator';
+$cs_lang['guest']  = 'Gost';
+$cs_lang['community']  = 'Uporabnik';
+$cs_lang['member']  = 'Član';
+$cs_lang['orga']  = 'Organizator';
+$cs_lang['admin']  = 'Administrator';
 
 // Labels
 $cs_lang['show_groups_as'] = 'Prikaži skupine kot';

@@ -43,28 +43,28 @@ if(isset($_POST['submit'])) {
       $ext = 'png'; break;
     }
     
-	$filename = 'picture-' . $banners_id . '.' . $ext;
+  $filename = 'picture-' . $banners_id . '.' . $ext;
     
     if($img_size[0]>$op_banners['max_width']) {
       $message .= $cs_lang['too_wide'] . cs_html_br(1);
       $error++;
     }
     
-	if($img_size[1]>$op_banners['max_height']) { 
+  if($img_size[1]>$op_banners['max_height']) { 
       $message .= $cs_lang['too_high'] . cs_html_br(1);
       $error++;
     }
     
-	if($_FILES['picture']['size']>$op_banners['max_size']) { 
+  if($_FILES['picture']['size']>$op_banners['max_size']) { 
       $message .= $cs_lang['too_big'] . cs_html_br(1);
       $error++;
     }
     
-	if(empty($error) AND cs_upload('banners', $filename, $_FILES['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/banners/' . $filename, $op_banners['max_width'], $op_banners['max_height'])) {
+  if(empty($error) AND cs_upload('banners', $filename, $_FILES['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/banners/' . $filename, $op_banners['max_width'], $op_banners['max_height'])) {
       $error = 0;
       $message = '';
       
-	  if($cs_banners['banners_picture'] != $filename AND file_exists($cs_banners['banners_picture'])) {
+    if($cs_banners['banners_picture'] != $filename AND file_exists($cs_banners['banners_picture'])) {
         unlink($cs_banners['banners_picture']);
       }
       $cs_banners['banners_picture'] = 'uploads/banners/' . $filename;
@@ -74,7 +74,7 @@ if(isset($_POST['submit'])) {
       $error++;
     }
   }
-	
+  
   if(empty($_FILES['picture']['tmp_name']) AND empty($cs_banners['banners_picture'])) {
     $error++;
     $message .= $cs_lang['no_pic'] . cs_html_br(1);
@@ -92,7 +92,7 @@ if(isset($_POST['submit'])) {
   
   if(empty($cs_banners['categories_id'])) {
     $error++;
-	$message .= $cs_lang['no_cat'] . cs_html_br(1);
+  $message .= $cs_lang['no_cat'] . cs_html_br(1);
   }
   
   $where = "banners_name = '" . cs_sql_escape($cs_banners['banners_name']) . "'";
@@ -144,7 +144,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['banners']['clip'] = cs_abcode_clip($matches);
   
   $data['data']['id'] = $banners_id;
-	
+  
   echo cs_subtemplate(__FILE__,$data,'banners','edit');
 }
 else {

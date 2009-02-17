@@ -36,24 +36,24 @@ $awards_loop = count($cs_awards);
 
 for($run=0; $run<$awards_loop; $run++) {
 
-	$data['awards'][$run]['awards_id'] = $cs_awards[$run]['awards_id'];
-	$data['awards'][$run]['awards_time'] = cs_date('date',$cs_awards[$run]['awards_time']);
-	$data['awards'][$run]['awards_event'] = cs_secure($cs_awards[$run]['awards_event']);
-	$data['awards'][$run]['awards_event_url'] = $cs_awards[$run]['awards_event_url'];
-	
-	$cs_awards_id = $cs_awards[$run]['games_id'];
-	$cs_awards_game = cs_sql_select(__FILE__,'games','games_name',"games_id = '" . $cs_awards_id . "'");
-	$data['awards'][$run]['awards_game_name'] = cs_secure($cs_awards_game['games_name']);
-	$data['awards'][$run]['awards_game_id'] = $cs_awards[$run]['games_id'];
-	
-	$cs_awards_place = $cs_awards[$run]['awards_rank'];
-	if ($cs_awards_place == 1){
-	$data['awards'][$run]['awards_place'] = cs_html_img("symbols/awards/pokal_gold.png"); } else if ($cs_awards_place == 2) {
-	$data['awards'][$run]['awards_place'] = cs_html_img ("symbols/awards/pokal_silber.png"); } else if ($cs_awards_place == 3) {
-	$data['awards'][$run]['awards_place'] = cs_html_img ("symbols/awards/pokal_bronze.png"); } else if ($cs_awards_place >= 4) {
-	$data['awards'][$run]['awards_place'] = cs_secure($cs_awards[$run]['awards_rank']);
-	}
-	
+  $data['awards'][$run]['awards_id'] = $cs_awards[$run]['awards_id'];
+  $data['awards'][$run]['awards_time'] = cs_date('date',$cs_awards[$run]['awards_time']);
+  $data['awards'][$run]['awards_event'] = cs_secure($cs_awards[$run]['awards_event']);
+  $data['awards'][$run]['awards_event_url'] = $cs_awards[$run]['awards_event_url'];
+  
+  $cs_awards_id = $cs_awards[$run]['games_id'];
+  $cs_awards_game = cs_sql_select(__FILE__,'games','games_name',"games_id = '" . $cs_awards_id . "'");
+  $data['awards'][$run]['awards_game_name'] = cs_secure($cs_awards_game['games_name']);
+  $data['awards'][$run]['awards_game_id'] = $cs_awards[$run]['games_id'];
+  
+  $cs_awards_place = $cs_awards[$run]['awards_rank'];
+  if ($cs_awards_place == 1){
+  $data['awards'][$run]['awards_place'] = cs_html_img("symbols/awards/pokal_gold.png"); } else if ($cs_awards_place == 2) {
+  $data['awards'][$run]['awards_place'] = cs_html_img ("symbols/awards/pokal_silber.png"); } else if ($cs_awards_place == 3) {
+  $data['awards'][$run]['awards_place'] = cs_html_img ("symbols/awards/pokal_bronze.png"); } else if ($cs_awards_place >= 4) {
+  $data['awards'][$run]['awards_place'] = cs_secure($cs_awards[$run]['awards_rank']);
+  }
+  
 }/*
 $data['awards'] = $cs_awards;*/
 echo cs_subtemplate(__FILE__,$data,'awards','list');

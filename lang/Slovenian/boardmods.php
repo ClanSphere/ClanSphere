@@ -3,10 +3,10 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'Forum moderatorji';
-$cs_lang['text']	= 'Modul za forum moderatorje';
+$cs_lang['mod']  = 'Forum moderatorji';
+$cs_lang['text']  = 'Modul za forum moderatorje';
 
-$cs_lang['head_remove']	= 'Odstrani';
+$cs_lang['head_remove']  = 'Odstrani';
 
 $cs_lang['head_create'] = 'Dodaj';
 $cs_lang['body_create'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
@@ -21,7 +21,7 @@ $cs_lang['body_edit'] =  'Prozim izpolni vsa polja ozna&#269;ena z *.';
 
 $cs_lang['edit_done'] = 'Uspe&scaron;no urejeno';
 
-$cs_lang['head_manage']	= 'Administracija';
+$cs_lang['head_manage']  = 'Administracija';
 
 $cs_lang['all'] = 'Skupaj: ';
 $cs_lang['nick'] = 'Uporabnik';

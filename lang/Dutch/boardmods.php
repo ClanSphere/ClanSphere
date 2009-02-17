@@ -2,10 +2,10 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$ 
 
-$cs_lang['mod']	= 'Forum beheerders';
-$cs_lang['text']	= 'De beheer module';
+$cs_lang['mod']  = 'Forum beheerders';
+$cs_lang['text']  = 'De beheer module';
 
-$cs_lang['head_remove']	= 'Verwijder';
+$cs_lang['head_remove']  = 'Verwijder';
 
 $cs_lang['head_create'] = 'Toevoegen';
 $cs_lang['body_create'] =  'Vul alle velden met een * in.';
@@ -20,7 +20,7 @@ $cs_lang['body_edit'] =  'Vul alle velden met een * in.';
 
 $cs_lang['edit_done'] = 'Succesvol bewerkt';
 
-$cs_lang['head_manage']	= 'Administratie';
+$cs_lang['head_manage']  = 'Administratie';
 
 $cs_lang['all'] = 'Totaal: ';
 $cs_lang['nick'] = 'Gebruiker';

@@ -7,8 +7,8 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Asistente';
-$cs_lang['mod_text']	= 'El Ayudante Para Ajustar las Opciones del Portal';
+$cs_lang['mod_name']  = 'Asistente';
+$cs_lang['mod_text']  = 'El Ayudante Para Ajustar las Opciones del Portal';
 $cs_lang['wizard']    = 'Asistente';
 
 $cs_lang['lang_name'] = 'Idiomas';
@@ -41,10 +41,10 @@ $cs_lang['done']        = 'Vacante';
 $cs_lang['next_step']   = 'Proxima Tarea';
 
 // users_home.php
-$cs_lang['wizard_welcome']	= 'Bienvenido a Clansphere y Saludos de quema0-Designz.de';
-$cs_lang['wizard_info']	    = 'Se Recomienda de Arrancar el Asistente para Ajustar ajustes Importantes!';
-$cs_lang['wizard_start']	  = 'Arrancar el Asistente';
-$cs_lang['wizard_turnoff']	= 'Desactivar este Mensaje';
+$cs_lang['wizard_welcome']  = 'Bienvenido a Clansphere y Saludos de quema0-Designz.de';
+$cs_lang['wizard_info']      = 'Se Recomienda de Arrancar el Asistente para Ajustar ajustes Importantes!';
+$cs_lang['wizard_start']    = 'Arrancar el Asistente';
+$cs_lang['wizard_turnoff']  = 'Desactivar este Mensaje';
 
 // welcome.php
 $cs_lang['welcome']   = 'Saludo de Bienvenida';

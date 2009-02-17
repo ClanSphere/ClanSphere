@@ -2,10 +2,10 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod_name']	= 'Finances';
-$cs_lang['mod_text']	= 'Administration of Clan cashdesk';
+$cs_lang['mod_name']  = 'Finances';
+$cs_lang['mod_text']  = 'Administration of Clan cashdesk';
 
-$cs_lang['mod']	= 'Finances';
+$cs_lang['mod']  = 'Finances';
 $cs_lang['head_create'] = 'Add';
 $cs_lang['head_view'] = 'Details';
 $cs_lang['head_center'] = 'Center';

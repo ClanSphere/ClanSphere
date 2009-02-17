@@ -7,16 +7,16 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Preguntas Frecuentes';
-$cs_lang['mod_text']	= 'Lista de preguntas y respuestas, dentro de un determinado contexto y para un tema en particular.';
-$cs_lang['mod']	= 'Preguntas Frecuentes';
+$cs_lang['mod_name']  = 'Preguntas Frecuentes';
+$cs_lang['mod_text']  = 'Lista de preguntas y respuestas, dentro de un determinado contexto y para un tema en particular.';
+$cs_lang['mod']  = 'Preguntas Frecuentes';
 
 $cs_lang['head']= 'ID:';
-$cs_lang['head_remove']	= 'Remover';
-$cs_lang['head_manage']	= 'Administración';
-$cs_lang['head_create']	= 'Crear';
+$cs_lang['head_remove']  = 'Remover';
+$cs_lang['head_manage']  = 'Administración';
+$cs_lang['head_create']  = 'Crear';
 $cs_lang['body_create'] =  'Por Favor rellene todas las casillas con * ';
-$cs_lang['head_edit']	= 'Editar';
+$cs_lang['head_edit']  = 'Editar';
 $cs_lang['body_edit'] =  'Por Favor rellene todas las casillas con * ';
 $cs_lang['error_occurred'] = 'No han sido Rellenadas todas las casillas necesitadas.';
 $cs_lang['error_count'] = ' casillas necesitadas faltan';

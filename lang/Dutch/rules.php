@@ -1,15 +1,15 @@
 <?php
 
-$cs_lang['mod_name']	= 'Regels';
-$cs_lang['mod_text']	= 'Beheer en creeer regels';
+$cs_lang['mod_name']  = 'Regels';
+$cs_lang['mod_text']  = 'Beheer en creeer regels';
 
-$cs_lang['mod']	= 'Regels';
-$cs_lang['head_create']	= 'Aanmaken';
+$cs_lang['mod']  = 'Regels';
+$cs_lang['head_create']  = 'Aanmaken';
 $cs_lang['body_create'] =  'Vul alle velden met een * in.';
-$cs_lang['head_edit']	= 'Bewerk';
+$cs_lang['head_edit']  = 'Bewerk';
 $cs_lang['body_edit'] =  'Vul alle velden met een * in.';
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['head_manage']	= 'Beheer';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['head_manage']  = 'Beheer';
 
 $cs_lang['cat'] = 'Categorie';
 $cs_lang['rule'] = 'Regels';

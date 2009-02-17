@@ -10,11 +10,11 @@
 
 $cs_lang['mod_name'] = 'Grados del Foro';
 $cs_lang['mod_text'] = 'Administras y crear grados';
-$cs_lang['mod']	= 'Grados del Foro';
-$cs_lang['head']	= 'Editar';
-$cs_lang['head_create']	= 'Crear';
-$cs_lang['head_remove']	= 'Remover';
-$cs_lang['body_create']		= 'Por favor rellene las casillas con *';
+$cs_lang['mod']  = 'Grados del Foro';
+$cs_lang['head']  = 'Editar';
+$cs_lang['head_create']  = 'Crear';
+$cs_lang['head_remove']  = 'Remover';
+$cs_lang['body_create']    = 'Por favor rellene las casillas con *';
 
 
 $cs_lang['min'] = 'A partir de Respuestas';

@@ -20,10 +20,10 @@ $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0
 $install_link = '<a href="install.php">Installation required</a>';
 
 if(file_exists('setup.php')) {
-	
+  
   require('system/core/functions.php');
   @set_error_handler("php_error");
-	
+  
   require('setup.php');
   require('system/database/' . $cs_db['type'] . '.php');
   $cs_db['con'] = cs_sql_connect($cs_db);

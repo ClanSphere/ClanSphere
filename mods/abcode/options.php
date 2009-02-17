@@ -23,19 +23,19 @@ if(empty($_POST['submit'])) {
   echo cs_subtemplate(__FILE__,$data,'abcode','options');
   
 } else {
-	
-	require 'mods/clansphere/func_options.php';
   
-	$save = array();
-	$save['max_width'] = (int) $_POST['max_width'];
-	$save['max_height'] = (int) $_POST['max_height'];
-	$save['max_size'] = (int) $_POST['max_size'];
-	$save['def_func'] = $_POST['def_func'];
-	$save['image_width'] = $_POST['image_width'];
-	$save['image_height'] = $_POST['image_height'];
-	$save['word_cut'] = $_POST['word_cut'];
-	$save['def_abcode'] = (int) $_POST['def_abcode'];
-	
+  require 'mods/clansphere/func_options.php';
+  
+  $save = array();
+  $save['max_width'] = (int) $_POST['max_width'];
+  $save['max_height'] = (int) $_POST['max_height'];
+  $save['max_size'] = (int) $_POST['max_size'];
+  $save['def_func'] = $_POST['def_func'];
+  $save['image_width'] = $_POST['image_width'];
+  $save['image_height'] = $_POST['image_height'];
+  $save['word_cut'] = $_POST['word_cut'];
+  $save['def_abcode'] = (int) $_POST['def_abcode'];
+  
   cs_optionsave('abcode', $save);
   
   cs_redirect($cs_lang['changes_done'], 'abcode', 'options');

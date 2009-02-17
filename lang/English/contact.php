@@ -1,7 +1,7 @@
 <?php
 
-$cs_lang['mod']			= 'Contact';
-$cs_lang['mod_text']			= 'Contact';
+$cs_lang['mod']      = 'Contact';
+$cs_lang['mod_text']      = 'Contact';
 
 $cs_lang['wizard'] = 'Wizard';
 $cs_lang['task_done'] = 'Mark task as done';
@@ -22,23 +22,23 @@ $cs_lang['head_archive'] = 'Archive';
 $cs_lang['body_archive'] = 'Here you find all answered messages.';
 
 // mail.php
-$cs_lang['head_mail']	= 'Mail Form';
-$cs_lang['body_mail']	= 'Please fill out as many fields as possible.';
-$cs_lang['design']	= 'Design';
-$cs_lang['email']	= 'E-Mail';
-$cs_lang['general']	= 'General';
-$cs_lang['head']	= 'Subject';
-$cs_lang['help']	= 'Help';
-$cs_lang['tech']	= 'Technical';
+$cs_lang['head_mail']  = 'Mail Form';
+$cs_lang['body_mail']  = 'Please fill out as many fields as possible.';
+$cs_lang['design']  = 'Design';
+$cs_lang['email']  = 'E-Mail';
+$cs_lang['general']  = 'General';
+$cs_lang['head']  = 'Subject';
+$cs_lang['help']  = 'Help';
+$cs_lang['tech']  = 'Technical';
 
 // imprint.php
 $cs_lang['imprint'] = 'Imprint';
 $cs_lang['stand'] = 'Stand:';
 
 // imp_edit.php
-$cs_lang['mod_imp']	= 'Imprint';
-$cs_lang['head_edit']	= 'Edit';
-$cs_lang['body_edit']	= 'Please fill out as many fields as possible.';
+$cs_lang['mod_imp']  = 'Imprint';
+$cs_lang['head_edit']  = 'Edit';
+$cs_lang['body_edit']  = 'Please fill out as many fields as possible.';
 $cs_lang['error_occurred'] = 'An error occurred';
 $cs_lang['headline'] = 'Text';
 $cs_lang['text'] = 'Answer';
@@ -61,7 +61,7 @@ $cs_lang['receiver'] = 'Receiver';
 $cs_lang['in_response'] = 'In response of your mail from %s:';
 
 // users_home.php
-$cs_lang['last_mails']		= 'Last E-mails';
+$cs_lang['last_mails']    = 'Last E-mails';
 
 // view.php
 $cs_lang['view'] = 'View';
@@ -74,14 +74,14 @@ $cs_lang['the_answer'] = 'Answer';
 $cs_lang['editor'] = 'Editor';
 
 // send.php
-$cs_lang['err_direct']		= 'You cannot access this file directly!';
-$cs_lang['icq']			= 'ICQ Number';
+$cs_lang['err_direct']    = 'You cannot access this file directly!';
+$cs_lang['icq']      = 'ICQ Number';
 $cs_lang['msn'] = 'MSN';
-$cs_lang['empty']	= 'not entered';
-$cs_lang['na']		= 'Not available';
-$cs_lang['all']		= 'General';
-$cs_lang['gfx']		= 'Design';
-$cs_lang['15min']	= '- You can only write a Message every 15 minutes!';
+$cs_lang['empty']  = 'not entered';
+$cs_lang['na']    = 'Not available';
+$cs_lang['all']    = 'General';
+$cs_lang['gfx']    = 'Design';
+$cs_lang['15min']  = '- You can only write a Message every 15 minutes!';
 $cs_lang['error_name'] = '- The name can\'t be empty.';
 $cs_lang['error_subject'] = '- The subject can\'t be empty.';
 $cs_lang['error_message'] = '- - The text can\'t be empty.';

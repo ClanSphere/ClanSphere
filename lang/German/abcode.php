@@ -2,12 +2,12 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Forumcode';
-$cs_lang['mod_text']	= 'Ersetzt Muster durch Bilder oder Text';
+$cs_lang['mod']  = 'Forumcode';
+$cs_lang['mod_text']  = 'Ersetzt Muster durch Bilder oder Text';
 
-$cs_lang['body_create']	= 'Neue Muster-Ersetzungen anlegen';
-$cs_lang['body_edit']	= 'Anpassen von Muster-Ersetzungen';
-$cs_lang['body_options']	= 'Verwaltung der Einstellungen im Modul.';
+$cs_lang['body_create']  = 'Neue Muster-Ersetzungen anlegen';
+$cs_lang['body_edit']  = 'Anpassen von Muster-Ersetzungen';
+$cs_lang['body_options']  = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['new_abcode'] = 'Neuer Forumcode';
 
 $cs_lang['max_width'] = 'Maximale Bildbreite: ';
@@ -25,15 +25,15 @@ $cs_lang['pattern'] = 'Muster';
 $cs_lang['result'] = 'Ausgabe';
 $cs_lang['function'] = 'Funktion';
 $cs_lang['pic_up'] = 'Bild hochladen';
-$cs_lang['pic_current']	= 'Aktuelles Bild';
+$cs_lang['pic_current']  = 'Aktuelles Bild';
 $cs_lang['nopic'] = 'Kein Bild vorhanden';
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['filetypes'] = 'Dateiformate: ';
 
-$cs_lang['too_big']	= '- Die Datei ist zu gro&szlig;';
-$cs_lang['too_wide']	= '- Das Bild ist zu breit';
-$cs_lang['too_high']	= '- Das Bild ist zu hoch';
-$cs_lang['ext_error']	= '- Es wurde ein unerlaubter Dateityp benutzt';
+$cs_lang['too_big']  = '- Die Datei ist zu gro&szlig;';
+$cs_lang['too_wide']  = '- Das Bild ist zu breit';
+$cs_lang['too_high']  = '- Das Bild ist zu hoch';
+$cs_lang['ext_error']  = '- Es wurde ein unerlaubter Dateityp benutzt';
 $cs_lang['no_func'] = '- Die Funktion darf nicht Leer sein';
 $cs_lang['no_pattern'] = '- Das Muster darf nicht Leer sein';
 $cs_lang['pattern_exists'] = '- Das Muster ist bereits vorhanden';

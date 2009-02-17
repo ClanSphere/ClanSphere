@@ -8,7 +8,7 @@ $data = array();
 
 $captcha = 0;
 if(empty($account['users_id']) AND extension_loaded('gd')) {
-	$captcha = 1;
+  $captcha = 1;
 }
 
 $data['if']['pass'] = 0;
@@ -80,19 +80,19 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
   }
 
-	$flood = cs_sql_select(__FILE__,'joinus','joinus_since',0,'joinus_since DESC');
-	$maxtime = $flood['joinus_since'] + $cs_main['def_flood'];
-	if($maxtime > cs_time()) {
-		$error++;
-		$diff = $maxtime - cs_time();
-		$errormsg .= sprintf($cs_lang['flood_on'], $diff);
-	}
-	if(empty($account['users_id'])) {
-		if (!cs_captchacheck($_POST['captcha'])) {
-	    $error++;
-	    $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
-	  }
-	}
+  $flood = cs_sql_select(__FILE__,'joinus','joinus_since',0,'joinus_since DESC');
+  $maxtime = $flood['joinus_since'] + $cs_main['def_flood'];
+  if($maxtime > cs_time()) {
+    $error++;
+    $diff = $maxtime - cs_time();
+    $errormsg .= sprintf($cs_lang['flood_on'], $diff);
+  }
+  if(empty($account['users_id'])) {
+    if (!cs_captchacheck($_POST['captcha'])) {
+      $error++;
+      $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
+    }
+  }
 } else {
   $data['join']['games_id'] = '';
   $data['join']['squads_id'] = '';
@@ -114,17 +114,17 @@ if(isset($_POST['submit'])) {
 
   if(!empty($account['users_id'])) {
     $fetch = 'users_nick, users_name, users_surname, users_age, users_country, users_place, users_icq, users_msn, users_email';
-	$cs_user = cs_sql_select(__FILE__,'users',$fetch,"users_id = '" . $account['users_id'] . "'");
+  $cs_user = cs_sql_select(__FILE__,'users',$fetch,"users_id = '" . $account['users_id'] . "'");
     $data['join']['joinus_nick'] = $cs_user['users_nick'];
     $data['join']['joinus_name'] = $cs_user['users_name'];
     $data['join']['joinus_surname'] = $cs_user['users_surname'];
-	$data['join']['joinus_age'] = $cs_user['users_age'];
+  $data['join']['joinus_age'] = $cs_user['users_age'];
     $data['join']['joinus_country'] = $cs_user['users_country'];
     $data['join']['joinus_place'] = $cs_user['users_place'];
     $data['join']['joinus_icq'] = empty($cs_user['users_icq']) ? '' : $cs_user['users_icq'];
     $data['join']['joinus_msn'] = $cs_user['users_msn'];
     $data['join']['joinus_email'] = $cs_user['users_email'];
-	$data['if']['pass'] = 1;
+  $data['if']['pass'] = 1;
     $data['if']['nopass'] = 0;
   }
 }
@@ -152,7 +152,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['join']['games_url'] = cs_html_img('uploads/games/0.gif',0,0,'id="game"');
   $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   for($run = 0; $run < count($cs_games); $run++) {
-	$data['games'][$run]['short'] = $cs_games[$run]['games_id'];
+  $data['games'][$run]['short'] = $cs_games[$run]['games_id'];
     $data['games'][$run]['selection'] = $cs_games[$run]['games_id'] == $data['join']['games_id'] ? ' selected="selected"' : '';
     $data['games'][$run]['name'] = $cs_games[$run]['games_name'];
   }
@@ -173,7 +173,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   if(empty($account['users_id'])) {
     global $cs_db;
     if($cs_db['hash'] == 'md5') { $data['join']['users_pwd'] = md5($data['join']['users_pwd']); 
-	} elseif($cs_db['hash'] == 'sha1') { $data['join']['users_pwd'] = sha1($data['join']['users_pwd']); }
+  } elseif($cs_db['hash'] == 'sha1') { $data['join']['users_pwd'] = sha1($data['join']['users_pwd']); }
   }
 
   settype($data['join']['joinus_icq'],'integer');

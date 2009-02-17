@@ -19,14 +19,14 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['no_lanparty'] . cs_html_br(1);
   }
   else {
-  	$where = "lanpartys_id = '" . cs_sql_escape($cs_lanrooms['lanpartys_id']) . "' AND ";
-  	$where .= "lanrooms_name = '" . cs_sql_escape($cs_lanrooms['lanrooms_name']) . "'";
-		$where .= " AND lanrooms_id != '" . $lanrooms_id . "'";
-  	$search_collision = cs_sql_count(__FILE__,'lanrooms',$where);
-  	if(!empty($search_collision)) {
-    	$error++;
-    	$errormsg .= $cs_lang['name_lan_exists'] . cs_html_br(1);
-  	}
+    $where = "lanpartys_id = '" . cs_sql_escape($cs_lanrooms['lanpartys_id']) . "' AND ";
+    $where .= "lanrooms_name = '" . cs_sql_escape($cs_lanrooms['lanrooms_name']) . "'";
+    $where .= " AND lanrooms_id != '" . $lanrooms_id . "'";
+    $search_collision = cs_sql_count(__FILE__,'lanrooms',$where);
+    if(!empty($search_collision)) {
+      $error++;
+      $errormsg .= $cs_lang['name_lan_exists'] . cs_html_br(1);
+    }
   }
 
   if(empty($cs_lanrooms['lanrooms_name'])) {
@@ -74,7 +74,7 @@ else {
   $lanrooms_cells = array_keys($cs_lanrooms);
   $lanrooms_save = array_values($cs_lanrooms);
   cs_sql_update(__FILE__,'lanrooms',$lanrooms_cells,$lanrooms_save,$lanrooms_id);
-	
+  
   cs_redirect($cs_lang['changes_done'], 'lanrooms') ;
 } 
 ?>

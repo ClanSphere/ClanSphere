@@ -9,10 +9,10 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
   global $account;
   
   if($account['users_view'] == 'list') {
-  	$options = array('info' => 0, 'size' => 16, 'lines' => 4, 'theme' => 'manage_list');
+    $options = array('info' => 0, 'size' => 16, 'lines' => 4, 'theme' => 'manage_list');
   }
   else {
-  	$options = array('info' => 0, 'size' => 48, 'lines' => 5, 'theme' => 'manage');
+    $options = array('info' => 0, 'size' => 48, 'lines' => 5, 'theme' => 'manage');
   }
 
   $mod_array = cs_checkdirs('mods', $show);
@@ -25,17 +25,17 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
   foreach($content as $mod) {
     if(!array_key_exists('dir',$mod)) $mod['dir'] = $def_mod;
     if(!array_key_exists('file',$mod)) $mod['file'] = $def_action;
-  	$acc_dir = 'access_' . $mod['dir'];
-  	if(array_key_exists($acc_dir,$account) AND $account[$acc_dir] >= $mod['show'][$show]) {
-  	  $cs_lap = cs_icon($mod['icon'],$options['size'],0,0);
-  	  $data['content'][$loop]['img_link' . $run] = cs_link($cs_lap,$mod['dir'],$mod['file']);
-  	  $data['content'][$loop]['txt_link' . $run] = cs_link($mod['name'],$mod['dir'],$mod['file']);
-  	  $run++;
-  	  if($run == $options['lines']) {
-  	    $run = 1;
-  	    $loop++;
-  	  }
-  	}
+    $acc_dir = 'access_' . $mod['dir'];
+    if(array_key_exists($acc_dir,$account) AND $account[$acc_dir] >= $mod['show'][$show]) {
+      $cs_lap = cs_icon($mod['icon'],$options['size'],0,0);
+      $data['content'][$loop]['img_link' . $run] = cs_link($cs_lap,$mod['dir'],$mod['file']);
+      $data['content'][$loop]['txt_link' . $run] = cs_link($mod['name'],$mod['dir'],$mod['file']);
+      $run++;
+      if($run == $options['lines']) {
+        $run = 1;
+        $loop++;
+      }
+    }
   }
 
   if($run > 1) {

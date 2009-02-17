@@ -60,9 +60,9 @@ else {
   }
 
   if(empty($error)) {
-  	$languests_cells = array('lanroomd_id');
-  	$languests_save = array($_GET['save_id']);
-  	cs_sql_update(__FILE__,'languests',$languests_cells,$languests_save,$target['languests_id']);
+    $languests_cells = array('lanroomd_id');
+    $languests_save = array($_GET['save_id']);
+    cs_sql_update(__FILE__,'languests',$languests_cells,$languests_save,$target['languests_id']);
   }
 }
 

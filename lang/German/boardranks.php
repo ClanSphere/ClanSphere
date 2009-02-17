@@ -5,7 +5,7 @@
 $cs_lang['mod_name'] = 'Forumr&auml;nge';
 $cs_lang['mod_text'] = 'Forumr&auml;nge verwalten und erstellen';
 
-$cs_lang['mod']	= 'Forumr&auml;nge';
+$cs_lang['mod']  = 'Forumr&auml;nge';
 $cs_lang['body'] = 'Bitte alle Felder mit * ausf&uuml;llen';
 
 $cs_lang['min'] = 'Ab Beitr&auml;gen';

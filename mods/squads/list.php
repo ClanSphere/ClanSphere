@@ -41,15 +41,15 @@ $squads_loop = count($data['squads']);
 
 for($run=0; $run<$squads_loop; $run++) {
 
-	$data['squads'][$run]['games_img'] = '';
-	if(file_exists('uploads/games/' . $data['squads'][$run]['games_id'] . '.gif')) {
- 		$data['squads'][$run]['games_img'] = cs_html_img('uploads/games/' . $data['squads'][$run]['games_id'] . '.gif');
-	}
- 	$data['squads'][$run]['squads_name'] = cs_secure($data['squads'][$run]['squads_name']);
- 	$data['squads'][$run]['clans_name'] = cs_secure($data['squads'][$run]['clans_name']);
-	$data['squads'][$run]['id'] = $data['squads'][$run]['squads_id'];
-	$data['squads'][$run]['clans_id'] = $data['squads'][$run]['clans_id'];
-	
+  $data['squads'][$run]['games_img'] = '';
+  if(file_exists('uploads/games/' . $data['squads'][$run]['games_id'] . '.gif')) {
+     $data['squads'][$run]['games_img'] = cs_html_img('uploads/games/' . $data['squads'][$run]['games_id'] . '.gif');
+  }
+   $data['squads'][$run]['squads_name'] = cs_secure($data['squads'][$run]['squads_name']);
+   $data['squads'][$run]['clans_name'] = cs_secure($data['squads'][$run]['clans_name']);
+  $data['squads'][$run]['id'] = $data['squads'][$run]['squads_id'];
+  $data['squads'][$run]['clans_id'] = $data['squads'][$run]['clans_id'];
+  
 }
 echo cs_subtemplate(__FILE__,$data,'squads','list');
 

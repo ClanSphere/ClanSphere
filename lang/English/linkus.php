@@ -5,7 +5,7 @@
 $cs_lang['mod_name'] = 'LinkUs';
 $cs_lang['mod_text'] = 'Store some images that others can use to link your page';
 
-$cs_lang['mod']	= 'LinkUs';
+$cs_lang['mod']  = 'LinkUs';
 $cs_lang['add'] = 'Add'; 
 $cs_lang['body_create'] =  'Please fill out all * marked fields.';
 

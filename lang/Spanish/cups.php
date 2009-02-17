@@ -20,18 +20,18 @@ $cs_lang['next_match'] = 'Proximo Combate';
 $cs_lang['no_match_upcoming'] = 'No hay Combates Planeados';
 
 // Comments
-$cs_lang['not_able']	= '- Comentarios han sido desativados';
-$cs_lang['low_axx']	= '- No tiene el Acceso necesitado';
+$cs_lang['not_able']  = '- Comentarios han sido desativados';
+$cs_lang['low_axx']  = '- No tiene el Acceso necesitado';
 
-$cs_lang['place']			= 'Lugar :';
-$cs_lang['posts']			= 'Aportaciones :';
+$cs_lang['place']      = 'Lugar :';
+$cs_lang['posts']      = 'Aportaciones :';
 
 $cs_lang['text'] = 'Texto';
 
-$cs_lang['head_com_remove']	= 'Remover Comentarios';
+$cs_lang['head_com_remove']  = 'Remover Comentarios';
 
-$cs_lang['head_com_edit']	= 'Editar comentarios';
-$cs_lang['body_com_edit']	= 'Por favor Informar sobre editaciones del Texto';
+$cs_lang['head_com_edit']  = 'Editar comentarios';
+$cs_lang['body_com_edit']  = 'Por favor Informar sobre editaciones del Texto';
 
 // Create
 $cs_lang['create_new_cup'] = 'Crear un nuevo Torneo';

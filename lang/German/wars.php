@@ -2,14 +2,14 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Clanwars';
-$cs_lang['modtext']	= 'Verwaltung von K&auml;mpfen gegen andere Clans';
+$cs_lang['mod']  = 'Clanwars';
+$cs_lang['modtext']  = 'Verwaltung von K&auml;mpfen gegen andere Clans';
 
 // Manage
-$cs_lang['new_war']	= 'Neue Begegnung';
+$cs_lang['new_war']  = 'Neue Begegnung';
 $cs_lang['status'] = 'Status';
-$cs_lang['enemy']	= 'Gegner';
-$cs_lang['squad']	= 'Squad';
+$cs_lang['enemy']  = 'Gegner';
+$cs_lang['squad']  = 'Squad';
 
 $cs_lang['rounds'] = 'Runden';
 $cs_lang['pictures'] = 'Bilder';
@@ -20,7 +20,7 @@ $cs_lang['canceled'] = 'Abgebrochen';
 $cs_lang['played'] = 'Gespielt';
 
 // Create
-$cs_lang['body_create']	= 'Neue Begegnungen hinzuf&uuml;gen.';
+$cs_lang['body_create']  = 'Neue Begegnungen hinzuf&uuml;gen.';
 $cs_lang['new'] = 'Neu';
 $cs_lang['add_pictures'] = 'Bilder hinzuf&uuml;gen';
 $cs_lang['add_rounds'] = 'Runden hinzuf&uuml;gen';
@@ -52,10 +52,10 @@ $cs_lang['join_war'] = 'Teilnahme am Clanwar?';
 $cs_lang['maybe'] = 'Vielleicht';
 
 // List
-$cs_lang['list']	= 'Liste';
+$cs_lang['list']  = 'Liste';
 $cs_lang['count'] = 'Derzeit sind %s Begegnungen eingetragen.';
-$cs_lang['stats']	= 'Statistik';
-$cs_lang['ranks']	= 'Ranglisten';
+$cs_lang['stats']  = 'Statistik';
+$cs_lang['ranks']  = 'Ranglisten';
 
 // Stats
 $cs_lang['see_stats'] = 'Hier kann die Statistik der Clanwars eingesehen werden.';
@@ -66,7 +66,7 @@ $cs_lang['categories'] = 'Kategorien';
 $cs_lang['maps'] = 'Karten';
 
 // Options
-$cs_lang['body_options']	= 'Verwaltung der Einstellungen im Modul.';
+$cs_lang['body_options']  = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['max_width'] = 'Maximale Bildbreite';
 $cs_lang['max_height'] = 'Maximale Bildh&ouml;he';
 $cs_lang['max_size'] = 'Maximale Bildgr&ouml;&szlig;e';
@@ -85,16 +85,16 @@ $cs_lang['op_matchurl'] = 'Verweis zum Clanwar';
 $cs_lang['op_catname'] = 'Name der Kategorie';
 
 // Picture
-$cs_lang['body_picture']	= 'Hier werden Clanwarbilder verwaltet.';
-$cs_lang['current']	= 'Aktuell';
+$cs_lang['body_picture']  = 'Hier werden Clanwarbilder verwaltet.';
+$cs_lang['current']  = 'Aktuell';
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['filetypes'] = 'Dateiformate: ';
 $cs_lang['nopic'] = 'Kein Bild vorhanden';
 
-$cs_lang['too_big']	= '- Die Datei ist zu gro&szlig;';
-$cs_lang['too_wide']	= '- Das Bild ist zu breit';
-$cs_lang['too_high']	= '- Das Bild ist zu hoch';
-$cs_lang['ext_error']	= '- Es wurde ein unerlaubter Dateityp benutzt';
+$cs_lang['too_big']  = '- Die Datei ist zu gro&szlig;';
+$cs_lang['too_wide']  = '- Das Bild ist zu breit';
+$cs_lang['too_high']  = '- Das Bild ist zu hoch';
+$cs_lang['ext_error']  = '- Es wurde ein unerlaubter Dateityp benutzt';
 $cs_lang['up_error'] = '- Unbekannter Fehler, bitte den Webmaster kontaktieren';
 $cs_lang['remove_done'] = 'Clanwarbild wurde Entfernt';
 
@@ -111,8 +111,8 @@ $cs_lang['delete_round'] = 'Runde entfernen';
 $cs_lang['really_delete'] = 'Soll die Runde (ID:%s) wirklich entfernt werden?';
 
 // View
-$cs_lang['details']	= 'Details';
-$cs_lang['body_view']	= 'Weitere Informationen zu einer Begegnung.';
+$cs_lang['details']  = 'Details';
+$cs_lang['body_view']  = 'Weitere Informationen zu einer Begegnung.';
 $cs_lang['comment'] = 'Kommentar';
 $cs_lang['no_players'] = 'Keine Spieler eingetragen';
 $cs_lang['plays'] = 'Wird spielen';

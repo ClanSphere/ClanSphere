@@ -32,7 +32,7 @@ for($run=0; $run<$games_loop; $run++) {
   $games_genre = cs_sql_select(__FILE__,'categories','*',"categories_id = '" . $cs_games[$run]['categories_id'] . "'");
   $data['games'][$run]['genre'] = cs_secure($games_genre['categories_name']);
   $data['games'][$run]['usk'] = cs_secure($cs_games[$run]['games_usk']);    
-  $data['games'][$run]['release'] = empty($cs_games[$run]['games_released']) ? $since2 = '-' : $since2 = cs_date('date',$cs_games[$run]['games_released']);    	 
+  $data['games'][$run]['release'] = empty($cs_games[$run]['games_released']) ? $since2 = '-' : $since2 = cs_date('date',$cs_games[$run]['games_released']);       
 }
 
 echo cs_subtemplate(__FILE__,$data,'games','list');

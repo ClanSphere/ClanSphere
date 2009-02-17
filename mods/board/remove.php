@@ -29,19 +29,19 @@ if(isset($_POST['agree'])) {
     $query = "DELETE FROM {pre}_threads WHERE board_id = '" . $board_id . "'";
     cs_sql_query(__FILE__,$query);
     
-	for($run = 0; $run < $threads_loop; $run++) {
+  for($run = 0; $run < $threads_loop; $run++) {
       $thread_id = $cs_threads[$run]['threads_id'];
       $query = "DELETE FROM {pre}_comments WHERE comments_fid = '" . $thread_id . "' ";
       $query .= "AND comments_mod = 'board'";
       cs_sql_query(__FILE__,$query);  
       $query = "DELETE FROM {pre}_abonements WHERE threads_id='" . $thread_id . "'";
       cs_sql_query(__FILE__,$query);
-			
-			
+      
+      
       $files_select = 'boardfiles_id, threads_id, boardfiles_name';
       $files_where = "threads_id = '" . $thread_id . "'";
       $files_id = cs_sql_select(__FILE__,'boardfiles',$files_select,$files_where,0,0,0);
-      $files_loop = count($files_id);		
+      $files_loop = count($files_id);    
 
       for($run2=0; $run2 < $files_loop; $run2++) {
         $file = $files_id[$run2]['boardfiles_name'];
@@ -52,7 +52,7 @@ if(isset($_POST['agree'])) {
         cs_unlink('board', $files_id[$run2]['boardfiles_id'] . '.' . $ext, 'files');
       }
       
-	  $query = "DELETE FROM {pre}_boardfiles WHERE threads_id= '" . $thread_id . "'";
+    $query = "DELETE FROM {pre}_boardfiles WHERE threads_id= '" . $thread_id . "'";
       cs_sql_query(__FILE__,$query);
     }
   }
@@ -66,8 +66,8 @@ if(isset($_POST['agree'])) {
 }
 
 if(isset($_POST['cancel'])) {
-	$board_form = 0;
-	cs_redirect($cs_lang['del_false'], 'board');
+  $board_form = 0;
+  cs_redirect($cs_lang['del_false'], 'board');
 }
 
 if(!empty($board_form)) {
@@ -77,7 +77,7 @@ if(!empty($board_form)) {
   if(!empty($threads_loop)) {
     $data['if']['threads_loop'] = true;
     $cs_board['change_threads'] = 0;
-			
+      
     if($cs_board['change_threads'] == 0) {
       $data['remove']['checked'] = '';
     }
@@ -90,7 +90,7 @@ if(!empty($board_form)) {
     $where = "board_id != '" . $board_id . "'";
     $board_data = cs_sql_select(__FILE__,'board','*',$where,'board_name',0,0);
     
-	$data['remove']['dropdown'] = cs_dropdown('board_id','board_name',$board_data,$cs_board['board_id']);
+  $data['remove']['dropdown'] = cs_dropdown('board_id','board_name',$board_data,$cs_board['board_id']);
   }
   else {
     $data['if']['threads_loop'] = false;

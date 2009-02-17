@@ -71,11 +71,11 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
   }
 
-	if(!empty($cs_user['users_sex'])) {
-		$cs_user['users_sex'] = $cs_user['users_sex'] == 'male' ? 'male' : 'female';
-	}
-	$country = $cs_user['users_country'];
-	$cs_user['users_country'] = isset($cs_country[$country]) ? $cs_user['users_country'] : 'fam';
+  if(!empty($cs_user['users_sex'])) {
+    $cs_user['users_sex'] = $cs_user['users_sex'] == 'male' ? 'male' : 'female';
+  }
+  $country = $cs_user['users_country'];
+  $cs_user['users_country'] = isset($cs_country[$country]) ? $cs_user['users_country'] : 'fam';
 }
 else {
   $cells = 'users_nick, users_name, users_surname, users_sex, users_age, users_height, users_country, users_postalcode, users_place, users_adress, users_icq, users_msn, users_skype, users_email, users_url, users_phone, users_mobile, users_info, users_hidden';
@@ -154,8 +154,8 @@ echo cs_subtemplate(__FILE__,$data,'users','profile');
 
 }
 else {
-	settype($cs_user['users_height'],'integer');
-	settype($cs_user['users_icq'],'integer');
+  settype($cs_user['users_height'],'integer');
+  settype($cs_user['users_icq'],'integer');
   $cs_user['users_hidden'] = implode(',',$hidden);
 
   $users_cells = array_keys($cs_user);
@@ -171,8 +171,8 @@ else {
     if(empty($wizard)) {
       $data['wizard']['show'] = cs_link($cs_lang['show'],'wizard','roots');
       $data['wizard']['task_done'] = cs_link($cs_lang['task_done'],'wizard','roots','handler=prfl&amp;done=1');
-	  echo cs_subtemplate(__FILE__,$data,'users','wizard');
-  	}
+    echo cs_subtemplate(__FILE__,$data,'users','wizard');
+    }
   }
 } 
 

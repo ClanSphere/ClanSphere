@@ -42,7 +42,7 @@ for($run=0; $run<$clans_loop; $run++) {
   $data['clans'][$run]['edit'] = cs_link(cs_icon('edit',16,$cs_lang['edit']),'clans','change','id=' . $cs_clans[$run]['clans_id'],0,$cs_lang['edit']);
   
   if($cs_clans[$run]['clans_id'] == 1) {
-	$data['clans'][$run]['remove'] = '-';
+  $data['clans'][$run]['remove'] = '-';
   }
   else {
     $data['clans'][$run]['remove'] = cs_link(cs_icon('editdelete',16,$cs_lang['remove']),'clans','delete','id=' . $cs_clans[$run]['clans_id'],0,$cs_lang['remove']);

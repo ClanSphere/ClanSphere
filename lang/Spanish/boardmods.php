@@ -7,10 +7,10 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod']	= 'Moderadores';
-$cs_lang['text']	= 'El Modul de los Moderarores';
+$cs_lang['mod']  = 'Moderadores';
+$cs_lang['text']  = 'El Modul de los Moderarores';
 
-$cs_lang['head_remove']	= 'Remover';
+$cs_lang['head_remove']  = 'Remover';
 
 $cs_lang['head_create'] = 'Crear';
 $cs_lang['body_create'] =  'Por Favor rellene todas las casillas con * ';
@@ -24,7 +24,7 @@ $cs_lang['head_edit'] = 'Crear';
 $cs_lang['body_edit'] =  'Por Favor rellene todas las casillas con * ';
 $cs_lang['edit_done'] = 'Cambios han sido editados';
 
-$cs_lang['head_manage']	= 'Administración';
+$cs_lang['head_manage']  = 'Administración';
 $cs_lang['all'] = 'Total : ';
 $cs_lang['nick'] = 'Usuario';
 $cs_lang['new'] = 'Crear Moderador';

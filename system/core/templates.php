@@ -62,11 +62,11 @@ function cs_conditiontemplate($string, $data)
 
 function cs_templateurl($matches) {
   
-	$action = !empty($matches[5]) ? $matches[5] : 'list';
-	$more = empty($matches[7]) ? 0 : $matches[7];
-	$base = empty($matches[2]) ? 0 : $matches[2];
-	
-	return cs_url($matches[3], $action, $more, $base);
+  $action = !empty($matches[5]) ? $matches[5] : 'list';
+  $more = empty($matches[7]) ? 0 : $matches[7];
+  $base = empty($matches[2]) ? 0 : $matches[2];
+  
+  return cs_url($matches[3], $action, $more, $base);
 
 }
 
@@ -150,13 +150,13 @@ function cs_getmsg()
         return '';
 
     if (!empty($_SESSION['messageadd'])) {
-    	$add = explode(',',$_SESSION['messageadd'],2);
-    	$icon = empty($add[0]) ? '' : cs_icon($add[0]);
-    	$id = empty($add[1]) ? 'msg_normal' : $add[1];
-    	unset($_SESSION['messageadd']);
+      $add = explode(',',$_SESSION['messageadd'],2);
+      $icon = empty($add[0]) ? '' : cs_icon($add[0]);
+      $id = empty($add[1]) ? 'msg_normal' : $add[1];
+      unset($_SESSION['messageadd']);
     } else {
-    	$icon = '';
-    	$id = 'msg_normal';
+      $icon = '';
+      $id = 'msg_normal';
     }
     $string = cs_html_div(1,0,'id="' . $id . '"') . cs_html_div(1);
     $string .= $icon . $_SESSION['message'];
@@ -168,31 +168,31 @@ function cs_getmsg()
 
 function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $icon = 0)
 {    
-	if($mod != "install") {
-    	cs_redirectmsg($message, $id, $icon);
-	}
+  if($mod != "install") {
+      cs_redirectmsg($message, $id, $icon);
+  }
     
     $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
     header('Location: ' . $url);
     exit();
 }
 function cs_redirectmsg($message, $id = 0, $icon = 0) {
-	
-	global $cs_logs;
-	global $cs_main;
-	global $cs_lang;
-	
-	$sql = cs_sql_error();
-	$php = $cs_logs['php_errors'];
-	
-	if (!empty($cs_main['debug']) && (!empty($sql) || !empty($php))) {
-		$message = $cs_lang['error'] . cs_html_br(1);
-		$icon = 'alert';
-		if (!empty($sql)) $message .= cs_html_div(1, 0, 'id="errors"') . '<b>SQL -></b> ' . $sql . cs_html_div(0);
-		if (!empty($php)) $message .= cs_html_div(1, 0, 'id="errors"') . $php . cs_html_div(0);
-	}
-	$_SESSION['message'] = $message;
-	if (!empty($id) || !empty($icon)) $_SESSION['messageadd'] = $icon . ',' . $id;
+  
+  global $cs_logs;
+  global $cs_main;
+  global $cs_lang;
+  
+  $sql = cs_sql_error();
+  $php = $cs_logs['php_errors'];
+  
+  if (!empty($cs_main['debug']) && (!empty($sql) || !empty($php))) {
+    $message = $cs_lang['error'] . cs_html_br(1);
+    $icon = 'alert';
+    if (!empty($sql)) $message .= cs_html_div(1, 0, 'id="errors"') . '<b>SQL -></b> ' . $sql . cs_html_div(0);
+    if (!empty($php)) $message .= cs_html_div(1, 0, 'id="errors"') . $php . cs_html_div(0);
+  }
+  $_SESSION['message'] = $message;
+  if (!empty($id) || !empty($icon)) $_SESSION['messageadd'] = $icon . ',' . $id;
 }
 
 function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
@@ -255,7 +255,7 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
     if (!empty($account['access_gallery']) && $cs_main['mod'] == 'gallery') {
       $gallery = cs_sql_option(__FILE__, 'gallery');
       if (!empty($gallery['lightbox'])) {
-  	    if($gallery['lightbox'] == '1') {
+        if($gallery['lightbox'] == '1') {
             $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/mootools.js\"></script>\r\n";
             $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/slimbox.js\"></script>\r\n";
             $script .= "<link rel=\"stylesheet\" href=\"" . $wp . "mods/lightbox/css/slimbox.css\" type=\"text/css\" media=\"screen\" />\r\n";
@@ -265,7 +265,7 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
             $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/lightbox.js\"></script>\r\n";
             $script .= "<link rel=\"stylesheet\" href=\"" . $wp . "mods/lightbox/css/lightbox.css\" type=\"text/css\" media=\"screen\" />\r\n";
         }
-	    }
+      }
     }
     // Lightbox END
     
@@ -276,7 +276,7 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
         $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
     }
     if (!empty($account['users_ajax']) && !empty($account['access_ajax'])) {
-    	$var = empty($cs_main['mod_rewrite']) ? 0 : 1;
+      $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
       $cs_temp_get = str_replace('<body>', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')">', $cs_temp_get);
       $content = strpos($cs_temp_get,'id="content"') === false ? '<div id="content"></div>' : '';
       

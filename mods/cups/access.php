@@ -2,10 +2,10 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$axx_file['create']	= 4;
+$axx_file['create']  = 4;
 $axx_file['manage'] = 4;
 $axx_file['edit'] = 4;
-$axx_file['remove']	= 4;
+$axx_file['remove']  = 4;
 $axx_file['start'] = 4;
 $axx_file['teams'] = 4;
 $axx_file['teamremove'] = 4;

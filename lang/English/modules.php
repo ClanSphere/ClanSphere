@@ -14,16 +14,16 @@ $cs_lang['creator'] = 'Creator';
 $cs_lang['version'] = 'Version';
 
 $cs_lang['mods_details'] = 'Module Details';
-$cs_lang['body_mods_view']	= 'Information about a extension.';
+$cs_lang['body_mods_view']  = 'Information about a extension.';
 
-$cs_lang['mod_released']		= 'Date';
+$cs_lang['mod_released']    = 'Date';
 $cs_lang['icons']           = 'Icons';
 $cs_lang['extended']        = 'Extended';
 $cs_lang['jump_to_explorer']= 'Jump to the Explorer';
 
-$cs_lang['access_files']	= 'Registered pages';
-$cs_lang['file_name']			= 'File';
-$cs_lang['access_from']		= 'Access from';
+$cs_lang['access_files']  = 'Registered pages';
+$cs_lang['file_name']      = 'File';
+$cs_lang['access_from']    = 'Access from';
 
 $cs_lang['lev_0'] = 'Locked';
 $cs_lang['lev_1'] = 'Read';

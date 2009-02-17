@@ -39,22 +39,22 @@ elseif(!empty($_POST['submit'])) {
   if(empty($img_size) OR $img_size[2] > 3) {
 
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
-		$error++;
+    $error++;
   }
   if($img_size[0]>$op_news['max_width']) {
 
     $message .= $cs_lang['too_wide'] . cs_html_br(1);
-  	$error++;
+    $error++;
   }
   if($img_size[1]>$op_news['max_height']) { 
 
-  	$message .= $cs_lang['too_high'] . cs_html_br(1);
-  	$error++;
+    $message .= $cs_lang['too_high'] . cs_html_br(1);
+    $error++;
   }
   if($_FILES['picture']['size']>$op_news['max_size']) { 
 
-  	$message .= $cs_lang['too_big'] . cs_html_br(1);
-  	$error++;
+    $message .= $cs_lang['too_big'] . cs_html_br(1);
+    $error++;
   }
 
   if(empty($error)) {
@@ -77,7 +77,7 @@ elseif(!empty($_POST['submit'])) {
       $news_string = empty($news_string) ? array($target) : array($news_string . "\n" . $target);
       cs_sql_update(__FILE__,'news',$cells,$news_string,$cs_news_id);
   
-  		$data['head']['topline'] = $cs_lang['success'];
+      $data['head']['topline'] = $cs_lang['success'];
       
       $news = cs_sql_select(__FILE__,'news','news_pictures',"news_id = '" . $cs_news_id . "'");
       $news_string = $news['news_pictures'];
@@ -109,7 +109,7 @@ $data['lang']['submit'] = $cs_lang['save'];
 $matches[1] = $cs_lang['pic_infos'];
 $return_types = '';
 foreach($img_filetypes AS $add) {
-	$return_types .= empty($return_types) ? $add : ', ' . $add;
+  $return_types .= empty($return_types) ? $add : ', ' . $add;
 }
 $matches[2] = $cs_lang['max_width'] . ': ' . $op_news['max_width'] . ' px' . cs_html_br(1);
 $matches[2] .= $cs_lang['max_height'] . ': ' .  $op_news['max_height'] . ' px' . cs_html_br(1);
@@ -120,17 +120,17 @@ $data['head']['infobox'] = cs_abcode_clip($matches);
 
 
 if(empty($news_string)) {
-	$data['pictures'][0]['view_link'] = $cs_lang['nopic'];
-	$data['pictures'][0]['remove_link'] = '';
+  $data['pictures'][0]['view_link'] = $cs_lang['nopic'];
+  $data['pictures'][0]['remove_link'] = '';
 }
 else {
   $run = 0;
   foreach($news_pics AS $pic) {
-   	$link = cs_html_img('uploads/news/thumb-' . $pic);
-   	$data['pictures'][$run]['view_link'] = cs_html_link('uploads/news/picture-' . $pic,$link) . ' ';
-   	$set = 'id=' . $cs_news_id . '&amp;delete=' . ($run + 1);
-   	$data['pictures'][$run]['remove_link'] = cs_link($cs_lang['remove'],'news','picture',$set);
-		$run++;
+     $link = cs_html_img('uploads/news/thumb-' . $pic);
+     $data['pictures'][$run]['view_link'] = cs_html_link('uploads/news/picture-' . $pic,$link) . ' ';
+     $set = 'id=' . $cs_news_id . '&amp;delete=' . ($run + 1);
+     $data['pictures'][$run]['remove_link'] = cs_link($cs_lang['remove'],'news','picture',$set);
+    $run++;
   }
 }
 

@@ -28,9 +28,9 @@ foreach($cs_news AS $news) {
     $data['days'][$day]['content'] = $cs_lang[$dayname] . ' - ' . cs_date('unix',$news['news_time']);
   }
 
-	$data['days'][$day]['news'][$run]['news_time'] = cs_date('unix',$news['news_time'],1,0);
-	$sec_head = cs_secure($news['news_headline']);
-	$data['days'][$day]['news'][$run]['news_headline'] = cs_link($sec_head,'news','view','id=' . $news['news_id']);
+  $data['days'][$day]['news'][$run]['news_time'] = cs_date('unix',$news['news_time'],1,0);
+  $sec_head = cs_secure($news['news_headline']);
+  $data['days'][$day]['news'][$run]['news_headline'] = cs_link($sec_head,'news','view','id=' . $news['news_id']);
   $run++;
 }
 

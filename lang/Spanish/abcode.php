@@ -8,12 +8,12 @@
 // $Id$
 
 
-$cs_lang['mod']	= 'Codigo del Foro';
-$cs_lang['mod_text']	= 'Cambia la muestra por imagen o texto';
+$cs_lang['mod']  = 'Codigo del Foro';
+$cs_lang['mod_text']  = 'Cambia la muestra por imagen o texto';
 
-$cs_lang['body_create']	= 'A&ntilde;adir nuevas muestras';
-$cs_lang['body_edit']	= 'Editar muestras';
-$cs_lang['body_options']	= 'Asministración de las opciones del Modulo';
+$cs_lang['body_create']  = 'A&ntilde;adir nuevas muestras';
+$cs_lang['body_edit']  = 'Editar muestras';
+$cs_lang['body_options']  = 'Asministración de las opciones del Modulo';
 $cs_lang['new_abcode'] = 'Nuevo codigo del Foro';
 
 $cs_lang['max_width'] = 'Anchura maximal de la imagen : ';
@@ -31,15 +31,15 @@ $cs_lang['pattern'] = 'Muestra';
 $cs_lang['result'] = 'Resultado';
 $cs_lang['function'] = 'Función';
 $cs_lang['pic_up'] = 'Cargar Imagen';
-$cs_lang['pic_current']	= 'Imagen actual';
+$cs_lang['pic_current']  = 'Imagen actual';
 $cs_lang['nopic'] = 'No hay imagen';
 $cs_lang['pic_infos'] = 'Box de Información';
 $cs_lang['filetypes'] = 'Formados : ';
 
-$cs_lang['too_big']	= '- El archivo es muy grande;';
-$cs_lang['too_wide']	= '- La imagen es muy ancha';
-$cs_lang['too_high']	= '- La imagen es muy alta';
-$cs_lang['ext_error']	= '- Ha sido usada und extensión no valida';
+$cs_lang['too_big']  = '- El archivo es muy grande;';
+$cs_lang['too_wide']  = '- La imagen es muy ancha';
+$cs_lang['too_high']  = '- La imagen es muy alta';
+$cs_lang['ext_error']  = '- Ha sido usada und extensión no valida';
 $cs_lang['no_func'] = '- La función no puede estar vacia';
 $cs_lang['no_pattern'] = '- La muestra no puede estar vacia';
 $cs_lang['pattern_exists'] = '- La muestra ya existe';

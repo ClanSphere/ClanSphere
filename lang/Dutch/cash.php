@@ -1,12 +1,12 @@
 <?php
 
-$cs_lang['mod_name']	= 'Financiën';
-$cs_lang['mod_text']	= 'Administratie van Clankas';
-$cs_lang['mod']	= 'Financiën';
+$cs_lang['mod_name']  = 'Financiën';
+$cs_lang['mod_text']  = 'Administratie van Clankas';
+$cs_lang['mod']  = 'Financiën';
 $cs_lang['head']= 'Administratie';
 $cs_lang['head_create'] = 'Toevoegen';
 $cs_lang['head_view'] = 'Details';
-$cs_lang['head_remove']	= 'Verwijderen';
+$cs_lang['head_remove']  = 'Verwijderen';
 $cs_lang['head_edit'] = 'Veranderen';
 $cs_lang['body_edit'] =  'Alle velden met een * zijn verplicht.';
 $cs_lang['error_occurred'] = 'Een foutmelding heeft zich voorgedaan.';

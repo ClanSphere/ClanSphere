@@ -55,7 +55,7 @@ for($run=0; $run<$members_loop; $run++) {
 
   $data['members'][$run]['order'] = $cs_members[$run]['members_order'];
 
-	$data['members'][$run]['edit'] = cs_link($img_edit,'members','edit','id=' . $cs_members[$run]['members_id'],0,$cs_lang['edit']);
+  $data['members'][$run]['edit'] = cs_link($img_edit,'members','edit','id=' . $cs_members[$run]['members_id'],0,$cs_lang['edit']);
   $data['members'][$run]['remove'] = cs_link($img_del,'members','remove','id=' . $cs_members[$run]['members_id'],0,$cs_lang['remove']);
 
 }

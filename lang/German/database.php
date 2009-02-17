@@ -2,32 +2,32 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Datenbank';
-$cs_lang['modtext']	= 'Aktualisiert das Portalsystem';
+$cs_lang['mod']  = 'Datenbank';
+$cs_lang['modtext']  = 'Aktualisiert das Portalsystem';
 
 $cs_lang['roots'] = 'Basis';
-$cs_lang['body_roots']	= 'W&auml;hlen Sie aus den folgenden Aktionen aus.';
+$cs_lang['body_roots']  = 'W&auml;hlen Sie aus den folgenden Aktionen aus.';
 $cs_lang['import'] = 'Import';
-$cs_lang['body_import']	= 'Hier werden SQL-Importe wie z.B. Patches eingespielt.';
+$cs_lang['body_import']  = 'Hier werden SQL-Importe wie z.B. Patches eingespielt.';
 $cs_lang['export'] = 'Export';
-$cs_lang['body_export']	= 'Hier werden Tabellen f&uuml;r Sicherungen ausgelesen.';
-$cs_lang['optimize']	= 'Optimieren';
-$cs_lang['body_optimize']	= 'Entfernt durch Nutzung entstandene Tabellen&uuml;berh&auml;nge';
-$cs_lang['statistic']	= 'Statistik';
-$cs_lang['body_statistic']	= 'Zeigt die vorhandenen Module mit Tabellen- und Datensatzanzahl.';
+$cs_lang['body_export']  = 'Hier werden Tabellen f&uuml;r Sicherungen ausgelesen.';
+$cs_lang['optimize']  = 'Optimieren';
+$cs_lang['body_optimize']  = 'Entfernt durch Nutzung entstandene Tabellen&uuml;berh&auml;nge';
+$cs_lang['statistic']  = 'Statistik';
+$cs_lang['body_statistic']  = 'Zeigt die vorhandenen Module mit Tabellen- und Datensatzanzahl.';
 
 $cs_lang['optimize_tables'] = 'Tabellen optimieren';
-$cs_lang['sql_datasets']	  = 'SQL Datens&auml;tze';
-$cs_lang['sql_tables']		  = 'SQL Tabellen';
-$cs_lang['sql_text']			  = 'SQL Text';
-$cs_lang['sql_options']		  = 'SQL Optionen';
-$cs_lang['sql_file']			  = 'SQL Datei';
+$cs_lang['sql_datasets']    = 'SQL Datens&auml;tze';
+$cs_lang['sql_tables']      = 'SQL Tabellen';
+$cs_lang['sql_text']        = 'SQL Text';
+$cs_lang['sql_options']      = 'SQL Optionen';
+$cs_lang['sql_file']        = 'SQL Datei';
 $cs_lang['modul']           = 'Modul';
-$cs_lang['run']						  = 'Ausf&uuml;hren';
+$cs_lang['run']              = 'Ausf&uuml;hren';
 
-$cs_lang['update_done']		  = 'SQL-Patch erfolgreich ausgef&uuml;hrt.';
-$cs_lang['update_error']	  = 'Es sind Fehler im SQL-Patch aufgetreten';
-$cs_lang['actions_done']	  = 'Durchgef&uuml;hrte Aktionen';
+$cs_lang['update_done']      = 'SQL-Patch erfolgreich ausgef&uuml;hrt.';
+$cs_lang['update_error']    = 'Es sind Fehler im SQL-Patch aufgetreten';
+$cs_lang['actions_done']    = 'Durchgef&uuml;hrte Aktionen';
 
 $cs_lang['all']           = 'Alle';
 $cs_lang['none']          = 'Keine';

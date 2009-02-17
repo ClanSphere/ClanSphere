@@ -22,7 +22,7 @@ $order   = 'thr.threads_last_time DESC';
 $data['threads'] = cs_sql_select(__FILE__,$tables,$cells,$cond,$order,0,8);
 
 if(empty($data['threads'])) {
-	echo $cs_lang['no_new_posts'];
+  echo $cs_lang['no_new_posts'];
 }
 else {
   $count_threads = count($data['threads']);

@@ -5,15 +5,15 @@
 $cs_lang = cs_translate('lanrooms');
 
 if(empty($_REQUEST['lanroomd_id'])) {
-	$lanrooms_id = $_REQUEST['id'];
-	settype($lanrooms_id,'integer');
-	$lanroomd_id = 0;
+  $lanrooms_id = $_REQUEST['id'];
+  settype($lanrooms_id,'integer');
+  $lanroomd_id = 0;
 }
 else {
-	$lanroomd_id = $_REQUEST['lanroomd_id'];
-	settype($lanroomd_id,'integer');
-	$lanrooms = cs_sql_select(__FILE__,'lanroomd','*',"lanroomd_id = '" . $lanroomd_id . "'");
-	$lanrooms_id = $lanrooms['lanrooms_id'];
+  $lanroomd_id = $_REQUEST['lanroomd_id'];
+  settype($lanroomd_id,'integer');
+  $lanrooms = cs_sql_select(__FILE__,'lanroomd','*',"lanroomd_id = '" . $lanroomd_id . "'");
+  $lanrooms_id = $lanrooms['lanrooms_id'];
 }
 
 $cs_lanrooms = cs_sql_select(__FILE__,'lanrooms','*',"lanrooms_id = '" . $lanrooms_id . "'");

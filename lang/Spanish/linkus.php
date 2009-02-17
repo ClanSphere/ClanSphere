@@ -7,7 +7,7 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod']	= 'LinkUs';
+$cs_lang['mod']  = 'LinkUs';
 $cs_lang['head'] = 'Crear'; 
 $cs_lang['head1'] = 'Detalles';
 $cs_lang['body_create'] =  'Por Favor rellene todas las casillas con * ';
@@ -42,14 +42,14 @@ $cs_lang['mass'] = 'Medidas';
 $cs_lang['new_banner'] = 'Nuevo Baner';
 
 //remove.php
-$cs_lang['head_remove']	= 'Remover';
+$cs_lang['head_remove']  = 'Remover';
 
 //edit.php
 $cs_lang['head'] = 'Editar'; 
 $cs_lang['body_edit'] =  'Por Favor rellene todas las casillas con * ';
 
 //info.php
-$cs_lang['mod_name']	= 'LinkUs';
-$cs_lang['mod_text']	= 'Memorizar Imagenes que pueden ser usadas para Crear Links a esta Pagina';
+$cs_lang['mod_name']  = 'LinkUs';
+$cs_lang['mod_text']  = 'Memorizar Imagenes que pueden ser usadas para Crear Links a esta Pagina';
 
 ?>

@@ -21,22 +21,22 @@ require_once('system/core/functions.php');
 
 $install_link = '<a href="install.php">Installation required</a>';
 if(file_exists('setup.php')) {
-	require_once('setup.php');
-	require_once('system/database/' . $cs_db['type'] . '.php');
-	if (empty($cs_db['con'])) $cs_db['con'] = cs_sql_connect($cs_db);
+  require_once('setup.php');
+  require_once('system/database/' . $cs_db['type'] . '.php');
+  if (empty($cs_db['con'])) $cs_db['con'] = cs_sql_connect($cs_db);
 
-	if (empty($cs_main)) $cs_main = @cs_sql_option(__FILE__,'clansphere') OR die($install_link . ' or database error');
+  if (empty($cs_main)) $cs_main = @cs_sql_option(__FILE__,'clansphere') OR die($install_link . ' or database error');
 
-	require_once('system/core/servervars.php');
-	require_once('system/output/xhtml_10_old.php');
-	require_once('system/core/templates.php');
-	require_once('system/core/content.php');
-	require_once('system/core/tools.php');
-	require_once('system/core/account.php');
-	require_once('system/core/abcode.php');
+  require_once('system/core/servervars.php');
+  require_once('system/output/xhtml_10_old.php');
+  require_once('system/core/templates.php');
+  require_once('system/core/content.php');
+  require_once('system/core/tools.php');
+  require_once('system/core/account.php');
+  require_once('system/core/abcode.php');
 
-	cs_tasks('system/extensions', 1); # load extensions
-	cs_tasks('system/runstartup'); # load startup files
+  cs_tasks('system/extensions', 1); # load extensions
+  cs_tasks('system/runstartup'); # load startup files
   
   $cs_main['show'] = '';
   
@@ -60,18 +60,18 @@ if(file_exists('setup.php')) {
     $special_names = array('func_sql' => 'sql', 'func_errors' => 'errors');
     
     foreach ($ajaxes as $ajax) {
-    	$name = !empty($special_names[$ajax]) ? $special_names[$ajax] : 'cs_' . $ajax;
-    	if (empty($specials[$ajax]))
-    	  echo $temp .= '!33/' . $name . '!33/' . cs_filecontent('mods/' . str_replace('_','/',$ajax) . '.php');
+      $name = !empty($special_names[$ajax]) ? $special_names[$ajax] : 'cs_' . $ajax;
+      if (empty($specials[$ajax]))
+        echo $temp .= '!33/' . $name . '!33/' . cs_filecontent('mods/' . str_replace('_','/',$ajax) . '.php');
       else {
-      	eval('$var = ' . $specials[$ajax] . ';');
-      	$temp .= '!33/' . $name . '!33/' . $var;
+        eval('$var = ' . $specials[$ajax] . ';');
+        $temp .= '!33/' . $name . '!33/' . $var;
       }
     }
     echo $temp;
   }
 } else {
-	echo $install_link . ' or missing setup.php';
+  echo $install_link . ' or missing setup.php';
 }
 
 ?>

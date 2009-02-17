@@ -28,17 +28,17 @@ echo cs_box_head('archivbox',$messages_id,$start,$sort);
 $messages_data = cs_time_array();
 if(!empty($_POST['messages_id']))
 {
-	$messages_id = $_POST['messages_id'];
-	$run = cs_sql_escape($messages_id) - 1;
-	$messages_time = $messages_data[$run]['messages_time'];
-	$where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_archiv_receiver ='1' AND messages_time >= '" . $messages_time . "' OR ";
-	$where .= "msg.users_id = '" . $users_id . "' AND msg.messages_archiv_sender ='1' AND messages_time >= '" . $messages_time . "'";
+  $messages_id = $_POST['messages_id'];
+  $run = cs_sql_escape($messages_id) - 1;
+  $messages_time = $messages_data[$run]['messages_time'];
+  $where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_archiv_receiver ='1' AND messages_time >= '" . $messages_time . "' OR ";
+  $where .= "msg.users_id = '" . $users_id . "' AND msg.messages_archiv_sender ='1' AND messages_time >= '" . $messages_time . "'";
 }
 else
 {
-	$messages_time = '';
-	$messages_id = '';
-	$where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_archiv_receiver ='1' OR msg.users_id = '" . $users_id . "' AND msg.messages_archiv_sender ='1'";
+  $messages_time = '';
+  $messages_id = '';
+  $where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_archiv_receiver ='1' OR msg.users_id = '" . $users_id . "' AND msg.messages_archiv_sender ='1'";
 }
 echo cs_html_br(1);
 
@@ -56,53 +56,53 @@ $messages_outbox_loop = count($cs_messages_outbox);
 
 for($run=0; $run<$messages_inbox_loop; $run++)
 {
-	$messages_archiv = $cs_messages_inbox[$run]['messages_archiv_receiver'];
-	if($messages_archiv == '1')
-	{
-		$receiver_count++;
-	}
+  $messages_archiv = $cs_messages_inbox[$run]['messages_archiv_receiver'];
+  if($messages_archiv == '1')
+  {
+    $receiver_count++;
+  }
 }
 if($receiver_count > 0)
 {
-	echo cs_archivbox_head($start,$sort);
+  echo cs_archivbox_head($start,$sort);
 }
 
 for($run=0; $run<$messages_inbox_loop; $run++)
 {
-	$messages_archiv = $cs_messages_inbox[$run]['messages_archiv_receiver'];
-	if($messages_archiv == '1')
-	{
-		echo cs_box($cs_messages_inbox,$run,1);
-	}
+  $messages_archiv = $cs_messages_inbox[$run]['messages_archiv_receiver'];
+  if($messages_archiv == '1')
+  {
+    echo cs_box($cs_messages_inbox,$run,1);
+  }
 }
 if($receiver_count > 0)
 {
-	echo cs_html_table(0);
-	echo cs_html_br(1);
+  echo cs_html_table(0);
+  echo cs_html_br(1);
 }
 for($run=0; $run<$messages_outbox_loop; $run++)
 {
-	$messages_archiv = $cs_messages_outbox[$run]['messages_archiv_sender'];
-	if($messages_archiv == '1')
-	{
-		$sender_count++;
-	}
+  $messages_archiv = $cs_messages_outbox[$run]['messages_archiv_sender'];
+  if($messages_archiv == '1')
+  {
+    $sender_count++;
+  }
 }
 if($sender_count > 0)
 {
-	echo cs_outbox_head($start,$sort);
+  echo cs_outbox_head($start,$sort);
 }
 for($run=0; $run<$messages_outbox_loop; $run++)
 {
-	$messages_archiv = $cs_messages_outbox[$run]['messages_archiv_sender'];
-	if($messages_archiv == '1')
-	{
-		echo cs_box($cs_messages_outbox,$run,1);
-	}
+  $messages_archiv = $cs_messages_outbox[$run]['messages_archiv_sender'];
+  if($messages_archiv == '1')
+  {
+    echo cs_box($cs_messages_outbox,$run,1);
+  }
 }
 
 if($sender_count > 0)
 {
-	echo cs_html_table(0);
+  echo cs_html_table(0);
 }
 ?>

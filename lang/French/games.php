@@ -1,8 +1,8 @@
 <?php
-$cs_lang['mod_name']	= 'Jeux';
-$cs_lang['mod_text']	= 'Le module de jeux';
-$cs_lang['mod']	= 'Jeux';
-$cs_lang['head_remove']	= 'Supprimer'; 
+$cs_lang['mod_name']  = 'Jeux';
+$cs_lang['mod_text']  = 'Le module de jeux';
+$cs_lang['mod']  = 'Jeux';
+$cs_lang['head_remove']  = 'Supprimer'; 
 $cs_lang['head_edit'] = 'Editer'; 
 $cs_lang['head1'] = 'Détails';
 $cs_lang['body_create'] =  'Veuillez remplir le plus de champ possible.';

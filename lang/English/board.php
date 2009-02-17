@@ -60,8 +60,8 @@ $cs_lang['up_error'] = '- Unexpected error, please contact Webmaster';
 $cs_lang['nopic'] = 'No Avatar selected';
 $cs_lang['current']    = 'Current';
 $cs_lang['more']    = 'More';
-$cs_lang['glob_sig']	= 'Global signature';
-$cs_lang['glob_sig1']	= 'Possible placeholders: {post_nick} and {post_date}';
+$cs_lang['glob_sig']  = 'Global signature';
+$cs_lang['glob_sig1']  = 'Possible placeholders: {post_nick} and {post_date}';
 
 //center.php
 $cs_lang['cat']    = 'Categorie';

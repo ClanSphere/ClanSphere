@@ -34,20 +34,20 @@ $fightus_loop = count($data['fightus']);
 
 for($run=0; $run<$fightus_loop; $run++) {
 
-	$id = $data['fightus'][$run]['fightus_id'];
+  $id = $data['fightus'][$run]['fightus_id'];
 
-	$data['fightus'][$run]['game'] = '-';
-	if(!empty($data['fightus'][$run]['games_id'])) {
-		$data['fightus'][$run]['game'] = cs_html_img('uploads/games/' . $data['fightus'][$run]['games_id'] . '.gif');
-	}
-	$data['fightus'][$run]['clan'] = cs_secure($data['fightus'][$run]['fightus_clan']);
-	$data['fightus'][$run]['url_view'] = cs_url('fightus','view','id=' . $id);
-	$data['fightus'][$run]['date'] = cs_date('unix',$data['fightus'][$run]['fightus_date'],1);
-	
-	$data['fightus'][$run]['url_convert_clan'] = cs_url('clans','create','fightus=' . $id);
-	$data['fightus'][$run]['url_convert_war'] = cs_url('wars','create','fightus=' . $id);
- 	$data['fightus'][$run]['url_remove'] = cs_url('fightus','remove','id=' . $id);
-	
+  $data['fightus'][$run]['game'] = '-';
+  if(!empty($data['fightus'][$run]['games_id'])) {
+    $data['fightus'][$run]['game'] = cs_html_img('uploads/games/' . $data['fightus'][$run]['games_id'] . '.gif');
+  }
+  $data['fightus'][$run]['clan'] = cs_secure($data['fightus'][$run]['fightus_clan']);
+  $data['fightus'][$run]['url_view'] = cs_url('fightus','view','id=' . $id);
+  $data['fightus'][$run]['date'] = cs_date('unix',$data['fightus'][$run]['fightus_date'],1);
+  
+  $data['fightus'][$run]['url_convert_clan'] = cs_url('clans','create','fightus=' . $id);
+  $data['fightus'][$run]['url_convert_war'] = cs_url('wars','create','fightus=' . $id);
+   $data['fightus'][$run]['url_remove'] = cs_url('fightus','remove','id=' . $id);
+  
 }
 
 echo cs_subtemplate(__FILE__,$data,'fightus','manage');

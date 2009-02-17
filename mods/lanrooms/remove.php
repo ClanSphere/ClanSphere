@@ -12,7 +12,7 @@ if(isset($_GET['agree'])) {
   $lanrooms_form = 0;
   cs_sql_delete(__FILE__,'lanroomd',$lanrooms_id,'lanrooms_id');
   cs_sql_delete(__FILE__,'lanrooms',$lanrooms_id);
-	
+  
   cs_redirect($cs_lang['del_true'], 'lanrooms');
 }
 
@@ -25,7 +25,7 @@ if(!empty($lanrooms_form)) {
   $data['lang']['content'] = cs_link($cs_lang['confirm'],'lanrooms','remove','id=' . $lanrooms_id . '&amp;agree');
   $data['lang']['content'] .= ' - ';
   $data['lang']['content'] .= cs_link($cs_lang['cancel'],'lanrooms','remove','id=' . $lanrooms_id . '&amp;cancel');
-	
+  
   echo cs_subtemplate(__FILE__,$data,'lanrooms','remove');
 }
 

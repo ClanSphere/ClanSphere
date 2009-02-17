@@ -6,20 +6,20 @@ $cs_lang = cs_translate('lanshop');
 
 if(!empty($_GET['remove_id'])) {
 
-	$remove_id = $_GET['remove_id'];
-	settype($remove_id,'integer');
+  $remove_id = $_GET['remove_id'];
+  settype($remove_id,'integer');
   if($account['access_lanshop'] >= 5) {
-		cs_sql_delete(__FILE__,'lanshop_orders',$remove_id);
+    cs_sql_delete(__FILE__,'lanshop_orders',$remove_id);
   }
 }
 elseif(!empty($_GET['pay_id'])) {
 
-	$pay_id = $_GET['pay_id'];
-	settype($pay_id,'integer');
+  $pay_id = $_GET['pay_id'];
+  settype($pay_id,'integer');
   if($account['access_lanshop'] >= 4) {
-  	$lanshop_cells = array('lanshop_orders_since','lanshop_orders_status');
-  	$lanshop_save = array(cs_time(),2);
-  	cs_sql_update(__FILE__,'lanshop_orders',$lanshop_cells,$lanshop_save,$pay_id);
+    $lanshop_cells = array('lanshop_orders_since','lanshop_orders_status');
+    $lanshop_save = array(cs_time(),2);
+    cs_sql_update(__FILE__,'lanshop_orders',$lanshop_cells,$lanshop_save,$pay_id);
   }
 }
 
@@ -106,32 +106,32 @@ $money = 0;
 
 for($run=0; $run<$lanshop_loop; $run++) {
 
-	$get = 'users_id=' . $users_id . '&amp;categories_id=' . $categories_id . '&amp;status=' . $orders_status . '&amp;';
+  $get = 'users_id=' . $users_id . '&amp;categories_id=' . $categories_id . '&amp;status=' . $orders_status . '&amp;';
 
-	echo cs_html_roco(1,'leftc');
-	$users_view = cs_secure($cs_lanshop[$run]['users_nick']);
+  echo cs_html_roco(1,'leftc');
+  $users_view = cs_secure($cs_lanshop[$run]['users_nick']);
   echo cs_user($cs_lanshop[$run]['users_id'],$cs_lanshop[$run]['users_nick'], $cs_lanshop[$run]['users_active']);
-	echo cs_html_roco(2,'leftc');
-	$lanshop_view = cs_secure($cs_lanshop[$run]['lanshop_articles_name']);
+  echo cs_html_roco(2,'leftc');
+  $lanshop_view = cs_secure($cs_lanshop[$run]['lanshop_articles_name']);
   echo cs_link($lanshop_view,'lanshop','view','id=' . $cs_lanshop[$run]['lanshop_articles_id']);
-	echo cs_html_roco(3,'leftc');
-	$status = $cs_lanshop[$run]['lanshop_orders_status'];
-	echo $cs_lang['status_' . $status];
-	echo cs_html_roco(4,'leftc');
-	$img_pay = cs_icon('money',16,$cs_lang['pay']);
+  echo cs_html_roco(3,'leftc');
+  $status = $cs_lanshop[$run]['lanshop_orders_status'];
+  echo $cs_lang['status_' . $status];
+  echo cs_html_roco(4,'leftc');
+  $img_pay = cs_icon('money',16,$cs_lang['pay']);
   echo cs_link($img_pay,'lanshop','cashdesk',$get . 'pay_id=' . $cs_lanshop[$run]['lanshop_orders_id']);
-	echo cs_html_roco(5,'leftc');
-	echo $cs_lanshop[$run]['lanshop_orders_value'];
-	echo cs_html_roco(6,'leftc');
-	$img_del = cs_icon('editdelete',16,$cs_lang['remove']);
+  echo cs_html_roco(5,'leftc');
+  echo $cs_lanshop[$run]['lanshop_orders_value'];
+  echo cs_html_roco(6,'leftc');
+  $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
   echo cs_link($img_del,'lanshop','cashdesk',$get . 'remove_id=' . $cs_lanshop[$run]['lanshop_orders_id'],0,$cs_lang['remove']);
-	echo cs_html_roco(6,'leftc');
-	$cost = $cs_lanshop[$run]['lanshop_articles_price'] * $cs_lanshop[$run]['lanshop_orders_value'];
-	echo $cost / 100 . ' ' . $cs_lang['cost'];
-	echo cs_html_roco(0);
-	if($status == 1) {
-		$money = $money + $cost;
-	}
+  echo cs_html_roco(6,'leftc');
+  $cost = $cs_lanshop[$run]['lanshop_articles_price'] * $cs_lanshop[$run]['lanshop_orders_value'];
+  echo $cost / 100 . ' ' . $cs_lang['cost'];
+  echo cs_html_roco(0);
+  if($status == 1) {
+    $money = $money + $cost;
+  }
 }
 
 echo cs_html_table(0);

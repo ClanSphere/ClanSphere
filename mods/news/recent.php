@@ -36,14 +36,14 @@ $order = 'news_attached DESC, news_time DESC';
 $cs_news = cs_sql_select(__FILE__, $from, $select, $where, $order, $start, $cs_option['max_recent']);
 
 if($cs_option['max_recent'] == '1') {
-	$anews = array();
-	array_push($anews,$cs_news);
-	unset($cs_news);
-	$cs_news = $anews;
-	$news_loop = 1;
+  $anews = array();
+  array_push($anews,$cs_news);
+  unset($cs_news);
+  $cs_news = $anews;
+  $news_loop = 1;
 }
 else {
-	$news_loop = count($cs_news);
+  $news_loop = count($cs_news);
 }
 
 for($run = 0; $run < $news_loop; $run++) {
@@ -52,16 +52,16 @@ for($run = 0; $run < $news_loop; $run++) {
 
   if(!empty($cs_news[$run]['news_readmore']) and $cs_news[$run]['news_readmore_active'] == '1') {
     $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . cs_html_br(2);
-	$cs_news[$run]['news_readmore_link'] = cs_url('news', 'view', 'id=' . $cs_news[$run]['news_id']);
-	$cs_news[$run]['news_text'] = '';
+  $cs_news[$run]['news_readmore_link'] = cs_url('news', 'view', 'id=' . $cs_news[$run]['news_id']);
+  $cs_news[$run]['news_text'] = '';
   }
   elseif(!empty($cs_news[$run]['news_readmore']) and  $cs_news[$run]['news_readmore_active'] == '0'){
     $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . cs_html_br(2);
-	$cs_news[$run]['news_text'] = cs_secure($cs_news[$run]['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
+  $cs_news[$run]['news_text'] = cs_secure($cs_news[$run]['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
   }
   else {
     $cs_news[$run]['news_readmore'] = '';
-	$cs_news[$run]['news_text'] = cs_secure($cs_news[$run]['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
+  $cs_news[$run]['news_text'] = cs_secure($cs_news[$run]['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
   }
 
   $cs_user = cs_secure($cs_news[$run]['users_nick']);
@@ -80,7 +80,7 @@ for($run = 0; $run < $news_loop; $run++) {
   if(!empty($cs_news[$run]['news_pictures'])) {
     $news_pics = explode("\n", $cs_news[$run]['news_pictures']);
     foreach ($news_pics as $pic) {
-	  $link = cs_html_img('uploads/news/thumb-' . $pic);
+    $link = cs_html_img('uploads/news/thumb-' . $pic);
       $cs_news[$run]['pictures'] .= cs_html_link('uploads/news/picture-' . $pic, $link) . ' ';
     }
   }
@@ -91,25 +91,25 @@ for($run = 0; $run < $news_loop; $run++) {
     $cs_news[$run]['if']['show'] = true;
 
     $temp_mirror = explode("\n", $cs_news[$run]['news_mirror']);
-	$temp_mirror_name = explode("\n", $cs_news[$run]['news_mirror_name']);
+  $temp_mirror_name = explode("\n", $cs_news[$run]['news_mirror_name']);
 
-	$tpl_run = 0;
-	for($run_mirror=1; $run_mirror < count($temp_mirror); $run_mirror++) {
-	  $num = $run_mirror;
+  $tpl_run = 0;
+  for($run_mirror=1; $run_mirror < count($temp_mirror); $run_mirror++) {
+    $num = $run_mirror;
 
-	  if($run_mirror == (count($temp_mirror) - 1)) {
+    if($run_mirror == (count($temp_mirror) - 1)) {
         $cs_news[$run]['mirror'][$tpl_run]['dot'] =  '';
-	  }
-	  elseif(!empty($run_mirror)) {
-	    $cs_news[$run]['mirror'][$tpl_run]['dot'] =  ' - ';
-	  }
-	  else {
-	    $cs_news[$run]['mirror'][$tpl_run]['dot'] =  ' - ';
-	  }
+    }
+    elseif(!empty($run_mirror)) {
+      $cs_news[$run]['mirror'][$tpl_run]['dot'] =  ' - ';
+    }
+    else {
+      $cs_news[$run]['mirror'][$tpl_run]['dot'] =  ' - ';
+    }
 
-	  $cs_news[$run]['mirror'][$tpl_run]['news_mirror'] = cs_html_link($temp_mirror[$run_mirror],$temp_mirror_name[$run_mirror]);
-	  $tpl_run++;
-	}
+    $cs_news[$run]['mirror'][$tpl_run]['news_mirror'] = cs_html_link($temp_mirror[$run_mirror],$temp_mirror_name[$run_mirror]);
+    $tpl_run++;
+  }
   }
 }
 

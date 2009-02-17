@@ -41,31 +41,31 @@ else {
   $pwd = array('current' => '', 'new' => '', 'again' => '');
 }
 if(!isset($_POST['submit'])) {
-	$data['head']['body'] = $cs_lang['change_password'];
+  $data['head']['body'] = $cs_lang['change_password'];
 }
 elseif(!empty($error)) {
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['users']['current_pwd'] = $pwd['current'];
-	$data['users']['new_pwd'] = $pwd['new'];
-	$data['users']['pwd_again'] = $pwd['again'];
+  $data['users']['current_pwd'] = $pwd['current'];
+  $data['users']['new_pwd'] = $pwd['new'];
+  $data['users']['pwd_again'] = $pwd['again'];
 
-	$matches[1] = $cs_lang['secure_stages'];
-	$matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
-	$matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_1_text'] . cs_html_br(1);
-	$matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
-	$matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
-	$data['users']['secure_clip'] = cs_abcode_clip($matches);
+  $matches[1] = $cs_lang['secure_stages'];
+  $matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
+  $matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_1_text'] . cs_html_br(1);
+  $matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
+  $matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
+  $data['users']['secure_clip'] = cs_abcode_clip($matches);
   
   echo cs_subtemplate(__FILE__,$data,'users','password');
 }
 else {
 
-	$users_cells = array('users_pwd');
-	$users_save = array($new_pwd);
+  $users_cells = array('users_pwd');
+  $users_save = array($new_pwd);
   cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
 
   cs_redirect($cs_lang['changes_done'],'users','home');

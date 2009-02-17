@@ -7,10 +7,10 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod']	= 'Instalación';
-$cs_lang['modtext']	= 'Instalación del Portal de Clansphere';
-$cs_lang['head_list']	= 'Lista';
-$cs_lang['body_list']	= 'Preparación y comprobación de la Software';
+$cs_lang['mod']  = 'Instalación';
+$cs_lang['modtext']  = 'Instalación del Portal de Clansphere';
+$cs_lang['head_list']  = 'Lista';
+$cs_lang['body_list']  = 'Preparación y comprobación de la Software';
 
 $cs_lang['lang'] = 'Lengua';
 
@@ -30,11 +30,11 @@ $cs_lang['last_check'] = 'Ultima Comprobación';
 
 $cs_lang['check'] = 'Comprobación';
 $cs_lang['found'] = 'Existente';
-$cs_lang['any']	= 'Alguna';
+$cs_lang['any']  = 'Alguna';
 $cs_lang['required'] = 'Necesitado';
 $cs_lang['recommend'] = 'Recomendado';
-$cs_lang['db_support']	= 'Suporte del Dato de Bancos';
-$cs_lang['php_mod']	= 'Modulo PHP';
+$cs_lang['db_support']  = 'Suporte del Dato de Bancos';
+$cs_lang['php_mod']  = 'Modulo PHP';
 $cs_lang['file_uploads'] = 'Cargar Archivos';
 $cs_lang['reg_global'] = 'Registración Global';
 $cs_lang['magic_quotes'] = 'Quotas Magicas';
@@ -43,7 +43,7 @@ $cs_lang['trans_sid'] = 'SessionID Transparente';
 $cs_lang['basedir_restriction'] = 'Zona del Pfad Asegurada';
 $cs_lang['allow_url_fopen'] = 'Cargar Objetos Externos';
 $cs_lang['gd_extension'] = 'GD Avanzado';
-$cs_lang['off']	= 'desactivado';
+$cs_lang['off']  = 'desactivado';
 $cs_lang['on'] = 'activado';
 
 $cs_lang['check_perfect'] = 'Los ajustes Comprobados son perfectos para la installación y el uso de ClanSphere!';
@@ -53,25 +53,25 @@ $cs_lang['check_failed'] = 'Por causa de los Argumentos marcados arriba, no es P
 $cs_lang['fatal_msg'] = 'La Instalación No Puede ser Extraida';
 $cs_lang['error_msg'] = 'Los Ajustes del Servidor no son Optimales';
 
-$cs_lang['head_complete']	= 'Fin';
-$cs_lang['rem_install']	= '- Se estan Removiendo los Datos de la Instalación';
-$cs_lang['set_chmod']	= '- Archivos adquieren nuevos Acceso';
+$cs_lang['head_complete']  = 'Fin';
+$cs_lang['rem_install']  = '- Se estan Removiendo los Datos de la Instalación';
+$cs_lang['set_chmod']  = '- Archivos adquieren nuevos Acceso';
 $cs_lang['remove_file'] = 'Remueva el Archivo Manualmente';
-$cs_lang['err_chmod']	= 'ERROR : Cambie el Acceso de los Archivos "logs", "uploads" ';
-$cs_lang['err_chmod']	.= ' y del todos los subarchivos de estos, manualmente al CHMOD 777';
+$cs_lang['err_chmod']  = 'ERROR : Cambie el Acceso de los Archivos "logs", "uploads" ';
+$cs_lang['err_chmod']  .= ' y del todos los subarchivos de estos, manualmente al CHMOD 777';
 
-$cs_lang['login']	= 'Login';
+$cs_lang['login']  = 'Login';
 
-$cs_lang['head_license']	= 'Licencia';
-$cs_lang['body_license']	= 'Acceptar las Condiciones del Uso';
+$cs_lang['head_license']  = 'Licencia';
+$cs_lang['body_license']  = 'Acceptar las Condiciones del Uso';
 
 $cs_lang['accept_done'] = 'Condiciones Acceptadas';
 $cs_lang['accept_license'] = 'Lo he Leido y Acepto';
 $cs_lang['not_accepted'] = '- Tiene que Aceptar las Condiciones del Uso';
 $cs_lang['send'] = 'Enviar';
 
-$cs_lang['head_settings']	= 'Cofiguración';
-$cs_lang['body_settings']	= 'Crear el Setup Archivo (setup.php) para el Portal';
+$cs_lang['head_settings']  = 'Cofiguración';
+$cs_lang['body_settings']  = 'Crear el Setup Archivo (setup.php) para el Portal';
 
 $cs_lang['hash'] = 'Encriptación';
 $cs_lang['hash_info'] = 'Sha1 Recomendado, Si hace un Update de BXCP -> Use Md5!';
@@ -100,12 +100,12 @@ $cs_lang['save_file'] = 'Copie el Texto y memorizelo en un archivo lamado setup.
 $cs_lang['setup_exists'] = 'Se ha encontrado una setup.php existente';
 $cs_lang['inst_create_done'] = 'Banco de Datos Valido - setup.php ha sido creada.';
 
-$cs_lang['head_sql']	= 'Banco de Datos';
-$cs_lang['body_sql']	= 'Tablas y Entradas han sido echas';
+$cs_lang['head_sql']  = 'Banco de Datos';
+$cs_lang['body_sql']  = 'Tablas y Entradas han sido echas';
 
-$cs_lang['create_admin']	= 'Aqui se crea la cuenta del Administrador';
-$cs_lang['nick']	= 'Nick';
-$cs_lang['email']	= 'E-Mail';
+$cs_lang['create_admin']  = 'Aqui se crea la cuenta del Administrador';
+$cs_lang['nick']  = 'Nick';
+$cs_lang['email']  = 'E-Mail';
 $cs_lang['password'] = 'Contrase&ntilde;a';
 $cs_lang['admin_done'] = 'Administrator Creado';
 
@@ -113,15 +113,15 @@ $cs_lang['short_nick'] = '- El Nick es mui corto (min. 4)';
 $cs_lang['short_pwd'] = '- La Contrase&ntilde;a es mui corta (min. 4)';
 $cs_lang['email_false'] = '- La E-Mail no es valida';
 
-$cs_lang['user_pwd']	= 'Use Nick "admin" y Contrase&ntilde;a "admin" para el Primer Login';
+$cs_lang['user_pwd']  = 'Use Nick "admin" y Contrase&ntilde;a "admin" para el Primer Login';
 
 $cs_lang['db_error'] = 'Error del Banco de Datos';
 
-$cs_lang['guest']	= 'Visitantes';
-$cs_lang['community']	= 'Usuario';
-$cs_lang['member']	= 'Miembros';
-$cs_lang['orga']	= 'Moreradores';
-$cs_lang['admin']	= 'Administradores';
+$cs_lang['guest']  = 'Visitantes';
+$cs_lang['community']  = 'Usuario';
+$cs_lang['member']  = 'Miembros';
+$cs_lang['orga']  = 'Moreradores';
+$cs_lang['admin']  = 'Administradores';
 
 // Labels
 $cs_lang['show_groups_as'] = 'Ense&ntilde;ar Grupos a traves de';

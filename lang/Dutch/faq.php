@@ -1,15 +1,15 @@
 <?php
 
-$cs_lang['mod_name']	= 'FAQ';
-$cs_lang['mod_text']	= 'Beheer huidige FAQ of maar er een aan';
-$cs_lang['mod']	= 'FAQ';
+$cs_lang['mod_name']  = 'FAQ';
+$cs_lang['mod_text']  = 'Beheer huidige FAQ of maar er een aan';
+$cs_lang['mod']  = 'FAQ';
 
 $cs_lang['head']= 'FAQ ID:';
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['head_manage']	= 'Beheer';
-$cs_lang['head_create']	= 'Bevestigen';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['head_manage']  = 'Beheer';
+$cs_lang['head_create']  = 'Bevestigen';
 $cs_lang['body_create'] =  'Vul alle velden met een * in.';
-$cs_lang['head_edit']	= 'Bewerk';
+$cs_lang['head_edit']  = 'Bewerk';
 $cs_lang['body_edit'] =  'Vul alle velden met een * in.';
 $cs_lang['error_occurred'] = 'Er ontbreekt verplichte informatie.';
 $cs_lang['error_count'] = 'Er ontbreken verplichte velden.';

@@ -2,12 +2,12 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Explorer';
-$cs_lang['modinfo']	= 'Verwaltung der Dateien, die sich auf dem Webspace befinden';
+$cs_lang['mod']  = 'Explorer';
+$cs_lang['modinfo']  = 'Verwaltung der Dateien, die sich auf dem Webspace befinden';
 
 
 // CHMod
-$cs_lang['chmod']	= 'CHMOD';
+$cs_lang['chmod']  = 'CHMOD';
 $cs_lang['grant_rights'] = 'Hier k&ouml;nnen Sie den Zugriff von Dateien und Verzeichnissen festlegen.';
 $cs_lang['no_selection'] = 'Kein Objekt gew&auml;hlt.';
 $cs_lang['error_chmod']  = 'Der CHMOD konnte nicht ge&auml;ndert werden.';
@@ -38,8 +38,8 @@ $cs_lang['error_edit'] = 'Die Datei konnte nicht bearbeitet werden.';
 $cs_lang['not_found']  = 'Datei nicht gefunden';
 
 // Information
-$cs_lang['information']	= 'Informationen';
-$cs_lang['get_information']	= 'Hier k&ouml;nnen Sie Informationen zu einem Objekt erlangen.';
+$cs_lang['information']  = 'Informationen';
+$cs_lang['get_information']  = 'Hier k&ouml;nnen Sie Informationen zu einem Objekt erlangen.';
 $cs_lang['f_size']    = 'Dateigr&ouml;&szlig;e';
 $cs_lang['f_name']    = 'Dateiname';
 $cs_lang['f_chmod']   = 'CHMOD';
@@ -65,7 +65,7 @@ $cs_lang['dir_removed'] = 'Das Verzeichnis wurde erfolgreich entfernt.';
 $cs_lang['dir_error'] = 'Das Verzeichnis konnte nicht entfernt werden.';
 
 // View
-$cs_lang['view_file']	= 'Hier k&ouml;nnen Sie sich eine Datei ansehen.';
+$cs_lang['view_file']  = 'Hier k&ouml;nnen Sie sich eine Datei ansehen.';
 $cs_lang['code'] = 'Code';
 $cs_lang['design'] = 'Design';
 
@@ -89,8 +89,8 @@ $cs_lang['lev_4'] = 'mit Bearbeiten';
 $cs_lang['lev_5'] = 'mit Entfernen';
 
 // Create_dir
-$cs_lang['create_dir']		= 'Verzeichnis erstellen';
-$cs_lang['folder_create']	= 'Hier k&ouml;nnen Sie ein Verzeichnis erstellen.';
-$cs_lang['dir_name']		= 'Verzeichnisname';
+$cs_lang['create_dir']    = 'Verzeichnis erstellen';
+$cs_lang['folder_create']  = 'Hier k&ouml;nnen Sie ein Verzeichnis erstellen.';
+$cs_lang['dir_name']    = 'Verzeichnisname';
 
 ?>

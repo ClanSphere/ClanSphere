@@ -23,7 +23,7 @@ function cs_abcode_pb_url($matches) {
 function articles_secure($replace,$abcode = 0) {
 
     $replace = preg_replace_callback("=\[pb_url\=(.*?)\](.*?)\[/pb_url\]=si","cs_abcode_pb_url",$replace);
-	
+  
      return $replace;
 }
 

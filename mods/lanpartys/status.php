@@ -63,7 +63,7 @@ else {
 
   $data['lanpartys']['bankaccount'] = cs_secure($lanpartys['lanpartys_bankaccount'],1);
   $data['lanpartys']['usage'] = $lanpartys['lanpartys_name'] . ' ' . cs_secure($account['users_nick']) . ' ' . $account['users_id'];
-	
+  
   echo cs_subtemplate(__FILE__,$data,'lanpartys','status');
 }
 ?>

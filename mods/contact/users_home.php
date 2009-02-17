@@ -12,14 +12,14 @@ $cs_mail = cs_sql_select(__FILE__,'mail',$mail_select,$where,'mail_time DESC',0,
 
 if(!empty($cs_mail)) {
 
-	for($run=0; $run<count($cs_mail); $run++) {
-		$data['mail'][$run]['name'] = cs_secure($cs_mail[$run]['mail_name']);
-		$data['mail'][$run]['subject'] = cs_secure($cs_mail[$run]['mail_subject']);
+  for($run=0; $run<count($cs_mail); $run++) {
+    $data['mail'][$run]['name'] = cs_secure($cs_mail[$run]['mail_name']);
+    $data['mail'][$run]['subject'] = cs_secure($cs_mail[$run]['mail_subject']);
     $data['mail'][$run]['id'] = $cs_mail[$run]['mail_id'];
     $data['mail'][$run]['date'] = cs_date('unix',$cs_mail[$run]['mail_time'],1);
-	}
+  }
 
-	echo cs_subtemplate(__FILE__,$data,'contact','users_home');
+  echo cs_subtemplate(__FILE__,$data,'contact','users_home');
 }
 
 ?>

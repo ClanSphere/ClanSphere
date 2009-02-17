@@ -20,13 +20,13 @@ $pic = cs_secure($cs_gallery[$run]['gallery_id']);
 
 if(!empty($pic)) {
   
-	$img = cs_html_img('mods/gallery/image.php?thumb=' . $pic);
-	echo cs_link($img,'gallery','com_view','where=' . $pic);
-	
+  $img = cs_html_img('mods/gallery/image.php?thumb=' . $pic);
+  echo cs_link($img,'gallery','com_view','where=' . $pic);
+  
 } else {
   
-	echo $cs_lang['nopic'];
-	
+  echo $cs_lang['nopic'];
+  
 }
 
 ?>

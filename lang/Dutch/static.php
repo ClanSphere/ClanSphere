@@ -1,15 +1,15 @@
 <?php
-$cs_lang['mod_name']	= 'Statistiek paginas';
-$cs_lang['mod_text']	= 'Beheer statistiek pagina online';
-$cs_lang['mod']	= 'Statistiek';
+$cs_lang['mod_name']  = 'Statistiek paginas';
+$cs_lang['mod_text']  = 'Beheer statistiek pagina online';
+$cs_lang['mod']  = 'Statistiek';
 $cs_lang['head_create'] = 'Aanmaken';
 $cs_lang['body_create'] = 'Vul alle velden met een * in.';
 $cs_lang['head_edit'] = 'Bewerk';
 $cs_lang['body_edit'] = 'Vul alle velden met een * in.';
-$cs_lang['body_com_edit']	= 'Geef wijzigingen aan.';
-$cs_lang['head_com_edit']	= 'Bewerk commentaar';
-$cs_lang['head_com_remove']	= 'Verwijder commentaar';
-$cs_lang['head_remove']	= 'Verwijder';
+$cs_lang['body_com_edit']  = 'Geef wijzigingen aan.';
+$cs_lang['head_com_edit']  = 'Bewerk commentaar';
+$cs_lang['head_com_remove']  = 'Verwijder commentaar';
+$cs_lang['head_remove']  = 'Verwijder';
 $cs_lang['title'] = 'Titel';
 $cs_lang['access'] = 'Toegang';
 $cs_lang['content'] = 'Content';
@@ -29,8 +29,8 @@ $cs_lang['lev_2'] = 'Gebruikers =>';
 $cs_lang['lev_3'] = 'Leden =>';
 $cs_lang['lev_4'] = 'Organisator =>';
 $cs_lang['lev_5'] = 'Beheerder';
-$cs_lang['not_able']	= '- Het doel staat geen commentaren toe.';
-$cs_lang['place']			= 'Locatie:';
-$cs_lang['posts']			= 'Posts:';
-$cs_lang['text']		= 'Tekst';
+$cs_lang['not_able']  = '- Het doel staat geen commentaren toe.';
+$cs_lang['place']      = 'Locatie:';
+$cs_lang['posts']      = 'Posts:';
+$cs_lang['text']    = 'Tekst';
 ?>

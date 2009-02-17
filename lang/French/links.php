@@ -2,8 +2,8 @@
 // ClanSphere 2006 - www.clansphere.net - Traduction francaise >>> www.globalteam-esports.info
 // $Id$
 
-$cs_lang['mod']	= 'Liens';
-$cs_lang['text']	= 'Le module de lien';
+$cs_lang['mod']  = 'Liens';
+$cs_lang['text']  = 'Le module de lien';
 
 $cs_lang['head']= 'Aperçu';
 $cs_lang['body_list']= '%s lien(s)enregistré(s).';
@@ -18,11 +18,11 @@ $cs_lang['new_link'] = 'Nouveau lien';
 $cs_lang['online'] = '[color=lime]en ligne[/color]';
 $cs_lang['offline'] = '[color=red]hors ligne[/color]';
 
-$cs_lang['head_remove']	= 'Supprimer';
+$cs_lang['head_remove']  = 'Supprimer';
 $cs_lang['newicon'] = 'Nouvelle bannière';
 $cs_lang['delicon'] = 'Supprimer la bannière';
 
-$cs_lang['mod1']	= 'Sponsors et partenaires';
+$cs_lang['mod1']  = 'Sponsors et partenaires';
 $cs_lang['all1'] = '%s sponsors et partenaires enregistrés jusqu\'à présent.';
 
 $cs_lang['info'] = 'Infos';

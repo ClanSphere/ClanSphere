@@ -13,7 +13,7 @@ if(isset($_GET['agree'])) {
   
   cs_sql_delete(__FILE__,'lanvoted',$lanvotes_id,'lanvotes_id');
   cs_sql_delete(__FILE__,'lanvotes',$lanvotes_id);
-	
+  
   cs_redirect($cs_lang['del_true'],'lanvotes','manage');
 }
 
@@ -29,7 +29,7 @@ if(!empty($lanvotes_form)) {
   $data['lang']['content'] = cs_link($cs_lang['confirm'],'lanvotes','remove','id=' . $lanvotes_id . '&amp;agree');
   $data['lang']['content'] .= ' - ';
   $data['lang']['content'] .= cs_link($cs_lang['cancel'],'lanvotes','remove','id=' . $lanvotes_id . '&amp;cancel');
-	
+  
   echo cs_subtemplate(__FILE__,$data,'lanvotes','remove');
 }
 ?>

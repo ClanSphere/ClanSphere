@@ -31,8 +31,8 @@ $data['lang']['part_of'] = sprintf($cs_lang['body_list'], $clan_link);
 $icon = 'uploads/games/' . $data['squad']['games_id'] . '.gif';
 $data['game']['icon'] = !file_exists($icon) ? '' : cs_html_img($icon);
 
-if(!empty($data['squad']['games_id'])) {  		
-	  $where = "games_id = '" . $data['squad']['games_id'] . "'";
+if(!empty($data['squad']['games_id'])) {      
+    $where = "games_id = '" . $data['squad']['games_id'] . "'";
     $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
     $id_game = 'id=' . $cs_game['games_id'];
     $data['squad']['game'] = ' ' . cs_link($cs_game['games_name'],'games','view',$id_game);
@@ -51,7 +51,7 @@ if(empty($data['squad']['squads_picture'])) {
   else {
     $place = 'uploads/squads/' . $data['squad']['squads_picture'];
     $size = getimagesize($cs_main['def_path'] . '/' . $place);
-  	$data['squad']['squads_pic'] = cs_html_img($place,$size[1],$size[0]);
+    $data['squad']['squads_pic'] = cs_html_img($place,$size[1],$size[0]);
   }
 
 $select = 'mem.members_admin AS members_admin, mem.members_task AS members_task, mem.members_since AS members_since, ';
@@ -75,7 +75,7 @@ for($run = 0; $run < $data['squad']['members']; $run++) {
 
   $users_nick = empty($data['members'][$run]['members_admin']) ? cs_secure($data['members'][$run]['users_nick']) :
     cs_html_big(1) . cs_secure($data['members'][$run]['users_nick']) . cs_html_big(0);
-	$nick = $data['squad']['clans_tagpos'] == 1 ? $data['squad']['clans_tag'] . ' ' . $users_nick :
+  $nick = $data['squad']['clans_tagpos'] == 1 ? $data['squad']['clans_tag'] . ' ' . $users_nick :
     $users_nick . ' ' . $data['squad']['clans_tag'];
 
   $data['members'][$run]['users_nick_tag'] = $nick;
@@ -87,16 +87,16 @@ $ranks_loop = count($data['ranks']);
 
 for($run=0; $run<$ranks_loop; $run++) {
 
- 	$data['ranks'][$run]['name'] = cs_secure($data['ranks'][$run]['ranks_name']);
+   $data['ranks'][$run]['name'] = cs_secure($data['ranks'][$run]['ranks_name']);
 
-	$data['ranks'][$run]['picture'] = '';
-	if(!empty($data['ranks'][$run]['ranks_url']) AND ($data['ranks'][$run]['ranks_img'] != 'http://')) {
-		$picture = cs_html_img($data['ranks'][$run]['ranks_img']);
-		$data['ranks'][$run]['picture'] = cs_html_link('http://' . $data['ranks'][$run]['ranks_url'],$picture);
-	}
-	else {
-		$data['ranks'][$run]['picture'] = $data['ranks'][$run]['ranks_code'];
-	}
+  $data['ranks'][$run]['picture'] = '';
+  if(!empty($data['ranks'][$run]['ranks_url']) AND ($data['ranks'][$run]['ranks_img'] != 'http://')) {
+    $picture = cs_html_img($data['ranks'][$run]['ranks_img']);
+    $data['ranks'][$run]['picture'] = cs_html_link('http://' . $data['ranks'][$run]['ranks_url'],$picture);
+  }
+  else {
+    $data['ranks'][$run]['picture'] = $data['ranks'][$run]['ranks_code'];
+  }
 }
 
 $data['awards'] = array();
@@ -111,10 +111,10 @@ $medals = array(1 => 'gold', 2 => 'silber', 3 => 'bronze');
 
 for($run=0; $run < $awards_loop; $run++) {
 
-	$data['awards'][$run]['awards_time'] = cs_date('date',$data['awards'][$run]['awards_time']);
-	$data['awards'][$run]['awards_event'] = cs_secure($data['awards'][$run]['awards_event']);
-	$data['awards'][$run]['awards_place'] = $data['awards'][$run]['awards_rank'] < 4 ? cs_html_img("symbols/awards/pokal_" . $medals[$data['awards'][$run]['awards_rank']] . ".png") : cs_secure($data['awards'][$run]['awards_rank']);
-	
+  $data['awards'][$run]['awards_time'] = cs_date('date',$data['awards'][$run]['awards_time']);
+  $data['awards'][$run]['awards_event'] = cs_secure($data['awards'][$run]['awards_event']);
+  $data['awards'][$run]['awards_place'] = $data['awards'][$run]['awards_rank'] < 4 ? cs_html_img("symbols/awards/pokal_" . $medals[$data['awards'][$run]['awards_rank']] . ".png") : cs_secure($data['awards'][$run]['awards_rank']);
+  
 }
 
 $data['wars'] = array();

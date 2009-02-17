@@ -212,7 +212,7 @@ if(isset($_POST['mirror'])) {
 }
 
 if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
-	
+  
   $data['categories']['dropdown'] = cs_categories_dropdown('news', $cs_news['categories_id']);
   $data['news']['news_headline'] = $cs_news['news_headline'];
   $data['news']['news_text'] = $cs_news['news_text'];
@@ -273,7 +273,7 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   echo cs_subtemplate(__FILE__, $data, 'news', 'create');
   
 } else {
-	
+  
   $news_cells = array_keys($cs_news);
   $news_save = array_values($cs_news);
   cs_sql_insert(__FILE__, 'news', $news_cells, $news_save);

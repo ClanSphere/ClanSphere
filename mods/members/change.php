@@ -18,7 +18,7 @@ $cs_members = cs_sql_select(__FILE__,'members',$cells,"members_id = '" . $member
 if(isset($_POST['submit'])) {
 
   $cs_members['members_task'] = $_POST['members_task'];
-	$cs_members['members_since'] = cs_datepost('since','date');
+  $cs_members['members_since'] = cs_datepost('since','date');
   $cs_members['members_order'] = empty($_POST['members_order']) ? 1 : $_POST['members_order'];
   $cs_members['members_admin'] = empty($_POST['members_admin']) ? 0 : $_POST['members_admin'];
   
@@ -81,13 +81,13 @@ else {
 
   unset($cs_members['squads_id']);
   unset($cs_members['users_id']);
-	settype($cs_members['members_order'],'integer');
+  settype($cs_members['members_order'],'integer');
 
   $members_cells = array_keys($cs_members);
   $members_save = array_values($cs_members);
   cs_sql_update(__FILE__,'members',$members_cells,$members_save,$members_id);
 
-	cs_redirect($cs_lang['changes_done'],'members','center');
+  cs_redirect($cs_lang['changes_done'],'members','center');
 } 
   
 ?>

@@ -32,25 +32,25 @@ if(isset($_POST['submit'])) {
   }
   else {
     
-	$where = "lanpartys_id = '" . $cs_languests['lanpartys_id'] . "' AND users_id = '";
+  $where = "lanpartys_id = '" . $cs_languests['lanpartys_id'] . "' AND users_id = '";
     $where .= $cs_languests['users_id'] . "' AND languests_id != '" . $languests_id . "'";
-  	$search_collision = cs_sql_count(__FILE__,'languests',$where);
-  	
-	if(!empty($search_collision)) {
+    $search_collision = cs_sql_count(__FILE__,'languests',$where);
+    
+  if(!empty($search_collision)) {
       $error++;
       $errormsg .= $cs_lang['user_lan_exists'] . cs_html_br(1);
-  	}
+    }
     
-	$where2 = "lanpartys_id = '" . $cs_languests['lanpartys_id'] . "'";
-  	$maxguests = cs_sql_select(__FILE__,'lanpartys','lanpartys_maxguests',$where2);
-  	$where3 = "lanpartys_id = '" . $cs_languests['lanpartys_id'] . "' AND languests_status > 3";
-  	$where3 .= " AND languests_id != '" . $languests_id . "'";
+  $where2 = "lanpartys_id = '" . $cs_languests['lanpartys_id'] . "'";
+    $maxguests = cs_sql_select(__FILE__,'lanpartys','lanpartys_maxguests',$where2);
+    $where3 = "lanpartys_id = '" . $cs_languests['lanpartys_id'] . "' AND languests_status > 3";
+    $where3 .= " AND languests_id != '" . $languests_id . "'";
     $search_max = cs_sql_count(__FILE__,'languests',$where3);
-  	
-	if($search_max >= $maxguests['lanpartys_maxguests']) {
+    
+  if($search_max >= $maxguests['lanpartys_maxguests']) {
       $error++;
       $errormsg .= $cs_lang['lan_full'] . cs_html_br(1);
-  	}
+    }
   }
 }
 else {
@@ -80,10 +80,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   for($run=0; $run<$lanpartys_data_loop; $run++) {
     $data['lanpartys'][$run]['id'] = $lanpartys_data[$run]['lanpartys_id'];
     $data['lanpartys'][$run]['name'] = $lanpartys_data[$run]['lanpartys_name'];
-	
-	if($cs_languests['lanpartys_id'] == $lanpartys_data[$run]['lanpartys_id']){
-	  $data['lanpartys'][$run]['select'] = 'selected="selected"';
-	}	
+  
+  if($cs_languests['lanpartys_id'] == $lanpartys_data[$run]['lanpartys_id']){
+    $data['lanpartys'][$run]['select'] = 'selected="selected"';
+  }  
   }
 
   $users_data = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
@@ -96,10 +96,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   for($run=0; $run<$users_data_loop; $run++) {
     $data['user'][$run]['id'] = $users_data[$run]['users_id'];
     $data['user'][$run]['name'] = $users_data[$run]['users_nick'];
-	
-	if($cs_languests['users_id'] == $users_data[$run]['users_id']){
-	  $data['user'][$run]['select'] = 'selected="selected"';
-	}	
+  
+  if($cs_languests['users_id'] == $users_data[$run]['users_id']){
+    $data['user'][$run]['select'] = 'selected="selected"';
+  }  
   }
 
   $data['languests']['team'] = $cs_languests['languests_team'];
@@ -131,7 +131,7 @@ else {
   $languests_cells = array_keys($cs_languests);
   $languests_save = array_values($cs_languests);
   cs_sql_update(__FILE__,'languests',$languests_cells,$languests_save,$languests_id);
-	
+  
   cs_redirect($cs_lang['changes_done'], 'languests') ;
 }  
 ?>

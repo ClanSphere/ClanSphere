@@ -1,18 +1,18 @@
 <?php
 
-$cs_lang['mod_name']	= 'Ranking list';
-$cs_lang['mod_text']	= 'Ranking lists for cups and leagues';
-$cs_lang['mod']	= 'Rankings';
-$cs_lang['head_manage']	= 'Administration';
-$cs_lang['head_remove']	= 'Remove';
-$cs_lang['head_create']	= 'Create';
-$cs_lang['body_create']	= 'Create a new Ranking list';
-$cs_lang['head_edit']	= 'Edit';
-$cs_lang['body_edit']	= 'Error may occur here.';
-$cs_lang['head_list']	= 'List';
-$cs_lang['new_rank']	= 'New ranking list';
+$cs_lang['mod_name']  = 'Ranking list';
+$cs_lang['mod_text']  = 'Ranking lists for cups and leagues';
+$cs_lang['mod']  = 'Rankings';
+$cs_lang['head_manage']  = 'Administration';
+$cs_lang['head_remove']  = 'Remove';
+$cs_lang['head_create']  = 'Create';
+$cs_lang['body_create']  = 'Create a new Ranking list';
+$cs_lang['head_edit']  = 'Edit';
+$cs_lang['body_edit']  = 'Error may occur here.';
+$cs_lang['head_list']  = 'List';
+$cs_lang['new_rank']  = 'New ranking list';
 $cs_lang['all'] = 'Currently are %s rankings in the database.';
-$cs_lang['content']	= 'Content';
+$cs_lang['content']  = 'Content';
 $cs_lang['url'] = 'Website';
 $cs_lang['img'] = 'Image URL';
 $cs_lang['code'] = 'Source code';

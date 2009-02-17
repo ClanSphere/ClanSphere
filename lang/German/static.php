@@ -1,12 +1,12 @@
 <?php
-$cs_lang['mod_name']	= 'Statische Seiten';
-$cs_lang['mod_text']	= 'Verwaltung eigener Unterseiten';
-$cs_lang['mod']	= 'Statische Seiten';
+$cs_lang['mod_name']  = 'Statische Seiten';
+$cs_lang['mod_text']  = 'Verwaltung eigener Unterseiten';
+$cs_lang['mod']  = 'Statische Seiten';
 $cs_lang['head_create'] = 'Eintragen';
 $cs_lang['body_create'] = 'Bitte alle Felder mit * ausf&uuml;llen.';
 $cs_lang['head_edit'] = 'Bearbeiten';
 $cs_lang['body_edit'] = 'Bitte alle Felder mit * ausf&uuml;llen.';
-$cs_lang['head_remove']	= 'Entfernen';
+$cs_lang['head_remove']  = 'Entfernen';
 $cs_lang['title'] = 'Titel';
 $cs_lang['access'] = 'Zugriff';
 $cs_lang['content'] = 'Inhalt';

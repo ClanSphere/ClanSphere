@@ -3,9 +3,9 @@
 // $Id$
 
 // info.php
-$cs_lang['mod_name']	= 'Article';
-$cs_lang['mod_text']	= 'The Article Module';
-$cs_lang['mod']	= 'Article';
+$cs_lang['mod_name']  = 'Article';
+$cs_lang['mod_text']  = 'The Article Module';
+$cs_lang['mod']  = 'Article';
 
 // create.php
 $cs_lang['head_create'] = 'Add';
@@ -31,9 +31,9 @@ $cs_lang['body_edit'] =  'Please fill out all * marked fields.';
 $cs_lang['edit_done'] = 'Successfully edited';
 
 // list.php
-$cs_lang['head_list']	= 'List';
-$cs_lang['body_list']	= 'Please choose a category';
-$cs_lang['count']	= 'Number';
+$cs_lang['head_list']  = 'List';
+$cs_lang['body_list']  = 'Please choose a category';
+$cs_lang['count']  = 'Number';
 
 //listcat.php
 $cs_lang['all'] = 'Total: ';
@@ -43,7 +43,7 @@ $cs_lang['views'] = 'Views';
 $cs_lang['xtimes'] = 'times';
 
 // manage.php
-$cs_lang['head_manage']	= 'Administration';
+$cs_lang['head_manage']  = 'Administration';
 $cs_lang['new_article'] = 'New Article';
 
 // options.php
@@ -51,8 +51,8 @@ $cs_lang['options_info'] = 'Administration of module settings.';
 $cs_lang['max_navlist'] = 'Dataset in the navlist';
 
 // remove.php
-$cs_lang['head_remove']	= 'Remove';
-$cs_lang['body_remove']		= 'Really delete dataset No. %s ?';
+$cs_lang['head_remove']  = 'Remove';
+$cs_lang['body_remove']    = 'Really delete dataset No. %s ?';
 
 // view.php
 $cs_lang['from'] = 'Writer';

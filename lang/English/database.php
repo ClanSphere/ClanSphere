@@ -2,32 +2,32 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Database';
-$cs_lang['modtext']	= 'Database actions take place here';
+$cs_lang['mod']  = 'Database';
+$cs_lang['modtext']  = 'Database actions take place here';
 
 $cs_lang['roots'] = 'Roots';
-$cs_lang['body_roots']	= 'Please select from the following options.';
+$cs_lang['body_roots']  = 'Please select from the following options.';
 $cs_lang['import'] = 'Import';
-$cs_lang['body_import']	= 'SQL-Imports are applied here';
+$cs_lang['body_import']  = 'SQL-Imports are applied here';
 $cs_lang['export'] = 'Export';
-$cs_lang['body_export']	= 'Generate backups for data safety';
-$cs_lang['optimize']	= 'Optimize';
-$cs_lang['body_optimize']	= 'Removes unused space from database tables';
-$cs_lang['statistic']	= 'Statistic';
-$cs_lang['body_statistic']	= 'Show installed modules with their database usage';
+$cs_lang['body_export']  = 'Generate backups for data safety';
+$cs_lang['optimize']  = 'Optimize';
+$cs_lang['body_optimize']  = 'Removes unused space from database tables';
+$cs_lang['statistic']  = 'Statistic';
+$cs_lang['body_statistic']  = 'Show installed modules with their database usage';
 
 $cs_lang['optimize_tables'] = 'Optimize tables';
-$cs_lang['sql_datasets']	  = 'SQL datasets';
-$cs_lang['sql_tables']		  = 'SQL tables';
-$cs_lang['sql_text']			  = 'SQL text';
-$cs_lang['sql_options']		  = 'SQL options';
-$cs_lang['sql_file']			  = 'SQL file';
+$cs_lang['sql_datasets']    = 'SQL datasets';
+$cs_lang['sql_tables']      = 'SQL tables';
+$cs_lang['sql_text']        = 'SQL text';
+$cs_lang['sql_options']      = 'SQL options';
+$cs_lang['sql_file']        = 'SQL file';
 $cs_lang['modul']           = 'Modul';
-$cs_lang['run']						  = 'Run';
+$cs_lang['run']              = 'Run';
 
-$cs_lang['update_done']		  = 'Update successfully applied';
-$cs_lang['update_error']	  = 'Errors occured inside the update';
-$cs_lang['actions_done']	  = 'Finished actions';
+$cs_lang['update_done']      = 'Update successfully applied';
+$cs_lang['update_error']    = 'Errors occured inside the update';
+$cs_lang['actions_done']    = 'Finished actions';
 
 $cs_lang['all']           = 'All';
 $cs_lang['none']          = 'None';

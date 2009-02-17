@@ -2,8 +2,8 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Partners';
-$cs_lang['text']	= 'Beheer partners en sponsors';
+$cs_lang['mod']  = 'Partners';
+$cs_lang['text']  = 'Beheer partners en sponsors';
 
 $cs_lang['body_text'] =  'Vul alle velden met een * in.';
 $cs_lang['list'] =  'Lijst';

@@ -16,12 +16,12 @@ $select .= 'ca.cash_time AS cash_time, ca.cash_info AS cash_info';
 $cs_cash = cs_sql_select(__FILE__,$from,$select,"cash_id = '" . $cash_id . "'",0,0,1);
 
 if($cs_cash['users_id'] == $account['users_id']) {
-	$data['if']['allowed'] = TRUE;
+  $data['if']['allowed'] = TRUE;
 }elseif($account['access_cash'] > 3) {
-	$data['if']['allowed'] = TRUE;
+  $data['if']['allowed'] = TRUE;
 } else {
-	$data['if']['allowed'] = FALSE;
-	$data['if']['not_allowed'] = TRUE;
+  $data['if']['allowed'] = FALSE;
+  $data['if']['not_allowed'] = TRUE;
 }
 
 $data['cash']['user'] = cs_user($cs_cash['users_id'],$cs_cash['users_nick'],$cs_cash['users_active']);

@@ -1,17 +1,17 @@
 <?php
 
-$cs_lang['mod_name']	= 'Nieuwsbrief';
-$cs_lang['mod_text']	= 'Beheer van nieuwsbrieven';
-$cs_lang['mod']	= 'Nieuwsbrief';
-$cs_lang['head_manage']	= 'Nieuwsbrief';
+$cs_lang['mod_name']  = 'Nieuwsbrief';
+$cs_lang['mod_text']  = 'Beheer van nieuwsbrieven';
+$cs_lang['mod']  = 'Nieuwsbrief';
+$cs_lang['head_manage']  = 'Nieuwsbrief';
 
-$cs_lang['head_newsletter']	= 'Nieuwsbrief';
-$cs_lang['head_newslettertoall']	= 'Scrhrijf nieuwsbrief';
-$cs_lang['head_create']	= 'Schrijf nieuwsbrief';
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['toall']		= 'Nieuwe nieuwsbrief voor alle gebruikers';
-$cs_lang['tosquad']	= 'Nieuwe nieuwsbrief naar een squad';
-$cs_lang['subject']		= 'Onderwerp:';
+$cs_lang['head_newsletter']  = 'Nieuwsbrief';
+$cs_lang['head_newslettertoall']  = 'Scrhrijf nieuwsbrief';
+$cs_lang['head_create']  = 'Schrijf nieuwsbrief';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['toall']    = 'Nieuwe nieuwsbrief voor alle gebruikers';
+$cs_lang['tosquad']  = 'Nieuwe nieuwsbrief naar een squad';
+$cs_lang['subject']    = 'Onderwerp:';
 $cs_lang['from'] = 'Van:';
 $cs_lang['newsletter'] = 'Nieuwsbrief';
 $cs_lang['field_missing']= 'Onderwerp en tekst ontbreken';

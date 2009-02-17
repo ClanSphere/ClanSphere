@@ -34,22 +34,22 @@ elseif(!empty($_POST['submit'])) {
   if(empty($img_size) OR $img_size[2] > 3) {
 
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
-		$error++;
+    $error++;
   }
   if($img_size[0]>$img_max['width']) {
 
     $message .= $cs_lang['too_wide'] . cs_html_br(1);
-  	$error++;
+    $error++;
   }
   if($img_size[1]>$img_max['height']) { 
 
-  	$message .= $cs_lang['too_high'] . cs_html_br(1);
-  	$error++;
+    $message .= $cs_lang['too_high'] . cs_html_br(1);
+    $error++;
   }
   if($_FILES['picture']['size']>$img_max['size']) { 
 
-  	$message .= $cs_lang['too_big'] . cs_html_br(1);
-  	$error++;
+    $message .= $cs_lang['too_big'] . cs_html_br(1);
+    $error++;
   }
 
   if(empty($error)) {
@@ -72,8 +72,8 @@ elseif(!empty($_POST['submit'])) {
       $content = empty($file_string) ? array($target) : array($file_string . "\n" . $target);
       cs_sql_update(__FILE__,'files',$cells,$content,$cs_files_id);
 
-		
-		cs_redirect($cs_lang['success'],'files','picture','id=' . $cs_files_id);
+    
+    cs_redirect($cs_lang['success'],'files','picture','id=' . $cs_files_id);
     }
     else {
         $message .= $cs_lang['up_error'];
@@ -108,23 +108,23 @@ if(!empty($error) OR empty($_POST['submit'])) {
   echo cs_icon('download') . $cs_lang['upload'];
   echo cs_html_roco(2,'leftb');
   echo cs_html_input('picture','','file');
-	echo cs_html_br(2);
-	$matches[1] = $cs_lang['pic_infos'];
-	$return_types = '';
-	foreach($img_filetypes AS $add) {
-		$return_types .= empty($return_types) ? $add : ', ' . $add;
-	}
-	$matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
-	$matches[2] .= $cs_lang['filetypes'] . $return_types;
-	echo cs_abcode_clip($matches);
+  echo cs_html_br(2);
+  $matches[1] = $cs_lang['pic_infos'];
+  $return_types = '';
+  foreach($img_filetypes AS $add) {
+    $return_types .= empty($return_types) ? $add : ', ' . $add;
+  }
+  $matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
+  $matches[2] .= $cs_lang['filetypes'] . $return_types;
+  echo cs_abcode_clip($matches);
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'leftc');
   echo cs_icon('ksysguard') . $cs_lang['options'];
   echo cs_html_roco(2,'leftb');
-	echo cs_html_vote('where',$cs_files_id,'hidden');
+  echo cs_html_vote('where',$cs_files_id,'hidden');
   echo cs_html_vote('submit',$cs_lang['save'],'submit');
   echo cs_html_roco(0);
   echo cs_html_table(0);

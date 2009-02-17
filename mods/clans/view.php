@@ -76,7 +76,7 @@ if(empty($squads_loop)) {
 
 for($run=0; $run<$squads_loop; $run++) {
   if(!empty($cs_squads[$run]['games_id'])) {
-  	$data['squads'][$run]['game'] = cs_html_img('uploads/games/' . $cs_squads[$run]['games_id'] . '.gif');
+    $data['squads'][$run]['game'] = cs_html_img('uploads/games/' . $cs_squads[$run]['games_id'] . '.gif');
   }
   else {
   $data['squads'][$run]['game'] = '';

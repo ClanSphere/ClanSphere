@@ -36,25 +36,25 @@ $joinus_loop = count($data['join']);
 
 for($run=0; $run<$joinus_loop; $run++) {
 
-	$id = $data['join'][$run]['joinus_id'];
+  $id = $data['join'][$run]['joinus_id'];
 
-	if(!empty($data['join'][$run]['games_id'])) {
-		$data['join'][$run]['game'] = cs_html_img('uploads/games/' . $data['join'][$run]['games_id'] . '.gif');
-	} else { $data['join'][$run]['game'] = '-'; }
+  if(!empty($data['join'][$run]['games_id'])) {
+    $data['join'][$run]['game'] = cs_html_img('uploads/games/' . $data['join'][$run]['games_id'] . '.gif');
+  } else { $data['join'][$run]['game'] = '-'; }
 
-	$nick = cs_secure($data['join'][$run]['joinus_nick']);
-	$data['join'][$run]['nick'] = cs_link($nick,'joinus','view','id=' . $id);
+  $nick = cs_secure($data['join'][$run]['joinus_nick']);
+  $data['join'][$run]['nick'] = cs_link($nick,'joinus','view','id=' . $id);
 
-	$birth = explode ('-', $data['join'][$run]['joinus_age']);
-	$age = cs_datereal('Y') - $birth[0];
-	if(cs_datereal('m')<=$birth[1]) { $age--; }
-	if(cs_datereal('d')>=$birth[2] AND cs_datereal('m')==$birth[1]) { $age++; }
-	$data['join'][$run]['age'] = $age;
-	
-	$data['join'][$run]['since'] = cs_date('unix',$data['join'][$run]['joinus_since'],1);
+  $birth = explode ('-', $data['join'][$run]['joinus_age']);
+  $age = cs_datereal('Y') - $birth[0];
+  if(cs_datereal('m')<=$birth[1]) { $age--; }
+  if(cs_datereal('d')>=$birth[2] AND cs_datereal('m')==$birth[1]) { $age++; }
+  $data['join'][$run]['age'] = $age;
+  
+  $data['join'][$run]['since'] = cs_date('unix',$data['join'][$run]['joinus_since'],1);
 
-	$data['join'][$run]['url_convert'] = cs_url('joinus','convert','id=' . $id);
- 	$data['join'][$run]['url_remove'] = cs_url('joinus','remove','id=' . $id);
+  $data['join'][$run]['url_convert'] = cs_url('joinus','convert','id=' . $id);
+   $data['join'][$run]['url_remove'] = cs_url('joinus','remove','id=' . $id);
 
 }
 

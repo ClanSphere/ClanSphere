@@ -35,7 +35,7 @@ if(empty($op_users['register'])) {
       $errormsg .= sprintf($cs_lang['short_nick'],$op_users['min_letters']) . cs_html_br(1);
     }
 
-	  $search_nick = cs_sql_count(__FILE__,'users',"users_nick = '" . cs_sql_escape($register['nick']) . "'");
+    $search_nick = cs_sql_count(__FILE__,'users',"users_nick = '" . cs_sql_escape($register['nick']) . "'");
     if(!empty($search_nick)) {
       $error++;
       $errormsg .= $cs_lang['nick_exists'] . cs_html_br(1);
@@ -66,15 +66,15 @@ if(empty($op_users['register'])) {
       $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
     }
 
-	$flood = cs_sql_select(__FILE__,'users','users_register',0,'users_register DESC');
-	$maxtime = $flood['users_register'] + $cs_main['def_flood'];
-	if($maxtime > cs_time()) {
-	  $error++;
-	  $diff = $maxtime - cs_time();
-	  $errormsg .= sprintf($cs_lang['flood_on'], $diff) . cs_html_br(1);
-	}
+  $flood = cs_sql_select(__FILE__,'users','users_register',0,'users_register DESC');
+  $maxtime = $flood['users_register'] + $cs_main['def_flood'];
+  if($maxtime > cs_time()) {
+    $error++;
+    $diff = $maxtime - cs_time();
+    $errormsg .= sprintf($cs_lang['flood_on'], $diff) . cs_html_br(1);
+  }
 
-	if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
+  if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
       if(!cs_captchacheck($_POST['captcha'])) {
         $error++;
         $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
@@ -108,48 +108,48 @@ if(empty($op_users['register'])) {
     $data['head']['action'] = $cs_lang['register'];
     echo cs_subtemplate(__FILE__,$data,'users','head');
 
-	$data = array();
-	$data['form']['register'] = cs_url('users','register');
-	$data['register']['nick'] = $register['nick'];
-	$data['register']['password'] = $register['password'];
-	$data['register']['email'] = $register['email'];
-	$data['register']['send_mail'] = $register['send_mail'];
-	$data['register']['captcha'] = '';
-	$data['register']['captchaimg'] = '';
-	$data['register']['languages'] = '';
-	$data['checked']['newsletter'] = empty($register['newsletter']) ? '' : 'checked';
-	$data['checked']['email'] = empty($register['send_mail']) ? '' : 'checked';
+  $data = array();
+  $data['form']['register'] = cs_url('users','register');
+  $data['register']['nick'] = $register['nick'];
+  $data['register']['password'] = $register['password'];
+  $data['register']['email'] = $register['email'];
+  $data['register']['send_mail'] = $register['send_mail'];
+  $data['register']['captcha'] = '';
+  $data['register']['captchaimg'] = '';
+  $data['register']['languages'] = '';
+  $data['checked']['newsletter'] = empty($register['newsletter']) ? '' : 'checked';
+  $data['checked']['email'] = empty($register['send_mail']) ? '' : 'checked';
 
     foreach($languages as $lang) {
       $lang['name'] == $register['lang'] ? $sel = 1 : $sel = 0;
-	  $data['register']['languages'] .= cs_html_option($lang['name'],$lang['name'],$sel);
+    $data['register']['languages'] .= cs_html_option($lang['name'],$lang['name'],$sel);
     }
 
     $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
 
     if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
-	  if(!empty($captcha)) {
-	    $data['register']['captcha'] .= cs_html_img('mods/captcha/generate.php');
-	    $data['register']['captchaimg'] .= cs_html_br(1) . cs_html_input('captcha','','text',8,8);
-	  }
+    if(!empty($captcha)) {
+      $data['register']['captcha'] .= cs_html_img('mods/captcha/generate.php');
+      $data['register']['captchaimg'] .= cs_html_br(1) . cs_html_input('captcha','','text',8,8);
     }
-	if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
-	  if($op_users['def_register'] != '2') {
-	    $data['if']['reg_mail'] = true;
-	  } else {
-   	    $data['if']['reg_mail'] = false;
-	  }
+    }
+  if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
+    if($op_users['def_register'] != '2') {
+      $data['if']['reg_mail'] = true;
+    } else {
+         $data['if']['reg_mail'] = false;
+    }
       echo cs_subtemplate(__FILE__,$data,'users','register_code');
-	} else {
-	  echo cs_subtemplate(__FILE__,$data,'users','register_mail');
-	}
+  } else {
+    echo cs_subtemplate(__FILE__,$data,'users','register_mail');
+  }
   } else {
 
-  $code_id 					= generate_code(30); // 30 Zeichen lang
-  $register['users_key'] 	= $code_id;
-  $active 					= empty($op_users['def_register']) ? $register['users_active'] = 1 : $register['users_active'] = 0;
-  $def_timezone 			= empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
-  $def_dstime 				= empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
+  $code_id           = generate_code(30); // 30 Zeichen lang
+  $register['users_key']   = $code_id;
+  $active           = empty($op_users['def_register']) ? $register['users_active'] = 1 : $register['users_active'] = 0;
+  $def_timezone       = empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
+  $def_dstime         = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
   create_user(2,$register['nick'],$register['password'],$register['lang'],$register['email'],'fam',$def_timezone,$def_dstime,$register['newsletter'],$active,20,$register['users_key']);
 
   if(!empty($register['send_mail']) OR !empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
@@ -165,11 +165,11 @@ if(empty($op_users['register'])) {
     cs_mail($register['email'],$cs_lang['mail_reg_head'],$content);
   }
 
-	$data['lang']['head'] = $cs_lang['register'];
-	$data['link']['continue'] = cs_url('users','login');
+  $data['lang']['head'] = $cs_lang['register'];
+  $data['link']['continue'] = cs_url('users','login');
 
-	$data['lang']['success'] = !empty($op_users['def_register']) ? $cs_lang['done2'] : $cs_lang['done'];
-  	echo cs_subtemplate(__FILE__,$data,'users','done');
+  $data['lang']['success'] = !empty($op_users['def_register']) ? $cs_lang['done2'] : $cs_lang['done'];
+    echo cs_subtemplate(__FILE__,$data,'users','done');
   }
 }
 ?>

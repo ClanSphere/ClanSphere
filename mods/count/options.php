@@ -45,7 +45,7 @@ if(isset($_POST['submit'])) {
 
   $def_cont = array($_POST['view']);
   cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'view'");
-	
+  
   cs_redirect($cs_lang['changes_done'],'count','options');
 }
 else {
@@ -66,16 +66,16 @@ else {
     $data['count']['amstats'] = '';
   }
   
-  $data['count']['width']			= $op_count['width'];
-  $data['count']['height']			= $op_count['height'];
-  $data['count']['background']		= $op_count['background'];
-  $data['count']['textsize']		= $op_count['textsize'];
-  $data['count']['textcolor']		= $op_count['textcolor'];
-  $data['count']['textballoncolor']	= $op_count['textballoncolor'];
-  $data['count']['axescolor']		= $op_count['axescolor'];
-  $data['count']['indicatorcolor']	= $op_count['indicatorcolor'];
-  $data['count']['graphcolor1']		= $op_count['graphcolor1'];
-  $data['count']['graphcolor2']		= $op_count['graphcolor2'];
+  $data['count']['width']      = $op_count['width'];
+  $data['count']['height']      = $op_count['height'];
+  $data['count']['background']    = $op_count['background'];
+  $data['count']['textsize']    = $op_count['textsize'];
+  $data['count']['textcolor']    = $op_count['textcolor'];
+  $data['count']['textballoncolor']  = $op_count['textballoncolor'];
+  $data['count']['axescolor']    = $op_count['axescolor'];
+  $data['count']['indicatorcolor']  = $op_count['indicatorcolor'];
+  $data['count']['graphcolor1']    = $op_count['graphcolor1'];
+  $data['count']['graphcolor2']    = $op_count['graphcolor2'];
 
   echo cs_subtemplate(__FILE__,$data,'count','options');
 }

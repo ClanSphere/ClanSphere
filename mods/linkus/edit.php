@@ -19,82 +19,82 @@ $select = 'linkus_id, linkus_name, linkus_url, linkus_banner';
 $cs_linkus = cs_sql_select(__FILE__,'linkus',$select,"linkus_id = '" . $linkus_id . "'");
 
 if(isset($_POST['submit'])) {
-	
-	$cs_linkus['linkus_name'] = $_POST['linkus_name'];
-	$cs_linkus['linkus_url'] = $_POST['linkus_url'];
-	
-	$error = '';
-	
-	if(empty($cs_linkus['linkus_name'])) {
-		$error .= $cs_lang['no_name'] . cs_html_br(1);
-	}
-	if(empty($cs_linkus['linkus_url'])) {
-		$error .= $cs_lang['no_url'] . cs_html_br(1);
-	}
-	if(empty($_FILES['symbol']['tmp_name']) AND empty($cs_linkus['linkus_banner'])) {
-		$error .= $cs_lang['no_pic'] . cs_html_br(1);
-	}
-	elseif(!empty($_FILES['symbol']['tmp_name'])) {
-		$error .= $cs_lang['ext_error'] . cs_html_br(1);
-		foreach($img_filetypes AS $allowed => $new_ext) {
-			if($allowed == $_FILES['symbol']['type']) {
-				$error = '';
-				$extension = $new_ext;
-			} 
-		}
-		$img_size = getimagesize($_FILES['symbol']['tmp_name']);
-		if($img_size[0]>$img_max['width']) {
-			$error .= $cs_lang['too_wide'] . cs_html_br(1); 
-		}
-		if($img_size[1]>$img_max['height']) { 
-			$error .= $cs_lang['too_high'] . cs_html_br(1);
-		}
-		if($_FILES['symbol']['size']>$img_max['size']) {
-			$error .= $cs_lang['too_big'] . cs_html_br(1); 
-		}
-		if(empty($error)) {
-			$cs_linkus['linkus_banner'] = $linkus_id . '.' . $extension;
-		  cs_upload('linkus',$cs_linkus['linkus_banner'],$_FILES['symbol']['tmp_name']);
-		}
-	}
+  
+  $cs_linkus['linkus_name'] = $_POST['linkus_name'];
+  $cs_linkus['linkus_url'] = $_POST['linkus_url'];
+  
+  $error = '';
+  
+  if(empty($cs_linkus['linkus_name'])) {
+    $error .= $cs_lang['no_name'] . cs_html_br(1);
+  }
+  if(empty($cs_linkus['linkus_url'])) {
+    $error .= $cs_lang['no_url'] . cs_html_br(1);
+  }
+  if(empty($_FILES['symbol']['tmp_name']) AND empty($cs_linkus['linkus_banner'])) {
+    $error .= $cs_lang['no_pic'] . cs_html_br(1);
+  }
+  elseif(!empty($_FILES['symbol']['tmp_name'])) {
+    $error .= $cs_lang['ext_error'] . cs_html_br(1);
+    foreach($img_filetypes AS $allowed => $new_ext) {
+      if($allowed == $_FILES['symbol']['type']) {
+        $error = '';
+        $extension = $new_ext;
+      } 
+    }
+    $img_size = getimagesize($_FILES['symbol']['tmp_name']);
+    if($img_size[0]>$img_max['width']) {
+      $error .= $cs_lang['too_wide'] . cs_html_br(1); 
+    }
+    if($img_size[1]>$img_max['height']) { 
+      $error .= $cs_lang['too_high'] . cs_html_br(1);
+    }
+    if($_FILES['symbol']['size']>$img_max['size']) {
+      $error .= $cs_lang['too_big'] . cs_html_br(1); 
+    }
+    if(empty($error)) {
+      $cs_linkus['linkus_banner'] = $linkus_id . '.' . $extension;
+      cs_upload('linkus',$cs_linkus['linkus_banner'],$_FILES['symbol']['tmp_name']);
+    }
+  }
 }
 
 
 if(!isset($_POST['submit'])) {
-	$data['head']['body'] = $cs_lang['body_create'];
+  $data['head']['body'] = $cs_lang['body_create'];
 }elseif(!empty($error)) {
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['linkus'] = $cs_linkus;
+  $data['linkus'] = $cs_linkus;
 
-	$data['linkus']['banner'] = cs_html_img('uploads/linkus/' . $cs_linkus['linkus_banner']);
-	
-	$place = 'uploads/linkus/' . $cs_linkus['linkus_banner'];
+  $data['linkus']['banner'] = cs_html_img('uploads/linkus/' . $cs_linkus['linkus_banner']);
+  
+  $place = 'uploads/linkus/' . $cs_linkus['linkus_banner'];
     $mass = getimagesize($place);
     $data['linkus']['mass'] = cs_secure($mass[0] .' x '. $mass[1]);
     
     $matches[1] = $cs_lang['pic_infos'];
-	$return_types = '';
-	foreach($img_filetypes AS $add => $value) {
-		$return_types .= empty($return_types) ? $add : ', ' . $add;
-	}
-	$matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
-	$matches[2] .= $cs_lang['filetypes'] . $return_types;
- 	$data['linkus']['picup_clip'] = cs_abcode_clip($matches);
-	
-	$data['linkus']['id'] = $linkus_id;
+  $return_types = '';
+  foreach($img_filetypes AS $add => $value) {
+    $return_types .= empty($return_types) ? $add : ', ' . $add;
+  }
+  $matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
+  $matches[2] .= $cs_lang['filetypes'] . $return_types;
+   $data['linkus']['picup_clip'] = cs_abcode_clip($matches);
+  
+  $data['linkus']['id'] = $linkus_id;
 
   echo cs_subtemplate(__FILE__,$data,'linkus','edit');
 }
 else {
-	
-	$awards_cells = array_keys($cs_linkus);
-	$awards_save = array_values($cs_linkus);
+  
+  $awards_cells = array_keys($cs_linkus);
+  $awards_save = array_values($cs_linkus);
   cs_sql_update(__FILE__,'linkus',$awards_cells,$awards_save,$linkus_id);
 
   cs_redirect($cs_lang['changes_done'],'linkus');

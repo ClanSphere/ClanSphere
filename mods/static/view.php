@@ -26,9 +26,9 @@ if(!empty($cs_static['static_comments'])) {
   $count_com = cs_sql_count(__FILE__,'comments',$where);
 
   if(!empty($count_com)) {
-  	echo cs_html_br(1);
-  	echo cs_comments_view($static_id,'static','view',$count_com);
+    echo cs_html_br(1);
+    echo cs_comments_view($static_id,'static','view',$count_com);
   }
-	echo cs_comments_add($static_id,'static');
+  echo cs_comments_add($static_id,'static');
 }
 ?>

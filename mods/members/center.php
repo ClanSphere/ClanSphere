@@ -18,20 +18,20 @@ $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 if(!empty($_GET['del_id'])) {
-	$del_id = $_GET['del_id'];
-	settype($del_id,'integer');
-	$target = cs_sql_select(__FILE__,'members','squads_id',"members_id = '" . $del_id . "'");
-	$squads_id = $target['squads_id'];
-	$is_admin = "members_admin > 0 AND squads_id ='" . $squads_id . "' AND users_id ='" . $account['users_id'] . "'";
-	$allow = cs_sql_count(__FILE__,'members',$is_admin);
+  $del_id = $_GET['del_id'];
+  settype($del_id,'integer');
+  $target = cs_sql_select(__FILE__,'members','squads_id',"members_id = '" . $del_id . "'");
+  $squads_id = $target['squads_id'];
+  $is_admin = "members_admin > 0 AND squads_id ='" . $squads_id . "' AND users_id ='" . $account['users_id'] . "'";
+  $allow = cs_sql_count(__FILE__,'members',$is_admin);
 
-	if(empty($allow)) {
-		$msg = $cs_lang['del_failed'];
-	}
-	else {
-		cs_sql_delete(__FILE__,'members',$del_id);
-		$msg = $cs_lang['del_done'];
-	}
+  if(empty($allow)) {
+    $msg = $cs_lang['del_failed'];
+  }
+  else {
+    cs_sql_delete(__FILE__,'members',$del_id);
+    $msg = $cs_lang['del_done'];
+  }
 }
 
 $data['lang']['mod'] = $cs_lang[$op_members['label']];

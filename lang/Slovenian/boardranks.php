@@ -5,12 +5,12 @@
 
 $cs_lang['mod_name'] = 'Forum&#269;ini';
 $cs_lang['mod_text'] = 'Upravljanje forum &#269;inov';
-$cs_lang['mod']	= 'Forum&#269;ini';
+$cs_lang['mod']  = 'Forum&#269;ini';
 
-$cs_lang['head']	= 'Uredi';
-$cs_lang['head_create']	= 'Dodaj';
-$cs_lang['head_remove']	= 'Odstrani';
-$cs_lang['body_create']		= 'Polja ozna&#269;ena z * so obvezna';
+$cs_lang['head']  = 'Uredi';
+$cs_lang['head_create']  = 'Dodaj';
+$cs_lang['head_remove']  = 'Odstrani';
+$cs_lang['body_create']    = 'Polja ozna&#269;ena z * so obvezna';
 
 $cs_lang['min'] = 'Od sporo&#269;il';
 $cs_lang['points'] = 'To&#269;k';

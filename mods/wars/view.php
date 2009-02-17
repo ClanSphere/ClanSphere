@@ -46,7 +46,7 @@ if (!empty($players)) {
   for ($run = 0; $run < $count_players; $run++) {
     $wars['players'][$run]['url'] = cs_url('users','view','id='.$players[$run]['users_id']);
     $wars['players'][$run]['nick'] = cs_secure($players[$run]['users_nick']);
-	}
+  }
 } else {
   $wars['players'] = '';
 }
@@ -92,8 +92,8 @@ $wars['war']['report'] = empty($cs_wars['wars_report']) ? '-' : cs_secure($cs_wa
 
 $tables2 = 'rounds rnd INNER JOIN {pre}_maps mps ON rnd.maps_id = mps.maps_id';
 $cells2 = 'rnd.rounds_score1 AS rounds_score1, rnd.rounds_score2 AS rounds_score2, '
-		. 'rnd.rounds_description AS rounds_description, mps.maps_name AS maps_name, '
-		. 'rnd.maps_id AS maps_id';
+    . 'rnd.rounds_description AS rounds_description, mps.maps_name AS maps_name, '
+    . 'rnd.maps_id AS maps_id';
 
 $wars['rounds'] = cs_sql_select(__FILE__,$tables2,$cells2,'rnd.wars_id = \''.$wars_id.'\'','rnd.rounds_order ASC',0,0);
 
@@ -106,7 +106,7 @@ if(!empty($wars['rounds'])) {
     $wars['rounds'][$run]['mapurl'] = cs_url('maps','view','id='.$wars['rounds'][$run]['maps_id']);
     $wars['rounds'][$run]['maps_name'] = cs_secure($wars['rounds'][$run]['maps_name']);
     $result2 = $wars['rounds'][$run]['rounds_score1'] - $wars['rounds'][$run]['rounds_score2'];
-		$icon2 = $result2 >= 1 ? 'green' : 'red';
+    $icon2 = $result2 >= 1 ? 'green' : 'red';
     $icon2 = !empty($result2) ? $icon2 : 'grey';
     $wars['rounds'][$run]['resulticon'] = cs_html_img('symbols/clansphere/' . $icon2 . '.gif');
     $wars['rounds'][$run]['rounds_description'] = cs_secure($wars['rounds'][$run]['rounds_description'],1,1);
@@ -117,86 +117,86 @@ if(!empty($wars['rounds'])) {
 
 
 if ($wars_status == 'upcoming') {
-	
-	$condition = 'users_id = \''.$account['users_id'].'\' AND squads_id = \''.$cs_squad['squads_id'].'\'';
-	$squadmember = cs_sql_count(__FILE__,'members',$condition);
-	
-	$wars_access = empty($account['access_wars']) ? 0 : $account['access_wars'];
-	
-	if (!empty($squadmember) OR $wars_access >= 3) {
-	
-		$wars['if']['squadmember'] = TRUE;
-		$wars['if']['no_players'] = FALSE;
-		$wars['if']['status'] = FALSE;
-		
-		$tables = 'players ply INNER JOIN {pre}_users usr ON ply.users_id = usr.users_id';
-		$cells = 'ply.users_id AS users_id, ply.players_status AS players_status, '
-				.'ply.players_time AS players_time, usr.users_nick AS users_nick, usr.users_active AS users_active';
-		
-		$nplayers = cs_sql_select(__FILE__,$tables,$cells,'ply.wars_id = \''.$wars_id.'\'','ply.players_status DESC',0,0);
-		
-		if (empty($nplayers)) {
-			$wars['if']['no_players'] = TRUE;
-			$wars['nplayers'] = array();
-		} else {
-			$in_list = 0;
-			$pl = 0;
-			foreach ($nplayers AS $player) {
-			
-				$wars['nplayers'][$pl]['user'] = cs_user($player['users_id'],$player['users_nick'],$player['users_active']);
-				$wars['nplayers'][$pl]['status'] = $cs_lang[$player['players_status']];
-				$wars['nplayers'][$pl]['date'] = cs_date('unix',$player['players_time'],1);
-				
-				if ($player['users_id'] == $account['users_id']) {
-					$in_list = 1;
-				}
-				$pl++;
-			}
-		}
-	
-		if (!empty($squadmember)) {
-		
-			$wars['if']['status'] = TRUE;
+  
+  $condition = 'users_id = \''.$account['users_id'].'\' AND squads_id = \''.$cs_squad['squads_id'].'\'';
+  $squadmember = cs_sql_count(__FILE__,'members',$condition);
+  
+  $wars_access = empty($account['access_wars']) ? 0 : $account['access_wars'];
+  
+  if (!empty($squadmember) OR $wars_access >= 3) {
+  
+    $wars['if']['squadmember'] = TRUE;
+    $wars['if']['no_players'] = FALSE;
+    $wars['if']['status'] = FALSE;
+    
+    $tables = 'players ply INNER JOIN {pre}_users usr ON ply.users_id = usr.users_id';
+    $cells = 'ply.users_id AS users_id, ply.players_status AS players_status, '
+        .'ply.players_time AS players_time, usr.users_nick AS users_nick, usr.users_active AS users_active';
+    
+    $nplayers = cs_sql_select(__FILE__,$tables,$cells,'ply.wars_id = \''.$wars_id.'\'','ply.players_status DESC',0,0);
+    
+    if (empty($nplayers)) {
+      $wars['if']['no_players'] = TRUE;
+      $wars['nplayers'] = array();
+    } else {
+      $in_list = 0;
+      $pl = 0;
+      foreach ($nplayers AS $player) {
+      
+        $wars['nplayers'][$pl]['user'] = cs_user($player['users_id'],$player['users_nick'],$player['users_active']);
+        $wars['nplayers'][$pl]['status'] = $cs_lang[$player['players_status']];
+        $wars['nplayers'][$pl]['date'] = cs_date('unix',$player['players_time'],1);
+        
+        if ($player['users_id'] == $account['users_id']) {
+          $in_list = 1;
+        }
+        $pl++;
+      }
+    }
+  
+    if (!empty($squadmember)) {
+    
+      $wars['if']['status'] = TRUE;
 
-			if(!isset($_POST['status'])) {
-				$condition = 'users_id = \''.$account['users_id'].'\' AND wars_id = \''.$wars_id.'\'';
-				$select = cs_sql_select(__FILE__,'players','players_id, players_status',$condition);
-	
-				$wars['status']['yes'] = '';
-				$wars['status']['maybe'] = '';
-				$wars['status']['no'] = '';
-				$sel = 'selected="selected"';
-	
-				if($select['players_status'] == 'yes')
-					$wars['status']['yes'] = $sel;
-				if($select['players_status'] == 'maybe')
-					$wars['status']['maybe'] = $sel;
-				if($select['players_status'] == 'no')
-					$wars['status']['no'] = $sel;		
+      if(!isset($_POST['status'])) {
+        $condition = 'users_id = \''.$account['users_id'].'\' AND wars_id = \''.$wars_id.'\'';
+        $select = cs_sql_select(__FILE__,'players','players_id, players_status',$condition);
+  
+        $wars['status']['yes'] = '';
+        $wars['status']['maybe'] = '';
+        $wars['status']['no'] = '';
+        $sel = 'selected="selected"';
+  
+        if($select['players_status'] == 'yes')
+          $wars['status']['yes'] = $sel;
+        if($select['players_status'] == 'maybe')
+          $wars['status']['maybe'] = $sel;
+        if($select['players_status'] == 'no')
+          $wars['status']['no'] = $sel;    
 
-				$wars['status']['players_id'] = $select['players_id'];
-				$wars['status']['wars_id'] = $wars_id;
-				$wars['lang']['submit'] = empty($in_list) ? $cs_lang['confirm'] : $cs_lang['edit'];
-			} 
-			else {
-				$players_id = (int) $_POST['players_id'];
-				$wars_id = (int) $_POST['wars_id'];
-				$status = $_POST['players_status'];
-				$time = cs_time();
-				
-				if(empty($in_list)) {
-					$cells = array('wars_id','users_id','players_status','players_time');
-					$values = array($wars_id,$account['users_id'],$status,$time);
-				  cs_sql_insert(__FILE__,'players',$cells,$values);
-				} else {
-					$cells = array('players_status','players_time');
-					$values = array($status,$time);
-				  cs_sql_update(__FILE__,'players',$cells,$values,$players_id);
-				}
-			  cs_redirect($cs_lang['success'],'wars','view','id='.$wars_id);
-			}
-		}
-	}
+        $wars['status']['players_id'] = $select['players_id'];
+        $wars['status']['wars_id'] = $wars_id;
+        $wars['lang']['submit'] = empty($in_list) ? $cs_lang['confirm'] : $cs_lang['edit'];
+      } 
+      else {
+        $players_id = (int) $_POST['players_id'];
+        $wars_id = (int) $_POST['wars_id'];
+        $status = $_POST['players_status'];
+        $time = cs_time();
+        
+        if(empty($in_list)) {
+          $cells = array('wars_id','users_id','players_status','players_time');
+          $values = array($wars_id,$account['users_id'],$status,$time);
+          cs_sql_insert(__FILE__,'players',$cells,$values);
+        } else {
+          $cells = array('players_status','players_time');
+          $values = array($status,$time);
+          cs_sql_update(__FILE__,'players',$cells,$values,$players_id);
+        }
+        cs_redirect($cs_lang['success'],'wars','view','id='.$wars_id);
+      }
+    }
+  }
 }
 
 echo cs_subtemplate(__FILE__,$wars,'wars','view');
@@ -206,8 +206,8 @@ $count_com = cs_sql_count(__FILE__,'comments',$where_com);
 include_once('mods/comments/functions.php');
 
 if(!empty($count_com)) {
-	echo cs_html_br(1);
-	echo cs_comments_view($wars_id,'wars','view',$count_com);
+  echo cs_html_br(1);
+  echo cs_comments_view($wars_id,'wars','view',$count_com);
 }
 
 echo cs_comments_add($wars_id,'wars',$cs_wars['wars_close']);

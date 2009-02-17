@@ -33,13 +33,13 @@ $boardranks_loop = count($cs_boardranks);
 
 for($run=0; $run<$boardranks_loop; $run++) {
 
-	$id = $cs_boardranks[$run]['boardranks_id'];
+  $id = $cs_boardranks[$run]['boardranks_id'];
 
-	$data['bora'][$run]['boardranks_min'] =  cs_secure($cs_boardranks[$run]['boardranks_min']);
-	$data['bora'][$run]['boardranks_name'] =  cs_secure($cs_boardranks[$run]['boardranks_name']);
+  $data['bora'][$run]['boardranks_min'] =  cs_secure($cs_boardranks[$run]['boardranks_min']);
+  $data['bora'][$run]['boardranks_name'] =  cs_secure($cs_boardranks[$run]['boardranks_name']);
 
-	$data['bora'][$run]['url_edit'] = cs_url('boardranks','edit','id=' . $id);
-  	$data['bora'][$run]['url_remove'] = cs_url('boardranks','remove','id=' . $id);
+  $data['bora'][$run]['url_edit'] = cs_url('boardranks','edit','id=' . $id);
+    $data['bora'][$run]['url_remove'] = cs_url('boardranks','remove','id=' . $id);
 
 }
 

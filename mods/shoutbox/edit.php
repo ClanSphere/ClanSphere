@@ -24,7 +24,7 @@ if(!empty($_POST['submit'])) {
     
     if (isset($_POST['refresh'])) {
       $cs_shoutbox['shoutbox_date'] = cs_time();
-	}
+  }
     
     $cells = array_keys($cs_shoutbox);
     $values = array_values($cs_shoutbox);

@@ -33,8 +33,8 @@ $data['head']['getmsg'] = cs_getmsg();
 
 $data['lang']['join_label'] = $cs_lang['join_'.$op_squads['label']];
 if(!empty($squads_count)) {
-	$data['if']['squad_to_leave'] = TRUE;
-	$data['lang']['leave_label'] = $cs_lang['leave_'.$op_squads['label']];
+  $data['if']['squad_to_leave'] = TRUE;
+  $data['lang']['leave_label'] = $cs_lang['leave_'.$op_squads['label']];
 }
 
 $data['sort']['squad_name'] = cs_sort('squads','center',$start,0,1,$sort);
@@ -50,17 +50,17 @@ $squads_loop = count($data['squads']);
 
 for($run=0; $run<$squads_loop; $run++) {
 
-	$data['squads'][$run]['id'] = $data['squads'][$run]['squads_id'];
- 	$data['squads'][$run]['name'] = cs_secure($data['squads'][$run]['squads_name']);
-	$data['squads'][$run]['members_task'] = cs_secure($data['squads'][$run]['members_task']);
+  $data['squads'][$run]['id'] = $data['squads'][$run]['squads_id'];
+   $data['squads'][$run]['name'] = cs_secure($data['squads'][$run]['squads_name']);
+  $data['squads'][$run]['members_task'] = cs_secure($data['squads'][$run]['members_task']);
 
-	if(!empty($data['squads'][$run]['members_admin'])) {
-		$data['squads'][$run]['if']['squad_admin'] = TRUE;
-		$data['squads'][$run]['if']['no_squad_admin'] = FALSE;
-	} else {
-		$data['squads'][$run]['if']['squad_admin'] = FALSE;
-		$data['squads'][$run]['if']['no_squad_admin'] = TRUE;
-	}
+  if(!empty($data['squads'][$run]['members_admin'])) {
+    $data['squads'][$run]['if']['squad_admin'] = TRUE;
+    $data['squads'][$run]['if']['no_squad_admin'] = FALSE;
+  } else {
+    $data['squads'][$run]['if']['squad_admin'] = FALSE;
+    $data['squads'][$run]['if']['no_squad_admin'] = TRUE;
+  }
 }
 
 echo cs_subtemplate(__FILE__,$data,'squads','center');

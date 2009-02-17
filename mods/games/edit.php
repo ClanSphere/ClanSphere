@@ -123,24 +123,24 @@ else {
 if(isset($_POST['submit'])) {
   if(empty($games_error)) {
     $games_form = 0;
-		
+    
     $games_cells = array('games_name','games_version','games_released','games_creator','categories_id','games_url','games_usk');
     $games_save = array($games_name,$games_version,$games_release,$games_creator,$categories_id,$games_url,$games_usk);
     cs_sql_update(__FILE__,'games',$games_cells,$games_save,$games_id);
   
   if($delete == 1){
     cs_unlink('games', $games_id . '.gif');
-	} 
+  } 
     
     if(!empty($_FILES['symbol']['tmp_name']) AND $symbol_error == 0) {
       
     cs_unlink('games', $games_id . '.gif'); 
     
-	  $filename = $games_id . '.' . $extension;
+    $filename = $games_id . '.' . $extension;
       cs_upload('games',$filename,$_FILES['symbol']['tmp_name']);
     }
-	
-	cs_redirect($cs_lang['changes_done'], 'games') ;
+  
+  cs_redirect($cs_lang['changes_done'], 'games') ;
   }
   echo cs_subtemplate(__FILE__,$data,'games','done');
 }
@@ -154,7 +154,7 @@ if(!empty($games_form)) {
   $data['games']['release'] = cs_dateselect('datum','date',$games_release);
   $data['games']['creator'] = $games_creator;
   $data['games']['homepage'] = $games_url;
-	
+  
   $usknum[0]['games_usk'] = '00';
   $usknum[0]['name'] = $cs_lang['usk_00'];
   $usknum[1]['games_usk'] = '06';
@@ -167,7 +167,7 @@ if(!empty($games_form)) {
   $usknum[4]['name'] = $cs_lang['usk_18'];
   $data['games']['usk'] = cs_dropdown('games_usk','name',$usknum,$games_usk);
   $data['games']['icon'] = cs_html_img('uploads/games/' . $games_edit['games_id'] . '.gif');
-	
+  
   $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';
   foreach($img_filetypes AS $add => $value) {

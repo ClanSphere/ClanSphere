@@ -3,8 +3,8 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= '&#268;arovnik';
-$cs_lang['mod_text']	= 'Pomaga optimizirati in pomagati pri funkcijah portala';
+$cs_lang['mod_name']  = '&#268;arovnik';
+$cs_lang['mod_text']  = 'Pomaga optimizirati in pomagati pri funkcijah portala';
 $cs_lang['wizard']    = '&#268;arodej';
 
 $cs_lang['lang_name'] = 'Jeziki';
@@ -37,10 +37,10 @@ $cs_lang['done']        = 'Narejena';
 $cs_lang['next_step']   = 'Naslednji korak';
 
 // users_home.php
-$cs_lang['wizard_welcome']	= 'Dobrodo&scaron;el v Clanspherovem &#269;arovniku';
-$cs_lang['wizard_info']	    = 'Svetujemo ti, da uporabi&scaron; &#269;arovnika za prve korake takoj po namestitvi portala!';
-$cs_lang['wizard_start']	  = 'Za&#382;eni &#269;arodeja';
-$cs_lang['wizard_turnoff']	= 'Izklju&#269;i to sporo&#269;ilo';
+$cs_lang['wizard_welcome']  = 'Dobrodo&scaron;el v Clanspherovem &#269;arovniku';
+$cs_lang['wizard_info']      = 'Svetujemo ti, da uporabi&scaron; &#269;arovnika za prve korake takoj po namestitvi portala!';
+$cs_lang['wizard_start']    = 'Za&#382;eni &#269;arodeja';
+$cs_lang['wizard_turnoff']  = 'Izklju&#269;i to sporo&#269;ilo';
 
 // welcome.php
 $cs_lang['welcome']   = 'Dobrodo&scaron;el';

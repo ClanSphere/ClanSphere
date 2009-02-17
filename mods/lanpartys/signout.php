@@ -46,7 +46,7 @@ else {
   $data['lang']['content'] = cs_link($cs_lang['confirm'],'lanpartys','signout','id=' . $languests_id . '&amp;agree');
   $data['lang']['content'] .= ' - ';
   $data['lang']['content'] .= cs_link($cs_lang['cancel'],'lanpartys','signout','id=' . $languests_id . '&amp;cancel');
-	
+  
   echo cs_subtemplate(__FILE__,$data,'lanpartys','remove');
 }
 ?>

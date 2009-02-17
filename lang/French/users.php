@@ -2,9 +2,9 @@
 // ClanSphere 2006 - www.clansphere.net - Traduction francaise >>> www.globalteam-esports.info
 // $Id$
 
-$cs_lang['mod_name']	= 'Utilisateurs';
+$cs_lang['mod_name']  = 'Utilisateurs';
 $cs_lang['users'] = 'Utilisateurs';
-$cs_lang['mod_text']	= 'Administration des comptes';
+$cs_lang['mod_text']  = 'Administration des comptes';
 
 $cs_lang['wizard'] = 'Assistant';
 $cs_lang['task_done'] = 'Marquer la tâche effectuée';
@@ -22,13 +22,13 @@ $cs_lang['system'] = 'Système';
 $cs_lang['panel'] = 'Administration';
 
 // Manage
-$cs_lang['new_user']	= 'Nouvel utilisateur';
-$cs_lang['access']	= 'Accès';
-$cs_lang['country']	= 'Pays';
-$cs_lang['nick']	= 'Nick';
-$cs_lang['laston']	= 'Dernière visite';
-$cs_lang['page']	= 'En ligne';
-$cs_lang['active']	= 'Activé';
+$cs_lang['new_user']  = 'Nouvel utilisateur';
+$cs_lang['access']  = 'Accès';
+$cs_lang['country']  = 'Pays';
+$cs_lang['nick']  = 'Nick';
+$cs_lang['laston']  = 'Dernière visite';
+$cs_lang['page']  = 'En ligne';
+$cs_lang['active']  = 'Activé';
 $cs_lang['picture_edit'] = 'Travailler l\'image du profil';
 $cs_lang['search'] = 'Search';
 
@@ -60,7 +60,7 @@ $cs_lang['info'] = 'Info';
 $cs_lang['message_send'] = 'Envoyer un message';
 
 // Create
-$cs_lang['create_users']	= 'Ajouter un nouveau compte d\'utilisateur.';
+$cs_lang['create_users']  = 'Ajouter un nouveau compte d\'utilisateur.';
 $cs_lang['lang'] = 'Langage';
 $cs_lang['password'] = 'Mot de passe';
 $cs_lang['extended'] = 'Plus';
@@ -75,7 +75,7 @@ $cs_lang['email_false'] = '- E_Mail invalide';
 $cs_lang['no_access'] = '- Saisissez un accès';
 $cs_lang['access_denied'] = '- Droit insuffisant';
 
-$cs_lang['auto_pass']	= 'Le mot de passe est créé';
+$cs_lang['auto_pass']  = 'Le mot de passe est créé';
 
 // Mail
 $cs_lang['mail_reg_head'] = 'Enregistrement';
@@ -94,11 +94,11 @@ $cs_lang['not_active'] = 'Déactivé';
 $cs_lang['not_active_text'] = 'L\'utilisateur choisi n\'est plus actif';
 
 // Logout
-$cs_lang['logged_out']	= 'Fin du processus, à bientôt!';
+$cs_lang['logged_out']  = 'Fin du processus, à bientôt!';
 
 // Login
 $cs_lang['login'] = 'Login';
-$cs_lang['login_messages']	= 'Tous les messages apparaîssent ici après avoir posté.';
+$cs_lang['login_messages']  = 'Tous les messages apparaîssent ici après avoir posté.';
 $cs_lang['pwd'] = 'Mot de passe';
 $cs_lang['user_notfound'] = 'Cet utilisateur n\'existe pas dans la banque de donnée.';
 $cs_lang['wrong_pwd'] = 'Mot de passe incorrect.';
@@ -111,19 +111,19 @@ $cs_lang['method_session'] = 'Vous avez déjà une session active.';
 
 // Register
 $cs_lang['signup'] = 'S\'inscrire';
-$cs_lang['register_info']	= 'Vous pouvez vous inscrire ici.';
+$cs_lang['register_info']  = 'Vous pouvez vous inscrire ici.';
 $cs_lang['register_disabled'] = 'L\'enregistrement d\'utilisateur vient d\'être bloqué par l\'administrateur.';
 
 $cs_lang['mail_key'] = 'Lien d\'activation';
 
 // Home
-$cs_lang['home_info']	= 'Compte d\'utilisateur en un coup d\'oeil.';
+$cs_lang['home_info']  = 'Compte d\'utilisateur en un coup d\'oeil.';
 
 // Settings
-$cs_lang['settings_info']	= 'Tout sur le compte d\'utilisateur.';
-$cs_lang['picture']	= 'Image';
-$cs_lang['setup']	= 'Réglage';
-$cs_lang['close']	= 'Désactiver';
+$cs_lang['settings_info']  = 'Tout sur le compte d\'utilisateur.';
+$cs_lang['picture']  = 'Image';
+$cs_lang['setup']  = 'Réglage';
+$cs_lang['close']  = 'Désactiver';
 
 // Profile
 $cs_lang['column'] = 'Colonne';
@@ -132,18 +132,18 @@ $cs_lang['hidden'] = 'Cacher';
 $cs_lang['birthday'] = 'Anniversaire';
 
 // Picture
-$cs_lang['picture_manage']	= 'Administration de l\'image d\'utilisateur.';
-$cs_lang['current']	= 'Récent';
+$cs_lang['picture_manage']  = 'Administration de l\'image d\'utilisateur.';
+$cs_lang['current']  = 'Récent';
 $cs_lang['pic_infos'] = 'Aide';
 $cs_lang['max_width'] = 'Largeur maximale :';
 $cs_lang['max_height'] = 'Hauteur maximale :';
 $cs_lang['max_size'] = 'Taille maximale :';
 $cs_lang['filetypes'] = 'Format du fichier :';
 
-$cs_lang['too_big']	= '- Taille du fichier trop importante';
-$cs_lang['too_wide']	= '- L\'image est trop large';
-$cs_lang['too_high']	= '- L\'image est trop grande';
-$cs_lang['ext_error']	= '- Format de fichier non autorisé';
+$cs_lang['too_big']  = '- Taille du fichier trop importante';
+$cs_lang['too_wide']  = '- L\'image est trop large';
+$cs_lang['too_high']  = '- L\'image est trop grande';
+$cs_lang['ext_error']  = '- Format de fichier non autorisé';
 $cs_lang['up_error'] = '- Veuillez contacter l\'administrateur du site';
 
 // Setup
@@ -162,7 +162,7 @@ $cs_lang['no_readtime'] = 'Saisissez le nombre de jour';
 $cs_lang['default'] = 'Standard';
 $cs_lang['categories'] = 'Catégories';
 // Password
-$cs_lang['change_password']	= 'Vous pouvez changer ici votre mot de passe .';
+$cs_lang['change_password']  = 'Vous pouvez changer ici votre mot de passe .';
 $cs_lang['pwd_current'] = 'Mot de passe actuel';
 $cs_lang['pwd_new'] = 'Nouveau mot de passe';
 $cs_lang['pwd_again'] = 'Répéter le mot de passe ';
@@ -172,17 +172,17 @@ $cs_lang['not_match'] = '- Les nouveaux mots de passe ne sont pas identiques';
 // Close
 $cs_lang['close_confirm'] = 'Voulez vous vraiment fermer votre compte?';
 $cs_lang['close_info'] = 'Ce compte ne peut être réouvert qu\'avec l\'aide de l\'administrateur!';
-$cs_lang['close_false']	= 'Fermeture annulée';
-$cs_lang['close_true']	= 'Fermeture réussie';
+$cs_lang['close_false']  = 'Fermeture annulée';
+$cs_lang['close_true']  = 'Fermeture réussie';
 
 // List
-$cs_lang['list']	= 'Liste';
-$cs_lang['female']	= 'Féminin';
-$cs_lang['male']		= 'Masculin';
-$cs_lang['place']		= 'Lieu';
+$cs_lang['list']  = 'Liste';
+$cs_lang['female']  = 'Féminin';
+$cs_lang['male']    = 'Masculin';
+$cs_lang['place']    = 'Lieu';
 
 // Options
-$cs_lang['manage_options']	= 'Administration des réglages dans le module.';
+$cs_lang['manage_options']  = 'Administration des réglages dans le module.';
 $cs_lang['pixel'] = 'Pixels';
 $cs_lang['bytes'] = 'Octets';
 $cs_lang['letters'] = 'Caractères';
@@ -192,7 +192,7 @@ $cs_lang['reg_mail'] = 'Validation de l\'E-Mail';
 $cs_lang['reg_captcha'] = 'Saisie du code de sécurité';
 
 // SendPW
-$cs_lang['sendpw_info']	= 'Saisissez votre Email. ';
+$cs_lang['sendpw_info']  = 'Saisissez votre Email. ';
 $cs_lang['sendpw_info'] .= 'Si votre mail est correcte, vous recevrez votre clef ';
 $cs_lang['sendpw_info'] .= 'pour activer le nouveau mot de passe.';
 $cs_lang['request'] = 'Demander';
@@ -213,9 +213,9 @@ $cs_lang['mail_spw_ask'] = "\n \n demande de question par Email ";
 $cs_lang['mail_spw_end'] = "\n \n Cet Email a été généré automatiquement.";
 $cs_lang['mail_spw_head'] = 'Mot de passe oublié';
 
-$cs_lang['online']	= 'Online';
-$cs_lang['all']	= 'Tous';
-$cs_lang['count_users'] 	= '%s utilisateur(s)sur cette page';
+$cs_lang['online']  = 'Online';
+$cs_lang['all']  = 'Tous';
+$cs_lang['count_users']   = '%s utilisateur(s)sur cette page';
 
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signature';

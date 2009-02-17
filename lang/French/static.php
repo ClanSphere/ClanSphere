@@ -1,16 +1,16 @@
 <?php
 
-$cs_lang['mod_name']	= 'Pages statiques';
-$cs_lang['mod_text']	= 'Administration online des pages statiques';
-$cs_lang['mod']	= 'Static';
+$cs_lang['mod_name']  = 'Pages statiques';
+$cs_lang['mod_text']  = 'Administration online des pages statiques';
+$cs_lang['mod']  = 'Static';
 $cs_lang['head_create'] = 'Enregistrer';
 $cs_lang['body_create'] = 'Les fichiers marqués d\'une étoile doivent être remplis.';
 $cs_lang['head_edit'] = 'Editer';
 $cs_lang['body_edit'] = 'Les fichiers marqués d\'une étoile doivent être remplis.';
-$cs_lang['body_com_edit']	= 'Signaler les modifications de texte.';
-$cs_lang['head_com_remove']	= 'Supprimer le commentaire';
-$cs_lang['head_remove']	= 'Supprimer';
-$cs_lang['head_com_edit']	= 'Editer le commentaire';
+$cs_lang['body_com_edit']  = 'Signaler les modifications de texte.';
+$cs_lang['head_com_remove']  = 'Supprimer le commentaire';
+$cs_lang['head_remove']  = 'Supprimer';
+$cs_lang['head_com_edit']  = 'Editer le commentaire';
 $cs_lang['title'] = 'Titre';
 $cs_lang['access'] = 'Accès';
 $cs_lang['content'] = 'Contenu';
@@ -22,8 +22,8 @@ $cs_lang['no_access'] = 'Vous n\'avez pas les privilèges pour accèder à cette pa
 $cs_lang['new_staticpage'] = 'Nouvelle page';
 $cs_lang['id'] = '#ID';
 $cs_lang['all'] = 'Alle';
-$cs_lang['del_before']	= 'Bloc de données N° ';
-$cs_lang['del_next']		= 'Voulez vous vraiment supprimer?';
+$cs_lang['del_before']  = 'Bloc de données N° ';
+$cs_lang['del_next']    = 'Voulez vous vraiment supprimer?';
 $cs_lang['no_title'] = '- Vous devez donner un titre';
 $cs_lang['edit_done'] = 'Contenu édité avec succès';
 $cs_lang['lev_0'] = 'Tous';
@@ -32,8 +32,8 @@ $cs_lang['lev_2'] = 'Utilisateur';
 $cs_lang['lev_3'] = 'Membres';
 $cs_lang['lev_4'] = 'Organisateur';
 $cs_lang['lev_5'] = 'Administrateur du site';
-$cs_lang['not_able']	= '- Commentaires non autorisés.';
-$cs_lang['place']			= 'Lieu :';
-$cs_lang['posts']			= 'Réponses :';
-$cs_lang['text']		= 'Texte';
+$cs_lang['not_able']  = '- Commentaires non autorisés.';
+$cs_lang['place']      = 'Lieu :';
+$cs_lang['posts']      = 'Réponses :';
+$cs_lang['text']    = 'Texte';
 ?>

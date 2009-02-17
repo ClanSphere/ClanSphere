@@ -2,9 +2,9 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod_name']	= 'Fightus';
-$cs_lang['mod_text']	= 'Anfragen auf Begegnungen';
-$cs_lang['mod']	= 'Fightus';
+$cs_lang['mod_name']  = 'Fightus';
+$cs_lang['mod_text']  = 'Anfragen auf Begegnungen';
+$cs_lang['mod']  = 'Fightus';
 
 $cs_lang['head_new'] = 'Anfrage';
 $cs_lang['head_view'] = 'Details';
@@ -12,7 +12,7 @@ $cs_lang['body_new'] = 'Bitte alle mit Stern (*) markierten Felder ausf&uuml;lle
 $cs_lang['new_done'] = 'Fightus erfolgreich abgesendet.';
 $cs_lang['body_view'] = 'Alle vom Anfrager eingetragenen Daten.';
 $cs_lang['convert_clan'] = 'Clan Erstellen';
-$cs_lang['convert_war']	= 'Clanwar Erstellen';
+$cs_lang['convert_war']  = 'Clanwar Erstellen';
 $cs_lang['fight_del_true'] = 'Anfrage erfolgreich entfernt';
 $cs_lang['since'] = 'Eingang';
 $cs_lang['clan'] = 'Clan';

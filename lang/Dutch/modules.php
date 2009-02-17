@@ -14,16 +14,16 @@ $cs_lang['creator'] = 'Auteur';
 $cs_lang['version'] = 'Versie';
 
 $cs_lang['mods_details'] = 'Module Details';
-$cs_lang['body_mods_view']	= 'Informatie over de extensie.';
+$cs_lang['body_mods_view']  = 'Informatie over de extensie.';
 
-$cs_lang['mod_released']		= 'Datum';
+$cs_lang['mod_released']    = 'Datum';
 $cs_lang['icons']           = 'Iconen';
 $cs_lang['extended']        = 'Uitgebreid';
 $cs_lang['jump_to_explorer']= 'Ga naar de verkenner';
 
-$cs_lang['access_files']	= 'Geregistreerde pagianas';
-$cs_lang['file_name']			= 'File';
-$cs_lang['access_from']		= 'Toegang van';
+$cs_lang['access_files']  = 'Geregistreerde pagianas';
+$cs_lang['file_name']      = 'File';
+$cs_lang['access_from']    = 'Toegang van';
 
 $cs_lang['lev_0'] = 'Gesloten';
 $cs_lang['lev_1'] = 'Lezen';

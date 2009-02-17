@@ -36,17 +36,17 @@ for($run = 0; $run < $count_att; $run++) {
   if(file_exists('uploads/board/files/' . $cs_att[$run]['boardfiles_id'] . '.' . $ext)) {
     $file_file = filesize('uploads/board/files/' . $cs_att[$run]['boardfiles_id'] . '.' . $ext);
     $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?id=' . $cs_att[$run]['boardfiles_id'],$file,1);
-	$data['attachments'][$run]['size'] = cs_filesize($file_file);
+  $data['attachments'][$run]['size'] = cs_filesize($file_file);
   }
   elseif(file_exists('uploads/board/files/' . $file)) {
     $file_file = filesize('uploads/board/files/' . $file);
     $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?name='  .$file,$file,1);
-	$data['attachments'][$run]['size'] = cs_filesize($file_file);
+  $data['attachments'][$run]['size'] = cs_filesize($file_file);
   }
   else {
     $data['attachments'][$run]['filename'] = $cs_lang['no_att_exist'];
-	$data['attachments'][$run]['size'] = cs_filesize(0);
-  }			
+  $data['attachments'][$run]['size'] = cs_filesize(0);
+  }      
 
   $headline = strlen($cs_att[$run]['threads_headline']) <= 15 ? $cs_att[$run]['threads_headline'] : substr($cs_att[$run]['threads_headline'],0,15) . '...';
   $data['attachments'][$run]['topics'] = cs_link($headline,'board','thread','where=' . $cs_att[$run]['threads_id'],0,$cs_att[$run]['threads_headline']);

@@ -49,11 +49,11 @@ $data['sort']['news_public'] = cs_sort('news','manage',$start,$categories_id,5,$
 
 for($run=0; $run<$news_loop; $run++) {
 
-	$cs_news[$run]['news_headline'] = cs_secure($cs_news[$run]['news_headline']);
+  $cs_news[$run]['news_headline'] = cs_secure($cs_news[$run]['news_headline']);
   $cs_news[$run]['url_news'] = cs_url('news','view','id=' . $cs_news[$run]['news_id']);
-	$cs_news[$run]['news_time'] = cs_date('unix',$cs_news[$run]['news_time']);
-	$public = empty($cs_news[$run]['news_public']) ? 'no' : 'yes';
-	$cs_news[$run]['news_public'] = $cs_lang[$public];
+  $cs_news[$run]['news_time'] = cs_date('unix',$cs_news[$run]['news_time']);
+  $public = empty($cs_news[$run]['news_public']) ? 'no' : 'yes';
+  $cs_news[$run]['news_public'] = $cs_lang[$public];
   $cs_news[$run]['users_nick'] = cs_secure($cs_news[$run]['users_nick']);
   $cs_news[$run]['url_user'] = cs_url('users','view','id=' . $cs_news[$run]['users_id']);
   $cs_news[$run]['url_pictures'] = cs_url('news','picture','id=' . $cs_news[$run]['news_id']);

@@ -14,12 +14,12 @@ $data['if']['preview'] = false;
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
   $data['ru']['categories_id'] = empty($_POST['categories_id']) ? cs_categories_create('rules',$_POST['categories_name']) 
-	: (int) $_POST['categories_id'];
+  : (int) $_POST['categories_id'];
 
-	$data['ru']['rules_order'] = $_POST['rules_order'];
-	$data['ru']['rules_title'] = $_POST['rules_title'];
-	$data['ru']['rules_rule'] = $_POST['rules_rule'];
-	
+  $data['ru']['rules_order'] = $_POST['rules_order'];
+  $data['ru']['rules_title'] = $_POST['rules_title'];
+  $data['ru']['rules_rule'] = $_POST['rules_rule'];
+  
   $error = 0;
   $errormsg = '';
 
@@ -40,9 +40,9 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
     $errormsg .= $cs_lang['no_rule'] . cs_html_br(1);
   }
 } else {
-	$data['ru']['rules_order'] = '';
-	$data['ru']['rules_title'] = '';
-	$data['ru']['rules_rule'] = '';
+  $data['ru']['rules_order'] = '';
+  $data['ru']['rules_title'] = '';
+  $data['ru']['rules_rule'] = '';
 }
 
 if(!isset($_POST['submit']) AND empty($error) AND !isset($_POST['preview'])) {
@@ -60,21 +60,21 @@ elseif(isset($_POST['preview'])) {
 }
 
 if(empty($error)) {
-	$data['head']['error'] = '';
+  $data['head']['error'] = '';
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$categories_id = empty($_POST['categories_id']) ? 0 : $_POST['categories_id'];
-	$data['categories']['dropdown'] = cs_categories_dropdown('rules',$categories_id);
-	$data['url']['form'] = cs_url('rules','create');
+  $categories_id = empty($_POST['categories_id']) ? 0 : $_POST['categories_id'];
+  $data['categories']['dropdown'] = cs_categories_dropdown('rules',$categories_id);
+  $data['url']['form'] = cs_url('rules','create');
 
 } else {
-	
-	$rules_cells = array_keys($data['ru']);
-	$rules_save = array_values($data['ru']);
-	cs_sql_insert(__FILE__,'rules',$rules_cells,$rules_save);
-	
+  
+  $rules_cells = array_keys($data['ru']);
+  $rules_save = array_values($data['ru']);
+  cs_sql_insert(__FILE__,'rules',$rules_cells,$rules_save);
+  
   cs_redirect($cs_lang['create_done'],'rules');
 } 
 

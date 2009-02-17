@@ -24,7 +24,7 @@ if ($shoutbox_options['order'] == 'ASC') {
 }
 else
   $order = 'shoutbox_date DESC';
-	
+  
   $cells = 'shoutbox_name, shoutbox_text, shoutbox_date';
   $data['shoutbox'] = cs_sql_select(__FILE__,'shoutbox',$cells,0,$order,$min,$shoutbox_options['limit']);
 

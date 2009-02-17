@@ -1,7 +1,7 @@
 <?php
 
-$cs_lang['mod']			= 'Contact';
-$cs_lang['mod_text']			= 'Contact';
+$cs_lang['mod']      = 'Contact';
+$cs_lang['mod_text']      = 'Contact';
 
 $cs_lang['wizard'] = 'Wizard';
 $cs_lang['task_done'] = 'Markeer als gedaan';
@@ -22,23 +22,23 @@ $cs_lang['head_archive'] = 'Archief';
 $cs_lang['body_archive'] = 'Hier kun je beantwoorde berichten terug vinden.';
 
 // mail.php
-$cs_lang['head_mail']	= 'Mail Formulier';
-$cs_lang['body_mail']	= 'Vul zoveel mogelijk velden in.';
-$cs_lang['design']	= 'Ontwerp';
-$cs_lang['email']	= 'E-Mail';
-$cs_lang['general']	= 'Algemeen';
-$cs_lang['head']	= 'Onderwerp';
-$cs_lang['help']	= 'Help';
-$cs_lang['tech']	= 'Technisch';
+$cs_lang['head_mail']  = 'Mail Formulier';
+$cs_lang['body_mail']  = 'Vul zoveel mogelijk velden in.';
+$cs_lang['design']  = 'Ontwerp';
+$cs_lang['email']  = 'E-Mail';
+$cs_lang['general']  = 'Algemeen';
+$cs_lang['head']  = 'Onderwerp';
+$cs_lang['help']  = 'Help';
+$cs_lang['tech']  = 'Technisch';
 
 // imprint.php
 $cs_lang['imprint'] = 'Imprint';
 $cs_lang['stand'] = 'Stand:';
 
 // imp_edit.php
-$cs_lang['mod_imp']	= 'Imprint';
-$cs_lang['head_edit']	= 'Bewerk';
-$cs_lang['body_edit']	= 'Vul zoveel mogelijk velden in.';
+$cs_lang['mod_imp']  = 'Imprint';
+$cs_lang['head_edit']  = 'Bewerk';
+$cs_lang['body_edit']  = 'Vul zoveel mogelijk velden in.';
 $cs_lang['error_occurred'] = 'Er heeft zich een probleem voorgedaan';
 $cs_lang['headline'] = 'Tekst';
 $cs_lang['text'] = 'Antwoord';
@@ -61,7 +61,7 @@ $cs_lang['receiver'] = 'Ontvanger';
 $cs_lang['in_response'] = 'In antwoord op je mail van %s:';
 
 // users_home.php
-$cs_lang['last_mails']		= 'Laatste E-mails';
+$cs_lang['last_mails']    = 'Laatste E-mails';
 
 // view.php
 $cs_lang['view'] = 'Bekijk';
@@ -74,14 +74,14 @@ $cs_lang['the_answer'] = 'Antwoord';
 $cs_lang['editor'] = 'Bewerker';
 
 // send.php
-$cs_lang['err_direct']		= 'U kunt dit bestand niet direct bereiken!';
-$cs_lang['icq']			= 'ICQ Nummer';
+$cs_lang['err_direct']    = 'U kunt dit bestand niet direct bereiken!';
+$cs_lang['icq']      = 'ICQ Nummer';
 $cs_lang['msn'] = 'MSN';
-$cs_lang['empty']	= 'niet ingegeven';
-$cs_lang['na']		= 'Niet beschikbaar';
-$cs_lang['all']		= 'Algemeen';
-$cs_lang['gfx']		= 'Ontwerp';
-$cs_lang['15min']	= 'U kunt maar eens in de 15 minuten een mail versturen!';
+$cs_lang['empty']  = 'niet ingegeven';
+$cs_lang['na']    = 'Niet beschikbaar';
+$cs_lang['all']    = 'Algemeen';
+$cs_lang['gfx']    = 'Ontwerp';
+$cs_lang['15min']  = 'U kunt maar eens in de 15 minuten een mail versturen!';
 $cs_lang['error_name'] = '- Naam moet ingevuld zijn.';
 $cs_lang['error_subject'] = '- Onderwerp moet ingevuld zijn.';
 $cs_lang['error_message'] = '- - Er moet tekst moet ingevoerd zijn.';

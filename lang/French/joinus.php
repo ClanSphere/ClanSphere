@@ -1,20 +1,20 @@
 <?php
-$cs_lang['mod_name']	= 'Nous rejoindre';
-$cs_lang['mod_text']	= 'Demande de membre';
-$cs_lang['mod']			= 'Nous rejoindre';
-$cs_lang['head_new']	= 'Demande';
-$cs_lang['body_new']	= 'Veuillez remplir les champs marqués d\'une étoile.';
-$cs_lang['head_manage']	= 'Administration';
-$cs_lang['new_done'] 	= 'Demande envoyée avec succès.';
-$cs_lang['last_joinus']	= 'Demande actuelle';
-$cs_lang['head_view']	= 'Détails';
-$cs_lang['body_view']	= 'Données concernant le postulant.';
-$cs_lang['head_remove']	= 'Supprimer';
-$cs_lang['head_convert']	= 'Convertir';
-$cs_lang['body_convert']	= 'Les données de demande sont utilisables dans la banque de données';
-$cs_lang['convert_user']		= 'Créer un utilisateur';
-$cs_lang['convert_member']	= 'Créer un membre';
-$cs_lang['since']	= 'Date d\'entrée';
+$cs_lang['mod_name']  = 'Nous rejoindre';
+$cs_lang['mod_text']  = 'Demande de membre';
+$cs_lang['mod']      = 'Nous rejoindre';
+$cs_lang['head_new']  = 'Demande';
+$cs_lang['body_new']  = 'Veuillez remplir les champs marqués d\'une étoile.';
+$cs_lang['head_manage']  = 'Administration';
+$cs_lang['new_done']   = 'Demande envoyée avec succès.';
+$cs_lang['last_joinus']  = 'Demande actuelle';
+$cs_lang['head_view']  = 'Détails';
+$cs_lang['body_view']  = 'Données concernant le postulant.';
+$cs_lang['head_remove']  = 'Supprimer';
+$cs_lang['head_convert']  = 'Convertir';
+$cs_lang['body_convert']  = 'Les données de demande sont utilisables dans la banque de données';
+$cs_lang['convert_user']    = 'Créer un utilisateur';
+$cs_lang['convert_member']  = 'Créer un membre';
+$cs_lang['since']  = 'Date d\'entrée';
 $cs_lang['birthday'] = 'Date de naissance';
 $cs_lang['country'] = 'Pays';
 $cs_lang['email'] = 'E-Mail';
@@ -35,15 +35,15 @@ $cs_lang['email_false'] = '- Adresse Email invalide';
 $cs_lang['no_age'] = '- Saisissez votre date de naissance';
 $cs_lang['no_date'] = '- Saisissez libre à partir de ...';
 
-$cs_lang['new_join']	= 'Nouvelle demande';
-$cs_lang['new_joinus']	= 'Nouvelle demande pour la section :';
-$cs_lang['new_joinus_text']	= 'Une demande pour la section ';
+$cs_lang['new_join']  = 'Nouvelle demande';
+$cs_lang['new_joinus']  = 'Nouvelle demande pour la section :';
+$cs_lang['new_joinus_text']  = 'Une demande pour la section ';
 $cs_lang['new_joinus_text2'] = ' vient d\'être remplie.';
 $cs_lang['new_joinus_text3'] = 'Plus de détails sous l\'administration de "rejoignez nous".';
 
-$cs_lang['age']	= 'Age';
+$cs_lang['age']  = 'Age';
 $cs_lang['convert'] = 'Convertir en membre';
-$cs_lang['del_true_join']	= 'Demande supprimée avec succès';
+$cs_lang['del_true_join']  = 'Demande supprimée avec succès';
 
 $cs_lang['short_pwd'] = 'Le mot de passe sélectioné est trop court';
 $cs_lang['password'] = 'Mot de passe';

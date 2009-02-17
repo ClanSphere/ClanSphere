@@ -30,7 +30,7 @@ if(isset($_POST['submit'])) {
 // Datenbank Daten eingeben etc.
 if(!isset($_POST['submit']) or !empty($error)) {
   $cms = empty($_GET['cms']) ? 0 : $_GET['cms'];
-	if(!empty($cms)) {
+  if(!empty($cms)) {
     $file = 'mods/converter/classes/' . $cms . '/info.php';
     if(file_exists($file)) {
       require_once($file);
@@ -38,10 +38,10 @@ if(!isset($_POST['submit']) or !empty($error)) {
       $data['head']['msg'] = 'Informationen gefunden. Import kann gestartet werden';
       $data['display']['cms_import'] = 'block';
       $data['display']['error'] = 'none';
-  	  for ($run = 0; $run < count($info['modules']); $run++) {
-		 $data['cmsmod'][$run]['lang_cmsmod'] = $cs_lang['mod_'.$info['modules'][$run]];
-		 $data['cmsmod'][$run]['modules'] = $info['modules'][$run];
-		 asort($data['cmsmod']);
+      for ($run = 0; $run < count($info['modules']); $run++) {
+     $data['cmsmod'][$run]['lang_cmsmod'] = $cs_lang['mod_'.$info['modules'][$run]];
+     $data['cmsmod'][$run]['modules'] = $info['modules'][$run];
+     asort($data['cmsmod']);
      }
      print_R($info['modules']);
     } else {

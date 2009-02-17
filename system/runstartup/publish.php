@@ -8,9 +8,9 @@ global $cs_main;
 
 if ($cs_main['mod'] == 'news') {
   
-	$filename = 'uploads/cache/news_publish.tmp';
+  $filename = 'uploads/cache/news_publish.tmp';
   
-	if (!file_exists($filename)) {
+  if (!file_exists($filename)) {
     
     $where = 'news_public = "0" AND news_publishs_at != "0"';
     $next_publish = cs_sql_select(__FILE__, 'news', 'news_publishs_at', $where, 'news_publishs_at ASC');
@@ -21,12 +21,12 @@ if ($cs_main['mod'] == 'news') {
     fclose($fp);
     
   } else {
-  	$next_publish = file_get_contents($filename);
+    $next_publish = file_get_contents($filename);
   }
   
   if ($next_publish != 0 && cs_time() > $next_publish) {
     
-  	$cond = 'news_publishs_at != "0" AND news_public = "0" AND news_publishs_at < "' . cs_time() . '"';
+    $cond = 'news_publishs_at != "0" AND news_public = "0" AND news_publishs_at < "' . cs_time() . '"';
     $publish = cs_sql_select(__FILE__,'news','news_id, news_publishs_at, news_public', $cond,0,0,0);
     
     if (!empty($publish)) {

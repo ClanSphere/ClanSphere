@@ -7,15 +7,15 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Acceso';
-$cs_lang['mod_text']	= 'Distribución de Acceso escalonada';
-$cs_lang['mod']	= 'Acceso';
-$cs_lang['head_create']	= 'Inscribir';
-$cs_lang['body_create']	= 'Aqui puede editar nuevas clases de Acceso';
-$cs_lang['head_remove']	= 'Remover';
-$cs_lang['head_edit']	= 'Editar';
-$cs_lang['body_edit']	= 'Tenga cuidado con las Editaciones del acceso';
-$cs_lang['head_manage']	= 'Administración';
+$cs_lang['mod_name']  = 'Acceso';
+$cs_lang['mod_text']  = 'Distribución de Acceso escalonada';
+$cs_lang['mod']  = 'Acceso';
+$cs_lang['head_create']  = 'Inscribir';
+$cs_lang['body_create']  = 'Aqui puede editar nuevas clases de Acceso';
+$cs_lang['head_remove']  = 'Remover';
+$cs_lang['head_edit']  = 'Editar';
+$cs_lang['body_edit']  = 'Tenga cuidado con las Editaciones del acceso';
+$cs_lang['head_manage']  = 'Administración';
 $cs_lang['new_access'] = 'Nuevo Acceso';
 $cs_lang['access'] = 'Acceso';
 $cs_lang['head_view'] = 'Mostrar';
@@ -33,6 +33,6 @@ $cs_lang['clansphere_0'] = 'Basica';
 $cs_lang['clansphere_3'] = 'Administración';
 $cs_lang['clansphere_4'] = 'Sistema';
 $cs_lang['clansphere_5'] = 'Administrador de la Página';
-$cs_lang['del_error']	= 'Las Clases-Basicas no se pueden Remover';
+$cs_lang['del_error']  = 'Las Clases-Basicas no se pueden Remover';
 
 ?>

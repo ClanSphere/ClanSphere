@@ -2,6 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
+$bla = $_GET['abc'];
+
+$bla2 = cs_sql_select(__FILE__,'table','select',"abc = '" . $bla . '"',0,0,0);
+
+
 $cs_lang = cs_translate('abcode');
 
 $op_abcode = cs_sql_option(__FILE__,'abcode');
@@ -35,12 +40,12 @@ if(isset($_POST['submit'])) {
       $message .= $cs_lang['too_wide'] . cs_html_br(1);
       $error++;
     }
-	
+  
     if($img_size[1]>$op_abcode['max_height']) { 
       $message .= $cs_lang['too_high'] . cs_html_br(1);
       $error++;
     }
-	
+  
     if($files['picture']['size']>$op_abcode['max_size']) { 
       $message .= $cs_lang['too_big'] . cs_html_br(1);
       $error++;
@@ -119,16 +124,16 @@ else {
   cs_sql_insert(__FILE__,'abcode',$abcode_cells,$abcode_save);
 
   if(!empty($files['picture']['tmp_name'])) {
-  	$where = "abcode_pattern = '" . cs_sql_escape($cs_abcode['abcode_pattern']) . "'";
-  	$getid = cs_sql_select(__FILE__,'abcode','abcode_id',$where);
+    $where = "abcode_pattern = '" . cs_sql_escape($cs_abcode['abcode_pattern']) . "'";
+    $getid = cs_sql_select(__FILE__,'abcode','abcode_id',$where);
     $filename = 'picture-' . $getid['abcode_id'] . '.' . $extension;
-  	cs_upload('abcode',$filename,$files['picture']['tmp_name']);
-		
+    cs_upload('abcode',$filename,$files['picture']['tmp_name']);
+    
     $cs_abcode2['abcode_file'] = $filename;
     $abcode2_cells = array_keys($cs_abcode2);
-    $abcode2_save = array_values($cs_abcode2);			
+    $abcode2_save = array_values($cs_abcode2);      
     cs_sql_update(__FILE__,'abcode',$abcode2_cells,$abcode2_save,$getid['abcode_id']);
-  }	
+  }  
   cs_redirect($cs_lang['create_done'],'abcode');
 }
 ?>

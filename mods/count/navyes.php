@@ -7,7 +7,7 @@ $tmonth = cs_datereal('n');
 $tyear = cs_datereal('Y');
 $var = mktime(0,0,0,$tmonth,$tday,$tyear);
 $var = $var - $account['users_timezone'];
-$daystart = empty($account['users_dstime']) ?	$var : $var - 3600;
+$daystart = empty($account['users_dstime']) ?  $var : $var - 3600;
 
 $yes_start = $daystart - 86400;
 $yes_stop = $daystart - 1;

@@ -15,11 +15,11 @@ $cs_lang['delatt'] = 'Remover Archivo Incluido';
 
 //active.php 
 $cs_lang['files'] = 'Archivos Incluidos';
-$cs_lang['mod']	= 'Foro';
+$cs_lang['mod']  = 'Foro';
 $cs_lang['modtext'] = 'Crear y Administrar Temas actuales del Foro';
-$cs_lang['head_active']	= 'Temas activos';
-$cs_lang['active']	= 'Temas activos';
-$cs_lang['body_active']	= 'Lista de Temas con muchos Hits';
+$cs_lang['head_active']  = 'Temas activos';
+$cs_lang['active']  = 'Temas activos';
+$cs_lang['body_active']  = 'Lista de Temas con muchos Hits';
 
 $cs_lang['hits'] = 'Hits';
 $cs_lang['thread'] = 'Tema';
@@ -44,69 +44,69 @@ $cs_lang['enterprise'] = 'Firma';
 $cs_lang['class'] = 'Clase';
 
 $cs_lang['head_center'] = 'Centro del Usuario';
-$cs_lang['body_picture']	= 'Aui se puede editar la Imagen del Foro';
+$cs_lang['body_picture']  = 'Aui se puede editar la Imagen del Foro';
 
 $cs_lang['abos'] = 'Abones'; 
 $cs_lang['overall'] = 'Lista';
 $cs_lang['avatar'] = 'Imagen del Foro';
 $cs_lang['signature'] = 'Signatura';
 
-$cs_lang['remove_done']	= 'Ha sido Removida la Imagen del Foro';
+$cs_lang['remove_done']  = 'Ha sido Removida la Imagen del Foro';
 
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['max_width'] = 'Anchura Maximal : ';
 $cs_lang['max_height'] = 'Altura Maximal : ';
 $cs_lang['filetypes'] = 'Tipos de Datos';
 
-$cs_lang['too_big']	= '- El Archivo es muy grande ';
-$cs_lang['too_wide']	= '- La imagen del Foro es muy ancha';
-$cs_lang['too_high']	= '- La imagen del Foro es muy alta';
-$cs_lang['ext_error']	= '- Se ha usado un Formado de archivos no Permitido';
+$cs_lang['too_big']  = '- El Archivo es muy grande ';
+$cs_lang['too_wide']  = '- La imagen del Foro es muy ancha';
+$cs_lang['too_high']  = '- La imagen del Foro es muy alta';
+$cs_lang['ext_error']  = '- Se ha usado un Formado de archivos no Permitido';
 $cs_lang['up_error'] = '- A ocurrido un error desonocido, po Favor contacte el Administrador de la Pagina';
 $cs_lang['nopic'] = 'No existe Imagen del Foro';
-$cs_lang['current']	= 'Actual';
-$cs_lang['more']	= 'Avanzado';
-$cs_lang['glob_sig']	= 'Signatura Global';
-$cs_lang['glob_sig1']	= 'Opciones que se pueden escribir en el Texto de la Signatura : {post_nick} und {post_date}';
+$cs_lang['current']  = 'Actual';
+$cs_lang['more']  = 'Avanzado';
+$cs_lang['glob_sig']  = 'Signatura Global';
+$cs_lang['glob_sig1']  = 'Opciones que se pueden escribir en el Texto de la Signatura : {post_nick} und {post_date}';
 
 //center.php
 
-$cs_lang['cat']	= 'Categoria';
-$cs_lang['board']	= 'Foro';
-$cs_lang['rank']	= 'Rango del Foro';
-$cs_lang['stats']	= 'Estadística';
-$cs_lang['com']	= 'Aportaciones del Foro';
+$cs_lang['cat']  = 'Categoria';
+$cs_lang['board']  = 'Foro';
+$cs_lang['rank']  = 'Rango del Foro';
+$cs_lang['stats']  = 'Estadística';
+$cs_lang['com']  = 'Aportaciones del Foro';
 
 $cs_lang['last_com']    = 'Las ultimas %s Aportaciones';
-$cs_lang['last_thr']	= 'Los ultimos %s Temas';
+$cs_lang['last_thr']  = 'Los ultimos %s Temas';
 
 //com_create.php
-$cs_lang['not_able']	= '- Comentarios estan Bloqueados';
+$cs_lang['not_able']  = '- Comentarios estan Bloqueados';
 
 $cs_lang['text_to_long'] = '- El Texto contiene';
 $cs_lang['text_to_long_2'] = ' Letras. Son ';
 $cs_lang['text_to_long_3'] = ' Letras de mas!';
 $cs_lang['indi'] = 'Letras';
 
-$cs_lang['place']			= 'Lugar :';
+$cs_lang['place']      = 'Lugar :';
 $cs_lang['text'] = 'Texto';
 
 $cs_lang['error_subheader'] =  'A ocurrido un error';
 $cs_lang['error_back'] = 'Atras';
 
 //com_edit.php
-$cs_lang['mod1']	= 'Tema';
-$cs_lang['head_com_edit']	= 'Editar Respuesta';
-$cs_lang['body_com_edit']	= 'Por favor Informe sobre editaciones del Texto';
+$cs_lang['mod1']  = 'Tema';
+$cs_lang['head_com_edit']  = 'Editar Respuesta';
+$cs_lang['body_com_edit']  = 'Por favor Informe sobre editaciones del Texto';
 
-$cs_lang['low_axx']	= '- No tiene al acceso necesitado';
+$cs_lang['low_axx']  = '- No tiene al acceso necesitado';
 $cs_lang['com_edit_errortext'] = 'La Respuesta que quiere editar no existe o usted no tiene Acceso para editarla';
 
 //com_remove.php
-$cs_lang['head_com_remove']	= 'Remover respuesta';
+$cs_lang['head_com_remove']  = 'Remover respuesta';
 $cs_lang['com_remove_errortext'] = 'La Respuesta que quiere remover no existe o usted no tiene Acceso para removerla';
 //create.php
-$cs_lang['rss_info']	= 'Noticias Actuales';
+$cs_lang['rss_info']  = 'Noticias Actuales';
 
 $cs_lang['no_cat'] = '- Debe de elegir una categoria';
 $cs_lang['no_name'] = '- Tiene que apuntar un Nombre ';
@@ -127,8 +127,8 @@ $cs_lang['lev_4'] = 'con Editar';
 $cs_lang['lev_5'] = 'con Remover'; 
 
 //del_abo.php
-$cs_lang['mod2']	= 'Abono';
-$cs_lang['head_delabo']	= 'Remover';
+$cs_lang['mod2']  = 'Abono';
+$cs_lang['head_delabo']  = 'Remover';
 
 //edit.php
 $cs_lang['head_edit'] = 'Editar';
@@ -140,7 +140,7 @@ $cs_lang['password_no'] = ' Crear Contrase&ntilde;a';
 $cs_lang['password2'] = 'Opcional, si lo deja vacio, queda la Contrase&ntilde;a vieja';
 
 //list.php
-$cs_lang['head_list']	= 'Lista';
+$cs_lang['head_list']  = 'Lista';
 $cs_lang['new'] = 'Temas Nuevos';
 $cs_lang['search'] = 'Busqueda';
 $cs_lang['mark_all'] = 'Marcar leidos todos los Temas';
@@ -153,7 +153,7 @@ $cs_lang['board_stats'] = 'Estadistica del Foro';
 $cs_lang['threads_and'] = 'Temas y';
 
 //nav_list.php
-$cs_lang['no_new_posts']	= 'No existen nuevas aportaciónes';
+$cs_lang['no_new_posts']  = 'No existen nuevas aportaciónes';
 
 //listabo.php
 $cs_lang['created_by'] = 'Creado por';
@@ -190,8 +190,8 @@ $cs_lang['move'] = 'Desplazar a...';
 $cs_lang['nosig'] = 'No ha creado la Signatura';
 
 //new.php
-$cs_lang['head_new']	= 'Temas Nuevos';
-$cs_lang['body_new']	= 'Lista de Temas nuevos sin Respuestas';
+$cs_lang['head_new']  = 'Temas Nuevos';
+$cs_lang['body_new']  = 'Lista de Temas nuevos sin Respuestas';
 
 
 //options.php
@@ -235,8 +235,8 @@ $cs_lang['reportdone'] = 'Ocuparse del Aviso';
 $cs_lang['done_true'] = 'Operacion inscrita como Terminada';
 
 //search.php
-$cs_lang['head_search']	= 'Busqueda';
-$cs_lang['body_search']	= '"Contiene todos las Palabras" usar para Busqueda, ignora Palabras muy cortas';
+$cs_lang['head_search']  = 'Busqueda';
+$cs_lang['body_search']  = '"Contiene todos las Palabras" usar para Busqueda, ignora Palabras muy cortas';
 
 $cs_lang['keywords'] = 'Palabras de Busqueda';
 $cs_lang['searchmode'] = 'Busqueda';
@@ -268,11 +268,11 @@ $cs_lang['up'] = 'Arriba';
 $cs_lang['down'] = 'Abajo';
 
 //thread.php
-$cs_lang['theme']	= 'Tema';
-$cs_lang['posts']	= 'Aportaciones';
-$cs_lang['place']	= 'Lugar'; 
-$cs_lang['answers']	= 'Respuestas'; 
-$cs_lang['answer']	= 'Responder';
+$cs_lang['theme']  = 'Tema';
+$cs_lang['posts']  = 'Aportaciones';
+$cs_lang['place']  = 'Lugar'; 
+$cs_lang['answers']  = 'Respuestas'; 
+$cs_lang['answer']  = 'Responder';
 $cs_lang['head_thread'] = 'Tema';
 $cs_lang['boardmod'] = 'Moderador';
 $cs_lang['quote']       = 'Citar';
@@ -287,13 +287,13 @@ $cs_lang['overall_edit'] = 'Editado';
 
 $cs_lang['modpanel'] = 'Moderacion';
 
-$cs_lang['adv_com']	= 'Respuesta Avanzada';
-$cs_lang['comment']	= 'Respuesta';
+$cs_lang['adv_com']  = 'Respuesta Avanzada';
+$cs_lang['comment']  = 'Respuesta';
 
 $cs_lang['error_header'] = 'Pagina no existe o acceso bajo';
 $cs_lang['thread_errortext'] = 'El Tema que quiere ver no existe o usted no tiene Acceso para verlo';
 
-$cs_lang['need_user']	= 'Tiene que Registrarse para Responder';
+$cs_lang['need_user']  = 'Tiene que Registrarse para Responder';
 $cs_lang['already_abo'] = 'Tema ya esta Abonado';
 $cs_lang['wait_after_comment'] = 'Podra Responder de nuevo dentro de %s dias';
 
@@ -312,23 +312,23 @@ $cs_lang['thread_closed1'] = 'Este Tema esta Cerrado.';
 $cs_lang['thread_closed2'] = 'El Tema ha sido cerrado por %s.';
 
 //thread_add.php
-$cs_lang['head']	= 'Crear Tema';
+$cs_lang['head']  = 'Crear Tema';
 $cs_lang['body_create'] =  'Por favor rellene las casillas con *';
 $cs_lang['error_occurred'] = 'No han sido rellenadas todas las casillas necesitadas';
 $cs_lang['error_count'] = 'casillas necesitadas faltan';
 
-$cs_lang['headline']	= 'Cabezera';
+$cs_lang['headline']  = 'Cabezera';
 
-$cs_lang['place']	= 'Procedencia'; 
+$cs_lang['place']  = 'Procedencia'; 
 
 $cs_lang['thread_add_errortext'] = 'El foro al que quiere desplazar el tema no existe o usted no tiene acceso a el';
 
-$cs_lang['options+']		= 'Extras';
-$cs_lang['votes'] 			= 'Votar';
-$cs_lang['votes_end'] 		= 'Termina';
-$cs_lang['votes_access'] 	= 'Acceso';
-$cs_lang['votes_question'] 	= 'Pregunta';
-$cs_lang['votes_election'] 	= 'Respuesta';
+$cs_lang['options+']    = 'Extras';
+$cs_lang['votes']       = 'Votar';
+$cs_lang['votes_end']     = 'Termina';
+$cs_lang['votes_access']   = 'Acceso';
+$cs_lang['votes_question']   = 'Pregunta';
+$cs_lang['votes_election']   = 'Respuesta';
 
 $cs_lang['election+'] = 'A&ntilde;adir Respuesta';
 $cs_lang['vote_create'] = 'A&ntilde;adir Vote';
@@ -348,10 +348,10 @@ $cs_lang['error_filetype'] = '- Se ha usado un Formado de archivos no Permitido'
 $cs_lang['error_fileupload'] = '- Error Desconocido, por Favor contacte el Administrador de la Pagina';
 
 //thread_edit.php
-$cs_lang['thread_edit']	= 'Editar Tema';
+$cs_lang['thread_edit']  = 'Editar Tema';
 $cs_lang['body_edit'] =  'Por favor rellene las casillas con *';
 
-$cs_lang['editbutton']	= 'Editar';
+$cs_lang['editbutton']  = 'Editar';
 
 $cs_lang['thread_edit_errortext'] = 'El Tema que quiere ver no existe o usted no tiene acceso a el';
 $cs_lang['file_del'] = 'Carga es removida!';
@@ -360,11 +360,11 @@ $cs_lang['file_del'] = 'Carga es removida!';
 $cs_lang['thread_remove_errortext'] = 'El Tema que quiere remover no existe o usted no tiene acceso a el';
 
 //users.php
-$cs_lang['head_users']	= 'Usuario';
-$cs_lang['body_users']	= 'Estadistica del Foro de %s';
+$cs_lang['head_users']  = 'Usuario';
+$cs_lang['body_users']  = 'Estadistica del Foro de %s';
 
 //users_home.php
-$cs_lang['last_threads']	= 'Actual en el Foro';
+$cs_lang['last_threads']  = 'Actual en el Foro';
 
 $cs_lang['send_message'] = 'Enviar Mensaje';
 $cs_lang['send_mail'] = 'enviar eMail';

@@ -64,29 +64,29 @@ class mohaa
     function splitdata($stream)
     {
         $cut = strpos($stream, "player_");
-	$p_info = substr($stream, $cut);
-        $this->p_info = explode("\\", $p_info);	
+  $p_info = substr($stream, $cut);
+        $this->p_info = explode("\\", $p_info);  
         $this->g_info = explode("\\", $stream);
     }
 
     function connect()
     {
         if (($this->socket = fsockopen('udp://'. $this->host, $this->port, $errno, $errstr, 30)))
-	{
-	    return true;
-	}
-	
-	return false;
+  {
+      return true;
+  }
+  
+  return false;
     }
 
     function disconnect()
     {
         if ((fclose($this->socket)))
-	{
-	    return true;
-	}
+  {
+      return true;
+  }
 
-	return false;
+  return false;
     }
 
     function get_info()
@@ -94,14 +94,14 @@ class mohaa
         $write = "\\info\\";
         $stream = $this->get_status($write);
         
-	return $stream;
+  return $stream;
     }
     function get_rules()
     {
         $write = "\\status\\";
-	$stream = $this->get_status($write);
+  $stream = $this->get_status($write);
 
-	return $stream;
+  return $stream;
     }
 
     function get_players()
@@ -110,27 +110,27 @@ class mohaa
         $write = "\\players\\";
         $stream = $this->get_status($write);
         
-	return $stream;
+  return $stream;
     }
 
     function get_queryid($stream)
     {
         $cut = strpos($stream, "queryid\\");
-	$cache = substr($stream, $cut + 8);
-	
-	return $cache;
+  $cache = substr($stream, $cut + 8);
+  
+  return $cache;
     }
 
     function rm_queryid($stream)
     {
         $end = strpos($stream, "final\\");
-	if ($end == false)
-	{
+  if ($end == false)
+  {
             $end = strpos($stream, "queryid\\");
-	}
-	$cache = substr($stream, 0, $end);
+  }
+  $cache = substr($stream, 0, $end);
 
-	return $cache;
+  return $cache;
     }
     
     function get_status($write)
@@ -138,127 +138,127 @@ class mohaa
         $packets = array();
 
         $ready   = false;
-	$timeout = false;
-	
-	$packets[0] = false;
-	$packets[1] = false;
-	$packets[2] = false;
-	$packets[3] = false;
-	$packets[4] = false;
-	
-	$info = '';
-	$cache = '';
-	$finalid = 0;
-	
+  $timeout = false;
+  
+  $packets[0] = false;
+  $packets[1] = false;
+  $packets[2] = false;
+  $packets[3] = false;
+  $packets[4] = false;
+  
+  $info = '';
+  $cache = '';
+  $finalid = 0;
+  
         if ($this->connect() === false)
-	{
-	    return false;
-	}
-	
+  {
+      return false;
+  }
+  
         socket_set_timeout($this->socket, 1);
 
         $time_begin = microtime();
 
         fwrite($this->socket, $write);
 
-	while ($ready == false && $timeout == false)
-	{
+  while ($ready == false && $timeout == false)
+  {
             $first = fread($this->socket, 1);
-	    $this->response = microtime() - $time_begin;
-	    
+      $this->response = microtime() - $time_begin;
+      
             $status = socket_get_status($this->socket);
             $length = $status['unread_bytes'];
             
-	    if ($length > 0)
+      if ($length > 0)
             {
                 $cache = fread($this->socket, $length);
             }
-	    
-	    $id = $this->get_queryid($cache);
+      
+      $id = $this->get_queryid($cache);
 
-	    if (stristr($cache, "\\final\\") && substr($id, -1, 1) == 1)
-	    {
-	        $packets[0] = $cache;
+      if (stristr($cache, "\\final\\") && substr($id, -1, 1) == 1)
+      {
+          $packets[0] = $cache;
                 
-		$ready = true;
-	    }
-	    elseif (stristr($cache, "\\final\\") && substr($id, -1, 1) > 1)
-	    {
-	        $finalid = substr($id, -1, 1);
-	        $packets[4] = $cache;
+    $ready = true;
+      }
+      elseif (stristr($cache, "\\final\\") && substr($id, -1, 1) > 1)
+      {
+          $finalid = substr($id, -1, 1);
+          $packets[4] = $cache;
                 
-		$ready = false;
-	    }
-	    elseif ($finalid > 0)
-	    {
-		$packets[substr($id, -1, 1)] = $cache;
-		
-		if (count($packets) == $finalid)
-		{
-		    $ready = true;
-		}
-		else
-		{
-		    $ready = false;
-		}
-	    }
-	    else
-	    {
-	        $packets[substr($id, -1, 1)] = $cache;
-		
+    $ready = false;
+      }
+      elseif ($finalid > 0)
+      {
+    $packets[substr($id, -1, 1)] = $cache;
+    
+    if (count($packets) == $finalid)
+    {
+        $ready = true;
+    }
+    else
+    {
+        $ready = false;
+    }
+      }
+      else
+      {
+          $packets[substr($id, -1, 1)] = $cache;
+    
                 $ready = false;
-	    }
+      }
 
-	    if ($status['timed_out'] == true)
-	    {
-	        $timeout = true;
-	    }
+      if ($status['timed_out'] == true)
+      {
+          $timeout = true;
+      }
         }
-		
+    
         $info  = $this->rm_queryid($packets[0]);
-	$info .= $this->rm_queryid($packets[1]);
-	$info .= $this->rm_queryid($packets[2]);
-	$info .= $this->rm_queryid($packets[3]);
-	$info .= $this->rm_queryid($packets[4]);
+  $info .= $this->rm_queryid($packets[1]);
+  $info .= $this->rm_queryid($packets[2]);
+  $info .= $this->rm_queryid($packets[3]);
+  $info .= $this->rm_queryid($packets[4]);
 
-	// response time
-	$this->response = ($this->response * 1000);
-	$this->response = (int)$this->response;
+  // response time
+  $this->response = ($this->response * 1000);
+  $this->response = (int)$this->response;
         
-	if ($this->disconnect() === false)
-	{
-	    return false;
-	}
+  if ($this->disconnect() === false)
+  {
+      return false;
+  }
 
-	return $info;
+  return $info;
     }
 
     function getstream($host, $port, $queryport)
     {   
         if (empty($queryport))
-	{
-	    $this->port = 12300;
-	}
-	else
-	{
-	    $this->port = $queryport;
-	}
+  {
+      $this->port = 12300;
+  }
+  else
+  {
+      $this->port = $queryport;
+  }
 
-	$this->host = $host;
+  $this->host = $host;
 
         // get the infostream from server
-	$this->r_info = $this->get_rules();
-	
-	if ($this->r_info)
-	{
-	    $this->splitdata($this->r_info);
-	    
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+  $this->r_info = $this->get_rules();
+  
+  if ($this->r_info)
+  {
+      $this->splitdata($this->r_info);
+      
+      return true;
+  }
+  else
+  {
+      return false;
+  }
     }
 
     function check_color($text)
@@ -304,49 +304,49 @@ class mohaa
     
     function getrules($phgdir)
     {
-	$srv_rules['sets'] = false;
-	
+  $srv_rules['sets'] = false;
+  
         // response time
-	$srv_rules['response'] = $this->response . ' ms';
-	
+  $srv_rules['response'] = $this->response . ' ms';
+  
         // ut setting pics
-	$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+  $sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
         
-	// get the info strings from server info stream
-	$srv_rules['hostname']     = $this->getvalue('hostname',   $this->g_info);
-	$srv_rules['gametype']     = $this->getvalue('gametype',   $this->g_info);
-	$srv_rules['gamename']     = $this->getvalue('gamename',   $this->g_info);
-	$srv_rules['mapname']      = $this->getvalue('mapname',    $this->g_info);
-	$srv_rules['maxplayers']   = $this->getvalue('maxplayers', $this->g_info);
-	$srv_rules['version']      = $this->getvalue('gamever',    $this->g_info);
-	$srv_rules['needpass']     = $this->getvalue('password',   $this->g_info);
+  // get the info strings from server info stream
+  $srv_rules['hostname']     = $this->getvalue('hostname',   $this->g_info);
+  $srv_rules['gametype']     = $this->getvalue('gametype',   $this->g_info);
+  $srv_rules['gamename']     = $this->getvalue('gamename',   $this->g_info);
+  $srv_rules['mapname']      = $this->getvalue('mapname',    $this->g_info);
+  $srv_rules['maxplayers']   = $this->getvalue('maxplayers', $this->g_info);
+  $srv_rules['version']      = $this->getvalue('gamever',    $this->g_info);
+  $srv_rules['needpass']     = $this->getvalue('password',   $this->g_info);
         
-	// path to map picture and default info picture
-	$srv_rules['map_path'] = 'maps/mohaa';
-	$srv_rules['map_default'] = 'default.jpg';
-	
-	// get the connected player
-	$srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
+  // path to map picture and default info picture
+  $srv_rules['map_path'] = 'maps/mohaa';
+  $srv_rules['map_default'] = 'default.jpg';
+  
+  // get the connected player
+  $srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
         
-	// complete the gamename
-	$srv_rules['gamename'] = 'Medal Of Honor ' . $srv_rules['version'] .
-	'<br>(' . $srv_rules['gamename'] . ")";
-	
-	// server privileges
-	if ($srv_rules['needpass'] == 'True')
-	{
-	    $srv_rules['sets'] .= $sets['pass'];
-	}
-	
-	if ($srv_rules['sets'] === false)
-	{
+  // complete the gamename
+  $srv_rules['gamename'] = 'Medal Of Honor ' . $srv_rules['version'] .
+  '<br>(' . $srv_rules['gamename'] . ")";
+  
+  // server privileges
+  if ($srv_rules['needpass'] == 'True')
+  {
+      $srv_rules['sets'] .= $sets['pass'];
+  }
+  
+  if ($srv_rules['sets'] === false)
+  {
             $srv_rules['sets'] = '-';
-	}
-	
+  }
+  
        // General server Info
         global $cs_lang;
         $srv_rules['htmlinfo'] = cs_html_roco(1,'rightb',0,0,'50%') . $cs_lang['map:'];
-		$srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
+    $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['players'];
         $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['response'];
@@ -368,16 +368,16 @@ class mohaa
         $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['privileges'];
         $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['sets'] . cs_html_roco(0);
         
-	// return all server rules
-	return $srv_rules;	    
+  // return all server rules
+  return $srv_rules;      
     }
     
     function getplayers()
     {
         $players = array();
 
-	// set html thead for playerlist without teams
-	global $cs_lang;
+  // set html thead for playerlist without teams
+  global $cs_lang;
     $thead = cs_html_roco(1,'headb');
     $thead .= cs_html_div(1,'text-align:center');
     $thead .= $cs_lang['rank'];
@@ -395,91 +395,91 @@ class mohaa
     $thead .= $cs_lang['ping'];
     $thead .= cs_html_div(0);
     $thead .= cs_html_roco(0);
-	
+  
         // how many players must search
         $nowplayers = $this->getvalue('numplayers', $this->g_info);
         
-	$clients = 0; 
-	$index = 1;
+  $clients = 0; 
+  $index = 1;
         
-	// get the data of each player and add the team status
+  // get the data of each player and add the team status
         while ($nowplayers != 0)
         {
-	    $pl = $this->p_info[$index];
-	    $index = $index + 2;
-	    
-	    $pl_frags  = $this->p_info[$index];
-	    $index = $index + 2;
-	    
-	    $pl_deaths = $this->p_info[$index];
-	    $index = $index + 2;
-	    
-	    $pl_ping   = $this->p_info[$index];
-	    $index = $index + 2;
+      $pl = $this->p_info[$index];
+      $index = $index + 2;
+      
+      $pl_frags  = $this->p_info[$index];
+      $index = $index + 2;
+      
+      $pl_deaths = $this->p_info[$index];
+      $index = $index + 2;
+      
+      $pl_ping   = $this->p_info[$index];
+      $index = $index + 2;
 
-	    /* mohaa gamespy multiple packages are buggy:
-	     * only 2 cuts, not more
-	     * not all player data available on
+      /* mohaa gamespy multiple packages are buggy:
+       * only 2 cuts, not more
+       * not all player data available on
              * very big servers
-	     *
-	     * here we wait for loose data and leave: */
-	    if ($pl_ping != false  && $pl != false)
-	    {
-	        $players[$clients] =
-		$pl_frags  . ' ' .
-		$pl_deaths . ' ' .
-		$pl_ping   . ' ' .
-		"\"$pl\"";
-	    }
-	    else
-	    {
-	        $nowplayers = 1;
-	        $clients = $clients - 1;
-	    }
-	   		
-	    $nowplayers--;
-	    $clients++;
+       *
+       * here we wait for loose data and leave: */
+      if ($pl_ping != false  && $pl != false)
+      {
+          $players[$clients] =
+    $pl_frags  . ' ' .
+    $pl_deaths . ' ' .
+    $pl_ping   . ' ' .
+    "\"$pl\"";
+      }
+      else
+      {
+          $nowplayers = 1;
+          $clients = $clients - 1;
+      }
+         
+      $nowplayers--;
+      $clients++;
         }
         
-	// check the connected players and sort the ranking
-	if ($players == false)
-	{
-	     $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
+  // check the connected players and sort the ranking
+  if ($players == false)
+  {
+       $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0) . cs_html_roco(0);
-	}
-	else
-	{
-	    sort($players, SORT_NUMERIC);
-	}
+  }
+  else
+  {
+      sort($players, SORT_NUMERIC);
+  }
 
-	// store the html table line to the info array
-	$srv_player = $thead;
+  // store the html table line to the info array
+  $srv_player = $thead;
         
-	// manage the player data in the following code
-	$index = 1;
-	$clients = $clients - 1;
-	
-	while ($clients != -1)
-	{   
-	     list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
-	     list ($frags[$index],
-		   $deaths[$index],
-		   $ping[$index])  = split (' ',  $cache[$index]);
+  // manage the player data in the following code
+  $index = 1;
+  $clients = $clients - 1;
+  
+  while ($clients != -1)
+  {   
+       list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
+       list ($frags[$index],
+       $deaths[$index],
+       $ping[$index])  = split (' ',  $cache[$index]);
 
-	     $player[$index] = htmlentities($player[$index]);
-	     $ping[$index]   = $this->check_color($ping[$index]);
-	     
+       $player[$index] = htmlentities($player[$index]);
+       $ping[$index]   = $this->check_color($ping[$index]);
+       
            $tdata = cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . $index . cs_html_div(0);
             $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . $player[$index] . cs_html_div(0);
             $tdata .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . $frags[$index] . cs_html_div(0);
             $tdata .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . $ping[$index] . cs_html_div(0) . cs_html_roco(0);
-	                  
-	     $srv_player = $srv_player . $tdata;
-	     $index++;
-	     $clients--;
-	}
+                    
+       $srv_player = $srv_player . $tdata;
+       $index++;
+       $clients--;
+  }
 
         return $srv_player;
     }

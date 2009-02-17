@@ -34,13 +34,13 @@ $linkus_loop = count($data['linkus']);
 
 for($run=0; $run<$linkus_loop; $run++) {
 
-	$data['linkus'][$run]['name'] = cs_secure($data['linkus'][$run]['linkus_name']);
-	$data['linkus'][$run]['banner'] = cs_secure($data['linkus'][$run]['linkus_banner']);
-	
-	$place = 'uploads/linkus/' .$data['linkus'][$run]['linkus_banner'];
-	$mass = getimagesize($place);
-	$data['linkus'][$run]['mass'] = cs_secure($mass[0] .' x '. $mass[1]);
-	$data['linkus'][$run]['id'] = $data['linkus'][$run]['linkus_id'];
+  $data['linkus'][$run]['name'] = cs_secure($data['linkus'][$run]['linkus_name']);
+  $data['linkus'][$run]['banner'] = cs_secure($data['linkus'][$run]['linkus_banner']);
+  
+  $place = 'uploads/linkus/' .$data['linkus'][$run]['linkus_banner'];
+  $mass = getimagesize($place);
+  $data['linkus'][$run]['mass'] = cs_secure($mass[0] .' x '. $mass[1]);
+  $data['linkus'][$run]['id'] = $data['linkus'][$run]['linkus_id'];
 
 }
 

@@ -39,12 +39,12 @@ if(isset($_POST['submit'])) {
     $message .= $cs_lang['too_wide'] . cs_html_br(1);
     $error++;
   }
-	
+  
   if($img_size[1]>$op_clans['max_height']) { 
     $message .= $cs_lang['too_high'] . cs_html_br(1);
     $error++;
   }
-	
+  
   if($_FILES['picture']['size']>$op_clans['max_size']) { 
     $message .= $cs_lang['too_big'] . cs_html_br(1);
     $error++;
@@ -83,11 +83,11 @@ else {
     $fightus_where = "fightus_id = '" . cs_sql_escape($_GET['fightus']) . "'";
     $cs_fightus = cs_sql_select(__FILE__,'fightus','*',$fightus_where);
     
-	if(!empty($cs_fightus)) {
-	  $cs_clans['clans_name'] = $cs_fightus['fightus_clan'];
-	  $cs_clans['clans_short'] = $cs_fightus['fightus_short'];
-	  $cs_clans['clans_country'] = $cs_fightus['fightus_country'];
-	  $cs_clans['clans_url'] = $cs_fightus['fightus_url'];
+  if(!empty($cs_fightus)) {
+    $cs_clans['clans_name'] = $cs_fightus['fightus_clan'];
+    $cs_clans['clans_short'] = $cs_fightus['fightus_short'];
+    $cs_clans['clans_country'] = $cs_fightus['fightus_country'];
+    $cs_clans['clans_url'] = $cs_fightus['fightus_url'];
     }
   }
 }
@@ -148,17 +148,17 @@ else {
   cs_sql_insert(__FILE__,'clans',$clans_cells,$clans_save);
 
   if(!empty($_FILES['picture']['tmp_name'])) {
-  	$where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
-  	$getid = cs_sql_select(__FILE__,'clans','clans_id',$where);
-	$filename = 'picture-' . $getid['clans_id'] . '.' . $extension;
-  	cs_upload('clans',$filename,$_FILES['picture']['tmp_name']);
+    $where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
+    $getid = cs_sql_select(__FILE__,'clans','clans_id',$where);
+  $filename = 'picture-' . $getid['clans_id'] . '.' . $extension;
+    cs_upload('clans',$filename,$_FILES['picture']['tmp_name']);
 
-	$cs_clans2['clans_picture'] = $filename;
-	$clans2_cells = array_keys($cs_clans2);
-	$clans2_save = array_values($cs_clans2);			
-	cs_sql_update(__FILE__,'clans',$clans2_cells,$clans2_save,$getid['clans_id']);
+  $cs_clans2['clans_picture'] = $filename;
+  $clans2_cells = array_keys($cs_clans2);
+  $clans2_save = array_values($cs_clans2);      
+  cs_sql_update(__FILE__,'clans',$clans2_cells,$clans2_save,$getid['clans_id']);
   }
-	
+  
   cs_redirect($cs_lang['success'],'clans','center');
 }
 

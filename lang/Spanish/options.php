@@ -8,7 +8,7 @@
 // $Id$
 
 $cs_lang['head_roots'] = 'Basis';
-$cs_lang['body_roots']	= 'Todos los Modules que contienen y Permiten Opciones';
-$cs_lang['text']	= 'Memorizar y Analizar Ajustes';
+$cs_lang['body_roots']  = 'Todos los Modules que contienen y Permiten Opciones';
+$cs_lang['text']  = 'Memorizar y Analizar Ajustes';
 
 ?>

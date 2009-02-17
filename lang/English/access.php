@@ -1,14 +1,14 @@
 <?php
 
-$cs_lang['mod_name']	= 'Access';
-$cs_lang['mod_text']	= 'Access Assignement for levels';
-$cs_lang['mod']	= 'Access';
-$cs_lang['head_create']	= 'Create';
-$cs_lang['body_create']	= 'Create new access levels here.';
-$cs_lang['head_remove']	= 'Remove';
-$cs_lang['head_edit']	= 'Edit';
-$cs_lang['body_edit']	= 'Be aware of the consequences of changing access levels';
-$cs_lang['head_manage']	= 'Manage';
+$cs_lang['mod_name']  = 'Access';
+$cs_lang['mod_text']  = 'Access Assignement for levels';
+$cs_lang['mod']  = 'Access';
+$cs_lang['head_create']  = 'Create';
+$cs_lang['body_create']  = 'Create new access levels here.';
+$cs_lang['head_remove']  = 'Remove';
+$cs_lang['head_edit']  = 'Edit';
+$cs_lang['body_edit']  = 'Be aware of the consequences of changing access levels';
+$cs_lang['head_manage']  = 'Manage';
 $cs_lang['new_access'] = 'New Access';
 $cs_lang['access'] = 'Access';
 $cs_lang['head_view'] = 'View';
@@ -26,6 +26,6 @@ $cs_lang['clansphere_0'] = 'Standard';
 $cs_lang['clansphere_3'] = 'Administration';
 $cs_lang['clansphere_4'] = 'System';
 $cs_lang['clansphere_5'] = 'Webmaster';
-$cs_lang['del_error']	= 'Default-classes cannot be deleted.';
+$cs_lang['del_error']  = 'Default-classes cannot be deleted.';
 
 ?>

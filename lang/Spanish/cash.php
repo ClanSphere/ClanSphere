@@ -7,13 +7,13 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Finanzas';
-$cs_lang['mod_text']	= 'Administracion de la Caja del Clan';
-$cs_lang['mod']	= 'Finanzas';
+$cs_lang['mod_name']  = 'Finanzas';
+$cs_lang['mod_text']  = 'Administracion de la Caja del Clan';
+$cs_lang['mod']  = 'Finanzas';
 $cs_lang['head']= 'Administración';
 $cs_lang['head_create'] = 'Crear';
 $cs_lang['head_view'] = 'Detalles';
-$cs_lang['head_remove']	= 'Remover';
+$cs_lang['head_remove']  = 'Remover';
 $cs_lang['head_edit'] = 'Editar';
 $cs_lang['body_edit'] =  'Por Favor rellene todas las casillas con * ';
 $cs_lang['error_occurred'] = 'No han sido Rellenadas todas las casillas necesitadas.';

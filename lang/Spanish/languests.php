@@ -3,11 +3,11 @@
 // $Id$
 // Translation quema0 $
 
-$cs_lang['mod']	            = 'Visitantes de LAN';
-$cs_lang['mod_info']	    = 'Administración de los Visitantes de la LAN-Party';
+$cs_lang['mod']              = 'Visitantes de LAN';
+$cs_lang['mod_info']      = 'Administración de los Visitantes de la LAN-Party';
 
 // Create
-$cs_lang['body_create']	    = 'Crear un nuevo Visitante.';
+$cs_lang['body_create']      = 'Crear un nuevo Visitante.';
 
 $cs_lang['lanparty']        = 'LAN-Party';
 $cs_lang['user']            = 'Usuario';
@@ -28,22 +28,22 @@ $cs_lang['user_lan_exists'] = '- El usuario ya esta Inscrito en esta LAN';
 $cs_lang['lan_full']        = '- En la LAN escojida no quedan Plazas Libres ';
 
 // Lanpartys
-$cs_lang['head_lanpartys']	= 'LAN-Partys';
-$cs_lang['stats']	        = 'Inscritos: %s/%s (Dellos Pagados: %s)';
-$cs_lang['chair']		    = 'Posicion';
+$cs_lang['head_lanpartys']  = 'LAN-Partys';
+$cs_lang['stats']          = 'Inscritos: %s/%s (Dellos Pagados: %s)';
+$cs_lang['chair']        = 'Posicion';
 $cs_lang['nick']            = 'Nick';
 
 // Manage
-$cs_lang['new_languest']	= 'Nuevo Visitante';
-$cs_lang['notices']			= 'Apuntes';
+$cs_lang['new_languest']  = 'Nuevo Visitante';
+$cs_lang['notices']      = 'Apuntes';
 
-$cs_lang['select_lan']		= 'Espectáculo: ';
-$cs_lang['since']			= 'Tiempo de Inscripción';
-$cs_lang['map']			    = 'Mapa';
+$cs_lang['select_lan']    = 'Espectáculo: ';
+$cs_lang['since']      = 'Tiempo de Inscripción';
+$cs_lang['map']          = 'Mapa';
 
 // Rooms
-$cs_lang['head_rooms']	    = 'Plano de Plazas';
-$cs_lang['body_rooms']	    = 'Mirar y Reservar las Plazas';
+$cs_lang['head_rooms']      = 'Plano de Plazas';
+$cs_lang['body_rooms']      = 'Mirar y Reservar las Plazas';
 
 $cs_lang['area']            = 'Area:';
 

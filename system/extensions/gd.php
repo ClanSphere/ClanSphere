@@ -4,53 +4,53 @@
 
 function cs_captcha($hash) {
 
-	$gd_info = gd_info();
-	$chars = strlen($hash);
-	$height = $chars == 3 ? 18 : 40;
-	$charsize = $chars * 20;
-	$img = ImageCreateTrueColor($charsize,$height);
-	$bgc = ImageColorAllocate($img,rand(0,80),rand(0,80),rand(0,80));
-	ImageFill($img,0,0,$bgc);
+  $gd_info = gd_info();
+  $chars = strlen($hash);
+  $height = $chars == 3 ? 18 : 40;
+  $charsize = $chars * 20;
+  $img = ImageCreateTrueColor($charsize,$height);
+  $bgc = ImageColorAllocate($img,rand(0,80),rand(0,80),rand(0,80));
+  ImageFill($img,0,0,$bgc);
 
-	for($i=1;$i<$chars;$i++) {
-		$linecolor = ImageColorAllocate($img,rand(0,150),rand(0,150),rand(0,150));
-		ImageLine($img, $i * 20, 0, $i * 20, $height, $linecolor);
-	}
-	$linecolor = ImageColorAllocate($img,rand(0,150),rand(0,150),rand(0,150));
-	ImageLine($img, 0, $height / 3, $charsize, $height / 3, $linecolor);
-	$linecolor = ImageColorAllocate($img,rand(0,150),rand(0,150),rand(0,150));
-	ImageLine($img, 0, $height / 3 * 2, $charsize, $height / 3 * 2, $linecolor);
+  for($i=1;$i<$chars;$i++) {
+    $linecolor = ImageColorAllocate($img,rand(0,150),rand(0,150),rand(0,150));
+    ImageLine($img, $i * 20, 0, $i * 20, $height, $linecolor);
+  }
+  $linecolor = ImageColorAllocate($img,rand(0,150),rand(0,150),rand(0,150));
+  ImageLine($img, 0, $height / 3, $charsize, $height / 3, $linecolor);
+  $linecolor = ImageColorAllocate($img,rand(0,150),rand(0,150),rand(0,150));
+  ImageLine($img, 0, $height / 3 * 2, $charsize, $height / 3 * 2, $linecolor);
 
-	$linecolor = ImageColorAllocate($img,0,0,0);
-	ImageLine($img, 0, 0, $charsize, 0, $linecolor);
-	ImageLine($img, 0, $height - 1, $charsize, $height - 1, $linecolor);
-	ImageLine($img, 0, 0, 0, $height - 1, $linecolor);
-	ImageLine($img, $charsize - 1, 0, $charsize - 1, $height - 1, $linecolor);
+  $linecolor = ImageColorAllocate($img,0,0,0);
+  ImageLine($img, 0, 0, $charsize, 0, $linecolor);
+  ImageLine($img, 0, $height - 1, $charsize, $height - 1, $linecolor);
+  ImageLine($img, 0, 0, 0, $height - 1, $linecolor);
+  ImageLine($img, $charsize - 1, 0, $charsize - 1, $height - 1, $linecolor);
 
-	for($i=0;$i<$chars;$i++) {
-		$textcolor = ImageColorAllocate($img,rand(100,250),rand(100,250),rand(100,250));
-		ImageString($img,rand(3,5),rand(($i * 20 + 2),($i * 20 + 8)),rand(2,$height - 20),$hash{$i},$textcolor);
-	}
+  for($i=0;$i<$chars;$i++) {
+    $textcolor = ImageColorAllocate($img,rand(100,250),rand(100,250),rand(100,250));
+    ImageString($img,rand(3,5),rand(($i * 20 + 2),($i * 20 + 8)),rand(2,$height - 20),$hash{$i},$textcolor);
+  }
 
-	/* no image Caching */
-	header("Cache-Control: no-cache, must-revalidate");
-	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
-	
-	if($gd_info["PNG Support"] == TRUE) {
-		header("Content-type:image/png");
-	  ImagePNG($img);
-	}
-	elseif($gd_info["JPG Support"] == TRUE) {
-		header("Content-type:image/jpg");
-	  ImageJPEG($img);
-	}
-	elseif($gd_info["GIF Create Support"] == TRUE) {
-		header("Content-type:image/gif");
-	  ImageGIF($img);
-	}
-	else {
-		cs_error(__FILE__,'Could not create image file using GD');
-	}
+  /* no image Caching */
+  header("Cache-Control: no-cache, must-revalidate");
+  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
+  
+  if($gd_info["PNG Support"] == TRUE) {
+    header("Content-type:image/png");
+    ImagePNG($img);
+  }
+  elseif($gd_info["JPG Support"] == TRUE) {
+    header("Content-type:image/jpg");
+    ImageJPEG($img);
+  }
+  elseif($gd_info["GIF Create Support"] == TRUE) {
+    header("Content-type:image/gif");
+    ImageGIF($img);
+  }
+  else {
+    cs_error(__FILE__,'Could not create image file using GD');
+  }
 }
 
 function cs_resample($image, $target, $max_width, $max_height) {

@@ -38,7 +38,7 @@ for($run=0; $run < $threads_loop; $run++) {
       $save = array_values($data);  
       cs_sql_update(__FILE__,'read',$cells,$save,$readed[$run]['read_id']);
     }
-  }	
+  }  
 }
            
 if($thr_where == "threads_last_time > '" . $cs_readtime . "'") {

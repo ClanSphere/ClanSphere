@@ -16,7 +16,7 @@ if(isset($_GET['confirm'])) {
   for($run = 0; $run < $count_values; $run++) {
     $id = (int) $values[$run];
     
-	if($run != 0) { $query .= ' OR '; }
+  if($run != 0) { $query .= ' OR '; }
     $query .= 'shoutbox_id = \'' . $id . '\'';
   }
   cs_sql_query(__FILE__,$query);
@@ -33,7 +33,7 @@ else {
   }
 
   if(empty($ids)) { 
-	cs_redirect($cs_lang['no_selection'],'shoutbox','manage');
+  cs_redirect($cs_lang['no_selection'],'shoutbox','manage');
   }
   else { 
     $ids = substr($ids,0,-1);

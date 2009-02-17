@@ -15,27 +15,27 @@ empty($_GET['where']) ? $var = $var : $var = $var . '/';
 
 if (@chdir($cs_main['def_path'].'/'.$var)) {
 
-	$goal = opendir('.');
-	$success = 1;
-	$dirs = array();
-	$files = array();
-	
-	while(false !== ($curr_data = readdir($goal))) {
-		if($curr_data != '..' && $curr_data != '.' && $curr_data != '.svn') {
-			if (is_dir($curr_data)) {
-				$dirs[] = $curr_data;
-			} else {
-				$files[] = $curr_data;
-			}
-		}
-	}
-	closedir($goal);
-	sort($dirs);
-	sort($files);
-	
-	$data = array_merge($dirs,$files);
-	$count = count($data);
-	chdir($cs_main['def_path']);
+  $goal = opendir('.');
+  $success = 1;
+  $dirs = array();
+  $files = array();
+  
+  while(false !== ($curr_data = readdir($goal))) {
+    if($curr_data != '..' && $curr_data != '.' && $curr_data != '.svn') {
+      if (is_dir($curr_data)) {
+        $dirs[] = $curr_data;
+      } else {
+        $files[] = $curr_data;
+      }
+    }
+  }
+  closedir($goal);
+  sort($dirs);
+  sort($files);
+  
+  $data = array_merge($dirs,$files);
+  $count = count($data);
+  chdir($cs_main['def_path']);
 }
 
 $more = $var == '.' ? '' : 'dir='.$var;
@@ -67,37 +67,37 @@ if ($var != '.') {
   
   foreach ($folders AS $folder) {
     $output_folder .= $folder . '/';
-  	$data['path']['show'] .= cs_link($folder,'explorer','roots','dir='.$output_folder) . '/';
+    $data['path']['show'] .= cs_link($folder,'explorer','roots','dir='.$output_folder) . '/';
   }
 }
 
 if(!empty($success)) {
-	
-	$img_edit = cs_icon('editpaste');
-	$img_access = cs_icon('access');
-	$img_del = cs_icon('editdelete');
-	$img_info = cs_icon('documentinfo');
-	
-	$y = -1;
-	
-	for($x = $start; ($x < $count) && ($y < $max_data); $x++) {
-	
-		$y++;
+  
+  $img_edit = cs_icon('editpaste');
+  $img_access = cs_icon('access');
+  $img_del = cs_icon('editdelete');
+  $img_info = cs_icon('documentinfo');
+  
+  $y = -1;
+  
+  for($x = $start; ($x < $count) && ($y < $max_data); $x++) {
+  
+    $y++;
     
     $file = $var == '.' ? $data[$x] : $var . $data[$x];
     
     chdir($cs_main['def_path'].'/'.$var);
     $type = is_dir($data[$x]) ? 'dir' : strtolower(substr(strrchr($data[$x],'.'),1));
-		chdir($cs_main['def_path']);
-		
-		$save[$y]['name'] = $data[$x];
-		$save[$y]['chmod'] = substr(sprintf('%o', fileperms($file)), -4);
-		$save[$y]['access'] = cs_link($img_access,'explorer','chmod','file='.$file);
-		$save[$y]['remove'] = cs_link($img_del,'explorer','remove','file='.$file,0,$cs_lang['remove']);
-		$save[$y]['info'] = cs_link($img_info,'explorer','information','file='.$file);
+    chdir($cs_main['def_path']);
+    
+    $save[$y]['name'] = $data[$x];
+    $save[$y]['chmod'] = substr(sprintf('%o', fileperms($file)), -4);
+    $save[$y]['access'] = cs_link($img_access,'explorer','chmod','file='.$file);
+    $save[$y]['remove'] = cs_link($img_del,'explorer','remove','file='.$file,0,$cs_lang['remove']);
+    $save[$y]['info'] = cs_link($img_info,'explorer','information','file='.$file);
     $save[$y]['edit'] = $type != 'dir' ? cs_link($img_edit,'explorer','edit','file='.$file) : '';
-		
-		$view = cs_link($data[$x],'explorer','view','file='.$file);
+    
+    $view = cs_link($data[$x],'explorer','view','file='.$file);
 
     $save[$y]['symbol'] = file_exists('symbols/files/filetypes/'.$type.'.gif')
         ? cs_html_img('symbols/files/filetypes/'.$type.'.gif')
@@ -109,7 +109,7 @@ if(!empty($success)) {
     } elseif ($type == 'html' || $type == 'htm' || $type = 'php' || $type == 'txt' || $type == 'sql') {
       $save[$y]['name'] = cs_link($data[$x],'explorer','view','file='.$file);
     }
-	}
+  }
   $data['files'] = $save;
 } else {
   $data['files'] = '';

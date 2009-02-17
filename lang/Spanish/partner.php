@@ -7,8 +7,8 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod']	= 'Patrocinadores';
-$cs_lang['text']	= 'Patrocinadores y Socios';
+$cs_lang['mod']  = 'Patrocinadores';
+$cs_lang['text']  = 'Patrocinadores y Socios';
 
 $cs_lang['body_text'] =  'Por Favor rellene todas las casillas con * ';
 $cs_lang['list'] =  'Lista';

@@ -3,8 +3,8 @@
 // $Id$
 
 // General
-$cs_lang['mod']	= 'Squads';
-$cs_lang['modtext']	= 'Abteilungen im Clan';
+$cs_lang['mod']  = 'Squads';
+$cs_lang['modtext']  = 'Abteilungen im Clan';
 
 $cs_lang['count'] = 'Es sind %s Squads eingetragen.';
 
@@ -12,8 +12,8 @@ $cs_lang['count'] = 'Es sind %s Squads eingetragen.';
 $cs_lang['squad'] = 'Squad';
 $cs_lang['squads'] = 'Squads';
 $cs_lang['new_squad'] = 'Neuer Squad';
-$cs_lang['join_squad']	= 'Squad beitreten';
-$cs_lang['leave_squad']	= 'Squad verlassen';
+$cs_lang['join_squad']  = 'Squad beitreten';
+$cs_lang['leave_squad']  = 'Squad verlassen';
 $cs_lang['no_squad'] = '- Es muss ein Squad ausgew&auml;hlt werden';
 $cs_lang['no_pwd_squad'] = '- Nur Squads mit Passwort kann beigetreten werden';
 $cs_lang['squad_exists'] = '- Ein Squad mit diesem Namen ist bereits vorhanden';
@@ -86,19 +86,19 @@ $cs_lang['teammates'] = 'Mitspieler';
 $cs_lang['classmates'] = 'Mitsch&uuml;ler';
 
 // Center
-$cs_lang['head_center']	= 'Zentrale';
-$cs_lang['task']	= 'Aufgabe';
+$cs_lang['head_center']  = 'Zentrale';
+$cs_lang['task']  = 'Aufgabe';
 
 // Change
-$cs_lang['body_change']	= 'Hier erscheinen etwaige Fehler nach dem Absenden.';
+$cs_lang['body_change']  = 'Hier erscheinen etwaige Fehler nach dem Absenden.';
 
 $cs_lang['nopic'] = 'Kein Bild vorhanden';
-$cs_lang['pic_current']	= 'Aktuelles Bild';
+$cs_lang['pic_current']  = 'Aktuelles Bild';
 $cs_lang['pic_up'] = 'Bild hochladen';
 $cs_lang['game'] = 'Spiel';
 $cs_lang['order'] = 'Priorit&auml;t';
 $cs_lang['password'] = 'Passwort';
-$cs_lang['more']	= 'Erweitert';
+$cs_lang['more']  = 'Erweitert';
 
 $cs_lang['hidden'] = 'Verstecken';
 $cs_lang['joinus'] = 'JoinUs';
@@ -110,62 +110,62 @@ $cs_lang['max_height'] = 'Maximale H&ouml;he: ';
 $cs_lang['max_size'] = 'Maximale Gr&ouml;&szlig;e: ';
 $cs_lang['filetypes'] = 'Dateiformate: ';
 
-$cs_lang['too_big']	= '- Die Datei ist zu gro&szlig;';
-$cs_lang['too_wide']	= '- Das Bild ist zu breit';
-$cs_lang['too_high']	= '- Das Bild ist zu hoch';
-$cs_lang['ext_error']	= '- Es wurde ein unerlaubter Dateityp benutzt';
+$cs_lang['too_big']  = '- Die Datei ist zu gro&szlig;';
+$cs_lang['too_wide']  = '- Das Bild ist zu breit';
+$cs_lang['too_high']  = '- Das Bild ist zu hoch';
+$cs_lang['ext_error']  = '- Es wurde ein unerlaubter Dateityp benutzt';
 $cs_lang['no_name'] = '- Kein Name angegeben';
 $cs_lang['up_error'] = '- Unbekannter Fehler, bitte den Webmaster kontaktieren';
 $cs_lang['no_admin'] = '- Sie haben kein Verwaltungsrecht';
 $cs_lang['pwd_wrong'] = '- Falsches / Fehlendes Passwort';
 
 // Delete
-$cs_lang['head_delete']	= 'L&ouml;schen';
+$cs_lang['head_delete']  = 'L&ouml;schen';
 
-$cs_lang['sq_del_true']	= 'Mitgliedschaften und Squad erfolgreich entfernt';
+$cs_lang['sq_del_true']  = 'Mitgliedschaften und Squad erfolgreich entfernt';
 
-$cs_lang['body_new']	= 'Einem Clan eine Gruppe hinzuf&uuml;gen';
+$cs_lang['body_new']  = 'Einem Clan eine Gruppe hinzuf&uuml;gen';
 
 $cs_lang['new_done'] = 'Squad erfolgreich eingetragen.';
 $cs_lang['leader'] = 'Leiter';
 
 // Options
 $cs_lang['label'] = 'Auftreten als';
-$cs_lang['body_options']	= 'Verwaltung der Einstellungen im Modul.';
+$cs_lang['body_options']  = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['def_order'] = 'Standard Priorit&auml;t';
 
 // View
-$cs_lang['head_list']	= 'Liste';
+$cs_lang['head_list']  = 'Liste';
 $cs_lang['body_list'] = 'Teil von %s';
-$cs_lang['country']	= 'Land';
-$cs_lang['nick']	= 'Nick';
-$cs_lang['page']	= 'Status';
-$cs_lang['since']	= 'Dabei seit';
+$cs_lang['country']  = 'Land';
+$cs_lang['nick']  = 'Nick';
+$cs_lang['page']  = 'Status';
+$cs_lang['since']  = 'Dabei seit';
 
-$cs_lang['ranks']	= 'Ranglisten';
-$cs_lang['image']	= 'Bild';
+$cs_lang['ranks']  = 'Ranglisten';
+$cs_lang['image']  = 'Bild';
 
-$cs_lang['awards']	= 'Auszeichnungen';
+$cs_lang['awards']  = 'Auszeichnungen';
 $cs_lang['event'] = 'Veranstaltung';
 $cs_lang['place'] = 'Platz';
 
-$cs_lang['wars']	= 'Clanwars';
-$cs_lang['enemy']	= 'Gegner';
+$cs_lang['wars']  = 'Clanwars';
+$cs_lang['enemy']  = 'Gegner';
 $cs_lang['score'] = 'Ergebnis';
 
 // Join
-$cs_lang['head_join']	= 'Beitreten';
-$cs_lang['body_join']	= 'Neue Mitgliedschaft eintragen';
+$cs_lang['head_join']  = 'Beitreten';
+$cs_lang['body_join']  = 'Neue Mitgliedschaft eintragen';
 $cs_lang['join'] = 'Beitreten';
 
 $cs_lang['wrong_pwd'] = '- Das Passwort ist nicht korrekt';
 $cs_lang['collision'] = '- Sie sind bereits im angew&auml;hlten Squad';
 
 // Leave
-$cs_lang['head_leave']	= 'Verlassen';
-$cs_lang['body_leave']	= 'Beenden einer Mitgliedschaft';
+$cs_lang['head_leave']  = 'Verlassen';
+$cs_lang['body_leave']  = 'Beenden einer Mitgliedschaft';
 $cs_lang['join_done'] = 'Daten erfolgreich eingetragen.';
 $cs_lang['member'] = 'Mitglied';
 

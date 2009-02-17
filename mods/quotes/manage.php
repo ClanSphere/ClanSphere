@@ -49,9 +49,9 @@ for($run=0; $run<$quotes_loop; $run++) {
   $cs_quotes[$run]['url_remove'] = cs_url('quotes','remove','id='.$cs_quotes[$run]['quotes_id']);
   $cs_quotes[$run]['url_user'] = cs_url('users','view','id='.$cs_quotes[$run]['users_id']);
   $cs_quotes[$run]['url_quote'] = cs_url('quotes','view','id=' . $cs_quotes[$run]['quotes_id']);
-	$cs_quotes[$run]['users_nick'] = cs_secure($cs_quotes[$run]['users_nick']);
-	$cs_quotes[$run]['quotes_time'] = cs_date('unix',$cs_quotes[$run]['quotes_time'],1);
-	
+  $cs_quotes[$run]['users_nick'] = cs_secure($cs_quotes[$run]['users_nick']);
+  $cs_quotes[$run]['quotes_time'] = cs_date('unix',$cs_quotes[$run]['quotes_time'],1);
+  
 }
 
 $data['quotes'] = $cs_quotes;

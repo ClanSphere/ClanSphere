@@ -2,11 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Installation';
-$cs_lang['modtext']	= 'Installs ClanSphere';
+$cs_lang['mod']  = 'Installation';
+$cs_lang['modtext']  = 'Installs ClanSphere';
 
-$cs_lang['head_list']	= 'List';
-$cs_lang['body_list']	= 'Welcome to the installation of Clansphere!' . cs_html_br(2) . 'Please choose a language:';
+$cs_lang['head_list']  = 'List';
+$cs_lang['body_list']  = 'Welcome to the installation of Clansphere!' . cs_html_br(2) . 'Please choose a language:';
 
 $cs_lang['lang'] = 'Language';
 
@@ -27,10 +27,10 @@ $cs_lang['last_check'] = 'Last Check';
 $cs_lang['check'] = 'Check';
 $cs_lang['found'] = 'Found';
 $cs_lang['required'] = 'Required';
-$cs_lang['any']	= 'Any';
+$cs_lang['any']  = 'Any';
 $cs_lang['recommend'] = 'Recommended';
-$cs_lang['php_mod']	= 'PHP Module';
-$cs_lang['db_support']	= 'Supported databases';
+$cs_lang['php_mod']  = 'PHP Module';
+$cs_lang['db_support']  = 'Supported databases';
 $cs_lang['file_uploads'] = 'Upload files';
 $cs_lang['reg_global'] = 'Register Globals';
 $cs_lang['magic_quotes'] = 'Magic Quotes';
@@ -39,32 +39,32 @@ $cs_lang['trans_sid'] = 'Transparent SessionID';
 $cs_lang['basedir_restriction'] = 'Basedir restriction';
 $cs_lang['allow_url_fopen'] = 'Allow remote files';
 $cs_lang['gd_extension'] = 'GD Extension';
-$cs_lang['off']	= 'off';
+$cs_lang['off']  = 'off';
 $cs_lang['on'] = 'on';
 
 $cs_lang['check_perfect'] = 'All checked settings are perfectly set up to start your ClanSphere experience!';
 $cs_lang['check_ok'] = 'ClanSphere is going to run in this environment, but some settings are not very comfortable.';
 $cs_lang['check_failed'] = 'Caused by the upper issues it is not possible to install ClanSphere here!';
 
-$cs_lang['head_complete']	= 'End';
-$cs_lang['rem_install']	= '- Remove installation files';
-$cs_lang['set_chmod']	= '- New rights for directories (CHMOD)';
+$cs_lang['head_complete']  = 'End';
+$cs_lang['rem_install']  = '- Remove installation files';
+$cs_lang['set_chmod']  = '- New rights for directories (CHMOD)';
 $cs_lang['remove_file'] = 'Please remove file manually:';
-$cs_lang['err_chmod']	= 'Error: Please set rights for directories "logs" and "uploads",';
-$cs_lang['err_chmod']	.= ' as well as their sub-directories manually on CHMOD 777';
+$cs_lang['err_chmod']  = 'Error: Please set rights for directories "logs" and "uploads",';
+$cs_lang['err_chmod']  .= ' as well as their sub-directories manually on CHMOD 777';
 
-$cs_lang['login']	= 'Login';
+$cs_lang['login']  = 'Login';
 
-$cs_lang['head_license']	= 'License';
-$cs_lang['body_license']	= 'Required condision for usage';
+$cs_lang['head_license']  = 'License';
+$cs_lang['body_license']  = 'Required condision for usage';
 
 $cs_lang['accept_done'] = 'Conditions successfully accepted';
 $cs_lang['accept_license'] = 'Read and accepted';
 $cs_lang['not_accepted'] = '- You have to accept the conditions';
 $cs_lang['send'] = 'Send';
 
-$cs_lang['head_settings']	= 'Configuration';
-$cs_lang['body_settings']	= 'Creating a setup file for the portal';
+$cs_lang['head_settings']  = 'Configuration';
+$cs_lang['body_settings']  = 'Creating a setup file for the portal';
 
 $cs_lang['hash'] = 'Encryption type';
 $cs_lang['hash_info'] = 'If updating from BXCP please use MD5!';
@@ -93,12 +93,12 @@ $cs_lang['save_file'] = 'Please copy and paste the contents to a file called "se
 $cs_lang['setup_exists'] = 'Found existing setup file.';
 $cs_lang['inst_create_done'] = 'Database found and setup file created.';
 
-$cs_lang['head_sql']	= 'Database';
-$cs_lang['body_sql']	= 'Tables and Entries are made';
+$cs_lang['head_sql']  = 'Database';
+$cs_lang['body_sql']  = 'Tables and Entries are made';
 
-$cs_lang['create_admin']	= 'Creation of an administrator account.';
-$cs_lang['nick']	= 'Nick';
-$cs_lang['email']	= 'E-Mail';
+$cs_lang['create_admin']  = 'Creation of an administrator account.';
+$cs_lang['nick']  = 'Nick';
+$cs_lang['email']  = 'E-Mail';
 $cs_lang['password'] = 'Password';
 $cs_lang['admin_done'] = 'Administrator successfully created';
 
@@ -108,11 +108,11 @@ $cs_lang['email_false'] = '- Entered email-adress is not valid';
 
 $cs_lang['db_error'] = 'Database Error';
 
-$cs_lang['guest']	= 'Guest';
-$cs_lang['community']	= 'User';
-$cs_lang['member']	= 'Member';
-$cs_lang['orga']	= 'Organisator';
-$cs_lang['admin']	= 'Webmaster';
+$cs_lang['guest']  = 'Guest';
+$cs_lang['community']  = 'User';
+$cs_lang['member']  = 'Member';
+$cs_lang['orga']  = 'Organisator';
+$cs_lang['admin']  = 'Webmaster';
 
 // Labels
 $cs_lang['show_groups_as'] = 'Show groups as';

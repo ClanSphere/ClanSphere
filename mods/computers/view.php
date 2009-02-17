@@ -22,16 +22,16 @@ $data['com']['mainboard'] = cs_secure($cs_computers['computers_mainboard']);
 $data['com']['memory'] = cs_secure($cs_computers['computers_memory'],1);
 
 if(empty($cs_computers['computers_pictures'])) {
-	$data['pictures'][0]['thumb'] = $cs_lang['nopic'];
+  $data['pictures'][0]['thumb'] = $cs_lang['nopic'];
 }
 else {
-	$run = 0;
-	$computer_pics = explode("\n",$cs_computers['computers_pictures']);
-	foreach($computer_pics AS $pic) {
-		$link = cs_html_img('uploads/computers/thumb-' . $pic);
-		$data['pictures'][$run]['thumb'] = cs_html_link('uploads/computers/picture-' . $pic,$link) . ' ';
-		$run++;
-	}
+  $run = 0;
+  $computer_pics = explode("\n",$cs_computers['computers_pictures']);
+  foreach($computer_pics AS $pic) {
+    $link = cs_html_img('uploads/computers/thumb-' . $pic);
+    $data['pictures'][$run]['thumb'] = cs_html_link('uploads/computers/picture-' . $pic,$link) . ' ';
+    $run++;
+  }
 }
 
 $data['com']['processors'] = cs_secure($cs_computers['computers_processors'],1);

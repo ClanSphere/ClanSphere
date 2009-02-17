@@ -9,13 +9,13 @@ $v_com = version_compare($php_fo,$php_ne,'>=');
 function pasteError($err){
   $cs_err[1] = 'ERROR....';
   $cs_err[2] = $err;
-		
+    
   echo cs_abcode_clip($cs_err);
 }
 
 if(!empty($v_com)) {
   include_once('mods/clansphere/func.php');
-	
+  
   //Total
   if(!$space_total = disk_total_space($cs_main['def_path'])) {
     pasteError($cs_lang['err']);
@@ -30,7 +30,7 @@ if(!empty($v_com)) {
   else{
     $space_free = $tmpvar;
   }
-	
+  
   //Modul
   $tmpvar = get_directorysize('/mods');
   if(is_array($tmpvar)){
@@ -39,7 +39,7 @@ if(!empty($v_com)) {
   else{
     $space_mods = $tmpvar;
   }
-	
+  
   //Upload
   $tmpvar = get_directorysize('/uploads');
   if(is_array($tmpvar)){
@@ -48,7 +48,7 @@ if(!empty($v_com)) {
   else{
     $space_up = $tmpvar;
   }
-	
+  
   //Symbols
   $tmpvar = get_directorysize('/symbols');
   if(is_array($tmpvar)){
@@ -57,7 +57,7 @@ if(!empty($v_com)) {
   else{
     $space_sym = $tmpvar;
   }
-	
+  
   //Templates
   $tmpvar = get_directorysize('/templates');
   if(is_array($tmpvar)){
@@ -70,32 +70,32 @@ if(!empty($v_com)) {
 else {
   error_reporting(E_ERROR);
   include_once('mods/clansphere/func4.php');
-	
+  
   if(!$space_total = disk_total_space($cs_main['def_path'])){
     pasteError($cs_lang['err']);
     return;
   }
-	
+  
   if(!$space_free = disk_free_space($cs_main['def_path'])){
     pasteError($cs_lang['err']);
     return;
-  }		
-			
+  }    
+      
   if(!$space_mods =  get_size($cs_main['def_path']) . '/mods'){
     pasteError($cs_lang['err']);
     return;
   }
-	
+  
   if(!$space_up =  get_size($cs_main['def_path']) . '/uploads'){
     pasteError($cs_lang['err']);
     return;
   }
-	
+  
   if(!$space_sym =  get_size($cs_main['def_path']) . '/symbols'){
     pasteError($cs_lang['err']);
     return;
   }
-	
+  
   if(!$space_temp =  get_size($cs_main['def_path']) . '/templates'){
     pasteError($cs_lang['err']);
     return;
@@ -108,7 +108,7 @@ if(empty($space_total) or empty($space_free)) {
 else {
   $space_used = $space_total - $space_free;
 }
-	
+  
 $perc_used = 0;
 $perc_free = 0;
 $perc_mods = 0;
@@ -117,7 +117,7 @@ $perc_sym = 0;
 $perc_temp = 0;
 $perc_all = 0;
 
-if(!empty($space_total)) {				
+if(!empty($space_total)) {        
   $perc_used = empty($space_used) ? 0 : round($space_used * 100 / $space_total);
   $perc_free = empty($space_free) ? 0 : round($space_free * 100 / $space_total);
   $perc_mods = empty($space_mods) ? 0 : round($space_mods * 100 / $space_total);

@@ -8,7 +8,7 @@ $data['if']['access_explorer'] = FALSE;
 
 $dir = empty($_GET['dir']) ? $_REQUEST['where'] : $_GET['dir'];
 if(empty($dir) OR !preg_match("=^[_a-z0-9-]+$=i",$dir)) { 
-	$dir = $cs_main['def_mod'];
+  $dir = $cs_main['def_mod'];
 }
 
 include('mods/' . $dir . '/info.php');
@@ -32,37 +32,37 @@ if(!empty($account['access_explorer'])) {
 
 if(file_exists('mods/' . $dir . '/access.php')) {
 
-	$sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
+  $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 
-	$data['sort']['file'] = cs_sort('modules','view',0,$dir,1,$sort);
-	$data['sort']['access'] = cs_sort('modules','view',0,$dir,3,$sort);
+  $data['sort']['file'] = cs_sort('modules','view',0,$dir,1,$sort);
+  $data['sort']['access'] = cs_sort('modules','view',0,$dir,3,$sort);
 
-	$axx_file = array();
-	include 'mods/' . $dir . '/access.php';
+  $axx_file = array();
+  include 'mods/' . $dir . '/access.php';
 
-	switch($sort) {
-		case 1:
-			krsort($axx_file);
-		break;
-		case 3:
-			arsort($axx_file);
-		break;
-		case 4:
-			asort($axx_file);
-		break;
-		default:
-			ksort($axx_file);
-	}
+  switch($sort) {
+    case 1:
+      krsort($axx_file);
+    break;
+    case 3:
+      arsort($axx_file);
+    break;
+    case 4:
+      asort($axx_file);
+    break;
+    default:
+      ksort($axx_file);
+  }
 
-	$pre = /*$dir == 'clansphere' ? 'clansphere_' :*/ 'lev_';
-	$run = 0;
-	foreach($axx_file AS $list_name => $list_axx) {
+  $pre = /*$dir == 'clansphere' ? 'clansphere_' :*/ 'lev_';
+  $run = 0;
+  foreach($axx_file AS $list_name => $list_axx) {
 
-		$data['axx'][$run]['file'] = $list_name . '.php';
-		$data['axx'][$run]['access'] = $list_axx . ' - ' . $cs_lang[$pre . $list_axx];
-		
-		$run++;
-	}
+    $data['axx'][$run]['file'] = $list_name . '.php';
+    $data['axx'][$run]['access'] = $list_axx . ' - ' . $cs_lang[$pre . $list_axx];
+    
+    $run++;
+  }
 }
 
 echo cs_subtemplate(__FILE__,$data,'modules','view');

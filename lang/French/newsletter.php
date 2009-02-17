@@ -1,15 +1,15 @@
 <?php
-$cs_lang['mod_name']	= 'Newsletter';
-$cs_lang['mod_text']	= 'Administration des Newsletter';
-$cs_lang['mod']	= 'Newsletter';
-$cs_lang['head_manage']	= 'Newsletter';
-$cs_lang['head_newsletter']	= 'Newsletter';
-$cs_lang['head_newslettertoall']	= 'Créer une Newsletter';
-$cs_lang['head_create']	= 'Créer une Newsletter';
-$cs_lang['head_remove']	= 'Supprimer';
-$cs_lang['toall']		= 'Nouvelle Newsletter pour tous';
-$cs_lang['tosquad']	= 'Nouvelle Newsletter pour une section';
-$cs_lang['subject']		= 'Sujet :';
+$cs_lang['mod_name']  = 'Newsletter';
+$cs_lang['mod_text']  = 'Administration des Newsletter';
+$cs_lang['mod']  = 'Newsletter';
+$cs_lang['head_manage']  = 'Newsletter';
+$cs_lang['head_newsletter']  = 'Newsletter';
+$cs_lang['head_newslettertoall']  = 'Créer une Newsletter';
+$cs_lang['head_create']  = 'Créer une Newsletter';
+$cs_lang['head_remove']  = 'Supprimer';
+$cs_lang['toall']    = 'Nouvelle Newsletter pour tous';
+$cs_lang['tosquad']  = 'Nouvelle Newsletter pour une section';
+$cs_lang['subject']    = 'Sujet :';
 $cs_lang['from'] = 'Edité par :';
 $cs_lang['newsletter'] = 'Newsletter';
 $cs_lang['field_missing']= 'Saisissez un sujet et un texte';

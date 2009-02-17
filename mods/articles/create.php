@@ -15,20 +15,20 @@ $data['url']['form'] = cs_url('articles','create');
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
     $data['art']['categories_id'] = empty($_POST['categories_id']) ? cs_categories_create('articles',$_POST['categories_name']) 
-		: (int) $_POST['categories_id'];
+    : (int) $_POST['categories_id'];
 
-	$data['art']['articles_com'] = isset($_POST['articles_com']) ? $_POST['articles_com'] : 0;
-	$data['art']['articles_navlist'] = isset($_POST['articles_navlist']) ? $_POST['articles_navlist'] : 0;
-	$data['art']['articles_fornext'] = isset($_POST['articles_fornext']) ? $_POST['articles_fornext'] : 0;
-	$data['art']['articles_headline'] = $_POST['articles_headline'];
-	$data['art']['articles_text'] = $_POST['articles_text'];
-	$data['art']['articles_time'] = cs_time();
-	$data['art']['users_id'] = $account['users_id'];
+  $data['art']['articles_com'] = isset($_POST['articles_com']) ? $_POST['articles_com'] : 0;
+  $data['art']['articles_navlist'] = isset($_POST['articles_navlist']) ? $_POST['articles_navlist'] : 0;
+  $data['art']['articles_fornext'] = isset($_POST['articles_fornext']) ? $_POST['articles_fornext'] : 0;
+  $data['art']['articles_headline'] = $_POST['articles_headline'];
+  $data['art']['articles_text'] = $_POST['articles_text'];
+  $data['art']['articles_time'] = cs_time();
+  $data['art']['users_id'] = $account['users_id'];
 
-	$categories = cs_sql_select(__FILE__,'categories','categories_picture',"categories_id = '" . $data['art']['categories_id'] . "'");
-	
-	if(!empty($cs_main['fckeditor'])) { $data['art']['articles_text'] = '[html]' . $_POST['articles_text'] . '[/html]'; }
-	
+  $categories = cs_sql_select(__FILE__,'categories','categories_picture',"categories_id = '" . $data['art']['categories_id'] . "'");
+  
+  if(!empty($cs_main['fckeditor'])) { $data['art']['articles_text'] = '[html]' . $_POST['articles_text'] . '[/html]'; }
+  
     $errormsg = '';
 
     if(empty($data['art']['categories_id'])) { $errormsg .= $cs_lang['no_cat'] . cs_html_br(1); }
@@ -55,13 +55,13 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
         $data['head']['body'] = $errormsg;
     }
 } else {
-	$data['art']['articles_com'] = '';
-	$data['art']['articles_navlist'] = '';
-	$data['art']['articles_fornext'] = '';
-	$data['art']['articles_headline'] = '';
-	$data['art']['articles_text'] = '';
-	$data['art']['articles_time'] = cs_time();
-	$data['art']['users_id'] = $account['users_id'];
+  $data['art']['articles_com'] = '';
+  $data['art']['articles_navlist'] = '';
+  $data['art']['articles_fornext'] = '';
+  $data['art']['articles_headline'] = '';
+  $data['art']['articles_text'] = '';
+  $data['art']['articles_time'] = cs_time();
+  $data['art']['users_id'] = $account['users_id'];
     $data['art']['categories_id'] = 0;
 }
 $categories_id = empty($data['art']['categories_id']) ? 0 : $data['art']['categories_id'];

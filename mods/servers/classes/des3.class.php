@@ -43,7 +43,7 @@ class descent3
     var $r_info   = false;
     var $p_info   = false;
     var $response = false;
-				
+        
     function microtime_float()
     {
         list($usec, $sec) = explode(" ", microtime());
@@ -157,9 +157,9 @@ class descent3
     {
         // get value (byte) from raw data
         $tmp = $def[0];
-	$this->r_info = substr($def, 1);
+  $this->r_info = substr($def, 1);
 
-	return ord($tmp);
+  return ord($tmp);
     }
     
     function getvalue_string($def)
@@ -167,86 +167,86 @@ class descent3
     
         // get value (string) from raw data
         $tmp = '';
-	$index = 0;
-	
-	while (ord($def[$index]) != 0)
-	{
-	    $tmp .= $def[$index];
-	    $index++;
-	}
-	$this->r_info = substr($def, $index+1);
+  $index = 0;
+  
+  while (ord($def[$index]) != 0)
+  {
+      $tmp .= $def[$index];
+      $index++;
+  }
+  $this->r_info = substr($def, $index+1);
 
-	return $tmp;
+  return $tmp;
     }
     
     function getrules($phgdir)
     {
         // response time
-	$srv_rules['response'] = $this->response . ' ms';
+  $srv_rules['response'] = $this->response . ' ms';
         
-	// get the rules values
-	$srv_rules['cache']       = $this->getvalue_byte($this->r_info);   // 1 byte
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  // get the rules values
+  $srv_rules['cache']       = $this->getvalue_byte($this->r_info);   // 1 byte
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
         $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-	$srv_rules['hostname']    = $this->getvalue_string($this->r_info); // string (hostname)
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['mapfile']     = $this->getvalue_string($this->r_info); // string (mapfile)
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['mapname']     = $this->getvalue_string($this->r_info);  // string (mapname)
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['gametype']    = $this->getvalue_string($this->r_info); // string (gametype)
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['nowplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
-	
-	$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-	$srv_rules['maxplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
-		
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+  $srv_rules['hostname']    = $this->getvalue_string($this->r_info); // string (hostname)
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['mapfile']     = $this->getvalue_string($this->r_info); // string (mapfile)
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['mapname']     = $this->getvalue_string($this->r_info);  // string (mapname)
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['gametype']    = $this->getvalue_string($this->r_info); // string (gametype)
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['nowplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
+  
+  $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+  $srv_rules['maxplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
+    
         // path to map picture
-	$srv_rules['map_path'] = 'maps/descent3';
-	
+  $srv_rules['map_path'] = 'maps/descent3';
+  
 
-	// set default map picture
-	$srv_rules['map_default'] = 'default.jpg';
-	$srv_rules['mapname'] = $srv_rules['mapfile'];
+  // set default map picture
+  $srv_rules['map_default'] = 'default.jpg';
+  $srv_rules['mapname'] = $srv_rules['mapfile'];
         
         // set gamename
-	$srv_rules['gamename'] = "Descent 3";
-	
-	// no privileges
-	$srv_rules['sets'] = '-';
+  $srv_rules['gamename'] = "Descent 3";
+  
+  // no privileges
+  $srv_rules['sets'] = '-';
 
- 		// General server Info
+     // General server Info
         global $cs_lang;
         $srv_rules['htmlinfo'] = cs_html_roco(1,'rightb',0,0,'50%') . $cs_lang['map:'];
-		$srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
+    $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['players'];
         $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['response'];
@@ -267,17 +267,17 @@ class descent3
         $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['response'] . cs_html_roco(0);
         $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['privileges'];
         $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['sets'] . cs_html_roco(0);
-	
-	// return all server rules
-	return $srv_rules;
+  
+  // return all server rules
+  return $srv_rules;
     }
     
     function getplayers()
     {
         $players = array();
-	
-	// set html thead
-	global $cs_lang;
+  
+  // set html thead
+  global $cs_lang;
     $thead = cs_html_roco(1,'headb');
     $thead .= cs_html_div(1,'text-align:center');
     $thead .= $cs_lang['id'];
@@ -289,41 +289,41 @@ class descent3
     $thead .= cs_html_roco(0);
          
         // filter the not needed code & create array
-	$cache = substr($this->p_info, 4, -1);
-	$players = explode("\x00", $cache);
-	
-	// how many player must search
-	$nowplayers = count($players) - 1;
+  $cache = substr($this->p_info, 4, -1);
+  $players = explode("\x00", $cache);
+  
+  // how many player must search
+  $nowplayers = count($players) - 1;
         
-	// check the connected players and sort the ranking
-	if ($nowplayers == 0)
-	{
-	    $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
+  // check the connected players and sort the ranking
+  if ($nowplayers == 0)
+  {
+      $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0) . cs_html_roco(0);
 
-	}
+  }
 
-	// store the html table line to the info array
-	$srv_player = $thead;
+  // store the html table line to the info array
+  $srv_player = $thead;
 
-	// manage the player data in the following code
-	$index = 1;
-	$client = 0;
-	
-	while ($nowplayers != 0)
-	{
-	    // strip html code from player name
-	    $players[$client] = htmlentities($players[$client]);
+  // manage the player data in the following code
+  $index = 1;
+  $client = 0;
+  
+  while ($nowplayers != 0)
+  {
+      // strip html code from player name
+      $players[$client] = htmlentities($players[$client]);
 
             $tdata = cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . $index . cs_html_div(0);
             $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . $players[$client] . cs_html_div(0) . cs_html_roco(0);
 
-	    $srv_player = $srv_player . $tdata;
-	    $nowplayers--;
-	    $client++;
-	    $index++;
-	}
+      $srv_player = $srv_player . $tdata;
+      $nowplayers--;
+      $client++;
+      $index++;
+  }
          
-	return $srv_player;
+  return $srv_player;
     }
 }

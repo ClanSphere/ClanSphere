@@ -46,18 +46,18 @@ echo cs_html_roco(0);
 
 for($run=0; $run<$links_loop; $run++) {
 
-	echo cs_html_roco(1,'leftc');
-	echo cs_link($cs_links[$run]['links_name'],'links','view','id=' . $cs_links[$run]['links_id']);
-	echo cs_html_roco(2,'leftc');
-	echo cs_html_link('http://' . $cs_links[$run]['links_url'],$cs_links[$run]['links_url']);
-	echo cs_html_roco(3,'leftc');
-	if ($cs_links[$run]['links_stats'] == 'on') {
+  echo cs_html_roco(1,'leftc');
+  echo cs_link($cs_links[$run]['links_name'],'links','view','id=' . $cs_links[$run]['links_id']);
+  echo cs_html_roco(2,'leftc');
+  echo cs_html_link('http://' . $cs_links[$run]['links_url'],$cs_links[$run]['links_url']);
+  echo cs_html_roco(3,'leftc');
+  if ($cs_links[$run]['links_stats'] == 'on') {
         echo cs_secure($cs_lang['online'],1);
         } else {
         echo cs_secure($cs_lang['offline'],1);
         }     
        
-	echo cs_html_roco(0);
+  echo cs_html_roco(0);
 }
 
 echo cs_html_table(0);

@@ -6,10 +6,10 @@ $cs_lang = cs_translate('wars');
 
 if(isset($_POST['submit'])) {
 
-	settype($_POST['max_width'],'integer');
-	settype($_POST['max_height'],'integer');
-	settype($_POST['max_size'],'integer');
-	settype($_POST['max_navlist'],'integer');
+  settype($_POST['max_width'],'integer');
+  settype($_POST['max_height'],'integer');
+  settype($_POST['max_size'],'integer');
+  settype($_POST['max_navlist'],'integer');
 
   $opt_where = "options_mod = 'wars' AND options_name = ";
   $def_cell = array('options_value');
@@ -34,31 +34,31 @@ if(isset($_POST['submit'])) {
   cs_redirect($cs_lang['success'],'wars','options');
 }
 else {
-	
-	$data = array();
-	
-	$data['head']['message'] = cs_getmsg();
-	
-	$data['op'] = cs_sql_option(__FILE__,'wars');
-	$pholders = array();
-	$pholders['{SQUADNAME}'] = $cs_lang['op_squadname'];
-	$pholders['{SQUADURL}'] = $cs_lang['op_squadurl'];
-	$pholders['{OPPONENTNAME}'] = $cs_lang['op_opponentname'];
-	$pholders['{SCORE_1}'] = $cs_lang['op_score1'];
-	$pholders['{SCORE_2}'] = $cs_lang['op_score2'];
-	$pholders['{MATCH_URL}'] = $cs_lang['op_matchurl'];
-	$pholders['{CAT_NAME}'] = $cs_lang['op_catname'];
-	
-	$lang = substr($account['users_lang'],0,2);
-	if (!file_exists('uploads/wars/news_' . $lang . '.txt')) $lang = 'de';
-	
-	$data['news']['text'] = file_get_contents('uploads/wars/news_' . $lang . '.txt');
-	
-	$data['pholders'] = array();
-	foreach ($pholders AS $holder => $meaning) $data['pholders'][] = array('holder' => $holder, 'meaning' => $meaning); 
-	
-	echo cs_subtemplate(__FILE__,$data,'wars','options');
-	
+  
+  $data = array();
+  
+  $data['head']['message'] = cs_getmsg();
+  
+  $data['op'] = cs_sql_option(__FILE__,'wars');
+  $pholders = array();
+  $pholders['{SQUADNAME}'] = $cs_lang['op_squadname'];
+  $pholders['{SQUADURL}'] = $cs_lang['op_squadurl'];
+  $pholders['{OPPONENTNAME}'] = $cs_lang['op_opponentname'];
+  $pholders['{SCORE_1}'] = $cs_lang['op_score1'];
+  $pholders['{SCORE_2}'] = $cs_lang['op_score2'];
+  $pholders['{MATCH_URL}'] = $cs_lang['op_matchurl'];
+  $pholders['{CAT_NAME}'] = $cs_lang['op_catname'];
+  
+  $lang = substr($account['users_lang'],0,2);
+  if (!file_exists('uploads/wars/news_' . $lang . '.txt')) $lang = 'de';
+  
+  $data['news']['text'] = file_get_contents('uploads/wars/news_' . $lang . '.txt');
+  
+  $data['pholders'] = array();
+  foreach ($pholders AS $holder => $meaning) $data['pholders'][] = array('holder' => $holder, 'meaning' => $meaning); 
+  
+  echo cs_subtemplate(__FILE__,$data,'wars','options');
+  
 }
 
 ?>

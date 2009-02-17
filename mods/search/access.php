@@ -2,6 +2,6 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$axx_file['list']	= 1;
+$axx_file['list']  = 1;
 
 ?>

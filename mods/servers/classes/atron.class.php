@@ -206,14 +206,14 @@ class atron
         }
         $srv_rules['url'] = $this->get_string(pack("x"));
 
-	// if url does not begin with http:// leave it empty or add tp:// to convert correct read error
+  // if url does not begin with http:// leave it empty or add tp:// to convert correct read error
         if (substr($srv_rules['url'],0, 7) != 'http://')
         {
             if (substr($srv_rules['url'], 0, 5) == 'tp://')
             {
                 $srv_rules['url'] = 'ht' . $srv_rules['url'];
-		$srv_rules['url'] = '<a href="' . $srv_rules['url'] . '" target="_blank">' 
-		                                . $srv_rules['url'] . '</a>';
+    $srv_rules['url'] = '<a href="' . $srv_rules['url'] . '" target="_blank">' 
+                                    . $srv_rules['url'] . '</a>';
             }
             else
             {
@@ -221,14 +221,14 @@ class atron
             }
         }
 
-	// if no players on the server, changed 0 to 'none'
-	if ($srv_rules['nowplayers'] == 0)
-	{
-	    $srv_rules['nowplayers'] = 'none';
-	}
+  // if no players on the server, changed 0 to 'none'
+  if ($srv_rules['nowplayers'] == 0)
+  {
+      $srv_rules['nowplayers'] = 'none';
+  }
 
-	// mapname: only one map in this game
-	$srv_rules['mapname'] = 'Armagetronad';
+  // mapname: only one map in this game
+  $srv_rules['mapname'] = 'Armagetronad';
 
         // map picture
         $srv_rules['game'];
@@ -238,10 +238,10 @@ class atron
         // server privileges
         $srv_rules['sets'] = '-';
         
-		// General server Info
+    // General server Info
         global $cs_lang;
         $srv_rules['htmlinfo'] = cs_html_roco(1,'rightb',0,0,'50%') . $cs_lang['map:'];
-		$srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
+    $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['players'];
         $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['response'];
@@ -270,7 +270,7 @@ class atron
     function getplayers()
     {
         // set html thead
-	global $cs_lang;
+  global $cs_lang;
     $thead = cs_html_roco(1,'headb');
     $thead .= cs_html_div(1,'text-align:center');
     $thead .= $cs_lang['id'];

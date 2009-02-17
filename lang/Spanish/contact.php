@@ -9,7 +9,7 @@
 
 
 $cs_lang['mod']           = 'Contacto';
-$cs_lang['mod_text']			= 'Ponerse en contacto con el Administrador de la Pagina';
+$cs_lang['mod_text']      = 'Ponerse en contacto con el Administrador de la Pagina';
 
 $cs_lang['wizard'] = 'Asistente';
 $cs_lang['task_done'] = 'Marcar como Acabado';
@@ -32,22 +32,22 @@ $cs_lang['body_archive'] = 'Aqui encuentra todas las Preguntas de Contacto que y
 
 
 // mail.php
-$cs_lang['head_mail']	= 'Formular de Asuntos';
-$cs_lang['body_mail']	= 'Por Favor rellene todas las casillas';
-$cs_lang['design']	= 'Dise&ntilde;o';
-$cs_lang['general']	= 'General';
-$cs_lang['head']	= 'Asunto';
-$cs_lang['help']	= 'Ayuda';
-$cs_lang['tech']	= 'Tecnica';
+$cs_lang['head_mail']  = 'Formular de Asuntos';
+$cs_lang['body_mail']  = 'Por Favor rellene todas las casillas';
+$cs_lang['design']  = 'Dise&ntilde;o';
+$cs_lang['general']  = 'General';
+$cs_lang['head']  = 'Asunto';
+$cs_lang['help']  = 'Ayuda';
+$cs_lang['tech']  = 'Tecnica';
 
 // imprint.php
 $cs_lang['imprint'] = 'Aviso Legal';
 $cs_lang['stand'] = 'Estado';
 
 // imp_edit.php
-$cs_lang['mod_imp']	= 'Aviso Legal';
-$cs_lang['head_edit']	= 'Editar';
-$cs_lang['body_edit']	= 'Por Favor rellene todas las casillas';
+$cs_lang['mod_imp']  = 'Aviso Legal';
+$cs_lang['head_edit']  = 'Editar';
+$cs_lang['body_edit']  = 'Por Favor rellene todas las casillas';
 $cs_lang['error_occurred'] = 'A ocurrido un error';
 $cs_lang['headline'] = 'Texto';
 $cs_lang['text'] = 'Respuesta';
@@ -70,7 +70,7 @@ $cs_lang['receiver'] = 'Recipiente';
 $cs_lang['in_response'] = 'Su respuesta a la pregunta de %s:';
 
 // users_home.php
-$cs_lang['last_mails']		= 'Preguntas Actuales';
+$cs_lang['last_mails']    = 'Preguntas Actuales';
 
 // view.php
 $cs_lang['view'] = 'Mostrar';
@@ -84,16 +84,16 @@ $cs_lang['the_answer'] = 'Respuesta';
 $cs_lang['editor'] = 'Controlado por';
 
 // send.php
-$cs_lang['err_direct']		= 'Esta data no se puede abrir directamente.!';
+$cs_lang['err_direct']    = 'Esta data no se puede abrir directamente.!';
 $cs_lang['email']   = 'E-Mail';
 $cs_lang['icq']     = 'Numero de ICQ';
 $cs_lang['msn'] = 'MSN';
 $cs_lang['empty']   = 'esta Vacio';
 $cs_lang['invalid'] = '%s no es valido';
-$cs_lang['na']		= 'No existe';
-$cs_lang['all']		= 'General';
-$cs_lang['gfx']		= 'Dise&ntilde;o';
-$cs_lang['15min']	= 'Se pueden mandar Mensajes cada 15 Min';
+$cs_lang['na']    = 'No existe';
+$cs_lang['all']    = 'General';
+$cs_lang['gfx']    = 'Dise&ntilde;o';
+$cs_lang['15min']  = 'Se pueden mandar Mensajes cada 15 Min';
 $cs_lang['mail_suc'] = 'Salida de eMail Validada';
 $cs_lang['mail_err'] = '- Error Desconocido, por Favor contacte el Administrador de la Pagina';
 

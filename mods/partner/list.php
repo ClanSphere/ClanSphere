@@ -17,7 +17,7 @@ for($run=0; $run<$categories_loop; $run++) {
     $data['categories'][$run]['categories_name'] = $categories_data[$run]['categories_name'];
     $categories_id = $categories_data[$run]['categories_id'];
     
-	$data['categories'][$run]['partner'] = array();
+  $data['categories'][$run]['partner'] = array();
 
     $select = 'partner_id, partner_name, partner_url, partner_text, partner_alt, partner_limg';
     $order = 'partner_priority ASC';

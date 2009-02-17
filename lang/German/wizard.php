@@ -1,6 +1,6 @@
 <?php
-$cs_lang['mod_name']	= 'Assistent';
-$cs_lang['mod_text']	= 'Hilft beim Einrichten und &uuml;berwachen der Portalfunktionen';
+$cs_lang['mod_name']  = 'Assistent';
+$cs_lang['mod_text']  = 'Hilft beim Einrichten und &uuml;berwachen der Portalfunktionen';
 $cs_lang['wizard']    = 'Assistent';
 
 $cs_lang['lang_name'] = 'Sprachen';
@@ -33,10 +33,10 @@ $cs_lang['done']        = 'Erledigt';
 $cs_lang['next_step']   = 'N&auml;chste Aufgabe';
 
 // users_home.php
-$cs_lang['wizard_welcome']	= 'Willkommen in der ClanSphere Umgebung';
-$cs_lang['wizard_info']	    = 'Es wird empfohlen den Assistenten auszuf&uuml;hren um wichtige Voreinstellungen zu treffen!';
-$cs_lang['wizard_start']	  = 'Assistent starten';
-$cs_lang['wizard_turnoff']	= 'Diese Meldung abschalten';
+$cs_lang['wizard_welcome']  = 'Willkommen in der ClanSphere Umgebung';
+$cs_lang['wizard_info']      = 'Es wird empfohlen den Assistenten auszuf&uuml;hren um wichtige Voreinstellungen zu treffen!';
+$cs_lang['wizard_start']    = 'Assistent starten';
+$cs_lang['wizard_turnoff']  = 'Diese Meldung abschalten';
 
 // welcome.php
 $cs_lang['welcome']   = 'Willkommensanzeige';

@@ -8,11 +8,11 @@ $data = array();
 $options = cs_sql_option(__FILE__,'comments');
 
 if (isset($_POST['submit'])) {
-	require('mods/clansphere/func_options.php');
-	$save['show_avatar'] = $_POST['show_avatar'];
-	$save['allow_unreg'] = $_POST['allow_unreg'];
-	cs_optionsave('comments', $save);
-	cs_redirect($cs_lang['success'],'options','roots');
+  require('mods/clansphere/func_options.php');
+  $save['show_avatar'] = $_POST['show_avatar'];
+  $save['allow_unreg'] = $_POST['allow_unreg'];
+  cs_optionsave('comments', $save);
+  cs_redirect($cs_lang['success'],'options','roots');
 }
 
 $checked = ' checked="checked"';

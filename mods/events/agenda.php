@@ -41,15 +41,15 @@ $events_count = count($data['events']);
 
 for ($i = 0; $i < $events_count; $i++) {
 
-	$data['events'][$i]['time'] = cs_date('unix',$data['events'][$i]['events_time'],1);
+  $data['events'][$i]['time'] = cs_date('unix',$data['events'][$i]['events_time'],1);
 
-	if(empty($data['events'][$i]['categories_picture'])) {
-		$data['events'][$i]['categories_picture'] = '';
-	} else {
-		$place = 'uploads/categories/' . $data['events'][$i]['categories_picture'];
-		$size = getimagesize($cs_main['def_path'] . '/' . $place);
-		$data['events'][$i]['categories_picture'] = cs_html_img($place,$size[1],$size[0]);
-	}	
+  if(empty($data['events'][$i]['categories_picture'])) {
+    $data['events'][$i]['categories_picture'] = '';
+  } else {
+    $place = 'uploads/categories/' . $data['events'][$i]['categories_picture'];
+    $size = getimagesize($cs_main['def_path'] . '/' . $place);
+    $data['events'][$i]['categories_picture'] = cs_html_img($place,$size[1],$size[0]);
+  }  
 }
 
 echo cs_subtemplate(__FILE__, $data, 'events', 'agenda');

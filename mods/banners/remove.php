@@ -18,7 +18,7 @@ if(isset($_POST['agree'])) {
   }
   
   cs_sql_delete(__FILE__,'banners',$banners_id);
-	
+  
   cs_redirect($cs_lang['del_true'], 'banners');
 }
 

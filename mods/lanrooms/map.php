@@ -26,12 +26,12 @@ if(!empty($_POST['submit'])) {
   }
   
   if(empty($cs_lanroomd['lanroomd_row'])) {
-  	$error++;
+    $error++;
     $errormsg .= $cs_lang['no_row'] . cs_html_br(1);
   }
   
   if(empty($cs_lanroomd['lanroomd_col'])) {
-  	$error++;
+    $error++;
     $errormsg .= $cs_lang['no_col'] . cs_html_br(1);
   }
   
@@ -40,28 +40,28 @@ if(!empty($_POST['submit'])) {
     $errormsg .= $cs_lang['no_room_given'] . cs_html_br(1);
   }
   else {
-  	$where = "lanroomd_number = '" . $cs_lanroomd['lanroomd_number'] . "' AND lanrooms_id = '";
-  	$where .= $lanrooms_id . "'";
-  	$search_number = cs_sql_count(__FILE__,'lanroomd',$where);
-  	if(!empty($search_number)) {
+    $where = "lanroomd_number = '" . $cs_lanroomd['lanroomd_number'] . "' AND lanrooms_id = '";
+    $where .= $lanrooms_id . "'";
+    $search_number = cs_sql_count(__FILE__,'lanroomd',$where);
+    if(!empty($search_number)) {
       $error++;
       $errormsg .= $cs_lang['number_used'] . cs_html_br(1);
-  	}
-  	$where = "lanroomd_row = '" . $cs_lanroomd['lanroomd_row'] . "' AND lanroomd_col = '";
-  	$where .= $cs_lanroomd['lanroomd_col'] . "' AND lanrooms_id = '" . $lanrooms_id . "'";
-  	$search_target = cs_sql_count(__FILE__,'lanroomd',$where);
-  	if(!empty($search_target)) {
+    }
+    $where = "lanroomd_row = '" . $cs_lanroomd['lanroomd_row'] . "' AND lanroomd_col = '";
+    $where .= $cs_lanroomd['lanroomd_col'] . "' AND lanrooms_id = '" . $lanrooms_id . "'";
+    $search_target = cs_sql_count(__FILE__,'lanroomd',$where);
+    if(!empty($search_target)) {
       $error++;
       $errormsg .= $cs_lang['target_used'] . cs_html_br(1);
-  	}
+    }
  }
 
   if(!empty($_POST['submit']) AND empty($error)) {
     $cs_lanroomd['lanrooms_id'] = $lanrooms_id;
     $lanroomd_cells = array_keys($cs_lanroomd);
-	$lanroomd_save = array_values($cs_lanroomd);
-	cs_sql_insert(__FILE__,'lanroomd',$lanroomd_cells,$lanroomd_save);
-	$cs_lanroomd['lanroomd_number']++;
+  $lanroomd_save = array_values($cs_lanroomd);
+  cs_sql_insert(__FILE__,'lanroomd',$lanroomd_cells,$lanroomd_save);
+  $cs_lanroomd['lanroomd_number']++;
   }
 }
 else {

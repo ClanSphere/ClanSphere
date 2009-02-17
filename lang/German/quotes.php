@@ -2,8 +2,8 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Zitate';
-$cs_lang['modtext']	= 'Zitate verwalten und erstellen';
+$cs_lang['mod']  = 'Zitate';
+$cs_lang['modtext']  = 'Zitate verwalten und erstellen';
 
 // Create
 $cs_lang['fill_obligated'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
@@ -29,7 +29,7 @@ $cs_lang['edit_done'] = '&Auml;nderung erfolgreich';
 
 // List
 $cs_lang['user'] = 'Benutzer';
-$cs_lang['list']	= 'Liste';
+$cs_lang['list']  = 'Liste';
 
 $cs_lang['headline'] = 'Kopfzeile';
 
@@ -37,10 +37,10 @@ $cs_lang['headline'] = 'Kopfzeile';
 $cs_lang['new_quote'] = 'Neues Zitat';
 
 // Remove
-$cs_lang['rly_remove']		= 'Datensatz Nr. %s wirklich entfernen?';
+$cs_lang['rly_remove']    = 'Datensatz Nr. %s wirklich entfernen?';
 
 // View
-$cs_lang['details']	= 'Details';
-$cs_lang['quote_info']		= 'Informationen zum ausgew&auml;hlten Zitat.';
+$cs_lang['details']  = 'Details';
+$cs_lang['quote_info']    = 'Informationen zum ausgew&auml;hlten Zitat.';
 
 ?>

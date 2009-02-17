@@ -53,7 +53,7 @@ $ext = substr($file,$name - $extension + 1,$name);
 if(!empty($id)) { 
   $file_path = "uploads/board/files/".$cs_thread_file['boardfiles_id'].'.'.$ext;
 }
-else {	
+else {  
   $file_path = "uploads/board/files/".$cs_thread_file['boardfiles_name'];
 }
 

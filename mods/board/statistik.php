@@ -40,16 +40,16 @@ $data['stats']['online'] .= sprintf($cs_lang['visitor_online'], $visitor_online)
 $cs_users = cs_sql_select(__FILE__,'users',$select,$upcome,$order,0,0);
 
 if(empty($cs_users)) {
-	$data['users'][0]['nick'] = $cs_lang['no_data'];
+  $data['users'][0]['nick'] = $cs_lang['no_data'];
 } else {
   for($run = 0; $run < count($cs_users); $run++) {
     if($run != 0) {
-	$data['users'][$run]['nick'] = ', ';
-	}
-	else {
-	$data['users'][$run]['nick'] = '';
-	}
-	$data['users'][$run]['nick'] .= cs_html_img('symbols/countries/' . $cs_users[$run]['users_country'] . '.png') . ' ';
+  $data['users'][$run]['nick'] = ', ';
+  }
+  else {
+  $data['users'][$run]['nick'] = '';
+  }
+  $data['users'][$run]['nick'] .= cs_html_img('symbols/countries/' . $cs_users[$run]['users_country'] . '.png') . ' ';
     $data['users'][$run]['nick'] .= cs_user($cs_users[$run]['users_id'], $cs_users[$run]['users_nick'], $cs_users[$run]['users_active']);
   }
 }

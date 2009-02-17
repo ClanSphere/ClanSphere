@@ -2,12 +2,12 @@
 
 $cs_lang['mod_name'] = 'Vriendenlijst';
 $cs_lang['mod_text'] = 'Vriendenlijst Module';
-$cs_lang['mod']	= 'Vrieden';
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['head_create']	= 'creëer';
-$cs_lang['body_create']	= 'Vul zoveel mogelijk velden in.';
-$cs_lang['head_edit']	= 'Bewerk - Aantekening';
-$cs_lang['body_edit']	= 'Verander de aantekening hier.';
+$cs_lang['mod']  = 'Vrieden';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['head_create']  = 'creëer';
+$cs_lang['body_create']  = 'Vul zoveel mogelijk velden in.';
+$cs_lang['head_edit']  = 'Bewerk - Aantekening';
+$cs_lang['body_edit']  = 'Verander de aantekening hier.';
 $cs_lang['more'] = 'Meer';
 $cs_lang['error_id'] = '- Selecteer een vriend.';
 $cs_lang['error_available'] = '- Deze vriend staat al in uw lijst.';
@@ -32,8 +32,8 @@ $cs_lang['buddys_notice_nick'] = 'Nick';
 $cs_lang['buddys_notice_laston'] = 'Laasts online:';
 $cs_lang['buddys_notice_add'] = 'Toegevoegd:';
 $cs_lang['buddys_notice'] = 'Aantekening:';
-$cs_lang['off_buddies']	= 'Vrienden offline...';
-$cs_lang['on_buddies']	= 'Vrienden online...';
+$cs_lang['off_buddies']  = 'Vrienden offline...';
+$cs_lang['on_buddies']  = 'Vrienden online...';
 $cs_lang['no_buddys_online'] = 'Geen vrienden online.';
 
 ?>

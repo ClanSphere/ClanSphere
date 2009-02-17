@@ -5,9 +5,9 @@
 $cs_lang = cs_translate('clansphere');
 
 if (!empty($_GET['template'])) {
-	$_SESSION['tpl_preview'] = $_GET['template'];
-	$shorten = "window.location.href = window.location.href.substr(0,window.location.href.lastIndexOf('template')); ";
-	#die(ajax_js($shorten . "window.location.reload();"));
+  $_SESSION['tpl_preview'] = $_GET['template'];
+  $shorten = "window.location.href = window.location.href.substr(0,window.location.href.lastIndexOf('template')); ";
+  #die(ajax_js($shorten . "window.location.reload();"));
 }
 
 $templates = cs_checkdirs('templates');
@@ -43,25 +43,25 @@ if($account['access_wizard'] == 5) {
 }
 
 if(!empty($activate) AND !empty($allow)) {
-	require('mods/clansphere/func_options.php');
-	$save = array();
-	$save['def_tpl'] = $activate;
-	if(isset($templates[ucfirst($activate)]['themes'])) {
-    	$themes = cs_checkdirs('themes');
-    	if(isset($themes[ucfirst($templates[ucfirst($activate)]['themes'])])) {
-        	$save['def_theme'] = $templates[ucfirst($activate)]['themes'];
-    	}
-  	}
-  	cs_optionsave('clansphere', $save);
+  require('mods/clansphere/func_options.php');
+  $save = array();
+  $save['def_tpl'] = $activate;
+  if(isset($templates[ucfirst($activate)]['themes'])) {
+      $themes = cs_checkdirs('themes');
+      if(isset($themes[ucfirst($templates[ucfirst($activate)]['themes'])])) {
+          $save['def_theme'] = $templates[ucfirst($activate)]['themes'];
+      }
+    }
+    cs_optionsave('clansphere', $save);
   
-	$msg = file_exists('themes/'.$activate) ? $cs_lang['theme_found'] . cs_link($cs_lang['change_to_this'],'clansphere','themes_list','activate='.$activate) : $cs_lang['success'];
+  $msg = file_exists('themes/'.$activate) ? $cs_lang['theme_found'] . cs_link($cs_lang['change_to_this'],'clansphere','themes_list','activate='.$activate) : $cs_lang['success'];
   
-	if(!empty($account['users_ajax']) && $cs_main['php_self']['filename'] == 'content') {
-  		cs_redirectmsg($msg);
-  		#die(ajax_js('window.location.reload();'));
-  	} else {
-    	cs_redirect($msg,'clansphere','temp_list');
-  	}
+  if(!empty($account['users_ajax']) && $cs_main['php_self']['filename'] == 'content') {
+      cs_redirectmsg($msg);
+      #die(ajax_js('window.location.reload();'));
+    } else {
+      cs_redirect($msg,'clansphere','temp_list');
+    }
 }
 else {
   $data['lang']['getmsg'] = cs_getmsg();

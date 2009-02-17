@@ -37,65 +37,65 @@ else {
       include_once('mods/board/repair.php');
       $thread['threads_comments'] = cs_threads_comments($thread['threads_id']);
     }
-		
+    
     $icon = 'post_';
     $tid = $thread['threads_id']; 
     
-	if(!empty($account['users_id']) AND $thread['threads_last_time'] > $cs_readtime AND $thread['threads_last_time'] > $thread['read_since']) {
+  if(!empty($account['users_id']) AND $thread['threads_last_time'] > $cs_readtime AND $thread['threads_last_time'] > $thread['read_since']) {
       $icon .= 'unread_';
     }
-	
-	if(!empty($thread['threads_close'])) {
+  
+  if(!empty($thread['threads_close'])) {
       $icon .= 'close_';
-	}
-	
+  }
+  
     if($thread['threads_important']) {
       $icon .= 'important_';
-	}
-		
+  }
+    
     $data['threads'][$run]['icon'] = cs_html_img('symbols/board/' .$icon. '.png');
     
-	if(!empty($thread['threads_important'])) {
+  if(!empty($thread['threads_important'])) {
       $data['threads'][$run]['important'] = $cs_lang['important'] . ' ';
     }
-	else {
-	  $data['threads'][$run]['important'] = '';
-	}
+  else {
+    $data['threads'][$run]['important'] = '';
+  }
     
-	$headline = cs_secure($thread['threads_headline']);
+  $headline = cs_secure($thread['threads_headline']);
     
-	$data['threads'][$run]['headline'] = cs_link($headline,'board','thread','where=' . $thread['threads_id']);
+  $data['threads'][$run]['headline'] = cs_link($headline,'board','thread','where=' . $thread['threads_id']);
     
-	if($thread['threads_comments'] > $account['users_limit']) {
+  if($thread['threads_comments'] > $account['users_limit']) {
       $data['threads'][$run]['pages'] = cs_html_br(1);
       $data['threads'][$run]['pages'] .= $cs_lang['page'] . ' ';
       $data['threads'][$run]['pages'] .= cs_pages('board','thread',$thread['threads_comments'],0,$thread['threads_id'],0,0,1);
     }
-	else {
-	  $data['threads'][$run]['pages'] = '';
-	}
+  else {
+    $data['threads'][$run]['pages'] = '';
+  }
     
     $data['threads'][$run]['comments'] = $thread['threads_comments'];
     $data['threads'][$run]['view'] = $thread['threads_view'];
-    	
-	if(!empty($thread['threads_last_time'])) {
+      
+  if(!empty($thread['threads_last_time'])) {
       $date = cs_date('unix',$thread['threads_last_time'],1);
       $goto = floor($thread['threads_comments'] / $account['users_limit']) * $account['users_limit'];
       $goto .= '#com' . $thread['threads_comments'];
       
-	  $data['threads'][$run]['last'] =  cs_link($date,'board','thread','where=' . $thread['threads_id'] . '&amp;start=' . $goto);
+    $data['threads'][$run]['last'] =  cs_link($date,'board','thread','where=' . $thread['threads_id'] . '&amp;start=' . $goto);
       
-	  if(!empty($thread['users_id'])) {
+    if(!empty($thread['users_id'])) {
         $data['threads'][$run]['last_user'] = cs_html_br(1);
         $data['threads'][$run]['last_user'] .= $cs_lang['from'] . ' ';
         $data['threads'][$run]['last_user'] .= cs_user($thread['users_id'],$thread['users_nick'],$thread['users_active']);
       }
-	  else {
-	    $data['threads'][$run]['last_user'] = '';
-	  }
+    else {
+      $data['threads'][$run]['last_user'] = '';
+    }
     }
     
-	$run++;
+  $run++;
   }
 }
 

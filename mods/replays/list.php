@@ -11,7 +11,7 @@ settype($categories_id,'integer');
 empty($_REQUEST['where']) ? $categories_id = 0 : $categories_id = $_REQUEST['where'];
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
 if(!empty($_POST['categories_id'])) {
-	$categories_id = $_POST['categories_id'];
+  $categories_id = $_POST['categories_id'];
 }
 empty($categories_id) ? $where = 0 : $where = "categories_id = '" . cs_sql_escape($categories_id) . "'";
 $cs_sort[1] = 'replays_date DESC';
@@ -26,18 +26,18 @@ $replays_count = cs_sql_count(__FILE__,'replays',$where);
 
   $data['head']['replays_count'] = $replays_count;
   $data['head']['pages'] = cs_pages('replays','manage',$replays_count,$start,$categories_id,$sort);
-	$catmod = "categories_mod = 'replays'";
-	$categories_data = cs_sql_select(__FILE__,'categories','*',$catmod,'categories_name',0,0);
-	$data['head']['dropdown'] = cs_dropdown('categories_id','categories_name',$categories_data,$categories_id);
-	
+  $catmod = "categories_mod = 'replays'";
+  $categories_data = cs_sql_select(__FILE__,'categories','*',$catmod,'categories_name',0,0);
+  $data['head']['dropdown'] = cs_dropdown('categories_id','categories_name',$categories_data,$categories_id);
+  
 if(empty($categories_id)) { $cat_where = ''; } else { $cat_where = "categories_id = '" . $categories_id . "'"; }
 $select = 'games_id, replays_date, replays_team1, replays_team2, replays_id';
 $data['replays'] = cs_sql_select(__FILE__,'replays',$select,$cat_where,$order,$start,$account['users_limit']);
 $replays_loop = count($data['replays']);
 
-	$data['sort']['date'] = cs_sort('replays','manage',$start,$categories_id,1,$sort);
-	$data['sort']['team1'] = cs_sort('replays','manage',$start,$categories_id,3,$sort);
-	$data['sort']['team2'] = cs_sort('replays','manage',$start,$categories_id,5,$sort);
+  $data['sort']['date'] = cs_sort('replays','manage',$start,$categories_id,1,$sort);
+  $data['sort']['team1'] = cs_sort('replays','manage',$start,$categories_id,3,$sort);
+  $data['sort']['team2'] = cs_sort('replays','manage',$start,$categories_id,5,$sort);
 
 
 for($run=0; $run<$replays_loop; $run++) {

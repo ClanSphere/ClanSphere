@@ -13,9 +13,9 @@ $data = array();
 
 if(empty($cs_users)) {
 
-	$data['lang']['no_users'] = $cs_lang['no_data'];
+  $data['lang']['no_users'] = $cs_lang['no_data'];
   
-	echo cs_subtemplate(__FILE__,$data,'users','no_users');
+  echo cs_subtemplate(__FILE__,$data,'users','no_users');
   
 } else {
   
@@ -24,7 +24,7 @@ if(empty($cs_users)) {
     $data['users'][$run]['nick'] = cs_user($cs_users[$run]['users_id'], $cs_users[$run]['users_nick'], $cs_users[$run]['users_active']);
     $data['users'][$run]['countryicon'] = cs_html_img('symbols/countries/'.$cs_users[$run]['users_country'].'.png');
     $data['users'][$run]['messageurl'] = cs_url('messages','create','to='.cs_secure($cs_users[$run]['users_nick']));
-	}
+  }
   echo cs_subtemplate(__FILE__,$data,'users','navonline');
 }
 

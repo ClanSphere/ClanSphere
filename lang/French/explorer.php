@@ -2,12 +2,12 @@
 // ClanSphere 2006 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Explorateur';
-$cs_lang['modinfo']	= 'Administration des fichiers de l\'espace web';
+$cs_lang['mod']  = 'Explorateur';
+$cs_lang['modinfo']  = 'Administration des fichiers de l\'espace web';
 
 
 // CHMod
-$cs_lang['chmod']	= 'CHMOD';
+$cs_lang['chmod']  = 'CHMOD';
 $cs_lang['grant_rights'] = 'Accès des répertoires et fichiers.';
 $cs_lang['no_selection'] = 'Aucun objet selectionné.';
 $cs_lang['error_chmod']  = 'Aucun changement du CHMOD.';
@@ -38,8 +38,8 @@ $cs_lang['error_edit'] = 'Le Fichier n\'a pas pu être édité.';
 $cs_lang['not_found']  = 'Fichier introuvable';
 
 // Information
-$cs_lang['information']	= 'Informations';
-$cs_lang['get_information']	= 'Obtenir les informations sur un fichier.';
+$cs_lang['information']  = 'Informations';
+$cs_lang['get_information']  = 'Obtenir les informations sur un fichier.';
 $cs_lang['f_size']    = 'Taille du fichier';
 $cs_lang['f_name']    = 'Nom du fichier';
 $cs_lang['f_chmod']   = 'CHMOD';
@@ -65,7 +65,7 @@ $cs_lang['dir_removed'] = 'Répertoire supprimé avec succès.';
 $cs_lang['dir_error'] = 'Le répertoire n\'a pas pu être supprimé.';
 
 // View
-$cs_lang['view_file']	= 'Aperçu du fichier.';
+$cs_lang['view_file']  = 'Aperçu du fichier.';
 $cs_lang['code'] = 'Code';
 $cs_lang['design'] = 'Conception ';
 
@@ -75,8 +75,8 @@ $cs_lang['max_upload'] = 'Le téléchargement maximum est ';
 $cs_lang['file'] = 'Fichier';
 $cs_lang['infobox'] = 'Infos';
 $cs_lang['possible'] = 'Indication facultative :'.cs_html_br(1).
-						'Si aucune indication, le nom de fichier original sera employé.'.cs_html_br(1).
-						'Aucune format de fichier n\'est exigé.';
+            'Si aucune indication, le nom de fichier original sera employé.'.cs_html_br(1).
+            'Aucune format de fichier n\'est exigé.';
 $cs_lang['error_upload'] = 'Le fichier n\'a pas pu être téléchargé.';
 
 $cs_lang['entry_in_accessfile'] = 'Créer également l\'entrée dans access.php';
@@ -91,9 +91,9 @@ $cs_lang['lev_4'] = 'Organisateurs';
 $cs_lang['lev_5'] = 'Administrateur';
 
 // Create_dir
-$cs_lang['create_dir']		= 'Créer un répertoire';
-$cs_lang['folder_create']	= 'Vous pouvez créer ici un répertoire.';
-$cs_lang['dir_name']		= 'Nom du répertoire';
+$cs_lang['create_dir']    = 'Créer un répertoire';
+$cs_lang['folder_create']  = 'Vous pouvez créer ici un répertoire.';
+$cs_lang['dir_name']    = 'Nom du répertoire';
 
 
 

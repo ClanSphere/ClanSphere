@@ -2,7 +2,7 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$posts 	 = 10;
+$posts    = 10;
 $threads = 10;
 
 include('mods/board/functions.php');
@@ -52,7 +52,7 @@ if(empty($comments_loop)) {
   $data['com'] = '';
 }
 
-for($run=0; $run < $comments_loop; $run++) {	
+for($run=0; $run < $comments_loop; $run++) {  
   $where = "comments_fid = '" . $cs_comments[$run]['threads_id'] . "' AND users_id = '" . $user_id . "'";
   $com = cs_sql_select(__FIlE__,'comments','comments_fid, comments_time',$where,"comments_time DESC",0,1);
 

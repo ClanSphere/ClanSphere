@@ -2,12 +2,12 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Explorer';
-$cs_lang['modinfo']	= 'Administracion de los Archivos que se encuentran en el Espacio de Web';
+$cs_lang['mod']  = 'Explorer';
+$cs_lang['modinfo']  = 'Administracion de los Archivos que se encuentran en el Espacio de Web';
 
 
 // CHMod
-$cs_lang['chmod']	= 'CHMOD';
+$cs_lang['chmod']  = 'CHMOD';
 $cs_lang['grant_rights'] = 'Aqui puede editar el acceso de los Archivos y Datos.';
 $cs_lang['no_selection'] = 'No ha elegido ningun Objeto.';
 $cs_lang['error_chmod']  = 'EL CHMOD no ha podido ser cambiado.';
@@ -38,8 +38,8 @@ $cs_lang['error_edit'] = 'El Archivo no se pudo editar.';
 $cs_lang['not_found']  = 'No se encontaron datos';
 
 // Information
-$cs_lang['information']	= 'Informaciones';
-$cs_lang['get_information']	= 'Aqui puede adquirir informaciones de un objeto';
+$cs_lang['information']  = 'Informaciones';
+$cs_lang['get_information']  = 'Aqui puede adquirir informaciones de un objeto';
 $cs_lang['f_size']    = 'Capacidad del Archivo';
 $cs_lang['f_name']    = 'Nombre del Archivo';
 $cs_lang['f_chmod']   = 'CHMOD';
@@ -65,7 +65,7 @@ $cs_lang['dir_removed'] = 'Operacion de remover validada.';
 $cs_lang['dir_error'] = 'No se pudo remover.';
 
 // View
-$cs_lang['view_file']	= 'Aqui pueder ver los archivos';
+$cs_lang['view_file']  = 'Aqui pueder ver los archivos';
 $cs_lang['code'] = 'Code';
 $cs_lang['design'] = 'Dise&ntilde;o';
 
@@ -89,8 +89,8 @@ $cs_lang['lev_4'] = 'con Editar';
 $cs_lang['lev_5'] = 'con Remover';
 
 // Create_dir
-$cs_lang['create_dir']		= 'Crear Archivo';
-$cs_lang['folder_create']	= 'Aqui puede crear archivos';
-$cs_lang['dir_name']		= 'Nombre del Archivo';
+$cs_lang['create_dir']    = 'Crear Archivo';
+$cs_lang['folder_create']  = 'Aqui puede crear archivos';
+$cs_lang['dir_name']    = 'Nombre del Archivo';
 
 ?>

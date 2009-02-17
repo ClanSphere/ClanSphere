@@ -50,38 +50,38 @@ if($account['access_cups'] >= 2 && cs_time() < $cs_cup['cups_start'] && empty($s
     
     if ($cs_cup['cups_system'] == 'teams') {
         
-    	echo $cs_lang['which_squad'];
-    	echo cs_html_roco(0);
-    	echo cs_html_table(0);
-    	echo cs_html_br(1);
+      echo $cs_lang['which_squad'];
+      echo cs_html_roco(0);
+      echo cs_html_table(0);
+      echo cs_html_br(1);
   
-    	$tables = 'members mm INNER JOIN {pre}_squads sq ON mm.squads_id = sq.squads_id';
-    	$cells = 'mm.squads_id AS squads_id, sq.squads_name AS squads_name';
+      $tables = 'members mm INNER JOIN {pre}_squads sq ON mm.squads_id = sq.squads_id';
+      $cells = 'mm.squads_id AS squads_id, sq.squads_name AS squads_name';
       $where = 'mm.members_admin = \'1\' AND mm.users_id = \'' . $account['users_id'] . '\'';
-    	$select = cs_sql_select(__FILE__,$tables,$cells,$where,'sq.squads_name',0,0);
+      $select = cs_sql_select(__FILE__,$tables,$cells,$where,'sq.squads_name',0,0);
   
-    	echo cs_html_form(1,'cupsjoin','cups','join');
-    	echo cs_html_table(1,'forum',1);
-    	echo cs_html_roco(1,'leftc');
-    	echo cs_icon('yast_group_add') . $cs_lang['squad'];
-    	echo cs_html_roco(2,'leftb');
-    	echo cs_html_select(1,'squads_id');
-    	echo cs_html_option('----',0,1);
-    	foreach ($select AS $squad) {
-    		echo cs_html_option($squad['squads_name'],$squad['squads_id']);
-    	}
-    	echo cs_html_select(0);
-    	echo cs_html_roco(0);
+      echo cs_html_form(1,'cupsjoin','cups','join');
+      echo cs_html_table(1,'forum',1);
+      echo cs_html_roco(1,'leftc');
+      echo cs_icon('yast_group_add') . $cs_lang['squad'];
+      echo cs_html_roco(2,'leftb');
+      echo cs_html_select(1,'squads_id');
+      echo cs_html_option('----',0,1);
+      foreach ($select AS $squad) {
+        echo cs_html_option($squad['squads_name'],$squad['squads_id']);
+      }
+      echo cs_html_select(0);
+      echo cs_html_roco(0);
       
       echo cs_html_roco(1,'leftc');
-    	echo cs_icon('configure') . $cs_lang['options'];
-    	echo cs_html_roco(2,'leftb');
-    	echo cs_html_vote('cups_id',$cups_id,'hidden');
+      echo cs_icon('configure') . $cs_lang['options'];
+      echo cs_html_roco(2,'leftb');
+      echo cs_html_vote('cups_id',$cups_id,'hidden');
       echo cs_html_vote('system','teams','hidden');
-    	echo cs_html_vote('submit',$cs_lang['take_part'],'submit');
-    	echo cs_html_roco(0);
-    	echo cs_html_table(0);
-    	echo cs_html_form(0);
+      echo cs_html_vote('submit',$cs_lang['take_part'],'submit');
+      echo cs_html_roco(0);
+      echo cs_html_table(0);
+      echo cs_html_form(0);
         
     } else {
     
@@ -99,32 +99,32 @@ if($account['access_cups'] >= 2 && cs_time() < $cs_cup['cups_start'] && empty($s
     }
     
   } else {
-  	
-  	$cs_cups['cupsquads_time'] = cs_time();
+    
+    $cs_cups['cupsquads_time'] = cs_time();
     
     if ($_POST['system'] == 'teams') {
       
       $cs_cups['squads_id'] = (int) $_POST['squads_id'];
       
-    	$cond = 'squads_id = \''.$cs_cups['squads_id'].'\' AND users_id = \''.$account['users_id'].'\' AND members_admin = \'1\'';
-    	$access = cs_sql_count(__FILE__,'members',$cond);
+      $cond = 'squads_id = \''.$cs_cups['squads_id'].'\' AND users_id = \''.$account['users_id'].'\' AND members_admin = \'1\'';
+      $access = cs_sql_count(__FILE__,'members',$cond);
     } else {
       $access = ($account['access_cups'] >= 2) ? 1 : 0;
       $cs_cups['squads_id'] = $account['users_id'];
       
     }
   
-  	if(!empty($access)) {
+    if(!empty($access)) {
       $cs_cups['cups_id'] = $cups_id;
-  		$cells = array_keys($cs_cups);
-  		$values = array_values($cs_cups);
-  		cs_sql_insert(__FILE__,'cupsquads',$cells,$values);
-  		$msg = $cs_lang['successfully_joined'];
-  	} else {
-  		$msg = $cs_lang['no_access'];
-  	}
+      $cells = array_keys($cs_cups);
+      $values = array_values($cs_cups);
+      cs_sql_insert(__FILE__,'cupsquads',$cells,$values);
+      $msg = $cs_lang['successfully_joined'];
+    } else {
+      $msg = $cs_lang['no_access'];
+    }
 
-	cs_redirect($msg,'cups','center');
+  cs_redirect($msg,'cups','center');
   }
 
 } else {
@@ -133,8 +133,8 @@ if($account['access_cups'] >= 2 && cs_time() < $cs_cup['cups_start'] && empty($s
 }
 if(empty($form)) {
   echo $content;
-	echo cs_html_roco(0);
-	echo cs_html_table(0);
+  echo cs_html_roco(0);
+  echo cs_html_table(0);
 }
 
 ?>

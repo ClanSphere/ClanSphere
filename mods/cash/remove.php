@@ -18,9 +18,9 @@ if(isset($_GET['cancel']))
 
 else {
 
-	$data['head']['body'] = sprintf($cs_lang['del_rly'],$cash_id);
-	$data['url']['agree'] = cs_url('cash','remove','id=' . $cash_id . '&amp;agree');
-	$data['url']['cancel'] = cs_url('cash','remove','id=' . $cash_id . '&amp;cancel');
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$cash_id);
+  $data['url']['agree'] = cs_url('cash','remove','id=' . $cash_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('cash','remove','id=' . $cash_id . '&amp;cancel');
 
   echo cs_subtemplate(__FILE__,$data,'cash','remove');
 }

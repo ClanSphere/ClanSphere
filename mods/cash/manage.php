@@ -28,17 +28,17 @@ $cs_sort[8] = 'users_nick ASC';
 $order = $cs_sort[$sort];
 
 if(!empty($user)) {
-	$data['if']['all'] = FALSE;
-	$data['if']['only_user'] = TRUE;
-	$cs_user = cs_sql_select(__FILE__,'users','users_nick',"users_id = '" . $user ."'",0,0,1);
-	$data['lang']['user'] = $cs_user['users_nick'];
-	$where_user = "users_id ='" . $user . "'";
-	$and_user = " AND users_id ='" . $user . "'";
-	$and_user2 = " AND ca.users_id ='" . $user . "'";
+  $data['if']['all'] = FALSE;
+  $data['if']['only_user'] = TRUE;
+  $cs_user = cs_sql_select(__FILE__,'users','users_nick',"users_id = '" . $user ."'",0,0,1);
+  $data['lang']['user'] = $cs_user['users_nick'];
+  $where_user = "users_id ='" . $user . "'";
+  $and_user = " AND users_id ='" . $user . "'";
+  $and_user2 = " AND ca.users_id ='" . $user . "'";
 } else {
-	$where_user = 0;
-	$and_user = '';
-	$and_user2 = '';
+  $where_user = 0;
+  $and_user = '';
+  $and_user2 = '';
 }
 $cash_count = cs_sql_count(__FILE__,'cash',$where_user);
 
@@ -52,7 +52,7 @@ $where = "cash_inout = 'in'" . $and_user;
 $cs_cash_overview = cs_sql_select(__FILE__,'cash','cash_money',$where,0,0,0);
 $over_loop = count($cs_cash_overview);
 for($run=0; $run<$over_loop; $run++) {
-	$money = $money + $cs_cash_overview[$run]['cash_money'];
+  $money = $money + $cs_cash_overview[$run]['cash_money'];
 }
 $money_in = $money;
 $money = 0;
@@ -60,7 +60,7 @@ $where = "cash_inout = 'out'" . $and_user;
 $cs_cash_overview = cs_sql_select(__FILE__,'cash','cash_money',$where,0,0,0);
 $over_loop = count($cs_cash_overview);
 for($run=0; $run<$over_loop; $run++) {
-	$money = $money + $cs_cash_overview[$run]['cash_money'];
+  $money = $money + $cs_cash_overview[$run]['cash_money'];
 }
 $money_out = $money;
 $money_now = $money_in - $money_out;
@@ -86,9 +86,9 @@ $cash_count = count($cash);
 for($run=0; $run<$cash_count; $run++) {
 $cash_year = substr($cash[$run]['cash_time'], 0, 4);
 $cash_month = substr($cash[$run]['cash_time'], 5, 2);
-	if($cash_year == $year AND ($cash_month == $mon)) {
-		$zahlungen++;
-	}
+  if($cash_year == $year AND ($cash_month == $mon)) {
+    $zahlungen++;
+  }
 }
 
 $data['ov']['view_cash'] = $zahlungen . ' / ' . $users . ' - ' . $cs_lang['show'];
@@ -108,23 +108,23 @@ $cash_loop = count($data['cash']);
 
 for($run=0; $run<$cash_loop; $run++) {
         
-	$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_id',"users_id = '" . $data['cash'][$run]['users_id'] . "'",'users_nick',0);
-	$data['cash'][$run]['users_nick'] = $cs_user['users_nick'];
-	$data['cash'][$run]['users_id'] = $data['cash'][$run]['users_id'];
-	
-	$data['cash'][$run]['date'] = cs_date('date',$data['cash'][$run]['cash_time']);
-	$text = $data['cash'][$run]['cash_text'];
-	$text = substr($text, 0, 25);
-	$data['cash'][$run]['text'] = cs_secure($text);
-	$data['cash'][$run]['money'] = cs_secure($data['cash'][$run]['cash_money']);
-	
-	$inout = $data['cash'][$run]['cash_inout'];
-	if ($inout == 'in') { $icon = 'green'; }
-	elseif ($inout == 'out') { $icon = 'red'; }
-	$data['cash'][$run]['in_out'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
-	
-	$data['cash'][$run]['id'] = $data['cash'][$run]['cash_id'];
-	
+  $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_id',"users_id = '" . $data['cash'][$run]['users_id'] . "'",'users_nick',0);
+  $data['cash'][$run]['users_nick'] = $cs_user['users_nick'];
+  $data['cash'][$run]['users_id'] = $data['cash'][$run]['users_id'];
+  
+  $data['cash'][$run]['date'] = cs_date('date',$data['cash'][$run]['cash_time']);
+  $text = $data['cash'][$run]['cash_text'];
+  $text = substr($text, 0, 25);
+  $data['cash'][$run]['text'] = cs_secure($text);
+  $data['cash'][$run]['money'] = cs_secure($data['cash'][$run]['cash_money']);
+  
+  $inout = $data['cash'][$run]['cash_inout'];
+  if ($inout == 'in') { $icon = 'green'; }
+  elseif ($inout == 'out') { $icon = 'red'; }
+  $data['cash'][$run]['in_out'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
+  
+  $data['cash'][$run]['id'] = $data['cash'][$run]['cash_id'];
+  
 }
 echo cs_subtemplate(__FILE__,$data,'cash','manage');
 

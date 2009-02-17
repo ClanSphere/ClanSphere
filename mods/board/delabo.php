@@ -28,15 +28,15 @@ if(!empty($abo_form)) {
   
   if($search_user['users_id'] == $account['users_id'] AND $account['access_board'] >= 5) {
     $data['if']['not_account'] = false;
-	$data['if']['account'] = true;
-	
-	$data['lang']['body'] = sprintf($cs_lang['del_rly'],$abo_id);
+  $data['if']['account'] = true;
+  
+  $data['lang']['body'] = sprintf($cs_lang['del_rly'],$abo_id);
     $data['action']['form'] = cs_url('board','delabo');
     $data['abo']['id'] = $abo_id;
   }
   else {
     $data['if']['not_account'] = true;
-	$data['if']['account'] = false;
+  $data['if']['account'] = false;
   }
   
   echo cs_subtemplate(__FILE__,$data,'board','delabo');

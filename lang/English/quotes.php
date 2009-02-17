@@ -2,8 +2,8 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Quotes';
-$cs_lang['modtext']	= 'Manage and Create Quotes';
+$cs_lang['mod']  = 'Quotes';
+$cs_lang['modtext']  = 'Manage and Create Quotes';
 
 // Create
 $cs_lang['fill_obligated'] =  'Please fill out all * marked fields.';
@@ -29,16 +29,16 @@ $cs_lang['edit_done'] = 'Changes were successful';
 
 // List
 $cs_lang['user'] = 'User';
-$cs_lang['list']	= 'List';
+$cs_lang['list']  = 'List';
 
 // Manage
 $cs_lang['new_quote'] = 'New Quote';
 
 // Remove
-$cs_lang['rly_remove']		= 'Really delete datenset No. %s?';
+$cs_lang['rly_remove']    = 'Really delete datenset No. %s?';
 
 // View
-$cs_lang['details']	= 'Details';
-$cs_lang['quote_info']		= 'Information about selected quote';
+$cs_lang['details']  = 'Details';
+$cs_lang['quote_info']    = 'Information about selected quote';
 
 ?>

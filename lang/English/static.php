@@ -1,12 +1,12 @@
 <?php
-$cs_lang['mod_name']	= 'Static Pages';
-$cs_lang['mod_text']	= 'Manage static pages online';
-$cs_lang['mod']	= 'Static';
+$cs_lang['mod_name']  = 'Static Pages';
+$cs_lang['mod_text']  = 'Manage static pages online';
+$cs_lang['mod']  = 'Static';
 $cs_lang['head_create'] = 'Create';
 $cs_lang['body_create'] = 'Please fill out all * marked fields .';
 $cs_lang['head_edit'] = 'Edit';
 $cs_lang['body_edit'] = 'Please fill out all * marked fields.';
-$cs_lang['head_remove']	= 'Remove';
+$cs_lang['head_remove']  = 'Remove';
 $cs_lang['title'] = 'Title';
 $cs_lang['access'] = 'Access';
 $cs_lang['content'] = 'Content';

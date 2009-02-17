@@ -7,8 +7,8 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod']	= 'Miembros';
-$cs_lang['modtext']	= 'Inscribir Miembros a una Escuadra';
+$cs_lang['mod']  = 'Miembros';
+$cs_lang['modtext']  = 'Inscribir Miembros a una Escuadra';
 
 // Member Labels
 $cs_lang['members'] = 'Miembros';
@@ -43,14 +43,14 @@ $cs_lang['no_class'] = '- Debe de elegir una Clase';
 $cs_lang['label'] = 'Presentarse como';
 
 // Center
-$cs_lang['head_center']	= 'Central';
+$cs_lang['head_center']  = 'Central';
 
 $cs_lang['del_done'] = 'Filiación Removida';
 $cs_lang['del_failed'] = 'Filiación no ha podido ser Removida';
 
-$cs_lang['user']	= 'Usuario';
-$cs_lang['task']	= 'Tarea';
-$cs_lang['order']	= 'Posición';
+$cs_lang['user']  = 'Usuario';
+$cs_lang['task']  = 'Tarea';
+$cs_lang['order']  = 'Posición';
 
 // Change
 $cs_lang['since'] = 'Disponible desde';
@@ -60,32 +60,32 @@ $cs_lang['no_task'] = '- Debe de a&ntilde;adir una Tarea';
 $cs_lang['no_admin'] = '- No Tiene Acceso de Administración en la Escuadra';
 
 // Create
-$cs_lang['body_create']	= 'Inscribir un Miembro en una Escuadra';
+$cs_lang['body_create']  = 'Inscribir un Miembro en una Escuadra';
 $cs_lang['no_user'] = '- Tiene que elegir un Usuario';
 $cs_lang['collision'] = '- El Usuario ya se encuentra en la escuadra';
 
 // List
-$cs_lang['head_list']	= 'Lista';
+$cs_lang['head_list']  = 'Lista';
 $cs_lang['body_list'] = 'Hay %s Escuadras en Total.';
-$cs_lang['pictured']	= 'Vista de Imagenes';
+$cs_lang['pictured']  = 'Vista de Imagenes';
 
-$cs_lang['country']	= 'Pais';
-$cs_lang['nick']	= 'Nick';
-$cs_lang['page']	= 'Status';
+$cs_lang['country']  = 'Pais';
+$cs_lang['nick']  = 'Nick';
+$cs_lang['page']  = 'Status';
 
 // Pictured
-$cs_lang['head_pictured']	= 'Vista de Imagenes';
+$cs_lang['head_pictured']  = 'Vista de Imagenes';
 $cs_lang['body_pictured'] = 'Hay %s Escuadras en Total.';
-$cs_lang['list']	= 'Vista de Lista';
+$cs_lang['list']  = 'Vista de Lista';
 
 $cs_lang['nopic'] = 'No existe Imagen';
 
 // Remove
 $cs_lang['remove_rly'] = 'Remover Informacion Nr. %s de verdad ?';
 
-$cs_lang['game']	= 'Juego';
+$cs_lang['game']  = 'Juego';
 
 // Navrand
-$cs_lang['noname']	= 'El Nombre esta Vacio';
+$cs_lang['noname']  = 'El Nombre esta Vacio';
 
 ?>

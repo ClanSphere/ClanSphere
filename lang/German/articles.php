@@ -3,9 +3,9 @@
 // $Id$
 
 // info.php
-$cs_lang['mod_name']	= 'Artikel';
-$cs_lang['mod_text']	= 'Das Artikel Modul';
-$cs_lang['mod']	= 'Artikel';
+$cs_lang['mod_name']  = 'Artikel';
+$cs_lang['mod_text']  = 'Das Artikel Modul';
+$cs_lang['mod']  = 'Artikel';
 
 // create.php
 $cs_lang['head_create'] = 'Hinzuf&uuml;gen';
@@ -31,9 +31,9 @@ $cs_lang['body_edit'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
 $cs_lang['edit_done'] = '&Auml;nderung erfolgreich';
 
 // list.php
-$cs_lang['head_list']	= 'Liste';
-$cs_lang['body_list']	= 'Bitte w&auml;hlen Sie eine Kategorie aus';
-$cs_lang['count']	= 'Anzahl';
+$cs_lang['head_list']  = 'Liste';
+$cs_lang['body_list']  = 'Bitte w&auml;hlen Sie eine Kategorie aus';
+$cs_lang['count']  = 'Anzahl';
 
 //listcat.php
 $cs_lang['all'] = 'Gesamt: ';
@@ -44,7 +44,7 @@ $cs_lang['xtimes'] = 'mal';
 $cs_lang['nocat_axx'] = 'Kategorie nicht gefunden oder kein Zugriff.';
 
 // manage.php
-$cs_lang['head_manage']	= 'Verwaltung';
+$cs_lang['head_manage']  = 'Verwaltung';
 $cs_lang['new_article'] = 'Neuer Artikel';
 
 // options.php
@@ -52,8 +52,8 @@ $cs_lang['options_info'] = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
 
 // remove.php
-$cs_lang['head_remove']	= 'Entfernen';
-$cs_lang['body_remove']		= 'Datensatz Nr. %s wirklich entfernen?';
+$cs_lang['head_remove']  = 'Entfernen';
+$cs_lang['body_remove']    = 'Datensatz Nr. %s wirklich entfernen?';
 
 // view.php
 $cs_lang['from'] = 'Verfasst von';

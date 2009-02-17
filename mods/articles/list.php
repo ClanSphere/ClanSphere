@@ -19,16 +19,16 @@ $categories_loop = is_array($data['categories']) ? count($data['categories']) : 
 
 $data['sort']['category'] = cs_sort('articles','list',$start,'',1,$sort);
 if(!empty($categories_loop)) {
-	for($run=0; $run<$categories_loop; $run++) {
-		$data['categories'][$run]['space'] = cs_catspaces($data['categories'][$run]['layer']);
-		$data['categories'][$run]['categories_name'] = cs_link(cs_secure($data['categories'][$run]['categories_name']),'articles','listcat','id=' . $data['categories'][$run]['categories_id']);
-		$data['categories'][$run]['articles_count'] = cs_sql_count(__FILE__,'articles','categories_id = ' .$data['categories'][$run]['categories_id']);
-		$data['categories'][$run]['categories_text'] = cs_secure($data['categories'][$run]['categories_text'],1);
-		$data['if']['catimg'] = empty($data['categories'][$run]['categories_picture']) ? false : true;
-		$data['categories'][$run]['url_catimg'] = '';
-		//categorie_image
-		//$data['categories'][$run]['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$data['categories'][$run]['categories_picture'];
-	}
+  for($run=0; $run<$categories_loop; $run++) {
+    $data['categories'][$run]['space'] = cs_catspaces($data['categories'][$run]['layer']);
+    $data['categories'][$run]['categories_name'] = cs_link(cs_secure($data['categories'][$run]['categories_name']),'articles','listcat','id=' . $data['categories'][$run]['categories_id']);
+    $data['categories'][$run]['articles_count'] = cs_sql_count(__FILE__,'articles','categories_id = ' .$data['categories'][$run]['categories_id']);
+    $data['categories'][$run]['categories_text'] = cs_secure($data['categories'][$run]['categories_text'],1);
+    $data['if']['catimg'] = empty($data['categories'][$run]['categories_picture']) ? false : true;
+    $data['categories'][$run]['url_catimg'] = '';
+    //categorie_image
+    //$data['categories'][$run]['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$data['categories'][$run]['categories_picture'];
+  }
 }
 echo cs_subtemplate(__FILE__,$data,'articles','list');
 ?>

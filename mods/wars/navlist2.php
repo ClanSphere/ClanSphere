@@ -23,9 +23,9 @@ if (!empty($cs_wars)) {
     $secure_short = cs_secure($cs_wars[$i]['squads_name'] . ' vs ' . cs_secure($cs_wars[$i]['clans_short']));
     $cs_wars[$i]['matchup'] = cs_link($secure_short,'wars','view','id=' . $cs_wars[$i]['wars_id']);
 
-		$result = $cs_wars[$i]['wars_score1'] - $cs_wars[$i]['wars_score2'];
-		$result >= 1 ? $icon = 'green' : $icon = 'red';
-  	if(empty($result)) { $icon = 'grey'; }
+    $result = $cs_wars[$i]['wars_score1'] - $cs_wars[$i]['wars_score2'];
+    $result >= 1 ? $icon = 'green' : $icon = 'red';
+    if(empty($result)) { $icon = 'grey'; }
     $cs_wars[$i]['icon'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
     $cs_wars[$i]['date'] = cs_date('unix',$cs_wars[$i]['wars_date']);
   }

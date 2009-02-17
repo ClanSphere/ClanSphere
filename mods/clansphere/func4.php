@@ -7,17 +7,17 @@ function get_size($dir) {
     if($file == '.' || $file == '..' || $file == '_svn' || $file == '.svn') continue; 
     $full_path = $dir.'/'.$file; 
     
-	if(is_dir($full_path)) { 
+  if(is_dir($full_path)) { 
       //echo 'DEBUG-Dirsize:' . $full_path;
       $size += get_size($full_path); 
     } 
     else { 
       //echo 'DEBUG-Filesize:' . $full_path . '</br>';
-      $size += filesize($full_path); 		
+      $size += filesize($full_path);     
     } 
   } 
   closedir($handle); 
-	
+  
   return $size; 
 }
 ?>

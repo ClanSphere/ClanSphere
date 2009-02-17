@@ -3,7 +3,7 @@
 $cs_lang = cs_translate('clansphere');
 
 $data['if']['done'] = false;
-	
+  
 if($account['access_wizard'] == 5) {
   $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_meta' AND options_value = '1'");
   if(empty($wizard)) {
@@ -15,7 +15,7 @@ if($account['access_wizard'] == 5) {
 if(isset($_POST['submit'])) {
   $errormsg = '';
   $error = '0';
-	
+  
   if(empty($_POST['description'])) {
     $active_description = '0';
   }
@@ -98,38 +98,38 @@ if(isset($_POST['submit'])) {
   if($check_description > '200') { $errormsg .= sprintf($cs_lang['too_many_chars'], $cs_lang['publisher']) . cs_html_br(1);
     $error++;
   }
-	
+  
   if(!empty($error)) {
     $data['head']['action'] = $cs_lang['metatags'];
     $data['head']['error'] = $errormsg;
     echo cs_subtemplate(__FILE__,$data,'clansphere','error');
   }
-	
+  
   if(empty($error)) {
     $opt_where = "metatags_name = ";
     $def_cell = array('metatags_content','metatags_active');
     $def_cont = array($_POST['description'], $active_keywords);
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'description'");
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'description'");
     $def_cont = array($_POST['keywords'], $active_keywords);
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'keywords'");
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'keywords'");
     $def_cont = array($_POST['language'], $active_language);
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'language'");
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'language'");
     $def_cont = array($_POST['author'], $active_author);
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'author'");
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'author'");
     $def_cont = array($_POST['designer'], $active_designer);
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'designer'");
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'designer'");
     $def_cont = array($_POST['publisher'], $active_publisher);
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'publisher'");
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'publisher'");
     $def_cont = array($_POST['robots'], '1');
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'robots'");
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'robots'");
     $def_cont = array($_POST['distribution'], '1');
-	cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'distribution'");
-	
-	$data['head']['action'] = $cs_lang['metatags'];
-	$data['link']['continue'] = cs_url('clansphere','system');
-	
-	
-	echo cs_subtemplate(__FILE__,$data,'clansphere','done');
+  cs_sql_update(__FILE__,'metatags',$def_cell,$def_cont,0,$opt_where . "'distribution'");
+  
+  $data['head']['action'] = $cs_lang['metatags'];
+  $data['link']['continue'] = cs_url('clansphere','system');
+  
+  
+  echo cs_subtemplate(__FILE__,$data,'clansphere','done');
   }
 } 
 else {

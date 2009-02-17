@@ -16,18 +16,18 @@ $cs_lang['next_match'] = 'Naslednja tekma';
 $cs_lang['no_match_upcoming'] = 'Ni napovedanih tekem';
 
 // Comments
-$cs_lang['not_able']	= '- Komentarji niso dovoljeni.';
-$cs_lang['low_axx']	= '- Nima&scaron; dovolj pravic';
+$cs_lang['not_able']  = '- Komentarji niso dovoljeni.';
+$cs_lang['low_axx']  = '- Nima&scaron; dovolj pravic';
 
-$cs_lang['place']			= 'Kraj:';
-$cs_lang['posts']			= 'Komentarjev:';
+$cs_lang['place']      = 'Kraj:';
+$cs_lang['posts']      = 'Komentarjev:';
 
 $cs_lang['text'] = 'Besedilo';
 
-$cs_lang['head_com_remove']	= 'Odstrani komentarje';
+$cs_lang['head_com_remove']  = 'Odstrani komentarje';
 
-$cs_lang['head_com_edit']	= 'Uredi komentar';
-$cs_lang['body_com_edit']	= 'Prosim, da o svojih spremembah obvesti&scaron; tudi ostale.';
+$cs_lang['head_com_edit']  = 'Uredi komentar';
+$cs_lang['body_com_edit']  = 'Prosim, da o svojih spremembah obvesti&scaron; tudi ostale.';
 
 // Create
 $cs_lang['create_new_cup'] = 'Dodaj novo ligo';

@@ -15,14 +15,14 @@ $cs_lang['next_match'] = 'Nouvelle rencontre';
 $cs_lang['no_match_upcoming'] = 'Aucune rencontre en cours';
 
 // Comments
-$cs_lang['not_able']	= '- Commentaires non autorisés.';
-$cs_lang['low_axx']	= '- Droits insuffisants';
-$cs_lang['place']			= 'Lieu :';
-$cs_lang['posts']			= 'Réponses :';
+$cs_lang['not_able']  = '- Commentaires non autorisés.';
+$cs_lang['low_axx']  = '- Droits insuffisants';
+$cs_lang['place']      = 'Lieu :';
+$cs_lang['posts']      = 'Réponses :';
 $cs_lang['text'] = 'Texte';
-$cs_lang['head_com_remove']	= 'Supprimer le commentaire';
-$cs_lang['head_com_edit']	= 'Editer les commentaires';
-$cs_lang['body_com_edit']	= 'Signaler les modifications de texte.';
+$cs_lang['head_com_remove']  = 'Supprimer le commentaire';
+$cs_lang['head_com_edit']  = 'Editer les commentaires';
+$cs_lang['body_com_edit']  = 'Signaler les modifications de texte.';
 
 // Create
 $cs_lang['create_new_cup'] = 'Créer un nouveau tournoi';

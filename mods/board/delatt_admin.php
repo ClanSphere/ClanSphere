@@ -33,17 +33,17 @@ if(isset($_POST['cancel'])) {
 if(!empty($att_form)) {
   $search_user = cs_sql_select(__FILE__,'boardfiles','users_id',"boardfiles_id = '" . $att_id . "'");
   
-  if($account['access_board'] >= 5) {    	
-	$data['if']['not_account'] = false;
-	$data['if']['account'] = true;
-	
-	$data['lang']['body'] = sprintf($cs_lang['del_rly'],$att_id);
+  if($account['access_board'] >= 5) {      
+  $data['if']['not_account'] = false;
+  $data['if']['account'] = true;
+  
+  $data['lang']['body'] = sprintf($cs_lang['del_rly'],$att_id);
     $data['action']['form'] = cs_url('board','delatt_admin');
     $data['att']['id'] = $att_id;
   }
   else {
     $data['if']['not_account'] = true;
-	$data['if']['account'] = false;
+  $data['if']['account'] = false;
   }
   
   echo cs_subtemplate(__FILE__,$data,'board','delatt');

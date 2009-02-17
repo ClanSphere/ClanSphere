@@ -3,8 +3,8 @@
 // $Id$
 
 // General
-$cs_lang['mod']	= 'Squads';
-$cs_lang['modtext']	= 'Clansquad';
+$cs_lang['mod']  = 'Squads';
+$cs_lang['modtext']  = 'Clansquad';
 
 $cs_lang['count'] = 'Er zijn %s Squads in de clan.';
 
@@ -12,8 +12,8 @@ $cs_lang['count'] = 'Er zijn %s Squads in de clan.';
 $cs_lang['squad'] = 'Squad';
 $cs_lang['squads'] = 'Squads';
 $cs_lang['new_squad'] = 'Nieuw Squad';
-$cs_lang['join_squad']	= 'Aanmelden voor een Squad';
-$cs_lang['leave_squad']	= 'Verlaat een Squad';
+$cs_lang['join_squad']  = 'Aanmelden voor een Squad';
+$cs_lang['leave_squad']  = 'Verlaat een Squad';
 $cs_lang['no_squad'] = '- Geen squad geselecteerd';
 $cs_lang['no_pwd_squad'] = '- Alleen squads met een wachtwoord kunnen betreden worden';
 $cs_lang['squad_exists'] = '- Squad met deze naam bestaad al';
@@ -86,19 +86,19 @@ $cs_lang['teammates'] = 'Teamgenoten';
 $cs_lang['classmates'] = 'Klasgenoten';
 
 // Center
-$cs_lang['head_center']	= 'Hoofdcentrum';
-$cs_lang['task']	= 'Taak';
+$cs_lang['head_center']  = 'Hoofdcentrum';
+$cs_lang['task']  = 'Taak';
 
 // Change
-$cs_lang['body_change']	= 'Er kunnen zich fouten voordoen.';
+$cs_lang['body_change']  = 'Er kunnen zich fouten voordoen.';
 
 $cs_lang['nopic'] = 'Geen foto beschikbaar';
-$cs_lang['pic_current']	= 'Huidige foto';
+$cs_lang['pic_current']  = 'Huidige foto';
 $cs_lang['pic_up'] = 'Upload foto';
 $cs_lang['game'] = 'Game';
 $cs_lang['order'] = 'Volgorde';
 $cs_lang['password'] = 'Wachtwoord';
-$cs_lang['more']	= 'Meer';
+$cs_lang['more']  = 'Meer';
 
 $cs_lang['hidden'] = 'Verberg';
 $cs_lang['joinus'] = 'Toetreden';
@@ -110,51 +110,51 @@ $cs_lang['max_height'] = 'Maximum lengte: ';
 $cs_lang['max_size'] = 'Maximum grootte: ';
 $cs_lang['filetypes'] = 'Filetype: ';
 
-$cs_lang['too_big']	= '- De file is te groot;';
-$cs_lang['too_wide']	= '- De foto is te breed';
-$cs_lang['too_high']	= '- De foto is te lang';
-$cs_lang['ext_error']	= '- Onbekende Filetype';
+$cs_lang['too_big']  = '- De file is te groot;';
+$cs_lang['too_wide']  = '- De foto is te breed';
+$cs_lang['too_high']  = '- De foto is te lang';
+$cs_lang['ext_error']  = '- Onbekende Filetype';
 $cs_lang['no_name'] = '- Een naam is verplicht';
 $cs_lang['up_error'] = '- Onverwachte fout, neem contact op met de beheerder';
 $cs_lang['no_admin'] = '- Je hebt geen beheersrechten in deze squad';
 $cs_lang['pwd_wrong'] = '- Clan wachtwoord is fout of leeg';
 
 // Delete
-$cs_lang['head_delete']	= 'Verwijder';
+$cs_lang['head_delete']  = 'Verwijder';
 
-$cs_lang['sq_del_true']	= 'Squad en lidmaadschap succesvol verwijderd';
+$cs_lang['sq_del_true']  = 'Squad en lidmaadschap succesvol verwijderd';
 
-$cs_lang['body_new']	= 'Voeg een squad to aan een clan';
+$cs_lang['body_new']  = 'Voeg een squad to aan een clan';
 
 $cs_lang['new_done'] = 'Squad succesvol aangemaakt.';
 $cs_lang['leader'] = 'Leider';
 
 // Options
 $cs_lang['label'] = 'Label';
-$cs_lang['body_options']	= 'Beheer module instellingen hier.';
+$cs_lang['body_options']  = 'Beheer module instellingen hier.';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['def_order'] = 'Standaard volgorde';
 
 // View
-$cs_lang['head_list']	= 'Details';
+$cs_lang['head_list']  = 'Details';
 $cs_lang['body_list'] = 'Squad van clan Clan %s.';
-$cs_lang['country']	= 'Land';
-$cs_lang['nick']	= 'Nickname';
-$cs_lang['page']	= 'Status';
-$cs_lang['since']	= 'Lid since';
+$cs_lang['country']  = 'Land';
+$cs_lang['nick']  = 'Nickname';
+$cs_lang['page']  = 'Status';
+$cs_lang['since']  = 'Lid since';
 
 // Join
-$cs_lang['head_join']	= 'Toetreden';
-$cs_lang['body_join']	= 'Maak nieuw lidmaatschap aan';
+$cs_lang['head_join']  = 'Toetreden';
+$cs_lang['body_join']  = 'Maak nieuw lidmaatschap aan';
 $cs_lang['join'] = 'Toetreden';
 
 $cs_lang['wrong_pwd'] = '- Foutief wachtwoord';
 $cs_lang['collision'] = '- Je zit al in het geselecteerde squad.';
 
 // Leave
-$cs_lang['head_leave']	= 'Verlaat';
-$cs_lang['body_leave']	= 'Trek lidsmaatschap in';
+$cs_lang['head_leave']  = 'Verlaat';
+$cs_lang['body_leave']  = 'Trek lidsmaatschap in';
 $cs_lang['join_done'] = 'Data succesvol ingevoerd.';
 $cs_lang['member'] = 'Lid';
 

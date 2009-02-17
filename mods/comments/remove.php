@@ -16,12 +16,12 @@ if(isset($_GET['agree'])) {
 }
 elseif(isset($_GET['cancel']))
   cs_redirect($cs_lang['del_false'],'comments','manage','where=' . $cs_com['comments_mod']);
-	
+  
 else {
-	$data['head']['body'] = sprintf($cs_lang['del_rly'],$com_id);
-	$data['url']['agree'] = cs_url('comments','remove','id=' . $com_id . '&amp;agree');
-	$data['url']['cancel'] = cs_url('comments','remove','id=' . $com_id . '&amp;cancel');
-	
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$com_id);
+  $data['url']['agree'] = cs_url('comments','remove','id=' . $com_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('comments','remove','id=' . $com_id . '&amp;cancel');
+  
   echo cs_subtemplate(__FILE__,$data,'comments','remove');
 }
 

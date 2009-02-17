@@ -23,36 +23,36 @@ $data['fightus']['nick'] = cs_secure($cs_fightus['fightus_nick']);
 $data['fightus']['email'] = cs_html_mail($cs_fightus['fightus_email'],$cs_fightus['fightus_email']);
 
 if(!empty($cs_fightus['fightus_icq'])) { 
-	$cs_icqstart = 'http://web.icq.com/whitepages/online?icq=';
-	$data['fightus']['icq'] = cs_html_img($cs_icqstart . $cs_fightus['fightus_icq'] . '&amp;img=21','16','15');
-	$data['fightus']['icq'] .= cs_html_link('http://wwp.icq.com/' . $cs_fightus['fightus_icq'],$cs_fightus['fightus_icq']);
+  $cs_icqstart = 'http://web.icq.com/whitepages/online?icq=';
+  $data['fightus']['icq'] = cs_html_img($cs_icqstart . $cs_fightus['fightus_icq'] . '&amp;img=21','16','15');
+  $data['fightus']['icq'] .= cs_html_link('http://wwp.icq.com/' . $cs_fightus['fightus_icq'],$cs_fightus['fightus_icq']);
 } else {
-	$data['fightus']['icq'] = '-'; 
+  $data['fightus']['icq'] = '-'; 
 }
 
 if(!empty($cs_fightus['fightus_msn'])) { 
-	$cs_fightus['fightus_msn'] = cs_secure($cs_fightus['fightus_msn']);
-	$data['fightus']['msn'] = cs_html_link('http://members.msn.com/' . $cs_fightus['fightus_msn'],$cs_fightus['fightus_msn']);
+  $cs_fightus['fightus_msn'] = cs_secure($cs_fightus['fightus_msn']);
+  $data['fightus']['msn'] = cs_html_link('http://members.msn.com/' . $cs_fightus['fightus_msn'],$cs_fightus['fightus_msn']);
 } else {
-	$data['fightus']['msn'] = '-'; 
+  $data['fightus']['msn'] = '-'; 
 }
 
 if(!empty($cs_fightus['games_id'])) {
-	$data['fightus']['game'] = cs_html_img('uploads/games/' . $cs_fightus['games_id'] . '.gif');
-	$where = "games_id = '" . $cs_fightus['games_id'] . "'";
-	$cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
-	$data['fightus']['game'] .= cs_link($cs_game['games_name'],'games','view','id=' . $cs_game['games_id']);
+  $data['fightus']['game'] = cs_html_img('uploads/games/' . $cs_fightus['games_id'] . '.gif');
+  $where = "games_id = '" . $cs_fightus['games_id'] . "'";
+  $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
+  $data['fightus']['game'] .= cs_link($cs_game['games_name'],'games','view','id=' . $cs_game['games_id']);
 }
 else {
-	$data['fightus']['game'] = '-';
+  $data['fightus']['game'] = '-';
 }
 
 if(!empty($cs_fightus['squads_id'])) {
-	$where = "squads_id = '" . $cs_fightus['squads_id'] . "'";
-	$cs_squad = cs_sql_select(__FILE__,'squads','squads_name, squads_id',$where);
-	$data['fightus']['squad'] = cs_link($cs_squad['squads_name'],'squads','view','id=' . $cs_squad['squads_id']);
+  $where = "squads_id = '" . $cs_fightus['squads_id'] . "'";
+  $cs_squad = cs_sql_select(__FILE__,'squads','squads_name, squads_id',$where);
+  $data['fightus']['squad'] = cs_link($cs_squad['squads_name'],'squads','view','id=' . $cs_squad['squads_id']);
 } else {
-	$data['fightus']['squad'] = '-';
+  $data['fightus']['squad'] = '-';
 }
 
 $data['fightus']['clan'] = cs_secure($cs_fightus['fightus_clan']);
@@ -63,10 +63,10 @@ $country = $cs_fightus['fightus_country'];
 $data['fightus']['country'] = cs_html_img($url,11,16) . ' ' . $cs_country[$country];
 
 if(!empty($cs_fightus['fightus_url'])) {
-	$cs_fightus['fightus_url'] = cs_secure($cs_fightus['fightus_url']);
-	$data['fightus']['url'] = cs_html_link('http://' . $cs_fightus['fightus_url'],$cs_fightus['fightus_url']);
+  $cs_fightus['fightus_url'] = cs_secure($cs_fightus['fightus_url']);
+  $data['fightus']['url'] = cs_html_link('http://' . $cs_fightus['fightus_url'],$cs_fightus['fightus_url']);
 } else {
-	$data['fightus']['url'] = '-';
+  $data['fightus']['url'] = '-';
 }
 
 $data['fightus']['date'] = cs_date('unix',$cs_fightus['fightus_date'],1);

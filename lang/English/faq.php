@@ -1,15 +1,15 @@
 <?php
 
-$cs_lang['mod_name']	= 'FAQ';
-$cs_lang['mod_text']	= 'Administrate current FAQ and create';
-$cs_lang['mod']	= 'FAQ';
+$cs_lang['mod_name']  = 'FAQ';
+$cs_lang['mod_text']  = 'Administrate current FAQ and create';
+$cs_lang['mod']  = 'FAQ';
 
 $cs_lang['head']= 'FAQ ID:';
-$cs_lang['head_remove']	= 'Remove';
-$cs_lang['head_manage']	= 'Administration';
-$cs_lang['head_create']	= 'Create';
+$cs_lang['head_remove']  = 'Remove';
+$cs_lang['head_manage']  = 'Administration';
+$cs_lang['head_create']  = 'Create';
 $cs_lang['body_create'] =  'Please fill out all * marked fields.';
-$cs_lang['head_edit']	= 'Edit';
+$cs_lang['head_edit']  = 'Edit';
 $cs_lang['body_edit'] =  'Please fill out all * marked fields.';
 
 $cs_lang['no_cat'] = '- You have to select a category or create one.';

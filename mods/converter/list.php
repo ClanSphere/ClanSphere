@@ -12,9 +12,9 @@ $run=0;
 foreach($mods as $cms) {
   if(!empty($cms['cms'])) {
     for($run=0; $run<count($cms['cms']); $run++) {
-	    $data['cms'][$run]['dir'] = $cms['cms'][$run]['dir'];
-	    $data['cms'][$run]['name'] = $cms['cms'][$run]['name'];
-	  }
+      $data['cms'][$run]['dir'] = $cms['cms'][$run]['dir'];
+      $data['cms'][$run]['name'] = $cms['cms'][$run]['name'];
+    }
   }
 }
 if(isset($_POST['submit'])) {

@@ -41,7 +41,7 @@ if (isset($_GET['confirm'])) {
 
   if (empty($ids)) {
 
-	cs_redirect($cs_lang['no_selection'],'messages','inbox');
+  cs_redirect($cs_lang['no_selection'],'messages','inbox');
     
   } else {
     

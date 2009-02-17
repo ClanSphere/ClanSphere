@@ -57,31 +57,31 @@ elseif(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['members']['label'] = $cs_lang[$op_squads['label']];
-	$squads_data = cs_sql_select(__FILE__,'squads','squads_name,squads_id',0,'squads_name',0,0);
-	$data['members']['squad_sel'] = cs_dropdown('squads_id','squads_name',$squads_data,$cs_members['squads_id']);
+  $data['members']['label'] = $cs_lang[$op_squads['label']];
+  $squads_data = cs_sql_select(__FILE__,'squads','squads_name,squads_id',0,'squads_name',0,0);
+  $data['members']['squad_sel'] = cs_dropdown('squads_id','squads_name',$squads_data,$cs_members['squads_id']);
 
-	$users_data = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
-	$data['members']['user_sel'] = cs_dropdown('users_id','users_nick',$users_data,$cs_members['users_id']);
+  $users_data = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
+  $data['members']['user_sel'] = cs_dropdown('users_id','users_nick',$users_data,$cs_members['users_id']);
 
-	$data['members']['task'] = cs_secure($cs_members['members_task']);
-	$data['members']['order'] = cs_secure($cs_members['members_order']);
-	$data['members']['since'] = cs_dateselect('since','date',$cs_members['members_since']);
-	$data['members']['admin'] = empty($cs_members['members_admin']) ? '' : 'checked="checked"';
+  $data['members']['task'] = cs_secure($cs_members['members_task']);
+  $data['members']['order'] = cs_secure($cs_members['members_order']);
+  $data['members']['since'] = cs_dateselect('since','date',$cs_members['members_since']);
+  $data['members']['admin'] = empty($cs_members['members_admin']) ? '' : 'checked="checked"';
 
-	$data['members']['id'] = $members_id;
+  $data['members']['id'] = $members_id;
 
   echo cs_subtemplate(__FILE__,$data,'members','edit');
 
 }
 else {
 
-	settype($cs_members['members_order'],'integer');
-	
-	$members_cells = array_keys($cs_members);
-	$members_save = array_values($cs_members);
-	cs_sql_update(__FILE__,'members',$members_cells,$members_save,$members_id);
-	
+  settype($cs_members['members_order'],'integer');
+  
+  $members_cells = array_keys($cs_members);
+  $members_save = array_values($cs_members);
+  cs_sql_update(__FILE__,'members',$members_cells,$members_save,$members_id);
+  
   cs_redirect($cs_lang['changes_done'], 'members') ;
 } 
   

@@ -24,12 +24,12 @@ $select = 'gallery_id, gallery_name, gallery_titel, gallery_download, gallery_de
 $where = "categories_id = '" . $cat_id . "' AND gallery_status = '1' AND gallery_access <= '" . $access_id . "'"; 
 switch($list_sort) 
 {
-	case 0:
-		$order = 'gallery_id DESC';
-	break;
-	case 1:
-		$order = 'gallery_id ASC';
-	break;
+  case 0:
+    $order = 'gallery_id DESC';
+  break;
+  case 1:
+    $order = 'gallery_id ASC';
+  break;
 }
 $cs_gallery = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,0);
 $gallery_loop = count($cs_gallery);
@@ -60,20 +60,20 @@ echo cs_html_roco(0);
 echo cs_html_roco(1,'centerc',0,3);
 echo cs_link($cs_lap,'gallery','com_view','where=' . $cs_gallery[$start]['gallery_id']);
 echo cs_html_roco(0);
-	
+  
 echo cs_html_roco(1,'centerb',0,2);
 if(!empty($start))
 {
-	$back = cs_icon('back',22,$cs_lang['back']);
-	$back_1 = $start-1;
-	echo cs_link($back,'gallery','view',"cat_id=$cat_id&start=$back_1");
+  $back = cs_icon('back',22,$cs_lang['back']);
+  $back_1 = $start-1;
+  echo cs_link($back,'gallery','view',"cat_id=$cat_id&start=$back_1");
 }
 $forward_1 = $start+1;
 echo ' ' . $forward_1 . '/' . $gallery_loop . ' ';
 if($forward_1 < $gallery_loop)
 {
-	$forward = cs_icon('forward',22,$cs_lang['continue']);
-	echo cs_link($forward,'gallery','view',"cat_id=$cat_id&start=$forward_1");
+  $forward = cs_icon('forward',22,$cs_lang['continue']);
+  echo cs_link($forward,'gallery','view',"cat_id=$cat_id&start=$forward_1");
 }
 echo cs_html_roco(2,'centerb',0,1,150);
 $com = cs_icon('kopete',22,$cs_lang['comments']);

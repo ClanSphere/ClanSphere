@@ -1,15 +1,15 @@
 <?php
 
-$cs_lang['mod_name']	= 'H&auml;ufige Fragen';
-$cs_lang['mod_text']	= 'Oft gestellte Fragen';
-$cs_lang['mod']	= 'H&auml;ufige Fragen';
+$cs_lang['mod_name']  = 'H&auml;ufige Fragen';
+$cs_lang['mod_text']  = 'Oft gestellte Fragen';
+$cs_lang['mod']  = 'H&auml;ufige Fragen';
 
 $cs_lang['head']= 'ID:';
-$cs_lang['head_remove']	= 'Entfernen';
-$cs_lang['head_manage']	= 'Verwaltung';
-$cs_lang['head_create']	= 'Eintragen';
+$cs_lang['head_remove']  = 'Entfernen';
+$cs_lang['head_manage']  = 'Verwaltung';
+$cs_lang['head_create']  = 'Eintragen';
 $cs_lang['body_create'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
-$cs_lang['head_edit']	= 'Bearbeiten';
+$cs_lang['head_edit']  = 'Bearbeiten';
 $cs_lang['body_edit'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
 
 $cs_lang['no_cat'] = '- Es muss eine Kategorie ausgew&auml;hlt werden oder erstellt werden.';

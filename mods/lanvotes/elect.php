@@ -33,39 +33,39 @@ else {
   if(isset($_POST['submit'])) {
     $cs_lanvoted['lanvoted_answer'] = empty($_POST['lanvoted_answer']) ? 0 : $_POST['lanvoted_answer'];
 
-  	$error = 0;
-  	$errormsg = '';
+    $error = 0;
+    $errormsg = '';
 
-  	if(empty($cs_lanvoted['lanvoted_answer'])) {
-    	$error++;
-    	$errormsg .= $cs_lang['no_answer'] . cs_html_br(1);
-	}
+    if(empty($cs_lanvoted['lanvoted_answer'])) {
+      $error++;
+      $errormsg .= $cs_lang['no_answer'] . cs_html_br(1);
+  }
   }
   
   if(!isset($_POST['submit'])) {
-  	$data['lang']['body'] = $cs_lang['body_elect'];
+    $data['lang']['body'] = $cs_lang['body_elect'];
   }
   
   if(!empty($error)) {
-  	$data['lang']['body'] = $errormsg;
+    $data['lang']['body'] = $errormsg;
   }
 
   if(!empty($error) OR !isset($_POST['submit'])) {
     $data['data']['id'] = $lanvotes_id;
-	$data['url']['form'] = cs_url('lanvotes','elect');
+  $data['url']['form'] = cs_url('lanvotes','elect');
 
     $data['votes']['question'] = cs_secure($lvs['lanvotes_question']);
 
     $election = explode("\n", $lvs['lanvotes_election']);
-	$answers_stop = count($election);
-	for($run = 0; $run < $answers_stop; $run++) {
+  $answers_stop = count($election);
+  for($run = 0; $run < $answers_stop; $run++) {
       $run2 = $run + 1;
-	  $sel = ($run2 == $cs_lanvoted['lanvoted_answer'] ? 1 : 0);
-	  $new = $run + 1;
-	  $data['lan'][$run]['answer'] = cs_html_vote('lanvoted_answer',$new,'radio',$sel) . ' ' . cs_secure($election[($run)]);
+    $sel = ($run2 == $cs_lanvoted['lanvoted_answer'] ? 1 : 0);
+    $new = $run + 1;
+    $data['lan'][$run]['answer'] = cs_html_vote('lanvoted_answer',$new,'radio',$sel) . ' ' . cs_secure($election[($run)]);
     }
-	
-	echo cs_subtemplate(__FILE__,$data,'lanvotes','elect');
+  
+  echo cs_subtemplate(__FILE__,$data,'lanvotes','elect');
   }
   else {
     if(empty($cs_lanvoted['lanvoted_id'])) {
@@ -73,17 +73,17 @@ else {
       $cs_lanvoted['users_id'] = $account['users_id'];
       $cs_lanvotes['lanvoted_since'] = cs_time();
 
-  	  $lanvoted_cells = array_keys($cs_lanvoted);
-  	  $lanvoted_save = array_values($cs_lanvoted);
-  	  cs_sql_insert(__FILE__,'lanvoted',$lanvoted_cells,$lanvoted_save);
+      $lanvoted_cells = array_keys($cs_lanvoted);
+      $lanvoted_save = array_values($cs_lanvoted);
+      cs_sql_insert(__FILE__,'lanvoted',$lanvoted_cells,$lanvoted_save);
     }
     else {
       $lanvoted_cells = array_keys($cs_lanvoted);
       $lanvoted_save = array_values($cs_lanvoted);
       cs_sql_update(__FILE__,'lanvoted',$lanvoted_cells,$lanvoted_save,$cs_lanvoted['lanvoted_id']);
     }
-	
-	cs_redirect($cs_lang['elect_done'],'lanvotes','manage');
+  
+  cs_redirect($cs_lang['elect_done'],'lanvotes','manage');
   }
 }
 ?>

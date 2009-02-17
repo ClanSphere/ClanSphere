@@ -3,9 +3,9 @@
 // $Id$
 
 // info.php
-$cs_lang['mod_name']	= 'Articles';
-$cs_lang['mod_text']	= 'Le module des articles';
-$cs_lang['mod']	= 'Article';
+$cs_lang['mod_name']  = 'Articles';
+$cs_lang['mod_text']  = 'Le module des articles';
+$cs_lang['mod']  = 'Article';
 
 // create.php
 $cs_lang['head_create'] = 'Ajouter';
@@ -31,9 +31,9 @@ $cs_lang['body_edit'] =  'Veuillez remplir les champs marqués d\'une étoile.';
 $cs_lang['edit_done'] = 'Changement réussi';
 
 // list.php
-$cs_lang['head_list']	= 'Liste';
-$cs_lang['body_list']	= 'Saisissez une catégorie';
-$cs_lang['count']	= 'Nombre';
+$cs_lang['head_list']  = 'Liste';
+$cs_lang['body_list']  = 'Saisissez une catégorie';
+$cs_lang['count']  = 'Nombre';
 $cs_lang['release'] = 'Publié le';
 
 //listcat.php
@@ -43,12 +43,12 @@ $cs_lang['views'] = 'lu';
 $cs_lang['xtimes'] = 'fois';
 
 // manage.php
-$cs_lang['head_manage']	= 'Administration';
+$cs_lang['head_manage']  = 'Administration';
 $cs_lang['new_article'] = 'Nouvel article';
 
 // remove.php
-$cs_lang['head_remove']	= 'Supprimer';
-$cs_lang['body_remove']		= 'Voulez vous vraiment supprimer?';
+$cs_lang['head_remove']  = 'Supprimer';
+$cs_lang['body_remove']    = 'Voulez vous vraiment supprimer?';
 
 // view.php
 $cs_lang['from'] = 'Rédigé par';
@@ -58,17 +58,17 @@ $cs_lang['pages'] = 'pages';
 
 // com_create.php
 
-$cs_lang['not_able']	= '- Commentaires non autorisés.';
-$cs_lang['place']			= 'Lieu :';
-$cs_lang['posts']			= 'Réponses :';
+$cs_lang['not_able']  = '- Commentaires non autorisés.';
+$cs_lang['place']      = 'Lieu :';
+$cs_lang['posts']      = 'Réponses :';
 $cs_lang['text'] = 'Text';
 
 // com_edit.php
-$cs_lang['head_com_edit']	= 'Editer les commentaires';
-$cs_lang['body_com_edit']	= 'Signaler les modifications de texte.';
+$cs_lang['head_com_edit']  = 'Editer les commentaires';
+$cs_lang['body_com_edit']  = 'Signaler les modifications de texte.';
 
 // com_remove.php
-$cs_lang['head_com_remove']	= 'Supprimer le commentaire';
+$cs_lang['head_com_remove']  = 'Supprimer le commentaire';
 $cs_lang['new_date'] = 'Mise à jour de la date';
 
 ?>

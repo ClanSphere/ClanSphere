@@ -13,14 +13,14 @@ $events_loop = count($cs_events);
 $data = array();
 
 if(empty($cs_events)) {
-	echo $cs_lang['no_events'];
+  echo $cs_lang['no_events'];
 }
 else {
-	for($run=0; $run<$events_loop; $run++) {
-		$data['events'][$run]['date'] = cs_date('unix',$cs_events[$run]['events_time'],1);
-		$data['events'][$run]['name'] = cs_secure($cs_events[$run]['events_name']);
-		$data['events'][$run]['link'] = cs_url('events','view','id=' . $cs_events[$run]['events_id']);
-	}
-	echo cs_subtemplate(__FILE__,$data,'events','navnext');
+  for($run=0; $run<$events_loop; $run++) {
+    $data['events'][$run]['date'] = cs_date('unix',$cs_events[$run]['events_time'],1);
+    $data['events'][$run]['name'] = cs_secure($cs_events[$run]['events_name']);
+    $data['events'][$run]['link'] = cs_url('events','view','id=' . $cs_events[$run]['events_id']);
+  }
+  echo cs_subtemplate(__FILE__,$data,'events','navnext');
 }
 ?>

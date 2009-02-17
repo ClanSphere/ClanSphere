@@ -1,12 +1,12 @@
-<?php	
-// ClanSphere 2008 - www.clansphere.net	
+<?php  
+// ClanSphere 2008 - www.clansphere.net  
 // $Id$
 
-$cs_lang['mod']	= 'Replays';
-$cs_lang['modtext']	= 'Saved replays of Clanwars';
+$cs_lang['mod']  = 'Replays';
+$cs_lang['modtext']  = 'Saved replays of Clanwars';
 
 // Create
-$cs_lang['body_create']	= 'Add new replay.';
+$cs_lang['body_create']  = 'Add new replay.';
 
 $cs_lang['game'] = 'Game';
 $cs_lang['version'] = 'Version';
@@ -31,22 +31,22 @@ $cs_lang['no_cat'] = '- A category must be specified';
 $cs_lang['no_team1'] = '- Team 1 must be specified';
 $cs_lang['no_team2'] = '- Team 2 must be specified';
 $cs_lang['no_date'] = '- Date must be specified';
-$cs_lang['too_big']	= '- The file is too big;';
-$cs_lang['ext_error']	= '- Unknown filetype';
+$cs_lang['too_big']  = '- The file is too big;';
+$cs_lang['ext_error']  = '- Unknown filetype';
 
 // Edit
-$cs_lang['body_edit']	= 'Errors may occur here.';
+$cs_lang['body_edit']  = 'Errors may occur here.';
 $cs_lang['up_error'] = '- Unexpected error, please contact Webmaster';
 
 // List
-$cs_lang['list']	= 'List';
+$cs_lang['list']  = 'List';
 
 // Manage
 $cs_lang['new_replay'] = 'New replay';
 
 // View
-$cs_lang['details']	= 'Details';
-$cs_lang['body_view']	= 'More information about a replay.';
+$cs_lang['details']  = 'Details';
+$cs_lang['body_view']  = 'More information about a replay.';
 
 $cs_lang['body_options'] = 'Administration of settings in a module.';
 $cs_lang['head_options'] = 'Options';

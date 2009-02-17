@@ -5,7 +5,7 @@ class MySQL {
  
   public function connect($host, $user, $pass, $database) {
     $this->connection = mysql_connect($host,$user,$pass,TRUE);
-	mysql_select_db($database, $this->connection);
+  mysql_select_db($database, $this->connection);
   }
  
   public function disconnect() {

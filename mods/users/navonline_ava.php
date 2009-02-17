@@ -13,23 +13,23 @@ $data = array();
 
 if(empty($cs_users)) {
 
-	$data['lang']['no_users'] = $cs_lang['no_data'];
+  $data['lang']['no_users'] = $cs_lang['no_data'];
   
-	echo cs_subtemplate(__FILE__,$data,'users','no_users');
+  echo cs_subtemplate(__FILE__,$data,'users','no_users');
   
 } else {
   
   $count_users = count($cs_users);
   for ($run = 0; $run < $count_users; $run++) {
-  	if(!empty($cs_users[$run]['users_avatar'])) {
-		$data['users'][$run]['picture'] = 'uploads/board/' . $cs_users[$run]['users_avatar'];
-	}
-	else {
-		$data['users'][$run]['picture'] = 'symbols/users/no_pic.png';
-	}
+    if(!empty($cs_users[$run]['users_avatar'])) {
+    $data['users'][$run]['picture'] = 'uploads/board/' . $cs_users[$run]['users_avatar'];
+  }
+  else {
+    $data['users'][$run]['picture'] = 'symbols/users/no_pic.png';
+  }
     $data['users'][$run]['nick'] = $cs_users[$run]['users_nick'];
     $data['users'][$run]['url'] = cs_url('users','view','id='.$cs_users[$run]['users_id']);
-	}
+  }
   echo cs_subtemplate(__FILE__,$data,'users','navonline_ava');
 }
 

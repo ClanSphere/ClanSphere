@@ -3,11 +3,11 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	            = 'LAN-Gosti';
-$cs_lang['mod_info']	    = 'Upravljanje LAN-Gostov';
+$cs_lang['mod']              = 'LAN-Gosti';
+$cs_lang['mod_info']      = 'Upravljanje LAN-Gostov';
 
 // Create
-$cs_lang['body_create']	    = 'Dodaj novega gosta.';
+$cs_lang['body_create']      = 'Dodaj novega gosta.';
 
 $cs_lang['lanparty']        = 'LAN-Party';
 $cs_lang['user']            = 'Uporabnik';
@@ -29,21 +29,21 @@ $cs_lang['lan_full']        = '- LAN-Party je &#382;e poln';
 
 // Lanpartys
 $cs_lang['head_lanpartys']  = 'LAN-Partiji';
-$cs_lang['stats']	        = 'Registrirani: %s/%s (Pla&#269;ali: %s)';
-$cs_lang['chair']		    = 'Stol';
+$cs_lang['stats']          = 'Registrirani: %s/%s (Pla&#269;ali: %s)';
+$cs_lang['chair']        = 'Stol';
 $cs_lang['nick']            = 'Vzdevek';
 
 // Manage
 $cs_lang['new_languest']    = 'Nov lan gost';
-$cs_lang['notices']		    = 'Bele&#382;ka';
+$cs_lang['notices']        = 'Bele&#382;ka';
 
-$cs_lang['select_lan']	    = 'LAN-Party: ';
-$cs_lang['since']		    = 'Od';
-$cs_lang['map']			    = 'Mapa';
+$cs_lang['select_lan']      = 'LAN-Party: ';
+$cs_lang['since']        = 'Od';
+$cs_lang['map']          = 'Mapa';
 
 // Rooms
-$cs_lang['head_rooms']	    = 'Na&#269;rt sedenja';
-$cs_lang['body_rooms']	    = 'Ogled in rezervacija stolov';
+$cs_lang['head_rooms']      = 'Na&#269;rt sedenja';
+$cs_lang['body_rooms']      = 'Ogled in rezervacija stolov';
 
 $cs_lang['area']            = 'Obmo&#269;je:';
 

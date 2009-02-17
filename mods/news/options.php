@@ -11,15 +11,15 @@ $data['head']['topline'] = $cs_lang['options_info'];
 
 if(isset($_POST['submit'])) {
 
-	settype($_POST['max_width'],'integer');
-	settype($_POST['max_height'],'integer');
-	settype($_POST['max_size'],'integer');
-	settype($_POST['max_navlist'],'integer');
-	settype($_POST['max_recent'],'integer');
-	settype($_POST['def_public'],'integer');
-	/* ABCode */
-	settype($_POST['features'],'integer');
-	settype($_POST['smileys'],'integer');
+  settype($_POST['max_width'],'integer');
+  settype($_POST['max_height'],'integer');
+  settype($_POST['max_size'],'integer');
+  settype($_POST['max_navlist'],'integer');
+  settype($_POST['max_recent'],'integer');
+  settype($_POST['def_public'],'integer');
+  /* ABCode */
+  settype($_POST['features'],'integer');
+  settype($_POST['smileys'],'integer');
   settype($_POST['clip'],'integer');
   settype($_POST['html'],'integer');
   settype($_POST['php'],'integer');
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])) {
   $def_cont = array($abcode);
   cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'abcode'");
 
-	$data['head']['topline'] = $cs_lang['changes_done'];
+  $data['head']['topline'] = $cs_lang['changes_done'];
 }
 
 $op_news = cs_sql_option(__FILE__,'news');

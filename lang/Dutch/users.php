@@ -2,9 +2,9 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod_name']	= 'Gebruiker';
+$cs_lang['mod_name']  = 'Gebruiker';
 $cs_lang['users'] = 'Gebruiker';
-$cs_lang['mod_text']	= 'Beheer van gebruikersaccount';
+$cs_lang['mod_text']  = 'Beheer van gebruikersaccount';
 
 $cs_lang['wizard'] = 'Wizard';
 $cs_lang['task_done'] = 'Markeer taak als gedaan';
@@ -22,13 +22,13 @@ $cs_lang['system'] = 'Systeem';
 $cs_lang['panel'] = 'Beheer';
 
 // Manage
-$cs_lang['new_user']	= 'Nieuwe gebruiker';
-$cs_lang['access']	= 'Toegang';
-$cs_lang['country']	= 'Land';
-$cs_lang['nick']	= 'Nickname';
-$cs_lang['laston']	= 'Laatste bezoek';
-$cs_lang['page']	= 'Status';
-$cs_lang['active']	= 'Aktief';
+$cs_lang['new_user']  = 'Nieuwe gebruiker';
+$cs_lang['access']  = 'Toegang';
+$cs_lang['country']  = 'Land';
+$cs_lang['nick']  = 'Nickname';
+$cs_lang['laston']  = 'Laatste bezoek';
+$cs_lang['page']  = 'Status';
+$cs_lang['active']  = 'Aktief';
 $cs_lang['picture_edit'] = 'Verander gebruikersfoto';
 $cs_lang['search'] = 'Search';
 
@@ -60,7 +60,7 @@ $cs_lang['info'] = 'Informatie';
 $cs_lang['message_send'] = 'Verstuur bericht';
 
 // Create
-$cs_lang['create_users']	= 'Creeer nieuwe gebruikersaccounts.';
+$cs_lang['create_users']  = 'Creeer nieuwe gebruikersaccounts.';
 $cs_lang['lang'] = 'Taal';
 $cs_lang['password'] = 'Wachtwoord';
 $cs_lang['extended'] = 'Uitgebreid';
@@ -75,7 +75,7 @@ $cs_lang['email_false'] = '- E-mail address is niet geldig';
 $cs_lang['no_access'] = '- Kies een toegangsniveau';
 $cs_lang['access_denied'] = '- Chosen access level is higher than your own';
 
-$cs_lang['auto_pass']	= 'Het wachtwoord zal automatisch gegenereerd worden.';
+$cs_lang['auto_pass']  = 'Het wachtwoord zal automatisch gegenereerd worden.';
 
 // Mail
 $cs_lang['mail_reg_head'] = 'Registratie';
@@ -94,11 +94,11 @@ $cs_lang['not_active'] = 'Gedeactiveerd';
 $cs_lang['not_active_text'] = 'Geselecteerde gebruiker is gedeactiveerd';
 
 // Logout
-$cs_lang['logged_out']	= 'Succesvol uitgelogd, tot ziens!';
+$cs_lang['logged_out']  = 'Succesvol uitgelogd, tot ziens!';
 
 // Login
 $cs_lang['login'] = 'Login';
-$cs_lang['login_messages']	= 'Login bericht verschijnt hier.';
+$cs_lang['login_messages']  = 'Login bericht verschijnt hier.';
 $cs_lang['pwd'] = 'Wachtwoord';
 $cs_lang['user_notfound'] = 'Gebruiker niet gevonden in de database.';
 $cs_lang['wrong_pwd'] = 'Foutief wachtwoord.';
@@ -111,19 +111,19 @@ $cs_lang['not_public'] = 'Om in te loggen moet je beheerder zijn in onderhoudsmo
 
 // Register
 $cs_lang['signup'] = 'Geregistreerd';
-$cs_lang['register_info']	= 'Creeer hier nieuwe gebruikersaccounts.';
+$cs_lang['register_info']  = 'Creeer hier nieuwe gebruikersaccounts.';
 $cs_lang['register_disabled'] = 'De registratie van nieuwe gebruikers is uitgeschakeld door de beheerder.';
 
 $cs_lang['mail_key'] = 'Activatielink';
 
 // Home
-$cs_lang['home_info']	= 'Alle informatie over je gebruikersaccount.';
+$cs_lang['home_info']  = 'Alle informatie over je gebruikersaccount.';
 
 // Settings
-$cs_lang['settings_info']	= 'Instellingen informatie over gebruikersaccounts.';
-$cs_lang['picture']	= 'Foto';
-$cs_lang['setup']	= 'Setup';
-$cs_lang['close']	= 'Deactiveer';
+$cs_lang['settings_info']  = 'Instellingen informatie over gebruikersaccounts.';
+$cs_lang['picture']  = 'Foto';
+$cs_lang['setup']  = 'Setup';
+$cs_lang['close']  = 'Deactiveer';
 
 // Profile
 $cs_lang['column'] = 'Kolom';
@@ -132,18 +132,18 @@ $cs_lang['hidden'] = 'Verberg';
 $cs_lang['birthday'] = 'Geboortedatum';
 
 // Picture
-$cs_lang['picture_manage']	= 'Beheer hier je fotos.';
-$cs_lang['current']	= 'Huidige';
+$cs_lang['picture_manage']  = 'Beheer hier je fotos.';
+$cs_lang['current']  = 'Huidige';
 $cs_lang['pic_infos'] = 'Informatiebox';
 $cs_lang['max_width'] = 'Maximum breedte: ';
 $cs_lang['max_height'] = 'Maximum hoogte: ';
 $cs_lang['max_size'] = 'Maximum grootte: ';
 $cs_lang['filetypes'] = 'Filetype: ';
 
-$cs_lang['too_big']	= '- De file is te groot;';
-$cs_lang['too_wide']	= '- Deze foto is te breed';
-$cs_lang['too_high']	= '- Deze foto is te lang';
-$cs_lang['ext_error']	= '- Onbekende filetype';
+$cs_lang['too_big']  = '- De file is te groot;';
+$cs_lang['too_wide']  = '- Deze foto is te breed';
+$cs_lang['too_high']  = '- Deze foto is te lang';
+$cs_lang['ext_error']  = '- Onbekende filetype';
 $cs_lang['up_error'] = '- Onverwachte foutmelding, neem contact op met de beheerder';
 
 // Setup
@@ -164,7 +164,7 @@ $cs_lang['default'] = 'Standaard';
 $cs_lang['categories'] = 'Categorien';
 
 // Password
-$cs_lang['change_password']	= 'Verander hier je wachtwoord.';
+$cs_lang['change_password']  = 'Verander hier je wachtwoord.';
 $cs_lang['pwd_current'] = 'Huidige wachtwoord';
 $cs_lang['pwd_new'] = 'Nieuw wachtwoord';
 $cs_lang['pwd_again'] = 'Herhaal wachtwoord';
@@ -174,17 +174,17 @@ $cs_lang['not_match'] = '- De nieuwe wachtwoorden komen niet overeen.';
 // Close
 $cs_lang['close_confirm'] = 'Weet je zeker dat je het gebruikeraccount wilt sluiten?';
 $cs_lang['close_info'] = 'Alleen de beheerder kan dit heropenen!';
-$cs_lang['close_false']	= 'Closing cancelled';
-$cs_lang['close_true']	= 'Successfully closed';
+$cs_lang['close_false']  = 'Closing cancelled';
+$cs_lang['close_true']  = 'Successfully closed';
 
 // List
-$cs_lang['list']	= 'List';
-$cs_lang['female']	= 'Female';
-$cs_lang['male']		= 'Male';
-$cs_lang['place']		= 'Location';
+$cs_lang['list']  = 'List';
+$cs_lang['female']  = 'Female';
+$cs_lang['male']    = 'Male';
+$cs_lang['place']    = 'Location';
 
 // Options
-$cs_lang['manage_options']	= 'Manage module options.';
+$cs_lang['manage_options']  = 'Manage module options.';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['letters'] = 'Letters';
@@ -194,7 +194,7 @@ $cs_lang['reg_mail'] = 'Validatie per e-mail';
 $cs_lang['reg_captcha'] = 'Voer beveiligingscode in';
 
 // SendPW
-$cs_lang['sendpw_info']	= 'Vul het email adres in zoals heter staat in je profiel. ';
+$cs_lang['sendpw_info']  = 'Vul het email adres in zoals heter staat in je profiel. ';
 $cs_lang['sendpw_info'] .= 'Bij correct invullen ontvang je informatie aan';
 $cs_lang['sendpw_info'] .= 'activeer een nieuw wachtwoord.';
 $cs_lang['request'] = 'Aanvraag';
@@ -217,9 +217,9 @@ $cs_lang['mail_spw_end'] = "\n\nDeze mail is gegenereerd door een online formuli
 $cs_lang['key'] = 'Sleutel';
 $cs_lang['new_pwd'] = 'Wachtwoord';
 
-$cs_lang['online']	= 'Online';
-$cs_lang['all']	= 'Alle';
-$cs_lang['count_users'] 	= 'Er zijn %s gebruikers op de pagina';
+$cs_lang['online']  = 'Online';
+$cs_lang['all']  = 'Alle';
+$cs_lang['count_users']   = 'Er zijn %s gebruikers op de pagina';
 
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signature';

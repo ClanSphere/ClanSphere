@@ -44,8 +44,8 @@ for($sq_run = 0; $sq_run < $squads_loop; $sq_run++) {
   if (empty($cs_squads[$sq_run]['squads_text']))
     $data['squads'][$sq_run]['if']['text'] = false;
   else {
-  	$data['squads'][$sq_run]['if']['text'] = 1;
-  	$data['squads'][$sq_run]['squads_text'] = cs_secure($cs_squads[$sq_run]['squads_text'],1,1);
+    $data['squads'][$sq_run]['if']['text'] = 1;
+    $data['squads'][$sq_run]['squads_text'] = cs_secure($cs_squads[$sq_run]['squads_text'],1,1);
   }
   
   $data['squads'][$sq_run]['name'] = cs_secure($cs_squads[$sq_run]['squads_name']);

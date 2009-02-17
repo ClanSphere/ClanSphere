@@ -26,17 +26,17 @@ if(empty($count_abo)) {
 
 for($run = 0; $run < $count_abo; $run++) {
   $com_count = cs_sql_count($file,'comments','comments_fid=' .$cs_abo[$run]['threads_id']);
-	
+  
   $start = floor($com_count / $account['users_limit']) * $account['users_limit'];
   $more = 'where=' . $cs_abo[$run]['threads_id'] . '&amp;start=' . $start . '#' . $com_count;
-	
+  
   $from = 'users';
   $user = $cs_abo[$run]['threads_last_user'];
   $select = 'users_nick';
   $where = "users_id = '" . $user . "'";
   $cs_users = cs_sql_select(__FILE__,$from,$select,$where);
-	
-	
+  
+  
   $data['abos'][$run]['topics'] = $cs_abo[$run]['threads_headline'];
   $data['abos'][$run]['topics_link'] = cs_url('board','thread','where=' . $cs_abo[$run]['threads_id']);
   $data['abos'][$run]['replies'] = $com_count; 

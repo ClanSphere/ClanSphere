@@ -10,25 +10,25 @@ function cs_sql_connect($cs_db) {
         cs_error_sql(__FILE__, 'cs_sql_connect', 'pdo and pdo_sqlite extension must be activated!',1);
     }
 
-	try {
-		$connect = new PDO('sqlite:' . $cs_db['name']);
-		return $connect;
-	}
-	catch(PDOException $error) {
-		cs_error_sql(__FILE__, 'cs_sql_connect', $error->getMessage(),1);
-	}
+  try {
+    $connect = new PDO('sqlite:' . $cs_db['name']);
+    return $connect;
+  }
+  catch(PDOException $error) {
+    cs_error_sql(__FILE__, 'cs_sql_connect', $error->getMessage(),1);
+  }
 }
 
 function cs_sql_version($cs_file) {
 
     global $cs_db;
     $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0);
-	$sql_infos['type'] = 'SQLite 3 (pdo_sqlite)';
-	$sql_infos['host'] = 'localhost';
-	$sql_infos['client'] = $cs_db['con']->getAttribute(PDO::ATTR_CLIENT_VERSION);
-	$sql_infos['client'] = str_replace('undefined', '', $sql_infos['client']);
-	$sql_infos['server'] = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
-	$sql_infos['server'] = str_replace('undefined', '', $sql_infos['server']);
+  $sql_infos['type'] = 'SQLite 3 (pdo_sqlite)';
+  $sql_infos['host'] = 'localhost';
+  $sql_infos['client'] = $cs_db['con']->getAttribute(PDO::ATTR_CLIENT_VERSION);
+  $sql_infos['client'] = str_replace('undefined', '', $sql_infos['client']);
+  $sql_infos['server'] = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
+  $sql_infos['server'] = str_replace('undefined', '', $sql_infos['server']);
 
     $sql_query = "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table'";
     if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
@@ -43,7 +43,7 @@ function cs_sql_version($cs_file) {
         $sql_infos['tables'] = 0;
     }
     cs_log_sql($sql_query);
-	return $sql_infos;
+  return $sql_infos;
 }
 
 ?>

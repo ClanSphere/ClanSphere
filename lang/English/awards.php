@@ -2,13 +2,13 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod_text']	= 'The Awards Module';
-$cs_lang['mod']	= 'Awards';
+$cs_lang['mod_text']  = 'The Awards Module';
+$cs_lang['mod']  = 'Awards';
 $cs_lang['head']= 'Administration';
 $cs_lang['head_view'] = 'Details';
 $cs_lang['head_create'] = 'Create';
 $cs_lang['head_edit'] = 'Edit';
-$cs_lang['head_remove']	= 'Remove';
+$cs_lang['head_remove']  = 'Remove';
 $cs_lang['body_create'] =  'All fields with * are required.';
 $cs_lang['body_edit'] =  'All fields with * are required.';
 $cs_lang['error_occurred'] = 'An error occurred.';
@@ -27,7 +27,7 @@ $cs_lang['no_event'] = '- A event is required';
 $cs_lang['no_event_url'] = '- A homepage is required';
 $cs_lang['no_game'] = '- No game selected';
 $cs_lang['no_rank'] = '- A rank is required';
-$cs_lang['remove_rly']		= 'Dataset nr. %s really delete?';
+$cs_lang['remove_rly']    = 'Dataset nr. %s really delete?';
 $cs_lang['squad'] = 'Squad';
 
 ?>

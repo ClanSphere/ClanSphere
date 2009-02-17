@@ -23,14 +23,14 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['no_lanparty'] . cs_html_br(1);
   }
   else {
-  	$where = "lanpartys_id = '" . cs_sql_escape($cs_lanvotes['lanpartys_id']) . "' AND ";
-  	$where .= "lanvotes_question = '" . cs_sql_escape($cs_lanvotes['lanvotes_question']) . "'";
-		$where .= " AND lanvotes_id != '" . $lanvotes_id . "'";
-  	$search_collision = cs_sql_count(__FILE__,'lanvotes',$where);
-  	if(!empty($search_collision)) {
+    $where = "lanpartys_id = '" . cs_sql_escape($cs_lanvotes['lanpartys_id']) . "' AND ";
+    $where .= "lanvotes_question = '" . cs_sql_escape($cs_lanvotes['lanvotes_question']) . "'";
+    $where .= " AND lanvotes_id != '" . $lanvotes_id . "'";
+    $search_collision = cs_sql_count(__FILE__,'lanvotes',$where);
+    if(!empty($search_collision)) {
       $error++;
       $errormsg .= $cs_lang['question_lan_exists'] . cs_html_br(1);
-  	}
+    }
   }
 
   if(empty($cs_lanvotes['lanvotes_start'])) {

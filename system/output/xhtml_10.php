@@ -38,7 +38,7 @@ function cs_html_mail($mail, $link = '')
 {
     $email = explode("@", $mail);
     $domain = empty($email[1]) ? array(0,1) : explode(".", $email[1]);
-	$link = empty($link) ? $email[0] . ' (at) ' . $domain[0] . ' (dot) ' . $domain[1] : $link;
+  $link = empty($link) ? $email[0] . ' (at) ' . $domain[0] . ' (dot) ' . $domain[1] : $link;
     $str = base64_encode($mail);
     
     return '<a href="#" onclick="cs_ajax_request(\'mods/clansphere/mail.php?mail=' . $str . '\',function(http_request){window.location=\'mailto:\'+http_request.responseText;})">' . $link . '</a>';
@@ -47,7 +47,7 @@ function cs_html_msnmail($mail, $link = '')
 {
     $email = explode("@", $mail);
     $domain = empty($email[1]) ? array(0,1) : explode(".", $email[1]);
-	$link = empty($link) ? $email[0] . ' (at) ' . $domain[0] . ' (dot) ' . $domain[1] : $link;
+  $link = empty($link) ? $email[0] . ' (at) ' . $domain[0] . ' (dot) ' . $domain[1] : $link;
     $str = base64_encode($mail);
     
     return '<a href="#" onclick="cs_ajax_request(\'mods/clansphere/mail.php?mail=' . $str . '\',function(http_request){window.location=\'http://members.msn.com/\'+http_request.responseText;})">' . $link . '</a>';

@@ -2,35 +2,35 @@
 
 function cs_categories_create($mod, $categories_name) {
 
-	$return = 0;
-	
-	if (empty($categories_name)) return 0;
+  $return = 0;
+  
+  if (empty($categories_name)) return 0;
 
-	$get = "categories_mod='" . $mod . "' AND categories_name = '" . cs_sql_escape($categories_name) . "'";
-	$get_data = cs_sql_select(__FILE__,'categories','categories_id',$get,'categories_name');
-	if(empty($get_data['categories_id'])) {
-		$columns = array('categories_mod','categories_name');
-		$values = array($mod, $categories_name);
-  	cs_sql_insert(__FILE__,'categories',$columns,$values);
-		
-		$find = "categories_mod='" . $mod . "' AND categories_name = '" . cs_sql_escape($categories_name) . "'";
-		$find_data = cs_sql_select(__FILE__,'categories','categories_id',$find,'categories_name');
-		$return = $find_data['categories_id'];
-	}
-	else {
-		$return = $get_data['categories_id'];
-	}
-	return $return;
+  $get = "categories_mod='" . $mod . "' AND categories_name = '" . cs_sql_escape($categories_name) . "'";
+  $get_data = cs_sql_select(__FILE__,'categories','categories_id',$get,'categories_name');
+  if(empty($get_data['categories_id'])) {
+    $columns = array('categories_mod','categories_name');
+    $values = array($mod, $categories_name);
+    cs_sql_insert(__FILE__,'categories',$columns,$values);
+    
+    $find = "categories_mod='" . $mod . "' AND categories_name = '" . cs_sql_escape($categories_name) . "'";
+    $find_data = cs_sql_select(__FILE__,'categories','categories_id',$find,'categories_name');
+    $return = $find_data['categories_id'];
+  }
+  else {
+    $return = $get_data['categories_id'];
+  }
+  return $return;
 }
 
 function cs_categories_dropdown($mod, $categories_id) {
 
-	$where = "categories_mod='" . $mod . "'";
-	$list_data = cs_sql_select(__FILE__,'categories','categories_id, categories_name',$where,'categories_name',0,0);
+  $where = "categories_mod='" . $mod . "'";
+  $list_data = cs_sql_select(__FILE__,'categories','categories_id, categories_name',$where,'categories_name',0,0);
 
-	$return = cs_dropdown('categories_id','categories_name',$list_data,$categories_id);
-	$return .= ' - ' . cs_html_input('categories_name','','text',80,20);
-	return $return;
+  $return = cs_dropdown('categories_id','categories_name',$list_data,$categories_id);
+  $return .= ' - ' . cs_html_input('categories_name','','text',80,20);
+  return $return;
 }
 
 function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1) {
@@ -43,14 +43,14 @@ function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1) {
   $return .= cs_html_option('----', 0);
   
   if (!empty($categories)) {
-	  foreach ($categories AS $cat) {
-	    $blank = '';
-	    if (!empty($cat['layer'])) {
-	      for ($i = 0; $i < $cat['layer']; $i++) { $blank .= '&nbsp;&nbsp;'; }
-	      $blank .= '&raquo;';
-	    }
-	    $return .= cs_html_option($blank . $cat['categories_name'],$cat['categories_id'], $cat['categories_id'] == $categories_id);
-	  }
+    foreach ($categories AS $cat) {
+      $blank = '';
+      if (!empty($cat['layer'])) {
+        for ($i = 0; $i < $cat['layer']; $i++) { $blank .= '&nbsp;&nbsp;'; }
+        $blank .= '&raquo;';
+      }
+      $return .= cs_html_option($blank . $cat['categories_name'],$cat['categories_id'], $cat['categories_id'] == $categories_id);
+    }
   }
   
   $return .= cs_html_select(0);
@@ -84,30 +84,30 @@ function cs_catsort ($array, $id = 0) {
     }
   }
   
-	if (!empty($id)) { // Get right (sub)categories
-	  $count = count($result);
-	  for ($i = 0; $i < $count; $i++) {
-	    if ($id == $result[$i]['categories_id']) {
-	      $layer = $result[$i]['layer'];
-	      $name = $result[$i]['categories_name'];
-	      $start = $i;
-	    } elseif (isset($layer) && $result[$i]['layer'] <= $layer) {
-	      $end = $i;
-	      break;
-	    }
-	  }
-	  $end = !empty($end) ? $end - $start : $count;
-	  $result = array_slice($result,$start,$end);
-	}
+  if (!empty($id)) { // Get right (sub)categories
+    $count = count($result);
+    for ($i = 0; $i < $count; $i++) {
+      if ($id == $result[$i]['categories_id']) {
+        $layer = $result[$i]['layer'];
+        $name = $result[$i]['categories_name'];
+        $start = $i;
+      } elseif (isset($layer) && $result[$i]['layer'] <= $layer) {
+        $end = $i;
+        break;
+      }
+    }
+    $end = !empty($end) ? $end - $start : $count;
+    $result = array_slice($result,$start,$end);
+  }
   
   return $result;
 }
 
 function cs_catspaces ($count = 0, $letter = '&nbsp;&nbsp;') {
   if (empty($count)) return '';
-	$string = '';
+  $string = '';
   for ($i = 0; $i < $count; $i++) {
-  	$string .= $letter;
+    $string .= $letter;
   }
   return $string;
 }

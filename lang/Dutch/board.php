@@ -60,8 +60,8 @@ $cs_lang['up_error'] = '- Onverwachte fout, neem contact op met de webbeheerder'
 $cs_lang['nopic'] = 'Geen Avatar geselecteerd';
 $cs_lang['current']    = 'Huidige';
 $cs_lang['more']    = 'Meer';
-$cs_lang['glob_sig']	= 'Globale signature';
-$cs_lang['glob_sig1']	= 'Possible placeholders: {post_nick} and {post_date}';
+$cs_lang['glob_sig']  = 'Globale signature';
+$cs_lang['glob_sig1']  = 'Possible placeholders: {post_nick} and {post_date}';
 
 //center.php
 $cs_lang['cat']    = 'Categorie';

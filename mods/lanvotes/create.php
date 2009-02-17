@@ -11,7 +11,7 @@ if(isset($_POST['submit'])) {
   $cs_lanvotes['lanvotes_start'] = cs_datepost('start','unix');
   $cs_lanvotes['lanvotes_end'] = cs_datepost('end','unix');
   $cs_lanvotes['lanvotes_question'] = $_POST['lanvotes_question'];
-	$cs_lanvotes['lanvotes_election'] = $_POST['lanvotes_election'];
+  $cs_lanvotes['lanvotes_election'] = $_POST['lanvotes_election'];
 
   $error = 0;
   $errormsg = '';
@@ -21,13 +21,13 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['no_lanparty'] . cs_html_br(1);
   }
   else {
-  	$where = "lanpartys_id = '" . cs_sql_escape($cs_lanvotes['lanpartys_id']) . "' AND ";
-  	$where .= "lanvotes_question = '" . cs_sql_escape($cs_lanvotes['lanvotes_question']) . "'";
-  	$search_collision = cs_sql_count(__FILE__,'lanvotes',$where);
-  	if(!empty($search_collision)) {
-    	$error++;
-    	$errormsg .= $cs_lang['question_lan_exists'] . cs_html_br(1);
-  	}
+    $where = "lanpartys_id = '" . cs_sql_escape($cs_lanvotes['lanpartys_id']) . "' AND ";
+    $where .= "lanvotes_question = '" . cs_sql_escape($cs_lanvotes['lanvotes_question']) . "'";
+    $search_collision = cs_sql_count(__FILE__,'lanvotes',$where);
+    if(!empty($search_collision)) {
+      $error++;
+      $errormsg .= $cs_lang['question_lan_exists'] . cs_html_br(1);
+    }
   }
 
   if(empty($cs_lanvotes['lanvotes_start'])) {
@@ -60,7 +60,7 @@ else {
   $cs_lanvotes['lanvotes_start'] = cs_time();
   $cs_lanvotes['lanvotes_end'] = cs_time();
   $cs_lanvotes['lanvotes_question'] = '';
-	$cs_lanvotes['lanvotes_election'] = '';
+  $cs_lanvotes['lanvotes_election'] = '';
 }
 
 if(!isset($_POST['submit'])) {

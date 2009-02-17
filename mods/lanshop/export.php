@@ -52,22 +52,22 @@ $users_id = 0;
 
 for($run=0; $run<$lanshop_loop; $run++) {
 
-	if($users_id != $cs_lanshop[$run]['users_id']) {
-		$users_id = $cs_lanshop[$run]['users_id'];
-		echo cs_html_roco(1,'centerb',0,3);
-		echo cs_secure($cs_lanshop[$run]['users_nick']);
-		echo cs_html_roco(0);
-	}
-	echo cs_html_roco(1,'leftc');
-	echo $cs_lanshop[$run]['users_id'];
-	echo cs_html_roco(2,'leftc');
-	echo cs_secure($cs_lanshop[$run]['lanshop_articles_name']);
-	echo cs_html_roco(3,'leftc');
-	echo $cs_lanshop[$run]['lanshop_orders_value'];
-	echo cs_html_roco(0);
-	$pay = $cs_lanshop[$run]['lanshop_articles_price'] * $cs_lanshop[$run]['lanshop_orders_value'];
-	$lanshop_price = $lanshop_price + $pay;
-	$lanshop_value = $lanshop_value + $cs_lanshop[$run]['lanshop_orders_value'];
+  if($users_id != $cs_lanshop[$run]['users_id']) {
+    $users_id = $cs_lanshop[$run]['users_id'];
+    echo cs_html_roco(1,'centerb',0,3);
+    echo cs_secure($cs_lanshop[$run]['users_nick']);
+    echo cs_html_roco(0);
+  }
+  echo cs_html_roco(1,'leftc');
+  echo $cs_lanshop[$run]['users_id'];
+  echo cs_html_roco(2,'leftc');
+  echo cs_secure($cs_lanshop[$run]['lanshop_articles_name']);
+  echo cs_html_roco(3,'leftc');
+  echo $cs_lanshop[$run]['lanshop_orders_value'];
+  echo cs_html_roco(0);
+  $pay = $cs_lanshop[$run]['lanshop_articles_price'] * $cs_lanshop[$run]['lanshop_orders_value'];
+  $lanshop_price = $lanshop_price + $pay;
+  $lanshop_value = $lanshop_value + $cs_lanshop[$run]['lanshop_orders_value'];
 }
 
 echo cs_html_table(0);

@@ -21,7 +21,7 @@ if(isset($_POST['submit'])) {
   cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_size'");
   $def_cont = array($_POST['label']);
   cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'label'");
-	
+  
   cs_redirect($cs_lang['changes_done'],'clans','options');
 }
 else {
@@ -74,7 +74,7 @@ else {
   $data['clans']['max_width'] = $op_clans['max_width'];
   $data['clans']['max_height'] = $op_clans['max_height'];
   $data['clans']['max_size'] = $op_clans['max_size'];
-	
+  
   echo cs_subtemplate(__FILE__,$data,'clans','options');
 }
 ?>

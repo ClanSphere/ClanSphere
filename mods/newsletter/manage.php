@@ -35,10 +35,10 @@ $newsletter_loop = count($data['newsletter']);
 
 for($run=0; $run<$newsletter_loop; $run++) {
 
-	$data['newsletter'][$run]['user'] = cs_user($data['newsletter'][$run]['users_id'],$data['newsletter'][$run]['users_nick'],$data['newsletter'][$run]['users_active']);
-	$data['newsletter'][$run]['subject'] = $data['newsletter'][$run]['newsletter_subject'];
-	$data['newsletter'][$run]['date'] = cs_date('unix',$data['newsletter'][$run]['newsletter_time'],1);
-	$data['newsletter'][$run]['id'] = $data['newsletter'][$run]['newsletter_id'];
+  $data['newsletter'][$run]['user'] = cs_user($data['newsletter'][$run]['users_id'],$data['newsletter'][$run]['users_nick'],$data['newsletter'][$run]['users_active']);
+  $data['newsletter'][$run]['subject'] = $data['newsletter'][$run]['newsletter_subject'];
+  $data['newsletter'][$run]['date'] = cs_date('unix',$data['newsletter'][$run]['newsletter_time'],1);
+  $data['newsletter'][$run]['id'] = $data['newsletter'][$run]['newsletter_id'];
 
 }
 

@@ -13,17 +13,17 @@ if(isset($_GET['agree'])) {
   cs_redirect($cs_lang['del_true_join'], 'contact');
 }
 
-elseif(isset($_GET['cancel'])) 	
+elseif(isset($_GET['cancel']))   
   cs_redirect($cs_lang['del_false'], 'contact');
 
 else{
-	
-	$data['head']['body'] = sprintf($cs_lang['del_rly'],$contact_id);
-	$data['url']['agree'] = cs_url('contact','delete','id=' . $contact_id . '&amp;agree');
-	$data['url']['cancel'] = cs_url('contact','delete','id=' . $contact_id . '&amp;cancel');
-	
+  
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$contact_id);
+  $data['url']['agree'] = cs_url('contact','delete','id=' . $contact_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('contact','delete','id=' . $contact_id . '&amp;cancel');
+  
   echo cs_subtemplate(__FILE__,$data,'contact','delete');
-	
+  
 }
 
 ?>

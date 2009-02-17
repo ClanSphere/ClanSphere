@@ -37,11 +37,11 @@ for($run = 0; $run < $election_count; $run++) {
     $voted_answer = $voted[$run_2]['lanvoted_answer'];
     $voted_fid = $voted[$run_2]['lanvotes_id'];
     
-	if($voted_answer == $run + 1) {
+  if($voted_answer == $run + 1) {
       $answer_count++;
     }
   }
-	
+  
   $data['election'][$run]['question'] = $election[$run];
   if(!empty($voted_count)) {
     $answer_proz = $answer_count / $answers_count * 100;
@@ -51,13 +51,13 @@ for($run = 0; $run < $election_count; $run++) {
   }
   $answer_proz = round($answer_proz,1);
   
-  if(!empty($answer_count)) {		
+  if(!empty($answer_count)) {    
     $data['election'][$run]['end_img'] = cs_html_img('symbols/votes/vote02.png','13','2');
   }
   else {
     $data['election'][$run]['end_img'] = '';
   }
-	
+  
   $data['election'][$run]['percent'] = $answer_proz;
   $data['election'][$run]['count'] = $answer_count;
 } 

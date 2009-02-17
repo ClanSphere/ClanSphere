@@ -2,24 +2,24 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Quotes';
-$cs_lang['modtext']	= 'Beheer en maak quotes aan';
+$cs_lang['mod']  = 'Quotes';
+$cs_lang['modtext']  = 'Beheer en maak quotes aan';
 
 // Comments
-$cs_lang['com_create']	= 'Maak commentaar aan';
-$cs_lang['fill_in']	= 'Vul alle velden in.';
+$cs_lang['com_create']  = 'Maak commentaar aan';
+$cs_lang['fill_in']  = 'Vul alle velden in.';
 
-$cs_lang['not_able']	= '- Commentaar niet toegestaan.';
+$cs_lang['not_able']  = '- Commentaar niet toegestaan.';
 
-$cs_lang['place']			= 'Lokatie:';
-$cs_lang['posts']			= 'Posts:';
+$cs_lang['place']      = 'Lokatie:';
+$cs_lang['posts']      = 'Posts:';
 $cs_lang['text'] = 'Tekst';
 
-$cs_lang['com_edit']	= 'Bewerk commentaren';
-$cs_lang['show_changes']	= 'Geeft tekst wijzigingen aan.';
-$cs_lang['low_axx']	= '- Je toegangsniveau is te laag voor deze actie';
+$cs_lang['com_edit']  = 'Bewerk commentaren';
+$cs_lang['show_changes']  = 'Geeft tekst wijzigingen aan.';
+$cs_lang['low_axx']  = '- Je toegangsniveau is te laag voor deze actie';
 
-$cs_lang['com_remove']	= 'Verwijder commentaren';
+$cs_lang['com_remove']  = 'Verwijder commentaren';
 
 // Create
 $cs_lang['fill_obligated'] =  'Vul alle velden met een * in.';
@@ -45,16 +45,16 @@ $cs_lang['edit_done'] = 'Veranderingen succesvol';
 
 // List
 $cs_lang['user'] = 'Gebruiker';
-$cs_lang['list']	= 'Lijst';
+$cs_lang['list']  = 'Lijst';
 
 // Manage
 $cs_lang['new_quote'] = 'Nieuwe Quote';
 
 // Remove
-$cs_lang['rly_remove']		= 'Weet u zeker dat u dataset No. %s wilt verwijderen?';
+$cs_lang['rly_remove']    = 'Weet u zeker dat u dataset No. %s wilt verwijderen?';
 
 // View
-$cs_lang['details']	= 'Details';
-$cs_lang['quote_info']		= 'Informatie over geselecteerde quotes';
+$cs_lang['details']  = 'Details';
+$cs_lang['quote_info']    = 'Informatie over geselecteerde quotes';
 
 ?>

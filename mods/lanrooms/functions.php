@@ -30,7 +30,7 @@ function cs_lanroom($mod,$action,$lanrooms_id,$lanroomd_id = 0,$free = 0) {
     $var .= cs_html_roco(2,'center');
     $gow = 'A';
     
-	for($go = 1; $go <= $max_col[0]; $go++) {
+  for($go = 1; $go <= $max_col[0]; $go++) {
       $var .= cs_html_roco(2,'center',0,0,'15px');
       $var .= $gow++;
     }
@@ -40,21 +40,21 @@ function cs_lanroom($mod,$action,$lanrooms_id,$lanroomd_id = 0,$free = 0) {
     while($run < $lanroomd_loop) {
       if($col == $max_col[0]) {
         $var .= cs_html_roco(0);
-		$var .= cs_html_roco(1,'right');
-		$var .= ++$row;
-		$var .= cs_html_roco(2,'center');
-		$var .= cs_html_img('symbols/clansphere/empty.gif',12,12);
-		$col = 0;
+    $var .= cs_html_roco(1,'right');
+    $var .= ++$row;
+    $var .= cs_html_roco(2,'center');
+    $var .= cs_html_img('symbols/clansphere/empty.gif',12,12);
+    $col = 0;
       }
       $col++;
       $var .= cs_html_roco(2,'center',0,0,'15px');
       $content = $lanroomd[$run]['lanroomd_number'] . ' - ';
       
-	  if($lanroomd[$run]['lanroomd_row'] == $row AND $lanroomd[$run]['lanroomd_col'] == $col) {
+    if($lanroomd[$run]['lanroomd_row'] == $row AND $lanroomd[$run]['lanroomd_col'] == $col) {
         if($lanroomd[$run]['lanroomd_id'] == $lanroomd_id) {
           $content .= empty($free) ? $cs_lang['search'] : $cs_lang['self'];
           $img = cs_html_img('symbols/clansphere/green.gif',0,0,'title="' . $content . '"');
-		  $var .= cs_link($img,'users','view','id=' . $lanroomd[$run]['users_id']);
+      $var .= cs_link($img,'users','view','id=' . $lanroomd[$run]['users_id']);
         }
         elseif(empty($lanroomd[$run]['users_id'])) {
           $content .= $cs_lang['free'];

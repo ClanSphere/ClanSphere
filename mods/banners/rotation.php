@@ -20,6 +20,6 @@ else {
   $cells = array('options_value');
   $values = array($cs_banners['banners_id']);
   $where_op = 'options_mod = \'banners\' AND options_name = \'last_id\'';
-  cs_sql_update(__FILE__,'options',$cells,$values,0,$where_op);	  
+  cs_sql_update(__FILE__,'options',$cells,$values,0,$where_op);    
 }
 ?>

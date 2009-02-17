@@ -1,18 +1,18 @@
 <?php
 
-$cs_lang['mod_name']	= 'Standen lijst';
-$cs_lang['mod_text']	= 'Standen voor toernooien en ladders';
-$cs_lang['mod']	= 'Standen';
-$cs_lang['head_manage']	= 'Beheer';
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['head_create']	= 'Aanmaken';
-$cs_lang['body_create']	= 'Maak een nieuwe standenlijst aan';
-$cs_lang['head_edit']	= 'Bewerk';
-$cs_lang['body_edit']	= 'Er kunnen zich fouten voordoen.';
-$cs_lang['head_list']	= 'Lijst';
-$cs_lang['new_rank']	= 'Nieuwe standen lijst';
+$cs_lang['mod_name']  = 'Standen lijst';
+$cs_lang['mod_text']  = 'Standen voor toernooien en ladders';
+$cs_lang['mod']  = 'Standen';
+$cs_lang['head_manage']  = 'Beheer';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['head_create']  = 'Aanmaken';
+$cs_lang['body_create']  = 'Maak een nieuwe standenlijst aan';
+$cs_lang['head_edit']  = 'Bewerk';
+$cs_lang['body_edit']  = 'Er kunnen zich fouten voordoen.';
+$cs_lang['head_list']  = 'Lijst';
+$cs_lang['new_rank']  = 'Nieuwe standen lijst';
 $cs_lang['all'] = 'Momenteel zijn er %s standen aanwezig in de database.';
-$cs_lang['content']	= 'Content';
+$cs_lang['content']  = 'Content';
 $cs_lang['url'] = 'Website';
 $cs_lang['img'] = 'Afbeelding URL';
 $cs_lang['code'] = 'Source code';

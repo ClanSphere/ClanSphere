@@ -162,7 +162,7 @@ echo cs_html_br(1);
     array('name' => 'C&C Renegade', 'servers_class' => 'renegade'),  
     array('name' => 'Call of Duty', 'servers_class' => 'cod'),  
     array('name' => 'Call of Duty 2', 'servers_class' => 'cod2'),  
-    array('name' => 'Call of Duty 4', 'servers_class' => 'cod4'),  	  
+    array('name' => 'Call of Duty 4', 'servers_class' => 'cod4'),      
     array('name' => 'Doom 3', 'servers_class' => 'd3'),   
     array('name' => 'Descent 3', 'servers_class' => 'descent3'),   
     array('name' => 'Descent 3 Gamespy', 'servers_class' => 'des3gs'), 
@@ -198,7 +198,7 @@ echo cs_html_br(1);
     echo cs_html_option($class['name'],$class['servers_class'],$select);
   }
   echo cs_html_select(0);
-		
+    
   // Server Query Port
   echo cs_html_roco(0);
   echo cs_html_roco(1,'leftc');
@@ -249,7 +249,7 @@ echo cs_html_br(1);
   echo cs_html_roco(0);
 
 
-  // Options	
+  // Options  
   echo cs_html_roco(1,'leftc');
   echo cs_icon('ksysguard') . $cs_lang['options'];
   echo cs_html_roco(2,'leftb');

@@ -111,41 +111,41 @@ if($data['cup']['cups_system'] == 'teams') {
       $data['squads'][$run]['name'] = cs_link(cs_secure($squads[$run]['squads_name']),'squads','view','id=' . $squads[$run]['squads_id']);
     
       $part_tab = 'members mem INNER JOIN {pre}_users usr ON mem.users_id = usr.users_id';
-	    $part_cells = 'mem.members_admin AS members_admin, usr.users_nick AS users_nick, usr.users_id AS users_id, usr.users_active AS users_active, usr.users_country AS users_country';
-	    $where = "mem.squads_id = '" . $squads[$run]['squads_id'] . "'";
-	    $members = cs_sql_select(__FILE__,$part_tab,$part_cells,$where,'mem.members_order',0,0);
-	    
-	    $members_loop = count($members);
-	    
-	    if(empty($members_loop)) {
-		    $data['loop']['members'] = '';
-	      $data['stop']['members'] = '';
-	      $data['squads'][$run]['members']['country'] = '';
-		    $data['squads'][$run]['members']['name'] = '';
-		    $data['squads'][$run]['members']['dot'] = '';
+      $part_cells = 'mem.members_admin AS members_admin, usr.users_nick AS users_nick, usr.users_id AS users_id, usr.users_active AS users_active, usr.users_country AS users_country';
+      $where = "mem.squads_id = '" . $squads[$run]['squads_id'] . "'";
+      $members = cs_sql_select(__FILE__,$part_tab,$part_cells,$where,'mem.members_order',0,0);
+      
+      $members_loop = count($members);
+      
+      if(empty($members_loop)) {
+        $data['loop']['members'] = '';
+        $data['stop']['members'] = '';
+        $data['squads'][$run]['members']['country'] = '';
+        $data['squads'][$run]['members']['name'] = '';
+        $data['squads'][$run]['members']['dot'] = '';
      }
      else {    
        for($run_2=0; $run_2<$members_loop; $run_2++) {
-	        $users_nick = cs_secure($members[$run_2]['users_nick']);
-			    $users_link = cs_user($members[$run_2]['users_id'],$members[$run_2]['users_nick'], $members[$run_2]['users_active']);
-			     
-			    if(!empty($members[$run_2]['members_admin'])) {
-			      $users_link = cs_html_big(1) . $users_link . cs_html_big(0);
-			    }
+          $users_nick = cs_secure($members[$run_2]['users_nick']);
+          $users_link = cs_user($members[$run_2]['users_id'],$members[$run_2]['users_nick'], $members[$run_2]['users_active']);
+           
+          if(!empty($members[$run_2]['members_admin'])) {
+            $users_link = cs_html_big(1) . $users_link . cs_html_big(0);
+          }
           $all = $run_2 == ($members_loop - 1) ? '' : ', ';
       
-		      if(empty($members[$run_2]['users_country'])) {
-		        $country = '-';
-		      }
-		      else {
-		        $url = 'symbols/countries/' . $members[$run_2]['users_country'] . '.png';
-		        $country =  cs_html_img($url,11,16);
-		      }
+          if(empty($members[$run_2]['users_country'])) {
+            $country = '-';
+          }
+          else {
+            $url = 'symbols/countries/' . $members[$run_2]['users_country'] . '.png';
+            $country =  cs_html_img($url,11,16);
+          }
       
-		      $data['squads'][$run]['members'][$run_2]['country'] = $country;
-		      $data['squads'][$run]['members'][$run_2]['name'] = $users_link;
-		      $data['squads'][$run]['members'][$run_2]['dot'] = $all;
-		      
+          $data['squads'][$run]['members'][$run_2]['country'] = $country;
+          $data['squads'][$run]['members'][$run_2]['name'] = $users_link;
+          $data['squads'][$run]['members'][$run_2]['dot'] = $all;
+          
         }
       }
     }
@@ -159,10 +159,10 @@ else {
   if(!empty($select)) {
     $data['if']['players'] = true;
     
-	  foreach ($select AS $user) {
-	    $data['cup_loop'][$run]['players'] = cs_user($user['users_id'],$user['users_nick'], $user['users_active']);
-	    $run ++;
-	  }
+    foreach ($select AS $user) {
+      $data['cup_loop'][$run]['players'] = cs_user($user['users_id'],$user['users_nick'], $user['users_active']);
+      $run ++;
+    }
   }
 }
 

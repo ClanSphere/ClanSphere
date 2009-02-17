@@ -47,15 +47,15 @@ class etqw
         $srv_value = array_search ($srv_value, $srv_data);
  
         if ($srv_value === false)
-	{
-	    return false;
-	}
-	else
-	{
-	    $srv_value = $srv_data[$srv_value+1];
+  {
+      return false;
+  }
+  else
+  {
+      $srv_value = $srv_data[$srv_value+1];
 
             return $srv_value;
-	}
+  }
     }
 
     function splitdata()
@@ -64,72 +64,72 @@ class etqw
         $this->c_info = explode ("\x00\x00\x00", $this->s_info, 2);
         $this->g_info = explode ("\x00", $this->c_info[0]);
        
-	$end = strlen($this->c_info[1]) - 8;
-	$this->p_info = substr($this->c_info[1], "\x00\x00\x00", $end );
-	
+  $end = strlen($this->c_info[1]) - 8;
+  $this->p_info = substr($this->c_info[1], "\x00\x00\x00", $end );
+  
         // get players from stream and write to p_info
- 	$index_old = 0;
-	$index_new = 0;
-	
-	foreach ($this->c_info as $value)
-	{
-	    if ($index_old >= 2)
-	    {
-	    	$this->p_info[$index_new] = $value;
-		$index_new++;
-	    }
-	    $index_old++;
-	}
+   $index_old = 0;
+  $index_new = 0;
+  
+  foreach ($this->c_info as $value)
+  {
+      if ($index_old >= 2)
+      {
+        $this->p_info[$index_new] = $value;
+    $index_new++;
+      }
+      $index_old++;
+  }
     }
   
     function microtime_float()
     {
         list($usec, $sec) = explode(" ", microtime());
-	
-	return ((float)$usec + (float)$sec);
+  
+  return ((float)$usec + (float)$sec);
     }
 
     function getstream($host, $port, $queryport)
     {
-    	$this->write = chr (0xff) . chr (0xff) . "getInfo" . chr (0x00);
+      $this->write = chr (0xff) . chr (0xff) . "getInfo" . chr (0x00);
 
         // get the infostream from server
         $socket = fsockopen('udp://'. $host, $port, $errno, $errstr, 30);
 
         if ($socket === false)
         {
-	    echo "Error: $errno - $errstr<br>\n";
-	}
-	else
-	{
-	    socket_set_timeout($socket, 1);
+      echo "Error: $errno - $errstr<br>\n";
+  }
+  else
+  {
+      socket_set_timeout($socket, 1);
 
             $time_begin = $this->microtime_float();
 
             fwrite($socket, $this->write);
             
-	    $this->s_info = fread($socket, $this->maxlen);
+      $this->s_info = fread($socket, $this->maxlen);
             
-	    $time_end = $this->microtime_float();
-	 }
-	 fclose($socket);
+      $time_end = $this->microtime_float();
+   }
+   fclose($socket);
 
          // response time
-	 $this->response = $time_end - $time_begin;
-	 $this->response = ($this->response * 1000);
-	 $this->response = (int)$this->response;
+   $this->response = $time_end - $time_begin;
+   $this->response = ($this->response * 1000);
+   $this->response = (int)$this->response;
  
          if ($this->s_info)
          {
-	     // sort the infostring
-	     $this->splitdata();
-	   
+       // sort the infostring
+       $this->splitdata();
+     
              return true;
-	 }
-	 else
-	 {
+   }
+   else
+   {
              return false;
-	 }
+   }
     }
     
     function check_color($text, $switch)
@@ -150,67 +150,67 @@ class etqw
  
         if ($switch == 1)
         { 
-	    // colored playerstring
-	    $search  = array (
-	    "/\^c\d\d\d/", "/\^i[a-z]\d\d/",           //  0
-	    "/\^0/", "/\^1/", "/\^2/", "/\^3/",        //  1
-	    "/\^4/", "/\^5/", "/\^6/", "/\^7/",        //  2
-	    "/\^8/", "/\^9/", "/\^a/", "/\^b/",        //  3
-	    "/\^c/", "/\^d/", "/\^e/", "/\^f/",        //  4
-	    "/\^g/", "/\^h/", "/\^i/", "/\^j/",        //  5
-	    "/\^k/", "/\^l/", "/\^m/", "/\^n/",        //  6
-	    "/\^o/", "/\^p/", "/\^q/", "/\^r/",        //  7
-	    "/\^s/", "/\^t/", "/\^u/", "/\^v/",        //  8
-	    "/\^w/", "/\^x/", "/\^y/", "/\^z/",        //  9
-	    "/\^\//", "/\^\*/", "/\^\-/", "/\^\+/",    // 10
-	    "/\^\?/", "/\^\@/", "/\^</", "/\^>/",      // 11
-	    "/\^\&/", "/\^\)/", "/\^\(/", "/\^[A-Z]/", // 12
-	    "/\^\_/", "/\^!/", "/\^#/",                // 13
-	    "/&</", "/^(.*?)<\/font>/"                 // 14
-	    );
+      // colored playerstring
+      $search  = array (
+      "/\^c\d\d\d/", "/\^i[a-z]\d\d/",           //  0
+      "/\^0/", "/\^1/", "/\^2/", "/\^3/",        //  1
+      "/\^4/", "/\^5/", "/\^6/", "/\^7/",        //  2
+      "/\^8/", "/\^9/", "/\^a/", "/\^b/",        //  3
+      "/\^c/", "/\^d/", "/\^e/", "/\^f/",        //  4
+      "/\^g/", "/\^h/", "/\^i/", "/\^j/",        //  5
+      "/\^k/", "/\^l/", "/\^m/", "/\^n/",        //  6
+      "/\^o/", "/\^p/", "/\^q/", "/\^r/",        //  7
+      "/\^s/", "/\^t/", "/\^u/", "/\^v/",        //  8
+      "/\^w/", "/\^x/", "/\^y/", "/\^z/",        //  9
+      "/\^\//", "/\^\*/", "/\^\-/", "/\^\+/",    // 10
+      "/\^\?/", "/\^\@/", "/\^</", "/\^>/",      // 11
+      "/\^\&/", "/\^\)/", "/\^\(/", "/\^[A-Z]/", // 12
+      "/\^\_/", "/\^!/", "/\^#/",                // 13
+      "/&</", "/^(.*?)<\/font>/"                 // 14
+      );
 
             $replace = array (
-	    "", "",                                             //  0
-	    "&<font color=$clr[0]>", "&<font color=$clr[1]>",   //  1
-	    "&<font color=$clr[2]>", "&<font color=$clr[3]>",   //  2
-	    "&<font color=$clr[4]>", "&<font color=$clr[5]>",   //  3
-	    "&<font color=$clr[6]>", "&<font color=$clr[7]>",   //  4
-	    "&<font color=$clr[8]>", "&<font color=$clr[9]>",   //  5
-	    "&<font color=$clr[10]>", "&<font color=$clr[11]>", //  6
-	    "&<font color=$clr[12]>", "&<font color=$clr[13]>", //  7
-	    "&<font color=$clr[14]>", "&<font color=$clr[15]>", //  8
-	    "&<font color=$clr[16]>", "&<font color=$clr[17]>", //  9
-	    "&<font color=$clr[18]>", "&<font color=$clr[19]>", // 10
-	    "&<font color=$clr[20]>", "&<font color=$clr[21]>", // 11
-	    "&<font color=$clr[22]>", "&<font color=$clr[23]>", // 12
-	    "&<font color=$clr[24]>", "&<font color=$clr[25]>", // 13
-	    "&<font color=$clr[26]>", "&<font color=$clr[27]>", // 14
-	    "&<font color=$clr[28]>", "&<font color=$clr[29]>", // 15
-	    "&<font color=$clr[30]>", "&<font color=$clr[31]>", // 16
-	    "&<font color=$clr[32]>", "&<font color=$clr[33]>", // 17
-	    "&<font color=$clr[34]>", "&<font color=$clr[35]>", // 18
-	    "&<font color=$clr[36]>", "&<font color=$clr[37]>", // 19
-	    "&<font color=$clr[38]>", "&<font color=$clr[39]>", // 20
-	    "&<font color=$clr[40]>", "&<font color=$clr[41]>", // 21
-	    "", "", "", "", "", "", "", "",                     // 22
-	    "", "</font><", "\$1"                               // 23
-	    );
+      "", "",                                             //  0
+      "&<font color=$clr[0]>", "&<font color=$clr[1]>",   //  1
+      "&<font color=$clr[2]>", "&<font color=$clr[3]>",   //  2
+      "&<font color=$clr[4]>", "&<font color=$clr[5]>",   //  3
+      "&<font color=$clr[6]>", "&<font color=$clr[7]>",   //  4
+      "&<font color=$clr[8]>", "&<font color=$clr[9]>",   //  5
+      "&<font color=$clr[10]>", "&<font color=$clr[11]>", //  6
+      "&<font color=$clr[12]>", "&<font color=$clr[13]>", //  7
+      "&<font color=$clr[14]>", "&<font color=$clr[15]>", //  8
+      "&<font color=$clr[16]>", "&<font color=$clr[17]>", //  9
+      "&<font color=$clr[18]>", "&<font color=$clr[19]>", // 10
+      "&<font color=$clr[20]>", "&<font color=$clr[21]>", // 11
+      "&<font color=$clr[22]>", "&<font color=$clr[23]>", // 12
+      "&<font color=$clr[24]>", "&<font color=$clr[25]>", // 13
+      "&<font color=$clr[26]>", "&<font color=$clr[27]>", // 14
+      "&<font color=$clr[28]>", "&<font color=$clr[29]>", // 15
+      "&<font color=$clr[30]>", "&<font color=$clr[31]>", // 16
+      "&<font color=$clr[32]>", "&<font color=$clr[33]>", // 17
+      "&<font color=$clr[34]>", "&<font color=$clr[35]>", // 18
+      "&<font color=$clr[36]>", "&<font color=$clr[37]>", // 19
+      "&<font color=$clr[38]>", "&<font color=$clr[39]>", // 20
+      "&<font color=$clr[40]>", "&<font color=$clr[41]>", // 21
+      "", "", "", "", "", "", "", "",                     // 22
+      "", "</font><", "\$1"                               // 23
+      );
 
             $ctext = preg_replace($search, $replace, $text);
 
             if ($ctext != $text)
-	    {
-	        $ctext = preg_replace("/$/", "</font>", $ctext);
-	    }
+      {
+          $ctext = preg_replace("/$/", "</font>", $ctext);
+      }
   
             return $ctext;
-	}	
-	elseif ($switch == 2)
-	{ 
-	    // colored numbers   
-	    if ($text <= 39)
-	    {
-	        $ctext = "<font color=$clr[7]>$text</font>";
+  }  
+  elseif ($switch == 2)
+  { 
+      // colored numbers   
+      if ($text <= 39)
+      {
+          $ctext = "<font color=$clr[7]>$text</font>";
             }
             elseif ($text <= 69)
             {
@@ -230,68 +230,68 @@ class etqw
         }
 
         return $ctext;
-	
+  
         }
     }
 
     function getrules($phgdir)
     {
         $srv_rules['sets'] = false;
-	
+  
         // response time
-	$srv_rules['response'] = $this->response . ' ms';
+  $srv_rules['response'] = $this->response . ' ms';
 
         // etqw setting pics
         $sets['pb']      = cs_html_img($phgdir . 'privileges/pb.gif',0,0,0,'PB');
-	$sets['pass']    = 	cs_html_img($phgdir . 'privileges/pass.gif',0,0,0,'Protected');
+  $sets['pass']    =   cs_html_img($phgdir . 'privileges/pass.gif',0,0,0,'Protected');
 
 
         // get the info strings from server info stream
         $srv_rules['hostname']       = $this->check_color($this->getvalue('si_name', $this->g_info),1);
         $srv_rules['mapname']        = $this->getvalue('si_map', $this->g_info);
         $srv_rules['maxplayers']     = $this->getvalue('si_maxPlayers', $this->g_info);
-	$srv_rules['version']        = $this->getvalue('si_version', $this->g_info);
-	$srv_rules['mod']            = $this->getvalue('fs_game', $this->g_info);
-	if ($srv_rules['maxplayers'] === false OR $srv_rules['maxplayers'] === NULL) 
-	{
-	    $srv_rules['maxplayers'] = $this->getvalue('si_maxplayers', $this->g_info);
-  	}
-	$srv_rules['gametype']       = $this->getvalue('si_gameType', $this->g_info);
+  $srv_rules['version']        = $this->getvalue('si_version', $this->g_info);
+  $srv_rules['mod']            = $this->getvalue('fs_game', $this->g_info);
+  if ($srv_rules['maxplayers'] === false OR $srv_rules['maxplayers'] === NULL) 
+  {
+      $srv_rules['maxplayers'] = $this->getvalue('si_maxplayers', $this->g_info);
+    }
+  $srv_rules['gametype']       = $this->getvalue('si_gameType', $this->g_info);
         $srv_rules['needpass']       = $this->getvalue('si_usepass', $this->g_info);
-        $srv_rules['punkbuster']     = $this->getvalue('sv_punkbuster', $this->g_info);	
-	
-	// get version information
-	$version_array = explode(' ', $srv_rules['version']);
-	$srv_rules['version'] = $version_array[1] . ' ' . $version_array[2];
-	$srv_rules['gamename'] = 'Enemy Territory Quake Wars (' . $srv_rules['mod'] . ')<br>' . $srv_rules['version'];
-	
-	// path to map picture and default info picture
-	$srv_rules['map_path'] = 'maps/etqw';
-	$srv_rules['map_default'] = 'default.jpg';
+        $srv_rules['punkbuster']     = $this->getvalue('sv_punkbuster', $this->g_info);  
+  
+  // get version information
+  $version_array = explode(' ', $srv_rules['version']);
+  $srv_rules['version'] = $version_array[1] . ' ' . $version_array[2];
+  $srv_rules['gamename'] = 'Enemy Territory Quake Wars (' . $srv_rules['mod'] . ')<br>' . $srv_rules['version'];
+  
+  // path to map picture and default info picture
+  $srv_rules['map_path'] = 'maps/etqw';
+  $srv_rules['map_default'] = 'default.jpg';
         
-	// get the connected player
-	$srv_rules['nowplayers'] = $this->countplayers();
-	
-	// etqw needpass pic
-	if ($srv_rules['needpass'] == 1)
-	{
-	    $srv_rules['sets'] .= $sets['pass'];
-	}
+  // get the connected player
+  $srv_rules['nowplayers'] = $this->countplayers();
+  
+  // etqw needpass pic
+  if ($srv_rules['needpass'] == 1)
+  {
+      $srv_rules['sets'] .= $sets['pass'];
+  }
         // etqw pubkbuster pic
-	if ($srv_rules['punkbuster'] == 1)
-	{
-	    $srv_rules['sets'] .= $sets['pb'];
-	}
+  if ($srv_rules['punkbuster'] == 1)
+  {
+      $srv_rules['sets'] .= $sets['pb'];
+  }
 
-	if ($srv_rules['sets'] === false)
-	{
-	    $srv_rules['sets'] = '-';
-	}
+  if ($srv_rules['sets'] === false)
+  {
+      $srv_rules['sets'] = '-';
+  }
 
-	// server general info (added by balgo 05.01.2006 only for test)
-	    global $cs_lang;
+  // server general info (added by balgo 05.01.2006 only for test)
+      global $cs_lang;
         $srv_rules['htmlinfo'] = cs_html_roco(1,'rightb',0,0,'50%') . $cs_lang['map:'];
-		$srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
+    $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['players'];
         $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['response'];
@@ -313,20 +313,20 @@ class etqw
         $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['response'] . cs_html_roco(0);
         $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['privileges'];
         $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['sets'] . cs_html_roco(0);
-	
-	// return all server rules
-	return $srv_rules;
+  
+  // return all server rules
+  return $srv_rules;
     }
 
     function countplayers()
-    {	
-    	$this->getplayers();
+    {  
+      $this->getplayers();
         return $this->pl_count;
     }
     
     function getplayers()
     {
-		// set html thead
+    // set html thead
     global $cs_lang;
     $thead = cs_html_roco(1,'headb');
     $thead .= cs_html_div(1,'text-align:center');
@@ -349,54 +349,54 @@ class etqw
     $thead .= $cs_lang['ping'];
     $thead .= cs_html_div(0);
     $thead .= cs_html_roco(0);
-		 
-	$srv_player = $thead;	
-	
-	$pl_string = $this->p_info;
-	
-	// search player datas
+     
+  $srv_player = $thead;  
+  
+  $pl_string = $this->p_info;
+  
+  // search player datas
         for ($count_players = 1; strlen ($pl_string) > 5; $count_players++) 
-	{
-	    unset ($name,$clan,$rate,$ping);
-	    
-	    $pl_string = substr($pl_string,1);
-	    
-	    $ping_array = unpack ("S", substr($pl_string,0,2));
-	    $pl_string = substr($pl_string,2);
-	    $ping = $ping_array[1];
-	    
-	    $rate_array = unpack ("L", substr($pl_string,0,4));
-	    $pl_string = substr($pl_string,4);
-	    $rate = $rate_array[1];
-	    
-	    if (substr($pl_string,0,1) == "\x00")
-	    {
-	        $name = '';
-		$pl_string = substr($pl_string,1);
-	    }
-	    else 
-	    {
+  {
+      unset ($name,$clan,$rate,$ping);
+      
+      $pl_string = substr($pl_string,1);
+      
+      $ping_array = unpack ("S", substr($pl_string,0,2));
+      $pl_string = substr($pl_string,2);
+      $ping = $ping_array[1];
+      
+      $rate_array = unpack ("L", substr($pl_string,0,4));
+      $pl_string = substr($pl_string,4);
+      $rate = $rate_array[1];
+      
+      if (substr($pl_string,0,1) == "\x00")
+      {
+          $name = '';
+    $pl_string = substr($pl_string,1);
+      }
+      else 
+      {
                 $nullpos = strpos($pl_string,"\x00");
 
-		if ($nullpos === false)
-		{
+    if ($nullpos === false)
+    {
                     $name = '';
-		}
-		else
-		{
+    }
+    else
+    {
                     $name = substr($pl_string,0,$nullpos);
-		    $pl_string = substr($pl_string,$nullpos + 1);
-		}
-	    }
+        $pl_string = substr($pl_string,$nullpos + 1);
+    }
+      }
 
             if (substr($pl_string,0,1) == "\x00")
-	    {
-	        $clan = '';
-	        $pl_string = substr($pl_string,1);
-	    }
-	    else
-	    {
-	        $nullpos = strpos($pl_string,"\x00");
+      {
+          $clan = '';
+          $pl_string = substr($pl_string,1);
+      }
+      else
+      {
+          $nullpos = strpos($pl_string,"\x00");
                 if ($nullpos === false)
                 {
                     $clan = '';
@@ -407,7 +407,7 @@ class etqw
                     $pl_string = substr($pl_string,$nullpos + 1);
                 }
             }
-	    $name = htmlentities($name);
+      $name = htmlentities($name);
 
         $tdata = cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . $count_players . cs_html_div(0);
         $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . $this->check_color($name,1) . cs_html_div(0);
@@ -416,19 +416,19 @@ class etqw
         $tdata .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . $this->check_color($ping,2) . cs_html_div(0) . cs_html_roco(0);
         $srv_player = $srv_player . $tdata;
         }
-	$this->pl_count = $count_players - 1;
+  $this->pl_count = $count_players - 1;
 
-	if ($this->pl_count == 0)
-	{
+  if ($this->pl_count == 0)
+  {
         $tdata = cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $tdata .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $tdata .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $tdata .= cs_html_roco(5,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0) . cs_html_roco(0);
-	    $srv_player = $srv_player . $tdata;
-	}
-	
-	return $srv_player;
+      $srv_player = $srv_player . $tdata;
+  }
+  
+  return $srv_player;
     }
 }
 ?>

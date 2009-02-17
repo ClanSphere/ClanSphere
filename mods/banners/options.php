@@ -8,7 +8,7 @@ $op_banners = cs_sql_option(__FILE__,'banners');
 
 if(isset($_POST['submit'])) {
   
-	require 'mods/clansphere/func_options.php';
+  require 'mods/clansphere/func_options.php';
   
   $save = array();
   $save['max_width'] = (int) $_POST['max_width'];
@@ -17,18 +17,18 @@ if(isset($_POST['submit'])) {
   $save['def_order'] = (int) $_POST['def_order'];
   
   cs_optionsave('banners', $save);
-	
+  
   cs_redirect($cs_lang['success'], 'banners','options');
   
 } else {
-	
+  
   $data['lang']['getmsg'] = cs_getmsg();
   $data['action']['form'] = cs_url('banners','options');
   $data['options']['max_width'] = $op_banners['max_width'];
   $data['options']['max_height'] = $op_banners['max_height'];
   $data['options']['max_size'] = $op_banners['max_size'];
   $data['options']['def_order'] = $op_banners['def_order'];
-	
+  
   echo cs_subtemplate(__FILE__,$data,'banners','options');
   
 }

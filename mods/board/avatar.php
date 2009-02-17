@@ -93,7 +93,7 @@ elseif(!empty($_POST['submit'])) {
       $content = array($filename);
       cs_sql_update(__FILE__,'users',$cells,$content,$account['users_id']);
 
-	  cs_redirect($cs_lang['success'], 'board', 'avatar');
+    cs_redirect($cs_lang['success'], 'board', 'avatar');
     }
     else {
       $message .= $cs_lang['up_error'];
@@ -119,16 +119,16 @@ if(!empty($error) OR empty($_POST['submit'])) {
   }
 
 
-	$matches[1] = $cs_lang['pic_infos'];
-	$return_types = '';
-	foreach($img_filetypes AS $add => $value) {
-		$return_types .= empty($return_types) ? $add : ', ' . $add;
-	}
-	$matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
-	$matches[2] .= $cs_lang['filetypes'] . ': ' . $return_types;
-	$data['avatar']['clip'] = cs_abcode_clip($matches);
+  $matches[1] = $cs_lang['pic_infos'];
+  $return_types = '';
+  foreach($img_filetypes AS $add => $value) {
+    $return_types .= empty($return_types) ? $add : ', ' . $add;
+  }
+  $matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
+  $matches[2] .= $cs_lang['filetypes'] . ': ' . $return_types;
+  $data['avatar']['clip'] = cs_abcode_clip($matches);
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','avatar');

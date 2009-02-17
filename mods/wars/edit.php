@@ -93,9 +93,9 @@ if (isset($_POST['submit'])) {
   $cs_wars = cs_sql_select(__FILE__, 'wars', 'categories_id, ' . $cells, "wars_id = '" . $wars_id . "'");
 }
 if (!isset($_POST['submit']))
- 	$data['head']['body'] = $cs_lang['errors_here'];
+   $data['head']['body'] = $cs_lang['errors_here'];
 elseif (!empty($error))
- 	$data['head']['body'] = $error;
+   $data['head']['body'] = $error;
 
 if (!empty($error) or !isset($_POST['submit'])) {
   $tables = 'members mrs INNER JOIN {pre}_users usr ON mrs.users_id = usr.users_id ';
@@ -131,55 +131,55 @@ if (!empty($error) or !isset($_POST['submit'])) {
     }
   }
   
-  	$data['wars'] = $cs_wars;
+    $data['wars'] = $cs_wars;
 
-	$cs_games = cs_sql_select(__FILE__, 'games', 'games_name,games_id', 0, 'games_name', 0, 0);
-	$games_count = count($cs_games);
-	for ($run = 0; $run < $games_count; $run++) {
-		$sel = $cs_games[$run]['games_id'] == $cs_wars['games_id'] ? 1 : 0;
-		$data['games'][$run]['choose'] = cs_html_option($cs_games[$run]['games_name'], $cs_games[$run]['games_id'], $sel);
-	}
-	$url = 'uploads/games/' . $cs_wars['games_id'] . '.gif';
-	$data['wars']['game_img'] = cs_html_img($url, 0, 0, 'id="game_1"');
+  $cs_games = cs_sql_select(__FILE__, 'games', 'games_name,games_id', 0, 'games_name', 0, 0);
+  $games_count = count($cs_games);
+  for ($run = 0; $run < $games_count; $run++) {
+    $sel = $cs_games[$run]['games_id'] == $cs_wars['games_id'] ? 1 : 0;
+    $data['games'][$run]['choose'] = cs_html_option($cs_games[$run]['games_name'], $cs_games[$run]['games_id'], $sel);
+  }
+  $url = 'uploads/games/' . $cs_wars['games_id'] . '.gif';
+  $data['wars']['game_img'] = cs_html_img($url, 0, 0, 'id="game_1"');
   
-	$data['wars']['category_sel'] = cs_categories_dropdown('wars', $cs_wars['categories_id']);
+  $data['wars']['category_sel'] = cs_categories_dropdown('wars', $cs_wars['categories_id']);
   
-	$cid = "clans_id != '1'";
-	$clans_data = cs_sql_select(__FILE__, 'clans', 'clans_name,clans_id', $cid, 'clans_name', 0, 0);
-	$data['wars']['enemy_sel'] = cs_dropdown('clans_id', 'clans_name', $clans_data, $cs_wars['clans_id']);
+  $cid = "clans_id != '1'";
+  $clans_data = cs_sql_select(__FILE__, 'clans', 'clans_name,clans_id', $cid, 'clans_name', 0, 0);
+  $data['wars']['enemy_sel'] = cs_dropdown('clans_id', 'clans_name', $clans_data, $cs_wars['clans_id']);
   
-	$where = 'squads_own = \'1\'';
-	$squads_data = cs_sql_select(__FILE__, 'squads', 'squads_name,squads_id', $where, 'squads_name', 0, 0);
-	$data['wars']['squad_sel'] = cs_dropdown('squads_id', 'squads_name', $squads_data, $cs_wars['squads_id']);
+  $where = 'squads_own = \'1\'';
+  $squads_data = cs_sql_select(__FILE__, 'squads', 'squads_name,squads_id', $where, 'squads_name', 0, 0);
+  $data['wars']['squad_sel'] = cs_dropdown('squads_id', 'squads_name', $squads_data, $cs_wars['squads_id']);
 
   
-	for ($x = 0; $x < $players; $x++) {
-		$data['player'][$x]['x'] = $x + 1;
-		$data['player'][$x]['player_name'] = $cs_players[$x];
-		$data['player'][$x]['user_sel'] = cs_dropdown('playerid' . $x, 'users_nick', $cs_members, 0, 'users_id');
-	}
+  for ($x = 0; $x < $players; $x++) {
+    $data['player'][$x]['x'] = $x + 1;
+    $data['player'][$x]['player_name'] = $cs_players[$x];
+    $data['player'][$x]['user_sel'] = cs_dropdown('playerid' . $x, 'users_nick', $cs_members, 0, 'users_id');
+  }
   
-	$data['wars']['date_sel'] = cs_dateselect('date', 'unix', $cs_wars['wars_date'], 1995);
+  $data['wars']['date_sel'] = cs_dateselect('date', 'unix', $cs_wars['wars_date'], 1995);
   
-	$status = array();
-	$status[0]['wars_status'] = 'upcoming';
-	$status[0]['name'] = $cs_lang['upcoming'];
-	$status[1]['wars_status'] = 'running';
-	$status[1]['name'] = $cs_lang['running'];
-	$status[2]['wars_status'] = 'canceled';
-	$status[2]['name'] = $cs_lang['canceled'];
-	$status[3]['wars_status'] = 'played';
-	$status[3]['name'] = $cs_lang['played'];
-	$data['wars']['status_dropdown'] = cs_dropdown('wars_status', 'name', $status, $cs_wars['wars_status']);
+  $status = array();
+  $status[0]['wars_status'] = 'upcoming';
+  $status[0]['name'] = $cs_lang['upcoming'];
+  $status[1]['wars_status'] = 'running';
+  $status[1]['name'] = $cs_lang['running'];
+  $status[2]['wars_status'] = 'canceled';
+  $status[2]['name'] = $cs_lang['canceled'];
+  $status[3]['wars_status'] = 'played';
+  $status[3]['name'] = $cs_lang['played'];
+  $data['wars']['status_dropdown'] = cs_dropdown('wars_status', 'name', $status, $cs_wars['wars_status']);
 
-	$data['abcode']['smileys'] = cs_abcode_smileys('wars_report');
-	$data['abcode']['features'] = cs_abcode_features('wars_report');
+  $data['abcode']['smileys'] = cs_abcode_smileys('wars_report');
+  $data['abcode']['features'] = cs_abcode_features('wars_report');
 
-	$data['wars']['check_player'] = !empty($players) ? $players : 1;
+  $data['wars']['check_player'] = !empty($players) ? $players : 1;
 
-	$data['wars']['close_check'] = empty($cs_wars['wars_close']) ? '' : 'checked="checked"';
+  $data['wars']['close_check'] = empty($cs_wars['wars_close']) ? '' : 'checked="checked"';
 
-	$data['wars']['id'] = $wars_id;
+  $data['wars']['id'] = $wars_id;
 
   echo cs_subtemplate(__FILE__,$data,'wars','edit');
 }

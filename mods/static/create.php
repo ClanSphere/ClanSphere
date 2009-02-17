@@ -9,31 +9,31 @@ $errormsg = '';
 $static_access = 0;
 $levels = 0;
 
-$cs_action_head['head']['mod']			= $cs_lang['mod'];
-$cs_action_head['head']['action']		= $cs_lang['head_create'];
+$cs_action_head['head']['mod']      = $cs_lang['mod'];
+$cs_action_head['head']['action']    = $cs_lang['head_create'];
 
-	$cs_static['static_title'] = '';
-	$cs_static['static_text'] = '';
-	$cs_static['static_table'] = '';
-	$cs_static['static_comments'] = '';
-	$cs_static['static_access'] = '';
-	$cs_static['static_admins'] = '';
+  $cs_static['static_title'] = '';
+  $cs_static['static_text'] = '';
+  $cs_static['static_table'] = '';
+  $cs_static['static_comments'] = '';
+  $cs_static['static_access'] = '';
+  $cs_static['static_admins'] = '';
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-	$cs_static['static_title'] = $_POST['static_title'];
-	$cs_static['static_text'] = $_POST['static_text'];
-	$cs_static['static_table'] = isset($_POST['static_table']) ? 1 : 0;
-	$cs_static['static_comments'] = isset($_POST['static_comments']) ? 1 : 0;
-	$cs_static['static_access'] = $_POST['static_access'];
-	$cs_static['static_admins'] = isset($_POST['static_admins']) ? 1 : 0;
+  $cs_static['static_title'] = $_POST['static_title'];
+  $cs_static['static_text'] = $_POST['static_text'];
+  $cs_static['static_table'] = isset($_POST['static_table']) ? 1 : 0;
+  $cs_static['static_comments'] = isset($_POST['static_comments']) ? 1 : 0;
+  $cs_static['static_access'] = $_POST['static_access'];
+  $cs_static['static_admins'] = isset($_POST['static_admins']) ? 1 : 0;
 
     if(!empty($cs_main['fckeditor'])) {
         $cs_static['static_text'] = '[html]' . $_POST['static_text'] . '[/html]';
     }
 
-  	$error = 0;
-  	$errormsg = '';
+    $error = 0;
+    $errormsg = '';
   if(empty($cs_static['static_title'])) {
     $error++;
     $errormsg .= $cs_lang['no_title'] . cs_html_br(1);
@@ -45,12 +45,12 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   
 if(empty($error) AND isset($_POST['submit'])) {
 
-	$static_cells = array_keys($cs_static);
-	$static_save = array_values($cs_static);
-	cs_sql_insert(__FILE__,'static',$static_cells,$static_save);
-	
-	cs_redirect($cs_lang['create_done'],'static');
-	}  
+  $static_cells = array_keys($cs_static);
+  $static_save = array_values($cs_static);
+  cs_sql_insert(__FILE__,'static',$static_cells,$static_save);
+  
+  cs_redirect($cs_lang['create_done'],'static');
+  }  
   
 }
 if(isset($_POST['preview']) AND empty($error)) {
@@ -70,44 +70,44 @@ echo cs_html_br(3);
 
 
 if(!isset($_POST['submit']) OR !empty($error)) {
-	$static_access = $cs_static['static_access'];
-	while($levels < 6)
-	{
-		$static_access == $levels ? $sel = 'selected="selected"' : $sel = '';
-		$cs_static_tpl['access'][$levels]['level_id']		= $levels;
-		$cs_static_tpl['access'][$levels]['level_name']	= $cs_lang['lev_'.$levels];
-		$cs_static_tpl['access'][$levels]['selected']		= $sel;
-		$levels++;
-	}
-	if(!empty($error)) {
-	$cs_action_head['head']['body']		= $errormsg;
-	} else {
-	$cs_action_head['head']['body']		= $cs_lang['body_create'];
-	}
-	
-	$cs_static_tpl['static']['title'] = $cs_static['static_title'];
-	$cs_static_tpl['static']['content'] = $cs_static['static_text'];
-	$cs_static['static_table'] == '1' ? $sel = 'checked' : $sel = '';
-	$cs_static_tpl['static']['table'] = $sel;
-	$cs_static['static_comments'] == '1' ? $sel = 'checked' : $sel = '';
-	$cs_static_tpl['static']['comments'] = $sel;
-	
-	if($account['access_static'] < 5) {
-	$cs_static_tpl['static']['phpcode'] = '';
-	} else {
-	$cs_static_tpl['static']['phpcode'] = cs_html_vote('phpcode','phpcode', 'button', '', 'onclick="javascript:abc_insert(\'[phpcode]\',\'[/phpcode]\',\'static_text\',\'\')"');
-	}
-	
-	if($account['access_static'] < 5) {
-	$cs_static_tpl['static']['admins'] = '';
-	} else {
-	$cs_static_tpl['static']['admins'] = cs_html_vote('static_admins','1','checkbox') . $cs_lang['admins_only'] . cs_html_br(1);
-	}
-	
-	#$cs_static_tpl['static']['action'] = 'create';
-	$cs_static_tpl['url']['action'] = cs_url('static','create');
-	$cs_static_tpl['static']['id'] = '0';
-	$cs_static_tpl['static']['lang_form'] = $cs_lang['create'];
+  $static_access = $cs_static['static_access'];
+  while($levels < 6)
+  {
+    $static_access == $levels ? $sel = 'selected="selected"' : $sel = '';
+    $cs_static_tpl['access'][$levels]['level_id']    = $levels;
+    $cs_static_tpl['access'][$levels]['level_name']  = $cs_lang['lev_'.$levels];
+    $cs_static_tpl['access'][$levels]['selected']    = $sel;
+    $levels++;
+  }
+  if(!empty($error)) {
+  $cs_action_head['head']['body']    = $errormsg;
+  } else {
+  $cs_action_head['head']['body']    = $cs_lang['body_create'];
+  }
+  
+  $cs_static_tpl['static']['title'] = $cs_static['static_title'];
+  $cs_static_tpl['static']['content'] = $cs_static['static_text'];
+  $cs_static['static_table'] == '1' ? $sel = 'checked' : $sel = '';
+  $cs_static_tpl['static']['table'] = $sel;
+  $cs_static['static_comments'] == '1' ? $sel = 'checked' : $sel = '';
+  $cs_static_tpl['static']['comments'] = $sel;
+  
+  if($account['access_static'] < 5) {
+  $cs_static_tpl['static']['phpcode'] = '';
+  } else {
+  $cs_static_tpl['static']['phpcode'] = cs_html_vote('phpcode','phpcode', 'button', '', 'onclick="javascript:abc_insert(\'[phpcode]\',\'[/phpcode]\',\'static_text\',\'\')"');
+  }
+  
+  if($account['access_static'] < 5) {
+  $cs_static_tpl['static']['admins'] = '';
+  } else {
+  $cs_static_tpl['static']['admins'] = cs_html_vote('static_admins','1','checkbox') . $cs_lang['admins_only'] . cs_html_br(1);
+  }
+  
+  #$cs_static_tpl['static']['action'] = 'create';
+  $cs_static_tpl['url']['action'] = cs_url('static','create');
+  $cs_static_tpl['static']['id'] = '0';
+  $cs_static_tpl['static']['lang_form'] = $cs_lang['create'];
 
     if(empty($cs_main['fckeditor'])) {
         $cs_static_tpl['if']['fckeditor'] = 0;
@@ -120,8 +120,8 @@ if(!isset($_POST['submit']) OR !empty($error)) {
         $cs_static_tpl['static']['content'] = cs_fckeditor('static_text',$cs_static_tpl['static']['content']);
     }
 
-	echo cs_subtemplate(__FILE__,$cs_action_head,'static','action_head');
-	echo cs_subtemplate(__FILE__,$cs_static_tpl,'static','action_form');
+  echo cs_subtemplate(__FILE__,$cs_action_head,'static','action_head');
+  echo cs_subtemplate(__FILE__,$cs_static_tpl,'static','action_form');
 }
 
 ?>

@@ -15,18 +15,18 @@ $cs_lang['next_match'] = 'Volgende wedstrijd';
 $cs_lang['no_match_upcoming'] = 'Geen wedstrijden geplaned';
 
 // Comments
-$cs_lang['not_able']	= '- Commentaar niet toegestaan.';
-$cs_lang['low_axx']	= '- Je beschikt niet over de juiste toegangsrechten';
+$cs_lang['not_able']  = '- Commentaar niet toegestaan.';
+$cs_lang['low_axx']  = '- Je beschikt niet over de juiste toegangsrechten';
 
-$cs_lang['place']			= 'Locatie:';
-$cs_lang['posts']			= 'Posts:';
+$cs_lang['place']      = 'Locatie:';
+$cs_lang['posts']      = 'Posts:';
 
 $cs_lang['text'] = 'Tekst';
 
-$cs_lang['head_com_remove']	= 'Verwijder commentaar';
+$cs_lang['head_com_remove']  = 'Verwijder commentaar';
 
-$cs_lang['head_com_edit']	= 'Bewerk commentaar';
-$cs_lang['body_com_edit']	= 'Geef een indicatie voor veranderingen.';
+$cs_lang['head_com_edit']  = 'Bewerk commentaar';
+$cs_lang['body_com_edit']  = 'Geef een indicatie voor veranderingen.';
 
 // Create
 $cs_lang['create_new_cup'] = 'Maak een nieuw toernooi aan';

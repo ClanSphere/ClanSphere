@@ -13,18 +13,18 @@ $users_count = count($cs_users);
 
 $data = array();
 if(empty($users_count)) {
-	echo $cs_lang['no_data'];
+  echo $cs_lang['no_data'];
 } else {
   for($run=0; $run < $users_count; $run++) {
     if(!empty($cs_users[$run]['users_age'])) {
-	  $birth = explode('-', $cs_users[$run]['users_age']);
-	  if($birth[1] >= $month) {
-		$data[$run]['users_id'] =  $cs_users[$run]['users_id'];
-		$data[$run]['users_nick'] = $cs_users[$run]['users_nick'];
-		$data[$run]['users_day'] = $birth[2];
-		$data[$run]['users_month'] = $birth[1];
-		$data[$run]['users_year'] = $birth[0];
-	  }
+    $birth = explode('-', $cs_users[$run]['users_age']);
+    if($birth[1] >= $month) {
+    $data[$run]['users_id'] =  $cs_users[$run]['users_id'];
+    $data[$run]['users_nick'] = $cs_users[$run]['users_nick'];
+    $data[$run]['users_day'] = $birth[2];
+    $data[$run]['users_month'] = $birth[1];
+    $data[$run]['users_year'] = $birth[0];
+    }
     }
   }
   foreach($data as $sortarray) {
@@ -38,11 +38,11 @@ if(empty($users_count)) {
     $max_users = $max_users - 1;
     if($run <= $max_users) {
       echo cs_user($data[$run]['users_id'], $data[$run]['users_nick'], $data[$run]['users_active']);
-	  echo ' ' . $data[$run]['users_day'] . '.' . $data[$run]['users_month'];
-	  $age = cs_datereal('Y') - $data[$run]['users_year'];
-	  echo ' (' . $age . ')';
-	  echo cs_html_br(1);
-	}
+    echo ' ' . $data[$run]['users_day'] . '.' . $data[$run]['users_month'];
+    $age = cs_datereal('Y') - $data[$run]['users_year'];
+    echo ' (' . $age . ')';
+    echo cs_html_br(1);
+  }
   }
 }
 ?>

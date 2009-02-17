@@ -36,15 +36,15 @@ $computers_loop = count($data['com']);
 
 for($run=0; $run<$computers_loop; $run++) {
 
-	$id = $data['com'][$run]['computers_id'];
-	$data['com'][$run]['name'] = cs_secure($data['com'][$run]['computers_name']);
-	$data['com'][$run]['url_view'] = cs_url('computers','view','id=' . $id);
-	$data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$data['com'][$run]['users_nick'], $data['com'][$run]['users_active']);
- 	$data['com'][$run]['since'] = cs_date('unix',$data['com'][$run]['computers_since'],1);
+  $id = $data['com'][$run]['computers_id'];
+  $data['com'][$run]['name'] = cs_secure($data['com'][$run]['computers_name']);
+  $data['com'][$run]['url_view'] = cs_url('computers','view','id=' . $id);
+  $data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$data['com'][$run]['users_nick'], $data['com'][$run]['users_active']);
+   $data['com'][$run]['since'] = cs_date('unix',$data['com'][$run]['computers_since'],1);
 
-	$data['com'][$run]['url_picture'] = cs_url('computers','picture','id=' . $id);
-	$data['com'][$run]['url_edit'] = cs_url('computers','edit','id=' . $id);
-	$data['com'][$run]['url_remove'] = cs_url('computers','remove','id=' . $id);
+  $data['com'][$run]['url_picture'] = cs_url('computers','picture','id=' . $id);
+  $data['com'][$run]['url_edit'] = cs_url('computers','edit','id=' . $id);
+  $data['com'][$run]['url_remove'] = cs_url('computers','remove','id=' . $id);
 
 }
 

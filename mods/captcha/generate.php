@@ -11,14 +11,14 @@ require_once('system/core/functions.php');
 require_once('system/extensions/gd.php');
 
 if(file_exists('setup.php')) {
-	require_once('setup.php');
-	require_once('system/database/' . $cs_db['type'] . '.php');
-	$cs_db['con'] = cs_sql_connect($cs_db);
-	$cs_main = cs_sql_option(__FILE__,'clansphere');
+  require_once('setup.php');
+  require_once('system/database/' . $cs_db['type'] . '.php');
+  $cs_db['con'] = cs_sql_connect($cs_db);
+  $cs_main = cs_sql_option(__FILE__,'clansphere');
 }
 else
 {
-	die('<a href="install.php">Installation required</a> or missing setup.php');
+  die('<a href="install.php">Installation required</a> or missing setup.php');
 }
 
 chdir('mods/captcha/');

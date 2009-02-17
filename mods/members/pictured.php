@@ -35,62 +35,62 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
 
   $data['squads'][$sq_run]['games_img'] = '';
   if(!empty($data['squads'][$sq_run]['games_id'])) {
-  	$data['squads'][$sq_run]['games_img'] = cs_html_img('uploads/games/' . $data['squads'][$sq_run]['games_id'] . '.gif');
+    $data['squads'][$sq_run]['games_img'] = cs_html_img('uploads/games/' . $data['squads'][$sq_run]['games_id'] . '.gif');
   }
   $data['squads'][$sq_run]['squad_name'] = cs_secure($data['squads'][$sq_run]['squads_name']);
   $data['squads'][$sq_run]['count_members'] = $members_loop;
 
   if(empty($members_loop)) {
-	$data['squads'][$sq_run]['members'] = array();
+  $data['squads'][$sq_run]['members'] = array();
   }
 
   $tr = 0;
   for($run=0; $run<$members_loop; $run++) {
-	
-	$members = $data['squads'][$sq_run]['members'];
-	
+  
+  $members = $data['squads'][$sq_run]['members'];
+  
     $hidden = explode(',',$members[$run]['users_hidden']);
     $allow = $members[$run]['users_id'] == $account['users_id']  OR $account['access_users'] > 4 ? 1 : 0;
     
-	if(empty($members[$run]['users_picture'])) {
-  		$members[$run]['picture'] = $cs_lang['nopic'];
-	} else {
-  		$place = 'uploads/users/' . $members[$run]['users_picture'];
-  		$size = getimagesize($cs_main['def_path'] . '/' . $place);
-  		$members[$run]['picture'] = cs_html_img($place,$size[1],$size[0]);
-	}
+  if(empty($members[$run]['users_picture'])) {
+      $members[$run]['picture'] = $cs_lang['nopic'];
+  } else {
+      $place = 'uploads/users/' . $members[$run]['users_picture'];
+      $size = getimagesize($cs_main['def_path'] . '/' . $place);
+      $members[$run]['picture'] = cs_html_img($place,$size[1],$size[0]);
+  }
 
-	$url = 'symbols/countries/' . $members[$run]['users_country'] . '.png';
-	$members[$run]['country'] = cs_html_img($url,11,16) . ' ';
+  $url = 'symbols/countries/' . $members[$run]['users_country'] . '.png';
+  $members[$run]['country'] = cs_html_img($url,11,16) . ' ';
     if($data['squads'][$sq_run]['clans_tagpos'] == 2) {
-		$members[$run]['tag_before'] = '';
-		$members[$run]['tag_after'] = $data['squads'][$sq_run]['clans_tag'];
+    $members[$run]['tag_before'] = '';
+    $members[$run]['tag_after'] = $data['squads'][$sq_run]['clans_tag'];
     } else {
-		$members[$run]['tag_before'] = $data['squads'][$sq_run]['clans_tag'];
-		$members[$run]['tag_after'] = '';
-	}
-	$users_nick = cs_user($members[$run]['users_id'],$members[$run]['users_nick'], $members[$run]['users_active']);
-	$members[$run]['users_nick'] = empty($members[$run]['members_admin']) ? $users_nick : cs_html_big(1) . $users_nick . cs_html_big(0);
+    $members[$run]['tag_before'] = $data['squads'][$sq_run]['clans_tag'];
+    $members[$run]['tag_after'] = '';
+  }
+  $users_nick = cs_user($members[$run]['users_id'],$members[$run]['users_nick'], $members[$run]['users_active']);
+  $members[$run]['users_nick'] = empty($members[$run]['members_admin']) ? $users_nick : cs_html_big(1) . $users_nick . cs_html_big(0);
 
     $users_name = !in_array('users_name',$hidden) || !empty($allow) ? $members[$run]['users_name'] : '';
     $users_surname = !in_array('users_surname',$hidden) || !empty($allow) ? $members[$run]['users_surname'] : '';
-	$members[$run]['surname'] = empty($users_name) && empty($users_surname) ? ' - ' : $users_name . ' ' . $users_surname;
-		
-	$members[$run]['task'] = cs_secure($members[$run]['members_task']);
-	$since = empty($members[$run]['members_since']) ? '-' : cs_date('date',$members[$run]['members_since']);
-	$members[$run]['since'] = $since;
+  $members[$run]['surname'] = empty($users_name) && empty($users_surname) ? ' - ' : $users_name . ' ' . $users_surname;
+    
+  $members[$run]['task'] = cs_secure($members[$run]['members_task']);
+  $since = empty($members[$run]['members_since']) ? '-' : cs_date('date',$members[$run]['members_since']);
+  $members[$run]['since'] = $since;
 
-	$tr++;
-	$members[$run]['if']['td'] = FALSE;
-	$members[$run]['if']['end_row'] = FALSE;
-	
-	if(($tr %2 != 0) && ($tr == $members_loop)) {
-		$members[$run]['if']['td'] = TRUE;
-	} elseif (($tr %2 == 0) && ($tr != $members_loop)) {
-		$members[$run]['if']['end_row'] = TRUE;
-	}
+  $tr++;
+  $members[$run]['if']['td'] = FALSE;
+  $members[$run]['if']['end_row'] = FALSE;
+  
+  if(($tr %2 != 0) && ($tr == $members_loop)) {
+    $members[$run]['if']['td'] = TRUE;
+  } elseif (($tr %2 == 0) && ($tr != $members_loop)) {
+    $members[$run]['if']['end_row'] = TRUE;
+  }
 
-	$data['squads'][$sq_run]['members'] = $members;
+  $data['squads'][$sq_run]['members'] = $members;
   }
 
 }

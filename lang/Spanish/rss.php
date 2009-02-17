@@ -7,8 +7,8 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'RSS';
-$cs_lang['mod_text']	= 'El formato permite distribuir contenido sin necesidad de un navegador';
+$cs_lang['mod_name']  = 'RSS';
+$cs_lang['mod_text']  = 'El formato permite distribuir contenido sin necesidad de un navegador';
 
 
 ?>

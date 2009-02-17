@@ -128,7 +128,7 @@ if(!empty($fix)) {
       eval($line);
       $file_new .= $line;
     }
-	else {
+  else {
     ob_start();
       highlight_string('<?php ' . $line . ' ?>');
       $string = ob_get_contents();

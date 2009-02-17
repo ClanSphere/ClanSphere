@@ -45,7 +45,7 @@ for($run=0; $run<count($data['kat']); $run++) {
   for($runb=0; $runb<count($data_cells); $runb++) {
     $set = $runb == 0 ? '' : ', ';
     $new_data_cells .= $set . $data_cells[$runb];
-	$new_data_saves .= $set . "'" . $data_saves[$runb] . "'";
+  $new_data_saves .= $set . "'" . $data_saves[$runb] . "'";
   }
   $sql_query = "INSERT INTO " . $csp_db['prf'] . "categories (" . $new_data_cells . ", categories_mod) VALUES (" . $new_data_saves . ", 'news');";
   mysql_query($sql_query, $csp_connect);
@@ -84,7 +84,7 @@ for($run=0; $run<count($data['news']); $run++) {
   for($runb=0; $runb<count($data_cells); $runb++) {
     $set = $runb == 0 ? '' : ', ';
     $new_data_cells .= $set . $data_cells[$runb];
-	$new_data_saves .= $set . "'" . $data_saves[$runb] . "'";
+  $new_data_saves .= $set . "'" . $data_saves[$runb] . "'";
   }
   $sql_query = "INSERT INTO " . $csp_db['prf'] . "news (" . $new_data_cells . ") VALUES (" . $new_data_saves . ");";
   mysql_query($sql_query, $csp_connect);

@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
       $error++;
     }
   }
-	
+  
   if(empty($_FILES['picture']['tmp_name']) AND empty($cs_banners['banners_picture'])) {
     $error++;
     $message .= $cs_lang['no_pic'] . cs_html_br(1);
@@ -129,13 +129,13 @@ else {
 
   if(!empty($_FILES['picture']['tmp_name'])) {
     $where = "banners_name = '" . cs_sql_escape($cs_banners['banners_name']) . "'";
-  	$getid = cs_sql_select(__FILE__,'banners','banners_id',$where);
+    $getid = cs_sql_select(__FILE__,'banners','banners_id',$where);
     $filename = 'picture-' . $getid['banners_id'] . '.' . $extension;
-  	cs_upload('banners',$filename,$_FILES['picture']['tmp_name']);
-		
+    cs_upload('banners',$filename,$_FILES['picture']['tmp_name']);
+    
     $cs_banners2['banners_picture'] = 'uploads/banners/' . $filename;
     $banners2_cells = array_keys($cs_banners2);
-    $banners2_save = array_values($cs_banners2);			
+    $banners2_save = array_values($cs_banners2);      
     cs_sql_update(__FILE__,'banners',$banners2_cells,$banners2_save,$getid['banners_id']);
   }
   cs_redirect($cs_lang['create_done'],'banners');

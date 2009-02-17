@@ -7,14 +7,14 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Historia';
-$cs_lang['mod_text']	= 'Crear y Editar la Historia';
-$cs_lang['mod']	= 'Historia';
-$cs_lang['mod_list']	= 'Historia';
-$cs_lang['head_manage']	= 'Administración';
-$cs_lang['head_edit']	= 'Editar';
-$cs_lang['head_remove']	= 'Remover';
-$cs_lang['head_create']	= 'Crear';
+$cs_lang['mod_name']  = 'Historia';
+$cs_lang['mod_text']  = 'Crear y Editar la Historia';
+$cs_lang['mod']  = 'Historia';
+$cs_lang['mod_list']  = 'Historia';
+$cs_lang['head_manage']  = 'Administración';
+$cs_lang['head_edit']  = 'Editar';
+$cs_lang['head_remove']  = 'Remover';
+$cs_lang['head_create']  = 'Crear';
 $cs_lang['body_create'] =  'Por Favor rellene todas las casillas con * ';
 $cs_lang['body_edit'] =  'Por Favor rellene todas las casillas con * ';
 $cs_lang['error_occurred'] = 'No han sido Rellenadas todas las casillas necesitadas.';

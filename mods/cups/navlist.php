@@ -12,7 +12,7 @@ $count_cups = count($data['cups']);
 for ($i = 0; $i < $count_cups; $i++) {
   $data['cups'][$i]['view_url'] = cs_url('cups','view','id=' . $data['cups'][$i]['cups_id']);
   if (strlen($data['cups'][$i]['cups_name']) > $maxname)
-  	$data['cups'][$i]['cups_name'] = substr($data['cups'][$i]['cups_name'],0,$maxname - 2) . '..';
+    $data['cups'][$i]['cups_name'] = substr($data['cups'][$i]['cups_name'],0,$maxname - 2) . '..';
   $data['cups'][$i]['cups_start'] = cs_date('unix',$data['cups'][$i]['cups_start']);
 }
 

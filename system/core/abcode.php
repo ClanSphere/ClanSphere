@@ -125,35 +125,35 @@ function cs_abcode_features($name, $html = 0) {
 function cs_abcode_smileys($name) {
 
   $cs_lang = cs_translate('system/abcodes');
-	$select = 'abcode_pattern, abcode_file';
+  $select = 'abcode_pattern, abcode_file';
   $loop_abc = cs_sql_select(__FILE__,'abcode',$select,"abcode_func = 'img'",0,0,10);
-	$abc_count = count($loop_abc);
+  $abc_count = count($loop_abc);
 
-	$run = 0;
-	$col = 0;
-	$var = cs_html_table(1,'forum',1,'100%');
-	while($abc_count > $run) {
-		$col++;
-		if($col == 4) {
-			$var .= cs_html_roco(0);
-			$col = 1;
-		}
-		$var .= cs_html_roco($col,'centerb');
-		$link = cs_html_img('uploads/abcode/' . $loop_abc[$run]['abcode_file']);
-		$url = "javascript:abc_insert('" . $loop_abc[$run]['abcode_pattern'] . "','','" . $name . "')";
-		$var .= cs_html_link($url,$link,0);
-		$run++;
-	}
-	$var .= cs_html_roco(0);
-	if($abc_count == 10) {
-		$var .= cs_html_roco(1,'centerc',0,3);
-		$win = " onclick=\"window.open('features.php?name=".$name."', '" . $cs_lang['abclist'];
-		$win .= "', 'width=450,height=600,scrollbars=yes')\"";
-		$var .= cs_html_anchor($cs_lang['abclist'],$cs_lang['abclist'],$win);
-		$var .= cs_html_roco(0);
-	}
-	$var .= cs_html_table(0);
-	return $var;
+  $run = 0;
+  $col = 0;
+  $var = cs_html_table(1,'forum',1,'100%');
+  while($abc_count > $run) {
+    $col++;
+    if($col == 4) {
+      $var .= cs_html_roco(0);
+      $col = 1;
+    }
+    $var .= cs_html_roco($col,'centerb');
+    $link = cs_html_img('uploads/abcode/' . $loop_abc[$run]['abcode_file']);
+    $url = "javascript:abc_insert('" . $loop_abc[$run]['abcode_pattern'] . "','','" . $name . "')";
+    $var .= cs_html_link($url,$link,0);
+    $run++;
+  }
+  $var .= cs_html_roco(0);
+  if($abc_count == 10) {
+    $var .= cs_html_roco(1,'centerc',0,3);
+    $win = " onclick=\"window.open('features.php?name=".$name."', '" . $cs_lang['abclist'];
+    $win .= "', 'width=450,height=600,scrollbars=yes')\"";
+    $var .= cs_html_anchor($cs_lang['abclist'],$cs_lang['abclist'],$win);
+    $var .= cs_html_roco(0);
+  }
+  $var .= cs_html_table(0);
+  return $var;
 }
 
 function cs_abcode_mode($set = 0) {
@@ -171,8 +171,8 @@ function cs_abcode_php($matches) {
   static $php;
   $mode = cs_abcode_mode();
   if(empty($mode)) {
-  	$php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
-  	if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
+    $php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
+    if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
     if (!empty($without)) $php_code = str_replace('&lt;?php','',$php_code);
     $php_code = cs_html_div(1,'overflow:scroll') . $php_code . cs_html_div(0);
@@ -240,10 +240,10 @@ function cs_abcode_hr_width($matches) {
 
 function cs_abcode_list($matches) {
 
-	$style = empty($matches[2]) ? 0 : $matches[1];
-	$list = empty($matches[2]) ? $matches[1] : $matches[2];
-	$list = cs_html_list($list,$style);
-	return str_replace('<br />','',$list);
+  $style = empty($matches[2]) ? 0 : $matches[1];
+  $list = empty($matches[2]) ? $matches[1] : $matches[2];
+  $list = cs_html_list($list,$style);
+  return str_replace('<br />','',$list);
 }
 
 function cs_abcode_img($matches) {
@@ -276,7 +276,7 @@ function cs_abcode_color($matches) {
 
 function cs_abcode_size($matches) {
 
-	$matches[1] = $matches[1] > 50 ? 50 : $matches[1];
+  $matches[1] = $matches[1] > 50 ? 50 : $matches[1];
   return cs_html_span(1,'font-size:' . $matches[1] . 'pt') . $matches[2] . cs_html_span(0);
 }
 
@@ -313,17 +313,17 @@ function cs_abcode_url($matches) {
 
 function cs_abcode_quote($matches) {
 
-	if ($matches[0] == '[/quote]') {
-		$return = cs_html_div(0);
-	}
-	elseif(empty($matches[1])) {
-		$return = cs_html_div(1,0,'class="quote"');
-	} 
-	else {
-		$name		= cs_html_big(1).$matches[1].cs_html_big(0);
-		$return	= cs_html_div(1,0,'class="quote"').$name.':'.cs_html_br(1);
-	}
-	return $return;
+  if ($matches[0] == '[/quote]') {
+    $return = cs_html_div(0);
+  }
+  elseif(empty($matches[1])) {
+    $return = cs_html_div(1,0,'class="quote"');
+  } 
+  else {
+    $name    = cs_html_big(1).$matches[1].cs_html_big(0);
+    $return  = cs_html_div(1,0,'class="quote"').$name.':'.cs_html_br(1);
+  }
+  return $return;
 }
 
 function cs_abcode_clip($matches) {
@@ -335,7 +335,7 @@ function cs_abcode_clip($matches) {
   $var .= cs_html_br(1);
   $var .= '<div style="display:none" id="span_' . $clip_id . '">';
   $var .= $matches[2] . '</div>';
-	return $var;
+  return $var;
 }
 
 function cs_abcode_html($matches) {
@@ -388,7 +388,7 @@ function cs_abcode_decode($matches) {
 
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
 
-	global $com_lang;
+  global $com_lang;
   
   $op_abcode = cs_sql_option(__FILE__,'abcode');
   
@@ -396,8 +396,8 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   
   
   if(!empty($features)) { 
-	cs_abcode_mode(1); 
-	$replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace); 
+  cs_abcode_mode(1); 
+  $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace); 
   }
 
   
@@ -430,7 +430,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     #cs_abcode_mode(1);
 
     if(!empty($html)) 
-    	$replace = preg_replace_callback("=\[html\](.*?)\[/html\]=si","cs_abcode_html",$replace);
+      $replace = preg_replace_callback("=\[html\](.*?)\[/html\]=si","cs_abcode_html",$replace);
 
     if (!empty($phpeval))
       $replace = preg_replace_callback("=\[phpcode\](.*?)\[/phpcode\]=si",'cs_abcode_eval',$replace);
@@ -457,30 +457,30 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[url\](.*?)\[/url\]=si","cs_abcode_url",$replace);
     $replace = preg_replace_callback('=\[flag\=(.*?)\]=si','cs_abcode_flag',$replace);
     $replace = preg_replace_callback('/(www\.|http:\/\/|ftp:\/\/)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)/i','cs_abcode_urlauto',$replace);
-	$replace = preg_replace_callback("=\[indent\=([\d]*?)\](.*?)\[/indent\]=si","cs_abcode_indent",$replace);
-	$replace = preg_replace_callback("=\[threadid\=(.*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
-	$replace = preg_replace_callback("=\[h\=([\d]*?)\](.*?)\[/h\]=si","cs_abcode_h",$replace);
-	$replace = preg_replace_callback("=\[hr\]=si","cs_abcode_hr",$replace);
+  $replace = preg_replace_callback("=\[indent\=([\d]*?)\](.*?)\[/indent\]=si","cs_abcode_indent",$replace);
+  $replace = preg_replace_callback("=\[threadid\=(.*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
+  $replace = preg_replace_callback("=\[h\=([\d]*?)\](.*?)\[/h\]=si","cs_abcode_h",$replace);
+  $replace = preg_replace_callback("=\[hr\]=si","cs_abcode_hr",$replace);
     preg_match_all('=\[quote\=?(.*?)\]=si', $replace, $quote_sub);
-		$quote_start_count	= count($quote_sub[0]);
-		$quote_end_count		= substr_count($replace, '[/quote]');
-		if ($quote_start_count !== 0 && $quote_start_count == $quote_end_count) {
-			$replace = preg_replace_callback('=\[quote\=?(.*?)\]=si',"cs_abcode_quote",$replace);
-			$replace = preg_replace_callback('=\[/quote\]=si',"cs_abcode_quote",$replace);
-		}
-		if(!empty($clip)) {
-			$replace = preg_replace_callback("=\[clip\=(.*?)\](.*?)\[/clip\]=si","cs_abcode_clip",$replace);
-		}
-		
-		if(!empty($op_abcode['word_cut']))
-			$replace = preg_replace("=([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
-	}
+    $quote_start_count  = count($quote_sub[0]);
+    $quote_end_count    = substr_count($replace, '[/quote]');
+    if ($quote_start_count !== 0 && $quote_start_count == $quote_end_count) {
+      $replace = preg_replace_callback('=\[quote\=?(.*?)\]=si',"cs_abcode_quote",$replace);
+      $replace = preg_replace_callback('=\[/quote\]=si',"cs_abcode_quote",$replace);
+    }
+    if(!empty($clip)) {
+      $replace = preg_replace_callback("=\[clip\=(.*?)\](.*?)\[/clip\]=si","cs_abcode_clip",$replace);
+    }
+    
+    if(!empty($op_abcode['word_cut']))
+      $replace = preg_replace("=([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
+  }
   
   if(!empty($features)) {
     cs_abcode_mode(1);
-		$replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
+    $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
   }
-	return $replace;
+  return $replace;
 }
 
 

@@ -1,17 +1,17 @@
 <?php
-$cs_lang['mod_name']	= 'Serveurs';
-$cs_lang['mod_text']	= 'Services';
-$cs_lang['mod']	= 'Serveurs';
+$cs_lang['mod_name']  = 'Serveurs';
+$cs_lang['mod_text']  = 'Services';
+$cs_lang['mod']  = 'Serveurs';
 $cs_lang['mod_list'] = 'Les serveurs en un coup d\'oeil.';
-$cs_lang['head_manage']	= 'Administration';
-$cs_lang['head_edit']	= 'Editer';
+$cs_lang['head_manage']  = 'Administration';
+$cs_lang['head_edit']  = 'Editer';
 $cs_lang['body_edit'] =  'Veuillez remplir les champs marqués d\'une étoile.';
 $cs_lang['error_occurred'] = 'Remplissez correctement les champs.';
 $cs_lang['error_count'] = 'Les champs ne sont pas correctement remplis.';
-$cs_lang['head_create']	= 'Créer';
+$cs_lang['head_create']  = 'Créer';
 $cs_lang['body_create'] =  'Veuillez remplir les champs marqués d\'une étoile.';
-$cs_lang['head_remove']	= 'Supprimer';
-$cs_lang['body_remove']	= 'Veuillez remplir le plus de champ possible.';
+$cs_lang['head_remove']  = 'Supprimer';
+$cs_lang['body_remove']  = 'Veuillez remplir le plus de champ possible.';
 
 $cs_lang['refresh'] = 'Raffraichir';
 $cs_lang['slist'] = 'Liste des serveurs';
@@ -41,7 +41,7 @@ $cs_lang['new_serv'] = 'Nouveau serveur';
 $cs_lang['number'] = 'Nombre :';
 $cs_lang['gametype'] = 'Jeu';
 $cs_lang['gameclass'] = 'Classes';
-$cs_lang['rss_info']	= 'Détails du serveur';
+$cs_lang['rss_info']  = 'Détails du serveur';
 $cs_lang['servername'] = 'Nom du serveur';
 $cs_lang['serverip'] = 'IP du serveur';
 $cs_lang['serverport'] = 'Port du serveur'; 
@@ -76,32 +76,32 @@ $cs_lang['mapname'] = 'Carte';
 $cs_lang['gametyp'] = 'Type de jeu';
 
 // Global View Stats
-$cs_lang['map:']			= 'Carte:';
-$cs_lang['players']		= 'Joueurs :';
-$cs_lang['response']	= 'Connexion :';
-$cs_lang['privileges']	= 'Accès :';
-$cs_lang['game']	= 'Jeu :';
-$cs_lang['gamemod']	= 'Mod :';
+$cs_lang['map:']      = 'Carte:';
+$cs_lang['players']    = 'Joueurs :';
+$cs_lang['response']  = 'Connexion :';
+$cs_lang['privileges']  = 'Accès :';
+$cs_lang['game']  = 'Jeu :';
+$cs_lang['gamemod']  = 'Mod :';
 
 // Player Stats
-$cs_lang['rank']	= 'Classement';
-$cs_lang['honor']	= 'Honor';
-$cs_lang['frags']	= 'Kills';
-$cs_lang['time']	= 'Temps online';
-$cs_lang['score']	= 'Points';
-$cs_lang['ping']	= 'Ping';
-$cs_lang['team']	= 'Equipe';
-$cs_lang['id']		= 'ID';
-$cs_lang['clan']		= 'Clan';
-$cs_lang['rate']		= 'Rate';
-$cs_lang['mesh']		= 'Mesh';
-$cs_lang['skin']		= 'Skin';
-$cs_lang['deaths']		= 'Deaths';
-$cs_lang['kills']		= 'Kills';
-$cs_lang['skill']		= 'Skill';
-$cs_lang['channels']		= 'Channels';
-$cs_lang['channel']		= 'Channel';
-$cs_lang['privileg']	= 'Status';
+$cs_lang['rank']  = 'Classement';
+$cs_lang['honor']  = 'Honor';
+$cs_lang['frags']  = 'Kills';
+$cs_lang['time']  = 'Temps online';
+$cs_lang['score']  = 'Points';
+$cs_lang['ping']  = 'Ping';
+$cs_lang['team']  = 'Equipe';
+$cs_lang['id']    = 'ID';
+$cs_lang['clan']    = 'Clan';
+$cs_lang['rate']    = 'Rate';
+$cs_lang['mesh']    = 'Mesh';
+$cs_lang['skin']    = 'Skin';
+$cs_lang['deaths']    = 'Deaths';
+$cs_lang['kills']    = 'Kills';
+$cs_lang['skill']    = 'Skill';
+$cs_lang['channels']    = 'Channels';
+$cs_lang['channel']    = 'Channel';
+$cs_lang['privileg']  = 'Status';
 
 // Navlist
 $cs_lang['host_navlist'] = 'IP/Hébergeur: ';

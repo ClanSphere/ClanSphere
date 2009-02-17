@@ -28,30 +28,30 @@ $archivbox_count = 0;
 $new_mail = 0;
 for ($run = 0; $run < $messages_loop; $run++)
 {
-	$show_sender = $cs_messages[$run]['messages_show_sender'];
-	$show_receiver = $cs_messages[$run]['messages_show_receiver'];
-	$archiv_sender = $cs_messages[$run]['messages_archiv_sender'];
-	$archiv_receiver = $cs_messages[$run]['messages_archiv_receiver'];
-	$messages_users_id = $cs_messages[$run]['users_id'];
-	$messages_users_id_to = $cs_messages[$run]['users_id_to'];
-	$messages_view = $cs_messages[$run]['messages_view'];
+  $show_sender = $cs_messages[$run]['messages_show_sender'];
+  $show_receiver = $cs_messages[$run]['messages_show_receiver'];
+  $archiv_sender = $cs_messages[$run]['messages_archiv_sender'];
+  $archiv_receiver = $cs_messages[$run]['messages_archiv_receiver'];
+  $messages_users_id = $cs_messages[$run]['users_id'];
+  $messages_users_id_to = $cs_messages[$run]['users_id_to'];
+  $messages_view = $cs_messages[$run]['messages_view'];
 
-	if($show_receiver == '1' AND $messages_users_id_to == $users_id)
-	{
-		$inbox_count++;
-	}
-	if($show_sender == '1' AND $messages_users_id == $users_id)
-	{
-		$outbox_count++;
-	}
-	if($messages_view == '0' AND $messages_users_id_to == $users_id AND $show_receiver == '1')
-	{
-		$new_mail++;
-	}
-	if($archiv_sender == '1' AND $messages_users_id == $users_id OR $archiv_receiver == '1' AND $messages_users_id_to == $users_id)
-	{
-		$archivbox_count++;
-	}
+  if($show_receiver == '1' AND $messages_users_id_to == $users_id)
+  {
+    $inbox_count++;
+  }
+  if($show_sender == '1' AND $messages_users_id == $users_id)
+  {
+    $outbox_count++;
+  }
+  if($messages_view == '0' AND $messages_users_id_to == $users_id AND $show_receiver == '1')
+  {
+    $new_mail++;
+  }
+  if($archiv_sender == '1' AND $messages_users_id == $users_id OR $archiv_receiver == '1' AND $messages_users_id_to == $users_id)
+  {
+    $archivbox_count++;
+  }
 
 }
 echo cs_html_table(1,'forum',1);
@@ -81,11 +81,11 @@ echo cs_html_roco(1,'leftc',0,2);
 echo cs_icon('email');
 if($new_mail == 1)
 {
-	$inbox = $new_mail . ' ' . $cs_lang['new_message'];
+  $inbox = $new_mail . ' ' . $cs_lang['new_message'];
 }
 else
 {
-	$inbox = $new_mail . $cs_lang['new_messages'];
+  $inbox = $new_mail . $cs_lang['new_messages'];
 }
 echo cs_link($inbox,'messages','inbox','page=new');
 
@@ -101,13 +101,13 @@ $autoresponder_mail = $cs_messages_options['autoresponder_mail'];
 
 if(empty($autoresponder_close))
 {
-	$autore_false = $cs_lang['autore_false'];
-	echo cs_secure($autore_false,1);
+  $autore_false = $cs_lang['autore_false'];
+  echo cs_secure($autore_false,1);
 }
 else
 {
-	$autore_true = $cs_lang['autore_true'];
-	echo cs_secure($autore_true,1);
+  $autore_true = $cs_lang['autore_true'];
+  echo cs_secure($autore_true,1);
 }
 echo cs_html_roco(0);
 
@@ -120,13 +120,13 @@ echo cs_link($mail_message,'messages','mail');
 echo cs_html_roco(2,'rightb');
 if(empty($autoresponder_mail))
 {
-	$autore_false = $cs_lang['autore_false'];
-	echo cs_secure($autore_false,1);
+  $autore_false = $cs_lang['autore_false'];
+  echo cs_secure($autore_false,1);
 }
 else
 {
-	$autore_true = $cs_lang['autore_true'];
-	echo cs_secure($autore_true,1);
+  $autore_true = $cs_lang['autore_true'];
+  echo cs_secure($autore_true,1);
 }
 echo cs_html_roco(0);
 
@@ -181,8 +181,8 @@ echo cs_html_roco(2,'leftb');
 $space = 0;
 if(!empty($archivbox_count))
 {
-	$space = $archivbox_count / $max_space * 100;
-	$space = round($space,1);
+  $space = $archivbox_count / $max_space * 100;
+  $space = round($space,1);
 }
 echo cs_html_div(1,'float:right;text-align:right;height:13px;width:35px;vertical-align:middle');
 echo $space;
@@ -191,30 +191,30 @@ echo cs_html_div(0);
 echo cs_html_div(1,'background-image:url(' . $cs_main['php_self']['dirname'] . 'symbols/messages/messages03.png); width:100px; height:13px;');
 if($space <= 50)
 {
-	echo cs_html_div(1,'background-image:url(' . $cs_main['php_self']['dirname'] . 'symbols/messages/messages01.png); width:' . $space . 'px; text-align:right; padding-left:1px');
+  echo cs_html_div(1,'background-image:url(' . $cs_main['php_self']['dirname'] . 'symbols/messages/messages01.png); width:' . $space . 'px; text-align:right; padding-left:1px');
 }
 if($space > 50 AND $space < 95)
 {
-	echo cs_html_div(1,'background-image:url(' . $cs_main['php_self']['dirname'] . 'symbols/messages/messages01_orange.png); width:' . $space . 'px; text-align:right; padding-left:1px');
+  echo cs_html_div(1,'background-image:url(' . $cs_main['php_self']['dirname'] . 'symbols/messages/messages01_orange.png); width:' . $space . 'px; text-align:right; padding-left:1px');
 }
 if($space >= 95)
 {
-	echo cs_html_div(1,'background-image:url(' . $cs_main['php_self']['dirname'] . 'symbols/messages/messages01_red.png); width:' . $space . 'px; text-align:right; padding-left:1px');
+  echo cs_html_div(1,'background-image:url(' . $cs_main['php_self']['dirname'] . 'symbols/messages/messages01_red.png); width:' . $space . 'px; text-align:right; padding-left:1px');
 }
 if(!empty($messages_loop))
 {
-	if($space <= 50)
-	{
-		echo cs_html_img('symbols/messages/messages02.png','13','2');
-	}
-	if($space > 50 AND $space < 95)
-	{
-		echo cs_html_img('symbols/messages/messages02_orange.png','13','2');
-	}
-	if($space >= 95)
-	{
-		echo cs_html_img('symbols/messages/messages02_red.png','13','2');
-	}
+  if($space <= 50)
+  {
+    echo cs_html_img('symbols/messages/messages02.png','13','2');
+  }
+  if($space > 50 AND $space < 95)
+  {
+    echo cs_html_img('symbols/messages/messages02_orange.png','13','2');
+  }
+  if($space >= 95)
+  {
+    echo cs_html_img('symbols/messages/messages02_red.png','13','2');
+  }
 }
 echo cs_html_div(0);
 echo cs_html_div(0);

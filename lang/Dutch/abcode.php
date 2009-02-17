@@ -2,12 +2,12 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Forumcode';
-$cs_lang['mod_text']	= 'Vervang patronen met een foto of tekst';
+$cs_lang['mod']  = 'Forumcode';
+$cs_lang['mod_text']  = 'Vervang patronen met een foto of tekst';
 
-$cs_lang['body_create']	= 'creëer een nieuwe vervanging';
-$cs_lang['body_edit']	= 'Aanpassen patroon vervangingen';
-$cs_lang['body_options']	= 'Management van de opties van de module.';
+$cs_lang['body_create']  = 'creëer een nieuwe vervanging';
+$cs_lang['body_edit']  = 'Aanpassen patroon vervangingen';
+$cs_lang['body_options']  = 'Management van de opties van de module.';
 $cs_lang['new_abcode'] = 'Nieuwe Forumcode';
 
 $cs_lang['max_width'] = 'Max foto breedte: ';
@@ -25,15 +25,15 @@ $cs_lang['pattern'] = 'Patroon';
 $cs_lang['result'] = 'Output';
 $cs_lang['function'] = 'Functie';
 $cs_lang['pic_up'] = 'Upload foto';
-$cs_lang['pic_current']	= 'Huidige foto';
+$cs_lang['pic_current']  = 'Huidige foto';
 $cs_lang['nopic'] = 'Geen foto beschikbaar';
 $cs_lang['pic_infos'] = 'Informatiebox';
 $cs_lang['filetypes'] = 'Filetypes: ';
 
-$cs_lang['too_big']	= '- Het bestand is te groot';
-$cs_lang['too_wide']	= '- De foto is te breed';
-$cs_lang['too_high']	= '- De foto is te hoog';
-$cs_lang['ext_error']	= '- Dit bestandtype is niet toegestaan';
+$cs_lang['too_big']  = '- Het bestand is te groot';
+$cs_lang['too_wide']  = '- De foto is te breed';
+$cs_lang['too_high']  = '- De foto is te hoog';
+$cs_lang['ext_error']  = '- Dit bestandtype is niet toegestaan';
 $cs_lang['no_func'] = '- Geen functie gegeven';
 $cs_lang['no_pattern'] = '- Geen patroon gegeven';
 $cs_lang['pattern_exists'] = '- Het patroon bestaat al';

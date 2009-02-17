@@ -2,8 +2,8 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Partner';
-$cs_lang['text']	= 'Manage partners and sponsors';
+$cs_lang['mod']  = 'Partner';
+$cs_lang['text']  = 'Manage partners and sponsors';
 
 $cs_lang['body_text'] =  'Please fill out all * marked fields.';
 $cs_lang['list'] =  'List';

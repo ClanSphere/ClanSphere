@@ -1,25 +1,25 @@
-<?php	
+<?php  
 // ClanSphere 2008 2.1 Slovenian Translation
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'Posnetki';
-$cs_lang['modtext']	= 'Shranjeni posnetki warov';
+$cs_lang['mod']  = 'Posnetki';
+$cs_lang['modtext']  = 'Shranjeni posnetki warov';
 
 // Comments
-$cs_lang['not_able']	= '- Komentarji niso dovoljeni.';
-$cs_lang['low_axx']	= '- Nima&scaron; dovolj pravic';
+$cs_lang['not_able']  = '- Komentarji niso dovoljeni.';
+$cs_lang['low_axx']  = '- Nima&scaron; dovolj pravic';
 
-$cs_lang['place']			= 'Kraj:';
+$cs_lang['place']      = 'Kraj:';
 $cs_lang['text'] = 'Besedilo';
 
-$cs_lang['head_com_edit']	= 'Uredi komentarje';
-$cs_lang['body_com_edit']	= 'Prosim, da o svojih sprememba&scaron; obvesti&scaron; tudi ostale.';
+$cs_lang['head_com_edit']  = 'Uredi komentarje';
+$cs_lang['body_com_edit']  = 'Prosim, da o svojih sprememba&scaron; obvesti&scaron; tudi ostale.';
 
-$cs_lang['head_com_remove']	= 'Odstrani komentarje';
+$cs_lang['head_com_remove']  = 'Odstrani komentarje';
 
 // Create
-$cs_lang['body_create']	= 'Dodaj nov posnetek.';
+$cs_lang['body_create']  = 'Dodaj nov posnetek.';
 
 $cs_lang['game'] = 'Igra';
 $cs_lang['version'] = 'Verzija';
@@ -44,22 +44,22 @@ $cs_lang['no_cat'] = '- Izbrati mora&scaron; kategorijo';
 $cs_lang['no_team1'] = '- Napisati mora&scaron; ekipo 1';
 $cs_lang['no_team2'] = '- Napisati mora&scaron; ekipo 2';
 $cs_lang['no_date'] = '- Dolo&#269;iti mora&scaron; datum';
-$cs_lang['too_big']	= '- Datoteka je prevelika;';
-$cs_lang['ext_error']	= '- Neznan format';
+$cs_lang['too_big']  = '- Datoteka je prevelika;';
+$cs_lang['ext_error']  = '- Neznan format';
 
 // Edit
-$cs_lang['body_edit']	= 'Napake se bodo pojavile tukaj.';
+$cs_lang['body_edit']  = 'Napake se bodo pojavile tukaj.';
 $cs_lang['up_error'] = '- Pojavila se je neznana napaka, prosim kontaktiraj Webmasterja';
 
 // List
-$cs_lang['list']	= 'Seznam';
+$cs_lang['list']  = 'Seznam';
 
 // Manage
 $cs_lang['new_replay'] = 'Nov posnetek';
 
 // View
-$cs_lang['details']	= 'Podrobnosti';
-$cs_lang['body_view']	= 'Ve&#269; informacij o posnetku.';
+$cs_lang['details']  = 'Podrobnosti';
+$cs_lang['body_view']  = 'Ve&#269; informacij o posnetku.';
 
 $cs_lang['body_options'] = 'Administracija o mo&#382;nostih modula.';
 $cs_lang['head_options'] = 'Mo&#382;nosti';

@@ -16,7 +16,7 @@ if (file_exists($filename)) {
 }
 
 if(!empty($_POST['imprint'])) {
-	$imprint = $_POST['imprint'];
+  $imprint = $_POST['imprint'];
 } 
 if (!isset($_POST['submit']) AND file_exists($filename)) {   
   $imprint = explode("{laststandbreak}", $content); 
@@ -29,9 +29,9 @@ if(isset($_POST['submit'])) {
   $data['if']['wizzard']  = FALSE;
   
   if (file_exists($filename)) {
-	  cs_unlink('imprint', 'imprint.txt');
-	}
-	$fp = fopen ($filename, "w");
+    cs_unlink('imprint', 'imprint.txt');
+  }
+  $fp = fopen ($filename, "w");
     chmod($filename,0777);
     $imp_time = cs_time();
     $content  = $imp_time; 
@@ -45,7 +45,7 @@ if(isset($_POST['submit'])) {
     $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_cont' AND options_value = '1'");
     if(empty($wizard)) {
       $data['if']['wizzard'] = TRUE;
-  	}
+    }
   }
 }
 if(!empty($imp_form)) {
@@ -54,7 +54,7 @@ if(!empty($imp_form)) {
   $data['if']['form']     = TRUE;
   $data['if']['wizzard']  = FALSE;
   
-	$data['imprint']['abcode_features']   = cs_abcode_features('imprint');
+  $data['imprint']['abcode_features']   = cs_abcode_features('imprint');
   $data['imprint']['content']           = file_exists($filename) ? $imprint[1] : '';
 
 }

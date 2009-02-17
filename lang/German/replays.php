@@ -1,12 +1,12 @@
-<?php	
-// ClanSphere 2008 - www.clansphere.net	
+<?php  
+// ClanSphere 2008 - www.clansphere.net  
 // $Id$
 
-$cs_lang['mod']	= 'Wiederholungen';
-$cs_lang['modtext']	= 'Gespeicherte Aufzeichnungen von Begegnungen';
+$cs_lang['mod']  = 'Wiederholungen';
+$cs_lang['modtext']  = 'Gespeicherte Aufzeichnungen von Begegnungen';
 
 // Create
-$cs_lang['body_create']	= 'Neue Wiederholung hinzuf&uuml;gen.';
+$cs_lang['body_create']  = 'Neue Wiederholung hinzuf&uuml;gen.';
 
 $cs_lang['game'] = 'Spiel';
 $cs_lang['version'] = 'Version';
@@ -31,23 +31,23 @@ $cs_lang['no_cat'] = '- Es muss eine Kategorie ausgew&auml;hlt werden';
 $cs_lang['no_team1'] = '- Es muss ein Team1 angegeben werden';
 $cs_lang['no_team2'] = '- Es muss ein Team2 angegeben werden';
 $cs_lang['no_date'] = '- Es muss ein Datum festgelegt werden';
-$cs_lang['too_big']	= '- Die Datei ist zu gro&szlig;';
-$cs_lang['ext_error']	= '- Es wurde ein unerlaubter Dateityp benutzt';
+$cs_lang['too_big']  = '- Die Datei ist zu gro&szlig;';
+$cs_lang['ext_error']  = '- Es wurde ein unerlaubter Dateityp benutzt';
 
 // Edit
-$cs_lang['body_edit']	= 'Hier erscheinen etwaige Fehler nach dem Absenden.';
+$cs_lang['body_edit']  = 'Hier erscheinen etwaige Fehler nach dem Absenden.';
 
 $cs_lang['up_error'] = '- Unbekannter Fehler, bitte den Webmaster kontaktieren';
 
 // List
-$cs_lang['list']	= 'Liste';
+$cs_lang['list']  = 'Liste';
 
 // Manage
 $cs_lang['new_replay'] = 'Neue Wiederholung';
 
 // View
-$cs_lang['details']	= 'Details';
-$cs_lang['body_view']	= 'Weitere Informationen zu einer Wiederholung.';
+$cs_lang['details']  = 'Details';
+$cs_lang['body_view']  = 'Weitere Informationen zu einer Wiederholung.';
 
 $cs_lang['body_options'] = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['head_options'] = 'Optionen';

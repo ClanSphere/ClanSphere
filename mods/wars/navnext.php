@@ -14,7 +14,7 @@ $data['wars'] = cs_sql_select(__FILE__,$from,$select,$upcome,$order,0,4);
 
 if(empty($data['wars'])) {
 
-	echo $cs_lang['no_data'];
+  echo $cs_lang['no_data'];
 
 } else {
   

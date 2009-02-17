@@ -22,21 +22,21 @@ for($run=0; $run<$categories_loop; $run++) {
 
   echo cs_html_table(1,'forum',1);
   echo cs_html_roco(1,'headb');
-  echo cs_link(cs_secure($categories_data[$run]['categories_name']),'files','listcat','where=' . 		 $categories_data[$run]['categories_id']);
+  echo cs_link(cs_secure($categories_data[$run]['categories_name']),'files','listcat','where=' .      $categories_data[$run]['categories_id']);
   $content = cs_sql_count(__FILE__,'files',"categories_id = '" . $categories_data[$run]['categories_id'] . "'");
   echo ' ('. $content .')';
   echo cs_html_roco(0);
 
   if(!empty($categories_data[$run]['categories_text'])) {
     echo cs_html_roco(1,'leftb');
-	echo cs_secure($categories_data[$run]['categories_text'],1);
-	echo cs_html_roco(0);
+  echo cs_secure($categories_data[$run]['categories_text'],1);
+  echo cs_html_roco(0);
   }
   
   if(!empty($categories_data[$run]['categories_picture'])) {
     echo cs_html_roco(1,'leftb');
-	echo cs_html_img('uploads/categories/' . $categories_data[$run]['categories_picture']);
-	echo cs_html_roco(0);
+  echo cs_html_img('uploads/categories/' . $categories_data[$run]['categories_picture']);
+  echo cs_html_roco(0);
   }
   
   
@@ -49,9 +49,9 @@ for($run=0; $run<$categories_loop; $run++) {
     echo 'Unterkategorien: ';
     for($runb=0; $runb < $sub_loop; $runb++) {
       echo cs_link(cs_secure($sub_data[$runb]['categories_name']),'files','listcat','where=' . $sub_data[$runb]['categories_id']);
-	  $sub_content = cs_sql_count(__FILE__,'files',"categories_id = '" . $sub_data[$runb]['categories_id'] . "'");
-	  echo ' (' . $sub_content . ')';
-	  if($runb == $sub_loop -1) { } else { echo ', '; }
+    $sub_content = cs_sql_count(__FILE__,'files',"categories_id = '" . $sub_data[$runb]['categories_id'] . "'");
+    echo ' (' . $sub_content . ')';
+    if($runb == $sub_loop -1) { } else { echo ', '; }
     }
     echo cs_html_roco(0);
   }

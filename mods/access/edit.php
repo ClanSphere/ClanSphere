@@ -83,10 +83,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
       if(!empty($mod['icon'])) {
         $data['access'][$run]['icon'] = cs_icon($mod['icon']); 
       }
-	  else {
-	    $data['access'][$run]['icon'] = '';
-	  } 
-	  $data['access'][$run]['name'] = cs_link($mod['name'],'modules','view','dir=' . $mod['dir']);
+    else {
+      $data['access'][$run]['icon'] = '';
+    } 
+    $data['access'][$run]['name'] = cs_link($mod['name'],'modules','view','dir=' . $mod['dir']);
       $data['access'][$run]['select'] = cs_html_select(1,$acc_dir);
       $levels = 0;
       while($levels < 6) {
@@ -95,7 +95,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
         $levels++;
       }
       $data['access'][$run]['select'] .= cs_html_select(0);
-	  $run++;
+    $run++;
     }
   }
   

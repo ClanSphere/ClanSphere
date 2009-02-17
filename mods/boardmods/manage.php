@@ -34,12 +34,12 @@ $boardmods_loop = count($data['bm']);
 
 for($run=0; $run<$boardmods_loop; $run++) {
 
-	$data['bm'][$run]['boardmods_user'] = cs_user($data['bm'][$run]['users_id'],$data['bm'][$run]['users_nick'],$data['bm'][$run]['users_active']);
-	$data['bm'][$run]['boardmods_modpanel'] = $cs_lang[$data['bm'][$run]['boardmods_modpanel']];
-	$data['bm'][$run]['boardmods_edit'] = $cs_lang[$data['bm'][$run]['boardmods_edit']];
-	$data['bm'][$run]['boardmods_del'] = $cs_lang[$data['bm'][$run]['boardmods_del']];
-	
-	$data['bm'][$run]['url_edit'] = cs_url('boardmods','edit','id=' . $data['bm'][$run]['boardmods_id'],0,$cs_lang['edit']);
+  $data['bm'][$run]['boardmods_user'] = cs_user($data['bm'][$run]['users_id'],$data['bm'][$run]['users_nick'],$data['bm'][$run]['users_active']);
+  $data['bm'][$run]['boardmods_modpanel'] = $cs_lang[$data['bm'][$run]['boardmods_modpanel']];
+  $data['bm'][$run]['boardmods_edit'] = $cs_lang[$data['bm'][$run]['boardmods_edit']];
+  $data['bm'][$run]['boardmods_del'] = $cs_lang[$data['bm'][$run]['boardmods_del']];
+  
+  $data['bm'][$run]['url_edit'] = cs_url('boardmods','edit','id=' . $data['bm'][$run]['boardmods_id'],0,$cs_lang['edit']);
     $data['bm'][$run]['url_remove'] = cs_url('boardmods','remove','id=' . $data['bm'][$run]['boardmods_id'],0,$cs_lang['remove']);
 }
 

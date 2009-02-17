@@ -42,79 +42,79 @@ $c = 0;
 
 for($run=0; $run<$gbook_loop; $run++)
 {
-	$entry_count = $gbook_count - $start - $c;
-	$c++;
-	$gbook[$run]['entry_count'] = $entry_count;
-	if($cs_gbook[$run]['users_id'] == 0) {
-		$gbook[$run]['users_nick'] = cs_secure($cs_gbook[$run]['gbook_nick']);
-		$gbook[$run]['town'] = '';
-		$gbook[$run]['icon_town'] = '';
-		if (!empty($cs_gbook[$run]['gbook_town'])) {
-			$gbook[$run]['icon_town'] = cs_icon('gohome');
-			$gbook[$run]['town'] = cs_secure($cs_gbook[$run]['gbook_town']);
-		}
-		$mail = cs_secure($cs_gbook[$run]['gbook_email']);
-		$gbook[$run]['icon_mail'] = empty($mail) ? '' : cs_html_link("mailto:$mail",cs_icon('mail_generic'));
-		$icq = cs_secure($cs_gbook[$run]['gbook_icq']);
-		$gbook[$run]['icon_icq'] = empty($icq) ? '' : cs_html_link("http://www.icq.com/$icq",cs_icon('licq'));
-		$msn = cs_secure($cs_gbook[$run]['gbook_msn']);
-		$gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_link("http://members.msn.com/$msn",cs_icon('msn_protocol'));
-		$skype = cs_secure($cs_gbook[$run]['gbook_skype']);
-		$url = 'http://mystatus.skype.com/smallicon/' . $skype;
-		$gbook[$run]['icon_skype'] = empty($skype) ? '' : cs_html_link("skype:$skype?userinfo",cs_html_img($url,'16','16','0','Skype'),'0');
-		$url = cs_secure($cs_gbook[$run]['gbook_url']);
-		$gbook[$run]['icon_url'] = empty($url) ? '' : cs_html_link("http://$url",cs_icon('gohome'));
-	}
-	else
-	{
-		$hidden = explode(',',$cs_gbook[$run]['users_hidden']);
-		$allow = $cs_gbook[$run]['users_id'] == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
-		$gbook[$run]['users_nick'] = cs_user($cs_gbook[$run]['users_id'],$cs_gbook[$run]['users_nick'], $cs_gbook[$run]['users_active']);
+  $entry_count = $gbook_count - $start - $c;
+  $c++;
+  $gbook[$run]['entry_count'] = $entry_count;
+  if($cs_gbook[$run]['users_id'] == 0) {
+    $gbook[$run]['users_nick'] = cs_secure($cs_gbook[$run]['gbook_nick']);
+    $gbook[$run]['town'] = '';
+    $gbook[$run]['icon_town'] = '';
+    if (!empty($cs_gbook[$run]['gbook_town'])) {
+      $gbook[$run]['icon_town'] = cs_icon('gohome');
+      $gbook[$run]['town'] = cs_secure($cs_gbook[$run]['gbook_town']);
+    }
+    $mail = cs_secure($cs_gbook[$run]['gbook_email']);
+    $gbook[$run]['icon_mail'] = empty($mail) ? '' : cs_html_link("mailto:$mail",cs_icon('mail_generic'));
+    $icq = cs_secure($cs_gbook[$run]['gbook_icq']);
+    $gbook[$run]['icon_icq'] = empty($icq) ? '' : cs_html_link("http://www.icq.com/$icq",cs_icon('licq'));
+    $msn = cs_secure($cs_gbook[$run]['gbook_msn']);
+    $gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_link("http://members.msn.com/$msn",cs_icon('msn_protocol'));
+    $skype = cs_secure($cs_gbook[$run]['gbook_skype']);
+    $url = 'http://mystatus.skype.com/smallicon/' . $skype;
+    $gbook[$run]['icon_skype'] = empty($skype) ? '' : cs_html_link("skype:$skype?userinfo",cs_html_img($url,'16','16','0','Skype'),'0');
+    $url = cs_secure($cs_gbook[$run]['gbook_url']);
+    $gbook[$run]['icon_url'] = empty($url) ? '' : cs_html_link("http://$url",cs_icon('gohome'));
+  }
+  else
+  {
+    $hidden = explode(',',$cs_gbook[$run]['users_hidden']);
+    $allow = $cs_gbook[$run]['users_id'] == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
+    $gbook[$run]['users_nick'] = cs_user($cs_gbook[$run]['users_id'],$cs_gbook[$run]['users_nick'], $cs_gbook[$run]['users_active']);
         $gbook[$run]['town'] = '';
-		$gbook[$run]['icon_town'] = '';
-		if (!empty($cs_gbook[$run]['users_place'])) {
-			$gbook[$run]['icon_town'] = cs_icon('gohome');
-			$gbook[$run]['town'] = cs_secure($cs_gbook[$run]['users_place']);
-		}
-		$mail = cs_secure($cs_gbook[$run]['users_email']);
-		if(in_array('users_email',$hidden)) {
-			$mail = empty($allow) ? '' : $mail;
-		}
-		$gbook[$run]['icon_mail'] = empty($mail) ? '' : cs_html_link("mailto:$mail",cs_icon('mail_generic'));
-		$icq = cs_secure($cs_gbook[$run]['users_icq']);
-		if(in_array('users_icq',$hidden)) {
-			$icq = empty($allow) ? '' : $icq;
-		}
-		$gbook[$run]['icon_icq'] = empty($icq) ? '' : cs_html_link("http://www.icq.com/$icq",cs_icon('licq'));
-		$msn = cs_secure($cs_gbook[$run]['users_msn']);
-		if(in_array('users_msn',$hidden)) {
-			$msn = empty($allow) ? '' : $msn;
-		}
-		$gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_link("http://members.msn.com/$msn",cs_icon('msn_protocol'));
-		$skype = cs_secure($cs_gbook[$run]['users_skype']);
-		$url = 'http://mystatus.skype.com/smallicon/' . $skype;
-		$skype = cs_html_link('skype:' . $cs_gbook[$run]['users_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');
-		if(in_array('users_skype',$hidden)) {
-			$skype = empty($allow) ? '' : $skype;
-		}
-		$gbook[$run]['icon_skype'] = empty($cs_gbook[$run]['users_skype']) ? '' : $skype;
-		$url = cs_secure($cs_gbook[$run]['users_url']);
-		if(in_array('users_url',$hidden)) {
-			$url = empty($allow) ? '' : $url;
-		}
-		$gbook[$run]['icon_url'] = empty($url) ? '' : cs_html_link("http://$url",cs_icon('gohome'));
-	}
-	$gbook[$run]['text'] = cs_secure($cs_gbook[$run]['gbook_text'],1,1);
-	$gbook[$run]['time'] = cs_date('unix',$cs_gbook[$run]['gbook_time'],1);
-	if($account['access_gbook'] >= 4)
-	{
-		$img_edit = cs_icon('edit',16,$cs_lang['edit']);
-		$gbook[$run]['icon_edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
-		$img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-   		$gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
-		$img_ip = cs_icon('important',16,$cs_lang['ip']);
-		$gbook[$run]['icon_ip'] = cs_link($img_ip,'gbook','ip','id=' . $cs_gbook[$run]['gbook_id']);
-	}
+    $gbook[$run]['icon_town'] = '';
+    if (!empty($cs_gbook[$run]['users_place'])) {
+      $gbook[$run]['icon_town'] = cs_icon('gohome');
+      $gbook[$run]['town'] = cs_secure($cs_gbook[$run]['users_place']);
+    }
+    $mail = cs_secure($cs_gbook[$run]['users_email']);
+    if(in_array('users_email',$hidden)) {
+      $mail = empty($allow) ? '' : $mail;
+    }
+    $gbook[$run]['icon_mail'] = empty($mail) ? '' : cs_html_link("mailto:$mail",cs_icon('mail_generic'));
+    $icq = cs_secure($cs_gbook[$run]['users_icq']);
+    if(in_array('users_icq',$hidden)) {
+      $icq = empty($allow) ? '' : $icq;
+    }
+    $gbook[$run]['icon_icq'] = empty($icq) ? '' : cs_html_link("http://www.icq.com/$icq",cs_icon('licq'));
+    $msn = cs_secure($cs_gbook[$run]['users_msn']);
+    if(in_array('users_msn',$hidden)) {
+      $msn = empty($allow) ? '' : $msn;
+    }
+    $gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_link("http://members.msn.com/$msn",cs_icon('msn_protocol'));
+    $skype = cs_secure($cs_gbook[$run]['users_skype']);
+    $url = 'http://mystatus.skype.com/smallicon/' . $skype;
+    $skype = cs_html_link('skype:' . $cs_gbook[$run]['users_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');
+    if(in_array('users_skype',$hidden)) {
+      $skype = empty($allow) ? '' : $skype;
+    }
+    $gbook[$run]['icon_skype'] = empty($cs_gbook[$run]['users_skype']) ? '' : $skype;
+    $url = cs_secure($cs_gbook[$run]['users_url']);
+    if(in_array('users_url',$hidden)) {
+      $url = empty($allow) ? '' : $url;
+    }
+    $gbook[$run]['icon_url'] = empty($url) ? '' : cs_html_link("http://$url",cs_icon('gohome'));
+  }
+  $gbook[$run]['text'] = cs_secure($cs_gbook[$run]['gbook_text'],1,1);
+  $gbook[$run]['time'] = cs_date('unix',$cs_gbook[$run]['gbook_time'],1);
+  if($account['access_gbook'] >= 4)
+  {
+    $img_edit = cs_icon('edit',16,$cs_lang['edit']);
+    $gbook[$run]['icon_edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
+    $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
+       $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
+    $img_ip = cs_icon('important',16,$cs_lang['ip']);
+    $gbook[$run]['icon_ip'] = cs_link($img_ip,'gbook','ip','id=' . $cs_gbook[$run]['gbook_id']);
+  }
 }
 $data['gbook'] = !empty($gbook) ? $gbook : '';
 echo cs_subtemplate(__FILE__,$data,'gbook','users');

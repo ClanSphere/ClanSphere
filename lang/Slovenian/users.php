@@ -3,9 +3,9 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'Uporabnik';
+$cs_lang['mod_name']  = 'Uporabnik';
 $cs_lang['users'] = 'Uporabnik';
-$cs_lang['mod_text']	= 'Upravljanje z uporabniki';
+$cs_lang['mod_text']  = 'Upravljanje z uporabniki';
 
 $cs_lang['wizard'] = '&#268;arovnik';
 $cs_lang['task_done'] = 'Ozna&#269;i nalogo kot &#382;e opravljeno';
@@ -23,13 +23,13 @@ $cs_lang['system'] = 'Sistem';
 $cs_lang['panel'] = 'Administracija';
 
 // Manage
-$cs_lang['new_user']	= 'Nov uporabnik';
-$cs_lang['access']	= 'Dostop';
-$cs_lang['country']	= 'Dr&#382;ava';
-$cs_lang['nick']	= 'Vzdevek';
-$cs_lang['laston']	= 'Nazadnje online';
-$cs_lang['page']	= 'Status';
-$cs_lang['active']	= 'Aktiven';
+$cs_lang['new_user']  = 'Nov uporabnik';
+$cs_lang['access']  = 'Dostop';
+$cs_lang['country']  = 'Dr&#382;ava';
+$cs_lang['nick']  = 'Vzdevek';
+$cs_lang['laston']  = 'Nazadnje online';
+$cs_lang['page']  = 'Status';
+$cs_lang['active']  = 'Aktiven';
 $cs_lang['picture_edit'] = 'Spremeni sliko uporabnika';
 $cs_lang['search'] = 'Search';
 
@@ -61,7 +61,7 @@ $cs_lang['info'] = 'Informacije';
 $cs_lang['message_send'] = 'Po&scaron;lji sporo&#269;ilo';
 
 // Create
-$cs_lang['create_users']	= 'Dodaj nov uporabni&scaron;ki ra&#269;un.';
+$cs_lang['create_users']  = 'Dodaj nov uporabni&scaron;ki ra&#269;un.';
 $cs_lang['lang'] = 'Jezik';
 $cs_lang['password'] = 'Geslo';
 $cs_lang['extended'] = 'Napredno';
@@ -76,7 +76,7 @@ $cs_lang['email_false'] = '- E-mail naslov ni pravilen';
 $cs_lang['no_access'] = '- Izberi stopnjo dostopa';
 $cs_lang['access_denied'] = '- Izbrana stopnja dostopa je vi&scaron;je od tvoje stopnje';
 
-$cs_lang['auto_pass']	= 'Geslo se bo zgenerirajo avtomatsko';
+$cs_lang['auto_pass']  = 'Geslo se bo zgenerirajo avtomatsko';
 
 // Mail
 $cs_lang['mail_reg_head'] = 'Registracija';
@@ -95,11 +95,11 @@ $cs_lang['not_active'] = 'Deaktiviran';
 $cs_lang['not_active_text'] = 'Izbran uporabnik je deaktiviran';
 
 // Logout
-$cs_lang['logged_out']	= 'Uspe&scaron;no si se odjavil, se vidimo!';
+$cs_lang['logged_out']  = 'Uspe&scaron;no si se odjavil, se vidimo!';
 
 // Login
 $cs_lang['login'] = 'Prijava';
-$cs_lang['login_messages']	= 'Prijavna sporo&#269;ila se bodo pojavila tukaj.';
+$cs_lang['login_messages']  = 'Prijavna sporo&#269;ila se bodo pojavila tukaj.';
 $cs_lang['pwd'] = 'Geslo';
 $cs_lang['user_notfound'] = 'Tega uporabnika ni v na&scaron;i bazi.';
 $cs_lang['wrong_pwd'] = 'Napa&#269;no geslo.';
@@ -112,7 +112,7 @@ $cs_lang['not_public'] = 'Za prijavo v vzdr&#382;evalnem na&#269;inu potrebuje&s
 
 // Register
 $cs_lang['signup'] = 'Registracije';
-$cs_lang['register_info']	= 'Tukaj doda&scaron; novega uporabnika.';
+$cs_lang['register_info']  = 'Tukaj doda&scaron; novega uporabnika.';
 $cs_lang['register_disabled'] = 'Registracija novih uporabnikov je trenutno onemogo&#269;ena.';
 $cs_lang['done'] = 'Sedaj se lahko prijaviš.';
 $cs_lang['done2'] = 'V kratkem boš dobil na email povezavo za aktivacijo računa.';
@@ -120,13 +120,13 @@ $cs_lang['done2'] = 'V kratkem boš dobil na email povezavo za aktivacijo račun
 $cs_lang['mail_key'] = 'Aktivacijska povezava';
 
 // Home
-$cs_lang['home_info']	= 'Informacije o tvojem uporabni&scaron;kem ra&#269;unu.';
+$cs_lang['home_info']  = 'Informacije o tvojem uporabni&scaron;kem ra&#269;unu.';
 
 // Settings
-$cs_lang['settings_info']	= 'Mo&#382;nosti uporabni&scaron;kega ra&#269;una.';
-$cs_lang['picture']	= 'Slika';
-$cs_lang['setup']	= 'Nastavitve';
-$cs_lang['close']	= 'Deaktiviraj';
+$cs_lang['settings_info']  = 'Mo&#382;nosti uporabni&scaron;kega ra&#269;una.';
+$cs_lang['picture']  = 'Slika';
+$cs_lang['setup']  = 'Nastavitve';
+$cs_lang['close']  = 'Deaktiviraj';
 
 // Profile
 $cs_lang['column'] = 'Stolpec';
@@ -135,18 +135,18 @@ $cs_lang['hidden'] = 'Skrij';
 $cs_lang['birthday'] = 'Roj. dan';
 
 // Picture
-$cs_lang['picture_manage']	= 'Upravljanje slike profila.';
-$cs_lang['current']	= 'Trenutna';
+$cs_lang['picture_manage']  = 'Upravljanje slike profila.';
+$cs_lang['current']  = 'Trenutna';
 $cs_lang['pic_infos'] = 'Informacije';
 $cs_lang['max_width'] = 'Max. &scaron;irina: ';
 $cs_lang['max_height'] = 'Max. vi&scaron;ina: ';
 $cs_lang['max_size'] = 'Max. vi&scaron;ina: ';
 $cs_lang['filetypes'] = 'Formati: ';
 
-$cs_lang['too_big']	= '- Datoteka je prevelika;';
-$cs_lang['too_wide']	= '- Slika je pre&scaron;iroka';
-$cs_lang['too_high']	= '- Slika je previsoka';
-$cs_lang['ext_error']	= '-Neznan format';
+$cs_lang['too_big']  = '- Datoteka je prevelika;';
+$cs_lang['too_wide']  = '- Slika je pre&scaron;iroka';
+$cs_lang['too_high']  = '- Slika je previsoka';
+$cs_lang['ext_error']  = '-Neznan format';
 $cs_lang['up_error'] = '- Pojavila se je neznana napaka, prosim kontaktiraj Webmasterja';
 
 // Setup
@@ -166,7 +166,7 @@ $cs_lang['default'] = 'Privzeto';
 $cs_lang['categories'] = 'Kategorije';
 
 // Password
-$cs_lang['change_password']	= 'Tukaj lahko spremeni&scaron; geslo.';
+$cs_lang['change_password']  = 'Tukaj lahko spremeni&scaron; geslo.';
 $cs_lang['pwd_current'] = 'Trenutno geslo';
 $cs_lang['pwd_new'] = 'Novo geslo';
 $cs_lang['pwd_again'] = 'Ponovi geslo';
@@ -176,17 +176,17 @@ $cs_lang['not_match'] = '- Novi gesli se ne ujemata';
 // Close
 $cs_lang['close_confirm'] = 'Zaprem uporabni&scaron;ki ra&#269;un?';
 $cs_lang['close_info'] = 'Samo Webmaster ga lahko ponovno odpre!';
-$cs_lang['close_false']	= 'Zapiranje preklicano';
-$cs_lang['close_true']	= 'Uporabni&scaron;ki ra&#269;un uspe&scaron;no zaprt';
+$cs_lang['close_false']  = 'Zapiranje preklicano';
+$cs_lang['close_true']  = 'Uporabni&scaron;ki ra&#269;un uspe&scaron;no zaprt';
 
 // List
-$cs_lang['list']	= 'Seznam';
-$cs_lang['female']	= '&#381;enski';
-$cs_lang['male']		= 'Mo&scaron;ki';
-$cs_lang['place']		= 'Kraj';
+$cs_lang['list']  = 'Seznam';
+$cs_lang['female']  = '&#381;enski';
+$cs_lang['male']    = 'Mo&scaron;ki';
+$cs_lang['place']    = 'Kraj';
 
 // Options
-$cs_lang['manage_options']	= 'Upravljaj z mo&#382;nostmi modula.';
+$cs_lang['manage_options']  = 'Upravljaj z mo&#382;nostmi modula.';
 $cs_lang['pixel'] = 'Pik';
 $cs_lang['bytes'] = 'Bajtov';
 $cs_lang['letters'] = '&#268;rk';
@@ -197,7 +197,7 @@ $cs_lang['reg_captcha'] = 'Vpi&scaron;i varnostno kodo';
 $cs_lang['reg_captcha_mail'] = 'email in varnostna koda';
 
 // SendPW
-$cs_lang['sendpw_info']	= 'Prosim vpi&scaron;i svoj email naslov kot ga ima&scaron; v svojem profilu. ';
+$cs_lang['sendpw_info']  = 'Prosim vpi&scaron;i svoj email naslov kot ga ima&scaron; v svojem profilu. ';
 $cs_lang['sendpw_info'] .= 'Po uspe&scaron;ni oddajo bo&scaron; sprejel informacije za ';
 $cs_lang['sendpw_info'] .= 'aktivacijo novega gesla.';
 $cs_lang['request'] = 'Zahtevaj novo geslo';
@@ -220,9 +220,9 @@ $cs_lang['mail_spw_end'] = "\n\nTale email je zgeneriran.";
 $cs_lang['key'] = 'Klju&#269;';
 $cs_lang['new_pwd'] = 'Geslo';
 
-$cs_lang['online']	= 'Online';
-$cs_lang['all']	= 'Vsi';
-$cs_lang['count_users'] 	= 'Na strani je trenutno %s uporabnikov';
+$cs_lang['online']  = 'Online';
+$cs_lang['all']  = 'Vsi';
+$cs_lang['count_users']   = 'Na strani je trenutno %s uporabnikov';
 
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Podpis';
@@ -256,7 +256,7 @@ $cs_lang['stage_4_text'] = ': min. 8 znakov, 3 male &#269;rke, 2 veliki &#269;rk
 // Navrand
 $cs_lang['since'] = 'Registered';
 $cs_lang['noname'] = 'No Name';
-$cs_lang['403_body']	= 'The page you´ve called needs a higher access level.';
+$cs_lang['403_body']  = 'The page you´ve called needs a higher access level.';
 
 // Notifications
 $cs_lang['notifications']    = 'Obvestila';

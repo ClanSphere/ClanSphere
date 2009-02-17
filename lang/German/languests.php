@@ -2,11 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	            = 'LAN-G&auml;ste';
-$cs_lang['mod_info']	    = 'Verwaltung von LAN-Party-Teilnehmern';
+$cs_lang['mod']              = 'LAN-G&auml;ste';
+$cs_lang['mod_info']      = 'Verwaltung von LAN-Party-Teilnehmern';
 
 // Create
-$cs_lang['body_create']	    = 'Einen neuen Teilnehmer eintragen.';
+$cs_lang['body_create']      = 'Einen neuen Teilnehmer eintragen.';
 
 $cs_lang['lanparty']        = 'LAN-Party';
 $cs_lang['user']            = 'Benutzer';
@@ -27,22 +27,22 @@ $cs_lang['user_lan_exists'] = '- Der Benutzer ist bereits in dieser Veranstaltun
 $cs_lang['lan_full']        = '- Die gew&auml;hlte Veranstaltung ist voll belegt';
 
 // Lanpartys
-$cs_lang['head_lanpartys']	= 'LAN-Partys';
-$cs_lang['stats']	        = 'Angemeldet: %s/%s (Davon bezahlt: %s)';
-$cs_lang['chair']		    = 'Platz';
+$cs_lang['head_lanpartys']  = 'LAN-Partys';
+$cs_lang['stats']          = 'Angemeldet: %s/%s (Davon bezahlt: %s)';
+$cs_lang['chair']        = 'Platz';
 $cs_lang['nick']            = 'Nick';
 
 // Manage
-$cs_lang['new_languest']	= 'Neuer Teilnehmer';
-$cs_lang['notices']			= 'Notizen';
+$cs_lang['new_languest']  = 'Neuer Teilnehmer';
+$cs_lang['notices']      = 'Notizen';
 
-$cs_lang['select_lan']		= 'Veranstaltung: ';
-$cs_lang['since']			= 'Anmeldezeit';
-$cs_lang['map']			    = 'Karte';
+$cs_lang['select_lan']    = 'Veranstaltung: ';
+$cs_lang['since']      = 'Anmeldezeit';
+$cs_lang['map']          = 'Karte';
 
 // Rooms
-$cs_lang['head_rooms']	    = 'Sitzplan';
-$cs_lang['body_rooms']	    = 'Ansehen und Reservieren von Pl&auml;tzen';
+$cs_lang['head_rooms']      = 'Sitzplan';
+$cs_lang['body_rooms']      = 'Ansehen und Reservieren von Pl&auml;tzen';
 
 $cs_lang['area']            = 'Bereich:';
 

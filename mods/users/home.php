@@ -14,9 +14,9 @@ $data['head']['body_text'] = $cs_lang['home_info'];
 echo cs_subtemplate(__FILE__,$data,'users','head');
 
 if($cs_user['users_invisible'] == 1) {
-	$if_invis = ' (' . $cs_lang['invisible'] . ')';
+  $if_invis = ' (' . $cs_lang['invisible'] . ')';
 }else{
-	$if_invis = '';
+  $if_invis = '';
 }
 
 $data['users']['link'] = cs_user($account['users_id'], $account['users_nick'], $cs_user['users_active']) . $if_invis;
@@ -36,10 +36,10 @@ $plugins = cs_checkdirs('mods','users/home');
 ksort($plugins);
 
 foreach($plugins as $mod) {
-	$acc_dir = 'access_' . $mod['dir'];
-	if(array_key_exists($acc_dir,$account) AND $account[$acc_dir] >= $mod['show']['users/home']) {
-		include_once('mods/' . $mod['dir'] . '/users_home.php');
-	}
+  $acc_dir = 'access_' . $mod['dir'];
+  if(array_key_exists($acc_dir,$account) AND $account[$acc_dir] >= $mod['show']['users/home']) {
+    include_once('mods/' . $mod['dir'] . '/users_home.php');
+  }
 }
 
 ?>

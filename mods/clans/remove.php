@@ -31,7 +31,7 @@ if(isset($_GET['agree']) AND $clans_id != 1) {
   
   cs_sql_delete(__FILE__,'squads',$clans_id,'clans_id');
   cs_sql_delete(__FILE__,'clans',$clans_id);
-	
+  
   cs_redirect($cs_lang['del_true'], 'clans');
 }
 
@@ -45,7 +45,7 @@ if(!empty($clans_form)) {
   $data['lang']['content'] = cs_link($cs_lang['confirm'],'clans','remove','id=' . $clans_id . '&amp;agree');
   $data['lang']['content'] .= ' - ';
   $data['lang']['content'] .= cs_link($cs_lang['cancel'],'clans','remove','id=' . $clans_id . '&amp;cancel');
-	
+  
   echo cs_subtemplate(__FILE__,$data,'clans','remove');
 }
 ?>

@@ -63,68 +63,68 @@ class q1
     function splitdata()
     {
         // get rules from stream and write to g_info
-	$c_info = explode("\n", $this->s_info);
-	$this->g_info = explode("\\", $c_info[0]);
+  $c_info = explode("\n", $this->s_info);
+  $this->g_info = explode("\\", $c_info[0]);
 
         // get players from stream and write to p_info
-	$index_old = 0;
-	$index_new = 0;
-	foreach ($c_info as $value)
-	{
-	    if ($index_old >= 1)
-	    {
-	    	$this->p_info[$index_new] = $value;
-		$index_new++;
-	    }
-	    $index_old++;
-	}
+  $index_old = 0;
+  $index_new = 0;
+  foreach ($c_info as $value)
+  {
+      if ($index_old >= 1)
+      {
+        $this->p_info[$index_new] = $value;
+    $index_new++;
+      }
+      $index_old++;
+  }
     }
 
     function microtime_float()
     {
         list($usec, $sec) = explode(" ", microtime());
         
-	return ((float)$usec + (float)$sec);
+  return ((float)$usec + (float)$sec);
     }
     
     function getstream($host, $port, $queryport)
     {   
         // get the infostream from server
         $socket = fsockopen('udp://'. $host, $port, $errno, $errstr, 30);
-	
-	if ($socket === false)
-	{
+  
+  if ($socket === false)
+  {
             echo "Error: $errno - $errstr<br>\n";
         }
-	else
-	{
+  else
+  {
             socket_set_timeout($socket, 3);
-	    
-	    $time_begin = $this->microtime_float();
-	
+      
+      $time_begin = $this->microtime_float();
+  
             fwrite($socket, $this->write);
-	    $this->s_info = fread($socket, $this->maxlen);
+      $this->s_info = fread($socket, $this->maxlen);
 
             $time_end = $this->microtime_float();
         }
         fclose($socket);
-	
-	// response time
-	$this->response = $time_end - $time_begin;
-	$this->response = ($this->response * 1000);
-	$this->response = (int)$this->response;
-	
-	if ($this->s_info)
-	{
-	    // sort the infostring
-	    $this->splitdata();
-	    
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+  
+  // response time
+  $this->response = $time_end - $time_begin;
+  $this->response = ($this->response * 1000);
+  $this->response = (int)$this->response;
+  
+  if ($this->s_info)
+  {
+      // sort the infostring
+      $this->splitdata();
+      
+      return true;
+  }
+  else
+  {
+      return false;
+  }
     }
 
     function check_color($text, $switch)
@@ -231,52 +231,52 @@ class q1
         // response time
         $srv_rules['response'] = $this->response . ' ms';
 
-	// privileges picture
-	$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+  // privileges picture
+  $sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
 
         // get the info strings from server info stream
-	$srv_rules['hostname']    = $this->getvalue('hostname',   $this->g_info);
-	$srv_rules['gametype']    = $this->getvalue('*gamedir',   $this->g_info);
-	$srv_rules['version']     = $this->getvalue('*version',   $this->g_info);
-	$srv_rules['mapname']     = $this->getvalue('map',        $this->g_info);
-	$srv_rules['maxplayers']  = $this->getvalue('maxclients', $this->g_info);
-	$srv_rules['needpass']    = $this->getvalue('needpass',   $this->g_info);
-	
+  $srv_rules['hostname']    = $this->getvalue('hostname',   $this->g_info);
+  $srv_rules['gametype']    = $this->getvalue('*gamedir',   $this->g_info);
+  $srv_rules['version']     = $this->getvalue('*version',   $this->g_info);
+  $srv_rules['mapname']     = $this->getvalue('map',        $this->g_info);
+  $srv_rules['maxplayers']  = $this->getvalue('maxclients', $this->g_info);
+  $srv_rules['needpass']    = $this->getvalue('needpass',   $this->g_info);
+  
 
         // scan the color tags of hostname
-	$srv_rules['hostname'] = $this->check_color($srv_rules['hostname'], 1);
-		
-	// cut the long server system version info string 
-	$srv_rules['version'] = substr($srv_rules['version'], 0, 4);
+  $srv_rules['hostname'] = $this->check_color($srv_rules['hostname'], 1);
+    
+  // cut the long server system version info string 
+  $srv_rules['version'] = substr($srv_rules['version'], 0, 4);
         
-	// path to map picture and default info picture
-	$srv_rules['map_path'] = 'maps/q1';
-	$srv_rules['map_default'] = 'default.jpg';
+  // path to map picture and default info picture
+  $srv_rules['map_path'] = 'maps/q1';
+  $srv_rules['map_default'] = 'default.jpg';
 
-	// point system
-	$srv_rules['points'] = 'Frags';
-	
-	// get the connected player
-	$srv_rules['nowplayers'] = (count($this->p_info))-1;
+  // point system
+  $srv_rules['points'] = 'Frags';
+  
+  // get the connected player
+  $srv_rules['nowplayers'] = (count($this->p_info))-1;
 
-	// set gamename and version
-	$srv_rules['gamename'] = 'Quake 1 (' . $srv_rules['version'] . ')';
+  // set gamename and version
+  $srv_rules['gamename'] = 'Quake 1 (' . $srv_rules['version'] . ')';
        
         // no privileges support
-	if ($srv_rules['needpass'] == 1)
-	{
-	    $srv_rules['sets'] = $sets['pass'];
-	}
-	
-	if ($srv_rules['sets'] === false)
-	{
-	    $srv_rules['sets'] = '-';
-	}
-	
+  if ($srv_rules['needpass'] == 1)
+  {
+      $srv_rules['sets'] = $sets['pass'];
+  }
+  
+  if ($srv_rules['sets'] === false)
+  {
+      $srv_rules['sets'] = '-';
+  }
+  
        // General server Info
         global $cs_lang;
         $srv_rules['htmlinfo'] = cs_html_roco(1,'rightb',0,0,'50%') . $cs_lang['map:'];
-		$srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
+    $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['mapname'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['players'];
         $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
         $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['response'];
@@ -299,15 +299,15 @@ class q1
         $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['sets'] . cs_html_roco(0);
 
         // return all server rules
-	return $srv_rules;	    
+  return $srv_rules;      
     }
 
     function getplayers()
     {
         $players = array();
-	
+  
         // set html thead
-	global $cs_lang;
+  global $cs_lang;
     $thead = cs_html_roco(1,'headb');
     $thead .= cs_html_div(1,'text-align:center');
     $thead .= $cs_lang['id'];
@@ -326,54 +326,54 @@ class q1
     $thead .= cs_html_div(0);
     $thead .= cs_html_roco(0);
         
-	// how many players must search
+  // how many players must search
         $nowplayers = count($this->p_info)-1;
         $nowplayers = $nowplayers - 1;
         $clients = 0;
 
-	// get the data of each player
+  // get the data of each player
         while ($nowplayers != -1)
-	{
-	    $players[$clients] = $this->p_info[$nowplayers];
+  {
+      $players[$clients] = $this->p_info[$nowplayers];
             $nowplayers--;
             $clients++;
         }
-	
-	// check the connected players and sort the ranking
+  
+  // check the connected players and sort the ranking
         if ($players == false)
         {
-	    $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
+      $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0) . cs_html_roco(0);
         }
-	
-	// store the html table line to the info array
+  
+  // store the html table line to the info array
         $srv_player = $thead;
 
         // manage the player data in the following code
-	$index = 1;
+  $index = 1;
 
         while ($clients)
-	{
-	    $clients--;
+  {
+      $clients--;
 
-	    list ($cache[$index], $player[$index], $team[$index]) = split ('\"', $players[$clients]);
-	    list ($points[$index], $points1[$index], $points2[$index], $ping[$index]) =  split(' ', $cache[$index]);
+      list ($cache[$index], $player[$index], $team[$index]) = split ('\"', $players[$clients]);
+      list ($points[$index], $points1[$index], $points2[$index], $ping[$index]) =  split(' ', $cache[$index]);
             
-	    $player[$index] = htmlentities($player[$index]);
+      $player[$index] = htmlentities($player[$index]);
             $ping[$index]   = $this->check_color($ping[$index],   2);
-	    
+      
             $tdata = cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . $index . cs_html_div(0);
             $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . $player[$index] . cs_html_div(0);
             $tdata .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . $points1[$index] . cs_html_div(0);
             $tdata .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . $ping[$index] . cs_html_div(0) . cs_html_roco(0);
             
-	    $srv_player = $srv_player . $tdata;
-	    $index++;
-	}
+      $srv_player = $srv_player . $tdata;
+      $index++;
+  }
         
-	return $srv_player;
+  return $srv_player;
     }
 }
 

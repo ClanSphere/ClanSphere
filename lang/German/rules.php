@@ -2,16 +2,16 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod_name']	= 'Regeln';
-$cs_lang['mod_text']	= 'Regeln verwalten und erstellen';
+$cs_lang['mod_name']  = 'Regeln';
+$cs_lang['mod_text']  = 'Regeln verwalten und erstellen';
 
-$cs_lang['mod']	= 'Regeln';
-$cs_lang['head_create']	= 'Eintragen';
+$cs_lang['mod']  = 'Regeln';
+$cs_lang['head_create']  = 'Eintragen';
 $cs_lang['body_create'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
-$cs_lang['head_edit']	  = 'Bearbeiten';
+$cs_lang['head_edit']    = 'Bearbeiten';
 $cs_lang['body_edit']   =  'Bitte alle Felder mit * ausf&uuml;llen.';
-$cs_lang['head_remove']	= 'Entfernen';
-$cs_lang['head_manage']	= 'Verwaltung';
+$cs_lang['head_remove']  = 'Entfernen';
+$cs_lang['head_manage']  = 'Verwaltung';
 
 $cs_lang['cat'] = 'Kategorie';
 $cs_lang['rule'] = 'Regel';

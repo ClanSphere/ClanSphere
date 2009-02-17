@@ -21,10 +21,10 @@ if(!empty($get_memberships)) {
       $matchcond .= ' OR ';
     }
 
-  	$condition .= 'squads_id = \''.$membership['squads_id'].'\' OR ';
+    $condition .= 'squads_id = \''.$membership['squads_id'].'\' OR ';
     $condition .= 'squads_id = \''.$account['users_id'].'\'';
-  	$matchcond .= 'squad1_id = \''.$membership['squads_id'].'\' OR ';
-  	$matchcond .= 'squad2_id = \''.$membership['squads_id'].'\'';
+    $matchcond .= 'squad1_id = \''.$membership['squads_id'].'\' OR ';
+    $matchcond .= 'squad2_id = \''.$membership['squads_id'].'\'';
     $squads[] = $membership['squads_id'];
   }
   $condition .= ')';

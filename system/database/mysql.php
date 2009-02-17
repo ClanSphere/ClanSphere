@@ -90,46 +90,46 @@ function cs_sql_option($cs_file, $mod)
   
   if (empty($options[$mod])) {
     
-  	global $cs_db;
-  	global $cs_main;
-  	
-  	if (empty($cs_main)) $cs_main['def_path'] = getcwd();
-  	
-  	$filename = $cs_main['def_path'] . '/uploads/cache/op_' . $mod . '.tmp';
-  	
-  	if (!file_exists($filename)) {
-	    $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
-	    $sql_query .= " WHERE options_mod = '" . $mod . "'";
-	    $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_option', mysql_error($cs_db['con']));
-	    
-	    while ($sql_result = mysql_fetch_assoc($sql_data)) {
-	      $name = $sql_result['options_name'];
-	      $new_result[$name] = $sql_result['options_value'];
-	    }
-	    mysql_free_result($sql_data);
-	    cs_log_sql($sql_query);
-	    $options[$mod] = isset($new_result) ? $new_result : 0;
-	    
-	    $string = implode("\r\n", array_keys($options[$mod]));
-	    $string .= "\n\n\r\r";
-	    $string .= implode("\r\n", array_values($options[$mod]));
-	    
-	    $fp = fopen($filename, 'w');
-	    fwrite($fp, $string);
-	    fclose($fp);
-	    
-  	} else {
-  		
-  		$values = explode("\n\n\r\r", file_get_contents($filename), 2);
-  		$keys = explode("\r\n", $values[0]);
-  		$values = explode("\r\n", $values[1]);
-  		
-  		if (function_exists('array_combine'))
-  		  $options[$mod] = array_combine($keys, $values);
-  		else
-  			foreach ($keys AS $index => $key)
-  			  $options[$mod][$key] = $values[$index];
-  	}
+    global $cs_db;
+    global $cs_main;
+    
+    if (empty($cs_main)) $cs_main['def_path'] = getcwd();
+    
+    $filename = $cs_main['def_path'] . '/uploads/cache/op_' . $mod . '.tmp';
+    
+    if (!file_exists($filename)) {
+      $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
+      $sql_query .= " WHERE options_mod = '" . $mod . "'";
+      $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_option', mysql_error($cs_db['con']));
+      
+      while ($sql_result = mysql_fetch_assoc($sql_data)) {
+        $name = $sql_result['options_name'];
+        $new_result[$name] = $sql_result['options_value'];
+      }
+      mysql_free_result($sql_data);
+      cs_log_sql($sql_query);
+      $options[$mod] = isset($new_result) ? $new_result : 0;
+      
+      $string = implode("\r\n", array_keys($options[$mod]));
+      $string .= "\n\n\r\r";
+      $string .= implode("\r\n", array_values($options[$mod]));
+      
+      $fp = fopen($filename, 'w');
+      fwrite($fp, $string);
+      fclose($fp);
+      
+    } else {
+      
+      $values = explode("\n\n\r\r", file_get_contents($filename), 2);
+      $keys = explode("\r\n", $values[0]);
+      $values = explode("\r\n", $values[1]);
+      
+      if (function_exists('array_combine'))
+        $options[$mod] = array_combine($keys, $values);
+      else
+        foreach ($keys AS $index => $key)
+          $options[$mod][$key] = $values[$index];
+    }
   }
   
   return $options[$mod];
@@ -189,40 +189,40 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
 }
 
 function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, $sql_where = 0) {
-	global $cs_db;
-	settype($sql_id, 'integer');
-  	$max = count($sql_cells);
-  	$set = ' SET ';
-  	for ($run = 0; $run < $max; $run++) {
-    	$set .= $sql_cells[$run] . "='" . mysql_real_escape_string($sql_content[$run], $cs_db['con']);
-    	if ($run != $max - 1) {
-      		$set .= "', ";
-    	}
-  	}
-  	$set .= "' ";
+  global $cs_db;
+  settype($sql_id, 'integer');
+    $max = count($sql_cells);
+    $set = ' SET ';
+    for ($run = 0; $run < $max; $run++) {
+      $set .= $sql_cells[$run] . "='" . mysql_real_escape_string($sql_content[$run], $cs_db['con']);
+      if ($run != $max - 1) {
+          $set .= "', ";
+      }
+    }
+    $set .= "' ";
   
-  	$sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
-  	if (empty($sql_where)) {
-    	$sql_update .= $sql_table . "_id='" . $sql_id . "'";
-  	}
-  	else {
-    	$sql_update .= $sql_where;
-  	}
-  	mysql_query($sql_update, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_update', mysql_error($cs_db['con']));
+    $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
+    if (empty($sql_where)) {
+      $sql_update .= $sql_table . "_id='" . $sql_id . "'";
+    }
+    else {
+      $sql_update .= $sql_where;
+    }
+    mysql_query($sql_update, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_update', mysql_error($cs_db['con']));
   
-  	$action = 1;
-  	if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
-    	$action = 0;
-  	}
-  	cs_log_sql($sql_update, $action);
-  	if($sql_table == 'options') {
-  		$content = cs_paths('uploads/cache');
-  		foreach($content AS $file => $name) {
-  			if($file != 'index.htm') {
-  				unlink('uploads/cache/' . $file);
-  			}
-  		}
-  	}
+    $action = 1;
+    if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
+      $action = 0;
+    }
+    cs_log_sql($sql_update, $action);
+    if($sql_table == 'options') {
+      $content = cs_paths('uploads/cache');
+      foreach($content AS $file => $name) {
+        if($file != 'index.htm') {
+          unlink('uploads/cache/' . $file);
+        }
+      }
+    }
 }
 
 function cs_sql_version($cs_file)

@@ -31,9 +31,9 @@ $ranks_loop = count($data['ranks']);
 
 for($run=0; $run<$ranks_loop; $run++) {
 
- 	$data['ranks'][$run]['name'] = cs_secure($data['ranks'][$run]['ranks_name']);
-	$data['ranks'][$run]['id'] = $data['ranks'][$run]['ranks_id'];
-	
+   $data['ranks'][$run]['name'] = cs_secure($data['ranks'][$run]['ranks_name']);
+  $data['ranks'][$run]['id'] = $data['ranks'][$run]['ranks_id'];
+  
 }
 echo cs_subtemplate(__FILE__,$data,'ranks','manage');
 

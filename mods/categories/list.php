@@ -33,11 +33,11 @@ $run = 0;
 $modules = cs_checkdirs('mods');
 foreach($modules as $mods) {
 $check_axx = empty($account['access_' . $mods['dir'] . '']) ? 0 : $account['access_' . $mods['dir'] . ''];
-	if(!empty($mods['categories']) AND $check_axx > 2) {
-		$mods['dir'] == $where ? $sel = 1 : $sel = 0;
-		$data['mod'][$run]['sel'] = cs_html_option($mods['name'],$mods['dir'],$sel);
-		$run++;
-	}
+  if(!empty($mods['categories']) AND $check_axx > 2) {
+    $mods['dir'] == $where ? $sel = 1 : $sel = 0;
+    $data['mod'][$run]['sel'] = cs_html_option($mods['name'],$mods['dir'],$sel);
+    $run++;
+  }
 }
 
 $data['sort']['name'] = cs_sort('categories','manage',$start,$where,1,$sort);
@@ -51,14 +51,14 @@ $categories_loop = !empty($data['cat']) ? count($data['cat']) : '';
 
 for($run=0; $run<$categories_loop; $run++) {
 
-	$cs_cat_name = cs_secure($data['cat'][$run]['categories_name']);
-	$data['cat'][$run]['category'] = cs_link($cs_cat_name,'categories','view','id=' . $data['cat'][$run]['categories_id']);
+  $cs_cat_name = cs_secure($data['cat'][$run]['categories_name']);
+  $data['cat'][$run]['category'] = cs_link($cs_cat_name,'categories','view','id=' . $data['cat'][$run]['categories_id']);
 
-	$data['cat'][$run]['url'] = '';
-	if(!empty($data['cat'][$run]['categories_url'])) {
-		$cs_cat_url = cs_secure($data['cat'][$run]['categories_url']);
-		$data['cat'][$run]['url'] = cs_html_link('http://' . $cs_cat_url,$cs_cat_url);
-	}
+  $data['cat'][$run]['url'] = '';
+  if(!empty($data['cat'][$run]['categories_url'])) {
+    $cs_cat_url = cs_secure($data['cat'][$run]['categories_url']);
+    $data['cat'][$run]['url'] = cs_html_link('http://' . $cs_cat_url,$cs_cat_url);
+  }
 }
 echo cs_subtemplate(__FILE__,$data,'categories','list');
 

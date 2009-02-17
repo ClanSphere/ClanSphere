@@ -13,10 +13,10 @@ $tables = 'news ne INNER JOIN {pre}_categories cat ON ne.categories_id = cat.cat
 $cs_news = cs_sql_select(__FILE__,$tables,$select,$public,'ne.news_time DESC',0,$cs_option['max_navlist']);
 
 if($cs_option['max_navlist'] == '1') {
-	$anews = array();
-	array_push($anews,$cs_news);
-	unset($cs_news);
-	$cs_news = $anews;
+  $anews = array();
+  array_push($anews,$cs_news);
+  unset($cs_news);
+  $cs_news = $anews;
 }
 
 if(empty($cs_news)) {

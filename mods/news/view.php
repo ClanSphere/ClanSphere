@@ -45,10 +45,10 @@ if(!empty($pub)) {
   $data['news']['pictures'] = '';
   if(!empty($cs_news['news_pictures'])) {
     $news_pics = explode("\n",$cs_news['news_pictures']);
-	  foreach($news_pics AS $pic) {
-	    $link = cs_html_img('uploads/news/thumb-' . $pic);
+    foreach($news_pics AS $pic) {
+      $link = cs_html_img('uploads/news/thumb-' . $pic);
       $data['news']['pictures'] .= cs_html_link('uploads/news/picture-' . $pic,$link) . ' ';
-  	}
+    }
   }
 
   $data['if']['show'] = false;
@@ -57,26 +57,26 @@ if(!empty($pub)) {
     $data['if']['show'] = true;
 
     $temp_mirror = explode("\n", $cs_news['news_mirror']);
-	$temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
+  $temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
 
-	$tpl_run = 0;
+  $tpl_run = 0;
 
-	for($run_mirror=1; $run_mirror < count($temp_mirror); $run_mirror++) {
-	  $num = $run_mirror;
+  for($run_mirror=1; $run_mirror < count($temp_mirror); $run_mirror++) {
+    $num = $run_mirror;
 
-	  if($run_mirror == (count($temp_mirror) - 1)) {
+    if($run_mirror == (count($temp_mirror) - 1)) {
         $data['mirror'][$tpl_run]['dot'] =  '';
-	  }
-	  elseif(!empty($run_mirror)) {
-	    $data['mirror'][$tpl_run]['dot'] =  ' - ';
-	  }
-	  else {
-	    $data['mirror'][$tpl_run]['dot'] =  ' - ';
-	  }
+    }
+    elseif(!empty($run_mirror)) {
+      $data['mirror'][$tpl_run]['dot'] =  ' - ';
+    }
+    else {
+      $data['mirror'][$tpl_run]['dot'] =  ' - ';
+    }
 
-	  $data['mirror'][$tpl_run]['news_mirror'] = cs_html_link($temp_mirror[$run_mirror],$temp_mirror_name[$run_mirror]);
-	  $tpl_run++;
-	}
+    $data['mirror'][$tpl_run]['news_mirror'] = cs_html_link($temp_mirror[$run_mirror],$temp_mirror_name[$run_mirror]);
+    $tpl_run++;
+  }
   }
 
   echo cs_subtemplate(__FILE__,$data,'news','view');
@@ -86,7 +86,7 @@ if(!empty($pub)) {
 
   if(!empty($data['news']['comments_count'])) {
     echo cs_html_br(1);
-	echo cs_comments_view($cs_news_id,'news','view',$data['news']['comments_count']);
+  echo cs_comments_view($cs_news_id,'news','view',$data['news']['comments_count']);
   }
   echo cs_comments_add($cs_news_id,'news',$cs_news['news_close']);
 }

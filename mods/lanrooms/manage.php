@@ -7,7 +7,7 @@ $cs_lang = cs_translate('lanrooms');
 $lanpartys_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
 
 if(!empty($_POST['lanpartys_id'])) {
-	$lanpartys_id = $_POST['lanpartys_id'];
+  $lanpartys_id = $_POST['lanpartys_id'];
 }
 
 settype($lanpartys_id,'integer');

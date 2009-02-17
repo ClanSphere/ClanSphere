@@ -9,7 +9,7 @@ require_once('mods/categories/functions.php');
 if(isset($_POST['submit'])) {
 
   $cs_events['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] : 
-	cs_categories_create('events',$_POST['categories_name']);
+  cs_categories_create('events',$_POST['categories_name']);
 
   $cs_events['events_name'] = $_POST['events_name'];
   $cs_events['events_venue'] = $_POST['events_venue'];
@@ -76,13 +76,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   echo cs_html_roco(1,'leftc');
   echo cs_icon('cal') . $cs_lang['name'] . ' *';
   echo cs_html_roco(2,'leftb');
-	echo cs_html_input('events_name',$cs_events['events_name'],'text',40,40);
+  echo cs_html_input('events_name',$cs_events['events_name'],'text',40,40);
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'leftc');
-	echo cs_icon('folder_yellow') . $cs_lang['category'] . ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_categories_dropdown('events',$cs_events['categories_id']);
+  echo cs_icon('folder_yellow') . $cs_lang['category'] . ' *';
+  echo cs_html_roco(2,'leftb');
+  echo cs_categories_dropdown('events',$cs_events['categories_id']);
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'leftc');
@@ -105,20 +105,20 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   if(empty($cs_main['fckeditor'])) {
     echo cs_html_roco(1,'leftc');
-	echo cs_icon('kate') . $cs_lang['more'];
+  echo cs_icon('kate') . $cs_lang['more'];
     echo cs_html_br(2);
     echo cs_abcode_smileys('events_more');
-	echo cs_html_roco(2,'leftb');
+  echo cs_html_roco(2,'leftb');
     echo cs_abcode_features('events_more');
-	echo cs_html_textarea('events_more',$cs_events['events_more'],'50','8');
-	echo cs_html_roco(0);
+  echo cs_html_textarea('events_more',$cs_events['events_more'],'50','8');
+  echo cs_html_roco(0);
   } else {
     echo cs_html_roco(1,'leftc',0,2);
-	echo cs_icon('kate') . $cs_lang['more'];
-	echo cs_html_roco(0);
-	echo cs_html_roco(1,'leftc" style="padding: 0px',0,2);
-	echo cs_fckeditor('events_more',$cs_events['events_more']);
-	echo cs_html_roco(0);
+  echo cs_icon('kate') . $cs_lang['more'];
+  echo cs_html_roco(0);
+  echo cs_html_roco(1,'leftc" style="padding: 0px',0,2);
+  echo cs_fckeditor('events_more',$cs_events['events_more']);
+  echo cs_html_roco(0);
   }
 
   echo cs_html_roco(1,'leftc');
@@ -142,7 +142,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   echo cs_html_roco(2,'leftb');
   echo cs_html_vote('events_close', 1, 'checkbox', $cs_events['events_close']) . ' ' . $cs_lang['close'];
   echo cs_html_roco(0);
-	
+  
   echo cs_html_roco(1,'leftc');
   echo cs_icon('ksysguard') . $cs_lang['options'];
   echo cs_html_roco(2,'leftb');
@@ -159,11 +159,11 @@ else {
   
   if($_POST['events_multi']=='yes') {
     for($run=0; $run<$_POST['events_multix']; $run++) {
-	  $cs_events['events_time'] = strtotime("+1 week",$cs_events['events_time']);
-	  $events_cells = array_keys($cs_events);
+    $cs_events['events_time'] = strtotime("+1 week",$cs_events['events_time']);
+    $events_cells = array_keys($cs_events);
       $events_save = array_values($cs_events);
       cs_sql_insert(__FILE__,'events',$events_cells,$events_save);
-	}
+  }
   }
   cs_redirect($cs_lang['create_done'],'events');
 }

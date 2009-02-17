@@ -34,11 +34,11 @@ $data['head']['mod_dropdown'] .= cs_html_option('----',0,0,$issel);
 $modules = cs_checkdirs('mods');
 foreach($modules as $mods) {
   if(!empty($mods['comments'])) {
-	if(!empty($where)) {
-		$mods['dir'] == $where ? $sel = 1 : $sel = 0;
-	} else { $sel = 0; }
-  	$data['head']['mod_dropdown'] .=  cs_html_option($mods['name'],$mods['dir'],$sel);
-	}
+  if(!empty($where)) {
+    $mods['dir'] == $where ? $sel = 1 : $sel = 0;
+  } else { $sel = 0; }
+    $data['head']['mod_dropdown'] .=  cs_html_option($mods['name'],$mods['dir'],$sel);
+  }
 }
 $data['head']['mod_dropdown'] .= cs_html_select(0);
 
@@ -55,20 +55,20 @@ $com_loop = count($data['com']);
 
 for($run=0; $run<$com_loop; $run++) {
   
- 	$id = $data['com'][$run]['comments_id'];
-	$data['com'][$run]['fid'] = $data['com'][$run]['comments_fid'];
-	if(!empty($data['com'][$run]['users_id'])) {
-		$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $data['com'][$run]['users_id'] . "'");
-		$data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
-	} else {
-		$data['com'][$run]['user'] = $data['com'][$run]['comments_guestnick'];
-	}
+   $id = $data['com'][$run]['comments_id'];
+  $data['com'][$run]['fid'] = $data['com'][$run]['comments_fid'];
+  if(!empty($data['com'][$run]['users_id'])) {
+    $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $data['com'][$run]['users_id'] . "'");
+    $data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+  } else {
+    $data['com'][$run]['user'] = $data['com'][$run]['comments_guestnick'];
+  }
 
-	$data['com'][$run]['date'] = cs_date('unix',$data['com'][$run]['comments_time'],1);
-	
-	$data['com'][$run]['url_view'] = cs_url('comments','view','id=' . $id);
-	$data['com'][$run]['url_edit'] = cs_url('comments','edit','id=' . $id);
-	$data['com'][$run]['url_remove'] = cs_url('comments','remove','id=' . $id);
+  $data['com'][$run]['date'] = cs_date('unix',$data['com'][$run]['comments_time'],1);
+  
+  $data['com'][$run]['url_view'] = cs_url('comments','view','id=' . $id);
+  $data['com'][$run]['url_edit'] = cs_url('comments','edit','id=' . $id);
+  $data['com'][$run]['url_remove'] = cs_url('comments','remove','id=' . $id);
 
 }
 

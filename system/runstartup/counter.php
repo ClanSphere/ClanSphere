@@ -13,15 +13,15 @@ $time_lock = isset($fetch_me['count_time']) ? ($fetch_me['count_time'] + 43200) 
 
 if($time < $time_lock) 
 {
-	$counter_cells = array('count_time','count_location');
-	$counter_content = array($time,$cs_main['mod'] . '/' . $cs_main['action']);
-	cs_sql_update(__FILE__,'count',$counter_cells,$counter_content,$fetch_me['count_id']);
+  $counter_cells = array('count_time','count_location');
+  $counter_content = array($time,$cs_main['mod'] . '/' . $cs_main['action']);
+  cs_sql_update(__FILE__,'count',$counter_cells,$counter_content,$fetch_me['count_id']);
 }
 else 
 {
-	$counter_cells = array('count_ip','count_time','count_location');
-	$counter_save = array($ip,$time,$cs_main['mod'] . '/' . $cs_main['action']);
-	cs_sql_insert(__FILE__,'count',$counter_cells,$counter_save);
+  $counter_cells = array('count_ip','count_time','count_location');
+  $counter_save = array($ip,$time,$cs_main['mod'] . '/' . $cs_main['action']);
+  cs_sql_insert(__FILE__,'count',$counter_cells,$counter_save);
 }
 
 
@@ -29,8 +29,8 @@ else
 $month1 = cs_datereal('n');
 $op_counter = cs_sql_option(__FILE__,'counter');
 if($op_counter['last_archiv'] != $month1) {
-	$month = $month1;  
-	$year = cs_datereal('Y');
+  $month = $month1;  
+  $year = cs_datereal('Y');
 
   $timer = mktime(0, 0, 0, $month, 1, $year);
   $cond = "count_time < '" .$timer . "'";

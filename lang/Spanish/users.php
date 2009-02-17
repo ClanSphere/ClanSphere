@@ -7,9 +7,9 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Usuario';
+$cs_lang['mod_name']  = 'Usuario';
 $cs_lang['users'] = 'Usuario';
-$cs_lang['mod_text']	= 'Administración de las Cuentas de Usuarios';
+$cs_lang['mod_text']  = 'Administración de las Cuentas de Usuarios';
 
 $cs_lang['wizard'] = 'Asistente';
 $cs_lang['task_done'] = 'Marcar como Acabado';
@@ -31,13 +31,13 @@ $cs_lang['system'] = 'Sistema';
 $cs_lang['panel'] = 'Administración';
 
 // Manage
-$cs_lang['new_user']	= 'Crear Nuevo Usuario';
-$cs_lang['access']	= 'Acceso';
-$cs_lang['country']	= 'Pais';
-$cs_lang['nick']	= 'Nick';
-$cs_lang['laston']	= 'Ultima Visita';
-$cs_lang['page']	= 'Status';
-$cs_lang['active']	= 'Activado';
+$cs_lang['new_user']  = 'Crear Nuevo Usuario';
+$cs_lang['access']  = 'Acceso';
+$cs_lang['country']  = 'Pais';
+$cs_lang['nick']  = 'Nick';
+$cs_lang['laston']  = 'Ultima Visita';
+$cs_lang['page']  = 'Status';
+$cs_lang['active']  = 'Activado';
 $cs_lang['picture_edit'] = 'Editar la imagen del Perfil';
 $cs_lang['search'] = 'Search';
 
@@ -68,7 +68,7 @@ $cs_lang['info'] = 'Info';
 $cs_lang['message_send'] = 'Enviar Mensaje';
 
 // Create
-$cs_lang['create_users']	= 'A&ntilde;adir nuevas Cuentas de Usuarios';
+$cs_lang['create_users']  = 'A&ntilde;adir nuevas Cuentas de Usuarios';
 $cs_lang['lang'] = 'Lengua';
 $cs_lang['password'] = 'Contrase&ntilde;a';
 $cs_lang['extended'] = 'Avanzado';
@@ -83,7 +83,7 @@ $cs_lang['email_false'] = '- La E-Mail no es valida';
 $cs_lang['no_access'] = '- Tiene que escojer un Acceso';
 $cs_lang['access_denied'] = '- El Acceso es mal alto que el Propio';
 
-$cs_lang['auto_pass']	= '- La Contrase&ntilde;a esta siendo creada';
+$cs_lang['auto_pass']  = '- La Contrase&ntilde;a esta siendo creada';
 
 // Mail
 $cs_lang['mail_reg_head'] = 'Registracion';
@@ -104,11 +104,11 @@ $cs_lang['not_active'] = 'Deactivado';
 $cs_lang['not_active_text'] = 'El Usuario ha sido Deactivado';
 
 // Logout
-$cs_lang['logged_out']	= 'Desconexion valida, Hasta Pronto !';
+$cs_lang['logged_out']  = 'Desconexion valida, Hasta Pronto !';
 
 // Login
 $cs_lang['login'] = 'Connectar';
-$cs_lang['login_messages']	= 'Aqui salen todas las Noticias despues del envio.';
+$cs_lang['login_messages']  = 'Aqui salen todas las Noticias despues del envio.';
 $cs_lang['pwd'] = 'Contrase&ntilde;a';
 $cs_lang['user_notfound'] = 'Este Usuario no existe el el Banco de Datos';
 $cs_lang['wrong_pwd'] = 'La Contrase&ntilde;a no es valida';
@@ -121,18 +121,18 @@ $cs_lang['not_public'] = 'La Coneccion en el Modo de mantenimiento requiere Leve
 
 // Register
 $cs_lang['signup'] = 'Registrar';
-$cs_lang['register_info']	= 'Aqui se puede Crear una cuenta de Uso';
+$cs_lang['register_info']  = 'Aqui se puede Crear una cuenta de Uso';
 $cs_lang['register_disabled'] = 'La Registraciòn ha sido deactivado por el Administrador';
 $cs_lang['mail_key'] = 'Link de Activación';
 
 // Home
-$cs_lang['home_info']	= 'Todas Informaciones sobre la cuenta de Uso';
+$cs_lang['home_info']  = 'Todas Informaciones sobre la cuenta de Uso';
 
 // Settings
-$cs_lang['settings_info']	= 'Todas Informaciones sobre la cuenta de Uso';
-$cs_lang['picture']	= 'Imagen';
-$cs_lang['setup']	= 'Ajustes del Sistema';
-$cs_lang['close']	= 'Deactivar su Cuenta';
+$cs_lang['settings_info']  = 'Todas Informaciones sobre la cuenta de Uso';
+$cs_lang['picture']  = 'Imagen';
+$cs_lang['setup']  = 'Ajustes del Sistema';
+$cs_lang['close']  = 'Deactivar su Cuenta';
 
 // Profile
 $cs_lang['column'] = 'Columna';
@@ -141,18 +141,18 @@ $cs_lang['hidden'] = 'Esconder';
 $cs_lang['birthday'] = 'Cumplea&ntilde;os';
 
 // Picture
-$cs_lang['picture_manage']	= 'Hier wird das Benutzerbild verwaltet.';
-$cs_lang['current']	= 'Actual';
+$cs_lang['picture_manage']  = 'Hier wird das Benutzerbild verwaltet.';
+$cs_lang['current']  = 'Actual';
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['max_width'] = 'Anchura Maximal : ';
 $cs_lang['max_height'] = 'Altura Maximal : ';
 $cs_lang['max_size'] = 'Capacidad Maximal :  ';
 $cs_lang['filetypes'] = 'Formados de Archivos : ';
 
-$cs_lang['too_big']	= '- El Archivo es muy grande';
-$cs_lang['too_wide']	= '- La imagen es muy ancha ';
-$cs_lang['too_high']	= '- La imagen es muy alta ';
-$cs_lang['ext_error']	= '- Se ha usado un Formado de archivos no Permitido';
+$cs_lang['too_big']  = '- El Archivo es muy grande';
+$cs_lang['too_wide']  = '- La imagen es muy ancha ';
+$cs_lang['too_high']  = '- La imagen es muy alta ';
+$cs_lang['ext_error']  = '- Se ha usado un Formado de archivos no Permitido';
 $cs_lang['up_error'] = '- A ocurrido un error desonocido, po Favor contacte el Administrador de la Pagina';
 
 // Setup
@@ -167,7 +167,7 @@ $cs_lang['homelimit'] = 'Temas en La Pagina Basica';
 $cs_lang['categories'] = 'Categorias';
 
 // Password
-$cs_lang['change_password']	= 'Aqui puede editar la Contrase&ntilde;a';
+$cs_lang['change_password']  = 'Aqui puede editar la Contrase&ntilde;a';
 $cs_lang['pwd_current'] = 'Aktuelles Contrase&ntilde;a';
 $cs_lang['pwd_new'] = 'Nueva Contrase&ntilde;a';
 $cs_lang['pwd_again'] = 'Repetir Contrase&ntilde;a';
@@ -177,17 +177,17 @@ $cs_lang['not_match'] = '- Las nuevas Contrase&ntilde;as no son Identicas ';
 // Close
 $cs_lang['close_confirm'] = 'Quiere Desactivar de verdad su cuenta de Usuario ?';
 $cs_lang['close_info'] = 'Solo sera poder activado de nuevo pr el Administrador!';
-$cs_lang['close_false']	= 'Desactivación Interrumpida';
-$cs_lang['close_true']	= 'Desactivación Validada';
+$cs_lang['close_false']  = 'Desactivación Interrumpida';
+$cs_lang['close_true']  = 'Desactivación Validada';
 
 // List
-$cs_lang['list']	= 'Lista';
-$cs_lang['female']	= 'feminino';
-$cs_lang['male']		= 'masculino';
-$cs_lang['place']		= 'Residencia';
+$cs_lang['list']  = 'Lista';
+$cs_lang['female']  = 'feminino';
+$cs_lang['male']    = 'masculino';
+$cs_lang['place']    = 'Residencia';
 
 // Options
-$cs_lang['manage_options']	= 'Administración de las Opciones del Modul ';
+$cs_lang['manage_options']  = 'Administración de las Opciones del Modul ';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['letters'] = 'Letras';
@@ -197,7 +197,7 @@ $cs_lang['reg_mail'] = 'Validacio por E-Mail';
 $cs_lang['reg_captcha'] = 'Inserar Codigo de Seguridad';
 
 // SendPW
-$cs_lang['sendpw_info']	= 'Escriba la E-mail que pertenece a su cuenta de usuario';
+$cs_lang['sendpw_info']  = 'Escriba la E-mail que pertenece a su cuenta de usuario';
 $cs_lang['sendpw_info'] .= 'Sies valida adquirira una clave para poder ';
 $cs_lang['sendpw_info'] .= 'activar la nueva Contrase&ntilde;a';
 $cs_lang['request'] = 'Peticiones';
@@ -220,9 +220,9 @@ $cs_lang['mail_spw_end'] = "\n\nEsta E-Mail fue pedeida pro un Formulario";
 $cs_lang['key'] = 'Clave';
 $cs_lang['new_pwd'] = 'Contrase&ntilde;a';
 
-$cs_lang['online']	= 'Online';
-$cs_lang['all']	= 'Todo el Mundo';
-$cs_lang['count_users'] 	= 'Se encuentran %s usuarios en la Pagina';
+$cs_lang['online']  = 'Online';
+$cs_lang['all']  = 'Todo el Mundo';
+$cs_lang['count_users']   = 'Se encuentran %s usuarios en la Pagina';
 
 $cs_lang['avatar'] = 'Imagen del Foro';
 $cs_lang['signature'] = 'Signatur';

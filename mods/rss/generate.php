@@ -17,18 +17,18 @@ function cs_update_rss($mod,$action,$name,$desc,$array) {
         foreach($array AS $item) {
             if(!empty($item['id']) AND !empty($item['title']) AND !empty($item['text'])) {
                 $title = htmlspecialchars($item['title'],ENT_QUOTES);
-				$save = $cs_main['php_self']['basename'];
-				$cs_main['php_self']['basename'] = 'index.php';
+        $save = $cs_main['php_self']['basename'];
+        $cs_main['php_self']['basename'] = 'index.php';
                 $link = $page . cs_url($mod,$action,'id=' . $item['id']);
-				$cs_main['php_self']['basename'] = $save;
+        $cs_main['php_self']['basename'] = $save;
                 
-				if(!empty($item['readmore'])) {
-				  $text = '<![CDATA[ ' . cs_secure($item['readmore'],1,0,0) . cs_html_br(2) . cs_secure($item['text'],1,0,0) . ' ]]>';
-				}
-				else {
-				  $text = '<![CDATA[ ' . cs_secure($item['text'],1,0,0) . ' ]]>';
-				}
-				
+        if(!empty($item['readmore'])) {
+          $text = '<![CDATA[ ' . cs_secure($item['readmore'],1,0,0) . cs_html_br(2) . cs_secure($item['text'],1,0,0) . ' ]]>';
+        }
+        else {
+          $text = '<![CDATA[ ' . cs_secure($item['text'],1,0,0) . ' ]]>';
+        }
+        
                 $date = empty($item['time']) ? 0 : date('D, d M Y H:i:s',$item['time']) . ' +0000';
                 $author = empty($item['author']) ? 0 : $item['author'];
                 $author .= empty($item['nick']) ? '' : ' (' . cs_secure($item['nick']) . ')';
@@ -46,7 +46,7 @@ function cs_update_rss($mod,$action,$name,$desc,$array) {
     @chmod($target . $mod . '.xml',0644);
   }
   else {
-		cs_error($target,'cs_update_rss - Unable to write into directory');
+    cs_error($target,'cs_update_rss - Unable to write into directory');
   }
   $cs_main['rss'] = 0;
 }

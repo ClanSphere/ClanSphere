@@ -7,8 +7,8 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod']	= 'Links';
-$cs_lang['text']	= 'Modulo de Links';
+$cs_lang['mod']  = 'Links';
+$cs_lang['text']  = 'Modulo de Links';
 
 $cs_lang['head']= 'Lista';
 $cs_lang['body_list']= 'Hay %s Links en Total';
@@ -23,13 +23,13 @@ $cs_lang['new_link'] = 'Nuevo Link';
 $cs_lang['online'] = '[color=lime]online[/color]';
 $cs_lang['offline'] = '[color=red]offline[/color]';
 
-$cs_lang['head_remove']	= 'Remover';
+$cs_lang['head_remove']  = 'Remover';
 $cs_lang['newicon'] = 'Nuevo Baner';
 $cs_lang['delicon'] = 'Remover Baner';
 
 
 
-$cs_lang['mod1']	= 'Patrocinadores y Socios';
+$cs_lang['mod1']  = 'Patrocinadores y Socios';
 $cs_lang['all1'] = 'Hay %s Patrocinadores / Socios en Total .';
 
 $cs_lang['info'] = 'Infos';

@@ -1,12 +1,12 @@
 <?php
 
-$cs_lang['mod_name']	= 'Finances';
-$cs_lang['mod_text']	= 'Administration des finances';
-$cs_lang['mod']	= 'Finances';
+$cs_lang['mod_name']  = 'Finances';
+$cs_lang['mod_text']  = 'Administration des finances';
+$cs_lang['mod']  = 'Finances';
 $cs_lang['head']= 'Administration';
 $cs_lang['head_create'] = 'Ajouter';
 $cs_lang['head_view'] = 'Détails';
-$cs_lang['head_remove']	= 'Supprimer';
+$cs_lang['head_remove']  = 'Supprimer';
 $cs_lang['head_edit'] = 'Editer';
 $cs_lang['body_edit'] =  'Saisissez les champs marqués d\'une étoile';
 $cs_lang['error_occurred'] = 'Saisissez tous les champs marqués d\'une étoile.';

@@ -77,8 +77,8 @@ echo cs_html_select(1,'round');
 
 for ($x = 1; $x < $cupteams; $x++) {
   
-	$sel = $x == $round ? 1 : 0;
-	echo cs_html_option($cs_lang['round'] . $x,$x,$sel);
+  $sel = $x == $round ? 1 : 0;
+  echo cs_html_option($cs_lang['round'] . $x,$x,$sel);
 }
 
 echo cs_html_select(0);
@@ -118,45 +118,45 @@ echo $cs_lang['match'];
 echo cs_html_roco(0);
 
 if (!empty($select)) {
-	
-	$img_details = cs_icon('demo');
-	
-	foreach ($select AS $match) {
-		
-		echo cs_html_roco(1,'leftb');
-		if (!empty($system['cups_brackets'])) {
-		  echo empty($match['cupmatches_loserbracket']) ? $cs_lang['winners'] : $cs_lang['losers'];
-		  echo cs_html_roco(2,'leftb');
-		}
-		
+  
+  $img_details = cs_icon('demo');
+  
+  foreach ($select AS $match) {
+    
+    echo cs_html_roco(1,'leftb');
+    if (!empty($system['cups_brackets'])) {
+      echo empty($match['cupmatches_loserbracket']) ? $cs_lang['winners'] : $cs_lang['losers'];
+      echo cs_html_roco(2,'leftb');
+    }
+    
     if ($system['cups_system'] == 'teams') {
-		  echo cs_link($match['squad1_name'],'squads','view','id='.$match['squad1_id']);
+      echo cs_link($match['squad1_name'],'squads','view','id='.$match['squad1_id']);
     } else {
       $users_data = cs_sql_select(__FILE__,'users','users_active',"users_id = '" . $match['user1_id'] . "'");
-	  echo cs_user($match['user1_id'],$match['user1_nick'], $users_data['users_active']);
+    echo cs_user($match['user1_id'],$match['user1_nick'], $users_data['users_active']);
     }
-		echo cs_html_roco(2,'leftb');
-		echo $match['cupmatches_score1'] . ' : ' . $match['cupmatches_score2'];
-		echo cs_html_roco(3,'leftb');
-		if ($system['cups_system'] == 'teams') {
-		  echo cs_link($match['squad2_name'],'squads','view','id='.$match['squad2_id']);
+    echo cs_html_roco(2,'leftb');
+    echo $match['cupmatches_score1'] . ' : ' . $match['cupmatches_score2'];
+    echo cs_html_roco(3,'leftb');
+    if ($system['cups_system'] == 'teams') {
+      echo cs_link($match['squad2_name'],'squads','view','id='.$match['squad2_id']);
     } else {
       $users_data = cs_sql_select(__FILE__,'users','users_active',"users_id = '" . $match['user2_id'] . "'");
-	  
-	  echo cs_user($match['user2_id'],$match['user2_nick'], $users_data['users_active']);
+    
+    echo cs_user($match['user2_id'],$match['user2_nick'], $users_data['users_active']);
     }
-		echo cs_html_roco(4,'leftb');
-		echo cs_link($img_details,'cups','match','id='.$match['cupmatches_id']);
-		echo cs_html_roco(0);
-		
-	}
-	
+    echo cs_html_roco(4,'leftb');
+    echo cs_link($img_details,'cups','match','id='.$match['cupmatches_id']);
+    echo cs_html_roco(0);
+    
+  }
+  
 } else {
-	
-	echo cs_html_roco(1,'leftc',0,empty($system['cups_brackets']) ? 4 : 5);
-	echo $cs_lang['no_matches'];
-	echo cs_html_roco(0);
-	
+  
+  echo cs_html_roco(1,'leftc',0,empty($system['cups_brackets']) ? 4 : 5);
+  echo $cs_lang['no_matches'];
+  echo cs_html_roco(0);
+  
 }
 
 echo cs_html_table(0);

@@ -71,22 +71,22 @@ $secure_off = cs_secure($cs_lang['offline'],1);
 
 for($run=0; $run<$links_loop; $run++) {
 
-	echo cs_html_roco(1,'leftc');
-	echo cs_secure($cs_links[$run]['links_name']);
-	echo cs_html_roco(2,'leftc');
-	echo cs_secure($cs_links[$run]['categories_name']);
-	echo cs_html_roco(3,'leftc');
-	echo cs_secure( '[url=http://'.$cs_links[$run]['links_url'].']'.substr($cs_links[$run]['links_url'], 0, 20).'[/url]',1);
-	echo cs_html_roco(4,'leftc');
-	if ($cs_links[$run]['links_stats'] == 'on')
+  echo cs_html_roco(1,'leftc');
+  echo cs_secure($cs_links[$run]['links_name']);
+  echo cs_html_roco(2,'leftc');
+  echo cs_secure($cs_links[$run]['categories_name']);
+  echo cs_html_roco(3,'leftc');
+  echo cs_secure( '[url=http://'.$cs_links[$run]['links_url'].']'.substr($cs_links[$run]['links_url'], 0, 20).'[/url]',1);
+  echo cs_html_roco(4,'leftc');
+  if ($cs_links[$run]['links_stats'] == 'on')
     echo $secure_on;
   else
     echo $secure_off;
-	echo cs_html_roco(5,'leftc');
-	echo cs_link($img_edit,'links','edit','id=' . $cs_links[$run]['links_id'],0,$cs_lang['edit']);
+  echo cs_html_roco(5,'leftc');
+  echo cs_link($img_edit,'links','edit','id=' . $cs_links[$run]['links_id'],0,$cs_lang['edit']);
   echo cs_html_roco(6,'leftc');
   echo cs_link($img_del,'links','remove','id=' . $cs_links[$run]['links_id'],0,$cs_lang['remove']);
-	echo cs_html_roco(0);
+  echo cs_html_roco(0);
 }
 
 echo cs_html_table(0);

@@ -31,8 +31,8 @@ if(isset($_POST['submit'])) {
   $error = '';
 
   if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($cs_squads['squads_picture'])) {
-	cs_unlink('squads', $cs_squads['squads_picture']);
-	$cs_squads['squads_picture'] = '';
+  cs_unlink('squads', $cs_squads['squads_picture']);
+  $cs_squads['squads_picture'] = '';
   }
 
   $img_size = getimagesize($_FILES['picture']['tmp_name']);
@@ -52,13 +52,13 @@ if(isset($_POST['submit'])) {
     $filename = 'picture-' . $squads_id . '.' . $ext;
     
     if($img_size[0]>$op_squads['max_width']) {
-  		$error .= $cs_lang['too_wide'] . cs_html_br(1);
+      $error .= $cs_lang['too_wide'] . cs_html_br(1);
     }
     if($img_size[1]>$op_squads['max_height']) { 
-  		$error .= $cs_lang['too_high'] . cs_html_br(1);
+      $error .= $cs_lang['too_high'] . cs_html_br(1);
     }
     if($_FILES['picture']['size']>$op_squads['max_size']) { 
-  		$error .= $cs_lang['too_big'] . cs_html_br(1);
+      $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
     if(empty($error) AND cs_upload('squads', $filename, $_FILES['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/squads/' . $filename, $op_squads['max_width'], $op_squads['max_height'])) {
       $error = 0;
@@ -66,13 +66,13 @@ if(isset($_POST['submit'])) {
       if($cs_squads['squads_picture'] != $filename AND !empty($cs_squads['squads_picture'])) {
         cs_unlink('squads', $cs_squads['squads_picture']);
       }
-			$cs_squads['squads_picture'] = $filename;
+      $cs_squads['squads_picture'] = $filename;
     }
     else {
         $error .= $cs_lang['up_error'];
     }
   }
-	
+  
   if(empty($cs_squads['clans_id'])) {
     $error .= $cs_lang['no_clan'] . cs_html_br(1);
   }
@@ -90,7 +90,7 @@ if(isset($_POST['submit'])) {
   $search_admin = cs_sql_select(__FILE__,'members','members_admin',$where);
   if(empty($search_admin['members_admin'])) {
     $error .= $cs_lang['no_admin'] . cs_html_br(1);
-	}
+  }
   $where = "clans_id = '" . cs_sql_escape($cs_squads['clans_id']) . "'";
   $search = cs_sql_select(__FILE__,'clans','clans_pwd',$where);
   if(empty($search['clans_pwd']) OR $search['clans_pwd'] != $clans_pwd) {
@@ -104,69 +104,69 @@ else {
   $cs_squads = cs_sql_select(__FILE__,$from,$cells,$where);
 }
 if(!isset($_POST['submit'])) {
-	$data['head']['body'] = $cs_lang['body_change'];
+  $data['head']['body'] = $cs_lang['body_change'];
 }
 elseif(!empty($error)) {
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
-	
-	$data['squads'] = $cs_squads;
-	$data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
+  
+  $data['squads'] = $cs_squads;
+  $data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
 
-	$data['lang']['clan_label'] = $cs_lang[$op_clans['label']];
-	$cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',"clans_pwd != ''",'clans_name',0,0);
-	$data['squads']['clans_sel'] = cs_dropdown('clans_id','clans_name',$cs_clans,$cs_squads['clans_id']);
+  $data['lang']['clan_label'] = $cs_lang[$op_clans['label']];
+  $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',"clans_pwd != ''",'clans_name',0,0);
+  $data['squads']['clans_sel'] = cs_dropdown('clans_id','clans_name',$cs_clans,$cs_squads['clans_id']);
 
-	$data['squads']['clans_pwd'] = $clans_pwd;
+  $data['squads']['clans_pwd'] = $clans_pwd;
 
-	$el_id = 'game_1';
-	$cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
-	$games_count = count($cs_games);
-	for($run = 0; $run < $games_count; $run++) {
-		$sel = $cs_games[$run]['games_id'] == $cs_squads['games_id'] ? 1 : 0;
-		$data['squads']['games_sel'] = cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
-	}
-	$url = 'uploads/games/' . $cs_squads['games_id'] . '.gif';
-	$data['squads']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');
+  $el_id = 'game_1';
+  $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
+  $games_count = count($cs_games);
+  for($run = 0; $run < $games_count; $run++) {
+    $sel = $cs_games[$run]['games_id'] == $cs_squads['games_id'] ? 1 : 0;
+    $data['squads']['games_sel'] = cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
+  }
+  $url = 'uploads/games/' . $cs_squads['games_id'] . '.gif';
+  $data['squads']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');
 
-	$matches[1] = $cs_lang['secure_stages'];
-	$matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
-	$matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_2_text'] . cs_html_br(1);
-	$matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
-	$matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
-	$data['squads']['secure_clip'] = cs_abcode_clip($matches);
+  $matches[1] = $cs_lang['secure_stages'];
+  $matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
+  $matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_2_text'] . cs_html_br(1);
+  $matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
+  $matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
+  $data['squads']['secure_clip'] = cs_abcode_clip($matches);
 
-	if(empty($cs_squads['squads_picture'])) {
-		$data['squads']['current_pic'] = $cs_lang['nopic'];
-	}
-	else {
-		$data['if']['advanced'] = TRUE;
-		$place = 'uploads/squads/' . $cs_squads['squads_picture'];
-    	$size = getimagesize($cs_main['def_path'] . '/' . $place);
-		$data['squads']['current_pic'] = cs_html_img($place,$size[1],$size[0]);
-	}
+  if(empty($cs_squads['squads_picture'])) {
+    $data['squads']['current_pic'] = $cs_lang['nopic'];
+  }
+  else {
+    $data['if']['advanced'] = TRUE;
+    $place = 'uploads/squads/' . $cs_squads['squads_picture'];
+      $size = getimagesize($cs_main['def_path'] . '/' . $place);
+    $data['squads']['current_pic'] = cs_html_img($place,$size[1],$size[0]);
+  }
 
-	$matches[1] = $cs_lang['pic_infos'];
-	$return_types = '';
-	foreach($img_filetypes AS $add) {
-		$return_types .= empty($return_types) ? $add : ', ' . $add;
-	}
-	$matches[2] = $cs_lang['max_width'] . $op_squads['max_width'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_height'] . $op_squads['max_height'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_size'] . cs_filesize($op_squads['max_size']) . cs_html_br(1);
-	$matches[2] .= $cs_lang['filetypes'] . $return_types;
-	$data['squads']['picup_clip'] = cs_abcode_clip($matches);
+  $matches[1] = $cs_lang['pic_infos'];
+  $return_types = '';
+  foreach($img_filetypes AS $add) {
+    $return_types .= empty($return_types) ? $add : ', ' . $add;
+  }
+  $matches[2] = $cs_lang['max_width'] . $op_squads['max_width'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_height'] . $op_squads['max_height'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . cs_filesize($op_squads['max_size']) . cs_html_br(1);
+  $matches[2] .= $cs_lang['filetypes'] . $return_types;
+  $data['squads']['picup_clip'] = cs_abcode_clip($matches);
 
-	$data['squads']['id'] = $squads_id;
+  $data['squads']['id'] = $squads_id;
 
   echo cs_subtemplate(__FILE__,$data,'squads','change');
 }
 else {
 
-	$squads_cells = array_keys($cs_squads);
-	$squads_save = array_values($cs_squads);
+  $squads_cells = array_keys($cs_squads);
+  $squads_save = array_values($cs_squads);
   cs_sql_update(__FILE__,'squads',$squads_cells,$squads_save,$squads_id);
   
   cs_redirect($data['changes_done'],'squads','center');

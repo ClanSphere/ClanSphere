@@ -3,8 +3,8 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= '&#268;lan';
-$cs_lang['modtext']	= 'Dodaj uporabnika &#269;eti';
+$cs_lang['mod']  = '&#268;lan';
+$cs_lang['modtext']  = 'Dodaj uporabnika &#269;eti';
 
 // Member Labels
 $cs_lang['members'] = '&#268;lani';
@@ -39,14 +39,14 @@ $cs_lang['no_class'] = '- Nobenega razreda nisi izbral';
 $cs_lang['label'] = 'Oznaka';
 
 // Center
-$cs_lang['head_center']	= 'Center';
+$cs_lang['head_center']  = 'Center';
 
 $cs_lang['del_done'] = 'Uspe&scaron;no odstranjeno';
 $cs_lang['del_failed'] = 'Tega ni bilo mogo&#269;e odstraniti';
 
-$cs_lang['user']	= 'Uporabnik';
-$cs_lang['task']	= 'Naloga';
-$cs_lang['order']	= 'Prioriteta';
+$cs_lang['user']  = 'Uporabnik';
+$cs_lang['task']  = 'Naloga';
+$cs_lang['order']  = 'Prioriteta';
 
 // Change
 $cs_lang['since'] = '&#268;lan od';
@@ -56,32 +56,32 @@ $cs_lang['no_task'] = '- Napisati mora&scaron; nalogo';
 $cs_lang['no_admin'] = '- Nima&scaron; administratorskih pravic';
 
 // Create
-$cs_lang['body_create']	= 'Dodaj uporabnika &#269;eti.';
+$cs_lang['body_create']  = 'Dodaj uporabnika &#269;eti.';
 $cs_lang['no_user'] = '- Izberi uporabnika';
 $cs_lang['collision'] = '- Uporabnik je &#382;e v &#269;eti';
 
 // List
-$cs_lang['head_list']	= 'Seznam';
+$cs_lang['head_list']  = 'Seznam';
 $cs_lang['body_list'] = 'Trenutno je v na&scaron;i bazi %s &#269;et.';
-$cs_lang['pictured']	= 'Slikovni pogled';
+$cs_lang['pictured']  = 'Slikovni pogled';
 
-$cs_lang['country']	= 'Dr&#382;ava';
-$cs_lang['nick']	= 'Vzdevek';
-$cs_lang['page']	= 'Status';
+$cs_lang['country']  = 'Dr&#382;ava';
+$cs_lang['nick']  = 'Vzdevek';
+$cs_lang['page']  = 'Status';
 
 // Pictured
-$cs_lang['head_pictured']	= 'Slikovni pogled';
+$cs_lang['head_pictured']  = 'Slikovni pogled';
 $cs_lang['body_pictured'] = 'Trenutno je v na&scaron;i bazi %s &#269;et.';
-$cs_lang['list']	= 'Seznamski pogled';
+$cs_lang['list']  = 'Seznamski pogled';
 
 $cs_lang['nopic'] = 'Ni slike';
 
 // Remove
 $cs_lang['remove_rly'] = 'Izbri&scaron;em set &scaron;t. %s?';
 
-$cs_lang['game']	= 'Igra';
+$cs_lang['game']  = 'Igra';
 
 // Navrand
-$cs_lang['noname']	= 'Ni imena';
+$cs_lang['noname']  = 'Ni imena';
 
 ?>

@@ -20,7 +20,7 @@ $recount = count($results);
 $sql_where = "articles_headline LIKE '%" . cs_sql_escape($results[0]) . "%' OR articles_text LIKE '%" . cs_sql_escape($results[0]) . "%'";
 
 for($prerun=1; $prerun<$recount; $prerun++) {
-	$sql_where = $sql_where . " OR articles_headline LIKE '%" . cs_sql_escape($results[$prerun]) . "%'"; 
+  $sql_where = $sql_where . " OR articles_headline LIKE '%" . cs_sql_escape($results[$prerun]) . "%'"; 
 }
 $select = 'articles_headline, articles_time, articles_id';
 $cs_search = cs_sql_select(__FILE__,'articles',$select,$sql_where,$order,$start,$account['users_limit']);
@@ -32,17 +32,17 @@ $data2['if']['access'] = false;
 $data2['if']['noresults'] = false;
 
 if (!empty($search_loop)) {
-	$data2['if']['result'] = true;
-	$data2['result']['count'] = $search_loop;
-	$data2['result']['pages'] = cs_pages('search','list',$search_loop,$start,$where1,$sort);
-	$data2['sort']['headline'] = cs_sort('search','list',$start,$where1,3,$sort);
-	$data2['sort']['date'] = cs_sort('search','list',$start,$where1,1,$sort);
+  $data2['if']['result'] = true;
+  $data2['result']['count'] = $search_loop;
+  $data2['result']['pages'] = cs_pages('search','list',$search_loop,$start,$where1,$sort);
+  $data2['sort']['headline'] = cs_sort('search','list',$start,$where1,3,$sort);
+  $data2['sort']['date'] = cs_sort('search','list',$start,$where1,1,$sort);
 
-	for($run=0; $run<$search_loop; $run++) {
-    	$cs_articles_headline = cs_secure($cs_search[$run]['articles_headline']);
-	  	$data2['results'][$run]['headline'] = cs_link(cs_secure($cs_articles_headline),'articles','view','id=' . $cs_search[$run]['articles_id']);
-		$data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['articles_time'],1);
-	}
+  for($run=0; $run<$search_loop; $run++) {
+      $cs_articles_headline = cs_secure($cs_search[$run]['articles_headline']);
+      $data2['results'][$run]['headline'] = cs_link(cs_secure($cs_articles_headline),'articles','view','id=' . $cs_search[$run]['articles_id']);
+    $data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['articles_time'],1);
+  }
 } else {
 $data2['if']['noresults'] = true;
 }

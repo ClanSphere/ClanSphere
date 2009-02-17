@@ -15,16 +15,16 @@ $cs_lang['creator'] = 'Avtor';
 $cs_lang['version'] = 'Verzija';
 
 $cs_lang['mods_details'] = 'Podrobnosti modula';
-$cs_lang['body_mods_view']	= 'Informacije o modulu.';
+$cs_lang['body_mods_view']  = 'Informacije o modulu.';
 
-$cs_lang['mod_released']		= 'Datum';
+$cs_lang['mod_released']    = 'Datum';
 $cs_lang['icons']           = 'Ikone';
 $cs_lang['extended']        = 'Napredno';
 $cs_lang['jump_to_explorer']= 'Sko&#269;i v raziskovalca';
 
-$cs_lang['access_files']	= 'Registrirane strani';
-$cs_lang['file_name']			= 'Datoteka';
-$cs_lang['access_from']		= 'Dostop od';
+$cs_lang['access_files']  = 'Registrirane strani';
+$cs_lang['file_name']      = 'Datoteka';
+$cs_lang['access_from']    = 'Dostop od';
 
 $cs_lang['lev_0'] = 'Zaklenjeno';
 $cs_lang['lev_1'] = 'Branje';

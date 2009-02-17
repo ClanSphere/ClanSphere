@@ -15,7 +15,7 @@ $errormsg= '';
 if(isset($_POST['submit'])) {
 
   $sendpw['email'] = $_POST['email'];
-	$sendpw['email_send'] = empty($_POST['email_send']) ? 0 : 1;
+  $sendpw['email_send'] = empty($_POST['email_send']) ? 0 : 1;
   
   if (empty($sendpw['email_send']) && !cs_captchacheck($_POST['captcha'])) {
     $error++;
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['email_unknown'] . cs_html_br(1);
   }
   
-	if(!empty($sendpw['email_send']) AND empty($error)) {
+  if(!empty($sendpw['email_send']) AND empty($error)) {
     $sendpw['key'] = $_POST['key'];
     $sendpw['new_pwd'] = $_POST['new_pwd'];
     $pwd2 = str_replace(' ','',$sendpw['new_pwd']);
@@ -67,8 +67,8 @@ if(isset($_POST['submit'])) {
     $key = substr($key2['users_pwd'],4,16);
 
     $content = $cs_lang['mail_spw_start'] . $cs_main['def_org'] . $cs_lang['mail_spw_start2'];
-	$content .= $cs_lang['mail_spw_start3'];
-	$content .= $cs_lang['mail_spw_key'] . $key;
+  $content .= $cs_lang['mail_spw_start3'];
+  $content .= $cs_lang['mail_spw_key'] . $key;
     $content .= $cs_lang['mail_spw_ip'] . $_SERVER['REMOTE_ADDR'];
     $content .= $cs_lang['mail_spw_ask'] . $cs_main['def_mail'] . $cs_lang['mail_spw_end'];
 
@@ -102,14 +102,14 @@ echo cs_subtemplate(__FILE__,$data,'users','head');
 if(empty($success)) {
 
   if(!empty($checked)) {
-	
-	$data['lang']['key'] = $cs_lang['key'];
-	$data['lang']['new_pwd'] = $cs_lang['new_pwd'];
-	$data['hidden']['email'] = $sendpw['email'];
-	$data['lang']['options'] = $cs_lang['options'];
-	$data['lang']['save'] = $cs_lang['save'];
+  
+  $data['lang']['key'] = $cs_lang['key'];
+  $data['lang']['new_pwd'] = $cs_lang['new_pwd'];
+  $data['hidden']['email'] = $sendpw['email'];
+  $data['lang']['options'] = $cs_lang['options'];
+  $data['lang']['save'] = $cs_lang['save'];
     $data['lang']['reset'] = $cs_lang['reset'];
-	echo cs_subtemplate(__FILE__,$data,'users','sendpw_2');
+  echo cs_subtemplate(__FILE__,$data,'users','sendpw_2');
   }
   else {
     $data['lang']['email'] = $cs_lang['email'];

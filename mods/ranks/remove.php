@@ -17,11 +17,11 @@ if(isset($_GET['cancel']))
   cs_redirect($cs_lang['del_false'], 'ranks');
 
 else {
-	$data['head']['body'] = sprintf($cs_lang['del_rly'],$ranks_id);
-	$data['url']['agree'] = cs_url('ranks','remove','id=' . $ranks_id . '&amp;agree');
-	$data['url']['cancel'] = cs_url('ranks','remove','id=' . $ranks_id . '&amp;cancel');
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$ranks_id);
+  $data['url']['agree'] = cs_url('ranks','remove','id=' . $ranks_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('ranks','remove','id=' . $ranks_id . '&amp;cancel');
 
-	echo cs_subtemplate(__FILE__,$data,'ranks','remove');
+  echo cs_subtemplate(__FILE__,$data,'ranks','remove');
 }
 
 ?>

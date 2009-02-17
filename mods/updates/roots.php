@@ -51,7 +51,7 @@ if(isset($_POST['agree'])) {
     rsort($info_files);
     
     if(!empty($info_files_count)) {
-	  $run = 0;
+    $run = 0;
       foreach($info_files AS $value) {
         $info_file = file_get_contents($update_server.'infos/'.$value, "r");    
     
@@ -65,12 +65,12 @@ if(isset($_POST['agree'])) {
         
         if($cs_main['version_id'] == $need[1] OR empty($need[1]) AND empty($check_updatepack)) {
 
-		  $data['if']['update_check'] = TRUE;
-		  $data['updatecheck'][$run]['num_name'] = cs_secure($num[1].' - '.$name[1]);
+      $data['if']['update_check'] = TRUE;
+      $data['updatecheck'][$run]['num_name'] = cs_secure($num[1].' - '.$name[1]);
           $data['updatecheck'][$run]['changes'] = cs_secure(substr($changes[1],0,200).'...',1,0);  
-		  $data['updatecheck'][$run]['file'] = $value;
+      $data['updatecheck'][$run]['file'] = $value;
           $notice = 1;
-		  $run++;
+      $run++;
 
         } elseif(empty($notice)) {
           $data['if']['no_updates'] = TRUE;

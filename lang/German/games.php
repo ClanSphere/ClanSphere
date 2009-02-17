@@ -1,8 +1,8 @@
 <?php
-$cs_lang['mod_name']	= 'Spiele';
-$cs_lang['mod_text']	= 'Das Spiele Modul';
-$cs_lang['mod']	= 'Spiele';
-$cs_lang['head_remove']	= 'Entfernen'; 
+$cs_lang['mod_name']  = 'Spiele';
+$cs_lang['mod_text']  = 'Das Spiele Modul';
+$cs_lang['mod']  = 'Spiele';
+$cs_lang['head_remove']  = 'Entfernen'; 
 $cs_lang['head_edit'] = '&Auml;ndern'; 
 $cs_lang['head1'] = 'Details';
 $cs_lang['body_create'] =  'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';

@@ -22,7 +22,7 @@ $recount = count($results);
 
 $sql_where = "files_name LIKE '%" . cs_sql_escape($results[0]) . "%' OR files_description LIKE '%" . cs_sql_escape($results[0]) . "%'";
 for($prerun=1; $prerun<$recount; $prerun++) {
-	$sql_where = $sql_where . " OR files_name LIKE '%" . cs_sql_escape($results[$prerun]) . "%' OR files_description LIKE '%" . cs_sql_escape($results[0]) . "%'";
+  $sql_where = $sql_where . " OR files_name LIKE '%" . cs_sql_escape($results[$prerun]) . "%' OR files_description LIKE '%" . cs_sql_escape($results[0]) . "%'";
 }
 $select = 'files_id, files_name, files_time, users_id, categories_id';
 $cs_search = cs_sql_select(__FILE__,'files',$select,$sql_where,$order,$start,$account['users_limit']);
@@ -34,26 +34,26 @@ $data2['if']['access'] = false;
 $data2['if']['noresults'] = false;
 
 if (!empty($search_loop)) {
-	$data2['if']['result'] = true;
-	$data2['result']['count'] = $search_loop;
-	$data2['result']['pages'] = cs_pages('search','list',$search_loop,$start,$where1,$sort);
-	$data2['sort']['name'] = cs_sort('search','list',$start,$where1,1,$sort);
-	$data2['sort']['cat'] = cs_sort('search','list',$start,$where1,3,$sort);
-	$data2['sort']['time'] = cs_sort('search','list',$start,$where1,5,$sort);
+  $data2['if']['result'] = true;
+  $data2['result']['count'] = $search_loop;
+  $data2['result']['pages'] = cs_pages('search','list',$search_loop,$start,$where1,$sort);
+  $data2['sort']['name'] = cs_sort('search','list',$start,$where1,1,$sort);
+  $data2['sort']['cat'] = cs_sort('search','list',$start,$where1,3,$sort);
+  $data2['sort']['time'] = cs_sort('search','list',$start,$where1,5,$sort);
 
-	for($run=0; $run<$search_loop; $run++) {
-	  	$cs_clans_name = cs_secure($cs_search[$run]['files_name']);
-	  	$data2['results'][$run]['name'] = cs_link(cs_secure($cs_clans_name),'files','view','where=' . $cs_search[$run]['files_id']);
-		$select = 'categories_id, categories_name';
-		$where = "categories_id = '" . $cs_search[$run]['categories_id'] . "'";
-		$files_cat = cs_sql_select(__FILE__,'categories',$select,$where,0,0,1);
-		$data2['results'][$run]['cat'] = $files_cat['categories_name'];
-		$data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['files_time'],1);
-		$select = 'users_id, users_nick';
-		$where = "users_id = '" . $cs_search[$run]['users_id'] . "'";
-		$files_user = cs_sql_select(__FILE__,'users',$select,$where,0,0,1);
-		$data2['results'][$run]['user'] = $files_user['users_nick'];
-	}
+  for($run=0; $run<$search_loop; $run++) {
+      $cs_clans_name = cs_secure($cs_search[$run]['files_name']);
+      $data2['results'][$run]['name'] = cs_link(cs_secure($cs_clans_name),'files','view','where=' . $cs_search[$run]['files_id']);
+    $select = 'categories_id, categories_name';
+    $where = "categories_id = '" . $cs_search[$run]['categories_id'] . "'";
+    $files_cat = cs_sql_select(__FILE__,'categories',$select,$where,0,0,1);
+    $data2['results'][$run]['cat'] = $files_cat['categories_name'];
+    $data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['files_time'],1);
+    $select = 'users_id, users_nick';
+    $where = "users_id = '" . $cs_search[$run]['users_id'] . "'";
+    $files_user = cs_sql_select(__FILE__,'users',$select,$where,0,0,1);
+    $data2['results'][$run]['user'] = $files_user['users_nick'];
+  }
 } else {
 $data2['if']['noresults'] = true;
 }

@@ -3,19 +3,19 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'Server';
-$cs_lang['mod_text']	= 'Dodaj serverje';
-$cs_lang['mod']	= 'Serverji';
+$cs_lang['mod_name']  = 'Server';
+$cs_lang['mod_text']  = 'Dodaj serverje';
+$cs_lang['mod']  = 'Serverji';
 $cs_lang['mod_list'] = 'Seznam vseh na&scaron;ih serverjev.';
-$cs_lang['head_manage']	= 'Administracija';
-$cs_lang['head_edit']	= 'Uredi';
+$cs_lang['head_manage']  = 'Administracija';
+$cs_lang['head_edit']  = 'Uredi';
 $cs_lang['body_edit'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
 $cs_lang['error_occurred'] = 'Obvezna polja so prazna.';
 $cs_lang['error_count'] = 'Obvezna polja manjkajo.';
-$cs_lang['head_create']	= 'Dodaj';
+$cs_lang['head_create']  = 'Dodaj';
 $cs_lang['body_create'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
-$cs_lang['head_remove']	= 'Odstrani';
-$cs_lang['body_remove']	= 'Prosim izpolni &#269;imve&#269; polj.';
+$cs_lang['head_remove']  = 'Odstrani';
+$cs_lang['body_remove']  = 'Prosim izpolni &#269;imve&#269; polj.';
 
 $cs_lang['refresh'] = 'Osve&#382;i';
 $cs_lang['slist'] = 'Seznam';
@@ -45,7 +45,7 @@ $cs_lang['new_serv'] = 'Nov Server';
 $cs_lang['number'] = '&Scaron;tevilka: ';
 $cs_lang['gametype'] = 'Igra';
 $cs_lang['gameclass'] = 'Razredi';
-$cs_lang['rss_info']	= 'Podrobnosti serverja';
+$cs_lang['rss_info']  = 'Podrobnosti serverja';
 $cs_lang['servername'] = 'Ime serverja';
 $cs_lang['serverip'] = 'IP Serverja';
 $cs_lang['serverport'] = 'Vrata serverja'; 
@@ -83,30 +83,30 @@ $cs_lang['gametyp'] = 'Gametype';
 $cs_lang['mapsdl'] = 'Slike map prene&scaron;ene';
 
 // Global View Stats
-$cs_lang['map:']			= 'Mapa:';
-$cs_lang['response']	= 'Povezava:';
-$cs_lang['privileges']	= 'Privilegiji:';
-$cs_lang['game']	= 'Igra:';
-$cs_lang['gamemod']	= 'Mod:';
+$cs_lang['map:']      = 'Mapa:';
+$cs_lang['response']  = 'Povezava:';
+$cs_lang['privileges']  = 'Privilegiji:';
+$cs_lang['game']  = 'Igra:';
+$cs_lang['gamemod']  = 'Mod:';
 
 // Player Stats
-$cs_lang['rank']	= '&#268;in';
-$cs_lang['honor']	= 'Honor';
-$cs_lang['frags']	= 'Ubiti';
-$cs_lang['time']	= '&#268;as online';
-$cs_lang['score']	= 'Rezultat';
-$cs_lang['ping']	= 'Ping';
-$cs_lang['team']	= 'Ekipa';
-$cs_lang['id']		= 'ID';
-$cs_lang['clan']	= 'Klan';
-$cs_lang['rate']	= 'Rate';
-$cs_lang['mesh']	= 'Mesh';
-$cs_lang['skin']	= 'Preobleka';
-$cs_lang['deaths']	= 'Smrti';
-$cs_lang['kills']	= 'Ubitih';
-$cs_lang['skill']	= 'Skill';
+$cs_lang['rank']  = '&#268;in';
+$cs_lang['honor']  = 'Honor';
+$cs_lang['frags']  = 'Ubiti';
+$cs_lang['time']  = '&#268;as online';
+$cs_lang['score']  = 'Rezultat';
+$cs_lang['ping']  = 'Ping';
+$cs_lang['team']  = 'Ekipa';
+$cs_lang['id']    = 'ID';
+$cs_lang['clan']  = 'Klan';
+$cs_lang['rate']  = 'Rate';
+$cs_lang['mesh']  = 'Mesh';
+$cs_lang['skin']  = 'Preobleka';
+$cs_lang['deaths']  = 'Smrti';
+$cs_lang['kills']  = 'Ubitih';
+$cs_lang['skill']  = 'Skill';
 $cs_lang['channels']= 'Kanali';
-$cs_lang['channel']	= 'Kanal';
+$cs_lang['channel']  = 'Kanal';
 $cs_lang['privileg']= 'Status';
 
 // Navlist

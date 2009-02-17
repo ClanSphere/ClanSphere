@@ -80,13 +80,13 @@ if ($system['cups_system'] == 'teams') {
   echo cs_user($cs_cups['user2_id'],$cs_cups['user2_nick'], $users_data['users_active']);
 }
 echo cs_html_roco(0);
-	
+  
 echo cs_html_roco(1,'leftc');
 echo cs_icon('kreversi') . $cs_lang['cup'];
 echo cs_html_roco(2,'leftb');
 echo cs_link($cs_cups['cups_name'],'cups','view','id='.$cs_cups['cups_id']);
 echo cs_html_roco(0);
-	
+  
 echo cs_html_roco(1,'leftc');
 echo cs_icon('package_games') . $cs_lang['game'];
 echo cs_html_roco(2,'leftb');
@@ -97,9 +97,9 @@ echo cs_html_roco(1,'leftc');
 echo cs_icon('smallcal') . $cs_lang['result'];
 echo cs_html_roco(2,'leftb');
 if (!empty($cs_cups['cupmatches_score1']) || !empty($cs_cups['cupmatches_score2'])) {
-	echo $cs_cups['cupmatches_score1'] .' : '. $cs_cups['cupmatches_score2'];
+  echo $cs_cups['cupmatches_score1'] .' : '. $cs_cups['cupmatches_score2'];
 } else {
-	echo '-';
+  echo '-';
 }
 echo cs_html_roco(0);
 
@@ -128,39 +128,39 @@ if ($system['cups_system'] == 'teams') {
 }
 
 if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] >= 4) {
-	
-	echo cs_html_br(1);
-	echo cs_html_table(1,'forum',1);
-	echo cs_html_roco(1,'centerb');
-	echo cs_html_form(1,'matchadmin','cups','matchedit');
-	echo '&nbsp;';
-	echo cs_html_vote('cupmatches_id',$match_id,'hidden');
+  
+  echo cs_html_br(1);
+  echo cs_html_table(1,'forum',1);
+  echo cs_html_roco(1,'centerb');
+  echo cs_html_form(1,'matchadmin','cups','matchedit');
+  echo '&nbsp;';
+  echo cs_html_vote('cupmatches_id',$match_id,'hidden');
 
-	if (
+  if (
      (!empty($squad1_member) or !empty($squad2_member))
     &&
      (empty($cs_cups['cupmatches_score1']) && empty($cs_cups['cupmatches_score2']))
     &&
      (empty($cs_cups['cupmatches_accepted1']) && empty($cs_cups['cupmatches_accepted1']))
     ) {
-		
-		$team = !empty($squad2_member) ? 2 : 1;
-		echo cs_html_vote('team',$team,'hidden');
-		echo cs_html_vote('result',$cs_lang['enter_result'],'submit');
-		
-	} elseif(!empty($squad1_member) && empty($cs_cups['cupmatches_accepted1'])) {
     
-		echo cs_html_vote('accept1',$cs_lang['accept_result'],'submit');
-		
-	} elseif (!empty($squad2_member) AND empty($cs_cups['cupmatches_accepted2'])) {
-		
-		echo cs_html_vote('accept2',$cs_lang['accept_result'],'submit');
-		
-	} elseif (!empty($cs_cups['cupmatches_accepted1']) && !empty($cs_cups['cupmatches_accepted2'])) {
-		
-		echo $cs_lang['both_confirmed'];
-		
-	} else {
+    $team = !empty($squad2_member) ? 2 : 1;
+    echo cs_html_vote('team',$team,'hidden');
+    echo cs_html_vote('result',$cs_lang['enter_result'],'submit');
+    
+  } elseif(!empty($squad1_member) && empty($cs_cups['cupmatches_accepted1'])) {
+    
+    echo cs_html_vote('accept1',$cs_lang['accept_result'],'submit');
+    
+  } elseif (!empty($squad2_member) AND empty($cs_cups['cupmatches_accepted2'])) {
+    
+    echo cs_html_vote('accept2',$cs_lang['accept_result'],'submit');
+    
+  } elseif (!empty($cs_cups['cupmatches_accepted1']) && !empty($cs_cups['cupmatches_accepted2'])) {
+    
+    echo $cs_lang['both_confirmed'];
+    
+  } else {
     
     $other_team = empty($squad2_member) ? 2 : 1;
     
@@ -168,11 +168,11 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
       $link = cs_link($cs_cups['squad'.$other_team.'_name'],'squads','view','id='.$cs_cups['squad'.$other_team.'_id']);
     } else {
       $users_data = cs_sql_select(__FILE__,'users','users_active',"users_id = '" . $cs_cups['user'.$other_team.'_id'] . "'");
-	    
+      
       $link =  cs_user($cs_cups['user'.$other_team.'_id'],$cs_cups['user'.$other_team.'_nick'], $users_data['users_active']);
     }
-    printf($cs_lang['waiting'],$link);	
-	}
+    printf($cs_lang['waiting'],$link);  
+  }
   
   if ($account['access_cups'] >= 4) {
     
@@ -180,9 +180,9 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
     
   }
   
-	echo cs_html_form(0);
-	echo cs_html_roco(0);
-	echo cs_html_table(0);
+  echo cs_html_form(0);
+  echo cs_html_roco(0);
+  echo cs_html_table(0);
 }
 
 $count = cs_sql_count(__FILE__,'comments','comments_fid = \''.$match_id.'\' AND comments_mod = \'cups\'');

@@ -14,16 +14,16 @@ $cs_lang['creator'] = 'Ersteller';
 $cs_lang['version'] = 'Version';
 
 $cs_lang['mods_details'] = 'Modul Details';
-$cs_lang['body_mods_view']	= 'Informationen zu einer Erweiterung.';
+$cs_lang['body_mods_view']  = 'Informationen zu einer Erweiterung.';
 
-$cs_lang['mod_released']		= 'Datum';
+$cs_lang['mod_released']    = 'Datum';
 $cs_lang['icons']           = 'Icons';
 $cs_lang['extended']        = 'Erweitert';
 $cs_lang['jump_to_explorer']= 'Springe zu Explorer';
 
-$cs_lang['access_files']	= 'Eingetragene Seiten';
-$cs_lang['file_name']			= 'Datei';
-$cs_lang['access_from']		= 'Zugriff ab';
+$cs_lang['access_files']  = 'Eingetragene Seiten';
+$cs_lang['file_name']      = 'Datei';
+$cs_lang['access_from']    = 'Zugriff ab';
 
 $cs_lang['lev_0'] = 'Gesperrt';
 $cs_lang['lev_1'] = 'Lesen';

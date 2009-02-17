@@ -8,14 +8,14 @@ $themes = cs_checkdirs('themes');
 $themes_count = count($themes);
 
 if(!empty($_GET['activate'])) {
-	foreach ($themes as $try) {
-    	if($try['dir'] == $_GET['activate']) {
-    		require('mods/clansphere/func_options.php');
-			$save['def_theme'] = $_GET['activate'];
-			cs_optionsave('clansphere', $save);
-      		$current = $_GET['activate'];
-    	}
-  	}
+  foreach ($themes as $try) {
+      if($try['dir'] == $_GET['activate']) {
+        require('mods/clansphere/func_options.php');
+      $save['def_theme'] = $_GET['activate'];
+      cs_optionsave('clansphere', $save);
+          $current = $_GET['activate'];
+      }
+    }
 }
 
 $current = empty($current) ? $cs_main['def_theme'] : $current;

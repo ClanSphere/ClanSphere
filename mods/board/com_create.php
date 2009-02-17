@@ -78,39 +78,39 @@ for($run=0; $run < $run_loop_files; $run++) {
 
     $ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
     
-	if($_FILES["file_$num"]['size'] > $options['file_size']) {
+  if($_FILES["file_$num"]['size'] > $options['file_size']) {
       $message .= $cs_lang['error_filesize'] . cs_html_br(1);
       $error++;
       $file_error[$num] = '1';
     }
     
-	$check_type = '';
+  $check_type = '';
     $count_filetypes = count($filetypes);
-	
-	for($run_a=0; $run_a < $count_filetypes; $run_a++) {
-	  if('0' == strcasecmp($filetypes[$run_a], $ext)) {
-	    $check_type = 1;
-	  }
-	}
-	
-	if($check_type != 1) {
-	  $message .= $cs_lang['error_filetype'] . cs_html_br(1);
-	  $thread_error++;
-	  $file_error[$num] = '1';
-	}
-	
-	if(!empty($file_error[$num])) {
-	  echo cs_html_table(1,'forum',1);
-	  echo cs_html_roco(1,'leftc');
-	  echo cs_icon('important');
-	  echo $cs_lang['error_subheader'];
-	  echo cs_html_roco(0);
-	  echo cs_html_roco(1,'leftb');
-	  echo $message;
-	  echo cs_html_roco(0);
-	  echo cs_html_table(0);
-	  echo cs_html_br(1);
-	}
+  
+  for($run_a=0; $run_a < $count_filetypes; $run_a++) {
+    if('0' == strcasecmp($filetypes[$run_a], $ext)) {
+      $check_type = 1;
+    }
+  }
+  
+  if($check_type != 1) {
+    $message .= $cs_lang['error_filetype'] . cs_html_br(1);
+    $thread_error++;
+    $file_error[$num] = '1';
+  }
+  
+  if(!empty($file_error[$num])) {
+    echo cs_html_table(1,'forum',1);
+    echo cs_html_roco(1,'leftc');
+    echo cs_icon('important');
+    echo $cs_lang['error_subheader'];
+    echo cs_html_roco(0);
+    echo cs_html_roco(1,'leftb');
+    echo $message;
+    echo cs_html_roco(0);
+    echo cs_html_table(0);
+    echo cs_html_br(1);
+  }
   }
   
   if(!empty($_FILES["file_$num"]['name']) AND empty($file_error[$num])) {
@@ -119,16 +119,16 @@ for($run=0; $run < $run_loop_files; $run++) {
     $hash = '';
     $pattern = "abcdefghijklmnopqrstuvwxyz";
     
-	for($i=0;$i<8;$i++) {
+  for($i=0;$i<8;$i++) {
       $hash .= $pattern{rand(0,25)};
     }
     
-	$file_upload_name[$num] = $hash . '.' . $ext;
+  $file_upload_name[$num] = $hash . '.' . $ext;
     
-	if(cs_upload('board/files', $file_upload_name[$num], $_FILES["file_$num"]['tmp_name'])) {
+  if(cs_upload('board/files', $file_upload_name[$num], $_FILES["file_$num"]['tmp_name'])) {
       $a++;
     }
-	else {
+  else {
       $message .= $cs_lang['error_fileupload'] . cs_html_br(1);
       $thread_error++;
     }
@@ -138,11 +138,11 @@ for($run=0; $run < $run_loop_files; $run++) {
     $file_name[$num] = $_POST["file_name_$num"];
     $file_upload_name[$num] = $_POST["file_upload_name_$num"];
     
-	if(isset($_POST["remove_file_$num"])) {
+  if(isset($_POST["remove_file_$num"])) {
       cs_unlink('board', $file_upload_name[$num], 'files');
       $file_name[$num] = '';
     }
-	else {
+  else {
       $file_name[$b] = $file_name[$num];
       $a++;
       $b++;
@@ -180,8 +180,8 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
     $errormsg .= $cs_lang['last_own'];
 
     if($options['doubleposts'] != -1) {
-	  $wait_days = round(($last_from['comments_time'] + $options['doubleposts'] - $time) / 86400, 1);
-	  $errormsg .=  ' ' . sprintf($cs_lang['wait_after_comment'],$wait_days);
+    $wait_days = round(($last_from['comments_time'] + $options['doubleposts'] - $time) / 86400, 1);
+    $errormsg .=  ' ' . sprintf($cs_lang['wait_after_comment'],$wait_days);
     }
     $errormsg .= cs_html_br(1);
   }
@@ -220,13 +220,13 @@ if(!empty($_REQUEST['quote'])) {
   }
   else if($def[0]=='t') {
     $select = "threads thr INNER JOIN {pre}_board brd ON thr.board_id = brd.board_id";
-	$cells = "thr.users_id AS users_id, thr.threads_text AS threads_text, thr.threads_time AS threads_time, brd.board_access AS board_access";
-	$where = "thr.threads_id = '" . cs_sql_escape($def[1]) . "' AND brd.board_access <= '" . $account['access_board'] . "'";
-	$quote = cs_sql_select($file,$select,$cells,$where);
-	$cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick',"users_id = '" . $quote['users_id'] . "'");
-	$url = $_SERVER['PHP_SELF'] . '?mod=users&action=view&id=' . $cs_users['users_id'];
-	$text = cs_date('unix',$quote['threads_time'],1) . ' - [url=' . $url . ']';
-	$text .= $cs_users['users_nick'] . "[/url]:\n[quote]" . $quote['threads_text'] . '[/quote]';
+  $cells = "thr.users_id AS users_id, thr.threads_text AS threads_text, thr.threads_time AS threads_time, brd.board_access AS board_access";
+  $where = "thr.threads_id = '" . cs_sql_escape($def[1]) . "' AND brd.board_access <= '" . $account['access_board'] . "'";
+  $quote = cs_sql_select($file,$select,$cells,$where);
+  $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick',"users_id = '" . $quote['users_id'] . "'");
+  $url = $_SERVER['PHP_SELF'] . '?mod=users&action=view&id=' . $cs_users['users_id'];
+  $text = cs_date('unix',$quote['threads_time'],1) . ' - [url=' . $url . ']';
+  $text .= $cs_users['users_nick'] . "[/url]:\n[quote]" . $quote['threads_text'] . '[/quote]';
   }
 }
 
@@ -253,10 +253,10 @@ if(isset($_POST['preview']) AND empty($error)) {
 if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
 if(!empty($cs_thread['board_read']) AND $account['access_clansphere'] < 5) {
     echo cs_html_table(1,'forum',1);
-	echo cs_html_roco(1,'centerb');
-	echo $cs_lang['thread_only_read'];
-	echo cs_html_roco(0);
-	echo cs_html_table(0);  
+  echo cs_html_roco(1,'centerb');
+  echo $cs_lang['thread_only_read'];
+  echo cs_html_roco(0);
+  echo cs_html_table(0);  
   }
   else {
   echo cs_html_form (1,'board_com_create','board','com_create',1);
@@ -280,27 +280,27 @@ if(!empty($cs_thread['board_read']) AND $account['access_clansphere'] < 5) {
     echo cs_icon('download') . $cs_lang['uploads'];
     echo cs_html_roco(0);
     
-	for($run=0; $run < $run_loop_files; $run++) {
+  for($run=0; $run < $run_loop_files; $run++) {
       $num = $run + 1;
       $cs_files["text_$num"] = isset($_POST["text_$num"]) ? $_POST["text_$num"] : '';
       
-	  echo cs_html_roco(1,'leftc');
+    echo cs_html_roco(1,'leftc');
       echo cs_icon('download') . $cs_lang['file'] . ' ' . $num;
       echo cs_html_roco(2,'leftb');
       
-	  if(empty($file_name[$num])) {
+    if(empty($file_name[$num])) {
         echo cs_html_input("file_$num",'','file');
         $matches[1] = $cs_lang['infos'];
-		$return_types = '';
-		
-		foreach($filetypes AS $add) {
-		  $return_types .= empty($return_types) ? $add : ', ' . $add;
-		}
-		$matches[2] = $cs_lang['max_size'] . cs_filesize($options['file_size']) . cs_html_br(1);
-		$matches[2] .= $cs_lang['filetypes'] . $return_types;
-		echo ' ' . cs_abcode_clip($matches);
-	  }
-	  else {
+    $return_types = '';
+    
+    foreach($filetypes AS $add) {
+      $return_types .= empty($return_types) ? $add : ', ' . $add;
+    }
+    $matches[2] = $cs_lang['max_size'] . cs_filesize($options['file_size']) . cs_html_br(1);
+    $matches[2] .= $cs_lang['filetypes'] . $return_types;
+    echo ' ' . cs_abcode_clip($matches);
+    }
+    else {
         echo cs_html_vote("file_name_$num",$file_name[$num],'hidden');
         echo cs_html_vote("file_upload_name_$num",$file_upload_name[$num],'hidden');
         $file = $file_name[$num];
@@ -308,27 +308,27 @@ if(!empty($cs_thread['board_read']) AND $account['access_clansphere'] < 5) {
         $name = strlen($file);
         $ext = substr($file,$name - $extension + 1,$name);
         
-		if(strcasecmp($ext,'jpg') == '0' OR strcasecmp($ext,'jpeg') == '0' OR strcasecmp($ext,'gif') == '0' OR strcasecmp($ext,'png') == '0') {
+    if(strcasecmp($ext,'jpg') == '0' OR strcasecmp($ext,'jpeg') == '0' OR strcasecmp($ext,'gif') == '0' OR strcasecmp($ext,'png') == '0') {
           $cs_lap = cs_html_img('mods/gallery/image.php?boardpic=' . $file_name[$num] . '&boardthumb');
-		  echo cs_html_div(1,'float:left;padding:3px;border:1px solid black;background:gainsboro;');
-		  echo cs_html_link('mods/gallery/image.php?boardpic=' . $file_name[$num],$cs_lap);
-		  echo cs_html_div(0);
-		  echo cs_html_div(1,'float:left;padding:3px;margin-left:10px;');
-		  echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
-		  echo ' ' . $file_name[$num];
-		  echo cs_html_br(1);
-		  echo cs_html_vote('remove_file_' . $num,$cs_lang['remove'],'submit');
-		  echo cs_html_div(0);
-		}
-		else {
-		  echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
-		  echo ' ' . $file_name[$num];
-		  echo cs_html_vote('remove_file_' . $num,$cs_lang['remove'],'submit');
-		}
-	  }
-	  
-	  echo cs_html_roco(0);
-	}
+      echo cs_html_div(1,'float:left;padding:3px;border:1px solid black;background:gainsboro;');
+      echo cs_html_link('mods/gallery/image.php?boardpic=' . $file_name[$num],$cs_lap);
+      echo cs_html_div(0);
+      echo cs_html_div(1,'float:left;padding:3px;margin-left:10px;');
+      echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
+      echo ' ' . $file_name[$num];
+      echo cs_html_br(1);
+      echo cs_html_vote('remove_file_' . $num,$cs_lang['remove'],'submit');
+      echo cs_html_div(0);
+    }
+    else {
+      echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
+      echo ' ' . $file_name[$num];
+      echo cs_html_vote('remove_file_' . $num,$cs_lang['remove'],'submit');
+    }
+    }
+    
+    echo cs_html_roco(0);
+  }
   }
   
   echo cs_html_roco(1,'leftc');
@@ -341,7 +341,7 @@ if(!empty($cs_thread['board_read']) AND $account['access_clansphere'] < 5) {
     echo cs_html_vote('files+',$cs_lang['add_file'],'submit');
   }
   
-  if($files == '0' AND $account['access_board'] >= '2')	{
+  if($files == '0' AND $account['access_board'] >= '2')  {
     echo cs_html_vote('new_file',$cs_lang['add_file'],'submit');
   }
   
@@ -400,8 +400,8 @@ else {
     $target = $path . $file_upload_name[$num];
     $target2 = $path . $files_select_new_id . '.' . $ext;
     $fileHand = fopen($target, 'r');
-  	fclose($fileHand);
-  	rename( $target, $target2 );
+    fclose($fileHand);
+    rename( $target, $target2 );
   }
   
   include_once('mods/board/repair.php');

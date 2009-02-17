@@ -7,7 +7,7 @@ function cs_cachegen($filename, $dir) {
     global $cs_lang, $cs_main;
     $cs_lang_old = $cs_lang;
 
-	$info = array();
+  $info = array();
     $directories = array_keys(cs_paths($dir));
     foreach($directories as $target) {
         $this_info = $dir . '/' . $target . '/info.php';

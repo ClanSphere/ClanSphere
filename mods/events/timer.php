@@ -9,7 +9,7 @@ $op_events = cs_sql_option(__FILE__,'events');
 $unix = empty($_GET['unix']) ? cs_datereal('U') : $_GET['unix'];
 settype($unix,'integer');
 if(!empty($_POST['date_year']) AND !empty($_POST['date_month']) AND !empty($_POST['date_day'])) {
-	$unix = mktime(0, 0, 0, $_POST['date_month'], $_POST['date_day'], $_POST['date_year']);
+  $unix = mktime(0, 0, 0, $_POST['date_month'], $_POST['date_day'], $_POST['date_year']);
 }
 $unix = cs_datereal('U',$unix);
 $max = $unix + 86399;
@@ -50,27 +50,27 @@ if (!empty($op_events['show_wars'])) {
 $events_loop = count($cs_events);
 
 if(!empty($events_loop)) {
-	echo cs_html_table(1,'forum',1);
-	echo cs_html_roco(1,'headb',0,0,'70%');
-	echo $cs_lang['name'];
-	echo cs_html_roco(2,'headb',0,0,'30%');
-	echo $cs_lang['time'];
-	echo cs_html_roco(0);
+  echo cs_html_table(1,'forum',1);
+  echo cs_html_roco(1,'headb',0,0,'70%');
+  echo $cs_lang['name'];
+  echo cs_html_roco(2,'headb',0,0,'30%');
+  echo $cs_lang['time'];
+  echo cs_html_roco(0);
 
-	for($run=0; $run<$events_loop; $run++) {
+  for($run=0; $run<$events_loop; $run++) {
 
-		echo cs_html_roco(1,'leftc');
-		$sec_head = cs_secure($cs_events[$run]['events_name']);
+    echo cs_html_roco(1,'leftc');
+    $sec_head = cs_secure($cs_events[$run]['events_name']);
     if (!empty($cs_events[$run]['events_id']))
-		  echo cs_link($sec_head,'events','view','id=' . $cs_events[$run]['events_id']);
+      echo cs_link($sec_head,'events','view','id=' . $cs_events[$run]['events_id']);
     elseif (!empty($cs_events[$run]['wars_id']))
       echo cs_link($sec_head,'wars','view','id=' . $cs_events[$run]['wars_id']);
-		echo cs_html_roco(2,'leftc');
-		echo cs_date('unix',$cs_events[$run]['events_time'],1);
-		echo cs_html_roco(0);
-	}
-	echo cs_html_table(0);
-	echo cs_html_br(1);
+    echo cs_html_roco(2,'leftc');
+    echo cs_date('unix',$cs_events[$run]['events_time'],1);
+    echo cs_html_roco(0);
+  }
+  echo cs_html_table(0);
+  echo cs_html_br(1);
 }
 
 $month = cs_datereal('m',$unix);
@@ -82,32 +82,32 @@ $birthdays = cs_sql_select(__FILE__,'users',$select,$like,'users_nick ASC',0,0);
 $bday_loop = count($birthdays);
 
 if(!empty($bday_loop)) {
-	echo cs_html_table(1,'forum',1);
-	echo cs_html_roco(1,'headb',0,0,'40%');
-	echo $cs_lang['user'];
-	echo cs_html_roco(2,'headb',0,0,'20%');
-	echo $cs_lang['new_age'];
-	echo cs_html_roco(3,'headb',0,0,'40%');
-	echo $cs_lang['place'];
-	echo cs_html_roco(0);
+  echo cs_html_table(1,'forum',1);
+  echo cs_html_roco(1,'headb',0,0,'40%');
+  echo $cs_lang['user'];
+  echo cs_html_roco(2,'headb',0,0,'20%');
+  echo $cs_lang['new_age'];
+  echo cs_html_roco(3,'headb',0,0,'40%');
+  echo $cs_lang['place'];
+  echo cs_html_roco(0);
 
-	for($run=0; $run<$bday_loop; $run++) {
+  for($run=0; $run<$bday_loop; $run++) {
 
-		echo cs_html_roco(1,'leftc');
-		$sec_user = cs_secure($birthdays[$run]['users_nick']);
-		echo cs_user($birthdays[$run]['users_id'],$birthdays[$run]['users_nick'], $birthdays[$run]['users_active']);
-		echo cs_html_roco(2,'leftc');
-		$birth = explode ('-', $birthdays[$run]['users_age']);
-		$age = cs_datereal('Y',$unix) - $birth[0];
-		if(cs_datereal('m',$unix) < $birth[1] OR cs_datereal('d',$unix) < $birth[2] AND cs_datereal('m',$unix) == $birth[1]) {
-			$age--;
-		}
-		echo $age;
-		echo cs_html_roco(2,'leftc');
-		echo cs_secure($birthdays[$run]['users_place']);
-		echo cs_html_roco(0);
-	}
-	echo cs_html_table(0);
+    echo cs_html_roco(1,'leftc');
+    $sec_user = cs_secure($birthdays[$run]['users_nick']);
+    echo cs_user($birthdays[$run]['users_id'],$birthdays[$run]['users_nick'], $birthdays[$run]['users_active']);
+    echo cs_html_roco(2,'leftc');
+    $birth = explode ('-', $birthdays[$run]['users_age']);
+    $age = cs_datereal('Y',$unix) - $birth[0];
+    if(cs_datereal('m',$unix) < $birth[1] OR cs_datereal('d',$unix) < $birth[2] AND cs_datereal('m',$unix) == $birth[1]) {
+      $age--;
+    }
+    echo $age;
+    echo cs_html_roco(2,'leftc');
+    echo cs_secure($birthdays[$run]['users_place']);
+    echo cs_html_roco(0);
+  }
+  echo cs_html_table(0);
 }
 
 ?>

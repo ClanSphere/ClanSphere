@@ -27,12 +27,12 @@ for($run_year=0; $run_year<count($year); $run_year++) {
   for($run=0; $run<count($dzcp_new); $run++) {
     $time = explode(".", $dzcp_new[$run]['today']);
     for($month=1; $month<13; $month++) {
-	  if($time[1] == $month) {
-	    $data[$run_year][$year[$run_year]][$month] = $data[$run_year][$year[$run_year]][$month] + $dzcp_new[$run]['visitors'];
-	  } else {
-	    $data[$run_year][$year[$run_year]][$month] = '';
-	  }
-	}  
+    if($time[1] == $month) {
+      $data[$run_year][$year[$run_year]][$month] = $data[$run_year][$year[$run_year]][$month] + $dzcp_new[$run]['visitors'];
+    } else {
+      $data[$run_year][$year[$run_year]][$month] = '';
+    }
+  }  
   }
 }
 echo '<pre>';

@@ -61,25 +61,25 @@ $data['sort']['time'] = cs_sort('gbook','manage',$start,0,1,$sort);
 $data['lang']['time'] = $cs_lang['date'];
 
 for($run=0; $run<$gbook_loop; $run++) {
-	if($cs_gbook[$run]['users_id'] > 0) {
-		$gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['users_nick']);
-		$gbook[$run]['email'] = cs_secure($cs_gbook[$run]['users_email']);
-	} else {
-		$gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['gbook_nick']);
-		$gbook[$run]['email'] = cs_secure($cs_gbook[$run]['gbook_email']);
-	}
-	$gbook[$run]['time'] = cs_date('unix',$cs_gbook[$run]['gbook_time'],1);
-	$active = cs_link(cs_icon('cancel'),'gbook','manage','active=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['active']);
-	$deactive = cs_link(cs_icon('submit'),'gbook','manage','deactive=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['deactive']);
-	$gbook[$run]['lock'] = empty($cs_gbook[$run]['gbook_lock']) ? $active : $deactive;
-  	$img_edit = cs_icon('edit',16,$cs_lang['edit']);
-	$gbook[$run]['edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
-	$img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-  	$gbook[$run]['remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
-	$img_ip = cs_icon('important',16,$cs_lang['ip']);
-	$more = 'id=' . $cs_gbook[$run]['gbook_id'];
-	$more .= '&amp;action1=' . $cs_main['action'];
-  	$gbook[$run]['ip'] = cs_link($img_ip,'gbook','ip',$more);
+  if($cs_gbook[$run]['users_id'] > 0) {
+    $gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['users_nick']);
+    $gbook[$run]['email'] = cs_secure($cs_gbook[$run]['users_email']);
+  } else {
+    $gbook[$run]['nick'] = cs_secure($cs_gbook[$run]['gbook_nick']);
+    $gbook[$run]['email'] = cs_secure($cs_gbook[$run]['gbook_email']);
+  }
+  $gbook[$run]['time'] = cs_date('unix',$cs_gbook[$run]['gbook_time'],1);
+  $active = cs_link(cs_icon('cancel'),'gbook','manage','active=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['active']);
+  $deactive = cs_link(cs_icon('submit'),'gbook','manage','deactive=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['deactive']);
+  $gbook[$run]['lock'] = empty($cs_gbook[$run]['gbook_lock']) ? $active : $deactive;
+    $img_edit = cs_icon('edit',16,$cs_lang['edit']);
+  $gbook[$run]['edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
+  $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
+    $gbook[$run]['remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
+  $img_ip = cs_icon('important',16,$cs_lang['ip']);
+  $more = 'id=' . $cs_gbook[$run]['gbook_id'];
+  $more .= '&amp;action1=' . $cs_main['action'];
+    $gbook[$run]['ip'] = cs_link($img_ip,'gbook','ip',$more);
 }
 $data['gbook'] = !empty($gbook) ? $gbook : '';
 echo cs_subtemplate(__FILE__,$data,'gbook','manage');

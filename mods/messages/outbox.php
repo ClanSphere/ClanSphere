@@ -25,13 +25,13 @@ empty($_POST['messages_id']) ? $messages_id = 0 : $messages_id = $_POST['message
 echo cs_box_head('outbox',$messages_id,$start,$sort);
 $messages_data = cs_time_array();
 if($messages_id > 0) {
-	settype($messages_id,'integer');
-	$run = $messages_id - 1;
-	$messages_time = $messages_data[$run]['messages_time'];
-	$where = "msg.users_id = '" . $users_id . "' AND msg.messages_show_sender = '1' AND messages_time >= '" . $messages_time . "'";
+  settype($messages_id,'integer');
+  $run = $messages_id - 1;
+  $messages_time = $messages_data[$run]['messages_time'];
+  $where = "msg.users_id = '" . $users_id . "' AND msg.messages_show_sender = '1' AND messages_time >= '" . $messages_time . "'";
 } else {
-	$messages_time = '';
-	$where = "msg.users_id = '" . $users_id . "' AND msg.messages_show_sender = '1'";
+  $messages_time = '';
+  $where = "msg.users_id = '" . $users_id . "' AND msg.messages_show_sender = '1'";
 }
 echo cs_html_br(1);
 $from = 'messages msg INNER JOIN {pre}_users usr ON msg.users_id_to = usr.users_id';
@@ -45,7 +45,7 @@ echo cs_html_form(1,'messages_inbox','messages','multiremove');
 echo cs_outbox_head($start,$sort);
 
 for($run=0; $run<$messages_loop; $run++) {
-	echo cs_box($cs_messages,$run);
+  echo cs_box($cs_messages,$run);
 }
 echo cs_html_roco(1,'rightb',0,7);
 echo cs_html_input('sel_all',$cs_lang['select_all'],'button',0,0,'onclick="return cs_shoutbox_select();"');

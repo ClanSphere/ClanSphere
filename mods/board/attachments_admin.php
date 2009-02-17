@@ -25,7 +25,7 @@ for($run = 0; $run < $count_att; $run++) {
   $extension = strlen(strrchr($file,"."));
   $name = strlen($file);
   $ext = substr($file,$name - $extension + 1,$name); 
-	
+  
   $data['attachments'][$run]['icon'] = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
 
   if(file_exists('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext)) {
@@ -45,7 +45,7 @@ for($run = 0; $run < $count_att; $run++) {
   
   $threads_headline = $cs_att[$run]['threads_headline'];
   $data['attachments'][$run]['topics'] = strlen($threads_headline) <= 15 ? $threads_headline : substr($threads_headline,0,15) . '...';
-	
+  
   $data['attachments'][$run]['topics_link'] = cs_url('board','thread','where=' . $cs_att[$run]['threads_id']);
 
   $data['attachments'][$run]['downloaded'] = $cs_att[$run]['boardfiles_downloaded'];

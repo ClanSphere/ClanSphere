@@ -9,9 +9,9 @@
 // $Id$
 
 // info.php
-$cs_lang['mod_name']	= 'Articulos';
-$cs_lang['mod_text']	= 'El Modul de Articulos';
-$cs_lang['mod']	= 'Articulos';
+$cs_lang['mod_name']  = 'Articulos';
+$cs_lang['mod_text']  = 'El Modul de Articulos';
+$cs_lang['mod']  = 'Articulos';
 
 // create.php
 $cs_lang['head_create'] = 'Incribir';
@@ -37,9 +37,9 @@ $cs_lang['body_edit'] =  'Por favor rellene las casillas con *';
 $cs_lang['edit_done'] = 'Operacion Valida';
 
 // list.php
-$cs_lang['head_list']	= 'Lista';
-$cs_lang['body_list']	= 'Escoja una Categoria';
-$cs_lang['count']	= 'Cantidad ';
+$cs_lang['head_list']  = 'Lista';
+$cs_lang['body_list']  = 'Escoja una Categoria';
+$cs_lang['count']  = 'Cantidad ';
 
 //listcat.php
 $cs_lang['all'] = 'Total: ';
@@ -49,12 +49,12 @@ $cs_lang['views'] = 'Leido';
 $cs_lang['xtimes'] = 'veces';
 
 // manage.php
-$cs_lang['head_manage']	= 'Administración';
+$cs_lang['head_manage']  = 'Administración';
 $cs_lang['new_article'] = 'Nuevo Articulo';
 
 // remove.php
-$cs_lang['head_remove']	= 'Remover';
-$cs_lang['body_remove']		= 'Remover Informacion Nr. %s de verdad ?';
+$cs_lang['head_remove']  = 'Remover';
+$cs_lang['body_remove']    = 'Remover Informacion Nr. %s de verdad ?';
 
 // view.php
 $cs_lang['from'] = 'Incribido por';
@@ -63,18 +63,18 @@ $cs_lang['page'] = 'Pagina';
 $cs_lang['pages'] = 'Paginas';
 
 // com_create.php
-$cs_lang['not_able']	= '- Los Comentarios han sido bloqueados.';
+$cs_lang['not_able']  = '- Los Comentarios han sido bloqueados.';
 
-$cs_lang['place']			= 'Lugar :';
-$cs_lang['posts']			= 'Aportes :';
+$cs_lang['place']      = 'Lugar :';
+$cs_lang['posts']      = 'Aportes :';
 $cs_lang['text'] = 'Texto';
 
 // com_edit.php
-$cs_lang['head_com_edit']	= 'Editar Comentarios';
-$cs_lang['body_com_edit']	= 'Por favor Informar sobre editaciones del Texto';
+$cs_lang['head_com_edit']  = 'Editar Comentarios';
+$cs_lang['body_com_edit']  = 'Por favor Informar sobre editaciones del Texto';
 
 // com_remove.php
-$cs_lang['head_com_remove']	= 'Remover Comentarios';
+$cs_lang['head_com_remove']  = 'Remover Comentarios';
 
 $cs_lang['new_date'] = 'Actualizar la Fecha';
 

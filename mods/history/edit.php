@@ -13,77 +13,77 @@ $data = array();
 $data['if']['preview'] = FALSE;
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
-	
-	$history['history_text'] = $_POST['history_text'];
-	
-	if(!empty($cs_main['fckeditor'])) {
-		$history['history_text'] = '[html]' . $_POST['history_text'] . '[/html]';
-	}
-	
-	if (!empty($_POST['history_newtime'])) {
-		$history['history_time'] = cs_time();
-		$newtime = 1;
-	}
-	
-	$error = '';
-	
-	if(empty($history['history_text'])) {
-		$error .= $cs_lang['no_text'] . cs_html_br(1); 
-	}
-	
+  
+  $history['history_text'] = $_POST['history_text'];
+  
+  if(!empty($cs_main['fckeditor'])) {
+    $history['history_text'] = '[html]' . $_POST['history_text'] . '[/html]';
+  }
+  
+  if (!empty($_POST['history_newtime'])) {
+    $history['history_time'] = cs_time();
+    $newtime = 1;
+  }
+  
+  $error = '';
+  
+  if(empty($history['history_text'])) {
+    $error .= $cs_lang['no_text'] . cs_html_br(1); 
+  }
+  
 } else {
-	
-	$history = cs_sql_select(__FILE__,'history','history_time, history_text, users_id',"history_id = '" . $history_id . "'");
-	$newtime = 0;
+  
+  $history = cs_sql_select(__FILE__,'history','history_time, history_text, users_id',"history_id = '" . $history_id . "'");
+  $newtime = 0;
 }
 
 if(!isset($_POST['submit']) AND !isset($_POST['preview'])) {
-	$data['head']['body'] = $cs_lang['body'];
+  $data['head']['body'] = $cs_lang['body'];
 } elseif(!empty($error)) {
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 } elseif(isset($_POST['preview'])) {
-	$data['head']['body'] = $cs_lang['preview'];
+  $data['head']['body'] = $cs_lang['preview'];
 }
-	
+  
 if(isset($_POST['preview']) AND empty($error)) {
-	$data['if']['preview'] = TRUE;
-	
-	$data['preview']['date'] = cs_date('unix',$history['history_time'],1);
+  $data['if']['preview'] = TRUE;
+  
+  $data['preview']['date'] = cs_date('unix',$history['history_time'],1);
 
-	$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $history['users_id'] . "'");
-	$data['preview']['user'] = cs_user($history['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
-		
-	if(!empty($cs_main['fckeditor'])) {
-		$history['history_text'] = '[html]' . $_POST['history_text'] . '[/html]';
-	}
-	$data['preview']['text'] = cs_secure($history['history_text'],1,1,1,1);
+  $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $history['users_id'] . "'");
+  $data['preview']['user'] = cs_user($history['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+    
+  if(!empty($cs_main['fckeditor'])) {
+    $history['history_text'] = '[html]' . $_POST['history_text'] . '[/html]';
+  }
+  $data['preview']['text'] = cs_secure($history['history_text'],1,1,1,1);
 }
 
 if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-	if(empty($cs_main['fckeditor'])) {
-		$data['if']['no_fck'] = 1;
-		$data['history']['abcode_smileys'] = cs_abcode_smileys('history_text');
-		$data['history']['abcode_features'] = cs_abcode_features('history_text');
-		$data['history']['text'] = $history['history_text'];
-		$data['if']['fck'] = 0;
-	}
-	else {
-		$data['if']['fck'] = 1;
-		$data['if']['no_fck'] = 0;
-		$data['history']['fck_editor'] = cs_fckeditor('history_text',$history['history_text']);
-	}
-	$data['history']['new_time'] = $newtime == 1 ? 'checked="checked"' : '';
-	$data['history']['id'] = $history_id;
-	
-	echo cs_subtemplate(__FILE__,$data,'history','edit');
-	
+  if(empty($cs_main['fckeditor'])) {
+    $data['if']['no_fck'] = 1;
+    $data['history']['abcode_smileys'] = cs_abcode_smileys('history_text');
+    $data['history']['abcode_features'] = cs_abcode_features('history_text');
+    $data['history']['text'] = $history['history_text'];
+    $data['if']['fck'] = 0;
+  }
+  else {
+    $data['if']['fck'] = 1;
+    $data['if']['no_fck'] = 0;
+    $data['history']['fck_editor'] = cs_fckeditor('history_text',$history['history_text']);
+  }
+  $data['history']['new_time'] = $newtime == 1 ? 'checked="checked"' : '';
+  $data['history']['id'] = $history_id;
+  
+  echo cs_subtemplate(__FILE__,$data,'history','edit');
+  
 } else {
-	$history_cells = array_keys($history);
-	$history_save = array_values($history);
-	cs_sql_update(__FILE__,'history',$history_cells,$history_save,$history_id);
-	
-	cs_redirect($cs_lang['changes_done'],'history');
+  $history_cells = array_keys($history);
+  $history_save = array_values($history);
+  cs_sql_update(__FILE__,'history',$history_cells,$history_save,$history_id);
+  
+  cs_redirect($cs_lang['changes_done'],'history');
 }
 
 ?>

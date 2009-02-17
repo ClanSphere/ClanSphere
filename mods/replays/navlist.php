@@ -24,15 +24,15 @@ if(empty($cs_replays)) {
 else {
   $run = 0;
   foreach ($cs_replays AS $replays) {
-	$data['replays'][$run]['game_icon'] = cs_html_img('uploads/games/' . $replays['games_id'] . '.gif');
-	$data['replays'][$run]['date'] = cs_date('date',$replays['replays_date']);
-	$data['replays'][$run]['view_url'] = cs_url('replays','view','id=' . $replays['replays_id']);
-	$short_team1 = strlen($replays['replays_team1']) <= $fig_team1 ? $replays['replays_team1'] : substr($replays['replays_team1'],0,$fig_team1) . '...';
-	$short_team2 = strlen($replays['replays_team2']) <= $fig_team2 ? $replays['replays_team2'] : substr($replays['replays_team2'],0,$fig_team2) . '...';
-	$data['replays'][$run]['team1_short'] = cs_secure($short_team1);
-	$data['replays'][$run]['team2_short'] = cs_secure($short_team2);
-	$data['replays'][$run]['team1'] = cs_secure($replays['replays_team1']);
-	$data['replays'][$run]['team2'] = cs_secure($replays['replays_team2']);
+  $data['replays'][$run]['game_icon'] = cs_html_img('uploads/games/' . $replays['games_id'] . '.gif');
+  $data['replays'][$run]['date'] = cs_date('date',$replays['replays_date']);
+  $data['replays'][$run]['view_url'] = cs_url('replays','view','id=' . $replays['replays_id']);
+  $short_team1 = strlen($replays['replays_team1']) <= $fig_team1 ? $replays['replays_team1'] : substr($replays['replays_team1'],0,$fig_team1) . '...';
+  $short_team2 = strlen($replays['replays_team2']) <= $fig_team2 ? $replays['replays_team2'] : substr($replays['replays_team2'],0,$fig_team2) . '...';
+  $data['replays'][$run]['team1_short'] = cs_secure($short_team1);
+  $data['replays'][$run]['team2_short'] = cs_secure($short_team2);
+  $data['replays'][$run]['team1'] = cs_secure($replays['replays_team1']);
+  $data['replays'][$run]['team2'] = cs_secure($replays['replays_team2']);
     $run++;
   }
   echo cs_subtemplate(__FILE__,$data,'replays','navlist');

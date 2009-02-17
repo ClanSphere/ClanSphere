@@ -9,12 +9,12 @@ $modules = cs_checkdirs('mods');
 $tables = 0;
 foreach($modules as $mod) {
 
-	if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha') AND !empty($mod['tables'][0])) {
-		foreach($mod['tables'] AS $table) {
+  if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha') AND !empty($mod['tables'][0])) {
+    foreach($mod['tables'] AS $table) {
       $tables++;
-			$sql_content .= '{optimize} {pre}_' . $table . ";\n";
-		}
-	}
+      $sql_content .= '{optimize} {pre}_' . $table . ";\n";
+    }
+  }
 }
 $sql_content = substr($sql_content,0,-1);
 

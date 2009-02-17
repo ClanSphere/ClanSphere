@@ -2,12 +2,12 @@
 
 $cs_lang['mod_name'] = 'Forumrangen';
 $cs_lang['mod_text'] = 'creëer en onderhoudt forumrangen';
-$cs_lang['mod']	= 'Forumrangen';
+$cs_lang['mod']  = 'Forumrangen';
 
-$cs_lang['head']	= 'Verander';
-$cs_lang['head_create']	= 'creëer';
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['body_create']		= 'Alle velden met een * zijn verplicht';
+$cs_lang['head']  = 'Verander';
+$cs_lang['head_create']  = 'creëer';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['body_create']    = 'Alle velden met een * zijn verplicht';
 
 $cs_lang['min'] = 'Van posts';
 $cs_lang['points'] = 'Punten';

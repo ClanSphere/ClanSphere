@@ -37,22 +37,22 @@ elseif(!empty($_POST['submit'])) {
   
   if(empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
-	$error++;
+  $error++;
   }
   
   if($img_size[0]>$op_lanpartys['max_width']) {
     $message .= $cs_lang['too_wide'] . cs_html_br(1);
-  	$error++;
+    $error++;
   }
   
   if($img_size[1]>$op_lanpartys['max_height']) { 
     $message .= $cs_lang['too_high'] . cs_html_br(1);
-  	$error++;
+    $error++;
   }
   
   if($_FILES['picture']['size']>$op_lanpartys['max_size']) { 
     $message .= $cs_lang['too_big'] . cs_html_br(1);
-  	$error++;
+    $error++;
   }
 
   if(empty($error)) {
@@ -65,17 +65,17 @@ elseif(!empty($_POST['submit'])) {
       $ext = 'png'; break;
     }
     
-	$target = $cs_lanpartys_id . '-' . $lanpartys_next . '.' . $ext;
+  $target = $cs_lanpartys_id . '-' . $lanpartys_next . '.' . $ext;
     $picture_name = 'picture-' . $target;
     $thumb_name = 'thumb-' . $target;
     
-	if(cs_resample($_FILES['picture']['tmp_name'], 'uploads/lanpartys/' . $thumb_name, 80, 200) 
+  if(cs_resample($_FILES['picture']['tmp_name'], 'uploads/lanpartys/' . $thumb_name, 80, 200) 
     AND cs_upload('lanpartys', $picture_name, $_FILES['picture']['tmp_name'])) {
       $cells = array('lanpartys_pictures');
       $content = empty($lanpartys_string) ? array($target) : array($lanpartys_string . "\n" . $target);
       cs_sql_update(__FILE__,'lanpartys',$cells,$content,$cs_lanpartys_id);
 
-	  cs_redirect($cs_lang['success'],'lanpartys','picture','id=' . $cs_lanpartys_id);
+    cs_redirect($cs_lang['success'],'lanpartys','picture','id=' . $cs_lanpartys_id);
     }
     else {
         $message .= $cs_lang['up_error'];

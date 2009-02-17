@@ -3,12 +3,12 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'Forum koda';
-$cs_lang['mod_text']	= 'Zamenja vzorce z slikami ali besedilom';
+$cs_lang['mod']  = 'Forum koda';
+$cs_lang['mod_text']  = 'Zamenja vzorce z slikami ali besedilom';
 
-$cs_lang['body_create']	= 'Dodaj novo kodo';
-$cs_lang['body_edit']	= 'Uredi kodo';
-$cs_lang['body_options']	= 'Administracija mo&#382;nosti modula.';
+$cs_lang['body_create']  = 'Dodaj novo kodo';
+$cs_lang['body_edit']  = 'Uredi kodo';
+$cs_lang['body_options']  = 'Administracija mo&#382;nosti modula.';
 $cs_lang['new_abcode'] = 'Nova forum koda';
 
 $cs_lang['max_width'] = 'Max. &scaron;irina: ';
@@ -26,15 +26,15 @@ $cs_lang['pattern'] = 'Vzorec';
 $cs_lang['result'] = 'Rezultat';
 $cs_lang['function'] = 'Funkcija';
 $cs_lang['pic_up'] = 'Nalo&#382;i sliko';
-$cs_lang['pic_current']	= 'Trenutna slika';
+$cs_lang['pic_current']  = 'Trenutna slika';
 $cs_lang['nopic'] = 'Ni slike';
 $cs_lang['pic_infos'] = 'Informacije';
 $cs_lang['filetypes'] = 'Formati: ';
 
-$cs_lang['too_big']	= '- Datoteka je prevelika';
-$cs_lang['too_wide']	= '- Slika je pre&scaron;iroka';
-$cs_lang['too_high']	= '- Slika je previsoka';
-$cs_lang['ext_error']	= '- Neznan format datoteke';
+$cs_lang['too_big']  = '- Datoteka je prevelika';
+$cs_lang['too_wide']  = '- Slika je pre&scaron;iroka';
+$cs_lang['too_high']  = '- Slika je previsoka';
+$cs_lang['ext_error']  = '- Neznan format datoteke';
 $cs_lang['no_func'] = '- Izbrati mora&scaron; funkcijo';
 $cs_lang['no_pattern'] = '- Napisati mora&scaron; vzorec';
 $cs_lang['pattern_exists'] = '- Tak vzorec &#382;e obstaja';

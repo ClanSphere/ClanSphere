@@ -3,16 +3,16 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'Pravila';
-$cs_lang['mod_text']	= 'Upravljanje pravil';
+$cs_lang['mod_name']  = 'Pravila';
+$cs_lang['mod_text']  = 'Upravljanje pravil';
 
-$cs_lang['mod']	= 'Pravila';
-$cs_lang['head_create']	= 'Dodaj';
+$cs_lang['mod']  = 'Pravila';
+$cs_lang['head_create']  = 'Dodaj';
 $cs_lang['body_create'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
-$cs_lang['head_edit']	= 'Uredi';
+$cs_lang['head_edit']  = 'Uredi';
 $cs_lang['body_edit'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
-$cs_lang['head_remove']	= 'Odstrani';
-$cs_lang['head_manage']	= 'Administracija';
+$cs_lang['head_remove']  = 'Odstrani';
+$cs_lang['head_manage']  = 'Administracija';
 
 $cs_lang['cat'] = 'Kategorija';
 $cs_lang['rule'] = 'Pravila';

@@ -21,16 +21,16 @@ $links_loop = count($cs_links);
 for($run=0; $run<$links_loop; $run++) {
         
   echo cs_html_table(1,'forum',1);
-	echo cs_html_roco(1,'headb');
-	echo cs_secure($cs_links[$run]['links_name']);
-	$place = 'uploads/links/' .$cs_links[$run]['links_banner'];
-	echo cs_html_roco(0);
-	echo cs_html_roco(2,'leftc');
-	$img = cs_html_img ($place,0,0,0,$cs_links[$run]['links_name']);
-	$target = 'http://' .$cs_links[$run]['links_url'];
-	echo cs_html_link($target,$img);
+  echo cs_html_roco(1,'headb');
+  echo cs_secure($cs_links[$run]['links_name']);
+  $place = 'uploads/links/' .$cs_links[$run]['links_banner'];
+  echo cs_html_roco(0);
+  echo cs_html_roco(2,'leftc');
+  $img = cs_html_img ($place,0,0,0,$cs_links[$run]['links_name']);
+  $target = 'http://' .$cs_links[$run]['links_url'];
+  echo cs_html_link($target,$img);
         echo cs_html_roco(0);
-	echo cs_html_roco(4,'leftc');
+  echo cs_html_roco(4,'leftc');
         echo cs_secure($cs_links[$run]['links_info'],1,1);
         echo cs_html_roco(0);
         echo cs_html_table(0);

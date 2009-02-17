@@ -32,7 +32,7 @@ if(empty($_POST['tables'])) {
 
   foreach($modules as $mod) {
 
-  	if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha') AND !empty($mod['tables'][0])) {
+    if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha') AND !empty($mod['tables'][0])) {
 
       foreach($mod['tables'] AS $mod_table) {
 
@@ -50,7 +50,7 @@ if(empty($_POST['tables'])) {
   $run = 0;
   foreach($static AS $sql_table => $mod) {
     $data['tables'][$run]['option'] = cs_html_option($sql_table, $sql_table);
-	$run++;
+  $run++;
   }
 
   $data['output']['prefix'] = $prefix;
@@ -99,8 +99,8 @@ else {
   }
   else {
     global $com_lang;
-	$data['if']['output_text'] = TRUE;
-	$data['output']['text'] = nl2br(htmlentities($sql_content, ENT_QUOTES, $com_lang['charset']));
+  $data['if']['output_text'] = TRUE;
+  $data['output']['text'] = nl2br(htmlentities($sql_content, ENT_QUOTES, $com_lang['charset']));
   }
 }
 

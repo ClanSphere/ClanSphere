@@ -24,13 +24,13 @@ $cs_cat = cs_sql_select(__FILE__,'categories','categories_name, categories_id',$
 $data['replays']['category'] = cs_link($cs_cat['categories_name'],'categories','view','id=' . $cs_cat['categories_id']);
 
 if(!empty($cs_replays['games_id'])) {
-	$img = cs_html_img('uploads/games/' . $cs_replays['games_id'] . '.gif') . ' ';
-	$where = "games_id = '" . $cs_replays['games_id'] . "'";
-	$cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
-	$data['replays']['game_img'] = $img . cs_link($cs_game['games_name'],'games','view','id=' . $cs_game['games_id']);
+  $img = cs_html_img('uploads/games/' . $cs_replays['games_id'] . '.gif') . ' ';
+  $where = "games_id = '" . $cs_replays['games_id'] . "'";
+  $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
+  $data['replays']['game_img'] = $img . cs_link($cs_game['games_name'],'games','view','id=' . $cs_game['games_id']);
 }
 else {
-	$data['replays']['game_img'] = ' - ';
+  $data['replays']['game_img'] = ' - ';
 }
 
 $data['replays']['version'] = cs_secure($cs_replays['replays_version']);
@@ -40,13 +40,13 @@ $data['replays']['date'] = cs_date('date',$cs_replays['replays_date']);
 $data['replays']['map'] = cs_secure($cs_replays['replays_map']);
 
 if(empty($cs_replays['replays_mirrors'])) {
-	$data['replays']['mirrors'] = ' - ';
+  $data['replays']['mirrors'] = ' - ';
 }
 else {
-	$mirror = explode("\n", $cs_replays['replays_mirrors']); 
-	foreach($mirror AS $load) {
-		$data['replays']['mirrors'] = cs_html_link($load,$load) . cs_html_br(1);
-	}
+  $mirror = explode("\n", $cs_replays['replays_mirrors']); 
+  foreach($mirror AS $load) {
+    $data['replays']['mirrors'] = cs_html_link($load,$load) . cs_html_br(1);
+  }
 }
 
 $data['replays']['info'] = cs_secure($cs_replays['replays_info'],1,1);
@@ -58,8 +58,8 @@ $count_com = cs_sql_count(__FILE__,'comments',$where_com);
 include_once('mods/comments/functions.php');
 
 if(!empty($count_com)) {
-	echo cs_html_br(1);
-	echo cs_comments_view($cs_replays_id,'replays','view',$count_com);
+  echo cs_html_br(1);
+  echo cs_comments_view($cs_replays_id,'replays','view',$count_com);
 }
 
 echo cs_comments_add($cs_replays_id,'replays',$cs_replays['replays_close']);

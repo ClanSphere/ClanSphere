@@ -3,16 +3,16 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'FAQ';
-$cs_lang['mod_text']	= 'Upravljaj FAQ';
-$cs_lang['mod']	= 'FAQ';
+$cs_lang['mod_name']  = 'FAQ';
+$cs_lang['mod_text']  = 'Upravljaj FAQ';
+$cs_lang['mod']  = 'FAQ';
 
 $cs_lang['head']= 'FAQ ID:';
-$cs_lang['head_remove']	= 'Odstrani';
-$cs_lang['head_manage']	= 'Administracija';
-$cs_lang['head_create']	= 'Dodaj';
+$cs_lang['head_remove']  = 'Odstrani';
+$cs_lang['head_manage']  = 'Administracija';
+$cs_lang['head_create']  = 'Dodaj';
 $cs_lang['body_create'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
-$cs_lang['head_edit']	= 'Uredi';
+$cs_lang['head_edit']  = 'Uredi';
 $cs_lang['body_edit'] =  'Prosim izpolni vsa polja ozna&#269;ena z *.';
 $cs_lang['error_occurred'] = 'Nisi izpolnil vseh polj.';
 $cs_lang['error_count'] = 'neipolnjenih obveznih polj.';

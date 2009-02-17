@@ -7,24 +7,24 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod']	= 'Citaciones';
-$cs_lang['modtext']	= 'Administar y crear Citaciones';
+$cs_lang['mod']  = 'Citaciones';
+$cs_lang['modtext']  = 'Administar y crear Citaciones';
 
 // Comments
-$cs_lang['com_create']	= 'Escribir comentarios';
-$cs_lang['fill_in']	= 'Rellene Todas las Casillas';
+$cs_lang['com_create']  = 'Escribir comentarios';
+$cs_lang['fill_in']  = 'Rellene Todas las Casillas';
 
-$cs_lang['not_able']	= '- Comentarios han sido desativados';
+$cs_lang['not_able']  = '- Comentarios han sido desativados';
 
-$cs_lang['place']			= 'Lugar :';
-$cs_lang['posts']			= 'Aportaciones:';
+$cs_lang['place']      = 'Lugar :';
+$cs_lang['posts']      = 'Aportaciones:';
 $cs_lang['text'] = 'Texto';
 
-$cs_lang['com_edit']	= 'Editar comentarios';
-$cs_lang['show_changes']	= 'Por favor Informar sobre editaciones del Texto';
-$cs_lang['low_axx']	= '- No tiene el Acceso Necesitado.';
+$cs_lang['com_edit']  = 'Editar comentarios';
+$cs_lang['show_changes']  = 'Por favor Informar sobre editaciones del Texto';
+$cs_lang['low_axx']  = '- No tiene el Acceso Necesitado.';
 
-$cs_lang['com_remove']	= 'Remover Comentarios';
+$cs_lang['com_remove']  = 'Remover Comentarios';
 
 
 // Create
@@ -51,7 +51,7 @@ $cs_lang['edit_done'] = 'Cambios echos';
 
 // List
 $cs_lang['user'] = 'Usuario';
-$cs_lang['list']	= 'Lista';
+$cs_lang['list']  = 'Lista';
 
 $cs_lang['headline'] = 'Cabezera';
 
@@ -59,10 +59,10 @@ $cs_lang['headline'] = 'Cabezera';
 $cs_lang['new_quote'] = 'Nueva citazion';
 
 // Remove
-$cs_lang['rly_remove']		= 'Remover Informacion Nr. %s de verdad ?';
+$cs_lang['rly_remove']    = 'Remover Informacion Nr. %s de verdad ?';
 
 // View
-$cs_lang['details']	= 'Detalles';
-$cs_lang['quote_info']		= 'Informaciones sobre la Citazion';
+$cs_lang['details']  = 'Detalles';
+$cs_lang['quote_info']    = 'Informaciones sobre la Citazion';
 
 ?>

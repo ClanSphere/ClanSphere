@@ -17,39 +17,39 @@ if (!empty($_POST['submit'])) {
 }
 
 if (empty($_POST['submit']) || !empty($error)) {
-	$sel = 'selected="selected"';
-	if($op_partner['method'] == 'random') { $data['sel']['random'] = $sel; } else { $data['sel']['random'] = ''; }
-	if($op_partner['method'] == 'rotation') { $data['sel']['rotation'] = $sel; } else { $data['sel']['rotation'] = ''; }
-	
-	$data['partner']['def_width_navimg'] = $op_partner['def_width_navimg'];
-	$data['partner']['def_height_navimg'] = $op_partner['def_height_navimg'];
-	$data['partner']['max_size_navimg'] = $op_partner['max_size_navimg'];
-	
-	$data['partner']['def_width_listimg'] = $op_partner['def_width_listimg'];
-	$data['partner']['def_height_listimg'] = $op_partner['def_height_listimg'];
-	$data['partner']['max_size_listimg'] = $op_partner['max_size_listimg'];
-	
-	$data['partner']['def_width_rotimg'] = $op_partner['def_width_rotimg'];
-	$data['partner']['def_height_rotimg'] = $op_partner['def_height_rotimg'];
-	$data['partner']['max_size_rotimg'] = $op_partner['max_size_rotimg'];
-	
-	$data['head']['body_text'] = empty($error) ? $cs_lang['errors_here'] : $error;
-	echo cs_subtemplate(__FILE__,$data,'partner','options');
-	
+  $sel = 'selected="selected"';
+  if($op_partner['method'] == 'random') { $data['sel']['random'] = $sel; } else { $data['sel']['random'] = ''; }
+  if($op_partner['method'] == 'rotation') { $data['sel']['rotation'] = $sel; } else { $data['sel']['rotation'] = ''; }
+  
+  $data['partner']['def_width_navimg'] = $op_partner['def_width_navimg'];
+  $data['partner']['def_height_navimg'] = $op_partner['def_height_navimg'];
+  $data['partner']['max_size_navimg'] = $op_partner['max_size_navimg'];
+  
+  $data['partner']['def_width_listimg'] = $op_partner['def_width_listimg'];
+  $data['partner']['def_height_listimg'] = $op_partner['def_height_listimg'];
+  $data['partner']['max_size_listimg'] = $op_partner['max_size_listimg'];
+  
+  $data['partner']['def_width_rotimg'] = $op_partner['def_width_rotimg'];
+  $data['partner']['def_height_rotimg'] = $op_partner['def_height_rotimg'];
+  $data['partner']['max_size_rotimg'] = $op_partner['max_size_rotimg'];
+  
+  $data['head']['body_text'] = empty($error) ? $cs_lang['errors_here'] : $error;
+  echo cs_subtemplate(__FILE__,$data,'partner','options');
+  
 }
 else 
 {
-	settype($_POST['def_width_navimg'],'integer');
-	settype($_POST['def_height_navimg'],'integer');
-	settype($_POST['max_size_navimg'],'integer');
-	
-	settype($_POST['def_width_listimg'],'integer');
-	settype($_POST['def_height_listimg'],'integer');
-	settype($_POST['max_size_listimg'],'integer');
-	
-	settype($_POST['def_width_rotimg'],'integer');
-	settype($_POST['def_height_rotimg'],'integer');
-	settype($_POST['max_size_rotimg'],'integer');
+  settype($_POST['def_width_navimg'],'integer');
+  settype($_POST['def_height_navimg'],'integer');
+  settype($_POST['max_size_navimg'],'integer');
+  
+  settype($_POST['def_width_listimg'],'integer');
+  settype($_POST['def_height_listimg'],'integer');
+  settype($_POST['max_size_listimg'],'integer');
+  
+  settype($_POST['def_width_rotimg'],'integer');
+  settype($_POST['def_height_rotimg'],'integer');
+  settype($_POST['max_size_rotimg'],'integer');
 
   $opt_where = "options_mod = 'partner' AND options_name = ";
   $def_cell = array('options_value');

@@ -3,10 +3,10 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod_name']	= 'Igre';
-$cs_lang['mod_text']	= 'Modul iger';
-$cs_lang['mod']	= 'Igre';
-$cs_lang['head_remove']	= 'Odstrani';
+$cs_lang['mod_name']  = 'Igre';
+$cs_lang['mod_text']  = 'Modul iger';
+$cs_lang['mod']  = 'Igre';
+$cs_lang['head_remove']  = 'Odstrani';
 $cs_lang['head_edit'] = 'Uredi'; 
 $cs_lang['head1'] = 'Podrobnosti';
 $cs_lang['body_create'] =  'Prosim izpolni &#269;imve&#269; polj.';

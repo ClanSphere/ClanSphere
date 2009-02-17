@@ -1,12 +1,12 @@
 <?php
-$cs_lang['mod_name']	= 'Geschiedenis';
-$cs_lang['mod_text']	= 'Beheer of maak geschiedenis aan';
-$cs_lang['mod']	= 'Geschiedenis';
-$cs_lang['mod_list']	= 'Geschiedenis';
-$cs_lang['head_manage']	= 'Beheer';
-$cs_lang['head_edit']	= 'Bewerk';
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['head_create']	= 'Toevoegen';
+$cs_lang['mod_name']  = 'Geschiedenis';
+$cs_lang['mod_text']  = 'Beheer of maak geschiedenis aan';
+$cs_lang['mod']  = 'Geschiedenis';
+$cs_lang['mod_list']  = 'Geschiedenis';
+$cs_lang['head_manage']  = 'Beheer';
+$cs_lang['head_edit']  = 'Bewerk';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['head_create']  = 'Toevoegen';
 $cs_lang['body_create'] =  'Alle velden met een * zijn verplicht.';
 $cs_lang['body_edit'] =  'Alle velden met een * zijn verplicht.';
 $cs_lang['error_occurred'] = 'Niet alle verplichte velden zijn ingevuld.';

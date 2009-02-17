@@ -35,13 +35,13 @@ if (fsockopen("udp://127.0.0.1", 1)) {
     include_once(PHGDIR . 'classes/phgstats.class.php');  
     $phgdir = PHGDIR;
   
-	$index = count($gameserver);
-	while($index) {
+  $index = count($gameserver);
+  while($index) {
       $index--;
       list($game[$index], $host[$index], $port[$index], $queryport[$index], $stats[$index]) = split(':', $gameserver[$index]);
     }
-	
-	//if ($host[$HTTP_GET_VARS["sh_srv"]])
+  
+  //if ($host[$HTTP_GET_VARS["sh_srv"]])
     $sh_srv = 0;
 
     // gameserver data

@@ -38,7 +38,7 @@ if(isset($_POST['submit'])) {
   
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
-	$error++;
+  $error++;
   }
   elseif(!empty($files['picture']['tmp_name'])) {
     switch($img_size[2]) {
@@ -70,11 +70,11 @@ if(isset($_POST['submit'])) {
     $error = 0;
     $message = '';
     
-	if($cs_clans['clans_picture'] != $filename AND !empty($cs_clans['clans_picture'])) {
+  if($cs_clans['clans_picture'] != $filename AND !empty($cs_clans['clans_picture'])) {
       cs_unlink('clans', $cs_clans['clans_picture']);
     }
-	
-	$cs_clans['clans_picture'] = $filename;
+  
+  $cs_clans['clans_picture'] = $filename;
   }
   else {
     $message .= $cs_lang['up_error'];
@@ -161,8 +161,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   for($run=0; $run<$users_data_loop; $run++) {
     $data['users'][$run]['id'] = $users_data[$run]['users_id'];
     $data['users'][$run]['name'] = $users_data[$run]['users_nick'];
-	
-	if($cs_clans['users_id'] == $users_data[$run]['users_id']) {
+  
+  if($cs_clans['users_id'] == $users_data[$run]['users_id']) {
       $data['users'][$run]['select'] = 'selected="selected"';
     }
     else {
@@ -174,7 +174,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['clans']['pic'] = $cs_lang['nopic'];
   }
   else {
-	$place = 'uploads/clans/' . $cs_clans['clans_picture'];
+  $place = 'uploads/clans/' . $cs_clans['clans_picture'];
     $size = getimagesize($cs_main['def_path'] . '/' . $place);
     $data['clans']['pic'] = cs_html_img($place,$size[1],$size[0]);
   }
@@ -198,7 +198,7 @@ else {
   $clans_cells = array_keys($cs_clans);
   $clans_save = array_values($cs_clans);
   cs_sql_update(__FILE__,'clans',$clans_cells,$clans_save,$clans_id);
-	
+  
   cs_redirect($cs_lang['changes_done'], 'clans') ;
 }
 

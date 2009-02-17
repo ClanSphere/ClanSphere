@@ -26,9 +26,9 @@ if (!empty($_POST['submit']) && empty($error)) {
   if (!empty($lastid)) {
     $last = cs_sql_select(__FILE__,'comments','comments_time, users_id','comments_id = \'' . $lastid . '\'');
   } else {
-  	$last = array();
-  	$last['comments_time'] = $comment['comments_time'];
-  	$last['users_id'] = $comment['users_id'];
+    $last = array();
+    $last['comments_time'] = $comment['comments_time'];
+    $last['users_id'] = $comment['users_id'];
   }
   
   
@@ -59,7 +59,7 @@ if (!empty($_POST['submit']) && empty($error)) {
       $content = array($threads_id);
       
       foreach ($_POST['comments'] as $comments_id) {
-      	cs_sql_update(__FILE__,'comments',$cells,$content,$comments_id);
+        cs_sql_update(__FILE__,'comments',$cells,$content,$comments_id);
       }
     }
     
@@ -68,8 +68,8 @@ if (!empty($_POST['submit']) && empty($error)) {
     $last = cs_sql_select(__FILE__,'comments','users_id, comments_time', $cond, 'comments_time ASC');
     
     if (empty($last)) {
-    	$last = cs_sql_select(__FILE__,'threads','users_id, threads_time', "threads_id = '" . $old_threads_id . "'");
-    	$last_time = $last['threads_time'];
+      $last = cs_sql_select(__FILE__,'threads','users_id, threads_time', "threads_id = '" . $old_threads_id . "'");
+      $last_time = $last['threads_time'];
     } else
       $last_time = $last['comments_time'];
     

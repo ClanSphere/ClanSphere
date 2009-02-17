@@ -23,19 +23,19 @@ $categories_loop = count($categories_data);
 for($run=0; $run<$categories_loop; $run++) {
         
         
-	echo cs_html_table(1,'forum',1);
-	echo cs_html_roco(1,'headb');
-	echo cs_link(cs_secure($categories_data[$run]['categories_name']),'links','listcat','id=' . $categories_data[$run]['categories_id']);
-	$content = cs_sql_count(__FILE__,'links','categories_id = ' .$categories_data[$run]['categories_id']);
-	echo ' ('. $content .')';
-	echo cs_html_roco(0);
-	
-	
-	echo cs_html_roco(1,'leftb');
-	echo cs_secure($categories_data[$run]['categories_text'],1,1);
-	echo cs_html_roco(0);
-	echo cs_html_table(0);
-	echo cs_html_br(2);
+  echo cs_html_table(1,'forum',1);
+  echo cs_html_roco(1,'headb');
+  echo cs_link(cs_secure($categories_data[$run]['categories_name']),'links','listcat','id=' . $categories_data[$run]['categories_id']);
+  $content = cs_sql_count(__FILE__,'links','categories_id = ' .$categories_data[$run]['categories_id']);
+  echo ' ('. $content .')';
+  echo cs_html_roco(0);
+  
+  
+  echo cs_html_roco(1,'leftb');
+  echo cs_secure($categories_data[$run]['categories_text'],1,1);
+  echo cs_html_roco(0);
+  echo cs_html_table(0);
+  echo cs_html_br(2);
 } 
 
 

@@ -1,9 +1,9 @@
 <?php
 
-$cs_lang['mod_name']	= 'Games';
-$cs_lang['mod_text']	= 'DE games module';
-$cs_lang['mod']	= 'Games';
-$cs_lang['head_remove']	= 'Verwijder'; 
+$cs_lang['mod_name']  = 'Games';
+$cs_lang['mod_text']  = 'DE games module';
+$cs_lang['mod']  = 'Games';
+$cs_lang['head_remove']  = 'Verwijder'; 
 $cs_lang['head_edit'] = 'Bewerk'; 
 $cs_lang['head1'] = 'Details';
 $cs_lang['body_create'] =  'Vul zo veel mogelijk velden in aub.';

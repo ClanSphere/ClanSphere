@@ -2,8 +2,8 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Links';
-$cs_lang['text']	= 'Das Links Modul';
+$cs_lang['mod']  = 'Links';
+$cs_lang['text']  = 'Das Links Modul';
 
 $cs_lang['head']= '&Uuml;bersicht';
 $cs_lang['body_list']= 'Derzeit sind %s Links eingetragen.';
@@ -18,13 +18,13 @@ $cs_lang['new_link'] = 'Neuer Link';
 $cs_lang['online'] = '[color=lime]online[/color]';
 $cs_lang['offline'] = '[color=red]offline[/color]';
 
-$cs_lang['head_remove']	= 'Entfernen';
+$cs_lang['head_remove']  = 'Entfernen';
 $cs_lang['newicon'] = 'Neuer Banner';
 $cs_lang['delicon'] = 'Banner l&ouml;schen';
 
 
 
-$cs_lang['mod1']	= 'Sponsoren &amp; Partner';
+$cs_lang['mod1']  = 'Sponsoren &amp; Partner';
 $cs_lang['all1'] = 'Derzeit sind %s Sponsoren / Partner eingetragen.';
 
 $cs_lang['info'] = 'Infos';

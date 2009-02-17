@@ -2,11 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net 
 // $Id$
 
-$cs_lang['mod']	= 'ClanSphere';
-$cs_lang['modinfo']	= 'Hauptmodul mit CMS-Kern';
-$cs_lang['modules_list']	= 'Alle Module sind von hier aus erreichbar.';
-$cs_lang['languages']	= 'Sprachen';
-$cs_lang['languages_list']	= 'Liste der %s vorhandenen &Uuml;bersetzungen.';
+$cs_lang['mod']  = 'ClanSphere';
+$cs_lang['modinfo']  = 'Hauptmodul mit CMS-Kern';
+$cs_lang['modules_list']  = 'Alle Module sind von hier aus erreichbar.';
+$cs_lang['languages']  = 'Sprachen';
+$cs_lang['languages_list']  = 'Liste der %s vorhandenen &Uuml;bersetzungen.';
 
 $cs_lang['cache'] = 'Cache';
 $cs_lang['body_cache'] = 'Immer leeren wenn eine "info.php" Datei zugef&uuml;gt, ge&auml;ndert oder entfernt worden ist!';
@@ -28,22 +28,22 @@ $cs_lang['lang_list'] = 'Sprachliste';
 
 $cs_lang['creator'] = 'Ersteller';
 
-$cs_lang['head_lang_view']	= 'Sprach Details';
-$cs_lang['body_lang_view']	= 'Informationen zu einer &Uuml;bersetzung.';
+$cs_lang['head_lang_view']  = 'Sprach Details';
+$cs_lang['body_lang_view']  = 'Informationen zu einer &Uuml;bersetzung.';
 
-$cs_lang['mod_released']		= 'Datum';
-$cs_lang['mod_team']				= 'Team';
-$cs_lang['mod_url']					= 'Homepage';
-$cs_lang['mod_desc']				= 'Beschreibung';
+$cs_lang['mod_released']    = 'Datum';
+$cs_lang['mod_team']        = 'Team';
+$cs_lang['mod_url']          = 'Homepage';
+$cs_lang['mod_desc']        = 'Beschreibung';
 
-$cs_lang['translation_status']	= 'Status der &Uuml;bersetzung';
-$cs_lang['file']								= 'Datei';
-$cs_lang['diff']								= 'Unterschiede';
-$cs_lang['missing_file']				= 'Datei nicht gefunden';
-$cs_lang['total_diff']					= 'Unterschiede in %s Dateien gefunden';
+$cs_lang['translation_status']  = 'Status der &Uuml;bersetzung';
+$cs_lang['file']                = 'Datei';
+$cs_lang['diff']                = 'Unterschiede';
+$cs_lang['missing_file']        = 'Datei nicht gefunden';
+$cs_lang['total_diff']          = 'Unterschiede in %s Dateien gefunden';
 
-$cs_lang['head_system']	= 'System';
-$cs_lang['body_system']	= 'Wichtige Informationen und Einstellungen.';
+$cs_lang['head_system']  = 'System';
+$cs_lang['body_system']  = 'Wichtige Informationen und Einstellungen.';
 $cs_lang['templates'] = 'Templates';
 $cs_lang['software'] = 'Software';
 $cs_lang['storage'] = 'Speicherplatz';
@@ -53,7 +53,7 @@ $cs_lang['themes'] = 'Themen';
 $cs_lang['using'] = 'nach';
 $cs_lang['dstime'] = 'Sommerzeit';
 
-$cs_lang['body_options']	= 'Verwaltung der portalweiten Einstellungen.';
+$cs_lang['body_options']  = 'Verwaltung der portalweiten Einstellungen.';
 $cs_lang['off'] = 'aus';
 $cs_lang['on'] = 'an';
 $cs_lang['automatic'] = 'automatisch';
@@ -81,15 +81,15 @@ $cs_lang['modul'] = 'Modul';
 $cs_lang['action'] = 'Aktion';
 $cs_lang['parameters'] = 'Parameter';
 
-$cs_lang['head_software']	= 'Software';
-$cs_lang['body_software']	= 'Folgendes ist auf diesem Server vorhanden.';
+$cs_lang['head_software']  = 'Software';
+$cs_lang['body_software']  = 'Folgendes ist auf diesem Server vorhanden.';
 
-$cs_lang['display_err']	= 'Fehlerausgabe';
+$cs_lang['display_err']  = 'Fehlerausgabe';
 $cs_lang['m_quotes'] = 'Magische Anf&uuml;hrungszeichen';
 $cs_lang['os'] = 'Betriebssystem';
-$cs_lang['php_extensions']	= 'PHP Erweiterungen';
-$cs_lang['php_mod']	= 'PHP Modul';
-$cs_lang['php_setup']	= 'PHP Einstellungen';
+$cs_lang['php_extensions']  = 'PHP Erweiterungen';
+$cs_lang['php_mod']  = 'PHP Modul';
+$cs_lang['php_setup']  = 'PHP Einstellungen';
 $cs_lang['reg_global'] = 'Globale Registrierung';
 $cs_lang['safe_mode'] = 'Sicherer Modus';
 $cs_lang['trans_sid'] = 'Transparente SessionID';
@@ -101,7 +101,7 @@ $cs_lang['type'] = 'Datenbank Server';
 $cs_lang['client'] = 'Client Version';
 $cs_lang['host'] = 'Ort der Datenbank';
 $cs_lang['server'] = 'Server Version';
-$cs_lang['tables']	= 'Tabellen';
+$cs_lang['tables']  = 'Tabellen';
 $cs_lang['post_max_size'] = 'Max. Formulardatenmenge';
 $cs_lang['upload_max_filesize'] = 'Max. Upload-Dateigr&ouml;&szlig;e';
 $cs_lang['memory_limit'] = 'Max. Speicherverbrauch';
@@ -110,50 +110,50 @@ $cs_lang['usage'] = 'Nutzung';
 $cs_lang['data'] = 'Daten';
 $cs_lang['indexe'] = 'Indexe';
 
-$cs_lang['body_storage']	= 'Wichtige Statistiken und Informationen';
+$cs_lang['body_storage']  = 'Wichtige Statistiken und Informationen';
 
 $cs_lang['space_total'] = 'Kapazit&auml;t';
 $cs_lang['space_free'] = 'Freier Speicher';
-$cs_lang['space_used']	= 'Belegter Speicher';
+$cs_lang['space_used']  = 'Belegter Speicher';
 $cs_lang['space_mods'] = 'Modul Gr&ouml;&szlig;e';
 $cs_lang['space_sym'] = 'Symbol Gr&ouml;&szlig;e';
 $cs_lang['space_up'] = 'Upload Gr&ouml;&szlig;e';
 $cs_lang['space_temp'] = 'Template Gr&ouml;&szlig;e';
 
-$cs_lang['body_temp_list']	= 'Liste der %s vorhandenen Designs.';
+$cs_lang['body_temp_list']  = 'Liste der %s vorhandenen Designs.';
 $cs_lang['theme_found'] = 'Erfolgreich gewechselt. Es wurde ein Theme mit dem selben Namen gefunden. ';
 $cs_lang['change_to_this'] = 'Auf dieses wechseln';
 
-$cs_lang['head_temp_view']	= 'Template Details';
-$cs_lang['body_temp_view']	= 'Informationen zu einem Design.';
+$cs_lang['head_temp_view']  = 'Template Details';
+$cs_lang['body_temp_view']  = 'Informationen zu einem Design.';
 
 $cs_lang['themes_list'] = 'Themen Liste';
 $cs_lang['themes_listed'] = 'Liste der %s vorhandenen Themen.';
 
-$cs_lang['head_variables']	= 'Variablen';
-$cs_lang['body_variables']	= 'Daten die generell Verf&uuml;gbar sind';
+$cs_lang['head_variables']  = 'Variablen';
+$cs_lang['body_variables']  = 'Daten die generell Verf&uuml;gbar sind';
 
-$cs_lang['key']		= 'Schl&uuml;ssel';
-$cs_lang['value']	= 'Wert';
+$cs_lang['key']    = 'Schl&uuml;ssel';
+$cs_lang['value']  = 'Wert';
 
 $cs_lang['extended'] = 'Erweitert';
 $cs_lang['change_dstime_for_all'] = 'Sommerzeit f&uuml;r alle Benutzer umstellen';
 
 // Metatags
-$cs_lang['metatags']	= 'Metatags';
-$cs_lang['generate_metatags']	= 'Hier k&ouml;nnen Metatags generiert werden';
-$cs_lang['charset']	= 'Zeichensatz';
-$cs_lang['description']	= 'Beschreibung';
-$cs_lang['keywords']	= 'Schl&uuml;sselw&ouml;rter';
-$cs_lang['author']	= 'Author';
-$cs_lang['designer']	= 'Webmaster';
-$cs_lang['publisher']	= 'Herausgeber';
-$cs_lang['robots']	= 'Roboter';
-$cs_lang['distribution']	= 'Distribution';
-$cs_lang['edit_done']	= '&Auml;nderung erfolgreich';
-$cs_lang['too_many_chars']	= '- Ihre Eingabe im Feld "%s" enth&auml;lt mehr als 200 Zeichen';
-$cs_lang['global']	= 'global';
-$cs_lang['internal']	= 'intern';
+$cs_lang['metatags']  = 'Metatags';
+$cs_lang['generate_metatags']  = 'Hier k&ouml;nnen Metatags generiert werden';
+$cs_lang['charset']  = 'Zeichensatz';
+$cs_lang['description']  = 'Beschreibung';
+$cs_lang['keywords']  = 'Schl&uuml;sselw&ouml;rter';
+$cs_lang['author']  = 'Author';
+$cs_lang['designer']  = 'Webmaster';
+$cs_lang['publisher']  = 'Herausgeber';
+$cs_lang['robots']  = 'Roboter';
+$cs_lang['distribution']  = 'Distribution';
+$cs_lang['edit_done']  = '&Auml;nderung erfolgreich';
+$cs_lang['too_many_chars']  = '- Ihre Eingabe im Feld "%s" enth&auml;lt mehr als 200 Zeichen';
+$cs_lang['global']  = 'global';
+$cs_lang['internal']  = 'intern';
 
 // Lang Validator
 $cs_lang['validator'] = 'Validator';

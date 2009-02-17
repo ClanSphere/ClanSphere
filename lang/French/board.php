@@ -11,10 +11,10 @@ $cs_lang['delatt'] = 'Supprimer l\'attachement';
 
 //active.php 
 $cs_lang['files'] = 'Fichier attaché :';
-$cs_lang['mod']	= 'Forum';
+$cs_lang['mod']  = 'Forum';
 $cs_lang['modtext'] = 'Administration du forum';
-$cs_lang['head_active']	= 'Sujets récents';
-$cs_lang['body_active']	= 'Listes et hits des sujets';
+$cs_lang['head_active']  = 'Sujets récents';
+$cs_lang['body_active']  = 'Listes et hits des sujets';
 
 $cs_lang['hits'] = 'Hits';
 $cs_lang['thread'] = 'Sujet';
@@ -38,69 +38,69 @@ $cs_lang['guild'] = 'Gilde';
 $cs_lang['enterprise'] = 'Socièté';
 $cs_lang['class'] = 'Classe';
 $cs_lang['head_center'] = 'Centre de l\'utilisateur';
-$cs_lang['body_picture']	= 'Modification de l\'avatar.';
+$cs_lang['body_picture']  = 'Modification de l\'avatar.';
 
 $cs_lang['abos'] = 'Abonnements'; 
 $cs_lang['overall'] = 'Aperçu';
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signature';
 
-$cs_lang['remove_done']	= 'Avatar supprimé avec succès';
+$cs_lang['remove_done']  = 'Avatar supprimé avec succès';
 
 $cs_lang['pic_infos'] = 'Aide';
 $cs_lang['max_width'] = 'Largeur maximale :';
 $cs_lang['max_height'] = 'Hauteur maximale :';
 $cs_lang['filetypes'] = 'Type de fichier ';
 
-$cs_lang['too_big']	= '- Taille du fichier trop importante';
-$cs_lang['too_wide']	= '- Avatar trop large';
-$cs_lang['too_high']	= '- Avatar trop haut';
-$cs_lang['ext_error']	= '- Format de fichier non autorisé';
+$cs_lang['too_big']  = '- Taille du fichier trop importante';
+$cs_lang['too_wide']  = '- Avatar trop large';
+$cs_lang['too_high']  = '- Avatar trop haut';
+$cs_lang['ext_error']  = '- Format de fichier non autorisé';
 $cs_lang['up_error'] = '- Veuillez contacter l\'administrateur du site';
 $cs_lang['nopic'] = 'Avatar introuvable';
-$cs_lang['current']	= 'Récent';
-$cs_lang['more']	= 'plus ...';
-$cs_lang['glob_sig']	= 'Signature globale';
-$cs_lang['glob_sig1']	= 'Emplacement posible pour le texte {post_nick} et {post_date}';
+$cs_lang['current']  = 'Récent';
+$cs_lang['more']  = 'plus ...';
+$cs_lang['glob_sig']  = 'Signature globale';
+$cs_lang['glob_sig1']  = 'Emplacement posible pour le texte {post_nick} et {post_date}';
 //center.php
 
-$cs_lang['cat']	= 'Catégorie';
-$cs_lang['board']	= 'Forum';
-$cs_lang['rank']	= 'Rang';
-$cs_lang['stats']	= 'Statistique';
-$cs_lang['com']	= 'Réponses du forum';
+$cs_lang['cat']  = 'Catégorie';
+$cs_lang['board']  = 'Forum';
+$cs_lang['rank']  = 'Rang';
+$cs_lang['stats']  = 'Statistique';
+$cs_lang['com']  = 'Réponses du forum';
 
 $cs_lang['last_com']    = 'Les %s dernières réponses';
-$cs_lang['last_thr']	= 'Les %s derniers sujets';
+$cs_lang['last_thr']  = 'Les %s derniers sujets';
 
 //com_create.php
 
-$cs_lang['not_able']	= '- Ce lien interdit toute réponse.';
+$cs_lang['not_able']  = '- Ce lien interdit toute réponse.';
 
 $cs_lang['text_to_long'] = ' - Le texte est trop long de ';
 $cs_lang['text_to_long_2'] = ' caractères . Vous avez ';
 $cs_lang['text_to_long_3'] = ' caractères de trop!';
 $cs_lang['indi'] = 'Caractères';
-$cs_lang['place']			= 'Lieu :';
+$cs_lang['place']      = 'Lieu :';
 $cs_lang['text'] = 'Texte';
 
 $cs_lang['error_subheader'] =  'Une erreur s\'est produite!';
 $cs_lang['error_back'] = 'Retour';
 
 //com_edit.php
-$cs_lang['mod1']	= 'Sujet';
-$cs_lang['head_com_edit']	= 'Editer la réponse';
-$cs_lang['body_com_edit']	= 'Signaler les modifications de texte.';
+$cs_lang['mod1']  = 'Sujet';
+$cs_lang['head_com_edit']  = 'Editer la réponse';
+$cs_lang['body_com_edit']  = 'Signaler les modifications de texte.';
 
-$cs_lang['low_axx']	= '- Droits insuffisants';
+$cs_lang['low_axx']  = '- Droits insuffisants';
 $cs_lang['com_edit_errortext'] = 'La réponse que vous voulez éditer n\'existe pas, ou ce sujet n\'existe plus.';
 
 //com_remove.php
-$cs_lang['head_com_remove']	= 'Supprimer la réponse';
+$cs_lang['head_com_remove']  = 'Supprimer la réponse';
 $cs_lang['com_remove_errortext'] = 'La réponse que vous voulez supprimer n\'existe pas, ou ce sujet n\'existe plus..';
 
 //create.php
-$cs_lang['rss_info']	= 'Actualités récentes';
+$cs_lang['rss_info']  = 'Actualités récentes';
 
 $cs_lang['no_cat'] = '- Vous devez choisir une catégorie';
 $cs_lang['no_name'] = '- Nom introuvable';
@@ -121,8 +121,8 @@ $cs_lang['lev_4'] = 'Organisateur';
 $cs_lang['lev_5'] = 'Administrateur du site'; 
 
 //del_abo.php
-$cs_lang['mod2']	= 'Abonnement';
-$cs_lang['head_delabo']	= 'Supprimer';
+$cs_lang['mod2']  = 'Abonnement';
+$cs_lang['head_delabo']  = 'Supprimer';
 
 //edit.php
 $cs_lang['head_edit'] = 'Editer';
@@ -134,7 +134,7 @@ $cs_lang['password_no'] = ' Ajouter un mot de passe';
 $cs_lang['password2'] = 'Option, l\'ancien mot de passe existant reste en vigueur si vous laissez ce champ vide.';
 
 //list.php
-$cs_lang['head_list']	= 'Liste';
+$cs_lang['head_list']  = 'Liste';
 
 $cs_lang['new'] = 'Nouveaux sujets';
 $cs_lang['active'] = 'Sujets récents';
@@ -149,7 +149,7 @@ $cs_lang['board_stats'] = 'Statistique du forum';
 $cs_lang['threads_and'] = 'Sujets et';
 
 //nav_list.php
-$cs_lang['no_new_posts']	= 'aucune nouvelle réponse';
+$cs_lang['no_new_posts']  = 'aucune nouvelle réponse';
 
 //listabo.php
 $cs_lang['created_by'] = 'crée par';
@@ -186,8 +186,8 @@ $cs_lang['move'] = 'Déplacer vers...';
 $cs_lang['nosig'] = 'Suggérez une signature.';
 
 //new.php
-$cs_lang['head_new']	= 'Nouveau sujet';
-$cs_lang['body_new']	= 'Liste des sujets récents sans réponses';
+$cs_lang['head_new']  = 'Nouveau sujet';
+$cs_lang['body_new']  = 'Liste des sujets récents sans réponses';
 
 
 //options.php
@@ -234,8 +234,8 @@ $cs_lang['change_threads'] = 'Déplacer les sujets et les réponses';
 $cs_lang['change_board'] = 'Déplacer les sujets et les réponses vers :';
 
 //search.php
-$cs_lang['head_search']	= 'Rechercher';
-$cs_lang['body_search']	= 'Le moteur de recherche ignore les mots clefs trop courts';
+$cs_lang['head_search']  = 'Rechercher';
+$cs_lang['body_search']  = 'Le moteur de recherche ignore les mots clefs trop courts';
 
 $cs_lang['keywords'] = 'Terme à rechercher';
 $cs_lang['searchmode'] = 'Mode de recherche';
@@ -267,11 +267,11 @@ $cs_lang['up'] = 'Monter';
 $cs_lang['down'] = 'Descendre';
 
 //thread.php
-$cs_lang['theme']	= 'Sujet';
-$cs_lang['posts']	= 'Réponses';
-$cs_lang['place']	= 'Lieu'; 
-$cs_lang['answers']	= 'Répondre'; 
-$cs_lang['answer']	= 'Réponse';
+$cs_lang['theme']  = 'Sujet';
+$cs_lang['posts']  = 'Réponses';
+$cs_lang['place']  = 'Lieu'; 
+$cs_lang['answers']  = 'Répondre'; 
+$cs_lang['answer']  = 'Réponse';
 $cs_lang['head_thread'] = 'Sujet';
 $cs_lang['boardmod'] = 'Modérateur';
 $cs_lang['quote']       = 'Citation';
@@ -286,13 +286,13 @@ $cs_lang['overall_edit'] = 'Edité';
 
 $cs_lang['modpanel'] = 'Modération';
 
-$cs_lang['adv_com']	= 'Ecrire une réponse plus étendue';
-$cs_lang['comment']	= 'Réponse';
+$cs_lang['adv_com']  = 'Ecrire une réponse plus étendue';
+$cs_lang['comment']  = 'Réponse';
 
 $cs_lang['error_header'] = 'Page introuvable ou droit insuffisant.';
 $cs_lang['thread_errortext'] = 'Le sujet que vous désirez voir n\'exite pas, ou vos droits sont insuffisants.';
 
-$cs_lang['need_user']	= 'Vous devez être enregistrer pour répondre.';
+$cs_lang['need_user']  = 'Vous devez être enregistrer pour répondre.';
 $cs_lang['already_abo'] = 'Vous êtes déjà abonné à ce sujet';
 $cs_lang['wait_after_comment'] = 'Vous pourrez à nouveau répondre à ce sujet dans %s jours.';
 
@@ -309,23 +309,23 @@ $cs_lang['thread_closed2'] = 'Ce sujet a été verouillé par %s.';
 $cs_lang['thread_rename'] = 'Renommer le sujet';
 
 //thread_add.php
-$cs_lang['head']	= 'Ajouter un sujet';
+$cs_lang['head']  = 'Ajouter un sujet';
 $cs_lang['body_create'] =  'Veuillez remplir les champs marqués d\'une étoile.';
 $cs_lang['error_occurred'] = 'Remplissez correctement les champs.';
 $cs_lang['error_count'] = 'Les champs ne sont pas correctement remplis.';
 
-$cs_lang['headline']	= 'Titre';
+$cs_lang['headline']  = 'Titre';
 
-$cs_lang['place']	= 'Origine'; 
+$cs_lang['place']  = 'Origine'; 
 
 $cs_lang['thread_add_errortext'] = 'Le forum ou vous voulez ajouter un sujet n\'existe pas. ou vous n\'avez pas les accès nécessaires.';
 
-$cs_lang['options+']		= 'Extras';
-$cs_lang['votes'] 			= 'Sondage';
-$cs_lang['votes_end'] 		= 'Fin';
-$cs_lang['votes_access'] 	= 'Accès';
-$cs_lang['votes_question'] 	= 'Question';
-$cs_lang['votes_election'] 	= 'Réponse';
+$cs_lang['options+']    = 'Extras';
+$cs_lang['votes']       = 'Sondage';
+$cs_lang['votes_end']     = 'Fin';
+$cs_lang['votes_access']   = 'Accès';
+$cs_lang['votes_question']   = 'Question';
+$cs_lang['votes_election']   = 'Réponse';
 
 $cs_lang['election+'] = 'Ajouter une réponse';
 $cs_lang['vote_create'] = 'Ajouter un sondage';
@@ -345,10 +345,10 @@ $cs_lang['error_filetype'] = '- Format de fichier non autorisé.';
 $cs_lang['error_fileupload'] = '- Erreur inconnue lors du téléchargement de fichier.';
 
 //thread_edit.php
-$cs_lang['thread_edit']	= 'Editer le sujet';
+$cs_lang['thread_edit']  = 'Editer le sujet';
 $cs_lang['body_edit'] =  'Veuillez remplir les champs marqués d\'une étoile.';
 
-$cs_lang['editbutton']	= 'Editer';
+$cs_lang['editbutton']  = 'Editer';
 
 $cs_lang['thread_edit_errortext'] = 'Le sujet que vous voulez éditer n\'existe pas ou il ne peut pas être édité.';
 $cs_lang['file_del'] = 'Le fichier va être supprimé!';
@@ -358,13 +358,13 @@ $cs_lang['file_del'] = 'Le fichier va être supprimé!';
 $cs_lang['thread_remove_errortext'] = 'Le sujet que vous voulez supprimer n\'existe pas ou il ne peut pas être supprimé.';
 
 //users.php
-$cs_lang['head_users']	= 'Utilisateur';
-$cs_lang['body_users']	= 'Statistique du forum de %s';
+$cs_lang['head_users']  = 'Utilisateur';
+$cs_lang['body_users']  = 'Statistique du forum de %s';
 
 
 
 //users_home.php
-$cs_lang['last_threads']	= 'Récent dans le forum';
+$cs_lang['last_threads']  = 'Récent dans le forum';
 
 $cs_lang['send_message'] = 'Envoyer un message';
 $cs_lang['send_mail'] = 'Envoyer un mail';

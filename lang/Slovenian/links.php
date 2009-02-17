@@ -3,8 +3,8 @@
 // Author: Mesko
 // Contact: dmp778@gmail.com (E-Mail), dmp778@hotmail.com (MSN)
 
-$cs_lang['mod']	= 'Povezave';
-$cs_lang['text']	= 'Modul za dodajanje povezav';
+$cs_lang['mod']  = 'Povezave';
+$cs_lang['text']  = 'Modul za dodajanje povezav';
 
 $cs_lang['head']= 'Povzetek';
 $cs_lang['body_list']= 'Trenutno imamo %s povezav.';
@@ -19,13 +19,13 @@ $cs_lang['new_link'] = 'Nova povezava';
 $cs_lang['online'] = '[color=lime]online[/color]';
 $cs_lang['offline'] = '[color=red]offline[/color]';
 
-$cs_lang['head_remove']	= 'Odstrani';
+$cs_lang['head_remove']  = 'Odstrani';
 $cs_lang['newicon'] = 'Nov banner';
 $cs_lang['delicon'] = 'Odstrani banner';
 
 
 
-$cs_lang['mod1']	= 'Sponzorji &amp; Partnerji';
+$cs_lang['mod1']  = 'Sponzorji &amp; Partnerji';
 $cs_lang['all1'] = 'Trenutno imamo %s Sponzorjev / Partnerjev.';
 
 $cs_lang['info'] = 'Informacije';

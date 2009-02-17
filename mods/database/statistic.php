@@ -21,11 +21,11 @@ foreach($modules as $mod) {
     if(!empty($mod['icon'])) {
       $data['statistic'][$run]['icon'] = cs_icon($mod['icon']);
     }
-	else {
-	  $data['statistic'][$run]['icon'] = ''; 
-	}
+  else {
+    $data['statistic'][$run]['icon'] = ''; 
+  }
     $data['statistic'][$run]['url'] = cs_url('modules','view','dir=' . $mod['dir']);
-	$data['statistic'][$run]['name'] = $mod['name'];
+  $data['statistic'][$run]['name'] = $mod['name'];
 
     asort($mod['tables']);
     foreach($mod['tables'] AS $mod_table) {
@@ -44,7 +44,7 @@ foreach($modules as $mod) {
     }
     $data['statistic'][$run]['tables'] = $tables;
     $data['statistic'][$run]['counts'] = $counts;
-	$run++;
+  $run++;
   }
 }
 

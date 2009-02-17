@@ -18,7 +18,7 @@ elseif(isset($_POST['preview'])) {
 
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
-	$cs_buddys['buddys_notice'] = $_POST['buddys_notice'];
+  $cs_buddys['buddys_notice'] = $_POST['buddys_notice'];
 }
 else {
   $cells = 'buddys_notice';
@@ -28,7 +28,7 @@ else {
 if(isset($_POST['preview'])) 
 {
 
-	$data['if']['preview']  = TRUE;
+  $data['if']['preview']  = TRUE;
   $data['if']['form']     = TRUE;
   $data['if']['done']     = FALSE;
   
@@ -39,7 +39,7 @@ if(isset($_POST['preview']))
 
 if(isset($_POST['preview']) OR !isset($_POST['submit'])) 
 {
-	if(!isset($_POST['preview'])) {
+  if(!isset($_POST['preview'])) {
   $data['if']['preview']  = FALSE;
   $data['if']['form']     = TRUE;
   $data['if']['done']     = FALSE;

@@ -12,10 +12,10 @@ $select =  'comments_id, users_id, comments_fid, comments_mod, comments_text, co
 $cs_com = cs_sql_select(__FILE__,'comments',$select,"comments_id = '" . $com_id . "'");
 
 if(!empty($cs_com['users_id'])) {
-	$cs_user = cs_sql_select(__FILE__,'users','users_id, users_nick, users_active',"users_id ='".$cs_com['users_id']."'",0,0);
-	$data['com']['user'] = cs_user($cs_com['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+  $cs_user = cs_sql_select(__FILE__,'users','users_id, users_nick, users_active',"users_id ='".$cs_com['users_id']."'",0,0);
+  $data['com']['user'] = cs_user($cs_com['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
 } else {
-	$data['com']['user'] = $cs_com['comments_guestnick'] . ' ' . $cs_lang['guest'];
+  $data['com']['user'] = $cs_com['comments_guestnick'] . ' ' . $cs_lang['guest'];
 }
 
 $data['com']['time'] = cs_date('unix',$cs_com['comments_time'],1);
@@ -24,9 +24,9 @@ $data['com']['ip'] = $cs_com['comments_ip'];
 $com_mod = $cs_com['comments_mod'];
 $modules = cs_checkdirs('mods');
 foreach($modules as $mods) {
-	if($mods['dir'] == $com_mod) {
- 		$data['com']['mod'] = $mods['name'];
-	}
+  if($mods['dir'] == $com_mod) {
+     $data['com']['mod'] = $mods['name'];
+  }
 }
 
 $data['com']['fid'] = $cs_com['comments_fid'];

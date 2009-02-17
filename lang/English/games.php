@@ -1,9 +1,9 @@
 <?php
 
-$cs_lang['mod_name']	= 'Games';
-$cs_lang['mod_text']	= 'The games module';
-$cs_lang['mod']	= 'Games';
-$cs_lang['head_remove']	= 'Remove'; 
+$cs_lang['mod_name']  = 'Games';
+$cs_lang['mod_text']  = 'The games module';
+$cs_lang['mod']  = 'Games';
+$cs_lang['head_remove']  = 'Remove'; 
 $cs_lang['head_edit'] = 'Edit'; 
 $cs_lang['head1'] = 'Details';
 $cs_lang['body_create'] =  'Please fill out as many fields as possible.';

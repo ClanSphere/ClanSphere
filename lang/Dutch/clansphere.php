@@ -2,11 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net 
 // $Id$
 
-$cs_lang['mod']	= 'ClanSphere';
-$cs_lang['modinfo']	= 'Hoofdmodule van de CMS-kern';
-$cs_lang['modules_list']	= 'Alle geinstalleerde modules zijn van hieruit bereikbaar.';
-$cs_lang['languages']	= 'Talen';
-$cs_lang['languages_list']	= 'Lijst %s van beschikbare vertalingen.';
+$cs_lang['mod']  = 'ClanSphere';
+$cs_lang['modinfo']  = 'Hoofdmodule van de CMS-kern';
+$cs_lang['modules_list']  = 'Alle geinstalleerde modules zijn van hieruit bereikbaar.';
+$cs_lang['languages']  = 'Talen';
+$cs_lang['languages_list']  = 'Lijst %s van beschikbare vertalingen.';
 
 $cs_lang['cache'] = 'Cache';
 $cs_lang['body_cache'] = 'Je moet de cache iedere keer als je een "info.php" toevoegd, update of verwijderd!';
@@ -28,22 +28,22 @@ $cs_lang['lang_list'] = 'Talen';
 
 $cs_lang['creator'] = 'Auteur';
 
-$cs_lang['head_lang_view']	= 'Taal details';
-$cs_lang['body_lang_view']	= 'Informatie over vertaling.';
+$cs_lang['head_lang_view']  = 'Taal details';
+$cs_lang['body_lang_view']  = 'Informatie over vertaling.';
 
-$cs_lang['mod_released']		= 'Datum';
-$cs_lang['mod_team']				= 'Team';
-$cs_lang['mod_url']					= 'Homepage';
-$cs_lang['mod_desc']				= 'Omschrijving';
+$cs_lang['mod_released']    = 'Datum';
+$cs_lang['mod_team']        = 'Team';
+$cs_lang['mod_url']          = 'Homepage';
+$cs_lang['mod_desc']        = 'Omschrijving';
 
-$cs_lang['translation_status']	= 'Vertaling status';
-$cs_lang['file']								= 'File';
-$cs_lang['diff']								= 'Verschillen';
-$cs_lang['missing_file']				= 'File niet gevonden';
-$cs_lang['total_diff']					= 'Verscihllen gevonden in %s files';
+$cs_lang['translation_status']  = 'Vertaling status';
+$cs_lang['file']                = 'File';
+$cs_lang['diff']                = 'Verschillen';
+$cs_lang['missing_file']        = 'File niet gevonden';
+$cs_lang['total_diff']          = 'Verscihllen gevonden in %s files';
 
-$cs_lang['head_system']	= 'Systeem';
-$cs_lang['body_system']	= 'Belangrijke informatie en instellingen.';
+$cs_lang['head_system']  = 'Systeem';
+$cs_lang['body_system']  = 'Belangrijke informatie en instellingen.';
 $cs_lang['templates'] = 'Templaten';
 $cs_lang['software'] = 'Software';
 $cs_lang['storage'] = 'Opslag';
@@ -53,7 +53,7 @@ $cs_lang['themes'] = 'Themas';
 $cs_lang['using'] = 'huidig';
 $cs_lang['dstime'] = 'Daylight Savings Time';
 
-$cs_lang['body_options']	= 'Clansphere portaal instellingen beheer.';
+$cs_lang['body_options']  = 'Clansphere portaal instellingen beheer.';
 $cs_lang['off'] = 'uit';
 $cs_lang['on'] = 'aan';
 $cs_lang['automatic'] = 'automatisch';
@@ -80,15 +80,15 @@ $cs_lang['modul'] = 'Module';
 $cs_lang['action'] = 'Actie';
 $cs_lang['parameters'] = 'Parameters';
 
-$cs_lang['head_software']	= 'Software';
-$cs_lang['body_software']	= 'De volgendesoftware is geinstalleerd op deze server.';
+$cs_lang['head_software']  = 'Software';
+$cs_lang['body_software']  = 'De volgendesoftware is geinstalleerd op deze server.';
 
-$cs_lang['display_err']	= 'Foutafhandeling';
+$cs_lang['display_err']  = 'Foutafhandeling';
 $cs_lang['m_quotes'] = 'Magische Quotes';
 $cs_lang['os'] = 'Operating System';
-$cs_lang['php_extensions']	= 'PHP Extensies';
-$cs_lang['php_mod']	= 'PHP Module';
-$cs_lang['php_setup']	= 'PHP Settings';
+$cs_lang['php_extensions']  = 'PHP Extensies';
+$cs_lang['php_mod']  = 'PHP Module';
+$cs_lang['php_setup']  = 'PHP Settings';
 $cs_lang['reg_global'] = 'Registreer Globalen';
 $cs_lang['safe_mode'] = 'Safe Mode';
 $cs_lang['trans_sid'] = 'Transparente SessionID';
@@ -100,7 +100,7 @@ $cs_lang['type'] = 'Datenbase Server';
 $cs_lang['client'] = 'Client Versie';
 $cs_lang['host'] = 'Database host';
 $cs_lang['server'] = 'Server Versie';
-$cs_lang['tables']	= 'Tabellen';
+$cs_lang['tables']  = 'Tabellen';
 $cs_lang['post_max_size'] = 'Max. Formdatagrootte';
 $cs_lang['upload_max_filesize'] = 'Max. Upload-Filegrootte';
 $cs_lang['memory_limit'] = 'Max. Memoryconsumptie';
@@ -109,49 +109,49 @@ $cs_lang['usage'] = 'Gebruik';
 $cs_lang['data'] = 'Datas';
 $cs_lang['indexe'] = 'Indexes';
 
-$cs_lang['body_storage']	= 'Belangrijke statistieken en informatie';
+$cs_lang['body_storage']  = 'Belangrijke statistieken en informatie';
 
 $cs_lang['space_total'] = 'Totale ruimte';
 $cs_lang['space_free'] = 'Vrije ruimte';
-$cs_lang['space_used']	= 'Gebruikte ruimte';
+$cs_lang['space_used']  = 'Gebruikte ruimte';
 $cs_lang['space_mods'] = 'Module ruimte';
 $cs_lang['space_sym'] = 'Symbool ruimte';
 $cs_lang['space_up'] = 'Upload ruimte';
 $cs_lang['space_temp'] = 'Template ruimte';
 
-$cs_lang['body_temp_list']	= 'Lijt met %s beschikbare templaten.';
+$cs_lang['body_temp_list']  = 'Lijt met %s beschikbare templaten.';
 $cs_lang['theme_found'] = 'Thema met zelfde naam gevonden. Verander naam?';
 
-$cs_lang['head_temp_view']	= 'Template Details';
-$cs_lang['body_temp_view']	= 'Informatie over een design.';
+$cs_lang['head_temp_view']  = 'Template Details';
+$cs_lang['body_temp_view']  = 'Informatie over een design.';
 
 $cs_lang['themes_list'] = 'Thema Lijst';
 $cs_lang['themes_listed'] = 'Lijst met %s beschikbare Themas.';
 
-$cs_lang['head_variables']	= 'Variabelen';
-$cs_lang['body_variables']	= 'Algemeen beschikbare data';
+$cs_lang['head_variables']  = 'Variabelen';
+$cs_lang['body_variables']  = 'Algemeen beschikbare data';
 
-$cs_lang['key']		= 'Sleutel';
-$cs_lang['value']	= 'Waarde';
+$cs_lang['key']    = 'Sleutel';
+$cs_lang['value']  = 'Waarde';
 
 $cs_lang['extended'] = 'Uitgebreid';
 $cs_lang['change_dstime_for_all'] = 'Verander Daylight Saving tijd voor alle gebruikers';
 
 // Metatags
-$cs_lang['metatags']	= 'Metatags';
-$cs_lang['generate_metatags']	= 'Hier kun je metatags genereren';
-$cs_lang['charset']	= 'Charset';
-$cs_lang['description']	= 'Omschrijving';
-$cs_lang['keywords']	= 'Sleutlewoorden';
-$cs_lang['author']	= 'Auteur';
-$cs_lang['designer']	= 'Beheerder';
-$cs_lang['publisher']	= 'Uitgever';
-$cs_lang['robots']	= 'Robots';
-$cs_lang['distribution']	= 'Distributie';
-$cs_lang['edit_done']	= 'Succesvol bewerkt';
-$cs_lang['too_many_chars']	= '- Je invoer in "%s" bevat meer dan 200 karakters';
-$cs_lang['global']	= 'globaal';
-$cs_lang['internal']	= 'internaal';
+$cs_lang['metatags']  = 'Metatags';
+$cs_lang['generate_metatags']  = 'Hier kun je metatags genereren';
+$cs_lang['charset']  = 'Charset';
+$cs_lang['description']  = 'Omschrijving';
+$cs_lang['keywords']  = 'Sleutlewoorden';
+$cs_lang['author']  = 'Auteur';
+$cs_lang['designer']  = 'Beheerder';
+$cs_lang['publisher']  = 'Uitgever';
+$cs_lang['robots']  = 'Robots';
+$cs_lang['distribution']  = 'Distributie';
+$cs_lang['edit_done']  = 'Succesvol bewerkt';
+$cs_lang['too_many_chars']  = '- Je invoer in "%s" bevat meer dan 200 karakters';
+$cs_lang['global']  = 'globaal';
+$cs_lang['internal']  = 'internaal';
 
 // Lang Validator
 $cs_lang['validator'] = 'Validator';

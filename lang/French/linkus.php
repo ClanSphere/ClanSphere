@@ -2,7 +2,7 @@
 // ClanSphere 2006 - www.clansphere.net - Traduction francaise >>> www.globalteam-esports.info
 // $Id$
 
-$cs_lang['mod']	= 'Bannières';
+$cs_lang['mod']  = 'Bannières';
 $cs_lang['head'] = 'Créer'; 
 $cs_lang['head1'] = 'Détails';
 $cs_lang['body_create'] =  'Veuillez remplir les champs marqués d\'une étoile.';
@@ -39,13 +39,13 @@ $cs_lang['mass'] = 'Dimensions';
 $cs_lang['new_banner'] = 'Nouvelle bannière';
 
 //remove.php
-$cs_lang['head_remove']	= 'Supprimer';
+$cs_lang['head_remove']  = 'Supprimer';
 
 //edit.php
 $cs_lang['head'] = 'Editer'; 
 $cs_lang['body_edit'] =  'Veuillez remplir les champs marqués d\'une étoile.';
 
 //info.php
-$cs_lang['mod_name']	= 'Nous lier';
-$cs_lang['mod_text']	= 'Le module LinkUs ';
+$cs_lang['mod_name']  = 'Nous lier';
+$cs_lang['mod_text']  = 'Le module LinkUs ';
 ?>

@@ -33,10 +33,10 @@ $cs_lang['done']        = 'Fini';
 $cs_lang['next_step']   = 'Prochaine opération';
 
 // users_home.php
-$cs_lang['wizard_welcome']	= 'Bienvenue sur clansphere';
-$cs_lang['wizard_info']	    = 'Nous vous conseillons vivement d\'utiliser l\'assistant pour un bon fonctionnement';
-$cs_lang['wizard_start']	  = 'Démarrer l\'assistant';
-$cs_lang['wizard_turnoff']	= 'Ne plus afficher ce mémo';
+$cs_lang['wizard_welcome']  = 'Bienvenue sur clansphere';
+$cs_lang['wizard_info']      = 'Nous vous conseillons vivement d\'utiliser l\'assistant pour un bon fonctionnement';
+$cs_lang['wizard_start']    = 'Démarrer l\'assistant';
+$cs_lang['wizard_turnoff']  = 'Ne plus afficher ce mémo';
 
 // welcome.php
 $cs_lang['welcome']   = 'Afficher la "bienvenue"';

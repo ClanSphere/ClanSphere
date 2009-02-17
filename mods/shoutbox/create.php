@@ -7,7 +7,7 @@ $cs_lang = cs_translate('shoutbox');
 $captcha = extension_loaded('gd') ? 1 : 0;
 
 if(isset($_POST['submit'])) {
-	
+  
   $opt = cs_sql_option(__FILE__,'shoutbox');
   
   $cs_shout['shoutbox_ip'] = $_SERVER['REMOTE_ADDR'];

@@ -65,7 +65,7 @@ for($run=0; $run<$languests_loop; $run++) {
   }
   else {
     $number = $cs_lang['chair'] . ' ' . $cs_languests[$run]['lanroomd_number'];
-  	$data['lanquests'][$run]['status'] = cs_link($number,'lanrooms','view','lanroomd_id=' . $cs_languests[$run]['lanroomd_id']);
+    $data['lanquests'][$run]['status'] = cs_link($number,'lanrooms','view','lanroomd_id=' . $cs_languests[$run]['lanroomd_id']);
   }
 }
 

@@ -120,7 +120,7 @@ if(isset($_POST['submit'])) {
       $filename = $getid['games_id'] . '.' . $extension;
       cs_upload('games',$filename,$_FILES['symbol']['tmp_name']);
     }
-	
+  
   }  
   cs_redirect($cs_lang['create_done'],'games');
 }

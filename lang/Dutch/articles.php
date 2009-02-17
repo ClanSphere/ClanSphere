@@ -3,9 +3,9 @@
 // $Id$
 
 // info.php
-$cs_lang['mod_name']	= 'Artikel';
-$cs_lang['mod_text']	= 'De Artikel Module';
-$cs_lang['mod']	= 'Artikel';
+$cs_lang['mod_name']  = 'Artikel';
+$cs_lang['mod_text']  = 'De Artikel Module';
+$cs_lang['mod']  = 'Artikel';
 
 // create.php
 $cs_lang['head_create'] = 'Toevoegen';
@@ -31,9 +31,9 @@ $cs_lang['body_edit'] =  'Vul alle velden gemarkeerde met een * in.';
 $cs_lang['edit_done'] = 'Succesvol bewerkt';
 
 // list.php
-$cs_lang['head_list']	= 'Lijst';
-$cs_lang['body_list']	= 'Selecteer een categorie';
-$cs_lang['count']	= 'Nummer';
+$cs_lang['head_list']  = 'Lijst';
+$cs_lang['body_list']  = 'Selecteer een categorie';
+$cs_lang['count']  = 'Nummer';
 
 //listcat.php
 $cs_lang['all'] = 'Totaal: ';
@@ -43,12 +43,12 @@ $cs_lang['views'] = 'Bekeken';
 $cs_lang['xtimes'] = 'maal';
 
 // manage.php
-$cs_lang['head_manage']	= 'Administratie';
+$cs_lang['head_manage']  = 'Administratie';
 $cs_lang['new_article'] = 'Nieuw Artikel';
 
 // remove.php
-$cs_lang['head_remove']	= 'Verwijder';
-$cs_lang['body_remove']		= 'Bevestig verwijderen dataset Nr. %s ?';
+$cs_lang['head_remove']  = 'Verwijder';
+$cs_lang['body_remove']    = 'Bevestig verwijderen dataset Nr. %s ?';
 
 // view.php
 $cs_lang['from'] = 'Auteur';
@@ -57,18 +57,18 @@ $cs_lang['page'] = 'Pagina';
 $cs_lang['pages'] = 'Paginas';
 
 // com_create.php
-$cs_lang['not_able']	= '- Commentaar uitgeschakeld.';
+$cs_lang['not_able']  = '- Commentaar uitgeschakeld.';
 
-$cs_lang['place']			= 'Locatie:';
-$cs_lang['posts']			= 'Commentaren:';
+$cs_lang['place']      = 'Locatie:';
+$cs_lang['posts']      = 'Commentaren:';
 $cs_lang['text'] = 'Tekst';
 
 // com_edit.php
-$cs_lang['head_com_edit']	= 'Edit commentaar';
-$cs_lang['body_com_edit']	= 'Geef text wijzigingen aan.';
+$cs_lang['head_com_edit']  = 'Edit commentaar';
+$cs_lang['body_com_edit']  = 'Geef text wijzigingen aan.';
 
 // com_remove.php
-$cs_lang['head_com_remove']	= 'Verwijder commentaar';
+$cs_lang['head_com_remove']  = 'Verwijder commentaar';
 
 $cs_lang['new_date'] = 'Ververs datum';
 

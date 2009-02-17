@@ -15,11 +15,11 @@ if(isset($_POST['submit'])) {
   $cs_quotes['categories_id'] = empty($_POST['categories_id']) ? 
     cs_categories_create('quotes',$_POST['categories_name']) : (int) $_POST['categories_id'];
 
-	$cs_quotes['quotes_headline'] = $_POST['quotes_headline'];
-	$cs_quotes['quotes_text'] = $_POST['quotes_text'];
-	$cs_quotes['quotes_time'] = cs_time();
-	$cs_quotes['users_id'] = $account['users_id'];
-	
+  $cs_quotes['quotes_headline'] = $_POST['quotes_headline'];
+  $cs_quotes['quotes_text'] = $_POST['quotes_text'];
+  $cs_quotes['quotes_time'] = cs_time();
+  $cs_quotes['users_id'] = $account['users_id'];
+  
   $error = 0;
   $errormsg = '';
 
@@ -46,7 +46,7 @@ elseif(!empty($error)) {
 
 }
 if(empty($error)) {
-	$data['head']['error'] = '';
+  $data['head']['error'] = '';
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
@@ -55,21 +55,21 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $categories_id = empty($cs_quotes['categories_id']) ? 0 : $cs_quotes['categories_id'];
   
-	$data['categories']['dropdown'] = cs_categories_dropdown('quotes',$categories_id);
+  $data['categories']['dropdown'] = cs_categories_dropdown('quotes',$categories_id);
   $data['abcode']['features'] = cs_abcode_features('quotes_text');
   $data['data']['smilies'] =  cs_abcode_smileys('quotes_text');
   $data['url']['action'] = cs_url('quotes','create');
   $data['quotes']['quotes_headline'] = empty($cs_quotes['quotes_headline']) ? '' : $cs_quotes['quotes_headline'];
   $data['quotes']['quotes_text'] = empty($cs_quotes['quotes_text']) ? '' : $cs_quotes['quotes_text'];
   
-	echo cs_subtemplate(__FILE__,$data,'quotes','create');
-	
+  echo cs_subtemplate(__FILE__,$data,'quotes','create');
+  
 } else {
-	
-	$quotes_cells = array_keys($cs_quotes);
-	$quotes_save = array_values($cs_quotes);
-	cs_sql_insert(__FILE__,'quotes',$quotes_cells,$quotes_save);
-	
+  
+  $quotes_cells = array_keys($cs_quotes);
+  $quotes_save = array_values($cs_quotes);
+  cs_sql_insert(__FILE__,'quotes',$quotes_cells,$quotes_save);
+  
   cs_redirect($cs_lang['create_done'],'quotes');
 } 
 ?>

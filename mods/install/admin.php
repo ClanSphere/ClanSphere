@@ -65,39 +65,39 @@ echo cs_html_br(1);
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	echo cs_html_table(1,'forum',1);
+  echo cs_html_table(1,'forum',1);
   echo cs_html_roco(1,'leftb',0,2);
   echo $cs_lang['admin'];
   echo cs_html_roco(0);
-	echo cs_html_roco(1,'leftc');
-	echo $cs_lang['lang'] . ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_select(1,'lang');
-	$languages = cs_checkdirs('lang');
-	foreach($languages as $lang) {
-		$sel = $lang['name'] == $create['users_lang'] ? 1 : 0;
-		echo cs_html_option($lang['name'],$lang['name'],$sel);
-	}
-	echo cs_html_select(0);
-	echo cs_html_roco(0);
+  echo cs_html_roco(1,'leftc');
+  echo $cs_lang['lang'] . ' *';
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_select(1,'lang');
+  $languages = cs_checkdirs('lang');
+  foreach($languages as $lang) {
+    $sel = $lang['name'] == $create['users_lang'] ? 1 : 0;
+    echo cs_html_option($lang['name'],$lang['name'],$sel);
+  }
+  echo cs_html_select(0);
+  echo cs_html_roco(0);
   
-	echo cs_html_roco(1,'leftc');
-	echo $cs_lang['nick'] . ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_input('nick',$create['users_nick'],'text',40,40);
-	echo cs_html_roco(0);
+  echo cs_html_roco(1,'leftc');
+  echo $cs_lang['nick'] . ' *';
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_input('nick',$create['users_nick'],'text',40,40);
+  echo cs_html_roco(0);
 
-	echo cs_html_roco(1,'leftc');
-	echo $cs_lang['email'] . ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_input('email',$create['users_email'],'text',40,40);
-	echo cs_html_roco(0);
+  echo cs_html_roco(1,'leftc');
+  echo $cs_lang['email'] . ' *';
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_input('email',$create['users_email'],'text',40,40);
+  echo cs_html_roco(0);
   
-	echo cs_html_roco(1,'leftc');
-	echo $cs_lang['password'] . ' *';
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_input('password',$create_['password'],'password',30,30);
-	echo cs_html_roco(0);
+  echo cs_html_roco(1,'leftc');
+  echo $cs_lang['password'] . ' *';
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_input('password',$create_['password'],'password',30,30);
+  echo cs_html_roco(0);
   
   echo cs_html_roco(1,'leftb',0,2);
   echo $cs_lang['show'];
@@ -139,20 +139,20 @@ if(!empty($error) OR !isset($_POST['submit'])) {
    echo cs_html_select(0);
   echo cs_html_roco(0);
 
-	echo cs_html_roco(1,'leftc');
-	echo cs_icon('ksysguard') . $cs_lang['options'];
-	echo cs_html_roco(2,'leftb');
-	echo cs_html_vote('submit',$cs_lang['create'],'submit');
-	echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-	echo cs_html_roco(0);
-	echo cs_html_table(0);
-	echo cs_html_form(0);
+  echo cs_html_roco(1,'leftc');
+  echo cs_icon('ksysguard') . $cs_lang['options'];
+  echo cs_html_roco(2,'leftb');
+  echo cs_html_vote('submit',$cs_lang['create'],'submit');
+  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
+  echo cs_html_roco(0);
+  echo cs_html_table(0);
+  echo cs_html_form(0);
 }
 else {
 
-	$create['users_timezone'] = date('Z');
-	$create['users_dstime'] = 0;
-	create_user(5,$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],'fam',$create['users_timezone'],$create['users_dstime']);
+  $create['users_timezone'] = date('Z');
+  $create['users_dstime'] = 0;
+  create_user(5,$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],'fam',$create['users_timezone'],$create['users_dstime']);
   
   // Options
   $def_cell = array('options_value');
@@ -160,8 +160,8 @@ else {
   cs_sql_update(__FILE__,'options',$def_cell,array($_POST['squadlabel']),0,'options_mod = \'squads\' AND options_name = \'label\'');
   cs_sql_update(__FILE__,'options',$def_cell,array($_POST['memberlabel']),0,'options_mod = \'members\' AND options_name = \'label\'');
 
-	
-	cs_redirect('','install','complete','lang='.$create['users_lang']);
+  
+  cs_redirect('','install','complete','lang='.$create['users_lang']);
 }
 
 ?>

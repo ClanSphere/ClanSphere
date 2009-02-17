@@ -50,35 +50,35 @@ class aa
         // search the value of selected rule and return it
         $srv_value = array_search ($srv_value, $srv_data);
 
-	if ($srv_value === false)
-	{
-	    return false;
-	}
-	else
-	{
-	    $srv_value = $srv_data[$srv_value+1];
-	    
-	    return $srv_value;
-	}
+  if ($srv_value === false)
+  {
+      return false;
+  }
+  else
+  {
+      $srv_value = $srv_data[$srv_value+1];
+      
+      return $srv_value;
+  }
     }
 
     function splitdata()
     {   
         // split the server data
         // game info first
-	$this->s_info = substr($this->s_info, 5, -1);
+  $this->s_info = substr($this->s_info, 5, -1);
         $g_info = $this->s_info;
-	$this->g_info = explode("\x00", $g_info);
-	
-	// now get the player data
-	if ($this->getvalue('gamever', $this->g_info) == '2.7.0') {
-	    $g_end  = strpos($this->s_info, 'score_') +7;
-	} else {
-	    $g_end  = strpos($this->s_info, 'enemy_') +7;
-	}
-	$p_end  = strlen($this->s_info);
-	$p_info = substr($this->s_info, $g_end, $p_end);
-	$this->p_info = explode("\x00", $p_info);
+  $this->g_info = explode("\x00", $g_info);
+  
+  // now get the player data
+  if ($this->getvalue('gamever', $this->g_info) == '2.7.0') {
+      $g_end  = strpos($this->s_info, 'score_') +7;
+  } else {
+      $g_end  = strpos($this->s_info, 'enemy_') +7;
+  }
+  $p_end  = strlen($this->s_info);
+  $p_info = substr($this->s_info, $g_end, $p_end);
+  $this->p_info = explode("\x00", $p_info);
     }
 
     function microtime_float()
@@ -91,50 +91,50 @@ class aa
     function connect()
     {
         if (($this->socket = fsockopen('udp://'. $this->host, $this->port, $errno, $errstr, 30)))
-	{
-	    return true;
-	}
-	
-	return false;
+  {
+      return true;
+  }
+  
+  return false;
     }
 
     function disconnect()
     {
         if ((fclose($this->socket)))
-	{
-	    return true;
-	}
+  {
+      return true;
+  }
 
-	return false;
+  return false;
     }
     
     function get_status()
     {
         if ($this->connect() === false)
-	{
-	    return false;
-	}
+  {
+      return false;
+  }
         
-	socket_set_timeout($this->socket, 3);
+  socket_set_timeout($this->socket, 3);
 
         $time_begin = $this->microtime_float();
 
         fwrite($this->socket, $this->write);
-	$info = fread($this->socket, $this->maxlen);
-	
-	$time_end = $this->microtime_float();
-	
-	// response time
-	$this->response = $time_end - $time_begin;
-	$this->response = ($this->response * 1000);
-	$this->response = (int)$this->response;
+  $info = fread($this->socket, $this->maxlen);
+  
+  $time_end = $this->microtime_float();
+  
+  // response time
+  $this->response = $time_end - $time_begin;
+  $this->response = ($this->response * 1000);
+  $this->response = (int)$this->response;
         
-	if ($this->disconnect() === false)
-	{
-	    return false;
-	}
+  if ($this->disconnect() === false)
+  {
+      return false;
+  }
 
-	return $info;
+  return $info;
     }
 
     function getstream($host, $port, $queryport)
@@ -151,18 +151,18 @@ class aa
         $this->host = $host;
 
         // get the infostream from server
-	$this->s_info = $this->get_status();
-	
-	if ($this->s_info)
-	{
-	    $this->splitdata();
-	
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+  $this->s_info = $this->get_status();
+  
+  if ($this->s_info)
+  {
+      $this->splitdata();
+  
+      return true;
+  }
+  else
+  {
+      return false;
+  }
     }
 
     function check_color($text)
@@ -209,47 +209,47 @@ class aa
     function getrules($phgdir)
     {
         $srv_rules['sets'] = false;
-	
+  
         // response time
-	$srv_rules['response'] = $this->response . ' ms';
-	
+  $srv_rules['response'] = $this->response . ' ms';
+  
         // aa setting pics
-	$sets['pb']      = '<img src="' . $phgdir . 'privileges/pb.gif" alt="pb">';
-	$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+  $sets['pb']      = '<img src="' . $phgdir . 'privileges/pb.gif" alt="pb">';
+  $sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
         
-	// get the info strings from server info stream
-	$srv_rules['hostname']     = $this->getvalue('hostname',      $this->g_info);
-	$srv_rules['gametype']     = $this->getvalue('gametype',      $this->g_info);
-	$srv_rules['gamename']     = $this->getvalue('gamename',      $this->g_info);
-	$srv_rules['version']      = $this->getvalue('gamever',       $this->g_info);
-	$srv_rules['mapname']      = $this->getvalue('mapname',       $this->g_info);
-	$srv_rules['maxplayers']   = $this->getvalue('maxplayers',    $this->g_info);
-	$srv_rules['punkbuster']   = $this->getvalue('sv_punkbuster', $this->g_info);
-	$srv_rules['needpass']     = $this->getvalue('password',      $this->g_info);
+  // get the info strings from server info stream
+  $srv_rules['hostname']     = $this->getvalue('hostname',      $this->g_info);
+  $srv_rules['gametype']     = $this->getvalue('gametype',      $this->g_info);
+  $srv_rules['gamename']     = $this->getvalue('gamename',      $this->g_info);
+  $srv_rules['version']      = $this->getvalue('gamever',       $this->g_info);
+  $srv_rules['mapname']      = $this->getvalue('mapname',       $this->g_info);
+  $srv_rules['maxplayers']   = $this->getvalue('maxplayers',    $this->g_info);
+  $srv_rules['punkbuster']   = $this->getvalue('sv_punkbuster', $this->g_info);
+  $srv_rules['needpass']     = $this->getvalue('password',      $this->g_info);
        
-	// path to map picture and default info picture
-	$srv_rules['map_path'] = 'maps/aa';
-	$srv_rules['map_default'] = 'default.jpg';
-	
-	// get the connected player
-	$srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
+  // path to map picture and default info picture
+  $srv_rules['map_path'] = 'maps/aa';
+  $srv_rules['map_default'] = 'default.jpg';
+  
+  // get the connected player
+  $srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
         
-	// complete the gamename
-	$srv_rules['gamename'] = 'America\'s Army' . cs_html_br(1) . 'Version ' . $srv_rules['version'];
-	
-	// server privileges
+  // complete the gamename
+  $srv_rules['gamename'] = 'America\'s Army' . cs_html_br(1) . 'Version ' . $srv_rules['version'];
+  
+  // server privileges
         if ($srv_rules['punkbuster'] == 1)
         {
             $srv_rules['sets'] .= $sets['pb'];
         }
-	if ($srv_rules['needpass'] == '1')
-	{
-	    $srv_rules['sets'] .= $sets['pass'];
-	}
-	if ($srv_rules['sets'] === false)
-	{
-	    $srv_rules['sets'] = '-';
-	}
+  if ($srv_rules['needpass'] == '1')
+  {
+      $srv_rules['sets'] .= $sets['pass'];
+  }
+  if ($srv_rules['sets'] === false)
+  {
+      $srv_rules['sets'] = '-';
+  }
 
   // server general info
      global $cs_lang;
@@ -278,15 +278,15 @@ class aa
  
 
         // return all server rules
-	return $srv_rules;	    
+  return $srv_rules;      
     }
      
     
     function getplayers()
     {
         $players = array();
-	
-	// set html thead
+  
+  // set html thead
     global $cs_lang;
     $thead = cs_html_roco(1,'headb');
     $thead .= cs_html_div(1,'text-align:center');
@@ -305,86 +305,86 @@ class aa
     $thead .= $cs_lang['ping'];
     $thead .= cs_html_div(0);
     $thead .= cs_html_roco(0);
-	
-	
+  
+  
        // how many players must search
         $nowplayers = $this->getvalue('numplayers', $this->g_info);
-	$nowplayers = $nowplayers - 1;
+  $nowplayers = $nowplayers - 1;
         $clients = 0;
         
-	$index = 1;
+  $index = 1;
 
         // get the data of each player and add the team status
         while ($nowplayers != -1)
         {   
-	    $pl_leader = $this->p_info[$index++];
-	    $pl_goal   = $this->p_info[$index++];
-	    $pl_honor  = $this->p_info[$index++];
-	    $pl        = $this->p_info[$index++];
-	    $pl_ping   = $this->p_info[$index++];
-	    $pl_roe    = $this->p_info[$index++];
-	    $pl_kia    = $this->p_info[$index++];
-	    $pl_enemy  = $this->p_info[$index++];
-	    // little hack for army ops 2.7.0
-	    if ($this->getvalue('gamever',       $this->g_info) == '2.7.0') {
-	    	$pl_score  = $this->p_info[$index++];
-	    }
-	     
-	    $players[$clients] = $pl_honor  . ' ' .
-	                         $pl_enemy  . ' ' .
-				 $pl_kia    . ' ' .
-				 $pl_roe    . ' ' .
-				 $pl_leader . ' ' .
-				 $pl_goal   . ' ' .
-				 $pl_ping   . ' ' .
-				 "\"$pl\"";
-	    $nowplayers--;
-	    $clients++;
+      $pl_leader = $this->p_info[$index++];
+      $pl_goal   = $this->p_info[$index++];
+      $pl_honor  = $this->p_info[$index++];
+      $pl        = $this->p_info[$index++];
+      $pl_ping   = $this->p_info[$index++];
+      $pl_roe    = $this->p_info[$index++];
+      $pl_kia    = $this->p_info[$index++];
+      $pl_enemy  = $this->p_info[$index++];
+      // little hack for army ops 2.7.0
+      if ($this->getvalue('gamever',       $this->g_info) == '2.7.0') {
+        $pl_score  = $this->p_info[$index++];
+      }
+       
+      $players[$clients] = $pl_honor  . ' ' .
+                           $pl_enemy  . ' ' .
+         $pl_kia    . ' ' .
+         $pl_roe    . ' ' .
+         $pl_leader . ' ' .
+         $pl_goal   . ' ' .
+         $pl_ping   . ' ' .
+         "\"$pl\"";
+      $nowplayers--;
+      $clients++;
         }
         
-	// check the connected players and sort the ranking
-	if ($players == false)
-	{
+  // check the connected players and sort the ranking
+  if ($players == false)
+  {
         $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
         $thead .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0) . cs_html_roco(0);
-	}
-	else
-	{
-	    sort($players, SORT_NUMERIC);
-	}
+  }
+  else
+  {
+      sort($players, SORT_NUMERIC);
+  }
 
-	// store the html table line to the info array
-	$srv_player = $thead;
+  // store the html table line to the info array
+  $srv_player = $thead;
         
-	// manage the player data in the following code
-	$index = 1;
+  // manage the player data in the following code
+  $index = 1;
 
-	while ($clients)
-	{
-	     $clients--;
-	     
-	     list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
-	     list ($honor[$index],
-	           $enemy[$index],
-		   $kia[$index],
-		   $goal[$index],
-		   $leader[$index],
-		   $roe[$index],
-		   $ping[$index])  = split (' ',  $cache[$index]);
+  while ($clients)
+  {
+       $clients--;
+       
+       list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
+       list ($honor[$index],
+             $enemy[$index],
+       $kia[$index],
+       $goal[$index],
+       $leader[$index],
+       $roe[$index],
+       $ping[$index])  = split (' ',  $cache[$index]);
              
-	     $player[$index] = htmlentities($player[$index]);
-	     $ping[$index]   = $this->check_color($ping[$index]);
-	     
+       $player[$index] = htmlentities($player[$index]);
+       $ping[$index]   = $this->check_color($ping[$index]);
+       
          $tdata = cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . $index . cs_html_div(0);
          $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . $player[$index] . cs_html_div(0);
          $tdata .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . $honor[$index] . cs_html_div(0);
          $tdata .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . $ping[$index] . cs_html_div(0) . cs_html_roco(0);
-	                  
-	     $srv_player = $srv_player . $tdata;
-	     $index++;
-	}
+                    
+       $srv_player = $srv_player . $tdata;
+       $index++;
+  }
 
         return $srv_player;
     }

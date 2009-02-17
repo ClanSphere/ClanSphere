@@ -7,10 +7,10 @@
 // Author eMail : quemao@quemao-designz.de
 // $Id$
 
-$cs_lang['mod_name']	= 'Juegos';
-$cs_lang['mod_text']	= 'Modul de los Juegos';
-$cs_lang['mod']	= 'Juegos';
-$cs_lang['head_remove']	= 'Remover'; 
+$cs_lang['mod_name']  = 'Juegos';
+$cs_lang['mod_text']  = 'Modul de los Juegos';
+$cs_lang['mod']  = 'Juegos';
+$cs_lang['head_remove']  = 'Remover'; 
 $cs_lang['head_edit'] = 'Editar'; 
 $cs_lang['head1'] = 'Detalles';
 $cs_lang['body_create'] =  'Por Favor rellene todas las casillas';

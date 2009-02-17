@@ -22,11 +22,11 @@ $like = "users_age LIKE '%-" . $zero . "-%'";
 $birthdays = cs_sql_select(__FILE__,'users','users_age',$like,0,0,0);
 
 if(is_array($birthdays)) {
-	foreach($birthdays AS $key => $value) {
-		$new_key = substr($value['users_age'], 8, 10);
-		settype($new_key,'integer');
-		$events[$new_key] = 0;
-	}
+  foreach($birthdays AS $key => $value) {
+    $new_key = substr($value['users_age'], 8, 10);
+    settype($new_key,'integer');
+    $events[$new_key] = 0;
+  }
 }
 
 $from = 'events evs INNER JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
@@ -46,10 +46,10 @@ if (!empty($op_events['show_wars'])) {
 }
 
 if(is_array($actions)) {
-	foreach($actions AS $key => $value) {
-		$new_key = cs_datereal('j', $value['events_time']);
-		$events[$new_key] = 0;
-	}
+  foreach($actions AS $key => $value) {
+    $new_key = cs_datereal('j', $value['events_time']);
+    $events[$new_key] = 0;
+  }
 }
 
 echo cs_html_table(1,'forum',1,'100%');
@@ -75,44 +75,44 @@ echo cs_html_roco(1,'calweek');
 echo date('W', mktime(0, 0, 0, $month, 1, $year));
 $colspan = $first == 0 ? 6 : $first - 1;
 if($colspan >= 1) { 
-	echo cs_html_roco(2,0,0,$colspan);
-	echo '&nbsp;';
+  echo cs_html_roco(2,0,0,$colspan);
+  echo '&nbsp;';
 }
 $row = $colspan + 2;
 for($run = 1; $run <= $days; $run++) {
-	if($row == 9) {
-		echo cs_html_roco(0);
-		echo cs_html_roco(1,'calweek');
-		echo date('W', mktime(0, 0, 0, $month, $run, $year));
-		$row = 2;
-	}
-	if(array_key_exists($run,$events)) {
-		$css = 'calevent';
-		$unix = mktime(0, 0, 0, $month, $run, $year);
-		$out = cs_link($run,'events','timer','unix=' . $unix);
-	}
-	else {
-		$css = 'calday';
-		$out = $run;	
-	}
-	$current = $run . '-' . $zero . '-' . $year;
-	$css2 = $current == cs_datereal('j-m-Y') ? 'caltoday' : $css;
-	echo cs_html_roco($row,$css2);
-	$row++;
-	echo $out;
+  if($row == 9) {
+    echo cs_html_roco(0);
+    echo cs_html_roco(1,'calweek');
+    echo date('W', mktime(0, 0, 0, $month, $run, $year));
+    $row = 2;
+  }
+  if(array_key_exists($run,$events)) {
+    $css = 'calevent';
+    $unix = mktime(0, 0, 0, $month, $run, $year);
+    $out = cs_link($run,'events','timer','unix=' . $unix);
+  }
+  else {
+    $css = 'calday';
+    $out = $run;  
+  }
+  $current = $run . '-' . $zero . '-' . $year;
+  $css2 = $current == cs_datereal('j-m-Y') ? 'caltoday' : $css;
+  echo cs_html_roco($row,$css2);
+  $row++;
+  echo $out;
 }
 if($row < 9) {
-	$colspan2 = 9 - $row;
-	echo cs_html_roco(2,0,0,$colspan2);
-	echo '&nbsp;';
+  $colspan2 = 9 - $row;
+  echo cs_html_roco(2,0,0,$colspan2);
+  echo '&nbsp;';
 }
 echo cs_html_roco(0);
 
 $nom = date('F', mktime(0, 0, 0, $month, 1, $year));
 $next = $month == 12 ? 'year=' . ($year + 1) . '&amp;month=1' : 
-	'year=' . $year . '&amp;month=' . ($month + 1);
+  'year=' . $year . '&amp;month=' . ($month + 1);
 $last = $month == 1 ? 'year=' . ($year - 1) . '&amp;month=12' : 
-	'year=' . $year . '&amp;month=' . ($month - 1);
+  'year=' . $year . '&amp;month=' . ($month - 1);
 $part[0] = ($year < 1970 OR $year == 1970 AND $month == 1) ? '&lt;' : cs_link('&lt;','events','calendar',$last);
 $part[1] = $cs_lang[$nom] . ' ' . $year;
 $part[2] = ($year > 2037 OR $year == 2037 AND $month == 12) ? '&gt;' : cs_link('&gt;','events','calendar',$next);

@@ -62,18 +62,18 @@ echo cs_html_roco(0);
 
 for($run=0; $run<$lanshop_loop; $run++) {
 
-	echo cs_html_roco(1,'leftc');
-	$lanshop_view = cs_secure($cs_lanshop[$run]['lanshop_articles_name']);
+  echo cs_html_roco(1,'leftc');
+  $lanshop_view = cs_secure($cs_lanshop[$run]['lanshop_articles_name']);
   echo cs_link($lanshop_view,'lanshop','view','id=' . $cs_lanshop[$run]['lanshop_articles_id']);
-	echo cs_html_roco(2,'leftc');
-	echo $cs_lanshop[$run]['lanshop_articles_price'] / 100 . ' ' . $cs_lang['cost'];
-	echo cs_html_roco(3,'leftc');
+  echo cs_html_roco(2,'leftc');
+  echo $cs_lanshop[$run]['lanshop_articles_price'] / 100 . ' ' . $cs_lang['cost'];
+  echo cs_html_roco(3,'leftc');
   $img_edit = cs_icon('edit',16,$cs_lang['edit']);
-	echo cs_link($img_edit,'lanshop','edit','id=' . $cs_lanshop[$run]['lanshop_articles_id'],0,$cs_lang['edit']);
+  echo cs_link($img_edit,'lanshop','edit','id=' . $cs_lanshop[$run]['lanshop_articles_id'],0,$cs_lang['edit']);
   echo cs_html_roco(4,'leftc');
-	$img_del = cs_icon('editdelete',16,$cs_lang['remove']);
+  $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
   echo cs_link($img_del,'lanshop','remove','id=' . $cs_lanshop[$run]['lanshop_articles_id'],0,$cs_lang['remove']);
-	echo cs_html_roco(0);
+  echo cs_html_roco(0);
 }
 
 echo cs_html_table(0);

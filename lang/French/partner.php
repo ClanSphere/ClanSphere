@@ -2,8 +2,8 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']	= 'Partenaires';
-$cs_lang['text']	= 'Le module des partenaires et sponsors';
+$cs_lang['mod']  = 'Partenaires';
+$cs_lang['text']  = 'Le module des partenaires et sponsors';
 
 $cs_lang['body_text'] =  'Remplissez tous les textes marqués d\'une étoile.';
 $cs_lang['list'] =  'Liste';

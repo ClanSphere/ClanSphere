@@ -51,15 +51,15 @@ if(!empty($sub_loop)) {
     echo cs_link(cs_secure($sub_data[$runb]['categories_name']),'files','listcat','where=' . $sub_data[$runb]['categories_id']);
     $content = cs_sql_count(__FILE__,'files',"categories_id = '" . $sub_data[$runb]['categories_id'] . "'");
     echo ' ('. $content .')';
-	echo cs_html_roco(0);
-	if(!empty($sub_data[$runb]['categories_text'])) {
-  	  echo cs_html_roco(1,'leftb');
-	  echo cs_secure($sub_data[$runb]['categories_text'],1);
-	  echo cs_html_roco(0);	
+  echo cs_html_roco(0);
+  if(!empty($sub_data[$runb]['categories_text'])) {
+      echo cs_html_roco(1,'leftb');
+    echo cs_secure($sub_data[$runb]['categories_text'],1);
+    echo cs_html_roco(0);  
     }
   }   
   echo cs_html_table(0);
-  echo cs_html_br(1);	
+  echo cs_html_br(1);  
 }
 
 
@@ -115,15 +115,15 @@ for($run=0; $run<$files_loop; $run++) {
   $run_3 = '0';
   for ($run_2 = 1; $run_2 < $temp_loop; $run_2++) {
     $temp_a = explode("\n", $temp[$run_2]);
-	if(in_array($temp_a['3'],$file_typ_array,TRUE)) {} else {
-	  $file_typ_array[$run_3] = $temp_a['3'];
-	  $run_3++;
-	}
+  if(in_array($temp_a['3'],$file_typ_array,TRUE)) {} else {
+    $file_typ_array[$run_3] = $temp_a['3'];
+    $run_3++;
+  }
   }
   $loop_file_typ_array = count($file_typ_array);
   for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++) {
     $ext = $file_typ_array[$run_2];
-	echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
+  echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
   }
   echo cs_html_roco(0);
 }

@@ -21,7 +21,7 @@ if(!empty($faq_form)) {
   $data['lang']['body'] = sprintf($cs_lang['del_rly'],$faq_id);
   $data['action']['form'] = cs_url('faq','remove');
   $data['faq']['id'] = $faq_id;
-	
+  
   echo cs_subtemplate(__FILE__,$data,'faq','remove');
 }
 

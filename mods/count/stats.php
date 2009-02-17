@@ -28,10 +28,10 @@ $count_archive = cs_sql_select(__FILE__,'count_archiv','*',0,'count_id ASC',0,0)
 }
 
 if(!empty($count_archive)) {
-	foreach($count_archive AS $value) {
+  foreach($count_archive AS $value) {
     $combine['' . $value['count_month'] . ''] = $value['count_num'];
     $archive = $archive + $value['count_num'];
-	}
+  }
 }
 
 $tday = cs_datereal('d');
@@ -59,18 +59,18 @@ for($loopm = $loopm; $loopm < 1; $loopm = $loopm + 12) {
 
 for($run=0; $run < $levels; $run++) {
 
-	if($loopm > 12) {
+  if($loopm > 12) {
     $loopm = $loopm - 12;
     $vyear++;
   }
-	$days = date('t', mktime(0,0,0,$loopm,0,$vyear));
-	if($loopm == cs_datereal('n') AND $vyear == cs_datereal('Y')) $days = cs_datereal('j');
+  $days = date('t', mktime(0,0,0,$loopm,0,$vyear));
+  if($loopm == cs_datereal('n') AND $vyear == cs_datereal('Y')) $days = cs_datereal('j');
 
   $mstar = mktime(0,0,0,$loopm,1,$vyear);
   $mend = mktime(0,0,0,($loopm + 1),1,$vyear);
 
-	$comnr = isset($combine[$loopm . '-' . $vyear]) ? $combine[$loopm . '-' . $vyear] : 0;
-	$comnr = $comnr + cs_sql_count(__FILE__,'count','count_time > ' . $mstar . ' AND count_time < ' . $mend);
+  $comnr = isset($combine[$loopm . '-' . $vyear]) ? $combine[$loopm . '-' . $vyear] : 0;
+  $comnr = $comnr + cs_sql_count(__FILE__,'count','count_time > ' . $mstar . ' AND count_time < ' . $mend);
   if($comnr > $comnr_max) {
     $comnr_max = $comnr;
   }
@@ -86,23 +86,23 @@ foreach($data['count'] AS $dc) {
   
   if ($data['count'][$run]['count'] == 0){
     $data['count'][$run]['size'] = '-';
-	$data['count'][$run]['diff'] = '-';
-	$data['count'][$run]['barp_start'] = '';
+  $data['count'][$run]['diff'] = '-';
+  $data['count'][$run]['barp_start'] = '';
     $data['count'][$run]['barp_end'] = '';
   }
   else {
     $data['count'][$run]['barp'] = round($data['count'][$run]['count'] / $comnr_max * 200);
     $data['count'][$run]['size'] = cs_html_img('symbols/clansphere/bar2.gif', 12, $data['count'][$run]['barp']);
-	
-	if ($data['count'][$run-1]['count'] == 0) {
-	  $data['count'][$run]['diff'] = '-';
-	}	
-	else {
-	  $diff = empty($count) ? ($data['count'][$run]['count'] * 100) . '%' : round($data['count'][$run]['count'] / $count * 100 - 100,2) . '%';
+  
+  if ($data['count'][$run-1]['count'] == 0) {
+    $data['count'][$run]['diff'] = '-';
+  }  
+  else {
+    $diff = empty($count) ? ($data['count'][$run]['count'] * 100) . '%' : round($data['count'][$run]['count'] / $count * 100 - 100,2) . '%';
       $data['count'][$run]['diff'] = substr($diff,0,1) == '-' ? $diff : '+ ' . $diff;
-	}
-	
-	$data['count'][$run]['barp_start'] = cs_html_img('symbols/clansphere/bar1.gif',12,2);
+  }
+  
+  $data['count'][$run]['barp_start'] = cs_html_img('symbols/clansphere/bar1.gif',12,2);
     $data['count'][$run]['barp_end'] = cs_html_img('symbols/clansphere/bar3.gif',12,2);
   }  
   
@@ -111,11 +111,11 @@ foreach($data['count'] AS $dc) {
 }
 
 if ($op_count['view'] == 'stats'){
-	echo cs_subtemplate(__FILE__,$data,'count','stats');
+  echo cs_subtemplate(__FILE__,$data,'count','stats');
 }
 $run = 0;
 if ($op_count['view'] == 'amstats'){
-	echo cs_subtemplate(__FILE__,$data,'count','statshead');
+  echo cs_subtemplate(__FILE__,$data,'count','statshead');
 
 ?>
 <script type="text/javascript" src="<?php echo $cs_main['php_self']['dirname']; ?>mods/count/amline/swfobject.js"></script>
@@ -126,12 +126,12 @@ echo cs_subtemplate(__FILE__,$data,'count','flash');
 </div>
 <?
 echo "<script type=\"text/javascript\">\n
-	//<![CDATA[\n
-	var so = new SWFObject(\"" . $cs_main['php_self']['dirname'] . "mods/count/amline/amline.swf\", \"amline\", \"" . $op_count['width'] . "%\", \"" . $op_count['height'] . "px\", \"8\", \"#" . $op_count['background'] . "\");\n
-	so.addVariable(\"path\", \"" . $cs_main['php_self']['dirname'] . "mods/count/amline/\");\n
-	so.addVariable(\"chart_settings\",\"<settings><text_size>" . $op_count['textsize'] . "</text_size><text_color>" . $op_count['textcolor'] . "</text_color><redraw>true</redraw><background><color>#" . $op_count['background'] . "</color><alpha>100</alpha></background><scroller><enabled>true</enabled></scroller><grid><x><enabled>true</enabled><color>#" . $op_count['textcolor'] . "</color><dashed>true</dashed><dash_length>3</dash_length><approx_count>12</approx_count></x><y_left><enabled>true</enabled><color>#" . $op_count['textcolor'] . "</color></y_left><y_right><enabled>true</enabled><color>#" . $op_count['textcolor'] . "</color></y_right></grid><axes><x><color>" . $op_count['axescolor'] . "</color></x><y_left><color>#" . $op_count['axescolor'] . "</color><tick_length>10</tick_length></y_left><y_right><color>#" . $op_count['axescolor'] . "</color></y_right></axes><indicator><enabled>true</enabled><color>#" . $op_count['indicatorcolor'] . "</color><selection_color>#3972ad</selection_color><y_balloon_on_off>true</y_balloon_on_off></indicator><legend><y>380</y><text_color_hover>#" . $op_count['graphcolor1'] . "</text_color_hover></legend><labels><label><align>left</align><text_size>7</text_size><text></text></label></labels><graphs><graph gid='1'><axis>left</axis><title>Nominal</title><color>#" . $op_count['graphcolor1'] . "</color><color_hover>#" . $op_count['graphcolor1'] . "</color_hover><line_width>4</line_width><fill_alpha>30</fill_alpha><fill_color>#" . $op_count['graphcolor1'] . "</fill_color><balloon_color>#" . $op_count['graphcolor1'] . "</balloon_color><balloon_text_color>#" . $op_count['textballoncolor'] . "</balloon_text_color><bullet_color>#" . $op_count['graphcolor1'] . "</bullet_color><balloon_text>{value} " . $cs_lang['guest'] . "</balloon_text></graph><graph gid='2'><axis>left</axis><title>Nominal</title><color>#" . $op_count['graphcolor2'] . "</color><color_hover>#" . $op_count['graphcolor2'] . "</color_hover><line_width>4</line_width><fill_alpha>30</fill_alpha><fill_color>#" . $op_count['graphcolor2'] . "</fill_color><balloon_color>#" . $op_count['graphcolor2'] . "</balloon_color><balloon_text_color>#" . $op_count['textballoncolor'] . "</balloon_text_color><bullet_color>#" . $op_count['indicatorcolor'] . "</bullet_color><balloon_text>" . $cs_lang['daydif'] . " {value}</balloon_text></graph></graphs></settings>\");\n
+  //<![CDATA[\n
+  var so = new SWFObject(\"" . $cs_main['php_self']['dirname'] . "mods/count/amline/amline.swf\", \"amline\", \"" . $op_count['width'] . "%\", \"" . $op_count['height'] . "px\", \"8\", \"#" . $op_count['background'] . "\");\n
+  so.addVariable(\"path\", \"" . $cs_main['php_self']['dirname'] . "mods/count/amline/\");\n
+  so.addVariable(\"chart_settings\",\"<settings><text_size>" . $op_count['textsize'] . "</text_size><text_color>" . $op_count['textcolor'] . "</text_color><redraw>true</redraw><background><color>#" . $op_count['background'] . "</color><alpha>100</alpha></background><scroller><enabled>true</enabled></scroller><grid><x><enabled>true</enabled><color>#" . $op_count['textcolor'] . "</color><dashed>true</dashed><dash_length>3</dash_length><approx_count>12</approx_count></x><y_left><enabled>true</enabled><color>#" . $op_count['textcolor'] . "</color></y_left><y_right><enabled>true</enabled><color>#" . $op_count['textcolor'] . "</color></y_right></grid><axes><x><color>" . $op_count['axescolor'] . "</color></x><y_left><color>#" . $op_count['axescolor'] . "</color><tick_length>10</tick_length></y_left><y_right><color>#" . $op_count['axescolor'] . "</color></y_right></axes><indicator><enabled>true</enabled><color>#" . $op_count['indicatorcolor'] . "</color><selection_color>#3972ad</selection_color><y_balloon_on_off>true</y_balloon_on_off></indicator><legend><y>380</y><text_color_hover>#" . $op_count['graphcolor1'] . "</text_color_hover></legend><labels><label><align>left</align><text_size>7</text_size><text></text></label></labels><graphs><graph gid='1'><axis>left</axis><title>Nominal</title><color>#" . $op_count['graphcolor1'] . "</color><color_hover>#" . $op_count['graphcolor1'] . "</color_hover><line_width>4</line_width><fill_alpha>30</fill_alpha><fill_color>#" . $op_count['graphcolor1'] . "</fill_color><balloon_color>#" . $op_count['graphcolor1'] . "</balloon_color><balloon_text_color>#" . $op_count['textballoncolor'] . "</balloon_text_color><bullet_color>#" . $op_count['graphcolor1'] . "</bullet_color><balloon_text>{value} " . $cs_lang['guest'] . "</balloon_text></graph><graph gid='2'><axis>left</axis><title>Nominal</title><color>#" . $op_count['graphcolor2'] . "</color><color_hover>#" . $op_count['graphcolor2'] . "</color_hover><line_width>4</line_width><fill_alpha>30</fill_alpha><fill_color>#" . $op_count['graphcolor2'] . "</fill_color><balloon_color>#" . $op_count['graphcolor2'] . "</balloon_color><balloon_text_color>#" . $op_count['textballoncolor'] . "</balloon_text_color><bullet_color>#" . $op_count['indicatorcolor'] . "</bullet_color><balloon_text>" . $cs_lang['daydif'] . " {value}</balloon_text></graph></graphs></settings>\");\n
 
-	so.addVariable(\"chart_data\", \"<chart><series>";
+  so.addVariable(\"chart_data\", \"<chart><series>";
 $loop = 1;
 for($run=0; $run < $levels; $run++) {
 echo "<value xid='" . $loop . "'>" . $data['count'][$run]['year-mon'] . "</value>";
@@ -151,9 +151,9 @@ $loop++;
 }
 
 echo "</graph></graphs></chart>\");\n
-	so.addVariable(\"preloader_color\", \"#" . $op_count['textcolor'] . "\");\n
-	so.write(\"flashcontent\");\n
-	//]]>\n
+  so.addVariable(\"preloader_color\", \"#" . $op_count['textcolor'] . "\");\n
+  so.write(\"flashcontent\");\n
+  //]]>\n
 </script>\n";
 }
 ?>

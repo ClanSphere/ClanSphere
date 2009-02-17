@@ -1,20 +1,20 @@
 <?php
-$cs_lang['mod_name']	= 'Nous défier';
-$cs_lang['mod_text']	= 'Demande de rencontre';
-$cs_lang['mod']	= 'Nous défier';
-$cs_lang['head_new']	= 'Demande';
-$cs_lang['head_remove']	= 'Supprimer';
-$cs_lang['head_view']	= 'Détails';
-$cs_lang['head_manage']	= 'Administration';
-$cs_lang['body_new']	= 'Veuillez remplir les champs marqués d\'une étoile.';
+$cs_lang['mod_name']  = 'Nous défier';
+$cs_lang['mod_text']  = 'Demande de rencontre';
+$cs_lang['mod']  = 'Nous défier';
+$cs_lang['head_new']  = 'Demande';
+$cs_lang['head_remove']  = 'Supprimer';
+$cs_lang['head_view']  = 'Détails';
+$cs_lang['head_manage']  = 'Administration';
+$cs_lang['body_new']  = 'Veuillez remplir les champs marqués d\'une étoile.';
 $cs_lang['new_done'] = 'Demande créée avec succès.';
-$cs_lang['body_view']	= 'Information sur la demande.';
-$cs_lang['head_convert']	= 'Convertir';
-$cs_lang['body_convert']	= 'La demande de rencontre sera acceptée';
-$cs_lang['convert']	= 'Accepter';
-$cs_lang['convert_clan']	= 'Créer un clan';
-$cs_lang['convert_war']		= 'Créer un match';
-$cs_lang['fight_del_true']	= 'Demande supprimée avec succès';
+$cs_lang['body_view']  = 'Information sur la demande.';
+$cs_lang['head_convert']  = 'Convertir';
+$cs_lang['body_convert']  = 'La demande de rencontre sera acceptée';
+$cs_lang['convert']  = 'Accepter';
+$cs_lang['convert_clan']  = 'Créer un clan';
+$cs_lang['convert_war']    = 'Créer un match';
+$cs_lang['fight_del_true']  = 'Demande supprimée avec succès';
 $cs_lang['since'] = 'Entrée';
 $cs_lang['clan'] = 'Clan';
 $cs_lang['country'] = 'Pays';
@@ -34,7 +34,7 @@ $cs_lang['email_false'] = '- Adresse E-mail invalide';
 $cs_lang['no_clan'] = '- Saisissez un nom de clan';
 $cs_lang['no_short'] = '- Saisissez une abbréviation pour le nom du clan';
 $cs_lang['no_date'] = '- Saisissez la date de rencontre';
-$cs_lang['last_fightus']	= 'Demandes récentes de rencontre';
-$cs_lang['new_fight']	= 'Nouvelle rencontre';
+$cs_lang['last_fightus']  = 'Demandes récentes de rencontre';
+$cs_lang['new_fight']  = 'Nouvelle rencontre';
 
 ?>

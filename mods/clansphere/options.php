@@ -12,7 +12,7 @@ if($account['access_wizard'] == 5) {
   $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_opts' AND options_value = '1'");
   if(empty($wizard)) {
     $data['if']['done'] = true;
-	$data['lang']['link_2'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=opts&amp;done=1');
+  $data['lang']['link_2'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=opts&amp;done=1');
     }
   }
   
@@ -25,8 +25,8 @@ if(isset($_POST['submit'])) {
 
   foreach($modules as $mod) {
     if($mod['dir'] == $_POST['def_mod']) {
-	  $allow++;
-	}
+    $allow++;
+  }
   }
   
   $_POST['def_mod'] = empty($allow) ? $cs_main['def_mod'] : $_POST['def_mod'];
@@ -90,11 +90,11 @@ else {
   $selected = ' selected="selected"';
   
   if (empty($cs_main['mod_rewrite'])) {
-  	$data['options']['mod_rewrite_on'] = '';
-  	$data['options']['mod_rewrite_off'] = $selected;
+    $data['options']['mod_rewrite_on'] = '';
+    $data['options']['mod_rewrite_off'] = $selected;
   } else {
     $data['options']['mod_rewrite_on'] = $selected;
-  	$data['options']['mod_rewrite_off'] = '';
+    $data['options']['mod_rewrite_off'] = '';
   }
   
   $data['options']['def_width'] = $cs_main['def_width'];
@@ -106,7 +106,7 @@ else {
   foreach($modules as $mods) {
     $sel = $mods['dir'] == $cs_main['def_mod'] ? 1 : 0;
     $data['sel'][$run]['options'] = cs_html_option($mods['name'],$mods['dir'],$sel);
-	$run++;
+  $run++;
   }
 
   $data['options']['action'] = $cs_main['def_action'];
@@ -118,14 +118,14 @@ else {
   else {
     $data['options']['automatic'] = '';
   }
-	
+  
   if($cs_main['def_path'] == '0') {
     $data['options']['manual'] = 'selected="selected"';
   }
   else {
     $data['options']['manual'] = '';
   }
-	
+  
   $data['options']['def_path'] = $cs_main['def_path'];
 
   if($cs_main['public'] == '1') {
@@ -134,21 +134,21 @@ else {
   else {
     $data['options']['public_1'] = '';
   }
-	
+  
   if($cs_main['public'] == '0') {
     $data['options']['public_2'] = 'checked="checked"';
   }
   else {
     $data['options']['public_2'] = '';
   }
-	
+  
   if($cs_main['def_admin'] == 'integrated' OR empty($cs_main['def_admin'])) {
     $data['options']['admin_1'] = 'checked="checked"';
   }
   else {
     $data['options']['admin_1'] = '';
   }
-	
+  
   if($cs_main['def_admin'] == 'separated') {
     $data['options']['admin_2'] = 'checked="checked"';
   }
@@ -164,7 +164,7 @@ else {
     $offset = $timezone * 3600;
     $sel = $offset == $cs_main['def_timezone'] ? 1 : 0;
     $data['options']['def_timezone'] .= cs_html_option($zonename,$offset,$sel);
-  	$timezone = $timezone + 0.5;
+    $timezone = $timezone + 0.5;
   }
   
   $data['options']['def_timezone'] .= cs_html_select(0);
@@ -175,15 +175,15 @@ else {
   else {
     $data['options']['time_1'] = '';
   }
-	
+  
   if($cs_main['def_dstime'] == 'off') {
     $data['options']['time_0'] = 'selected="selected"';
   }
   else {
     $data['options']['time_0'] = '';
   }
-	
-	$data['options']['time_auto'] = $cs_main['def_dstime'] == '0' ? 'selected="selected"' : '';
+  
+  $data['options']['time_auto'] = $cs_main['def_dstime'] == '0' ? 'selected="selected"' : '';
 
   $data['options']['def_flood'] = $cs_main['def_flood'];
   $data['options']['def_org'] = $cs_main['def_org'];

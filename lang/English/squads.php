@@ -3,8 +3,8 @@
 // $Id$
 
 // General
-$cs_lang['mod']	= 'Squads';
-$cs_lang['modtext']	= 'Clansquad';
+$cs_lang['mod']  = 'Squads';
+$cs_lang['modtext']  = 'Clansquad';
 
 $cs_lang['count'] = 'There are %s Squads in the clan.';
 
@@ -12,8 +12,8 @@ $cs_lang['count'] = 'There are %s Squads in the clan.';
 $cs_lang['squad'] = 'Squad';
 $cs_lang['squads'] = 'Squads';
 $cs_lang['new_squad'] = 'New Squad';
-$cs_lang['join_squad']	= 'Join Squad';
-$cs_lang['leave_squad']	= 'Leave Squad';
+$cs_lang['join_squad']  = 'Join Squad';
+$cs_lang['leave_squad']  = 'Leave Squad';
 $cs_lang['no_squad'] = '- No squad selected';
 $cs_lang['no_pwd_squad'] = '- Only squads with passwords can be joined';
 $cs_lang['squad_exists'] = '- Squad with this name already exists';
@@ -86,19 +86,19 @@ $cs_lang['teammates'] = 'Teammates';
 $cs_lang['classmates'] = 'Classmates';
 
 // Center
-$cs_lang['head_center']	= 'Headcenter';
-$cs_lang['task']	= 'Task';
+$cs_lang['head_center']  = 'Headcenter';
+$cs_lang['task']  = 'Task';
 
 // Change
-$cs_lang['body_change']	= 'Errors may occur here.';
+$cs_lang['body_change']  = 'Errors may occur here.';
 
 $cs_lang['nopic'] = 'No picture available';
-$cs_lang['pic_current']	= 'Current picture';
+$cs_lang['pic_current']  = 'Current picture';
 $cs_lang['pic_up'] = 'Upload picture';
 $cs_lang['game'] = 'Game';
 $cs_lang['order'] = 'Order';
 $cs_lang['password'] = 'Password';
-$cs_lang['more']	= 'More';
+$cs_lang['more']  = 'More';
 
 $cs_lang['hidden'] = 'hide';
 $cs_lang['joinus'] = 'joinus';
@@ -110,62 +110,62 @@ $cs_lang['max_height'] = 'Maximum height: ';
 $cs_lang['max_size'] = 'Maximum size: ';
 $cs_lang['filetypes'] = 'Filetype: ';
 
-$cs_lang['too_big']	= '- The file is too big;';
-$cs_lang['too_wide']	= '- The picture is too wide';
-$cs_lang['too_high']	= '- The picture is too high';
-$cs_lang['ext_error']	= '- Unknown Filetype';
+$cs_lang['too_big']  = '- The file is too big;';
+$cs_lang['too_wide']  = '- The picture is too wide';
+$cs_lang['too_high']  = '- The picture is too high';
+$cs_lang['ext_error']  = '- Unknown Filetype';
 $cs_lang['no_name'] = '- A name is required';
 $cs_lang['up_error'] = '- Unexpected error, please contact Webmaster';
 $cs_lang['no_admin'] = '- You dont have administrator rights in the squad';
 $cs_lang['pwd_wrong'] = '- Clan password is wrong or empty';
 
 // Delete
-$cs_lang['head_delete']	= 'Remove';
+$cs_lang['head_delete']  = 'Remove';
 
-$cs_lang['sq_del_true']	= 'Squad and Memberships successfully removed';
+$cs_lang['sq_del_true']  = 'Squad and Memberships successfully removed';
 
-$cs_lang['body_new']	= 'Add a squad to a clan';
+$cs_lang['body_new']  = 'Add a squad to a clan';
 
 $cs_lang['new_done'] = 'Squad successfully created.';
 $cs_lang['leader'] = 'Leader';
 
 // Options
 $cs_lang['label'] = 'Label';
-$cs_lang['body_options']	= 'Manage module settings here.';
+$cs_lang['body_options']  = 'Manage module settings here.';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['def_order'] = 'Default order';
 
 // View
-$cs_lang['head_list']	= 'Details';
+$cs_lang['head_list']  = 'Details';
 $cs_lang['body_list'] = 'Squad of the Clan %s.';
-$cs_lang['country']	= 'Country';
-$cs_lang['nick']	= 'Nickname';
-$cs_lang['page']	= 'Status';
-$cs_lang['since']	= 'Member since';
+$cs_lang['country']  = 'Country';
+$cs_lang['nick']  = 'Nickname';
+$cs_lang['page']  = 'Status';
+$cs_lang['since']  = 'Member since';
 
-$cs_lang['ranks']	= 'Rankings';
-$cs_lang['image']	= 'Image';
+$cs_lang['ranks']  = 'Rankings';
+$cs_lang['image']  = 'Image';
 
 $cs_lang['awards'] = 'Awards';
 $cs_lang['event'] = 'Event';
 $cs_lang['place'] = 'Rank';
 
-$cs_lang['wars']	= 'Clanwars';
-$cs_lang['enemy']	= 'Enemy';
+$cs_lang['wars']  = 'Clanwars';
+$cs_lang['enemy']  = 'Enemy';
 $cs_lang['score'] = 'Result';
 
 // Join
-$cs_lang['head_join']	= 'Join';
-$cs_lang['body_join']	= 'Create new membership';
+$cs_lang['head_join']  = 'Join';
+$cs_lang['body_join']  = 'Create new membership';
 $cs_lang['join'] = 'Join';
 
 $cs_lang['wrong_pwd'] = '- Wrong password';
 $cs_lang['collision'] = '- You are already in the selected squad';
 
 // Leave
-$cs_lang['head_leave']	= 'Leave';
-$cs_lang['body_leave']	= 'Quit membership';
+$cs_lang['head_leave']  = 'Leave';
+$cs_lang['body_leave']  = 'Quit membership';
 $cs_lang['join_done'] = 'Data successfully entered.';
 $cs_lang['member'] = 'Member';
 
