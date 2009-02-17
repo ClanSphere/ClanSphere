@@ -1,10 +1,10 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-  <tr>
-    <td class="headb">{lang:mod} - {lang:create}</td>
-  </tr>
-  <tr>
-    <td class="leftc">{lang:body}</td>
-  </tr>
+  	<tr>
+    	<td class="headb">{lang:mod} - {lang:create}</td>
+  	</tr>
+  	<tr>
+    	<td class="leftc">{lang:body}</td>
+  	</tr>
 </table>
 <br />
 <form method="post" name="clans_create" action="{url:form}" enctype="multipart/form-data">

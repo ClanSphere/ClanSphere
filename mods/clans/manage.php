@@ -48,5 +48,15 @@ for($run = 0; $run < $count_clans; $run++) {
   }
 }
 
+$data['if']['done'] = false;
+
+if($account['access_wizard'] == 5) {
+	$wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_clan' AND options_value = '1'");
+	if(empty($wizard)) {
+		$data['if']['done'] = true;
+		$data['link']['wizard'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=clan&amp;done=1');
+	}
+}	
+
 echo cs_subtemplate(__FILE__,$data,'clans','manage');
 ?>
