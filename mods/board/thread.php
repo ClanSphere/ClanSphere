@@ -425,12 +425,14 @@ for($run = 0; $run < $comments_loop; $run++)
 if(!empty($cs_com))
 {
   $com_loop = count($cs_com);
+  
   if($board_sort=='DESC') {
     $current = $com_loop;
     if(!empty($_GET['start'])) {
       $current = $current - $_GET['start']; 
     }
-  }  
+  } else
+    $current = $start;
   $limit = $start + $account['users_limit'];
   if($com_loop <= $limit)
   {
@@ -445,21 +447,23 @@ else
 {
   $com_loop = 0;
 } 
-$data['if']['com_report'] = false; 
-$data['if']['com_user'] = false; 
-$data['if']['com_admin'] = false; 
+$data['if']['com_report'] = false;
+$data['if']['com_user'] = false;
+$data['if']['com_admin'] = false;
 
 for($run = 0; $run<$com_loop; $run++)
-{       
-$data['comment'][$run]['if']['com_moderator'] = false; 
-$data['comment'][$run]['if']['no_com_moderator'] = false; 
-$data['comment'][$run]['if']['c_files'] = false; 
-$data['comment'][$run]['cut'] = '';
-$data['comment'][$run]['edit'] = '';
-$data['comment'][$run]['remove'] = '';
-$data['comment'][$run]['checkedit'] = '';
+{
+  $data['comment'][$run]['if']['com_moderator'] = false; 
+  $data['comment'][$run]['if']['no_com_moderator'] = false; 
+  $data['comment'][$run]['if']['c_files'] = false; 
+  $data['comment'][$run]['cut'] = '';
+  $data['comment'][$run]['edit'] = '';
+  $data['comment'][$run]['remove'] = '';
+  $data['comment'][$run]['checkedit'] = '';
+  
   if($board_sort=='ASC')
-    $current = $run + 1;  
+    $current++;  
+  
   $url = 'symbols/countries/' . $cs_com[$run]['users_country'] . '.png';
   $data['comment'][$run]['country'] = $url;
   $data['comment'][$run]['users_link'] = cs_user($cs_com[$run]['users_id'], $cs_com[$run]['users_nick'], $cs_com[$run]['users_active']);
