@@ -130,6 +130,7 @@
 		  <tr><td>{count:navday}</td><td>Zeigt die Besucheranzahl des laufenden Tages</td></tr>
 		  <tr><td>{count:navmon}</td><td>Zeigt die Besucheranzahl des laufenden Monats</td></tr>
 		  <tr><td>{count:navone}</td><td>Zeigt die Anzahl an Besuchern, die aktuell online sind</td></tr>
+		  <tr><td>{count:navusr}</td><td>Zeigt die Anzahl der registrierten Benutzer</td></tr>
 		  <tr><td>{count:navyes}</td><td>Zeigt die Besucheranzahl des Vortags</td></tr>
 		  <tr><td>{events:navcal}</td><td>Kalender des aktuellen Monats mit Terminen</td></tr>
 		  <tr><td>{events:navnext}</td><td>Zeigt die kommenden Termine mit Namen und Datum</td></tr>
@@ -137,15 +138,11 @@
 		  <tr><td>{files:navtop}</td><td>Zeigt die 4 Top Downloads an</td></tr>
 		  <tr><td>{gallery:navlist}</td><td>Zeigt per Zufall ein Bild aus der Gallery</td></tr>
 		  <tr><td>{lanpartys:navnext}</td><td>Informationen zur folgenden LAN-Party mit Balken und Belegung</td></tr>
-		  <tr>
-		    <td>{members:navrand}</td>
-		    <td>Zeigt einen zuf&auml;lligen Member, mit Bild, Nickname, Namen, Funktion und dabei seit</td>
-		  </tr>
-		  <tr><td>{news:navlist}</td><td>Die letzten vier News mit Datum und Kopfzeile</td></tr>
+		  <tr><td>{members:navrand}</td><td>Zeigt einen zuf&auml;lligen Member, mit Bild, Nickname, Namen, Funktion und dabei seit</td></tr>
+		  <tr><td>{news:navlist}</td><td>Die letzten News mit Datum und Kopfzeile (Anzahl einstellbar)</td></tr>
 		  <tr><td>{shoutbox:navlist}</td><td>Anzeige einer Shoutbox</td></tr>
 		  <tr><td>{users:navbirth}</td><td>Zeigt Benutzer, die am aktuellen Tag ihren Geburtstag haben</td></tr>
-		  <tr><td>{users:navlang}</td><td>Auflistung der Sprachen, mit Flagge und Name, untereinander, sowie Wechselfunktion für Besucher 
-		  	und Benutzer</td></tr>
+		  <tr><td>{users:navlang}</td><td>Auflistung der Sprachen, mit Flagge und Name, untereinander, sowie Wechselfunktion für Besucher und Benutzer</td></tr>
 		  <tr><td>{users:navlang2}</td><td>Auflistung der Sprachen, mit Flagge, nebeneinander, sowie Wechselfunktion für Besucher und Benutzer</td></tr>
 		  <tr><td>{users:navlast}</td><td>Benutzer, die sich zuletzt registriert haben</td></tr>
 		  <tr><td>{users:navlogin}</td><td>Zeigt Extern ein Login-Formular und Intern eine Funktionsliste</td></tr>
@@ -153,8 +150,12 @@
 		  <tr><td>{users:navlogin3}</td><td>Zeigt Extern ein Login-Formular und Intern eine Funktionsliste mit Icons</td></tr>
 		  <tr><td>{users:navlogin4}</td><td>Zeigt Extern ein Login-Formular und Intern eine Funktionsliste mit Icons, sowie dem eigenem Bild oder Avatar</td></tr>
 		  <tr><td>{users:navonline}</td><td>Benutzer, die aktuell Online sind</td></tr>
+		  <tr><td>{users:navonline_ava}</td><td>Benutzer, die aktuell Online sind mit ihrem Avatar</td></tr>
+		  <tr><td>{users:navonline_pic}</td><td>Benutzer, die aktuell Online sind mit ihrem Bild</td></tr>
+		  <tr><td>{users:navrand}</td><td>Zeigt zufällig einen Benutzer</td></tr>		  
 		  <tr><td>{votes:navlist}</td><td>Zeigt die derzeit aktuelle Abstimmung an</td></tr>
-		  <tr><td>{wars:navlist}</td><td>Die letzten vier Wars mit Spiel, Gegner und Ergebnis</td></tr>
+		  <tr><td>{wars:navlist}</td><td>Die letzten Wars mit Spiel, Gegner und Ergebnis (Anzahl einstellbar)</td></tr>
+		  <tr><td>{wars:navlist2}</td><td>Die letzten Wars mit Datum, Spiel, Gegner und Ergebnis (Anzahl einstellbar)</td></tr>
 		  <tr><td>{wars:navnext}</td><td>Zeigt anstehende Wars mit Datum, Spiel und Gegner</td></tr>
 		</table>
 		<br />
@@ -172,11 +173,11 @@
 		  <tr><td class="leftc" colspan="2">[phpcode]Code[/phpcode]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">In diesem Bereich wird PHP-Code vom Webserver interpretiert. Diese Funktion kann man 
 		 	ausschließlich im Statische Seiten Modul verwenden und dort nur auf Admin-Seiten ab Level 5. Der Code ist ohne 
-			<?php und ?> anzugeben.</td></tr>
+			"< ? php" und "? >" anzugeben.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>
 		  <tr><td class="leftc" colspan="2">[php]Code[/php]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion dient der Anzeige von PHP-Code mit farbigen Hervorhebung 
-		 	bestimmter Zeichen. <?php und ?> sind mit anzugeben.</td></tr>
+		 	bestimmter Zeichen. "< ? php" und "? >" sind mit anzugeben.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>		 
 		  <tr><td class="leftc" colspan="2">[u]Text[/u]</td></tr>
 	 	  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird unterstrichen dargestellt (underline).</td></tr>
@@ -296,7 +297,7 @@
 		  </td></tr>
 		</table>
 		<table cellspacing="0" cellpadding="2" width="100%">
-		  <tr><td style="float:right; font-size: 8pt;"><i>Letzte Aktualisierung: 23.03.2008</i></td></tr>
+		  <tr><td style="float:right; font-size: 8pt;"><i>Letzte Aktualisierung: 18.02.2009</i></td></tr>
 		</table>
 	</div>
 	<div id="footer">Copyright 2004-2008 clansphere.net. All rights reserved.</div>	
