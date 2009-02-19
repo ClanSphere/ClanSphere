@@ -4,7 +4,7 @@
 		<td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:editpaste} {head:new}</a></td>
+		<td class="leftb">{icon:editpaste} {head:new}</td>
 		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
 		<td class="rightb">{head:pages}</td>
 	</tr>
