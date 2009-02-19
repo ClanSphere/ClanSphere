@@ -111,172 +111,83 @@ else {
 
 $setup_exists = file_exists('setup.php') ? 1 : 0;
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_settings'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftc');
-if(!empty($error)) {
-  echo $errormsg;
-}
-elseif(isset($_POST['create']) AND !empty($setup_exists)) {
-  echo $cs_lang['inst_create_done'];
-}
-elseif(!empty($setup_exists)) {
-  echo $cs_lang['setup_exists'];
-}
-else {
-  echo $cs_lang['body_settings'];
-}
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+$data = array();
+
+$data['head']['message'] = $cs_lang['body_settings'];
+if (!empty($error)) $data['head']['message'] = $errormsg;
+elseif (isset($_POST['create']) AND !empty($setup_exists)) $data['head']['message'] = $cs_lang['inst_create_done'];
+elseif (!empty($setup_exists)) $data['head']['message'] = $cs_lang['setup_exists'];
+
+$data['data']['lang'] = $account['users_lang'];
+
+$data['if']['setup'] = false;
+$data['if']['display_setup'] = false;
+$data['if']['display_form'] = false;
 
 if(!empty($setup_exists)) {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'centerb');
-  echo cs_link($cs_lang['full_install'],'install','sql','lang=' . $account['users_lang']);
-  echo cs_html_br(2);
-  echo cs_link($cs_lang['module_select'],'install','sql_select','lang=' . $account['users_lang']);
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+	
+	$data['if']['setup'] = true;
+	
+} elseif(isset($_POST['view']) AND empty($error)) {
+
+	$data['if']['display_setup'] = true;
+	$data['data']['setup'] = $setup_php;
+	
+} else {
+	
+	$data['if']['display_form'] = true;
+	
+	$data['selected']['md5'] = $cs_db['hash'] == 'md5' ? ' selected="selected"' : '';
+	$data['selected']['sha1'] = $cs_db['hash'] == 'sha1' ? ' selected="selected"' : '';
+	
+	$data['types'] = array();
+	$i = 0;
+	
+	$types = array();
+	$types['mssql'] = 'Microsoft SQL Server (mssql)';
+	$types['mysql'] = 'MySQL (mysql)';
+	$types['mysqli'] = 'MySQL (mysqli)';
+	$types['pgsql'] = 'PostgreSQL (pgsql)';
+	$types['sqlite'] = 'SQLite 2 (sqlite)';
+	
+	$types_pdo = array();
+	$types_pdo['pdo_mysql'] = 'MySQL (pdo_mysql)';
+	$types_pdo['pdo_pgsql'] = 'PostgreSQL (pdo_pgsql)';
+	$types_pdo['pdo_sqlite'] = 'SQLite 3 (pdo_sqlite)';
+	
+	foreach ($types AS $type => $name) {
+		if (extension_loaded($type)) {
+			$data['types'][$i]['type'] = $type;
+			$data['types'][$i]['name'] = $name;
+			$data['types'][$i]['selected'] = $cs_db['type'] == $type ? ' selected="selected"' : '';
+			$i++;
+		}
+	}
+	
+	if (extension_loaded('pdo')) {
+	  foreach ($types_pdo AS $type => $name) {
+	    if (extension_loaded($type)) {
+	      $data['types'][$i]['type'] = $type;
+	      $data['types'][$i]['name'] = $name;
+	      $data['types'][$i]['selected'] = $cs_db['type'] == $type ? ' selected="selected"' : '';
+	      $i++;
+	    }
+	  }
+	}
+	
+	$data['value']['place'] = $cs_db['place'];
+	$data['value']['name'] = $cs_db['name'];
+	$data['value']['prefix'] = $cs_db['prefix'];
+	$data['value']['user'] = $cs_db['user'];
+	$data['value']['pwd'] = $cs_db['pwd'];
+	
+	$data['checked']['save_actions'] = empty($log['save_actions']) ? '' : ' checked="checked"';
+	$data['checked']['save_errors'] = empty($log['save_errors']) ? '' : ' checked="checked"';
+	
 }
-elseif(isset($_POST['view']) AND empty($error)) {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb');
-  echo 'setup.php';
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'leftc');
-  echo cs_html_textarea('setup_php',$setup_php,'50','15',1);
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'leftb');
-  echo $cs_lang['save_file'];
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-}
-else {
-  echo cs_html_form(1,'install_settings','install','settings');
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['hash'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  $hash[0]['hash'] = 'md5';
-  $hash[0]['name'] = 'Md5 = Message-Digest Algorithm';
-  $hash[1]['hash'] = 'sha1';
-  $hash[1]['name'] = 'Sha1 = Secure Hash Algorithm 1';
-  echo cs_dropdown('hash','name',$hash,$cs_db['hash']);
-  echo cs_html_br(1);
-  echo $cs_lang['hash_info'];
-  echo cs_html_roco(0);
 
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['type'] . ' *';
-  echo cs_html_roco(2,'leftb');
 
-  $type = array();
-  $run = 0;
+echo cs_subtemplate(__FILE__, $data, 'install', 'settings');
 
-  if(extension_loaded('mssql')) {
-    $type[$run]['type'] = 'mssql';
-    $type[$run]['name'] = 'Microsoft SQL Server (mssql)';
-    $run++;
-  }
-  if(extension_loaded('mysql')) {
-    $type[$run]['type'] = 'mysql';
-    $type[$run]['name'] = 'MySQL (mysql)';
-    $run++;
-  }
-  if(extension_loaded('mysqli')) {
-    $type[$run]['type'] = 'mysqli';
-    $type[$run]['name'] = 'MySQL (mysqli)';
-    $run++;
-  }
-  if(extension_loaded('pgsql')) {
-    $type[$run]['type'] = 'pgsql';
-    $type[$run]['name'] = 'PostgreSQL (pgsql)';
-    $run++;
-  }
-  if(extension_loaded('sqlite')) {
-    $type[$run]['type'] = 'sqlite';
-    $type[$run]['name'] = 'SQLite 2 (sqlite)';
-    $run++;
-  }
-  if(extension_loaded('pdo')) {
-
-    if(extension_loaded('pdo_mysql')) {
-      $type[$run]['type'] = 'pdo_mysql';
-      $type[$run]['name'] = 'MySQL (pdo_mysql)';
-      $run++;
-    }
-    if(extension_loaded('pdo_pgsql')) {
-      $type[$run]['type'] = 'pdo_pgsql';
-      $type[$run]['name'] = 'PostgreSQL (pdo_pgsql)';
-      $run++;
-    }
-    if(extension_loaded('pdo_sqlite')) {
-      $type[$run]['type'] = 'pdo_sqlite';
-      $type[$run]['name'] = 'SQLite 3 (pdo_sqlite)';
-    }
-  }
-  echo cs_dropdown('type','name',$type,$cs_db['type']);
-  echo cs_html_br(1);
-  echo $cs_lang['type_info'];
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['place'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('place',$cs_db['place'],'text',200,50);
-  echo cs_html_br(1);
-  echo $cs_lang['place_info'];
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['db_name'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('name',$cs_db['name'],'text',80,40);
-  echo cs_html_br(1);
-  echo $cs_lang['sqlite_info'];
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['prefix'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('prefix',$cs_db['prefix'],'text',8,8);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['user'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('user',$cs_db['user'],'text',50,25);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['pwd'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('pwd',$cs_db['pwd'],'password',50,25);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['more'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('save_actions','1','checkbox',$log['save_actions']);
-  echo $cs_lang['save_actions'];
-  echo cs_html_br(1);
-  echo cs_html_vote('save_errors','1','checkbox',$log['save_errors']);
-  echo $cs_lang['save_errors'];
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('lang',$account['users_lang'],'hidden');
-  echo cs_html_vote('create',$cs_lang['create'],'submit');
-  echo cs_html_vote('view',$cs_lang['show'],'submit');
-  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
-}
 
 ?>
