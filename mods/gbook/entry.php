@@ -7,6 +7,7 @@ $cs_post = cs_post('id,from');
 $cs_get = cs_get('id,from');
 $data = array();
 
+$from = 'list';
 $id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $id = $cs_post['id'];
 if(!empty($_POST['from'])) $from = $_POST['from'];
