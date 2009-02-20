@@ -75,6 +75,11 @@ input, textarea, select {
 .right,.rightb,.rightc {
   text-align:right;
 }
+.notpublic {
+  background-color:#F5F5F5 !important;
+  color:#CCC !important;
+  font-style:italic;
+}
 
 .quote {
   background-color:#EEEEEE;
