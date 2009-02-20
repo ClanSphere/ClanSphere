@@ -36,7 +36,7 @@ if(empty($account['users_id'])) {
     }
 } 
 else {
-    $last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip, users_id',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
+    $last_entry = cs_sql_select(__FILE__,'gbook','users_id',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
     if ($last_entry['users_id'] == $account['users_id']) {
       $error .= $cs_lang['last_own'] . cs_html_br(1);
     }
@@ -240,6 +240,10 @@ else {
   $cs_gbook['users_id'] = $account['users_id'];
   $cs_gbook['gbook_users_id'] = $id;
   $cs_gbook['gbook_lock'] = empty($cs_options['lock']) ? 1 : 0;
+  
+  if(!empty($account['users_id'])) {
+  	unset($cs_gbook['gbook_ip']);
+  }
 
   $cells = array_keys($cs_gbook);
   $save = array_values($cs_gbook);
