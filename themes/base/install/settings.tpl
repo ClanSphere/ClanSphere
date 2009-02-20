@@ -1,4 +1,4 @@
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="headb">{lang:mod} - {lang:head_settings}</td>
  </tr>
@@ -9,7 +9,7 @@
 <br />
 
 {if:setup}
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="centerb">
     <a href="{url_install:install_sql:lang={data:lang}}">{lang:full_install}</a><br /><br />
@@ -20,7 +20,7 @@
 {stop:setup}
 
 {if:display_setup}
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="headb">setup.php</td>
  </tr>
@@ -39,7 +39,7 @@
 
 {if:display_form}
 <form method="post" name="install_settings" action="{url_install:install_settings}">
-<table class="forum" cellpadding="0" cellspacing="1" style="width:{page:width}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="leftc">{lang:hash} *</td>
   <td class="leftb">

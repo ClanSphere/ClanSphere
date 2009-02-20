@@ -1,6 +1,6 @@
 {lang:this_is_compatible_check}<br /><br />
 
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="headb">{lang:check}</td>
   <td class="headb" style="width:25%">{lang:required}</td>
@@ -28,7 +28,7 @@
 </table>
 <br />
 
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="headb">{lang:check}</td>
   <td class="headb" style="width:25%">{lang:recommend}</td>

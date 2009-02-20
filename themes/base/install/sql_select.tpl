@@ -1,4 +1,4 @@
-<table style="width:{page:width}" class="forum" cellpadding="0" cellspacing="{page:cellspacing}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
   <tr>
     <td class="headb"></td>
   </tr>
@@ -7,8 +7,9 @@
   </tr>
 </table>
 <br />
+
 <form action="{form:sql_select}" method="post">
-  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" cellpadding="0" cellspacing="0">
+  <table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
     <tr>
       <td class="headb">{lang:sys_module}</td>
       <td class="headb" style="width:50%">{lang:install}</td>

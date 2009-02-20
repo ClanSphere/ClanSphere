@@ -1,4 +1,4 @@
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="headb">{lang:mod} - {lang:head_license}</td>
  </tr>
@@ -10,7 +10,7 @@
 
 <form method="post" name="install_license" action="{url_install:install_license}">
 
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+<table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="leftc">
   
