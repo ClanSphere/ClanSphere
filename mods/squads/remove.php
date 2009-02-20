@@ -16,7 +16,7 @@ if(isset($_GET['agree'])) {
   $where = "squads_id = '" . $squads_id . "' AND users_id = '" . $account['users_id'] . "'";
   $search_admin = cs_sql_select(__FILE__,'members','members_admin',$where);
 
-  if(empty($search_admin['members_admin'])) {
+  if(empty($search_admin['members_admin']) AND $account['access_squads'] < 5) {
     $msg = $cs_lang['no_admin'];
   }
   else {
@@ -38,14 +38,14 @@ if(isset($_GET['agree'])) {
   cs_redirect($msg,'squads',$action);
 }
 
-if(isset($_GET['cancel'])) {
+if(isset($_GET['cancel']))
   cs_redirect($cs_lang['del_false'], 'squads');
-}
+
 else {
 
   $data['head']['body'] = sprintf($cs_lang['del_rly'],$squads_id);
-  $data['url']['agree'] = cs_url('members','remove','id=' . $squads_id . '&amp;agree');
-  $data['url']['cancel'] = cs_url('members','remove','id=' . $squads_id . '&amp;cancel');
+  $data['url']['agree'] = cs_url('squads','remove','id=' . $squads_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('squads','remove','id=' . $squads_id . '&amp;cancel');
   
   echo cs_subtemplate(__FILE__,$data,'squads','remove');
 
