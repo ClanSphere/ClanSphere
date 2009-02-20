@@ -7,6 +7,7 @@
   </tr>
 </table>
 <br />
+{if:smilies}
 <form action="#" method="post">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
@@ -25,3 +26,11 @@
     <td class="centerb" colspan="3"><input type="submit" name="submit" value="{lang:submit}" /></td>
   </tr>
 </table>
+{stop:smilies}
+{if:no_smilies}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="centerb">{lang:no_smilies}<br /><a href="{url:abcode_manage}">{lang:back}</a></td>
+  </tr>
+</table>
+{stop:no_smilies}

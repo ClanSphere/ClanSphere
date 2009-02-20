@@ -50,4 +50,5 @@ $cs_lang['new_import'] = 'Here you can import more smilies. <br />You have to up
 $cs_lang['error_pattern'] = '- No or duplicate pattern for picture %s.';
 $cs_lang['error_pattern_sql'] = '- Pattern for picture %s already exists.';
 
+$cs_lang['no_smilies'] = 'No Smilies available.';
 ?>

@@ -47,6 +47,8 @@ if(!empty($error)) {
 }   
 
 if(!isset($_POST['submit']) OR !empty($error)) {
+	   $act_smilies = array();
+     $all_smilies = array();	   
      if(!empty($smilies)) {
           for($run=0; $run<count($smilies); $run++) {
             $act_smilies[] = $smilies[$run]['abcode_file'];
@@ -81,7 +83,12 @@ if(!isset($_POST['submit']) OR !empty($error)) {
     cs_redirect($cs_lang['changes_done'],'abcode','manage');
 }    
 if(empty($data['file'])) {
-    $data['file'] = array();
+  $data['if']['no_smilies'] = true;
+  $data['if']['smilies'] = false;
+}
+else {
+  $data['if']['no_smilies'] = false;
+  $data['if']['smilies'] = true;	
 }
 echo cs_subtemplate(__FILE__,$data,'abcode','import');
 ?>

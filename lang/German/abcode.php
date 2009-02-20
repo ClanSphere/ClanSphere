@@ -49,4 +49,6 @@ $cs_lang['import'] = 'Importieren';
 $cs_lang['new_import'] = 'Hier k&ouml;nnen Sie weitere Smilies importieren. <br />Diese müssen bereits auf dem Webspace im Ordner uploads/abcode vorhanden sein.';
 $cs_lang['error_pattern'] = '- Es wurde kein Muster oder ein doppeltes f&uuml;r das Bild %s  eingegeben.';
 $cs_lang['error_pattern_sql'] = '- Das Muster f&uuml;r das Bild %s  existiert bereits in der Datenbank.';
+
+$cs_lang['no_smilies'] = 'Keine Smilies verf&uuml;gbar.';
 ?>
