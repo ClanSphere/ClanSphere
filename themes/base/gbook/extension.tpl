@@ -1,35 +1,28 @@
-  <tr>
-	<td class="leftc">{icon:personal} {lang:nick} *</td>
-	<td class="leftb">
-		<input name="gbook_nick" type="text" value="{data:nick}" size="50" maxlength="200"   /></td>
-  </tr>
-  <tr>
-	<td class="leftc">{icon:mail_generic} {lang:email} *</td>
-	<td class="leftb">
-		<input name="gbook_email" type="text" value="{data:email}" size="50" maxlength="200"   /></td>
-  </tr>
-  <tr>
-	<td class="leftc">{icon:licq} {lang:icq}</td>
-	<td class="leftb">
-		<input name="gbook_icq" type="text" value="{data:icq}" size="50" maxlength="200"   /></td>
-  </tr>
-  <tr>
-	<td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-	<td class="leftb">
-		<input name="gbook_msn" type="text" value="{data:msn}" size="50" maxlength="200"   /></td>
-  </tr>
-  <tr>
-	<td class="leftc">{icon:skype} {lang:skype}</td>
-	<td class="leftb">
-		<input name="gbook_skype" type="text" value="{data:skype}" size="50" maxlength="200"   /></td>
-  </tr>
-  <tr>
-	<td class="leftc">{icon:gohome} {lang:place}</td>
-	<td class="leftb">
-		<input name="gbook_place" type="text" value="{data:place}" size="50" maxlength="200"   /></td>
-  </tr>
-  <tr>
-	<td class="leftc">{icon:gohome} {lang:url}</td>
-	<td class="leftb">http:// 
-		<input name="gbook_url" type="text" value="{data:url}" size="50" maxlength="200"   /></td>
-  </tr>
+	<tr>
+		<td class="leftb">{icon:personal} {lang:nick} *</td>
+		<td class="leftc"><input name="gbook_nick" type="text" value="{gbook:gbook_nick}" size="50" maxlength="200" /></td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:mail_generic} {lang:email} *</td>
+		<td class="leftc"><input name="gbook_email" type="text" value="{gbook:gbook_email}" size="50" maxlength="200" /></td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:licq} {lang:icq}</td>
+		<td class="leftc"><input type="text" name="gbook_icq" value="{gbook:gbook_icq}" maxlength="20" size="20" /></td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:msn_protocol} {lang:msn}</td>
+		<td class="leftc"><input type="text" name="gbook_msn" value="{gbook:gbook_msn}" maxlength="40" size="40" /></td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:skype} {lang:skype}</td>
+		<td class="leftc"><input type="text" name="gbook_skype" value="{gbook:gbook_skype}" maxlength="40" size="40" /></td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:gohome} {lang:town}</td>
+		<td class="leftc"><input type="text" name="gbook_town" value="{gbook:gbook_town}" maxlength="20" size="35" /></td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:gohome} {lang:url}</td>
+		<td class="leftc">http://<input type="text" name="gbook_url" value="{gbook:gbook_url}" maxlength="40" size="40" /></td>
+	</tr>

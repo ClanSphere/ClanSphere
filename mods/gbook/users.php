@@ -3,27 +3,30 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
+$cs_post = cs_post('id,where,start');
+$cs_get = cs_get('id,where,sort');
 
-$start = empty($_GET['start']) ? 0 : $_GET['start'];
-$where = empty($_GET['id']) ? 0 : $_GET['id'];
-settype($where,'integer');
+$where = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $where = $cs_post['id'];
+$start = empty($cs_get['start']) ? 0 : $cs_get['start'];
+if (!empty($cs_post['start']))  $start = $cs_post['start'];
+
+if(empty($where)) {
+ $where = empty($cs_get['where']) ? 0 : $cs_get['where'];
+ if (!empty($cs_post['where']))  $where = $cs_post['where'];
+}
 
 $gbook_count = cs_sql_count(__FILE__,'gbook',"gbook_users_id = '" . $where . "'");
 
 $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $where . "'");
 $user = cs_user($where,$cs_user['users_nick'], $cs_user['users_active']);
 
-$data['lang']['getmsg'] = cs_getmsg();
-$data['head']['mod'] = $cs_lang['mod_name'];
-$data['head']['action'] = $cs_lang['head_list'];
 $data['head']['addons'] = cs_addons('users','view',$where,'gbook');
-
-$data['body']['users'] = sprintf($cs_lang['body_users'], $user);
-$data['body']['pages'] = cs_pages('gbook','list',$gbook_count,$start);
-
-$data['body']['gbook_entry'] = cs_link($cs_lang['submit'],'gbook','entry','id=' . $where);
-$data['body']['all'] = $cs_lang['total'] . ': ';
-$data['body']['gbook_count'] = $gbook_count;
+$data['head']['users'] = sprintf($cs_lang['body_users'], $user);
+$data['head']['pages'] = cs_pages('gbook','users',$gbook_count,$start,$where);
+$data['head']['new_entry'] = cs_link($cs_lang['submit'],'gbook','entry','id=' . $where);
+$data['head']['count'] = $gbook_count;
+$data['head']['getmsg'] = cs_getmsg();
 
 $from = 'gbook gbk LEFT JOIN {pre}_users usr ON gbk.users_id = usr.users_id';
 $select = 'gbk.gbook_id AS gbook_id, gbk.users_id AS users_id, gbk.gbook_time AS gbook_time, ';
@@ -33,7 +36,7 @@ $select .= 'gbk.gbook_town AS gbook_town, gbk.gbook_text AS gbook_text, gbk.gboo
 $select .= 'usr.users_nick AS users_nick, usr.users_place AS users_place, usr.users_icq AS users_icq, ';
 $select .= 'usr.users_msn AS users_msn, usr.users_skype AS users_skype, usr.users_email AS users_email, ';
 $select .= 'usr.users_url AS users_url, usr.users_hidden AS users_hidden, usr.users_active AS users_active';
-$where = "gbook_users_id = '" . $where . "'";
+$where = "gbook_users_id = '" . $where . "' AND gbook_lock = 1";
 $order = 'gbk.gbook_id DESC';
 $cs_gbook = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $gbook_loop = count($cs_gbook);
@@ -109,13 +112,26 @@ for($run=0; $run<$gbook_loop; $run++)
   if($account['access_gbook'] >= 4)
   {
     $img_edit = cs_icon('edit',16,$cs_lang['edit']);
-    $gbook[$run]['icon_edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
+    $gbook[$run]['icon_edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'] . '&amp;from=users',0,$cs_lang['edit']);
     $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-       $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
-    $img_ip = cs_icon('important',16,$cs_lang['ip']);
-    $gbook[$run]['icon_ip'] = cs_link($img_ip,'gbook','ip','id=' . $cs_gbook[$run]['gbook_id']);
+    $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'] . '&amp;from=users',0,$cs_lang['remove']);
+    $ip = $cs_gbook[$run]['gbook_ip'];
+    if($account['access_gbook'] == 4) {
+      $last = strlen(substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
+      $ip = strlen($gbook_ip);
+      $ip = substr($gbook_ip,0,$ip-$last);
+      $ip = $ip . '*';
+    }
+    $gbook[$run]['icon_ip'] = cs_html_img('symbols/crystal_project/16/important.png',16,16,'title="'. $ip .'"');
+  }
+  else{
+    $gbook[$run]['icon_edit'] = '';
+    $gbook[$run]['icon_remove'] = '';
+    $gbook[$run]['icon_ip'] = '';
   }
 }
+
 $data['gbook'] = !empty($gbook) ? $gbook : '';
 echo cs_subtemplate(__FILE__,$data,'gbook','users');
+
 ?>

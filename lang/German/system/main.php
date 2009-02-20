@@ -6,6 +6,7 @@ $cs_lang['back'] = 'Zur&uuml;ck';
 $cs_lang['cancel'] = 'Abbrechen';
 $cs_lang['captcha_false']  = '- Der Sicherheitscode ist falsch oder abgelaufen';
 $cs_lang['category'] = 'Kategorie';
+$cs_lang['center'] = 'Zentrale';
 $cs_lang['changes_done'] = '&Auml;nderungen erfolgreich';
 $cs_lang['comments'] = 'Kommentare';
 $cs_lang['confirm']  = 'Best&auml;tigen';

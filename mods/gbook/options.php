@@ -8,7 +8,6 @@ if(isset($_POST['submit'])) {
   cs_redirect($cs_lang['changes_done'],'gbook','manage');
 } else {
   $cs_options = cs_sql_option(__FILE__,'gbook');
-  $data['action']['form'] = cs_url('gbook','options');
   $data['option']['lock'] = $cs_options['lock'];
   $data['select']['no'] = $cs_options['lock'] == 0 ? 'selected="selected"' : '';
   $data['select']['yes'] = $cs_options['lock'] == 1 ? 'selected="selected"' : '';

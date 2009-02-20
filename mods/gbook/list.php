@@ -3,20 +3,18 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
+$cs_post = cs_post('start');
+$cs_get = cs_get('start');
 
-$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
-$id = empty($_REQUEST['id']) ? 0 : $_REQUEST['id'];
-settype($id,'integer');
+$start = empty($cs_get['start']) ? 0 : $cs_get['start'];
+if (!empty($cs_post['start']))  $start = $cs_post['start'];
 
-$gbook_count = cs_sql_count(__FILE__,'gbook',"gbook_users_id = '" . $id . "' AND gbook_lock = '1'");
+$gbook_count = cs_sql_count(__FILE__,'gbook',"gbook_users_id = '0' AND gbook_lock = '1'");
 
-$data['lang']['getmsg'] = cs_getmsg();
-$data['head']['mod'] = $cs_lang['mod_name'];
-$data['head']['action'] = $cs_lang['head_list'];
-$data['head']['gbook_entry'] = cs_link($cs_lang['submit'],'gbook','entry','id=' . $id);
-$data['lang']['all'] = $cs_lang['total'] . ': ';
-$data['head']['gbook_count'] = $gbook_count;
+$data['head']['entry'] = cs_link($cs_lang['submit'],'gbook','entry','id=0&amp;from=list');
+$data['head']['count'] = $gbook_count;
 $data['head']['pages'] = cs_pages('gbook','list',$gbook_count,$start);
+$data['head']['getmsg'] = cs_getmsg();
 
 $from = 'gbook gbk LEFT JOIN {pre}_users usr ON gbk.users_id = usr.users_id';
 $select = 'gbk.gbook_id AS gbook_id, gbk.users_id AS users_id, gbk.gbook_time AS gbook_time, gbk.gbook_nick AS gbook_nick, ';
@@ -24,7 +22,7 @@ $select .= 'gbk.gbook_email AS gbook_email, gbk.gbook_icq AS gbook_icq, gbk.gboo
 $select .= 'gbk.gbook_url AS gbook_url, gbk.gbook_town AS gbook_town, gbk.gbook_text AS gbook_text, gbk.gbook_ip AS gbook_ip, ';
 $select .= 'usr.users_nick AS users_nick, usr.users_place AS users_place, usr.users_icq AS users_icq, usr.users_msn AS users_msn, ';
 $select .= 'usr.users_skype AS users_skype, usr.users_email AS users_email, usr.users_url AS users_url, usr.users_hidden AS users_hidden, usr.users_active AS users_active';
-$where = "gbook_users_id = '" . $id . "' AND gbook_lock = '1'";
+$where = "gbook_users_id = '0' AND gbook_lock = '1'";
 $order = 'gbk.gbook_id DESC';
 $cs_gbook = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $gbook_loop = count($cs_gbook);
@@ -96,13 +94,17 @@ for($run=0; $run<$gbook_loop; $run++)
   if($account['access_gbook'] >= 4)
   {
     $img_edit = cs_icon('edit',16,$cs_lang['edit']);
-    $gbook[$run]['icon_edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['edit']);
+    $gbook[$run]['icon_edit'] = cs_link($img_edit,'gbook','edit','id=' . $cs_gbook[$run]['gbook_id'] . '&amp;from=list',0,$cs_lang['edit']);
     $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-       $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['remove']);
-    $img_ip = cs_icon('important',16,$cs_lang['ip']);
-    $more = 'id=' . $cs_gbook[$run]['gbook_id'];
-    $more .= '&amp;action1=' . $cs_main['action'];
-    $gbook[$run]['icon_ip'] = cs_link($img_ip,'gbook','ip',$more,0,$cs_lang['ip']);
+       $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'] . '&amp;from=list',0,$cs_lang['remove']);
+    $ip = $cs_gbook[$run]['gbook_ip'];
+    if($account['access_gbook'] == 4) {
+      $last = strlen(substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
+      $ip = strlen($gbook_ip);
+      $ip = substr($gbook_ip,0,$ip-$last);
+      $ip = $ip . '*';
+    }
+    $gbook[$run]['icon_ip'] = cs_html_img('symbols/crystal_project/16/important.png',16,16,'title="'. $ip .'"');
   } else {
     $gbook[$run]['icon_edit'] = '';
     $gbook[$run]['icon_remove'] = '';

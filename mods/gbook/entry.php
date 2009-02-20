@@ -3,258 +3,245 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
-$cs_options = cs_sql_option(__FILE__,'gbook');
-$id = empty($_REQUEST['id']) ? 0 : $_REQUEST['id'];
-settype($id,'integer');
+$cs_post = cs_post('id,from');
+$cs_get = cs_get('id,from');
+$data = array();
 
-$data['head']['mod'] = $cs_lang['mod_name'];
-$data['head']['action'] = $cs_lang['submit'];
-$data['body']['create'] = $cs_lang['body_create'];
-$data['error']['icon'] = '';
-$data['error']['error'] = '';
-$data['error']['message'] = '';
+$id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $id = $cs_post['id'];
+if(!empty($_POST['from'])) $from = $_POST['from'];
+elseif(!empty($_GET['from'])) $from = $_GET['from'];
+
+$cs_options = cs_sql_option(__FILE__,'gbook');
+$users_id = $account['users_id'];
+$error = '';
+
+//check if user exists
+if($id != 0) {
+  $users_check = cs_sql_count(__FILE__,'users',"users_id = '" . $id . "'");
+  if(empty($users_check)) {
+    cs_redirect($cs_lang['user_not_exist'],'gbook','list');
+  }
+  if($users_id == 0) {
+    $error .= $cs_lang['error_login'] . cs_html_br(1);
+  }
+}
+
+//check last own
+$last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
+if ($last_entry['gbook_ip'] == $_SERVER['REMOTE_ADDR']) {
+  $error .= $cs_lang['last_own'] . cs_html_br(1);
+}
+
+//check flood
+$flood = cs_sql_select(__FILE__,'gbook','gbook_time',"users_id = '" . $users_id . "'",'gbook_time DESC');
+$maxtime = $flood['gbook_time'] + $cs_main['def_flood'];
+if ($maxtime > cs_time()) {
+  $diff = $maxtime - cs_time();
+  $error .= sprintf($cs_lang['flood_on'], $diff) . cs_html_br(1);
+}
+
+//if error -> redirect
+if (!empty($error)) {
+  if(empty($id)) {
+    cs_redirect($error,'gbook','list');
+  } else {
+    cs_redirect($error,'gbook','users','id=' . $id);
+  }
+}
+
 $data['tpl']['preview'] = '';
 $data['tpl']['extension'] = '';
 $data['tpl']['captcha'] = '';
 
-$gbook_error = '';
-$gbook_form = 1;
-$errormsg = '';
-$error = '';
-$users_id = $account['users_id'];
-if($_REQUEST['id'] != 0) {
-  $users_check = cs_sql_count(__FILE__,'users',"users_id = '" . $id . "'");
-  if(empty($users_check)) {
-    $gbook_form = 0;
-    
-    cs_redirect($cs_lang['error'],'gbook','list');
-  }
-  if($users_id == 0) {
-    $error++;
-    $errormsg .= $cs_lang['error_login'] . cs_html_br(1);
-  }
-}
-$cs_gbook_users = cs_sql_select(__FILE__,'users','users_nick, users_email, users_icq, users_msn, users_skype, users_place, users_url',"users_id = '" . $users_id . "'");
-
-$gbook['gbook_time'] = cs_time();
-$gbook['gbook_nick'] = cs_secure($cs_gbook_users['users_nick']);
-$gbook['gbook_email'] = cs_secure($cs_gbook_users['users_email']);
-$gbook['gbook_icq'] = cs_secure($cs_gbook_users['users_icq']);
-
-$gbook['gbook_msn'] = cs_secure($cs_gbook_users['users_msn']);
-$gbook['gbook_skype'] = cs_secure($cs_gbook_users['users_skype']);
-$gbook['gbook_url'] = cs_secure($cs_gbook_users['users_url']);
-$gbook['gbook_town'] = cs_secure($cs_gbook_users['users_place']);
-$gbook['gbook_text'] = '';
-$gbook['gbook_ip'] = $_SERVER['REMOTE_ADDR'];
-
-$last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
-$lastip = $last_entry['gbook_ip'];
-
-$flood = cs_sql_select(__FILE__,'gbook','gbook_time',"users_id = '" . $users_id . "'",'gbook_time DESC');
-$maxtime = $flood['gbook_time'] + $cs_main['def_flood'];
-if ($maxtime > cs_time()) {
-  $error++;
-  $diff = $maxtime - cs_time();
-  $errormsg .= sprintf($cs_lang['flood_on'], $diff) . cs_html_br(1);
-}
-
-if ($lastip == $gbook['gbook_ip']) {
-  $error++;
-  $errormsg .= $cs_lang['last_own'];
-}
-
-if($users_id == 0)
-{
+if($users_id == 0) {
   $captcha = extension_loaded('gd') ? 1 : 0;
+  $data['if']['guest'] = TRUE;
+  $data['if']['captcha'] = TRUE;
 }
 
-if (!empty($error)) {
-  if(empty($id)) {
-    cs_redirect($errormsg,'gbook','list');
-  } else {
-    cs_redirect($errormsg,'gbook','users','id=' . $id);
-  }
+$cs_gbook['gbook_nick'] = '';
+$cs_gbook['gbook_email'] = '';
+$cs_gbook['gbook_icq'] = '';
+$cs_gbook['gbook_msn'] = '';
+$cs_gbook['gbook_skype'] = '';
+$cs_gbook['gbook_url'] = '';
+$cs_gbook['gbook_town'] = '';
+$cs_gbook['gbook_text'] = '';
 
-} else {
-  if (!empty($_REQUEST['id'])) {
-    $id = $_REQUEST['id'];
-  }
-  
-  if (!empty($_POST['gbook_nick'])) {
-    if(empty($account['users_id'])) {
-          $exists_user = cs_sql_select(__FILE__,'users','users_nick',"users_nick = '" . $_POST['gbook_nick'] . "'");
+if(isset($_POST['submit']) OR isset($_POST['preview'])) {
+
+  $g_error = '';
+
+  //if guest
+  if(empty($users_id)) {
+    $cs_gbook['gbook_nick'] = $_POST['gbook_nick'];
+    $cs_gbook['gbook_email'] = $_POST['gbook_email'];
+    $cs_gbook['gbook_msn'] = $_POST['gbook_msn'];
+    $cs_gbook['gbook_icq'] = $_POST['gbook_icq'];
+    $cs_gbook['gbook_skype'] = $_POST['gbook_skype'];
+    $cs_gbook['gbook_town'] = $_POST['gbook_town'];
+    $cs_gbook['gbook_url'] = $_POST['gbook_url'];
     
-        if(empty($exists_user)) {
-        $gbook['gbook_nick'] = $_POST['gbook_nick'];
-        }
-        else {
-        $gbook_error++;
-        $errormsg .= $cs_lang['error_exist_nick'] . cs_html_br(1);
-        }
+    //check nick if exists or empty
+    if (!empty($cs_gbook['gbook_nick'])) {
+      $exists_user = cs_sql_select(__FILE__,'users','users_nick',"users_nick = '" . $cs_gbook['gbook_nick'] . "'");
+      
+      if(!empty($exists_user)) {
+        $g_error .= $cs_lang['error_exist_nick'] . cs_html_br(1);
       }
-  } else {
-    $gbook_error++;
-    $errormsg .= $cs_lang['error_nick'] . cs_html_br(1);
-  }
-
-  if (isset($_POST['gbook_email']) || !empty($_POST['gbook_email'])) {
-    if(empty($account['users_id'])) {
+    } else {
+      $g_error .= $cs_lang['error_nick'] . cs_html_br(1);
+    }
+    
+    //check email if exists, chars or empty
+    if (!empty($cs_gbook['gbook_email'])) {
       $exists_user = cs_sql_select(__FILE__,'users','users_email',"users_email = '" . $_POST['gbook_email'] . "'");
     
       if(!empty($exists_user)) {
-        $gbook_error++;
-        $errormsg .= $cs_lang['error_exist_email'] . cs_html_br(1);
+        $g_error .= $cs_lang['error_exist_email'] . cs_html_br(1);
+      }
+      $pattern = "/^[0-9a-zA-Z._\\-]+@[0-9a-zA-Z._\\-]{2,}\\.[a-zA-Z]{2,4}\$/";
+      if(!preg_match($pattern,$cs_gbook['gbook_email'])) {
+        $g_error .= $cs_lang['error_email'] . cs_html_br(1);
+      }
+    } else {
+      $g_error .= $cs_lang['error_email'] . cs_html_br(1);
+    }
+    
+    //check msn
+    if (!empty($cs_gbook['gbook_msn'])) {
+      $pattern = "/^[0-9a-zA-Z._\\-]+@[0-9a-zA-Z._\\-]{2,}\\.[a-zA-Z]{2,4}\$/";
+      if(!preg_match($pattern,$cs_gbook['gbook_msn'])) {
+        $g_error .= $cs_lang['error_msn'] . cs_html_br(1);
       }
     }
-    else {
-      $gbook['gbook_email'] = $_POST['gbook_email'];
+    
+    //check icq
+    if (!empty($cs_gbook['gbook_icq'])) {
+      $pattern = '#^[\d-]*$#';
+      if (!preg_match($pattern,$cs_gbook['gbook_icq'])) {
+        $g_error .= $cs_lang['error_icq'] . cs_html_br(1);
+      }
+    }
+
+    //check url
+    if (!empty($cs_gbook['gbook_url'])) {
+      $pattern = "=.[a-z0-9].[a-z0-9]=si";
+      if(!preg_match($pattern,$cs_gbook['gbook_url'])) {
+        $g_error .= $cs_lang['error_url'] . cs_html_br(1);
+      }
     }
     
-    $pattern = "/^[0-9a-zA-Z._\\-]+@[0-9a-zA-Z._\\-]{2,}\\.[a-zA-Z]{2,4}\$/";
-     if(!preg_match($pattern,$gbook['gbook_email'])) {
-          $gbook_error++;
-      $errormsg .= $cs_lang['error_email'] . cs_html_br(1);
+    //captcha
+    if (!cs_captchacheck($_POST['captcha'])) {
+      $g_error .= $cs_lang['captcha_false'] . cs_html_br(1);
     }
-    
+
+  }
+  else {
+    //if user
+    $select = 'users_nick, users_email, users_icq, users_msn, users_skype, users_place, users_url';
+    $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . $users_id . "'");
+
+    $cs_gbook['gbook_nick'] = cs_secure($cs_user['users_nick']);
+    $cs_gbook['gbook_email'] = cs_secure($cs_user['users_email']);
+    $cs_gbook['gbook_icq'] = cs_secure($cs_user['users_icq']);
+    $cs_gbook['gbook_msn'] = cs_secure($cs_user['users_msn']);
+    $cs_gbook['gbook_skype'] = cs_secure($cs_user['users_skype']);
+    $cs_gbook['gbook_url'] = cs_secure($cs_user['users_url']);
+    $cs_gbook['gbook_town'] = cs_secure($cs_user['users_place']);
+  
   }
 
-  if (!empty($_POST['gbook_msn'])) {
-    $gbook['gbook_msn'] = $_POST['gbook_msn'];
-    $pattern = "/^[0-9a-zA-Z._\\-]+@[0-9a-zA-Z._\\-]{2,}\\.[a-zA-Z]{2,4}\$/";
-     if(!preg_match($pattern,$gbook['gbook_msn'])) {
-      $gbook_error++;
-      $errormsg .= $cs_lang['error_msn'] . cs_html_br(1);
-    }
-  }
-  $gbook['gbook_skype'] = !empty($_POST['gbook_skype']) ? $_POST['gbook_skype'] : '';
+  $cs_gbook['gbook_time'] = cs_time();
+  $cs_gbook['gbook_ip'] = $_SERVER['REMOTE_ADDR'];
+  $cs_gbook['gbook_text'] = $_POST['gbook_text'];
 
-  if (!empty($_POST['gbook_icq'])) {
-    $pattern = '#^[\d-]*$#';
-    $gbook['gbook_icq'] = $_POST['gbook_icq'];
-    if (!preg_match($pattern,$gbook['gbook_icq'])) {
-      $gbook_error++;
-      $errormsg .= $cs_lang['error_icq'] . cs_html_br(1);
+  //check text (min figures and resize img)
+  if (!empty($cs_gbook['gbook_text'])) {
+    if(strlen($cs_gbook['gbook_text']) < 30) {
+      $g_error .= $cs_lang['error_to_short'] . cs_html_br(1);
     }
-  }
-
-  if (!empty($_POST['gbook_url'])) {
-    $pattern = "=.[a-z0-9].[a-z0-9]=si";
-    $gbook['gbook_url'] = $_POST['gbook_url'];
-    if(!preg_match($pattern,$gbook['gbook_url'])) {
-      $gbook_error++;
-      $errormsg .= $cs_lang['error_url'] . cs_html_br(1);
-    }
-  }
-  $gbook['gbook_town'] = !empty($_POST['gbook_place']) ? $_POST['gbook_place'] : '';
-
-  if (!empty($_POST['gbook_text'])) {
-    $gbook['gbook_text'] = $_POST['gbook_text'];
-    if(strlen($gbook['gbook_text']) < 30) {
-        $gbook_error++;
-      $errormsg .= $cs_lang['error_to_short'] . cs_html_br(1);
-    }
-      $gbook['gbook_text'] = preg_replace_callback("=\[img\](.*?)\[/img\]=si","cs_abcode_resize",$gbook['gbook_text']);
-      $gbook['gbook_text'] = preg_replace_callback("=\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]=si","cs_abcode_resize",$gbook['gbook_text']);
+      $cs_gbook['gbook_text'] = preg_replace_callback("=\[img\](.*?)\[/img\]=si","cs_abcode_resize",$cs_gbook['gbook_text']);
+      $cs_gbook['gbook_text'] = preg_replace_callback("=\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]=si","cs_abcode_resize",$cs_gbook['gbook_text']);
   } else {
-    $gbook_error++;
-    $errormsg .= $cs_lang['no_text'] . cs_html_br(1);
+    $g_error .= $cs_lang['no_text'] . cs_html_br(1);
   }
 
-  if (isset($_POST['submit'])) {
-    if(empty($account['users_id'])) {
-      $input = empty($_POST['captcha']) ? '' : $_POST['captcha'];
-      if (!cs_captchacheck($input)) {
-        $gbook_error++;
-        $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
-      }
-    }
-    if (empty($gbook_error)) {
-      $gbook_form = 0;
-      if($users_id > 0) {
-        $gbook['gbook_nick'] = '';
-        $gbook['gbook_email'] = '';
-        $gbook['gbook_icq'] = '';
-        $gbook['gbook_msn'] = '';
-        $gbook['gbook_skype'] = '';
-        $gbook['gbook_url'] = '';
-        $gbook['gbook_town'] = '';
-      }
-      $gbook['users_id'] = $account['users_id'];
-      $gbook['gbook_users_id'] = $id;
-      $gbook['gbook_lock'] = empty($cs_options['lock']) ? 1 : 0;
-      $cells = array_keys($gbook);
-      $save = array_values($gbook);
-      cs_sql_insert(__FILE__,'gbook',$cells,$save);
-      $data['lang']['done'] = !empty($cs_options['lock']) ? $cs_lang['create_done_lock'] : $cs_lang['create_done'];
-      $data['lang']['continue'] = cs_link($cs_lang['continue'],'gbook','list','id=' . $id);
-      
-      cs_redirect($data['lang']['done'],'gbook','list','id=' . $id);
-    } else {
-      $data['body']['create'] = '';
-      $data['error']['icon'] = cs_icon('important');
-      $data['error']['error'] = $cs_lang['error'] . cs_html_br(1);
-      $data['error']['message'] = $errormsg;
-    }
-  }
+}
 
-  if (isset($_POST['preview'])) {
-    if (empty($gbook_error)) {
-      $data['gbook']['entry_count'] = '1';
-      $data['gbook']['users_nick'] = $gbook['gbook_nick'];
-      $data['gbook']['icon_town'] = empty($gbook['gbook_town']) ? '' : cs_icon('gohome');
-      $data['gbook']['town'] = empty($gbook['gbook_town']) ? '' : cs_secure($gbook['gbook_town']);
-      $email = cs_html_link('mailto:' . $gbook['gbook_email'],cs_icon('mail_generic'));
-      $data['gbook']['icon_mail'] = empty($gbook['gbook_email']) ? '' : $email;
-      $icq = cs_html_link('http://www.icq.com/' . $gbook['gbook_icq'],cs_icon('licq'));
-      $data['gbook']['icon_icq'] = empty($gbook['gbook_icq']) ? '' : $icq;
-      $msn = cs_html_link('http://members.msn.com/' . $gbook['gbook_msn'],cs_icon('msn_protocol'));
-      $data['gbook']['icon_msn'] = empty($gbook['gbook_msn']) ? '' : $msn;
-      $url = 'http://mystatus.skype.com/smallicon/' . $gbook['gbook_skype'];
-      $skype = cs_html_link('skype:' . $gbook['gbook_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');
-      $data['gbook']['icon_skype'] = empty($gbook['gbook_skype']) ? '' : $skype;
-      $url = cs_html_link('http://' . $gbook['gbook_url'],cs_icon('gohome'));
-      $data['gbook']['icon_url'] = empty($gbook['gbook_url']) ? '' : $url;
-      $data['gbook']['text'] = cs_secure($gbook['gbook_text'],1,1);
-      $data['gbook']['time'] = cs_date('unix',$gbook['gbook_time'],1);
-      $data['tpl']['preview'] =  cs_subtemplate(__FILE__,$data,'gbook','preview');
-    } else {
-      $data['body']['create'] = '';
-      $data['error']['icon'] = cs_icon('important');
-      $data['error']['error'] = $cs_lang['error'] . cs_html_br(1);
-      $data['error']['message'] = $errormsg;
+if(!isset($_POST['submit']))
+  $data['head']['body'] = $cs_lang['body_create'];
+elseif(!empty($g_error))
+  $data['head']['body'] = $g_error;
+  
+
+//preview
+if (isset($_POST['preview']) AND empty($g_error)) {
+  
+  $where_user = !empty($id) ? "gbook_users_id = '" . $id . "'" : 0;
+  $count_entry = cs_sql_count(__FILE__,'gbook',$where_user);
+  print_r($count_entry);
+  $data['gbook']['entry_count'] = $count_entry + 1;
+  $data['gbook']['users_nick'] = $cs_gbook['gbook_nick'];
+  $data['gbook']['icon_town'] = empty($cs_gbook['gbook_town']) ? '' : cs_icon('gohome');
+  $data['gbook']['town'] = empty($cs_gbook['gbook_town']) ? '' : cs_secure($cs_gbook['gbook_town']);
+  $data['gbook']['icon_mail'] = cs_html_link('mailto:' . $cs_gbook['gbook_email'],cs_icon('mail_generic'));
+   $icq = cs_html_link('http://www.icq.com/' . $cs_gbook['gbook_icq'],cs_icon('licq'));
+  $data['gbook']['icon_icq'] = empty($cs_gbook['gbook_icq']) ? '' : $icq;
+   $msn = cs_html_link('http://members.msn.com/' . $cs_gbook['gbook_msn'],cs_icon('msn_protocol'));
+  $data['gbook']['icon_msn'] = empty($cs_gbook['gbook_msn']) ? '' : $msn;
+   $url = 'http://mystatus.skype.com/smallicon/' . $cs_gbook['gbook_skype'];
+   $skype = cs_html_link('skype:' . $cs_gbook['gbook_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');
+  $data['gbook']['icon_skype'] = empty($cs_gbook['gbook_skype']) ? '' : $skype;
+   $url = cs_html_link('http://' . $cs_gbook['gbook_url'],cs_icon('gohome'));
+  $data['gbook']['icon_url'] = empty($cs_gbook['gbook_url']) ? '' : $url;
+  $data['gbook']['text'] = cs_secure($cs_gbook['gbook_text'],1,1);
+  $data['gbook']['time'] = cs_date('unix',$cs_gbook['gbook_time'],1);
+  
+  $data['tpl']['preview'] = cs_subtemplate(__FILE__,$data,'gbook','preview');
+
+}
+
+
+if(!empty($g_error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
+
+  $data['gbook'] = $cs_gbook;
+
+  if($users_id == 0) {
+    $data['tpl']['extension'] = cs_subtemplate(__FILE__,$data,'gbook','extension');
+    
+    if(!empty($captcha)) {
+      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
+      $data['tpl']['captcha'] = cs_subtemplate(__FILE__,$data,'gbook','captcha');
     }
   }
+  $data['abcode']['smileys'] = cs_abcode_smileys('gbook_text');
+  $data['abcode']['features'] = cs_abcode_features('gbook_text');
 
-  if (!empty($gbook_form)) {
-    if($users_id == 0) {
-      $data['data']['nick'] = $gbook['gbook_nick'];
-      $data['data']['email'] = $gbook['gbook_email'];
-      $data['data']['icq'] = $gbook['gbook_icq'];
-      $data['data']['msn'] = $gbook['gbook_msn'];
-      $data['data']['skype'] = $gbook['gbook_skype'];
+  $data['gbook']['id'] = $id;
+  $data['gbook']['from'] = $from;
+  
+ echo cs_subtemplate(__FILE__,$data,'gbook','entry');
 
-      $data['lang']['place'] = $cs_lang['town'];
-      $data['data']['place'] = $gbook['gbook_town'];
+} 
+else {
 
-      $data['data']['url'] = $gbook['gbook_url'];
-      $data['tpl']['extension'] = cs_subtemplate(__FILE__,$data,'gbook','extension');
-    } else {
-      $data['data']['nick'] = $gbook['gbook_nick'];
-      $data['data']['email'] = $gbook['gbook_email'];
-    }
-    $data['abcode']['smileys'] = cs_abcode_smileys('gbook_text');
-    $data['abcode']['features'] = cs_abcode_features('gbook_text');
-    $data['data']['gbook_text'] = $gbook['gbook_text'];
+  $cs_gbook['users_id'] = $account['users_id'];
+  $cs_gbook['gbook_users_id'] = $id;
+  $cs_gbook['gbook_lock'] = empty($cs_options['lock']) ? 1 : 0;
 
-    if($users_id == 0) {
-      if(!empty($captcha)) {
-        $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
-        $data['tpl']['captcha'] = cs_subtemplate(__FILE__,$data,'gbook','captcha');
-      }
-    }
-    $data['data']['id'] = $id;
-    echo cs_subtemplate(__FILE__,$data,'gbook','entry');
+  $cells = array_keys($cs_gbook);
+  $save = array_values($cs_gbook);
+  cs_sql_insert(__FILE__,'gbook',$cells,$save);
+  
+  if(empty($id)) {
+    $msg = !empty($cs_options['lock']) ? $cs_lang['create_done_lock'] : $cs_lang['create_done'];
+    cs_redirect($msg,'gbook',$from);
+  } else {
+    cs_redirect($cs_lang['create_done'],'gbook','users','id=' . $id);
   }
 }
+
 ?>

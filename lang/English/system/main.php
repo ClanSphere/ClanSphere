@@ -6,6 +6,7 @@ $cs_lang['back']  = 'Back';
 $cs_lang['cancel']  = 'Cancel';
 $cs_lang['captcha_false']  = '- Security Code is wrong or expired';
 $cs_lang['category']  = 'Category';
+$cs_lang['center'] = 'Center';
 $cs_lang['changes_done']  = 'Successfully changed';
 $cs_lang['comments']  = 'Comments';
 $cs_lang['confirm']  = 'Confirm';

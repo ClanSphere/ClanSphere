@@ -7,7 +7,7 @@
   </tr>
 </table>  
 <br />
-<form action="{action:form}" method="post" name="gbook_options" />
+<form action="{url:gbook_options}" method="post" name="gbook_options" />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftb" style="width:150px;">{icon:password} {lang:lock}</td>
