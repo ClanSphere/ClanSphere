@@ -4,11 +4,11 @@ body {
   font-size: 12px;
 }
 .clearfix:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden;
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
 }
 
 /* Hides from IE-mac \*/
@@ -16,13 +16,13 @@ body {
 /* End hide from IE-mac */
 
 a {
-	color: #000000;
+  color: #000000;
 }
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 #head, #debug {
-	width: 100%;
+  width: 100%;
   background-color: #FFFFFF;
   border: 1px solid #888888;
   height: 100px;
@@ -40,18 +40,18 @@ a:hover {
   font-size: 10px;
 }
 #head span {
-	color: #B91F1D;
+  color: #B91F1D;
 }
 #head div {
-	font-size: 12px;
-	font-family: Tahoma;
-	letter-spacing: 1px;
+  font-size: 12px;
+  font-family: Tahoma;
+  letter-spacing: 1px;
 }
 #errors {
-	color:#DD3300;
+  color:#DD3300;
 }
 #sql {
-	color:#666666;
+  color:#666666;
 }
 #nav-left {
   float: left;
@@ -70,7 +70,7 @@ a:hover {
   font-size: 13px;
 }
 .dark {
-	background-color: #F0F0F0 !important;
+  background-color: #F0F0F0 !important;
 }
 #nav-left a:hover {
   padding-left: 3px;
@@ -79,7 +79,9 @@ a:hover {
 #nav-left a:hover:before {
   content:"» ";
 }
-* html #nav-left a:hover, *:first-child+html #nav-left a:hover { padding-left: 15px; }
+* html #nav-left a:hover, *:first-child+html #nav-left a:hover {
+  padding-left: 15px;
+}
 #content {
   float: left;
   width:64%;
@@ -116,7 +118,9 @@ a:hover {
   background-color: #FFFFFF;
   font-size: 16px;
 }
-#counter span { float: right; }
+#counter span {
+  float: right;
+}
 #ajax_loading {
   position:absolute;
   top:20px;

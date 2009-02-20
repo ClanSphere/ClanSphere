@@ -4,11 +4,11 @@ body {
   font-size: 12px;
 }
 .clearfix:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden;
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
 }
 
 /* Hides from IE-mac \*/
@@ -16,22 +16,22 @@ body {
 /* End hide from IE-mac */
 
 a {
-	color: #000000;
+  color: #000000;
 }
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 #head, #debug {
-	width: 100%;
+  width: 100%;
   background-color: #FFFFFF;
   border: 1px solid #888888;
-  height: 25px;
+  height: 40px;
   padding: 10px 0 0 0;
   color: #757575;
   font-family: Tahoma;
 }
 #head {
-  font-size: 60px;
+  font-size: 25px;
   letter-spacing: 5px;
   text-align: center;
 }
@@ -40,25 +40,25 @@ a:hover {
   font-size: 10px;
 }
 #head span {
-	color: #B91F1D;
+  color: #B91F1D;
 }
 #head div {
-	font-size: 12px;
-	font-family: Tahoma;
-	letter-spacing: 1px;
+  font-size: 12px;
+  font-family: Tahoma;
+  letter-spacing: 1px;
 }
 #errors {
-	color:#DD3300;
+  color:#DD3300;
 }
 #sql {
-	color:#666666;
+  color:#666666;
 }
 #nav-left {
   float: left;
   width: 16%;
 }
 .dark {
-	background-color: #F0F0F0 !important;
+  background-color: #F0F0F0 !important;
 }
 #content {
   float: left;
@@ -81,11 +81,9 @@ a:hover {
   color: #000000;
   font-family: Arial;
   font-size: 13px; 
+  line-height: 1.5;
 }
-.navbody td {
-  font-size: 13px; 
-}
-#nav-left div, .navhead {
+.navhead {
   border: 1px solid #888888;
   color: #B91F1D;
   border-right: 4px solid #BA1616 !important;
@@ -93,7 +91,7 @@ a:hover {
   letter-spacing: 3px;
   padding:4px 6px 4px 8px !important;
   background-color: #FFFFFF;
-  font-size: 13px;
+  font-size: 14px;
 }
 .navhead {
   margin-top:20px;
