@@ -29,9 +29,17 @@ if($id != 0) {
 }
 
 //check last own
-$last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
-if ($last_entry['gbook_ip'] == $_SERVER['REMOTE_ADDR']) {
-  $error .= $cs_lang['last_own'] . cs_html_br(1);
+if(empty($account['users_id'])) {
+    $last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip, users_id',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
+    if ($last_entry['gbook_ip'] == $_SERVER['REMOTE_ADDR'] && empty($last_entry['users_id'])) {
+      $error .= $cs_lang['last_own'] . cs_html_br(1);
+    }
+} 
+else {
+    $last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip, users_id',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
+    if ($last_entry['users_id'] == $account['users_id']) {
+      $error .= $cs_lang['last_own'] . cs_html_br(1);
+    }
 }
 
 //check flood
