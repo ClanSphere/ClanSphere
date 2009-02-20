@@ -35,8 +35,8 @@
 		<td class="leftc">{gbook:time}</td>
 		<td class="leftc">
 			{gbook:lock}
-			<a href="{url:gbook_edit:id={gbook:id}=from=manage}" title="{lang:edit}">{icon:edit}</a>
-			<a href="{url:gbook_remove:id={gbook:id}=from=manage}" title="{lang:remove}">{icon:editdelete}</a>
+			<a href="{url:gbook_edit:id={gbook:id}&from=manage}" title="{lang:edit}">{icon:edit}</a>
+			<a href="{url:gbook_remove:id={gbook:id}&from=manage}" title="{lang:remove}">{icon:editdelete}</a>
 			{gbook:ip}
 		</td>
 	</tr>
