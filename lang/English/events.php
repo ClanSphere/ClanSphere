@@ -16,6 +16,8 @@ $cs_lang['year']  = 'Year';
 $cs_lang['head_manage']  = 'Administration';
 $cs_lang['new_event']  = 'New event';
 
+$cs_lang['pictures'] = 'Pictures';
+
 // navcal.php
 $cs_lang['calweek']  = 'W';
 
@@ -80,8 +82,27 @@ $cs_lang['multix']      = 'How often additionally?';
 
 $cs_lang['close'] = 'Close for comments';
 
+// Picture
+$cs_lang['body_picture']  = 'Manage event pictures here.';
+$cs_lang['current']  = 'Current';
+$cs_lang['pic_infos'] = 'Informationbox';
+$cs_lang['filetypes'] = 'Filetype: ';
+$cs_lang['nopic'] = 'No picture';
+
+$cs_lang['too_big']  = '- The file is too big;';
+$cs_lang['too_wide']  = '- The picture is too wide';
+$cs_lang['too_high']  = '- The picture is too high';
+$cs_lang['ext_error']  = '- Unknown filetype used';
+$cs_lang['up_error'] = '- Unexpected error, please contact webmaster';
+$cs_lang['remove_done'] = 'Event picture removed';
+
 // options.php
 $cs_lang['extended'] = 'Extended';
+$cs_lang['max_width'] = 'Maximum width';
+$cs_lang['max_height'] = 'Maximum height';
+$cs_lang['max_size'] = 'Maximum size';
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';
 
 // edit.php
 $cs_lang['head_edit']  = 'Edit';

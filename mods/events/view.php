@@ -53,6 +53,23 @@ echo cs_html_link('http://' . $events_url,$events_url);
 echo cs_html_roco(0);
 
 echo cs_html_roco(1,'leftc');
+echo cs_icon('images') . $cs_lang['pictures'];
+echo cs_html_roco(2,'leftb');
+
+if(empty($cs_events['events_pictures'])) {
+    echo '-';
+  } else {
+    $events_pics = explode("\n",$cs_events['events_pictures']);
+    foreach($events_pics AS $pic) {
+      $link = cs_html_img('uploads/events/thumb-' . $pic);
+      $path = empty($cs_main['mod_rewrite']) ? '' : 'http://' . $_SERVER['HTTP_HOST'] . str_replace('index.php','',$_SERVER['PHP_SELF']);
+      echo cs_html_link($path . 'uploads/events/picture-' . $pic,$link) . ' ';
+    }
+}
+
+echo cs_html_roco(0);
+
+echo cs_html_roco(1,'leftc');
 echo cs_icon('kate') . $cs_lang['more'];
 echo cs_html_roco(2,'leftb');
 echo cs_secure($cs_events['events_more'],1,1,1,1);

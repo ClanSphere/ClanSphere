@@ -16,6 +16,8 @@ $cs_lang['year']  = 'Jahr';
 $cs_lang['head_manage']  = 'Verwaltung';
 $cs_lang['new_event']  = 'Neuer Termin';
 
+$cs_lang['pictures'] = 'Bilder';
+
 // navcal.php
 $cs_lang['calweek']  = 'W';
 
@@ -64,6 +66,20 @@ $cs_lang['more']        = 'Mehr';
 $cs_lang['head_calendar']  = 'Kalender';
 $cs_lang['body_calendar']  = 'Monats&uuml;bersicht vorhandener Eintr&auml;ge';
 
+// Picture
+$cs_lang['body_picture']  = 'Hier werden Eventbilder verwaltet.';
+$cs_lang['current']  = 'Aktuell';
+$cs_lang['pic_infos'] = 'Infobox';
+$cs_lang['filetypes'] = 'Dateiformate: ';
+$cs_lang['nopic'] = 'Kein Bild vorhanden';
+
+$cs_lang['too_big']  = '- Die Datei ist zu gro&szlig;';
+$cs_lang['too_wide']  = '- Das Bild ist zu breit';
+$cs_lang['too_high']  = '- Das Bild ist zu hoch';
+$cs_lang['ext_error']  = '- Es wurde ein unerlaubter Dateityp benutzt';
+$cs_lang['up_error'] = '- Unbekannter Fehler, bitte den Webmaster kontaktieren';
+$cs_lang['remove_done'] = 'Eventbild wurde Entfernt';
+
 // create.php
 $cs_lang['head_create']  = 'Erstellen';
 $cs_lang['body_create']  = 'Neue Termine hinzuf&uuml;gen.';
@@ -86,6 +102,11 @@ $cs_lang['body_edit']  = 'Hier erscheinen etwaige Fehler nach dem Absenden.';
 
 // options.php
 $cs_lang['extended'] = 'Erweitert';
+$cs_lang['max_width'] = 'Maximale Bildbreite';
+$cs_lang['max_height'] = 'Maximale Bildh&ouml;he';
+$cs_lang['max_size'] = 'Maximale Bildgr&ouml;&szlig;e';
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';
 
 // War stuff
 $cs_lang['show_wars']   = 'Clanwars anzeigen';

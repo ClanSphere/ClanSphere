@@ -395,6 +395,7 @@ CREATE TABLE {pre}_events (
   events_venue varchar(40) NOT NULL default '',
   events_close int(2) NOT NULL default '0',
   events_more text,
+  events_pictures text,
   PRIMARY KEY (events_id)
 ){engine};
 
@@ -757,6 +758,9 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('co
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_size', '204800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'last_archiv', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'show_wars', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_width', '800');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_height', '600');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_size', '204800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('fckeditor', 'mode', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('fckeditor', 'skin', 'default');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('fckeditor', 'height', '400');
