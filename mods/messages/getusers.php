@@ -26,6 +26,7 @@ $_GET['name'] = !empty($_GET['name']) ? cs_sql_escape($_GET['name']) : '';
 
 $current = end(explode(';',$_GET['name']));
 $old = substr($_GET['name'],0,strlen($_GET['name']) - strlen($current));
+$old = htmlspecialchars($old);
 
 if(!empty($current)) {
   $where = "users_nick LIKE '" . cs_sql_escape($current) . "%'";
@@ -36,7 +37,7 @@ if(!empty($current)) {
       //$out .= cs_html_anchor(0, $value['users_nick'],'onclick="abc_set(\''. $old . $value['users_nick'] . '\', \'name\')"').',';
       $out .= '<a href="javascript:abc_set(\''. $old . $value['users_nick'] . '\', \'name\')">'. $value['users_nick'] . '</a>, ';
     }
-    echo substr($out,0,-3);
+    echo substr($out,0,-2);
   } 
 }
 
