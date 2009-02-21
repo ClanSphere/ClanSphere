@@ -34,7 +34,7 @@ $data['head']['time'] = $cs_lang[$nom] . ' ' . $year;
 
 $order = 'events_time ASC';
 $where = "events_time >= '" . $min . "' AND events_time <= '" . $max . "'";
-$cells = 'evs.events_name AS events_name, evs.events_time AS events_time, evs.events_venue AS events_venue, evs.events_id AS events_id, evs.categories_id AS categories_id, cat.categories_name AS categories_name, cat.categories_picture AS categories_picture';
+$cells = 'evs.events_name AS events_name, evs.events_time AS events_time, evs.events_venue AS events_venue, evs.events_id AS events_id, evs.categories_id AS categories_id, cat.categories_name AS categories_name, cat.categories_picture AS categories_picture, evs.events_cancel AS events_cancel';
 $tables = 'events evs INNER JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
 $data['events'] = cs_sql_select(__FILE__,$tables,$cells,$where,$order,0,0);
 $events_count = count($data['events']);
@@ -42,6 +42,7 @@ $events_count = count($data['events']);
 for ($i = 0; $i < $events_count; $i++) {
 
   $data['events'][$i]['time'] = cs_date('unix',$data['events'][$i]['events_time'],1);
+  $data['events'][$i]['canceled'] = empty($data['events'][$i]['events_cancel']) ? '' : cs_html_br(1) . $cs_lang['canceled'];
 
   if(empty($data['events'][$i]['categories_picture'])) {
     $data['events'][$i]['categories_picture'] = '';

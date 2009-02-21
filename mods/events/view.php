@@ -18,6 +18,16 @@ $events_id = empty($_REQUEST['where']) ? $_GET['id'] : $_REQUEST['where'];
 settype($events_id,'integer');
 $cs_events = cs_sql_select(__FILE__,'events','*',"events_id = '" . $events_id . "'");
 
+if(!empty($cs_events['events_cancel'])) {
+
+  echo cs_html_table(1,'forum',1);
+  echo cs_html_roco(1,'centerc');
+  echo $cs_lang['canceled'];
+  echo cs_html_roco(0);
+  echo cs_html_table(0);
+  echo cs_html_br(1);
+}
+
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'leftc');
 echo cs_icon('cal') . $cs_lang['name'];
@@ -43,6 +53,19 @@ echo cs_html_roco(1,'leftc');
 echo cs_icon('starthere') . $cs_lang['venue'];
 echo cs_html_roco(2,'leftb');
 echo cs_secure($cs_events['events_venue']);
+echo cs_html_roco(0);
+
+echo cs_html_roco(1,'leftc');
+echo cs_icon('kdmconfig') . $cs_lang['guests'];
+echo cs_html_roco(2,'leftb');
+echo $cs_lang['min'] . ': ';
+echo !empty($cs_events['events_guestsmin']) ? $cs_events['events_guestsmin'] : '-';
+echo cs_html_br(1);
+echo $cs_lang['max'] . ': ';
+echo !empty($cs_events['events_guestsmax']) ? $cs_events['events_guestsmax'] : '-';
+echo cs_html_br(1);
+echo $cs_lang['needage'] . ': ';
+echo !empty($cs_events['events_needage']) ? $cs_events['events_needage'] : '-';
 echo cs_html_roco(0);
 
 echo cs_html_roco(1,'leftc');

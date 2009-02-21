@@ -394,6 +394,10 @@ CREATE TABLE {pre}_events (
   events_time varchar(14) NOT NULL default '',
   events_venue varchar(40) NOT NULL default '',
   events_close int(2) NOT NULL default '0',
+  events_cancel int(2) NOT NULL default '0',
+  events_guestsmin int(8) NOT NULL default '0',
+  events_guestsmax int(8) NOT NULL default '0',
+  events_needage int(2) NOT NULL default '0',
   events_more text,
   events_pictures text,
   PRIMARY KEY (events_id)

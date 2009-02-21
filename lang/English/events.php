@@ -59,8 +59,14 @@ $cs_lang['place']       = 'Hometown';
 // view.php
 $cs_lang['head_view']  = 'Details';
 $cs_lang['body_view']  = 'More information about an event.';
-$cs_lang['url']         = 'Website';
-$cs_lang['more']        = 'More';
+$cs_lang['url']        = 'Website';
+$cs_lang['more']       = 'More';
+
+$cs_lang['guests']     = 'Guests';
+$cs_lang['min']        = 'Minimal';
+$cs_lang['max']        = 'Maximal';
+$cs_lang['canceled']   = 'Canceled';
+$cs_lang['needage']    = 'Required age';
 
 // calendar.php
 $cs_lang['head_calendar']  = 'Calendar';
@@ -73,6 +79,7 @@ $cs_lang['body_create'] = 'Create new event.';
 $cs_lang['no_name']     = '- Name must be entered';
 $cs_lang['no_cat']      = '- Category must be selected';
 $cs_lang['no_date']     = '- Date must be entered';
+$cs_lang['min_greater_max'] = '- The minimum is greater than the maximum';
 
 $cs_lang['venue'] = 'Venue';
 

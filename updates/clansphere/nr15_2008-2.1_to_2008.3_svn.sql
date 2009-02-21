@@ -49,6 +49,14 @@ ALTER TABLE {pre}_events ADD events_venue varchar(40) NOT NULL default '';
 
 ALTER TABLE {pre}_events ADD events_pictures text;
 
+ALTER TABLE {pre}_events ADD events_cancel int(2) NOT NULL default '0';
+
+ALTER TABLE {pre}_events ADD events_guestsmin int(8) NOT NULL default '0';
+
+ALTER TABLE {pre}_events ADD events_guestsmax int(8) NOT NULL default '0';
+
+ALTER TABLE {pre}_events ADD events_needage int(2) NOT NULL default '0';
+
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_width', '800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_height', '600');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_size', '204800');

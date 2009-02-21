@@ -62,6 +62,12 @@ $cs_lang['body_view']  = 'Weitere Informationen zu einem Termin.';
 $cs_lang['url']         = 'Webseite';
 $cs_lang['more']        = 'Mehr';
 
+$cs_lang['guests']     = 'Teilnehmer';
+$cs_lang['min']        = 'Minimal';
+$cs_lang['max']        = 'Maximal';
+$cs_lang['canceled']   = 'Abgesagt';
+$cs_lang['needage']    = 'Mindestalter';
+
 // calendar.php
 $cs_lang['head_calendar']  = 'Kalender';
 $cs_lang['body_calendar']  = 'Monats&uuml;bersicht vorhandener Eintr&auml;ge';
@@ -87,6 +93,7 @@ $cs_lang['body_create']  = 'Neue Termine hinzuf&uuml;gen.';
 $cs_lang['no_name'] = '- Es muss ein Name angegeben werden.';
 $cs_lang['no_cat']  = '- Es muss eine Kategorie ausgew&auml;hlt werden.';
 $cs_lang['no_date'] = '- Es muss ein Datum festgelegt werden.';
+$cs_lang['min_greater_max'] = '- Das Maximum liegt unter dem Minimum';
 
 $cs_lang['venue'] = 'Treffpunkt (Ort)';
 

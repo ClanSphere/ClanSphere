@@ -28,8 +28,8 @@
  </tr>{loop:events}
  <tr>
   <td class="leftb">{events:time}</td>
-  <td class="leftb"><a href="{url:events_view:id={events:squads_id}}">{events:events_name}</a></td>
-  <td class="leftb">{events:categories_name}</td>
+  <td class="leftb"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
+  <td class="leftb"><a href="{url:categories_view:id={events:categories_id}}">{events:categories_name}</a></td>
   <td class="leftb"><a href="{url:events_picture:id={events:events_id}}" title="{lang:pictures}">{icon:image}</a></td>
   <td class="leftb"><a href="{url:events_edit:id={events:events_id}}" title="{lang:edit}">{icon:edit}</a></td>
   <td class="leftb"><a href="{url:events_remove:id={events:events_id}}" title="{lang:remove}">{icon:editdelete}</a></td>
