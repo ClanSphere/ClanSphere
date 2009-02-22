@@ -24,7 +24,7 @@
  </tr>{loop:events}
  <tr>
   <td class="leftc">
-    {events:time}
+    {events:time} {events:canceled}
   </td>
   <td class="leftc">
     <span style="float:left; padding-right:8px">
