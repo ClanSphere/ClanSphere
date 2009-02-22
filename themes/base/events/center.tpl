@@ -1,0 +1,28 @@
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb" colspan="3">{lang:mod} - {lang:head_center}</td>
+  </tr>
+  <tr>
+    <td class="leftb">{lang:body_center}</td>
+    <td class="centerb">{lang:agenda}</td>
+  </tr>
+</table>
+<br />
+{lang:getmsg}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb">{sort:name} {lang:name}</td>
+    <td class="headb">{sort:time} {lang:date}</td>
+    <td class="headb">{lang:canceled}</td>
+    <td class="headb" colspan="2"> {lang:options} </td>
+  </tr>
+  {loop:events}
+  <tr>
+    <td class="leftc">{events:name}</td>
+    <td class="leftc">{events:date}</td>
+    <td class="leftc">{events:status}</td>
+    <td class="leftc">{events:view}</td>
+	<td class="leftc">{events:remove}</td>
+  </tr>
+  {stop:events}
+</table>

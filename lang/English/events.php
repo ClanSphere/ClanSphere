@@ -12,6 +12,11 @@ $cs_lang['all']         = 'Total: ';
 $cs_lang['agenda']  = 'Agenda';
 $cs_lang['year']  = 'Year';
 
+// Center
+$cs_lang['head_center']  = 'Center';
+$cs_lang['body_center']  = 'My next events';
+$cs_lang['signout']      = 'Signout';
+
 // manage.php
 $cs_lang['head_manage']  = 'Administration';
 $cs_lang['new_event']  = 'New event';

@@ -12,9 +12,9 @@ $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['mod_text'];
 $mod_info['icon']    = 'cal';
-$mod_info['show']    = array('clansphere/admin' => 3, 'options/roots' => 5);
+$mod_info['show']    = array('users/settings' => 2, 'clansphere/admin' => 3, 'options/roots' => 5);
 $mod_info['categories']  = TRUE;
-$mod_info['comments']  = FALSE;
+$mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('events');
 
