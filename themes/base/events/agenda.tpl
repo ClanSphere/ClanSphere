@@ -37,11 +37,13 @@
  <tr>
   <td class="headb" style="width:20%">{lang:date}</td>
   <td class="headb">{lang:name}</td>
-  <td class="headb" style="width:30%">{lang:venue}</td>
+  <td class="headb" style="width:30%">{lang:guests}</td>
  </tr>{loop:events}
  <tr>
   <td class="leftc">
-    {events:time} {events:canceled}
+    {events:time}<br />
+    {events:signed}<br />
+    {events:canceled}
   </td>
   <td class="leftc">
     <span style="float:left; padding-right:8px">
@@ -51,6 +53,10 @@
     <hr noshade="noshade" style="width:100%" />
     <a href="{url:events_view:id={events:events_id}}">{events:events_name}</a>
   </td>
-  <td class="leftc">{events:events_venue}</td>
+  <td class="leftc">
+    {events:bar}
+    <br /><br />
+    {events:eventguests} / <strong>{events:events_guestsmax}</strong> {events:perc}
+  </td>
  </tr>{stop:events}
 </table>
