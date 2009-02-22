@@ -122,6 +122,11 @@ $cs_lang['max_height'] = 'Maximale Bildh&ouml;he';
 $cs_lang['max_size'] = 'Maximale Bildgr&ouml;&szlig;e';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
+$cs_lang['require'] = 'Pflichtangaben';
+$cs_lang['req_fullname'] = 'Kompletter Name';
+$cs_lang['req_fulladress'] = 'Komplette Adresse';
+$cs_lang['req_phone'] = 'Telefon';
+$cs_lang['req_mobile'] = 'Handy';
 
 // War stuff
 $cs_lang['show_wars']   = 'Clanwars anzeigen';

@@ -54,6 +54,10 @@ ALTER TABLE {pre}_events ADD events_needage int(2) NOT NULL default '0';
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_width', '800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_height', '600');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_size', '204800');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'req_fullname', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'req_fulladress', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'req_mobile', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'req_phone', '0');
 
 CREATE TABLE {pre}_eventguests (
   eventguests_id {serial},

@@ -23,10 +23,18 @@
   <td class="leftb"><input type="text" name="max_size" value="{op:max_size}" maxlength="20" size="8" class="form" /> {lang:bytes}</td>
  </tr>
  <tr>
+  <td class="leftc">{icon:kdict} {lang:require}</td>
+  <td class="leftb">
+    <input type="checkbox" name="req_fullname" value="1" {checked:req_fullname} /> {lang:req_fullname}<br />
+    <input type="checkbox" name="req_fulladress" value="1" {checked:req_fulladress} /> {lang:req_fulladress}<br />
+    <input type="checkbox" name="req_mobile" value="1" {checked:req_mobile} /> {lang:req_mobile}<br />
+    <input type="checkbox" name="req_phone" value="1" {checked:req_phone} /> {lang:req_phone}
+  </td>
+ </tr>
+ <tr>
   <td class="leftc">{icon:configure} {lang:extended}</td>
   <td class="leftb">
-    <input type="checkbox" name="show_wars" value="1" {checked:show_wars} />
-    {lang:show_wars}
+    <input type="checkbox" name="show_wars" value="1" {checked:show_wars} /> {lang:show_wars}
   </td>
  </tr>
  <tr>

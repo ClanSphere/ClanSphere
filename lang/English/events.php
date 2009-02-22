@@ -118,6 +118,11 @@ $cs_lang['max_height'] = 'Maximum height';
 $cs_lang['max_size'] = 'Maximum size';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
+$cs_lang['require'] = 'Requirements';
+$cs_lang['req_fullname'] = 'Full name';
+$cs_lang['req_fulladress'] = 'Full adress';
+$cs_lang['req_phone'] = 'Phone';
+$cs_lang['req_mobile'] = 'Cell Phone';
 
 // edit.php
 $cs_lang['head_edit']  = 'Edit';
