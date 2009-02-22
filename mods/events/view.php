@@ -15,33 +15,28 @@ echo cs_html_roco(0);
 echo cs_html_roco(1,'leftb');
 echo $cs_lang['body_view'];
 echo cs_html_roco(0);
-echo cs_html_roco(1,'centerc');
-echo $cs_lang['signed'] . ': ';
-$where = "events_id = '" . $events_id . "' AND users_id = '" . $account['users_id'] . "'";
-$status = cs_sql_select(__FILE__,'eventguests','eventguests_id, eventguests_since',$where);
-
-if(empty($status['eventguests_since'])) {
-  echo $cs_lang['no'] . ' -> ';
-  echo cs_link($cs_lang['signin'],'events','signin','id=' . $events_id);
+if(empty($cs_events['events_cancel']) AND cs_time() < $cs_events['events_time']) {
+  echo cs_html_roco(1,'centerc');
+  echo $cs_lang['signed'] . ': ';
+  $where = "events_id = '" . $events_id . "' AND users_id = '" . $account['users_id'] . "'";
+  $status = cs_sql_select(__FILE__,'eventguests','eventguests_id, eventguests_since',$where);
+  if(empty($status['eventguests_since'])) {
+    echo $cs_lang['no'] . ' -> ';
+    echo cs_link($cs_lang['signin'],'events','signin','id=' . $events_id);
+  }
+  else {
+    echo $cs_lang['yes'] . ' -> ';
+    echo cs_link($cs_lang['signout'],'events','signout','id=' . $events_id);
+  }
+  echo cs_html_roco(0);
 }
-else {
-  echo $cs_lang['yes'] . ' -> ';
-  echo cs_link($cs_lang['signout'],'events','signout','id=' . $events_id);
-}
-
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
-
-if(!empty($cs_events['events_cancel'])) {
-
-  echo cs_html_table(1,'forum',1);
+elseif(!empty($cs_events['events_cancel'])) {
   echo cs_html_roco(1,'centerc');
   echo $cs_lang['canceled'];
   echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);
 }
+echo cs_html_table(0);
+echo cs_html_br(1);
 
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'leftc');
@@ -106,14 +101,12 @@ if(empty($cs_events['events_pictures'])) {
 }
 
 echo cs_html_roco(0);
-
 echo cs_html_roco(1,'leftc');
 echo cs_icon('kate') . $cs_lang['more'];
 echo cs_html_roco(2,'leftb');
 echo cs_secure($cs_events['events_more'],1,1,1,1);
 echo cs_html_roco(0);
 echo cs_html_table(0);
-echo cs_html_br(1);
 
 $where_com = "comments_mod = 'events' AND comments_fid = '" . $events_id . "'";
 $count_com = cs_sql_count(__FILE__,'comments',$where_com);

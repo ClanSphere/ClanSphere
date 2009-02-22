@@ -142,4 +142,17 @@ $cs_lang['signout_true']   = 'Signout done';
 $cs_lang['userid_diff']     = '- You can only leave on registrations';
 $cs_lang['event_done']     = '- The event has already taken place';
 
+// Signin
+$cs_lang['head_signin']     = 'Signin';
+$cs_lang['body_signin']     = 'Signin successful';
+
+$cs_lang['no_event']       = '- The event could not be found';
+$cs_lang['user_found']     = '- You are already signed in';
+$cs_lang['err_time']       = '- The event is canceled or has taken place';
+$cs_lang['err_age']        = '- You are not old enough to signin for the event';
+$cs_lang['err_name']       = '- Your profile must contain a full name';
+$cs_lang['err_adress']     = '- Your profile must contain a full adress';
+$cs_lang['err_phone']      = '- Data in profile too short or missing: Phone';
+$cs_lang['err_mobile']     = '- Data in profile too short or missing: Cell Phone';
+
 ?>

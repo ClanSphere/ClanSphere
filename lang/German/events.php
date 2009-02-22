@@ -142,4 +142,17 @@ $cs_lang['signout_true']   = 'Abmeldung erfolgreich';
 $cs_lang['userid_diff']     = '- Sie k&ouml;nnen nur eigene Anmeldungen abmelden';
 $cs_lang['event_done']     = '- Der Termin ist bereits vorbei';
 
+// Signin
+$cs_lang['head_signin']     = 'Anmelden';
+$cs_lang['body_signin']     = 'Erfolgreich eingetragen';
+
+$cs_lang['no_event']       = '- Kein Termin gefunden';
+$cs_lang['user_found']     = '- Sie sind bereits angemeldet';
+$cs_lang['err_time']       = '- Der Termin ist abgesagt oder abgelaufen';
+$cs_lang['err_age']        = '- Ihr Alter entspricht nicht den Anforderungen';
+$cs_lang['err_name']       = '- Ihr Profil beinhaltet keinen Vor- und Zunamen';
+$cs_lang['err_adress']     = '- Ihr Profil beinhaltet keine komplette Adresse';
+$cs_lang['err_phone']      = '- Angabe im Profil fehlt oder zu kurz: Telefon';
+$cs_lang['err_mobile']     = '- Angabe im Profil fehlt oder zu kurz: Handy';
+
 ?>

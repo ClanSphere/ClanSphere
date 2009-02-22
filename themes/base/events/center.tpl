@@ -14,15 +14,14 @@
     <td class="headb">{sort:name} {lang:name}</td>
     <td class="headb">{sort:time} {lang:date}</td>
     <td class="headb">{lang:canceled}</td>
-    <td class="headb" colspan="2"> {lang:options} </td>
+    <td class="headb"> {lang:options} </td>
   </tr>
   {loop:events}
   <tr>
     <td class="leftc">{events:name}</td>
-    <td class="leftc">{events:date}</td>
+    <td class="leftc">{events:time}</td>
     <td class="leftc">{events:status}</td>
-    <td class="leftc">{events:view}</td>
-	<td class="leftc">{events:remove}</td>
+	<td class="centerc">{events:remove}</td>
   </tr>
   {stop:events}
 </table>
