@@ -4,6 +4,10 @@
 
 $cs_lang = cs_translate('events');
 
+$events_id = empty($_REQUEST['where']) ? $_GET['id'] : $_REQUEST['where'];
+settype($events_id,'integer');
+$cs_events = cs_sql_select(__FILE__,'events','*',"events_id = '" . $events_id . "'");
+
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'headb');
 echo $cs_lang['mod'] . ' - ' . $cs_lang['head_view'];
@@ -11,12 +15,23 @@ echo cs_html_roco(0);
 echo cs_html_roco(1,'leftb');
 echo $cs_lang['body_view'];
 echo cs_html_roco(0);
+echo cs_html_roco(1,'centerc');
+echo $cs_lang['signed'] . ': ';
+$where = "events_id = '" . $events_id . "' AND users_id = '" . $account['users_id'] . "'";
+$status = cs_sql_select(__FILE__,'eventguests','eventguests_id, eventguests_since',$where);
+
+if(empty($status['eventguests_since'])) {
+  echo $cs_lang['no'] . ' -> ';
+  echo cs_link($cs_lang['signin'],'events','signin','id=' . $events_id);
+}
+else {
+  echo $cs_lang['yes'] . ' -> ';
+  echo cs_link($cs_lang['signout'],'events','signout','id=' . $events_id);
+}
+
+echo cs_html_roco(0);
 echo cs_html_table(0);
 echo cs_html_br(1);
-
-$events_id = empty($_REQUEST['where']) ? $_GET['id'] : $_REQUEST['where'];
-settype($events_id,'integer');
-$cs_events = cs_sql_select(__FILE__,'events','*',"events_id = '" . $events_id . "'");
 
 if(!empty($cs_events['events_cancel'])) {
 

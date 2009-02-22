@@ -64,8 +64,11 @@ $cs_lang['place']       = 'Wohnort';
 // view.php
 $cs_lang['head_view']  = 'Details';
 $cs_lang['body_view']  = 'Weitere Informationen zu einem Termin.';
-$cs_lang['url']         = 'Webseite';
-$cs_lang['more']        = 'Mehr';
+$cs_lang['url']        = 'Webseite';
+$cs_lang['more']       = 'Mehr';
+$cs_lang['signed']     = 'Angemeldet';
+$cs_lang['signin']     = 'Jetzt anmelden';
+$cs_lang['signout']    = 'Jetzt abmelden';
 
 $cs_lang['guests']     = 'Teilnehmer';
 $cs_lang['min']        = 'Minimal';

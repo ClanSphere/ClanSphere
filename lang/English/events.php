@@ -66,6 +66,9 @@ $cs_lang['head_view']  = 'Details';
 $cs_lang['body_view']  = 'More information about an event.';
 $cs_lang['url']        = 'Website';
 $cs_lang['more']       = 'More';
+$cs_lang['signed']     = 'Signed';
+$cs_lang['signin']     = 'signin now';
+$cs_lang['signout']    = 'signout now';
 
 $cs_lang['guests']     = 'Guests';
 $cs_lang['min']        = 'Minimal';
