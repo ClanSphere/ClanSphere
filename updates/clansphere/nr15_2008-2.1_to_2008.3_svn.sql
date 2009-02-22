@@ -44,19 +44,25 @@ ALTER TABLE {pre}_ranks ADD squads_id int(8) NOT NULL DEFAULT '0';
 ALTER TABLE {pre}_faq DROP faq_time;
 
 ALTER TABLE {pre}_events ADD events_close int(2) NOT NULL default '0';
-
 ALTER TABLE {pre}_events ADD events_venue varchar(40) NOT NULL default '';
-
 ALTER TABLE {pre}_events ADD events_pictures text;
-
 ALTER TABLE {pre}_events ADD events_cancel int(2) NOT NULL default '0';
-
 ALTER TABLE {pre}_events ADD events_guestsmin int(8) NOT NULL default '0';
-
 ALTER TABLE {pre}_events ADD events_guestsmax int(8) NOT NULL default '0';
-
 ALTER TABLE {pre}_events ADD events_needage int(2) NOT NULL default '0';
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_width', '800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_height', '600');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_size', '204800');
+
+CREATE TABLE {pre}_eventguests (
+  eventguests_id {serial},
+  events_id int(8) NOT NULL default '0',
+  users_id int(8) NOT NULL default '0',
+  eventguests_since int(14) NOT NULL default '0',
+  PRIMARY KEY (eventguests_id),
+  UNIQUE (events_id, users_id)
+){engine};
+
+CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);
+CREATE INDEX {pre}_eventguests_users_id_index ON {pre}_eventguests (users_id);

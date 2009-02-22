@@ -386,6 +386,15 @@ CREATE TABLE {pre}_cupmatches (
   UNIQUE (cups_id, squad2_id, cupmatches_round)
 ){engine};
 
+CREATE TABLE {pre}_eventguests (
+  eventguests_id {serial},
+  events_id int(8) NOT NULL default '0',
+  users_id int(8) NOT NULL default '0',
+  eventguests_since int(14) NOT NULL default '0',
+  PRIMARY KEY (eventguests_id),
+  UNIQUE (events_id, users_id)
+){engine};
+
 CREATE TABLE {pre}_events (
   events_id {serial},
   categories_id int(8) NOT NULL default '0',
@@ -1147,6 +1156,8 @@ CREATE INDEX {pre}_cupmatches_squad2_id_index ON {pre}_cupmatches (squad2_id);
 CREATE INDEX {pre}_cups_games_id_index ON {pre}_cups (games_id);
 CREATE INDEX {pre}_cupsquads_cups_id_index ON {pre}_cupsquads (cups_id);
 CREATE INDEX {pre}_cupsquads_squads_id_index ON {pre}_cupsquads (squads_id);
+CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);
+CREATE INDEX {pre}_eventguests_users_id_index ON {pre}_eventguests (users_id);
 CREATE INDEX {pre}_events_categories_id_index ON {pre}_events (categories_id);
 CREATE INDEX {pre}_faq_users_id_index ON {pre}_faq (users_id);
 CREATE INDEX {pre}_faq_categories_id_index ON {pre}_faq (categories_id);
