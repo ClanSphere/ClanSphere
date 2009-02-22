@@ -124,4 +124,14 @@ $cs_lang['body_edit']  = 'Errors may occur here.';
 $cs_lang['show_wars']   = 'Show clanwars';
 $cs_lang['war_against'] = 'Clanwar versus ';
 
+// Signout
+$cs_lang['head_signout']   = 'Signout';
+
+$cs_lang['signout_confirm']  = 'Really leave the event?';
+$cs_lang['signout_false']   = 'Signout canceled';
+$cs_lang['signout_true']   = 'Signout done';
+
+$cs_lang['userid_diff']     = '- You can only leave on registrations';
+$cs_lang['event_done']     = '- The event has already taken place';
+
 ?>

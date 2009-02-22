@@ -124,4 +124,14 @@ $cs_lang['bytes'] = 'Bytes';
 $cs_lang['show_wars']   = 'Clanwars anzeigen';
 $cs_lang['war_against'] = 'Clanwar gegen ';
 
+// Signout
+$cs_lang['head_signout']   = 'Abmeldung';
+
+$cs_lang['signout_confirm']  = 'Wirklich vom Termin abmelden?';
+$cs_lang['signout_false']   = 'Abmeldung abgebrochen';
+$cs_lang['signout_true']   = 'Abmeldung erfolgreich';
+
+$cs_lang['userid_diff']     = '- Sie k&ouml;nnen nur eigene Anmeldungen abmelden';
+$cs_lang['event_done']     = '- Der Termin ist bereits vorbei';
+
 ?>
