@@ -3,17 +3,19 @@
 // $Id$
 
 function cs_lanroom($mod,$action,$lanrooms_id,$lanroomd_id = 0,$free = 0) {
+
+  $data = array();
   $cs_lang = cs_translate('lanrooms');
+  settype($lanrooms_id,'integer');
 
   $from = "lanroomd lrd LEFT JOIN {pre}_languests lgs ON lrd.lanroomd_id = lgs.lanroomd_id LEFT JOIN {pre}_users usr ON lgs.users_id = usr.users_id";
   $select = "lrd.lanroomd_col AS lanroomd_col, lrd.lanroomd_row AS lanroomd_row, lrd.lanroomd_number AS lanroomd_number, usr.users_nick AS users_nick, usr.users_id AS users_id, lrd.lanroomd_id AS lanroomd_id";
   $order = 'lrd.lanroomd_row ASC, lrd.lanroomd_col ASC';
-  settype($lanrooms_id,'integer');
   $lanroomd = cs_sql_select(__FILE__,$from,$select,"lrd.lanrooms_id = '" . $lanrooms_id . "'",$order,0,0);
   $lanroomd_loop = count($lanroomd);
 
   if(empty($lanroomd_loop)) {
-    $var = $cs_lang['room_empty'];
+    return $cs_lang['room_empty'];
   }
   else {
     $where = "lanrooms_id = '" . $lanrooms_id . "'";
@@ -24,55 +26,51 @@ function cs_lanroom($mod,$action,$lanrooms_id,$lanroomd_id = 0,$free = 0) {
     $row = 0;
     $col = $max_col[0];
     $run = 0;
-
-    $var = cs_html_table(2,0,2);
-    $var .= cs_html_roco(1,'center');
-    $var .= cs_html_roco(2,'center');
     $gow = 'A';
     
-  for($go = 1; $go <= $max_col[0]; $go++) {
-      $var .= cs_html_roco(2,'center',0,0,'15px');
-      $var .= $gow++;
+    for($go = 0; $go <= $max_col[0] - 1; $go++) {
+      $data['figures'][$go]['abc'] = $gow++;
     }
-    $var .= cs_html_roco(1,'left',0,$max_col[0] + 2);
-    $var .= cs_html_img('symbols/clansphere/empty.gif',12,12);
-
-    while($run < $lanroomd_loop) {
+    
+    $data['max']['col'] = $max_col[0] +2;
+    $data['img']['empty'] = cs_html_img('symbols/clansphere/empty.gif',12,12);
+	  
+	  $i = 0;
+	  $max_run = $max_col[0] * $max_row[0];
+    for($run = 0;$run < $max_run;$run++) {
+    	
+    	$data['numbers'][$run]['if']['max_col'] = FALSE;
       if($col == $max_col[0]) {
-        $var .= cs_html_roco(0);
-    $var .= cs_html_roco(1,'right');
-    $var .= ++$row;
-    $var .= cs_html_roco(2,'center');
-    $var .= cs_html_img('symbols/clansphere/empty.gif',12,12);
-    $col = 0;
+        $data['numbers'][$run]['if']['max_col'] = TRUE;
+      	$data['numbers'][$run]['123'] = ++$row;
+      	$data['numbers'][$run]['empty'] = cs_html_img('symbols/clansphere/empty.gif',12,12);;
+        $col = 0;
       }
       $col++;
-      $var .= cs_html_roco(2,'center',0,0,'15px');
-      $content = $lanroomd[$run]['lanroomd_number'] . ' - ';
       
-    if($lanroomd[$run]['lanroomd_row'] == $row AND $lanroomd[$run]['lanroomd_col'] == $col) {
-        if($lanroomd[$run]['lanroomd_id'] == $lanroomd_id) {
-          $content .= empty($free) ? $cs_lang['search'] : $cs_lang['self'];
-          $img = cs_html_img('symbols/clansphere/green.gif',0,0,'title="' . $content . '"');
-      $var .= cs_link($img,'users','view','id=' . $lanroomd[$run]['users_id']);
-        }
-        elseif(empty($lanroomd[$run]['users_id'])) {
-          $content .= $cs_lang['free'];
-          $img = cs_html_img('symbols/clansphere/grey.gif',0,0,'title="' . $content . '"');
-          $get = cs_link($img,$mod,$action,$free . '=' . $lanroomd[$run]['lanroomd_id']);
-          $var .= empty($free) ? $img : $get;
-        }
-        else {
-          $content .= sprintf($cs_lang['used'], $lanroomd[$run]['users_nick']);
-          $img = cs_html_img('symbols/clansphere/red.gif',0,0,'title="' . $content . '"');
-          $var .= cs_link($img,'users','view','id=' . $lanroomd[$run]['users_id']);
-        }
-        $run++;
-      }
+      $data['numbers'][$run]['output'] = '';
+      if(($lanroomd[$i]['lanroomd_row'] == $row) AND $lanroomd[$i]['lanroomd_col'] == $col) {
+         $content = $lanroomd[$i]['lanroomd_number'] . ' - ';
+         if($lanroomd[$i]['lanroomd_id'] == $lanroomd_id) {
+           $content .= empty($free) ? $cs_lang['search'] : $cs_lang['self'];
+           $img = cs_html_img('symbols/clansphere/green.gif',0,0,'title="' . $content . '"');
+           $data['numbers'][$run]['output'] = cs_link($img,'users','view','id=' . $lanroomd[$i]['users_id']);
+         }
+         elseif(empty($lanroomd[$i]['users_id'])) {
+           $content .= $cs_lang['free'];
+           $img = cs_html_img('symbols/clansphere/grey.gif',0,0,'title="' . $content . '"');
+           $get = cs_link($img,$mod,$action,$free . '=' . $lanroomd[$i]['lanroomd_id']);
+           $data['numbers'][$run]['output'] = empty($free) ? $img : $get;
+         }
+         else {
+           $content .= sprintf($cs_lang['used'], $lanroomd[$i]['users_nick']);
+           $img = cs_html_img('symbols/clansphere/red.gif',0,0,'title="' . $content . '"');
+           $data['numbers'][$run]['output'] = cs_link($img,'users','view','id=' . $lanroomd[$i]['users_id']);
+         }
+         $i++;
+       }
     }
-    $var .= cs_html_roco(0);
-    $var .= cs_html_table(0);
   }
-  return $var;
+  return cs_subtemplate(__FILE__,$data,'lanrooms','functions');
 }
 ?>

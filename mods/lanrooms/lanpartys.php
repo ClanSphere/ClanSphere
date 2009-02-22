@@ -99,10 +99,8 @@ $free = $target['languests_status'] == 4 ? 'save_id' : 0;
 
 echo cs_subtemplate(__FILE__,$data,'lanrooms','lanpartys');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'leftc');
+
 include('mods/lanrooms/functions.php');
 echo cs_lanroom('lanrooms','lanpartys',$lanrooms_id,$target['lanroomd_id'],$free);
-echo cs_html_roco(0);
-echo cs_html_table(0);
+
 ?>

@@ -17,27 +17,17 @@ if(!empty($_POST['submit'])) {
   settype($cs_lanroomd['lanroomd_row'],'integer');
   settype($cs_lanroomd['lanroomd_col'],'integer');
 
-  $error = 0;
-  $errormsg = '';
+  $error = '';
 
-  if(empty($cs_lanroomd['lanroomd_number'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_number'] . cs_html_br(1);
-  }
-  
-  if(empty($cs_lanroomd['lanroomd_row'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_row'] . cs_html_br(1);
-  }
-  
-  if(empty($cs_lanroomd['lanroomd_col'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_col'] . cs_html_br(1);
-  }
+  if(empty($cs_lanroomd['lanroomd_number']))
+    $error .= $cs_lang['no_number'] . cs_html_br(1);
+  if(empty($cs_lanroomd['lanroomd_row']))
+    $error .= $cs_lang['no_row'] . cs_html_br(1);  
+  if(empty($cs_lanroomd['lanroomd_col']))
+    $error .= $cs_lang['no_col'] . cs_html_br(1);
   
   if(empty($lanrooms_id)) {
-    $error++;
-    $errormsg .= $cs_lang['no_room_given'] . cs_html_br(1);
+    $error .= $cs_lang['no_room_given'] . cs_html_br(1);
   }
   else {
     $where = "lanroomd_number = '" . $cs_lanroomd['lanroomd_number'] . "' AND lanrooms_id = '";
@@ -45,14 +35,14 @@ if(!empty($_POST['submit'])) {
     $search_number = cs_sql_count(__FILE__,'lanroomd',$where);
     if(!empty($search_number)) {
       $error++;
-      $errormsg .= $cs_lang['number_used'] . cs_html_br(1);
+      $error .= $cs_lang['number_used'] . cs_html_br(1);
     }
     $where = "lanroomd_row = '" . $cs_lanroomd['lanroomd_row'] . "' AND lanroomd_col = '";
     $where .= $cs_lanroomd['lanroomd_col'] . "' AND lanrooms_id = '" . $lanrooms_id . "'";
     $search_target = cs_sql_count(__FILE__,'lanroomd',$where);
     if(!empty($search_target)) {
       $error++;
-      $errormsg .= $cs_lang['target_used'] . cs_html_br(1);
+      $error .= $cs_lang['target_used'] . cs_html_br(1);
     }
  }
 
@@ -79,7 +69,7 @@ elseif(!isset($_POST['submit'])) {
   $data['lang']['body'] = $cs_lang['body_map'];
 }
 elseif(!empty($error)) {
-  $data['lang']['body'] = $errormsg;
+  $data['lang']['body'] = $error;
 }
 else {
   $data['lang']['body'] = $cs_lang['content_done'];
