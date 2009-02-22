@@ -14,9 +14,7 @@ $data['link']['empty_cache'] = cs_url('clansphere','cache','clear=1');
 
 if(!empty($_GET['clear'])) {
   foreach($content AS $file => $name) {
-  	if($file != ".htaccess") {
-        unlink('uploads/cache/' . $file);
-  	}
+    unlink('uploads/cache/' . $file);
   }
   
   $content = array();

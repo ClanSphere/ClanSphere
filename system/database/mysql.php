@@ -189,8 +189,9 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
 }
 
 function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, $sql_where = 0) {
-  global $cs_db;
-  settype($sql_id, 'integer');
+
+    global $cs_db;
+    settype($sql_id, 'integer');
     $max = count($sql_cells);
     $set = ' SET ';
     for ($run = 0; $run < $max; $run++) {
@@ -217,10 +218,10 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
     cs_log_sql($sql_update, $action);
     if($sql_table == 'options') {
       $content = cs_paths('uploads/cache');
+      unset($content['index.html']);
+      unset($content['.htaccess']);
       foreach($content AS $file => $name) {
-        if($file != 'index.htm') {
-          unlink('uploads/cache/' . $file);
-        }
+        unlink('uploads/cache/' . $file);
       }
     }
 }

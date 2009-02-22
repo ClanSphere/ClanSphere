@@ -13,6 +13,7 @@ $sql_content = '';
 
 $content = cs_paths('uploads/cache');
 unset($content['index.html']);
+unset($content['.htaccess']);
 
 if(isset($_FILES['update']['name']) AND preg_match("=^(.*?)\.sql$=si",$_FILES['update']['name'])) {
   if($_FILES['update']['name'] == 'install.sql') { $install_sql++; } else {
@@ -102,7 +103,7 @@ $data['if']['actions'] = empty($actions) ? false : true;
 if(!empty($actions)) {
 
   foreach($content AS $file => $name) {
-  unlink('uploads/cache/' . $file);
+    unlink('uploads/cache/' . $file);
   }
   $cs_lang2 = cs_translate('clansphere');
     $content = array();
