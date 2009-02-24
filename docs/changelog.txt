@@ -4,6 +4,7 @@ CHANGELOG
 ClanSphere 2008.3_svn >> 0000-00-00
 ___________________________________________________________
 
+-> Fixed users_remove without loose database integrity
 -> Fixed preview of signatures in board (BugtrackerID: 209, Denni)
 -> Fixed removing of uploaded files in some modules (BugtrackerID: 198 and 211, Denni)
 -> Fixed users hide function in users view (fay-pain)
