@@ -70,3 +70,5 @@ CREATE TABLE {pre}_eventguests (
 
 CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);
 CREATE INDEX {pre}_eventguests_users_id_index ON {pre}_eventguests (users_id);
+
+ALTER TABLE {pre}_users ADD users_delete int(1) NOT NULL default '0';
