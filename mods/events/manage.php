@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('events');
+
 $data = array();
 
 $categories_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
@@ -30,15 +31,15 @@ $data['head']['categories'] = cs_dropdown('where','categories_name',$categories_
 $data['sort']['name'] = cs_sort('events','manage',$start,$categories_id,1,$sort);
 $data['sort']['date'] = cs_sort('events','manage',$start,$categories_id,3,$sort);
 
-$select = 'evs.events_time AS events_time, evs.events_id AS events_id, evs.events_name AS ';
-$select .= 'events_name, evs.categories_id AS categories_id, cat.categories_name AS categories_name';
-$from = 'events evs LEFT JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
+$select = 'events_time, events_id, events_name, events_cancel, events_guestsmax';
 
-$data['events'] = cs_sql_select(__FILE__,$from,$select,$where2,$order,$start,$account['users_limit']);
+$data['events'] = cs_sql_select(__FILE__,'events',$select,$where2,$order,$start,$account['users_limit']);
 $count_events = count($data['events']);
 
 for ($run = 0; $run < $count_events; $run++) {
   $data['events'][$run]['time'] = cs_date('unix',$data['events'][$run]['events_time'],1);
+  $data['events'][$run]['guests'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$run]['events_id'] . "'");
+  $data['events'][$run]['canceled'] = empty($data['events'][$run]['events_cancel']) ? '' : ' - ' . $cs_lang['canceled'];
 }
 
 echo cs_subtemplate(__FILE__,$data,'events','manage');

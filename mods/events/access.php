@@ -10,6 +10,7 @@ $axx_file['view']           = 1;
 $axx_file['center']         = 2;
 $axx_file['signin']         = 2;
 $axx_file['signout']        = 2;
+$axx_file['guests']         = 5;
 $axx_file['manage']         = 3;
 $axx_file['picture']        = 3;
 $axx_file['remove']         = 3;
