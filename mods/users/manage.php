@@ -19,8 +19,9 @@ $cs_sort[7] = 'access_id ASC';
 $cs_sort[8] = 'access_id DESC';
 $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
-$where = empty($letter) ? 0 : "users_nick LIKE '" . cs_sql_escape($letter) . "%'";
-$where = empty($search_name) ? $where : "users_nick LIKE '%" . cs_sql_escape($search_name) . "%'";
+$where = "users_delete = '0'";
+$where = empty($letter) ? $where : "users_delete = '0' AND users_nick LIKE '" . cs_sql_escape($letter) . "%'";
+$where = empty($search_name) ? $where : "users_delete = '0' AND users_nick LIKE '%" . cs_sql_escape($search_name) . "%'"; 
 $users_count = cs_sql_count(__FILE__, 'users', $where);
 
 $data['head']['total'] = $users_count;

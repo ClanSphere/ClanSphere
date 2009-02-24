@@ -4,12 +4,44 @@
 
 $cs_lang = cs_translate('users');
 $cs_get = cs_get('id');
+$nick = $cs_lang['del_nick'];
 $data = array();
 
 $users_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
 if(isset($_GET['agree'])) {
-  cs_sql_delete(__FILE__,'users',$users_id);
+  $array_data = array('access_id'=>0,
+                      'users_nick'=>"$nick",
+                      'users_pwd'=>'',
+                      'users_name'=>'',
+                      'users_surname'=>'',
+                      'users_sex'=>'',
+                      'users_age'=>'',
+                      'users_height'=>0,
+                      'users_lang'=>'',
+                      'users_country'=>"fam",
+                      'users_postalcode'=>'',
+                      'users_place'=>'',
+                      'users_adress'=>'',
+                      'users_icq'=>0,
+                      'users_msn'=>'',
+                      'users_skype'=>'',
+                      'users_email'=>'',
+                      'users_url'=>'',
+                      'users_phone'=>'',
+                      'users_mobile'=>'',
+                      'users_laston'=>0,
+                      'users_picture'=>'',
+                      'users_avatar'=>'',
+                      'users_signature'=>'',
+                      'users_info'=>'',
+                      'users_regkey'=>'',
+                      'users_register'=>'',
+                      'users_delete'=>1);
+  $array_keys = array_keys($array_data);
+  $array_values = array_values($array_data);
+  cs_sql_update(__FILE__, 'users', $array_keys, $array_values, $users_id);
+  //cs_sql_delete(__FILE__,'users',$users_id);
   cs_redirect($cs_lang['del_true'], 'users');
 }
 

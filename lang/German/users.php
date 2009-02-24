@@ -94,6 +94,9 @@ $cs_lang['mail_reg_end'] = "\n \n Diese Email wurde &uuml;ber ein Formular angef
 $cs_lang['state'] = 'Zustand';
 $cs_lang['not_active'] = 'Deaktiviert';
 $cs_lang['not_active_text'] = 'Der ausgew&auml;hlte Benutzer wurde Deaktiviert';
+$cs_lang['delete'] = 'Entfernt';
+$cs_lang['delete_text'] = 'Der ausgew&auml;hlte Benutzer wurde Entfernt';
+$cs_lang['del_nick'] = 'Gelöschter Benutzer';
 
 // Logout
 $cs_lang['logged_out']  = 'Vorgang erfolgreich, bis bald!';

@@ -17,7 +17,7 @@ $order = $cs_sort[$sort];
 //$mof = empty($where) ? '' : " AND users_sex = '" . cs_sql_escape($where) . "'";     
 $where = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
 $mof = empty($where) ? '' : " AND users_nick LIKE '" . cs_sql_escape($where) . "%'";
-$condition = 'users_active = 1' . $mof;
+$condition = 'users_delete = 0 AND users_active = 1' . $mof;
 $users_count = cs_sql_count(__FILE__,'users',$condition);
 
   $data['head']['mod'] = $cs_lang['mod_name'];

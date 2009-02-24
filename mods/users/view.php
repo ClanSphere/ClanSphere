@@ -17,6 +17,15 @@ if(empty($cs_user['users_active'])) {
   $data['lang']['not_active'] = $cs_lang['not_active'];
   echo cs_subtemplate(__FILE__,$data,'users','not_active');
 }
+elseif(!empty($cs_user['users_delete'])) {
+  $data['head']['action'] = $cs_lang['profile'];
+  $data['head']['body_text'] = $cs_lang['delete_text'];
+
+  echo cs_subtemplate(__FILE__,$data,'users','head');
+
+  $data['lang']['delete'] = $cs_lang['delete'];
+  echo cs_subtemplate(__FILE__,$data,'users','delete');
+}
 else {
   $data['head']['action'] = $cs_lang['profile'];
   $data['head']['body_text'] = cs_addons('users','view',$users_id,'users');
