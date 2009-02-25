@@ -54,9 +54,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['members']['squad'] = cs_link($squad_name,'squads','view','id=' . $squad_infos['squads_id']);
 
   $users_match = "users_id = '" . $cs_members['users_id'] . "'";
-  $users_infos = cs_sql_select(__FILE__,'users','users_nick,users_id,users_active',$users_match);
+  $users_infos = cs_sql_select(__FILE__,'users','users_nick,users_id,users_active,users_delete',$users_match);
   $users_nick = cs_secure($users_infos['users_nick']);
-  $data['members']['user'] = cs_user($users_infos['users_id'],$users_infos['users_nick'], $users_infos['users_active']);
+  $data['members']['user'] = cs_user($users_infos['users_id'],$users_infos['users_nick'], $users_infos['users_active'], $users_infos['users_delete']);
 
    $data['members']['task'] = $cs_members['members_task'];
 

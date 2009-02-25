@@ -8,7 +8,7 @@ $cs_quotes_id = empty($_REQUEST['where']) ? $_REQUEST['id'] : $_REQUEST['where']
 settype($cs_quotes_id,'integer');
 
 $from = 'quotes qts INNER JOIN {pre}_users usr ON qts.users_id = usr.users_id INNER JOIN {pre}_categories cat ON qts.categories_id = cat.categories_id';
-$select = 'qts.quotes_id AS quotes_id, qts.quotes_headline AS quotes_headline, qts.quotes_time AS quotes_time, qts.quotes_text AS quotes_text, qts.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, qts.categories_id AS categories_id, cat.categories_access AS categories_access, cat.categories_picture AS categories_picture';
+$select = 'qts.quotes_id AS quotes_id, qts.quotes_headline AS quotes_headline, qts.quotes_time AS quotes_time, qts.quotes_text AS quotes_text, qts.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, qts.categories_id AS categories_id, cat.categories_access AS categories_access, cat.categories_picture AS categories_picture';
 $cs_quotes = cs_sql_select(__FILE__,$from,$select,"quotes_id = '" . $cs_quotes_id . "'");
 
   $data['head']['mod'] = $cs_lang['mod'];
@@ -22,7 +22,7 @@ $cs_quotes = cs_sql_select(__FILE__,$from,$select,"quotes_id = '" . $cs_quotes_i
   $data['quotes']['quotes_headline'] = cs_secure($cs_quotes['quotes_headline']);
   $data['quotes']['quotes_time'] = cs_date('unix',$cs_quotes['quotes_time'],1);
   $data['quotes']['quotes_text'] = cs_secure($cs_quotes['quotes_text'],1,1);
-  $data['quotes']['users_link'] = cs_user($cs_quotes['users_id'],$cs_quotes['users_nick'], $cs_quotes['users_active']);
+  $data['quotes']['users_link'] = cs_user($cs_quotes['users_id'],$cs_quotes['users_nick'], $cs_quotes['users_active'], $cs_quotes['users_delete']);
   $data['lang']['comments'] = $cs_lang['comments'];
 
   echo cs_subtemplate(__FILE__,$data,'quotes','view');

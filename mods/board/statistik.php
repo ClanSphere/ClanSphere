@@ -28,7 +28,7 @@ $data['user']['all'] = cs_sql_count(__FILE__,'users');
 
 // Online Users Start
 $five_min = cs_time() - 300;
-$select = 'users_id, users_nick, users_country, users_active, users_invisible';
+$select = 'users_id, users_nick, users_country, users_active, users_invisible, users_delete';
 $upcome = "users_laston > '" . $five_min . "' AND users_invisible = '0'";
 $order = 'users_laston DESC';
 $users_count = cs_sql_count(__FILE__,'users',$upcome);
@@ -50,7 +50,7 @@ if(empty($cs_users)) {
   $data['users'][$run]['nick'] = '';
   }
   $data['users'][$run]['nick'] .= cs_html_img('symbols/countries/' . $cs_users[$run]['users_country'] . '.png') . ' ';
-    $data['users'][$run]['nick'] .= cs_user($cs_users[$run]['users_id'], $cs_users[$run]['users_nick'], $cs_users[$run]['users_active']);
+    $data['users'][$run]['nick'] .= cs_user($cs_users[$run]['users_id'], $cs_users[$run]['users_nick'], $cs_users[$run]['users_active'], $cs_users[$run]['users_delete']);
   }
 }
 // Online Users End

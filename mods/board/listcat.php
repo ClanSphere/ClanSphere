@@ -74,7 +74,7 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
   $data['pages']['list'] = cs_pages('board', 'listcat', $cs_board['board_threads'], $start, $cs_board['board_id']);
   
   $from = "threads thr LEFT JOIN {pre}_users usr ON thr.threads_last_user = usr.users_id  LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND red.users_id = " . $account['users_id'];
-  $select = 'thr.threads_id AS threads_id, thr.threads_headline AS threads_headline, thr.threads_view AS threads_view, thr.threads_comments AS threads_comments, thr.threads_important AS threads_important, thr.threads_close AS threads_close, thr.threads_last_time AS threads_last_time, thr.threads_time AS threads_time, usr.users_id AS users_id, usr.users_nick AS users_nick, red.read_since AS read_since, thr.users_id AS starter_id, thr.threads_ghost AS threads_ghost, thr.threads_ghost_board AS threads_ghost_board, thr.threads_ghost_thread AS threads_ghost_thread';
+  $select = 'thr.threads_id AS threads_id, thr.threads_headline AS threads_headline, thr.threads_view AS threads_view, thr.threads_comments AS threads_comments, thr.threads_important AS threads_important, thr.threads_close AS threads_close, thr.threads_last_time AS threads_last_time, thr.threads_time AS threads_time, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, red.read_since AS read_since, thr.users_id AS starter_id, thr.threads_ghost AS threads_ghost, thr.threads_ghost_board AS threads_ghost_board, thr.threads_ghost_thread AS threads_ghost_thread';
   $where = "thr.board_id = " . $cs_board['board_id'];
   $order = 'thr.threads_important DESC, thr.threads_last_time DESC';
   $cs_threads = cs_sql_select(__FILE__, $from, $select, $where, $order, $start, $account['users_limit']);
@@ -148,8 +148,8 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
       }
       
       if (!empty($thread['starter_id'])) {
-        $thread_starter = cs_sql_select(__FILE__, 'users', 'users_nick, users_active', 'users_id = ' . $thread['starter_id'], 0, 0, 1);
-        $data['threads'][$run]['user'] = cs_user($thread['starter_id'],$thread_starter['users_nick'], $thread_starter['users_active']);
+        $thread_starter = cs_sql_select(__FILE__, 'users', 'users_nick, users_active, users_delete', 'users_id = ' . $thread['starter_id'], 0, 0, 1);
+        $data['threads'][$run]['user'] = cs_user($thread['starter_id'],$thread_starter['users_nick'], $thread_starter['users_active'], $thread_starter['users_delete']);
       } else {
         $data['threads'][$run]['user'] = '';
       }
@@ -175,8 +175,7 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
         
         if (!empty($thread['users_id'])) {
           $data['threads'][$run]['from'] = $cs_lang['from'];
-          $data['threads'][$run]['user_name'] = $thread['users_nick'];
-          $data['threads'][$run]['user_link'] = cs_url('users', 'view', 'id=' . $thread['users_id']);
+          $data['threads'][$run]['user_name'] = cs_user($thread['users_id'], $thread['users_nick'], $thread['users_active'], $thread['users_delete']);
         } else {
           $data['threads'][$run]['from'] = '';
           $data['threads'][$run]['user_name'] = '';

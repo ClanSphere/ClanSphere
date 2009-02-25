@@ -12,8 +12,8 @@ $select =  'comments_id, users_id, comments_fid, comments_mod, comments_text, co
 $cs_com = cs_sql_select(__FILE__,'comments',$select,"comments_id = '" . $com_id . "'");
 
 if(!empty($cs_com['users_id'])) {
-  $cs_user = cs_sql_select(__FILE__,'users','users_id, users_nick, users_active',"users_id ='".$cs_com['users_id']."'",0,0);
-  $data['com']['user'] = cs_user($cs_com['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+  $cs_user = cs_sql_select(__FILE__,'users','users_id, users_nick, users_active, users_delete',"users_id ='".$cs_com['users_id']."'",0,0);
+  $data['com']['user'] = cs_user($cs_com['users_id'],$cs_user['users_nick'],$cs_user['users_active'],$cs_user['users_delete']);
 } else {
   $data['com']['user'] = $cs_com['comments_guestnick'] . ' ' . $cs_lang['guest'];
 }

@@ -57,7 +57,7 @@ if(empty($data['squad']['squads_picture'])) {
 $select = 'mem.members_admin AS members_admin, mem.members_task AS members_task, mem.members_since AS members_since, ';
 $select .= 'mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_country AS users_country, ';
 $select .= 'usr.users_name AS users_name, usr.users_surname AS users_surname, usr.users_sex AS users_sex, ';
-$select .= 'usr.users_picture AS users_picture, usr.users_active AS users_active, usr.users_hidden AS users_hidden, ';
+$select .= 'usr.users_picture AS users_picture, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_hidden AS users_hidden, ';
 $select .= 'usr.users_laston AS users_laston, usr.users_invisible AS users_invisible';
 $from = 'members mem INNER JOIN {pre}_users usr ON mem.users_id = usr.users_id ';
 $where = "mem.squads_id='" . $squads_id . "'";
@@ -73,12 +73,13 @@ for($run = 0; $run < $data['squad']['members']; $run++) {
     '-' : cs_date('date',$data['members'][$run]['members_since']);
   $data['members'][$run]['page'] = cs_userstatus($data['members'][$run]['users_laston'],$data['members'][$run]['users_invisible']);
 
+  
   $users_nick = empty($data['members'][$run]['members_admin']) ? cs_secure($data['members'][$run]['users_nick']) :
     cs_html_big(1) . cs_secure($data['members'][$run]['users_nick']) . cs_html_big(0);
   $nick = $data['squad']['clans_tagpos'] == 1 ? $data['squad']['clans_tag'] . ' ' . $users_nick :
     $users_nick . ' ' . $data['squad']['clans_tag'];
 
-  $data['members'][$run]['users_nick_tag'] = $nick;
+  $data['members'][$run]['users_url'] = cs_user($data['members'][$run]['users_id'], $data['members'][$run]['users_nick'], $data['members'][$run]['users_active'], $data['members'][$run]['users_delete']);
 }
 
 $cells = 'ranks_id, ranks_name, ranks_url, ranks_img, ranks_code';

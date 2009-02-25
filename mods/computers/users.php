@@ -16,8 +16,8 @@ $order = $cs_sort[$sort];
 $cru = "users_id = '" . $where . "'";
 $computers_count = cs_sql_count(__FILE__,'computers',$cru);
 
-$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $where . "'");
-$user = cs_user($where,$cs_user['users_nick'], $cs_user['users_active']);
+$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $where . "'");
+$user = cs_user($where,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
 
 $data['users']['addons'] = cs_addons('users','view',$where,'computers');
 $data['lang']['body'] = sprintf($cs_lang['body_users'], $user);

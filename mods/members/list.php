@@ -30,7 +30,7 @@ if (empty($squads_loop)) {
 
 for($sq_run = 0; $sq_run < $squads_loop; $sq_run++) {
   
-  $select = 'mem.members_task AS members_task, mem.members_since AS members_since, mem.members_admin AS members_admin, mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_country AS users_country, usr.users_laston AS users_laston, usr.users_name AS users_name, usr.users_surname AS users_surname, usr.users_active AS users_active, usr.users_invisible AS users_invisible';
+  $select = 'mem.members_task AS members_task, mem.members_since AS members_since, mem.members_admin AS members_admin, mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_delete AS users_delete, usr.users_country AS users_country, usr.users_laston AS users_laston, usr.users_name AS users_name, usr.users_surname AS users_surname, usr.users_active AS users_active, usr.users_invisible AS users_invisible';
   $from = 'members mem INNER JOIN {pre}_users usr ON mem.users_id = usr.users_id ';
   $where = "mem.squads_id='" . $cs_squads[$sq_run]['squads_id'] . "'";
   $order = 'mem.members_order ASC, usr.users_nick ASC';
@@ -60,7 +60,7 @@ for($sq_run = 0; $sq_run < $squads_loop; $sq_run++) {
     $data['squads'][$sq_run]['members'][$run]['nick']  = $cs_squads[$sq_run]['clans_tagpos'] == 1 ?
         $cs_squads[$sq_run]['clans_tag'] . ' ' : '';
     $data['squads'][$sq_run]['members'][$run]['nick'] .=
-        cs_user($cs_members[$run]['users_id'],$cs_members[$run]['users_nick'], $cs_members[$run]['users_active']);
+        cs_user($cs_members[$run]['users_id'],$cs_members[$run]['users_nick'], $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);
     $data['squads'][$sq_run]['members'][$run]['nick'] .= $cs_squads[$sq_run]['clans_tagpos'] == 2 ?
         ' ' . $cs_squads[$sq_run]['clans_tag'] : '';
     $data['squads'][$sq_run]['members'][$run]['task']  = cs_secure($cs_members[$run]['members_task']);

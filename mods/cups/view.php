@@ -53,8 +53,8 @@ if (empty($matchsel['cupmatches_winner'])) {
     $winnername = cs_sql_select(__FILE__,'squads','squads_name','squads_id = \''.$matchsel['cupmatches_winner'].'\'');
     $data['cup']['winner'] = cs_link($winnername['squads_name'],'squads','view','id='.$matchsel['cupmatches_winner']);
   } else {
-    $winnername = cs_sql_select(__FILE__,'users','users_nick, users_active','users_id = \''.$matchsel['cupmatches_winner'].'\'');
-    $data['cup']['winner'] = cs_user($matchsel['cupmatches_winner'],$winnername['users_nick'], $winnername['users_active']);
+    $winnername = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete','users_id = \''.$matchsel['cupmatches_winner'].'\'');
+    $data['cup']['winner'] = cs_user($matchsel['cupmatches_winner'],$winnername['users_nick'], $winnername['users_active'], $winnername['users_delete']);
   }
 }
 

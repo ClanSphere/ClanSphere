@@ -4,12 +4,14 @@
 
 $cs_lang = cs_translate('users');
 $cs_get = cs_get('id');
-$nick = $cs_lang['del_nick'];
+//$nick = $cs_lang['del_nick'];
 $data = array();
 
 $users_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
 if(isset($_GET['agree'])) {
+  $nick_temp = cs_sql_select(__FILE__,'users','users_nick','users_id='.$users_id,0,0,1);
+  $nick = '*'.$nick_temp['users_nick'].'*'; 
   $array_data = array('access_id'=>0,
                       'users_nick'=>"$nick",
                       'users_pwd'=>'',

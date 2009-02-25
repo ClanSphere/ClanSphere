@@ -39,7 +39,7 @@ $data['sort']['user'] = cs_sort('languests','notices',$start,$lanpartys_id,1,$so
 $data['sort']['notices'] = cs_sort('languests','notices',$start,$lanpartys_id,3,$sort);
 
 $from = 'languests lgu INNER JOIN {pre}_users usr ON lgu.users_id = usr.users_id';
-$select = 'lgu.languests_notice AS languests_notice, lgu.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, lgu.languests_id AS languests_id';
+$select = 'lgu.languests_notice AS languests_notice, lgu.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, lgu.languests_id AS languests_id';
 $cs_languests = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $languests_loop = count($cs_languests);
 
@@ -48,7 +48,7 @@ if(empty($languests_loop)) {
 }
 
 for($run=0; $run<$languests_loop; $run++) {
-  $data['languests'][$run]['user'] = cs_user($cs_languests[$run]['users_id'],$cs_languests[$run]['users_nick'], $cs_languests[$run]['users_active']);
+  $data['languests'][$run]['user'] = cs_user($cs_languests[$run]['users_id'],$cs_languests[$run]['users_nick'], $cs_languests[$run]['users_active'], $cs_languests[$run]['users_delete']);
 
     $data['languests'][$run]['notices'] = cs_secure($cs_languests[$run]['languests_notice']);
 

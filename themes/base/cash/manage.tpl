@@ -91,7 +91,7 @@
 	</tr>
 	{loop:cash}
 	<tr>
-		<td class="leftc"><a href="{url:cash_manage:where={cash:users_id}}" title="{lang:payments_where_user}">{cash:users_nick}</td>
+		<td class="leftc">{cash:users_link}</td>
 		<td class="leftc">{cash:date}</td>
 		<td class="leftc"><a href="{url:cash_view:id={cash:id}}">{cash:text}</td>
 		<td class="leftc">{cash:money} {lang:euro}</td>

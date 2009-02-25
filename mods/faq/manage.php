@@ -33,9 +33,9 @@ $data['faq'] = '';
 for($run=0; $run<$faq_loop; $run++) {
   $data['faq'][$run]['question'] = cs_secure($cs_faq[$run]['faq_question']);
 
-  $cs_faq_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $cs_faq[$run]['users_id'] . "'");
+  $cs_faq_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $cs_faq[$run]['users_id'] . "'");
 
-  $data['faq'][$run]['user'] = cs_user($cs_faq[$run]['users_id'],$cs_faq_user['users_nick'], $cs_faq_user['users_active']);
+  $data['faq'][$run]['user'] = cs_user($cs_faq[$run]['users_id'],$cs_faq_user['users_nick'], $cs_faq_user['users_active'], $cs_faq_user['users_delete']);
 
   $cs_faq_categories = cs_sql_select(__FILE__,'categories','*',"categories_id = '" . $cs_faq[$run]['categories_id'] . "'");
 

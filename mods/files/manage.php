@@ -44,7 +44,7 @@ echo cs_getmsg();
 
 $from = 'files fls LEFT JOIN {pre}_users usr ON fls.users_id = usr.users_id';
 $select = 'fls.files_name AS files_name, fls.users_id AS users_id, usr.users_nick'; 
-$select .= ' AS users_nick, usr.users_active AS users_active, fls.files_time AS files_time, fls.files_id AS files_id';
+$select .= ' AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, fls.files_time AS files_time, fls.files_id AS files_id';
 $select .= ', fls.files_mirror AS files_mirror';
 $cs_files = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $files_loop = count($cs_files);
@@ -97,7 +97,7 @@ for($run=0; $run<$files_loop; $run++)
   echo cs_link($cs_files[$run]['files_name'],'files','view','where=' .$cs_files[$run]['files_id']);
   echo cs_html_roco(3,'leftc');
   $cs_files_user = cs_secure($cs_files[$run]['users_nick']);
-  echo cs_user($cs_files[$run]['users_id'],$cs_files[$run]['users_nick'], $cs_files[$run]['users_active']);
+  echo cs_user($cs_files[$run]['users_id'],$cs_files[$run]['users_nick'], $cs_files[$run]['users_active'], $cs_files[$run]['users_delete']);
   echo cs_html_roco(4,'leftc');
   echo cs_date('unix',$cs_files[$run]['files_time'],1);
   echo cs_html_roco(5,'leftc');

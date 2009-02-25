@@ -125,7 +125,9 @@
       {lang:posts}: {comment:posts}<br />    </td>
     <td class="leftc"> # {lang:answer}: {comment:current} - {comment:date}{comment:current_anchor}
       <hr style="width:100%" noshade="noshade" />
-      {if:com_report}{comment:com_clip}{stop:com_Report}
+      {if:com_report}
+      <div class="quote">{comment:com_clip}</div>
+      {stop:com_Report}
       {comment:text}
       {if:c_files}
       <div style="margin-top: 10px;" class="quote"><strong>{lang:files}</strong> {loop:com_files}

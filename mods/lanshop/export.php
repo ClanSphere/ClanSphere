@@ -31,7 +31,7 @@ echo cs_html_roco(0);
 echo cs_html_table(0);
 echo cs_html_br(1);
 
-$select = 'usr.users_id AS users_id, usr.users_nick AS users_nick, lso.lanshop_orders_value AS lanshop_orders_value, las.lanshop_articles_name AS lanshop_articles_name, las.lanshop_articles_price AS lanshop_articles_price';
+$select = 'usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, lso.lanshop_orders_value AS lanshop_orders_value, las.lanshop_articles_name AS lanshop_articles_name, las.lanshop_articles_price AS lanshop_articles_price';
 $from = 'lanshop_orders lso INNER JOIN {pre}_lanshop_articles las ON lso.lanshop_articles_id = las.lanshop_articles_id INNER JOIN {pre}_users usr ON lso.users_id = usr.users_id';
 $order = 'lso.users_id ASC, las.lanshop_articles_name ASC, lso.lanshop_orders_value DESC';
 $cs_lanshop = cs_sql_select(__FILE__,$from,$select,$where,$order,0,0);
@@ -55,7 +55,7 @@ for($run=0; $run<$lanshop_loop; $run++) {
   if($users_id != $cs_lanshop[$run]['users_id']) {
     $users_id = $cs_lanshop[$run]['users_id'];
     echo cs_html_roco(1,'centerb',0,3);
-    echo cs_secure($cs_lanshop[$run]['users_nick']);
+    echo cs_user($users_id, $cs_lanshop[$run]['users_nick'], $cs_lanshop[$run]['users_active'], $cs_lanshop[$run]['users_delete']);
     echo cs_html_roco(0);
   }
   echo cs_html_roco(1,'leftc');

@@ -61,8 +61,8 @@ echo cs_html_roco(2,'leftb');
 if ($system['cups_system'] == 'teams') {
   echo cs_link($cs_cups['squad1_name'],'squads','view','id='.$cs_cups['squad1_id']);
 } else {
-  $users_data = cs_sql_select(__FILE__,'users','users_active',"users_id = '" . $cs_cups['user1_id'] . "'");
-  echo cs_user($cs_cups['user1_id'],$cs_cups['user1_nick'], $users_data['users_active']);
+  $users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $cs_cups['user1_id'] . "'");
+  echo cs_user($cs_cups['user1_id'],$cs_cups['user1_nick'], $users_data['users_active'], $users_data['users_delete']);
 }
 echo cs_html_roco(0);
 

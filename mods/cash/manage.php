@@ -108,9 +108,8 @@ $cash_loop = count($data['cash']);
 
 for($run=0; $run<$cash_loop; $run++) {
         
-  $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_id',"users_id = '" . $data['cash'][$run]['users_id'] . "'",'users_nick',0);
-  $data['cash'][$run]['users_nick'] = $cs_user['users_nick'];
-  $data['cash'][$run]['users_id'] = $data['cash'][$run]['users_id'];
+  $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_id, users_active, users_delete',"users_id = '" . $data['cash'][$run]['users_id'] . "'",'users_nick',0);
+  $data['cash'][$run]['users_link'] = cs_user($data['cash'][$run]['users_id'], $cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
   
   $data['cash'][$run]['date'] = cs_date('date',$data['cash'][$run]['cash_time']);
   $text = $data['cash'][$run]['cash_text'];

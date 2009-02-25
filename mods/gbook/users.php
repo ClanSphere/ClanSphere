@@ -18,8 +18,8 @@ if(empty($where)) {
 
 $gbook_count = cs_sql_count(__FILE__,'gbook',"gbook_users_id = '" . $where . "'");
 
-$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $where . "'");
-$user = cs_user($where,$cs_user['users_nick'], $cs_user['users_active']);
+$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $where . "'");
+$user = cs_user($where,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
 
 $data['head']['addons'] = cs_addons('users','view',$where,'gbook');
 $data['head']['users'] = sprintf($cs_lang['body_users'], $user);
@@ -35,7 +35,7 @@ $select .= 'gbk.gbook_msn AS gbook_msn, gbk.gbook_skype AS gbook_skype, gbk.gboo
 $select .= 'gbk.gbook_town AS gbook_town, gbk.gbook_text AS gbook_text, gbk.gbook_ip AS gbook_ip, ';
 $select .= 'usr.users_nick AS users_nick, usr.users_place AS users_place, usr.users_icq AS users_icq, ';
 $select .= 'usr.users_msn AS users_msn, usr.users_skype AS users_skype, usr.users_email AS users_email, ';
-$select .= 'usr.users_url AS users_url, usr.users_hidden AS users_hidden, usr.users_active AS users_active';
+$select .= 'usr.users_url AS users_url, usr.users_hidden AS users_hidden, usr.users_active AS users_active, usr.users_delete AS users_delete';
 $where = "gbook_users_id = '" . $where . "' AND gbook_lock = 1";
 $order = 'gbk.gbook_id DESC';
 $cs_gbook = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
@@ -72,7 +72,7 @@ for($run=0; $run<$gbook_loop; $run++)
   {
     $hidden = explode(',',$cs_gbook[$run]['users_hidden']);
     $allow = $cs_gbook[$run]['users_id'] == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
-    $gbook[$run]['users_nick'] = cs_user($cs_gbook[$run]['users_id'],$cs_gbook[$run]['users_nick'], $cs_gbook[$run]['users_active']);
+    $gbook[$run]['users_nick'] = cs_user($cs_gbook[$run]['users_id'],$cs_gbook[$run]['users_nick'], $cs_gbook[$run]['users_active'], $cs_gbook[$run]['users_delete']);
         $gbook[$run]['town'] = '';
     $gbook[$run]['icon_town'] = '';
     if (!empty($cs_gbook[$run]['users_place'])) {

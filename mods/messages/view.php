@@ -14,7 +14,7 @@ $from .= 'INNER JOIN {pre}_users usr2 ON msg.users_id_to = usr2.users_id';
 $select = 'msg.messages_id AS messages_id, msg.messages_subject AS messages_subject, ';
 $select .= 'msg.messages_time AS messages_time, msg.messages_view AS messages_view, ';
 $select .= 'msg.messages_text AS messages_text, msg.users_id_to AS users_id_to, ';
-$select .= 'msg.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr2.users_nick AS users_nick2';
+$select .= 'msg.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, usr2.users_nick AS users_nick2';
 $where = "msg.messages_id = '" . $message_id . "' AND (msg.users_id_to = '" . $users_id . "' OR msg.users_id = '" . $users_id . "')";
 $cs_messages = cs_sql_select(__FILE__,$from,$select,$where);
 $messages_loop = count($cs_messages);
@@ -44,7 +44,7 @@ if(!empty($cs_messages))
   echo $cs_lang['from'];
   echo cs_html_roco(2,'leftb');
   $cs_messages_user = cs_secure($cs_messages['users_nick']);
-  echo cs_user($cs_messages['users_id'],$cs_messages['users_nick'], $cs_messages['users_active']);
+  echo cs_user($cs_messages['users_id'],$cs_messages['users_nick'], $cs_messages['users_active'], $cs_messages['users_delete']);
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'leftb');

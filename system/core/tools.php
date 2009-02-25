@@ -527,10 +527,15 @@ function cs_url($mod, $action = 'list', $more = 0, $base = 0) {
   }
 }
 
-function cs_user($users_id, $users_nick, $users_active = 1) {
+function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
   settype($users_id, 'integer');
-
-  return !empty($users_active) ? cs_link($users_nick, 'users', 'view', 'id=' . $users_id) : $users_nick;
+  
+  if(!empty($users_active) && empty($users_delete)) 
+    return cs_link($users_nick, 'users', 'view', 'id=' . $users_id);
+  else
+    return $users_nick;
+  
+  //return !empty($users_active) ? cs_link($users_nick, 'users', 'view', 'id=' . $users_id) : $users_nick;
 }
 
 function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {

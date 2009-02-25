@@ -40,7 +40,7 @@ for($run=0; $run<$lanpartys_data_loop; $run++) {
 $data['lang']['notices'] = cs_link($cs_lang['notices'],'languests','notices');
 
 $from = 'languests lgu LEFT JOIN {pre}_users usr ON lgu.users_id = usr.users_id LEFT JOIN {pre}_lanroomd lrd ON lgu.lanroomd_id = lrd.lanroomd_id';
-$select = 'lgu.languests_since AS languests_since, lgu.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, lgu.languests_status AS languests_status, lgu.languests_id AS languests_id, lrd.lanroomd_id AS lanroomd_id, lrd.lanroomd_number AS lanroomd_number';
+$select = 'lgu.languests_since AS languests_since, lgu.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, lgu.languests_status AS languests_status, lgu.languests_id AS languests_id, lrd.lanroomd_id AS lanroomd_id, lrd.lanroomd_number AS lanroomd_number';
 $cs_languests = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $languests_loop = count($cs_languests);
 
@@ -53,7 +53,7 @@ if(empty($languests_loop)) {
 }
 
 for($run=0; $run<$languests_loop; $run++) {
-  $data['languests'][$run]['user'] = cs_user($cs_languests[$run]['users_id'],$cs_languests[$run]['users_nick'], $cs_languests[$run]['users_active']);
+  $data['languests'][$run]['user'] = cs_user($cs_languests[$run]['users_id'],$cs_languests[$run]['users_nick'], $cs_languests[$run]['users_active'], $cs_languests[$run]['users_delete']);
   $data['languests'][$run]['since'] = cs_date('unix',$cs_languests[$run]['languests_since']);
 
   if(empty($cs_languests[$run]['lanroomd_id'])) {

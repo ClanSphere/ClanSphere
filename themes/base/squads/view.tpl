@@ -35,7 +35,7 @@
 	 {loop:members}
 	 <tr>
 	  <td class="leftb"><img src="{page:path}{members:countrypath}" style="height:11px;width:16px" alt="{members:country}" /></td>
-	  <td class="leftb"><a href="{url:users_view:id={members:users_id}}">{members:users_nick_tag}</a></td>
+	  <td class="leftb">{members:users_url}</td>
 	  <td class="leftb">{members:members_task}</td>
 	  <td class="leftb">{members:members_since}</td>
 	  <td class="leftb">{members:page}</td>

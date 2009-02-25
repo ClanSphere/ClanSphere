@@ -29,7 +29,7 @@ $data['sort']['name'] = cs_sort('computers','manage',$start,0,1,$sort);
 $data['sort']['user'] = cs_sort('computers','manage',$start,0,3,$sort);
 $data['sort']['since'] = cs_sort('computers','manage',$start,0,5,$sort);
 
-$select = 'com.computers_name AS computers_name, com.computers_since AS computers_since , com.computers_id AS computers_id, com.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active';
+$select = 'com.computers_name AS computers_name, com.computers_since AS computers_since , com.computers_id AS computers_id, com.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
 $from = 'computers com LEFT JOIN {pre}_users usr ON com.users_id = usr.users_id';
 $data['com'] = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
 $computers_loop = count($data['com']);
@@ -39,7 +39,7 @@ for($run=0; $run<$computers_loop; $run++) {
   $id = $data['com'][$run]['computers_id'];
   $data['com'][$run]['name'] = cs_secure($data['com'][$run]['computers_name']);
   $data['com'][$run]['url_view'] = cs_url('computers','view','id=' . $id);
-  $data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$data['com'][$run]['users_nick'], $data['com'][$run]['users_active']);
+  $data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$data['com'][$run]['users_nick'], $data['com'][$run]['users_active'], $data['com'][$run]['users_delete']);
    $data['com'][$run]['since'] = cs_date('unix',$data['com'][$run]['computers_since'],1);
 
   $data['com'][$run]['url_picture'] = cs_url('computers','picture','id=' . $id);

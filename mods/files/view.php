@@ -16,7 +16,7 @@ $access_id = $account['access_files'];
 $from = 'files fls INNER JOIN {pre}_users usr ON fls.users_id = usr.users_id';
 $from .= ' INNER JOIN {pre}_categories cat ON fls.categories_id = cat.categories_id';
 $select = 'fls.files_name AS files_name, fls.users_id AS users_id, usr.users_nick'; 
-$select .= ' AS users_nick, fls.files_time AS files_time, fls.files_id AS files_id';
+$select .= ' AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, fls.files_time AS files_time, fls.files_id AS files_id';
 $select .= ', fls.files_mirror AS files_mirror ,cat.categories_name AS categories_name';
 $select .= ', cat.categories_id AS categories_id, fls.files_count AS files_count';  
 $select .= ', fls.files_description AS files_description, fls.files_close AS files_close';
@@ -102,7 +102,7 @@ echo cs_html_roco(1,'leftc');
 echo cs_icon('personal');
 echo $cs_lang['autor'];
 echo cs_html_roco(2,'leftb',0,0,'60%');
-echo cs_secure($cs_file['users_nick']);
+echo cs_user($cs_file['users_id'], $cs_file['users_nick'], $cs_file['users_active'], $cs_file['users_delete']);
 echo cs_html_roco(0); 
 
 echo cs_html_roco(1,'leftc'); 

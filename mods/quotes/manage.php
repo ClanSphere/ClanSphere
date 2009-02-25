@@ -34,7 +34,7 @@ $categories_data = cs_sql_select(__FILE__,'categories','*',$quotesmod,'categorie
 $data['head']['dropdown'] = cs_dropdown('where','categories_name',$categories_data,$categories_id,'categories_id');
 
 $from = 'quotes qts LEFT JOIN {pre}_users usr ON qts.users_id = usr.users_id';
-$select = 'qts.quotes_headline AS quotes_headline, qts.users_id AS users_id, usr.users_nick AS users_nick, qts.quotes_time AS quotes_time, qts.quotes_id AS quotes_id';
+$select = 'qts.quotes_headline AS quotes_headline, qts.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, qts.quotes_time AS quotes_time, qts.quotes_id AS quotes_id';
 
 $cs_quotes = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $quotes_loop = count($cs_quotes);
@@ -47,9 +47,8 @@ for($run=0; $run<$quotes_loop; $run++) {
   $cs_quotes[$run]['quotes_headline'] = cs_secure($cs_quotes[$run]['quotes_headline']);
   $cs_quotes[$run]['url_edit'] = cs_url('quotes','edit','id='.$cs_quotes[$run]['quotes_id']);
   $cs_quotes[$run]['url_remove'] = cs_url('quotes','remove','id='.$cs_quotes[$run]['quotes_id']);
-  $cs_quotes[$run]['url_user'] = cs_url('users','view','id='.$cs_quotes[$run]['users_id']);
+  $cs_quotes[$run]['url_user'] = cs_user($cs_quotes[$run]['users_id'],$cs_quotes[$run]['users_nick'],$cs_quotes[$run]['users_active'],$cs_quotes[$run]['users_delete']);
   $cs_quotes[$run]['url_quote'] = cs_url('quotes','view','id=' . $cs_quotes[$run]['quotes_id']);
-  $cs_quotes[$run]['users_nick'] = cs_secure($cs_quotes[$run]['users_nick']);
   $cs_quotes[$run]['quotes_time'] = cs_date('unix',$cs_quotes[$run]['quotes_time'],1);
   
 }

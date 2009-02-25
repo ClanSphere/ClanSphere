@@ -42,7 +42,7 @@ $lan['maxgt'] = empty($cs_lanpartys['lanpartys_maxguests']) ? 0 : $cs_lanpartys[
 $data['lang']['body'] = sprintf($cs_lang['stats'],$lan['signd'],$lan['maxgt'],$lan['payed']);
 
 $from = 'languests lgu INNER JOIN {pre}_users usr ON lgu.users_id = usr.users_id LEFT JOIN {pre}_lanroomd lrd ON lgu.lanroomd_id = lrd.lanroomd_id';
-$select = 'lgu.languests_team AS languests_team, lgu.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, lgu.languests_status AS languests_status, lgu.languests_id AS languests_id, lrd.lanroomd_id AS lanroomd_id, lrd.lanroomd_number AS lanroomd_number';
+$select = 'lgu.languests_team AS languests_team, lgu.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, lgu.languests_status AS languests_status, lgu.languests_id AS languests_id, lrd.lanroomd_id AS lanroomd_id, lrd.lanroomd_number AS lanroomd_number';
 $cs_languests = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $languests_loop = count($cs_languests);
 
@@ -56,7 +56,7 @@ if(empty($languests_loop)) {
 
 for($run=0; $run<$languests_loop; $run++) {
   $cs_languests_user = cs_secure($cs_languests[$run]['users_nick']);
-  $data['lanquests'][$run]['nick'] = cs_user($cs_languests[$run]['users_id'],$cs_languests[$run]['users_nick'], $cs_languests[$run]['users_active']);
+  $data['lanquests'][$run]['nick'] = cs_user($cs_languests[$run]['users_id'],$cs_languests[$run]['users_nick'], $cs_languests[$run]['users_active'], $cs_languests[$run]['users_delete']);
   $data['lanquests'][$run]['team'] = cs_secure($cs_languests[$run]['languests_team']);
   
   if(empty($cs_languests[$run]['lanroomd_id'])) {

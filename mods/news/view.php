@@ -11,7 +11,7 @@ $abcode = explode(",", $cs_option['abcode']);
 $cs_news_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
 $from = 'news nws INNER JOIN {pre}_users usr ON nws.users_id = usr.users_id INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
-$select = 'nws.news_id AS news_id, nws.news_headline AS news_headline, nws.news_time AS news_time, nws.news_text AS news_text, nws.news_close AS news_close, nws.news_public AS news_public, nws.news_pictures as news_pictures, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, nws.categories_id AS categories_id, cat.categories_access AS categories_access, cat.categories_picture AS categories_picture, nws.news_mirror AS news_mirror, nws.news_mirror_name AS news_mirror_name, nws.news_readmore AS news_readmore, nws.news_readmore_active AS news_readmore_active';
+$select = 'nws.news_id AS news_id, nws.news_headline AS news_headline, nws.news_time AS news_time, nws.news_text AS news_text, nws.news_close AS news_close, nws.news_public AS news_public, nws.news_pictures as news_pictures, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, nws.categories_id AS categories_id, cat.categories_access AS categories_access, cat.categories_picture AS categories_picture, nws.news_mirror AS news_mirror, nws.news_mirror_name AS news_mirror_name, nws.news_readmore AS news_readmore, nws.news_readmore_active AS news_readmore_active';
 $cs_news = cs_sql_select(__FILE__,$from,$select,"news_id = '" . $cs_news_id . "'");
 
 $head['head']['mod'] = $cs_lang['mod'];
@@ -37,7 +37,7 @@ if(!empty($pub)) {
     $data['news']['news_text'] = cs_secure($cs_news['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
   }
 
-  $data['news']['users_link'] = cs_user($cs_news['users_id'],$cs_news['users_nick'], $cs_news['users_active']);
+  $data['news']['users_link'] = cs_user($cs_news['users_id'],$cs_news['users_nick'], $cs_news['users_active'], $cs_news['users_delete']);
   $data['news']['comments_link'] = cs_link($cs_lang['comments'],'news','view','id=' . $cs_news['news_id']);
   $data['if']['catimg'] = empty($cs_news['categories_picture']) ? false : true;
   $data['news']['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$cs_news['categories_picture'];

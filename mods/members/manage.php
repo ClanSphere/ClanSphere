@@ -26,7 +26,7 @@ $data['pages']['list'] = cs_pages('members','manage',$members_count,$start,0,$so
 
 $data['lang']['getmsg'] = cs_getmsg();
 
-$select = 'mem.members_admin AS members_admin, mem.users_id AS users_id, mem.squads_id AS squads_id, mem.members_order AS members_order, usr.users_nick AS users_nick, usr.users_active AS users_active, sqd.squads_name AS squads_name, mem.members_id AS members_id';
+$select = 'mem.members_admin AS members_admin, mem.users_id AS users_id, mem.squads_id AS squads_id, mem.members_order AS members_order, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, sqd.squads_name AS squads_name, mem.members_id AS members_id';
 $from = 'members mem LEFT JOIN {pre}_users usr ON mem.users_id = usr.users_id LEFT JOIN {pre}_squads sqd ON mem.squads_id = sqd.squads_id ';
 
 $cs_members = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
@@ -47,7 +47,7 @@ if (empty($members_loop)) {
 for($run=0; $run<$members_loop; $run++) {
 
 
-  $users_nick = cs_user($cs_members[$run]['users_id'],$cs_members[$run]['users_nick'], $cs_members[$run]['users_active']);
+  $users_nick = cs_user($cs_members[$run]['users_id'],$cs_members[$run]['users_nick'], $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);
   $data['members'][$run]['user'] = empty($cs_members[$run]['members_admin']) ? $users_nick : cs_html_big(1) . $users_nick . cs_html_big(0);
 
   $cs_squad_name = cs_secure($cs_members[$run]['squads_name']);

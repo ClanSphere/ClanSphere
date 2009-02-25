@@ -30,7 +30,7 @@ $data['head']['pages'] = cs_pages('news', 'recent', $news_count, $start, $cat_id
 $from = 'news nws INNER JOIN {pre}_users usr ON nws.users_id = usr.users_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
 $select = 'nws.news_id AS news_id, nws.news_headline AS news_headline, nws.news_time AS news_time, nws.news_text AS news_text,';
-$select .= ' nws.news_pictures AS news_pictures, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, nws.categories_id AS ';
+$select .= ' nws.news_pictures AS news_pictures, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, nws.categories_id AS ';
 $select .= 'categories_id, cat.categories_picture AS categories_picture, cat.categories_name AS categories_name, nws.news_mirror AS news_mirror, nws.news_mirror_name AS news_mirror_name, nws.news_readmore AS news_readmore, nws.news_readmore_active AS news_readmore_active';
 $order = 'news_attached DESC, news_time DESC';
 $cs_news = cs_sql_select(__FILE__, $from, $select, $where, $order, $start, $cs_option['max_recent']);
@@ -65,7 +65,7 @@ for($run = 0; $run < $news_loop; $run++) {
   }
 
   $cs_user = cs_secure($cs_news[$run]['users_nick']);
-  $cs_news[$run]['users_link'] = cs_user($cs_news[$run]['users_id'],$cs_news[$run]['users_nick'], $cs_news[$run]['users_active']);
+  $cs_news[$run]['users_link'] = cs_user($cs_news[$run]['users_id'],$cs_news[$run]['users_nick'], $cs_news[$run]['users_active'], $cs_news[$run]['users_delete']);
   $where3 = "comments_mod = 'news' AND comments_fid = " . $cs_news[$run]['news_id'];
   $cs_news[$run]['comments_count'] = cs_sql_count(__FILE__, 'comments', $where3);
   $start = floor($cs_news[$run]['comments_count'] / ($account['users_limit'] + 1)) * $account['users_limit'];

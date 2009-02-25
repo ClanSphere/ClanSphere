@@ -27,7 +27,7 @@
  {loop:quotes}
  <tr>
   <td class="leftc" style="width: 40%;"><a href="{quotes:url_quote}">{quotes:quotes_headline}</a></td>
-  <td class="leftc"><a href="{quotes:url_user}">{quotes:users_nick}</a></td>
+  <td class="leftc">{quotes:url_user}</td>
   <td class="leftc">{quotes:quotes_time}</td>
   <td class="leftc"><a href="{quotes:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
   <td class="leftc"><a href="{quotes:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>

@@ -94,11 +94,11 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
       }
       
       if (empty($thread['threads_last_user'])) {
-        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active', 'users_id = ' . $thread['users_id_2']);
-        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active']);
+        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', 'users_id = ' . $thread['users_id_2']);
+        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active'], $user['users_delete']);
       } else {
-        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active', 'users_id = ' . $thread['threads_last_user']);
-        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active']);
+        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', 'users_id = ' . $thread['threads_last_user']);
+        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active'], $user['users_delete']);
       }
       
       $board['last_userid'] = $thread['users_id'];

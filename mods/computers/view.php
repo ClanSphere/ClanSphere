@@ -12,8 +12,8 @@ $cs_computers = cs_sql_select(__FILE__,'computers','*',"computers_id = '" . $cs_
 
 
 $who = "users_id = '" . $cs_computers['users_id'] . "'";
-$cs_users = cs_sql_select(__FILE__,'users','users_nick, users_active',$who);
-$data['com']['user'] = cs_user($cs_computers['users_id'],$cs_users['users_nick'], $cs_users['users_active']);
+$cs_users = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',$who);
+$data['com']['user'] = cs_user($cs_computers['users_id'],$cs_users['users_nick'], $cs_users['users_active'], $cs_users['users_delete']);
 
 $data['com']['since'] = cs_date('unix',$cs_computers['computers_since'],1);
 $data['com']['name'] = cs_secure($cs_computers['computers_name']);

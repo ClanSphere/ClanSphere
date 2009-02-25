@@ -23,8 +23,8 @@ if ($categories['categories_access'] > $account['access_categories']) {
   $page = empty($cs_get['page']) ? 1 : $cs_get['page'];
   
     $data['head']['articles_headline'] = cs_secure($cs_articles['articles_headline']);
-    $cs_articles_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $cs_articles['users_id'] . "'");
-    $data['head']['users_link'] = cs_user($cs_articles['users_id'],$cs_articles_user['users_nick'],$cs_articles_user['users_active']).' ';
+    $cs_articles_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $cs_articles['users_id'] . "'");
+    $data['head']['users_link'] = cs_user($cs_articles['users_id'],$cs_articles_user['users_nick'],$cs_articles_user['users_active'], $cs_articles_user['users_delete']).' ';
     $data['head']['articles_date'] = cs_date('unix',$cs_articles['articles_time'],1);
     $data['head']['pages'] = $page;
   

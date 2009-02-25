@@ -20,7 +20,7 @@ if(empty($squads_loop)) {
 }
 
 for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
-  $select = 'mem.members_admin AS members_admin, mem.users_id AS users_id, usr.users_nick AS users_nick';
+  $select = 'mem.members_admin AS members_admin, mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
   $from = 'members mem INNER JOIN {pre}_users usr ON mem.users_id = usr.users_id ';
   $where = "mem.squads_id = '" . $cs_squads[$sq_run]['squads_id'] . "'";
   $order = 'mem.members_order ASC, usr.users_nick ASC';
@@ -74,7 +74,7 @@ if(empty($members_loop)) {
   $users_nick = cs_secure($cs_members[$run]['users_nick']);
 
   
-  $data['members'][$sq_run]['squad_members'][$run]['members'] =  cs_link($users_nick,'users','view',$id);    
+  $data['members'][$sq_run]['squad_members'][$run]['members'] =  cs_user($id, $users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);  
   
   if($run == ($members_loop - 1)) {
       $data['members'][$sq_run]['squad_members'][$run]['dot'] =  '';

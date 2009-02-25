@@ -46,7 +46,7 @@ $from = 'messages msg INNER JOIN {pre}_users usr ON msg.users_id = usr.users_id'
 $select = 'msg.messages_id AS messages_id, msg.messages_subject AS messages_subject, msg.messages_time AS messages_time, ';
 $select .= 'msg.messages_view AS messages_view, msg.users_id_to AS users_id_to, msg.users_id AS users_id, usr.users_nick AS users_nick, ';
 $select .= 'msg.messages_show_sender AS messages_show_sender, msg.messages_show_receiver AS messages_show_receviver, ';
-$select .= 'msg.messages_archiv_sender AS messages_archiv_sender, msg.messages_archiv_receiver AS messages_archiv_receiver, usr.users_active AS users_active';
+$select .= 'msg.messages_archiv_sender AS messages_archiv_sender, msg.messages_archiv_receiver AS messages_archiv_receiver, usr.users_active AS users_active, usr.users_delete AS users_delete';
 $cs_messages_inbox = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $messages_inbox_loop = count($cs_messages_inbox);
 

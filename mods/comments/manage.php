@@ -58,8 +58,8 @@ for($run=0; $run<$com_loop; $run++) {
    $id = $data['com'][$run]['comments_id'];
   $data['com'][$run]['fid'] = $data['com'][$run]['comments_fid'];
   if(!empty($data['com'][$run]['users_id'])) {
-    $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $data['com'][$run]['users_id'] . "'");
-    $data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+    $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $data['com'][$run]['users_id'] . "'");
+    $data['com'][$run]['user'] = cs_user($data['com'][$run]['users_id'],$cs_user['users_nick'],$cs_user['users_active'], $cs_user['users_delete']);
   } else {
     $data['com'][$run]['user'] = $data['com'][$run]['comments_guestnick'];
   }

@@ -13,9 +13,9 @@ $cs_replays = cs_sql_select(__FILE__,'replays',$select,"replays_id = '" . $cs_re
 
 
 $who = "users_id = '" . $cs_replays['users_id'] . "'";
-$cs_users = cs_sql_select(__FILE__,'users','users_nick, users_active',$who);
+$cs_users = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',$who);
 $cs_users_nick = cs_secure($cs_users['users_nick']);
-$data['replays']['user'] = cs_user($cs_replays['users_id'],$cs_users['users_nick'], $cs_users['users_active']);
+$data['replays']['user'] = cs_user($cs_replays['users_id'],$cs_users['users_nick'], $cs_users['users_active'], $cs_users['users_delete']);
 
 $data['replays']['since'] = cs_date('unix',$cs_replays['replays_since'],1);
 

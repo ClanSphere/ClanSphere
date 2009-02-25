@@ -84,7 +84,7 @@ echo cs_html_form(0);
 echo cs_html_br(1);
 
 $from = 'lanshop_orders lso INNER JOIN {pre}_lanshop_articles las ON lso.lanshop_articles_id = las.lanshop_articles_id INNER JOIN {pre}_users usr ON lso.users_id = usr.users_id';
-$select = 'lso.lanshop_orders_id AS lanshop_orders_id, lso.lanshop_orders_status AS lanshop_orders_status, lso.lanshop_orders_value AS lanshop_orders_value, las.lanshop_articles_id AS lanshop_articles_id, las.lanshop_articles_name AS lanshop_articles_name, las.lanshop_articles_price AS lanshop_articles_price, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active';
+$select = 'lso.lanshop_orders_id AS lanshop_orders_id, lso.lanshop_orders_status AS lanshop_orders_status, lso.lanshop_orders_value AS lanshop_orders_value, las.lanshop_articles_id AS lanshop_articles_id, las.lanshop_articles_name AS lanshop_articles_name, las.lanshop_articles_price AS lanshop_articles_price, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
 $order = 'users_nick, lanshop_articles_name';
 $cs_lanshop = cs_sql_select(__FILE__,$from,$select,$where,$order,0,0);
 $lanshop_loop = count($cs_lanshop);
@@ -110,7 +110,7 @@ for($run=0; $run<$lanshop_loop; $run++) {
 
   echo cs_html_roco(1,'leftc');
   $users_view = cs_secure($cs_lanshop[$run]['users_nick']);
-  echo cs_user($cs_lanshop[$run]['users_id'],$cs_lanshop[$run]['users_nick'], $cs_lanshop[$run]['users_active']);
+  echo cs_user($cs_lanshop[$run]['users_id'],$cs_lanshop[$run]['users_nick'], $cs_lanshop[$run]['users_active'], $cs_lanshop[$run]['users_delete']);
   echo cs_html_roco(2,'leftc');
   $lanshop_view = cs_secure($cs_lanshop[$run]['lanshop_articles_name']);
   echo cs_link($lanshop_view,'lanshop','view','id=' . $cs_lanshop[$run]['lanshop_articles_id']);

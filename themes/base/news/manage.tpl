@@ -30,7 +30,7 @@
  {loop:news}
  <tr>
   <td class="leftc"><a href="{news:url_news}">{news:news_headline}</a></td>
-  <td class="leftc"><a href="{news:url_user}">{news:users_nick}</a></td>
+  <td class="leftc">{news:url_user}</td>
   <td class="leftc">{news:news_time}</td>
   <td class="leftc">{news:news_public}</td>
   <td class="leftc"><a href="{news:url_pictures}" title="{lang:pictures}">{icon:image}</a></td>

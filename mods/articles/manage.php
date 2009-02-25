@@ -39,8 +39,8 @@ for($run=0; $run<$articles_loop; $run++) {
 
     $id = $cs_articles[$run]['articles_id'];
   $cs_articles[$run]['articles_headline'] = cs_link($cs_articles[$run]['articles_headline'],'articles','view','id=' . $id);
-  $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $cs_articles[$run]['users_id'] . "'");
-  $cs_articles[$run]['users_link'] = cs_user($cs_articles[$run]['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
+  $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $cs_articles[$run]['users_id'] . "'");
+  $cs_articles[$run]['users_link'] = cs_user($cs_articles[$run]['users_id'],$cs_user['users_nick'],$cs_user['users_active'],$cs_user['users_delete']);
   $cs_articles[$run]['articles_date'] = cs_date('unix',$cs_articles[$run]['articles_time'],1);
   $cs_articles[$run]['url_edit'] = cs_url('articles','edit','id=' . $id);
   $cs_articles[$run]['url_remove'] = cs_url('articles','remove','id=' . $id);

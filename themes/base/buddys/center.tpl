@@ -22,7 +22,7 @@
       <tr>
         <td class="leftb"><div style="float: left;">
 		  <img src="symbols/countries/{buddys_on:users_country}.png" width="16" height="11" alt="" />
-        <a href="{url:users_view:id={buddys_on:users_id}}">{buddys_on:users_nick}</a> </div>
+        {buddys_on:users_link} </div>
           <div style="float: right;">
           <a href="{url:buddys_center:notice={buddys_on:buddys_id}}">{icon:documentinfo}</a>
           <a href="{url:messages_create:to={buddys_on:users_nick}}">{icon:mail_send}</a>
@@ -42,7 +42,7 @@
       <tr>
         <td class="leftb"><div style="float: left;">
 		  <img src="symbols/countries/{buddys_off:users_country}.png" width="16" height="11" alt="" />
-        <a href="{url:users_view:id={buddys_off:users_id}}">{buddys_off:users_nick}</a> </div>
+        {buddys_off:users_link} </div>
           <div style="float: right;">
           <a href="{url:buddys_center:notice={buddys_off:buddys_id}}">{icon:documentinfo}</a>
           <a href="{url:messages_create:to={buddys_off:users_nick}}">{icon:mail_send}</a>
@@ -70,7 +70,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:personal} {lang:buddys_notice_nick}</td>
-  <td class="leftb"><a href="{url:users_view:id={buddys:buddys_user}}">{buddys:users_nick}</a></td>
+  <td class="leftb">{buddys:users_link}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:history} {lang:buddys_notice_laston}</td>

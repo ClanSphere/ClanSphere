@@ -54,7 +54,7 @@ $sum= cs_sql_count(__FILE__,'comments',$where_com);
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $from .= 'LEFT JOIN {pre}_users usr ON thr.users_id = usr.users_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'frm.board_access AS board_access, frm.board_read AS board_read, frm.board_name AS board_name, frm.board_id AS board_id, thr.threads_time AS threads_time, thr.threads_text AS threads_text, thr.threads_important AS threads_important, thr.threads_headline AS threads_headline, thr.threads_view AS threads_view, thr.threads_last_time AS threads_last_time, thr.threads_id AS threads_id, thr.threads_edit AS threads_edit, thr.threads_close AS threads_close, cat.categories_name AS categories_name, cat.categories_id AS categories_id, usr.users_id AS users_id, usr.users_country AS users_country, usr.users_nick AS users_nick, usr.users_avatar AS users_avatar, usr.users_place AS users_place, usr.users_hidden AS users_hidden, usr.users_signature AS users_signature, usr.users_laston AS users_laston, usr.users_email AS users_email, usr.users_icq AS users_icq, usr.users_msn AS users_msn, usr.users_url AS users_url, usr.users_skype AS users_skype, usr.users_active AS users_active, usr.users_invisible AS users_invisible, frm.squads_id AS squads_id';
+$select = 'frm.board_access AS board_access, frm.board_read AS board_read, frm.board_name AS board_name, frm.board_id AS board_id, thr.threads_time AS threads_time, thr.threads_text AS threads_text, thr.threads_important AS threads_important, thr.threads_headline AS threads_headline, thr.threads_view AS threads_view, thr.threads_last_time AS threads_last_time, thr.threads_id AS threads_id, thr.threads_edit AS threads_edit, thr.threads_close AS threads_close, cat.categories_name AS categories_name, cat.categories_id AS categories_id, usr.users_id AS users_id, usr.users_country AS users_country, usr.users_nick AS users_nick, usr.users_delete AS users_delete, usr.users_avatar AS users_avatar, usr.users_place AS users_place, usr.users_hidden AS users_hidden, usr.users_signature AS users_signature, usr.users_laston AS users_laston, usr.users_email AS users_email, usr.users_icq AS users_icq, usr.users_msn AS users_msn, usr.users_url AS users_url, usr.users_skype AS users_skype, usr.users_active AS users_active, usr.users_invisible AS users_invisible, frm.squads_id AS squads_id';
 $where = 'thr.threads_id = "' . $id . '"';
 $data['thread'] = cs_sql_select(__FILE__,$from,$select,$where);
 
@@ -120,7 +120,7 @@ if(!empty($boardmods)) {
 // Reports
 if($account['access_board'] >= 4) {
   $from = 'boardreport bdr INNER JOIN {pre}_users usr ON bdr.users_id = usr.users_id';
-  $select = 'bdr.comments_id AS comments_id, bdr.boardreport_id AS boardreport_id, bdr.boardreport_time AS boardreport_time, bdr.boardreport_text AS boardreport_text, bdr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, bdr.boardreport_done AS boardreport_done';
+  $select = 'bdr.comments_id AS comments_id, bdr.boardreport_id AS boardreport_id, bdr.boardreport_time AS boardreport_time, bdr.boardreport_text AS boardreport_text, bdr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_delete AS users_delete, usr.users_active AS users_active, bdr.boardreport_done AS boardreport_done';
   $where = 'bdr.threads_id = "' . $id . '"';
   $cs_report = cs_sql_select(__FILE__,$from,$select,$where,'bdr.comments_id ASC',0,0);
 }
@@ -269,7 +269,7 @@ if($start <! 0 AND $board_sort=='ASC')
   }
   $url = 'symbols/countries/' . $data['thread']['users_country'] . '.png';
   $data['thread_asc']['country'] = $url;
-  $data['thread_asc']['users_link'] = cs_user($userid, $data['thread']['users_nick'], $data['thread']['users_active']);
+  $data['thread_asc']['users_link'] = cs_user($userid, $data['thread']['users_nick'], $data['thread']['users_active'], $data['thread']['users_delete']);
   $key = array_search($userid, $mods);
   if(!empty($key))
   {
@@ -309,7 +309,7 @@ if($start <! 0 AND $board_sort=='ASC')
     }
     $matches[2] .= ' ' . cs_link(cs_icon('cancel',16,$cs_lang['remove']),'board','reportdel',$rid) . cs_html_div(0);
     $matches[2] .= cs_date('unix',$cs_report[0]['boardreport_time'],1) . ' - ';
-    $matches[2] .= cs_user($cs_report[0]['users_id'],$cs_report[0]['users_nick'],$cs_report[0]['users_active']);
+    $matches[2] .= cs_user($cs_report[0]['users_id'],$cs_report[0]['users_nick'],$cs_report[0]['users_active'],$cs_report[0]['users_delete']);
     $matches[2] .= cs_html_br(2) . cs_secure($cs_report[0]['boardreport_text'],1);
     $data['report']['thread_clip'] = cs_abcode_clip($matches);
     $rpno++;
@@ -382,7 +382,7 @@ if($start <! 0 AND $board_sort=='ASC')
 // Antworten
 $from = 'comments com LEFT JOIN {pre}_users usr ON com.users_id = usr.users_id ';
 $where = "comments_mod = 'board' AND comments_fid = \"" . $id . "\"";
-$select = 'users_nick, users_country, com.users_id AS users_id, users_avatar, users_laston, users_invisible, users_place, users_hidden, comments_time, comments_edit, comments_fid, comments_text, users_signature, users_email ,users_msn, users_icq, users_skype,users_active,users_url, comments_id';
+$select = 'users_nick, users_country, com.users_id AS users_id, users_avatar, users_delete, users_laston, users_invisible, users_place, users_hidden, comments_time, comments_edit, comments_fid, comments_text, users_signature, users_email ,users_msn, users_icq, users_skype,users_active,users_url, comments_id';
 $order = 'comments_id '.$board_sort;
 
 $cs_comments = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
@@ -415,6 +415,7 @@ for($run = 0; $run < $comments_loop; $run++)
     $cs_com[$run_2]['users_icq']    = $cs_comments[$run]['users_icq'];
     $cs_com[$run_2]['users_skype']  = $cs_comments[$run]['users_skype'];
     $cs_com[$run_2]['users_active']  = $cs_comments[$run]['users_active'];
+    $cs_com[$run_2]['users_delete']  = $cs_comments[$run]['users_delete'];
     $cs_com[$run_2]['users_url']    = $cs_comments[$run]['users_url'];
     $cs_com[$run_2]['comments_id']    = $cs_comments[$run]['comments_id'];
     $cs_com[$run_2]['comments_edit']    = $cs_comments[$run]['comments_edit'];
@@ -466,7 +467,7 @@ for($run = 0; $run<$com_loop; $run++)
   
   $url = 'symbols/countries/' . $cs_com[$run]['users_country'] . '.png';
   $data['comment'][$run]['country'] = $url;
-  $data['comment'][$run]['users_link'] = cs_user($cs_com[$run]['users_id'], $cs_com[$run]['users_nick'], $cs_com[$run]['users_active']);
+  $data['comment'][$run]['users_link'] = cs_user($cs_com[$run]['users_id'], $cs_com[$run]['users_nick'], $cs_com[$run]['users_active'], $cs_com[$run]['users_delete']);
   if (empty($postscache[$cs_com[$run]['users_id']])) $postscache[$cs_com[$run]['users_id']] = getUserPosts($cs_com[$run]['users_id']);
   $user_posts = $postscache[$cs_com[$run]['users_id']];
   $key = array_search($cs_com[$run]['users_id'], $mods);
@@ -510,7 +511,7 @@ for($run = 0; $run<$com_loop; $run++)
     }
     $matches[2] .= ' ' . cs_link(cs_icon('cancel',16,$cs_lang['remove']),'board','reportdel',$rid) . cs_html_div(0);
     $matches[2] .= cs_date('unix',$cs_report[$rpno]['boardreport_time'],1) . ' - ';
-    $matches[2] .= cs_user($cs_report[$rpno]['users_id'],$cs_report[$rpno]['users_nick'],$cs_report[$rpno]['users_active']);
+    $matches[2] .= cs_user($cs_report[$rpno]['users_id'],$cs_report[$rpno]['users_nick'],$cs_report[$rpno]['users_active'], $cs_report[$rpno]['users_delete']);
     $matches[2] .= cs_html_br(2) . cs_secure($cs_report[$rpno]['boardreport_text'],1);
     $data['comment'][$run]['com_clip'] = cs_abcode_clip($matches);
     $rpno++;
@@ -601,7 +602,7 @@ if($board_sort=='DESC' AND $current==0)
   }
   $user = cs_secure($data['thread']['users_nick']);
   $data['thread_desc']['country'] = 'symbols/countries/' . $data['thread']['users_country'] . '.png';
-  $data['thread_desc']['users_link'] = cs_user($data['thread']['users_id'],$data['thread']['users_nick'],$data['thread']['users_active']);
+  $data['thread_desc']['users_link'] = cs_user($data['thread']['users_id'],$data['thread']['users_nick'],$data['thread']['users_active'],$data['thread']['users_delete']);
   $key = array_search($userid, $mods);
   if(!empty($key))
   {

@@ -52,7 +52,7 @@ for($run=0; $run<$sqd_loop; $run++) {
 if (empty($sqd_loop)) $data['squad'] = array();
 $data['lang']['msg'] = !empty($msg) ? $msg : '';
 
-$select = 'mem.members_admin AS members_admin, mem.members_order AS members_order, mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, mem.members_task, mem.members_id AS members_id';
+$select = 'mem.members_admin AS members_admin, mem.members_order AS members_order, mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_delete AS users_delete, usr.users_active AS users_active, mem.members_task, mem.members_id AS members_id';
 $from = 'members mem INNER JOIN {pre}_users usr ON mem.users_id = usr.users_id';
 $where = "mem.squads_id = '" . $squads_id . "'";
 $cs_members = cs_sql_select(__FILE__,$from,$select,$where,$order,0,0);
@@ -74,7 +74,7 @@ for($run=0; $run<$members_loop; $run++) {
   if(!empty($cs_members[$run]['members_admin'])) {
     $users_nick = cs_html_big(1) . $users_nick . cs_html_big(0);
   }
-  $data['members'][$run]['user'] = cs_user($cs_members[$run]['users_id'],$users_nick, $cs_members[$run]['users_active']);
+  $data['members'][$run]['user'] = cs_user($cs_members[$run]['users_id'],$users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);
   $data['members'][$run]['task'] = cs_secure($cs_members[$run]['members_task']);
   $data['members'][$run]['order'] = $cs_members[$run]['members_order'];
   $data['members'][$run]['edit'] = cs_link($img_edit,'members','change','id=' . $cs_members[$run]['members_id'],0,$cs_lang['edit']);

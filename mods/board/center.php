@@ -6,7 +6,7 @@ $cs_lang = cs_translate('board');
 
 $from  = 'abonements abo INNER JOIN {pre}_threads thr ON abo.threads_id = thr.threads_id ';
 $from .= 'INNER JOIN {pre}_users usr ON thr.users_id = usr.users_id '; 
-$select = 'abo.abonements_id AS abonements_id, thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, thr.threads_last_user AS threads_last_user, thr.threads_id AS threads_id, usr.users_nick AS users_nick';
+$select = 'abo.abonements_id AS abonements_id, thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, thr.threads_last_user AS threads_last_user, thr.threads_id AS threads_id, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
 $order = 'thr.threads_last_time DESC';
 $where = "abo.users_id = '" . $account['users_id'] . "'";
 $cs_abo = cs_sql_select(__FILE__,$from,$select,$where,$order,0,0);
@@ -32,19 +32,18 @@ for($run = 0; $run < $count_abo; $run++) {
   
   $from = 'users';
   $user = $cs_abo[$run]['threads_last_user'];
-  $select = 'users_nick';
+  $select = 'users_nick, users_id, users_active, users_delete';
   $where = "users_id = '" . $user . "'";
-  $cs_users = cs_sql_select(__FILE__,$from,$select,$where);
+  $cs_users = cs_sql_select(__FILE__,$from,$select,$where,0,0,1);
   
   
   $data['abos'][$run]['topics'] = $cs_abo[$run]['threads_headline'];
   $data['abos'][$run]['topics_link'] = cs_url('board','thread','where=' . $cs_abo[$run]['threads_id']);
   $data['abos'][$run]['replies'] = $com_count; 
-  $data['abos'][$run]['created_by'] = $cs_abo[$run]['users_nick'];
+  $data['abos'][$run]['created_by'] = cs_user($cs_abo[$run]['users_id'], $cs_abo[$run]['users_nick'], $cs_abo[$run]['users_active'], $cs_abo[$run]['users_delete']);
   $data['abos'][$run]['date'] = cs_date('unix',$cs_abo[$run]['threads_last_time'],1); 
   $data['abos'][$run]['date_link'] = cs_url('board','thread',$more); 
-  $data['abos'][$run]['lastpost_link'] = cs_url('users','view','id=' . $user);
-  $data['abos'][$run]['lastpost_user'] = $cs_users['users_nick'];
+  $data['abos'][$run]['lastpost_user'] = cs_user($cs_users['users_id'], $cs_users['users_nick'], $cs_users['users_active'], $cs_users['users_delete']);
   $data['abos'][$run]['remove'] = cs_url('board','delabo','id=' . $cs_abo[$run]['abonements_id']);
 }  
 

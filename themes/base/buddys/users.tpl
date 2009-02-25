@@ -8,7 +8,7 @@
       <tr>
         <td class="leftb"><div style="float: left;">
 		  <img src="symbols/countries/{buddys_on:users_country}.png" width="16" height="11" alt="" />
-        <a href="{url:users_view:id={buddys_on:buddys_user}}">{buddys_on:users_nick}</a> </div>
+        {buddys_on:users_link} </div>
           <div style="float: right;"><a href="{url:messages_create:to={buddys_on:users_nick}}">{icon:mail_send}</a></div></td>
       </tr>
       {stop:buddys_on}
@@ -23,7 +23,7 @@
       <tr>
         <td class="leftb"><div style="float: left;">
 		  <img src="symbols/countries/{buddys_off:users_country}.png" width="16" height="11" alt="" />
-        <a href="{url:users_view:id={buddys_off:buddys_user}}">{buddys_off:users_nick}</a> </div>
+        {buddys_off:users_link} </div>
           <div style="float: right;"><a href="{url:messages_create:to={buddys_off:users_nick}}">{icon:mail_send}</a></div></td>
       </tr>
       {stop:buddys_off}

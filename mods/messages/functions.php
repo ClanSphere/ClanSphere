@@ -90,7 +90,7 @@ function cs_box($cs_messages,$run,$archiv = 0) {
   $var .= cs_link($cs_messages_subject,'messages','view','id=' . $cs_messages[$run]['messages_id']);
   $var .= cs_html_roco(3,'leftc');
   $cs_messages_user = cs_secure($cs_messages[$run]['users_nick']);
-  $var .= cs_user($cs_messages[$run]['users_id'],$cs_messages[$run]['users_nick'], $cs_messages[$run]['users_active']);
+  $var .= cs_user($cs_messages[$run]['users_id'],$cs_messages[$run]['users_nick'], $cs_messages[$run]['users_active'], $cs_messages[$run]['users_delete']);
   $var .= cs_html_roco(4,'leftc');
   $var .= cs_date('unix',$cs_messages[$run]['messages_time'],1);
   $var .= cs_html_roco(5,'centerc');

@@ -38,7 +38,7 @@ $data['head']['dropdown'] = cs_dropdown('where','categories_name',$cat_data,$cat
 $data['head']['button'] = cs_html_vote('submit',$cs_lang['show'],'submit');
 
 $from = 'news nws LEFT JOIN {pre}_users usr ON nws.users_id = usr.users_id';
-$select = 'nws.news_headline AS news_headline, nws.users_id AS users_id, usr.users_nick AS users_nick, nws.news_time AS news_time, nws.news_public AS news_public, nws.news_id AS news_id';
+$select = 'nws.news_headline AS news_headline, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, nws.news_time AS news_time, nws.news_public AS news_public, nws.news_id AS news_id';
 
 $cs_news = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $news_loop = count($cs_news);
@@ -54,8 +54,7 @@ for($run=0; $run<$news_loop; $run++) {
   $cs_news[$run]['news_time'] = cs_date('unix',$cs_news[$run]['news_time']);
   $public = empty($cs_news[$run]['news_public']) ? 'no' : 'yes';
   $cs_news[$run]['news_public'] = $cs_lang[$public];
-  $cs_news[$run]['users_nick'] = cs_secure($cs_news[$run]['users_nick']);
-  $cs_news[$run]['url_user'] = cs_url('users','view','id=' . $cs_news[$run]['users_id']);
+  $cs_news[$run]['url_user'] = cs_user($cs_news[$run]['users_id'], $cs_news[$run]['users_nick'], $cs_news[$run]['users_active'], $cs_news[$run]['users_delete']);
   $cs_news[$run]['url_pictures'] = cs_url('news','picture','id=' . $cs_news[$run]['news_id']);
   $cs_news[$run]['url_edit'] = cs_url('news','edit','id='.$cs_news[$run]['news_id']);
   $cs_news[$run]['url_remove'] = cs_url('news','remove','id='.$cs_news[$run]['news_id']);

@@ -36,8 +36,8 @@ if($messages_id > 0) {
 echo cs_html_br(1);
 $from = 'messages msg INNER JOIN {pre}_users usr ON msg.users_id_to = usr.users_id';
 $select = 'msg.messages_id AS messages_id, msg.messages_subject AS messages_subject, msg.messages_time AS messages_time,
-msg.messages_view AS messages_view, msg.users_id_to AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active,
-msg.messages_show_sender AS messages_show_sender, msg.messages_show_receiver AS messages_show_receiver';
+msg.messages_view AS messages_view, msg.users_id_to AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, 
+ msg.messages_show_sender AS messages_show_sender, msg.messages_show_receiver AS messages_show_receiver';
 $cs_messages = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $messages_loop = count($cs_messages);
 

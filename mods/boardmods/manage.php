@@ -28,13 +28,13 @@ $data['head']['getmsg'] = cs_getmsg();
 $data['sort']['users_nick'] = cs_sort('boardmods','manage',$start,$categories_id,1,$sort);
 
 $from = 'boardmods brd INNER JOIN {pre}_users usr ON brd.users_id = usr.users_id'; 
-$data['bm'] = cs_sql_select(__FILE__,$from,'boardmods_id, usr.users_id AS users_id, users_nick, users_active, boardmods_modpanel, boardmods_edit, boardmods_del',$where,$order,$start,$account['users_limit']);
+$data['bm'] = cs_sql_select(__FILE__,$from,'boardmods_id, usr.users_id AS users_id, users_nick, users_active, users_delete, boardmods_modpanel, boardmods_edit, boardmods_del',$where,$order,$start,$account['users_limit']);
 $boardmods_loop = count($data['bm']);
 
 
 for($run=0; $run<$boardmods_loop; $run++) {
 
-  $data['bm'][$run]['boardmods_user'] = cs_user($data['bm'][$run]['users_id'],$data['bm'][$run]['users_nick'],$data['bm'][$run]['users_active']);
+  $data['bm'][$run]['boardmods_user'] = cs_user($data['bm'][$run]['users_id'],$data['bm'][$run]['users_nick'],$data['bm'][$run]['users_active'], $data['bm'][$run]['users_delete']);
   $data['bm'][$run]['boardmods_modpanel'] = $cs_lang[$data['bm'][$run]['boardmods_modpanel']];
   $data['bm'][$run]['boardmods_edit'] = $cs_lang[$data['bm'][$run]['boardmods_edit']];
   $data['bm'][$run]['boardmods_del'] = $cs_lang[$data['bm'][$run]['boardmods_del']];

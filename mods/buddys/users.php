@@ -16,7 +16,7 @@ $buddys_count = cs_sql_count(__FILE__,'buddys',"users_id = '" . $users_id . "'")
   
   $from = 'buddys bds INNER JOIN {pre}_users usr ON bds.buddys_user = usr.users_id';
   $select = 'bds.buddys_id AS buddys_id, bds.buddys_time AS buddys_time, bds.buddys_user AS ';
-  $select .= 'buddys_user, bds.users_id AS users_id, usr.users_nick AS users_nick, usr.users_country AS users_country, usr.users_laston AS ';
+  $select .= 'buddys_user, bds.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_country AS users_country, usr.users_laston AS ';
   $select .= 'users_laston';
   
   $online = "bds.users_id = '" . $users_id . "' AND users_laston > '" . $on_now . "'";
@@ -28,7 +28,7 @@ $buddys_count = cs_sql_count(__FILE__,'buddys',"users_id = '" . $users_id . "'")
   $buddy_data = array();
   for($run=0; $run < $loop_off; $run++) {  
     if(!empty($buddys_off[$run]['users_id'])) {
-    $buddy_data['buddys_off'][$run]['buddys_user'] = $buddys_off[$run]['buddys_user'];
+    $buddy_data['buddys_off'][$run]['users_link'] = cs_user($buddys_off[$run]['buddys_user'], $buddys_off[$run]['users_nick'], $buddys_off[$run]['users_active'], $buddys_off[$run]['users_delete']);  
     $buddy_data['buddys_off'][$run]['users_nick'] = $buddys_off[$run]['users_nick'];
     $buddy_data['buddys_off'][$run]['users_country'] = cs_html_img('symbols/countries/' . $buddys_off[$run]['users_country'] . '.png');
     }
@@ -39,7 +39,7 @@ $buddys_count = cs_sql_count(__FILE__,'buddys',"users_id = '" . $users_id . "'")
   
   for($run2=0; $run2 < $loop_on; $run2++) {  
     if(!empty($buddys_on[$run]['users_id'])) {
-    $buddy_data['buddys_on'][$run2]['users_id'] = $buddys_on[$run2]['users_id'];
+    $buddy_data['buddys_on'][$run]['users_link'] = cs_user($buddys_on[$run]['buddys_user'], $buddys_on[$run]['users_nick'], $buddys_on[$run]['users_active'], $buddys_on[$run]['users_delete']);    
     $buddy_data['buddys_on'][$run2]['users_nick'] = $buddys_on[$run2]['users_nick'];
     $buddy_data['buddys_on'][$run2]['users_country'] = cs_html_img('symbols/countries/' . $buddys_on[$run2]['users_country'] . '.png');
     }

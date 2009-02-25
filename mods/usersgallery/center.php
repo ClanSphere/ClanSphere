@@ -45,7 +45,7 @@ if($page == 'pic' OR $page == '0') {
   $select = 'ugy.usersgallery_id AS usersgallery_id, ugy.usersgallery_status AS usersgallery_status, ';
   $select .= 'ugy.usersgallery_name AS usersgallery_name, ugy.usersgallery_titel AS usersgallery_titel, ';
   $select .= 'ugy.users_id AS users_id, ugy.usersgallery_time AS usersgallery_time, ';
-  $select .= 'ugy.folders_id AS folders_id, fol.folders_name AS folders_name, usr.users_active AS users_active';
+  $select .= 'ugy.folders_id AS folders_id, fol.folders_name AS folders_name, usr.users_active AS users_active, usr.users_delete AS users_delete';
   $cs_usersgallery = cs_sql_select(__FILE__,$from,$select,$where,'ugy.usersgallery_id DESC',$start,$account['users_limit']);
   $loop = count($cs_usersgallery);
   $cs_usersgallery = cs_gallery_move($cs_usersgallery,$options['list_sort']);

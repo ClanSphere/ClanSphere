@@ -24,7 +24,7 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
 
   $where = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = '" . $com_fid . "'";
   $from = 'comments com LEFT JOIN {pre}_users usr ON com.users_id = usr.users_id ';
-  $select = 'com.comments_id AS comments_id, com.comments_ip AS comments_ip, com.comments_guestnick AS comments_guestnick, com.comments_time AS comments_time, com.comments_text AS comments_text, com.comments_edit AS comments_edit, com.users_id AS users_id, usr.users_nick as users_nick, usr.users_laston as users_laston, usr.users_place AS users_place, usr.users_country AS users_country, usr.users_avatar AS users_avatar, usr.users_hidden AS users_hidden, usr.users_active AS users_active, usr.users_invisible AS users_invisible';
+  $select = 'com.comments_id AS comments_id, com.comments_ip AS comments_ip, com.comments_guestnick AS comments_guestnick, com.comments_time AS comments_time, com.comments_text AS comments_text, com.comments_edit AS comments_edit, com.users_id AS users_id, usr.users_nick as users_nick, usr.users_laston as users_laston, usr.users_place AS users_place, usr.users_country AS users_country, usr.users_avatar AS users_avatar, usr.users_hidden AS users_hidden, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_invisible AS users_invisible';
   $order = $asc == true ? 'comments_id ASC' : 'comments_id DESC';
   $limit = !empty($limit) ? $limit : $account['users_limit'];
   $cs_com = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$limit);
@@ -44,7 +44,7 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
       $com[$run]['if']['user'] = TRUE;
       $src = 'symbols/countries/' . $cs_com[$run]['users_country'] . '.png';
       $com[$run]['flag'] = cs_html_img($src,11,16);
-      $com[$run]['user'] = cs_user($cs_com[$run]['users_id'], $cs_com[$run]['users_nick'], $cs_com[$run]['users_active']);
+      $com[$run]['user'] = cs_user($cs_com[$run]['users_id'], $cs_com[$run]['users_nick'], $cs_com[$run]['users_active'], $cs_com[$run]['users_delete']);
       $com[$run]['status'] = cs_userstatus($cs_com[$run]['users_laston'],$cs_com[$run]['users_invisible']);
       $com[$run]['laston'] = !empty($cs_com[$run]['users_invisible']) ? '--' : cs_date('unix',$cs_com[$run]['users_laston']);
       
@@ -276,13 +276,13 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
       $data['if']['guest_prev'] = FALSE;
       $data['if']['user_prev'] = TRUE;
     
-      $select = 'users_nick, users_laston, users_place, users_country, users_active, users_invisible';
+      $select = 'users_nick, users_laston, users_place, users_country, users_active, users_invisible, users_delete';
       $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . $userid . "'");
     
       $user = cs_secure($cs_user['users_nick']);
       $url = 'symbols/countries/' . $cs_user['users_country'] . '.png';
       $data['prev']['flag'] = cs_html_img($url,11,16);
-      $data['prev']['user'] = cs_user($userid,$cs_user['users_nick'], $cs_user['users_active']);
+      $data['prev']['user'] = cs_user($userid,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
 
       $data['prev']['status'] = cs_userstatus($cs_user['users_laston'],$cs_user['users_invisible']);
       $data['prev']['laston'] = empty($cs_user['users_invisible']) ? '--' : cs_date('unix',$cs_user['users_laston']);
@@ -412,7 +412,7 @@ function cs_comments_edit($mod,$action,$com_id,$mod_name,$more = 'id') {
 
     $data['if']['preview'] = true;
     $userid = $account['users_id'];
-    $select = 'users_nick, users_laston, users_place, users_country, users_active, users_invisible';
+    $select = 'users_nick, users_laston, users_place, users_country, users_active, users_invisible, users_delete';
     $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . $userid . "'");
     
     if(empty($cs_comments['users_id'])) {
@@ -426,7 +426,7 @@ function cs_comments_edit($mod,$action,$com_id,$mod_name,$more = 'id') {
       $user = cs_secure($cs_user['users_nick']);
       $url = 'symbols/countries/' . $cs_user['users_country'] . '.png';
       $data['prev']['flag'] = cs_html_img($url,11,16);
-      $data['prev']['user'] = cs_user($userid,$cs_user['users_nick'], $cs_user['users_active']);
+      $data['prev']['user'] = cs_user($userid,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
 
       $data['prev']['status'] = cs_userstatus($cs_user['users_laston'],$cs_user['users_invisible']);
       $data['prev']['laston'] = empty($cs_user['users_invisible']) ? '--' : cs_date('unix',$cs_user['users_laston']);
