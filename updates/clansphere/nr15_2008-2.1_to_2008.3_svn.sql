@@ -3,6 +3,7 @@ UPDATE {pre}_options SET options_value = '2008-09-20' WHERE options_mod = 'clans
 UPDATE {pre}_options SET options_value = '35' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('articles','max_navlist','4');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'list_subforums', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','ajax_navlists','');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','cellspacing','1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');

@@ -23,6 +23,7 @@ if(isset($_POST['submit'])) {
   $save['file_types'] = $_POST['file_types'];
   $save['sort'] = $_POST['sort'];
   $save['doubleposts'] = empty($_POST['doublep_allowed']) ? -1 : (int) (86400 * str_replace(',','.',$_POST['doubleposts']));
+  $save['list_subforums'] = empty($_POST['list_subforums']) ? 0 : 1;
   
   require 'mods/clansphere/func_options.php';
   
@@ -77,6 +78,7 @@ if(!empty($board_form)) {
   $data['options']['doubleposts'] = $doubleposts;
   $input = cs_html_input('doubleposts',$doubleposts,'text',5,5);
   $data['options']['input'] = sprintf($cs_lang['days_after'],$input);
+  $data['options']['list_subforums'] = empty($cs_board['list_subforums']) ? '' : ' checked="checked"';
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','options');

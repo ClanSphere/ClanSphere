@@ -211,6 +211,7 @@ $cs_lang['double_posts'] = 'Doppelposts erlaubt';
 $cs_lang['days_after'] = 'Nach %s Tagen';
 $cs_lang['sort_asc'] = 'Aufsteigend';
 $cs_lang['sort_desc'] = 'Absteigend';
+$cs_lang['list_subforums'] = 'Unterforen in der &Uuml;bersicht anzeigen';
 
 //remove.php
 $cs_lang['change_threads'] = 'Themen und Beitr&auml;ge verschieben';

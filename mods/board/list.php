@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('board');
+$options = cs_sql_option(__FILE__, 'board');
 
 include_once 'mods/board/repair.php';
 require('mods/categories/functions.php'); 
@@ -42,80 +43,86 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
      $data['categories'][$run_1]['iconwidth'] += 20; 
   } 
   
-  $count_boards = count($data['categories'][$run_1]['board']);
-  for ($run_2 = 0; $run_2 < $count_boards; $run_2++) {
-    $board = $data['categories'][$run_1]['board'][$run_2];
-    $board['listcat_url'] = cs_url('board', 'listcat', 'id=' . $board['board_id']);
-    
-    $tables = 'threads thr LEFT JOIN {pre}_users usr ON thr.threads_last_user = usr.users_id LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND red.users_id = ' . $account['users_id'];
-    $cells = 'thr.threads_id AS threads_id, thr.threads_last_user AS threads_last_user, thr.threads_time AS threads_time, thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, thr.users_id AS users_id_2, usr.users_id AS users_id, usr.users_nick AS users_nick, red.read_since AS read_since';
-    $where = "thr.board_id = " . $board['board_id'];
-    $order = 'thr.threads_last_time DESC';
-    $thread = cs_sql_select(__FILE__, $tables, $cells, $where, $order);
-    
-    $check_pw = 1;
-    if (!empty($board['board_pwd'])) {
-      $pw_where = "users_id = " . $account['users_id'] . " AND board_id = " . $board['board_id'];
-      $check_pw = cs_sql_count(__FILE__, 'boardpws', $pw_where);
-    }
-    
-    if (empty($check_pw)) {
-      $icon = 'password';
-    } else {
-      $icon = 'board_read_';
-    }
-    
-    if (!empty($account['users_id']) and !empty($check_pw)) {
-      $tables = "threads thr LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND ";
-      $tables .= "red.users_id = " . $account['users_id'];
-      $condition = "thr.board_id = " . $board['board_id'] . " AND ";
-      $condition .= "threads_last_time > '" . $cs_readtime . "' AND ";
-      $condition .= "(red.threads_id IS NULL OR thr.threads_last_time > red.read_since) AND ";
-      $condition .= "thr.threads_ghost = 0";
-      $unread = cs_sql_select(__FILE__, $tables, 'thr.threads_id', $condition);
-      if (isset($unread['threads_id'])) {
-        $icon = 'board_unread_';
-      }
-    }
-    
-    $board['icon'] = cs_html_img('symbols/board/' . $icon . '.png');
-    $board['board_text'] = cs_secure($board['board_text'], 1);
-    
-    if (!empty($thread['threads_id']) and !empty($check_pw)) {
-      $board['board_topics'] = cs_board_threads($board['board_id']);
-      $board['board_comments'] = cs_board_comments($board['board_id']);
-      $board['last_name'] = cs_secure($thread['threads_headline']);
-      $board['last_id'] = $thread['threads_id'];
-      
-      if (empty($thread['threads_last_time'])) {
-        $board['last_time'] = cs_date('unix', $thread['threads_time'], 1);
-      } else {
-        $board['last_time'] = cs_date('unix', $thread['threads_last_time'], 1);
-      }
-      
-      if (empty($thread['threads_last_user'])) {
-        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', 'users_id = ' . $thread['users_id_2']);
-        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active'], $user['users_delete']);
-      } else {
-        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', 'users_id = ' . $thread['threads_last_user']);
-        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active'], $user['users_delete']);
-      }
-      
-      $board['last_userid'] = $thread['users_id'];
-      $board['of'] = $cs_lang['of'];
-    } else {
-      $board['board_topics'] = '-';
-      $board['board_comments'] = '-';
-      $board['last_name'] = '';
-      $board['last_id'] = '';
-      $board['last_time'] = '';
-      $board['last_usernick'] = '';
-      $board['last_userid'] = '';
-      $board['of'] = '';
-    }
-    $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['last_id']);
-    $board['user_url'] = cs_url('users', 'view', 'id=' . $board['last_userid']);
-    $data['categories'][$run_1]['board'][$run_2] = $board;
+  if ($data['categories'][$run_1]['layer'] == 0 || !empty($options['list_subforums'])) {
+  	
+	  $count_boards = count($data['categories'][$run_1]['board']);
+	  
+	  for ($run_2 = 0; $run_2 < $count_boards; $run_2++) {
+	    $board = $data['categories'][$run_1]['board'][$run_2];
+	    $board['listcat_url'] = cs_url('board', 'listcat', 'id=' . $board['board_id']);
+	    
+	    $tables = 'threads thr LEFT JOIN {pre}_users usr ON thr.threads_last_user = usr.users_id LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND red.users_id = ' . $account['users_id'];
+	    $cells = 'thr.threads_id AS threads_id, thr.threads_last_user AS threads_last_user, thr.threads_time AS threads_time, thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, thr.users_id AS users_id_2, usr.users_id AS users_id, usr.users_nick AS users_nick, red.read_since AS read_since';
+	    $where = "thr.board_id = " . $board['board_id'];
+	    $order = 'thr.threads_last_time DESC';
+	    $thread = cs_sql_select(__FILE__, $tables, $cells, $where, $order);
+	    
+	    $check_pw = 1;
+	    if (!empty($board['board_pwd'])) {
+	      $pw_where = "users_id = " . $account['users_id'] . " AND board_id = " . $board['board_id'];
+	      $check_pw = cs_sql_count(__FILE__, 'boardpws', $pw_where);
+	    }
+	    
+	    if (empty($check_pw)) {
+	      $icon = 'password';
+	    } else {
+	      $icon = 'board_read_';
+	    }
+	    
+	    if (!empty($account['users_id']) and !empty($check_pw)) {
+	      $tables = "threads thr LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND ";
+	      $tables .= "red.users_id = " . $account['users_id'];
+	      $condition = "thr.board_id = " . $board['board_id'] . " AND ";
+	      $condition .= "threads_last_time > '" . $cs_readtime . "' AND ";
+	      $condition .= "(red.threads_id IS NULL OR thr.threads_last_time > red.read_since) AND ";
+	      $condition .= "thr.threads_ghost = 0";
+	      $unread = cs_sql_select(__FILE__, $tables, 'thr.threads_id', $condition);
+	      if (isset($unread['threads_id'])) {
+	        $icon = 'board_unread_';
+	      }
+	    }
+	    
+	    $board['icon'] = cs_html_img('symbols/board/' . $icon . '.png');
+	    $board['board_text'] = cs_secure($board['board_text'], 1);
+	    
+	    if (!empty($thread['threads_id']) and !empty($check_pw)) {
+	      $board['board_topics'] = cs_board_threads($board['board_id']);
+	      $board['board_comments'] = cs_board_comments($board['board_id']);
+	      $board['last_name'] = cs_secure($thread['threads_headline']);
+	      $board['last_id'] = $thread['threads_id'];
+	      
+	      if (empty($thread['threads_last_time'])) {
+	        $board['last_time'] = cs_date('unix', $thread['threads_time'], 1);
+	      } else {
+	        $board['last_time'] = cs_date('unix', $thread['threads_last_time'], 1);
+	      }
+	      
+	      if (empty($thread['threads_last_user'])) {
+	        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', 'users_id = ' . $thread['users_id_2']);
+	        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active'], $user['users_delete']);
+	      } else {
+	        $user = cs_sql_select(__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', 'users_id = ' . $thread['threads_last_user']);
+	        $board['last_usernick'] = cs_user($user['users_id'], $user['users_nick'], $user['users_active'], $user['users_delete']);
+	      }
+	      
+	      $board['last_userid'] = $thread['users_id'];
+	      $board['of'] = $cs_lang['of'];
+	    } else {
+	      $board['board_topics'] = '-';
+	      $board['board_comments'] = '-';
+	      $board['last_name'] = '';
+	      $board['last_id'] = '';
+	      $board['last_time'] = '';
+	      $board['last_usernick'] = '';
+	      $board['last_userid'] = '';
+	      $board['of'] = '';
+	    }
+	    $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['last_id']);
+	    $board['user_url'] = cs_url('users', 'view', 'id=' . $board['last_userid']);
+	    $data['categories'][$run_1]['board'][$run_2] = $board;
+	  }
+  } else {
+    $data['categories'][$run_1]['board'] = array();
   }
 }
 
