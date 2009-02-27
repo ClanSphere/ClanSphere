@@ -212,6 +212,7 @@ $cs_lang['days_after'] = 'Nach %s Tagen';
 $cs_lang['sort_asc'] = 'Aufsteigend';
 $cs_lang['sort_desc'] = 'Absteigend';
 $cs_lang['list_subforums'] = 'Unterforen in der &Uuml;bersicht anzeigen';
+$cs_lang['subforums'] = 'Unterforen';
 
 //remove.php
 $cs_lang['change_threads'] = 'Themen und Beitr&auml;ge verschieben';

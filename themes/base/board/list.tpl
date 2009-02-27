@@ -29,7 +29,8 @@
  {loop:categories}
  <tr>
   <td class="leftc" colspan="5">
-    {categories:blank}<a href="{categories:list_url}">{categories:categories_name}</a>
+    {categories:blank}<a href="{categories:list_url}">{categories:categories_name}</a>{if:small_subforums}<br />
+    {categories:blank}{lang:subforums}: {loop:subboard}<a href="{url:board_listcat:id={subboard:board_id}}">{subboard:board_name}</a>{subboard:,}{stop:subboard}{stop:small_subforums}
   </td>
  </tr>
    {loop:board}
