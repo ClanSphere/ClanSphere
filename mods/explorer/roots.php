@@ -7,12 +7,13 @@ $data = array();
 
 $max_data = $account['users_limit'];
 
-empty($_GET['start']) ? $start = 0 : $start = $_GET['start'];
-empty($_GET['dir']) ? $var = '.' : $var = $_GET['dir'];
-if(!empty($_GET['where'])) { $var = $_GET['where']; }
+$start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
+$var = empty($_GET['dir']) ? '.' : $_GET['dir'];
+if(!empty($_GET['where'])) $var = $_GET['where'];
 $var = str_replace('..','',$var);
+if (substr($var,-1) != '/') $var .= '/';
+
 $count = 0;
-empty($_GET['where']) ? $var = $var : $var = $var . '/';
 
 if (@chdir($cs_main['def_path'].'/'.$var)) {
 
@@ -51,7 +52,6 @@ $data['icon']['download'] = cs_icon('download');
 $data['link']['upload_file'] = cs_link($cs_lang['upload_file'],'explorer','upload',$more);
 $data['pages']['show'] = cs_pages('explorer','roots',$count,$start,$var2,'',$max_data);
 
-$data['icon']['fileopen'] = cs_icon('fileopen');
 
 $data['path']['show'] = cs_link($cs_lang['home'],'explorer','roots') . '/';
 
