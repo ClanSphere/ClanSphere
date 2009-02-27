@@ -71,7 +71,7 @@ $cs_lang['design'] = 'Design';
 
 // Upload
 $cs_lang['upload2'] = 'Upload';
-$cs_lang['max_upload'] = 'Maximum Upload is ';
+$cs_lang['max_upload'] = 'Maximum Upload Filsize is %s.';
 $cs_lang['file'] = 'File';
 $cs_lang['infobox'] = 'Information box';
 $cs_lang['possible'] = "Optional indication. \nIf no indication original filename will be used. \nNo File extension is required.";

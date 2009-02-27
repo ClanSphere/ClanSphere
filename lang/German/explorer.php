@@ -71,7 +71,7 @@ $cs_lang['design'] = 'Design';
 
 // Upload
 $cs_lang['upload2'] = 'Hochladen';
-$cs_lang['max_upload'] = 'Der maximale Upload betr&auml;gt ';
+$cs_lang['max_upload'] = 'Der maximale Upload betr&auml;gt %s.';
 $cs_lang['file'] = 'Datei';
 $cs_lang['infobox'] = 'Infobox';
 $cs_lang['possible'] = "Diese Angabe ist optional.\nBei keiner Angabe wird der orginale Dateiname verwendet.\nDer Name ist ohne Dateiendung anzugeben.";

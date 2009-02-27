@@ -1,0 +1,28 @@
+<table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+  <tr>
+    <td class="headb">{lang:explorer} - {lang:create_dir}</td>
+  </tr>
+  <tr>
+    <td class="leftc">{lang:folder_create}</td>
+  </tr>
+</table>
+<br />
+
+<form method="post" name="explorer_create_dir" action="{url:explorer_create_dir}">
+<table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+  <tr>
+    <td class="leftc">{icon:folder_yellow} {lang:directory}</td>
+    <td class="leftb"><input type="text" name="data_folder" value="{var:dir}" maxlength="60" size="40" class="form" /></td>
+  </tr>
+  <tr>
+    <td class="leftc">{icon:kate} {lang:dir_name} *</td>
+    <td class="leftb"><input type="text" name="folder_name" value="" maxlength="50" size="30" class="form" /></td>
+  </tr>
+  <tr>
+    <td class="leftc">{icon:ksysguard} {lang:options}</td>
+    <td class="leftb">
+      <input type="submit" name="submit" value="{lang:create}" class="form" />
+      <input type="reset" name="reset" value="{lang:reset}" class="form" /></td>
+  </tr>
+</table>
+</form>

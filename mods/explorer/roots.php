@@ -11,7 +11,7 @@ $start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 $var = empty($_GET['dir']) ? '.' : $_GET['dir'];
 if(!empty($_GET['where'])) $var = $_GET['where'];
 $var = str_replace('..','',$var);
-if (substr($var,-1) != '/') $var .= '/';
+if (substr($var,-1) != '/' && $var != '.') $var .= '/';
 
 $count = 0;
 
@@ -44,14 +44,10 @@ $more = $var == '.' ? '' : 'dir='.$var;
 $var2 = $var == '.' ? '0' : $var;
 
 $data['lang']['getmsg'] = cs_getmsg();
-$data['icon']['editpaste'] = cs_icon('editpaste');
 $data['link']['new_file'] = cs_link($cs_lang['new_file'],'explorer','create',$more);
-$data['icon']['folder_yellow'] = cs_icon('folder_yellow');
 $data['link']['new_dir'] = cs_link($cs_lang['new_dir'],'explorer','create_dir',$more);
-$data['icon']['download'] = cs_icon('download');
 $data['link']['upload_file'] = cs_link($cs_lang['upload_file'],'explorer','upload',$more);
 $data['pages']['show'] = cs_pages('explorer','roots',$count,$start,$var2,'',$max_data);
-
 
 $data['path']['show'] = cs_link($cs_lang['home'],'explorer','roots') . '/';
 
