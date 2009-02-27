@@ -7,7 +7,7 @@ include_once 'mods/explorer/abcode.php';
 
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['create'];
+echo $cs_lang['explorer'] . ' - ' . $cs_lang['create'];
 echo cs_html_roco(0);
 echo cs_html_roco(1,'leftc');
 

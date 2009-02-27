@@ -2,7 +2,7 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Explorer';
+$cs_lang['explorer']  = 'Explorer';
 $cs_lang['modinfo']  = 'Verwaltung der Dateien, die sich auf dem Webspace befinden';
 
 

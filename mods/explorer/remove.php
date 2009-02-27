@@ -8,7 +8,7 @@ include_once 'mods/explorer/functions.php';
 
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['remove'];
+echo $cs_lang['explorer'] . ' - ' . $cs_lang['remove'];
 echo cs_html_roco(0);
 echo cs_html_roco(1,'leftc');
 

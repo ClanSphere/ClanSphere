@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('explorer');
+$data = array();
 
 $max_data = $account['users_limit'];
 
@@ -42,8 +43,6 @@ $more = $var == '.' ? '' : 'dir='.$var;
 $var2 = $var == '.' ? '0' : $var;
 
 $data['lang']['getmsg'] = cs_getmsg();
-$data['lang']['explorer'] = $cs_lang['mod'];
-$data['lang']['manage'] = $cs_lang['manage'];
 $data['icon']['editpaste'] = cs_icon('editpaste');
 $data['link']['new_file'] = cs_link($cs_lang['new_file'],'explorer','create',$more);
 $data['icon']['folder_yellow'] = cs_icon('folder_yellow');
@@ -51,11 +50,6 @@ $data['link']['new_dir'] = cs_link($cs_lang['new_dir'],'explorer','create_dir',$
 $data['icon']['download'] = cs_icon('download');
 $data['link']['upload_file'] = cs_link($cs_lang['upload_file'],'explorer','upload',$more);
 $data['pages']['show'] = cs_pages('explorer','roots',$count,$start,$var2,'',$max_data);
-
-$data['lang']['type'] = $cs_lang['type'];
-$data['lang']['name'] = $cs_lang['name'];
-$data['lang']['chmod'] = $cs_lang['chmod'];
-$data['lang']['options'] = $cs_lang['options'];
 
 $data['icon']['fileopen'] = cs_icon('fileopen');
 

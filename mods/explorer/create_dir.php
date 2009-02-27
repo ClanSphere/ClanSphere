@@ -6,7 +6,7 @@ $cs_lang = cs_translate('explorer');
 
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['create_dir'];
+echo $cs_lang['explorer'] . ' - ' . $cs_lang['create_dir'];
 echo cs_html_roco(0);
 echo cs_html_roco(1,'leftc');
 
