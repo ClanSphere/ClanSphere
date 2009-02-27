@@ -95,11 +95,20 @@ if(isset($_POST['agree'])) {
 }
 
 if(isset($_POST['cancel'])) {
+  
+  $options_board = cs_sql_option(__FILE__, 'board');
   $where = "comments_fid = \"" . $com_fid . "\" AND comments_mod = 'board' AND comments_id <= \"" . $comments_id . "\"";
-  $before = cs_sql_count(__FILE__,'comments',$where);
-  $start = $before - $before % $account['users_limit'];
-
-  $more = 'where=' . $com_fid . '&amp;start=' . $start . '#com' . $before;
+  $comnr = cs_sql_count(__FILE__,'comments',$where);
+  
+  if ($options_board['sort'] == 'ASC') {
+  	$start = $comnr - $comnr % $account['users_limit'];
+  } else {
+    $where = "comments_fid = \"" . $com_fid . "\" AND comments_mod = 'board' AND comments_id > \"" . $comments_id . "\"";
+    $after = cs_sql_count(__FILE__,'comments',$where);
+    $start = $after - $after % $account['users_limit'];
+  }
+  
+  $more = 'where=' . $com_fid . '&amp;start=' . $start . '#com' . $comnr;
   cs_redirect($cs_lang['del_false'],'board','thread',$more);
 }
 
