@@ -428,21 +428,14 @@ if(!empty($cs_com))
   $com_loop = count($cs_com);
   
   if($board_sort=='DESC') {
-    $current = $com_loop;
-    if(!empty($_GET['start'])) {
-      $current = $current - $_GET['start']; 
+    $current = cs_sql_count(__FILE__, 'comments', 'comments_mod = \'board\' AND comments_fid = "' . $id . '"') + 1;
+    if (!empty($start)) {
+      $current -= $start;
     }
   } else
     $current = $start;
   $limit = $start + $account['users_limit'];
-  if($com_loop <= $limit)
-  {
-    $com_loop = $com_loop;
-  }
-  else
-  {
-    $com_loop = $limit;
-  }
+  if ($com_loop > $limit) $com_loop = $limit;
 }
 else
 {
@@ -463,7 +456,9 @@ for($run = 0; $run<$com_loop; $run++)
   $data['comment'][$run]['checkedit'] = '';
   
   if($board_sort=='ASC')
-    $current++;  
+    $current++;
+  else
+    $current--;
   
   $url = 'symbols/countries/' . $cs_com[$run]['users_country'] . '.png';
   $data['comment'][$run]['country'] = $url;
@@ -582,8 +577,7 @@ for($run = 0; $run<$com_loop; $run++)
     $data['comment'][$run]['remove'] = cs_link($img_del,$mod,'com_remove','id=' . $cs_com[$run]['comments_id'],0,$cs_lang['remove']);
   }
   $data['comment'][$run]['anch'] = ' | ' . cs_html_link('#threadanch',cs_icon('up'),0);
-  if($board_sort=='DESC')
-    $current = $current - 1;
+  
 }
 //Thema Neu
 $data['if']['sort_desc'] = false; 
@@ -592,7 +586,7 @@ $data['if']['thread_desc_files'] = false;
 $data['thread_desc']['signature'] = '';
 $data['thread_desc']['checkedit'] = '';
 
-if($board_sort=='DESC' AND $current==0)
+if($board_sort=='DESC' AND $current==1)
 {      
   $data['if']['sort_desc'] = true; 
   $userid = $data['thread']['users_id'];
