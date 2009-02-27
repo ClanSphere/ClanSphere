@@ -24,15 +24,14 @@ if (!empty($cs_wars)) {
     $cs_wars[$i]['matchup'] = cs_link($secure_short,'wars','view','id=' . $cs_wars[$i]['wars_id']);
 
     $result = $cs_wars[$i]['wars_score1'] - $cs_wars[$i]['wars_score2'];
-    $result >= 1 ? $icon = 'green' : $icon = 'red';
-    if(empty($result)) { $icon = 'grey'; }
+    $icon = $result > 0 ? 'green' : 'red';
+    if(empty($result)) $icon = 'grey';
     $cs_wars[$i]['icon'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
     $cs_wars[$i]['date'] = cs_date('unix',$cs_wars[$i]['wars_date']);
   }
   
   $data['wars'] = $cs_wars;
   echo cs_subtemplate(__FILE__,$data,'wars','navlist2');
-
 }
 else {
 
