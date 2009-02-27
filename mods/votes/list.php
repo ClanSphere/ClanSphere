@@ -30,7 +30,7 @@ if(!empty($votes_loop))
   $where = "voted_mod='votes' AND voted_fid='$votes_id' AND voted_ip='$users_ip'";
   if($users_id > 0)
   {
-    $where .= " OR voted_mod='votes' AND voted_fid='$votes_id' AND users_id='$users_id'";
+    $where = "voted_mod='votes' AND voted_fid='$votes_id' AND users_id='$users_id'";
   }
   $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
 }

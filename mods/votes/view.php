@@ -42,7 +42,7 @@ if(empty($_REQUEST['where'])) {
         $where = "voted_mod='votes' AND voted_fid='$cs_votes_id' AND voted_ip='" . $cs_votes_save['voted_ip'] . "'";
         if($cs_votes_save['users_id'] > 0)
         {
-          $where .= " OR voted_mod='votes' AND voted_fid='$cs_votes_id' AND users_id='" . $cs_votes_save['users_id'] . "'";
+          $where = "voted_mod='votes' AND voted_fid='$cs_votes_id' AND users_id='" . $cs_votes_save['users_id'] . "'";
         }
         $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
       }
@@ -107,10 +107,11 @@ if(empty($_REQUEST['where'])) {
         {
           $check_user_voted++;
         }
-      }
-      if($voted_ip == $cs_votes_save['voted_ip'])
-      {
-        $check_user_voted++;
+      } else {
+        if($voted_ip == $cs_votes_save['voted_ip'])
+        {
+          $check_user_voted++;
+        }
       }
     }
     if (cs_time() >= $cs_votes['votes_end']) {
