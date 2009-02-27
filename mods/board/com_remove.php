@@ -95,18 +95,13 @@ if(isset($_POST['agree'])) {
 }
 
 if(isset($_POST['cancel'])) {
-  $where = "comments_fid = '" . $com_fid . "'";
-  $where .= " AND comments_mod = 'board'";
+  $where = "comments_fid = \"" . $com_fid . "\" AND comments_mod = 'board' AND comments_id <= \"" . $comments_id . "\"";
   $before = cs_sql_count(__FILE__,'comments',$where);
-  $start = floor($before / $account['users_limit']) * $account['users_limit'];
+  $start = $before - $before % $account['users_limit'];
 
-  $count_com = $before;
-  while ($count_com >= $account['users_limit']) {
-    $count_com = $count_com - $account['users_limit'];
-  }
-  $more = 'where=' . $com_fid . '&amp;start=' . $start . '#com' . $count_com;
+  $more = 'where=' . $com_fid . '&amp;start=' . $start . '#com' . $before;
   cs_redirect($cs_lang['del_false'],'board','thread',$more);
- }
+}
 
 if(!empty($comments_form)) {
 
