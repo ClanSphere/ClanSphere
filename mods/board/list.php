@@ -19,7 +19,7 @@ $where = "categories_mod = 'board' AND categories_access <= " . $account['access
 $select = 'categories_name, categories_id, categories_subid';
 $order = 'categories_subid ASC, categories_order ASC, categories_name ASC';
 $data['categories'] = cs_catsort( cs_sql_select(__FILE__, 'categories', $select, $where, $order, 0, 0), $categories_id);
-$count_categories = count($data['categories']); 
+$count_categories = empty($data['categories']) ? 0 : count($data['categories']); 
 
 $data['if']['category'] = empty($categories_id) ? false : true;
 
