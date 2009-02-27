@@ -8,6 +8,7 @@ ___________________________________________________________
 -> Fixed users_remove without loose database integrity
 -> Fixed preview of signatures in board (BugtrackerID: 209, Denni)
 -> Fixed voted several user from same ip (BugtrackerID: 249, alcatraz)
+-> Fixed com_remove to last comment (BugtrackerID: 288, alcatraz, thx Spongebob)
 -> Fixed removing of uploaded files in some modules (BugtrackerID: 198 and 211, Denni)
 -> Fixed users hide function in users view (fay-pain)
 -> Added function create_user to create every user in the same way (Denni)
