@@ -16,15 +16,15 @@ $comments_id = empty($_POST['submit']) ? (int) $_GET['id'] : (int) $_POST['comme
 if (!empty($_POST['submit']) && empty($error)) {
   
   $cells = 'users_id, comments_time, comments_fid, comments_edit';
-  $comment = cs_sql_select(__FILE__,'comments',$cells,'comments_id = \'' . $comments_id . '\'');
+  $comment = cs_sql_select(__FILE__,'comments',$cells,'comments_id = "' . $comments_id . '"');
   
   // Get last comment
-  $lastid = (int) end($_POST['comments']);
-  $count_comments = count($_POST['comments']);
+  $lastid = !empty($_POST['comments']) ? (int) end($_POST['comments']) : 0;
+  $count_comments = !empty($_POST['comments']) ? count($_POST['comments']) : 0;
   $old_threads_id = (int) $_POST['old_threads_id'];
   
   if (!empty($lastid)) {
-    $last = cs_sql_select(__FILE__,'comments','comments_time, users_id','comments_id = \'' . $lastid . '\'');
+    $last = cs_sql_select(__FILE__,'comments','comments_time, users_id','comments_id = "' . $lastid . '"');
   } else {
     $last = array();
     $last['comments_time'] = $comment['comments_time'];
@@ -38,7 +38,7 @@ if (!empty($_POST['submit']) && empty($error)) {
   $save['threads_text'] = $_POST['threads_text'];
   $save['threads_headline'] = $_POST['threads_headline'];
   $save['threads_edit'] = $comment['comments_edit'];
-  $save['board_id'] = $_POST['board_id'];
+  $save['board_id'] = (int) $_POST['board_id'];
   $save['threads_last_user'] = $last['users_id'];
   $save['threads_last_time'] = $last['comments_time'];
   $save['threads_comments'] = $count_comments;
@@ -59,7 +59,7 @@ if (!empty($_POST['submit']) && empty($error)) {
       $content = array($threads_id);
       
       foreach ($_POST['comments'] as $comments_id) {
-        cs_sql_update(__FILE__,'comments',$cells,$content,$comments_id);
+        cs_sql_update(__FILE__,'comments',$cells,$content, (int) $comments_id);
       }
     }
     
