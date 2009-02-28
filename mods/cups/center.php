@@ -30,60 +30,28 @@ if(!empty($get_memberships)) {
   $condition .= ')';
 }
 
+$data = array();
 
 $tables = 'cupsquads cs INNER JOIN {pre}_cups cp ON cs.cups_id = cp.cups_id';
 $cells  = 'cs.cups_id AS cups_id, cp.games_id AS games_id, cp.cups_name AS cups_name, ';
 $cells .= 'cp.cups_system AS cups_system, cs.squads_id AS squads_id, cp.cups_start AS cups_start';
-$select = cs_sql_select(__FILE__,$tables,$cells,$condition,0,0,0);
+$data['cups'] = cs_sql_select(__FILE__,$tables,$cells,$condition,0,0,0);
+$cups_count = count($data['cups']);
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,2);
-echo $cs_lang['mod'] .' - '. $cs_lang['center'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftc');
-echo sprintf($cs_lang['take_part_in_cups'],count($select));
-echo cs_html_roco(2,'rightc');
-echo cs_link($cs_lang['list'],'cups','list');
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+$data['lang']['take_part_in_cups'] = sprintf($cs_lang['take_part_in_cups'],$cups_count);
 
-echo cs_getmsg();
+$conds = array();
+$conds['teams'] = $matchcond;
+$conds['users'] = 'squad1_id = "'.$account['users_id'] .'" OR squad2_id = "'.$account['users_id'].'"';
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['game'];
-echo cs_html_roco(2,'headb');
-echo $cs_lang['name'];
-echo cs_html_roco(3,'headb');
-echo $cs_lang['next_match'];
-echo cs_html_roco(0);
-
-if(!empty($select)){
+for ($i = 0; $i < $cups_count; $i++) {
+  $data['cups'][$i]['if']['gameicon_exists'] = file_exists('uploads/games/' . $data['cups'][$i]['games_id'] . '.gif') ? true : false;
   
-  foreach ($select AS $cup) {
-  
-    echo cs_html_roco(1,'leftb');
-    if(file_exists('uploads/games/' . $cup['games_id'] . '.gif')) {
-      echo cs_html_img('uploads/games/' . $cup['games_id'] . '.gif');
-    }
-    echo cs_html_roco(2,'leftb');
-    echo cs_link($cup['cups_name'],'cups','view','id='.$cup['cups_id']);
-    echo cs_html_roco(3,'leftb');
-  
-    $cond = $cup['cups_system'] == 'teams' ? $matchcond : 'squad1_id = \''.$account['users_id']
-    .'\' OR squad2_id = \''.$account['users_id'].'\'';
-    $cond .= ' AND cups_id = \''.$cup['cups_id'].'\'';
-    $get_matchid = cs_sql_select(__FILE__,'cupmatches','cupmatches_id',$cond,'cupmatches_round ASC');
-    if (!empty($get_matchid)) {
-      echo cs_link($cs_lang['show'],'cups','match','id='.$get_matchid['cupmatches_id']);
-    } else {
-      echo $cs_lang['no_match_upcoming'];
-    }
-    echo cs_html_roco(0);
-  }
+  $cond = $conds[$data['cups'][$i]['cups_system']] . ' AND cups_id = "' . $data['cups'][$i]['cups_id'] . '"';
+  $matchid = cs_sql_select(__FILE__, 'cupmatches', 'cupmatches_id', $cond, 'cupmatches_round ASC');
+  $data['cups'][$i]['nextmatch'] = empty($matchid) ? $cs_lang['no_match_upcoming'] : cs_link($cs_lang['show'],'cups','match','id='.$matchid['cupmatches_id']);
 }
 
-echo cs_html_table(0);
+echo cs_subtemplate(__FILE__, $data, 'cups', 'center');
 
 ?>
