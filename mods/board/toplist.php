@@ -6,7 +6,7 @@ $cs_lang = cs_translate('board');
 
 include 'mods/board/functions.php';
 
-$start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
+$start = empty($_GET['start']) ? 1 : (int) $_GET['start'] + 1;
 
 #$tables = 'comments cms INNER JOIN {pre}_users usr ON cms.users_id = usr.users_id GROUP BY cms.users_id';
 #$tables = 'users usr LEFT JOIN {pre}_threads thr ON thr.users_id = usr.users_id LEFT JOIN {pre}_comments cms ON cms.users_id = usr.users_id GROUP BY usr.users_id';
@@ -34,20 +34,20 @@ if(empty($select)) {
   $data['toplist'] = '';
 }
 
-$x = $start;
+$x = $start - 1;
 $count_users = count($cs_users);
 
 for($run = 0; $run < $count_users; $run++) {
   if(!empty($cs_users[$run]['users_id']) AND $cs_users[$run]['users_active'] > 0 AND empty($cs_users[$run]['users_delete'])) {
     $x++;
     $data['toplist'][$run]['class'] = $class = $cs_users[$run]['users_id'] != $account['users_id'] ? 'leftb' : 'leftc';
-    $data['toplist'][$run]['number'] = $run == 0 || $cs_users[$run]['comments'] != $cs_users[$run-1]['comments'] ? $x : $x-1;
+    $data['toplist'][$run]['number'] = $run == 0 || $cs_users[$run]['comments'] != $cs_users[$run-1]['comments'] ? $x : $data['toplist'][$run-1]['number'];
     $data['toplist'][$run]['nick_link'] = cs_url('users','view','id=' . $cs_users[$run]['users_id']);
     $data['toplist'][$run]['nick'] = $cs_users[$run]['users_nick'];
     $data['toplist'][$run]['comments'] = $cs_users[$run]['comments'];
-    $data['toplist'][$run]['rank'] = cs_secure(getRankTitle($cs_users[$run]['comments'], $cs_ranks)); 
+    $data['toplist'][$run]['rank'] = cs_secure(getRankTitle($cs_users[$run]['comments'], $cs_ranks));
   }
 }
-  
+
 echo cs_subtemplate(__FILE__,$data,'board','toplist');
 ?>
