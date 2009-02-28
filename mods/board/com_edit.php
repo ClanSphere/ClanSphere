@@ -368,10 +368,17 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
   echo cs_html_form(0);
 }
 else {
-  $opt = "comments_mod = 'board' AND comments_fid = '" . $fid . "'";
-  $opt .= " AND comments_id > '" . $comments_id . "'";
+  $opt = "comments_mod = 'board' AND comments_fid = \"" . $fid . "\"";
+  $opt .= " AND comments_id <= \"" . $comments_id . "\"";
   $count_com = cs_sql_count(__FILE__,'comments',$opt);
-  $start = floor($count_com / $account['users_limit']) * $account['users_limit'];
+	
+  if ($options['sort'] == 'ASC') {
+    $start = $count_com - $count_com %  $account['users_limit'];
+  } else {
+    $where = "comments_fid = \"" . $fid . "\" AND comments_mod = 'board' AND comments_id > \"" . $comments_id . "\"";
+    $after = cs_sql_count(__FILE__,'comments',$where);
+    $start = $after - $after % $account['users_limit'];
+  }
 
   if(!empty($cs_thread['comments_edit']))
     $comments_edits_now = explode('/',$cs_thread['comments_edit']);
