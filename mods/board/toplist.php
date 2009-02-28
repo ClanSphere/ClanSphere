@@ -6,7 +6,10 @@ $cs_lang = cs_translate('board');
 
 include 'mods/board/functions.php';
 
-$start = empty($_GET['start']) ? 1 : (int) $_GET['start'] + 1;
+$fixit = 0;
+
+$start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
+if (!empty($fixit)) $start++;
 
 #$tables = 'comments cms INNER JOIN {pre}_users usr ON cms.users_id = usr.users_id GROUP BY cms.users_id';
 #$tables = 'users usr LEFT JOIN {pre}_threads thr ON thr.users_id = usr.users_id LEFT JOIN {pre}_comments cms ON cms.users_id = usr.users_id GROUP BY usr.users_id';
@@ -34,7 +37,7 @@ if(empty($select)) {
   $data['toplist'] = '';
 }
 
-$x = $start - 1;
+$x = empty($fixit) ? $start : $start - 1;
 $count_users = count($cs_users);
 
 for($run = 0; $run < $count_users; $run++) {
