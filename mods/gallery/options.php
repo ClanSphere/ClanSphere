@@ -138,7 +138,7 @@ if(!empty($gallery_form))
   echo $cs_lang['opt_pic_ms'];
   echo cs_html_roco(2,'leftb');
   echo cs_html_input('size',$size,'text',4,4);
-  echo "kb";
+  echo "KiB";
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'leftc');
@@ -229,7 +229,7 @@ if(!empty($gallery_form))
   echo $cs_lang['opt_pic_ms'];
   echo cs_html_roco(2,'leftb');
   echo cs_html_input('size2',$size_2,'text',4,4);
-  echo 'kb';
+  echo 'KiB';
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'leftc');
