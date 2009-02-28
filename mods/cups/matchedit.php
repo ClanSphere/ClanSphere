@@ -166,11 +166,14 @@ elseif(!empty($_POST['result']) || !empty($_POST['result_submit'])) {
     echo cs_html_input('cupmatches_score2','','text',5,5);
     echo cs_html_roco(0);
     
+    $team1_id = $system['cups_system'] == 'teams' ? $cs_match['squad1_id'] : $cs_match['user1_id'];
+    $team2_id = $system['cups_system'] == 'teams' ? $cs_match['squad2_id'] : $cs_match['user2_id'];
+    
     echo cs_html_roco(1,'leftc');
     echo cs_icon('ksysguard') . $cs_lang['options'];
     echo cs_html_roco(2,'leftb');
-    echo cs_html_vote('squad1_id',$cs_match['squad1_id'],'hidden');
-    echo cs_html_vote('squad2_id',$cs_match['squad2_id'],'hidden');
+    echo cs_html_vote('squad1_id', $team1_id,'hidden');
+    echo cs_html_vote('squad2_id', $team2_id,'hidden');
     echo cs_html_vote('cupmatches_id',$cupmatches_id,'hidden');
     echo cs_html_vote('team',$team,'hidden');
     echo cs_html_vote('result_submit',$cs_lang['insert'],'submit');
