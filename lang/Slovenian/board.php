@@ -210,7 +210,6 @@ $cs_lang['body_options'] = 'Tukaj lahko spreminja&scaron; nastavitve foruma.';
 $cs_lang['max_text'] = 'Max. dol&#382;ina besedila';
 $cs_lang['max_signatur'] = 'Max. dol&#382;ina podpisa';
 $cs_lang['pix'] = 'Pik';
-$cs_lang['kbyte'] = 'kB';
 $cs_lang['max_high'] = 'Max. vi&scaron;ina avatarja';
 $cs_lang['max_size'] = 'Max. velikost:';
 $cs_lang['max_avatar_width'] = 'Max. &scaron;irina avatarja';

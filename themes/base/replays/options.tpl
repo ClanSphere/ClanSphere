@@ -14,7 +14,7 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:fileshare} {lang:max_size}</td>
-		<td class="leftb"><input type="text" name="file_size" value="{op:filesize}" maxlength="20" size="6" />{lang:kbyte}</td>
+		<td class="leftb"><input type="text" name="file_size" value="{op:filesize}" maxlength="20" size="6" /> KiB</td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:fileshare} {lang:filetypes}</td>

@@ -201,7 +201,6 @@ $cs_lang['body_options'] = 'De forum instellingen kun je hier veranderen.';
 $cs_lang['max_text'] = 'Max. tekst lengte';
 $cs_lang['max_signatur'] = 'Max. Signature lengte';
 $cs_lang['pix'] = 'Pixel';
-$cs_lang['kbyte'] = 'kb';
 $cs_lang['max_high'] = 'Max. Avatar hoogte';
 $cs_lang['max_size'] = 'Max. Avatar grootte';
 $cs_lang['max_avatar_width'] = 'Max. Avatar breedte';

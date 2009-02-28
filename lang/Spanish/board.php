@@ -201,7 +201,6 @@ $cs_lang['body_options'] = 'Aqui se pueden editar las opciones del Foro';
 $cs_lang['max_text'] = 'Max. largura del Texto';
 $cs_lang['max_signatur'] = 'Max. largura de la signatura';
 $cs_lang['pix'] = 'Pixel';
-$cs_lang['kbyte'] = 'kb';
 $cs_lang['max_high'] = 'Altura max. de la imagen del Foro';
 $cs_lang['max_avatar_width'] = 'Abchura max. de la imagen del Foro';
 $cs_lang['max_avatar_size'] = 'Capacidad max. de la imagen del Foro';

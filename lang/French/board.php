@@ -197,7 +197,6 @@ $cs_lang['body_options'] = 'Vous pouvez modifier ici les réglages du forum.';
 $cs_lang['max_text'] = 'Longueur maximale de la taille texte';
 $cs_lang['max_signatur'] = 'Longueur maximale de la signature';
 $cs_lang['pix'] = 'Pixels';
-$cs_lang['kbyte'] = 'octets';
 $cs_lang['max_high'] = 'Hauteur maximale de l\'avatar';
 $cs_lang['max_avatar_width'] = 'Largeur maximale de l\'avatar';
 $cs_lang['max_avatar_size'] = 'Taille maximale de l\'avatar';

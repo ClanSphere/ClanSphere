@@ -28,11 +28,11 @@
     </tr>
     <tr>
       <td class="leftc">{icon:fileshare} {lang:max_avatar_size}</td>
-      <td class="leftb"><input type="text" name="avatar_size" value="{options:max_avatar_size}" maxlength="4" size="4"  /> {lang:kbyte}</td>
+      <td class="leftb"><input type="text" name="avatar_size" value="{options:max_avatar_size}" maxlength="4" size="4"  /> KiB</td>
     </tr>
     <tr>
       <td class="leftc">{icon:fileshare} {lang:max_filesize}</td>
-      <td class="leftb"><input type="text" name="file_size" value="{options:max_filesize}" maxlength="4" size="4"  /> {lang:kbyte}</td>
+      <td class="leftb"><input type="text" name="file_size" value="{options:max_filesize}" maxlength="4" size="4"  /> KiB</td>
     </tr>
     <tr>
       <td class="leftc">{icon:fileshare} {lang:filetypes}</td>

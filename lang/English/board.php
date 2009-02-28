@@ -209,7 +209,6 @@ $cs_lang['body_options'] = 'You can change board settings here.';
 $cs_lang['max_text'] = 'Max. text length';
 $cs_lang['max_signatur'] = 'Max. Signature length';
 $cs_lang['pix'] = 'Pixel';
-$cs_lang['kbyte'] = 'kb';
 $cs_lang['max_high'] = 'Max. Avatar height';
 $cs_lang['max_size'] = 'Max. Avatar size';
 $cs_lang['max_avatar_width'] = 'Max. Avatar width';
