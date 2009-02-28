@@ -33,7 +33,7 @@ if(empty($_POST['submit'])) {
   $save['def_func'] = $_POST['def_func'];
   $save['image_width'] = $_POST['image_width'];
   $save['image_height'] = $_POST['image_height'];
-  $save['word_cut'] = $_POST['word_cut'];
+  $save['word_cut'] = $_POST['word_cut'] > 65535 ? 65535 : (int) $_POST['word_cut'];
   $save['def_abcode'] = (int) $_POST['def_abcode'];
   
   cs_optionsave('abcode', $save);

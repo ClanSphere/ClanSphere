@@ -41,7 +41,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:editcut} {lang:cut}</td>
-      <td class="leftb"><input type="text" name="word_cut" value="{options:word_cut}" maxlength="8" size="4"  />
+      <td class="leftb"><input type="text" name="word_cut" value="{options:word_cut}" maxlength="5" size="4"  />
         {lang:cut_more}</td>
     </tr>
     <tr>
