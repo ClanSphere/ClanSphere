@@ -87,6 +87,24 @@ elseif ($data['cup']['reg'] < $data['cup']['cups_teams']) {
       $data['cup']['extended'] = cs_link($cs_lang['need_squad'],'squads','center');
     }
   }
+} else {
+	$data['cup']['extended'] = $cs_lang['already_full'];
+	
+  if ($data['cup']['cups_system'] == 'teams') {
+
+    $membership = cs_sql_count(__FILE__,'members',"users_id = '" . $account['users_id'] . "' AND members_admin = '1'");
+    
+    if(!empty($membership)) {
+      $tables = 'cupsquads csq INNER JOIN {pre}_members mem ON csq.squads_id = mem.squads_id';
+      $where = "mem.users_id = '" . $account['users_id'] . "' AND csq.cups_id = '" . $cups_id . "'";
+      $participant = cs_sql_count(__FILE__, $tables, $where);
+    }
+  } else {
+    $participant = cs_sql_count(__FILE__,'cupsquads','cups_id = "' . $cups_id . '" AND squads_id = "' . $account['users_id'] . '"');
+  }
+  if(!empty($participant)) {
+    $data['cup']['extended'] = $cs_lang['join_done'];
+  }
 }
 
 $data['cup']['match_url'] = cs_url('cups','matchlist','where='.$cups_id);

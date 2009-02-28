@@ -134,6 +134,7 @@ $cs_lang['playing'] = 'Laufend';
 $cs_lang['rounds_remaining'] = 'Runden verbleibend';
 $cs_lang['to_the_tree'] = 'Zum Turnierbaum';
 $cs_lang['description'] = 'Beschreibung';
+$cs_lang['already_full'] = 'Alle Pl&auml;tze wurden vergeben.';
 
 $cs_lang['registered_teams'] = 'Angemeldete Teams';
 $cs_lang['max_users'] = 'Maximale Spieler';

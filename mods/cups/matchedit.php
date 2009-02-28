@@ -8,8 +8,8 @@ include 'mods/cups/generate.php';
 
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'headb',0,2);
-echo $cs_lang['mod'] . ' - ' . $cs_lang['accept_result'];
-echo cs_html_roco(0);
+echo $cs_lang['mod'] . ' - ';/* . $cs_lang['accept_result'];
+echo cs_html_roco(0);*/
 
 if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['accept_submit'])) {
   $cupmatches_id = (int) $_POST['cupmatches_id'];
@@ -307,6 +307,8 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
       
       $team1 = $system['cups_system'] == 'teams' ? $cs_match['squad1_name'] : $cs_match['user1_nick'];
       $team2 = $system['cups_system'] == 'teams' ? $cs_match['squad2_name'] : $cs_match['user2_nick'];
+      $team1_id = $system['cups_system'] == 'teams' ? $cs_match['squad1_id'] : $cs_match['user1_id'];
+      $team2_id = $system['cups_system'] == 'teams' ? $cs_match['squad2_id'] : $cs_match['user2_id'];
       
       echo cs_html_br(1);
       echo cs_html_form(1,'adminedit','cups','matchedit');
@@ -331,8 +333,8 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
       echo cs_html_roco(1,'leftc');
       echo cs_icon('ksysguard') . $cs_lang['options'];
       echo cs_html_roco(2,'leftb');
-    echo cs_html_vote('squad1_id',$cs_match['squad1_id'],'hidden');
-    echo cs_html_vote('squad2_id',$cs_match['squad2_id'],'hidden');
+      echo cs_html_vote('squad1_id',$team1_id,'hidden');
+      echo cs_html_vote('squad2_id',$team2_id,'hidden');
       echo cs_html_vote('cupmatches_id',$cupmatches_id,'hidden');
       echo cs_html_vote('admin_submit',$cs_lang['edit'],'submit');
       echo cs_html_vote('reset',$cs_lang['reset'],'reset');
