@@ -6,6 +6,7 @@ td { border: dashed 1px #CCCCCC; }
 a:link, a:visited { text-decoration: none; color:#000000;}
 .head { background-color: #cfcfcf; font-weight: bold; }
 .leftc { background-color: #e0e0e0; }
+.quote { width: 900px; margin-left: 20px; background-color: #f6f6f6; padding: 4px 4px 4px 7px; }
 #container { clear:both; width: 1000px; height: auto; margin: 0 auto; }
 #header { clear:both; float:left; width: 1000px; height: 75px; background-image:url('img/header.png'); background-repeat: no-repeat; }
 #head_text { clear:both; width: 988px; text-align: center; background-color: #cfcfcf; font-weight:bold; font-size: 18px; border-left-width: 6px;
@@ -14,6 +15,5 @@ a:link, a:visited { text-decoration: none; color:#000000;}
 	border-left-style: solid; border-left-color: #bdbdbd; border-right-width: 6px; border-right-style: solid; border-right-color: #bdbdbd; }
 #main_help { clear:both; float:left; width: 479px; height: auto; }
 #other_help { float:left; width: 479px; height: auto; }
-#quote { width: 900px; margin-left: 20px; background-color: #f6f6f6; padding: 4px 4px 4px 7px; }
 #footer { width: 1000px; height: 20px; background-color: #dfdfdf; float: left; padding-top: 5px; margin-top: 0px; border-top-width: 1px;	
 	border-top-style: solid; border-top-color: #949494; text-align: center; font-size: 6pt; }

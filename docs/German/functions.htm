@@ -171,7 +171,7 @@
 			Diese Funktion wird beim Single-SQL-Server-Betrieb auf den ClanSphere normalerweise ausgelegt ist nur in der Start-Datei 
 			wie z.B. der index.php benötigt und dort aufgerufen um die Verbindung zur Datenbank zu initialisieren.<br /><br />
 			Beispiel:<br />
-			<div id="quote">$cs_db['con'] = cs_sql_connect($cs_db);</div><br />
+			<div class="quote">$cs_db['con'] = cs_sql_connect($cs_db);</div><br />
 			Dabei wird das Verbindungsobjekt in die Array-Variable 'con' von $cs_db gesichert.
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -188,7 +188,7 @@
 			Das mitgeben der Option Eindeutig legt fest welche Spalten bei der Abfrage jeweils nur einmal je aufgefundenem Wert berücksichtigt
 			bzw. darüber zusammengefasst werden. Dies erfordert oft ausgibiges Testen um das Ziel zu erreichen.<br /><br />
 			Beispiel:<br />
-			<div id="quote">$number_of_squads = cs_sql_count(__FILE__, 'squads');</div><br />
+			<div class="quote">$number_of_squads = cs_sql_count(__FILE__, 'squads');</div><br />
 			Liest die Anzahl der in der SQL-Tabelle {pre}_squads eingetragenen Squads aus und liefert das Resultat als Integer
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -202,7 +202,7 @@
 			Um einen anderen Feldnamen anzusprechen bzw. unter verwendung von JOINS bei den SQL-Tabellen ist es hier erforderlich eine Angabe 
 			zu machen.<br /><br />
 			Beispiel:<br />
-			<div id="quote">cs_sql_delete(FILE, 'squads', 5);</div><br />
+			<div class="quote">cs_sql_delete(FILE, 'squads', 5);</div><br />
 			Dies würde die ID 5 aus der Tabelle {pre}_squads entfernen
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -217,7 +217,7 @@
 			Tipp: Achtet darauf das Daten nicht mehrfach abgesichert werden, dies hat ungewollte Nebenwirkungen (z.B. das sich diverse Zeichen 
 			öfter als ursprünglich wiederholen)!<br /><br />
 			Beispiel:<br />
-			<div id="quote">$secure_string = cs_sql_escape('this is a simple string');</div><br />
+			<div class="quote">$secure_string = cs_sql_escape('this is a simple string');</div><br />
 			Dies sichert die Daten die der Funktion übergeben werden ab um zu verhindern das diese folgende SQL-Anfragen beeinflussen.
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -228,7 +228,7 @@
 			Sortierung abgearbeitet und muss die gleiche Anzahl Array-Elemente enthalten wie der Werte-Array.<br /><br />
 			Mit den Werten verhält es sich genau wie mit den Feldnamen, nur das hier die zu verwendenen Daten enthalten sind.<br /><br />
 			Beispiel:<br />
-			<div id="quote">cs_sql_insert(FILE, 'squads', array('squads_name'), array('example_squad'));</div><br />
+			<div class="quote">cs_sql_insert(FILE, 'squads', array('squads_name'), array('example_squad'));</div><br />
 			Dies würde den example_squad in die SQL-Tabelle {pre}_squads eintragen
 	  	</td>
 	  </tr>
@@ -240,7 +240,7 @@
 			Funktion wird z.B. verwendet um die Themen-ID des gerade erstellten Themas zu holen um den Benutzer direkt auf dieses Thema 
 			weiterzuleiten.<br /><br />
 			Beispiel:<br />
-			<div id="quote">$created_squad_id = cs_sql_insertid();</div><br />
+			<div class="quote">$created_squad_id = cs_sql_insertid();</div><br />
 			Holt die ID vom zuletzt gespeicherten Datensatz als Integer
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -250,7 +250,7 @@
 			Das Modul entspricht meistens dem Verzeichnisnamen vom Modul, dessen Optionen als Array abgeholt werden sollen.<br /><br />
 			Tipp: Alle globalen Optionen vom Modul clansphere sind bereits im Array $cs_main verfügbar.<br /><br />
 			Beispiel:<br />
-			<div id="quote">$squad_options = cs_sql_option(FILE, 'squads');</div><br />
+			<div class="quote">$squad_options = cs_sql_option(FILE, 'squads');</div><br />
 			Damit wären alle Optionen vom Modul Squads im Array $squads_options vorhanden
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -263,7 +263,7 @@
 			Um den Erfolg auszuwerten liefert die Funktion im Fehlerfall den Integer 0 und bei Erfolg einen Array mit dem Element 
 			affected_rows zurück in dem als Integer die Anzahl betroffener Datensätze enthalten ist.<br /><br />
 			Beispiel:<br />
-			<div id="quote">$query_result = cs_sql_query(FILE, 'UPDATE {pre}_squads SET squads_name = 'test' WHERE squads_id = 3');</div><br />
+			<div class="quote">$query_result = cs_sql_query(FILE, 'UPDATE {pre}_squads SET squads_name = 'test' WHERE squads_id = 3');</div><br />
 			Dies setzt den Squadnamen bei dem Squad mit der ID 3 auf den Wert test
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -291,7 +291,7 @@
 			egal wie viele Treffer es am Ende tatsächlich werden zu einem zweidimensionalen Array ändert.<br /><br />
 			Achtung: Aufgrund der Anzahl und verwundbarkeit der Parameter ist vor allem bei dieser Funktion auf die Sicherheit zu achten!<br /><br />
 			Beispiel:<br />
-			<div id="quote">$squad_data = cs_sql_select(FILE, 'squads', 'squads_id, squads_name', 0, 'squads_name DESC', 0, 0);</div><br />
+			<div class="quote">$squad_data = cs_sql_select(FILE, 'squads', 'squads_id, squads_name', 0, 'squads_name DESC', 0, 0);</div><br />
 			Als Resultat wären alle Squads vorhanden mit ihrer ID und dem Namen, rückwärts nach ihrem Namen sortiert.
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -307,7 +307,7 @@
 			Um einen anderen Feldnamen anzusprechen muss als ID 0 und zudem eine Bedingung übergeben werden. Bedingungen sind die Entsprechung 
 			für die WHERE-Klausel bei normalen SQL-Querys und sind ohne das WHERE anzugeben.<br /><br />
 			Beispiel:<br />
-			<div id="quote">cs_sql_update(FILE, 'squads', array('squads_name'), array('alpha_squad'),4);</div><br />
+			<div class="quote">cs_sql_update(FILE, 'squads', array('squads_name'), array('alpha_squad'),4);</div><br />
 			Setzt bei Squad ID 4 den Squadnamen auf alpha_squad
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
@@ -319,7 +319,7 @@
 			Hinweis: Diese Informationen oft bzw. sogar auf jeder Unterseite abzufragen kann bei MySQL-Erweiterungen zu Geschwindigkeitsverlusten
 			führen. Daher sind diese Informationen für Administratoren zentral unter System -&#62; Software gelistet.<br /><br />
 			Beispiel:<br />
-			<div id="quote">$sql_infos = cs_sql_version(FILE);</div><br />
+			<div class="quote">$sql_infos = cs_sql_version(FILE);</div><br />
 			Liest als Array alle zur Datenbank verfügbaren Details aus	  
 	  </td></tr>
 	   <tr><td style="height: 10px; border: 0;"></td></tr>
