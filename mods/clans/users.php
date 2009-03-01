@@ -21,12 +21,8 @@ $order = $cs_sort[$sort];
 $cru = "users_id = '" . $where . "'";
 $clans_count = cs_sql_count(__FILE__,'members',$cru);
 
-$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $where . "'");
-$user = cs_user($where,$cs_user['users_nick'],$cs_user['users_active']);
-
 $data['lang']['mod'] = $cs_lang[$op_clans['label']];
 $data['lang']['addons'] = cs_addons('users','view',$where,'clans');
-$data['lang']['body'] = sprintf($cs_lang['body_users'], $user);
 $data['pages']['list'] = cs_pages('clans','users',$clans_count,$start,$where,$sort);
 
 $select = 'mem.members_task AS members_task, mem.members_since AS members_since, ';

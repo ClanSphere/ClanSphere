@@ -12,11 +12,6 @@
 <br />
 {lang:getmsg}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	<tr>
-		<td class="leftb">
-			{lang:body_users}
-		</td>
-	</tr>
 	{loop:cat_list}
 	{tmp:no_cat}
 	{loop:cat}

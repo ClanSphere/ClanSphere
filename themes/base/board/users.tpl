@@ -7,11 +7,7 @@
   </tr>
 </table>
 <br />
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-  <tr>
-    <td class="leftb">{lang:body}
-</table>
-<br />
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="2">{lang:stats}</td>
@@ -26,6 +22,7 @@
   </tr>
 </table>
 <br />
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="4">{last:com}</td>
@@ -46,6 +43,7 @@
   {stop:com}
 </table>
 <br />
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="4">{last:thr}</td>

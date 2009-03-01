@@ -16,11 +16,9 @@ $board_access = $account['access_board'];
 $where = "users_id = '" . $user_id . "'";
 $board_count = cs_sql_count(__FILE__,'board',$where);
 $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_register, users_active, users_delete',"users_id = '" . $user_id . "'");
-$user = cs_user($user_id,$cs_user['users_nick'],$cs_user['users_active'],$cs_user['users_delete']);
-$userposts = getUserPosts($user_id);
+$userposts = cs_sql_count(__FILE__, 'comments', "users_id = '" . $user_id . "' AND comments_mod = 'board'");
 
 $data['users']['addons'] = cs_addons('users','view',$user_id,'board');
-$data['lang']['body'] = sprintf($cs_lang['body_users'], $user);
 
 $cs_ranks = cs_sql_select(__FILE__,'boardranks','boardranks_min, boardranks_name',0,'boardranks_min ASC',0,0);
 

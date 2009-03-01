@@ -16,13 +16,10 @@ settype($cat_id,'integer');
 settype($id,'integer');
 $access_id = $account['access_usersgallery'];
 
-$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $id . "'");
-$user = cs_user($id,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
-
 $data['lang']['getmsg'] = cs_getmsg();
 
 $data['data']['addons'] = cs_addons('users','view',$id,'usersgallery');
-$data['lang']['body_users'] = sprintf($cs_lang['body_users'], $user);
+
 if(!empty($id)) {
   if(empty($cat_id)) {
     $from = 'usersgallery';

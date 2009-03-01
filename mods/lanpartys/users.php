@@ -17,11 +17,7 @@ $sort = empty($_REQUEST['sort']) ? 3 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $lanpartys_count = cs_sql_count(__FILE__,'lanpartys');
 
-$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $where . "'");
-$user = cs_user($where,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
-
 $data['lang']['addons'] = cs_addons('users','view',$where,'lanpartys');
-$data['lang']['body'] = sprintf($cs_lang['body_users'], $user);
 $data['pages']['list'] = cs_pages('lanpartys','users',$lanpartys_count,$start,$where,$sort);
 
 $select = 'lpa.lanpartys_name AS lanpartys_name, lpa.lanpartys_id AS lanpartys_id, lpa.lanpartys_start AS lanpartys_start, lgu.languests_status AS languests_status, lrd.lanroomd_id AS lanroomd_id, lrd.lanroomd_number AS lanroomd_number';

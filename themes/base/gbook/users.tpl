@@ -12,12 +12,9 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="leftb">{head:users}</td>
-		<td class="rightb">{head:pages}</td>
-	</tr>
-	<tr>
 		<td class="leftb">{icon:editpaste} {head:new_entry}</td>
-		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
+		<td class="leftb">{lang:total}: {head:count}</td>
+		<td class="rightb">{head:pages}</td>
 	</tr>
 </table>
 <br />

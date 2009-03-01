@@ -18,11 +18,7 @@ if(empty($where)) {
 
 $gbook_count = cs_sql_count(__FILE__,'gbook',"gbook_users_id = '" . $where . "'");
 
-$cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $where . "'");
-$user = cs_user($where,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
-
 $data['head']['addons'] = cs_addons('users','view',$where,'gbook');
-$data['head']['users'] = sprintf($cs_lang['body_users'], $user);
 $data['head']['pages'] = cs_pages('gbook','users',$gbook_count,$start,$where);
 $data['head']['new_entry'] = cs_link($cs_lang['submit'],'gbook','entry','id=' . $where);
 $data['head']['count'] = $gbook_count;
