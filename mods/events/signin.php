@@ -59,6 +59,6 @@ else {
   $msg = $error;
 }
 
-cs_redirect($msg,'events','center');
+cs_redirect($msg,'events','view','id=' . $events_id);
 
 ?>
