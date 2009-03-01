@@ -25,6 +25,7 @@
     <td class="headb">{sort:bracket} {lang:bracket}</td>{stop:brackets}
     <td class="headb">{sort:team1} {lang:team} 1</td>
     <td class="headb">{lang:result}</td>
+    <td class="headb">{lang:status}</td>
     <td class="headb">{sort:team2} {lang:team} 2</td>
     <td class="headb">{lang:match}</td>
   </tr>{loop:matches}
@@ -32,6 +33,7 @@
     <td class="leftb">{matches:bracket}</td>{stop:brackets}
     <td class="leftb">{matches:team1}</td>
     <td class="leftb">{matches:cupmatches_score1} : {matches:cupmatches_score2}</td>
+    <td class="leftb">{matches:status}</td>
     <td class="leftb">{matches:team2}</td>
     <td class="leftb"><a href="{url:cups_match:id={matches:cupmatches_id}}">{icon:demo}</a></td>
   </tr>{stop:matches}

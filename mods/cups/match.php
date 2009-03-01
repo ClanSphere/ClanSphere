@@ -56,7 +56,7 @@ if ($system['cups_system'] == 'teams') {
 # das muss ueberarbeitet werden
 $data['if']['showscore'] = !empty($data['match']['cupmatches_score1']) || !empty($data['match']['cupmatches_score2']) ? true : false;
 
-$data['match']['status'] = empty($cs_cups['cupmatches_accepted1']) || empty($cs_cups['cupmatches_accepted2']) ? $cs_lang['open'] : $cs_lang['closed'];
+$data['match']['status'] = empty($data['match']['cupmatches_accepted1']) || empty($data['match']['cupmatches_accepted2']) ? $cs_lang['open'] : $cs_lang['closed'];
 
 
 if ($system['cups_system'] == 'teams') {

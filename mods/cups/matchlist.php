@@ -44,9 +44,11 @@ if ($system['cups_system'] == 'teams') {
 }
 
 $cells  = 'cm.cupmatches_id AS cupmatches_id, cm.cupmatches_score1 AS cupmatches_score1, ';
-$cells .= 'cm.cupmatches_score2 AS cupmatches_score2, ';
+$cells .= 'cm.cupmatches_score2 AS cupmatches_score2, cm.cupmatches_accepted1 AS cupmatches_accepted1, ';
+$cells .= 'cm.cupmatches_accepted2 AS cupmatches_accepted2, ';
+
 if (!empty($system['cups_brackets']))
-   $cells .= 'cm.cupmatches_loserbracket AS cupmatches_loserbracket, ';
+  $cells .= 'cm.cupmatches_loserbracket AS cupmatches_loserbracket, ';
 if ($system['cups_system'] == 'teams') {
   $cells .= 'sq1.squads_id AS squad1_id, sq1.squads_name AS squad1_name, ';
   $cells .= 'sq2.squads_id AS squad2_id, sq2.squads_name AS squad2_name';
@@ -83,6 +85,9 @@ for ($i = 0; $i < $data['vars']['matchcount']; $i++) {
 	if (!empty($system['cups_brackets']))
     $data['matches'][$i]['bracket'] = empty($data['matches'][$i]['cupmatches_loserbracket']) ? $cs_lang['winners'] : $cs_lang['losers'];
   
+  $data['matches'][$i]['status'] = empty($data['matches'][$i]['cupmatches_accepted1']) || empty($data['matches'][$i]['cupmatches_accepted1']) ?
+    $cs_lang['open'] : $cs_lang['closed'];
+  
 	if ($system['cups_system'] == 'teams') {
     $data['matches'][$i]['team1'] = cs_link($data['matches'][$i]['squad1_name'],'squads','view','id='.$data['matches'][$i]['squad1_id']);
     $data['matches'][$i]['team2'] = cs_link($data['matches'][$i]['squad2_name'],'squads','view','id='.$data['matches'][$i]['squad2_id']);
@@ -92,7 +97,6 @@ for ($i = 0; $i < $data['vars']['matchcount']; $i++) {
 		$users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $data['matches'][$i]['user2_id'] . "'");
     $data['matches'][$i]['team2'] = cs_user($data['matches'][$i]['user2_id'],$data['matches'][$i]['user2_nick'], $users_data['users_active'], $users_data['users_delete']);
 	}
-  
 }
 
 echo cs_subtemplate(__FILE__, $data, 'cups', 'matchlist');
