@@ -1,0 +1,17 @@
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb" colspan="2">{lang:mod} - {lang:confirm}</td>
+  </tr>
+  <tr>
+    <td class="leftb">{lang:really_confirm}</td>
+  </tr>
+  <tr>
+    <td class="centerb">
+     <form method="post" name="accept_submit" action="{url:cups_matchedit}">
+      <input type="hidden" name="cupmatches_id" value="{match:id}" />
+      <input type="hidden" name="squad" value="{match:squadnr}" />
+      <input type="submit" name="accept_submit" value="{lang:confirm}" class="form" />
+     </form>
+    </td>
+  </tr>
+</table>

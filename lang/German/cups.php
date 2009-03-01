@@ -79,6 +79,7 @@ $cs_lang['enter_result'] = 'Ergebnis eintragen';
 $cs_lang['accept_result'] = 'Ergebnis best&auml;tigen';
 $cs_lang['both_confirmed'] = 'Das Ergebnis wurde von beiden Teams best&auml;tigt.';
 $cs_lang['waiting'] = 'Das Ergebnis muss noch von %s best&auml;tigt werden.';
+$cs_lang['waiting_both'] = 'Das Ergebnis muss noch von beiden Teams best&auml;tigt werden.';
 
 $cs_lang['open'] = 'Offen';
 $cs_lang['closed'] = 'Abgeschlossen';

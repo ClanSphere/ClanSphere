@@ -28,6 +28,7 @@ $cells .= 'cm.cupmatches_score1 AS cupmatches_score1, ';
 $cells .= 'cm.cupmatches_score2 AS cupmatches_score2, ';
 $cells .= 'cm.cupmatches_accepted1 AS cupmatches_accepted1, ';
 $cells .= 'cm.cupmatches_accepted2 AS cupmatches_accepted2, ';
+$cells .= 'cm.cupmatches_winner AS cupmatches_winner, ';
 
 if ($system['cups_system'] == 'teams') {
   $cells .= 'sq1.squads_name AS squad1_name, sq2.squads_name AS squad2_name, ';
@@ -39,6 +40,7 @@ if ($system['cups_system'] == 'teams') {
 
 $data = array();
 
+$data['get']['message'] = cs_getmsg();
 $data['match'] = cs_sql_select(__FILE__,$tables,$cells,'cupmatches_id = \''.$match_id.'\'');
 
 if ($system['cups_system'] == 'teams') {
@@ -54,7 +56,10 @@ if ($system['cups_system'] == 'teams') {
 }
 
 # das muss ueberarbeitet werden
-$data['if']['showscore'] = !empty($data['match']['cupmatches_score1']) || !empty($data['match']['cupmatches_score2']) ? true : false;
+$nothingyet = empty($data['match']['cupmatches_score1']) && empty($data['match']['cupmatches_score2']) ? true : false;
+$nothingyet = !empty($nothingyet) && empty($data['match']['cupmatches_accepted1']) ? true : false;
+$nothingyet = !empty($nothingyet) && empty($data['match']['cupmatches_accepted2']) && empty($data['match']['cupmatches_winner']) ? true : false;
+$data['if']['showscore'] = empty($nothingyet) ? true : false;
 
 $data['match']['status'] = empty($data['match']['cupmatches_accepted1']) || empty($data['match']['cupmatches_accepted2']) ? $cs_lang['open'] : $cs_lang['closed'];
 
@@ -74,6 +79,12 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
 	$data['if']['participator'] = true;
 	$data['match']['id'] = $match_id;
 	
+	if (!empty($data['match']['cupmatches_winner'])) {
+		$squad1 = $system['cups_system'] == 'teams' ? $data['match']['squad1_id'] : $data['match']['user1_id'];
+	  $winner = $data['match']['cupmatches_winner'] == $squad1 ? $data['match']['team1'] : $data['match']['team2'];
+	  $data['match']['cupmatches_score2'] .= ' (' . $cs_lang['winner'] . ': ' . $winner . ')';
+	}
+	
 	$data['if']['nothingyet'] = false;
 	$data['if']['accept'] = false;
 	$data['if']['confirmed'] = false;
@@ -89,7 +100,7 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
   	$data['if']['accept'] = true;
   } elseif (!empty($data['match']['cupmatches_accepted1']) && !empty($data['match']['cupmatches_accepted2'])) {
 	  $data['if']['confirmed'] = true;
-  } else {
+  } elseif (!empty($data['match']['cupmatches_accepted1']) || !empty($data['match']['cupmatches_accepted2'])) {
   	$data['if']['waiting'] = true;
   	$other_team = empty($squad2_member) ? 2 : 1;
     if ($system['cups_system'] == 'teams') {
@@ -99,6 +110,9 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
       $link =  cs_user($data['match']['user'.$other_team.'_id'],$data['match']['user'.$other_team.'_nick'], $users_data['users_active']);
     }
     $data['lang']['waiting'] = sprintf($cs_lang['waiting'],$link);  
+  } else {
+  	$data['if']['waiting'] = true;
+  	$data['lang']['waiting'] = $cs_lang['waiting_both'];
   }
 } else
   $data['if']['participator'] = false;

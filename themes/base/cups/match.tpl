@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-
+{get:message}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:personal} {lang:team} 1</td>
