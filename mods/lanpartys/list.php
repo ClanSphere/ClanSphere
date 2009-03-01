@@ -37,14 +37,10 @@ for($run=0; $run<$lanpartys_loop; $run++) {
   $data['lanpartys'][$run]['name'] = cs_link(cs_secure($cs_lanpartys[$run]['lanpartys_name']),'lanpartys','view','id=' . $cs_lanpartys[$run]['lanpartys_id']);
   $data['lanpartys'][$run]['start'] = cs_date('unix',$cs_lanpartys[$run]['lanpartys_start'],1);
 
-  if(!empty($cs_lanpartys[$run]['lanpartys_postalcode'])) {
-    $data['lanpartys'][$run]['lanpartys_postalcode'] = $cs_lanpartys[$run]['lanpartys_postalcode'];
-  }
-  
-  if(!empty($cs_lanpartys[$run]['lanpartys_place'])) {
-    $data['lanpartys'][$run]['lanpartys_place'] = cs_secure($cs_lanpartys[$run]['lanpartys_place']);
-  }
+  $data['lanpartys'][$run]['lanpartys_postalcode'] = $cs_lanpartys[$run]['lanpartys_postalcode'];
+  $data['lanpartys'][$run]['lanpartys_place'] = cs_secure($cs_lanpartys[$run]['lanpartys_place']);
 }
 
 echo cs_subtemplate(__FILE__,$data,'lanpartys','list');
+
 ?>

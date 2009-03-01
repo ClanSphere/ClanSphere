@@ -13,6 +13,7 @@ $mod_info['url']        = 'www.clansphere.net';
 $mod_info['text']      = $cs_lang['mod_info'];
 $mod_info['icon']       = 'connect_to_network';
 $mod_info['show']       = array('clansphere/admin' => 3,'users/settings' => 2,'users/view' => 1,'options/roots' => 5,'lanpartys/view' => 1);
+$mod_info['references'] = array('users' => 'languests');
 $mod_info['categories'] = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;

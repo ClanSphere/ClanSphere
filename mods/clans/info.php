@@ -15,6 +15,7 @@ $mod_info['url']        = 'www.clansphere.net';
 $mod_info['text']      = $cs_lang['modtext'];
 $mod_info['icon']      = 'kdmconfig';
 $mod_info['show']       = array('clansphere/admin' => 3,'users/settings' => 2,'users/view' => 1,'options/roots' => 5);
+$mod_info['references'] = array('users' => 'members');
 $mod_info['categories'] = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;

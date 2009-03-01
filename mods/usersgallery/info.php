@@ -13,6 +13,7 @@ $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['info_text_users_gallery'];
 $mod_info['icon']     = 'image';
 $mod_info['show']     = array('users/view' => 1, 'users/settings' => 2);
+$mod_info['references'] = array('users' => 'usersgallery');
 $mod_info['categories'] = FALSE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;

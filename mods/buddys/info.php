@@ -13,6 +13,7 @@ $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['mod_text'];
 $mod_info['icon']     = 'xchat';
 $mod_info['show']     = array('users/view' => 1, 'users/settings' => 2);
+$mod_info['references'] = array('users' => 'buddys');
 $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;

@@ -13,6 +13,7 @@ $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['modtext'];
 $mod_info['icon']    = 'wifi';
 $mod_info['show']    = array('clansphere/admin' => 3,'options/roots' => 5,'users/view' => 1);
+$mod_info['references'] = array('users' => 'players', 'users_where' => "players_played = 1");
 $mod_info['categories'] = TRUE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
