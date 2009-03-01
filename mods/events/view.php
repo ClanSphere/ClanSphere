@@ -38,6 +38,8 @@ elseif(!empty($cs_events['events_cancel'])) {
 echo cs_html_table(0);
 echo cs_html_br(1);
 
+echo cs_getmsg();
+
 echo cs_html_table(1,'forum',1);
 echo cs_html_roco(1,'leftc');
 echo cs_icon('cal') . $cs_lang['name'];
