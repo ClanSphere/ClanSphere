@@ -46,7 +46,7 @@ for($run=0; $run<$eventguests_loop; $run++) {
   $data['eventguests'][$run]['user'] = cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
   $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since'],1);
   $data['eventguests'][$run]['name'] = empty($cs_eventguests[$run]['users_surname']) ? $cs_eventguests[$run]['users_name'] : $cs_eventguests[$run]['users_surname'] . ', ' . $cs_eventguests[$run]['users_name'];
-  $data['eventguests'][$run]['remove'] = cs_icon('editdelete',16,$cs_lang['remove']);
+  $data['eventguests'][$run]['remove'] = cs_link(cs_icon('editdelete',16,$cs_lang['remove']),'events','guestsdel','id=' . $cs_eventguests[$run]['eventguests_id'],0,$cs_lang['remove']);
 }
 
 echo cs_subtemplate(__FILE__,$data,'events','guests');
