@@ -12,7 +12,7 @@
   </tr>
 </table>
 <br />
-<center>{head:getmsg}</center>
+{head:getmsg}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:user} {lang:user}</td>

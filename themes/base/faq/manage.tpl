@@ -9,9 +9,7 @@
   </tr>
 </table>
 <br />
-<center>
-  {lang:getmsg}
-</center>
+{lang:getmsg}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:question} {lang:frage}</td>

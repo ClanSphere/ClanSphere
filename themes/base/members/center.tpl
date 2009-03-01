@@ -20,7 +20,7 @@
   </tr>
 </table>
 <br />
-<center>{lang:msg}</center>
+{lang:msg}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:user} {lang:user}</td>
