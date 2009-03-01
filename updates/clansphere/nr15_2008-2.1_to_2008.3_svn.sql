@@ -73,3 +73,15 @@ CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);
 CREATE INDEX {pre}_eventguests_users_id_index ON {pre}_eventguests (users_id);
 
 ALTER TABLE {pre}_users ADD users_delete int(1) NOT NULL default '0';
+
+CREATE TABLE {pre}_medals (
+  medals_id {serial},
+  users_id int(8) NOT NULL DEFAULT '0',
+  medals_extension varchar(10) NOT NULL DEFAULT '',
+  medals_name varchar(150) NOT NULL DEFAULT '',
+  medals_text text,
+  medals_date varchar(14) NOT NULL DEFAULT '0',
+  PRIMARY KEY (medals_id)
+){engine};
+
+ALTER TABLE {pre}_access ADD access_medals int(2) NOT NULL DEFAULT '0';

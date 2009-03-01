@@ -1,0 +1,78 @@
+<?php
+
+$cs_lang = cs_translate('medals');
+$data = array();
+
+if (!empty($_POST['submit'])) {
+  
+  $error = '';
+  $save = array();
+  
+  $users_nick = cs_sql_escape($_POST['users_nick']);
+  $users_id = cs_sql_select(__FILE__,'users','users_id',"users_nick = '" . $users_nick . "'" );
+  echo $users_id;
+  
+  $save['users_id'] = !empty($users_id) ? (int) $users_id['users_id'] : 0;
+  $save['medals_name'] = $_POST['medals_name'];
+  $save['medals_date'] = cs_time();
+  $save['medals_text'] = empty($_POST['medals_text']) ? '' : $_POST['medals_text'];
+  
+  if (empty($save['users_id']))
+    $error .= cs_html_br(1) . $cs_lang['user_not_found'];
+  
+  if (empty($save['medals_name']))
+    $error .= cs_html_br(1) . $cs_lang['no_name'];
+  
+  if(!empty($_FILES['medals_picture']['tmp_name'])) {
+    $img_size = getimagesize($_FILES['medals_picture']['tmp_name']);
+    switch($img_size[2]) {
+      case 1:
+        $extension = 'gif'; break;
+      case 2:
+        $extension = 'jpg'; break;
+      case 3:
+        $extension = 'png'; break;
+    }
+    
+    if (empty($extension))
+      $error .= cs_html_br(1) . $cs_lang['wrong_ext'];
+    else
+      $save['medals_extension'] = $extension;
+  }
+}
+
+if (!empty($_POST['submit']) && empty($error)) {
+
+  $cells = array_keys($save);
+  $values = array_values($save);
+  
+  cs_sql_insert(__FILE__,'medals',$cells,$values);
+  
+  if (!empty($_FILES['medals_picture']['tmp_name'])) {
+    $id = cs_sql_insertid(__FILE__);
+    $filename = 'medal-' . $id . '.' . $extension;
+    cs_upload('medals',$filename,$_FILES['medals_picture']['tmp_name']);
+  }
+  
+  cs_redirect($cs_lang['create_done'], 'medals');
+  
+}
+
+if (empty($_POST['submit'])) {
+  $data['medals']['users_nick'] = '';
+  $data['medals']['medals_name'] = '';
+  $data['medals']['medals_text'] = '';
+} else {
+  $data['medals']['users_nick'] = $_POST['users_nick'];
+  $data['medals']['medals_name'] = $save['medals_name'];
+  $data['medals']['medals_text'] = $save['medals_text'];
+}
+
+$data['medals']['message'] = empty($error) ? $cs_lang['errors_here'] : $cs_lang['error_occured'] . $error;
+
+$data['form']['abcode'] = cs_abcode_features('medals_text');
+$data['form']['dirname'] = $cs_main['php_self']['dirname'];
+  
+echo cs_subtemplate(__FILE__,$data,'medals','create');
+
+?>
