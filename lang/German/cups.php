@@ -74,6 +74,7 @@ $cs_lang['match'] = 'Match';
 $cs_lang['matchdetails'] = 'Details zu einer Begegnung';
 $cs_lang['result'] = 'Ergebnis';
 $cs_lang['team'] = 'Team';
+$cs_lang['bye'] = 'Freilos';
 
 $cs_lang['enter_result'] = 'Ergebnis eintragen';
 $cs_lang['accept_result'] = 'Ergebnis best&auml;tigen';

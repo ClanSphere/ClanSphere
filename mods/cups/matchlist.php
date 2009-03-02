@@ -102,6 +102,7 @@ for ($i = 0; $i < $data['vars']['matchcount']; $i++) {
 		$users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $data['matches'][$i]['user2_id'] . "'");
     $data['matches'][$i]['team2'] = cs_user($data['matches'][$i]['user2_id'],$data['matches'][$i]['user2_nick'], $users_data['users_active'], $users_data['users_delete']);
 	}
+	if (empty($data['matches'][$i]['team2']) && $data['matches'][$i]['cupmatches_score1'] == 1 && $data['matches'][$i]['cupmatches_score2'] == 0) $data['matches'][$i]['team2'] = $cs_lang['bye'];
 }
 
 echo cs_subtemplate(__FILE__, $data, 'cups', 'matchlist');

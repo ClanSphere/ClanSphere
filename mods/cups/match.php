@@ -16,10 +16,10 @@ $tables .= 'INNER JOIN {pre}_games gms ON cp.games_id = gms.games_id ';
 
 if ($system['cups_system'] == 'teams') {
   $tables .= 'INNER JOIN {pre}_squads sq1 ON cm.squad1_id = sq1.squads_id ';
-  $tables .= 'INNER JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id';
+  $tables .= 'LEFT JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id';
 } else {
   $tables .= 'INNER JOIN {pre}_users usr1 ON cm.squad1_id = usr1.users_id ';
-  $tables .= 'INNER JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id';
+  $tables .= 'LEFT JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id';
 }
 
 $cells  = 'cm.cups_id AS cups_id, cp.cups_name AS cups_name, ';
@@ -55,6 +55,7 @@ if ($system['cups_system'] == 'teams') {
   $users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $data['match']['user2_id'] . "'");
   $data['match']['team2'] = cs_user($data['match']['user2_id'], $data['match']['user2_nick'], $users_data['users_active'], $users_data['users_delete']);
 }
+if (empty($data['match']['team2']) && $data['match']['cupmatches_score1'] == 1 && $data['match']['cupmatches_score2'] == 0) $data['match']['team2'] = $cs_lang['bye'];
 
 $nothingyet = empty($data['match']['cupmatches_score1']) && empty($data['match']['cupmatches_score2']) ? true : false;
 $nothingyet = !empty($nothingyet) && empty($data['match']['cupmatches_accepted1']) ? true : false;
