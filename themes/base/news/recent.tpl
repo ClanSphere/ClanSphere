@@ -4,7 +4,10 @@
   <td class="headb" colspan="3">{lang:mod} - {lang:recent}</td>
  </tr>
  <tr>
-  <td class="leftb">{lang:category} {head:dropdown} {head:button}</td>
+  <td class="leftb">{lang:category}
+	{head:dropdown}
+	<input type="submit" name="submit" value="{lang:show}" />
+  </td>
   <td class="leftb"><a href="{url:news_list}">{lang:list}</a></td>
   <td class="rightb">{head:pages}</td>
  </tr>

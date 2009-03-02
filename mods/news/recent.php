@@ -22,7 +22,6 @@ $start = empty($_REQUEST['start']) ? 0 : (int)$_REQUEST['start'];
 $newsmod = "categories_mod = 'news' AND categories_access <= " . $account['access_news'];
 $cat_data = cs_sql_select(__FILE__, 'categories', '*', $newsmod, 'categories_name', 0, 0);
 $data['head']['dropdown'] = cs_dropdown('where', 'categories_name', $cat_data, $cat_id, 'categories_id');
-$data['head']['button'] = cs_html_vote('submit', $cs_lang['show'], 'submit');
 $join = 'news nws INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
 $news_count = cs_sql_count(__FILE__, $join, $where, 'news_id');
 $data['head']['pages'] = cs_pages('news', 'recent', $news_count, $start, $cat_id, 0, $cs_option['max_recent']);
