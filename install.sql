@@ -382,8 +382,7 @@ CREATE TABLE {pre}_cupmatches (
   cupmatches_round int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (cupmatches_id),
   UNIQUE (cups_id, squad1_id, squad2_id),
-  UNIQUE (cups_id, squad1_id, cupmatches_round),
-  UNIQUE (cups_id, squad2_id, cupmatches_round)
+  UNIQUE (cups_id, squad1_id, cupmatches_round)
 ){engine};
 
 CREATE TABLE {pre}_eventguests (

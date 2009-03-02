@@ -46,16 +46,20 @@ if (!empty($_POST['start'])) {
   }
 
   if(!empty($matches)) {
+  	
+  	$round = strlen(decbin($maxteams['cups_teams'])) - 1;
+  	
     foreach ($matches AS $match) {
       $cs_cups['cups_id'] = $id;
       $cs_cups['squad1_id'] = $match[1];
       $cs_cups['squad2_id'] = empty($match[2]) ? 0 : $match[2];
-      $cs_cups['cupmatches_round'] = strlen(decbin($maxteams['cups_teams'])) - 1;
+      $cs_cups['cupmatches_round'] = $round;
       
       if (empty($match[2])) {
         $cs_cups['cupmatches_winner'] = $match[1];
         $cs_cups['cupmatches_accepted1'] = 1;
         $cs_cups['cupmatches_accepted2'] = 1;
+        $cs_cups['cupmatches_score1'] = 1;
       }
       
       $cells = array_keys($cs_cups);

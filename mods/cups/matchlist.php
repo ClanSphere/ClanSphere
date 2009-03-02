@@ -9,7 +9,7 @@ $cups_id = !empty($_POST['where']) ? (int) $_POST['where'] : (int) $_GET['where'
 $maxteams = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$cups_id.'\'');
 $cupteams = strlen(decbin($maxteams['cups_teams']));
 
-$round = !empty($_POST['round']) ? (int) $_POST['round'] : 1;
+$round = !empty($_POST['round']) ? (int) $_POST['round'] : $cupteams - 1;
 $round = !empty($_GET['round']) ? (int) $_GET['round'] : $round;
 $round2 = $cupteams - $round;
 $round2 = !empty($_GET['round']) ? (int) $_GET['round'] : $round;
@@ -38,10 +38,10 @@ $order = $cs_sort[$sort];
 $tables  = 'cupmatches cm ';
 if ($system['cups_system'] == 'teams') {
   $tables .= 'INNER JOIN {pre}_squads sq1 ON cm.squad1_id = sq1.squads_id ';
-  $tables .= 'INNER JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id';
+  $tables .= 'LEFT JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id';
 } else {
   $tables .= 'INNER JOIN {pre}_users usr1 ON cm.squad1_id = usr1.users_id ';
-  $tables .= 'INNER JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id';
+  $tables .= 'LEFT JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id';
 }
 
 $cells  = 'cm.cupmatches_id AS cupmatches_id, cm.cupmatches_score1 AS cupmatches_score1, ';

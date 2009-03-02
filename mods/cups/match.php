@@ -56,7 +56,6 @@ if ($system['cups_system'] == 'teams') {
   $data['match']['team2'] = cs_user($data['match']['user2_id'], $data['match']['user2_nick'], $users_data['users_active'], $users_data['users_delete']);
 }
 
-# das muss ueberarbeitet werden
 $nothingyet = empty($data['match']['cupmatches_score1']) && empty($data['match']['cupmatches_score2']) ? true : false;
 $nothingyet = !empty($nothingyet) && empty($data['match']['cupmatches_accepted1']) ? true : false;
 $nothingyet = !empty($nothingyet) && empty($data['match']['cupmatches_accepted2']) && empty($data['match']['cupmatches_winner']) ? true : false;
