@@ -12,6 +12,7 @@ $cupteams = strlen(decbin($maxteams['cups_teams']));
 $round = !empty($_POST['round']) ? (int) $_POST['round'] : 1;
 $round = !empty($_GET['round']) ? (int) $_GET['round'] : $round;
 $round2 = $cupteams - $round;
+$round2 = !empty($_GET['round']) ? (int) $_GET['round'] : $round;
 
 $start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 
@@ -62,14 +63,18 @@ $cond = 'cm.cupmatches_round = \''.$round2.'\' and cm.cupmatches_id > \''.$start
 $data = array();
 
 $data['matches'] = cs_sql_select(__FILE__,$tables,$cells,$cond,$order,0,$account['users_limit']);
+$data['cups']['id'] = $cups_id;
 
 $data['rounds'] = array();
 $max = $cupteams - 1;
+
 for ($i = 0; $i < $max; $i++) {
   $j = $i+1;
-	$data['rounds'][$i]['selected'] = $j == $round ? ' selected="selected"' : '';
-  $data['rounds'][$i]['value'] = $j;
+  $data['rounds'][$i]['value'] = $cupteams - $j;
+  $data['rounds'][$i]['if']['notselected'] = $data['rounds'][$i]['value'] == $round ? false : true;
+  $data['rounds'][$i]['name'] = $j; 
 }
+
 
 $data['vars']['matchcount'] = count($data['matches']);
 $data['vars']['cups_id'] = $cups_id;

@@ -7,15 +7,7 @@
     <td class="leftc">{pages:list}</td>
   </tr>
   <tr>
-    <td class="leftc" colspan="2">
-    <form method="post" name="cups_tree" action="{url:cups_matchlist}">
-      <input type="hidden" name="where" value="{vars:cups_id}" />
-      <select name="round" class="form">{loop:rounds}
-	      <option value="{rounds:value}"{rounds:selected}>{lang:round} {rounds:value}</option>{stop:rounds}
-      </select>
-      <input type="submit" name="submit" value="{lang:show}" class="form" />
-    </form>
-    </td>
+    <td class="leftc" colspan="2">{loop:rounds}{if:notselected}<a href="{url:cups_matchlist:where={cups:id}&amp;round={rounds:value}}">{stop:notselected}{lang:round} {rounds:name}{if:notselected}</a>{stop:notselected} {stop:rounds}</td>
   </tr>
 </table>
 <br />

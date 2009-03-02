@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kreversi} {lang:cup}</td>
-    <td class="leftb"><a href="{url:cups_view:id={match:cups_id}}">{match:cups_name}</a></td>
+    <td class="leftb"><a href="{url:cups_view:id={match:cups_id}}">{match:cups_name}</a> (<a href="{url:cups_matchlist:where={match:cups_id}&amp;round={match:cupmatches_round}}">{lang:matchlist}</a>)</td>
   </tr>
   <tr>
     <td class="leftc">{icon:package_games} {lang:game}</td>

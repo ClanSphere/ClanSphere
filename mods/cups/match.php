@@ -29,6 +29,7 @@ $cells .= 'cm.cupmatches_score2 AS cupmatches_score2, ';
 $cells .= 'cm.cupmatches_accepted1 AS cupmatches_accepted1, ';
 $cells .= 'cm.cupmatches_accepted2 AS cupmatches_accepted2, ';
 $cells .= 'cm.cupmatches_winner AS cupmatches_winner, ';
+$cells .= 'cm.cupmatches_round AS cupmatches_round, ';
 
 if ($system['cups_system'] == 'teams') {
   $cells .= 'sq1.squads_name AS squad1_name, sq2.squads_name AS squad2_name, ';
