@@ -94,7 +94,7 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
 	$data['match']['teamnr'] = empty($squad2_member) ? 1 : 2;
 	if ($data['match']['teamnr'] == 1 && empty($squad1_member)) $data['match']['teamnr'] = 0;
 	
-	if (!empty($data['match']['teamnr']) && empty($data['match']['cupmatches_accepted1']) && empty($data['match']['cupmatches_accepted2'])) {
+	if (!empty($data['match']['teamnr']) && !empty($nothingyet)) {
     $data['if']['nothingyet'] = true;
   } elseif ((!empty($squad1_member) && empty($data['match']['cupmatches_accepted1'])) || (!empty($squad2_member) && empty($data['match']['cupmatches_accepted2']))) {
   	$data['if']['accept'] = true;

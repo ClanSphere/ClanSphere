@@ -85,7 +85,7 @@ for ($i = 0; $i < $data['vars']['matchcount']; $i++) {
 	if (!empty($system['cups_brackets']))
     $data['matches'][$i]['bracket'] = empty($data['matches'][$i]['cupmatches_loserbracket']) ? $cs_lang['winners'] : $cs_lang['losers'];
   
-  $data['matches'][$i]['status'] = empty($data['matches'][$i]['cupmatches_accepted1']) || empty($data['matches'][$i]['cupmatches_accepted1']) ?
+  $data['matches'][$i]['status'] = empty($data['matches'][$i]['cupmatches_accepted1']) || empty($data['matches'][$i]['cupmatches_accepted2']) ?
     $cs_lang['open'] : $cs_lang['closed'];
   
 	if ($system['cups_system'] == 'teams') {
