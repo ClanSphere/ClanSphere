@@ -2,11 +2,6 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$bla = $_GET['abc'];
-
-$bla2 = cs_sql_select(__FILE__,'table','select',"abc = '" . $bla . '"',0,0,0);
-
-
 $cs_lang = cs_translate('abcode');
 
 $op_abcode = cs_sql_option(__FILE__,'abcode');
