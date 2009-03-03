@@ -21,7 +21,9 @@
 		<td class="leftb">
 			<select name="games_id" onchange="document.getElementById('game_1').src='/uploads/games/' + this.form.games_id.options[this.form.games_id.selectedIndex].value + '.gif'">
 				<option value="0">----</option>
-				{replays:games_sel}
+				{loop:games}
+				{games:op}
+				{stop:games}
 			</select>
 			{replays:games_img}
 		</td>
