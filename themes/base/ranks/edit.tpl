@@ -29,7 +29,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:images} {lang:img} *</td>
-		<td class="leftb"><input type="text" name="ranks_img" value="{ranks:ranks_img}" maxlength="80" size="50" /></td>
+		<td class="leftb">http://<input type="text" name="ranks_img" value="{ranks:ranks_img}" maxlength="80" size="50" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:html} {lang:code}</td>
