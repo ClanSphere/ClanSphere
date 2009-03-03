@@ -92,7 +92,7 @@ if (isset($_POST['submit']) or isset($_POST['preview'])) {
   }
 
   if(!empty($cs_main['fckeditor'])) {
-    $cs_news['news_readmore'] = '[html]' . $_POST['news_readmore'] . '[/html]';
+    $cs_news['news_readmore'] = !empty($_POST['news_readmore']) ? '[html]' . $_POST['news_readmore'] . '[/html]' : '';
   }
 
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
