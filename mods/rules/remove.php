@@ -3,10 +3,10 @@
 // $Id$
 
 $cs_lang = cs_translate('rules');
-
+$cs_get = cs_get('id');
 $data = array();
 
-$rules_id = $_GET['id'];
+$rules_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
 if(isset($_GET['agree'])) {
   cs_sql_delete(__FILE__,'rules',$rules_id);

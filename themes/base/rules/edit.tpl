@@ -3,10 +3,11 @@
   <td class="headb">{lang:mod} - {lang:head_edit}</td>
  </tr>
  <tr>
-  <td class="leftb">{head:body} {head:error}</td>
+  <td class="leftb">{head:body}</td>
  </tr>
 </table>
 <br />
+
 {if:preview}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
@@ -19,7 +20,7 @@
 <br />
 {stop:preview}
 
-<form method="post" name="rules_edit" action="{url:form}">
+<form method="post" name="rules_edit" action="{url:rules_edit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr>
   <td class="leftc">{icon:kedit} {lang:order} *</td>
@@ -28,21 +29,22 @@
     <input type="text" name="rules_title" value="{data:rules_title}" maxlength="40" size="40" /></td>
  </tr>
  <tr>
-  <td class="leftc">{icon:kate} {lang:rule} *<br /><br /></td>
-  <td class="leftb">
-    <textarea name="rules_rule" cols="50" rows="20" id="rules_rule" style="width: 98%;">{data:rules_rule}</textarea></td>
- </tr>
- <tr>
   <td class="leftc">{icon:folder_yellow} {lang:cat} *</td>
   <td class="leftb">{categories:dropdown}</td>
  </tr>
  <tr>
+  <td class="leftc">{icon:kate} {lang:rule} *<br /><br /></td>
+  <td class="leftb">
+	{abcode:features}
+    <textarea name="rules_rule" cols="50" rows="20" id="rules_rule" style="width:98%;">{data:rules_rule}</textarea></td>
+ </tr>
+ <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>
   <td class="leftb">
-  	<input type="hidden" name="id" value="{data:rules_id}" />
-		<input type="submit" name="submit" value="{lang:edit}" />
-		<input type="submit" name="preview" value="{lang:preview}" />
- 		<input type="reset" name="reset" value="{lang:reset}" /></td>
+    <input type="hidden" name="id" value="{data:rules_id}" />
+    <input type="submit" name="submit" value="{lang:edit}" />
+    <input type="submit" name="preview" value="{lang:preview}" />
+    <input type="reset" name="reset" value="{lang:reset}" /></td>
   </tr>
 </table>
 </form>
