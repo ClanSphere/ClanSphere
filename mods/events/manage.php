@@ -3,20 +3,24 @@
 // $Id$
 
 $cs_lang = cs_translate('events');
-
+$cs_post = cs_post('where,start,sort');
+$cs_get = cs_get('where,start,sort');
 $data = array();
 
-$categories_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
-settype($categories_id,'integer');
-$where = empty($categories_id) ? 0 : "categories_id = '" . $categories_id . "'";
-$where2 = empty($categories_id) ? 0 : 'evs.' . $where;
+$categories_id = empty($cs_get['where']) ? 0 : $cs_get['where'];
+if (!empty($cs_post['where']))  $categories_id = $cs_post['where'];
+$start = empty($cs_get['start']) ? 0 : $cs_get['start'];
+if (!empty($cs_post['start']))  $start = $cs_post['start'];
+$sort = empty($cs_get['sort']) ? 3 : $cs_get['sort'];
+if (!empty($cs_post['sort']))  $sort = $cs_post['sort'];
 
-$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
+$where = empty($categories_id) ? 0 : "categories_id = '" . $categories_id . "'";
+#$where2 = empty($categories_id) ? 0 : 'evs.' . $where;
+
 $cs_sort[1] = 'events_name DESC';
 $cs_sort[2] = 'events_name ASC';
 $cs_sort[3] = 'events_time DESC';
 $cs_sort[4] = 'events_time ASC';
-$sort = empty($_REQUEST['sort']) ? 3 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $data['count']['all'] = cs_sql_count(__FILE__,'events',$where);
@@ -32,8 +36,7 @@ $data['sort']['name'] = cs_sort('events','manage',$start,$categories_id,1,$sort)
 $data['sort']['date'] = cs_sort('events','manage',$start,$categories_id,3,$sort);
 
 $select = 'events_time, events_id, events_name, events_cancel, events_guestsmax';
-
-$data['events'] = cs_sql_select(__FILE__,'events',$select,$where2,$order,$start,$account['users_limit']);
+$data['events'] = cs_sql_select(__FILE__,'events',$select,$where,$order,$start,$account['users_limit']);
 $count_events = count($data['events']);
 
 for ($run = 0; $run < $count_events; $run++) {
