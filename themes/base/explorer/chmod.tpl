@@ -12,6 +12,10 @@
 
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
+    <td class="leftc">{icn:unknown} {lang:file}</td>
+    <td class="leftb">{var:source}</td>
+  </tr>
+  <tr>
     <td class="leftc">{icon:access} {lang:owner}</td>
     <td class="leftb">
       <input type="checkbox" name="owner_read" value="400" id="owner_read" onclick="cs_chmod_CheckChange('owner_read',400)" class="form"{check:o_r} /> {lang:read}<br />

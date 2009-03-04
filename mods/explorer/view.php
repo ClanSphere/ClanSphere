@@ -4,6 +4,7 @@
 
 $cs_lang = cs_translate('explorer');
 $data = array();
+if (isset($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], '/file/')+6);
 
 if (empty($_GET['file'])) {
   
@@ -37,7 +38,7 @@ if (empty($_GET['file'])) {
     case 'tpl': case 'htm': case 'html':
       if (empty($_GET['code'])) {
         $content = file_get_contents($file);
-        $add = cs_link($cs_lang['code'],'explorer','view','file='.$file.'&amp;code=1');
+        $add = cs_link($cs_lang['code'],'explorer','view','code=1&amp;file='.$file);
         if ($ending == 'tpl') $notable = 1;
       } else {
         $content = cs_secure(file_get_contents($file),1,0,0);

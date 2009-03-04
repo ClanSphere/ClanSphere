@@ -4,6 +4,7 @@
 
 $cs_lang = cs_translate('explorer');
 
+if (isset($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/information/file/')+26);
 $source = str_replace('..', '', $_GET['file']);
 $dir = strchr($source, '/');
 

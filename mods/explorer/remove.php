@@ -6,12 +6,13 @@ $cs_lang = cs_translate('explorer');
 
 if(empty($_POST['submit']) && empty($_POST['cancel'])) {
   
+	if (isset($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/remove/file/')+21);
   $source = str_replace('..','',$_GET['file']);
   
   if(empty($source)) {
     cs_redirect($cs_lang['no_file'], 'explorer','roots') ;
   } elseif(!file_exists($source)) {
-    cs_redirect($cs_lang['not_found'], 'explorer','roots') ;
+    cs_redirect($cs_lang['not_found'] . ': ' . $source, 'explorer','roots') ;
   } else {
     
     $data = array();

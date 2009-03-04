@@ -11,8 +11,12 @@
 <form method="post" name="explorer_upload2" action="{url:explorer_upload}" enctype="multipart/form-data">
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
-    <td class="leftc" style="width: 25%">{icon:download} {lang:file} *</td>
-    <td class="leftb" style="width: 75%"><input type="file" name="file" value="" class="form" /></td>
+    <td class="leftc" style="width: 25%">{icn:dir} {lang:directory}</td>
+    <td class="leftb" style="width: 75%">{var:dir}</td>
+  </tr>
+  <tr>
+    <td class="leftc">{icon:download} {lang:file} *</td>
+    <td class="leftb"><input type="file" name="file" value="" class="form" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:kedit} {lang:f_name}</td>

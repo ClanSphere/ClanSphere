@@ -7,12 +7,13 @@ $cs_lang = cs_translate('explorer');
 
 if(empty($_POST['submit'])) {
   
+	if (isset($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/edit/file/')+19);
 	$source = str_replace('..', '', $_GET['file']);
   
 	if(empty($source)) {
     cs_redirect($cs_lang['no_file'], 'explorer', 'roots');
   } elseif(!file_exists($source)) {
-    cs_redirect($cs_lang['not_found'], 'explorer', 'roots');
+    cs_redirect($cs_lang['not_found'] . ': ' . $source, 'explorer', 'roots');
   } elseif (@!$file = fopen($source,"r")) {
     cs_redirect($cs_lang['file_not_opened'], 'explorer', 'roots');
   } else {
@@ -40,6 +41,7 @@ if(empty($_POST['submit'])) {
     
     $data['var']['content'] = $content;
     $data['var']['source'] = $source;
+    $data['icn']['unknown'] = cs_html_img('symbols/files/filetypes/unknown.gif', 16, 16);
     
     echo cs_subtemplate(__FILE__, $data, 'explorer', 'edit');
   }

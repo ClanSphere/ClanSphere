@@ -6,6 +6,8 @@ $cs_lang = cs_translate('explorer');
 
 if(empty($_POST['submit'])) {
 	
+	if (isset($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/chmod/file/')+20);
+	
 	$dir = substr($_GET['file'], 0, strrpos($_GET['file'],'/'));
 	
   if(empty($_GET['file'])) {
@@ -20,6 +22,7 @@ if(empty($_POST['submit'])) {
     
     $data['var']['source'] = $source;
     $data['var']['chmod'] = $chmod;
+    $data['icn']['unknown'] = cs_html_img('symbols/files/filetypes/unknown.gif', 16, 16);
     
     $check = ' checked="checked"';
     $temp = $chmod;

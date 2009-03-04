@@ -18,6 +18,7 @@ if (empty($_POST['submit'])) {
   $data['if']['modsdir'] = false;
   $data['var']['dir'] = $dir;
   $data['var']['name'] = empty($_POST['name']) ? '' : str_replace('..','',$_POST['name']);
+  $data['icn']['dir'] = cs_html_img('symbols/files/filetypes/dir.gif',16,16);
   
   #$data['if']['accessentry'] = isset($_POST['accessadd']) && file_exists($dir . '/access.php') ? true : false;
   $data['if']['accessentry'] = false;

@@ -11,12 +11,16 @@
 <form method="post" name="upload_edit" action="{url:explorer_edit}">
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
-    <td class="leftc" style="width: 20%">
+    <td class="leftc" style="width: 20%">{icn:unknown} {lang:file}</td>
+    <td class="leftb" style="width: 80%">{var:source}</td>
+  </tr>
+  <tr>
+    <td class="leftc">
     <div style="display: none;" id="break"><br /></div>
     <div style="display: none;" id="parameters"></div>
     {icon:kate} {lang:content}</td>
     
-    <td class="leftb" style="width: 80%">
+    <td class="leftb">
     {if:phpfile}
     <input type="button" name="tab" value="TAB" accesskey="t" onclick="javascript:abc_insert('\t','','data_content','')" class="form" />
     {abcode:tools}
