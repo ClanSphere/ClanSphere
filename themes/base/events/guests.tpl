@@ -8,7 +8,8 @@
     <td class="rightb">{head:pages}</td>
   </tr>
   <tr>
-    <td class="centerb" colspan="3">{events:time} - <a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
+    <td class="leftb"><a href="{url:events_guestsnew:id={events:events_id}}">{lang:new_guest}</a></td>
+    <td class="leftb" colspan="2">{events:time} - <a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
   </tr>
 </table>
 <br />

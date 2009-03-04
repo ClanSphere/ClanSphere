@@ -155,4 +155,11 @@ $cs_lang['err_adress']     = '- Your profile must contain a full adress';
 $cs_lang['err_phone']      = '- Data in profile too short or missing: Phone';
 $cs_lang['err_mobile']     = '- Data in profile too short or missing: Cell Phone';
 
+// Guests
+
+$cs_lang['new_guest']         = 'New guest';
+$cs_lang['event']             = 'Event';
+$cs_lang['no_user']           = '- No user is selected';
+$cs_lang['user_event_exists'] = '- User has already signed in for the event';
+
 ?>
