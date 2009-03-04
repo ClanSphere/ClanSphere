@@ -177,9 +177,9 @@ if(!empty($cs_thread_votes))
     $votes_error = '';
     $users_ip = $_SERVER['REMOTE_ADDR'];
     $users_id = $account['users_id'];
-    $where = "voted_mod = 'board' AND voted_fid = \"$id\" AND voted_ip = \"$users_ip\"";
+    $where = "voted_mod = 'board' AND voted_fid = \"" . $id . "\" AND voted_ip = '" . $users_ip . "'";
     if($users_id > 0)
-      $where .= " OR voted_mod = 'board' AND voted_fid = \"$id\" AND users_id = \"$users_id\"";
+      $where .= " OR voted_mod = 'board' AND voted_fid = \"" . $id . "\" AND users_id = '" . $users_id . "'";
     
     $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
     if(!empty($checkit_userip))
