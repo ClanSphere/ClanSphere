@@ -24,6 +24,8 @@ if (!file_exists('setup.php')) die('<a href="install.php">Installation required<
 require('setup.php');
 require('system/database/' . $cs_db['type'] . '.php');
 $cs_db['con'] = cs_sql_connect($cs_db);
+unset($cs_db['pwd']);
+unset($cs_db['user']);
 
 $cs_main = @cs_sql_option(__FILE__,'clansphere') OR die('<a href="install.php">Installation required</a> or database error');
 

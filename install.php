@@ -27,6 +27,8 @@ if(file_exists('setup.php')) {
   require 'setup.php';
   require 'system/database/' . $cs_db['type'] . '.php';
   $cs_db['con'] = cs_sql_connect($cs_db);
+  unset($cs_db['pwd']);
+  unset($cs_db['user']);
 }
 else {
   $cs_logs['save_actions'] = 0;

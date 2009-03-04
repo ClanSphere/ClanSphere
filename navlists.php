@@ -24,7 +24,9 @@ if(file_exists('setup.php')) {
   require_once('setup.php');
   require_once('system/database/' . $cs_db['type'] . '.php');
   if (empty($cs_db['con'])) $cs_db['con'] = cs_sql_connect($cs_db);
-
+  unset($cs_db['pwd']);
+  unset($cs_db['user']);
+  
   if (empty($cs_main)) $cs_main = @cs_sql_option(__FILE__,'clansphere') OR die($install_link . ' or database error');
 
   require_once('system/core/servervars.php');
