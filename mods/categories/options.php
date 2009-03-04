@@ -14,7 +14,7 @@ if(isset($_POST['submit'])) {
   $save['max_width'] = (int) $_POST['max_width'];
   $save['max_height'] = (int) $_POST['max_height'];
   $save['max_size'] = (int) $_POST['max_size'];
-  $save['def_mod'] = (int) $_POST['def_mod'];
+  $save['def_mod'] = $_POST['def_mod'];
   cs_optionsave('categories', $save);
 
   cs_redirect($cs_lang['changes_done'],'categories','options');
