@@ -9,7 +9,7 @@ $start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 $cs_sort[1] = 'categories_name DESC';
 $cs_sort[2] = 'categories_name ASC';
 $sort = empty($_GET['sort']) ? 1 : (int) $_GET['sort'];
-$order = $cs_sort[$sort];
+$order = 'categories_subid, ' . $cs_sort[$sort];
 
 $cat_where = "categories_mod = 'articles' AND categories_access <= '" . $account['access_categories'] . "'";
 $cells = 'categories_name, categories_id, categories_text, categories_picture, categories_subid';

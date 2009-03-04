@@ -18,18 +18,20 @@ empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $articles_count = cs_sql_count(__FILE__,'articles');
 
-  $data['link']['new_article'] =  cs_link($cs_lang['new_article'],'articles','create');
-  $data['head']['articles_count'] = $articles_count;
-  $data['head']['pages'] = cs_pages('articles','manage',$articles_count,$start,$categories_id,$sort);
-  $catmod = "categories_mod = 'articles'";
-  $categories_data = cs_sql_select(__FILE__,'categories','*',$catmod,'categories_name',0,0);
-  $data['head']['dropdown'] = cs_dropdown('categories_id','categories_name',$categories_data,$categories_id);
-  $data['head']['button'] = cs_html_vote('submit',$cs_lang['show'],'submit');
-  
-  $data['head']['message'] = cs_getmsg();
-  
-if(empty($categories_id)) { $cat_where = ''; } else { $cat_where = "categories_id = '" . $categories_id . "'"; }
-$cs_articles = cs_sql_select(__FILE__,'articles','*',$cat_where,$order,$start,$account['users_limit']);
+$data['link']['new_article'] =  cs_link($cs_lang['new_article'],'articles','create');
+$data['head']['articles_count'] = $articles_count;
+$data['head']['pages'] = cs_pages('articles','manage',$articles_count,$start,$categories_id,$sort);
+$catmod = "categories_mod = 'articles'";
+$cells = 'categories_name, categories_id';
+$categories_data = cs_sql_select(__FILE__,'categories', $cells, $catmod,'categories_name',0,0);
+$data['head']['dropdown'] = cs_dropdown('categories_id','categories_name',$categories_data,$categories_id);
+
+$data['head']['message'] = cs_getmsg();
+
+$cat_where = empty($categories_id) ? 0 : 'categories_id = "' . $categories_id . '"';
+$cells = 'articles_headline, articles_id, articles_time, users_id';
+
+$cs_articles = cs_sql_select(__FILE__,'articles', $cells,$cat_where,$order,$start,$account['users_limit']);
 $articles_loop = count($cs_articles);
 
   $data['sort']['headline'] = cs_sort('articles','manage',$start,$categories_id,1,$sort);

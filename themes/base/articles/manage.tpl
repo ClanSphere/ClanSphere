@@ -9,7 +9,7 @@
 		<td class="rightb"> {head:pages} </td>
   </tr>
 	  <tr>
-    <td class="leftb" colspan="3"> {lang:category}{head:dropdown}{head:button}</td>
+    <td class="leftb" colspan="3"> {lang:category}{head:dropdown} <input name="submit" value="{lang:show}" class="form" type="submit" /></td>
   </tr>
 </table>
 </form>
