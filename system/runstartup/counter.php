@@ -26,10 +26,9 @@ else
 
 
 //Backup the files in counter
-$month1 = cs_datereal('n');
+$month = cs_datereal('n');
 $op_counter = cs_sql_option(__FILE__,'counter');
-if($op_counter['last_archiv'] != $month1) {
-  $month = $month1;  
+if($op_counter['last_archiv'] != $month) {
   $year = cs_datereal('Y');
 
   $timer = mktime(0, 0, 0, $month, 1, $year);
@@ -38,10 +37,17 @@ if($op_counter['last_archiv'] != $month1) {
   
   if(!empty($count_month)) {
     cs_sql_query(__FILE__, 'DELETE FROM {pre}_count WHERE ' . $cond);
-
-    $old_month = $month -1;
+    
+    if ($month == 1) {
+    	$old_year = $year - 1;
+    	$old_month = 12;
+    } else {
+    	$old_year = $year;
+    	$old_month = $month - 1;
+    }
+    
     $counter_cells1 = array('count_month','count_num');
-    $counter_content1 = array($old_month.'-'.cs_datereal('Y'), $count_month);   
+    $counter_content1 = array($old_month . '-' . $old_year, $count_month);   
     
     cs_sql_insert(__FILE__, 'count_archiv', $counter_cells1 ,$counter_content1);
   }
@@ -49,7 +55,7 @@ if($op_counter['last_archiv'] != $month1) {
   //Save the newest month
   $opt_where = "options_mod = 'counter' AND options_name = ";
   $def_cell = array('options_value');
-  $def_cont = array($month1);
+  $def_cont = array($month);
   cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'last_archiv'");
 }
 
