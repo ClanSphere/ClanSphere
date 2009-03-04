@@ -21,6 +21,7 @@ for ($i = 0; $i < $data['count']['medalsuser']; $i++) {
   $data['medalsuser'][$i]['medals_name'] = cs_secure($data['medalsuser'][$i]['medals_name']);
 }
 
+print_r ($cs_main);
 echo cs_subtemplate(__FILE__,$data,'medals','users');
 
 ?>

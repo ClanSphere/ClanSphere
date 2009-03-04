@@ -337,10 +337,10 @@ if($start <! 0 AND $board_sort=='ASC')
         $cs_lap = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext) . ' ' . $file; 
         if(file_exists('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext)) {
           $file_file = filesize('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext);
-          $data['files'][$run]['file'] = cs_html_link('mods/board/attachment.php?id='.$cs_thread_files[$run]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
+          $data['files'][$run]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_thread_files[$run]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
         } elseif (file_exists('uploads/board/files/'.$file)) {
           $file_file = filesize('uploads/board/files/'.$file);
-          $data['files'][$run]['file'] = cs_html_link('mods/board/attachment.php?name='.$file,$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
+          $data['files'][$run]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?name='.$file,$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
         } else {
           $data['files'][$run]['file'] = $cs_lang['no_att_file'];
         }          
@@ -529,10 +529,10 @@ for($run = 0; $run<$com_loop; $run++)
       $cs_lap = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext) . ' ' . $file; 
       if(file_exists('uploads/board/files/'.$cs_comments_files[$run2]['boardfiles_id'].'.'.$ext)) {
         $file_file = filesize('uploads/board/files/'.$cs_comments_files[$run2]['boardfiles_id'].'.'.$ext);
-        $data['comment'][$run]['com_files'][$run2]['file'] = cs_html_link('mods/board/attachment.php?id='.$cs_comments_files[$run2]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_comments_files[$run2]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
+        $data['comment'][$run]['com_files'][$run2]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_comments_files[$run2]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_comments_files[$run2]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
       } elseif (file_exists('uploads/board/files/'.$file)) {
         $file_file = filesize('uploads/board/files/'.$file);
-        $data['comment'][$run]['com_files'][$run2]['file'] = cs_html_link('mods/board/attachment.php?name='.$file,$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_comments_files[$run2]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
+        $data['comment'][$run]['com_files'][$run2]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?name='.$file,$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_comments_files[$run2]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
       } else {
       $data['comment'][$run]['com_files'][$run2]['file'] = $cs_lang['no_att_file'];
       }          
@@ -647,10 +647,10 @@ if($board_sort=='DESC' AND $current==1)
         $cs_lap = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext) . ' ' . $file; 
         if(file_exists('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext)) {
           $file_file = filesize('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext);
-          $data['files'][$run]['file'] = cs_html_link('mods/board/attachment.php?id='.$cs_thread_files[$run]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
+          $data['files'][$run]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_thread_files[$run]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
         } elseif (file_exists('uploads/board/files/'.$file)) {
           $file_file = filesize('uploads/board/files/'.$file);
-          $data['files'][$run]['file'] = cs_html_link('mods/board/attachment.php?id='.$file,$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
+          $data['files'][$run]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$file,$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
         } else {
           $data['files'][$run]['file'] = $cs_lang['no_att_file'];
         }
