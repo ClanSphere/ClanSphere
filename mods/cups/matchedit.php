@@ -147,28 +147,13 @@ elseif(!empty($_POST['result']) || !empty($_POST['result_submit'])) {
         
       } else {
         
-        echo cs_html_table(1,'forum',1);
-        echo cs_html_roco(1,'headb',0,2);
-        echo $cs_lang['mod'] . ' - ' . $cs_lang['enter_result'];
-        echo cs_html_roco(0);
-        echo cs_html_roco(1, 'leftb');
-        echo $cs_lang['error_occured'];
-        echo $error;
-        echo cs_html_roco(0);
-        echo cs_html_table(0);
+        cs_redirect($cs_lang['error_occured'] . $error, 'cups', 'center');
       
       }
     }
   }
   else {
-    echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'headb',0,2);
-    echo $cs_lang['mod'] . ' - ' . $cs_lang['enter_result'];
-    echo cs_html_roco(0);
-    echo cs_html_roco(1, 'leftb');
-    echo $cs_lang['no_access'];
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
+    cs_redirect($cs_lang['no_access'], 'cups', 'center');
   }
 }
 elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {

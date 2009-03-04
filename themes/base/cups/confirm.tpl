@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod} - {lang:confirm}</td>
+    <td class="headb">{lang:mod} - {lang:confirm}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:really_confirm}</td>

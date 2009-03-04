@@ -104,6 +104,7 @@ $cs_lang['successfully_confirmed'] = 'Erfolgreich best&auml;tigt.';
 
 // Remove
 $cs_lang['no_selection'] = 'Kein Turnier gew&auuml;hlt.';
+$cs_lang['canceled'] = 'L&ouml;schung abgebrochen.';
 
 // Start
 $cs_lang['more_teams_required'] = 'Es muss mindestens die H&auml;lfte der Maximalteams eingetragen sein. ';
@@ -158,7 +159,7 @@ $cs_lang['team_removed_mail']  = 'Hallo!'."\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Dies ist eine automatisch generierte Nachricht.'."\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Sie wurden aus dem Turnier "%s" entfernt.'."\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Bei Fragen wenden Sie sich bitte an den betreffenden Webmaster.'."\r\n\r\n\r\n";
-$cs_lang['team_removed_mail'] .= 'Mit freundlichen Gr&uuml;en,'."\r\n";
+$cs_lang['team_removed_mail'] .= 'Mit freundlichen Grüßen,'."\r\n";
 $cs_lang['team_removed_mail'] .= 'Die Webmaster';
 
 ?>

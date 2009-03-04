@@ -3,14 +3,10 @@
 // $Id$
 
 $cs_lang = cs_translate('cups');
+
 require_once 'mods/categories/functions.php';
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['edit'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftc');
-
+$cs_cups = array();
 $cs_cups['cups_name'] = empty($_POST['cups_name']) ? '' : $_POST['cups_name'];
 $cs_cups['games_id'] = empty($_POST['games_id']) ? 0 : (int) $_POST['games_id'];
 $cs_cups['cups_teams'] = empty($_POST['cups_teams']) ? 0 : (int) $_POST['cups_teams'];
@@ -23,107 +19,48 @@ if (isset($_POST['submit'])) {
   
   $error = '';
   
-  if (empty($cs_cups['cups_name'])) {
+  if (empty($cs_cups['cups_name']))
     $error .= cs_html_br(1) . $cs_lang['no_name'];
-  }
-  if (empty($cs_cups['games_id'])) {
+  if (empty($cs_cups['games_id']))
     $error .= cs_html_br(1) . $cs_lang['no_game'];
-  }
-  if (empty($cs_cups['cups_teams'])) {
+  if (empty($cs_cups['cups_teams']))
     $error .= cs_html_br(1) . $cs_lang['no_maxteams'];
-  }
-  
-  if (substr_count(decbin($cs_cups['cups_teams']),'1') != 1) {
+  elseif (substr_count(decbin($cs_cups['cups_teams']),1) != 1)
     $error .= cs_html_br(1) . $cs_lang['wrong_maxteams'];
-  }
 }
 
 if (empty($_POST['submit']) || !empty($error)) {
   
-  $cups_id = (int) $_GET['id'];
-
-  echo empty($error) ? $cs_lang['edit_cup'] : $cs_lang['error_occured'] . $error;
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);
+  $cups_id = empty($error) ? (int) $_GET['id'] : (int) $_POST['cups_id'];
   
   if (empty($error)) {
     $cells = 'cups_id, games_id, cups_name, cups_system, cups_text, cups_teams, cups_start, cups_brackets';
     $cs_cups = cs_sql_select(__FILE__,'cups',$cells,'cups_id=\''.$cups_id.'\'');
   }
   
-  echo cs_html_form(1,'cups_edit','cups','edit');
-  echo cs_html_table(1,'forum',1);
+  $data = array('cups' => $cs_cups);
   
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['name'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('cups_name',$cs_cups['cups_name'],'text');
-  echo cs_html_roco(0);
+  if (!empty($error)) $data['lang']['edit_cup'] = $cs_lang['error_occured'] . $error;
   
-  $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
-  $games_count = count($cs_games);
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('package_games') . $cs_lang['game'] . ' *';
-  echo cs_html_roco(2,'leftb');
-
-  echo cs_html_select(1,'games_id',"onchange=\"cs_gamechoose(this.form)\"");
-  echo cs_html_option('----',0,0);
-  for($run = 0; $run < $games_count; $run++) {
-    $sel = $cs_games[$run]['games_id'] == $cs_cups['games_id'] ? 1 : 0;
-    echo cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
-  }
-  echo cs_html_select(0);
-  echo cs_html_img('uploads/games/'.$cs_cups['games_id'].'.gif',0,0,'id="game_1"');
-  echo cs_html_roco(0);
+  $cups_start = empty($cs_cups['cups_start']) ? cs_time() : $cs_cups['cups_start'];
+  $data['cups']['start'] = cs_dateselect('cups_start', 'unix', $cups_start, 2007);
+  $data['cups']['teams'] = !isset($cs_cups['cups_teams']) ? 32 : $cs_cups['cups_teams'];
+  $data['cups']['cups_id'] = $cups_id;
   
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('folder_yellow') . $cs_lang['cup_system'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_select(1,'cups_system');
-  $cs_cups2 = $cs_cups['cups_system'] == 'teams' ? 1 : 0;
-  echo cs_html_option($cs_lang['teams'],'teams',$cs_cups2);
-  $cs_cups2 = $cs_cups['cups_system'] == 'users' ? 1 : 0;
-  echo cs_html_option($cs_lang['users'],'users',$cs_cups2);
-  echo cs_html_select(0);
-  echo cs_html_roco(0);
+  $cups_system = empty($cs_cups['cups_system']) ? 'teams' : $cs_cups['cups_system'];
+  $data['sel']['teams'] = $cups_system == 'teams' ? ' selected="selected"' : '';
+  $data['sel']['users'] = $cups_system == 'users' ? ' selected="selected"' : '';
+  $data['sel']['ko'] = empty($cs_cups['cups_brackets']) ? ' selected="selected"' : '';
+  $data['sel']['brackets'] = !empty($cs_cups['cups_brackets']) ? ' selected="selected"' : '';
   
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('folder_yellow') .$cs_lang['kind_of_cup'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_select(1,'cups_brackets');
+  $data['games'] = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
+  $games_count = count($data['games']);
   
-  echo cs_html_option($cs_lang['ko'],0,empty($cs_cups['cups_brackets']) ? 1 : 0);
-  echo cs_html_option($cs_lang['brackets'],1,!empty($cs_cups['cups_brackets']) ? 1 : 0);
-  echo cs_html_select(0);
-  echo cs_html_roco(0);
+  if (!empty($cs_cups['games_id']))
+    for ($i = 0; $i < $games_count; $i++)
+      $data['games'][$i]['selected'] = $data['games'][$i]['games_id'] == $cs_cups['games_id'] ? 'selected="selected"' : '';  
   
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kdmconfig') . $cs_lang['max_teams'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('cups_teams',$cs_cups['cups_teams'],'text');
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['text'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_textarea('cups_text',$cs_cups['cups_text'],40,16);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('1day') . $cs_lang['cup_start'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_dateselect('cups_start','unix',$cs_cups['cups_start'],2000);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('cups_id',$cups_id,'hidden');
-  echo cs_html_vote('submit',$cs_lang['edit'],'submit');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
+  echo cs_subtemplate(__FILE__, $data, 'cups', 'edit');
   
 } else {
   

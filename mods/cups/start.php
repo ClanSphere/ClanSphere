@@ -6,12 +6,6 @@ $cs_lang = cs_translate('cups');
 
 include 'mods/cups/generate.php';
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['start'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftc');
-
 if (!empty($_POST['reduce'])) {
   
   $id = (int) $_POST['id'];
@@ -46,9 +40,9 @@ if (!empty($_POST['start'])) {
   }
 
   if(!empty($matches)) {
-  	
-  	$round = strlen(decbin($maxteams['cups_teams'])) - 1;
-  	
+    
+    $round = strlen(decbin($maxteams['cups_teams'])) - 1;
+    
     foreach ($matches AS $match) {
       $cs_cups['cups_id'] = $id;
       $cs_cups['squad1_id'] = $match[1];
@@ -90,36 +84,24 @@ if (!empty($_POST['start'])) {
       $new = bindec($new);
     } else {
       // If the team count is a potency of 2 already
-      $new = $squads_count;
+      $new = $squads_count == 1 ? 2 : $squads_count;
     }
     
-    echo $cs_lang['more_teams_required'];
-    echo $cs_lang['reduce_1'];
-    echo $new;
-    echo $cs_lang['reduce_2'];
-    echo cs_html_roco(0);
-    echo cs_html_roco(1,'centerb');
-    echo cs_html_form(1,'cupsreduce','cups','start');
-    echo cs_html_vote('id',$id,'hidden');
-    echo cs_html_vote('teams',$new,'hidden');
-    echo cs_html_vote('reduce',$cs_lang['confirm'],'submit');
-    echo cs_html_form(0);
+    $data = array();
+    $data['lang']['reduce'] = $cs_lang['more_teams_required'] . $cs_lang['reduce_1'] . $new . $cs_lang['reduce_2'];
+    $data['var']['cups_id'] = $id;
+    $data['var']['teams'] = $new;
+    
+    echo cs_subtemplate(__FILE__, $data, 'cups', 'start_reduce');
     
   } else {
     
-    echo $cs_lang['start_now'];
-    echo cs_html_roco(0);
-    echo cs_html_roco(1,'centerb');
-    echo cs_html_form(1,'cupsstart','cups','start');
-    echo cs_html_vote('id',$id,'hidden');
-    echo cs_html_vote('start',$cs_lang['confirm'],'submit');
-    echo cs_html_form(0);
+    $data = array();
+    $data['cup']['id'] = $id;
+    
+    echo cs_subtemplate(__FILE__, $data, 'cups', 'start');
     
   }  
-  
 }
-
-echo cs_html_roco(0);
-echo cs_html_table(0);
 
 ?>

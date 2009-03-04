@@ -15,31 +15,22 @@ $cs_sort[4] = 'cupsquads_time DESC';
 $sort = empty($_GET['sort']) ? 3 : (int) $_GET['sort'];
 $order = $cs_sort[$sort];
 
-$participants_count = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$cups_id.'\'');
+$data = array();
+$data['count']['all'] = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$cups_id.'\'');
+$data['pages']['list'] = cs_pages('cups','teams',$data['count']['all'],$start,$cups_id,$sort);
+$data['sort']['name'] = cs_sort('cups', 'teams', $start, $cups_id, 1, $sort);
+$data['sort']['join'] = cs_sort('cups','teams',$start,$cups_id,3,$sort);
+$data['var']['message'] = cs_getmsg();
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,3);
-echo $cs_lang['mod'] . ' - ' . $cs_lang['teams'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftc');
-echo cs_link($cs_lang['back'],'cups','manage');
-echo cs_html_roco(2,'leftc');
-echo cs_icon('contents') . $cs_lang['total'] . ': ' . $participants_count;
-echo cs_html_roco(3,'leftc');
-echo cs_pages('cups','teams',$participants_count,$start,$cups_id,$sort);
-echo cs_html_roco(0);
-echo cs_html_table(0);
-
-echo cs_html_br(1);
-echo cs_getmsg();
-$cs_cup = cs_sql_select(__FILE__,'cups','cups_system','cups_id = \''.$cups_id.'\'');
+$cups_system = cs_sql_select(__FILE__,'cups','cups_system','cups_id = "' . $cups_id . '"');
+$cups_system = $cups_system['cups_system'];
 
 $cells  = 'cs.cupsquads_id AS cupsquads_id, cs.cupsquads_time AS cupsquads_time, cs.squads_id AS squads_id, ';
 $tables = 'cupsquads cs INNER JOIN {pre}_';
 
-if ($cs_cup['cups_system'] == 'users') {
+if ($cups_system == 'users') {
   $tables .= 'users usr ON cs.squads_id = usr.users_id';
-  $cells  .= 'usr.users_nick AS squads_name';
+  $cells  .= 'usr.users_nick AS squads_name, usr.users_active AS users_active, usr.users_delete AS users_delete';
   $mod     = 'users';
 } else {
   $tables .= 'squads sq ON cs.squads_id = sq.squads_id';
@@ -47,31 +38,18 @@ if ($cs_cup['cups_system'] == 'users') {
   $mod     = 'squads';
 }
 
-$cs_cupsquads = cs_sql_select(__FILE__,$tables,$cells,'cups_id = \''.$cups_id.'\'',$order,$start,$account['users_limit']);
-$count_squads = count($cs_cupsquads);
-$img_del = cs_icon('editdelete');
+$data['teams'] = cs_sql_select(__FILE__,$tables,$cells,'cups_id = "' . $cups_id . '"',$order,$start,$account['users_limit']);
+$count_teams = count($data['teams']);
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo cs_sort('cups','teams',$start,$cups_id,1,$sort);
-echo $cs_lang['name'];
-echo cs_html_roco(2,'headb');
-echo cs_sort('cups','teams',$start,$cups_id,3,$sort);
-echo $cs_lang['join'];
-echo cs_html_roco(3,'headb');
-echo $cs_lang['options'];
-echo cs_html_roco(0);
-
-for ($run = 0; $run < $count_squads; $run++) {
-  echo cs_html_roco(1,'leftb');
-  echo cs_link($cs_cupsquads[$run]['squads_name'],$mod,'view','id='.$cs_cupsquads[$run]['squads_id']);
-  echo cs_html_roco(2,'leftb');
-  echo cs_date('unix',$cs_cupsquads[$run]['cupsquads_time'],1);
-  echo cs_html_roco(3,'leftb');
-  echo cs_link($img_del,'cups','teamremove','id='.$cs_cupsquads[$run]['cupsquads_id'],'',$cs_lang['remove']);
-  echo cs_html_roco(0);
+for ($i = 0; $i < $count_teams; $i++) {
+	$data['teams'][$i]['join'] = cs_date('unix', $data['teams'][$i]['cupsquads_time'],1);
+	if ($cups_system == 'teams') {
+		$data['teams'][$i]['team'] = cs_link($data['teams'][$i]['squads_name'], 'squads', 'view', 'id=' . $data['teams'][$i]['squads_id']);
+	} else {
+		$data['teams'][$i]['team'] = cs_user($data['teams'][$i]['squads_id'],$data['teams'][$i]['squads_name'], $data['teams'][$i]['users_active'], $data['teams'][$i]['users_delete']);
+	}
 }
 
-echo cs_html_table(0);
+echo cs_subtemplate(__FILE__, $data, 'cups', 'teams');
 
 ?>

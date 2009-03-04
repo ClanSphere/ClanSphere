@@ -6,6 +6,7 @@ $cs_lang = cs_translate('cups');
 
 $data = array();
 $data['vars']['count'] = cs_sql_count(__FILE__,'cups');
+$data['vars']['message'] = cs_getmsg();
 
 $cells = 'cups_id, games_id, cups_name, cups_start, cups_teams';
 $data['cups'] = cs_sql_select(__FILE__,'cups',$cells,'','cups_start ASC',0,0);

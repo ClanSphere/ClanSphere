@@ -11,18 +11,8 @@ $cs_cup = cs_sql_select(__FILE__,'cups','cups_start, cups_system, cups_teams',"c
 $started = cs_sql_count(__FILE__,'cupmatches','cups_id = \''.$cups_id.'\'');
 $joined = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$cups_id.'\'');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['join'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftc');
-
 $form = 1;
-$full = 0;
-
-if ($joined >= $cs_cup['cups_teams']) {
-  $full = 1;
-}
+$full = $joined >= $cs_cup['cups_teams'] ? 1 : 0;
 
 if ($cs_cup['cups_system'] == 'teams' && empty($full)) {
   $membership = cs_sql_count(__FILE__,'members',"users_id = '" . $account['users_id'] . "' AND members_admin = '1'");
@@ -39,62 +29,32 @@ if ($cs_cup['cups_system'] == 'teams' && empty($full)) {
 
 if($account['access_cups'] >= 2 && cs_time() < $cs_cup['cups_start'] && empty($started) && empty($full)) {
   if(!empty($participant)) {
-    $content = $cs_lang['join_done'];
-    $form = 0;
+    cs_redirect($cs_lang['join_done'], 'cups', 'view', 'id=' . $cups_id);
   }
   elseif(empty($membership)) {
-    $content = cs_link($cs_lang['need_squad'],'squads','center');
-    $form = 0;
+    cs_redirect(cs_link($cs_lang['need_squad'],'squads','center'), 'cups', 'view', 'id=' . $cups_id);
   }
   elseif(empty($_POST['submit'])) {
     
     if ($cs_cup['cups_system'] == 'teams') {
-        
-      echo $cs_lang['which_squad'];
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
-      echo cs_html_br(1);
-  
+      
+      $data = array();
+      
       $tables = 'members mm INNER JOIN {pre}_squads sq ON mm.squads_id = sq.squads_id';
       $cells = 'mm.squads_id AS squads_id, sq.squads_name AS squads_name';
       $where = 'mm.members_admin = \'1\' AND mm.users_id = \'' . $account['users_id'] . '\'';
-      $select = cs_sql_select(__FILE__,$tables,$cells,$where,'sq.squads_name',0,0);
-  
-      echo cs_html_form(1,'cupsjoin','cups','join');
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('yast_group_add') . $cs_lang['squad'];
-      echo cs_html_roco(2,'leftb');
-      echo cs_html_select(1,'squads_id');
-      echo cs_html_option('----',0,1);
-      foreach ($select AS $squad) {
-        echo cs_html_option($squad['squads_name'],$squad['squads_id']);
-      }
-      echo cs_html_select(0);
-      echo cs_html_roco(0);
+      $data['squads'] = cs_sql_select(__FILE__,$tables,$cells,$where,'sq.squads_name',0,0);
+
+      $data['cup']['id'] = $cups_id;
       
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('configure') . $cs_lang['options'];
-      echo cs_html_roco(2,'leftb');
-      echo cs_html_vote('cups_id',$cups_id,'hidden');
-      echo cs_html_vote('system','teams','hidden');
-      echo cs_html_vote('submit',$cs_lang['take_part'],'submit');
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
-      echo cs_html_form(0);
+      echo cs_subtemplate(__FILE__, $data, 'cups', 'join_squad');
         
     } else {
-    
-      echo $cs_lang['really'];
-      echo cs_html_roco(0);
-      echo cs_html_roco(1,'centerb');
-      echo cs_html_form(1,'cupsjoin','cups','join');
-      echo cs_html_vote('cups_id',$cups_id,'hidden');
-      echo cs_html_vote('system','users','hidden');
-      echo cs_html_vote('submit',$cs_lang['confirm'],'submit');
-      echo cs_html_form(0);
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
+      
+      $data = array();
+      $data['cup']['id'] = $cups_id;
+      
+      echo cs_subtemplate(__FILE__, $data, 'cups', 'join_user');
       
     }
     
@@ -124,17 +84,12 @@ if($account['access_cups'] >= 2 && cs_time() < $cs_cup['cups_start'] && empty($s
       $msg = $cs_lang['no_access'];
     }
 
-  cs_redirect($msg,'cups','center');
+    cs_redirect($msg,'cups','center');
   }
 
 } else {
   $content =  empty($full) ? $cs_lang['no_access'] : $cs_lang['cup_full'];
-  $form = 0;
-}
-if(empty($form)) {
-  echo $content;
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+  cs_redirect($content, 'cups', 'view', 'id=' . $cups_id);
 }
 
 ?>

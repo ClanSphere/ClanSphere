@@ -19,6 +19,7 @@ $data['lang']['max_participants'] = $cs_lang['max_'.$data['cup']['cups_system']]
 $data['lang']['registered_participants'] = $cs_lang['registered_'.$data['cup']['cups_system']];
 
 $data['url']['games_view'] = cs_url('games','view','id='.$data['cup']['games_id']);
+$data['var']['message'] = cs_getmsg();
 
 $data['cup']['system'] = $data['cup']['cups_system'] == 'teams' ? $cs_lang['team_vs_team'] : $cs_lang['user_vs_user'];
 $data['cup']['kind'] = empty($data['cup']['cups_brackets']) ? $cs_lang['ko'] : $cs_lang['brackets'];
@@ -119,10 +120,7 @@ if($data['cup']['cups_system'] == 'teams') {
   
   $squads_loop = count($squads);
   
-  if(empty($squads_loop)) {
-    $data['squads'] = '';
-  }
-  else {
+  if(!empty($squads_loop)) {
     $data['if']['teams'] = true;
     
     for($run=0; $run<$squads_loop; $run++) {

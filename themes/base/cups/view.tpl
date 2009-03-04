@@ -7,7 +7,7 @@
  </tr>
 </table>
 <br />
-
+{var:message}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:kate} {lang:name}</td>

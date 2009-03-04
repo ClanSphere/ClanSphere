@@ -41,8 +41,8 @@ $cups_count = count($data['cups']);
 $data['lang']['take_part_in_cups'] = sprintf($cs_lang['take_part_in_cups'],$cups_count);
 
 $conds = array();
-$conds['teams'] = $matchcond;
-$conds['users'] = 'squad1_id = "'.$account['users_id'] .'" OR squad2_id = "'.$account['users_id'].'"';
+$conds['teams'] = '(' . $matchcond . ')';
+$conds['users'] = '(squad1_id = "'.$account['users_id'] .'" OR squad2_id = "'.$account['users_id'].'")';
 
 for ($i = 0; $i < $cups_count; $i++) {
   $data['cups'][$i]['if']['gameicon_exists'] = file_exists('uploads/games/' . $data['cups'][$i]['games_id'] . '.gif') ? true : false;
