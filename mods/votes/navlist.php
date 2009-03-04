@@ -12,10 +12,15 @@ $votes_error = '';
 $votes_form = 1;
 $votes_access = $account['access_votes'];
 
+global $cs_db;
+$type = $cs_db['type'];
+unset($cs_db);
+
 $from = 'votes';
 $select = 'votes_id, votes_question, votes_election, votes_several';
 $where = "votes_access <= '" . $votes_access . "' AND votes_start <= '" . $time . "' AND votes_end >= '" . $time . "'";
-$cs_votes = cs_sql_select(__FILE__,$from,$select,$where,'RAND()');
+$sort = $type == 'mysql' ? 'RAND()' : 'votes_end ASC';
+$cs_votes = cs_sql_select(__FILE__,$from,$select,$where, $sort);
 $votes_loop = count($cs_votes);
 $votes_id = $cs_votes['votes_id'];
 
