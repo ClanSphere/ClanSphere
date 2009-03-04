@@ -78,7 +78,9 @@ if (!empty($_POST['messages_to'])) {
   $messages_error++;
   $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
 }
-$_POST['messages_subject'] = preg_replace("=\<script\>(.*?)\</script\>=si","",$_POST['messages_subject']);
+if (!empty($_POST['messages_subject'])) {
+  $_POST['messages_subject'] = preg_replace("=\<script\>(.*?)\</script\>=si","",$_POST['messages_subject']);
+}
 if (!empty($_POST['messages_subject'])) {
 	$messages_subject = $_POST['messages_subject'];
 } else {
