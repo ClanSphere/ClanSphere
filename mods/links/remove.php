@@ -3,43 +3,31 @@
 // $Id$
 
 $cs_lang = cs_translate('links');
+$cs_get = cs_get('id');
+$data = array();
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_remove'];
-echo cs_html_roco(0);
+$links_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
-$links_form = 1;
-$links_id = $_REQUEST['id'];
-settype($links_id,'integer');
-
-if(isset($_POST['agree'])) {
-  $links_form = 0;
-  $banner = cs_sql_select(__FILE__,'links','links_banner',"links_id = '" . $links_id . "'");
+if(isset($_GET['agree'])) {
+	
+	$banner = cs_sql_select(__FILE__,'links','links_banner',"links_id = '" . $links_id . "'");
   if(!empty($banner['links_banner'])) {
-    cs_unlink('links', $banner['links_banner']);
+		cs_unlink('links',$banner['links_banner']);
   }
-  cs_sql_delete(__FILE__,'links',$links_id);
-  cs_redirect($cs_lang['del_true'], 'links');
+  
+ cs_sql_delete(__FILE__,'links',$links_id);
+ cs_redirect($cs_lang['del_true'],'links');
 }
 
-if(isset($_POST['cancel'])) 
-  cs_redirect($cs_lang['del_false'], 'links');
+if(isset($_GET['cancel']))
+ cs_redirect($cs_lang['del_false'],'links');
 
-if(!empty($links_form)) {
+else {
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$links_id);
+  $data['url']['agree'] = cs_url('links','remove','id=' . $links_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('links','remove','id=' . $links_id . '&amp;cancel');
 
-  echo cs_html_roco(1,'leftb');
-  echo sprintf($cs_lang['del_rly'],$links_id);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'centerc');
-  echo cs_html_form(1,'links_remove','links','remove');
-  echo cs_html_vote('id',$links_id,'hidden');
-  echo cs_html_vote('agree',$cs_lang['confirm'],'submit');
-  echo cs_html_vote('cancel',$cs_lang['cancel'],'submit');
-  echo cs_html_form (0);
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+ echo cs_subtemplate(__FILE__,$data,'links','remove');
 }
 
 ?>

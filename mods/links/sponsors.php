@@ -3,38 +3,31 @@
 // $Id$
 
 $cs_lang = cs_translate('links');
+$data = array();
 
-$links_count = cs_sql_count(__FILE__,'links','links_sponsor=1');
+$links_count = cs_sql_count(__FILE__,'links','links_sponsor = 1');
+$data['head']['body'] = sprintf($cs_lang['all1'], $links_count);
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,3);
-echo $cs_lang['mod1'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo sprintf($cs_lang['all1'], $links_count);
-echo cs_html_table(0);
-echo cs_html_br(1);
+$select = 'links_name, links_url, links_banner, links_info';
+$data['links'] = cs_sql_select(__FILE__,'links',$select,'links_sponsor = 1',0,0,0);
+$links_loop = count($data['links']);
 
-$cs_links = cs_sql_select(__FILE__,'links','links_name,links_banner,links_info,links_url','links_sponsor = 1',0,0,0);
-$links_loop = count($cs_links);
+for($run = 0; $run < $links_loop; $run++) {
 
-for($run=0; $run<$links_loop; $run++) {
-        
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb');
-  echo cs_secure($cs_links[$run]['links_name']);
-  $place = 'uploads/links/' .$cs_links[$run]['links_banner'];
-  echo cs_html_roco(0);
-  echo cs_html_roco(2,'leftc');
-  $img = cs_html_img ($place,0,0,0,$cs_links[$run]['links_name']);
-  $target = 'http://' .$cs_links[$run]['links_url'];
-  echo cs_html_link($target,$img);
-        echo cs_html_roco(0);
-  echo cs_html_roco(4,'leftc');
-        echo cs_secure($cs_links[$run]['links_info'],1,1,1,1);
-        echo cs_html_roco(0);
-        echo cs_html_table(0);
-        echo cs_html_br(1);
+  $data['links'][$run]['name'] = cs_secure($data['links'][$run]['links_name']);
+  
+  $target = 'http://' . $data['links'][$run]['links_url'];
+  $data['links'][$run]['url_img'] = cs_html_link($target,$data['links'][$run]['links_url']);
+  
+  if(!empty($data['links'][$run]['links_banner'])) {
+  	$place = 'uploads/links/' .$data['links'][$run]['links_banner'];
+  	$img = cs_html_img ($place,0,0,0,$data['links'][$run]['links_name']);
+  	$data['links'][$run]['url_img'] = cs_html_link($target,$img);
+  }
+  
+	$data['links'][$run]['info'] = cs_secure($data['links'][$run]['links_info'],1,1,1,1);
 }
+
+echo cs_subtemplate(__FILE__,$data,'links','sponsors');
 
 ?>
