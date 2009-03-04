@@ -9,7 +9,7 @@
     <td colspan="2" class="centerb">{data:picture}</td>
   </tr>
   <tr>
-    <td class="leftb">{link:picture_backward} {link:picture_rotate_left} {link:picture_zoom_smaller} {link:picture_zoom_normally} {link:picture_zoom_bigger} {link:picture_rotate_right} {link:picture_forward} </td>
+    <td class="leftb">{link:picture_backward} {link:picture_rotate_left} <!--{link:picture_zoom_smaller} {link:picture_zoom_normally} {link:picture_zoom_bigger}--> {link:picture_rotate_right} {link:picture_forward} </td>
     <td class="leftb">{link:ecard} {link:download_picture} {link:download_zip} {link:print}</td>
   </tr>
   <tr>

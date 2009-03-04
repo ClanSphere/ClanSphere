@@ -141,12 +141,15 @@ if(empty($gallery_loop)) {
     $icon_left = cs_icon('left',22,$cs_lang['rotate_left']);
     $data['link']['picture_rotate_left'] = cs_link($icon_left,'gallery','com_view','where=' . $id . '&amp;size=' . $pic_size . '&amp;rotate=' . $rotate_left);
   }
+  /*
+  Zoom Buttons delete  
   $viewmag1 = cs_icon('viewmag-',22,$cs_lang['viewmag_-']);
   $data['link']['picture_zoom_smaller'] = cs_link($viewmag1,'gallery','com_view','where=' . $id . '&amp;size=' . $size_minus);
   $window_fullscreen = cs_icon('viewmag1',22,$cs_lang['viewmag']);
   $data['link']['picture_zoom_normally'] = cs_link($window_fullscreen,'gallery','com_view','where=' . $id . '&amp;size='.$normal_size);
   $viewmag2 = cs_icon('viewmag+',22,$cs_lang['viewmag_+']);
   $data['link']['picture_zoom_bigger'] = cs_link($viewmag2,'gallery','com_view','where=' . $id . '&amp;size=' . $size_plus);
+  */
   if($exp) {
     $icon_right = cs_icon('right',22,$cs_lang['rotate_right']);
     $data['link']['picture_rotate_right'] = cs_link($icon_right,'gallery','com_view','where=' . $id . '&amp;size=' . $pic_size . '&amp;rotate=' . $rotate_right);
