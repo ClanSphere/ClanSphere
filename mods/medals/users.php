@@ -7,14 +7,18 @@ $users_id = (int) $_GET['id'];
 
 $data['users']['addons'] = cs_addons('users','view',$users_id,'medals');
 
-$cells = 'medals_name, medals_text, medals_extension, medals_date, medals_id';
-$data['medals'] = cs_sql_select(__FILE__,'medals', $cells, "users_id = '" . $users_id . "'",0,0,0);
-$data['count']['medals'] = count($data['medals']);
+$tables = 'medalsuser mu LEFT JOIN {pre}_medals md ON md.medals_id = mu.medals_id';
+$cells = 'mu.users_id AS users_id, md.medals_id AS medals_id, mu.medalsuser_date AS medalsuser_date, mu.medalsuser_id AS medalsuser_id, ';
+$cells .= 'md.medals_name AS medals_name, md.medals_text AS medals_text';
 
-for ($i = 0; $i < $data['count']['medals']; $i++) {
-  $data['medals'][$i]['img_src'] = $cs_main['php_self']['dirname'] . 'uploads/medals/medal-' . $data['medals'][$i]['medals_id'] . '.' . $data['medals'][$i]['medals_extension'];
-  $data['medals'][$i]['medals_text'] = cs_secure($data['medals'][$i]['medals_text'],1);
-  $data['medals'][$i]['date'] = cs_date('unix',$data['medals'][$i]['medals_date']);
+$data['medalsuser'] = cs_sql_select(__FILE__,$tables, $cells, "users_id = '" . $users_id . "'",0,0,0);
+$data['count']['medalsuser'] = count($data['medalsuser']);
+
+for ($i = 0; $i < $data['count']['medalsuser']; $i++) {
+  $data['medalsuser'][$i]['img_src'] = $cs_main['php_self']['dirname'] . 'uploads/medals/medal-' . $data['medalsuser'][$i]['medals_id'] . '.' . $data['medalsuser'][$i]['medals_extension'];
+  $data['medalsuser'][$i]['medals_text'] = cs_secure($data['medalsuser'][$i]['medals_text'],1);
+  $data['medalsuser'][$i]['medals_date'] = cs_date('unix',$data['medalsuser'][$i]['medalsuser_date']);
+  $data['medalsuser'][$i]['medals_name'] = cs_secure($data['medalsuser'][$i]['medals_name']);
 }
 
 echo cs_subtemplate(__FILE__,$data,'medals','users');

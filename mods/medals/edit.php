@@ -8,23 +8,15 @@ if (!empty($_POST['submit'])) {
   $error = '';
   $save = array();
   
-  $users_nick = cs_sql_escape($_POST['users_nick']);
-  $users_id = cs_sql_select(__FILE__,'users','users_id', "users_nick = '" . $users_nick . "'");
-  
   $medals_id = (int) $_POST['medals_id'];
   
-  $save['users_id'] = !empty($users_id) ? (int) $users_id['users_id'] : 0;
   $save['medals_name'] = $_POST['medals_name'];
-  if (!empty($_POST['update_date'])) { $save['medals_date'] = cs_time(); }
   $save['medals_text'] = empty($_POST['medals_text']) ? '' : $_POST['medals_text'];
   
   if (!empty($_POST['delete_picture'])) {
     $save['medals_extension'] = '';
     unlink($cs_main['php_self']['dirname'] . 'uploads/medals/medal-' . $medals_id . '.' . $_POST['delete_picture']);
   }
-  
-  if (empty($save['users_id']))
-    $error .= cs_html_br(1) . $cs_lang['user_not_found'];
   
   if (empty($save['medals_name']))
     $error .= cs_html_br(1) . $cs_lang['no_name'];
@@ -67,11 +59,7 @@ if (empty($_POST['submit'])) {
 
   $medals_id = (int) $_GET['id'];
   
-  $tables = 'medals md LEFT JOIN {pre}_users usr ON md.users_id = usr.users_id';
-  $cells  = 'md.medals_name AS medals_name, md.medals_text AS medals_text, ';
-  $cells .= 'usr.users_nick AS users_nick, md.medals_extension AS medals_extension'; 
-  
-  $data['medals'] = cs_sql_select(__FILE__,$tables,$cells,"md.medals_id = '" . $medals_id . "'");
+  $data['medals'] = cs_sql_select(__FILE__,'medals','medals_name, medals_extension, medals_text',"medals_id = '" . $medals_id . "'");
   
   if (empty($data['medals']['medals_extension'])) {
     $data['if']['current_pic'] = false;
@@ -83,7 +71,6 @@ if (empty($_POST['submit'])) {
   $data['form']['medals_id'] = $medals_id;
   
 } else {
-  $data['medals']['users_nick'] = $_POST['users_nick'];
   $data['medals']['medals_name'] = $save['medals_name'];
   $data['medals']['medals_text'] = $save['medals_text'];
 }

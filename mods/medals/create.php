@@ -8,17 +8,8 @@ if (!empty($_POST['submit'])) {
   $error = '';
   $save = array();
   
-  $users_nick = cs_sql_escape($_POST['users_nick']);
-  $users_id = cs_sql_select(__FILE__,'users','users_id',"users_nick = '" . $users_nick . "'" );
-  echo $users_id;
-  
-  $save['users_id'] = !empty($users_id) ? (int) $users_id['users_id'] : 0;
   $save['medals_name'] = $_POST['medals_name'];
-  $save['medals_date'] = cs_time();
   $save['medals_text'] = empty($_POST['medals_text']) ? '' : $_POST['medals_text'];
-  
-  if (empty($save['users_id']))
-    $error .= cs_html_br(1) . $cs_lang['user_not_found'];
   
   if (empty($save['medals_name']))
     $error .= cs_html_br(1) . $cs_lang['no_name'];
@@ -59,11 +50,9 @@ if (!empty($_POST['submit']) && empty($error)) {
 }
 
 if (empty($_POST['submit'])) {
-  $data['medals']['users_nick'] = '';
   $data['medals']['medals_name'] = '';
   $data['medals']['medals_text'] = '';
 } else {
-  $data['medals']['users_nick'] = $_POST['users_nick'];
   $data['medals']['medals_name'] = $save['medals_name'];
   $data['medals']['medals_text'] = $save['medals_text'];
 }

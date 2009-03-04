@@ -4,7 +4,8 @@ $cs_lang['mod'] = 'Medaillen';
 $cs_lang['modtext'] = 'Vergeben und Verwalten von Medaillen';
 
 // Manage
-$cs_lang['new_medal'] = 'Neue Medallie vergeben';
+$cs_lang['new_medal'] = 'Neue Medallie erstellen';
+$cs_lang['awarded'] = 'mal verliehen';
 
 // Create
 $cs_lang['description'] = 'Beschreibung';
@@ -18,8 +19,11 @@ $cs_lang['wrong_ext'] = '- Die angegebene Datei hat einen falschen Dateityp';
 // Users
 $cs_lang['since'] = 'Seit';
 
+// User
+$cs_lang['awardingto'] = 'Verleihen';
+
 // Remove
-$cs_lang['rly_remove'] = 'Soll die Medaille "%s" von %s gel&ouml;scht werden?';
+$cs_lang['rly_remove'] = 'Soll die Medaille "%s" gel&ouml;scht werden?';
 
 // Edit
 $cs_lang['current_picture'] = 'Aktuelles Bild';

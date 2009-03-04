@@ -76,12 +76,18 @@ ALTER TABLE {pre}_users ADD users_delete int(1) NOT NULL default '0';
 
 CREATE TABLE {pre}_medals (
   medals_id {serial},
-  users_id int(8) NOT NULL DEFAULT '0',
   medals_extension varchar(10) NOT NULL DEFAULT '',
   medals_name varchar(150) NOT NULL DEFAULT '',
   medals_text text,
-  medals_date varchar(14) NOT NULL DEFAULT '0',
   PRIMARY KEY (medals_id)
+){engine};
+
+CREATE TABLE {pre}_medalsuser (
+  medalsuser_id {serial},
+  medals_id int(8) NOT NULL DEFAULT '0',
+  users_id int(8) NOT NULL DEFAULT '0',
+  medalsuser_date varchar(14) NOT NULL DEFAULT '0',
+  PRIMARY KEY (medalsuser_id)
 ){engine};
 
 ALTER TABLE {pre}_access ADD access_medals int(2) NOT NULL DEFAULT '0';

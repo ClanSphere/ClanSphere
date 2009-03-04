@@ -8,15 +8,15 @@
 </table>
 <br />
 
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">{loop:medals}
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">{loop:medalsuser}
   <tr>
-    <td class="leftb"><a name="{medals:medals_id}"></a>
-      <div style="float:left; width:40%; text-align: center; padding: 5px"><img src="{medals:img_src}" /></div>
+    <td class="leftb"><a name="{medalsuser:medals_id}"></a>
+      <div style="float:left; width:40%; text-align: center; padding: 5px"><img src="{medalsuser:img_src}" /></div>
       <div style="float:left; width:55%; padding-left: 10px;">
-        <u>{medals:medals_name}</u> - <em>{lang:since} {medals:date}</em><br />
-        {medals:medals_text}
+        <u>{medalsuser:medals_name}</u> - <em>{lang:since} {medalsuser:medals_date}</em><br />
+        {medalsuser:medals_text}
       </div>
       <br style="clear:both" />
     </td>
-  </tr>{stop:medals}
+  </tr>{stop:medalsuser}
 </table>
