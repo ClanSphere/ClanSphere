@@ -122,9 +122,9 @@ echo cs_html_br(1);
   $games = cs_sql_select(__FILE__,'games','games_name, games_id',0,1,1,0);
   echo cs_html_select(1,'games_id','onchange="cs_gamechoose(this.form)"');
   echo cs_html_option('----',0,1);
-  foreach ($games AS $game) {
-    echo cs_html_option($game['games_name'],$game['games_id']);
-  }
+  if (!empty($games))
+    foreach ($games AS $game)
+      echo cs_html_option($game['games_name'],$game['games_id']);
   echo cs_html_select(0);
   #echo cs_dropdown('games_id','games_name',$games,$cs_servers['games_id'].'" onchange="cs_gamechoose(this.form)');
   echo cs_html_img('uploads/games/0.gif',0,0,'id="game_1"');

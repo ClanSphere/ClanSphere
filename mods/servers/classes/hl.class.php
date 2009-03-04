@@ -238,7 +238,10 @@ class hl
         $srv_rules[]      = $this->getvalue_string($def);
 
       // path to map picture
-      $srv_rules['map_path'] = 'maps/hl';
+      #$srv_rules['map_path'] = 'maps/hl';
+      #($srv_rules['app_id'] < 200) ? ($srv_rules['map_path'] = 'maps/hl') : $srv_rules['map_path'] = 'maps/hl2'; 
+      $srv_rules['map_path'] = $srv_rules['app_id'] < 200 ? 'maps/hl' : 'maps/hl2';
+      
         }
   
   if ($servertype == 'I')
