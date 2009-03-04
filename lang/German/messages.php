@@ -89,6 +89,8 @@ $cs_lang['buddys']       = 'Kontakte in Kontaktliste:';
 $cs_lang['autore_true']   = 'Aktiviert';
 $cs_lang['autore_false']   = 'Deaktiviert';
 
+$cs_lang['msg_rly_rmv'] = 'Nachricht %s wirklich l&ouml;schen?';
+
 //create
 $cs_lang['head_create']  = 'Schreiben';
 $cs_lang['body_create'] = "Sie k&ouml;nnen die Nachricht an mehrere Empf&auml;nger gleichzeitig versenden.\nMehrere Benutzernamen einfach mit '; ' trennen, z.B. Name1; Name2; Name3;\nEs ist auch m&ouml;glich, Nachrichten an Squads oder Clans zu senden. Z.B. Clan:clanname; oder Squad:squadname;";

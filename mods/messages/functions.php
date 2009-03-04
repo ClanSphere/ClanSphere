@@ -27,7 +27,8 @@ function cs_box_head($box,$messages_id,$start,$sort) {
   global $account;
   $var = cs_html_table(1,'forum',1);
   $var .= cs_html_roco(1,'headb',0,5);
-  $var .= $cs_lang['mod'] . ' - ' . $cs_lang['head_center_msg'];
+  $action = $box != 'outbox' ? $cs_lang['head_center_msg'] : substr($cs_lang['outbox'],0,-2);
+  $var .= $cs_lang['mod'] . ' - ' . $action;
   $var .= cs_html_roco(0);
   $var .= cs_html_roco(1,'leftb');
   $new_message = cs_icon('mail_new') . $cs_lang['new_message'];
@@ -171,8 +172,7 @@ function cs_outbox_head($start,$sort) {
 
   global $cs_lang;
   
-  $var = cs_html_form (1,'messages_options','messages','more');
-  $var .= cs_html_table(1,'forum',1);
+  $var  = cs_html_table(1,'forum',1);
   $var .= cs_html_roco(1,'headb',0,0,'40px');
   $var .= cs_sort('messages','outbox',$start,'',5,$sort);
   $var .= cs_html_roco(2,'headb');

@@ -59,7 +59,7 @@ if(isset($_POST['cancel']) OR $cancel == 1)
 if(!empty($messages_form))
 {
   echo cs_html_roco(1,'leftb');
-  echo sprintf($cs_lang['del_rly'],cs_html_big(1) . $cs_messages['messages_subject'] . cs_html_big(0));
+  echo sprintf($cs_lang['msg_rly_rmv'], cs_html_big(1) . $cs_messages['messages_subject'] . cs_html_big(0));
   echo cs_html_roco(0);
 
   echo cs_html_roco(1,'centerc');

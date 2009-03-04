@@ -50,6 +50,7 @@ for($run=0; $run<$messages_loop; $run++) {
 echo cs_html_roco(1,'rightb',0,7);
 echo cs_html_input('sel_all',$cs_lang['select_all'],'button',0,0,'onclick="return cs_shoutbox_select();"');
 echo cs_html_input('submit',$cs_lang['remove_selected'],'submit');
+echo cs_html_vote('outbox', '1', 'hidden');
 echo cs_html_input('reset_sel',$cs_lang['drop_selection'],'reset');
 echo cs_html_roco(0);
 echo cs_html_table(0);
