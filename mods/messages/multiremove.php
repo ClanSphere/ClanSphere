@@ -25,8 +25,8 @@ if (isset($_GET['confirm'])) {
   $query .= ')';
   
   cs_sql_query(__FILE__,$query);
-echo $query;
-  #cs_redirect($cs_lang['del_true'],'messages','inbox');
+
+  cs_redirect($cs_lang['del_true'],'messages','inbox');
   
 } elseif (isset($_GET['cancel'])) {
   $action = !isset($_GET['outbox']) ? 'inbox' : 'outbox';
