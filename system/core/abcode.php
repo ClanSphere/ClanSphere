@@ -478,9 +478,10 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   }
   if(!empty($html)) {
   	global $htmlcode;
-  	if (!empty($htmlcode))
+  	if (!empty($htmlcode)) {
   	  $count = count($htmlcode);
   	  for ($i = 0; $i < $count; $i++) $replace = str_replace('{html'.$i.'}',$htmlcode[$i],$replace);
+  	}
   }
   
   if(!empty($features)) {
