@@ -209,13 +209,15 @@ function cs_dateselect($name,$mode,$data,$year_start = 0) {
   return $var;
 }
 
-function cs_dropdown($name,$list,$array,$select = 0, $key = 0) {
+function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) {
 
   global $com_lang;
 
   $key = empty($key) ? $name : $key;
   $var = cs_html_select(1,$name);
-  $var .= cs_html_option('----',0,0);
+	if(empty($def_option)) {
+		$var .= cs_html_option('----',0,0);
+	}
   $loop = count($array);
   for($run=0; $run < $loop; $run++) {
     $sel = $select == $array[$run][$key] ? 1 : 0;
