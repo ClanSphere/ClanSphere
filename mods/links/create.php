@@ -136,7 +136,7 @@ else {
  cs_sql_insert(__FILE__,'links',$cells,$save);
 
   if(!empty($_FILES['symbol']['tmp_name'])) {
-  	$id = cs_sql_insertid();
+  	$id = cs_sql_insertid(__FILE__);
     $filename = $id . '.' . $ext;
    cs_upload('links',$filename,$_FILES['symbol']['tmp_name']);
 
