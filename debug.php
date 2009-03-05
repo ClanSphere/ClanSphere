@@ -2,7 +2,10 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-@error_reporting(E_ALL);
+if((substr(phpversion(), 0, 3) >= '5.0') AND (substr(phpversion(), 0, 3) < '6.0'))
+  @error_reporting(E_ALL | E_STRICT);
+else
+  @error_reporting(E_ALL);
 
 @ini_set('arg_separator.output','&amp;');
 @ini_set('session.use_trans_sid','0');
@@ -10,8 +13,9 @@
 @ini_set('session.use_only_cookies','1');
 @ini_set('display_errors','on');
 @ini_set('magic_quotes_runtime','off');
-if (substr(phpversion(), 0, 3) >= '5.1') {
+if(substr(phpversion(), 0, 3) >= '5.1') {
   @date_default_timezone_set('Europe/Berlin');
+  @error_reporting(E_ALL | E_STRICT);
 }
 
 $cs_micro = explode(' ', microtime()); # starting parsetime
