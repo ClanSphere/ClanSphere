@@ -267,8 +267,7 @@ if($start <! 0 AND $board_sort=='ASC')
     $count_com[$userid] = getUserPosts($userid);
     $postscache[$userid] = $count_com[$userid];
   }
-  $url = 'symbols/countries/' . $data['thread']['users_country'] . '.png';
-  $data['thread_asc']['country'] = $url;
+  $data['thread_asc']['country'] = $data['thread']['users_country'];
   $data['thread_asc']['users_link'] = cs_user($userid, $data['thread']['users_nick'], $data['thread']['users_active'], $data['thread']['users_delete']);
   $key = array_search($userid, $mods);
   if(!empty($key))
@@ -460,8 +459,7 @@ for($run = 0; $run<$com_loop; $run++)
   else
     $current--;
   
-  $url = 'symbols/countries/' . $cs_com[$run]['users_country'] . '.png';
-  $data['comment'][$run]['country'] = $url;
+  $data['comment'][$run]['country'] = $cs_com[$run]['users_country'];
   $data['comment'][$run]['users_link'] = cs_user($cs_com[$run]['users_id'], $cs_com[$run]['users_nick'], $cs_com[$run]['users_active'], $cs_com[$run]['users_delete']);
   if (empty($postscache[$cs_com[$run]['users_id']])) $postscache[$cs_com[$run]['users_id']] = getUserPosts($cs_com[$run]['users_id']);
   $user_posts = $postscache[$cs_com[$run]['users_id']];

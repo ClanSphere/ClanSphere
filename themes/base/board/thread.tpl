@@ -60,7 +60,7 @@
   </tr>
   {if:asc}
   <tr>
-    <td class="leftc" style="width:150px"><img src="{thread_asc:country}" style="height:11px;width:16px" alt="Country" /> {thread_asc:users_link}<br />
+    <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{thread_asc:country}.png" style="height:11px;width:16px" alt="" /> {thread_asc:users_link}<br />
       <br />
       {if:moderator}<img src="mods/board/rankimg.php?width=100" alt="{thread_asc:boardmod}" /><br />
       {thread_asc:boardmod} <br />
@@ -107,7 +107,7 @@
     <td class="bottom" colspan="2"></td>
   </tr>
   <tr>
-    <td class="leftc" style="width:150px"><img src="{comment:country}" style="height:11px;width:16px" alt="Country" /> {comment:users_link}<br />
+    <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{comment:country}.png" style="height:11px;width:16px" alt="" /> {comment:users_link}<br />
       <br />
       {if:com_moderator}<img src="mods/board/rankimg.php?width=100" alt="{comment:boardmod}" /><br />
       {comment:boardmod} <br />
