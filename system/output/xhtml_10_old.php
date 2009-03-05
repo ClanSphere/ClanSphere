@@ -103,12 +103,13 @@ function cs_html_img($url, $height = 0, $width = 0, $more = 0, $alt = '')
 
 function cs_html_mail($mail, $link = '')
 {
-    $email = explode("@", $mail);
+    global $cs_main;
+	$email = explode("@", $mail);
     $domain = empty($email[1]) ? array(0,1) : explode(".", $email[1]);
   $link = empty($link) ? $email[0] . ' (at) ' . $domain[0] . ' (dot) ' . $domain[1] : $link;
     $str = base64_encode($mail);
     
-    return '<a href="javascript:cs_ajax_request(\'mods/clansphere/mail.php?mail=' . $str . '\',function(request){window.location=\'mailto:\'+request.responseText;})">' . $link . '</a>';
+    return '<a href="javascript:cs_ajax_request(\''.$cs_main['php_self']['dirname'].'mods/clansphere/mail.php?mail=' . $str . '\',function(request){window.location=\'mailto:\'+request.responseText;})">' . $link . '</a>';
 }
 function cs_html_msnmail($mail, $link = '')
 {
