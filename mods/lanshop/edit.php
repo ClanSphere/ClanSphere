@@ -3,16 +3,18 @@
 // $Id$
 
 $cs_lang = cs_translate('lanshop');
+$cs_post = cs_post('id');
+$cs_get = cs_get('id');
+$data = array();
 
 require_once('mods/categories/functions.php');
-$lanshop_id = $_REQUEST['id'];
-settype($lanshop_id,'integer');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['edit'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
+$lanshop_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $lanshop_id = $cs_post['id'];
+
+$cells = 'categories_id, lanshop_articles_name, lanshop_articles_price, lanshop_articles_info';
+$cs_lanshop = cs_sql_select(__FILE__,'lanshop_articles',$cells,'lanshop_articles_id = ' . $lanshop_id);
+
 
 if(isset($_POST['submit'])) {
 
@@ -23,94 +25,49 @@ if(isset($_POST['submit'])) {
   $cs_lanshop['lanshop_articles_price'] = $_POST['lanshop_articles_price'];
   $cs_lanshop['lanshop_articles_info'] = $_POST['lanshop_articles_info'];
 
-  $error = 0;
-  $errormsg = '';
+  $error = '';
 
-  if(empty($cs_lanshop['categories_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_cat'] . cs_html_br(1);
-  }
-  if(empty($cs_lanshop['lanshop_articles_name'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_name'] . cs_html_br(1);
-  }
-  if(empty($cs_lanshop['lanshop_articles_price'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_price'] . cs_html_br(1);
-  }
+  if(empty($cs_lanshop['categories_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
+  if(empty($cs_lanshop['lanshop_articles_name']))
+    $error .= $cs_lang['no_name'] . cs_html_br(1);
+  if(empty($cs_lanshop['lanshop_articles_price']))
+    $error .= $cs_lang['no_price'] . cs_html_br(1);
+
   $where = "categories_id = '" . $cs_lanshop['categories_id'] . "' AND lanshop_articles_name = '";
   $where .= $cs_lanshop['lanshop_articles_name'] . "' AND lanshop_articles_id != '" . $lanshop_id . "'";
   $search_article = cs_sql_count(__FILE__,'lanshop_articles',$where);
-  if(!empty($search_article)) {
-    $error++;
-    $errormsg .= $cs_lang['name_used'] . cs_html_br(1);
-  }
-}
-else {
-  $cells = 'categories_id, lanshop_articles_name, lanshop_articles_price, lanshop_articles_info';
-  $cs_lanshop = cs_sql_select(__FILE__,'lanshop_articles',$cells,'lanshop_articles_id = ' . $lanshop_id);
-}
-if(!isset($_POST['submit'])) {
-  echo $cs_lang['body_edit'];
-}
-elseif(!empty($error)) {
-  echo $errormsg;
+  if(!empty($search_article))
+    $error .= $cs_lang['name_used'] . cs_html_br(1);
 }
 
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+if(!isset($_POST['submit']))
+	$data['head']['body'] = $cs_lang['body_create'];
+elseif(!empty($error))
+	$data['head']['body'] = $error;
+
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-  echo cs_html_form (1,'lanshop_edit','lanshop','edit');
-  echo cs_html_table(1,'forum',1);
+	$data['data'] = $cs_lanshop;
+
+  $data['ls']['categories'] = cs_categories_dropdown('lanshop',$cs_lanshop['categories_id']);
+  $data['ls']['price'] = sprintf($cs_lang['cost'],$cs_lanshop['lanshop_articles_price'] / 100);
+
+  $data['abcode']['smileys'] = cs_abcode_smileys('lanshop_articles_info');
+  $data['abcode']['features'] = cs_abcode_features('lanshop_articles_info');
   
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('folder_yellow') . $cs_lang['category'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_categories_dropdown('lanshop',$cs_lanshop['categories_id']);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('warehause') . $cs_lang['name'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('lanshop_articles_name',$cs_lanshop['lanshop_articles_name'],'text',80,40);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('money') . $cs_lang['price'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('lanshop_articles_price',$cs_lanshop['lanshop_articles_price'],'text',8,8);
-  echo sprintf($cs_lang['cost'],$cs_lanshop['lanshop_articles_price'] / 100);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('documentinfo') . $cs_lang['info'];
-  echo cs_html_br(2);
-  echo cs_abcode_smileys('lanshop_articles_info');
-  echo cs_html_roco(2,'leftb');
-  echo cs_abcode_features('lanshop_articles_info');
-  echo cs_html_textarea('lanshop_articles_info',$cs_lanshop['lanshop_articles_info'],'50','6');
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('id',$lanshop_id,'hidden');
-  echo cs_html_vote('submit',$cs_lang['edit'],'submit');
-  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
+  $data['lanshop']['id'] = $lanshop_id;
+  
+ echo cs_subtemplate(__FILE__,$data,'lanshop','edit');
 }
 else {
 
   $lanshop_cells = array_keys($cs_lanshop);
   $lanshop_save = array_values($cs_lanshop);
-  cs_sql_update(__FILE__,'lanshop_articles',$lanshop_cells,$lanshop_save,$lanshop_id);
+ cs_sql_update(__FILE__,'lanshop_articles',$lanshop_cells,$lanshop_save,$lanshop_id);
   
-    cs_redirect($cs_lang['changes_done'], 'lanshop') ;
+ cs_redirect($cs_lang['changes_done'], 'lanshop') ;
 } 
 
 ?>

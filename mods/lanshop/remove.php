@@ -3,40 +3,25 @@
 // $Id$
 
 $cs_lang = cs_translate('lanshop');
+$cs_get = cs_get('id');
 
-$lanshop_form = 1;
-$lanshop_id = $_REQUEST['id'];
-settype($lanshop_id,'integer');
+$lanshop_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['remove'];
-echo cs_html_roco(0);
-
-if(isset($_POST['agree'])) {
-  $lanshop_form = 0;
-  cs_sql_delete(__FILE__,'lanshop_articles',$lanshop_id);
-
-  cs_redirect($cs_lang['del_true'], 'lanshop');
+if(isset($_GET['agree'])) {
+ cs_sql_delete(__FILE__,'lanshop_articles',$lanshop_id);
+ cs_redirect($cs_lang['del_true'],'lanshop');
 }
 
-if(isset($_POST['cancel'])) 
-  cs_redirect($cs_lang['del_false'], 'lanshop');
+if(isset($_GET['cancel'])) 
+ cs_redirect($cs_lang['del_false'],'lanshop');
 
-if(!empty($lanshop_form)) {
+else {
 
-  echo cs_html_roco(1,'leftb');
-  echo sprintf($cs_lang['del_rly'],$lanshop_id);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'centerc');
-  echo cs_html_form(1,'lanshop_remove','lanshop','remove');
-  echo cs_html_vote('id',$lanshop_id,'hidden');
-  echo cs_html_vote('agree',$cs_lang['confirm'],'submit');
-  echo cs_html_vote('cancel',$cs_lang['cancel'],'submit');
-  echo cs_html_form (0);
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$lanshop_id);
+  $data['url']['agree'] = cs_url('lanshop','remove','id=' . $lanshop_id . '&amp;agree');
+  $data['url']['cancel'] = cs_url('lanshop','remove','id=' . $lanshop_id . '&amp;cancel');
+  
+ echo cs_subtemplate(__FILE__,$data,'lanshop','remove');
 }
 
 ?>
