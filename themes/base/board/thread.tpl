@@ -148,7 +148,7 @@
   {stop:comments}
   {if:sort_desc}
   <tr>
-    <td class="leftc" style="width:150px"><img src="{thread_desc:country}" style="height:11px;width:16px" alt="Country" /> {thread_desc:users_link}<br />
+    <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{thread_desc:country}.png" style="height:11px;width:16px" alt="" /> {thread_desc:users_link}<br />
       <br />
       {if:moderator}<img src="mods/board/rankimg.php?width=100" alt="{thread_desc:boardmod}" /><br />
       {thread_desc:boardmod} <br />

@@ -593,7 +593,7 @@ if($board_sort=='DESC' AND $current==1)
     $count_com[$userid] = getUserPosts($userid);
   }
   $user = cs_secure($data['thread']['users_nick']);
-  $data['thread_desc']['country'] = 'symbols/countries/' . $data['thread']['users_country'] . '.png';
+  $data['thread_desc']['country'] = $data['thread']['users_country'];
   $data['thread_desc']['users_link'] = cs_user($data['thread']['users_id'],$data['thread']['users_nick'],$data['thread']['users_active'],$data['thread']['users_delete']);
   $key = array_search($userid, $mods);
   if(!empty($key))
