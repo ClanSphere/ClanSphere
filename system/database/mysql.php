@@ -100,7 +100,7 @@ function cs_sql_option($cs_file, $mod)
     if (!file_exists($filename)) {
       $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
       $sql_query .= " WHERE options_mod = '" . $mod . "'";
-      $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_option', mysql_error($cs_db['con']));
+      $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_option', mysql_error($cs_db['con']), 1);
       
       while ($sql_result = mysql_fetch_assoc($sql_data)) {
         $name = $sql_result['options_name'];
@@ -201,7 +201,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
       }
     }
     $set .= "' ";
-  
+
     $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
     if (empty($sql_where)) {
       $sql_update .= $sql_table . "_id='" . $sql_id . "'";
@@ -210,7 +210,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
       $sql_update .= $sql_where;
     }
     mysql_query($sql_update, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_update', mysql_error($cs_db['con']));
-  
+
     $action = 1;
     if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
       $action = 0;
@@ -249,11 +249,10 @@ function cs_sql_version($cs_file)
 }
 
 function cs_sql_error() {
-  
+
   global $cs_db;
-  
+
   return mysql_error($cs_db['con']);
-  
 }
 
 ?>

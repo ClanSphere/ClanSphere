@@ -114,7 +114,7 @@ function cs_sql_option($cs_file,$mod) {
     }
     else {
       $error = $cs_db['con']->errorInfo();
-      cs_error_sql($cs_file, 'cs_sql_option', $error[2]);
+      cs_error_sql($cs_file, 'cs_sql_option', $error[2], 1);
     }
     cs_log_sql($sql_query);
     $options[$mod] = isset($new_result) ? $new_result : 0;
