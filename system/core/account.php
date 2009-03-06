@@ -113,7 +113,8 @@ if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_
   require_once('system/core/lang.php');
 }
 
-require_once('lang/' . $account['users_lang'] . '/system/comlang.php');
+$lang = empty($account['users_lang']) ? 'English' : $account['users_lang'];
+require_once('lang/' . $lang . '/system/comlang.php');
 
 $gma = cs_sql_select(__FILE__,'access','*',"access_id = " . (int)$account['access_id']);
 if(is_array($gma)) {
