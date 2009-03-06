@@ -6,14 +6,7 @@
 </tr>
 <tr>
 <td class="centerb">
-<br />
-{head:icon}
-<br /><br />
 {head:topline}
-{if:install}
-<br /><br />
-<a href="install.php">{lang:install}</a>
-{stop:install}
 </td>
 </tr>
 </table>
