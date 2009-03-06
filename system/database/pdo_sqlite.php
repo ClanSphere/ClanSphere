@@ -25,6 +25,7 @@ function cs_sql_version($cs_file) {
     $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0);
   $sql_infos['type'] = 'SQLite 3 (pdo_sqlite)';
   $sql_infos['host'] = 'localhost';
+  $sql_infos['encoding'] = 'PDO encoding';
   $sql_infos['client'] = $cs_db['con']->getAttribute(PDO::ATTR_CLIENT_VERSION);
   $sql_infos['client'] = str_replace('undefined', '', $sql_infos['client']);
   $sql_infos['server'] = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);

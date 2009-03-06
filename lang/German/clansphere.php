@@ -98,6 +98,7 @@ $cs_lang['allow_url_fopen'] = 'Externe Inhalte laden';
 $cs_lang['webserver'] = 'Webserver';
 $cs_lang['db_infos'] = 'Datenbank Informationen';
 $cs_lang['type'] = 'Datenbank Server';
+$cs_lang['encoding'] = 'Zeichensatz';
 $cs_lang['client'] = 'Client Version';
 $cs_lang['host'] = 'Ort der Datenbank';
 $cs_lang['server'] = 'Server Version';

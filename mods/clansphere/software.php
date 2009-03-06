@@ -11,9 +11,9 @@ $safe_mode = ini_get('safe_mode');
 $trans_sid = ini_get('session.use_trans_sid');
 $basedir = ini_get('open_basedir');
 $url_fopen = ini_get('allow_url_fopen');
-$limit['post_max_size'] = str_replace('M',' Mb', ini_get('post_max_size'));
-$limit['upload_max_filesize'] = str_replace('M',' Mb', ini_get('upload_max_filesize'));
-$limit['memory_limit'] = str_replace('M',' Mb', ini_get('memory_limit'));
+$limit['post_max_size'] = str_replace('M',' MiB', ini_get('post_max_size'));
+$limit['upload_max_filesize'] = str_replace('M',' MiB', ini_get('upload_max_filesize'));
+$limit['memory_limit'] = str_replace('M',' MiB', ini_get('memory_limit'));
 
 $sql_infos = cs_sql_version(__FILE__);
 
@@ -22,6 +22,7 @@ $data['software']['webserver'] = str_replace('/',' ',$_SERVER['SERVER_SOFTWARE']
 $data['software']['php_mod'] = phpversion();
 $data['software']['type'] = $sql_infos['type'];
 $data['software']['host'] = $sql_infos['host'];
+$data['software']['encoding'] = $sql_infos['encoding'];
 $data['software']['server'] = $sql_infos['server'];
 $data['software']['client'] = $sql_infos['client'];
 
@@ -104,4 +105,5 @@ while($run != $eco) {
 $data['software']['php_extensions'] = substr($ext,0,-2);
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','software');
+
 ?>

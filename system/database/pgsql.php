@@ -205,6 +205,8 @@ function cs_sql_version($cs_file) {
     $pg_infos = pg_version($cs_db['con']) OR 
       cs_error_sql($cs_file, 'cs_sql_version', pg_last_error($cs_db['con']));
   }
+
+  $sql_infos['encoding'] = pg_client_encoding($cs_db['con']);
   $sql_infos['client'] = isset($pg_infos['client']) ? $pg_infos['client'] : '-';
   $sql_infos['server'] = isset($pg_infos['server_version']) ? $pg_infos['server_version'] : '-';
   if($sql_infos['server'] == '-') {

@@ -208,6 +208,7 @@ function cs_sql_version($cs_file) {
   $sql_infos['host'] = $cs_db['place'];
   $sql_infos['client'] = '-';
 
+  $sql_infos['encoding'] = ini_get('mssql.charset') . ' (php.ini)';
   $sql_query = 'SELECT @@VERSION';
   $sql_data = mssql_query($sql_query, $cs_db['con']) OR 
     cs_error_sql($cs_file, 'cs_sql_version', mssql_get_last_message());

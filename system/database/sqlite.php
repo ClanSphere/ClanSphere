@@ -190,6 +190,7 @@ function cs_sql_version($cs_file) {
   $sql_infos['host'] = 'localhost';
   $sql_infos['client'] = sqlite_libversion();
   $sql_infos['server'] = sqlite_libversion();
+  $sql_infos['encoding'] = sqlite_libencoding();
 
     $sql_query = "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table'";
     $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);

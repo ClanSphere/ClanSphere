@@ -97,6 +97,7 @@ $cs_lang['allow_url_fopen'] = 'Allow remote files';
 $cs_lang['webserver'] = 'Webserver';
 $cs_lang['db_infos'] = 'Database information';
 $cs_lang['type'] = 'Datenbase Server';
+$cs_lang['encoding'] = 'Encoding';
 $cs_lang['client'] = 'Client Version';
 $cs_lang['host'] = 'Database host';
 $cs_lang['server'] = 'Server Version';

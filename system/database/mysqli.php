@@ -203,6 +203,7 @@ function cs_sql_version($cs_file) {
   mysqli_free_result($sql_data);
   cs_log_sql($sql_query);
 
+  $sql_infos['encoding'] = mysqli_character_set_name($cs_db['con']);
   $sql_infos['type'] = 'MySQL (mysqli)';
   $sql_infos['client'] = mysqli_get_client_info();
   $sql_infos['host'] = mysqli_get_host_info($cs_db['con']) OR 

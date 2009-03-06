@@ -239,7 +239,8 @@ function cs_sql_version($cs_file)
   }
   mysql_free_result($sql_data);
   cs_log_sql($sql_query);
-  
+
+  $sql_infos['encoding'] = mysql_client_encoding();
   $sql_infos['type'] = 'MySQL (mysql)';
   $sql_infos['client'] = mysql_get_client_info();
   $sql_infos['host'] = mysql_get_host_info($cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_version', mysql_error($cs_db['con']));

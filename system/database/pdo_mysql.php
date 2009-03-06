@@ -43,6 +43,7 @@ function cs_sql_version($cs_file) {
 
   $sql_infos['type'] = 'MySQL (pdo_mysql)';
   $sql_infos['host'] = $cs_db['con']->getAttribute(PDO::ATTR_CONNECTION_STATUS);
+  $sql_infos['encoding'] = 'PDO encoding';
   $sql_infos['client'] = $cs_db['con']->getAttribute(PDO::ATTR_CLIENT_VERSION);
   $sql_infos['server'] = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
   return $sql_infos;

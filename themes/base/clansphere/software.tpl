@@ -35,6 +35,10 @@
     <td class="leftb">{software:host}</td>
   </tr>
   <tr>
+    <td class="leftc" style="width:240px">{icon:db_status} {lang:encoding}</td>
+    <td class="leftb">{software:encoding}</td>
+  </tr>
+  <tr>
     <td class="leftc" style="width:240px">{icon:db_update} {lang:server}</td>
     <td class="leftb">{software:server}</td>
   </tr>
