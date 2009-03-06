@@ -24,7 +24,6 @@ require 'system/core/functions.php';
 @set_error_handler("php_error");
 
 require 'system/core/servervars.php';
-require 'system/core/content.php';
 require 'system/core/tools.php';
 require 'system/core/abcode.php';
 require 'system/core/templates.php';
@@ -41,6 +40,7 @@ unset($cs_db['user']);
 
 $cs_main = cs_sql_option(__FILE__,'clansphere');
 
+require 'system/core/content.php';
 require 'system/core/account.php';
 
 cs_tasks('system/extensions', 1); # load extensions
