@@ -113,6 +113,7 @@ input, textarea, select {
   margin:auto;
   border: 1px solid #888;
   margin-bottom: 10px;
+  text-align:center;
 }
 #msg_normal div, #msg_success div {
 	padding: 8px 0 8px 20px;
