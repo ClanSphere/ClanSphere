@@ -22,6 +22,7 @@ function cs_error_internal($error = 0, $report = 0) {
 
   $cs_main['error_internal'] = $error;
   $cs_main['error_reported'] = $report;
+  $cs_main['def_title'] = 'ClanSphere';
   $cs_main['def_lang'] = 'English';
   $cs_main['def_tpl'] = 'install';
   $cs_main['mod'] = 'errors';
