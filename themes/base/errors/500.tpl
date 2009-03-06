@@ -6,7 +6,10 @@
 </tr>
 <tr>
 <td class="centerb">
-{head:topline}
+<br /><br />
+{head:error}
+<hr style="width:100%" />
+{head:report}
 </td>
 </tr>
 </table>

@@ -9,11 +9,11 @@ $data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['500_action'];
 
 if(empty($cs_main['error_internal']))
-  $data['head']['topline'] = $cs_lang['500_body'];
-else {
-  $data['head']['topline'] = $cs_lang['500_err_' . $cs_main['error_internal'] . ''] . cs_html_hr('100%');
-  $data['head']['topline'] .= empty($cs_main['error_reported']) ? '' : $cs_main['error_reported'];
-}
+  $data['head']['error'] = $cs_lang['500_body'];
+else
+  $data['head']['error'] = $cs_lang['500_err_' . $cs_main['error_internal'] . ''];
+
+$data['head']['report'] = empty($cs_main['error_reported']) ? '' : $cs_main['error_reported'];
 
 echo cs_subtemplate(__FILE__,$data,'errors','500');
 
