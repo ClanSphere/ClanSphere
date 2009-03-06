@@ -16,6 +16,26 @@ function cs_error($file,$message) {
   $cs_logs['errors'] .= 'Error: ' . $file . ' -> ' . $message . "\n";
 }
 
+function cs_error_internal($error = 0, $report = 0) {
+
+  global $cs_micro, $cs_main;
+
+  $cs_main['error_internal'] = $error;
+  $cs_main['error_reported'] = $report;
+  $cs_main['def_lang'] = 'English';
+  $cs_main['def_tpl'] = 'install';
+  $cs_main['show'] = 'mods/errors/500.php';
+  $cs_main['public'] = 1;
+  $cs_main['def_width'] = '100%';
+
+  $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'users_lang' => 'English');
+  require 'lang/' . $account['users_lang'] . '/system/comlang.php';
+
+  $cs_lang_main = cs_translate();
+
+  echo cs_template($cs_micro,$cs_main,$account,'error.htm');
+}
+
 function cs_error_sql($file,$part,$message,$stop = 0) {
 
   global $cs_db;
@@ -26,7 +46,7 @@ function cs_error_sql($file,$part,$message,$stop = 0) {
   cs_error($file,$cs_db['last_error']);
 
   if(!empty($stop)) {
-    die($message);
+    die(cs_error_internal('sql', $message));
   }
 }
 
@@ -124,10 +144,10 @@ function cs_getip () {
 function php_error($errno, $errmsg, $filename, $linenum) {
  
   global $cs_main;
-   global $cs_logs;
+  global $cs_logs;
  
   $errortype = Array(
-      E_ERROR    => 'Error',
+    E_ERROR    => 'Error',
     E_WARNING   => 'Warning',
     E_PARSE    => 'Parsing Error',
     E_NOTICE   => 'Notice',
@@ -138,11 +158,12 @@ function php_error($errno, $errmsg, $filename, $linenum) {
     E_USER_ERROR  => 'User Error',
     E_USER_WARNING  => 'User Warning',
     E_USER_NOTICE  => 'User Notice',
-    );
-    // Added E_Strict for PHP 5 Version
-    if (substr(phpversion(), 0, 3) >= '5.0') {
-      $errortype['2048'] = 'Strict Notice/Error';
-  }
+  );
+
+  // Added E_Strict for PHP 5 Version
+  if(substr(phpversion(), 0, 3) >= '5.0')
+    $errortype['2048'] = 'Strict Notice/Error';
+
   $error = $errortype[$errno] . ": " . $errmsg . " in " . $filename . " on line " . $linenum . "\r\n";
   $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
 }
