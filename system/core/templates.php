@@ -49,121 +49,120 @@ function cs_looptemplate($source, $string, $data)
 
 function cs_conditiontemplate($string, $data)
 {
-    if (!isset($data['if']))
-        return $string;
-    
-    foreach ($data['if'] as $condition => $value) {
-        $replace = array('', '\\1');
-        $string = preg_replace("={if:" . $condition . "}(.*?){stop:" . $condition . "}=si", $replace[$value], $string);
-        $string = preg_replace("={unless:" . $condition . "}(.*?){stop:" . $condition . "}=si", $replace[!$value], $string);
-    }
+  if (!isset($data['if']))
     return $string;
+
+    foreach ($data['if'] as $condition => $value) {
+    $replace = array('', '\\1');
+    $string = preg_replace("={if:" . $condition . "}(.*?){stop:" . $condition . "}=si", $replace[$value], $string);
+    $string = preg_replace("={unless:" . $condition . "}(.*?){stop:" . $condition . "}=si", $replace[!$value], $string);
+  }
+  return $string;
 }
 
 function cs_templateurl($matches) {
-  
+
   $action = !empty($matches[5]) ? $matches[5] : 'list';
   $more = empty($matches[7]) ? 0 : $matches[7];
   $base = empty($matches[2]) ? 0 : $matches[2];
-  
-  return cs_url($matches[3], $action, $more, $base);
 
+  return cs_url($matches[3], $action, $more, $base);
 }
 
 function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 {
-    global $cs_main;
-    $cs_main['cellspacing'] = isset($cs_main['cellspacing']) ? $cs_main['cellspacing'] : 0;
+  global $cs_main;
+  $cs_main['cellspacing'] = isset($cs_main['cellspacing']) ? $cs_main['cellspacing'] : 0;
 
-    $target = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
-    if ($cs_main['def_theme'] != 'base' and !file_exists($target))
-    {
-        cs_warning('cs_subtemplate - Custom theme file not found: "' . $target . '"');
-        $target = 'themes/base/' . $mod . '/' . $action . '.tpl';
-    }
-    if (!file_exists($target))
-    {
-        cs_error($source, 'cs_subtemplate - Theme file not found: "' . $target . '"');
-        return false;
-    }
+  $target = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
+  if ($cs_main['def_theme'] != 'base' and !file_exists($target))
+  {
+    cs_warning('cs_subtemplate - Custom theme file not found: "' . $target . '"');
+    $target = 'themes/base/' . $mod . '/' . $action . '.tpl';
+  }
+  if (!file_exists($target))
+  {
+    cs_error($source, 'cs_subtemplate - Theme file not found: "' . $target . '"');
+    return false;
+  }
+
+  $string = file_get_contents($target);
+  $string = str_replace('{page:width}', $cs_main['def_width'], $string);
+  $string = str_replace('{page:self}', $_SERVER['PHP_SELF'], $string);
+  $string = str_replace('{page:path}', $cs_main['php_self']['dirname'], $string);
+  $string = str_replace('{page:mod}', $cs_main['mod'], $string);
+  $string = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $string);
+  $string = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $string);
+  $string = cs_conditiontemplate($string, $data);
+  $string = cs_looptemplate($source, $string, $data);
+  $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
+  $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
     
-    $string = file_get_contents($target);
-    $string = str_replace('{page:width}', $cs_main['def_width'], $string);
-    $string = str_replace('{page:self}', $_SERVER['PHP_SELF'], $string);
-    $string = str_replace('{page:path}', $cs_main['php_self']['dirname'], $string);
-    $string = str_replace('{page:mod}', $cs_main['mod'], $string);
-    $string = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $string);
-    $string = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $string);
-    $string = cs_conditiontemplate($string, $data);
-    $string = cs_looptemplate($source, $string, $data);
-    $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
-    $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
-    
-    if (!empty($navfiles))
-        $string = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $string);
-    
-    return $string;
+  if (!empty($navfiles))
+    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $string);
+
+  return $string;
 }
 
 function cs_templatefile($matches)
 {
-    $file = 'mods/' . $matches[1] . '/' . $matches[2] . '.php';
-    if (!file_exists($file))
-    {
-        cs_error($file, 'cs_templatefile - File not found');
-        return $matches[0];
-    }
-    if (!empty($matches[3]))
-    {
-        $data = explode('=', substr($matches[3], 1));
-        $backup = empty($_GET[$data[0]]) ? '' : $_GET[$data[0]];
-        $_GET[$data[0]] = $data[1];
-        $return = cs_filecontent($file);
-        if (empty($backup)) unset($_GET[$data[0]]); else $_GET[$data[0]] = $backup;
-        return $return;
-    }
-    return cs_filecontent($file);
+  $file = 'mods/' . $matches[1] . '/' . $matches[2] . '.php';
+  if (!file_exists($file))
+  {
+    cs_error($file, 'cs_templatefile - File not found');
+    return $matches[0];
+  }
+  if (!empty($matches[3]))
+  {
+    $data = explode('=', substr($matches[3], 1));
+    $backup = empty($_GET[$data[0]]) ? '' : $_GET[$data[0]];
+    $_GET[$data[0]] = $data[1];
+    $return = cs_filecontent($file);
+    if (empty($backup)) unset($_GET[$data[0]]); else $_GET[$data[0]] = $backup;
+    return $return;
+  }
+  return cs_filecontent($file);
 }
 
 function cs_filecontent($file)
 {
-    global $account, $cs_main;
+  global $account, $cs_main;
     
-    ob_start();
-    include $file;
-    $content = ob_get_contents();
-    ob_end_clean();
-    
-    return $content;
+  ob_start();
+  include $file;
+  $content = ob_get_contents();
+  ob_end_clean();
+
+  return $content;
 }
 
 function cs_templatelang($matches)
 {
-    global $cs_lang;
-    
-    return !empty($cs_lang[$matches[1]]) ? $cs_lang[$matches[1]] : $matches[0];
+  global $cs_lang;
+
+  return !empty($cs_lang[$matches[1]]) ? $cs_lang[$matches[1]] : $matches[0];
 }
 
 function cs_getmsg()
 {
-    if (!isset($_SESSION['message']) || empty($_SESSION['message']))
-        return '';
+  if (!isset($_SESSION['message']) || empty($_SESSION['message']))
+    return '';
 
-    if (!empty($_SESSION['messageadd'])) {
-      $add = explode(',',$_SESSION['messageadd'],2);
-      $icon = empty($add[0]) ? '' : cs_icon($add[0]);
-      $id = empty($add[1]) ? 'msg_normal' : $add[1];
-      unset($_SESSION['messageadd']);
-    } else {
-      $icon = '';
-      $id = 'msg_normal';
-    }
-    $string = cs_html_div(1,0,'id="' . $id . '"') . cs_html_div(1);
-    $string .= $icon . $_SESSION['message'];
-    $string .= cs_html_div(0) . cs_html_div(0);
-    unset($_SESSION['message']);
-    
-    return $string;
+  if (!empty($_SESSION['messageadd'])) {
+    $add = explode(',',$_SESSION['messageadd'],2);
+    $icon = empty($add[0]) ? '' : cs_icon($add[0]);
+    $id = empty($add[1]) ? 'msg_normal' : $add[1];
+    unset($_SESSION['messageadd']);
+  } else {
+    $icon = '';
+    $id = 'msg_normal';
+  }
+  $string = cs_html_div(1,0,'id="' . $id . '"') . cs_html_div(1);
+  $string .= $icon . $_SESSION['message'];
+  $string .= cs_html_div(0) . cs_html_div(0);
+  unset($_SESSION['message']);
+
+  return $string;
 }
 
 function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $icon = 0)
@@ -171,20 +170,20 @@ function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $ic
   if($mod != "install") {
       cs_redirectmsg($message, $id, $icon);
   }
-    
+
     $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
     header('Location: ' . $url);
     exit();
 }
 function cs_redirectmsg($message, $id = 0, $icon = 0) {
-  
+
   global $cs_logs;
   global $cs_main;
   global $cs_lang;
-  
+
   $sql = cs_sql_error();
   $php = $cs_logs['php_errors'];
-  
+
   if (!empty($cs_main['debug']) && (!empty($sql) || !empty($php))) {
     $message = $cs_lang['error'] . cs_html_br(1);
     $icon = 'alert';
@@ -197,12 +196,12 @@ function cs_redirectmsg($message, $id = 0, $icon = 0) {
 
 function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
 {
-    global $cs_logs, $com_lang, $cs_main;
+    global $cs_logs, $com_lang;
     $wp = $cs_main['php_self']['dirname'];
     $mod = $cs_main['mod'];
     $action = $cs_main['action'];
     $get_axx = 'mods/' . $mod . '/access.php';
-    
+
     if (!file_exists($cs_main['show'])) {
         cs_error($cs_main['show'], 'cs_template - File not found');
         $cs_main['show'] = 'mods/errors/404.php';
@@ -222,13 +221,13 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
             $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
         }
     }
-    
+
     if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < 3)
     {
         $cs_main['show'] = 'mods/users/login.php';
         $tpl_file = 'login.htm';
     }
-    
+
     $cs_main['template'] = empty($account['users_tpl']) ? $cs_main['def_tpl'] : $account['users_tpl'];
     if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
     if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); unset($_SESSION['tpl_preview']); }
@@ -241,7 +240,7 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
     }
     $cs_temp_get = file_get_contents($tpl_path . '/' . $tpl_file);
     $tpl_path = $wp . $tpl_path;
-    
+
     $pattern = "=\<link(.*?)href\=\"(?!http)(.*?)\"(.*?)\>=i";
     $cs_temp_get = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $cs_temp_get);
     $pattern = "=background\=\"(?!http)(.*?)\"=i";
@@ -250,7 +249,7 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
     $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
     $script = "<script src=\"" . $wp . "system/javascript/ajax.js\" type=\"text/javascript\"></script>\r\n";
     $script .= "<script src=\"" . $wp . "system/javascript/clansphere.js\" type=\"text/javascript\"></script>\r\n";
-    
+
     // Lightbox START
     if (!empty($account['access_gallery']) && $cs_main['mod'] == 'gallery') {
       $gallery = cs_sql_option(__FILE__, 'gallery');
@@ -268,7 +267,7 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
       }
     }
     // Lightbox END
-    
+
     $cs_temp_get = str_replace('</head>', $script . '</head>', $cs_temp_get);
     if (!empty($cs_main['debug']))
     {
@@ -300,11 +299,11 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
     $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
     $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
     $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $cs_temp_get);
-    
+
     // Set title proper related to module
     if (!empty($cs_main['mod']))
         $cs_main['def_title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_main['mod']);
-    
+
     $cs_main['def_title'] = htmlspecialchars($cs_main['def_title'], ENT_QUOTES);
     $cs_temp_get = str_replace('{func:title}', $cs_main['def_title'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
@@ -318,7 +317,8 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
     $cs_temp_get = str_replace('{func:parse}', $getparse, $cs_temp_get);
     $getmemory = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
     $cs_temp_get = str_replace('{func:memory}', $getmemory, $cs_temp_get);
-    
+
     return $cs_temp_get;
 }
+
 ?>
