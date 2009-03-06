@@ -18,7 +18,7 @@ function cs_error($file,$message) {
 
 function cs_error_internal($error = 0, $report = 0) {
 
-  global $cs_micro, $cs_main;
+  global $cs_micro, $cs_main, $com_lang;
 
   $cs_main['error_internal'] = $error;
   $cs_main['error_reported'] = $report;
