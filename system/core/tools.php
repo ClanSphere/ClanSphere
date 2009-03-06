@@ -449,19 +449,21 @@ function cs_translate($mod = '') {
 
   global $account, $cs_main, $cs_lang, $cs_lang_main;
 
-  if (empty($mod)) {
-     $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
+   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
+
+  if(empty($mod)) {
      include 'lang/'.$lang.'/system/main.php';
      return $cs_lang;
   }
 
   $cs_lang = array_merge($cs_lang, $cs_lang_main);
-  $file = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
+  $file = 'lang/' . $lang . '/' . $mod . '.php';
 
   if(file_exists($file)) {
     include $file;
     return $cs_lang;
-  } else {
+  }
+  else {
     cs_error($file,'cs_translate - File not found');
     return $cs_lang;
   }
