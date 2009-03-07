@@ -47,8 +47,6 @@ if(file_exists('setup.php')) {
   cs_tasks('system/runstartup'); # load startup files
 
   $cs_main['debug'] = false;
-
-  require 'system/extensions/gd.php';
     
   chdir('mods/captcha/');
   
