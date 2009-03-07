@@ -203,7 +203,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
 function cs_sql_version($cs_file) {
 
   global $cs_db;
-  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0);
+  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_infos['type'] = 'Microsoft SQL Server (mssql)';
   $sql_infos['host'] = $cs_db['place'];
   $sql_infos['client'] = '-';

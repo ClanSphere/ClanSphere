@@ -24,7 +24,7 @@ function cs_sql_connect($cs_db) {
 function cs_sql_version($cs_file) {
 
   global $cs_db;
-  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0);
+  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_infos['type'] = 'PostgreSQL (pdo_pgsql)';
   $sql_infos['host'] = $cs_db['place'];
   $sql_infos['encoding'] = 'PDO encoding';

@@ -24,7 +24,7 @@ function cs_sql_connect($cs_db) {
 function cs_sql_version($cs_file) {
 
   global $cs_db;
-  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0);
+  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_query = 'SHOW TABLE STATUS';
   if($sql_data = $cs_db['con']->query($sql_query)) {
     $new_result = $sql_data->fetchAll(PDO::FETCH_ASSOC);
@@ -33,6 +33,7 @@ function cs_sql_version($cs_file) {
       $sql_infos['data_size'] = $sql_infos['data_size'] + $row['Data_length'];
       $sql_infos['index_size'] = $sql_infos['index_size'] + $row['Index_length'];
       $sql_infos['tables']++;
+      $sql_infos['names'][] .= $row['Name'];
     }
   }
   else {

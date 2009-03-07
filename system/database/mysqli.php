@@ -191,7 +191,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
 function cs_sql_version($cs_file) {
 
   global $cs_db;
-  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0);
+  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_query = 'SHOW TABLE STATUS';
   $sql_data = mysqli_query($cs_db['con'], $sql_query) OR 
     cs_error_sql($cs_file, 'cs_sql_version', mysqli_error($cs_db['con']));
@@ -199,6 +199,7 @@ function cs_sql_version($cs_file) {
     $sql_infos['data_size'] = $sql_infos['data_size'] + $row['Data_length'];
     $sql_infos['index_size'] = $sql_infos['index_size'] + $row['Index_length'];
     $sql_infos['tables']++;
+    $sql_infos['names'][] .= $row['Name'];
   }
   mysqli_free_result($sql_data);
   cs_log_sql($sql_query);

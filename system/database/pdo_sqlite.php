@@ -21,8 +21,8 @@ function cs_sql_connect($cs_db) {
 
 function cs_sql_version($cs_file) {
 
-    global $cs_db;
-    $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0);
+  global $cs_db;
+  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_infos['type'] = 'SQLite 3 (pdo_sqlite)';
   $sql_infos['host'] = 'localhost';
   $sql_infos['encoding'] = 'PDO encoding';
