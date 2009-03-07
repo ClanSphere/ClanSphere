@@ -33,10 +33,11 @@ ___________________________________________________________
 -> Improved squads view with wars, awards and ranks (GaHero)
 -> Set httponly flag in cookies [available in PHP 5.2.0 or higher] (Denni)
 -> Used some more caching to enhance the performance (duriel)
--> Updated fckeditor to version 2.6.4 beta (hajo)
 -> Added comments feature to events and fixed it in wars mod (hajo)
+-> Added error page 500 for system relevant problems (hajo)
 -> Reworked events mod to support guests (hajo)
 -> Reworked cs_addons function to support count queries and look even better (hajo)
+-> Updated fckeditor to version 2.6.4 beta (hajo)
 
 
 ClanSphere 2008.2.1 >> 2008-09-20
