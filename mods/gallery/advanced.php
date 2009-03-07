@@ -377,7 +377,7 @@ if(isset($_POST['submit_1']))
     if(!empty($_POST['status_' . $run]))
     {
         $name = $_POST['name_' . $run];
-        if (!extension_loaded('gd')) die('Error: GD extension not installed.');
+        if(!extension_loaded('gd')) die(cs_error_internal(0, 'GD extension not installed.'));
         if(cs_resample('uploads/gallery/pics/' . $name, 'uploads/gallery/thumbs/' . 'Thumb_' . $name, $img_max['thumbs'], $img_max['thumbs']))
         {
             $where = "gallery_name = '" . cs_sql_escape($name) . "'";
