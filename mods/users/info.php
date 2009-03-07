@@ -16,6 +16,6 @@ $mod_info['show']    = array('users/view' => 1, 'clansphere/admin' => 3, 'option
 $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = TRUE;
-$mod_info['tables']    = array('users');
+$mod_info['tables']    = array('users', 'notifications');
 
 ?>
