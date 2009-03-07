@@ -4,15 +4,24 @@
 
 $cs_lang = cs_translate('install');
 
-function cs_uninstall($old_query = '') {
-  global $cs_db;
-  $error = $cs_db['last_error'];
+global $cs_db;
+
+function cs_installerror($old_query = '') {
+
+  global $cs_db, $cs_lang, $account;
+  $error = empty($cs_db['last_error']) ? 'Unknown' : $cs_db['last_error'];
+  $msg   = 'Error: ' . $error . cs_html_br(2) . 'Query: ' . $old_query . cs_html_br(4);
+  $msg  .= cs_link($cs_lang['remove_and_again'], 'install', 'sql', 'lang=' . $account['users_lang'] . '&amp;uninstall=1');
+  die(cs_error_internal('sql', $msg));
+}
+
+if(!empty($_REQUEST['uninstall'])) {
   $sql_uninstall = file_get_contents('uninstall.sql');
   $sql_array = preg_split("=;[\n\r]+=",$sql_uninstall); 
   foreach($sql_array AS $sql_query) {
     @cs_sql_query(__FILE__, $sql_query);
   }
-  die('Database error caused SQL uninstall: ' . $error . ' - Query: ' . $old_query);
+  cs_redirect('','install','sql','lang=' . $account['users_lang']);
 }
 
 $sql_install = file_get_contents('install.sql');
@@ -25,7 +34,6 @@ $sql_install = str_replace('{member}',$cs_lang['member'],$sql_install);
 $sql_install = str_replace('{orga}',$cs_lang['orga'],$sql_install);
 $sql_install = str_replace('{admin}',$cs_lang['admin'],$sql_install);
 
-global $cs_db;
 if($cs_db['hash'] == 'md5') { 
   $sec_pwd = md5('admin');
 }
@@ -65,7 +73,7 @@ foreach($sql_array AS $sql_query) {
   $sql_query = trim($sql_query);
   if(!empty($sql_query)) {
     if (!cs_sql_query(__FILE__, $sql_query)) {
-      cs_uninstall($sql_query);
+      cs_installerror($sql_query);
     }
   }
 }

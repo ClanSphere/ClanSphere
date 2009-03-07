@@ -107,6 +107,7 @@ $cs_lang['short_pwd'] = '- Das Passwort ist zu kurz (min. 4)';
 $cs_lang['email_false'] = '- Die E-Mail-Adresse ist ung&uuml;ltig';
 
 $cs_lang['db_error'] = 'Datenbank Fehler';
+$cs_lang['remove_and_again'] = 'Erstellte Inhalte entfernen und neuen Versuch starten';
 
 $cs_lang['guest']  = 'Besucher';
 $cs_lang['community']  = 'Benutzer';
@@ -205,4 +206,5 @@ $cs_lang['wars'] = 'Clanwars';
 $cs_lang['wizard'] = 'Installations Assistent';
 $cs_lang['clansphere_core'] = 'Clansphere Basis';
 $cs_lang['metatags'] = 'Metatags';
+
 ?>

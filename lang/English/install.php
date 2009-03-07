@@ -107,6 +107,7 @@ $cs_lang['short_pwd'] = '- Entered password is too short (min. 4)';
 $cs_lang['email_false'] = '- Entered email-adress is not valid';
 
 $cs_lang['db_error'] = 'Database Error';
+$cs_lang['remove_and_again'] = 'Remove installed part and try again';
 
 $cs_lang['guest']  = 'Guest';
 $cs_lang['community']  = 'User';
@@ -206,4 +207,5 @@ $cs_lang['wars'] = 'Clanwars';
 $cs_lang['wizard'] = 'Installation Wizard';
 $cs_lang['clansphere_core'] = 'Clansphere Base';
 $cs_lang['metatags'] = 'Metatags';
+
 ?>
