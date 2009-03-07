@@ -236,7 +236,8 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
     if (!file_exists($tpl_path . '/' . $tpl_file))
     {
         cs_error($tpl_path . '/' . $tpl_file, 'cs_template - Template not found');
-        die('Template not found: ' . $tpl_path . '/' . $tpl_file);
+        $msg = 'Template not found: ' . $tpl_path . '/' . $tpl_file;
+        die(cs_error_internal('tpl', $msg));
     }
     $cs_temp_get = file_get_contents($tpl_path . '/' . $tpl_file);
     $tpl_path = $wp . $tpl_path;

@@ -16,6 +16,7 @@ $cs_lang['403_body']   = 'You don\'t have the required permission to view this p
 $cs_lang['500_action']    = 'Internal Cause';
 $cs_lang['500_body']      = 'Process of generating the site has been stopped. If activated watch the log files for more information.';
 $cs_lang['500_err_sql']   = 'An important sql query failed due to the following problem:';
+$cs_lang['500_err_tpl']   = 'Parsing the activated template failed because of this:';
 $cs_lang['500_err_setup'] = 'The setup.php file could not be found. Please run the installation if not done yet.';
 
 ?>
