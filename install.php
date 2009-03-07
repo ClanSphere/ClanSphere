@@ -55,7 +55,6 @@ $cs_main = array( 'def_action'      => 'list',
                   'version_date'    => '2008-09-20');
 
 require 'system/core/content.php';
-require 'system/core/tools.php';
 
 if(!empty($_REQUEST['lang'])) {
   $languages = cs_checkdirs('lang');
