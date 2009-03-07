@@ -54,6 +54,8 @@ DROP TABLE {pre}_cupmatches;
 
 DROP TABLE {pre}_events;
 
+DROP TABLE {pre}_eventguests;
+
 DROP TABLE {pre}_faq;
 
 DROP TABLE {pre}_fightus;
