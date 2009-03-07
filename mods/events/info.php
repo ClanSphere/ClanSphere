@@ -16,6 +16,6 @@ $mod_info['show']    = array('users/settings' => 2, 'clansphere/admin' => 3, 'op
 $mod_info['categories']  = TRUE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
-$mod_info['tables']    = array('events');
+$mod_info['tables']    = array('events', 'eventguests');
 
 ?>
