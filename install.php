@@ -2,7 +2,10 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-@error_reporting(E_ALL);
+if((substr(phpversion(), 0, 3) >= '5.0') AND (substr(phpversion(), 0, 3) < '6.0'))
+  @error_reporting(E_ALL | E_STRICT);
+else
+  @error_reporting(E_ALL);
 
 @ini_set('arg_separator.output','&amp;');
 @ini_set('session.use_trans_sid','0');
@@ -10,20 +13,24 @@
 @ini_set('session.use_only_cookies','1');
 @ini_set('display_errors','on');
 @ini_set('magic_quotes_runtime','off');
-@ini_set('max_execution_time','90');
-if (substr(phpversion(), 0, 3) >= '5.1') {
+
+if(substr(phpversion(), 0, 3) >= '5.1')
   @date_default_timezone_set('Europe/Berlin');
-}
 
-
-$cs_micro = explode(' ', microtime()); # starting parse time
+$cs_micro = explode(' ', microtime()); # starting parsetime
 $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 0, 'dir' => 'logs');
 
 require 'system/core/functions.php';
-require 'system/output/xhtml_10_old.php';
+@set_error_handler("php_error");
+
+require 'system/core/servervars.php';
+require 'system/core/tools.php';
+require 'system/core/abcode.php';
 require 'system/core/templates.php';
+require 'system/output/xhtml_10_old.php';
 
 if(file_exists('setup.php')) {
+    
   require 'setup.php';
   require 'system/database/' . $cs_db['type'] . '.php';
   $cs_db['con'] = cs_sql_connect($cs_db);
@@ -50,7 +57,7 @@ $cs_main = array( 'def_action'      => 'list',
 require 'system/core/content.php';
 require 'system/core/tools.php';
 
-if (!empty($_REQUEST['lang'])) {
+if(!empty($_REQUEST['lang'])) {
   $languages = cs_checkdirs('lang');
   foreach($languages as $mod) {
     if($mod['dir'] == $_REQUEST['lang']) { $lang = $_REQUEST['lang']; break; }
