@@ -3,244 +3,154 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
+$data = array();
 
 require_once('mods/categories/functions.php');
 
-$cs_files['files_time'] = cs_time();
-$cs_files['users_id'] = $account['users_id'];
+$data['file']['files_time'] = cs_time();
+$data['file']['users_id'] = $account['users_id'];
 
 $filetypes = array('application/pdf' => 'pdf','text/plain' => 'txt');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_create'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
+$data['file']['files_close'] = 0;
+$data['file']['files_vote'] = 0;
+$data['file']['categories_id'] = 0;
+$data['file']['files_name'] = '';
+$data['file']['files_version'] = '';
+$data['file']['files_description'] = '';
+$data['file']['files_name'] = '';
+$data['file']['files_size'] = '';
+$data['file']['files_mirror'] = '';
+$size = '';
+
 
 if(isset($_POST['submit']))
 {
-    $cs_files['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] :
+    $data['file']['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] :
   cs_categories_create('files',$_POST['categories_name']);
 
-  $cs_files['files_close'] = isset($_POST['files_close']) ? $_POST['files_close'] : 0;
-  $cs_files['files_vote'] = isset($_POST['files_vote']) ? $_POST['files_vote'] : 0;
-  $cs_files['files_name'] = $_POST['files_name'];
-  $cs_files['files_version'] = $_POST['files_version'];
-  $cs_files['files_description'] = $_POST['files_description'];
-  $files_size_live = $_POST['files_size_live'];
+  $data['file']['files_close'] = isset($_POST['files_close']) ? $_POST['files_close'] : 0;
+  $data['file']['files_vote'] = isset($_POST['files_vote']) ? $_POST['files_vote'] : 0;
+  $data['file']['files_name'] = $_POST['files_name'];
+  $data['file']['files_version'] = $_POST['files_version'];
+  $data['file']['files_description'] = $_POST['files_description'];
+  $data['file']['files_size'] = $_POST['files_size'];
   $size = $_POST['size'];
-  $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
-  $cs_files['files_mirror'] = '';
+  $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 4;
+  #$data['file']['files_mirror'] = '';
   for($run=0; $run < $run_loop; $run++)
   {
-      $num = $run+1;
+    $num = $run+2;
     if(!empty($_POST["files_mirror_url_$num"]) AND !empty($_POST["files_mirror_ext_$num"]))
     {
-      $cs_files["files_mirror"] = $cs_files["files_mirror"] . "\n-----\n" . $_POST["files_mirror_url_$num"] . "\n" . $_POST["files_mirror_name_$num"] . "\n" . $_POST["files_mirror_ext_$num"] . "\n" . $_POST["files_access_$num"];
+      $data['file']['files_mirror'] .= $data['file']["files_mirror"] . "\n-----\n" . $_POST["files_mirror_url_$num"] . "\n" . $_POST["files_mirror_name_$num"] . "\n" . $_POST["files_mirror_ext_$num"] . "\n" . $_POST["files_access_$num"];
     }
   }
 
-  if($size == 0)
-  {
-    $cs_files['files_size'] = $files_size_live * 1024;
+  if($size == 0) {
+    $data['file']['files_size'] = $data['file']['files_size'] * 1024;
   }
-  elseif($size == 1)
-  {
-    $cs_files['files_size'] = $files_size_live * 1024 * 1024;
+  elseif($size == 1) {
+    $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024;
   }
-  elseif($size == 2)
-  {
-    $cs_files['files_size'] = $files_size_live * 1024 * 1024 * 1024;
+  elseif($size == 2) {
+    $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024 * 1024;
   }
 
-  $error = 0;
-  $errormsg = '';
+  $error = '';
 
-  if(empty($cs_files['categories_id']))
-  {
-    $error++;
-    $errormsg .= $cs_lang['no_cat'] . cs_html_br(1);
-  }
-  if(empty($cs_files['files_name']))
-  {
-    $error++;
-    $errormsg .= $cs_lang['no_name'] . cs_html_br(1);
-  }
-  if(empty($cs_files['files_description']))
-  {
-    $error++;
-    $errormsg .= $cs_lang['no_text'] . cs_html_br(1);
-  }
-  if(empty($cs_files['files_mirror']))
-  {
-    $error++;
-    $errormsg .= $cs_lang['no_mirror'] . cs_html_br(1);
-  }
-  if(empty($cs_files['files_size']))
-  {
-    $error++;
-    $errormsg .= $cs_lang['no_size'] . cs_html_br(1);
-  }
+  if(empty($data['file']['categories_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
+  if(empty($data['file']['files_name']))
+    $error .= $cs_lang['no_name'] . cs_html_br(1);
+  if(empty($data['file']['files_description']))
+    $error .= $cs_lang['no_text'] . cs_html_br(1);
+  if(empty($data['file']['files_mirror']))
+    $error .= $cs_lang['no_mirror'] . cs_html_br(1);
+  if(empty($data['file']['files_size']))
+    $error .= $cs_lang['no_size'] . cs_html_br(1);
+
   $flood = cs_sql_select(__FILE__,'files','files_time',0,'files_time DESC');
   $maxtime = $flood['files_time'] + $cs_main['def_flood'];
-  if($maxtime > cs_time())
-  {
-    $error++;
+  if($maxtime > cs_time()) {
     $diff = $maxtime - cs_time();
-    $errormsg .= sprintf($cs_lang['flood_on'], $diff);
+    $error .= sprintf($cs_lang['flood_on'], $diff);
   }
 }
-else
-{
-  $cs_files['files_close'] = 0;
-  $cs_files['files_vote'] = 0;
-  $cs_files['categories_id'] = 0;
-  $cs_files['files_name'] = '';
-  $cs_files['files_version'] = '';
-  $cs_files['files_description'] = '';
-  $cs_files['files_name'] = '';
-  $files_size_live = '';
-  $size = '';
-}
 
-if(isset($_POST['mirror']))
-{
-    $cs_files['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] :
+if(isset($_POST['mirror'])) {
+	$_POST['run_loop']++;
+    $data['file']['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] :
   cs_categories_create('files',$_POST['categories_name']);
-  $cs_files['files_close'] = isset($_POST['files_close']) ? $_POST['files_close'] : 0;
-  $cs_files['files_vote'] = isset($_POST['files_vote']) ? $_POST['files_vote'] : 0;
-  $cs_files['files_name'] = $_POST['files_name'];
-  $cs_files['files_version'] = $_POST['files_version'];
-  $cs_files['files_description'] = $_POST['files_description'];
-  $files_size_live = $_POST['files_size_live'];
+  $data['file']['files_close'] = isset($_POST['files_close']) ? $_POST['files_close'] : 0;
+  $data['file']['files_vote'] = isset($_POST['files_vote']) ? $_POST['files_vote'] : 0;
+  $data['file']['files_name'] = $_POST['files_name'];
+  $data['file']['files_version'] = $_POST['files_version'];
+  $data['file']['files_description'] = $_POST['files_description'];
+  $data['file']['files_size'] = $_POST['files_size'];
   $size = $_POST['size'];
-    $_POST['run_loop']++;
-}
-if(!isset($_POST['submit']))
-{
-  echo $cs_lang['body_create'];
-}
-elseif(!empty($error))
-{
-  echo $errormsg;
-}
-else
-{
-  echo $cs_lang['create_done'];
+  $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
+	
+} else {
+  $files_mirror = $data['file']['files_mirror'];
+  $temp = explode("-----", $files_mirror);
+  $run_loop = count($temp);
 }
 
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+if(!isset($_POST['submit']))
+  $data['head']['message'] = $cs_lang['body_create'];
+elseif(!empty($error))
+  $data['head']['message'] = $error;
 
 
 if(!empty($error) OR !isset($_POST['submit']))
 {
-  echo cs_html_form (1,'files_create','files','create',1);
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kedit') . $cs_lang['name'] . ' *';
-  echo cs_html_roco(2,'leftb',0,2);
-  echo cs_html_input('files_name',$cs_files['files_name'],'text',200,50);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('package_editors') .$cs_lang['version'];
-  echo cs_html_roco(2,'leftb',0,2);
-  echo cs_html_input('files_version',$cs_files['files_version'],'text',200,5);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('fileshare') . $cs_lang['size'] . ' *';
-  echo cs_html_roco(2,'leftb',0,2);
-  echo cs_html_input('files_size_live',$files_size_live,'text',20,5);
-    echo cs_html_select(1,'size');
-  $levels = 0;
-  while($levels < 3)
-  {
-    $size == $levels ? $sel = 1 : $sel = 0;
-    echo cs_html_option($cs_lang['size_' . $levels],$levels,$sel);
-    $levels++;
+  $size = 0;
+  while($data['file']['files_size'] >= 1024 && $size < 2) {
+    $data['file']['files_size'] /= 1024; 
+    $size++;
   }
-  echo cs_html_select(0);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('folder_yellow') . $cs_lang['category'] . ' *';
-  echo cs_html_roco(2,'leftb',0,2);
-  echo cs_categories_dropdown('files',$cs_files['categories_id']);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['text'] . ' *';
-  echo cs_html_br(2);
-  echo cs_abcode_smileys('files_description');
-  echo cs_html_roco(2,'leftb',0,2);
-  echo cs_abcode_features('files_description');
-  echo cs_html_textarea('files_description',$cs_files['files_description'],'50','10');
-  echo cs_html_roco(0);
+  for($l=0; $l < 3; $l++) {
+    $data['levels'][$l]['value'] = $l;
+    $data['levels'][$l]['name'] = $cs_lang['size_' . $l];
+    $data['levels'][$l]['if']['selected'] = $size == $l ? true : false;
+  } 
+  $data['categories']['dropdown'] = cs_categories_dropdown('files',$data['file']['categories_id']);
+  $data['text']['smilies'] = cs_abcode_smileys('files_description');
+  $data['text']['features'] = cs_abcode_features('files_description');
 
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
-  for($run=0; $run < $run_loop; $run++)
-  {
-      $num = $run+1;
-    $cs_files["files_mirror_url_$num"] = isset($_POST["files_mirror_url_$num"]) ? $_POST["files_mirror_url_$num"] : 'http://server.net/data.zip';
-    $cs_files["files_mirror_name_$num"] = isset($_POST["files_mirror_name_$num"]) ? $_POST["files_mirror_name_$num"] : 'Mirror ' . $num;
-    $cs_files["files_mirror_ext_$num"] = isset($_POST["files_mirror_ext_$num"]) ? $_POST["files_mirror_ext_$num"] : 'zip';
-    $cs_files["files_access_$num"] = isset($_POST["files_access_$num"]) ? $_POST["files_access_$num"] : 0;
-    echo cs_html_roco(1,'leftc',2);
-    echo cs_icon('kedit') . $cs_lang['mirrors'] . ' ' . $num . ' *';
-    echo cs_html_roco(2,'leftb');
-    echo cs_icon('html') . $cs_lang['url'] . ' *';
-    echo cs_html_input("files_mirror_url_$num",$cs_files["files_mirror_url_$num"],'text',200,30);
-    echo cs_html_roco(3,'leftc');
-    echo cs_icon('kedit') . $cs_lang['name'] . ' ';
-    echo cs_html_input("files_mirror_name_$num",$cs_files["files_mirror_name_$num"],'text',50,20);
-    echo cs_html_roco(0);
-    echo cs_html_roco(1,'leftb');
-    echo $cs_lang['extension'] . ' *';
-    echo cs_html_input("files_mirror_ext_$num",$cs_files["files_mirror_ext_$num"],'text',5,3);
-    echo cs_html_roco(2,'leftc');
-    echo cs_icon('access') . $cs_lang['access'];
-    echo cs_html_select(1,"files_access_$num");
-    $levels = 0;
-    while($levels < 6)
-    {
-      $cs_files["files_access_$num"] == $levels ? $sel = 1 : $sel = 0;
-      echo cs_html_option($levels . ' - ' . $cs_lang['lev_' . $levels],$levels,$sel);
-      $levels++;
+  $data['mirrors'] = array();
+  
+  for($run=0; $run < $run_loop; $run++){
+  	$num = $run+1;
+    $data['mirrors'][$run]['run'] = $run+1;
+    $data['mirrors'][$run]['num'] = $num;
+    
+    $data['mirrors'][$run]['url'] = isset($_POST["files_mirror_url_$num"]) ? $_POST["files_mirror_url_$num"] : 'http://server.net/data.zip';
+    $data['mirrors'][$run]['name'] = isset($_POST["files_mirror_name_$num"]) ? $_POST["files_mirror_name_$num"] : 'Mirror ' . $num;
+    $data['mirrors'][$run]['ext'] = isset($_POST["files_mirror_ext_$num"]) ? $_POST["files_mirror_ext_$num"] : 'zip';
+    $data['mirrors'][$run]['access'] = isset($_POST["files_access_$num"]) ? $_POST["files_access_$num"] : 0;
+   
+    $data['mirrors'][$run]['accesses'] = array();
+    for($a = 0; $a < 6; $a++) {
+			$data['mirrors'][$run]['accesses'][$a]['name'] = $a . ' - ' . $cs_lang['lev_' . $a];
+      $data['mirrors'][$run]['accesses'][$a]['value'] = $a;
     }
-    echo cs_html_select(0);
-    echo cs_html_roco(0);
   }
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('configure') . $cs_lang['more'];
-  echo cs_html_roco(2,'leftb',0,2);
-  echo cs_html_vote('files_close','1','checkbox',$cs_files['files_close']);
-  echo $cs_lang['close'];
-  echo cs_html_br(1);
-  echo cs_html_vote('files_vote','1','checkbox',$cs_files['files_vote']);
-  echo $cs_lang['votes'];
-  echo cs_html_roco(0);
+  $data['if']['closed'] = $data['file']['files_close'] ? true : false;
+  $data['if']['votes'] = $data['file']['files_vote'] ? true : false;
+	$data['mirror']['run_loop'] = $run_loop;
 
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb',0,2);
-  echo cs_html_vote('submit',$cs_lang['create'],'submit');
-  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-  echo cs_html_vote('run_loop',$run_loop,'hidden');
-  echo cs_html_vote('mirror',$cs_lang['mirrors+'],'submit');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
+ echo cs_subtemplate(__FILE__,$data,'files','create');  
 }
 else
 {
-  $files_cells = array_keys($cs_files);
-  $files_save = array_values($cs_files);
-  cs_sql_insert(__FILE__,'files',$files_cells,$files_save);
+  $files_cells = array_keys($data['file']);
+  $files_save = array_values($data['file']);
+ cs_sql_insert(__FILE__,'files',$files_cells,$files_save);
 
-  cs_redirect($cs_lang['create_done'],'files');
+ cs_redirect($cs_lang['create_done'],'files');
 }
 
 ?>
