@@ -14,7 +14,7 @@
   </tr>
   {if:subcats}
   <tr>
-    <td class="leftc"> {lang:subcats}: {loop:subs}<a href="{url:files_listcat:where={sub:id}}" >{subs:name}</a> ({subs:count}){stop:subs} </td>
+    <td class="leftc"> {lang:subcats}: {loop:subs}<a href="{url:files_listcat:where={subs:id}}" >{subs:name}</a> ({subs:count}){stop:subs} </td>
   </tr>
   {stop:subcats}
   {stop:categories}
