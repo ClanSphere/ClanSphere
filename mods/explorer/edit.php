@@ -7,7 +7,7 @@ $cs_lang = cs_translate('explorer');
 
 if(empty($_POST['submit'])) {
   
-	if (isset($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/edit/file/')+19);
+	if(!empty($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/edit/file/')+19);
 	$source = str_replace('..', '', $_GET['file']);
   
 	if(empty($source)) {
