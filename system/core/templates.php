@@ -101,6 +101,9 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   if (!empty($navfiles))
     $string = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $string);
 
+  if (!empty($cs_main['themebar']) AND $action != 'navmeta')
+    $string = cs_icon('edit') . ' ' . cs_link($target, 'explorer', 'edit', 'file=' . $target) . cs_html_br(2) . $string;
+
   return $string;
 }
 

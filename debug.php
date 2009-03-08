@@ -46,6 +46,7 @@ if(file_exists('setup.php')) {
   cs_tasks('system/runstartup'); # load startup files
 
   $cs_main['debug'] = true;
+  $cs_main['themebar'] = true;
 
   echo cs_template($cs_micro,$cs_main,$account);
 }
