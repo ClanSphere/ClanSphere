@@ -35,40 +35,11 @@ if(empty($advanced))
 }  
 elseif(!empty($advanced))
 {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb',0,2); 
-  echo $cs_lang['mod'];
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc',0,0,'75%');
-  echo cs_html_big(1);
-  echo cs_html_span(1,'font-size: 15pt');
-  echo $cs_files['files_name'];
-  echo cs_html_span(0);
-  echo cs_html_big(0);
-  echo cs_html_br(1);
-  echo $cs_lang['connect'];
-  echo cs_html_br(2);
-  echo cs_html_img('symbols/files/wait.gif',0,0,0); 
-  echo cs_html_roco(2,'leftc',0,0,'25%');
-  echo cs_html_big(1);
-  echo cs_html_span(1,'font-size: 15pt');
-  echo $cs_lang['help'];
-  echo cs_html_span(0);
-  echo cs_html_big(0);
-  echo cs_html_br(1);
-  echo $cs_lang['help_1'];
-  echo cs_html_br(2);
-  echo cs_html_big(1);
-  echo cs_html_link($mirror[1],'Download manuell Starten',0);
-  echo cs_html_big(0);
-  echo cs_html_roco(0);
+  $data['file']['wait'] = cs_html_img('symbols/files/wait.gif',0,0,0); 
 
   //echo cs_html_roco(1,'centerb',0,2);
   //echo cs_link($cs_lang['back'],'files','view','where=' . $files_id);
   //echo cs_html_roco(0);
-  echo cs_html_table(0);
-
   //$downloadfile = $temp[$mirror_id];
   /*print("<meta http-equiv=refresh content='3; URL=$downloadfile'>");
   header("Content-disposition: attachment; filename = $downloadfile");

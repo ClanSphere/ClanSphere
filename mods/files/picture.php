@@ -4,6 +4,8 @@ $cs_lang = cs_translate('files');
 $cs_files_id = empty($_REQUEST['where']) ? $_GET['id'] : $_REQUEST['where'];
 settype($cs_file_id,'integer');
 
+$data = array();
+
 $img_max['width'] = 1280;
 $img_max['height'] = 1024;
 $img_max['size'] = 204800;
@@ -82,74 +84,51 @@ elseif(!empty($_POST['submit'])) {
   }
 }
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo 'Files' . ' - ' . $cs_lang['head_picture'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
 if(!empty($message)) {
-  echo $message;
+  $data['head']['text'] = $message;
 }
 elseif(empty($_GET['delete'])) {
-  echo $cs_lang['body_picture'];
+  $data['head']['text'] = $cs_lang['body_picture'];
 }
 else {
-  echo $cs_lang['remove_done'];
+  $data['head']['text'] = $cs_lang['remove_done'];
 }
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
-echo cs_getmsg();
+
+$data['head']['message'] = cs_getmsg();
+$data['file']['id'] = $cs_files_id;
   
 if(!empty($error) OR empty($_POST['submit'])) {
-  echo cs_html_form(1,'files_picture','files','picture',1);
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftc',0,0,'140px');
-  echo cs_icon('download') . $cs_lang['upload'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('picture','','file');
-  echo cs_html_br(2);
-  $matches[1] = $cs_lang['pic_infos'];
-  $return_types = '';
-  foreach($img_filetypes AS $add) {
-    $return_types .= empty($return_types) ? $add : ', ' . $add;
+    $matches[1] = $cs_lang['pic_infos'];
+    $return_types = '';
+    foreach($img_filetypes AS $add) {
+      $return_types .= empty($return_types) ? $add : ', ' . $add;
   }
   $matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
   $matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
   $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
   $matches[2] .= $cs_lang['filetypes'] . $return_types;
-  echo cs_abcode_clip($matches);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('where',$cs_files_id,'hidden');
-  echo cs_html_vote('submit',$cs_lang['save'],'submit');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
-  echo cs_html_br(1);
-
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftc',0,0,'140px');
-  echo cs_icon('images') . $cs_lang['current'];
-  echo cs_html_roco(2,'leftb');
+  $data['upload']['clip'] = cs_abcode_clip($matches);
+  
+  $data['pictures'] = array();
+  
   if(empty($file_string)) {
-    echo $cs_lang['nopic'];
+    $data['if']['nopics'] = true;
   }
   else {
+    $data['if']['nopics'] = false;
     $run = 1;
+    $i = 0;
     foreach($file_pics AS $pic) {
-    $link = cs_html_img('uploads/files/thumb-' . $pic);
-    echo cs_html_link('uploads/files/picture-' . $pic,$link) . ' ';
-    $set = 'id=' . $cs_files_id . '&amp;delete=' . $run++;
-    echo cs_link($cs_lang['remove'],'files','picture',$set);
-    echo cs_html_br(2);
+      $data['pictures'][$i]['sad'] =
+      $data['pictures'][$i]['thumbpath'] = 'uploads/files/thumb-' . $pic;
+      $data['pictures'][$i]['picpath'] = 'uploads/files/picture-' . $pic;
+      $data['pictures'][$i]['id'] = $run;
+      
+      $run++;
+      $i++;
     }
   }
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
 }
 
+echo cs_subtemplate(__FILE__,$data,'files','picture');
 ?>
