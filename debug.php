@@ -48,7 +48,7 @@ if(file_exists('setup.php')) {
   $cs_main['debug'] = true;
   $cs_main['themebar'] = true;
 
-  echo cs_template($cs_micro,$cs_main,$account);
+  echo cs_template($cs_micro,$cs_main,$account,'debug.htm');
 }
 else
   cs_error_internal('setup');
