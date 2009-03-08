@@ -240,7 +240,7 @@ function cs_filesize($size, $float = 2) {
 
   $name = array(0 => 'Byte', 1 => 'KiB', 2 => 'MiB', 3 => 'GiB', 4 => 'TiB');
   $digits = 0;
-  while($size >= 1024) {
+ while($size >= 1024 AND $digits < 4) {
     $size = $size / 1024;
     $digits++;
   }
