@@ -11,7 +11,7 @@ $mod_info['creator']  = 'duRiel';
 $mod_info['team']      = 'ClanSphere';
 $mod_info['url']        = 'www.clansphere.net';
 $mod_info['text']      = $cs_lang['mod_text'];
-$mod_info['icon']      = 'kword';
+$mod_info['icon']      = 'agt_reload';
 $mod_info['show']       = array('options/roots' => 5);
 $mod_info['categories'] = FALSE;
 $mod_info['comments']  = FALSE;

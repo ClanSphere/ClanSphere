@@ -18,17 +18,17 @@
         </select></td>
     </tr>
     <tr>
-      <td class="leftc">{icon:history} {lang:loading_icon}</td>
+      <td class="leftc">{icon:image} {lang:loading_icon}</td>
       <td class="leftb"><img src="uploads/ajax/loading.gif" alt="-" /><br />{lang:another}<input type="file" name="loading" /></td>
     </tr>
     <tr>
-      <td class="leftc">{icon:agt_reload} {lang:reload_navlists}</td>
+      <td class="leftc">{icon:playlist} {lang:reload_navlists}</td>
       <td class="leftb"><div id="ajax_reload_div" style="{switch:ajax_on}">
             {lang:every} <input type="text" name="ajax_reload" value="{options:ajax_reload}" size="3" maxlength="3" /> {lang:seconds}
            </div></td>
     </tr>
     <tr>
-      <td class="leftc">{icon:agt_reload} {lang:reloading_navlists}</td>
+      <td class="leftc">{icon:playlist} {lang:reloading_navlists}</td>
       <td class="leftb"><div id="ajax_navlists" style="{switch:ajax_on}">{loop:navlists}
       <input type="checkbox" value="{navlists:raw}" name="navlists[]"{navlists:checked} /> {navlists:mod} - {navlists:action}<br />{stop:navlists}
       <br />{lang:additionally}: <input type="text" name="additionals" value="{options:additionals}" size="30" />
