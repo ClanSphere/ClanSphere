@@ -3,11 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('abcode');
-$cs_post = cs_post('where,start,sort');
-$cs_get = cs_get('where,start,sort');
+$cs_get = cs_get('start,sort');
+$cs_post = cs_post('start,sort');
 
-$abcode_func = empty($cs_get['where']) ? '' : $cs_get['where'];
-if (!empty($cs_post['where'])) $abcode_func = $cs_post['where'];
+$abcode_func = empty($_POST['type']) ? '' : (string)$_POST['type'];
+#if (!empty($cs_post['type'])) $abcode_func = $cs_post['type'];
 
 $start = empty($cs_get['start']) ? 0 : $cs_get['start'];
 if (!empty($cs_post['start'])) $start = $cs_post['start'];
