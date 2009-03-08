@@ -10,7 +10,7 @@ if(empty($_POST['submit'])) {
 	if(!empty($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/edit/file/')+19);
 	$source = str_replace('..', '', $_GET['file']);
   
-	if(empty($source)) {
+  if(empty($source)) {
     cs_redirect($cs_lang['no_file'], 'explorer', 'roots');
   } elseif(!file_exists($source)) {
     cs_redirect($cs_lang['not_found'] . ': ' . $source, 'explorer', 'roots');
@@ -39,7 +39,7 @@ if(empty($_POST['submit'])) {
     	$data['if']['phpfile'] = false;
     }
     
-    $data['var']['content'] = $content;
+    $data['var']['content'] = cs_secure($content);
     $data['var']['source'] = $source;
     $data['icn']['unknown'] = cs_html_img('symbols/files/filetypes/unknown.gif', 16, 16);
     
