@@ -2,13 +2,13 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Forumcode';
+$cs_lang['mod']  = 'Abcode';
 $cs_lang['mod_text']  = 'Ersetzt Muster durch Bilder oder Text';
 
 $cs_lang['body_create']  = 'Neue Muster-Ersetzungen anlegen';
 $cs_lang['body_edit']  = 'Anpassen von Muster-Ersetzungen';
 $cs_lang['body_options']  = 'Verwaltung der Einstellungen im Modul.';
-$cs_lang['new_abcode'] = 'Neuer Forumcode';
+$cs_lang['new_abcode'] = 'Neuer Abcode';
 
 $cs_lang['max_width'] = 'Maximale Bildbreite: ';
 $cs_lang['max_height'] = 'Maximale Bildh&ouml;he: ';
@@ -17,7 +17,7 @@ $cs_lang['def_func'] = 'Standard Funktion';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['img'] = 'Bild';
-$cs_lang['str'] = 'Text';
+$cs_lang['str'] = 'Text/Link';
 $cs_lang['image_height'] = 'Max. Bildh&ouml;he in Forum und G&auml;stebuch';
 $cs_lang['image_width'] = 'Max. Bildbreite in Forum und G&auml;stebuch';
 
@@ -43,7 +43,7 @@ $cs_lang['up_error'] = '- Unbekannter Fehler, bitte den Webmaster kontaktieren';
 
 $cs_lang['cut'] = 'Max. Zeichen eines Wortes';
 $cs_lang['cut_more'] = 'Zeichen - Bei Eingabe von 0 kann ein Wort beliebig lang sein';
-$cs_lang['def_abcode'] = 'Forumcodes ohne Erweitert anzeigen';
+$cs_lang['def_abcode'] = 'Abcodes ohne Erweitert anzeigen';
 
 $cs_lang['import'] = 'Importieren';
 $cs_lang['new_import'] = 'Hier k&ouml;nnen Sie weitere Smilies importieren. <br />Diese müssen bereits auf dem Webspace im Ordner uploads/abcode vorhanden sein.';
