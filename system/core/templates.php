@@ -210,6 +210,18 @@ function cs_redirectmsg($message, $id = 0, $icon = 0) {
   if (!empty($id) || !empty($icon)) $_SESSION['messageadd'] = $icon . ',' . $id;
 }
 
+function cs_scriptload($mod, $type, $file) {
+
+  global $cs_main;
+  $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
+  $wp = $cs_main['php_self']['dirname'];
+
+  if($type == 'javascript')
+    $cs_main['scripts'] .= '<script src="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/javascript"></script>' . "\r\n";
+  elseif($type == 'stylesheet')
+    $cs_main['scripts'] .= '<link rel="stylesheet" href="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/css" media="screen" />' . "\r\n";
+}
+
 function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
 {
     global $cs_logs, $com_lang;
@@ -264,30 +276,15 @@ function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
     $cs_temp_get = preg_replace($pattern, "background=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
     $pattern = "=src\=\"(?!http)(.*?)\"=i";
     $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
-    $script = "<script src=\"" . $wp . "system/javascript/ajax.js\" type=\"text/javascript\"></script>\r\n";
-    $script .= "<script src=\"" . $wp . "system/javascript/clansphere.js\" type=\"text/javascript\"></script>\r\n";
 
-    // Lightbox START
-    if (!empty($account['access_gallery']) && $cs_main['mod'] == 'gallery') {
-      $gallery = cs_sql_option(__FILE__, 'gallery');
-      if (!empty($gallery['lightbox'])) {
-        if($gallery['lightbox'] == '1') {
-            $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/mootools.js\"></script>\r\n";
-            $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/slimbox.js\"></script>\r\n";
-            $script .= "<link rel=\"stylesheet\" href=\"" . $wp . "mods/lightbox/css/slimbox.css\" type=\"text/css\" media=\"screen\" />\r\n";
-        } else {
-            $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/prototype.js\"></script>\r\n";
-            $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/scriptaculous.js?load=effects\"></script>\r\n";
-            $script .= "<script type=\"text/javascript\" src=\"" . $wp . "mods/lightbox/js/lightbox.js\"></script>\r\n";
-            $script .= "<link rel=\"stylesheet\" href=\"" . $wp . "mods/lightbox/css/lightbox.css\" type=\"text/css\" media=\"screen\" />\r\n";
-        }
-      }
-    }
-    // Lightbox END
+    cs_scriptload('clansphere', 'javascript', 'js/clansphere.js');
+    cs_scriptload('clansphere', 'javascript', 'js/ajax.js');
 
-    $cs_temp_get = str_replace('</head>', $script . '</head>', $cs_temp_get);
-    if (!empty($cs_main['debug']))
-    {
+    global $cs_main;
+    $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
+    $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
+
+    if (!empty($cs_main['debug'])) {
         $script = '<div id="debug"><span id="errors">{func:errors}</span><span id="sql">{func:sql}</span></div>';
         $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
     }

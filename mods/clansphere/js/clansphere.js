@@ -1,5 +1,5 @@
 // ClanSphere 2008 - www.clansphere.net
-// $Id$
+// $Id: clansphere.js 1430 2008-12-10 13:08:44Z Fr33z3m4n $
 
 var cs_textarea_size = 0;
 
