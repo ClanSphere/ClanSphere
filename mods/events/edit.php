@@ -3,16 +3,18 @@
 // $Id$
 
 $cs_lang = cs_translate('events');
+$cs_post = cs_post('id');
+$cs_get = cs_get('id');
+
+$events_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $events_id = $cs_post['id'];
 
 require_once('mods/categories/functions.php');
-$events_id = $_REQUEST['id'];
-settype($events_id,'integer');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_edit'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
+$select = 'categories_id, events_name, events_time, events_venue, events_guestsmin, events_guestsmax, ';
+$select .= 'events_needage, events_url, events_more, events_close, events_cancel';
+$cs_events = cs_sql_select(__FILE__,'events',$select,"events_id = '" . $events_id . "'");
+
 
 if(isset($_POST['submit'])) {
 
@@ -34,127 +36,54 @@ if(isset($_POST['submit'])) {
     $cs_events['events_more'] = '[html]' . $_POST['events_more'] . '[/html]';
   }
 
-  $error = 0;
-  $errormsg = '';
+  $error = '';
 
-  if(empty($cs_events['events_name'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_name'] . cs_html_br(1);
-  }
-  if(empty($cs_events['categories_id'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_cat'] . cs_html_br(1);
-  }
-  if(empty($cs_events['events_time'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_date'] . cs_html_br(1);
-  }
-  if($cs_events['events_guestsmax'] < $cs_events['events_guestsmin']) {
-    $error++;
-    $errormsg .= $cs_lang['min_greater_max'] . cs_html_br(1);
-  }
-}
-else {
+  if(empty($cs_events['events_name']))
+    $error .= $cs_lang['no_name'] . cs_html_br(1);
+  if(empty($cs_events['categories_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
+  if(empty($cs_events['events_time']))
+    $error .= $cs_lang['no_date'] . cs_html_br(1);
+  if($cs_events['events_guestsmax'] < $cs_events['events_guestsmin'])
+    $error .= $cs_lang['min_greater_max'] . cs_html_br(1);
 
-  $cs_events = cs_sql_select(__FILE__,'events','*',"events_id = '" . $events_id . "'");
+}
 
-  $cs_events['events_guestsmin'] = !empty($cs_events['events_guestsmin']) ? $cs_events['events_guestsmin'] : '';
-  $cs_events['events_guestsmax'] = !empty($cs_events['events_guestsmax']) ? $cs_events['events_guestsmax'] : '';
-  $cs_events['events_needage'] = !empty($cs_events['events_needage']) ? $cs_events['events_needage'] : '';
-}
-if(!isset($_POST['submit'])) {
-  echo $cs_lang['body_edit'];
-}
-elseif(!empty($error)) {
-  echo $errormsg;
-}
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+if(!isset($_POST['submit']))
+	$data['head']['body'] = $cs_lang['body_edit'];
+elseif(!empty($error))
+	$data['head']['body'] = $error;
+
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-  echo cs_html_form (1,'events_edit','events','edit');
-  echo cs_html_table(1,'forum',1);
+	$data['data'] = $cs_events;
+
+  $data['categories']['dropdown'] = cs_categories_dropdown('events',$cs_events['categories_id']);
+  $data['select']['time'] = cs_dateselect('time','unix',$cs_events['events_time'],1995);
   
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('cal') . $cs_lang['name'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('events_name',$cs_events['events_name'],'text',40,40);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('folder_yellow') . $cs_lang['category'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_categories_dropdown('events',$cs_events['categories_id']);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('1day') . $cs_lang['date'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_dateselect('time','unix',$cs_events['events_time'],1995);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('starthere') . $cs_lang['venue'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('events_venue',$cs_events['events_venue'],'text',40,40);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kdmconfig') . $cs_lang['guests'];
-  echo cs_html_roco(2,'leftb');
-  echo $cs_lang['min'] . ': ';
-  echo cs_html_input('events_guestsmin',$cs_events['events_guestsmin'],'text',8,5);
-  echo cs_html_br(1);
-  echo $cs_lang['max'] . ': ';
-  echo cs_html_input('events_guestsmax',$cs_events['events_guestsmax'],'text',8,5);
-  echo cs_html_br(1);
-  echo $cs_lang['needage'] . ': ';
-  echo cs_html_input('events_needage',$cs_events['events_needage'],'text',2,2);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('gohome') . $cs_lang['url'];
-  echo cs_html_roco(2,'leftb',0,2);
-  echo 'http://' . cs_html_input('events_url',$cs_events['events_url'],'text',80,50);
-  echo cs_html_roco(0);
+  $data['data']['events_guestsmin'] = !empty($cs_events['events_guestsmin']) ? $cs_events['events_guestsmin'] : '';
+  $data['data']['events_guestsmax'] = !empty($cs_events['events_guestsmax']) ? $cs_events['events_guestsmax'] : '';
+  $data['data']['events_needage'] = !empty($cs_events['events_needage']) ? $cs_events['events_needage'] : '';
 
   if(empty($cs_main['fckeditor'])) {
-    echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['more'];
-    echo cs_html_br(2);
-    echo cs_abcode_smileys('events_more');
-  echo cs_html_roco(2,'leftb');
-    echo cs_abcode_features('events_more');
-  echo cs_html_textarea('events_more',$cs_events['events_more'],'50','8');
-  echo cs_html_roco(0);
+		$data['if']['abcode'] = TRUE;
+		$data['if']['fck'] = FALSE;
+    $data['abcode']['smileys'] = cs_abcode_smileys('events_more');
+    $data['abcode']['features'] = cs_abcode_features('events_more');
   } else {
-    echo cs_html_roco(1,'leftc',0,2);
-  echo cs_icon('kate') . $cs_lang['more'];
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'leftc" style="padding: 0px',0,2);
-  echo cs_fckeditor('events_more',$cs_events['events_more']);
-  echo cs_html_roco(0);
+  	$data['if']['abcode'] = FALSE;
+		$data['if']['fck'] = TRUE;
+		$data['fck']['editor'] = cs_fckeditor('events_more',$cs_events['events_more']);
   }
 
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('configure') . $cs_lang['more'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('events_close', 1, 'checkbox', $cs_events['events_close']) . ' ' . $cs_lang['close'];
-  echo cs_html_br(1);
-  echo cs_html_vote('events_cancel', 1, 'checkbox', $cs_events['events_cancel']) . ' ' . $cs_lang['canceled'];
-  echo cs_html_roco(0);
+  $checked = 'checked="checked"';
+  $data['check']['close'] = empty($cs_events['events_close']) ? '' : $checked;
+  $data['check']['cancel'] = empty($cs_events['events_cancel']) ? '' : $checked;  
 
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('id',$events_id,'hidden');
-  echo cs_html_vote('submit',$cs_lang['edit'],'submit');
-  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
+	$data['events']['id'] = $events_id;
+
+ echo cs_subtemplate(__FILE__,$data,'events','edit');
 }
 else {
 
@@ -164,9 +93,9 @@ else {
 
   $events_cells = array_keys($cs_events);
   $events_save = array_values($cs_events);
-  cs_sql_update(__FILE__,'events',$events_cells,$events_save,$events_id);
+ cs_sql_update(__FILE__,'events',$events_cells,$events_save,$events_id);
   
-  cs_redirect($cs_lang['changes_done'], 'events') ;
+ cs_redirect($cs_lang['changes_done'], 'events') ;
 } 
   
 ?>
