@@ -71,6 +71,9 @@ function cs_templateurl($matches) {
 
 function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 {
+
+  $micro = explode(' ', microtime());
+
   global $cs_main;
   $cs_main['cellspacing'] = isset($cs_main['cellspacing']) ? $cs_main['cellspacing'] : 0;
 
@@ -105,6 +108,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 
     global $account;
     $data = array();
+    $data['data']['load'] = cs_parsetime($micro,5);
     $data['data']['target'] = $target;
     $data['data']['content'] = $string;
     $data['data']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';

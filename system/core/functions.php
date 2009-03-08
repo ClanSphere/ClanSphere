@@ -98,11 +98,11 @@ function cs_warning($message) {
   }
 }
 
-function cs_parsetime($micro) {
+function cs_parsetime($micro, $precision = 3) {
 
   $new_time = explode(' ', microtime());
   $getparse = $new_time[1] + $new_time[0] - $micro[0] - $micro[1];
-  $getparse = round($getparse,3) * 1000;
+  $getparse = round($getparse,$precision) * 1000;
   return $getparse;
 }
 
