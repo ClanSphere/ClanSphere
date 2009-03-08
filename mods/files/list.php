@@ -2,10 +2,7 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-
 $cs_lang = cs_translate('files');
-
-
 
 $where = "categories_mod = 'files' AND categories_access <= '" . $account['access_files'] . "' AND categories_subid = '0'";
 $categories_data = cs_sql_select(__FILE__,'categories','*',$where,'categories_name',0,0);
@@ -44,11 +41,11 @@ for($run=0; $run<$categories_loop; $run++) {
     for($runb=0; $runb < $sub_loop; $runb++) {
       $sub_content = cs_sql_count(__FILE__,'files',"categories_id = '" . $sub_data[$runb]['categories_id'] . "'");
       
-      $data['categories'][$run]['subs'][$runb]['name'] = cs_secure($sub_data[$runb]['categories_name']);
-      $data['categories'][$run]['subs'][$runb]['id'] = $sub_data[$runb]['categories_id'];
-      $data['categories'][$run]['subs'][$runb]['count'] = $sub_content;
+      $data['categories'][$run]['subcats'][$runb]['name'] = cs_secure($sub_data[$runb]['categories_name']);
+      $data['categories'][$run]['subcats'][$runb]['id'] = $sub_data[$runb]['categories_id'];
+      $data['categories'][$run]['subcats'][$runb]['count'] = $sub_content;
       
-      $data['categories'][$run]['subs'][$runb]['comma'] = ($runb == $sub_loop -1) ? '' : ', ';
+      $data['categories'][$run]['subcats'][$runb]['comma'] = ($runb == $sub_loop -1) ? '' : ', ';
 
   }
 }
