@@ -102,9 +102,14 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
     $string = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $string);
 
   if (!empty($cs_main['themebar']) AND $action != 'navmeta' AND $action != 'themebar') {
+
+    global $account;
     $data = array();
     $data['data']['target'] = $target;
     $data['data']['content'] = $string;
+    $data['data']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
+    $phpsource = str_replace('\\', '/', str_replace($cs_main['def_path'], '', $source));
+    $data['data']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
     $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
   }
 
