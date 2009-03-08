@@ -1,4 +1,6 @@
 <?php
+// ClanSphere 2008 - www.clansphere.net
+// $Id$
 
 $cs_lang = cs_translate('files');
 $cs_post = cs_post('id');
@@ -114,7 +116,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['categories']['dropdown'] = cs_categories_dropdown('files',$data['file']['categories_id']);
   $data['text']['smilies'] = cs_abcode_smileys('files_description');
   $data['text']['features'] = cs_abcode_features('files_description');
-  $data['text']['area'] = cs_html_textarea('files_description',$data['file']['files_description'],'50','10');
   
   $data['if']['closed'] = $data['file']['files_close'] ? true : false;
   $data['if']['votes'] = $data['file']['files_vote'] ? true : false;

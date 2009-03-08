@@ -36,8 +36,8 @@
         {text:smilies}
         </td>
       <td class="leftb" colspan="2">
-      {text:features}
-      {text:area}
+      	{text:features}
+      	<textarea name="files_description" cols="50" rows="10" id="files_description">{file:files_description}</textarea>
       </td>
     </tr>
     {loop:mirrors}
