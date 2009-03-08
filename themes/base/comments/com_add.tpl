@@ -19,7 +19,7 @@
 		</td>
 		<td class="leftb">
 			{comments:abcode}
-			<textarea name="comments_text" cols="50" rows="8" id="comments_text" ></textarea>
+			<textarea name="comments_text" cols="50" rows="8" id="comments_text" class="cs_text_abcode"></textarea>
 		</td>
 	</tr>
 	{if:captcha}
