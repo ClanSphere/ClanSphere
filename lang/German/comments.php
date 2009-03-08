@@ -22,7 +22,7 @@ $cs_lang['quote']  = 'Zitieren';
 $cs_lang['guest']  = '(Gast)';
 
 //Add
-$cs_lang['guestnick'] = 'Gastnick';
+$cs_lang['guestnick'] = 'Dein Name';
 $cs_lang['adv_com']  = 'Erweiterten Kommentar verfassen';
 $cs_lang['comment']  = 'Kommentar';
 
@@ -34,7 +34,6 @@ $cs_lang['body_com_edit']  = 'Bitte auf Text&auml;nderungen hinweisen.';
 $cs_lang['head_com_remove']  = 'Kommentar Entfernen';
 
 //Errors
-
 $cs_lang['need_user']  = 'Bitte Login benutzen, um Kommentare zu schreiben.';
 $cs_lang['closed']    = 'Dieser Datensatz erlaubt keine (weiteren) Kommentare';
 $cs_lang['low_axx']    = '- Sie verf&uuml;gen nicht &uuml;ber den ben&ouml;tigten Zugriff.';

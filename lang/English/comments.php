@@ -22,7 +22,7 @@ $cs_lang['quote']  = 'Quote';
 $cs_lang['guest']  = '(Guest)';
 
 //Add
-$cs_lang['guestnick'] = 'Guestnick';
+$cs_lang['guestnick'] = 'Your name';
 $cs_lang['adv_com']  = 'Create advanced comment';
 $cs_lang['comment']  = 'Comment';
 
