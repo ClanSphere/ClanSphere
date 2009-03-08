@@ -57,6 +57,8 @@
 	{if:fck}
 	<tr>
 		<td class="leftc" colspan="2">{icon:kate} {lang:more}</td>
+	</tr>
+	<tr>
 		<td class="leftc" colspan="2" style="padding:0px;">{fck:editor}</td>
 	</tr>
 	{stop:fck}
