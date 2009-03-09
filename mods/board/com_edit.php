@@ -65,6 +65,9 @@ if(isset($_POST['new_file'])) {
   $files = '1';
   $cs_comments['comments_text'] = $_POST['comments_text'];
 }
+
+$thread_error = 0;
+
 $run_loop_files = isset($_POST['run_loop_files']) ? $_POST['run_loop_files'] + $run_loop_files : 0 + $run_loop_files;
 $a = '0';
 $b = '0';

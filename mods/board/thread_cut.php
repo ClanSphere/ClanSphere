@@ -31,7 +31,6 @@ if (!empty($_POST['submit']) && empty($error)) {
     $last['users_id'] = $comment['users_id'];
   }
   
-  
   $save = array();
   $save['users_id'] = $comment['users_id'];
   $save['threads_time'] = $comment['comments_time'];
@@ -50,43 +49,57 @@ if (!empty($_POST['submit']) && empty($error)) {
   
   $threads_id = cs_sql_insertid(__FILE__);
   
-  if (!empty($threads_id)) {
-    cs_sql_delete(__FILE__,'comments',$comments_id);
-    
-    // Move selected comments
-    if (!empty($_POST['comments'])) {
-      $cells = array('comments_fid');
-      $content = array($threads_id);
-      
-      foreach ($_POST['comments'] as $comments_id) {
-        cs_sql_update(__FILE__,'comments',$cells,$content, (int) $comments_id);
-      }
-    }
-    
-    $cond = 'comments_fid = \'' . $old_threads_id . '\' AND comments_mod = \'board\'';
-    $comments_old = cs_sql_count(__FILE__,'comments',$cond);
-    $last = cs_sql_select(__FILE__,'comments','users_id, comments_time', $cond, 'comments_time ASC');
-    
-    if (empty($last)) {
-      $last = cs_sql_select(__FILE__,'threads','users_id, threads_time', "threads_id = '" . $old_threads_id . "'");
-      $last_time = $last['threads_time'];
-    } else
-      $last_time = $last['comments_time'];
-    
-    $save = array();
-    $save['threads_last_user'] = $last['users_id'];
-    $save['threads_last_time'] = $last_time;
-    $save['threads_comments'] = $comments_old;
-    
-    $cells = array_keys($save);
-    $values = array_values($save);
-    
-    cs_sql_update(__FILE__,'threads',$cells,$values,$old_threads_id);
-    
-    cs_redirect($cs_lang['success'] . ' ' . cs_link($cs_lang['to_old_thread'],'board','thread','where=' . $comment['comments_fid']),'board','thread','where=' . $threads_id);
-  } else {
+  
+  if (empty($threads_id)) {
     cs_redirect($cs_lang['error'] . '.','board','thread','where=' . $comment['comments_fid']);
   }
+  cs_sql_delete(__FILE__,'comments',$comments_id);
+  
+  // Move selected comments
+  if (!empty($_POST['comments'])) {
+    $cells = array('comments_fid');
+    $content = array($threads_id);
+    $cond_files = '';
+    
+    foreach ($_POST['comments'] as $comment_id) {
+      settype($comment_id, 'integer');
+      cs_sql_update(__FILE__,'comments',$cells,$content, $comment_id);
+      $cond_files .= ' OR comments_id = "' . $comment_id . '"';
+    }
+    
+    // Move attachments of the comments
+    $cells = array('threads_id');
+    $cond_files = substr($cond_files, 4);
+    cs_sql_update(__FILE__, 'boardfiles', $cells, $content, 0, $cond_files);
+    
+  }
+  // Move attachments of the thread
+  $cells = array('threads_id', 'comments_id');
+  $content = array($threads_id, 0);
+  cs_sql_update(__FILE__, 'boardfiles', $cells, $content, 0, 'comments_id = "' . $comments_id . '"');
+  
+  // Update old threads information
+  $cond = 'comments_fid = \'' . $old_threads_id . '\' AND comments_mod = \'board\'';
+  $comments_old = cs_sql_count(__FILE__,'comments',$cond);
+  $last = cs_sql_select(__FILE__,'comments','users_id, comments_time', $cond, 'comments_time ASC');
+  
+  if (empty($last)) {
+    $last = cs_sql_select(__FILE__,'threads','users_id, threads_time', "threads_id = '" . $old_threads_id . "'");
+    $last_time = $last['threads_time'];
+  } else
+    $last_time = $last['comments_time'];
+  
+  $save = array();
+  $save['threads_last_user'] = $last['users_id'];
+  $save['threads_last_time'] = $last_time;
+  $save['threads_comments'] = $comments_old;
+  
+  $cells = array_keys($save);
+  $values = array_values($save);
+  
+  cs_sql_update(__FILE__,'threads',$cells,$values,$old_threads_id);
+  
+  cs_redirect($cs_lang['success'] . ' ' . cs_link($cs_lang['to_old_thread'],'board','thread','where=' . $comment['comments_fid']),'board','thread','where=' . $threads_id);
   
 } else {
   
