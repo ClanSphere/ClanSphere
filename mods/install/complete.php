@@ -21,7 +21,6 @@ function cs_set_env($dir) {
   return $result;
 }
 
-$set_logs = cs_set_env('logs');
 $set_uploads = cs_set_env('uploads');
 
 $data = array();
