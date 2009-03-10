@@ -20,7 +20,7 @@ if (!empty($_POST['submit'])) {
     settype($_POST['ajax_reload'],'integer');
     if (empty($_POST['ajax'])) $_POST['ajax_reload'] = 0;
     
-    $navlists = $_POST['navlists'];
+    $navlists = empty($_POST['navlists']) ? array() : $_POST['navlists'];
     $list = implode(',',$navlists);
     if (!empty($list)) $list .= ',';
     $list .= $_POST['additionals'];
