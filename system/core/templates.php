@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
+
 function cs_revert_script_braces($hits) {
   return '<script' . $hits[1] . '>' . str_replace(array('&#123;', '&#125;'), array('{', '}'), $hits[2]) . $hits[3] . '</script>';
 }

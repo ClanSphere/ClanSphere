@@ -74,6 +74,7 @@ function cs_init($predefined) {
 
   global $_GET, $_SERVER, $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro;
 
+  $cs_main['def_path'] = getcwd();
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'logs');
 
@@ -101,6 +102,9 @@ function cs_init($predefined) {
     $cs_options = array();
 
   $cs_main = array_merge($cs_main, $cs_options, $predefined);
+
+  if(empty($cs_main['def_path']))
+    $cs_main['def_path'] = getcwd();
 
   $cs_main['template'] = $cs_main['def_tpl'];
   if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
