@@ -18,6 +18,8 @@ if(isset($_POST['submit'])) {
 
   if(!empty($files['picture']['tmp_name']))
     $img_size = getimagesize($files['picture']['tmp_name']);
+  else
+    $img_size = array(1 => 0, 2 => 0);
 
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
