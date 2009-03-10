@@ -46,7 +46,7 @@ $cs_lang['cut_more'] = 'Zeichen - Bei Eingabe von 0 kann ein Wort beliebig lang 
 $cs_lang['def_abcode'] = 'Abcodes ohne Erweitert anzeigen';
 
 $cs_lang['import'] = 'Importieren';
-$cs_lang['new_import'] = 'Hier k&ouml;nnen Sie weitere Smilies importieren. <br />Diese müssen bereits auf dem Webspace im Ordner uploads/abcode vorhanden sein.';
+$cs_lang['new_import'] = 'Hier k&ouml;nnen Sie weitere Smilies importieren. <br />Diese m&uuml;ssen bereits auf dem Webspace im Ordner uploads/abcode vorhanden sein.';
 $cs_lang['error_pattern'] = '- Es wurde kein Muster oder ein doppeltes f&uuml;r das Bild %s  eingegeben.';
 $cs_lang['error_pattern_sql'] = '- Das Muster f&uuml;r das Bild %s  existiert bereits in der Datenbank.';
 

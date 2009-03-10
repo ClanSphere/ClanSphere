@@ -53,7 +53,7 @@ $cs_lang['serverspiel'] = 'Spiel';
 $cs_lang['serverinfo'] = 'Serverinfo';
 $cs_lang['order'] = 'Anzeigen-Reihenfolge';
 $cs_lang['serverorder'] = 'Order';
-$cs_lang['server_infos_no_stats'] = 'Infos über den Server, sofern keine Live-Stats eingeschaltet sind';
+$cs_lang['server_infos_no_stats'] = 'Infos &uuml;ber den Server, sofern keine Live-Stats eingeschaltet sind';
 $cs_lang['liveoff'] = 'Wenn Live-Status "Nein", hier einige Infos hinterlegen.';
 $cs_lang['change'] = '&Auml;ndern';
 

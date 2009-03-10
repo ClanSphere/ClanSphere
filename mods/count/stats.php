@@ -1,6 +1,6 @@
 <?php
-//CLANSPHERE.de CMS /mods/count/stats.php
-//Freitag, 7. März 2008 15:45:06
+// ClanSphere 2008 - www.clansphere.net
+// $Id$
 
 $cs_lang = cs_translate('count');
 $op_count = cs_sql_option(__FILE__,'count');

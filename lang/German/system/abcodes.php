@@ -44,7 +44,7 @@ $cs_lang['strike'] = 'Durchgestrichen';
 
 $cs_lang['headline'] = '&Uuml;berschrift';
 $cs_lang['horizontal_rule'] = 'Horizontale Linie';
-$cs_lang['indent'] = 'Einrücken';
+$cs_lang['indent'] = 'Einr&uuml;cken';
 $cs_lang['quote'] = 'Zitat';
 $cs_lang['php'] = 'PHP Quelltext';
 $cs_lang['list'] = 'Liste';

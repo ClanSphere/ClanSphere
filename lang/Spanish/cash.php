@@ -36,7 +36,7 @@ $cs_lang['now'] = 'Cantidad';
 $cs_lang['nick'] = 'Usuario';
 $cs_lang['mycash'] = 'Mis Pagos';
 $cs_lang['user_money'] = 'Pagos Mensuales / Usuario :';
-$cs_lang['akt_users_month'] = 'Gezahlte Beiträge Aktueller Monat:';
+$cs_lang['akt_users_month'] = 'Pagos en el mes actual:';
 $cs_lang['user_cash_month'] = 'Pagos / No Pagos de Usuarios der Benutzer';
 
 // Kontodaten
