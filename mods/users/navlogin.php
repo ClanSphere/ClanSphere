@@ -32,8 +32,8 @@ if(empty($login['mode'])) {
 }
 else {
 
-  $where_new = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receiver = 1 AND messages_view = 0";
-  $messages_count_new = cs_sql_count(__FILE__,'messages',$where_new);
+  $where_msg = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receiver = 1 AND messages_view = 0";
+  $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
 
   $data['lang']['home'] = $cs_lang['home'];
   $data['link']['home'] = cs_url('users','home');
@@ -41,39 +41,41 @@ else {
   $data['link']['messages'] = cs_url('messages','center');
 
   $data['messages']['new'] = $messages_count_new;
-  $data['link']['messages'] = cs_url('messages','inbox');
+
   $data['lang']['settings'] = $cs_lang['settings'];
   $data['link']['settings'] = cs_url('users','settings');
 
-  $data['lang']['admin'] = '';
+  $data['link']['contact'] = '';
   $data['link']['admin'] = '';
-  $data['br']['admin'] = '';
-  $data['lang']['system'] = '';
   $data['link']['system'] = '';
-  $data['br']['system_panel'] = '';
-
-  $data['lang']['panel'] = '';
   $data['link']['panel'] = '';
 
   $data['lang']['logout'] = $cs_lang['logout'];
   $data['link']['logout'] = cs_url('users','logout');
 
   if($cs_main['def_admin'] != 'separated') {
+
+    if($account['access_contact'] >= 3) {
+
+      $where_mail = "mail_answered = 0";
+      $mail_count_new = cs_sql_count(__FILE__,'mail',$where_mail);
+
+      $data['link']['contact'] .= cs_link($cs_lang['contact'],'contact','manage');
+      $data['link']['contact'] .= ' (' . $mail_count_new . ')' . cs_html_br(1);
+    }
     if($account['access_clansphere'] >= 3) {
-/*      $data['lang']['admin'] .= $cs_lang['admin'];
-      $data['link']['admin'] .= cs_url('clansphere','admin');*/
+
       $data['link']['admin'] .= cs_link($cs_lang['admin'],'clansphere','admin');
       $data['link']['admin'] .= cs_html_br(1);
     }
     if($account['access_clansphere'] >= 4) {
-      /*$data['lang']['system'] .= $cs_lang['system'];*/
+
       $data['link']['system'] .= cs_link($cs_lang['system'],'clansphere','system');
-      
       $data['link']['system'] .= cs_html_br(2);
     }
   }
   elseif($account['access_clansphere'] >= 3) {
-      /*$data['lang']['panel'] .= $cs_lang['panel'];*/
+
       $data['link']['panel'] .= cs_html_link('admin.php',$cs_lang['panel']);
       $data['link']['panel'] .= cs_html_br(2);
   }
