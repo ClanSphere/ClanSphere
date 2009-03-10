@@ -2,6 +2,8 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
+global $_COOKIE, $_POST, $cs_lang_main, $login; 
+
 $domain = (strpos($_SERVER['HTTP_HOST'], '.') !== FALSE) ? $_SERVER['HTTP_HOST'] : '';
 $cookie = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
 

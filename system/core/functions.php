@@ -81,7 +81,7 @@ function cs_init($predefined) {
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
   require_once 'system/core/abcode.php';
-  require_once 'system/output/xhtml_10.php';
+  require_once 'system/output/xhtml_10_old.php';
   require_once 'system/core/templates.php';
 
   if(!empty($predefined['init_sql'])) {
@@ -135,10 +135,13 @@ function cs_init($predefined) {
 
   $cs_main['show'] = 'mods/' . $cs_main['mod'] . '/' . $cs_main['action'] . '.php';
 
-  require_once 'system/core/account.php';
+  if(!empty($predefined['init_sql'])) {
 
-  cs_tasks('system/extensions', 1); # load extensions
-  cs_tasks('system/runstartup'); # load startup files
+    require_once 'system/core/account.php';
+
+    cs_tasks('system/extensions', 1); # load extensions
+    cs_tasks('system/runstartup'); # load startup files
+  }
 
   if(!empty($predefined['init_tpl']))
     echo cs_template($cs_micro, $cs_main, $account, $predefined['tpl_file']);
