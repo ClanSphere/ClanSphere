@@ -456,6 +456,7 @@ function cs_translate($mod = '') {
      return $cs_lang;
   }
 
+  $cs_lang_main = empty($cs_lang_main) ? array() : $cs_lang_main;
   $cs_lang = array_merge($cs_lang, $cs_lang_main);
   $file = 'lang/' . $lang . '/' . $mod . '.php';
 
