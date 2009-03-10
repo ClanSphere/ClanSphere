@@ -72,7 +72,7 @@ function cs_init($predefined) {
   if(substr(phpversion(), 0, 3) >= '5.1')
     @date_default_timezone_set('Europe/Berlin');
 
-  global $_GET, $_SERVER, $account, $cs_db, $cs_logs, $cs_main;
+  global $_GET, $_SERVER, $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro;
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'logs');

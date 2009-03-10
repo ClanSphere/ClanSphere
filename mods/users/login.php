@@ -17,8 +17,6 @@ if(empty($login['mode'])) {
     $err = $login['error'];
     $login_msg = $cs_lang[$err];
   }
-  
-  
 
   if(empty($login['nick'])) { 
     $login['nick'] = ''; 
@@ -35,15 +33,15 @@ if(empty($login['mode'])) {
     $cookie_no = 0;
   }
   
-$data['head']['body_text'] = $login_msg;  
-$data['lang']['nick'] = $cs_lang['nick'];
-$data['lang']['password'] = $cs_lang['pwd'];
-$data['lang']['cookie'] = $cs_lang['cookie'];
-$data['lang']['yes'] = $cs_lang['yes'];
-$data['lang']['no'] = $cs_lang['no'];
-$data['lang']['options'] = $cs_lang['options'];
-$data['lang']['submit'] = $cs_lang['submit'];
-$data['lang']['reset'] = $cs_lang['reset'];
+  $data['head']['body_text'] = empty($login_msg) ? $cs_lang['login_messages'] : $login_msg;  
+  $data['lang']['nick'] = $cs_lang['nick'];
+  $data['lang']['password'] = $cs_lang['pwd'];
+  $data['lang']['cookie'] = $cs_lang['cookie'];
+  $data['lang']['yes'] = $cs_lang['yes'];
+  $data['lang']['no'] = $cs_lang['no'];
+  $data['lang']['options'] = $cs_lang['options'];
+  $data['lang']['submit'] = $cs_lang['submit'];
+  $data['lang']['reset'] = $cs_lang['reset'];
   
   echo cs_html_br(0);
   echo cs_subtemplate(__FILE__,$data,'users','head');
