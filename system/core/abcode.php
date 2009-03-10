@@ -132,7 +132,8 @@ function cs_abcode_smileys($name) {
   $run = 0;
   $col = 0;
   $var = cs_html_table(1,'forum',1,'100%');
-  while($abc_count > $run) {
+  $abc_while = $abc_count > 9 ? 9 : $abc_count;
+  while($abc_while > $run) {
     $col++;
     if($col == 4) {
       $var .= cs_html_roco(0);
