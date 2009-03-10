@@ -286,7 +286,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
     $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
-    if (!empty($cs_main['debug'])) {
+    if (!empty($cs_main['debug']) AND $cs_main['show'] != 'mods/errors/500.php') {
         $script = '<div id="debug"><span id="errors">{func:errors}</span><span id="sql">{func:sql}</span></div>';
         $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
     }
