@@ -224,9 +224,9 @@ function cs_scriptload($mod, $type, $file) {
     $cs_main['scripts'] .= '<link rel="stylesheet" href="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/css" media="screen" />' . "\r\n";
 }
 
-function cs_template($cs_micro, $cs_main, $account, $tpl_file = 'index.htm')
+function cs_template($cs_micro, $tpl_file = 'index.htm')
 {
-    global $cs_logs, $com_lang;
+    global $account, $cs_logs, $cs_main, $com_lang;
     $wp = $cs_main['php_self']['dirname'];
     $mod = $cs_main['mod'];
     $action = $cs_main['action'];

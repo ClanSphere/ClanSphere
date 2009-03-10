@@ -52,6 +52,6 @@ require 'lang/' . $account['users_lang'] . '/system/comlang.php';
 
 $cs_lang_main = cs_translate();
 
-echo cs_template($cs_micro,$cs_main,$account);
+echo cs_template($cs_micro);
 
 ?>

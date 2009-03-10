@@ -36,7 +36,7 @@ function cs_error_internal($error = 0, $report = 0) {
 
   $cs_lang_main = cs_translate();
 
-  echo cs_template($cs_micro, $cs_main, $account, 'error.htm');
+  echo cs_template($cs_micro, 'error.htm');
 }
 
 function cs_error_sql($file,$part,$message,$stop = 0) {
@@ -143,7 +143,7 @@ function cs_init($predefined) {
   }
 
   if(!empty($predefined['init_tpl']))
-    echo cs_template($cs_micro, $cs_main, $account, $predefined['tpl_file']);
+    echo cs_template($cs_micro, $predefined['tpl_file']);
 }
 
 // Array walking with refereced altering
