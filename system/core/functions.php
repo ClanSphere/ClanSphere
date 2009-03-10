@@ -75,7 +75,7 @@ function cs_init($predefined) {
   global $_GET, $_SERVER, $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro;
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
-  $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'logs');
+  $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
 
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
