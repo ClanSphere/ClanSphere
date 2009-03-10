@@ -27,9 +27,9 @@ if(isset($_POST['submit'])) {
   $mail['email']          = $_POST['email'];
   $mail['why']            = $_POST['why'];
   $mail['text']           = $_POST['text'];
-  $mail['msn']            = $_POST['msn'];  
+  $mail['msn']            = $_POST['msn'];
   $mail['icq']            = str_replace('-','',$_POST['icq']);
-  $mail['firm']           = empty($_POST['firm']) ? '-' : $_POST['firm'];
+  $mail['firm']           = $_POST['firm'];
   $mail['categories_id']  = $_POST['categories_id'];
   
   $captcha = empty($_POST['captcha']) ? '' : $_POST['captcha'];
@@ -68,19 +68,18 @@ if(isset($_POST['submit'])) {
     $error++; 
     $errormsg .= $cs_lang['error_category'] . cs_html_br(1); 
   }
-
-
 }
 else {
   $mail['name']           = '';
   $mail['email']          = '';
   $mail['why']            = '';
   $mail['text']           = '';
-  $mail['icq']            = '';
   $mail['msn']            = '';  
   $mail['firm']           = '';
   $mail['categories_id']  = 0;
 }
+
+$mail['icq'] = empty($mail['icq']) ? '' : $mail['icq'];
 
 if(!isset($_POST['submit'])) {
   $data['lang']['head'] = $cs_lang['body_mail'];
@@ -97,9 +96,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['if']['form'] = TRUE;
   $data['if']['done'] = FALSE;
-  
+
   $categories_data = cs_sql_select(__FILE__,'categories','*',"categories_mod = 'contact'",'categories_name',0,0);
-  
+
   $data['mail']['name']           = $mail['name'];
   $data['mail']['email']          = $mail['email'];
   $data['mail']['why']            = $mail['why'];
@@ -110,16 +109,18 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['mail']['categories_id']  = cs_dropdown('categories_id','categories_name',$categories_data,$mail['categories_id']);
 
   $data['if']['captcha'] = !empty($captcha) ? TRUE : FALSE;
-  
+
 }
 else {
   $data['if']['form'] = FALSE;
   $data['if']['done'] = TRUE;
-  
+
   $categories_data = cs_sql_select(__FILE__,'categories','categories_name',"categories_id = '" . $mail['categories_id'] . "'");
-  
+
   $message = sprintf($cs_lang['mailtxt'],date('d.m.Y'),date('H:i'),$_SERVER['REMOTE_ADDR'],$mail['name'],$mail['firm'],$mail['icq'],$mail['email'],$categories_data['categories_name'],$mail['why'],$mail['text']);
-  
+
+  settype($mail['icq'], 'integer');
+
   $mail_cells = array('mail_name','mail_time','mail_ip','mail_email','mail_icq','mail_msn','mail_firm','categories_id','mail_subject','mail_message');
   $mail_save = array($mail['name'],cs_time(),$_SERVER['REMOTE_ADDR'],$mail['email'],$mail['icq'],$mail['msn'],$mail['firm'],$mail['categories_id'],$mail['why'],$mail['text']);
   cs_sql_insert(__FILE__,'mail',$mail_cells,$mail_save);
