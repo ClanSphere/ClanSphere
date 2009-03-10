@@ -1,7 +1,7 @@
 <?php
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
-
+/*
 # Overwrite global settings by using the following array
 $cs_main = array('init_sql' => false, 'init_tpl' => false);
 
@@ -13,7 +13,7 @@ cs_init($cs_main);
 global $cs_logs, $cs_main, $account;
 
 $cs_main['show'] = '';
-
+*/
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
 $where = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receiver = '1' AND messages_view = '0'";
@@ -22,9 +22,10 @@ $messages_count = cs_sql_count(__FILE__,'messages',$where);
 if (isset($_GET['debug'])) {
   $cs_main['ajax_navlists'] .= 'func_sql,func_errors,';
 }
-
+echo "-- " . $cs_main['ajax_navlists'] . " --";
 $ajaxes = explode(',',$cs_main['ajax_navlists']);
-array_pop($ajaxes);
+print_r($ajaxes);
+array_pop($ajaxes);print_r($ajaxes);
 $string = str_replace(',','',$cs_main['ajax_navlists']);
 
 if (!empty($string)) {
