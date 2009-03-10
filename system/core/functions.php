@@ -74,7 +74,6 @@ function cs_init($predefined) {
 
   global $_GET, $_SERVER, $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro;
 
-  $cs_main['def_path'] = getcwd();
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'logs');
 

@@ -74,6 +74,9 @@ unset($_REQUEST);
 */
 
 $_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES);
+
+$cs_main['def_path'] = getcwd();
+
 $cs_main['php_self'] = pathinfo($_SERVER['PHP_SELF']);
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
 
