@@ -3,6 +3,7 @@
 // $Id$
 
 function cs_revert_script_braces($hits) {
+  $hits[3] = empty($hits[3]) ? '' : $hits[3];
   return '<script' . $hits[1] . '>' . str_replace(array('&#123;', '&#125;'), array('{', '}'), $hits[2]) . $hits[3] . '</script>';
 }
 
