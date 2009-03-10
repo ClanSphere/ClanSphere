@@ -106,7 +106,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   if (!empty($navfiles))
     $string = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $string);
 
-  if (!empty($cs_main['themebar']) AND $action != 'navmeta' AND $action != 'themebar') {
+  if (!empty($cs_main['themebar']) AND $action != 'navmeta' AND $action != 'themebar' AND ($mod != 'errors' OR $action != '500')) {
 
     global $account;
     $data = array();
