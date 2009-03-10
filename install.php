@@ -3,7 +3,20 @@
 // $Id$
 
 # Overwrite global settings by using the following array
-$cs_main = array('init_sql' => false, 'init_tpl' => false);
+
+$cs_main = array( 'def_action'      => 'list',
+                  'def_lang'        => 'English',
+                  'def_mod'         => 'install',
+                  'def_title'       => 'ClanSphere 2008.3_svn Installation',
+                  'def_tpl'         => 'install',
+                  'def_theme'       => 'base',
+                  'def_parameters'  => '',
+                  'def_width'       => '100%',
+                  'init_sql'        => false,
+                  'init_tpl'        => false,
+                  'public'          => 1,
+                  'version_name'    => '2008.3_svn',
+                  'version_date'    => '2008-09-20');
 
 require_once 'system/core/functions.php';
 
@@ -24,20 +37,6 @@ else {
   $cs_logs['save_actions'] = 0;
   $cs_logs['save_errors'] = 0;
 }
-
-$cs_main = array( 'def_action'      => 'list',
-                  'def_lang'        => 'English',
-                  'def_mod'         => 'install',
-                  'def_title'       => 'ClanSphere 2008.3_svn Installation',
-                  'def_tpl'         => 'install',
-                  'def_theme'       => 'base',
-                  'def_parameters'  => '',
-                  'def_width'       => '100%',
-                  'public'          => 1,
-                  'version_name'    => '2008.3_svn',
-                  'version_date'    => '2008-09-20');
-
-require 'system/core/content.php';
 
 if(!empty($_REQUEST['lang'])) {
   $languages = cs_checkdirs('lang');
