@@ -43,21 +43,15 @@ if(!empty($data['squad']['games_id'])) {
 
 $data['squad']['squads_name'] = cs_secure($data['squad']['squads_name']);
 
-if(empty($data['squad']['squads_text'])) {
-    $data['squad']['squads_text'] = $cs_lang['no_desc'];
-  }
-  else {
-    $data['squad']['squads_text'] = cs_secure($data['squad']['squads_text'],1,1);
-  }
+$data['squad']['squads_text'] = !empty($data['squad']['squads_text']) ? cs_secure($data['squad']['squads_text'],1,1) : $cs_lang['no_desc'];
 
 if(empty($data['squad']['squads_picture'])) {
-    $data['squad']['squads_pic'] = $cs_lang['nopic'];
-  }
-  else {
-    $place = 'uploads/squads/' . $data['squad']['squads_picture'];
-    $size = getimagesize($cs_main['def_path'] . '/' . $place);
-    $data['squad']['squads_pic'] = cs_html_img($place,$size[1],$size[0]);
-  }
+  $data['squad']['squads_pic'] = $cs_lang['nopic'];
+} else {
+  $place = 'uploads/squads/' . $data['squad']['squads_picture'];
+  $size = getimagesize($cs_main['def_path'] . '/' . $place);
+  $data['squad']['squads_pic'] = cs_html_img($place,$size[1],$size[0]);
+}
 
 $select = 'mem.members_admin AS members_admin, mem.members_task AS members_task, mem.members_since AS members_since, ';
 $select .= 'mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_country AS users_country, ';
