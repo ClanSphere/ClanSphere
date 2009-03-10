@@ -26,7 +26,8 @@ if(isset($cs_post['submit'])) {
     $cs_abcode['abcode_file'] = '';
   }
 
-  $img_size = getimagesize($files['picture']['tmp_name']);
+  if(!empty($files['picture']['tmp_name']))
+    $img_size = getimagesize($files['picture']['tmp_name']);
   
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
