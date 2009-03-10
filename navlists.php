@@ -3,7 +3,7 @@
 // $Id$
 
 # Overwrite global settings by using the following array
-$cs_main = array('init_sql' => true, 'init_tpl' => false);
+$cs_main = array('init_sql' => false, 'init_tpl' => false);
 
 require_once 'system/core/functions.php';
 
