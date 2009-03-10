@@ -77,6 +77,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 
   global $cs_main;
   $cs_main['cellspacing'] = isset($cs_main['cellspacing']) ? $cs_main['cellspacing'] : 0;
+  $cs_main['def_theme'] = empty($cs_main['def_theme']) ? 'base' : $cs_main['def_theme'];
 
   $target = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
   if ($cs_main['def_theme'] != 'base' and !file_exists($target))
