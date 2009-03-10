@@ -143,6 +143,7 @@ $cs_lang['country']  = 'Land';
 $cs_lang['nick']  = 'Nick';
 $cs_lang['page']  = 'Status';
 $cs_lang['since']  = 'Dabei seit';
+$cs_lang['no_desc']  = 'Keine Beschreibung vorhanden';
 
 $cs_lang['ranks']  = 'Ranglisten';
 $cs_lang['image']  = 'Bild';

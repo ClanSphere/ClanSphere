@@ -43,7 +43,12 @@ if(!empty($data['squad']['games_id'])) {
 
 $data['squad']['squads_name'] = cs_secure($data['squad']['squads_name']);
 
-$data['squad']['squads_text'] = cs_secure($data['squad']['squads_text'],1,1);
+if(empty($data['squad']['squads_text'])) {
+    $data['squad']['squads_text'] = $cs_lang['no_desc'];
+  }
+  else {
+    $data['squad']['squads_text'] = cs_secure($data['squad']['squads_text'],1,1);
+  }
 
 if(empty($data['squad']['squads_picture'])) {
     $data['squad']['squads_pic'] = $cs_lang['nopic'];
