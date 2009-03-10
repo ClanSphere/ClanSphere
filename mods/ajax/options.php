@@ -24,7 +24,7 @@ if (!empty($_POST['submit'])) {
     $list = implode(',',$navlists);
     if (!empty($list)) $list .= ',';
     $list .= $_POST['additionals'];
-    if (substr($list,-1) != ',') $list .= ',';
+    if (substr($list,-1) != ',' && !empty($list)) $list .= ',';
     
     $list = str_replace('shoutbox_navlist','shoutbox_navlist2',$list);
     
