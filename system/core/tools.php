@@ -31,8 +31,9 @@ function cs_addons($modul,$action,$id,$modul_now) {
           }
           else {
             if(!empty($mod['references'][$modul])) {
+              $column = empty($mod['references'][$modul . '_column']) ? $modul . '_id' : $mod['references'][$modul . '_column'];
               $more = empty($mod['references'][$modul . '_where']) ? '' : ' AND (' . $mod['references'][$modul . '_where'] . ')';
-              $count = cs_sql_count(__FILE__, $mod['references'][$modul], $modul . "_id = '" . $id . "'" . $more);
+              $count = cs_sql_count(__FILE__, $mod['references'][$modul], $column . " = '" . $id . "'" . $more);
               $var .= $out . " (" . $count . ")\r\n - ";
             }
             else {
