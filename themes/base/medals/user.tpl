@@ -1,4 +1,4 @@
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
   </tr>
@@ -10,7 +10,7 @@
 </table>
 <br />
 <form method="post" action="{url:medals_user}" name="medals_user" enctype="multipart/form-data">
-  <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:personal} {lang:user}</td>
       <td class="leftb">
@@ -24,7 +24,7 @@
 </form>
 <br />
 {message:medals}
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:date} {lang:date}</td>
     <td class="headb">{sort:users_nick} {lang:user}</td>

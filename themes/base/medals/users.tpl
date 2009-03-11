@@ -1,4 +1,4 @@
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{lang:mod} - {lang:user}</td>
   </tr>
@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">{loop:medalsuser}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">{loop:medalsuser}
   <tr>
     <td class="leftb"><a name="{medalsuser:medals_id}"></a>
       <div style="float:left; width:40%; text-align: center; padding: 5px"><img src="{medalsuser:img_src}" /></div>

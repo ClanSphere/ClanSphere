@@ -20,7 +20,7 @@
 
 {if:form}
 <form method="post" name="buddys_edit" action="{url:buddys_edit}">
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:90%">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr><td class="leftc">
 {icon:kate} {lang:notice}<br /><br />
 {edit:abcode_smilies}

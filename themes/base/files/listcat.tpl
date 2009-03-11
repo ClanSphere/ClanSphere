@@ -22,7 +22,7 @@
 </table>
 <br />
 {stop:subs}
-<table class="forum" style="width:90%" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb"> {sort:name} {lang:name}</td>
     <td class="headb"> {lang:user}</td>

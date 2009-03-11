@@ -1,4 +1,4 @@
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="2">{lang:mod} - {lang:edit}</td>
   </tr>
@@ -9,7 +9,7 @@
 <br />
 
 <form method="post" action="{url:medals_edit}" name="medals_edit" enctype="multipart/form-data">
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:kedit} {lang:name} *</td>
     <td class="leftb"><input type="text" value="{medals:medals_name}" name="medals_name" class="form" maxlength="150" size="30" /></td>

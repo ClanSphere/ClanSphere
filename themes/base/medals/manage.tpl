@@ -1,4 +1,4 @@
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
   </tr>
@@ -10,7 +10,7 @@
 </table>
 <br />
 {message:medals}
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="1">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:name} {lang:name}</td>
     <td class="headb">{lang:user}</td>
