@@ -55,7 +55,8 @@ if(empty($_SESSION['users_id'])) {
         $_SESSION['users_ip'] = cs_getip();
         $_SESSION['users_agent'] = $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['users_pwd'] = $login['securepw'];
-        if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax'])) header('Location: index.php');
+        if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax']))
+          empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
       }
     }
     elseif(!empty($login_db['users_id'])) { 
