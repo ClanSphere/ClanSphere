@@ -4,7 +4,7 @@
 
 $cs_lang = cs_translate('explorer');
 $data = array();
-if (isset($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], '/file/')+6);
+if (!empty($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], '/file/')+6);
 
 if (empty($_GET['file'])) {
   
