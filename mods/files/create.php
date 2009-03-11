@@ -36,14 +36,13 @@ if(isset($_POST['submit']))
   $data['file']['files_description'] = $_POST['files_description'];
   $data['file']['files_size'] = $_POST['files_size'];
   $size = $_POST['size'];
-  $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 4;
+  $run_loop = isset($_POST['run_loop']) ? (int) $_POST['run_loop'] : 2;
   #$data['file']['files_mirror'] = '';
-  for($run=0; $run < $run_loop; $run++)
+  for($run=1; $run < $run_loop; $run++)
   {
-    $num = $run+2;
-    if(!empty($_POST["files_mirror_url_$num"]) AND !empty($_POST["files_mirror_ext_$num"]))
+    if(!empty($_POST["files_mirror_url_$run"]) AND !empty($_POST["files_mirror_ext_$run"]))
     {
-      $data['file']['files_mirror'] .= $data['file']["files_mirror"] . "\n-----\n" . $_POST["files_mirror_url_$num"] . "\n" . $_POST["files_mirror_name_$num"] . "\n" . $_POST["files_mirror_ext_$num"] . "\n" . $_POST["files_access_$num"];
+      $data['file']['files_mirror'] .= $data['file']["files_mirror"] . "\n-----\n" . $_POST["files_mirror_url_$run"] . "\n" . $_POST["files_mirror_name_$run"] . "\n" . $_POST["files_mirror_ext_$run"] . "\n" . $_POST["files_access_$run"];
     }
   }
 

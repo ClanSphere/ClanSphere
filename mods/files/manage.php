@@ -35,7 +35,7 @@ $files_loop = count($cs_files);
 $data['sort']['headline'] = cs_sort('files','manage',$start,$categories_id,1,$sort);
 $data['sort']['date'] =  cs_sort('files','manage',$start,$categories_id,3,$sort);
 
-
+$data['files'] = array();
 
 for($run=0; $run<$files_loop; $run++)
 {       
