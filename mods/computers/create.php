@@ -74,7 +74,9 @@ else {
   $computers_save = array_values($cs_computers);
   cs_sql_insert(__FILE__,'computers',$computers_cells,$computers_save);
   
-  cs_redirect($cs_lang['create_done'],'computers',substr($_POST['referer'], -6, 6));
+  #$referrer = strpos($_POST['referer'],'manage') === false ? 'center' : 'manage';
+  $referrer = $account['access_computers'] < 3 ? 'center' : 'manage';
+  cs_redirect($cs_lang['create_done'],'computers',$referrer);
 } 
 
 ?>

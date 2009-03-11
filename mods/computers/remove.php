@@ -10,6 +10,8 @@ $data = array();
 $computers_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $computers_id = $cs_post['id'];
 
+$referrer = $account['access_computers'] < 3 ? 'center' : 'manage';
+
 if(isset($_POST['agree'])) {
   
   $select = 'users_id, computers_pictures';
@@ -24,14 +26,14 @@ if(isset($_POST['agree'])) {
       }
     }
     cs_sql_delete(__FILE__,'computers',$computers_id);
-    cs_redirect($cs_lang['del_true'], 'computers',substr($_POST['referer'], -6, 6));
+    cs_redirect($cs_lang['del_true'], 'computers',$referrer);
   } else {
-    cs_redirect($cs_lang['del_false'], 'computers',substr($_POST['referer'], -6, 6));
+    cs_redirect($cs_lang['del_false'], 'computers',$referrer);
   }
 }
 
 if(isset($_POST['cancel']))   
-  cs_redirect($cs_lang['del_false'], 'computers',substr($_POST['referer'], -6, 6));
+  cs_redirect($cs_lang['del_false'], 'computers',$referrer);
 
 if(!isset($_POST['agree'])) {
   
