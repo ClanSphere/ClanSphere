@@ -82,9 +82,10 @@ function cs_cspnews($id = 0, $all = 0) {
         } else {
           $data['if']['one'] = false;
           $data['if']['all'] = true;
-          for($run=0; $run<count($news)-1; $run++) {
+          $count = count($news)-1;
+          for($run=0; $run < $count; $run++) {
             $content = explode("@", $news[$run]);
-            $data['infos'][$run]['text'] = $content[1];
+            $data['infos'][$run]['text'] = cs_secure($content[1]);
             $url = 'http://www.clansphere.net/index/news/view/id/' . $content[0];
             $data['infos'][$run]['view'] = cs_html_link($url,$cs_lang['view']);
           }

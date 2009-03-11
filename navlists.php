@@ -22,10 +22,9 @@ $messages_count = cs_sql_count(__FILE__,'messages',$where);
 if (isset($_GET['debug'])) {
   $cs_main['ajax_navlists'] .= 'func_sql,func_errors,';
 }
-echo "-- " . $cs_main['ajax_navlists'] . " --";
+
 $ajaxes = explode(',',$cs_main['ajax_navlists']);
-print_r($ajaxes);
-array_pop($ajaxes);print_r($ajaxes);
+array_pop($ajaxes);
 $string = str_replace(',','',$cs_main['ajax_navlists']);
 
 if (!empty($string)) {
