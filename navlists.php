@@ -35,9 +35,9 @@ if (!empty($string)) {
   
   foreach ($ajaxes as $ajax) {
     $name = !empty($special_names[$ajax]) ? $special_names[$ajax] : 'cs_' . $ajax;
-    if (empty($specials[$ajax]))
-      echo $temp .= '!33/' . $name . '!33/' . cs_filecontent('mods/' . str_replace('_','/',$ajax) . '.php');
-    else {
+    if (empty($specials[$ajax])) {
+      $temp .= '!33/' . $name . '!33/' . cs_filecontent('mods/' . str_replace('_','/',$ajax) . '.php');
+    } else {
       eval('$var = ' . $specials[$ajax] . ';');
       $temp .= '!33/' . $name . '!33/' . $var;
     }
