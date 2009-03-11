@@ -261,7 +261,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
     $cs_main['template'] = empty($account['users_tpl']) ? $cs_main['def_tpl'] : $account['users_tpl'];
     if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
-    if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); unset($_SESSION['tpl_preview']); }
+    if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); }
 
     $tpl_path = 'templates/' . $cs_main['template'];
     if (!file_exists($tpl_path . '/' . $tpl_file))

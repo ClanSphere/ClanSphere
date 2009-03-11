@@ -4,10 +4,17 @@
 
 $cs_lang = cs_translate('clansphere');
 
-if (!empty($_GET['template'])) {
+if (!empty($_SESSION['tpl_preview'])) $ending = substr($_SESSION['tpl_preview'],-3);
+if (!empty($ending) && $ending != '{2}') {
+  $_SESSION['tpl_preview'] .= '{2}';
+  die();
+} elseif (!empty($ending)) {
+	$cs_main['template'] = substr($_SESSION['tpl_preview'],0,-3);
+	unset($_SESSION['tpl_preview']);
+} elseif (!empty($_GET['template'])) {
   $_SESSION['tpl_preview'] = $_GET['template'];
   $shorten = "window.location.href = window.location.href.substr(0,window.location.href.lastIndexOf('template')); ";
-  #die(ajax_js($shorten . "window.location.reload();"));
+  die(ajax_js($shorten . "window.location.reload();"));
 }
 
 $templates = cs_checkdirs('templates');
@@ -58,7 +65,7 @@ if(!empty($activate) AND !empty($allow)) {
   
   if(!empty($account['users_ajax']) && $cs_main['php_self']['filename'] == 'content') {
       cs_redirectmsg($msg);
-      #die(ajax_js('window.location.reload();'));
+      die(ajax_js('window.location.reload();'));
     } else {
       cs_redirect($msg,'clansphere','temp_list');
     }
@@ -77,20 +84,17 @@ else {
     $data['temp_list'][$run]['link'] = cs_url('clansphere','temp_view','dir=' . $mod['dir']);
     $data['temp_list'][$run]['version'] = $mod['version'];
     $data['temp_list'][$run]['date'] = cs_date('date',$mod['released']);
-
-    if($mod['dir'] == $cs_main['template'])
-      $data['temp_list'][$run]['preview'] = cs_icon('submit','16',$cs_lang['yes']);
-    elseif($mod['dir'] != 'install')
-      $data['temp_list'][$run]['preview'] = cs_link(cs_icon('cancel','16',$cs_lang['no']),'clansphere','temp_list','template=' . $mod['dir']);
-    else
-      $data['temp_list'][$run]['preview'] = cs_icon('editdelete','16','----');
-
-    if($mod['dir'] == $cs_main['def_tpl']) 
-      $data['temp_list'][$run]['active'] = cs_icon('submit','16',$cs_lang['yes']);
-    elseif($mod['dir'] != 'install')
-      $data['temp_list'][$run]['active'] = cs_link(cs_icon('cancel','16',$cs_lang['no']),'clansphere','temp_list','activate=' . $mod['dir']);
-    else
-      $data['temp_list'][$run]['active'] = cs_icon('editdelete','16','----');
+    
+    if ($mod['dir'] == 'install') {
+    	$data['temp_list'][$run]['preview'] = cs_icon('editdelete','16','----');
+    	$data['temp_list'][$run]['active'] = cs_icon('editdelete','16','----');
+    	continue;
+    }
+    
+    $data['temp_list'][$run]['preview'] = $mod['dir'] == $cs_main['template'] ? cs_icon('submit','16',$cs_lang['yes']) :
+      cs_link(cs_icon('cancel','16',$cs_lang['no']),'clansphere','temp_list','template=' . $mod['dir']);
+    $data['temp_list'][$run]['active'] = $mod['dir'] == $cs_main['def_tpl'] ? cs_icon('submit','16',$cs_lang['yes']) :
+      cs_link(cs_icon('cancel','16',$cs_lang['no']),'clansphere','temp_list','activate=' . $mod['dir']);
     
     $run++;
   }
