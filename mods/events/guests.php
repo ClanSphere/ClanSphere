@@ -22,6 +22,9 @@ $cs_sort[6] = 'evs.events_time ASC';
 $sort = empty($_REQUEST['sort']) ? 4 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
+$data['if']['other'] = $account['access_events'] >= 5 ? 0 : 1;
+$data['if']['admin'] = $account['access_events'] >= 5 ? 1 : 0;
+
 $data['head']['count'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $events_id . "'");
 
 $data['events'] = cs_sql_select(__FILE__,'events','events_id, events_name, events_time',$where,0,0,1);
@@ -35,17 +38,42 @@ $data['sort']['name'] = cs_sort('events','guests',$start,$events_id,3,$sort);
 $data['sort']['time'] = cs_sort('events','guests',$start,$events_id,5,$sort);
 
 $from = 'eventguests egt LEFT JOIN {pre}_users usr ON egt.users_id = usr.users_id';
-$select = 'egt.eventguests_since AS eventguests_since, egt.users_id AS users_id, usr.users_nick AS users_nick, usr.users_surname AS users_surname, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_name AS users_name, egt.eventguests_id AS eventguests_id';
+$select = 'egt.eventguests_since AS eventguests_since, egt.users_id AS users_id, usr.users_nick AS users_nick, usr.users_surname AS users_surname, usr.users_hidden AS users_hidden, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_name AS users_name, egt.eventguests_id AS eventguests_id';
 $cs_eventguests = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $eventguests_loop = count($cs_eventguests);
 
 if(empty($eventguests_loop))
   $data['eventguests'] = '';
-
+  
 for($run=0; $run<$eventguests_loop; $run++) {
+
+  $allow = 0;
+  if($cs_eventguests[$run]['users_id'] == $account['users_id'] OR $account['access_users'] > 4)
+    $allow = 1;
+
+  $hidden = explode(',',$cs_eventguests[$run]['users_hidden']);
+
+  $content = cs_secure($cs_eventguests[$run]['users_surname']);
+  if(in_array('users_surname',$hidden)) {
+    $content = empty($allow) ? '' : cs_html_italic(1) . $content . cs_html_italic(0);
+  }
+  $surname = empty($cs_eventguests[$run]['users_surname']) ? '' : $content;
+
+  $content = cs_secure($cs_eventguests[$run]['users_name']);
+  if(in_array('users_name',$hidden)) {
+    $content = empty($allow) ? '' : cs_html_italic(1) . $content . cs_html_italic(0);
+  }
+  $name = empty($cs_eventguests[$run]['users_name']) ? '' : $content;
+
+  if(!empty($surname) AND !empty($name))
+    $data['eventguests'][$run]['name'] = $surname . ', ' . $name;
+  elseif(!empty($surname) OR !empty($name))
+    $data['eventguests'][$run]['name'] = $surname . $name;
+  else
+    $data['eventguests'][$run]['name'] = '';
+
   $data['eventguests'][$run]['user'] = cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
   $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since'],1);
-  $data['eventguests'][$run]['name'] = empty($cs_eventguests[$run]['users_surname']) ? $cs_eventguests[$run]['users_name'] : $cs_eventguests[$run]['users_surname'] . ', ' . $cs_eventguests[$run]['users_name'];
   $data['eventguests'][$run]['remove'] = cs_link(cs_icon('editdelete',16,$cs_lang['remove']),'events','guestsdel','id=' . $cs_eventguests[$run]['eventguests_id'],0,$cs_lang['remove']);
 }
 

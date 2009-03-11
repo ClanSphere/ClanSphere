@@ -15,7 +15,7 @@ $axx_file['picture']        = 3;
 $axx_file['remove']         = 3;
 $axx_file['options']        = 5;
 
-$axx_file['guests']         = 5;
+$axx_file['guests']         = 2;
 $axx_file['guestsdel']      = 5;
 $axx_file['guestsnew']      = 5;
 
