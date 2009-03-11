@@ -43,7 +43,7 @@ if(empty($_SESSION['users_id'])) {
   }
 
   if(isset($login['method'])) {
-    $login_db = cs_sql_select(__FILE__,'users','users_id, users_pwd, users_active',$login_where);
+    $login_db = cs_sql_select(__FILE__,'users','users_id, users_pwd, users_active, users_ajax',$login_where);
     if(!empty($login_db['users_pwd']) AND $login_db['users_pwd'] == $login['securepw']) { 
       if(empty($login_db['users_active'])) {
         $login['error'] = 'closed'; 
@@ -55,6 +55,7 @@ if(empty($_SESSION['users_id'])) {
         $_SESSION['users_ip'] = cs_getip();
         $_SESSION['users_agent'] = $_SERVER['HTTP_USER_AGENT'];
         $_SESSION['users_pwd'] = $login['securepw'];
+        if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax'])) header('Location: index.php');
       }
     }
     elseif(!empty($login_db['users_id'])) { 
