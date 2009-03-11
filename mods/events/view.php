@@ -37,6 +37,8 @@ elseif(!empty($cs_events['events_cancel'])) {
   $data['head']['status'] = $cs_lang['canceled'];
 }
 
+$data['data']['events_id'] = $events_id;
+
 $data['data']['events_name'] = cs_secure($cs_events['events_name']);
 
 $where = "categories_id = '" . $cs_events['categories_id'] . "'";
