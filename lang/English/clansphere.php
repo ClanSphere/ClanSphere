@@ -58,6 +58,8 @@ $cs_lang['off'] = 'off';
 $cs_lang['on'] = 'on';
 $cs_lang['automatic'] = 'automatic';
 
+$cs_lang['developer'] = 'Developer mode';
+$cs_lang['developer_info'] = 'Just available to admins if turned off [recommended]';
 $cs_lang['def_width'] = 'Content width';
 $cs_lang['def_title'] = 'Pagetitle';
 $cs_lang['def_show'] = 'Homepage';

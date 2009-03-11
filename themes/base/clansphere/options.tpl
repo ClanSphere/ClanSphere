@@ -67,6 +67,16 @@
       </td>
     </tr>
     <tr>
+      <td class="leftc">{icon:multirow} {lang:developer}</td>
+      <td class="leftb">
+        {lang:developer_info}<br />
+        <select name="developer" >
+          <option value="1"{options:developer_on}>{lang:on}</option>
+          <option value="0"{options:developer_off}>{lang:off}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:folder_public} {lang:page_mode}</td>
       <td class="leftb"><input type="radio" name="public" value="1" {options:public_1} />
         {lang:active}

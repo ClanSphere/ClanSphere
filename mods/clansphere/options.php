@@ -37,6 +37,7 @@ if(isset($_POST['submit'])) {
   settype($_POST['def_timezone'],'integer');
   settype($_POST['public'],'integer');
   settype($_POST['cellspacing'],'integer');
+  settype($_POST['developer'],'integer');
 
   $opt_where = "options_mod = 'clansphere' AND options_name = ";
   $def_cell = array('options_value');
@@ -73,7 +74,9 @@ if(isset($_POST['submit'])) {
   $def_cont = array($_POST['img_ext']);
   cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'img_ext'");
   $def_cont = array($_POST['def_admin']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_admin'"); 
+  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_admin'");
+  $def_cont = array($_POST['developer']);
+  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'developer'");
 
   if(!empty($_POST['dstime_all'])) {
     $query = 'UPDATE {pre}_users SET users_dstime = \''.$_POST['def_dstime'].'\'';
@@ -86,9 +89,9 @@ if(isset($_POST['submit'])) {
 }
 else {
   $data['action']['form'] = cs_url('clansphere','options');
-  
+
   $selected = ' selected="selected"';
-  
+
   if (empty($cs_main['mod_rewrite'])) {
     $data['options']['mod_rewrite_on'] = '';
     $data['options']['mod_rewrite_off'] = $selected;
@@ -96,13 +99,21 @@ else {
     $data['options']['mod_rewrite_on'] = $selected;
     $data['options']['mod_rewrite_off'] = '';
   }
-  
+
+  if(empty($cs_main['developer'])) {
+    $data['options']['developer_on'] = '';
+    $data['options']['developer_off'] = $selected;
+  } else {
+    $data['options']['developer_on'] = $selected;
+    $data['options']['developer_off'] = '';
+  }
+
   $data['options']['def_width'] = $cs_main['def_width'];
   $data['options']['def_title'] = $cs_main['def_title'];
 
   $modules = cs_checkdirs('mods');
   $run = 0;
-  
+
   foreach($modules as $mods) {
     $sel = $mods['dir'] == $cs_main['def_mod'] ? 1 : 0;
     $data['sel'][$run]['options'] = cs_html_option($mods['name'],$mods['dir'],$sel);
@@ -118,14 +129,14 @@ else {
   else {
     $data['options']['automatic'] = '';
   }
-  
+
   if($cs_main['def_path'] == '0') {
     $data['options']['manual'] = 'selected="selected"';
   }
   else {
     $data['options']['manual'] = '';
   }
-  
+
   $data['options']['def_path'] = $cs_main['def_path'];
 
   if($cs_main['public'] == '1') {
@@ -134,21 +145,21 @@ else {
   else {
     $data['options']['public_1'] = '';
   }
-  
+
   if($cs_main['public'] == '0') {
     $data['options']['public_2'] = 'checked="checked"';
   }
   else {
     $data['options']['public_2'] = '';
   }
-  
+
   if($cs_main['def_admin'] == 'integrated' OR empty($cs_main['def_admin'])) {
     $data['options']['admin_1'] = 'checked="checked"';
   }
   else {
     $data['options']['admin_1'] = '';
   }
-  
+
   if($cs_main['def_admin'] == 'separated') {
     $data['options']['admin_2'] = 'checked="checked"';
   }
@@ -158,7 +169,7 @@ else {
 
   $data['options']['def_timezone'] = cs_html_select(1,'def_timezone');
   $timezone = -10;
-  
+
   while($timezone <= 12) {
     $zonename = $timezone >= 0 ? 'UTC +' . $timezone: 'UTC ' . $timezone;
     $offset = $timezone * 3600;
@@ -166,23 +177,23 @@ else {
     $data['options']['def_timezone'] .= cs_html_option($zonename,$offset,$sel);
     $timezone = $timezone + 0.5;
   }
-  
+
   $data['options']['def_timezone'] .= cs_html_select(0);
-  
+
   if($cs_main['def_dstime'] == 'on') {
     $data['options']['time_1'] = 'selected="selected"';
   }
   else {
     $data['options']['time_1'] = '';
   }
-  
+
   if($cs_main['def_dstime'] == 'off') {
     $data['options']['time_0'] = 'selected="selected"';
   }
   else {
     $data['options']['time_0'] = '';
   }
-  
+
   $data['options']['time_auto'] = $cs_main['def_dstime'] == '0' ? 'selected="selected"' : '';
 
   $data['options']['def_flood'] = $cs_main['def_flood'];
@@ -195,4 +206,5 @@ else {
 }
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','options');
+
 ?>

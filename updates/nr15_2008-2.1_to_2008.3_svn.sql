@@ -91,3 +91,5 @@ CREATE TABLE {pre}_medalsuser (
 ){engine};
 
 ALTER TABLE {pre}_access ADD access_medals int(2) NOT NULL DEFAULT '0';
+
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','developer','0');

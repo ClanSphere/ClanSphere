@@ -104,22 +104,25 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
   $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
     
-  if (!empty($navfiles))
+  if(!empty($navfiles))
     $string = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $string);
 
-  if (!empty($cs_main['themebar']) AND $action != 'navmeta' AND $action != 'themebar' AND ($mod != 'errors' OR $action != '500')) {
+  global $account;
+  if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
 
-    global $account;
-    $data = array();
-    $data['data']['load'] = cs_parsetime($micro,5);
-    $data['data']['target'] = $target;
-    $data['data']['content'] = $string;
-    $data['data']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
-    $phpsource = str_replace('\\', '/', str_replace($cs_main['def_path'], '', $source));
-    $data['data']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
-    $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
+    $forbidden = array('clansphere/navmeta', 'clansphere/themebar', 'errors/500');
+    if(!in_array($mod . '/' . $action, $forbidden)) {
+
+      $data = array();
+      $data['data']['load'] = cs_parsetime($micro,5);
+      $data['data']['target'] = $target;
+      $data['data']['content'] = $string;
+      $data['data']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
+      $phpsource = str_replace('\\', '/', str_replace($cs_main['def_path'], '', $source));
+      $data['data']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
+      $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
+    }
   }
-
   return $string;
 }
 
@@ -287,7 +290,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
     $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
-    if (!empty($cs_main['debug']) AND $cs_main['show'] != 'mods/errors/500.php') {
+    if (!empty($cs_main['debug']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
         $script = '<div id="debug"><span id="errors">{func:errors}</span><span id="sql">{func:sql}</span></div>';
         $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
     }
