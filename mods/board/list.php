@@ -41,7 +41,7 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
   for ($i = 0; $i < $data['categories'][$run_1]['layer']; $i++) { 
      $data['categories'][$run_1]['blank'] .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'; 
      $data['categories'][$run_1]['iconwidth'] += 20; 
-  } 
+  }
   
   if ($data['categories'][$run_1]['layer'] == 0 || !empty($options['list_subforums'])) {
   	$data['categories'][$run_1]['if']['small_subforums'] = false;
@@ -119,6 +119,8 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 	    }
 	    $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['last_id']);
 	    $board['user_url'] = cs_url('users', 'view', 'id=' . $board['last_userid']);
+	    $board['board_name'] = cs_secure($board['board_name']);
+	    
 	    $data['categories'][$run_1]['board'][$run_2] = $board;
 	  }
   } else {
