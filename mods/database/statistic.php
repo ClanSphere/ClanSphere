@@ -20,7 +20,7 @@ $names = array_flip($sql_infos['names']);
 
 foreach($modules as $mod) {
 
-  if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha') AND !empty($mod['tables'][0])) {
+  if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha' OR $mod['dir'] == 'pictures') AND !empty($mod['tables'][0])) {
 
   $tables = '';
   $counts = '';
