@@ -158,7 +158,7 @@ else {
 }*/
 //vorheriges - letztes thema
 $data['thread']['categories_link'] = cs_link($data['thread']['categories_name'],'board','list','id=' .$data['thread']['categories_id']);
-$data['thread']['board_link'] = cs_link($data['thread']['board_name'],'board','listcat','id=' .$data['thread']['board_id']);
+$data['thread']['board_link'] = cs_link(cs_secure($data['thread']['board_name']),'board','listcat','id=' .$data['thread']['board_id']);
 #$arimportant = array('',$cs_lang['important']);
 $important = $data['thread']['threads_important'];
 #$data['thread']['abo'] = cs_secure($arimportant[$important],1) . ' ';
