@@ -7,7 +7,8 @@
   </tr>
 </table>
 <br />
-<table class="forum" style="width:90%" cellpadding="0" cellspacing="1">
+
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   {loop:categories}
   <tr>
     <td class="headb"><a href="{url:files_listcat:where={categories:id}}" >{categories:name}</a> ({categories:count}) </td>
