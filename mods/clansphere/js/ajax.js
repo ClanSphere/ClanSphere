@@ -7,7 +7,7 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
   response = response.replace(/href=\"#([a-zA-Z0-9-_]*?)\"/g,"href=\"javascript:cs_scrollto_by_name('$1')\"");
   document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
     response.replace(/href=\"\/[a-zA-Z\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
-  if (id == 'content') {
+  if (document.getElementById('ajax_js') == null && id == 'content') {
     request_cont = 0;
     if (setanch) {
       anch = "#" + document.getElementById('ajax_location').href.replace('&amp;','&');

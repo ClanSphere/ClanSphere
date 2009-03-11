@@ -13,7 +13,7 @@ if($log_id == 1)
 elseif($log_id == 2)
   $folder = 'actions';
   
-$log = $_REQUEST['log'];
+$log = $_GET['log'];
 
 $cs_sort[1] = 'logs_name DESC';
 $cs_sort[2] = 'logs_name ASC';

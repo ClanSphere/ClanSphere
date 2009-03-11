@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:image} {lang:loading_icon}</td>
-      <td class="leftb"><img src="uploads/ajax/loading.gif" alt="-" /><br />{lang:another}<input type="file" name="loading" /></td>
+      <td class="leftb"><img src="{page:path}uploads/ajax/loading.gif" alt="-" /><br />{lang:another}<input type="file" name="loading" /></td>
     </tr>
     <tr>
       <td class="leftc">{icon:playlist} {lang:reload_navlists}</td>
