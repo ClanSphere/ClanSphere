@@ -288,7 +288,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
     $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
-    if (!empty($cs_main['debug']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
+    if (!empty($cs_main['debug'])) {
         $script = '<div id="debug"><span id="errors">{func:errors}</span><span id="sql">{func:sql}</span></div>';
         $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
     }
@@ -326,10 +326,18 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_temp_get = str_replace('{func:title}', $cs_main['def_title'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
-    $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
-    $cs_logs['errors'] = nl2br($cs_logs['errors']);
+
+    if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
+      $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
+      $cs_logs['errors'] = nl2br($cs_logs['errors']);
+      $cs_logs['sql'] = nl2br(htmlspecialchars($cs_logs['sql'], ENT_QUOTES));
+    }
+    else {
+      $cs_logs['php_errors'] = '';
+      $cs_logs['errors'] = 'Developer mode is turned off';
+      $cs_logs['sql'] = '';
+    }
     $cs_temp_get = str_replace('{func:errors}', $cs_logs['php_errors'] . $cs_logs['errors'], $cs_temp_get);
-    $cs_logs['sql'] = nl2br(htmlspecialchars($cs_logs['sql'], ENT_QUOTES));
     $cs_temp_get = str_replace('{func:sql}', $cs_logs['sql'], $cs_temp_get);
     $getparse = cs_parsetime($cs_micro);
     $cs_temp_get = str_replace('{func:parse}', $getparse, $cs_temp_get);
