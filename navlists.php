@@ -23,7 +23,6 @@ if (isset($_GET['debug'])) {
   if (substr($cs_main['ajax_navlists'],-1) != ',') $cs_main['ajax_navlists'] .= ',';
 	$cs_main['ajax_navlists'] .= 'func_sql,func_errors,';
 }
-echo $cs_main['ajax_navlists'];
 $ajaxes = explode(',',$cs_main['ajax_navlists']);
 array_pop($ajaxes);
 $string = str_replace(',','',$cs_main['ajax_navlists']);
