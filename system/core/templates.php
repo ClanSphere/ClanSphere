@@ -199,9 +199,7 @@ function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $ic
 }
 function cs_redirectmsg($message, $id = 0, $icon = 0) {
 
-  global $cs_logs;
-  global $cs_main;
-  global $cs_lang;
+  global $cs_lang, $cs_logs, $cs_main;
 
   $sql = cs_sql_error();
   $php = $cs_logs['php_errors'];

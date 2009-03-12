@@ -205,9 +205,12 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
 function cs_sql_error() {
   
   global $cs_db;
-  
-  return $cs_db['con']->errorInfo();
-  
+  $error = $cs_db['con']->errorInfo();
+
+  if(empty($error) OR $error = array(0 => '00000'))
+    return false;
+  else
+    return $error;
 }
 
 ?>
