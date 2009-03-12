@@ -57,8 +57,8 @@ $cs_lang['head_complete']  = 'Fin';
 $cs_lang['rem_install']  = '- Se estan Removiendo los Datos de la Instalación';
 $cs_lang['set_chmod']  = '- Archivos adquieren nuevos Acceso';
 $cs_lang['remove_file'] = 'Remueva el Archivo Manualmente';
-$cs_lang['err_chmod']  = 'ERROR : Cambie el Acceso de los Archivos "logs", "uploads" ';
-$cs_lang['err_chmod']  .= ' y del todos los subarchivos de estos, manualmente al CHMOD 777';
+$cs_lang['err_chmod']  = 'ERROR : Cambie el Acceso de el Archivo "uploads" ';
+$cs_lang['err_chmod']  .= ' y del todos los subarchivos de esto, manualmente al CHMOD 777';
 
 $cs_lang['login']  = 'Login';
 

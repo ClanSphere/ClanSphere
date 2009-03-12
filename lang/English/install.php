@@ -50,8 +50,8 @@ $cs_lang['head_complete']  = 'End';
 $cs_lang['rem_install']  = '- Remove installation files';
 $cs_lang['set_chmod']  = '- New rights for directories (CHMOD)';
 $cs_lang['remove_file'] = 'Please remove file manually:';
-$cs_lang['err_chmod']  = 'Error: Please set rights for directories "logs" and "uploads",';
-$cs_lang['err_chmod']  .= ' as well as their sub-directories manually on CHMOD 777';
+$cs_lang['err_chmod']  = 'Error: Please set rights for directory "uploads",';
+$cs_lang['err_chmod']  .= ' as well as all sub-directories manually on CHMOD 777';
 
 $cs_lang['login']  = 'Login';
 

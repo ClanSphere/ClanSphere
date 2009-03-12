@@ -53,7 +53,7 @@ $cs_lang['head_complete']  = 'Einde';
 $cs_lang['rem_install']  = '- Verwijder installatie files';
 $cs_lang['set_chmod']  = '- Nieuwe rechten voor directories (CHMOD)';
 $cs_lang['remove_file'] = 'Verwijder de file handmatig:';
-$cs_lang['err_chmod']  = 'Foutmelding: Zet de rechten voor de directories "logs" and "uploads",';
+$cs_lang['err_chmod']  = 'Foutmelding: Zet de rechten voor de directorie "uploads",';
 $cs_lang['err_chmod']  .= ' en de sub-directories handmatig op CHMOD 777';
 
 $cs_lang['login']  = 'Login';
