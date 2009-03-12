@@ -1,6 +1,10 @@
 <?php
+// ClanSphere 2008 - www.clansphere.net 
+// $Id$
 
 $cs_lang = cs_translate('servers');
+
+$data = array();
 
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start']; 
 $cs_sort[1] = 'servers_name DESC';
@@ -9,70 +13,32 @@ empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $server_count = cs_sql_count(__FILE__,'servers');
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb',0,3);
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_manage'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo cs_icon('editpaste') . cs_link($cs_lang['new_serv'],'servers','create');
-echo cs_html_roco(2,'leftb');
-echo cs_icon('contents') . $cs_lang['all'] . $server_count;
-echo cs_html_roco(3,'rightb');
-echo cs_pages('servers','manage',$server_count,$start,0,$sort);
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb',0,3);
-echo cs_html_link('http://www.clansphere.net/index/files/view/where/9',$cs_lang['mapsdl'],1);
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+$data['server']['count'] = $server_count;
+$data['server']['pages'] = cs_pages('servers','manage',$server_count,$start,0,$sort);
+$data['server']['sort'] = cs_sort('servers','manage',$start,0,1,$sort);
+$data['server']['headmsg'] = cs_getmsg();
+$data['if']['viewfsock'] = false;
 
-echo cs_getmsg();
-
-if (@fsockopen("udp://127.0.0.1", 1)) { } else {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftb');
-  echo $cs_lang['fsockoff'];
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);
-  }
-
-
-$cs_server = cs_sql_select(__FILE__,'servers','*',0,$order,$start,$account['users_limit']);
-$server_loop = count($cs_server);
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['id'];
-echo cs_html_roco(2,'headb');
-echo cs_sort('servers','manage',$start,0,1,$sort);
-echo $cs_lang['headline'];
-echo cs_html_roco(3,'headb');
-echo $cs_lang['gametype'];
-echo cs_html_roco(4,'headb');
-echo $cs_lang['gameclass'];
-echo cs_html_roco(5,'headb',0,2);
-echo $cs_lang['options'];
-echo cs_html_roco(0);
-
-for($run=0; $run<$server_loop; $run++) {
-
-  echo cs_html_roco(1,'leftc');
-  echo $cs_server[$run]['servers_id'];
-  echo cs_html_roco(2,'leftc');
-  echo cs_secure($cs_server[$run]['servers_name']);
-  echo cs_html_roco(3,'leftc');
-  $where = "games_id = '" . cs_secure($cs_server[$run]['games_id']) . "'";
-  $cs_game = cs_sql_select(__FILE__,'games','games_id, games_name',$where,0,0,1);
-  echo $cs_game['games_name'];
-  echo cs_html_roco(4,'leftc');
-  echo cs_secure($cs_server[$run]['servers_class']);
-  echo cs_html_roco(5,'leftc');
-  $img_edit = cs_icon('edit');
-  echo cs_link($img_edit,'servers','edit','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['edit']);
-  echo cs_html_roco(6,'leftc');
-  $img_del = cs_icon('editdelete');
-  echo cs_link($img_del,'servers','remove','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['remove']);
-  echo cs_html_roco(0);
+if (!@fsockopen("udp://127.0.0.1", 1)) {
+	$data['if']['viewfsock'] = true;
 }
-echo cs_html_table(0);
+
+$from = "servers serv INNER JOIN {pre}_games gam ON gam.games_id = serv.games_id";
+$select = "serv.servers_id AS servers_id, serv.servers_name AS servers_name, serv.servers_class AS servers_class, gam.games_name AS games_name";
+$cs_server = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
+
+if(!empty($cs_server)) {
+	for($run=0; $run<count($cs_server); $run++) {
+		$data['servers'][$run]['id'] = $cs_server[$run]['servers_id'];
+    $data['servers'][$run]['name'] = $cs_server[$run]['servers_name'];
+    $data['servers'][$run]['game'] = $cs_server[$run]['games_name'];
+    $data['servers'][$run]['class'] = $cs_server[$run]['servers_class'];
+    $data['servers'][$run]['edit'] = cs_link(cs_icon('edit'),'servers','edit','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['edit']);
+    $data['servers'][$run]['remove'] = cs_link(cs_icon('editdelete'),'servers','remove','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['remove']);
+	}
+}
+else {
+	$data['servers'] = array();
+}
+echo cs_subtemplate(__FILE__,$data,'servers','manage');
 ?>

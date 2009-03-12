@@ -1,14 +1,10 @@
 <?php
+// ClanSphere 2008 - www.clansphere.net 
+// $Id$
 
 $cs_lang = cs_translate('servers');
 
-// Head
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_create'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-
+$data = array();
 
 // Submit Post
 if(isset($_POST['submit'])) {
@@ -16,17 +12,17 @@ if(isset($_POST['submit'])) {
   $servers_error = 0; 
   $errormsg = $cs_lang['error_occurred'] . cs_html_br(1);;
 
-  $cs_servers['servers_name'] = $_POST['servers_name'];
-  $cs_servers['servers_ip'] = $_POST['servers_ip'];
-  $cs_servers['servers_port'] = $_POST['servers_port'];
-  $cs_servers['games_id'] = $_POST['games_id'];
-  $cs_servers['servers_info'] = $_POST['servers_info'];
-  $cs_servers['servers_slots'] = $_POST['servers_slots'];
-  $cs_servers['servers_type'] = $_POST['servers_type'];
-  $cs_servers['servers_stats'] = $_POST['servers_stats'];
-  $cs_servers['servers_class'] = $_POST['servers_class'];
-  $cs_servers['servers_query'] = $_POST['servers_query'];
-  $cs_servers['servers_order'] = $_POST['servers_order'];
+  $data['create']['servers_name'] = $_POST['servers_name'];
+  $data['create']['servers_ip'] = $_POST['servers_ip'];
+  $data['create']['servers_port'] = $_POST['servers_port'];
+  $data['create']['games_id'] = $_POST['games_id'];
+  $data['create']['servers_info'] = $_POST['servers_info'];
+  $data['create']['servers_slots'] = $_POST['servers_slots'];
+  $data['create']['servers_type'] = $_POST['servers_type'];
+  $data['create']['servers_stats'] = $_POST['servers_stats'];
+  $data['create']['servers_class'] = $_POST['servers_class'];
+  $data['create']['servers_query'] = $_POST['servers_query'];
+  $data['create']['servers_order'] = $_POST['servers_order'];
 
   if(empty($cs_servers['servers_name'])) {
     $servers_error++;
@@ -62,94 +58,43 @@ if(isset($_POST['submit'])) {
   }
 
 // Create new Entry
-} else {
-  $cs_servers['servers_name'] = '';
-  $cs_servers['servers_ip'] = '';
-  $cs_servers['servers_port'] = '';
-  $cs_servers['games_id'] = '';
-  $cs_servers['servers_info'] = $cs_lang['server_infos_no_stats'];
-  $cs_servers['servers_slots'] = '';
-  $cs_servers['servers_stats'] = '';
-  $cs_servers['servers_type'] = '';
-  $cs_servers['servers_class'] = '';
-  $cs_servers['servers_query'] = '';
-  $cs_servers['servers_order'] = '';
+} 
+else {
+  $data['create']['servers_name'] = '';
+  $data['create']['servers_ip'] = '';
+  $data['create']['servers_port'] = '';
+  $data['create']['games_id'] = '';
+  $data['create']['servers_info'] = $cs_lang['server_infos_no_stats'];
+  $data['create']['servers_slots'] = '';
+  $data['create']['servers_stats'] = '';
+  $data['create']['servers_type'] = '';
+  $data['create']['servers_class'] = '';
+  $data['create']['servers_query'] = '';
+  $data['create']['servers_order'] = '';
 
 }
 if(!isset($_POST['submit'])) {
-  echo $cs_lang['body_create'];
+  $data['body']['create'] = $cs_lang['body_create'];
 }
 elseif(!empty($servers_error)) {
-  echo $errormsg;
+  $data['body']['create'] = $errormsg;
 }
 
-
 if(!empty($servers_error) OR !isset($_POST['submit'])) {
-
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
-
-  // Start Form
-  echo cs_html_form (1,'servers_create','servers','create');
-  echo cs_html_table(1,'forum',1);
-
-  // Server-Name
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kedit') . $cs_lang['servername']. ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('servers_name',$cs_servers['servers_name'],'text',200,50);
-  echo cs_html_roco(0);
-
-  // Server-IP
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kedit') . $cs_lang['serverip']. ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('servers_ip',$cs_servers['servers_ip'],'text',200,50);
-  echo cs_html_roco(0);
-
-  // Server-Port
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kedit') . $cs_lang['serverport']. ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('servers_port',$cs_servers['servers_port'],'text',200,10);
-  echo cs_html_roco(0);
-
-  // Server Game
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kedit') . $cs_lang['serverspiel']. ' *';
-  echo cs_html_roco(2,'leftb');
-  $games = cs_sql_select(__FILE__,'games','games_name, games_id',0,1,1,0);
-  echo cs_html_select(1,'games_id','onchange="cs_gamechoose(this.form)"');
-  echo cs_html_option('----',0,1);
-  if (!empty($games))
-    foreach ($games AS $game)
-      echo cs_html_option($game['games_name'],$game['games_id']);
-  echo cs_html_select(0);
-  #echo cs_dropdown('games_id','games_name',$games,$cs_servers['games_id'].'" onchange="cs_gamechoose(this.form)');
-  echo cs_html_img('uploads/games/0.gif',0,0,'id="game_1"');
-  echo cs_html_roco(0);
-  
-  // Zusatz
-  echo cs_html_roco(1,'headb',1,2);
-  echo $cs_lang['Erweiterter'] . ' - ' . $cs_lang['Serverstatus'];
-  echo cs_html_roco(0);
-
-  // Live Status on/off
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['Serverstatus']. ' *';
-  echo cs_html_roco(2,'leftb');
-  $stats[0]['servers_stats'] = '2';
-  $stats[0]['name'] = $cs_lang['no'];
-  $stats[1]['servers_stats'] = '1';
-  $stats[1]['name'] = $cs_lang['yes'];
-  echo cs_dropdown('servers_stats','name',$stats,$cs_servers['servers_stats']);
-
-  // Protokoll        
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['proto']. ' *';
-  echo cs_html_roco(2,'leftb');
+	$data['games'] = cs_sql_select(__FILE__,'games','games_name, games_id',0,0,0,0);
+	
+	$server_stats = array(
+    array('name' => $cs_lang['no'], 'value' => '2'),
+    array('name' => $cs_lang['yes'], 'value' => '1')
+	);
+	$run=0;
+	foreach($server_stats AS $stats) {
+		$selected = ($stats['value'] == $data['create']['servers_stats']) ? 'selected="selected"' : '';
+		$data['stats'][$run]['name'] = $stats['name'];
+		$data['stats'][$run]['value'] = $stats['value'];
+		$data['stats'][$run]['selected'] = $selected;
+		$run++;
+	}
 
   $server_array = array(
     array('name' => '(kein)', 'servers_class' => '1'),
@@ -191,73 +136,28 @@ echo cs_html_br(1);
     array('name' => 'Unreal Tournament 3', 'servers_class' => 'ut3'),      
     array('name' => 'Warsor', 'servers_class' => 'warsow')
   );
-
-  echo cs_html_select(1,'servers_class');
+  $run = 0;
   foreach($server_array AS $class) {
-    $select = $class['servers_class'] == $cs_servers['servers_class'] ? $select = 1 : $select = 0;
-    echo cs_html_option($class['name'],$class['servers_class'],$select);
+    $select = $class['servers_class'] == $data['create']['servers_class'] ? $select = 'selected="selected"' : $select = '';
+    $data['classes'][$run]['name'] = $class['name'];
+    $data['classes'][$run]['class'] = $class['servers_class'];
+    $data['classes'][$run]['select'] = $select;
+    $run++;
   }
-  echo cs_html_select(0);
-    
-  // Server Query Port
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['serverquerry']. ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('servers_query',$cs_servers['servers_query'],'text',200,10);
-  echo cs_html_roco(0);
 
-  // Server Sort Order
-  echo cs_html_roco(1,'headb',1,2);
-  echo $cs_lang['Erweiterter'] . ' - ' . $cs_lang['order']. ' *';
-  echo cs_html_roco(0);
-  echo cs_html_roco(0);
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['serverorder'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('servers_order',$cs_servers['servers_order'],'text',3,3);
-  echo cs_html_roco(0);
-
-  // Zusatz wenn Live off
-  echo cs_html_roco(1,'headb',1,2);
-  echo $cs_lang['Erweiterter'] . ' - ' . $cs_lang['liveoff'];
-
-  // Serverstype
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['type']. ' *';
-  echo cs_html_roco(2,'leftb');
-  $type[0]['servers_type'] = '3';
-  $type[0]['gtype'] = $cs_lang['voiceserver'];
-  $type[1]['servers_type'] = '2';
-  $type[1]['gtype'] = $cs_lang['pubserver'];
-  $type[2]['servers_type'] = '1';
-  $type[2]['gtype'] = $cs_lang['clanserver'];
-  echo cs_dropdown('servers_type','gtype',$type,$cs_servers['servers_type']);
-
-  // Server Info
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kedit') . $cs_lang['serverinfo'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_textarea('servers_info',$cs_servers['servers_info'],'75','5');
-  echo cs_html_roco(0);
-
-  // Server Slots
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kedit') . $cs_lang['slots'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('servers_slots',$cs_servers['servers_slots'],'text','4','5');
-  echo cs_html_roco(0);
-
-
-  // Options  
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('submit',$cs_lang['create'],'submit');
-  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form (0);
+  $servers_type = array(
+    array('gtype' => $cs_lang['clanserver'], 'type' => '1', 'selected' => ''),
+    array('gtype' => $cs_lang['pubserver'], 'type' => '2', 'selected' => ''),
+    array('gtype' => $cs_lang['voiceserver'], 'type' => '3', 'selected' => '')   
+  );
+  $run=0;
+  foreach($servers_type AS $type) {
+  	$selected = ($type['type'] == $data['create']['servers_type']) ? 'selected="selected"' : '';
+  	$data['typ'][$run]['name'] = $type['gtype'];
+  	$data['typ'][$run]['type'] = $type['type'];
+  	$data['typ'][$run]['selected'] = $selected;
+  	$run++; 
+  }
 
 } else {
 
@@ -272,5 +172,5 @@ echo cs_html_br(1);
   // Create Finish    
   cs_redirect($cs_lang['create_done'],'servers');
 }
-
+echo cs_subtemplate(__FILE__,$data,'servers','create');
 ?>
