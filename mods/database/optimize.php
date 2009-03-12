@@ -7,9 +7,10 @@ $cs_lang = cs_translate('database');
 $sql_content = '';
 $modules = cs_checkdirs('mods');
 $tables = 0;
+
 foreach($modules as $mod) {
 
-  if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha') AND !empty($mod['tables'][0])) {
+  if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha' OR $mod['dir'] == 'pictures') AND !empty($mod['tables'][0])) {
     foreach($mod['tables'] AS $table) {
       $tables++;
       $sql_content .= '{optimize} {pre}_' . $table . ";\n";
@@ -18,8 +19,6 @@ foreach($modules as $mod) {
 }
 $sql_content = substr($sql_content,0,-1);
 
-
-
 $data['action']['form'] = cs_url('database','import');
 
 $matches[1] = $tables;
@@ -27,4 +26,5 @@ $matches[2] = '<textarea name="text" cols="50" rows="12" id="text" class="form">
 $data['optimize']['clip'] = cs_abcode_clip($matches);
 
 echo cs_subtemplate(__FILE__,$data,'database','optimize');
+
 ?>
