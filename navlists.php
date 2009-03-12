@@ -20,9 +20,10 @@ $where = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receive
 $messages_count = cs_sql_count(__FILE__,'messages',$where);
 
 if (isset($_GET['debug'])) {
-  $cs_main['ajax_navlists'] .= ',func_sql,func_errors,';
+  if (substr($cs_main['ajax_navlists'],-1) != ',') $cs_main['ajax_navlists'] .= ',';
+	$cs_main['ajax_navlists'] .= 'func_sql,func_errors,';
 }
-
+echo $cs_main['ajax_navlists'];
 $ajaxes = explode(',',$cs_main['ajax_navlists']);
 array_pop($ajaxes);
 $string = str_replace(',','',$cs_main['ajax_navlists']);
