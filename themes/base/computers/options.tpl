@@ -8,8 +8,6 @@
 </table>
 <br />
 
-{head:getmsg}
-
 <form method="post" name="computers_options" action="{url:computers_options}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>

@@ -4,7 +4,8 @@
   </tr>
 </table>
 <br />
-<form method="post" name="count_options" action="{url:form}">
+
+<form method="post" name="count_options" action="{url:count_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" width="30%">{icon:kdvi} {lang:view}</td>
@@ -16,7 +17,7 @@
     </tr>
 </table>
 <br />
-{lang:getmsg}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
 	<td class="headb" colspan="2">{lang:amstats} - {lang:options}</td>
