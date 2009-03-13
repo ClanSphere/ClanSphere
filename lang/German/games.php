@@ -55,4 +55,11 @@ $cs_lang['too_big'] ='- Die Dateigr&ouml;&szlig;e ist zu gro&szlig;';
 
 $cs_lang['details'] = 'Details';
 
+// Options
+$cs_lang['max_width'] = 'Maximale Bildbreite';
+$cs_lang['max_height'] = 'Maximale Bildh&ouml;he';
+$cs_lang['max_size'] = 'Maximale Bildgr&ouml;&szlig;e';
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';
+
 ?>

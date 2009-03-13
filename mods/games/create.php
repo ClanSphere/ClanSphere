@@ -2,12 +2,11 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
+$files = cs_files();
 $cs_lang = cs_translate('games');
 require_once 'mods/categories/functions.php';
 
-$img_max['width'] = 30;
-$img_max['height'] = 30;
-$img_max['size'] = 15360;
+$options = cs_sql_option(__FILE__, 'games');
 $img_filetypes = array('image/gif' => 'gif');
 
 $games_error = 3; 
@@ -21,70 +20,59 @@ else {
   $games_release = $_POST['datum_year'] . '-' . $_POST['datum_month'] . '-' .   $_POST['datum_day'];
 }
 
-$symbol = '';
+$symbol = empty($_POST['symbol']) ? '' : $_POST['symbol'];
 $games_name = '';
 $games_version = '';
 $games_creator = '';
 $games_url = ''; 
 $categories_id = empty($_POST['categories_id']) ? 0 : $_POST['categories_id'];
-$games_usk = ''; 
+$games_usk = empty($_POST['games_usk']) ? '' : $_POST['games_usk'];
 $errormsg = '';
 
 
 if(!empty($_POST['games_name'])) {
   $games_name = $_POST['games_name'];
   $games_error--;
-}
-else {
+} else {
   $errormsg .= $cs_lang['name_error'] . cs_html_br(1);
-}  
-
-if(!empty($_POST['symbol'])) {
- $symbol = $_POST['symbol'];
 }
 
 if(!empty($_POST['games_version'])) {
- $games_version = $_POST['games_version'];
- $games_error--;
-}
-else {
-$errormsg .= $cs_lang['version_error'] . cs_html_br(1);
-}
-
-if(!empty($_POST['games_usk'])) {
- $games_usk = $_POST['games_usk'];
+  $games_version = $_POST['games_version'];
+  $games_error--;
+} else {
+  $errormsg .= $cs_lang['version_error'] . cs_html_br(1);
 }
 
 $categories_id = empty($_POST['categories_name']) ? $categories_id : cs_categories_create('games',$_POST['categories_name']);
 
 if(!empty($categories_id)) {
   $games_error--;
-}
-else {
+} else {
   $errormsg .= $cs_lang['cat_error'] . cs_html_br(1);
 }
 
-if(!empty($_FILES['symbol']['tmp_name'])) {
+if(!empty($files['symbol']['tmp_name'])) {
   $symbol_error = 1;
   foreach($img_filetypes AS $allowed => $new_ext) {
-    if($allowed == $_FILES['symbol']['type']) {
+    if($allowed == $files['symbol']['type']) {
       $symbol_error = 0;
       $extension = $new_ext;
     }
   }
-  $img_size = getimagesize($_FILES['symbol']['tmp_name']);
+  $img_size = getimagesize($files['symbol']['tmp_name']);
   
-  if($img_size[0]>$img_max['width']) {
+  if($img_size[0] > $options['max_width']) {
     $errormsg .= $cs_lang['too_wide'] . cs_html_br(1); 
     $symbol_error++;
   }
 
-  if($img_size[1]>$img_max['height']) { 
+  if($img_size[1] > $options['max_height']) { 
     $errormsg .= $cs_lang['too_high'] . cs_html_br(1);
     $symbol_error++;
   }
   
-  if($_FILES['symbol']['size']>$img_max['size']) {
+  if($files['symbol']['size'] > $options['max_size']) {
     $errormsg .= $cs_lang['too_big'] . cs_html_br(1); 
     $symbol_error++;
   }
@@ -98,12 +86,7 @@ if(!empty($_POST['games_url'])) {
   $games_url = $_POST['games_url'];
 }
 
-if(!isset($_POST['submit'])) {
-  $data['lang']['body'] = $cs_lang['body_create'];
-}
-else {
-  $data['lang']['body'] = $errormsg;
-}
+$data['lang']['body'] = !isset($_POST['submit']) ? $cs_lang['body_create'] : $errormsg;
 
 if(isset($_POST['submit'])) {
   if(empty($games_error)) {
@@ -114,11 +97,11 @@ if(isset($_POST['submit'])) {
     cs_sql_insert(__FILE__,'games',$games_cells,$games_save);
     
         
-    if(!empty($_FILES['symbol']['tmp_name']) AND $symbol_error == 0) {
+    if(!empty($files['symbol']['tmp_name']) AND $symbol_error == 0) {
       $where = "games_name = '" . cs_sql_escape($games_name) . "'";
       $getid = cs_sql_select(__FILE__,'games','games_id',$where);
       $filename = $getid['games_id'] . '.' . $extension;
-      cs_upload('games',$filename,$_FILES['symbol']['tmp_name']);
+      cs_upload('games',$filename,$files['symbol']['tmp_name']);
     }
   
   }  
@@ -153,9 +136,9 @@ if(!empty($games_form)) {
   foreach($img_filetypes AS $add => $value) {
     $return_types .= empty($return_types) ? $add : ', ' . $add;
   }
-  $matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
-  $matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
-  $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
+  $matches[2] = $cs_lang['max_width'] . ': ' . $options['max_width'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_height'] . ': ' . $options['max_height'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . ': ' . cs_filesize($options['max_size']) . cs_html_br(1);
   $matches[2] .= $cs_lang['filetypes'] . $return_types;
   $data['games']['clip'] = cs_abcode_clip($matches);
   

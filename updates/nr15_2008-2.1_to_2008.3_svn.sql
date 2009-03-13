@@ -9,6 +9,10 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_picture', '0');
 
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_width', '30');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_height', '30');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_size', '15360');
+
 CREATE TABLE {pre}_updates (
   updates_id {serial},
   updates_packet int(5) NOT NULL default '0',

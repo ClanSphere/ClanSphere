@@ -529,6 +529,7 @@ function cs_files() {
     $files[$key]['tmp_name'] = 'uploads/cache/' . $name;
     $files[$key]['name'] = $name;
     $files[$key]['size'] = @filesize($files[$key]['tmp_name']);
+    $files[$key]['type'] = mime_content_type($files[$key]['tmp_name']); // deprecated, but newer function is only for php > 5.3.0
   }
   
   return $files;
