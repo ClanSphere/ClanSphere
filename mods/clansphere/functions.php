@@ -8,7 +8,6 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
   $data = array('head' => $head);
 
   global $account;
-  
   if($account['users_view'] == 'list') {
     $options = array('info' => 0, 'size' => 16, 'lines' => 4, 'theme' => 'manage_list');
   }
@@ -20,6 +19,7 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
   $content = array_merge($merge, $mod_array);
   ksort($content);
 
+  $data['head']['total'] = 0;
   $run = 1;
   $loop = 0;
 
@@ -31,6 +31,7 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
       $cs_lap = cs_icon($mod['icon'],$options['size'],0,0);
       $data['content'][$loop]['img_link' . $run] = cs_link($cs_lap,$mod['dir'],$mod['file']);
       $data['content'][$loop]['txt_link' . $run] = cs_link($mod['name'],$mod['dir'],$mod['file']);
+      $data['head']['total']++;
       $run++;
       if($run == $options['lines']) {
         $run = 1;
