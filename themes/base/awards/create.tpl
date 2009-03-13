@@ -29,6 +29,7 @@
      <option value="0">----</option>{loop:squads}
      <option value="{squads:squads_id}"{squads:selection}>{squads:squads_name}</option>{stop:squads}
     </select>
+	 - <a href="{url:squad_create}">{lang:create}</a>
   </td>
  </tr>
 	<tr>

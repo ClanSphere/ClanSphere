@@ -29,6 +29,7 @@
 		<td class="leftc">{icon:kdmconfig} {lang:clan_label} *</td>
 		<td class="leftb">
 			{squads:clan_sel}
+			- <a href="{url:clans_create}">{lang:create}</a>
 		</td>
 	</tr>
 	<tr>
@@ -41,6 +42,7 @@
 				{stop:games}
 			</select>
 			{squads:games_img}
+			- <a href="{url:games_create}">{lang:create}</a>
 		</td>
 	</tr>
 	<tr>

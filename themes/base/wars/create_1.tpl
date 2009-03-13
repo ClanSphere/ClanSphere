@@ -18,6 +18,7 @@
      <option value="{games:games_id}"{games:selection}>{games:games_name}</option>{stop:games}
     </select>
     {img:game}
+	 - <a href="{url:games_create}">{lang:create}</a>
   </td>
  </tr>
  <tr>

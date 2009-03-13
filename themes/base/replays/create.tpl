@@ -26,6 +26,7 @@
 				{stop:games}
 			</select>
 			{replays:games_img}
+			- <a href="{url:games_create}">{lang:create}</a>
 		</td>
 	</tr>
 	<tr>

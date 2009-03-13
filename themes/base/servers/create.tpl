@@ -31,7 +31,7 @@
         {stop:games}
       </select>
       <img src="uploads/games/0.gif" id="game_1" alt="" />
-      <a href="#" onclick="window.open('http://localhost/?mod=games&action=create','Create_Game');">Spiel erstellen</a>
+      - <a href="{url:games_create}">{lang:create}</a>
     </td>
   </tr>  
   <tr>
