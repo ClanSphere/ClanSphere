@@ -18,8 +18,8 @@ $cs_events['events_cancel'] = 0;
 $cs_events['events_guestsmin'] = '';
 $cs_events['events_guestsmax'] = '';
 $cs_events['events_needage'] = '';
-$_POST['events_multix'] = '';
-$_POST['events_multi'] = '';
+$_POST['events_multix'] = empty($_POST['events_multix']) ? '' : $_POST['events_multix'];
+$_POST['events_multi']  = empty($_POST['events_multi'])  ? '' : $_POST['events_multi'];
 
 
 if(isset($_POST['submit'])) {
@@ -103,14 +103,18 @@ else {
 
   if($_POST['events_multi'] == 'yes') {
 
-    $first_mode = date('I', $cs_events['events_time']);
+    $mode = date('I', $cs_events['events_time']);
     for($run=0; $run < $_POST['events_multix']; $run++) {
 
       $cs_events['events_time'] = strtotime("+1 week",$cs_events['events_time']);
-      if(date('I', $cs_events['events_time']) > $first_mode)
-        $cs_events['events_time'] = $cs_events['events_time'] + 3600;
-      elseif(date('I', $cs_events['events_time']) < $first_mode)
+      if(date('I', $cs_events['events_time']) > $mode) {
         $cs_events['events_time'] = $cs_events['events_time'] - 3600;
+        $mode = 1;
+      }
+      elseif(date('I', $cs_events['events_time']) < $mode) {
+        $cs_events['events_time'] = $cs_events['events_time'] + 3600;
+        $mode = 0;
+      }
 
       $events_cells = array_keys($cs_events);
       $events_save = array_values($cs_events);
