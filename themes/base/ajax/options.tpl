@@ -30,7 +30,7 @@
     <tr>
       <td class="leftc">{icon:playlist} {lang:reloading_navlists}</td>
       <td class="leftb"><div id="ajax_navlists" style="{switch:ajax_on}">{loop:navlists}
-      <input type="checkbox" value="{navlists:raw}" name="navlists[]"{navlists:checked} /> {navlists:mod} - {navlists:action}<br />{stop:navlists}
+      <input type="checkbox" value="{navlists:raw}" name="navlists[]"{navlists:checked} /> {navlists:mod} / {navlists:action}{if:descr} - {navlists:description}{stop:descr}<br />{stop:navlists}
       <br />{lang:additionally}: <input type="text" name="additionals" value="{options:additionals}" size="30" />
       </div></td>
     </tr>

@@ -19,4 +19,15 @@ $cs_lang['seconds'] = 'Sekunden';
 $cs_lang['reloading_navlists'] = 'Aktualisierende Navlisten';
 $cs_lang['additionally'] = 'Zus&auml;tzlich';
 
+$cs_lang['d_messages_navmsgs'] = 'Anzahl der privaten Nachrichten (empfohlen).';
+$cs_lang['d_users_navlogin'] = 'Login Bereich (nicht empfohlen).';
+$cs_lang['d_wars_navnext'] = 'Anstehende Clanwars (nicht empfohlen)';
+$cs_lang['d_wars_navlist'] = 'Vergangene Clanwars (nicht empfohlen)';
+$cs_lang['d_votes_navlist'] = 'Umfrage (nicht empfohlen)';
+$cs_lang['d_count_navone'] = 'Online Besucher (empfohlen)';
+$cs_lang['d_count_navday'] = 'Besucher am laufenden Tag (Pr&auml;ferenz)';
+$cs_lang['d_count_navmon'] = 'Besucher im laufenden Monat (nicht empfohlen)';
+$cs_lang['d_count_navusr'] = 'Registrierte Benutzer (nicht empfohlen)';
+$cs_lang['d_count_navall'] = 'Besucher insgesamt (nicht empfohlen)';
+
 ?>

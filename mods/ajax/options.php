@@ -65,15 +65,31 @@ $template = file_get_contents('templates/' . $cs_main['template'] . '/index.htm'
 $template = str_replace('{url:','',$template);
 preg_match_all("={(?!func)(.*?):(?!navmeta)(.*?)(:(.*?))*}=i",$template,$matches);
 
+$possibles = array('messages_navmsgs');
+
 $count_matches = count($matches[0]);
-$checked = ' checked="checked"';
 
 for ($i = 0; $i < $count_matches; $i++) {
-  $data['navlists'][$i]['raw'] = str_replace(':','_',substr($matches[0][$i],1,-1));
-  $data['navlists'][$i]['mod'] = strtoupper($matches[1][$i]{0}) . substr($matches[1][$i],1);
-  $data['navlists'][$i]['action'] = strtoupper($matches[2][$i]{0}) . substr($matches[2][$i],1);
-  $data['navlists'][$i]['checked'] = in_array($data['navlists'][$i]['raw'],$data['ajax_navlists']) ? $checked : '';
-  $leftovers = str_replace($data['navlists'][$i]['raw'] . ',','',$leftovers);
+	$possibles[] = str_replace(':','_',substr($matches[0][$i],1,-1));
+}
+
+$checked = ' checked="checked"';
+$count_possibles = count($possibles);
+
+for ($i = 0; $i < $count_possibles; $i++) {
+  $data['navlists'][$i]['raw'] = $possibles[$i];
+  $division = strpos($possibles[$i],'_');
+  $data['navlists'][$i]['mod'] = strtoupper($possibles[$i]{0}) . substr($possibles[$i],1, $division-1);
+  $data['navlists'][$i]['action'] = strtoupper(substr($possibles[$i],$division+1,1)) . substr($possibles[$i],$division+2);
+  $data['navlists'][$i]['checked'] = in_array($possibles[$i],$data['ajax_navlists']) ? $checked : '';
+  
+  if (!empty($cs_lang['d_'.$possibles[$i]])) {
+  	$data['navlists'][$i]['if']['descr'] = true;
+  	$data['navlists'][$i]['description'] = $cs_lang['d_'.$possibles[$i]];
+  } else
+    $data['navlists'][$i]['if']['descr'] = false;
+  
+  $leftovers = str_replace($possibles[$i] . ',','',$leftovers);
 }
 
 if (substr($leftovers,-1) == ',') $leftovers = substr($leftovers,0,-1);
