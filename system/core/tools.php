@@ -47,13 +47,6 @@ function cs_addons($modul,$action,$id,$modul_now) {
   return $var;
 }
 
-if(!function_exists('str_ireplace')) {
-  function str_ireplace ($search, $replace, $subject) {
-    $search = preg_quote($search, "/");
-    return preg_replace("/".$search."/i", $replace, $subject);
-  }
-}
-
 function cs_captchacheck($input, $mini = 0) {
 
   if(!extension_loaded('gd'))
@@ -124,13 +117,6 @@ function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
     return $var;
 }
 
-function cs_datereal($mode,$time = 0) {
-
-  $time = empty($time) ? cs_time() : $time;
-    $time = cs_timediff($time);
-  return date($mode,$time);
-}
-
 function cs_datepost($name,$mode) {
 
   $var = 0;
@@ -147,6 +133,13 @@ function cs_datepost($name,$mode) {
     }
   }
   return $var;
+}
+
+function cs_datereal($mode,$time = 0) {
+
+  $time = empty($time) ? cs_time() : $time;
+    $time = cs_timediff($time);
+  return date($mode,$time);
 }
 
 function cs_dateselect($name,$mode,$data,$year_start = 0) {
@@ -237,11 +230,31 @@ function cs_dropdownsel($data, $id, $index) {
   return $data;
 }
 
+function cs_files() {
+  
+  global $account, $cs_main;
+  
+  if (!empty($_FILES) || $cs_main['php_self']['basename'] != 'content.php' || empty($account['users_ajax']) || empty($_SESSION['ajaxuploads']) || (!empty($_SESSION['ajaxuploads']) && empty($_POST))) {
+    cs_ajaxfiles_clear();
+    return $_FILES;
+  }
+  
+  $files = array();
+  foreach ($_SESSION['ajaxuploads'] as $key => $name) {
+    $files[$key]['tmp_name'] = 'uploads/cache/' . $name;
+    $files[$key]['name'] = $name;
+    $files[$key]['size'] = @filesize($files[$key]['tmp_name']);
+    $files[$key]['type'] = mime_content_type($files[$key]['tmp_name']); // deprecated, but newer function is only for php > 5.3.0
+  }
+  
+  return $files;
+}
+
 function cs_filesize($size, $float = 2) {
 
   $name = array(0 => 'Byte', 1 => 'KiB', 2 => 'MiB', 3 => 'GiB', 4 => 'TiB');
   $digits = 0;
- while($size >= 1024 AND $digits < 4) {
+  while($size >= 1024 AND $digits < 4) {
     $size = $size / 1024;
     $digits++;
   }
@@ -293,7 +306,7 @@ function cs_mail($email,$title,$message,$from = 0,$type = 0) {
 }
 
 // Sends a private message
-function cs_message($users_id=0, $messages_subject, $messages_text, $users_id_to) {
+function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_to) {
 
   $messages_cells = array(  'users_id',
                             'messages_time',
@@ -325,6 +338,7 @@ function cs_notifications($notification_name = '', $users_id = 0) {
 function cs_notify($email='', $title='', $message='', $users_id=0, $notification_name = '', $type = 1) {
   $type = empty($notification_name) ? $type : cs_notifications($notification_name, $users_id);
   switch($type) {
+
     // No notification
     case 0:
       return;
@@ -450,7 +464,7 @@ function cs_translate($mod = '') {
 
   global $account, $cs_main, $cs_lang, $cs_lang_main;
 
-   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
+  $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
 
   if(empty($mod)) {
      include 'lang/'.$lang.'/system/main.php';
@@ -512,27 +526,6 @@ function cs_ajaxfiles_clear() {
     }
     unset($_SESSION['ajaxuploads']);
   }
-}
-
-function cs_files() {
-  
-  global $cs_main;
-  global $account;
-  
-  if (!empty($_FILES) || $cs_main['php_self']['basename'] != 'content.php' || empty($account['users_ajax']) || empty($_SESSION['ajaxuploads']) || (!empty($_SESSION['ajaxuploads']) && empty($_POST))) {
-    cs_ajaxfiles_clear();
-    return $_FILES;
-  }
-  
-  $files = array();
-  foreach ($_SESSION['ajaxuploads'] as $key => $name) {
-    $files[$key]['tmp_name'] = 'uploads/cache/' . $name;
-    $files[$key]['name'] = $name;
-    $files[$key]['size'] = @filesize($files[$key]['tmp_name']);
-    $files[$key]['type'] = mime_content_type($files[$key]['tmp_name']); // deprecated, but newer function is only for php > 5.3.0
-  }
-  
-  return $files;
 }
 
 function cs_url($mod, $action = 'list', $more = 0, $base = 0) {
