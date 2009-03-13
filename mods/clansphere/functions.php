@@ -1,6 +1,7 @@
 <?php
 
 function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head = array()) {
+
   $merge = is_array($merge) ? $merge : array();
   $show = $mod . '/' . $action;
   if (empty($head['message'])) $head['message'] = '';
@@ -12,7 +13,7 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
     $options = array('info' => 0, 'size' => 16, 'lines' => 4, 'theme' => 'manage_list');
   }
   else {
-    $options = array('info' => 0, 'size' => 48, 'lines' => 5, 'theme' => 'manage');
+    $options = array('info' => 0, 'size' => 48, 'lines' => 2, 'theme' => 'manage');
   }
 
   $mod_array = cs_checkdirs('mods', $show);
@@ -48,7 +49,9 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
 
   return cs_subtemplate(__FILE__,$data,'clansphere',$options['theme']);  
 }
+
 function cs_cspnews($id = 0, $all = 0) {
+
   global $cs_lang;
   $cs_lang = cs_translate('clansphere');
   $data['if']['one'] = false;
@@ -95,4 +98,5 @@ function cs_cspnews($id = 0, $all = 0) {
     }
   }
 }
+
 ?>

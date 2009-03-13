@@ -153,3 +153,13 @@ input, textarea, select {
   background-color:#FFFFFF;
   color:inherit;
 }
+
+/*Manage*/
+.manage {
+  border: 1px dotted;
+  float:left;
+  margin: 6px;
+  overflow: auto;
+  padding:8px 0px 10px 0px;
+  width:100px;
+}
