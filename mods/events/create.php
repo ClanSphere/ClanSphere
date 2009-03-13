@@ -99,12 +99,20 @@ else {
 
   $events_cells = array_keys($cs_events);
   $events_save = array_values($cs_events);
- cs_sql_insert(__FILE__,'events',$events_cells,$events_save);
-  
-  if($_POST['events_multi']=='yes') {
-    for($run=0; $run<$_POST['events_multix']; $run++) {
-    $cs_events['events_time'] = strtotime("+1 week",$cs_events['events_time']);
-    $events_cells = array_keys($cs_events);
+  cs_sql_insert(__FILE__,'events',$events_cells,$events_save);
+
+  if($_POST['events_multi'] == 'yes') {
+
+    $first_mode = date('I', $cs_events['events_time']);
+    for($run=0; $run < $_POST['events_multix']; $run++) {
+
+      $cs_events['events_time'] = strtotime("+1 week",$cs_events['events_time']);
+      if(date('I', $cs_events['events_time']) > $first_mode)
+        $cs_events['events_time'] = $cs_events['events_time'] + 3600;
+      elseif(date('I', $cs_events['events_time']) < $first_mode)
+        $cs_events['events_time'] = $cs_events['events_time'] - 3600;
+
+      $events_cells = array_keys($cs_events);
       $events_save = array_values($cs_events);
       cs_sql_insert(__FILE__,'events',$events_cells,$events_save);
     }
