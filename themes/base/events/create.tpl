@@ -69,12 +69,10 @@
 				<option value="no" {check:multi_no} >{lang:no}</option>
 				<option value="yes" {check:multi_yes} >{lang:yes}</option>
 			</select>
-			{lang:multi_info}
+			{lang:multi_info}<br /><br />
+      {lang:multix} * 
+      <input type="text" name="events_multix" value="{data:events_multix}" maxlength="2" size="3" />
 		</td>
-	</tr>
-	<tr>
-		<td class="leftc">{icon:7days} {lang:multix} *</td>
-		<td class="leftb"><input type="text" name="events_multix" value="{data:events_multix}" maxlength="2" size="3" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:configure} {lang:more}</td>
