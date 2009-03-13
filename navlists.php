@@ -1,19 +1,17 @@
 <?php
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
-/*
-# Overwrite global settings by using the following array
-$cs_main = array('init_sql' => false, 'init_tpl' => false);
 
-require_once 'system/core/functions.php';
+if (strpos($_SERVER['PHP_SELF'], 'content.php') === false) {
+  
+  $cs_main = array('init_sql' => true, 'init_tpl' => false);
 
-cs_init($cs_main);
+  require_once 'system/core/functions.php';
 
+  cs_init($cs_main);
+  
+}
 
-global $cs_logs, $cs_main, $account;
-
-$cs_main['show'] = '';
-*/
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
 if (isset($_GET['debug'])) {
