@@ -3,6 +3,7 @@ body {
   padding: 10px 10px 0 10px;
   font-size: 12px;
 }
+
 .clearfix:after {
   content: "."; 
   display: block; 
@@ -21,21 +22,23 @@ a {
 a:hover {
   text-decoration: none;
 }
-#head, #debug {
+
+#head, #debug, #bottom {
   width: 100%;
   background-color: #FFFFFF;
   border: 1px solid #888888;
-  height: 100px;
-  padding: 10px 0 0 0;
+  padding: 5px;
   color: #757575;
   font-family: Tahoma;
 }
 #head {
+  height: 100px;
   font-size: 60px;
   letter-spacing: 5px;
   text-align: center;
 }
 #debug {
+  height: 100px;
   overflow: auto;
   font-size: 10px;
 }
@@ -47,6 +50,11 @@ a:hover {
   font-family: Tahoma;
   letter-spacing: 1px;
 }
+#bottom {
+  clear: both;
+  margin-top: 10px;
+  text-align: center;
+}
 #errors {
   color:#DD3300;
 }
@@ -56,6 +64,7 @@ a:hover {
 #nav-left {
   float: left;
   width: 16%;
+  margin-bottom: 20px;
 }
 #nav-left a {
   border-right: 1px solid #888888;
@@ -85,6 +94,7 @@ a:hover {
 #content {
   float: left;
   width:64%;
+  margin-bottom: 20px;
   margin-top: 20px;
   font-size: 12px;
   font-family: Tahoma;
@@ -92,6 +102,7 @@ a:hover {
 }
 #nav-right {
   float: right;
+  margin-bottom: 20px;
   width: 20%;
 }
 .navbody { 
@@ -121,6 +132,7 @@ a:hover {
 #counter span {
   float: right;
 }
+
 #ajax_loading {
   position:absolute;
   top:20px;
