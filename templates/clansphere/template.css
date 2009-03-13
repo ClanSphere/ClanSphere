@@ -42,6 +42,9 @@ a:hover {
   overflow: auto;
   font-size: 10px;
 }
+#debug:active {
+  height: 100%;
+}
 #head span {
   color: #B91F1D;
 }
@@ -132,7 +135,6 @@ a:hover {
 #counter span {
   float: right;
 }
-
 #ajax_loading {
   position:absolute;
   top:20px;
