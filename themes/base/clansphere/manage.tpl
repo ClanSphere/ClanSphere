@@ -15,7 +15,7 @@
     <td class="centerc">
       <div style="text-align:center">
         {loop:content}
-        <div class="manage">
+        <div class="manage" style="float:left; width:100px">
         {content:img_link1}<br />{content:txt_link1}
         </div>
        {stop:content}
