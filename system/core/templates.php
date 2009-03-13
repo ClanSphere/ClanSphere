@@ -327,23 +327,23 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
+    $logsql = '';
     if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
       $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
       $cs_logs['errors'] = nl2br($cs_logs['errors']);
-      $cs_logs['sql'] = nl2br(htmlspecialchars($cs_logs['sql'], ENT_QUOTES));
+      foreach($cs_logs['sql'] AS $sql_file => $sql_queries)
+        $logsql .= cs_html_big(1) . $sql_file . cs_html_big(0) . cs_html_br(1) . nl2br($sql_queries);
     }
     else {
       $cs_logs['php_errors'] = '';
       $cs_logs['errors'] = 'Developer mode is turned off';
-      $cs_logs['sql'] = '';
     }
     $cs_temp_get = str_replace('{func:errors}', $cs_logs['php_errors'] . $cs_logs['errors'], $cs_temp_get);
-    $cs_temp_get = str_replace('{func:sql}', $cs_logs['sql'], $cs_temp_get);
+    $cs_temp_get = str_replace('{func:sql}', $logsql, $cs_temp_get);
     $getparse = cs_parsetime($cs_micro);
     $cs_temp_get = str_replace('{func:parse}', $getparse, $cs_temp_get);
     $getmemory = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
     $cs_temp_get = str_replace('{func:memory}', $getmemory, $cs_temp_get);
-
     return $cs_temp_get;
 }
 

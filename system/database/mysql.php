@@ -29,7 +29,7 @@ function cs_sql_count($cs_file, $sql_table, $sql_where = 0, $distinct = 0)
   }
   $sql_result = mysql_fetch_row($sql_data);
   mysql_free_result($sql_data);
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   return $sql_result[0];
 }
 
@@ -43,7 +43,7 @@ function cs_sql_delete($cs_file, $sql_table, $sql_id, $sql_field = 0)
   $sql_delete = 'DELETE FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_delete .= ' WHERE ' . $sql_field . ' = ' . $sql_id;
   mysql_query($sql_delete, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_delete', mysql_error($cs_db['con']));
-  cs_log_sql($sql_delete, 1);
+  cs_log_sql($cs_file, $sql_delete, 1);
 }
 
 function cs_sql_escape($string)
@@ -74,7 +74,7 @@ function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content)
   
   $sql_insert = 'INSERT INTO ' . $cs_db['prefix'] . '_' . $sql_table . $set;
   mysql_query($sql_insert, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_insert', mysql_error($cs_db['con']));
-  cs_log_sql($sql_insert);
+  cs_log_sql($cs_file, $sql_insert);
 }
 
 function cs_sql_insertid($cs_file)
@@ -107,7 +107,7 @@ function cs_sql_option($cs_file, $mod)
         $new_result[$name] = $sql_result['options_value'];
       }
       mysql_free_result($sql_data);
-      cs_log_sql($sql_query);
+      cs_log_sql($cs_file, $sql_query);
       $options[$mod] = isset($new_result) ? $new_result : 0;
       
       $string = implode("\r\n", array_keys($options[$mod]));
@@ -145,7 +145,7 @@ function cs_sql_query($cs_file, $sql_query)
     cs_error_sql($cs_file, 'cs_sql_query', mysql_error($cs_db['con']));
     $result = 0;
   }
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   return $result;
 }
 
@@ -182,7 +182,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
     }
   }
   mysql_free_result($sql_data);
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   if (!empty($new_result)) {
     return $new_result;
   }
@@ -215,7 +215,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
     if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
       $action = 0;
     }
-    cs_log_sql($sql_update, $action);
+    cs_log_sql($cs_file, $sql_update, $action);
     if($sql_table == 'options') {
       $content = cs_paths('uploads/cache');
       unset($content['index.html']);
@@ -239,7 +239,7 @@ function cs_sql_version($cs_file)
     $sql_infos['names'][] .= $row['Name'];
   }
   mysql_free_result($sql_data);
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
 
   $sql_infos['encoding'] = mysql_client_encoding();
   $sql_infos['type'] = 'MySQL (mysql)';

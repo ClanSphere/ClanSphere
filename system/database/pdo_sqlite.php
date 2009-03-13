@@ -43,7 +43,7 @@ function cs_sql_version($cs_file) {
         cs_error_sql($cs_file, 'cs_sql_count', $error[2]);
         $sql_infos['tables'] = 0;
     }
-    cs_log_sql($sql_query);
+    cs_log_sql($cs_file, $sql_query);
   return $sql_infos;
 }
 

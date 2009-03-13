@@ -169,11 +169,11 @@ function cs_log($target,$content) {
   }
 }
 
-function cs_log_sql($sql,$action = 0) {
+function cs_log_sql($file, $sql, $action = 0) {
 
   global $cs_logs, $account;
   $cs_logs['queries']++;
-  $cs_logs['sql'] .= $sql . "\n";
+  $cs_logs['sql'][$file] = isset($cs_logs['sql'][$file]) ? $cs_logs['sql'][$file] . $sql . "\n" : $sql . "\n";
 
   if(!empty($action) AND !empty($cs_logs['save_actions'])) {
     $log = 'USERS_ID ' . $account['users_id'] . "\n" . $sql . "\n";

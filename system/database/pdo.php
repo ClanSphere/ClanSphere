@@ -22,7 +22,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
     cs_error_sql($cs_file, 'cs_sql_count', $error[2]);
     $result = 0;
   }
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   return $result;
 }
 
@@ -39,7 +39,7 @@ function cs_sql_delete($cs_file,$sql_table,$sql_id,$sql_field = 0) {
     $error = $cs_db['con']->errorInfo();
     cs_error_sql($cs_file, 'cs_sql_delete', $error[2]);
   }
-  cs_log_sql($sql_delete,1);
+  cs_log_sql($cs_file, $sql_delete,1);
 }
 
 function cs_sql_escape($string) {
@@ -70,7 +70,7 @@ function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
     $error = $cs_db['con']->errorInfo();
     cs_error_sql($cs_file, 'cs_sql_insert', $error[2]);
   }
-  cs_log_sql($sql_insert,1);
+  cs_log_sql($cs_file, $sql_insert,1);
 }
 
 function cs_sql_insertid($cs_file) {
@@ -78,7 +78,7 @@ function cs_sql_insertid($cs_file) {
   global $cs_db;
   if($cs_db['type'] == 'pdo_pgsql') {
     $sql_query = 'SELECT LASTVAL()';
-    cs_log_sql($sql_query);
+    cs_log_sql($cs_file, $sql_query);
     if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
       $sql_result = $sql_data->fetch();
       $sql_data = NULL;
@@ -116,7 +116,7 @@ function cs_sql_option($cs_file,$mod) {
       $error = $cs_db['con']->errorInfo();
       cs_error_sql($cs_file, 'cs_sql_option', $error[2], 1);
     }
-    cs_log_sql($sql_query);
+    cs_log_sql($cs_file, $sql_query);
     $options[$mod] = isset($new_result) ? $new_result : 0;
   }
   if(!empty($options[$mod])) {
@@ -136,7 +136,7 @@ function cs_sql_query($cs_file,$sql_query) {
     cs_error_sql($cs_file, 'cs_sql_query', $error[2]);
     $result = 0;
   }
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   return $result;
 }
 
@@ -161,7 +161,7 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
     $sql_query .= ' LIMIT ' . $limit;
   }
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   if($sql_data = $cs_db['con']->query($sql_query)) {
     $new_result = $max == 1 ? $sql_data->fetch(PDO::FETCH_ASSOC) : $sql_data->fetchAll(PDO::FETCH_ASSOC);
     $sql_data = NULL;
@@ -199,7 +199,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
     $error = $cs_db['con']->errorInfo();
     cs_error_sql($cs_file, 'cs_sql_update', $error[2]);
   }
-  cs_log_sql($sql_update,$action);
+  cs_log_sql($cs_file, $sql_update,$action);
 }
 
 function cs_sql_error() {

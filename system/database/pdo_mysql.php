@@ -40,7 +40,7 @@ function cs_sql_version($cs_file) {
     $error = $cs_db['con']->errorInfo();
     cs_error_sql($cs_file, 'cs_sql_version', $error[2]);
   }
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
 
   $sql_infos['type'] = 'MySQL (pdo_mysql)';
   $sql_infos['host'] = $cs_db['con']->getAttribute(PDO::ATTR_CONNECTION_STATUS);

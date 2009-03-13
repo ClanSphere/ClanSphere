@@ -28,7 +28,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
   }
   $sql_result = mysqli_fetch_row($sql_data);
   mysqli_free_result($sql_data);
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   return $sql_result[0];
 }
 
@@ -43,7 +43,7 @@ function cs_sql_delete($cs_file,$sql_table,$sql_id,$sql_field = 0) {
   $sql_delete .= ' WHERE ' . $sql_field . ' = ' . $sql_id;
   mysqli_query($cs_db['con'], $sql_delete) OR 
     cs_error_sql($cs_file, 'cs_sql_delete', mysqli_error($cs_db['con']));
-  cs_log_sql($sql_delete,1);
+  cs_log_sql($cs_file, $sql_delete,1);
 }
 
 function cs_sql_escape($string) {
@@ -71,7 +71,7 @@ function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
   $sql_insert = 'INSERT INTO ' . $cs_db['prefix'] . '_' . $sql_table . $set;
   mysqli_query($cs_db['con'], $sql_insert) OR 
     cs_error_sql($cs_file, 'cs_sql_insert', mysqli_error($cs_db['con']));
-  cs_log_sql($sql_insert);
+  cs_log_sql($cs_file, $sql_insert);
 }
 
 function cs_sql_insertid($cs_file) {
@@ -96,7 +96,7 @@ function cs_sql_option($cs_file,$mod) {
       $new_result[$name] = $sql_result['options_value'];
     }
     mysqli_free_result($sql_data);
-    cs_log_sql($sql_query);
+    cs_log_sql($cs_file, $sql_query);
     $options[$mod] = isset($new_result) ? $new_result : 0;
   }
   if(!empty($options[$mod])) {
@@ -115,7 +115,7 @@ function cs_sql_query($cs_file,$sql_query) {
     cs_error_sql($cs_file, 'cs_sql_query', mysqli_error($cs_db['con']));
     $result = 0;
   }
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   return $result;
 }
 
@@ -153,7 +153,7 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
     }
   }
   mysqli_free_result($sql_data);
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
   if(!empty($new_result)) {
     return $new_result;
   }
@@ -185,7 +185,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
   if($sql_cells[0] == 'users_laston' OR $sql_table == 'count') {
     $action = 0;
   }
-  cs_log_sql($sql_update,$action);
+  cs_log_sql($cs_file, $sql_update,$action);
 }
 
 function cs_sql_version($cs_file) {
@@ -202,7 +202,7 @@ function cs_sql_version($cs_file) {
     $sql_infos['names'][] .= $row['Name'];
   }
   mysqli_free_result($sql_data);
-  cs_log_sql($sql_query);
+  cs_log_sql($cs_file, $sql_query);
 
   $sql_infos['encoding'] = mysqli_character_set_name($cs_db['con']);
   $sql_infos['type'] = 'MySQL (mysqli)';
