@@ -292,8 +292,11 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
       $cs_temp_get = str_replace('<body>', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')">', $cs_temp_get);
       $content = strpos($cs_temp_get,'id="content"') === false ? '<div id="content"></div>' : '';
-      
       $ajaxes = explode(',',$cs_main['ajax_navlists']);
+      if (!empty($cs_main['debug'])) {
+        $ajaxes[] = 'func_parse';
+        $ajaxes[] = 'func_queries';
+       }
       if (!empty($ajaxes)) {
         if (strpos($cs_temp_get,'id="cs_users_navlogin"') === false)
           $cs_temp_get = str_replace(array('{users:navlogin}','{users:navlogin2}','{users:navlogin}3','{users:navlogin4}'),array('<div id="cs_users_navlogin">{users:navlogin}</div>','<div id="cs_users_navlogin2">{users:navlogin2}</div>','<div id="cs_users_navlogin3">{users:navlogin3}</div>','<div id="cs_users_navlogin4">{users:navlogin4}</div>'),$cs_temp_get);

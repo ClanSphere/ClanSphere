@@ -13,7 +13,7 @@ if (empty($account['access_ajax'])) die('No access on AJAX');
 
 if (isset($_GET['debug'])) {
   if (substr($cs_main['ajax_navlists'],-1) != ',') $cs_main['ajax_navlists'] .= ',';
-	$cs_main['ajax_navlists'] .= 'func_sql,func_errors,';
+	$cs_main['ajax_navlists'] .= 'func_sql,func_errors,func_queries,func_parse,';
 }
 
 $ajaxes = explode(',',$cs_main['ajax_navlists']);
@@ -35,7 +35,7 @@ if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
 
 if (!empty($string)) {
   $temp = '';
-  $specials = array('func_parse' => 'cs_parsetime($cs_micro)', 'func_queries' => '2', 'func_sql' => '\'' . $logsql . '\'',
+  $specials = array('func_parse' => 'cs_parsetime($cs_micro)', 'func_queries' => '\''.$cs_logs['queries'].'\'', 'func_sql' => '\'' . $logsql . '\'',
     'func_errors' => '\'' . $cs_logs["php_errors"] . $cs_logs["errors"] . '\'');
   $special_names = array('func_errors' => 'errors', 'func_sql' => 'sql');
   
