@@ -156,11 +156,11 @@ input, textarea, select {
 
 /*Manage*/
 .manage {
-  background-color:#F8F8F8;
+  background-color: #F8F8F8;
   border: 1px dotted;
-  margin: 6px;
+  margin: 5px;
   overflow: auto;
-  padding:8px 0px 10px 0px;
+  padding: 5px 0px 0px 0px;
 }
 .manage:hover {
   background-color:#E2E2E2;
