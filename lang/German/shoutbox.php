@@ -25,7 +25,6 @@ $cs_lang['max_text']         = 'Max. Text L&auml;nge';
 $cs_lang['figures']          = 'Zeichen';
 
 $cs_lang['ip']               = 'IP';
-
 $cs_lang['extended']         = 'Erweitert';
 $cs_lang['refresh']          = 'Datum aktualisieren';
 
@@ -45,4 +44,5 @@ $cs_lang['remove_selection']       = 'Markierung aufheben';
 $cs_lang['really_remove_selected'] = 'Sollen die gew&auml;hlten Datens&auml;tze wirklich entfernt werden?';
 $cs_lang['no_selection']        = 'Keine Markierung gew&auml;hlt.';
 $cs_lang['select_all']          = 'Alle markieren';
+
 ?>

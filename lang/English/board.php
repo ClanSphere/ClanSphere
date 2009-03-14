@@ -382,7 +382,7 @@ $cs_lang['file_del'] = 'File will be deleted!';
 $cs_lang['thread_remove_errortext'] = 'The thread you want to delete does not exist or is undeletable for you';
 
 //users.php
-$cs_lang['head_users']    = 'User';
+$cs_lang['users']    = 'User';
 $cs_lang['body_users']    = 'Boardstatistics of %s';
 $cs_lang['posts_per_day'] = ' Posts/Day';
 

@@ -24,7 +24,6 @@ $cs_lang['max_text']          = 'Maximum Text length';
 $cs_lang['figures']          = 'Characters';
 
 $cs_lang['ip']             = 'IP';
-
 $cs_lang['extended']          = 'Extended';
 $cs_lang['refresh']           = 'Refresh date';
 
@@ -38,11 +37,11 @@ $cs_lang['display_limit']        = 'Display Limit';
 $cs_lang['entries']          = 'Character';
 $cs_lang['linebreak']          = 'Linebreak';
 $cs_lang['after']            = 'after';
-$cs_lang['entries2']          = 'Character';
 
 $cs_lang['delete_selected']        = 'Delete selected entry';
 $cs_lang['remove_selection']      = 'Remove selection';
 $cs_lang['really_remove_selected'] = 'Realy remove selected entries?';
 $cs_lang['no_selection']        = 'No selection.';
 $cs_lang['select_all']          = 'Select all';
+
 ?>

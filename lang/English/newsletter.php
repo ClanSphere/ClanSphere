@@ -14,7 +14,7 @@ $cs_lang['from'] = 'From';
 $cs_lang['text'] = 'Text';
 
 $cs_lang['new_newsletter'] = 'New Newsletter';
-$cs_lang['sucessfull'] = '%s Mails were sent.';
+$cs_lang['successfull'] = '%s Mails were sent.';
 
 #errors
 $cs_lang['require'] = 'Please fill out all * marked fields';
