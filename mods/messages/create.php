@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
+
 // cs_notify($email='', $title='title', $message='test', $users_id=1, $notification_name = 'notifications_pm');
 $cs_lang = cs_translate('messages');
 require_once('mods/messages/functions.php');
@@ -81,7 +82,7 @@ if (!empty($_POST['messages_subject'])) {
   $_POST['messages_subject'] = preg_replace("=\<script\>(.*?)\</script\>=si","",$_POST['messages_subject']);
 }
 if (!empty($_POST['messages_subject'])) {
-	$messages_subject = $_POST['messages_subject'];
+  $messages_subject = $_POST['messages_subject'];
 } else {
   $messages_error++;
   $errormsg .= $cs_lang['error_subject'] . cs_html_br(1);
@@ -121,17 +122,28 @@ if (isset($_POST['submit']) && empty($messages_error)) {
       $messages_save = array($users_id_to,$time,$auto_subject,$auto_text,$users_id,'1');
       cs_sql_insert(__FILE__,'messages',$messages_cells,$messages_save);
     }
-    if(!empty($autoresponder['autoresponder_mail']))
-    {
-      echo $cs_messages[$run]['users_email'];
-      if(!empty($cs_messages[$run]['users_email']))
-      {
-        $email = $cs_messages[$run]['users_email'];
-        $title = $cs_lang['mail_titel'];
-        $message = $cs_lang['mail_text'] . $cs_messages[$run]['users_nick'];
-        $message .= $cs_lang['mail_text_2'] . $cs_main['def_title'] . $cs_lang['mail_text_3'];
-        $message .= $cs_main['def_org'] . $cs_lang['mail_text_4'];
-        cs_mail($email,$title,$message);
+    if(!empty($autoresponder['autoresponder_mail']) && !empty($cs_messages[$run]['users_email'])) {
+      
+    	$lang = cs_sql_select(__FILE__, 'users', 'users_lang', 'users_id = "' . $users_id_to . '"');
+    	
+    	if ($lang['users_lang'] != $account['users_lang']) {
+    		$lang_save = $account['users_lang'];
+    		$account['users_lang'] = $lang['users_lang'];
+    		$cs_lang_save = $cs_lang;
+    		$cs_lang = cs_translate('messages');
+    	}
+    	
+      $email = $cs_messages[$run]['users_email'];
+      $title = $cs_lang['mail_titel'];
+      $message = $cs_lang['mail_text'] . $cs_messages[$run]['users_nick'];
+      $message .= $cs_lang['mail_text_2'] . $cs_main['def_title'] . $cs_lang['mail_text_3'];
+      $message .= $cs_main['def_org'] . $cs_lang['mail_text_4'];
+      
+      cs_mail($email,$title,$message);
+      
+      if (!empty($lang_save)) {
+      	$cs_lang = $cs_lang_save;
+      	$account['users_lang'] = $lang_save;
       }
     }
   }
@@ -153,7 +165,7 @@ if (isset($_POST['preview']) && empty($messages_error))
   $data['var']['date'] = cs_date('unix',$time,1);
   $data['to'] = $cs_messages;
   $data['var']['text'] = cs_secure($_POST['messages_text'],1,1);
-	
+  
 }
 
 $data['msg']['to'] = $messages_to;
