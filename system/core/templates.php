@@ -323,16 +323,13 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
-    $data = array('sql');
+    $logsql = '';
     if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
       $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
       $cs_logs['errors'] = nl2br($cs_logs['errors']);
-      
-      $run = 0;
       foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
-        $data['sql'][$run]['file'] = $sql_file;
-        $data['sql'][$run]['queries'] = nl2br($sql_queries);
-        $run++;
+        $logsql .= cs_html_big(1) . $sql_file . cs_html_big(0) . cs_html_br(1);
+        $logsql .= nl2br($sql_queries);
       }
     }
     else {
@@ -341,9 +338,10 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     }
 
     if (!empty($cs_main['debug'])) {
+        $data = array('data');
+        $data['data']['log_sql'] = $logsql;
         $data['data']['php_errors'] = $cs_logs['php_errors'];
         $data['data']['csp_errors'] = $cs_logs['errors'];
-        $data['sql'][0] = empty($data['sql'][0]) ? array('file' => '&nbsp;', 'queries' => '&nbsp;') : $data['sql'][0];
         $script = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
         $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
     }

@@ -3,8 +3,6 @@
     {data:php_errors}{data:csp_errors}
   </span>
   <span id="sql">
-    {loop:sql}
-    <strong>{sql:file}</strong><br />{sql:queries}
-    {stop:sql}
+    {data:log_sql}
   </span>
 </div>
