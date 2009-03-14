@@ -1,38 +1,30 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2008.3_svn >> 0000-00-00
+ClanSphere 2008.3_svn >> 2009-03-XX
 ___________________________________________________________
 
--> Added and reworked Medaillen Modul to Clansphere
--> Fixed all modules now use cs_user function
--> Fixed users_remove without loose database integrity
--> Fixed preview of signatures in board (BugtrackerID: 209, Denni)
--> Fixed voted several user from same ip (BugtrackerID: 249, alcatraz)
--> Fixed com_remove to last comment (BugtrackerID: 288, alcatraz, thx Spongebob)
--> Fixed removing of uploaded files in some modules (BugtrackerID: 198 and 211, Denni)
--> Fixed users hide function in users view (fay-pain)
--> Added function create_user to create every user in the same way (Denni)
+-> Now using themes everywhere (whole team, mainly fay-pain)
+-> Added and reworked medals module to ClanSphere (mc.alcatraz, duriel)
+-> Added function create_user to create every user in the same way (denni)
+-> Now all modules use the cs_user function to make global changes of the user nick display easy
+-> Fixed users_remove without loose database integrity (mc.alcatraz)
 -> Completely reworked AJAX solution (duriel, schiri)
--> Added Auto Update function (alcatraz)
--> When changing templates clansphere now again provides changing to the theme with the same name (duriel)
--> Added some navlists and themes (fay-pain)
--> Added cups navlist (duriel)
+-> Added auto update function (alcatraz)
+-> Added some navlists and themes (fay-pain, duriel)
 -> Added rank feature to boardmods module (fay-pain)
 -> Added security function for server variables to avoid get or post injections in the future (duriel)
 -> Added comment functions to create/edit/remove comments in the same way (fay-pain)
 -> Added optional feature that allows guests to create comments in all modules (fay-pain)
 -> Added search navlist and articles search as default now (fay-pain)
--> Added categories access check in articles module (duriel)
 -> Added default user pictures (duriel)
 -> Added global cellspacing variable (duriel)
 -> Added pictures mod that allows implementing pictures to all mods easily (duriel)
 -> Added the possibility to add automatically created news about a clanwar (duriel)
--> Added squad text (duriel)
 -> Added the possibility to hide subforums in the board overview (duriel)
--> Improved squads view with wars, awards and ranks (GaHero)
--> Set httponly flag in cookies [available in PHP 5.2.0 or higher] (Denni)
--> Used some more caching to enhance the performance (duriel)
+-> Improved squads view with wars, awards and ranks and text (gahero, duriel)
+-> Set httponly flag in cookies [available in PHP 5.2.0 or higher] (denni)
+-> Now using some more caching to enhance the performance (duriel)
 -> Added comments feature to events and fixed it in wars mod (hajo)
 -> Added error page 500 for system relevant problems (hajo)
 -> Reworked events mod to support guests (hajo)
