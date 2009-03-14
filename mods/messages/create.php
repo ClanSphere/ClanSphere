@@ -51,9 +51,7 @@ if (!empty($_POST['messages_to'])) {
       $z = $temp[$run];
     }
   }
-  /*$from = 'clans cla INNER JOIN {pre}_squads squ ON cla.clans_id = squ.clans_id ';
-  $from .= 'INNER JOIN {pre}_members mem ON squ.squads_id = mem.squads_id ';
-  $from .= 'RIGHT OUTER JOIN {pre}_users usr ON mem.users_id = usr.users_id';*/
+
   $from = 'users usr LEFT JOIN {pre}_members mem ON usr.users_id = mem.users_id ';
   $from .= 'LEFT JOIN {pre}_squads squ ON mem.squads_id = squ.squads_id ';
   $from .= 'LEFT JOIN {pre}_clans cla ON squ.clans_id = cla.clans_id';
@@ -101,8 +99,6 @@ if (!empty($_POST['messages_show_sender'])) {
 }
 
 
-
-
 if (isset($_POST['submit']) && empty($messages_error)) {
   
   for($run=0; $run<$cs_messages_loop; $run++) {
@@ -146,7 +142,7 @@ if (isset($_POST['submit']) && empty($messages_error)) {
 $data = array();
 $data['if']['preview'] = false;
 
-$data['lang']['body_create'] = empty($messages_error) ? nl2br($cs_lang['body_create']) : $cs_lang['error_occured'] . $errormsg;
+$data['lang']['body_create'] = empty($messages_error) ? nl2br($cs_lang['body_create']) : $cs_lang['error_occured'] . cs_html_br(1) . $errormsg;
 
 
 if (isset($_POST['preview']) && empty($messages_error))
