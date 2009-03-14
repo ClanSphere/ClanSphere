@@ -30,10 +30,10 @@ $missing_file = $cs_lang['missing_file'];
 $lang_mods = cs_checkdirs('mods');
 
 $run = 0;
+$data['diff'] = array();
 
-if(empty($lang_mods)) {
-  $data['diff'] = '';
-}
+if(empty($lang_mods))
+  $data['diff'][0] = array('file' => '', 'diff' => '');
 
 foreach($lang_mods AS $mods) {
   $file_origine = 'lang/' . $lang_diff . '/' . $mods['dir'] . '.php';
@@ -74,4 +74,5 @@ foreach($lang_mods AS $mods) {
 $data['count']['total'] = sprintf($total_diff,$diff_count);
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','lang_view');
+
 ?>
