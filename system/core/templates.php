@@ -110,7 +110,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   global $account;
   if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
 
-    $forbidden = array('clansphere/navmeta', 'clansphere/themebar', 'errors/500');
+    $forbidden = array('clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500');
     if(!in_array($mod . '/' . $action, $forbidden)) {
 
       $data = array();
@@ -288,10 +288,6 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
     $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
-    if (!empty($cs_main['debug'])) {
-        $script = '<div id="debug"><span id="errors">{func:errors}</span><span id="sql">{func:sql}</span></div>';
-        $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
-    }
     if (!empty($account['users_ajax']) && !empty($account['access_ajax'])) {
       $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
       $cs_temp_get = str_replace('<body>', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')">', $cs_temp_get);
@@ -327,17 +323,31 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
-    $logsql = '';
+    $data = array();
     if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
       $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
       $cs_logs['errors'] = nl2br($cs_logs['errors']);
-      foreach($cs_logs['sql'] AS $sql_file => $sql_queries)
-        $logsql .= cs_html_big(1) . $sql_file . cs_html_big(0) . cs_html_br(2) . nl2br($sql_queries);
+      
+      $run = 0;
+      foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
+        $data['sql'][$run]['file'] = $sql_file;
+        $data['sql'][$run]['queries'] = nl2br($sql_queries);
+        $run++;
+      }
     }
     else {
       $cs_logs['php_errors'] = '';
       $cs_logs['errors'] = 'Developer mode is turned off';
     }
+
+    if (!empty($cs_main['debug'])) {
+        $data['data']['php_errors'] = $cs_logs['php_errors'];
+        $data['data']['csp_errors'] = $cs_logs['errors'];
+        $data['sql'] = empty($data['sql']) ? array(0) : $data['sql'];
+        $script = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
+        $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
+    }
+
     $cs_temp_get = str_replace('{func:errors}', $cs_logs['php_errors'] . $cs_logs['errors'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:sql}', $logsql, $cs_temp_get);
     $getparse = cs_parsetime($cs_micro);

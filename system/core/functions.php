@@ -173,7 +173,7 @@ function cs_log_sql($file, $sql, $action = 0) {
 
   global $cs_logs, $account;
   $cs_logs['queries']++;
-  $new = $cs_logs['queries'] . ') ' . $sql . "\n\n";
+  $new = $cs_logs['queries'] . ') ' . $sql . "\n";
   $cs_logs['sql'][$file] = isset($cs_logs['sql'][$file]) ? $cs_logs['sql'][$file] . $new : $new;
 
   if(!empty($action) AND !empty($cs_logs['save_actions'])) {

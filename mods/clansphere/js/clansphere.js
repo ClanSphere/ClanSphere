@@ -348,3 +348,18 @@ function js_check_all(formobj) {
     exclude[2] = 'removeall';
     js_toggle_all(formobj, 'checkbox', '', exclude, formobj.allbox.checked);
 }
+
+var cs_debugheight = 0;
+
+function cs_debugmode() {
+
+  if(cs_debugheight == 0)
+    cs_debugheight = document.getElementById('debug').style.height;
+  if(cs_debugheight == 0)
+    cs_debugheight = document.getElementById('debug').offsetHeight + 'px';
+  if(cs_debugheight == 0)
+    cs_debugheight = document.getElementById('debug').clientHeight + 'px';
+
+  height = document.getElementById('debug').style.height;
+  document.getElementById('debug').style.height = height == '100%' ? cs_debugheight : '100%';
+}

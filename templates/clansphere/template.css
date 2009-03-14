@@ -38,9 +38,9 @@ a:hover {
   text-align: center;
 }
 #debug {
-  height: 100px;
   overflow: auto;
   font-size: 10px;
+  line-height: 150%;
 }
 #head span {
   color: #B91F1D;
