@@ -11,7 +11,7 @@ if (!empty($ending) && $ending != '{2}') {
 } elseif (!empty($ending)) {
 	$cs_main['template'] = substr($_SESSION['tpl_preview'],0,-3);
 	unset($_SESSION['tpl_preview']);
-} elseif (!empty($_GET['template'])) {
+} elseif (!empty($_GET['template']) && !empty($account['users_ajax'])) {
   $_SESSION['tpl_preview'] = $_GET['template'];
   $shorten = "window.location.href = window.location.href.substr(0,window.location.href.lastIndexOf('template')); ";
   die(ajax_js($shorten . "window.location.reload();"));
