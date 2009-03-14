@@ -43,7 +43,7 @@ if (!empty($_POST['submit'])) {
     	$turned_on = cs_sql_count(__FILE__, 'users', 'users_id = "' . $account['users_id'] . '" AND users_ajax = "1"');
     	if (!empty($turned_on))
     	  header('Location: ../../' . $cs_main['php_self']['basename']);
-    }
+    } else
     
     cs_redirect($cs_lang['success'], 'options','roots');
   }
