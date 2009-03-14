@@ -323,7 +323,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
     $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
-    $data = array();
+    $data = array('sql');
     if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
       $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
       $cs_logs['errors'] = nl2br($cs_logs['errors']);
@@ -343,7 +343,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     if (!empty($cs_main['debug'])) {
         $data['data']['php_errors'] = $cs_logs['php_errors'];
         $data['data']['csp_errors'] = $cs_logs['errors'];
-        $data['sql'] = empty($data['sql']) ? array(0) : $data['sql'];
+        $data['sql'][0] = empty($data['sql'][0]) ? array('file' => '&nbsp;', 'queries' => '&nbsp;') : $data['sql'][0];
         $script = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
         $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
     }
