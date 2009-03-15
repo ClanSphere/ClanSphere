@@ -33,7 +33,7 @@
 	{loop:pictures}
 	<tr>
 		<td class="leftc {pictures:class}" style="width:85px">
-			<a href="{pictures:link}" style="background:url({pictures:src}) no-repeat center;height:50px;width:80px;display:block"></a>
+			<a href="{pictures:link}" style="background:url({page:path}mods/gallery/image.php?thumb={pictures:id}) no-repeat center;height:50px;width:80px;display:block"></a>
 		</td>
 		<td class="leftc {pictures:class}"><strong>{pictures:name}</strong></td>
 		<td class="leftc {pictures:class}">{pictures:folder}</td>

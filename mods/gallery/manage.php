@@ -113,9 +113,7 @@ for($run=0; $run < $pictures_loop; $run++) {
 	$link = 'folders_id=' . $data['pictures'][$run]['folders_id'] . '&amp;where=' . $id;
 	$data['pictures'][$run]['link'] = cs_url('gallery','com_view',$link);
 	
-	$picture = cs_secure($data['pictures'][$run]['gallery_name']);
-	$data['pictures'][$run]['src'] = '/uploads/gallery/thumbs/Thumb_' . $picture;
-    
+	$data['pictures'][$run]['gallery_name'] = cs_secure($data['pictures'][$run]['gallery_name']);    
     
 	$data['pictures'][$run]['name'] = cs_link(cs_secure($data['pictures'][$run]['gallery_titel']),'gallery','com_view',$link);
 	$to_folder = '&amp;folders_id=' . $data['pictures'][$run]['folders_id'];

@@ -52,7 +52,7 @@
 	<tr>
 		<td class="leftc">
 		{loop:last_update}
-			<div style="float:left; width:{options:thumbs}px; height:100px; margin:5px; padding:0px; background-image: url(mods/gallery/image.php?thumb={last_update:img}) no-repeat center; border:1px solid #666666">
+			<div style="float:left; width:{options:thumbs}px; height:100px; margin:5px; padding:0px; background: url({page:path}mods/gallery/image.php?thumb={last_update:img}) no-repeat center; border:1px solid #666666">
 				{last_update:link}
 			</div>
 		{stop:last_update}
