@@ -12,14 +12,14 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="centerc">
-      <div style="text-align:center">
+    <td class="centerc" style="text-align: center">
         {loop:content}
-        <div class="manage" style="float:left; width:110px; height:90px">
-        {content:img_link1}<br style="margin-bottom:4px" />{content:txt_link1}
+        <div style="display: inline-block; margin: 0; padding: 0">
+          <div class="manage" style="height: 90px; overflow: auto; width: 110px">
+          {content:img_link1}<br style="margin-bottom:4px" />{content:txt_link1}
+          </div>
         </div>
        {stop:content}
-       </div>
     </td>
   </tr>
 </table>

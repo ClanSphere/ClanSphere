@@ -159,7 +159,6 @@ input, textarea, select {
   background-color: #F8F8F8;
   border: 1px dotted;
   margin: 5px;
-  overflow: auto;
   padding: 5px 0px 0px 0px;
 }
 .manage:hover {
