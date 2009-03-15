@@ -28,7 +28,7 @@ $data['head']['getmsg'] = cs_getmsg();
 
 $data['sort']['name'] = cs_sort('gallery','folders_manage',$start,0,1,$sort);
 
-$select = 'folders_id, sub_id, folders_name, folders_order, folders_position, folders_advanced';
+$select = 'folders_id, sub_id, folders_name, folders_order, folders_position';
 $folders = cs_sql_select(__FILE__,'folders',$select,$where,'folders_id ASC',$start,0);
 $loop_folders = count($folders);
 
