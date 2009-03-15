@@ -44,6 +44,10 @@ for($run=0; $run<$folders_loop; $run++) {
   }
   $data['folders'][$run]['layer'] = $blank;
   $data['folders'][$run]['name'] = cs_secure($data['folders'][$run]['folders_name']);
+  
+  $where_folder = "folders_id = '". $data['folders'][$run]['folders_id'] . "'";
+  $count_pics = cs_sql_count(__FILE__,'gallery',$where_folder);
+  $data['folders'][$run]['count'] = $count_pics;
 
   $data['folders'][$run]['id'] = $data['folders'][$run]['folders_id'];
 }
