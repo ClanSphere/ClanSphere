@@ -8,7 +8,6 @@ $axx_file['outbox']        = 2;
 $axx_file['inbox']         = 2;
 $axx_file['archivbox']     = 2;
 $axx_file['create']        = 2;
-$axx_file['create_rep']    = 2;
 $axx_file['edit']          = 2;
 $axx_file['center']        = 2;
 $axx_file['remove']        = 2;
