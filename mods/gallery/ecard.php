@@ -3,253 +3,102 @@
 // $Id$
 
 $cs_lang = cs_translate('gallery');
+$cs_post = cs_post('id');
+$cs_get = cs_get('id');
+$data = array();
 
-$users_id = $account['users_id'];
-$cs_ecard_users = cs_sql_select(__FILE__,'users','users_nick, users_email',"users_id = '" . $users_id . "'");
+$picture_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $picture_id = $cs_post['id'];
 
-$sender_name = $cs_ecard_users['users_nick'];
-$sender_mail = $cs_ecard_users['users_email'];
-$receiver_name = '';
-$receiver_mail = '';
-$ecard_titel = '';
-$ecard_text = '';
+$ecard['sender_name'] = '';
+$ecard['sender_mail'] = '';
+$ecard['receiver_name'] = '';
+$ecard['receiver_mail'] = '';
+$ecard['ecard_titel'] = '';
+$ecard['ecard_text'] = '';
 
-$ecard_error = '';
-$errormsg = '';
+$data['if']['preview'] = FALSE;
 
-if (!empty($_POST['pic'])) 
-{
-  $pic = $_POST['pic'];
-}
-else
-{
-  $ecard_error++;
-  $errormsg .= $cs_lang['error_pic'] . cs_html_br(1);
+if(!empty($account['users_id'])) {
+	$cs_ecard_users = cs_sql_select(__FILE__,'users','users_nick, users_email',"users_id = '" . $account['users_id'] . "'");
+	$ecard['sender_name'] = $cs_ecard_users['users_nick'];
+	$ecard['sender_mail'] = $cs_ecard_users['users_email'];
 }
 
-if (!empty($_POST['ecard_titel']) AND !empty($_POST['ecard_text'])) 
-{
-  $ecard_titel = $_POST['ecard_titel'];
-  $ecard_text = $_POST['ecard_text'];
-}
-else
-{
-  $ecard_error++;
-  $errormsg .= $cs_lang['error_text'] . cs_html_br(1);
+
+if(isset($_POST['submit']) OR isset($_POST['preview'])) {
+
+	$ecard['sender_name'] = $_POST['sender_name'];
+	$ecard['sender_mail'] = $_POST['sender_mail'];
+	$ecard['receiver_name'] = $_POST['receiver_name'];
+	$ecard['receiver_mail'] = $_POST['receiver_mail'];
+	$ecard['ecard_titel'] = $_POST['ecard_titel'];
+	$ecard['ecard_text'] = $_POST['ecard_text'];
+	
+	$error = '';
+
+	if(empty($ecard['sender_name']) AND empty($ecard['sender_mail']))
+		$error .= $cs_lang['error_sender'] . cs_html_br(1);
+
+	if(empty($ecard['receiver_name']) AND empty($ecard['receiver_mail']))
+		$error .= $cs_lang['error_receiver'] . cs_html_br(1);
+		
+	if(empty($ecard['ecard_titel']) AND empty($ecard['ecard_text']))
+		$error .= $cs_lang['error_text'] . cs_html_br(1);
+
 }
 
-if (!empty($_POST['receiver_name']) AND !empty($_POST['receiver_mail'])) 
-{
-  $receiver_name = $_POST['receiver_name'];
-  $receiver_mail = $_POST['receiver_mail'];
-}
-else
-{
-  $ecard_error++;
-  $errormsg .= $cs_lang['error_receiver'] . cs_html_br(1);
+if(!isset($_POST['submit']) OR !isset($_POST['preview']))
+	$data['head']['body'] = $cs_lang['ecard_body_list'];
+if(!empty($error))
+	$data['head']['body'] = $error;
+
+
+if(isset($_POST['preview']) AND empty($error)) {
+
+	$data['if']['preview'] = TRUE;
+	$data['prev']['img'] = cs_html_img('mods/gallery/image.php?pic=' . $picture_id . '&size=300');
+	$data['prev']['mailfrom'] = cs_html_link('mailto:' . $ecard['sender_mail'],$ecard['sender_name'],1);
+	$data['prev']['mailto'] = cs_html_link('mailto:' . $ecard['receiver_mail'],$ecard['receiver_name'],1);
+	$data['prev']['time'] = cs_date('unix',cs_time(),1);
+	$data['prev']['titel'] = cs_secure($ecard['ecard_titel']);
+	$data['prev']['text'] = cs_secure($ecard['ecard_text'],1);
 }
 
-if (!empty($_POST['sender_name']) AND !empty($_POST['sender_mail'])) 
-{
-  $sender_name = $_POST['sender_name'];
-  $sender_mail = $_POST['sender_mail'];
-}
-else
-{
-  $ecard_error++;
-  $errormsg .= $cs_lang['error_sender'] . cs_html_br(1);
-}
+if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['ecard_head_list'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo $cs_lang['ecard_body_list'];
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
-
-if (isset($_POST['preview'])) 
-{
-  if (empty($ecard_error))
-  {
-      echo cs_html_form (1,'ecard1','gallery','ecard');
-    echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'centerb');
-    echo cs_html_img('mods/gallery/image.php?pic=' . $pic . '&size=300');
-    echo cs_html_roco(2,'leftb',2);
-    echo $cs_lang['of'];
-    echo cs_html_link('mailto:' . $sender_mail,$sender_name,1);
-    echo cs_html_br(2);
-    echo $cs_lang['to'];
-    echo cs_html_link('mailto:' . $receiver_mail,$receiver_name,1);
-    echo cs_html_br(4);
-    echo cs_date('unix',cs_time(),1);
-    echo cs_html_roco(0);
+	$data['data'] = $ecard;
+	$data['ecard']['picture'] = cs_html_img('mods/gallery/image.php?pic=' . $picture_id . '&size=300');
+  $data['abcode']['features'] = cs_abcode_features('ecard_text');
+  $data['hidden']['id'] = $picture_id;
+  
+ echo cs_subtemplate(__FILE__,$data,'gallery','ecard');
+}
+else {
+	
+	$send['data'] = $ecard;
+	$host = $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
+	$send['data']['src'] = 'http://' . $host . '/mods/gallery/image.php?pic=' . $picture_id . '&size=300';
+  $send['data']['time'] = cs_date('unix',cs_time(),1);
+	$send['data']['ecard_titel'] = cs_secure($ecard['ecard_titel']);
+	$send['data']['ecard_text'] = cs_secure($ecard['ecard_text'],1);
+  $message = cs_subtemplate(__FILE__,$send,'gallery','ecard_mail');
+	
+  if(cs_mail($ecard['receiver_mail'],$ecard['ecard_titel'],$message,0,'text/html')) {
+    $where = "gallery_id = '" . cs_sql_escape($picture_id) . "'"; 
+    $cs_gallery = cs_sql_select(__FILE__,'gallery','gallery_count_cards',$where);
     
-    echo cs_html_roco(1,'leftb');
-    echo cs_html_big(1);
-    echo cs_secure($ecard_titel,1);
-    echo cs_html_big(0);
-    echo cs_html_br(2);
-    echo cs_secure($ecard_text,1);
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
-    echo cs_html_br(1);
-    
-    echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'leftc');
-    echo cs_icon('ksysguard') . $cs_lang['options'];
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_vote('sender_mail',$sender_mail,'hidden');
-    echo cs_html_vote('sender_name',$sender_name,'hidden');
-    echo cs_html_vote('receiver_mail',$receiver_mail,'hidden');
-    echo cs_html_vote('receiver_name',$receiver_name,'hidden');
-    echo cs_html_vote('pic',$pic,'hidden');
-    echo cs_html_vote('ecard_titel',$ecard_titel,'hidden');
-    echo cs_html_vote('ecard_text',$ecard_text,'hidden');
-    echo cs_html_vote('submit',$cs_lang['submit'],'submit');
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
-    echo cs_html_form (0);
-    echo cs_html_br(1);
+    $gallery_count = $cs_gallery['gallery_count_cards'] + 1;
+    $gallery_cells = array('gallery_count_cards');
+    $gallery_save = array($gallery_count);
+   cs_sql_update(__FILE__,'gallery',$gallery_cells,$gallery_save,$picture_id);
+   	$msg = $cs_lang['create_down'];
   }
-  else
-  {
-    echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'leftc');
-    echo cs_icon('important');
-    echo $cs_lang['error'];
-    echo cs_html_roco(0);
-    echo cs_html_roco(2,'leftc');
-    echo $errormsg;
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
-    echo cs_html_br(1);
+  else {
+		$msg = $cs_lang['create_error'];
   }
-}
-if (isset($_POST['submit'])) 
-{
-  if (empty($ecard_error))
-  {
-      // gallery_count_cards
-    // Für die &adresse noch einzufügen!!! ein MD5 hash aus e-mail Adresse und ID nummer. Bzw. Nur E-Mail.
-    //$adresse =
-    $title = $cs_lang['titel1'];
-    $time = cs_date('unix',cs_time(),1);
-      //$message = sprintf($cs_lang['message'], $receiver_name,cs_secure('[url=www.google.de]link[/url]',1),$sender_name,$sender_mail);
-      $message = "<html><head><style type=text/css>
-          <!--
-          body { background-color: #CCCCCC; }
-          -->
-          </style></head><body><table width=92% border=1 align=center cellpadding=10 cellspacing=0 class=forum>
-          <tr><td> 
-          <img src=http://" . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'] . "/mods/gallery/image.php?pic=$pic&size=300 alt= />
-          </td><td  valign=top  width=20% rowspan=2> 
-          " . $cs_lang['of'] . " <a href=mailto:" . $sender_mail . " > " . $sender_name . "</a>
-          <br /><br />
-          " . $cs_lang['to'] . " <a href=mailto:" . $receiver_mail . " > " . $receiver_name . "</a>
-          <br /><br /><br /><br />" . $time . "</td></tr><tr><td> 
-          <strong>" . $ecard_titel . "</strong>
-          <br /><br />" . $ecard_text . "</td></tr></table> </html>";
-    $type = 'text/html';
-
-    if(cs_mail($receiver_mail,$title,$message,0,$type)) {
-      $from = 'gallery';
-      $select = 'gallery_count_cards';
-      $where = "gallery_id = '" . cs_sql_escape($pic) . "'"; 
-      $cs_gallery = cs_sql_select(__FILE__,$from,$select,$where);
-      
-      $gallery_count = $cs_gallery['gallery_count_cards'] + 1;
-      $gallery_cells = array('gallery_count_cards');
-      $gallery_save = array($gallery_count);
-      cs_sql_update(__FILE__,'gallery',$gallery_cells,$gallery_save,$pic);
-      $msg = $cs_lang['create_down'];
-    }
-    else
-    {
-      $msg = $cs_lang['create_error'];
-    }
-    
-    cs_redirect($msg,'gallery','list');
-  }
-}
-if(!empty($_REQUEST['id']) OR isset($_POST['pic']) AND !isset($_POST['submit']))
-{
-  if(!empty($_REQUEST['id']))
-  {
-    $pic = $_REQUEST['id'];
-  }
-  else
-  {
-    $pic = $_POST['pic'];
-  }
-  echo cs_html_form (1,'ecard','gallery','ecard');
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('image') . $cs_lang['pic'];
-  echo cs_html_roco(2,'centerb');
-  echo cs_html_img('mods/gallery/image.php?pic=' . $pic . '&size=300');
-  echo cs_html_roco(0);
   
-  echo cs_html_roco(1,'headb',0,2);
-  echo $cs_lang['sender'];
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['name'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('sender_name',$sender_name,'text',80,40);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['mail'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('sender_mail',$sender_mail,'text',80,40);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'headb',0,2);
-  echo $cs_lang['receiver'];
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['name'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('receiver_name',$receiver_name,'text',80,40);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['mail'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('receiver_mail',$receiver_mail,'text',80,40);
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo $cs_lang['titel'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_input('ecard_titel',$ecard_titel,'text',80,40);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['text'] . ' *';
-  echo cs_html_br(2);
-  echo cs_abcode_smileys('ecard_text');
-  echo cs_html_roco(2,'leftb');
-  echo cs_abcode_features('ecard_text');
-  echo cs_html_textarea('ecard_text',$ecard_text,'50','15');
-  echo cs_html_roco(0);
-  
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('pic',$pic,'hidden');  
-  echo cs_html_vote('preview',$cs_lang['preview'],'submit');
-  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form (0);
-  echo cs_html_br(1);
+ cs_redirect($msg,'gallery','com_view','where=' . $picture_id);
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?PHP
 // ClanSphere 2008 - www.clansphere.net
-// $Id$
+// $Id: manage_advanced.php 1927 2009-03-07 16:03:25Z hajo $
 
 $cs_lang = cs_translate('gallery');
 require_once('mods/gallery/functions.php');
@@ -13,15 +13,18 @@ $cs_gallery['gallery_status'] = '0';
 $watermark_pos = 0;
 $zip_file = '0';
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo cs_link($cs_lang['mod'],'gallery','manage') . ' - ' . $cs_lang['head'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo $cs_lang['head'];
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+$data = array();
+$data['if']['start'] = FALSE;
+$data['if']['no_thumb'] = FALSE;
+$data['if']['nopic'] = FALSE;
+$data['if']['error_zip'] = FALSE;
+$data['if']['zipfile'] = FALSE;
+$data['if']['pictures_found'] = FALSE;
+$data['if']['pictures_done'] = FALSE;
+$data['if']['thumb'] = FALSE;
+
+$data['manage']['head'] = cs_subtemplate(__FILE__,$data,'gallery','manage_head');
+
 
 if(isset($_POST['submit']))
 {
@@ -31,42 +34,16 @@ if(isset($_POST['submit']))
     {
       if(!isset($_POST['submit_zipfile']))
       {
-        echo cs_html_form (1,'create','gallery','advanced',1);
-        echo cs_html_table(1,'forum',1);
-        echo cs_html_roco(1,'headb',0,2);
-        echo $cs_lang['read_zip'];
-        echo cs_html_roco(0);
-        echo cs_html_roco(1,'leftc');
-        echo cs_icon('download') . $cs_lang['zipfile'];
-        echo cs_html_roco(2,'leftb');
-        echo cs_html_input('zipfile','','file');
-        echo cs_html_roco(0);
-        echo cs_html_roco(1,'leftc');
-        echo cs_icon('ksysguard') . $cs_lang['options'];
-        echo cs_html_roco(2,'leftb',0,2);
-        echo cs_html_vote('submit','1','hidden');
-        echo cs_html_vote('read_zip','1','hidden');
-        echo cs_html_vote('submit_zipfile',$cs_lang['continue'],'submit');
-        echo cs_html_roco(0);
-        echo cs_html_table(0);
-        echo cs_html_form (0);
+				$data['if']['zipfile'] = TRUE;
       }
       if(isset($_POST['submit_zipfile']))
       {
         $file = $_FILES['zipfile']['tmp_name'];
         $file_type = $_FILES['zipfile']['type'];
-        echo $file_type;
+        #echo $file_type;
         if ($file_type !== 'application/zip') // PHP 4 'application/zip' PHP 5 'application/x-zip-compressed'
         {
-          echo cs_html_table(1,'forum',1);
-          echo cs_html_roco(1,'headb',0,2);
-          echo $cs_lang['read_zip'];
-          echo cs_html_roco(0);
-          echo cs_html_roco(1,'leftc');
-          echo $cs_lang['error_zip'];
-          echo cs_html_roco(0);
-          echo cs_html_table(0);
-
+          $data['if']['error_zip'] = TRUE;
         }
         else
         {
@@ -76,6 +53,7 @@ if(isset($_POST['submit']))
             if (zip_entry_open($pointer,$zipped,'r'))
             {
               $filename = zip_entry_name($zipped);
+              if ($filename == '__MACOSX') continue; //mac os fix
               if(!file_exists('uploads/gallery/pics/' . $filename)) {
                 $file = fopen('uploads/gallery/pics/' . $filename,'w');
                 fwrite($file,zip_entry_read($zipped,zip_entry_filesize($zipped)));
@@ -157,61 +135,38 @@ if(isset($_POST['submit']))
     $checkDiff2 = count($diff2);
     if(!empty($checkDiff) AND !empty($_POST['read']) OR !empty($checkDiff) AND $zip_file == 1)
     {
-        echo cs_html_form (1,'create','gallery','advanced',1);
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'headb',0,4);
-      echo $cs_lang['newpic'];
-      echo cs_html_roco(0);
+    	$data['if']['pictures_found'] = TRUE;
 
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('folder_yellow') . $cs_lang['category'];
-      echo cs_html_roco(2,'leftb',0,3);
-      echo make_folders_select('folders_id','0','0','gallery');
-      echo cs_html_roco(0);
-
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('access') . $cs_lang['access'];
-      echo cs_html_roco(2,'leftb',0,3);
-      echo cs_html_select(1,'gallery_access');
+      $data['folders']['select'] = make_folders_select('folders_id','0','0','gallery');
+      
       $levels = 0;
+      $data['access']['options'] = '';
       while($levels < 6)
       {
         $cs_gallery['gallery_access'] == $levels ? $sel = 1 : $sel = 0;
-        echo cs_html_option($levels . ' - ' . $cs_lang['lev_' . $levels],$levels,$sel);
+        $data['access']['options'] .= cs_html_option($levels . ' - ' . $cs_lang['lev_' . $levels],$levels,$sel);
         $levels++;
       }
-      echo cs_html_select(0);
-      echo cs_html_roco(0);
 
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('xpaint') . $cs_lang['show'];
-      echo cs_html_roco(2,'leftb',0,3);
-      echo cs_html_select(1,'gallery_status');
       $levels = 0;
+      $data['show']['options'] = '';
       while($levels < 2)
       {
         $cs_gallery['gallery_status'] == $levels ? $sel = 1 : $sel = 0;
-        echo cs_html_option($levels . ' - ' . $cs_lang['show_' . $levels],$levels,$sel);
+        $data['show']['options'] .= cs_html_option($levels . ' - ' . $cs_lang['show_' . $levels],$levels,$sel);
         $levels++;
       }
-      echo cs_html_select(0);
-      echo cs_html_roco(0);
+      
       $cs_gallery['gallery_watermark'] = '';
       $gallery_watermark_trans = '20';
       if(extension_loaded('gd'))
       {
-        echo cs_html_roco(1,'leftc',2);
-        echo cs_icon('xpaint') . $cs_lang['watermark'];
-        echo cs_html_roco(2,'leftb',0,3);
         $no_watermark = $cs_lang['no_watermark'];
         $no_cat_data_watermark = array('0' => array('categories_id' => '', 'categories_mod' => 'gallery-watermark', 'categories_name' => $no_watermark, 'categories_picture' => ''));
         $cat_data_watermark_1 = cs_sql_select(__FILE__,'categories','*',"categories_mod = 'gallery-watermark'",'categories_name',0,0);
-        if(empty($cat_data_watermark_1))
-        {
+        if(empty($cat_data_watermark_1)) {
           $cat_data_watermark = $no_cat_data_watermark;
-        }
-        else
-        {
+        } else {
           $cat_data_watermark = array_merge ($no_cat_data_watermark, $cat_data_watermark_1);
         }
         $search_value = $cs_gallery['gallery_watermark'];
@@ -231,48 +186,41 @@ if(isset($_POST['submit']))
         $el_id = 'watermark_1';
         $onc = "document.getElementById('" . $el_id . "').src='" . $cs_main['php_self']['dirname'] . "uploads/categories/' + this.form.";
         $onc .= "gallery_watermark.advanced[this.form.gallery_watermark.selectedIndex].value";
-        echo cs_html_select(1,'gallery_watermark',"onchange=\"" . $onc . "\"");
-        foreach ($cat_data_watermark as $data)
+        $data['watermark']['onchange'] = $onc;
+        
+        $data['watermark']['options'] = '';
+        foreach ($cat_data_watermark as $data2)
         {
-          $data['categories_picture'] == $cs_gallery['gallery_watermark'] ? $sel = 1 : $sel = 0;
-          echo cs_html_option($data['categories_name'],$data['categories_picture'],$sel);
+          $data2['categories_picture'] == $cs_gallery['gallery_watermark'] ? $sel = 1 : $sel = 0;
+          $data['watermark']['options'] .= cs_html_option($data2['categories_name'],$data2['categories_picture'],$sel);
         }
-        echo cs_html_select(0) . ' ';
-        if(!empty($watermark_id))
-        {
+
+        if(!empty($watermark_id)) {
           $url = 'uploads/categories/' . $cs_gallery['gallery_watermark'];
-        }
-        else
-        {
+        } else {
           $url = 'symbols/gallery/nowatermark.png';
         }
-        echo cs_html_img($url,'','','id="' . $el_id . '"');
-        echo cs_html_roco(0);
-        echo cs_html_roco(2,'leftb');
-        echo cs_html_select(1,'watermark_pos');
+        $data['watermark']['img'] = cs_html_img($url,'','','id="' . $el_id . '"');
+
         $levels = 1;
+        $data['watermark']['pos_options'] = '';
         while($levels < 10)
         {
           $watermark_pos == $levels ? $sel = 1 : $sel = 0;
-          echo cs_html_option($levels . ' - ' . $cs_lang['watermark_' . $levels],$levels,$sel);
+          $data['watermark']['pos_options'] .= cs_html_option($levels . ' - ' . $cs_lang['watermark_' . $levels],$levels,$sel);
           $levels++;
         }
-        echo cs_html_select(0);
-        echo cs_html_roco(3,'leftb',0,2);
-        echo $cs_lang['wm_trans'];
-        echo cs_html_input('gallery_watermark_trans',$gallery_watermark_trans,'text',2,2);
-        echo '%';
-        echo cs_html_select(0);
-        echo cs_html_roco(0);
+        $data['watermark']['trans'] = $gallery_watermark_trans;
+
       }
-      $run = '0';
+      $run = 0;
+      $count = 0;
       foreach ($diff as $pic)
       {
-          $run++;
-          echo cs_html_roco(1,'leftb',3);
-        echo cs_html_vote('status_' . $run,'1','checkbox','1');
-        echo cs_html_vote('name_' . $run,$pic,'hidden');
-          echo cs_html_roco(2,'leftb',3);
+      	$count++;
+				$data['pictures'][$run]['run'] = $count;
+				$data['pictures'][$run]['name'] = $pic;
+
         $img_size = getimagesize("uploads/gallery/pics/$pic");
         $img_filesize = filesize("uploads/gallery/pics/$pic");
         $img_width = $img_size[0];
@@ -280,48 +228,25 @@ if(isset($_POST['submit']))
         $img_w_h = $img_width / $img_height;
         $img_new_height = 40;
         $img_new_width = $img_new_height * $img_w_h;
-        echo cs_html_img('mods/gallery/image.php?picname=' . $pic);
-        echo cs_html_roco(3,'leftc');
-        echo $cs_lang['name'];
-        echo cs_html_roco(4,'leftc');
-        echo $pic;
-        echo cs_html_roco(0);
-        echo cs_html_roco(3,'leftb');
-        echo $cs_lang['size'];
-        echo cs_html_roco(4,'leftb');
-        echo $img_width . 'x' . $img_height;
-        echo cs_html_roco(0);
-        echo cs_html_roco(3,'leftc');
-        echo $cs_lang['filesize'];
-        echo cs_html_roco(4,'leftc');
-        echo cs_filesize($img_filesize);
-        echo cs_html_roco(0);
+        $data['pictures'][$run]['img'] = cs_html_img('mods/gallery/image.php?picname=' . $pic);
+
+        $data['pictures'][$run]['size'] = $img_width . 'x' . $img_height;
+        $data['pictures'][$run]['filesize'] = cs_filesize($img_filesize);
+
+        $run++;
       }
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('ksysguard') . $cs_lang['options'];
-      echo cs_html_roco(2,'leftb',0,3);
-      echo cs_html_vote('submit_1',$cs_lang['continue'],'submit');
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
-      echo cs_html_form (0);
-      echo cs_html_br(1);
+
     }
     elseif(empty($checkDiff) AND !empty($_POST['read']) OR empty($checkDiff) AND $zip_file == 1)
     {
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'leftc');
-      echo $cs_lang['nopic'];
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
-      echo cs_html_br(1);
+      $data['if']['nopic'] = TRUE;
       
     }
     if(!empty($checkDiff2) AND !empty($_POST['del']))
     {
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'headb',0,2);
-      echo $cs_lang['delthumb'];
-      echo cs_html_roco(0);
+    	$data['if']['thumb'] = TRUE;
+
+      $run = 0;
       foreach ($diff2 as $thumb)
       {
         if(cs_unlink('gallery', 'Thumb_' . $thumb, 'thumbs') == true)
@@ -333,32 +258,20 @@ if(isset($_POST['submit']))
             $query = "DELETE FROM {pre}_gallery WHERE gallery_name='$thumb'";
             cs_sql_query(__FILE__,$query);
           }
-          echo cs_html_roco(1,'leftc');
-          echo 'Thumb_' . $thumb;
-          echo cs_html_roco(2,'leftb');
-          echo $cs_lang['deltrue'];
-          echo cs_html_roco(0);
+          $msg = $cs_lang['deltrue'];
         }
         else
         {
-          echo cs_html_roco(1,'leftc');
-          echo 'Thumb_' . $thumb;
-          echo cs_html_roco(2,'leftb');
-          echo $cs_lang['delfalse'];
-          echo cs_html_roco(0);
+          $msg = $cs_lang['delfalse'];
         }
+        $data['thumbs'][$run]['msg'] = $msg;
+        $data['thumbs'][$run]['name'] = 'Thumb_' . $thumb;
+        $run++;
       }
 
-      echo cs_html_table(0);
     }
-    elseif(!empty($_POST['del']))
-    {
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'leftc');
-      echo $cs_lang['nothumb'];
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
-      echo cs_html_br(1);
+    elseif(!empty($_POST['del'])) {
+    	$data['if']['no_thumb'] = TRUE;
     }
   }
 }
@@ -371,16 +284,17 @@ if(isset($_POST['submit_1']))
   $cs_gallery_option = cs_sql_option(__FILE__,'gallery');
   $img_max['thumbs'] = $cs_gallery_option['thumbs'];
   $run_1 = '0';
-  echo cs_html_table(1,'forum',1);
-  for($run = 1; $run<$post_count; $run++)
+  $count = 1;
+  
+  for($run = 0; $run<$post_count; $run++)
   {
-    if(!empty($_POST['status_' . $run]))
+    if(!empty($_POST['status_' . $count]))
     {
-        $name = $_POST['name_' . $run];
+        $name = $_POST['name_' . $count];
         if(!extension_loaded('gd')) die(cs_error_internal(0, 'GD extension not installed.'));
         if(cs_resample('uploads/gallery/pics/' . $name, 'uploads/gallery/thumbs/' . 'Thumb_' . $name, $img_max['thumbs'], $img_max['thumbs']))
         {
-            $where = "gallery_name = '" . cs_sql_escape($name) . "'";
+          $where = "gallery_name = '" . cs_sql_escape($name) . "'";
           $search = cs_sql_count(__FILE__,'gallery',$where);
           if(empty($search))
           {
@@ -400,53 +314,24 @@ if(isset($_POST['submit_1']))
           $filename = substr($name,0,$file-$extension);
               $cs_gallery_pic['gallery_titel'] = $filename;
               $cs_gallery_pic['gallery_time'] = cs_time();
-              $cs_gallery_pic['gallery_download'] = '1|--@--|1';
           $gallery_cells = array_keys($cs_gallery_pic);
           $gallery_save = array_values($cs_gallery_pic);
           cs_sql_insert(__FILE__,'gallery',$gallery_cells,$gallery_save);
         }
-        echo cs_html_roco(1,'leftb',2);
-        echo cs_html_img('mods/gallery/image.php?picname=' . $name);
-        echo cs_html_roco(2,'leftc');
-        echo $cs_lang['name'];
-        echo cs_html_roco(3,'leftb');
-        echo $name;
-        echo cs_html_roco(0);
-        echo cs_html_roco(2,'leftc',0,2);
-        echo $cs_lang['thumb_true'];
-        echo cs_html_roco(0);
+        $data['pics'][$run]['img'] = cs_html_img('mods/gallery/image.php?picname=' . $name);
+        $data['pics'][$run]['name'] = $name;
       }
-        $run_1++;
+      $run_1++;
     }
   }
-  echo cs_html_table(0);
 }
-if(!isset($_POST['submit_1']))
-{
-  if(!isset($_POST['submit']) OR !empty($error))
-  {
-    echo cs_html_form (1,'gallery','gallery','advanced',1);
-    echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'leftc');
-    echo cs_icon('configure') . $cs_lang['head'];
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_vote('read','1','checkbox',$cs_gallery['gallery_read']);
-    echo $cs_lang['read'];
-    echo cs_html_br(1);
-    echo cs_html_vote('read_zip','1','checkbox',$cs_gallery['gallery_zip_read']);
-    echo $cs_lang['read_zip'];
-    echo cs_html_br(2);
-    echo cs_html_vote('del','1','checkbox',$cs_gallery['gallery_del']);
-    echo $cs_lang['del'];
-    echo cs_html_roco(0);
-
-    echo cs_html_roco(1,'leftc');
-    echo cs_icon('ksysguard') . $cs_lang['options'];
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_vote('submit',$cs_lang['continue'],'submit');
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
-    echo cs_html_form (0);
+if(!isset($_POST['submit_1'])) {
+  if(!isset($_POST['submit']) OR !empty($error)) {
+    $data['if']['start'] = TRUE;
   }
 }
+
+
+echo cs_subtemplate(__FILE__,$data,'gallery','manage_advanced');
+
 ?>

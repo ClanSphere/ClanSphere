@@ -29,13 +29,18 @@
 	<tr>
 		<td class="leftc">{icon:access} {lang:needed_access}</td>
 		<td class="leftb">
-			{data:gallery_access}
+			<select name="gallery_access">
+				{data:gallery_access}
+			</select>
 		</td>
   </tr>
 	<tr>
 		<td class="leftc">{icon:xpaint} {lang:show}</td>
 		<td class="leftb">
-			{data:gallery_status}
+				<select name="gallery_status">
+					<option value="0" {check:show1}>{lang:show_0}</option>
+					<option value="1" {check:show2}>{lang:show_1}</option>
+				</select>
 		</td>
   </tr>
   <tr>
@@ -46,27 +51,23 @@
     <td class="leftc">{icon:kate} {lang:text} <br /> <br />
   	 {abcode:smileys}</td>
     <td class="leftb">{abcode:features} <br />
-    	<textarea name="gallery_description" cols="50" rows="5" id="gallery_description"  style="width: 98%;">{data:gallery_description}</textarea> 
+    	<textarea name="gallery_description" cols="50" rows="5" id="gallery_description" style="width:98%;">{data:gallery_description}</textarea> 
     </td>
   </tr>
 	<tr>
 		<td class="leftc">{icon:configure} {lang:more}</td>
 		<td class="leftb">
-			{data:vote} {lang:vote_endi} <br />
-			{data:download} {lang:download_endi} <br />
-			{data:download_zip} {lang:download_original} <br />
-			{data:new_time} {lang:new_date} <br />
-			{data:reset_counter} {lang:gallery_count_reset} <br />
-			{data:close} {lang:gallery_close}
+			<input type="checkbox" name="new_time" value="1" {check:time}/> {lang:new_date}<br />
+			<input type="checkbox" name="reset_counter" value="1" {check:counter}/> {lang:gallery_count_reset}<br />
 		</td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-		{data:hidden_name}
-		{data:hidden_id}
-		<input type="submit" name="submit" value="{lang:edit}" />
-    <input type="reset" name="reset" value="{lang:reset}" />
+			<input type="hidden" name="gallery_name" value="{hidden:name}" />
+			<input type="hidden" name="id" value="{hidden:id}" />
+			<input type="submit" name="submit" value="{lang:edit}" />
+			<input type="reset" name="reset" value="{lang:reset}" />
 	</td>
   </tr>
 </table>

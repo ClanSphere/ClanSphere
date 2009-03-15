@@ -10,9 +10,9 @@
 <form method="post" name="picture_create" action="{url:gallery_picture_create}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-		<td width="150" class="leftc">{icon:download} {lang:upload} *</td>
+		<td class="leftc" style="width:140px">{icon:download} {lang:upload} *</td>
 		<td class="leftb">
-			{data:picture} {data:info_clip}		</td>
+			<input type="file" name="picture" value="" /> {data:info_clip}</td>
   </tr>
 	<tr>
 		<td class="leftc">{icon:kedit} {lang:titel} *</td>
@@ -46,17 +46,13 @@
     <td class="leftc">{icon:kate} {lang:text} <br /> <br />
   	 {abcode:smileys}</td>
     <td class="leftb">{abcode:features} <br />
-    	<textarea name="gallery_description" cols="50" rows="5" id="gallery_description"  style="width: 98%;">{data:gallery_description}</textarea> 
+    	<textarea name="gallery_description" cols="50" rows="5" id="gallery_description" style="width:98%;">{data:gallery_description}</textarea> 
     </td>
   </tr>
 	<tr>
 		<td class="leftc">{icon:configure} {lang:more}</td>
 		<td class="leftb">
-			{data:vote} {lang:vote_endi} <br />
-			{data:download} {lang:download_endi} <br />
-			{data:gray} {lang:gray} <br />
-			{data:download_zip} {lang:download_original} <br />
-			{data:close} {lang:gallery_close}
+			<input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray}<br />
 		</td>
   </tr>
   <tr>
