@@ -13,7 +13,7 @@
     <td class="leftb">{icon:email} <a href="{url:messages_inbox:page=new}">{var:new_msgs} {lang:new_messages}</a></td>
     <td class="leftb" colspan="4">
     <form method="post" name="messages_filter" action="{url:messages_inbox}">
-     <select name="messages_id" class="form">
+     <select name="messages_filter" class="form">
       <option value="0">----</option>
       <option value="1">{lang:last_day}</option>
       <option value="2">{lang:last_2days}</option>

@@ -36,11 +36,19 @@ $data['sort']['subject'] = cs_sort('messages','inbox',$start,'',3,$sort);
 $data['sort']['sender']  = cs_sort('messages','inbox',$start,'',7,$sort);
 $data['sort']['date']    = cs_sort('messages','inbox',$start,'',1,$sort);
 
+$where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_show_receiver ='1'";
+if ($page === 'new') $where .= ' AND msg.messages_view = "0"';
+if (!empty($_POST['messages_filter'])) {
+  $messages_data = cs_time_array();
+  $id = (int) $_POST['messages_filter'] - 1;
+  $time = $messages_data[$id]['messages_time'];
+  $where .= " AND messages_time >= '" . $time . "'";
+}
+
 $from = 'messages msg INNER JOIN {pre}_users usr ON msg.users_id = usr.users_id';
 $select = 'msg.messages_id AS messages_id, msg.messages_subject AS messages_subject, msg.messages_time AS messages_time, ';
 $select .= 'msg.messages_view AS messages_view, msg.users_id_to AS users_id_to, msg.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, ';
 $select .= 'msg.messages_show_sender AS messages_show_sender,msg.messages_show_receiver AS messages_show_receviver, usr.users_delete AS users_delete';
-$where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_show_receiver ='1'";
 $data['msgs'] = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $data['msgs'] = fetch_pm_period($data['msgs'], 'messages_time');
 $count = fetch_pm_period_count($data['msgs']);
@@ -66,74 +74,4 @@ for ($i = 0; $i < $messages_loop; $i++) {
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'inbox');
 
-/*
-empty($_POST['messages_id']) ? $messages_id = 0 : $messages_id = $_POST['messages_id'];
-echo cs_box_head('inbox',$messages_id,$start,$sort);
-$messages_data = cs_time_array();
-if(!empty($_POST['messages_id']))
-{
-  $messages_id = $_POST['messages_id'];
-  settype($messages_id,'integer');
-  $run = $messages_id - 1;
-  $messages_time = $messages_data[$run]['messages_time'];
-  $where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_show_receiver ='1' AND messages_time >= '" . $messages_time . "'";
-}
-else
-{
-  $messages_time = '';
-  $messages_id = '';
-  $where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_show_receiver ='1'";
-}
-echo cs_html_br(1);
-echo cs_getmsg();
-$from = 'messages msg INNER JOIN {pre}_users usr ON msg.users_id = usr.users_id';
-$select = 'msg.messages_id AS messages_id, msg.messages_subject AS messages_subject, msg.messages_time AS messages_time, ';
-$select .= 'msg.messages_view AS messages_view, msg.users_id_to AS users_id_to, msg.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, ';
-$select .= 'msg.messages_show_sender AS messages_show_sender,msg.messages_show_receiver AS messages_show_receviver, usr.users_delete AS users_delete';
-$cs_messages = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
-$messages_loop = count($cs_messages);
-if($page == 0) {
-  if($sort == 1 OR $sort == 2)
-  {
-    echo cs_html_form(1,'messages_inbox','messages','multiremove');
-    echo cs_inbox_head($start,$sort);
-    $cs_messages = fetch_pm_period($cs_messages,'messages_time');
-    $count = fetch_pm_period_count($cs_messages);
-    $period = 0;
-    for($run=0; $run<$messages_loop; $run++)
-    {
-      if($cs_messages[$run]['period'] != $period OR $run == 0) {
-        $period = $cs_messages[$run]['period'];
-        echo cs_period_roco($cs_messages[$run]['period'],$count[$cs_messages[$run]['period']]);
-      }
-      echo cs_box($cs_messages,$run);
-    }
-    echo cs_html_roco(1,'rightb',0,7);
-    echo cs_html_input('sel_all',$cs_lang['select_all'],'button',0,0,'onclick="return cs_shoutbox_select();"');
-    echo cs_html_input('submit',$cs_lang['remove_selected'],'submit');
-    echo cs_html_input('reset_sel',$cs_lang['drop_selection'],'reset');
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
-    echo cs_html_form(0);
-  }
-  if($sort > 2)
-  {
-    echo cs_inbox_head($start,$sort);
-    for($run=0; $run<$messages_loop; $run++)
-    {
-      echo cs_box($cs_messages,$run);
-    }
-    echo cs_html_table(0);
-  }
-}
-if($page == 'new') {
-  echo cs_inbox_head($start,$sort);
-  for($run=0; $run<$messages_loop; $run++)
-  {
-    if($cs_messages[$run]['messages_view'] == '0') {
-      echo cs_box($cs_messages,$run);
-    }
-  }
-  echo cs_html_table(0);
-}*/
 ?>
