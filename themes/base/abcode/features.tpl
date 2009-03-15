@@ -1,4 +1,4 @@
-<a href="javascript:abc_insert('[left]','[/left]','{var:textarea}','')" title="{lang:left}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_alignleft.{var:ext}" alt="L{lang:left}" /></a>
+<a href="javascript:abc_insert('[left]','[/left]','{var:textarea}','')" title="{lang:left}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_alignleft.{var:ext}" alt="{lang:left}" /></a>
 <a href="javascript:abc_insert('[center]','[/center]','{var:textarea}','')" title="{lang:center}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_alignhorizontalcenter.{var:ext}" alt="{lang:center}" /></a>
 <a href="javascript:abc_insert('[right]','[/right]','{var:textarea}','')" title="{lang:right}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_alignright.{var:ext}" alt="{lang:right}" /></a>
 <a href="javascript:abc_insert('[justify]','[/justify]','{var:textarea}','')" title="{lang:justify}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_alignblock.{var:ext}" alt="{lang:justify}" /></a>
