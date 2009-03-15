@@ -44,7 +44,7 @@ $all_pictures = $count_it + $count_pictures;
 if(isset($_POST['agree'])) {
 
 	$delete_mode = isset($_POST['del']) ? (int) $_POST['del'] : 0;
-	$new_folders_id = (int) $_POST['folders_id'];
+	$new_folders_id = isset($_POST['folders_id']) ? (int) $_POST['folders_id'] : 0;
 	
 	$error = '';
 	
