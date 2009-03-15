@@ -14,14 +14,14 @@ $count_navall = cs_sql_count(__FILE__,'count');
 $count_arcall = cs_sql_count(__FILE__,'count_archiv');
 
 if ($op_count['view'] == 'stats'){
-$levels = 6;
-$count_archive = cs_sql_select(__FILE__,'count_archiv','count_month, count_num',0,'count_id DESC',0,0);
+  $levels = 6;
+  $count_archive = cs_sql_select(__FILE__,'count_archiv','count_month, count_num',0,'count_id DESC',0,0);
 }
 if ($op_count['view'] == 'amstats'){
-if (empty($count_arcall)){
-$levels = 1;
-}else{
-$levels = $count_arcall + 1;
+  if (empty($count_arcall)){
+    $levels = 1;
+  } else {
+    $levels = $count_arcall + 1;
 }
 
 $count_archive = cs_sql_select(__FILE__,'count_archiv','*',0,'count_id ASC',0,0);
@@ -86,23 +86,23 @@ foreach($data['count'] AS $dc) {
   
   if ($data['count'][$run]['count'] == 0){
     $data['count'][$run]['size'] = '-';
-  $data['count'][$run]['diff'] = '-';
-  $data['count'][$run]['barp_start'] = '';
+    $data['count'][$run]['diff'] = '-';
+    $data['count'][$run]['barp_start'] = '';
     $data['count'][$run]['barp_end'] = '';
   }
   else {
     $data['count'][$run]['barp'] = round($data['count'][$run]['count'] / $comnr_max * 200);
     $data['count'][$run]['size'] = cs_html_img('symbols/clansphere/bar2.gif', 12, $data['count'][$run]['barp']);
   
-  if ($data['count'][$run-1]['count'] == 0) {
-    $data['count'][$run]['diff'] = '-';
-  }  
-  else {
-    $diff = empty($count) ? ($data['count'][$run]['count'] * 100) . '%' : round($data['count'][$run]['count'] / $count * 100 - 100,2) . '%';
-      $data['count'][$run]['diff'] = substr($diff,0,1) == '-' ? $diff : '+ ' . $diff;
-  }
+    if ($data['count'][$run-1]['count'] == 0) {
+      $data['count'][$run]['diff'] = '-';
+    }  
+    else {
+      $diff = empty($count) ? ($data['count'][$run]['count'] * 100) . '%' : round($data['count'][$run]['count'] / $count * 100 - 100,2) . '%';
+      $data['count'][$run]['diff'] = substr($diff,0,1) == '-' ? str_replace('-', '- ', $diff) : '+ ' . $diff;
+    }
   
-  $data['count'][$run]['barp_start'] = cs_html_img('symbols/clansphere/bar1.gif',12,2);
+    $data['count'][$run]['barp_start'] = cs_html_img('symbols/clansphere/bar1.gif',12,2);
     $data['count'][$run]['barp_end'] = cs_html_img('symbols/clansphere/bar3.gif',12,2);
   }  
   
@@ -134,20 +134,20 @@ echo "<script type=\"text/javascript\">\n
   so.addVariable(\"chart_data\", \"<chart><series>";
 $loop = 1;
 for($run=0; $run < $levels; $run++) {
-echo "<value xid='" . $loop . "'>" . $data['count'][$run]['year-mon'] . "</value>";
-$loop++;
+  echo "<value xid='" . $loop . "'>" . $data['count'][$run]['year-mon'] . "</value>";
+  $loop++;
 }
 echo "</series><graphs><graph gid='1' title='" . $cs_lang['guest'] . "'>";
 $loop = 1;
 for($run=0; $run < $levels; $run++) {
-echo "<value xid='" . $loop . "'>" . $data['count'][$run]['count'] . "</value>";
-$loop++;
+  echo "<value xid='" . $loop . "'>" . $data['count'][$run]['count'] . "</value>";
+  $loop++;
 }
 echo "</graph><graph gid='2' title='" . $cs_lang['daydif'] . "'>";
 $loop = 1;
 for($run=0; $run < $levels; $run++) {
-echo "<value xid='" . $loop . "'>" . $data['count'][$run]['day'] . "</value>";
-$loop++;
+  echo "<value xid='" . $loop . "'>" . $data['count'][$run]['day'] . "</value>";
+  $loop++;
 }
 
 echo "</graph></graphs></chart>\");\n
