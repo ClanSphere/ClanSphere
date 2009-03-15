@@ -22,7 +22,7 @@ if (empty($folders_id)) {
   $data['lang']['getmsg'] = cs_getmsg();;
   
   $from = 'gallery';
-  $select = 'gallery_time, gallery_name, gallery_titel, gallery_download, ';
+  $select = 'gallery_time, gallery_name, gallery_titel, ';
   $select .= 'gallery_description, gallery_id, gallery_vote, gallery_count, folders_id';
   $where = "gallery_status = '1' AND gallery_access <= '" . $access_id . "'";
   $order = 'gallery_id DESC';
@@ -254,7 +254,7 @@ if (empty($folders_id)) {
 
 if ($folders_id >= 1) {
   $from = 'gallery';
-  $select = 'gallery_time, gallery_name, gallery_titel, gallery_download, ';
+  $select = 'gallery_time, gallery_name, gallery_titel, ';
   $select .= 'gallery_description, gallery_id, gallery_vote, gallery_count, folders_id';
   $where = "gallery_status = 1 AND gallery_access <= '" . $access_id . "'";
   $where .= " AND folders_id = '" . (int)$folders_id . "'";
