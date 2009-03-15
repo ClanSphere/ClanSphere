@@ -11,7 +11,7 @@
 <a href="javascript:abc_insert('[indent=15]','[/indent]','{var:textarea}','')" title="{lang:indent}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_incrementindent.{var:ext}" alt="{lang:indent}" /></a>
 <a href="javascript:abc_insert('[quote]','[/quote]','{var:textarea}','')" title="{lang:quote}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_quote.{var:ext}" alt="{lang:quote}" /></a>
 <a href="javascript:abc_insert('[php]','[/php]','{var:textarea}','')" title="{lang:php}" ><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_sourcecode.{var:ext}" alt="{lang:php}" /></a>
-<a href="javascript:abc_insert('[list]\n[*]','\n[/list]','{var:textarea}','')" title="{lang:list}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_list.{var:ext}" alt="{lang:list}" /></a>
+<a href="javascript:abc_insert('[list][*]','[/list]','{var:textarea}','')" title="{lang:list}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_list.{var:ext}" alt="{lang:list}" /></a>
 <a href="javascript:abc_insert('[img]','[/img]','{var:textarea}','')" title="{lang:image}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_grafmode.{var:ext}" alt="{lang:image}" /></a>
 <a href="javascript:abc_insert('[url]','[/url]','{var:textarea}','')" title="{lang:link}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_openurl.{var:ext}" alt="{lang:link}" /></a>
 <a href="javascript:abc_insert('[mail]','[/mail]','{var:textarea}','')" title="{lang:mail}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_sendmail.{var:ext}" alt="{lang:mail}" /></a>
@@ -33,7 +33,6 @@
 <select name="color_{var:textarea}" class="form"
   onchange="javascript:abc_insert('[color=' + this.form.color_{var:textarea}.options[this.form.color_{var:textarea}.selectedIndex].value + ']','[/color]','{var:textarea}');this.selectedIndex=0">
   <option value="">{lang:font_color}</option>
-
   <option value="aqua" style="color: aqua">{lang:aqua}</option>
   <option value="black" style="color: black">{lang:black}</option>
   <option value="blue" style="color: blue">{lang:blue}</option>
