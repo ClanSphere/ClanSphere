@@ -22,7 +22,7 @@ $option = cs_sql_option(__FILE__,'gallery');
 $id = empty($gid) ? $folder_id : $gid;
 
 $select = 'gallery_id, gallery_name, gallery_titel, gallery_description, ';
-$select .= 'gallery_time, gallery_vote, gallery_count, folders_id, gallery_close';
+$select .= 'gallery_time, gallery_vote, gallery_count, folders_id';
 $where = 'gallery_id = ' . $id . ' AND gallery_status = 1 AND gallery_access <=' . $account['access_gallery'];
 $cs_gallery = cs_sql_select(__FILE__,'gallery',$select,$where);
 $gallery_loop = count($cs_gallery);
