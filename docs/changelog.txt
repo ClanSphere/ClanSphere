@@ -29,7 +29,7 @@ ___________________________________________________________
 -> Added error page 500 for system relevant problems (hajo)
 -> Reworked events mod to support guests (hajo)
 -> Reworked cs_addons function to support count queries and look even better (hajo)
--> Updated fckeditor to version 2.6.4 beta (hajo)
+-> Updated fckeditor to version 2.6.4 (hajo)
 
 
 ClanSphere 2008.2.1 >> 2008-09-20
