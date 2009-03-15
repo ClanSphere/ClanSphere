@@ -13,13 +13,13 @@ function cs_abcode_features($name, $html = 0) {
   $cs_lang = cs_translate('system/abcodes');
 
   global $cs_main;
-  
+
   $data = array();
   $data['var']['imgpath'] = $cs_main['img_path'];
   $data['var']['ext'] = $cs_main['img_ext'];
   $data['if']['html'] = empty($html) ? false : true;
   $data['var']['textarea'] = $name;
-  
+
   return cs_subtemplate(__FILE__, $data, 'abcode', 'features');
 }
 
@@ -54,11 +54,12 @@ function cs_abcode_smileys($name) {
   }
 
   $data['var']['textarea'] = $name;
-  
+
   return empty($abc_count) ? '' : cs_subtemplate(__FILE__, $data, 'abcode', 'imgbox');
 }
 
 function cs_abcode_mode($set = 0) {
+
   static $mode = 1;
   if(!empty($set)) {
     $mode = empty($mode) ? 1 : 0;
@@ -71,6 +72,7 @@ function cs_abcode_php($matches) {
   global $com_lang;
   static $lop = 1;
   static $php;
+
   $mode = cs_abcode_mode();
   if(empty($mode)) {
     $php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
@@ -149,7 +151,7 @@ function cs_abcode_list($matches) {
 }
 
 function cs_abcode_img($matches) {
-  
+
   if ($matches[0]{4} == ']') {
     return cs_html_img($matches[1]);
   } else {
@@ -159,11 +161,12 @@ function cs_abcode_img($matches) {
 }
 
 function cs_abcode_urlimg ($matches) {
+
   return '[url='.$matches[1].']'.cs_html_img($matches[4],$matches[3],$matches[2]).'[/url]';
 }
 
 function cs_abcode_mail($matches) {
-  
+
   if (strpos($matches[0],'</a>') !== false)
     return $matches[0];
   if ($matches[0]{0} != '[')
@@ -191,7 +194,7 @@ function cs_abcode_urlauto($matches) {
   
   if (strpos($matches[0],'</a>') !== false || strpos($matches[0],'[/threadid]') !== false)
     return $matches[0];
-    
+
   $after = '';
   if (substr($matches[0],-1) == ',') { $matches[0] = substr($matches[0],0,-1); $after = ','; }
   $url = substr($matches[0],0,4) == 'www.' ? 'http://' . $matches[0] : $matches[0];
@@ -232,6 +235,7 @@ function cs_abcode_clip($matches) {
 
   static $clip_id;
   $clip_id++;
+
   $var = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_' . $clip_id . '"') . ' ';
   $var .= cs_html_link("javascript:cs_clip('" . $clip_id . "')",$matches[1],0);
   $var .= cs_html_br(1);
@@ -241,39 +245,36 @@ function cs_abcode_clip($matches) {
 }
 
 $htmlcode = array();
+
 function cs_abcode_html($matches) {
-  
-  global $com_lang;
-  global $htmlcode;
-  
+
+  global $com_lang, $htmlcode;
+
   $nr = count($htmlcode);
   $htmlcode[] = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
   return '{html' . $nr . '}';
-  
 }
 
 function cs_abcode_eval($matches) {
-  
+
   $matches[1] = str_replace('<br />',"\r\n",$matches[1]);
   $matches[1] = cs_abcode_html($matches);
-  
+
   $matches[1] = str_replace(array('<?php','<?','?>'),'',$matches[1]);
-  
+
   ob_start();
   eval($matches[1]);
   $content = ob_get_contents();
   ob_end_clean();
-  
+
   return $content;
-  
 }
 
 function cs_abcode_flag ($matches) {
-  
+
   $path = 'symbols/countries/' . $matches[1] . '.png';
-  
+
   return file_exists($path) ? cs_html_img($path) : '';
-  
 }
 
 function cs_abcode_threadid($matches) {
@@ -288,22 +289,19 @@ function cs_abcode_decode($matches) {
   return html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
 }
 
-
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
 
   global $com_lang;
-  
+
   $op_abcode = cs_sql_option(__FILE__,'abcode');
-  
+
   $replace = str_replace(array('{','}'),array('&#123;','&#125;'),$replace);
-  
-  
+
   if(!empty($features)) { 
   cs_abcode_mode(1); 
   $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace); 
   }
 
-  
   if(!empty($smileys)) {
     static $loop, $loop_abc;
     if(empty($loop_abc)) {
@@ -392,7 +390,6 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   }
   return $replace;
 }
-
 
 function cs_abcode_resize ($matches) {
 
