@@ -171,21 +171,21 @@ function cs_getmsg()
   if (!isset($_SESSION['message']) || empty($_SESSION['message']))
     return '';
 
+  $data = array();
+
   if (!empty($_SESSION['messageadd'])) {
     $add = explode(',',$_SESSION['messageadd'],2);
-    $icon = empty($add[0]) ? '' : cs_icon($add[0]);
-    $id = empty($add[1]) ? 'msg_normal' : $add[1];
+    $data['msg']['icon'] = empty($add[0]) ? '' : cs_icon($add[0]);
+    $data['msg']['id'] = empty($add[1]) ? 'msg_normal' : $add[1];
     unset($_SESSION['messageadd']);
   } else {
-    $icon = '';
-    $id = 'msg_normal';
+    $data['msg']['icon'] = '';
+    $data['msg']['id'] = 'msg_normal';
   }
-  $string = cs_html_div(1,0,'id="' . $id . '"') . cs_html_div(1);
-  $string .= $icon . $_SESSION['message'];
-  $string .= cs_html_div(0) . cs_html_div(0);
+  $data['msg']['text'] = $_SESSION['message'];
   unset($_SESSION['message']);
 
-  return $string;
+  return cs_subtemplate(__FILE__, $data, 'clansphere', 'message');
 }
 
 function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $icon = 0)
