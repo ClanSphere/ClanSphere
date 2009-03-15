@@ -75,30 +75,10 @@ function cs_array_sort($array,$sort,$key) {
   }
 }
 
-/*
-function makeDIV($run) {
-  $var = '';
-  while(0 < $run) {
-    if($run == 1) {
-      $var .= cs_html_div(1,'width:16px; float:left;');
-      $var .= cs_icon('add_sub_task',16,'task');
-      $var .= cs_html_div(0);
-      $run--;
-    } else {
-      $var .= cs_html_div(1,'width:16px; float:left;');
-      $var .= cs_icon('add_task',16,'task');
-      $var .= cs_html_div(0);
-      $run--;
-    }
-  }
-  return $var;
-}
-*/
-
 function makeTAB($run) {
   $var = '';
   while(0 < $run) {
-    $var .= '&nbsp;&nbsp;';
+    $var .= '&nbsp;&nbsp;&nbsp;';
     $run--;
   }
   return $var;
@@ -145,51 +125,6 @@ function make_subfolders_array($array,$last_id = 0,$count = 1) {
   }
 }
 
-/*
-function make_folders_list($array) {
-
-  global $cs_lang;
-  $var = '';
-  $count = 0;
-  if(!empty($array)) {
-    $count_array = count($array);
-    for($run = 0; $run < $count_array; $run++) {
-      if(isset($array[$run]['name'])) {
-        $data['data']['name'] = $array[$run]['name'];
-        $img_edit = cs_icon('edit',16,$cs_lang['edit']);
-        $data['link']['edit'] = cs_link($img_edit,'gallery','folders_edit','id=' . $array[$run]['folders_id'],0,$cs_lang['edit']);
-        $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-        $data['link']['remove'] = cs_link($img_del,'gallery','folders_remove','id=' . $array[$run]['folders_id'],0,$cs_lang['remove']);
-        $var[$count]['folders_box'] = cs_subtemplate(__FILE__,$data,'gallery','folders_box');
-      }
-      $count++;
-      if(!empty($array[$run+1][0])) {
-        $var = $var + make_subfolders_list($array[$run+1],$count);
-      }
-    }
-  }
-  return $var;
-}
-function make_subfolders_list($array,$count) {
-  global $cs_lang;
-  $loop = count($array);
-  for($run=0; $run<$loop; $run++) {
-    if(!empty($array[$run][0])) {
-      make_subfolders_list($array[$run],$count);
-    } else {
-      $div = makeDIV($array[$run]['depht']) . cs_html_div(1,'float:left;');
-      $data['data']['name'] = $div . $array[$run]['name'] . cs_html_div(0);
-      $img_edit = cs_icon('edit',16,$cs_lang['edit']);
-      $data['link']['edit'] = cs_link($img_edit,'gallery','folders_edit','id=' . $array[$run]['folders_id'],0,$cs_lang['edit']);
-      $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
-      $data['link']['remove'] = cs_link($img_del,'gallery','folders_remove','id=' . $array[$run]['folders_id'],0,$cs_lang['remove']);
-      $var[$count]['folders_box'] = cs_subtemplate(__FILE__,$data,'gallery','folders_box');
-      $count++;
-    }
-  }
-  return $var;
-}
-*/
 function make_folders_select($name,$select,$id = 0,$mod = 0,$create = 1, $folders_id = 0) {
 
   $sql_select = 'folders_id, sub_id, folders_name, folders_order, folders_position, ';
