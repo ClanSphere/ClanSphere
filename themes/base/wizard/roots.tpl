@@ -28,7 +28,7 @@
 <td class="left{wizard:class}">
 <span style="float:left; padding-right:8px">{wizard:icon}</span>
 {wizard:link} {wizard:next}
-<hr noshade="noshade" style="width:100%" />
+<hr style="width:100%" />
 {wizard:text}
 </td>
 <td class="center{wizard:class}" style="vertical-align:middle">

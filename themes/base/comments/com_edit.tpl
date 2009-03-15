@@ -30,7 +30,7 @@
 		</td>
 		<td class="leftb">
 			# {prev:count_com} - {prev:date}
-			<hr style="width:100%" noshade="noshade" /><br />
+			<hr style="width:100%" /><br />
 			{prev:text}
 		</td>
 	</tr>

@@ -1,23 +1,34 @@
-img { border:0; }
-form { display:inline; }
+hr {
+  border: 1px solid #888888;
+}
+img {
+  border: 0;
+}
+form {
+  display: inline;
+}
 td {
-  background-color:inherit;
-  color:#000000;
-  font-size:8pt;
-  vertical-align:top;
+  background-color: inherit;
+  color: #000000;
+  font-size: 8pt;
+  vertical-align: top;
   line-height: 1.5;
 }
-textarea { width:90%; }
-ul { margin: 0;}
+textarea {
+  width: 90%;
+}
+ul {
+  margin: 0;
+}
 
 input, textarea, select {
-  background-color:#EEEEEE;
-  border:1px solid #002200;
-  color:#002200;
-  font-family:Verdana,Helvetica,sans-serif;
-  font-size:8pt;
-  margin:2px;
-  padding-left:3px;
+  background-color: #EEEEEE;
+  border: 1px solid #002200;
+  color: #002200;
+  font-family: Verdana,Helvetica,sans-serif;
+  font-size: 8pt;
+  margin: 2px;
+  padding-left: 3px;
 }
 .form:focus {
   background-color: #FFFFFF;

@@ -24,7 +24,7 @@
 			{members:picture}
 		</td>
 		<td class="leftc" style="width:25%">
-			<hr style="width:100%" noshade="noshade" />
+			<hr style="width:100%" />
 			{members:country} {members:tag_before} {members:users_nick} {members:tag_after}<br />
 			<br />
 			{members:surname}<br />
@@ -32,7 +32,7 @@
 			{lang:task}: {members:task}<br />
 			<br />
 			{lang:since}: {members:since}
-			<hr style="width:100%" noshade="noshade" />
+			<hr style="width:100%" />
 		</td>
 		{if:td}
 		<td class="centerb" style="width:25%"></td>

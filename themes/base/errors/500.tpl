@@ -8,7 +8,7 @@
 <td class="centerb">
 <br /><br />
 {head:error}
-<hr style="width:100%" noshade="noshade" />
+<hr style="width:100%" />
 {head:report}
 </td>
 </tr>

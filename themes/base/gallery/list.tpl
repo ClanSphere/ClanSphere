@@ -12,9 +12,9 @@
 			</div>
 			<div style="width:100%">
 				<strong>{cat:folders_name}</strong> <br /> 
-				<hr style="width:78%" noshade="noshade" />
+				<hr style="width:78%" />
 				{cat:folders_text}
-				<hr style="width:78%" noshade="noshade" />
+				<hr style="width:78%" />
 				{cat:pic_count} {cat:last_update}
 			</div>
 		</td>

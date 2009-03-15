@@ -18,7 +18,7 @@ function cs_html_br($run)
 
 function cs_html_hr($width)
 {
-    return "<hr style=\"width:" . $width . "\" noshade=\"noshade\" />\n";
+    return "<hr style=\"width:" . $width . "\" />\n";
 }
 
 function cs_html_table($func, $class = 0, $spacing = 0, $width = 0)

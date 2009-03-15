@@ -77,7 +77,7 @@
       {thread_asc:place}<br />
       {lang:posts}: {thread_asc:posts}<br />    </td>
     <td class="leftc"> # {lang:theme} - {thread_asc:date}
-      <hr style="width:100%" noshade="noshade" />
+      <hr style="width:100%" />
       {if:thread_report}
       <div class="quote">{report:thread_clip}</div>
       {stop:thread_report}
@@ -124,7 +124,7 @@
       {comment:place}<br />
       {lang:posts}: {comment:posts}<br />    </td>
     <td class="leftc"> # {lang:answer}: {comment:current} - {comment:date}{comment:current_anchor}
-      <hr style="width:100%" noshade="noshade" />
+      <hr style="width:100%" />
       {if:com_report}
       <div class="quote">{comment:com_clip}</div>
       {stop:com_Report}
@@ -165,7 +165,7 @@
       {thread_desc:place}<br />
       {lang:posts}: {thread_desc:posts}<br />    </td>
     <td class="leftc"> # {lang:theme} - {thread_desc:date}
-      <hr style="width:100%" noshade="noshade" />
+      <hr style="width:100%" />
       {thread_desc:text}
       {if:thread_desc_files}
       <div style="margin-top: 10px;" class="quote"><strong>{lang:files}</strong> {loop:files}

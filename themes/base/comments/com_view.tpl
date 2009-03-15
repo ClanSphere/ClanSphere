@@ -25,7 +25,7 @@
 			{stop:user}
 		</td>
 		<td class="{com:class}"> # {com:current} - {com:comments_time}<a href="#" name="com{com:run}"></a>
-			<hr style="width:100%" noshade="noshade" />
+			<hr style="width:100%" />
 			<br />
 			{com:comments_text}
 			{com:comments_edit}

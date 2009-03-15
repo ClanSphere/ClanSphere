@@ -15,7 +15,7 @@ function cs_html_br($run)
 
 function cs_html_hr($width)
 {
-    return "<hr style=\"width:" . $width . "\" noshade=\"noshade\" />\n";
+    return "<hr style=\"width:" . $width . "\" />\n";
 }
 
 function cs_html_img($url, $height = 0, $width = 0, $more = 0, $alt = '')

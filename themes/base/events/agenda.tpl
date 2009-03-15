@@ -50,7 +50,7 @@
       {events:categories_picture}
     </span> 
     {events:categories_name}
-    <hr noshade="noshade" style="width:100%" />
+    <hr style="width:100%" />
     <a href="{url:events_view:id={events:events_id}}">{events:events_name}</a>
   </td>
   <td class="leftc">
