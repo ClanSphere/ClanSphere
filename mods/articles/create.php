@@ -69,9 +69,6 @@ $data['categories']['dropdown'] = cs_categories_dropdown('articles',$categories_
 $data['pictures']['select'] = cs_pictures_select();
 $data['abcode']['features'] = cs_abcode_features('articles_text',1);
 $on = "onclick=\"javascript:abc_insert";
-$data['abcode']['pagebreak'] = cs_html_vote('pagebreak', $cs_lang['pagebreak'],'button',0,$on . "('[pagebreak]','','articles_text')\"");
-$data['abcode']['sitelink'] = cs_html_vote('sitelink',$cs_lang['sitelink'],'button',0,$on . "('[pb_url=]" .$cs_lang['sitelink']. "[/pb_url]','','articles_text')\"");
-$on = "onclick=\"javascript:abc_insert";
 if(empty($cs_main['fckeditor'])) {
     $data['if']['fckeditor'] = 0;
     $data['if']['nofckeditor'] = 1;

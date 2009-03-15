@@ -8,6 +8,7 @@ require_once 'mods/pictures/functions.php';
 
 $data['if']['head'] = 1;
 $data['if']['preview'] = false;
+$files = cs_files();
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
@@ -82,30 +83,21 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['data']['articles_text'] = $cs_articles['articles_text'];
   
   if(empty($cs_main['fckeditor'])) {
-        $data['if']['fckeditor'] = 0;
-        $data['if']['nofckeditor'] = 1;
-    } else {
-        $data['if']['fckeditor'] = 1;
-        $data['if']['nofckeditor'] = 0;
-        $data['articles']['content'] = cs_fckeditor('articles_text',$data['data']['articles_text']);
-    }
+    $data['if']['fckeditor'] = 0;
+    $data['if']['nofckeditor'] = 1;
+  } else {
+    $data['if']['fckeditor'] = 1;
+    $data['if']['nofckeditor'] = 0;
+    $data['articles']['content'] = cs_fckeditor('articles_text',$data['data']['articles_text']);
+  }
   
-  if(!empty($cs_articles['articles_com'])) {
-    $data['data']['articles_com_checked'] = 'checked';
-  } else { $data['data']['articles_com_checked'] = ''; }
-    if(!empty($cs_articles['articles_navlist'])) {
-  $data['data']['articles_navlist_checked'] = 'checked';
-  } else { $data['data']['articles_navlist_checked'] = ''; }
-    if(!empty($cs_articles['articles_fornext'])) {
-  $data['data']['articles_fornext_checked'] = 'checked';
-  } else { $data['data']['articles_fornext_checked'] = ''; }
+  $data['data']['articles_com_checked'] = empty($cs_articles['articles_com']) ? '' : 'checked="checked"';
+  $data['data']['articles_navlist_checked'] = empty($cs_articles['articles_navlist']) ? '' : 'checked="checked"';
+  $data['data']['articles_fornext_checked'] = empty($cs_articles['articles_fornext']) ? '' : 'checked="checked"';
   
   $data['pictures']['select'] = cs_pictures_select($data['data']['articles_id']);
   $data['categories']['dropdown'] = cs_categories_dropdown('articles',$cs_articles['categories_id']);
-    $data['abcode']['features'] = cs_abcode_features('articles_text');                                
-    $on = "onclick=\"javascript:abc_insert";
-    $data['abcode']['pagebreak'] = cs_html_vote('pagebreak',$cs_lang['pagebreak'],'button',0,$on . "('[pagebreak]','','articles_text')\""); 
-  $data['abcode']['sitelink'] = cs_html_vote('sitelink',$cs_lang['sitelink'],'button',0,$on . "('[pb_url=]" .$cs_lang['sitelink']. "[/pb_url]','','articles_text')\"");
+  $data['abcode']['features'] = cs_abcode_features('articles_text');                                
 
   echo cs_subtemplate(__FILE__,$data,'articles','edit');
   
@@ -117,7 +109,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $articles_save = array_values($cs_articles);
   cs_sql_update(__FILE__,'articles',$articles_cells,$articles_save,$articles_id);
   
-  $files = cs_files();
   cs_pictures_upload($files['picture'], 'articles', $articles_id);
 
   cs_redirect($cs_lang['changes_done'], 'articles') ;

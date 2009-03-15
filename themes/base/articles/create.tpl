@@ -36,7 +36,9 @@
   </tr>
   {if:nofckeditor}
   <tr>
-    <td class="leftc" colspan="2">{abcode:features}{abcode:pagebreak}{abcode:sitelink}<br />
+    <td class="leftc" colspan="2">{abcode:features}
+      <input type="button" name="pagebreak" value="{lang:pagebreak}" onclick="javascript:abc_insert('[pagebreak]','','articles_text')" class="form"/>
+      <input type="button" name="sitelink" value="{lang:sitelink}" onclick="javascript:abc_insert('[pb_url=]{lang:sitelink}[/pb_url]','','articles_text')" class="form"/><br />
       <textarea name="articles_text" cols="99" rows="35" id="articles_text"  style="width: 98%;">{art:articles_text}</textarea></td>
   </tr>
   {stop:nofckeditor}

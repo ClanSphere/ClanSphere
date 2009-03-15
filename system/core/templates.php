@@ -110,7 +110,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   global $account;
   if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
 
-    $forbidden = array('clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500');
+    $forbidden = array('clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500', 'pictures/select', 'abcode/features');
     if(!in_array($mod . '/' . $action, $forbidden)) {
 
       $data = array();
@@ -123,6 +123,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
       $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
     }
   }
+  
   return $string;
 }
 

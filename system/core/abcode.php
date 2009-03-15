@@ -13,113 +13,14 @@ function cs_abcode_features($name, $html = 0) {
   $cs_lang = cs_translate('system/abcodes');
 
   global $cs_main;
-  $coop = 'symbols/' . $cs_main['img_path'] . '/openoffice/lc_';
-  $ext = '.' . $cs_main['img_ext'];
-
-  $img = cs_html_img($coop . 'alignleft' . $ext,0,0,0,$cs_lang['left']);
-  $var = cs_abcode_button($name, $cs_lang['left'], '[left]', '[/left]', $img);
-
-  $img = cs_html_img($coop . 'alignhorizontalcenter' . $ext,0,0,0,$cs_lang['center']);
-  $var .= cs_abcode_button($name, $cs_lang['center'], '[center]', '[/center]', $img);
-
-  $img = cs_html_img($coop . 'alignright' . $ext,0,0,0,$cs_lang['right']);
-  $var .= cs_abcode_button($name, $cs_lang['right'], '[right]', '[/right]', $img);
-
-  $img = cs_html_img($coop . 'alignblock' . $ext,0,0,0,$cs_lang['justify']);
-  $var .= cs_abcode_button($name, $cs_lang['justify'], '[justify]', '[/justify]', $img);
-
-  $img = cs_html_img($coop . 'bold2' . $ext,0,0,0,$cs_lang['bold']);
-  $var .= cs_abcode_button($name, $cs_lang['bold'], '[b]', '[/b]', $img);
   
-  $img = cs_html_img($coop . 'italic2' . $ext,0,0,0,$cs_lang['italic']);
-  $var .= cs_abcode_button($name, $cs_lang['italic'], '[i]', '[/i]', $img);
-
-  $img = cs_html_img($coop . 'underline2' . $ext,0,0,0,$cs_lang['underline']);
-  $var .= cs_abcode_button($name, $cs_lang['underline'], '[u]', '[/u]', $img);
-
-  $img = cs_html_img($coop . 'strike' . $ext,0,0,0,$cs_lang['strike']);
-  $var .= cs_abcode_button($name, $cs_lang['strike'], '[s]', '[/s]', $img);
-
-  $img = cs_html_img($coop . 'hr2' . $ext,0,0,0,$cs_lang['horizontal_rule']);
-  $var .= cs_abcode_button($name, $cs_lang['horizontal_rule'], '[hr]', '', $img);
-
-  $img = cs_html_img($coop . 'headline' . $ext,0,0,0,$cs_lang['headline']);
-  $var .= cs_abcode_button($name, $cs_lang['headline'], '[h=1]', '[/h]', $img);
-
-  $img = cs_html_img($coop . 'incrementindent' . $ext,0,0,0,$cs_lang['indent']);
-  $var .= cs_abcode_button($name, $cs_lang['indent'], '[indent=15]', '[/indent]', $img);
-
-  $img = cs_html_img($coop . 'quote' . $ext,0,0,0,$cs_lang['quote']);
-  $var .= cs_abcode_button($name, $cs_lang['quote'], '[quote]', '[/quote]', $img);
-
-  $img = cs_html_img($coop . 'sourcecode' . $ext,0,0,0,$cs_lang['php']);
-  $var .= cs_abcode_button($name, $cs_lang['php'], '[php]<?php ', ' ?>[/php]', $img);
-
-  $img = cs_html_img($coop . 'list' . $ext,0,0,0,$cs_lang['list']);
-  $var .= cs_abcode_button($name, $cs_lang['list'], '[list]\\n[*]', '\\n[/list]', $img);
-
-  $img = cs_html_img($coop . 'grafmode' . $ext,0,0,0,$cs_lang['image']);
-  $var .= cs_abcode_button($name, $cs_lang['image'], '[img]', '[/img]', $img);
-
-  $img = cs_html_img($coop . 'openurl' . $ext,0,0,0,$cs_lang['link']);
-  $var .= cs_abcode_button($name, $cs_lang['link'], '[url]', '[/url]', $img);
-
-  $img = cs_html_img($coop . 'sendmail' . $ext,0,0,0,$cs_lang['mail']);
-  $var .= cs_abcode_button($name, $cs_lang['mail'], '[mail]', '[/mail]', $img);
-
-  $img = cs_html_img($coop . 'datainrows' . $ext,0,0,0,$cs_lang['clip']);
-  $var .= cs_abcode_button($name, $cs_lang['clip'], '[clip=' . $cs_lang['more'] .']', '[/clip]', $img);
-
-  $img = cs_html_img($coop . 'inserthyperlink' . $ext,0,0,0,$cs_lang['thread']);
-  $var .= cs_abcode_button($name, $cs_lang['thread'], '[threadid=X]', '[/threadid]', $img);
-
-  if(!empty($html)) {
-    $img = cs_html_img($coop . 'editdoc' . $ext,0,0,0,$cs_lang['html']);
-    $var .= cs_abcode_button($name, $cs_lang['html'], '[html]', '[/html]', $img);
-  }
-  $var .= cs_html_br(1);
-
-  $size = "javascript:abc_insert('[size=' + this.form.size_";
-  $size .= $name . ".options[this.form.size_" . $name . ".selectedIndex].value + ']";
-  $size .= "','[/size]','" . $name . "');this.selectedIndex=0";
-  $var .= cs_html_select(1,'size_' . $name,"onchange=\"" . $size . "\"");
-  $var .= cs_html_option($cs_lang['font_size'],'');
-  $var .= cs_html_option($cs_lang['tiny'],8);
-  $var .= cs_html_option($cs_lang['small'],10);
-  $var .= cs_html_option($cs_lang['medium'],12);
-  $var .= cs_html_option($cs_lang['large'],18);
-  $var .= cs_html_option($cs_lang['giant'],24);
-  $var .= cs_html_select(0);
+  $data = array();
+  $data['var']['imgpath'] = $cs_main['img_path'];
+  $data['var']['ext'] = $cs_main['img_ext'];
+  $data['if']['html'] = empty($html) ? false : true;
+  $data['var']['textarea'] = $name;
   
-  $color = "javascript:abc_insert('[color=' + this.form.color_";
-  $color .= $name . ".options[this.form.color_" . $name . ".selectedIndex].value + ']'";
-  $color .= ",'[/color]','" . $name . "');this.selectedIndex=0";
-  $var .= cs_html_select(1,'color_' . $name,"onchange=\"" . $color . "\"");
-  $var .= cs_html_option($cs_lang['font_color'],'');
-  $var .= cs_html_option($cs_lang['aqua'],'aqua',0,'color:aqua');
-  $var .= cs_html_option($cs_lang['black'],'black',0,'color:black');
-  $var .= cs_html_option($cs_lang['blue'],'blue',0,'color:blue');
-  $var .= cs_html_option($cs_lang['fuchsia'],'fuchsia',0,'color:fuchsia');
-  $var .= cs_html_option($cs_lang['gray'],'gray',0,'color:gray');
-  $var .= cs_html_option($cs_lang['green'],'green',0,'color:green');
-  $var .= cs_html_option($cs_lang['lime'],'lime',0,'color:lime');
-  $var .= cs_html_option($cs_lang['maroon'],'maroon',0,'color:maroon');
-  $var .= cs_html_option($cs_lang['navy'],'navy',0,'color:navy');
-  $var .= cs_html_option($cs_lang['olive'],'olive',0,'color:olive');
-  $var .= cs_html_option($cs_lang['orange'],'orange',0,'color:orange');
-  $var .= cs_html_option($cs_lang['purple'],'purple',0,'color:purple');
-  $var .= cs_html_option($cs_lang['red'],'red',0,'color:red');
-  $var .= cs_html_option($cs_lang['silver'],'silver',0,'color:silver');
-  $var .= cs_html_option($cs_lang['teal'],'teal',0,'color:teal');
-  $var .= cs_html_option($cs_lang['white'],'white',0,'color:white');
-  $var .= cs_html_option($cs_lang['yellow'],'yellow',0,'color:yellow');
-  $var .= cs_html_select(0);
-
-  $var .= ' ' . cs_html_link("javascript:cs_textarea_resize('" . $name . "','+')", cs_html_img('symbols/clansphere/plus.gif'),0,0);
-  $var .= ' ' . cs_html_link("javascript:cs_textarea_resize('" . $name . "','-')", cs_html_img('symbols/clansphere/minus.gif'),0,0);
-  $var .= ' ' . $cs_lang['rows'] . ': <span id="span_' . $name . '">' . $cs_lang['default'] . '</span>';
-
-  return $var;  
+  return cs_subtemplate(__FILE__, $data, 'abcode', 'features');
 }
 
 function cs_abcode_smileys($name) {
