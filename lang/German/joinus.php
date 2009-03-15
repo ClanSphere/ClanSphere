@@ -55,8 +55,8 @@ $cs_lang['stage_3'] = 'Stufe 3';
 $cs_lang['stage_4'] = 'Stufe 4';
 $cs_lang['stage_1_text'] = ': mind. 8 Zeichen.';
 $cs_lang['stage_2_text'] = ': mind. 8 Zeichen davon 2 Zahlen.';
-$cs_lang['stage_3_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;e Buchstaben & 2 Zahlen.';
-$cs_lang['stage_4_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;e Buchstaben, 2 Zahlen & 1 Sonderzeichen';
+$cs_lang['stage_3_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;e Buchstaben &amp; 2 Zahlen.';
+$cs_lang['stage_4_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;e Buchstaben, 2 Zahlen &amp; 1 Sonderzeichen';
 
 $cs_lang['rules'] = 'Regeln';
 $cs_lang['rules2'] = 'gelesen und akzeptiert';
