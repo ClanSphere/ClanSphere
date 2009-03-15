@@ -3,6 +3,58 @@
 // $Id$
 
 
+function multiarray_search ($array, $innerkey, $value) {
+	foreach ($array AS $outerkey => $innerarray) {
+	if ($innerarray[$innerkey] == $value)
+		return $outerkey;
+	}
+	return FALSE;
+}
+
+function cs_foldersort ($array, $id = 0) {
+  
+  if (empty($array)) return 0;
+  
+  $count = count($array);
+  $result = array();
+  $subid = 0;
+  $order = 1;
+  
+  for ($i = 0; $i < $count; $i++) {
+    if (empty($array[$i]['sub_id'])) {
+      $array[$i]['layer'] = 0;
+      $result[] = $array[$i];
+    } else {
+      if ($array[$i]['sub_id'] != $subid) {
+        $order = 1;
+        $subid = $array[$i]['sub_id'];
+      }
+      $pos = multiarray_search($result, 'folders_id', $array[$i]['sub_id']);
+      $array[$i]['layer'] = $result[$pos]['layer'] + 1;
+      $result = array_merge(array_slice($result, 0, $pos + $order), array($array[$i]), array_slice($result, $pos + $order));
+      $order++;
+    }
+  }
+  
+  if (!empty($id)) {
+    $count = count($result);
+    for ($i = 0; $i < $count; $i++) {
+      if ($id == $result[$i]['folders_id']) {
+        $layer = $result[$i]['layer'];
+        $name = $result[$i]['folders_name'];
+        $start = $i;
+      } elseif (isset($layer) && $result[$i]['layer'] <= $layer) {
+        $end = $i;
+        break;
+      }
+    }
+    $end = !empty($end) ? $end - $start : $count;
+    $result = array_slice($result,$start,$end);
+  }
+  
+  return $result;
+}
+
 function cs_array_sort($array,$sort,$key) {
   if(!empty($array)) {
     if($sort == SORT_DESC OR $sort == SORT_ASC) {
@@ -91,33 +143,6 @@ function make_subfolders_array($array,$last_id = 0,$count = 1) {
   if(!empty($var)) {
     return $var;
   }
-}
-
-function make_folders_list ($array, $hierarchy = 0) {
-  
-  global $cs_lang;
-  
-  $string = '';
-  $space = '';
-  for ($run = 0; $run < $hierarchy; $run++) {
-    $space .= '&nbsp;&nbsp;&nbsp;';
-  }
-  if (!empty($hierarchy)) $space .= cs_icon('add_sub_task');
-  
-  if (!empty($array)) {
-    foreach ($array AS $folder) {
-      
-      if (!empty($folder[0])) {
-        $string .= make_folders_list($folder, $hierarchy+1);
-      } else {
-        $data = array();
-        $data['data']['name'] = $space . $folder['name'];
-        $data['folders']['id'] = $folder['folders_id'];
-        $string .= cs_subtemplate(__FILE__,$data,'gallery','folders_box');
-      }
-    }
-  }
-  return $string;
 }
 
 /*

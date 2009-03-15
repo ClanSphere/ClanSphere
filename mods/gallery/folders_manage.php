@@ -29,12 +29,24 @@ $data['head']['getmsg'] = cs_getmsg();
 $data['sort']['name'] = cs_sort('gallery','folders_manage',$start,0,1,$sort);
 
 $select = 'folders_id, sub_id, folders_name, folders_order, folders_position';
-$folders = cs_sql_select(__FILE__,'folders',$select,$where,'folders_id ASC',$start,0);
-$loop_folders = count($folders);
+$data['folders'] = cs_sql_select(__FILE__,'folders',$select,$where,$order,$start,$account['users_limit']);
+$data['folders'] = cs_foldersort($data['folders']);
+$folders_loop = !empty($data['folders']) ? count($data['folders']) : '';
 
-$folders = make_folders_array($folders);
-$data['show']['folders_box'] = make_folders_list($folders);
 
+for($run=0; $run<$folders_loop; $run++) {
+  
+  $blank = '';
+  if (!empty($data['folders'][$run]['layer'])) {
+    for ($i = 0; $i < $data['folders'][$run]['layer']; $i++)
+      $blank .= '&nbsp;&nbsp;&nbsp;&nbsp;';
+      $blank .= cs_icon('add_sub_task');
+  }
+  $data['folders'][$run]['layer'] = $blank;
+  $data['folders'][$run]['name'] = cs_secure($data['folders'][$run]['folders_name']);
+
+  $data['folders'][$run]['id'] = $data['folders'][$run]['folders_id'];
+}
 
 echo cs_subtemplate(__FILE__,$data,'gallery','folders_manage');
 
