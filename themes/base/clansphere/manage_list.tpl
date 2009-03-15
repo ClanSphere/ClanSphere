@@ -10,9 +10,15 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   {loop:content}
   <tr>
-    <td class="leftc">{content:img_link1} {content:txt_link1}</td>
-    <td class="leftc">{content:img_link2} {content:txt_link2}</td>
-    <td class="leftc">{content:img_link3} {content:txt_link3}</td>
+    <td class="leftc">
+      {content:img_1} &nbsp; <a href="{content:link_1}">{content:txt_1}</a>
+    </td>
+    <td class="leftc">
+      {content:img_2} &nbsp; <a href="{content:link_2}">{content:txt_2}</a>
+    </td>
+    <td class="leftc">
+      {content:img_3} &nbsp; <a href="{content:link_3}">{content:txt_3}</a>
+    </td>
   </tr>
   {stop:content}
 </table>

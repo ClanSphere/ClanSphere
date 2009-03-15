@@ -15,8 +15,9 @@
     <td class="centerc" style="text-align: center">
         {loop:content}
         <div style="display: inline-block; margin: 0; padding: 0">
-          <div class="manage" style="height: 90px; overflow: auto; width: 110px">
-          {content:img_link1}<br style="margin-bottom:4px" />{content:txt_link1}
+          <div class="manage" style="height: 90px; overflow: hidden; width: 110px">
+          <a href="{content:link_1}" style="display: block; text-decoration: none">
+          {content:img_1}<br style="margin-bottom:4px" />{content:txt_1}</a>
           </div>
         </div>
        {stop:content}
