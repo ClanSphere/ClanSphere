@@ -22,83 +22,84 @@ $messages_show_receiver = '1';
 /*|  Clan:test clan 1; test user 1; Squad:test clan 1 squad 1  |*/
 /*+-------------------------------------------------------------+*/
 
-if (!empty($_POST['messages_to'])) {
-
-  $messages_to = $_POST['messages_to'];
-  $temp = explode(';', $messages_to);
-  $loop_temp = count($temp);
-  $where = '';
-  
-  for($run=0; $run<$loop_temp; $run++) {
-    $a = substr($temp[$run], 0, 6); //check is this a squad
-    $b = substr($temp[$run], 0, 5); //check is this a clan
-    if($a == 'Squad:') {
-      if(!empty($where)) {
-        $where = $where . ' OR ';
-      }
-      $z = substr($temp[$run], 6);
-      $where .= "squ.squads_name = '" . cs_sql_escape($z) . "'";
-    } elseif($b == 'Clan:') {
-      if(!empty($where)) {
-        $where = $where . ' OR ';
-      }
-      $z = substr($temp[$run], 5);
-      $where .= "cla.clans_name = '" . cs_sql_escape($z) . "'";
-    } else {
-      if(!empty($where)) {
-        $where .= ' OR ';
-      }
-      $where .= "usr.users_nick = '" . cs_sql_escape($temp[$run]) . "'";
-      $z = $temp[$run];
-    }
-  }
-
-  $from = 'users usr LEFT JOIN {pre}_members mem ON usr.users_id = mem.users_id ';
-  $from .= 'LEFT JOIN {pre}_squads squ ON mem.squads_id = squ.squads_id ';
-  $from .= 'LEFT JOIN {pre}_clans cla ON squ.clans_id = cla.clans_id';
-  $select = 'usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_email AS users_email';
-  $order = '';
-  $cs_messages = cs_sql_select(__FILE__,$from,$select,$where,0,0,0);
-  $cs_messages_loop = count($cs_messages);
-
-  if(empty($cs_messages_loop) OR empty($where)) {
-    $messages_error++;
-    $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
-    $error_to = '1';
-  } else {
-    $cs_messages = remove_dups($cs_messages,'users_nick');
-    $cs_messages_loop = count($cs_messages);
-  }
-
-  if(empty($cs_messages_loop) AND empty($error_to)) {
-    $messages_error++;
-    $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
-  }
-} else {
-  $messages_error++;
-  $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
+if (!empty($_POST['submit'])) {
+	if (!empty($_POST['messages_to'])) {
+	
+	  $messages_to = $_POST['messages_to'];
+	  $temp = explode(';', $messages_to);
+	  $loop_temp = count($temp);
+	  $where = '';
+	  
+	  for($run=0; $run<$loop_temp; $run++) {
+	    $a = substr($temp[$run], 0, 6); //check is this a squad
+	    $b = substr($temp[$run], 0, 5); //check is this a clan
+	    if($a == 'Squad:') {
+	      if(!empty($where)) {
+	        $where = $where . ' OR ';
+	      }
+	      $z = substr($temp[$run], 6);
+	      $where .= "squ.squads_name = '" . cs_sql_escape($z) . "'";
+	    } elseif($b == 'Clan:') {
+	      if(!empty($where)) {
+	        $where = $where . ' OR ';
+	      }
+	      $z = substr($temp[$run], 5);
+	      $where .= "cla.clans_name = '" . cs_sql_escape($z) . "'";
+	    } else {
+	      if(!empty($where)) {
+	        $where .= ' OR ';
+	      }
+	      $where .= "usr.users_nick = '" . cs_sql_escape($temp[$run]) . "'";
+	      $z = $temp[$run];
+	    }
+	  }
+	
+	  $from = 'users usr LEFT JOIN {pre}_members mem ON usr.users_id = mem.users_id ';
+	  $from .= 'LEFT JOIN {pre}_squads squ ON mem.squads_id = squ.squads_id ';
+	  $from .= 'LEFT JOIN {pre}_clans cla ON squ.clans_id = cla.clans_id';
+	  $select = 'usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_email AS users_email';
+	  $order = '';
+	  $cs_messages = cs_sql_select(__FILE__,$from,$select,$where,0,0,0);
+	  $cs_messages_loop = count($cs_messages);
+	
+	  if(empty($cs_messages_loop) OR empty($where)) {
+	    $messages_error++;
+	    $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
+	    $error_to = '1';
+	  } else {
+	    $cs_messages = remove_dups($cs_messages,'users_nick');
+	    $cs_messages_loop = count($cs_messages);
+	  }
+	
+	  if(empty($cs_messages_loop) AND empty($error_to)) {
+	    $messages_error++;
+	    $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
+	  }
+	} else {
+	  $messages_error++;
+	  $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
+	}
+	if (!empty($_POST['messages_subject'])) {
+	  $_POST['messages_subject'] = preg_replace("=\<script\>(.*?)\</script\>=si","",$_POST['messages_subject']);
+	}
+	if (!empty($_POST['messages_subject'])) {
+	  $messages_subject = $_POST['messages_subject'];
+	} else {
+	  $messages_error++;
+	  $errormsg .= $cs_lang['error_subject'] . cs_html_br(1);
+	}
+	if (!empty($_POST['messages_text'])) {
+	  $messages_text = $_POST['messages_text'];
+	} else {
+	  $messages_error++;
+	  $errormsg .= $cs_lang['error_text'] . cs_html_br(1);
+	}
+	if (!empty($_POST['messages_show_sender'])) {
+	  $messages_show_sender = $_POST['messages_show_sender'];
+	} else {
+	  $messages_show_sender = '0';
+	}
 }
-if (!empty($_POST['messages_subject'])) {
-  $_POST['messages_subject'] = preg_replace("=\<script\>(.*?)\</script\>=si","",$_POST['messages_subject']);
-}
-if (!empty($_POST['messages_subject'])) {
-  $messages_subject = $_POST['messages_subject'];
-} else {
-  $messages_error++;
-  $errormsg .= $cs_lang['error_subject'] . cs_html_br(1);
-}
-if (!empty($_POST['messages_text'])) {
-  $messages_text = $_POST['messages_text'];
-} else {
-  $messages_error++;
-  $errormsg .= $cs_lang['error_text'] . cs_html_br(1);
-}
-if (!empty($_POST['messages_show_sender'])) {
-  $messages_show_sender = $_POST['messages_show_sender'];
-} else {
-  $messages_show_sender = '0';
-}
-
 
 if (isset($_POST['submit']) && empty($messages_error)) {
   
