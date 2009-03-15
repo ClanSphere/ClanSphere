@@ -43,23 +43,23 @@
   <tr>
     <td class="leftb" colspan="7">
     <div style="float: left">{msgs:period_name}</div>
-    <div style="float: right">{lang:messages} {msgs:period_count}</div>
+    <div style="float: right">{lang:mod}: {msgs:period_count}</div>
     </td>
   </tr>{stop:new_period}
   <tr>
-    <td class="centerc">{icon:email}</td>
-    <td class="leftc"><a href="{url:messages_view:id={msgs:messages_id}}">test</a></td>
-    <td class="leftc"><a href="{url:users_view:id={msgs:users_id_from}}">duRiel</a></td>
+    <td class="centerc">{msgs:icon}</td>
+    <td class="leftc"><a href="{url:messages_view:id={msgs:messages_id}}">{msgs:messages_subject}</a></td>
+    <td class="leftc"><a href="{url:users_view:id={msgs:users_id_from}}">{msgs:user_from}</a></td>
     <td class="leftc">{msgs:messages_time}</td>
-    <td class="centerc"><input type="checkbox" name="select_23" value="1" class="form" /></td>
-    <td class="centerc"><a href="{url:messages_remove:id=23}" title="{lang:remove}">{icon:mail_delete}</a></td>
-    <td class="centerc"><a href="{url:messages_archiv:id=23}" title="{lang:archiv}">{icon:ark}</a></td>
+    <td class="centerc"><input type="checkbox" name="select_{msgs:messages_id}" value="1" class="form" /></td>
+    <td class="centerc"><a href="{url:messages_remove:id={msgs:messages_id}}" title="{lang:remove}">{icon:mail_delete}</a></td>
+    <td class="centerc"><a href="{url:messages_archiv:id={msgs:messages_id}}" title="{lang:archiv}">{icon:ark}</a></td>
   </tr>{stop:msgs}
   <tr>
     <td class="rightb" colspan="7">
-      <input type="button" name="sel_all" value="Alle markieren" onclick="return cs_shoutbox_select();" class="form" />
-      <input type="submit" name="submit" value="Markierte entfernen" class="form" />
-      <input type="reset" name="reset_sel" value="Markierung aufheben" class="form" />
+      <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_shoutbox_select();" class="form" />
+      <input type="submit" name="submit" value="{lang:remove_selected}" class="form" />
+      <input type="reset" name="reset_sel" value="{lang:drop_selection}" class="form" />
      </td>
   </tr>
 </table>

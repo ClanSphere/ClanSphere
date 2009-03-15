@@ -42,15 +42,31 @@ $select .= 'msg.messages_view AS messages_view, msg.users_id_to AS users_id_to, 
 $select .= 'msg.messages_show_sender AS messages_show_sender,msg.messages_show_receiver AS messages_show_receviver, usr.users_delete AS users_delete';
 $where = "msg.users_id_to = '" . $users_id . "' AND msg.messages_show_receiver ='1'";
 $data['msgs'] = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
+$data['msgs'] = fetch_pm_period($data['msgs'], 'messages_time');
+$count = fetch_pm_period_count($data['msgs']);
 $messages_loop = count($data['msgs']);
+$period = 0;
 
 for ($i = 0; $i < $messages_loop; $i++) {
-	$data['msgs'][$i]['if']['new_period'] = false;
+	
+	$data['msgs'][$i]['icon'] = empty($data['msgs'][$i]['messages_view']) ? cs_icon('email',16,$cs_lang['new']) : cs_icon('mail_generic',16,$cs_lang['read']);
+	if ($data['msgs'][$i]['messages_view'] == 2) $data['msgs'][$i]['icon'] = cs_icon('mail_replay',16,$cs_lang['answered']);
+	$data['msgs'][$i]['messages_time'] = cs_date('unix', $data['msgs'][$i]['messages_time'],1);
+	$data['msgs'][$i]['user_from'] = cs_user($data['msgs'][$i]['users_id'],$data['msgs'][$i]['users_nick'],$data['msgs'][$i]['users_active'],$data['msgs'][$i]['users_delete']);
+	$data['msgs'][$i]['messages_subject'] = cs_secure($data['msgs'][$i]['messages_subject']);
+	if ($data['msgs'][$i]['period'] === $period) {
+		$data['msgs'][$i]['if']['new_period'] = false;
+	} else {
+		$data['msgs'][$i]['if']['new_period'] = true;
+		$data['msgs'][$i]['period_name'] = $cs_lang[$data['msgs'][$i]['period']];
+		$data['msgs'][$i]['period_count'] = $count[$data['msgs'][$i]['period']];
+		$period = $data['msgs'][$i]['period'];
+	}
 }
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'inbox');
 
-
+/*
 empty($_POST['messages_id']) ? $messages_id = 0 : $messages_id = $_POST['messages_id'];
 echo cs_box_head('inbox',$messages_id,$start,$sort);
 $messages_data = cs_time_array();
@@ -76,7 +92,7 @@ $select .= 'msg.messages_view AS messages_view, msg.users_id_to AS users_id_to, 
 $select .= 'msg.messages_show_sender AS messages_show_sender,msg.messages_show_receiver AS messages_show_receviver, usr.users_delete AS users_delete';
 $cs_messages = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $messages_loop = count($cs_messages);
-if($page == '0') {
+if($page == 0) {
   if($sort == 1 OR $sort == 2)
   {
     echo cs_html_form(1,'messages_inbox','messages','multiremove');
@@ -119,5 +135,5 @@ if($page == 'new') {
     }
   }
   echo cs_html_table(0);
-}
+}*/
 ?>
