@@ -33,7 +33,7 @@
 	<tr>
 		<td class="leftc">
 		{loop:top_views}
-			<div style="float: left; width: {options:thumbs}px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?thumb={top_views:img}); border:1px solid #666666">
+			<div style="float:left; width:{options:thumbs}px; height:100px; margin:5px; padding:0px; background-image: url(mods/gallery/image.php?thumb={top_views:img}) no-repeat center; border:1px solid #666666">
 				{top_views:link}
 			</div>
 		{stop:top_views}
@@ -52,7 +52,7 @@
 	<tr>
 		<td class="leftc">
 		{loop:last_update}
-			<div style="float: left; width: {options:thumbs}px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?thumb={last_update:img}); border:1px solid #666666">
+			<div style="float:left; width:{options:thumbs}px; height:100px; margin:5px; padding:0px; background-image: url(mods/gallery/image.php?thumb={last_update:img}) no-repeat center; border:1px solid #666666">
 				{last_update:link}
 			</div>
 		{stop:last_update}
@@ -71,7 +71,7 @@
 	<tr>
 		<td class="leftc">
 		{loop:vote}
-			<div style="float: left; width: {options:thumbs}px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?thumb={vote:img}); border:1px solid #666666;">
+			<div style="float:left; width:{options:thumbs}px; height:100px; margin:5px; padding:0px; background-image: url(mods/gallery/image.php?thumb={vote:img}) no-repeat center; border:1px solid #666666;">
 				{vote:link}
 			</div>
 		{stop:vote}

@@ -9,13 +9,13 @@
   <tr>
     <td class="leftc">
       {loop:sub_folders}
-        <div style="float: left; width: {options:thumbs}px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat;">
+        <div style="float:left; width:{options:thumbs}px; height:100px; margin:5px; padding:0px; background-repeat: no-repeat center;">
           {sub_folders:folders_img} <br />
           {sub_folders:folders_name}
          </div>
       {stop:sub_folders}
       {loop:img}
-        <div style="float: left; width: {options:thumbs}px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?thumb={img:img}); border:1px solid #666666">
+        <div style="float:left; width:{options:thumbs}px; height:100px; margin:5px; padding:0px; background: url(/mods/gallery/image.php?thumb={img:img}) no-repeat center; border:1px solid #666666">
         {img:link}
          </div>
       {stop:img}
