@@ -10,7 +10,7 @@
     <td class="rightb">{var:pages}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:email} <a href="{url:messages_archivbox:page=new}">{var:new_msgs} {lang:new_messages}</a></td>
+    <td class="leftb">{icon:email} <a href="{url:messages_inbox:page=new}">{var:new_msgs} {lang:new_messages}</a></td>
     <td class="leftb" colspan="4">
     <form method="post" name="messages_filter" action="{url:messages_archivbox}">
      <select name="messages_filter" class="form">
@@ -31,6 +31,7 @@
 </table>
 <br />
 
+<form method="post" name="messages_archivbox1" action="{url:messages_multiremove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="width: 40px">{sort:view}</td>
@@ -54,7 +55,7 @@
     <td class="centerc"><a href="{url:messages_remove:id={msgs_in:messages_id}}" title="{lang:remove}">{icon:mail_delete}</a></td>
   </tr>{stop:msgs_in}
   <tr>
-    <td class="rightb" colspan="7">
+    <td class="rightb" colspan="6">
       <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_shoutbox_select();" class="form" />
       <input type="submit" name="submit" value="{lang:remove_selected}" class="form" />
       <input type="reset" name="reset_sel" value="{lang:drop_selection}" class="form" />
@@ -62,7 +63,9 @@
   </tr>
 </table>
 <br />
+</form>
 
+<form method="post" name="messages_archivbox2" action="{url:messages_multiremove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="width: 40px">{sort:view}</td>
@@ -86,10 +89,11 @@
     <td class="centerc"><a href="{url:messages_remove:id={msgs_out:messages_id}}" title="{lang:remove}">{icon:mail_delete}</a></td>
   </tr>{stop:msgs_out}
   <tr>
-    <td class="rightb" colspan="7">
+    <td class="rightb" colspan="6">
       <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_shoutbox_select();" class="form" />
       <input type="submit" name="submit" value="{lang:remove_selected}" class="form" />
       <input type="reset" name="reset_sel" value="{lang:drop_selection}" class="form" />
      </td>
   </tr>
 </table>
+</form>
