@@ -123,6 +123,9 @@ $cs_lang['done2'] = 'Ihr Benutzerkonto wurde erfolgreich erstellt. <br>Sie erhal
 
 $cs_lang['mail_key'] = 'Aktivierungslink';
 
+// Remove
+$cs_lang['rly_rmv_user'] = 'Soll der Benutzer %s wirklich gel&ouml;scht werden?';
+
 // Home
 $cs_lang['home_info']  = 'Alles zum Benutzerkonto auf einen Blick.';
 

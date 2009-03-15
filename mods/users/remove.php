@@ -8,9 +8,10 @@ $cs_get = cs_get('id');
 $data = array();
 
 $users_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+$nick_temp = cs_sql_select(__FILE__,'users','users_nick','users_id='.$users_id,0,0,1);
 
 if(isset($_GET['agree'])) {
-  $nick_temp = cs_sql_select(__FILE__,'users','users_nick','users_id='.$users_id,0,0,1);
+  
   $nick = '*'.$nick_temp['users_nick'].'*'; 
   
   $chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -66,7 +67,7 @@ if(isset($_GET['cancel']))
 
 else {
   
-  $data['head']['body'] = sprintf($cs_lang['del_rly'],$users_id);
+  $data['head']['body'] = sprintf($cs_lang['rly_rmv_user'],$nick_temp['users_nick']);
   $data['url']['agree'] = cs_url('users','remove','id=' . $users_id . '&amp;agree');
   $data['url']['cancel'] = cs_url('users','remove','id=' . $users_id . '&amp;cancel');
 
