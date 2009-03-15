@@ -54,8 +54,8 @@ function cs_abcode_smileys($name) {
   }
 
   $data['var']['textarea'] = $name;
-
-  return cs_subtemplate(__FILE__, $data, 'abcode', 'imgbox');  
+  $result = empty($abc_count) ? '' : cs_subtemplate(__FILE__, $data, 'abcode', 'imgbox');
+  return $result;
 }
 
 function cs_abcode_mode($set = 0) {
