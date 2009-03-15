@@ -12,6 +12,20 @@ $users_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if(isset($_GET['agree'])) {
   $nick_temp = cs_sql_select(__FILE__,'users','users_nick','users_id='.$users_id,0,0,1);
   $nick = '*'.$nick_temp['users_nick'].'*'; 
+  
+  $chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  $chars_count = strlen($chars)-1;
+  $mail = '';
+  $given = 1;
+  
+  while (!empty($given)) {
+    for ($i = 0; $i < 40; $i++) {
+      $rand = rand(0,$chars_count);
+      $mail .= $chars{$rand};
+    }
+    $given = cs_sql_count(__FILE__, 'users', "users_email = '" . $mail . "'");
+  }
+  
   $array_data = array('access_id'=>0,
                       'users_nick'=>"$nick",
                       'users_pwd'=>'',
@@ -28,7 +42,7 @@ if(isset($_GET['agree'])) {
                       'users_icq'=>0,
                       'users_msn'=>'',
                       'users_skype'=>'',
-                      'users_email'=>'',
+                      'users_email'=>$mail,
                       'users_url'=>'',
                       'users_phone'=>'',
                       'users_mobile'=>'',
