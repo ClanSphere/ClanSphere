@@ -4,7 +4,7 @@
   </tr>
   <tr>
     <td class="leftb">{icon:editpaste} <a href="{url:servers_create}">{lang:new_serv}</a></td>
-    <td class="leftb">{icon:contents} {lang:all} {server:count}</td>
+    <td class="leftb">{icon:contents} {lang:total} {server:count}</td>
     <td class="rightb">{server:pages}</td>
   </tr>
   <tr>

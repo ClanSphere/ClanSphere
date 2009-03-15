@@ -18,8 +18,8 @@ $cs_lang['slist'] = 'Serverliste';
 $cs_lang['server'] = 'Server';
 $cs_lang['servers'] = 'Server';
 $cs_lang['map'] = 'Karte';
-$cs_lang['ip'] = 'IP/Host:';
-$cs_lang['type'] = 'Spiel:';
+$cs_lang['ip'] = 'IP/Host';
+$cs_lang['type'] = 'Spiel';
 $cs_lang['info'] = 'Infos';
 $cs_lang['max'] = 'max. ';
 $cs_lang['slots'] = ' Spieler';
@@ -35,10 +35,9 @@ $cs_lang['fsockoff'] .= 'Um die Funktion zu aktivieren, bitte in der php.ini die
 $cs_lang['fsockoff'] .= '<br /><b>Live-Status nicht m&ouml;glich!</b>';
 $cs_lang['php'] = '<strong>Es ist ein Fehler aufgetreten:</strong><br />';
 $cs_lang['php'] .= 'Um die Server-Anzeige nutzen zu k&ouml;nnen, ist es unbedingt erforderlich, das die PHP Version aktualisiert wird.<br />';
-$cs_lang['all'] = 'Gesamt: ';
 $cs_lang['headline'] = 'Servername';
 $cs_lang['new_serv'] = 'Neuer Server';
-$cs_lang['number'] = 'Anzahl: ';
+$cs_lang['number'] = 'Anzahl ';
 $cs_lang['gametype'] = 'Spiel';
 $cs_lang['gameclass'] = 'Classes';
 $cs_lang['rss_info']  = 'Server Details';
@@ -79,11 +78,11 @@ $cs_lang['gametyp'] = 'Gametyp';
 $cs_lang['mapsdl'] = 'Maps Bilder runterladen';
 
 // Global View Stats
-$cs_lang['map:']      = 'Karte:';
-$cs_lang['response']  = 'Verbindung:';
-$cs_lang['privileges']  = 'Rechte:';
-$cs_lang['game']  = 'Spiel:';
-$cs_lang['gamemod']  = 'Mod:';
+$cs_lang['map:']      = 'Karte';
+$cs_lang['response']  = 'Verbindung';
+$cs_lang['privileges']  = 'Rechte';
+$cs_lang['game']  = 'Spiel';
+$cs_lang['gamemod']  = 'Mod';
 
 // Player Stats
 $cs_lang['rank']  = 'Rank';
@@ -106,11 +105,11 @@ $cs_lang['channel']    = 'Channel';
 $cs_lang['privileg']  = 'Status';
 
 // Navlist
-$cs_lang['host_navlist'] = 'IP/Host: ';
-$cs_lang['game_navlist'] = 'Spiel: ';
-$cs_lang['version_navlist'] = 'Version: ';
-$cs_lang['response_navlist'] = 'Latenz: ';
-$cs_lang['players_navlist'] = 'Spieler: ';
-$cs_lang['map_navlist'] = 'Karte: ';
+$cs_lang['host_navlist'] = 'IP/Host ';
+$cs_lang['game_navlist'] = 'Spiel ';
+$cs_lang['version_navlist'] = 'Version ';
+$cs_lang['response_navlist'] = 'Latenz ';
+$cs_lang['players_navlist'] = 'Spieler ';
+$cs_lang['map_navlist'] = 'Karte ';
 
 ?>

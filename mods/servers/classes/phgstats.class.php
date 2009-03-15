@@ -33,15 +33,15 @@
 */
 
 class phgstats { 
-  function &query($srv_type) {
+  function query($srv_type) {
     switch ($srv_type) {
       case 'aa': // Army Ops
-            include_once('mods/servers/classes/aa.class.php');
+        include_once('mods/servers/classes/aa.class.php');
         $query = new aa;
         return $query;
-            break;
-        case 'bf': // Battlefield 1942
-            include_once('mods/servers/classes/bf.class.php');
+        break;
+      case 'bf': // Battlefield 1942
+        include_once('mods/servers/classes/bf.class.php');
         $query = new bf;
         return $query;
         break;

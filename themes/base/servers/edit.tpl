@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form action="{url:servers_create}" method="post" name="Servers Create">
+<form action="{url:servers_edit}" method="post" name="Servers Edit">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftb">{icon:kedit} {lang:servername} *</td>
@@ -93,7 +93,10 @@
   </tr>  
   <tr>
     <td class="leftb">{icon:ksysguard} {lang:options}</td>
-    <td class="leftc"><input type="submit" name="submit" value="{lang:create}" /></td>
+    <td class="leftc">
+      <input type="hidden" name="id" value="{servers:id}" />
+      <input type="submit" name="submit" value="{lang:create}" />
+    </td>
   </tr>
 </table>
 </form>    

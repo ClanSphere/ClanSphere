@@ -24,39 +24,34 @@ if(isset($_POST['submit'])) {
   $data['create']['servers_query'] = $_POST['servers_query'];
   $data['create']['servers_order'] = $_POST['servers_order'];
 
-  if(empty($cs_servers['servers_name'])) {
+  if(empty($data['create']['servers_name'])) {
     $servers_error++;
     $errormsg .= $cs_lang['no_name'] . cs_html_br(1);
   }
-  if(empty($cs_servers['servers_ip'])) {
+  if(empty($data['create']['servers_ip'])) {
     $servers_error++;
     $errormsg .= $cs_lang['no_ip'] . cs_html_br(1);
   }
-  if(empty($cs_servers['servers_port'])) {
+  if(empty($data['create']['servers_port'])) {
     $servers_error++;
     $errormsg .= $cs_lang['no_port'] . cs_html_br(1);
   }
-  if(empty($cs_servers['games_id'])) {
+  if(empty($data['create']['games_id'])) {
     $servers_error++;
     $errormsg .= $cs_lang['no_game'] . cs_html_br(1);
   }
-  if(empty($cs_servers['servers_type'])) {
+  if(empty($data['create']['servers_type'])) {
     $servers_error++;
     $errormsg .= $cs_lang['no_type'] . cs_html_br(1);
   }
-  if(empty($cs_servers['servers_stats'])) {
-    $servers_error++;
-    $errormsg .= $cs_lang['no_stats'] . cs_html_br(1);
-  }
-  if(empty($cs_servers['servers_class'])) {
+  if(empty($data['create']['servers_class'])) {
     $servers_error++;
     $errormsg .= $cs_lang['no_class'] . cs_html_br(1);
   }
-  if(empty($cs_servers['servers_query'])) {
+  if(empty($data['create']['servers_query'])) {
     $servers_error++;
     $errormsg .= $cs_lang['no_query'] . cs_html_br(1);
   }
-
 // Create new Entry
 } 
 else {
@@ -84,7 +79,7 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
 	$data['games'] = cs_sql_select(__FILE__,'games','games_name, games_id',0,0,0,0);
 	
 	$server_stats = array(
-    array('name' => $cs_lang['no'], 'value' => '2'),
+    array('name' => $cs_lang['no'], 'value' => '0'),
     array('name' => $cs_lang['yes'], 'value' => '1')
 	);
 	$run=0;
@@ -162,8 +157,8 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
 } else {
 
   // Insert SQL Data
-  $servers_cells = array_keys($cs_servers);
-  $servers_save = array_values($cs_servers);
+  $servers_cells = array_keys($data['create']);
+  $servers_save = array_values($data['create']);
   cs_sql_insert(__FILE__,'servers',$servers_cells,$servers_save);
   
   // Include RSS Feed

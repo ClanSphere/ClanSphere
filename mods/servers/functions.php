@@ -1,136 +1,12 @@
 <?php
-/*
- * show the data of one server
- */ 
-function srv_info ($sh_srv, $srv_rules, $use_file, $use_bind, $only) {   
-  global $cs_lang;
-
-  if ($only) {
-    /* html: one server: refresh button */
-      $bar = cs_html_table(1,'forum',1);
-      $bar .= cs_html_roco(1,'leftb');
-      $bar .= cs_html_div(1,'text-align:center');
-      $bar .= cs_link($cs_lang['refresh'],'servers','list');
-      $bar .= cs_html_div(0);
-      $bar .= cs_html_roco(0);
-      $bar .= cs_html_table(0);
-      $bar .= cs_html_br(2); 
-  }
-  else {
-       /* html: more server: resfresh and serverlist button */
-       $bar = cs_html_table(1,'forum',1);
-      $bar .= cs_html_roco(1,'headb');
-      $bar .= $srv_rules['hostname'];
-      $bar .= cs_html_roco(0);
-      $bar .= cs_html_roco(1,'leftb');
-      $bar .= cs_html_div(1,'text-align:center');
-      $bar .= cs_link($cs_lang['slist'],'servers','list');
-    $bar .= ' | ' ;
-    $bar .= cs_link($cs_lang['refresh'],'servers','list','sh_srv=' . $sh_srv);
-    $bar .= cs_html_div(0);
-    $bar .= cs_html_roco(0);
-    $bar .= cs_html_table(0);
-    $bar .= cs_html_br(1);
-  }
-    
-    /* html: menu bar top */
-  echo $bar;
-  
-    /* html: table to show server infos (1 server) */
-  echo cs_html_table(1,'forum',1);
-    
-  /* html: hostname, country and daytime */
-    echo cs_html_roco(1,'leftb',0,2);
-    echo cs_html_div(1,'text-align:center;');
-    echo $srv_rules['country'] . ' ' . $srv_rules['time'];
-  echo cs_html_div(0);
-    echo cs_html_roco(0);
-    
-  /*   html: titels (server info) */
-    echo cs_html_roco(1,'leftb',0,0);
-    echo cs_html_div(1,'text-align:center;');
-    echo $cs_lang['servers'];
-    echo cs_html_div(0);
-    echo cs_html_roco(2,'leftb',0,0);
-    echo cs_html_div(1,'text-align:center;');
-    echo $cs_lang['map'];
-    echo cs_html_div(0);
-    echo cs_html_roco(0);
-
-  /* html: adress, game, gametype, mapname, players, privileges */
-    echo cs_html_roco(1,'leftb');
-    echo cs_html_table(1,'forum',0,'40%');
-  echo cs_html_roco(1,'leftb');
-    echo $cs_lang['ip'];
-    echo cs_html_roco(2,'leftb');
-  /* if TS View, use teamspeak:// */
-  preg_match_all ("/Teamspeak/", $srv_rules['gamename'], $teamspeak);
-  if(in_array("Teamspeak", $teamspeak[0])) {
-      echo cs_html_link('teamspeak://' . $srv_rules['adress'],$srv_rules['adress'],'_blank');
-  }
-    else {
-      echo cs_html_link('hlsw://' . $srv_rules['adress'],$srv_rules['adress'],'_blank');
-    }
-    echo cs_html_roco(0);
-    echo $srv_rules['htmldetail'];
-    echo cs_html_table(0);
-    
-    /* html: map picture */
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_div(1,'text-align:center;');
-    echo cs_html_img($srv_rules['map'],0,0,0,$srv_rules['mapname']);
-    echo cs_html_div(0);
-    echo cs_html_roco(0);
-
-  /* html: close info table */
-    echo cs_html_table(0);
-      
-  /* html: open playerlist table */
-  echo cs_html_br(1);
-  echo cs_html_table(1,'forum',1);
-    
-  /* html: playerlist */
-  echo $srv_rules['playerlist'];
-  
-  /* html: close playerlist table */
-  echo cs_html_table(0);
-}
-      
+     
 /*
  * get data of server
  */ 
 function info($phgdir, $sh_srv, $game, $host, $port, $queryport, $country, $stats) {
-  global $cs_lang;
-    
-  /* create server the object */
-    if($game[$sh_srv] == '1') { } else {
-      $phgstatsc = new phgstats();
-      $phgstats = $phgstatsc->query($game[$sh_srv]);
-  }
 
-  /* resolve ip adress */
-    $host[$sh_srv] = dns($host[$sh_srv]);
-
-  /* get the serverinfo string */
-    if($stats[$sh_srv]=='1') {
-      $server = $phgstats->getstream($host[$sh_srv], $port[$sh_srv], $queryport[$sh_srv]);
-  }
-    else {
-      $server = 0;
-  }
 
   if ($server === true) {
-    /* get the server rules */
-        $srv_rules  = $phgstats->getrules($phgdir);
-        $srv_rules['playerlist'] = $phgstats->getplayers();     
-        
-    /* full path to the map picture */
-      $srv_rules['map'] = $phgdir . $srv_rules['map_path'] . '/' . $srv_rules['mapname'] . '.jpg';
-  
-      if (!(file_exists($srv_rules['map']))) {
-      /* set default map if no picture found */
-        $srv_rules['map'] = $phgdir . $srv_rules['map_path'] . '/' . $srv_rules['map_default'];
-    }
   }
   else {
     /* default values if no response */
@@ -165,49 +41,7 @@ function info($phgdir, $sh_srv, $game, $host, $port, $queryport, $country, $stat
   return $srv_rules;
 }  
 
-/*
- * show the data of two or more server
- */ 
-function srv_list ($sh_srv, $srv_rules, $use_file, $use_bind) {
-  global $cs_lang;
-
-  /* html: server ip and gamename */
-  echo cs_html_roco(1,'leftb');
-    echo cs_html_div(1,'text-align:center');
-    echo $cs_lang['ip'];
-    echo cs_html_br(1);
-    echo cs_link($srv_rules['adress'],'servers','list','sh_srv=' . $sh_srv);
-    echo cs_html_br(2);
-    echo $cs_lang['type'];
-    echo cs_html_br(1);
-    echo $srv_rules['gamename'];
-    echo cs_html_br(2);
-  /* if TS View, use teamspeak:// */
-  preg_match_all ("/Teamspeak/", $srv_rules['gamename'], $teamspeak);
-    if(in_array("Teamspeak", $teamspeak[0])) {
-      echo cs_html_link('teamspeak://' . $srv_rules['adress'],'Connect','_blank');
-  }
-    else {
-      echo cs_html_link('hlsw://' . $srv_rules['adress'],'HLSW','_blank');
-    }
-    echo cs_html_div(0);
-
-  /* html: server info link */
-  echo cs_html_roco(2,'leftb');
-    echo cs_html_div(1,'text-align:center');
-    echo cs_link($srv_rules['hostname'],'servers','list','sh_srv=' . $sh_srv);
-    echo cs_html_div(0);
-
-  /* html: server details table */
-  echo cs_html_table(1,'forum',0,'40%');
-  echo $srv_rules['htmlinfo'];
-  echo cs_html_table(0);
-  
-     /* html: map picture */
-  echo cs_html_roco(3,'leftb');
-  echo cs_html_div(1,'vertical-align:middle');
-    echo cs_html_img($srv_rules['map'],50,50,'',$srv_rules['mapname']);
-  echo cs_html_div(0);
-  echo cs_html_roco(0);
+function dns($host) {
+	return gethostbyname($host); 
 }      
 ?>
