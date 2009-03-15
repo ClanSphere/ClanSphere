@@ -113,7 +113,11 @@ if(!isset($_POST['submit'])) {
 
 
 if(!empty($error) OR !isset($_POST['submit'])) {
-  if($file_up == 0) {
+ 
+  $data['data'] = $cs_gallery;
+  $data['data']['folders_select'] = make_folders_select('folders_id',$cs_gallery['folders_id'],'0','gallery');
+  
+  if(empty($file_up)) {
     $matches[1] = $cs_lang['pic_infos'];
     $return_types = '';
     foreach($img_filetypes AS $add) {
@@ -129,9 +133,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['data']['info_clip'] .= cs_html_vote('gallery_name',$cs_gallery['gallery_name'],'hidden');
     $data['data']['picture'] = cs_html_img('mods/gallery/image.php?picname=' . $cs_gallery['gallery_name']);
   }
-  
-  $data['data'] = $cs_gallery;
-  $data['data']['folders_select'] = make_folders_select('folders_id',$cs_gallery['folders_id'],'0','gallery');
 
   $var = cs_html_select(1,'gallery_access');
   $levels = 0;
@@ -205,7 +206,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $checked = 'checked="checked"';
   $data['check']['gray'] = empty($gray) ? '' : $checked;
-
 
  echo cs_subtemplate(__FILE__,$data,'gallery','picture_create');
 }
