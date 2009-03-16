@@ -185,6 +185,9 @@ function cs_html_form($func, $form_id = 0, $mod = 0, $action = 0, $enctype = 0, 
 
 function cs_html_input($name, $value, $type, $max = 0, $size = 0, $more = 0, $class = 'form')
 {
+
+    cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
+
     $value = htmlspecialchars($value);
     $var = "\n <input type=\"" . $type . "\" name=\"" . $name . "\" value=\"" . $value . "\" ";
     if (!empty($more))

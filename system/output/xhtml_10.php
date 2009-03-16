@@ -95,29 +95,6 @@ function cs_html_anchor($name, $text = '', $more = '')
     return "<a href=\"#\" name=\"" . $name . "\"" . $more . " >" . $text . "</a>";
 }
 
-function cs_html_input($name, $value, $type, $max = 0, $size = 0, $more = 0, $class = 'form')
-{
-    $value = htmlspecialchars($value);
-    $var = "\n <input type=\"" . $type . "\" name=\"" . $name . "\" value=\"" . $value . "\" ";
-    if (!empty($more))
-    {
-        $var .= $more . ' ';
-    }
-    if (!empty($max))
-    {
-        $var .= "maxlength=\"" . $max . "\" ";
-    }
-    if (!empty($size))
-    {
-        $var .= "size=\"" . $size . "\" ";
-    }
-    if (!empty($class))
-    {
-        $var .= "class=\"" . $class . "\" ";
-    }
-    return $var . '/>';
-}
-
 function cs_html_select($func, $name = '', $more = 0)
 {
     if (!empty($func))
