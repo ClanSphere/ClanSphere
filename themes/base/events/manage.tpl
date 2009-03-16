@@ -9,10 +9,12 @@
  </tr>
  <tr>
   <td class="leftb" colspan="3">
-    {lang:category}
-      <form method="post" id="events_manage" action="{url:events_manage}">
-        {head:categories} 
-      <input type="submit" name="submit" value="{lang:show}" />
+    <form method="post" id="events_manage" action="{url:events_manage}">
+      <fieldset style="border: 0; padding: 0">
+        {lang:category}
+        {head:categories}
+        <input type="submit" name="submit" value="{lang:show}" />
+      </fieldset>
       </form>
   </td>
  </tr>
