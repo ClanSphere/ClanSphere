@@ -230,7 +230,7 @@ class hl {
 			// path to map picture
 			$srv_rules['map_path'] = 'maps/hl2';
 		}
-		 
+			
 		// return all server rules
 		return $srv_rules;
 	}
@@ -243,7 +243,7 @@ class hl {
 		$head[]['name'] = $cs_lang['time'];
 		return $head;
 	}
-	
+
 	function getplayers() {
 		$players = array();
 
@@ -295,9 +295,9 @@ class hl {
 
 		// manage the player data in the following code
 		$index = 1;
-    $run = 0;
+		$run = 0;
 		while ($clients != -1) {
-			
+				
 			list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
 			list ($points[$index], $ping[$index]) =  split(' ', $cache[$index]);
 
@@ -308,7 +308,7 @@ class hl {
 			$tdata[$run][0] .= '<td class="centerb">' . $player[$index] . '</td>';
 			$tdata[$run][0] .= '<td class="centerb">' . $points[$index] . '</td>';
 			$tdata[$run][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
-      
+
 			$clients--;
 			$index++;
 			$run++;

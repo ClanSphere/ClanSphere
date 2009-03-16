@@ -1,919 +1,872 @@
-<?php 
+<?php
 $cs_lang = cs_translate('servers');
 // Teamspeak Game Class
 /*
-* Copyright (c) 2004-2006, woah-projekt.de
-* All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions
-* are met:
-*
-* * Redistributions of source code must retain the above copyright
-*   notice, this list of conditions and the following disclaimer.
-* * Redistributions in binary form must reproduce the above copyright
-*   notice, this list of conditions and the following disclaimer
-*   in the documentation and/or other materials provided with the
-*   distribution.
-* * Neither the name of the phgstats project (woah-projekt.de)
-*   nor the names of its contributors may be used to endorse or
-*   promote products derived from this software without specific
-*   prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-* "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-* FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-* COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-* BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-* ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-* POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Copyright (c) 2004-2006, woah-projekt.de
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * * Redistributions of source code must retain the above copyright
+ *   notice, this list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above copyright
+ *   notice, this list of conditions and the following disclaimer
+ *   in the documentation and/or other materials provided with the
+ *   distribution.
+ * * Neither the name of the phgstats project (woah-projekt.de)
+ *   nor the names of its contributors may be used to endorse or
+ *   promote products derived from this software without specific
+ *   prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
 
 class ts
 {
-    var $maxlen   = 1024;
-    var $response = false;
-    var $s_info = '';
+	var $maxlen   = 1024;
+	var $response = false;
+	var $s_info = '';
 
-    function microtime_float()
-    {
-        list($usec, $sec) = explode(" ", microtime());
-        
-        return ((float)$usec + (float)$sec);
-    }
+	function microtime_float()
+	{
+		list($usec, $sec) = explode(" ", microtime());
 
-    function splitdata()
-    {
-        $this->s_info    = explode('OK', $this->s_info);
-  $this->s_info[0] = str_replace ('[TS]', '', $this->s_info[0]);
-  $this->s_info[0] = str_replace ("\n", '', $this->s_info[0]);
+		return ((float)$usec + (float)$sec);
+	}
 
-  $this->p_info    = explode("\n", $this->s_info[1]);
+	function splitdata()
+	{
+		$this->s_info    = explode('OK', $this->s_info);
+		$this->s_info[0] = str_replace ('[TS]', '', $this->s_info[0]);
+		$this->s_info[0] = str_replace ("\n", '', $this->s_info[0]);
 
-  $this->d_info    = explode("\n", $this->s_info[2]);
-  $this->s_info[3] = explode("\n", $this->s_info[3]);
-    }
+		$this->p_info    = explode("\n", $this->s_info[1]);
 
-    function getstream($host, $port, $queryport)
-    {
-  // get the infostream from server
+		$this->d_info    = explode("\n", $this->s_info[2]);
+		$this->s_info[3] = explode("\n", $this->s_info[3]);
+	}
 
-  if (empty($queryport))
-  {
-    $queryport = '5100';
-  }
-  
-        $socket = @fsockopen($host, $queryport, $errno, $errstr, 30);
+	function getstream($host, $port, $queryport)
+	{
+		// get the infostream from server
 
-  if ($socket === false)
-  {
-            #echo "Error: $errno - $errstr<br>\n";
-        }
-  else
-  {
-            socket_set_timeout($socket, 3);
-      
-      $time_begin = $this->microtime_float();
-      
-      fwrite($socket, 'ver ' . "\n");
-      fwrite($socket, 'pl ' . $port . "\n");
-      fwrite($socket, 'si ' . $port . "\n");
-      fwrite($socket, 'cl ' . $port . "\n");
-      fwrite($socket, 'quit' . "\n");
+		if (empty($queryport))
+		{
+			$queryport = '5100';
+		}
 
-      while(!feof($socket))
-      {
-        $this->s_info .= fgets($socket, $this->maxlen);            
-      }
+		$socket = @fsockopen($host, $queryport, $errno, $errstr, 30);
 
-      $time_end = $this->microtime_float();
-            fclose($socket);
+		if ($socket === false)
+		{
+			#echo "Error: $errno - $errstr<br>\n";
+		}
+		else
+		{
+			socket_set_timeout($socket, 3);
 
-      // response time
-      $this->response = $time_end - $time_begin;
-      $this->response = ($this->response * 1000);
-            $this->response = (int)$this->response;          
-        }
+			$time_begin = $this->microtime_float();
 
-  if ($this->s_info)
-  {
-      $this->splitdata();
-      return true;
-  }
-  else
-  {
-      return false;
-  }
-    }
+			fwrite($socket, 'ver ' . "\n");
+			fwrite($socket, 'pl ' . $port . "\n");
+			fwrite($socket, 'si ' . $port . "\n");
+			fwrite($socket, 'cl ' . $port . "\n");
+			fwrite($socket, 'quit' . "\n");
 
-    function getchannel($channel_id)
-    {
-  $count_info = count($this->s_info[3]) - 1;
-  for ($c_nr = 2; $c_nr < $count_info; $c_nr++)
-  {
-      $channel_info = explode("\t", $this->s_info[3][$c_nr]);
-      $channel_info[0] = str_replace(' ', '', $channel_info[0]);
+			while(!feof($socket))
+			{
+				$this->s_info .= fgets($socket, $this->maxlen);
+			}
 
-      if ($channel_info[0] == $channel_id)
-      {
-    $channel_info[5] = str_replace('"', '', $channel_info[5]);
-    return $channel_info[5];
-      }
-  }
-    }
+			$time_end = $this->microtime_float();
+			fclose($socket);
 
-    function getprivileges($player_info)
-    {
-        $c_privs = '';
-        $s_privs = '';
+			// response time
+			$this->response = $time_end - $time_begin;
+			$this->response = ($this->response * 1000);
+			$this->response = (int)$this->response;
+		}
 
-  $player_info[10] = str_replace(' ', '', $player_info[10]);
+		if ($this->s_info)
+		{
+			$this->splitdata();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
-  switch($player_info[10])
-  {
-      case 1:
+	function getchannel($channel_id)
+	{
+		$count_info = count($this->s_info[3]) - 1;
+		for ($c_nr = 2; $c_nr < $count_info; $c_nr++)
+		{
+			$channel_info = explode("\t", $this->s_info[3][$c_nr]);
+			$channel_info[0] = str_replace(' ', '', $channel_info[0]);
 
-      {
-    $c_privs = 'CA';
-    break;
-            }
-      case 2:
-      {
-    $c_privs = 'O';
-    break;
-      } 
-      case 3:
-      {
-    $c_privs = 'CA O';
-    break;
-      }
-      case 4:
-      {
-    $c_privs = 'V';
-    break;
-      } 
-      case 5:
-      {
-    $c_privs = 'CA V';
-    break;
-      } 
-      case 6:
-      {
-    $c_privs = 'O V';
-    break;
-      } 
-      case 7:
-      {
-    $c_privs = 'CA O V';
-    break;
-      } 
-      case 8:
-      {
-    $c_privs = 'AO';
-    break;
-      } 
-      case 9:
-      {
-    $c_privs = 'CA AO';
-    break;
-      } 
-      case 10:
-      {
-    $c_privs = 'O AO';
-    break;
-      } 
-      case 11:
-      {
-    $c_privs = 'CA O AO';
-    break;
-      } 
-      case 12:
-      {
-    $c_privs = 'V AO';
-    break;
-      } 
-      case 13:
-      {
-    $c_privs = 'CA V AO';
-    break;
-      } 
-      case 14:
-      {
-    $c_privs = 'O V AO';
-    break;
-      } 
-      case 15:
-      {
-    $c_privs = 'CA O V AO';
-    break;
-      } 
-      case 16:
-      {
-    $c_privs = 'AV';
-    break;
-      } 
-      case 17:
-      {
-    $c_privs = 'CA AV';
-    break;
-      } 
-      case 18:
-      {
-    $c_privs = 'O AV';
-    break;
-      } 
-      case 19:
-      {
-    $c_privs = 'CA O AV';
-    break;
-      }
-      case 20:
-      {
-    $c_privs = 'V AV';
-    break;
-      } 
-      case 21:
-      {
-    $c_privs = 'CA V AV';
-    break;
-      } 
-      case 22:
-      {
-    $c_privs = 'O V AV';
-    break;
-      } 
-      case 23:
-      {
-    $c_privs = 'CA V AV';
-    break;
-      }
-       case 24:
-      {
-    $c_privs = 'AO AV';
-    break;
-      }
-      case 25:
-      {
-    $c_privs = 'CA AO AV';
-    break;
-      } 
-      case 26:
-      {
-    $c_privs = 'O AO AV';
-    break;
-      } 
-      case 27:
-      {
-    $c_privs = 'CA O AO AV';
-    break;
-      }
-       case 28:
-      {
-    $c_privs = 'V AO AV';
-    break;
-      } 
-      case 29:
-      {
-    $c_privs = 'CA V AO AV';
-    break;
-      }
-       case 30:
-      {
-    $c_privs = 'O V AO AV';
-    break;
-      }
-       case 31:
-      {
-    $c_privs = 'CA O V AO AV';
-    break;
-      } 
-  }
-  switch($player_info[11])
-  {
-      case 0:
-      {
-                $s_privs = 'U';
-    break;
-      }
-      case 1:
-      {
-    $s_privs = 'SA U';
-    break;
-            }
-      case 2:
-      {
-    $s_privs = 'U';
-    break;
-      } 
-      case 3:
-      {
-    $s_privs = 'SA U';
-    break;
-      }
-      case 4:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 5:
-      {
-    $s_privs = 'SA R';
-    break;
-      } 
-      case 6:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 7:
-      {
-    $s_privs = 'SA R';
-    break;
-      } 
-      case 8:
-      {
-    $s_privs = 'U';
-    break;
-      } 
-      case 9:
-      {
-    $s_privs = 'SA U';
-    break;
-      } 
-      case 10:
-      {
-    $s_privs = 'U';
-    break;
-      } 
-      case 11:
-      {
-    $s_privs = 'SA U';
-    break;
-      } 
-      case 12:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 13:
-      {
-    $s_privs = 'SA R';
-    break;
-      } 
-      case 14:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 15:
-      {
-    $s_privs = 'SA R';
-    break;
-      } 
-      case 16:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 17:
-      {
-    $s_privs = 'SA U';
-    break;
-      } 
-      case 18:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 19:
-      {
-    $s_privs = 'SA U';
-    break;
-      }
-      case 20:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 21:
-      {
-    $s_privs = 'SA R';
-    break;
-      } 
-      case 22:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 23:
-      {
-    $s_privs = 'SA R';
-    break;
-      }
-       case 24:
-      {
-    $s_privs = 'U';
-    break;
-      }
-      case 25:
-      {
-    $s_privs = 'SA U';
-    break;
-      } 
-      case 26:
-      {
-    $s_privs = 'U';
-    break;
-      } 
-      case 27:
-      {
-    $s_privs = 'SA U';
-    break;
-      }
-       case 28:
-      {
-    $s_privs = 'R';
-    break;
-      } 
-      case 29:
-      {
-    $s_privs = 'SA R';
-    break;
-      }
-       case 30:
-      {
-    $s_privs = 'R';
-    break;
-      }
-       case 31:
-      {
-    $s_privs = 'SA R';
-    break;
-      } 
-  }
-  return $s_privs . ' ' . $c_privs;
-    }
+			if ($channel_info[0] == $channel_id)
+			{
+				$channel_info[5] = str_replace('"', '', $channel_info[5]);
+				return $channel_info[5];
+			}
+		}
+	}
 
-    function getstatus($player_info)
-    {
-  $player_info[12] = str_replace(' ', '', $player_info[12]);
+	function getprivileges($player_info)
+	{
+		$c_privs = '';
+		$s_privs = '';
 
-  switch ($player_info[12]) 
-  {
-      case "1":
-      {
-    $status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">'; 
-       break;
-      }
-      case "3": 
-      {
-                $status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">'; 
-    break;
-            }
-      case "5": 
-      {
-                $status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">'; 
-    break;
-            }
-      case "7": 
-      {
-    $status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">'; 
-    break;    
-      }
-      case "8":
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }    
-      case "9":
-      { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "10":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "11": 
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "12":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "13":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-            }
-      case "14":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "15": 
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;      
-      }
-      case "16":
-            {
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "17":
-            {
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;
-      }
-            case "18":
-            { 
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "19":
-            { 
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "20": 
-            {
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "21":
-            { 
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "22": 
-            {
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "23":
-      { 
-    $status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
-    break;    
-      }
-      case "24":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "25":
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "26": 
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-            case "27":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "28": 
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "29":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "30": 
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "31":
-            { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;    
-      }
-      case "32":
-            {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "33": 
-      {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "34":
-      { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "35": 
-            {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "36":
-      { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "37":
-      { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "38":
-      { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "39": 
-      {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;    
-      }
-      case "40": 
-      {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "41": 
-      {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "42": 
-      {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "43": 
-      {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "44":
-      { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "45":
-      { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "46": 
-      {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "47": 
-      {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;    
-      }
-      case "48":
-            { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "49": 
-            {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "50":
-            { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "51":
-            { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "52": 
-      {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "53":
-      { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "54": 
-      {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "55": 
-      {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "56":
-            { 
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "57": 
-      {
-    $status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
-    break;    
-      }
-      case "58": 
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "59": 
-            {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;    
-      }
-            case "60":
-      { 
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;
-      }
-      case "61": 
-      {
-    $status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
-    break;    
-      }
-      default:
-      {
-       $status_img = '<img src="mods/servers/images/user.gif" width="16" height="16" border="0">';
-    break;
-      }  
-  }
+		$player_info[10] = str_replace(' ', '', $player_info[10]);
 
-  return $status_img;
-    }
+		switch($player_info[10])
+		{
+			case 1:
 
-    function getrules($phgdir)
-    {
-        $srv_rules['sets'] = false;
+				{
+					$c_privs = 'CA';
+					break;
+				}
+			case 2:
+				{
+					$c_privs = 'O';
+					break;
+				}
+			case 3:
+				{
+					$c_privs = 'CA O';
+					break;
+				}
+			case 4:
+				{
+					$c_privs = 'V';
+					break;
+				}
+			case 5:
+				{
+					$c_privs = 'CA V';
+					break;
+				}
+			case 6:
+				{
+					$c_privs = 'O V';
+					break;
+				}
+			case 7:
+				{
+					$c_privs = 'CA O V';
+					break;
+				}
+			case 8:
+				{
+					$c_privs = 'AO';
+					break;
+				}
+			case 9:
+				{
+					$c_privs = 'CA AO';
+					break;
+				}
+			case 10:
+				{
+					$c_privs = 'O AO';
+					break;
+				}
+			case 11:
+				{
+					$c_privs = 'CA O AO';
+					break;
+				}
+			case 12:
+				{
+					$c_privs = 'V AO';
+					break;
+				}
+			case 13:
+				{
+					$c_privs = 'CA V AO';
+					break;
+				}
+			case 14:
+				{
+					$c_privs = 'O V AO';
+					break;
+				}
+			case 15:
+				{
+					$c_privs = 'CA O V AO';
+					break;
+				}
+			case 16:
+				{
+					$c_privs = 'AV';
+					break;
+				}
+			case 17:
+				{
+					$c_privs = 'CA AV';
+					break;
+				}
+			case 18:
+				{
+					$c_privs = 'O AV';
+					break;
+				}
+			case 19:
+				{
+					$c_privs = 'CA O AV';
+					break;
+				}
+			case 20:
+				{
+					$c_privs = 'V AV';
+					break;
+				}
+			case 21:
+				{
+					$c_privs = 'CA V AV';
+					break;
+				}
+			case 22:
+				{
+					$c_privs = 'O V AV';
+					break;
+				}
+			case 23:
+				{
+					$c_privs = 'CA V AV';
+					break;
+				}
+			case 24:
+				{
+					$c_privs = 'AO AV';
+					break;
+				}
+			case 25:
+				{
+					$c_privs = 'CA AO AV';
+					break;
+				}
+			case 26:
+				{
+					$c_privs = 'O AO AV';
+					break;
+				}
+			case 27:
+				{
+					$c_privs = 'CA O AO AV';
+					break;
+				}
+			case 28:
+				{
+					$c_privs = 'V AO AV';
+					break;
+				}
+			case 29:
+				{
+					$c_privs = 'CA V AO AV';
+					break;
+				}
+			case 30:
+				{
+					$c_privs = 'O V AO AV';
+					break;
+				}
+			case 31:
+				{
+					$c_privs = 'CA O V AO AV';
+					break;
+				}
+		}
+		switch($player_info[11])
+		{
+			case 0:
+				{
+					$s_privs = 'U';
+					break;
+				}
+			case 1:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 2:
+				{
+					$s_privs = 'U';
+					break;
+				}
+			case 3:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 4:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 5:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+			case 6:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 7:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+			case 8:
+				{
+					$s_privs = 'U';
+					break;
+				}
+			case 9:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 10:
+				{
+					$s_privs = 'U';
+					break;
+				}
+			case 11:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 12:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 13:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+			case 14:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 15:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+			case 16:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 17:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 18:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 19:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 20:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 21:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+			case 22:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 23:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+			case 24:
+				{
+					$s_privs = 'U';
+					break;
+				}
+			case 25:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 26:
+				{
+					$s_privs = 'U';
+					break;
+				}
+			case 27:
+				{
+					$s_privs = 'SA U';
+					break;
+				}
+			case 28:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 29:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+			case 30:
+				{
+					$s_privs = 'R';
+					break;
+				}
+			case 31:
+				{
+					$s_privs = 'SA R';
+					break;
+				}
+		}
+		return $s_privs . ' ' . $c_privs;
+	}
 
-  $srv_rules['mapname'] = 'Teamspeak';
-  $srv_rules['map_path'] = 'maps/ts';
-  $srv_rules['map_default'] = 'default.jpg';
+	function getstatus($player_info)
+	{
+		$player_info[12] = str_replace(' ', '', $player_info[12]);
 
-  // ts setting pics
-  $sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+		switch ($player_info[12])
+		{
+			case "1":
+				{
+					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "3":
+				{
+					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "5":
+				{
+					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "7":
+				{
+					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "8":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "9":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "10":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "11":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "12":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "13":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "14":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "15":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "16":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "17":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "18":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "19":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "20":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "21":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "22":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "23":
+				{
+					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "24":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "25":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "26":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "27":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "28":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "29":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "30":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "31":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "32":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "33":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "34":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "35":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "36":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "37":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "38":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "39":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "40":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "41":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "42":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "43":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "44":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "45":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "46":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "47":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "48":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "49":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "50":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "51":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "52":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "53":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "54":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "55":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "56":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "57":
+				{
+					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "58":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "59":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "60":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			case "61":
+				{
+					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					break;
+				}
+			default:
+				{
+					$status_img = '<img src="mods/servers/images/user.gif" width="16" height="16" border="0">';
+					break;
+				}
+		}
 
-  // server hostname
-  $srv_rules['hostname'] = substr($this->d_info[2], 12);
+		return $status_img;
+	}
 
-  // server version
-  $srv_rules['version'] = $this->s_info[0];  
-  $srv_rules['gamename'] = 'Teamspeak<br>' . $srv_rules['version'];
-  // server channels
-  $srv_rules['channels'] = substr($this->d_info[30], 23);
+	function getrules($phgdir)
+	{
+		$srv_rules['sets'] = false;
 
-        // response time
-  $srv_rules['response'] = $this->response . ' ms';
+		$srv_rules['mapname'] = 'Teamspeak';
+		$srv_rules['map_path'] = 'maps/ts';
+		$srv_rules['map_default'] = 'default.jpg';
 
-  // server type
-  if (substr($this->d_info[8], 19, 1) == 1)
-  {
-    $srv_rules['type'] = 'Clanserver';
-  }
-  else
-  {
-    $srv_rules['type'] = 'Publicserver';
-  }
+		// ts setting pics
+		$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
 
-  // players
-  $srv_rules['nowplayers'] = str_replace(' ', '', substr($this->d_info[29], 20));
-  $srv_rules['maxplayers'] = str_replace(' ', '', substr($this->d_info[10], 16));
+		// server hostname
+		$srv_rules['hostname'] = substr($this->d_info[2], 12);
 
-  if (substr($this->d_info[7], 16, 1) == 1)
-  {
-      $srv_rules['sets'] .= $sets['pass'];
-  }
-  else
-  {
-      $srv_rules['sets'] = '-';
-  }
+		// server version
+		$srv_rules['version'] = $this->s_info[0];
+		$srv_rules['gamename'] = 'Teamspeak<br>' . $srv_rules['version'];
+		// server channels
+		$srv_rules['channels'] = substr($this->d_info[30], 23);
 
-    // General server Info
-        global $cs_lang;
-        $srv_rules['htmlinfo'] = cs_html_roco(1,'rightb',0,0,'50%') . $cs_lang['version'];
-    $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['version'] . cs_html_roco(0);
-        $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['players'];
-        $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
-        $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['response'];
-        $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['response'] . cs_html_roco(0);
-        $srv_rules['htmlinfo'] .= cs_html_roco(1,'rightb') . $cs_lang['privileges'];
-        $srv_rules['htmlinfo'] .= cs_html_roco(2,'leftb') . $srv_rules['sets'] . cs_html_roco(0);
+		// response time
+		$srv_rules['response'] = $this->response . ' ms';
 
-        // server detail info
-        $srv_rules['htmldetail'] = cs_html_roco(1,'leftb') . $cs_lang['version'];
-        $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['gamename'] . cs_html_roco(0);
-        $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['gamemod'];
-        $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['type'] . cs_html_roco(0);
-        $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['channels'];
-        $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['channels'] . cs_html_roco(0);
-        $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['players'];
-        $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['nowplayers'] . ' / ' . $srv_rules['maxplayers'] . cs_html_roco(0);
-        $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['response'];
-        $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['response'] . cs_html_roco(0);
-        $srv_rules['htmldetail'] .= cs_html_roco(1,'leftb') . $cs_lang['privileges'];
-        $srv_rules['htmldetail'] .= cs_html_roco(2,'leftb') . $srv_rules['sets'] . cs_html_roco(0);
+		// server type
+		if (substr($this->d_info[8], 19, 1) == 1)
+		{
+			$srv_rules['type'] = 'Clanserver';
+		}
+		else
+		{
+			$srv_rules['type'] = 'Publicserver';
+		}
 
-        // return all server rules
-  return $srv_rules;
-    }
+		// players
+		$srv_rules['nowplayers'] = str_replace(' ', '', substr($this->d_info[29], 20));
+		$srv_rules['maxplayers'] = str_replace(' ', '', substr($this->d_info[10], 16));
 
-    function getplayers()
-    {
-  $players = 0;
-  $tdata = '';
+		if (substr($this->d_info[7], 16, 1) == 1)
+		{
+			$srv_rules['sets'] .= $sets['pass'];
+		}
+		else
+		{
+			$srv_rules['sets'] = '-';
+		}
+		// return all server rules
+		return $srv_rules;
+	}
 
-  $player = array();
-  $count_info = count($this->p_info) - 1;
-  for ($count = 2; $count < $count_info; $count++)
-  {
-    $player_data = explode ("\t", $this->p_info[$count]);
+	function getplayers_head() {
+		global $cs_lang;
+		$head[]['name'] = $cs_lang['id'];
+		$head[]['name'] = $cs_lang['name'];
+		$head[]['name'] = $cs_lang['channel'];
+		$head[]['name'] = $cs_lang['privileg'];
+		$head[]['name'] = $cs_lang['ping'];
+		return $head;
+	}
 
-    $players++;
-                $player_name = str_replace('"', '', $player_data[14]);
-                /* removed by balgo 17/06/06: disable login name display
-                if (strlen(str_replace('"', '', $player_data[15])) != 0)
-                {
-                        $player_name .= ' (' . str_replace('"', '', $player_data[15]) . ')';
-                }
-                */
-                array_push($player, $this->getchannel(
-                $player_data[1]) . "\00" . $this->getstatus($player_data). "\00" .
-                $player_name . "\00" . $this->getprivileges($player_data) . "\00" . $player_data[7]
-                );
-  }
+	function getplayers()
+	{
+		$players = 0;
+		$tdata = '';
 
-  asort($player);
+		$player = array();
+		$count_info = count($this->p_info) - 1;
+		for ($count = 2; $count < $count_info; $count++)
+		{
+			$player_data = explode ("\t", $this->p_info[$count]);
 
-  foreach ($player as $player_info)
-  {
-    $player_data = explode ("\00", $player_info);
+			$players++;
+			$player_name = str_replace('"', '', $player_data[14]);
+			/* removed by balgo 17/06/06: disable login name display
+			 if (strlen(str_replace('"', '', $player_data[15])) != 0)
+			 {
+			 $player_name .= ' (' . str_replace('"', '', $player_data[15]) . ')';
+			 }
+			 */
+			array_push($player, $this->getchannel(
+			$player_data[1]) . "\00" . $this->getstatus($player_data). "\00" .
+			$player_name . "\00" . $this->getprivileges($player_data) . "\00" . $player_data[7]
+			);
+		}
 
-            $tdata .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . $player_data[1] . cs_html_div(0);
-            $tdata .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . $player_data[2] . cs_html_div(0);
-            $tdata .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . $player_data[0] . cs_html_div(0);
-            $tdata .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . $player_data[3] . cs_html_div(0);
-            $tdata .= cs_html_roco(5,'leftb') . cs_html_div(1,'text-align:center') . $player_data[4] . cs_html_div(0);
-            $tdata .= cs_html_roco(0);
-  }
-        // get team variable
-  global $cs_lang;
-    $thead = cs_html_roco(1,'headb');
-    $thead .= cs_html_div(1,'text-align:center');
-    $thead .= $cs_lang['id'];
-    $thead .= cs_html_div(0);
-    $thead .= cs_html_roco(2,'headb');
-    $thead .= cs_html_div(1,'text-align:center');
-    $thead .= $cs_lang['name'];
-    $thead .= cs_html_div(0);
-    $thead .= cs_html_roco(3,'headb');
-    $thead .= cs_html_div(1,'text-align:center');
-    $thead .= $cs_lang['channel'];
-    $thead .= cs_html_div(0);
-    $thead .= cs_html_roco(4,'headb');
-    $thead .= cs_html_div(1,'text-align:center');
-    $thead .= $cs_lang['privileg'];
-    $thead .= cs_html_div(0);
-    $thead .= cs_html_roco(5,'headb');
-    $thead .= cs_html_div(1,'text-align:center');
-    $thead .= $cs_lang['ping'];
-    $thead .= cs_html_div(0);
-    $thead .= cs_html_roco(0);
-         
-     if ($players == 0)
-  {
-        $thead .= cs_html_roco(1,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
-        $thead .= cs_html_roco(2,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
-        $thead .= cs_html_roco(3,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
-        $thead .= cs_html_roco(4,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
-        $thead .= cs_html_roco(5,'leftb') . cs_html_div(1,'text-align:center') . '--' . cs_html_div(0);
-  }
+		asort($player);
+		$run=0;
+		foreach ($player as $player_info)
+		{
+			$player_data = explode ("\00", $player_info);
 
-  // store the html table line to the info array
-  $srv_player = $thead . $tdata;
-
-        return $srv_player;
-    }
+			$tdata[$run][0] = '<td class="centerb">' . $player_data[1] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $player_data[2] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $player_data[0] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $player_data[3] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $player_data[4] . '</td>';
+			$run++;
+		}
+			
+		if ($players == 0)
+		{
+			return array();
+		}
+		return $tdata;
+	}
 }

@@ -262,8 +262,8 @@ class atron
 		$count_players = count($this->players);
 		for ($player = 0; $player < $count_players; $player++)
 		{
-			$tdata[$run][0] = ($player + 1);
-			$tdata[$run][0] .= htmlentities($this->players[$player]);
+			$tdata[$player][0] = '<td class="centerb">' . ($player + 1) . '</td>';
+			$tdata[$player][0] .= '<td class="centerb">' . htmlentities($this->players[$player]) . '</td>';
 		}
 
 		// return html playerstring

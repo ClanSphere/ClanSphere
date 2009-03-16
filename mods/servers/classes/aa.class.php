@@ -226,7 +226,7 @@ class aa
 		$srv_rules['maxplayers']   = $this->getvalue('maxplayers',    $this->g_info);
 		$srv_rules['punkbuster']   = $this->getvalue('sv_punkbuster', $this->g_info);
 		$srv_rules['needpass']     = $this->getvalue('password',      $this->g_info);
-		 
+			
 		// path to map picture and default info picture
 		$srv_rules['map_path'] = 'maps/aa';
 		$srv_rules['map_default'] = 'default.jpg';
@@ -257,11 +257,11 @@ class aa
 
 	function getplayers_head() {
 		global $cs_lang;
-    $head[]['name'] = $cs_lang['rank'];
-    $head[]['name'] = $cs_lang['name'];
-    $head[]['name'] = $cs_lang['honor'];
-    $head[]['name'] = $cs_lang['ping'];
-    return $head;
+		$head[]['name'] = $cs_lang['rank'];
+		$head[]['name'] = $cs_lang['name'];
+		$head[]['name'] = $cs_lang['honor'];
+		$head[]['name'] = $cs_lang['ping'];
+		return $head;
 	}
 
 	function getplayers()
@@ -290,7 +290,7 @@ class aa
 			if ($this->getvalue('gamever',       $this->g_info) == '2.7.0') {
 				$pl_score  = $this->p_info[$index++];
 			}
-			 
+
 			$players[$clients] = $pl_honor  . ' ' .
 			$pl_enemy  . ' ' .
 			$pl_kia    . ' ' .
@@ -313,16 +313,13 @@ class aa
 			sort($players, SORT_NUMERIC);
 		}
 
-		// store the html table line to the info array
-		$srv_player = $thead;
-
 		// manage the player data in the following code
 		$index = 1;
-
+		$run = 0;
 		while ($clients)
 		{
 			$clients--;
-			 
+
 			list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
 			list ($honor[$index],
 			$enemy[$index],
@@ -331,16 +328,17 @@ class aa
 			$leader[$index],
 			$roe[$index],
 			$ping[$index])  = split (' ',  $cache[$index]);
-			 
+
 			$player[$index] = htmlentities($player[$index]);
 			$ping[$index]   = $this->check_color($ping[$index]);
-		
+
 			$tdata[$run][0] = '<td class="centerb">' . $index . '</td>';
-      $tdata[$run][0] .= '<td class="centerb">' . $player[$index] . '</td>';
-      $tdata[$run][0] .= '<td class="centerb">' . $points[$index] . '</td>';
-      $tdata[$run][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $player[$index] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $points[$index] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
 
 			$index++;
+			$run++;
 		}
 
 		return $tdata;
