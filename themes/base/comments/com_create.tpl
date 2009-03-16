@@ -38,7 +38,7 @@
 <br /><br />
 {stop:preview}
 
-<form method="post" name="{com:form_name}" action="{com:form_url}">
+<form method="post" id="{com:form_name}" action="{com:form_url}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	{if:guest}
 	<tr>

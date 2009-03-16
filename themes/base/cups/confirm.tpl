@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td class="centerb">
-     <form method="post" name="accept_submit" action="{url:cups_matchedit}">
+     <form method="post" id="accept_submit" action="{url:cups_matchedit}">
       <input type="hidden" name="cupmatches_id" value="{match:id}" />
       <input type="hidden" name="squad" value="{match:squadnr}" />
       <input type="submit" name="accept_submit" value="{lang:confirm}" class="form" />

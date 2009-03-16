@@ -1,4 +1,4 @@
-<form method="post" name="gallery" action="{url:gallery_manage_advanced}" enctype="multipart/form-data">
+<form method="post" id="gallery" action="{url:gallery_manage_advanced}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb" colspan="5">{lang:mod} - {lang:head}</td>

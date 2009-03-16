@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="members_edit" action="{url:members_edit}">
+<form method="post" id="members_edit" action="{url:members_edit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:yast_group_add} {members:label} *</td>

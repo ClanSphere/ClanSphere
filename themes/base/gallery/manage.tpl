@@ -10,7 +10,7 @@
 	</tr>
 	<tr>
 		<td class="leftb" colspan="6">
-			<form method="post" name="filter" action="{url:gallery_manage}">
+			<form method="post" id="filter" action="{url:gallery_manage}">
 			{icon:folder_yellow} {dropdown:folders}
 			{icon:access} {dropdown:access}
 			<input type="submit" name="submit" value="{lang:show}" />

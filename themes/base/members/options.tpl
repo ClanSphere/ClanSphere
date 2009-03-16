@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="memberoption" action="{url:form}">
+<form method="post" id="memberoption" action="{url:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kdmconfig} {lang:label}</td>

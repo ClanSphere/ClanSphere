@@ -10,7 +10,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="newsletter_subscribe" action="{url:action}">
+<form method="post" id="newsletter_subscribe" action="{url:action}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
     <td class="leftc" style="width: 100px;"> {icon:mail} {lang:mod}</td>

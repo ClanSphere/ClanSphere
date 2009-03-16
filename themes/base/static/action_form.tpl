@@ -1,4 +1,4 @@
-<form method="post" name="static" action="{url:action}">
+<form method="post" id="static" action="{url:action}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc" style="width: 100px;">{icon:kedit} {lang:title} *</td>

@@ -10,7 +10,7 @@
  <tr>
   <td class="leftb" colspan="3">
     {lang:status}
-      <form method="post" name="wars_manage" action="{url:wars_manage}">
+      <form method="post" id="wars_manage" action="{url:wars_manage}">
       <select name="where" >
         <option value="0">----</option>
         <option value="upcoming"{selection:upcoming}>{lang:upcoming}</option>

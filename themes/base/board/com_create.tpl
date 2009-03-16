@@ -29,7 +29,7 @@
  </td></tr></tbody></table>
 {stop:preview}
 <br />
-<form method="post" name="board_com_create" action="/trunk/index.php?mod=board&amp;action=com_create" enctype="multipart/form-data">
+<form method="post" id="board_com_create" action="/trunk/index.php?mod=board&amp;action=com_create" enctype="multipart/form-data">
 
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 <tr><td class="leftc">

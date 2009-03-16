@@ -10,7 +10,7 @@
 
 {head:getmsg}
 
-<form method="post" name="replays_options" action="{url:replays_options}">
+<form method="post" id="replays_options" action="{url:replays_options}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:fileshare} {lang:max_size}</td>

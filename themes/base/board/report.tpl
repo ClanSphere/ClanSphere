@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="board_report" action="{action:form}">
+<form method="post" id="board_report" action="{action:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:special_paste} {lang:report} *</td>

@@ -9,7 +9,7 @@
 <br />
 
 {if:form}
-<form method="post" name="database_export" action="{url:database_export}">
+<form method="post" id="database_export" action="{url:database_export}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb" style="width:200px">{lang:sql_tables}</td>

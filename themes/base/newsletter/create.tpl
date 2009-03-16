@@ -6,7 +6,7 @@
 </table>
 <br />
 
-<form method="post" name="newsletter_create" action="{url:newsletter_create}">
+<form method="post" id="newsletter_create" action="{url:newsletter_create}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:kate} {lang:subject} *</td>

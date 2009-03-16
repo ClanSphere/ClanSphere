@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="squads_create" action="{url:squads_create}" enctype="multipart/form-data">
+<form method="post" id="squads_create" action="{url:squads_create}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:yast_group_add} {lang:name} *</td>

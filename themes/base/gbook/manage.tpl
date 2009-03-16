@@ -1,4 +1,4 @@
-<form method="post" name="gbook_create" action="{url:gbook_manage}">
+<form method="post" id="gbook_create" action="{url:gbook_manage}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>

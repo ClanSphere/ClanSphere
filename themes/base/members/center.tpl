@@ -3,7 +3,7 @@
     <td class="headb">{lang:mod} - {lang:head_center} </td>
   </tr>
   <tr>
-    <td class="leftb"><form method="post" name="members_center" action="{url:form}">
+    <td class="leftb"><form method="post" id="members_center" action="{url:form}">
         {lang:team}:
         <select name="id" >
           <option value="0">----</option>

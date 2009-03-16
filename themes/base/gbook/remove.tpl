@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="gbook_remove" action="{url:gbook_remove}">
+<form method="post" id="gbook_remove" action="{url:gbook_remove}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="centerc">

@@ -7,7 +7,7 @@
 {lang:empty_info}
 </td></tr>
 <tr><td class="centerc">
-<form method="post" name="count_empty" action="{url:count_empty}">
+<form method="post" id="count_empty" action="{url:count_empty}">
 <input type="submit" name="agree" value="{lang:confirm}" />
 <input type="submit" name="cancel" value="{lang:cancel}" /></form>
 </td></tr>

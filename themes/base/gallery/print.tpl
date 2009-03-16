@@ -9,7 +9,7 @@
 <br />
 
 {if:preview}
-<form method="post" name="print_now" action="{url:gallery_print_now}">
+<form method="post" id="print_now" action="{url:gallery_print_now}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="centerb">{print:img}</td>
@@ -24,7 +24,7 @@
 <br />
 {stop:preview}
 
-<form method="post" name="print" action="{url:gallery_print}">
+<form method="post" id="print" action="{url:gallery_print}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftc" style="width:140px">{icon:configure} {lang:print_format}</td>

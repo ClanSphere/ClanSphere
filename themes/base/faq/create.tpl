@@ -20,7 +20,7 @@
 <br />
 {stop:preview}
 
-<form method="post" name="faq_create" action="{url:faq_create}" enctype="multipart/form-data">
+<form method="post" id="faq_create" action="{url:faq_create}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:category} *</td>

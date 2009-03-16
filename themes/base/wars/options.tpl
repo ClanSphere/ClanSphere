@@ -9,7 +9,7 @@
 <br />
 {head:message}
 
-<form method="post" name="wars_options" action="{url:wars_options}">
+<form method="post" id="wars_options" action="{url:wars_options}">
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>

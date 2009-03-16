@@ -1,4 +1,4 @@
-<form method="post" name="install_admin" action="{url_install:install_admin}">
+<form method="post" id="install_admin" action="{url_install:install_admin}">
 
 <table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
   <tr>

@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="ranks_edit" action="{url:ranks_edit}" enctype="multipart/form-data">
+<form method="post" id="ranks_edit" action="{url:ranks_edit}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:playlist} {lang:name} *</td>

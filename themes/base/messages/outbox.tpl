@@ -12,7 +12,7 @@
   <tr>
     <td class="leftb">{icon:email} <a href="{url:messages_inbox:page=new}">{var:new_msgs} {lang:new_messages}</a></td>
     <td class="leftb" colspan="4">
-    <form method="post" name="messages_filter" action="{url:messages_outbox}">
+    <form method="post" id="messages_filter" action="{url:messages_outbox}">
      <select name="messages_filter" class="form">
       <option value="0">----</option>
       <option value="1">{lang:last_day}</option>
@@ -31,7 +31,7 @@
 </table>
 <br />
 
-<form method="post" name="messages_outbox" action="{url:messages_multiremove}">
+<form method="post" id="messages_outbox" action="{url:messages_multiremove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="width: 40px">{sort:view}</td>

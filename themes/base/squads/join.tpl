@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="squads_join" action="{url:squads_join}">
+<form method="post" id="squads_join" action="{url:squads_join}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:yast_group_add} {lang:label} *</td>

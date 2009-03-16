@@ -10,7 +10,7 @@
 
 {head:getmsg}
 
-<form method="post" name="categories_options" action="{url:categories_options}">
+<form method="post" id="categories_options" action="{url:categories_options}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:resizecol} {lang:max_width}</td>

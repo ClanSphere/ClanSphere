@@ -6,7 +6,7 @@
 	<td class="leftb">{body:picture} {error:icon} {error:error} {error:message}</td>
   </tr>
 </table><br />
-<form method="post" name="entry" action="{url:usersgallery_users_create}" enctype="multipart/form-data">
+<form method="post" id="entry" action="{url:usersgallery_users_create}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:download} {lang:upload} *</td>

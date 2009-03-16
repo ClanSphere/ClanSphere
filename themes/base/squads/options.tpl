@@ -10,7 +10,7 @@
 
 {head:getmsg}
 
-<form method="post" name="squads_options" action="{url:squads_options}">
+<form method="post" id="squads_options" action="{url:squads_options}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:kdmconfig} {lang:label}</td>

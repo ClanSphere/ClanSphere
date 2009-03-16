@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="upload_edit" action="{url:explorer_edit}">
+<form method="post" id="upload_edit" action="{url:explorer_edit}">
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
     <td class="leftc" style="width: 20%">{icn:unknown} {lang:file}</td>

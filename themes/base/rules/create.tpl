@@ -20,7 +20,7 @@
 <br />
 {stop:preview}
 
-<form method="post" name="rules_create" action="{url:rules_create}">
+<form method="post" id="rules_create" action="{url:rules_create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr>
   <td class="leftc">{icon:kedit} {lang:order} *</td>

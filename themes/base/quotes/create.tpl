@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="quotes_create" action="{url:action}">
+<form method="post" id="quotes_create" action="{url:action}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kedit} {lang:headline} *</td>

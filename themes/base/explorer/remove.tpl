@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td class="centerb">
-      <form method="post" name="upload_del" action="{url:explorer_remove}">
+      <form method="post" id="upload_del" action="{url:explorer_remove}">
        <input type="hidden" name="file" value="{var:source}" />
        <input type="submit" name="submit" value="{lang:confirm}" class="form" />
        <input type="submit" name="cancel" value="{lang:cancel}" class="form" />

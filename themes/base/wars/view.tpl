@@ -105,7 +105,7 @@
 	{if:status}
 	<tr>
 		<td class="rightb" colspan="3">{lang:join_war}
-			<form method="post" name="statusedit" action="{url:wars_view:id={status:wars_id}}">
+			<form method="post" id="statusedit" action="{url:wars_view:id={status:wars_id}}">
 				<select name="players_status">
 					<option value="yes" {status:yes}>{lang:yes}</option>
 					<option value="maybe" {status:maybe}>{lang:maybe}</option>

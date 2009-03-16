@@ -7,7 +7,7 @@
     <td class="leftb">{lang:body}</td>
   </tr>
   <tr>
-    <td class="centerc"><form method="post" name="abo_remove" action="{action:form}">
+    <td class="centerc"><form method="post" id="abo_remove" action="{action:form}">
         <input type="hidden" name="id" value="{abo:id}" />
         <input type="submit" name="agree" value="{lang:confirm}" />
         <input type="submit" name="cancel" value="{lang:cancel}" />

@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="categories_create" action="{url:categories_create}" enctype="multipart/form-data">
+<form method="post" id="categories_create" action="{url:categories_create}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:name} *</td>

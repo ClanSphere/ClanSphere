@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="modules_create" action="{form:url}">
+<form method="post" id="modules_create" action="{form:url}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc" width="20%">{icon:kedit} {lang:name} *</td>

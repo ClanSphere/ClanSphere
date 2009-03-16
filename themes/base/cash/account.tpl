@@ -12,7 +12,7 @@
 
 {if:form}
 <br />
-<form method="post" name="account_create" action="{url:cash_account}">
+<form method="post" id="account_create" action="{url:cash_account}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftb">{lang:owner} * </td>

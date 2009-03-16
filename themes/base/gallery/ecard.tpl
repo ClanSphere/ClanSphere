@@ -1,4 +1,4 @@
-<form method="post" name="ecard" action="{url:gallery_ecard}">
+<form method="post" id="ecard" action="{url:gallery_ecard}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb">{lang:mod} - {lang:ecard_head_list}</td>

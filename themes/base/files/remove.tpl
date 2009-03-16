@@ -4,7 +4,7 @@
  </td></tr><tr><td class="leftb">
 {lang:del_rly}
  </td></tr><tr><td class="centerc">
-<form method="post" name="files_remove" action="{url:files_remove}">
+<form method="post" id="files_remove" action="{url:files_remove}">
 
  <input type="hidden" name="id" value="{file:id}" class="form"/>
  <input type="submit" name="agree" value="{lang:confirm}" class="form"/>

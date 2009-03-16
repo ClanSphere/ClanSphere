@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="ajax_options" action="{url:ajax_options}" enctype="multipart/form-data">
+<form method="post" id="ajax_options" action="{url:ajax_options}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:agt_reload} {lang:ajax}</td>

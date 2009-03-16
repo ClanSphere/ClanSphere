@@ -28,7 +28,7 @@
 </table>
 <br />
 {stop:sql_content}
-<form method="post" name="database_roots" action="{url:database_import}" enctype="multipart/form-data">
+<form method="post" id="database_roots" action="{url:database_import}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kate} {lang:sql_text}</td>

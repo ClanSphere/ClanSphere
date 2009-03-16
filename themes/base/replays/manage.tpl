@@ -1,4 +1,4 @@
-<form method="post" name="replays_manage" action="{url:replays_manage}">
+<form method="post" id="replays_manage" action="{url:replays_manage}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>

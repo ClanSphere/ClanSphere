@@ -1,4 +1,4 @@
-<form method="post" name="articles_remove" action="{url:quotes_remove}">
+<form method="post" id="articles_remove" action="{url:quotes_remove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb">{head:mod} - {head:action}</td>

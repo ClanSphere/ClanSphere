@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="wars_create" action="{url:form}">
+<form method="post" id="wars_create" action="{url:form}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:package_games} {lang:game} *</td>

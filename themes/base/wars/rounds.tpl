@@ -9,7 +9,7 @@
 </table>
 <br />
 
-<form method="post" name="roundadd" action="{url:wars_rounds}">
+<form method="post" id="roundadd" action="{url:wars_rounds}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb" colspan="2">{lang:new_round}</td>

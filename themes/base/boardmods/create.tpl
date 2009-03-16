@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="boardmods_create" action="{url:boardmods_create}">
+<form method="post" id="boardmods_create" action="{url:boardmods_create}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:personal} {lang:user} *</td>

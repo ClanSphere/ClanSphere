@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="files_edit" action="{url:files_edit}" enctype="multipart/form-data">
+<form method="post" id="files_edit" action="{url:files_edit}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kedit} {lang:name} *</td>

@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="thread_cut" action="{url:board_thread_cut}">
+<form method="post" id="thread_cut" action="{url:board_thread_cut}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
  <tr>
    <td class="leftc" style="width: 130px">{icon:kedit} {lang:headline} *</td>

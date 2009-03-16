@@ -8,7 +8,7 @@
 </table>
 <br />
 {lang:getmsg}
-<form method="post" name="clans_options" action="{url:form}">
+<form method="post" id="clans_options" action="{url:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kdmconfig} {lang:label}</td>

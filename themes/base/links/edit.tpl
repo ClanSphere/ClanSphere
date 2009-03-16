@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="links_edit" action="{url:links_edit}" enctype="multipart/form-data">
+<form method="post" id="links_edit" action="{url:links_edit}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftb">{icon:kedit} {lang:name} *</td>

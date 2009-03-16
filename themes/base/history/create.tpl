@@ -22,7 +22,7 @@
 <br />
 {stop:preview}
 
-<form method="post" name="history_create" action="{url:history_create}">
+<form method="post" id="history_create" action="{url:history_create}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	{if:no_fck}
 	<tr>

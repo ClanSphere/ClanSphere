@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form action="{url:servers_edit}" method="post" name="Servers Edit">
+<form method="post" id="servers_edit" action="{url:servers_edit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftb">{icon:kedit} {lang:servername} *</td>

@@ -8,7 +8,7 @@
 </table>
 <br />
 {lang:getmsg}
-<form method="post" name="banners_options" action="{action:form}">
+<form method="post" id="banners_options" action="{action:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:resizecol} {lang:max_width} </td>

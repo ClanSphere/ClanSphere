@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="members_change" action="{url:form}">
+<form method="post" id="members_change" action="{url:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:yast_group_add} {lang:squad} *</td>

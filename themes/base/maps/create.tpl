@@ -7,7 +7,7 @@
 	</tr>
 </table>
 <br />
-<form method="post" name="maps_create" action="{maps:action}" enctype="multipart/form-data">
+<form method="post" id="maps_create" action="{maps:action}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:name} *</td>

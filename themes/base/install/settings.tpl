@@ -26,7 +26,7 @@
  </tr>
  <tr>
   <td class="leftc">
-    <form name="setup_file" action="" method="post">
+    <form method="post" id="setup_file" action="">
     <textarea cols="50" rows="15">{data:setup}</textarea>
     </form>  
   </td>
@@ -38,7 +38,7 @@
 {stop:display_setup}
 
 {if:display_form}
-<form method="post" name="install_settings" action="{url_install:install_settings}">
+<form method="post" id="install_settings" action="{url_install:install_settings}">
 <table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
   <td class="leftc">{lang:hash} *</td>

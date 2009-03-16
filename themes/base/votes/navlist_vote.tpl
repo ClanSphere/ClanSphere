@@ -1,4 +1,4 @@
-<form method="post" name="navlist" action="{url:action}">
+<form method="post" id="navlist" action="{url:action}">
 {votes:question}<br />
 {loop:answers}
 	<input name="voted_answer{if:several_name}[{answers:value}]{stop:several_name}" value="{answers:value}"  type="{votes:type}"/>{answers:answer}<br />

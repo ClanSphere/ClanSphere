@@ -22,7 +22,7 @@
 <br />
 {stop:preview}
 
-<form method="post" name="history_edit" action="{url:history_edit}">
+<form method="post" id="history_edit" action="{url:history_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	{if:no_fck}
 	<tr>

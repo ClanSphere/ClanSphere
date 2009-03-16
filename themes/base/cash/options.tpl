@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="cash_options" action="{url:cash_options}">
+<form method="post" id="cash_options" action="{url:cash_options}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb" colspan="2">{lang:options}</td>

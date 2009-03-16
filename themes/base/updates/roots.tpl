@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="roots" action="{url:updates_roots}">
+<form method="post" id="roots" action="{url:updates_roots}">
 {if:details}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>

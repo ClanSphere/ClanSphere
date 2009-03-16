@@ -9,7 +9,7 @@
   </tr>
 </table>
 <br />
-<form method="post" action="{url:medals_user}" name="medals_user" enctype="multipart/form-data">
+<form method="post" id="medals_user" action="{url:medals_user}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:personal} {lang:user}</td>

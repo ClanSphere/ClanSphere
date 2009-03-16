@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="users_password" action="{url:users_password}">
+<form method="post" id="users_password" action="{url:users_password}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc" style="width:200px">{icon:password} {lang:pwd_current} *</td>

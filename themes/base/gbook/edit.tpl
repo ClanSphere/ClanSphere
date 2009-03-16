@@ -10,7 +10,7 @@
 
 {tpl:preview}
 
-<form method="post" name="gbook_edit" action="{url:gbook_edit}">
+<form method="post" id="gbook_edit" action="{url:gbook_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	{tpl:extension}
 	<tr>

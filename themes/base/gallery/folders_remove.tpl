@@ -1,4 +1,4 @@
-<form method="post" name="folders_remove" action="{url:gallery_folders_remove}">
+<form method="post" id="folders_remove" action="{url:gallery_folders_remove}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb">{lang:folders} - {lang:remove}</td>

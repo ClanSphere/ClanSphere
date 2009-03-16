@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td class="leftb" colspan="3">{lang:function}
-      <form method="post" name="abcode_manage" action="{action:form}">
+      <form method="post" id="abcode_manage" action="{action:form}">
         <select name="type" >
           <option value="0">----</option>
           <option value="img">{lang:img}</option>

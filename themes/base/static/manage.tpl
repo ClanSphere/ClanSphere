@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td class="leftb" colspan="3"> {lang:access}:
-      <form method="post" name="static_manage" action="{url:form}">
+      <form method="post" id="static_manage" action="{url:form}">
         {head:dropdown}
         <input type="submit" name="submit" value="{lang:show}" />
       </form></td>

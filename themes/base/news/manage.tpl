@@ -9,7 +9,7 @@
  </tr>
  <tr>
   <td class="leftb" colspan="3">
-   <form method="post" name="news_manage" action="{url:form}">
+   <form method="post" id="news_manage" action="{url:form}">
    {lang:category} 
    {head:dropdown}
    {head:button}

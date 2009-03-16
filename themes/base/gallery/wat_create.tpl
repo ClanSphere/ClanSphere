@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="watermark_create" action="{url:gallery_wat_create}" enctype="multipart/form-data">
+<form method="post" id="watermark_create" action="{url:gallery_wat_create}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftb">{icon:xpaint} {lang:name} *</td>

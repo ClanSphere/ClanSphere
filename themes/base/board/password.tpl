@@ -1,4 +1,4 @@
-<form method="post" name="board_listcat" action="{action:form}">
+<form method="post" id="board_listcat" action="{action:form}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="2">{pw:body}</td>

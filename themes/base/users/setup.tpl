@@ -7,7 +7,7 @@
 <br />
 {stop:done}
 
-<form method="post" name="users_setup" action="{url:users_setup}">
+<form method="post" id="users_setup" action="{url:users_setup}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
   		<td class="leftc">{icon:locale} {lang:lang}</td>

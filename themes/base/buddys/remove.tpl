@@ -7,7 +7,7 @@
 {head:buddy}
 </td></tr>
 <tr><td class="centerc">
-<form method="post" name="buddys_remove" action="{url:buddys_remove}">
+<form method="post" id="buddys_remove" action="{url:buddys_remove}">
 <input type="hidden" name="id" value="{head:id}" />
 <input type="submit" name="agree" value="{lang:confirm}" />
 <input type="submit" name="cancel" value="{lang:cancel}" /></form>

@@ -9,7 +9,7 @@
 <br />
 
 {if:form}
-<form method="post" name="contact_mail" action="{url:contact_mail}">
+<form method="post" id="contact_mail" action="{url:contact_mail}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:personal} {lang:name} *</td>

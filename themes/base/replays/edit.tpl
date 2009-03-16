@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="replays_edit" action="{url:replays_edit}" enctype="multipart/form-data">
+<form method="post" id="replays_edit" action="{url:replays_edit}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:category} *</td>

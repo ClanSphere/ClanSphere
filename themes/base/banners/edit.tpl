@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="banners_create" action="{action:form}" enctype="multipart/form-data">
+<form method="post" id="banners_create" action="{action:form}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kblackbox} {lang:name} *</td>

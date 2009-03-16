@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="picture_create" action="{url:gallery_picture_create}" enctype="multipart/form-data">
+<form method="post" id="picture_create" action="{url:gallery_picture_create}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
 		<td class="leftc" style="width:140px">{icon:download} {lang:upload} *</td>

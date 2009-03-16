@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="users_notifications" action="{url:users_notifications}">
+<form method="post" id="users_notifications" action="{url:users_notifications}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  {loop:notifications}
  <tr>

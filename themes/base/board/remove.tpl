@@ -1,4 +1,4 @@
-<form method="post" name="board_remove" action="{action:form}">
+<form method="post" id="board_remove" action="{action:form}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb">{lang:mod} - {lang:remove}</td>

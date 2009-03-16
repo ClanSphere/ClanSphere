@@ -1,4 +1,4 @@
-<form method="post" name="replays_list" action="{url:replays_list}">
+<form method="post" id="replays_list" action="{url:replays_list}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb" colspan="2">{lang:mod} - {lang:list}</td>

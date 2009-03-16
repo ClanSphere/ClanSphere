@@ -10,7 +10,7 @@
 
 {head:getmsg}
 
-<form method="post" name="gallery_edit" action="{url:gallery_options}">
+<form method="post" id="gallery_edit" action="{url:gallery_options}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb" colspan="2">{lang:mod}</td>

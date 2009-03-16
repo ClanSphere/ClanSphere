@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="computers_edit" action="{url:computers_edit}">
+<form method="post" id="computers_edit" action="{url:computers_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:mycomputer} {lang:name} *</td>

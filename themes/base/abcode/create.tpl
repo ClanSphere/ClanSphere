@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="abcode_create" action="{action:form}" enctype="multipart/form-data">
+<form method="post" id="abcode_create" action="{action:form}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:completion} {lang:function} *</td>

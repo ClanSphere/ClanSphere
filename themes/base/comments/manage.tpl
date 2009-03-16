@@ -8,7 +8,7 @@
 	</tr>
 	<tr>
 		<td class="leftb" colspan="2">{lang:module}
-			<form method="post" name="comments_manage" action="{url:comments_manage}">
+			<form method="post" id="comments_manage" action="{url:comments_manage}">
 				{head:mod_dropdown}
 				<input type="submit" name="submit" value="{lang:show}" />
 			</form>

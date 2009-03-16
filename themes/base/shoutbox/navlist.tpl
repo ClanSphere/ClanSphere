@@ -6,7 +6,7 @@
 </div>
 <br />
 
-<form method="post" name="shout_navlist" action="{form:url}">
+<form method="post" id="shout_navlist" action="{form:url}">
 <input type="text" name="sh_nick" value="{form:nick}" onfocus="if(this.value=='Nick') this.value=''" onblur="if(this.value=='')this.value='Nick'" maxlength="40" size="15"  /><br />
 <textarea name="sh_text" cols="15" rows="2" ></textarea><br />
 {form:captcha}<br />

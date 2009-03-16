@@ -29,7 +29,7 @@
 <br /><br />
 {stop:preview}
 
-<form method="post" name="comments_edit" action="{url:comments_edit}">
+<form method="post" id="comments_edit" action="{url:comments_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:kate} {lang:text} *<br /><br />

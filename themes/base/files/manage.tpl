@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td class="leftb" colspan="3"> {lang:category}
-      <form method="post" name="files_manage" action="{url:files_manage}">
+      <form method="post" id="files_manage" action="{url:files_manage}">
         <select name="where" class="form">
           <option value="0">----</option>{loop:categories}
          	<option value="{categories:value}">{categories:name}</option>{stop:categories}

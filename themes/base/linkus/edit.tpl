@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="linkus_edit" action="{url:linkus_edit}" enctype="multipart/form-data">
+<form method="post" id="linkus_edit" action="{url:linkus_edit}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:image} {lang:cur_pic}</td>

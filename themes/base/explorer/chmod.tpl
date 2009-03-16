@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="explorer_chmod" action="{url:explorer_chmod}">
+<form method="post" id="explorer_chmod" action="{url:explorer_chmod}">
 
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>

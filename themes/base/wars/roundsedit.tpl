@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="roundsedit" action="{url:wars_roundsedit}">
+<form method="post" id="roundsedit" action="{url:wars_roundsedit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb" colspan="2">{lang:new_round}</td>

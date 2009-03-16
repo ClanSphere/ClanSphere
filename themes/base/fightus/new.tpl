@@ -10,7 +10,7 @@
 
 {head:getmsg}
 
-<form method="post" name="fightus_new" action="{url:fightus_new}">
+<form method="post" id="fightus_new" action="{url:fightus_new}">
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>

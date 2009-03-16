@@ -8,7 +8,7 @@
 	</tr>
 	<tr>
 		<td class="leftb" colspan="2">
-			<form method="post" name="categories_list" action="{url:categories_list}">
+			<form method="post" id="categories_list" action="{url:categories_list}">
 				{lang:modul}
 				<select name="where">
 					{loop:mod}

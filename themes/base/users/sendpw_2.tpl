@@ -1,4 +1,4 @@
-<form method="post" name="users_sendpw" action="{url:users_sendpw}">
+<form method="post" id="users_sendpw" action="{url:users_sendpw}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc"> {icon:unlock} {lang:key} *</td>

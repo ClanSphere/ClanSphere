@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="explorer_create_dir" action="{url:explorer_create_dir}">
+<form method="post" id="explorer_create_dir" action="{url:explorer_create_dir}">
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
     <td class="leftc">{icon:folder_yellow} {lang:directory}</td>

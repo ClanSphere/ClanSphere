@@ -8,7 +8,7 @@
 </table>
 <br />
 {lang:getmsg}
-<form method="post" name="abcode_options" action="{url:abcode_options}">
+<form method="post" id="abcode_options" action="{url:abcode_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:resizecol} {lang:max_width}</td>

@@ -1,4 +1,4 @@
-<form method="post" name="search_list" action="{url:search_list}">
+<form method="post" id="search_list" action="{url:search_list}">
 <table style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="left">

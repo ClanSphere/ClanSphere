@@ -33,7 +33,7 @@
 </table>
 <br />
 {stop:preview}
-<form method="post" name="board_edit" action="{page:path}debug.php?mod=board&amp;action=edit">
+<form method="post" id="board_edit" action="{page:path}debug.php?mod=board&amp;action=edit">
   <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
     <tr>
       <td class="leftb">{icon:kedit} {lang:name} *</td>

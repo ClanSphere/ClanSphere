@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="boardranks_create" action="{url:boardranks_create}">
+<form method="post" id="boardranks_create" action="{url:boardranks_create}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:kate} {lang:min} *</td>

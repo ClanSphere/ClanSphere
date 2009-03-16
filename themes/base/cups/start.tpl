@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td class="centerb">
-      <form method="post" name="cupsstart"  action="{url:cups_start}">
+      <form method="post" id="cupsstart"  action="{url:cups_start}">
         <input type="hidden" name="id" value="{cup:id}" class="form" />
         <input type="submit" name="start" value="{lang:confirm}" class="form" />
       </form>

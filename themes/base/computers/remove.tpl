@@ -9,7 +9,7 @@
 <br />
 
 {if:own}
-<form method="post" name="computers_remove" action="{url:computers_remove}">
+<form method="post" id="computers_remove" action="{url:computers_remove}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="centerc">

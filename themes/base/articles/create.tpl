@@ -24,7 +24,7 @@
 <br />
 {stop:preview}
 
-<form method="post" name="articles_create" action="{url:form}">
+<form method="post" id="articles_create" action="{url:form}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:kedit} {lang:headline} *</td>

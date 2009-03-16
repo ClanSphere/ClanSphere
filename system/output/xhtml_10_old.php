@@ -163,13 +163,13 @@ function cs_html_anchor($name, $text = '', $more = '')
     return "<a href=\"#\" name=\"" . $name . "\"" . $more . " >" . $text . "</a>";
 }
 
-function cs_html_form($func, $name = 0, $mod = 0, $action = 0, $enctype = 0, $more = 0)
+function cs_html_form($func, $form_id = 0, $mod = 0, $action = 0, $enctype = 0, $more = 0)
 {
     cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
     
     if (!empty($func))
     {
-        $form = "<form method=\"post\" name=\"" . $name . "\" ";
+        $form = "<form method=\"post\" id=\"" . $form_id . "\" ";
         $form .= "action=\"" . cs_url($mod, $action, $more) . "\"";
         if (!empty($enctype))
         {

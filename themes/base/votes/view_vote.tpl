@@ -1,5 +1,5 @@
 
-<form method="post" name="vote" action="{votes:action}">
+<form method="post" id="vote" action="{votes:action}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{votes:question}</td>

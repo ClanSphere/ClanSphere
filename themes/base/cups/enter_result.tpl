@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="matchresult" action="{url:cups_matchedit}">
+<form method="post" id="matchresult" action="{url:cups_matchedit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:yast_group_add} {lang:winner}</td>

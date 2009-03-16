@@ -12,7 +12,7 @@
 
 <div style="display:{display:cms_import};" id="cms_import">
 <br />
-<form method="post" action="{url:converter_convert}" name="converter">
+<form method="post" id="converter" action="{url:converter_convert}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};" >
   <tr>
   	<td class="headb" width="100%" colspan="2">{lang:web_installation}</td>

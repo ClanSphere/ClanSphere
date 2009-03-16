@@ -9,7 +9,7 @@
 <br />
 
 {if:form}
-<form method="post" name="buddys_create" action="{url:buddys_create}">
+<form method="post" id="buddys_create" action="{url:buddys_create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr><td class="leftc">
 {icon:personal} {lang:user} *</td><td class="leftb">

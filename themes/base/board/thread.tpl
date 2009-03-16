@@ -19,7 +19,7 @@
         <div style="width: 320px;" align="left">
           <div style="padding: 3px;">
             <div style="margin-bottom: 10px;">{thread:vote_question}</div>
-            <form method="post" name="thread_vote" action="{url:board_thread}&amp;where={thread:threads_id}">
+            <form method="post" id="thread_vote" action="{url:board_thread}&amp;where={thread:threads_id}">
               {loop:votes}
               <div>{votes:vote_election} {votes:vote_election_text}</div>
               {stop:votes}
@@ -200,7 +200,7 @@
 </table>
 <br />
 {if:modpanel}
-<form method="post" name="boardmodpanel_q" action="?mod=board&amp;action=modpanel_q&amp;id={thread:threads_id}">
+<form method="post" id="boardmodpanel_q" action="?mod=board&amp;action=modpanel_q&amp;id={thread:threads_id}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
     <tr>
       <td class="centerb"> {if:modp_close}
@@ -240,7 +240,7 @@
 {stop:last_own}
 
 {if:write_comment}
-<form method="post" name="board_com_create" action="{url:board_com_create}">
+<form method="post" id="board_com_create" action="{url:board_com_create}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
     {if:no_adv_com}
     <tr>

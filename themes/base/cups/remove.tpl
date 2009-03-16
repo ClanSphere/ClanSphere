@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td class="centerc">
-      <form method="post" name="cups_remove" action="{url:cups_remove}">
+      <form method="post" id="cups_remove" action="{url:cups_remove}">
         <input type="hidden" name="id" value="{cup:id}" />
         <input type="submit" name="submit" value="{lang:confirm}" class="form" />
         <input type="submit" name="cancel" value="{lang:cancel}" class="form" />

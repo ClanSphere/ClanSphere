@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td class="leftb" colspan="3">{lang:cat}
-			<form method="post" name="categorie_select" action="{url:links_manage}">
+			<form method="post" id="categorie_select" action="{url:links_manage}">
 					{head:cat_dropdown}
 				<input type="submit" name="submit" value="{lang:show}" />
 			</form>

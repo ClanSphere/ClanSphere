@@ -27,7 +27,7 @@
 </table>
 <br />
 {stop:preview}
-<form method="post" name="news_create" action="{url:news_create}">
+<form method="post" id="news_create" action="{url:news_create}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" style="width: 100px;">{icon:kedit} {lang:headline} *</td>

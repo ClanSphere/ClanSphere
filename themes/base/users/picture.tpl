@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="users_picture" action="{url:users_picture}" enctype="multipart/form-data">
+<form method="post" id="users_picture" action="{url:users_picture}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:images} {lang:current}</td>

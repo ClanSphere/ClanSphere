@@ -8,7 +8,7 @@
 </table>
 <br />
 {head:message}
-<form method="post" name="files_picture" action="{url:files_picture}" enctype="multipart/form-data">
+<form method="post" id="files_picture" action="{url:files_picture}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" style="width:140px"> {icon:download} {lang:upload}</td>

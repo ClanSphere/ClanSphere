@@ -40,7 +40,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="centerb">
-      <form method="post" name="matchadmin" action="{url:cups_matchedit}">
+      <form method="post" id="matchadmin" action="{url:cups_matchedit}">
         <input type="hidden" name="cupmatches_id" value="{match:id}" />
         {if:nothingyet}<input type="hidden" name="team" value="{match:teamnr}" />
         <input type="submit" name="result" value="{lang:enter_result}" class="form" />{stop:nothingyet}

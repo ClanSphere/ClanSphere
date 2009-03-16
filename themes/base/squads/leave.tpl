@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="squads_leave" action="{url:squads_leave}">
+<form method="post" id="squads_leave" action="{url:squads_leave}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:yast_group_add} {lang:label} *</td>

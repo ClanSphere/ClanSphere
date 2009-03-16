@@ -11,7 +11,7 @@
 
 {head:getmsg}
 
-<form method="post" name="wars_picture" action="{url:wars_picture}" enctype="multipart/form-data">
+<form method="post" id="wars_picture" action="{url:wars_picture}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftc" style="width:140px">{icon:download} {lang:upload}</td>

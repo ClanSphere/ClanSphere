@@ -10,7 +10,7 @@
 	</tr>
 	<tr>
 		<td class="centerc">
-			<form method="post" name="users_close" action="{url:users_close}">
+			<form method="post" id="users_close" action="{url:users_close}">
 				<input type="submit" name="agree" value="{lang:confirm}" class="form"/>
 				<input type="submit" name="cancel" value="{lang:cancel}" class="form"/>
 			</form>

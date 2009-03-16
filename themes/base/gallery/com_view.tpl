@@ -36,7 +36,7 @@
   <tr>
     <td class="leftb">{icon:Volume Manager} {lang:gallery_vote} </td>
     <td class="leftb">
-    	<form method="post" name="com_view" action="{url:gallery_com_view}">
+    	<form method="post" id="com_view" action="{url:gallery_com_view}">
 				<input type="hidden" name="where" value="{hidden:id}" />
 				<select name="voted_answer">
 					{vote:options}

@@ -13,7 +13,7 @@
 </table>
 <br />
 {lang:getmsg}
-<form method="post" name="clansphere_options" action="{action:form}">
+<form method="post" id="clansphere_options" action="{action:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:fileshare} Apache mod_rewrite</td>

@@ -11,7 +11,7 @@
 </table>
 <br />
 {lang:getmsg}
-<form method="post" name="users_avatar" action="{action:form}" enctype="multipart/form-data">
+<form method="post" id="users_avatar" action="{action:form}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:images} {lang:current}</td>

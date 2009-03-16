@@ -8,7 +8,7 @@
 </table>
 <br />
 {lang:getmsg}
-<form method="post" name="board_edit" action="{action:form}">
+<form method="post" id="board_edit" action="{action:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kedit} {lang:max_text}</td>

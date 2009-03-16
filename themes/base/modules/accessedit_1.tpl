@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form action="{form:url}" method="post">
+<form method="post" action="{form:url}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  {loop:access}
  <tr>

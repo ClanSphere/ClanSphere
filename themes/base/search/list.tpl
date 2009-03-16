@@ -8,7 +8,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="search_list" action="{url:search_list}">
+<form method="post" id="search_list" action="{url:search_list}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
     <td class="leftc">{icon:kedit} {lang:text} *</td>

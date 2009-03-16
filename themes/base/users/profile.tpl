@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" name="users_profile" action="{form:action}">
+<form method="post" id="users_profile" action="{form:action}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
     <tr>
       <td class="headb">{lang:column}</td>

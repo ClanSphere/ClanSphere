@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="events_edit" action="{url:events_edit}">
+<form method="post" id="events_edit" action="{url:events_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc" style="width:130px">{icon:cal} {lang:name} *</td>

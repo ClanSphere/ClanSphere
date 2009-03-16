@@ -7,7 +7,7 @@
  </tr>
  <tr>
   <td class="leftb">
-    <form method="post" name="gamechoice" action="{url:cups_list}">
+    <form method="post" id="gamechoice" action="{url:cups_list}">
     {lang:game}:
     <select name="games_id" >
       <option value="0">----</option>{loop:games}

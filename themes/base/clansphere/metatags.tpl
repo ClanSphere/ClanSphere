@@ -12,7 +12,7 @@
   {stop:done}
 </table>
 <br />
-<form method="post" name="metatags" action="{url:clansphere_metatags}">
+<form method="post" id="metatags" action="{url:clansphere_metatags}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kate} {lang:description}</td>

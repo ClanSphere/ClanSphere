@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form action="{form:sql_select}" method="post">
+<form method="post" action="{form:sql_select}">
   <table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
     <tr>
       <td class="headb">{lang:sys_module}</td>

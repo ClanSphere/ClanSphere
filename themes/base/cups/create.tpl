@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="cupscreate" action="{url:cups_create}">
+<form method="post" id="cupscreate" action="{url:cups_create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:kate} {lang:name} *</td>

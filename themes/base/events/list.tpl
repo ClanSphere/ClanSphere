@@ -8,7 +8,7 @@
  </tr>
  <tr>
   <td class="leftb" colspan="2">{lang:category} 
-    <form method="post" name="events_list" action="{url:events_list}">
+    <form method="post" id="events_list" action="{url:events_list}">
     {head:dropdown}
     <input name="submit" value="{lang:show}" class="form" type="submit" /></form>
    </td>

@@ -9,7 +9,7 @@
 	</tr>
 	<tr>
 		<td class="leftb" colspan="3">
-			<form method="post" name="categories_manage" action="{url:categories_manage}">
+			<form method="post" id="categories_manage" action="{url:categories_manage}">
 				{lang:modul}
 				<select name="where">
 					{loop:mod}

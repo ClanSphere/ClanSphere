@@ -9,7 +9,7 @@
 </table>
 <br />
 
-<form method="post" name="imprint_edit" action="{url:contact_imp_edit}">
+<form method="post" id="imprint_edit" action="{url:contact_imp_edit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr><td class="leftc">
 {icon:kate} {lang:text} *

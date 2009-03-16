@@ -1,5 +1,5 @@
 <br />
-<form method="post" name="{page:mod}_com_create" action="{url:create}">
+<form method="post" id="{page:mod}_com_create" action="{url:create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	{if:adv_com}
 	<tr>

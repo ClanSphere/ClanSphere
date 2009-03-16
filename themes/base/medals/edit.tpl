@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" action="{url:medals_edit}" name="medals_edit" enctype="multipart/form-data">
+<form method="post" id="medals_edit" action="{url:medals_edit}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:kedit} {lang:name} *</td>

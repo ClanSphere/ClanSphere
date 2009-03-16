@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="explorer_upload2" action="{url:explorer_upload}" enctype="multipart/form-data">
+<form method="post" id="explorer_upload2" action="{url:explorer_upload}" enctype="multipart/form-data">
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
     <td class="leftc" style="width: 25%">{icn:dir} {lang:directory}</td>
