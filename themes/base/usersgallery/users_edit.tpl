@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-	<td class="headb">{lang:mod} - {lang:pic}</td>
+	<td class="headb">{lang:mod} - {lang:edit}</td>
   </tr>
   <tr>
 	<td class="leftb">{head:body}</td>
@@ -8,11 +8,11 @@
 </table>
 <br />
 
-<form method="post" id="users_create" action="{url:usersgallery_users_create}" enctype="multipart/form-data">
+<form method="post" name="users_edit" action="{url:usersgallery_users_edit}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="leftc">{icon:download} {lang:upload} *</td>
-    <td class="leftb"><input type="file" name="picture" value="" /> <br /> {data:infobox}</td>
+    <td class="leftc">{icon:download} {lang:picture} *</td>
+    <td class="leftb">{current:img}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:kedit} {lang:titel} *</td>
@@ -20,7 +20,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:folder_yellow} {lang:folders} *</td>
-    <td class="leftb">{data:folders}</td>
+    <td class="leftb">{folders:select}</td>
   </tr>
 	<tr>
     <td class="leftc">{icon:access} {lang:access}</td>
@@ -45,18 +45,20 @@
     </td>
     <td class="leftb">
     	{abcode:features} 
-			<textarea name="description" cols="50" rows="15" id="description" style="width:98%;">{data:usersgallery_description}</textarea>
+			<textarea name="gallery_description" cols="50" rows="15" id="gallery_description" style="width:98%;">{data:usersgallery_description}</textarea>
 		</td>
   </tr>
 	<tr>
     <td class="leftc">{icon:configure} {lang:head}</td>
     <td class="leftb">
-    	<input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray}<br />
+    	<input type="checkbox" name="new_time" value="1" {check:newtime}/> {lang:new_date}<br />
+    	<input type="checkbox" name="gallery_count_reset" value="1" {check:count}/> {lang:gallery_count_reset} <br />
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-			<input type="submit" name="submit" value="{lang:submit}" />
+			<input type="hidden" name="id" value="{hidden:id}" />
+			<input type="submit" name="submit" value="{lang:edit}" />
 		</td>
   </tr>
 </table>
