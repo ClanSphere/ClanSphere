@@ -3,14 +3,18 @@
   <td class="headb" colspan="2">{lang:mod} - {lang:head_list}</td>
  </tr>
  <tr>
-  <td class="leftb">{icon:contents} {lang:all} {head:count_all}</td>
+  <td class="leftb">{lang:all} {head:count_all}</td>
   <td class="rightb">{head:pages}</td>
  </tr>
  <tr>
-  <td class="leftb" colspan="2">{lang:category} 
+  <td class="leftb" colspan="2">
     <form method="post" id="events_list" action="{url:events_list}">
-    {head:dropdown}
-    <input name="submit" value="{lang:show}" class="form" type="submit" /></form>
+      <fieldset style="border: 0; padding: 0">
+        {lang:category}
+        {head:dropdown}
+        <input type="submit" name="submit" value="{lang:show}" />
+      </fieldset>
+      </form>
    </td>
  </tr>
 </table>
