@@ -74,6 +74,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   echo cs_subtemplate(__FILE__,$data,'users','head');
   
   $data = array();
+  $data['data'] = $cs_user;
   
   $data['if']['done'] = false;
 
@@ -121,22 +122,19 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $limits[2]['name'] = '35';
   $limits[3]['users_limit'] = 50;
   $limits[3]['name'] = '50';
-  $data['setup']['users_limit'] = cs_dropdown('users_limit','name',$limits,$cs_user['users_limit']);
-
-  $data['setup']['homelimit'] = cs_html_input('users_homelimit',$cs_user['users_homelimit'],'text',4,4);
-  $data['setup']['readtime'] = cs_html_input('users_readtime',$cs_user['users_readtime'],'text',4,4);
+  $data['setup']['users_limit'] = cs_dropdown('users_limit','name',$limits,$cs_user['users_limit'],0,1);
 
   $views[0]['users_view'] = '';
   $views[0]['name'] = $cs_lang['default'];
   $views[1]['users_view'] = 'list';
   $views[1]['name'] = $cs_lang['list'];
-  $data['setup']['view_type'] = cs_dropdown('users_view','name',$views,$cs_user['users_view']);
+  $data['setup']['view_type'] = cs_dropdown('users_view','name',$views,$cs_user['users_view'],0,1);
   
   $mode[0]['users_invisible'] = 0;
   $mode[0]['name'] = $cs_lang['off'];
   $mode[1]['users_invisible'] = 1;
   $mode[1]['name'] = $cs_lang['on'];
-  $data['setup']['users_invisible'] = cs_dropdown('users_invisible','name',$mode,$cs_user['users_invisible']);
+  $data['setup']['users_invisible'] = cs_dropdown('users_invisible','name',$mode,$cs_user['users_invisible'],0,1);
   
   $mode[0]['users_ajax'] = 0;
   $mode[0]['name'] = $cs_lang['off'];

@@ -41,11 +41,11 @@
  	</tr>
  	<tr>
   		<td class="leftc">{icon:view_text} {lang:readtime}</td>
-  		<td class="leftb" colspan="2">{setup:readtime} {lang:days}</td>
+  		<td class="leftb" colspan="2"><input type="text" name="users_readtime" value="{data:users_readtime}" maxlength="4" size="4" /> {lang:days}</td>
  	</tr>
  	<tr>
   		<td class="leftc">{icon:view_text} {lang:homelimit}</td>
-  		<td class="leftb" colspan="2">{setup:homelimit}</td>
+  		<td class="leftb" colspan="2"><input type="text" name="users_homelimit" value="{data:users_homelimit}" maxlength="4" size="4" /></td>
  	</tr>
  	<tr>
   		<td class="leftc">{icon:view_choose} {lang:view}</td>
