@@ -186,8 +186,8 @@ function cs_abcode_size($matches) {
 }
 
 function cs_abcode_align($matches) {
-
-  return cs_html_div(1,'text-align:' . $matches[1]) . $matches[2] . cs_html_div(0);
+  global $replaces;
+	return str_replace(array('{var:align}','{var:content}'), array($matches[1],$matches[2]), $replaces[3]);
 }
 
 function cs_abcode_urlauto($matches) {
@@ -218,17 +218,14 @@ function cs_abcode_url($matches) {
 
 function cs_abcode_quote($matches) {
 
-  if ($matches[0] == '[/quote]') {
-    $return = cs_html_div(0);
-  }
-  elseif(empty($matches[1])) {
-    $return = cs_html_div(1,0,'class="quote"');
-  } 
-  else {
-    $name    = cs_html_big(1).$matches[1].cs_html_big(0);
-    $return  = cs_html_div(1,0,'class="quote"').$name.':'.cs_html_br(1);
-  }
-  return $return;
+	global $replaces;
+  if ($matches[0] == '[/quote]')
+    return $replaces[2];
+  if(empty($matches[1]))
+    return $replaces[1];
+
+  return str_replace('{var:name}', $matches[1], $replaces[0]);
+
 }
 
 function cs_abcode_clip($matches) {
@@ -288,12 +285,23 @@ function cs_abcode_decode($matches) {
   
   return html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
 }
+$replaces = array();
+function cs_abcode_load() {
+	
+	global $replaces, $cs_main;
+	if (!empty($replaces)) return;
+  $cs_main['def_theme'] = empty($cs_main['def_theme']) ? 'base' : $cs_main['def_theme'];
+  
+	$replaces = file('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl');
+	
+}
 
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
 
   global $com_lang;
 
   $op_abcode = cs_sql_option(__FILE__,'abcode');
+  cs_abcode_load();
 
   $replace = str_replace(array('{','}'),array('&#123;','&#125;'),$replace);
 
