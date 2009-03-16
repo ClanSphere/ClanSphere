@@ -53,11 +53,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 
   } else {
   //Old PHP Version
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftb');
-  echo $cs_lang['php'];
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+  	echo $cs_lang['php'];
   }
 }
 ?>
