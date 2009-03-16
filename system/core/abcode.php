@@ -108,8 +108,8 @@ function cs_abcode_u($matches) {
 }
 
 function cs_abcode_b($matches) {
-
-  return cs_html_big(1) . $matches[1] . cs_html_big(0);
+  global $replaces;
+  return str_replace('{var:content}', $matches[1], $replaces[6]);
 }
 
 function cs_abcode_i($matches) {
@@ -175,19 +175,19 @@ function cs_abcode_mail($matches) {
 }
 
 function cs_abcode_color($matches) {
-
-  return cs_html_span(1,'color:' . $matches[1]) . $matches[2] . cs_html_span(0);
+  global $replaces;
+  return str_replace(array('{var:color}','{var:content}'),array($matches[1],$matches[2]), $replaces[5]);
 }
 
 function cs_abcode_size($matches) {
-
-  $matches[1] = $matches[1] > 50 ? 50 : $matches[1];
-  return cs_html_span(1,'font-size:' . $matches[1] . 'pt') . $matches[2] . cs_html_span(0);
+  global $replaces;
+  $size = $matches[1] > 50 ? 50 : $matches[1];
+  return str_replace(array('{var:size}','{var:content}'), array($size, $matches[2]), $replaces[4]);
 }
 
 function cs_abcode_align($matches) {
   global $replaces;
-	return str_replace(array('{var:align}','{var:content}'), array($matches[1],$matches[2]), $replaces[3]);
+  return str_replace(array('{var:align}','{var:content}'), array($matches[1],$matches[2]), $replaces[3]);
 }
 
 function cs_abcode_urlauto($matches) {
@@ -218,7 +218,7 @@ function cs_abcode_url($matches) {
 
 function cs_abcode_quote($matches) {
 
-	global $replaces;
+  global $replaces;
   if ($matches[0] == '[/quote]')
     return $replaces[2];
   if(empty($matches[1]))
@@ -287,13 +287,13 @@ function cs_abcode_decode($matches) {
 }
 $replaces = array();
 function cs_abcode_load() {
-	
-	global $replaces, $cs_main;
-	if (!empty($replaces)) return;
+  
+  global $replaces, $cs_main;
+  if (!empty($replaces)) return;
   $cs_main['def_theme'] = empty($cs_main['def_theme']) ? 'base' : $cs_main['def_theme'];
   
-	$replaces = file('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl');
-	
+  $replaces = file('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl');
+  
 }
 
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
@@ -385,11 +385,11 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
       $replace = preg_replace("=([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
   }
   if(!empty($html)) {
-  	global $htmlcode;
-  	if (!empty($htmlcode)) {
-  	  $count = count($htmlcode);
-  	  for ($i = 0; $i < $count; $i++) $replace = str_replace('{html'.$i.'}',$htmlcode[$i],$replace);
-  	}
+    global $htmlcode;
+    if (!empty($htmlcode)) {
+      $count = count($htmlcode);
+      for ($i = 0; $i < $count; $i++) $replace = str_replace('{html'.$i.'}',$htmlcode[$i],$replace);
+    }
   }
   
   if(!empty($features)) {
