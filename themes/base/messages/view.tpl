@@ -16,7 +16,7 @@
       <a href="javascript:history.back()" title="{lang:back}">{icon:back}</a>
       <a href="{url:messages_create:rep={msg:messages_id}}" title="{lang:replay}">{icon:mail_replay}</a>
       <a href="{url:messages_remove:id={msg:messages_id}}" title="{lang:remove}">{icon:mail_delete}</a>
-      <a href="{url:messages_archiv:id={msg:messages_id}}" title="{lang:to_archiv}>{icon:ark}</a></td>
+      <a href="{url:messages_archiv:id={msg:messages_id}}" title="{lang:archiv}">{icon:ark}</a></td>
   </tr>
   <tr>
     <td class="headb" colspan="2">{msg:messages_subject}</td>
