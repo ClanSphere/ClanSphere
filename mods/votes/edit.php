@@ -161,12 +161,7 @@ if(!empty($vote_form))
     $levels++;
   }
 
-/*  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['answer'] . ' *';
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_textarea('votes_election',$votes_election,50,20);
-  echo cs_html_roco(0);
-*/
+
   if(isset($_POST['election']))
   {
     $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;

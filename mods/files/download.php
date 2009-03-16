@@ -37,10 +37,6 @@ elseif(!empty($advanced))
 {
   $data['file']['wait'] = cs_html_img('symbols/files/wait.gif',0,0,0); 
 
-  //echo cs_html_roco(1,'centerb',0,2);
-  //echo cs_link($cs_lang['back'],'files','view','where=' . $files_id);
-  //echo cs_html_roco(0);
-  //$downloadfile = $temp[$mirror_id];
   /*print("<meta http-equiv=refresh content='3; URL=$downloadfile'>");
   header("Content-disposition: attachment; filename = $downloadfile");
   header("Content-Type: application/force-download");
