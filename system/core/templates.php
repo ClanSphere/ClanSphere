@@ -270,7 +270,10 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     {
         cs_error($tpl_path . '/' . $tpl_file, 'cs_template - Template not found');
         $msg = 'Template not found: ' . $tpl_path . '/' . $tpl_file;
-        die(cs_error_internal('tpl', $msg));
+        if($tpl_file != 'error.htm')
+          die(cs_error_internal('tpl', $msg));
+        else
+          die($msg);
     }
     $cs_temp_get = file_get_contents($tpl_path . '/' . $tpl_file);
     $tpl_path = $wp . $tpl_path;
