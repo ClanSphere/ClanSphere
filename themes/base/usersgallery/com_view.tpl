@@ -72,7 +72,7 @@
 		<td class="leftb">{icon:Volume Manager} {lang:gallery_vote}</td>
 		<td class="leftc">
 			{if:vote_now}
-			<form method="post" action="{form:action}" name="usersgallery">
+			<form method="post" action="{form:action}" id="com_view">
 				<select name="voted_answer">
 					{vote:options}
 				</select>

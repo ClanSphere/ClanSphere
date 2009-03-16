@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" name="users_edit" action="{url:usersgallery_users_edit}" enctype="multipart/form-data">
+<form method="post" id="users_edit" action="{url:usersgallery_users_edit}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:download} {lang:picture} *</td>
