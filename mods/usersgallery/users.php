@@ -1,19 +1,25 @@
 <?PHP
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
+
 $cs_lang = cs_translate('gallery');
-require_once('mods/usersgallery/functions.php');
+$cs_post = cs_post('id,cat_id,start');
+$cs_get = cs_get('id_cat_id,start');
+$data = array();
+
+$id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $id = $cs_post['id'];
+$cat_id = empty($cs_get['cat_id']) ? 0 : $cs_get['cat_id'];
+if (!empty($cs_post['cat_id']))  $cat_id = $cs_post['cat_id'];
+$start = empty($cs_get['start']) ? 0 : $cs_get['start'];
+if (!empty($cs_post['start']))  $start = $cs_post['start'];
+
+require_once('mods/gallery/functions.php');
 $options = cs_sql_option(__FILE__,'gallery');
 $cols = $options['cols'];
 $rows = $options['rows'];
-
 $cols_rows = $cols * $rows;
 
-$id = empty($_GET['id']) ? 0 : $_GET['id'];
-$start = empty($_GET['start']) ? 0 : $_GET['start'];
-$cat_id = empty($_GET['cat_id']) ? 0 : $_GET['cat_id'];
-settype($cat_id,'integer');
-settype($id,'integer');
 $access_id = $account['access_usersgallery'];
 
 $data['lang']['getmsg'] = cs_getmsg();

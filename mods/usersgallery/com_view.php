@@ -3,16 +3,20 @@
 // $Id$
 
 $cs_lang = cs_translate('gallery');
+$cs_post = cs_post('id,cat_id,more,move');
+$cs_get = cs_get('id_cat_id,more,move');
 
-$modul = 'usersgallery';
+$id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $id = $cs_post['id'];
+$cat_id = empty($cs_get['cat_id']) ? 0 : $cs_get['cat_id'];
+if (!empty($cs_post['cat_id']))  $cat_id = $cs_post['cat_id'];
+$detail = empty($cs_get['more']) ? 0 : $cs_get['more'];
+if (!empty($cs_post['more']))  $more = $cs_post['more'];
+$move = empty($cs_get['move']) ? 0 : $cs_get['move'];
+if (!empty($cs_post['move']))  $move = $cs_post['move'];
+
 $access_id = $account['access_usersgallery'];
 $cs_options = cs_sql_option(__FILE__,'gallery');
-
-$id = empty($_REQUEST['id']) ? 0 : $_REQUEST['id'];
-$move = empty($_REQUEST['move']) ? 0 : $_REQUEST['move'];
-$cat_id = empty($_REQUEST['cat_id']) ? 0 : $_REQUEST['cat_id'];
-$detail = empty($_REQUEST['more']) ? 0 : $_REQUEST['more'];
-settype($cat_id, 'integer');
 
 $data['data']['addons'] = cs_addons('users','view',$id,'usersgallery');
 
