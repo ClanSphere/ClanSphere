@@ -3,16 +3,8 @@
 // $Id$
 
 $cs_lang = cs_translate('board');
+$data = array();
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_search'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo $cs_lang['body_search'];
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
 
 $keywords = empty($_POST['keywords']) ? '' : $_POST['keywords'];
 $searchmode = empty($_POST['searchmode']) ? 1 : $_POST['searchmode'];
@@ -47,61 +39,43 @@ elseif(isset($_POST['last'])) {
   $go_search = 1;
 }
 
-echo cs_html_form(1,'board_search','board','search');
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'leftb');
-echo cs_icon('cell_edit') . $cs_lang['keywords'];
-echo cs_html_roco(2,'leftc');
-echo cs_html_input('keywords',$keywords,'text',200,50);
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo cs_icon('completion') . $cs_lang['searchmode'];
-echo cs_html_roco(2,'leftc');
+$data['data']['keywords'] = $keywords;
+
 $checked = $searchmode == 1 ? array(1 => 1, 2 => 0) : array(1 => 0, 2 => 1);
-echo cs_html_vote('searchmode',1,'radio',$checked[1]) . ' ';
-echo $cs_lang['match_exact'];
-echo cs_html_vote('searchmode',2,'radio',$checked[2]) . ' ';
-echo $cs_lang['match_keywords'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo cs_icon('kcmdf') . $cs_lang['searcharea'];
-echo cs_html_roco(2,'leftc');
+$check_it = 'checked="checked"';
+$data['check']['exact'] = empty($checked[1]) ? '' : $check_it;
+$data['check']['keywords'] = empty($checked[2]) ? '' : $check_it;
+
 $checked = $searcharea == 'threads' ? array(1 => 1, 2 => 0) : array(1 => 0, 2 => 1);
-echo cs_html_vote('searcharea','threads','radio',$checked[1]) . ' ';
-echo $cs_lang['titles_and_text'];
-echo cs_html_vote('searcharea','comments','radio',$checked[2]) . ' ';
-echo $cs_lang['comments'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo cs_icon('tutorials') . $cs_lang['board'];
-echo cs_html_roco(2,'leftc');
+$data['check']['threads'] = empty($checked[1]) ? '' : $check_it;
+$data['check']['comments'] = empty($checked[2]) ? '' : $check_it;
+
+
 $tables = "board boa INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id";
 $select = "boa.board_id AS board_id, boa.board_name AS board_name, cat.categories_name AS categories_name";
 $axx_where = "boa.board_access <= '" . $account['access_board'] . "'";
 $sorting = "cat.categories_name ASC, boa.board_name ASC";
 $board_data = cs_sql_select(__FILE__,$tables,$select,$axx_where,$sorting,0,0);
-echo cs_html_select(1,'board_id');
-echo cs_html_option('----',0,0);
+
+$data['board']['options'] = '';
 if (!empty($board_data)) {
   foreach($board_data AS $board) {
     $sel = $board_id == $board['board_id'] ? 1 : 0;
     $content = $board['categories_name'] . ' -> ' . $board['board_name'];
-    echo cs_html_option($content,$board['board_id'],$sel);
+    $data['board']['options'] .= cs_html_option($content,$board['board_id'],$sel);
   }
 }
-echo cs_html_select(0);
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo cs_icon('ksysguard') . $cs_lang['options'];
-echo cs_html_roco(2,'leftc');
-echo cs_html_vote('search',$cs_lang['search'],'submit');
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_form(0);
+
+
+$data['if']['bottom'] = FALSE;
 
 if(!empty($go_search)) {
 
-  echo cs_html_br(1);
+	$data['if']['bottom'] = TRUE;
+	$data['if']['results'] = FALSE;
+	$data['if']['too_short'] = FALSE;
+	$data['if']['not_found'] = FALSE;
+
   $key_check = strlen(trim($keywords));
   $key_esc = cs_sql_escape($keywords);
 
@@ -122,11 +96,7 @@ if(!empty($go_search)) {
     $conditions = substr($conditions,0,-5) . ')';
   }
   if($key_check < 3 OR $conditions == ')' AND $searchmode != 1) {
-    echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'leftc');
-    echo $cs_lang['too_short'];
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
+  	$data['if']['too_short'] = TRUE;
   }
   else {
     if(!empty($board_id)) {
@@ -148,81 +118,58 @@ if(!empty($go_search)) {
     $count = cs_sql_count(__FILE__,$from,$conditions);
 
     if(empty($count)) {
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'leftc');
-      echo $cs_lang['not_found'];
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
+    	$data['if']['not_found'] = TRUE;
     }
     else {
-      echo cs_html_form(1,'board_search2','board','search');
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'leftb');
-      echo cs_html_vote('keywords',$keywords,'hidden');
-      echo cs_html_vote('searchmode',$searchmode,'hidden');
-      echo cs_html_vote('searcharea',$searcharea,'hidden');
-      echo cs_html_vote('board_id',$board_id,'hidden');
-      echo cs_html_vote('page',$page,'hidden');
-      $all_pages = floor($count / $account['users_limit']);
-      echo cs_html_vote('max_page',$all_pages,'hidden');
-      echo $cs_lang['page'] . ' ' . ($page + 1) . ' ' . $cs_lang['of'] . ' ' . ($all_pages + 1);
-      echo cs_html_roco(2,'centerb');
-      echo cs_html_vote('first','<<','submit');
-      echo cs_html_vote('back','<','submit');
-      echo cs_html_vote('next','>','submit');
-      echo cs_html_vote('last','>>','submit');
-      echo cs_html_roco(3,'rightb');
-      echo sprintf($cs_lang['found_matches'],$count);
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
-      echo cs_html_form(0);
-      echo cs_html_br(1);
+    	$data['if']['results'] = TRUE;
 
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'headb');
-      echo $cs_lang['board'];
-      echo cs_html_roco(2,'headb');
-      echo $cs_lang['topic'];
-      echo cs_html_roco(3,'headb',0,0,'180px');
-      echo $cs_lang['lastpost'];
-      echo cs_html_roco(0);
+      $data['hidden']['keywords'] = $keywords;
+      $data['hidden']['searchmode'] = $searchmode;
+      $data['hidden']['searcharea'] = $searcharea;
+      $data['hidden']['board_id'] = $board_id;
+      $data['hidden']['page'] = $page;
+      $all_pages = floor($count / $account['users_limit']);
+      $data['hidden']['max_page'] = $all_pages;
+
+      $data['page']['of'] = $cs_lang['page'] . ' ' . ($page + 1) . ' ' . $cs_lang['of'] . ' ' . ($all_pages + 1);
+      $data['count']['results'] = sprintf($cs_lang['found_matches'],$count);
+
 
       $start = $page * $account['users_limit'];
       $result = cs_sql_select(__FILE__,$from,$select,$conditions,$order,$start,$account['users_limit']);
+      $run = 0;
       foreach($result AS $thread) {
 
-        echo cs_html_roco(1,'leftb');
-        echo cs_link(cs_secure($thread['categories_name']),'board','list','id=' . $thread['categories_id']);
-        echo cs_html_br(1) . ' -> ';
-        echo cs_link(cs_secure($thread['board_name']),'board','listcat','id=' . $thread['board_id']);
-        echo cs_html_roco(2,'leftb');
-        echo cs_html_big(1);
+        $data['res'][$run]['category'] = cs_link(cs_secure($thread['categories_name']),'board','list','id=' . $thread['categories_id']);
+        $data['res'][$run]['board'] = cs_link(cs_secure($thread['board_name']),'board','listcat','id=' . $thread['board_id']);
+
         $headline = cs_secure($thread['threads_headline']);
-        echo cs_link($headline,'board','thread','where=' . $thread['threads_id']);
-        echo cs_html_big(0);
+        $data['res'][$run]['thread'] = cs_link($headline,'board','thread','where=' . $thread['threads_id']);
+
+				$data['res'][$run]['target'] = '';
         if(!empty($thread['comments_id'])) {
-          echo cs_html_br(1);
           $start = cs_sql_count(__FILE__,'comments',"comments_fid = '" . $thread['threads_id'] . "' AND comments_id < '" . $thread['comments_id'] . "' AND comments_mod = 'board'");
           $page = floor(++$start / $account['users_limit']) * $account['users_limit'];
           $go_target = 'where=' . $thread['threads_id'] . '&amp;start=' . $page . '#com' . $start;
-          echo cs_link($cs_lang['go_target'],'board','thread',$go_target);
+          $data['res'][$run]['target'] = cs_html_br(1) . cs_link($cs_lang['go_target'],'board','thread',$go_target);
         }
-        echo cs_html_roco(3,'leftb');
+
+				$data['res'][$run]['date'] = '';
         if(!empty($thread['last_action'])) {
-          echo cs_date('unix',$thread['last_action'],1);
+          $data['res'][$run]['date'] = cs_date('unix',$thread['last_action'],1);
         }
+        $data['res'][$run]['user'] = '';
         if(!empty($thread['users_nick'])) {
-          echo cs_html_br(1);
-          echo $cs_lang['from'] . ' ';
           $user = cs_secure($thread['users_nick']);
           $cs_users = cs_sql_select(__FILE__,'users','users_active');
-          echo cs_user($thread['users_id'],$user, $cs_users['users_active']);
+          $data['res'][$run]['user'] = cs_html_br(1) . $cs_lang['from'] .' '. cs_user($thread['users_id'],$user, $cs_users['users_active']);
         }
-        echo cs_html_roco(0);
+        $run++;
       }
-      echo cs_html_table(0);
     }
   }
 }
+
+echo cs_subtemplate(__FILE__,$data,'board','search');
 
 ?>
