@@ -34,7 +34,7 @@
 </table>
 <br />
 
-<form method="post" id="create" action="{url:messages_create}">
+<form method="post" id="messages_create" action="{url:messages_create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:personal} {lang:to} *</td>
@@ -64,6 +64,7 @@
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
+      <input type="hidden" name="reply_id" value="{var:reply_id}" class="form" />
       <input type="submit" name="submit" value="{lang:send}" class="form" />
       <input type="submit" name="preview" value="{lang:preview}" class="form" />
       <input type="reset" name="reset" value="{lang:reset}" class="form" />

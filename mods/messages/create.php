@@ -16,9 +16,11 @@ $messages_error = '';
 $errormsg = '';
 $messages_archiv = '0';
 $messages_show_receiver = '1';
+$reply_id = 0;
 
 if (!empty($_GET['rep'])) {
 	$messages_id = (int) $_GET['rep'];
+	$reply_id = $messages_id;
 	$tables = 'messages m INNER JOIN {pre}_users u ON m.users_id = u.users_id';
 	$cells  = 'm.messages_text AS messages_text, m.messages_subject AS messages_subject, m.users_id AS users_id, ';
 	$cells .= 'u.users_nick AS users_nick, u.users_active AS users_active, u.users_delete AS users_delete';
@@ -118,6 +120,18 @@ if (!empty($_POST['submit'])) {
 
 if (isset($_POST['submit']) && empty($messages_error)) {
   
+	if (!empty($_POST['reply_id'])) {
+		
+		$messages_id = (int) $_POST['reply_id'];
+		$tables = 'messages m INNER JOIN {pre}_users u ON m.users_id = u.users_id';
+		$where = 'm.messages_id = "' . $messages_id . '" AND m.users_id_to = "' . $account['users_id'] . '"';
+		$message = cs_sql_select(__FILE__, $tables, 'u.users_nick AS users_nick', $where);
+		
+		if (!empty($message) && strpos($_POST['messages_to'], $message['users_nick']) !== false) {
+			cs_sql_update(__FILE__, 'messages', array('messages_view'), array(2), $messages_id);
+		}
+	}
+	
   for($run=0; $run<$cs_messages_loop; $run++) {
     $users_id_to = $cs_messages[$run]['users_id'];
     $messages_cells = array('users_id','messages_time','messages_subject','messages_text',
@@ -190,6 +204,7 @@ $data['msg']['smileys'] = cs_abcode_smileys('messages_text');
 $data['msg']['abcode'] = cs_abcode_features('messages_text');
 $data['msg']['text'] = $messages_text;
 $data['checked']['show_sender'] = empty($messages_show_sender) ? '' : ' checked="checked"';
+$data['var']['reply_id'] = $reply_id;
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'create');
 
