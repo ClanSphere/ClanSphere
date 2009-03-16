@@ -108,8 +108,7 @@ function cs_abcode_u($matches) {
 }
 
 function cs_abcode_b($matches) {
-  global $replaces;
-  return str_replace('{var:content}', $matches[1], $replaces[6]);
+  return cs_abcode_output(6, $matches);
 }
 
 function cs_abcode_i($matches) {
@@ -175,19 +174,16 @@ function cs_abcode_mail($matches) {
 }
 
 function cs_abcode_color($matches) {
-  global $replaces;
-  return str_replace(array('{var:color}','{var:content}'),array($matches[1],$matches[2]), $replaces[5]);
+  return cs_abcode_output(5, $matches);
 }
 
 function cs_abcode_size($matches) {
-  global $replaces;
-  $size = $matches[1] > 50 ? 50 : $matches[1];
-  return str_replace(array('{var:size}','{var:content}'), array($size, $matches[2]), $replaces[4]);
+  $matches[1] = $matches[1] > 50 ? 50 : $matches[1];
+  return cs_abcode_output(4, $matches);
 }
 
 function cs_abcode_align($matches) {
-  global $replaces;
-  return str_replace(array('{var:align}','{var:content}'), array($matches[1],$matches[2]), $replaces[3]);
+  return cs_abcode_output(3, $matches);
 }
 
 function cs_abcode_urlauto($matches) {
@@ -220,11 +216,11 @@ function cs_abcode_quote($matches) {
 
   global $replaces;
   if ($matches[0] == '[/quote]')
-    return $replaces[2];
+    return cs_abcode_output(2);
   if(empty($matches[1]))
-    return $replaces[1];
+    return cs_abcode_output(1);
 
-  return str_replace('{var:name}', $matches[1], $replaces[0]);
+  return cs_abcode_output(0,$matches);
 
 }
 
@@ -294,6 +290,17 @@ function cs_abcode_load() {
   
   $replaces = file('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl');
   
+}
+function cs_abcode_output($id, $matches = 0, $limit = 0) {
+	
+	global $replaces;
+	if (empty($matches)) return $replaces[$id];
+	if (empty($limit)) {
+		$replace = array();
+		foreach ($matches AS $key => $value) $replace['{var:' . $key . '}'] = $value;
+		return str_replace(array_keys($replace), array_values($replace), $replaces[$id]);
+	}
+	
 }
 
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
