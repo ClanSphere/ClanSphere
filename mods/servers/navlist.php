@@ -3,57 +3,77 @@
 
 $cs_lang = cs_translate('servers');
 
+$id = empty($_GET['sid']) ? '' : (int) $_GET['sid'];
+
+$data = array();
+
 // Test if fsockopen active
 if (fsockopen("udp://127.0.0.1", 1)) {
-  $check['php'] = phpversion();
-  if (4.3 <= substr($check['php'], 0, 3)) {
-  
-    // Get Server SQL-Data
-    if(!empty($_GET['sid'])) {
-      $where = "servers_id = '" . $_GET['sid'] . "'";
-    } else {
-      $where = 0;
-    }
-    $select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order';
-    $order = 'servers_order DESC';
-    $cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
-    $cs_servers_count = count($cs_servers);
-  
-    // Create Gameserver Variable
-    $gameserver = array();
-    for($gs = 0; $gs < $cs_servers_count; $gs++) {
-      $gameserver[] = $cs_servers[$gs]['servers_class'] . ':' . $cs_servers[$gs]['servers_ip'] . ':' . 
-      $cs_servers[$gs]['servers_port'] . ':' . $cs_servers[$gs]['servers_query'] . ':' . $cs_servers[$gs]['servers_stats'];
-    }
- 
-    // Settings
-    $use_file = '?mod=servers&action=list';    
-    $use_bind = '&';   
-  
-    if (!defined('PHGDIR')) { define ('PHGDIR', 'mods/servers/'); }
-    $country = array('Germany'); 
-    include_once(PHGDIR . 'classes/phgstats.class.php');  
-    $phgdir = PHGDIR;
-  
-  $index = count($gameserver);
-  while($index) {
-      $index--;
-      list($game[$index], $host[$index], $port[$index], $queryport[$index], $stats[$index]) = split(':', $gameserver[$index]);
-    }
-  
-  //if ($host[$HTTP_GET_VARS["sh_srv"]])
-    $sh_srv = 0;
+	if (4.3 <= substr(phpversion(), 0, 3)) {
+		include_once 'mods/servers/functions.php';
 
-    // gameserver data
-    for($run=0; $run<count($gameserver); $run++) {
-      $sh_srv = $run;
-      $srv_rules_navlist = info_navlist($phgdir, $sh_srv, $game, $host, $port, $queryport, $country, $stats);  
-      srv_info_navlist($sh_srv, $srv_rules_navlist, $use_file, $use_bind, 0, 0);
-    }
+		/* Get Server SQL-Data */
+		$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order, servers_id';
+		$order = 'servers_order ASC';
+		$where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
+		$cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
+		$cs_servers_count = count($cs_servers);
 
-  } else {
-  //Old PHP Version
-  	echo $cs_lang['php'];
-  }
+		/* if Server in SQL */
+		if(!empty($cs_servers_count)) {
+
+			// Settings
+			$use_file = '?mod=servers&action=list';
+			$use_bind = '&';
+
+			if (!defined('PHGDIR')) {
+				define('PHGDIR', 'mods/servers/');
+			}
+			$country = array('Germany');
+			include_once(PHGDIR . 'classes/phgstats.class.php');
+			$phgdir = PHGDIR;
+
+			$phgstatsc = new phgstats();
+			for($run=0; $run<$cs_servers_count; $run++) {
+				$data['servers'][$run]['if']['live'] = false;
+				$data['servers'][$run]['map'] = $phgdir . 'maps/no_response.jpg';
+				$data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
+				if(!empty($cs_servers[$run]['servers_stats'])) {
+					$phgstats = $phgstatsc->query($cs_servers[$run]['servers_class']);
+					/* resolve ip adress */
+					$host = dns($cs_servers[$run]['servers_ip']);
+					/* get the serverinfo string */
+					$server = $phgstats->getstream($host, $cs_servers[$run]['servers_port'], $cs_servers[$run]['servers_query']);
+					/* get the server rules */
+					if($server === true) {
+						$data['servers'][$run] = $phgstats->getrules($phgdir);
+						$data['servers'][$run]['if']['live'] = true;
+						if(file_exists($phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
+							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
+						}
+						else {
+							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/default.jpg';
+						}
+						$data['servers'][$run]['servers_ip'] = $cs_servers[$run]['servers_ip'];
+						/* if TS View, use teamspeak:// */
+						preg_match_all("/Teamspeak/", $data['servers'][$run]['gametype'], $teamspeak);
+						if(in_array("Teamspeak", $teamspeak[0])) {
+							$data['servers'][$run]['proto'] = 'teamspeak://';
+						}
+						else {
+							$data['servers'][$run]['proto'] = 'hlsw://';
+						}
+						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['pass']) ? $cs_lang['no'] : $cs_lang['yes'];
+						$data['servers'][$run]['id'] = $cs_servers[$run]['servers_id'];
+						flush();
+					}
+				}
+			}
+		}
+		echo cs_subtemplate(__FILE__,$data,'servers','navlist');
+	} else {
+		//Old PHP Version
+		echo $cs_lang['php'];
+	}
 }
 ?>
