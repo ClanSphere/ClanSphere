@@ -60,6 +60,8 @@ if(!empty($sql_content)) {
   global $com_lang;
   $sql_update = str_replace('\;','{serial}',$sql_update);
   $sql_array = explode(';',$sql_update);
+  cs_abcode_load();
+  
   foreach($sql_array AS $sql_query) {
     $sql_query = trim(str_replace('{serial}',';',$sql_query));
     if(!empty($sql_query)) {
