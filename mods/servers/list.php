@@ -16,6 +16,8 @@ if (fsockopen("udp://127.0.0.1", 1)) {
     $where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
     $cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
     $cs_servers_count = count($cs_servers);
+	
+	$data['servers'] = array();
     
     /* if Server in SQL */
     if(!empty($cs_servers_count)) {
@@ -88,7 +90,9 @@ else {
   $order = 'srv.servers_order';
   $cs_servers = cs_sql_select(__FILE__,$tables,$select,0,$order,0,0);
   $cs_servers_count = count($cs_servers);
-
+  
+  $data['servers'] = array();
+  
   for($serv=0; $serv < $cs_servers_count; $serv++) {
     $data['servers'][$serv]['name'] = $cs_servers[$serv]['servers_name'];
     $data['servers'][$serv]['url'] = $cs_servers[$serv]['servers_ip'] . ':' . $cs_servers[$serv]['servers_port'];
