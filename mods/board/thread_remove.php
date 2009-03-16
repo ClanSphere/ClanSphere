@@ -3,15 +3,19 @@
 // $Id$
 
 $cs_lang = cs_translate('board');
+$cs_post = cs_post('id');
+$cs_get = cs_get('id');
+$data = array();
+
+$thread_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $thread_id = $cs_post['id'];
 
 require_once('mods/board/functions.php');
 
-$thread_form = 1;
-$thread_id = $_REQUEST['id'];
-settype($thread_id,'integer');
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
-$select = 'frm.board_access AS board_access, frm.board_id AS board_id, thr.users_id AS users_id, frm.squads_id AS squads_id';
+$select = 'frm.board_access AS board_access, frm.board_id AS board_id, thr.threads_headline AS threads_headline, ';
+$select .= 'thr.users_id AS users_id, frm.squads_id AS squads_id';
 $where = "thr.threads_id = '" . $thread_id . "'";
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where);
 
@@ -46,13 +50,8 @@ if($account['access_board'] >= $cs_thread['board_access']) {
 }
 //Sicherheitsabfrage Ende
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['remove'];
-echo cs_html_roco(0);
 
 if(isset($_POST['agree'])) {
-  $thread_form = 0;
   
   for($run=0; $run < $cs_boardfiles_loop; $run++)
   {       
@@ -61,7 +60,7 @@ if(isset($_POST['agree'])) {
     $name = strlen($file);
     $ext = substr($file,$name - $extension + 1,$name); 
     //$file = cs_secure($cs_boardfiles[$run]['boardfiles_name']);
-    echo 'uploads/board/files/' . $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext . cs_html_br(1);
+    //echo 'uploads/board/files/' . $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext . cs_html_br(1);
     cs_unlink('board', $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext, 'files');
   }
   
@@ -91,26 +90,15 @@ if(isset($_POST['agree'])) {
   cs_redirect($cs_lang['del_true'],'board','list');
 }
 
-if(isset($_POST['cancel'])) {
-  $thread_form = 0;
+if(isset($_POST['cancel']))
+ cs_redirect($cs_lang['del_false'],'board','thread','where=' .$thread_id);
 
-  cs_redirect($cs_lang['del_false'],'board','thread','action=thread&where=' .$thread_id);
-}
+else {
 
-if(!empty($thread_form)) {
-
-  echo cs_html_roco(1,'leftb');
-  echo sprintf($cs_lang['del_rly'],$thread_id);
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'centerc');
-  echo cs_html_form(1,'thread_remove','board','thread_remove');
-  echo cs_html_vote('id',$thread_id,'hidden');
-  echo cs_html_vote('agree',$cs_lang['confirm'],'submit');
-  echo cs_html_vote('cancel',$cs_lang['cancel'],'submit');
-  echo cs_html_form (0);
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+  $data['head']['body'] = sprintf($cs_lang['del_thread_rly'],$cs_thread['threads_headline']);
+	$data['thread']['id'] = $thread_id;
+  
+ echo cs_subtemplate(__FILE__,$data,'board','thread_remove');
 }
 
 ?>

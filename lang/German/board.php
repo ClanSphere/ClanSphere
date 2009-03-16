@@ -363,6 +363,7 @@ $cs_lang['thread_edit_errortext'] = 'Das Thema, dass Sie editieren m&ouml;chten,
 $cs_lang['file_del'] = 'Datei wird gel&ouml;scht!';
 
 //thread_remove.php
+$cs_lang['del_thread_rly'] = 'Soll der Thread "%s" wirklich gel&ouml;scht werden?';
 $cs_lang['thread_remove_errortext'] = 'Das Thema, das Sie l&ouml;schen m&ouml;chten, existiert nicht, oder ist f&uuml;r Sie nicht l&ouml;schbar.';
 
 //users.php
