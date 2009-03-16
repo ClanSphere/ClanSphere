@@ -27,21 +27,10 @@ function getNextThread($catid, $threads_time)
 function errorPage($section)
 {
   global $cs_lang;
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb');
-  echo $cs_lang['error_header'];
-  echo cs_html_roco(0);
-
-  echo cs_html_roco(1,'centerc');
-  echo cs_html_big(1);
-  echo $cs_lang['error_subheader'];
-  echo cs_html_big(0);
-  echo cs_html_br(1);
-  echo $cs_lang[$section.'_errortext'];
-  echo cs_html_br(2);
-  echo cs_link($cs_lang['error_back'],'board','list');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+  $data = array();
+  $data['error']['section'] = $cs_lang[$section.'_errortext'];
+  
+ echo cs_subtemplate(__FILE__,$data,'board','error_page');
 }
 //-----------------------------------------------------------------------------
 // User Data Functions

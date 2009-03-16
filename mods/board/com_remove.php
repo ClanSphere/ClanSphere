@@ -3,10 +3,12 @@
 // $Id$
 
 $cs_lang = cs_translate('board');
+$cs_post = cs_post('id');
+$cs_get = cs_get('id');
+$data = array();
 
-$comments_id = $_REQUEST['id'];
-settype($comments_id,'integer');
-$comments_form = 1;
+$comments_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $comments_id = $cs_post['id'];
 
 require_once('mods/board/functions.php');
 
@@ -25,7 +27,6 @@ $cs_thread = cs_sql_select(__FILE__,$from,$select,$where);
 $where = "comments_id = '" . $comments_id ."'";
 $cs_com_files = cs_sql_select(__FILE__,'boardfiles','boardfiles_name,boardfiles_id',$where,0,0,0);
 $cs_com_files_loop = count($cs_com_files); 
-
 
 
 //Sicherheitsabfrage Beginn 
@@ -47,13 +48,8 @@ else if(empty($allowed))
   return errorPage('com_remove');
 //Sicherheitsabfrage Ende
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_com_remove'];
-echo cs_html_roco(0);
 
 if(isset($_POST['agree'])) {
-  $comments_form = 0;
     
   for($run=0; $run < $cs_com_files_loop; $run++)
   {       
@@ -62,7 +58,7 @@ if(isset($_POST['agree'])) {
     $name = strlen($file);
     $ext = substr($file,$name - $extension + 1,$name); 
     //$file = cs_secure($cs_boardfiles[$run]['boardfiles_name']);
-    echo 'uploads/board/files/' . $cs_com_files[$run]['boardfiles_id'] . '.' . $ext . cs_html_br(1);
+    //echo 'uploads/board/files/' . $cs_com_files[$run]['boardfiles_id'] . '.' . $ext . cs_html_br(1);
     cs_unlink('board', $cs_com_files[$run]['boardfiles_id'] . '.' . $ext, 'files');
     $query = "DELETE FROM {pre}_boardfiles WHERE boardfiles_id = '" . $cs_com_files[$run]['boardfiles_id'] . "'";
     cs_sql_query(__FILE__,$query);
@@ -112,20 +108,12 @@ if(isset($_POST['cancel'])) {
   cs_redirect($cs_lang['del_false'],'board','thread',$more);
 }
 
-if(!empty($comments_form)) {
+else {
 
-  echo cs_html_roco(1,'leftb');
-  echo sprintf($cs_lang['del_rly'],$comments_id);
-  echo cs_html_roco(0);
+  $data['head']['body'] = sprintf($cs_lang['del_rly'],$comments_id);
+	$data['commnets']['id'] = $comments_id;
 
-  echo cs_html_roco(1,'centerc');
-  echo cs_html_form(1,'board_com_remove','board','com_remove');
-  echo cs_html_vote('id',$comments_id,'hidden');
-  echo cs_html_vote('agree',$cs_lang['confirm'],'submit');
-  echo cs_html_vote('cancel',$cs_lang['cancel'],'submit');
-  echo cs_html_form (0);
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
+ echo cs_subtemplate(__FILE__,$data,'board','com_remove');
 }
 
 ?>
