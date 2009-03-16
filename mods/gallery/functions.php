@@ -55,6 +55,61 @@ function cs_foldersort ($array, $id = 0) {
   return $result;
 }
 
+function cs_gallery_move($array,$list_sort) {
+  $array = cs_array_sort($array,SORT_ASC,'folders_id');
+  $loop = count($array);
+  for($run=0; $run < $loop; $run++) {
+    $before = $run - 1;
+    if($run == '0') {
+      $move = 0;
+      $array[$run]['move'] = $move;
+    } elseif($array[$before]['folders_id'] == $array[$run]['folders_id']) {
+      $move++;
+      $array[$run]['move'] = $move;
+    } else {
+      $move = 0;
+      $array[$run]['move'] = $move;
+    }
+  }
+  if($list_sort == 0) {
+    for($run=0; $run < $loop; $run++) {
+      $before = $run - 1;
+      if($run == '0') {
+        $move = 0;
+        $temp_array[$move][$run]['usersgallery_id'] = $array[$run]['usersgallery_id'];
+        $temp_array[$move][$run]['move'] = $array[$run]['move'];
+      } elseif($array[$before]['folders_id'] == $array[$run]['folders_id']) {
+        $temp_array[$move][$run]['usersgallery_id'] = $array[$run]['usersgallery_id'];
+        $temp_array[$move][$run]['move'] = $array[$run]['move'];
+      } else {
+        $move++;
+        $temp_array[$move][$run]['usersgallery_id'] = $array[$run]['usersgallery_id'];
+        $temp_array[$move][$run]['move'] = $array[$run]['move'];
+      }
+    }
+    if(isset($temp_array)) {
+      $loop = count($temp_array);
+      $run_to = 0;
+      for($run=0; $run < $loop; $run++) {
+        $loop_2 = count($temp_array[$run]);
+        $loop_2--;
+        for($loop_2; $loop_2 >= 0; $loop_2--) {
+          $temp_array2[$run_to]['move'] = $loop_2;
+          $temp_array2[$run_to]['usersgallery_id'] = $temp_array[$run][$run_to]['usersgallery_id'];
+          $run_to++;
+        }
+      }
+      $array = cs_array_sort($array,SORT_DESC,'usersgallery_id');
+      $temp_array2 = cs_array_sort($temp_array2,SORT_DESC,'usersgallery_id');
+      $loop = count($array);
+      for($run=0; $run < $loop; $run++) {
+        $array[$run]['move'] = $temp_array2[$run]['move'];
+      }
+    }
+  }
+  return $array;
+}
+
 function cs_array_sort($array,$sort,$key) {
   if(!empty($array)) {
     if($sort == SORT_DESC OR $sort == SORT_ASC) {
