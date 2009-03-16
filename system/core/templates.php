@@ -333,7 +333,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       $cs_logs['errors'] = nl2br($cs_logs['errors']);
       foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
         $logsql .= cs_html_big(1) . $sql_file . cs_html_big(0) . cs_html_br(1);
-        $logsql .= nl2br($sql_queries);
+        $logsql .= nl2br(htmlentities($sql_queries, ENT_QUOTES, $com_lang['charset']));
       }
     }
     else {
