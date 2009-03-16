@@ -51,6 +51,9 @@ else
 	$select = 'folders_id, folders_name, folders_picture, folders_text';
   $where = 'folders_mod = \'usersgallery\' AND folders_id = "' . $cat_id . '"';  
   $cs_cat = cs_sql_select(__FILE__,'folders',$select,$where);
+  
+  $advanced = empty($cs_cat['folders_advanced']) ? '0,0,0,0' : $cs_cat['folders_advanced'];
+	$advanced = explode(",",$advanced);
 
   $usersgallery_id = $cs_gallery[$move]['usersgallery_id'];
   $where = 'voted_fid = "' . $usersgallery_id . '" AND voted_mod = \'usersgallery\'';
@@ -138,10 +141,9 @@ else
 		$data['details']['filesize'] = cs_filesize($size);
     $data['details']['count'] = $cs_gallery[$move]['usersgallery_count'] + 1;
 
-    $check_vote = $cs_gallery[$move]['usersgallery_vote'];
 
 		#if voting is allowed
-    if(!empty($check_vote))
+    if(!empty($advanced[0]))
     {
     	$data['if']['vote'] = TRUE;
     	$data['if']['vote_now'] = FALSE;
@@ -203,7 +205,7 @@ else
       echo cs_html_br(1);
       echo cs_comments_view($usersgallery_id,'usersgallery','com_view',$com_loop);
     }
-    echo cs_comments_add($usersgallery_id,'usersgallery',$cs_gallery[$move]['usersgallery_close']);
+    echo cs_comments_add($usersgallery_id,'usersgallery',$advanced[1]);
   }
 }
 ?>
