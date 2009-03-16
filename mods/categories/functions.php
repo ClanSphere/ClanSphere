@@ -28,9 +28,10 @@ function cs_categories_dropdown($mod, $categories_id) {
   $where = "categories_mod='" . $mod . "'";
   $list_data = cs_sql_select(__FILE__,'categories','categories_id, categories_name',$where,'categories_name',0,0);
 
-  $return = cs_dropdown('categories_id','categories_name',$list_data,$categories_id);
-  $return .= ' - ' . cs_html_input('categories_name','','text',80,20);
-  return $return;
+	$data = array();
+	$data['categories']['dropdown'] = cs_dropdown('categories_id','categories_name',$list_data,$categories_id);
+	
+ return cs_subtemplate(__FILE__,$data,'categories','cat_dropdown');
 }
 
 function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1) {
