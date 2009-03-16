@@ -77,9 +77,11 @@ $cs_lang['last_thr']  = 'Die letzten %s erstellten Themen';
 //com_create.php
 $cs_lang['not_able']  = '- Das angegebene Ziel erlaubt keine Antworten.';
 
-$cs_lang['text_to_long'] = ' - Der Text ist ';
-$cs_lang['text_to_long_2'] = ' Zeichen lang. Das sind ';
-$cs_lang['text_to_long_3'] = ' Zeichen zu viel!';
+$cs_lang['text_to_long_sprint'] = '- Der Text ist %s Zeichen lang, das sind %s Zeichen zu viel.';
+$cs_lang['no_headline'] = '- Es muss eine &Uuml;berschrift angegeben werden.';
+#$cs_lang['text_to_long'] = ' - Der Text ist ';
+#$cs_lang['text_to_long_2'] = ' Zeichen lang. Das sind ';
+#$cs_lang['text_to_long_3'] = ' Zeichen zu viel!';
 $cs_lang['indi'] = 'Zeichen';
 
 $cs_lang['place']      = 'Ort:';
