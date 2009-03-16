@@ -83,7 +83,6 @@ else {
   $error++;
 }
 
-
 if(empty($_FILES['update']['tmp_name'])) {
   $data['lang']['body'] = $cs_lang['body_import'];
 }
@@ -92,7 +91,7 @@ elseif(empty($error)) {
 }
 else {
   if(!empty($install_sql)) {
-    $data['lang']['body'] = '<b>' . $cs_lang['update_error'] . '</b>' . cs_html_br(1) . $cs_lang['error_inst_sql'];
+    $data['lang']['body'] = cs_html_big(1) . $cs_lang['update_error'] . cs_html_big(0) . cs_html_br(1) . $cs_lang['error_inst_sql'];
   } else {
     $data['lang']['body'] = $cs_lang['update_error'];
   }
@@ -110,7 +109,6 @@ if(!empty($actions)) {
     $data['lang']['cache_cleared'] = $cs_lang2['cache_cleared'];
 
   $data['message']['actions'] = $actions;
-
 }
 
 if(empty($sql_content) OR !empty($error)) {
@@ -118,7 +116,6 @@ if(empty($sql_content) OR !empty($error)) {
   $data['if']['sql_content'] = false;
   $data['action']['form'] = cs_url('database','import');
   $data['import']['sql_text'] = $sql_content;
-
 }
 else {
  $data['if']['sql_content'] = true;
@@ -127,4 +124,5 @@ else {
 }
 
 echo cs_subtemplate(__FILE__,$data,'database','import');
+
 ?>
