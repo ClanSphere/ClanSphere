@@ -30,7 +30,7 @@ foreach($cs_main AS $key => $value) {
 
 foreach($cs_logs AS $key => $value) {
   $data['log'][$log_run]['var'] = 'cs_logs["' . $key . '"]';
-  $value = htmlspecialchars($value);
+  $value = is_array($value) ? 'array()' : htmlspecialchars($value);
   $value = nl2br($value);
   $data['log'][$log_run]['value'] = $value;
   $log_run++;
