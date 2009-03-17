@@ -10,7 +10,8 @@ settype($events_id,'integer');
 
 if(isset($_GET['agree'])) {
   $events_form = 0;
-  cs_sql_delete(__FILE__,'events',$events_id);
+  cs_sql_delete(__FILE__, 'events', $events_id);
+  cs_sql_delete(__FILE__, 'eventguests', $events_id, 'events_id');
 
  cs_redirect($cs_lang['del_true'], 'events');
 }
