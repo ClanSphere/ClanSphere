@@ -4,6 +4,7 @@
 
 $cs_lang = cs_translate('banners');
 require_once('mods/categories/functions.php');
+$files = cs_files();
 
 $banners_id = $_REQUEST['id'];
 settype($banners_id,'integer');
@@ -28,12 +29,12 @@ if(isset($_POST['submit'])) {
     $cs_banners['banners_picture'] = '';
   }
 
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  $img_size = getimagesize($files['picture']['tmp_name']);
+  if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
     $error++;
   }
-  elseif(!empty($_FILES['picture']['tmp_name'])) {
+  elseif(!empty($files['picture']['tmp_name'])) {
     switch($img_size[2]) {
     case 1:
       $ext = 'gif'; break;
@@ -55,12 +56,12 @@ if(isset($_POST['submit'])) {
       $error++;
     }
     
-  if($_FILES['picture']['size']>$op_banners['max_size']) { 
+  if($files['picture']['size']>$op_banners['max_size']) { 
       $message .= $cs_lang['too_big'] . cs_html_br(1);
       $error++;
     }
     
-  if(empty($error) AND cs_upload('banners', $filename, $_FILES['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/banners/' . $filename, $op_banners['max_width'], $op_banners['max_height'])) {
+  if(empty($error) AND cs_upload('banners', $filename, $files['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files['picture']['tmp_name'], 'uploads/banners/' . $filename, $op_banners['max_width'], $op_banners['max_height'])) {
       $error = 0;
       $message = '';
       
@@ -75,7 +76,7 @@ if(isset($_POST['submit'])) {
     }
   }
   
-  if(empty($_FILES['picture']['tmp_name']) AND empty($cs_banners['banners_picture'])) {
+  if(empty($files['picture']['tmp_name']) AND empty($cs_banners['banners_picture'])) {
     $error++;
     $message .= $cs_lang['no_pic'] . cs_html_br(1);
   }

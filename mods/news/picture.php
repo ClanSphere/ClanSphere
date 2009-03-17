@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('news');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
+$files = cs_files();
 
 $cs_news_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $cs_news_id = $cs_post['id'];
@@ -35,7 +36,7 @@ if(!empty($_GET['delete'])) {
 }
 elseif(!empty($_POST['submit'])) {
   
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files['picture']['tmp_name']);
   if(empty($img_size) OR $img_size[2] > 3) {
 
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
@@ -51,7 +52,7 @@ elseif(!empty($_POST['submit'])) {
     $message .= $cs_lang['too_high'] . cs_html_br(1);
     $error++;
   }
-  if($_FILES['picture']['size']>$op_news['max_size']) { 
+  if($files['picture']['size']>$op_news['max_size']) { 
 
     $message .= $cs_lang['too_big'] . cs_html_br(1);
     $error++;
@@ -70,8 +71,8 @@ elseif(!empty($_POST['submit'])) {
     $target = $cs_news_id . '-' . $news_next . '.' . $ext;
     $picture_name = 'picture-' . $target;
     $thumb_name = 'thumb-' . $target;
-    if(cs_resample($_FILES['picture']['tmp_name'], 'uploads/news/' . $thumb_name, 80, 200) 
-    AND cs_upload('news', $picture_name, $_FILES['picture']['tmp_name'])) {
+    if(cs_resample($files['picture']['tmp_name'], 'uploads/news/' . $thumb_name, 80, 200) 
+    AND cs_upload('news', $picture_name, $files['picture']['tmp_name'])) {
 
       $cells = array('news_pictures');
       $news_string = empty($news_string) ? array($target) : array($news_string . "\n" . $target);
