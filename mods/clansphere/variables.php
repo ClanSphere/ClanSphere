@@ -24,13 +24,13 @@ foreach($com_lang AS $key => $value) {
 
 foreach($cs_main AS $key => $value) {
   $data['main'][$main_run]['var'] = 'cs_main["' . $key . '"]';
-  $data['main'][$main_run]['value'] = $value;
+  $data['main'][$main_run]['value'] = !is_array($value) ? htmlspecialchars($value) : implode("<br />", $value);
   $main_run++;
 }
 
 foreach($cs_logs AS $key => $value) {
   $data['log'][$log_run]['var'] = 'cs_logs["' . $key . '"]';
-  $value = is_array($value) ? 'array()' : htmlspecialchars($value);
+  $value = !is_array($value) ? htmlspecialchars($value) : htmlspecialchars(implode('', $value));
   $value = nl2br($value);
   $data['log'][$log_run]['value'] = $value;
   $log_run++;
