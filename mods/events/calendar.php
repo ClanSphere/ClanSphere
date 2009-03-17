@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('events');
+$data = array();
 
 $op_events = cs_sql_option(__FILE__,'events');
 
@@ -17,17 +18,6 @@ $first = date('w', mktime(0, 0, 0, $month, 1, $year));
 $min = cs_datereal('U',mktime(0, 0, 0, $month, 1, $year));
 $max = cs_datereal('U',mktime(23, 59, 59, $month, $days, $year));
 
-/*
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_calendar'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo $cs_lang['body_calendar'];
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
-*/
 
 $like = "users_age LIKE '%-" . $zero . "-%'";
 $birthdays = cs_sql_select(__FILE__,'users','users_age',$like,0,0,0);
@@ -61,37 +51,12 @@ if(is_array($fetch)) {
   }
 }
 
-/*
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'calhead',0,0,'9%');
-echo $cs_lang['calweek'];
-echo cs_html_roco(2,'calhead',0,0,'13%');
-echo $cs_lang['Mon'];
-echo cs_html_roco(3,'calhead',0,0,'13%');
-echo $cs_lang['Tue'];
-echo cs_html_roco(4,'calhead',0,0,'13%');
-echo $cs_lang['Wed'];
-echo cs_html_roco(5,'calhead',0,0,'13%');
-echo $cs_lang['Thu'];
-echo cs_html_roco(6,'calhead',0,0,'13%');
-echo $cs_lang['Fri'];
-echo cs_html_roco(7,'calhead',0,0,'13%');
-echo $cs_lang['Sat'];
-echo cs_html_roco(8,'calhead',0,0,'13%');
-echo $cs_lang['Sun'];
-echo cs_html_roco(0);
-*/
 
 $data['if']['colspan'] = FALSE;
-
-#echo cs_html_roco(1,'calweek');
-#echo date('W', mktime(0, 0, 0, $month, 1, $year));
 $data['cal1']['week'] = date('W', mktime(0, 0, 0, $month, 1, $year));
 
 $colspan = $first == 0 ? 6 : $first-1;
 if($colspan >= 1) { 
-  #echo cs_html_roco(2,0,0,$colspan);
-  #echo '&nbsp;';
   $data['if']['colspan'] = TRUE;
   $data['cal1']['colspan'] = $colspan;
 }
@@ -103,9 +68,6 @@ for($run = 0; $run <= $days-1; $run++) {
 	$data['cal'][$run]['if']['event'] = FALSE;
 	
   if($row == 9) {
-    #echo cs_html_roco(0);
-    #echo cs_html_roco(1,'calweek');
-    #echo date('W', mktime(0, 0, 0, $month, $run, $year));
     $data['cal'][$run]['if']['row'] = TRUE;
     $data['cal'][$run]['week'] = date('W', mktime(0, 0, 0, $month, $count, $year));
     $row = 2;
@@ -125,10 +87,8 @@ for($run = 0; $run <= $days-1; $run++) {
   $data['cal'][$run]['css'] = $css2;
   $data['cal'][$run]['out'] = $out;
   
-  #echo cs_html_roco($row,$css2);
   $count++;
   $row++;
-  #echo $out;
 }
 
 $data['if']['colspan2'] = FALSE;
@@ -137,22 +97,13 @@ if($row < 9) {
   $colspan2 = 9 - $row;
   $data['if']['colspan2'] = TRUE;
   $data['cal1']['colspan2'] = $colspan2;
-  #echo cs_html_roco(2,0,0,$colspan2);
-  #echo '&nbsp;';
 }
-#echo cs_html_roco(0);
 
-#echo cs_html_roco(1,'calhead',0,8);
 $nom = date('F', mktime(0, 0, 0, $month, 1, $year));
 $next = $month == 12 ? 'year=' . ($year + 1) . '&amp;month=1' : 
   'year=' . $year . '&amp;month=' . ($month + 1);
 $last = $month == 1 ? 'year=' . ($year - 1) . '&amp;month=12' : 
   'year=' . $year . '&amp;month=' . ($month - 1);
-#echo ($year < 1970 OR $year == 1970 AND $month == 1) ? '&lt;' : cs_link('&lt;','events','calendar',$last);
-#echo ' [ ' . $cs_lang[$nom] . ' ' . $year . ' ] ';
-#echo ($year > 2037 OR $year == 2037 AND $month == 12) ? '&gt;' : cs_link('&gt;','events','calendar',$next);
-#echo cs_html_roco(0);
-#echo cs_html_table(0);
 $data['cal1']['bef_month'] = ($year < 1970 OR $year == 1970 AND $month == 1) ? '&lt;' : cs_link('&lt;','events','calendar',$last);
 $data['cal1']['now_month'] = $cs_lang[$nom] . ' ' . $year;
 $data['cal1']['nxt_month'] = ($year > 2037 OR $year == 2037 AND $month == 12) ? '&gt;' : cs_link('&gt;','events','calendar',$next);
