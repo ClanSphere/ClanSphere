@@ -15,9 +15,9 @@ $img_filetypes = array('gif','jpg','png');
 $news = cs_sql_select(__FILE__,'news','news_pictures',"news_id = '" . $cs_news_id . "'");
 $news_string = $news['news_pictures'];
 $news_pics = empty($news_string) ? array() : explode("\n",$news_string);
-$next = explode(".", $news_pics[count($news_pics)-1]);
-$next = explode("-", $next[0]);
-$news_next = $next[1]+1;
+$count_pics = count($news_pics);
+$next = empty($count_pics) ? '' : explode('-', current(explode(".", $news_pics[$count_pics-1])));
+$news_next = empty($count_pics) ? 1 : $next[1] + 1;
 
 $error = 0;
 $message = '';
