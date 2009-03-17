@@ -40,7 +40,7 @@ if (!empty($op_events['show_wars'])) {
 
 $events_loop = count($cs_events);
 
-$data['if']['events'] = empty($events_loop) ? 0 : 1;
+$data['if']['av_events'] = empty($events_loop) ? 0 : 1;
 
 if(!empty($events_loop)) {
 
@@ -58,8 +58,7 @@ if(!empty($events_loop)) {
   }
 }
 
-echo cs_subtemplate(__FILE__, $data, 'events', 'timer');
-
+// user part
 $month = cs_datereal('m',$unix);
 $day = cs_datereal('d',$unix);
 
@@ -68,33 +67,26 @@ $like = "users_age LIKE '%-" . $month . '-' . $day . "' AND users_active = '1'";
 $birthdays = cs_sql_select(__FILE__,'users',$select,$like,'users_nick ASC',0,0);
 $bday_loop = count($birthdays);
 
+$data['if']['av_users'] = empty($bday_loop) ? 0 : 1;
+
 if(!empty($bday_loop)) {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb',0,0,'40%');
-  echo $cs_lang['user'];
-  echo cs_html_roco(2,'headb',0,0,'20%');
-  echo $cs_lang['new_age'];
-  echo cs_html_roco(3,'headb',0,0,'40%');
-  echo $cs_lang['place'];
-  echo cs_html_roco(0);
 
-  for($run=0; $run<$bday_loop; $run++) {
+  for($run=0; $run < $bday_loop; $run++) {
 
-    echo cs_html_roco(1,'leftc');
     $sec_user = cs_secure($birthdays[$run]['users_nick']);
-    echo cs_user($birthdays[$run]['users_id'],$birthdays[$run]['users_nick'], $birthdays[$run]['users_active']);
-    echo cs_html_roco(2,'leftc');
+    $sec_user = cs_user($birthdays[$run]['users_id'],$birthdays[$run]['users_nick'], $birthdays[$run]['users_active']);
     $birth = explode ('-', $birthdays[$run]['users_age']);
     $age = cs_datereal('Y',$unix) - $birth[0];
     if(cs_datereal('m',$unix) < $birth[1] OR cs_datereal('d',$unix) < $birth[2] AND cs_datereal('m',$unix) == $birth[1]) {
       $age--;
     }
-    echo $age;
-    echo cs_html_roco(2,'leftc');
-    echo cs_secure($birthdays[$run]['users_place']);
-    echo cs_html_roco(0);
+
+    $data['users'][$run]['link'] = $sec_user;
+    $data['users'][$run]['new_age'] = $age;
+    $data['users'][$run]['place'] = cs_secure($birthdays[$run]['users_place']);
   }
-  echo cs_html_table(0);
 }
+
+echo cs_subtemplate(__FILE__, $data, 'events', 'timer');
 
 ?>

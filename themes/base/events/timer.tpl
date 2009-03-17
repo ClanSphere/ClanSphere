@@ -16,7 +16,7 @@
 </table>
 <br />
 
-{if:events}
+{if:av_events}
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
  <tr>
   <td class="headb" style="width:170px">{lang:date}</td>
@@ -33,4 +33,28 @@
  </tr>
 {stop:events}
 </table>
-{stop:events}
+<br />
+{stop:av_events}
+
+{if:av_users}
+<table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+ <tr>
+  <td class="headb" style="width:35%">{lang:user}</td>
+  <td class="headb" style="width:25%">{lang:new_age}</td>
+  <td class="headb" style="width:40%">{lang:place}</td>
+ </tr>
+{loop:users}
+ <tr>
+  <td class="leftc">
+    {users:link}
+  </td>
+  <td class="leftc">
+    {users:new_age}
+  </td>
+  <td class="leftc">
+    {users:place}
+  </td>
+ </tr>
+{stop:users}
+</table>
+{stop:av_users}
