@@ -49,14 +49,9 @@ function cs_abcode_toolshtml($name) {
   $var .= cs_html_option('HTML',0);
   $var .= cs_html_option('cs_html_br','cs_html_br');
   $var .= cs_html_option('cs_html_hr','cs_html_hr');
-  $var .= cs_html_option('cs_html_table','cs_html_table');
-  $var .= cs_html_option('cs_html_roco','cs_html_roco');
   $var .= cs_html_option('cs_html_img','cs_html_img');
   $var .= cs_html_option('cs_html_link','cs_html_link');
-  $var .= cs_html_option('cs_html_form','cs_html_form');
   $var .= cs_html_option('cs_html_input','cs_html_input');
-  $var .= cs_html_option('cs_html_vote','cs_html_vote');
-  $var .= cs_html_option('cs_html_textarea','cs_html_textarea');
   $var .= cs_html_option('cs_html_select','cs_html_select');
   $var .= cs_html_option('cs_html_option','cs_html_option');
   $var .= cs_html_select(0);
@@ -80,8 +75,6 @@ function cs_abcode_toolshtml2($name) {
   $var .= cs_html_option('cs_html_underline','cs_html_underline');
   $var .= cs_html_option('cs_html_big','cs_html_big');
   $var .= cs_html_option('cs_html_italic','cs_html_italic');
-  $var .= cs_html_option('cs_html_div','cs_html_div');
-  $var .= cs_html_option('cs_html_span','cs_html_span');
   $var .= cs_html_select(0);
   
   return $var;
