@@ -6,7 +6,7 @@ $cs_lang = cs_translate('explorer');
 
 if(empty($_POST['submit'])) {
   
-	if (isset($cs_main['mod_rewrite'])) $_GET['dir'] = substr($_GET['dir'],4);
+	if (!empty($cs_main['mod_rewrite'])) $_GET['dir'] = substr($_GET['dir'],4);
 	$dir = (empty($_GET['dir']) or $_GET['dir'] == '.') ? '' : str_replace('..','',$_GET['dir']);
 	
   $data = array();
