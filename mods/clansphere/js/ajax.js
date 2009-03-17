@@ -124,7 +124,8 @@ function updatenavs() {
 }
 
 function setnavs(cache) {
-  cont = cache != 1 ? document.getElementById('temp_div').innerHTML : document.getElementById('contenttemp').innerHTML;
+  cnttmp = cache == 1 && document.getElementById('contenttemp') ? document.getElementById('contenttemp').innerHTML : '';
+  cont = cache != 1 ? document.getElementById('temp_div').innerHTML : cnttmp;
   done = 1;
   parts = cont.split('!33/');
   for (run = 1; run < parts.length; run+=2)
