@@ -18,7 +18,7 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
   settype($limit, 'integer');
 
   $data['comments']['sum'] = $sum;
-    $data['comments']['message'] = cs_getmsg();
+  $data['comments']['message'] = cs_getmsg();
   $data['comments']['pages'] = cs_pages($mod,$action,$sum,$start,$com_fid);
 
 
@@ -99,6 +99,8 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
     else { $com[$run]['edit_delete'] = ''; }
 
   }
+  
+	$data['if']['bottom_pages'] = $sum > $com_loop ? TRUE : FALSE;
 
   $data['com'] = !empty($com) ? $com : '';
   echo cs_subtemplate(__FILE__,$data,'comments','com_view');

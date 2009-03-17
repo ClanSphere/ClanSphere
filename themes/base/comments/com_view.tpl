@@ -33,4 +33,9 @@
 		</td>
 	</tr>
 	{stop:com}
+	{if:bottom_pages}
+	<tr>
+		<td class="bottom" colspan="2"><div style="float:right">{comments:pages}</div></td>
+	</tr>
+	{stop:bottom_pages}
 </table>
