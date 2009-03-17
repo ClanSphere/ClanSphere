@@ -11,7 +11,7 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="centerc">
-			{if:allow_agree}<a href="{url:agree}">{lang:confirm}</a> - {stop:allow_agree}<a href="{url:cancel}">{lang:cancel}</a>
+			<a href="{url:agree}">{lang:confirm}</a> - <a href="{url:cancel}">{lang:cancel}</a>
 		</td>
 	</tr>
 </table>
