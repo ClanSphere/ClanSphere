@@ -4,7 +4,7 @@
 
 $cs_lang = cs_translate('abcode');
 
-$name = preg_replace('/[^\w_]/s','',$_GET['name']);
+$name = preg_replace('/[^\w]/s','',$_GET['name']);
 
 $where = "abcode_func = 'img'";
 $cs_abcode = cs_sql_select(__FILE__,'abcode','*',$where,'abcode_pattern ASC',0,0);

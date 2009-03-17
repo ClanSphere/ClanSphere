@@ -15,7 +15,8 @@ if (!empty($_POST['submit'])) {
   
   if (!empty($_POST['delete_picture'])) {
     $save['medals_extension'] = '';
-    unlink($cs_main['php_self']['dirname'] . 'uploads/medals/medal-' . $medals_id . '.' . $_POST['delete_picture']);
+    $ext = preg_replace('/[\W]/s', '', $_POST['delete_picture']);
+    cs_unlink('medals', 'medal-' . $medals_id . '.' . $ext);
   }
   
   if (empty($save['medals_name']))
