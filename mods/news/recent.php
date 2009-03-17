@@ -106,8 +106,8 @@ for($run = 0; $run < $news_loop; $run++) {
     else {
       $cs_news[$run]['mirror'][$tpl_run]['dot'] =  ' - ';
     }
-
-    $cs_news[$run]['mirror'][$tpl_run]['news_mirror'] = cs_html_link($temp_mirror[$run_mirror],$temp_mirror_name[$run_mirror]);
+    $url = strpos($temp_mirror[$run_mirror],'://') === false ? 'http://' . $temp_mirror[$run_mirror] : $temp_mirror[$run_mirror];
+    $cs_news[$run]['mirror'][$tpl_run]['news_mirror'] = cs_html_link($url,$temp_mirror_name[$run_mirror]);
     $tpl_run++;
   }
   }

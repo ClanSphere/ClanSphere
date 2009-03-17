@@ -73,8 +73,8 @@ if(!empty($pub)) {
     else {
       $data['mirror'][$tpl_run]['dot'] =  ' - ';
     }
-
-    $data['mirror'][$tpl_run]['news_mirror'] = cs_html_link($temp_mirror[$run_mirror],$temp_mirror_name[$run_mirror]);
+    $url = strpos($temp_mirror[$run_mirror],'://') === false ? 'http://' . $temp_mirror[$run_mirror] : $temp_mirror[$run_mirror];
+    $data['mirror'][$tpl_run]['news_mirror'] = cs_html_link($url,$temp_mirror_name[$run_mirror]);
     $tpl_run++;
   }
   }
