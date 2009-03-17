@@ -14,19 +14,9 @@ if(!empty($_POST['date_year']) AND !empty($_POST['date_month']) AND !empty($_POS
 $unix = cs_datereal('U',$unix);
 $max = $unix + 86399;
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
-echo $cs_lang['mod'] . ' - ' . $cs_lang['head_timer'];
-echo cs_html_roco(0);
-echo cs_html_roco(1,'leftb');
-echo $cs_lang['date'];
-echo cs_html_form(1,'events_timer','events','timer');
-echo cs_dateselect('date','date',cs_datereal('Y-m-d',$unix),2000);
-echo cs_html_vote('submit',$cs_lang['show'],'submit');
-echo cs_html_form(0);
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
+$data = array();
+
+$data['head']['dropdown'] = cs_dateselect('date','date',cs_datereal('Y-m-d',$unix),2000);
 
 $select = 'events_name, events_time, events_id';
 $where = "events_time >= '" . $unix . "' AND events_time <= '" . $max . "'";
@@ -38,6 +28,7 @@ if (!empty($op_events['show_wars'])) {
   $where = 'war.wars_date >= \'' . $unix . '\' AND war.wars_date <= \'' . $max . '\'';
   $cs_events2 = cs_sql_select(__FILE__,$tables,$select,$where,'wars_date ASC',0,0);
   $count_events2 = count($cs_events2);
+
   for ($run = 0; $run < $count_events2; $run++) {
     $cs_events2[$run]['events_name'] = $cs_lang['war_against'] . $cs_events2[$run]['clans_name'];
   }
@@ -49,29 +40,25 @@ if (!empty($op_events['show_wars'])) {
 
 $events_loop = count($cs_events);
 
+$data['if']['events'] = empty($events_loop) ? 0 : 1;
+
 if(!empty($events_loop)) {
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb',0,0,'70%');
-  echo $cs_lang['name'];
-  echo cs_html_roco(2,'headb',0,0,'30%');
-  echo $cs_lang['time'];
-  echo cs_html_roco(0);
 
-  for($run=0; $run<$events_loop; $run++) {
+  for($run=0; $run < $events_loop; $run++) {
 
-    echo cs_html_roco(1,'leftc');
+    $link = '';
     $sec_head = cs_secure($cs_events[$run]['events_name']);
     if (!empty($cs_events[$run]['events_id']))
-      echo cs_link($sec_head,'events','view','id=' . $cs_events[$run]['events_id']);
+      $link = cs_link($sec_head,'events','view','id=' . $cs_events[$run]['events_id']);
     elseif (!empty($cs_events[$run]['wars_id']))
-      echo cs_link($sec_head,'wars','view','id=' . $cs_events[$run]['wars_id']);
-    echo cs_html_roco(2,'leftc');
-    echo cs_date('unix',$cs_events[$run]['events_time'],1);
-    echo cs_html_roco(0);
+      $link = cs_link($sec_head,'wars','view','id=' . $cs_events[$run]['wars_id']);
+
+      $data['events'][$run]['link'] = $link;
+      $data['events'][$run]['time'] = cs_date('unix',$cs_events[$run]['events_time'],1);
   }
-  echo cs_html_table(0);
-  echo cs_html_br(1);
 }
+
+echo cs_subtemplate(__FILE__, $data, 'events', 'timer');
 
 $month = cs_datereal('m',$unix);
 $day = cs_datereal('d',$unix);
