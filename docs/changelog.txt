@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2008.3_svn >> 2009-03-XX
+ClanSphere 2009.0_svn >> 2009-03-XX
 ___________________________________________________________
 
 -> Now using themes everywhere (whole team, mainly fay-pain)
@@ -27,8 +27,10 @@ ___________________________________________________________
 -> Now using some more caching to enhance the performance (duriel)
 -> Added comments feature to events and fixed it in wars mod (hajo)
 -> Added error page 500 for system relevant problems (hajo)
+-> Removed support for deprecated php-extension mssql [Microsoft SQL Server] (hajo)
 -> Reworked events mod to support guests (hajo)
 -> Reworked cs_addons function to support count queries and look even better (hajo)
+-> Reworked cs_manage function to be div based and support different width settings (hajo)
 -> Updated fckeditor to version 2.6.4 (hajo)
 
 
