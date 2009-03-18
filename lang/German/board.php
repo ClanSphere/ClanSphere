@@ -84,7 +84,7 @@ $cs_lang['no_headline'] = '- Es muss eine &Uuml;berschrift angegeben werden.';
 #$cs_lang['text_to_long_3'] = ' Zeichen zu viel!';
 $cs_lang['indi'] = 'Zeichen';
 
-$cs_lang['place']      = 'Ort:';
+$cs_lang['place'] = 'Ort:';
 $cs_lang['text'] = 'Text';
 
 $cs_lang['error_subheader'] =  'Ein Fehler ist aufgetreten! ';
