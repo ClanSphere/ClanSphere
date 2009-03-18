@@ -103,8 +103,7 @@ function cs_abcode_php($matches) {
 }
 
 function cs_abcode_u($matches) {
-
-  return cs_html_underline(1) . $matches[1] . cs_html_underline(0);
+  return cs_abcode_output(7, $matches);
 }
 
 function cs_abcode_b($matches) {
@@ -112,18 +111,15 @@ function cs_abcode_b($matches) {
 }
 
 function cs_abcode_i($matches) {
-
-  return cs_html_italic(1) . $matches[1] . cs_html_italic(0);
+  return cs_abcode_output(8, $matches);
 }
 
 function cs_abcode_indent($matches) {
-
-  return cs_html_div(1,'margin-left:'.$matches[1].'px') . $matches[2] . cs_html_div(0);
+  return cs_abcode_output(9, $matches);
 }
 
 function cs_abcode_s($matches) {
-
-  return cs_html_span(1,'text-decoration: line-through') . $matches[1] . cs_html_span(0);
+  return cs_abcode_output(10, $matches);
 }
 
 function cs_abcode_h($matches) {
@@ -133,7 +129,7 @@ function cs_abcode_h($matches) {
 
 function cs_abcode_hr() {
 
-  return cs_html_hr('100%');
+  return cs_abcode_output(11, $matches);
 }
 
 function cs_abcode_hr_width($matches) {
