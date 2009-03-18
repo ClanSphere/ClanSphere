@@ -63,7 +63,7 @@ for ($i = 0; $i < $events_count; $i++) {
   }
 
   if(empty($data['events'][$i]['categories_picture'])) {
-    $data['events'][$i]['categories_picture'] = '';
+    $data['events'][$i]['categories_picture'] = '&nbsp;';
   } else {
     $place = 'uploads/categories/' . $data['events'][$i]['categories_picture'];
     $size = getimagesize($cs_main['def_path'] . '/' . $place);

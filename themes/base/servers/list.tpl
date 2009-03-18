@@ -98,7 +98,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="rightb">
-      <a href="http://phgstats.sourceforge.net" onclick="window.open('http://phgstats.sourceforge.net'); return false">
+      <a href="http://phgstats.sourceforge.net" onclick="window.open('http://phgstats.sourceforge.net'); return false">based on phgstats</a>
     </td>
   </tr>
 </table>

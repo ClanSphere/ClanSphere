@@ -40,7 +40,7 @@ for ($i = 0; $i < $events_count; $i++) {
   $data['events'][$i]['canceled'] = empty($data['events'][$i]['events_cancel']) ? '' : cs_html_br(1) . $cs_lang['canceled'];
 
   if(empty($data['events'][$i]['categories_picture'])) {
-    $data['events'][$i]['categories_picture'] = '';
+    $data['events'][$i]['categories_picture'] = '&nbsp;';
   } else {
     $place = 'uploads/categories/' . $data['events'][$i]['categories_picture'];
     $size = getimagesize($cs_main['def_path'] . '/' . $place);
