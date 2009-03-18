@@ -139,7 +139,7 @@ function cs_html_link($url, $link, $use_target = 1, $class = 0, $title = 0, $mor
     $var = "<a href=\"" . str_replace(' ', '%20', $url) . "\"";
     if (!empty($use_target) and empty($cs_main['rss']))
     {
-        $var .= " onclick=\"window.open('" . str_replace(' ', '%20', $url) . "'); return false\"";
+        $var .= " target=\"_blank\"";
     }
     if (!empty($class))
     {
