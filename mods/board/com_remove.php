@@ -111,7 +111,7 @@ if(isset($_POST['cancel'])) {
 else {
 
   $data['head']['body'] = sprintf($cs_lang['del_rly'],$comments_id);
-	$data['commnets']['id'] = $comments_id;
+	$data['comments']['id'] = $comments_id;
 
  echo cs_subtemplate(__FILE__,$data,'board','com_remove');
 }
