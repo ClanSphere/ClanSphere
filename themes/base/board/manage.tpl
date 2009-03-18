@@ -3,30 +3,32 @@
     <td class="headb" colspan="4">{lang:mod} - {lang:head_manage}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:editpaste} <a href="{link:new_board}">{lang:new_board}</a></td>
-    <td class="leftb">{icon:agt_reload} <a href="{link:sort}">{lang:sort}</a></td>
-    <td class="leftb">{icon:special_paste} <a href="{link:reports}">{lang:reports}</a></td>
-    <td class="leftb">{icon:attach} <a href="{link:attachments}">{lang:attachments}</a>: {count:attachments}</td>
+    <td class="leftb">{icon:editpaste} <a href="{url:board_create}">{lang:new_board}</a></td>
+    <td class="leftb">{icon:agt_reload} <a href="{url:board_sort}">{lang:sort}</a></td>
+    <td class="leftb">{icon:special_paste} <a href="{url:board_reportlist}">{lang:reports}</a></td>
+    <td class="leftb">{icon:attach} <a href="{url:board_attachments_admin}">{lang:attachments}</a> ({head:count_attachments})</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:contents} {lang:all}{count:all}</td>
-    <td class="rightb" colspan="3">{pages:list}</td>
+    <td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
+    <td class="rightb" colspan="3">{head:pages}</td>
   </tr>
 </table>
 <br />
-{lang:getmsg}
+
+{head:getmsg}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:name} {lang:name}</td>
     <td class="headb">{sort:cat} {lang:cat}</td>
-    <td class="headb" colspan="2">{lang:options}</td>
+    <td class="headb" colspan="2" style="width:15%;">{lang:options}</td>
   </tr>
   {loop:board}
   <tr>
     <td class="leftc">{board:name}</td>
     <td class="leftc">{board:cat}</td>
-    <td class="leftc"><a href="{board:edit}" title="{lang:edit}"><img src="symbols/crystal_project/16/edit.png" style="height:16px;width:16px" alt="{lang:edit}" /> </a></td>
-    <td class="leftc"><a href="{board:remove}" title="{lang:remove}"><img src="symbols/crystal_project/16/editdelete.png" style="height:16px;width:16px" alt="{lang:remove}" /> </a> </td>
+    <td class="leftc"><a href="{url:board_edit:id={board:id}}" title="{lang:edit}">{icon:edit}</a></td>
+    <td class="leftc"><a href="{url:board_remove:id={board:id}}" title="{lang:remove}">{icon:editdelete}</td>
   </tr>
   {stop:board}
 </table>
