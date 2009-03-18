@@ -45,11 +45,6 @@ if(!empty($sql_content)) {
     $sql_update = str_replace('{engine}','',$sql_update);
     $sql_update = preg_replace("=int\((.*?)\)=si",'integer',$sql_update);
   }
-  elseif($cs_db['type'] == 'mssql') {
-    $sql_update = str_replace('{serial}','int IDENTITY(1,1)',$sql_update);
-    $sql_update = str_replace('{engine}','',$sql_update);
-    $sql_update = preg_replace("=int\((.*?)\)=si",'int',$sql_update);
-  }
   elseif($cs_db['type'] == 'sqlite' OR $cs_db['type'] == 'pdo_sqlite') {
     $sql_update = str_replace('{optimize}','VACUUM',$sql_update);
     $sql_update = str_replace('{serial}','integer',$sql_update);

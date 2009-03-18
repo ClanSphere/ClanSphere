@@ -56,13 +56,6 @@ if(isset($_POST['create']) OR isset($_POST['view'])) {
       $connect .= ' user=' . $cs_db['user'] . ' password=' . $cs_db['pwd'];
       $cs_db['con'] = @pg_connect($connect) OR $dberr = $php_errormsg;
     }
-    elseif($cs_db['type'] == 'mssql') {
-      $cs_db['con'] = @mssql_connect($cs_db['place'],$cs_db['user'],$cs_db['pwd']) OR 
-        $dberr = $php_errormsg;
-      if(empty($dberr)) {
-        mssql_select_db($cs_db['name'],$cs_db['con']) OR $dberr = mssql_get_last_message();
-      }
-    }
     elseif($cs_db['type'] == 'sqlite') {
       $cs_db['con'] = @sqlite_open($cs_db['name']) OR $dberr = cs_sql_error();
     }
@@ -144,7 +137,6 @@ if(!empty($setup_exists)) {
 	$i = 0;
 	
 	$types = array();
-	$types['mssql'] = 'Microsoft SQL Server (mssql)';
 	$types['mysql'] = 'MySQL (mysql)';
 	$types['mysqli'] = 'MySQL (mysqli)';
 	$types['pgsql'] = 'PostgreSQL (pgsql)';

@@ -26,7 +26,7 @@ $data['av']['upload'] = $switch[ini_get('file_uploads')];
 $data['ok']['upload'] = $ok[$data['av']['upload'] == $switch[1]];
 if ($data['ok']['upload'] != $ok[1]) { $check_required = false; }
 
-$dba_pool = array('mssql', 'mysql', 'mysqli', 'pdo_mysql', 'pdo_pgsql', 'pdo_sqlite', 'pgsql', 'sqlite');
+$dba_pool = array('mysql', 'mysqli', 'pdo_mysql', 'pdo_pgsql', 'pdo_sqlite', 'pgsql', 'sqlite');
 $data['rq']['database'] = '';
 $data['av']['database'] = '';
 foreach ($dba_pool AS $dba_ex) {

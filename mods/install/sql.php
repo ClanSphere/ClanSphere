@@ -57,11 +57,6 @@ elseif($cs_db['type'] == 'pgsql' OR $cs_db['type'] == 'pdo_pgsql') {
   $sql_install = str_replace('{engine}','',$sql_install);
   $sql_install = preg_replace("=int\((.*?)\)=si",'integer',$sql_install);
 }
-elseif($cs_db['type'] == 'mssql') {
-  $sql_install = str_replace('{serial}','int IDENTITY(1,1)',$sql_install);
-  $sql_install = str_replace('{engine}','',$sql_install);
-  $sql_install = preg_replace("=int\((.*?)\)=si",'int',$sql_install);
-}
 elseif($cs_db['type'] == 'sqlite' OR $cs_db['type'] == 'pdo_sqlite') {
   $sql_install = str_replace('{serial}','integer',$sql_install);
   $sql_install = str_replace('{engine}','',$sql_install);
