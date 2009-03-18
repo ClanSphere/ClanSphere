@@ -63,7 +63,7 @@ $month = cs_datereal('m',$unix);
 $day = cs_datereal('d',$unix);
 
 $select = 'users_nick, users_age, users_place, users_id, users_active';
-$like = "users_age LIKE '%-" . $month . '-' . $day . "' AND users_active = '1'";
+$like = "users_age LIKE '%-" . $month . '-' . $day . "' AND users_hidden NOT LIKE '%users_age%'";
 $birthdays = cs_sql_select(__FILE__,'users',$select,$like,'users_nick ASC',0,0);
 $bday_loop = count($birthdays);
 
