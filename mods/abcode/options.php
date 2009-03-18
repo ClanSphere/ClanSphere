@@ -17,8 +17,7 @@ if(empty($_POST['submit'])) {
 
   $data['dropdown']['def_func'] = cs_dropdown('def_func','name',$abc,$data['options']['def_func']);
 
-  $abcode_check = empty($data['options']['def_abcode']) ? 0 : 1;
-  $data['checkbox']['def_abcode'] =  cs_html_vote('def_abcode','1','checkbox',$abcode_check);
+  $data['checked']['def_abcode'] = empty($data['options']['def_abcode']) ? '' : ' checked="checked"';
 
   echo cs_subtemplate(__FILE__,$data,'abcode','options');
   
@@ -34,7 +33,7 @@ if(empty($_POST['submit'])) {
   $save['image_width'] = $_POST['image_width'];
   $save['image_height'] = $_POST['image_height'];
   $save['word_cut'] = $_POST['word_cut'] > 65535 ? 65535 : (int) $_POST['word_cut'];
-  $save['def_abcode'] = (int) $_POST['def_abcode'];
+  $save['def_abcode'] = empty($_POST['def_abcode']) ? 0 : 1;
   
   cs_optionsave('abcode', $save);
   
