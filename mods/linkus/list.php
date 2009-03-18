@@ -21,7 +21,7 @@ for($run=0; $run<$linkus_loop; $run++) {
   $path = $_SERVER ["HTTP_HOST"] .dirname ($_SERVER ["SCRIPT_NAME"]);
   $url = $path . '/' . $place;
   $url = str_replace('//','/',$url);
-  $code ='<a href="http://' .$data['linkus'][$run]['linkus_url']. '" target="_blank">';
+  $code ='<a href="http://' .$data['linkus'][$run]['linkus_url']. '" onclick="window.open(\'' . $data['linkus'][$run]['linkus_url'] . '\'); return false">';
   $code .='<img src="http://' . $url . '"></a>';
   $data['linkus'][$run]['html_code'] = $code;
 

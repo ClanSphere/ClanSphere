@@ -212,8 +212,7 @@ class atron
 			if (substr($srv_rules['url'], 0, 5) == 'tp://')
 			{
 				$srv_rules['url'] = 'ht' . $srv_rules['url'];
-				$srv_rules['url'] = '<a href="' . $srv_rules['url'] . '" target="_blank">'
-				. $srv_rules['url'] . '</a>';
+				$srv_rules['url'] = '<a href="' . $srv_rules['url'] . '" onclick="window.open(\'' . $srv_rules['url'] . '\'); return false">' . $srv_rules['url'] . '</a>';
 			}
 			else
 			{

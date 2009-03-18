@@ -124,7 +124,6 @@ function cs_html_msnmail($mail, $link = '')
 function cs_html_link($url, $link, $use_target = 1, $class = 0, $title = 0, $more = 0)
 {
     global $cs_main;
-    static $target = 0;
     $url = str_replace('http://http://', 'http://', $url);
     if (!empty($cs_main['rss']) and strpos($url, '://') === false)
     {
@@ -140,8 +139,7 @@ function cs_html_link($url, $link, $use_target = 1, $class = 0, $title = 0, $mor
     $var = "<a href=\"" . str_replace(' ', '%20', $url) . "\"";
     if (!empty($use_target) and empty($cs_main['rss']))
     {
-        $target++;
-        $var .= " target=\"cs" . $target . "\"";
+        $var .= " onclick=\"window.open('" . str_replace(' ', '%20', $url) . "'); return false\"";
     }
     if (!empty($class))
     {

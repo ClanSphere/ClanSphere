@@ -3,8 +3,8 @@
     <td class="headb"> ClanSphere - {lang:about} </td>
   </tr>
   <tr>
-    <td class="leftc"> ClanSphere 2008<br />
-      Copyright (c) 2007-2008, <a href="http://www.clansphere.net" target="cs1">ClanSphere Project</a><br />
+    <td class="leftc"> ClanSphere 2009<br />
+      Copyright (c) 2007-2009, <a href="http://www.clansphere.net" onclick="window.open('http://www.clansphere.net'); return false">ClanSphere Project</a><br />
       All rights reserved. </td>
   </tr>
   <tr>
@@ -35,12 +35,12 @@
   </tr>
   <tr>
     <td class="leftc"> This software is OSI Certified Open Source Software<br />
-      OSI Certified is a certification mark of the <a href="http://www.opensource.org" target="cs2">Open Source Initiative</a> </td>
+      OSI Certified is a certification mark of the <a href="http://www.opensource.org" onclick="window.open('http://www.opensource.org'); return false">Open Source Initiative</a> </td>
   </tr>
   <tr>
-    <td class="leftb"> Crystal Project and Crystal Openoffice Icon Theme by <a href="http://www.everaldo.com" target="cs3">Everaldo</a> </td>
+    <td class="leftb"> Crystal Project and Crystal Openoffice Icon Theme by <a href="http://www.everaldo.com" onclick="window.open('http://www.everaldo.com'); return false">Everaldo</a> </td>
   </tr>
   <tr>
-    <td class="leftc"> Country Icons by <a href="http://www.famfamfam.com" target="cs4">FAMFAMFAM</a> </td>
+    <td class="leftc"> Country Icons by <a href="http://www.famfamfam.com" onclick="window.open('http://www.famfamfam.com'); return false">FAMFAMFAM</a> </td>
   </tr>
 </table>

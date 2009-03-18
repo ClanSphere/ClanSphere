@@ -30,7 +30,7 @@
 	<tr>
 		<td class="leftc"><a href="{url:links_view:id={links:id}}">{links:name}</a></td>
 		<td class="leftc">{links:cat}</td>
-		<td class="leftc"><a href="http://{links:url}" target="cs1">{links:url_short}</a></td>
+		<td class="leftc"><a href="http://{links:url}" onclick="window.open('http://{links:url}'); return false">{links:url_short}</a></td>
 		<td class="leftc"><span style="color:{links:color}">{links:on_off}</span></td>
 		<td class="leftc"><a href="{url:links_edit:id={links:id}}" title="{lang:edit}">{icon:edit}</a></td>
 		<td class="leftc"><a href="{url:links_remove:id={links:id}}" title="{lang:remove}">{icon:editdelete}</a></td>

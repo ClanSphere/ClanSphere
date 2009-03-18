@@ -8,7 +8,7 @@
 	</tr>
 	<tr>
 		<td class="leftb">{icon:gohome} {lang:url}</td>
-		<td class="leftc"><a href="http://{links:url}" target="cs1">{links:url}</a></td>
+		<td class="leftc"><a href="http://{links:url}" onclick="window.open('http://{links:url}'); return false">{links:url}</a></td>
 	</tr>
 	<tr>
 		<td class="leftb">{icon:multimedia} {lang:status}</td>

@@ -5,7 +5,7 @@
   <tr>
     <td class="leftb">{lang:body}</td>
     <td class="centerb">{icon:ark} <a href="{link:cache}">{lang:cache}</a></td>
-    <td class="rightb"><a href="http://design.clansphere.net" target="cs1" >{lang:more_templates}</a> </td>
+    <td class="rightb"><a href="http://design.clansphere.net" onclick="window.open('http://design.clansphere.net'); return false">{lang:more_templates}</a> </td>
   </tr>
   {if:done}
   <tr>

@@ -35,7 +35,7 @@
       {stop:nopics}
       
       {loop:pictures} 
-        <a href="{pictures:picpath}" target="cs1" ><img src="{pictures:thumbpath}" alt="" /></a><br />
+        <a href="{pictures:picpath}" onclick="window.open('{pictures:picpath}'); return false"><img src="{pictures:thumbpath}" alt="" /></a><br />
         <a href="{url:files_picture:id={file:id}:delete={pictures:id}}">{lang:remove}</a><br />
         <br />
       {stop:pictures} 
