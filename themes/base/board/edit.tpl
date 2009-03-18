@@ -3,106 +3,103 @@
 		<td class="headb">{lang:mod} - {lang:head_edit}</td>
 	</tr>
 	<tr>
-  	<td class="leftc">{lang:body_edit}</td>
+  	<td class="leftc">{head:body}</td>
   </tr>
 </table>
 <br />
-{if:error}
-<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
-  <tr>
-    <td class="leftb">{edit:errormsg}</td>
-  </tr>
-</table>
-<br />
-{stop:error}
+
 {if:preview}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
-    <td class="leftc" style="">{edit:board_ico} </td>
+    <td class="leftb" style="width:36px">{prev:icon}</td>
     <td class="leftb">
-    	<strong>
-      	<a href="#">{edit:board_name} </a>
-      </strong>
-    	<br />
-      {edit:pre_text}
+    	<strong><a href="#">{data:board_name}</a></strong><br />
+      {prev:text}
     </td>
-    <td class="leftc"></td>
-    <td class="leftb"></td>
-    <td class="leftc"></td>
+    <td class="leftb" style="width:60px">-</td>
+    <td class="leftb" style="width:60px">-</td>
+    <td class="leftb" style="width:160px">-</td>
   </tr>
 </table>
 <br />
 {stop:preview}
+
 <form method="post" id="board_edit" action="{page:path}debug.php?mod=board&amp;action=edit">
-  <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
-    <tr>
-      <td class="leftb">{icon:kedit} {lang:name} *</td>
-      <td class="leftc">
-        <input name="board_name" value="{edit:board_name}" maxlength="200" size="50" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:folder_yellow} {lang:category} *</td>
-      <td class="leftc">{edit:cat_drop}</td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:kate} {lang:text} *</td>
-      <td class="leftc">
-        {edit:ab_box}
-        <textarea name="board_text" cols="50" rows="5" id="board_text">{edit:board_text}</textarea>
-      </td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:access} {lang:access} *</td>
-      <td class="leftc" colspan="2">
-        <select name="board_access">
-          {loop:access}
-          {access:access_level}
-          {stop:access}
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:access} {lang:only_read} *</td>
-      <td class="leftc">
-        {edit:check_yes}{lang:yes}
-        {edit:check_no}{lang:no}
-      </td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:password} {lang:add_password}</td>
-      <td class="leftc">
-        <input name="new_board_pwd" value="{edit:board_pwd}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" type="password"><br />
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+	<tr>
+		<td class="leftb" style="width:140px">{icon:kedit} {lang:name} *</td>
+		<td class="leftc"><input type="text" name="board_name" value="{data:board_name}" maxlength="200" size="50" /></td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:folder_yellow} {lang:category} *</td>
+		<td class="leftc">
+			{categories:dropdown}
+		</td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:kate} {lang:text} *</td>
+		<td class="leftc">
+			{abcode:features}
+			<textarea name="board_text" cols="50" rows="5" id="board_text">{data:board_text}</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:access} {lang:access} *</td>
+		<td class="leftc" colspan="2">
+			<select name="board_access">
+				{access:options}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:access} {lang:only_read} *</td>
+		<td class="leftc">
+			<input type="radio" name="board_read" value="1" {check:yes}/> {lang:yes}
+			<input type="radio" name="board_read" value="0" {check:no}/> {lang:no}
+		</td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:password} {lang:add_password}</td>
+		<td class="leftc">
+			<input name="new_board_pwd" value="" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" type="password"><br />
         {lang:password2}
-      </td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:password} Sicherheitsstufe:</td>
-      <td class="leftc">
-        <div style="float: left; background-image: url({page:path}symbols/votes/vote03.png); width: 100px; height: 13px; margin-top: 3px; margin-left: 2px;">
-          <div style="float: left; background-image: url({page:path}symbols/votes/vote01.png); width: 1px; height: 13px;" id="pass_secure"></div>
-        </div>
-        <div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_1">Stufe 1</div>
-        <div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_2">Stufe 2</div>
-        <div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_3">Stufe 3</div>
-        <div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_4">Stufe 4</div>
-        <br />
-        {edit:sec_level}
-      </td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:yast_group_add} {edit:squad_lang}</td>
-      <td class="leftc">{edit:squad_drop}</td>
-    </tr>
-    <tr>
-      <td class="leftb">{icon:ksysguard} {lang:options}</td>
-      <td class="leftc">
-        <input name="id" value="{board:id}"  type="hidden" />
-        <input name="board_pwd" value="{edit:board_pwd}" type="hidden" />
-        <input name="submit" value="{lang:edit}" type="submit" />
-        <input name="preview" value="{lang:preview}" type="submit" />
-        <input name="reset" value="{lang:reset}"  type="reset" />
-      </td>
-    </tr>
-  </table>
+		</td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:password} {lang:secure}</td>
+		<td class="leftc">
+			<div style="float:left; background-image:url({page:path}symbols/votes/vote03.png); width:100px; height:13px; margin-top:3px; margin-left:2px;">
+          <div style="float:left; background-image:url({page:path}symbols/votes/vote01.png); width:1px; height:13px;" id="pass_secure"></div>
+			</div>
+			<div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_1">{lang:stage_1}</div>
+			<div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_2">{lang:stage_2}</div>
+			<div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_3">{lang:stage_3}</div>
+			<div style="float: left; padding-left: 3px; padding-top: 3px; display: none;" id="pass_stage_4">{lang:stage_4}</div>
+			<br />
+			{clip:sec_level}
+		</td>
+	</tr>
+	{if:pwd_remove}
+	<tr>
+		<td class="leftb">{icon:configure} {lang:more}</td>
+		<td class="leftc"><input type="checkbox" name="board_pwdel" value="1" /> {lang:board_pwddel}</td>
+	</tr>
+	{stop:pwd_remove}
+	<tr>
+		<td class="leftb">{icon:yast_group_add} {squads:lang}</td>
+		<td class="leftc">
+			{squads:dropdown}
+		</td>
+	</tr>
+	<tr>
+		<td class="leftb">{icon:ksysguard} {lang:options}</td>
+		<td class="leftc">
+			<input type="hidden" name="id" value="{board:id}" />
+			<input type="hidden" name="board_pwd" value="{data:board_pwd}" />
+			<input type="submit" name="submit" value="{lang:edit}" />
+			<input type="submit" name="preview" value="{lang:preview}" />
+			<input type="reset" name="reset" value="{lang:reset}" />
+		</td>
+	</tr>
+</table>
 </form>
