@@ -1,0 +1,32 @@
+UPDATE ClanSphere 2008.X to ClanSphere 2009.0
+------------------------------------------------------------------------
+
+1. Legen Sie eine Sicherung (Backup) der von Ihnen modifizierten oder zugefügten Dateien an
+
+2. Sichern Sie die Inhalte der Datenbank, bei MySQL z.B. über das Tool phpMyAdmin
+   Achtung: Der in ClanSphere integrierte Export ist derzeit eher für kleinere Datenmengen gedacht
+
+3. Vergewissern Sie sich, dass eine login.htm im Template existiert um die Seite im Wartungsmodus zu öffnen
+   Achtung: Wenn diese nicht existiert kopieren Sie bitte die aus dem clansphere-Template inkl. der CSS-Dateien
+
+4. Setzen Sie den Modus der Seite auf Wartung, zu finden unter System -> Optionen -> ClanSphere
+
+5. Gehen Sie auf System -> Datenbank -> Import und führen Sie die Dateien aus dem Verzeichnis updates aus
+   Achtung: Führen Sie nur die Dateien von Ihrer derzeit verwendeten Version bis zur aktuellen aus
+   Hinweis: Bei älteren ClanSphere Versionen hat das Datenbank-Modul noch einen anderen Namen
+
+6. Entpacken Sie die Inhalte bis auf die Verzeichnisse docs und updates zuerst lokal und dann auf den Webspace
+   Hinweis: Verwenden Sie dafür am besten ein FTP-Programm wie z.B. FileZilla
+
+7. Entfernen Sie das bisherige Logs-Verzeichnis, sofern z.B. Apache-Logs nicht darin gesichert werden
+   Hinweis: Im Zweifelsfall ist das bisherige Logs-Verzeichnis in der index.php im Array $cs_logs definiert
+   Achtung: Logs werden in Zukunft automatisch in uploads/logs gesichert, setzen Sie dort den nötigen CHMOD
+
+8. Entfernen Sie die Dateien publish.php und counter.php aus dem Verzeichnis system/runstartup
+   Entfernen Sie die Dateien lang.php und content.php aus dem Verzeichnis system/core
+
+9. Vergewissern Sie sich, dass alle Einstellungen im CMS korrekt sind und sehen sie nach Fehler-Logs
+   Hinweis: Im Anschluss können Sie den Wartungsmodus wieder deaktivieren und sind mit dem Update fertig
+
+Bei Fragen sehen Sie bitte im Wiki nach: http://wiki.clansphere.de/Update
+Alternativ können Sie im Forum um Hilfe bitten: http://board.clansphere.de
