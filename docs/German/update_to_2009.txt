@@ -1,32 +1,32 @@
 UPDATE ClanSphere 2008.X to ClanSphere 2009.0
 ------------------------------------------------------------------------
 
-1. Legen Sie eine Sicherung (Backup) der von Ihnen modifizierten oder zugefügten Dateien an
+1. Create a backup of your modified and added files
 
-2. Sichern Sie die Inhalte der Datenbank, bei MySQL z.B. über das Tool phpMyAdmin
-   Achtung: Der in ClanSphere integrierte Export ist derzeit eher für kleinere Datenmengen gedacht
+2. Save the contents of the database, for example in MySQL with the tool phpMyAdmin
+   Note: The built-in export in ClanSphere is currently only suitable for small amounts of data
 
-3. Vergewissern Sie sich, dass eine login.htm im Template existiert um die Seite im Wartungsmodus zu öffnen
-   Achtung: Wenn diese nicht existiert kopieren Sie bitte die aus dem clansphere-Template inkl. der CSS-Dateien
+3. Make sure a login.htm exists in the template to open the page in maintenance mode
+   Caution: If it doesn't exist please copy from the one within the clansphere template including CSS files
 
-4. Setzen Sie den Modus der Seite auf Wartung, zu finden unter System -> Optionen -> ClanSphere
+4. Set the mode of the page to maintenance, which can be found inside System -> Options -> ClanSphere
 
-5. Gehen Sie auf System -> Datenbank -> Import und führen Sie die Dateien aus dem Verzeichnis updates aus
-   Achtung: Führen Sie nur die Dateien von Ihrer derzeit verwendeten Version bis zur aktuellen aus
-   Hinweis: Bei älteren ClanSphere Versionen hat das Datenbank-Modul noch einen anderen Namen
+5. Go to System -> Database -> Import and run the files from the updates directory
+   Caution: Do only execute files from your current version up to the current one
+   Note: In older versions ClanSphere the database module can have another name
 
-6. Entpacken Sie die Inhalte bis auf die Verzeichnisse docs und updates zuerst lokal und dann auf den Webspace
-   Hinweis: Verwenden Sie dafür am besten ein FTP-Programm wie z.B. FileZilla
+6. Unzip the contents except for the directories docs and updates, first locally and then on the webspace
+   Note: At best use a FTP program e.g. FileZilla
 
-7. Entfernen Sie das bisherige Logs-Verzeichnis, sofern z.B. Apache-Logs nicht darin gesichert werden
-   Hinweis: Im Zweifelsfall ist das bisherige Logs-Verzeichnis in der index.php im Array $cs_logs definiert
-   Achtung: Logs werden in Zukunft automatisch in uploads/logs gesichert, setzen Sie dort den nötigen CHMOD
+7. Remove the existing logs directory when it is not used for Logs like e.g. the Apache webserver
+   Note: If unsure the previous log directory can be found inside the index.php file and is defined in the array $cs_logs
+   Note: Future logs are automatically stored into the uploads/logs directory, so you need to change its CHMOD
 
-8. Entfernen Sie die Dateien publish.php und counter.php aus dem Verzeichnis system/runstartup
-   Entfernen Sie die Dateien lang.php und content.php aus dem Verzeichnis system/core
+8. Remove the files publish.php and counter.php from the directory system/runstartup
+   Remove the files and lang.php content.php from the directory system/core
 
-9. Vergewissern Sie sich, dass alle Einstellungen im CMS korrekt sind und sehen sie nach Fehler-Logs
-   Hinweis: Im Anschluss können Sie den Wartungsmodus wieder deaktivieren und sind mit dem Update fertig
+9. Make sure that all settings are correct in the CMS and view the error logs for problems
+   Note: You can disable the maintenance mode from now on and the update is finished
 
-Bei Fragen sehen Sie bitte im Wiki nach: http://wiki.clansphere.de/Update
-Alternativ können Sie im Forum um Hilfe bitten: http://board.clansphere.de
+Please visit the wiki for questions: http://wiki.clansphere.net/Update
+Alternatively ask for help in the board: http://board.clansphere.net
