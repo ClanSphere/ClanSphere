@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('count');
+
 $op_count = cs_sql_option(__FILE__,'count');
 
 $data = array();
@@ -120,11 +121,11 @@ if ($op_count['view'] == 'amstats'){
 ?>
 <script type="text/javascript" src="<?php echo $cs_main['php_self']['dirname']; ?>mods/count/amline/swfobject.js"></script>
 <div id="flashcontent">
-<?
+<?php
 echo cs_subtemplate(__FILE__,$data,'count','flash');
 ?>
 </div>
-<?
+<?php
 echo "<script type=\"text/javascript\">\n
   //<![CDATA[\n
   var so = new SWFObject(\"" . $cs_main['php_self']['dirname'] . "mods/count/amline/amline.swf\", \"amline\", \"" . $op_count['width'] . "%\", \"" . $op_count['height'] . "px\", \"8\", \"#" . $op_count['background'] . "\");\n
@@ -149,11 +150,11 @@ for($run=0; $run < $levels; $run++) {
   echo "<value xid='" . $loop . "'>" . $data['count'][$run]['day'] . "</value>";
   $loop++;
 }
-
 echo "</graph></graphs></chart>\");\n
   so.addVariable(\"preloader_color\", \"#" . $op_count['textcolor'] . "\");\n
   so.write(\"flashcontent\");\n
   //]]>\n
 </script>\n";
 }
+
 ?>
