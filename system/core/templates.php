@@ -358,6 +358,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $getparse = cs_parsetime($cs_micro);
     $cs_temp_get = str_replace('{func:parse}', $getparse, $cs_temp_get);
     $getmemory = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
+    if (function_exists('memory_get_peak_usage')) $getmemory .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
     $cs_temp_get = str_replace('{func:memory}', $getmemory, $cs_temp_get);
     return $cs_temp_get;
 }
