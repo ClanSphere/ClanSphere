@@ -10,7 +10,7 @@
 <form method="post" id="picture_edit" action="{url:gallery_picture_edit}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-		<td width="150" class="leftc">{icon:download} {lang:upload} *</td>
+		<td class="leftc" style="width:150px">{icon:download} {lang:upload} *</td>
 		<td class="leftb">
 			{data:picture}</td>
   </tr>

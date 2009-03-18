@@ -1,7 +1,7 @@
 <form method="post" id="converter" action="{url:converter}">
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};" >
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-  	<td class="headb" width="100%" colspan="2">{lang:head_import}</td>
+  	<td class="headb">{lang:head_import}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:import}

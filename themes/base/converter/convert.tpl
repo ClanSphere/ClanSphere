@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};" >
   <tr>
-  	<td class="headb" width="100%" colspan="2">{lang:head_import}</td>
+  	<td class="headb">{lang:head_import}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:import} {import:cms}</td>
@@ -15,7 +15,7 @@
 <form method="post" id="converter" action="{url:converter_convert}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};" >
   <tr>
-  	<td class="headb" width="100%" colspan="2">{lang:web_installation}</td>
+  	<td class="headb">{lang:web_installation}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:place}</td>
@@ -46,7 +46,7 @@
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};" >
   <tr>
-  	<td class="headb" width="100%" colspan="2">{lang:choice}</td>
+  	<td class="headb">{lang:choice}</td>
   </tr>
   {loop:cmsmod}
   <tr>

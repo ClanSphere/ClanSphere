@@ -44,8 +44,8 @@
     <td class="headb" colspan="2">{lang:board_stats}</td>
   </tr>
   <tr>
-	<td class="centerb" style="width:10%;"><img src="{page:path}symbols/board/agt_forum.png" alt="" width="32" height="32" /></td>
-	<td class="leftb" width="90%">
+	<td class="centerb" style="width:10%"><img src="{page:path}symbols/board/agt_forum.png" alt="" width="32" height="32" /></td>
+	<td class="leftb"  style="width:90%">
 	  {stats:online}<br />
   	  {lang:stats_newest}{user:newest}<br />
 	  <hr />
@@ -54,7 +54,7 @@
   </tr>
   <tr>
     <td class="centerb" style="width:10%; vertical-align:middle;"><img src="{page:path}symbols/board/stats.png" alt="" width="32" height="32" /></td>
-    <td class="leftb" width="90%">
+    <td class="leftb"  style="width:90%">
 	  {lang:all_users}{user:all}<br />
 	  {lang:threads_and} {stats:threads}<br />
 	  {lang:replies}: {stats:comments}<br />

@@ -8,7 +8,7 @@
 <form method="post" id="count_options" action="{url:count_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
-      <td class="leftc" width="30%">{icon:kdvi} {lang:view}</td>
+      <td class="leftc"  style="width:30%">{icon:kdvi} {lang:view}</td>
       <td class="leftb"><select name="view" >
 	  <option value="stats" {count:stats}>{lang:stats}</option>
           <option value="amstats" {count:amstats}>{lang:amstats}</option>
@@ -23,7 +23,7 @@
 	<td class="headb" colspan="2">{lang:amstats} - {lang:options}</td>
     </tr>
     <tr>
-      <td class="leftc" width="30%">{icon:resizecol} {lang:width}</td>
+      <td class="leftc"  style="width:30%">{icon:resizecol} {lang:width}</td>
       <td class="leftb"><input type="text" name="width" value="{count:width}" maxlength="3" size="3"  />
         {lang:proz}</td>
     </tr>

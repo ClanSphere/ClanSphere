@@ -16,7 +16,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
 		<td class="headb">{sort:name} {lang:folders}</td>
-		<td class="headb" width="50">{lang:options}</td>
+		<td class="headb" style="width:80px">{lang:options}</td>
 	</tr>
 	{loop:folders}
 	<tr>

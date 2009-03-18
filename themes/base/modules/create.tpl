@@ -11,8 +11,8 @@
 <form method="post" id="modules_create" action="{form:url}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="leftc" width="20%">{icon:kedit} {lang:name} *</td>
-  <td class="leftb" width="80%"><input type="text" value="{value:modname}" name="modname" maxlength="60" size="40"  /></td>
+  <td class="leftc" style="width:20%">{icon:kedit} {lang:name} *</td>
+  <td class="leftb" style="width:80%"><input type="text" value="{value:modname}" name="modname" maxlength="60" size="40"  /></td>
  </tr>
  <tr>
   <td class="leftc">{icon:folder_yellow} {lang:directory} *</td>

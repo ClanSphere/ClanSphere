@@ -5,7 +5,7 @@
   <tr>
   
   </tr>
-  	<td width="75%" class="leftc"><strong>{file:name}</strong></td>
+  	<td class="leftc" style="width:75%"><strong>{file:name}</strong></td>
     <br />
     {lang:connect}
     <br /><br />
