@@ -7,18 +7,18 @@ UPDATE ClanSphere 2008.X to ClanSphere 2009.0
    Note: The built-in export in ClanSphere is currently only suitable for small amounts of data
 
 3. Make sure a login.htm exists in the template to open the page in maintenance mode
-   Caution: If it doesn't exist please copy from the one within the clansphere template including CSS files
+   Caution: If it doesn't exist please copy the one within the clansphere template including its CSS files
 
 4. Set the mode of the page to maintenance, which can be found inside System -> Options -> ClanSphere
 
 5. Go to System -> Database -> Import and run the files from the updates directory
-   Caution: Do only execute files from your current version up to the current one
+   Caution: Do only execute files from your current version up to the new one
    Note: In older versions ClanSphere the database module can have another name
 
 6. Unzip the contents except for the directories docs and updates, first locally and then on the webspace
    Note: At best use a FTP program e.g. FileZilla
 
-7. Remove the existing logs directory when it is not used for Logs like e.g. the Apache webserver
+7. Remove the existing logs directory when it is not used for other logs like e.g. the Apache webserver
    Note: If unsure the previous log directory can be found inside the index.php file and is defined in the array $cs_logs
    Note: Future logs are automatically stored into the uploads/logs directory, so you need to change its CHMOD
 
@@ -26,7 +26,7 @@ UPDATE ClanSphere 2008.X to ClanSphere 2009.0
    Remove the files and lang.php content.php from the directory system/core
 
 9. Make sure that all settings are correct in the CMS and view the error logs for problems
-   Note: You can disable the maintenance mode from now on and the update is finished
+   Note: You can disable the maintenance mode now and the update is finished
 
 Please visit the wiki for questions: http://wiki.clansphere.net/Update
 Alternatively ask for help in the board: http://board.clansphere.net
