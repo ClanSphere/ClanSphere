@@ -107,7 +107,7 @@
 			<input type="hidden" name="file_upload_name_{files:num}" value="{files:up_name}" />
 			{if:file_is_picture}
 			<div style="float:left;padding:3px;border:1px solid black;background:gainsboro;">
-      <a href="/mods/gallery/image.php?boardpic={files:name}" onclick="window.open('/mods/gallery/image.php?boardpic={files:name}'); return false"><img src="/mods/gallery/image.php?boardpic={files:name}&boardthumb" alt="" /></a>
+      <a href="/mods/gallery/image.php?boardpic={files:name}" target="_blank"><img src="/mods/gallery/image.php?boardpic={files:name}&boardthumb" alt="" /></a>
 			</div>
 			<div style="float:left;padding:3px;margin-left:10px;"><img src="/symbols/files/filetypes/{files:ext}.gif" alt="{files:ext}" /> {files:name}<br />
 				<input type="submit" name="remove_file_{files:num}" value="{lang:remove}" />

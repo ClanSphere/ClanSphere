@@ -8,7 +8,7 @@
     <td class="rightb">{server:pages}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3"><a href="http://www.clansphere.net/index/files/view/where/9" onclick="window.open('http://www.clansphere.net/index/files/view/where/9'); return false">{lang:mapsdl}</a></td>
+    <td class="leftb" colspan="3"><a href="http://www.clansphere.net/index/files/view/where/9" target="_blank">{lang:mapsdl}</a></td>
   </tr>
 </table>
 <br />

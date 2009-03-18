@@ -18,7 +18,7 @@
 	{loop:links}
 	<tr>
 		<td class="leftc"><a href="{url:links_view:id={links:id}}">{links:name}</a></td>
-		<td class="leftc"><a href="http://{links:url}" onclick="window.open('http://{links:url}'); return false">{links:url_short}</a></td>
+		<td class="leftc"><a href="http://{links:url}" target="_blank">{links:url_short}</a></td>
 		<td class="leftc"><span style="color:{links:color}">{links:on_off}</span></td>
 	</tr>
 	{stop:links}

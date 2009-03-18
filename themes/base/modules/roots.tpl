@@ -6,7 +6,7 @@
 		<td class="leftb">{icon:editpaste} <a href="{url:modules_create}" >{lang:new_module}</a></td>
 		<td class="centerb">{icon:contents} {lang:total}: {head:count}</td>
 		<td class="centerb">{icon:ark} <a href="{url:clansphere_cache}" >{lang:cache}</a></td>
-		<td class="rightb"><a href="http://mods.clansphere.net" onclick="window.open('http://mods.clansphere.net'); return false">{lang:more_modules}</a></td>
+		<td class="rightb"><a href="http://mods.clansphere.net" target="_blank">{lang:more_modules}</a></td>
 	</tr>
 {if:wizard}
     <tr>

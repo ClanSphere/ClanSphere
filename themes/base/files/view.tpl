@@ -73,7 +73,7 @@
   {loop:mirrors}
   <tr>
     <td class="leftc">{icon:html}</td>
-    <td class="leftb"><a href="http://{url:files_download:where={file:id}:target={mirrors:id}}" onclick="window.open('{url:files_download:where={file:id}:target={mirrors:id}}'); return false">{mirrors:name}</a></td>
+    <td class="leftb"><a href="http://{url:files_download:where={file:id}:target={mirrors:id}}" target="_blank">{mirrors:name}</a></td>
     <td class="leftc">{mirrors:filetype_image}( <strong>{mirrors:filetype_name}</strong> ) </td>
   </tr>
   {stop:mirrors}
