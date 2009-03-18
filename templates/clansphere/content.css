@@ -136,7 +136,6 @@ input, textarea, select {
 	background-color: #ddffdd;
 }
 
-
 /*Cal*/
 .calhead {
   background-color:#FFFFFF;
@@ -168,10 +167,17 @@ input, textarea, select {
 /*Manage*/
 .manage {
   background-color: #F8F8F8;
-  border: 1px dotted;
+  border: 1px solid #999999;
   margin: 5px;
   padding: 5px 0px 0px 0px;
 }
 .manage:hover {
   background-color:#E2E2E2;
+}
+
+/*Themebar*/
+.themebar {
+  border: 1px dashed #777777;
+  margin: 4px 8px 4px 8px;
+  padding: 4px;
 }
