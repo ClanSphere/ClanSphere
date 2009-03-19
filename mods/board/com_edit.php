@@ -2,12 +2,16 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-include('mods/board/functions.php');
 $cs_lang = cs_translate('board');
+$cs_post = cs_post('id');
+$cs_get = cs_get('id');
+$data = array();
+
+$comments_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_post['id']))  $comments_id = $cs_post['id'];
 
 $check_sq = 0;
-$comments_id = $_REQUEST['id'];
-settype($comments_id,'integer');
+include('mods/board/functions.php');
 
 $cells = 'users_id, comments_text, comments_time, comments_fid';
 $cs_comments = cs_sql_select(__FILE__,'comments',$cells,"comments_id = '" . $comments_id . "'");
@@ -16,7 +20,9 @@ $fid = $cs_comments['comments_fid'];
 $options = cs_sql_option(__FILE__,'board');
 $max_text = $options['max_text'];
 $filetypes = explode(',',$options['file_types']);
-$message = '';
+$error = '';
+$ori_text = $cs_comments['comments_text'];
+
 
 $from = 'comments com INNER JOIN {pre}_threads thr ON com.comments_fid = thr.threads_id INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
 $select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, cat.categories_id AS categories_id, com.comments_edit AS comments_edit, com.users_id AS users_id, frm.board_access AS board_access, frm.squads_id AS squads_id';
@@ -55,7 +61,6 @@ if(!empty($check) AND empty($_POST)) {
   $where = 'threads_id=' . $cs_thread['threads_id'] . ' AND comments_id=' . $comments_id;
   $cs_boardfiles = cs_sql_select(__FILE__,$from,$select,$where,'','','');
   $run_loop_files = count($cs_boardfiles);
-//  print_r($cs_boardfiles);
   $files = '1';
 } else {
   $files = isset($_POST['files']) ? $_POST['files'] : 0;
@@ -63,7 +68,6 @@ if(!empty($check) AND empty($_POST)) {
 
 if(isset($_POST['new_file'])) {
   $files = '1';
-  $cs_comments['comments_text'] = $_POST['comments_text'];
 }
 
 $thread_error = 0;
@@ -75,18 +79,11 @@ for($run=0; $run < $run_loop_files; $run++) {
   $num = $run+1;
   if(!empty($_FILES['file_'.$num]['name'])) {
     $board_files_name = $cs_boardfiles[$run]['boardfiles_name'] = $_FILES['file_'.$num]['name'];
-/*  for($run2=1; $run2 < $run_loop_files; $run2++) {
-      $lastfilename = $_POST["file_name_$run2"];
-      if($board_files_name == $lastfilename) {
-        $file_error[$num] = '1';
-        $message .= $cs_lang['error_filename'] . cs_html_br(1);
-      }
-    }*/
+
     $ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
 
     if($_FILES['file_'.$num]['size'] > $options['file_size']) {
-      $message .= $cs_lang['error_filesize'] . cs_html_br(1);
-      $thread_error++;
+      $error .= $cs_lang['error_filesize'] . cs_html_br(1);
       $file_error[$num] = '1';
     }
     $check_type = '';
@@ -97,21 +94,8 @@ for($run=0; $run < $run_loop_files; $run++) {
       }
     }
     if($check_type != 1) {
-      $message .= $cs_lang['error_filetype'] . cs_html_br(1);
-      $thread_error++;
+      $error .= $cs_lang['error_filetype'] . cs_html_br(1);
       $file_error[$num] = '1';
-    }
-    if(!empty($file_error[$num])) {
-      echo cs_html_table(1,'forum',1);
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('important');
-      echo $cs_lang['error_subheader'];
-      echo cs_html_roco(0);
-      echo cs_html_roco(1,'leftb');
-      echo $message;
-      echo cs_html_roco(0);
-      echo cs_html_table(0);
-      echo cs_html_br(1);
     }
   }
   $check = '0';
@@ -133,8 +117,7 @@ for($run=0; $run < $run_loop_files; $run++) {
       $a++;
       $check = '1';
     } else {
-      $message .= $cs_lang['error_fileupload'] . cs_html_br(1);
-      $thread_error++;
+      $error .= $cs_lang['error_fileupload'] . cs_html_br(1);
       $file_error[$num]++;
     }
   }
@@ -181,194 +164,145 @@ for($run=0; $run < $run_loop_files; $run++) {
 $run_loop_files = $a;
 if(isset($_POST['files+'])) {
   $run_loop_files++;
-  $cs_comments['comments_text'] = $_POST['comments_text'];
 }
 // Boardfiles Berechnung Ende
 
-echo cs_html_table(1,'forum',1);
-echo cs_html_roco(1,'headb');
+
 $head  = cs_link($cs_lang['board'],'board','list','normalb') .' -> ';
 $head .= cs_link($cs_thread['categories_name'],'board','list','where=' .$cs_thread['categories_id'],'normalb') .' -> ';
 $head .= cs_link($cs_thread['board_name'],'board','listcat','where=' .$cs_thread['board_id'],'normalb') .' -> ';
 $head .= cs_link($cs_thread['threads_headline'],'board','thread','where=' .$cs_thread['threads_id'],'normalb');
-echo $cs_lang['mod'] .' - '. $cs_lang['head_com_edit'];
-echo cs_html_roco(1,'leftc');
-echo $head;
-echo cs_html_roco(0);
-echo cs_html_table(0);
-echo cs_html_br(1);
-//echo cs_html_table(1,'forum',1);
+$data['head']['links'] = $head;
 
-if(isset($_POST['submit']) OR isset($_POST['preview'])) {
+
+if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['files+']) OR isset($_POST['new_file'])) {
 
   $cs_comments['comments_text'] = $_POST['comments_text'];
-  $error = 0;
-  $errormsg = '';
 
-  $text_count = strlen($cs_comments['comments_text']);
-  if($text_count >= $max_text)
-  {
-    $error++;
-    $count = $text_count - $max_text;
-    $errormsg .= $cs_lang['text_to_long'] . $text_count . $cs_lang['text_to_long_2'] . $count . $cs_lang['text_to_long_3'] . cs_html_br(1);
-  }
+  $error = '';
 
-  if(empty($cs_comments['comments_text'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_text'] . cs_html_br(1);
-  }
-
-  $cs_comments['comments_text'] = preg_replace_callback("=\[img\](.*?)\[/img\]=si",
-      "cs_abcode_resize",$cs_comments['comments_text']);
-  $cs_comments['comments_text'] = preg_replace_callback("=\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]=si",
-      "cs_abcode_resize",$cs_comments['comments_text']);
-}
-if(!empty($error)) {
-  echo cs_html_roco(1,'leftb');
-  echo $errormsg;
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);
+	//check text
+	if(!empty($cs_comments['comments_text'])) {
+		$text_count = strlen($cs_comments['comments_text']);
+		$ori_text = $cs_comments['comments_text'];
+		if($text_count >= $max_text) {
+			$diff = $text_count - $max_text;
+			$error .= sprintf($cs_lang['text_to_long_sprint'],$text_count,$diff) . cs_html_br(1);
+		}
+		$cs_comments['comments_text'] = preg_replace_callback("=\[img\](.*?)\[/img\]=si","cs_abcode_resize",$cs_comments['comments_text']);
+		$cs_comments['comments_text'] = preg_replace_callback("=\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]=si","cs_abcode_resize",$cs_comments['comments_text']);	
+	}
+	else{
+		$error .= $cs_lang['no_text'] . cs_html_br(1);
+	}
 }
 
+
+$data['if']['error'] = empty($error) ? false : true;
+$data['show']['error'] = $error;
+
+$data['if']['preview'] = FALSE;
 if(isset($_POST['preview']) AND empty($error)) {
-
-     echo cs_html_table(1,'forum',1);
-    echo cs_html_roco(1,'headb');
-    echo $cs_lang['preview'];
-    echo cs_html_roco(1,'leftc');
-    echo cs_secure($cs_comments['comments_text'],1,1);
-    echo cs_html_roco(0);
-    echo cs_html_table(0);
-    echo cs_html_br(1);
-
+  $data['if']['preview'] = true;
+  $data['prev']['text'] = cs_secure($cs_comments['comments_text'],1,1);
 }
+
 
 if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
 
-  echo cs_html_form (1,'board_com_edit','board','com_edit',1);
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('kate') . $cs_lang['text'] . ' *';
-  echo cs_html_br(2);
-  echo cs_abcode_smileys('comments_text');
-    echo cs_html_br(2);
-  echo 'max. ' . $max_text . $cs_lang['indi'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_abcode_features('comments_text');
-  echo cs_html_textarea('comments_text',$cs_comments['comments_text'],'50','20');
-  echo cs_html_roco(0);
+	$data['thread']['text_size'] = $max_text;
+	$data['abcode']['smileys'] = cs_abcode_smileys('comments_text');
+	$data['abcode']['features'] = cs_abcode_features('comments_text');
+	$data['data']['comments_text'] = $ori_text;
+	
+	
+	//files
+	$data['if']['file'] = FALSE;
 
   $run_loop_files = !empty($run_loop_files) ? $run_loop_files : 1;
   if($files == 1)
   {
-    echo cs_html_roco(1,'headb',0,2);
-    echo cs_icon('download') . $cs_lang['uploads'];
-    echo cs_html_roco(0);
+  	$data['if']['file'] = TRUE;
+    
     for($run=0; $run < $run_loop_files; $run++)
     {
-      $num = $run + 1;
-      $cs_files["text_$num"] = isset($_POST["text_$num"]) ? $_POST["text_$num"] : '';
-      echo cs_html_roco(1,'leftc');
-      echo cs_icon('download') . $cs_lang['file'] . ' ' . $num;
-      echo cs_html_roco(2,'leftb');
+			$num = $run + 1;
+			$cs_files["text_$num"] = isset($_POST["text_$num"]) ? $_POST["text_$num"] : '';
+
+      $data['files'][$run]['num'] = $num;
+      
+      $data['files'][$run]['if']['empty_file'] = FALSE;
+      $data['files'][$run]['if']['file_exists'] = FALSE;
+      
       if(empty($cs_boardfiles[$run]['boardfiles_name']) OR !empty($file_error[$num]))
       {
-        echo cs_html_input("file_$num",'','file');
-        $matches[1] = $cs_lang['infos'];
-        $return_types = '';
-        foreach($filetypes AS $add)
-        {
-          $return_types .= empty($return_types) ? $add : ', ' . $add;
-        }
-        $matches[2] = $cs_lang['max_size'] . cs_filesize($options['file_size']) . cs_html_br(1);
-        $matches[2] .= $cs_lang['filetypes'] . $return_types;
-        echo ' ' . cs_abcode_clip($matches);
+      	$data['files'][$run]['if']['empty_file'] = TRUE;
+      
+        	$matches[1] = $cs_lang['infos'];
+        	$return_types = '';
+        	foreach($filetypes AS $add) {
+         		$return_types .= empty($return_types) ? $add : ', ' . $add;
+        	}
+        	$matches[2] = $cs_lang['max_size'] . cs_filesize($options['max_size']) . cs_html_br(1);
+        	$matches[2] .= $cs_lang['filetypes'] . $return_types;
+        $data['files'][$run]['clip'] = cs_abcode_clip($matches);
       }
-      else
-      {
+      else {
         if(empty($_POST)) {
           $file_x = $cs_boardfiles[$run]['boardfiles_name'];
           $ext = substr($file_x,strlen($file_x)+1-strlen(strrchr($file_x,'.')));
           $file_upload_name[$run] = $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext;
         }
-        echo cs_html_vote("file_id_$num",$cs_boardfiles[$run]['boardfiles_id'],'hidden');
-        echo cs_html_vote("file_user_$num",$cs_boardfiles[$run]['users_id'],'hidden');
-        echo cs_html_vote("file_name_$num",$cs_boardfiles[$run]['boardfiles_name'],'hidden');
-        echo cs_html_vote("file_del_$num",$cs_boardfiles[$run]['boardfiles_del'],'hidden');
-        echo cs_html_vote("file_upload_name_$num",$file_upload_name[$run],'hidden');
-        $file = $cs_boardfiles[$run]['boardfiles_name'];
+      	$data['files'][$run]['if']['file_exists'] = TRUE;
+      
+      	$data['files'][$run]['name'] = $cs_boardfiles[$run]['boardfiles_name'];
+      	$data['files'][$run]['up_name'] = $file_upload_name[$run];
+      	$data['files'][$run]['b_id'] = $cs_boardfiles[$run]['boardfiles_id'];
+      	$data['files'][$run]['user'] = $cs_boardfiles[$run]['users_id'];
+      	$data['files'][$run]['del'] = $cs_boardfiles[$run]['boardfiles_del'];
+        
+				$file = $cs_boardfiles[$run]['boardfiles_name'];
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
         $ext = substr($file,$name - $extension + 1,$name);
-        if($ext == 'JPG' OR $ext == 'jpg' OR $ext == 'JPEG' OR $ext == 'jpeg' OR $ext == 'png' OR $ext == 'PNG' OR $ext == 'gif' OR $ext == 'GIF')
-        {
-          $cs_lap = cs_html_img('mods/gallery/image.php?boardpic=' . $file . '&boardthumb');
-          echo cs_html_div(1,'float:left;padding:3px;border:1px solid black;background:gainsboro;');
-          echo cs_html_link('mods/gallery/image.php?boardpic=' . $file,$cs_lap);
-          echo cs_html_div(0);
-          echo cs_html_div(1,'float:left;padding:3px;margin-left:10px;');
-          echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
-          echo ' ' . $file;
-          echo cs_html_br(1);
-          if($cs_boardfiles[$run]['boardfiles_del'] == '0')
-          {
-            echo cs_html_vote('remove_file_' . $num,$cs_lang['remove'],'submit');
-          }
-          elseif($cs_boardfiles[$run]['boardfiles_del'] == '1')
-          {
-            echo $cs_lang['file_del'];
-          }
-          echo cs_html_div(0);
-        }
-        else
-        {
-          echo cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
-          echo ' ' . $cs_boardfiles[$run]['boardfiles_name'];
-          echo cs_html_div(1,'float:left;padding:3px;margin-left:10px;');
-          if($cs_boardfiles[$run]['boardfiles_del'] == '0')
-          {
-            echo cs_html_vote('remove_file_' . $num,$cs_lang['remove'],'submit');
-          }
-          elseif($cs_boardfiles[$run]['boardfiles_del'] == '1')
-          {
-            echo $cs_lang['file_del'];
-          }
-          echo cs_html_div(0);
+        $data['files'][$run]['ext'] = $ext;
+        
+        $data['files'][$run]['if']['del_button'] = FALSE;
+        $data['files'][$run]['file_del'] = '';
+        if($cs_boardfiles[$run]['boardfiles_del'] == '0') {
+        	$data['files'][$run]['if']['del_button'] = TRUE;
+				} elseif($cs_boardfiles[$run]['boardfiles_del'] == '1') {
+					$data['files'][$run]['file_del'] = $cs_lang['file_del'];
+				}
+        
+        $data['files'][$run]['if']['file_is_picture'] = FALSE;
+        $data['files'][$run]['if']['file_is_other'] = FALSE;
+        
+        #check if file is picture
+        if(strcasecmp($ext,'jpg') == '0' OR strcasecmp($ext,'jpeg') == '0' OR strcasecmp($ext,'gif') == '0' OR strcasecmp($ext,'png') == '0') {
+        	$data['files'][$run]['if']['file_is_picture'] = TRUE;
+        } else {
+        	$data['files'][$run]['if']['file_is_other'] = TRUE;
         }
       }
-      echo cs_html_roco(0);
-      //echo cs_html_roco(2,'leftb');
-      //echo cs_html_textarea("file_text_$num",$cs_files["text_$num"],'50','3');
-      //echo cs_html_roco(0);
     }
   }
 
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options+'];
-  echo cs_html_roco(2,'leftb');
-  if($files == '1' AND $account['access_board'] >= '2')
-  {
-      echo cs_html_vote('run_loop_files',$run_loop_files,'hidden');
-    echo cs_html_vote('files','1','hidden');
-    echo cs_html_vote('files+',$cs_lang['add_file'],'submit');
+  $data['if']['add_file'] = FALSE;
+  $data['if']['new_file'] = FALSE;
+  
+  if($files == '1' AND $account['access_board'] >= '2') {
+  	$data['if']['add_file'] = TRUE;
+  	$data['hidden']['files_loop'] = $run_loop_files;
   }
-  if($files == '0' AND $account['access_board'] >= '2')
-  {
-    echo cs_html_vote('new_file',$cs_lang['add_file'],'submit');
+  if($files == '0' AND $account['access_board'] >= '2') {
+  	$data['if']['new_file'] = TRUE;
   }
-  echo cs_html_roco(0);
 
-  echo cs_html_roco(1,'leftc');
-  echo cs_icon('ksysguard') . $cs_lang['options'];
-  echo cs_html_roco(2,'leftb');
-  echo cs_html_vote('id',$comments_id,'hidden');
-  echo cs_html_vote('submit',$cs_lang['edit'],'submit');
-  echo cs_html_vote('preview',$cs_lang['preview'],'submit');
-  echo cs_html_vote('reset',$cs_lang['reset'],'reset');
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_form(0);
+	$data['comments']['id'] = $comments_id;
+
+
+ echo cs_subtemplate(__FILE__,$data,'board','com_edit');
 }
 else {
   $opt = "comments_mod = 'board' AND comments_fid = \"" . $fid . "\"";
@@ -418,7 +352,7 @@ else {
   }
 
   $more = 'where=' . $fid . '&start=' . $start . '#com' . $count_com;
-    cs_redirect($cs_lang['changes_done'],'board','thread',$more);
+ cs_redirect($cs_lang['changes_done'],'board','thread',$more);
 }
 
 ?>
