@@ -23,7 +23,7 @@ function cs_error_internal($error = 0, $report = 0) {
   $cs_main['error_internal'] = $error;
   $cs_main['error_reported'] = $report;
   $cs_main['def_title'] = 'ClanSphere';
-  $cs_main['def_lang'] = 'English';
+  $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
   $cs_main['def_tpl'] = 'install';
   $cs_main['mod'] = 'errors';
   $cs_main['action'] = '500';
@@ -31,9 +31,10 @@ function cs_error_internal($error = 0, $report = 0) {
   $cs_main['public'] = 1;
   $cs_main['def_width'] = '100%';
 
-  $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'users_lang' => 'English');
-  require 'lang/' . $account['users_lang'] . '/system/comlang.php';
+  if(empty($account['users_lang']))
+    $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'users_lang' => $cs_main['def_lang']);
 
+  require 'lang/' . $account['users_lang'] . '/system/comlang.php';
   $cs_lang_main = cs_translate();
 
   echo cs_template($cs_micro, 'error.htm');
