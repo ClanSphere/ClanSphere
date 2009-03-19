@@ -75,7 +75,7 @@ if (empty($folders_id)) {
         $select = 'sub.sub_id AS sub_id, sub.folders_id AS folders_id, gal.folders_id AS folders_id, gal.gallery_time AS gallery_time';
         $from = 'folders sub INNER JOIN {pre}_gallery gal ON sub.folders_id = gal.folders_id ';
         $where = "sub.sub_id='" . $a['folders_id'] . "'";
-        $order = "gallery_time DESC";
+        $order = "gallery_id DESC";
         $count = cs_sql_select(__FILE__, $from, $select, $where, 0, 0, 0);
         $count2 = cs_sql_select(__FILE__, $from, $select, $where, $order, 0, 1);
         $plus = count($count);
