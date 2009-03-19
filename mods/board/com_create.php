@@ -18,9 +18,11 @@ $options = cs_sql_option(__FILE__,'board');
 $max_text = $options['max_text'];
 $filetypes = explode(',',$options['file_types']);
 $a = '0';
-$b = '0';
+$b = '1';
 $text = '';
 $ori_text = '';
+$error = '';
+$files = '0';
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
 $select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, frm.board_read AS board_read, cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, cat.categories_id AS categories_id, frm.board_access AS board_access, frm.squads_id AS squads_id';
@@ -53,18 +55,20 @@ $head .= cs_link($data['thread']['threads_headline'],'board','thread','where=' .
 $data['thread']['head_link'] = $head;
 
 
-
+//quote
 if(!empty($_REQUEST['quote'])) {
   $def = explode('-', $_REQUEST['quote']);
   
+  #comment
   if($def[0]=='c') {
     $quote = cs_sql_select($file,'comments','users_id,comments_text,comments_time',"comments_id = '" . cs_sql_escape($def[1]) . "'");
     $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick',"users_id = '" . $quote['users_id'] . "'");
-    $text = '[quote]' .$quote['comments_text']. '[/quote]';
+    $ori_text = '[quote]' .$quote['comments_text']. '[/quote]';
     $url = $_SERVER['PHP_SELF'] . '?mod=users&action=view&id=' . $cs_users['users_id'];
-    $text = cs_date('unix',$quote['comments_time'],1) . ' - [url=' . $url . ']';
-    $text .= $cs_users['users_nick'] . "[/url]:\n[quote]" . $quote['comments_text'] . '[/quote]';
+    $ori_text = cs_date('unix',$quote['comments_time'],1) . ' - [url=' . $url . ']';
+    $ori_text .= $cs_users['users_nick'] . "[/url]:\n[quote]" . $quote['comments_text'] . '[/quote]';
   }
+  #thread
   else if($def[0]=='t') {
     $select = "threads thr INNER JOIN {pre}_board brd ON thr.board_id = brd.board_id";
 	$cells = "thr.users_id AS users_id, thr.threads_text AS threads_text, thr.threads_time AS threads_time, brd.board_access AS board_access";
@@ -72,24 +76,15 @@ if(!empty($_REQUEST['quote'])) {
 	$quote = cs_sql_select($file,$select,$cells,$where);
 	$cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick',"users_id = '" . $quote['users_id'] . "'");
 	$url = $_SERVER['PHP_SELF'] . '?mod=users&action=view&id=' . $cs_users['users_id'];
-	$text = cs_date('unix',$quote['threads_time'],1) . ' - [url=' . $url . ']';
-	$text .= $cs_users['users_nick'] . "[/url]:\n[quote]" . $quote['threads_text'] . '[/quote]';
+	$ori_text = cs_date('unix',$quote['threads_time'],1) . ' - [url=' . $url . ']';
+	$ori_text .= $cs_users['users_nick'] . "[/url]:\n[quote]" . $quote['threads_text'] . '[/quote]';
   }
 }
 
 
-if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced']) OR isset($_POST['files']) OR isset($_POST['new_file'])) {
+if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced']) OR isset($_POST['new_file']) OR isset($_POST['files+'])) {
 
 	$text = $_POST['comments_text'];
-	$files = isset($_POST['files']) ? $_POST['files'] : 0;
-	$run_loop_files = isset($_POST['run_loop_files']) ? $_POST['run_loop_files'] : 0;
-
-	if(isset($_POST['new_file'])) {
-		$files = '1';
-	}
-
-
-	$error = '';
 	
 	//check text
 	if(!empty($text)) {
@@ -144,68 +139,59 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
 	}
   
 	//files
+	$files = isset($_POST['files']) ? $_POST['files'] : 0;
+	if(isset($_POST['new_file'])) {
+		$files = '1';
+	}
+	$run_loop_files = isset($_POST['run_loop_files']) ? $_POST['run_loop_files'] : 0;
 	for($run=0; $run < $run_loop_files; $run++) {
-		$num = $run+1;
-  
-		if(!empty($_FILES["file_$num"]['name']))
-		{
-			$board_files_name = $cs_files[$run]['boardfiles_name'] = $_FILES["file_$num"]['name'];
+  	$num = $run+1;
+  	if(!empty($_FILES["file_$num"]['name'])) {
+    	$board_files_name = $cs_files[$run]['boardfiles_name'] = $_FILES["file_$num"]['name'];
+    	$ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
+    	if($_FILES["file_$num"]['size'] > $options['file_size']) {
+      	$error .= $cs_lang['error_filesize'] . cs_html_br(1);
+      	$file_error[$num] = '1';
+    	}
+    	$check_type = '';
+    	$count_filetypes = count($filetypes);
+    	for($run_a=0; $run_a < $count_filetypes; $run_a++) {
+      	if('0' == strcasecmp($filetypes[$run_a], $ext)) {
+        	$check_type = 1;
+      	}
+    	}
+    	if($check_type != 1) {
+      	$error .= $cs_lang['error_filetype'] . cs_html_br(1);
+      	$file_error[$num] = '1';
+    	}
+  	}
+  	if(!empty($_FILES["file_$num"]['name']) AND empty($file_error[$num])) {
+    	$file_name[$num] = $_FILES["file_$num"]['name'];
 
-			$ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
-    
-			if($_FILES["file_$num"]['size'] > $options['file_size']) {
-				$error .= $cs_lang['error_filesize'] . cs_html_br(1);
-				$file_error[$num] = '1';
-			}
-    
-			$check_type = '';
-			$count_filetypes = count($filetypes);
-			for($run_a=0; $run_a < $count_filetypes; $run_a++) {
-				if('0' == strcasecmp($filetypes[$run_a], $ext)) {
-					$check_type = 1;
-				}
-			}
-	
-			if($check_type != 1) {
-				$error .= $cs_lang['error_filetype'] . cs_html_br(1);
-				$file_error[$num] = '1';
-			}
-			
-			//--> no file error
-			if(empty($file_error[$num]))
-			{
-				$file_name[$num] = $_FILES["file_$num"]['name'];
-
-				$hash = '';
-				$pattern = "abcdefghijklmnopqrstuvwxyz";   
-				for($i=0;$i<8;$i++) {
-					$hash .= $pattern{rand(0,25)};
-				}
-    
-				$file_upload_name[$num] = $hash . '.' . $ext;
-    
-				if(cs_upload('board/files', $file_upload_name[$num], $_FILES["file_$num"]['tmp_name'])) {
-					$a++;
-				} else {
-					$error .= $cs_lang['error_fileupload'] . cs_html_br(1);
-				}
-			}
-  
-			if(!empty($_POST["file_name_$num"]) AND empty($file_error[$num]))
-			{
-				$file_name[$num] = $_POST["file_name_$num"];
-				$file_upload_name[$num] = $_POST["file_upload_name_$num"];
-    
-				if(isset($_POST["remove_file_$num"])) {
-			 		cs_unlink('board', $file_upload_name[$num], 'files');
-					$file_name[$num] = '';
-				} else {
-					$file_name[$b] = $file_name[$num];
-					$a++;
-					$b++;
-				}
-			}
-		}
+    	$hash = '';
+    	$pattern = "abcdefghijklmnopqrstuvwxyz";
+    	for($i=0;$i<8;$i++) {
+				$hash .= $pattern{rand(0,25)};
+    	}
+    	$file_upload_name[$num] = $hash . '.' . $ext;
+    	if (cs_upload('board/files', $file_upload_name[$num], $_FILES["file_$num"]['tmp_name'])) {
+      	$a++;
+    	} else {
+      	$error .= $cs_lang['error_fileupload'] . cs_html_br(1);
+    	}
+  	}
+  	if(!empty($_POST["file_name_$num"]) AND empty($file_error[$num])) {
+    	$file_name[$num] = $_POST["file_name_$num"];
+    	$file_upload_name[$num] = $_POST["file_upload_name_$num"];
+    	if(isset($_POST["remove_file_$num"])) {
+      	cs_unlink('board', $file_upload_name[$num], 'files');
+      	$file_name[$num] = '';
+    	} else {
+      	$file_name[$b] = $file_name[$num];
+      	$a++;
+      	$b++;
+    	}
+  	}
 	}
 }
 
@@ -225,7 +211,7 @@ if(isset($_POST['files+'])) {
 }
 
 
-if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
+if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR isset($_POST['files+']) OR isset($_POST['new_file'])) {
 
 	$data['thread']['text_size'] = $max_text;
 	$data['abcode']['smileys'] = cs_abcode_smileys('comments_text');
@@ -359,11 +345,9 @@ else {
 }
 
 
-
-require_once('mods/comments/functions.php');
-if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
-	if(!empty($data['thread']['board_read']) AND $account['access_clansphere'] < 5) {
+if(!empty($data['thread']['board_read']) AND $account['access_clansphere'] < 5) {
 	} else {
+	require_once('mods/comments/functions.php');
 	cs_comments_view($fid,'board','com_create','',false,5);	
 	}
 }
