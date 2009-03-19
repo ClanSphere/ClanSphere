@@ -100,5 +100,9 @@
 		</td>
 	</tr>
 </table>
+{if:com_form}
 </form>
-<br /><br />
+{stop:com_form}
+
+<br />
+<br />

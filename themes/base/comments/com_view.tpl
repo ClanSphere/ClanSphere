@@ -8,33 +8,29 @@
 	{loop:com}
 	<tr>
 		<td class="{com:class}" style="width:150px">
-			{if:guest}
-			{com:guestnick}<br />
-			<br />
+			{if:guest}{com:guestnick}<br /><br />
 			{lang:guest}<br />
-			<br /><br />
-			{stop:guest}
-			
-			{if:user}
-			{com:flag} {com:user}<br />
+			<br /><br />{stop:guest}
+			{if:user}{com:flag} {com:user}<br />
 			{com:avatar}<br />
 			{com:status} {com:laston}<br />
 			<br />
 			{lang:place}: {com:place}<br />
-			{lang:posts}: {com:posts}
-			{stop:user}
+			{lang:posts}: {com:posts}{stop:user}
 		</td>
 		<td class="{com:class}"> # {com:current} - {com:comments_time}<a href="#" name="com{com:run}"></a>
 			<hr style="width:100%" />
 			<br />
 			{com:comments_text}
 			{com:comments_edit}
-			{if:edit_delete}
-			<br /><br />
+			{if:quote_board}<br /><br />
+			<div style="float:right">
+				<input type="submit" name="fquote" value="{com:id}" style="width:16px;height:16px;background:url({page:path}symbols/crystal_project/16/xchat.png);border:none;cursor:pointer;padding:0px;font-size:0px;" />
+			</div>{stop:quote_board}
+			{if:edit_delete}<br /><br />
 			<div style="float:right">
 				{com:edit_delete}
-			</div>
-			{stop:edit_delete}
+			</div>{stop:edit_delete}
 		</td>
 	</tr>
 	{stop:com}
@@ -44,3 +40,4 @@
 	</tr>
 	{stop:bottom_pages}
 </table>
+{if:form}</form>{stop:form}

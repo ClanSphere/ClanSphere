@@ -20,7 +20,8 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
   $data['comments']['sum'] = $sum;
   $data['comments']['message'] = cs_getmsg();
   $data['comments']['pages'] = cs_pages($mod,$action,$sum,$start,$com_fid);
-
+  $data['if']['form'] = $mod == 'board' ? TRUE : FALSE;
+  
 
   $where = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = '" . $com_fid . "'";
   $from = 'comments com LEFT JOIN {pre}_users usr ON com.users_id = usr.users_id ';
@@ -80,10 +81,18 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
     } else { $com[$run]['comments_edit'] = ''; }
 
 
-    if(!empty($account['users_id'])) {
+		if($mod == 'board') {
+			$com[$run]['if']['quote_board'] = TRUE;
+			$com[$run]['fid'] = $com_fid;
+			$com[$run]['id'] = $cs_com[$run]['comments_id'];
+		}else{
+			$com[$run]['if']['quote_board'] = FALSE;
+		}
+
+    if((!empty($account['users_id']) OR !empty($options['allow_unreg'])) AND $mod != 'board') {
     	$com[$run]['if']['edit_delete'] = TRUE;
     	
-      $img_quote = cs_icon('editcut',16,$cs_lang['quote']);
+      $img_quote = cs_icon('xchat',16,$cs_lang['quote']);
       $com[$run]['edit_delete'] = cs_link($img_quote,$mod,'com_create','id=' . $cs_com[$run]['comments_id'],0,$cs_lang['quote']);
 
       if($cs_com[$run]['users_id'] == $account['users_id'] OR $account['access_comments'] >= 4) {

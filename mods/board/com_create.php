@@ -56,8 +56,13 @@ $data['thread']['head_link'] = $head;
 
 
 //quote
-if(!empty($_REQUEST['quote'])) {
-  $def = explode('-', $_REQUEST['quote']);
+if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
+	if(!empty($_POST['fquote'])) {
+		$def[0] = 'c';
+		$def[1] = (int) $_POST['fquote'];
+	}elseif(!empty($_REQUEST['quote'])) {
+		$def = explode('-', $_REQUEST['quote']);
+	}
   
   #comment
   if($def[0]=='c') {
@@ -82,9 +87,11 @@ if(!empty($_REQUEST['quote'])) {
 }
 
 
-if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced']) OR isset($_POST['new_file']) OR isset($_POST['files+'])) {
 
-	$text = $_POST['comments_text'];
+if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced']) OR isset($_POST['new_file']) OR isset($_POST['files+']) OR isset($_POST['fquote'])) {
+
+	$quote_in = !empty($ori_text) ? "\n" . $ori_text : '';
+	$text = $_POST['comments_text'] . $quote_in ;
 	
 	//check text
 	if(!empty($text)) {
@@ -291,6 +298,14 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
 	
 	$data['com']['fid'] = $fid;
 	
+	$where = "comments_mod = 'board' AND comments_fid = '" . $fid . "'";
+	$count_com = cs_sql_count(__FILE__,'comments',$where);
+	if(!empty($count_com)) {
+		$data['if']['com_form'] = FALSE;
+	}else{
+		$data['if']['com_form'] = TRUE;
+	}
+
 	
  echo cs_subtemplate(__FILE__,$data,'board','com_create');
 }
