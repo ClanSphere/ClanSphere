@@ -10,13 +10,13 @@ $data['head']['body'] = sprintf($cs_lang['count_all'], $linkus_count);
 $data['linkus'] = cs_sql_select(__FILE__,'linkus','*',0,0,0,0);
 $linkus_loop = count($data['linkus']);
 
-
-for($run=0; $run<$linkus_loop; $run++) {
+for($run = 0; $run < $linkus_loop; $run++) {
   
   $data['linkus'][$run]['name'] = cs_secure($data['linkus'][$run]['linkus_name']);
-  $place = 'uploads/linkus/' .$data['linkus'][$run]['linkus_banner'];
+  $place = 'uploads/linkus/' . $data['linkus'][$run]['linkus_banner'];
   $mass = getimagesize($place);
   $data['linkus'][$run]['mass'] = cs_secure('('. $mass[0] .' x '. $mass[1] .')');
+  $data['linkus']{$run]['banner'] = cs_html_img($place);
 
   $path = $_SERVER ["HTTP_HOST"] .dirname ($_SERVER ["SCRIPT_NAME"]);
   $url = $path . '/' . $place;

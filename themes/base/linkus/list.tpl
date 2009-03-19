@@ -14,7 +14,7 @@
 		<td class="headb">{linkus:name}  {linkus:mass}</td>
 	</tr>
 	<tr>
-		<td class="leftc"><img src="/uploads/linkus/1.png" alt="" /></td>
+		<td class="leftc">{linkus:banner}</td>
 	</tr>
 	<tr>
 		<td class="leftc">
