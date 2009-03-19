@@ -244,10 +244,31 @@ function cs_files() {
     $files[$key]['tmp_name'] = 'uploads/cache/' . $name;
     $files[$key]['name'] = $name;
     $files[$key]['size'] = @filesize($files[$key]['tmp_name']);
-    $files[$key]['type'] = mime_content_type($files[$key]['tmp_name']); // deprecated, but newer function is only for php > 5.3.0
+    $files[$key]['type'] = cs_mimetype($files[$key]['tmp_name']);
+  }
+
+  return $files;
+}
+
+function cs_mimetype ($file) {
+  
+  if (function_exists('mime_content_type'))
+    return mime_content_type($file);
+  
+  if (function_exists('finfo_open') && $fp = finfo_open(FILEINFO_MIME)) {
+  	$return = finfo_file($fp, $file);
+  	finfo_close($fp);
+  	return $return;
   }
   
-  return $files;
+  $zip_type = version_compare(phpversion(), '5.0', '>=') ? 'application/x-zip-compressed' : 'application/zip';
+  $mimes = array('jpg' => 'image/jpeg','jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
+    'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
+  
+  $ending = strtolower(substr(strrchr($file, '.'),1));
+  
+  return isset($mimes[$ending]) ? $mimes[$ending] : 'text/plain';
+  
 }
 
 function cs_filesize($size, $float = 2) {

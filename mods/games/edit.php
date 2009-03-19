@@ -120,7 +120,7 @@ if(isset($_POST['submit'])) {
     if($delete == 1){
       cs_unlink('games', $games_id . '.gif');
     } 
-    echo $symbol_error;
+    
     if(!empty($files['symbol']['tmp_name']) AND $symbol_error == 0) {
       
       cs_unlink('games', $games_id . '.gif'); 
