@@ -16,7 +16,7 @@ for($run = 0; $run < $linkus_loop; $run++) {
   $place = 'uploads/linkus/' . $data['linkus'][$run]['linkus_banner'];
   $mass = getimagesize($place);
   $data['linkus'][$run]['mass'] = cs_secure('('. $mass[0] .' x '. $mass[1] .')');
-  $data['linkus']{$run]['banner'] = cs_html_img($place);
+  $data['linkus'][$run]['banner'] = cs_html_img($place);
 
   $path = $_SERVER ["HTTP_HOST"] .dirname ($_SERVER ["SCRIPT_NAME"]);
   $url = $path . '/' . $place;
