@@ -129,7 +129,7 @@ function cs_abcode_h($matches) {
 
 function cs_abcode_hr() {
 
-  return cs_abcode_output(11, $matches);
+  return cs_abcode_output(11);
 }
 
 function cs_abcode_hr_width($matches) {
