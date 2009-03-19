@@ -32,7 +32,7 @@ if (empty($_GET['file'])) {
       break;
       
     case 'jpg': case 'jpeg': case 'png': case 'gif': case 'bmp':
-      $content = cs_html_div(1,'text-align: center;') . cs_html_img($file) . cs_html_div(0);
+      $content = cs_html_img($file);
       break;
     
     case 'tpl': case 'htm': case 'html':

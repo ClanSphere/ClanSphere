@@ -81,10 +81,10 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
 
 
     if(!empty($account['users_id'])) {
-      $com[$run]['edit_delete'] = cs_html_br(2);
-      $com[$run]['edit_delete'] .= cs_html_div(1,'float:right');
+    	$com[$run]['if']['edit_delete'] = TRUE;
+    	
       $img_quote = cs_icon('editcut',16,$cs_lang['quote']);
-      $com[$run]['edit_delete'] .= cs_link($img_quote,$mod,'com_create','id=' . $cs_com[$run]['comments_id'],0,$cs_lang['quote']);
+      $com[$run]['edit_delete'] = cs_link($img_quote,$mod,'com_create','id=' . $cs_com[$run]['comments_id'],0,$cs_lang['quote']);
 
       if($cs_com[$run]['users_id'] == $account['users_id'] OR $account['access_comments'] >= 4) {
         $img_edit = cs_icon('edit',16,$cs_lang['edit']);
@@ -94,9 +94,8 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
         $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
         $com[$run]['edit_delete'] .=  cs_link($img_del,$mod,'com_remove','id=' . $cs_com[$run]['comments_id'],0,$cs_lang['remove']);
       }
-      $com[$run]['edit_delete'] .= cs_html_div(0);
     }
-    else { $com[$run]['edit_delete'] = ''; }
+    else { $com[$run]['if']['edit_delete'] = FALSE; }
 
   }
   

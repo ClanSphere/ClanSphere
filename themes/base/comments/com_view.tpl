@@ -29,7 +29,12 @@
 			<br />
 			{com:comments_text}
 			{com:comments_edit}
-			{com:edit_delete}
+			{if:edit_delete}
+			<br /><br />
+			<div style="float:right">
+				{com:edit_delete}
+			</div>
+			{stop:edit_delete}
 		</td>
 	</tr>
 	{stop:com}

@@ -27,19 +27,7 @@ $id = empty($_REQUEST['where']) ? 0 : (int) $_REQUEST['where'];
 
 if(empty($id) || (cs_sql_count(__FILE__,'threads','threads_id = "' .$id . '"') == 0))
   return errorPage('thread');
-  
-/*function board_safemode($nick, $time, $options) {
-  if(!empty($options['safe_mode'])) {
-    $safe_mode = $options['safe_mode'];
-    $safe_mode = str_replace("{post_nick}", $nick, $safe_mode); 
-    $time = cs_date('unix',$time,1);
-    $safe_mode = str_replace("{post_date}", $time, $safe_mode);
-    echo cs_html_div(1,'valign:bottom');
-    echo cs_html_hr('100%');
-    echo cs_secure($safe_mode,1,1,1,1);;
-    echo cs_html_div(0);
-  }
-}*/    
+   
 
 // Comments
 
