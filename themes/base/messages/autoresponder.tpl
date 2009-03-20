@@ -37,7 +37,7 @@
 		<td class="headb" colspan="2">{autoresponder:subject}</td>
 	</tr>
 	<tr>
-		<td class="leftb">
+		<td class="leftb" colspan="2">
 			{autoresponder:text}
 		</td>
 	</tr>
@@ -49,7 +49,7 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:kedit} {lang:subject} *</td>
-		<td class="leftb"><input type="text" name="autoresponder_subject" value="{autoresponder:subject}" maxlength="200" size="50" /></td>
+		<td class="leftb"><input type="text" name="autoresponder_subject" value="{autoresponder2:subject}" maxlength="200" size="50" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kate} {lang:text} *<br />
@@ -58,7 +58,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea name="autoresponder_text" cols="50" rows="20" id="autoresponder_text">{autoresponder:text}</textarea>
+			<textarea name="autoresponder_text" cols="50" rows="20" id="autoresponder_text">{autoresponder2:text}</textarea>
 		</td>
 	</tr>
 	<tr>

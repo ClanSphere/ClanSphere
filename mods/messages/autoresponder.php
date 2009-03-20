@@ -56,8 +56,8 @@ if(isset($_POST['preview'])) {
 
 if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
 
-	$data['autoresponder']['subject'] = $cs_messages['autoresponder_subject'];
-	$data['autoresponder']['text'] = $cs_messages['autoresponder_text'];
+	$data['autoresponder2']['subject'] = $cs_messages['autoresponder_subject'];
+	$data['autoresponder2']['text'] = $cs_messages['autoresponder_text'];
 
 	$data['abcode']['smileys'] = cs_abcode_smileys('autoresponder_text');
 	$data['abcode']['features'] = cs_abcode_features('autoresponder_text');
