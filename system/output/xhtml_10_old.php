@@ -2,7 +2,7 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-# The following functions will be deleted soon: cs_html_vote, cs_html_div, cs_html_span
+# The following functions will be deleted soon: cs_html_input, cs_html_vote, cs_html_div
 # Please use themes instead
 
 function cs_html_br($run)
@@ -21,12 +21,12 @@ function cs_html_hr($width)
     return "<hr style=\"width:" . $width . "\" />\n";
 }
 
-function cs_html_table($func, $class = 0, $spacing = 0, $width = 0)
+function cs_html_table()
 {
   cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
-function cs_html_roco($func, $class = 0, $rowspan = 0, $colspan = 0, $width = 0)
+function cs_html_roco()
 {
   cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
@@ -107,7 +107,7 @@ function cs_html_anchor($name, $text = '', $more = '')
     return "<a href=\"#\" id=\"" . $name . "\"" . $more . " >" . $text . "</a>";
 }
 
-function cs_html_form($func, $form_id = 0, $mod = 0, $action = 0, $enctype = 0, $more = 0)
+function cs_html_form()
 {
   cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
@@ -158,7 +158,7 @@ function cs_html_vote($name, $value, $type, $check = 0, $more = 0, $class = 'for
     return $var . '/>';
 }
 
-function cs_html_textarea($name, $value, $cols, $rows, $readonly = 0)
+function cs_html_textarea()
 {
   cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
@@ -245,27 +245,9 @@ function cs_html_div($func, $style = 0, $more = 0)
     }
 }
 
-function cs_html_span($func, $style = 0, $more = 0)
+function cs_html_span()
 {
-    cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
-    
-    if ($func == 1)
-    {
-        $var = '<span';
-        if (!empty($style))
-        {
-            $var .= " style=\"" . $style . "\"";
-        }
-        if (!empty($more))
-        {
-            $var .= ' ' . $more;
-        }
-        return $var . ">";
-    }
-    else
-    {
-        return "</span>";
-    }
+  cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 ?>
