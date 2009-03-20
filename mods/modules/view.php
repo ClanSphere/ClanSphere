@@ -20,8 +20,8 @@ $data['mod']['protected'] = empty($mod_info['protected']) ? $cs_lang['no'] : $cs
 $data['mod']['creator'] = $mod_info['creator'];
 $data['mod']['team'] = $mod_info['team'];
 $data['mod']['url'] = cs_html_link('http://' . $mod_info['url'],$mod_info['url']);
-$data['mod']['icon_48'] = cs_icon($mod_info['icon'],'48');
-$data['mod']['icon_16'] = cs_icon($mod_info['icon']);
+$data['mod']['icon_48'] = empty($mod_info['icon']) ? '' : cs_icon($mod_info['icon'],'48');
+$data['mod']['icon_16'] = empty($mod_info['icon']) ? '' : cs_icon($mod_info['icon']);
 $data['mod']['text'] = $mod_info['text'];
 
 if(!empty($account['access_explorer'])) {
@@ -63,6 +63,10 @@ if(file_exists('mods/' . $dir . '/access.php')) {
     
     $run++;
   }
+} else {
+	$data['axx'] = array();
+	$data['sort']['file'] = '';
+	$data['sort']['access'] = '';
 }
 
 echo cs_subtemplate(__FILE__,$data,'modules','view');
