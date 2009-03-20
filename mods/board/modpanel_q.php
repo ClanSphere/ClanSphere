@@ -78,76 +78,47 @@ if(isset($_POST['close'])) {
   $thread_cells = array('threads_headline');
   $thread_save = array($thread_headline);
 
-} elseif(isset($_POST['move']) OR isset($_POST['rename'])) {       
-  echo cs_html_form(1,'thread_mod','board','modpanel_q',0,'id=' .$thread_edit['threads_id']);
-  echo cs_html_table(1,'forum',1);
-  echo cs_html_roco(1,'headb',0,3);  
-  echo $cs_lang['board'] .' - '. $cs_lang['mod3'];
-  echo cs_html_roco(1,'leftc',0,3); 
+} elseif(isset($_POST['move']) OR isset($_POST['rename'])) {
+	
+	$data['threads']['id'] = $thread_edit['threads_id'];
+
   $head  = cs_link($cs_lang['board'],'board','list','normalb') .' -> ';
   $head .= cs_link($thread_edit['categories_name'],'board','list','where=' .$thread_edit['categories_id'],'normalb') .' -> ';
   $head .= cs_link($thread_edit['board_name'],'board','listcat','where=' .$board_id,'normalb') .' -> ';
   $head .= cs_link($thread_edit['threads_headline'],'board','thread','where=' .$thread_edit['threads_id'],'normalb');
-  echo $head; 
-  echo cs_html_roco(0);
-  echo cs_html_table(0);
-  echo cs_html_br(1);
-  echo cs_html_table(1,'forum',1);
+  
+  $data['head']['links'] = $head;
+  $data['if']['move'] = FALSE;
+  $data['if']['rename'] = FALSE;
 
-  if(isset($_POST['move'])) {       
-    echo cs_html_roco(1,'leftb',0,0,'20%');
-    echo cs_icon('forward') . $cs_lang['move'];
-      echo cs_html_roco(2,'leftb');   
-    //Neu 
+	//move
+  if(isset($_POST['move'])) {
+  
+  	$data['if']['move'] = TRUE;
+
     $tables = "board boa INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id";
     $select = "boa.board_id AS board_id, boa.board_name AS board_name, cat.categories_name AS categories_name";
     $axx_where = "boa.board_access <= '" . $account['access_board'] . "'";
     $sorting = "cat.categories_name ASC, boa.board_name ASC";
     $board_data = cs_sql_select(__FILE__,$tables,$select,$axx_where,$sorting,0,0);
-    echo cs_html_select(1,'board_id');
+
+    $data['board']['select'] = '';
     foreach($board_data AS $board) {
       $sel = $board_id == $board['board_id'] ? 1 : 0;
-    $content = $board['categories_name'] . ' -> ' . $board['board_name'];
-         echo cs_html_option($content,$board['board_id'],$sel);
+    	$content = $board['categories_name'] . ' -> ' . $board['board_name'];
+      $data['board']['select'] .= cs_html_option($content,$board['board_id'],$sel);
     }
-    //Alt
-    echo cs_html_roco(0); 
-    
-    echo cs_html_roco(1,'leftb');
-    echo cs_icon('agt_reload') . $cs_lang['ghostlink'];
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_input('ghost',1,'radio') . $cs_lang['yes'];
-    echo cs_html_input('ghost',0,'radio',0,0,'checked') . $cs_lang['no'];
-    echo cs_html_roco(0);
-    
-      echo cs_html_roco(1,'leftb');
-    echo cs_icon('lockoverlay') . $cs_lang['thread_close'];
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_input('threads_closed',1,'radio') . $cs_lang['yes'];
-    echo cs_html_input('threads_closed',0,'radio',0,0,'checked') . $cs_lang['no'];
-    echo cs_html_roco(0);
-    
-    echo cs_html_roco(1,'leftb',0,0,'20%');
-      echo cs_icon('ksysguard') . $cs_lang['options'];
-      echo cs_html_roco(2,'leftb');
-      echo cs_html_vote('submit_move',$cs_lang['change'],'submit');
-      echo cs_html_roco(0);   
+  
   }
 
-  if(isset($_POST['rename'])) {       
-    echo cs_html_roco(1,'leftb',0,0,'20%');
-    echo cs_icon('kate') . $cs_lang['rename'];
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_input('thread_headline',$thread_headline,'text',255,50);
-    echo cs_html_roco(0);
-    echo cs_html_roco(1,'leftb',0,0,'20%');
-    echo cs_icon('ksysguard') . $cs_lang['options'];
-    echo cs_html_roco(2,'leftb');
-    echo cs_html_vote('submit_rename',$cs_lang['change'],'submit');
-    echo cs_html_roco(0);
+	//rename
+  if(isset($_POST['rename'])) {
+  
+  	$data['if']['rename'] = TRUE;
+    $data['val']['thread_headline'] = $thread_headline;
   }
-  echo cs_html_table(0);
-  echo cs_html_form(0);
+
+ echo cs_subtemplate(__FILE__,$data,'board','modpanel_q');
 
 } else {
   header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id);  
