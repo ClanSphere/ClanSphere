@@ -1,4 +1,3 @@
-
 <?php
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
@@ -6,6 +5,8 @@
 $cs_lang = cs_translate('database');
 
 global $cs_db;
+$files = cs_files();
+
 $error = 0;
 $install_sql = 0;
 $actions = '';
@@ -15,9 +16,12 @@ $content = cs_paths('uploads/cache');
 unset($content['index.html']);
 unset($content['.htaccess']);
 
-if(isset($_FILES['update']['name']) AND preg_match("=^(.*?)\.sql$=si",$_FILES['update']['name'])) {
-  if($_FILES['update']['name'] == 'install.sql') { $install_sql++; } else {
-  $sql_content = file_get_contents($_FILES['update']['tmp_name']);
+if(isset($files['update']['name']) AND preg_match("=^(.*?)\.sql$=si",$files['update']['name'])) {
+  if($files['update']['name'] == 'install.sql') {
+    $install_sql++;
+  } else {
+    $sql_content = file_get_contents($files['update']['tmp_name']);
+    cs_ajaxfiles_clear();
   }
 }
 elseif(!empty($_POST['text'])) {
@@ -80,7 +84,7 @@ else {
   $error++;
 }
 
-if(empty($_FILES['update']['tmp_name'])) {
+if(empty($files['update']['tmp_name'])) {
   $data['lang']['body'] = $cs_lang['body_import'];
 }
 elseif(empty($error)) {
