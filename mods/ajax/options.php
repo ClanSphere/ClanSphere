@@ -40,9 +40,9 @@ if (!empty($_POST['submit'])) {
     if ($cs_main['ajax'] && empty($_POST['ajax']) && function_exists('ajax_js'))
       die(ajax_js("window.location.reload();"));
     if (empty($cs_main['ajax']) && !empty($save['ajax']) && !empty($cs_main['mod_rewrite'])) {
-    	$turned_on = cs_sql_count(__FILE__, 'users', 'users_id = "' . $account['users_id'] . '" AND users_ajax = "1"');
-    	if (!empty($turned_on))
-    	  header('Location: ../../' . $cs_main['php_self']['basename']);
+      $turned_on = cs_sql_count(__FILE__, 'users', 'users_id = "' . $account['users_id'] . '" AND users_ajax = "1"');
+      if (!empty($turned_on))
+        header('Location: ../../' . $cs_main['php_self']['basename']);
     } else
     
     cs_redirect($cs_lang['success'], 'options','roots');
@@ -76,7 +76,7 @@ $possibles = array('messages_navmsgs');
 $count_matches = count($matches[0]);
 
 for ($i = 0; $i < $count_matches; $i++) {
-	$possibles[] = str_replace(':','_',substr($matches[0][$i],1,-1));
+  $possibles[] = str_replace(':','_',substr($matches[0][$i],1,-1));
 }
 
 $checked = ' checked="checked"';
@@ -90,8 +90,8 @@ for ($i = 0; $i < $count_possibles; $i++) {
   $data['navlists'][$i]['checked'] = in_array($possibles[$i],$data['ajax_navlists']) ? $checked : '';
   
   if (!empty($cs_lang['d_'.$possibles[$i]])) {
-  	$data['navlists'][$i]['if']['descr'] = true;
-  	$data['navlists'][$i]['description'] = $cs_lang['d_'.$possibles[$i]];
+    $data['navlists'][$i]['if']['descr'] = true;
+    $data['navlists'][$i]['description'] = $cs_lang['d_'.$possibles[$i]];
   } else
     $data['navlists'][$i]['if']['descr'] = false;
   

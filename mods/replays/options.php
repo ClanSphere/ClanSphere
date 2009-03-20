@@ -4,25 +4,24 @@
 
 $cs_lang = cs_translate('replays');
 
-$cs_replays = cs_sql_option(__FILE__,'replays');
-
 if(isset($_POST['submit'])) {  
-  $filesize = (int) $_POST['file_size'] * 1024;
-  $opt_where = 'options_mod=\'replays\' AND options_name=';
-  $def_cell = array('options_value');  
-  $def_cont = array($filesize);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . '\'file_size\'');
-  $def_cont = array($_POST['file_type']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . '\'file_type\'');
   
-  cs_redirect($cs_lang['changes_done'],'replays','options');
-}
-else {
-  $data['head']['getmsg'] = cs_getmsg();
+  $save = array();
+  $save['file_size'] = (int) $_POST['file_size'] * 1024;
+  $save['file_type'] = $_POST['file_type'];
   
-  $size = round($cs_replays['file_size'] / 1024);
-  $data['op']['filesize'] = $size;
-  $data['op']['filetypes'] = $cs_replays['file_type'];
+  require 'mods/clansphere/func_options.php';
+  
+  cs_optionsave('replays', $save);
+  
+  cs_redirect($cs_lang['changes_done'],'options','roots');
+
+} else {
+  
+  $data = array();
+  $data['op'] = cs_sql_option(__FILE__,'replays');
+  
+  $data['op']['filesize'] = round($data['op']['file_size'] / 1024);
 
   echo cs_subtemplate(__FILE__,$data,'replays','options');
 }

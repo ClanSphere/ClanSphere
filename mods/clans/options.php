@@ -4,72 +4,33 @@
 
 $cs_lang = cs_translate('clans');
 
-$op_clans = cs_sql_option(__FILE__,'clans');
-
 if(isset($_POST['submit'])) {
-  settype($_POST['max_width'],'integer');
-  settype($_POST['max_height'],'integer');
-  settype($_POST['max_size'],'integer');
-
-  $opt_where = "options_mod = 'clans' AND options_name = ";
-  $def_cell = array('options_value');
-  $def_cont = array($_POST['max_width']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_width'");
-  $def_cont = array($_POST['max_height']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_height'");
-  $def_cont = array($_POST['max_size']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_size'");
-  $def_cont = array($_POST['label']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'label'");
   
-  cs_redirect($cs_lang['changes_done'],'clans','options');
-}
-else {
+  $save = array();
+  $save['max_width'] = (int) $_POST['max_width'];
+  $save['max_height'] = (int) $_POST['max_height'];
+  $save['max_size'] = (int) $_POST['max_size'];
+  $save['label'] = $_POST['label'];
+  
+  require 'mods/clansphere/func_options.php';
+  cs_optionsave('clans', $save);
+  
+  cs_redirect($cs_lang['changes_done'],'options','roots');
+  
+} else {
+	
+	$op_clans = cs_sql_option(__FILE__,'clans');
+	
   $data['lang']['getmsg'] = cs_getmsg();
   $data['url']['form'] = cs_url('clans','options');
   $data['lang']['mod'] = $cs_lang[$op_clans['label']];
   
-  if($op_clans['label'] == 'clan') {
-    $data['clans']['clan'] = 'selected="selected"';
-  }
-  else {
-    $data['clans']['clan'] = '';
-  }
-  
-  if($op_clans['label'] == 'association') {
-    $data['clans']['association'] = 'selected="selected"';
-  }
-  else {
-    $data['clans']['association'] = '';
-  }
-  
-  if($op_clans['label'] == 'club') {
-    $data['clans']['club'] = 'selected="selected"';
-  }
-  else {
-    $data['clans']['club'] = '';
-  }
-  
-  if($op_clans['label'] == 'guild') {
-    $data['clans']['guild'] = 'selected="selected"';
-  }
-  else {
-    $data['clans']['guild'] = '';
-  }
-  
-  if($op_clans['label'] == 'enterprise') {
-    $data['clans']['enterprise'] = 'selected="selected"';
-  }
-  else {
-    $data['clans']['enterprise'] = '';
-  }
-  
-  if($op_clans['label'] == 'school') {
-    $data['clans']['school'] = 'selected';
-  }
-  else {
-    $data['clans']['school'] = '';
-  }
+  $data['clans']['clan'] = $op_clans['label'] == 'clan' ? 'selected="selected"' : '';
+  $data['clans']['association'] = $op_clans['label'] == 'association' ? 'selected="selected"' : '';
+  $data['clans']['club'] = $op_clans['label'] == 'club' ? 'selected="selected"' : '';
+  $data['clans']['guild'] = $op_clans['label'] == 'guild' ? 'selected="selected"' : '';
+  $data['clans']['enterprise'] = $op_clans['label'] == 'enterprise' ? 'selected="selected"' : '';
+  $data['clans']['school'] = $op_clans['label'] == 'school' ? 'selected="selected"' : '';
   
   $data['clans']['max_width'] = $op_clans['max_width'];
   $data['clans']['max_height'] = $op_clans['max_height'];
