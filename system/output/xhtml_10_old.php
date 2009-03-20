@@ -2,7 +2,7 @@
 // ClanSphere 2008 - www.clansphere.net
 // $Id$
 
-# The following functions will be deleted soon: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_div, cs_html_span
+# The following functions will be deleted soon: cs_html_vote, cs_html_div, cs_html_span
 # Please use themes instead
 
 function cs_html_br($run)
@@ -23,12 +23,12 @@ function cs_html_hr($width)
 
 function cs_html_table($func, $class = 0, $spacing = 0, $width = 0)
 {
-    cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
+  cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 function cs_html_roco($func, $class = 0, $rowspan = 0, $colspan = 0, $width = 0)
 {
-    cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
+  cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 function cs_html_img($url, $height = 0, $width = 0, $more = 0, $alt = '')
@@ -109,7 +109,7 @@ function cs_html_anchor($name, $text = '', $more = '')
 
 function cs_html_form($func, $form_id = 0, $mod = 0, $action = 0, $enctype = 0, $more = 0)
 {
-    cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
+  cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 function cs_html_input($name, $value, $type, $max = 0, $size = 0, $more = 0, $class = 'form')
@@ -160,15 +160,7 @@ function cs_html_vote($name, $value, $type, $check = 0, $more = 0, $class = 'for
 
 function cs_html_textarea($name, $value, $cols, $rows, $readonly = 0)
 {
-    cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
-    
-    $var = "<textarea name=\"" . $name . "\" cols=\"" . $cols . "\" rows=\"" . $rows . "\" ";
-    if (!empty($readonly))
-    {
-        $var .= "readonly=\"readonly\" ";
-    }
-    $var .= "id=\"" . $name . "\" class=\"form\">" . htmlspecialchars($value) . "</textarea>\n";
-    return $var;
+  cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 function cs_html_select($func, $name = '', $more = 0)
