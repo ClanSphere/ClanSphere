@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" id="board_modpanel_q" action="{url:board_mopanel_q:id={threads:id}}">
+<form method="post" id="board_modpanel_q" action="{url:board_modpanel_q:id={threads:id}}">
 {if:move}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
@@ -27,7 +27,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:lockoverla} {lang:thread_close}</td>
+		<td class="leftb">{icon:lockoverlay} {lang:thread_close}</td>
 		<td class="leftc">
 			<input type="radio" name="thread_closed" value="1" /> {lang:yes}
 			<input type="radio" name="thread_closed" value="0" checked="checked" /> {lang:no}
