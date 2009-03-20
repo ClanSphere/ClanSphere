@@ -109,22 +109,7 @@ function cs_html_anchor($name, $text = '', $more = '')
 
 function cs_html_form($func, $form_id = 0, $mod = 0, $action = 0, $enctype = 0, $more = 0)
 {
-    cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
-    
-    if (!empty($func))
-    {
-        $form = "<form method=\"post\" id=\"" . $form_id . "\" ";
-        $form .= "action=\"" . cs_url($mod, $action, $more) . "\"";
-        if (!empty($enctype))
-        {
-            $form .= " enctype=\"multipart/form-data\"";
-        }
-        return $form . ">\n";
-    }
-    else
-    {
-        return "</form>\n";
-    }
+    cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 function cs_html_input($name, $value, $type, $max = 0, $size = 0, $more = 0, $class = 'form')
