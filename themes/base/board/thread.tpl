@@ -7,7 +7,7 @@
     <td class="rightb">{thread:abo}</td>
   </tr>
   <tr>
-    <td class="leftc" colspan="2"><a href="#" name="threadanch" ></a><a href="{url:board_list}" >{lang:board}</a> -> {thread:categories_link} -> {thread:board_link} ->  {thread:thread_link} </td>
+    <td class="leftc" colspan="2"><a href="#" id="threadanch" ></a><a href="{url:board_list}" >{lang:board}</a> -> {thread:categories_link} -> {thread:board_link} ->  {thread:thread_link} </td>
   </tr>
 </table>
 <br />

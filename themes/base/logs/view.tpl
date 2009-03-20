@@ -19,7 +19,7 @@
 </table>
 <br />
 
-<a href="#" name="1"></a>
+<a href="#" id="1"></a>
 {if:error}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
