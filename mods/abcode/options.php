@@ -37,7 +37,7 @@ if(empty($_POST['submit'])) {
   
   cs_optionsave('abcode', $save);
   
-  cs_redirect($cs_lang['changes_done'], 'abcode', 'options');
+  cs_redirect($cs_lang['changes_done'], 'options', 'roots');
   
 }
 

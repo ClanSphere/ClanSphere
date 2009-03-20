@@ -18,7 +18,7 @@ if(isset($_POST['submit'])) {
   
   cs_optionsave('banners', $save);
   
-  cs_redirect($cs_lang['success'], 'banners','options');
+  cs_redirect($cs_lang['success'],  'options', 'roots');
   
 } else {
   

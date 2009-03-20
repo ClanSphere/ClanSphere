@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" id="users_options" action="{url:users_options}">
+<form method="post" id="users_options" action="{url:users_options}" enctype="multipart/form-data">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:resizecol} {lang:max_width}</td>
