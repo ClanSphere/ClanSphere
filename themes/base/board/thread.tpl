@@ -84,7 +84,7 @@
       {thread_asc:text}
       {if:thread_asc_files}
       <div style="margin-top: 10px;" class="quote"><strong>{lang:files}</strong> {loop:files}
-        <div style="valign:bottom; clear: left; margin-right: 5px; margin-top: 5px; padding: 3px;">{files:file}</div>
+        <div style="vertical-align:bottom; clear: left; margin-right: 5px; margin-top: 5px; padding: 3px;">{files:file}</div>
         {stop:files} </div>
       {stop:thread_asc_files}
       <div style="clear: left"></div>
@@ -92,7 +92,7 @@
       
       {if:thread_asc_edited} <br />
       <br />
-      <div style="valign:bottom">{thread_asc:checkedit}</div>
+      <div style="vertical-align:bottom">{thread_asc:checkedit}</div>
       {stop:thread_asc_edited}</td>
   </tr>
   <tr>
@@ -131,7 +131,7 @@
       {comment:text}
       {if:c_files}
       <div style="margin-top: 10px;" class="quote"><strong>{lang:files}</strong> {loop:com_files}
-        <div style="valign:bottom; clear: left; margin-right: 5px; margin-top: 5px; padding: 3px;">{com_files:file}</div>
+        <div style="vertical-align:bottom; clear: left; margin-right: 5px; margin-top: 5px; padding: 3px;">{com_files:file}</div>
         {stop:com_files} </div>
       {stop:c_files}
       <div style="clear: left"></div>
@@ -169,7 +169,7 @@
       {thread_desc:text}
       {if:thread_desc_files}
       <div style="margin-top: 10px;" class="quote"><strong>{lang:files}</strong> {loop:files}
-        <div style="valign:bottom; clear: left; margin-right: 5px; margin-top: 5px; padding: 3px;">{files:file}</div>
+        <div style="vertical-align:bottom; clear: left; margin-right: 5px; margin-top: 5px; padding: 3px;">{files:file}</div>
         {stop:files} </div>
       {stop:thread_desc_files}
       <div style="clear: left"></div>
@@ -177,7 +177,7 @@
       
       <br />
       <br />
-      <div style="valign:bottom">{thread_desc:checkedit}</div>
+      <div style="vertical-align:bottom">{thread_desc:checkedit}</div>
       </td>
   </tr>
   <tr>
