@@ -17,8 +17,8 @@ $cs_sort[1] = 'usr.users_nick DESC';
 $cs_sort[2] = 'usr.users_nick ASC';
 $cs_sort[3] = 'usr.users_surname DESC';
 $cs_sort[4] = 'usr.users_surname ASC';
-$cs_sort[5] = 'evs.events_time DESC';
-$cs_sort[6] = 'evs.events_time ASC';
+$cs_sort[5] = 'egt.eventguests_since DESC';
+$cs_sort[6] = 'egt.eventguests_since ASC';
 $sort = empty($_REQUEST['sort']) ? 4 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
