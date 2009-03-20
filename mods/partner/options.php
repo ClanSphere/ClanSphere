@@ -4,86 +4,38 @@
 
 $cs_lang = cs_translate('partner');
 
-$op_partner = cs_sql_option(__FILE__,'partner');
-
-$data = array();
-
 if (!empty($_POST['submit'])) {
   
-  // Check for wrong input
+  $save = array();
+  $save['def_width_navimg'] = (int) $_POST['def_width_navimg'];
+  $save['def_height_navimg'] = (int) $_POST['def_height_navimg'];
+  $save['max_size_navimg'] = (int) $_POST['max_size_navimg'];
+  $save['def_width_listimg'] = (int) $_POST['def_width_listimg'];
+  $save['def_height_listimg'] = (int) $_POST['def_height_listimg'];
+  $save['max_size_listimg'] = (int) $_POST['max_size_listimg'];
+  $save['def_width_rotimg'] = (int) $_POST['def_width_rotimg'];
+  $save['def_height_rotimg'] = (int) $_POST['def_height_rotimg'];
+  $save['max_size_rotimg'] = (int) $_POST['max_size_rotimg'];
+  $save['method'] = $_POST['method'];
   
-  $error = '';
+  require 'mods/clansphere/func_options.php';
   
-}
-
-if (empty($_POST['submit']) || !empty($error)) {
-  $sel = 'selected="selected"';
-  if($op_partner['method'] == 'random') { $data['sel']['random'] = $sel; } else { $data['sel']['random'] = ''; }
-  if($op_partner['method'] == 'rotation') { $data['sel']['rotation'] = $sel; } else { $data['sel']['rotation'] = ''; }
+  cs_optionsave('partner', $save);
   
-  $data['partner']['def_width_navimg'] = $op_partner['def_width_navimg'];
-  $data['partner']['def_height_navimg'] = $op_partner['def_height_navimg'];
-  $data['partner']['max_size_navimg'] = $op_partner['max_size_navimg'];
+  cs_redirect($cs_lang['success'], 'options', 'roots');
   
-  $data['partner']['def_width_listimg'] = $op_partner['def_width_listimg'];
-  $data['partner']['def_height_listimg'] = $op_partner['def_height_listimg'];
-  $data['partner']['max_size_listimg'] = $op_partner['max_size_listimg'];
+} else {
   
-  $data['partner']['def_width_rotimg'] = $op_partner['def_width_rotimg'];
-  $data['partner']['def_height_rotimg'] = $op_partner['def_height_rotimg'];
-  $data['partner']['max_size_rotimg'] = $op_partner['max_size_rotimg'];
+  $data = array();
+  $data['partner'] = cs_sql_option(__FILE__,'partner');
+  
+  $data['sel']['random'] = $data['partner']['method'] == 'random' ? 'selected="selected"' : '';
+  $data['sel']['rotation'] = $data['partner']['method'] == 'rotation' ? 'selected="selected"' : '';
   
   $data['head']['body_text'] = empty($error) ? $cs_lang['errors_here'] : $error;
+  
   echo cs_subtemplate(__FILE__,$data,'partner','options');
   
 }
-else 
-{
-  settype($_POST['def_width_navimg'],'integer');
-  settype($_POST['def_height_navimg'],'integer');
-  settype($_POST['max_size_navimg'],'integer');
-  
-  settype($_POST['def_width_listimg'],'integer');
-  settype($_POST['def_height_listimg'],'integer');
-  settype($_POST['max_size_listimg'],'integer');
-  
-  settype($_POST['def_width_rotimg'],'integer');
-  settype($_POST['def_height_rotimg'],'integer');
-  settype($_POST['max_size_rotimg'],'integer');
-
-  $opt_where = "options_mod = 'partner' AND options_name = ";
-  $def_cell = array('options_value');
-  
-  $def_cont = array($_POST['def_width_navimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_width_navimg'");
-  $def_cont = array($_POST['def_height_navimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_height_navimg'");
-  $def_cont = array($_POST['max_size_navimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_size_navimg'");
-  
-  $def_cont = array($_POST['def_width_listimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_width_listimg'");
-  $def_cont = array($_POST['def_height_listimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_height_listimg'");
-  $def_cont = array($_POST['max_size_listimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_size_listimg'");
-  
-  $def_cont = array($_POST['def_width_rotimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_width_rotimg'");
-  $def_cont = array($_POST['def_height_rotimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_height_rotimg'");
-  $def_cont = array($_POST['max_size_rotimg']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_size_rotimg'");
-  
-  $def_cont = array($_POST['method']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'method'");
-  
-  $data['done']['link'] = cs_url('options','roots');
-  $data['done']['action'] = $cs_lang['create'];
-  $data['done']['message'] = $cs_lang['success'];
-  echo cs_subtemplate(__FILE__,$data,'partner','done');
-}
-
-
 
 ?>

@@ -1,13 +1,14 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb"> {lang:mod} - {lang:options} </td>
+    <td class="headb">{lang:mod} - {lang:options} </td>
   </tr>
   <tr>
-    <td class="leftb"> {lang:body}</td>
+    <td class="leftb">{lang:errors_here}</td>
   </tr>
 </table>
 <br />
-<form method="post" id="memberoption" action="{url:form}">
+
+<form method="post" id="memberoption" action="{url:members_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kdmconfig} {lang:label}</td>

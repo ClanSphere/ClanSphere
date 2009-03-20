@@ -4,43 +4,28 @@
 
 $cs_lang = cs_translate('shoutbox');
 
-if (empty($_POST['submit'])) {
-  $data['lang']['info'] = $cs_lang['change_settings'];  
-}
-else {
-  $cells = array('options_value');
-  $where = 'options_mod = \'shoutbox\' AND options_name = ';
+if (!empty($_POST['submit'])) {
+
+  $save = array();
+  $save['max_text'] = (int) $_POST['max_text'];
+  $save['order'] = $_POST['order'];
+  $save['linebreak'] = (int) $_POST['linebreak'];
+  $save['limit'] = (int) $_POST['limit'];
+	
+  require 'mods/clansphere/func_options.php';
   
-  $content = array((int) $_POST['max_text']);
-  cs_sql_update(__FILE__,'options',$cells,$content,0,$where . '\'max_text\'');
-  $content = array($_POST['order']);
-  cs_sql_update(__FILE__,'options',$cells,$content,0,$where . '\'order\'');
-  $content = array($_POST['linebreak']);
-  cs_sql_update(__FILE__,'options',$cells,$content,0,$where . '\'linebreak\'');
-  $content = array($_POST['limit']);
-  cs_sql_update(__FILE__,'options',$cells,$content,0,$where . '\'limit\'');
+	cs_optionsave('shoutbox', $save);
   
-  cs_redirect($cs_lang['success'],'shoutbox','options');
+  cs_redirect($cs_lang['success'],'options','roots');
+  
 }
 
-$opt = cs_sql_option(__FILE__,'shoutbox');
+$data = array();
+$data['op'] = cs_sql_option(__FILE__,'shoutbox');
 
-$data['lang']['getmsg'] = cs_getmsg();
-$data['lang']['shoutbox'] = $cs_lang['mod'];
-$data['lang']['options'] = $cs_lang['options'];
-
-$sel = 'selected="selected"';
-
-$data['lang']['max_text'] = $cs_lang['max_text'];
-$data['lang']['figures'] = $cs_lang['figures'];
-$data['op']['max_text'] = $opt['max_text'];
-$data['op']['limit'] = $opt['limit'];
-$data['op']['linebreak'] = $opt['linebreak'];
-$data['selected']['desc'] = $opt['order'] == 'DESC' ? $sel : '';
-$data['selected']['asc'] = $opt['order'] == 'ASC' ? $sel : '';
-$data['lang']['save'] = $cs_lang['save'];
-$data['lang']['reset'] = $cs_lang['reset'];
-$data['form']['options'] = cs_url('shoutbox','options');
+$data['selected']['desc'] = $data['op']['order'] == 'DESC' ? 'selected="selected"' : '';
+$data['selected']['asc'] = $data['op']['order'] == 'ASC' ? 'selected="selected"' : '';
 
 echo cs_subtemplate(__FILE__,$data,'shoutbox','options');
+
 ?>

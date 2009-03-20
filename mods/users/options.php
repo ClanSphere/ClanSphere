@@ -22,20 +22,12 @@ if(isset($_POST['submit'])) {
   $save['register'] = $_POST['register'];
   $save['def_picture'] = !empty($_POST['def_picture_on']) ? 1 : 0;
   if(!empty($files['def_picture']['tmp_name'])) $save['def_picture'] =  1;
-  
-  settype($_POST['max_width'],'integer');
-  settype($_POST['max_height'],'integer');
-  settype($_POST['max_size'],'integer');
-  settype($_POST['min_letters'],'integer');
-  settype($_POST['def_register'],'integer');
-  settype($_POST['def_picture_on'],'integer');
-  if (!empty($files['def_picture']['tmp_name'])) $_POST['def_picture_on'] = 1;
 
   cs_optionsave('users', $save);
   
-  if (!empty($_POST['def_picture_on']) && empty($data['options']['def_picture']))
+  if (!empty($save['def_picture']) && empty($data['options']['def_picture']))
     cs_sql_update(__FILE__, 'users', array('users_picture'), array('nopicture.jpg'), 0, "users_picture = ''");
-  elseif (empty($_POST['def_picture_on']) && !empty($data['options']['def_picture']))
+  elseif (empty($save['def_picture']) && !empty($data['options']['def_picture']))
     cs_sql_update(__FILE__, 'users', array('users_picture'), array(''), 0, "users_picture = 'nopicture.jpg'");
   
   $data['link']['continue'] = cs_url('clansphere','system');

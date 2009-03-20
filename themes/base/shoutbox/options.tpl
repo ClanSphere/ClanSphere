@@ -1,15 +1,14 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:shoutbox} - {lang:options}</td>
+  <td class="headb">{lang:mod} - {lang:options}</td>
  </tr>
  <tr>
-  <td class="leftb">{lang:info}</td>
+  <td class="leftb">{lang:change_settings}</td>
  </tr>
 </table>
 <br />
-{lang:getmsg}
 
-<form method="post" action="{form:options}">
+<form method="post" action="{url:shoutbox_options}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:kedit} {lang:max_text}</td>
