@@ -59,20 +59,18 @@ elseif(!empty($error))
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   
-  $data['if']['done'] = FALSE;
-  $data['if']['form'] = TRUE;
   $data['buddys']['nick'] = $buddys_nick;
     
   if(empty($users_add_id)) {
     $more  = 'onkeyup="cs_ajax_getcontent(\'' . $cs_main['php_self']['dirname'] . 'mods/messages/getusers.php';
     $more .= '?name=\' + document.getElementById(\'name\').value,\'output\')"';
     $more .= ' id="name"';
-    $data['if']['empty_user_id'] = TRUE;
+    $data['if']['empty_users_id'] = TRUE;
     $data['if']['users_id'] = FALSE;
     $data['input']['more'] = $more;
   }
   else {
-  	$data['if']['empty_user_id'] = TRUE;
+  	$data['if']['empty_users_id'] = FALSE;
   	$data['if']['users_id'] = TRUE;
     $data['buddys']['nick_sec'] = cs_secure($buddys_nick);
   }
