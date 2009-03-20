@@ -23,28 +23,7 @@ function cs_html_hr($width)
 
 function cs_html_table($func, $class = 0, $spacing = 0, $width = 0)
 {
-    cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
-    
-    if (empty($func))
-    {
-        return "</table>\n";
-    }
-    else
-    {
-        $var = "\n<table ";
-        if (!empty($class))
-        {
-            $var .= "class=\"" . $class . "\" ";
-        }
-        if (!empty($width) or $func == 1)
-        {
-            global $cs_main;
-            $width2 = empty($width) ? $cs_main['def_width'] : $width;
-            $var .= "style=\"width:" . $width2 . "\" ";
-        }
-        $var .= "cellpadding=\"0\" cellspacing=\"" . $spacing . "\">\n";
-        return $var;
-    }
+    cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 function cs_html_roco($func, $class = 0, $rowspan = 0, $colspan = 0, $width = 0)
