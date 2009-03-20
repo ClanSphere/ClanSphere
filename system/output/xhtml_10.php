@@ -90,7 +90,7 @@ function cs_html_link($url, $link, $use_target = 1, $class = 0, $title = 0, $mor
 
 function cs_html_anchor($name, $text = '', $more = '')
 {
-    return "<a href=\"#\" name=\"" . $name . "\"" . $more . " >" . $text . "</a>";
+    return "<a href=\"#\" id=\"" . $name . "\"" . $more . " >" . $text . "</a>";
 }
 
 function cs_html_select($func, $name = '', $more = 0)
