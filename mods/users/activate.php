@@ -1,7 +1,10 @@
 <?php
+// ClanSphere 2008 - www.clansphere.net
+// $Id$
+
 $cs_lang = cs_translate('users');
-$key = $_REQUEST['key'];
-$uemail = $_REQUEST['email'];
+$key = preg_replace('/[^\w]/s','',$_GET['key']);
+$uemail = preg_replace('/[^\w]/s','',$_GET['email']);
 $data = array();
 
 $select = 'users_id';
