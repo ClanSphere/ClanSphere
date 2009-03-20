@@ -363,3 +363,13 @@ function cs_debugmode() {
   height = document.getElementById('debug').style.height;
   document.getElementById('debug').style.height = height == '100%' ? cs_debugheight : '100%';
 }
+
+function cs_visible(id) {
+
+  var cs_lines_shown = document.getElementById(id).style.visibility;
+
+  if(cs_lines_shown == 'hidden')
+    document.getElementById(id).style.visibility = 'visible';
+  else
+    document.getElementById(id).style.visibility = 'hidden';
+}

@@ -73,24 +73,23 @@ function cs_abcode_php($matches) {
   static $lop = 1;
   static $php;
 
+  $content = array();
   $mode = cs_abcode_mode();
   if(empty($mode)) {
     $php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
     if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
     if (!empty($without)) $php_code = str_replace('&lt;?php','',$php_code);
-    $php_code = cs_html_div(1,'overflow:scroll') . $php_code . cs_html_div(0);
-    $php_code = str_replace('<br />','',$php_code);
     $lines = substr_count($php_code,"\r") + 2;
-    $lin_code = '';
+    $content['source']['numbers'] = '';
     for($run = 1; $run < $lines; $run++) {
-      $lin_code .= $run . "\r";
+      $content['source']['numbers'] .= $run . ". \r";
     }
-    $start = cs_html_table(2) . cs_html_roco(1,'rightc');
-    $middle = cs_html_roco(2,'leftb');
-    $end = cs_html_roco(0) . cs_html_table(0);
-    $result = $start . $lin_code . $middle . $php_code . $end;
-    $result = str_replace('<br />','',$result);
+    $content['source']['content'] = str_replace(array('<br />', '<code>', '</code>'), '', $php_code);
+    $content['source']['id'] = $lop;
+
+    $result = cs_subtemplate(__FILE__, $content, 'abcode', 'sourcebox');
+
     $php[$lop] = str_replace("\n",'',$result);
     $data = '[php]' . $lop . '[/php]';
     $lop++;
@@ -99,6 +98,7 @@ function cs_abcode_php($matches) {
     $use = $matches[1];
     $data = nl2br($php[$use]);
   }
+
   return $data;
 }
 
