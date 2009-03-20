@@ -76,7 +76,8 @@ function cs_abcode_php($matches) {
   $content = array();
   $mode = cs_abcode_mode();
   if(empty($mode)) {
-    $php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
+    $php_code =  str_replace(array("\r\n","\r","\n"),array("\r\n","\r\n","\r\n"),$matches[1]);
+    $php_code = html_entity_decode($php_code, ENT_QUOTES, $com_lang['charset']);
     if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
     if (!empty($without)) $php_code = str_replace('&lt;?php','',$php_code);
@@ -288,15 +289,15 @@ function cs_abcode_load() {
   
 }
 function cs_abcode_output($id, $matches = 0, $limit = 0) {
-	
-	global $replaces;
-	if (empty($matches)) return $replaces[$id];
-	if (empty($limit)) {
-		$replace = array();
-		foreach ($matches AS $key => $value) $replace['{var:' . $key . '}'] = $value;
-		return str_replace(array_keys($replace), array_values($replace), $replaces[$id]);
-	}
-	
+  
+  global $replaces;
+  if (empty($matches)) return $replaces[$id];
+  if (empty($limit)) {
+    $replace = array();
+    foreach ($matches AS $key => $value) $replace['{var:' . $key . '}'] = $value;
+    return str_replace(array_keys($replace), array_values($replace), $replaces[$id]);
+  }
+  
 }
 
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
