@@ -28,40 +28,7 @@ function cs_html_table($func, $class = 0, $spacing = 0, $width = 0)
 
 function cs_html_roco($func, $class = 0, $rowspan = 0, $colspan = 0, $width = 0)
 {
-    cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
-    
-    if (empty($func))
-    {
-        return "\n </td></tr>";
-    }
-    else
-    {
-        if ($func >= 2)
-        {
-            $var = "</td><td";
-        }
-        else
-        {
-            $var = "<tr><td";
-        }
-        if (!empty($class))
-        {
-            $var .= " class=\"" . $class . "\"";
-        }
-        if (!empty($colspan))
-        {
-            $var .= " colspan=\"" . $colspan . "\"";
-        }
-        if (!empty($rowspan))
-        {
-            $var .= " rowspan=\"" . $rowspan . "\"";
-        }
-        if (!empty($width))
-        {
-            $var .= " style=\"width:" . $width . "\"";
-        }
-        return $var . ">\n";
-    }
+    cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
 }
 
 function cs_html_img($url, $height = 0, $width = 0, $more = 0, $alt = '')
