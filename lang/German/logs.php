@@ -20,6 +20,7 @@ $cs_lang['errors']  = 'Fehler / Anzahl';
 $cs_lang['lev_2'] = 'Action Logs';
 $cs_lang['lev_1'] = 'Error Logs';
 $cs_lang['ok'] = 'Anzeigen';
+$cs_lang['error'] = 'Fehler';
 
 $cs_lang['del'] = 'L&ouml;schen';
 $cs_lang['down'] = 'Download';

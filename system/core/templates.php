@@ -65,7 +65,7 @@ function cs_conditiontemplate($string, $data)
 function cs_templateurl($matches) {
 
   $action = !empty($matches[5]) ? $matches[5] : 'list';
-  $more = empty($matches[7]) ? 0 : $matches[7];
+  $more = empty($matches[7]) ? 0 : str_replace(':', '&amp;', $matches[7]);
   $base = empty($matches[2]) ? 0 : $matches[2];
 
   return cs_url($matches[3], $action, $more, $base);
