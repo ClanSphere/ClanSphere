@@ -1,7 +1,5 @@
 <?php
-
 // ClanSphere 2009 - www.clansphere.net
-
 // $Id$
 
 $cs_lang['attachments'] = 'Dateianh&auml;nge';

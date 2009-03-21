@@ -9,7 +9,6 @@ $cs_lang['advance+']  = 'Erweitert AN';
 $cs_lang['body_com_edit']  = 'Bitte auf Text&auml;nderungen hinweisen.';
 $cs_lang['body_create']  = 'Hier k&ouml;nnen neue Wasserzeichen erstellt werden.';
 $cs_lang['body_edit']  = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
-
 $cs_lang['body_opt']  = 'Hier k&ouml;nnen Einstellungen vorgenommen werden.';
 $cs_lang['body_picture']  = 'Hier k&ouml;nnen neue Bilder hochgeladen werden.';
 $cs_lang['body_print']  = 'Hier k&ouml;nnen Lieblingsbilder bequem und einfach ausgedruckt werden. <br />';
