@@ -77,10 +77,13 @@ function cs_abcode_php($matches) {
   $mode = cs_abcode_mode();
   if(empty($mode)) {
     $php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
+    $php_code = str_replace(array("\r\n","\n"),"\r",$php_code);
+    $lines = substr_count($php_code,"\r") + 2;
+    
     if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
     if (!empty($without)) $php_code = str_replace('&lt;?php','',$php_code);
-    $lines = substr_count($php_code,"\r") + 2;
+    
     $content['source']['numbers'] = '';
     for($run = 1; $run < $lines; $run++) {
       $content['source']['numbers'] .= $run . ". \r";
