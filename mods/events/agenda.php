@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id: agenda.php 1764 2009-02-16 17:30:36Z hajo $
 
 $cs_lang = cs_translate('events');

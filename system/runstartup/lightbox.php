@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id: news.php 1942 2009-03-08 01:24:18Z hajo $
 
 // Load scripts for lightbox if needed

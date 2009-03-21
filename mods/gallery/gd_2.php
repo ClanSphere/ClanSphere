@@ -1,5 +1,5 @@
 <?PHP
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 function cs_gray($imgfile)

@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 # Warning: This file is deprecated! Try to move to xhtml_10.php as soon as possible

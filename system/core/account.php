@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 global $_COOKIE, $_POST, $cs_lang_main, $login; 

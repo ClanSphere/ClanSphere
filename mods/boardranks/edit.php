@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // Id: edit.php (Fri Dec  5 17:10:53 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('boardranks');

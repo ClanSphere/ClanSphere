@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 # The following functions are removed: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_span

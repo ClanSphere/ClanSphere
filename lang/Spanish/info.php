@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$ 
 // Modul Nombre : Translation in Spanish
 // Team :  quemao-designz.de - www.quemao-designz.de

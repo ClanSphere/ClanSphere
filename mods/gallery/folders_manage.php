@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id: folders_manage.php 1775 2009-02-17 20:59:11Z fay-pain $
 
 $cs_lang = cs_translate('gallery');

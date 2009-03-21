@@ -22,7 +22,7 @@ else {
 }
 
 /*
-// ClanSphere 2008 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 $cat_id = empty($_GET['cat_id']) ? 0 : (int) $_GET['cat_id'];

@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2008 - www.clansphere.net 
+// ClanSphere 2009 - www.clansphere.net 
 // $Id shoutbox.php 2007-08-01 17:00:00Z Drag0n $
 // Translation by quema0
 
