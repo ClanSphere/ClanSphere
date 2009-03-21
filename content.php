@@ -4,6 +4,7 @@
 
 # Overwrite global settings by using the following array
 $cs_main = array('init_sql' => true, 'init_tpl' => false);
+if (isset($_GET['debug'])) $cs_main['themebar'] = true;
 
 require_once 'system/core/functions.php';
 
