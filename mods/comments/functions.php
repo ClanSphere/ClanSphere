@@ -20,8 +20,12 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
   $data['comments']['sum'] = $sum;
   $data['comments']['message'] = cs_getmsg();
   $data['comments']['pages'] = cs_pages($mod,$action,$sum,$start,$com_fid);
-  $data['if']['form'] = $mod == 'board' ? TRUE : FALSE;
   
+  if($mod == 'board' AND !empty($sum)) {
+  	$data['if']['form'] = TRUE;
+  }else{
+  	$data['if']['form'] = FALSE;
+  }  
 
   $where = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = '" . $com_fid . "'";
   $from = 'comments com LEFT JOIN {pre}_users usr ON com.users_id = usr.users_id ';

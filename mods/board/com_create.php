@@ -363,7 +363,7 @@ else {
 if(!empty($data['thread']['board_read']) AND $account['access_clansphere'] < 5) {
 	} else {
 	require_once('mods/comments/functions.php');
-	cs_comments_view($fid,'board','com_create','',false,5);	
+	cs_comments_view($fid,'board','com_create',$count_com,false,5);	
 }
 
 ?>
