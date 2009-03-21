@@ -76,8 +76,7 @@ function cs_abcode_php($matches) {
   $content = array();
   $mode = cs_abcode_mode();
   if(empty($mode)) {
-    $php_code =  str_replace(array("\r\n","\r","\n"),array("\r\n","\r\n","\r\n"),$matches[1]);
-    $php_code = html_entity_decode($php_code, ENT_QUOTES, $com_lang['charset']);
+    $php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
     if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
     if (!empty($without)) $php_code = str_replace('&lt;?php','',$php_code);
@@ -125,7 +124,7 @@ function cs_abcode_s($matches) {
 
 function cs_abcode_h($matches) {
 
-  return cs_html_span(1,'','class="h'.$matches[1].'"') . $matches[2] . cs_html_span(0);
+  return cs_abcode_output(13, $matches);
 }
 
 function cs_abcode_hr() {
