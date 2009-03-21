@@ -75,7 +75,8 @@ function cs_cspnews($id = 0, $all = 0) {
       $options = cs_sql_option(__FILE__,'clansphere');
       $last_id = $options['sec_news'];
       if($content = file_get_contents('http://www.clansphere.net/uploads/clansphere/sec_news.txt')) {
-        $news = explode(';',$content);
+        $content = str_replace(array("\r","\n"),'',$content);
+      	$news = explode(';',$content);
         $content = explode('@', $news[0]);
         if(empty($all)) {
           if($content[0] > $last_id) {
