@@ -35,8 +35,8 @@ if (@chdir($cs_main['def_path'].'/'.$var)) {
   sort($dirs);
   sort($files);
   
-  $data = array_merge($dirs,$files);
-  $count = count($data);
+  $datas = array_merge($dirs,$files);
+  $count = count($datas);
   chdir($cs_main['def_path']);
 }
 
@@ -74,33 +74,33 @@ if(!empty($success)) {
   
     $y++;
     
-    $file = $var == '.' ? $data[$x] : $var . $data[$x];
+    $file = $var == '.' ? $datas[$x] : $var . $datas[$x];
     
     chdir($cs_main['def_path'].'/'.$var);
-    $type = is_dir($data[$x]) ? 'dir' : strtolower(substr(strrchr($data[$x],'.'),1));
+    $type = is_dir($datas[$x]) ? 'dir' : strtolower(substr(strrchr($datsa[$x],'.'),1));
     chdir($cs_main['def_path']);
     
-    $save[$y]['name'] = $data[$x];
+    $save[$y]['name'] = $datas[$x];
     $save[$y]['chmod'] = substr(sprintf('%o', fileperms($file)), -4);
     $save[$y]['access'] = cs_link($img_access,'explorer','chmod','file='.$file);
     $save[$y]['remove'] = cs_link($img_del,'explorer','remove','file='.$file,0,$cs_lang['remove']);
     $save[$y]['info'] = cs_link($img_info,'explorer','information','file='.$file);
     $save[$y]['edit'] = $type != 'dir' ? cs_link($img_edit,'explorer','edit','file='.$file) : '';
     
-    $view = cs_link($data[$x],'explorer','view','file='.$file);
+    $view = cs_link($datas[$x],'explorer','view','file='.$file);
 
     $save[$y]['symbol'] = file_exists('symbols/files/filetypes/'.$type.'.gif')
         ? cs_html_img('symbols/files/filetypes/'.$type.'.gif')
         : cs_html_img('symbols/files/filetypes/unknown.gif');
     if ($type == 'jpg' || $type == 'jpeg' || $type == 'png' || $type == 'gif' || $type == 'bmp') {
-      $save[$y]['name'] = cs_link($data[$x],'explorer','view','file='.$file);
+      $save[$y]['name'] = cs_link($datas[$x],'explorer','view','file='.$file);
     } elseif ($type == 'dir') {
-      $save[$y]['name'] = cs_link($data[$x],'explorer','roots','dir='.$file.'/');
+      $save[$y]['name'] = cs_link($datas[$x],'explorer','roots','dir='.$file.'/');
     } elseif ($type == 'html' || $type == 'htm' || $type = 'php' || $type == 'txt' || $type == 'sql') {
-      $save[$y]['name'] = cs_link($data[$x],'explorer','view','file='.$file);
+      $save[$y]['name'] = cs_link($datas[$x],'explorer','view','file='.$file);
     }
   }
-  $data['files'] = $save;
+  $data['files'] = !empty($save) ? $save : array();
 } else {
   $data['files'] = '';
 }
