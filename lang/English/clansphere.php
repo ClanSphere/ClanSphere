@@ -61,6 +61,7 @@ $cs_lang['automatic'] = 'automatic';
 $cs_lang['developer'] = 'Developer mode';
 $cs_lang['developer_info'] = 'Just available to admins if turned off [recommended]';
 $cs_lang['def_width'] = 'Content width';
+$cs_lang['cellspacing'] = 'Cellspacing';
 $cs_lang['def_title'] = 'Pagetitle';
 $cs_lang['def_show'] = 'Homepage';
 $cs_lang['def_path'] = 'Server path';
@@ -124,6 +125,7 @@ $cs_lang['space_temp'] = 'Template space';
 
 $cs_lang['body_temp_list']  = 'List of %s available templates.';
 $cs_lang['theme_found'] = 'Theme with same name was found. Change theme?';
+$cs_lang['change_to_this'] = 'Change to this one';
 
 $cs_lang['head_temp_view']  = 'Template Details';
 $cs_lang['body_temp_view']  = 'Informations about a Design.';
@@ -203,5 +205,12 @@ $cs_lang['visit_dlpage'] = ' Visit Download page';
 
 $cs_lang['need_url_fopen'] = 'Error: The php setting "allow_url_fopen" must be enabled';
 $cs_lang['file_not_read'] = 'Error: The version check could not read the remote file';
+
+// Security News
+$cs_lang['new_info'] = 'New messages from the ClanSphere Team';
+$cs_lang['view'] = 'View';
+$cs_lang['read'] = 'Mark as read';
+$cs_lang['showall'] = 'Show all';
+$cs_lang['new_infos'] = 'All messages from the ClanSphere Team';
 
 ?>

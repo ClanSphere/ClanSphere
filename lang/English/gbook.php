@@ -34,6 +34,10 @@ $cs_lang['error_skype']   = '- Skype name is incorrect.';
 
 $cs_lang['option']  = 'Global options';
 $cs_lang['lock'] = 'Unlock entries';
+$cs_lang['unhide'] = 'Unhide again';
+$cs_lang['hide'] = 'Hide for everyone';
+$cs_lang['hide_done'] = 'Entry is now hidden';
+$cs_lang['unhide_done'] = 'Entry is now visible again';
 $cs_lang['active'] = 'Activate';
 $cs_lang['deactive'] = 'Lock';
 $cs_lang['active_done'] = 'Entry is activated.';

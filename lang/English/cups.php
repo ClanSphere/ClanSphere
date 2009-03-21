@@ -23,7 +23,8 @@ $cs_lang['brackets'] = 'Winner- and Loserbracket';
 $cs_lang['teams'] = 'Teams';
 $cs_lang['users'] = 'User';
 $cs_lang['max_teams'] = 'Maximum Teams';
-$cs_lang['cup_start'] = 'End of registration';
+$cs_lang['cup_start'] = 'Registration deadline';
+$cs_lang['text'] = 'Text';
 
 $cs_lang['no_name'] = '- No name';
 $cs_lang['no_game'] = '- No game selected';
@@ -51,6 +52,7 @@ $cs_lang['join_done'] = 'You have already joined this cup';
 $cs_lang['need_squad'] = 'You need a squad to participate';
 $cs_lang['no_access'] = 'You dont have access to manage the squad.';
 $cs_lang['cup_full'] = 'The cup is full.';
+$cs_lang['cup_started'] = 'The cup is already started.';
 
 // List
 $cs_lang['list'] = 'List';
@@ -72,12 +74,14 @@ $cs_lang['match'] = 'Match';
 $cs_lang['matchdetails'] = 'Matchdetails';
 $cs_lang['result'] = 'Result';
 $cs_lang['team'] = 'Team';
+$cs_lang['bye'] = 'Free ticket (bye)';
 
 $cs_lang['enter_result'] = 'Enter a result';
 $cs_lang['accept_result'] = 'Confirm the result';
 $cs_lang['both_confirmed'] = 'The result has been confirmed by both teams.';
 $cs_lang['confirmed'] = 'Both teams confirmed the result.';
 $cs_lang['waiting'] = 'The result has to be confirmed by %s.';
+$cs_lang['waiting_both'] = 'No team has confirmed the result until now.';
 
 $cs_lang['open'] = 'Open';
 $cs_lang['closed'] = 'Closed';
@@ -100,6 +104,7 @@ $cs_lang['successfully_confirmed'] = 'Successfully confirmed.';
 
 // Remove
 $cs_lang['no_selection'] = 'Select a cup.';
+$cs_lang['canceled'] = 'Removal canceled.';
 
 // Start
 $cs_lang['more_teams_required'] = 'More teams are required, at least half of the maximum teams. ';
@@ -132,6 +137,7 @@ $cs_lang['status'] = 'Status';
 $cs_lang['rounds_remaining'] = 'Rounds remaining';
 $cs_lang['to_the_tree'] = 'To the cuptree';
 $cs_lang['description'] = 'Description';
+$cs_lang['already_full'] = 'Attendees have been selected already';
 
 $cs_lang['registered_teams'] = 'Registered Teams';
 $cs_lang['max_users'] = 'Maximum Players';
