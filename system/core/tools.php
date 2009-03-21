@@ -142,26 +142,38 @@ function cs_datereal($mode,$time = 0) {
   return date($mode,$time);
 }
 
-function cs_dateselect($name,$mode,$data,$year_start = 0) {
+function cs_dateselect($name,$mode,$time,$year_start = 0) {
 
+  global $com_lang;
 	$data = array();
 	$data['date']['name'] = $name;
 
   $real_start = $mode == 'unix' ? 1970 : 1950;
   $year_start = empty($year_start) ? $real_start : $year_start;
 
-  if(empty($data)) {
-    $explode = array(0 => 0, 1 => 0, 2=> 0, 3=> 0, 4=> 0);
+  if(empty($time)) {
+    $explode = array(0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 'am');
   }
   elseif($mode == 'date') {
-    $explode = explode('-', $data);
+    $explode = explode('-', $time);
   }
   elseif($mode == 'unix') {
-    $explode[0] = cs_datereal('Y',$data);
-    $explode[1] = cs_datereal('m',$data);
-    $explode[2] = cs_datereal('d',$data);
-    $explode[3] = cs_datereal('H',$data);
-    $explode[4] = cs_datereal('i',$data);
+    $explode[0] = cs_datereal('Y',$time);
+    $explode[1] = cs_datereal('m',$time);
+    $explode[2] = cs_datereal('d',$time);
+    $explode[4] = cs_datereal('i',$time);
+
+    if(strpos($com_lang['timeset'], 'a') === false AND strpos($com_lang['timeset'], 'A') === false) {
+      $explode[3] = cs_datereal('H',$time);
+      $data['if']['ampm'] = 0;
+    }
+    else {
+      $explode[3] = cs_datereal('h',$time);
+      $explode[5] = cs_datereal('a',$time);
+      $data['if']['ampm'] = 1;
+      $data['ampm']['options']  = cs_html_option('am', 'am', $explode[5] == 'am' ? 1 : 0);
+      $data['ampm']['options'] .= cs_html_option('pm', 'pm', $explode[5] == 'pm' ? 1 : 0);
+    }
   }
   
   #year
@@ -196,9 +208,9 @@ function cs_dateselect($name,$mode,$data,$year_start = 0) {
   }
 
 	#unix (hours + minutes)
-  $data['if']['unix'] = FALSE;
+  $data['if']['unix'] = 0;
   if($mode == 'unix') {
-  	$data['if']['unix'] = TRUE;
+  	$data['if']['unix'] = 1;
   	$data['expl']['hours'] = $explode[3];
   	$data['expl']['mins'] = $explode[4];
   }
