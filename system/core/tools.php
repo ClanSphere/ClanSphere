@@ -119,19 +119,21 @@ function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
 
 function cs_datepost($name,$mode) {
 
-  $var = 0;
-  if(!empty($_POST[$name . '_year']) AND !empty($_POST[$name . '_month']) AND
-    !empty($_POST[$name . '_day'])) {
-    if($mode == 'unix') {
-      global $account;
-      $var = mktime($_POST[$name . '_hours'], $_POST[$name . '_mins'] , 0,
-      $_POST[$name . '_month'], $_POST[$name . '_day'], $_POST[$name . '_year']);
-      $var = cs_timediff($var,1);
-    }
-    elseif($mode == 'date') {
-      $var = $_POST[$name . '_year'] . '-' . $_POST[$name . '_month'] . '-' . $_POST[$name . '_day'];
-    }
+  $time['year'] = empty($_POST[$name . '_year']) ? 0 : (int) $_POST[$name . '_year'];
+  $time['month'] = empty($_POST[$name . '_month']) ? 0 : (int) $_POST[$name . '_month'];
+  $time['day'] = empty($_POST[$name . '_day']) ? 0 : (int) $_POST[$name . '_day'];
+  $time['hours'] = empty($_POST[$name . '_hours']) ? 0 : (int) $_POST[$name . '_hours'];
+  $time['hours'] = $_POST[$name . '_ampm'] == 'pm' ? $time['hours'] + 12 : $time['hours'];
+  $time['mins'] = empty($_POST[$name . '_mins']) ? 0 : (int) $_POST[$name . '_mins'];
+
+  $var = '';
+  if($mode == 'unix') {
+    $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
+    $var = cs_timediff($var, 1);
   }
+  elseif($mode == 'date')
+    $var = $time['year'] . '-' . $time['month'] . '-' . $time['day'];
+
   return $var;
 }
 
