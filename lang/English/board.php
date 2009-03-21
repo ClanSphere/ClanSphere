@@ -1,5 +1,7 @@
 <?php
+
 // ClanSphere 2009 - www.clansphere.net
+
 // $Id$
 
 $cs_lang['attachments'] = 'Attachments';
@@ -14,7 +16,6 @@ $cs_lang['mod']    = 'Board';
 $cs_lang['modtext'] = 'Manage and Create current board topics';
 $cs_lang['head_active']    = 'Active topics';
 $cs_lang['body_active']    = 'List of Topics with the most hits';
-
 $cs_lang['hits'] = 'Hits';
 $cs_lang['thread'] = 'Thread';
 $cs_lang['threads'] = 'Threads:';
@@ -36,22 +37,17 @@ $cs_lang['club'] = 'Club';
 $cs_lang['guild'] = 'Guild';
 $cs_lang['enterprise'] = 'Enterprise';
 $cs_lang['class'] = 'Class';
-
 $cs_lang['head_center'] = 'Usercenter';
 $cs_lang['body_picture']    = 'Manage your User Avatar here.';
-
 $cs_lang['abos'] = 'Subscription'; 
 $cs_lang['overall'] = 'Overall view';
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signature';
-
 $cs_lang['remove_done']    = 'Avatar successfully removed';
-
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['max_width'] = 'Max. width: ';
 $cs_lang['max_height'] = 'Max. height: ';
 $cs_lang['filetypes'] = 'Filetype: ';
-
 $cs_lang['too_big']    = '- The file is too big;';
 $cs_lang['too_wide']    = '- The file is too wide';
 $cs_lang['too_high']    = '- The file is too high';
@@ -68,19 +64,17 @@ $cs_lang['cat']    = 'Categorie';
 $cs_lang['board']    = 'Board';
 $cs_lang['rank']    = 'Rank';
 $cs_lang['stats']    = 'Statistic';
-$cs_lang['com']    = 'Forum posts';
-
+$cs_lang['com']    = 'Board posts';
 $cs_lang['last_com']    = 'The last %s comments';
 $cs_lang['last_thr']    = 'The last %s threads';
 
 //com_create.php
 $cs_lang['not_able'] = 'The target does not allow answers.';
-
+$cs_lang['text_to_long_sprint'] = '- The text contains %s chars which are %s too much.';
+$cs_lang['no_headline'] = '- You have to provide a headline.';
 $cs_lang['indi'] = ' Characters';
-
 $cs_lang['place']            = 'Place:';
 $cs_lang['text'] = 'Text';
-
 $cs_lang['error_subheader'] =  'An error occurred! ';
 $cs_lang['error_back'] = 'Back';
 
@@ -88,7 +82,6 @@ $cs_lang['error_back'] = 'Back';
 $cs_lang['mod1']    = 'Thread';
 $cs_lang['head_com_edit']    = 'Edit comment';
 $cs_lang['body_com_edit']    = 'Please indicate for changes.';
-
 $cs_lang['low_axx']    = '- You dont have the permission';
 $cs_lang['com_edit_errortext'] = 'The answer you want to edit does not exist or you dont have the rights to edit it.';
 
@@ -98,24 +91,20 @@ $cs_lang['com_remove_errortext'] = 'The answer you want to delete does not exist
 
 //create.php
 $cs_lang['rss_info']    = 'RSS Information';
-
 $cs_lang['no_cat'] = '- Choose a category';
 $cs_lang['no_name'] = '- No name is given';
-
 $cs_lang['cat_manage'] = 'Administration';
 $cs_lang['cat_create'] = 'New';
 $cs_lang['access'] = 'Access';
 $cs_lang['close'] = 'Close thread';
 $cs_lang['add_password'] = 'Add password';
 $cs_lang['password1'] = 'Optional, if not given, thread without password.';
-
 $cs_lang['lev_0'] = 'Disabled';
 $cs_lang['lev_1'] = 'Read';
 $cs_lang['lev_2'] = 'Extended Reading';
 $cs_lang['lev_3'] = 'Create';
 $cs_lang['lev_4'] = 'Edit';
 $cs_lang['lev_5'] = 'Remove';
-
 $cs_lang['only_read'] = 'Only for reading';
 
 //del_abo.php
@@ -124,26 +113,22 @@ $cs_lang['head_delabo']    = 'Remove';
 
 //edit.php
 $cs_lang['head_edit'] = 'Edit';
-
 $cs_lang['new_date'] = ' new date';
 $cs_lang['board_pwddel'] = ' Remove password';
 $cs_lang['password_yes'] = ' Change password';
 $cs_lang['password_no'] = ' Create password';
-$cs_lang['password2'] = 'Optional, if not given, forum without password.';
+$cs_lang['password2'] = 'Optional, if not given, board without password.';
 
 //list.php
 $cs_lang['head_list']    = 'List';
-
 $cs_lang['new'] = 'New threads';
 $cs_lang['active'] = 'Current threads';
 $cs_lang['search'] = 'Search';
 $cs_lang['mark_all'] = 'Mark all threads as read';
 $cs_lang['mark_board'] = 'Mark board as read';
 $cs_lang['no_categories'] = 'No categories available or you cant see them';
-
 $cs_lang['topics'] = 'Topics';
-
-$cs_lang['board_stats'] = 'Forum statistics';
+$cs_lang['board_stats'] = 'Board statistics';
 $cs_lang['threads_and'] = 'Threads and ';
 
 //nav_list.php
@@ -155,24 +140,18 @@ $cs_lang['abos'] = 'Subscriptions';
 
 //listcat.php
 $cs_lang['head_listcat'] = 'Topiclist';
-
 $cs_lang['newthread'] = 'New thread';
-
 $cs_lang['markall'] = 'Mark all threads as read';
-
 $cs_lang['no_board'] = 'Board doesn\'t exist or is inaccessible for you';
 $cs_lang['no_threads'] = 'No threads found';
-
 $cs_lang['wrong_pwd'] = 'The password you entered is incorrect';
 $cs_lang['need_pwd'] = 'The selected board requires a password';
 $cs_lang['password'] = 'Password';
-
 $cs_lang['ghost_topic'] = 'To topic';
 $cs_lang['ghost_board'] = 'To board';
 
 //manage.php
 $cs_lang['head_manage'] = 'Administration';
-
 $cs_lang['all'] = 'Total: ';
 $cs_lang['new_board'] = 'Create a new board';
 $cs_lang['reports'] = 'Reports';
@@ -184,43 +163,40 @@ $cs_lang['mod3'] = 'Modpanel';
 $cs_lang['change'] = 'Change';
 $cs_lang['rename'] = 'Rename'; 
 $cs_lang['move'] = 'Move to ...';
-
 $cs_lang['movedto'] = '-> Moved to';
 $cs_lang['ghostlink'] = 'Set link';
 
 //signature.php
 $cs_lang['abos'] = 'Subscription'; 
-
 $cs_lang['nosig'] = 'You haven\'t entered a signature.';
 
 //new.php
 $cs_lang['head_new']    = 'New thread ';
 $cs_lang['body_new']    = 'List of current threads without any replies';
-
 $cs_lang['no_threads'] = 'No threads found'; 
 
 //options.php
 $cs_lang['head_options'] = 'Options';
 $cs_lang['body_options'] = 'You can change board settings here.';
-
 $cs_lang['max_text'] = 'Max. text length';
 $cs_lang['max_signatur'] = 'Max. Signature length';
 $cs_lang['pix'] = 'Pixel';
+$cs_lang['kbyte'] = 'KiB';
 $cs_lang['max_high'] = 'Max. Avatar height';
 $cs_lang['max_size'] = 'Max. Avatar size';
 $cs_lang['max_avatar_width'] = 'Max. Avatar width';
 $cs_lang['max_avatar_size'] = 'Max. Avatar size';
 $cs_lang['max_filesize'] = 'Max. filesize';
-
 $cs_lang['double_posts'] = 'Allow double posts';
 $cs_lang['days_after1'] = 'After';
 $cs_lang['days_after2'] = 'Days';
 $cs_lang['sort_asc'] = 'Ascending';
 $cs_lang['sort_desc'] = 'Descending';
+$cs_lang['list_subforums'] = 'Show subboards in list view';
+$cs_lang['subforums'] = 'Subboards';
 
 //remove.php
 $cs_lang['change_threads'] = 'Move threads and comments';
-
 $cs_lang['change_board'] = 'Move threads and comments to:';
 
 // report.php
@@ -245,27 +221,22 @@ $cs_lang['done_true'] = 'Dataset saved as done.';
 //search.php
 $cs_lang['head_search']    = 'Search';
 $cs_lang['body_search']    = 'Search mode ignores too short keywords in sentences';
-
 $cs_lang['keywords'] = 'Keywords';
 $cs_lang['searchmode'] = 'Search mode';
 $cs_lang['match_exact'] = 'Exact match';
 $cs_lang['match_keywords'] = 'All keywords found';
 $cs_lang['searcharea'] = 'Search area';
-
 $cs_lang['of'] = 'from';
 $cs_lang['found_matches'] = '%s matches found';
-
 $cs_lang['topic'] = 'Thread';
 $cs_lang['go_target'] = 'Jump to result';
 $cs_lang['too_short'] = 'A keyword must contain at least 3 chars';
 $cs_lang['not_found'] = 'The search string could not be found';
-
 $cs_lang['titles_and_text'] = 'Title and Text';
 
 //toplist.ph
 $cs_lang['toplist'] = 'Toplist';
 $cs_lang['wrote_comments'] = ' User have already written comments.';
-
 $cs_lang['number'] = 'Number';
 $cs_lang['nick'] = 'Nick';
 
@@ -282,41 +253,30 @@ $cs_lang['place']    = 'Location';
 $cs_lang['answers']    = 'Answers'; 
 $cs_lang['answer']    = 'Answer';
 $cs_lang['head_thread'] = 'Thread';
-
 $cs_lang['boardmod'] = 'Moderator';
-
 $cs_lang['quote'] = 'Quote';
-
 $cs_lang['thread_only_read'] = 'This thread exists in the "Only read board". Answers are`nt possible!';
+$cs_lang['cut_comment_as_thread'] = 'Convert comment to own thread';
 
 //$cs_lang['veryimportant'] = ' "Very important" '; 
-
 $cs_lang['next_thread'] =  'Next thread';
 $cs_lang['prev_thread'] =  'Previous thread';
 $cs_lang['abonnement'] = 'Subscribe';
-
 $cs_lang['last_edit_by'] =  'Last edit by';
 $cs_lang['at'] =  'at';
 $cs_lang['overall_edit'] = 'Edited';
-
 $cs_lang['modpanel'] = 'Mod panel';
-
 $cs_lang['adv_com']    = 'Create advanced comment';
 $cs_lang['comment']    = 'Comment';
-
 $cs_lang['error_header'] = 'Site not found or it is inaccessible for you.';
 $cs_lang['thread_errortext'] = 'The topic you want to view does not exist or you dont have the rights to view it.';
-
 $cs_lang['need_user']    = 'You must be registered.';
 $cs_lang['already_abo'] = 'Thread is already subscribed';
 $cs_lang['wait_after_comment'] = 'You can write your next comment in this thread in %s days.';
-
 $cs_lang['thread_closed1'] = 'This thread is closed.';
 $cs_lang['thread_closed2'] = 'This thread was closed by %s';
-
 $cs_lang['vote'] = 'Vote';
 $cs_lang['elections_vote'] = 'Total votes: ';
-
 $cs_lang['thread_close'] = 'Close thread';
 $cs_lang['thread_open'] = 'Open thread';
 $cs_lang['thread_addpin'] = 'Pin thread';
@@ -329,32 +289,23 @@ $cs_lang['head']    = 'Add thread';
 $cs_lang['body_create'] =  'Please fill out all * marked fields.';
 $cs_lang['error_occurred'] = 'You have to fill out all required fields.';
 $cs_lang['error_count'] = 'Required fields are empty.';
-
 $cs_lang['headline']    = 'Headline';
-
-$cs_lang['thread_add_errortext'] = 'The forum you are about to view does not exist or is inaccessible for you';
-
+$cs_lang['thread_add_errortext'] = 'The board you are about to view does not exist or is inaccessible for you';
 $cs_lang['place']    = 'Origin'; 
-
 $cs_lang['important'] = ' "Important" ';
-
 $cs_lang['votes']             = 'Votes';
 $cs_lang['votes_end']         = 'End of vote';
 $cs_lang['votes_access']     = 'Access';
 $cs_lang['votes_question']     = 'Question';
 $cs_lang['votes_election']     = 'Answer';
-
 $cs_lang['election+'] = 'Add answer';
 $cs_lang['vote_create'] = 'Add vote';
-
 $cs_lang['infos'] = 'Infobox';
 $cs_lang['uploads'] = 'Upload file';
 $cs_lang['file'] = 'File';
 $cs_lang['add_file'] = 'Add file';
-
 $cs_lang['error_election'] = '- At least 2 answers are required.';
 $cs_lang['error_question'] = '- A question is required.';
-
 $cs_lang['error_filename'] = '- Filename already exists. Please rename the file.';
 $cs_lang['error_filesize'] = '- The file is too big;.';
 $cs_lang['error_filetype'] = '- Unknown filetype.';
@@ -363,20 +314,15 @@ $cs_lang['error_fileupload'] = '- Unexpected error occurred while uploading the 
 //thread_edit.php
 $cs_lang['thread_edit']    = 'Edit thread';
 $cs_lang['body_edit'] =  'Please fill out all * marked fields.';
-
 $cs_lang['thread_edit_errortext'] = 'The thread you want to edit does not exist or is not editable for you';
-
 $cs_lang['editbutton']    = 'Edit';
-
 $cs_lang['place']    = 'Location'; 
-
 $cs_lang['options+']        = 'Extras';
-
 $cs_lang['important'] = ' "Important" ';
-
 $cs_lang['file_del'] = 'File will be deleted!';
 
 //thread_remove.php
+$cs_lang['del_thread_rly'] = 'Really delete thread %s from board?';
 $cs_lang['thread_remove_errortext'] = 'The thread you want to delete does not exist or is undeletable for you';
 
 //users.php
@@ -386,7 +332,6 @@ $cs_lang['posts_per_day'] = ' Posts/Day';
 
 //users_home.php
 $cs_lang['last_threads']    = 'Latest thread actions';
-
 $cs_lang['send_message'] = 'Send Message';
 $cs_lang['send_mail'] = 'Send E-Mail';
 $cs_lang['icq'] = 'ICQ';
@@ -394,9 +339,13 @@ $cs_lang['skype'] = 'Skype';
 $cs_lang['homepage'] = 'Homepage';
 $cs_lang['times'] = 'x downloaded';
 $cs_lang['com_create_errortext'] = 'You aren\'t allowed to view this file!';
-
 $cs_lang['no_att_file'] = 'File not found. Please contact the Webmaster.';
 $cs_lang['no_att_exist'] = 'File not found.';
+
+// thread_cut
+$cs_lang['no_board_selected'] = '- No board selected';
+$cs_lang['to_old_thread'] = 'Back to old thread';
+$cs_lang['takeover'] = 'Takeover';
 
 // Password Check
 $cs_lang['secure'] = 'Security Check:';
@@ -425,5 +374,13 @@ $cs_lang['thread_closed'] = 'Thread closed';
 $cs_lang['thread_important'] = 'Important thread';
 $cs_lang['threads_normale'] = 'Normale threads';
 $cs_lang['threads_important'] = 'Important threads';
+
+// Stats
+$cs_lang['categories'] = 'Categories';
+$cs_lang['boards'] = 'Boards';
+$cs_lang['with_posts'] = 'with posts';
+$cs_lang['most_active_users'] = 'Most active users';
+$cs_lang['longest_thread'] = 'Logest thread';
+$cs_lang['average_posts'] = 'Average posts per thread';
 
 ?> 

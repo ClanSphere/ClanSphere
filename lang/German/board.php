@@ -1,7 +1,8 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
-// $Id$
 
+// ClanSphere 2009 - www.clansphere.net
+
+// $Id$
 
 $cs_lang['attachments'] = 'Dateianh&auml;nge';
 $cs_lang['filename'] = 'Dateiname';
@@ -15,7 +16,6 @@ $cs_lang['mod']  = 'Forum';
 $cs_lang['modtext'] = 'Aktuelle Forum Themen verwalten und erstellen';
 $cs_lang['head_active']  = 'Aktive Themen';
 $cs_lang['body_active']  = 'Liste von Themen mit vielen Hits';
-
 $cs_lang['hits'] = 'Hits';
 $cs_lang['thread'] = 'Thema';
 $cs_lang['threads'] = 'Themen:';
@@ -37,22 +37,17 @@ $cs_lang['club'] = 'Club';
 $cs_lang['guild'] = 'Gilde';
 $cs_lang['enterprise'] = 'Firma';
 $cs_lang['class'] = 'Klasse';
-
 $cs_lang['head_center'] = 'Usercenter';
 $cs_lang['body_picture']  = 'Hier wird der Benutzer Avatar verwaltet.';
-
 $cs_lang['abos'] = 'Abonnements'; 
 $cs_lang['overall'] = '&Uuml;bersicht';
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signatur';
-
 $cs_lang['remove_done']  = 'Der Avatar wurde erfolgreich entfernt';
-
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['max_width'] = 'Maximale Breite: ';
 $cs_lang['max_height'] = 'Maximale H&ouml;he: ';
 $cs_lang['filetypes'] = 'Dateitypen';
-
 $cs_lang['too_big']  = '- Die Datei ist zu gro&szlig;';
 $cs_lang['too_wide']  = '- Der Avatar ist zu breit';
 $cs_lang['too_high']  = '- Der Avatar ist zu hoch';
@@ -63,30 +58,23 @@ $cs_lang['current']  = 'Aktuell';
 $cs_lang['more']  = 'Erweitert';
 $cs_lang['glob_sig']  = 'Globale Signatur';
 $cs_lang['glob_sig1']  = 'M&ouml;gliche Platzhalter im Text: {post_nick} und {post_date}';
-//center.php
 
+//center.php
 $cs_lang['cat']  = 'Kategorie';
 $cs_lang['board']  = 'Forum';
 $cs_lang['rank']  = 'Forumrang';
 $cs_lang['stats']  = 'Statistik';
 $cs_lang['com']  = 'Forumbeitr&auml;ge';
-
 $cs_lang['last_com']    = 'Die letzten %s Beitr&auml;ge';
 $cs_lang['last_thr']  = 'Die letzten %s erstellten Themen';
 
 //com_create.php
 $cs_lang['not_able']  = '- Das angegebene Ziel erlaubt keine Antworten.';
-
 $cs_lang['text_to_long_sprint'] = '- Der Text ist %s Zeichen lang, das sind %s Zeichen zu viel.';
 $cs_lang['no_headline'] = '- Es muss eine &Uuml;berschrift angegeben werden.';
-#$cs_lang['text_to_long'] = ' - Der Text ist ';
-#$cs_lang['text_to_long_2'] = ' Zeichen lang. Das sind ';
-#$cs_lang['text_to_long_3'] = ' Zeichen zu viel!';
 $cs_lang['indi'] = 'Zeichen';
-
 $cs_lang['place'] = 'Ort:';
 $cs_lang['text'] = 'Text';
-
 $cs_lang['error_subheader'] =  'Ein Fehler ist aufgetreten! ';
 $cs_lang['error_back'] = 'Zur&uuml;ck';
 
@@ -94,7 +82,6 @@ $cs_lang['error_back'] = 'Zur&uuml;ck';
 $cs_lang['mod1']  = 'Thema';
 $cs_lang['head_com_edit']  = 'Antwort Bearbeiten';
 $cs_lang['body_com_edit']  = 'Bitte auf Text&auml;nderungen hinweisen.';
-
 $cs_lang['low_axx']  = '- Sie verf&uuml;gen nicht &uuml;ber den ben&ouml;tigten Zugriff';
 $cs_lang['com_edit_errortext'] = 'Die Antwort, die Sie editieren m&ouml;chten, existiert nicht, oder ist f&uuml;r Sie nicht editierbar.';
 
@@ -104,25 +91,20 @@ $cs_lang['com_remove_errortext'] = 'Die Antwort, die Sie entfernen m&ouml;chten,
 
 //create.php
 $cs_lang['rss_info']  = 'Aktuelle Meldungen';
-
 $cs_lang['no_cat'] = '- Es muss eine Kategorie ausgew&auml;hlt werden';
 $cs_lang['no_name'] = '- Es muss ein Name angegeben werden.';
-
-
 $cs_lang['cat_manage'] = 'Verwaltung';
 $cs_lang['cat_create'] = 'Neu';
 $cs_lang['access'] = 'Zugriff';
 $cs_lang['close'] = 'Kommentare sperren';
 $cs_lang['add_password'] = 'Passwort Hinzuf&uuml;gen';
 $cs_lang['password1'] = 'Optional, wenn keine Eingabe, Forum ohne Passwortschutz.';
-
 $cs_lang['lev_0'] = 'Gesperrt';
 $cs_lang['lev_1'] = 'Lesen';
 $cs_lang['lev_2'] = 'Erweitertes Lesen';
 $cs_lang['lev_3'] = 'mit Erstellen';
 $cs_lang['lev_4'] = 'mit Bearbeiten';
 $cs_lang['lev_5'] = 'mit Entfernen'; 
-
 $cs_lang['only_read'] = 'Nur lesen';
 
 //del_abo.php
@@ -131,7 +113,6 @@ $cs_lang['head_delabo']  = 'Entfernen';
 
 //edit.php
 $cs_lang['head_edit'] = 'Bearbeiten';
-
 $cs_lang['new_date'] = ' Datum aktualisieren';
 $cs_lang['board_pwddel'] = ' Passwort entfernen';
 $cs_lang['password_yes'] = ' Passwort &Auml;ndern';
@@ -140,16 +121,13 @@ $cs_lang['password2'] = 'Optional, wenn keine Eingabe, bleibt altes Passwort vor
 
 //list.php
 $cs_lang['head_list']  = 'Liste';
-
 $cs_lang['new'] = 'Neue Themen';
 $cs_lang['active'] = 'Aktive Themen';
 $cs_lang['search'] = 'Suche';
 $cs_lang['mark_all'] = 'Alle Themen als gelesen markieren';
 $cs_lang['mark_board'] = 'Forum als gelesen markieren';
 $cs_lang['no_categories'] = 'Keine Bereiche vorhanden, oder f&uuml;r Sie nicht einsehbar';
-
 $cs_lang['topics'] = 'Themen';
-
 
 //nav_list.php
 $cs_lang['no_new_posts']  = 'Keine neuen Beitr&auml;ge';
@@ -159,13 +137,9 @@ $cs_lang['created_by'] = 'Erstellt von';
 
 //listcat.php
 $cs_lang['head_listcat'] = 'Themenliste';
-
 $cs_lang['newthread'] = 'Neues Thema';
-
 $cs_lang['markall'] = 'Alle Themen als gelesen markieren';
-
 $cs_lang['no_board'] = 'Forum nicht vorhanden, oder Zugriff zu niedrig';
-
 $cs_lang['wrong_pwd'] = 'Das Passwort ist nicht korrekt';
 $cs_lang['need_pwd'] = 'Das gew&auml;hlte Forum ben&ouml;tigt ein Passwort';
 $cs_lang['password'] = 'Passwort';
@@ -174,7 +148,6 @@ $cs_lang['ghost_board'] = 'Zum Forum';
 
 //manage.php
 $cs_lang['head_manage'] = 'Verwaltung';
-
 $cs_lang['all'] = 'Gesamt: ';
 $cs_lang['new_board'] = 'Neues Forum erstellen';
 $cs_lang['reports'] = 'Meldungen';
@@ -196,15 +169,13 @@ $cs_lang['nosig'] = 'Sie haben keine Signatur eingegeben.';
 $cs_lang['head_new']  = 'Neue Themen';
 $cs_lang['body_new']  = 'Liste von aktuellen Themen ohne eine Antwort';
 
-
 //options.php
 $cs_lang['head_options'] = 'Optionen';
 $cs_lang['body_options'] = 'Hier k&ouml;nnen Einstellungen am Forum vorgenommen werden.';
-
 $cs_lang['max_text'] = 'Max. Text L&auml;nge';
 $cs_lang['max_signatur'] = 'Max. Signatur L&auml;nge';
 $cs_lang['pix'] = 'Pixel';
-$cs_lang['kbyte'] = 'kb';
+$cs_lang['kbyte'] = 'KiB';
 $cs_lang['max_high'] = 'Max. Avatar H&ouml;he';
 $cs_lang['max_avatar_width'] = 'Max. Avatar Breite';
 $cs_lang['max_avatar_size'] = 'Max. Avatar Gr&ouml;&szlig;e';
@@ -243,17 +214,14 @@ $cs_lang['done_true'] = 'Datensatz erfolgreich als Erledigt gespeichert';
 //search.php
 $cs_lang['head_search']  = 'Suche';
 $cs_lang['body_search']  = '"Alle Begriffe vorhanden" als Suchmodus, ignoriert zu kurze Begriffe';
-
 $cs_lang['keywords'] = 'Suchbegriffe';
 $cs_lang['searchmode'] = 'Suchmodus';
 $cs_lang['match_exact'] = 'Exakter Treffer';
 $cs_lang['match_keywords'] = 'Alle Begriffe vorhanden';
 $cs_lang['searcharea'] = 'Suchbereich';
 $cs_lang['titles_and_text'] = 'Titel und Text';
-
 $cs_lang['of'] = 'von';
 $cs_lang['found_matches'] = 'Es wurden %s Treffer gefunden';
-
 $cs_lang['topic'] = 'Thema';
 $cs_lang['go_target'] = 'Springe zum Treffer';
 $cs_lang['too_short'] = 'Der Suchbegriff muss mindestens drei Zeichen enthalten';
@@ -262,14 +230,12 @@ $cs_lang['not_found'] = 'Der Suchbegriff wurde nicht gefunden';
 //toplist.php
 $cs_lang['toplist'] = 'Bestenliste';
 $cs_lang['wrote_comments'] = ' Benutzer haben bereits ein Kommentar geschrieben.';
-
 $cs_lang['number'] = 'Nummer';
 $cs_lang['nick'] = 'Nick';
 
 //sort.php
 $cs_lang['sort_num'] = 'Nr.';
 $cs_lang['using'] = 'Funktionen';
-
 $cs_lang['up'] = 'Hoch';
 $cs_lang['down'] = 'Runter';
 
@@ -282,42 +248,31 @@ $cs_lang['answer']  = 'Antwort';
 $cs_lang['head_thread'] = 'Thema';
 $cs_lang['boardmod'] = 'Moderator';
 $cs_lang['quote']       = 'Zitat';
-
 $cs_lang['next_thread'] =  'N&auml;chstes Thema';
 $cs_lang['prev_thread'] =  'Vorheriges Thema';
 $cs_lang['abonnement'] = 'Abonnieren';
-
 $cs_lang['last_edit_by'] =  'Zuletzt editiert von';
 $cs_lang['at'] =  'am';
 $cs_lang['overall_edit'] = 'Editiert';
-
 $cs_lang['modpanel'] = 'Moderation';
-
 $cs_lang['adv_com']  = 'Erweiterte Antwort verfassen';
 $cs_lang['comment']  = 'Antwort';
-
 $cs_lang['error_header'] = 'Seite nicht gefunden oder zuwenig Rechte.';
 $cs_lang['thread_errortext'] = 'Das Thema, welches Sie anschauen m&ouml;chten, existiert nicht, oder ist f&uuml;r Sie nicht einsehbar.';
-
 $cs_lang['need_user']  = 'Sie m&uuml;ssen sich registrieren, um zu antworten.';
 $cs_lang['already_abo'] = 'Thema bereits abonniert';
 $cs_lang['wait_after_comment'] = 'Sie d&uuml;rfen nach %s Tagen auf Ihren Beitrag antworten';
-
 $cs_lang['vote'] = 'Abstimmen';
 $cs_lang['elections_vote'] = 'Stimmen gesamt: ';
-
 $cs_lang['thread_close'] = 'Thema Schlie&szlig;en';
 $cs_lang['thread_open'] = 'Thema &Ouml;ffnen';
 $cs_lang['thread_addpin'] = 'Thema Anpinnen';
 $cs_lang['thread_delpin'] = 'Thema Abpinnen';
 $cs_lang['thread_move'] = 'Thema Verschieben';
 $cs_lang['thread_rename'] = 'Thema Umbenennen';
-
 $cs_lang['thread_closed1'] = 'Dieses Thema ist geschlossen.';
 $cs_lang['thread_closed2'] = 'Dieses Thema wurde von %s geschlossen.';
-
 $cs_lang['thread_only_read'] = 'Das Thema befindet sich in einem "Nur lesbarem Forum". Antworten sind nicht m&ouml;glich!';
-
 $cs_lang['cut_comment_as_thread'] = 'Kommentar als Thread auslagern';
 
 //thread_add.php
@@ -325,32 +280,24 @@ $cs_lang['head']  = 'Thema Hinzuf&uuml;gen';
 $cs_lang['body_create'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
 $cs_lang['error_occurred'] = 'Es wurden nicht alle Pflichtfelder ausgef&uuml;llt.';
 $cs_lang['error_count'] = 'Pflichtfeld/er fehlen.';
-
 $cs_lang['headline']  = '&Uuml;berschrift';
-
 $cs_lang['place']  = 'Herkunft'; 
-
 $cs_lang['thread_add_errortext'] = 'Das Forum, in dem Sie ein Thema anlegen m&ouml;chten, existiert nicht, oder ist f&uuml;r Sie nicht zugreifbar.';
-
 $cs_lang['options+']    = 'Extras';
 $cs_lang['votes']       = 'Umfrage';
 $cs_lang['votes_end']     = 'End Zeit';
 $cs_lang['votes_access']   = 'Zugriff';
 $cs_lang['votes_question']   = 'Frage';
 $cs_lang['votes_election']   = 'Antwort';
-
 $cs_lang['election+'] = 'Antwort hinzuf&uuml;gen';
 $cs_lang['vote_create'] = 'Umfrage hinzuf&uuml;gen';
-
 $cs_lang['infos'] = 'Infobox';
 $cs_lang['uploads'] = 'Dateien Hochladen';
 $cs_lang['file'] = 'Datei';
 $cs_lang['add_file'] = 'Datei hinzuf&uuml;gen';
 $cs_lang['max_size'] = 'Maximale Dateigr&ouml;&szlig;e: ';
-
 $cs_lang['error_election'] = '- Sie sollten mindestens 2 Antworten bei ihrer Umfrage angeben.';
 $cs_lang['error_question'] = '- Bitte eine Frage bei ihrer Umfrage eingeben.';
-
 $cs_lang['error_filename'] = '- Diese Datei existiert schon. Bitte benennen Sie ihre Datei um.';
 $cs_lang['error_filesize'] = '- Die Datei ist zu gro&szlig;.';
 $cs_lang['error_filetype'] = '- Es wurde ein uneraubtes Dateiformat benutzt.';
@@ -359,9 +306,7 @@ $cs_lang['error_fileupload'] = '- Es ist ein unbekannter Fehler beim hochladen d
 //thread_edit.php
 $cs_lang['thread_edit']  = 'Thema &Auml;ndern';
 $cs_lang['body_edit'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
-
 $cs_lang['editbutton']  = 'Bearbeiten';
-
 $cs_lang['thread_edit_errortext'] = 'Das Thema, dass Sie editieren m&ouml;chten, existiert nicht, oder ist f&uuml;r Sie nicht editierbar.';
 $cs_lang['file_del'] = 'Datei wird gel&ouml;scht!';
 
@@ -376,16 +321,13 @@ $cs_lang['posts_per_day'] = ' Beitr&auml;ge/Tag';
 
 //users_home.php
 $cs_lang['last_threads']  = 'Aktuell im Forum';
-
 $cs_lang['send_message'] = 'Nachricht schicken';
 $cs_lang['send_mail'] = 'Mail schicken';
 $cs_lang['icq'] = 'ICQ';
 $cs_lang['skype'] = 'Skype';
 $cs_lang['homepage'] = 'Homepage';
 $cs_lang['times'] = 'mal heruntergeladen';
-
 $cs_lang['com_create_errortext'] = 'Sie haben keine Berechtigung, diese Datei aufzurufen!';
-
 $cs_lang['no_att_file'] = 'Datei nicht gefunden. Bitte den Webmaster kontaktieren.';
 $cs_lang['no_att_exist'] = 'Datei nicht gefunden.';
 
@@ -428,6 +370,6 @@ $cs_lang['boards'] = 'Foren';
 $cs_lang['with_posts'] = 'mit Beitr&auml;gen';
 $cs_lang['most_active_users'] = 'Aktivste Benutzer';
 $cs_lang['longest_thread'] = 'L&auml;ngstes Thema';
-$cs_lang['average_posts'] = 'Durchschnittliche Antworten pro Thema'
+$cs_lang['average_posts'] = 'Durchschnittliche Antworten pro Thema';
 
 ?>
