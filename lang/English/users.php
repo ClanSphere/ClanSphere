@@ -93,6 +93,9 @@ $cs_lang['mail_reg_end'] = "\n \n This e-mail is written with a text form.";
 $cs_lang['state'] = 'State';
 $cs_lang['not_active'] = 'Deactivated';
 $cs_lang['not_active_text'] = 'Selected user is deactivated';
+$cs_lang['delete'] = 'Delete';
+$cs_lang['delete_text'] = 'The selected user has been removed';
+$cs_lang['del_nick'] = 'Deleted user';
 
 // Logout
 $cs_lang['logged_out']  = 'Successfully logged out, see you soon!';
@@ -118,6 +121,9 @@ $cs_lang['done'] = 'You can login now.';
 $cs_lang['done2'] = 'You soon get an e-mail with activation link.';
 
 $cs_lang['mail_key'] = 'Activationlink';
+
+// Remove
+$cs_lang['rly_rmv_user'] = 'Really remove %s from users?';
 
 // Home
 $cs_lang['home_info']  = 'All information about your useraccount.';
@@ -165,6 +171,7 @@ $cs_lang['no_readtime'] = 'You have to enter the number of days';
 $cs_lang['default'] = 'Default';
 $cs_lang['categories'] = 'Categories';
 $cs_lang['invisible'] = 'Invisible';
+$cs_lang['ajax'] = 'Page speedup (AJAX)';
 
 // Password
 $cs_lang['change_password']  = 'Change password here.';
@@ -196,6 +203,8 @@ $cs_lang['def_register'] = 'Registrationmode';
 $cs_lang['reg_mail'] = 'Validation by email';
 $cs_lang['reg_captcha'] = 'Enter security code';
 $cs_lang['reg_captcha_mail'] = 'email and security code';
+$cs_lang['default_picture'] = 'Default picture';
+$cs_lang['other_one'] = 'Other one';
 
 // SendPW
 $cs_lang['sendpw_info']  = 'Please indicate the e-mail address as it is in you user profile. ';
