@@ -28,7 +28,7 @@
     <td class="leftc">{board:name}</td>
     <td class="leftc">{board:cat}</td>
     <td class="leftc"><a href="{url:board_edit:id={board:id}}" title="{lang:edit}">{icon:edit}</a></td>
-    <td class="leftc"><a href="{url:board_remove:id={board:id}}" title="{lang:remove}">{icon:editdelete}</td>
+    <td class="leftc"><a href="{url:board_remove:id={board:id}}" title="{lang:remove}">{icon:editdelete}</a></td>
   </tr>
   {stop:board}
 </table>
