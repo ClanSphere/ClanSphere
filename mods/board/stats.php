@@ -8,8 +8,8 @@ $d = array();
 
 $d['stats']['topics'] = cs_sql_count(__FILE__,'threads');
 $d['stats']['posts'] = cs_sql_count(__FILE__,'comments','comments_mod = \'board\'');
-$d['stats']['users'] = cs_sql_count(__FILE__,'users');
-$d['stats']['users_active'] = cs_sql_count(__FILE__,'comments cms RIGHT JOIN {pre}_users usr ON cms.users_id = usr.users_id AND usr.users_active = \'1\' RIGHT JOIN {pre}_threads thr ON thr.users_id = usr.users_id',0,'usr.users_id');
+$d['stats']['users'] = cs_sql_count(__FILE__,'users', 'users_delete = "0"');
+$d['stats']['users_active'] = cs_sql_count(__FILE__,'comments cms RIGHT JOIN {pre}_users usr ON cms.users_id = usr.users_id AND usr.users_active = "1" AND usr.users_delete = "0" RIGHT JOIN {pre}_threads thr ON thr.users_id = usr.users_id',0,'usr.users_id');
 $d['stats']['categories'] = cs_sql_count(__FILE__,'categories','categories_mod = \'board\'');
 $d['stats']['boards'] = cs_sql_count(__FILE__,'board');
 
