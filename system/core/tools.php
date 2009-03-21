@@ -144,6 +144,9 @@ function cs_datereal($mode,$time = 0) {
 
 function cs_dateselect($name,$mode,$data,$year_start = 0) {
 
+	$data = array();
+	$data['date']['name'] = $name;
+
   $real_start = $mode == 'unix' ? 1970 : 1950;
   $year_start = empty($year_start) ? $real_start : $year_start;
 
@@ -160,47 +163,47 @@ function cs_dateselect($name,$mode,$data,$year_start = 0) {
     $explode[3] = cs_datereal('H',$data);
     $explode[4] = cs_datereal('i',$data);
   }
+  
+  #year
   $year_end = cs_datereal('Y') + 4;
-  $year = cs_html_select(1,$name . '_year');
-  $year .= cs_html_option('----',0,0);
+  $data['year']['options'] = '';
   while($year_start<$year_end) {
     $sel = $explode[0] == $year_start ? 1 : 0;
-    $year .= cs_html_option($year_start,$year_start,$sel);
+    $data['year']['options'] .= cs_html_option($year_start,$year_start,$sel);
     $year_start++;
   }
-  $year .= cs_html_select(0);
 
+	#month
   $month_start = 1;
   $month_end = 13;
-  $month = cs_html_select(1,$name . '_month');
-  $month .= cs_html_option('----',0,0);
+  $data['month']['options'] = '';
   while($month_start<$month_end) {
     $month_value = $month_start < 10 ? '0' . $month_start : $month_start;
     $explode[1] == $month_value ? $sel = 1 : $sel = 0;
-    $month .= cs_html_option($month_start,$month_value,$sel);
+    $data['month']['options'] .= cs_html_option($month_start,$month_value,$sel);
     $month_start++;
   }
-  $month .= cs_html_select(0);
 
+	#day
   $day_start = 1;
   $day_end = 32;
-  $day = cs_html_select(1,$name . '_day');
-  $day .= cs_html_option('----',0,0);
+  $data['day']['options'] = '';
   while($day_start<$day_end) {
     $day_value = $day_start < 10 ? '0' . $day_start : $day_start;
     $explode[2] == $day_value ? $sel = 1 : $sel = 0;
-    $day .= cs_html_option($day_start,$day_value,$sel);
+    $data['day']['options'] .= cs_html_option($day_start,$day_value,$sel);
     $day_start++;
   }
-  $day .= cs_html_select(0);
 
-  $var = $year . ' - ' . $month . ' - ' . $day;
+	#unix (hours + minutes)
+  $data['if']['unix'] = FALSE;
   if($mode == 'unix') {
-    $hours = cs_html_input($name . '_hours',$explode[3],'text',2,2);
-    $mins = cs_html_input($name . '_mins',$explode[4],'text',2,2);
-    $var .= ' T ' . $hours . ' : ' . $mins;
+  	$data['if']['unix'] = TRUE;
+  	$data['expl']['hours'] = $explode[3];
+  	$data['expl']['mins'] = $explode[4];
   }
-  return $var;
+  
+ return cs_subtemplate(__FILE__,$data,'clansphere','dateselect');
 }
 
 function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) {
@@ -474,7 +477,7 @@ function cs_sort($mod,$action,$start,$where,$up,$active = 0,$more = 0) {
 function cs_timediff($unix = 0, $reverse = 0) {
 
     global $account;
-    $unix = empty($reverse) ? ($unix + $account['users_timezone']) : ($unix - $account['users_timezone']);
+    $unix = empty($reverse) ? ((int) $unix + $account['users_timezone']) : ((int)$unix - $account['users_timezone']);
     if(empty($account['users_dstime']) AND date('I',$unix) != '0' OR $account['users_dstime'] == 'on') {
         $unix = empty($reverse) ? ($unix + 3600) : ($unix - 3600);
     }
