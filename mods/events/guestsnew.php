@@ -67,7 +67,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['events'][$run]['time'] = cs_date('unix',$events_data[$run]['events_time'],1);
   }
 
-  $users_data = cs_sql_select(__FILE__,'users','users_nick, users_id',0,'users_nick',0,0);
+  $users_data = cs_sql_select(__FILE__,'users','users_nick, users_id','users_delete = "0"','users_nick',0,0);
   $users_data_loop = count($users_data);
 
   if(empty($users_data_loop)) {
