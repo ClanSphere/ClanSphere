@@ -119,9 +119,9 @@ function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
 
 function cs_datepost($name,$mode) {
 
-  $time['year'] = empty($_POST[$name . '_year']) ? 0 : (int) $_POST[$name . '_year'];
-  $time['month'] = empty($_POST[$name . '_month']) ? 0 : (int) $_POST[$name . '_month'];
-  $time['day'] = empty($_POST[$name . '_day']) ? 0 : (int) $_POST[$name . '_day'];
+  $time['year'] = empty($_POST[$name . '_year']) ? cs_datereal('Y') : (int) $_POST[$name . '_year'];
+  $time['month'] = empty($_POST[$name . '_month']) ? 1 : (int) $_POST[$name . '_month'];
+  $time['day'] = empty($_POST[$name . '_day']) ? 1 : (int) $_POST[$name . '_day'];
   $time['hours'] = empty($_POST[$name . '_hours']) ? 0 : (int) $_POST[$name . '_hours'];
   if(!empty($_POST[$name . '_ampm']) AND $_POST[$name . '_ampm'] == 'pm') { $time['hours'] = $time['hours'] + 12; }
   $time['mins'] = empty($_POST[$name . '_mins']) ? 0 : (int) $_POST[$name . '_mins'];
@@ -129,7 +129,7 @@ function cs_datepost($name,$mode) {
   $var = '';
   if($mode == 'unix') {
     $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
-    $var = cs_timediff($var, 1);
+    $var = cs_timediff($var, 1); 
   }
   elseif($mode == 'date')
     $var = $time['year'] . '-' . $time['month'] . '-' . $time['day'];
@@ -177,11 +177,11 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
       $data['ampm']['options'] .= cs_html_option('pm', 'pm', $explode[5] == 'pm' ? 1 : 0);
     }
   }
-  
+
   #year
   $year_end = cs_datereal('Y') + 4;
   $data['year']['options'] = '';
-  while($year_start<$year_end) {
+  while($year_start < $year_end) {
     $sel = $explode[0] == $year_start ? 1 : 0;
     $data['year']['options'] .= cs_html_option($year_start,$year_start,$sel);
     $year_start++;
@@ -191,7 +191,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
   $month_start = 1;
   $month_end = 13;
   $data['month']['options'] = '';
-  while($month_start<$month_end) {
+  while($month_start < $month_end) {
     $month_value = $month_start < 10 ? '0' . $month_start : $month_start;
     $explode[1] == $month_value ? $sel = 1 : $sel = 0;
     $data['month']['options'] .= cs_html_option($month_start,$month_value,$sel);
@@ -202,7 +202,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
   $day_start = 1;
   $day_end = 32;
   $data['day']['options'] = '';
-  while($day_start<$day_end) {
+  while($day_start < $day_end) {
     $day_value = $day_start < 10 ? '0' . $day_start : $day_start;
     $explode[2] == $day_value ? $sel = 1 : $sel = 0;
     $data['day']['options'] .= cs_html_option($day_start,$day_value,$sel);

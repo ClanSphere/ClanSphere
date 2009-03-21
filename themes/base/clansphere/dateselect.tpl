@@ -1,13 +1,10 @@
 <select name="{date:name}_year">
-	<option value="0">----</option>
 	{year:options}
 </select> -
 <select name="{date:name}_month">
-	<option value="0">----</option>
 	{month:options}
 </select> -
 <select name="{date:name}_day">
-	<option value="0">----</option>
 	{day:options}
 </select> 
 {if:unix}
