@@ -77,7 +77,7 @@ if(!empty($success)) {
     $file = $var == '.' ? $datas[$x] : $var . $datas[$x];
     
     chdir($cs_main['def_path'].'/'.$var);
-    $type = is_dir($datas[$x]) ? 'dir' : strtolower(substr(strrchr($datsa[$x],'.'),1));
+    $type = is_dir($datas[$x]) ? 'dir' : strtolower(substr(strrchr($datas[$x],'.'),1));
     chdir($cs_main['def_path']);
     
     $save[$y]['name'] = $datas[$x];
