@@ -139,7 +139,7 @@ function form_to_string(form) {
   for(i=0;i<fields.length;i++) {
     switch(fields[i].type) {
       case 'text': case 'password': case 'hidden': case 'textarea':
-        string += encodeURI(fields[i].name) + "=" + encodeURI(fields[i].value) + "&";
+        string += encodeURI(fields[i].name) + "=" + escape(fields[i].value) + "&";
         break;
       case 'submit':
         if (!firstsubmit) firstsubmit = fields[i].name; break;
@@ -192,7 +192,7 @@ function forms_to_ajax() {
     }
     forms[i].onsubmit = function() {
       if(active_upload_count==0) {
-      document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
+        document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
         form_data = form_to_string(this);
         cs_ajax_getcontent(this.action.replace(/([a-zA-Z\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_data, 1);
       } else {
