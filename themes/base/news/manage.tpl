@@ -9,16 +9,18 @@
  </tr>
  <tr>
   <td class="leftb" colspan="3">
-   <form method="post" id="news_manage" action="{url:form}">
+   <form method="post" id="news_manage" action="{url:news_manage}">
    {lang:category} 
    {head:dropdown}
-   {head:button}
+   <input type="submit" name="submit" value="{lang:show}" />
    </form>
   </td>
  </tr>
 </table>
 <br />
+
 {head:message}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb">{sort:news_headline} {lang:headline}</td>

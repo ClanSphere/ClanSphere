@@ -115,20 +115,17 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   $cs_static_tpl['static']['table'] = $sel;
   $static_edit['static_comments'] == '1' ? $sel = 'checked' : $sel = '';
   $cs_static_tpl['static']['comments'] = $sel;
-  if($account['access_static'] < 5) {
-  $cs_static_tpl['static']['phpcode'] = '';
-  } else {
-  $cs_static_tpl['static']['phpcode'] = cs_html_vote('phpcode','phpcode', 'button', '', 'onclick="javascript:abc_insert(\'[phpcode]\',\'[/phpcode]\',\'static_text\',\'\')"');
-  }
+  
   
   if($account['access_static'] < 5) {
-  $cs_static_tpl['static']['admins'] = '';
+  	$cs_static_tpl['if']['access_php'] = FALSE;
+  	$cs_static_tpl['if']['access_admin'] = FALSE;
   } else {
-  $static_edit['static_admins'] == '1' ? $sel_a = 'checked' : $sel_a = '';
-  $cs_static_tpl['static']['admins'] = cs_html_vote('static_admins','1','checkbox',$sel_a) . $cs_lang['admins_only'] . cs_html_br(1);
+  	$cs_static_tpl['if']['access_php'] = TRUE;
+  	$cs_static_tpl['if']['access_admin'] = TRUE;
+  	$cs_static_tpl['check']['admin'] = empty($static_edit['static_admins']) ? '' : 'checked="checked"';
   }
   
-
   $cs_static_tpl['static']['id'] = $static_edit['static_id'];
   $cs_static_tpl['static']['lang_form'] = $cs_lang['edit'];
 

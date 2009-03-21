@@ -93,15 +93,12 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   $cs_static_tpl['static']['comments'] = $sel;
   
   if($account['access_static'] < 5) {
-  $cs_static_tpl['static']['phpcode'] = '';
+  	$cs_static_tpl['if']['access_php'] = FALSE;
+  	$cs_static_tpl['if']['access_admin'] = FALSE;
   } else {
-  $cs_static_tpl['static']['phpcode'] = cs_html_vote('phpcode','phpcode', 'button', '', 'onclick="javascript:abc_insert(\'[phpcode]\',\'[/phpcode]\',\'static_text\',\'\')"');
-  }
-  
-  if($account['access_static'] < 5) {
-  $cs_static_tpl['static']['admins'] = '';
-  } else {
-  $cs_static_tpl['static']['admins'] = cs_html_vote('static_admins','1','checkbox') . $cs_lang['admins_only'] . cs_html_br(1);
+  	$cs_static_tpl['if']['access_php'] = TRUE;
+  	$cs_static_tpl['if']['access_admin'] = TRUE;
+  	$cs_static_tpl['check']['admin'] = '';
   }
   
   #$cs_static_tpl['static']['action'] = 'create';

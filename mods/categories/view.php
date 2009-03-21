@@ -18,7 +18,6 @@ foreach($modules as $mods) {
      $data['cat']['mod'] = $mods['name'];
   }
 }
-#echo cs_html_vote('cat_mod',$cat_mod,'hidden');
 
 $data['cat']['url'] = '';
 if(!empty($cs_categories['categories_url'])) {

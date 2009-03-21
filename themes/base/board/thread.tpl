@@ -21,7 +21,7 @@
             <div style="margin-bottom: 10px;">{thread:vote_question}</div>
             <form method="post" id="thread_vote" action="{url:board_thread}&amp;where={thread:threads_id}">
               {loop:votes}
-              <div>{votes:vote_election} {votes:vote_election_text}</div>
+              <div><input type="radio" name="voted_election" value="{votes:run}" /> {votes:vote_election_text}</div>
               {stop:votes}
               <div style="margin-top: 10px;">
               <input type="hidden" name="threads_votes_id" value="{thread:threads_id}" />

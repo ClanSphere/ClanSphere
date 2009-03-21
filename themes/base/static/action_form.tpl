@@ -17,7 +17,7 @@
 {if:nofckeditor}
 <tr>
 <td class="leftc">{icon:kedit} {lang:content} *</td>
-<td class="leftb">{abcode:features} {static:phpcode}
+<td class="leftb">{abcode:features} {if:access_php}<input type="button" name="phpcode" value="phpcode" onclick="javascript:abc_insert(\'[phpcode]\',\'[/phpcode]\',\'static_text\',\'\')" />{stop:access_php}
 <textarea name="static_text" cols="99" rows="35" id="static_text"  style="width: 98%;">{static:content}</textarea></td>
 </tr>
 {stop:nofckeditor}
@@ -31,7 +31,7 @@
 {stop:fckeditor}
   <tr>
   	<td class="leftc">{icon:configure} {lang:config}</td>
-    <td class="leftb">{static:admins}
+    <td class="leftb">{if:access_admin}<input type="checkbox" name="static_admins" value="1" {check:admin}/> {lang:admins_only}<br />{stop:access_admin}
 	<input type="checkbox" name="static_table" value="1"  {static:table} /> {lang:tablelayout}<br />
 <input type="checkbox" name="static_comments" value="1"  {static:comments} /> {lang:activate_comments}<br /></td>
   </tr>

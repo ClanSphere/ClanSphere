@@ -12,7 +12,12 @@
   <tr>
 		<td class="leftc" style="width:140px">{icon:download} {lang:upload} *</td>
 		<td class="leftb">
-			<input type="file" name="picture" value="" /> {data:info_clip}</td>
+			{if:file_up}<input type="hidden" name="file_up" value="1" />
+			<input type="hidden" name="gallery_name" value="{hidden:gallery_name}" />
+			{show:picture}{stop:file_up}
+			{if:no_up}<input type="file" name="picture" value="" />
+			{data:info_clip}{stop:no_up}
+		</td>
   </tr>
 	<tr>
 		<td class="leftc">{icon:kedit} {lang:titel} *</td>

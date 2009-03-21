@@ -25,8 +25,6 @@ $order = $cs_sort[$sort];
 $news_count = cs_sql_count(__FILE__,'news',$where);
 
 $data = array();
-$data['url']['form'] = cs_url('news','manage');
-$data['url']['news_create'] = cs_url('news','create');
 $data['count']['news'] = $news_count;
 $data['head']['pages'] = cs_pages('news','manage',$news_count,$start,$categories_id,$sort);
 
@@ -35,7 +33,6 @@ $data['head']['message'] = cs_getmsg();
 $newsmod = "categories_mod = 'news' AND categories_access <= '" . $account['access_news'] . "'";
 $cat_data = cs_sql_select(__FILE__,'categories','*',$newsmod,'categories_name',0,0);
 $data['head']['dropdown'] = cs_dropdown('where','categories_name',$cat_data,$categories_id,'categories_id');
-$data['head']['button'] = cs_html_vote('submit',$cs_lang['show'],'submit');
 
 $from = 'news nws LEFT JOIN {pre}_users usr ON nws.users_id = usr.users_id';
 $select = 'nws.news_headline AS news_headline, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, nws.news_time AS news_time, nws.news_public AS news_public, nws.news_id AS news_id';

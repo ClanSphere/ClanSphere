@@ -184,7 +184,7 @@ if(!empty($cs_thread_votes))
       
       for ($run = 0; $run < $votes_loop; $run++) {
         $run2 = $run + 1;
-        $data['votes'][$run]['vote_election'] = cs_html_vote('voted_election',$run2,'radio',0);
+        $data['votes'][$run]['run'] = $run2;
         $data['votes'][$run]['vote_election_text'] = $temp[$run2];
       }
 
