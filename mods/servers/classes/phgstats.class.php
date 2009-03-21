@@ -71,6 +71,11 @@ class phgstats {
 				$query = new cod4;
 				return $query;
 				break;
+			case 'cod5': // Call Of Duty 5
+				include_once 'mods/servers/classes/cod5.class.php';
+				$query = new cod5;
+				return $query;
+				break;
 			case 'des3gs': // Descent 3 (Gamespy)
 				include_once('mods/servers/classes/des3gs.class.php');
 				$query = new des3gs;
@@ -85,7 +90,7 @@ class phgstats {
 				include_once 'mods/servers/classes/ef.class.php';
 				$query = new ef;
 				return $query;
-        break;
+				break;
 			case 'fear': // FEAR
 				include_once('mods/servers/classes/fear.class.php');
 				$query = new fear;
