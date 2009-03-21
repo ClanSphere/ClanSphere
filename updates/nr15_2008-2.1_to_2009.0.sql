@@ -66,11 +66,11 @@ ALTER TABLE {pre}_faq DROP faq_time;
 ALTER TABLE {pre}_gallery DROP gallery_close;
 ALTER TABLE {pre}_gallery DROP gallery_download;
 
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('articles','max_navlist','4');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('articles', 'max_navlist', '4');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'list_subforums', '1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','ajax_navlists','');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','cellspacing','1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','developer','0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_navlists', '');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cellspacing', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'developer', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_height', '600');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_size', '204800');
@@ -85,7 +85,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ga
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_picture', '0');
 
 CREATE INDEX {pre}_boardmods_categories_id_index ON {pre}_boardmods (categories_id);
-CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);so
+CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);
 CREATE INDEX {pre}_eventguests_users_id_index ON {pre}_eventguests (users_id);
 CREATE INDEX {pre}_pictures_pictures_fid_index ON {pre}_pictures (pictures_fid);
 CREATE INDEX {pre}_pictures_pictures_id_index ON {pre}_pictures (pictures_id);
@@ -95,3 +95,4 @@ CREATE INDEX {pre}_medalsuser_users_id_index ON {pre}_medalsuser (users_id);
 CREATE INDEX {pre}_captcha_speedup_index ON {pre}_captcha (captcha_id, captcha_ip, captcha_time);
 CREATE INDEX {pre}_comments_speedup_index ON {pre}_comments (comments_fid, comments_id, comments_mod);
 CREATE INDEX {pre}_count_speedup_index ON {pre}_count (count_id, count_ip, count_time);
+CREATE INDEX {pre}_users_speedup_index ON {pre}_users (users_id, users_laston);

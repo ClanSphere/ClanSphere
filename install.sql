@@ -88,11 +88,11 @@ CREATE TABLE {pre}_access (
   UNIQUE (access_name)
 ){engine};
 
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{guest}', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{community}', 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{member}', 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{orga}', 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{admin}', 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_updates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{guest}', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_updates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{community}', 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_updates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{member}', 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_updates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{orga}', 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_fckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_updates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{admin}', 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
 
 CREATE TABLE {pre}_account (
   account_id {serial},
@@ -155,18 +155,18 @@ CREATE TABLE {pre}_banners (
 
 CREATE TABLE {pre}_board (
   board_id {serial},
-  categories_id int(3) NOT NULL default '0',
+  categories_id int(8) NOT NULL default '0',
   users_id int(8) NOT NULL default '0',
-  squads_id int(3) NOT NULL default '0',
-  board_access int(3) NOT NULL default '0',
+  squads_id int(8) NOT NULL default '0',
+  board_access int(8) NOT NULL default '0',
   board_name varchar(80) NOT NULL default '',
   board_text varchar(200) NOT NULL default '',
   board_time int(11) NOT NULL default '0',
   board_pwd varchar(40) NOT NULL default '',
   board_threads int(8) NOT NULL default '0',
   board_comments int(8) NOT NULL default '0',
-  board_order int(3) NOT NULL default '0',
-  board_read int(3) NOT NULL default '0',
+  board_order int(2) NOT NULL default '0',
+  board_read int(2) NOT NULL default '0',
   PRIMARY KEY (board_id)
 ){engine};
 
@@ -184,6 +184,7 @@ CREATE TABLE {pre}_boardfiles (
 CREATE TABLE {pre}_boardmods (
   boardmods_id {serial},
   users_id int(8) NOT NULL default '0',
+  categories_id int(8) NOT NULL default '0',
   boardmods_modpanel int(2) NOT NULL default '0',
   boardmods_edit int(2) NOT NULL default '0',
   boardmods_del int(2) NOT NULL default '0',
@@ -264,12 +265,12 @@ CREATE TABLE {pre}_categories (
   categories_text text,
   categories_access int(2) NOT NULL default '0',
   categories_order int(4) NOT NULL default '0',
-  categories_subid int(9) NOT NULL default '0',
+  categories_subid int(8) NOT NULL default '0',
   PRIMARY KEY (categories_id),
   UNIQUE (categories_mod,categories_name)
 ){engine};
 
-INSERT INTO {pre}_categories (categories_mod, categories_name) VALUES ('contact', 'Default');
+INSERT INTO {pre}_categories (categories_mod, categories_name) VALUES ('contact', 'default');
 
 CREATE TABLE {pre}_cash (
   cash_id {serial},
@@ -307,6 +308,7 @@ CREATE TABLE {pre}_comments (
   comments_time varchar(14) NOT NULL default '',
   comments_text text,
   comments_edit varchar(200) NOT NULL default '',
+  comments_guestnick varchar(40) NOT NULL default '',
   PRIMARY KEY (comments_id)
 ){engine};
 
@@ -342,44 +344,44 @@ CREATE TABLE {pre}_count (
 
 CREATE TABLE {pre}_count_archiv (
   count_id {serial},
-  count_month varchar(10) NOT NULL DEFAULT '',
-  count_num int(30) NOT NULL DEFAULT '0',
+  count_month varchar(10) NOT NULL default '',
+  count_num int(30) NOT NULL default '0',
   PRIMARY KEY (count_id)
 ){engine};
 
 CREATE TABLE {pre}_cups (
   cups_id {serial},
-  games_id int(8) NOT NULL DEFAULT '0',
-  cups_name varchar(80) NOT NULL DEFAULT '',
-  cups_system varchar(20) NOT NULL DEFAULT '',
+  games_id int(8) NOT NULL default '0',
+  cups_name varchar(80) NOT NULL default '',
+  cups_system varchar(20) NOT NULL default '',
   cups_text text,
-  cups_teams int(4) NOT NULL DEFAULT '0',
-  cups_start int(8) NOT NULL DEFAULT '0',
-  cups_brackets int(2) NOT NULL DEFAULT '0',
+  cups_teams int(4) NOT NULL default '0',
+  cups_start int(8) NOT NULL default '0',
+  cups_brackets int(2) NOT NULL default '0',
   PRIMARY KEY (cups_id)
 ){engine};
 
 CREATE TABLE {pre}_cupsquads (
   cupsquads_id {serial},
-  cups_id int(8) NOT NULL DEFAULT '0',
-  squads_id int(8) NOT NULL DEFAULT '0',
-  cupsquads_time varchar(14) NOT NULL DEFAULT '',
+  cups_id int(8) NOT NULL default '0',
+  squads_id int(8) NOT NULL default '0',
+  cupsquads_time varchar(14) NOT NULL default '',
   PRIMARY KEY (cupsquads_id),
   UNIQUE (cups_id, squads_id)
 ){engine};
 
 CREATE TABLE {pre}_cupmatches (
   cupmatches_id {serial},
-  cups_id int(8) NOT NULL DEFAULT '0',
-  squad1_id int(8) NOT NULL DEFAULT '0',
-  squad2_id int(8) NOT NULL DEFAULT '0',
-  cupmatches_score1 int(6) NOT NULL DEFAULT '0',
-  cupmatches_score2 int(6) NOT NULL DEFAULT '0',
-  cupmatches_winner int(8) NOT NULL DEFAULT '0',
-  cupmatches_loserbracket int(2) NOT NULL DEFAULT '0',
-  cupmatches_accepted1 int(2) NOT NULL DEFAULT '0',
-  cupmatches_accepted2 int(2) NOT NULL DEFAULT '0',
-  cupmatches_round int(2) NOT NULL DEFAULT '0',
+  cups_id int(8) NOT NULL default '0',
+  squad1_id int(8) NOT NULL default '0',
+  squad2_id int(8) NOT NULL default '0',
+  cupmatches_score1 int(6) NOT NULL default '0',
+  cupmatches_score2 int(6) NOT NULL default '0',
+  cupmatches_winner int(8) NOT NULL default '0',
+  cupmatches_loserbracket int(2) NOT NULL default '0',
+  cupmatches_accepted1 int(2) NOT NULL default '0',
+  cupmatches_accepted2 int(2) NOT NULL default '0',
+  cupmatches_round int(2) NOT NULL default '0',
   PRIMARY KEY (cupmatches_id),
   UNIQUE (cups_id, squad1_id, squad2_id),
   UNIQUE (cups_id, squad1_id, cupmatches_round)
@@ -470,13 +472,14 @@ CREATE TABLE {pre}_folders (
   folders_access int(2) NOT NULL default '0',
   folders_order int(4) NOT NULL default '0',
   folders_position int(8) NOT NULL default '0',
+  folders_advanced varchar(20) NOT NULL default '',
   PRIMARY KEY (folders_id),
   UNIQUE (folders_mod,folders_name)
 ){engine};
 
 CREATE TABLE {pre}_gallery (
   gallery_id {serial},
-  folders_id int(9) NOT NULL default '0',
+  folders_id int(8) NOT NULL default '0',
   users_id int(8) NOT NULL default '0',
   gallery_name varchar(80) NOT NULL default '',
   gallery_titel varchar(40) NOT NULL default '',
@@ -488,10 +491,8 @@ CREATE TABLE {pre}_gallery (
   gallery_count_downloads int(8) NOT NULL default '0',
   gallery_count_cards int(8) NOT NULL default '0',
   gallery_vote int(2) NOT NULL default '0',
-  gallery_download varchar(9) NOT NULL default '0',
   gallery_watermark varchar(20) NOT NULL default '',
   gallery_watermark_pos varchar(10) NOT NULL default '',
-  gallery_close int(2) NOT NULL default '0',
   PRIMARY KEY (gallery_id)
 ){engine};
 
@@ -522,7 +523,7 @@ CREATE TABLE {pre}_gbook (
   gbook_town varchar(20) NOT NULL default '',
   gbook_text text,
   gbook_ip varchar(20) NOT NULL default '',
-  gbook_lock int(1) NOT NULL default '0',
+  gbook_lock int(2) NOT NULL default '0',
   PRIMARY KEY (gbook_id)
 ){engine};
 
@@ -604,6 +605,22 @@ CREATE TABLE {pre}_maps (
   PRIMARY KEY (maps_id)
 ){engine};
 
+CREATE TABLE {pre}_medals (
+  medals_id {serial},
+  medals_extension varchar(20) NOT NULL default '',
+  medals_name varchar(200) NOT NULL default '',
+  medals_text text,
+  PRIMARY KEY (medals_id)
+){engine};
+
+CREATE TABLE {pre}_medalsuser (
+  medalsuser_id {serial},
+  medals_id int(8) NOT NULL default '0',
+  users_id int(8) NOT NULL default '0',
+  medalsuser_date int(14) NOT NULL default '0',
+  PRIMARY KEY (medalsuser_id)
+){engine};
+
 CREATE TABLE {pre}_members (
   members_id {serial},
   squads_id int(8) NOT NULL default '0',
@@ -681,9 +698,9 @@ CREATE TABLE {pre}_newsletter (
 CREATE TABLE {pre}_notifications (
   notifications_id {serial},
   users_id int(8) NOT NULL default '0',
-  notifications_board int(1) NOT NULL default '1',
-  notifications_pm int(1) NOT NULL default '1',
-  notifications_clanwar int(1) NOT NULL default '1',
+  notifications_board int(2) NOT NULL default '1',
+  notifications_pm int(2) NOT NULL default '1',
+  notifications_clanwar int(2) NOT NULL default '1',
   PRIMARY KEY  (notifications_id)
 ) {engine};
 
@@ -696,15 +713,18 @@ CREATE TABLE {pre}_options (
   UNIQUE (options_mod,options_name)
 ){engine};
 
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'def_abcode','0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'word_cut','40');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'def_abcode', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'word_cut', '40');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'max_width', '300');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'max_height', '300');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'max_size', '51200');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'def_func', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'image_width', '500');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'image_height', '500');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('articles', 'max_navlist', '4');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'list_subforums', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_navlists', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_reload', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cellspacing', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_lang', '{def_lang}');
@@ -720,17 +740,18 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_dstime', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_org', 'yourdomain.com');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_mail', 'noreply@yourdomain.com');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_parameters','');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_parameters', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_flood', '30');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'img_path', 'crystal_project');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'img_ext', 'png');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_admin', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','developer','0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'public','1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news','0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2008.3_svn');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'developer', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'public', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2009.0_svn');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2008-09-20');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', 35);
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'width', '90');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'height', '400');
@@ -747,7 +768,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ba
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('banners', 'max_height', '100');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('banners', 'max_size', '51200');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('banners', 'def_order', '1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('banners','last_id','0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('banners', 'last_id', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'max_text', '1000');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'max_signatur', '200');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'avatar_height', '100');
@@ -755,8 +776,8 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('bo
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'avatar_size', '102400');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'file_size', '204800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'file_types', 'jpg,jpeg,gif,png,txt,pdf');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'doubleposts','-1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'sort','ASC');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'doubleposts', '-1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'sort', 'ASC');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cash', 'month_out', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('categories', 'max_width', '150');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('categories', 'max_height', '150');
@@ -798,12 +819,15 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ga
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('gallery', 'max_folders', '5');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('gallery', 'size2', '511488');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('gallery', 'lightbox', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_height', '30');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_size', '15360');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_width', '30');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('gbook', 'lock', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('members','label','members');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('members', 'label', 'members');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('messages', 'max_space', '20');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('messages', 'del_time', '10');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_recent','8');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_navlist','4');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_recent', '8');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_navlist', '4');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_width', '800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_height', '600');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_size', '204800');
@@ -811,33 +835,34 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ne
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_title', 'News');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_description', 'Recent informations');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'abcode', '1,1,1,0,0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','def_width_listimg','180');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','def_height_listimg','70');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','max_size_listimg','512000');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','def_width_navimg','88');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','def_height_navimg','31');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','max_size_navimg','512000');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','def_width_rotimg','180');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','def_height_rotimg','70');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','max_size_rotimg','512000');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','method','rotation');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_width_listimg', '180');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_height_listimg', '70');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'max_size_listimg', '512000');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_width_navimg', '88');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_height_navimg', '31');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'max_size_navimg', '512000');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_width_rotimg', '180');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_height_rotimg', '70');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'max_size_rotimg', '512000');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'method', 'rotation');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('replays', 'file_size', '10000000');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('replays', 'file_type', 'wmv,avi');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox', 'max_text', '100');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox','order','ASC');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox','limit','10');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox','linebreak','28');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox', 'order', 'ASC');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox', 'limit', '10');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox', 'linebreak', '28');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'max_width', '250');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'max_height', '100');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'max_size', '76800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'def_order', '1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads','label','squad');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'label', 'squad');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_width', '140');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_height', '170');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_size', '51200');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'min_letters','4');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_register','0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'register','1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'min_letters', '4');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_picture', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_register', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'register', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('wars', 'max_width', '800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('wars', 'max_height', '600');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('wars', 'max_size', '204800');
@@ -865,17 +890,24 @@ CREATE TABLE {pre}_partner (
   partner_nimg varchar(200) NOT NULL default '',
   partner_rimg varchar(200) NOT NULL default '',
   partner_priority int(2) NOT NULL default '0',
-  PRIMARY KEY (partner_id )
+  PRIMARY KEY (partner_id)
 ){engine};
 
+CREATE TABLE {pre}_pictures (
+  pictures_id {serial},
+  pictures_mod varchar(20) NOT NULL default '',
+  pictures_fid int(8) NOT NULL default '0',
+  pictures_file varchar(20) NOT NULL default '',
+  PRIMARY KEY (pictures_id)
+) {engine};
 
 CREATE TABLE {pre}_players (
   players_id {serial},
-  users_id int(8) NOT NULL DEFAULT '0',
-  wars_id int(8) NOT NULL DEFAULT '0',
-  players_status varchar(20) NOT NULL DEFAULT '',
-  players_played int(2) NOT NULL DEFAULT '0',
-  players_time varchar(14) NOT NULL DEFAULT '',
+  users_id int(8) NOT NULL default '0',
+  wars_id int(8) NOT NULL default '0',
+  players_status varchar(20) NOT NULL default '',
+  players_played int(2) NOT NULL default '0',
+  players_time varchar(14) NOT NULL default '',
   PRIMARY KEY (players_id),
   UNIQUE (users_id, wars_id)
 ){engine};
@@ -940,7 +972,7 @@ CREATE TABLE {pre}_rounds (
 CREATE TABLE {pre}_rules (
   rules_id {serial},
   categories_id int(8) NOT NULL default '0',
-  rules_order int(5) NOT NULL default '0',
+  rules_order int(4) NOT NULL default '0',
   rules_title varchar(80) NOT NULL default '',
   rules_rule text,
   PRIMARY KEY (rules_id)
@@ -948,12 +980,12 @@ CREATE TABLE {pre}_rules (
 
 CREATE TABLE {pre}_static (
     static_id {serial},
-    static_title varchar(200) NOT NULL DEFAULT '',
+    static_title varchar(200) NOT NULL default '',
     static_text TEXT,
-    static_table INT(2) NOT NULL DEFAULT '0',
-    static_comments INT(2) NOT NULL DEFAULT '0',
-    static_admins INT(2) NOT NULL DEFAULT '0',
-    static_access INT(2) NOT NULL DEFAULT '0',
+    static_table INT(2) NOT NULL default '0',
+    static_comments INT(2) NOT NULL default '0',
+    static_admins INT(2) NOT NULL default '0',
+    static_access INT(2) NOT NULL default '0',
     PRIMARY KEY (static_id)
 ) {engine};
 
@@ -967,9 +999,9 @@ CREATE TABLE {pre}_servers (
   servers_class varchar(80) NOT NULL default '',
   servers_query int(20) NOT NULL default '0',
   servers_stats int(2) NOT NULL default '0',
-  servers_order int(3) NOT NULL default '0',
+  servers_order int(4) NOT NULL default '0',
   servers_slots int(4) NOT NULL default '0',
-  servers_type int(1) NOT NULL default '0',
+  servers_type int(2) NOT NULL default '0',
   PRIMARY KEY (servers_id)
 ){engine};
 
@@ -991,8 +1023,8 @@ CREATE TABLE {pre}_squads (
   squads_order int(4) NOT NULL default '0',
   squads_pwd varchar(40) NOT NULL default '',
   squads_own int(2) NOT NULL default '0',
-  squads_joinus int(1) NOT NULL default '0',
-  squads_fightus int(1) NOT NULL default '0',
+  squads_joinus int(2) NOT NULL default '0',
+  squads_fightus int(2) NOT NULL default '0',
   squads_text text,
   PRIMARY KEY (squads_id),
   UNIQUE (squads_name)
@@ -1017,6 +1049,15 @@ CREATE TABLE {pre}_threads (
   threads_ghost_thread int(8) NOT NULL default '0',
   PRIMARY KEY (threads_id)
 ){engine};
+
+CREATE TABLE {pre}_updates (
+  updates_id {serial},
+  updates_packet int(8) NOT NULL default '0',
+  updates_name text NOT NULL,
+  updates_date int(14) NOT NULL default '0',
+  updates_error text,
+  PRIMARY KEY (updates_id)
+) {engine};
 
 CREATE TABLE {pre}_users (
   users_id {serial},
@@ -1055,10 +1096,11 @@ CREATE TABLE {pre}_users (
   users_regkey varchar(50) NOT NULL default '0',
   users_homelimit int(4) NOT NULL default '8',
   users_readtime int(11) NOT NULL default '1209600',
-  users_newsletter int(1) NOT NULL default '0',
+  users_newsletter int(2) NOT NULL default '0',
   users_tpl varchar(80) NOT NULL default '',
   users_invisible int(2) NOT NULL default '0',
   users_ajax int(2) NOT NULL default '0',
+  users_delete int(2) NOT NULL default '0',
   PRIMARY KEY (users_id),
   UNIQUE (users_nick),
   UNIQUE (users_email)
@@ -1140,6 +1182,7 @@ CREATE INDEX {pre}_board_categories_id_index ON {pre}_board (categories_id);
 CREATE INDEX {pre}_boardfiles_threads_id_index ON {pre}_boardfiles (threads_id);
 CREATE INDEX {pre}_boardfiles_comments_id_index ON {pre}_boardfiles (comments_id);
 CREATE INDEX {pre}_boardfiles_users_id_index ON {pre}_boardfiles (users_id);
+CREATE INDEX {pre}_boardmods_categories_id_index ON {pre}_boardmods (categories_id);
 CREATE INDEX {pre}_boardmods_users_id_index ON {pre}_boardmods (users_id);
 CREATE INDEX {pre}_boardpws_board_id_index ON {pre}_boardpws (board_id);
 CREATE INDEX {pre}_boardpws_users_id_index ON {pre}_boardpws (users_id);
@@ -1183,6 +1226,8 @@ CREATE INDEX {pre}_joinus_games_id_index ON {pre}_joinus (games_id);
 CREATE INDEX {pre}_links_categories_id_index ON {pre}_links (categories_id);
 CREATE INDEX {pre}_mail_categories_id_index ON {pre}_mail (categories_id);
 CREATE INDEX {pre}_maps_games_id_index ON {pre}_maps (games_id);
+CREATE INDEX {pre}_medalsuser_medals_id_index ON {pre}_medalsuser (medals_id);
+CREATE INDEX {pre}_medalsuser_users_id_index ON {pre}_medalsuser (users_id);
 CREATE INDEX {pre}_members_squads_id_index ON {pre}_members (squads_id);
 CREATE INDEX {pre}_members_users_id_index ON {pre}_members (users_id);
 CREATE INDEX {pre}_messages_users_id_index ON {pre}_messages (users_id);
@@ -1191,6 +1236,8 @@ CREATE INDEX {pre}_news_categories_id_index ON {pre}_news (categories_id);
 CREATE INDEX {pre}_news_users_id_index ON {pre}_news (users_id);
 CREATE INDEX {pre}_newsletter_users_id_index ON {pre}_newsletter (users_id);
 CREATE INDEX {pre}_partner_categories_id_index ON {pre}_partner (categories_id);
+CREATE INDEX {pre}_pictures_pictures_fid_index ON {pre}_pictures (pictures_fid);
+CREATE INDEX {pre}_pictures_pictures_id_index ON {pre}_pictures (pictures_id);
 CREATE INDEX {pre}_quotes_categories_id_index ON {pre}_quotes (categories_id);
 CREATE INDEX {pre}_quotes_users_id_index ON {pre}_quotes (users_id);
 CREATE INDEX {pre}_read_threads_id_index ON {pre}_read (threads_id);
@@ -1216,3 +1263,8 @@ CREATE INDEX {pre}_wars_games_id_index ON {pre}_wars (games_id);
 CREATE INDEX {pre}_wars_categories_id_index ON {pre}_wars (categories_id);
 CREATE INDEX {pre}_wars_squads_id_index ON {pre}_wars (squads_id);
 CREATE INDEX {pre}_wars_clans_id_index ON {pre}_wars (clans_id);
+
+CREATE INDEX {pre}_captcha_speedup_index ON {pre}_captcha (captcha_id, captcha_ip, captcha_time);
+CREATE INDEX {pre}_comments_speedup_index ON {pre}_comments (comments_fid, comments_id, comments_mod);
+CREATE INDEX {pre}_count_speedup_index ON {pre}_count (count_id, count_ip, count_time);
+CREATE INDEX {pre}_users_speedup_index ON {pre}_users (users_id, users_laston);
