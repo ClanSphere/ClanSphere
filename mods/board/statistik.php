@@ -23,7 +23,7 @@ $data['user']['newest'] = cs_user($cs_users['users_id'],$cs_users['users_nick'],
 // Statistik End
 
 // All Users Start
-$data['user']['all'] = cs_sql_count(__FILE__,'users');
+$data['user']['all'] = cs_sql_count(__FILE__,'users', 'users_delete = "0"');
 // All Users End
 
 // Online Users Start
