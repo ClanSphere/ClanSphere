@@ -38,7 +38,7 @@ $cs_lang = cs_translate('servers');
 class hl {
 	var $maxlen = 2048;
 	var $q_info   = "\xFF\xFF\xFF\xFFTSource Engine Query\x00";
-	var $q_num    = "\xFF\xFF\xFF\xFF\x57";
+	var $q_num    = "\xFF\xFF\xFF\xFF\x55\xFF\xFF\xFF\xFF";
 	var $q_rules  = "\xFF\xFF\xFF\xFF\x56";
 	var $q_player = "\xFF\xFF\xFF\xFF\x55";
 	var $s_info   = false;
