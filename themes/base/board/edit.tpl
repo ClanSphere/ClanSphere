@@ -61,7 +61,7 @@
 	<tr>
 		<td class="leftb">{icon:password} {lang:add_password}</td>
 		<td class="leftc">
-			<input name="new_board_pwd" value="" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" type="password"><br />
+			<input name="new_board_pwd" value="" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" type="password" /><br />
         {lang:password2}
 		</td>
 	</tr>

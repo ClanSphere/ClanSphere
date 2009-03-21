@@ -65,14 +65,14 @@
     <tr>
       <td class="leftb">{icon:access} {lang:only_read} *</td>
       <td class="leftc">
-        <input name="board_read" value="1" type="radio">{lang:yes}
-        <input name="board_read" value="0" checked="checked" type="radio">{lang:no}
+        <input name="board_read" value="1" type="radio" />{lang:yes}
+        <input name="board_read" value="0" checked="checked" type="radio" />{lang:no}
       </td>
     </tr>
     <tr>
       <td class="leftb">{icon:password} {lang:add_password}</td>
       <td class="leftc">
-        <input name="board_pwd" value="{create:board_pwd}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" type="password"><br />
+        <input name="board_pwd" value="{create:board_pwd}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" type="password" /><br />
         {lang:password1}
       </td>
     </tr>
