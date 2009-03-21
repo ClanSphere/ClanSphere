@@ -59,10 +59,15 @@
       <td class="leftb"><input type="checkbox" name="send_mail" value="1" />
         {lang:send_mail} </td>
     </tr>
+    {if:captcha}
     <tr>
-      <td class="leftc"> {icon:lockoverlay} {lang:security_code} *</td>
-      <td class="leftb"> {register:captcha}{register:captchaimg}</td>
+      <td class="leftc">{icon:lockoverlay} {lang:security_code} *</td>
+      <td class="leftb">
+      	{captcha:img}<br />
+      	<input type="text" name="captcha" value="" maxlength="8" size="8" />
+      </td>
     </tr>
+    {stop:captcha}
     <tr>
       <td class="leftc"> {icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="submit" name="submit" value="{lang:signup}" />

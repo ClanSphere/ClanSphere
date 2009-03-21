@@ -200,7 +200,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
       $levels++;
     }
     $data['data']['w_position'] .= cs_html_select(0);
-    $data['data']['w_trans'] = cs_html_input('gallery_watermark_trans',$gallery_watermark_trans,'text',3,3);
+    $data['data']['w_trans'] = $gallery_watermark_trans;
   }
   
 

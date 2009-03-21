@@ -61,10 +61,15 @@
 	    <input type="checkbox" name="newsletter" value="1" {checked:newsletter} />{lang:newsletter_reg}
 	  </td>
     </tr>
+    {if:captcha}
     <tr>
-      <td class="leftc"> {icon:lockoverlay} {lang:security_code} *</td>
-      <td class="leftb"> {register:captcha}{register:captchaimg}</td>
+      <td class="leftc">{icon:lockoverlay} {lang:security_code} *</td>
+      <td class="leftb">
+      	{captcha:img}<br />
+      	<input type="text" name="captcha" value="" maxlength="8" size="8" />
+      </td>
     </tr>
+    {stop:captcha}
     <tr>
       <td class="leftc"> {icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="submit" name="submit" value="{lang:signup}" />

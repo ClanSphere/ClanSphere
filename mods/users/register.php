@@ -114,8 +114,6 @@ if(empty($op_users['register'])) {
   $data['register']['password'] = $register['password'];
   $data['register']['email'] = $register['email'];
   $data['register']['send_mail'] = $register['send_mail'];
-  $data['register']['captcha'] = '';
-  $data['register']['captchaimg'] = '';
   $data['register']['languages'] = '';
   $data['checked']['newsletter'] = empty($register['newsletter']) ? '' : 'checked';
   $data['checked']['email'] = empty($register['send_mail']) ? '' : 'checked';
@@ -127,11 +125,13 @@ if(empty($op_users['register'])) {
 
     $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
 
+		$data['if']['captcha'] = FALSE;
+
     if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
-    if(!empty($captcha)) {
-      $data['register']['captcha'] .= cs_html_img('mods/captcha/generate.php');
-      $data['register']['captchaimg'] .= cs_html_br(1) . cs_html_input('captcha','','text',8,8);
-    }
+    	if(!empty($captcha)) {
+    		$data['if']['captcha'] = TRUE;
+      	$data['captcha']['img'] .= cs_html_img('mods/captcha/generate.php');
+    	}
     }
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     if($op_users['def_register'] != '2') {

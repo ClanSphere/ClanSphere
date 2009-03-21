@@ -36,28 +36,25 @@ function cs_categories_dropdown($mod, $categories_id) {
 
 function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1) {
   
+  $data = array();
   $cells = 'categories_id, categories_name, categories_subid';
   $categories = cs_sql_select(__FILE__,'categories',$cells,"categories_mod = '".$mod. "'",'categories_subid ASC, categories_name',0,0);
   $categories = cs_catsort($categories);
   
-  $return = cs_html_select(1, 'categories_id');
-  $return .= cs_html_option('----', 0);
-  
   if (!empty($categories)) {
+  	$data['categories']['options'] = '';
     foreach ($categories AS $cat) {
       $blank = '';
       if (!empty($cat['layer'])) {
         for ($i = 0; $i < $cat['layer']; $i++) { $blank .= '&nbsp;&nbsp;'; }
         $blank .= '&raquo;';
       }
-      $return .= cs_html_option($blank . $cat['categories_name'],$cat['categories_id'], $cat['categories_id'] == $categories_id);
+      $data['categories']['options'] .= cs_html_option($blank . $cat['categories_name'],$cat['categories_id'], $cat['categories_id'] == $categories_id);
     }
   }
   
-  $return .= cs_html_select(0);
-  
-  return !empty($new) ? $return . ' - ' . cs_html_input('categories_name','','text',80,20) : $return;
-
+  $data['if']['new'] = !empty($new) ? TRUE : FALSE;
+	return cs_subtemplate(__FILE__,$data,'categories','cat_dropdown2');
 }
 
 function cs_catsort ($array, $id = 0) {

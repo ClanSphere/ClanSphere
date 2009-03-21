@@ -45,7 +45,12 @@
   </tr>
   <tr>
     <td class="leftc">{icon:xpaint} {lang:watermark}</td>
-    <td class="leftb">{data:w_select}{data:w_position}{lang:wm_trans}{data:w_trans}% {data:w_img}</td>
+    <td class="leftb">
+    	{data:w_select}
+    	{data:w_position}
+    	{lang:wm_trans}<input type="text" name="watermark_trans" value="{data:w_trans}" maxlength="3" size="3" />%
+    	{data:w_img}
+    </td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:text} <br /> <br />

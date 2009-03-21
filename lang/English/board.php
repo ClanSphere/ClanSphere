@@ -213,7 +213,8 @@ $cs_lang['max_avatar_size'] = 'Max. Avatar size';
 $cs_lang['max_filesize'] = 'Max. filesize';
 
 $cs_lang['double_posts'] = 'Allow double posts';
-$cs_lang['days_after'] = 'After %s Days';
+$cs_lang['days_after1'] = 'After';
+$cs_lang['days_after2'] = 'Days';
 $cs_lang['sort_asc'] = 'Ascending';
 $cs_lang['sort_desc'] = 'Descending';
 

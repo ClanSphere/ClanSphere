@@ -140,7 +140,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     if(empty($watermark[1])) {
     $watermark[1] = '0';
     }
-    $data['data']['w_trans'] = cs_html_input('watermark_trans',$watermark[1],'text',2,2);
+    $data['data']['w_trans'] = $watermark[1];
   }
   
 

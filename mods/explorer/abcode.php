@@ -51,7 +51,6 @@ function cs_abcode_toolshtml($name) {
   $var .= cs_html_option('cs_html_hr','cs_html_hr');
   $var .= cs_html_option('cs_html_img','cs_html_img');
   $var .= cs_html_option('cs_html_link','cs_html_link');
-  $var .= cs_html_option('cs_html_input','cs_html_input');
   $var .= cs_html_option('cs_html_select','cs_html_select');
   $var .= cs_html_option('cs_html_option','cs_html_option');
   $var .= cs_html_select(0);

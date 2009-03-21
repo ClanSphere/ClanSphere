@@ -76,8 +76,7 @@ if(!empty($board_form)) {
   $data['options']['double_posts'] = $checked;
   $data['options']['visible'] = $visibility;
   $data['options']['doubleposts'] = $doubleposts;
-  $input = cs_html_input('doubleposts',$doubleposts,'text',5,5);
-  $data['options']['input'] = sprintf($cs_lang['days_after'],$input);
+  
   $data['options']['list_subforums'] = empty($cs_board['list_subforums']) ? '' : ' checked="checked"';
 }
 
