@@ -57,4 +57,9 @@ $cs_lang['stage_1_text'] = ': min. 8 Characters.';
 $cs_lang['stage_2_text'] = ': min. 8 Character, 3 small Letters, 2 large Letters & 2 Numbers.';
 $cs_lang['stage_3_text'] = ': min. 8 Character, 3 small Letters, 2 large Letters & 2 Numbers';
 $cs_lang['stage_4_text'] = ': min. 8 Character, 3 small Letters, 2 large Letters, 2 Numbers & 1 Special character';
+
+$cs_lang['rules'] = 'Rules';
+$cs_lang['rules2'] = 'read and accepted';
+$cs_lang['no_rules'] = '- You have to read and accept the rules';
+
 ?>

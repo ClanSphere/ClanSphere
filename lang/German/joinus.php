@@ -61,4 +61,5 @@ $cs_lang['stage_4_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;
 $cs_lang['rules'] = 'Regeln';
 $cs_lang['rules2'] = 'gelesen und akzeptiert';
 $cs_lang['no_rules'] = '- Die Regeln wurden nicht gelesen und akzeptiert';
+
 ?>

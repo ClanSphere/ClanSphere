@@ -89,6 +89,8 @@ $cs_lang['buddys']       = 'Contacts in list:';
 $cs_lang['autore_true']   = 'Activated';
 $cs_lang['autore_false']   = 'Deactivated';
 
+$cs_lang['msg_rly_rmv'] = 'Really delete message %s ?';
+
 //create
 $cs_lang['head_create']  = 'Write';
 $cs_lang['body_create']  = "Send messages to other users here.\nYou can send messages to more than 1 user at a time. \nSeperate users with '; ' . ex. Name1; Name2; Name3;\nYou can also send messages to squads or clans. ex. Clan:clanname; or Squad:squadname;";

@@ -41,6 +41,7 @@ $cs_lang['release'] = 'Release';
 $cs_lang['user'] = 'User';
 $cs_lang['views'] = 'Views';
 $cs_lang['xtimes'] = 'times';
+$cs_lang['nocat_axx'] = 'Category not found or access denied.';
 
 // manage.php
 $cs_lang['head_manage']  = 'Administration';

@@ -54,5 +54,7 @@ $cs_lang['too_high'] ='- Symbol is too high';
 $cs_lang['too_big'] ='- The file is too big;';
 
 $cs_lang['details'] = 'Details';
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';
 
 ?>

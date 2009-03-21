@@ -16,6 +16,7 @@ $cs_lang['nick']            = 'Nickname';
 $cs_lang['message']          = 'Message';
 
 $cs_lang['flood']            = 'You have to wait %s more second to write your next comment';
+$cs_lang['double']           = 'You have already posted a message like this recently';
 $cs_lang['user_exists']         = 'User with this name already exists. Please use another ';
 $cs_lang['user_exists']         .= 'Nickname or log in with your user account.';
 
