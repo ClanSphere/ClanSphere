@@ -18,7 +18,7 @@
 <tr>
 <td class="leftb">{if:catimg}
     <img src="{page:path}{news:url_catimg}" style="float:right" alt="" />{stop:catimg}
-{news:news_readmore}{news:news_text}<br />
+{news:news_readmore}{news:news_text}
 {news:pictures}
 </td>
 </tr>

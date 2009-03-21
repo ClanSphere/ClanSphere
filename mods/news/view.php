@@ -45,6 +45,7 @@ if(!empty($pub)) {
   $data['news']['pictures'] = '';
   if(!empty($cs_news['news_pictures'])) {
     $news_pics = explode("\n",$cs_news['news_pictures']);
+    $data['news']['pictures'] = cs_html_br(2);
     foreach($news_pics AS $pic) {
       $link = cs_html_img('uploads/news/thumb-' . $pic);
       $data['news']['pictures'] .= cs_html_link('uploads/news/picture-' . $pic,$link) . ' ';

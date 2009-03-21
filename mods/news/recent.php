@@ -51,12 +51,12 @@ for($run = 0; $run < $news_loop; $run++) {
   $cs_news[$run]['if']['readmore'] = false;
 
   if(!empty($cs_news[$run]['news_readmore']) and $cs_news[$run]['news_readmore_active'] == '1') {
-    $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . cs_html_br(2);
+    $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
     $cs_news[$run]['if']['readmore'] = true;
     $cs_news[$run]['news_text'] = '';
   }
   elseif(!empty($cs_news[$run]['news_readmore']) and  $cs_news[$run]['news_readmore_active'] == '0'){
-    $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . cs_html_br(2);
+    $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
     $cs_news[$run]['news_text'] = cs_secure($cs_news[$run]['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
   }
   else {
@@ -79,6 +79,7 @@ for($run = 0; $run < $news_loop; $run++) {
   $cs_news[$run]['pictures'] = '';
   if(!empty($cs_news[$run]['news_pictures'])) {
     $news_pics = explode("\n", $cs_news[$run]['news_pictures']);
+    $cs_news[$run]['pictures'] .= cs_html_br(2);
     foreach ($news_pics as $pic) {
     $link = cs_html_img('uploads/news/thumb-' . $pic);
       $cs_news[$run]['pictures'] .= cs_html_link('uploads/news/picture-' . $pic, $link) . ' ';

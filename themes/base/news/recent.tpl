@@ -32,9 +32,9 @@
  <tr>
   <td class="leftb">{if:catimg}
     <img src="{page:path}{news:url_catimg}" style="float:right" alt="" />{stop:catimg}
-    {news:news_text}<br />
+    {news:news_text}
     {news:news_readmore}
-    {if:readmore}<a href="{url:news_view:id={news:news_id}}">{lang:readmore_go}</a>{stop:readmore}
+    {if:readmore}<br /><br /><a href="{url:news_view:id={news:news_id}}">{lang:readmore_go}</a>{stop:readmore}
 {news:pictures}
   </td>
  </tr>
