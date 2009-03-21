@@ -76,9 +76,6 @@ $cs_lang['last_thr']    = 'The last %s threads';
 //com_create.php
 $cs_lang['not_able'] = 'The target does not allow answers.';
 
-$cs_lang['text_to_long'] = ' - The text is ';
-$cs_lang['text_to_long_2'] = ' characters long. That is ';
-$cs_lang['text_to_long_3'] = ' characters too much!';
 $cs_lang['indi'] = ' Characters';
 
 $cs_lang['place']            = 'Place:';

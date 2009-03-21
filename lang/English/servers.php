@@ -35,7 +35,6 @@ $cs_lang['fsockoff'] .= 'To activate the function, delete the line <strong>disab
 $cs_lang['fsockoff'] .= '<br /><b>Live-Status is not possible!</b>';
 $cs_lang['php'] = '<strong>An error occurred:</strong><br />';
 $cs_lang['php'] .= 'Update you PHP Version to use the Serverview.<br />';
-$cs_lang['all'] = 'Total: ';
 $cs_lang['headline'] = 'Servername';
 $cs_lang['new_serv'] = 'New Server';
 $cs_lang['number'] = 'Number: ';
