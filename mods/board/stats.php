@@ -13,14 +13,14 @@ $d['stats']['users_active'] = cs_sql_count(__FILE__,'comments cms RIGHT JOIN {pr
 $d['stats']['categories'] = cs_sql_count(__FILE__,'categories','categories_mod = \'board\'');
 $d['stats']['boards'] = cs_sql_count(__FILE__,'board');
 
-$tables = 'comments cms LEFT JOIN {pre}_users usr ON cms.users_id = usr.users_id AND usr.users_active = \'1\' LEFT JOIN {pre}_threads thr ON thr.users_id = usr.users_id GROUP BY usr.users_id, usr.users_nick';
+$tables = 'comments cms LEFT JOIN {pre}_users usr ON cms.users_id = usr.users_id AND usr.users_active = "1" AND usr.users_delete = "0" LEFT JOIN {pre}_threads thr ON thr.users_id = usr.users_id GROUP BY usr.users_id, usr.users_nick';
 $cells = 'usr.users_id AS users_id, usr.users_nick AS users_nick, COUNT(DISTINCT cms.comments_id) + COUNT(DISTINCT thr.threads_id) AS comments'; 
 $select = cs_sql_select(__FILE__,$tables,$cells,0,'comments DESC, usr.users_nick',0,3);
 $d['stats']['toplist'] = '';
 if (!empty($select)) {
 	foreach ($select AS $user) {
-	  $d['stats']['toplist'] .= cs_user($user['users_id'],$user['users_nick']);
-	  $d['stats']['toplist'] .= ' (' . $user['comments'] . ' ' . $cs_lang['posts'] . '), ';
+	  if (!empty($user['users_id']))
+		  $d['stats']['toplist'] .= cs_user($user['users_id'],$user['users_nick']) . ' (' . $user['comments'] . ' ' . $cs_lang['posts'] . '), ';
 	}
 	$d['stats']['toplist'] = substr($d['stats']['toplist'],0,-2);
 }
