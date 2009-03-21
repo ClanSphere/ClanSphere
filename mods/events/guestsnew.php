@@ -6,12 +6,13 @@ $cs_lang = cs_translate('events');
 
 $cs_eventguests['eventguests_since'] = cs_time();
 
-if(isset($_POST['submit'])) {
-  $cs_eventguests['events_id'] = $_POST['events_id'];
-  $cs_eventguests['users_id'] = $_POST['users_id'];
+$cs_eventguests['events_id'] = empty($_REQUEST['events_id']) ? 0 : $_REQUEST['events_id'];
+$cs_eventguests['users_id'] = empty($_REQUEST['users_id']) ? 0 : $_REQUEST['users_id'];
 
-  settype($cs_eventguests['events_id'],'integer');
-  settype($cs_eventguests['users_id'],'integer');
+settype($cs_eventguests['events_id'],'integer');
+settype($cs_eventguests['users_id'],'integer');
+
+if(isset($_POST['submit'])) {
 
   $error = 0;
   $errormsg = '';

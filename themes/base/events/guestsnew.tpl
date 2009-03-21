@@ -12,7 +12,7 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:cal} {lang:event} *</td>
-      <td class="leftb"><select name="events_id" >
+      <td class="leftb"><select name="events_id">
           <option value="0">----</option>
 		  {loop:events}
 		  <option value="{events:id}">{events:time} - {events:name}</option>
@@ -22,7 +22,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:personal} {lang:user} *</td>
-      <td class="leftb" colspan="2"><select name="users_id" >
+      <td class="leftb" colspan="2"><select name="users_id">
           <option value="0">----</option>
 		  {loop:user}
           <option value="{user:id}">{user:name}</option>
