@@ -83,7 +83,6 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $target = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
   if ($cs_main['def_theme'] != 'base' and !file_exists($target))
   {
-    cs_warning('cs_subtemplate - Custom theme file not found: "' . $target . '"');
     $target = 'themes/base/' . $mod . '/' . $action . '.tpl';
   }
   if (!file_exists($target))

@@ -285,9 +285,9 @@ function cs_abcode_load() {
   
   global $replaces, $cs_main;
   if (!empty($replaces)) return;
-  $cs_main['def_theme'] = empty($cs_main['def_theme']) ? 'base' : $cs_main['def_theme'];
+  $theme = empty($cs_main['def_theme']) || !file_exists('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl') ? 'base' : $cs_main['def_theme'];
   
-  $replaces = file('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl');
+  $replaces = file('themes/' . $theme . '/abcode/replaces.tpl');
   
 }
 function cs_abcode_output($id, $matches = 0, $limit = 0) {
