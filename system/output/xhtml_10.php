@@ -2,9 +2,9 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-# The following functions are removed: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_span
+# The following functions are removed: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_input, cs_html_span
 # Change xhtml_10.php to xhtml_10_old.php in cs_init to use them further on
-# The following functions will be deleted soon: cs_html_input, cs_html_div
+# The following functions will be deleted soon: cs_html_div
 # Please use themes instead
 
 function cs_html_br($run)
@@ -96,31 +96,6 @@ function cs_html_link($url, $link, $use_target = 1, $class = 0, $title = 0, $mor
 function cs_html_anchor($name, $text = '', $more = '')
 {
   return "<a href=\"#\" id=\"" . $name . "\"" . $more . " >" . $text . "</a>";
-}
-
-function cs_html_input($name, $value, $type, $max = 0, $size = 0, $more = 0, $class = 'form')
-{
-  cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
-
-  $value = htmlspecialchars($value);
-  $var = "\n <input type=\"" . $type . "\" name=\"" . $name . "\" value=\"" . $value . "\" ";
-  if (!empty($more))
-  {
-    $var .= $more . ' ';
-  }
-  if (!empty($max))
-  {
-    $var .= "maxlength=\"" . $max . "\" ";
-  }
-  if (!empty($size))
-  {
-    $var .= "size=\"" . $size . "\" ";
-  }
-  if (!empty($class))
-  {
-    $var .= "class=\"" . $class . "\" ";
-  }
-  return $var . '/>';
 }
 
 function cs_html_select($func, $name = '', $more = 0)
