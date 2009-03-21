@@ -27,23 +27,20 @@ switch ($check_to[0])
   }
   case 2:
   {
-    $newsletter_to = $cs_lang['ac_group']; 
     $group = cs_sql_select(__FILE__,'access','access_name',"access_id = '" . $check_to[1] . "'");
-    $newsletter_to .= $group['access_name'];
+  	$newsletter_to = $cs_lang['ac_group'] . ' ' . $group['access_name'];
     break;
   }
   case 3:
   {
-    $newsletter_to = $cs_lang['squad'];
     $group = cs_sql_select(__FILE__,'squads','squads_name',"squads_id = '" . $check_to[1] . "'");
-    $newsletter_to .= $group['squads_name'];
+    $newsletter_to = $cs_lang['squad'] . ' ' . $group['squads_name'];
     break;
   }
   case 4:
   {
-    $newsletter_to = $cs_lang['clan'];
     $group = cs_sql_select(__FILE__,'clans','clans_name',"clans_id = '" . $check_to[1] . "'");
-    $newsletter_to .= $group['clans_name'];
+    $newsletter_to = $cs_lang['clan'] . ' ' . $group['clans_name'];
     break;
   }                                                                                               
 }
