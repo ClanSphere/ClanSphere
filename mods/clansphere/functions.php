@@ -54,13 +54,17 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
 
 function cs_cspnews($id = 0, $all = 0) {
 
-  global $cs_lang;
+  global $cs_lang, $com_lang;
   $cs_lang = cs_translate('clansphere');
+  
   $data['if']['one'] = false;
   $data['if']['all'] = false;
   $allow_url_fopen = ini_get('allow_url_fopen');
+  
   if(empty($allow_url_fopen)) {
+    
     $error = $cs_lang['need_url_fopen'];
+    
   } else {
     if(!empty($id)) {
       $opt_where = "options_mod = 'clansphere' AND options_name = 'sec_news'";
@@ -76,7 +80,7 @@ function cs_cspnews($id = 0, $all = 0) {
         if(empty($all)) {
           if($content[0] > $last_id) {
             $url = 'http://www.clansphere.net/index/news/view/id/' . $content[0];
-            $data['info']['text'] = $content[1];
+            $data['info']['text'] = htmlentities($content[1], ENT_QUOTES, $com_lang['charset']);
             $data['info']['view'] = cs_html_link($url,$cs_lang['view']);
             $data['info']['read'] = cs_link($cs_lang['read'],'clansphere','admin','sec_news=' . $content[0]);
             $data['info']['showall'] = cs_link($cs_lang['showall'],'clansphere','sec_news');
