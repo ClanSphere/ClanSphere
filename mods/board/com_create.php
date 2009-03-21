@@ -43,7 +43,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
   return errorPage('com_create');
 }
 if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'] == -1 || $last_comment['comments_time'] + $options['doubleposts'] > cs_time() )) {
-  return errorPage('com_create');
+  return errorPage('com_create', $cs_lang['last_own']);
 }
 //ende sicherheits abfrage
 

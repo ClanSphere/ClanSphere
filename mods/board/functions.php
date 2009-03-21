@@ -24,11 +24,11 @@ function getNextThread($catid, $threads_time)
 //-----------------------------------------------------------------------------
 // Error Page for Errors(depending on language file)
 //-----------------------------------------------------------------------------
-function errorPage($section)
+function errorPage($section, $error = 0)
 {
   global $cs_lang;
   $data = array();
-  $data['error']['section'] = $cs_lang[$section.'_errortext'];
+  $data['error']['section'] = empty($error) ? $cs_lang[$section.'_errortext'] : $error;
   
  echo cs_subtemplate(__FILE__,$data,'board','error_page');
 }
