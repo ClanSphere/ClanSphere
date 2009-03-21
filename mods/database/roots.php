@@ -4,9 +4,7 @@
 
 $cs_lang = cs_translate('database');
 
-global $cs_db;
-$data['if']['cs_db'] = false;
-
+$data['roots']['optimize_tables_url'] = cs_url('database','optimize');
 $data['roots']['import_url'] = cs_url('database','import');
 $data['roots']['export_url'] = cs_url('database','export');
 $data['roots']['statistic_url'] = cs_url('database','statistic');

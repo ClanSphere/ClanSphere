@@ -8,11 +8,9 @@
 </table>
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-  {if:cs_db}
   <tr>
     <td class="centerb"><a href="{roots:optimize_tables_url}">{lang:optimize_tables}</a> </td>
   </tr>
-  {stop:cs_db}
   <tr>
     <td class="centerb"><a href="{roots:import_url}">{lang:import}</a> </td>
   </tr>
