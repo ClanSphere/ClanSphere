@@ -37,11 +37,6 @@ if(isset($_POST['submit'])) {
     }
   }
 }
-else {
-  $cs_eventguests['events_id'] = 0;
-  $cs_eventguests['users_id'] = 0;
-}
-
 
 if(!isset($_POST['submit'])) {
   $data['lang']['body'] = $cs_lang['body_create'];
