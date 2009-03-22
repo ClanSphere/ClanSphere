@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
   
   cs_optionsave('messages', $save);
 
-  cs_redirect($cs_lang['changes_done'],'messages','options');
+  cs_redirect($cs_lang['changes_done'], 'options', 'roots');
 
 } else {
   

@@ -20,13 +20,14 @@ if(isset($_POST['submit'])) {
   $save['view'] = $_POST['view'];
 
   require 'mods/clansphere/func_options.php';
+  
   cs_optionsave('count', $save);
   
-  cs_redirect($cs_lang['changes_done'],'count','options');
+  cs_redirect($cs_lang['changes_done'], 'options', 'roots');
   
 } else {
   
-	$data = array();
+  $data = array();
   
   $data['count'] = cs_sql_option(__FILE__,'count');
   

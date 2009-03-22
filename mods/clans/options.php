@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
   
 } else {
 	
-	$op_clans = cs_sql_option(__FILE__,'clans');
+  $op_clans = cs_sql_option(__FILE__,'clans');
 	
   $data['lang']['getmsg'] = cs_getmsg();
   $data['url']['form'] = cs_url('clans','options');

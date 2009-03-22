@@ -27,7 +27,7 @@ if(isset($_POST['submit'])) {
   
   cs_optionsave('gallery', $save);
 
-  cs_redirect($cs_lang['changes_done'],'gallery','options');
+  cs_redirect($cs_lang['changes_done'], 'options', 'roots');
 
 } else {
 

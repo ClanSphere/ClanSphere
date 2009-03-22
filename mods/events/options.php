@@ -11,12 +11,12 @@ if (isset($_POST['submit'])) {
   $save['max_height'] = (int) $_POST['max_height'];
   $save['max_size'] = (int) $_POST['max_size'];
   $save['show_wars'] = empty($_POST['show_wars']) ? 0 : 1;
-	$save['req_fullname'] = empty($_POST['req_fullname']) ? 0 : 1;
-	$save['req_fulladress'] = empty($_POST['req_fulladress']) ? 0 : 1;
-	$save['req_phone'] = empty($_POST['req_phone']) ? 0 : 1;
-	$save['req_mobile'] = empty($_POST['req_mobile']) ? 0 : 1;
+  $save['req_fullname'] = empty($_POST['req_fullname']) ? 0 : 1;
+  $save['req_fulladress'] = empty($_POST['req_fulladress']) ? 0 : 1;
+  $save['req_phone'] = empty($_POST['req_phone']) ? 0 : 1;
+  $save['req_mobile'] = empty($_POST['req_mobile']) ? 0 : 1;
   
-	require 'mods/clansphere/func_options.php';
+  require 'mods/clansphere/func_options.php';
   
   cs_optionsave('events', $save);
   

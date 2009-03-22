@@ -12,8 +12,8 @@
   {stop:done}
 </table>
 <br />
-{lang:getmsg}
-<form method="post" id="clansphere_options" action="{action:form}">
+
+<form method="post" id="clansphere_options" action="{url:clansphere_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:fileshare} Apache mod_rewrite</td>
@@ -42,18 +42,14 @@
       <td class="leftc">{icon:folder_home2} {lang:def_show}</td>
       <td class="leftb"> {lang:modul}:
         <select name="def_mod" >
-          
           {loop:sel}
           {sel:options}
           {stop:sel}
-        
         </select>
         <br />
-        {lang:action}:
-        <input type="text" name="def_action" value="{options:action}" maxlength="80" size="20"  />
+        {lang:action}: <input type="text" name="def_action" value="{options:action}" maxlength="80" size="20"  />
         <br />
-        {lang:parameters}:
-        <input type="text" name="def_parameters" value="{options:parameters}" maxlength="80" size="18"  />
+        {lang:parameters}: <input type="text" name="def_parameters" value="{options:parameters}" maxlength="80" size="18"  />
       </td>
     </tr>
     <tr>

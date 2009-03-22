@@ -25,9 +25,9 @@ if(isset($_POST['submit'])) {
   fwrite($fp, $text);
   fclose($fp);
 
-  cs_redirect($cs_lang['success'],'wars','options');
-}
-else {
+  cs_redirect($cs_lang['success'], 'options', 'roots');
+  
+} else {
   
   $data = array();
   

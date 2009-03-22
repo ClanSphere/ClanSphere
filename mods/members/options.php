@@ -5,11 +5,11 @@
 $cs_lang = cs_translate('members');
 
 if (!empty($_POST['submit'])) {
-	
-	$save = array();
-	$save['label'] = $_POST['label'];
-	
-	require 'mods/clansphere/func_options.php';
+  
+  $save = array();
+  $save['label'] = $_POST['label'];
+  
+  require 'mods/clansphere/func_options.php';
   
   cs_optionsave('members', $save);
   

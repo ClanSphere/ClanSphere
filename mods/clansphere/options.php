@@ -4,112 +4,82 @@
 
 $cs_lang = cs_translate('clansphere');
 
-$cs_options = cs_sql_option(__FILE__, 'clansphere');
-
-$data['if']['done'] = false;
-
 if($account['access_wizard'] == 5) {
-  $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_opts' AND options_value = '1'");
+	
+  $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_opts' AND options_value = \"1\"");
   if(empty($wizard)) {
     $data['if']['done'] = true;
-  $data['lang']['link_2'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=opts&amp;done=1');
-    }
+    $data['lang']['link_2'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=opts&amp;done=1');
   }
-  
-  $data['lang']['wizard'] = $cs_lang['wizard'];
-  $data['lang']['getmsg'] = cs_getmsg(); 
+}
 
 if(isset($_POST['submit'])) {
+	
   $modules = cs_checkdirs('mods');
   $allow = 0;
 
   foreach($modules as $mod) {
     if($mod['dir'] == $_POST['def_mod']) {
-    $allow++;
+      $allow++;
+    }
   }
-  }
+
+  $save = array();
+  $save['mod_rewrite'] = (int) $_POST['mod_rewrite'];
+  $save['def_width'] = $_POST['def_width'];
+  $save['cellspacing'] = (int) $_POST['cellspacing'];
+  $save['def_title'] = $_POST['def_title'];
+  $save['def_mod'] = empty($allow) ? $cs_main['def_mod'] : $_POST['def_mod'];
+  $save['def_action'] = empty($_POST['def_action']) ? 'list' : $_POST['def_action'];
+  $save['def_parameters'] = $_POST['def_parameters'];
+  $save['def_path'] = $_POST['def_path_mode'] == 'automatic' ? '' : $_POST['def_path'];
+  $save['public'] = (int) $_POST['public'];
+  $save['def_timezone'] = (int) $_POST['def_timezone'];
+  $save['def_dstime'] = $_POST['def_dstime'];
+  $save['def_flood'] = $_POST['def_flood'];
+  $save['def_org'] = $_POST['def_org'];
+  $save['def_mail'] = $_POST['def_mail'];
+  $save['img_path'] = $_POST['img_path'];
+  $save['img_ext'] = $_POST['img_ext'];
+  $save['def_admin'] = $_POST['def_admin'];
+  $save['developer'] = (int) $_POST['developer'];  
+
+  require 'mods/clansphere/func_options.php';
   
-  $_POST['def_mod'] = empty($allow) ? $cs_main['def_mod'] : $_POST['def_mod'];
-
-  $def_path = $_POST['def_path_mode'] == 'automatic' ? '' : $_POST['def_path'];
-
-  settype($_POST['mod_rewrite'],'integer');
-  settype($_POST['def_timezone'],'integer');
-  settype($_POST['public'],'integer');
-  settype($_POST['cellspacing'],'integer');
-  settype($_POST['developer'],'integer');
-
-  $opt_where = "options_mod = 'clansphere' AND options_name = ";
-  $def_cell = array('options_value');
-  $def_cont = array($_POST['mod_rewrite']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'mod_rewrite'");
-  $def_cont = array($_POST['def_width']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_width'");
-  $def_cont = array($_POST['cellspacing']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'cellspacing'");
-  $def_cont = array($_POST['def_title']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_title'");
-  $def_cont = array($_POST['def_mod']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_mod'");
-  $def_cont = empty($_POST['def_action']) ? array('list') : array($_POST['def_action']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_action'");
-  $def_cont = array($_POST['def_parameters']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_parameters'");
-  $def_cont = array($def_path);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_path'");
-  $def_cont = array($_POST['public']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'public'");  
-  $def_cont = array($_POST['def_timezone']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_timezone'");
-  $def_cont = array($_POST['def_dstime']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_dstime'");
-  $def_cont = array($_POST['def_flood']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_flood'");
-  $def_cont = array($_POST['def_org']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_org'");
-  $def_cont = array($_POST['def_mail']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_mail'");
-  $def_cont = array($_POST['img_path']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'img_path'");
-  $def_cont = array($_POST['img_ext']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'img_ext'");
-  $def_cont = array($_POST['def_admin']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'def_admin'");
-  $def_cont = array($_POST['developer']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'developer'");
+  cs_optionsave('clansphere', $save);
 
   if(!empty($_POST['dstime_all'])) {
     $query = 'UPDATE {pre}_users SET users_dstime = \''.$_POST['def_dstime'].'\'';
     cs_sql_query(__FILE__,$query);
   }
-  if (!empty($cs_main['ajax']) && !empty($account['users_ajax']) && (empty($_POST['mod_rewrite']) && !empty($cs_main['mod_rewrite'])) | (!empty($_POST['mod_rewrite']) && empty($cs_main['mod_rewrite'])))
+  if (!empty($cs_main['ajax']) && !empty($account['users_ajax']) && (empty($_POST['mod_rewrite']) && !empty($cs_main['mod_rewrite'])) | 
+    (!empty($_POST['mod_rewrite']) && empty($cs_main['mod_rewrite'])))
     die(ajax_js("window.location.hash='#'; window.location.href=window.location.href.substr(window.location.href.lastIndexOf('/')); window.location.reload();"));
-  cs_redirect($cs_lang['success'], 'clansphere','options');
+  
+  cs_redirect($cs_lang['success'], 'options','roots');
 
-}
-else {
-  $data['action']['form'] = cs_url('clansphere','options');
-
-  $selected = ' selected="selected"';
+} else {
+	
+	$data = array();
+	$data['options'] = cs_sql_option(__FILE__, 'clansphere');
+	
+	$data['if']['done'] = false;
 
   if (empty($cs_main['mod_rewrite'])) {
     $data['options']['mod_rewrite_on'] = '';
-    $data['options']['mod_rewrite_off'] = $selected;
+    $data['options']['mod_rewrite_off'] = ' selected="selected"';
   } else {
-    $data['options']['mod_rewrite_on'] = $selected;
+    $data['options']['mod_rewrite_on'] = ' selected="selected"';
     $data['options']['mod_rewrite_off'] = '';
   }
 
   if(empty($cs_main['developer'])) {
     $data['options']['developer_on'] = '';
-    $data['options']['developer_off'] = $selected;
+    $data['options']['developer_off'] = ' selected="selected"';
   } else {
-    $data['options']['developer_on'] = $selected;
+    $data['options']['developer_on'] = ' selected="selected"';
     $data['options']['developer_off'] = '';
   }
-
-  $data['options']['def_width'] = $cs_main['def_width'];
-  $data['options']['def_title'] = $cs_main['def_title'];
 
   $modules = cs_checkdirs('mods');
   $run = 0;
@@ -117,55 +87,19 @@ else {
   foreach($modules as $mods) {
     $sel = $mods['dir'] == $cs_main['def_mod'] ? 1 : 0;
     $data['sel'][$run]['options'] = cs_html_option($mods['name'],$mods['dir'],$sel);
-  $run++;
+    $run++;
   }
 
   $data['options']['action'] = $cs_main['def_action'];
   $data['options']['parameters'] = $cs_main['def_parameters'];
-
-  if($cs_main['def_path'] == '1') {
-    $data['options']['automatic'] = 'selected="selected"';
-  }
-  else {
-    $data['options']['automatic'] = '';
-  }
-
-  if($cs_main['def_path'] == '0') {
-    $data['options']['manual'] = 'selected="selected"';
-  }
-  else {
-    $data['options']['manual'] = '';
-  }
-
+  $data['options']['automatic'] = $cs_main['def_path'] == '1' ? 'selected="selected"' : '';
+  $data['options']['manual'] = $cs_main['def_path'] == '0' ? 'selected="selected"' : '';
   $data['options']['def_path'] = $cs_main['def_path'];
+  $data['options']['public_1'] = $cs_main['public'] == '1' ? 'checked="checked"' : '';
+  $data['options']['public_2'] = $cs_main['public'] == '0' ? 'checked="checked"' : '';
+  $data['options']['admin_1'] = $cs_main['def_admin'] == 'integrated' || empty($cs_main['def_admin']) ? 'checked="checked"' : '';
+  $data['options']['admin_2'] = $cs_main['def_admin'] == 'separated' ? 'checked="checked"' : '';
 
-  if($cs_main['public'] == '1') {
-    $data['options']['public_1'] = 'checked="checked"';
-  }
-  else {
-    $data['options']['public_1'] = '';
-  }
-
-  if($cs_main['public'] == '0') {
-    $data['options']['public_2'] = 'checked="checked"';
-  }
-  else {
-    $data['options']['public_2'] = '';
-  }
-
-  if($cs_main['def_admin'] == 'integrated' OR empty($cs_main['def_admin'])) {
-    $data['options']['admin_1'] = 'checked="checked"';
-  }
-  else {
-    $data['options']['admin_1'] = '';
-  }
-
-  if($cs_main['def_admin'] == 'separated') {
-    $data['options']['admin_2'] = 'checked="checked"';
-  }
-  else {
-    $data['options']['admin_2'] = '';
-  }
 
   $data['options']['def_timezone'] = cs_html_select(1,'def_timezone');
   $timezone = -10;
@@ -180,19 +114,8 @@ else {
 
   $data['options']['def_timezone'] .= cs_html_select(0);
 
-  if($cs_main['def_dstime'] == 'on') {
-    $data['options']['time_1'] = 'selected="selected"';
-  }
-  else {
-    $data['options']['time_1'] = '';
-  }
-
-  if($cs_main['def_dstime'] == 'off') {
-    $data['options']['time_0'] = 'selected="selected"';
-  }
-  else {
-    $data['options']['time_0'] = '';
-  }
+  $data['options']['time_1'] = $cs_main['def_dstime'] == 'on' ? 'selected="selected"' : '';
+  $data['options']['time_0'] = $cs_main['def_dstime'] == 'off' ? 'selected="selected"' : '';
 
   $data['options']['time_auto'] = $cs_main['def_dstime'] == '0' ? 'selected="selected"' : '';
 
@@ -203,8 +126,9 @@ else {
   $data['options']['img_ext'] = $cs_main['img_ext'];
   $data['options']['cellspacing'] = $cs_main['cellspacing'];
   $data['options']['ajax_reload'] = empty($cs_main['ajax_reload']) ? 10 : $cs_main['ajax_reload'];
+  
+  echo cs_subtemplate(__FILE__,$data,'clansphere','options');
+  
 }
-
-echo cs_subtemplate(__FILE__,$data,'clansphere','options');
 
 ?>

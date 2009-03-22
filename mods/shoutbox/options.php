@@ -14,7 +14,7 @@ if (!empty($_POST['submit'])) {
 	
   require 'mods/clansphere/func_options.php';
   
-	cs_optionsave('shoutbox', $save);
+  cs_optionsave('shoutbox', $save);
   
   cs_redirect($cs_lang['success'],'options','roots');
   

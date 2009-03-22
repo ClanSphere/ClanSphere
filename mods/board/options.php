@@ -29,7 +29,7 @@ if(isset($_POST['submit'])) {
   
   cs_optionsave('board', $save);
 
-  cs_redirect($cs_lang['changes_done'], 'board','options');
+  cs_redirect($cs_lang['success'], 'options','roots');
   
 }
 
