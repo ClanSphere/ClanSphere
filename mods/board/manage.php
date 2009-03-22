@@ -11,14 +11,14 @@ $categories_id = empty($cs_get['where']) ? 0 : $cs_get['where'];
 if (!empty($cs_post['where']))  $categories_id = $cs_post['where'];
 $start = empty($cs_get['start']) ? 0 : $cs_get['start'];
 if (!empty($cs_post['start']))  $start = $cs_post['start'];
-$sort = empty($cs_get['sort']) ? 3 : $cs_get['sort'];
+$sort = empty($cs_get['sort']) ? 4 : $cs_get['sort'];
 if (!empty($cs_post['sort']))  $sort = $cs_post['sort'];
 
 
-$cs_sort[1] = 'cat.categories_id DESC';
-$cs_sort[2] = 'cat.categories_id ASC';
-$cs_sort[3] = 'board_name DESC';
-$cs_sort[4] = 'board_name ASC';
+$cs_sort[1] = 'cat.categories_name DESC';
+$cs_sort[2] = 'cat.categories_name ASC';
+$cs_sort[3] = 'brd.board_name DESC';
+$cs_sort[4] = 'brd.board_name ASC';
 $order = $cs_sort[$sort];
 $where = empty($categories_id) ? 0 : "categories_id = '" . $categories_id . "'";
 $board_count = cs_sql_count(__FILE__,'board',$where);
