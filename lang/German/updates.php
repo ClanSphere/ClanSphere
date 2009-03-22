@@ -8,8 +8,8 @@ $cs_lang['mod_text']  = 'Verwaltung von Online-Updates f&uuml;r Clansphere';
 $cs_lang['not_avaible']  = "Auf Ihrem Webspace sind Online Updates nicht verf&uuml;gbar. Ihnen fehlt die
 n&ouml;tige PHP Bibliothek zip. Weitere Infos unter:";
 
-$cs_lang['no_updates']  = "Aktuell sind keine neuen UpdatePakete auf dem Server vorhanden. 
-Auf www.clansphere.net werden Sie dar&uuml;ber informiert ob neue UpdatePakete zur verf&uuml;gung stehen.";
+$cs_lang['no_updates']  = "Aktuell sind keine neuen Update-Pakete auf dem Server vorhanden. 
+Auf www.clansphere.net werden Sie dar&uuml;ber informiert wenn neue Update-Pakete zur Verf&uuml;gung stehen.";
  
 $cs_lang['notification'] = 'Hinweis';
 $cs_lang['packet']  = 'Paket';
