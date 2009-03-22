@@ -51,7 +51,7 @@
         <br />
         {abcode:smilies_readmore}</td>
       <td class="leftb" colspan="2">{abcode:features_readmore}
-        <textarea name="news_readmore" cols="50" rows="20" id="news_readmore"  style="width: 98%;">{news:news_readmore}</textarea></td>
+        <textarea name="news_readmore" cols="50" rows="10" id="news_readmore"  style="width: 98%;">{news:news_readmore}</textarea></td>
     </tr>
     <tr>
       <td class="leftc">{icon:kate} {lang:text} *<br />
