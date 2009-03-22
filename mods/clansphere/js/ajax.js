@@ -7,6 +7,7 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
   response = response.replace(/href=\"#([a-zA-Z0-9-_]*?)\"/g,"href=\"javascript:cs_scrollto_by_name('$1')\"");
   document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
     response.replace(/href=\"\/[a-zA-Z\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
+  delete response;
   if (document.getElementById('ajax_js') == null && id == 'content') {
     request_cont = 0;
     if (setanch) {
@@ -80,6 +81,7 @@ function initializeAJAX(modrewrite, navinterval) {
   } else
     cont = cont.replace(/href=\"([a-zA-Z\/\.\-\_]*)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"");
   document.getElementsByTagName('body')[0].innerHTML = cont;
+  delete cont;
   lastmove = GetMins();
   if (window.location.href.indexOf('debug.php') != -1) debug = 1;
   
@@ -139,7 +141,7 @@ function form_to_string(form) {
   for(i=0;i<fields.length;i++) {
     switch(fields[i].type) {
       case 'text': case 'password': case 'hidden': case 'textarea':
-        string += encodeURI(fields[i].name) + "=" + escape(fields[i].value) + "&";
+    	  string += encodeURI(fields[i].name) + "=" + escape(fields[i].value) + "&";
         break;
       case 'submit':
         if (!firstsubmit) firstsubmit = fields[i].name; break;
@@ -204,7 +206,9 @@ function forms_to_ajax() {
 }
 
 function upload_file(element) {
+  
   active_upload_count += 1;
+  
   if (!document.getElementById('upload_frame_div')) {
     upload_frame_div = document.createElement("div");
     upload_frame_div.setAttribute('id','upload_frame_div');
@@ -227,10 +231,10 @@ function upload_file(element) {
   form.method = "post";
   form.action = "upload.php";
   form.setAttribute("enctype","multipart/form-data");
-	
- 	enctype = form.getAttributeNode("enctype");
+  
+  enctype = form.getAttributeNode("enctype");
   enctype.value = "multipart/form-data";
-	
+  
   element.parentNode.innerHTML = "<div id=\"upload_"+element.name+"\">Uploading file...</div>";
   document.getElementById('upload_frame_div').appendChild(form);
   upload_name = document.createElement("input");
