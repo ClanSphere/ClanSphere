@@ -1,6 +1,6 @@
 <?php
-// CLANSPHERE.de CMS /lang/German/count.php
-// Freitag, 8. Februar 2008 15:34:56
+// ClanSphere 2009 - www.clansphere.net
+// Id: boardranks.php (Fri Dec  5 17:27:09 CET 2008) fAY-pA!N
 
 $cs_lang['mod_name']  = 'Besucher';
 $cs_lang['mod_text']  = 'Statistiken zu den Seitenaufrufen';

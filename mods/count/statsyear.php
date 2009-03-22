@@ -1,6 +1,6 @@
 <?php
-//CLANSPHERE.de CMS /mods/count/statsyear.php
-//Freitag, 8. Februar 2008 15:53:46
+// ClanSphere 2009 - www.clansphere.net
+// Id: boardranks.php (Fri Dec  5 17:27:09 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('count');
 $op_count = cs_sql_option(__FILE__,'count');
