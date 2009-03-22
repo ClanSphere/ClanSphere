@@ -125,31 +125,32 @@ if(empty($op_users['register'])) {
 
     $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
 
-		$data['if']['captcha'] = FALSE;
+		$data['if']['captcha'] = 0;
 
     if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     	if(!empty($captcha)) {
-    		$data['if']['captcha'] = TRUE;
-      	$data['captcha']['img'] .= cs_html_img('mods/captcha/generate.php');
+    		$data['if']['captcha'] = 1;
+      	$data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
     	}
     }
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     if($op_users['def_register'] != '2') {
-      $data['if']['reg_mail'] = true;
+      $data['if']['reg_mail'] = 1;
     } else {
-         $data['if']['reg_mail'] = false;
+         $data['if']['reg_mail'] = 0;
     }
       echo cs_subtemplate(__FILE__,$data,'users','register_code');
   } else {
     echo cs_subtemplate(__FILE__,$data,'users','register_mail');
   }
-  } else {
+  }
+  else {
 
-  $code_id           = generate_code(30); // 30 Zeichen lang
-  $register['users_key']   = $code_id;
-  $active           = empty($op_users['def_register']) ? $register['users_active'] = 1 : $register['users_active'] = 0;
-  $def_timezone       = empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
-  $def_dstime         = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
+  $code_id = generate_code(30); // 30 Zeichen lang
+  $register['users_key'] = $code_id;
+  $active = empty($op_users['def_register']) ? $register['users_active'] = 1 : $register['users_active'] = 0;
+  $def_timezone = empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
+  $def_dstime = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
   create_user(2,$register['nick'],$register['password'],$register['lang'],$register['email'],'fam',$def_timezone,$def_dstime,$register['newsletter'],$active,20,$register['users_key']);
 
   if(!empty($register['send_mail']) OR !empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
@@ -172,4 +173,5 @@ if(empty($op_users['register'])) {
     echo cs_subtemplate(__FILE__,$data,'users','done');
   }
 }
+
 ?>
