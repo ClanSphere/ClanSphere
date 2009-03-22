@@ -8,8 +8,6 @@
 </table>
 <br />
 
-{head:getmsg}
-
 <form method="post" id="gallery_edit" action="{url:gallery_options}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>

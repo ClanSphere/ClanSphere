@@ -4,34 +4,25 @@
 
 $cs_lang = cs_translate('events');
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
-  settype($_POST['max_width'],'integer');
-  settype($_POST['max_height'],'integer');
-  settype($_POST['max_size'],'integer');
-
-  $opt_where = "options_mod = 'events' AND options_name = ";
-  $def_cell = array('options_value');
-  $def_cont = array($_POST['max_width']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_width'");
-  $def_cont = array($_POST['max_height']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_height'");
-  $def_cont = array($_POST['max_size']);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'max_size'");
-  $def_cont = array(empty($_POST['show_wars']) ? 0 : 1);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'show_wars'");
-  $def_cont = array(empty($_POST['req_fullname']) ? 0 : 1);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'req_fullname'");
-  $def_cont = array(empty($_POST['req_fulladress']) ? 0 : 1);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'req_fulladress'");
-  $def_cont = array(empty($_POST['req_phone']) ? 0 : 1);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'req_phone'");
-  $def_cont = array(empty($_POST['req_mobile']) ? 0 : 1);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'req_mobile'");
+  $save = array();
+  $save['max_width'] = (int) $_POST['max_width'];
+  $save['max_height'] = (int) $_POST['max_height'];
+  $save['max_size'] = (int) $_POST['max_size'];
+  $save['show_wars'] = empty($_POST['show_wars']) ? 0 : 1;
+	$save['req_fullname'] = empty($_POST['req_fullname']) ? 0 : 1;
+	$save['req_fulladress'] = empty($_POST['req_fulladress']) ? 0 : 1;
+	$save['req_phone'] = empty($_POST['req_phone']) ? 0 : 1;
+	$save['req_mobile'] = empty($_POST['req_mobile']) ? 0 : 1;
   
-  cs_redirect($cs_lang['changes_done'],'events','options');
-}
-else {
+	require 'mods/clansphere/func_options.php';
+  
+  cs_optionsave('events', $save);
+  
+  cs_redirect($cs_lang['changes_done'], 'options', 'roots');
+  
+} else {
 
   $data = array();
 

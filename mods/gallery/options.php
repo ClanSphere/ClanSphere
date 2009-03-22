@@ -3,12 +3,6 @@
 // $Id$
 
 $cs_lang = cs_translate('gallery');
-$data = array();
-
-$options = cs_sql_option(__FILE__,'gallery');
-require('mods/clansphere/func_options.php');
-
-$data['head']['getmsg'] = cs_getmsg();
 
 if(isset($_POST['submit'])) {
   
@@ -28,30 +22,35 @@ if(isset($_POST['submit'])) {
   $save['max_folders'] = (int) $_POST['max_files'];
   $save['max_folders'] = (int) $_POST['max_folders'];
   $save['lightbox'] = (int) $_POST['lightbox'];
- cs_optionsave('gallery', $save);
+  
+  require('mods/clansphere/func_options.php');
+  
+  cs_optionsave('gallery', $save);
 
- cs_redirect($cs_lang['changes_done'],'gallery','options');
+  cs_redirect($cs_lang['changes_done'],'gallery','options');
 
-}
-else {
+} else {
 
-	$data['op'] = $options;
-	$data['op']['size'] = $options['size'] / 1024;
-	$data['op']['size2'] = $options['size2'] / 1024;
-	
-	$checked = 'checked="checked"';
-	$data['check']['top_5_votes_0'] = empty($options['top_5_votes']) ? $checked : '';
-	$data['check']['top_5_votes_1'] = !empty($options['top_5_votes']) ? $checked : '';
-	$data['check']['top_5_views_0'] = empty($options['top_5_views']) ? $checked : '';
-	$data['check']['top_5_views_1'] = !empty($options['top_5_views']) ? $checked : '';
-	$data['check']['newest_5_0'] = empty($options['newest_5']) ? $checked : '';
-	$data['check']['newest_5_1'] = !empty($options['newest_5']) ? $checked : '';
+  $data = array();
+
+  $data['op'] = cs_sql_option(__FILE__,'gallery');
+  
+  $data['op']['size'] = $data['op']['size'] / 1024;
+  $data['op']['size2'] = $data['op']['size2'] / 1024;
+  
+  $checked = 'checked="checked"';
+  $data['check']['top_5_votes_0'] = empty($data['op']['top_5_votes']) ? $checked : '';
+  $data['check']['top_5_votes_1'] = !empty($data['op']['top_5_votes']) ? $checked : '';
+  $data['check']['top_5_views_0'] = empty($data['op']['top_5_views']) ? $checked : '';
+  $data['check']['top_5_views_1'] = !empty($data['op']['top_5_views']) ? $checked : '';
+  $data['check']['newest_5_0'] = empty($data['op']['newest_5']) ? $checked : '';
+  $data['check']['newest_5_1'] = !empty($data['op']['newest_5']) ? $checked : '';
 
 
   $levels = 0;
   $var2 = '';
   while($levels < 2) {
-    $options['list_sort'] == $levels ? $sel = 1 : $sel = 0;
+    $data['op']['list_sort'] == $levels ? $sel = 1 : $sel = 0;
     $var2 .= cs_html_option($cs_lang['sort_' . $levels],$levels,$sel);
     $levels++;
   }
@@ -60,13 +59,12 @@ else {
   $levels = 0;
   $var = '';
   while($levels < 3) {
-    $options['lightbox'] == $levels ? $sel = 1 : $sel = 0;
+    $data['op']['lightbox'] == $levels ? $sel = 1 : $sel = 0;
     $var .= cs_html_option($cs_lang['light_' . $levels],$levels,$sel);
     $levels++;
   }
   $data['lightbox']['options'] = $var;
 
-	
- echo cs_subtemplate(__FILE__,$data,'gallery','options');
+  echo cs_subtemplate(__FILE__,$data,'gallery','options');
 }
 ?>

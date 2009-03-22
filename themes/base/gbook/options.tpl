@@ -19,6 +19,6 @@
 	</td>
   </tr>
   <tr>
-    <td class="centerb" colspan="2"><input type="submit" name="submit" value="{lang:edit}" /></td>
+    <td class="centerb" colspan="2"><input type="submit" name="submit" value="{lang:save}" /></td>
   </tr>
 </table>

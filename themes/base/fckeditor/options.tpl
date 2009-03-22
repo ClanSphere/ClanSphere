@@ -1,9 +1,9 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">FCKEditor - {head:action}</td>
+  <td class="headb">FCKEditor - {lang:options}</td>
  </tr>
  <tr>
-  <td class="leftb">{head:topline}</td>
+  <td class="leftb">{lang:options_info}</td>
  </tr>
 </table>
 <br />
