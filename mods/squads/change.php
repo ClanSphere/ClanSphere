@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('squads');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
+$files = cs_files();
 $data = array();
 
 $op_squads = cs_sql_option(__FILE__,'squads');
@@ -19,6 +20,11 @@ $data['if']['advanced'] = FALSE;
 $op_squads = cs_sql_option(__FILE__,'squads');
 $img_filetypes = array('gif','jpg','png');
 
+$from = 'squads sqd INNER JOIN {pre}_members mem ON sqd.squads_id = mem.squads_id';
+$cells = 'sqd.clans_id AS clans_id, sqd.games_id AS games_id, sqd.squads_id AS squads_id, sqd.squads_name AS squads_name, sqd.squads_order AS squads_order, sqd.squads_pwd AS squads_pwd, sqd.squads_picture AS squads_picture';
+$where = "mem.users_id = '" . $account['users_id'] . "' AND mem.members_admin = 1 AND sqd.squads_id = '" . $squads_id . "'";
+$cs_squads_select = cs_sql_select(__FILE__,$from,$cells,$where);
+
 if(isset($_POST['submit'])) {
 
   $cs_squads['clans_id'] = $_POST['clans_id'];
@@ -31,15 +37,15 @@ if(isset($_POST['submit'])) {
   $error = '';
 
   if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($cs_squads['squads_picture'])) {
-  cs_unlink('squads', $cs_squads['squads_picture']);
-  $cs_squads['squads_picture'] = '';
+    cs_unlink('squads', $cs_squads['squads_picture']);
+    $cs_squads['squads_picture'] = '';
   }
 
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  $img_size = getimagesize($files['picture']['tmp_name']);
+  if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['picture']['tmp_name'])) {
+  elseif(!empty($files['picture']['tmp_name'])) {
 
     switch($img_size[2]) {
     case 1:
@@ -57,10 +63,10 @@ if(isset($_POST['submit'])) {
     if($img_size[1]>$op_squads['max_height']) { 
       $error .= $cs_lang['too_high'] . cs_html_br(1);
     }
-    if($_FILES['picture']['size']>$op_squads['max_size']) { 
+    if($files['picture']['size']>$op_squads['max_size']) { 
       $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
-    if(empty($error) AND cs_upload('squads', $filename, $_FILES['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/squads/' . $filename, $op_squads['max_width'], $op_squads['max_height'])) {
+    if(empty($error) AND cs_upload('squads', $filename, $files['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files['picture']['tmp_name'], 'uploads/squads/' . $filename, $op_squads['max_width'], $op_squads['max_height'])) {
       $error = 0;
       $error = '';
       if($cs_squads['squads_picture'] != $filename AND !empty($cs_squads['squads_picture'])) {
@@ -91,18 +97,17 @@ if(isset($_POST['submit'])) {
   if(empty($search_admin['members_admin'])) {
     $error .= $cs_lang['no_admin'] . cs_html_br(1);
   }
-  $where = "clans_id = '" . cs_sql_escape($cs_squads['clans_id']) . "'";
-  $search = cs_sql_select(__FILE__,'clans','clans_pwd',$where);
-  if(empty($search['clans_pwd']) OR $search['clans_pwd'] != $clans_pwd) {
-    $error .= $cs_lang['pwd_wrong'] . cs_html_br(1);
+  if ($cs_squads['clans_id'] != $cs_squads_select['clans_id']) {
+	  $where = "clans_id = '" . cs_sql_escape($cs_squads['clans_id']) . "'";
+	  $search = cs_sql_select(__FILE__,'clans','clans_pwd',$where);
+	  if(empty($search['clans_pwd']) OR $search['clans_pwd'] != $clans_pwd) {
+	    $error .= $cs_lang['pwd_wrong'] . cs_html_br(1);
+	  }
   }
+} else {
+	$cs_squads = $cs_squads_select;
 }
-else {
-  $from = 'squads sqd INNER JOIN {pre}_members mem ON sqd.squads_id = mem.squads_id';
-  $cells = 'sqd.clans_id AS clans_id, sqd.games_id AS games_id, sqd.squads_id AS squads_id, sqd.squads_name AS squads_name, sqd.squads_order AS squads_order, sqd.squads_pwd AS squads_pwd, sqd.squads_picture AS squads_picture';
-  $where = "mem.users_id = '" . $account['users_id'] . "' AND mem.members_admin = 1 AND sqd.squads_id = '" . $squads_id . "'";
-  $cs_squads = cs_sql_select(__FILE__,$from,$cells,$where);
-}
+
 if(!isset($_POST['submit'])) {
   $data['head']['body'] = $cs_lang['body_change'];
 }

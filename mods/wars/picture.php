@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('wars');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
+$files = cs_files();
 $data = array();
 
 $cs_wars_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
@@ -34,14 +35,14 @@ if(!empty($_GET['delete'])) {
 }
 elseif(isset($_POST['submit'])) {
   
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files['picture']['tmp_name']);
   if(empty($img_size) OR $img_size[2] > 3)
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   if($img_size[0]>$op_wars['max_width'])
     $error .= $cs_lang['too_wide'] . cs_html_br(1);
   if($img_size[1]>$op_wars['max_height'])
     $error .= $cs_lang['too_high'] . cs_html_br(1);
-  if($_FILES['picture']['size']>$op_wars['max_size'])
+  if($files['picture']['size']>$op_wars['max_size'])
     $error .= $cs_lang['too_big'] . cs_html_br(1);
 
   if(empty($error)) {
@@ -57,8 +58,8 @@ elseif(isset($_POST['submit'])) {
     $target = $cs_wars_id . '-' . $war_next . '.' . $ext;
     $picture_name = 'picture-' . $target;
     $thumb_name = 'thumb-' . $target;
-    if(cs_resample($_FILES['picture']['tmp_name'], 'uploads/wars/' . $thumb_name, 80, 200) 
-    AND cs_upload('wars', $picture_name, $_FILES['picture']['tmp_name'])) {
+    if(cs_resample($files['picture']['tmp_name'], 'uploads/wars/' . $thumb_name, 80, 200) 
+    AND cs_upload('wars', $picture_name, $files['picture']['tmp_name'])) {
 
       $cells = array('wars_pictures');
       $content = empty($war_string) ? array($target) : array($war_string . "\n" . $target);

@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('squads');
+$files = cs_files();
 
 $op_squads = cs_sql_option(__FILE__,'squads');
 $op_clans = cs_sql_option(__FILE__,'clans');
@@ -30,11 +31,11 @@ if(isset($_POST['submit'])) {
     }
   }
 
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  $img_size = getimagesize($files['picture']['tmp_name']);
+  if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['picture']['tmp_name'])) {
+  elseif(!empty($files['picture']['tmp_name'])) {
 
     switch($img_size[2]) {
     case 1:
@@ -51,7 +52,7 @@ if(isset($_POST['submit'])) {
     if($img_size[1]>$op_squads['max_height']) { 
       $error .= $cs_lang['too_high'] . cs_html_br(1);
     }
-    if($_FILES['picture']['size']>$op_squads['max_size']) { 
+    if($files['picture']['size']>$op_squads['max_size']) { 
       $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
   }
@@ -143,9 +144,9 @@ else {
   $members_save = array($account['users_id'],$getid['squads_id'],$cs_lang['leader'],1,1);
   cs_sql_insert(__FILE__,'members',$members_cells,$members_save);
 
-  if(!empty($_FILES['picture']['tmp_name'])) {
+  if(!empty($files['picture']['tmp_name'])) {
     $filename = 'picture-' . $getid['squads_id'] . '.' . $extension;
-    cs_upload('squads',$filename,$_FILES['picture']['tmp_name']);
+    cs_upload('squads',$filename,$files['picture']['tmp_name']);
     
     $cs_squads2['squads_picture'] = $filename;
     $squads2_cells = array_keys($cs_squads2);

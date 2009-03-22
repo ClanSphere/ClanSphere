@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('users');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
+$files = cs_files();
 
 $users_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $users_id = $cs_post['id'];
@@ -24,18 +25,18 @@ if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($userpic)) {
   $content = array();
   cs_sql_update(__FILE__,'users',$cells,$content,$users_id);
 
-  cs_redirect($cs_lang['success'],'users','home');
+  cs_redirect($cs_lang['success'],'users','manage');
 
 }
-elseif(!empty($_FILES['picture']['tmp_name'])) {
+elseif(!empty($files['picture']['tmp_name'])) {
 
   $error = '';
   
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  $img_size = getimagesize($files['picture']['tmp_name']);
+  if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['picture']['tmp_name'])) {
+  elseif(!empty($files['picture']['tmp_name'])) {
 
     switch($img_size[2]) {
     case 1:
@@ -53,10 +54,10 @@ elseif(!empty($_FILES['picture']['tmp_name'])) {
     if($img_size[1]>$op_users['max_height']) { 
       $error .= $cs_lang['too_high'] . cs_html_br(1);
     }
-    if($_FILES['picture']['size']>$op_users['max_size']) { 
+    if($files['picture']['size']>$op_users['max_size']) { 
       $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
-    if(empty($error) AND cs_upload('users', $filename, $_FILES['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/users/' . $filename, $op_users['max_width'], $op_users['max_height'])) {
+    if(empty($error) AND cs_upload('users', $filename, $files['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files['picture']['tmp_name'], 'uploads/users/' . $filename, $op_users['max_width'], $op_users['max_height'])) {
       $error = '';
       if($userpic != $filename AND !empty($userpic)) {
         cs_unlink('users', $userpic);
@@ -65,7 +66,7 @@ elseif(!empty($_FILES['picture']['tmp_name'])) {
       $content = array($filename);
       cs_sql_update(__FILE__,'users',$cells,$content,$users_id);
   
-    cs_redirect('','users','manage');
+      cs_redirect('','users','manage');
     }
     else {
         $error .= $cs_lang['up_error'];
@@ -79,7 +80,7 @@ if(!isset($_POST['submit']) AND empty($error)) {
   $data['head']['body'] = $error;
 }
 
-if(!empty($error) OR empty($_FILES['picture']['tmp_name']) AND empty($del)) {
+if(!empty($error) OR empty($files['picture']['tmp_name']) AND empty($del)) {
 
   if(empty($userpic)) {
     $data['users']['current_pic'] = $cs_lang['nopic'];

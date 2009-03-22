@@ -83,7 +83,7 @@ if(empty($cs_wars['wars_pictures'])) {
     $wars_pics = explode("\n",$cs_wars['wars_pictures']);
     foreach($wars_pics AS $pic) {
       $link = cs_html_img('uploads/wars/thumb-' . $pic);
-      $path = empty($cs_main['mod_rewrite']) ? '' : 'http://' . $_SERVER['HTTP_HOST'] . str_replace('index.php','',$_SERVER['PHP_SELF']);
+      $path = $cs_main['php_self']['dirname'];
       $wars['pictures']['show'] .=  cs_html_link($path . 'uploads/wars/picture-' . $pic,$link) . ' ';
     }
 }
