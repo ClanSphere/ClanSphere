@@ -1,8 +1,14 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang = cs_translate('servers');
 
 $id = empty($_GET['id']) ? '' : (int) $_GET['id'];
 
+$data = array('servers');
+
+$data['if']['server'] = false;
 $data['if']['oldphp'] = false;
 
 /* Test if fsockopen active */
@@ -16,8 +22,6 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 		$where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
 		$cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
 		$cs_servers_count = count($cs_servers);
-
-		$data['servers'] = array();
 
 		/* if Server in SQL */
 		if(!empty($cs_servers_count)) {
@@ -115,4 +119,5 @@ else {
 	}
 	echo cs_subtemplate(__FILE__,$data,'servers','noquery');
 }
+
 ?>
