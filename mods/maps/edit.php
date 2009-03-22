@@ -3,6 +3,9 @@
 // $Id$
 
 $cs_lang = cs_translate('maps');
+
+$files_gl = cs_files();
+
 $data = array();
 
 $img_max['width'] = 150;
@@ -29,11 +32,11 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
     $error .= cs_html_br(1) . '- ' . $cs_lang['no_game'];
   }
 
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
   
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= cs_html_br(1) . '- ' . $cs_lang['ext_error'];
-    } elseif(!empty($_FILES['picture']['tmp_name'])) {
+    } elseif(!empty($files_gl['picture']['tmp_name'])) {
       switch($img_size[2]) {
         case 1:
           $extension = 'gif'; break;
@@ -51,7 +54,7 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
         $error .= cs_html_br(1) . '- ' . $cs_lang['too_high'];
       }
     
-      if($_FILES['picture']['size'] > $img_max['size']) { 
+      if($files_gl['picture']['size'] > $img_max['size']) { 
         $error .= cs_html_br(1) . '- ' . $cs_lang['too_big'];
       }
     }
@@ -93,13 +96,13 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
   
     $maps_id = (int) $_POST['maps_id'];
 
-    if(empty($_POST['pic_del']) AND empty($_FILES['picture']['tmp_name'])) {
+    if(empty($_POST['pic_del']) AND empty($files_gl['picture']['tmp_name'])) {
   
       $cells = array_keys($cs_maps);
       $values = array_values($cs_maps);
       cs_sql_update(__FILE__,'maps',$cells,$values,$maps_id);
     
-    } elseif(isset($_POST['pic_del']) AND empty($_FILES['picture']['tmp_name'])) {
+    } elseif(isset($_POST['pic_del']) AND empty($files_gl['picture']['tmp_name'])) {
   
       $select = cs_sql_select(__FILE__,'maps','maps_picture','maps_id = \''.$maps_id.'\'');
 
@@ -117,7 +120,7 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
       $url = 'uploads/maps/' . $select['maps_picture'];
       cs_unlink('maps', $select['maps_picture']);
       $filename = 'picture-' . $maps_id . '.' . $extension;
-      cs_upload('maps',$filename,$_FILES['picture']['tmp_name']);
+      cs_upload('maps',$filename,$files_gl['picture']['tmp_name']);
     
       $cs_maps['maps_picture'] = $filename;
     

@@ -3,6 +3,9 @@
 // $Id$
 
 $cs_lang = cs_translate('gallery');
+
+$files_gl = cs_files();
+
 $data = array();
 
 require_once('mods/gallery/functions.php');
@@ -26,7 +29,7 @@ $file_up = 0;
 if(isset($_POST['submit'])) {
   $file_up = isset($_POST['file_up']) ? $_POST['file_up'] : 0;
   if ($file_up == 0) {
-    $cs_gallery['usersgallery_name'] = $cs_gallery['users_id'] . '.' . $_FILES['picture']['name'];
+    $cs_gallery['usersgallery_name'] = $cs_gallery['users_id'] . '.' . $files_gl['picture']['name'];
   } elseif ($file_up == 1) {
     $cs_gallery['usersgallery_name'] = $cs_gallery['users_id'] . '.' . $_POST['picture']['name'];
   }
@@ -42,7 +45,7 @@ if(isset($_POST['submit'])) {
 
 	$error = '';
 
-  $check_file = $_FILES['picture']['name'];
+  $check_file = $files_gl['picture']['name'];
   $where = "usersgallery_name = '" . cs_sql_escape($check_file) . "'";
   $pic_check = cs_sql_select(__FILE__,'usersgallery','*',$where,'usersgallery_id DESC',0,0);
   $loop_pic_check = count($pic_check);
@@ -51,24 +54,24 @@ if(isset($_POST['submit'])) {
     $error .= $cs_lang['img_is'] . cs_html_br(1);
   if(empty($cs_gallery['folders_id']))
     $error .= $cs_lang['no_cat'] . cs_html_br(1);
-  if(empty($_FILES['picture']['tmp_name']))
+  if(empty($files_gl['picture']['tmp_name']))
     $error .= $cs_lang['error_pic'] . cs_html_br(1);
   if(empty($_POST['gallery_titel']))
     $error .= $cs_lang['no_titel'] . cs_html_br(1);
   
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
+  if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['picture']['tmp_name'])) {
+  elseif(!empty($files_gl['picture']['tmp_name'])) {
   
-		$filename = $cs_gallery['users_id'] . '.' . $_FILES['picture']['name'];
+		$filename = $cs_gallery['users_id'] . '.' . $files_gl['picture']['name'];
     if($img_size[0]>$cs_option['width'])
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1]>$cs_option['height'])
       $error .= $cs_lang['too_high'] . cs_html_br(1);
-    if($_FILES['picture']['size']>$cs_option['size']) {
-      $size = $_FILES['picture']['size'] - $cs_option['size2'];
+    if($files_gl['picture']['size']>$cs_option['size']) {
+      $size = $files_gl['picture']['size'] - $cs_option['size2'];
       $size = cs_filesize($size);
       $error .= sprintf($cs_lang['too_big'], $size) . cs_html_br(1);
     }
@@ -79,11 +82,11 @@ if(isset($_POST['submit'])) {
     }
     if(extension_loaded('gd') AND !empty($gray)) {
       require_once('mods/gallery/gd_2.php');
-      cs_gray($_FILES['picture']['tmp_name']);
+      cs_gray($files_gl['picture']['tmp_name']);
     }
-    if(empty($error) AND cs_upload('usersgallery/pics', $filename, $_FILES['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/usersgallery/pics/' . $filename, $cs_option['width'], $cs_option['height']))
+    if(empty($error) AND cs_upload('usersgallery/pics', $filename, $files_gl['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files_gl['picture']['tmp_name'], 'uploads/usersgallery/pics/' . $filename, $cs_option['width'], $cs_option['height']))
     {
-      if(empty($error) AND !extension_loaded('gd') AND cs_upload('usersgallery/thumbs', 'Thumb_' . $filename, $_FILES['picture_thumb']['tmp_name']) OR empty($error) AND extension_loaded('gd') AND cs_resample('uploads/usersgallery/pics/' . $filename, 'uploads/usersgallery/thumbs/' . 'Thumb_' . $filename, $cs_option['thumbs'], $cs_option['thumbs']) OR !empty($error) AND extension_loaded('gd') AND cs_resample('uploads/usersgallery/pics/' . $filename, 'uploads/usersgallery/thumbs/' . 'Thumb_' . $filename, $cs_option['thumbs'], $cs_option['thumbs']))
+      if(empty($error) AND !extension_loaded('gd') AND cs_upload('usersgallery/thumbs', 'Thumb_' . $filename, $files_gl['picture_thumb']['tmp_name']) OR empty($error) AND extension_loaded('gd') AND cs_resample('uploads/usersgallery/pics/' . $filename, 'uploads/usersgallery/thumbs/' . 'Thumb_' . $filename, $cs_option['thumbs'], $cs_option['thumbs']) OR !empty($error) AND extension_loaded('gd') AND cs_resample('uploads/usersgallery/pics/' . $filename, 'uploads/usersgallery/thumbs/' . 'Thumb_' . $filename, $cs_option['thumbs'], $cs_option['thumbs']))
       {
       } else {
         $error .= $cs_lang['upload_error'] . cs_html_br(1);
@@ -98,7 +101,7 @@ if(isset($_POST['submit'])) {
 
 if(!isset($_POST['submit']))
 	$data['head']['body'] = $cs_lang['body_picture'];
-elseif(!empty($error) OR empty($_FILES['picture']['tmp_name']))
+elseif(!empty($error) OR empty($files_gl['picture']['tmp_name']))
 	$data['head']['body'] = $error;
 
 

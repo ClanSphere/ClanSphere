@@ -1,6 +1,11 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net 
+// $Id: edit.php 2266 2009-03-21 10:37:39Z duRiel $
 
 $cs_lang = cs_translate('medals');
+
+$files_gl = cs_files();
+
 $data = array();
 
 if (!empty($_POST['submit'])) {
@@ -14,8 +19,8 @@ if (!empty($_POST['submit'])) {
   if (empty($save['medals_name']))
     $error .= cs_html_br(1) . $cs_lang['no_name'];
   
-  if(!empty($_FILES['medals_picture']['tmp_name'])) {
-    $img_size = getimagesize($_FILES['medals_picture']['tmp_name']);
+  if(!empty($files_gl['medals_picture']['tmp_name'])) {
+    $img_size = getimagesize($files_gl['medals_picture']['tmp_name']);
     switch($img_size[2]) {
       case 1:
         $extension = 'gif'; break;
@@ -39,10 +44,10 @@ if (!empty($_POST['submit']) && empty($error)) {
   
   cs_sql_insert(__FILE__,'medals',$cells,$values);
   
-  if (!empty($_FILES['medals_picture']['tmp_name'])) {
+  if (!empty($files_gl['medals_picture']['tmp_name'])) {
     $id = cs_sql_insertid(__FILE__);
     $filename = 'medal-' . $id . '.' . $extension;
-    cs_upload('medals',$filename,$_FILES['medals_picture']['tmp_name']);
+    cs_upload('medals',$filename,$files_gl['medals_picture']['tmp_name']);
   }
   
   cs_redirect($cs_lang['create_done'], 'medals');

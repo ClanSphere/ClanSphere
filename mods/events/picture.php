@@ -3,9 +3,12 @@
 // $Id: picture.php 1775 2009-02-17 20:59:11Z duRiel $
 
 $cs_lang = cs_translate('events');
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
+
+$files_gl = cs_files();
 
 $cs_events_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $cs_events_id = $cs_post['id'];
@@ -34,14 +37,14 @@ if(!empty($_GET['delete'])) {
 }
 elseif(isset($_POST['submit'])) {
   
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
   if(empty($img_size) OR $img_size[2] > 3)
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   if($img_size[0]>$op_events['max_width'])
     $error .= $cs_lang['too_wide'] . cs_html_br(1);
   if($img_size[1]>$op_events['max_height'])
     $error .= $cs_lang['too_high'] . cs_html_br(1);
-  if($_FILES['picture']['size']>$op_events['max_size'])
+  if($files_gl['picture']['size']>$op_events['max_size'])
     $error .= $cs_lang['too_big'] . cs_html_br(1);
 
   if(empty($error)) {
@@ -57,8 +60,8 @@ elseif(isset($_POST['submit'])) {
     $target = $cs_events_id . '-' . $war_next . '.' . $ext;
     $picture_name = 'picture-' . $target;
     $thumb_name = 'thumb-' . $target;
-    if(cs_resample($_FILES['picture']['tmp_name'], 'uploads/events/' . $thumb_name, 80, 200) 
-    AND cs_upload('events', $picture_name, $_FILES['picture']['tmp_name'])) {
+    if(cs_resample($files_gl['picture']['tmp_name'], 'uploads/events/' . $thumb_name, 80, 200) 
+    AND cs_upload('events', $picture_name, $files_gl['picture']['tmp_name'])) {
 
       $cells = array('events_pictures');
       $content = empty($war_string) ? array($target) : array($war_string . "\n" . $target);

@@ -3,6 +3,9 @@
 // $Id: manage_advanced.php 1927 2009-03-07 16:03:25Z hajo $
 
 $cs_lang = cs_translate('gallery');
+
+$files_gl = cs_files();
+
 require_once('mods/gallery/functions.php');
 
 $cs_gallery['gallery_read'] = '0';
@@ -38,8 +41,8 @@ if(isset($_POST['submit']))
       }
       if(isset($_POST['submit_zipfile']))
       {
-        $file = $_FILES['zipfile']['tmp_name'];
-        $file_type = $_FILES['zipfile']['type'];
+        $file = $files_gl['zipfile']['tmp_name'];
+        $file_type = $files_gl['zipfile']['type'];
         #echo $file_type;
         if ($file_type !== 'application/zip') // PHP 4 'application/zip' PHP 5 'application/x-zip-compressed'
         {

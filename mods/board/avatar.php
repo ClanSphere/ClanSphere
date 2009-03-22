@@ -6,6 +6,8 @@ $cs_lang = cs_translate('board');
 
 $cs_board = cs_sql_option(__FILE__,'board');
 
+$files_gl = cs_files();
+
 $img_max['width'] = $cs_board['avatar_width'];
 $img_max['height'] = $cs_board['avatar_height'];
 $img_max['size'] = $cs_board['avatar_size'];
@@ -37,14 +39,14 @@ elseif(!empty($_POST['submit'])) {
 
   $message = $cs_lang['ext_error'] . cs_html_br(1);
   foreach($img_filetypes AS $allowed => $new_ext) {
-    if($allowed == $_FILES['picture']['type']) {
+    if($allowed == $files_gl['picture']['type']) {
       $message = '';
       $error = 0;
       $doresize = 0;
       $extension = $new_ext;
     }
   }
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
   if($img_size[0]>$img_max['width']) { 
     if(extension_loaded('gd')){
       $doresize++;
@@ -61,7 +63,7 @@ elseif(!empty($_POST['submit'])) {
       $error++;
     }
   }
-  if($_FILES['picture']['size']>$img_max['size']) { 
+  if($files_gl['picture']['size']>$img_max['size']) { 
     if(extension_loaded('gd') AND !empty($doresize)){
       $doresize++;
       } else {
@@ -73,13 +75,13 @@ elseif(!empty($_POST['submit'])) {
     $filename = 'avatar-' . $account['users_id'] . '.' . $extension;
     if(extension_loaded('gd') AND !empty($doresize)){
       $dest = $cs_main['def_path'] . '/uploads/board/' . $filename;
-      if(cs_resample($_FILES['picture']['tmp_name'], $dest, $img_max['width'], $img_max['height'])){
+      if(cs_resample($files_gl['picture']['tmp_name'], $dest, $img_max['width'], $img_max['height'])){
         $fileerror=0;
         } else {
         $fileerror=1;
        }
       } else {
-      if(cs_upload('board',$filename,$_FILES['picture']['tmp_name'])){
+      if(cs_upload('board',$filename,$files_gl['picture']['tmp_name'])){
         $fileerror=0;
         } else {
         $fileerror=1;

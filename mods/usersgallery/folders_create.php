@@ -1,8 +1,11 @@
 <?php
-// ClanSphere 2006 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 $cs_lang = cs_translate('gallery');
+
+$files_gl = cs_files();
+
 $data = array();
 
 $option = cs_sql_option(__FILE__,'categories');
@@ -51,11 +54,11 @@ if(isset($_POST['submit'])) {
   
   $error = '';
   
-  if(!empty($_FILES['picture']['tmp_name'])) {
-    $img_size = getimagesize($_FILES['picture']['tmp_name']);
-    if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  if(!empty($files_gl['picture']['tmp_name'])) {
+    $img_size = getimagesize($files_gl['picture']['tmp_name']);
+    if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
-    } elseif(!empty($_FILES['picture']['tmp_name'])) {
+    } elseif(!empty($files_gl['picture']['tmp_name'])) {
       switch($img_size[2]) {
         case 1:
           $extension = 'gif'; break;
@@ -68,7 +71,7 @@ if(isset($_POST['submit'])) {
         $error .= $cs_lang['too_wide'] . cs_html_br(1);
       if($img_size[1] > $option['max_height'])
         $error .= $cs_lang['too_high'] . cs_html_br(1);
-      if($_FILES['picture']['size'] > $option['max_size'])
+      if($files_gl['picture']['size'] > $option['max_size'])
         $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
   }
@@ -127,10 +130,10 @@ else {
   $folder_save = array_values($folders);
  cs_sql_insert(__FILE__,'folders',$folder_cells,$folder_save);
  
-	if(!empty($_FILES['picture']['tmp_name'])) {
+	if(!empty($files_gl['picture']['tmp_name'])) {
     $id = cs_sql_insertid(__FILE__);
     $filename = 'picture-' . $id . '.' . $extension;
-   cs_upload('folders',$filename,$_FILES['picture']['tmp_name']);
+   cs_upload('folders',$filename,$files_gl['picture']['tmp_name']);
 
     $cells = array('folders_picture');
     $save = array($filename);

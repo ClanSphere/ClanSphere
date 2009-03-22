@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('explorer');
 
+$files_gl = cs_files();
+
 if (empty($_POST['submit'])) {
   
   $dir = empty($_GET['dir']) ? '' : str_replace('..','',$_GET['dir']);
@@ -33,18 +35,18 @@ if (empty($_POST['submit'])) {
   $dir = empty($_POST['dir']) ? '' : str_replace('..','',$_POST['dir']);
   
   $filename = $dir;
-  $extension = strtolower(substr(strrchr($_FILES['file']['name'],'.'),1));
+  $extension = strtolower(substr(strrchr($files_gl['file']['name'],'.'),1));
   
   if (empty($_POST['name'])) {
-    $filename .= str_replace('..','',$_FILES['file']['name']);
-    $action = substr($_FILES['file']['name'],0,strlen($_FILES['file']['name']) - strlen($extension) - 1);
+    $filename .= str_replace('..','',$files_gl['file']['name']);
+    $action = substr($files_gl['file']['name'],0,strlen($files_gl['file']['name']) - strlen($extension) - 1);
   } else {
     $filename .= str_replace('..','',$_POST['name']);
     $filename .= '.' . strtolower($extension);
     $action = $_POST['name'];
   }
   
-  $message = move_uploaded_file($_FILES['file']['tmp_name'],$filename) ? $cs_lang['success'] : $cs_lang['error_upload'];
+  $message = move_uploaded_file($files_gl['file']['tmp_name'],$filename) ? $cs_lang['success'] : $cs_lang['error_upload'];
   
   cs_redirect($message,'explorer','roots','dir='.$dir);
 

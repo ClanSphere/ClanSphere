@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('categories');
 
+$files_gl = cs_files();
+
 $op_categories = cs_sql_option(__FILE__,'categories');
 $img_filetypes = array('gif','jpg','png');
 
@@ -21,11 +23,11 @@ if(isset($_POST['submit'])) {
   
   $error = '';
 
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
+  if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['picture']['tmp_name'])) {
+  elseif(!empty($files_gl['picture']['tmp_name'])) {
 
     switch($img_size[2]) {
     case 1:
@@ -42,7 +44,7 @@ if(isset($_POST['submit'])) {
     if($img_size[1]>$op_categories['max_height']) { 
       $error .= $cs_lang['too_high'] . cs_html_br(1);
     }
-    if($_FILES['picture']['size']>$op_categories['max_size']) { 
+    if($files_gl['picture']['size']>$op_categories['max_size']) { 
       $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
   }
@@ -122,11 +124,11 @@ else {
   $categories_save = array_values($cs_categories);
   cs_sql_insert(__FILE__,'categories',$categories_cells,$categories_save);
 
-  if(!empty($_FILES['picture']['tmp_name'])) {
+  if(!empty($files_gl['picture']['tmp_name'])) {
     $where = "categories_name = '" . cs_sql_escape($cs_categories['categories_name']) . "'";
     $getid = cs_sql_select(__FILE__,'categories','categories_id',$where);
     $filename = 'picture-' . $getid['categories_id'] . '.' . $extension;
-    cs_upload('categories',$filename,$_FILES['picture']['tmp_name']);
+    cs_upload('categories',$filename,$files_gl['picture']['tmp_name']);
     
     $cs_categories2['categories_picture'] = $filename;
     $categories2_cells = array_keys($cs_categories2);

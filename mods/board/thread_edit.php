@@ -7,6 +7,8 @@ $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
 
+$files_gl = cs_files();
+
 $thread_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $thread_id = $cs_post['id'];
 
@@ -109,12 +111,12 @@ $a = '0';
 $b = '0';
 for($run=0; $run < $run_loop_files; $run++) {
   $num = $run+1;
-  if(!empty($_FILES['file_'.$num]['name']))  {
-    $board_files_name = $cs_boardfiles[$run]['boardfiles_name'] = $_FILES['file_'.$num]['name'];
+  if(!empty($files_gl['file_'.$num]['name']))  {
+    $board_files_name = $cs_boardfiles[$run]['boardfiles_name'] = $files_gl['file_'.$num]['name'];
 
     $ext = strtolower(substr(strrchr($board_files_name,'.'),1));
     
-    if($_FILES["file_$num"]['size'] > $max_size) {
+    if($files_gl["file_$num"]['size'] > $max_size) {
       $error .= $cs_lang['error_filesize'] . cs_html_br(1);
       $file_error[$num] = '1';
     }
@@ -131,10 +133,10 @@ for($run=0; $run < $run_loop_files; $run++) {
     }
   }
   $check = '0';
-  if(!empty($_FILES["file_$num"]['name']) AND !isset($file_error[$num])) {
+  if(!empty($files_gl["file_$num"]['name']) AND !isset($file_error[$num])) {
     $cs_boardfiles[$run]['boardfiles_id'] = '';
     $cs_boardfiles[$run]['users_id'] = $account['users_id'];
-    $cs_boardfiles[$run]['boardfiles_name'] = $_FILES["file_$num"]['name'];
+    $cs_boardfiles[$run]['boardfiles_name'] = $files_gl["file_$num"]['name'];
     $cs_boardfiles[$run]['boardfiles_del'] = '0';
 
     $hash = '';
@@ -145,7 +147,7 @@ for($run=0; $run < $run_loop_files; $run++) {
     }
     $file_upload_name[$run] = $hash . '.' . $ext;
 
-    if (cs_upload('board/files', $file_upload_name[$run], $_FILES["file_$num"]['tmp_name'])) {
+    if (cs_upload('board/files', $file_upload_name[$run], $files_gl["file_$num"]['tmp_name'])) {
       $a++;
       $check = '1';
     } else {

@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('board');
 
+$files_gl = cs_files();
+
 $check_pw = 1;
 $board_id = empty($_REQUEST['id']) ? $_REQUEST['where'] : $_REQUEST['id'];
 settype($board_id,'integer');
@@ -132,10 +134,10 @@ $a = '0';
 $b = '1';
 for($run=0; $run < $run_loop_files; $run++) {
   $num = $run+1;
-  if(!empty($_FILES["file_$num"]['name'])) {
-    $board_files_name = $cs_files[$run]['boardfiles_name'] = $_FILES["file_$num"]['name'];
+  if(!empty($files_gl["file_$num"]['name'])) {
+    $board_files_name = $cs_files[$run]['boardfiles_name'] = $files_gl["file_$num"]['name'];
     $ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
-    if($_FILES["file_$num"]['size'] > $max_size) {
+    if($files_gl["file_$num"]['size'] > $max_size) {
       $error .= $cs_lang['error_filesize'] . cs_html_br(1);
       $file_error[$num] = '1';
     }
@@ -151,8 +153,8 @@ for($run=0; $run < $run_loop_files; $run++) {
       $file_error[$num] = '1';
     }
   }
-  if(!empty($_FILES["file_$num"]['name']) AND empty($file_error[$num])) {
-    $file_name[$num] = $_FILES["file_$num"]['name'];
+  if(!empty($files_gl["file_$num"]['name']) AND empty($file_error[$num])) {
+    $file_name[$num] = $files_gl["file_$num"]['name'];
 
     $hash = '';
     $pattern = "abcdefghijklmnopqrstuvwxyz";
@@ -161,7 +163,7 @@ for($run=0; $run < $run_loop_files; $run++) {
       $hash .= $pattern{rand(0,25)};
     }
     $file_upload_name[$num] = $hash . '.' . $ext;
-    if (cs_upload('board/files', $file_upload_name[$num], $_FILES["file_$num"]['tmp_name'])) {
+    if (cs_upload('board/files', $file_upload_name[$num], $files_gl["file_$num"]['tmp_name'])) {
       $a++;
     }  else {
       $error .= $cs_lang['error_fileupload'] . cs_html_br(1);

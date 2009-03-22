@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('maps');
 
+$files_gl = cs_files();
+
 $data = array();
 
 $img_max['width'] = 150;
@@ -22,11 +24,11 @@ if (!empty($_POST['submit'])) {
     $error .= cs_html_br(1) . '- ' . $cs_lang['no_game'];
   }
   
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
   
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= cs_html_br(1) . '- ' . $cs_lang['ext_error'];
-  } elseif(!empty($_FILES['picture']['tmp_name'])) {
+  } elseif(!empty($files_gl['picture']['tmp_name'])) {
     switch($img_size[2]) {
       case 1:
         $extension = 'gif'; break;
@@ -44,7 +46,7 @@ if (!empty($_POST['submit'])) {
       $error .= cs_html_br(1) . '- ' . $cs_lang['too_high'];
     }
     
-    if($_FILES['picture']['size'] > $img_max['size']) { 
+    if($files_gl['picture']['size'] > $img_max['size']) { 
       $error .= cs_html_br(1) . '- ' . $cs_lang['too_big'];
     }
   }
@@ -86,13 +88,13 @@ if(empty($_POST['submit']) || !empty($error)) {
   $values = array($_POST['games_id'],$_POST['maps_name'],$_POST['maps_text']);
   cs_sql_insert(__FILE__,'maps',$cells,$values);
 
-  if(!empty($_FILES['picture']['tmp_name'])) {
+  if(!empty($files_gl['picture']['tmp_name'])) {
     $where = "maps_name = '" . cs_sql_escape($_POST['maps_name']) . "'";
     $getid = cs_sql_select(__FILE__,'maps','maps_id',$where);
 
     $filename = 'picture-' . $getid['maps_id'] . '.' . $extension;
 
-    cs_upload('maps',$filename,$_FILES['picture']['tmp_name']);
+    cs_upload('maps',$filename,$files_gl['picture']['tmp_name']);
 
     $cells2 = array('maps_picture');
     $values2 = array($filename);

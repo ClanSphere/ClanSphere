@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('replays');
 
+$files_gl = cs_files();
+
 $op_replays = cs_sql_option(__FILE__,'replays');
 $rep_max['size'] = $op_replays['file_size'];
 $rep_filetypes = explode(",", $op_replays['file_type']);
@@ -27,15 +29,15 @@ if(isset($_POST['submit'])) {
 
   $error = '';
 
-  if(!empty($_FILES['replay']['tmp_name'])) {
-    $rep_size = filesize($_FILES['replay']['tmp_name']);
-    $rep_ext = explode('.',$_FILES['replay']['name']);
+  if(!empty($files_gl['replay']['tmp_name'])) {
+    $rep_size = filesize($files_gl['replay']['tmp_name']);
+    $rep_ext = explode('.',$files_gl['replay']['name']);
     $who_ext = count($rep_ext) < 1 ? 0 : count($rep_ext) - 1;
     $extension = in_array($rep_ext[$who_ext],$rep_filetypes) ? $rep_ext[$who_ext] : 0;
     if(empty($extension)) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
     }
-    if($_FILES['replay']['size']>$rep_max['size']) { 
+    if($files_gl['replay']['size']>$rep_max['size']) { 
       $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
   }
@@ -121,12 +123,12 @@ else {
   $replays_save = array_values($cs_replays);
   cs_sql_insert(__FILE__,'replays',$replays_cells,$replays_save);
 
-  if(!empty($_FILES['replay']['tmp_name'])) {
+  if(!empty($files_gl['replay']['tmp_name'])) {
     $where = "replays_team1 = '" . cs_sql_escape($cs_replays['replays_team1']) . "'";
     $order = 'replays_since DESC';
     $getid = cs_sql_select(__FILE__,'replays','replays_id, replays_mirrors',$where,$order);
     $filename = 'replay-' . $getid['replays_id'] . '-' . cs_time() . '.' . $extension;
-    cs_upload('replays',$filename,$_FILES['replay']['tmp_name']);
+    cs_upload('replays',$filename,$files_gl['replay']['tmp_name']);
 
     $replay_file = 'uploads/replays/' . $filename;
     $cs_replays2['replays_mirrors'] = empty($cs_replays2['replays_mirrors']) ? $replay_file : 

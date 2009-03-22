@@ -3,7 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('links');
+
+$files_gl = cs_files();
+
 $data = array();
+
 require_once('mods/categories/functions.php');
  
 $img_max['width'] = 470;
@@ -65,11 +69,11 @@ if(isset($_POST['submit'])) {
 	if(!empty($cs_main['fckeditor']))
 		$cs_links['links_info'] = '[html]' . $cs_links['links_info'] . '[/html]';
 
-	$img_size = getimagesize($_FILES['symbol']['tmp_name']);
-  if(!empty($_FILES['symbol']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+	$img_size = getimagesize($files_gl['symbol']['tmp_name']);
+  if(!empty($files_gl['symbol']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['symbol']['tmp_name'])) {
+  elseif(!empty($files_gl['symbol']['tmp_name'])) {
     switch($img_size[2]) {
      case 1:
       $ext = 'gif'; break;
@@ -82,7 +86,7 @@ if(isset($_POST['submit'])) {
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1] > $img_max['height'])
       $error .= $cs_lang['too_high'] . cs_html_br(1);
-    if($_FILES['picture']['size'] > $img_max['size'])
+    if($files_gl['picture']['size'] > $img_max['size'])
       $error .= $cs_lang['too_big'] . cs_html_br(1);
   }
 
@@ -135,10 +139,10 @@ else {
   $save = array_values($cs_links);
  cs_sql_insert(__FILE__,'links',$cells,$save);
 
-  if(!empty($_FILES['symbol']['tmp_name'])) {
+  if(!empty($files_gl['symbol']['tmp_name'])) {
   	$id = cs_sql_insertid(__FILE__);
     $filename = $id . '.' . $ext;
-   cs_upload('links',$filename,$_FILES['symbol']['tmp_name']);
+   cs_upload('links',$filename,$files_gl['symbol']['tmp_name']);
 
     $file_cell = array('links_banner');
     $file_save = array($filename);      

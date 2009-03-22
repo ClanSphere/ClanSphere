@@ -1,8 +1,13 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang = cs_translate('files');
 
 $cs_files_id = empty($_REQUEST['where']) ? $_GET['id'] : $_REQUEST['where'];
 settype($cs_file_id,'integer');
+
+$files_gl = cs_files();
 
 $data = array();
 
@@ -32,7 +37,7 @@ if(!empty($_GET['delete'])) {
 }
 elseif(!empty($_POST['submit'])) {
   
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
   if(empty($img_size) OR $img_size[2] > 3) {
 
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
@@ -48,7 +53,7 @@ elseif(!empty($_POST['submit'])) {
     $message .= $cs_lang['too_high'] . cs_html_br(1);
     $error++;
   }
-  if($_FILES['picture']['size']>$img_max['size']) { 
+  if($files_gl['picture']['size']>$img_max['size']) { 
 
     $message .= $cs_lang['too_big'] . cs_html_br(1);
     $error++;
@@ -67,8 +72,8 @@ elseif(!empty($_POST['submit'])) {
     $target = $cs_files_id . '-' . $file_next . '.' . $ext;
     $picture_name = 'picture-' . $target;
     $thumb_name = 'thumb-' . $target;
-    if(cs_resample($_FILES['picture']['tmp_name'], 'uploads/files/' . $thumb_name, 80, 200) 
-    AND cs_upload('files', $picture_name, $_FILES['picture']['tmp_name'])) {
+    if(cs_resample($files_gl['picture']['tmp_name'], 'uploads/files/' . $thumb_name, 80, 200) 
+    AND cs_upload('files', $picture_name, $files_gl['picture']['tmp_name'])) {
 
       $cells = array('files_previews');
       $content = empty($file_string) ? array($target) : array($file_string . "\n" . $target);

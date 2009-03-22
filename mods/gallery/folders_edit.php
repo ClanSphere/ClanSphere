@@ -3,6 +3,9 @@
 // $Id$
 
 $cs_lang = cs_translate('gallery');
+
+$files_gl = cs_files();
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 
@@ -47,11 +50,11 @@ if(isset($_POST['submit'])) {
   
   $error = '';
 
-  if(isset($_FILES['picture'])) {
-    $img_size = getimagesize($_FILES['picture']['tmp_name']);
-    if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  if(isset($files_gl['picture'])) {
+    $img_size = getimagesize($files_gl['picture']['tmp_name']);
+    if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
-    } elseif(!empty($_FILES['picture']['tmp_name'])) {
+    } elseif(!empty($files_gl['picture']['tmp_name'])) {
       switch($img_size[2]) {
         case 1:
           $extension = 'gif'; break;
@@ -64,7 +67,7 @@ if(isset($_POST['submit'])) {
         $error .= $cs_lang['too_wide'] . cs_html_br(1);
       if($img_size[1] > $option['max_height'])
         $error .= $cs_lang['too_high'] . cs_html_br(1);
-      if($_FILES['picture']['size'] > $option['max_size'])
+      if($files_gl['picture']['size'] > $option['max_size'])
         $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
   }
@@ -137,9 +140,9 @@ else {
     cs_unlink('folders', $folders['folders_picture'], 'pictures');
     $folders['folders_picture'] = '';
   }
-  if(!empty($_FILES['picture']['tmp_name'])) {
+  if(!empty($files_gl['picture']['tmp_name'])) {
     $filename = 'picture-' . $folders_id . '.' . $extension;
-   cs_upload('folders',$filename,$_FILES['picture']['tmp_name']);
+   cs_upload('folders',$filename,$files_gl['picture']['tmp_name']);
 
     $folders['folders_picture'] = $filename;
   }

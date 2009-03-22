@@ -3,6 +3,9 @@
 // Id: picture.php (Tue Nov 25 19:31:27 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('computers');
+
+$files_gl = cs_files();
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 
@@ -36,7 +39,7 @@ elseif(!empty($_POST['submit'])) {
   if($computer['users_id'] != $account['users_id'] AND $account['access_computers'] < 4) {
     $error .= $cs_lang['not_own'] . cs_html_br(1);
   }
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
   if(empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
@@ -46,7 +49,7 @@ elseif(!empty($_POST['submit'])) {
   if($img_size[1]>$op_computers['max_height']) { 
     $error .= $cs_lang['too_high'] . cs_html_br(1);
   }
-  if($_FILES['picture']['size']>$op_computers['max_size']) { 
+  if($files_gl['picture']['size']>$op_computers['max_size']) { 
     $error .= $cs_lang['too_big'] . cs_html_br(1);
   }
 
@@ -63,8 +66,8 @@ elseif(!empty($_POST['submit'])) {
     $target = $cs_computers_id . '-' . $computer_next . '.' . $ext;
     $picture_name = 'picture-' . $target;
     $thumb_name = 'thumb-' . $target;
-    if(cs_resample($_FILES['picture']['tmp_name'], 'uploads/computers/' . $thumb_name, 150, 300) 
-    AND cs_upload('computers', $picture_name, $_FILES['picture']['tmp_name'])) {
+    if(cs_resample($files_gl['picture']['tmp_name'], 'uploads/computers/' . $thumb_name, 150, 300) 
+    AND cs_upload('computers', $picture_name, $files_gl['picture']['tmp_name'])) {
 
       $cells = array('computers_pictures');
       $content = empty($computer_string) ? array($target) : array($computer_string . "\n" . $target);

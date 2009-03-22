@@ -3,6 +3,9 @@
 // $Id$
 
 $cs_lang = cs_translate('replays');
+
+$files_gl = cs_files();
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 
@@ -33,20 +36,20 @@ if(isset($_POST['submit'])) {
   $error = 0;
   $error = '';
 
-  if(!empty($_FILES['replay']['tmp_name'])) {
-    $rep_size = filesize($_FILES['replay']['tmp_name']);
-    $rep_ext = explode('.',$_FILES['replay']['name']);
+  if(!empty($files_gl['replay']['tmp_name'])) {
+    $rep_size = filesize($files_gl['replay']['tmp_name']);
+    $rep_ext = explode('.',$files_gl['replay']['name']);
     $who_ext = count($rep_ext) < 1 ? 0 : count($rep_ext) - 1;
     $extension = in_array($rep_ext[$who_ext],$rep_filetypes) ? $rep_ext[$who_ext] : 0;
     if(empty($extension)) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
     }
-    if($_FILES['replay']['size']>$rep_max['size']) { 
+    if($files_gl['replay']['size']>$rep_max['size']) { 
     $error .= $cs_lang['too_big'] . cs_html_br(1);
     }
 
     $filename = 'replay-' . $replays_id . '-' . cs_time() . '.' . $extension;
-    if(empty($error) AND cs_upload('replays', $filename, $_FILES['replay']['tmp_name'])) {
+    if(empty($error) AND cs_upload('replays', $filename, $files_gl['replay']['tmp_name'])) {
     $replay_file = 'uploads/replays/' . $filename;
     $cs_replays['replays_mirrors'] = empty($cs_replays['replays_mirrors']) ? $replay_file : 
       $replay_file . "\n" . $cs_replays['replays_mirrors'];

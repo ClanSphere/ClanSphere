@@ -3,6 +3,9 @@
 // $Id$
 
 $cs_lang = cs_translate('gallery');
+
+$files_gl = cs_files();
+
 $data = array();
 
 $img_max['width'] = 200;
@@ -20,22 +23,22 @@ if(isset($_POST['submit'])) {
   
   $error = '';
 
-  if(!empty($_FILES['picture']['tmp_name'])) {
-    $img_size = getimagesize($_FILES['picture']['tmp_name']);
+  if(!empty($files_gl['picture']['tmp_name'])) {
+    $img_size = getimagesize($files_gl['picture']['tmp_name']);
       switch($img_size[2]) {
       case 2:
         $ext = 'gif'; break;
       case 3:
         $ext = 'png'; break;
     }
-    $img_size = getimagesize($_FILES['picture']['tmp_name']);
+    $img_size = getimagesize($files_gl['picture']['tmp_name']);
     if($img_size[0]>$img_max['width']) 
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1]>$img_max['height']) 
       $error .= $cs_lang['too_high'] . cs_html_br(1);
     
-    if($_FILES['picture']['size']>$img_max['size']) { 
-      $size = $_FILES['picture']['size'] - $img_max['size'];
+    if($files_gl['picture']['size']>$img_max['size']) { 
+      $size = $files_gl['picture']['size'] - $img_max['size'];
       $size = cs_filesize($size);
       $error .= sprintf($cs_lang['too_big'], $size) . cs_html_br(1);
     }
@@ -83,10 +86,10 @@ else {
   $categories_save = array_values($cs_categories);
  cs_sql_insert(__FILE__,'categories',$categories_cells,$categories_save);
 
-  if(!empty($_FILES['picture']['tmp_name'])) {
+  if(!empty($files_gl['picture']['tmp_name'])) {
     $id = cs_sql_insertid(__FILE__);
     $filename = 'watermark-' . $id . '.' . $ext;
-   cs_upload('categories',$filename,$_FILES['picture']['tmp_name']);
+   cs_upload('categories',$filename,$files_gl['picture']['tmp_name']);
   
     $categories2_cells = array('categories_picture');
     $categories2_save = array($filename);      

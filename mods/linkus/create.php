@@ -3,13 +3,15 @@
 // $Id$
 
 $cs_lang = cs_translate('linkus');
+
+$files_gl = cs_files();
+
 $data = array();
 
 $img_max['width'] = 470;
 $img_max['height'] = 100;
 $img_max['size'] = 256000;
 $img_filetypes = array('image/png' => 'png','image/jpeg' => 'jpg','image/gif' => 'gif');
-
 
 if(isset($_POST['submit'])) {
   
@@ -24,25 +26,25 @@ if(isset($_POST['submit'])) {
   if(empty($cs_linkus['linkus_url'])) {
     $error .= $cs_lang['no_url'] . cs_html_br(1);
   }
-  if(empty($_FILES['symbol']['tmp_name'])) {
+  if(empty($files_gl['symbol']['tmp_name'])) {
     $error .= $cs_lang['no_pic'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['symbol']['tmp_name'])) {
+  elseif(!empty($files_gl['symbol']['tmp_name'])) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
     foreach($img_filetypes AS $allowed => $new_ext) {
-      if($allowed == $_FILES['symbol']['type']) {
+      if($allowed == $files_gl['symbol']['type']) {
         $error = '';
         $extension = $new_ext;
       } 
     }
-    $img_size = getimagesize($_FILES['symbol']['tmp_name']);
+    $img_size = getimagesize($files_gl['symbol']['tmp_name']);
     if($img_size[0]>$img_max['width']) {
       $error .= $cs_lang['too_wide'] . cs_html_br(1); 
     }
     if($img_size[1]>$img_max['height']) { 
       $error .= $cs_lang['too_high'] . cs_html_br(1);
     }
-    if($_FILES['symbol']['size']>$img_max['size']) {
+    if($files_gl['symbol']['size']>$img_max['size']) {
       $error .= $cs_lang['too_big'] . cs_html_br(1); 
     }
   }
@@ -82,11 +84,11 @@ else{
   cs_sql_insert(__FILE__,'linkus',$linkus_cells,$linkus_save);
     
         
-  if(!empty($_FILES['symbol']['tmp_name'])) {
+  if(!empty($files_gl['symbol']['tmp_name'])) {
     $where = "linkus_name = '" . cs_sql_escape($cs_linkus['linkus_name']) . "'";
     $getid = cs_sql_select(__FILE__,'linkus','linkus_id',$where);
     $filename = $getid['linkus_id'] . '.' . $extension;
-    cs_upload('linkus',$filename,$_FILES['symbol']['tmp_name']);
+    cs_upload('linkus',$filename,$files_gl['symbol']['tmp_name']);
   }
     
   $linkus_cells = array('linkus_banner');

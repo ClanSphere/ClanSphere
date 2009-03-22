@@ -3,9 +3,13 @@
 // $Id$
 
 $cs_lang = cs_translate('links');
+
+$files_gl = cs_files();
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
+
 require_once('mods/categories/functions.php');
 
 $links_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
@@ -70,11 +74,11 @@ if(isset($_POST['submit'])) {
 	if(!empty($cs_main['fckeditor']))
 		$cs_links['links_info'] = '[html]' . $cs_links['links_info'] . '[/html]';
 
-	$img_size = getimagesize($_FILES['symbol']['tmp_name']);
-  if(!empty($_FILES['symbol']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+	$img_size = getimagesize($files_gl['symbol']['tmp_name']);
+  if(!empty($files_gl['symbol']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['symbol']['tmp_name'])) {
+  elseif(!empty($files_gl['symbol']['tmp_name'])) {
     switch($img_size[2]) {
      case 1:
       $ext = 'gif'; break;
@@ -87,7 +91,7 @@ if(isset($_POST['submit'])) {
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1] > $img_max['height'])
       $error .= $cs_lang['too_high'] . cs_html_br(1);
-    if($_FILES['picture']['size'] > $img_max['size'])
+    if($files_gl['picture']['size'] > $img_max['size'])
       $error .= $cs_lang['too_big'] . cs_html_br(1);
   }
 
@@ -148,16 +152,16 @@ else {
   $save = array_values($cs_links);
  cs_sql_update(__FILE__,'links',$cells,$save,$links_id);
 
-  if(!empty($_FILES['symbol']['tmp_name'])) {
+  if(!empty($files_gl['symbol']['tmp_name'])) {
     $filename = $links_id . '.' . $ext;
-   cs_upload('links',$filename,$_FILES['symbol']['tmp_name']);
+   cs_upload('links',$filename,$files_gl['symbol']['tmp_name']);
 
     $file_cell = array('links_banner');
     $file_save = array($filename);      
    cs_sql_update(__FILE__,'links',$file_cell,$file_save,$links_id);
   }
   
-	if(empty($_FILES['symbol']['tmp_name']) AND $del_banner == 1) {
+	if(empty($files_gl['symbol']['tmp_name']) AND $del_banner == 1) {
 	 cs_unlink('links', $cs_links['links_banner']);
 		$banner_cells = array('links_banner');
 		$banner_save = array();

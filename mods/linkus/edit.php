@@ -3,6 +3,9 @@
 // $Id$
 
 $cs_lang = cs_translate('linkus');
+
+$files_gl = cs_files();
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
@@ -31,30 +34,30 @@ if(isset($_POST['submit'])) {
   if(empty($cs_linkus['linkus_url'])) {
     $error .= $cs_lang['no_url'] . cs_html_br(1);
   }
-  if(empty($_FILES['symbol']['tmp_name']) AND empty($cs_linkus['linkus_banner'])) {
+  if(empty($files_gl['symbol']['tmp_name']) AND empty($cs_linkus['linkus_banner'])) {
     $error .= $cs_lang['no_pic'] . cs_html_br(1);
   }
-  elseif(!empty($_FILES['symbol']['tmp_name'])) {
+  elseif(!empty($files_gl['symbol']['tmp_name'])) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
     foreach($img_filetypes AS $allowed => $new_ext) {
-      if($allowed == $_FILES['symbol']['type']) {
+      if($allowed == $files_gl['symbol']['type']) {
         $error = '';
         $extension = $new_ext;
       } 
     }
-    $img_size = getimagesize($_FILES['symbol']['tmp_name']);
+    $img_size = getimagesize($files_gl['symbol']['tmp_name']);
     if($img_size[0]>$img_max['width']) {
       $error .= $cs_lang['too_wide'] . cs_html_br(1); 
     }
     if($img_size[1]>$img_max['height']) { 
       $error .= $cs_lang['too_high'] . cs_html_br(1);
     }
-    if($_FILES['symbol']['size']>$img_max['size']) {
+    if($files_gl['symbol']['size']>$img_max['size']) {
       $error .= $cs_lang['too_big'] . cs_html_br(1); 
     }
     if(empty($error)) {
       $cs_linkus['linkus_banner'] = $linkus_id . '.' . $extension;
-      cs_upload('linkus',$cs_linkus['linkus_banner'],$_FILES['symbol']['tmp_name']);
+      cs_upload('linkus',$cs_linkus['linkus_banner'],$files_gl['symbol']['tmp_name']);
     }
   }
 }

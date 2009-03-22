@@ -7,6 +7,8 @@ $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
 
+$files_gl = cs_files();
+
 $fid = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $fid = $cs_post['id'];
 
@@ -153,10 +155,10 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
 	$run_loop_files = isset($_POST['run_loop_files']) ? $_POST['run_loop_files'] : 0;
 	for($run=0; $run < $run_loop_files; $run++) {
   	$num = $run+1;
-  	if(!empty($_FILES["file_$num"]['name'])) {
-    	$board_files_name = $cs_files[$run]['boardfiles_name'] = $_FILES["file_$num"]['name'];
+  	if(!empty($files_gl["file_$num"]['name'])) {
+    	$board_files_name = $cs_files[$run]['boardfiles_name'] = $files_gl["file_$num"]['name'];
     	$ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
-    	if($_FILES["file_$num"]['size'] > $options['file_size']) {
+    	if($files_gl["file_$num"]['size'] > $options['file_size']) {
       	$error .= $cs_lang['error_filesize'] . cs_html_br(1);
       	$file_error[$num] = '1';
     	}
@@ -172,8 +174,8 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
       	$file_error[$num] = '1';
     	}
   	}
-  	if(!empty($_FILES["file_$num"]['name']) AND empty($file_error[$num])) {
-    	$file_name[$num] = $_FILES["file_$num"]['name'];
+  	if(!empty($files_gl["file_$num"]['name']) AND empty($file_error[$num])) {
+    	$file_name[$num] = $files_gl["file_$num"]['name'];
 
     	$hash = '';
     	$pattern = "abcdefghijklmnopqrstuvwxyz";
@@ -181,7 +183,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
 				$hash .= $pattern{rand(0,25)};
     	}
     	$file_upload_name[$num] = $hash . '.' . $ext;
-    	if (cs_upload('board/files', $file_upload_name[$num], $_FILES["file_$num"]['tmp_name'])) {
+    	if (cs_upload('board/files', $file_upload_name[$num], $files_gl["file_$num"]['tmp_name'])) {
       	$a++;
     	} else {
       	$error .= $cs_lang['error_fileupload'] . cs_html_br(1);

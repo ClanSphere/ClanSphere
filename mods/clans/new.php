@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('clans');
 
+$files_gl = cs_files();
+
 $op_clans = cs_sql_option(__FILE__,'clans');
 $img_filetypes = array('gif','jpg','png');
 
@@ -20,12 +22,12 @@ if(isset($_POST['submit'])) {
   $error = 0;
   $errormsg = '';
 
-  $img_size = getimagesize($_FILES['picture']['tmp_name']);
-  if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+  $img_size = getimagesize($files_gl['picture']['tmp_name']);
+  if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
     $error++;
   }
-  elseif(!empty($_FILES['picture']['tmp_name'])) {
+  elseif(!empty($files_gl['picture']['tmp_name'])) {
     switch($img_size[2]) {
       case 1:
       $extension = 'gif'; break;
@@ -45,7 +47,7 @@ if(isset($_POST['submit'])) {
     $error++;
   }
   
-  if($_FILES['picture']['size']>$op_clans['max_size']) { 
+  if($files_gl['picture']['size']>$op_clans['max_size']) { 
     $message .= $cs_lang['too_big'] . cs_html_br(1);
     $error++;
   }
@@ -147,11 +149,11 @@ else {
   $clans_save = array_values($cs_clans);
   cs_sql_insert(__FILE__,'clans',$clans_cells,$clans_save);
 
-  if(!empty($_FILES['picture']['tmp_name'])) {
+  if(!empty($files_gl['picture']['tmp_name'])) {
     $where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
     $getid = cs_sql_select(__FILE__,'clans','clans_id',$where);
   $filename = 'picture-' . $getid['clans_id'] . '.' . $extension;
-    cs_upload('clans',$filename,$_FILES['picture']['tmp_name']);
+    cs_upload('clans',$filename,$files_gl['picture']['tmp_name']);
 
   $cs_clans2['clans_picture'] = $filename;
   $clans2_cells = array_keys($cs_clans2);

@@ -3,6 +3,9 @@
 // $Id$
 
 $cs_lang = cs_translate('gallery');
+
+$files_gl = cs_files();
+
 require_once('mods/gallery/functions.php');
 
 $cs_option = cs_sql_option(__FILE__,'gallery');
@@ -16,7 +19,7 @@ $data['error']['message'] = '';
 if(isset($_POST['submit'])) {
   $file_up = !empty($_POST['file_up']) ? $_POST['file_up'] : 0;
   if ($file_up == 0) {
-    $cs_gallery['gallery_name'] = $_FILES['picture']['name'];
+    $cs_gallery['gallery_name'] = $files_gl['picture']['name'];
   }  elseif ($file_up == 1) {
     $cs_gallery['gallery_name'] = $_POST['gallery_name'];
   }
@@ -35,7 +38,7 @@ if(isset($_POST['submit'])) {
 
   $error = '';
 
-  if($file_up == 0 AND empty($_FILES['picture']['tmp_name'])) {
+  if($file_up == 0 AND empty($files_gl['picture']['tmp_name'])) {
     $error .= $cs_lang['error_pic'] . cs_html_br(1);
   }
   if(empty($_POST['gallery_titel'])) {
@@ -50,12 +53,12 @@ if(isset($_POST['submit'])) {
   }
 
   if($file_up == 0) {
-    $img_size = getimagesize($_FILES['picture']['tmp_name']);
-    if(!empty($_FILES['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+    $img_size = getimagesize($files_gl['picture']['tmp_name']);
+    if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
     }
-    elseif(!empty($_FILES['picture']['tmp_name'])) {
-      $filename = $_FILES['picture']['name'];
+    elseif(!empty($files_gl['picture']['tmp_name'])) {
+      $filename = $files_gl['picture']['name'];
       $s_error = 0;
       if($img_size[0]>$cs_option['width']) {
         $error .= $cs_lang['too_wide'] . cs_html_br(1);
@@ -65,17 +68,17 @@ if(isset($_POST['submit'])) {
         $error .= $cs_lang['too_high'] . cs_html_br(1);
         $s_error++; //size_error
       }
-      if($_FILES['picture']['size']>$cs_option['size']) {
-        $size = $_FILES['picture']['size'] - $cs_option['size'];
+      if($files_gl['picture']['size']>$cs_option['size']) {
+        $size = $files_gl['picture']['size'] - $cs_option['size'];
         $size = cs_filesize($size);
         $error .= sprintf($cs_lang['too_big'], $size) . cs_html_br(1);
       }
       if(extension_loaded('gd') AND !empty($gray)) {
         require_once('mods/gallery/gd_2.php');
-        cs_gray($_FILES['picture']['tmp_name']);
+        cs_gray($files_gl['picture']['tmp_name']);
       }
 
-      if(empty($s_error) AND cs_upload('gallery/pics', $filename, $_FILES['picture']['tmp_name']) OR !empty($s_error) AND extension_loaded('gd') AND cs_resample($_FILES['picture']['tmp_name'], 'uploads/gallery/pics/' . $filename, $cs_option['width'], $cs_option['height'])) {
+      if(empty($s_error) AND cs_upload('gallery/pics', $filename, $files_gl['picture']['tmp_name']) OR !empty($s_error) AND extension_loaded('gd') AND cs_resample($files_gl['picture']['tmp_name'], 'uploads/gallery/pics/' . $filename, $cs_option['width'], $cs_option['height'])) {
 
         if(extension_loaded('gd') AND cs_resample('uploads/gallery/pics/' . $filename, 'uploads/gallery/thumbs/' . 'Thumb_' . $filename, $cs_option['thumbs'], $cs_option['thumbs'])) {
 
