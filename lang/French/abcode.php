@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2006 - www.clansphere.net - Traduction francaise >>> www.globalteam-esports.info
+// ClanSphere 2009 - www.clansphere.net - Traduction francaise >>> www.globalteam-esports.info
 // $Id$
 
 $cs_lang['mod']  = 'Code forum';

@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2007 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 $cs_lang = cs_translate('search');

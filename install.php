@@ -7,7 +7,7 @@
 $cs_main = array( 'def_action'      => 'list',
                   'def_lang'        => 'English',
                   'def_mod'         => 'install',
-                  'def_title'       => 'ClanSphere 2008.3_svn Installation',
+                  'def_title'       => 'ClanSphere Installation',
                   'def_tpl'         => 'install',
                   'def_theme'       => 'base',
                   'def_parameters'  => '',
@@ -15,7 +15,7 @@ $cs_main = array( 'def_action'      => 'list',
                   'init_sql'        => false,
                   'init_tpl'        => false,
                   'public'          => 1,
-                  'version_name'    => '2008.3_svn',
+                  'version_name'    => '2009.0_svn',
                   'version_date'    => '2008-09-20');
 
 require_once 'system/core/functions.php';

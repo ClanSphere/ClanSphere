@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2006 - www.clansphere.net
+// ClanSphere 2009 - www.clansphere.net
 // $Id$
 
 $cs_lang['mod']  = 'Explorateur';
