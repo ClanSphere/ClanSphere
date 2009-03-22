@@ -608,9 +608,9 @@ function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
   $on_week = cs_time() - 604800;
 
   if ($mode == 1 || $mode == 2) {
-    $style = 'padding: 4px 0 4px 0; color:';
-    $text = $on_now <= $laston && empty($invisible) ? cs_html_div(1,$style.'#00FF00') . $cs_lang['online']  . cs_html_div(0) : cs_html_div(1,$style.'maroon') . $cs_lang['offline'] . cs_html_div(0);
-    if ($on_week >= $laston) $text = cs_html_div(1,$style.'#555') . $cs_lang['inactive']   . cs_html_div(0);
+    $text = $on_now <= $laston && empty($invisible) ? '<div style="padding: 4px 0 4px 0; color: #00BB00">' . $cs_lang['online']  . '</div>' :
+      '<div style="padding: 4px 0 4px 0; color: maroon">' . $cs_lang['offline'] . '</div>';
+    if ($on_week >= $laston) $text = '<div style="padding: 4px 0 4px 0; color: #555555">' . $cs_lang['inactive']   .'</div>';
   }
   if ($mode != 1) {
     $icon = $on_now <= $laston && empty($invisible) ? 'green' : 'red';
