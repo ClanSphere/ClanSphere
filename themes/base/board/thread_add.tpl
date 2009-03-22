@@ -114,7 +114,7 @@
 			</div>
 			{stop:file_is_picture}
 			{if:file_is_other}
-			<img src="/symbols/files/filetypes/{files:ext}.gif" alt="{files:ext}" /> {files:name}<br />
+			<img src="{page:path}symbols/files/filetypes/{files:ext}.gif" alt="{files:ext}" /> {files:name}<br />
 			<input type="submit" name="remove_file_{files:num}" value="{lang:remove}" />
 			{stop:file_is_other}
 			{stop:file_exists}

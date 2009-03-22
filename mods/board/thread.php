@@ -323,7 +323,9 @@ if($start <! 0 AND $board_sort=='ASC')
       for($run = 0; $run < $loop_files; $run++){
         $ext = $cs_thread_files[$run]['boardfiles_typ'];
         $file = $cs_thread_files[$run]['boardfiles_name'];
-        $cs_lap = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext) . ' ' . $file; 
+        $ext_lower = strtolower($ext);
+        $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
+        $cs_lap = cs_html_img('symbols/files/filetypes/' . $symbol . '.gif',0,0,0,$ext) . ' ' . $file; 
         if(file_exists('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext)) {
           $file_file = filesize('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext);
           $data['files'][$run]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_thread_files[$run]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
@@ -514,7 +516,9 @@ for($run = 0; $run<$com_loop; $run++)
       $name = strlen($file);
       $ext = substr($file,$name - $extension + 1,$name);
       $cs_comments_files[$run2]['boardfiles_typ'] = $ext;
-      $cs_lap = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext) . ' ' . $file; 
+      $ext_lower = strtolower($ext);
+      $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
+      $cs_lap = cs_html_img('symbols/files/filetypes/' . $symbol . '.gif',0,0,0,$ext) . ' ' . $file; 
       if(file_exists('uploads/board/files/'.$cs_comments_files[$run2]['boardfiles_id'].'.'.$ext)) {
         $file_file = filesize('uploads/board/files/'.$cs_comments_files[$run2]['boardfiles_id'].'.'.$ext);
         $data['comment'][$run]['com_files'][$run2]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_comments_files[$run2]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_comments_files[$run2]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';

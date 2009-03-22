@@ -10,7 +10,7 @@ $data = array();
 $thread_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $thread_id = $cs_post['id'];
 
-include_once('mods/board/functions.php');
+include_once 'mods/board/functions.php';
 
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
@@ -112,8 +112,8 @@ for($run=0; $run < $run_loop_files; $run++) {
   if(!empty($_FILES['file_'.$num]['name']))  {
     $board_files_name = $cs_boardfiles[$run]['boardfiles_name'] = $_FILES['file_'.$num]['name'];
 
-    $ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
-
+    $ext = strtolower(substr(strrchr($board_files_name,'.'),1));
+    
     if($_FILES["file_$num"]['size'] > $max_size) {
       $error .= $cs_lang['error_filesize'] . cs_html_br(1);
       $file_error[$num] = '1';
@@ -273,7 +273,9 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
         $ext = substr($file,$name - $extension + 1,$name);
-        $data['files'][$run]['ext'] = $ext;
+        $ext_lower = strtolower($ext);
+        $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
+        $data['files'][$run]['ext'] = $symbol;
         
         $data['files'][$run]['if']['del_button'] = FALSE;
         $data['files'][$run]['file_del'] = '';

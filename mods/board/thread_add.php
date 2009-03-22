@@ -301,7 +301,9 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
         $ext = substr($file,$name - $extension + 1,$name);
-        $data['files'][$run]['ext'] = $ext;
+        $ext_lower = strtolower($ext);
+        $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
+        $data['files'][$run]['ext'] = $symbol;
         
         $data['files'][$run]['if']['file_is_picture'] = FALSE;
         $data['files'][$run]['if']['file_is_other'] = FALSE;

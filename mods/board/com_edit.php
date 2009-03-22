@@ -80,7 +80,7 @@ for($run=0; $run < $run_loop_files; $run++) {
   if(!empty($_FILES['file_'.$num]['name'])) {
     $board_files_name = $cs_boardfiles[$run]['boardfiles_name'] = $_FILES['file_'.$num]['name'];
 
-    $ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
+    $ext = strtolower(substr(strrchr($board_files_name,'.'),1));
 
     if($_FILES['file_'.$num]['size'] > $options['file_size']) {
       $error .= $cs_lang['error_filesize'] . cs_html_br(1);
@@ -243,7 +243,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
         	foreach($filetypes AS $add) {
          		$return_types .= empty($return_types) ? $add : ', ' . $add;
         	}
-        	$matches[2] = $cs_lang['max_size'] . cs_filesize($options['max_size']) . cs_html_br(1);
+        	$matches[2] = $cs_lang['max_size'] . cs_filesize($options['file_size']) . cs_html_br(1);
         	$matches[2] .= $cs_lang['filetypes'] . $return_types;
         $data['files'][$run]['clip'] = cs_abcode_clip($matches);
       }
@@ -265,7 +265,9 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
         $ext = substr($file,$name - $extension + 1,$name);
-        $data['files'][$run]['ext'] = $ext;
+        $ext_lower = strtolower($ext);
+        $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
+        $data['files'][$run]['ext'] = $symbol;
         
         $data['files'][$run]['if']['del_button'] = FALSE;
         $data['files'][$run]['file_del'] = '';
@@ -352,7 +354,8 @@ else {
   }
 
   $more = 'where=' . $fid . '&start=' . $start . '#com' . $count_com;
- cs_redirect($cs_lang['changes_done'],'board','thread',$more);
+  
+  cs_redirect($cs_lang['changes_done'],'board','thread',$more);
 }
 
 ?>
