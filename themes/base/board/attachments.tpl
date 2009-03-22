@@ -3,10 +3,10 @@
     <td class="headb" colspan="4">{lang:mod} - {lang:attachments}</td>
   </tr>
   <tr>
-    <td class="leftb" style="width:25%"><a href="{link:abos}">{lang:abos}</a> ({link:abos_count})</td>
+    <td class="leftb" style="width:25%"><a href="{url:board_center}">{lang:abos}</a> ({link:abos_count})</td>
     <td class="leftb" style="width:25%">{lang:attachments} ({link:attachments_count})</td>
-    <td class="leftb" style="width:25%"><a href="{link:avatar}">{lang:avatar}</a></td>
-    <td class="leftb" style="width:25%"><a href="{link:signature}">{lang:signature}</a> </td>
+    <td class="leftb" style="width:25%"><a href="{url:board_avatar}">{lang:avatar}</a></td>
+    <td class="leftb" style="width:25%"><a href="{url:board_signature}">{lang:signature}</a> </td>
   </tr>
 </table>
 <br />

@@ -10,10 +10,11 @@ $select = 'bdf.boardfiles_id AS boardfiles_id, bdf.boardfiles_name AS boardfiles
 $select .=', usr.users_id AS users_id';
 $order = 'bdf.boardfiles_id DESC';
 $cs_att = cs_sql_select(__FILE__,$from,$select,0,$order,0,0);
+
 $count_att = count($cs_att);
 $board_count = cs_sql_count(__FILE__,'board');
 
-$data['link']['back'] = cs_url('board','manage');
+
 $data['count']['all'] = $count_att;
 
 if(empty($count_att)) {
@@ -34,19 +35,18 @@ for($run = 0; $run < $count_att; $run++) {
     $file_file = filesize('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext);
     $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?id='.$cs_att[$run]['boardfiles_id'],$file,1);
     $data['attachments'][$run]['size'] = cs_filesize($file_file);
-  }
-  elseif(file_exists('uploads/board/files/'.$file)) {
+  } elseif(file_exists('uploads/board/files/'.$file)) {
     $file_file = filesize('uploads/board/files/'.$file);
     $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?name='.$file,$file,1);
     $data['attachments'][$run]['size'] = cs_filesize($file_file);
-  }
-  else {
+  } else {
     $data['attachments'][$run]['filename'] = $cs_lang['no_att_exist'];
     $data['attachments'][$run]['size'] = cs_filesize(0);
   }
   
   $threads_headline = $cs_att[$run]['threads_headline'];
   $data['attachments'][$run]['topics'] = strlen($threads_headline) <= 15 ? $threads_headline : substr($threads_headline,0,15) . '...';
+  $data['attachments'][$run]['threads_headline'] = $threads_headline;
   
   $data['attachments'][$run]['topics_link'] = cs_url('board','thread','where=' . $cs_att[$run]['threads_id']);
 
