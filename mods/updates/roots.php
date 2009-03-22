@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('updates');
-$update_server = "http://update.clansphere.de/"; 
+$update_server = "http://update.clansphere.net/"; 
 
 $data = array();
 $data['if']['details'] = FALSE;

@@ -6,7 +6,7 @@ global $cs_db;
 global $com_lang;
 
 $cs_lang = cs_translate('updates');
-$update_server = "http://update.clansphere.de/"; 
+$update_server = "http://update.clansphere.net/"; 
 
 $value = explode('.', cs_sql_escape($_GET['file']));
 $errormsg = '';
