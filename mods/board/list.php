@@ -51,15 +51,15 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 	    $board = $data['categories'][$run_1]['board'][$run_2];
 	    $board['listcat_url'] = cs_url('board', 'listcat', 'id=' . $board['board_id']);
 	    
-	    $tables = 'threads thr LEFT JOIN {pre}_users usr ON thr.threads_last_user = usr.users_id LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND red.users_id = ' . $account['users_id'];
+	    $tables = 'threads thr LEFT JOIN {pre}_users usr ON thr.threads_last_user = usr.users_id LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND red.users_id = "' . $account['users_id'] . '"';
 	    $cells = 'thr.threads_id AS threads_id, thr.threads_last_user AS threads_last_user, thr.threads_time AS threads_time, thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, thr.users_id AS users_id_2, usr.users_id AS users_id, usr.users_nick AS users_nick, red.read_since AS read_since';
-	    $where = "thr.board_id = " . $board['board_id'];
+	    $where = 'thr.board_id = "' . $board['board_id']. '" AND thr.threads_ghost_thread = "0"';
 	    $order = 'thr.threads_last_time DESC';
 	    $thread = cs_sql_select(__FILE__, $tables, $cells, $where, $order);
 	    
 	    $check_pw = 1;
 	    if (!empty($board['board_pwd'])) {
-	      $pw_where = "users_id = " . $account['users_id'] . " AND board_id = " . $board['board_id'];
+	      $pw_where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $board['board_id'] . '"';
 	      $check_pw = cs_sql_count(__FILE__, 'boardpws', $pw_where);
 	    }
 	    
@@ -71,11 +71,11 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 	    
 	    if (!empty($account['users_id']) and !empty($check_pw)) {
 	      $tables = "threads thr LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND ";
-	      $tables .= "red.users_id = " . $account['users_id'];
-	      $condition = "thr.board_id = " . $board['board_id'] . " AND ";
+	      $tables .= 'red.users_id = "' . $account['users_id'] . '"';
+	      $condition = 'thr.board_id = "' . $board['board_id'] . '" AND ';
 	      $condition .= "threads_last_time > '" . $cs_readtime . "' AND ";
 	      $condition .= "(red.threads_id IS NULL OR thr.threads_last_time > red.read_since) AND ";
-	      $condition .= "thr.threads_ghost = 0";
+	      $condition .= 'thr.threads_ghost = "0"';
 	      $unread = cs_sql_select(__FILE__, $tables, 'thr.threads_id', $condition);
 	      if (isset($unread['threads_id'])) {
 	        $icon = 'board_unread_';
