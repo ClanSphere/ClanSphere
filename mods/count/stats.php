@@ -95,7 +95,7 @@ foreach($data['count'] AS $dc) {
     $data['count'][$run]['barp'] = round($data['count'][$run]['count'] / $comnr_max * 200);
     $data['count'][$run]['size'] = cs_html_img('symbols/clansphere/bar2.gif', 12, $data['count'][$run]['barp']);
   
-    if ($data['count'][$run-1]['count'] == 0) {
+    if (empty($data['count'][$run-1]['count'])) {
       $data['count'][$run]['diff'] = '-';
     }  
     else {
@@ -116,13 +116,16 @@ if ($op_count['view'] == 'stats'){
 }
 $run = 0;
 if ($op_count['view'] == 'amstats'){
+	$backup = $data['count'];
+  
   echo cs_subtemplate(__FILE__,$data,'count','statshead');
-
+unset($data['count']);
 ?>
 <script type="text/javascript" src="<?php echo $cs_main['php_self']['dirname']; ?>mods/count/amline/swfobject.js"></script>
 <div id="flashcontent">
 <?php
 echo cs_subtemplate(__FILE__,$data,'count','flash');
+$data['count'] = $backup;
 ?>
 </div>
 <?php
