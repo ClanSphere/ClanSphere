@@ -14,6 +14,7 @@ $cs_lang['more'] = 'More';
 $cs_lang['error_id'] = '- Select a buddy.';
 $cs_lang['error_available'] = '- Buddy is already in your list.';
 $cs_lang['error_user_noavailable'] = '- User not found!';
+$cs_lang['error_user_self'] = '- You are not allowed to add yourself!';
 $cs_lang['notice'] = 'Note';
 $cs_lang['search'] = 'Search';
 $cs_lang['status'] = 'Status';

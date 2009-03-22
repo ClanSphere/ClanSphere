@@ -1,4 +1,6 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
 
 $cs_lang['mod_name'] = 'Freunde';
 $cs_lang['mod_text'] = 'Kameraden und Kumpel als Liste';
@@ -12,6 +14,7 @@ $cs_lang['more'] = 'Erweitert';
 $cs_lang['error_id'] = '- Bitte einen Freund ausw&auml;hlen.';
 $cs_lang['error_available'] = '- Dieser Freund befindet sich schon in der Liste.';
 $cs_lang['error_user_noavailable'] = '- Benutzer nicht gefunden!';
+$cs_lang['error_user_self'] = '- Es ist nicht erlaubt sich selbst hinzuzuf&uuml;gen!';
 $cs_lang['notice'] = 'Notiz';
 $cs_lang['search'] = 'Suchen';
 $cs_lang['status'] = 'Status';

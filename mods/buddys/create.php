@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('buddys');
+
 $cs_get = cs_get('id');
 $data = array();
 
@@ -13,7 +14,6 @@ $time = cs_time();
 $buddys_id = 0;
 $buddys_notice = '';
 $users_id = $account['users_id'];
-
 
 if(!empty($users_add_id)) {
   $users_data = cs_sql_select(__FILE__,'users','users_id, users_nick',"users_id = '" . $users_add_id . "'");
@@ -33,7 +33,7 @@ if(isset($_POST['submit'])) {
 		if(!empty($users_data)) {
 			$buddys_id = $users_data['users_id'];
 			if($buddys_id == $account['users_id']) {
-				$error .= $cs_lang['error_user_noavailable'];
+				$error .= $cs_lang['error_user_self'];
 			}
 			$where = "users_id = '" . $users_id . "' AND buddys_user = '" . $buddys_id . "'";
 			$buddys_check = cs_sql_count(__FILE__,'buddys',$where);
@@ -50,12 +50,10 @@ if(isset($_POST['submit'])) {
 	}
 }
 
-
 if(!isset($_POST['submit']))
   $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($error))
-  $data['head']['body'] .= $error;
-
+  $data['head']['body'] = $error;
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   
@@ -78,7 +76,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['abcode']['features']  = cs_abcode_features('buddys_notice');
   $data['create']['buddys_notice'] = $buddys_notice;
 
- 
  echo cs_subtemplate(__FILE__,$data,'buddys','create');
 }
 else {
@@ -88,7 +85,6 @@ else {
  cs_sql_insert(__FILE__,'buddys',$buddys_cells,$buddys_save);
  
  cs_redirect($cs_lang['create_done'],'buddys','center');
-
 }
 
 ?>
