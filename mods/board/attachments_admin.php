@@ -25,8 +25,10 @@ for($run = 0; $run < $count_att; $run++) {
   $extension = strlen(strrchr($file,"."));
   $name = strlen($file);
   $ext = substr($file,$name - $extension + 1,$name); 
+  $ext_lower = strtolower($ext);
+  $symbol = file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? $ext_lower : 'chm';
   
-  $data['attachments'][$run]['icon'] = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
+  $data['attachments'][$run]['icon'] = cs_html_img('symbols/files/filetypes/' . $symbol . '.gif',0,0,0,$ext);
 
   if(file_exists('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext)) {
     $file_file = filesize('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext);

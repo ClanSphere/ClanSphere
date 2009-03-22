@@ -14,11 +14,8 @@ $cs_att = cs_sql_select(__FILE__,$from,$select,$where,$order,0,0);
 $count_abo = cs_sql_count(__FILE__,'abonements','users_id = \'' .$account['users_id'] . '\'');
 $count_att = count($cs_att);
 
-$data['link']['abos'] = cs_url('board','center');
 $data['link']['abos_count'] = $count_abo;
 $data['link']['attachments_count'] = $count_att;
-$data['link']['avatar'] = cs_url('board','avatar');
-$data['link']['signature'] = cs_url('board','signature');
 
 if(empty($count_att)) {
   $data['attachments'] = '';
@@ -29,23 +26,22 @@ for($run = 0; $run < $count_att; $run++) {
   $extension = strlen(strrchr($file,"."));
   $name = strlen($file);
   $ext = substr($file,$name - $extension + 1,$name); 
+  $ext_lower = strtolower($ext);
+  $symbol = file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? $ext_lower : 'chm';
   
-  $data['attachments'][$run]['img'] = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
+  $data['attachments'][$run]['img'] = cs_html_img('symbols/files/filetypes/' . $symbol . '.gif',0,0,0,$ext);
 
-  
   if(file_exists('uploads/board/files/' . $cs_att[$run]['boardfiles_id'] . '.' . $ext)) {
     $file_file = filesize('uploads/board/files/' . $cs_att[$run]['boardfiles_id'] . '.' . $ext);
     $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?id=' . $cs_att[$run]['boardfiles_id'],$file,1);
-  $data['attachments'][$run]['size'] = cs_filesize($file_file);
-  }
-  elseif(file_exists('uploads/board/files/' . $file)) {
+    $data['attachments'][$run]['size'] = cs_filesize($file_file);
+  } elseif(file_exists('uploads/board/files/' . $file)) {
     $file_file = filesize('uploads/board/files/' . $file);
     $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?name='  .$file,$file,1);
-  $data['attachments'][$run]['size'] = cs_filesize($file_file);
-  }
-  else {
+    $data['attachments'][$run]['size'] = cs_filesize($file_file);
+  } else {
     $data['attachments'][$run]['filename'] = $cs_lang['no_att_exist'];
-  $data['attachments'][$run]['size'] = cs_filesize(0);
+    $data['attachments'][$run]['size'] = cs_filesize(0);
   }      
 
   $headline = strlen($cs_att[$run]['threads_headline']) <= 15 ? $cs_att[$run]['threads_headline'] : substr($cs_att[$run]['threads_headline'],0,15) . '...';
