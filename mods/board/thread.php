@@ -288,7 +288,7 @@ if($start <! 0 AND $board_sort=='ASC')
   if(isset($cs_report[0]) AND empty($cs_report[0]['comments_id'])) {
     $data['if']['thread_report'] = true;
     $matches[1] = $cs_lang['report'];
-    $matches[2] = cs_html_div(1,'float:right') . cs_link(cs_icon('special_paste',16,$cs_lang['reports']),'board','reportlist');
+    $matches[2] = '<div style="float: right">' . cs_link(cs_icon('special_paste',16,$cs_lang['reports']),'board','reportlist');
     $rid = 'id=' . $cs_report[0]['boardreport_id'];
     if(!empty($cs_report[0]['boardreport_done'])) {
       $matches[1] .= ' - ' . $cs_lang['done'];
@@ -296,7 +296,7 @@ if($start <! 0 AND $board_sort=='ASC')
     else {
       $matches[2] .= ' ' . cs_link(cs_icon('submit',16,$cs_lang['done']),'board','reportdone',$rid);
     }
-    $matches[2] .= ' ' . cs_link(cs_icon('cancel',16,$cs_lang['remove']),'board','reportdel',$rid) . cs_html_div(0);
+    $matches[2] .= ' ' . cs_link(cs_icon('cancel',16,$cs_lang['remove']),'board','reportdel',$rid) . '</div>';
     $matches[2] .= cs_date('unix',$cs_report[0]['boardreport_time'],1) . ' - ';
     $matches[2] .= cs_user($cs_report[0]['users_id'],$cs_report[0]['users_nick'],$cs_report[0]['users_active'],$cs_report[0]['users_delete']);
     $matches[2] .= cs_html_br(2) . cs_secure($cs_report[0]['boardreport_text'],1);
@@ -484,7 +484,7 @@ for($run = 0; $run<$com_loop; $run++)
   if(isset($cs_report[$rpno]['comments_id']) AND $cs_report[$rpno]['comments_id'] == $cs_com[$run]['comments_id']) {
     $data['if']['com_report'] = true; 
     $matches[1] = $cs_lang['report'];
-    $matches[2] = cs_html_div(1,'float:right') . cs_link(cs_icon('special_paste',16,$cs_lang['reports']),'board','reportlist');
+    $matches[2] = '<div style="float: right">' . cs_link(cs_icon('special_paste',16,$cs_lang['reports']),'board','reportlist');
     $rid = 'id=' . $cs_report[$rpno]['boardreport_id'];
     if(!empty($cs_report[$rpno]['boardreport_done'])) {
       $matches[1] .= ' - ' . $cs_lang['done'];
@@ -492,7 +492,7 @@ for($run = 0; $run<$com_loop; $run++)
     else {
       $matches[2] .= ' ' . cs_link(cs_icon('submit',16,$cs_lang['done']),'board','reportdone',$rid);
     }
-    $matches[2] .= ' ' . cs_link(cs_icon('cancel',16,$cs_lang['remove']),'board','reportdel',$rid) . cs_html_div(0);
+    $matches[2] .= ' ' . cs_link(cs_icon('cancel',16,$cs_lang['remove']),'board','reportdel',$rid) . '</div>';
     $matches[2] .= cs_date('unix',$cs_report[$rpno]['boardreport_time'],1) . ' - ';
     $matches[2] .= cs_user($cs_report[$rpno]['users_id'],$cs_report[$rpno]['users_nick'],$cs_report[$rpno]['users_active'], $cs_report[$rpno]['users_delete']);
     $matches[2] .= cs_html_br(2) . cs_secure($cs_report[$rpno]['boardreport_text'],1);

@@ -3,10 +3,9 @@
 // $Id$
 
 # Warning: This file is deprecated! Try to move to xhtml_10.php as soon as possible
-# The following functions are removed: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_input, cs_html_span
+
+# The following functions are removed: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_input, cs_html_div, cs_html_span
 # Change xhtml_10.php to xhtml_10_old.php in cs_init to use them further on
-# The following functions will be deleted soon: cs_html_div
-# Please use themes instead
 
 function cs_html_br($run)
 {
@@ -303,7 +302,7 @@ function cs_html_list($string, $style = 0, $element = '[*]')
 
 function cs_html_div($func, $style = 0, $more = 0)
 {
-  cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
+  cs_warning(__FUNCTION__ . ' - Function is removed, please use themes instead!');
   
   if ($func == 1)
   {

@@ -207,8 +207,8 @@ function cs_redirectmsg($message, $id = 0, $icon = 0) {
   if (!empty($cs_main['debug']) && (!empty($sql) || !empty($php))) {
     $message = $cs_lang['error'] . cs_html_br(1);
     $icon = 'alert';
-    if (!empty($sql)) $message .= cs_html_div(1, 0, 'id="errors"') . '<b>SQL -></b> ' . $sql . cs_html_div(0);
-    if (!empty($php)) $message .= cs_html_div(1, 0, 'id="errors"') . $php . cs_html_div(0);
+    if (!empty($sql)) $message .= '<div id="errors">' . '<strong>SQL -></strong> ' . $sql . '</div>';
+    if (!empty($php)) $message .= '<div id="errors">' . $php . '</div>';
   }
   $_SESSION['message'] = $message;
   if (!empty($id) || !empty($icon)) $_SESSION['messageadd'] = $icon . ',' . $id;

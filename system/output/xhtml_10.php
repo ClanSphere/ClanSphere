@@ -2,10 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-# The following functions are removed: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_input, cs_html_span
+# The following functions are removed: cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_input, cs_html_div, cs_html_span
 # Change xhtml_10.php to xhtml_10_old.php in cs_init to use them further on
-# The following functions will be deleted soon: cs_html_div
-# Please use themes instead
 
 function cs_html_br($run)
 {
@@ -155,29 +153,6 @@ function cs_html_list($string, $style = 0, $element = '[*]')
   $var = substr($var, 0, $first) . substr($var, $first + 5) . '</li>';
   $var = empty($style) ? '<ul>' . $var . '</ul>' : '<ol>' . $var . '</ol>';
   return $var;
-}
-
-function cs_html_div($func, $style = 0, $more = 0)
-{
-  cs_warning(__FUNCTION__ . ' - Function is marked for removal, please use themes!');
-  
-  if ($func == 1)
-  {
-  $var = '<div';
-  if (!empty($style))
-  {
-    $var .= " style=\"" . $style . "\"";
-  }
-  if (!empty($more))
-  {
-    $var .= ' ' . $more;
-  }
-  return $var . ">";
-  }
-  else
-  {
-    return "</div>";
-  }
 }
 
 ?>
