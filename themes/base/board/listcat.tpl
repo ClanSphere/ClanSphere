@@ -30,7 +30,7 @@
     <td class="centerb" style="width:60px">{threads:comments}</td>
     <td class="centerb" style="width:60px">{threads:view}</td>
     <td class="leftb" style="width:180px">{threads:date}<br />
-      {threads:from} {threads:user_name}</a> </td>
+      {threads:from} {threads:user_name} </td>
   </tr>
   {stop:threads}
 
