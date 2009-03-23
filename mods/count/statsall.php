@@ -32,7 +32,7 @@ echo "\n <script type=\"text/javascript\">\n
 
 while ($like2 < 2010) {
 
-$year2 = 'count_month like "%'.strtolower($like2).'%"';
+$year2 = "count_month like '%" . strtolower($like2) . "%'";
 
 $count_navall = cs_sql_count(__FILE__,'count');
 $count_arcall = cs_sql_count(__FILE__,'count_archiv',$year2);
@@ -47,7 +47,7 @@ if (empty($count_arcall)){
 
 while ($like1 < $b) { 
 
-$year1 = 'count_month like "%'.strtolower($like1).'%"';
+$year1 = "count_month like '%" . strtolower($like1) . "%'";
 
 $count_archive = cs_sql_select(__FILE__,'count_archiv','*',$year1,0,0,0);
 
@@ -71,7 +71,7 @@ $like2 = '2004';
 
 while ($like2 < 2010) {
 
-$year2 = 'count_month like "%'.strtolower($like2).'%"';
+$year2 = "count_month like '%" . strtolower($like2) . "%'";
 
 $count_navall = cs_sql_count(__FILE__,'count');
 $count_arcall = cs_sql_count(__FILE__,'count_archiv',$year2);
@@ -86,7 +86,7 @@ if (empty($count_arcall)){
 
 while ($like1 < $b) { 
 
-$year1 = 'count_month like "%'.strtolower($like1).'%"';
+$year1 = "count_month like '%" . strtolower($like1) . "%'";
 
 $count_archive = cs_sql_select(__FILE__,'count_archiv','*',$year1,0,0,0);
 

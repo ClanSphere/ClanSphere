@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('count');
+
 $op_count = cs_sql_option(__FILE__,'count');
 
 $data = array();
@@ -12,9 +13,11 @@ $comnr = 0;
 $levels = 12;
 $mon = 1;
 
-$where = empty($_REQUEST['where']) ? $_GET['year'] : $_REQUEST['where'];
+$where = empty($_REQUEST['where']) ? cs_datereal('Y') : $_REQUEST['where'];
+$where = empty($_REQUEST['year']) ? $where : $_REQUEST['year'];
+
 settype($where,'integer');
-$year = 'count_month like "%'.strtolower($where).'%"';
+ $year = "count_month like '%" . strtolower($where) . "%'";
 
 $data['head']['year']  = $where;
 
@@ -67,14 +70,14 @@ for($run=0; $run < $levels; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'count','statsyear');
-?>
-<script type="text/javascript" src="<?php echo $cs_main['php_self']['dirname']; ?>mods/count/amline/swfobject.js"></script>
-<div id="flashcontent">
-<?
+
+echo '<script type="text/javascript" src="' . $cs_main['php_self']['dirname'];
+echo 'mods/count/amline/swfobject.js"></script><div id="flashcontent">';
+
 echo cs_subtemplate(__FILE__,$data,'count','flash');
-?>
-</div>
-<?
+
+echo '</div>';
+
 echo "\n <script type=\"text/javascript\">\n
     //<![CDATA[\n
     var so = new SWFObject(\"" . $cs_main['php_self']['dirname'] . "mods/count/amline/amline.swf\", \"amline\", \"" . $op_count['width'] . "%\", \"" . $op_count['height'] . "px\", \"8\", \"#" . $op_count['background'] . "\");\n
@@ -131,4 +134,5 @@ echo  "</graph></graphs></chart>\");\n
     so.write(\"flashcontent\");\n
       //]]>\n
 \n </script>\n";
+
 ?>
