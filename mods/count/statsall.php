@@ -3,6 +3,7 @@
 // Id: boardranks.php (Fri Dec  5 17:27:09 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('count');
+
 $op_count = cs_sql_option(__FILE__,'count');
 
 $data = array();
@@ -11,16 +12,15 @@ $archive = 0;
 $like1 = '2004';
 $like2 = '2004';
 $i = 0;
+
 echo cs_subtemplate(__FILE__,$data,'count','statsall');
 
-?>
-<script type="text/javascript" src="<?php echo $cs_main['php_self']['dirname']; ?>mods/count/amline/swfobject.js"></script>
-<div id="flashcontent">
-<?
+echo '<script type="text/javascript" src="' . $cs_main['php_self']['dirname'];
+echo 'mods/count/amline/swfobject.js"></script> <div id="flashcontent">';
+
 echo cs_subtemplate(__FILE__,$data,'count','flash');
-?>
-</div>
-<?
+
+echo '</div>';
 
 echo "\n <script type=\"text/javascript\">\n
     //<![CDATA[\n
@@ -108,4 +108,5 @@ echo  "</graph></graphs></chart>\");\n
     so.write(\"flashcontent\");\n
     //]]>\n
 </script>\n";
+
 ?>
