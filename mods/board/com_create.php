@@ -26,13 +26,21 @@ $ori_text = '';
 $error = '';
 $files = '0';
 
+$cond = 'comments_mod = \'board\' AND comments_fid = \''.$fid.'\'';
+$last_comment = cs_sql_select(__FILE__,'comments','users_id, comments_time',$cond,'comments_id DESC');
+
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, frm.board_read AS board_read, cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, cat.categories_id AS categories_id, frm.board_access AS board_access, frm.squads_id AS squads_id';
+$select  = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, frm.board_read AS board_read, ';
+$select .= 'cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, ';
+$select .= 'cat.categories_id AS categories_id, frm.board_access AS board_access, frm.squads_id AS squads_id';
+if (empty($last_comment)) $select .= ', thr.users_id AS users_id, thr.threads_time AS threads_time';
 $where = "thr.threads_id = '" . $fid . "'";
 $data['thread'] = cs_sql_select(__FILE__,$from,$select,$where);
 
-$cond = 'comments_mod = \'board\' AND comments_fid = \''.$fid.'\'';
-$last_comment = cs_sql_select(__FILE__,'comments','users_id, comments_time',$cond,'comments_id DESC');
+if (empty($last_comment)) {
+	$last_comment['users_id'] = $data['thread']['users_id'];
+  $last_comment['comments_time'] = $data['thread']['threads_time'];
+}
 
 if(!empty($data['thread']['squads_id']) AND $account['access_board'] < $data['thread']['board_access']) {
   $sq_where = "users_id = '" . $account['users_id'] . "' AND squads_id = '" . $data['thread']['squads_id'] . "'";
@@ -44,7 +52,7 @@ if(empty($fid) || (count($data['thread']) == 0)) {
 if($account['access_board'] < $data['thread']['board_access'] AND empty($check_sq)) {
   return errorPage('com_create');
 }
-if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'] == -1 || $last_comment['comments_time'] + $options['doubleposts'] > cs_time() )) {
+if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'] == -1 || ($last_comment['comments_time'] + $options['doubleposts']) > cs_time() )) {
   return errorPage('com_create', $cs_lang['last_own']);
 }
 //ende sicherheits abfrage

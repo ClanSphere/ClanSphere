@@ -736,11 +736,14 @@ $data['if']['no_adv_com'] = false;
 $data['if']['write_comment'] = false; 
 
 if(empty($data['thread']['threads_close'])) {
-  if(!empty($data['thread']['board_read']) AND $account['access_clansphere'] < 5) {
-  }
-  else {
+  if(empty($data['thread']['board_read']) || $account['access_clansphere'] > 5) {
+
   $where = 'comments_mod = \'' . $mod . '\' AND comments_fid = "' . $id . '"';
   $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_time',$where,'comments_id DESC');
+  if (empty($last_from)) {
+  	$last_from['users_id'] = $data['thread']['users_id'];
+  	$last_from['comments_time'] = $data['thread']['threads_time'];
+  }
   $time = $time_now;
   
   if(empty($account['users_id'])) {
