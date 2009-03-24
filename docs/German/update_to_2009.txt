@@ -27,6 +27,8 @@ UPDATE ClanSphere 2008.X to ClanSphere 2009.0
 
 9. Vergewissern Sie sich, dass alle Einstellungen im CMS korrekt sind und sehen sie nach Fehler-Logs
    Hinweis: Im Anschluss können Sie den Wartungsmodus wieder deaktivieren und sind mit dem Update fertig
+   Achtung: Sollten Module oder Addons ohne Theme-Support genutzt werden ändern Sie zur weiteren Nutzung in der
+            system/core/functions.php den require_once von xhtml_10.php bitte auf xhtml_10_old.php
 
 Bei Fragen sehen Sie bitte im Wiki nach: http://wiki.clansphere.net/Update
 Alternativ können Sie im Forum um Hilfe bitten: http://board.clansphere.net

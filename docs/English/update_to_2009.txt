@@ -27,6 +27,8 @@ UPDATE ClanSphere 2008.X to ClanSphere 2009.0
 
 9. Make sure that all settings are correct in the CMS and view the error logs for problems
    Note: You can disable the maintenance mode now and the update is finished
+   Caution: If you use mods or addons that are not theme-based and therefore need the deprecated html functions please
+            change the require_once from xhtml_10.php to xhtml_10_old.php in system/core/functions.php
 
 Please visit the wiki for questions: http://wiki.clansphere.net/Update
 Alternatively ask for help in the board: http://board.clansphere.net
