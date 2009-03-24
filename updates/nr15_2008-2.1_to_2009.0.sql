@@ -62,10 +62,10 @@ ALTER TABLE {pre}_ranks ADD squads_id int(8) NOT NULL default '0';
 ALTER TABLE {pre}_squads ADD squads_text text;
 ALTER TABLE {pre}_users ADD users_delete int(2) NOT NULL default '0';
 
-ALTER TABLE {pre}_threads ADD threads_close2 int(9) NOT NULL default '0';
+ALTER TABLE {pre}_threads ADD threads_close2 int(8) NOT NULL default '0';
 UPDATE {pre}_threads SET threads_close2 = threads_close;
 ALTER TABLE {pre}_threads DROP threads_close;
-ALTER TABLE {pre}_threads ADD threads_close int(9) NOT NULL default '0';
+ALTER TABLE {pre}_threads ADD threads_close int(8) NOT NULL default '0';
 UPDATE {pre}_threads SET threads_close = threads_close2;
 ALTER TABLE {pre}_threads DROP threads_close2;
 
