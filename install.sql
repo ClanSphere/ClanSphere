@@ -1042,7 +1042,7 @@ CREATE TABLE {pre}_threads (
   threads_time varchar(14) NOT NULL default '0',
   threads_view int(8) NOT NULL default '0',
   threads_important int(2) NOT NULL default '0',
-  threads_close int(2) NOT NULL default '0',
+  threads_close int(9) NOT NULL default '0',
   threads_edit varchar(200) NOT NULL default '',
   threads_last_user int(8) NOT NULL default '0',
   threads_last_time varchar(14) NOT NULL default '0',

@@ -29,7 +29,7 @@ if($account['access_board'] < 5 AND empty($thread_mods['boardmods_modpanel']))
 //Sicherheitsabfarge Ende
 
 //Daten Abfragen
-if(isset($_POST['close'])) {
+if(isset($_POST['thread_closed'])) {
   $thread_cells = array('threads_close');
   $thread_save = array($account['users_id']);
 
@@ -50,16 +50,16 @@ if(isset($_POST['close'])) {
     return header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id); 
   }
   if($_POST['ghost'] == '1') {
-  $ghost['board_id'] = $thread_edit['board_id'];
-  $ghost['threads_headline'] = $cs_lang['movedto'] . ' (' . $thread_edit['threads_headline'] . ')';
-  $ghost['threads_close'] = 1;
-  $ghost['users_id'] = $account['users_id'];
-  $ghost['threads_last_time'] = $thread_edit['threads_last_time'];
-  $ghost['threads_ghost'] = 1;
-  $ghost['threads_ghost_board'] = $_POST['board_id'];
-  $ghost['threads_ghost_thread'] = $thread_edit['threads_id'];
-  $ghost_cells = array_keys($ghost);
-  $ghost_save = array_values($ghost);
+    $ghost['board_id'] = $thread_edit['board_id'];
+    $ghost['threads_headline'] = $cs_lang['movedto'] . ' (' . $thread_edit['threads_headline'] . ')';
+    $ghost['threads_close'] = 1;
+    $ghost['users_id'] = $account['users_id'];
+    $ghost['threads_last_time'] = $thread_edit['threads_last_time'];
+    $ghost['threads_ghost'] = 1;
+    $ghost['threads_ghost_board'] = $_POST['board_id'];
+    $ghost['threads_ghost_thread'] = $thread_edit['threads_id'];
+    $ghost_cells = array_keys($ghost);
+    $ghost_save = array_values($ghost);
     $ghost_insert = cs_sql_insert(__FILE__,'threads',$ghost_cells,$ghost_save);  
   }
   $board_new_id = $_POST['board_id'];
@@ -79,8 +79,8 @@ if(isset($_POST['close'])) {
   $thread_save = array($thread_headline);
 
 } elseif(isset($_POST['move']) OR isset($_POST['rename'])) {
-	
-	$data['threads']['id'] = $thread_edit['threads_id'];
+  
+  $data['threads']['id'] = $thread_edit['threads_id'];
 
   $head  = cs_link($cs_lang['board'],'board','list','normalb') .' -> ';
   $head .= cs_link($thread_edit['categories_name'],'board','list','where=' .$thread_edit['categories_id'],'normalb') .' -> ';
@@ -91,10 +91,10 @@ if(isset($_POST['close'])) {
   $data['if']['move'] = FALSE;
   $data['if']['rename'] = FALSE;
 
-	//move
+  //move
   if(isset($_POST['move'])) {
   
-  	$data['if']['move'] = TRUE;
+    $data['if']['move'] = TRUE;
 
     $tables = "board boa INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id";
     $select = "boa.board_id AS board_id, boa.board_name AS board_name, cat.categories_name AS categories_name";
@@ -105,16 +105,16 @@ if(isset($_POST['close'])) {
     $data['board']['select'] = '';
     foreach($board_data AS $board) {
       $sel = $board_id == $board['board_id'] ? 1 : 0;
-    	$content = $board['categories_name'] . ' -> ' . $board['board_name'];
+      $content = $board['categories_name'] . ' -> ' . $board['board_name'];
       $data['board']['select'] .= cs_html_option($content,$board['board_id'],$sel);
     }
   
   }
 
-	//rename
+  //rename
   if(isset($_POST['rename'])) {
   
-  	$data['if']['rename'] = TRUE;
+    $data['if']['rename'] = TRUE;
     $data['val']['thread_headline'] = $thread_headline;
   }
 
