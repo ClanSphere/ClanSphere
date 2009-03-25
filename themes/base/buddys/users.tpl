@@ -4,14 +4,16 @@
       <tr>
         <td class="headb">{icon:xchat}{lang:on_buddies}</td>
       </tr>
-      {loop:buddys_on}
+      {loop:bon}
       <tr>
-        <td class="leftb"><div style="float: left;">
-		  <img src="symbols/countries/{buddys_on:users_country}.png" width="16" height="11" alt="" />
-        {buddys_on:users_link} </div>
-          <div style="float: right;"><a href="{url:messages_create:to={buddys_on:users_nick}}">{icon:mail_send}</a></div></td>
+        <td class="leftb">
+        	<div style="float: left;">
+						{bon:users_country}
+        		{bon:users_link}
+        	</div>
+          <div style="float: right;"><a href="{url:messages_create:to={bon:users_nick}}">{icon:mail_send}</a></div></td>
       </tr>
-      {stop:buddys_on}
+      {stop:bon}
     </table>
   </div>
   <div style="float: right; width: 48%;">
@@ -19,14 +21,16 @@
       <tr>
         <td class="headb">{icon:xchat}{lang:off_buddies}</td>
       </tr>
-      {loop:buddys_off}
+      {loop:boff}
       <tr>
-        <td class="leftb"><div style="float: left;">
-		  <img src="symbols/countries/{buddys_off:users_country}.png" width="16" height="11" alt="" />
-        {buddys_off:users_link} </div>
-          <div style="float: right;"><a href="{url:messages_create:to={buddys_off:users_nick}}">{icon:mail_send}</a></div></td>
+        <td class="leftb">
+        	<div style="float: left;">
+						{boff:users_country}
+						{boff:users_link}
+					</div>
+          <div style="float:right;"><a href="{url:messages_create:to={boff:users_nick}}">{icon:mail_send}</a></div></td>
       </tr>
-      {stop:buddys_off}
+      {stop:boff}
     </table>
   </div>
 </div>
