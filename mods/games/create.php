@@ -14,7 +14,7 @@ $games_form = 1;
 
 
 if(empty($_POST['datum_month']) OR empty($_POST['datum_day']) OR empty($_POST['datum_year'])) {
-  $games_release = '';  
+  $games_release = cs_date('unix',cs_time(),0,1,'Y-m-d');  
 }
 else {
   $games_release = $_POST['datum_year'] . '-' . $_POST['datum_month'] . '-' .   $_POST['datum_day'];
