@@ -93,7 +93,9 @@ for($run=0; $run<$files_loop; $run++) {
   $loop_file_typ_array = count($file_typ_array);
   for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++) {
     $ext = $file_typ_array[$run_2];
-  $data['files'][$run]['filetypes'][$run_2]['icon'] = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext);
+	
+	require 'mods/clansphere/filetype.php';
+    $data['files'][$run]['filetypes'][$run_2]['icon'] = cs_filetype($ext);  
   }
 }
 

@@ -70,6 +70,8 @@ if(!empty($success)) {
   
   $y = -1;
   
+  require 'mods/clansphere/filetype.php';
+  
   for($x = $start; ($x < $count) && ($y < $max_data); $x++) {
   
     $y++;
@@ -88,10 +90,8 @@ if(!empty($success)) {
     $save[$y]['edit'] = $type != 'dir' ? cs_link($img_edit,'explorer','edit','file='.$file) : '';
     
     $view = cs_link($datas[$x],'explorer','view','file='.$file);
-
-    $save[$y]['symbol'] = file_exists('symbols/files/filetypes/'.$type.'.gif')
-        ? cs_html_img('symbols/files/filetypes/'.$type.'.gif')
-        : cs_html_img('symbols/files/filetypes/unknown.gif');
+	
+    $save[$y]['symbol'] = cs_filetype($type);
     if ($type == 'jpg' || $type == 'jpeg' || $type == 'png' || $type == 'gif' || $type == 'bmp') {
       $save[$y]['name'] = cs_link($datas[$x],'explorer','view','file='.$file);
     } elseif ($type == 'dir') {

@@ -30,7 +30,7 @@
   </tr>
   {loop:files}
   <tr>
-    <td class="leftc">{loop:filetypes}<img src="symbols/files/filetypes/{filetypes:name}.gif" alt="{filetypes:name}" />{stop:filetypes}</td>
+    <td class="leftc">{loop:filetypes}{filetypes:icon}{stop:filetypes}</td>
     <td class="leftc"><a href="{url:files_view:where={files:id}}" >{files:name}</a></td>
     <td class="leftc">{files:user}</td>
     <td class="leftc">{files:date}</td>

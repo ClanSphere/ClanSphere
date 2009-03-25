@@ -21,15 +21,16 @@ if(empty($count_att)) {
   $data['attachments'] = '';
 }
 
+require 'mods/clansphere/filetype.php';
+
 for($run = 0; $run < $count_att; $run++) { 
   $file = $cs_att[$run]['boardfiles_name'];
   $extension = strlen(strrchr($file,"."));
   $name = strlen($file);
   $ext = substr($file,$name - $extension + 1,$name); 
   $ext_lower = strtolower($ext);
-  $symbol = file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? $ext_lower : 'chm';
   
-  $data['attachments'][$run]['icon'] = cs_html_img('symbols/files/filetypes/' . $symbol . '.gif',0,0,0,$ext);
+  $data['attachments'][$run]['icon'] = cs_filetype($ext_lower);
 
   if(file_exists('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext)) {
     $file_file = filesize('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext);

@@ -225,6 +225,8 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
   if($files == 1)
   {
   	$data['if']['file'] = TRUE;
+	
+	require 'mods/clansphere/filetype.php';
     
     for($run=0; $run < $run_loop_files; $run++)
     {
@@ -268,8 +270,8 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
         $name = strlen($file);
         $ext = substr($file,$name - $extension + 1,$name);
         $ext_lower = strtolower($ext);
-        $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
-        $data['files'][$run]['ext'] = $symbol;
+                
+        $data['files'][$run]['ext'] = cs_filetype($ext_lower);;
         
         $data['files'][$run]['if']['del_button'] = FALSE;
         $data['files'][$run]['file_del'] = '';

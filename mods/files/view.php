@@ -159,7 +159,8 @@ for ($run = 1; $run < $temp_loop; $run++)
     $data['mirrors'][$run-1]['name'] = empty($temp_a['2']) ? $temp_a['1'] : $temp_a['2'];
     $data['mirrors'][$run-1]['id'] = $run;
 
-    $data['mirrors'][$run-1]['filetype_image'] = cs_html_img('symbols/files/filetypes/' . $temp_a['3'] . '.gif',0,0,0,$temp_a['3']);
+	require 'mods/clansphere/filetype.php';
+    $data['mirrors'][$run-1]['filetype_image'] = cs_filetype($temp_a['3']);	
     $data['mirrors'][$run-1]['filetype_name'] = $temp_a['3'];
   }
 }

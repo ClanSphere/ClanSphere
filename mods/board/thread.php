@@ -307,7 +307,7 @@ if($start <! 0 AND $board_sort=='ASC')
   //Files Start
   if(!empty($loop_files)) {
     $data['if']['thread_asc_files'] = true;
-    $check_files = 0;
+    $check_files = 0;	
     for($run = 0; $run < $loop_files; $run++) {
       if($cs_thread_files[$run]['comments_id'] == 0)
         $check_files++;
@@ -320,12 +320,14 @@ if($start <! 0 AND $board_sort=='ASC')
         $ext = substr($file,$name - $extension + 1,$name);
         $cs_thread_files[$run]['boardfiles_typ'] = $ext;
       }
+	  
+	  require 'mods/clansphere/filetype.php';
+	  
       for($run = 0; $run < $loop_files; $run++){
         $ext = $cs_thread_files[$run]['boardfiles_typ'];
         $file = $cs_thread_files[$run]['boardfiles_name'];
-        $ext_lower = strtolower($ext);
-        $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
-        $cs_lap = cs_html_img('symbols/files/filetypes/' . $symbol . '.gif',0,0,0,$ext) . ' ' . $file; 
+        $ext_lower = strtolower($ext);                
+        $cs_lap = cs_filetype($ext_lower) . ' ' . $file; 
         if(file_exists('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext)) {
           $file_file = filesize('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext);
           $data['files'][$run]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_thread_files[$run]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
@@ -510,6 +512,9 @@ for($run = 0; $run<$com_loop; $run++)
   $loop_com_files = count($cs_comments_files);  
   if(!empty($loop_com_files)) { 
     $data['comment'][$run]['if']['c_files'] = true; 
+	
+	require 'mods/clansphere/filetype.php';
+	
     for($run2 = 0; $run2 < $loop_com_files; $run2++) {
       $file = $cs_comments_files[$run2]['boardfiles_name'];
       $extension = strlen(strrchr($file,"."));
@@ -517,8 +522,8 @@ for($run = 0; $run<$com_loop; $run++)
       $ext = substr($file,$name - $extension + 1,$name);
       $cs_comments_files[$run2]['boardfiles_typ'] = $ext;
       $ext_lower = strtolower($ext);
-      $symbol = !file_exists('symbols/files/filetypes/' . $ext_lower . '.gif') ? 'chm' : $ext_lower;
-      $cs_lap = cs_html_img('symbols/files/filetypes/' . $symbol . '.gif',0,0,0,$ext) . ' ' . $file; 
+            
+      $cs_lap = cs_filetype($ext_lower) . ' ' . $file; 
       if(file_exists('uploads/board/files/'.$cs_comments_files[$run2]['boardfiles_id'].'.'.$ext)) {
         $file_file = filesize('uploads/board/files/'.$cs_comments_files[$run2]['boardfiles_id'].'.'.$ext);
         $data['comment'][$run]['com_files'][$run2]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_comments_files[$run2]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_comments_files[$run2]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';
@@ -581,7 +586,8 @@ $data['thread_desc']['checkedit'] = '';
 if($board_sort=='DESC' AND $current==1)
 {      
   $data['if']['sort_desc'] = true; 
-  $userid = $data['thread']['users_id'];
+  $userid = $data['thread']['users_id'];  
+  
   if(!isset($count_com[$userid]))
   {
     $count_com[$userid] = getUserPosts($userid);
@@ -619,7 +625,8 @@ if($board_sort=='DESC' AND $current==1)
   //Files Start
   if(!empty($loop_files)) {
     $data['if']['thread_desc_files'] = true; 
-    $check_files = 0;
+    $check_files = 0;	
+	
     for($run = 0; $run < $loop_files; $run++) {
       if($cs_thread_files[$run]['comments_id'] == 0) {
         $check_files++;
@@ -633,10 +640,14 @@ if($board_sort=='DESC' AND $current==1)
         $ext = substr($file,$name - $extension + 1,$name);
         $cs_thread_files[$run]['boardfiles_typ'] = $ext;
       }
+	  
+	  require 'mods/clansphere/filetype.php';
+	  
       for($run = 0; $run < $loop_files; $run++){
         $ext = $cs_thread_files[$run]['boardfiles_typ'];
-        $file = $cs_thread_files[$run]['boardfiles_name'];
-        $cs_lap = cs_html_img('symbols/files/filetypes/' . $ext . '.gif',0,0,0,$ext) . ' ' . $file; 
+        $file = $cs_thread_files[$run]['boardfiles_name'];		
+		
+        $cs_lap = cs_filetype($ext) . ' ' . $file; 
         if(file_exists('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext)) {
           $file_file = filesize('uploads/board/files/'.$cs_thread_files[$run]['boardfiles_id'].'.'.$ext);
           $data['files'][$run]['file'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_thread_files[$run]['boardfiles_id'],$cs_lap,1).' ('.cs_filesize($file_file).' - '.$cs_thread_files[$run]['boardfiles_downloaded'].' '.$cs_lang['times'].' )';

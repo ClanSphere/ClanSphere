@@ -109,12 +109,12 @@
 			<div style="float:left;padding:3px;border:1px solid black;background:gainsboro;">
       <a href="/mods/gallery/image.php?boardpic={files:name}" target="_blank"><img src="/mods/gallery/image.php?boardpic={files:name}&boardthumb" alt="" /></a>
 			</div>
-			<div style="float:left;padding:3px;margin-left:10px;"><img src="/symbols/files/filetypes/{files:ext}.gif" alt="{files:ext}" /> {files:name}<br />
+			<div style="float:left;padding:3px;margin-left:10px;">{files:ext} {files:name}<br />
 				<input type="submit" name="remove_file_{files:num}" value="{lang:remove}" />
 			</div>
 			{stop:file_is_picture}
 			{if:file_is_other}
-			<img src="{page:path}symbols/files/filetypes/{files:ext}.gif" alt="{files:ext}" /> {files:name}<br />
+			{files:ext} {files:name}<br />
 			<input type="submit" name="remove_file_{files:num}" value="{lang:remove}" />
 			{stop:file_is_other}
 			{stop:file_exists}
