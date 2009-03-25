@@ -63,7 +63,6 @@ DROP TABLE {pre}_shoutbox;
 DROP TABLE {pre}_squads;
 DROP TABLE {pre}_static;
 DROP TABLE {pre}_threads;
-DROP TABLE {pre}_updates;
 DROP TABLE {pre}_users;
 DROP TABLE {pre}_usersgallery;
 DROP TABLE {pre}_voted;
