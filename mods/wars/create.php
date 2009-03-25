@@ -29,14 +29,14 @@ if(isset($_POST['submit'])) {
   
   $players = empty($_POST['players']) ? 1 : (int) $_POST['players'];
   
-  for ($x = 0; $x <= $players; $x++) {
+  for ($x = 1; $x <= $players; $x++) {
     if (!empty($_POST['playerid'.$x])) {
       $sel = cs_sql_select(__FILE__,'users','users_nick','users_id = \''.(int) $_POST['playerid'.$x].'\'');
       $cs_players['player'.$x] = $sel['users_nick'];
     } else {
       $cs_players['player'.$x] = !empty($_POST['player'.$x]) ? $_POST['player'.$x] : '';
     }
-  }  
+  }
   
   if (!empty($_POST['new_enemy'])) {
     
@@ -219,7 +219,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $players = (int) $_POST['players'];
   
   for ($x = 1; $x <= $players; $x++) {
-    $playernick = $_POST['player'.$x];
+    $playernick = $cs_players['player'.$x];
     if (!empty($playernick)) {
       $get_user_id = cs_sql_select(__FILE__,'users','users_id','users_nick = \''.strtolower(cs_sql_escape($playernick)).'\'');
       if (!empty($get_user_id)) {
