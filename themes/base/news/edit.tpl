@@ -50,8 +50,8 @@
       <td class="leftc">{icon:kate} {lang:readmore} <br />
         <br />
         {abcode:smilies_readmore}</td>
-      <td class="leftb" colspan="2">{abcode:features_readmore}
-        <textarea name="news_readmore" cols="50" rows="10" id="news_readmore"  style="width: 98%;">{news:news_readmore}</textarea></td>
+      <td class="leftb" colspan="2"><div id="editor_readmore" style="display:none">{abcode:features_readmore}
+        <textarea name="news_readmore" cols="50" rows="10" id="news_readmore"  style="width: 98%;">{news:news_readmore}</textarea></div></td>
     </tr>
     <tr>
       <td class="leftc">{icon:kate} {lang:text} *<br />
@@ -78,7 +78,7 @@
         <input class="form" type="checkbox" value="1" name="news_public" {news:news_public}/>
         {lang:public}
         <br/>
-        <input class="form" type="checkbox" value="1" name="news_readmore_active" {news:news_readmore_active}/>
+        <input class="form" type="checkbox" value="1" onclick="document.getElementById('editor_readmore').style.display=this.checked?'block':'none'" name="news_readmore_active" {news:news_readmore_active}/>
         {lang:news_readmore_active}
         <br/>
         <input class="form" type="checkbox" value="1" name="news_attached" {news:news_attached}/>
