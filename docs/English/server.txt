@@ -12,6 +12,8 @@ These games and programs are currently supported within the "live-stats" functio
     * Battlefield Vietnam
     * Call of Duty
     * Call of Duty 2
+    * Call of Duty 4
+    * Call of Duty 5
     * C&C Renegade
     * Doom 3
     * Descent 3
@@ -38,3 +40,5 @@ These games and programs are currently supported within the "live-stats" functio
     * Unreal Tournament
     * Unreal Tournament 2004
     * Warsow 
+
+and many more ...

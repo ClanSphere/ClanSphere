@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0_svn >> 2009-03-XX
+ClanSphere 2009.0 >> 2009-03-25
 ___________________________________________________________
 
 -> Now using themes everywhere (whole team, mainly fay-pain)
@@ -10,7 +10,6 @@ ___________________________________________________________
 -> Now all modules use the cs_user function to make global changes of the user nick display easy
 -> Fixed users_remove without loose database integrity (mc.alcatraz)
 -> Completely reworked AJAX solution (duriel, schiri)
--> Added auto update function (alcatraz)
 -> Added some navlists and themes (fay-pain, duriel)
 -> Added rank feature to boardmods module (fay-pain)
 -> Added security function for server variables to avoid get or post injections in the future (duriel)

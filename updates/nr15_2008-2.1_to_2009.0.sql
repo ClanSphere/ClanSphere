@@ -1,6 +1,6 @@
-UPDATE {pre}_options SET options_value = '2009.0_svn' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
-UPDATE {pre}_options SET options_value = '2008-09-20' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
-UPDATE {pre}_options SET options_value = '35' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
+UPDATE {pre}_options SET options_value = '2009.0' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
+UPDATE {pre}_options SET options_value = '2009-03-25' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
+UPDATE {pre}_options SET options_value = '36' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 CREATE TABLE {pre}_eventguests (
   eventguests_id {serial},
@@ -80,6 +80,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ga
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_size', '15360');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_width', '30');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'def_picture', '0');
+UPDATE {pre}_options SET options_value = '350' WHERE options_mod = 'clansphere' AND options_name = 'sec_news';
 
 CREATE INDEX {pre}_boardmods_categories_id_index ON {pre}_boardmods (categories_id);
 CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);
