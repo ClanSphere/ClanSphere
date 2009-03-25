@@ -66,7 +66,7 @@ if(!isset($_POST['submit']) OR (isset($_POST['submit']) AND !empty($error))) {
   $data['awards']['awards_rank'] = $awards_edit['awards_rank'];
   $data['awards']['awards_id'] = $awards_edit['awards_id'];
   
-  $games = cs_sql_select(__FILE__,'games','*',0,1,1,0);
+  $games = cs_sql_select(__FILE__,'games','games_id, games_name',0,1,1,0);
   $data['select']['game'] = cs_dropdown('games_id','games_name',$games,$awards_edit['games_id']);
   $data['select']['date'] = cs_dateselect('datum','date',$awards_edit['awards_time']);
 

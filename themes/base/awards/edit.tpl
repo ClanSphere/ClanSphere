@@ -20,7 +20,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:package_games} {lang:game} *</td>
-		<td class="leftb">{select:game} - <input type="text" name="games_name" value="" maxlength="200" size="25"  /></td>
+		<td class="leftb">{select:game} - <a href="{url:games_create}">{lang:create}</a></td>
 	</tr>
 	<tr>
   <td class="leftc">{icon:yast_group_add} {lang:squad}</td>
@@ -29,6 +29,7 @@
      <option value="0">----</option>{loop:squads}
      <option value="{squads:squads_id}"{squads:selection}>{squads:squads_name}</option>{stop:squads}
     </select>
+     - <a href="{url:squads_create}">{lang:create}</a>
   </td>
  </tr>
 	<tr>
