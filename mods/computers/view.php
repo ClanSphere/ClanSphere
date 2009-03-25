@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// Id: view.php (Tue Nov 25 20:26:24 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('computers');
 $cs_get = cs_get('id');
@@ -19,7 +19,7 @@ $data['com']['since'] = cs_date('unix',$cs_computers['computers_since'],1);
 $data['com']['name'] = cs_secure($cs_computers['computers_name']);
 $data['com']['software'] = cs_secure($cs_computers['computers_software']);
 $data['com']['mainboard'] = cs_secure($cs_computers['computers_mainboard']);
-$data['com']['memory'] = cs_secure($cs_computers['computers_memory'],1);
+$data['com']['memory'] = cs_secure($cs_computers['computers_memory']);
 
 if(empty($cs_computers['computers_pictures'])) {
   $data['pictures'][0]['thumb'] = $cs_lang['nopic'];
@@ -34,15 +34,15 @@ else {
   }
 }
 
-$data['com']['processors'] = cs_secure($cs_computers['computers_processors'],1);
-$data['com']['graphics'] = cs_secure($cs_computers['computers_graphics'],1);
-$data['com']['sounds'] = cs_secure($cs_computers['computers_sounds'],1);
-$data['com']['harddisks'] = cs_secure($cs_computers['computers_harddisks'],1);
-$data['com']['drives'] = cs_secure($cs_computers['computers_drives'],1);
-$data['com']['screens'] = cs_secure($cs_computers['computers_screens'],1);
-$data['com']['interfaces'] = cs_secure($cs_computers['computers_interfaces'],1);
-$data['com']['networks'] = cs_secure($cs_computers['computers_networks'],1);
-$data['com']['more'] = cs_secure($cs_computers['computers_more'],1);
+$data['com']['processors'] = cs_secure($cs_computers['computers_processors']);
+$data['com']['graphics'] = cs_secure($cs_computers['computers_graphics']);
+$data['com']['sounds'] = cs_secure($cs_computers['computers_sounds']);
+$data['com']['harddisks'] = cs_secure($cs_computers['computers_harddisks']);
+$data['com']['drives'] = cs_secure($cs_computers['computers_drives']);
+$data['com']['screens'] = cs_secure($cs_computers['computers_screens']);
+$data['com']['interfaces'] = cs_secure($cs_computers['computers_interfaces']);
+$data['com']['networks'] = cs_secure($cs_computers['computers_networks']);
+$data['com']['more'] = cs_secure($cs_computers['computers_more']);
 
 
 echo cs_subtemplate(__FILE__,$data,'computers','view');

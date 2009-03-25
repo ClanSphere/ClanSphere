@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// Id: center.php (Tue Nov 25 16:53:54 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('computers');
 $cs_post = cs_post('start,sort');
@@ -36,12 +36,9 @@ for($run=0; $run<$computers_loop; $run++) {
 
   $id = $data['com'][$run]['computers_id'];
   $data['com'][$run]['name'] = cs_secure($data['com'][$run]['computers_name']);
-  $data['com'][$run]['url_view'] = cs_url('computers','view','id=' . $id);
-   $data['com'][$run]['since'] = cs_date('unix',$data['com'][$run]['computers_since'],1);
+	$data['com'][$run]['since'] = cs_date('unix',$data['com'][$run]['computers_since'],1);
 
-  $data['com'][$run]['url_picture'] = cs_url('computers','picture','id=' . $id);
-  $data['com'][$run]['url_edit'] = cs_url('computers','edit','id=' . $id);
-  $data['com'][$run]['url_remove'] = cs_url('computers','remove','id=' . $id);
+	$data['com'][$run]['id'] = $id;
 
 }
 
