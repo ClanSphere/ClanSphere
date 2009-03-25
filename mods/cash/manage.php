@@ -85,7 +85,7 @@ $cash = cs_sql_select(__FILE__,$tables,$cells,"cash_inout = 'in'" . $and_user2,0
 $cash_count = count($cash);
 for($run=0; $run<$cash_count; $run++) {
 $cash_year = substr($cash[$run]['cash_time'], 0, 4);
-$cash_month = substr($cash[$run]['cash_time'], 5, 2);
+$cash_month = (int) substr($cash[$run]['cash_time'], 5, 2);
   if($cash_year == $year AND ($cash_month == $mon)) {
     $zahlungen++;
   }
