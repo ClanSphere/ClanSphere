@@ -82,7 +82,7 @@ else {
   $eventguests_save = array_values($cs_eventguests);
   cs_sql_insert(__FILE__,'eventguests',$eventguests_cells,$eventguests_save);
   
-  cs_redirect($cs_lang['create_done'],'events','guests',$cs_eventguests['events_id']);
+  cs_redirect($cs_lang['create_done'],'events','guests','id=' . $cs_eventguests['events_id']);
 }
 
 ?>
