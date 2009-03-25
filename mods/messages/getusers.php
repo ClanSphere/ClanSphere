@@ -20,7 +20,7 @@ $old = substr($_GET['name'],0,strlen($_GET['name']) - strlen($current));
 $old = htmlspecialchars($old);
 
 if(!empty($current)) {
-  $where = "users_nick LIKE '" . cs_sql_escape($current) . "%'";
+  $where = "users_nick LIKE '" . cs_sql_escape($current) . "%' AND users_active = \"1\" AND users_delete = \"0\"";
   $result = cs_sql_select(__FILE__,'users','users_nick',$where,0,0,10);  
   if(!empty($result)) {
     $out = '';

@@ -69,7 +69,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['head']['text'] = !empty($error) ? $error : $cs_lang['errors_here'];
   
   $data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id',0,'squads_name',0,0);
-  $data_users = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
+  $data_users = cs_sql_select(__FILE__,'users','users_nick,users_id','users_active = "1" AND users_delete = "0"','users_nick',0,0);
   
   $data['squads'] = cs_dropdownsel($data_squads, $cs_members['squads_id'], 'squads_id');
   $data['users'] = cs_dropdownsel($data_users, $cs_members['users_id'], 'users_id');

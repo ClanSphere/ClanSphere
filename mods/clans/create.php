@@ -122,7 +122,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['clans']['since'] = cs_dateselect('since','date',$cs_clans['clans_since']);
     $data['clans']['pw'] = $cs_clans['clans_pwd'];
 
-    $users_data = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
+    $users_data = cs_sql_select(__FILE__,'users','users_nick,users_id','users_active = "1" AND users_delete = "0"','users_nick',0,0);
     $users_data_loop = count($users_data);
 
     if(empty($users_data_loop)) {
