@@ -75,7 +75,8 @@ else {
     $cs_clans['clans_tagpos'] = 0;
     $cs_clans['clans_country'] = 'fam';
     $cs_clans['clans_url'] = '';
-    $cs_clans['clans_since'] = '';
+    
+    $cs_clans['clans_since'] = cs_date('unix',cs_time(),0,1,'Y-m-d');
     $cs_clans['clans_pwd'] = '';
     $cs_clans['users_id'] = 0;
   

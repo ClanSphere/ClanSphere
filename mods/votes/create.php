@@ -23,19 +23,14 @@ $votes_several = '';
 $errormsg = '';
 $votes_close = '';
 
-
-  if(!empty($_POST['votes_access']))
-  {
+  if(!empty($_POST['votes_access'])) {
     $votes_access = $_POST['votes_access'];
     $levels = $_POST['votes_access'];
-  }
-  else
-  {
+  } else {
     $levels = 0;
   }
 
-  if(!empty($account['users_id']))
-  {
+  if(!empty($account['users_id'])) {
     $vote_userid = $account['users_id'];
     $vote_error--;
   }
@@ -43,53 +38,42 @@ $votes_close = '';
   $votes_close = empty($_POST['votes_close']) ? 0 : $_POST['votes_close'];
   $votes_several = empty($_POST['votes_several']) ? 0 : $_POST['votes_several'];
 
-  if(!empty($_POST['votes_question']))
-  {
+  if(!empty($_POST['votes_question'])) {
     $votes_question = $_POST['votes_question'];
     $vote_error--;
-  }
-  else
-  {
+  } else {
     $errormsg .= $cs_lang['error_question'] . cs_html_br(1);
   }
+  
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
   $cs_votes['votes_election'] = '';
-  for($run=0; $run < $run_loop; $run++)
-  {
-      $num = $run+1;
-    if(!empty($_POST["votes_election_$num"]))
-    {
+  
+  for($run=0; $run < $run_loop; $run++) {
+    $num = $run+1;
+    if(!empty($_POST["votes_election_$num"])) {
       $cs_votes["votes_election"] = $cs_votes["votes_election"] . "\n" . $_POST["votes_election_$num"];
     }
   }
-  if(!empty($cs_votes["votes_election"]))
-  {
+  if(!empty($cs_votes["votes_election"])) {
     $votes_election = $cs_votes["votes_election"];
     $vote_error--;
-  }
-  else
-  {
+  } else {
     $errormsg .= $cs_lang['error_election'] . cs_html_br(1);
   }
 
-  if(cs_datepost('votes_start','unix'))
-  {
+  if (!empty($_POST['votes_start_year'])) {
     $votes_start = cs_datepost('votes_start','unix');
     $vote_error--;
-  }
-  else
-  {
+  } else {
     $votes_start = cs_time();
   }
-
-  if(cs_datepost('votes_end','unix'))
-  {
-    $votes_end = cs_datepost('votes_end','unix');
+  
+  if (!empty($_POST['votes_start_year'])) { 
+  	$votes_end = cs_datepost('votes_end','unix');
     $vote_error--;
-  }
-  else
-  {
+  } else {
     $errormsg .= $cs_lang['error_time'] . cs_html_br(1);
+    $votes_end = cs_time() + 604800;
   }
 
 if(isset($_POST['submit']))
@@ -181,16 +165,7 @@ if(!empty($vote_form))
   }
 
   $cs_vote_tpl['lang']['start'] = $cs_lang['votes_start'];
-  $cs_vote_tpl['lang']['end']    = $cs_lang['votes_end'];
-  $cs_vote_tpl['lang']['access'] = $cs_lang['access'];
-  $cs_vote_tpl['lang']['question'] = $cs_lang['question'];
-  $cs_vote_tpl['lang']['answer'] = $cs_lang['answer'];
-  $cs_vote_tpl['lang']['more']  = $cs_lang['more'];
-  $cs_vote_tpl['lang']['restrict_comments'] = $cs_lang['restrict_comments'];
-  $cs_vote_tpl['lang']['options'] = $cs_lang['options'];
-  $cs_vote_tpl['lang']['preview'] = $cs_lang['preview'];
-  $cs_vote_tpl['lang']['reset'] = $cs_lang['reset'];
-  $cs_vote_tpl['lang']['add_election'] = $cs_lang['add_election'];
+  $cs_vote_tpl['lang']['end'] = $cs_lang['votes_end'];
 
   $cs_vote_tpl['votes']['start_dateselect'] = cs_dateselect('votes_start','unix',$votes_start,2005);
   $cs_vote_tpl['votes']['end_dateselect'] = cs_dateselect('votes_end','unix',$votes_end,2005);
@@ -200,7 +175,6 @@ if(!empty($vote_form))
   $cs_vote_tpl['votes']['lang_submit'] = $cs_lang['create'];
   $cs_vote_tpl['votes']['id'] = '';
   $cs_vote_tpl['several']['checked'] = empty($votes_several) ? '' : 'checked';
-
 
   echo cs_subtemplate(__FILE__,$cs_vote_tpl,'votes','action_form');
 }
