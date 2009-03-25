@@ -19,15 +19,6 @@ CREATE TABLE {pre}_pictures (
   PRIMARY KEY (pictures_id)
 ) {engine};
 
-CREATE TABLE {pre}_updates (
-  updates_id {serial},
-  updates_packet int(8) NOT NULL default '0',
-  updates_name text NOT NULL,
-  updates_date int(14) NOT NULL default '0',
-  updates_error text,
-  PRIMARY KEY (updates_id)
-) {engine};
-
 CREATE TABLE {pre}_medals (
   medals_id {serial},
   medals_extension varchar(20) NOT NULL default '',
@@ -46,7 +37,6 @@ CREATE TABLE {pre}_medalsuser (
 
 ALTER TABLE {pre}_access ADD access_ajax int(2) NOT NULL default '0';
 ALTER TABLE {pre}_access ADD access_medals int(2) NOT NULL default '0';
-ALTER TABLE {pre}_access ADD access_updates int(2) NOT NULL default '0';
 ALTER TABLE {pre}_awards ADD squads_id int(8) NOT NULL default '0';
 ALTER TABLE {pre}_boardmods ADD categories_id int(8) NOT NULL default '0';
 ALTER TABLE {pre}_comments ADD comments_guestnick varchar(40) NOT NULL default '';
