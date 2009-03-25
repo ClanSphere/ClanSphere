@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0 >> 2009-xx-xx
+ClanSphere 2009.0 >> 20xx-xx-xx
 ___________________________________________________________
 
 -> improved handling of filetypeicons
