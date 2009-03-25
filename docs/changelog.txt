@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0 >> 2009-03-25
+ClanSphere 2009.0 RC1 >> 2009-03-25
 ___________________________________________________________
 
 -> Now using themes everywhere (whole team, mainly fay-pain)
