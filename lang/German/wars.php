@@ -110,6 +110,9 @@ $cs_lang['rounds_edit'] = 'Runde bearbeiten';
 $cs_lang['delete_round'] = 'Runde entfernen';
 $cs_lang['really_delete'] = 'Soll die Runde (ID:%s) wirklich entfernt werden?';
 
+// Remove
+$cs_lang['remove_rly'] = 'Soll der Clanwar Nr. %s wirklich entfernt werden?';
+
 // View
 $cs_lang['details']  = 'Details';
 $cs_lang['body_view']  = 'Weitere Informationen zu einer Begegnung.';

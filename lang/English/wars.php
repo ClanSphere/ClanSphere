@@ -110,6 +110,9 @@ $cs_lang['rounds_edit'] = 'Edit rounds';
 $cs_lang['delete_round'] = 'Remove round';
 $cs_lang['really_delete'] = 'Really remove round (ID:%s)?';
 
+// Remove
+$cs_lang['remove_rly'] = 'Do you really want to delete clanwar no. %s ?';
+
 // View
 $cs_lang['details']  = 'Details';
 $cs_lang['body_view']  = 'More information about the clanwar.';
