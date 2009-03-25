@@ -163,9 +163,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $where = 'sq.squads_own = \'1\'';
   $cs_members = cs_sql_select(__FILE__,$tables,$cells,$where,'usr.users_nick',0,0);
   
-  $data['url']['form'] = cs_url('wars','create');
-  $data['url']['squad_create'] = cs_url('squads','create');
-  
   $data_games = cs_sql_select(__FILE__,'games','games_name, games_id',0,'games_name',0,0);
   $data_clans = cs_sql_select(__FILE__,'clans','clans_name, clans_id','clans_id != \'1\'','clans_name',0,0);
   $data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id','squads_own = \'1\'','squads_name',0,0);
