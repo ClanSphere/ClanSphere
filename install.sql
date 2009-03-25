@@ -1136,7 +1136,8 @@ CREATE TABLE {pre}_voted (
   voted_ip varchar(40) NOT NULL default '',
   voted_answer int(8) NOT NULL default '0',
   voted_mod varchar(80) NOT NULL default '',
-  PRIMARY KEY (voted_id)
+  PRIMARY KEY (voted_id),
+  UNIQUE (users_id, voted_ip, voted_fid, voted_mod, voted_answer)
 ){engine};
 
 CREATE TABLE {pre}_votes (

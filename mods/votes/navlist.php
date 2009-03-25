@@ -83,12 +83,14 @@ if(isset($_POST['submit_votes']) ) {
   	$error_several = 0;
   	$where = 'voted_fid = "' . $votes_id . '" AND voted_mod = \'' . $mod . '\' AND voted_ip = \'' . $users_ip . '\'';
   	$where .= ' AND users_id = "' . $users_id . '" AND (';
+  	$voting = array();
   	for ($run = 0; $run < $count_voted; $run++) {
   		settype($voted_answer[$run], 'integer');
-  		if ($voted_answer[$run] < 1 || $voted_answer[$run] >= $count_election) {
+  		if ($voted_answer[$run] < 1 || $voted_answer[$run] >= $count_election || in_array($voted_answer[$run], $voting)) {
   			$error_several = 1;
   			break;
   		}
+  		$voting[] = $voted_answer[$run];
   		$where .= 'voted_answer = "' . $voted_answer[$run] . '" OR ';
   	}
   	$where = substr($where,0,-4) . ')';

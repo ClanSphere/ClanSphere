@@ -39,10 +39,10 @@ if(empty($_REQUEST['where'])) {
     {
       if(!empty($voted_loop))
       {
-        $where = "voted_mod='votes' AND voted_fid='$cs_votes_id' AND voted_ip='" . $cs_votes_save['voted_ip'] . "'";
+        $where = "voted_mod = 'votes' AND voted_fid = '$cs_votes_id' AND voted_ip = '" . $cs_votes_save['voted_ip'] . "'";
         if($cs_votes_save['users_id'] > 0)
         {
-          $where = "voted_mod='votes' AND voted_fid='$cs_votes_id' AND users_id='" . $cs_votes_save['users_id'] . "'";
+          $where = "voted_mod = 'votes' AND voted_fid = '$cs_votes_id' AND users_id = '" . $cs_votes_save['users_id'] . "'";
         }
         $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
       }
@@ -74,13 +74,37 @@ if(empty($_REQUEST['where'])) {
       if(empty($error))
       {
         $votes_form = 0;
-        if(isset($_POST['votes_several'])) {
-            foreach($_POST['voted_answer'] AS $answer) {
+        if(isset($_POST['votes_several']) && !empty($cs_votes['votes_several'])) {
+          
+          $temp = explode("\n", $cs_votes['votes_election']);
+          $count_election = count($temp);
+          $count_voted = count($_POST['voted_answer']);
+          $error_several = 0;
+          $where = 'voted_fid = "' . $cs_votes_id . '" AND voted_mod = \'votes\' AND voted_ip = \'' . $cs_votes_save['voted_ip'] . '\'';
+          $where .= ' AND users_id = "' . $cs_votes_save['users_id'] . '" AND (';
+          $voting = array();
+          
+          foreach ($_POST['voted_answer'] AS $answer) {
+            settype($answer, 'integer');
+            if ($answer < 1 || $answer >= $count_election || in_array($answer, $voting)) {
+              $error_several = 1;
+              break;
+            }
+            $voting[] = $answer;
+            $where .= 'voted_answer = "' . $answer . '" OR ';
+          }
+          $where = substr($where,0,-4) . ')';
+          
+          $error_several += cs_sql_count(__FILE__, 'voted', $where);
+          
+          if (!empty($error_several)) die('This website does not want to be exploited. Being exploited is not a good thing.');
+          
+          foreach($_POST['voted_answer'] AS $answer) {
             $cs_votes_save['voted_answer'] = $answer;
             $votes_cells = array_keys($cs_votes_save);
-          $votes_save = array_values($cs_votes_save);
+            $votes_save = array_values($cs_votes_save);
             cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);    
-            }
+          }
         } else {
           $votes_cells = array_keys($cs_votes_save);
           $votes_save = array_values($cs_votes_save);
