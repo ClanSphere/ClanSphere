@@ -17,11 +17,16 @@ $cash_count = count($data['cash']);
 $offrun = 0;
 for($i = 0; $i<$cash_count; $i++) {
   $cash_year = substr($data['cash'][$i]['cash_time'], 0, 4);
-  $cash_month = substr($data['cash'][$i]['cash_time'], 5, 2);
+  $cash_month = (int) substr($data['cash'][$i]['cash_time'], 5, 2);
   if($cash_year == $year AND ($cash_month == $mon)) {
     $offrun++;
   }
 }
+
+$count_cash = count($data['cash']);
+
+for ($run = $offrun; $run < $count_cash; $run++)
+  unset($data['cash'][$run]);
 
 for($run=0; $run<$offrun; $run++) {
   

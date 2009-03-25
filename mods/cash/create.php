@@ -40,7 +40,7 @@ else {
   $cs_cash['cash_text'] = '';
   $cs_cash['cash_info'] = '';
   $cs_cash['users_id'] = $account['users_id'];
-  $cs_cash['cash_time'] = '';
+  $cs_cash['cash_time'] = cs_date('unix',cs_time(),0,1,'Y-m-d');
 }
 
 if(!isset($_POST['submit']) AND empty($error)) {
@@ -53,7 +53,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['cash'] = $cs_cash;
 
-   $cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
+   $cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id','users_active = "1" AND users_delete = "0"','users_nick',0,0);
    $data['cash']['users_sel'] = cs_dropdown('users_id','users_nick',$cs_users,$cs_cash['users_id']);
 
   $inoutlist[0]['cash_inout'] = 'in';
