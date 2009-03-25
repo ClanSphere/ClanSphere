@@ -37,7 +37,7 @@ function cs_filetype($name) {
     break;
   
     case 'sql':
-    $ext = 'misc';
+    $ext = 'database';
     break;
   
     case 'html': case 'shtml': case 'xml':
