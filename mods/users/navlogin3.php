@@ -77,7 +77,14 @@ else {
   elseif($account['access_clansphere'] >= 3) {
       /*$data['lang']['panel'] .= $cs_lang['panel'];*/
       $pan_link = cs_icon('package_system') . $cs_lang['panel'];
-      $data['link']['panel'] .= cs_html_link('admin.php',$pan_link);
+      if(empty($cs_main['mod_rewrite']))
+        $data['link']['panel'] .= cs_html_link('admin.php', $pan_link);
+      else {
+        $shorten  = $cs_main['php_self']['filename'];
+        $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
+        $panel_url = str_replace($shorten, '', $_SERVER['REQUEST_URI']);
+        $data['link']['panel'] .= cs_html_link($panel_url . 'admin', $pan_link);
+      }
       $data['link']['panel'] .= cs_html_br(2);
   }
 
