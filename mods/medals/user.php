@@ -8,9 +8,12 @@ if(isset($_POST['submit'])) {
   if(!empty($_POST['users_nick'])) {
     $users_nick = cs_sql_escape($_POST['users_nick']);
     $users_id = cs_sql_select(__FILE__,'users','users_id',"users_nick = '$users_nick'",0,0,1);
-    $insertion = array('medals_id' => $medals_id, 'users_id' => $users_id['users_id'], 'medalsuser_date' => cs_time());
-    cs_sql_insert(__FILE__, 'medalsuser', array_keys($insertion), array_values($insertion)); 
-    cs_redirect($cs_lang['create_done'], 'medals', 'user', 'where='.$medals_id);
+	if($users_id > 0) {
+		$insertion = array('medals_id' => $medals_id, 'users_id' => $users_id['users_id'], 'medalsuser_date' => cs_time());
+		cs_sql_insert(__FILE__, 'medalsuser', array_keys($insertion), array_values($insertion)); 
+		cs_redirect($cs_lang['create_done'], 'medals', 'user', 'where='.$medals_id);
+	}
+	else cs_redirect($cs_lang['user_not_found'], 'medals', 'user', 'where='.$medals_id);
   }
 } else {
   $medals_id = $_GET['where'];
@@ -33,6 +36,8 @@ $order = $cs_sort[$sort];
 $tables = 'medalsuser md LEFT JOIN {pre}_users usr ON usr.users_id = md.users_id';
 $cells  = 'usr.users_nick AS users_nick, md.users_id AS users_id, usr.users_active AS users_active, usr.users_delete AS users_delete, ';
 $cells .= 'md.medals_id AS medals_id, md.medalsuser_date AS medalsuser_date, md.medalsuser_id AS medalsuser_id';
+
+$data['medals_user'] = array();
 
 $data['medals_user'] = cs_sql_select(__FILE__,$tables,$cells,'medals_id = '.$medals_id,$order,$start,$account['users_limit']);
 $data['count']['medals_user'] = count($data['medals_user']);
