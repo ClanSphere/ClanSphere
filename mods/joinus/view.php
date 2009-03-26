@@ -44,7 +44,7 @@ if(empty($cs_joinus['joinus_icq'])) { $data['join']['icq'] = '-'; }
 else { 
   $cs_icqstart = 'http://web.icq.com/whitepages/online?icq=';
   $flower = cs_html_img($cs_icqstart . $cs_joinus['joinus_icq'] . '&amp;img=21','16','15');
-  $num = cs_html_link('http://wwp.icq.com/' . $cs_joinus['joinus_icq'],$cs_joinus['joinus_icq']);
+  $num = cs_html_link('http://www.icq.com/' . $cs_joinus['joinus_icq'],$cs_joinus['joinus_icq']);
   $data['join']['icq'] = $flower . ' ' . $num;
 }
 
