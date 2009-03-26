@@ -68,7 +68,7 @@ if(isset($_POST['submit'])) {
 }
 else {
 
-  $cs_fightus['games_id'] = '';
+  $cs_fightus['games_id'] = 0;
   $cs_fightus['squads_id'] = '';
   $cs_fightus['fightus_nick'] = '';
   $cs_fightus['fightus_clan'] = '';
@@ -104,25 +104,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['fightus'] = $cs_fightus;
   $data['head']['getmsg'] = cs_getmsg();
 
-  $el_id = 'game_1';
-  $onc = "document.getElementById('" . $el_id . "').src='" . $cs_main['php_self']['dirname'] . "uploads/games/' + this.form.";
-  $onc .= "games_id.options[this.form.games_id.selectedIndex].value + '.gif'";
-  $data['fightus']['games_sel'] = cs_html_select(1,'games_id',"onchange=\"" . $onc . "\"");
-  $data['fightus']['games_sel'] .= cs_html_option('----',0,0);
-  $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
-  $games_count = count($cs_games);
-  for($run = 0; $run < $games_count; $run++) {
-    $sel = $cs_games[$run]['games_id'] == $cs_fightus['games_id'] ? 1 : 0;
-    $data['fightus']['games_sel'] .= cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
-  }
-  $data['fightus']['games_sel'] .= cs_html_select(0) . ' ';
+  $data['games'] = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
+  $games_count = count($data['games']);
+  for ($i = 0; $i < $games_count; $i++)
+    $data['games'][$i]['games_name'] = cs_secure($data['games'][$i]['games_name']);
   
-  if (empty($url)) { 
-    $url = 'uploads/games/0.gif'; 
-  } else {
-    $url = 'uploads/games/' . $cs_fightus['games_id'] . '.gif';
-  }
-   $data['fightus']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');
+  $url = 'uploads/games/' . $cs_fightus['games_id'] . '.gif';
+  $data['fightus']['games_img'] = cs_html_img($url,0,0,'id="game_1"');
 
   $cid = "squads_own = '1' AND squads_fightus = '0'";
   $cs_squads = cs_sql_select(__FILE__,'squads','squads_name, squads_id, squads_own, squads_fightus',$cid,'squads_name',0,0);
