@@ -44,13 +44,14 @@ if (!empty($_GET['warid'])) {
   $cells  = 'sq.squads_name AS squads_name, c.clans_name AS clans_name, ';
   $cells .= 'w.wars_score1 AS wars_score1, w.wars_score2 AS wars_score2, ';
   $cells .= 'cat.categories_name AS categories_name, w.squads_id AS squads_id, ';
-  $cells .= 'w.wars_id AS wars_id'; 
+  $cells .= 'w.wars_id AS wars_id, c.clans_id AS clans_id'; 
   $war = cs_sql_select(__FILE__, $tables, $cells, "wars_id = '" . $wars_id . "'");
   
   $replace = array();
   $replace['{SQUADNAME}'] = $war['squads_name'];
   $replace['{SQUADURL}'] = cs_url('squads','view','id=' . $war['squads_id']);
   $replace['{OPPONENTNAME}'] = $war['clans_name'];
+  $replace['{OPPONENTURL}'] = cs_url('clans', 'view', 'id=' . $war['clans_id']);
   $replace['{SCORE_1}'] = $war['wars_score1'];
   $replace['{SCORE_2}'] = $war['wars_score2'];
   $replace['{MATCH_URL}'] = cs_url('wars','view','id=' . $war['wars_id']);
