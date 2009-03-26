@@ -39,7 +39,7 @@ if (!empty($_GET['rep'])) {
 /*|  Clan:test clan 1; test user 1; Squad:test clan 1 squad 1  |*/
 /*+-------------------------------------------------------------+*/
 
-if (!empty($_POST['submit'])) {
+if (!empty($_POST['submit']) || !empty($_POST['preview'])) {
 	if (!empty($_POST['messages_to'])) {
 	
 	  $messages_to = $_POST['messages_to'];
@@ -190,7 +190,7 @@ $data['lang']['body_create'] = empty($messages_error) ? nl2br($cs_lang['body_cre
 if (isset($_POST['preview']) && empty($messages_error))
 {
   $data['if']['preview'] = true;
-  
+
   $data['var']['subject'] = cs_secure($_POST['messages_subject']);
   $data['var']['date'] = cs_date('unix',$time,1);
   $data['to'] = $cs_messages;
