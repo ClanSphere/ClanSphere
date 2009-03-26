@@ -5,8 +5,8 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
   if (!document.getElementById(id)) { window.setTimeout(function() { cs_ajax_setcontent(request, id, onfinish); },50); return; }
   response = request.responseText;
   response = response.replace(/href=\"#([a-zA-Z0-9-_]*?)\"/g,"href=\"javascript:cs_scrollto_by_name('$1')\"");
-  document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
-    response.replace(/href=\"\/[a-zA-Z\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
+  document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z0-9\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
+    response.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
   delete response;
   if (document.getElementById('ajax_js') == null && id == 'content') {
     request_cont = 0;
@@ -77,9 +77,9 @@ function initializeAJAX(modrewrite, navinterval) {
   cont = document.getElementsByTagName('body')[0].innerHTML;
   if (modrewrite) {
     mod_rewrite = 1;
-    cont = cont.replace(/href=\"\/[a-zA-Z\/\.\-\_]*?(index|debug|board)\/(\w.+)\"/g,"href=\"#$2\"");
+    cont = cont.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(index|debug|board)\/(\w.+)\"/g,"href=\"#$2\"");
   } else
-    cont = cont.replace(/href=\"([a-zA-Z\/\.\-\_]*)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"");
+    cont = cont.replace(/href=\"([a-zA-Z0-9\/\.\-\_]*)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"");
   document.getElementsByTagName('body')[0].innerHTML = cont;
   delete cont;
   lastmove = GetMins();
@@ -196,7 +196,7 @@ function forms_to_ajax() {
       if(active_upload_count==0) {
         document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
         form_data = form_to_string(this);
-        cs_ajax_getcontent(this.action.replace(/([a-zA-Z\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_data, 1);
+        cs_ajax_getcontent(this.action.replace(/([a-zA-Z0-9\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_data, 1);
       } else {
         alert('Upload proccess still running');
       }
