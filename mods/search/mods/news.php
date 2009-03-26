@@ -39,7 +39,7 @@ if (!empty($search_loop)) {
 
   for($run=0; $run<$search_loop; $run++) {
       $cs_news_headline = cs_secure($cs_search[$run]['news_headline']);
-      $data2['results'][$run]['headline'] = cs_link(cs_secure($cs_news_headline),'news','view','id=' . $cs_search[$run]['news_id']);
+      $data2['results'][$run]['headline'] = cs_link($cs_news_headline,'news','view','id=' . $cs_search[$run]['news_id']);
     $data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['news_time'],1);
   }
 } else {
