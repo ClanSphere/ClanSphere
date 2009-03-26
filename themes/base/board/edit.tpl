@@ -24,7 +24,7 @@
 <br />
 {stop:preview}
 
-<form method="post" id="board_edit" action="{page:path}debug.php?mod=board&amp;action=edit">
+<form method="post" id="board_edit" action="{url:board_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftb" style="width:140px">{icon:kedit} {lang:name} *</td>
