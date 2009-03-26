@@ -43,48 +43,41 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
   $data['members'][$sq_run]['name'] = cs_link($squads_name,'squads','view',$id);
 
   if(!empty($cs_squads[$sq_run]['games_id'])) {    
-  if(file_exists('uploads/games/' . $cs_squads[$sq_run]['games_id'] . '.gif')) {
+    if(file_exists('uploads/games/' . $cs_squads[$sq_run]['games_id'] . '.gif')) {
       $data['members'][$sq_run]['icon'] = cs_html_img('uploads/games/' . $cs_squads[$sq_run]['games_id'] . '.gif');
+    } else {
+      $data['members'][$sq_run]['icon'] = '';
     }
-  else {
-    $data['members'][$sq_run]['icon'] = '';
-  }
-  
-  $where = "games_id = '" . $cs_squads[$sq_run]['games_id'] . "'";
+    $where = "games_id = '" . $cs_squads[$sq_run]['games_id'] . "'";
     $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
     $id = 'id=' . $cs_game['games_id'];
     $data['members'][$sq_run]['game'] = ' ' . cs_link($cs_game['games_name'],'games','view',$id);
-  }
-  else {
+  } else {
     $data['members'][$sq_run]['game'] = ' - ';
-  $data['members'][$sq_run]['icon'] = '';
+    $data['members'][$sq_run]['icon'] = '';
   }
 
-if(empty($members_loop)) {
+  if(empty($members_loop)) {
     $data['loop']['squad_members'] = '';
-  $data['stop']['squad_members'] = '';
-  $data['squad_members']['members'] = '';
-  $data['squad_members']['dot'] = '';
+    $data['stop']['squad_members'] = '';
+    $data['squad_members']['members'] = '';
+    $data['squad_members']['dot'] = '';
   }
 
   
   for($run=0; $run<$members_loop; $run++) {
     
-  $id = 'id=' . $cs_members[$run]['users_id'];
-  $users_nick = cs_secure($cs_members[$run]['users_nick']);
-
-  
-  $data['members'][$sq_run]['squad_members'][$run]['members'] =  cs_user($id, $users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);  
-  
-  if($run == ($members_loop - 1)) {
+    $users_nick = cs_secure($cs_members[$run]['users_nick']);
+    
+    $data['members'][$sq_run]['squad_members'][$run]['members'] =  cs_user($cs_members[$run]['users_id'], $users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);  
+    
+    if($run == ($members_loop - 1)) {
       $data['members'][$sq_run]['squad_members'][$run]['dot'] =  '';
-  }
-  elseif(!empty($run)) {
-    $data['members'][$sq_run]['squad_members'][$run]['dot'] =  ', ';
-  }
-  else {
-    $data['members'][$sq_run]['squad_members'][$run]['dot'] =  ', ';
-  }
+    } elseif(!empty($run)) {
+      $data['members'][$sq_run]['squad_members'][$run]['dot'] =  ', ';
+    } else {
+      $data['members'][$sq_run]['squad_members'][$run]['dot'] =  ', ';
+    }
   }  
 }
 
