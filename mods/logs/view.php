@@ -9,7 +9,7 @@ $log_id = !empty($_GET['art']) ? (int) $_GET['art'] : 0;
 $folder = $log_id == 1 ? 'errors' : 'actions';
 $id = (int) $_GET['id'];
 
-$log = $_GET['log'];
+$log = empty($_GET['log']) ? 0 : $_GET['log'];
 $data = array();
 
 $cs_sort[1] = 'logs_name DESC';
