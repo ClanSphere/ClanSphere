@@ -45,11 +45,11 @@ for($run=0; $run < $categories_loop; $run++) {
     for($runb=0; $runb < $sub_loop; $runb++) {
       $sub_content = cs_sql_count(__FILE__,'files',"categories_id = '" . $sub_data[$runb]['categories_id'] . "'");
       
-      $data['categories'][$run]['subcats'][$runb]['name'] = cs_secure($sub_data[$runb]['categories_name']);
-      $data['categories'][$run]['subcats'][$runb]['id'] = $sub_data[$runb]['categories_id'];
-      $data['categories'][$run]['subcats'][$runb]['count'] = $sub_content;
+      $data['categories'][$run]['subs'][$runb]['name'] = cs_secure($sub_data[$runb]['categories_name']);
+      $data['categories'][$run]['subs'][$runb]['id'] = $sub_data[$runb]['categories_id'];
+      $data['categories'][$run]['subs'][$runb]['count'] = $sub_content;
       
-      $data['categories'][$run]['subcats'][$runb]['comma'] = ($runb == $sub_loop -1) ? '' : ', ';
+      $data['categories'][$run]['subs'][$runb]['comma'] = ($runb == $sub_loop -1) ? '' : ', ';
 
   }
 }
