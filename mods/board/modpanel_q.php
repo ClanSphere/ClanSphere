@@ -29,23 +29,23 @@ if($account['access_board'] < 5 AND empty($thread_mods['boardmods_modpanel']))
 //Sicherheitsabfarge Ende
 
 //Daten Abfragen
-if(isset($_POST['thread_closed'])) {
+if(!empty($_POST['thread_closed'])) {
   $thread_cells = array('threads_close');
   $thread_save = array($account['users_id']);
 
-} elseif(isset($_POST['open'])) {
+} elseif(!empty($_POST['open'])) {
   $thread_cells = array('threads_close');
   $thread_save = array(0);
 
-} elseif(isset($_POST['addpin'])) {
+} elseif(!empty($_POST['addpin'])) {
   $thread_cells = array('threads_important');
   $thread_save = array(1);
 
-} elseif(isset($_POST['delpin'])) {
+} elseif(!empty($_POST['delpin'])) {
   $thread_cells = array('threads_important');
   $thread_save = array(0);
 
-} elseif(isset($_POST['submit_move'])) {       
+} elseif(!empty($_POST['submit_move'])) {       
   if(empty($_POST['board_id']) OR $_POST['board_id'] == $board_id) {
     return header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id); 
   }
@@ -70,7 +70,7 @@ if(isset($_POST['thread_closed'])) {
   $thread_cells = array('board_id','threads_close');
   $thread_save = array($board_new_id,$thread_closed);
 
-} elseif(isset($_POST['submit_rename'])) {       
+} elseif(!empty($_POST['submit_rename'])) {       
   if(empty($_POST['thread_headline'])) {
     return header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id);
   }
@@ -78,7 +78,7 @@ if(isset($_POST['thread_closed'])) {
   $thread_cells = array('threads_headline');
   $thread_save = array($thread_headline);
 
-} elseif(isset($_POST['move']) OR isset($_POST['rename'])) {
+} elseif(!empty($_POST['move']) OR !empty($_POST['rename'])) {
   
   $data['threads']['id'] = $thread_edit['threads_id'];
 
@@ -92,7 +92,7 @@ if(isset($_POST['thread_closed'])) {
   $data['if']['rename'] = FALSE;
 
   //move
-  if(isset($_POST['move'])) {
+  if(!empty($_POST['move'])) {
   
     $data['if']['move'] = TRUE;
 
@@ -112,7 +112,7 @@ if(isset($_POST['thread_closed'])) {
   }
 
   //rename
-  if(isset($_POST['rename'])) {
+  if(!empty($_POST['rename'])) {
   
     $data['if']['rename'] = TRUE;
     $data['val']['thread_headline'] = $thread_headline;

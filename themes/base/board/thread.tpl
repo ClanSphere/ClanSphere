@@ -200,7 +200,7 @@
 </table>
 <br />
 {if:modpanel}
-<form method="post" id="boardmodpanel_q" action="?mod=board&amp;action=modpanel_q&amp;id={thread:threads_id}">
+<form method="post" id="boardmodpanel_q" action="{url:board_modpanel_q:id={thread:threads_id}}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
     <tr>
       <td class="centerb"> {if:modp_close}

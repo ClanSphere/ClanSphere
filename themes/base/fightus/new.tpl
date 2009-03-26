@@ -33,7 +33,8 @@
 		<td class="leftc">{icon:package_games} {lang:game}</td>
 		<td class="leftb">
 			<select name="games_id" class="form" onchange="document.getElementById('game_1').src='/uploads/games/' + this.form.games_id.options[this.form.games_id.selectedIndex].value + '.gif'">
-				<option value="0">----</option>
+				<option value="0">----</option>{loop:games}
+				<option value="{games:games_id}">{games:games_name}</option>{stop:games}
 			</select>
 			{fightus:games_img}
 		</td>

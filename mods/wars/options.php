@@ -38,6 +38,7 @@ if(isset($_POST['submit'])) {
   $pholders['{SQUADNAME}'] = $cs_lang['op_squadname'];
   $pholders['{SQUADURL}'] = $cs_lang['op_squadurl'];
   $pholders['{OPPONENTNAME}'] = $cs_lang['op_opponentname'];
+  $pholders['{OPPONENTURL}'] = $cs_lang['op_opponenturl'];
   $pholders['{SCORE_1}'] = $cs_lang['op_score1'];
   $pholders['{SCORE_2}'] = $cs_lang['op_score2'];
   $pholders['{MATCH_URL}'] = $cs_lang['op_matchurl'];

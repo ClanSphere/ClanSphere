@@ -1,4 +1,4 @@
-Heute hat unser Squad [url={SQUADURL}]{SQUADNAME}[/url] gegen {OPPONENTNAME} in einen Clanwar gespielt.
+Heute hat unser Squad [url={SQUADURL}]{SQUADNAME}[/url] gegen [url={OPPONENTURL}]{OPPONENTNAME}[/url] in einen Clanwar gespielt.
 
 Endstand: {SCORE_1} : {SCORE_2}
 
