@@ -17,7 +17,7 @@ if ($exists) {
 
 $data['if']['date'] = $exists;
 if(!empty($data['if']['date'])) {
-  $data['imprint']['content'] = cs_secure($imprint[1],1,1);
+  $data['imprint']['content'] = cs_secure($imprint[1],1,1,1,1);
   $stand = '[b]' .$cs_lang['stand'] .' '. cs_date('unix',$imprint[0]) .'[/b]';
   $data['imprint']['date'] = cs_secure($stand,1,1);
 } else {
