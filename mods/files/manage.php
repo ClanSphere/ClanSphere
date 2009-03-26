@@ -58,7 +58,7 @@ for($run=0; $run<$files_loop; $run++)
   {
     $ext = $file_typ_array[$run_2];
 	
-	require 'mods/clansphere/filetype.php';
+    require_once 'mods/clansphere/filetype.php';
     $data['files'][$run]['filetypes'][$run_2]['icon'] = cs_filetype($ext);
   }
   $data['files'][$run]['id'] = $cs_files[$run]['files_id'];
