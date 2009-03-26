@@ -83,7 +83,7 @@ else {
     $data['temp_list'][$run]['name'] = $mod['name'];
     $data['temp_list'][$run]['version'] = $mod['version'];
     $data['temp_list'][$run]['date'] = cs_date('date',$mod['released']);
-  echo $cs_main['template'] . ' - '; 
+
     if(isset($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template'])) {
       $cs_main['template'] = $_GET['template'];
     }
