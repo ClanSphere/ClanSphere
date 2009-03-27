@@ -61,14 +61,7 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
   }
 
   $url = 'symbols/countries/' . $members[$run]['users_country'] . '.png';
-  $members[$run]['country'] = cs_html_img($url,11,16) . ' ';
-    if($data['squads'][$sq_run]['clans_tagpos'] == 2) {
-    $members[$run]['tag_before'] = '';
-    $members[$run]['tag_after'] = $data['squads'][$sq_run]['clans_tag'];
-    } else {
-    $members[$run]['tag_before'] = $data['squads'][$sq_run]['clans_tag'];
-    $members[$run]['tag_after'] = '';
-  }  
+  $members[$run]['country'] = cs_html_img($url,11,16) . ' ';    
   
   $members[$run]['nick']  = $data['squads'][$sq_run]['clans_tagpos'] == 1 ? $data['squads'][$sq_run]['clans_tag'] . ' ' : '';
   $members[$run]['nick'] .=
