@@ -32,9 +32,9 @@
   </tr>
   {loop:medals_user}
   <tr>
-    <td class="leftb">{medals_user:medals_date}</td>
-    <td class="leftb">{medals_user:user}</td>
-    <td class="centerb"><a href="{medals_user:remove_url}">{icon:editdelete}</a></td>
+    <td class="leftc">{medals_user:medals_date}</td>
+    <td class="leftc">{medals_user:user}</td>
+    <td class="centerc"><a href="{medals_user:remove_url}">{icon:editdelete}</a></td>
   </tr>
   {stop:medals_user}
 </table>

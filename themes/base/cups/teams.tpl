@@ -17,8 +17,8 @@
     <td class="headb">{lang:options}</td>
   </tr>{loop:teams}
   <tr>
-    <td class="leftb">{teams:team}</td>
-    <td class="leftb">{teams:join}</td>
-    <td class="leftb"><a href="{url:cups_teamremove:id={teams:cupsquads_id}}" title="{lang:remove}">{icon:editdelete}</a></td>
+    <td class="leftc">{teams:team}</td>
+    <td class="leftc">{teams:join}</td>
+    <td class="leftc"><a href="{url:cups_teamremove:id={teams:cupsquads_id}}" title="{lang:remove}">{icon:editdelete}</a></td>
   </tr>{stop:teams}
 </table>

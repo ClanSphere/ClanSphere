@@ -12,7 +12,7 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:kate} {lang:min} *</td>
-		<td class="leftb"><input type="text" name="boardranks_min" value="{boardranks:min}" maxlength="8" size="5" />{lang:points}</td>
+		<td class="leftb"><input type="text" name="boardranks_min" value="{boardranks:min}" maxlength="8" size="5" /> {lang:points}</td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kate} {lang:rangname} *</td>

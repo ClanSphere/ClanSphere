@@ -23,11 +23,11 @@
 
 {loop:mail}
 <tr>
-<td class="leftb">{mail:mail_name}</td>
-<td class="leftb">{mail:categories_name}</td>
-<td class="leftb"><a href="{url:contact_view:id={mail:mail_id}}">{mail:mail_subject}</a></td>
-<td class="leftb">{mail:mail_date}</td>
-<td class="leftb">
+<td class="leftc">{mail:mail_name}</td>
+<td class="leftc">{mail:categories_name}</td>
+<td class="leftc"><a href="{url:contact_view:id={mail:mail_id}}">{mail:mail_subject}</a></td>
+<td class="leftc">{mail:mail_date}</td>
+<td class="leftc">
 <a href="{url:contact_delete:id={mail:mail_id}}">{icon:editdelete}</a>
 </td></tr>
 {stop:mail}

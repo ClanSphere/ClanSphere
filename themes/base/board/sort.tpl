@@ -22,10 +22,10 @@
   </tr>
   {loop:board}
   <tr>
-    <td class="leftb">{board:board_name}</td>
-    <td class="leftb" style="width:5%">{board:board_order}</td>
-    <td class="leftb" style="width:10%">{board:board_up}</td>
-    <td class="leftb" style="width:10%">{board:board_down}</td>
+    <td class="leftc">{board:board_name}</td>
+    <td class="leftc" style="width:5%">{board:board_order}</td>
+    <td class="leftc" style="width:10%">{board:board_up}</td>
+    <td class="leftc" style="width:10%">{board:board_down}</td>
   </tr>
   {stop:board}
   {stop:cat}

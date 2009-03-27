@@ -31,12 +31,12 @@
   </tr>
   {loop:servers}
     <tr>
-      <td class="leftb">{servers:id}</td>
-      <td class="leftb">{servers:name}</td>
-      <td class="leftb">{servers:game}</td>
-      <td class="leftb">{servers:class}</td>
-      <td class="leftb">{servers:edit}</td>
-      <td class="leftb">{servers:remove}</td>
+      <td class="leftc">{servers:id}</td>
+      <td class="leftc">{servers:name}</td>
+      <td class="leftc">{servers:game}</td>
+      <td class="leftc">{servers:class}</td>
+      <td class="leftc">{servers:edit}</td>
+      <td class="leftc">{servers:remove}</td>
     </tr>
   {stop:servers}
 </table>

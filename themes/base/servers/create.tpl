@@ -10,20 +10,20 @@
 <form method="post" id="servers_create" action="{url:servers_create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="leftb">{icon:kedit} {lang:servername} *</td>
-    <td class="leftc"><input type="text" name="servers_name" value="{create:servers_name}" maxlength="200" size="50" /></td>
+    <td class="leftc">{icon:kedit} {lang:servername} *</td>
+    <td class="leftb"><input type="text" name="servers_name" value="{create:servers_name}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kedit} {lang:serverip} *</td>
-    <td class="leftc"><input type="text" name="servers_ip"  value="{create:servers_ip}" maxlength="200" size="50" /></td>
+    <td class="leftc">{icon:kedit} {lang:serverip} *</td>
+    <td class="leftb"><input type="text" name="servers_ip"  value="{create:servers_ip}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kedit} {lang:serverport} *</td>
-    <td class="leftc"><input type="text" name="servers_port"  value="{create:servers_port}" maxlength="15" size="10" /></td>
+    <td class="leftc">{icon:kedit} {lang:serverport} *</td>
+    <td class="leftb"><input type="text" name="servers_port"  value="{create:servers_port}" maxlength="15" size="10" /></td>
   </tr> 
   <tr>
-    <td class="leftb">{icon:kedit} {lang:serverspiel} *</td>
-    <td class="leftc">
+    <td class="leftc">{icon:kedit} {lang:serverspiel} *</td>
+    <td class="leftb">
       <select name="games_id" onchange="cs_gamechoose(this.form)">
         <option value="">----</option>
         {loop:games}
@@ -38,8 +38,8 @@
     <td class="headb" colspan="2">{lang:Erweiterter} - {lang:Serverstatus}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kate} {lang:Serverstatus} *</td>
-    <td class="leftc">
+    <td class="leftc">{icon:kate} {lang:Serverstatus} *</td>
+    <td class="leftb">
       <select name="servers_stats">
         {loop:stats}
           <option value="{stats:value}" {stats:selected}>{stats:name}</option>
@@ -48,8 +48,8 @@
     </td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kate} {lang:proto} *</td>
-    <td class="leftc">
+    <td class="leftc">{icon:kate} {lang:proto} *</td>
+    <td class="leftb">
       <select name="servers_class">
         <option value="">----</option>
         {loop:classes}
@@ -59,22 +59,22 @@
     </td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kate} {lang:serverquerry} *</td>
-    <td class="leftc"><input type="text" name="servers_query"  value="{create:servers_query}" maxlength="200" size="10" /></td>
+    <td class="leftc">{icon:kate} {lang:serverquerry} *</td>
+    <td class="leftb"><input type="text" name="servers_query"  value="{create:servers_query}" maxlength="200" size="10" /></td>
   </tr>
   <tr>
     <td class="headb" colspan="2">{lang:Erweiterter} - {lang:order}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kate} {lang:serverorder}</td>
-    <td class="leftc"><input type="text" name="servers_order"  value="{create:servers_order}" maxlength="3" size="3" /></td>
+    <td class="leftc">{icon:kate} {lang:serverorder}</td>
+    <td class="leftb"><input type="text" name="servers_order"  value="{create:servers_order}" maxlength="3" size="3" /></td>
   </tr>
   <tr>
     <td class="headb" colspan="2">{lang:Erweiterter} - {lang:liveoff}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kate} {lang:type}</td>
-    <td class="leftc">
+    <td class="leftc">{icon:kate} {lang:type}</td>
+    <td class="leftb">
       <select name="servers_type">
         <option value="">-----</option>
         {loop:typ}
@@ -84,16 +84,16 @@
     </td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kate} {lang:serverinfo}</td>
-    <td class="leftc"><textarea name="servers_info" cols="75" rows="5" id="servers_info" class="form">{create:servers_info}</textarea></td>
+    <td class="leftc">{icon:kate} {lang:serverinfo}</td>
+    <td class="leftb"><textarea name="servers_info" cols="75" rows="5" id="servers_info" class="form">{create:servers_info}</textarea></td>
   </tr>
   <tr>
-    <td class="leftb">{icon:kate} {lang:slots}</td>
-    <td class="leftc"><input type="text" name="servers_slots"  value="{create:servers_slots}" maxlength="5" size="4" /></td>
+    <td class="leftc">{icon:kate} {lang:slots}</td>
+    <td class="leftb"><input type="text" name="servers_slots"  value="{create:servers_slots}" maxlength="5" size="4" /></td>
   </tr>  
   <tr>
-    <td class="leftb">{icon:ksysguard} {lang:options}</td>
-    <td class="leftc"><input type="submit" name="submit" value="{lang:create}" /></td>
+    <td class="leftc">{icon:ksysguard} {lang:options}</td>
+    <td class="leftb"><input type="submit" name="submit" value="{lang:create}" /></td>
   </tr>
 </table>
 </form>    

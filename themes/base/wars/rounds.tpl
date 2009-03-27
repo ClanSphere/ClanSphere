@@ -66,11 +66,11 @@
 	</tr>
 	{loop:maps}
 	<tr>
-		<td class="leftb">{maps:name}</td>
-		<td class="leftb">{maps:result}</td>
-		<td class="leftb"><a href="{url:wars_roundsedit:id={maps:rounds_id}}" title="{lang:edit}">{icon:edit}</a></td>
-		<td class="leftb"><a href="{url:wars_roundsremove:id={maps:rounds_id}}" title="{lang:remove}">{icon:editdelete}</a></td>
-		<td class="leftb">{maps:up_down}</td>
+		<td class="leftc">{maps:name}</td>
+		<td class="leftc">{maps:result}</td>
+		<td class="leftc"><a href="{url:wars_roundsedit:id={maps:rounds_id}}" title="{lang:edit}">{icon:edit}</a></td>
+		<td class="leftc"><a href="{url:wars_roundsremove:id={maps:rounds_id}}" title="{lang:remove}">{icon:editdelete}</a></td>
+		<td class="leftc">{maps:up_down}</td>
 	</tr>
 	{stop:maps}
 </table>

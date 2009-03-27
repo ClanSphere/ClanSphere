@@ -16,8 +16,8 @@
   <td class="headb" colspan="2">{lang:options}</td>
  </tr>{loop:maplist}
  <tr>
-  <td class="leftb"><a href="{url:maps_view:id={maplist:maps_id}}">{maplist:maps_name}</a></td>
-  <td class="leftb"><a href="{url:maps_edit:id={maplist:maps_id}}">{icon:edit}</a></td>
-  <td class="leftb"><a href="{url:maps_remove:id={maplist:maps_id}}">{icon:editdelete}</a></td>
+  <td class="leftc"><a href="{url:maps_view:id={maplist:maps_id}}">{maplist:maps_name}</a></td>
+  <td class="leftc"><a href="{url:maps_edit:id={maplist:maps_id}}">{icon:edit}</a></td>
+  <td class="leftc"><a href="{url:maps_remove:id={maplist:maps_id}}">{icon:editdelete}</a></td>
  </tr>{stop:maplist}
 </table>	

@@ -27,12 +27,12 @@
 	</tr>
 	{loop:com}
 	<tr>
-		<td class="leftb">{com:fid}</td>
-		<td class="leftb">{com:user}</td>
-		<td class="leftb">{com:date}</td>
-		<td class="leftb"><a href="{com:url_view}" title="{lang:details}">{icon:view_text}</a></td>
-		<td class="leftb"><a href="{com:url_edit}" title="{lang:edit}">{icon:kedit}</a></td>
-		<td class="leftb"><a href="{com:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>
+		<td class="leftc">{com:fid}</td>
+		<td class="leftc">{com:user}</td>
+		<td class="leftc">{com:date}</td>
+		<td class="leftc"><a href="{com:url_view}" title="{lang:details}">{icon:view_text}</a></td>
+		<td class="leftc"><a href="{com:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
+		<td class="leftc"><a href="{com:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>
 	</tr>
 	{stop:com}
 </table>
