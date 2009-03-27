@@ -15,22 +15,24 @@
 {loop:gbook}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="leftb" style="width:160px"># {gbook:entry_count} <br />
+		<td class="leftc" style="width:160px"># {gbook:entry_count}<br />
+		    {gbook:time} <br /><br />
 			{icon:personal} {gbook:users_nick} <br />
-			{gbook:icon_town} {gbook:town} <br />
+			{gbook:icon_town} {gbook:town} <br /><br />
 			{gbook:icon_mail} {gbook:icon_icq} {gbook:icon_msn} {gbook:icon_skype} {gbook:icon_url}<br />
 		</td>
-		<td class="leftc">{gbook:text}</td>
+		<td class="leftb">{gbook:text}</td>
 	</tr>
-	<tr>
-		<td class="bottom">{gbook:time}</td>
-		<td class="bottom">
+	{if:admin}
+	<tr>		
+		<td class="bottom" colspan="2">
 			<div style="float:right">{gbook:icon_edit}
 				{gbook:icon_remove}
 				{gbook:icon_ip}
 			</div>
 		</td>
 	</tr>
+	{stop:admin}
 </table>
 <br />
 {stop:gbook}

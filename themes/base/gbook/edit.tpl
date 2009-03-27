@@ -14,22 +14,22 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	{tpl:extension}
 	<tr>
-		<td class="leftb">{icon:kate} {lang:text} *<br />
+		<td class="leftc">{icon:kate} {lang:text} *<br />
 			<br />
 			{abcode:smileys}
 		</td>
-		<td class="leftc">
+		<td class="leftb">
 			{abcode:features}
 			<textarea name="gbook_text" cols="50" rows="15" id="gbook_text">{gbook:gbook_text}</textarea>
 		</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:configure} {lang:more}</td>
-		<td class="leftc"><input type="checkbox" name="gbook_newtime" value="1" {check:newtime} /> {lang:new_date}</td>
+		<td class="leftc">{icon:configure} {lang:more}</td>
+		<td class="leftb"><input type="checkbox" name="gbook_newtime" value="1" {check:newtime} /> {lang:new_date}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:ksysguard} {lang:options}</td>
-		<td class="leftc">
+		<td class="leftc">{icon:ksysguard} {lang:options}</td>
+		<td class="leftb">
 			<input type="hidden" name="id" value="{gbook:id}" />
 			<input type="hidden" name="from" value="{gbook:from}" />
 			<input type="submit" name="submit" value="{lang:edit}" />

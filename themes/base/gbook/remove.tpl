@@ -11,7 +11,7 @@
 <form method="post" id="gbook_remove" action="{url:gbook_remove}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="centerc">
+		<td class="centerb">
 			<input type="hidden" name="from" value="{hidden:from}" />
 			<input type="hidden" name="id" value="{hidden:id}" />
 			<input type="submit" name="submit" value="{lang:confirm}" />
