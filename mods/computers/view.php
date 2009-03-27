@@ -29,7 +29,8 @@ else {
   $computer_pics = explode("\n",$cs_computers['computers_pictures']);
   foreach($computer_pics AS $pic) {
     $link = cs_html_img('uploads/computers/thumb-' . $pic);
-    $data['pictures'][$run]['thumb'] = cs_html_link('uploads/computers/picture-' . $pic,$link) . ' ';
+	$path = $cs_main['php_self']['dirname'];
+    $data['pictures'][$run]['thumb'] = cs_html_link($path . 'uploads/computers/picture-' . $pic,$link) . ' ';
     $run++;
   }
 }

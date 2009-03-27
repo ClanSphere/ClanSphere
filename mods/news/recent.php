@@ -82,7 +82,8 @@ for($run = 0; $run < $news_loop; $run++) {
     $cs_news[$run]['pictures'] .= cs_html_br(2);
     foreach ($news_pics as $pic) {
     $link = cs_html_img('uploads/news/thumb-' . $pic);
-      $cs_news[$run]['pictures'] .= cs_html_link('uploads/news/picture-' . $pic, $link) . ' ';
+	$path = $cs_main['php_self']['dirname'];
+    $cs_news[$run]['pictures'] .= cs_html_link($path . 'uploads/news/picture-' . $pic, $link) . ' ';
     }
   }
 
