@@ -31,7 +31,7 @@
   {loop:files}
   <tr>
     <td class="leftc">{loop:filetypes}{filetypes:icon}{stop:filetypes}</td>
-    <td class="leftc"><a href="{url:files_view:where={files:id}}" >{files:name}</a></td>
+    <td class="leftc"><a href="{url:files_view:id={files:id}}" >{files:name}</a></td>
     <td class="leftc">{files:user}</td>
     <td class="leftc">{files:date}</td>
     <td class="leftc"><a href="{url:files_picture:id={files:id}}" title="{lang:preview}">{icon:image}</a></td>

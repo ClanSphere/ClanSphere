@@ -4,27 +4,27 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kedit} {lang:name}</td>
-    <td class="leftb" style="width:60%"> TestDownloadName </td>
+    <td class="leftb" style="width:60%">{file:name}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:package_editors} {lang:version}</td>
-    <td class="leftb" style="width:60%"> 12 </td>
+    <td class="leftb" style="width:60%">{file:version}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:fileshare}{lang:big}</td>
-    <td class="leftb" style="width:60%"> {file:size} </td>
+    <td class="leftc">{icon:fileshare} {lang:big}</td>
+    <td class="leftb" style="width:60%">{file:size}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:personal} {lang:autor}</td>
-    <td class="leftb" style="width:60%"> {file:user} </td>
+    <td class="leftb" style="width:60%">{file:user}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:1day} {lang:date}</td>
-    <td class="leftb" style="width:60%">{file:date} </td>
+    <td class="leftb" style="width:60%">{file:date}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:download} {lang:downloaded}</td>
-    <td class="leftb" style="width:60%"><strong>0 </strong>{lang:mal} </td>
+    <td class="leftb" style="width:60%"><strong>{file:count}</strong> {lang:mal} </td>
   </tr>
   {if:vote}
   <tr>
@@ -73,7 +73,7 @@
   {loop:mirrors}
   <tr>
     <td class="leftc">{icon:html}</td>
-    <td class="leftb"><a href="http://{url:files_download:where={file:id}:target={mirrors:id}}" target="_blank">{mirrors:name}</a></td>
+    <td class="leftb"><a href="{url:files_download:where={file:id}:target={mirrors:id}}" target="_blank">{mirrors:name}</a></td>
     <td class="leftc">{mirrors:filetype_image}( <strong>{mirrors:filetype_name}</strong> ) </td>
   </tr>
   {stop:mirrors}

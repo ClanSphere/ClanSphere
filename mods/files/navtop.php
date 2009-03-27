@@ -15,7 +15,6 @@ if (!empty($cs_files)) {
   $count_files = count($cs_files);
   for ($run = 0; $run < $count_files; $run++) {
     $cs_files[$run]['count'] = $count;
-    $cs_files[$run]['url'] = cs_url('files','view','where='.$cs_files[$run]['files_id']);
     $count++;
   }
   

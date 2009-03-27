@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
+require 'mods/clansphere/filetype.php';
 
 $data = array();
 
@@ -23,11 +24,9 @@ empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 
-
 $categories = cs_sql_select(__FILE__,'categories','categories_name',"categories_id = '" . $categories_id . "'");
 $data['categorie']['name'] = $categories['categories_name'];
 $data['categorie']['count'] = cs_sql_count(__FILE__,'files',$where);
-
 
 $data['categorie']['paginator'] = cs_pages('files','listcat',$data['categorie']['count'],$start,$categories_id,$sort);
 
@@ -50,7 +49,6 @@ if(!empty($sub_loop)) {
     }
   }   
 }
-
 
 
 $from = 'files fls INNER JOIN {pre}_users usr ON fls.users_id = usr.users_id';
@@ -94,7 +92,6 @@ for($run=0; $run<$files_loop; $run++) {
   for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++) {
     $ext = $file_typ_array[$run_2];
 	
-	require 'mods/clansphere/filetype.php';
     $data['files'][$run]['filetypes'][$run_2]['icon'] = cs_filetype($ext);  
   }
 }

@@ -6,17 +6,11 @@ $cs_lang = cs_translate('files');
 
 $max = 4;
 
-$cs_files = cs_sql_select(__FILE__,'files','files_name, files_id',0,'files_time DESC',0,$max);
+$data = array();
 
-if (!empty($cs_files)) {
+$data['files'] = cs_sql_select(__FILE__,'files','files_name, files_id',0,'files_time DESC',0,$max);
 
-  $data = array();
-  $count_files = count($cs_files);
-  for ($run = 0; $run < $count_files; $run++) {
-    $cs_files[$run]['url'] = cs_url('files','view','where='.$cs_files[$run]['files_id']);
-  }
-  
-  $data['files'] = $cs_files;
+if (!empty($data['files'])) {
   
   echo cs_subtemplate(__FILE__,$data,'files','navlist');
   

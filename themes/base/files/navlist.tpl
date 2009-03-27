@@ -1,4 +1,3 @@
 {loop:files}
-<a href="{files:url}">{files:files_name}</a>
-<br />
-{stop:files}
+<a href="{url:files_view:id={files:files_id}}">{files:files_name}</a>
+<br />{stop:files}

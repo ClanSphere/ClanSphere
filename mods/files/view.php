@@ -8,8 +8,8 @@ $data = array();
 
 require 'mods/files/functions.php';
 
-$file_id = $_REQUEST['where'];
-settype($file_id,'integer');
+$file_id = (int) $_GET['id'];
+
 $maxlength = '80';
 $modul = 'files';
 $files_size = '';
