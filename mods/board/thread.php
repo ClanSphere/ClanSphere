@@ -739,7 +739,6 @@ $data['if']['modpanel'] = true;
 //Ende Modpanel
 $data['if']['no_user'] = false; 
 $data['if']['last_own'] = false; 
-$data['if']['no_adv_com'] = false; 
 $data['if']['write_comment'] = false; 
 
 if(empty($data['thread']['threads_close'])) {
@@ -772,7 +771,6 @@ if(empty($data['thread']['threads_close'])) {
     $cs_abcode = cs_sql_option(__FILE__,'abcode');
     
     if(empty($cs_abcode['def_abcode'])) {
-      $data['if']['no_adv_com'] = true; 
       $data['wcomment']['smileys'] = '';
       $data['wcomment']['abcode'] = '';
     } else {

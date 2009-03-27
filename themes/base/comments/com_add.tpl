@@ -1,11 +1,9 @@
 <br />
 <form method="post" id="{page:mod}_com_create" action="{url:create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	{if:adv_com}
 	<tr>
 		<td class="leftc" colspan="2"><input type="submit" name="advanced" value="{lang:adv_com}" /></td>
 	</tr>
-	{stop:adv_com}
 	{if:guest}
 	<tr>
 		<td class="leftc">{icon:personal} {lang:guestnick} *</td>

@@ -242,12 +242,10 @@
 {if:write_comment}
 <form method="post" id="board_com_create" action="{url:board_com_create}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
-    {if:no_adv_com}
     <tr>
       <td class="leftc" colspan="2"><input type="submit" name="advanced" value="{lang:adv_com}" />
       </td>
     </tr>
-    {stop:no_adv_com}
     <tr>
       <td class="leftc">{icon:kopete} {lang:comment} *<br />
         <br />

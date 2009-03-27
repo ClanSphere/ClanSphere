@@ -126,8 +126,7 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
   global $account;
   $cs_abcode = cs_sql_option(__FILE__,'abcode');
   $options = cs_sql_option(__FILE__,'comments');
-  
-  $data['if']['adv_com'] = TRUE;
+
   $data['if']['guest'] = FALSE;
   $data['if']['captcha'] = FALSE;
 
@@ -155,7 +154,6 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
       $data['comments']['smilies'] = '';
     }
     else {
-      $data['if']['adv_com'] = FALSE;
       $data['comments']['abcode'] =  cs_abcode_features('comments_text',1);
       $data['comments']['smilies'] = cs_abcode_smileys('comments_text');
     }
