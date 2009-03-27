@@ -293,11 +293,11 @@ function cs_abcode_load() {
 function cs_abcode_output($id, $matches = 0, $limit = 0) {
   
   global $replaces;
-  if (empty($matches)) return $replaces[$id];
+  if (empty($matches)) return rtrim($replaces[$id]);
   if (empty($limit)) {
     $replace = array();
     foreach ($matches AS $key => $value) $replace['{var:' . $key . '}'] = $value;
-    return str_replace(array_keys($replace), array_values($replace), $replaces[$id]);
+    return str_replace(array_keys($replace), array_values($replace), rtrim($replaces[$id]));
   }
   
 }
