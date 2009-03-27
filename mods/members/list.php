@@ -55,8 +55,7 @@ for($sq_run = 0; $sq_run < $squads_loop; $sq_run++) {
   
   for($run = 0; $run < $members_loop; $run++) {
     $url = 'symbols/countries/' . $cs_members[$run]['users_country'] . '.png';
-    $data['squads'][$sq_run]['members'][$run]['country'] = cs_html_img($url,11,16);
-    $nick_secure = cs_secure($cs_members[$run]['users_nick']);
+    $data['squads'][$sq_run]['members'][$run]['country'] = cs_html_img($url,11,16);    
     $data['squads'][$sq_run]['members'][$run]['nick']  = $cs_squads[$sq_run]['clans_tagpos'] == 1 ?
         $cs_squads[$sq_run]['clans_tag'] . ' ' : '';
     $data['squads'][$sq_run]['members'][$run]['nick'] .=

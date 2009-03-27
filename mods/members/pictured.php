@@ -25,7 +25,7 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
   $select .= 'mem.members_since AS members_since, mem.users_id AS users_id, usr.users_nick AS users_nick, ';
   $select .= 'usr.users_name AS users_name, usr.users_surname AS users_surname, usr.users_sex AS users_sex, ';
   $select .= 'usr.users_age AS users_age, usr.users_place AS users_place, usr.users_country AS users_country, ';
-  $select .= 'usr.users_picture AS users_picture, usr.users_active AS users_active, usr.users_hidden AS users_hidden';
+  $select .= 'usr.users_picture AS users_picture, usr.users_active AS users_active, usr.users_hidden AS users_hidden, usr.users_delete AS users_delete';
   $from = 'members mem INNER JOIN {pre}_users usr ON mem.users_id = usr.users_id ';
   $where = "mem.squads_id = '" . $data['squads'][$sq_run]['squads_id'] . "'";
   $order = 'mem.members_order ASC, usr.users_nick ASC';
@@ -68,12 +68,15 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
     } else {
     $members[$run]['tag_before'] = $data['squads'][$sq_run]['clans_tag'];
     $members[$run]['tag_after'] = '';
-  }
-  $users_nick = cs_user($members[$run]['users_id'],$members[$run]['users_nick'], $members[$run]['users_active']);
-  $members[$run]['users_nick'] = empty($members[$run]['members_admin']) ? $users_nick : cs_html_big(1) . $users_nick . cs_html_big(0);
+  }  
+  
+  $members[$run]['nick']  = $data['squads'][$sq_run]['clans_tagpos'] == 1 ? $data['squads'][$sq_run]['clans_tag'] . ' ' : '';
+  $members[$run]['nick'] .=
+    cs_user($members[$run]['users_id'],$members[$run]['users_nick'], $members[$run]['users_active'], $members[$run]['users_delete']);
+  $members[$run]['nick'] .= $data['squads'][$sq_run]['clans_tagpos'] == 2 ? ' ' . $data['squads'][$sq_run]['clans_tag'] : '';
 
-    $users_name = !in_array('users_name',$hidden) || !empty($allow) ? $members[$run]['users_name'] : '';
-    $users_surname = !in_array('users_surname',$hidden) || !empty($allow) ? $members[$run]['users_surname'] : '';
+  $users_name = !in_array('users_name',$hidden) || !empty($allow) ? $members[$run]['users_name'] : '';
+  $users_surname = !in_array('users_surname',$hidden) || !empty($allow) ? $members[$run]['users_surname'] : '';
   $members[$run]['surname'] = empty($users_name) && empty($users_surname) ? ' - ' : $users_name . ' ' . $users_surname;
     
   $members[$run]['task'] = cs_secure($members[$run]['members_task']);
