@@ -5,6 +5,7 @@ ClanSphere 2009.0 >> 20xx-xx-xx
 ___________________________________________________________
 
 -> Improved handling of filetypeicons (gahero)
+-> Hiding squads in fightus will also hide them in wars now (gahero)
 
 
 ClanSphere 2009.0 RC1 >> 2009-03-25
