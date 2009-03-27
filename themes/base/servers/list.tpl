@@ -28,42 +28,44 @@
     <td class="centerb">
       <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:100%">
         <tr>
-          <td class="leftb" style="width:125px;">{lang:ip}</td>
-          <td class="leftc"><a href="{servers:proto}{servers:servers_ip}">{servers:hostname}</td>
+          <td class="leftc" style="width:125px;">{lang:ip}</td>
+          <td class="leftb"><a href="{servers:proto}{servers:servers_ip}">{servers:hostname}</td>
         </tr>
         <tr>
-          <td class="leftb">{lang:type}</td>
-          <td class="leftc">{servers:gametype}</td>
+          <td class="leftc">{lang:type}</td>
+          <td class="leftb">{servers:gametype}</td>
         </tr>
         <tr>
-          <td class="leftb">{lang:map}</td>
-          <td class="leftc">{servers:mapname}</td>
+          <td class="leftc">{lang:map}</td>
+          <td class="leftb">{servers:mapname}</td>
         </tr>
         <tr>
-          <td class="leftb">{lang:players}</td>
-          <td class="leftc">{servers:nowplayers} / {servers:maxplayers}</td>
+          <td class="leftc">{lang:players}</td>
+          <td class="leftb">{servers:nowplayers} / {servers:maxplayers}</td>
         </tr>   
         <tr>
-          <td class="leftb">{lang:ping}</td>
-          <td class="leftc">{servers:response}</td>
+          <td class="leftc">{lang:ping}</td>
+          <td class="leftb">{servers:response}</td>
         </tr> 
         <tr>
-          <td class="leftb">{lang:pass}</td>
-          <td class="leftc">{servers:pass}</td>
+          <td class="leftc">{lang:pass}</td>
+          <td class="leftb">{servers:pass}</td>
         </tr> 
         <tr>
-          <td class="leftb">{lang:version}</td>
-          <td class="leftc">{servers:os}</td>
+          <td class="leftc">{lang:version}</td>
+          <td class="leftb">{servers:os}</td>
         </tr>     
         <tr>
-          <td class="leftb">{lang:privileges}</td>
-          <td class="leftc">{servers:sets}</td>
+          <td class="leftc">{lang:privileges}</td>
+          <td class="leftb">{servers:sets}</td>
         </tr>                       
       </table>
     </td>
     <td class="centerb"><img src="{servers:map}" alt="" /></td>
   </tr>
 </table>
+<br />
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     {loop:playershead}
@@ -93,8 +95,9 @@
     <td class="centerb">{lang:no_server}</td>
   </tr>
 </table>
-{stop:server}
 <br />
+{stop:server}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="rightb">

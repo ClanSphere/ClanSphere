@@ -3,7 +3,7 @@
   <td class="headb">{lang:mod} - {lang:list}</td>
  </tr>
  <tr>
-  <td class="leftc">{icon:contents} {lang:total}: {count:all}</td>
+  <td class="leftb">{icon:contents} {lang:total}: {count:all}</td>
  </tr>
  <tr>
   <td class="leftb">
@@ -28,10 +28,10 @@
   <td class="headb">{lang:matchlist}</td>
  </tr>{loop:cups}
  <tr>
-  <td class="leftb"></td>
-  <td class="leftb"><a href="{url:cups_view:id={cups:cups_id}}">{cups:cups_name}</a></td>
-  <td class="leftb">{cups:start}</td>
-  <td class="leftb">{cups:cups_joined} {lang:of} {cups:cups_teams}</td>
-  <td class="leftb"><a href="{url:cups_matchlist:where={cups:cups_id}}">{icon:demo}</a></td>
+  <td class="leftc"></td>
+  <td class="leftc"><a href="{url:cups_view:id={cups:cups_id}}">{cups:cups_name}</a></td>
+  <td class="leftc">{cups:start}</td>
+  <td class="leftc">{cups:cups_joined} {lang:of} {cups:cups_teams}</td>
+  <td class="leftc"><a href="{url:cups_matchlist:where={cups:cups_id}}">{icon:demo}</a></td>
  </tr>{stop:cups}
 </table>

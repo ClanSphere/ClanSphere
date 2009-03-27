@@ -13,8 +13,8 @@
   <td class="headb" colspan="2">{game:icon} {squad:squads_name}</td>
  </tr>
 <tr>
-  <td class="leftc">{squad:squads_pic}</td>
-	<td class="leftc">{squad:squads_text}</td>
+  <td class="leftb">{squad:squads_pic}</td>
+  <td class="leftb">{squad:squads_text}</td>
 </tr>
 </table>
 <br />
@@ -45,36 +45,38 @@
 <br />
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	<tr>
-		<td class="headb" colspan="2">{lang:ranks}</td>		
-	</tr>
-<tr>
-<td class="leftc">{lang:name}</td>
-<td class="leftc">{lang:image}</td>
-</tr>{loop:ranks}
-<tr>
-<td class="leftb">{ranks:name}</td>
-<td class="leftb">{ranks:picture}</td>
-</tr>{stop:ranks}
+  <tr>
+    <td class="headb" colspan="2">{lang:ranks}</td>		
+  </tr>
+  <tr>
+    <td class="leftc">{lang:name}</td>
+    <td class="leftc">{lang:image}</td>
+  </tr>
+  {loop:ranks}
+  <tr>
+    <td class="leftb">{ranks:name}</td>
+    <td class="leftb">{ranks:picture}</td>
+  </tr>
+  {stop:ranks}
 </table>
 <br />
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	<tr>
-		<td class="headb" colspan="3">{lang:awards}</td>		
-	</tr>
-	<tr>
-		<td class="leftc">{lang:date}</td>
-		<td class="leftc">{lang:event}</td>
-		<td class="leftc">{lang:place}</td>
-	</tr>
-	{loop:awards}
-	<tr>
-		<td class="leftc">{awards:awards_time}</td>
-		<td class="leftc"><a href="http://{awards:awards_event_url}">{awards:awards_event}</a></td>
-		<td class="leftc">{awards:awards_place}</td>
-	</tr>
-	{stop:awards}
+  <tr>
+    <td class="headb" colspan="3">{lang:awards}</td>		
+  </tr>
+  <tr>
+    <td class="leftc">{lang:date}</td>
+    <td class="leftc">{lang:event}</td>
+    <td class="leftc">{lang:place}</td>
+  </tr>
+  {loop:awards}
+  <tr>
+    <td class="leftb">{awards:awards_time}</td>
+    <td class="leftb"><a href="http://{awards:awards_event_url}">{awards:awards_event}</a></td>
+    <td class="leftb">{awards:awards_place}</td>
+  </tr>
+  {stop:awards}
 </table>
 <br />
 

@@ -2,7 +2,7 @@
 <tr><td class="headb">
 {lang:mod} - {lang:imprint}
 </td></tr>
-<tr><td class="leftc">
+<tr><td class="leftb">
 {imprint:content}
 {if:date}
 <br /><br />
