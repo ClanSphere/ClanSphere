@@ -36,7 +36,7 @@
 		<td class="leftc" colspan="3">--</td>
 		{stop:no_squad_admin}
 		{if:squad_admin}
-		<td class="leftc"><a href="{url:squads_center:id={squads:id}}" title="{lang:head_center}">{icon:yast_user_add}</a></td>
+		<td class="leftc"><a href="{url:members_center:id={squads:id}}" title="{lang:head_center}">{icon:yast_user_add}</a></td>
 		<td class="leftc"><a href="{url:squads_change:id={squads:id}}" title="{lang:edit}">{icon:edit}</a></td>
 		<td class="leftc"><a href="{url:squads_remove:id={squads:id}}" title="{lang:remove}">{icon:editdelete}</a></td>
 		{stop:squad_admin}

@@ -16,10 +16,8 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kdmconfig} {lang:clan_label} *</td>
-		<td class="leftb">
-			<select name="clans_id" class="form">
-				<option value="0">----</option>
-			</select>
+		<td class="leftb">							
+		    {squads:clan_sel}			
 			- <input type="text" name="new_clan" value="" maxlength="40" size="20" /><br />
 			{lang:password}<br />
 			<input type="password" name="clans_pwd" value="{squads:clans_pwd}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" />
