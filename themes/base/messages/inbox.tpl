@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="5">{lang:mod} - {lang:inbox}</td>
+    <td class="headb" colspan="5">{lang:mod} - {lang:head_center_msg}</td>
   </tr>
   <tr>
     <td class="leftb">{icon:mail_new} <a href="{url:messages_create}">{lang:new_message}</a></td>
