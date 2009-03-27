@@ -4,7 +4,7 @@ $cs_lang['mod_name'] = 'Vriendenlijst';
 $cs_lang['mod_text'] = 'Vriendenlijst Module';
 $cs_lang['mod']  = 'Vrieden';
 $cs_lang['head_remove']  = 'Verwijder';
-$cs_lang['head_create']  = 'creëer';
+$cs_lang['head_create']  = 'cre&euml;er';
 $cs_lang['body_create']  = 'Vul zoveel mogelijk velden in.';
 $cs_lang['head_edit']  = 'Bewerk - Aantekening';
 $cs_lang['body_edit']  = 'Verander de aantekening hier.';
@@ -24,7 +24,7 @@ $cs_lang['off'] = 'Offline gebruiker';
 
 $cs_lang['info'] = 'Informatie';
 $cs_lang['mail'] = 'Stuur bericht';
-$cs_lang['change_notice'] = 'creëer / Verander aantekening';
+$cs_lang['change_notice'] = 'cre&euml;er / Verander aantekening';
 $cs_lang['delete'] = 'Delete';
 $cs_lang['buddys_notice_head'] = 'Vriend Info';
 $cs_lang['buddys_notice_body'] = 'Vriend-Informatie.';

@@ -1,8 +1,8 @@
 <?php
 
-$cs_lang['mod_name']  = 'Financiën';
+$cs_lang['mod_name']  = 'Financi&euml;n';
 $cs_lang['mod_text']  = 'Administratie van Clankas';
-$cs_lang['mod']  = 'Financiën';
+$cs_lang['mod']  = 'Financi&euml;n';
 $cs_lang['head']= 'Administratie';
 $cs_lang['head_create'] = 'Toevoegen';
 $cs_lang['head_view'] = 'Details';

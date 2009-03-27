@@ -89,8 +89,8 @@ $cs_lang['lev_4'] = 'Organisatoren';
 $cs_lang['lev_5'] = 'Webbeheerder';
 
 // Create_dir
-$cs_lang['create_dir']    = 'Creëer een directory';
-$cs_lang['folder_create']  = 'Creëer hier een directorie.';
+$cs_lang['create_dir']    = 'Cre&euml;er een directory';
+$cs_lang['folder_create']  = 'Cre&euml;er hier een directorie.';
 $cs_lang['dir_name']    = 'Naam van directorie';
 
 ?>

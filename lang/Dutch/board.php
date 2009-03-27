@@ -11,7 +11,7 @@ $cs_lang['delatt'] = 'Verwijder Bijlage';
 //active.php
 $cs_lang['files'] = 'Bestanden:';
 $cs_lang['mod']    = 'Forum';
-$cs_lang['modtext'] = 'Beheer en creëer huidige forum onderwerp';
+$cs_lang['modtext'] = 'Beheer en cre&euml;er huidige forum onderwerp';
 $cs_lang['head_active']    = 'Actieve onderwerpen';
 $cs_lang['body_active']    = 'Lijst van meest bekeken Onderwerpen';
 
@@ -115,7 +115,7 @@ $cs_lang['password1'] = 'Optioneel, wanneer niet ingevuld zal het onderwerp geen
 $cs_lang['lev_0'] = 'Uitschakelen';
 $cs_lang['lev_1'] = 'Lezen';
 $cs_lang['lev_2'] = 'Uitgebreid Lezen';
-$cs_lang['lev_3'] = 'creëeren';
+$cs_lang['lev_3'] = 'cre&euml;eren';
 $cs_lang['lev_4'] = 'Bewerken';
 $cs_lang['lev_5'] = 'Verwijderen'; 
 
@@ -129,7 +129,7 @@ $cs_lang['head_edit'] = 'Bewerken';
 $cs_lang['new_date'] = ' Nieuwe datum';
 $cs_lang['board_pwddel'] = ' Wachtwoord verwijderen';
 $cs_lang['password_yes'] = ' Wachtwoord aanpassen';
-$cs_lang['password_no'] = ' Wachtwoord creëeren';
+$cs_lang['password_no'] = ' Wachtwoord cre&euml;eren';
 $cs_lang['password2'] = 'Optioneel, wanneer niet ingevuld zal het forum geen wachtwoord hebben.';
 
 //list.php
@@ -140,7 +140,7 @@ $cs_lang['active'] = 'Huidig onderwerp';
 $cs_lang['search'] = 'Zoeken';
 $cs_lang['mark_all'] = 'Alle onderwerpen als gelezen markeren';
 $cs_lang['mark_board'] = 'Onderwerp als gelezen markeren';
-$cs_lang['no_categories'] = 'Geen categorieën beschikbaar of je kan ze niet zien';
+$cs_lang['no_categories'] = 'Geen categorie&euml;n beschikbaar of je kan ze niet zien';
 
 $cs_lang['topics'] = 'Onderwerpen';
 
@@ -172,7 +172,7 @@ $cs_lang['password'] = 'Wachtwoord';
 $cs_lang['head_manage'] = 'Administratie';
 
 $cs_lang['all'] = 'Totaal: ';
-$cs_lang['new_board'] = 'creëer een nieuw forum';
+$cs_lang['new_board'] = 'cre&euml;er een nieuw forum';
 $cs_lang['reports'] = 'Rapporten';
 $cs_lang['user'] = 'Gebruiker';
 $cs_lang['sort'] = 'Sorteren';
@@ -233,7 +233,7 @@ $cs_lang['reportdel'] = 'Verwijder rapport';
 $cs_lang['remove_rly'] = 'Weet us zeker dat u dataset Nr. %s wilt verwijderen ?';
 
 // reportdone.php
-$cs_lang['reportdone'] = 'Beëindig rapport';
+$cs_lang['reportdone'] = 'Be&euml;indig rapport';
 $cs_lang['done_true'] = 'Dataset opgeslagen als voldaan.';
 
 //search.php
@@ -293,7 +293,7 @@ $cs_lang['overall_edit'] = 'Bewerkt';
 
 $cs_lang['modpanel'] = 'Mod panel';
 
-$cs_lang['adv_com']    = 'creëer uitgebreid commentaar';
+$cs_lang['adv_com']    = 'cre&euml;er uitgebreid commentaar';
 $cs_lang['comment']    = 'Commentaar';
 
 $cs_lang['error_header'] = 'Site niet gevonden of je beschikt niet over de juiste toegangsrechten.';

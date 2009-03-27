@@ -5,7 +5,7 @@
 $cs_lang['mod']  = 'Forumcode';
 $cs_lang['mod_text']  = 'Vervang patronen met een foto of tekst';
 
-$cs_lang['body_create']  = 'creëer een nieuwe vervanging';
+$cs_lang['body_create']  = 'cre&euml;er een nieuwe vervanging';
 $cs_lang['body_edit']  = 'Aanpassen patroon vervangingen';
 $cs_lang['body_options']  = 'Management van de opties van de module.';
 $cs_lang['new_abcode'] = 'Nieuwe Forumcode';

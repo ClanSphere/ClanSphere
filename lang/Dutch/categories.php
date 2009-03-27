@@ -2,11 +2,11 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']        = 'Categoriën';
-$cs_lang['mod_text']      = 'Splits data in verschillende categoriën';
+$cs_lang['mod']        = 'Categori&euml;n';
+$cs_lang['mod_text']      = 'Splits data in verschillende categori&euml;n';
 $cs_lang['head_list']    = 'Lijst';
 $cs_lang['head_view']    = 'Details';
-$cs_lang['body_create']    = 'Creëer categoriën voor modulen';
+$cs_lang['body_create']    = 'Cre&euml;er categori&euml;n voor modulen';
 $cs_lang['body_edit']    = 'Er kunnen hier fouten voordoen.';
 $cs_lang['body_options']  = 'Administratie opties van de module.';
 $cs_lang['body_view']    = 'View categories of modules';
@@ -28,7 +28,7 @@ $cs_lang['new_category']  = 'Nieuwe categorie';
 $cs_lang['lev_0'] = 'Uitgeschakeld';
 $cs_lang['lev_1'] = 'Lees';
 $cs_lang['lev_2'] = 'Uitgebreid lezen';
-$cs_lang['lev_3'] = 'Creëer';
+$cs_lang['lev_3'] = 'Cre&euml;er';
 $cs_lang['lev_4'] = 'Bewerk';
 $cs_lang['lev_5'] = 'Verwijder';
 
