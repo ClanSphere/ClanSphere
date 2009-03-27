@@ -76,13 +76,9 @@ unset($_REQUEST);
 $_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES);
 
 $cs_main['def_path'] = getcwd();
-
 $cs_main['php_self'] = pathinfo($_SERVER['PHP_SELF']);
+if($cs_main['php_self']['dirname']{0} == '\\')
+  $cs_main['php_self']['dirname']{0} = '/';
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
-
-// if (stristr(PHP_OS, 'WIN')) {
-//   $cs_main['php_self']['dirname'] = str_replace($cs_main['php_self']['dirname'], '\\' , '');
-//   $cs_main['php_self']['dirname'] = str_replace($cs_main['php_self']['dirname'], '\/\/' , '/');
-// }
 
 ?>
