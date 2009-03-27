@@ -3,11 +3,11 @@
   <td class="headb" colspan="3">{lang:mod} - {lang:list}</td>
  </tr>
  <tr>
-  <td class="leftc">{info:warcount}</td>
-  <td class="rightc" colspan="2">{pages:choice}</td>
+  <td class="leftb">{info:warcount}</td>
+  <td class="rightb" colspan="2">{pages:choice}</td>
  </tr>
  <tr>
-  <td class="leftc">{lang:squad}
+  <td class="leftb">{lang:squad}
     <form method="post" id="wars_list" action="{url:form}">
       <select name="where" >
         <option value="0">----</option>
@@ -16,8 +16,8 @@
       <input type="submit" name="submit" value="{lang:show}" />
     </form>
   </td>
-  <td class="leftc"><a href="{url:ranks}">{lang:ranks}</a></td>
-  <td class="rightc"><a href="{url:stats}">{lang:stats}</a></td>
+  <td class="leftb"><a href="{url:ranks}">{lang:ranks}</a></td>
+  <td class="rightb"><a href="{url:stats}">{lang:stats}</a></td>
  </tr>
 </table>
 <br />
@@ -32,12 +32,12 @@
  </tr>
  {loop:wars}
  <tr>
-  <td class="leftb">{wars:gameicon}</td>
-  <td class="leftb">{wars:date}</td>
-  <td class="leftb"><a href="{wars:enemyurl}">{wars:enemy}</a></td>
-  <td class="leftb"><a href="{wars:caturl}">{wars:category}</a></td>
-  <td class="centerb"><a href="{wars:url}">{wars:result}</a></td>
-  <td class="centerb">{wars:resulticon}</td>
+  <td class="leftc">{wars:gameicon}</td>
+  <td class="leftc">{wars:date}</td>
+  <td class="leftc"><a href="{wars:enemyurl}">{wars:enemy}</a></td>
+  <td class="leftc"><a href="{wars:caturl}">{wars:category}</a></td>
+  <td class="centerc"><a href="{wars:url}">{wars:result}</a></td>
+  <td class="centerc">{wars:resulticon}</td>
  </tr>
  {stop:wars}
 </table>

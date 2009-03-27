@@ -20,6 +20,7 @@
 				{stop:games}
 			</select>
 			{wars:game_img}
+			- <a href="{url:games_create}">{lang:create}</a>
 		</td>
 	</tr>
 	<tr>
@@ -39,9 +40,8 @@
 	<tr>
 		<td class="leftc">{icon:yast_group_add} {lang:squad} *</td>
 		<td class="leftb">
-			{wars:squad_sel}
-			- <a href="{url:squads_manage}">{lang:manage}</a>
-			- <a href="{url:squads_create}">{lang:new}</a>
+			{wars:squad_sel}			
+			- <a href="{url:squads_create}">{lang:create}</a>
 		</td>
 	</tr>
 	<tr>
@@ -68,30 +68,30 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:demo} {lang:status} *</td>
-		<td class="leftc">
+		<td class="leftc">{icon:demo} {lang:status} *</td>
+		<td class="leftb">
 			{wars:status_dropdown}
 		</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:smallcal} {lang:score}</td>
-		<td class="leftc">
+		<td class="leftc">{icon:smallcal} {lang:score}</td>
+		<td class="leftb">
 			<input type="text" name="wars_score1" value="{wars:wars_score1}" maxlength="5" size="5" /> : 
 			<input type="text" name="wars_score2" value="{wars:wars_score2}" maxlength="5" size="5" />
 		</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:gohome} {lang:url}</td>
-		<td class="leftc">
+		<td class="leftc">{icon:gohome} {lang:url}</td>
+		<td class="leftb">
 			http://<input type="text" name="wars_url" value="{wars:wars_url}" maxlength="80" size="50" />
 		</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:kate} {lang:report}<br />
+		<td class="leftc">{icon:kate} {lang:report}<br />
 			<br />
 			{abcode:smileys}
 		</td>
-		<td class="leftc">
+		<td class="leftb">
 			{abcode:features}
 			<textarea name="wars_report" cols="50" rows="8" id="wars_report" >{wars:wars_report}</textarea>
 		</td>
@@ -101,8 +101,8 @@
 		<td class="leftb"><input type="checkbox" name="wars_close" value="1" {wars:close_check} /> {lang:close}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:ksysguard} {lang:options}</td>
-		<td class="leftc">
+		<td class="leftc">{icon:ksysguard} {lang:options}</td>
+		<td class="leftb">
 			<input type="hidden" name="players" value="{wars:check_player}" />
 			<input type="hidden" name="id" value="{wars:id}" />
 			<input type="submit" name="submit" value="{lang:edit}" />

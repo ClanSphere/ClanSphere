@@ -21,8 +21,8 @@
 	<tr>
 		<td class="leftc">{icon:lock} {lang:hidden}</td>
 		<td class="leftb">
-			<input type="checkbox" name="squads_joinus" value="joinus" {squads:joinus_check} />{lang:joinus}<br />
-			<input type="checkbox" name="squads_fightus" value="fightus" {squads:fightus_check} />{lang:fightus}
+			<input type="checkbox" name="squads_joinus" value="joinus" {squads:joinus_check} /> {lang:joinus}<br />
+			<input type="checkbox" name="squads_fightus" value="fightus" {squads:fightus_check} /> {lang:fightus}
 		</td>
 	</tr>
 	<tr>

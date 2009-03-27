@@ -165,7 +165,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data_games = cs_sql_select(__FILE__,'games','games_name, games_id',0,'games_name',0,0);
   $data_clans = cs_sql_select(__FILE__,'clans','clans_name, clans_id','clans_id != \'1\'','clans_name',0,0);
-  $data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id','squads_own = \'1\'','squads_name',0,0);
+  $where = "squads_own = '1' AND squads_fightus = '0'";
+  $data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id',$where,'squads_name',0,0);
   $data_categories = cs_sql_select(__FILE__,'categories','categories_name, categories_id','categories_mod = \'wars\'','categories_name',0,0);
   
   $data['games'] = cs_dropdownsel($data_games,$cs_wars['games_id'],'games_id');

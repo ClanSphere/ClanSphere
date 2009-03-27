@@ -23,7 +23,8 @@ $data = array();
 $data['info']['warcount'] = sprintf($cs_lang['count'], $wars_count);
 $data['pages']['choice'] = cs_pages('wars','list',$wars_count,$start,$squads_id,$sort);
 $data['url']['form'] = cs_url('wars','list');
-$data['squads'] = cs_sql_select(__FILE__,'squads','squads_name, squads_id',0,'squads_name',0,0);
+$cid = "squads_fightus = '0'";
+$data['squads'] = cs_sql_select(__FILE__,'squads','squads_name, squads_id',$cid,'squads_name',0,0);
 $count_squads = count($data['squads']);
 
 for ($run = 0; $run < $count_squads; $run++) {
