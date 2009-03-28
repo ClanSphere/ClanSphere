@@ -4,21 +4,21 @@
 
 $cs_lang = cs_translate('users');
 
+$op_users = cs_sql_option(__FILE__,'users');
+
 require_once('mods/users/functions.php');
 
 $conv_joinus = 0;
 
 if(isset($_POST['submit'])) {
-  
-  $op_users = cs_sql_option(__FILE__,'users');
-  
+
   $create['access_id'] = $_POST['access_id'];
   $create['users_lang'] = $_POST['lang'];
   $create['users_nick'] = $_POST['nick'];
   $create_['password'] = $_POST['password'];
   $create['users_email'] = $_POST['email'];
   $create['users_country'] = $_POST['country'];
-  
+
   if(!empty($_POST['conv_joinus'])) {
     $create['users_name'] = $_POST['users_name'];
     $create['users_surname'] = $_POST['users_surname'];
@@ -27,11 +27,11 @@ if(isset($_POST['submit'])) {
     $create['users_icq'] = $_POST['users_icq'];
     $create['users_msn'] = $_POST['users_msn'];
     $create['users_pwd'] = $_POST['users_pwd'];
-       $conv_joinus = 1;
+    $conv_joinus = 1;
   }
-  
+
   $error = '';
-  
+
   $nick2 = str_replace(' ','',$create['users_nick']);
   $nickchars = strlen($nick2);
   if($nickchars < $op_users['min_letters']) {
@@ -60,12 +60,12 @@ if(isset($_POST['submit'])) {
   if(!empty($search_email)) {
     $error .= $cs_lang['email_exists'] . cs_html_br(1);
   }
-  
+
   $pattern = "=^[_a-z0-9-]+(\.[_a-z0-9-]+)*@([0-9a-z](-?[0-9a-z])*\.)+[a-z]{2}([zmuvtg]|fo|me)?$=i";
   if(!preg_match($pattern,$create['users_email'])) {
     $error .= $cs_lang['email_false'] . cs_html_br(1);
   }
-  
+
   $flood = cs_sql_select(__FILE__,'users','users_register',0,'users_register DESC');
   $maxtime = $flood['users_register'] + $cs_main['def_flood'];
   if($maxtime > cs_time()) {
@@ -115,11 +115,10 @@ if(!isset($_POST['submit']))
 elseif(!empty($error))
 	$data['head']['body'] = $error;
 
-
 if(!empty($error) OR !isset($_POST['submit'])) {
 
 	$data['data'] = $create;
-  
+
   $data['lang']['opts'] = '';
   $languages = cs_checkdirs('lang');
   foreach($languages as $lang) {
@@ -130,18 +129,18 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $where = "access_clansphere <= '" . $account['access_clansphere'] . "'";
   $access_data = cs_sql_select(__FILE__,'access','access_name, access_id, access_clansphere',$where,'access_name',0,0);
   $data['access']['dropdown'] = cs_dropdown('access_id','access_name',$access_data,$create['access_id']);
-  
+
   if(empty($conv_joinus)) {
   	$data['if']['simple'] = TRUE;
 		$data['if']['convert'] = FALSE;
-  
+
 		$matches[1] = $cs_lang['secure_stages'];
 		$matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
 		$matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_2_text'] . cs_html_br(1);
 		$matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
 		$matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
 		$data['clip']['pw_sec'] = cs_abcode_clip($matches);
-  
+
 	} else {
   	$data['if']['simple'] = FALSE;
 		$data['if']['convert'] = TRUE;
@@ -149,21 +148,19 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $code_id = generate_code(8);
     $data['hidden']['password'] = $code_id;
     $data['hidden']['conv'] = $conv_joinus;
-  
   }
 
   $data['check']['send_mail'] = empty($create_['send_mail']) ? '' : 'checked="checked"';
   $data['hidden']['flag'] = $create['users_country'];
 
-
  echo cs_subtemplate(__FILE__,$data,'users','create');
 }
 else {
-  
+
   $create['users_timezone']   = empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
   $create['users_dstime']     = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
   create_user($create['access_id'],$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],$create['users_country'],$create['users_timezone'],$create['users_dstime']);
-  
+
   if(!empty($create_['send_mail'])) {
     $content = $cs_lang['mail_reg_start'] . $cs_lang['mail_reg_nick'] . $create['users_nick'];
     if(empty($_POST['conv_joinus'])) {
@@ -173,10 +170,10 @@ else {
     }
     $content .= $cs_lang['mail_reg_ip'] . $_SERVER['REMOTE_ADDR'];
     $content .= $cs_lang['mail_reg_ask'] . $cs_main['def_mail'] . $cs_lang['mail_reg_end'];
-  
+
     cs_mail($create['users_email'],$cs_lang['mail_reg_head'],$content);
   }
-  
+
  cs_redirect($cs_lang['create_done'],'users');
 }
 

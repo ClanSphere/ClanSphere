@@ -92,7 +92,6 @@ if(empty($op_users['register'])) {
     $register['email'] = '';
     $register['send_mail'] = 0;
     $register['newsletter'] = '';
-
   }
 
   if(!isset($_POST['submit'])) {
@@ -105,8 +104,8 @@ if(empty($op_users['register'])) {
 
   if(!empty($error) OR !isset($_POST['submit'])) {
 
-    $data['head']['action'] = $cs_lang['register'];
-    echo cs_subtemplate(__FILE__,$data,'users','head');
+  $data['head']['action'] = $cs_lang['register'];
+  echo cs_subtemplate(__FILE__,$data,'users','head');
 
   $data = array();
   $data['form']['register'] = cs_url('users','register');
@@ -118,21 +117,21 @@ if(empty($op_users['register'])) {
   $data['checked']['newsletter'] = empty($register['newsletter']) ? '' : 'checked';
   $data['checked']['email'] = empty($register['send_mail']) ? '' : 'checked';
 
-    foreach($languages as $lang) {
-      $lang['name'] == $register['lang'] ? $sel = 1 : $sel = 0;
-    $data['register']['languages'] .= cs_html_option($lang['name'],$lang['name'],$sel);
+  foreach($languages as $lang) {
+    $lang['name'] == $register['lang'] ? $sel = 1 : $sel = 0;
+  $data['register']['languages'] .= cs_html_option($lang['name'],$lang['name'],$sel);
+  }
+
+  $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
+
+  $data['if']['captcha'] = 0;
+
+  if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
+    if(!empty($captcha)) {
+      $data['if']['captcha'] = 1;
+      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
     }
-
-    $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
-
-		$data['if']['captcha'] = 0;
-
-    if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
-    	if(!empty($captcha)) {
-    		$data['if']['captcha'] = 1;
-      	$data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
-    	}
-    }
+  }
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     if($op_users['def_register'] != '2') {
       $data['if']['reg_mail'] = 1;
