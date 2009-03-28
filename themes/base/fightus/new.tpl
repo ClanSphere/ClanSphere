@@ -10,6 +10,7 @@
 
 {head:getmsg}
 
+{if:form}
 <form method="post" id="fightus_new" action="{url:fightus_new}">
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
@@ -98,3 +99,4 @@
 	</tr>
 </table>
 </form>
+{stop:form}

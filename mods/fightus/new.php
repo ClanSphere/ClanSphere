@@ -5,7 +5,12 @@
 $cs_lang = cs_translate('fightus');
 
 $op_users = cs_sql_option(__FILE__,'users');
+
 include_once('lang/' . $account['users_lang'] . '/countries.php');
+
+$data = array();
+$data['head']['getmsg'] = cs_getmsg();
+$data['if']['form'] = empty($data['head']['getmsg']) ? TRUE : FALSE;
 
 $data['if']['captcha'] = FALSE;
 $captcha = 0;
@@ -102,7 +107,6 @@ elseif(!empty($error)) {
 if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['fightus'] = $cs_fightus;
-  $data['head']['getmsg'] = cs_getmsg();
 
   $data['games'] = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   $games_count = count($data['games']);
