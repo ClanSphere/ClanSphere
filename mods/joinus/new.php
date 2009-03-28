@@ -3,8 +3,12 @@
 // $Id$
 
 $cs_lang = cs_translate('joinus');
+
 include_once('lang/' . $account['users_lang'] . '/countries.php');
+
 $data = array();
+$data['head']['getmsg'] = cs_getmsg();
+$data['if']['form'] = empty($data['head']['getmsg']) ? TRUE : FALSE;
 
 $captcha = 0;
 if(empty($account['users_id']) AND extension_loaded('gd')) {
@@ -32,7 +36,7 @@ if(isset($_POST['submit'])) {
   $data['join']['joinus_webcon'] = $_POST['joinus_webcon'];
   $data['join']['joinus_date'] = cs_datepost('join','date');
   $data['join']['joinus_more'] = $_POST['joinus_more'];
-  $data2['join']['joinus_rules'] = $_POST['joinus_rules'];  
+  $data2['join']['joinus_rules'] = empty($_POST['joinus_rules']) ? 0 : 1;  
 
   if(empty($account['users_id'])) {
     $data['join']['users_pwd'] = $_POST['users_pwd'];
@@ -137,7 +141,6 @@ if(!isset($_POST['submit'])) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-  $data['head']['getmsg'] = cs_getmsg();
   $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
   $data['join']['date'] = cs_dateselect('age','date',$data['join']['joinus_age']);
   $data['join']['country_url'] = cs_html_img('/symbols/countries/' . $data['join']['joinus_country'] . '.png',0,0,'id="country_1"');

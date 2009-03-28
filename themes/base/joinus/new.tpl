@@ -10,6 +10,7 @@
 
 {head:getmsg}
 
+{if:form}
 <form method="post" action="{url:joinus_new}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
@@ -141,7 +142,7 @@
 	{stop:captcha}
 	<tr>
 	  <td class="leftc">{icon:documentinfo} {lang:rules} *</td>
-	  <td class="leftb"><input type="checkbox" name="joinus_rules" value="1" {joinus:rules_selected} />{rules:link} {lang:rules2}</td>
+	  <td class="leftb"><input type="checkbox" name="joinus_rules" value="1" {joinus:rules_selected} /> {rules:link} {lang:rules2}</td>
 	</tr>	
     <tr>
       <td class="leftc"> {icon:ksysguard} {lang:options}</td>
@@ -151,3 +152,4 @@
     </tr>
   </table>
 </form>
+{stop:form}
