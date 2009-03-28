@@ -553,7 +553,7 @@ CREATE TABLE {pre}_joinus (
   joinus_email varchar(40) NOT NULL default '',
   joinus_webcon varchar(80) NOT NULL default '',
   joinus_lanact varchar(80) NOT NULL default '',
-  joinus_date int(14) NOT NULL default '0',
+  joinus_date varchar(20) NOT NULL default '',
   joinus_more text,
   users_pwd varchar(40) NOT NULL default '',
   PRIMARY KEY (joinus_id)
@@ -949,7 +949,7 @@ CREATE TABLE {pre}_replays (
   users_id int(8) NOT NULL default '0',
   games_id int(8) NOT NULL default '0',
   replays_version varchar(40) NOT NULL default '',
-  replays_date int(14) NOT NULL default '0',
+  replays_date varchar(20) NOT NULL default '',
   replays_since int(14) NOT NULL default '0',
   replays_team1 varchar(80) NOT NULL default '',
   replays_team2 varchar(80) NOT NULL default '',
