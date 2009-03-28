@@ -58,7 +58,8 @@ function cs_error_sql($file,$part,$message,$stop = 0) {
 
 function cs_init($predefined) {
 
-  if((substr(phpversion(), 0, 3) >= '5.0') AND (substr(phpversion(), 0, 3) < '6.0'))
+  $phpversion = phpversion();
+  if(version_compare($phpversion, '5.0', '>=') && version_compare($phpversion, '6.0', '<'))
     @error_reporting(E_ALL | E_STRICT);
   else
     @error_reporting(E_ALL);
@@ -72,10 +73,10 @@ function cs_init($predefined) {
   @ini_set('display_errors','on');
   @ini_set('magic_quotes_runtime','off');
 
-  if(substr(phpversion(), 0, 3) >= '5.1')
+  if(version_compare($phpversion, '5.1', '>='))
     @date_default_timezone_set('Europe/Berlin');
 
-  global $_GET, $_SERVER, $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro;
+  global $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro;
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
