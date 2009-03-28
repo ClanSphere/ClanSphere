@@ -163,6 +163,7 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
       $data['if']['guest'] = TRUE;
       if(extension_loaded('gd')) {
         $data['if']['captcha'] = TRUE;
+        $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
       }
     }
     
@@ -332,6 +333,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
       $data['com']['guestnick'] = $guestnick;
       if(extension_loaded('gd')) {
         $data['if']['captcha'] = TRUE;
+        $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
       }
     }
     $data['com']['text'] = $text;

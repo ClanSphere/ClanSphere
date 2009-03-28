@@ -59,7 +59,7 @@
 	<tr>
 		<td class="leftc">{icon:lockoverlay} {lang:security_code} *</td>
 		<td class="leftb">
-			<img src="mods/captcha/generate.php" alt="" />
+			{captcha:img}
 			<input type="text" name="captcha" value="" size="8" maxlength="8" />
 		</td>
 	</tr>
