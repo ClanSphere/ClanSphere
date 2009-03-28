@@ -44,6 +44,10 @@ $all_pictures = $count_it + $count_pictures;
 if(isset($_POST['agree'])) {
 
 	$delete_mode = isset($_POST['del']) ? (int) $_POST['del'] : 0;
+	if(empty($count_subfolders) AND empty($count_pictures)) {
+		$delete_mode = 0;
+	}
+	
 	$new_folders_id = isset($_POST['folders_id']) ? (int) $_POST['folders_id'] : 0;
 	
 	$error = '';
@@ -164,7 +168,7 @@ else {
 		$folder = make_folders_array($folder);
 	 make_folders_remove($folder,$folders_id);
 	}
-	if($delete_mode == 3) {
+	if($delete_mode == 3 OR $delete_mode == 0) {
 		# delete only folder
 		cs_sql_delete(__FILE__,'folders',$folders_id);
 	}
