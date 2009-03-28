@@ -15,7 +15,7 @@
  </tr>
  <tr>
   <td class="leftc">{icon:package_games} {lang:game}</td>
-  <td class="leftb"><a href="{url:games_view}">{cup:games_name}</a></td>
+  <td class="leftb">{cup:game}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:folder_yellow} {lang:cup_system}</td>

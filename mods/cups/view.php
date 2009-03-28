@@ -18,13 +18,23 @@ $data['cup'] = cs_sql_select(__FILE__,$tables,$cells,'cp.cups_id = \''.$cups_id.
 $data['lang']['max_participants'] = $cs_lang['max_'.$data['cup']['cups_system']];
 $data['lang']['registered_participants'] = $cs_lang['registered_'.$data['cup']['cups_system']];
 
-$data['url']['games_view'] = cs_url('games','view','id='.$data['cup']['games_id']);
 $data['var']['message'] = cs_getmsg();
 
 $data['cup']['system'] = $data['cup']['cups_system'] == 'teams' ? $cs_lang['team_vs_team'] : $cs_lang['user_vs_user'];
 $data['cup']['kind'] = empty($data['cup']['cups_brackets']) ? $cs_lang['ko'] : $cs_lang['brackets'];
 $data['cup']['reg'] = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$cups_id.'\'');
 $data['cup']['start_date'] = cs_date('unix',$data['cup']['cups_start'],1);
+
+if(file_exists('uploads/games/' . $data['cup']['games_id'] . '.gif')) {
+    $data['cup']['game'] = cs_html_img('uploads/games/' . $data['cup']['games_id'] . '.gif');
+  } else {
+    $data['cup']['game'] = '';
+  }
+	
+  $where = "games_id = '" . $data['cup']['games_id'] . "'";
+  $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
+  $id = 'id=' . $cs_game['games_id'];
+  $data['cup']['game'] .= ' ' . cs_link($cs_game['games_name'],'games','view',$id);
  
 $data['if']['running'] = false;
 

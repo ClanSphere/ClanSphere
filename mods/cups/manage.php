@@ -14,9 +14,19 @@ $count_cups = count($data['cups']);
 
 $img_start = cs_icon('forward');
 
-for ($i = 0; $i < $count_cups; $i++) {
-  $data['cups'][$i]['if']['gameicon_exists'] = file_exists('uploads/games/' . $data['cups'][$i]['games_id'] . '.gif') ? true : false;
-  $data['cups'][$i]['participations'] = cs_sql_count(__FILE__, 'cupsquads', 'cups_id = "' . $data['cups'][$i]['cups_id'].'"');
+for ($i = 0; $i < $count_cups; $i++) {  
+  $data['cups'][$i]['participations'] = cs_sql_count(__FILE__, 'cupsquads', 'cups_id = "' . $data['cups'][$i]['cups_id'].'"');  
+      
+  if(file_exists('uploads/games/' . $data['cups'][$i]['games_id'] . '.gif')) {
+    $data['cups'][$i]['game'] = cs_html_img('uploads/games/' . $data['cups'][$i]['games_id'] . '.gif');
+  } else {
+    $data['cups'][$i]['game'] = '';
+  }
+	
+  $where = "games_id = '" . $data['cups'][$i]['games_id'] . "'";
+  $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
+  $id = 'id=' . $cs_game['games_id'];
+  $data['cups'][$i]['game'] .= ' ' . cs_link($cs_game['games_name'],'games','view',$id);  
   
   $matchcount = cs_sql_count(__FILE__,'cupmatches','cups_id = "' . $data['cups'][$i]['cups_id'] . '"');
   $data['cups'][$i]['start_link'] = empty($matchcount) && $data['cups'][$i]['cups_start'] < cs_time() ?

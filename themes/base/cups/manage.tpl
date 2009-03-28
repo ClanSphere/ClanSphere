@@ -19,7 +19,7 @@
     <td class="headb" colspan="4">{lang:options}</td>
   </tr>{loop:cups}
   <tr>
-    <td class="leftc">{if:gameicon_exists}<img src="uploads/games/{cups:games_id}.gif" alt="" />{stop:gameicon_exists}</td>
+    <td class="leftc">{cups:game}</td>
     <td class="leftc"><a href="{url:cups_view:id={cups:cups_id}}">{cups:cups_name}</a></td>
     <td class="leftc">{cups:cups_teams}</td>
     <td class="leftc">{cups:participations}</td>
