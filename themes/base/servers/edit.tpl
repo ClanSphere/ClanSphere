@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod} - {lang:head_create}</td>
+    <td class="headb">{lang:mod} - {lang:head_edit}</td>
   </tr>
   <tr>
     <td class="leftb">{body:create}</td>
@@ -95,7 +95,7 @@
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
       <input type="hidden" name="id" value="{servers:id}" />
-      <input type="submit" name="submit" value="{lang:create}" />
+      <input type="submit" name="submit" value="{lang:edit}" />
     </td>
   </tr>
 </table>
