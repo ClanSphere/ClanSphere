@@ -3,8 +3,8 @@
   <td class="headb" colspan="2">{lang:mod} - {lang:archieve}</td>
  </tr>
  <tr>
-  <td class="leftc">{icon:contents} {lang:total}: {count:all}</td>
-  <td class="leftc">{pages:list}</td>
+  <td class="leftb">{icon:contents} {lang:total}: {count:all}</td>
+  <td class="leftb">{pages:list}</td>
  </tr>
 </table>
 <br />
@@ -16,8 +16,8 @@
   <td class="headb">{sort:date} {lang:date}</td>
  </tr>{loop:shoutbox}
  <tr>
-  <td class="leftb">{shoutbox:shoutbox_name}</td>
-  <td class="leftb">{shoutbox:shoutbox_text}</td>
-  <td class="leftb">{shoutbox:date}</td>
+  <td class="leftc">{shoutbox:shoutbox_name}</td>
+  <td class="leftc">{shoutbox:shoutbox_text}</td>
+  <td class="leftc">{shoutbox:date}</td>
  </tr>{stop:shoutbox}
 </table>

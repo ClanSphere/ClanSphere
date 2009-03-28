@@ -26,10 +26,10 @@
   {loop:temp_list}
   <tr>
     <td class="leftc"><a href="{temp_list:link}" >{temp_list:name}</a></td>
-    <td class="leftb">{temp_list:version}</td>
-    <td class="leftb">{temp_list:date}</td>
-    <td class="centerb">{temp_list:preview}</td>
-    <td class="centerb">{temp_list:active}</td>
+    <td class="leftc">{temp_list:version}</td>
+    <td class="leftc">{temp_list:date}</td>
+    <td class="centerc">{temp_list:preview}</td>
+    <td class="centerc">{temp_list:active}</td>
   </tr>
   {stop:temp_list}
 </table>

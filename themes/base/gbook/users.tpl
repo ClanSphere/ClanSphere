@@ -3,7 +3,7 @@
 		<td class="headb" colspan="3">{lang:mod_name} - {lang:head_list}</td>
 	</tr>
 	<tr>
-		<td class="leftc">
+		<td class="leftb">
 			{head:addons}
 		</td>
 	</tr>

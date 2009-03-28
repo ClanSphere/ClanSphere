@@ -3,9 +3,9 @@
   <td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
  </tr>
  <tr>
-  <td class="leftc">{icon:editpaste} <a href="{url:events_create}">{lang:new_event}</a></td>
-  <td class="leftc">{icon:contents} {lang:total}: {count:all}</td>
-  <td class="rightc">{pages:list}</td>
+  <td class="leftb">{icon:editpaste} <a href="{url:events_create}">{lang:new_event}</a></td>
+  <td class="leftb">{icon:contents} {lang:total}: {count:all}</td>
+  <td class="rightb">{pages:list}</td>
  </tr>
  <tr>
   <td class="leftb" colspan="3">

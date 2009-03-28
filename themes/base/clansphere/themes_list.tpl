@@ -15,8 +15,8 @@
   </tr>
   {loop:themes_list}
   <tr>
-    <td class="leftb">{themes_list:name}</td>
-    <td class="leftb">{themes_list:active}</td>
+    <td class="leftc">{themes_list:name}</td>
+    <td class="leftc">{themes_list:active}</td>
   </tr>
   {stop:themes_list}
 </table>

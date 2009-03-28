@@ -6,7 +6,7 @@
       </tr>
       {loop:bon}
       <tr>
-        <td class="leftb">
+        <td class="leftc">
         	<div style="float: left;">
 						{bon:users_country}
         		{bon:users_link}
@@ -23,7 +23,7 @@
       </tr>
       {loop:boff}
       <tr>
-        <td class="leftb">
+        <td class="leftc">
         	<div style="float: left;">
 						{boff:users_country}
 						{boff:users_link}

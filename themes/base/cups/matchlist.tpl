@@ -3,11 +3,11 @@
     <td class="headb" colspan="2">{lang:mod} - {lang:matchlist}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:contents} {lang:total}: {vars:matchcount}</td>
-    <td class="leftc">{pages:list}</td>
+    <td class="leftb">{icon:contents} {lang:total}: {vars:matchcount}</td>
+    <td class="leftb">{pages:list}</td>
   </tr>
   <tr>
-    <td class="leftc" colspan="2">{loop:rounds}{if:notselected}<a href="{url:cups_matchlist:where={cups:id}&amp;round={rounds:value}}">{stop:notselected}{lang:round} {rounds:name}{if:notselected}</a>{stop:notselected} {stop:rounds}</td>
+    <td class="leftb" colspan="2">{loop:rounds} -> {if:notselected}<a href="{url:cups_matchlist:where={cups:id}&amp;round={rounds:value}}">{stop:notselected}{lang:round} {rounds:name}{if:notselected}</a>{stop:notselected} {stop:rounds}</td>
   </tr>
 </table>
 <br />
@@ -22,11 +22,11 @@
     <td class="headb">{lang:match}</td>
   </tr>{loop:matches}
   <tr>{if:brackets}
-    <td class="leftb">{matches:bracket}</td>{stop:brackets}
-    <td class="leftb">{matches:team1}</td>
-    <td class="leftb">{matches:cupmatches_score1} : {matches:cupmatches_score2}</td>
-    <td class="leftb">{matches:status}</td>
-    <td class="leftb">{matches:team2}</td>
-    <td class="leftb"><a href="{url:cups_match:id={matches:cupmatches_id}}">{icon:demo}</a></td>
+    <td class="leftc">{matches:bracket}</td>{stop:brackets}
+    <td class="leftc">{matches:team1}</td>
+    <td class="leftc">{matches:cupmatches_score1} : {matches:cupmatches_score2}</td>
+    <td class="leftc">{matches:status}</td>
+    <td class="leftc">{matches:team2}</td>
+    <td class="leftc"><a href="{url:cups_match:id={matches:cupmatches_id}}">{icon:demo}</a></td>
   </tr>{stop:matches}
 </table>

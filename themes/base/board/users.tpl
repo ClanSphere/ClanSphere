@@ -3,7 +3,7 @@
     <td class="headb">{lang:mod} - {lang:users}</td>
   </tr>
   <tr>
-    <td class="leftc">{users:addons}</td>
+    <td class="leftb">{users:addons}</td>
   </tr>
 </table>
 <br />

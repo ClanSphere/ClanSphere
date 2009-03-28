@@ -4,7 +4,7 @@
 			{lang:mod} - {lang:head_list}		</td>
 	</tr>
 	<tr>
-		<td class="leftc">
+		<td class="leftb">
 			{data:addons}
 		</td>
 	</tr>

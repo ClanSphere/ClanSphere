@@ -15,13 +15,13 @@
   </tr>
   <tr>
     <td class="leftc">{lang:installed}</td>
-    <td class="leftb">{version:version}</td>
-    <td class="leftb">{version:version_date}</td>
+    <td class="leftc">{version:version}</td>
+    <td class="leftc">{version:version_date}</td>
   </tr>
   <tr>
     <td class="leftc">{lang:available}</td>
-    <td class="leftb">{version:available}</td>
-    <td class="leftb">{version:available_date}</td>
+    <td class="leftc">{version:available}</td>
+    <td class="leftc">{version:available_date}</td>
   </tr>
 </table>
 <br />
