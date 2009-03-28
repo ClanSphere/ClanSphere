@@ -93,6 +93,7 @@ function cs_sql_insertid($cs_file) {
   }
   else {
     $error = $cs_db['con']->errorInfo();
+    $error[2] = empty($error[2]) ? 'Failed to receive ID of insert query' : $error[2];
     cs_error_sql($cs_file, 'cs_sql_insertid', $error[2]);
   }
 }
