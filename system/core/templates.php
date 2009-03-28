@@ -293,7 +293,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
     if (!empty($account['users_ajax']) && !empty($account['access_ajax'])) {
       $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
-      $cs_temp_get = str_replace('<body>', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')">', $cs_temp_get);
+      $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);
       $content = strpos($cs_temp_get,'id="content"') === false ? '<div id="content"></div>' : '';
       $ajaxes = explode(',',$cs_main['ajax_navlists']);
       if (!empty($cs_main['debug'])) {
