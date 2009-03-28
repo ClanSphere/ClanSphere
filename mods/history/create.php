@@ -68,9 +68,10 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   
   echo cs_subtemplate(__FILE__,$data,'history','create');
   
-} else {
+}
+else {
   $history_cells = array_keys($history);
-  $history_save = array_keys($history);
+  $history_save = array_values($history);
   cs_sql_insert(__FILE__,'history',$history_cells,$history_save);
   
   cs_redirect($cs_lang['create_done'],'history');
