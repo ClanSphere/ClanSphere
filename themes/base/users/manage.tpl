@@ -43,7 +43,7 @@
     <td class="leftb" colspan="2">
 	  {lang:search}: <input type="text" name="search_name" value="{search:name}"  size="50" maxlength="100"/>
 	</td>
-	<td class="leftc"><input type="submit" name="{lang:submit}"  /></td>
+	<td class="leftb"><input type="submit" name="{lang:submit}" /></td>
   </tr>
 </table>
 </form>
