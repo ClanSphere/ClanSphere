@@ -150,6 +150,9 @@ if (isset($_REQUEST['target']))
   $select_mirrow = $temp_a['1'];
   header("location:".$select_mirrow."");
 } 
+
+require_once 'mods/clansphere/filetype.php';
+
 for ($run = 1; $run < $temp_loop; $run++)
 {
   
@@ -158,8 +161,7 @@ for ($run = 1; $run < $temp_loop; $run++)
   {
     $data['mirrors'][$run-1]['name'] = empty($temp_a['2']) ? $temp_a['1'] : $temp_a['2'];
     $data['mirrors'][$run-1]['id'] = $run;
-
-	require 'mods/clansphere/filetype.php';
+	
     $data['mirrors'][$run-1]['filetype_image'] = cs_filetype($temp_a['3']);	
     $data['mirrors'][$run-1]['filetype_name'] = $temp_a['3'];
   }

@@ -73,8 +73,8 @@
   {loop:mirrors}
   <tr>
     <td class="leftc">{icon:html}</td>
-    <td class="leftb"><a href="{url:files_download:where={file:id}:target={mirrors:id}}" target="_blank">{mirrors:name}</a></td>
-    <td class="leftc">{mirrors:filetype_image}( <strong>{mirrors:filetype_name}</strong> ) </td>
+    <td class="leftc"><a href="{url:files_download:where={file:id}:target={mirrors:id}}" target="_blank">{mirrors:name}</a></td>
+    <td class="leftc">{mirrors:filetype_image} ({mirrors:filetype_name}) </td>
   </tr>
   {stop:mirrors}
 </table>
