@@ -46,7 +46,8 @@
 	<tr>
 		<td class="leftc">{lang:more}</td>
 		<td class="leftb"><input type="checkbox" name="history_newtime" value="1" />{lang:new_date}</td>
-	<tr>
+	</tr>
+  <tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
 			<input type="hidden" name="id" value="{history:id}" />
