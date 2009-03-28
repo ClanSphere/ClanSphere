@@ -43,8 +43,9 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
 
   if($run > 1) {
     while($run != 5) {
-      $data['content'][$loop]['img_link' . $run] = '';
-      $data['content'][$loop]['txt_link' . $run] = '';
+      $data['content'][$loop]['img_' . $run] = '';
+      $data['content'][$loop]['txt_' . $run] = '';
+      $data['content'][$loop]['link_' . $run] = '';
       $run++;
     }
   }
