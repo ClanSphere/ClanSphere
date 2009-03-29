@@ -3,7 +3,7 @@
     <td class="headb">{lang:explorer} - {lang:create_dir}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:folder_create}</td>
+    <td class="leftb">{lang:folder_create}</td>
   </tr>
 </table>
 <br />

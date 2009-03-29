@@ -3,7 +3,7 @@
 		<td class="headb">{lang:explorer} - {lang:create}</td>
 	</tr>
 	<tr>
-		<td class="leftc">{lang:data_create}</td>
+		<td class="leftb">{lang:data_create}</td>
 	</tr>
 </table>
 <br />

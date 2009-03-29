@@ -3,7 +3,7 @@
     <td class="headb">{lang:mod} - {lang:roots}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:body_roots}</td>
+    <td class="leftb">{lang:body_roots}</td>
   </tr>
 </table>
 <br />

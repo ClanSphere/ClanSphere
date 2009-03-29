@@ -3,7 +3,7 @@
     <td class="headb">{lang:explorer} - {lang:information}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:get_information} <a  href="{url:explorer_roots:dir={var:dir}}">{lang:back}</a>
+    <td class="leftb">{lang:get_information} <a  href="{url:explorer_roots:dir={var:dir}}">{lang:back}</a>
     </td>
   </tr>
 </table>

@@ -3,7 +3,7 @@
     <td class="headb">ClanSphere - {lang:metatags}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:generate_metatags}</td>
+    <td class="leftb">{lang:generate_metatags}</td>
   </tr>
   {if:done}
   <tr>

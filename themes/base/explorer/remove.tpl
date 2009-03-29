@@ -3,7 +3,7 @@
     <td class="headb">{lang:explorer} - {lang:remove}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:really_delete}</td>
+    <td class="leftb">{lang:really_delete}</td>
   </tr>
   <tr>
     <td class="centerb">

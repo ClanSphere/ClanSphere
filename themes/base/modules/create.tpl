@@ -3,7 +3,7 @@
   <td class="headb">{lang:mod} - {lang:create}</td>
  </tr>
  <tr>
-  <td class="leftc">{message:lang}</td>
+  <td class="leftb">{message:lang}</td>
  </tr>
 </table>
 <br />

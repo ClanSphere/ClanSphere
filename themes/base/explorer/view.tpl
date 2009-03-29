@@ -3,7 +3,7 @@
 		<td class="headb">{lang:explorer} - {lang:show}</td>
 	</tr>
 	<tr>
-		<td class="leftc">{lang:view_file} <a href="{url:explorer_roots:dir={var:dir}}">{lang:back}</a>
+		<td class="leftb">{lang:view_file} <a href="{url:explorer_roots:dir={var:dir}}">{lang:back}</a>
 		</td>
 	</tr>
 </table>

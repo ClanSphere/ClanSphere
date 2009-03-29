@@ -3,7 +3,7 @@
 		<td class="headb">{lang:mod} - {lang:export}</td>
 	</tr>
 	<tr>
-		<td class="leftc">{head:body}</td>
+		<td class="leftb">{head:body}</td>
 	</tr>
 </table>
 <br />

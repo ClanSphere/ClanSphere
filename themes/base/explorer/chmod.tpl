@@ -3,7 +3,7 @@
     <td class="headb">{lang:explorer} - {lang:chmod}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:grant_rights}</td>
+    <td class="leftb">{lang:grant_rights}</td>
   </tr>
 </table>
 <br />

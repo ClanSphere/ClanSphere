@@ -3,7 +3,7 @@
     <td class="headb">{lang:explorer} - {lang:edit}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:edit_file}</td>
+    <td class="leftb">{lang:edit_file}</td>
   </tr>
 </table>
 <br />

@@ -3,7 +3,7 @@
     <td class="headb">{lang:mod} - {lang:optimize}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:body_optimize}</td>
+    <td class="leftb">{lang:body_optimize}</td>
   </tr>
 </table>
 <br />

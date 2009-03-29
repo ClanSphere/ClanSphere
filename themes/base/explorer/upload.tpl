@@ -3,7 +3,7 @@
     <td class="headb">{lang:explorer} - {lang:upload}</td>
   </tr>
   <tr>
-    <td class="leftc">{lang:max_upload}</td>
+    <td class="leftb">{lang:max_upload}</td>
   </tr>
 </table>
 <br />

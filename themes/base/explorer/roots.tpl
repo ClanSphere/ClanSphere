@@ -3,10 +3,10 @@
   <td class="headb" colspan="4">{lang:explorer} - {lang:manage}</td>
  </tr>
  <tr>
-  <td class="leftc">{icon:editpaste} {link:new_file}</td>
-  <td class="leftc">{icon:folder_yellow} {link:new_dir}</td>
-  <td class="leftc">{icon:download} {link:upload_file}</td>
-  <td class="leftc">{pages:show}</td>
+  <td class="leftb">{icon:editpaste} {link:new_file}</td>
+  <td class="leftb">{icon:folder_yellow} {link:new_dir}</td>
+  <td class="leftb">{icon:download} {link:upload_file}</td>
+  <td class="leftb">{pages:show}</td>
  </tr>
 </table>
 <br />
