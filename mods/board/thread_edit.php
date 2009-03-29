@@ -362,8 +362,9 @@ else {
 	}
 	# Update board entry to get correct threads and comments count
 	include_once('mods/board/repair.php');
- cs_board_threads($board['board_id']);
- cs_redirect($cs_lang['changes_done'],'board','thread','action=thread&where=' .$thread_id);
+  cs_board_threads($board['board_id']);
 
+  cs_redirect($cs_lang['changes_done'], 'board', 'thread', 'where=' . $thread_id);
 }
+
 ?>
