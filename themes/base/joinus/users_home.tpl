@@ -11,7 +11,7 @@
 	{loop:join}
 	<tr>
 		<td class="leftb">{join:game}</td>
-		<td class="leftb"><a href="/index/joinus/view/id/1" >{join:nick}</a></td>
+		<td class="leftb">{join:nick}</td>
 		<td class="leftb">{join:age}</td>
 		<td class="leftb">{join:since}</td>
 	</tr>
