@@ -97,7 +97,8 @@ if(isset($_POST['submit'])) {
       $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
     }
   }
-} else {
+}
+else {
   $data['join']['games_id'] = '';
   $data['join']['squads_id'] = '';
   $data['join']['joinus_nick'] = '';
@@ -139,7 +140,7 @@ if(!isset($_POST['submit'])) {
   $data['lang']['body'] = $errormsg;
 }
 
-if(!empty($error) OR !isset($_POST['submit'])) {
+if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit']))) {
 
   $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
   $data['join']['date'] = cs_dateselect('age','date',$data['join']['joinus_age']);
@@ -172,7 +173,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   if(!empty($captcha)) {
     $data['if']['captcha'] = 1;
   }
-} else {
+}
+elseif(!empty($data['if']['form'])) {
 
   if(empty($account['users_id'])) {
     global $cs_db;
@@ -214,5 +216,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   }
   cs_redirect($cs_lang['new_done'],'joinus','new');
 }
+
 echo cs_subtemplate(__FILE__,$data,'joinus','new');
+
 ?>

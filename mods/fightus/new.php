@@ -104,7 +104,7 @@ elseif(!empty($error)) {
   $data['head']['body'] = $error;
 }
 
-if(!empty($error) OR !isset($_POST['submit'])) {
+if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit']))) {
   
   $data['fightus'] = $cs_fightus;
 
@@ -141,12 +141,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['if']['captcha'] = TRUE;
     $data['fightus']['captcha_img'] = cs_html_img('mods/captcha/generate.php');
   }
-
-  echo cs_subtemplate(__FILE__,$data,'fightus','new');
 }
-else {
+elseif(!empty($data['if']['form'])) {
+
   settype($cs_fightus['fightus_icq'],'integer');
-  
   $cs_fightus['fightus_since'] = cs_time();
   $fightus_cells = array_keys($cs_fightus);
   $fightus_save = array_values($cs_fightus);
@@ -154,5 +152,7 @@ else {
   
   cs_redirect($cs_lang['success'],'fightus','new');
 }
+
+echo cs_subtemplate(__FILE__,$data,'fightus','new');
 
 ?>
