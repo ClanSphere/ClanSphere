@@ -58,7 +58,6 @@ if($sort == 2) {
   rsort($temp_file);
 } 
 
-
 $data['head']['dropdown'] = cs_html_select(1,'log_id');
 $levels = 1;
 while($levels < 3) {
@@ -70,7 +69,6 @@ $data['head']['dropdown'] .= cs_html_select(0);
 
 $data['head']['count'] = $count_handle;
 $data['head']['pages'] = cs_pages('logs','roots',$count_handle,$start,$log_id,$sort,$account['users_limit']);
-
 
 if($account['access_wizard'] == 5) {
   $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_logs' AND options_value = '1'");
@@ -86,7 +84,8 @@ $data['sort']['name'] = cs_sort('logs','roots',$start,$log_id,1,$sort);
 $temp_limit = $start + $account['users_limit'];
 if($temp_limit > $count_handle) {
   $count_limit = $count_handle;
-} else {
+}
+else {
   $count_limit = $temp_limit;
 }
 if(!empty($count_limit)) {
@@ -105,5 +104,7 @@ if(!empty($count_limit)) {
 } else {
   $data['log'] = array();  
 }
+
 echo cs_subtemplate(__FILE__,$data,'logs','roots');
+
 ?>
