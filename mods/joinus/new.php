@@ -169,7 +169,7 @@ if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit'])))
   $data['abcode']['features'] = cs_abcode_features('joinus_more');
   
   $data['rules']['link'] = cs_html_link(cs_url('rules','list'),$cs_lang['rules']);
-  $data['joinus']['rules_selected'] = !empty($data2['join']['joinus_rules']) ? 'checked' : '';
+  $data['joinus']['rules_selected'] = !empty($data2['join']['joinus_rules']) ? 'checked="checked"' : '';
   if(!empty($captcha)) {
     $data['if']['captcha'] = 1;
   }

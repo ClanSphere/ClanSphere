@@ -87,7 +87,7 @@
 	  </td>
     </tr>
 	<tr>
-	  <td class="leftc">{icon:mail_generic} {lang:email}</td>
+	  <td class="leftc">{icon:mail_generic} {lang:email} *</td>
 	  <td class="leftb"><input type="text" name="joinus_email" value="{join:joinus_email}" size="40" maxlength="40"  /></td>
 	</tr>
 	<tr>
