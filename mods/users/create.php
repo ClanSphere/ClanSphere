@@ -159,7 +159,10 @@ else {
 
   $create['users_timezone']   = empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
   $create['users_dstime']     = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
-  create_user($create['access_id'],$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],$create['users_country'],$create['users_timezone'],$create['users_dstime']);
+  $users_id = create_user($create['access_id'],$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],$create['users_country'],$create['users_timezone'],$create['users_dstime']);
+
+  if(!empty($conv_joinus) AND !empty($users_id))
+    cs_sql_update(__FILE__, 'users', array('users_pwd'), array($create['users_pwd']), $users_id);
 
   if(!empty($create_['send_mail'])) {
     $content = $cs_lang['mail_reg_start'] . $cs_lang['mail_reg_nick'] . $create['users_nick'];
