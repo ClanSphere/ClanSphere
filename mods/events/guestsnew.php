@@ -48,19 +48,12 @@ if(!empty($error))
 if(!empty($error) OR !isset($_POST['submit'])) {
   $data['url']['form'] = cs_url('events','guestsnew');
 
-  $begin = 'events_time > ' . cs_time();
-  $events_data = cs_sql_select(__FILE__,'events','events_time, events_name, events_id',$begin,'events_time ASC',0,0);
-  $events_data_loop = count($events_data);
+  $where = "events_id = '" . $cs_eventguests['events_id'] . "'";
+  $events_data = cs_sql_select(__FILE__, 'events', 'events_time, events_name, events_id', $where);
 
-  if(empty($events_data_loop)) {
-    $data['events'] = '';
-  }
-
-  for($run=0; $run<$events_data_loop; $run++) {
-    $data['events'][$run]['id'] = $events_data[$run]['events_id'];
-    $data['events'][$run]['name'] = $events_data[$run]['events_name'];
-    $data['events'][$run]['time'] = cs_date('unix',$events_data[$run]['events_time'],1);
-  }
+  $data['events']['id'] = $events_data['events_id'];
+  $data['events']['name'] = $events_data['events_name'];
+  $data['events']['time'] = cs_date('unix',$events_data['events_time'],1);
 
   $users_data = cs_sql_select(__FILE__,'users','users_nick, users_id','users_active = "1" AND users_delete = "0"','users_nick',0,0);
   $users_data_loop = count($users_data);
