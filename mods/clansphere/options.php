@@ -4,6 +4,9 @@
 
 $cs_lang = cs_translate('clansphere');
 
+$data = array();
+$data['if']['done'] = false;
+
 if($account['access_wizard'] == 5) {
 	
   $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_opts' AND options_value = \"1\"");
@@ -58,12 +61,10 @@ if(isset($_POST['submit'])) {
   
   cs_redirect($cs_lang['success'], 'options','roots');
 
-} else {
-	
-	$data = array();
+} 
+else {
+
 	$data['options'] = cs_sql_option(__FILE__, 'clansphere');
-	
-	$data['if']['done'] = false;
 
   if (empty($cs_main['mod_rewrite'])) {
     $data['options']['mod_rewrite_on'] = '';
@@ -100,7 +101,6 @@ if(isset($_POST['submit'])) {
   $data['options']['admin_1'] = $cs_main['def_admin'] == 'integrated' || empty($cs_main['def_admin']) ? 'checked="checked"' : '';
   $data['options']['admin_2'] = $cs_main['def_admin'] == 'separated' ? 'checked="checked"' : '';
 
-
   $data['options']['def_timezone'] = cs_html_select(1,'def_timezone');
   $timezone = -10;
 
@@ -126,9 +126,8 @@ if(isset($_POST['submit'])) {
   $data['options']['img_ext'] = $cs_main['img_ext'];
   $data['options']['cellspacing'] = $cs_main['cellspacing'];
   $data['options']['ajax_reload'] = empty($cs_main['ajax_reload']) ? 10 : $cs_main['ajax_reload'];
-  
+
   echo cs_subtemplate(__FILE__,$data,'clansphere','options');
-  
 }
 
 ?>
