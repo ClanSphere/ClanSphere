@@ -1,4 +1,7 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang['mod_name']  = 'Spiele';
 $cs_lang['mod_text']  = 'Das Spiele Modul';
 $cs_lang['mod']  = 'Spiele';
@@ -51,7 +54,6 @@ $cs_lang['ext_error'] ='- Sie benutzen ein unerlaubtes Dateiformat';
 $cs_lang['too_wide'] ='- Symbol ist zu breit';
 $cs_lang['too_high'] ='- Symbol ist zu hoch';
 $cs_lang['too_big'] ='- Die Dateigr&ouml;&szlig;e ist zu gro&szlig;';
-
 
 $cs_lang['details'] = 'Details';
 

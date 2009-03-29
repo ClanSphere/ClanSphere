@@ -503,7 +503,7 @@ CREATE TABLE {pre}_games (
   categories_id int(8) NOT NULL default '0',
   games_name varchar(80) NOT NULL default '',
   games_version varchar(20) NOT NULL default '',
-  games_released int(14) NOT NULL default '0',
+  games_released varchar(20) NOT NULL default '',
   games_creator varchar(80) NOT NULL default '',
   games_url varchar(80) NOT NULL default '',
   games_usk varchar(20) NOT NULL default '',

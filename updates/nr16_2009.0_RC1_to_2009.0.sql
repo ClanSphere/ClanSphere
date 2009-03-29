@@ -29,3 +29,10 @@ ALTER TABLE {pre}_users DROP users_age;
 ALTER TABLE {pre}_users ADD users_age varchar(20) NOT NULL default '';
 UPDATE {pre}_users SET users_age = users_age2;
 ALTER TABLE {pre}_users DROP users_age2;
+
+ALTER TABLE {pre}_games ADD games_released2 varchar(20) NOT NULL default '';
+UPDATE {pre}_games SET games_released2 = games_released;
+ALTER TABLE {pre}_games DROP games_released;
+ALTER TABLE {pre}_games ADD games_released varchar(20) NOT NULL default '';
+UPDATE {pre}_games SET games_released = games_released2;
+ALTER TABLE {pre}_games DROP games_released2;
