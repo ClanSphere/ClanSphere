@@ -25,7 +25,7 @@ if($account['access_clansphere'] >= 3 AND $account['access_logs'] >= 3) {
     $content = file_get_contents($cs_logs['dir'] . '/errors/' . $temp_file[$i]);
     $content = explode('--------', $content);
     $count = count($content) - 1;
-    echo cs_link($temp_file[$i], 'logs', 'view', 'art=1&log=' . $i);
+    echo cs_link($temp_file[$i], 'logs', 'view', 'art=1&amp;log=' . $i);
     echo ' [' . $count . ']' . cs_html_br(1);
   }
 }

@@ -14,12 +14,12 @@
   <tr>
     <td class="leftc">{logs:time}</td>
     <td class="leftb">{logs:message}</td>
-    <td class="leftc"><a href="{url:logs_view:art={var:art}:log={var:log}:id={logs:id}#1}">{lang:details}</a>
+    <td class="leftc"><a href="{url:logs_view:art={var:art}:log={var:log}:id={logs:id}#log_1}">{lang:details}</a></td>
   </tr>{stop:logs}
 </table>
 <br />
 
-<a href="#" id="1"></a>
+<a href="#log_1" id="log_1"></a>
 {if:error}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>

@@ -96,9 +96,9 @@ if(!empty($count_limit)) {
     $handle = explode('--------',$handle);
     $handle_count = count($handle) - 1;
     $data['log'][$z]['handle'] = $handle_count;
-    $data['log'][$z]['details'] = cs_link($cs_lang['details'],'logs','view','art=' .$log_id .'&log=' . $i);
-    $data['log'][$z]['download'] = cs_link($cs_lang['down'],'logs','roots','where=' .$log_id .'&down=' . $temp_file[$i]);
-    $data['log'][$z]['delete'] = cs_link($cs_lang['del'],'logs','roots','where=' .$log_id .'&del=' . $temp_file[$i]);
+    $data['log'][$z]['details'] = cs_link($cs_lang['details'],'logs','view','art=' .$log_id .'&amp;log=' . $i);
+    $data['log'][$z]['download'] = cs_link($cs_lang['down'],'logs','roots','where=' .$log_id .'&amp;down=' . $temp_file[$i]);
+    $data['log'][$z]['delete'] = cs_link($cs_lang['del'],'logs','roots','where=' .$log_id .'&amp;del=' . $temp_file[$i]);
     $z++;
   }
 } else {

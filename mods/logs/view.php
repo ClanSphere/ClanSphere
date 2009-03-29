@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('logs');
+
 global $cs_logs;
 
 $log_id = !empty($_GET['art']) ? (int) $_GET['art'] : 0;
@@ -27,7 +28,6 @@ closedir($handle);
 
 if($sort == 2)
   rsort($temp_file);
-
 
 $handle = explode('--------',file_get_contents($cs_logs['dir'] . '/' . $folder . '/' . $temp_file[$log]));
 array_shift($handle);
@@ -56,8 +56,6 @@ $data['log']['date'] = substr($temp_file[$log],0,strrpos($temp_file[$log],'.'));
 $data['if']['error'] = $folder == 'errors' ? true : false;
 $data['if']['log'] = $folder != 'errors' ? true : false;
 
-
 echo cs_subtemplate(__FILE__, $data, 'logs', 'view');
-
 
 ?>
