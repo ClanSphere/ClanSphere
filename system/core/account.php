@@ -101,7 +101,7 @@ if(!empty($account['users_id'])) {
     setcookie('cs_securepw', '', 1, $cookie['path'], $cookie['domain']);
     session_destroy();
     $login['mode'] = FALSE;
-    if (!empty($account['users_ajax'])) ajax_js('window.location.reload()');;
+    if (!empty($account['users_ajax'])) die(ajax_js('window.location.reload()'));
   }
   else {
     $cells = array('users_laston');
