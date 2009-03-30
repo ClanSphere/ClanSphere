@@ -12,7 +12,8 @@ $nick_temp = cs_sql_select(__FILE__,'users','users_nick','users_id='.$users_id,0
 
 if(isset($_GET['agree'])) {
   
-  $nick = '*'.$nick_temp['users_nick'].'*'; 
+  //$nick = '*'.$nick_temp['users_nick'].'*'; 
+  $bick = $nick_temp['users_nick']; 
   
   $chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
   $chars_count = strlen($chars)-1;
