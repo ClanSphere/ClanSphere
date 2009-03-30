@@ -8,7 +8,7 @@ $data = array();
 
 require 'mods/files/functions.php';
 
-$file_id = (int) $_GET['id'];
+$file_id = !empty($_GET['where']) ? (int) $_GET['where'] : (int) $_GET['id'];
 
 $maxlength = '80';
 $modul = 'files';
