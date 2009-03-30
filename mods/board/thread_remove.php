@@ -87,7 +87,7 @@ if(isset($_POST['agree'])) {
   cs_board_threads($cs_thread['board_id']);
   cs_board_comments($cs_thread['board_id']);
   
-  cs_redirect($cs_lang['del_true'],'board','list');
+  cs_redirect($cs_lang['del_true'],'board','listcat','where='.$cs_thread['board_id']);
 }
 
 if(isset($_POST['cancel']))
