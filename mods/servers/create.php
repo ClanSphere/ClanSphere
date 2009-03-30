@@ -76,8 +76,16 @@ elseif(!empty($servers_error)) {
 }
 
 if(!empty($servers_error) OR !isset($_POST['submit'])) {
-	$data['games'] = cs_sql_select(__FILE__,'games','games_name, games_id',0,0,0,0);
-	
+  $games_array = cs_sql_select(__FILE__,'games','games_name, games_id',0,0,0,0);
+  $run=0;
+  foreach($games_array AS $games) {
+    $selected = ($games['games_id'] == $data['create']['games_id']) ? 'selected="selected"' : '';
+    $data['games'][$run]['name'] = $games['games_name'];
+    $data['games'][$run]['value'] = $games['games_id'];
+    $data['games'][$run]['selected'] = $selected;
+    $run++;
+  }
+  
 	$server_stats = array(
     array('name' => $cs_lang['no'], 'value' => '0'),
     array('name' => $cs_lang['yes'], 'value' => '1')
