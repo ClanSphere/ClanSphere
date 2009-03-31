@@ -23,7 +23,7 @@ $maps_count = cs_sql_count(__FILE__,'maps',$where);
 
 
 $data['head']['count_maps'] = $maps_count;
-$data['head']['pages'] = cs_pages('maps','manage',$maps_count,$start);
+$data['head']['pages'] = cs_pages('maps','manage',$maps_count,$start,$games_id,$sort);
 
 $cs_games = cs_sql_select(__FILE__,'games','games_id, games_name',0,'games_name',0,0);
 $data['head']['dropdown'] = cs_dropdown('where','games_name',$cs_games,$games_id,'games_id');
