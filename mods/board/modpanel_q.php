@@ -29,7 +29,7 @@ if($account['access_board'] < 5 AND empty($thread_mods['boardmods_modpanel']))
 //Sicherheitsabfarge Ende
 
 //Daten Abfragen
-if(!empty($_POST['thread_closed'])) {
+if(!empty($_POST['thread_closed']) OR isset($_POST['close'])) {
   $thread_cells = array('threads_close');
   $thread_save = array($account['users_id']);
 
