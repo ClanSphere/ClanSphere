@@ -26,36 +26,40 @@ while ($file = readdir ($handle)) {
 }
 closedir($handle);
 
-if($sort == 2)
-  rsort($temp_file);
-
-$handle = explode('--------',file_get_contents($cs_logs['dir'] . '/' . $folder . '/' . $temp_file[$log]));
-array_shift($handle);
-
 $data['logs'] = array();
-$run = 0;
 
-foreach($handle AS $temps)
-{       
-  $explode = explode("\n",$temps);
-	$data['logs'][$run] = array('id' => $run,'time' => $explode[1],'message' => $explode[3],
-    'file' => $explode[2], 'file2' => $explode[4]);
-	if ($folder == 'errors') {
-		$data['logs'][$run]['ip'] = $explode[6];
-		$data['logs'][$run]['browser'] = $explode[5];
-	}
-  $run++;  
+if(!empty($temp_file)) {
+
+  if($sort == 2)
+    rsort($temp_file);
+
+  $handle = explode('--------',file_get_contents($cs_logs['dir'] . '/' . $folder . '/' . $temp_file[$log]));
+  array_shift($handle);
+
+  $run = 0;
+
+  foreach($handle AS $temps)
+  {       
+    $explode = explode("\n",$temps);
+    $data['logs'][$run] = array('id' => $run,'time' => $explode[1],'message' => $explode[3],
+      'file' => $explode[2], 'file2' => $explode[4]);
+    if ($folder == 'errors') {
+      $data['logs'][$run]['ip'] = $explode[6];
+      $data['logs'][$run]['browser'] = $explode[5];
+    }
+    $run++;  
+  }
+
+  $data['var']['art'] = $log_id;
+  $data['var']['log'] = $log;
+
+  $data['log'] = $data['logs'][$id];
+  $data['log']['date'] = substr($temp_file[$log],0,strrpos($temp_file[$log],'.'));
+
+  $data['if']['error'] = $folder == 'errors' ? true : false;
+  $data['if']['log'] = $folder != 'errors' ? true : false;
+
+  echo cs_subtemplate(__FILE__, $data, 'logs', 'view');
 }
-
-$data['var']['art'] = $log_id;
-$data['var']['log'] = $log;
-
-$data['log'] = $data['logs'][$id];
-$data['log']['date'] = substr($temp_file[$log],0,strrpos($temp_file[$log],'.'));
-
-$data['if']['error'] = $folder == 'errors' ? true : false;
-$data['if']['log'] = $folder != 'errors' ? true : false;
-
-echo cs_subtemplate(__FILE__, $data, 'logs', 'view');
 
 ?>
