@@ -74,7 +74,7 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
     $data['maps']['action'] = cs_url('maps','edit');
     $data['games'] = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
     $data['games'] = cs_dropdownsel($data['games'],$data['maps']['games_id'],'games_id');
-    $data['maps']['maps_picture'] = empty($data['maps']['maps_picture']) ? '-' : cs_html_img('uploads/maps/' . $data['maps']['maps_picture']);
+    $data['maps']['picture'] = empty($data['maps']['maps_picture']) ? '-' : cs_html_img('uploads/maps/' . $data['maps']['maps_picture']);
     $matches[1] = $cs_lang['pic_infos'];
     $return_types = '';
     foreach($img_filetypes AS $add) {
@@ -85,6 +85,9 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
     $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
     $matches[2] .= $cs_lang['filetypes'] . $return_types;
     $data['maps']['matches'] = cs_abcode_clip($matches);
+    
+    $data['if']['picture_remove'] = !empty($data['maps']['maps_picture']) ? TRUE : FALSE;
+    
   
     echo cs_subtemplate(__FILE__,$data,'maps','edit');
   

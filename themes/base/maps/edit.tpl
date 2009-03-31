@@ -34,17 +34,17 @@
     </tr>
 	<tr>
 		<td class="leftc">{icon:images} {lang:actual_pic}</td>
-		<td class="leftb">{maps:maps_picture}</td>
+		<td class="leftb">{maps:picture}</td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:images} {lang:other_pic}</td>
 		<td class="leftb"><input type="file" name="picture" value=""  /><br /><br />
 		{maps:matches}</td>
-	</tr>
+	</tr>{if:picture_remove}
 	<tr>
 		<td class="leftc">{icon:configure} {lang:extended}</td>
 		<td class="leftb"><input type="checkbox" name="pic_del" value="1"  /> {lang:rem_pic}</td>
-	</tr>
+	</tr>{stop:picture_remove}
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
