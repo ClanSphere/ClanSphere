@@ -321,7 +321,7 @@ if($start <! 0 AND $board_sort=='ASC')
         $cs_thread_files[$run]['boardfiles_typ'] = $ext;
       }
 	  
-	  require 'mods/clansphere/filetype.php';
+	  require_once('mods/clansphere/filetype.php');
 	  
       for($run = 0; $run < $loop_files; $run++){
         $ext = $cs_thread_files[$run]['boardfiles_typ'];
@@ -512,7 +512,7 @@ for($run = 0; $run<$com_loop; $run++)
   if(!empty($loop_com_files)) { 
     $data['comment'][$run]['if']['c_files'] = true; 
 	
-	require 'mods/clansphere/filetype.php';
+	require_once('mods/clansphere/filetype.php');
 	
     for($run2 = 0; $run2 < $loop_com_files; $run2++) {
       $file = $cs_comments_files[$run2]['boardfiles_name'];
