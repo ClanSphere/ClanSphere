@@ -89,7 +89,25 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
 $cs_abo = cs_sql_select(__FILE__,'abonements','abonements_id','threads_id = "' .$data['thread']['threads_id'] . '" AND users_id = "' . $account['users_id'] . '"');
 
 if (!empty($account['users_id'])) {
-  $data['thread']['abo'] = empty($cs_abo) ? cs_link($cs_lang['abonnement'],'board','newabo','id=' .$id) : $cs_lang['already_abo'];
+	if(empty($cs_abo)) {
+		$abo_lang = $cs_lang['abonnement'];
+		$m_action = '&amp;newabo';
+	}else{
+		$abo_lang = $cs_lang['del_abo'];
+		$m_action = '&amp;delabo';
+	}
+	$data['thread']['abo'] = cs_link($abo_lang,'board','thread','where=' .$id . $m_action);
+
+	if(isset($_GET['newabo']) AND empty($cs_abo)) {
+		$abonements_cells = array('users_id','threads_id');
+		$abonements_save = array($account['users_id'],$id);
+		cs_sql_insert(__FILE__,'abonements',$abonements_cells,$abonements_save);
+		cs_redirect($cs_lang['abo_done'],'board','thread','where='.$id);
+	}
+	elseif(isset($_GET['delabo']) AND !empty($cs_abo['abonements_id'])) {
+		cs_sql_delete(__FILE__,'abonements',$cs_abo['abonements_id']);
+		cs_redirect($cs_lang['abo_del_done'],'board','thread','where='.$id);
+	}
 }
 else {
   $data['thread']['abo'] = '';
@@ -321,7 +339,7 @@ if($start <! 0 AND $board_sort=='ASC')
         $cs_thread_files[$run]['boardfiles_typ'] = $ext;
       }
 	  
-	  require_once('mods/clansphere/filetype.php');
+	  require 'mods/clansphere/filetype.php';
 	  
       for($run = 0; $run < $loop_files; $run++){
         $ext = $cs_thread_files[$run]['boardfiles_typ'];
@@ -512,7 +530,7 @@ for($run = 0; $run<$com_loop; $run++)
   if(!empty($loop_com_files)) { 
     $data['comment'][$run]['if']['c_files'] = true; 
 	
-	require_once('mods/clansphere/filetype.php');
+	require 'mods/clansphere/filetype.php';
 	
     for($run2 = 0; $run2 < $loop_com_files; $run2++) {
       $file = $cs_comments_files[$run2]['boardfiles_name'];
@@ -638,7 +656,7 @@ if($board_sort=='DESC' AND $current==1)
         $cs_thread_files[$run]['boardfiles_typ'] = $ext;
       }
 	  
-	  require_once('mods/clansphere/filetype.php');
+	  require 'mods/clansphere/filetype.php';
 	  
       for($run = 0; $run < $loop_files; $run++){
         $ext = $cs_thread_files[$run]['boardfiles_typ'];
