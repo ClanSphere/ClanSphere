@@ -14,6 +14,7 @@ $data['head']['action'] = $cs_lang['create'];
 $data['head']['body'] = '';
 $data['head']['error'] = '';
 $data['if']['preview'] = false;
+$data['if']['no_readmore'] = true;
 
 $cs_news['categories_id'] = '';
 $cs_news['news_close'] = '';
@@ -85,6 +86,7 @@ if (isset($_POST['submit']) or isset($_POST['preview'])) {
   $cs_news['news_publishs_at'] = isset($_POST['publish_at']) ? cs_datepost('date', 'unix') : 0;
   $cs_news['news_readmore'] = $_POST['news_readmore'];
   $cs_news['news_readmore_active'] = isset($_POST['news_readmore_active']) ? $_POST['news_readmore_active'] : 0;
+  $data['if']['no_readmore'] = isset($_POST['news_readmore_active']) ? false : true;
     
   if(!empty($cs_news['news_publishs_at'])) $cs_news['news_public'] = 0;
     

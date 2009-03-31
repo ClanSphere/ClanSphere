@@ -21,6 +21,7 @@ $data['op']['html'] = empty($abcode[3]) ? $cs_lang['no'] : $cs_lang['yes'];
 $data['op']['php'] = empty($abcode[4]) ? $cs_lang['no'] : $cs_lang['yes'];
 
 $data['if']['preview'] = false;
+$data['if']['no_readmore'] = true;
 
 
 if(isset($_POST['submit']) or isset($_POST['preview'])) {
@@ -34,6 +35,7 @@ if(isset($_POST['submit']) or isset($_POST['preview'])) {
   $cs_news['news_publishs_at'] = isset($_POST['publish_at']) ? (int)cs_datepost('date', 'unix') : 0;
   $cs_news['news_readmore'] = $_POST['news_readmore'];
   $cs_news['news_readmore_active'] = isset($_POST['news_readmore_active']) ? (int)$_POST['news_readmore_active'] : 0;
+  $data['if']['no_readmore'] = isset($_POST['news_readmore_active']) ? false : true;
 
   if(!empty($cs_news['news_publishs_at'])) $cs_news['news_public'] = 0;
   
@@ -52,7 +54,7 @@ if(isset($_POST['submit']) or isset($_POST['preview'])) {
   for($run=0; $run < $run_loop; $run++) {
     $num = $run+1;
 
-  if(!empty($_POST["news_mirror_$num"]) AND !empty($_POST["news_mirror_name_$num"])) {
+    if(!empty($_POST["news_mirror_$num"]) AND !empty($_POST["news_mirror_name_$num"])) {
       $cs_news["news_mirror"] = $cs_news["news_mirror"] . "\n" . $_POST["news_mirror_$num"];
       $cs_news["news_mirror_name"] = $cs_news["news_mirror_name"] . "\n" . $_POST["news_mirror_name_$num"];
     }
@@ -110,7 +112,7 @@ if(isset($_POST['preview']) and empty($error)) {
 
   if(!empty($cs_news['news_readmore'])) {
     $data['if']['readmore'] = true;
-  $data['news']['preview_news_readmore'] = cs_secure($cs_news['news_readmore'], 1, 1, 1, 1) . cs_html_br(2);
+    $data['news']['preview_news_readmore'] = cs_secure($cs_news['news_readmore'], 1, 1, 1, 1) . cs_html_br(2);
   }
 
   $search = 'users_id = ' . $cs_news['users_id'];
@@ -132,21 +134,21 @@ if(isset($_POST['preview']) and empty($error)) {
     $data['if']['show'] = true;
 
     $temp_mirror = explode("\n", $cs_news['news_mirror']);
-  $temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
+    $temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
 
-  $prev_run = 0;
-  for($run=1; $run < count($temp_mirror); $run++) {
-    $num = $run;
+    $prev_run = 0;
+    for($run=1; $run < count($temp_mirror); $run++) {
+      $num = $run;
 
-    if($run == (count($temp_mirror) - 1)) {
+      if($run == (count($temp_mirror) - 1)) {
         $data['prev_mirror'][$prev_run]['dot'] =  '';
-    }
-    elseif(!empty($run)) {
-      $data['prev_mirror'][$prev_run]['dot'] =  ' - ';
-    }
-    else {
-      $data['prev_mirror'][$prev_run]['dot'] =  ' - ';
-    }
+      }
+      elseif(!empty($run)) {
+        $data['prev_mirror'][$prev_run]['dot'] =  ' - ';
+      }
+      else {
+        $data['prev_mirror'][$prev_run]['dot'] =  ' - ';
+      }
 
       $data['prev_mirror'][$prev_run]['news_mirror'] = cs_html_link($temp_mirror[$run],$temp_mirror_name[$run]);
       $prev_run++;
@@ -167,6 +169,7 @@ if(isset($_POST['mirror'])) {
   $data['news']['news_publishs_at'] = isset($_POST['publish_at']) ? (int)cs_datepost('date', 'unix') : 0;
   $data['news']['news_readmore'] = $_POST['news_readmore'];
   $data['news']['news_readmore_active'] = isset($_POST['news_readmore_active']) ? (int)$_POST['news_readmore_active'] : 0;
+  $data['if']['no_readmore'] = isset($_POST['news_readmore_active']) ? false : true;
 
   $_POST['run_loop']++;
 }
@@ -183,10 +186,10 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
     $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
   }
   else {
-  $temp_mirror = explode("\n", $cs_news['news_mirror']);
-  $temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
+    $temp_mirror = explode("\n", $cs_news['news_mirror']);
+    $temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
 
-  $run_loop = count($temp_mirror);
+    $run_loop = count($temp_mirror);
   }
 
   $tpl_run = 0;
@@ -199,41 +202,41 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   }
 
   for($run; $run < $run_loop; $run++) {
-  if(empty($cs_news['news_mirror'])) {
-    $num = $run+1;
-  }
-  else {
-    $num = $run;
-  }
+    if(empty($cs_news['news_mirror'])) {
+      $num = $run+1;
+    }
+    else {
+      $num = $run;
+    }
 
     if(isset($_POST['mirror'])) {
       $cs_news["news_mirror_$num"] = isset($_POST["news_mirror_$num"]) ? $_POST["news_mirror_$num"] : '';
       $cs_news["news_mirror_name_$num"] = isset($_POST["news_mirror_name_$num"]) ? $_POST["news_mirror_name_$num"] : '';
     }
     else {
-    $cs_news["news_mirror_$num"] = $temp_mirror[$run];
+      $cs_news["news_mirror_$num"] = $temp_mirror[$run];
       $cs_news["news_mirror_name_$num"] = $temp_mirror_name[$run];
     }
 
     $data['mirror'][$tpl_run]['num'] = $num;
-  $data['mirror'][$tpl_run]['news_mirror'] = $cs_news["news_mirror_$num"];
-  $data['mirror'][$tpl_run]['news_mirror_name'] = $cs_news["news_mirror_name_$num"];
+    $data['mirror'][$tpl_run]['news_mirror'] = $cs_news["news_mirror_$num"];
+    $data['mirror'][$tpl_run]['news_mirror_name'] = $cs_news["news_mirror_name_$num"];
     $tpl_run++;
   }
 
   if(empty($cs_main['fckeditor'])) {
     $data['abcode']['features'] = cs_abcode_features('news_text');
     $data['abcode']['smilies'] = cs_abcode_smileys('news_text');
-  $data['abcode']['features_readmore'] = cs_abcode_features('news_readmore');
+    $data['abcode']['features_readmore'] = cs_abcode_features('news_readmore');
     $data['abcode']['smilies_readmore'] = cs_abcode_smileys('news_readmore');
     $data['if']['fck'] = false;
-  $data['if']['abcode'] = true;
+    $data['if']['abcode'] = true;
   }
   else {
     $data['if']['fck'] = true;
-  $data['if']['abcode'] = false;
+    $data['if']['abcode'] = false;
     $data['fck']['editor'] = cs_fckeditor('news_text', $cs_news['news_text']);
-  $data['fck']['editor_readmore'] = cs_fckeditor('news_readmore', $cs_news['news_readmore']);
+    $data['fck']['editor_readmore'] = cs_fckeditor('news_readmore', $cs_news['news_readmore']);
   }
 
   $data['news']['news_id'] = $news_id;
@@ -244,6 +247,7 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   $data['news']['news_attached'] = $cs_news['news_attached'] == 1 ? 'checked="checked"' : '';
   $data['news']['check_publish'] = (!empty($cs_news['news_publishs_at']) ? 'checked="checked"' : '');
   $data['news']['news_publishs_at'] = cs_dateselect('date', 'unix', (!empty($cs_news['news_publishs_at']) ? $cs_news['news_publishs_at'] : cs_time()), 1995);
+  $data['if']['no_readmore'] = !empty($data['news']['news_readmore_active']) ? false : true;
 
   echo cs_subtemplate(__FILE__, $data, 'news', 'edit');
 }

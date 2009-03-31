@@ -37,9 +37,9 @@
       <td class="leftc">{icon:folder_yellow} {lang:category} *</td>
       <td class="leftb" colspan="2">{categories:dropdown}</td>
     </tr>
-     {if:fck}
+  {if:fck}
     <tr>
-      <td class="leftc" colspan="3">{fck:editor_readmore}</td>
+      <td class="leftc" colspan="3"><div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>{icon:kate} {lang:readmore}<br />{fck:editor_readmore}</div></td>
     </tr>
     <tr>
       <td class="leftc" colspan="3">{fck:editor}</td>
@@ -50,8 +50,8 @@
       <td class="leftc">{icon:kate} {lang:readmore} <br />
         <br />
         {abcode:smilies_readmore}</td>
-      <td class="leftb" colspan="2"><div id="editor_readmore" style="display:none">{abcode:features_readmore}
-        <textarea name="news_readmore" cols="50" rows="10" id="news_readmore"  style="width: 98%;">{news:news_readmore}</textarea></div></td>
+      <td class="leftb" colspan="2"><div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>{abcode:features_readmore}
+        <textarea name="news_readmore" cols="50" rows="10" id="news_readmore" style="width: 98%;">{news:news_readmore}</textarea></div></td>
     </tr>
     <tr>
       <td class="leftc">{icon:kate} {lang:text} *<br />
