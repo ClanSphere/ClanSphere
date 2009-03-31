@@ -638,7 +638,7 @@ if($board_sort=='DESC' AND $current==1)
         $cs_thread_files[$run]['boardfiles_typ'] = $ext;
       }
 	  
-	  require 'mods/clansphere/filetype.php';
+	  require_once('mods/clansphere/filetype.php');
 	  
       for($run = 0; $run < $loop_files; $run++){
         $ext = $cs_thread_files[$run]['boardfiles_typ'];
