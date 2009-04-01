@@ -25,4 +25,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 ## Uncomment the line and edit the php index files that should be accessible by the mod_rewrite rule (needed)
 
-RewriteRule ^(admin|board|debug|index|content)(.*)$ $1.php?params=$2 [NC,L]
+RewriteRule ^(admin|content|debug|index)(.*)$ $1.php?params=$2 [NC,L]
