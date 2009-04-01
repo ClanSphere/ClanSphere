@@ -38,9 +38,9 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
     
   $data['categories'][$run_1]['blank'] = ''; 
   $data['categories'][$run_1]['iconwidth'] = 36; 
-  for ($i = 0; $i < $data['categories'][$run_1]['layer']; $i++) { 
-     $data['categories'][$run_1]['blank'] .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'; 
-     $data['categories'][$run_1]['iconwidth'] += 20; 
+  for ($i = 0; $i < $data['categories'][$run_1]['layer']; $i++) {
+    $data['categories'][$run_1]['blank'] .= '&nbsp;&nbsp;&nbsp;&raquo; '; 
+    $data['categories'][$run_1]['iconwidth'] += 20; 
   }
   
   if ($data['categories'][$run_1]['layer'] == 0 || !empty($options['list_subforums'])) {
