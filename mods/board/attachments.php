@@ -21,7 +21,7 @@ if(empty($count_att)) {
   $data['attachments'] = '';
 }
 
-require 'mods/clansphere/filetype.php';
+require_once 'mods/clansphere/filetype.php';
 
 for($run = 0; $run < $count_att; $run++) { 
   $file = $cs_att[$run]['boardfiles_name'];

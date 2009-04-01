@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
-require 'mods/clansphere/filetype.php';
+require_once 'mods/clansphere/filetype.php';
 
 $data = array();
 

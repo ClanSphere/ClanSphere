@@ -226,7 +226,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
   {
   	$data['if']['file'] = TRUE;
 	
-	require 'mods/clansphere/filetype.php';
+	require_once 'mods/clansphere/filetype.php';
     
     for($run=0; $run < $run_loop_files; $run++)
     {

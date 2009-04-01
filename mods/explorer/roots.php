@@ -70,7 +70,7 @@ if(!empty($success)) {
   
   $y = -1;
   
-  require 'mods/clansphere/filetype.php';
+  require_once 'mods/clansphere/filetype.php';
   
   for($x = $start; ($x < $count) && ($y < $max_data); $x++) {
   
