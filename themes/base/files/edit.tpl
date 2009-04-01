@@ -46,7 +46,7 @@
       <td class="leftb">{icon:html} {lang:url} *
         <input type="text" name="files_mirror_url_{mirrors:num}" value="{mirrors:url}" maxlength="200" size="30" class="form" /></td>
       <td class="leftb">{icon:kedit} {lang:name}
-        <input type="text" name="files_mirror_name_{mirrors:num}" value="{mirrors:name}" maxlength="50" size="20" class="form" /></td>
+        <input type="text" name="files_mirror_name_{mirrors:num}" value="{mirrors:name}" maxlength="50" size="20" class="form" />
     </td>
     </tr>
     <tr>
@@ -60,9 +60,6 @@
         </select></td>
     </tr>
     {stop:mirrors}
-    
-    
-    
     <tr>
       <td class="leftc">{icon:configure} {lang:more}</td>
       <td class="leftb" colspan="2">
