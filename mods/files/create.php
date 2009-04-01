@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
+
 $data = array();
 
 require_once('mods/categories/functions.php');
@@ -23,7 +24,6 @@ $data['file']['files_size'] = '';
 $data['file']['files_mirror'] = '';
 $size = '';
 
-
 if(isset($_POST['submit']))
 {
     $data['file']['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] :
@@ -38,15 +38,13 @@ if(isset($_POST['submit']))
   $size = $_POST['size'];
   $run_loop = isset($_POST['run_loop']) ? (int) $_POST['run_loop'] : 1;
 
-  
   for($run=1; $run <= $run_loop; $run++)
   {
     if(!empty($_POST["files_mirror_url_$run"]) AND !empty($_POST["files_mirror_ext_$run"]))
     {
-      $data['file']['files_mirror'] .= $data['file']["files_mirror"] . "\n-----\n" . $_POST["files_mirror_url_$run"] . "\n" . $_POST["files_mirror_name_$run"] . "\n" . $_POST["files_mirror_ext_$run"] . "\n" . $_POST["files_access_$run"];
+      $data['file']['files_mirror'] .= "\n-----\n" . $_POST["files_mirror_url_$run"] . "\n" . $_POST["files_mirror_name_$run"] . "\n" . $_POST["files_mirror_ext_$run"] . "\n" . $_POST["files_access_$run"];
     }
   }
-  
 
   if($size == 0) {
     $data['file']['files_size'] = $data['file']['files_size'] * 1024;
@@ -102,7 +100,6 @@ if(!isset($_POST['submit']))
   $data['head']['message'] = $cs_lang['body_create'];
 elseif(!empty($error))
   $data['head']['message'] = $error;
-
 
 if(!empty($error) OR !isset($_POST['submit']))
 {
