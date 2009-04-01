@@ -15,28 +15,28 @@ if (!empty($_POST['submit'])) {
   }
   
   if (empty($errors)) {
-    if (!empty($files)) cs_upload('ajax','loading.gif',$files['loading']['tmp_name']);
-    
+    if (!empty($files['loading']['tmp_name'])) cs_upload('ajax','loading.gif',$files['loading']['tmp_name']);
+
     settype($_POST['ajax_reload'],'integer');
     if (empty($_POST['ajax'])) $_POST['ajax_reload'] = 0;
-    
+
     $navlists = empty($_POST['navlists']) ? array() : $_POST['navlists'];
     $list = implode(',',$navlists);
     if (!empty($list)) $list .= ',';
     $list .= $_POST['additionals'];
     if (substr($list,-1) != ',' && !empty($list)) $list .= ',';
-    
+
     $list = str_replace('shoutbox_navlist','shoutbox_navlist2',$list);
-    
+
     require 'mods/clansphere/func_options.php';
-  
+
     $save = array();
     $save['ajax'] = $_POST['ajax'];
     $save['ajax_reload'] = $_POST['ajax_reload'];
     $save['ajax_navlists'] = $list;
-  
+
     cs_optionsave('clansphere', $save);
-    
+
     if ($cs_main['ajax'] && empty($_POST['ajax']) && function_exists('ajax_js'))
       die(ajax_js("window.location.reload();"));
     if (empty($cs_main['ajax']) && !empty($save['ajax']) && !empty($cs_main['mod_rewrite'])) {
@@ -44,7 +44,7 @@ if (!empty($_POST['submit'])) {
       if (!empty($turned_on))
         header('Location: ../../' . $cs_main['php_self']['basename']);
     } else
-    
+
     cs_redirect($cs_lang['success'], 'options','roots');
   }
 }
@@ -88,13 +88,13 @@ for ($i = 0; $i < $count_possibles; $i++) {
   $data['navlists'][$i]['mod'] = strtoupper($possibles[$i]{0}) . substr($possibles[$i],1, $division-1);
   $data['navlists'][$i]['action'] = strtoupper(substr($possibles[$i],$division+1,1)) . substr($possibles[$i],$division+2);
   $data['navlists'][$i]['checked'] = in_array($possibles[$i],$data['ajax_navlists']) ? $checked : '';
-  
+
   if (!empty($cs_lang['d_'.$possibles[$i]])) {
     $data['navlists'][$i]['if']['descr'] = true;
     $data['navlists'][$i]['description'] = $cs_lang['d_'.$possibles[$i]];
   } else
     $data['navlists'][$i]['if']['descr'] = false;
-  
+
   $leftovers = str_replace($possibles[$i] . ',','',$leftovers);
 }
 

@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-global $_COOKIE, $_POST, $cs_lang_main, $login; 
+global $_COOKIE, $_POST, $cs_lang_main, $cs_main, $login;
 
 $domain = (strpos($_SERVER['HTTP_HOST'], '.') !== FALSE) ? $_SERVER['HTTP_HOST'] : '';
 $cookie = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
@@ -50,7 +50,7 @@ if(empty($_SESSION['users_id'])) {
       }
       else {
         $login['mode'] = TRUE;
-     
+
         $_SESSION['users_id'] = $login_db['users_id'];
         $_SESSION['users_ip'] = cs_getip();
         $_SESSION['users_agent'] = $_SERVER['HTTP_USER_AGENT'];
@@ -101,7 +101,7 @@ if(!empty($account['users_id'])) {
     setcookie('cs_securepw', '', 1, $cookie['path'], $cookie['domain']);
     session_destroy();
     $login['mode'] = FALSE;
-    if (!empty($account['users_ajax'])) die(ajax_js('window.location.reload()'));
+    if (!empty($account['users_ajax']) AND !empty($cs_main['ajax'])) die(ajax_js('window.location.reload()'));
   }
   else {
     $cells = array('users_laston');
@@ -145,11 +145,11 @@ if(is_array($gma)) {
 }
 
 if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['access_clansphere'] < 3) {
-    setcookie('cs_userid', '', 1, $cookie['path'], $cookie['domain']);
-    setcookie('cs_securepw', '', 1, $cookie['path'], $cookie['domain']);
-    session_destroy();
-    $login['mode'] = FALSE;
-    $login['error'] = 'not_public'; 
+  setcookie('cs_userid', '', 1, $cookie['path'], $cookie['domain']);
+  setcookie('cs_securepw', '', 1, $cookie['path'], $cookie['domain']);
+  session_destroy();
+  $login['mode'] = FALSE;
+  $login['error'] = 'not_public'; 
 }
 
 $cs_lang_main = cs_translate();
