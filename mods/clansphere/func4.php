@@ -1,4 +1,7 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 function get_size($dir) { 
   //echo 'DEBUG-Dir:' . $dir . '</br>';
   $handle = opendir($dir);
@@ -20,4 +23,5 @@ function get_size($dir) {
   
   return $size; 
 }
+
 ?>

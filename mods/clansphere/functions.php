@@ -1,4 +1,6 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
 
 function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head = array()) {
 
@@ -57,15 +59,15 @@ function cs_cspnews($id = 0, $all = 0) {
 
   global $cs_lang, $com_lang;
   $cs_lang = cs_translate('clansphere');
-  
+
   $data['if']['one'] = false;
   $data['if']['all'] = false;
   $allow_url_fopen = ini_get('allow_url_fopen');
-  
+
   if(empty($allow_url_fopen)) {
-    
+
     $error = $cs_lang['need_url_fopen'];
-    
+
   } else {
     if(!empty($id)) {
       $opt_where = "options_mod = 'clansphere' AND options_name = 'sec_news'";
