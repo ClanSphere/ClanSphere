@@ -268,7 +268,7 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   $error = $errortype[$errno] . ": " . $errmsg . " in " . $filename . " on line " . $linenum . "\r\n";
   $cs_logs['php_errors'] = empty($cs_logs['php_errors']) ? '' : $cs_logs['php_errors'];
   $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
-  cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . '-> ' . $errmsg, 1);
+  cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . ' -> ' . trim($errmsg), 1);
 }
 
 ?>
