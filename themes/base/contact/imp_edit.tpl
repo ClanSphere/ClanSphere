@@ -3,7 +3,7 @@
 <tr><td class="headb">
 {lang:mod_imp} - {lang:head_edit}
 </td></tr>
-<tr><td class="leftc">
+<tr><td class="leftb">
 {lang:body_edit}
 </td></tr>
 </table>

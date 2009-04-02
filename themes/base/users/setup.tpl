@@ -1,11 +1,17 @@
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb">{lang:users} - {head:action} </td>
+  </tr>
+  <tr>
+    <td class="leftb"> {head:body_text} </td>
+  </tr>
 {if:done}
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">  
   <tr>
     <td class="leftc" colspan="3"> {lang:wizard}: {link:wizard}</td>
   </tr>
+{stop:done}
 </table>
 <br />
-{stop:done}
 
 <form method="post" id="users_setup" action="{url:users_setup}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">

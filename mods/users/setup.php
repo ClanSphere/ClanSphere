@@ -6,6 +6,8 @@ $cs_lang = cs_translate('users');
 
 $languages = cs_checkdirs('lang');
 
+$data = array();
+
 $data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['setup'];
 
@@ -70,10 +72,7 @@ else {
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
-  
-  echo cs_subtemplate(__FILE__,$data,'users','head');
-  
-  $data = array();
+
   $data['data'] = $cs_user;
   
   $data['if']['done'] = false;
