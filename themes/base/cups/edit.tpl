@@ -20,7 +20,7 @@
       <select name="games_id" class="form" onchange="cs_gamechoose(this.form)">
         <option value="0" selected="selected">----</option>{loop:games}
         <option value="{games:games_id}"{games:selected}>{games:games_name}</option>{stop:games}
-    </select> <img src="{page:path}csp/uploads/games/0.gif" id="game_1" alt="" /></td>
+    </select> <img src="{page:path}uploads/games/0.gif" id="game_1" alt="" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:folder_yellow} {lang:cup_system}</td>
