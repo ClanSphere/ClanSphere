@@ -26,7 +26,7 @@
   </tr>
   <tr>
     <td class="leftb">{lang:type}</td>
-    <td class="leftc"><img src="{servers:img}" alt="" /> {servers:game}</td>
+    <td class="leftc"><img src="{page:path}{servers:img}" alt="" /> {servers:game}</td>
   </tr> 
   <tr>
     <td class="leftb">{lang:serverinfo}</td>

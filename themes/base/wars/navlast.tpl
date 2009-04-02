@@ -1,5 +1,5 @@
 <a href="{url:squads_view:id={war:squads_id}}" title="{war:squads_name}" style="float:left; width: 33%;">
-  <img src="uploads/squads/{war:squads_picture}" alt="{war:squads_name}" />
+  <img src="{page:path}uploads/squads/{war:squads_picture}" alt="{war:squads_name}" />
  </a>
 
 <div style="float: left; text-align: center; width: 34%; padding-top: 20px">
@@ -14,7 +14,7 @@
  </div>
 
 <a href="{url:clans_view:id={war:clans_id}}" title="{war:clans_name}" style="float: right; width: 33%;">
-  <img src="uploads/clans/{war:clans_picture}" alt="{war:clans_name}" />
+  <img src="{page:path}uploads/clans/{war:clans_picture}" alt="{war:clans_name}" />
  </a>
 
 <br style="clear: both" />

@@ -18,7 +18,7 @@
   <tr>
     <td class="leftc">{icon:download} {lang:current_picture}</td>
     <td class="leftb">
-       <img src="{form:img_path}" alt="" />
+       <img src="{page:path}{form:img_path}" alt="" />
        <br />
        <input type="checkbox" name="delete_picture" value="{medals:medals_extension}" class="form" /> {lang:remove_pic}
      </td>

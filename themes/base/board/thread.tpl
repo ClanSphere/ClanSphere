@@ -62,7 +62,7 @@
   <tr>
     <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{thread_asc:country}.png" style="height:11px;width:16px" alt="" /> {thread_asc:users_link}<br />
       <br />
-      {if:moderator}<img src="mods/board/rankimg.php?width=100" alt="{thread_asc:boardmod}" /><br />
+      {if:moderator}<img src="{page:path}mods/board/rankimg.php?width=100" alt="{thread_asc:boardmod}" /><br />
       {thread_asc:boardmod} <br />
       {stop:moderator}
       
@@ -109,7 +109,7 @@
   <tr>
     <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{comment:country}.png" style="height:11px;width:16px" alt="" /> {comment:users_link}<br />
       <br />
-      {if:com_moderator}<img src="mods/board/rankimg.php?width=100" alt="{comment:boardmod}" /><br />
+      {if:com_moderator}<img src="{page:path}mods/board/rankimg.php?width=100" alt="{comment:boardmod}" /><br />
       {comment:boardmod} <br />
       {stop:com_moderator}
       
@@ -150,7 +150,7 @@
   <tr>
     <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{thread_desc:country}.png" style="height:11px;width:16px" alt="" /> {thread_desc:users_link}<br />
       <br />
-      {if:moderator}<img src="mods/board/rankimg.php?width=100" alt="{thread_desc:boardmod}" /><br />
+      {if:moderator}<img src="{page:path}mods/board/rankimg.php?width=100" alt="{thread_desc:boardmod}" /><br />
       {thread_desc:boardmod} <br />
       {stop:moderator}
       

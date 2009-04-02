@@ -20,8 +20,8 @@
   <tr>
     <td class="leftc">{banners:name}</td>
     <td class="leftc">{banners:order}</td>
-    <td class="leftc"><a href="{banners:edit}" title="{lang:edit}" ><img src="symbols/crystal_project/16/edit.png" style="height:16px;width:16px" alt="{lang:edit}" /> </a></td>
-    <td class="leftc"><a href="{banners:remove}" title="{lang:remove}" ><img src="symbols/crystal_project/16/editdelete.png" style="height:16px;width:16px" alt="{lang:remove}" /> </a> </td>
+    <td class="leftc"><a href="{banners:edit}" title="{lang:edit}" ><img src="{page:path}symbols/crystal_project/16/edit.png" style="height:16px;width:16px" alt="{lang:edit}" /> </a></td>
+    <td class="leftc"><a href="{banners:remove}" title="{lang:remove}" ><img src="{page:path}symbols/crystal_project/16/editdelete.png" style="height:16px;width:16px" alt="{lang:remove}" /> </a> </td>
   </tr>
   {stop:banners}
 </table>

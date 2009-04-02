@@ -135,7 +135,7 @@
 	{if:captcha}
 	<tr>
 	  <td class="leftc">{icon:lockoverlay} {lang:security_code} *</td>
-	  <td class="leftb"><img src="mods/captcha/generate.php" alt="" />
+	  <td class="leftb"><img src="{page:path}mods/captcha/generate.php" alt="" />
 	  	<input type="text" name="captcha" value="" size="8" maxlength="8"  />
 	  </td>
 	</tr>

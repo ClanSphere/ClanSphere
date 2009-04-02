@@ -16,7 +16,7 @@
     <td class="headb">{lang:next_match}</td>
   </tr>{loop:cups}
   <tr>
-    <td class="leftb">{if:gameicon_exists}<img src="uploads/games/{cups:games_id}.gif" alt="" />{stop:gameicon_exists}</td>
+    <td class="leftb">{if:gameicon_exists}<img src="{page:path}uploads/games/{cups:games_id}.gif" alt="" />{stop:gameicon_exists}</td>
     <td class="leftb"><a href="{url:cups_view:id={cups:cups_id}}">{cups:cups_name}</a></td>
     <td class="leftb">{cups:nextmatch}</td>
   </tr>{stop:cups}

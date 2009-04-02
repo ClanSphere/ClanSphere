@@ -24,7 +24,7 @@
   </tr>
   {loop:lang_list}
   <tr>
-    <td class="leftc"><img src="symbols/countries/{lang_list:icon}.png" alt="" /> <a href="{lang_list:link}" >{lang_list:name}</a></td>
+    <td class="leftc"><img src="{page:path}symbols/countries/{lang_list:icon}.png" alt="" /> <a href="{lang_list:link}" >{lang_list:name}</a></td>
     <td class="leftc">{lang_list:version}</td>
     <td class="leftc">{lang_list:date}</td>
     <td class="centerc">{lang_list:active}</td>

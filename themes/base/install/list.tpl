@@ -5,7 +5,7 @@
 <div style="padding-left: 25px;">
 
 {loop:languages}
-<img src="symbols/countries/{languages:symbol}.png" alt="" /> <a href="{languages:link}">{languages:name}</a><br />
+<img src="{page:path}symbols/countries/{languages:symbol}.png" alt="" /> <a href="{languages:link}">{languages:name}</a><br />
 <div style="height:3px"></div>
 {stop:languages}
 

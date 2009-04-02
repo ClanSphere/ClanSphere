@@ -35,7 +35,7 @@
       {stop:nopics}
       
       {loop:pictures} 
-        <a href="{pictures:picpath}" target="_blank"><img src="{pictures:thumbpath}" alt="" /></a><br />
+        <a href="{pictures:picpath}" target="_blank"><img src="{page:path}{pictures:thumbpath}" alt="" /></a><br />
         <a href="{url:files_picture:id={file:id}:delete={pictures:id}}">{lang:remove}</a><br />
         <br />
       {stop:pictures} 

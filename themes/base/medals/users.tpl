@@ -11,7 +11,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">{loop:medalsuser}
   <tr>
     <td class="leftb"><a name="{medalsuser:medals_id}"></a>
-      <div style="float:left; width:40%; text-align: center; padding: 5px"><img src="{medalsuser:img_src}" /></div>
+      <div style="float:left; width:40%; text-align: center; padding: 5px"><img src="{page:path}{medalsuser:img_src}" /></div>
       <div style="float:left; width:55%; padding-left: 10px;">
         <u>{medalsuser:medals_name}</u> - <em>{lang:since} {medalsuser:medals_date}</em><br />
         {medalsuser:medals_text}

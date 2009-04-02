@@ -57,17 +57,17 @@
 		<td class="headb" colspan="3">{lang:overview}</td>
 	</tr>
 	<tr>
-		<td class="leftb" style="width:20px"><img src="/symbols/clansphere/green.gif" alt="" /></td>
+		<td class="leftb" style="width:20px"><img src="{page:path}symbols/clansphere/green.gif" alt="" /></td>
 		<td class="rightb">{lang:in}</td>
 		<td class="leftb">{ov:in} {lang:euro}</td>
 	</tr>
 	<tr>
-		<td class="leftb"><img src="/symbols/clansphere/red.gif" alt="" /></td>
+		<td class="leftb"><img src="{page:path}symbols/clansphere/red.gif" alt="" /></td>
 		<td class="rightb">{lang:out}</td>
 		<td class="leftb">{ov:out} {lang:euro}</td>
 	</tr>
 	<tr>
-		<td class="leftc"><img src="/symbols/clansphere/grey.gif" alt="" /></td>
+		<td class="leftc"><img src="{page:path}symbols/clansphere/grey.gif" alt="" /></td>
 		<td class="rightc" style="width:20">{lang:now}</td>
 		<td class="leftc">{ov:now} {lang:euro}</td>
 	</tr>

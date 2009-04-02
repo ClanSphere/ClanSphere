@@ -4,7 +4,7 @@
     <td class="centerb">{servers:hostname}</td>
   </tr>   
   <tr>
-    <td class="centerb"><img src="{servers:map}" alt="" /></td>
+    <td class="centerb"><img src="{page:path}{servers:map}" alt="" /></td>
   </tr> 
   {if:live}
   <tr>

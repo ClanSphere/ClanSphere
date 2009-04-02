@@ -27,12 +27,12 @@
   <td class="leftb">{lang:takeover}</td>
  </tr>
  <tr>
-  <td class="leftb"><img src="symbols/countries/{comment:users_country}.png" alt="" /> {comment:user}</td>
+  <td class="leftb"><img src="{page:path}symbols/countries/{comment:users_country}.png" alt="" /> {comment:user}</td>
   <td class="leftb">{comment:text}</td>
   <td class="leftb">-</td>
  </tr>{loop:comments}
  <tr>
-  <td class="leftc"><img src="symbols/countries/{comments:users_country}.png" alt="" /> {comments:user}</td>
+  <td class="leftc"><img src="{page:path}symbols/countries/{comments:users_country}.png" alt="" /> {comments:user}</td>
   <td class="leftc">{comments:comments_text}</td>
   <td class="leftb"><input type="checkbox" name="comments[]" value="{comments:comments_id}"{comments:checked} /></td>
  </tr>{stop:comments}

@@ -30,7 +30,7 @@
           <option value="{games:games_id}">{games:games_name}</option>
         {stop:games}
       </select>
-      <img src="uploads/games/0.gif" id="game_1" alt="" />
+      <img src="{page:path}uploads/games/0.gif" id="game_1" alt="" />
       - <a href="{url:games_create}">{lang:create}</a>
     </td>
   </tr>  

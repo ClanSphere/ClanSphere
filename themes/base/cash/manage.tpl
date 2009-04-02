@@ -38,17 +38,17 @@
 		<td class="leftb"><a href="{url:cash_view_cash}">{ov:view_cash}</a></td>
 	</tr>
 	<tr>
-		<td class="leftb"><img src="symbols/clansphere/green.gif" alt="" /></td>
+		<td class="leftb"><img src="{page:path}symbols/clansphere/green.gif" alt="" /></td>
 		<td class="rightb">{lang:in}</td>
 		<td class="leftb">{ov:in} {lang:euro}</td>
 	</tr>
 	<tr>
-		<td class="leftb"><img src="symbols/clansphere/red.gif" alt="" /></td>
+		<td class="leftb"><img src="{page:path}symbols/clansphere/red.gif" alt="" /></td>
 		<td class="rightb">{lang:out}</td>
 		<td class="leftb">{ov:out} {lang:euro}</td>
 	</tr>
 	<tr>
-		<td class="leftc"><img src="symbols/clansphere/grey.gif" alt="" /></td>
+		<td class="leftc"><img src="{page:path}symbols/clansphere/grey.gif" alt="" /></td>
 		<td class="rightc">{lang:now}</td>
 		<td class="leftc">{ov:now} {lang:euro}</td>
 	</tr>
@@ -62,17 +62,17 @@
 		<td class="headb" colspan="3">{lang:mod} - {lang:user}</td>
 	</tr>
 	<tr>
-		<td class="leftb" style="width:20px"><img src="/symbols/clansphere/green.gif" alt="" /></td>
+		<td class="leftb" style="width:20px"><img src="{page:path}symbols/clansphere/green.gif" alt="" /></td>
 		<td class="rightb">{lang:payments_in}</td>
 		<td class="leftb">{ov:in} {lang:euro}</td>
 	</tr>
 	<tr>
-		<td class="leftb"><img src="/symbols/clansphere/red.gif" alt="" /></td>
+		<td class="leftb"><img src="{page:path}symbols/clansphere/red.gif" alt="" /></td>
 		<td class="rightb">{lang:out}</td>
 		<td class="leftb">{ov:out} {lang:euro}</td>
 	</tr>
 	<tr>
-		<td class="leftc"><img src="/symbols/clansphere/grey.gif" alt="" /></td>
+		<td class="leftc"><img src="{page:path}symbols/clansphere/grey.gif" alt="" /></td>
 		<td class="rightc">{lang:now}</td>
 		<td class="leftc">{ov:now} {lang:euro}</td>
 	</tr>
