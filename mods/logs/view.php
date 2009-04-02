@@ -28,7 +28,7 @@ closedir($handle);
 
 $data['logs'] = array();
 
-if(!empty($temp_file)) {
+if(!empty($temp_file) AND isset($temp_file[$log])) {
 
   if($sort == 2)
     rsort($temp_file);
