@@ -13,8 +13,9 @@
 	</tr>		
 	{if:wizard}
 	<tr>
-		<td class="leftc" colspan="3">{lang:wizard} : {wizard:show} - {wizard:task_done}</td>{stop:wizard}
+		<td class="leftc" colspan="3">{lang:wizard} : {wizard:show} - {wizard:task_done}</td>
 	</tr>
+  {stop:wizard}
 </table>
 </form>
 <br />
