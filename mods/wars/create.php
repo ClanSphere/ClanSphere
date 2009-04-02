@@ -198,9 +198,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['upcoming']['selection'] = $cs_wars['wars_status'] != 'upcoming' ? '' : ' selected="selected"';
   $data['running']['selection'] = $cs_wars['wars_status'] != 'running' ? '' : ' selected="selected"';
   $data['canceled']['selection'] = $cs_wars['wars_status'] != 'canceled' ? '' : ' selected="selected"';
-  $data['played']['selection'] = $cs_wars['wars_status'] != 'played' ? '' : ' selected="selected"';
-
-  $data['img']['game'] = cs_html_img('uploads/games/0.gif',0,0,'id="game_1"');
+  $data['played']['selection'] = $cs_wars['wars_status'] != 'played' ? '' : ' selected="selected"';  
 
   $data['value']['close_check'] = empty($cs_wars['wars_close']) ? '' : 'checked="checked"';
 

@@ -29,8 +29,7 @@
         {loop:games}
           <option value="{games:games_id}">{games:games_name}</option>
         {stop:games}
-      </select>
-      <img src="{page:path}uploads/games/0.gif" id="game_1" alt="" />
+      </select>      
       - <a href="{url:games_create}">{lang:create}</a>
     </td>
   </tr>  

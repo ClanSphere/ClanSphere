@@ -106,8 +106,7 @@
 	   {loop:games}
 	     <option value="{games:short}"{games:selection}>{games:name}</option>
 	   {stop:games}
-	    </select>
-	   {join:games_url}
+	    </select>	   
 	  </td>
 	</tr>
 	<tr>
