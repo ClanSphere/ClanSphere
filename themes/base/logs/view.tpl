@@ -20,6 +20,7 @@
 <br />
 
 <a href="#log_1" id="log_1"></a>
+
 {if:error}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
@@ -27,15 +28,15 @@
     <td class="leftb">{log:date} / {log:time}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:mail_generic} {lang:name}</td>
+    <td class="leftc">{icon:stop} {lang:error}</td>
     <td class="leftb">{log:message}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:access} {lang:error}</td>
+    <td class="leftc">{icon:folder_yellow} {lang:dname}</td>
     <td class="leftb">{log:file}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:access} {lang:error_2}</td>
+    <td class="leftc">{icon:webexport} {lang:error_2}</td>
     <td class="leftb">{log:file2}</td>
   </tr>
   <tr>
@@ -43,7 +44,7 @@
     <td class="leftb">{log:ip}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:history} {lang:browser}</td>
+    <td class="leftc">{icon:web} {lang:browser}</td>
     <td class="leftb">{log:browser}</td>
   </tr>
 </table>
