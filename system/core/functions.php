@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_error($file,$message) {
+function cs_error($file, $message, $log_only = 0) {
 
   global $cs_logs;
   if(!empty($cs_logs['save_errors'])) {
@@ -13,7 +13,8 @@ function cs_error($file,$message) {
     $log .= $_SERVER['HTTP_USER_AGENT'] . "\n";
     cs_log('errors',$log);
   }
-  $cs_logs['errors'] .= 'Error: ' . $file . ' -> ' . $message . "\n";
+  if(empty($log_only))
+    $cs_logs['errors'] .= 'Error: ' . $file . ' -> ' . $message . "\n";
 }
 
 function cs_error_internal($error = 0, $report = 0) {
@@ -244,8 +245,7 @@ function cs_getip () {
 // Log_error
 function php_error($errno, $errmsg, $filename, $linenum) {
  
-  global $cs_main;
-  global $cs_logs;
+  global $cs_logs, $cs_main;
  
   $errortype = Array(
     E_ERROR    => 'Error',
@@ -268,6 +268,7 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   $error = $errortype[$errno] . ": " . $errmsg . " in " . $filename . " on line " . $linenum . "\r\n";
   $cs_logs['php_errors'] = empty($cs_logs['php_errors']) ? '' : $cs_logs['php_errors'];
   $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
+  cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . '-> ' . $errmsg, 1);
 }
 
 ?>
