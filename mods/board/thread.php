@@ -598,7 +598,7 @@ $data['if']['thread_desc_files'] = false;
 $data['thread_desc']['signature'] = '';
 $data['thread_desc']['checkedit'] = '';
 
-if($board_sort=='DESC' AND $current==1)
+if($board_sort=='DESC')
 {      
   $data['if']['sort_desc'] = true; 
   $userid = $data['thread']['users_id'];  
