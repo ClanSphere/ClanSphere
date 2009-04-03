@@ -67,7 +67,7 @@ function cs_catsort ($array, $id = 0) {
   $order = 1;
   
   for ($i = 0; $i < $count; $i++) {
-    if (empty($array[$i]['categories_subid'])) {
+  	if (empty($array[$i]['categories_subid'])) {
       $array[$i]['layer'] = 0;
       $result[] = $array[$i];
     } else {
@@ -76,6 +76,11 @@ function cs_catsort ($array, $id = 0) {
         $subid = $array[$i]['categories_subid'];
       }
       $pos = multiarray_search($result, 'categories_id', $array[$i]['categories_subid']);
+      if ($pos === false) {
+      	$count++;
+      	$array[] = $array[$i];
+      	continue;
+      }
       $array[$i]['layer'] = $result[$pos]['layer'] + 1;
       $result = array_merge(array_slice($result, 0, $pos + $order), array($array[$i]), array_slice($result, $pos + $order));
       $order++;
