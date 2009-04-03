@@ -53,26 +53,23 @@ if(!empty($cs_categories)) {
     if(!empty($cs_board)) {
     
       for($board_run = 0; $board_run < $loop_board; $board_run++) {     
-      $data['cat'][$run]['board'][$board_run]['board_name'] = cs_secure($cs_board[$board_run]['board_name']);
-          $data['cat'][$run]['board'][$board_run]['board_order'] = cs_secure($cs_board[$board_run]['board_order']);
+        $data['cat'][$run]['board'][$board_run]['board_name'] = cs_secure($cs_board[$board_run]['board_name']);
+        $data['cat'][$run]['board'][$board_run]['board_order'] = cs_secure($cs_board[$board_run]['board_order']);
 
-      if($cs_board[$board_run]['board_order'] != 0) {
-        $data['cat'][$run]['board'][$board_run]['board_up'] = cs_html_img('symbols/clansphere/down_arrow.png') . ' ' . cs_link($cs_lang['down'],'board','sort','board='.$cs_board[$board_run]['board_id'] . '&order=' . ($cs_board[$board_run]['board_order']-1)); 
-      }
-      else {
-        $data['cat'][$run]['board'][$board_run]['board_up'] = '';
-      }
+        if($cs_board[$board_run]['board_order'] != 0)
+          $data['cat'][$run]['board'][$board_run]['board_up'] = cs_html_img('symbols/clansphere/down_arrow.png') . ' ' . 
+            cs_link($cs_lang['down'],'board','sort','board='.$cs_board[$board_run]['board_id'] . '&order=' . ($cs_board[$board_run]['board_order']-1)); 
+        else
+          $data['cat'][$run]['board'][$board_run]['board_up'] = '';
 
-      if($cs_board[$board_run]['board_order'] <= 9999) {
-        $data['cat'][$run]['board'][$board_run]['board_down'] = cs_html_img('symbols/clansphere/up_arrow.png') . ' ' . cs_link($cs_lang['up'],'board','sort','board=' . $cs_board[$board_run]['board_id'] . '&order=' . ($cs_board[$board_run]['board_order']+1));
-      }
-      else {
-        $data['cat'][$run]['board'][$board_run]['board_down'] = '';
-      }    
+        if($cs_board[$board_run]['board_order'] <= 9999)
+          $data['cat'][$run]['board'][$board_run]['board_down'] = cs_html_img('symbols/clansphere/up_arrow.png') . ' ' . 
+            cs_link($cs_lang['up'],'board','sort','board=' . $cs_board[$board_run]['board_id'] . '&order=' . ($cs_board[$board_run]['board_order']+1));
+        else
+          $data['cat'][$run]['board'][$board_run]['board_down'] = ''; 
       }     
-    }
-    else {
-      $data['board'] = '';
+    } else {
+      $data['cat'][$run]['board'] = array();
     }
   }
 }
