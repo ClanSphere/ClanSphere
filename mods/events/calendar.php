@@ -12,14 +12,14 @@ $year = !empty($_GET['year']) ? $_GET['year'] : cs_datereal('Y');
 if(1970 > $year) { $year = 1970; } # unixtime start
 elseif(2037 < $year) { $year = 2037; } # limited by current operating systems 
 $month = !empty($_GET['month']) ? $_GET['month'] : cs_datereal('n');
-$zero = (int) date('m', mktime(0, 0, 0, $month, 1, $year));
+$zero = date('m', mktime(0, 0, 0, $month, 1, $year));
 $days = date('t', mktime(0, 0, 0, $month, 1, $year));
 $first = date('w', mktime(0, 0, 0, $month, 1, $year));
 $min = cs_datereal('U',mktime(0, 0, 0, $month, 1, $year));
 $max = cs_datereal('U',mktime(23, 59, 59, $month, $days, $year));
 
 
-$like = "users_age LIKE '%-" . $zero . "-%' AND users_hidden NOT LIKE '%users_age%'";
+$like = "users_age LIKE '%-" . (int) $zero . "-%' AND users_hidden NOT LIKE '%users_age%'";
 $birthdays = cs_sql_select(__FILE__,'users','users_age',$like,0,0,0);
 
 if(is_array($birthdays)) {
