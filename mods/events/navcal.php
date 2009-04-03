@@ -13,7 +13,7 @@ $year = !empty($_GET['year']) ? $_GET['year'] : cs_datereal('Y');
 if(1970 > $year) { $year = 1970; } # unixtime start
 elseif(2037 < $year) { $year = 2037; } # limited by current operating systems 
 $month = !empty($_GET['month']) ? $_GET['month'] : cs_datereal('n');
-$zero = date('m', mktime(0, 0, 0, $month, 1, $year));
+$zero = (int) date('m', mktime(0, 0, 0, $month, 1, $year));
 $days = date('t', mktime(0, 0, 0, $month, 1, $year));
 $first = date('w', mktime(0, 0, 0, $month, 1, $year));
 $min = cs_datereal('U',mktime(0, 0, 0, $month, 1, $year));
@@ -24,8 +24,7 @@ $birthdays = cs_sql_select(__FILE__,'users','users_age',$like,0,0,0);
 
 if(is_array($birthdays)) {
   foreach($birthdays AS $key => $value) {
-    $new_key = substr($value['users_age'], 8, 10);
-    settype($new_key,'integer');
+    $new_key = (int) substr(strrchr($value['users_age'],'-'),1);
     $events[$new_key] = 0;
   }
 }
