@@ -53,9 +53,9 @@ if(isset($_POST['submit'])) {
   
   $op_users = cs_sql_option(__FILE__,'users');
   
-  if($nickchars<$op_users['min_letters']) {
+  if($nickchars < $op_users['min_letters']) {
     $error++;
-    $errormsg .= $cs_lang['short_nick'] . cs_html_br(1);
+    $errormsg .= sprintf($cs_lang['short_nick'], $op_users['min_letters']) . cs_html_br(1);
   }
   if(empty($account['users_id'])) {
     $pwd2 = str_replace(' ','',$data['join']['users_pwd']);

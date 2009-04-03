@@ -29,7 +29,7 @@ $cs_lang['squad'] = 'Squad';
 $cs_lang['url'] = 'Homepage';
 
 $cs_lang['no_nick'] = '- Der Nick ist eine Pflichtangabe';
-$cs_lang['short_nick'] = '- Der Nick ist zu kurz (min. 4)';
+$cs_lang['short_nick'] = '- Der Nick ist zu kurz (min. %d)';
 $cs_lang['email_false'] = '- Die E-Mail-Adresse ist ung&uuml;ltig';
 $cs_lang['no_clan'] = '- Der Clan ist eine Pflichtangabe';
 $cs_lang['no_short'] = '- Das K&uuml;rzel ist eine Pflichtangabe';

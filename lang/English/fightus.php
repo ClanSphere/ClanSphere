@@ -29,7 +29,7 @@ $cs_lang['squad'] = 'Squad';
 $cs_lang['url'] = 'Homepage';
 
 $cs_lang['no_nick'] = '- Nickname is requirement';
-$cs_lang['short_nick'] = '- Nickname is too short (min. 4)';
+$cs_lang['short_nick'] = '- Nickname is too short (min. %d)';
 $cs_lang['email_false'] = '- Invalid email address';
 $cs_lang['no_clan'] = '- Clan is a requirement';
 $cs_lang['no_short'] = '- Short is requirement';

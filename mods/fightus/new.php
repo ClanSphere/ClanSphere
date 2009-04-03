@@ -40,8 +40,8 @@ if(isset($_POST['submit'])) {
   
   if(empty($cs_fightus['fightus_nick'])) {
     $error .= $cs_lang['no_nick'] . cs_html_br(1);
-  } elseif($nickchars<$op_users['min_letters']) {
-    $error .= $cs_lang['short_nick'] . cs_html_br(1);
+  } elseif($nickchars < $op_users['min_letters']) {
+    $error .= sprintf($cs_lang['short_nick'], $op_users['min_letters']) . cs_html_br(1);
   }
   if(empty($cs_fightus['fightus_clan'])) {
     $error .= $cs_lang['no_clan'] . cs_html_br(1);
