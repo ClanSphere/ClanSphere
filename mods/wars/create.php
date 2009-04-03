@@ -200,6 +200,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['canceled']['selection'] = $cs_wars['wars_status'] != 'canceled' ? '' : ' selected="selected"';
   $data['played']['selection'] = $cs_wars['wars_status'] != 'played' ? '' : ' selected="selected"';  
 
+	$data['img']['game'] = cs_html_img('uploads/games/0.gif',0,0,'id="game_1"');
+
   $data['value']['close_check'] = empty($cs_wars['wars_close']) ? '' : 'checked="checked"';
 
   echo cs_subtemplate(__FILE__,$data,'wars','create_1');

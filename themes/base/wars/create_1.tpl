@@ -16,7 +16,8 @@
     <select name="games_id"  onchange="cs_gamechoose(this.form)">
      <option value="0">----</option>{loop:games}
      <option value="{games:games_id}"{games:selection}>{games:games_name}</option>{stop:games}
-    </select>    
+    </select>
+	{img:game}
 	 - <a href="{url:games_create}">{lang:create}</a>
   </td>
  </tr>
