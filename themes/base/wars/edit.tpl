@@ -53,7 +53,7 @@
 	</tr>
 	{loop:player}
 	<tr>
-		<td class="leftc">{icon:personal} {lang:players} {player:x}</td>
+		<td class="leftc">{icon:personal} {lang:players} {player:x2}</td>
 		<td class="leftb">
 			<input type="text" name="player{player:x}" value="{player:player_name}" maxlength="35" size="25" /> -
 			{player:user_sel}

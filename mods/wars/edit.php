@@ -154,7 +154,8 @@ if (!empty($error) or !isset($_POST['submit'])) {
 
   
   for ($x = 0; $x < $players; $x++) {
-    $data['player'][$x]['x'] = $x + 1;
+    $data['player'][$x]['x'] = $x;
+    $data['player'][$x]['x2'] = $x+1;
     $data['player'][$x]['player_name'] = $cs_players[$x];
     $data['player'][$x]['user_sel'] = cs_dropdown('playerid' . $x, 'users_nick', $cs_members, 0, 'users_id');
   }
