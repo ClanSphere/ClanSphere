@@ -11,9 +11,7 @@ require_once 'system/core/functions.php';
 
 cs_init($cs_main);
 
-chdir('mods/categories/');
-
-require 'functions.php';
+require 'mods/categories/functions.php';
 
 $mod = cs_sql_escape($_GET['mod']);
 

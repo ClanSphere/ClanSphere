@@ -25,7 +25,7 @@
 	<tr>
 		<td class="leftc">{icon:kcmdf} {lang:modul} *</td>
 		<td class="leftb">
-			<select name="categories_mod" onchange="javascript: cs_ajax_getcontent('mods/categories/getcats.php?mod='+this.value,'cat_dropdown')">
+			<select name="categories_mod" onchange="javascript: cs_ajax_getcontent('{page:path}mods/categories/getcats.php?mod='+this.value,'cat_dropdown')">
 				{loop:mod}
 				{mod:sel}
 				{stop:mod}
