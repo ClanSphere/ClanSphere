@@ -190,40 +190,32 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
 
 function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, $sql_where = 0) {
 
-    global $cs_db;
-    settype($sql_id, 'integer');
-    $max = count($sql_cells);
-    $set = ' SET ';
-    for ($run = 0; $run < $max; $run++) {
-      $set .= $sql_cells[$run] . "='" . mysql_real_escape_string($sql_content[$run], $cs_db['con']);
-      if ($run != $max - 1) {
-          $set .= "', ";
-      }
+  global $cs_db;
+  settype($sql_id, 'integer');
+  $max = count($sql_cells);
+  $set = ' SET ';
+  for ($run = 0; $run < $max; $run++) {
+    $set .= $sql_cells[$run] . "='" . mysql_real_escape_string($sql_content[$run], $cs_db['con']);
+    if ($run != $max - 1) {
+        $set .= "', ";
     }
-    $set .= "' ";
+  }
+  $set .= "' ";
 
-    $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
-    if (empty($sql_where)) {
-      $sql_update .= $sql_table . "_id='" . $sql_id . "'";
-    }
-    else {
-      $sql_update .= $sql_where;
-    }
-    mysql_query($sql_update, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_update', mysql_error($cs_db['con']));
+  $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
+  if (empty($sql_where)) {
+    $sql_update .= $sql_table . "_id='" . $sql_id . "'";
+  }
+  else {
+    $sql_update .= $sql_where;
+  }
+  mysql_query($sql_update, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_update', mysql_error($cs_db['con']));
 
-    $action = 1;
-    if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
-      $action = 0;
-    }
-    cs_log_sql($cs_file, $sql_update, $action);
-    if($sql_table == 'options') {
-      $content = cs_paths('uploads/cache');
-      unset($content['index.html']);
-      unset($content['.htaccess']);
-      foreach($content AS $file => $name) {
-        unlink('uploads/cache/' . $file);
-      }
-    }
+  $action = 1;
+  if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
+    $action = 0;
+  }
+  cs_log_sql($cs_file, $sql_update, $action);
 }
 
 function cs_sql_version($cs_file)
