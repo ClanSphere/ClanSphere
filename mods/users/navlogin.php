@@ -32,7 +32,7 @@ if(empty($login['mode'])) {
 }
 else {
 
-  $where_msg = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receiver = 1 AND messages_view = 0";
+  $where_msg = 'users_id_to = "' . $account['users_id'] . '" AND messages_show_receiver = "1" AND messages_view = "0"';
   $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
 
   $data['lang']['home'] = $cs_lang['home'];
@@ -57,7 +57,7 @@ else {
 
     if($account['access_contact'] >= 3) {
 
-      $where_mail = "mail_answered = 0";
+      $where_mail = 'mail_answered = "0"';
       $mail_count_new = cs_sql_count(__FILE__,'mail',$where_mail);
 
       $data['link']['contact'] .= cs_link($cs_lang['contact'],'contact','manage');

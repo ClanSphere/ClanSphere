@@ -20,7 +20,7 @@ if(!empty($cat_id)) {
 $start = empty($_REQUEST['start']) ? 0 : (int)$_REQUEST['start'];
 
 $newsmod = "categories_mod = 'news' AND categories_access <= " . $account['access_news'];
-$cat_data = cs_sql_select(__FILE__, 'categories', '*', $newsmod, 'categories_name', 0, 0);
+$cat_data = cs_sql_select(__FILE__, 'categories', 'categories_name, categories_id', $newsmod, 'categories_name', 0, 0);
 $data['head']['dropdown'] = cs_dropdown('where', 'categories_name', $cat_data, $cat_id, 'categories_id');
 $join = 'news nws INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
 $news_count = cs_sql_count(__FILE__, $join, $where, 'news_id');

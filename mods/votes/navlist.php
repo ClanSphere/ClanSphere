@@ -25,9 +25,9 @@ $votes_loop = count($cs_votes);
 $votes_id = $cs_votes['votes_id'];
 
 if(!empty($votes_loop)) {
-  $where = "voted_mod = 'votes' AND voted_fid = '" . $votes_id . "' AND voted_ip = '" . $users_ip . "'";
+  $where = "voted_mod = 'votes' AND voted_fid = \"" . $votes_id . "\" AND voted_ip = '" . $users_ip . "'";
   if($users_id > 0) {
-    $where = "voted_mod = 'votes' AND voted_fid = '" . $votes_id . "' AND users_id = '" . $users_id . "'";
+    $where = "voted_mod = 'votes' AND voted_fid = \"" . $votes_id . "\" AND users_id = \"" . $users_id . "\"";
   }
   $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
 }
@@ -120,7 +120,7 @@ if(isset($_POST['submit_votes']) ) {
 if(!empty($cs_votes) AND !empty($votes_form)) {
   $from = 'voted';
   $select = 'voted_id, users_id, voted_ip, voted_answer';
-  $where = "voted_fid = '$votes_id' AND voted_mod = 'votes'";
+  $where = "voted_fid = \"" . $votes_id . "\" AND voted_mod = 'votes'";
   $cs_voted = cs_sql_select(__FILE__,$from,$select,$where,'','0','0');
   $voted_loop = count($cs_voted);
   $check_user_voted = 0;
