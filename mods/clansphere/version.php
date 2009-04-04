@@ -39,12 +39,4 @@ else {
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','version');
 
-if($account['access_clansphere'] == 5) {
-
-  require_once 'mods/clansphere/functions.php';
-
-  $id = empty($_GET['sec_news']) ? 0 : (int) $_GET['sec_news'];
-  echo cs_cspnews($id);
-}
-
 ?>

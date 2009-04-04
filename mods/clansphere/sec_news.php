@@ -1,7 +1,8 @@
 <?php
-/**
- * PHP Template.
- */
-require_once('mods/clansphere/functions.php');    
-echo cs_cspnews(0,1);
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
+require_once 'mods/clansphere/sec_func.php';
+echo cs_cspnews(1);
+
 ?>

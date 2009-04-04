@@ -9,44 +9,44 @@ function cs_revert_script_braces($hits) {
 
 function cs_looptemplate($source, $string, $data)
 {
-    foreach ($data as $subname => $subdata)
+  foreach ($data as $subname => $subdata)
+  {
+    if (empty($subdata) or isset($subdata[0]) and is_array($subdata[0]))
     {
-        if (empty($subdata) or isset($subdata[0]) and is_array($subdata[0]))
+      $pattern = "=(.*){loop:" . $subname . "}(.*?){stop:" . $subname . "}(.*)=si";
+      $content = array();
+      preg_match_all($pattern, $string, $content);
+      if (isset($content[1][0]) and isset($content[2][0]) and isset($content[3][0]))
+      {
+        $string = $content[1][0];
+        if (!empty($subdata))
         {
-            $pattern = "=(.*){loop:" . $subname . "}(.*?){stop:" . $subname . "}(.*)=si";
-            $content = array();
-            preg_match_all($pattern, $string, $content);
-            if (isset($content[1][0]) and isset($content[2][0]) and isset($content[3][0]))
+          foreach ($subdata as $loopdata)
+          {
+            $new_content = cs_conditiontemplate($content[2][0], $loopdata);
+            foreach ($loopdata as $name => $value)
             {
-                $string = $content[1][0];
-                if (!empty($subdata))
-                {
-                    foreach ($subdata as $loopdata)
-                    {
-                        $new_content = cs_conditiontemplate($content[2][0], $loopdata);
-                        foreach ($loopdata as $name => $value)
-                        {
-                          $new_content = !is_array($value) ? str_replace('{' . $subname . ':' . $name . '}', $value, $new_content) : $new_content = cs_looptemplate($source, $new_content, array($name => $value));
-                        }
-                        $string .= $new_content;
-                    }
-                }
-                $string .= $content[3][0];
+              $new_content = !is_array($value) ? str_replace('{' . $subname . ':' . $name . '}', $value, $new_content) : $new_content = cs_looptemplate($source, $new_content, array($name => $value));
             }
-            else
-            {
-                cs_error($source, 'cs_subtemplate - Loop not found: "' . $subname . '"');
-            }
+            $string .= $new_content;
+          }
         }
-        elseif (is_array($subdata))
-        {
-            foreach ($subdata as $name => $value)
-            {
-                $string = str_replace('{' . $subname . ':' . $name . '}', $value, $string);
-            }
-        }
+        $string .= $content[3][0];
+      }
+      else
+      {
+        cs_error($source, 'cs_subtemplate - Loop not found: "' . $subname . '"');
+      }
     }
-    return $string;
+    elseif (is_array($subdata))
+    {
+      foreach ($subdata as $name => $value)
+      {
+          $string = str_replace('{' . $subname . ':' . $name . '}', $value, $string);
+      }
+    }
+  }
+  return $string;
 }
 
 function cs_conditiontemplate($string, $data)
@@ -228,138 +228,144 @@ function cs_scriptload($mod, $type, $file) {
 
 function cs_template($cs_micro, $tpl_file = 'index.htm')
 {
-    global $account, $cs_logs, $cs_main, $com_lang;
-    $wp = $cs_main['php_self']['dirname'];
-    $mod = $cs_main['mod'];
-    $action = $cs_main['action'];
-    $get_axx = 'mods/' . $mod . '/access.php';
+  global $account, $cs_logs, $cs_main, $com_lang;
+  $wp = $cs_main['php_self']['dirname'];
+  $mod = $cs_main['mod'];
+  $action = $cs_main['action'];
+  $get_axx = 'mods/' . $mod . '/access.php';
 
-    if (!file_exists($cs_main['show'])) {
-        cs_error($cs_main['show'], 'cs_template - File not found');
-        $cs_main['show'] = 'mods/errors/404.php';
-    } elseif (!file_exists($get_axx)) {
-        cs_error($get_axx, 'cs_template - Access file not found');
-        $cs_main['show'] = 'mods/errors/403.php';
-    } else {
-        $axx_file = array();
-        include($get_axx);
-        if (!isset($axx_file[$action])) {
-            cs_error($cs_main['show'], 'cs_template - No access defined for target file');
-            $cs_main['show'] = 'mods/errors/403.php';
-        } elseif (!isset($account['access_' . $mod])) {
-            cs_error($cs_main['show'], 'cs_template - No module access defined in database');
-            $cs_main['show'] = 'mods/errors/403.php';
-        } elseif ($account['access_' . $mod] < $axx_file[$action]) {
-            $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
-        }
+  if (!file_exists($cs_main['show'])) {
+    cs_error($cs_main['show'], 'cs_template - File not found');
+    $cs_main['show'] = 'mods/errors/404.php';
+  } elseif (!file_exists($get_axx)) {
+    cs_error($get_axx, 'cs_template - Access file not found');
+    $cs_main['show'] = 'mods/errors/403.php';
+  } else {
+    $axx_file = array();
+    include($get_axx);
+    if (!isset($axx_file[$action])) {
+      cs_error($cs_main['show'], 'cs_template - No access defined for target file');
+      $cs_main['show'] = 'mods/errors/403.php';
+    } elseif (!isset($account['access_' . $mod])) {
+      cs_error($cs_main['show'], 'cs_template - No module access defined in database');
+      $cs_main['show'] = 'mods/errors/403.php';
+    } elseif ($account['access_' . $mod] < $axx_file[$action]) {
+      $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
     }
+  }
 
-    if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < 3)
-    {
-        $cs_main['show'] = 'mods/users/login.php';
-        $tpl_file = 'login.htm';
-    }
+  if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < 3)
+  {
+    $cs_main['show'] = 'mods/users/login.php';
+    $tpl_file = 'login.htm';
+  }
 
-    $cs_main['template'] = empty($account['users_tpl']) ? $cs_main['def_tpl'] : $account['users_tpl'];
-    if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
-    if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); }
+  $cs_main['template'] = empty($account['users_tpl']) ? $cs_main['def_tpl'] : $account['users_tpl'];
+  if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
+  if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); }
 
-    $tpl_path = 'templates/' . $cs_main['template'];
-    if (!file_exists($tpl_path . '/' . $tpl_file))
-    {
-        cs_error($tpl_path . '/' . $tpl_file, 'cs_template - Template not found');
-        $msg = 'Template not found: ' . $tpl_path . '/' . $tpl_file;
-        if($tpl_file != 'error.htm')
-          die(cs_error_internal('tpl', $msg));
-        else
-          die($msg);
-    }
-    $cs_temp_get = file_get_contents($tpl_path . '/' . $tpl_file);
-    $tpl_path = $wp . $tpl_path;
+  $tpl_path = 'templates/' . $cs_main['template'];
+  if (!file_exists($tpl_path . '/' . $tpl_file))
+  {
+    cs_error($tpl_path . '/' . $tpl_file, 'cs_template - Template not found');
+    $msg = 'Template not found: ' . $tpl_path . '/' . $tpl_file;
+    if($tpl_file != 'error.htm')
+      die(cs_error_internal('tpl', $msg));
+    else
+      die($msg);
+  }
+  $cs_temp_get = file_get_contents($tpl_path . '/' . $tpl_file);
+  $tpl_path = $wp . $tpl_path;
 
-    $pattern = "=\<link(.*?)href\=\"(?!http)(.*?)\"(.*?)\>=i";
-    $cs_temp_get = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $cs_temp_get);
-    $pattern = "=background\=\"(?!http)(.*?)\"=i";
-    $cs_temp_get = preg_replace($pattern, "background=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
-    $pattern = "=src\=\"(?!http)(.*?)\"=i";
-    $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
+  $pattern = "=\<link(.*?)href\=\"(?!http)(.*?)\"(.*?)\>=i";
+  $cs_temp_get = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $cs_temp_get);
+  $pattern = "=background\=\"(?!http)(.*?)\"=i";
+  $cs_temp_get = preg_replace($pattern, "background=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
+  $pattern = "=src\=\"(?!http)(.*?)\"=i";
+  $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
 
-    cs_scriptload('clansphere', 'javascript', 'js/clansphere.js');
-    cs_scriptload('clansphere', 'javascript', 'js/ajax.js');
+  cs_scriptload('clansphere', 'javascript', 'js/clansphere.js');
+  cs_scriptload('clansphere', 'javascript', 'js/ajax.js');
 
-    global $cs_main;
-    $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
-    $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
+  global $cs_main;
+  $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
+  $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
-    if (!empty($account['users_ajax']) && !empty($account['access_ajax'])) {
-      $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
-      $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);
-      $content = strpos($cs_temp_get,'id="content"') === false ? '<div id="content"></div>' : '';
-      $ajaxes = explode(',',$cs_main['ajax_navlists']);
-      if (!empty($cs_main['debug'])) {
-        $ajaxes[] = 'func_parse';
-        $ajaxes[] = 'func_queries';
-       }
-      if (!empty($ajaxes)) {
-        if (strpos($cs_temp_get,'id="cs_users_navlogin"') === false)
-          $cs_temp_get = str_replace(array('{users:navlogin}','{users:navlogin2}','{users:navlogin}3','{users:navlogin4}'),array('<div id="cs_users_navlogin">{users:navlogin}</div>','<div id="cs_users_navlogin2">{users:navlogin2}</div>','<div id="cs_users_navlogin3">{users:navlogin3}</div>','<div id="cs_users_navlogin4">{users:navlogin4}</div>'),$cs_temp_get);
-        $spans = array('count_navday','count_navone','count_navall','count_navmon','func_parse','func_queries');
-        foreach ($ajaxes as $ajax) {
-          $placeholder = '{'.str_replace('_',':',$ajax).'}';
-          if (strpos($cs_temp_get,'id="cs_'.$ajax.'"') === false) {
-            $el = !in_array($ajax,$spans) ? 'div' : 'span';
-            $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_'.$ajax.'">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
-        }
-      }
-    }
-    if (empty($account['users_ajax']) || empty($account['access_ajax'])) {
-      $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
-      $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
-    }
-    $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
-    $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
-    $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $cs_temp_get);
-
-    // Set title proper related to module
-    if (!empty($cs_main['mod']))
-        $cs_main['def_title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_main['mod']);
-
-    $cs_main['def_title'] = htmlspecialchars($cs_main['def_title'], ENT_QUOTES);
-    $cs_temp_get = str_replace('{func:title}', $cs_main['def_title'], $cs_temp_get);
-    $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
-    $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
-
-    $logsql = '';
-    if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
-      $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
-      $cs_logs['errors'] = nl2br($cs_logs['errors']);
-      foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
-        $logsql .= cs_html_big(1) . $sql_file . cs_html_big(0) . cs_html_br(1);
-        $logsql .= nl2br(htmlentities($sql_queries, ENT_QUOTES, $com_lang['charset']));
-      }
-    }
-    else {
-      $cs_logs['php_errors'] = '';
-      $cs_logs['errors'] = 'Developer mode is turned off';
-    }
-
+  if (!empty($account['users_ajax']) && !empty($account['access_ajax'])) {
+    $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
+    $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);
+    $content = strpos($cs_temp_get,'id="content"') === false ? '<div id="content"></div>' : '';
+    $ajaxes = explode(',',$cs_main['ajax_navlists']);
     if (!empty($cs_main['debug'])) {
-        $data = array('data');
-        $data['data']['log_sql'] = $logsql;
-        $data['data']['php_errors'] = $cs_logs['php_errors'];
-        $data['data']['csp_errors'] = $cs_logs['errors'];
-        $script = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
-        $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
+      $ajaxes[] = 'func_parse';
+      $ajaxes[] = 'func_queries';
+     }
+    if (!empty($ajaxes)) {
+      if (strpos($cs_temp_get,'id="cs_users_navlogin"') === false)
+        $cs_temp_get = str_replace(array('{users:navlogin}','{users:navlogin2}','{users:navlogin}3','{users:navlogin4}'),array('<div id="cs_users_navlogin">{users:navlogin}</div>','<div id="cs_users_navlogin2">{users:navlogin2}</div>','<div id="cs_users_navlogin3">{users:navlogin3}</div>','<div id="cs_users_navlogin4">{users:navlogin4}</div>'),$cs_temp_get);
+      $spans = array('count_navday','count_navone','count_navall','count_navmon','func_parse','func_queries');
+      foreach ($ajaxes as $ajax) {
+        $placeholder = '{'.str_replace('_',':',$ajax).'}';
+        if (strpos($cs_temp_get,'id="cs_'.$ajax.'"') === false) {
+          $el = !in_array($ajax,$spans) ? 'div' : 'span';
+          $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_'.$ajax.'">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
+      }
     }
+  }
+  if (empty($account['users_ajax']) || empty($account['access_ajax'])) {
+    $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
+    $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
+  }
 
-    $cs_temp_get = str_replace('{func:errors}', $cs_logs['php_errors'] . $cs_logs['errors'], $cs_temp_get);
-    $cs_temp_get = str_replace('{func:sql}', $logsql, $cs_temp_get);
-    $getparse = cs_parsetime($cs_micro);
-    $cs_temp_get = str_replace('{func:parse}', $getparse, $cs_temp_get);
-    $getmemory = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
-    if (function_exists('memory_get_peak_usage')) $getmemory .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
-    $cs_temp_get = str_replace('{func:memory}', $getmemory, $cs_temp_get);
-    return $cs_temp_get;
+  if($account['access_clansphere'] >= 5 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (time() - $cs_main['sec_time']) > 9000)) {
+    require_once 'mods/clansphere/sec_func.php';
+    $content = cs_cspnews() . $content;
+  }
+
+  $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
+  $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
+  $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $cs_temp_get);
+
+  // Set title proper related to module
+  if (!empty($cs_main['mod']))
+      $cs_main['def_title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_main['mod']);
+
+  $cs_main['def_title'] = htmlspecialchars($cs_main['def_title'], ENT_QUOTES);
+  $cs_temp_get = str_replace('{func:title}', $cs_main['def_title'], $cs_temp_get);
+  $cs_temp_get = str_replace('{func:charset}', $com_lang['charset'], $cs_temp_get);
+  $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
+
+  $logsql = '';
+  if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
+    $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
+    $cs_logs['errors'] = nl2br($cs_logs['errors']);
+    foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
+      $logsql .= cs_html_big(1) . $sql_file . cs_html_big(0) . cs_html_br(1);
+      $logsql .= nl2br(htmlentities($sql_queries, ENT_QUOTES, $com_lang['charset']));
+    }
+  }
+  else {
+    $cs_logs['php_errors'] = '';
+    $cs_logs['errors'] = 'Developer mode is turned off';
+  }
+
+  if (!empty($cs_main['debug'])) {
+    $data = array('data');
+    $data['data']['log_sql'] = $logsql;
+    $data['data']['php_errors'] = $cs_logs['php_errors'];
+    $data['data']['csp_errors'] = $cs_logs['errors'];
+    $script = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
+    $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
+  }
+
+  $cs_temp_get = str_replace('{func:errors}', $cs_logs['php_errors'] . $cs_logs['errors'], $cs_temp_get);
+  $cs_temp_get = str_replace('{func:sql}', $logsql, $cs_temp_get);
+  $getparse = cs_parsetime($cs_micro);
+  $cs_temp_get = str_replace('{func:parse}', $getparse, $cs_temp_get);
+  $getmemory = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
+  if (function_exists('memory_get_peak_usage')) $getmemory .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
+  $cs_temp_get = str_replace('{func:memory}', $getmemory, $cs_temp_get);
+  return $cs_temp_get;
 }
 
 ?>
