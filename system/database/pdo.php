@@ -190,7 +190,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
   
   $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
   if(empty($sql_where)) { 
-    $sql_update .= $sql_table . "_id='" . $sql_id . "'";
+    $sql_update .= $sql_table . '_id = ' . $sql_id;
   }
   else {
     $sql_update .= $sql_where;
