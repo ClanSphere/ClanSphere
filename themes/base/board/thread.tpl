@@ -137,7 +137,7 @@
       <div style="clear: left"></div>
       {comment:signature}
       
-      {comment:checkedit}</td>
+      <br /><br />{comment:checkedit}</td>
   </tr>
   <tr>
     <td class="leftc"><div style="color:#00FF00; padding-top:4px; padding-bottom:4px;">{comment:laston}</div></td>
