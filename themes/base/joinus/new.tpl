@@ -79,7 +79,7 @@
     <tr>
       <td class="leftc">{icon:locale} {lang:country}</td>
       <td class="leftb">
-        <select name="joinus_country"  onchange="document.getElementById('country_1').src='symbols/countries/' + this.form.joinus_country.options[this.form.joinus_country.selectedIndex].value + '.png'">
+        <select name="joinus_country"  onchange="document.getElementById('country_1').src='{page:path}symbols/countries/' + this.form.joinus_country.options[this.form.joinus_country.selectedIndex].value + '.png'">
        {loop:country}
        <option value="{country:short}"{country:selection}>{country:full}</option>{stop:country}
       </select>
@@ -101,7 +101,7 @@
 	<tr>
 	  <td class="leftc">{icon:package_games} {lang:game}</td>
 	  <td class="leftb">
-	   <select name="games_id"  onchange="document.getElementById('game').src='uploads/games/' + this.form.games_id.options[this.form.games_id.selectedIndex].value + '.gif'">
+	   <select name="games_id"  onchange="document.getElementById('game').src='{page:path}uploads/games/' + this.form.games_id.options[this.form.games_id.selectedIndex].value + '.gif'">
 		 <option value="0">---</option>
 	   {loop:games}
 	     <option value="{games:short}"{games:selection}>{games:name}</option>

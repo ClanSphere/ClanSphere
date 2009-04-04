@@ -25,7 +25,7 @@
 	<tr>
 		<td class="leftc">{icon:package_games} {lang:game}</td>
 		<td class="leftb">
-			<select name="games_id" onchange="document.getElementById('game_1').src='/uploads/games/' + this.form.games_id.options[this.form.games_id.selectedIndex].value + '.gif'">
+			<select name="games_id" onchange="document.getElementById('game_1').src='{page:path}uploads/games/' + this.form.games_id.options[this.form.games_id.selectedIndex].value + '.gif'">
 				<option value="0">----</option>
 				{squads:games_sel}
 			</select>
