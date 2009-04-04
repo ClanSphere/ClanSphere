@@ -8,7 +8,7 @@ Upload all content of the main directory, excluding 'debug.php' and the director
 
 Update from older ClanSphere Versions:
 
-Apply the SQL patch (if a new one is available inside the 'updates' directory, else skip this) file by loading it inside the browser window (menu point when logged in as admin: System -> Updates). Next upload all content of the main directory, excluding 'debug.php' and the directorys 'convert', 'docs' and 'updates', to your webserver and grant upload directorys enough access for file uploads to them.
+Apply the SQL patch (if a new one is available inside the 'updates' directory, else skip this) file by loading it inside the browser window (menu point when logged in as admin: System -> Updates). Next upload all content of the main directory, excluding 'debug.php' and the directorys 'docs' and 'updates', to your webserver and grant upload directorys enough access for file uploads to them.
 
 
 Update from BXCP 0.3.2.2:
