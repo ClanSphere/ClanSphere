@@ -84,6 +84,7 @@ for($run = 0; $run < $data['squad']['members']; $run++) {
 $cells = 'ranks_id, ranks_name, ranks_url, ranks_img, ranks_code';
 $data['ranks'] = cs_sql_select(__FILE__,'ranks',$cells, "squads_id = '" . $squads_id . "'", 'ranks_name', 0, 5);
 $ranks_loop = count($data['ranks']);
+$data['if']['rank'] = empty($ranks_loop) ? FALSE : TRUE;
 
 for($run=0; $run<$ranks_loop; $run++) {
 
@@ -105,6 +106,7 @@ $from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id';
 $select = 'aws.awards_id AS awards_id, aws.awards_time AS awards_time, aws.awards_event AS awards_event, aws.awards_event_url AS awards_event_url, aws.awards_rank AS awards_rank';
 $data['awards'] = cs_sql_select(__FILE__,$from,$select,"squads_id = '" . $squads_id . "'",'awards_time DESC',0,5);
 $awards_loop = count($data['awards']);
+$data['if']['award'] = empty($awards_loop) ? FALSE : TRUE;
 
 $medals = array(1 => 'gold', 2 => 'silber', 3 => 'bronze');
 
@@ -125,6 +127,7 @@ $from .= 'INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id ';
 $data['wars'] = cs_sql_select(__FILE__,$from,$select,"squads_id = '" . $squads_id . "'",'wars_date DESC',0,5);
 
 $count_wars = count($data['wars']);
+$data['if']['war'] = empty($count_wars) ? FALSE : TRUE;
 
 for ($run = 0; $run < $count_wars; $run++) {
   $data['wars'][$run]['gameicon'] = cs_html_img('uploads/games/' . $data['wars'][$run]['games_id'] . '.gif');

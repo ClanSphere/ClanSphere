@@ -44,6 +44,7 @@
 	</table>
 <br />
 
+{if:rank}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="2">{lang:ranks}</td>		
@@ -60,7 +61,9 @@
   {stop:ranks}
 </table>
 <br />
+{stop:rank}
 
+{if:award}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="3">{lang:awards}</td>		
@@ -79,7 +82,9 @@
   {stop:awards}
 </table>
 <br />
+{stop:award}
 
+{if:war}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="headb" colspan="5">{lang:wars}</td>		
@@ -100,4 +105,5 @@
  </tr>
  {stop:wars}
 </table>
+{stop:war}
 
