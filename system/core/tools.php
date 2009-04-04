@@ -100,21 +100,21 @@ function cs_checkdirs($dir,$show = 0) {
 
 function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
 
-    global $com_lang;
-    if($mode=='date' AND preg_match('=-=',$data)) {
-        $explode = explode('-', $data);
-        $data = mktime(0,0,1,$explode[1],$explode[2],$explode[0]);
-    }
-    else {
-        $data = cs_timediff($data);
-    }
-    $format = empty($format) ? $com_lang['dateset'] : $format;
-    $var = empty($show_date) ? '' : date($format,$data);
-    if(!empty($show_time)) {
-        $var .= empty($show_date) ? '' : ' ' . $com_lang['dtcon'] . ' ';
-        $var .= date($com_lang['timeset'],$data) . ' ' . $com_lang['timename'];
-    }
-    return $var;
+  global $com_lang;
+  if($mode=='date' AND preg_match('=-=',$data)) {
+    $explode = explode('-', $data);
+    $data = mktime(0,0,1,$explode[1],$explode[2],$explode[0]);
+  }
+  else {
+    $data = cs_timediff($data);
+  }
+  $format = empty($format) ? $com_lang['dateset'] : $format;
+  $var = empty($show_date) ? '' : date($format,$data);
+  if(!empty($show_time)) {
+    $var .= empty($show_date) ? '' : ' ' . $com_lang['dtcon'] . ' ';
+    $var .= date($com_lang['timeset'],$data) . ' ' . $com_lang['timename'];
+  }
+  return $var;
 }
 
 function cs_datepost($name,$mode) {
@@ -133,8 +133,10 @@ function cs_datepost($name,$mode) {
     $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
     $var = cs_timediff($var, 1); 
   }
-  elseif($mode == 'date')
+  elseif($mode == 'date') {
     $var = $time['year'] . '-' . $time['month'] . '-' . $time['day'];
+    if($var == '1950-01-01' OR $var == '1970-01-01') $var = '';
+  }
 
   return $var;
 }
@@ -219,8 +221,8 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
   	$data['expl']['hours'] = $explode[3];
   	$data['expl']['mins'] = $explode[4];
   }
-  
- return cs_subtemplate(__FILE__,$data,'clansphere','dateselect');
+
+  return cs_subtemplate(__FILE__,$data,'clansphere','dateselect');
 }
 
 function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) {
@@ -251,14 +253,14 @@ function cs_dropdownsel($data, $id, $index) {
 }
 
 function cs_files() {
-  
+
   global $account, $cs_main;
-  
+
   if (!empty($_FILES) || $cs_main['php_self']['basename'] != 'content.php' || empty($account['users_ajax']) || empty($_SESSION['ajaxuploads']) || (!empty($_SESSION['ajaxuploads']) && empty($_POST))) {
     cs_ajaxfiles_clear();
     return $_FILES;
   }
-  
+
   $files = array();
   foreach ($_SESSION['ajaxuploads'] as $key => $name) {
     $files[$key]['tmp_name'] = 'uploads/cache/' . $name;
@@ -271,24 +273,23 @@ function cs_files() {
 }
 
 function cs_mimetype ($file) {
-  
+
   if (function_exists('mime_content_type'))
     return mime_content_type($file);
-  
+
   if (function_exists('finfo_open') && $fp = finfo_open(FILEINFO_MIME)) {
   	$return = finfo_file($fp, $file);
   	finfo_close($fp);
   	return $return;
   }
-  
+
   $zip_type = version_compare(phpversion(), '5.0', '>=') ? 'application/x-zip-compressed' : 'application/zip';
   $mimes = array('jpg' => 'image/jpeg','jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
     'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
-  
+
   $ending = strtolower(substr(strrchr($file, '.'),1));
-  
+
   return isset($mimes[$ending]) ? $mimes[$ending] : 'text/plain';
-  
 }
 
 function cs_filesize($size, $float = 2) {
@@ -369,6 +370,7 @@ function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_
 
 // Gets the notification setting for the current user
 function cs_notifications($notification_name = '', $users_id = 0) {
+
   global $account;
   $users_id = empty($users_id) ? $account['users_id'] : $users_id;
   $data = cs_sql_select(__FILE__, 'notifications', $notification_name, 'users_id = ' . $users_id);
@@ -377,6 +379,7 @@ function cs_notifications($notification_name = '', $users_id = 0) {
 
 // Notifies a person upon its notification settings
 function cs_notify($email='', $title='', $message='', $users_id=0, $notification_name = '', $type = 1) {
+
   $type = empty($notification_name) ? $type : cs_notifications($notification_name, $users_id);
   switch($type) {
 
@@ -590,13 +593,13 @@ function cs_url($mod, $action = 'list', $more = 0, $base = 0) {
 }
 
 function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
+
   settype($users_id, 'integer');
-  
   if(!empty($users_active) && empty($users_delete)) 
     return cs_link($users_nick, 'users', 'view', 'id=' . $users_id);
   else
     return $users_nick;
-  
+
   //return !empty($users_active) ? cs_link($users_nick, 'users', 'view', 'id=' . $users_id) : $users_nick;
 }
 
@@ -619,7 +622,6 @@ function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
   }
   if ($mode == 1) return $text;
   return $mode == 2 ? $icon . ' ' . $text : $icon;
-
 }
 
 ?>
