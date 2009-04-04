@@ -79,7 +79,7 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($login['method'])) $login['method'] = 'session';
   $login['mode'] = TRUE;
   $acc_sc = 'users_id, users_nick, users_lang, access_id, users_limit, users_view, users_timezone, users_dstime, users_ajax, users_tpl, users_pwd';
-  $account = cs_sql_select(__FILE__,'users',$acc_sc,'users_id = \'' . (int)$_SESSION['users_id'] . '\' AND users_pwd = \''.$_SESSION['users_pwd'].'\' AND users_active = 1');
+  $account = cs_sql_select(__FILE__,'users',$acc_sc,'users_id = "' . (int) $_SESSION['users_id'] . '" AND users_pwd = \''.$_SESSION['users_pwd'].'\' AND users_active = "1"');
   if (empty($account) ) {
     session_destroy();
     $login['mode'] = FALSE;
@@ -139,7 +139,8 @@ if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_
 $lang = empty($account['users_lang']) ? 'English' : $account['users_lang'];
 require_once('lang/' . $lang . '/system/comlang.php');
 
-$gma = cs_sql_select(__FILE__,'access','*',"access_id = " . (int)$account['access_id']);
+
+$gma = cs_sql_select(__FILE__,'access','*','access_id = "' . (int) $account['access_id'] . '"', 0,0,1, 'access_' . $account['access_id']);
 if(is_array($gma)) {
   $account = array_merge($account,$gma);
 }

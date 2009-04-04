@@ -91,13 +91,9 @@ function cs_sql_option($cs_file, $mod)
   if (empty($options[$mod])) {
     
     global $cs_db;
-    global $cs_main;
     
-    if (empty($cs_main)) $cs_main['def_path'] = getcwd();
+    if (!$options[$mod] = cs_cacheload('op_' . $mod)) {
     
-    $filename = $cs_main['def_path'] . '/uploads/cache/op_' . $mod . '.tmp';
-    
-    if (!file_exists($filename)) {
       $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
       $sql_query .= " WHERE options_mod = '" . $mod . "'";
       $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_option', mysql_error($cs_db['con']), 1);
@@ -110,25 +106,8 @@ function cs_sql_option($cs_file, $mod)
       cs_log_sql($cs_file, $sql_query);
       $options[$mod] = isset($new_result) ? $new_result : 0;
       
-      $string = implode("\r\n", array_keys($options[$mod]));
-      $string .= "\n\n\r\r";
-      $string .= implode("\r\n", array_values($options[$mod]));
+      cs_cachesave('op_' . $mod, $options[$mod]);
       
-      $fp = fopen($filename, 'w');
-      fwrite($fp, $string);
-      fclose($fp);
-      
-    } else {
-      
-      $values = explode("\n\n\r\r", file_get_contents($filename), 2);
-      $keys = explode("\r\n", $values[0]);
-      $values = explode("\r\n", $values[1]);
-      
-      if (function_exists('array_combine'))
-        $options[$mod] = array_combine($keys, $values);
-      else
-        foreach ($keys AS $index => $key)
-          $options[$mod][$key] = $values[$index];
     }
   }
   
@@ -149,9 +128,13 @@ function cs_sql_query($cs_file, $sql_query)
   return $result;
 }
 
-function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1)
+function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0)
 {
-  global $cs_db;
+  if (!empty($cache) && $return = cs_cacheload($cache)) {
+  	return $return;
+  }
+	
+	global $cs_db;
   settype($first, 'integer');
   settype($max, 'integer');
   $run = 0;
@@ -183,8 +166,13 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   }
   mysql_free_result($sql_data);
   cs_log_sql($cs_file, $sql_query);
+  
   if (!empty($new_result)) {
-    return $new_result;
+    
+  	if (!empty($cache)) 
+  		cs_cachesave($cache, $new_result);
+  	
+  	return $new_result;
   }
 }
 

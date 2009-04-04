@@ -98,6 +98,40 @@ function cs_checkdirs($dir,$show = 0) {
     return $clean;
 }
 
+function cs_cacheload ($file) {
+	
+	if (!file_exists('uploads/cache/' . $file . '.tmp')) {
+		return false;
+	}
+	
+	$values = explode("\n\n\r\r", file_get_contents('uploads/cache/' . $file . '.tmp'), 2);
+	
+  $keys = explode("\r\n", $values[0]);
+  $values = explode("\r\n", $values[1]);
+  
+  if (function_exists('array_combine'))
+    return array_combine($keys, $values);
+  else {
+    $return = array();
+  	foreach ($keys AS $index => $key)
+      $return[$key] = $values[$index];
+    return $return;
+  }
+}
+
+function cs_cachesave ($file, $save) {
+	
+	$string = implode("\r\n", array_keys($save));
+	
+  $string .= "\n\n\r\r";
+  $string .= implode("\r\n", array_values($save));
+  
+  $fp = fopen('uploads/cache/' . $file . '.tmp', 'w');
+  fwrite($fp, $string);
+  fclose($fp);
+	
+}
+
 function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
 
   global $com_lang;
