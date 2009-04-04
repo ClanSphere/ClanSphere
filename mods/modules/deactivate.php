@@ -11,6 +11,13 @@ if (isset($_GET['confirm'])) {
   
   cs_sql_query(__FILE__,'UPDATE {pre}_access SET access_'.cs_sql_escape($dir).' = \'0\'');
   
+  $access = cs_sql_select(__FILE__,'access','access_id',0,'access_clansphere ASC',0,0);
+  
+  foreach ($access AS $level) {
+  	if (file_exists('uploads/cache/access_' . $level['access_id'] . '.tmp'))
+      cs_unlink('cache', 'access_' . $level['access_id'] . '.tmp');
+  }
+  
   cs_redirect($cs_lang['success'],'modules','roots');
   
 } elseif (isset($_GET['cancel'])) {

@@ -50,6 +50,8 @@ if (empty($_POST['submit'])) {
   foreach ($access as $level) {
     $values = array($_POST['access_'.$level['access_id']]);
     cs_sql_update(__FILE__,'access',$cells,$values,$level['access_id']);
+    if (file_exists('uploads/cache/access_' . $level['access_id'] . '.tmp'))
+      cs_unlink('cache', 'access_' . $level['access_id'] . '.tmp');
   }
   
   $data['url']['continue'] = cs_url('modules','roots');
