@@ -21,7 +21,7 @@ function cs_cspnews($all = 0) {
     $error = $cs_lang['need_url_fopen'];
   }
   else {
-    if(!empty($id)) {
+    if(!empty($id) AND empty($all)) {
       $opt_where = "options_mod = 'clansphere' AND options_name = 'sec_last'";
       cs_sql_update(__FILE__, 'options', array('options_value'), array($id), 0, $opt_where);
     }
