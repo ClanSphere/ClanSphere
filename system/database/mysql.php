@@ -185,7 +185,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
   for ($run = 0; $run < $max; $run++) {
     $set .= $sql_cells[$run] . "='" . mysql_real_escape_string($sql_content[$run], $cs_db['con']);
     if ($run != $max - 1) {
-        $set .= "', ";
+      $set .= "', ";
     }
   }
   $set .= "' ";

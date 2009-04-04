@@ -99,13 +99,13 @@ function cs_checkdirs($dir,$show = 0) {
 }
 
 function cs_cacheload ($file) {
-	
-	if (!file_exists('uploads/cache/' . $file . '.tmp')) {
-		return false;
-	}
-	
-	$values = explode("\n\n\r\r", file_get_contents('uploads/cache/' . $file . '.tmp'), 2);
-	
+  
+  if (!file_exists('uploads/cache/' . $file . '.tmp')) {
+    return false;
+  }
+  
+  $values = explode("\n\n\r\r", file_get_contents('uploads/cache/' . $file . '.tmp'), 2);
+  
   $keys = explode("\r\n", $values[0]);
   $values = explode("\r\n", $values[1]);
   
@@ -113,23 +113,23 @@ function cs_cacheload ($file) {
     return array_combine($keys, $values);
   else {
     $return = array();
-  	foreach ($keys AS $index => $key)
+    foreach ($keys AS $index => $key)
       $return[$key] = $values[$index];
     return $return;
   }
 }
 
 function cs_cachesave ($file, $save) {
-	
-	$string = implode("\r\n", array_keys($save));
-	
+  
+  $string = implode("\r\n", array_keys($save));
+  
   $string .= "\n\n\r\r";
   $string .= implode("\r\n", array_values($save));
   
   $fp = fopen('uploads/cache/' . $file . '.tmp', 'w');
   fwrite($fp, $string);
   fclose($fp);
-	
+  
 }
 
 function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
@@ -185,8 +185,8 @@ function cs_datereal($mode,$time = 0) {
 function cs_dateselect($name,$mode,$time,$year_start = 0) {
 
   global $com_lang;
-	$data = array();
-	$data['date']['name'] = $name;
+  $data = array();
+  $data['date']['name'] = $name;
 
   $real_start = $mode == 'unix' ? 1970 : 1950;
   $year_start = empty($year_start) ? $real_start : $year_start;
@@ -226,7 +226,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
     $year_start++;
   }
 
-	#month
+  #month
   $month_start = 1;
   $month_end = 13;
   $data['month']['options'] = '';
@@ -237,7 +237,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
     $month_start++;
   }
 
-	#day
+  #day
   $day_start = 1;
   $day_end = 32;
   $data['day']['options'] = '';
@@ -248,12 +248,12 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
     $day_start++;
   }
 
-	#unix (hours + minutes)
+  #unix (hours + minutes)
   $data['if']['unix'] = 0;
   if($mode == 'unix') {
-  	$data['if']['unix'] = 1;
-  	$data['expl']['hours'] = $explode[3];
-  	$data['expl']['mins'] = $explode[4];
+    $data['if']['unix'] = 1;
+    $data['expl']['hours'] = $explode[3];
+    $data['expl']['mins'] = $explode[4];
   }
 
   return cs_subtemplate(__FILE__,$data,'clansphere','dateselect');
@@ -265,9 +265,9 @@ function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) 
 
   $key = empty($key) ? $name : $key;
   $var = cs_html_select(1,$name);
-	if(empty($def_option)) {
-		$var .= cs_html_option('----',0,0);
-	}
+  if(empty($def_option)) {
+    $var .= cs_html_option('----',0,0);
+  }
   $loop = count($array);
   for($run=0; $run < $loop; $run++) {
     $sel = $select == $array[$run][$key] ? 1 : 0;
@@ -312,9 +312,9 @@ function cs_mimetype ($file) {
     return mime_content_type($file);
 
   if (function_exists('finfo_open') && $fp = finfo_open(FILEINFO_MIME)) {
-  	$return = finfo_file($fp, $file);
-  	finfo_close($fp);
-  	return $return;
+    $return = finfo_file($fp, $file);
+    finfo_close($fp);
+    return $return;
   }
 
   $zip_type = version_compare(phpversion(), '5.0', '>=') ? 'application/x-zip-compressed' : 'application/zip';
