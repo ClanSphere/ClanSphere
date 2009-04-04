@@ -74,13 +74,14 @@ if(!empty($handler)) {
   foreach($task_array as $step) {
 
     if($step['handler'] == $handler) {
-      $done = isset($_GET['done']) ? $_GET['done'] : 0;
-      settype($done,'integer');
-      $opt_where = "options_mod = 'wizard' AND options_name = 'done_" . $handler . "'";
-      $def_cell = array('options_value');
-      $def_cont = array($done);
-      cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where);
-      $cs_options['done_' . $handler . ''] = $done;
+      
+      require 'mods/clansphere/func_options.php';
+      
+      $save = array();
+      $save['done_' . $handler] = isset($_GET['done']) ? $_GET['done'] : 0;
+      
+      cs_optionsave('wizard', $save);
+      $cs_options['done_' . $handler . ''] = $save['done_' . $handler];
       break;
     }
   }
