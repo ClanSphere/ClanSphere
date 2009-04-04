@@ -4,7 +4,7 @@
 
 $cs_lang = cs_translate('users');
 $key = preg_replace('/[^\w]/s','',$_GET['key']);
-$uemail = preg_replace('/[^\w]/s','',$_GET['email']);
+$uemail = preg_match('/^[a-zA-Z][a-zA-Z0-9._-]{3,40}\@[a-zA-Z][a-zA-Z0-9._-]+\.[a-zA-Z]{2,5}$/', $_GET['email']) ? $_GET['email'] : '';
 $data = array();
 
 $select = 'users_id';
