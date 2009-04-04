@@ -168,10 +168,10 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   cs_log_sql($cs_file, $sql_query);
   
   if (!empty($new_result)) {
-  	
-  	if (!empty($cache))
-  	  cs_cachesave($cache, $new_result);
-  	
+    
+    if (!empty($cache))
+      cs_cachesave($cache, $new_result);
+    
     return $new_result;
   }
 }
@@ -185,7 +185,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
   for ($run = 0; $run < $max; $run++) {
     $set .= $sql_cells[$run] . "='" . mysqli_real_escape_string($cs_db['con'], $sql_content[$run]);
     if ($run != $max - 1) {
-    	$set .= "', ";
+      $set .= "', ";
     }
   }
   $set .= "' ";
