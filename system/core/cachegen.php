@@ -56,8 +56,8 @@ function cs_cache_load($filename) {
 function cs_cache_save($filename, $content) {
 
   global $cs_main;
-  if($content === false OR $content === true) {
-    cs_error('uploads/cache/' . $filename . '.tmp', 'cs_cache_save - It is not allowed to just store TRUE or FALSE');
+  if(is_bool($content)) {
+    cs_error('uploads/cache/' . $filename . '.tmp', 'cs_cache_save - It is not allowed to just store a boolean');
   }
   elseif(is_writeable('uploads/cache/')) {
     $store = serialize($content);
