@@ -4,7 +4,7 @@ CHANGELOG
 ClanSphere 2009.0 RC2 >> 2009-04-xx
 ___________________________________________________________
 
--> Added caching functions and implemented caching in access module (duriel)
+-> Added caching functions and implemented caching in access module and metatags (duriel, hajo)
 -> Improved handling of filetypeicons (gahero)
 -> Hiding squads in fightus will also hide them in wars now (gahero)
 -> Fixed alot of path settings in themes to be compatible with mod_rewrite (gahero, hajo)
