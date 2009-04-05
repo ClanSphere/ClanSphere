@@ -53,6 +53,8 @@ if(empty($data['squad']['squads_picture'])) {
   $data['squad']['squads_pic'] = cs_html_img($place,$size[1],$size[0]);
 }
 
+
+//members
 $select = 'mem.members_admin AS members_admin, mem.members_task AS members_task, mem.members_since AS members_since, ';
 $select .= 'mem.users_id AS users_id, usr.users_nick AS users_nick, usr.users_country AS users_country, ';
 $select .= 'usr.users_name AS users_name, usr.users_surname AS users_surname, usr.users_sex AS users_sex, ';
@@ -81,69 +83,73 @@ for($run = 0; $run < $data['squad']['members']; $run++) {
   $data['members'][$run]['users_url'] = cs_user($data['members'][$run]['users_id'], $data['members'][$run]['users_nick'], $data['members'][$run]['users_active'], $data['members'][$run]['users_delete']);
 }
 
+
+//ranks
 $cells = 'ranks_id, ranks_name, ranks_url, ranks_img, ranks_code';
-$data['ranks'] = cs_sql_select(__FILE__,'ranks',$cells, "squads_id = '" . $squads_id . "'", 'ranks_name', 0, 5);
-$ranks_loop = count($data['ranks']);
+$ranks = cs_sql_select(__FILE__,'ranks',$cells, "squads_id = '" . $squads_id . "'", 'ranks_name', 0, 5);
+$ranks_loop = count($ranks);
 $data['if']['rank'] = empty($ranks_loop) ? FALSE : TRUE;
 
 for($run=0; $run<$ranks_loop; $run++) {
 
-   $data['ranks'][$run]['name'] = cs_secure($data['ranks'][$run]['ranks_name']);
+   $ranks[$run]['name'] = cs_secure($ranks[$run]['ranks_name']);
 
-  $data['ranks'][$run]['picture'] = '';
-  if(!empty($data['ranks'][$run]['ranks_url']) AND ($data['ranks'][$run]['ranks_img'] != 'http://')) {
-    $picture = cs_html_img($data['ranks'][$run]['ranks_img']);
-    $data['ranks'][$run]['picture'] = cs_html_link('http://' . $data['ranks'][$run]['ranks_url'],$picture);
+  $ranks[$run]['picture'] = '';
+  if(!empty($ranks[$run]['ranks_url']) AND ($ranks[$run]['ranks_img'] != 'http://')) {
+    $picture = cs_html_img($ranks[$run]['ranks_img']);
+    $ranks[$run]['picture'] = cs_html_link('http://' . $ranks[$run]['ranks_url'],$picture);
   }
   else {
-    $data['ranks'][$run]['picture'] = $data['ranks'][$run]['ranks_code'];
+    $ranks[$run]['picture'] = $ranks[$run]['ranks_code'];
   }
 }
+$data['ranks'] = !empty($ranks) ? $ranks : array(0 => '');
 
-$data['awards'] = array();
 
+//awards
 $from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id';
 $select = 'aws.awards_id AS awards_id, aws.awards_time AS awards_time, aws.awards_event AS awards_event, aws.awards_event_url AS awards_event_url, aws.awards_rank AS awards_rank';
-$data['awards'] = cs_sql_select(__FILE__,$from,$select,"squads_id = '" . $squads_id . "'",'awards_time DESC',0,5);
-$awards_loop = count($data['awards']);
+$awards = cs_sql_select(__FILE__,$from,$select,"squads_id = '" . $squads_id . "'",'awards_time DESC',0,5);
+$awards_loop = count($awards);
 $data['if']['award'] = empty($awards_loop) ? FALSE : TRUE;
 
 $medals = array(1 => 'gold', 2 => 'silber', 3 => 'bronze');
 
-
 for($run=0; $run < $awards_loop; $run++) {
 
-  $data['awards'][$run]['awards_time'] = cs_date('date',$data['awards'][$run]['awards_time']);
-  $data['awards'][$run]['awards_event'] = cs_secure($data['awards'][$run]['awards_event']);
-  $data['awards'][$run]['awards_place'] = $data['awards'][$run]['awards_rank'] < 4 ? cs_html_img("symbols/awards/pokal_" . $medals[$data['awards'][$run]['awards_rank']] . ".png") : cs_secure($data['awards'][$run]['awards_rank']);
+  $awards[$run]['awards_time'] = cs_date('date',$awards[$run]['awards_time']);
+  $awards[$run]['awards_event'] = cs_secure($awards[$run]['awards_event']);
+  $awards[$run]['awards_place'] = $awards[$run]['awards_rank'] < 4 ? cs_html_img("symbols/awards/pokal_" . $medals[$awards[$run]['awards_rank']] . ".png") : cs_secure($awards[$run]['awards_rank']);
   
 }
+$data['awards'] = !empty($awards) ? $awards : array(0 => '');
 
-$data['wars'] = array();
 
+// wars
 $select = 'war.games_id AS games_id, war.wars_date AS wars_date, war.clans_id AS clans_id, cln.clans_short AS clans_short, cat.categories_name AS categories_name, war.categories_id AS categories_id, war.wars_score1 AS wars_score1, war.wars_score2 AS wars_score2, war.wars_id AS wars_id';
 $from = 'wars war INNER JOIN {pre}_categories cat ON war.categories_id = cat.categories_id ';
 $from .= 'INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id ';
-$data['wars'] = cs_sql_select(__FILE__,$from,$select,"squads_id = '" . $squads_id . "'",'wars_date DESC',0,5);
-
-$count_wars = count($data['wars']);
+$wars = cs_sql_select(__FILE__,$from,$select,"squads_id = '" . $squads_id . "'",'wars_date DESC',0,5);
+$count_wars = count($wars);
 $data['if']['war'] = empty($count_wars) ? FALSE : TRUE;
 
 for ($run = 0; $run < $count_wars; $run++) {
-  $data['wars'][$run]['gameicon'] = cs_html_img('uploads/games/' . $data['wars'][$run]['games_id'] . '.gif');
-  $data['wars'][$run]['date'] = cs_date('unix',$data['wars'][$run]['wars_date']);
-  $data['wars'][$run]['enemyurl'] = cs_url('clans','view','id=' . $data['wars'][$run]['clans_id']);
-  $data['wars'][$run]['enemy'] = cs_secure($data['wars'][$run]['clans_short']);
-  $data['wars'][$run]['caturl'] = cs_url('categories','view','id=' . $data['wars'][$run]['categories_id']);
-  $data['wars'][$run]['category'] = cs_secure($data['wars'][$run]['categories_name']);
-  $data['wars'][$run]['url'] = cs_url('wars','view','id=' . $data['wars'][$run]['wars_id']);
-  $data['wars'][$run]['result'] = $data['wars'][$run]['wars_score1'] . ' : ' . $data['wars'][$run]['wars_score2'];
-  $result = $data['wars'][$run]['wars_score1'] - $data['wars'][$run]['wars_score2'];
+  $wars[$run]['gameicon'] = cs_html_img('uploads/games/' . $wars[$run]['games_id'] . '.gif');
+  $wars[$run]['date'] = cs_date('unix',$wars[$run]['wars_date']);
+  $wars[$run]['enemyurl'] = cs_url('clans','view','id=' . $wars[$run]['clans_id']);
+  $wars[$run]['enemy'] = cs_secure($wars[$run]['clans_short']);
+  $wars[$run]['caturl'] = cs_url('categories','view','id=' . $wars[$run]['categories_id']);
+  $wars[$run]['category'] = cs_secure($wars[$run]['categories_name']);
+  $wars[$run]['url'] = cs_url('wars','view','id=' . $wars[$run]['wars_id']);
+  $wars[$run]['result'] = $wars[$run]['wars_score1'] . ' : ' . $wars[$run]['wars_score2'];
+  $result = $wars[$run]['wars_score1'] - $wars[$run]['wars_score2'];
   $icon = $result >= 1 ? 'green' : 'red';
   $icon = !empty($result) ? $icon : 'grey';
-  $data['wars'][$run]['resulticon'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
+  $wars[$run]['resulticon'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
 
 }
+$data['wars'] = !empty($wars) ? $wars : array(0 => '');
+
 
 echo cs_subtemplate(__FILE__,$data,'squads','view');
 
