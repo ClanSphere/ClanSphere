@@ -92,7 +92,7 @@ function cs_sql_option($cs_file, $mod)
 
     global $cs_db;
     
-    if (!$options[$mod] = cs_cacheload('op_' . $mod)) {
+    if (!$options[$mod] = cs_cachegen_load('op_' . $mod)) {
       
       $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
       $sql_query .= " WHERE options_mod = '" . $mod . "'";
@@ -106,7 +106,7 @@ function cs_sql_option($cs_file, $mod)
       cs_log_sql($cs_file, $sql_query);
       $options[$mod] = isset($new_result) ? $new_result : 0;
       
-      cs_cachesave('op_' . $mod, $options[$mod]);
+      cs_cachegen_save('op_' . $mod, $options[$mod]);
       
     }
   }
@@ -130,7 +130,7 @@ function cs_sql_query($cs_file, $sql_query)
 
 function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0)
 {
-  if (!empty($cache) && $return = cs_cacheload($cache)) {
+  if (!empty($cache) && $return = cs_cachegen_load($cache)) {
     return $return;
   }
   
@@ -170,7 +170,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   if (!empty($new_result)) {
     
     if (!empty($cache))
-      cs_cachesave($cache, $new_result);
+      cs_cachegen_save($cache, $new_result);
     
     return $new_result;
   }

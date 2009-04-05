@@ -86,6 +86,7 @@ function cs_init($predefined) {
   require_once 'system/core/tools.php';
   require_once 'system/core/abcode.php';
   require_once 'system/output/xhtml_10.php';
+  require_once 'system/core/cachegen.php';
   require_once 'system/core/templates.php';
 
   if(!empty($predefined['init_sql'])) {

@@ -2,7 +2,40 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_cachegen($filename, $dir) {
+function cs_cachegen_load ($file) {
+  
+  if (!file_exists('uploads/cache/' . $file . '.tmp')) {
+    return false;
+  }
+  
+  $values = explode("\n\n\r\r", file_get_contents('uploads/cache/' . $file . '.tmp'), 2);
+  
+  $keys = explode("\r\n", $values[0]);
+  $values = explode("\r\n", $values[1]);
+  
+  if (function_exists('array_combine'))
+    return array_combine($keys, $values);
+  else {
+    $return = array();
+    foreach ($keys AS $index => $key)
+      $return[$key] = $values[$index];
+    return $return;
+  }
+}
+
+function cs_cachegen_save ($file, $save) {
+  
+  $string = implode("\r\n", array_keys($save));
+  
+  $string .= "\n\n\r\r";
+  $string .= implode("\r\n", array_values($save));
+  
+  $fp = fopen('uploads/cache/' . $file . '.tmp', 'w');
+  fwrite($fp, $string);
+  fclose($fp);
+}
+
+function cs_cachegen_dirs($filename, $dir) {
 
     global $cs_lang, $cs_main;
     $cs_lang_old = $cs_lang;
@@ -17,7 +50,7 @@ function cs_cachegen($filename, $dir) {
             include($this_info);
             $name = empty($mod_info['name']) ? '[' . $target . ']' : $mod_info['name'];
             if(isset($info[$name])) {
-                cs_error($this_info, 'cs_cachegen - Translated name "' . $name . '" is already in use');
+                cs_error($this_info, 'cs_cachegen_dirs - Translated name "' . $name . '" is already in use');
             }
             else {
                 $info[$name] = $mod_info;
@@ -27,7 +60,7 @@ function cs_cachegen($filename, $dir) {
             unset($info[$name]['text'], $info[$name]['url'], $info[$name]['team'], $info[$name]['creator']);
         }
         elseif(is_dir($dir . '/' . $target)) {
-            cs_error($this_info, 'cs_cachegen - Required file not found');
+            cs_error($this_info, 'cs_cachegen_dirs - Required file not found');
       }
     }
     ksort($info);
@@ -42,7 +75,7 @@ function cs_cachegen($filename, $dir) {
         chmod($cache_file,0644);
     }
     elseif($cs_main['mod'] != 'install') {
-        cs_error('uploads/cache/' . $filename, 'cs_cachegen - Unable to write cache file');
+        cs_error('uploads/cache/' . $filename, 'cs_cachegen_dirs - Unable to write cache file');
     }
     return $info;
 }
