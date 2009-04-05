@@ -113,4 +113,6 @@ $cs_lang['response_navlist'] = 'Ping: ';
 $cs_lang['players_navlist'] = 'Players: ';
 $cs_lang['map_navlist'] = 'Map: ';
 
+$cs_lang['no_connect'] = 'Could not connect to server. Live status is not possible.';
+
 ?>

@@ -78,6 +78,7 @@ $cs_lang['news_text'] = 'News text';
 $cs_lang['placeholders'] = 'Placeholders';
 $cs_lang['op_squadurl'] = 'Referral to own squad';
 $cs_lang['op_squadname'] = 'Name of own squad';
+$cs_lang['op_opponenturl'] = 'Website of opponent clan';
 $cs_lang['op_opponentname'] = 'Name of opponent clan';
 $cs_lang['op_score1'] = 'Own score';
 $cs_lang['op_score2'] = 'Opponent score';
