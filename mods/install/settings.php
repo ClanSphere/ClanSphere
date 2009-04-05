@@ -79,7 +79,7 @@ if(isset($_POST['create']) OR isset($_POST['view'])) {
     $setup_php .= "\$cs_db['name'] = '" . $cs_db['name'] . "';\n";
     $setup_php .= "\$cs_db['prefix'] = '" . $cs_db['prefix'] . "';\n\n";
     $setup_php .= "\$cs_logs['save_actions'] = " . $log['save_actions'] . ";\n";
-    $setup_php .= "\$cs_logs['save_errors'] = " . $log['save_errors'] . ";\n\n?>";
+    $setup_php .= "\$cs_logs['save_errors'] = " . $log['save_errors'] . ";";
 
     if(isset($_POST['create'])) {
       $flerr = 0;
@@ -178,8 +178,6 @@ if(!empty($setup_exists)) {
 	
 }
 
-
 echo cs_subtemplate(__FILE__, $data, 'install', 'settings');
-
 
 ?>
