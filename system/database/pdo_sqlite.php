@@ -46,5 +46,3 @@ function cs_sql_version($cs_file) {
     cs_log_sql($cs_file, $sql_query);
   return $sql_infos;
 }
-
-?>

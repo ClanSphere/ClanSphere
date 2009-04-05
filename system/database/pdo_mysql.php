@@ -49,5 +49,3 @@ function cs_sql_version($cs_file) {
   $sql_infos['server'] = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
   return $sql_infos;
 }
-
-?>

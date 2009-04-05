@@ -93,24 +93,30 @@ function cs_sql_insertid($cs_file) {
 
 function cs_sql_option($cs_file,$mod) {
 
+  global $cs_db;
   static $options = array();
-  if(!isset($options[$mod])) {
-    global $cs_db;
-    $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
-    $sql_query .= " WHERE options_mod='" . $mod . "'";
-    $sql_data = pg_query($cs_db['con'], $sql_query) OR 
-      cs_error_sql($cs_file, 'cs_sql_option', pg_last_error($cs_db['con']), 1);
-    while($sql_result = pg_fetch_assoc($sql_data)) {
-      $name = $sql_result['options_name'];
-      $new_result[$name] = $sql_result['options_value'];
+
+  if (empty($options[$mod])) {
+
+    if (!$options[$mod] = cs_cache_load('op_' . $mod)) {
+
+      $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
+      $sql_query .= " WHERE options_mod='" . $mod . "'";
+      $sql_data = pg_query($cs_db['con'], $sql_query) OR 
+        cs_error_sql($cs_file, 'cs_sql_option', pg_last_error($cs_db['con']), 1);
+      while($sql_result = pg_fetch_assoc($sql_data)) {
+        $name = $sql_result['options_name'];
+        $new_result[$name] = $sql_result['options_value'];
+      }
+      pg_free_result($sql_data);
+      cs_log_sql($cs_file, $sql_query);
+      $options[$mod] = isset($new_result) ? $new_result : 0;
+
+      cs_cache_save('op_' . $mod, $options[$mod]);
     }
-    pg_free_result($sql_data);
-    cs_log_sql($cs_file, $sql_query);
-    $options[$mod] = isset($new_result) ? $new_result : 0;
   }
-  if(!empty($options[$mod])) {
-    return $options[$mod];
-  }
+  
+  return $options[$mod];
 }
 
 function cs_sql_query($cs_file,$sql_query) {
@@ -237,5 +243,3 @@ function cs_sql_error() {
   return pg_last_error($cs_db['con']);
   
 }
-
-?>

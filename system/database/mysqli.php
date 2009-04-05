@@ -86,18 +86,17 @@ function cs_sql_insertid($cs_file) {
 
 function cs_sql_option($cs_file, $mod)
 {
-  global $options;
-  
+  global $cs_db;
+  static $options = array();
+
   if (empty($options[$mod])) {
 
-    global $cs_db;
-    
     if (!$options[$mod] = cs_cache_load('op_' . $mod)) {
-      
+
       $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
       $sql_query .= " WHERE options_mod = '" . $mod . "'";
       $sql_data = mysqli_query($cs_db['con'], $sql_query) or cs_error_sql($cs_file, 'cs_sql_option', mysqli_error($cs_db['con']), 1);
-      
+
       while ($sql_result = mysqli_fetch_assoc($sql_data)) {
         $name = $sql_result['options_name'];
         $new_result[$name] = $sql_result['options_value'];
@@ -105,9 +104,8 @@ function cs_sql_option($cs_file, $mod)
       mysqli_free_result($sql_data);
       cs_log_sql($cs_file, $sql_query);
       $options[$mod] = isset($new_result) ? $new_result : 0;
-      
+
       cs_cache_save('op_' . $mod, $options[$mod]);
-      
     }
   }
   
@@ -235,5 +233,3 @@ function cs_sql_error() {
   
   return mysqli_error($cs_db['con']);
 }
-
-?>
