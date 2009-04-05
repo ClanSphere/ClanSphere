@@ -43,7 +43,7 @@
   {stop:live}
   {unless:live}
   <tr>
-    <td class="centerb">Keine Verbindung zum Server. Live Status nicht möglich.</td>
+    <td class="centerb">{lang:no_connect}</td>
   </tr>
   {stop:live}
 </table>
