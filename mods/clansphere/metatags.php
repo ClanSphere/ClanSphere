@@ -128,8 +128,11 @@ if(isset($_POST['submit'])) {
   $data['head']['action'] = $cs_lang['metatags'];
   $data['link']['continue'] = cs_url('clansphere','system');
   
+  if (file_exists('uploads/cache/metatags.tmp'))
+    cs_unlink('cache','metatags.tmp');
   
-  echo cs_subtemplate(__FILE__,$data,'clansphere','done');
+  cs_redirect($cs_lang['success'], 'clansphere', 'system');
+  
   }
 } 
 else {
