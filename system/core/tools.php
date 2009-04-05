@@ -70,31 +70,25 @@ function cs_captchacheck($input, $mini = 0) {
 
 function cs_checkdirs($dir,$show = 0) {
 
-    static $modules = array();
-    if(!isset($modules[$dir])) {
-        global $account;
-        $filename = $dir . '_' . $account['users_lang'] . '.tmp';
-        if(file_exists('uploads/cache/' . $filename)) {
-            $modules[$dir] = unserialize(file_get_contents('uploads/cache/' . $filename));
-        }
-        else {
-            $modules[$dir] = cs_cache_dirs($filename, $dir);
-        }
-    }
+  global $account;
+  static $modules = array();
+  if(!isset($modules[$dir])) {
+    $modules[$dir] = cs_cache_dirs($dir, $account['users_lang']);
+  }
 
-    if(empty($show)) {
-        $clean = $modules[$dir];
+  if(empty($show)) {
+    $clean = $modules[$dir];
+  }
+  else {
+    $clean = array();
+    foreach($modules[$dir] AS $target) {
+      if(isset($target['show'][$show])) {
+        $create = $target['name'];
+        $clean[$create] = $target;
+      }
     }
-    else {
-        $clean = array();
-        foreach($modules[$dir] AS $target) {
-            if(isset($target['show'][$show])) {
-                $create = $target['name'];
-                $clean[$create] = $target;
-            }
-        }
-    }
-    return $clean;
+  }
+  return $clean;
 }
 
 function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
