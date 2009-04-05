@@ -4,11 +4,13 @@ CHANGELOG
 ClanSphere 2009.0 RC2 >> 2009-04-xx
 ___________________________________________________________
 
+-> Added caching functions and implemented caching in access module (duriel)
 -> Improved handling of filetypeicons (gahero)
 -> Hiding squads in fightus will also hide them in wars now (gahero)
 -> Fixed alot of path settings in themes to be compatible with mod_rewrite (gahero, hajo)
--> Fixed many bugs inside the logs mod and added php errors to error log files (hajo)
+-> Fixed many bugs in the logs mod and added php errors to error log files (hajo)
 -> Reworked sec_news to only scan for news every 2,5 hours and be displayed everywhere (hajo)
+-> Hiding tables in squads view when there are no awards, ranks or wars (fay-pain)
 
 -- Fixed a huge number of bugs and a few wishes that were reported at "Trac" --
 
