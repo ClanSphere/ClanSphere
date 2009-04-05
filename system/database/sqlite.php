@@ -115,8 +115,12 @@ function cs_sql_query($cs_file,$sql_query) {
   return $result;
 }
 
-function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order = 0,$first = 0,$max = 1) {
+function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order = 0,$first = 0,$max = 1, $cache = 0) {
 
+  if (!empty($cache) && $return = cs_cacheload($cache)) {
+    return $return;
+  }
+  
   global $cs_db;
   settype($first,'integer');
   settype($max,'integer');
@@ -148,7 +152,12 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
     }
   }
   cs_log_sql($cs_file, $sql_query);
+  
   if(!empty($new_result)) {
+    
+    if (!empty($cache))
+      cs_cachesave($cache, $new_result);
+    
     return $new_result;
   }
 }

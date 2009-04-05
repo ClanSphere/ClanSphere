@@ -141,23 +141,27 @@ function cs_sql_query($cs_file,$sql_query) {
   return $result;
 }
 
-function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order = 0,$first = 0,$max = 1) {
-
+function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0)
+{
+  if (!empty($cache) && $return = cs_cacheload($cache)) {
+    return $return;
+  }
+  
   global $cs_db;
-  settype($first,'integer');
-  settype($max,'integer');
+  settype($first, 'integer');
+  settype($max, 'integer');
   $new_result = 0;
   $run = 0;
   $sql_where = str_replace('"', "'", $sql_where);
   
   $sql_query = 'SELECT ' . $sql_select . ' FROM ' . $cs_db['prefix'] . '_' . $sql_table;
-  if(!empty($sql_where)) {
+  if (!empty($sql_where)) {
     $sql_query .= ' WHERE ' . $sql_where;
   }
-  if(!empty($sql_order)) {
+  if (!empty($sql_order)) {
     $sql_query .= ' ORDER BY ' . $sql_order;
   }
-  if(!empty($max)) {
+  if (!empty($max)) {
     $limit = $cs_db['type'] == 'pdo_pgsql' ? $max . ' OFFSET ' . $first : $first . ',' . $max;
     $sql_query .= ' LIMIT ' . $limit;
   }
@@ -172,7 +176,11 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
     cs_error_sql($cs_file, 'cs_sql_select', $error[2]);
   }
 
-  if(!empty($new_result)) {
+  if (!empty($new_result)) {
+    
+    if (!empty($cache))
+      cs_cachesave($cache, $new_result);
+    
     return $new_result;
   }
 }
