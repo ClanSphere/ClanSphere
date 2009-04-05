@@ -117,7 +117,7 @@ function cs_sql_query($cs_file,$sql_query) {
 
 function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order = 0,$first = 0,$max = 1, $cache = 0) {
 
-  if (!empty($cache) && $return = cs_cachegen_load($cache)) {
+  if (!empty($cache) && $return = cs_cache_load($cache)) {
     return $return;
   }
   
@@ -156,7 +156,7 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
   if(!empty($new_result)) {
     
     if (!empty($cache))
-      cs_cachegen_save($cache, $new_result);
+      cs_cache_save($cache, $new_result);
     
     return $new_result;
   }

@@ -78,7 +78,7 @@ function cs_checkdirs($dir,$show = 0) {
             $modules[$dir] = unserialize(file_get_contents('uploads/cache/' . $filename));
         }
         else {
-            $modules[$dir] = cs_cachegen_dirs($filename, $dir);
+            $modules[$dir] = cs_cache_dirs($filename, $dir);
         }
     }
 

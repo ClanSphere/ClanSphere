@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_cachegen_load ($file) {
+function cs_cache_load ($file) {
   
   if (!file_exists('uploads/cache/' . $file . '.tmp')) {
     return false;
@@ -23,7 +23,7 @@ function cs_cachegen_load ($file) {
   }
 }
 
-function cs_cachegen_save ($file, $save) {
+function cs_cache_save ($file, $save) {
   
   $string = implode("\r\n", array_keys($save));
   
@@ -35,7 +35,7 @@ function cs_cachegen_save ($file, $save) {
   fclose($fp);
 }
 
-function cs_cachegen_dirs($filename, $dir) {
+function cs_cache_dirs($filename, $dir) {
 
     global $cs_lang, $cs_main;
     $cs_lang_old = $cs_lang;
@@ -50,7 +50,7 @@ function cs_cachegen_dirs($filename, $dir) {
             include($this_info);
             $name = empty($mod_info['name']) ? '[' . $target . ']' : $mod_info['name'];
             if(isset($info[$name])) {
-                cs_error($this_info, 'cs_cachegen_dirs - Translated name "' . $name . '" is already in use');
+                cs_error($this_info, 'cs_cache_dirs - Translated name "' . $name . '" is already in use');
             }
             else {
                 $info[$name] = $mod_info;
@@ -60,7 +60,7 @@ function cs_cachegen_dirs($filename, $dir) {
             unset($info[$name]['text'], $info[$name]['url'], $info[$name]['team'], $info[$name]['creator']);
         }
         elseif(is_dir($dir . '/' . $target)) {
-            cs_error($this_info, 'cs_cachegen_dirs - Required file not found');
+            cs_error($this_info, 'cs_cache_dirs - Required file not found');
       }
     }
     ksort($info);
@@ -75,7 +75,7 @@ function cs_cachegen_dirs($filename, $dir) {
         chmod($cache_file,0644);
     }
     elseif($cs_main['mod'] != 'install') {
-        cs_error('uploads/cache/' . $filename, 'cs_cachegen_dirs - Unable to write cache file');
+        cs_error('uploads/cache/' . $filename, 'cs_cache_dirs - Unable to write cache file');
     }
     return $info;
 }
