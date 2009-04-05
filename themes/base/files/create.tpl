@@ -66,11 +66,8 @@
         <input type="checkbox" name="files_close" value="1" {if:closed}checked="checked"{stop:closed}/>
         {lang:close}<br />
         <input type="checkbox" name="files_vote" value="1" {if:votes}checked="checked"{stop:votes}/>
-        {lang:votes}<br />
-        <input type="checkbox" name="files_newtime" value="1"/>
-        {lang:new_date}<br />
-        <input type="checkbox" name="files_newcount" value="1"/>
-        {lang:new_count} </td>
+        {lang:votes}
+			</td>
     </tr>
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
