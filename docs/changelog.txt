@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0 RC2 >> 2009-04-xx
+ClanSphere 2009.0 RC2 >> 2009-04-05
 ___________________________________________________________
 
 -> Added caching functions and implemented caching in access module and metatags (duriel, hajo)
