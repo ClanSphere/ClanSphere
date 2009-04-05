@@ -63,7 +63,7 @@ if(isset($_POST['close'])) {
     $ghost_insert = cs_sql_insert(__FILE__,'threads',$ghost_cells,$ghost_save);  
   }
   $board_new_id = $_POST['board_id'];
-  $thread_closed = !empty($_POST['threads_closed']) ? $account['users_id'] : 0;
+  $thread_closed = !empty($_POST['thread_closed']) ? $account['users_id'] : 0;
   echo $thread_closed;
   settype($board_new_id,'integer');
   settype($thread_closed,'integer');
