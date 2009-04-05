@@ -506,7 +506,7 @@ function cs_timediff($unix = 0, $reverse = 0) {
 function cs_translate($mod = '') {
 
   global $account, $cs_main, $cs_lang, $cs_lang_main;
-
+  $cs_lang = is_array($cs_lang) ? $cs_lang : array();
   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
 
   if(empty($mod)) {
@@ -563,6 +563,7 @@ function cs_upload($mod,$filename,$upname, $ajaxclean = 1) {
 }
 
 function cs_ajaxfiles_clear() {
+
   if (!empty($_SESSION['ajaxuploads'])) {
     foreach ($_SESSION['ajaxuploads'] as $name) {
       @unlink('uploads/cache/' . $name);
