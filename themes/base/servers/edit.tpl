@@ -23,11 +23,11 @@
   </tr> 
   <tr>
     <td class="leftc">{icon:kedit} {lang:serverspiel} *</td>
-    <td class="leftb">
+	<td class="leftb">
       <select name="games_id" onchange="cs_gamechoose(this.form)">
         <option value="">----</option>
         {loop:games}
-          <option value="{games:games_id}">{games:games_name}</option>
+          <option value="{games:value}" {games:selected}>{games:name}</option>
         {stop:games}
       </select>
 	  <img src="{page:path}uploads/games/0.gif" id="game_1" alt="" />

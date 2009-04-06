@@ -74,10 +74,9 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
   $games_array = cs_sql_select(__FILE__,'games','games_name, games_id',0,0,0,0);
   $run=0;
   foreach($games_array AS $games) {
-    $selected = ($games['games_id'] == $data['create']['games_id']) ? 'selected="selected"' : '';
     $data['games'][$run]['name'] = $games['games_name'];
     $data['games'][$run]['value'] = $games['games_id'];
-    $data['games'][$run]['selected'] = $selected;
+    $data['games'][$run]['selected'] = $games['games_id'] == $data['create']['games_id'] ? 'selected="selected"' : '';
     $run++;
   }
   
