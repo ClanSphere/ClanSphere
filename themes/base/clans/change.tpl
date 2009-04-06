@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" id="clans_edit" action="{url:form}" enctype="multipart/form-data">
+<form method="post" id="clans_change" action="{url:clans_change}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" style="width:140px">{icon:kdmconfig} {lang:name} *</td>

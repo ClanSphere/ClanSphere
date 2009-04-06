@@ -22,7 +22,6 @@ if(isset($_POST['submit'])) {
   $op_clans = cs_sql_option(__FILE__,'clans');
 	
   $data['lang']['getmsg'] = cs_getmsg();
-  $data['url']['form'] = cs_url('clans','options');
   $data['lang']['mod'] = $cs_lang[$op_clans['label']];
   
   $data['clans']['clan'] = $op_clans['label'] == 'clan' ? 'selected="selected"' : '';

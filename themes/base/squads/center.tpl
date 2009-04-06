@@ -14,9 +14,9 @@
 
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="centerc"><a href="{url:squads_join}">Squad beitreten</a></td>
+		<td class="centerc"><a href="{url:squads_join}">{lang:join_label}</a></td>
 		{if:squad_to_leave}
-		<td class="centerc"><a href="{url:squads_leave}">Squad verlassen</a></td>
+		<td class="centerc"><a href="{url:squads_leave}">{lang:leave_label}</a></td>
 		{stop:squad_to_leave}
 	</tr>
 </table>

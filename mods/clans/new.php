@@ -105,7 +105,6 @@ if(!empty($error)) {
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
-  $data['url']['form'] = cs_url('clans','new');
   
   $data['clans']['name'] = $cs_clans['clans_name'];
   $data['clans']['short'] = $cs_clans['clans_short'];
