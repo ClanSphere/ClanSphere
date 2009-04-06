@@ -59,7 +59,7 @@ else {
   
   if (empty($_GET['template']) && empty($ajax_preview)) {
 	  $cs_users = cs_sql_select(__FILE__,'users','users_tpl','users_id = "' . $account['users_id'] . '"');
-	  echo $cs_main['template'] . $cs_users['users_tpl'] . $cs_main['def_tpl'];
+
 	  if(!empty($cs_users['users_tpl']) && $cs_main['template'] == $cs_main['def_tpl']) {
 	    $cs_main['template'] = $cs_users['users_tpl'];
 	  } else {
@@ -96,8 +96,6 @@ else {
     else {
       $data['temp_list'][$run]['preview'] = cs_icon('editdelete','16','----');
     }
-  
-    
 
     if($mod['dir'] == $cs_main['def_tpl']) { 
       $data['temp_list'][$run]['active'] = cs_icon('submit','16',$cs_lang['yes']);
@@ -113,4 +111,5 @@ else {
 }
 
 echo cs_subtemplate(__FILE__,$data,'templates','center');
+
 ?>
