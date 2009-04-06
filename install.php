@@ -4,7 +4,8 @@
 
 # Overwrite global settings by using the following array
 
-$cs_main = array( 'def_action'      => 'list',
+$cs_main = array( 'cellspacing'     => 1,
+                  'def_action'      => 'list',
                   'def_lang'        => 'English',
                   'def_mod'         => 'install',
                   'def_title'       => 'ClanSphere Installation',
