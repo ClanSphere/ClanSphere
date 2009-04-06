@@ -32,10 +32,10 @@ if($account['access_wizard'] == 5) {
 }
 
 if(!empty($activate) AND !empty($allow)) {
-  $opt_where = "options_mod='clansphere' AND options_name='def_lang'";
-  $def_cell = array('options_value');
-  $def_cont = array($activate);
-  cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where);
+
+  require('mods/clansphere/func_options.php');
+  $save['def_lang'] = $activate;
+  cs_optionsave('clansphere', $save);
 
   cs_redirect($cs_lang['change'],'clansphere','lang_list');
 }
@@ -66,4 +66,3 @@ else {
 }
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','lang_list');
-?>
