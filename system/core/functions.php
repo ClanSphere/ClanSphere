@@ -30,6 +30,8 @@ function cs_error_internal($error = 0, $report = 0) {
   $cs_main['action'] = '500';
   $cs_main['show'] = 'mods/errors/500.php';
   $cs_main['public'] = 1;
+  $cs_main['def_theme'] = 'base';
+  $cs_main['cellspacing'] = 1;
   $cs_main['def_width'] = '100%';
 
   if(empty($account['users_lang']))
