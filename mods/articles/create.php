@@ -47,7 +47,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
         
         $articles_id = cs_sql_insertid(__FILE__);
         $files = cs_files();
-        cs_pictures_upload($files['picture'], 'articles', $articles_id);
+        if (!empty($files['picture'])) cs_pictures_upload($files['picture'], 'articles', $articles_id);
         
         cs_redirect($cs_lang['create_done'],'articles');
     }
