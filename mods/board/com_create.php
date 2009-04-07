@@ -368,7 +368,8 @@ else {
  cs_board_comments($data['thread']['board_id']);
  cs_threads_comments($data['thread']['threads_id']);
 
-  $more = 'where=' . $fid . '&start=' . $start . '#com' . ++$count_com;
+	$add_start = empty($start) ? '' : '&start=' . $start;
+	$more = 'where=' . $fid . $add_start . '#com' . ++$count_com;
  cs_redirect($cs_lang['create_done'],'board','thread',$more);
 }
 

@@ -104,7 +104,8 @@ if(isset($_POST['cancel'])) {
     $start = $after - $after % $account['users_limit'];
   }
   
-  $more = 'where=' . $com_fid . '&amp;start=' . $start . '#com' . $comnr;
+	$add_start = empty($start) ? '' : '&start=' . $start;
+  $more = 'where=' . $com_fid . $add_start . '#com' . $comnr;
   cs_redirect($cs_lang['del_false'],'board','thread',$more);
 }
 

@@ -357,7 +357,8 @@ else {
     }
   }
 
-  $more = 'where=' . $fid . '&start=' . $start . '#com' . $count_com;
+	$add_start = empty($start) ? '' : '&start=' . $start;
+  $more = 'where=' . $fid . $add_start . '#com' . $count_com;
   
   cs_redirect($cs_lang['changes_done'],'board','thread',$more);
 }
