@@ -6,12 +6,13 @@
     <td class="leftb"> {lang:body_support} </td>
   </tr>
 </table>
-{loop:support} <br />
+<br />
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+{loop:support}
   <tr>
-    <td class="leftc"><a href="http://{support:url}" target="_blank">{support:name}</a>
-      <hr style="width:100%" />
-      {support:text} </td>
+    <td class="leftc"><a href="http://{support:url}" target="_blank">{support:name}</a></td>
+    <td class="leftb">{support:text}<br /><br /></td>
   </tr>
-</table>
 {stop:support}
+</table>
