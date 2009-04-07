@@ -737,12 +737,14 @@ $data['if']['modpanel'] = false;
 $data['if']['modp_close'] = false; 
 $data['if']['modp_open'] = false; 
 $data['if']['modp_delpin'] = false; 
-$data['if']['modp_addpin'] = false; 
+$data['if']['modp_addpin'] = false;
+$allow_close_now = 0;
 
 //Anfang Modpanel
 if($account['access_board'] >= 5 OR !empty($thread_mods['boardmods_modpanel']))
 {
-$data['if']['modpanel'] = true; 
+	$allow_close_now = 1;
+	$data['if']['modpanel'] = true; 
 
   if(empty($data['thread']['threads_close']))
     $data['if']['modp_close'] = true; 
@@ -795,6 +797,9 @@ if(empty($data['thread']['threads_close'])) {
       $data['wcomment']['smileys'] = cs_abcode_smileys('comments_text');
       $data['wcomment']['abcode'] = cs_abcode_features('comments_text');
     }
+
+		$data['if']['allow_close'] = !empty($allow_close_now) ? TRUE : FALSE;
+		
   }
   }
 }

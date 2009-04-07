@@ -254,6 +254,12 @@
         <textarea name="comments_text" cols="50" rows="8" id="comments_text" ></textarea>
       </td>
     </tr>
+		{if:allow_close}
+		<tr>
+			<td class="leftc">{icon:configure} {lang:more}</td>
+			<td class="leftb"><input type="checkbox" name="close_now" value="1" /></td>
+		</tr>
+		{stop:allow_close}
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="hidden" name="id" value="{thread:threads_id}" />

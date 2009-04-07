@@ -90,6 +90,12 @@
 			{if:new_file}<input type="submit" name="new_file" value="{lang:add_file}" />{stop:new_file}
 		</td>
 	</tr>
+	{if:allow_close}
+	<tr>
+		<td class="leftc">{icon:configure} {lang:more}</td>
+		<td class="leftb"><input type="checkbox" name="close_now" value="1" {check:close_now} /> {lang:thread_close}</td>
+	</tr>
+	{stop:allow_close}
 	<tr>
  		<td class="leftc">{icon:ksysguard} {lang:options}</td>
  		<td class="leftb">

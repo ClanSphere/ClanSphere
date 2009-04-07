@@ -58,6 +58,13 @@ if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'
 //ende sicherheits abfrage
 
 
+#check mod
+$acc_close = 0;
+$check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = "' . $account['users_id'] . '"',0,0,1);
+if(!empty($check['boardmods_modpanel']) OR $account['access_board'] == 5) {
+	$acc_close = 1;
+}
+
 $head  = cs_link($cs_lang['board'],'board','list','normalb') .' -> ';
 $head .= cs_link($data['thread']['categories_name'],'board','list','where=' .$data['thread']['categories_id'],'normalb') .' -> ';
 $head .= cs_link($data['thread']['board_name'],'board','listcat','where=' .$data['thread']['board_id'],'normalb') .' -> ';
@@ -102,6 +109,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
 
 	$quote_in = !empty($ori_text) ? "\n" . $ori_text : '';
 	$text = $_POST['comments_text'] . $quote_in ;
+	$close_now = !empty($_POST['close_now']) ? 1 : 0; ## hier
 	
 	//check text
 	if(!empty($text)) {
@@ -308,6 +316,13 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
   if($files == '0' AND $account['access_board'] >= '2') {
   	$data['if']['new_file'] = TRUE;
   }
+
+	if(!empty($acc_close)) {
+		$data['if']['allow_close'] = TRUE;
+		$data['check']['close_now'] = !empty($close_now) ? 'checked="checked"' : '';
+	}else{
+		$data['if']['allow_close'] = FALSE;
+	}
 	
 	$data['com']['fid'] = $fid;
 	
@@ -367,6 +382,12 @@ else {
   include_once('mods/board/repair.php');
  cs_board_comments($data['thread']['board_id']);
  cs_threads_comments($data['thread']['threads_id']);
+	
+	if(!empty($close_now) AND !empty($acc_close)) {
+		$close_cells = array('threads_close');
+		$close_save = array($account['users_id']);
+	 cs_sql_update(__FILE__,'threads',$close_cells,$close_save,$data['thread']['threads_id']);
+	}
 
 	$add_start = empty($start) ? '' : '&start=' . $start;
 	$more = 'where=' . $fid . $add_start . '#com' . ++$count_com;
