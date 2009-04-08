@@ -135,6 +135,15 @@
 			{if:new_file}<input type="submit" name="new_file" value="{lang:add_file}" />{stop:new_file}
 		</td>
 	</tr>
+	{if:advanced}
+	<tr>
+		<td class="leftc">{icon:configure} {lang:more}</td>
+		<td class="leftb">
+			<input type="checkbox" name="threads_important" value="1" {check:important}/> {lang:thread_addpin}<br />
+			<input type="checkbox" name="threads_close" value="1" {check:close}/> {lang:thread_close}
+		</td>
+	</tr>
+	{stop:advanced}
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">

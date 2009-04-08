@@ -37,6 +37,14 @@ if(!empty($errorpage)) {
 }
 //Sicherheitsabfrage Ende
 
+
+#check mod
+$acc_mod = 0;
+$check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = "' . $account['users_id'] . '"',0,0,1);
+if(!empty($check['boardmods_modpanel']) OR $account['access_board'] == 5) {
+	$acc_mod = 1;
+}
+
 $head  = cs_link($cs_lang['board'],'board','list','normalb') .' -> ';
 $head .= cs_link($cs_thread['categories_name'],'board','list','where=' .$cs_thread['categories_id'],'normalb') .' -> ';
 $head .= cs_link($cs_thread['board_name'],'board','listcat','where=' .$cs_thread['board_id'],'normalb');
@@ -53,6 +61,8 @@ $board['threads_time'] = cs_time();
 $board['threads_last_time'] = cs_time();
 $board['threads_headline'] = '';
 $board['threads_text'] = '';
+$board['threads_important'] = 0;
+$board['threads_close'] = 0;
 $votes = 0;
 
 if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['new_votes']) OR isset($_POST['election']) OR isset($_POST['files+']) OR isset($_POST['new_file']))
@@ -60,6 +70,11 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['new_vote
 
 	$board['threads_headline'] = $_POST['threads_headline'];
 	$board['threads_text'] = $_POST['threads_text'];
+
+	if(!empty($acc_mod)) {
+		$board['threads_important'] = isset($_POST['threads_important']) ? $_POST['threads_important'] : 0;
+		$board['threads_close'] = isset($_POST['threads_close']) ? $account['users_id'] : 0;
+	}
 
 	$bv['boardvotes_access'] = isset($_POST['votes_access']) ? $_POST['votes_access'] : '0';
 	$bv['boardvotes_question'] = isset($_POST['votes_question']) ? $_POST['votes_question'] : '';
@@ -316,6 +331,13 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   $data['if']['add_answer'] = FALSE;
   $data['if']['add_file'] = FALSE;
   $data['if']['new_file'] = FALSE;
+	$data['if']['advanced'] = FALSE;
+
+	if(!empty($acc_mod)) {
+		$data['if']['advanced'] = TRUE;
+		$data['check']['important'] = !empty($board['threads_important']) ? 'checked="checked"' : '';
+		$data['check']['close'] = !empty($board['threads_close']) ? 'checked="checked"' : ''; 
+	}
 
   if($votes == 0 AND $account['access_board'] >= '2') {
   	$data['if']['new_votes'] = TRUE;
