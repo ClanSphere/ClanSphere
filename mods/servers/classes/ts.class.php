@@ -775,13 +775,11 @@ class ts
 
 		// ts setting pics
 		$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
-
 		// server hostname
 		$srv_rules['hostname'] = substr($this->d_info[2], 12);
-
 		// server version
-		$srv_rules['version'] = $this->s_info[0];
-		$srv_rules['gamename'] = 'Teamspeak<br>' . $srv_rules['version'];
+		$srv_rules['os'] = $this->s_info[0];
+		$srv_rules['gamename'] = 'Teamspeak';
 		// server channels
 		$srv_rules['channels'] = substr($this->d_info[30], 23);
 
@@ -789,14 +787,19 @@ class ts
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// server type
-		if (substr($this->d_info[8], 19, 1) == 1)
+		if (strstr($this->s_info[2],"server_clan_server=1")!=false)
 		{
-			$srv_rules['type'] = 'Clanserver';
+			$srv_rules['gametype'] = 'Clanserver';
 		}
 		else
 		{
-			$srv_rules['type'] = 'Publicserver';
+			$srv_rules['gametype'] = 'Publicserver';
 		}
+
+		// server password
+		$srv_rules['pass'] = false;
+		if (strstr($this->s_info[2],"server_password=1")!=false)
+			$srv_rules['pass'] = true;
 
 		// players
 		$srv_rules['nowplayers'] = str_replace(' ', '', substr($this->d_info[29], 20));
