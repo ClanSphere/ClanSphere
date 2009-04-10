@@ -8,20 +8,17 @@
   </tr>
 </table>
 <br />
-{loop:subs}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb"> {lang:subcats}: </td>
   </tr>
+  {loop:subs}
   <tr>
     <td class="leftc"><a href="{url:files_listcat:where={subs:id}}" >{subs:name}</a> ({subs:count}) </td>
   </tr>
-  <tr>
-    <td class="leftb"> {subs:text} </td>
-  </tr>
+  {stop:subs}
 </table>
 <br />
-{stop:subs}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb"> {sort:name} {lang:name}</td>
