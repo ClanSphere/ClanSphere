@@ -29,7 +29,7 @@ if(isset($_GET['agree'])) {
   }
   
   $array_data = array('access_id'=>0,
-                      'users_nick'=>"$nick",
+                      'users_nick'=>$bick,
                       'users_pwd'=>'',
                       'users_name'=>'',
                       'users_surname'=>'',
@@ -54,7 +54,7 @@ if(isset($_GET['agree'])) {
                       'users_signature'=>'',
                       'users_info'=>'',
                       'users_regkey'=>'',
-                      'users_register'=>'',
+                      'users_register'=>0,
                       'users_delete'=>1);
   $array_keys = array_keys($array_data);
   $array_values = array_values($array_data);
