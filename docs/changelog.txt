@@ -1,6 +1,13 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2009.0 >> 2009-04-xx
+___________________________________________________________
+
+-> Added compatible-view for old browsers to cs_manage function (hajo)
+-> Added possibilities to close or pinup threads during writing, close also for create commentes (fay-pain)
+
+
 ClanSphere 2009.0 RC2 >> 2009-04-05
 ___________________________________________________________
 
