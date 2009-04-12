@@ -2,12 +2,25 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_sql_connect($cs_db) {
+function cs_sql_connect($cs_db, $test = 0)
+{
+  $error = '';
+  if(!extension_loaded('sqlite')) {
+    $error = 'PHP extension sqlite must be activated!';
+  }
+  else {
+    $connect = sqlite_open($cs_db['name'], 0666, $error);
+  }
 
-    if(!extension_loaded('sqlite')) {
-        cs_error_sql(__FILE__, 'cs_sql_connect', 'sqlite extension must be activated!',1);
-    }
-  return sqlite_open($cs_db['name']);
+  if(empty($test) AND empty($error)) {
+    return $connect;
+  }
+  elseif(empty($test)) {
+    cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
+  }
+  else {
+    return $error;
+  }
 }
 
 function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {

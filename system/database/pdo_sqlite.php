@@ -2,20 +2,31 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-require('system/database/pdo.php');
+require_once 'system/database/pdo.php';
 
-function cs_sql_connect($cs_db) {
+function cs_sql_connect($cs_db, $test = 0) {
 
-    if(!extension_loaded('pdo') OR !extension_loaded('pdo_sqlite')) {
-        cs_error_sql(__FILE__, 'cs_sql_connect', 'pdo and pdo_sqlite extension must be activated!',1);
+  $error = '';
+  if(!extension_loaded('pdo') OR !extension_loaded('pdo_sqlite')) {
+    $error = 'PHP extensions pdo and pdo_sqlite must be activated!';
+  }
+  else {
+    try {
+      $connect = new PDO('sqlite:' . $cs_db['name']);
     }
+    catch(PDOException $err) {
+      $error = $err->getMessage();
+    }
+  }
 
-  try {
-    $connect = new PDO('sqlite:' . $cs_db['name']);
+  if(empty($test) AND empty($error)) {
     return $connect;
   }
-  catch(PDOException $error) {
-    cs_error_sql(__FILE__, 'cs_sql_connect', $error->getMessage(),1);
+  elseif(empty($test)) {
+    cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
+  }
+  else {
+    return $error;
   }
 }
 

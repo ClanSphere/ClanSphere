@@ -2,20 +2,30 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_sql_connect($cs_db) {
+function cs_sql_connect($cs_db, $test = 0)
+{
+  $error = '';
+  if(!extension_loaded('pgsql')) {
+    $error = 'PHP extension pgsql must be activated!';
+  }
+  else {
+    $pg_con = empty($cs_db['place']) ? '' : 'host=' . $cs_db['place'] . ' ';
+    $pg_con .= 'dbname=' . $cs_db['name'] . ' user=' . $cs_db['user'] . ' password=' . $cs_db['pwd'];
 
-    if(!extension_loaded('pgsql')) {
-        cs_error_sql(__FILE__, 'cs_sql_connect', 'pgsql extension must be activated!',1);
-    }
+    @ini_set('track_errors', 1);
+    $connect = @pg_connect($pg_con) OR $error = empty($php_errormsg) ? 'Connection failed' : $php_errormsg;
+  }
 
-  $pg_con = empty($cs_db['place']) ? '' : 'host=' . $cs_db['place'] . ' ';
-  $pg_con .= 'dbname=' . $cs_db['name'];
-  $pg_con .= ' user=' . $cs_db['user'] . ' password=' . $cs_db['pwd'];
-
-  @ini_set('track_errors', 1);
-  $connect = @pg_connect($pg_con) OR cs_error_sql(__FILE__, 'pg_connect', $php_errormsg,1);
-  @ini_set('track_errors', 0);
-  return $connect;
+  if(empty($test) AND empty($error)) {
+    # pg_set_client_encoding('UNICODE');
+    return $connect;
+  }
+  elseif(empty($test)) {
+    cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
+  }
+  else {
+    return $error;
+  }
 }
 
 function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {

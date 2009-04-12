@@ -2,22 +2,33 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-require('system/database/pdo.php');
+require_once 'system/database/pdo.php';
 
-function cs_sql_connect($cs_db) {
+function cs_sql_connect($cs_db, $test = 0) {
 
-    if(!extension_loaded('pdo') OR !extension_loaded('pdo_pgsql')) {
-        cs_error_sql(__FILE__, 'cs_sql_connect', 'pdo and pdo_pgsql extension must be activated!',1);
+  $error = '';
+  if(!extension_loaded('pdo') OR !extension_loaded('pdo_pgsql')) {
+    $error = 'PHP extensions pdo and pdo_pgsql must be activated!';
+  }
+  else {
+    $param = empty($cs_db['place']) ? '' : 'host=' . $cs_db['place'] . ';';
+    $param .= 'dbname=' . $cs_db['name'];
+    try {
+      $connect = new PDO('pgsql:' . $param, $cs_db['user'], $cs_db['pwd']);
     }
+    catch(PDOException $err) {
+      $error = $err->getMessage();
+    }
+  }
 
-  $param = empty($cs_db['place']) ? '' : 'host=' . $cs_db['place'] . ';';
-  $param .= 'dbname=' . $cs_db['name'];
-  try {
-    $connect = new PDO('pgsql:' . $param, $cs_db['user'], $cs_db['pwd']);
+  if(empty($test) AND empty($error)) {
     return $connect;
   }
-  catch(PDOException $error) {
-    cs_error_sql(__FILE__, 'cs_sql_connect', $error->getMessage(),1);
+  elseif(empty($test)) {
+    cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
+  }
+  else {
+    return $error;
   }
 }
 

@@ -2,15 +2,29 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_sql_connect($cs_db)
+function cs_sql_connect($cs_db, $test = 0)
 {
-  if (!extension_loaded('mysql')) {
-    cs_error_sql(__FILE__, 'cs_sql_connect', 'mysql extension must be activated!', 1);
+  $error = '';
+  if(!extension_loaded('mysql')) {
+    $error = 'PHP extension mysql must be activated!';
   }
-  $connect = @mysql_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd']) or cs_error_sql(__FILE__, 'mysql_connect', mysql_error(), 1);
-  
-  mysql_select_db($cs_db['name']) or cs_error_sql(__FILE__, 'mysql_select_db', mysql_error($connect), 1);
-  return $connect;
+  else {
+    $connect = @mysql_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd']) OR $error = mysql_error();
+  }
+  if(empty($error)) {
+    mysql_select_db($cs_db['name']) OR $error = mysql_error($connect);
+  }
+
+  if(empty($test) AND empty($error)) {
+    # mysql_set_charset($connect, 'utf8'); // php 5.2.3+
+    return $connect;
+  }
+  elseif(empty($test)) {
+    cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
+  }
+  else {
+    return $error;
+  }
 }
 
 function cs_sql_count($cs_file, $sql_table, $sql_where = 0, $distinct = 0)
@@ -208,7 +222,7 @@ function cs_sql_version($cs_file)
 {
   global $cs_db;
   $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
-  $sql_query = 'SHOW TABLE STATUS';
+  $sql_query = 'SHOW TABLE STATUS WHERE NAME LIKE "' . $cs_db['prefix'] . '\_%"';
   $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_version', mysql_error($cs_db['con']));
   while($row = mysql_fetch_array($sql_data)) {
     $sql_infos['data_size'] = $sql_infos['data_size'] + $row['Data_length'];
