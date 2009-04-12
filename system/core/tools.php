@@ -336,6 +336,11 @@ function cs_mail($email,$title,$message,$from = 0,$type = 0) {
   $headers .= "MIME-Version: 1.0";
   $headers .= "X-Mailer: PHP/" . phpversion();
 
+  if($type == 'text/plain') {
+    $subject = html_entity_decode($subject, ENT_NOQUOTES, $com_lang['charset']);
+    $message = html_entity_decode($message, ENT_NOQUOTES, $com_lang['charset']);
+  }
+
   $result = mail($email,$subject,$message,$headers) ? TRUE : FALSE;
   return $result;
 }
