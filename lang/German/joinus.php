@@ -33,6 +33,8 @@ $cs_lang['short_nick'] = '- Der Nick ist zu kurz (min. %d)';
 $cs_lang['email_false'] = '- Die E-Mail-Adresse ist ung&uuml;ltig';
 $cs_lang['no_age'] = '- Das Geburtsdatum ist eine Pflichtangabe';
 $cs_lang['no_date'] = '- Das m&ouml;gliche Eintrittsdatum ist anzugeben';
+$cs_lang['nick_exists'] = '- Der Nick existiert bereits.';
+$cs_lang['email_exists'] = '- Die E-Mail-Adresse ist bereits vergeben.';
 
 $cs_lang['new_join']  = 'Neue Anfrage';
 $cs_lang['new_joinus']  = 'Neue Join Us Anfrage. Squad: ';
@@ -61,5 +63,3 @@ $cs_lang['stage_4_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;
 $cs_lang['rules'] = 'Regeln';
 $cs_lang['rules2'] = 'gelesen und akzeptiert';
 $cs_lang['no_rules'] = '- Die Regeln wurden nicht gelesen und akzeptiert';
-
-?>

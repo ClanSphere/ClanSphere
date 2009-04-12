@@ -97,6 +97,19 @@ if(isset($_POST['submit'])) {
       $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
     }
   }
+
+  $and = ' AND users_id != ' . $account['users_id'];
+  $search_email = cs_sql_count(__FILE__,'users',"users_email = '" . cs_sql_escape($data['join']['joinus_email']) . "'" . $and);
+  if(!empty($search_email)) {
+    $error++;
+    $errormsg .= $cs_lang['email_exists'] . cs_html_br(1);
+  }
+
+  $search_nick = cs_sql_count(__FILE__,'users',"users_nick = '" . cs_sql_escape($data['join']['joinus_nick']) . "'" . $and);
+  if(!empty($search_nick)) {
+    $error++;
+    $errormsg .= $cs_lang['nick_exists'] . cs_html_br(1);
+  }
 }
 else {
   $data['join']['games_id'] = '';

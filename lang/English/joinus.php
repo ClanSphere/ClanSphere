@@ -33,6 +33,8 @@ $cs_lang['short_nick'] = '- Nick is too short (min. %d)';
 $cs_lang['email_false'] = '- Invalid email address ';
 $cs_lang['no_age'] = '- Birthdate is required';
 $cs_lang['no_date'] = '- Join date must be given';
+$cs_lang['nick_exists'] = '- Nickname already exists';
+$cs_lang['email_exists'] = '- E-mail address already exists';
 
 $cs_lang['new_join']  = 'New Request';
 $cs_lang['new_joinus']  = 'New Joinus Request. Squad: ';
@@ -61,5 +63,3 @@ $cs_lang['stage_4_text'] = ': min. 8 Character, 3 small Letters, 2 large Letters
 $cs_lang['rules'] = 'Rules';
 $cs_lang['rules2'] = 'read and accepted';
 $cs_lang['no_rules'] = '- You have to read and accept the rules';
-
-?>
