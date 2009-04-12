@@ -53,7 +53,7 @@ if(isset($_POST['submit'])) {
   if($cs_user['users_readtime'] > 50) {
     $cs_user['users_readtime'] = 50;
   }
-  $cs_user['users_view'] = in_array($cs_user['users_view'], array('list')) ? $cs_user['users_view'] : '';
+  $cs_user['users_view'] = in_array($cs_user['users_view'], array('list','float')) ? $cs_user['users_view'] : '';
   settype($cs_user['users_timezone'],'integer');
 }
 else {
@@ -127,6 +127,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $views[0]['name'] = $cs_lang['default'];
   $views[1]['users_view'] = 'list';
   $views[1]['name'] = $cs_lang['list'];
+  $views[2]['users_view'] = 'float';
+  $views[2]['name'] = $cs_lang['compatible'];
   $data['setup']['view_type'] = cs_dropdown('users_view','name',$views,$cs_user['users_view'],0,1);
   
   $mode[0]['users_invisible'] = 0;

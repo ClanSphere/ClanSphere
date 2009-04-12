@@ -169,6 +169,7 @@ $cs_lang['readtime'] = 'Highlight unread threads';
 $cs_lang['days'] = 'days';
 $cs_lang['no_readtime'] = 'You have to enter the number of days';
 $cs_lang['default'] = 'Default';
+$cs_lang['compatible'] = 'Compatible';
 $cs_lang['categories'] = 'Categories';
 $cs_lang['invisible'] = 'Invisible';
 $cs_lang['ajax'] = 'Page speedup (AJAX)';

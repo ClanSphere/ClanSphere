@@ -170,6 +170,7 @@ $cs_lang['readtime'] = 'Ungelesene Themen hervorheben';
 $cs_lang['days'] = 'Tage';
 $cs_lang['no_readtime'] = 'Es muss eine Tageszahl eingegeben werden';
 $cs_lang['default'] = 'Standard';
+$cs_lang['compatible'] = 'Kompatibel';
 $cs_lang['categories'] = 'Kategorien';
 $cs_lang['invisible'] = 'Unsichtbar';
 $cs_lang['ajax'] = 'Schnelles Laden (AJAX)';

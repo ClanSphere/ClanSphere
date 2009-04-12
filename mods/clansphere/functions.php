@@ -4,17 +4,18 @@
 
 function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head = array()) {
 
+  global $account, $cs_lang;
   $merge = is_array($merge) ? $merge : array();
   $show = $mod . '/' . $action;
   if (empty($head['message'])) $head['message'] = '';
   $data = array('head' => $head);
 
-  global $account;
+  $options = array('info' => 0, 'size' => 48 , 'theme' => '');
+  $options['theme'] = empty($account['users_view']) ? 'manage' : 'manage_' . $account['users_view'];
+
   if($account['users_view'] == 'list') {
-    $options = array('info' => 0, 'size' => 16, 'lines' => 4, 'theme' => 'manage_list');
-  }
-  else {
-    $options = array('info' => 0, 'size' => 48, 'lines' => 2, 'theme' => 'manage');
+    $options['info'] = 1;
+    $options['size'] = 16;
   }
 
   $mod_array = cs_checkdirs('mods', $show);
