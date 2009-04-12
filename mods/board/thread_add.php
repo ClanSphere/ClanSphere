@@ -57,12 +57,14 @@ $filetypes = explode(',',$cs_board_opt['file_types']);
 
 $board['board_id'] = $board_id;
 $board['users_id'] = $account['users_id'];
+$board['threads_last_user'] = $account['users_id'];
 $board['threads_time'] = cs_time();
 $board['threads_last_time'] = cs_time();
 $board['threads_headline'] = '';
 $board['threads_text'] = '';
 $board['threads_important'] = 0;
 $board['threads_close'] = 0;
+
 $votes = 0;
 
 if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['new_votes']) OR isset($_POST['election']) OR isset($_POST['files+']) OR isset($_POST['new_file']))
@@ -70,7 +72,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['new_vote
 
 	$board['threads_headline'] = $_POST['threads_headline'];
 	$board['threads_text'] = $_POST['threads_text'];
-
+	
 	if(!empty($acc_mod)) {
 		$board['threads_important'] = isset($_POST['threads_important']) ? $_POST['threads_important'] : 0;
 		$board['threads_close'] = isset($_POST['threads_close']) ? $account['users_id'] : 0;
@@ -399,5 +401,3 @@ else {
 
   cs_redirect($cs_lang['create_done'],'board','thread','where=' .$thread_now['threads_id']);
 }
-
-?>
