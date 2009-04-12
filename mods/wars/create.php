@@ -28,14 +28,22 @@ if(isset($_POST['submit'])) {
   $cs_wars['wars_close'] = isset($_POST['wars_close']) ? $_POST['wars_close'] : 0;
   
   $players = empty($_POST['players']) ? 1 : (int) $_POST['players'];
+  $cs_players = array();
   
   for ($x = 1; $x <= $players; $x++) {
-    if (!empty($_POST['playerid'.$x])) {
+  
+    $existing = array_values($cs_players);
+    if(!empty($_POST['playerid'.$x])) {
       $sel = cs_sql_select(__FILE__,'users','users_nick','users_id = \''.(int) $_POST['playerid'.$x].'\'');
-      $cs_players['player'.$x] = $sel['users_nick'];
-    } else {
-      $cs_players['player'.$x] = !empty($_POST['player'.$x]) ? $_POST['player'.$x] : '';
+      $player = $sel['users_nick'];
     }
+    elseif(!empty($_POST['player'.$x]))
+      $player = $_POST['player'.$x];
+
+    if(!empty($player) AND !in_array($player, $existing))
+      $cs_players['player'.$x] = $player;
+    else
+      $players--;
   }
   
   if (!empty($_POST['new_enemy'])) {
@@ -242,5 +250,3 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   cs_redirect($msg,'wars');
   
 }
-
-?>
