@@ -357,15 +357,13 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[i\](.*?)\[/i\]=si","cs_abcode_i",$replace);
     $replace = preg_replace_callback("=\[s\](.*?)\[/s\]=si","cs_abcode_s",$replace);
     $replace = preg_replace_callback("=\[img\](.*?)\[/img\]=si","cs_abcode_img",$replace);
-    $replace = preg_replace_callback("=\[url\=(.*?)\]\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]\[/url\]=si",
-      "cs_abcode_urlimg",$replace);
+    $replace = preg_replace_callback("=\[url\=(.*?)\]\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]\[/url\]=si","cs_abcode_urlimg",$replace);
     $replace = preg_replace_callback("=\[img width\=([\d]*?) height\=([\d]*?)\](.*?)\[/img\]=si", "cs_abcode_img",$replace);
     $replace = preg_replace_callback("=\[mail\](.*?)\[/mail\]=si","cs_abcode_mail",$replace);
     $replace = preg_replace_callback('=([^\s]{3,})@([^\s]*?)\.([^\s]{2,7})(?![^<]+>|[^&]*;)=si','cs_abcode_mail',$replace);
     $replace = preg_replace_callback("=\[color\=([\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
     $replace = preg_replace_callback("=\[size\=([\d]*?)\](.*?)\[/size\]=si","cs_abcode_size",$replace);
-    $replace = preg_replace_callback("=\[(left|center|right|justify)\](.*?)\[/(left|center|right|justify)\]=si",
-      "cs_abcode_align",$replace);
+    $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si", "cs_abcode_align",$replace);
     $replace = preg_replace_callback("=\[list\=(.*?)\](.*?)\[/list\]=si","cs_abcode_list",$replace);
     $replace = preg_replace_callback("=\[list\](.*?)\[/list\]=si","cs_abcode_list",$replace);
     $replace = preg_replace_callback("=\[url\=(.*?)\](.*?)\[/url\]=si","cs_abcode_url",$replace);
