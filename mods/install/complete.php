@@ -4,6 +4,14 @@
 
 $cs_lang = cs_translate('install');
 
+# clear cache data to prevent errors
+$content = cs_paths('uploads/cache');
+unset($content['index.html']);
+unset($content['.htaccess']);
+foreach($content AS $file => $name) {
+  @unlink('uploads/cache/' . $file);
+}
+
 function cs_set_env($dir) {
 
   $error = 0;
