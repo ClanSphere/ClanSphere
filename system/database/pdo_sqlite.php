@@ -42,7 +42,7 @@ function cs_sql_version($cs_file) {
   $sql_infos['server'] = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
   $sql_infos['server'] = str_replace('undefined', '', $sql_infos['server']);
 
-    $sql_query = "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table'";
+    $sql_query = 'SELECT COUNT(*) FROM sqlite_master WHERE type = \'table\' AND name LIKE \'' . $cs_db['prefix'] . '_%\'';
     if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
         $sql_result = $sql_data->fetch();
         $sql_data = NULL;
