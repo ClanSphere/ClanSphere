@@ -127,7 +127,7 @@ function cs_abcode_s($matches) {
 
 function cs_abcode_h($matches) {
 
-  return cs_abcode_output(13, $matches);
+  return cs_abcode_output(12, $matches);
 }
 
 function cs_abcode_hr() {
