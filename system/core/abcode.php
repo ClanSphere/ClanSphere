@@ -249,16 +249,17 @@ function cs_abcode_html($matches) {
 
 function cs_abcode_eval($matches) {
 
-  $matches[1] = str_replace('<br />',"\r\n",$matches[1]);
-  $matches[1] = cs_abcode_html($matches);
+  global $cs_main;
 
+  $matches[1] = str_replace('<br />',"\r\n",$matches[1]);
+  $matches[1] = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
   $matches[1] = str_replace(array('<?php','<?','?>'),'',$matches[1]);
 
   ob_start();
   eval($matches[1]);
   $content = ob_get_contents();
   ob_end_clean();
-
+  $content = str_replace(array("\n","\r"),'',$content);
   return $content;
 }
 
