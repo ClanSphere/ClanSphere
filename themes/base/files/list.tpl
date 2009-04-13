@@ -13,6 +13,9 @@
   <tr>
     <td class="headb"><a href="{url:files_listcat:where={categories:id}}" >{categories:name}</a> ({categories:count}) </td>
   </tr>
+  <tr>
+  <td class="leftb">{categories:text}</td>
+  </tr>
   {if:subcats}
   <tr>
     <td class="leftc"> {lang:subcats}: {loop:subs}<a href="{url:files_listcat:where={subs:id}}" >{subs:name}</a> ({subs:count}){stop:subs} </td>
@@ -20,4 +23,3 @@
   {stop:subcats}
   {stop:categories}
 </table>
-<br />
