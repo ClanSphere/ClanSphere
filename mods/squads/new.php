@@ -108,9 +108,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $el_id = 'game_1';
   $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   $games_count = count($cs_games);
+  $data['squads']['games_sel'] = '';
   for($run = 0; $run < $games_count; $run++) {
     $sel = $cs_games[$run]['games_id'] == $cs_squads['games_id'] ? 1 : 0;
-    $data['squads']['games_sel'] = cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
+    $data['squads']['games_sel'] .= cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
   }
   $url = 'uploads/games/' . $cs_squads['games_id'] . '.gif';
   $data['squads']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');
