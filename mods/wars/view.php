@@ -41,15 +41,17 @@ $tables = 'players pl INNER JOIN {pre}_users usr ON pl.users_id = usr.users_id';
 $cond = 'pl.wars_id = \''.$wars_id.'\' AND pl.players_played = \'1\'';
 $players = cs_sql_select(__FILE__,$tables,$cells,$cond,'usr.users_nick',0,0);
 
-if (!empty($players)) {
-  $count_players = count($players);
-  for ($run = 0; $run < $count_players; $run++) {
-    $wars['players'][$run]['url'] = cs_url('users','view','id='.$players[$run]['users_id']);
-    $wars['players'][$run]['nick'] = cs_secure($players[$run]['users_nick']);
+if(!empty($players)) {
+  $first = 0;
+  $wars['wars']['players'] = '';
+  foreach($players AS $player) {
+    $wars['wars']['players'] .= empty($first) ? '' : ' - ';
+    $first++;
+    $wars['wars']['players'] .= cs_link(cs_secure($player['users_nick']), 'users', 'view', 'id=' . $player['users_id']);
   }
-} else {
-  $wars['players'] = '';
 }
+else
+  $wars['wars']['players'] = '-';
 
 if (empty($cs_wars['wars_players1']) && empty($cs_wars['wars_players2'])) {
   $wars['lang']['on'] = '';
@@ -73,7 +75,7 @@ $icon = empty($result) ? 'grey' : $icon;
 $wars['result']['img'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
 
 $wars_url = cs_secure($cs_wars['wars_url']);
-$wars['url']['link'] = empty($wars_url) ? '-' : cs_html_link('http://' . $wars_url,$wars_url);
+$wars['war']['link'] = empty($wars_url) ? '-' : cs_html_link('http://' . $wars_url,$wars_url);
 
 $wars['pictures']['show'] = '';
 
@@ -112,7 +114,7 @@ if(!empty($wars['rounds'])) {
     $wars['rounds'][$run]['rounds_description'] = cs_secure($wars['rounds'][$run]['rounds_description'],1,1);
   }
 } else {
-  $wars['rounds'] = '';
+  $wars['rounds'] = array();
 }
 
 
@@ -211,5 +213,3 @@ if(!empty($count_com)) {
 }
 
 echo cs_comments_add($wars_id,'wars',$cs_wars['wars_close']);
-
-?>

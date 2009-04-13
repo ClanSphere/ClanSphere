@@ -31,7 +31,7 @@
  </tr>
  <tr>
   <td class="leftc">{icon:kdmconfig}{lang:players}</td>
-  <td class="leftb">{loop:players}<a href="{players:url}">{players:nick}</a> - {stop:players}</td>
+  <td class="leftb">{wars:players}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:1day}{lang:date}</td>
@@ -47,7 +47,7 @@
  </tr>
  <tr>
   <td class="leftc">{icon:gohome}{lang:url}</td>
-  <td class="leftb" colspan="2">{url:link}</td>
+  <td class="leftb" colspan="2">{war:link}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:images}{lang:pictures}</td>
