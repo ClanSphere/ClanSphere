@@ -37,6 +37,7 @@ if(isset($_POST['submit'])) {
     $cs_categories['categories_picture'] = '';
   }
 
+  $img_size = false;
   if(!empty($files['picture']['tmp_name']))
     $img_size = getimagesize($files['picture']['tmp_name']);
 

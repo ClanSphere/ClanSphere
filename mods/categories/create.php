@@ -22,7 +22,8 @@ if(isset($_POST['submit'])) {
   $cs_categories['categories_subid'] = (int) $_POST['categories_id'];
   
   $error = '';
-  
+
+  $img_size = false;
   if(!empty($files_gl['picture']['tmp_name']))
     $img_size = getimagesize($files_gl['picture']['tmp_name']);
 

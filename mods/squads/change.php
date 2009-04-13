@@ -3,9 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('squads');
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $files = cs_files();
+
 $data = array();
 
 $op_squads = cs_sql_option(__FILE__,'squads');
@@ -41,7 +43,10 @@ if(isset($_POST['submit'])) {
     $cs_squads['squads_picture'] = '';
   }
 
-  $img_size = getimagesize($files['picture']['tmp_name']);
+  $img_size = false;
+  if(!empty($files['picture']['tmp_name']))
+    $img_size = getimagesize($files['picture']['tmp_name']);
+
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
