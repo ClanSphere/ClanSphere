@@ -12,7 +12,7 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
 
   $options = array('info' => 0, 'size' => 48 , 'theme' => '');
   $options['theme'] = empty($account['users_view']) ? 'manage' : 'manage_' . $account['users_view'];
-
+  $options['lines'] = 2;
   if($account['users_view'] == 'list') {
     $options['info'] = 1;
     $options['size'] = 16;
