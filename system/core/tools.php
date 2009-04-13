@@ -134,10 +134,10 @@ function cs_datepost($name,$mode) {
   return $var;
 }
 
-function cs_datereal($mode,$time = 0) {
+function cs_datereal($mode,$time = 0, $reverse = 0) {
 
   $time = empty($time) ? cs_time() : $time;
-    $time = cs_timediff($time);
+    $time = cs_timediff($time, $reverse);
   return date($mode,$time);
 }
 
