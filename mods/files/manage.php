@@ -21,9 +21,16 @@ $data = array();
 
 $data['head']['count'] = $files_count;
 $data['head']['paginator'] = cs_pages('files','manage',$files_count,$start,$categories_id,$sort);
-$filesmod = "categories_mod = 'files'";
-$data['categories'] = cs_sql_select(__FILE__,'categories','categories_name AS name',$filesmod,'categories_name',0,0);
 $data['head']['message'] = cs_getmsg();
+
+$filesmod = "categories_mod = 'files'";
+$categories = cs_sql_select(__FILE__,'categories','categories_name, categories_id',$filesmod,'categories_name',0,0);
+
+$data['head']['categories'] = '';
+foreach($categories AS $category) {
+  $selected = $category['categories_id'] == $categories_id ? 1 : 0;
+  $data['head']['categories'] .= cs_html_option($category['categories_name'], $category['categories_id'], $selected);
+}
 
 $from = 'files fls LEFT JOIN {pre}_users usr ON fls.users_id = usr.users_id';
 $select = 'fls.files_name AS files_name, fls.users_id AS users_id, usr.users_nick'; 
@@ -67,4 +74,3 @@ for($run=0; $run<$files_loop; $run++)
   $data['files'][$run]['date'] = cs_date('unix',$cs_files[$run]['files_time'],1);
 }
 echo cs_subtemplate(__FILE__,$data,'files','manage');
-?>
