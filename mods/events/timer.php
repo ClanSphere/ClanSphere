@@ -11,7 +11,7 @@ settype($unix,'integer');
 if(!empty($_POST['date_year']) AND !empty($_POST['date_month']) AND !empty($_POST['date_day'])) {
   $unix = mktime(0, 0, 0, $_POST['date_month'], $_POST['date_day'], $_POST['date_year']);
 }
-$unix = cs_datereal('U',$unix);
+$unix = cs_datereal('U',$unix, 1);
 $max = $unix + 86399;
 
 $data = array();

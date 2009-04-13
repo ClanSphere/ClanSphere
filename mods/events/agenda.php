@@ -11,8 +11,8 @@ elseif(2037 < $year) { $year = 2037; } # limited by current operating systems
 $month = !empty($_GET['month']) ? $_GET['month'] : cs_datereal('n');
 $nom = date('F', mktime(0, 0, 0, $month, 1, $year));
 $days = date('t', mktime(0, 0, 0, $month, 1, $year));
-$min = cs_datereal('U',mktime(0, 0, 0, $month, 1, $year));
-$max = cs_datereal('U',mktime(23, 59, 59, $month, $days, $year));
+$min = cs_datereal('U',mktime(0, 0, 0, $month, 1, $year), 1);
+$max = cs_datereal('U',mktime(23, 59, 59, $month, $days, $year), 1);
 
 $data['month'][1] = ($month == 1) ? $cs_lang['January'] : cs_link($cs_lang['January'], 'events','agenda','year=' . $year . '&amp;month=1');
 $data['month'][2] = ($month == 2) ? $cs_lang['February'] : cs_link($cs_lang['February'], 'events','agenda','year=' . $year . '&amp;month=2');
