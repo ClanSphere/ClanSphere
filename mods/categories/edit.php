@@ -3,8 +3,10 @@
 // $Id$
 
 $cs_lang = cs_translate('categories');
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
+
 $data = array();
 
 $categories_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
@@ -35,7 +37,9 @@ if(isset($_POST['submit'])) {
     $cs_categories['categories_picture'] = '';
   }
 
-  $img_size = getimagesize($files['picture']['tmp_name']);
+  if(!empty($files['picture']['tmp_name']))
+    $img_size = getimagesize($files['picture']['tmp_name']);
+
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
