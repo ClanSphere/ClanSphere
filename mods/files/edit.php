@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 
@@ -100,7 +101,10 @@ elseif(!empty($error))
 
 
 if(!empty($error) OR !isset($_POST['submit'])) {
+
   $size = 0;
+  $data['file']['files_size'] /= 1024;
+
   while($data['file']['files_size'] >= 1024 && $size < 2) {
     $data['file']['files_size'] /= 1024; 
     $size++;
