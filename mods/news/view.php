@@ -33,7 +33,8 @@ if(!empty($pub)) {
   if(empty($cs_news['news_readmore_active']))
     $data['news']['news_readmore'] = '';
   else
-    $data['news']['news_readmore'] = cs_secure($cs_news['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
+    $data['news']['news_readmore']  = cs_secure($cs_news['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
+    $data['news']['news_readmore'] .= cs_html_br(2);
 
   $data['news']['users_link'] = cs_user($cs_news['users_id'],$cs_news['users_nick'], $cs_news['users_active'], $cs_news['users_delete']);
   $data['news']['comments_link'] = cs_link($cs_lang['comments'],'news','view','id=' . $cs_news['news_id']);

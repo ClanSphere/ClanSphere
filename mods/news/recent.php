@@ -49,15 +49,16 @@ else {
 for($run = 0; $run < $news_loop; $run++) {
   $cs_news[$run]['news_headline'] = cs_secure($cs_news[$run]['news_headline']);
   $cs_news[$run]['news_time'] = cs_date('unix', $cs_news[$run]['news_time'], 1);
-  $cs_news[$run]['news_text'] = cs_secure($cs_news[$run]['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
 
   if(empty($cs_news[$run]['news_readmore_active'])) {
     $cs_news[$run]['news_readmore'] = '';
     $cs_news[$run]['if']['readmore'] = false;
+    $cs_news[$run]['news_text'] = cs_secure($cs_news[$run]['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
   }
   else {
     $cs_news[$run]['news_readmore'] = cs_secure($cs_news[$run]['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
     $cs_news[$run]['if']['readmore'] = true;
+    $cs_news[$run]['news_text'] = '';
   }
 
   $cs_user = cs_secure($cs_news[$run]['users_nick']);
