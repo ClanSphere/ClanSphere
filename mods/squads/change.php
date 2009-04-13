@@ -179,7 +179,7 @@ else {
   $squads_save = array_values($cs_squads);
   cs_sql_update(__FILE__,'squads',$squads_cells,$squads_save,$squads_id);
   
-  cs_redirect($data['changes_done'],'squads','center');
+  cs_redirect($cs_lang['changes_done'],'squads','center');
 } 
   
 ?>

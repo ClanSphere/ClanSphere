@@ -11,8 +11,8 @@
 <form method="post" id="squads_change" action="{url:squads_change}" enctype="multipart/form-data">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="leftc">{icon:file} {lang:name} *</td>
-		<td class="leftb"><input type="text" name="squads_name" value="Raubtiere" maxlength="80" size="40" /></td>
+		<td class="leftc">{icon:yast_group_add} {lang:name} *</td>
+		<td class="leftb"><input type="text" name="squads_name" value="{squads:squads_name}" maxlength="80" size="40" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kdmconfig} {lang:clan_label} *</td>
