@@ -249,10 +249,10 @@ function cs_abcode_html($matches) {
 
 function cs_abcode_eval($matches) {
 
-  global $cs_main;
+  global $com_lang;
 
   $matches[1] = str_replace('<br />',"\r\n",$matches[1]);
-  $matches[1] = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
+  $matches[1] = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
   $matches[1] = str_replace(array('<?php','<?','?>'),'',$matches[1]);
 
   ob_start();
