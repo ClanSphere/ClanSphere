@@ -156,7 +156,6 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
       
       if ($thread['threads_comments'] > $account['users_limit']) {
         $data['threads'][$run]['page'] = cs_html_br(1);
-        $data['threads'][$run]['page'] .= $cs_lang['page'] . ' ';
         $data['threads'][$run]['page'] .= cs_pages('board', 'thread', $thread['threads_comments'], 0, $thread['threads_id'], 0, 0, 1);
       } else {
         $data['threads'][$run]['page'] = '';
@@ -193,4 +192,3 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
     echo cs_subtemplate(__FILE__, $data, 'board', 'listcat',1);
   }
 }
-?>
