@@ -55,8 +55,8 @@
   <td class="leftc">{lang:type} *</td>
   <td class="leftb">
     <select name="type" class="form">
-      <option value="0">----</option>{loop:types}
-      <option value="{types:type}"{types:selected}>{types:name}</option>{stop:types}
+      <option value="0">----</option>
+      {data:types}
      </select><br />
     {lang:type_info}
    </td>
@@ -100,7 +100,7 @@
     <input type="hidden" name="lang" value="{data:lang}" class="form" />
     <input type="submit" name="create" value="{lang:create}" class="form"/>
     <input type="submit" name="view" value="{lang:show}" class="form"/>
-    <input type="reset" name="reset" value="{lang:reset}" class="form"/>
+    
    </td>
  </tr>
 </table>

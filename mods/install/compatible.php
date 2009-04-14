@@ -4,10 +4,13 @@
 
 $cs_lang = cs_translate('install');
 
+$sql_files = cs_paths('system/database');
+unset($sql_files['pdo.php']);
+
 $data = array();
 $ok = array();
-$ok[0] = cs_icon('stop');
-$ok[1] = cs_html_img('symbols/crystal_project/16/submit.png'); #cs_icon('submit');
+$ok[0] = cs_html_img('symbols/crystal_project/16/stop.png');
+$ok[1] = cs_html_img('symbols/crystal_project/16/submit.png');
 
 $switch = array();
 $switch[0] = $cs_lang['off'];
@@ -20,17 +23,14 @@ $data['av']['php'] = phpversion();
 $data['ok']['php'] = $ok[version_compare($data['av']['php'],$data['rq']['php'],'>=')];
 if ($data['ok']['php'] != $ok[1]) { $check_required = false; }
 
-$data['rq']['upload'] = $cs_lang['on'];
-$data['av']['upload'] = $switch[ini_get('file_uploads')];
-$data['ok']['upload'] = $ok[$data['av']['upload'] == $switch[1]];
-if ($data['ok']['upload'] != $ok[1]) { $check_required = false; }
-
-$dba_pool = array('mysql', 'mysqli', 'pdo_mysql', 'pdo_pgsql', 'pdo_sqlite', 'pgsql', 'sqlite');
 $data['rq']['database'] = '';
 $data['av']['database'] = '';
-foreach ($dba_pool AS $dba_ex) {
-  $data['rq']['database'] .= $dba_ex . ', ';
-  if (extension_loaded($dba_ex)) { $data['av']['database'] .= $dba_ex . ', '; }
+foreach($sql_files AS $sql_file => $num) {
+  $extension = substr($sql_file, 0, -4);
+  $data['rq']['database'] .= $extension . ', ';
+  if(extension_loaded($extension)) {
+    $data['av']['database'] .= $extension . ', ';
+  }
 }
 $data['rq']['database'] = @substr($data['rq']['database'],0,-2);
 $data['av']['database'] = @substr($data['av']['database'],0,-2);
@@ -41,9 +41,13 @@ $data['data']['ok'] = $ok[1];
 
 $check_recommended = true;
 
-$data['rc']['php'] = '5.2.0';
+$data['rc']['php'] = '5.2.9';
 $comparison = version_compare($data['av']['php'],$data['rc']['php'],'>=');
 if (empty($comparison)) { $data['av']['php'] = '<div style="color:#B91F1D">' . $data['av']['php'] . '</div>'; $check_recommended = 0;}
+
+$data['rc']['short_open_tag'] = $switch[0];
+$data['av']['short_open_tag'] = $switch[(int) ini_get('short_open_tag')];
+if ($data['av']['short_open_tag'] != $data['rc']['short_open_tag']) { $data['av']['short_open_tag'] = '<div style="color:#B91F1D">' . $data['av']['short_open_tag'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['register_globals'] = $switch[0];
 $data['av']['register_globals'] = $switch[(int) ini_get('register_globals')];
@@ -67,9 +71,17 @@ $basedir = empty($basedir) ? 0 : 1;
 $data['av']['basedir'] = $switch[$basedir];
 if ($data['av']['basedir'] != $data['rc']['basedir']) { $data['av']['basedir'] = '<div style="color:#B91F1D">' . $data['av']['basedir'] . '</div>'; $check_recommended = 0; }
 
+$data['rc']['file_uploads'] = $switch[1];
+$data['av']['file_uploads'] = $switch[(int) ini_get('file_uploads')];
+if ($data['av']['file_uploads'] != $data['rc']['file_uploads']) { $data['av']['file_uploads'] = '<div style="color:#B91F1D">' . $data['av']['file_uploads'] . '</div>'; $check_recommended = 0; }
+
 $data['rc']['fopen'] = $switch[1];
 $data['av']['fopen'] = $switch[(int) ini_get('allow_url_fopen')];
 if ($data['av']['fopen'] != $data['rc']['fopen']) { $data['av']['fopen'] = '<div style="color:#B91F1D">' . $data['av']['fopen'] . '</div>'; $check_recommended = 0; }
+
+$data['rc']['allow_url_include'] = $switch[0];
+$data['av']['allow_url_include'] = $switch[(int) ini_get('allow_url_include')];
+if ($data['av']['allow_url_include'] != $data['rc']['allow_url_include']) { $data['av']['allow_url_include'] = '<div style="color:#B91F1D">' . $data['av']['allow_url_include'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['gd'] = $switch[1];
 $data['av']['gd'] = $switch[(int) extension_loaded('gd')];
@@ -84,5 +96,3 @@ if (!empty($check_required) && !empty($check_recommended)) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'install','compatible');
-
-?>

@@ -5,6 +5,18 @@
 $cs_lang['mod']  = 'Database';
 $cs_lang['modtext']  = 'Database actions take place here';
 
+// roots.php
+$cs_lang['db_infos'] = 'Database information';
+$cs_lang['type'] = 'Database Server';
+$cs_lang['encoding'] = 'Encoding';
+$cs_lang['client'] = 'Client Version';
+$cs_lang['host'] = 'Database host';
+$cs_lang['server'] = 'Server Version';
+$cs_lang['tables']  = 'Tables';
+$cs_lang['usage'] = 'Usage';
+$cs_lang['data'] = 'Datas';
+$cs_lang['indexe'] = 'Indexes';
+
 $cs_lang['roots'] = 'Roots';
 $cs_lang['body_roots']  = 'Please select from the following options.';
 $cs_lang['import'] = 'Import';
@@ -45,5 +57,3 @@ $cs_lang['sql_data_for']  = 'SQL data for table "%s"';
 $cs_lang['error_inst_sql'] = "The <b>install.sql</b> file can not be imported, <br />because it´s only needed for the' ";
 $cs_lang['error_inst_sql'] .= "<b>Installation</b>.<br />";
 $cs_lang['error_inst_sql'] .= "If you wish an update, please use the SQL update files from the directory <br /><b>\"updates/clansphere\"</b>";
-
-?>

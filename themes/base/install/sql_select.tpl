@@ -63,7 +63,7 @@
       <td class="leftb">{install:ok}</td>
     </tr>
     <tr>
-      <td class="leftc">{lang:fckeditor}</td>
+      <td class="leftc">{lang:ckeditor}</td>
       <td class="leftc">{install:ok}</td>
     </tr>
   </table>

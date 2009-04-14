@@ -14,12 +14,6 @@
   <td class="leftb">{ok:php}</td>
  </tr>
  <tr>
-  <td class="leftc">{lang:file_uploads}</td>
-  <td class="leftc">{rq:upload}</td>
-  <td class="leftc">{av:upload}</td>
-  <td class="leftc">{ok:upload}</td>
- </tr>
- <tr>
   <td class="leftb">{lang:compatible_database}</td>
   <td class="leftb">{lang:any} <a href="#" title="{rq:database}">(?)</a></td>
   <td class="leftb">{av:database}</td>
@@ -40,6 +34,12 @@
   <td class="leftb">{rc:php}</td>
   <td class="leftb">{av:php}</td>
   <td class="leftb">{data:ok}</td>
+ </tr>
+ <tr>
+  <td class="leftc">{lang:short_open_tag}</td>
+  <td class="leftc">{rc:short_open_tag}</td>
+  <td class="leftc">{av:short_open_tag}</td>
+  <td class="leftc">{data:ok}</td>
  </tr>
  <tr>
   <td class="leftc">{lang:reg_global}</td>
@@ -72,10 +72,22 @@
   <td class="leftc">{data:ok}</td>
  </tr>
  <tr>
+  <td class="leftc">{lang:file_uploads}</td>
+  <td class="leftc">{rc:file_uploads}</td>
+  <td class="leftc">{av:file_uploads}</td>
+  <td class="leftc">{data:ok}</td>
+ </tr>
+ <tr>
   <td class="leftb">{lang:allow_url_fopen}</td>
   <td class="leftb">{rc:fopen}</td>
   <td class="leftb">{av:fopen}</td>
   <td class="leftb">{data:ok}</td>
+ </tr>
+ <tr>
+  <td class="leftc">{lang:allow_url_include}</td>
+  <td class="leftc">{rc:allow_url_include}</td>
+  <td class="leftc">{av:allow_url_include}</td>
+  <td class="leftc">{data:ok}</td>
  </tr>
  <tr>
   <td class="leftc">{lang:gd_extension}</td>

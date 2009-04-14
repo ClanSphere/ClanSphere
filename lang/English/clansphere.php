@@ -83,35 +83,33 @@ $cs_lang['modul'] = 'Modul';
 $cs_lang['action'] = 'Action';
 $cs_lang['parameters'] = 'Parameters';
 
+// software.php
 $cs_lang['head_software']  = 'Software';
 $cs_lang['body_software']  = 'Following software is installed on this server.';
 
+$cs_lang['host'] = 'Hostname';
+$cs_lang['php_mode'] = 'PHP Implementation';
+$cs_lang['zend_core'] = 'Zend Version';
 $cs_lang['display_err']  = 'Error handling';
 $cs_lang['m_quotes'] = 'Magic Quotes';
 $cs_lang['os'] = 'Operating System';
 $cs_lang['php_extensions']  = 'PHP Extensions';
 $cs_lang['php_mod']  = 'PHP Module';
-$cs_lang['php_setup']  = 'PHP Settings';
+$cs_lang['php_setup']  = 'PHP Setting';
+$cs_lang['short_open_tag'] = 'Open PHP like XML';
 $cs_lang['reg_global'] = 'Register Globals';
 $cs_lang['safe_mode'] = 'Safe Mode';
 $cs_lang['trans_sid'] = 'Transparent SessionID';
 $cs_lang['basedir_restriction'] = 'Basedir restriction';
+$cs_lang['file_uploads'] = 'Upload files';
 $cs_lang['allow_url_fopen'] = 'Allow remote files';
+$cs_lang['allow_url_include'] = 'Allow remote include';
 $cs_lang['webserver'] = 'Webserver';
-$cs_lang['db_infos'] = 'Database information';
-$cs_lang['type'] = 'Database Server';
-$cs_lang['encoding'] = 'Encoding';
-$cs_lang['client'] = 'Client Version';
-$cs_lang['host'] = 'Database host';
-$cs_lang['server'] = 'Server Version';
-$cs_lang['tables']  = 'Tables';
 $cs_lang['post_max_size'] = 'Max. Formdatasize';
 $cs_lang['upload_max_filesize'] = 'Max. Upload-Filesize';
 $cs_lang['memory_limit'] = 'Max. Memoryconsumption';
-
-$cs_lang['usage'] = 'Usage';
-$cs_lang['data'] = 'Datas';
-$cs_lang['indexe'] = 'Indexes';
+$cs_lang['found'] = 'Found';
+$cs_lang['recommend'] = 'Recommended';
 
 $cs_lang['body_storage']  = 'Important statistics and informations';
 
@@ -212,5 +210,3 @@ $cs_lang['view'] = 'View';
 $cs_lang['read'] = 'Mark as read';
 $cs_lang['showall'] = 'Show all';
 $cs_lang['new_infos'] = 'All messages from the ClanSphere Team';
-
-?>

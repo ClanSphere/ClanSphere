@@ -5,6 +5,18 @@
 $cs_lang['mod']  = 'Datenbank';
 $cs_lang['modtext']  = 'Aktualisiert das Portalsystem';
 
+// roots.php
+$cs_lang['db_infos'] = 'Datenbank Informationen';
+$cs_lang['type'] = 'Datenbank Server';
+$cs_lang['encoding'] = 'Zeichensatz';
+$cs_lang['client'] = 'Client Version';
+$cs_lang['host'] = 'Ort der Datenbank';
+$cs_lang['server'] = 'Server Version';
+$cs_lang['tables']  = 'Tabellen';
+$cs_lang['usage'] = 'Nutzung';
+$cs_lang['data'] = 'Daten';
+$cs_lang['indexe'] = 'Indexe';
+
 $cs_lang['roots'] = 'Basis';
 $cs_lang['body_roots']  = 'W&auml;hlen Sie aus den folgenden Aktionen aus.';
 $cs_lang['import'] = 'Import';
@@ -45,6 +57,3 @@ $cs_lang['sql_data_for']  = 'Daten der Tabelle "%s"';
 $cs_lang['error_inst_sql'] = "Die <b>install.sql</b> Datei kann nicht importiert werden, <br />da diese ausschliesslich f&uuml;r die ";
 $cs_lang['error_inst_sql'] .= "<b>Installation</b> ben&ouml;tigt wird.<br />";
 $cs_lang['error_inst_sql'] .= "Sollten Sie ein Update w&uuml;nschen, nutzen Sie bitte die SQL Update Dateien aus dem <br /><b>\"updates/clansphere\"</b> Ordner";
-
-
-?>

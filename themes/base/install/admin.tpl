@@ -73,7 +73,7 @@
     <td class="leftc">{lang:options}</td>
     <td class="leftb">
      <input type="submit" name="submit" value="{lang:create}" class="form" />
-     <input type="reset" name="reset" value="{lang:reset}" class="form" />
+     
     </td>
   </tr>
 </table>

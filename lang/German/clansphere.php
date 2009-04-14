@@ -83,35 +83,33 @@ $cs_lang['modul'] = 'Modul';
 $cs_lang['action'] = 'Aktion';
 $cs_lang['parameters'] = 'Parameter';
 
+// software.php
 $cs_lang['head_software']  = 'Software';
 $cs_lang['body_software']  = 'Folgendes ist auf diesem Server vorhanden.';
 
+$cs_lang['host'] = 'Hostname';
+$cs_lang['php_mode'] = 'Anbindung von PHP';
+$cs_lang['zend_core'] = 'Zend Version';
 $cs_lang['display_err']  = 'Fehlerausgabe';
 $cs_lang['m_quotes'] = 'Magische Anf&uuml;hrungszeichen';
 $cs_lang['os'] = 'Betriebssystem';
 $cs_lang['php_extensions']  = 'PHP Erweiterungen';
 $cs_lang['php_mod']  = 'PHP Modul';
-$cs_lang['php_setup']  = 'PHP Einstellungen';
+$cs_lang['php_setup']  = 'PHP Einstellung';
+$cs_lang['short_open_tag'] = 'PHP wie XML &ouml;ffnen';
 $cs_lang['reg_global'] = 'Globale Registrierung';
 $cs_lang['safe_mode'] = 'Sicherer Modus';
 $cs_lang['trans_sid'] = 'Transparente SessionID';
 $cs_lang['basedir_restriction'] = 'Abgesicherte Pfadumgebung';
+$cs_lang['file_uploads'] = 'Dateien hochladen';
 $cs_lang['allow_url_fopen'] = 'Externe Inhalte laden';
+$cs_lang['allow_url_include'] = 'Externe Inhalte ausf&uuml;hren';
 $cs_lang['webserver'] = 'Webserver';
-$cs_lang['db_infos'] = 'Datenbank Informationen';
-$cs_lang['type'] = 'Datenbank Server';
-$cs_lang['encoding'] = 'Zeichensatz';
-$cs_lang['client'] = 'Client Version';
-$cs_lang['host'] = 'Ort der Datenbank';
-$cs_lang['server'] = 'Server Version';
-$cs_lang['tables']  = 'Tabellen';
 $cs_lang['post_max_size'] = 'Max. Formulardatenmenge';
 $cs_lang['upload_max_filesize'] = 'Max. Upload-Dateigr&ouml;&szlig;e';
 $cs_lang['memory_limit'] = 'Max. Speicherverbrauch';
-
-$cs_lang['usage'] = 'Nutzung';
-$cs_lang['data'] = 'Daten';
-$cs_lang['indexe'] = 'Indexe';
+$cs_lang['found'] = 'Vorhanden';
+$cs_lang['recommend'] = 'Empfohlen';
 
 $cs_lang['body_storage']  = 'Wichtige Statistiken und Informationen';
 
@@ -212,5 +210,3 @@ $cs_lang['view'] = 'Anzeigen';
 $cs_lang['read'] = 'Gelesen';
 $cs_lang['showall'] = 'Alle anzeigen';
 $cs_lang['new_infos'] = 'Alle Mitteilungen vom ClanSphere Team';
-    
-?>
