@@ -69,7 +69,10 @@ if(isset($_POST['submit'])) {
 	if(!empty($cs_main['fckeditor']))
 		$cs_links['links_info'] = '[html]' . $cs_links['links_info'] . '[/html]';
 
-	$img_size = getimagesize($files_gl['symbol']['tmp_name']);
+  $img_size = false;
+  if(!empty($files_gl['symbol']['tmp_name']))
+    $img_size = getimagesize($files_gl['symbol']['tmp_name']);
+
   if(!empty($files_gl['symbol']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
