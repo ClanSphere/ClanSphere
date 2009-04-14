@@ -3,8 +3,10 @@
 // $Id$
 
 $cs_lang = cs_translate('board');
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
+
 $data = array();
 
 $files_gl = cs_files();
@@ -57,7 +59,6 @@ if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'
 }
 //ende sicherheits abfrage
 
-
 #check mod
 $acc_close = 0;
 $check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = "' . $account['users_id'] . '"',0,0,1);
@@ -71,7 +72,6 @@ $head .= cs_link($data['thread']['board_name'],'board','listcat','where=' .$data
 $head .= cs_link($data['thread']['threads_headline'],'board','thread','where=' .$data['thread']['threads_id'],'normalb');
 $data['thread']['head_link'] = $head;
 
-
 //quote
 if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
 	if(!empty($_POST['fquote'])) {
@@ -80,7 +80,7 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
 	}elseif(!empty($_REQUEST['quote'])) {
 		$def = explode('-', $_REQUEST['quote']);
 	}
-  
+
   #comment
   if($def[0]=='c') {
     $quote = cs_sql_select($file,'comments','users_id,comments_text,comments_time',"comments_id = '" . cs_sql_escape($def[1]) . "'");
@@ -103,14 +103,12 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
   }
 }
 
-
-
 if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced']) OR isset($_POST['new_file']) OR isset($_POST['files+']) OR isset($_POST['fquote'])) {
 
 	$quote_in = !empty($ori_text) ? "\n" . $ori_text : '';
 	$text = $_POST['comments_text'] . $quote_in ;
 	$close_now = !empty($_POST['close_now']) ? 1 : 0; ## hier
-	
+
 	//check text
 	if(!empty($text)) {
 		$text_count = strlen($text);
@@ -125,7 +123,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
 	elseif(empty($com['commtents_text']) AND !isset($_POST['advanced'])){
 		$error .= $cs_lang['no_text'] . cs_html_br(1);
 	}
-	
+
   //check doublepost
   $find = 'comments_mod = \'board\' AND comments_fid = "' . $fid . '"';
   $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_time',$find,'comments_id DESC');
@@ -141,12 +139,11 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
     $error .= cs_html_br(1);
   }
 
-
 	//check flood
 	$where = 'users_id = "' . $account['users_id'] . '" AND comments_mod = \'board\'';
   $flood = cs_sql_select(__FILE__,'comments','comments_time',$where,'comments_time DESC');
   $maxtime = $flood['comments_time'] + $cs_main['def_flood'];
-  
+
   if($maxtime > cs_time()) {
     $diff = $maxtime - cs_time();
     $error .= sprintf($cs_lang['flood_on'], $diff) . cs_html_br(1);
@@ -157,12 +154,12 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
   if(!empty($board['threads_close'])) {
     $error .= $cs_lang['not_able'] . cs_html_br(1);
   }
-  
+
   //check board read
 	if(!empty($data['thread']['board_read']) AND $account['access_clansphere'] < 5) {
 		$error = $cs_lang['thread_only_read'];
 	}
-  
+
 	//files
 	$files = isset($_POST['files']) ? $_POST['files'] : 0;
 	if(isset($_POST['new_file'])) {
@@ -220,7 +217,6 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
 	}
 }
 
-
 $data['if']['error'] = empty($error) ? false : true;
 $data['show']['error'] = $error;
 
@@ -235,41 +231,39 @@ if(isset($_POST['files+'])) {
 	$run_loop_files++;
 }
 
-
 if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR isset($_POST['files+']) OR isset($_POST['new_file'])) {
 
 	$data['thread']['text_size'] = $max_text;
 	$data['abcode']['smileys'] = cs_abcode_smileys('comments_text');
 	$data['abcode']['features'] = cs_abcode_features('comments_text');
 	$data['data']['comments_text'] = $ori_text;
-		
 
 	//files
 	$data['if']['file'] = FALSE;
-	
+
 	$a = $run_loop_files;
 	$run_loop_files = !empty($run_loop_files) ? $run_loop_files : 1;
-	
+
   if($files == 1)
   {
   	$data['if']['file'] = TRUE;
-	
+
 	require_once 'mods/clansphere/filetype.php';
-    
+
     for($run=0; $run < $run_loop_files; $run++)
     {
 			$num = $run + 1;
 			$cs_files["text_$num"] = isset($_POST["text_$num"]) ? $_POST["text_$num"] : '';
 
       $data['files'][$run]['num'] = $num;
-      
+
       $data['files'][$run]['if']['empty_file'] = FALSE;
       $data['files'][$run]['if']['file_exists'] = FALSE;
-      
+
       if(empty($file_name[$num]))
       {
       	$data['files'][$run]['if']['empty_file'] = TRUE;
-      
+
         	$matches[1] = $cs_lang['infos'];
         	$return_types = '';
         	foreach($filetypes AS $add) {
@@ -281,10 +275,9 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
       }
       else {
       	$data['files'][$run]['if']['file_exists'] = TRUE;
-      
+
       	$data['files'][$run]['name'] = $file_name[$num];
       	$data['files'][$run]['up_name'] = $file_upload_name[$num];
-        
 
         $file = $file_name[$num];
         $extension = strlen(strrchr($file,"."));
@@ -305,10 +298,10 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
       }
     }
   }
-  
+
   $data['if']['add_file'] = FALSE;
   $data['if']['new_file'] = FALSE;
-  
+
   if($files == '1' AND $account['access_board'] >= '2') {
   	$data['if']['add_file'] = TRUE;
   	$data['hidden']['files_loop'] = $run_loop_files;
@@ -323,9 +316,9 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
 	}else{
 		$data['if']['allow_close'] = FALSE;
 	}
-	
+
 	$data['com']['fid'] = $fid;
-	
+
 	$where = "comments_mod = 'board' AND comments_fid = '" . $fid . "'";
 	$count_com = cs_sql_count(__FILE__,'comments',$where);
 	if(!empty($count_com)) {
@@ -334,7 +327,6 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
 		$data['if']['com_form'] = TRUE;
 	}
 
-	
  echo cs_subtemplate(__FILE__,$data,'board','com_create');
 }
 else {
@@ -355,20 +347,18 @@ else {
 
   $com_cells = array('users_id', 'comments_fid', 'comments_mod', 'comments_ip', 'comments_time', 'comments_text');
   $com_save = array($users_id, $fid, 'board', $user_ip, $time, $text);
- cs_sql_insert(__FILE__,'comments',$com_cells,$com_save);
+  cs_sql_insert(__FILE__,'comments',$com_cells,$com_save);
 	$idnow = cs_sql_insertid(__FILE__);
   
   $thread_cells = array('threads_last_time','threads_last_user');
   $thread_save = array(cs_time(),$account['users_id']);
- cs_sql_update(__FILE__,'threads',$thread_cells,$thread_save,$fid);
- 
-	
+  cs_sql_update(__FILE__,'threads',$thread_cells,$thread_save,$fid);
 
   for($run=0; $run < $run_loop_files; $run++) {
     $num = $run+1;
     $files_cells = array('users_id','threads_id','comments_id','boardfiles_time','boardfiles_name');
     $files_save = array($users_id,$fid,$idnow,cs_time(),$file_name[$num]);
-   cs_sql_insert(__FILE__,'boardfiles',$files_cells,$files_save);
+    cs_sql_insert(__FILE__,'boardfiles',$files_cells,$files_save);
     $files_select_new_id = cs_sql_insertid(__FILE__);
     $ext = substr($file_name[$num],strlen($file_name[$num])+1-strlen(strrchr($file_name[$num],'.')));
     $path = $cs_main['def_path'] . '/uploads/board/files/';
@@ -380,25 +370,27 @@ else {
   }
   
   include_once('mods/board/repair.php');
- cs_board_comments($data['thread']['board_id']);
- cs_threads_comments($data['thread']['threads_id']);
-	
+  cs_board_comments($data['thread']['board_id']);
+  cs_threads_comments($data['thread']['threads_id']);
+
 	if(!empty($close_now) AND !empty($acc_close)) {
 		$close_cells = array('threads_close');
 		$close_save = array($account['users_id']);
-	 cs_sql_update(__FILE__,'threads',$close_cells,$close_save,$data['thread']['threads_id']);
+	  cs_sql_update(__FILE__,'threads',$close_cells,$close_save,$data['thread']['threads_id']);
 	}
 
+	$where = "comments_mod = 'board' AND comments_fid = '" . $fid . "'";
+	$count_com = cs_sql_count(__FILE__,'comments',$where);
+
 	$add_start = empty($start) ? '' : '&start=' . $start;
-	$more = 'where=' . $fid . $add_start . '#com' . ++$count_com;
- cs_redirect($cs_lang['create_done'],'board','thread',$more);
+  $more = 'where=' . $fid . $add_start . '#com' . $count_com;
+  cs_redirect($cs_lang['create_done'],'board','thread',$more);
 }
 
-
 if(!empty($data['thread']['board_read']) AND $account['access_clansphere'] < 5) {
-	} else {
+
+}
+else {
 	require_once('mods/comments/functions.php');
 	cs_comments_view($fid,'board','com_create',$count_com,false,5);	
 }
-
-?>
