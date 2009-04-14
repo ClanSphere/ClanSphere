@@ -21,7 +21,10 @@ if(isset($_POST['submit'])) {
   $error = 0;
   $message = '';
 
-  $img_size = getimagesize($files['picture']['tmp_name']);
+  $img_size = false;
+  if(!empty($files['picture']['tmp_name']))
+    $img_size = getimagesize($files['picture']['tmp_name']);
+
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
     $error++;
@@ -141,4 +144,3 @@ else {
   }
   cs_redirect($cs_lang['create_done'],'banners');
 }
-?>
