@@ -257,7 +257,7 @@
 		{if:allow_close}
 		<tr>
 			<td class="leftc">{icon:configure} {lang:more}</td>
-			<td class="leftb"><input type="checkbox" name="close_now" value="1" /></td>
+			<td class="leftb"><input type="checkbox" name="close_now" value="1" /> {lang:thread_close}</td>
 		</tr>
 		{stop:allow_close}
     <tr>
