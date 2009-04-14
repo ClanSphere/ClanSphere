@@ -97,20 +97,24 @@ if(empty($_REQUEST['where'])) {
           
           $error_several += cs_sql_count(__FILE__, 'voted', $where);
           
-          if (!empty($error_several)) die('This website does not want to be exploited. Being exploited is not a good thing.');
+          if (!empty($error_several)) die('Multivote triggered an error with answers -> Execution halted.');
           
           foreach($_POST['voted_answer'] AS $answer) {
             $cs_votes_save['voted_answer'] = $answer;
             $votes_cells = array_keys($cs_votes_save);
             $votes_save = array_values($cs_votes_save);
             if(!empty($cs_votes_save['voted_answer']))
-              cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);    
+              cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+            else
+              cs_error(__FILE__, 'Empty answer for multivote with ID ' . $cs_votes_id);
           }
         } else {
           $votes_cells = array_keys($cs_votes_save);
           $votes_save = array_values($cs_votes_save);
           if(!empty($cs_votes_save['voted_answer']))
             cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+          else
+            cs_error(__FILE__, 'Empty answer for singlevote with ID ' . $cs_votes_id);
         }
         
         cs_redirect($cs_lang['success'],'votes','view','where='.$cs_votes_id);

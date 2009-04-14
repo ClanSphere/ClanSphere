@@ -97,19 +97,23 @@ if(isset($_POST['submit_votes']) ) {
   	
   	$error_several += cs_sql_count(__FILE__, 'voted', $where);
   	
-  	if (!empty($error_several)) die('This website does not want to be exploited. Being exploited is not a good thing.');
+  	if (!empty($error_several)) die('Multivote triggered an error with answers -> Execution halted.');
   	
     for($run = 0; $run < $count_voted; $run++) {
       $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
       $votes_save = array($votes_id,$users_id,$time,$voted_answer[$run],$users_ip,$mod);
       if(!empty($voted_answer[$run]))
-        cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);    
+        cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+      else
+        cs_error(__FILE__, 'Empty answer for multivote with ID ' . $cs_votes_id);
     }
   } else {
     $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
     $votes_save = array($votes_id,$users_id,$time,$voted_answer,$users_ip,$mod);
     if(!empty($voted_answer))
-      cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);    
+      cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+    else
+      cs_error(__FILE__, 'Empty answer for singlevote with ID ' . $cs_votes_id);
   }
 
   cs_redirect($cs_lang['create_done'],'votes','list');
