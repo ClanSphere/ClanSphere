@@ -27,7 +27,7 @@ if (!empty($_POST['submit'])) {
   if(empty($categories_id)) { $error .= $cs_lang['no_cat'] . cs_html_br(1); }
   
   // check nav-image
-  if (!empty($files['partner_nimg'])) {
+  if (!empty($files['partner_nimg']['tmp_name'])) {
     $img_size = getimagesize($files['partner_nimg']['tmp_name']);
     if(!empty($files['partner_nimg']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
@@ -56,7 +56,7 @@ if (!empty($_POST['submit'])) {
   }
   
   // check list_image
-  if (!empty($files['partner_limg'])) {
+  if (!empty($files['partner_limg']['tmp_name'])) {
     $img_size = getimagesize($files['partner_limg']['tmp_name']);
     if(!empty($files['partner_limg']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
       $error .=  $cs_lang['ext_error'] . cs_html_br(1);
@@ -85,7 +85,7 @@ if (!empty($_POST['submit'])) {
   }
   
   // check rotation-image
-  if (!empty($files['partner_rimg'])) {
+  if (!empty($files['partner_rimg']['tmp_name'])) {
     $img_size = getimagesize($files['partner_rimg']['tmp_name']);
     if(!empty($files['partner_rimg']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
