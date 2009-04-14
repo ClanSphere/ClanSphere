@@ -103,12 +103,14 @@ if(empty($_REQUEST['where'])) {
             $cs_votes_save['voted_answer'] = $answer;
             $votes_cells = array_keys($cs_votes_save);
             $votes_save = array_values($cs_votes_save);
-            cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);    
+            if(!empty($cs_votes_save['voted_answer']))
+              cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);    
           }
         } else {
           $votes_cells = array_keys($cs_votes_save);
           $votes_save = array_values($cs_votes_save);
-          cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+          if(!empty($cs_votes_save['voted_answer']))
+            cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
         }
         
         cs_redirect($cs_lang['success'],'votes','view','where='.$cs_votes_id);
@@ -265,4 +267,3 @@ if(empty($_REQUEST['where'])) {
     }
   }
 }
-?>
