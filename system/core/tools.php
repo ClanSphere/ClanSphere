@@ -112,7 +112,7 @@ function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
 
 function cs_datepost($name,$mode) {
 
-  $time['year'] = empty($_POST[$name . '_year']) ? cs_datereal('Y') : (int) $_POST[$name . '_year'];
+  $time['year'] = empty($_POST[$name . '_year']) ? 0 : (int) $_POST[$name . '_year'];
   $time['month'] = empty($_POST[$name . '_month']) ? 1 : (int) $_POST[$name . '_month'];
   $time['day'] = empty($_POST[$name . '_day']) ? 1 : (int) $_POST[$name . '_day'];
 
@@ -126,9 +126,8 @@ function cs_datepost($name,$mode) {
     $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
     $var = cs_timediff($var, 1); 
   }
-  elseif($mode == 'date') {
+  elseif($mode == 'date' AND !empty($time['year'])) {
     $var = $time['year'] . '-' . $time['month'] . '-' . $time['day'];
-    if($var == '1950-01-01' OR $var == '1970-01-01') $var = '';
   }
 
   return $var;
@@ -178,7 +177,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
 
   #year
   $year_end = cs_datereal('Y') + 4;
-  $data['year']['options'] = '';
+  $data['year']['options'] = cs_html_option('----',0,0);
   while($year_start < $year_end) {
     $sel = $explode[0] == $year_start ? 1 : 0;
     $data['year']['options'] .= cs_html_option($year_start,$year_start,$sel);
