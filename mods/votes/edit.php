@@ -127,7 +127,9 @@ if(isset($_POST['preview']))
       }
     }
 
+    $cs_vote_tpl['votes']['type'] = empty($votes_several) ? 'radio' : 'checkbox';
     echo cs_subtemplate(__FILE__,$cs_vote_tpl,'votes','action_vote');
+    unset($cs_vote_tpl['answers']);
   }
   else
   {
@@ -212,4 +214,3 @@ if(!empty($vote_form))
 
   echo cs_subtemplate(__FILE__,$cs_vote_tpl,'votes','action_form');
 }
-?>
