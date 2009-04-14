@@ -61,13 +61,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     
   $data['faq']['cat'] = cs_categories_dropdown('faq',$categories_id);
   $data['faq']['frage'] = $faq_frage;
+  $data['faq']['antwort'] = $faq_antwort;
 
   if(empty($cs_main['fckeditor'])) {
     $data['abcode']['smileys'] = cs_abcode_smileys('faq_antwort');
     $data['abcode']['features'] = cs_abcode_features('faq_antwort',1);
     $data['if']['fckeditor'] = FALSE;
     $data['if']['nofckeditor'] = TRUE;
-    $data['faq']['antwort'] = $faq_antwort;
   } else {
     $data['if']['fckeditor'] = TRUE;
     $data['if']['nofckeditor'] = FALSE;
