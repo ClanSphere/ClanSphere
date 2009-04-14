@@ -1,4 +1,4 @@
-body {
+﻿body {
   background-color: #E5E5E5;
   padding: 10px 10px 0 10px;
   font-size: 12px;
@@ -86,7 +86,7 @@ a:hover {
   border-right: 4px solid #BA1616;
 }
 #nav-left a:hover:before {
-  content:"� ";
+  content:"» ";
 }
 * html #nav-left a:hover, *:first-child+html #nav-left a:hover {
   padding-left: 15px;
