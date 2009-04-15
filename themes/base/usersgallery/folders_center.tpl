@@ -22,8 +22,8 @@
 	<tr>
 		<td class="leftc">{folders:layer}{folders:name} ({folders:count})</td>
 		<td class="leftc">
-			<a href="{url:usersgallery_folders_edit:id={folders_id}}" title="{lang:edit}">{icon:edit}</a>
-			<a href="{url:usersgallery_folders_remove:id={folders_id}}" title="{lang:remove}">{icon:editdelete}</a>
+			<a href="{url:usersgallery_folders_edit:id={folders:folders_id}}" title="{lang:edit}">{icon:edit}</a>
+			<a href="{url:usersgallery_folders_remove:id={folders:folders_id}}" title="{lang:remove}">{icon:editdelete}</a>
 		</td>
 	</tr>
 	{stop:folders}
