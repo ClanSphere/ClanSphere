@@ -59,7 +59,7 @@ $cs_lang['on'] = 'an';
 $cs_lang['automatic'] = 'automatisch';
 
 $cs_lang['developer'] = 'Entwicklermodus';
-$cs_lang['developer_info'] = 'Deaktiviert den Administratoren vorbehalten [empfohlen]';
+$cs_lang['developer_info'] = 'Debug-Informationen f&uuml;r alle sichtbar? [nicht empfohlen]';
 $cs_lang['def_width'] = 'Inhaltsbreite';
 $cs_lang['cellspacing'] = 'Zellenabstand';
 $cs_lang['def_title'] = 'Seitentitel';
