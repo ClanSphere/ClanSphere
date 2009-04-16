@@ -4,18 +4,18 @@
 
 $cs_lang = cs_translate('users');
 
-$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
+$start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 $cs_sort[1] = 'users_nick DESC';
 $cs_sort[2] = 'users_nick ASC';
 $cs_sort[3] = 'users_place DESC';
 $cs_sort[4] = 'users_place ASC';
 $cs_sort[5] = 'users_laston DESC';
 $cs_sort[6] = 'users_laston ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
+$sort = empty($_GET['sort']) ? 2 : (int) $_GET['sort'];
 $order = $cs_sort[$sort];
 //$where = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
 //$mof = empty($where) ? '' : " AND users_sex = '" . cs_sql_escape($where) . "'";     
-$where = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
+$where = empty($_GET['where']) ? 0 : (int) $_GET['where'];
 $mof = empty($where) ? '' : " AND users_nick LIKE '" . cs_sql_escape($where) . "%'";
 $condition = 'users_delete = 0 AND users_active = 1' . $mof;
 $users_count = cs_sql_count(__FILE__,'users',$condition);

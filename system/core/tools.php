@@ -475,8 +475,8 @@ function cs_paths($dir) {
 function cs_sort($mod,$action,$start,$where,$up,$active = 0,$more = 0) {
 
   $down = $up + 1;
-  $add_start = empty($start) ? '' : '&amp;start=' . $start;
-  $add_where = empty($where) ? '' : '&amp;where=' . $where;
+  $add_start = empty($start) ? '' : '&amp;start=' . (int) $start;
+  $add_where = empty($where) ? '' : '&amp;where=' . (int) $where;
 
   $file_up = $active == $up ? 'up_arrow_active.png' : 'up_arrow.png';
   $img_up = cs_html_img('symbols/clansphere/' . $file_up);

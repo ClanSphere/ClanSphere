@@ -4,18 +4,17 @@
 
 $cs_lang = cs_translate('wars');
 
-$squads_id = empty($_REQUEST['where']) ? '' : $_REQUEST['where'];
-settype($squads_id,'integer');
+$squads_id = empty($_REQUEST['where']) ? 0 : (int) $_REQUEST['where'];
 $where = empty($squads_id) ? 0 : "squads_id = '" . $squads_id . "'";
 
-$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : (int) $_REQUEST['start'];
 $cs_sort[1] = 'war.wars_date DESC';
 $cs_sort[2] = 'war.wars_date ASC';
 $cs_sort[3] = 'cln.clans_name DESC';
 $cs_sort[4] = 'cln.clans_name ASC';
 $cs_sort[5] = 'cat.categories_name DESC';
 $cs_sort[6] = 'cat.categories_name ASC';
-$sort = empty($_REQUEST['sort']) ? 1 : $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 1 : (int) $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $wars_count = cs_sql_count(__FILE__,'wars',$where);
 
@@ -31,7 +30,6 @@ for ($run = 0; $run < $count_squads; $run++) {
   $data['squads'][$run]['name'] = cs_secure($data['squads'][$run]['squads_name']);
 }
 
-$data['url']['ranks'] = cs_url('ranks','list');
 $data['url']['stats'] = cs_url('wars','stats');
 
 $data['sort']['date'] = cs_sort('wars','list',$start,$squads_id,1,$sort);

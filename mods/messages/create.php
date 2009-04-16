@@ -198,7 +198,7 @@ if (isset($_POST['preview']) && empty($messages_error))
   
 }
 
-$data['msg']['to'] = $messages_to;
+$data['msg']['to'] = cs_secure($messages_to);
 $data['msg']['subject'] = $messages_subject;
 $data['msg']['smileys'] = cs_abcode_smileys('messages_text');
 $data['msg']['abcode'] = cs_abcode_features('messages_text');

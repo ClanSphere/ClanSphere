@@ -4,19 +4,15 @@
 
 $cs_lang = cs_translate('quotes');
 
-$cat_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
-$where = '';
-if(!empty($cat_id)) {
-  settype($cat_id,'integer');
-  $where .= "cat.categories_id = '" . $cat_id . "'";
-}
+$cat_id = empty($_GET['where']) ? 0 : (int) $_GET['where'];
+$where = empty($cat_id) ? '' : 'cat.categories_id = "' . $cat_id . '"';
 
-$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
+$start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 $cs_sort[1] = 'quotes_time DESC';
 $cs_sort[2] = 'quotes_time ASC';
 $cs_sort[3] = 'quotes_headline DESC';
 $cs_sort[4] = 'quotes_headline ASC';
-$sort = empty($_REQUEST['sort']) ? 1 : $_REQUEST['sort'];
+$sort = empty($_GET['sort']) ? 1 : (int) $_GET['sort'];
 $order = $cs_sort[$sort];
 
 

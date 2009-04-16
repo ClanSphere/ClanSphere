@@ -5,10 +5,10 @@
 $cs_lang = cs_translate('events');
 $data = array();
 
-$year = !empty($_GET['year']) ? $_GET['year'] : cs_datereal('Y');
+$year = !empty($_GET['year']) ? (int) $_GET['year'] : cs_datereal('Y');
 if(1970 > $year) { $year = 1970; } # unixtime start
 elseif(2037 < $year) { $year = 2037; } # limited by current operating systems 
-$month = !empty($_GET['month']) ? $_GET['month'] : cs_datereal('n');
+$month = !empty($_GET['month']) ? (int) $_GET['month'] : cs_datereal('n');
 $nom = date('F', mktime(0, 0, 0, $month, 1, $year));
 $days = date('t', mktime(0, 0, 0, $month, 1, $year));
 $min = cs_datereal('U',mktime(0, 0, 0, $month, 1, $year), 1);
