@@ -370,7 +370,6 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[url\=(.*?)\](.*?)\[/url\]=si","cs_abcode_url",$replace);
     $replace = preg_replace_callback("=\[url\](.*?)\[/url\]=si","cs_abcode_url",$replace);
     $replace = preg_replace_callback('=\[flag\=(.*?)\]=si','cs_abcode_flag',$replace);
-    $replace = preg_replace_callback('/(www\.|http:\/\/|ftp:\/\/)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)/i','cs_abcode_urlauto',$replace);
     $replace = preg_replace_callback("=\[indent\=([\d]*?)\](.*?)\[/indent\]=si","cs_abcode_indent",$replace);
     $replace = preg_replace_callback("=\[threadid\=(.*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
     $replace = preg_replace_callback("=\[h\=([\d]*?)\](.*?)\[/h\]=si","cs_abcode_h",$replace);
@@ -397,6 +396,8 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   if(!empty($features)) {
     cs_abcode_mode(1);
     $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
+
+    $replace = preg_replace_callback('=(www\.|http://|ftp://)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)=si','cs_abcode_urlauto',$replace);
 
     if(!empty($op_abcode['word_cut']))
       $replace = preg_replace("=([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
