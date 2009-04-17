@@ -18,6 +18,13 @@
         </select></td>
     </tr>
     <tr>
+      <td class="leftc">{icon:kdmconfig} {lang:activation_for}</td>
+      <td class="leftb"><select name="for">
+         <option value="1"{options:for_severals}>{lang:severals}</option>
+         <option value="2"{options:for_all}>{lang:all}</option>
+        </select></td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:image} {lang:loading_icon}</td>
       <td class="leftb"><img src="{page:path}uploads/ajax/loading.gif" alt="-" /><br />{lang:another}<input type="file" name="loading" /></td>
     </tr>

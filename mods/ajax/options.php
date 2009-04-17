@@ -31,7 +31,7 @@ if (!empty($_POST['submit'])) {
     require 'mods/clansphere/func_options.php';
 
     $save = array();
-    $save['ajax'] = $_POST['ajax'];
+    $save['ajax'] = empty($_POST['ajax']) ? '0' : (int) $_POST['for'];
     $save['ajax_reload'] = $_POST['ajax_reload'];
     $save['ajax_navlists'] = $list;
 
@@ -60,9 +60,18 @@ $leftovers = str_replace('shoutbox_navlist2','',$cs_main['ajax_navlists']);
 if (empty($cs_main['ajax'])) {
   $data['options']['ajax_on'] = '';
   $data['options']['ajax_off'] = $selected;
+  $data['options']['for_severals'] = '';
+  $data['options']['for_all'] = '';
 } else {
   $data['options']['ajax_on'] = $selected;
   $data['options']['ajax_off'] = '';
+  if ($cs_main['ajax'] == 2) {
+    $data['options']['for_severals'] = '';
+    $data['options']['for_all'] = $selected;
+  } else {
+    $data['options']['for_severals'] = $selected;
+    $data['options']['for_all'] = '';
+  }
 }
 
 $data['switch']['ajax_on'] = empty($cs_main['ajax']) ? 'display: none' : '';

@@ -143,7 +143,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $mode[1]['name'] = $cs_lang['on'];
   $data['setup']['users_ajax'] = cs_dropdown('users_ajax','name',$mode,$cs_user['users_ajax']);
   
-  $data['if']['ajax_allowed'] = !empty($cs_main['ajax']) ? 1 : 0;
+  $data['if']['ajax_allowed'] = $cs_main['ajax'] == 1 ? 1 : 0;
   
   echo cs_subtemplate(__FILE__,$data,'users','setup');
 }

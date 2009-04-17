@@ -291,7 +291,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
   $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
-  if (!empty($account['users_ajax']) && !empty($account['access_ajax'])) {
+  if ($cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
     $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
     $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);
     $content = strpos($cs_temp_get,'id="content"') === false ? '<div id="content"></div>' : '';
