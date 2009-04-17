@@ -56,7 +56,15 @@ function cs_captcha($hash) {
 function cs_resample($image, $target, $max_width, $max_height) {
 
   $gd_info = gd_info();
-  $im_info = getimagesize($image);
+  $im_info = array();
+  
+  if(file_exists($image)) {
+    $im_info = getimagesize($image);
+  }
+  else {
+    cs_error(__FILE__,'Image file does not exist: "' . $image . '"');
+    return false;
+  }
 
   if($im_info[2] == 1 AND $gd_info["GIF Read Support"] == TRUE) {
     $src = ImageCreateFromGIF($image);
@@ -68,8 +76,8 @@ function cs_resample($image, $target, $max_width, $max_height) {
     $src = ImageCreateFromPNG($image);
   }
   else {
-    cs_error(__FILE__,'Failed to open existing image file');
-    return 0;
+    cs_error(__FILE__,'Image filetype is not supported: "' . $image . '"');
+    return false;
   }
 
   $factor = max($im_info[1] / $max_height, $im_info[0] / $max_width);
@@ -89,10 +97,8 @@ function cs_resample($image, $target, $max_width, $max_height) {
     $return = ImagePNG($dst,$target) ? 1 : 0;
   }
   else {
-    cs_error(__FILE__,'Failed to write resampled image file');
-    return 0;
+    cs_error(__FILE__,'Failed to write resampled image file: "' . $target . '"');
+    return false;
   }
   return $return;
 }
-
-?>
