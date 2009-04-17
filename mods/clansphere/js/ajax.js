@@ -83,7 +83,7 @@ function initializeAJAX(modrewrite, navinterval) {
   document.getElementsByTagName('body')[0].innerHTML = cont;
   delete cont;
   lastmove = GetMins();
-  if (window.location.href.indexOf('debug.php') != -1) debug = 1;
+  if (window.location.href.indexOf('debug') != -1) debug = 1;
   
   window.setInterval("checkanch()",50);
   
@@ -97,7 +97,7 @@ function initializeAJAX(modrewrite, navinterval) {
 
 function checkanch() {
   anch_new = window.location.hash;
-  if (anch_new == anch) return;
+  if (anch_new == anch || anch_new == "") return;
   subanch = (!mod_rewrite) ? anch_new.substr(1) : "params=/" + anch_new.substr(1);
   if (debug) subanch += '&debug';
   url = anch != "__START__" ? 'content.php?'+ subanch : 'content.php?'+subanch+'&first';

@@ -312,10 +312,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       }
     }
   }
-  if (empty($account['users_ajax']) || empty($account['access_ajax'])) {
-    $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
-    $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
-  }
+
+  $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
+  $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
 
   if($account['access_clansphere'] >= 5 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
     require_once 'mods/clansphere/sec_func.php';
