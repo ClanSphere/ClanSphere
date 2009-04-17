@@ -371,10 +371,10 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[url\](.*?)\[/url\]=si","cs_abcode_url",$replace);
     $replace = preg_replace_callback('=\[flag\=(.*?)\]=si','cs_abcode_flag',$replace);
     $replace = preg_replace_callback('/(www\.|http:\/\/|ftp:\/\/)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)/i','cs_abcode_urlauto',$replace);
-  $replace = preg_replace_callback("=\[indent\=([\d]*?)\](.*?)\[/indent\]=si","cs_abcode_indent",$replace);
-  $replace = preg_replace_callback("=\[threadid\=(.*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
-  $replace = preg_replace_callback("=\[h\=([\d]*?)\](.*?)\[/h\]=si","cs_abcode_h",$replace);
-  $replace = preg_replace_callback("=\[hr\]=si","cs_abcode_hr",$replace);
+    $replace = preg_replace_callback("=\[indent\=([\d]*?)\](.*?)\[/indent\]=si","cs_abcode_indent",$replace);
+    $replace = preg_replace_callback("=\[threadid\=(.*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
+    $replace = preg_replace_callback("=\[h\=([\d]*?)\](.*?)\[/h\]=si","cs_abcode_h",$replace);
+    $replace = preg_replace_callback("=\[hr\]=si","cs_abcode_hr",$replace);
     preg_match_all('=\[quote\=?(.*?)\]=si', $replace, $quote_sub);
     $quote_start_count  = count($quote_sub[0]);
     $quote_end_count    = substr_count($replace, '[/quote]');
@@ -385,9 +385,6 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     if(!empty($clip)) {
       $replace = preg_replace_callback("=\[clip\=(.*?)\](.*?)\[/clip\]=si","cs_abcode_clip",$replace);
     }
-    
-    if(!empty($op_abcode['word_cut']))
-      $replace = preg_replace("=([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
   }
   if(!empty($html)) {
     global $htmlcode;
@@ -400,7 +397,11 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   if(!empty($features)) {
     cs_abcode_mode(1);
     $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
+
+    if(!empty($op_abcode['word_cut']))
+      $replace = preg_replace("=([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
   }
+
   return $replace;
 }
 
