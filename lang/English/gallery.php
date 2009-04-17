@@ -223,6 +223,7 @@ $cs_lang['lightbox'] = 'Activate lightbox';
 $cs_lang['light_0'] = 'No';
 $cs_lang['light_1'] = 'Yes - Mootools';
 $cs_lang['light_2'] = 'Yes - Scriptaculous';
+$cs_lang['err_auto_size'] = 'Info: The picture was resampled to be within all limitations';
 
 // Access
 $cs_lang['lev_0'] = 'Deactivated';
@@ -247,5 +248,3 @@ $cs_lang['folders'] = 'Folders';
 $cs_lang['folder_create'] = 'Create category';
 $cs_lang['folder_create_here'] = 'Here you can create new categories.';
 $cs_lang['no_name'] = 'No name given';
-
-?>

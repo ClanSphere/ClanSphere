@@ -223,6 +223,7 @@ $cs_lang['lightbox'] = 'Lightbox aktivieren';
 $cs_lang['light_0'] = 'Nein';
 $cs_lang['light_1'] = 'Ja - Mootools';
 $cs_lang['light_2'] = 'Ja - Scriptaculous';
+$cs_lang['err_auto_size'] = 'Info: Das Bild konnte an die n&ouml;tigen Werte angepasst werden';
 
 // Access
 $cs_lang['lev_0'] = 'Deaktiviert';
@@ -247,5 +248,3 @@ $cs_lang['folders'] = 'Ordner';
 $cs_lang['folder_create'] = 'Kategorie erstellen';
 $cs_lang['folder_create_here'] = 'Hier k&ouml;nnen neue Kategorien erstellt werden.';
 $cs_lang['no_name'] = 'Kein Name angegeben';
-
-?>

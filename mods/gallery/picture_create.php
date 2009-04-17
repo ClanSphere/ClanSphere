@@ -82,6 +82,7 @@ if(isset($_POST['submit'])) {
 
         if(extension_loaded('gd') AND cs_resample('uploads/gallery/pics/' . $filename, 'uploads/gallery/thumbs/' . 'Thumb_' . $filename, $cs_option['thumbs'], $cs_option['thumbs'])) {
 
+          $error .= empty($s_error) ? '' : $cs_lang['err_auto_size'];
           $s_error = 0;
           $file_up = 1;
         } else {
