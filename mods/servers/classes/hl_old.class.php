@@ -201,7 +201,7 @@ class hl_old
 			$srv_rules['maxplayers']  = $this->getvalue_byte($def);
 			$srv_rules['netver']      = $this->getvalue_byte($def);
 			$srv_rules['dedicated']   = $this->getvalue_byte($def);
-			$srv_rules['os']          = $this->getvalue_byte($def);
+			$srv_rules['version']          = $this->getvalue_byte($def);
 			$srv_rules['password']    = $this->getvalue_byte($def);
 			$srv_rules['is_mod']      = $this->getvalue_byte($def);
 			$srv_rules['url_info']    = $this->getvalue_string($def);
@@ -230,7 +230,7 @@ class hl_old
 			$srv_rules['maxplayers'] = $this->getvalue_byte($def);
 			$srv_rules['bots']       = $this->getvalue_byte($def);
 			$srv_rules['dedicated']  = $this->getvalue_byte($def);
-			$srv_rules['os']         = $this->getvalue_byte($def);
+			$srv_rules['version']         = $this->getvalue_byte($def);
 			$srv_rules['password']   = $this->getvalue_byte($def);
 			$srv_rules['secure']     = $this->getvalue_byte($def);
 			$srv_rules['version']    = $this->getvalue_string($def);

@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod}</td>
+    <td class="headb">{lang:mod_name}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:mod_list}</td>
@@ -31,12 +31,16 @@
           <td class="leftc" style="width:125px;">{lang:host}</td>
           <td class="leftb"><a href="{servers:proto}{servers:servers_ip}:{servers:servers_port}">{servers:hostname}</a></td>
         </tr>
-		<tr>
+		    <tr>
           <td class="leftc" style="width:125px;">{lang:ip}</td>
           <td class="leftb">{servers:servers_ip}:{servers:servers_port}</td>
         </tr>
         <tr>
-          <td class="leftc">{lang:type}</td>
+          <td class="leftc">{lang:game}</td>
+          <td class="leftb">{servers:gamename}</td>
+        </tr>        
+        <tr>
+          <td class="leftc">{lang:gametype}</td>
           <td class="leftb">{servers:gametype}</td>
         </tr>
         <tr>
@@ -57,12 +61,12 @@
         </tr> 
         <tr>
           <td class="leftc">{lang:version}</td>
-          <td class="leftb">{servers:os}</td>
+          <td class="leftb">{servers:version}</td>
         </tr>     
         <tr>
           <td class="leftc">{lang:privileges}</td>
           <td class="leftb">{servers:sets}</td>
-        </tr>                       
+        </tr>  
       </table>
     </td>
     <td class="centerb"><img src="{page:path}{servers:map}" alt="" /></td>

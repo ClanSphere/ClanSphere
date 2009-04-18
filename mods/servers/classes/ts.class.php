@@ -778,7 +778,7 @@ class ts
 		// server hostname
 		$srv_rules['hostname'] = substr($this->d_info[2], 12);
 		// server version
-		$srv_rules['os'] = $this->s_info[0];
+		$srv_rules['version'] = $this->s_info[0];
 		$srv_rules['gamename'] = 'Teamspeak';
 		// server channels
 		$srv_rules['channels'] = substr($this->d_info[30], 23);

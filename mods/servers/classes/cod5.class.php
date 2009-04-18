@@ -239,7 +239,7 @@ class cod5
 		$srv_rules['hostname']    = $this->getvalue('sv_hostname',       $this->g_info);
 		$srv_rules['gametype']    = $this->getvalue('g_gametype',        $this->g_info);
 		$srv_rules['gamename']    = $this->getvalue('gamename',          $this->g_info);
-		$srv_rules['version']     = $this->getvalue('shortversion',      $this->g_info);
+		$srv_rules['version']          = $this->getvalue('shortversion',      $this->g_info);
 		$srv_rules['mapname']     = $this->getvalue('mapname',           $this->g_info);
 		$srv_rules['maxclients']  = $this->getvalue('sv_maxclients',     $this->g_info);
 		$srv_rules['prvclients']  = $this->getvalue('sv_privateClients', $this->g_info);

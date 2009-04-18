@@ -257,6 +257,7 @@ class et
 
 
 		// cut the long server system version info string
+		//$srv_rules['version'] = substr($srv_rules['version'], 3, 4);
 		$srv_rules['version'] = substr($srv_rules['version'], 3, 4);
 
 		// path to map picture and default info picture

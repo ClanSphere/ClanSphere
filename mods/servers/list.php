@@ -17,7 +17,8 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 		include_once 'functions.php';
 
 		/* Get Server SQL-Data */
-		$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order, servers_id';
+		$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query';
+		$select .= ', servers_class, servers_stats, servers_order, servers_id';
 		$order = 'servers_order ASC';
 		$where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
 		$cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);

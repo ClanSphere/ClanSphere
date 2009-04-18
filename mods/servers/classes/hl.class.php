@@ -1,6 +1,5 @@
 <?php
 $cs_lang = cs_translate('servers');
-
 // Half-Life Game Class
 /*
  * Copyright (c) 2004-2006, woah-projekt.de
@@ -191,7 +190,7 @@ class hl {
 			$srv_rules['maxplayers']  = $this->getvalue_byte($def);
 			$srv_rules['netver']      = $this->getvalue_byte($def);
 			$srv_rules['dedicated']   = $this->getvalue_byte($def);
-			$srv_rules['os']          = $this->getvalue_byte($def);
+			$srv_rules['version']          = $this->getvalue_byte($def);
 			$srv_rules['password']    = $this->getvalue_byte($def);
 			$srv_rules['is_mod']      = $this->getvalue_byte($def);
 			$srv_rules['url_info']    = $this->getvalue_string($def);
@@ -222,7 +221,7 @@ class hl {
 			$srv_rules['maxplayers'] = $this->getvalue_byte($def);
 			$srv_rules['bots']       = $this->getvalue_byte($def);
 			$srv_rules['dedicated']  = $this->getvalue_byte($def);
-			$srv_rules['os']         = $this->getvalue_byte($def);
+			$srv_rules['version']         = $this->getvalue_byte($def);
 			$srv_rules['password']   = $this->getvalue_byte($def);
 			$srv_rules['secure']     = $this->getvalue_byte($def);
 			$srv_rules['version']    = $this->getvalue_string($def);
@@ -230,7 +229,12 @@ class hl {
 			// path to map picture
 			$srv_rules['map_path'] = $srv_rules['app_id'] < 200 ? 'maps/hl' : 'maps/hl2';
 		}
-			
+		// set gamename with gametype value (because no gametype info in hl data
+    $srv_rules['gamename'] = $srv_rules['gametype'];
+    
+    // set other Infos behind gametype
+    $srv_rules['gametype'] = empty($srv_rules['secure']) ? $srv_rules['gametype'] : $srv_rules['gametype'] . ' (VAC)';
+		$srv_rules['maxplayers'] = empty($srv_rules['bots']) ? $srv_rules['maxplayers'] : $srv_rules['maxplayers'] . ' (Bots: ' . $srv_rules['bots'] . ')'; 
 		// return all server rules
 		return $srv_rules;
 	}
