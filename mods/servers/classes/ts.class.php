@@ -467,297 +467,297 @@ class ts
 		{
 			case "1":
 				{
-					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/commander.gif');
 					break;
 				}
 			case "3":
 				{
-					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/commander.gif');
 					break;
 				}
 			case "5":
 				{
-					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/commander.gif');
 					break;
 				}
 			case "7":
 				{
-					$status_img = '<img src="mods/servers/images/commander.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/commander.gif');
 					break;
 				}
 			case "8":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "9":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "10":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "11":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "12":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "13":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "14":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "15":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "16":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "17":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "18":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "19":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "20":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "21":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "22":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "23":
 				{
-					$status_img = '<img src="mods/servers/images/nomic.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nomic.gif');
 					break;
 				}
 			case "24":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "25":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "26":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "27":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "28":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "29":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "30":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "31":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "32":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "33":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "34":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "35":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "36":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "37":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "38":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "39":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "40":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "41":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "42":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "43":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "44":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "45":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "46":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "47":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "48":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "49":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "50":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "51":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "52":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "53":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "54":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "55":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "56":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "57":
 				{
-					$status_img = '<img src="mods/servers/images/nosnd.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/nosnd.gif');
 					break;
 				}
 			case "58":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "59":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "60":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			case "61":
 				{
-					$status_img = '<img src="mods/servers/images/away.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/away.gif');
 					break;
 				}
 			default:
 				{
-					$status_img = '<img src="mods/servers/images/user.gif" width="16" height="16" border="0">';
+					$status_img = cs_html_img('mods/servers/images/user.gif');
 					break;
 				}
 		}
@@ -774,7 +774,7 @@ class ts
 		$srv_rules['map_default'] = 'default.jpg';
 
 		// ts setting pics
-		$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+		$sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 		// server hostname
 		$srv_rules['hostname'] = substr($this->d_info[2], 12);
 		// server version
