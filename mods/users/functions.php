@@ -7,7 +7,7 @@
 //-----------------------------------------------------------------// 
 function generate_code($anz = 0) {
 
-  $pass = 0;
+  $pass = '';
   mt_srand((double)microtime() * 1000000);
   if($anz < 1) {
     $anz = mt_rand(16,32);

@@ -36,6 +36,12 @@
 	  </select>
 	</td>
   </tr>
+  {if:access_4}
+  <tr>
+    <td class="leftc">{icon:password} {lang:password}</td>
+    <td class="leftb"><input type="submit" name="sendpw" value="{lang:pwd_new}" /></td>
+  </tr>
+  {stop:access_4}
 </table>
 {if:access_4}
 <br />
