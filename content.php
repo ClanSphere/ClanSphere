@@ -58,7 +58,7 @@ $location = cs_url($cs_main['mod'],$cs_main['action']);
 $cs_act_lang = cs_translate($cs_main['mod']); 
 $temp .= '<a style="display:none" id="ajax_location" href="' . $location . '"></a>';
 $temp .= '<div style="display:none" id="ajax_title">' . $cs_main['def_title'] . ' - ' . ucfirst($cs_act_lang['mod_name']) . '</div>';
-$temp .= '<div style="display: none;" id="ajax_scripts">' . $cs_main['scripts'] . '</div>';
+$temp .= "\n" . '<div style="display: none;" id="ajax_scripts">' . $cs_main['scripts'] . '</div>';
 
 echo $temp;
 

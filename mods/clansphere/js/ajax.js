@@ -7,7 +7,11 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
   response = response.replace(/href=\"#([a-zA-Z0-9-_]*?)\"/g,"href=\"javascript:cs_scrollto_by_name('$1')\"");
   document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z0-9\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
     response.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
-		// alert(response.match(/<script(.*)src="(.+)"(.*)><\/script>/)[2]); // Soll aus der Antwort die JavaScript-URLs rauslesen und dann an javascript_include übergeben.
+		scripts = response.match(/<script(.*)src="(.+?)"(.*)?><\/script>/g); // Soll aus der Antwort die JavaScript-URLs rauslesen und dann an javascript_include übergeben.
+		if(scripts) {
+			for (var i = 0; i < scripts.length; ++i)
+				include_javascript(scripts[i].match(/src="(.+?)"/)[1]);
+		}
   delete response;
   if (document.getElementById('ajax_js') == null && id == 'content') {
     request_cont = 0;
@@ -15,16 +19,11 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
       anch = "#" + document.getElementById('ajax_location').href.replace('&amp;','&');
       anch = anch.substr(anch.lastIndexOf("#"));
       window.location.hash = anch;
-    }
-		// Wird später dynamisch erzeugt
-		include_javascript('http://localhost/clansphere_svn/trunk/mods/lightbox/js/mootools.js');
-		include_javascript('http://localhost/clansphere_svn/trunk/mods/lightbox/js/slimbox.js');
-		
+    }	
     document.title = document.getElementById('ajax_title').innerHTML;
   }
-
-	window.onDomReady;
   if (onfinish) window.setTimeout(onfinish,0);
+	window.onDomReady;
 }
 
 function include_javascript(path) {
