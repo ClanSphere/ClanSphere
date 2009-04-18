@@ -55,8 +55,9 @@ $temp = cs_filecontent($cs_main['show']);
 $temp = str_replace('action="#','action="index.php?',$temp);
 
 $location = cs_url($cs_main['mod'],$cs_main['action']);
+$cs_act_lang = cs_translate($cs_main['mod']); 
 $temp .= '<a style="display:none" id="ajax_location" href="' . $location . '"></a>';
-$temp .= '<div style="display:none" id="ajax_title">' . $cs_main['def_title'] . ' - ' . ucfirst($cs_main['mod']) . '</div>';
+$temp .= '<div style="display:none" id="ajax_title">' . $cs_main['def_title'] . ' - ' . ucfirst($cs_act_lang['mod_name']) . '</div>';
 
 echo $temp;
 
