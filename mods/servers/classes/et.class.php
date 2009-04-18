@@ -596,11 +596,11 @@ class et
 			if ($teams)
 			{   // table with team data
 
-				$tdata[$client][0] = '<td class="centerb">' . $index . '</td>';
-				$tdata[$client][0] .= '<td class="centerb">' . $team[$index] . '</td>';
-				$tdata[$client][0] .= '<td class="centerb">' . $player[$index] . '</td>';
-				$tdata[$client][0] .= '<td class="centerb">' . $points[$index] . '</td>';
-				$tdata[$client][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
+				$tdata[$run][0] = '<td class="centerb">' . $index . '</td>';
+				$tdata[$run][0] .= '<td class="centerb">' . $team[$index] . '</td>';
+				$tdata[$run][0] .= '<td class="centerb">' . $player[$index] . '</td>';
+				$tdata[$run][0] .= '<td class="centerb">' . $points[$index] . '</td>';
+				$tdata[$run][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
 					
 				// team points
 				if ($team[$index] == 'Allies')
@@ -640,7 +640,7 @@ class et
 			{
 				$tb = "<font color=\"cyan\">$tb</font>";
 			}
-
+      $srv_player = '';
 			$srv_player = "<tr><th></th><th></th><th></th><th>Allies</th><th colspan=\"2\">Axis</th></tr>" .
                     "<tr align=\"center\"><td></td><td></td><td></td><td>$ta</td><td colspan=2>$tb</td></tr>" .
 			$srv_player;
