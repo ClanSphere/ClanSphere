@@ -30,7 +30,7 @@ $gallery_loop = count($cs_gallery);
 
 if(empty($gallery_loop)) {
 
-	$data['head']['error'] = cs_link($cs_lang['mod'],'gallery','list') .' - ' . $cs_lang['head_view'];
+	$data['head']['error'] = cs_link($cs_lang['mod_name'],'gallery','list') .' - ' . $cs_lang['head_view'];
 	
  echo cs_subtemplate(__FILE__,$data,'gallery','error');
 

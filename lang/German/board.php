@@ -10,7 +10,7 @@ $cs_lang['delatt'] = 'Dateianhang l&ouml;schen';
 
 //active.php 
 $cs_lang['files'] = 'Dateianh&auml;nge:';
-$cs_lang['mod']  = 'Forum';
+$cs_lang['mod_name']  = 'Forum';
 $cs_lang['modtext'] = 'Aktuelle Forum Themen verwalten und erstellen';
 $cs_lang['head_active']  = 'Aktive Themen';
 $cs_lang['body_active']  = 'Liste von Themen mit vielen Hits';

@@ -5,7 +5,6 @@
 $cs_lang['mod_name']  = 'Finanzen';
 $cs_lang['mod_text']  = 'Die Clankassen Verwaltung';
 
-$cs_lang['mod']  = 'Finanzen';
 $cs_lang['head_create'] = 'Hinzuf&uuml;gen';
 $cs_lang['head_view'] = 'Details';
 $cs_lang['head_center'] = 'Zentrale';

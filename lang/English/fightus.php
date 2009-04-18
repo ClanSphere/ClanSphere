@@ -4,7 +4,6 @@
 
 $cs_lang['mod_name']  = 'Fightus';
 $cs_lang['mod_text']  = 'Inquiries concerning clanwars';
-$cs_lang['mod']  = 'Fightus';
 
 $cs_lang['head_new'] = 'Inquiry';
 $cs_lang['head_view'] = 'Details';

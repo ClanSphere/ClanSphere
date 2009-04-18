@@ -4,7 +4,6 @@
 
 $cs_lang['mod_name'] = 'Freunde';
 $cs_lang['mod_text'] = 'Kameraden und Kumpel als Liste';
-$cs_lang['mod']  = 'Freunde';
 $cs_lang['head_remove']  = 'Entfernen';
 $cs_lang['head_create']  = 'Eintragen';
 $cs_lang['body_create']  = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';

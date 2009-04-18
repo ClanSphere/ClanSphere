@@ -29,7 +29,7 @@ if(!empty($categories_loop)) {
   }
   echo cs_subtemplate(__FILE__,$data,'faq','view');
 } else {
-  $data['head']['mod'] = $cs_lang['mod'];
+  $data['head']['mod'] = $cs_lang['mod_name'];
   $data['head']['action'] = $cs_lang['cat'];
   $data['head']['icon'] = cs_icon('error',48);
   $cs_lang_error = cs_translate('errors');

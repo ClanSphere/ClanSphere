@@ -1,6 +1,6 @@
 <?php
 
-$cs_lang['mod']           = 'Kontakt';
+$cs_lang['mod_name']           = 'Kontakt';
 $cs_lang['mod_text']      = 'Kontakt zu den Webmastern aufnehmen';
 
 $cs_lang['wizard'] = 'Assistent';

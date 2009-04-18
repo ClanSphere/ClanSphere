@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:mod} - {lang:stats}</td>
+  <td class="headb">{lang:mod_name} - {lang:stats}</td>
  </tr>
  <tr>
   <td class="leftc">{lang:see_stats}</td>
@@ -43,7 +43,7 @@
  {loop:players}
  <tr>
   <td class="leftc" style="width:50%"><a href="{players:url}">{players:users_nick}</a></td>
-  <td class="leftb" style="width:50%">{players:wars} {lang:mod}</td>
+  <td class="leftb" style="width:50%">{players:wars} {lang:mod_name}</td>
  </tr>
  {stop:players}
 </table>
@@ -56,7 +56,7 @@
  {loop:categories}
  <tr>
   <td class="leftc" style="width:50%"><a href="{categories:url}">{categories:categories_name}</a></td>
-  <td class="leftb" style="width:50%">{categories:wars} {lang:mod}</td>
+  <td class="leftb" style="width:50%">{categories:wars} {lang:mod_name}</td>
  </tr>
  {stop:categories}
 </table>

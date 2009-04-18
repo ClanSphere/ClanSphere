@@ -1,7 +1,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr>
 <td class="headb">
-{lang:mod} - {lang:summary}
+{lang:mod_name} - {lang:summary}
 </td>
 </tr>
 <tr>

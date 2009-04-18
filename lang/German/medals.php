@@ -1,6 +1,6 @@
 <?php
 
-$cs_lang['mod'] = 'Medaillen';
+$cs_lang['mod_name'] = 'Medaillen';
 $cs_lang['modtext'] = 'Vergeben und Verwalten von Medaillen';
 
 // Manage

@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod'] = 'Modules';
+$cs_lang['mod_name'] = 'Modules';
 $cs_lang['info_text'] = 'Management of the modules of Clansphere';
 
 $cs_lang['wizard'] = 'Wizard';

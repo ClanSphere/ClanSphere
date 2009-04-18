@@ -4,7 +4,6 @@
 
 $cs_lang['mod_name']  = 'Besucher';
 $cs_lang['mod_text']  = 'Statistiken zu den Seitenaufrufen';
-$cs_lang['mod']      = 'Besucher';
 
 $cs_lang['head_manage']      = 'Verwaltung';
 $cs_lang['head']        = 'Online';

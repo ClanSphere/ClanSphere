@@ -1,6 +1,6 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
+		<td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{icon:editpaste} <a href="{url:cash_create}">{lang:new_cash}</a></td>
@@ -20,7 +20,7 @@
 {if:all}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod} - {lang:overview}</td>
+		<td class="headb" colspan="3">{lang:mod_name} - {lang:overview}</td>
 	</tr>
 	<tr>
 		<td class="leftb" style="width:20px">{icon:money}</td>
@@ -59,7 +59,7 @@
 {if:only_user}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod} - {lang:user}</td>
+		<td class="headb" colspan="3">{lang:mod_name} - {lang:user}</td>
 	</tr>
 	<tr>
 		<td class="leftb" style="width:20px"><img src="{page:path}symbols/clansphere/green.gif" alt="" /></td>

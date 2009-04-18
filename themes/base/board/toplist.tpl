@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod} - {lang:toplist}</td>
+    <td class="headb">{lang:mod_name} - {lang:toplist}</td>
   </tr>
   <tr>
     <td class="leftc">{pages:list}</td>

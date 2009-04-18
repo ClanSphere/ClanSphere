@@ -1,6 +1,6 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="2">{lang:mod} - {lang:head_center}</td>
+		<td class="headb" colspan="2">{lang:mod_name} - {lang:head_center}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>

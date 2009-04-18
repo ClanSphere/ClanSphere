@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang['mod_text']  = 'Erreichte Platzierungen';
-$cs_lang['mod']  = 'Auszeichnungen';
+$cs_lang['mod_name']  = 'Auszeichnungen';
 $cs_lang['head']= 'Verwaltung';
 $cs_lang['head_view'] = 'Details';
 $cs_lang['head_create'] = 'Hinzuf&uuml;gen';

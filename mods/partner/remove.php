@@ -7,7 +7,7 @@ $cs_lang = cs_translate('partner');
 $partner_id = $_GET['id'];
 settype($partner_id,'integer');
 
-$data['head']['mod'] = $cs_lang['mod'];
+$data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['remove'];
 
 if(isset($_GET['agree'])) {

@@ -4,7 +4,6 @@
 
 $cs_lang['mod_name'] = 'Buddylist';
 $cs_lang['mod_text'] = 'Buddylist Module';
-$cs_lang['mod']  = 'Buddies';
 $cs_lang['head_remove']  = 'Remove';
 $cs_lang['head_create']  = 'Create';
 $cs_lang['body_create']  = 'Please fill out as many fields as possible.';

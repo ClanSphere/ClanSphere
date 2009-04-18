@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Zitate';
+$cs_lang['mod_name']  = 'Zitate';
 $cs_lang['modtext']  = 'Zitate verwalten und erstellen';
 
 // Create

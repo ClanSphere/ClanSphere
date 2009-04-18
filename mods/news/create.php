@@ -9,7 +9,7 @@ $news_newtime = 0;
 $op_news = cs_sql_option(__FILE__,'news');
 
 $data['lang'] = $cs_lang;
-$data['head']['mod'] = $cs_lang['mod'];
+$data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['create'];
 $data['head']['body'] = '';
 $data['head']['error'] = '';

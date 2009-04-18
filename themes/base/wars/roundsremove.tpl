@@ -1,6 +1,6 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb">{lang:mod} - {lang:delete_round}</td>
+		<td class="headb">{lang:mod_name} - {lang:delete_round}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{head:body}</td>

@@ -1,6 +1,6 @@
 <table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
   <tr>
-    <td class="headb">{lang:mod} - {lang:head_complete}</td>
+    <td class="headb">{lang:mod_name} - {lang:head_complete}</td>
   </tr>
   <tr>
     <td class="leftc">{lang:rem_install}<br />

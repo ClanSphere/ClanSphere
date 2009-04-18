@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod'] = 'Cups';
+$cs_lang['mod_name'] = 'Cups';
 $cs_lang['modtext'] = 'Cup Administration';
 $cs_lang['cup'] = 'Cup';
 

@@ -2,7 +2,6 @@
 
 $cs_lang['mod_name']  = 'Termine';
 $cs_lang['mod_text']  = 'Veranstaltungen, Geburtstage und Weiteres';
-$cs_lang['mod']         = 'Termine';
 
 // list.php
 $cs_lang['head_list']  = 'Liste';

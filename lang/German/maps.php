@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net 
 // $Id$
 
-$cs_lang['mod']     = 'Karten';
+$cs_lang['mod_name']     = 'Karten';
 $cs_lang['modtext'] = 'Anlegen und Verwalten von Spielorten';
 
 $cs_lang['no_selection'] = 'Keine Karte gew&auml;hlt.';

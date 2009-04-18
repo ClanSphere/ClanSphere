@@ -2,7 +2,6 @@
 
 $cs_lang['mod_name']  = 'Zugriff';
 $cs_lang['mod_text']  = 'Rechte-Verteilung &uuml;ber Stufen';
-$cs_lang['mod']  = 'Zugriff';
 $cs_lang['head_create']  = 'Eintragen';
 $cs_lang['body_create']  = 'Hier k&ouml;nnen neue Rechteklassen erstellt werden.';
 $cs_lang['head_remove']  = 'Entfernen';

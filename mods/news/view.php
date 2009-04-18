@@ -15,7 +15,7 @@ $from = 'news nws INNER JOIN {pre}_users usr ON nws.users_id = usr.users_id INNE
 $select = 'nws.news_id AS news_id, nws.news_headline AS news_headline, nws.news_time AS news_time, nws.news_text AS news_text, nws.news_close AS news_close, nws.news_public AS news_public, nws.news_pictures as news_pictures, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, nws.categories_id AS categories_id, cat.categories_access AS categories_access, cat.categories_picture AS categories_picture, nws.news_mirror AS news_mirror, nws.news_mirror_name AS news_mirror_name, nws.news_readmore AS news_readmore, nws.news_readmore_active AS news_readmore_active';
 $cs_news = cs_sql_select(__FILE__,$from,$select,"news_id = '" . $cs_news_id . "'");
 
-$head['head']['mod'] = $cs_lang['mod'];
+$head['head']['mod'] = $cs_lang['mod_name'];
 $head['head']['action'] = $cs_lang['details'];
 $topline = empty($cs_news['news_public']) ? 'not_public' : 'news_info';
 $head['head']['topline'] = $cs_lang[$topline];

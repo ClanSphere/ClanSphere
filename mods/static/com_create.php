@@ -14,4 +14,4 @@ $cs_static = cs_sql_select(__FILE__,'static','static_comments',"static_id = '" .
 $close = empty($cs_static['static_comments']) ? 1 : 0;
 
 require_once('mods/comments/functions.php');
-cs_commments_create($fid,'static','view',$quote_id,$cs_lang['mod'],$close);
+cs_commments_create($fid,'static','view',$quote_id,$cs_lang['mod_name'],$close);

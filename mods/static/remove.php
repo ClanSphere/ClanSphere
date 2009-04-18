@@ -5,7 +5,7 @@
 $cs_lang = cs_translate('static');
 
 $cs_static_tpl = array();
-$cs_static_tpl['head']['mod']    = $cs_lang['mod'];
+$cs_static_tpl['head']['mod']    = $cs_lang['mod_name'];
 $cs_static_tpl['head']['action']  = $cs_lang['head_remove'];
 $cs_static_tpl['head']['body']  = '-';
 

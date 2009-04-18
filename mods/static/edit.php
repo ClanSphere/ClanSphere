@@ -8,7 +8,7 @@ $cs_static_tpl = array();
 $errormsg = '';
 $levels = 0;
 
-$cs_action_head['head']['mod']      = $cs_lang['mod'];
+$cs_action_head['head']['mod']      = $cs_lang['mod_name'];
 $cs_action_head['head']['action']    = $cs_lang['head_edit'];
 
 $static_id = $_REQUEST['id'];

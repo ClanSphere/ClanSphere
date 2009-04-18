@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-   <td class="headb">{lang:mod} - {lang:cut_comment_as_thread}</td>
+   <td class="headb">{lang:mod_name} - {lang:cut_comment_as_thread}</td>
  </tr>
  <tr>
    <td class="leftc">{lang:errors_here}</td>

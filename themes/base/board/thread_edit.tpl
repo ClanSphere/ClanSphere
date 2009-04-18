@@ -1,6 +1,6 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb">{lang:mod} - {lang:thread_edit}</td>
+		<td class="headb">{lang:mod_name} - {lang:thread_edit}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{head:boardlinks}</td>

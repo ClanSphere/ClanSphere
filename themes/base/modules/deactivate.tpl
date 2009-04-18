@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:mod} - {lang:deactivate}</td>
+  <td class="headb">{lang:mod_name} - {lang:deactivate}</td>
  </tr>
  <tr>
   <td class="leftb">{content:deactivate}</td>

@@ -1,6 +1,6 @@
 <table class="form" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="2">{lang:mod}</td>
+		<td class="headb" colspan="2">{lang:mod_name}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{icon:kedit} {lang:text} *</td>

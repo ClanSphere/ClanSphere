@@ -5,7 +5,6 @@
 $cs_lang['mod_name']  = 'Rules';
 $cs_lang['mod_text']  = 'Manage and Create Rules';
 
-$cs_lang['mod']  = 'Rules';
 $cs_lang['head_create']  = 'Create';
 $cs_lang['body_create'] =  'Please fill out all * marked fields.';
 $cs_lang['head_edit']  = 'Edit';

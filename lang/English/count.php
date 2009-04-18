@@ -4,7 +4,7 @@
 
 $cs_lang['mod_name']  = 'Counter';
 $cs_lang['mod_text']  = 'Visitor Counter';
-$cs_lang['mod']  = 'Counter';
+
 
 $cs_lang['head_manage']  = 'Administration';
 $cs_lang['head']  = 'Online';

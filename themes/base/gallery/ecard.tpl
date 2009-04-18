@@ -1,7 +1,7 @@
 <form method="post" id="ecard" action="{url:gallery_ecard}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="headb">{lang:mod} - {lang:ecard_head_list}</td>
+		<td class="headb">{lang:mod_name} - {lang:ecard_head_list}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{head:body}</td>

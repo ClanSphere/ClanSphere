@@ -1,7 +1,7 @@
 <form method="post" action="{url:quotes_list}">
  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-   <td class="headb" colspan="2">{lang:mod} - {lang:list}</td>
+   <td class="headb" colspan="2">{lang:mod_name} - {lang:list}</td>
  </tr>
  <tr>
   <td class="leftb">{lang:total}: {head:count}</td>

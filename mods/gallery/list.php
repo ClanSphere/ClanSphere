@@ -282,7 +282,7 @@ if ($folders_id >= 1) {
   $where = "folders_mod = 'gallery'";
   $folders = cs_sql_select(__FILE__, $from, $select, $where, 0, 0, 0);
   $folders_loop = count($folders);
-  $data['link']['gallery'] = cs_link($cs_lang['mod'], 'gallery', 'list');
+  $data['link']['gallery'] = cs_link($cs_lang['mod_name'], 'gallery', 'list');
   $data['link']['subfolders'] = make_folders_head($folders, $folders_current['sub_id'], $folders_current['folders_name']);
   $data['data']['folders_name'] = $folders_current['folders_name'];
   

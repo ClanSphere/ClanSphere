@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod} - {lang:matchlist}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:matchlist}</td>
   </tr>
   <tr>
     <td class="leftb">{icon:contents} {lang:total}: {vars:matchcount}</td>

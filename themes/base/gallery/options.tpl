@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="headb">{lang:mod} - {lang:options}</td>
+		<td class="headb">{lang:mod_name} - {lang:options}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{lang:body_opt}</td>
@@ -11,7 +11,7 @@
 <form method="post" id="gallery_edit" action="{url:gallery_options}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="headb" colspan="2">{lang:mod}</td>
+		<td class="headb" colspan="2">{lang:mod_name}</td>
 	</tr>
 	<tr>
 		<td class="leftc" style="width:200px;">{icon:insert_table_row} {lang:opt_row}</td>

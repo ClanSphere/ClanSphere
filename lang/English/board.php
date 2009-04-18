@@ -10,7 +10,7 @@ $cs_lang['delatt'] = 'Remove Attachment';
 
 //active.php
 $cs_lang['files'] = 'Files:';
-$cs_lang['mod']    = 'Board';
+$cs_lang['mod_name']    = 'Board';
 $cs_lang['modtext'] = 'Manage and Create current board topics';
 $cs_lang['head_active']    = 'Active topics';
 $cs_lang['body_active']    = 'List of Topics with the most hits';

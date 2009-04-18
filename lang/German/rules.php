@@ -5,7 +5,6 @@
 $cs_lang['mod_name']  = 'Regeln';
 $cs_lang['mod_text']  = 'Regeln verwalten und erstellen';
 
-$cs_lang['mod']  = 'Regeln';
 $cs_lang['head_create']  = 'Eintragen';
 $cs_lang['body_create'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
 $cs_lang['head_edit']    = 'Bearbeiten';

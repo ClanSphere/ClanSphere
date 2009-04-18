@@ -5,7 +5,7 @@
 $cs_lang = cs_translate('awards');
 
 $awards_id = $_GET['id'];
-$data['head']['mod'] = $cs_lang['mod'];
+$data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['remove'];
 
 if(isset($_GET['agree'])) {

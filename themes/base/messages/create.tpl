@@ -1,7 +1,7 @@
 {if:preview}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod} - {var:subject}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {var:subject}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:subject}</td>
@@ -16,7 +16,7 @@
     <td class="leftb">{loop:to}{to:users_nick}; {stop:to}</td>
   </tr>
   <tr>
-    <td class="headb" colspan="2">{lang:mod} - {lang:text}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:text}</td>
   </tr>
   <tr>
     <td class="leftb" colspan="2">{var:text}</td>
@@ -26,7 +26,7 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod} - {lang:head_create}</td>
+    <td class="headb">{lang:mod_name} - {lang:head_create}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:body_create}</td>

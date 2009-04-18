@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod} - {lang:sort}</td>
+    <td class="headb">{lang:mod_name} - {lang:sort}</td>
   </tr>
   <tr>
     <td class="leftb"><a href="{link:back}">{lang:back}</a> </td>
@@ -9,7 +9,7 @@
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod}</td>
+    <td class="headb">{lang:mod_name}</td>
     <td class="headb">{lang:sort_num}</td>
     <td class="headb" colspan="2">{lang:using}</td>
   </tr>

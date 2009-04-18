@@ -44,7 +44,7 @@ if(empty($gallery_loop))
 {
 	$data['if']['error'] = TRUE;
 
-	$head = cs_link($cs_lang['mod'],'usersgallery','users','id='. $id) .' - ';
+	$head = cs_link($cs_lang['mod_name'],'usersgallery','users','id='. $id) .' - ';
 	$data['head']['mod'] = $head . $cs_lang['head_view'];
 	$data['link']['back'] = cs_link($cs_lang['back'],'usersgallery','users','id='. $id);
 }
@@ -85,7 +85,7 @@ else
     }
   }
 
-  $head = cs_link($cs_lang['mod'],'usersgallery','users','id='. $id) .' - ';
+  $head = cs_link($cs_lang['mod_name'],'usersgallery','users','id='. $id) .' - ';
   $head .= cs_link($cs_cat['folders_name'],'usersgallery','users','cat_id='. $cs_cat['folders_id'] .'&amp;id='. $id);
   $cs_lap = cs_html_img("mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'] . "&amp;size=" . $cs_options['max_width']);
 

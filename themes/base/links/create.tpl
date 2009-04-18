@@ -1,6 +1,6 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb">{lang:mod} - {lang:head2}</td>
+		<td class="headb">{lang:mod_name} - {lang:head2}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{head:body}</td>

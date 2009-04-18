@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Database';
+$cs_lang['mod_name']  = 'Database';
 $cs_lang['modtext']  = 'Database actions take place here';
 
 // roots.php

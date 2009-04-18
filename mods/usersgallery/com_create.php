@@ -13,6 +13,6 @@ $cs_gallery = cs_sql_select(__FILE__,'usersgallery','usersgallery_close,folders_
 $more = 'cat_id=' . $gallery['folders_id'] . '&amp;start=' . $start . '&more=1&id='. $gallery['users_id'] . '#com' . ++$count_com;
 
 require_once('mods/comments/functions.php');
-cs_commments_create($fid,'usersgallery','com_view',$quote_id,$cs_lang['mod'],$gallery['usersgallery_close'],$more);
+cs_commments_create($fid,'usersgallery','com_view',$quote_id,$cs_lang['mod_name'],$gallery['usersgallery_close'],$more);
 
 ?>

@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="5">{lang:mod} - {lang:head_center_msg}</td>
+    <td class="headb" colspan="5">{lang:mod_name} - {lang:head_center_msg}</td>
   </tr>
   <tr>
     <td class="leftb">{icon:mail_new} <a href="{url:messages_create}">{lang:new_message}</a></td>
@@ -43,7 +43,7 @@
   <tr>
     <td class="leftb" colspan="7">
     <div style="float: left">{msgs:period_name}</div>
-    <div style="float: right">{lang:mod}: {msgs:period_count}</div>
+    <div style="float: right">{lang:mod_name}: {msgs:period_count}</div>
     </td>
   </tr>{stop:new_period}
   <tr>

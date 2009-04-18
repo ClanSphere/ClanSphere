@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-		<td class="leftb" colspan="5">{lang:mod} - {lang:manage_info}</td>
+		<td class="leftb" colspan="5">{lang:mod_name} - {lang:manage_info}</td>
 	</tr>
 	{manage:head}
 </table>
@@ -8,7 +8,7 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="headb" colspan="2">{lang:mod}</td>
+		<td class="headb" colspan="2">{lang:mod_name}</td>
 	</tr>
   <tr>
 		<td class="leftc" style="width:30%">{icon:image} {lang:info_pics}</td>

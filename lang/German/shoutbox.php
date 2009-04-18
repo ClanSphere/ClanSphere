@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net 
 // $Id shoutbox.php 2007-08-01 17:00:00Z Drag0n $
 
-$cs_lang['mod']              = 'Shoutbox';
+$cs_lang['mod_name']              = 'Shoutbox';
 $cs_lang['info']             = 'Eine kleine Chatbox am Rande der Seite';
 
 $cs_lang['archieve']         = 'Archiv';

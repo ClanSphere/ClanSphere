@@ -11,7 +11,7 @@ $from = 'quotes qts INNER JOIN {pre}_users usr ON qts.users_id = usr.users_id IN
 $select = 'qts.quotes_id AS quotes_id, qts.quotes_headline AS quotes_headline, qts.quotes_time AS quotes_time, qts.quotes_text AS quotes_text, qts.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, qts.categories_id AS categories_id, cat.categories_access AS categories_access, cat.categories_picture AS categories_picture';
 $cs_quotes = cs_sql_select(__FILE__,$from,$select,"quotes_id = '" . $cs_quotes_id . "'");
 
-  $data['head']['mod'] = $cs_lang['mod'];
+  $data['head']['mod'] = $cs_lang['mod_name'];
   $data['head']['action'] = $cs_lang['details'];
   $data['head']['body'] = $cs_lang['quote_info'];
 

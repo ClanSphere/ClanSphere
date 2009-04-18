@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Abcode';
+$cs_lang['mod_name']  = 'Abcode';
 $cs_lang['mod_text']  = 'Ersetzt Muster durch Bilder oder Text';
 
 $cs_lang['body_create']  = 'Neue Muster-Ersetzungen anlegen';

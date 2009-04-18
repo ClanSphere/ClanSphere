@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']      = 'Messages';
+$cs_lang['mod_name']      = 'Messages';
 $cs_lang['head_center_msg']  = 'Inbox';
 $cs_lang['head_outbox']  = 'Outbox';
 $cs_lang['archivbox']   = 'Archive: ';

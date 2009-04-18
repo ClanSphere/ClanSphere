@@ -1,7 +1,6 @@
 <?php
 $cs_lang['mod_name']  = 'Banner';
 $cs_lang['mod_text']  = 'Bild-Verweise auf andere Webseiten';
-$cs_lang['mod']  = 'Banner';
 $cs_lang['head_create']  = 'Erstellen';
 $cs_lang['body_create']  = 'Einen neuen Banner hinzuf&uuml;gen';
 $cs_lang['head_manage']  = 'Verwaltung';

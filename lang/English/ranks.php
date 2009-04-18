@@ -2,7 +2,7 @@
 
 $cs_lang['mod_name']  = 'Ranking list';
 $cs_lang['mod_text']  = 'Ranking lists for cups and leagues';
-$cs_lang['mod']  = 'Rankings';
+
 $cs_lang['head_manage']  = 'Administration';
 $cs_lang['head_remove']  = 'Remove';
 $cs_lang['head_create']  = 'Create';

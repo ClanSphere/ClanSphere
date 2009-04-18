@@ -2,7 +2,6 @@
 
 $cs_lang['mod_name']  = 'H&auml;ufige Fragen';
 $cs_lang['mod_text']  = 'Oft gestellte Fragen';
-$cs_lang['mod']  = 'H&auml;ufige Fragen';
 
 $cs_lang['head']= 'ID:';
 $cs_lang['head_remove']  = 'Entfernen';

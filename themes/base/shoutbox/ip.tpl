@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:mod} - {lang:ip}</td>
+  <td class="headb">{lang:mod_name} - {lang:ip}</td>
  </tr>
  <tr>
   <td class="leftb">{icon:important} {text:ip}</td>

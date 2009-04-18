@@ -5,7 +5,7 @@
 $cs_lang['mod_text']    = 'The search module';
 $cs_lang['body_list']   = 'Seperate search strings with ",".';
 
-$cs_lang['mod']     = 'Search';
+$cs_lang['mod_name']    = 'Search';
 $cs_lang['text']     = 'Search string';
 $cs_lang['search']     = 'Search';
 $cs_lang['modul']     = 'Module';

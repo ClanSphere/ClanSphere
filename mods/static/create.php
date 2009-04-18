@@ -9,7 +9,7 @@ $errormsg = '';
 $static_access = 0;
 $levels = 0;
 
-$cs_action_head['head']['mod']      = $cs_lang['mod'];
+$cs_action_head['head']['mod']      = $cs_lang['mod_name'];
 $cs_action_head['head']['action']    = $cs_lang['head_create'];
 
   $cs_static['static_title'] = '';

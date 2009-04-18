@@ -1,7 +1,7 @@
 <form method="post" action="{url:articles_manage}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3"> {lang:mod} - {lang:head_manage} </td>
+    <td class="headb" colspan="3"> {lang:mod_name} - {lang:head_manage} </td>
   </tr>
   <tr>
     <td class="leftb"> {icon:editpaste}{link:new_article}</td>

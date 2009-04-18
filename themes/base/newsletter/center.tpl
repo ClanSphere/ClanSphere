@@ -13,7 +13,7 @@
 <form method="post" id="newsletter_subscribe" action="{url:action}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
-    <td class="leftc" style="width: 100px;"> {icon:mail} {lang:mod}</td>
+    <td class="leftc" style="width: 100px;"> {icon:mail} {lang:mod_name}</td>
     <td class="leftb"><input type="checkbox" name="newsletter" value="1" {newsletter:checked} /> {lang:subscribe}</td>
   </tr>
   <tr>

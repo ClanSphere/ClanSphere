@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']        = 'Umfragen';
+$cs_lang['mod_name']        = 'Umfragen';
 $cs_lang['modtext'] = 'Umfragen erstellen und auswerten';
 $cs_lang['head_list']  = '&Uuml;bersicht';
 $cs_lang['head_create']  = 'Eintragen';

@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net 
 // $Id$
 
-$cs_lang['mod']  = 'ClanSphere';
+$cs_lang['mod_name']  = 'ClanSphere';
 $cs_lang['modinfo']  = 'Main module with CMS-core';
 $cs_lang['modules_list']  = 'All installed modules are available from here.';
 $cs_lang['languages']  = 'Languages';

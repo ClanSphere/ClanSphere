@@ -12,5 +12,5 @@ $quote_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 $cs_articles = cs_sql_select(__FILE__,'articles','articles_com',"articles_id = '" . $fid . "'");
 
 require_once('mods/comments/functions.php');
-cs_commments_create($fid,'articles','view',$quote_id,$cs_lang['mod'],$cs_articles['articles_com']);
+cs_commments_create($fid,'articles','view',$quote_id,$cs_lang['mod_name'],$cs_articles['articles_com']);
 ?>

@@ -3,7 +3,7 @@
 // $Id$
 
 // General
-$cs_lang['mod']  = 'Squads';
+$cs_lang['mod_name']  = 'Squads';
 $cs_lang['modtext']  = 'Abteilungen im Clan';
 
 $cs_lang['count'] = 'Es sind %s Squads eingetragen.';

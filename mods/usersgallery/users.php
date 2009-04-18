@@ -235,7 +235,7 @@ if(!empty($id)) {
     $where = "folders_mod = 'usersgallery' AND users_id='" . $id . "' AND sub_id = '".$folders_current['folders_id']."'";
     $folders = cs_sql_select(__FILE__,$from,$select,$where,0,0,0);
     $folders_loop = count($folders);
-    $data['link']['gallery'] = cs_link($cs_lang['mod'],'usersgallery','users','id='. $id);
+    $data['link']['gallery'] = cs_link($cs_lang['mod_name'],'usersgallery','users','id='. $id);
     $data['link']['subfolders'] = make_folders_head($folders,$folders_current['sub_id'],$id);
     $data['data']['folders_name'] = $folders_current['folders_name'];
     if(!empty($folders_loop)) {

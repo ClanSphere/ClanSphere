@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="4">{lang:mod} - {lang:abos}</td>
+    <td class="headb" colspan="4">{lang:mod_name} - {lang:abos}</td>
   </tr>
   <tr>
     <td class="leftb" style="width:25%">{lang:abos} ({count:abos})</td>

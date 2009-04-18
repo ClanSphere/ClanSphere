@@ -1,7 +1,7 @@
 <form method="post" id="users_remove" action="{url:usersgallery_users_remove}"
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb">{lang:mod} - {lang:remove}</td>
+		<td class="headb">{lang:mod_name} - {lang:remove}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{head:body}</td>

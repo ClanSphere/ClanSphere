@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Datenbank';
+$cs_lang['mod_name']  = 'Datenbank';
 $cs_lang['modtext']  = 'Aktualisiert das Portalsystem';
 
 // roots.php

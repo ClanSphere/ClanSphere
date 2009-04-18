@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3"><a href="{url:files}">{lang:mod}</a> - {categorie:name} </td>
+    <td class="headb" colspan="3"><a href="{url:files}">{lang:mod_name}</a> - {categorie:name} </td>
   </tr>
   <tr>
     <td class="leftb"> {icon:contents} {lang:total}: {categorie:count}</td>

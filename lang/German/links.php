@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Links';
+$cs_lang['mod_name']  = 'Links';
 $cs_lang['text']  = 'Das Links Modul';
 
 $cs_lang['head_list']= '&Uuml;bersicht';

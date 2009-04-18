@@ -4,7 +4,7 @@
 
 $cs_lang = cs_translate('awards');
 
-$mod_info['name']    = $cs_lang['mod'];
+$mod_info['name']    = $cs_lang['mod_name'];
 $mod_info['version']  = $cs_main['version_name'];
 $mod_info['released']  = $cs_main['version_date'];
 $mod_info['creator']  = 'pHaeno*';

@@ -4,7 +4,6 @@
 
 $cs_lang['mod_name']  = 'Fightus';
 $cs_lang['mod_text']  = 'Anfragen auf Begegnungen';
-$cs_lang['mod']  = 'Fightus';
 
 $cs_lang['head_new'] = 'Anfrage';
 $cs_lang['head_view'] = 'Details';

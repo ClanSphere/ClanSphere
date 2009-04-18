@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']      = 'Comments';
+$cs_lang['mod_name']      = 'Comments';
 $cs_lang['mod_text']  = 'Adds a discussion function to modules';
 
 //Manage

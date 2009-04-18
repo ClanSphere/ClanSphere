@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Member';
+$cs_lang['mod_name']  = 'Member';
 $cs_lang['modtext']  = 'Assign user to squad';
 
 // Member Labels

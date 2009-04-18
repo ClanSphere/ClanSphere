@@ -1,7 +1,7 @@
 <form method="post" action="{url:news_recent}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:mod} - {lang:recent}</td>
+  <td class="headb" colspan="3">{lang:mod_name} - {lang:recent}</td>
  </tr>
  <tr>
   <td class="leftb">{lang:category}

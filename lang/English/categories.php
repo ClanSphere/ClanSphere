@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']        = 'Categories';
+$cs_lang['mod_name']        = 'Categories';
 $cs_lang['mod_text']      = 'Divide data in different categories';
 $cs_lang['head_list']    = 'List';
 $cs_lang['head_view']    = 'Details';

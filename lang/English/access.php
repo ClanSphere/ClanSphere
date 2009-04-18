@@ -2,7 +2,6 @@
 
 $cs_lang['mod_name']  = 'Access';
 $cs_lang['mod_text']  = 'Access Assignement for levels';
-$cs_lang['mod']  = 'Access';
 $cs_lang['head_create']  = 'Create';
 $cs_lang['body_create']  = 'Create new access levels here.';
 $cs_lang['head_remove']  = 'Remove';

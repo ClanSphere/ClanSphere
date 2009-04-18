@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'News';
+$cs_lang['mod_name']  = 'News';
 $cs_lang['modtext']  = 'Manage and Create News';
 
 // Create

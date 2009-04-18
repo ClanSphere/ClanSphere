@@ -10,7 +10,7 @@ require_once('mods/categories/functions.php');
 $quotes_id = $_REQUEST['id'];
 settype($quotes_id,'integer');
 
- $data['head']['mod'] = $cs_lang['mod'];
+ $data['head']['mod'] = $cs_lang['mod_name'];
  $data['head']['action'] = $cs_lang['edit'];
  $data['head']['body'] = $cs_lang['fill_obligated'];
 

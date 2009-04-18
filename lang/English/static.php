@@ -1,7 +1,6 @@
 <?php
 $cs_lang['mod_name']  = 'Static Pages';
 $cs_lang['mod_text']  = 'Manage static pages online';
-$cs_lang['mod']  = 'Static';
 $cs_lang['head_create'] = 'Create';
 $cs_lang['body_create'] = 'Please fill out all * marked fields .';
 $cs_lang['head_edit'] = 'Edit';

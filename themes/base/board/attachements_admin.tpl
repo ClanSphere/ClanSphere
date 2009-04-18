@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod} - {lang:attachments}</td>
+    <td class="headb">{lang:mod_name} - {lang:attachments}</td>
   </tr>
   <tr>
     <td class="leftb"><div style="float:left"><a href="{url:board_manage}">{lang:back}</a></div><div style="float:right">

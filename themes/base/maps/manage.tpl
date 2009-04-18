@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
+  <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:editpaste} <a href="{url:maps_create}">{lang:new_map}</a></td>

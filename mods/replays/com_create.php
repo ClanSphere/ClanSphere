@@ -12,6 +12,6 @@ $quote_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 $cs_replays = cs_sql_select(__FILE__,'replays','replays_close',"replays_id = '" . $fid . "'");
 
 require_once('mods/comments/functions.php');
-cs_commments_create($fid,'replays','view',$quote_id,$cs_lang['mod'],$cs_replays['replays_close']);
+cs_commments_create($fid,'replays','view',$quote_id,$cs_lang['mod_name'],$cs_replays['replays_close']);
 
 ?>

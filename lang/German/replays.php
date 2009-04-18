@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net  
 // $Id$
 
-$cs_lang['mod']  = 'Wiederholungen';
+$cs_lang['mod_name']  = 'Wiederholungen';
 $cs_lang['modtext']  = 'Gespeicherte Aufzeichnungen von Begegnungen';
 
 // Create

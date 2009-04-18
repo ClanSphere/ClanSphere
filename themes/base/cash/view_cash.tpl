@@ -1,6 +1,6 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="2">{lang:mod} - {lang:akt_users_month}</td>
+		<td class="headb" colspan="2">{lang:mod_name} - {lang:akt_users_month}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{lang:user_cash_month}</td>

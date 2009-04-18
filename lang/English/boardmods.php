@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$ 
 
-$cs_lang['mod']  = 'Boardmoderators';
+$cs_lang['mod_name']  = 'Boardmoderators';
 $cs_lang['text']  = 'The moderator module';
 
 $cs_lang['head_create'] = 'Add';

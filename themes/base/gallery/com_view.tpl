@@ -1,9 +1,9 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td colspan="2" class="headb">{lang:mod} - {data:titel}</td>
+    <td colspan="2" class="headb">{lang:mod_name} - {data:titel}</td>
   </tr>
   <tr>
-    <td colspan="2" class="leftb"><a href="{url:gallery_list}">{lang:mod}</a> {link:subfolders} {data:folders_name}</td>
+    <td colspan="2" class="leftb"><a href="{url:gallery_list}">{lang:mod_name}</a> {link:subfolders} {data:folders_name}</td>
   </tr>
   <tr>
     <td colspan="2" class="centerb">{data:picture}</td>

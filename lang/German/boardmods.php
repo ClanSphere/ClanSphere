@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$ 
 
-$cs_lang['mod']   = 'Forummods';
+$cs_lang['mod_name']   = 'Forummods';
 $cs_lang['text'] = 'Das Moderator Modul';
 
 $cs_lang['head_create'] = 'Hinzuf&uuml;gen';

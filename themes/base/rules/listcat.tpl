@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:mod} - {cat_data:name}</td>
+  <td class="headb">{lang:mod_name} - {cat_data:name}</td>
  </tr>
  <tr>
   <td class="leftb">{cat_data:text}</td>

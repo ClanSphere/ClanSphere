@@ -3,7 +3,6 @@
 $cs_lang['mod_name']  = 'Joinus';
 $cs_lang['mod_text']  = 'Anfragen auf Mitgliedschaft';
 
-$cs_lang['mod']      = 'Joinus';
 $cs_lang['head_new']  = 'Anfrage';
 $cs_lang['body_new']  = 'Bitte alle mit Stern (*) markierten Felder ausf&uuml;llen.';
 $cs_lang['new_done']  = 'Joinus erfolgreich abgesendet.';

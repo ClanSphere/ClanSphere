@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod} - {lang:head_listcat}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:head_listcat}</td>
   </tr>
   <tr>
     <td class="leftb" style="width:50%"><a href="{link:board}">{lang:board}</a> -> <a href="{link:name}">{categories:name}</a> -> {board:name}</td>

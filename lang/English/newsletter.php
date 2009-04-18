@@ -5,8 +5,6 @@
 $cs_lang['mod_name'] = 'Newsletter';
 $cs_lang['mod_text'] = 'Administration of Newsletters';
 
-$cs_lang['mod']  = 'Newsletter';
-
 $cs_lang['details'] = 'Details';
 $cs_lang['subject']  = 'Subject';
 $cs_lang['to'] = 'To';

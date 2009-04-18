@@ -1,6 +1,6 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
-      <td class="headb">{lang:mod} - {lang:edit}</td>
+      <td class="headb">{lang:mod_name} - {lang:edit}</td>
     </tr>
     <tr>
       <td class="leftb"> {head:body} {head:error}</td>
@@ -10,7 +10,7 @@
 {if:preview}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-   <td class="headb">{lang:mod} - {lang:preview}</td>
+   <td class="headb">{lang:mod_name} - {lang:preview}</td>
   </tr>
   <tr>
     <td class="leftb">{data:articles_headline}</td>

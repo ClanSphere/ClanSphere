@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2"><a href="{url:messages_center}">{lang:mod}</a> - {lang:text}</td>
+    <td class="headb" colspan="2"><a href="{url:messages_center}">{lang:mod_name}</a> - {lang:text}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:from}</td>

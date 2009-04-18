@@ -1,7 +1,7 @@
 <form method="post" id="boardmods_manage" action="{url:boardmods_manage}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
+		<td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{icon:editpaste} {head:new}</td>

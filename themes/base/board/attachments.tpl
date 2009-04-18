@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="4">{lang:mod} - {lang:attachments}</td>
+    <td class="headb" colspan="4">{lang:mod_name} - {lang:attachments}</td>
   </tr>
   <tr>
     <td class="leftb" style="width:25%"><a href="{url:board_center}">{lang:abos}</a> ({link:abos_count})</td>

@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:mod} - {shoutbox:title}</td>
+  <td class="headb">{lang:mod_name} - {shoutbox:title}</td>
  </tr>
  <tr>
   <td class="leftb">{shoutbox:text}</td>

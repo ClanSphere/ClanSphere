@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod'] = 'Turniere';
+$cs_lang['mod_name'] = 'Turniere';
 $cs_lang['modtext'] = 'Verwaltung der Turniere';
 $cs_lang['cup'] = 'Turnier';
 

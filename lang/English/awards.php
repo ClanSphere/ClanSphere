@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang['mod_text']  = 'The Awards Module';
-$cs_lang['mod']  = 'Awards';
+$cs_lang['mod_name']  = 'Awards';
 $cs_lang['head']= 'Administration';
 $cs_lang['head_view'] = 'Details';
 $cs_lang['head_create'] = 'Create';

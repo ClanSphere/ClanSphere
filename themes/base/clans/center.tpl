@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod} - {lang:center}</td>
+    <td class="headb" colspan="3">{lang:mod_name} - {lang:center}</td>
   </tr>
   <tr>
     <td class="leftb">{icon:editpaste} {lang:new}</td>

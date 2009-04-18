@@ -2,7 +2,6 @@
 
 $cs_lang['mod_name']  = 'Events';
 $cs_lang['mod_text']  = 'Events, Birthdays and more';
-$cs_lang['mod']         = 'Events';
 
 // list.php
 $cs_lang['head_list']  = 'List';

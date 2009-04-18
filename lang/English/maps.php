@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net 
 // $Id$
 
-$cs_lang['mod']  = 'Maps';
+$cs_lang['mod_name']  = 'Maps';
 $cs_lang['modtext']  = 'Create and manage maps';
 
 $cs_lang['no_selection']= 'No map selected.';

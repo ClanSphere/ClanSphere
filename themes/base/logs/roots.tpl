@@ -1,7 +1,7 @@
 <form method="post" id="logs_roots" action="{url:logs_roots}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod} - {lang:head_roots}</td>
+		<td class="headb" colspan="3">{lang:mod_name} - {lang:head_roots}</td>
 	</tr>
 	<tr>
 		<td class="leftb">

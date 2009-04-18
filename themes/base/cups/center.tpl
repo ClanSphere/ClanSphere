@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod} - {lang:center}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:center}</td>
   </tr>
   <tr>
     <td class="leftc">{lang:take_part_in_cups}</td>

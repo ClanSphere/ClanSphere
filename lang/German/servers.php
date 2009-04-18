@@ -1,7 +1,6 @@
 <?php
 $cs_lang['mod_name']  = 'Server';
 $cs_lang['mod_text']  = 'Dienste hinzuf&uuml;gen und erstellen';
-$cs_lang['mod']  = 'Servers';
 $cs_lang['mod_list'] = 'Unsere Server auf einem Blick.';
 $cs_lang['head_manage']  = 'Verwaltung';
 $cs_lang['head_edit']  = '&Auml;ndern';
@@ -39,7 +38,7 @@ $cs_lang['php'] .= 'Um die Server-Anzeige nutzen zu k&ouml;nnen, ist es unbeding
 $cs_lang['headline'] = 'Servername';
 $cs_lang['new_serv'] = 'Neuer Server';
 $cs_lang['number'] = 'Anzahl ';
-$cs_lang['gametype'] = 'Spiel';
+$cs_lang['gametype'] = 'Spieltyp';
 $cs_lang['gameclass'] = 'Classes';
 $cs_lang['rss_info']  = 'Server Details';
 $cs_lang['servername'] = 'Servername';

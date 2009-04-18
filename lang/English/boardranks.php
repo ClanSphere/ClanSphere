@@ -5,7 +5,6 @@
 $cs_lang['mod_name'] = 'Boardranks';
 $cs_lang['mod_text'] = 'Administrate and Create Boardranks';
 
-$cs_lang['mod']  = 'Boardranks';
 $cs_lang['body'] = 'All fields with * are required';
 
 $cs_lang['min'] = 'From posts';

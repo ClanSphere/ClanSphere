@@ -4,7 +4,7 @@
 
 $cs_lang['mod_name']  = 'Banner';
 $cs_lang['mod_text']  = 'Bild-Verweise auf andere Webseiten';
-$cs_lang['mod']  = 'Banner';
+$cs_lang['mod_name']  = 'Banner';
 $cs_lang['head_create']  = 'Create';
 $cs_lang['body_create']  = 'Add new banner';
 $cs_lang['head_manage']  = 'Administration';

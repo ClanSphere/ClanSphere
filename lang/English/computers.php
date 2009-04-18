@@ -2,7 +2,6 @@
 
 $cs_lang['mod_name']  = 'Computer';
 $cs_lang['mod_text']  = 'User Addon for Hardware';
-$cs_lang['mod']  = 'Computer';
 
 // center.php
 $cs_lang['head_center']  = 'Center';

@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Installation';
+$cs_lang['mod_name']  = 'Installation';
 $cs_lang['modtext']  = 'Installs ClanSphere';
 
 $cs_lang['head_list']  = 'List';

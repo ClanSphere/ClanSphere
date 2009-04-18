@@ -5,7 +5,7 @@
 $cs_lang = cs_translate('votes');
 
 $cs_vote_tpl = array();
-$cs_vote_tpl['head']['mod']      = $cs_lang['mod'];
+$cs_vote_tpl['head']['mod']      = $cs_lang['mod_name'];
 $cs_vote_tpl['head']['action']  = $cs_lang['head_remove'];
 $cs_vote_tpl['head']['body']    = '-';
 

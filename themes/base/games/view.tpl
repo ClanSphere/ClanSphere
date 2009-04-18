@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="4">{lang:mod} - {lang:details}</td>
+    <td class="headb" colspan="4">{lang:mod_name} - {lang:details}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:package_games} {lang:name}</td>

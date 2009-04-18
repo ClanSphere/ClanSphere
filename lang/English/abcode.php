@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']  = 'Abcode';
+$cs_lang['mod_name']  = 'Abcode';
 $cs_lang['mod_text']  = 'Replaces patterns with pictures or text';
 
 $cs_lang['body_create']  = 'Create a new replace';

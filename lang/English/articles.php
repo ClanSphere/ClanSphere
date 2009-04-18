@@ -5,7 +5,6 @@
 // info.php
 $cs_lang['mod_name']  = 'Article';
 $cs_lang['mod_text']  = 'The Article Module';
-$cs_lang['mod']  = 'Article';
 
 // create.php
 $cs_lang['head_create'] = 'Add';

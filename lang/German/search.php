@@ -5,7 +5,7 @@
 $cs_lang['mod_text']    = 'Das Suche Modul';
 $cs_lang['body_list']   = 'Mehrere Suchbegriffe bitte per "," trennen.';
 
-$cs_lang['mod']     = 'Suche';
+$cs_lang['mod_name']     = 'Suche';
 $cs_lang['text']     = 'Suchbegriffe';
 $cs_lang['search']     = 'Suchen';
 $cs_lang['modul']     = 'Modul';

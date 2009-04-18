@@ -6,7 +6,7 @@ $cs_lang = cs_translate('quotes');
 
 $quotes_id = $_REQUEST['id'];
 
-$data['head']['mod'] = $cs_lang['mod'];
+$data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['remove'];
 $data['quotes']['id'] = $quotes_id;
 

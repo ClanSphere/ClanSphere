@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']    = 'Downloads';
+$cs_lang['mod_name']    = 'Downloads';
 $cs_lang['mod_list'] = 'View all our downloads in categories.';
 $cs_lang['mod_text']  = 'Administrate and create downloads';
 

@@ -2,7 +2,7 @@
 
 <table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
   <tr>
-    <td class="headb">{lang:mod} - {lang:admin}</td>
+    <td class="headb">{lang:mod_name} - {lang:admin}</td>
   </tr>
   <tr>
     <td class="leftc">{lang:create_admin}</td>

@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang['mod']        = 'Votes';
+$cs_lang['mod_name']        = 'Votes';
 $cs_lang['modtext'] = 'Management and analysis of votes';
 $cs_lang['head_list']  = 'Overview';
 $cs_lang['head_create']  = 'Create';

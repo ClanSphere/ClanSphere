@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-	<td class="headb">{lang:mod} - {lang:folders_edit}</td>
+	<td class="headb">{lang:mod_name} - {lang:folders_edit}</td>
   </tr>
   <tr>
 	<td class="leftb">{head:body}</td>

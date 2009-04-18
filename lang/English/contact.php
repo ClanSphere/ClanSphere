@@ -1,6 +1,6 @@
 <?php
 
-$cs_lang['mod']      = 'Contact';
+$cs_lang['mod_name']      = 'Contact';
 $cs_lang['mod_text']      = 'Contact';
 
 $cs_lang['wizard'] = 'Wizard';

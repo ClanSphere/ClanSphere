@@ -1,7 +1,6 @@
 <?php
 $cs_lang['mod_name']  = 'Logs';
 $cs_lang['mod_text']  = 'Actions and errors';
-$cs_lang['mod']  = 'Logs';
 
 $cs_lang['wizard'] = 'Wizard';
 $cs_lang['task_done'] = 'Mark task as done';

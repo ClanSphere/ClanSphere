@@ -2,7 +2,7 @@
 
 $cs_lang['mod_name']  = 'Ranglisten';
 $cs_lang['mod_text']  = 'Verweise auf Ligen und Wettbewerbe';
-$cs_lang['mod']  = 'Ranglisten';
+
 $cs_lang['head_manage']  = 'Verwaltung';
 $cs_lang['head_remove']  = 'Entfernen';
 $cs_lang['head_create']  = 'Erstellen';

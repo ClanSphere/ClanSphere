@@ -326,8 +326,10 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $cs_temp_get);
 
   // Set title proper related to module
-  if (!empty($cs_main['mod']))
-      $cs_main['def_title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_main['mod']);
+  if (!empty($cs_main['mod'])) {
+    $cs_act_lang = cs_translate($cs_main['mod']);
+    $cs_main['def_title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name']));
+  }
 
   $cs_main['def_title'] = htmlspecialchars($cs_main['def_title'], ENT_QUOTES);
   $cs_temp_get = str_replace('{func:title}', $cs_main['def_title'], $cs_temp_get);

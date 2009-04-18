@@ -3,7 +3,6 @@
 $cs_lang['mod_name']  = 'Join us';
 $cs_lang['mod_text']  = 'Join requests';
 
-$cs_lang['mod']      = 'Join us';
 $cs_lang['head_new']  = 'Request';
 $cs_lang['body_new']  = 'Please fill out all * marked fields.';
 $cs_lang['new_done']  = 'Joinus successfully sent.';

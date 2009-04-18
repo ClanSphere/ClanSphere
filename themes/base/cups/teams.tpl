@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod} - {lang:teams}</td>
+    <td class="headb" colspan="3">{lang:mod_name} - {lang:teams}</td>
   </tr>
   <tr>
     <td class="leftc"><a href="{url:cups_manage}">{lang:back}</a></td>

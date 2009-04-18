@@ -1,7 +1,7 @@
 {if:manage}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:mod} - {lang:manage}</td>
+  <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
  </tr>
  <tr>
   <td class="leftb">{icon:editpaste} <a href="{url:buddys_create}">{lang:new_buddy}</a></td>
@@ -59,7 +59,7 @@
 {if:notice}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:mod} - {lang:buddys_notice_head}</td>
+  <td class="headb">{lang:mod_name} - {lang:buddys_notice_head}</td>
  </tr>
  <tr>
   <td class="leftb">{lang:buddys_notice_body}</td>

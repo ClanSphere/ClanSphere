@@ -1,7 +1,6 @@
 <?php
 $cs_lang['mod_name']  = 'Server';
 $cs_lang['mod_text']  = 'Add servers';
-$cs_lang['mod']  = 'Servers';
 $cs_lang['mod_list'] = 'View all our servers.';
 $cs_lang['head_manage']  = 'Administration';
 $cs_lang['head_edit']  = 'Edit';

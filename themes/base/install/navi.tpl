@@ -1,4 +1,4 @@
-<div id="nav_padding">{lang:mod}</div>
+<div id="nav_padding">{lang:mod_name}</div>
  
 <div class="nav_content"{active:lang}>{arr:lang}1. {lang:language_choose}</div>
 <div class="nav_content"{active:compatible}>{arr:compatible}2. {lang:install_check}</div>
