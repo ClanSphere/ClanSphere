@@ -73,7 +73,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 						else {
 							$data['servers'][$run]['proto'] = 'hlsw://';
 						}
-						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['pass']) ? $cs_lang['no'] : $cs_lang['yes'];
+						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['needpass']) ? $cs_lang['no'] : $cs_lang['yes'];
 						flush();
 					}
 				}

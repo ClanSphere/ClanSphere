@@ -233,11 +233,11 @@ class ef
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// et setting pics
-		$sets['pb']      = '<img src="' . $phgdir . 'privileges/pb.gif" alt="pb">';
-		$sets['ff']      = '<img src="' . $phgdir . 'privileges/ff.gif" alt="ff">';
-		$sets['antilag'] = '<img src="' . $phgdir . 'privileges/antilag.gif" alt="antilag">';
-		$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
-		$sets['balance'] = '<img src="' . $phgdir . 'privileges/balance.gif" alt="balance">';
+		$sets['pb']   = cs_html_img('mods/servers/privileges/pb.gif',0,0,0,'Punkbuster');
+    $sets['ff'] = cs_html_img('mods/servers/privileges/ff.gif',0,0,0,'ff');
+    $sets['antilag']   = cs_html_img('mods/servers/privileges/antilag.gif',0,0,0,'antilag');
+    $sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
+    $sets['balance']   = cs_html_img('mods/servers/privileges/balance.gif',0,0,0,'balance');
 
 		// get the info strings from server info stream
 		$srv_rules['hostname']     = $this->getvalue('sv_hostname',       $this->g_info);

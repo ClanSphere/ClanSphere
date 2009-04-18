@@ -232,8 +232,8 @@ class cod4
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// cod setting pics
-		$sets['pb']   = '<img src="' . $phgdir . 'privileges/pb.gif" alt="pb">';
-		$sets['pass'] = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+    $sets['pb']   = cs_html_img('mods/servers/privileges/pb.gif',0,0,0,'Punkbuster');
+    $sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
 		// get the info strings from server info stream
 		$srv_rules['hostname']    = $this->getvalue('sv_hostname',       $this->g_info);

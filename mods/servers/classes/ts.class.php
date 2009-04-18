@@ -797,9 +797,9 @@ class ts
 		}
 
 		// server password
-		$srv_rules['pass'] = false;
+		$srv_rules['needpass'] = false;
 		if (strstr($this->s_info[2],"server_password=1")!=false)
-			$srv_rules['pass'] = true;
+			$srv_rules['needpass'] = true;
 
 		// players
 		$srv_rules['nowplayers'] = str_replace(' ', '', substr($this->d_info[29], 20));

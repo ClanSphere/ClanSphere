@@ -229,7 +229,7 @@ class q2
 	function getrules($phgdir)
 	{
 		$srv_rules['sets'] = false;
-		$sets['pass'] = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+		$sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
 		// response time
 		$srv_rules['response'] = $this->response . ' ms';

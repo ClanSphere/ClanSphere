@@ -178,7 +178,7 @@ class hl_old
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// game setting pics
-		$sets['pass'] = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+    $sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
 		// set array key to info
 		$def = 'info';

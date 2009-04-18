@@ -244,9 +244,8 @@ class etqw
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// etqw setting pics
-		$sets['pb']      = cs_html_img($phgdir . 'privileges/pb.gif',0,0,0,'PB');
-		$sets['pass']    =   cs_html_img($phgdir . 'privileges/pass.gif',0,0,0,'Protected');
-
+    $sets['pb']   = cs_html_img('mods/servers/privileges/pb.gif',0,0,0,'Punkbuster');
+    $sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
 		// get the info strings from server info stream
 		$srv_rules['hostname']       = $this->check_color($this->getvalue('si_name', $this->g_info),1);

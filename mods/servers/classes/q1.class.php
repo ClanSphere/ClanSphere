@@ -232,7 +232,7 @@ class q1
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// privileges picture
-		$sets['pass']    = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
+		$sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
 		// get the info strings from server info stream
 		$srv_rules['hostname']    = $this->getvalue('hostname',   $this->g_info);
@@ -241,7 +241,6 @@ class q1
 		$srv_rules['mapname']     = $this->getvalue('map',        $this->g_info);
 		$srv_rules['maxplayers']  = $this->getvalue('maxclients', $this->g_info);
 		$srv_rules['needpass']    = $this->getvalue('needpass',   $this->g_info);
-
 
 		// scan the color tags of hostname
 		$srv_rules['hostname'] = $this->check_color($srv_rules['hostname'], 1);

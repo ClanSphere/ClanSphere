@@ -233,8 +233,8 @@ class warsow
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// privileges picture
-		$sets['pass'] = '<img src="' . $phgdir . 'privileges/pass.gif" alt="pw">';
-		$sets['be']   = '<img src="' . $phgdir . 'privileges/be.gif" alt="be">';
+    $sets['be']   = cs_html_img('mods/servers/privileges/be.gif',0,0,0,'be');
+    $sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
 		// get the info strings from server info stream
 		$srv_rules['hostname']   = $this->getvalue('sv_hostname',   $this->g_info);
