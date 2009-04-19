@@ -24,7 +24,7 @@ $cs_lang['text']       = 'Text';
 $cs_lang['more']      = 'More';
 $cs_lang['pic_remove']      = 'Remove picture';
 $cs_lang['count']      = 'There are  %s Entries in the selected module';
-$cs_lang['new_category']  = 'New categorie';
+$cs_lang['new_category']  = 'New category';
 
 $cs_lang['lev_0'] = 'Disabled';
 $cs_lang['lev_1'] = 'Read';

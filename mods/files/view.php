@@ -72,8 +72,8 @@ if(empty($check_user_voted))
 }
 
 
-$data['categorie']['name'] = $cs_file['categories_name'];
-$data['categorie']['id'] = $cs_file['categories_id'];
+$data['category']['name'] = $cs_file['categories_name'];
+$data['category']['id'] = $cs_file['categories_id'];
 $data['file']['id'] = $cs_file['files_id'];
 $data['file']['name'] = cs_secure($cs_file['files_name']);
 $data['file']['version'] =  cs_secure($cs_file['files_version']);

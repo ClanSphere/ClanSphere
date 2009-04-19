@@ -25,10 +25,10 @@ $order = $cs_sort[$sort];
 
 
 $categories = cs_sql_select(__FILE__,'categories','categories_name',"categories_id = '" . $categories_id . "'");
-$data['categorie']['name'] = $categories['categories_name'];
-$data['categorie']['count'] = cs_sql_count(__FILE__,'files',$where);
+$data['category']['name'] = $categories['categories_name'];
+$data['category']['count'] = cs_sql_count(__FILE__,'files',$where);
 
-$data['categorie']['paginator'] = cs_pages('files','listcat',$data['categorie']['count'],$start,$categories_id,$sort);
+$data['category']['paginator'] = cs_pages('files','listcat',$data['category']['count'],$start,$categories_id,$sort);
 
 $sub_where = "categories_mod = 'files' AND categories_access <= '" . $account['access_files'] . "'";
 $sub_where .= " AND categories_subid = '" . $categories_id . "'";

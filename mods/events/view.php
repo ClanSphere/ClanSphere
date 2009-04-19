@@ -43,7 +43,7 @@ $data['data']['events_name'] = cs_secure($cs_events['events_name']);
 
 $where = "categories_id = '" . $cs_events['categories_id'] . "'";
 $cs_cat = cs_sql_select(__FILE__,'categories','categories_name, categories_id',$where);
-$data['data']['categorie'] = cs_link($cs_cat['categories_name'],'categories','view','id=' . $cs_cat['categories_id']);
+$data['data']['category'] = cs_link($cs_cat['categories_name'],'categories','view','id=' . $cs_cat['categories_id']);
 
 $data['data']['time'] = cs_date('unix',$cs_events['events_time'],1);
 

@@ -24,7 +24,7 @@ $data['lang']['getmsg'] = cs_getmsg();
 $cs_faq = cs_sql_select(__FILE__,'faq','*',0,$order,$start,$account['users_limit']);
 $faq_loop = count($cs_faq);
 $data['sort']['question'] = cs_sort('faq','manage',$start,0,1,$sort);
-$data['sort']['categorie'] = cs_sort('faq','manage',$start,0,3,$sort);
+$data['sort']['category'] = cs_sort('faq','manage',$start,0,3,$sort);
 
 if(empty($faq_loop)) {
 $data['faq'] = '';
