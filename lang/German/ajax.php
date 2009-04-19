@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang['ajax'] = 'AJAX';
+$cs_lang['mod_name'] = 'AJAX';
 $cs_lang['mod_text'] = 'AJAX ist eine Technologie, die das Laden der Webseite erheblich verschnellert und ';
 $cs_lang['mod_text'] .= 'einige weitere komfortable Funktionen bereit stellt.';
 
