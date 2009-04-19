@@ -57,10 +57,11 @@ if(!isset($_POST['submit']) OR !empty($error)) {
         
       // Hole alle Smileys aus dem uploads Ordner
       $pfad = "uploads/abcode";
+      $allowed = array('.gif', '.GIF', '.jpg', '.JPG', '.png', '.PNG', 'jpeg', 'JPEG');
       if ($handle = opendir($pfad)) {
           while (false !== ($file = readdir($handle))) {
-              $substr = substr($file,-3);
-              if ($file{0} != '.' AND $file != "index.html" AND ($substr == 'gif' OR $substr == 'jpg' OR $substr == 'png')) {
+              $substr = substr($file,-4);
+              if ($file{0} != '.' AND in_array($substr, $allowed)) {
                   $all_smileys[] = $file;
               }
           }
