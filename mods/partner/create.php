@@ -125,7 +125,7 @@ if(empty($_POST['submit']) || !empty($error)) {
   $data['form']['create'] = cs_url('partner','create');
   $data['head']['body_text'] = !empty($error) ? $error : $cs_lang['body_text'];
     $data['categories']['dropdown'] = cs_categories_dropdown('partner',$categories_id);
-  $data['abcode']['smilies'] = cs_abcode_smileys('partner_text');
+  $data['abcode']['smileys'] = cs_abcode_smileys('partner_text');
   $data['abcode']['features'] = cs_abcode_features('partner_text');
 
      $matches_n[1] = $cs_lang['infobox'];

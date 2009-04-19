@@ -23,7 +23,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr><td class="leftc">
 {icon:kate} {lang:notice}<br /><br />
-{edit:abcode_smilies}
+{edit:abcode_smileys}
 </td><td class="leftb">
 {edit:abcode_features}
 <textarea name="buddys_notice" cols="50" rows="20" id="buddys_notice" >{edit:buddys_notice}</textarea>

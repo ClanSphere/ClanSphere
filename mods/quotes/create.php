@@ -57,7 +57,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['categories']['dropdown'] = cs_categories_dropdown('quotes',$categories_id);
   $data['abcode']['features'] = cs_abcode_features('quotes_text');
-  $data['data']['smilies'] =  cs_abcode_smileys('quotes_text');
+  $data['data']['smileys'] =  cs_abcode_smileys('quotes_text');
   $data['url']['action'] = cs_url('quotes','create');
   $data['quotes']['quotes_headline'] = empty($cs_quotes['quotes_headline']) ? '' : $cs_quotes['quotes_headline'];
   $data['quotes']['quotes_text'] = empty($cs_quotes['quotes_text']) ? '' : $cs_quotes['quotes_text'];

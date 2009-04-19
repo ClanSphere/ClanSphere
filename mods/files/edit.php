@@ -118,7 +118,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
 
   $data['categories']['dropdown'] = cs_categories_dropdown('files',$data['file']['categories_id']);
-  $data['text']['smilies'] = cs_abcode_smileys('files_description');
+  $data['text']['smileys'] = cs_abcode_smileys('files_description');
   $data['text']['features'] = cs_abcode_features('files_description');
   
   $data['if']['closed'] = $data['file']['files_close'] ? true : false;

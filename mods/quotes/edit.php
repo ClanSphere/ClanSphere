@@ -69,7 +69,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['data']['categories_id'] = $cs_quotes['categories_id'];
   
   $data['lang']['text'] =  $cs_lang['text'];
-    $data['data']['smilies'] =  cs_abcode_smileys('quotes_text');
+    $data['data']['smileys'] =  cs_abcode_smileys('quotes_text');
   
   
   $data['data']['quotes_text'] = $cs_quotes['quotes_text'];

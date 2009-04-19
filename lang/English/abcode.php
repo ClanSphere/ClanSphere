@@ -46,9 +46,9 @@ $cs_lang['cut_more'] = 'letters - Enter 0 to disable cutting of long words';
 $cs_lang['def_abcode'] = 'Show abcode buttons everywhere';
 
 $cs_lang['import'] = 'Import';
-$cs_lang['new_import'] = 'Here you can import more smilies. <br />You have to upload them on your webspace in the following directory: uploads/abcode';
+$cs_lang['new_import'] = 'Here you can import more smileys. <br />You have to upload them on your webspace in the following directory: uploads/abcode';
 $cs_lang['error_pattern'] = '- No or duplicate pattern for picture %s.';
 $cs_lang['error_pattern_sql'] = '- Pattern for picture %s already exists.';
 
-$cs_lang['no_smilies'] = 'No Smilies available.';
+$cs_lang['no_smileys'] = 'No Smileys available.';
 ?>

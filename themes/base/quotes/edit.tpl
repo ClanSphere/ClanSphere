@@ -21,7 +21,7 @@
     <tr>
       <td class="leftc">{icon:kate} {lang:text} *<br />
         <br />
-        {data:smilies}</td>
+        {data:smileys}</td>
       <td class="leftc">{abcode:features}
         <textarea name="quotes_text" cols="99" rows="35" id="quotes_text"  style="width: 98%;">{data:quotes_text}</textarea></td>
     </tr>

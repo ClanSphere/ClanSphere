@@ -49,7 +49,7 @@
 	<tr>
       <td class="leftc">{icon:kate} {lang:readmore} <br />
         <br />
-        {abcode:smilies_readmore}
+        {abcode:smileys_readmore}
       </td>
       <td class="leftb" colspan="2">
         <div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>
@@ -61,7 +61,7 @@
     <tr>
       <td class="leftc">{icon:kate} {lang:text} *<br />
         <br />
-        {abcode:smilies}</td>
+        {abcode:smileys}</td>
       <td class="leftb" colspan="2">{abcode:features}
         <textarea name="news_text" cols="50" rows="20" id="news_text"  style="width: 98%;">{news:news_text}</textarea></td>
     </tr>

@@ -138,7 +138,7 @@ $data['hidden']['users_phone'] = isset($hidden['users_phone']) ? $checked : '';
 $data['hidden']['users_mobile'] = isset($hidden['users_mobile']) ? $checked : '';
 
 $data['abcode']['features'] =cs_abcode_features('users_info');
-$data['abcode']['smilies'] = cs_abcode_smileys('users_info');
+$data['abcode']['smileys'] = cs_abcode_smileys('users_info');
 
 $data['country'] = array();
 

@@ -151,11 +151,11 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
 
     if(empty($cs_abcode['def_abcode'])) {
       $data['comments']['abcode'] =  '';
-      $data['comments']['smilies'] = '';
+      $data['comments']['smileys'] = '';
     }
     else {
       $data['comments']['abcode'] =  cs_abcode_features('comments_text',1);
-      $data['comments']['smilies'] = cs_abcode_smileys('comments_text');
+      $data['comments']['smileys'] = cs_abcode_smileys('comments_text');
     }
     
     //if guest

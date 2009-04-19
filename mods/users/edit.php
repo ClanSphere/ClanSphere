@@ -178,10 +178,10 @@ if (!empty($error) or !isset($_POST['submit'])) {
 		$data['hidden']['users_mobile'] = isset($hidden['users_mobile']) ? $checked : '';
 
 		$data['abcode']['features'] =cs_abcode_features('users_info');
-		$data['abcode']['smilies'] = cs_abcode_smileys('users_info');
+		$data['abcode']['smileys'] = cs_abcode_smileys('users_info');
 
 		$data['abcode2']['features'] =cs_abcode_features('users_signature');
-		$data['abcode2']['smilies'] = cs_abcode_smileys('users_signature');
+		$data['abcode2']['smileys'] = cs_abcode_smileys('users_signature');
 
 		$data['country'] = array();
 

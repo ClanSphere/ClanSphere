@@ -2,10 +2,10 @@
 $cs_lang = cs_translate('abcode');
 $data = array();
 
-// Hole Aktuelle Smilies aus der Datenbank
+// Hole Aktuelle Smileys aus der Datenbank
 $select = "abcode_pattern, abcode_file";
 $where = "abcode_func = 'img'";
-$smilies = cs_sql_select(__FILE__,'abcode',$select,$where,0,0,0);
+$smileys = cs_sql_select(__FILE__,'abcode',$select,$where,0,0,0);
 
 if(isset($_POST['submit'])) {
 
@@ -19,9 +19,9 @@ if(isset($_POST['submit'])) {
         if(!empty($_POST['pattern'][$run])) {
             $data['file'][$run]['name'] = $_POST['file'][$run];
             $data['file'][$run]['preview'] = cs_html_img('uploads/abcode/' . $_POST['file'][$run]);
-            if(!empty($smilies)) {
-                for($runb=0; $runb<count($smilies); $runb++) {
-                    if($_POST['pattern'][$run] == $smilies[$runb]['abcode_pattern']) {
+            if(!empty($smileys)) {
+                for($runb=0; $runb<count($smileys); $runb++) {
+                    if($_POST['pattern'][$run] == $smileys[$runb]['abcode_pattern']) {
                         $error++;
                         $errormsg .= sprintf($cs_lang['error_pattern_sql'], $_POST['file'][$run]) . cs_html_br(1);
                         $data['file'][$run]['run'] = '';
@@ -47,25 +47,25 @@ if(!empty($error)) {
 }   
 
 if(!isset($_POST['submit']) OR !empty($error)) {
-	   $act_smilies = array();
-     $all_smilies = array();	   
-     if(!empty($smilies)) {
-          for($run=0; $run<count($smilies); $run++) {
-            $act_smilies[] = $smilies[$run]['abcode_file'];
+	   $act_smileys = array();
+     $all_smileys = array();	   
+     if(!empty($smileys)) {
+          for($run=0; $run<count($smileys); $run++) {
+            $act_smileys[] = $smileys[$run]['abcode_file'];
           }
       }        
         
-      // Hole alle Smilies aus dem uploads Ordner
+      // Hole alle Smileys aus dem uploads Ordner
       $pfad = "uploads/abcode";
       if ($handle = opendir($pfad)) {
           while (false !== ($file = readdir($handle))) {
               $substr = substr($file,-3);
               if ($file{0} != '.' AND $file != "index.html" AND ($substr == 'gif' OR $substr == 'jpg' OR $substr == 'png')) {
-                  $all_smilies[] = $file;
+                  $all_smileys[] = $file;
               }
           }
       }
-      $result = array_values(array_diff($all_smilies, $act_smilies));
+      $result = array_values(array_diff($all_smileys, $act_smileys));
       if(!empty($result)) {
           for($run=0; $run<count($result); $run++) {
               $data['file'][$run]['name'] = $result[$run];
@@ -83,12 +83,12 @@ if(!isset($_POST['submit']) OR !empty($error)) {
     cs_redirect($cs_lang['changes_done'],'abcode','manage');
 }    
 if(empty($data['file'])) {
-  $data['if']['no_smilies'] = true;
-  $data['if']['smilies'] = false;
+  $data['if']['no_smileys'] = true;
+  $data['if']['smileys'] = false;
 }
 else {
-  $data['if']['no_smilies'] = false;
-  $data['if']['smilies'] = true;	
+  $data['if']['no_smileys'] = false;
+  $data['if']['smileys'] = true;	
 }
 echo cs_subtemplate(__FILE__,$data,'abcode','import');
 ?>

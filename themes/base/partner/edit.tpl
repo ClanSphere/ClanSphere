@@ -27,7 +27,7 @@
     <td class="leftb"><input type="text" name="partner_alt" value="{partner:partner_alt}" maxlength="200" size="50"  /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:kate} {lang:description} *<br /><br /> {abcode:smilies}</td>
+    <td class="leftc">{icon:kate} {lang:description} *<br /><br /> {abcode:smileys}</td>
     <td class="leftb">{abcode:features}<textarea name="partner_text" id="partner_text" cols="5" rows="5"  style="width: 98%;">{partner:partner_text}</textarea></td>
   </tr>
   <tr>

@@ -226,9 +226,9 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
 
   if(empty($cs_main['fckeditor'])) {
     $data['abcode']['features'] = cs_abcode_features('news_text', $abcode[3]);
-    $data['abcode']['smilies'] = cs_abcode_smileys('news_text');
+    $data['abcode']['smileys'] = cs_abcode_smileys('news_text');
     $data['abcode']['features_readmore'] = cs_abcode_features('news_readmore', $abcode[3]);
-    $data['abcode']['smilies_readmore'] = cs_abcode_smileys('news_readmore');
+    $data['abcode']['smileys_readmore'] = cs_abcode_smileys('news_readmore');
     $data['if']['fck'] = false;
     $data['if']['abcode'] = true;
   }

@@ -148,7 +148,7 @@
   </tr>
   <tr>
     <td class="leftc"> {icon:documentinfo} {lang:info}<br /><br />
-      {abcode:smilies}
+      {abcode:smileys}
     </td>
     <td class="leftb" colspan="2">{abcode:features}
       <textarea name="data[users_info]" cols="50" rows="12" id="users_info" >{users:users_info}</textarea>
@@ -156,7 +156,7 @@
   </tr>
   <tr>
     <td class="leftc"> {icon:colors} {lang:signature}<br /><br />
-      {abcode2:smilies}
+      {abcode2:smileys}
     </td>
     <td class="leftb" colspan="2">{abcode2:features}
       <textarea name="data[users_signature]" cols="50" rows="12" id="users_signature" >{users:users_signature}</textarea>

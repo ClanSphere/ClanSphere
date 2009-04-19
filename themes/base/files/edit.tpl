@@ -33,7 +33,7 @@
     <tr>
       <td class="leftc">{icon:kate} {lang:text} *<br />
         <br />
-        {text:smilies}
+        {text:smileys}
         </td>
       <td class="leftb" colspan="2">
       	{text:features}

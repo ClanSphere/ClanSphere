@@ -45,7 +45,7 @@ if(isset($_POST['preview']) OR !isset($_POST['submit']))
   $data['if']['done']     = FALSE;
   }
   
-  $data['edit']['abcode_smilies']     = cs_abcode_smileys('buddys_notice');
+  $data['edit']['abcode_smileys']     = cs_abcode_smileys('buddys_notice');
   $data['edit']['abcode_features']    = cs_abcode_features('buddys_notice');
   $data['edit']['buddys_notice']      = $cs_buddys['buddys_notice'];
   $data['edit']['id']                 = $buddys_id;

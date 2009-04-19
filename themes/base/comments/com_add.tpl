@@ -13,7 +13,7 @@
 	<tr>
 		<td class="leftc" style="width: 115px;">{icon:kopete} {lang:comment} *<br />
 			<br />
-			{comments:smilies}
+			{comments:smileys}
 		</td>
 		<td class="leftb">
 			{comments:abcode}
