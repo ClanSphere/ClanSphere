@@ -345,8 +345,10 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   
     #cs_abcode_mode(1);
 
-    if(!empty($html)) 
+    if(!empty($html)) {
+      $replace = strpos($replace, '[html]') === false ? '[html]' . $replace . '[/html]' : $replace;
       $replace = preg_replace_callback("=\[html\](.*?)\[/html\]=si","cs_abcode_html",$replace);
+    }
 
     if (!empty($phpeval))
       $replace = preg_replace_callback("=\[phpcode\](.*?)\[/phpcode\]=si",'cs_abcode_eval',$replace);
