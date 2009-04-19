@@ -1,26 +1,31 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+    <td class="headb" colspan="{head:colspan}">{lang:mod_name} - {lang:manage}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:editpaste} {lang:create} {if:access} / <a href="{url:abcode_import}">{lang:import}</a>{stop:access}</td>
+    <td class="leftb" style="width: 25%">{icon:editpaste} {lang:create}</td>
+    {if:access}<td class="leftb" style="width: 25%">{icon:download} <a href="{url:abcode_import}">{lang:import}</a></td>{stop:access}
     <td class="leftb">{icon:contents} {lang:total}: {lang:count}</td>
     <td class="rightb">{pages:list}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3">{lang:function}
+    <td class="leftb" colspan="{head:colspan}">
       <form method="post" id="abcode_manage" action="{action:form}">
-        <select name="type" >
+      <fieldset style="border: 0; padding: 0">
+        {lang:function}
+        <select name="type">
           <option value="0">----</option>
           <option value="img">{lang:img}</option>
           <option value="str">{lang:str}</option>
         </select>
         <input type="submit" name="submit" value="{lang:show}" />
+      </fieldset>
       </form></td>
   </tr>
 </table>
 <br />
 {lang:getmsg}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:function} {lang:function}</td>

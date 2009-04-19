@@ -64,6 +64,6 @@ for($run=0; $run<$abcode_loop; $run++) {
 }
 
 $data['if']['access'] = ($account['access_abcode'] == 5) ? true : false;
+$data['head']['colspan'] = ($account['access_abcode'] == 5) ? 4 : 3;
 
 echo cs_subtemplate(__FILE__,$data,'abcode','manage');
-?>
