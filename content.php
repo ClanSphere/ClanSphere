@@ -10,8 +10,7 @@ require_once 'system/core/functions.php';
 
 cs_init($cs_main);
 
-header("Content-Type: text/html; charset=ISO-8859-1");
-header("Content-Transfer-Encoding: 8bit");
+header("Content-Type: text/html; charset=UTF-8");
 
 global $cs_logs, $com_lang, $cs_main, $account;
 $wp = $cs_main['php_self']['dirname'];

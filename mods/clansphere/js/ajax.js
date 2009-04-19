@@ -7,7 +7,7 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
   response = response.replace(/href=\"#([a-zA-Z0-9-_]*?)\"/g,"href=\"javascript:cs_scrollto_by_name('$1')\"");
   document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z0-9\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
     response.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
-		scripts = response.match(/<script(.*)src="(.+?)"(.*)?><\/script>/g); // Soll aus der Antwort die JavaScript-URLs rauslesen und dann an javascript_include übergeben.
+		scripts = response.match(/<script(.*)src="(.+?)"(.*)?><\/script>/g); // Soll aus der Antwort die JavaScript-URLs rauslesen und dann an javascript_include uebergeben.
 		if(scripts) {
 			for (var i = 0; i < scripts.length; ++i)
 				include_javascript(scripts[i].match(/src="(.+?)"/)[1]);
@@ -70,7 +70,7 @@ function cs_ajax_request (url, callback, method, params, request) {
   };
   
   if(method == 'POST') {
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
     request.setRequestHeader("Content-length", params.length);
     request.send(params);
   } else {
@@ -160,7 +160,7 @@ function form_to_string(form) {
   for(i=0;i<fields.length;i++) {
     switch(fields[i].type) {
       case 'text': case 'password': case 'hidden': case 'textarea':
-    	  string += encodeURI(fields[i].name) + "=" + escape(fields[i].value) + "&";
+    	  string += encodeURI(fields[i].name) + "=" + fields[i].value + "&";
         break;
       case 'submit':
         if (!firstsubmit) firstsubmit = fields[i].name; break;
