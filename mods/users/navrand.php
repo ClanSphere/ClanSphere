@@ -6,7 +6,7 @@ $cs_lang = cs_translate('users');
 $data = array();
 
 $select = 'users_id, users_nick, users_name, users_surname, users_picture, users_country, users_register, users_active, users_hidden';
-$data['users'] = cs_sql_select(__FILE__,'users',$select,"users_active = '1'",'RAND()',0,1);
+$data['users'] = cs_sql_select(__FILE__,'users',$select,'users_active = "1" AND users_delete = "0"','RAND()',0,1);
 
 $data['users']['picture'] = empty($data['users']['users_picture']) ? $cs_lang['nopic'] :
   cs_html_img('uploads/users/' . $data['users']['users_picture']);
