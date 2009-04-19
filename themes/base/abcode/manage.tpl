@@ -15,8 +15,8 @@
         {lang:function}
         <select name="type">
           <option value="0">----</option>
-          <option value="img">{lang:img}</option>
-          <option value="str">{lang:str}</option>
+          <option value="img" {sel:img}>{lang:img}</option>
+          <option value="str" {sel:str}>{lang:str}</option>
         </select>
         <input type="submit" name="submit" value="{lang:show}" />
       </fieldset>
