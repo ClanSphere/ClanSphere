@@ -56,7 +56,6 @@ if(!empty($sql_content)) {
     $sql_update = preg_replace("=int\((.*?)\)=si",'integer',$sql_update);
   }
 
-  global $com_lang;
   $sql_update = str_replace('\;','{serial}',$sql_update);
   $sql_array = explode(';',$sql_update);
   cs_abcode_load();
@@ -73,7 +72,7 @@ if(!empty($sql_content)) {
         $info = $cs_db['last_error'];
         $error++;
       }
-      $para[2] = nl2br(htmlentities($sql_query, ENT_QUOTES, $com_lang['charset']));
+      $para[2] = nl2br(htmlentities($sql_query, ENT_QUOTES, $cs_main['charset']));
       $actions .= cs_abcode_color($para);
       $actions .= ' # ' . $info;
       $actions .= cs_html_br(1);
@@ -125,5 +124,3 @@ else {
 }
 
 echo cs_subtemplate(__FILE__,$data,'database','import');
-
-?>

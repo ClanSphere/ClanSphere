@@ -25,7 +25,11 @@ UPDATE ClanSphere 2008.X to ClanSphere 2009.0
 8. Entfernen Sie die Dateien publish.php und counter.php aus dem Verzeichnis system/runstartup
    Entfernen Sie die Dateien lang.php und content.php aus dem Verzeichnis system/core
 
-9. Vergewissern Sie sich, dass alle Einstellungen im CMS korrekt sind und sehen sie nach Fehler-Logs
+9. Wenn Sie die comlang-Datei in den Sprachen nicht bearbeitet haben oder der charset in diesen von UTF-8 abweicht,
+   dann fügen Sie die folgende Zeile bitte ihrer setup.php Datei hinzu und passen wenn nötig den charset darin an:
+   $cs_main['charset'] = 'ISO-8859-15';
+   
+10.Vergewissern Sie sich, dass alle Einstellungen im CMS korrekt sind und sehen sie nach Fehler-Logs
    Hinweis: Im Anschluss können Sie den Wartungsmodus wieder deaktivieren und sind mit dem Update fertig
    Achtung: Sollten Module oder Addons ohne Theme-Support genutzt werden ändern Sie zur weiteren Nutzung in der
             system/core/functions.php den require_once von xhtml_10.php bitte auf xhtml_10_old.php

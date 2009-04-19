@@ -3,7 +3,7 @@
 // $Id$
 
 $com_lang['name']     = 'German';
-$com_lang['charset']  = 'ISO-8859-15';
+$com_lang['short']    = 'de';
 $com_lang['dateset']  = 'd.m.Y';
 $com_lang['timeset']  = 'H:i';
 $com_lang['dtcon']    = 'um';

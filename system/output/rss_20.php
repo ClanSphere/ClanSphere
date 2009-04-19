@@ -5,8 +5,8 @@
 function cs_rss_mode($func) {
 
   if(!empty($func)) {
-    global $com_lang;
-    $var = "<?xml version=\"1.0\" encoding=\"" . $com_lang['charset'] . "\" ?>\n";
+    global $cs_main;
+    $var = "<?xml version=\"1.0\" encoding=\"" . $cs_main['charset'] . "\" ?>\n";
     $var .= "<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n";
     return $var;
   }
@@ -51,5 +51,3 @@ function cs_rss_item($title,$link,$desc,$date = 0,$author = 0,$category = 0) {
   $var .= "<description>" . $desc . "</description>\n";
   return $var . "</item>\n";
 }
-
-?>

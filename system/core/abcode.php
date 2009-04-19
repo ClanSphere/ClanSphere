@@ -69,14 +69,14 @@ function cs_abcode_mode($set = 0) {
 
 function cs_abcode_php($matches) {
 
-  global $com_lang;
+  global $cs_main;
   static $lop = 1;
   static $php;
 
   $content = array();
   $mode = cs_abcode_mode();
   if(empty($mode)) {
-    $php_code = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
+    $php_code = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
     $php_code = str_replace(array("\r\n","\n"),"\r",$php_code);
     $lines = substr_count($php_code,"\r") + 2;
     
@@ -240,19 +240,19 @@ $htmlcode = array();
 
 function cs_abcode_html($matches) {
 
-  global $com_lang, $htmlcode;
+  global $cs_main, $htmlcode;
 
   $nr = count($htmlcode);
-  $htmlcode[] = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
+  $htmlcode[] = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
   return '{html' . $nr . '}';
 }
 
 function cs_abcode_eval($matches) {
 
-  global $com_lang;
+  global $cs_main;
 
   $matches[1] = str_replace('<br />',"\r\n",$matches[1]);
-  $matches[1] = html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
+  $matches[1] = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
   $matches[1] = str_replace(array('<?php','<?','?>'),'',$matches[1]);
 
   ob_start();
@@ -277,9 +277,9 @@ function cs_abcode_threadid($matches) {
 
 function cs_abcode_decode($matches) {
 
-  global $com_lang;
+  global $cs_main;
   
-  return html_entity_decode($matches[1], ENT_QUOTES, $com_lang['charset']);
+  return html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
 }
 $replaces = array();
 function cs_abcode_load() {
@@ -305,7 +305,7 @@ function cs_abcode_output($id, $matches = 0, $limit = 0) {
 
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
 
-  global $com_lang;
+  global $cs_main;
 
   $op_abcode = cs_sql_option(__FILE__,'abcode');
   cs_abcode_load();
@@ -337,7 +337,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     }
   }
 
-  $replace = htmlentities($replace, ENT_QUOTES, $com_lang['charset']);
+  $replace = htmlentities($replace, ENT_QUOTES, $cs_main['charset']);
   $replace = preg_replace('=&amp;#(\d+);=si', '&#\\1;', $replace);
   $replace = preg_replace_callback('={(.*?)}=si','cs_abcode_decode',$replace);
   
@@ -364,9 +364,9 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[img width\=([\d]*?) height\=([\d]*?)\](.*?)\[/img\]=si", "cs_abcode_img",$replace);
     $replace = preg_replace_callback("=\[mail\](.*?)\[/mail\]=si","cs_abcode_mail",$replace);
     $replace = preg_replace_callback('=([^\s]{3,})@([^\s]*?)\.([^\s]{2,7})(?![^<]+>|[^&]*;)=si','cs_abcode_mail',$replace);
-    $replace = preg_replace_callback("=\[color\=([\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
+    $replace = preg_replace_callback("=\[color\=(#*[\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
     $replace = preg_replace_callback("=\[size\=([\d]*?)\](.*?)\[/size\]=si","cs_abcode_size",$replace);
-    $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si", "cs_abcode_align",$replace);
+    $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si","cs_abcode_align",$replace);
     $replace = preg_replace_callback("=\[list\=(.*?)\](.*?)\[/list\]=si","cs_abcode_list",$replace);
     $replace = preg_replace_callback("=\[list\](.*?)\[/list\]=si","cs_abcode_list",$replace);
     $replace = preg_replace_callback("=\[url\=(.*?)\](.*?)\[/url\]=si","cs_abcode_url",$replace);
@@ -456,5 +456,3 @@ function cs_abcode_resize ($matches) {
   
   return $var;
 }
-
-?>

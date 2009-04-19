@@ -219,7 +219,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
 
 function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) {
 
-  global $com_lang;
+  global $cs_main;
 
   $key = empty($key) ? $name : $key;
   $var = cs_html_select(1,$name);
@@ -228,7 +228,7 @@ function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) 
   }
   foreach($array AS $data) {
     $sel = $select == $data[$key] ? 1 : 0;
-    $content = htmlentities($data[$list], ENT_QUOTES, $com_lang['charset']);
+    $content = htmlentities($data[$list], ENT_QUOTES, $cs_main['charset']);
     $var .= cs_html_option($content,$data[$key],$sel);
   }
   return $var . cs_html_select(0);
@@ -324,19 +324,19 @@ function cs_link($name,$mod,$action = 'list',$more = 0,$class = 0, $title = 0) {
 
 function cs_mail($email,$title,$message,$from = 0,$type = 0) {
 
-  global $cs_main, $com_lang;
+  global $cs_main;
   $subject = $cs_main['def_org'] . ' - ' . $title;
   $from = empty($from) ? $cs_main['def_mail'] : $from;
   $type = empty($type) ? 'text/plain' : $type;
   $headers = "From: " . $from . "\r\n";
-  $headers .= "Content-type: " . $type . "; charset=" . $com_lang['charset'];
+  $headers .= "Content-type: " . $type . "; charset=" . $cs_main['charset'];
   $headers .= "Reply-To: " . $from;
   $headers .= "MIME-Version: 1.0";
   $headers .= "X-Mailer: PHP/" . phpversion();
 
   if($type == 'text/plain') {
-    $subject = html_entity_decode($subject, ENT_NOQUOTES, $com_lang['charset']);
-    $message = html_entity_decode($message, ENT_NOQUOTES, $com_lang['charset']);
+    $subject = html_entity_decode($subject, ENT_NOQUOTES, $cs_main['charset']);
+    $message = html_entity_decode($message, ENT_NOQUOTES, $cs_main['charset']);
   }
 
   $result = mail($email,$subject,$message,$headers) ? TRUE : FALSE;

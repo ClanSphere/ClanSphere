@@ -9,6 +9,8 @@ if (strpos($_SERVER['PHP_SELF'], 'content.php') === false) {
   cs_init($cs_main);
 }
 
+global $cs_main;
+
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
 if (isset($_GET['debug'])) {
@@ -26,7 +28,7 @@ if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
   $cs_logs['errors'] = str_replace('\'','\\\'',nl2br($cs_logs['errors']));
   foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
       $logsql .= cs_html_big(1) . str_replace('\\', '\\\\', $sql_file) . cs_html_big(0) . cs_html_br(1);
-    $logsql .= nl2br(htmlentities($sql_queries, ENT_QUOTES, $com_lang['charset']));
+    $logsql .= nl2br(htmlentities($sql_queries, ENT_QUOTES, $cs_main['charset']));
   }
 } else {
   $cs_logs['php_errors'] = '';
@@ -51,5 +53,3 @@ if (!empty($string)) {
   }
   echo $temp;
 }
-
-?>

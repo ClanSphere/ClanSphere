@@ -8,6 +8,7 @@ ___________________________________________________________
 -> Added possibilities to close or pinup threads during writing, close also for create commentes (fay-pain)
 -> Fixed many getimagesize php notice issues (hajo)
 -> Installation detects and tests database extensions automated now (hajo)
+-> Moved charset info from languages to cs_init() and set it to UTF-8 by default (hajo)
 -> Reworked clansphere/software and database/roots page to be more helpful (hajo)
 
 -- Fixed a huge number of bugs that were reported at "Trac" --

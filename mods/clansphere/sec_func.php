@@ -4,7 +4,7 @@
 
 function cs_cspnews($all = 0) {
 
-  global $cs_lang, $cs_main, $com_lang;
+  global $cs_lang, $cs_main;
 
   $cs_lang = cs_translate('clansphere');
 
@@ -43,7 +43,7 @@ function cs_cspnews($all = 0) {
         if(empty($all)) {
           if($content[0] > $cs_main['sec_last']) {
             $url = 'http://www.clansphere.net/index/news/view/id/' . $content[0];
-            $data['info']['text'] = htmlentities($content[1], ENT_QUOTES, $com_lang['charset']);
+            $data['info']['text'] = htmlentities($content[1], ENT_QUOTES, $cs_main['charset']);
             $data['info']['view'] = cs_html_link($url,$cs_lang['view']);
             $data['info']['read'] = cs_link($cs_lang['read'],'clansphere','sec_news','sec_news=' . $content[0]);
             $data['info']['showall'] = cs_link($cs_lang['showall'],'clansphere','sec_news');
@@ -68,5 +68,3 @@ function cs_cspnews($all = 0) {
     }
   }
 }
-
-?>

@@ -98,12 +98,9 @@ else {
     die($sql_content);
   }
   else {
-    global $com_lang;
-  $data['if']['output_text'] = TRUE;
-  $data['output']['text'] = nl2br(htmlentities($sql_content, ENT_QUOTES, $com_lang['charset']));
+    $data['if']['output_text'] = TRUE;
+    $data['output']['text'] = nl2br(htmlentities($sql_content, ENT_QUOTES, $cs_main['charset']));
   }
 }
 
 echo cs_subtemplate(__FILE__,$data,'database','export');
-
-?>

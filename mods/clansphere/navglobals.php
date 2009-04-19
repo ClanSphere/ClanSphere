@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-global $com_lang, $cs_logs;
+global $com_lang, $cs_logs, $cs_main;
 
 $files = cs_files();
 
@@ -38,10 +38,9 @@ foreach($arrays AS $name => $content) {
     else {
       $content = is_int($value) ? $value : "'" . $value . "'";
     }
-    $matches[2] .= '[\'' . $key . '\'] = ' . htmlentities($content, ENT_QUOTES, $com_lang['charset']) . cs_html_br(1);
+    $matches[2] .= '[\'' . $key . '\'] = ' . htmlentities($content, ENT_QUOTES, $cs_main['charset']) . cs_html_br(1);
   }
   
   echo cs_abcode_clip($matches);
   echo cs_html_br(1);
 }
-?>

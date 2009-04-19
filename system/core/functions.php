@@ -69,6 +69,7 @@ function cs_init($predefined) {
 
   @set_error_handler("php_error");
 
+  @ini_set('short_open_tag','off');
   @ini_set('arg_separator.output','&amp;');
   @ini_set('session.use_trans_sid','0');
   @ini_set('session.use_cookies','1');
@@ -83,6 +84,7 @@ function cs_init($predefined) {
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
+  $cs_main['charset'] = 'UTF-8'; # overall encoding
 
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
@@ -273,5 +275,3 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
   cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . ' -> ' . trim($errmsg), 1);
 }
-
-?>
