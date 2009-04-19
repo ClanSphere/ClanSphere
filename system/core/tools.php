@@ -136,7 +136,7 @@ function cs_datepost($name,$mode) {
 function cs_datereal($mode,$time = 0, $reverse = 0) {
 
   $time = empty($time) ? cs_time() : $time;
-    $time = cs_timediff($time, $reverse);
+  $time = cs_timediff($time, $reverse);
   return date($mode,$time);
 }
 
@@ -226,11 +226,10 @@ function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) 
   if(empty($def_option)) {
     $var .= cs_html_option('----',0,0);
   }
-  $loop = count($array);
-  for($run=0; $run < $loop; $run++) {
-    $sel = $select == $array[$run][$key] ? 1 : 0;
-    $content =   htmlentities($array[$run][$list], ENT_QUOTES, $com_lang['charset']);
-    $var .= cs_html_option($content,$array[$run][$key],$sel);
+  foreach($array AS $data) {
+    $sel = $select == $data[$key] ? 1 : 0;
+    $content = htmlentities($data[$list], ENT_QUOTES, $com_lang['charset']);
+    $var .= cs_html_option($content,$data[$key],$sel);
   }
   return $var . cs_html_select(0);
 }
@@ -621,5 +620,3 @@ function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
   if ($mode == 1) return $text;
   return $mode == 2 ? $icon . ' ' . $text : $icon;
 }
-
-?>
