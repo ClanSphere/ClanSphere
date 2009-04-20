@@ -3,10 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('board');
+
 $options = cs_sql_option(__FILE__, 'board');
 
-include_once 'mods/board/repair.php';
-require('mods/categories/functions.php'); 
+require 'mods/categories/functions.php';
+ 
 $data = array();
 
 $cs_usertime = cs_sql_select(__FILE__, 'users', 'users_readtime', "users_id = '" . $account["users_id"] . "'");
@@ -86,8 +87,8 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 	    $board['board_text'] = cs_secure($board['board_text'], 1);
 	    
 	    if (!empty($thread['threads_id']) and !empty($check_pw)) {
-	      $board['board_topics'] = cs_board_threads($board['board_id']);
-	      $board['board_comments'] = cs_board_comments($board['board_id']);
+	      $board['board_topics'] = empty($board['board_threads']) ? 0 : $board['board_threads'];
+	      $board['board_comments'] = empty($board['board_comments']) ? 0 : $board['board_comments'];
 	      $board['last_name'] = cs_secure($thread['threads_headline']);
 	      $board['last_id'] = $thread['threads_id'];
 	      
@@ -137,5 +138,5 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 }
 
 $data['head']['message'] = cs_getmsg();
+
 echo cs_subtemplate(__FILE__, $data, 'board', 'list',1);
-?>
