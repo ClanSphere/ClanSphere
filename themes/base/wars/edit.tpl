@@ -93,7 +93,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea name="wars_report" cols="50" rows="8" id="wars_report" >{wars:wars_report}</textarea>
+			<textarea class="rte_abcode" name="wars_report" cols="50" rows="8" id="wars_report" >{wars:wars_report}</textarea>
 		</td>
 	</tr>
 	<tr>

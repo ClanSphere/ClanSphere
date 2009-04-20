@@ -76,7 +76,7 @@
 		<td class="leftb">{icon:kate} {lang:text} *</td>
 		<td class="leftc">
 			{abcode:features}
-			<textarea name="ecard_text" cols="50" rows="15" id="ecard_text">{data:ecard_text}</textarea>
+			<textarea class="rte_abcode" name="ecard_text" cols="50" rows="15" id="ecard_text">{data:ecard_text}</textarea>
 		</td>
 	</tr>
 	<tr>

@@ -16,7 +16,7 @@
 </td>
 <td class="leftb">
 {imprint:abcode_features}
-<textarea name="imprint" cols="55" rows="30" id="imprint" >{imprint:content}</textarea>
+<textarea class="rte_abcode" name="imprint" cols="55" rows="30" id="imprint" >{imprint:content}</textarea>
 </td></tr>
 <tr><td class="leftc">
 {icon:ksysguard} {lang:options}</td><td class="leftb">

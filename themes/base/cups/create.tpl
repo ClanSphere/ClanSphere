@@ -45,7 +45,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:text}</td>
-    <td class="leftb"><textarea name="cups_text" cols="40" rows="20" id="cups_text" class="form">{cups:cups_text}</textarea></td>
+    <td class="leftb"><textarea class="rte_abcode" name="cups_text" cols="40" rows="20" id="cups_text" class="form">{cups:cups_text}</textarea></td>
   </tr>
   <tr>
     <td class="leftc">{icon:1day} {lang:cup_start}</td>

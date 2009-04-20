@@ -33,7 +33,7 @@
     {lang:placeholders}:<br /><br />
     {loop:pholders}{pholders:holder} &raquo; {pholders:meaning}<br />
     {stop:pholders}</td>
-  <td class="leftb"><textarea name="news_text" class="form" cols="60" rows="20" />{news:text}</textarea></td>
+  <td class="leftb"><textarea class="rte_abcode" name="news_text" class="form" cols="60" rows="20" />{news:text}</textarea></td>
  </tr>
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>

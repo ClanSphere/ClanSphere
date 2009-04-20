@@ -55,7 +55,7 @@
      </td>
     <td class="leftb">
       {msg:abcode}
-      <textarea name="messages_text" cols="50" rows="15" id="messages_text" class="form">{msg:text}</textarea></td>
+      <textarea class="rte_abcode" name="messages_text" cols="50" rows="15" id="messages_text" class="form">{msg:text}</textarea></td>
   </tr>
   <tr>
     <td class="leftc">{icon:configure} {lang:more}</td>

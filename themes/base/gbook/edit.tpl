@@ -20,7 +20,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea name="gbook_text" cols="50" rows="15" id="gbook_text">{gbook:gbook_text}</textarea>
+			<textarea class="rte_abcode" name="gbook_text" cols="50" rows="15" id="gbook_text">{gbook:gbook_text}</textarea>
 		</td>
 	</tr>
 	<tr>

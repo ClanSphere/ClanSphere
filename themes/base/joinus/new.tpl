@@ -129,7 +129,7 @@
 	<tr>
 	  <td class="leftc">{icon:documentinfo} {lang:info}<br /><br />{abcode:smileys}</td>
 	  <td class="leftb">{abcode:features}<br />
-	  	<textarea name="joinus_more" cols="50" rows="12" id="joinus_more" >{join:joinus_more}</textarea>
+	  	<textarea class="rte_abcode" name="joinus_more" cols="50" rows="12" id="joinus_more" >{join:joinus_more}</textarea>
 	  </td>
 	</tr>
 	{if:captcha}

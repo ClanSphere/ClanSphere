@@ -64,7 +64,7 @@
 			{lang:seperate_by_enter}
 		</td>
 		<td class="leftb">
-			<textarea name="replays_mirrors" cols="50" rows="4" id="replays_mirrors">{replays:replays_mirrors}</textarea>
+			<textarea class="rte_abcode" name="replays_mirrors" cols="50" rows="4" id="replays_mirrors">{replays:replays_mirrors}</textarea>
 		</td>
 	</tr>
 	<tr>
@@ -74,7 +74,7 @@
 		</td>
 		<td class="leftb">
 			{replays:abcode_features}
-			<textarea name="replays_info" cols="50" rows="8" id="replays_info">{replays:replays_info}</textarea>
+			<textarea class="rte_abcode" name="replays_info" cols="50" rows="8" id="replays_info">{replays:replays_info}</textarea>
 		</td>
 	</tr>
 	<tr>

@@ -29,7 +29,7 @@
 		</td>
 		<td class="leftc">
 			{abcode:features}
-			<textarea name="buddys_notice" cols="50" rows="15" id="buddys_notice" >{create:buddys_notice}</textarea>
+			<textarea class="rte_abcode" name="buddys_notice" cols="50" rows="15" id="buddys_notice" >{create:buddys_notice}</textarea>
 		</td>
 	</tr>
 	<tr>

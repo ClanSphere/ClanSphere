@@ -20,7 +20,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:description}</td>
-    <td class="leftb">{form:abcode}<br /><textarea name="medals_text" id="medals_text" class="form" rows="15">{medals:medals_text}</textarea></td>
+    <td class="leftb">{form:abcode}<br /><textarea class="rte_abcode" name="medals_text" id="medals_text" class="form" rows="15">{medals:medals_text}</textarea></td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>

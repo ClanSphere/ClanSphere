@@ -37,7 +37,7 @@
 		</td>
 		<td class="leftb">
 			{com:abcode}
-			<textarea name="comments_text" cols="50" rows="20" id="comments_text">{com:text}</textarea>
+			<textarea class="rte_abcode" name="comments_text" cols="50" rows="20" id="comments_text">{com:text}</textarea>
 		</td>
 	</tr>
 	<tr>
