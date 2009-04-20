@@ -39,10 +39,18 @@
     </tr>
     {if:rte_html}
     <tr>
-      <td class="leftc" colspan="3"><div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>{icon:kate} {lang:readmore}<br />{rte:html_readmore}</div></td>
+      <td class="leftc" colspan="3">{icon:kate} {lang:readmore}</td>
     </tr>
     <tr>
-      <td class="leftc" colspan="3">{icon:kate} {lang:text} *<br />{rte:html}</td>
+      <td class="leftc" colspan="3" style="padding: 0">
+        <div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>{rte:html_readmore}</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="leftc" colspan="3">{icon:kate} {lang:text} *</td>
+    </tr>
+    <tr>
+      <td class="leftc" colspan="3" style="padding: 0">{rte:html}</td>
     </tr>
 	{stop:rte_html}
 	{if:abcode}
