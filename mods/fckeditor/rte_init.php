@@ -24,7 +24,7 @@ else {
     $data = array('fck');
     $data['fck'] = cs_sql_option(__FILE__,'fckeditor');
     $data['fck']['name'] = $name;
-    $data['fck']['value'] = str_replace('"','\"',$value);
+    $data['fck']['value'] = str_replace(array('"',"\n","\r"),array('\"','',''),$value);
     $data['fck']['skin'] = empty($data['fck']['skin']) ? 'default' : $data['fck']['skin'];
     $data['fck']['height'] = empty($data['fck']['height']) ? '300' : $data['fck']['height'];
     $data['fck']['path'] = 'http://' . $_SERVER['HTTP_HOST'] . substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'));
