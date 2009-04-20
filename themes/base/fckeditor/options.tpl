@@ -7,7 +7,7 @@
  </tr>
 </table>
 <br />
-<form method="post" action="{url:rte_html_options}">
+<form method="post" action="{url:fckeditor_options}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:kllckety} {lang:skin}</td>
