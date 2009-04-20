@@ -226,6 +226,7 @@ function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) 
   if(empty($def_option)) {
     $var .= cs_html_option('----',0,0);
   }
+  $array = is_array($array) ? $array : array();
   foreach($array AS $data) {
     $sel = $select == $data[$key] ? 1 : 0;
     $content = htmlentities($data[$list], ENT_QUOTES, $cs_main['charset']);
