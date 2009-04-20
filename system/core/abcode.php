@@ -10,10 +10,10 @@ function cs_abcode_button($name, $title, $tag1, $tag2, $content) {
 
 function cs_abcode_features($name, $html = 0) {
 
-  $cs_lang = cs_translate('system/abcodes');
-
   global $cs_main;
   if(!empty($cs_main['rte_more'])) return '';
+
+  $cs_lang = cs_translate('system/abcodes');
 
   $data = array();
   $data['var']['imgpath'] = $cs_main['img_path'];
@@ -174,6 +174,10 @@ function cs_abcode_mail($matches) {
   if ($matches[0]{0} != '[')
     $matches[1] = $matches[0];
   return cs_html_mail($matches[1]);
+}
+
+function cs_abcode_bgcolor($matches) {
+  return cs_abcode_output(13, $matches);
 }
 
 function cs_abcode_color($matches) {
@@ -350,7 +354,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     #cs_abcode_mode(1);
 
     if(!empty($html)) {
-      $replace = strpos($replace, '[html]') === false ? '[html]' . $replace . '[/html]' : $replace;
+      $replace = strpos($replace, '[html]') === false ? html_entity_decode($replace, ENT_QUOTES, $cs_main['charset']) : $replace;
       $replace = preg_replace_callback("=\[html\](.*?)\[/html\]=si","cs_abcode_html",$replace);
     }
 
@@ -369,6 +373,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[mail\](.*?)\[/mail\]=si","cs_abcode_mail",$replace);
     $replace = preg_replace_callback('=([^\s]{3,})@([^\s]*?)\.([^\s]{2,7})(?![^<]+>|[^&]*;)=si','cs_abcode_mail',$replace);
     $replace = preg_replace_callback("=\[color\=(#*[\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
+    $replace = preg_replace_callback("=\[bgcolor\=(#*[\w]*?)\](.*?)\[/bgcolor\]=si","cs_abcode_bgcolor",$replace);
     $replace = preg_replace_callback("=\[size\=([\d]*?)\](.*?)\[/size\]=si","cs_abcode_size",$replace);
     $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si","cs_abcode_align",$replace);
     $replace = preg_replace_callback("=\[list\=(.*?)\](.*?)\[/list\]=si","cs_abcode_list",$replace);
