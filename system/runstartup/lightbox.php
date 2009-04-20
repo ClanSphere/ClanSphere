@@ -3,7 +3,7 @@
 // $Id: news.php 1942 2009-03-08 01:24:18Z hajo $
 
 // Load scripts for lightbox if needed
-global $cs_main;
+global $cs_main, $account;
 
 if(!empty($account['access_gallery']) && $cs_main['mod'] == 'gallery') {
 
