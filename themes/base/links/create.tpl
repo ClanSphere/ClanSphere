@@ -42,16 +42,16 @@
 		</td>
 	</tr>
 	{stop:abcode}
-	{if:fck}
+	{if:rte_html}
 	<tr>
 		<td class="leftc" colspan="2">{icon:kate} {lang:info} *</td>
 	</tr>
 	<tr>
 		<td class="leftb" style="padding: 0px" colspan="2">
-			{fck:editor}
+			{rte:html}
 		</td>
 	</tr>
-	{stop:fck}
+	{stop:rte_html}
 	<tr>
 		<td class="leftc">{icon:images} {lang:icon}</td>
 		<td class="leftb">

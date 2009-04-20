@@ -14,10 +14,6 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $faq_frage = empty($_POST['faq_frage']) ? '' : $_POST['faq_frage']; 
   $faq_antwort = empty($_POST['faq_antwort']) ? '' : $_POST['faq_antwort'];
   
-  if(!empty($cs_main['fckeditor'])) {
-      $faq_antwort = '[html]' . $faq_antwort . '[/html]';
-  }
-  
   $error = '';
   
   if(empty($categories_id)) {
@@ -49,10 +45,7 @@ if(isset($_POST['preview']) AND empty($error)) {
 
   $data['if']['preview'] = true;
     $data['preview']['question'] = cs_secure($_POST['faq_frage']);
-    
-  if(!empty($cs_main['fckeditor'])) {
-      $faq_antwort = '[html]' . $_POST['faq_antwort'] . '[/html]';
-    }
+
   $data['preview']['answer'] = cs_secure($faq_antwort,1,1,1,1);
 
 }
@@ -63,15 +56,15 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['faq']['frage'] = $faq_frage;
   $data['faq']['antwort'] = $faq_antwort;
 
-  if(empty($cs_main['fckeditor'])) {
+  if(empty($cs_main['rte_html'])) {
     $data['abcode']['smileys'] = cs_abcode_smileys('faq_antwort');
     $data['abcode']['features'] = cs_abcode_features('faq_antwort',1);
-    $data['if']['fckeditor'] = FALSE;
-    $data['if']['nofckeditor'] = TRUE;
+    $data['if']['rte_html'] = FALSE;
+    $data['if']['no_rte_html'] = TRUE;
   } else {
-    $data['if']['fckeditor'] = TRUE;
-    $data['if']['nofckeditor'] = FALSE;
-    $data['faq']['content'] = cs_fckeditor('faq_antwort',$faq_antwort);
+    $data['if']['rte_html'] = TRUE;
+    $data['if']['no_rte_html'] = FALSE;
+    $data['faq']['content'] = cs_rte_html('faq_antwort',$faq_antwort);
   }
   
   echo cs_subtemplate(__FILE__,$data,'faq','create');

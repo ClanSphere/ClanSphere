@@ -7,7 +7,6 @@ $cs_lang = cs_translate('fckeditor');
 if(isset($_POST['submit'])) {
 
   $save = array();
-  $save['mode'] = (int) $_POST['mode'];
   $save['skin'] = $_POST['skin'];
   $save['height'] = $_POST['height'];
   
@@ -16,15 +15,11 @@ if(isset($_POST['submit'])) {
   cs_optionsave('fckeditor', $save);
   
   cs_redirect($cs_lang['success'], 'options', 'roots');
-
 }
 
 $data = array();
 
 $data['op'] = cs_sql_option(__FILE__,'fckeditor');
-
-$data['op']['mode_off'] = empty($data['op']['mode']) ? ' checked="checked"' : '';
-$data['op']['mode_on'] = empty($data['op']['mode']) ? '' : ' checked="checked"';
 
 $skin[0]['skin'] = 'default';
 $skin[0]['path'] = 'default';
@@ -36,5 +31,3 @@ $skin[2]['path'] = 'silver';
 $data['op']['skin'] = cs_dropdown('skin', 'path', $skin, $data['op']['skin']);
 
 echo cs_subtemplate(__FILE__,$data,'fckeditor','options');
-
-?>

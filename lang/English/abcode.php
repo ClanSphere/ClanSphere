@@ -10,6 +10,9 @@ $cs_lang['body_edit']  = 'Adapt pattern-replaces';
 $cs_lang['body_options']  = 'Management of the options of the module.';
 $cs_lang['new_abcode'] = 'New Abcode';
 
+$cs_lang['rte_html'] = 'WYSIWYG at HTML: ';
+$cs_lang['rte_more'] = 'WYSIWYG at abcode: ';
+
 $cs_lang['max_width'] = 'Max image width: ';
 $cs_lang['max_height'] = 'Max image height: ';
 $cs_lang['max_size'] = 'Max image size: ';
@@ -51,4 +54,4 @@ $cs_lang['error_pattern'] = '- No or duplicate pattern for picture %s.';
 $cs_lang['error_pattern_sql'] = '- Pattern for picture %s already exists.';
 
 $cs_lang['no_smileys'] = 'No Smileys available.';
-?>
+$cs_lang['html_info'] = 'Achtung: HTML muss in einigen Modulen als Option aktiviert werden';

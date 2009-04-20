@@ -37,14 +37,14 @@
       <td class="leftc">{icon:folder_yellow} {lang:category} *</td>
       <td class="leftb" colspan="2">{categories:dropdown}</td>
     </tr>
-  {if:fck}
+  {if:rte_html}
     <tr>
-      <td class="leftc" colspan="3"><div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>{icon:kate} {lang:readmore}<br />{fck:editor_readmore}</div></td>
+      <td class="leftc" colspan="3"><div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>{icon:kate} {lang:readmore}<br />{rte:html_readmore}</div></td>
     </tr>
     <tr>
-      <td class="leftc" colspan="3">{fck:editor}</td>
+      <td class="leftc" colspan="3">{rte:html}</td>
     </tr>
-	{stop:fck}
+	{stop:rte_html}
 	{if:abcode}
 	<tr>
       <td class="leftc">{icon:kate} {lang:readmore} <br />

@@ -31,10 +31,6 @@ if(isset($_POST['submit'])) {
   $cs_events['events_guestsmin'] = !empty($_POST['events_guestsmin']) ? $_POST['events_guestsmin'] : '';
   $cs_events['events_guestsmax'] = !empty($_POST['events_guestsmax']) ? $_POST['events_guestsmax'] : '';
   $cs_events['events_needage'] = !empty($_POST['events_needage']) ? $_POST['events_needage'] : '';
-  
-  if(!empty($cs_main['fckeditor'])) {
-    $cs_events['events_more'] = '[html]' . $_POST['events_more'] . '[/html]';
-  }
 
   $error = '';
 
@@ -66,15 +62,15 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['data']['events_guestsmax'] = !empty($cs_events['events_guestsmax']) ? $cs_events['events_guestsmax'] : '';
   $data['data']['events_needage'] = !empty($cs_events['events_needage']) ? $cs_events['events_needage'] : '';
 
-  if(empty($cs_main['fckeditor'])) {
+  if(empty($cs_main['rte_html'])) {
 		$data['if']['abcode'] = TRUE;
-		$data['if']['fck'] = FALSE;
+		$data['if']['rte_html'] = FALSE;
     $data['abcode']['smileys'] = cs_abcode_smileys('events_more');
     $data['abcode']['features'] = cs_abcode_features('events_more');
   } else {
   	$data['if']['abcode'] = FALSE;
-		$data['if']['fck'] = TRUE;
-		$data['fck']['editor'] = cs_fckeditor('events_more',$cs_events['events_more']);
+		$data['if']['rte_html'] = TRUE;
+		$data['rte']['html'] = cs_rte_html('events_more',$cs_events['events_more']);
   }
 
   $checked = 'checked="checked"';

@@ -7,18 +7,8 @@
  </tr>
 </table>
 <br />
-
-<form method="post" action="{url:fckeditor_options}">
+<form method="post" action="{url:rte_html_options}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
- <tr>
-  <td class="leftc">{icon:folder_public} {lang:mode}</td>
-    <td class="leftb">
-    <input type="radio" name="mode" value="1"{op:mode_on}  />
-    {lang:on}
-    <input type="radio" name="mode" value="0"{op:mode_off}  />
-    {lang:off}
-  </td>
- </tr>
  <tr>
   <td class="leftc">{icon:kllckety} {lang:skin}</td>
   <td class="leftb">{op:skin}</td>

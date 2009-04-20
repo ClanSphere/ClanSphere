@@ -16,7 +16,7 @@ $img_max['size'] = 256000;
 $img_filetypes = array('gif','jpg','png');
 
 $data['if']['abcode'] = FALSE;
-$data['if']['fck'] = FALSE;
+$data['if']['rte_html'] = FALSE;
 
 $cs_links['links_name'] = '';
 $cs_links['categories_id'] = 0;
@@ -66,8 +66,6 @@ if(isset($_POST['submit'])) {
 		$error .= $cs_lang['no_status'] . cs_html_br(1);
 	if(empty($cs_links['links_info']))
 		$error .= $cs_lang['no_info'] . cs_html_br(1);
-	if(!empty($cs_main['fckeditor']))
-		$cs_links['links_info'] = '[html]' . $cs_links['links_info'] . '[/html]';
 
   $img_size = false;
   if(!empty($files_gl['symbol']['tmp_name']))
@@ -112,13 +110,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 	$linksstat[1]['name'] = $cs_lang['offline'];
 	$data['status']['dropdown'] = cs_dropdown('links_stats','name',$linksstat,$cs_links['links_stats']);
 
-	if(empty($cs_main['fckeditor'])) {
+	if(empty($cs_main['rte_html'])) {
 		$data['if']['abcode'] = TRUE;
 		$data['abcode']['smileys'] = cs_abcode_smileys('links_info');
 		$data['abcode']['features'] = cs_abcode_features('links_info');
 	} else {
-		$data['if']['fck'] = TRUE;
-		$data['fck']['editor'] = cs_fckeditor('links_info',$cs_links['links_info']);
+		$data['if']['rte_html'] = TRUE;
+		$data['rte']['html'] = cs_rte_html('links_info',$cs_links['links_info']);
 	}	
 	
 	$matches[1] = $cs_lang['pic_infos'];

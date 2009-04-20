@@ -28,10 +28,6 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $cs_static['static_access'] = $_POST['static_access'];
   $cs_static['static_admins'] = isset($_POST['static_admins']) ? 1 : 0;
 
-    if(!empty($cs_main['fckeditor'])) {
-        $cs_static['static_text'] = '[html]' . $_POST['static_text'] . '[/html]';
-    }
-
     $error = 0;
     $errormsg = '';
   if(empty($cs_static['static_title'])) {
@@ -106,15 +102,15 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   $cs_static_tpl['static']['id'] = '0';
   $cs_static_tpl['static']['lang_form'] = $cs_lang['create'];
 
-    if(empty($cs_main['fckeditor'])) {
-        $cs_static_tpl['if']['fckeditor'] = 0;
-        $cs_static_tpl['if']['nofckeditor'] = 1;
+    if(empty($cs_main['rte_html'])) {
+        $cs_static_tpl['if']['rte_html'] = 0;
+        $cs_static_tpl['if']['no_rte_html'] = 1;
         $cs_static_tpl['abcode']['features'] = cs_abcode_features('static_text',1);
     }
     else {
-        $cs_static_tpl['if']['fckeditor'] = 1;
-        $cs_static_tpl['if']['nofckeditor'] = 0;
-        $cs_static_tpl['static']['content'] = cs_fckeditor('static_text',$cs_static_tpl['static']['content']);
+        $cs_static_tpl['if']['rte_html'] = 1;
+        $cs_static_tpl['if']['no_rte_html'] = 0;
+        $cs_static_tpl['static']['content'] = cs_rte_html('static_text',$cs_static_tpl['static']['content']);
     }
 
   echo cs_subtemplate(__FILE__,$cs_action_head,'static','action_head');

@@ -4,6 +4,7 @@ CHANGELOG
 ClanSphere 2009.0 >> 2009-04-xx
 ___________________________________________________________
 
+-> Added abcode editor bridge to allow the usage of other wysiwyg software (hajo)
 -> Added compatible-view for old browsers to cs_manage function (hajo)
 -> Added possibilities to close or pinup threads during writing, close also for create commentes (fay-pain)
 -> Fixed many getimagesize php notice issues (hajo)

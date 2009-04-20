@@ -35,13 +35,9 @@ if ($categories['categories_access'] > $account['access_categories']) {
     $text = explode("[pagebreak]", $cs_articles['articles_text']);
     $count_text = count($text);
     $page_now = $page - 1;
-    if(!empty($cs_main['fckeditor'])) {
-        $text = str_replace('[html]','',$text);
-      $text = str_replace('[/html]','',$text);
-      $secure_text = cs_secure('[html]' . $text[$page_now] . '[/html]',1,0,1,1); 
-    } else {
-      $secure_text = cs_secure($text[$page_now],1,0,1,1); 
-    }
+
+    $secure_text = cs_secure($text[$page_now],1,0,1,1); 
+
     include_once('mods/articles/cutpages.php');
   
     $data['articles']['articles_text'] = articles_secure($secure_text);

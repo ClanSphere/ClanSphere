@@ -14,21 +14,21 @@
    </select>
    </td>
   </tr>
-{if:nofckeditor}
+{if:no_rte_html}
 <tr>
 <td class="leftc">{icon:kedit} {lang:content} *</td>
 <td class="leftb">{abcode:features} {if:access_php}<input type="button" name="phpcode" value="phpcode" onclick="javascript:abc_insert('[phpcode]','[/phpcode]','static_text','')" />{stop:access_php}
 <textarea name="static_text" cols="99" rows="35" id="static_text"  style="width: 98%;">{static:content}</textarea></td>
 </tr>
-{stop:nofckeditor}
-{if:fckeditor}
+{stop:no_rte_html}
+{if:rte_html}
 <tr>
 <td class="leftc" colspan="2">{icon:kedit} {lang:content} *</td>
 </tr>
 <tr>
 <td colspan="2" style="padding:0px">{static:content}</td>
 </tr>
-{stop:fckeditor}
+{stop:rte_html}
   <tr>
   	<td class="leftc">{icon:configure} {lang:config}</td>
     <td class="leftb">{if:access_admin}<input type="checkbox" name="static_admins" value="1" {check:admin}/> {lang:admins_only}<br />{stop:access_admin}

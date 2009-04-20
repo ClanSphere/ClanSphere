@@ -10,6 +10,9 @@ $cs_lang['body_edit']  = 'Anpassen von Muster-Ersetzungen';
 $cs_lang['body_options']  = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['new_abcode'] = 'Neuer Abcode';
 
+$cs_lang['rte_html'] = 'WYSIWYG bei HTML: ';
+$cs_lang['rte_more'] = 'WYSIWYG bei Abcode: ';
+
 $cs_lang['max_width'] = 'Maximale Bildbreite: ';
 $cs_lang['max_height'] = 'Maximale Bildh&ouml;he: ';
 $cs_lang['max_size'] = 'Maximale Bildgr&ouml;&szlig;e: ';
@@ -51,4 +54,4 @@ $cs_lang['error_pattern'] = '- Es wurde kein Muster oder ein doppeltes f&uuml;r 
 $cs_lang['error_pattern_sql'] = '- Das Muster f&uuml;r das Bild %s  existiert bereits in der Datenbank.';
 
 $cs_lang['no_smileys'] = 'Keine Smileys verf&uuml;gbar.';
-?>
+$cs_lang['html_info'] = 'Achtung: HTML muss in einigen Modulen als Option aktiviert werden';

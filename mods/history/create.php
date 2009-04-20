@@ -13,10 +13,6 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $history['history_time'] = cs_time();
   $history['users_id'] = $account['users_id'];
   
-  if(!empty($cs_main['fckeditor'])) {
-    $history['history_text'] = '[html]' . $_POST['history_text'] . '[/html]';
-  }
-  
   $error = '';
   
   if(empty($history['history_text'])) {
@@ -44,26 +40,23 @@ if(isset($_POST['preview']) AND empty($error)) {
 
   $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active',"users_id = '" . $history['users_id'] . "'");
   $data['preview']['user'] = cs_user($history['users_id'],$cs_user['users_nick'],$cs_user['users_active']);
-    
-  if(!empty($cs_main['fckeditor'])) {
-    $history['history_text'] = '[html]' . $_POST['history_text'] . '[/html]';
-  }
+
   $data['preview']['text'] = cs_secure($history['history_text'],1,1,1,1);
 }
 
 if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-  if(empty($cs_main['fckeditor'])) {
-    $data['if']['no_fck'] = 1;
+  if(empty($cs_main['rte_html'])) {
+    $data['if']['no_rte_html'] = 1;
     $data['history']['abcode_smileys'] = cs_abcode_smileys('history_text');
     $data['history']['abcode_features'] = cs_abcode_features('history_text');
     $data['history']['text'] = $history['history_text'];
-    $data['if']['fck'] = 0;
+    $data['if']['rte_html'] = 0;
   }
   else {
-    $data['if']['fck'] = 1;
-    $data['if']['no_fck'] = 0;
-    $data['history']['fck_editor'] = cs_fckeditor('history_text',$history['history_text']);
+    $data['if']['rte_html'] = 1;
+    $data['if']['no_rte_html'] = 0;
+    $data['history']['rte_html'] = cs_rte_html('history_text',$history['history_text']);
   }
   
   echo cs_subtemplate(__FILE__,$data,'history','create');

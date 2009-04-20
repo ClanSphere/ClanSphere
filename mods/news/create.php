@@ -89,14 +89,6 @@ if (isset($_POST['submit']) or isset($_POST['preview'])) {
   $data['if']['no_readmore'] = isset($_POST['news_readmore_active']) ? false : true;
     
   if(!empty($cs_news['news_publishs_at'])) $cs_news['news_public'] = 0;
-    
-  if(!empty($cs_main['fckeditor'])) {
-    $cs_news['news_text'] = '[html]' . $_POST['news_text'] . '[/html]';
-  }
-
-  if(!empty($cs_main['fckeditor'])) {
-    $cs_news['news_readmore'] = !empty($_POST['news_readmore']) ? '[html]' . $_POST['news_readmore'] . '[/html]' : '';
-  }
 
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
   $cs_news['news_mirror'] = '';
@@ -109,10 +101,6 @@ if (isset($_POST['submit']) or isset($_POST['preview'])) {
       $cs_news['news_mirror'] = $cs_news['news_mirror'] . "\n" . $_POST["news_mirror_$num"];
       $cs_news['news_mirror_name'] = $cs_news['news_mirror_name'] . "\n" . $_POST["news_mirror_name_$num"];
     }
-  }
-
-  if(!empty($cs_main['fckeditor'])) {
-    $cs_news['news_text'] = '[html]' . $_POST['news_text'] . '[/html]';
   }
 
   if(!empty($_POST['news_newtime'])) {
@@ -251,18 +239,18 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
     $tpl_run++;
   }
 
-  if(empty($cs_main['fckeditor'])) {
+  if(empty($cs_main['rte_html'])) {
     $data['abcode']['features'] = cs_abcode_features('news_text', $abcode[3]);
     $data['abcode']['smileys'] = cs_abcode_smileys('news_text');
     $data['abcode']['features_readmore'] = cs_abcode_features('news_readmore', $abcode[3]);
     $data['abcode']['smileys_readmore'] = cs_abcode_smileys('news_readmore');
-    $data['if']['fck'] = false;
+    $data['if']['rte_html'] = false;
     $data['if']['abcode'] = true;
   } else {
-    $data['if']['fck'] = true;
+    $data['if']['rte_html'] = true;
     $data['if']['abcode'] = false;
-    $data['fck']['editor'] = cs_fckeditor('news_text', $cs_news['news_text']);
-    $data['fck']['editor_readmore'] = cs_fckeditor('news_readmore', $cs_news['news_readmore']);
+    $data['rte']['html'] = cs_rte_html('news_text', $cs_news['news_text']);
+    $data['rte']['html_readmore'] = cs_rte_html('news_readmore', $cs_news['news_readmore']);
   }
 
   $data['news']['loop'] = $run_loop;

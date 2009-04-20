@@ -10,7 +10,7 @@ $mod_info['team']       = 'ClanSphere';
 $mod_info['url']        = 'www.clansphere.net';
 $mod_info['text']       = 'Version 2.6.4';
 $mod_info['icon']       = 'package_editors';
-$mod_info['show']       = array('options/roots' => 5);
+$mod_info['show']       = array('abcode/rte_html' => 5, 'options/roots' => 5);
 $mod_info['categories'] = FALSE;
 $mod_info['comments']   = FALSE;
 $mod_info['protected']  = FALSE;

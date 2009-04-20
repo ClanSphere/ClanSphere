@@ -26,9 +26,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $data['art']['users_id'] = $account['users_id'];
 
   $categories = cs_sql_select(__FILE__,'categories','categories_picture',"categories_id = '" . $data['art']['categories_id'] . "'");
-  
-  if(!empty($cs_main['fckeditor'])) { $data['art']['articles_text'] = '[html]' . $_POST['articles_text'] . '[/html]'; }
-  
+
     $errormsg = '';
 
     if(empty($data['art']['categories_id'])) { $errormsg .= $cs_lang['no_cat'] . cs_html_br(1); }
@@ -69,14 +67,14 @@ $data['categories']['dropdown'] = cs_categories_dropdown('articles',$categories_
 $data['pictures']['select'] = cs_pictures_select();
 $data['abcode']['features'] = cs_abcode_features('articles_text',1);
 $on = "onclick=\"javascript:abc_insert";
-if(empty($cs_main['fckeditor'])) {
-    $data['if']['fckeditor'] = 0;
-    $data['if']['nofckeditor'] = 1;
+if(empty($cs_main['rte_html'])) {
+    $data['if']['rte_html'] = 0;
+    $data['if']['no_rte_html'] = 1;
 }
 else {
-    $data['if']['fckeditor'] = 1;
-    $data['if']['nofckeditor'] = 0;
-    $data['articles']['content'] = cs_fckeditor('articles_text',$data['art']['articles_text']);
+    $data['if']['rte_html'] = 1;
+    $data['if']['no_rte_html'] = 0;
+    $data['articles']['content'] = cs_rte_html('articles_text',$data['art']['articles_text']);
 }
 echo cs_subtemplate(__FILE__,$data,'articles','create');
 ?>

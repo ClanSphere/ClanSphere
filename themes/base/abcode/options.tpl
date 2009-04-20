@@ -12,6 +12,14 @@
 <form method="post" id="abcode_options" action="{url:abcode_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
+      <td class="leftc">{icon:document} {lang:rte_html}</td>
+      <td class="leftb">{lang:html_info}<br />{dropdown:rte_html}</td>
+    </tr>
+    <tr>
+      <td class="leftc">{icon:kword} {lang:rte_more}</td>
+      <td class="leftb">{dropdown:rte_more}</td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:resizecol} {lang:max_width}</td>
       <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4"  /> {lang:pixel}</td>
     </tr>
@@ -47,7 +55,7 @@
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb">
         <input type="submit" name="submit" value="{lang:edit}" />
-        <input type="reset" name="reset" value="{lang:reset}" />
+        
       </td>
     </tr>
   </table>

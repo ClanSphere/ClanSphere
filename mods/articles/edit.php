@@ -23,10 +23,6 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $cs_articles['articles_time'] = $_POST['articles_time'];
 
   $categories = cs_sql_select(__FILE__,'categories','categories_picture',"categories_id = '" . $cs_articles['categories_id'] . "'");
-
-  if(!empty($cs_main['fckeditor'])) {
-        $cs_articles['articles_text'] = '[html]' . $_POST['articles_text'] . '[/html]';
-    }  
   
   if(!empty($_POST['articles_newtime'])) {
     $cs_articles['articles_time'] = cs_time();
@@ -82,13 +78,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['data']['categories_id'] = $cs_articles['categories_id'];
   $data['data']['articles_text'] = $cs_articles['articles_text'];
   
-  if(empty($cs_main['fckeditor'])) {
-    $data['if']['fckeditor'] = 0;
-    $data['if']['nofckeditor'] = 1;
+  if(empty($cs_main['rte_html'])) {
+    $data['if']['rte_html'] = 0;
+    $data['if']['no_rte_html'] = 1;
   } else {
-    $data['if']['fckeditor'] = 1;
-    $data['if']['nofckeditor'] = 0;
-    $data['articles']['content'] = cs_fckeditor('articles_text',$data['data']['articles_text']);
+    $data['if']['rte_html'] = 1;
+    $data['if']['no_rte_html'] = 0;
+    $data['articles']['content'] = cs_rte_html('articles_text',$data['data']['articles_text']);
   }
   
   $data['data']['articles_com_checked'] = empty($cs_articles['articles_com']) ? '' : 'checked="checked"';

@@ -24,7 +24,7 @@
 
 <form method="post" id="history_edit" action="{url:history_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
-	{if:no_fck}
+	{if:no_rte_html}
 	<tr>
 		<td class="leftc">{icon:kate} {lang:text} *<br />
 			<br />
@@ -34,15 +34,15 @@
 			<textarea name="history_text" cols="50" rows="30" id="history_text" class="form">{history:text}</textarea>
 		</td>
 	</tr>
-	{stop:no_fck}
-    {if:fck}
+	{stop:no_rte_html}
+    {if:rte_html}
 	<tr>
 		<td class="leftc" colspan="2">{icon:kate} {lang:text} *<br />
 			<br />
-			{history:fck_editor}
+			{history:rte_html}
 		</td>
 	</tr>
-	{stop:fck}
+	{stop:rte_html}
 	<tr>
 		<td class="leftc">{lang:more}</td>
 		<td class="leftb"><input type="checkbox" name="history_newtime" value="1" />{lang:new_date}</td>

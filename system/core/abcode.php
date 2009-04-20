@@ -13,6 +13,7 @@ function cs_abcode_features($name, $html = 0) {
   $cs_lang = cs_translate('system/abcodes');
 
   global $cs_main;
+  if(!empty($cs_main['rte_more'])) return '';
 
   $data = array();
   $data['var']['imgpath'] = $cs_main['img_path'];
@@ -24,6 +25,9 @@ function cs_abcode_features($name, $html = 0) {
 }
 
 function cs_abcode_smileys($name) {
+
+  global $cs_main;
+  if(!empty($cs_main['rte_more'])) return '';
 
   $cs_lang = cs_translate('system/abcodes');
 

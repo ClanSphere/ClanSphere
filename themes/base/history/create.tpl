@@ -24,7 +24,7 @@
 
 <form method="post" id="history_create" action="{url:history_create}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
-	{if:no_fck}
+	{if:no_rte_html}
 	<tr>
 		<td class="leftc">{icon:kate} {lang:text} *<br />
 			<br />
@@ -34,15 +34,15 @@
 			<textarea name="history_text" cols="50" rows="30" id="history_text" class="form">{history:text}</textarea>
 		</td>
 	</tr>
-	{stop:no_fck}
-    {if:fck}
+	{stop:no_rte_html}
+    {if:rte_html}
 	<tr>
 		<td class="leftc" colspan="2">{icon:kate} {lang:text} *<br />
 			<br />
-			{history:fck_editor}
+			{history:rte_html}
 		</td>
 	</tr>
-	{stop:fck}
+	{stop:rte_html}
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
