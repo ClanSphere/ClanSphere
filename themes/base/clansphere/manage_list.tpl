@@ -1,24 +1,26 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb"> {head:mod} - {head:action} </td>
+    <td class="headb" colspan="2"> {head:mod} - {head:action} </td>
   </tr>
   <tr>
     <td class="leftb"> {head:topline} </td>
+    <td class="leftb"> {lang:total}: {head:total} </td>
   </tr>
 </table>
 <br />
+{head:message}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-  {loop:content}
   <tr>
-    <td class="leftc">
-      {content:img_1} &nbsp; <a href="{content:link_1}">{content:txt_1}</a>
-    </td>
-    <td class="leftc">
-      {content:img_2} &nbsp; <a href="{content:link_2}">{content:txt_2}</a>
-    </td>
-    <td class="leftc">
-      {content:img_3} &nbsp; <a href="{content:link_3}">{content:txt_3}</a>
+    <td class="centerc" style="text-align: center">
+        {loop:content}
+        <div style="display: inline-block; margin: 0; padding: 0">
+          <div class="manage" style="height: 60px; overflow: hidden; width: 110px">
+          <a href="{content:link_1}" style="display: block; text-decoration: none">
+          {content:img_1}<br style="margin-bottom:4px" />{content:txt_1}</a>
+          </div>
+        </div>
+       {stop:content}
     </td>
   </tr>
-  {stop:content}
 </table>
