@@ -39,18 +39,18 @@ if(!isset($_GET['notice'])) {
   $buddy_data['buddys_on'] = array();
 
   for($run=0; $run < $loop_off; $run++) {  
-      $buddy_data['buddys_off'][$run]['users_id']    = $buddys_off[$run]['buddys_user'];
-      $buddy_data['buddys_off'][$run]['users_nick']     = $buddys_off[$run]['users_nick'];
-      $buddy_data['buddys_off'][$run]['users_link']     = cs_user($buddys_off[$run]['users_id'], $buddys_off[$run]['users_nick'], $buddys_off[$run]['users_active'], $buddys_off[$run]['users_delete']);
-      $buddy_data['buddys_off'][$run]['buddys_id']     = $buddys_off[$run]['buddys_id'];      
-      $buddy_data['buddys_off'][$run]['users_country']  = $buddys_off[$run]['users_country'];
+      $buddy_data['buddys_off'][$run]['users_id']     = $buddys_off[$run]['buddys_user'];
+      $buddy_data['buddys_off'][$run]['users_nick']   = $buddys_off[$run]['users_nick'];
+      $buddy_data['buddys_off'][$run]['users_link']   = cs_user($buddys_off[$run]['buddys_user'], $buddys_off[$run]['users_nick'], $buddys_off[$run]['users_active'], $buddys_off[$run]['users_delete']);
+      $buddy_data['buddys_off'][$run]['buddys_id']    = $buddys_off[$run]['buddys_id'];      
+      $buddy_data['buddys_off'][$run]['users_country']= $buddys_off[$run]['users_country'];
   }
   for($run=0; $run < $loop_on; $run++) {
-      $buddy_data['buddys_on'][$run]['users_id']    = $buddys_on[$run]['buddys_user'];
-      $buddy_data['buddys_on'][$run]['users_nick']     = $buddys_on[$run]['users_nick'];
-      $buddy_data['buddys_on'][$run]['users_link']     = cs_user($buddys_on[$run]['users_id'], $buddys_on[$run]['users_nick'], $buddys_on[$run]['users_active'], $buddys_on[$run]['users_delete']);
+      $buddy_data['buddys_on'][$run]['users_id']      = $buddys_on[$run]['buddys_user'];
+      $buddy_data['buddys_on'][$run]['users_nick']    = $buddys_on[$run]['users_nick'];
+      $buddy_data['buddys_on'][$run]['users_link']    = cs_user($buddys_on[$run]['buddys_user'], $buddys_on[$run]['users_nick'], $buddys_on[$run]['users_active'], $buddys_on[$run]['users_delete']);
       $buddy_data['buddys_on'][$run]['buddys_id']     = $buddys_on[$run]['buddys_id'];
-      $buddy_data['buddys_on'][$run]['users_country']  = $buddys_on[$run]['users_country'];
+      $buddy_data['buddys_on'][$run]['users_country'] = $buddys_on[$run]['users_country'];
   }
 }
 if(isset($_GET['notice'])) {
