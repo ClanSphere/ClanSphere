@@ -1,7 +1,10 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang = cs_translate('users');
 
-// Wieviele sollen angezeigte werden
+# Define a limit of users
 $max_users = 5;
 
 $month = cs_datereal('m', cs_time());
@@ -12,21 +15,25 @@ $cs_users = cs_sql_select(__FILE__,'users',$select,$where,"users_age DESC",0,0);
 $users_count = count($cs_users);
 
 $data = array();
+
 if(empty($users_count)) {
   echo $cs_lang['no_data'];
-} else {
+}
+else {
   for($run=0; $run < $users_count; $run++) {
     if(!empty($cs_users[$run]['users_age'])) {
-    $birth = explode('-', $cs_users[$run]['users_age']);
-    if($birth[1] >= $month) {
-    $data[$run]['users_id'] =  $cs_users[$run]['users_id'];
-    $data[$run]['users_nick'] = $cs_users[$run]['users_nick'];
-    $data[$run]['users_day'] = $birth[2];
-    $data[$run]['users_month'] = $birth[1];
-    $data[$run]['users_year'] = $birth[0];
-    }
+      $birth = explode('-', $cs_users[$run]['users_age']);
+      if($birth[1] >= $month) {
+      $data[$run]['users_id'] =  $cs_users[$run]['users_id'];
+      $data[$run]['users_nick'] = $cs_users[$run]['users_nick'];
+      $data[$run]['users_active'] =  $cs_users[$run]['users_active'];
+      $data[$run]['users_day'] = $birth[2];
+      $data[$run]['users_month'] = $birth[1];
+      $data[$run]['users_year'] = $birth[0];
+      }
     }
   }
+
   foreach($data as $sortarray) {
     $column[] = $sortarray['users_month'];
     $column2[] = $sortarray['users_day'];
@@ -45,4 +52,3 @@ if(empty($users_count)) {
   }
   }
 }
-?>
