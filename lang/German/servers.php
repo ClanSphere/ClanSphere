@@ -1,7 +1,7 @@
 <?php
 $cs_lang['mod_name']  = 'Server';
 $cs_lang['mod_text']  = 'Dienste hinzuf&uuml;gen und erstellen';
-$cs_lang['mod_list'] = 'Unsere Server auf einem Blick.';
+$cs_lang['mod_list'] = 'Unsere Server auf einen Blick.';
 $cs_lang['head_manage']  = 'Verwaltung';
 $cs_lang['head_edit']  = '&Auml;ndern';
 $cs_lang['body_edit'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
