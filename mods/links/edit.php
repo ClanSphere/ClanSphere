@@ -92,7 +92,7 @@ if(isset($_POST['submit'])) {
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1] > $img_max['height'])
       $error .= $cs_lang['too_high'] . cs_html_br(1);
-    if($files_gl['picture']['size'] > $img_max['size'])
+    if($files_gl['symbol']['size'] > $img_max['size'])
       $error .= $cs_lang['too_big'] . cs_html_br(1);
   }
 
