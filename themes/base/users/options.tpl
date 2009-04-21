@@ -42,7 +42,7 @@
  <tr>
   <td class="leftc">{icon:camera_unmount} {lang:default_picture}</td>
   <td class="leftb"><input type="checkbox" name="def_picture_on" value="1" {selected:def_picture}/> {lang:active}<br /><br />
-    {img:nopic}<br /><br />
+    <img src="{page:path}uploads/users/nopicture.jpg" alt=""><br /><br />
     {lang:other_one}: <input type="file" name="def_picture" />
    </td>
  </tr>

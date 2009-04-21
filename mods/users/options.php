@@ -31,9 +31,6 @@ if(isset($_POST['submit'])) {
   elseif (empty($save['def_picture']) && !empty($data['options']['def_picture']))
     cs_sql_update(__FILE__, 'users', array('users_picture'), array(''), 0, "users_picture = 'nopicture.jpg'");
 
-  $data['link']['continue'] = cs_url('clansphere','system');
-  $data['lang']['head'] = $cs_lang['options'];
-
   if (!empty($files['def_picture']['tmp_name'])) {
     $img_size = getimagesize($files['def_picture']['tmp_name']);
 
@@ -65,7 +62,6 @@ if(!isset($_POST['submit']) || !empty($error)) {
   $data['options']['register_on'] =  cs_html_option($cs_lang['on'],1,$sel);
 
   $data['selected']['def_picture'] = empty($data['options']['def_picture']) ? '' : 'checked="checked" ';
-  $data['img']['nopic'] = cs_html_img('uploads/users/nopic.jpg');
 
   echo cs_subtemplate(__FILE__,$data,'users','options');
 }
