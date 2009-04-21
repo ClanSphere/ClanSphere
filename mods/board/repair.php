@@ -13,7 +13,23 @@ function cs_board_comments($board_id) {
   $content = array($com_sql);
   cs_sql_update(__FILE__,'board',$cells,$content,$board_id);
 
+  cs_board_last($board_id);
+
   return $com_sql;
+}
+
+function cs_board_last($board_id) {
+
+  settype($board_id,'integer');
+  $from = 'threads thr LEFT JOIN {pre}_users usr ON thr.threads_last_user = usr.users_id';
+  $where = "thr.board_id = '" . $board_id . "'";
+  $cells = 'thr.threads_last_time AS board_last_time, thr.threads_headline AS board_last_thread, thr.threads_id' .
+           ' AS board_last_threadid, thr.threads_last_user AS board_last_userid, usr.users_nick AS board_last_user';
+  $last_sql = cs_sql_select(__FILE__,$from,$cells,$where,'thr.threads_last_time DESC');
+
+  cs_sql_update(__FILE__,'board',array_keys($last_sql),array_values($last_sql),$board_id);
+
+  return $last_sql;
 }
 
 function cs_board_threads($board_id) {
@@ -24,6 +40,8 @@ function cs_board_threads($board_id) {
   $cells = array('board_threads');
   $content = array($threads);
   cs_sql_update(__FILE__,'board',$cells,$content,$board_id);
+
+  cs_board_last($board_id);
 
   return $threads;
 }
@@ -40,5 +58,3 @@ function cs_threads_comments($threads_id) {
 
   return $comments;
 }
-
-?>

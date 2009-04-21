@@ -41,7 +41,7 @@
     <td class="leftb" style="width:{categories:iconwidth}px">{categories:blank}{board:icon}</td>
     <td class="leftb"><strong><a href="{board:listcat_url}">{board:board_name}</a></strong>
       <br />{board:board_text}</td>
-    <td class="rightb" style="width:60px">{board:board_topics}</td>
+    <td class="rightb" style="width:60px">{board:board_threads}</td>
     <td class="rightb" style="width:60px">{board:board_comments}</td>
     <td class="leftb" style="width:180px">
       <a href="{board:last_url}">{board:last_name}</a>
