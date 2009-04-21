@@ -40,7 +40,10 @@ if (empty($cs_board['board_name']) or $account['access_board'] < $cs_board['boar
   $where = "users_id = " . $account['users_id'] . " AND board_id = " . $cs_board['board_id'];
   $check_pw = cs_sql_count(__FILE__, 'boardpws', $where);
   
-  if (empty($check_pw)) {
+  if(empty($check_pw) AND empty($account['users_id'])) {
+    cs_redirect('', 'users', 'login');
+  }
+  elseif(empty($check_pw)) {
     global $cs_db;
     $sec_pw = isset($_POST['sec_pw']) ? $_POST['sec_pw'] : 0;
     
