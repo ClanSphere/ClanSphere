@@ -58,7 +58,7 @@ $cs_lang['glob_sig']  = 'Global signature';
 $cs_lang['glob_sig1']  = 'Possible placeholders: {post_nick} and {post_date}';
 
 //center.php
-$cs_lang['cat']    = 'Categorie';
+$cs_lang['cat']    = 'Category';
 $cs_lang['board']    = 'Board';
 $cs_lang['rank']    = 'Rank';
 $cs_lang['stats']    = 'Statistic';

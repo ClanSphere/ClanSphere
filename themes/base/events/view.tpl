@@ -21,7 +21,7 @@
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:category}</td>
 		<td class="leftb" colspan="2">
-			{data:categorie}
+			{data:category}
 		</td>
 	</tr>
 	<tr>

@@ -14,7 +14,7 @@
   <tr>
     <td class="headb">{sort:question} {lang:frage}</td>
     <td class="headb">{lang:user}</td>
-    <td class="headb">{sort:categorie} {lang:cat}</td>
+    <td class="headb">{sort:category} {lang:cat}</td>
     <td class="headb" colspan="2">{lang:options}</td>
   </tr>
   {loop:faq}
