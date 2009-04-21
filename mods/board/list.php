@@ -25,7 +25,7 @@ if(!empty($account['users_id'])) {
           ' AND thr.threads_ghost = 0 GROUP BY thr.board_id';
   $values = 'thr.board_id AS board_id';
   $unread = cs_sql_select(__FILE__, $tables, $values, $needed, 0, 0, 0);
-
+  $unread = is_array($unread) ? $unread : array();
   foreach($unread AS $untop => $unboard) {
     $unread_array['' . $unboard['board_id'] . ''] = 0;
   }
