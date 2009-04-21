@@ -92,10 +92,8 @@ function cs_init($predefined) {
   require_once 'system/core/cachegen.php';
   require_once 'system/core/templates.php';
 
-  if($cs_main['php_self']['filename'] != 'install' AND !file_exists('setup.php'))
-    die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
-  else
-    require_once 'setup.php';
+  if ($cs_main['php_self']['filename'] != 'install')
+    file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
 
   if(!empty($predefined['init_sql'])) {
 
