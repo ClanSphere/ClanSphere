@@ -5,6 +5,7 @@
 # Overwrite global settings by using the following array
 
 $cs_main = array( 'cellspacing'     => 1,
+                  'charset'         => 'UTF-8',
                   'def_action'      => 'list',
                   'def_lang'        => 'English',
                   'def_mod'         => 'install',
@@ -54,5 +55,3 @@ require 'lang/' . $account['users_lang'] . '/system/comlang.php';
 $cs_lang_main = cs_translate();
 
 echo cs_template($cs_micro);
-
-?>

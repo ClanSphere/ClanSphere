@@ -84,7 +84,6 @@ function cs_init($predefined) {
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
-  $cs_main['charset'] = 'UTF-8'; # overall encoding
 
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
@@ -93,12 +92,13 @@ function cs_init($predefined) {
   require_once 'system/core/cachegen.php';
   require_once 'system/core/templates.php';
 
+  if($cs_main['php_self']['filename'] != 'install' AND !file_exists('setup.php'))
+    die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
+  else
+    require_once 'setup.php';
+
   if(!empty($predefined['init_sql'])) {
 
-    if(!file_exists('setup.php'))
-      die(cs_error_internal('setup'));
-
-    require_once 'setup.php';
     require_once 'system/database/' . $cs_db['type'] . '.php';
 
     $cs_db['con'] = cs_sql_connect($cs_db);
@@ -111,6 +111,9 @@ function cs_init($predefined) {
     $cs_options = array();
 
   $cs_main = array_merge($cs_main, $cs_options, $predefined);
+
+  if(empty($cs_main['charset']))
+    die(cs_error_internal(0,'No charset information found in setup.php'));
 
   if(empty($cs_main['def_path']))
     $cs_main['def_path'] = getcwd();

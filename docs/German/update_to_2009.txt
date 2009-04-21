@@ -25,8 +25,8 @@ UPDATE ClanSphere 2008.X to ClanSphere 2009.0
 8. Entfernen Sie die Dateien publish.php und counter.php aus dem Verzeichnis system/runstartup
    Entfernen Sie die Dateien lang.php und content.php aus dem Verzeichnis system/core
 
-9. Wenn Sie die comlang-Datei in den Sprachen nicht bearbeitet haben oder der charset in diesen von UTF-8 abweicht,
-   dann fügen Sie die folgende Zeile bitte ihrer setup.php Datei hinzu und passen wenn nötig den charset darin an:
+9. Wenn Sie die comlang-Datei in den Sprachen nicht bearbeitet haben wird der charset ISO-8859-15 sein. Ab dieser
+   Version benötigen Sie die folgende Zeile am Ende ihrer setup.php Datei. Den charset bei Bedarf bitte anpassen:
    $cs_main['charset'] = 'ISO-8859-15';
    
 10.Vergewissern Sie sich, dass alle Einstellungen im CMS korrekt sind und sehen sie nach Fehler-Logs
