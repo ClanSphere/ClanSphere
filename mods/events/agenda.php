@@ -66,11 +66,19 @@ for ($i = 0; $i < $events_count; $i++) {
     $data['events'][$i]['categories_picture'] = '&nbsp;';
   } else {
     $place = 'uploads/categories/' . $data['events'][$i]['categories_picture'];
-    $size = getimagesize($cs_main['def_path'] . '/' . $place);
+    $size = file_exists($cs_main['def_path'] . '/' . $place) ? getimagesize($cs_main['def_path'] . '/' . $place) : array(0,1);
     $data['events'][$i]['categories_picture'] = cs_html_img($place,$size[1],$size[0]);
   }  
+
+  if(empty($data['events'][$i]['events_guestsmax']) OR $data['events'][$i]['events_time'] < cs_time())
+    $data['events'][$i]['indicator'] = cs_html_img('symbols/clansphere/grey.gif');
+  elseif($data['events'][$i]['eventguests'] >= $data['events'][$i]['events_guestsmax'])
+    $data['events'][$i]['indicator'] = cs_html_img('symbols/clansphere/red.gif');
+  else
+    $data['events'][$i]['indicator'] = cs_html_img('symbols/clansphere/green.gif');
 }
 
-echo cs_subtemplate(__FILE__, $data, 'events', 'agenda');
+$data['if']['access'] = $account['access_events'] > 2 ? 1 : 0;
+$data['if']['no_access'] = $account['access_events'] > 2 ? 0 : 1;
 
-?>
+echo cs_subtemplate(__FILE__, $data, 'events', 'agenda');

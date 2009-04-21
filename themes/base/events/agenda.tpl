@@ -54,9 +54,14 @@
     <a href="{url:events_view:id={events:events_id}}">{events:events_name}</a>
   </td>
   <td class="leftc">
-    {events:bar}
-    <br /><br />
-    {events:eventguests} / <strong>{events:events_guestsmax}</strong> {events:perc}
+    {if:access}
+    {events:bar}<br />
+    {lang:signed}: {events:eventguests} {events:perc}<br />
+    {stop:access}
+    {if:no_access}
+    {events:indicator}<br style="margin-bottom: 4px" />
+    {stop:no_access}
+    {lang:max}: <strong>{events:events_guestsmax}</strong>
   </td>
  </tr>{stop:events}
 </table>
