@@ -54,10 +54,13 @@ function cs_pictures_upload($file, $mod, $fid, $ajaxclean = 1) {
   if (empty($file['tmp_name'])) return true;
   
   settype($fid, 'integer');
-  $ext_allowed = array('jpg','jpeg','png');
-  $ext = strtolower(end(explode('.',$file['tmp_name'])));
+  $types_allowed = array('image/jpeg','image/png');
+  $type = cs_mimetype($file['tmp_name']); 
   
-  if (!in_array($ext, $ext_allowed)) return false;
+  if (!in_array($type, $types_allowed)) return false;
+  
+  $exts = array('image/jpeg' => 'jpg', 'image/png' => 'png');
+  $ext = $exts[$type];
   
   $where = "pictures_fid = '" . $fid . "' AND pictures_mod = '" . $mod . "'";
   $already = cs_sql_select(__FILE__, 'pictures', 'pictures_id', $where);

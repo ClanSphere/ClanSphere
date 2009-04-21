@@ -11,6 +11,7 @@ $data['head']['body'] = $cs_lang['body_create'];
 $data['if']['head'] = 1;
 $data['if']['preview'] = false;
 $data['url']['form'] = cs_url('articles','create');
+$files = cs_files();
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
@@ -44,7 +45,6 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
         cs_sql_insert(__FILE__,'articles',$articles_cells,$articles_save);
         
         $articles_id = cs_sql_insertid(__FILE__);
-        $files = cs_files();
         if (!empty($files['picture'])) cs_pictures_upload($files['picture'], 'articles', $articles_id);
         
         cs_redirect($cs_lang['create_done'],'articles');
