@@ -27,9 +27,11 @@ $filesmod = "categories_mod = 'files'";
 $categories = cs_sql_select(__FILE__,'categories','categories_name, categories_id',$filesmod,'categories_name',0,0);
 
 $data['head']['categories'] = '';
-foreach($categories AS $category) {
-  $selected = $category['categories_id'] == $categories_id ? 1 : 0;
-  $data['head']['categories'] .= cs_html_option($category['categories_name'], $category['categories_id'], $selected);
+if (!empty($categories)) {
+  foreach($categories AS $category) {
+    $selected = $category['categories_id'] == $categories_id ? 1 : 0;
+    $data['head']['categories'] .= cs_html_option($category['categories_name'], $category['categories_id'], $selected);
+  }
 }
 
 $from = 'files fls LEFT JOIN {pre}_users usr ON fls.users_id = usr.users_id';

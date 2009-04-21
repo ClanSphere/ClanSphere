@@ -1,10 +1,10 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3"><a href="{url:files}">{lang:mod_name}</a> - {categorie:name} </td>
+    <td class="headb" colspan="3"><a href="{url:files}">{lang:mod_name}</a> - {category:name} </td>
   </tr>
   <tr>
-    <td class="leftb"> {icon:contents} {lang:total}: {categorie:count}</td>
-    <td class="rightb">{categorie:paginator}</td>
+    <td class="leftb"> {icon:contents} {lang:total}: {category:count}</td>
+    <td class="rightb">{category:paginator}</td>
   </tr>
 </table>
 <br />
