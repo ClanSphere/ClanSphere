@@ -7,7 +7,7 @@ $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 
 $computers_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
-if (!empty($cs_post['id']))  $news_id = $cs_post['id'];
+if (!empty($cs_post['id']))  $computers_id = $cs_post['id'];
 
 if(isset($_POST['submit'])) {
 
