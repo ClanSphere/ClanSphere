@@ -62,7 +62,7 @@
 	<tr>
 		<td class="leftc">{icon:configure} {lang:more}</td>
 		<td class="leftb">
-			<input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray}<br />
+			<input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray_show}<br />
 		</td>
   </tr>
   <tr>
