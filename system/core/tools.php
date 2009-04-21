@@ -127,6 +127,7 @@ function cs_datepost($name,$mode) {
     $var = cs_timediff($var, 1); 
   }
   elseif($mode == 'date' AND !empty($time['year'])) {
+    if(strlen($time['month']) == 1) $time['month'] = '0' . $time['month'];
     $var = $time['year'] . '-' . $time['month'] . '-' . $time['day'];
   }
 
