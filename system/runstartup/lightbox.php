@@ -15,12 +15,14 @@ if(!empty($account['access_gallery']) && $cs_main['mod'] == 'gallery') {
       cs_scriptload('lightbox', 'javascript', 'js/mootools.js');
       cs_scriptload('lightbox', 'javascript', 'js/slimbox.js');
       cs_scriptload('lightbox', 'stylesheet', 'css/slimbox.css');
+      $cs_main['ajax_js'] .= "Lightbox.init.bind(Lightbox);";
     }
     else {
       cs_scriptload('lightbox', 'javascript', 'js/prototype.js');
       cs_scriptload('lightbox', 'javascript', 'js/scriptaculous.js?load=effects');
       cs_scriptload('lightbox', 'javascript', 'js/lightbox.js');
       cs_scriptload('lightbox', 'javascript', 'css/lightbox.css');
+      $cs_main['ajax_js'] .= "initLightbox();";
     }
   }
 }

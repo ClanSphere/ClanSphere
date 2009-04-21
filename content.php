@@ -3,7 +3,8 @@
 // $Id$
 
 # Overwrite global settings by using the following array
-$cs_main = array('init_sql' => true, 'init_tpl' => false);
+$cs_main = array('init_sql' => true, 'init_tpl' => false, 'ajax_js' => '');
+
 if (isset($_GET['debug'])) $cs_main['themebar'] = true;
 
 require_once 'system/core/functions.php';
@@ -49,7 +50,6 @@ if (empty($cs_main['public']) and $account['access_clansphere'] < 3)
 if ($cs_main['mod'] == 'users' && $cs_main['action'] == 'logout') die('<div style="display:none" id="ajax_js">window.location.href=""</div>');
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
-$cs_main['ajax_js'] = '';
 $temp = cs_filecontent($cs_main['show']);
 $temp = str_replace('action="#','action="index.php?',$temp);
 

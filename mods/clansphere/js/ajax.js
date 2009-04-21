@@ -23,7 +23,6 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
     document.title = document.getElementById('ajax_title').innerHTML;
   }
   if (onfinish) window.setTimeout(onfinish,0);
-	window.onDomReady;
 }
 
 function include_javascript(path) {
