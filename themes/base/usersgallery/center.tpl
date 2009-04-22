@@ -30,8 +30,8 @@
 		<td class="leftc {pictures:class}">{pictures:folder}</td>
 		<td class="leftc {pictures:class}">{pictures:time}</td>
 		<td class="leftc {pictures:class}" style="width:60px">
-			<a href="{url:gallery_picture_edit:id={pictures:id}}" title="{lang:edit}">{icon:edit}</a>
-			<a href="{url:gallery_remove:id={pictures:id}}" title="{lang:remove}">{icon:editdelete}</a>
+			<a href="{url:usersgallery_users_edit:id={pictures:id}}" title="{lang:edit}">{icon:edit}</a>
+			<a href="{url:usersgallery_users_remove:id={pictures:id}}" title="{lang:remove}">{icon:editdelete}</a>
 		</td>
 	</tr>
 	{stop:pictures}
