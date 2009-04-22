@@ -70,12 +70,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 	
 } else {
 
-  $create['users_timezone'] = date('Z');
+  $create['users_timezone'] = empty(date('I')) ? date('Z') : date('Z') - 3600;
   $create['users_dstime'] = 0;
   create_user(5,$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],'fam',$create['users_timezone'],$create['users_dstime']);
   
   // Options
   $def_cell = array('options_value');
+  cs_sql_update(__FILE__,'options',$def_cell,array($create['users_timezone']),0,'options_mod = \'clansphere\' AND options_name = \'def_timezone\'');
   cs_sql_update(__FILE__,'options',$def_cell,array($_POST['clanlabel']),0,'options_mod = \'clans\' AND options_name = \'label\'');
   cs_sql_update(__FILE__,'options',$def_cell,array($_POST['squadlabel']),0,'options_mod = \'squads\' AND options_name = \'label\'');
   cs_sql_update(__FILE__,'options',$def_cell,array($_POST['memberlabel']),0,'options_mod = \'members\' AND options_name = \'label\'');
