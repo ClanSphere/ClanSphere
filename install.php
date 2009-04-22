@@ -52,6 +52,4 @@ $lang = empty($lang) ? 'English' : $lang;
 $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'access_install' => 5, 'users_lang' => $lang);
 require 'lang/' . $account['users_lang'] . '/system/comlang.php';
 
-$cs_lang_main = cs_translate();
-
 echo cs_template($cs_micro);

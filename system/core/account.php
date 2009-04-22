@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-global $_COOKIE, $_POST, $cs_lang_main, $cs_main, $login;
+global $_COOKIE, $_POST, $cs_lang, $cs_main, $login;
 
 $domain = (strpos($_SERVER['HTTP_HOST'], '.') !== FALSE) ? $_SERVER['HTTP_HOST'] : '';
 $cookie = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
@@ -152,7 +152,3 @@ if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['acce
   $login['mode'] = FALSE;
   $login['error'] = 'not_public'; 
 }
-
-$cs_lang_main = cs_translate();
-
-?>

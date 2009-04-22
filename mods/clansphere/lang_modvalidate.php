@@ -38,7 +38,6 @@ $cs_lang_global = $cs_lang;
 $errors_count = 0;
 $count_line = 0;
 $data = array();
-$cs_lang_main = cs_translate();
 $cs_lang2 = cs_translate('clansphere');
 $cs_lang = array();
 $file_new = '';
@@ -109,7 +108,6 @@ if(!empty($fix)) {
   $errors_count = 0;
   $count_line = 0;
   $data = array();
-  $cs_lang_main = cs_translate();
   $cs_lang2 = cs_translate('clansphere');
   $cs_lang = array();
   $file_new = '';
