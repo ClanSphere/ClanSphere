@@ -10,7 +10,7 @@ function cs_error($file, $message, $log_only = 0) {
     $log .= $_SERVER['QUERY_STRING'] . "\n";
     $log .= $_SERVER['SERVER_SOFTWARE'] . "\n";
     $log .= $_SERVER['REMOTE_ADDR'] . "\n";
-    $log .= $_SERVER['HTTP_USER_AGENT'] . "\n";
+    $log .= isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] . "\n" : "unknown\n";
     cs_log('errors',$log);
   }
   if(empty($log_only))

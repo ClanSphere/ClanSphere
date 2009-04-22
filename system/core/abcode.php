@@ -153,9 +153,9 @@ function cs_abcode_list($matches) {
 }
 
 function cs_abcode_img($matches) {
-
   if ($matches[0]{4} == ']') {
-    return cs_html_img($matches[1]);
+  	$img = cs_abcode_resize($matches);
+    return $img;
   } else {
     $img  = cs_html_img($matches[3],$matches[2],$matches[1]);
     return cs_html_link($matches[3],$img);
