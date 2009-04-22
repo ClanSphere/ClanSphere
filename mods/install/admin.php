@@ -70,7 +70,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 	
 } else {
 
-  $create['users_timezone'] = empty(date('I')) ? date('Z') : date('Z') - 3600;
+  $dstime = date('I');
+  $create['users_timezone'] = empty($dstime) ? date('Z') : date('Z') - 3600;
   $create['users_dstime'] = 0;
   create_user(5,$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],'fam',$create['users_timezone'],$create['users_dstime']);
   
@@ -84,5 +85,3 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   cs_redirect('','install','complete','lang='.$create['users_lang']);
 }
-
-?>

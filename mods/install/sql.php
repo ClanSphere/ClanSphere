@@ -9,6 +9,7 @@ global $cs_db;
 function cs_installerror($old_query = '') {
 
   global $cs_db, $cs_lang, $account;
+  $cs_lang = cs_translate('install');
   $error = empty($cs_db['last_error']) ? 'Unknown' : $cs_db['last_error'];
   $msg   = 'Error: ' . $error . cs_html_br(2) . 'Query: ' . $old_query . cs_html_br(4);
   $msg  .= cs_link($cs_lang['remove_and_again'], 'install', 'sql', 'lang=' . $account['users_lang'] . '&amp;uninstall=1');
@@ -84,5 +85,3 @@ if(isset($_POST['module_select'])) {
 }
 
 cs_redirect('','install','admin','lang=' . $account['users_lang']);
-
-?>
