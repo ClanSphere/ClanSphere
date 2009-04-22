@@ -2,17 +2,25 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-if($_SESSION['counted'] !== 1) {
-
   global $cs_main;
 
   $time = cs_time();
   $ip = empty($login['mode']) ? cs_getip() : $_SESSION['users_ip'];
-
-  $fetch_me = cs_sql_select(__FILE__,'count','count_id, count_time',"count_ip = '" . cs_sql_escape($ip) . "'",'count_id DESC');
-
+  
+  if(!isset($_SESSION['count_id'])) {
+    $fetch_me = cs_sql_select(__FILE__,'count','count_id, count_time',"count_ip = '" . cs_sql_escape($ip) . "'",'count_id DESC');
+    $_SESSION['count_id'] = $fetch_me['count_id'];
+    $_SESSION['count_time'] = $fetch_me['count_time'];
+  } else {
+    $fetch_me = array();
+    $fetch_me['count_id'] = $_SESSION['count_id'];
+    $fetch_me['count_time'] = $_SESSION['count_time'];
+  }
+  
   $time_lock = isset($fetch_me['count_time']) ? ($fetch_me['count_time'] + 43200) : 0;
-
+  
+  $_SESSION['count_time'] = $time;
+  
   if($time < $time_lock) 
   {
     $counter_cells = array('count_time','count_location');
@@ -24,8 +32,7 @@ if($_SESSION['counted'] !== 1) {
     $counter_cells = array('count_ip','count_time','count_location');
     $counter_save = array($ip,$time,$cs_main['mod'] . '/' . $cs_main['action']);
     cs_sql_insert(__FILE__,'count',$counter_cells,$counter_save);
-  }
-
+  }  
 
   //Backup the files in counter
   $month = cs_datereal('n');
@@ -60,8 +67,5 @@ if($_SESSION['counted'] !== 1) {
     $def_cont = array($month);
     cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'last_archiv'");
   }
-
-  $_SESSION['counted'] = 1;
-}
 
 ?>
