@@ -504,27 +504,29 @@ function cs_timediff($unix = 0, $reverse = 0) {
 
 function cs_translate($mod = '') {
 
-  global $account, $cs_main, $cs_lang, $cs_lang_main;
-  $cs_lang = is_array($cs_lang) ? $cs_lang : array();
+  global $account, $cs_main;
   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
+  static $lang_main = 0;
+  static $lang_mods = array();
+  $cs_lang = array();
 
-  if(empty($mod)) {
-     include 'lang/'.$lang.'/system/main.php';
-     return $cs_lang;
+  if(empty($lang_main)) {
+    require 'lang/'.$lang.'/system/main.php';
+    $lang_main = $cs_lang;
+    $cs_lang = array();
+  }
+  
+  if(!empty($mod) AND empty($lang_mods[$mod])) {
+    $file = 'lang/' . $lang . '/' . $mod . '.php';
+    if(file_exists($file)) {
+      require $file;
+      $lang_mods[$mod] = $cs_lang;
+    }
+    else
+      cs_error($file,'cs_translate - File not found');
   }
 
-  $cs_lang_main = empty($cs_lang_main) ? array() : $cs_lang_main;
-  $cs_lang = array_merge($cs_lang, $cs_lang_main);
-  $file = 'lang/' . $lang . '/' . $mod . '.php';
-
-  if(file_exists($file)) {
-    include $file;
-    return $cs_lang;
-  }
-  else {
-    cs_error($file,'cs_translate - File not found');
-    return $cs_lang;
-  }
+  return empty($mod) ? $lang_main : array_merge($lang_main, $lang_mods[$mod]);
 }
 
 function cs_unlink($mod, $filename, $sub = '') {
