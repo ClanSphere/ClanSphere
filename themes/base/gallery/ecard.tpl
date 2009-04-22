@@ -29,16 +29,6 @@
 	</tr>
 </table>
 <br />
-
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	<tr>
-		<td class="leftb" style="width:140px">{icon:ksysguard} {lang:options}</td>
-		<td class="leftc">
-			<input type="submit" name="submit" value="{lang:send}" />
-		</td>
-	</tr>
-</table>
-<br />
 {stop:preview}
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
@@ -51,11 +41,11 @@
 	</tr>
 	<tr>
 		<td class="leftb">{lang:name} *</td>
-		<td class="leftc"><input type="text" name="sender_name" value="{data:sender_name}" maxlength="80" size="40" /></td>
+		<td class="leftc">{data:sender_name}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{lang:mail} *</td>
-		<td class="leftc"><input type="text" name="sender_mail" value="{data:sender_mail}" maxlength="80" size="40" /></td>
+		<td class="leftc">{data:sender_mail}</td>
 	</tr>
 	<tr>
 		<td class="headb" colspan="2">{lang:receiver}</td>
@@ -84,6 +74,7 @@
 		<td class="leftc">
 			<input type="hidden" name="id" value="{hidden:id}"/>
 			<input type="submit" name="preview" value="{lang:preview}"/>
+			<input type="submit" name="submit" value="{lang:send}" />
 			<input type="reset" name="reset" value="{lang:reset}"/>
 		</td>
 	</tr>

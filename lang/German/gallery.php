@@ -45,6 +45,7 @@ $cs_lang['error_receiver']  = '- Bitte &uuml;berpr&uuml;fen Sie die Empf&auml;ng
 $cs_lang['error_sender']  = '- Bitte &uuml;berpr&uuml;fen Sie Ihre Absender Daten.';
 $cs_lang['error_text']  = '- Bitte &uuml;berpr&uuml;fen Sie den Titel und/oder Text.';
 $cs_lang['error_zip']  = 'Archiv konnte nicht ge&ouml;ffnet werden.';
+$cs_lang['email_false'] = '- Die E-Mail-Adresse ist ung&uuml;ltig.';
 $cs_lang['error1']  = 'Das Bild, welches Sie anschauen m&ouml;chten, existiert nicht, oder ist f&uuml;r Sie nicht einsehbar.';
 $cs_lang['ext_error']  = '- Es wurde ein unerlaubter Dateityp benutzt.';
 $cs_lang['filesize']  = 'Dateigr&ouml;&szlig;e';

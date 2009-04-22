@@ -28,8 +28,6 @@ if(!empty($account['users_id'])) {
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-	$ecard['sender_name'] = $_POST['sender_name'];
-	$ecard['sender_mail'] = $_POST['sender_mail'];
 	$ecard['receiver_name'] = $_POST['receiver_name'];
 	$ecard['receiver_mail'] = $_POST['receiver_mail'];
 	$ecard['ecard_titel'] = $_POST['ecard_titel'];
@@ -45,6 +43,11 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 		
 	if(empty($ecard['ecard_titel']) AND empty($ecard['ecard_text']))
 		$error .= $cs_lang['error_text'] . cs_html_br(1);
+		
+  $pattern = "=^[_a-z0-9-]+(\.[_a-z0-9-]+)*@([0-9a-z](-?[0-9a-z])*\.)+[a-z]{2}([zmuvtg]|fo|me)?$=i";
+  if(!preg_match($pattern,$ecard['receiver_mail'])) {
+    $error .= $cs_lang['email_false'] . cs_html_br(1);
+  }
 
 }
 
