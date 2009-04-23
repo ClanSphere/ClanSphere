@@ -15,7 +15,6 @@ empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $boardmods_count = cs_sql_count(__FILE__,'boardmods',$where);
 
-
 $data['head']['new'] = cs_link($cs_lang['new'],'boardmods','create');
 $data['head']['count'] = $boardmods_count;
 $data['head']['pages'] = cs_pages('boardmods','manage',$boardmods_count,$start,$categories_id,$sort);
@@ -31,18 +30,15 @@ $from = 'boardmods brd INNER JOIN {pre}_users usr ON brd.users_id = usr.users_id
 $data['bm'] = cs_sql_select(__FILE__,$from,'boardmods_id, usr.users_id AS users_id, users_nick, users_active, users_delete, boardmods_modpanel, boardmods_edit, boardmods_del',$where,$order,$start,$account['users_limit']);
 $boardmods_loop = count($data['bm']);
 
-
 for($run=0; $run<$boardmods_loop; $run++) {
 
   $data['bm'][$run]['boardmods_user'] = cs_user($data['bm'][$run]['users_id'],$data['bm'][$run]['users_nick'],$data['bm'][$run]['users_active'], $data['bm'][$run]['users_delete']);
-  $data['bm'][$run]['boardmods_modpanel'] = $cs_lang[$data['bm'][$run]['boardmods_modpanel']];
-  $data['bm'][$run]['boardmods_edit'] = $cs_lang[$data['bm'][$run]['boardmods_edit']];
-  $data['bm'][$run]['boardmods_del'] = $cs_lang[$data['bm'][$run]['boardmods_del']];
+  $data['bm'][$run]['boardmods_modpanel'] = empty($data['bm'][$run]['boardmods_modpanel']) ? $cs_lang['no'] : $cs_lang['yes'];
+  $data['bm'][$run]['boardmods_edit'] = empty($data['bm'][$run]['boardmods_edit']) ? $cs_lang['no'] : $cs_lang['yes'];
+  $data['bm'][$run]['boardmods_del'] = empty($data['bm'][$run]['boardmods_del']) ? $cs_lang['no'] : $cs_lang['yes'];
   
   $data['bm'][$run]['url_edit'] = cs_url('boardmods','edit','id=' . $data['bm'][$run]['boardmods_id'],0,$cs_lang['edit']);
     $data['bm'][$run]['url_remove'] = cs_url('boardmods','remove','id=' . $data['bm'][$run]['boardmods_id'],0,$cs_lang['remove']);
 }
 
 echo cs_subtemplate(__FILE__,$data,'boardmods','manage');
-
-?>
