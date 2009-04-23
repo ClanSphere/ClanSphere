@@ -30,12 +30,12 @@ if(isset($_POST['submit'])) {
   if(!empty($files_gl['picture']['tmp_name'])) {
     $img_size = getimagesize($files_gl['picture']['tmp_name']);
       switch($img_size[2]) {
-      case 2:
+      case 1:
         $ext = 'gif'; break;
       case 3:
         $ext = 'png'; break;
     }
-    $img_size = getimagesize($files_gl['picture']['tmp_name']);
+
     if($img_size[0]>$img_max['width']) 
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1]>$img_max['height']) 
@@ -110,6 +110,3 @@ else {
   
  cs_redirect($cs_lang['changes_done'],'gallery','wat_manage');
 }
-
-
-?>
