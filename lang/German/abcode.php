@@ -55,3 +55,5 @@ $cs_lang['error_pattern_sql'] = '- Das Muster f&uuml;r das Bild %s  existiert be
 
 $cs_lang['no_smileys'] = 'Keine Smileys verf&uuml;gbar.';
 $cs_lang['html_info'] = 'Achtung: HTML muss in einigen Modulen als Option aktiviert werden';
+
+?>
