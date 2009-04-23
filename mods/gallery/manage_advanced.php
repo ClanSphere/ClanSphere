@@ -28,7 +28,6 @@ $data['if']['thumb'] = FALSE;
 
 $data['manage']['head'] = cs_subtemplate(__FILE__,$data,'gallery','manage_head');
 
-
 if(isset($_POST['submit']))
 {
 	if(isset($_POST['read']) OR isset($_POST['del'])OR isset($_POST['read_zip']))
@@ -112,6 +111,7 @@ if(isset($_POST['submit']))
 				}
 			}
 		}
+
 		$picnamesArray = array();
 		$thumbnamesArray = array();
 		$dirHandlePics = opendir("uploads/gallery/pics");
@@ -232,7 +232,6 @@ if(isset($_POST['submit']))
 				$img_new_height = 40;
 				$img_new_width = $img_new_height * $img_w_h;
 				$data['pictures'][$run]['img'] = cs_html_img('mods/gallery/image.php?picname=' . $pic);
-
 				$data['pictures'][$run]['size'] = $img_width . 'x' . $img_height;
 				$data['pictures'][$run]['filesize'] = cs_filesize($img_filesize);
 
@@ -243,7 +242,6 @@ if(isset($_POST['submit']))
 		elseif(empty($checkDiff) AND !empty($_POST['read']) OR empty($checkDiff) AND $zip_file == 1)
 		{
 			$data['if']['nopic'] = TRUE;
-
 		}
 		if(!empty($checkDiff2) AND !empty($_POST['del']))
 		{
@@ -333,4 +331,3 @@ if(!isset($_POST['submit_1'])) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'gallery','manage_advanced');
-?>
