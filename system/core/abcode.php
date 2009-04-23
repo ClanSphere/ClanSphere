@@ -13,7 +13,7 @@ function cs_abcode_features($name, $html = 0) {
   global $cs_main;
   if(!empty($cs_main['rte_more'])) return '';
 
-  $cs_lang = cs_translate('system/abcodes');
+  $cs_lang = cs_translate('system/abcodes', 1);
 
   $data = array();
   $data['var']['imgpath'] = $cs_main['img_path'];
@@ -29,7 +29,7 @@ function cs_abcode_smileys($name) {
   global $cs_main;
   if(!empty($cs_main['rte_more'])) return '';
 
-  $cs_lang = cs_translate('system/abcodes');
+  $cs_lang = cs_translate('system/abcodes', 1);
 
   $select = 'abcode_pattern, abcode_file';
   $loop_abc = cs_sql_select(__FILE__,'abcode',$select,"abcode_func = 'img'",0,0,10);

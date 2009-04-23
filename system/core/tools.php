@@ -502,7 +502,7 @@ function cs_timediff($unix = 0, $reverse = 0) {
     return $unix;
 }
 
-function cs_translate($mod = '') {
+function cs_translate($mod, $main = 0) {
 
   global $account, $cs_main;
   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
@@ -515,18 +515,20 @@ function cs_translate($mod = '') {
     $lang_main = $cs_lang;
     $cs_lang = array();
   }
-  
-  if(!empty($mod) AND empty($lang_mods[$mod])) {
+
+  if(empty($lang_mods[$mod])) {
     $file = 'lang/' . $lang . '/' . $mod . '.php';
     if(file_exists($file)) {
       require $file;
       $lang_mods[$mod] = $cs_lang;
+      if(!empty($main))
+        $lang_main = array_merge($lang_main, $cs_lang);
     }
     else
       cs_error($file,'cs_translate - File not found');
   }
 
-  return empty($mod) ? $lang_main : array_merge($lang_main, $lang_mods[$mod]);
+  return array_merge($lang_main, $lang_mods[$mod]);
 }
 
 function cs_unlink($mod, $filename, $sub = '') {
@@ -606,7 +608,7 @@ function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
 
 function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
 
-  $cs_lang = cs_translate('system/userstatus');
+  $cs_lang = cs_translate('system/userstatus', 1);
 
   $on_now = cs_time() - 300;
   $on_week = cs_time() - 604800;
