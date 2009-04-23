@@ -19,7 +19,7 @@ $min = cs_datereal('U',mktime(0, 0, 0, $month, 1, $year), 1);
 $max = cs_datereal('U',mktime(23, 59, 59, $month, $days, $year), 1);
 
 
-$like = "users_age LIKE '%-" . (int) $zero . "-%' AND users_hidden NOT LIKE '%users_age%'";
+$like = "users_age LIKE '%-" . $zero . "-%' AND users_hidden NOT LIKE '%users_age%'";
 $birthdays = cs_sql_select(__FILE__,'users','users_age',$like,0,0,0);
 
 if(is_array($birthdays)) {
