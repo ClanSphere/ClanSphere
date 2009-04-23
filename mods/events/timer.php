@@ -59,7 +59,7 @@ if(!empty($events_loop)) {
 }
 
 // user part
-$month = cs_datereal('n',$unix);
+$month = cs_datereal('m',$unix);
 $day = cs_datereal('j',$unix);
 
 $select = 'users_nick, users_age, users_place, users_id, users_active';
