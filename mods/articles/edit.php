@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('articles');
+
 require_once 'mods/categories/functions.php';
 require_once 'mods/pictures/functions.php';
 
@@ -104,9 +105,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $articles_cells = array_keys($cs_articles);
   $articles_save = array_values($cs_articles);
   cs_sql_update(__FILE__,'articles',$articles_cells,$articles_save,$articles_id);
-  
-  cs_pictures_upload($files['picture'], 'articles', $articles_id);
+
+  if(!empty($files['picture'])) cs_pictures_upload($files['picture'], 'articles', $articles_id);
 
   cs_redirect($cs_lang['changes_done'], 'articles') ;
-} 
-?>
+}

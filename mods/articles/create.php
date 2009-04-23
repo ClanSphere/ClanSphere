@@ -76,5 +76,5 @@ else {
     $data['if']['no_rte_html'] = 0;
     $data['articles']['content'] = cs_rte_html('articles_text',$data['art']['articles_text']);
 }
+
 echo cs_subtemplate(__FILE__,$data,'articles','create');
-?>
