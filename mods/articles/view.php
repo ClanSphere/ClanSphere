@@ -3,9 +3,22 @@
 // $Id$
 
 $cs_lang = cs_translate('articles');
+
 $cs_get = cs_get(array('where','id','page'));
 
 $cs_articles_id = empty($cs_get['where']) ? $cs_get['id'] : $cs_get['where'];
+
+function cs_articles_views($id, $views) {
+
+  settype($id, 'integer');
+  settype($views, 'integer');
+  $_SESSION['articles'] = isset($_SESSION['articles']) ? $_SESSION['articles'] : array();
+
+  if(empty($_SESSION['articles'][$id])) {
+    $_SESSION['articles'][$id] = true;
+    cs_sql_update(__FILE__, 'articles', array('articles_views'), array(1 + $views), $id);
+  }
+}
 
 $cells = 'articles_views, articles_headline, users_id, articles_time, articles_text, articles_fornext, articles_com, categories_id';
 $cs_articles = cs_sql_select(__FILE__,'articles',$cells,"articles_id = '" . $cs_articles_id . "'");
@@ -18,7 +31,7 @@ if ($categories['categories_access'] > $account['access_categories']) {
 
 } else {
 
-  cs_sql_update(__FILE__,'articles',array('articles_views'),array(1+$cs_articles['articles_views']),$cs_articles_id);
+  cs_articles_views($cs_articles_id, $cs_articles['articles_views']);
   
   $page = empty($cs_get['page']) ? 1 : $cs_get['page'];
   
@@ -99,5 +112,3 @@ if ($categories['categories_access'] > $account['access_categories']) {
   
   }
 }
-  
-?>
