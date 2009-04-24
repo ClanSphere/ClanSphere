@@ -23,7 +23,7 @@ if (!@fsockopen("udp://127.0.0.1", 1)) {
 	$data['if']['viewfsock'] = true;
 }
 
-$from = "servers serv INNER JOIN {pre}_games gam ON gam.games_id = serv.games_id";
+$from = "servers serv LEFT JOIN {pre}_games gam ON gam.games_id = serv.games_id";
 $select = "serv.servers_id AS servers_id, serv.servers_name AS servers_name, serv.servers_class AS servers_class, gam.games_name AS games_name";
 $cs_server = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
 
