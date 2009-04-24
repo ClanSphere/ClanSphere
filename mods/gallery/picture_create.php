@@ -218,6 +218,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 }
 else {
 
+  $cs_gallery['gallery_watermark_pos'] = $watermark_pos;
 	$cells = array_keys($cs_gallery);
 	$save = array_values($cs_gallery);
  cs_sql_insert(__FILE__,'gallery',$cells,$save);
