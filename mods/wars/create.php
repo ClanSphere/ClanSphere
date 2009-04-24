@@ -227,7 +227,7 @@ else {
   for ($x = 1; $x <= $players; $x++) {
 
     if (!empty($cs_players['player'.$x])) {
-      $get_user_id = cs_sql_select(__FILE__,'users','users_id','users_nick = \''.strtolower(cs_sql_escape($cs_players['player'.$x];)).'\'');
+      $get_user_id = cs_sql_select(__FILE__,'users','users_id','users_nick = \''.strtolower(cs_sql_escape($cs_players['player'.$x])).'\'');
       if (!empty($get_user_id)) {
         $pcells = array('users_id','wars_id','players_status','players_played','players_time');
         $pvalues = array($get_user_id['users_id'],$warid,'yes',1,cs_time());
