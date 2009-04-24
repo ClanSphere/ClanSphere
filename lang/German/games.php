@@ -26,7 +26,7 @@ $cs_lang['icon_remove'] = 'Icon entfernen';
 $cs_lang['cat_manage'] = 'Verwaltung';
 $cs_lang['cat_create'] = 'Neu';
 
-$cs_lang['usk_00'] ='Freigegeben ohne Altersbeschr&auml;nkung';
+$cs_lang['usk_00'] ='Freigegeben ohne Altersbeschränkung';
 $cs_lang['usk_06'] ='Freigegeben ab 6 Jahren';
 $cs_lang['usk_12'] ='Freigegeben ab 12 Jahren';
 $cs_lang['usk_16'] ='Freigegeben ab 16 Jahren';
