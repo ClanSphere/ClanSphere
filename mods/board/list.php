@@ -109,17 +109,15 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 	      $board['last_name'] = cs_secure($board['board_last_thread']);
 	      $board['board_last_id'] = $board['board_last_threadid'];
 
-	      if (empty($board['board_last_time'])) {
+	      if (empty($board['board_last_time']))
 	        $board['last_time'] = '';
-	      } else {
+	      else
 	        $board['last_time'] = cs_date('unix', $board['board_last_time'], 1);
-	      }
 
-	      if (empty($board['board_last_userid'])) {
-	        $board['last_usernick'] = cs_user($board['board_last_userid'], $board['board_last_user']);
-	      } else {
+	      if (empty($board['board_last_userid']))
 	        $board['last_usernick'] = empty($board['board_last_user']) ? '-' : cs_secure($board['board_last_user']);
-	      }
+	      else
+	        $board['last_usernick'] = cs_user($board['board_last_userid'], $board['board_last_user']);
 
 	      $board['of'] = $cs_lang['of'];
 	    }
