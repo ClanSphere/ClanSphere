@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
   $save['newest_5'] = (int) $_POST['newest_5'];
   $save['list_sort'] = (int) $_POST['list_sort'];
   $save['size2'] = (int) $_POST['size2'] * 1024;
-  $save['max_folders'] = (int) $_POST['max_files'];
+  $save['max_files'] = (int) $_POST['max_files'];
   $save['max_folders'] = (int) $_POST['max_folders'];
   $save['lightbox'] = (int) $_POST['lightbox'];
   
