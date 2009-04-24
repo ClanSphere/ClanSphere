@@ -118,11 +118,11 @@ $boardmods = cs_sql_select(__FILE__,'boardmods','users_id',0,0,0,0);
 $i = 1;
 $mods = array();
 
-
 if(!empty($boardmods)){
-	foreach($boardmods AS $value)
+	foreach($boardmods AS $value) {
 		$mods[$i] = $value['users_id'];
 		$i++;
+  }
 }
 
 // Reports
