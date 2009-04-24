@@ -230,7 +230,8 @@ function cs_dropdown($name,$list,$array,$select = 0, $key = 0, $def_option = 0) 
   $array = is_array($array) ? $array : array();
   foreach($array AS $data) {
     $sel = $select == $data[$key] ? 1 : 0;
-    $content = htmlentities($data[$list], ENT_QUOTES, $cs_main['charset']);
+    $content = html_entity_decode($data[$list], ENT_QUOTES, $cs_main['charset']);
+    $content = htmlentities($content, ENT_QUOTES, $cs_main['charset']);
     $var .= cs_html_option($content,$data[$key],$sel);
   }
   return $var . cs_html_select(0);
@@ -602,8 +603,6 @@ function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
     return cs_link($users_nick, 'users', 'view', 'id=' . $users_id);
   else
     return $users_nick;
-
-  //return !empty($users_active) ? cs_link($users_nick, 'users', 'view', 'id=' . $users_id) : $users_nick;
 }
 
 function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
