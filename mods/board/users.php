@@ -41,10 +41,10 @@ $from .= 'INNER JOIN {pre}_categories cat ON cat.categories_id = frm.categories_
 $select  = 'DISTINCT thr.threads_id AS threads_id, cat.categories_name AS categories_name, ';
 $select .= 'cat.categories_id AS categories_id, frm.board_name AS board_name, frm.board_id AS board_id, '; 
 $select .= 'thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, ';
-$select .= 'thr.threads_last_user AS threads_last_user';
+$select .= 'thr.threads_last_user AS threads_last_user, cms.comments_time AS comments_time';
 $where = 'cms.users_id = \''.$user_id.'\' AND frm.board_access <= \''.$board_access.'\'';
-$order = 'thr.threads_last_time DESC'; 
-$cs_comments = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$threads);
+$order = 'cms.comments_time DESC'; 
+$cs_comments = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$posts);
 $comments_loop = count($cs_comments);
 
 if(empty($comments_loop)) {
@@ -52,9 +52,6 @@ if(empty($comments_loop)) {
 }
 
 for($run=0; $run < $comments_loop; $run++) {  
-  $where = "comments_fid = '" . $cs_comments[$run]['threads_id'] . "' AND users_id = '" . $user_id . "'";
-  $com = cs_sql_select(__FIlE__,'comments','comments_fid, comments_time',$where,"comments_time DESC",0,1);
-
   $last[1] = $cs_comments[$run]['threads_last_user'];
 
 
@@ -64,7 +61,7 @@ for($run=0; $run < $comments_loop; $run++) {
   $data['com'][$run]['board_link'] = cs_url('board','listcat','where=' . $cs_comments[$run]['board_id']);
   $data['com'][$run]['thread'] = getReducedTitle($cs_comments[$run]['threads_headline'],40);
   $data['com'][$run]['thread_link'] = cs_url('board','thread','where=' . $cs_comments[$run]['threads_id']);
-  $data['com'][$run]['date'] = cs_date('unix',$com['comments_time'],1);
+  $data['com'][$run]['date'] = cs_date('unix',$cs_comments[$run]['comments_time'],1);
 }
 
 $from  = 'threads thr INNER JOIN {pre}_board frm ON frm.board_id = thr.board_id';
