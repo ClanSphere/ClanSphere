@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // Id: com_create.php (Tue Nov 18 10:50:34 CET 2008) fAY-pA!N
 
-$cs_lang = cs_translate('gallery');
+$cs_lang = cs_translate('gallery, 1');
 $cs_post = cs_post('fid');
 $cs_get = cs_get('id');
 

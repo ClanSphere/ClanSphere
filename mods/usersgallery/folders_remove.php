@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$cs_lang = cs_translate('gallery');
+$cs_lang = cs_translate('gallery, 1');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
