@@ -75,7 +75,7 @@ if ($op_counter['last_archiv'] != $month) {
   $count_month = cs_sql_count(__FILE__,'count',$cond);
   
   $month_archieve = cs_sql_select(__FILE__, 'count_archiv', 'SUM(count_num) AS count', 'count_mode = "1"', 0, 0, 0);
-  $count_month += $month[0]['count'];
+  $count_month += $month_archieve[0]['count'];
   
   if(!empty($count_month)) {
     cs_sql_query(__FILE__, 'DELETE FROM {pre}_count WHERE ' . $cond);
