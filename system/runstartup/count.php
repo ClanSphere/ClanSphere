@@ -74,11 +74,12 @@ if ($op_counter['last_archiv'] != $month) {
   $cond = "count_time < '" .$timer . "'";
   $count_month = cs_sql_count(__FILE__,'count',$cond);
   
-  $count_month += cs_sql_count(__FILE__, 'count_archiv', 'count_mode = "1"');
+  $month_archieve = cs_sql_select(__FILE__, 'count_archiv', 'SUM(count_num) AS count', 'count_mode = "1"', 0, 0, 0);
+  $count_month += $month[0]['count'];
   
   if(!empty($count_month)) {
     cs_sql_query(__FILE__, 'DELETE FROM {pre}_count WHERE ' . $cond);
-    cs_sql_query(__FILE__, 'DELETE FROM {pre}_count_archiv WHERE count_mode = "1"');
+    cs_sql_query(__FILE__, "DELETE FROM {pre}_count_archiv WHERE count_mode = '1'");
     
     if ($month == 1) {
       $old_year = $year - 1;
