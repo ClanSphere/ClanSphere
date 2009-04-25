@@ -364,43 +364,6 @@ function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_
                             1 );
 
   cs_sql_insert(__FILE__,'messages',$messages_cells,$messages_save);
-
-}
-
-// Gets the notification setting for the current user
-function cs_notifications($notification_name = '', $users_id = 0) {
-
-  global $account;
-  $users_id = empty($users_id) ? $account['users_id'] : $users_id;
-  $data = cs_sql_select(__FILE__, 'notifications', $notification_name, 'users_id = ' . $users_id);
-  return $data[$notification_name];
-}
-
-// Notifies a person upon its notification settings
-function cs_notify($email='', $title='', $message='', $users_id=0, $notification_name = '', $type = 1) {
-
-  $type = empty($notification_name) ? $type : cs_notifications($notification_name, $users_id);
-  switch($type) {
-
-    // No notification
-    case 0:
-      return;
-      break;
-
-    // eMail notification
-    case 1:
-      cs_mail($email,$title,$message);
-      break;
-
-    // PM notification
-    case 2:
-      cs_message(0, $title, $message, $users_id);
-      break;
-
-    default:
-      return;
-      break;
-  }
 }
 
 function cs_pages($mod,$action,$records,$start,$where = 0,$sort = 0, $limit = 0, $small = 0) {

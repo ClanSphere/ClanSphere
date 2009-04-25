@@ -2,7 +2,6 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-// cs_notify($email='', $title='title', $message='test', $users_id=1, $notification_name = 'notifications_pm');
 $cs_lang = cs_translate('messages');
 require_once('mods/messages/functions.php');
 $messages_form = 1;
