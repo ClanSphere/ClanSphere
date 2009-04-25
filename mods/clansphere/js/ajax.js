@@ -7,11 +7,11 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
   response = response.replace(/href=\"#([a-zA-Z0-9-_]*?)\"/g,"href=\"javascript:cs_scrollto_by_name('$1')\"");
   document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z0-9\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
     response.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
-		scripts = response.match(/<script(.*)src="(.+?)"(.*)?><\/script>/g); // Soll aus der Antwort die JavaScript-URLs rauslesen und dann an javascript_include uebergeben.
-		if(scripts) {
-			for (var i = 0; i < scripts.length; ++i)
-				include_javascript(scripts[i].match(/src="(.+?)"/)[1]);
-		}
+  scripts = response.match(/<script(.*)src="(.+?)"(.*)?><\/script>/g); // Soll aus der Antwort die JavaScript-URLs rauslesen und dann an javascript_include uebergeben.
+  if(scripts) {
+    for (var i = 0; i < scripts.length; ++i)
+      include_javascript(scripts[i].match(/src="(.+?)"/)[1]);
+  }
   delete response;
   if (document.getElementById('ajax_js') == null && id == 'content') {
     request_cont = 0;
@@ -19,17 +19,16 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
       anch = "#" + document.getElementById('ajax_location').href.replace('&amp;','&');
       anch = anch.substr(anch.lastIndexOf("#"));
       window.location.hash = anch;
-    }	
+    }
     document.title = document.getElementById('ajax_title').innerHTML;
   }
   if (onfinish) window.setTimeout(onfinish,0);
 }
 
 function include_javascript(path) {
-	if(document.getElementById(path)) {
-		return;	
-	}
-	var head = document.getElementsByTagName("head")[0];
+  if(document.getElementById(path))
+    return;
+  var head = document.getElementsByTagName("head")[0];
   script = document.createElement('script');
   script.id = path;
   script.type = 'text/javascript';
@@ -159,7 +158,7 @@ function form_to_string(form) {
   for(i=0;i<fields.length;i++) {
     switch(fields[i].type) {
       case 'text': case 'password': case 'hidden': case 'textarea':
-    	  string += encodeURI(fields[i].name) + "=" + fields[i].value + "&";
+        string += encodeURI(fields[i].name) + "=" + fields[i].value + "&";
         break;
       case 'submit':
         if (!firstsubmit) firstsubmit = fields[i].name; break;
@@ -212,6 +211,10 @@ function forms_to_ajax() {
     }
     forms[i].onsubmit = function() {
       if(active_upload_count==0) {
+        for ( i = 0; i < parent.frames.length; ++i )
+          if ( parent.frames[i].FCK )
+            parent.frames[i].FCK.UpdateLinkedField();
+        FCKeditorAPI = null;
         document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
         form_data = form_to_string(this);
         cs_ajax_getcontent(this.action.replace(/([a-zA-Z0-9\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_data, 1);
