@@ -31,7 +31,7 @@ if(empty($content)) {
 
 foreach($content AS $file => $name) {
   if($file != ".htaccess") {
-    $date = filemtime('uploads/cache/' . $file);
+    $date = filemtime('uploads/cache/' . $file) - date('Z');
     $size = filesize('uploads/cache/' . $file);
     $space = $space + $size;
     $files++;
