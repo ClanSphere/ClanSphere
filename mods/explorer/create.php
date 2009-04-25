@@ -26,7 +26,8 @@ if(empty($_POST['submit'])) {
   if (substr($dir,-1) != '/' && !empty($dir))
     $dir .= '/';
   
-  $file = $dir . str_replace('..','',$_POST['data_name']);
+  $filename = empty($_POST['data_name']) ? 'unnamed' : str_replace('..', '', $_POST['data_name']);
+  $file = $dir . $filename;
   $ending = !empty($_POST['data_type']) ? str_replace('..','',$_POST['data_type']) : '';
   
   if (empty($ending) && strpos($file,'.') !== false) {
