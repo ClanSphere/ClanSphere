@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
@@ -38,6 +38,12 @@ switch($cs_options['list_sort']) {
     $order = 'usersgallery_id ASC';
   break;
 }
+
+if(empty($move) AND !empty($cs_get['pic_id'])) {
+  $move = 0;
+  $where .= ' AND usersgallery_id = ' . (int) $cs_get['pic_id'];
+}
+
 $cs_gallery = cs_sql_select(__FILE__,'usersgallery',$select,$where,$order,$move,0);
 $gallery_loop = count($cs_gallery);
 if(empty($gallery_loop))
@@ -212,4 +218,3 @@ else
     echo cs_comments_add($usersgallery_id,'usersgallery',$advanced[1]);
   }
 }
-?>
