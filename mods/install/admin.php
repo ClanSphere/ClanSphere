@@ -73,7 +73,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $dstime = date('I');
   $create['users_timezone'] = empty($dstime) ? date('Z') : date('Z') - 3600;
   $create['users_dstime'] = 0;
-  create_user(5,$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],'fam',$create['users_timezone'],$create['users_dstime']);
+  $create['access'] = cs_sql_select(__FILE__,'access','access_id','access_clansphere = 5');
+  create_user($create['access'],$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],'fam',$create['users_timezone'],$create['users_dstime']);
   
   // Options
   $def_cell = array('options_value');
