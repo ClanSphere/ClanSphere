@@ -36,7 +36,7 @@ function cs_sql_version($cs_file) {
 
   global $cs_db;
   $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
-  $sql_query = 'SHOW TABLE STATUS WHERE NAME LIKE \'' . $cs_db['prefix'] . '\_%\'';
+  $sql_query = "SHOW TABLE STATUS WHERE NAME LIKE '" . cs_sql_escape($cs_db['prefix'] . '_') . "%'";
   if($sql_data = $cs_db['con']->query($sql_query)) {
     $new_result = $sql_data->fetchAll(PDO::FETCH_ASSOC);
     $sql_data = NULL;
