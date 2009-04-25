@@ -47,7 +47,7 @@ if(isset($_POST['submit'])) {
   $save['def_admin'] = $_POST['def_admin'];
   $save['developer'] = (int) $_POST['developer'];  
 
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('clansphere', $save);
 

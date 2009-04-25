@@ -10,7 +10,7 @@ if(isset($_POST['submit'])) {
   $save['skin'] = $_POST['skin'];
   $save['height'] = $_POST['height'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('fckeditor', $save);
   

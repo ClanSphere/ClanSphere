@@ -18,7 +18,7 @@ if (!empty($_POST['submit'])) {
   $save['max_size_rotimg'] = (int) $_POST['max_size_rotimg'];
   $save['method'] = $_POST['method'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('partner', $save);
   

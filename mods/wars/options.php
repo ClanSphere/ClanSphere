@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
   $save['max_size'] = (int) $_POST['max_size'];
   $save['max_navlist'] = (int) $_POST['max_navlist'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('wars', $save);
   

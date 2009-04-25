@@ -8,7 +8,7 @@ if(isset($_POST['submit'])) {
 	
   $opt['month_out'] = empty($_POST['month_out']) ? 0 : (int) $_POST['month_out'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   $save = array();
   $save['month_out'] = $opt['month_out'];

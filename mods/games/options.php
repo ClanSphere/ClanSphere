@@ -11,7 +11,7 @@ if (!empty($_POST['submit'])) {
   $save['max_height'] = (int) $_POST['max_height'];
   $save['max_size'] = (int) $_POST['max_size'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   cs_optionsave('games', $save);
   
   cs_redirect($cs_lang['success'], 'options','roots');

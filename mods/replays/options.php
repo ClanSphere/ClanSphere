@@ -10,7 +10,7 @@ if(isset($_POST['submit'])) {
   $save['file_size'] = (int) $_POST['file_size'] * 1024;
   $save['file_type'] = $_POST['file_type'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('replays', $save);
   

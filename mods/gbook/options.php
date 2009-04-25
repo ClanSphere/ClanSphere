@@ -9,7 +9,7 @@ if(isset($_POST['submit'])) {
 	$save = array();
 	$save['lock'] = (int) $_POST['lock'];
 	
-	require 'mods/clansphere/func_options.php';
+	require_once 'mods/clansphere/func_options.php';
 	
 	cs_optionsave('gbook', $save);
   

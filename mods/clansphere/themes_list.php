@@ -10,7 +10,7 @@ $themes_count = count($themes);
 if(!empty($_GET['activate'])) {
   foreach ($themes as $try) {
       if($try['dir'] == $_GET['activate']) {
-        require('mods/clansphere/func_options.php');
+        require_once 'mods/clansphere/func_options.php';
       $save['def_theme'] = $_GET['activate'];
       cs_optionsave('clansphere', $save);
           $current = $_GET['activate'];

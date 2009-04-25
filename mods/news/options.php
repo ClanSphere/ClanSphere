@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
   $save['rss_description'] = $_POST['rss_description'];
   $save['abcode'] = $abcode;
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('news', $save);
   

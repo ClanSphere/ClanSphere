@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
   $save['del_time'] = (int) $_POST['del_time'];
   $save['max_space'] = (int) $_POST['max_space'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('messages', $save);
 

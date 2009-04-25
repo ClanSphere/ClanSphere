@@ -8,7 +8,7 @@ $op_banners = cs_sql_option(__FILE__,'banners');
 
 if(isset($_POST['submit'])) {
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   $save = array();
   $save['max_width'] = (int) $_POST['max_width'];

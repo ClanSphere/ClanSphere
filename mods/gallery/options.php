@@ -23,7 +23,7 @@ if(isset($_POST['submit'])) {
   $save['max_folders'] = (int) $_POST['max_folders'];
   $save['lightbox'] = (int) $_POST['lightbox'];
   
-  require('mods/clansphere/func_options.php');
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('gallery', $save);
 

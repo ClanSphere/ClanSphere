@@ -75,7 +75,7 @@ if(!empty($handler)) {
 
     if($step['handler'] == $handler) {
       
-      require 'mods/clansphere/func_options.php';
+      require_once 'mods/clansphere/func_options.php';
       
       $save = array();
       $save['done_' . $handler] = isset($_GET['done']) ? $_GET['done'] : 0;

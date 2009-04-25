@@ -31,7 +31,7 @@ if(empty($_POST['submit'])) {
 
 } else {
 
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
 
   $save = array();
   $save['rte_html'] = $_POST['rte_html'];

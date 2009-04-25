@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
   $save['graphcolor2'] = $_POST['graphcolor2'];
   $save['view'] = $_POST['view'];
 
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('count', $save);
   

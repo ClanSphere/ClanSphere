@@ -9,7 +9,7 @@ if (!empty($_POST['submit'])) {
   $save = array();
   $save['label'] = $_POST['label'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('members', $save);
   

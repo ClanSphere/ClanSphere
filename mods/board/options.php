@@ -25,7 +25,7 @@ if(isset($_POST['submit'])) {
   $save['doubleposts'] = empty($_POST['doublep_allowed']) ? -1 : (int) (86400 * str_replace(',','.',$_POST['doubleposts']));
   $save['list_subforums'] = empty($_POST['list_subforums']) ? 0 : 1;
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('board', $save);
 

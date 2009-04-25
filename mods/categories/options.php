@@ -6,7 +6,7 @@ $cs_lang = cs_translate('categories');
 
 if (isset($_POST['submit'])) {
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   $save = array();
   $save['max_width'] = (int) $_POST['max_width'];

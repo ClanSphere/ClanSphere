@@ -13,7 +13,7 @@ if(isset($_POST['submit'])) {
   $save['def_order'] = (int) $_POST['def_order'];
   $save['label'] = $_POST['label'];
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('squads', $save);
 

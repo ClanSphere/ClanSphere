@@ -50,7 +50,7 @@ if($account['access_wizard'] == 5) {
 }
 
 if(!empty($activate) AND !empty($allow)) {
-  require('mods/clansphere/func_options.php');
+  require_once 'mods/clansphere/func_options.php';
   $save = array();
   $save['def_tpl'] = $activate;
   if(isset($templates[ucfirst($activate)]['themes'])) {

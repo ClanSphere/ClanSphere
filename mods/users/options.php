@@ -11,7 +11,7 @@ $files = cs_files();
 
 if(isset($_POST['submit'])) {
 
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
 	$error = '';
   $save = array();
 

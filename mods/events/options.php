@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
   $save['req_phone'] = empty($_POST['req_phone']) ? 0 : 1;
   $save['req_mobile'] = empty($_POST['req_mobile']) ? 0 : 1;
   
-  require 'mods/clansphere/func_options.php';
+  require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('events', $save);
   

@@ -28,7 +28,7 @@ if (!empty($_POST['submit'])) {
 
     $list = str_replace('shoutbox_navlist','shoutbox_navlist2',$list);
 
-    require 'mods/clansphere/func_options.php';
+    require_once 'mods/clansphere/func_options.php';
 
     $save = array();
     $save['ajax'] = empty($_POST['ajax']) ? '0' : (int) $_POST['for'];
