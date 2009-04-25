@@ -3,8 +3,8 @@
 // $Id$
 
 $cs_lang['explorer']  = 'Explorer';
+$cs_lang['mod_name'] = 'Explorer';
 $cs_lang['modinfo']  = 'Manage all files on you webspace';
-
 
 // CHMod
 $cs_lang['chmod']    = 'CHMOD';

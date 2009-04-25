@@ -63,7 +63,7 @@ function cs_abcode_toolshtml2($name) {
   global $cs_lang;
   
   $more = "onchange=\"javascript:abc_insert(this.form.cs_html2.options";
-  $more .= "[this.form.cs_shtml2.selectedIndex].value + '(',')','".$name."');";
+  $more .= "[this.form.cs_html2.selectedIndex].value + '(',')','".$name."');";
   $more .= "this.selectedIndex=0\"";
   
   $var = cs_html_select(1,'cs_html2',$more);
