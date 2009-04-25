@@ -175,10 +175,6 @@ function cs_abcode_mail($matches) {
   return cs_html_mail($matches[1]);
 }
 
-function cs_abcode_bgcolor($matches) {
-  return cs_abcode_output(13, $matches);
-}
-
 function cs_abcode_color($matches) {
   return cs_abcode_output(5, $matches);
 }
@@ -349,8 +345,6 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   $replace = preg_replace_callback('={(.*?)}=si','cs_abcode_decode',$replace);
   
   if(!empty($features)) {
-  
-    #cs_abcode_mode(1);
 
     if(!empty($html)) {
       $replace = strpos($replace, '[html]') === false ? html_entity_decode($replace, ENT_QUOTES, $cs_main['charset']) : $replace;
@@ -360,7 +354,6 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     if (!empty($phpeval))
       $replace = preg_replace_callback("=\[phpcode\](.*?)\[/phpcode\]=si",'cs_abcode_eval',$replace);
 
-    #$replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
     $replace = nl2br($replace);
     $replace = preg_replace_callback("=\[u\](.*?)\[/u\]=si","cs_abcode_u",$replace);
     $replace = preg_replace_callback("=\[b\](.*?)\[/b\]=si","cs_abcode_b",$replace);
@@ -372,7 +365,6 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[mail\](.*?)\[/mail\]=si","cs_abcode_mail",$replace);
     $replace = preg_replace_callback('=([^\s]{3,})@([^\s]*?)\.([^\s]{2,7})(?![^<]+>|[^&]*;)=si','cs_abcode_mail',$replace);
     $replace = preg_replace_callback("=\[color\=(#*[\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
-    $replace = preg_replace_callback("=\[bgcolor\=(#*[\w]*?)\](.*?)\[/bgcolor\]=si","cs_abcode_bgcolor",$replace);
     $replace = preg_replace_callback("=\[size\=([\d]*?)\](.*?)\[/size\]=si","cs_abcode_size",$replace);
     $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si","cs_abcode_align",$replace);
     $replace = preg_replace_callback("=\[list\=(.*?)\](.*?)\[/list\]=si","cs_abcode_list",$replace);
