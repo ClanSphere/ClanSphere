@@ -124,8 +124,8 @@ if(!empty($error)) {
 if(!empty($error) OR !isset($_POST['submit'])) {
   $data['lang']['mod'] = $cs_lang[$op_clans['label']];
   $data['clans']['name'] = $cs_clans['clans_name'];
-  $data['clans']['short'] = $cs_clans['clans_name'];$cs_clans['clans_short'];
-  $data['clans']['tag'] = $cs_clans['clans_name'];$cs_clans['clans_tag'];  
+  $data['clans']['short'] = $cs_clans['clans_short'];
+  $data['clans']['tag'] = $cs_clans['clans_tag'];  
   
   if($cs_clans['clans_tagpos'] == '1') {
     $data['select']['before'] = 'selected="selected"';
@@ -185,5 +185,4 @@ else {
   cs_sql_update(__FILE__,'clans',$clans_cells,$clans_save,$clans_id);
   
   cs_redirect($cs_lang['changes_done'],'clans','center');
-} 
-?>
+}
