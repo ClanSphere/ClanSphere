@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
   
   $error = '';
 
-  if(isset($files_gl['picture'])) {
+  if(isset($files_gl['picture']['tmp_name'])) {
     $img_size = getimagesize($files_gl['picture']['tmp_name']);
     if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
       $error .= $cs_lang['ext_error'] . cs_html_br(1);
@@ -153,5 +153,3 @@ else {
 
  cs_redirect($cs_lang['changes_done'],'gallery','folders_manage');
 }
-
-?>
