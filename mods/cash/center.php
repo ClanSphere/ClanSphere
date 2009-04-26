@@ -38,6 +38,8 @@ if(!empty($konto_count)) {
   $data['if']['no_kt'] = FALSE;
   $data['if']['kt'] = TRUE;
   $data['kt'] = $konto;
+  $data['if']['iban'] = false;
+  $data['if']['bic'] = false;
 
   if(!empty($konto['account_iban'])) {
     $data['if']['iban'] = TRUE;
@@ -123,7 +125,5 @@ for($run=0; $run<$cash_loop; $run++) {
   elseif ($inout == 'out') { $icon = 'red'; }
   $data['out'][$run]['in_out'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
 }
-
 echo cs_subtemplate(__FILE__,$data,'cash','center');
-
 ?>

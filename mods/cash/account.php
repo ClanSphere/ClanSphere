@@ -80,7 +80,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $cash_save = array_values($data['account']);
     cs_sql_update(__FILE__,'account',$cash_cells,$cash_save,$data['id']['account_id']);
 
-  cs_redirect($cs_lang['edit_done'],'cash','manage');
+  cs_redirect($cs_lang['changes_done'],'cash','manage');
   } else { 
     $cash_cells = array_keys($data['account']);
     $cash_save = array_values($data['account']);
