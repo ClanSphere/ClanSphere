@@ -6,10 +6,11 @@
   {clansphere:navmeta}
   <link href="template.css" rel="stylesheet" type="text/css" />
   <link href="content.css" rel="stylesheet" type="text/css" />
-  <link href="clansphere_div.css" rel="stylesheet" type="text/css" />
   <link rel="alternate" type="application/rss+xml" href="../../uploads/rss/news.xml" id="rss_news" />
 </head>
 <body>
+
+<div id="container">
 
 <div id="head">
   <span>CLAN</span>SPHERE
@@ -51,7 +52,7 @@
   <a href="{url:contact_mail}" class="dark">Mailus</a>
   <a href="{url:contact_imprint}">Imprint</a>
   <a href="{url:clansphere_about}" class="dark">Scriptinfo</a>
- </div>
+ </div> <!-- Nav-left End -->
 
 <div id="content">{func:show}</div>
 
@@ -74,7 +75,7 @@
     <span>{count:navusr}</span> Registriert<br />	
     <span>{count:navall}</span> <a href="{url:count_stats}">Gesamt</a>
    </div>
- </div>
+ </div> <!-- Nav-right End -->
  
 <div id="bottom">
   {clansphere:navtime} - Load: {func:parse}ms
@@ -87,7 +88,9 @@
     <a href="http://jigsaw.w3.org/css-validator/check/refer">CSS 2.1</a> -
     <a href="http://validator.w3.org/feed/">RSS 2.0</a>
   </span><br />
-</div>
+</div> <!-- Bottom End -->
+
+</div> <!--Container End -->
 
 </body>
 </html>

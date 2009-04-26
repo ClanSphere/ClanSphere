@@ -1,4 +1,4 @@
-﻿body {
+body {
   background-color: #E5E5E5;
   padding: 10px 10px 0 10px;
   font-size: 12px;
@@ -23,11 +23,16 @@ a:hover {
   text-decoration: none;
 }
 
-#head, #debug, #bottom {
+#container {
+  margin:  0 auto;
   width: 100%;
+}
+
+#head, #debug, #bottom {
+  width: 98%;
   background-color: #FFFFFF;
   border: 1px solid #888888;
-  padding: 5px;
+  padding: 5px 1%;
   color: #757575;
   font-family: Tahoma;
 }
