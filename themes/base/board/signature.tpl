@@ -10,7 +10,19 @@
   </tr>
 </table>
 <br />
-{lang:getmsg}
+{head:getmsg}
+{if:preview}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="headb">{lang:preview}</td>
+  </tr>
+  <tr>
+    <td class="leftb">{signature:preview}</td>
+  </tr>
+</table>
+<br />
+{stop:preview}
+
 <form method="post" id="board_create" action="{action:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
