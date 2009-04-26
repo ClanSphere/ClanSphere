@@ -1,4 +1,7 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang['mod_name']  = 'Server';
 $cs_lang['mod_text']  = 'Dienste hinzuf&uuml;gen und erstellen';
 $cs_lang['mod_list'] = 'Unsere Server auf einen Blick.';
@@ -19,7 +22,7 @@ $cs_lang['servers'] = 'Server';
 $cs_lang['map'] = 'Karte';
 $cs_lang['ip'] = 'IP';
 $cs_lang['host'] = 'Host';
-$cs_lang['type'] = 'Spiel';
+$cs_lang['type'] = 'Server-Type';
 $cs_lang['info'] = 'Infos';
 $cs_lang['max'] = 'max. ';
 $cs_lang['slots'] = ' Spieler';

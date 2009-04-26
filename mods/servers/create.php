@@ -78,11 +78,15 @@ elseif(!empty($servers_error)) {
 if(!empty($servers_error) OR !isset($_POST['submit'])) {
   $games_array = cs_sql_select(__FILE__,'games','games_name, games_id',0,0,0,0);
   $run=0;
-  foreach($games_array AS $games) {
-    $data['games'][$run]['name'] = $games['games_name'];
-    $data['games'][$run]['value'] = $games['games_id'];
-    $data['games'][$run]['selected'] = $games['games_id'] == $data['create']['games_id'] ? 'selected="selected"' : '';
-    $run++;
+  if(empty($games_array))
+    $data['games'] = array();
+  else {
+    foreach($games_array AS $games) {
+      $data['games'][$run]['name'] = $games['games_name'];
+      $data['games'][$run]['value'] = $games['games_id'];
+      $data['games'][$run]['selected'] = $games['games_id'] == $data['create']['games_id'] ? 'selected="selected"' : '';
+      $run++;
+    }
   }
   
 	$server_stats = array(
@@ -106,7 +110,7 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
     array('name' => 'Battlefield 2', 'servers_class' => 'bf2'),  
     array('name' => 'Battlefield 2142', 'servers_class' => 'bf2142'),  
     array('name' => 'Battlefield Vietnam', 'servers_class' => 'bfv'),
-    array('name' => 'C&C Renegade', 'servers_class' => 'renegade'),  
+    array('name' => 'C&amp;C Renegade', 'servers_class' => 'renegade'),  
     array('name' => 'Call of Duty', 'servers_class' => 'cod'),  
     array('name' => 'Call of Duty 2', 'servers_class' => 'cod2'),  
     array('name' => 'Call of Duty 4', 'servers_class' => 'cod4'),  
@@ -119,8 +123,8 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
     array('name' => 'Enemy Territory Quake Wars', 'servers_class' => 'etqw'), 
     array('name' => 'Fear', 'servers_class' => 'fear'),
     array('name' => 'Halo', 'servers_class' => 'halo'),   
-    array('name' => 'Hiddem & Dangerous 2', 'servers_class' => 'hd2'),
-    array('name' => 'Half-Life & Mods / Half-Life 2', 'servers_class' => 'hl'),
+    array('name' => 'Hidden &amp; Dangerous 2', 'servers_class' => 'hd2'),
+    array('name' => 'Half-Life &amp; Mods / Half-Life 2', 'servers_class' => 'hl'),
     array('name' => 'Half-Life Old', 'servers_class' => 'hl_old'),
     array('name' => 'Jedi Knight: Jedi Academy / Jedi Knight 2', 'servers_class' => 'jedi'),  
     array('name' => 'Medal of Honor', 'servers_class' => 'mohaa'),
@@ -136,7 +140,7 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
     array('name' => 'S.W.A.T.', 'servers_class' => 'swat'),
     array('name' => 'TeamSpeak 2', 'servers_class' => 'ts'),
     array('name' => 'Unreal Tournament', 'servers_class' => 'ut'),
-    array('name' => 'Unreal Tournament 2003 & 2004 / Red Orchestra', 'servers_class' => 'ut2004'),  
+    array('name' => 'Unreal Tournament 2003 &amp; 2004 / Red Orchestra', 'servers_class' => 'ut2004'),  
     array('name' => 'Unreal Tournament 3', 'servers_class' => 'ut3'),      
     array('name' => 'Warsor', 'servers_class' => 'warsow')
   );
@@ -165,6 +169,9 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
 
 } else {
 
+  settype($data['create']['servers_slots'], 'integer');
+  settype($data['create']['servers_order'], 'integer');
+
   // Insert SQL Data
   $servers_cells = array_keys($data['create']);
   $servers_save = array_values($data['create']);
@@ -176,5 +183,5 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
   // Create Finish    
   cs_redirect($cs_lang['create_done'],'servers');
 }
+
 echo cs_subtemplate(__FILE__,$data,'servers','create');
-?>
