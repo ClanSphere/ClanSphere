@@ -69,7 +69,7 @@
 		<td class="leftb">{icon:configure} {lang:extension}</td>
 		<td class="leftc">
 			<input type="checkbox" name="links_sponsor" value="1" {check:sponsor} /> {lang:sponsorbox}<br />
-			{if:allow_del}<input type="checkbox" name="del_banner" value="1" {check:sponsor} /> {lang:delicon}{stop:allow_del}
+			{if:allow_del}<input type="checkbox" name="del_banner" value="1" /> {lang:delicon}{stop:allow_del}
 		</td>
 	</tr>
 	<tr>
