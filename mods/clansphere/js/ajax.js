@@ -22,7 +22,9 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
     }
     document.title = document.getElementById('ajax_title').innerHTML;
   }
+	
   if (onfinish) window.setTimeout(onfinish,0);
+	
 }
 
 function include_javascript(path) {
@@ -126,7 +128,7 @@ function checkanch() {
 
 function cloaded(anch) {
   forms_to_ajax();
-  if (document.getElementById('ajax_js')) eval(document.getElementById('ajax_js').innerHTML);
+  if (document.getElementById('ajax_js')) window.setTimeout(eval(document.getElementById('ajax_js').innerHTML), 0);
   if (anch != "__START__") setnavs(1);
 }
 

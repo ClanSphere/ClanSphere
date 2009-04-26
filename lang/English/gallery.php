@@ -222,7 +222,6 @@ $cs_lang['picture'] = 'Picture';
 $cs_lang['lightbox'] = 'Activate lightbox';
 $cs_lang['light_0'] = 'No';
 $cs_lang['light_1'] = 'Yes - Mootools';
-$cs_lang['light_2'] = 'Yes - Scriptaculous';
 $cs_lang['err_auto_size'] = 'Info: The picture was resampled to be within all limitations';
 
 // Access

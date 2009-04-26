@@ -58,7 +58,7 @@ if(isset($_POST['submit'])) {
  
   $levels = 0;
   $var = '';
-  while($levels < 3) {
+  while($levels < 2) {
     $data['op']['lightbox'] == $levels ? $sel = 1 : $sel = 0;
     $var .= cs_html_option($cs_lang['light_' . $levels],$levels,$sel);
     $levels++;
