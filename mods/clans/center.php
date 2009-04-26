@@ -20,6 +20,7 @@ $data['lang']['mod'] = $cs_lang[$op_clans['label']];
 $own = "users_id = '" . $account['users_id'] . "'";
 $clans_count = cs_sql_count(__FILE__,'clans',$own);
 
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 $data['lang']['new'] = cs_link($cs_lang['new_'.$op_clans['label']],'clans','new');
 $data['lang']['all'] = $cs_lang['total'] . ': ';
 $data['lang']['count'] = $clans_count;
