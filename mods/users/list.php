@@ -15,37 +15,24 @@ $sort = empty($_GET['sort']) ? 2 : (int) $_GET['sort'];
 $order = $cs_sort[$sort];
 //$where = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
 //$mof = empty($where) ? '' : " AND users_sex = '" . cs_sql_escape($where) . "'";     
-$where = empty($_GET['where']) ? 0 : (int) $_GET['where'];
+$where = empty($_GET['where']) ? 0 : $_GET['where'];
 $mof = empty($where) ? '' : " AND users_nick LIKE '" . cs_sql_escape($where) . "%'";
 $condition = 'users_delete = 0 AND users_active = 1' . $mof;
 $users_count = cs_sql_count(__FILE__,'users',$condition);
 
-  $data['head']['mod'] = $cs_lang['mod_name'];
-  $data['head']['action'] = $cs_lang['list'];
+$data['head']['mod'] = $cs_lang['mod_name'];
+$data['head']['action'] = $cs_lang['list'];
 
-  $data['lang']['total'] = $cs_lang['total'];
-  $data['lang']['sex'] = $cs_lang['sex'];
-  $data['lang']['female'] = $cs_lang['female'];
-  $data['lang']['male'] = $cs_lang['male'];
-  $data['lang']['show'] = $cs_lang['show'];
-  $data['lang']['country'] = $cs_lang['country'];
-  $data['lang']['nick'] = $cs_lang['nick'];
-  $data['lang']['place'] = $cs_lang['place'];
-  $data['lang']['laston'] = $cs_lang['laston'];
-  $data['lang']['page'] = $cs_lang['page'];
-  $data['lang']['all'] = $cs_lang['all'];
-  
-  $data['head']['total'] = $users_count;                 
-  $data['head']['pages'] = cs_pages('users','list',$users_count,$start,$where,$sort);
-  $sel_female = $where === 'female' ? 'selected' : '';
-  $data['head']['sel_female'] = $sel_female;
-  $sel_male = $where === 'male' ? 'selected' : '';
-  $data['head']['sel_male'] = $sel_male;
-  
-  $data['sort']['nick'] = cs_sort('users','list',$start,$where,1,$sort);
-  $data['sort']['place'] = cs_sort('users','list',$start,$where,3,$sort);
-  $data['sort']['laston'] = cs_sort('users','list',$start,$where,5,$sort);
+$data['head']['total'] = $users_count;                 
+$data['head']['pages'] = cs_pages('users','list',$users_count,$start,$where,$sort);
+$sel_female = $where === 'female' ? 'selected' : '';
+$data['head']['sel_female'] = $sel_female;
+$sel_male = $where === 'male' ? 'selected' : '';
+$data['head']['sel_male'] = $sel_male;
 
+$data['sort']['nick'] = cs_sort('users','list',$start,$where,1,$sort);
+$data['sort']['place'] = cs_sort('users','list',$start,$where,3,$sort);
+$data['sort']['laston'] = cs_sort('users','list',$start,$where,5,$sort);
 
 $select = 'users_id, users_nick, users_place, users_laston, users_country, users_hidden, users_active, users_invisible';
 $cs_users = cs_sql_select(__FILE__,'users',$select,$condition,$order,$start,$account['users_limit']);
@@ -68,7 +55,7 @@ for($run=0; $run<$users_loop; $run++) {
 
 }
 
-  $data['users'] = $cs_users;
-  echo cs_subtemplate(__FILE__,$data,'users','list');
+$data['users'] = $cs_users;
+echo cs_subtemplate(__FILE__,$data,'users','list');
   
 ?>

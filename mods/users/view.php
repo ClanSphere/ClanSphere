@@ -31,6 +31,8 @@ else {
   $data['head']['body_text'] = cs_addons('users','view',$users_id,'users');
 
   echo cs_subtemplate(__FILE__,$data,'users','head');
+  
+  $data['if']['buddies_active'] = $account['access_buddys'] >= 2 ? true : false;
 
   $hidden = explode(',',$cs_user['users_hidden']);
   #$allow = $users_id == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
