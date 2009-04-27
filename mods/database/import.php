@@ -63,9 +63,13 @@ if(!empty($sql_content)) {
   foreach($sql_array AS $sql_query) {
     $sql_query = trim(str_replace('{serial}',';',$sql_query));
     if(!empty($sql_query)) {
-      if($check = cs_sql_query(__FILE__, $sql_query)) {
+      $explain = stripos($sql_query, 'explain') === 0 ? 1 : 0;
+      if($check = cs_sql_query(__FILE__, $sql_query, $explain)) {
         $para[1] = 'green';
         $info = $check['affected_rows'];
+        if(!empty($explain) AND isset($check['more'])) {
+          $info .= cs_subtemplate(__FILE__, $check, 'database', 'explain');
+        }
       }
       else {
         $para[1] = 'red';

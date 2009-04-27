@@ -123,12 +123,17 @@ function cs_sql_option($cs_file, $mod)
   return $options[$mod];
 }
 
-function cs_sql_query($cs_file, $sql_query)
+function cs_sql_query($cs_file, $sql_query, $more = 0)
 {
   global $cs_db;
   $sql_query = str_replace('{pre}', $cs_db['prefix'], $sql_query);
-  if (mysqli_query($cs_db['con'], $sql_query)) {
+  if ($sql_data = mysqli_query($cs_db['con'], $sql_query)) {
     $result = array('affected_rows' => mysqli_affected_rows($cs_db['con']));
+    if(!empty($more)) {
+      while ($sql_result = mysqli_fetch_assoc($sql_data)) {
+        $result['more'][] = $sql_result;
+      }
+      mysqli_free_result($sql_data);
   } else { 
     cs_error_sql($cs_file, 'cs_sql_query', mysqli_error($cs_db['con']));
     $result = 0;

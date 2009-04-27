@@ -126,13 +126,20 @@ function cs_sql_option($cs_file, $mod)
   return $options[$mod];
 }
 
-function cs_sql_query($cs_file, $sql_query)
+function cs_sql_query($cs_file, $sql_query, $more = 0)
 {
   global $cs_db;
   $sql_query = str_replace('{pre}', $cs_db['prefix'], $sql_query);
-  if (mysql_query($sql_query, $cs_db['con'])) {
+  if ($sql_data = mysql_query($sql_query, $cs_db['con'])) {
     $result = array('affected_rows' => mysql_affected_rows($cs_db['con']));
-  } else {
+    if(!empty($more)) {
+      while ($sql_result = mysql_fetch_assoc($sql_data)) {
+        $result['more'][] = $sql_result;
+      }
+      mysql_free_result($sql_data);
+    }
+  }
+  else {
     cs_error_sql($cs_file, 'cs_sql_query', mysql_error($cs_db['con']));
     $result = 0;
   }
