@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0 >> 2009-04-xx
+ClanSphere 2009.0 RC3 >> 2009-04-xx
 ___________________________________________________________
 
 -> Added abcode editor bridge to allow the usage of other wysiwyg software (hajo)
@@ -9,10 +9,10 @@ ___________________________________________________________
 -> Added possibilities to close or pinup threads during writing, close also for create comments (fay-pain)
 -> Fixed many getimagesize php notice issues (hajo)
 -> Installation detects and tests database extensions automated now (hajo)
--> Moved charset info from languages to cs_init() and set it to UTF-8 by default (hajo)
+-> Moved charset info from languages to 'setup.php' and set it to UTF-8 by default (hajo)
 -> Reworked clansphere/software and database/roots page to be more helpful (hajo)
 -> The AJAX fallback solution now works, enabling AJAX for everybody is now possible (duriel)
--> Worked on the count archive so there is a daily archieve to increase the performance of big websites (duriel)
+-> Worked on the count archive so there is a daily archive to increase the performance of big websites (duriel)
 
 -- Fixed a huge number of bugs that were reported at "Trac" --
 
@@ -21,7 +21,6 @@ ClanSphere 2009.0 RC2 >> 2009-04-05
 ___________________________________________________________
 
 -> Added caching functions and implemented caching in access module and metatags (duriel, hajo)
--> Added possibilities to close or pinup threads during writing, close also for create commentes (fay-pain)
 -> Improved handling of filetypeicons (gahero)
 -> Hiding squads in fightus will also hide them in wars now (gahero)
 -> Fixed alot of path settings in themes to be compatible with mod_rewrite (gahero, hajo)
