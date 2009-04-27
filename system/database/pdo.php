@@ -130,12 +130,18 @@ function cs_sql_option($cs_file,$mod) {
   return $options[$mod];
 }
 
-function cs_sql_query($cs_file,$sql_query) {
+function cs_sql_query($cs_file, $sql_query, $more = 0) {
 
   global $cs_db;
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
-  if($sql_data = $cs_db['con']->query($sql_query)) {
+  if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_ASSOC)) {
     $result = array('affected_rows' => $sql_data->rowCount());
+    if(!empty($more)) {
+      while($sql_result = $sql_data->fetch()) {
+        $result['more'][] = $sql_result;
+      }
+      $sql_data = NULL;
+    }
   }
   else {
     $error = $cs_db['con']->errorInfo();

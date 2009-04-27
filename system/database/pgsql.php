@@ -129,12 +129,18 @@ function cs_sql_option($cs_file,$mod) {
   return $options[$mod];
 }
 
-function cs_sql_query($cs_file,$sql_query) {
+function cs_sql_query($cs_file, $sql_query, $more = 0) {
 
   global $cs_db;
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if($sql_data = pg_query($cs_db['con'], $sql_query)) {
     $result = array('affected_rows' => pg_affected_rows($sql_data));
+    if(!empty($more)) {
+      while($sql_result = pg_fetch_assoc($sql_data)) {
+        $result['more'][] = $sql_result;
+      }
+      pg_free_result($sql_data);
+    }
   }
   else { 
     cs_error_sql($cs_file, 'cs_sql_query', pg_last_error($cs_db['con']));
