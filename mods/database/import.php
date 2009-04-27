@@ -68,11 +68,15 @@ if(!empty($sql_content)) {
         $para[1] = 'green';
         $info = $check['affected_rows'];
         if(!empty($explain) AND isset($check['more'][0])) {
-          foreach($check['more'] AS $id => $more) {
-            $check['more'][$id]['id'] = empty($more['id']) ? '' : $more['id'];
-            $check['more'][$id]['select_type'] = empty($more['select_type']) ? '' : $more['select_type'];
+          $explains = array();
+          foreach($check['more'][0] AS $key => $value) {
+            $explains['keys'][]['name'] = $key;
           }
-          $info .= cs_subtemplate(__FILE__, $check, 'database', 'explain');
+          foreach($check['more'] AS $id => $more) {
+            foreach($more AS $unused => $value)
+            $explains['more'][$id]['values'][]['name'] = $value;
+          }
+          $info .= cs_subtemplate(__FILE__, $explains, 'database', 'explain');
         }
       }
       else {
