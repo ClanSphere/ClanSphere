@@ -67,7 +67,11 @@ if(!empty($sql_content)) {
       if($check = cs_sql_query(__FILE__, $sql_query, $explain)) {
         $para[1] = 'green';
         $info = $check['affected_rows'];
-        if(!empty($explain) AND isset($check['more'])) {
+        if(!empty($explain) AND isset($check['more'][0])) {
+          foreach($check['more'] AS $id => $more) {
+            $check['more'][$id]['id'] = empty($more['id']) ? '' : $more['id'];
+            $check['more'][$id]['select_type'] = empty($more['select_type']) ? '' : $more['select_type'];
+          }
           $info .= cs_subtemplate(__FILE__, $check, 'database', 'explain');
         }
       }
