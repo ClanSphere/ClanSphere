@@ -12,12 +12,12 @@
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:directory}</td>
-		<td class="leftb"><input type="text" name="data_folder" value="{var:dir}" maxlength="60" size="40" class="form" /></td>
+		<td class="leftb"><input type="text" name="data_folder" value="{var:dir}" maxlength="60" size="40" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kate} {lang:f_name}</td>
-		<td class="leftb"><input type="text" name="data_name" value="" maxlength="50" size="30" class="form" />
-		 <select name="data_type"	class="form">
+		<td class="leftb"><input type="text" name="data_name" value="" maxlength="50" size="30" />
+		 <select name="data_type">
 		  <option value="" selected="selected"></option>
 			<option value=".php">.php</option>
 			<option value=".sql">.sql</option>
@@ -34,19 +34,19 @@
 		  <div style="display: none;" id="parameters"></div>
 		  {icon:kate} {lang:content}</td>
 		<td class="leftb" style="width: 80%">
-		  <input type="button" name="tab" value="TAB" accesskey="t" onclick="javascript:abc_insert('\t','','data_content','')" class="form" />
+		  <input type="button" name="tab" value="TAB" accesskey="t" onclick="javascript:abc_insert('\t','','data_content','')" />
     {abcode:tools}
     {abcode:html1} <br />
     {abcode:sql}
     {abcode:js}
     {abcode:html2} <br />
-		<textarea name="data_content" cols="50" rows="35" id="data_content" class="form"></textarea></td>
+		<textarea name="data_content" cols="50" rows="35" id="data_content"></textarea></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
-		  <input type="submit" name="submit" value="{lang:create}" class="form" />
-		  <input type="reset" name="reset" value="{lang:reset}" class="form" /></td>
+		  <input type="submit" name="submit" value="{lang:create}" />
+		  <input type="reset" name="reset" value="{lang:reset}" /></td>
 	</tr>
 </table>
 </form>

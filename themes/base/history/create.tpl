@@ -31,7 +31,7 @@
 			{history:abcode_smileys}</td>
 		<td class="leftb">
 			{history:abcode_features}
-			<textarea name="history_text" cols="50" rows="30" id="history_text" class="form">{history:text}</textarea>
+			<textarea name="history_text" cols="50" rows="30" id="history_text">{history:text}</textarea>
 		</td>
 	</tr>
 	{stop:no_rte_html}

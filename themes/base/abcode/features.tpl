@@ -20,7 +20,7 @@
 {if:html}<a href="javascript:abc_insert('[html]','[/html]','{var:textarea}','')" title="{lang:html}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_editdoc.{var:ext}" alt="{lang:html}" /></a>{stop:html}
 <br />
 
-<select name="size_{var:textarea}" class="form"
+<select name="size_{var:textarea}"
   onchange="javascript:abc_insert('[size=' + this.form.size_{var:textarea}.options[this.form.size_{var:textarea}.selectedIndex].value + ']','[/size]','{var:textarea}');this.selectedIndex=0">
   <option value="">{lang:font_size}</option>
   <option value="8">{lang:tiny}</option>
@@ -30,7 +30,7 @@
   <option value="24">{lang:giant}</option>
 </select>
 
-<select name="color_{var:textarea}" class="form"
+<select name="color_{var:textarea}"
   onchange="javascript:abc_insert('[color=' + this.form.color_{var:textarea}.options[this.form.color_{var:textarea}.selectedIndex].value + ']','[/color]','{var:textarea}');this.selectedIndex=0">
   <option value="">{lang:font_color}</option>
   <option value="aqua" style="color: aqua">{lang:aqua}</option>

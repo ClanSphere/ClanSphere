@@ -16,18 +16,18 @@
   </tr>
   <tr>
     <td class="leftc">{icon:download} {lang:file} *</td>
-    <td class="leftb"><input type="file" name="file" value="" class="form" /></td>
+    <td class="leftb"><input type="file" name="file" value="" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:kedit} {lang:f_name}</td>
-    <td class="leftb"><input type="text" name="name" value="{var:name}" maxlength="40" size="25" class="form" /><br />
+    <td class="leftb"><input type="text" name="name" value="{var:name}" maxlength="40" size="25" /><br />
      {clip:info}
     </td>
   </tr>{if:accessentry}
   <tr>
     <td class="leftc">{icon:access} {lang:minaccess}</td>
     <td class="leftb">
-      <select name="minaxx" class="form">
+      <select name="minaxx">
         <option value="0">0 - {lang:lev_0}</option>
         <option value="1">1 - {lang:lev_1}</option>
         <option value="2">2 - {lang:lev_2}</option>
@@ -40,8 +40,8 @@
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
       <input type="hidden" name="dir" value="{var:dir}" />
-      <input type="submit" name="submit" value="{lang:upload}" class="form" />{if:modsdir}
-      <input type="submit" name="accessadd" value="{lang:entry_in_accessfile}" class="form"/>{stop:modsdir}</td>
+      <input type="submit" name="submit" value="{lang:upload}" />{if:modsdir}
+      <input type="submit" name="accessadd" value="{lang:entry_in_accessfile}"/>{stop:modsdir}</td>
   </tr>
 </table>
 </form>

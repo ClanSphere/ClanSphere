@@ -43,7 +43,7 @@
  <tr>
   <td class="leftc">{lang:hash} *</td>
   <td class="leftb">
-    <select name="hash" class="form">
+    <select name="hash">
       <option value="0">----</option>
       <option value="md5"{selected:md5}>Md5 = Message-Digest Algorithm</option>
       <option value="sha1"{selected:sha1}>Sha1 = Secure Hash Algorithm 1</option>
@@ -54,7 +54,7 @@
  <tr>
   <td class="leftc">{lang:type} *</td>
   <td class="leftb">
-    <select name="type" class="form">
+    <select name="type">
       <option value="0">----</option>
       {data:types}
      </select><br />
@@ -64,42 +64,42 @@
  <tr>
   <td class="leftc">{lang:place}</td>
   <td class="leftb">
-    <input type="text" name="place" value="{value:place}" maxlength="200" size="50" class="form" /><br />
+    <input type="text" name="place" value="{value:place}" maxlength="200" size="50" /><br />
     {lang:place_info}
    </td>
  </tr>
  <tr>
   <td class="leftc">{lang:db_name} *</td>
   <td class="leftb">
-    <input type="text" name="name" value="{value:name}" maxlength="80" size="40" class="form" /><br />
+    <input type="text" name="name" value="{value:name}" maxlength="80" size="40" /><br />
     {lang:sqlite_info}
    </td>
  </tr>
  <tr>
    <td class="leftc">{lang:prefix} *</td>
-   <td class="leftb"><input type="text" name="prefix" value="{value:prefix}" maxlength="8" size="8" class="form" /></td>
+   <td class="leftb"><input type="text" name="prefix" value="{value:prefix}" maxlength="8" size="8" /></td>
  </tr>
  <tr>
    <td class="leftc">{lang:user}</td>
-   <td class="leftb"><input type="text" name="user" value="{value:user}" maxlength="50" size="25" class="form" /></td>
+   <td class="leftb"><input type="text" name="user" value="{value:user}" maxlength="50" size="25" /></td>
  </tr>
  <tr>
    <td class="leftc">{lang:pwd}</td>
-   <td class="leftb"><input type="password" name="pwd" value="{value:pwd}" maxlength="50" size="25" class="form" /></td>
+   <td class="leftb"><input type="password" name="pwd" value="{value:pwd}" maxlength="50" size="25" /></td>
  </tr>
  <tr>
    <td class="leftc">{lang:more}</td>
    <td class="leftb">
-     <input type="checkbox" name="save_actions" value="1" class="form"{checked:save_actions} /> {lang:save_actions}<br />
-     <input type="checkbox" name="save_errors" value="1" class="form"{checked:save_errors} /> {lang:save_errors}
+     <input type="checkbox" name="save_actions" value="1"{checked:save_actions} /> {lang:save_actions}<br />
+     <input type="checkbox" name="save_errors" value="1"{checked:save_errors} /> {lang:save_errors}
     </td>
  </tr>
  <tr>
   <td class="leftc">{lang:options}</td>
   <td class="leftb">
-    <input type="hidden" name="lang" value="{data:lang}" class="form" />
-    <input type="submit" name="create" value="{lang:create}" class="form"/>
-    <input type="submit" name="view" value="{lang:show}" class="form"/>
+    <input type="hidden" name="lang" value="{data:lang}" />
+    <input type="submit" name="create" value="{lang:create}"/>
+    <input type="submit" name="view" value="{lang:show}"/>
     
    </td>
  </tr>

@@ -13,7 +13,7 @@
   <tr>
     <td class="leftc">{icon:yast_group_add} {lang:squad}</td>
     <td class="leftb">
-      <select name="squads_id" class="form">
+      <select name="squads_id">
         <option value="0" selected="selected">----</option>{loop:squads}
         <option value="{squads:squads_id}">{squads:squads_name}</option>{stop:squads}
        </select>
@@ -22,9 +22,9 @@
   <tr>
     <td class="leftc">{icon:configure} {lang:options}</td>
     <td class="leftb">
-      <input type="hidden" name="cups_id" value="{cup:id}" class="form" />
-      <input type="hidden" name="system" value="teams" class="form" />
-      <input type="submit" name="submit" value="{lang:take_part}" class="form" />
+      <input type="hidden" name="cups_id" value="{cup:id}" />
+      <input type="hidden" name="system" value="teams" />
+      <input type="submit" name="submit" value="{lang:take_part}" />
      </td>
   </tr>
 </table>

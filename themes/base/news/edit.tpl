@@ -80,16 +80,16 @@
     <tr>
       <td class="leftc">{icon:configure} {lang:more}</td>
       <td class="leftb" colspan="2">
-        <input class="form" type="checkbox" value="1" name="news_close" {news:news_close}/>
+        <input type="checkbox" value="1" name="news_close" {news:news_close}/>
         {lang:close}
         <br/>
-        <input class="form" type="checkbox" value="1" name="news_public" {news:news_public}/>
+        <input type="checkbox" value="1" name="news_public" {news:news_public}/>
         {lang:public}
         <br/>
-        <input class="form" type="checkbox" value="1" onclick="document.getElementById('editor_readmore').style.display=this.checked?'block':'none'" name="news_readmore_active" {news:news_readmore_active}/>
+        <input type="checkbox" value="1" onclick="document.getElementById('editor_readmore').style.display=this.checked?'block':'none'" name="news_readmore_active" {news:news_readmore_active}/>
         {lang:news_readmore_active}
         <br/>
-        <input class="form" type="checkbox" value="1" name="news_attached" {news:news_attached}/>
+        <input type="checkbox" value="1" name="news_attached" {news:news_attached}/>
         {lang:attached}
         <br/>
         <input type="checkbox" name="news_newtime" value="1" />

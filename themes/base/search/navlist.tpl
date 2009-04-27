@@ -2,8 +2,8 @@
 <table style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="left">
-			<input type="text" name="text" value="{if:text}{search:text}{stop:text}" maxlength="200" size="15" class="form" />
-			<select name="where" class="form">
+			<input type="text" name="text" value="{if:text}{search:text}{stop:text}" maxlength="200" size="15" />
+			<select name="where">
 				<option value="0">{lang:modul}</option>
 				<option value="articles" {search:articles_check}>{lang:articles}</option>
 				<option value="clans" {search:clans_check}>{lang:clans}</option>

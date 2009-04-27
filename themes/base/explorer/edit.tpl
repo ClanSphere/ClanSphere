@@ -22,21 +22,21 @@
     
     <td class="leftb">
     {if:phpfile}
-    <input type="button" name="tab" value="TAB" accesskey="t" onclick="javascript:abc_insert('\t','','data_content','')" class="form" />
+    <input type="button" name="tab" value="TAB" accesskey="t" onclick="javascript:abc_insert('\t','','data_content','')" />
     {abcode:tools}
     {abcode:html1} <br />
     {abcode:sql}
     {abcode:js}
     {abcode:html2} <br />{stop:phpfile}
-    <textarea name="data_content" cols="50" rows="35" id="data_content" class="form">{var:content}</textarea>
+    <textarea name="data_content" cols="50" rows="35" id="data_content">{var:content}</textarea>
    </td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
       <input type="hidden" name="file" value="{var:source}" />
-      <input type="submit" name="submit" value="{lang:edit}" class="form" />
-      <input type="reset" name="reset" value="{lang:reset}" class="form" />
+      <input type="submit" name="submit" value="{lang:edit}" />
+      <input type="reset" name="reset" value="{lang:reset}" />
      </td>
   </tr>
 </table>

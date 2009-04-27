@@ -12,21 +12,21 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:kedit} {lang:name} *</td>
-    <td class="leftb"><input type="text" value="{medals:medals_name}" name="medals_name" class="form" maxlength="150" size="30" /></td>
+    <td class="leftb"><input type="text" value="{medals:medals_name}" name="medals_name" maxlength="150" size="30" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:download} {lang:picture}</td>
-    <td class="leftb"><input type="file" name="medals_picture" class="form" /></td>
+    <td class="leftb"><input type="file" name="medals_picture" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:description}</td>
-    <td class="leftb">{form:abcode}<br /><textarea class="rte_abcode" name="medals_text" id="medals_text" class="form" rows="15">{medals:medals_text}</textarea></td>
+    <td class="leftb">{form:abcode}<br /><textarea class="rte_abcode" name="medals_text" id="medals_text" rows="15">{medals:medals_text}</textarea></td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-      <input type="submit" value="{lang:create}" name="submit" class="form" />
-      <input type="reset" value="{lang:reset}" name="reset" class="form" />
+      <input type="submit" value="{lang:create}" name="submit" />
+      <input type="reset" value="{lang:reset}" name="reset" />
      </td>
   </tr>
 </table>

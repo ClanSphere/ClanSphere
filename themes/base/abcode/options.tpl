@@ -49,7 +49,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:kopete} {lang:comments}</td>
-      <td class="leftb"><input type="checkbox" name="def_abcode" value="1" class="form"{checked:def_abcode}/> {lang:def_abcode}</td>
+      <td class="leftb"><input type="checkbox" name="def_abcode" value="1"{checked:def_abcode}/> {lang:def_abcode}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>

@@ -34,9 +34,6 @@ input, textarea, select {
   margin: 2px;
   padding-left: 3px;
 }
-.form:focus {
-  background-color: #FFFFFF;
-}
 .forum {
   background-color:#888888;
   color:inherit;

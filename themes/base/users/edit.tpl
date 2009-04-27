@@ -15,12 +15,12 @@
   </tr>
   <tr>
 	<td class="leftc">{icon:personal} {lang:nick} *</td>
-	<td class="leftb"><input type="text" name="data[users_nick]" value="{users:users_nick}" maxlength="40" size="40" class="form" /></td>
+	<td class="leftb"><input type="text" name="data[users_nick]" value="{users:users_nick}" maxlength="40" size="40" /></td>
   </tr>
   <tr>
 	<td class="leftc">{icon:mail_generic} {lang:email} *</td>
 	<td class="leftb" colspan="2">
-	  <input type="text" name="data[users_email]" value="{users:users_email}" maxlength="40" size="40" class="form" />
+	  <input type="text" name="data[users_email]" value="{users:users_email}" maxlength="40" size="40" />
 	</td>
   </tr>
   <tr>
@@ -30,7 +30,7 @@
   <tr>
 	<td class="leftc">{icon:gpg} {lang:state}</td>
 	<td class="leftb">
-	  <select name="data[users_active]" class="form">
+	  <select name="data[users_active]">
 	    <option value="0" {users:state_deactivated}>Deaktiviert</option>
 	    <option value="1" {users:state_activated}>Aktiviert</option>
 	  </select>

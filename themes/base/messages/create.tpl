@@ -40,13 +40,13 @@
     <td class="leftc">{icon:personal} {lang:to} *</td>
     <td class="leftb"><input type="text" name="messages_to" value="{msg:to}"
         onkeyup="cs_ajax_getcontent('{page:path}mods/messages/getusers.php?name=' + document.getElementById('name').value,'output')"
-        id="name" maxlength="200" size="50" class="form" /><br />
+        id="name" maxlength="200" size="50" /><br />
       <span id="output"></span>
      </td>
   </tr>
   <tr>
     <td class="leftc">{icon:kedit} {lang:subject} *</td>
-    <td class="leftb"><input type="text" name="messages_subject" value="{msg:subject}" maxlength="200" size="50" class="form" /></td>
+    <td class="leftb"><input type="text" name="messages_subject" value="{msg:subject}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
     <td class="leftc">
@@ -55,19 +55,19 @@
      </td>
     <td class="leftb">
       {msg:abcode}
-      <textarea class="rte_abcode" name="messages_text" cols="50" rows="15" id="messages_text" class="form">{msg:text}</textarea></td>
+      <textarea class="rte_abcode" name="messages_text" cols="50" rows="15" id="messages_text">{msg:text}</textarea></td>
   </tr>
   <tr>
     <td class="leftc">{icon:configure} {lang:more}</td>
-    <td class="leftb"><input type="checkbox" name="messages_show_sender" value="1" class="form"{checked:show_sender} /> {lang:messages_show_sender}</td>
+    <td class="leftb"><input type="checkbox" name="messages_show_sender" value="1"{checked:show_sender} /> {lang:messages_show_sender}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-      <input type="hidden" name="reply_id" value="{var:reply_id}" class="form" />
-      <input type="submit" name="submit" value="{lang:send}" class="form" />
-      <input type="submit" name="preview" value="{lang:preview}" class="form" />
-      <input type="reset" name="reset" value="{lang:reset}" class="form" />
+      <input type="hidden" name="reply_id" value="{var:reply_id}" />
+      <input type="submit" name="submit" value="{lang:send}" />
+      <input type="submit" name="preview" value="{lang:preview}" />
+      <input type="reset" name="reset" value="{lang:reset}" />
      </td>
   </tr>
 </table>

@@ -12,7 +12,7 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" style="width:140px"> {icon:download} {lang:upload}</td>
-      <td class="leftb"><input type="file" name="picture" value="" class="form" />
+      <td class="leftb"><input type="file" name="picture" value="" />
         <br />
         <br />
         {upload:clip}
@@ -20,8 +20,8 @@
     </tr>
     <tr>
       <td class="leftc"> {icon:ksysguard} {lang:options}</td>
-      <td class="leftb"><input type="hidden" name="where" value="{file:id}" class="form"/>
-        <input type="submit" name="submit" value="{lang:save}" class="form"/></td>
+      <td class="leftb"><input type="hidden" name="where" value="{file:id}"/>
+        <input type="submit" name="submit" value="{lang:save}"/></td>
     </tr>
   </table>
 </form>

@@ -13,7 +13,7 @@
   <tr>
     <td class="leftc">{icon:yast_group_add} {lang:winner}</td>
     <td class="leftb">
-      <select name="cupmatches_winner" class="form">
+      <select name="cupmatches_winner">
 	      <option value="0">----</option>
 	      <option value="{match:team1_id}">{match:team1_name}</option>
 	      <option value="{match:team2_id}">{match:team2_name}</option>
@@ -22,11 +22,11 @@
   </tr>
   <tr>
     <td class="leftc">{icon:smallcal} {lang:result} {match:team1_name}</td>
-    <td class="leftb"><input type="text" name="cupmatches_score1" value="" maxlength="5" size="5" class="form" /></td>
+    <td class="leftb"><input type="text" name="cupmatches_score1" value="" maxlength="5" size="5" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:smallcal} {lang:result} {match:team2_name}</td>
-    <td class="leftb"><input type="text" name="cupmatches_score2" value="" maxlength="5" size="5" class="form" /></td>
+    <td class="leftb"><input type="text" name="cupmatches_score2" value="" maxlength="5" size="5" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
@@ -35,7 +35,7 @@
       <input type="hidden" name="squad2_id" value="{match:team2_id}" />
       <input type="hidden" name="cupmatches_id" value="{match:id}" />
       <input type="hidden" name="team" value="{match:teamnr}" />
-      <input type="submit" name="result_submit" value="{lang:insert}" class="form" /></td>
+      <input type="submit" name="result_submit" value="{lang:insert}" /></td>
   </tr>
 </table>
 </form>

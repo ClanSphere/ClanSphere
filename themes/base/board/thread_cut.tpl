@@ -12,7 +12,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
  <tr>
    <td class="leftc" style="width: 130px">{icon:kedit} {lang:headline} *</td>
-   <td class="leftb" colspan="2"><input type="text" name="threads_headline" value="" maxlength="200" size="50" class="form" /></td>
+   <td class="leftb" colspan="2"><input type="text" name="threads_headline" value="" maxlength="200" size="50" /></td>
  </tr>
  <tr>
    <td class="leftc">{icon:tutorials} {lang:board} *</td>

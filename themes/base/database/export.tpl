@@ -17,7 +17,7 @@
 	</tr>
 	<tr>
 		<td class="centerb" rowspan="4">
-			<select name="tables[]" class="form" id="sql_tables" multiple="multiple" size="8" style="width:90%">
+			<select name="tables[]" id="sql_tables" multiple="multiple" size="8" style="width:90%">
 				{loop:tables}
 				{tables:option}
 				{stop:tables}

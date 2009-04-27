@@ -14,9 +14,9 @@
     <tr>
       <td class="leftc">{icon:personal} {lang:user}</td>
       <td class="leftb">
-        <input type="text" name="users_nick" id="name" value="" onkeyup="cs_ajax_getcontent('{form:dirname}mods/messages/getusers.php?name=' + document.getElementById('name').value,'names_list')" maxlength="200" size="50" class="form" />
-        <input type="submit" value="{lang:awardingto}" name="submit" class="form" />
-        <input type="hidden" value="{medals:id}" name="medals_id" class="form" />
+        <input type="text" name="users_nick" id="name" value="" onkeyup="cs_ajax_getcontent('{form:dirname}mods/messages/getusers.php?name=' + document.getElementById('name').value,'names_list')" maxlength="200" size="50" />
+        <input type="submit" value="{lang:awardingto}" name="submit" />
+        <input type="hidden" value="{medals:id}" name="medals_id" />
         <div id="names_list"></div>
         </td>
     </tr>

@@ -10,11 +10,11 @@
   <tr>
     <td class="leftb" colspan="3"> {lang:category}
       <form method="post" id="files_manage" action="{url:files_manage}">
-        <select name="where" class="form">
+        <select name="where">
           <option value="0">----</option>
           {head:categories}
         </select>
-        <input type="submit" name="submit" value="{lang:show}" class="form"/>
+        <input type="submit" name="submit" value="{lang:show}"/>
       </form></td>
   </tr>
 </table>

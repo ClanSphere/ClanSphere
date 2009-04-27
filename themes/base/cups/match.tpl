@@ -43,11 +43,11 @@
       <form method="post" id="matchadmin" action="{url:cups_matchedit}">
         <input type="hidden" name="cupmatches_id" value="{match:id}" />
         {if:nothingyet}<input type="hidden" name="team" value="{match:teamnr}" />
-        <input type="submit" name="result" value="{lang:enter_result}" class="form" />{stop:nothingyet}
-        {if:accept}<input type="submit" name="accept{match:teamnr}" value="{lang:accept_result}" class="form" />{stop:accept}
+        <input type="submit" name="result" value="{lang:enter_result}" />{stop:nothingyet}
+        {if:accept}<input type="submit" name="accept{match:teamnr}" value="{lang:accept_result}" />{stop:accept}
         {if:confirmed}{lang:both_confirmed}{stop:confirmed}
         {if:waiting}{lang:waiting}{stop:waiting}
-        {if:admin}<input type="submit" name="adminedit" value="{lang:adminedit}" class="form" />{stop:admin}
+        {if:admin}<input type="submit" name="adminedit" value="{lang:adminedit}" />{stop:admin}
       </form>
     </td>
   </tr>
