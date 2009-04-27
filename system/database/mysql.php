@@ -228,12 +228,13 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
 function cs_sql_version($cs_file)
 {
   global $cs_db;
-  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
+  $sql_infos = array('data_free' => 0, 'data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_query = "SHOW TABLE STATUS WHERE NAME LIKE '" . cs_sql_escape($cs_db['prefix'] . '_') . "%'";
   $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_version', mysql_error($cs_db['con']));
-  while($row = mysql_fetch_array($sql_data)) {
-    $sql_infos['data_size'] = $sql_infos['data_size'] + $row['Data_length'];
-    $sql_infos['index_size'] = $sql_infos['index_size'] + $row['Index_length'];
+  while($row = mysql_fetch_assoc($sql_data)) {
+    $sql_infos['data_size'] += $row['Data_length'];
+    $sql_infos['index_size'] += $row['Index_length'];
+    $sql_infos['data_free'] += $row['Data_free'];
     $sql_infos['tables']++;
     $sql_infos['names'][] .= $row['Name'];
   }

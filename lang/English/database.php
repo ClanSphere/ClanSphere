@@ -16,6 +16,7 @@ $cs_lang['tables']  = 'Tables';
 $cs_lang['usage'] = 'Usage';
 $cs_lang['data'] = 'Datas';
 $cs_lang['indexe'] = 'Indexes';
+$cs_lang['overhead'] = 'Overhead';
 
 $cs_lang['roots'] = 'Roots';
 $cs_lang['body_roots']  = 'Please select from the following options.';

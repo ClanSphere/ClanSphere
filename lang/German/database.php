@@ -16,6 +16,7 @@ $cs_lang['tables']  = 'Tabellen';
 $cs_lang['usage'] = 'Nutzung';
 $cs_lang['data'] = 'Daten';
 $cs_lang['indexe'] = 'Indexe';
+$cs_lang['overhead'] = '&Uuml;berhang';
 
 $cs_lang['roots'] = 'Basis';
 $cs_lang['body_roots']  = 'W&auml;hlen Sie aus den folgenden Aktionen aus.';

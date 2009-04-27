@@ -23,6 +23,8 @@ if(!empty($sql_infos['tables'])) {
   $data['sqlinfo']['usage'] .= cs_filesize($sql_infos['index_size']) . ' ' . $cs_lang['indexe'];
   $data['sqlinfo']['usage'] .= cs_html_br(1) . '--------------------------' . cs_html_br(1);
   $data['sqlinfo']['usage'] .= cs_filesize($sql_infos['data_size'] + $sql_infos['index_size']) . ' ' . $cs_lang['total'];
+  $data['sqlinfo']['usage'] .= cs_html_br(2);
+  $data['sqlinfo']['usage'] .= cs_filesize($sql_infos['data_free']) . ' ' . $cs_lang['overhead'];
 }
 else {
   $data['sqlinfo']['usage'] = '-';

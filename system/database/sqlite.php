@@ -218,7 +218,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
 function cs_sql_version($cs_file) {
 
   global $cs_db;
-  $sql_infos = array('data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
+  $sql_infos = array('data_free' => 0, 'data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_infos['type'] = 'SQLite 2 (sqlite)';
   $sql_infos['host'] = 'localhost';
   $sql_infos['client'] = sqlite_libversion();
