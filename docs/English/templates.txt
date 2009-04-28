@@ -104,11 +104,6 @@ Latest 4 Downloads
 
 The 4 most downloaded files
 
-{lanpartys:navnext}
-
-Informations of the following lan-party
-Number of guests with its status is shown by a graphical bar
-
 {news:navlist}
 
 Last published news with headline and date
