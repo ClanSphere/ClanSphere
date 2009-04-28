@@ -7,7 +7,9 @@ $cs_lang = cs_translate('install');
 $sql_files = cs_paths('system/database');
 unset($sql_files['pdo.php']);
 
-if(isset($_POST['create']) OR isset($_POST['view'])) {
+$setup_exists = file_exists('setup.php') ? 1 : 0;
+
+if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) {
 
   $cs_db['hash'] = $_POST['hash'];
   $cs_db['type'] = $_POST['type'];
@@ -85,8 +87,6 @@ else {
   'user' => '', 'pwd' => '', 'name' => '', 'prefix' => 'cs');
   $log = array('save_actions' => 0, 'save_errors' => 0);
 }
-
-$setup_exists = file_exists('setup.php') ? 1 : 0;
 
 $data = array();
 
