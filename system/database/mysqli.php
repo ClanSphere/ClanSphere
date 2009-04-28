@@ -134,6 +134,7 @@ function cs_sql_query($cs_file, $sql_query, $more = 0)
         $result['more'][] = $sql_result;
       }
       mysqli_free_result($sql_data);
+    }
   } else { 
     cs_error_sql($cs_file, 'cs_sql_query', mysqli_error($cs_db['con']));
     $result = 0;
