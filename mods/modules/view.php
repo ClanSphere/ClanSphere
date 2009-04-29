@@ -2,7 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // Id: view.php (Tue Nov 25 23:43:05 CET 2008) fAY-pA!N
 
-$cs_lang = cs_translate('modules');
+$cs_lang = cs_translate('modules', 1);
+$cs_lang = cs_translate('access', 1);
 
 $data['if']['access_explorer'] = FALSE;
 
@@ -70,5 +71,3 @@ if(file_exists('mods/' . $dir . '/access.php')) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'modules','view');
-
-?>
