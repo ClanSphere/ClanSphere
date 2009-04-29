@@ -16,7 +16,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kdmconfig} {lang:own_label}</td>
-		<td class="leftb"><input type="checkbox" name="squads_own" value="1" {squads:own_check} /></td>
+		<td class="leftb"><input type="checkbox" name="squads_own" value="1" {squads:own_check} /> {lang:yes}</td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:lock} {lang:hidden}</td>

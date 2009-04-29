@@ -99,6 +99,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',0,'clans_name',0,0);
   $data['squads']['clan_sel'] = cs_dropdown('clans_id','clans_name',$cs_clans,$cs_squads['clans_id']);
 
+  $data['games'] = array();
   $el_id = 'game_1';
   $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   $games_count = count($cs_games);
@@ -149,5 +150,3 @@ else {
   }
   cs_redirect($cs_lang['create_done'],'squads');
 }
-
-?>

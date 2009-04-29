@@ -43,7 +43,11 @@ if(isset($_POST['submit'])) {
     $cs_squads['squads_picture'] = '';
   }
 
-  $img_size = getimagesize($files['picture']['tmp_name']);
+  if(!empty($files['picture']['tmp_name']))
+    $img_size = getimagesize($files['picture']['tmp_name']);
+  else
+    $img_size = 0;
+
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
   $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
@@ -120,6 +124,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',0,'clans_name',0,0);
   $data['squads']['clan_sel'] = cs_dropdown('clans_id','clans_name',$cs_clans,$cs_squads['clans_id']);
 
+  $data['games'] = array();
   $el_id = 'game_1';
   $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   $games_count = count($cs_games);
@@ -169,6 +174,4 @@ else {
   cs_sql_update(__FILE__,'squads',$squads_cells,$squads_save,$squads_id);
   
   cs_redirect($cs_lang['changes_done'], 'squads') ;
-} 
-  
-?>
+}
