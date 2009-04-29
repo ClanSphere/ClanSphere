@@ -48,6 +48,10 @@ All banners are listed line by line
 
 All banners are listed without new line calls
 
+{banners:rotation}
+
+Banner image switches on every page change
+
 {board:navlist}
 
 Lists the most current board discussions
