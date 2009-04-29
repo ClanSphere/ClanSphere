@@ -354,7 +354,9 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     if (!empty($phpeval))
       $replace = preg_replace_callback("=\[phpcode\](.*?)\[/phpcode\]=si",'cs_abcode_eval',$replace);
 
-    $replace = nl2br($replace);
+    if(empty($html)) 
+      $replace = nl2br($replace);
+
     $replace = preg_replace_callback("=\[u\](.*?)\[/u\]=si","cs_abcode_u",$replace);
     $replace = preg_replace_callback("=\[b\](.*?)\[/b\]=si","cs_abcode_b",$replace);
     $replace = preg_replace_callback("=\[i\](.*?)\[/i\]=si","cs_abcode_i",$replace);
