@@ -94,13 +94,13 @@ else {
 
 if(isset($_POST['preview']) and empty($error)) {
   $data['news']['news_time'] = cs_date('unix', cs_time(), 1);
-  $data['news']['preview_news_text'] = cs_secure($cs_news['news_text'], 1, 1, 1, 1);
+  $data['news']['preview_news_text'] = cs_secure($cs_news['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
 
   $data['if']['readmore'] = false;
 
   if(!empty($cs_news['news_readmore'])) {
     $data['if']['readmore'] = true;
-    $data['news']['preview_news_readmore'] = cs_secure($cs_news['news_readmore'], 1, 1, 1, 1) . cs_html_br(2);
+    $data['news']['preview_news_readmore'] = cs_secure($cs_news['news_readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . cs_html_br(2);
   }
 
   $search = 'users_id = ' . $cs_news['users_id'];
