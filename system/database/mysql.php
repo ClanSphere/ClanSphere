@@ -16,7 +16,7 @@ function cs_sql_connect($cs_db, $test = 0)
   }
 
   if(empty($test) AND empty($error)) {
-    # mysql_set_charset($connect, 'utf8'); // php 5.2.3+
+    # mysql_set_charset('utf8', $connect); // php 5.2.3+
     return $connect;
   }
   elseif(empty($test)) {
