@@ -34,7 +34,10 @@ if(isset($_POST['submit'])) {
     $cs_clans['clans_picture'] = '';
   }
 
-  $img_size = getimagesize($files['picture']['tmp_name']);
+  if (!empty($files['picture']['tmp_name']))
+	  $img_size = getimagesize($files['picture']['tmp_name']);
+  else
+    $img_size = 0;
   
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
