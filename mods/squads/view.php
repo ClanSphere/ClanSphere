@@ -29,7 +29,7 @@ $clan_link = cs_link($clans_name,'clans','view','id=' . $data['squad']['clans_id
 $data['lang']['part_of'] = sprintf($cs_lang['body_list'], $clan_link);
 
 $icon = 'uploads/games/' . $data['squad']['games_id'] . '.gif';
-$data['game']['icon'] = !file_exists($icon) ? '' : cs_html_img($icon);
+$data['game']['icon'] = (empty($data['squad']['games_id']) OR !file_exists($icon)) ? '' : cs_html_img($icon);
 
 if(!empty($data['squad']['games_id'])) {      
     $where = "games_id = '" . $data['squad']['games_id'] . "'";
