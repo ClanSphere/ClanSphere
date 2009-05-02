@@ -79,15 +79,17 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 }
 else {
 
+  $more = 'where=' . $cs_members['squads_id'];
+
   unset($cs_members['squads_id']);
   unset($cs_members['users_id']);
   settype($cs_members['members_order'],'integer');
 
   $members_cells = array_keys($cs_members);
   $members_save = array_values($cs_members);
-  cs_sql_update(__FILE__,'members',$members_cells,$members_save,$members_id);
+  cs_sql_update(__FILE__,'members',$members_cells,$members_save,$members_id);  
 
-  cs_redirect($cs_lang['changes_done'],'members','center');
+  cs_redirect($cs_lang['changes_done'],'members','center', $more);
 } 
   
 ?>
