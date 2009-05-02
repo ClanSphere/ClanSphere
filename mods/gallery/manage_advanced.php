@@ -42,7 +42,8 @@ if(isset($_POST['submit']))
 			{
 				$file = $files_gl['zipfile']['tmp_name'];
 				$file_type = $files_gl['zipfile']['type'];
-				if ($file_type !== 'application/zip') // PHP 4 'application/zip' PHP 5 'application/x-zip-compressed'
+        // PHP 4 'application/zip' PHP 5 'application/x-zip-compressed'
+				if ($file_type !== 'application/zip' AND $file_type !== 'application/x-zip-compressed')
 				{
 					$data['if']['error_zip'] = TRUE;
           $data['zip']['filetype'] = $file_type;
