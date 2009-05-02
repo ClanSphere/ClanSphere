@@ -15,7 +15,7 @@ if (empty($account['access_ajax'])) die('No access on AJAX');
 
 if (isset($_GET['debug'])) {
   if (substr($cs_main['ajax_navlists'],-1) != ',') $cs_main['ajax_navlists'] .= ',';
-  $cs_main['ajax_navlists'] .= 'func_sql,func_errors,func_queries,func_parse,';
+  $cs_main['ajax_navlists'] .= 'func_errors,func_queries,func_parse,';
 }
 
 $ajaxes = explode(',',$cs_main['ajax_navlists']);
