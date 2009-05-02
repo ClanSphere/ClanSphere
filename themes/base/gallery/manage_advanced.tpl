@@ -150,6 +150,9 @@
 	<tr>
 		<td class="leftc">{lang:error_zip}</td>
 	</tr>
+	<tr>
+		<td class="leftb">{lang:filetypes} {zip:filetype}</td>
+	</tr>
 </table>
 {stop:error_zip}
 
