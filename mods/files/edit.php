@@ -149,8 +149,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     }  
     $data['mirrors'][$run-1]['accesses'] = array();
     for($a = 0; $a < 6; $a++) {
-    $data['mirrors'][$run-1]['accesses'][$a]['name'] = $a . ' - ' . $cs_lang['lev_' . $a];
+      $data['mirrors'][$run-1]['accesses'][$a]['name'] = $a . ' - ' . $cs_lang['lev_' . $a];
       $data['mirrors'][$run-1]['accesses'][$a]['value'] = $a;
+      $data['mirrors'][$run-1]['accesses'][$a]['selected'] = $a == $data['mirrors'][$run-1]['access'] ? ' selected="selected"' : '';
     }
   }
   
@@ -164,6 +165,4 @@ else {
  cs_sql_update(__FILE__,'files',$files_cells,$files_save,$files_id);
     
  cs_redirect($cs_lang['changes_done'],'files');
-} 
-
-?>
+}

@@ -136,6 +136,7 @@ if(!empty($error) OR !isset($_POST['submit']))
     for($a = 0; $a < 6; $a++) {
 			$data['mirrors'][$run]['accesses'][$a]['name'] = $a . ' - ' . $cs_lang['lev_' . $a];
       $data['mirrors'][$run]['accesses'][$a]['value'] = $a;
+      $data['mirrors'][$run]['accesses'][$a]['selected'] = $a == $data['mirrors'][$run]['access'] ? ' selected="selected"' : '';
     }
   }
   $data['if']['closed'] = $data['file']['files_close'] ? true : false;
@@ -152,5 +153,3 @@ else
 
  cs_redirect($cs_lang['create_done'],'files');
 }
-
-?>

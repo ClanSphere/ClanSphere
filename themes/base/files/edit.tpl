@@ -55,7 +55,7 @@
       <td class="leftb">{icon:access} {lang:access}
         <select name="files_access_{mirrors:num}">
         {loop:accesses}
-          <option value="{accesses:value}">{accesses:name}</option>
+          <option value="{accesses:value}" {accesses:selected}>{accesses:name}</option>
         {stop:accesses}
         </select></td>
     </tr>
