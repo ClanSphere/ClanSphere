@@ -22,9 +22,8 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
     document.title = document.getElementById('ajax_title').innerHTML;
   }
   delete response;
-	
+
   if (onfinish) window.setTimeout(onfinish,0);
-	
 }
 
 function include_javascript(path) {
@@ -130,11 +129,10 @@ function cloaded(anch) {
   forms_to_ajax();
   ajaxes = document.getElementsByTagName('script');
   for (var i = 0; i < ajaxes.length; i++)
-	if (ajaxes[i].src == "") {
+    if (ajaxes[i].src == "") {
       var ajax = ajaxes[i].innerHTML;
-	  window.setTimeout(function() { eval(ajax); },0);
-	  alert(ajax);
-	}
+      window.setTimeout(function() { eval(ajax); },0);
+    }
   if (anch != "__START__") setnavs(1);
 }
 
@@ -221,7 +219,7 @@ function forms_to_ajax() {
       if(active_upload_count==0) {
         for (var i = 0; i < parent.frames.length; ++i )
           if ( parent.frames[i].FCK )
-        	  parent.frames[i].FCK.LinkedField.value = escape(parent.frames[i].FCK.GetData());
+            parent.frames[i].FCK.LinkedField.value = escape(parent.frames[i].FCK.GetData());
         FCKeditorAPI = null;
         document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
         cs_ajax_getcontent(this.action.replace(/([a-zA-Z0-9\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_to_string(this), 1);
