@@ -1,16 +1,17 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
 
 $cs_lang = cs_translate('banners');
 
 $where = 0;
 if(!empty($_GET['cat_id'])) {
   $cat_id = (int) $_GET['cat_id'];
-  $cat_banners = cs_sql_count(__FILE__, 'categories', "categories_id = '" $cat_id . "' AND categories_mod = 'banners'");
+  $cat_banners = cs_sql_count(__FILE__, 'categories', "categories_id = '" . $cat_id . "' AND categories_mod = 'banners'");
   if(!empty($cat_banners)) $where = "categories_id = '" . $cat_id . "'";
 }
 
 $data = array();
-
 $data['banners'] = cs_sql_select(__FILE__,'banners','banners_picture, banners_alt, banners_url',$where,'banners_order ASC',0,0);
 $banners_loop = count($data['banners']);
 
