@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0 RC3 >> 2009-04-xx
+ClanSphere 2009.0 RC3 >> 2009-05-xx
 ___________________________________________________________
 
 -> Added abcode editor bridge to allow the usage of other wysiwyg software (hajo)
@@ -10,6 +10,7 @@ ___________________________________________________________
 -> Fixed many getimagesize php notice issues (hajo)
 -> Installation detects and tests database extensions automated now (hajo)
 -> Moved charset info from languages to 'setup.php' and set it to UTF-8 by default (hajo)
+-> Removed needless php closing tag from nearly every end of file (hajo)
 -> Reworked clansphere/software and database/roots page to be more helpful (hajo)
 -> The AJAX fallback solution now works, enabling AJAX for everybody is now possible (duriel)
 -> Worked on the count archive so there is a daily archive to increase the performance of big websites (duriel)
