@@ -2,7 +2,12 @@
 
 $cs_lang = cs_translate('banners');
 
-if(!empty($_GET['cat_id'])) $where = "categories_id = '" . $_GET['cat_id'] . "'"; else $where = 0;
+$where = 0;
+if(!empty($_GET['cat_id'])) {
+  $cat_id = (int) $_GET['cat_id'];
+  $cat_banners = cs_sql_count(__FILE__, 'categories', "categories_id = '" $cat_id . "' AND categories_mod = 'banners'");
+  if(!empty($cat_banners)) $where = "categories_id = '" . $cat_id . "'";
+}
 
 $data = array();
 
@@ -20,26 +25,3 @@ else {
   }
   echo cs_subtemplate(__FILE__,$data,'banners','navlist');
 }
-
-/*
-// ClanSphere 2009 - www.clansphere.net
-// $Id$
-
-$cat_id = empty($_GET['cat_id']) ? 0 : (int) $_GET['cat_id'];
-
-$where = empty($cat_id) ? 0 : "categories_id = '" . $cat_id . "'";
-
-$cells = 'banners_picture, banners_alt, banners_url, categories_id';
-$data['banners'] = cs_sql_select(__FILE__,'banners',$cells,$where,'banners_order ASC',0,0);
-
-if(empty($data['banners'])) {
-  echo '----';
-}
-else {
-  foreach ($data['banners'] AS $banner) {
-    $go = cs_secure($banner['banners_picture']);
-    $picture = cs_html_img($go,0,0," style=\"margin-bottom:4px\"",cs_secure($banner['banners_alt']));
-    echo cs_html_link('http://' . cs_secure($banner['banners_url']),$picture) . cs_html_br(1);
-  }
-}*/
-?>
