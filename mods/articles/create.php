@@ -26,6 +26,10 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $data['art']['articles_time'] = cs_time();
   $data['art']['users_id'] = $account['users_id'];
 
+  $data['data']['articles_com_checked'] = empty($data['art']['articles_com']) ? '' : 'checked="checked"';
+  $data['data']['articles_navlist_checked'] = empty($data['art']['articles_navlist']) ? '' : 'checked="checked"';
+  $data['data']['articles_fornext_checked'] = empty($data['art']['articles_fornext']) ? '' : 'checked="checked"';
+
   $categories = cs_sql_select(__FILE__,'categories','categories_picture',"categories_id = '" . $data['art']['categories_id'] . "'");
 
     $errormsg = '';

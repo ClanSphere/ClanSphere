@@ -49,11 +49,11 @@
   {stop:rte_html}
   <tr>
     <td class="leftc">{icon:configure} {lang:more}</td>
-    <td class="leftb"><input type="checkbox" name="articles_com" value="1" />
+    <td class="leftb"><input type="checkbox" name="articles_com" value="1" {data:articles_com_checked} />
       {lang:nocom}<br />
-      <input type="checkbox" name="articles_navlist" value="1" />
+      <input type="checkbox" name="articles_navlist" value="1" {data:articles_navlist_checked} />
       {lang:nav}<br />
-      <input type="checkbox" name="articles_fornext" value="1" />
+      <input type="checkbox" name="articles_fornext" value="1" {data:articles_fornext_checked} />
       {lang:fornext}</td>
   </tr>
   {pictures:select}
