@@ -15,12 +15,11 @@ $data['medalsuser'] = cs_sql_select(__FILE__,$tables, $cells, "users_id = '" . $
 $data['count']['medalsuser'] = count($data['medalsuser']);
 
 for ($i = 0; $i < $data['count']['medalsuser']; $i++) {
-  $data['medalsuser'][$i]['img_src'] = $cs_main['php_self']['dirname'] . 'uploads/medals/medal-' . $data['medalsuser'][$i]['medals_id'] . '.' . $data['medalsuser'][$i]['medals_extension'];
+  $data['medalsuser'][$i]['img_src'] = 'uploads/medals/medal-' . $data['medalsuser'][$i]['medals_id'] . '.' . $data['medalsuser'][$i]['medals_extension'];
+  echo $data['medalsuser'][$i]['img_src'];  
   $data['medalsuser'][$i]['medals_text'] = cs_secure($data['medalsuser'][$i]['medals_text'],1);
   $data['medalsuser'][$i]['medals_date'] = cs_date('unix',$data['medalsuser'][$i]['medalsuser_date']);
   $data['medalsuser'][$i]['medals_name'] = cs_secure($data['medalsuser'][$i]['medals_name']);
 }
 
 echo cs_subtemplate(__FILE__,$data,'medals','users');
-
-?>
