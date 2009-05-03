@@ -1,6 +1,6 @@
 <div id="{fck:name}div"></div>
 
-<script type="text/javascript" id="ajax_js">
+<script type="text/javascript">
 var div = document.getElementById("{fck:name}div");
 var oFCKeditor = new FCKeditor("{fck:name}");
 oFCKeditor.BasePath = '{fck:path}/mods/fckeditor/';

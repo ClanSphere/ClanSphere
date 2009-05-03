@@ -12,8 +12,7 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
     for (var i = 0; i < scripts.length; ++i)
       include_javascript(scripts[i].match(/src="(.+?)"/)[1]);
   }
-  delete response;
-  if (document.getElementById('ajax_js') == null && id == 'content') {
+  if (id == 'content' && response.lastIndexOf('<script') != 0) {
     request_cont = 0;
     if (setanch) {
       anch = "#" + document.getElementById('ajax_location').href.replace('&amp;','&');
@@ -22,6 +21,7 @@ function cs_ajax_setcontent (request, id, onfinish, setanch) {
     }
     document.title = document.getElementById('ajax_title').innerHTML;
   }
+  delete response;
 	
   if (onfinish) window.setTimeout(onfinish,0);
 	
@@ -128,7 +128,13 @@ function checkanch() {
 
 function cloaded(anch) {
   forms_to_ajax();
-  if (document.getElementById('ajax_js')) window.setTimeout(function(){eval(document.getElementById('ajax_js').innerHTML);}, 0);
+  ajaxes = document.getElementsByTagName('script');
+  for (var i = 0; i < ajaxes.length; i++)
+	if (ajaxes[i].src == "") {
+      var ajax = ajaxes[i].innerHTML;
+	  window.setTimeout(function() { eval(ajax); },0);
+	  alert(ajax);
+	}
   if (anch != "__START__") setnavs(1);
 }
 

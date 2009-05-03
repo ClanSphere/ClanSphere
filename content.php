@@ -47,7 +47,7 @@ if (!file_exists($cs_main['show'])) {
 if (empty($cs_main['public']) and $account['access_clansphere'] < 3)
     $cs_main['show'] = 'mods/users/login.php';
 
-if ($cs_main['mod'] == 'users' && $cs_main['action'] == 'logout') die('<div style="display:none" id="ajax_js">window.location.href=""</div>');
+if ($cs_main['mod'] == 'users' && $cs_main['action'] == 'logout') die(ajax_js('window.location.href=""'));
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
 $temp = cs_filecontent($cs_main['show']);
@@ -61,7 +61,7 @@ $temp .= "\n" . '<div style="display: none;" id="ajax_scripts">' . (isset($cs_ma
 
 echo $temp;
 
-function ajax_js($js) { return '<div style="display:none" id="ajax_js">' . $js . '</div>'; }
+function ajax_js($js) { return '<script type="text/javascript">' . $js . '</script>'; }
 
 if (!empty($cs_main['ajax_js'])) echo ajax_js($cs_main['ajax_js']);
 
