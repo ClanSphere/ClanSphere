@@ -14,24 +14,22 @@ $comnr = 0;
 $count_navall = cs_sql_count(__FILE__,'count');
 $count_arcall = cs_sql_count(__FILE__,'count_archiv');
 
-if ($op_count['view'] == 'stats'){
+if ($op_count['view'] == 'stats') {
+
   $levels = 6;
   $count_archive = cs_sql_select(__FILE__,'count_archiv','count_month, count_num',0,'count_id DESC',0,0);
-}
-if ($op_count['view'] == 'amstats'){
-  if (empty($count_arcall)){
-    $levels = 1;
-  } else {
-    $levels = $count_arcall + 1;
-}
+  
+} elseif ($op_count['view'] == 'amstats') {
+  
+  $levels = empty($count_arcall) ? 1 : $count_arcall + 1;
+  $count_archive = cs_sql_select(__FILE__,'count_archiv','count_month, count_num',0,'count_id ASC',0,0);
 
-$count_archive = cs_sql_select(__FILE__,'count_archiv','*',0,'count_id ASC',0,0);
 }
 
 if(!empty($count_archive)) {
   foreach($count_archive AS $value) {
     $combine['' . $value['count_month'] . ''] = $value['count_num'];
-    $archive = $archive + $value['count_num'];
+    $archive += $value['count_num'];
   }
 }
 
@@ -39,8 +37,11 @@ $tday = cs_datereal('d');
 $tmonth = cs_datereal('n');
 $tyear = cs_datereal('Y');
 $daystart = mktime(0,0,0,$tmonth,$tday,$tyear);
-$monthstart = mktime(0,0,0,$tmonth,1,$tyear);
-$count_navmon = cs_sql_count(__FILE__,'count','count_time > ' . $monthstart);
+
+$month = cs_sql_select(__FILE__, 'count_archiv', 'SUM(count_num) AS count', 'count_mode = "1"', 0, 0, 0);
+$count_month = $month[0]['count'];
+
+$count_navmon = cs_sql_count(__FILE__,'count') + $count_month;
 $count_navday = cs_sql_count(__FILE__,'count','count_time > ' . $daystart);
 
 $data['head']['all']  = number_format($count_navall + $archive,0,',','.');
@@ -120,11 +121,13 @@ if ($op_count['view'] == 'amstats'){
   
   echo cs_subtemplate(__FILE__,$data,'count','statshead');
 unset($data['count']);
+?>
 <script type="text/javascript" src="<?php echo $cs_main['php_self']['dirname']; ?>mods/count/amline/swfobject.js"></script>
 <div id="flashcontent">
 <?php
 echo cs_subtemplate(__FILE__,$data,'count','flash');
 $data['count'] = $backup;
+?>
 </div>
 <?php
 echo "<script type=\"text/javascript\">\n
