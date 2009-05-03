@@ -23,12 +23,32 @@ else {
     global $cs_main;
     $data = array('fck');
     $data['fck'] = cs_sql_option(__FILE__,'fckeditor');
-    $data['fck']['name'] = $name;
-    $data['fck']['value'] = str_replace(array('"',"\n","\r"),array('\"','',''),$value);
     $data['fck']['skin'] = empty($data['fck']['skin']) ? 'default' : $data['fck']['skin'];
     $data['fck']['height'] = empty($data['fck']['height']) ? '300' : $data['fck']['height'];
     $data['fck']['path'] = 'http://' . $_SERVER['HTTP_HOST'] . substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'));
 
-    return cs_subtemplate(__FILE__, $data, 'fckeditor', 'rte_html');
+    if(empty($cs_main['ajax'])) {
+
+      require_once $cs_main['def_path'] . '/mods/fckeditor/fckeditor.php';
+
+      $oFCKeditor = new FCKeditor($name);
+      $oFCKeditor->BasePath = $data['fck']['path'] . '/mods/fckeditor/';
+      $oFCKeditor->Value = $value;
+      $oFCKeditor->Width  = '100%';
+      $oFCKeditor->Height = $data['fck']['height'];
+      $oFCKeditor->ToolbarSet = 'Default';
+      $oFCKeditor->Config['AutoDetectLanguage'] = TRUE;
+      $oFCKeditor->Config['DefaultLanguage'] = 'en';
+      $oFCKeditor->Config['SkinPath'] = $oFCKeditor->BasePath . 'editor/skins/' . $data['fck']['skin'] . '/';
+
+      return $oFCKeditor->CreateHtml();
+    }
+    else {
+
+      $data['fck']['name'] = $name;
+      $data['fck']['value'] = str_replace(array('"',"\n","\r"),array('\"','',''),$value);
+
+      return cs_subtemplate(__FILE__, $data, 'fckeditor', 'rte_html');
+    }
   }
 }
