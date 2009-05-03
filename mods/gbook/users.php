@@ -16,7 +16,7 @@ if(empty($where)) {
  if (!empty($cs_post['where']))  $where = $cs_post['where'];
 }
 
-$gbook_count = cs_sql_count(__FILE__,'gbook',"gbook_users_id = '" . $where . "'");
+$gbook_count = cs_sql_count(__FILE__,'gbook',"gbook_users_id = '" . $where . "' AND gbook_lock = 1");
 
 $data['head']['addons'] = cs_addons('users','view',$where,'gbook');
 $data['head']['pages'] = cs_pages('gbook','users',$gbook_count,$start,$where);

@@ -9,11 +9,11 @@ $data = array();
 
 if(!empty($_GET['active'])) {
   cs_sql_update(__FILE__,'gbook',array('gbook_lock'),array('1'),(int) $_GET['active']);
-  cs_redirect($cs_lang['active_done'],'gbook');
+  cs_redirectmsg($cs_lang['active_done']);
 }
 if(!empty($_GET['deactive'])) {
   cs_sql_update(__FILE__,'gbook',array('gbook_lock'),array('0'),(int) $_GET['deactive']);
-  cs_redirect($cs_lang['deactive_done'],'gbook');
+  cs_redirectmsg($cs_lang['deactive_done']);
 }
 
 $id = empty($cs_get['where']) ? 0 : $cs_get['where'];
@@ -30,6 +30,9 @@ $cs_sort[4] = 'usr.users_email ASC';
 $order = $cs_sort[$sort];
 
 $user_gb = empty($_POST['user_gb']) ? 0 : $_POST['user_gb'];
+if(empty($user_gb)) {
+  $user_gb = empty($_GET['user_gb']) ? 0 : $_GET['user_gb'];
+}
 
 if(!empty($user_gb)) {
   $where = "users_nick = '" . cs_sql_escape($user_gb) . "'";
@@ -65,11 +68,18 @@ for($run=0; $run<$gbook_loop; $run++) {
     $gbook[$run]['email'] = cs_secure($cs_gbook[$run]['gbook_email']);
   }
   $gbook[$run]['time'] = cs_date('unix',$cs_gbook[$run]['gbook_time'],1);
-  $active = cs_link(cs_icon('cancel'),'gbook','manage','active=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['active']);
-  $deactive = cs_link(cs_icon('submit'),'gbook','manage','deactive=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['deactive']);
+  if(empty($user_gb)) {
+    $active = cs_link(cs_icon('cancel'),'gbook','manage','active=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['active']);
+    $deactive = cs_link(cs_icon('submit'),'gbook','manage','deactive=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['deactive']);
+  }
+  else {
+  	$active = cs_link(cs_icon('cancel'),'gbook','manage','active=' . $cs_gbook[$run]['gbook_id'] . '&amp;user_gb=' . $user_gb,0,$cs_lang['active']);
+    $deactive = cs_link(cs_icon('submit'),'gbook','manage','deactive=' . $cs_gbook[$run]['gbook_id'] . '&amp;user_gb=' . $user_gb,0,$cs_lang['deactive']);
+  }
   $gbook[$run]['lock'] = empty($cs_gbook[$run]['gbook_lock']) ? $active : $deactive;
     $gbook[$run]['id'] = $cs_gbook[$run]['gbook_id'];
 
+  $gbook[$run]['ip'] = '';
   if($account['access_gbook'] >= 4) {
     $ip = $cs_gbook[$run]['gbook_ip'];
     if($account['access_gbook'] == 4) {
