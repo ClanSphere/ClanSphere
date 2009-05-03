@@ -16,4 +16,3 @@ if(isset($_POST['submit'])) {
   $data['url']['action'] = cs_url('newsletter','center');
   $data['head']['back'] = cs_link($cs_lang['back'],'users','settings');
   echo cs_subtemplate(__FILE__,$data,'newsletter','center');
-?>

@@ -106,5 +106,3 @@ if(!empty($count_limit)) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'logs','roots');
-
-?>

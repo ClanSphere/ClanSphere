@@ -382,6 +382,4 @@ $cs_lang['boards'] = 'Boards';
 $cs_lang['with_posts'] = 'with posts';
 $cs_lang['most_active_users'] = 'Most active users';
 $cs_lang['longest_thread'] = 'Logest thread';
-$cs_lang['average_posts'] = 'Average posts per thread';
-
-?> 
+$cs_lang['average_posts'] = 'Average posts per thread'; 

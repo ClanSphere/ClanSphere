@@ -53,5 +53,3 @@ for($run=0; $run<$folders_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'gallery','folders_manage');
-
-?>

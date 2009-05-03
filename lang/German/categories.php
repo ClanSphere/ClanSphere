@@ -51,5 +51,3 @@ $cs_lang['no_name']   = '- Der Name darf nicht Leer sein';
 $cs_lang['cat_exists']   = '- Eine Kategorie mit diesem Namen ist bereits vorhanden';
 $cs_lang['up_error']   = '- Unbekannter Fehler, bitte den Webmaster kontaktieren';
 $cs_lang['del_no']  = 'L&ouml;schung nicht m&ouml;glich, da die Kategorie noch %s mal genutzt wird';
-
-?>

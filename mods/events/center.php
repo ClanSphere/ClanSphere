@@ -41,5 +41,3 @@ for($run=0; $run<$events_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'events','center');
-
-?>

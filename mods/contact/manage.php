@@ -54,4 +54,3 @@ if (file_exists($filename)) {
 $data['body']['date'] = cs_secure($date);
 
 echo cs_subtemplate(__FILE__,$data,'contact','manage');
-?>

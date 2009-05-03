@@ -10,4 +10,3 @@ $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = 'Official skin';
 $mod_info['themes']             = 'base';
-?>

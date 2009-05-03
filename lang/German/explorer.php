@@ -92,5 +92,3 @@ $cs_lang['lev_5'] = 'mit Entfernen';
 $cs_lang['create_dir']    = 'Verzeichnis erstellen';
 $cs_lang['folder_create']  = 'Hier k&ouml;nnen Sie ein Verzeichnis erstellen.';
 $cs_lang['dir_name']    = 'Verzeichnisname';
-
-?>

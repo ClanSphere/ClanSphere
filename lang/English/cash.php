@@ -61,5 +61,3 @@ $cs_lang['create_options'] = 'Options successfully changed.';
 // Users_view
 $cs_lang['user_cash_ok'] = 'Payed users';
 $cs_lang['user_cash_no'] = 'Nonpayed users';
-
-?>

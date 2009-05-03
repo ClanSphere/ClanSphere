@@ -37,5 +37,3 @@ $cs_lang['abcode'] = 'ABcode:';
 $cs_lang['banner'] = 'Banner';
 $cs_lang['mass'] = 'Ma&szlig;e';
 $cs_lang['new_banner'] = 'Neues Banner';
-
-?>

@@ -41,5 +41,3 @@ if(!unlink('install.php'))   $data['errors']['show'] .=  $cs_lang['remove_file']
 if(empty($set_logs) OR empty($set_uploads) OR empty($set_cache)) $data['errors']['show'] .=  $cs_lang['err_chmod'];
 
 echo cs_subtemplate(__FILE__, $data, 'install', 'complete');
-
-?>

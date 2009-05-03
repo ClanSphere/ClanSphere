@@ -3,8 +3,6 @@
 // $Id$
 
 //$cs_lang = cs_translate('gallery');
-
-?>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 if (window.print) {
@@ -24,7 +22,6 @@ if(!empty($_REQUEST['pic']))
 }
 else
 {
-?>
   <SCRIPT LANGUAGE="JavaScript">
   <!--
   setTimeout('self.close()',2000);
@@ -33,4 +30,3 @@ else
 <?PHP
 echo 'bye bye';
 }
-?>

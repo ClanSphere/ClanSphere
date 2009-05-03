@@ -10,5 +10,3 @@ $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = 'Official translation package';
 $mod_info['symbol']    = 'de';
-
-?>

@@ -127,4 +127,3 @@ else {
   cs_redirect('','users','login');
 }  
   
-?>

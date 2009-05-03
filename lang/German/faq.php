@@ -32,5 +32,3 @@ $cs_lang['start'] = 'Start: ';
 $cs_lang['user'] = 'Benutzer';
 $cs_lang['count']= 'Eintr&auml;ge';
 $cs_lang['list'] = 'Liste';
-
-?>

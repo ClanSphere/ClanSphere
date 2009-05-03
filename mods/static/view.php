@@ -31,4 +31,3 @@ if(!empty($cs_static['static_comments'])) {
   }
   echo cs_comments_add($static_id,'static');
 }
-?>

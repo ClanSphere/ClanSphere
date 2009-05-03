@@ -13,4 +13,3 @@ if(empty($account['users_dstime']) AND date('I',cs_time()) != '0' OR $account['u
 }
 
 echo cs_date('unix',cs_time(),1) . ' ' . $cs_lang['using'] . ' ' . $zonename . $dst;
-?>

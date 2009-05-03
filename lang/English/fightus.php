@@ -37,5 +37,3 @@ $cs_lang['no_date'] = '- No date has been specified';
 $cs_lang['last_fightus'] = 'Latest fightus inquiries';
 $cs_lang['fight_date'] = 'Date of clanwar';
 $cs_lang['new_fight'] = 'New inquiry';
-
-?>

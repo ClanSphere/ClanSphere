@@ -12,6 +12,3 @@ $data['url']['convert_user'] = cs_url('users','create','joinus=' . $joinus_id);
 $data['url']['convert_member'] = cs_url('members','create','joinus=' . $joinus_id);
 
 echo cs_subtemplate(__FILE__,$data,'joinus','convert');
-
-
-?>

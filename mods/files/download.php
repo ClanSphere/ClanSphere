@@ -44,4 +44,3 @@ elseif(!empty($advanced))
   header("Pragma: no-cache");
   header("Expires: 0");*/
 }
-?>

@@ -26,5 +26,3 @@ if(!empty($data['if']['date'])) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'contact','imprint');
-
-?>

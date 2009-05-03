@@ -22,5 +22,3 @@ $cs_lang['no_url'] = '- URL must be specified';
 $cs_lang['no_img'] = '- An image URL must be specified';
 $cs_lang['rank_exists'] = '- A ranking list with this name already exists';
 $cs_lang['squad'] = 'Squad';
-
-?>

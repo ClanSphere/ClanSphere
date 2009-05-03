@@ -82,5 +82,3 @@ $cs_lang['game']  = 'Game';
 
 // Navrand
 $cs_lang['noname']  = 'No name given';
-
-?>

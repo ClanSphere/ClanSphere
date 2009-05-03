@@ -100,5 +100,3 @@ $cs_lang['Sunday'] = 'Sunday';
 $cs_lang['details']  = 'Details';
 $cs_lang['news_info']  = 'Information about selected news';
 $cs_lang['not_public']  = 'News does not exist or it is not public yet';
-
-?>

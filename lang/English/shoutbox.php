@@ -44,5 +44,3 @@ $cs_lang['remove_selection']      = 'Remove selection';
 $cs_lang['really_remove_selected'] = 'Realy remove selected entries?';
 $cs_lang['no_selection']        = 'No selection.';
 $cs_lang['select_all']          = 'Select all';
-
-?>

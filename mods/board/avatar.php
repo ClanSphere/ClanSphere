@@ -134,4 +134,3 @@ if(!empty($error) OR empty($_POST['submit'])) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','avatar');
-?>

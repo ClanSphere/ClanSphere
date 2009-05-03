@@ -142,5 +142,3 @@ $matches[2] .= $cs_lang['filetypes'] . $return_types;
 $data['games']['clip'] = cs_abcode_clip($matches);
 
 echo cs_subtemplate(__FILE__,$data,'games','create');
-
-?>

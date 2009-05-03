@@ -28,5 +28,3 @@ function cs_datacontrol($data_id, $div = 0, $style = '',$more = '') {
   }
   return $content;
 }
-
-?>

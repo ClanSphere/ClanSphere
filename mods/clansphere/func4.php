@@ -23,5 +23,3 @@ function get_size($dir) {
   
   return $size; 
 }
-
-?>

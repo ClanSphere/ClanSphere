@@ -155,5 +155,3 @@ if (!empty($_POST['submit']) && empty($error)) {
   
   echo cs_subtemplate(__FILE__,$data,'board','thread_cut');
 }
-
-?>

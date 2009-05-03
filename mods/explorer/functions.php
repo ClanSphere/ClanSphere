@@ -34,5 +34,3 @@ function cs_remove_dir($path) {
    }
 
 }
-
-?>

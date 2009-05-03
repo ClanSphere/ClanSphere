@@ -3,4 +3,3 @@
 // $Id$
 
 $axx_file['center']          = 2;
-?>

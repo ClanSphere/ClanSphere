@@ -46,5 +46,3 @@ for ($run = 0; $run < $count_events; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'events','manage');
-
-?>

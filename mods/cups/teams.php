@@ -51,5 +51,3 @@ for ($i = 0; $i < $count_teams; $i++) {
 }
 
 echo cs_subtemplate(__FILE__, $data, 'cups', 'teams');
-
-?>

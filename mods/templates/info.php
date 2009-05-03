@@ -16,4 +16,3 @@ $mod_info['show']     = array('users/settings' => 2);
 $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['tables']    = array();
-?>

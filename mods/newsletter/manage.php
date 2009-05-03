@@ -43,5 +43,3 @@ for($run=0; $run<$newsletter_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'newsletter','manage');
-
-?>

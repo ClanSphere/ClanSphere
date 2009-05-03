@@ -13,5 +13,3 @@ $cs_lang['more'] = 'More';
 $cs_lang['text'] = 'History';
 $cs_lang['text_list']= 'Events in the past.';
 $cs_lang['new'] = 'New entry';
-
-?>

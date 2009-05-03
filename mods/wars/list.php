@@ -60,5 +60,3 @@ for ($run = 0; $run < $count_wars; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'wars','list');
-
-?>

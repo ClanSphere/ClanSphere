@@ -32,5 +32,3 @@ if($account['access_clansphere'] >= 3 AND $account['access_logs'] >= 3) {
 
 if(empty($run))
   echo '----';
-
-?>

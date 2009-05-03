@@ -81,5 +81,3 @@ if(!empty($space)) {
 
 
 echo cs_subtemplate(__FILE__,$data,'usersgallery','center_info');
-
-?>

@@ -116,5 +116,3 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   echo cs_subtemplate(__FILE__,$cs_action_head,'static','action_head');
   echo cs_subtemplate(__FILE__,$cs_static_tpl,'static','action_form');
 }
-
-?>

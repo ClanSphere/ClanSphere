@@ -164,4 +164,3 @@ else {
     cs_redirect($cs_lang['success'],'users','settings');
   }
 }
-?>

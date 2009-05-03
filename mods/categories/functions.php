@@ -129,5 +129,3 @@ function multiarray_search ($array, $innerkey, $value) {
     }
     return FALSE;
   }
-
-?>

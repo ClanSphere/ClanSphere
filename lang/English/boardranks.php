@@ -15,5 +15,3 @@ $cs_lang['id']='ID';
 
 $cs_lang['no_min'] = '- Posts cannot be empty.';
 $cs_lang['no_name'] = '- The name cannot be empty.';
-
-?>

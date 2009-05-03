@@ -61,5 +61,3 @@ if (isset($_GET['confirm'])) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'shoutbox','remove');
-
-?>

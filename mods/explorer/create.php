@@ -55,5 +55,3 @@ if(empty($_POST['submit'])) {
   cs_redirect($message, 'explorer','roots','dir='.$dir);
   
 }
-
-?>

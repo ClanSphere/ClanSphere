@@ -32,8 +32,3 @@ else {
   $data['lang']['cancel'] = $cs_lang['cancel'];
   echo cs_subtemplate(__FILE__,$data,'quotes','remove');
 }
-
-
-
-
-?>

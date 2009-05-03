@@ -9,5 +9,3 @@ $mod_info['creator'] = 'Clansphere';
 $mod_info['team'] = 'Clansphere';
 $mod_info['url'] = 'www.clansphere.net';
 $mod_info['text'] = 'Base Themes-Set';
-
-?>

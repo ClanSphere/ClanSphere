@@ -17,4 +17,3 @@ $data['awards']['place'] = cs_secure($cs_awards['awards_rank']) . '. ' . $cs_lan
 $data['awards']['game'] = cs_secure($cs_awards_game['games_name']);
 
 echo cs_subtemplate(__FILE__,$data,'awards','view');
-?>

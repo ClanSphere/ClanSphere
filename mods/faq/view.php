@@ -36,5 +36,3 @@ if(!empty($categories_loop)) {
   $data['head']['topline'] = $cs_lang_error['403_body'];
   echo cs_subtemplate(__FILE__,$data,'errors','403');
 }
-
-?>

@@ -32,5 +32,3 @@ if(empty($cs_users)) {
   }
   echo cs_subtemplate(__FILE__,$data,'users','navonline_ava');
 }
-
-?>

@@ -67,5 +67,3 @@ if (empty($_POST['submit'])) {
     fclose($accessfile);
   }*/
 }
-
-?>

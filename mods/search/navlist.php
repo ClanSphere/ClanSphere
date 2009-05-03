@@ -47,5 +47,3 @@ if(!empty($search_error)) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'search','navlist');
-
-?>

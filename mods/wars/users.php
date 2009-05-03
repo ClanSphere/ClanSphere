@@ -38,4 +38,3 @@ $data['wars']['draw_percent'] = empty($data['wars']['draw']) ? 0 : round($data['
 $data['wars']['lost_percent'] = empty($data['wars']['lost']) ? 0 : round($data['wars']['lost'] / $data['wars']['played'] * 100);
 
 echo cs_subtemplate(__FILE__,$data,'wars','users');
-?>

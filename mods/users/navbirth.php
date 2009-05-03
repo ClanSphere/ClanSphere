@@ -21,5 +21,3 @@ else {
     echo cs_html_br(1);
   }
 }
-
-?>

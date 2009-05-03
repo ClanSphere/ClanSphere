@@ -171,5 +171,3 @@ else {
 
  cs_redirect($cs_lang['del_true'],'usersgallery','center','page=cat');
 }
-
-?>

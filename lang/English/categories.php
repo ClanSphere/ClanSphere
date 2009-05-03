@@ -51,6 +51,3 @@ $cs_lang['no_name']   = '- A name is required';
 $cs_lang['cat_exists']   = '- Category already exists';
 $cs_lang['up_error']   = '- Unexpected error, please contact Webmaster';
 $cs_lang['del_no']  = 'Deletion not possible, since the category is once again used';
-
-
-?>

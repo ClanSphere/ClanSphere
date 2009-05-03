@@ -320,4 +320,3 @@ class hl {
 		return $tdata;
 	}
 }
-?>

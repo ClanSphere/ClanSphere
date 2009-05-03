@@ -30,5 +30,3 @@ $static_count = cs_sql_count(__FILE__,'static',$where);
 
   $data['static'] = $cs_static;
   echo cs_subtemplate(__FILE__,$data,'static','list');
-
-?>

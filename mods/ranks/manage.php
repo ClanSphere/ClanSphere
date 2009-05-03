@@ -36,5 +36,3 @@ for($run=0; $run<$ranks_loop; $run++) {
   
 }
 echo cs_subtemplate(__FILE__,$data,'ranks','manage');
-
-?>

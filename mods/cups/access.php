@@ -24,5 +24,3 @@ $axx_file['join'] = 2;
 $axx_file['com_create'] = 1;
 $axx_file['com_edit'] = 2;
 $axx_file['com_remove'] = 2;
-
-?>

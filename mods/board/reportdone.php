@@ -11,4 +11,3 @@ $report_save = array(1);
 cs_sql_update(__FILE__,'boardreport',$report_cells,$report_save,$report_id);
 
 cs_redirect($cs_lang['done_true'],'board','reportlist');
-?>

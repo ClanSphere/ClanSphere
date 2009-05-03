@@ -17,4 +17,3 @@ $mod_info['categories'] = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = TRUE;
 $mod_info['tables']   = array('access');
-?>

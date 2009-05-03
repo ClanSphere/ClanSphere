@@ -58,4 +58,3 @@ $data['if']['listcat'] = false;
 if(empty($_GET['action']) OR $_GET['action'] == 'list') { $data['if']['list'] = true; }
 if(!empty($_GET['action']) AND $_GET['action'] == 'listcat') { $data['if']['listcat'] = true; }
 echo cs_subtemplate(__FILE__,$data,'board','statistik');
-?>

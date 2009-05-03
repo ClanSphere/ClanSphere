@@ -103,5 +103,3 @@ if ($op_counter['last_archiv'] != $month) {
   cs_optionsave('counter', $save);
   
 }
-
-?>

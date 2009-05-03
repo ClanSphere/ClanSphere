@@ -80,5 +80,3 @@ $cs_main['php_self'] = pathinfo($_SERVER['PHP_SELF']);
 if($cs_main['php_self']['dirname']{0} == '\\')
   $cs_main['php_self']['dirname']{0} = '/';
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
-
-?>

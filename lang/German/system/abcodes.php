@@ -59,5 +59,3 @@ $cs_lang['more'] = 'mehr...';
 
 $cs_lang['rows'] = 'Zeilen';
 $cs_lang['default'] = 'Standard';
-
-?>

@@ -49,5 +49,3 @@ $cs_lang['yes']  = 'Ja';
 $cs_lang['head_com_create']  = 'Kommentare Eintragen';
 $cs_lang['body_com_create']  = 'Bitte alle Felder ausf&uuml;llen.';
 $cs_lang['page'] = 'Seite';
-
-?>

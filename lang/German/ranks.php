@@ -22,5 +22,3 @@ $cs_lang['no_url'] = '- Es muss eine Webseite angegeben werden';
 $cs_lang['no_img'] = '- Es muss eine URL zum Bild angegeben werden';
 $cs_lang['rank_exists'] = '- Eine Rangliste mit diesem Namen ist bereits vorhanden';
 $cs_lang['squad'] = 'Squad';
-
-?>

@@ -9,5 +9,3 @@ $mod_info['creator'] = '';
 $mod_info['team'] = '';
 $mod_info['url'] = '';
 $mod_info['text'] = 'Customized themes should be placed in here';
-
-?>

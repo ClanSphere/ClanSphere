@@ -27,5 +27,3 @@ $data['selected']['desc'] = $data['op']['order'] == 'DESC' ? 'selected="selected
 $data['selected']['asc'] = $data['op']['order'] == 'ASC' ? 'selected="selected"' : '';
 
 echo cs_subtemplate(__FILE__,$data,'shoutbox','options');
-
-?>

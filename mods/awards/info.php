@@ -17,5 +17,3 @@ $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('awards');
-
-?>

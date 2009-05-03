@@ -46,4 +46,3 @@ if (!empty($search_loop)) {
 $data2['if']['noresults'] = true;
 }
 echo cs_subtemplate(__FILE__,$data2,'search','mods/news');
-?>

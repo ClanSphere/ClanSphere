@@ -71,5 +71,3 @@ for ($i = 0; $i < $messages_loop; $i++) {
 }
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'outbox');
-
-?>

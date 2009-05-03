@@ -118,5 +118,3 @@ else {
   
   cs_redirect(sprintf($cs_lang['successfull'],$count_mails),'newsletter');
 }
-
-?>

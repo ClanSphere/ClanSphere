@@ -60,5 +60,3 @@ else {
 }
 
 cs_redirect($msg,'events','view','id=' . $events_id);
-
-?>

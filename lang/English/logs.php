@@ -23,5 +23,3 @@ $cs_lang['error'] = 'Error';
 
 $cs_lang['del'] = 'Delete';
 $cs_lang['down'] = 'Download';
-
-?>

@@ -21,4 +21,3 @@ $data['temp_view']['mod_url'] = cs_html_link('http://' . $mod_info['url'],$mod_i
 $data['temp_view']['mod_desc'] = $mod_info['text'];
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','temp_view');
-?>

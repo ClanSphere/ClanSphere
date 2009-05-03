@@ -92,4 +92,3 @@ else {
   
    cs_redirect($cs_lang['create_done'],'access');
 }
-?>

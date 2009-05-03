@@ -116,4 +116,3 @@ for($run=0; $run<$gbook_loop; $run++)
 }
 $data['gbook'] = !empty($gbook) ? $gbook : '';
 echo cs_subtemplate(__FILE__,$data,'gbook','center');
-?>

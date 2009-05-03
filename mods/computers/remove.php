@@ -50,5 +50,3 @@ if(!isset($_POST['agree'])) {
   
   echo cs_subtemplate(__FILE__,$data,'computers','remove');
 }
-
-?>

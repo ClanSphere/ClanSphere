@@ -75,5 +75,3 @@ $cs_lang['current']  = 'Aktuell';
 $cs_lang['head_view']  = 'Details';
 $cs_lang['body_view']  = 'Informationen zum ausgew&auml;hlten Computer';
 $cs_lang['user'] = 'Benutzer';
-
-?>

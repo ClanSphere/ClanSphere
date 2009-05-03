@@ -68,5 +68,3 @@ foreach($names AS $missing) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'database','statistic');
-
-?>

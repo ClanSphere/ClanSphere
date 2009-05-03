@@ -43,6 +43,3 @@ $cond = 'cms.comments_text LIKE \'%:)%\'';
 $select = cs_sql_select(__FILE__,$tables,$cells,$cond,'smileys DESC');*/
 
 echo cs_subtemplate(__FILE__,$d,'board','stats');
-
-
-?>

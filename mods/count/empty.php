@@ -23,5 +23,3 @@ if(!empty($count_form)) $file = 'empty';
 
 
 echo cs_subtemplate(__FILE__,$data,'count',$file);
-
-?>

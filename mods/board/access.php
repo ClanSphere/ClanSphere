@@ -43,5 +43,3 @@ $axx_file['com_edit']        = 2;
 $axx_file['com_remove']      = 2;
 $axx_file['modpanel_q']      = 2;
 $axx_file['mark']            = 2;
-
-?>

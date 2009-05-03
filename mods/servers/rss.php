@@ -7,5 +7,3 @@ $cs_servers = cs_sql_select(__FILE__,$from,$select,0,$order,0,8);
 
 include_once('mods/rss/generate.php');
 cs_update_rss('servers','view',$cs_lang['mod_name'],$cs_lang['rss_info'],$cs_servers);
-
-?>

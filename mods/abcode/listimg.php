@@ -17,5 +17,3 @@ for($run=0; $run<$abcode_loop; $run++) {
   $data['abcode'][$run]['result'] = cs_html_link($url,$img,0);
 }
 echo cs_subtemplate(__FILE__,$data,'abcode','listimg');
-
-?>

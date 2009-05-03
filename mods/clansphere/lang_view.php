@@ -74,5 +74,3 @@ foreach($lang_mods AS $mods) {
 $data['count']['total'] = sprintf($total_diff,$diff_count);
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','lang_view');
-
-?>

@@ -10,5 +10,3 @@ foreach($languages as $lang) {
   $out = $lang['name'] == $account['users_lang'] ? $img : $lnk;
   echo $out . ' ';
 }
-
-?>

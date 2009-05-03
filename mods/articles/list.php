@@ -31,4 +31,3 @@ if(!empty($categories_loop)) {
   }
 }
 echo cs_subtemplate(__FILE__,$data,'articles','list');
-?>

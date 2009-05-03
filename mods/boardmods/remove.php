@@ -18,5 +18,3 @@ else {
   $data['head']['body'] = sprintf($cs_lang['del_rly'],$data['bm']['id']);
   echo cs_subtemplate(__FILE__,$data,'boardmods','remove');
 }
-
-?>

@@ -44,5 +44,3 @@ $cs_lang['nick_exists'] = '- Der Gastnick ist ein bereits registrierter Benutzer
 //Options
 $cs_lang['show_avatars'] = 'Avatare anzeigen';
 $cs_lang['allow_unreg'] = 'Besuchern Kommentare erlauben';
-
-?>

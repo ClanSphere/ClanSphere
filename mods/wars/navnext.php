@@ -30,5 +30,3 @@ if(empty($data['wars'])) {
   
   echo cs_subtemplate(__FILE__,$data,'wars','navnext');
 }
-
-?>

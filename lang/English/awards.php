@@ -29,5 +29,3 @@ $cs_lang['no_game'] = '- No game selected';
 $cs_lang['no_rank'] = '- A rank is required';
 $cs_lang['remove_rly']    = 'Dataset nr. %s really delete?';
 $cs_lang['squad'] = 'Squad';
-
-?>

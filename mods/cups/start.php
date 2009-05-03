@@ -103,5 +103,3 @@ if (!empty($_POST['start'])) {
     
   }  
 }
-
-?>

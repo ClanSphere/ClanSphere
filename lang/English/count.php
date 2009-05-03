@@ -69,5 +69,3 @@ $cs_lang['axescolor']      = 'axescolor';
 $cs_lang['indicatorcolor']    = 'indicatorcolor';
 $cs_lang['graphcolor1']      = 'visitors linecolor';
 $cs_lang['graphcolor2']      = 'daily average linecolor';
-
-?>

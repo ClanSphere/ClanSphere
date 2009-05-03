@@ -61,5 +61,3 @@ if(!empty($temp_file) AND isset($temp_file[$log])) {
 
   echo cs_subtemplate(__FILE__, $data, 'logs', 'view');
 }
-
-?>

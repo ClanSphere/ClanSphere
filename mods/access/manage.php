@@ -51,4 +51,3 @@ for($run=0; $run<$access_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'access','manage');
-?>

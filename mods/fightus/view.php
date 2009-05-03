@@ -74,5 +74,3 @@ $data['fightus']['more'] = cs_secure($cs_fightus['fightus_more'],1,1);
 
 
 echo cs_subtemplate(__FILE__,$data,'fightus','view');
-
-?>

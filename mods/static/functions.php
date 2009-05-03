@@ -13,4 +13,3 @@ function static_secure($replace) {
      return $replace;
 }
 */
-?>

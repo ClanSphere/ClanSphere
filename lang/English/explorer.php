@@ -92,5 +92,3 @@ $cs_lang['lev_5'] = 'Webmaster';
 $cs_lang['create_dir']    = 'Create directory';
 $cs_lang['folder_create']  = 'Create a directory here.';
 $cs_lang['dir_name']    = 'Name of directory';
-
-?>

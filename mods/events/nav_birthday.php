@@ -28,4 +28,3 @@ if(is_array($birthdays)) {
     echo cs_subtemplate(__FILE__,$data,'events','nav_birthday');
   }
 }
-?>

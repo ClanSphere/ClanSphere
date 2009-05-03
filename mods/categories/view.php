@@ -36,5 +36,3 @@ if(!empty($cs_categories['categories_picture'])) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'categories','view');
-
-?>

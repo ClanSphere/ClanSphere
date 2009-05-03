@@ -59,4 +59,3 @@ if($account['access_wizard'] == 5) {
 }  
 
 echo cs_subtemplate(__FILE__,$data,'clans','manage');
-?>

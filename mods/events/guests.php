@@ -78,5 +78,3 @@ for($run=0; $run<$eventguests_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'events','guests');
-
-?>

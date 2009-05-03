@@ -11,5 +11,3 @@ $axx_file['create_dir']  = 5;
 $axx_file['information']= 5;
 $axx_file['view']    = 5;
 $axx_file['upload']    = 5;
-
-?>

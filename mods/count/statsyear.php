@@ -134,5 +134,3 @@ echo  "</graph></graphs></chart>\");\n
     so.write(\"flashcontent\");\n
       //]]>\n
 \n </script>\n";
-
-?>

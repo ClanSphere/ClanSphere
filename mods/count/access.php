@@ -12,5 +12,3 @@ $axx_file['manage']     = 3;
 $axx_file['empty']     = 5;
 $axx_file['reset']     = 5;
 $axx_file['options']   = 5;
-
-?>

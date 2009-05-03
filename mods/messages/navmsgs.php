@@ -6,5 +6,3 @@ $where = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receive
 $count = cs_sql_count(__FILE__,'messages',$where);
 
 echo $count;
-
-?>

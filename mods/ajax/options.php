@@ -111,5 +111,3 @@ if (substr($leftovers,-1) == ',') $leftovers = substr($leftovers,0,-1);
 $data['options']['additionals'] = $leftovers;
 
 echo cs_subtemplate(__FILE__,$data,'ajax','options');
-
-?>

@@ -12,5 +12,3 @@ $axx_file['remove']    = 2;
 $axx_file['picture']  = 1;
 $axx_file['users']    = 1;
 $axx_file['options']  = 5;
-
-?>

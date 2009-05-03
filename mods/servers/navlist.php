@@ -76,4 +76,3 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 		echo $cs_lang['php'];
 	}
 }
-?>

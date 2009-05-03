@@ -42,5 +42,3 @@ $cs_lang['wizard_turnoff']  = 'Turn this message off';
 $cs_lang['welcome']   = 'Welcome';
 $cs_lang['turn_off']  = 'Welcome message is now turned off';
 $cs_lang['turn_on']   = 'Welcome message is now turned on';
-
-?>

@@ -59,5 +59,3 @@ for($run=0; $run<$joinus_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'joinus','manage');
-
-?>

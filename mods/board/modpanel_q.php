@@ -139,4 +139,3 @@ if(!empty($thread_cells) AND !empty($thread_save)) {
   }
   header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id);
 }
-?>

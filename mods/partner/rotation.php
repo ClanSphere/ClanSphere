@@ -31,5 +31,3 @@ $values = array($banner['partner_id']);
 $where_op = 'options_mod = \'partner\' AND options_name = \'last_id\'';
 
 cs_sql_update(__FILE__,'options',$cells,$values,0,$where_op);
-
-?>

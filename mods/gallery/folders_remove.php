@@ -175,5 +175,3 @@ else {
 
  cs_redirect($cs_lang['del_true'],'gallery','folders_manage');
 }
-
-?>

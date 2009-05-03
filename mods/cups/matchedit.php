@@ -256,4 +256,3 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
     }
   }
 }
-?>

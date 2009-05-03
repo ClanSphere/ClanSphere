@@ -79,5 +79,3 @@ if(isset($_POST['submit']) AND (empty($error))) {
   cs_redirect($cs_lang['create_done'],'awards');
   
 }
-
-?>

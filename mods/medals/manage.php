@@ -26,5 +26,3 @@ for ($i = 0; $i < $data['count']['medals']; $i++) {
 $data['message']['medals'] = cs_getmsg();
 
 echo cs_subtemplate(__FILE__,$data,'medals','manage');
-
-?>

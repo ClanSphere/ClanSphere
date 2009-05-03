@@ -56,5 +56,3 @@ $cs_lang['lev_4'] = 'Organisators =>';
 $cs_lang['lev_5'] = 'Webmaster';
 
 $cs_lang['several'] = 'Allow multi entries';
-
-?>

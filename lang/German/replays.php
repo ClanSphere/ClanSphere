@@ -53,5 +53,3 @@ $cs_lang['body_options'] = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['head_options'] = 'Optionen';
 $cs_lang['user'] = 'Benutzer';
 $cs_lang['since'] = 'Erstellungszeit';
-
-?>

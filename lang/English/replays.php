@@ -52,5 +52,3 @@ $cs_lang['body_options'] = 'Administration of settings in a module.';
 $cs_lang['head_options'] = 'Options';
 $cs_lang['user'] = 'User';
 $cs_lang['since'] = 'Created on';
-
-?>

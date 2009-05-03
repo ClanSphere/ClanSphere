@@ -171,5 +171,3 @@ else {
 
  cs_redirect($cs_lang['edit_done'],'links');
 }
-
-?>

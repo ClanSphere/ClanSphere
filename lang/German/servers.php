@@ -116,5 +116,3 @@ $cs_lang['players_navlist'] = 'Spieler ';
 $cs_lang['map_navlist'] = 'Karte ';
 
 $cs_lang['no_connect'] = 'Keine Verbindung zum Server. Live Status nicht m&ouml;glich.';
-
-?>

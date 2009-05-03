@@ -27,5 +27,3 @@ for($run=0; $run<$rules_loop1; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'rules','listcat');
-
-?>

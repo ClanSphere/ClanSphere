@@ -27,5 +27,3 @@ if (!empty($cs_files)) {
   echo $cs_lang['no_data'];
   
 }
-
-?>

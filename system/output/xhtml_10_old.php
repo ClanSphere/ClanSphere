@@ -346,5 +346,3 @@ function cs_html_span($func, $style = 0, $more = 0)
     return "</span>";
   }
 }
-
-?>

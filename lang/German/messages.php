@@ -124,7 +124,3 @@ $cs_lang['max_space'] = 'Max. Nachrichten:';
 
 //view
 $cs_lang['error_empty']   = '- Keine Nachricht vorhanden!';
-
-
-
-?>

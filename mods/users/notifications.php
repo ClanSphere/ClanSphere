@@ -55,4 +55,3 @@ if (isset($_POST['submit'])) {
   // Output
   echo cs_subtemplate(__FILE__, $data, 'users', 'notifications');
 }
-?>

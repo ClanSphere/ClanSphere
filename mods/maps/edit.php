@@ -134,5 +134,3 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
     cs_redirect($cs_lang['changes_done'], 'maps') ;
   }
 }
-
-?>

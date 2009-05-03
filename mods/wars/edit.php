@@ -194,4 +194,3 @@ else {
   
   cs_redirect($cs_lang['changes_done'], 'wars');
 }
-?>

@@ -372,5 +372,3 @@ $cs_lang['with_posts'] = 'mit Beitr&auml;gen';
 $cs_lang['most_active_users'] = 'Aktivste Benutzer';
 $cs_lang['longest_thread'] = 'L&auml;ngstes Thema';
 $cs_lang['average_posts'] = 'Durchschnittliche Antworten pro Thema';
-
-?>

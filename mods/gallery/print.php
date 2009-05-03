@@ -71,5 +71,3 @@ if(isset($_POST['preview']) AND empty($error)) {
 $data['picture']['id'] = $picture_id;
 
 echo cs_subtemplate(__FILE__,$data,'gallery','print');
-
-?>

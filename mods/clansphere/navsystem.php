@@ -67,4 +67,3 @@ foreach($system as $mod) {
     echo cs_html_br(1);
   }
 }
-?>

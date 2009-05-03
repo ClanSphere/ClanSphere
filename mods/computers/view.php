@@ -47,5 +47,3 @@ $data['com']['more'] = cs_secure($cs_computers['computers_more'],1);
 
 
 echo cs_subtemplate(__FILE__,$data,'computers','view');
-
-?>

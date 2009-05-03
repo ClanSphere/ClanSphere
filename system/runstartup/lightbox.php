@@ -19,5 +19,3 @@ if(!empty($account['access_gallery']) && $cs_main['mod'] == 'gallery') {
       $cs_main['ajax_js'] = 'Lightbox.init.bind(Lightbox)';
   }
 }
-
-?>

@@ -26,5 +26,3 @@ $cs_lang['no_cat'] = '- Es muss eine Kategorie ausgew&auml;hlt werden';
 $cs_lang['no_rule']  = '- Es muss eine Regel angegeben werden.';
 $cs_lang['no_order'] = '- Es muss ein Paragraph angegeben werden.';
 $cs_lang['no_title'] = '- Es muss ein Titel angegeben werden.';
-
-?>

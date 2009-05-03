@@ -17,4 +17,3 @@ $mod_info['categories'] = TRUE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']   = array('banners');
-?>

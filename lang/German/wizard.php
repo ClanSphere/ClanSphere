@@ -42,5 +42,3 @@ $cs_lang['wizard_turnoff']  = 'Diese Meldung abschalten';
 $cs_lang['welcome']   = 'Willkommensanzeige';
 $cs_lang['turn_off']  = 'Die Meldung wurde erfolgreich abgeschaltet';
 $cs_lang['turn_on']   = 'Die Meldung wurde erfolgreich angeschaltet';
-
-?>

@@ -32,5 +32,3 @@ if(!empty($cs_links['links_banner'])) {
 $data['links']['info'] = cs_secure ($cs_links['links_info'],1,1,1,1);
 
 echo cs_subtemplate(__FILE__,$data,'links','view');
-
-?>

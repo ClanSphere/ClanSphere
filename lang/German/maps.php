@@ -41,5 +41,3 @@ $cs_lang['picture']   = 'Bild';
 // List
 $cs_lang['list']  = 'Liste';
 $cs_lang['curr_maps'] = 'Derzeit sind %d Karten eingetragen.';
-
-?>

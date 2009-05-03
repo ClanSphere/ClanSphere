@@ -21,5 +21,3 @@ $cs_lang['new'] = 'Neuer Moderator';
 
 $cs_lang['1'] = 'Ja';
 $cs_lang['0'] = 'Nein';
-
-?>

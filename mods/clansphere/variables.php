@@ -43,5 +43,3 @@ foreach($account AS $key => $value) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','variables');
-
-?>

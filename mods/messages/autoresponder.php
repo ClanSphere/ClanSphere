@@ -84,5 +84,3 @@ else {
   }
  cs_redirect($msg,'messages','center');
 } 
-
-?>

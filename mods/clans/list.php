@@ -41,4 +41,3 @@ for($run=0; $run<$clans_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'clans','list');
-?>

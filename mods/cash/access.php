@@ -12,5 +12,3 @@ $axx_file['account']  = 4;
 $axx_file['options']  = 4;
 $axx_file['view_cash']  = 4;
 $axx_file['remove']    = 5;
-
-?>

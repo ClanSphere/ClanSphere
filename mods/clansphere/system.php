@@ -63,4 +63,3 @@ $sys_array = array(
 require_once('mods/clansphere/functions.php');
 
 echo cs_manage('clansphere', 'system', 'clansphere', 'roots', $sys_array, $head);
-?>

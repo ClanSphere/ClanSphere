@@ -26,5 +26,3 @@ $axx_file['com_remove']     = 5;
 $axx_file['calendar']       = 1;
 $axx_file['timer']          = 1;
 $axx_file['nav_birthday']   = 1;
-
-?>

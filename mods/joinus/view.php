@@ -77,5 +77,3 @@ $data['join']['more'] = empty($cs_joinus['joinus_more']) ? '-' : cs_secure($cs_j
 
 
 echo cs_subtemplate(__FILE__,$data,'joinus','view');
-
-?>

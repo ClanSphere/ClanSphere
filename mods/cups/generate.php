@@ -93,5 +93,3 @@ function cs_cupround ($cups_id, $round, $maxteams, $brackets = 0) {
   }    
   
 }
-
-?>

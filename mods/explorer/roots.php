@@ -106,5 +106,3 @@ if(!empty($success)) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'explorer','roots');
-
-?>

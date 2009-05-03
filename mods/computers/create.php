@@ -78,5 +78,3 @@ else {
   $referrer = $account['access_computers'] < 3 ? 'center' : 'manage';
   cs_redirect($cs_lang['create_done'],'computers',$referrer);
 } 
-
-?>

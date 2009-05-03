@@ -47,5 +47,3 @@ for($run=0; $run<$news_loop; $run++) {
 
 $data['news'] = $cs_news;
 echo cs_subtemplate(__FILE__,$data,'news','list');
-
-?>

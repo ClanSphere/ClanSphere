@@ -248,4 +248,3 @@ echo cs_subtemplate(__FILE__,$data,'partner','edit');
   
   cs_redirect($cs_lang['changes_done'], 'partner') ;
 }
-?>

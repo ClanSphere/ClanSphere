@@ -99,4 +99,3 @@ if(isset($_POST['submit'])) {
   $data['shoutbox']['no_submit'] = $cs_lang['no_submit'];
   echo cs_subtemplate(__FILE__,$data,'shoutbox','no_submit');
 }
-?>

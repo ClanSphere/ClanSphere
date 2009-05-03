@@ -50,4 +50,3 @@ $data['support'] = array(
 );
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','support');
-?>

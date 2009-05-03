@@ -299,4 +299,3 @@ function make_folders_create($mod, $folders_name) {
     return cs_sql_insertid(__FILE__);
   }
 }
-?>

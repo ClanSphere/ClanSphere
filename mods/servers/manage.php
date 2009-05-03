@@ -41,4 +41,3 @@ else {
 	$data['servers'] = array();
 }
 echo cs_subtemplate(__FILE__,$data,'servers','manage');
-?>

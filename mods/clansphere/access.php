@@ -22,4 +22,3 @@ $axx_file['metatags']       = 5;
 $axx_file['navmeta']        = 5;
 $axx_file['version']        = 5;
 $axx_file['sec_news']     = 5;
-?>

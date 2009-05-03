@@ -59,6 +59,3 @@ if ($data['var']['space_used'] >= 50) $data['var']['color'] = '_orange';
 if ($data['var']['space_used'] >= 90) $data['var']['color'] = '_red';
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'center');
-
-
-?>

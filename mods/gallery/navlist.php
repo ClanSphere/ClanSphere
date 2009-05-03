@@ -28,5 +28,3 @@ if(!empty($pic)) {
   echo $cs_lang['nopic'];
   
 }
-
-?>

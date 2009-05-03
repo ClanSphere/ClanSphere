@@ -86,5 +86,3 @@ function cs_pictures_upload($file, $mod, $fid, $ajaxclean = 1) {
   
   return true;
 }
-
-?>

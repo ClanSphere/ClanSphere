@@ -61,5 +61,3 @@ $cs_lang['page'] = 'Seite';
 $cs_lang['pages'] = 'Seiten';
 
 $cs_lang['new_date'] = 'Datum aktualisieren';
-
-?>

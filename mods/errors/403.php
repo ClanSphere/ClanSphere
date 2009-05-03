@@ -11,5 +11,3 @@ $data['head']['icon'] = cs_icon('error',64);
 $data['head']['topline'] = $cs_lang['403_body'];
 
 echo cs_subtemplate(__FILE__,$data,'errors','403');
-
-?>

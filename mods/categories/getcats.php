@@ -16,5 +16,3 @@ require 'mods/categories/functions.php';
 $mod = cs_sql_escape($_GET['mod']);
 
 echo cs_categories_dropdown2($mod,0,0);
-
-?>

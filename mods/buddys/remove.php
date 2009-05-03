@@ -44,5 +44,3 @@ if(!empty($buddys_form)) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'buddys','remove');
-
-?>

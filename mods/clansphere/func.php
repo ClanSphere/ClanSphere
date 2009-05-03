@@ -50,4 +50,3 @@ function get_directorysize($dir) {
   }
   return $retval;  
 }
-?>

@@ -37,5 +37,3 @@ else {
 
   echo $cs_lang['no_data'];
 }
-
-?>

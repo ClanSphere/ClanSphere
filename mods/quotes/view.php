@@ -34,6 +34,3 @@ $cs_quotes = cs_sql_select(__FILE__,$from,$select,"quotes_id = '" . $cs_quotes_i
     echo cs_comments_view($cs_quotes_id,'quotes','view',$data['quotes']['comments_count']);
   }
   echo cs_comments_add($cs_quotes_id,'quotes');
-
-
-?>

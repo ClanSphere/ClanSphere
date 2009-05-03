@@ -83,5 +83,3 @@ else {
   
   cs_redirect($cs_lang['create_done'],'wars','rounds','id='.$cs_rounds['wars_id']);
 }
-
-?>

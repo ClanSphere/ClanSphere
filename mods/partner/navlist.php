@@ -22,5 +22,3 @@ if(!empty($cs_partner)) {
   }
   echo cs_subtemplate(__FILE__,$data,'partner','navlist');
 }
-
-?>

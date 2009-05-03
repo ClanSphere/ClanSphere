@@ -76,5 +76,3 @@ for($sq_run = 0; $sq_run < $squads_loop; $sq_run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'members','list');
-
-?>

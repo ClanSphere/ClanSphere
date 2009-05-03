@@ -32,5 +32,3 @@ foreach($modules as $mod) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'access','view');
-
-?>

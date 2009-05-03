@@ -94,5 +94,3 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   cs_redirect($cs_lang['create_done'],'members');
   
 }
-
-?>

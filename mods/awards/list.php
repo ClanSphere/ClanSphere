@@ -57,5 +57,3 @@ for($run=0; $run<$awards_loop; $run++) {
 }/*
 $data['awards'] = $cs_awards;*/
 echo cs_subtemplate(__FILE__,$data,'awards','list');
-
-?>

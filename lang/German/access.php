@@ -26,5 +26,3 @@ $cs_lang['clansphere_3'] = 'Verwaltung';
 $cs_lang['clansphere_4'] = 'System';
 $cs_lang['clansphere_5'] = 'Webmaster';
 $cs_lang['del_error']  = 'Die Standard-Klassen k&ouml;nnen nicht gel&ouml;scht werden.';
-
-?>

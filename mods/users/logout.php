@@ -3,4 +3,3 @@
 // $Id$
 
 cs_redirect('','users','login');
-?>

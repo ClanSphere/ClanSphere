@@ -16,5 +16,3 @@ function cs_optionsave ($mod, $save) {
     cs_unlink('cache', 'op_' . $mod . '.tmp');
   
 }
-
-?>

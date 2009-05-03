@@ -28,5 +28,3 @@ $data['select']['teammates_select'] = $data['op']['label'] == 'teammates' ? 'sel
 $data['select']['classmates_select'] = $data['op']['label'] == 'classmates' ? 'selected="selected"': '';
 
 echo cs_subtemplate(__FILE__,$data,'members','options');
-
-?>

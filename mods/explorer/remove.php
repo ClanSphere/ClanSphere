@@ -46,5 +46,3 @@ if(empty($_POST['submit']) && empty($_POST['cancel'])) {
   
   cs_redirect($message, 'explorer','roots','dir=' . $dir);
 }
-
-?>

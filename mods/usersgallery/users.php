@@ -283,5 +283,3 @@ $data['cat_list_1'] = !empty($cat_list_1['0']['cat_list_1']) ? $cat_list_1 : '';
 #print_r($data);
 
 echo cs_subtemplate(__FILE__,$data,'usersgallery','users');
-
-?>

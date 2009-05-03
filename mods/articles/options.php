@@ -21,4 +21,3 @@ if(isset($_POST['submit'])) {
 $op_articles = cs_sql_option(__FILE__,'articles');
 $data['op']['max_navlist'] = $op_articles['max_navlist'];
 echo cs_subtemplate(__FILE__,$data,'articles','options');
-?>

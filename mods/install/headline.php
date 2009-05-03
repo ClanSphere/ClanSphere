@@ -17,5 +17,3 @@ $step['convert'] = 'convert_head';
 $current = $step[$cs_main['action']];
 
 echo $cs_lang[$current];
-
-?>

@@ -2,4 +2,3 @@
 function dns($host) {
 	return gethostbyname($host); 
 }      
-?>

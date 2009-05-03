@@ -48,5 +48,3 @@ for($run=0; $run<$board_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','manage');
-
-?>

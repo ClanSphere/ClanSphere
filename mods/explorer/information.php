@@ -26,5 +26,3 @@ $data['file']['owner'] = fileowner($source);
 $data['file']['ownergroup'] = filegroup($source);
 
 echo cs_subtemplate(__FILE__, $data, 'explorer', 'information');
-
-?>

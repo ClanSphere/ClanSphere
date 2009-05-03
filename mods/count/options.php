@@ -36,4 +36,3 @@ if(isset($_POST['submit'])) {
 
   echo cs_subtemplate(__FILE__,$data,'count','options');
 }
-?>

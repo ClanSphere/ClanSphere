@@ -31,5 +31,3 @@ if(empty($_GET['id']) AND empty($_POST['maps_id'])) {
   if (isset($_POST['cancel'])) 
       cs_redirect($cs_lang['del_false'], 'maps');
 }
-
-?>

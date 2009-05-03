@@ -105,5 +105,3 @@ Nachricht:
 %s
 \n
 Diese E-Mail wurde automatisch generiert.";
-
-?>

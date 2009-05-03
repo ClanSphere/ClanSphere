@@ -52,5 +52,3 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
   }
   $cs_main['rss'] = 0;
 }
-
-?>

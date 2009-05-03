@@ -28,4 +28,3 @@ chdir($cs_main['def_path']);
 closedir($goal);
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','lang_validate');
-?>

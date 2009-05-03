@@ -27,4 +27,3 @@ elseif(!empty($access_form)) {
 
   echo cs_subtemplate(__FILE__,$data,'access','remove');
 }
-?>

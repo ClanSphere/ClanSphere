@@ -21,5 +21,3 @@ $data['medals']['message'] = sprintf($cs_lang['rly_remove'],$medals_name);
 $data['medals']['url_confirm'] = cs_url('medals','remove','id=' . $medals_id . '&amp;confirm');
 
 echo cs_subtemplate(__FILE__,$data,'medals','remove');
-
-?>

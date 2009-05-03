@@ -121,5 +121,3 @@ $cs_lang['comment'] = 'Kommentar';
 $cs_lang['no_players'] = 'Keine Spieler eingetragen';
 $cs_lang['plays'] = 'Wird spielen';
 $cs_lang['admin'] = 'Ja (Admin-Eintragung)';
-
-?>

@@ -61,5 +61,3 @@ $cs_lang['page'] = 'Page';
 $cs_lang['pages'] = 'Pages';
 
 $cs_lang['new_date'] = 'Refresh Date';
-
-?>

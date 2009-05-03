@@ -26,5 +26,3 @@ function articles_secure($replace,$abcode = 0) {
   
      return $replace;
 }
-
-?>

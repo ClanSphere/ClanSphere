@@ -120,5 +120,3 @@ function cs_abcode_js($name) {
   
   return $var;
 }
-
-?>

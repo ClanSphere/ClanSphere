@@ -10,5 +10,3 @@ $axx_file['sponsors']  = 1;
 $axx_file['listcat']  = 1;
 $axx_file['manage']    = 3;
 $axx_file['remove']    = 5;
-
-?>

@@ -10,5 +10,3 @@ $data['hidden']['lang'] = $account['users_lang'];
 $data['form']['sql_select'] = cs_url('install','sql');
 
 echo cs_subtemplate(__FILE__,$data,'install','sql_select');
-
-?>

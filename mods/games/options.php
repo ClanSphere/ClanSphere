@@ -22,5 +22,3 @@ $data = array();
 $data['op'] = cs_sql_option(__FILE__, 'games');
 
 echo cs_subtemplate(__FILE__, $data, 'games', 'options');
-
-?>

@@ -19,5 +19,3 @@ if (!empty($data['files'])) {
   echo $cs_lang['no_data'];
   
 }
-
-?>

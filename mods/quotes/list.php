@@ -40,5 +40,3 @@ for($run=0; $run<$quotes_loop; $run++) {
 
 $data['quotes'] = $cs_quotes;
 echo cs_subtemplate(__FILE__,$data,'quotes','list');
-
-?>

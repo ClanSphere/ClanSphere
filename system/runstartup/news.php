@@ -39,5 +39,3 @@ if ($cs_main['mod'] == 'news') {
     
   }
 }
-
-?>

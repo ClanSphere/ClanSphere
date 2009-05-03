@@ -31,5 +31,3 @@ $cs_lang['new_picture'] = 'Neues Bild';
 $cs_lang['remove_pic'] = 'Aktuelles Bild l&ouml;schen';
 $cs_lang['update_date'] = 'Datum aktualisieren';
 $cs_lang['extended'] = 'Erweitert';
-
-?>

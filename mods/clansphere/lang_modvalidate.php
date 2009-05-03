@@ -169,5 +169,3 @@ ob_end_clean();
 echo cs_subtemplate(__FILE__,$data,'clansphere','lang_modvalidate');
 
 chdir('mods/clansphere/');
-
-?>

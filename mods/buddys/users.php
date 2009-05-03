@@ -48,5 +48,3 @@ $data2['boff'] = empty($b_off) ? '' : $b_off;
 $data2['bon'] = empty($_on) ? '' : $b_on;
   
 echo cs_subtemplate(__FILE__,$data2,'buddys','users');
-
-?>

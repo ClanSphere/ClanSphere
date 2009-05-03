@@ -44,5 +44,3 @@ for($run=0; $run<$rules_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'rules','manage');
-
-?>

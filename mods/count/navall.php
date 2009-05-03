@@ -12,4 +12,3 @@ if(!empty($counte_archiv))
   }
 }              
 echo number_format(cs_sql_count(__FILE__,'count') + $archiv,0,',','.');
-?>

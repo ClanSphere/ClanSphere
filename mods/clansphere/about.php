@@ -11,4 +11,3 @@ $cs_lang = cs_translate('clansphere');
 $data = array();
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','about');
-?>

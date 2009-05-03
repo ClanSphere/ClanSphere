@@ -59,4 +59,3 @@ for($run = 0; $run < $count_att; $run++) {
 }  
 
 echo cs_subtemplate(__FILE__,$data,'board','attachements_admin');
-?>

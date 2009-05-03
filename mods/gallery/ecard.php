@@ -103,5 +103,3 @@ else {
   
  cs_redirect($msg,'gallery','com_view','where=' . $picture_id);
 }
-
-?>

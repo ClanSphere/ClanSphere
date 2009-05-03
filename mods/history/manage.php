@@ -37,5 +37,3 @@ for($run=0; $run<$history_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'history','manage');
-
-?>

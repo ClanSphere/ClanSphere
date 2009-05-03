@@ -91,5 +91,3 @@ if($account['access_cups'] >= 2 && cs_time() < $cs_cup['cups_start'] && empty($s
   $content =  empty($full) ? $cs_lang['no_access'] : $cs_lang['cup_full'];
   cs_redirect($content, 'cups', 'view', 'id=' . $cups_id);
 }
-
-?>

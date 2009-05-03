@@ -44,5 +44,3 @@ $cs_lang['remove_selection']       = 'Markierung aufheben';
 $cs_lang['really_remove_selected'] = 'Sollen die gew&auml;hlten Datens&auml;tze wirklich entfernt werden?';
 $cs_lang['no_selection']        = 'Keine Markierung gew&auml;hlt.';
 $cs_lang['select_all']          = 'Alle markieren';
-
-?>

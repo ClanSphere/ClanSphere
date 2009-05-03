@@ -41,4 +41,3 @@ if(!empty($vote_form))
 
   echo cs_subtemplate(__FILE__,$cs_vote_tpl,'votes','remove');
 }
-?>

@@ -49,5 +49,3 @@ $data['newsletter']['to'] = cs_secure($newsletter_to);
 $data['newsletter']['text'] = cs_secure($data['newsletter']['newsletter_text'],1,1);
 
 echo cs_subtemplate(__FILE__,$data,'newsletter','view');
-
-?>

@@ -57,5 +57,3 @@ else {
   header("Content-Transfer-Encoding: binary");
   @readfile($file_path);
 }
-
-?>

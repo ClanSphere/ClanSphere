@@ -36,5 +36,3 @@ for($i = 0; $i < $count_shoutbox; $i++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'shoutbox','navlist2');
-
-?>

@@ -59,5 +59,3 @@ $data['message']['medals'] = cs_getmsg();
 $data['form']['dirname'] = $cs_main['php_self']['dirname'];
 
 echo cs_subtemplate(__FILE__,$data,'medals','user');
-
-?>

@@ -60,5 +60,3 @@ for($run=0; $run<$replays_loop; $run++) {
 }
 
   echo cs_subtemplate(__FILE__,$data,'replays','manage');
-
-?>

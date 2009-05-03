@@ -11,5 +11,3 @@ $axx_file['sql_select']        = 5;
 $axx_file['settings']    = 5;
 $axx_file['complete']    = 5;
 $axx_file['compatible'] = 5;
-
-?>

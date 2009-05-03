@@ -36,4 +36,3 @@ foreach ($themes as $theme) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','themes_list');
-?>

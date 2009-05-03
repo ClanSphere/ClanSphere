@@ -34,5 +34,3 @@ $data['com']['text'] = cs_secure($cs_com['comments_text'],1,1);
 
 
 echo cs_subtemplate(__FILE__,$data,'comments','view');
-
-?>

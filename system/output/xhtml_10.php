@@ -156,5 +156,3 @@ function cs_html_list($string, $style = 0, $element = '[*]')
   $var = empty($style) ? '<ul>' . $var . '</ul>' : '<ol>' . $var . '</ol>';
   return $var;
 }
-
-?>

@@ -51,4 +51,3 @@ else
   $data['form']['uri'] = cs_secure($_SERVER['REQUEST_URI']);
   
   echo cs_subtemplate(__FILE__,$data,'shoutbox','navlist');
-?>

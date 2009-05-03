@@ -31,5 +31,3 @@ $axx_file['folders_create'] = 3;
 $axx_file['folders_edit'] = 4;
 $axx_file['folders_manage'] = 3;
 $axx_file['folders_remove'] = 5;
-
-?>

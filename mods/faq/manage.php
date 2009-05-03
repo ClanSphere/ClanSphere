@@ -48,4 +48,3 @@ for($run=0; $run<$faq_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'faq','manage');
-?>

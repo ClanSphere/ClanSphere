@@ -35,5 +35,3 @@ foreach($cs_news AS $news) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'news','summary');
-
-?>

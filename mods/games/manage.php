@@ -38,4 +38,3 @@ for($run=0; $run<$games_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'games','manage');
-?>

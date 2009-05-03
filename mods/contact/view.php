@@ -26,5 +26,3 @@ $data['if']['answer'] = !empty($cs_mail['mail_answered']) ? TRUE : FALSE;
 $data['if']['noanswer'] = empty($cs_mail['mail_answered']) ? TRUE : FALSE;
   
 echo cs_subtemplate(__FILE__,$data,'contact','view');
-
-?>

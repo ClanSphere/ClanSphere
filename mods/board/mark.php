@@ -47,4 +47,3 @@ if($thr_where == "threads_last_time > '" . $cs_readtime . "'") {
 else {
   header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=listcat&id=' .$_GET['id']);
 }
-?>

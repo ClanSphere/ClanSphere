@@ -152,5 +152,3 @@ $data['wars'] = !empty($wars) ? $wars : array(0 => '');
 
 
 echo cs_subtemplate(__FILE__,$data,'squads','view');
-
-?>

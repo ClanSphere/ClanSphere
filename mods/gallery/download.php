@@ -131,5 +131,3 @@ if (@function_exists('gzcompress'))
     }
   }
 }
-
-?>

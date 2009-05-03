@@ -104,5 +104,3 @@ if(!empty($error) OR empty($files['picture']['tmp_name']) AND empty($del)) {
 
   echo cs_subtemplate(__FILE__,$data,'users','picture');
 }
-
-?>

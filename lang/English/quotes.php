@@ -40,5 +40,3 @@ $cs_lang['rly_remove']    = 'Really delete datenset No. %s?';
 // View
 $cs_lang['details']  = 'Details';
 $cs_lang['quote_info']    = 'Information about selected quote';
-
-?>

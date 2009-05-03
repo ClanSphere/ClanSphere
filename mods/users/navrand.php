@@ -38,5 +38,3 @@ $data['users']['name'] = $name;
 $data['users']['surname'] = $surname;
 
 echo cs_subtemplate(__FILE__,$data,'users','navrand');
-
-?>

@@ -49,5 +49,3 @@ $data['op']['html'] = empty($abcode[3]) ? '' : 'checked="checked"';
 $data['op']['php'] = empty($abcode[4]) ? '' : 'checked="checked"';
 
 echo cs_subtemplate(__FILE__,$data,'news','options');
-
-?>

@@ -244,5 +244,3 @@ $cs_country['eh'] = 'Western Sahara';
 $cs_country['ye'] = 'Yemen';
 $cs_country['zm'] = 'Zambia';
 $cs_country['zw'] = 'Zimbabwe';
-
-?>

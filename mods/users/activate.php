@@ -27,5 +27,3 @@ else {
 $data['head']['action'] = $cs_lang['activate_acc'];
 echo cs_subtemplate(__FILE__,$data,'users','head');
 echo cs_subtemplate(__FILE__,$data,'users','activate');
-
-?>

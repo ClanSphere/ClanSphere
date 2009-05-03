@@ -334,4 +334,3 @@ if ($folders_id >= 1) {
   $data['tmp']['empty_cat'] = empty($empty_cat) ? '' : cs_subtemplate(__FILE__, $empty_cat, 'usersgallery', 'users_error_2');
   echo cs_subtemplate(__FILE__, $data, 'gallery', 'list_folder');
 }
-?>

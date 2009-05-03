@@ -166,4 +166,3 @@ else {
   cs_redirect($cs_lang['changes_done'],'categories','manage','where=' . $cs_categories['categories_mod']);
 } 
   
-?>

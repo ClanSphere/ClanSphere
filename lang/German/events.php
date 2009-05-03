@@ -160,5 +160,3 @@ $cs_lang['new_guest']         = 'Neuer Gast';
 $cs_lang['event']             = 'Termin';
 $cs_lang['no_user']           = '- Kein Benutzer selektiert';
 $cs_lang['user_event_exists'] = '- Der Benutzer ist bereits angemeldet';
-
-?>

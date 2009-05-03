@@ -28,5 +28,3 @@ $data['checked']['allow_unreg'] = empty($options['allow_unreg']) ? '' : $checked
 $data['checked']['allow_unreg_no'] = !empty($options['allow_unreg']) ? '' : $checked;
 
 echo cs_subtemplate(__FILE__, $data, 'comments','options');
-
-?>

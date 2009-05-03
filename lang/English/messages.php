@@ -123,5 +123,3 @@ $cs_lang['max_space'] = 'Max. messages:';
 
 //view
 $cs_lang['error_empty']   = '- Inbox is empty!';
-
-?>

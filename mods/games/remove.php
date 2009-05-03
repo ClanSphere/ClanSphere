@@ -27,5 +27,3 @@ $data['lang']['content'] .= ' - ';
 $data['lang']['content'] .= cs_link($cs_lang['cancel'],'games','remove','id=' . $games_id . '&amp;cancel');
 
 echo cs_subtemplate(__FILE__,$data,'games','remove');
-
-?>

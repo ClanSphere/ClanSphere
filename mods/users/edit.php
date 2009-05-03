@@ -226,5 +226,3 @@ if (!empty($error) or !isset($_POST['submit'])) {
 
 	cs_redirect($cs_lang['changes_done'], 'users');
 }
-
-?>

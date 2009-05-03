@@ -33,4 +33,3 @@ if(!empty($banners_form)) {
   
   echo cs_subtemplate(__FILE__,$data,'banners','remove');
 }
-?>

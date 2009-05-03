@@ -39,5 +39,3 @@ else {
 }
 cs_sql_query(__FILE__,"DELETE FROM {pre}_captcha WHERE captcha_time < '" . $timeout . "'");
 cs_captcha($hash);
-
-?>

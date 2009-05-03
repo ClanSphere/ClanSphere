@@ -90,5 +90,3 @@ else {
 
   echo cs_subtemplate(__FILE__,$data,'users','navlogin3_2');
 }
-
-?>

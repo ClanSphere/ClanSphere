@@ -45,5 +45,3 @@ $cs_lang['too_big_limg'] ='- Filesize exceeds limits (List-banner)';
 $cs_lang['too_wide_rimg'] ='- Banner is too wide (Rotation-banner)';
 $cs_lang['too_high_rimg'] ='- Banner is too high (Rotation-banner)';
 $cs_lang['too_big_rimg'] ='- Filesize exceeds limits (Rotation-banner)';
-
-?>

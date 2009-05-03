@@ -25,5 +25,3 @@ elseif(!isset($_POST['submit'])) {
   cs_sql_delete(__FILE__,'cups',$cups_id);
   cs_redirect($cs_lang['del_true'], 'cups');
 }
-
-?>

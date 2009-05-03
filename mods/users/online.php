@@ -59,4 +59,3 @@ for($run=0; $run<$users_loop; $run++) {
   $data['users'] = $cs_users;
   echo cs_subtemplate(__FILE__,$data,'users','online');
   
-?>

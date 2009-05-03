@@ -16,5 +16,3 @@ $abcode = explode(",", $cs_option['abcode']);
 include_once('mods/rss/generate.php');
 
 cs_update_rss('news','view',$op_news['rss_title'],$op_news['rss_description'],$cs_news, $abcode);
-
-?>

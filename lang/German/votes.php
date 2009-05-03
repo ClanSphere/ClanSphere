@@ -57,4 +57,3 @@ $cs_lang['lev_4'] = 'Organisatoren =>';
 $cs_lang['lev_5'] = 'Webmaster';
 
 $cs_lang['several'] = 'Mehrfachauswahl erlauben';
-?>

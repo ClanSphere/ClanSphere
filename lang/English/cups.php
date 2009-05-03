@@ -161,5 +161,3 @@ $cs_lang['team_removed_mail'] .= 'You have been removed from the cup "%s" .'."\r
 $cs_lang['team_removed_mail'] .= 'Please ask the Webmaster if you have any questions.'."\r\n\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Kind regards,'."\r\n";
 $cs_lang['team_removed_mail'] .= 'The Webmaster';
-
-?>

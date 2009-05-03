@@ -126,4 +126,3 @@ for($run=0; $run<$cash_loop; $run++) {
   $data['out'][$run]['in_out'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
 }
 echo cs_subtemplate(__FILE__,$data,'cash','center');
-?>

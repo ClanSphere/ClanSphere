@@ -37,4 +37,3 @@ if(!empty($static_form))
 
   echo cs_subtemplate(__FILE__,$cs_static_tpl,'static','remove');
 }
-?>

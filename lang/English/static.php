@@ -25,4 +25,3 @@ $cs_lang['lev_2'] = 'User =>';
 $cs_lang['lev_3'] = 'Member =>';
 $cs_lang['lev_4'] = 'Organisator =>';
 $cs_lang['lev_5'] = 'Webmaster';
-?>

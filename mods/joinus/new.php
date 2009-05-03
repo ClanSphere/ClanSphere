@@ -231,5 +231,3 @@ elseif(!empty($data['if']['form'])) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'joinus','new');
-
-?>

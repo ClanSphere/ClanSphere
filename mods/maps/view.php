@@ -34,5 +34,3 @@ if(empty($_GET['id'])) {
   echo cs_subtemplate(__FILE__,$data,'maps','view');
   
 }
-
-?>

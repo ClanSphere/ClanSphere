@@ -60,5 +60,3 @@ if (empty($_GET['file'])) {
   
   echo cs_subtemplate(__FILE__, $data, 'explorer', 'view');
 }
-
-?>

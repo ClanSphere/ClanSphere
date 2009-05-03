@@ -31,5 +31,3 @@ if(!empty($current)) {
     echo substr($out,0,-2);
   } 
 }
-
-?>

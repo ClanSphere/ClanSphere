@@ -24,5 +24,3 @@ if(!empty($cs_fightus)) {
   }
   echo cs_subtemplate(__FILE__,$data,'fightus','users_home');
 }
-
-?>

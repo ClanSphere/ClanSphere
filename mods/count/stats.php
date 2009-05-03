@@ -120,13 +120,11 @@ if ($op_count['view'] == 'amstats'){
   
   echo cs_subtemplate(__FILE__,$data,'count','statshead');
 unset($data['count']);
-?>
 <script type="text/javascript" src="<?php echo $cs_main['php_self']['dirname']; ?>mods/count/amline/swfobject.js"></script>
 <div id="flashcontent">
 <?php
 echo cs_subtemplate(__FILE__,$data,'count','flash');
 $data['count'] = $backup;
-?>
 </div>
 <?php
 echo "<script type=\"text/javascript\">\n
@@ -159,5 +157,3 @@ echo "</graph></graphs></chart>\");\n
   //]]>\n
 </script>\n";
 }
-
-?>

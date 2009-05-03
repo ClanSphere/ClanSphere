@@ -33,5 +33,3 @@ $cs_lang['newsletter'] = 'Newsletter';
 $cs_lang['subscribe'] = 'Anmelden';
 $cs_lang['unsubscribe_letter'] = 'Erfolgreich abgemeldet';
 $cs_lang['subscribe_letter'] = 'Erfolgreich angemeldet';
-
-?>

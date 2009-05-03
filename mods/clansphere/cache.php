@@ -47,4 +47,3 @@ $data['count']['files'] = $files;
 $data['count']['total'] = cs_filesize($space);
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','cache');
-?>

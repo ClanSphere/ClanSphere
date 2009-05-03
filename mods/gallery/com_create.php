@@ -13,5 +13,3 @@ $gallery = cs_sql_select(__FILE__,'gallery','gallery_close',"gallery_id = '" . $
 
 require_once('mods/comments/functions.php');
 cs_commments_create($fid,'gallery','com_view',$quote_id,$cs_lang['mod_name'],$gallery['gallery_close'],'where');
-
-?>

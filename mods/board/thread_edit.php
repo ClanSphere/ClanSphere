@@ -366,5 +366,3 @@ else {
 
   cs_redirect($cs_lang['changes_done'], 'board', 'thread', 'where=' . $thread_id);
 }
-
-?>

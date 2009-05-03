@@ -11,5 +11,3 @@ $head = array('mod' => $cs_lang['options'], 'action' => $cs_lang['head_roots'], 
 
 require_once('mods/clansphere/functions.php');
 echo cs_manage('options', 'roots', 'clansphere', 'options', 0, $head);
-
-?>

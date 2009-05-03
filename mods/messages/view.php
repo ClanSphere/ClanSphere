@@ -27,5 +27,3 @@ $data['msg']['messages_subject'] = cs_secure($data['msg']['messages_subject']);
 $data['msg']['messages_text'] = cs_secure($data['msg']['messages_text'],1,1);
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'view');
-
-?>

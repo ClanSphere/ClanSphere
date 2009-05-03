@@ -115,5 +115,3 @@ $data['data']['show'] = cs_subtemplate(__FILE__,$data,'gallery','manage_info');
   
 
 echo cs_subtemplate(__FILE__,$data,'gallery','manage_info');
-
-?>

@@ -14,5 +14,3 @@ if(file_exists('uploads/cache/op_wizard.tmp'))
   cs_unlink('cache', 'op_wizard.tmp');
 
 cs_redirect(empty($turn) ? $cs_lang['turn_off'] : $cs_lang['turn_on'],'users','home');
-
-?>

@@ -117,5 +117,3 @@ $data['head']['next_task'] = $cs_lang['next_step'] . ': ' . $next_task;
 $data['head']['parts_done'] = sprintf($cs_lang['parts_done'],$done,$run);
 
 echo cs_subtemplate(__FILE__,$data,'wizard','roots');
-
-?>

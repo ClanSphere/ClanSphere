@@ -36,5 +36,3 @@ $data['cash']['date'] = cs_date('date',$cs_cash['cash_time']);
 $data['cash']['info'] = cs_secure($cs_cash['cash_info'],1,1);
 
 echo cs_subtemplate(__FILE__,$data,'cash','view');
-
-?>

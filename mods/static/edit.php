@@ -143,5 +143,3 @@ $cs_action_head['head']['body']  = $cs_lang['no_access'];
 echo cs_subtemplate(__FILE__,$cs_action_head,'static','action_head');
 
 }
-
-?>

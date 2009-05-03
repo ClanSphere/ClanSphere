@@ -53,5 +53,3 @@ for ($i = 0; $i < $cups_count; $i++) {
 }
 
 echo cs_subtemplate(__FILE__, $data, 'cups', 'center');
-
-?>

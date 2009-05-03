@@ -35,5 +35,3 @@ for ($run = 0; $run < $count_cups; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'cups','list');
-
-?>

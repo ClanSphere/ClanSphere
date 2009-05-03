@@ -14,4 +14,3 @@ $data['text']['ip'] = sprintf($cs_lang['ip_is'],$cs_shoutbox['shoutbox_name'],$c
 $data['url']['continue'] = cs_url('shoutbox','manage');
 
 echo cs_subtemplate(__FILE__,$data,'shoutbox','ip');
-?>

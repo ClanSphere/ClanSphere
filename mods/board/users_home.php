@@ -26,5 +26,3 @@ if (!empty($data['threads'])) {
   
   echo cs_subtemplate(__FILE__,$data,'board','users_home');
 }
-
-?>

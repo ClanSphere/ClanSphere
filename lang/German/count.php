@@ -68,5 +68,3 @@ $cs_lang['axescolor']      = 'Achsen farbe';
 $cs_lang['indicatorcolor']    = 'Indikatorfarbe';
 $cs_lang['graphcolor1']      = 'Besucher Linienfarbe';
 $cs_lang['graphcolor2']      = 'Tagesschnitt Linienfarbe';
-
-?>

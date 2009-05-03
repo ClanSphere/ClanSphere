@@ -31,5 +31,3 @@ $data['arr']['admin'] = $cs_main['action'] == 'admin' ? $arrow : '';
 $data['arr']['check'] = $cs_main['action'] == 'complete' ? $arrow : '';
 
 echo cs_subtemplate(__FILE__,$data,'install','navi');
-
-?>

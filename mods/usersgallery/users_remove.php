@@ -44,4 +44,3 @@ else {
  echo cs_subtemplate(__FILE__,$data,'usersgallery','users_remove');
 }
   
-?>

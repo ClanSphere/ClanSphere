@@ -41,5 +41,3 @@ foreach($plugins as $mod) {
     include_once('mods/' . $mod['dir'] . '/users_home.php');
   }
 }
-
-?>

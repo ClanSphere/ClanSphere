@@ -68,5 +68,3 @@ if(!empty($submit) AND empty($search_error)) {
   }
   require($target);
 }
-
-?>

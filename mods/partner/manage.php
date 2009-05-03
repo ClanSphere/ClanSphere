@@ -41,5 +41,3 @@ for($run=0; $run<$partner_loop; $run++) {
     
   }
 echo cs_subtemplate(__FILE__,$data,'partner','manage');
-
-?>

@@ -210,4 +210,3 @@ echo cs_subtemplate(__FILE__,$data,'partner','create');
   
   cs_redirect($cs_lang['create_done'],'partner');
 }
-?>

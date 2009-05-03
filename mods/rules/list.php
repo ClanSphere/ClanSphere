@@ -24,5 +24,3 @@ for($run=0; $run<$categories_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'rules','list');
-
-?>

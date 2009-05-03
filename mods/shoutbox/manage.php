@@ -41,4 +41,3 @@ for($run = 0; $run < $count_shoutbox; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'shoutbox','manage');
-?>

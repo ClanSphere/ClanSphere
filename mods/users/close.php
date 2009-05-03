@@ -24,5 +24,3 @@ if(isset($_POST['cancel'])) {
 if(!empty($users_form)) {
   echo cs_subtemplate(__FILE__,$data,'users','close');
 }
-
-?>

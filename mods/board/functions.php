@@ -156,5 +156,3 @@ function checkLastEdit($string ,$cs_lang ,$offset = 0)
   else
     return $sub_result;
 }
-
-?>

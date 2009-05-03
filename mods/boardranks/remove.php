@@ -26,5 +26,3 @@ if(empty($agree) AND empty($cancel)) {
   echo cs_subtemplate(__FILE__,$data,'boardranks','remove');
   
 }
-
-?>

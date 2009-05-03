@@ -18,5 +18,3 @@ $axx_file['linkf']  = 2;
 $axx_file['com_edit']    = 2;
 $axx_file['com_remove']  = 5;
 $axx_file['picture']  = 3;
-
-?>

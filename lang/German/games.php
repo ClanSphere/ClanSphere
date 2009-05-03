@@ -62,5 +62,3 @@ $cs_lang['max_height'] = 'Maximale Bildh&ouml;he';
 $cs_lang['max_size'] = 'Maximale Bildgr&ouml;&szlig;e';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
-
-?>

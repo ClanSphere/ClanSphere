@@ -72,5 +72,3 @@ if (!isset($_GET['first'])) {
   
   echo '</div>';
 }
-
-?>

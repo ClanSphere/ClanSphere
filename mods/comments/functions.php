@@ -539,5 +539,3 @@ function cs_comments_remove($mod,$action,$com_id,$mod_name,$more = 'id') {
     echo cs_subtemplate(__FILE__,$data,'comments','com_remove');
   }
 }
-
-?>

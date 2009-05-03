@@ -17,5 +17,3 @@ $mod_info['categories']  = FALSE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('static');
-
-?>

@@ -26,5 +26,3 @@ $cs_lang['clansphere_3'] = 'Administration';
 $cs_lang['clansphere_4'] = 'System';
 $cs_lang['clansphere_5'] = 'Webmaster';
 $cs_lang['del_error']  = 'Default-classes cannot be deleted.';
-
-?>

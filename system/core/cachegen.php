@@ -72,5 +72,3 @@ function cs_cache_save($filename, $content) {
   }
   return $content;
 }
-
-?>

@@ -106,5 +106,3 @@ for ($i = 0; $i < $data['vars']['matchcount']; $i++) {
 }
 
 echo cs_subtemplate(__FILE__, $data, 'cups', 'matchlist');
-
-?>

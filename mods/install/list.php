@@ -16,5 +16,3 @@ foreach($languages as $lang) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'install');
-
-?>

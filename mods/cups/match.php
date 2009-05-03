@@ -125,5 +125,3 @@ include_once 'mods/comments/functions.php';
 $count = cs_sql_count(__FILE__,'comments','comments_fid = \''.$match_id.'\' AND comments_mod = \'cups\'');
 if (!empty($count)) cs_comments_view($match_id,'cups','match',$count);
 cs_comments_add($match_id,'cups');
-
-?>

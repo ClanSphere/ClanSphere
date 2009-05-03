@@ -35,5 +35,3 @@ $data['op']['team'] = $data['op']['label'] == 'team' ? 'selected="selected"' : '
 $data['op']['class'] = $data['op']['label'] == 'class' ? 'selected="selected"' : '';
 
 echo cs_subtemplate(__FILE__,$data,'squads','options');
-
-?>

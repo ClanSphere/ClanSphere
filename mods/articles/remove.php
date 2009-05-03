@@ -30,5 +30,3 @@ else {
   $data['head']['body'] = sprintf($cs_lang['body_remove'],$data['articles']['id']);
   echo cs_subtemplate(__FILE__,$data,'articles','remove');
 }
-
-?>

@@ -101,5 +101,3 @@ else {
 }
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','temp_list');
-
-?>

@@ -41,5 +41,3 @@ for ($run = 0; $run < $count_categories; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'faq','list');
-
-?>

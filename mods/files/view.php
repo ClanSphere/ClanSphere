@@ -180,5 +180,3 @@ if(!empty($count_com)) {
   echo cs_comments_view($file_id,'files','view',$count_com);
 }
 echo cs_comments_add($file_id,'files',$cs_file['files_close']);
-
-?>

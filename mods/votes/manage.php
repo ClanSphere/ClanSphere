@@ -39,5 +39,3 @@ for($run=0; $run<$vote_loop; $run++)
 }
 
 echo cs_subtemplate(__FILE__,$cs_vote_tpl,'votes','manage');
-
-?>

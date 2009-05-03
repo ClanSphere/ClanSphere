@@ -16,5 +16,3 @@ $axx_file['autoresponder'] = 2;
 $axx_file['mail']          = 2;
 $axx_file['more']          = 2;
 $axx_file['multiremove']   = 2;
-
-?>

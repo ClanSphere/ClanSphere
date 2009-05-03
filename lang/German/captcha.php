@@ -4,5 +4,3 @@
 
 $cs_lang['mod_name']  = 'Sicherheitscodes';
 $cs_lang['text']  = 'Schutz vor Robotern';
-
-?>

@@ -286,5 +286,3 @@ $cs_lang['notifications_clanwar']    = 'Send me messages, when a <b>clanwar</b> 
 $cs_lang['no_notification'] = 'No notifications';
 $cs_lang['email_notification'] = 'Notify me via eMail';
 $cs_lang['pm_notification'] = 'Notify me via private message';
-
-?>

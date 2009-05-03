@@ -132,5 +132,3 @@ else {
 $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
 
 echo cs_subtemplate(__FILE__,$data,'contact','mail');
-
-?>

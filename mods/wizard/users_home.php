@@ -13,5 +13,3 @@ if(!empty($cs_options['welcome'])) {
   echo cs_subtemplate(__FILE__,$data,'wizard','users_home');
 
 }
-
-?>

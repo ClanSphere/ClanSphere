@@ -17,5 +17,3 @@ for ($i = 0; $i < $count_cups; $i++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'cups','navlist');
-
-?>

@@ -43,5 +43,3 @@ $cs_lang['deactive'] = 'Lock';
 $cs_lang['active_done'] = 'Entry is activated.';
 $cs_lang['deactive_done'] = 'Entry is deactivated.';
 $cs_lang['create_done_lock'] = 'Your gbook entry was successfully saved. After check by an admin, it will be activated.';
-
-?>

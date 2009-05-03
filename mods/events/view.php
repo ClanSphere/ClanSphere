@@ -91,5 +91,3 @@ if(!empty($count_com)) {
 }
 
 echo cs_comments_add($events_id,'events',$cs_events['events_close']);
-
-?>

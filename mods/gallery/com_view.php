@@ -248,5 +248,3 @@ if(empty($gallery_loop)) {
   }
  echo cs_comments_add($id,'gallery',$advanced[1]);
 }
-
-?>

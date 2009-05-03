@@ -11,5 +11,3 @@ foreach($languages as $lang) {
   echo $img . ' ' . $out;
   echo cs_html_br(2);
 }
-
-?>

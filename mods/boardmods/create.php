@@ -70,5 +70,3 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     cs_redirect($cs_lang['create_done'],'boardmods');
 } 
   echo cs_subtemplate(__FILE__,$data,'boardmods','create');
-
-?>

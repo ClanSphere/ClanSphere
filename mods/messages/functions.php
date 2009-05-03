@@ -107,4 +107,3 @@ function remove_dups($array, $row_element) {
   }
   return $new_array;
 }
-?>

@@ -72,5 +72,3 @@ for($run=0; $run<$categories_loop; $run++) {
   $data['cat'][$run]['id'] = $data['cat'][$run]['categories_id'];
 }
 echo cs_subtemplate(__FILE__,$data,'categories','manage');
-
-?>

@@ -10,4 +10,3 @@ function cs_search($mod) {
   
  echo cs_subtemplate(__FILE__,$data,'search','search_function');
 }
-?>

@@ -244,5 +244,3 @@ $cs_country['cx'] = 'Weihnachtsinsel';
 $cs_country['eh'] = 'Westsahara';
 $cs_country['cf'] = 'Zentralafrikanische Republik';
 $cs_country['cy'] = 'Zypern';
-
-?>

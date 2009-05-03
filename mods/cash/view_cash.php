@@ -37,5 +37,3 @@ for($run=0; $run<$offrun; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'cash','view_cash');
-
-?>

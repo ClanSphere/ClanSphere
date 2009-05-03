@@ -74,5 +74,3 @@ else {
   
   cs_redirect($cs_lang['join_done'],'squads','center');
 }
-
-?>

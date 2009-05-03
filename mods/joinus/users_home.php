@@ -27,5 +27,3 @@ if(!empty($cs_joinus)) {
   }
   echo cs_subtemplate(__FILE__,$data,'joinus','users_home');
 }
-
-?>

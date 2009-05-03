@@ -18,5 +18,3 @@ $cs_lang['500_body']      = 'Process of generating the site has been stopped. If
 $cs_lang['500_err_sql']   = 'An important sql query failed due to the following problem:';
 $cs_lang['500_err_tpl']   = 'Parsing the activated template failed because of this:';
 $cs_lang['500_err_setup'] = 'The setup.php file could not be found. Please run the installation if not done yet.';
-
-?>

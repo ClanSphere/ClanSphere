@@ -71,5 +71,3 @@ function cs_filetype($name) {
   }
 
 }
-
-?>

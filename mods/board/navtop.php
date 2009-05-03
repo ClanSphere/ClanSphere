@@ -12,5 +12,3 @@ $cells .= 'COUNT(DISTINCT cms.comments_id) + COUNT(DISTINCT thr.threads_id) AS c
 $data['top'] = cs_sql_select(__FILE__,$tables,$cells,0,'comments DESC, usr.users_nick',0,$max);
 
 echo cs_subtemplate(__FILE__,$data, 'board', 'navtop');
-
-?>

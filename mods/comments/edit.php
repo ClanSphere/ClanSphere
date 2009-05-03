@@ -126,6 +126,3 @@ else {
   
   cs_redirect($cs_lang['changes_done'],'comments','manage','where=' . $cs_com['comments_mod']);
 }
-
-
-?>

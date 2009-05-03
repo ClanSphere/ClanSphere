@@ -277,4 +277,3 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
 
   cs_redirect($cs_lang['news_created'], 'news');
 }
-?>

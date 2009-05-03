@@ -50,5 +50,3 @@ for($run=0; $run<$articles_loop; $run++) {
 }
 $data['articles'] = $cs_articles;
 echo cs_subtemplate(__FILE__,$data,'articles','manage');
-
-?>

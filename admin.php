@@ -8,5 +8,3 @@ $cs_main = array('init_sql' => true, 'init_tpl' => true, 'tpl_file' => 'admin.ht
 require_once 'system/core/functions.php';
 
 cs_init($cs_main);
-
-?>

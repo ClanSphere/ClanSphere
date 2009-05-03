@@ -28,5 +28,3 @@ else {
 
   echo cs_subtemplate(__FILE__,$data,'linkus','remove');
 }
-
-?>

@@ -87,5 +87,3 @@ $cs_lang['current']  = 'Aktuell';
 $cs_lang['nopic'] = 'Kein Bild vorhanden';
 
 $cs_lang['remove_done']  = 'Das Bild wurde erfolgreich entfernt.';
-
-?>

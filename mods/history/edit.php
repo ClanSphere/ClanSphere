@@ -78,5 +78,3 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   
   cs_redirect($cs_lang['changes_done'],'history');
 }
-
-?>

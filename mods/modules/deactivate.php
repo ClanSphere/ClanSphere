@@ -34,5 +34,3 @@ if (isset($_GET['confirm'])) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'modules','deactivate');
-
-?>

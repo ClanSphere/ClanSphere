@@ -63,5 +63,3 @@ if(empty($_POST['submit']) || !empty($error)) {
   cs_redirect($cs_lang['create_done'],'cups');
   
 }
-
-?>

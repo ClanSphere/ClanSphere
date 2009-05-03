@@ -385,4 +385,3 @@ class q4
 		return $tdata;
 	}
 }
-?>

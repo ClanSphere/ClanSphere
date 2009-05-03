@@ -10,4 +10,3 @@ $axx_file['multiremove'] = 4;
 $axx_file['edit']       = 3;
 $axx_file['options']     = 4;
 $axx_file['list']       = 1;
-?>

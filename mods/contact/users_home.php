@@ -21,5 +21,3 @@ if(!empty($cs_mail)) {
 
   echo cs_subtemplate(__FILE__,$data,'contact','users_home');
 }
-
-?>

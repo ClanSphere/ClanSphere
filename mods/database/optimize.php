@@ -26,5 +26,3 @@ $matches[2] = '<textarea name="text" cols="50" rows="12" id="text">' . $sql_cont
 $data['optimize']['clip'] = cs_abcode_clip($matches);
 
 echo cs_subtemplate(__FILE__,$data,'database','optimize');
-
-?>

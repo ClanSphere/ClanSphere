@@ -12,5 +12,3 @@ $link = cs_link($cs_lang['webmaster'],'contact','mail');
 $data['head']['topline'] = sprintf($cs_lang['404_body'],$link);
 
 echo cs_subtemplate(__FILE__,$data,'errors','404');
-
-?>

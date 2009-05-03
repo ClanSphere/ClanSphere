@@ -45,5 +45,3 @@ $cs_lang['max_width'] = 'Maximale Breite: ';
 $cs_lang['max_height'] = 'Maximale H&ouml;he: ';
 $cs_lang['max_size'] = 'Maximale Gr&ouml;&szlig;e: ';
 $cs_lang['filetypes'] = 'Dateiformate: ';
-
-?>

@@ -40,4 +40,3 @@ $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['def_order'] = 'Default order';
 $cs_lang['no_cat'] = '- Choose a category';
-?>

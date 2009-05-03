@@ -3,5 +3,3 @@
 // $Id$
 
 $axx_file['roots']  = 5;
-
-?>

@@ -256,5 +256,3 @@ else {
     cs_redirect($cs_lang['create_done'],'gbook','users','id=' . $id);
   }
 }
-
-?>

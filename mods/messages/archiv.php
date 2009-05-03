@@ -52,4 +52,3 @@ else
   
   cs_redirect(cs_icon('important') . ' ' . $cs_lang['arch_max'],'messages','center');
 }
-?>

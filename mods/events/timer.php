@@ -88,5 +88,3 @@ if(!empty($bday_loop)) {
 }
 
 echo cs_subtemplate(__FILE__, $data, 'events', 'timer');
-
-?>

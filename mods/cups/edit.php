@@ -74,5 +74,3 @@ if (empty($_POST['submit']) || !empty($error)) {
   cs_redirect($cs_lang['changes_done'], 'cups') ;
   
 }
-
-?>

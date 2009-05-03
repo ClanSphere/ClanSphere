@@ -65,5 +65,3 @@ if(!isset($_POST['submit']) || !empty($error)) {
 
   echo cs_subtemplate(__FILE__,$data,'users','options');
 }
-
-?>

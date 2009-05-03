@@ -60,4 +60,3 @@ function cs_gray($imgfile)
     imagedestroy($sourceImage);
   }
 }
-?>

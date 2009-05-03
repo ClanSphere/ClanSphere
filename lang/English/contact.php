@@ -104,5 +104,3 @@ Message:
 %s
 \n
 This e-mail was automatically generated.";
-
-?>

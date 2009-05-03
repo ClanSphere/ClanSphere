@@ -8,5 +8,3 @@ $axx_file['view']    = 1;
 $axx_file['edit']    = 3;
 $axx_file['remove']  = 3;
 $axx_file['list']    = 1;
-
-?>

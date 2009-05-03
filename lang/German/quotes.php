@@ -42,5 +42,3 @@ $cs_lang['rly_remove']    = 'Datensatz Nr. %s wirklich entfernen?';
 // View
 $cs_lang['details']  = 'Details';
 $cs_lang['quote_info']    = 'Informationen zum ausgew&auml;hlten Zitat.';
-
-?>

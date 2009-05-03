@@ -19,5 +19,3 @@ for($run = 0; $run < $metatags_loop; $run++) {
 $data['metatags'] = $cs_metatags;
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','navmeta');
-
-?>

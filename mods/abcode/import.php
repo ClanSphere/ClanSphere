@@ -92,4 +92,3 @@ else {
   $data['if']['smileys'] = true;	
 }
 echo cs_subtemplate(__FILE__,$data,'abcode','import');
-?>

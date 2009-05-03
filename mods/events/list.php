@@ -49,5 +49,3 @@ for ($i = 0; $i < $events_count; $i++) {
 }
 
 echo cs_subtemplate(__FILE__, $data, 'events');
-
-?>

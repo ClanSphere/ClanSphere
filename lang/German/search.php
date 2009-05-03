@@ -43,5 +43,3 @@ $cs_lang['short']    = 'K&uuml;rzel';
 $cs_lang['cat']      = 'Kategorie';
 $cs_lang['time']    = 'Datum';
 $cs_lang['files']    = 'Downloads';
-
-?>

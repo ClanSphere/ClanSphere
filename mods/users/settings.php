@@ -60,5 +60,3 @@ $opt_array = array(
 
 require_once('mods/clansphere/functions.php');
 echo cs_manage('users', 'settings', 'users', 'center', $opt_array, $head);
-
-?>

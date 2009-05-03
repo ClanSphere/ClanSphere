@@ -9,5 +9,3 @@ $mod_info['creator']  = 'duRiel';
 $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = 'Just for install usage';
-
-?>

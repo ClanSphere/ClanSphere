@@ -36,4 +36,3 @@ $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['def_order'] = 'Standard Priorit&auml;t';
 $cs_lang['no_cat'] = '- Es wurde keine Kategorie gew&auml;hlt';
-?>

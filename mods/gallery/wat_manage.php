@@ -49,5 +49,3 @@ for($run=0; $run<$watermarks_loop; $run++) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'gallery','wat_manage');
-
-?>

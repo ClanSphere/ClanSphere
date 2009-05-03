@@ -17,5 +17,3 @@ $mod_info['references'] = array('users' => 'medalsuser');
 $mod_info['categories']  = FALSE;
 $mod_info['protected'] = FALSE;
 $mod_info['tables'] = array('medals','medalsuser');
-
-?>

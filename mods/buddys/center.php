@@ -78,4 +78,3 @@ if(isset($_GET['notice'])) {
 }
 
 echo cs_subtemplate(__FILE__,$buddy_data,'buddys','center');
-?>

@@ -27,11 +27,9 @@ session_start();
       cs_upload('cache', $new_name, $_FILES[$upload_name]['tmp_name'], 0);
       if (!isset($_SESSION['ajaxuploads'])) $_SESSION['ajaxuploads'] = array();
       $_SESSION['ajaxuploads'][$upload_name] = $new_name;
-?>
       <script language="javascript" type="text/javascript">
         window.top.window.upload_complete('<?php echo $upload_name; ?>','<?php echo $_FILES[$upload_name]['name']; ?>');
       </script> 
 <?php 
     }
   }
-?>

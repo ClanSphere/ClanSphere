@@ -44,4 +44,3 @@ function create_user($access,$nick,$pwd,$lang,$email,$country,$timezone,$dst,$ne
   return cs_sql_insertid(__FILE__);
 }
  
-?>

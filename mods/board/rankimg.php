@@ -15,4 +15,3 @@ Header( "Content-type: image/gif");
   ImageGif($im);
   ImageDestroy($im);
   
-?>

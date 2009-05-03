@@ -79,5 +79,3 @@ $cs_lang['activate'] = 'Activate';
 $cs_lang['edit_access'] = 'Here will the permission levels for the module %s be indicated.';
 
 $cs_lang['more_modules'] = 'Get more modules';
-
-?>

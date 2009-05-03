@@ -48,5 +48,3 @@ if(!empty($att_form)) {
   
   echo cs_subtemplate(__FILE__,$data,'board','delatt');
 }
-
-?>

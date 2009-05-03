@@ -64,5 +64,3 @@ for($run=0; $run<$awards_loop; $run++) {
   
 }
 echo cs_subtemplate(__FILE__,$data,'awards','manage');
-
-?>

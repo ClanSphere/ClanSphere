@@ -87,5 +87,3 @@ $data['form']['abcode'] = cs_abcode_features('medals_text');
 $data['form']['dirname'] = $cs_main['php_self']['dirname'];
   
 echo cs_subtemplate(__FILE__,$data,'medals','edit');
-
-?>

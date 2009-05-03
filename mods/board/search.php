@@ -171,5 +171,3 @@ if(!empty($go_search)) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','search');
-
-?>

@@ -23,6 +23,3 @@ if(!empty($data['war']) && $data['war']['status'] == 'played' ) {
 else {
 	echo $cs_lang['no_data'];
 }
-
-
-?>

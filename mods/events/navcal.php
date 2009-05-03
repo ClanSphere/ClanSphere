@@ -109,5 +109,3 @@ $data['cal1']['now_month'] = $cs_lang[$nom] . ' ' . $year;
 $data['cal1']['nxt_month'] = ($year > 2037 OR $year == 2037 AND $month == 12) ? '&gt;' : cs_link('&gt;','events','calendar',$next);
 
 echo cs_subtemplate(__FILE__,$data,'events','navcal');
-
-?>

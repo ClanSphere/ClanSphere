@@ -43,5 +43,3 @@ for($run=0; $run<$report_loop; $run++) {
   $data['boardreport'][$run]['threads_headline'] = $link . ' #' . $comments_count;
 }
 echo cs_subtemplate(__FILE__,$data,'board','reportlist');
-
-?>

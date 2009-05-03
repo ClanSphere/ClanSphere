@@ -360,4 +360,3 @@ class d3
 		return $tdata;
 	}
 }
-?>

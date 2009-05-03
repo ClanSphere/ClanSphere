@@ -206,5 +206,3 @@ $data['checked']['show_sender'] = empty($messages_show_sender) ? '' : ' checked=
 $data['var']['reply_id'] = $reply_id;
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'create');
-
-?>

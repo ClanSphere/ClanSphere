@@ -57,4 +57,3 @@ if(!empty($clans_form)) {
   
   echo cs_subtemplate(__FILE__,$data,'clans','remove');
 }
-?>

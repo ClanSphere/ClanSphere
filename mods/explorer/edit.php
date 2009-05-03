@@ -62,5 +62,3 @@ if(empty($_POST['submit'])) {
   cs_redirect($message, 'explorer', 'roots', 'dir=' . $parent_dir);
   
 }
-
-?>

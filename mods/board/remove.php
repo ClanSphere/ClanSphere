@@ -99,4 +99,3 @@ if(!empty($board_form)) {
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','remove');
-?>

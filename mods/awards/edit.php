@@ -100,4 +100,3 @@ if(isset($_POST['submit']) AND (empty($error))) {
 
   } 
 }
-?>

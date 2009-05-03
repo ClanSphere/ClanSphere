@@ -13,5 +13,3 @@ $cs_replays = cs_sql_select(__FILE__,'replays','replays_close',"replays_id = '" 
 
 require_once('mods/comments/functions.php');
 cs_commments_create($fid,'replays','view',$quote_id,$cs_lang['mod_name'],$cs_replays['replays_close']);
-
-?>

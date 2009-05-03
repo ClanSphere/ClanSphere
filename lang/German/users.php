@@ -287,5 +287,3 @@ $cs_lang['notifications_clanwar']    = 'Benachrichtige mich, wenn ein <b>Clanwar
 $cs_lang['no_notification'] = 'Keine Benachrichtigung';
 $cs_lang['email_notification'] = 'Per eMail benachrichtigen';
 $cs_lang['pm_notification'] = 'Per privater Nachricht benachrichtigen';
-
-?>

@@ -63,5 +63,3 @@ if(!empty($count_com)) {
 }
 
 echo cs_comments_add($cs_replays_id,'replays',$cs_replays['replays_close']);
-
-?>

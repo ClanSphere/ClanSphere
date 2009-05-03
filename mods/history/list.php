@@ -17,5 +17,3 @@ for($run = 0; $run < $history_loop; $run++) {
   $data['history'][$run]['user'] = cs_user($data['history'][$run]['users_id'],$data['history'][$run]['users_nick'],$data['history'][$run]['users_active']);
 }
 echo cs_subtemplate(__FILE__,$data,'history','list');
-
-?>

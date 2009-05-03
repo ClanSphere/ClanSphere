@@ -431,5 +431,3 @@ if(extension_loaded('gd') AND isset($_REQUEST['usersthumb']))
   $im->Transformation->Scale('100','100');
   $im->dump();
 }
-
-?>
