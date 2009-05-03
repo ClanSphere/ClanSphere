@@ -93,7 +93,7 @@ var request_cont;
 var active_upload_count = 0;
   
 function initializeAJAX(modrewrite, navinterval) {
-  cont = document.getElementsByTagName('body')[0].innerHTML;
+  var cont = document.getElementsByTagName('body')[0].innerHTML;
   if (modrewrite) {
     mod_rewrite = 1;
     cont = cont.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(index|debug|board)\/(\w.+)\"/g,"href=\"#$2\"");
@@ -128,7 +128,7 @@ function checkanch() {
 
 function cloaded(anch) {
   forms_to_ajax();
-  if (document.getElementById('ajax_js')) window.setTimeout(eval(document.getElementById('ajax_js').innerHTML), 0);
+  if (document.getElementById('ajax_js')) window.setTimeout(function(){eval(document.getElementById('ajax_js').innerHTML);}, 0);
   if (anch != "__START__") setnavs(1);
 }
 
@@ -145,8 +145,8 @@ function updatenavs() {
 }
 
 function setnavs(cache) {
-  cnttmp = cache == 1 && document.getElementById('contenttemp') ? document.getElementById('contenttemp').innerHTML : '';
-  cont = cache != 1 ? document.getElementById('temp_div').innerHTML : cnttmp;
+  var cnttmp = cache == 1 && document.getElementById('contenttemp') ? document.getElementById('contenttemp').innerHTML : '';
+  var cont = cache != 1 ? document.getElementById('temp_div').innerHTML : cnttmp;
   done = 1;
   parts = cont.split('!33/');
   for (run = 1; run < parts.length; run+=2)
@@ -154,10 +154,10 @@ function setnavs(cache) {
 }
 
 function form_to_string(form) {
-  string = "";
+  var string = "";
   firstsubmit = "";
   var fields = form.elements;
-  for(i=0;i<fields.length;i++) {
+  for(var i = 0; i < fields.length; i++) {
     switch(fields[i].type) {
       case 'text': case 'password': case 'hidden': case 'textarea':
         string += encodeURI(fields[i].name) + "=" + fields[i].value + "&";
@@ -213,13 +213,12 @@ function forms_to_ajax() {
     }
     forms[i].onsubmit = function() {
       if(active_upload_count==0) {
-        for ( i = 0; i < parent.frames.length; ++i )
+        for (var i = 0; i < parent.frames.length; ++i )
           if ( parent.frames[i].FCK )
-            parent.frames[i].FCK.UpdateLinkedField();
+        	  parent.frames[i].FCK.LinkedField.value = escape(parent.frames[i].FCK.GetData());
         FCKeditorAPI = null;
         document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
-        form_data = form_to_string(this);
-        cs_ajax_getcontent(this.action.replace(/([a-zA-Z0-9\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_data, 1);
+        cs_ajax_getcontent(this.action.replace(/([a-zA-Z0-9\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_to_string(this), 1);
       } else {
         alert('Upload proccess still running');
       }
