@@ -81,7 +81,7 @@ $zahlungen = 0;
 $tables = 'cash ca INNER JOIN {pre}_users usr ON ca.users_id = usr.users_id';
 $cells = 'ca.cash_time AS cash_time, ca.cash_inout AS cash_inout, ca.users_id AS users_id, usr.users_nick AS users_nick, ca.cash_text AS cash_text';
 $cells .= ', ca.cash_money AS cash_money, ca.cash_id AS cash_id';
-$cash = cs_sql_select(__FILE__,$tables,$cells,"cash_inout = 'in'" . $and_user2,0,0,0);
+$cash = cs_sql_select(__FILE__,$tables,$cells,"cash_inout = 'in'" . $and_user2,$order,0,0);
 $cash_count = count($cash);
 for($run=0; $run<$cash_count; $run++) {
 $cash_year = substr($cash[$run]['cash_time'], 0, 4);
