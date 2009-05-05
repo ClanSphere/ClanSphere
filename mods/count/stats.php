@@ -37,6 +37,7 @@ $tday = cs_datereal('d');
 $tmonth = cs_datereal('n');
 $tyear = cs_datereal('Y');
 $daystart = mktime(0,0,0,$tmonth,$tday,$tyear);
+$daystart = cs_timediff($daystart, 1);
 
 $month = cs_sql_select(__FILE__, 'count_archiv', 'SUM(count_num) AS count', 'count_mode = "1"', 0, 0, 0);
 $count_month = $month[0]['count'];
