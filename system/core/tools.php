@@ -128,6 +128,7 @@ function cs_datepost($name,$mode) {
   }
   elseif($mode == 'date' AND !empty($time['year'])) {
     if(strlen($time['month']) == 1) $time['month'] = '0' . $time['month'];
+    if(strlen($time['day']) == 1) $time['day'] = '0' . $time['day'];
     $var = $time['year'] . '-' . $time['month'] . '-' . $time['day'];
   }
 
