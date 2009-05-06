@@ -225,7 +225,7 @@ function cs_sql_version($cs_file) {
 
   global $cs_db;
   $sql_infos = array('data_free' => 0, 'data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
-  $sql_query = "SHOW TABLE STATUS WHERE NAME LIKE '" . cs_sql_escape($cs_db['prefix'] . '_') . "%'";
+  $sql_query = "SHOW TABLE STATUS LIKE '" . cs_sql_escape($cs_db['prefix'] . '_') . "%'";
   $sql_data = mysqli_query($cs_db['con'], $sql_query) or cs_error_sql($cs_file, 'cs_sql_version', mysqli_error($cs_db['con']));
   while($row = mysqli_fetch_assoc($sql_data)) {
     $sql_infos['data_size'] += $row['Data_length'];
