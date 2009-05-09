@@ -286,15 +286,16 @@ function make_folders_head($array, $last_id, $folders_name) {
   }
   return $cache;
 }
-function make_folders_create($mod, $folders_name) {
+function make_folders_create($mod, $folders_name, $users_id = 0) {
   
-  $get = "folders_mod='" . $mod . "' AND folders_name = '" . cs_sql_escape($folders_name) . "'";
+  $get = "folders_mod = '" . $mod . "' AND folders_name = '" . cs_sql_escape($folders_name) . "' AND users_id = '" (int) $users_id . "'";
   $count = cs_sql_count(__FILE__,'folders',$get);
-  if (!empty($count)) {
-    return 0;
-  } else {
-    $columns = array('folders_mod','folders_name');
-    $values = array($mod, $folders_name);
+  if(!empty($count)) {
+    return false;
+  }
+  else {
+    $columns = array('folders_mod','folders_name','users_id');
+    $values = array($mod, $folders_name, $users_id);
     cs_sql_insert(__FILE__,'folders',$columns,$values);
     return cs_sql_insertid(__FILE__);
   }

@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
   }
   
   $cs_gallery['usersgallery_titel'] = $_POST['gallery_titel'];
-  $cs_gallery['folders_id'] = empty($_POST['folders_name']) ? $_POST['folders_id'] : make_folders_create('usersgallery',$_POST['folders_name']);
+  $cs_gallery['folders_id'] = empty($_POST['folders_name']) ? $_POST['folders_id'] : make_folders_create('usersgallery',$_POST['folders_name'], $account['users_id']);
   $cs_gallery['usersgallery_access'] =  $_POST['gallery_access'];
   $cs_gallery['usersgallery_description'] = $_POST['description'];
   $cs_gallery['usersgallery_status'] =  isset($_POST['gallery_status']) ? $_POST['gallery_status'] : 0;

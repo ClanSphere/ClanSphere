@@ -23,7 +23,7 @@ $new_time = 0;
 if(isset($_POST['submit'])) {
 
 	$edit['usersgallery_titel'] = $_POST['gallery_titel'];
-	$edit['folders_id'] = empty($_POST['folders_name']) ? $_POST['folders_id'] : make_folders_create('usersgallery',$_POST['folders_name']);
+	$edit['folders_id'] = empty($_POST['folders_name']) ? $_POST['folders_id'] : make_folders_create('usersgallery',$_POST['folders_name'], $account['users_id']);
 	$edit['usersgallery_access'] = $_POST['gallery_access'];
 	$edit['usersgallery_status'] = $_POST['gallery_status'];
 	$edit['usersgallery_description'] = $_POST['gallery_description'];
