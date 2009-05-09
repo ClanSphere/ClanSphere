@@ -288,7 +288,7 @@ function make_folders_head($array, $last_id, $folders_name) {
 }
 function make_folders_create($mod, $folders_name, $users_id = 0) {
   
-  $get = "folders_mod = '" . $mod . "' AND folders_name = '" . cs_sql_escape($folders_name) . "' AND users_id = '" (int) $users_id . "'";
+  $get = "folders_mod = '" . $mod . "' AND folders_name = '" . cs_sql_escape($folders_name) . "' AND users_id = '" . (int) $users_id . "'";
   $count = cs_sql_count(__FILE__,'folders',$get);
   if(!empty($count)) {
     return false;
