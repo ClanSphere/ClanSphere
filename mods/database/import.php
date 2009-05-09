@@ -68,11 +68,14 @@ if(!empty($sql_content)) {
   foreach($sql_array AS $sql_query) {
     $sql_query = trim(str_replace('{serial}',';',$sql_query));
     if(!empty($sql_query)) {
-      $explain = strpos(strtolower($sql_query), 'explain') === 0 ? 1 : 0;
-      if($check = cs_sql_query(__FILE__, $sql_query, $explain)) {
+      $sql_lower = strtolower($sql_query);
+      $look_up = 0;
+      if(strpos($sql_lower, 'explain') === 0 OR strpos($sql_lower, 'select') === 0)
+        $look_up = 1;
+      if($check = cs_sql_query(__FILE__, $sql_query, $look_up)) {
         $para[1] = 'green';
         $info = $check['affected_rows'];
-        if(!empty($explain) AND isset($check['more'][0])) {
+        if(!empty($look_up) AND isset($check['more'][0])) {
           $explains = array();
           foreach($check['more'][0] AS $key => $value) {
             $explains['keys'][]['name'] = $key;
