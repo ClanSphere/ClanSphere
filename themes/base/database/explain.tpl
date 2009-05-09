@@ -1,7 +1,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width: 100%">
 <tr>
 {loop:keys}
-  <td class="leftb">{keys:name}</td>
+  <td class="leftc">{keys:name}</td>
 {stop:keys}
 </tr>
 {loop:more}
