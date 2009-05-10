@@ -180,18 +180,18 @@ function make_subfolders_array($array,$last_id = 0,$count = 1) {
   }
 }
 
-function make_folders_select($name,$select,$id = 0,$mod = 0,$create = 1, $folders_id = 0) {
+function make_folders_select($name,$select,$users_id = 0,$mod = 0,$create = 1, $folders_id = 0) {
 
-  $sql_select = 'folders_id, sub_id, folders_name, folders_order, folders_position, ';
-  $sql_select .= 'folders_url, folders_text, folders_access';
-  $array = cs_sql_select(__FILE__,'folders',$sql_select,"folders_mod='" . $mod . "'",'folders_id ASC',0,0);
+  $sql_select = 'folders_id, sub_id, folders_name, folders_order, folders_position, folders_url, folders_text, folders_access';
+  $sql_where = "folders_mod = '" . $mod . "' AND users_id = '" . (int) $users_id . "'";
+  $array = cs_sql_select(__FILE__, 'folders', $sql_select, $sql_where, 'folders_id ASC', 0, 0);
   $array = make_folders_array($array);
   
   $data['select']['name'] = $name;
   $data['folders']['options'] = make_folders_options($array,0,$select, $folders_id);
   $data['if']['create'] = !empty($create) ? TRUE : FALSE;
 
- return cs_subtemplate(__FILE__,$data,'gallery','folders_select');
+  return cs_subtemplate(__FILE__,$data,'gallery','folders_select');
 }
 
 function make_folders_options($array, $hierarchy = 0, $select = 0, $folders_id = 0) {
