@@ -1,7 +1,7 @@
 {if:error}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb">{head:mod}</td>
+		<td class="headb">{lang:mod_name} - {lang:pic}</td>
 	</tr>
 	<tr>
 		<td class="leftc">

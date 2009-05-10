@@ -58,7 +58,7 @@ else
 {
 	$data['if']['view'] = TRUE;
 
-	$select = 'folders_id, folders_name, folders_picture, folders_text, folders_advanced';
+	$select = 'folders_id, folders_name, folders_access, folders_picture, folders_text, folders_advanced';
   $where = 'folders_mod = \'usersgallery\' AND folders_id = "' . $cat_id . '"';  
   $cs_cat = cs_sql_select(__FILE__,'folders',$select,$where);
 
@@ -202,7 +202,12 @@ else
       }
     }
   }
-	
+
+  if($account['access_usersgallery'] < $cs_cat['folders_access']) {
+    $data['if']['error'] = TRUE;
+    $data['if']['view'] = FALSE;
+  }
+
 	echo cs_subtemplate(__FILE__,$data,'usersgallery','com_view');
 
   if($detail == '1')
