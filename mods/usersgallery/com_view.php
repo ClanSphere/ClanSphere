@@ -58,10 +58,10 @@ else
 {
 	$data['if']['view'] = TRUE;
 
-	$select = 'folders_id, folders_name, folders_picture, folders_text';
+	$select = 'folders_id, folders_name, folders_picture, folders_text, folders_advanced';
   $where = 'folders_mod = \'usersgallery\' AND folders_id = "' . $cat_id . '"';  
   $cs_cat = cs_sql_select(__FILE__,'folders',$select,$where);
-  
+
   $advanced = empty($cs_cat['folders_advanced']) ? '0,0,0,0' : $cs_cat['folders_advanced'];
 	$advanced = explode(",",$advanced);
 
