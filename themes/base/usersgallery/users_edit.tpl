@@ -52,7 +52,8 @@
     <td class="leftc">{icon:configure} {lang:head}</td>
     <td class="leftb">
     	<input type="checkbox" name="new_time" value="1" {check:newtime}/> {lang:new_date}<br />
-    	<input type="checkbox" name="gallery_count_reset" value="1" {check:count}/> {lang:gallery_count_reset} <br />
+    	<input type="checkbox" name="gallery_count_reset" value="1" {check:count}/> {lang:gallery_count_reset}
+    </td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>

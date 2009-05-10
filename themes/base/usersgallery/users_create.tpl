@@ -51,7 +51,8 @@
 	<tr>
     <td class="leftc">{icon:configure} {lang:head}</td>
     <td class="leftb">
-    	<input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray_show}<br />
+    	<input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray_show}
+    </td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
