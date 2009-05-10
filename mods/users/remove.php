@@ -4,22 +4,21 @@
 
 $cs_lang = cs_translate('users');
 $cs_get = cs_get('id');
-//$nick = $cs_lang['del_nick'];
+
 $data = array();
 
 $users_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
-$nick_temp = cs_sql_select(__FILE__,'users','users_nick','users_id='.$users_id,0,0,1);
+$nick_temp = cs_sql_select(__FILE__, 'users', 'users_nick', 'users_id = ' . $users_id);
 
 if(isset($_GET['agree'])) {
-  
-  //$nick = '*'.$nick_temp['users_nick'].'*'; 
-  $bick = $nick_temp['users_nick']; 
-  
+
+  $nick = $nick_temp['users_nick']; 
+
   $chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
   $chars_count = strlen($chars)-1;
   $mail = '';
   $given = 1;
-  
+
   while (!empty($given)) {
     for ($i = 0; $i < 40; $i++) {
       $rand = rand(0,$chars_count);
@@ -27,9 +26,9 @@ if(isset($_GET['agree'])) {
     }
     $given = cs_sql_count(__FILE__, 'users', "users_email = '" . $mail . "'");
   }
-  
+
   $array_data = array('access_id'=>0,
-                      'users_nick'=>$bick,
+                      'users_nick'=>$nick,
                       'users_pwd'=>'',
                       'users_name'=>'',
                       'users_surname'=>'',
@@ -56,10 +55,11 @@ if(isset($_GET['agree'])) {
                       'users_regkey'=>'',
                       'users_register'=>0,
                       'users_delete'=>1);
+
   $array_keys = array_keys($array_data);
   $array_values = array_values($array_data);
   cs_sql_update(__FILE__, 'users', $array_keys, $array_values, $users_id);
-  //cs_sql_delete(__FILE__,'users',$users_id);
+  // cs_sql_delete(__FILE__, 'users', $users_id);
   cs_redirect($cs_lang['del_true'], 'users');
 }
 
