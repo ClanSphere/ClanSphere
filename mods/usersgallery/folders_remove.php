@@ -164,10 +164,10 @@ else {
 		$folder = make_folders_array($folder);
 	 make_folders_remove($folder,$folders_id);
 	}
-	if($delete_mode == 3) {
+	if($delete_mode == 3 OR empty($delete_mode) AND empty($count_pictures)) {
 		# delete only folder
 		cs_sql_delete(__FILE__,'folders',$folders_id);
 	}
 
- cs_redirect($cs_lang['del_true'],'usersgallery','center','page=cat');
+  cs_redirect($cs_lang['del_true'],'usersgallery','center','page=cat');
 }
