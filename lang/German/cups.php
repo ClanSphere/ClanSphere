@@ -159,5 +159,5 @@ $cs_lang['team_removed_mail']  = 'Hallo!'."\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Dies ist eine automatisch generierte Nachricht.'."\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Sie wurden aus dem Turnier "%s" entfernt.'."\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Bei Fragen wenden Sie sich bitte an den betreffenden Webmaster.'."\r\n\r\n\r\n";
-$cs_lang['team_removed_mail'] .= 'Mit freundlichen Grüßen,'."\r\n";
+$cs_lang['team_removed_mail'] .= 'Mit freundlichen Gr&uuml;&szlig;en,'."\r\n";
 $cs_lang['team_removed_mail'] .= 'Die Webmaster';

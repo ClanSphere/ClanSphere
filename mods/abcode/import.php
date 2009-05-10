@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
     $error = 0;
     $errormsg = $cs_lang['error'] . cs_html_br(1);
     
-    // Doppelte Muster finden und löschen
+    // Doppelte Muster finden und entfernen
     $_POST['pattern'] = array_unique($_POST['pattern']);
     
     for($run=0; $run<count($_POST['file']); $run++) {
