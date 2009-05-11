@@ -161,8 +161,11 @@ else {
   $create['users_dstime']     = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
   $users_id = create_user($create['access_id'],$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],$create['users_country'],$create['users_timezone'],$create['users_dstime']);
 
-  if(!empty($conv_joinus) AND !empty($users_id))
-    cs_sql_update(__FILE__, 'users', array('users_pwd'), array($create['users_pwd']), $users_id);
+  if(!empty($conv_joinus) AND !empty($users_id)) {
+    $array_keys = array('users_name', 'users_surname', 'users_age', 'users_place', 'users_icq', 'users_msn', 'users_pwd');
+    $array_values = array($create['users_name'], $create['users_surname'], $create['users_age'], $create['users_place'], $create['users_icq'], $create['users_msn'], $create['users_pwd']);
+    cs_sql_update(__FILE__, 'users', $array_keys, $array_values, $users_id);
+  }
 
   if(!empty($create_['send_mail'])) {
     $content = $cs_lang['mail_reg_start'] . $cs_lang['mail_reg_nick'] . $create['users_nick'];
@@ -177,5 +180,5 @@ else {
     cs_mail($create['users_email'],$cs_lang['mail_reg_head'],$content);
   }
 
- cs_redirect($cs_lang['create_done'],'users');
+  cs_redirect($cs_lang['create_done'],'users');
 }
