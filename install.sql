@@ -169,6 +169,11 @@ CREATE TABLE {pre}_board (
   board_comments int(8) NOT NULL default '0',
   board_order int(2) NOT NULL default '0',
   board_read int(2) NOT NULL default '0',
+  board_last_time int(14) NOT NULL default '0',
+  board_last_user varchar(40) NOT NULL default '',
+  board_last_userid int(8) NOT NULL default '0',
+  board_last_thread varchar(200) NOT NULL default '',
+  board_last_threadid int(8) NOT NULL default '0',
   PRIMARY KEY (board_id)
 ){engine};
 
@@ -348,6 +353,7 @@ CREATE TABLE {pre}_count_archiv (
   count_id {serial},
   count_month varchar(10) NOT NULL default '',
   count_num int(30) NOT NULL default '0',
+  count_mode int(2) NOT NULL default '0',
   PRIMARY KEY (count_id)
 ){engine};
 
@@ -723,6 +729,8 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ab
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'def_func', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'image_width', '500');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'image_height', '500');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'rte_html', '');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('abcode', 'rte_more', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('articles', 'max_navlist', '4');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'list_subforums', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax', '0');
@@ -753,10 +761,11 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2009.0_svn');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2009-04-05');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2009-05-15');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', 39);
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'last_archiv_day', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'width', '90');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'height', '400');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'background', '000000');
@@ -803,7 +812,6 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ev
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'req_fulladress', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'req_mobile', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'req_phone', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('fckeditor', 'mode', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('fckeditor', 'skin', 'default');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('fckeditor', 'height', '400');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('gallery', 'cols', '3');
