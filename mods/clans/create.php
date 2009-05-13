@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
   if (!empty($files['picture']['tmp_name'])) {
 	  $img_size = getimagesize($files['picture']['tmp_name']);
 	  if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
-	    $message .= $cs_lang['ext_error'] . cs_html_br(1);
+	    $errormsg .= $cs_lang['ext_error'] . cs_html_br(1);
 	    $error++;
 	  }
 	  elseif(!empty($files['picture']['tmp_name'])) {
@@ -39,15 +39,15 @@ if(isset($_POST['submit'])) {
 	          $extension = 'png'; break;
 		  }
 		  if($img_size[0] > $op_clans['max_width']) {
-		    $message .= $cs_lang['too_wide'] . cs_html_br(1);
+		    $errormsg .= $cs_lang['too_wide'] . cs_html_br(1);
 		    $error++;
 		  }
 		  if($img_size[1] > $op_clans['max_height']) { 
-		    $message .= $cs_lang['too_high'] . cs_html_br(1);
+		    $errormsg .= $cs_lang['too_high'] . cs_html_br(1);
 		    $error++;
 		  }
 		  if($files['picture']['size'] > $op_clans['max_size']) { 
-		    $message .= $cs_lang['too_big'] . cs_html_br(1);
+		    $errormsg .= $cs_lang['too_big'] . cs_html_br(1);
 		    $error++;
 		  }
     }

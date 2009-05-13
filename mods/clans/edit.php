@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
     $img_size = 0;
   
   if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
-    $message .= $cs_lang['ext_error'] . cs_html_br(1);
+    $errormsg .= $cs_lang['ext_error'] . cs_html_br(1);
   $error++;
   }
   elseif(!empty($files['picture']['tmp_name'])) {
@@ -55,23 +55,23 @@ if(isset($_POST['submit'])) {
   $filename = 'picture-' . $clans_id . '.' . $ext;
     
   if($img_size[0]>$op_clans['max_width']) {
-    $message .= $cs_lang['too_wide'] . cs_html_br(1);
+    $errormsg .= $cs_lang['too_wide'] . cs_html_br(1);
     $error++;
   }
   
   if($img_size[1]>$op_clans['max_height']) { 
-    $message .= $cs_lang['too_high'] . cs_html_br(1);
+    $errormsg .= $cs_lang['too_high'] . cs_html_br(1);
     $error++;
   }
   
   if($files['picture']['size']>$op_clans['max_size']) { 
-    $message .= $cs_lang['too_big'] . cs_html_br(1);
+    $errormsg .= $cs_lang['too_big'] . cs_html_br(1);
     $error++;
   }
   
   if(empty($error) AND cs_upload('clans', $filename, $files['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files['picture']['tmp_name'], 'uploads/clans/' . $filename, $op_clans['max_width'], $op_clans['max_height'])) {
     $error = 0;
-    $message = '';
+    $errormsg = '';
     
   if($cs_clans['clans_picture'] != $filename AND !empty($cs_clans['clans_picture'])) {
       cs_unlink('clans', $cs_clans['clans_picture']);
@@ -80,7 +80,7 @@ if(isset($_POST['submit'])) {
   $cs_clans['clans_picture'] = $filename;
   }
   else {
-    $message .= $cs_lang['up_error'];
+    $errormsg .= $cs_lang['up_error'];
     $error++;
   }
 }
