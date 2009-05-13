@@ -7,6 +7,7 @@ $cs_lang = cs_translate('count');
 $op_count = cs_sql_option(__FILE__,'count');
 
 $data = array();
+$data['count'] = array();
 $combine = array();
 $archive = 0;
 $comnr = 0;
@@ -74,7 +75,7 @@ echo cs_subtemplate(__FILE__,$data,'count','statsyear');
 echo '<script type="text/javascript" src="' . $cs_main['php_self']['dirname'];
 echo 'mods/count/amline/swfobject.js"></script><div id="flashcontent">';
 
-echo cs_subtemplate(__FILE__,$data,'count','flash');
+echo cs_subtemplate(__FILE__,array(),'count','flash');
 
 echo '</div>';
 
