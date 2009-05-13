@@ -285,7 +285,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
 
   cs_scriptload('clansphere', 'javascript', 'js/clansphere.js');
-  cs_scriptload('clansphere', 'javascript', 'js/ajax.js');
+  cs_scriptload('ajax', 'javascript', 'js/ajax.js');
 
   global $cs_main;
   $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
