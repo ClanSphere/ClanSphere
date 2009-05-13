@@ -352,7 +352,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $data['data']['php_errors'] = $cs_logs['php_errors'];
     $data['data']['csp_errors'] = $cs_logs['errors'];
     $script = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
-    $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get);
+    $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get, 1);
   }
 
   $cs_temp_get = str_replace('{func:errors}', $cs_logs['php_errors'] . $cs_logs['errors'], $cs_temp_get);
