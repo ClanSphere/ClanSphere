@@ -13,6 +13,7 @@
     <td class="leftb">{icon:email} <a href="{url:messages_inbox:page=new}">{var:new_msgs} {lang:new_messages}</a></td>
     <td class="leftb" colspan="4">
     <form method="post" id="messages_filter" action="{url:messages_outbox}">
+     <fieldset style="border: 0; padding: 0">
      <select name="messages_filter">
       <option value="0">----</option>
       <option value="1">{lang:last_day}</option>
@@ -25,7 +26,9 @@
       <option value="8">{lang:last_100days}</option>
       <option value="9">{lang:last_year}</option>
       <option value="10">{lang:last_2years}</option>
-     </select> <input type="submit" name="submit" value="{lang:show}" /></form>
+     </select> <input type="submit" name="submit" value="{lang:show}" />
+     </fieldset>
+     </form>
     </td>
   </tr>
 </table>
@@ -49,7 +52,7 @@
   <tr>
     <td class="centerc">{msgs:icon}</td>
     <td class="leftc"><a href="{url:messages_view:id={msgs:messages_id}}">{msgs:messages_subject}</a></td>
-    <td class="leftc"><a href="{url:users_view:id={msgs:users_id_to}}">{msgs:user_to}</a></td>
+    <td class="leftc">{msgs:user_to}</td>
     <td class="leftc">{msgs:messages_time}</td>
     <td class="centerc"><input type="checkbox" name="select_{msgs:messages_id}" value="1" /></td>
     <td class="centerc"><a href="{url:messages_remove:id={msgs:messages_id}}" title="{lang:remove}">{icon:mail_delete}</a></td>
@@ -57,6 +60,7 @@
   </tr>{stop:msgs}
   <tr>
     <td class="rightb" colspan="7">
+      <input type="hidden" name="outbox" value="outbox" />
       <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_shoutbox_select();" />
       <input type="submit" name="submit" value="{lang:remove_selected}" />
       <input type="reset" name="reset_sel" value="{lang:drop_selection}" />

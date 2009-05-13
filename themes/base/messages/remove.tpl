@@ -11,7 +11,7 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="centerc">
-			<form method="post" id="" action="{url:messages_remove}">
+			<form method="post" action="{url:messages_remove}">
 				<input type="hidden" name="id" value="{messages:id}" />
 				<input type="submit" name="agree" value="{lang:confirm}" />
 				<input type="submit" name="cancel" value="{lang:cancel}" />
