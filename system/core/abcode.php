@@ -5,7 +5,7 @@
 function cs_abcode_inhtml($string, $mode = 0) {
 
   $search = (substr($string,0,6) == '[html]' AND substr($string,-7,7) == '[/html]') ? true : false;
-  if(empty($mode)
+  if(empty($mode))
     return $search;
   elseif($mode == 'del' AND !empty($search))
     $string = substr($string, 6, -7);
