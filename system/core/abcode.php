@@ -321,7 +321,7 @@ function cs_abcode_output($id, $matches = 0, $limit = 0) {
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
 
   global $cs_main;
-
+  $newlines = 1;
   $op_abcode = cs_sql_option(__FILE__,'abcode');
   cs_abcode_load();
 
@@ -359,14 +359,14 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   if(!empty($features)) {
 
     if(!empty($html)) {
-      $replace = strpos($replace, '[html]') === false ? html_entity_decode($replace, ENT_QUOTES, $cs_main['charset']) : $replace;
+      $newlines = cs_abcode_inhtml($replace) ? 0 : 1;
       $replace = preg_replace_callback("=\[html\](.*?)\[/html\]=si","cs_abcode_html",$replace);
     }
 
     if (!empty($phpeval))
       $replace = preg_replace_callback("=\[phpcode\](.*?)\[/phpcode\]=si",'cs_abcode_eval',$replace);
 
-    if(empty($html)) 
+    if(!empty($newlines))
       $replace = nl2br($replace);
 
     $replace = preg_replace_callback("=\[u\](.*?)\[/u\]=si","cs_abcode_u",$replace);
