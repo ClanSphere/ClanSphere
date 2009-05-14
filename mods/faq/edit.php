@@ -56,7 +56,6 @@ if(isset($_POST['preview']) AND empty($error)) {
     $data['preview']['question'] = cs_secure($_POST['faq_frage']);
 
   $data['preview']['answer'] = cs_secure($faq_antwort,1,1,1,1);
-
 }
 
 if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
@@ -88,5 +87,4 @@ else {
   cs_sql_update(__FILE__,'faq',$faq_cells,$faq_save,$faq_id);
     
   cs_redirect($cs_lang['changes_done'],'faq');
-
 }

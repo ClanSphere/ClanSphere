@@ -11,7 +11,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   
   $categories_id = empty($_POST['categories_id']) ? cs_categories_create('faq',$_POST['categories_name']) : (int) $_POST['categories_id'];
   $faq_userid = $account['users_id'];
-  $faq_frage = empty($_POST['faq_frage']) ? '' : $_POST['faq_frage']; 
+  $faq_frage = $_POST['faq_frage']; 
   $faq_antwort = empty($cs_main['rte_html']) ? $_POST['faq_antwort'] : cs_abcode_inhtml($_POST['faq_antwort'], 'add');
   
   $error = '';
@@ -77,5 +77,4 @@ else {
   cs_sql_insert(__FILE__,'faq',$faq_cells,$faq_save);
     
   cs_redirect($cs_lang['create_done'],'faq');
-
 }
