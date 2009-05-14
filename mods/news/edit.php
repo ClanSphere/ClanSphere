@@ -30,12 +30,12 @@ if(isset($_POST['submit']) or isset($_POST['preview'])) {
   $cs_news['news_public'] = isset($_POST['news_public']) ? (int)$_POST['news_public'] : 0;
   $cs_news['news_attached'] = isset($_POST['news_attached']) ? (int)$_POST['news_attached'] : 0;
   $cs_news['news_headline'] = $_POST['news_headline'];
-  $cs_news['news_text'] = $_POST['news_text'];
   $cs_news['users_id'] = $_POST['users_id'];
   $cs_news['news_publishs_at'] = isset($_POST['publish_at']) ? (int)cs_datepost('date', 'unix') : 0;
-  $cs_news['news_readmore'] = $_POST['news_readmore'];
   $cs_news['news_readmore_active'] = isset($_POST['news_readmore_active']) ? (int)$_POST['news_readmore_active'] : 0;
   $data['if']['no_readmore'] = isset($_POST['news_readmore_active']) ? false : true;
+  $cs_news['news_text'] = empty($cs_main['rte_html']) ? $_POST['news_text'] : cs_abcode_inhtml($_POST['news_text'], 'add');
+  $cs_news['news_readmore'] = empty($cs_main['rte_html']) ? $_POST['news_readmore'] : cs_abcode_inhtml($_POST['news_readmore'], 'add');
 
   if(!empty($cs_news['news_publishs_at'])) $cs_news['news_public'] = 0;
 
@@ -152,12 +152,12 @@ if(isset($_POST['mirror'])) {
   $data['news']['news_public'] = isset($_POST['news_public']) ? (int)$_POST['news_public'] : 0;
   $data['news']['news_attached'] = isset($_POST['news_attached']) ? (int)$_POST['news_attached'] : 0;
   $data['news']['news_headline'] = $_POST['news_headline'];
-  $data['news']['news_text'] = $_POST['news_text'];
   $data['news']['users_id'] = $_POST['users_id'];
   $data['news']['news_publishs_at'] = isset($_POST['publish_at']) ? (int)cs_datepost('date', 'unix') : 0;
-  $data['news']['news_readmore'] = $_POST['news_readmore'];
   $data['news']['news_readmore_active'] = isset($_POST['news_readmore_active']) ? (int)$_POST['news_readmore_active'] : 0;
   $data['if']['no_readmore'] = isset($_POST['news_readmore_active']) ? false : true;
+  $data['news']['news_text'] = empty($cs_main['rte_html']) ? $_POST['news_text'] : cs_abcode_inhtml($_POST['news_text'], 'add');
+  $data['news']['news_readmore'] = empty($cs_main['rte_html']) ? $_POST['news_readmore'] : cs_abcode_inhtml($_POST['news_readmore'], 'add');
 
   $_POST['run_loop']++;
 }

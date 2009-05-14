@@ -16,7 +16,7 @@ if (file_exists($filename)) {
 }
 
 if(!empty($_POST['imprint'])) {
-  $imprint = $_POST['imprint'];
+  $imprint = empty($cs_main['rte_html']) ? $_POST['imprint'] : cs_abcode_inhtml($_POST['imprint'], 'add');
 } 
 if (!isset($_POST['submit']) AND file_exists($filename)) {   
   $imprint = explode("{laststandbreak}", $content); 

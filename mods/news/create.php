@@ -64,7 +64,6 @@ if (!empty($_GET['warid'])) {
   $text = str_replace($search, $replace, $text);
   
   $cs_news['news_text'] = $text;
-  
 }
 
 $abcode = explode(",",$op_news['abcode']);
@@ -80,13 +79,13 @@ if (isset($_POST['submit']) or isset($_POST['preview'])) {
   $cs_news['news_public'] = isset($_POST['news_public']) ? $_POST['news_public'] : 0;
   $cs_news['news_attached'] = isset($_POST['news_attached']) ? $_POST['news_attached'] : 0;
   $cs_news['news_headline'] = $_POST['news_headline'];
-  $cs_news['news_text'] = $_POST['news_text'];
   $cs_news['news_time'] = cs_time();
   $cs_news['users_id'] = $account['users_id'];
   $cs_news['news_publishs_at'] = isset($_POST['publish_at']) ? cs_datepost('date', 'unix') : 0;
-  $cs_news['news_readmore'] = $_POST['news_readmore'];
   $cs_news['news_readmore_active'] = isset($_POST['news_readmore_active']) ? $_POST['news_readmore_active'] : 0;
   $data['if']['no_readmore'] = isset($_POST['news_readmore_active']) ? false : true;
+  $cs_news['news_text'] = empty($cs_main['rte_html']) ? $_POST['news_text'] : cs_abcode_inhtml($_POST['news_text'], 'add');
+  $cs_news['news_readmore'] = empty($cs_main['rte_html']) ? $_POST['news_readmore'] : cs_abcode_inhtml($_POST['news_readmore'], 'add');
     
   if(!empty($cs_news['news_publishs_at'])) $cs_news['news_public'] = 0;
 
@@ -193,11 +192,11 @@ if(isset($_POST['mirror'])) {
   $cs_news['news_public'] = isset($_POST['news_public']) ? $_POST['news_public'] : 0;
   $cs_news['news_attached'] = isset($_POST['news_attached']) ? $_POST['news_attached'] : 0;
   $cs_news['news_headline'] = $_POST['news_headline'];
-  $cs_news['news_text'] = $_POST['news_text'];
   $cs_news['news_time'] = cs_time();
   $cs_news['news_publishs_at'] = isset($_POST['publish_at']) ? cs_datepost('date', 'unix') : 0;
-  $cs_news['news_readmore'] = $_POST['news_readmore'];
   $cs_news['news_readmore_active'] = isset($_POST['news_readmore_active']) ? $_POST['news_readmore_active'] : 0;
+  $cs_news['news_text'] = empty($cs_main['rte_html']) ? $_POST['news_text'] : cs_abcode_inhtml($_POST['news_text'], 'add');
+  $cs_news['news_readmore'] = empty($cs_main['rte_html']) ? $_POST['news_readmore'] : cs_abcode_inhtml($_POST['news_readmore'], 'add');
 
   $_POST['run_loop']++;
 }

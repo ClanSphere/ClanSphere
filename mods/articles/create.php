@@ -22,9 +22,9 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $data['art']['articles_navlist'] = isset($_POST['articles_navlist']) ? $_POST['articles_navlist'] : 0;
   $data['art']['articles_fornext'] = isset($_POST['articles_fornext']) ? $_POST['articles_fornext'] : 0;
   $data['art']['articles_headline'] = $_POST['articles_headline'];
-  $data['art']['articles_text'] = $_POST['articles_text'];
   $data['art']['articles_time'] = cs_time();
   $data['art']['users_id'] = $account['users_id'];
+  $data['art']['articles_text'] = empty($cs_main['rte_html']) ? $_POST['articles_text'] : cs_abcode_inhtml($_POST['articles_text'], 'add');
 
   $data['data']['articles_com_checked'] = empty($data['art']['articles_com']) ? '' : 'checked="checked"';
   $data['data']['articles_navlist_checked'] = empty($data['art']['articles_navlist']) ? '' : 'checked="checked"';

@@ -30,7 +30,7 @@ if(isset($_POST['submit'])) {
   $cs_events['events_name'] = $_POST['events_name'];
   $cs_events['events_venue'] = $_POST['events_venue'];
   $cs_events['events_url'] = $_POST['events_url'];
-  $cs_events['events_more'] = $_POST['events_more'];
+  $cs_events['events_more'] = empty($cs_main['rte_html']) ? $_POST['events_more'] : cs_abcode_inhtml($_POST['events_more'], 'add');
   $cs_events['events_time'] = cs_datepost('time','unix');
   $cs_events['events_close'] = isset($_POST['events_close']) ? $_POST['events_close'] : 0;
   $cs_events['events_cancel'] = isset($_POST['events_cancel']) ? $_POST['events_cancel'] : 0;

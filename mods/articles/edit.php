@@ -20,8 +20,8 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $cs_articles['articles_navlist'] = isset($_POST['articles_navlist']) ? $_POST['articles_navlist'] : 0;
   $cs_articles['articles_fornext'] = isset($_POST['articles_fornext']) ? $_POST['articles_fornext'] : 0;
   $cs_articles['articles_headline'] = $_POST['articles_headline'];
-  $cs_articles['articles_text'] = $_POST['articles_text'];
   $cs_articles['articles_time'] = $_POST['articles_time'];
+  $cs_articles['articles_text'] = empty($cs_main['rte_html']) ? $_POST['articles_text'] : cs_abcode_inhtml($_POST['articles_text'], 'add');
 
   $categories = cs_sql_select(__FILE__,'categories','categories_picture',"categories_id = '" . $cs_articles['categories_id'] . "'");
   

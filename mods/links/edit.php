@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
 	$cs_links['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] : cs_categories_create('links', $_POST['categories_name']);
 	$cs_links['links_url'] = $_POST['links_url'];
 	$cs_links['links_stats'] = $_POST['links_stats'];
-	$cs_links['links_info'] = $_POST['links_info'];
+  $cs_links['links_info'] = empty($cs_main['rte_html']) ? $_POST['links_info'] : cs_abcode_inhtml($_POST['links_info'], 'add');
 	$cs_links['links_sponsor'] = isset($_POST['links_sponsor']) ? $_POST['links_sponsor'] : 0;
 	$del_banner = isset($_POST['del_banner']) ? $_POST['del_banner'] : 0;
 	

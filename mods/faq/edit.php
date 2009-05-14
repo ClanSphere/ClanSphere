@@ -24,8 +24,8 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   
    $categories_id = empty($_POST['categories_name']) ? (int)$_POST['categories_id'] : cs_categories_create('faq', $_POST['categories_name']);
   
-  $faq_frage = empty($_POST['faq_frage']) ? '' : $_POST['faq_frage']; 
-  $faq_antwort = empty($_POST['faq_antwort']) ? '' : $_POST['faq_antwort'];
+  $faq_frage = $_POST['faq_frage']; 
+  $faq_antwort = empty($cs_main['rte_html']) ? $_POST['faq_antwort'] : cs_abcode_inhtml($_POST['faq_antwort'], 'add');
   
   $error = '';
   

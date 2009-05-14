@@ -9,7 +9,7 @@ $data['if']['preview'] = FALSE;
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   
-  $history['history_text'] = $_POST['history_text'];
+  $history['history_text'] = empty($cs_main['rte_html']) ? $_POST['history_text'] : cs_abcode_inhtml($_POST['history_text'], 'add');
   $history['history_time'] = cs_time();
   $history['users_id'] = $account['users_id'];
   

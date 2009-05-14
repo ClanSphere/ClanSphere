@@ -31,7 +31,7 @@ echo $account['access_static'];*/
 if(isset($_POST['submit'])) {
 
   $cs_static['static_title'] = $_POST['static_title'];
-  $cs_static['static_text'] = $_POST['static_text'];
+  $cs_static['static_text'] = empty($cs_main['rte_html']) ? $_POST['static_text'] : cs_abcode_inhtml($_POST['static_text'], 'add');
   $cs_static['static_table'] = isset($_POST['static_table']) ? 1 : 0;
   $cs_static['static_comments'] = isset($_POST['static_comments']) ? 1 : 0;
   $cs_static['static_access'] = $_POST['static_access'];
