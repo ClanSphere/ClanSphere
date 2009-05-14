@@ -15,10 +15,8 @@ else {
 
   function cs_rte_html($name, $value = '') {
 
-    # handle old html tag behavior
-    if(substr($value,0,6) == '[html]' AND substr($value,-7,7) == '[/html]') {
-      $value = substr($value, 6, -7);
-    }
+    # handle abcode html tag behavior
+    $value = cs_abcode_inhtml($value, 'del');
 
     global $cs_main;
     $data = array('fck');

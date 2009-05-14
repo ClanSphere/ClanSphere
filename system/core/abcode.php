@@ -2,6 +2,18 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
+function cs_abcode_inhtml($string, $mode = 0) {
+
+  $search = (substr($string,0,6) == '[html]' AND substr($string,-7,7) == '[/html]') ? true : false;
+  if(empty($mode)
+    return $search;
+  elseif($mode == 'del' AND !empty($search))
+    $string = substr($string, 6, -7);
+  elseif($mod == 'add' AND empty($search))
+    $string = '[html]' . $string . '[/html]';
+  return $string;
+}
+
 function cs_abcode_button($name, $title, $tag1, $tag2, $content) {
 
   $javascript = "javascript:abc_insert('" . $tag1 . "','" . $tag2 . "','" . $name . "','')";
