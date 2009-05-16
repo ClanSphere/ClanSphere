@@ -65,6 +65,12 @@ else
   $advanced = empty($cs_cat['folders_advanced']) ? '0,0,0,0' : $cs_cat['folders_advanced'];
 	$advanced = explode(",",$advanced);
 
+  if($account['access_usersgallery'] < $cs_cat['folders_access']) {
+    $data['if']['error'] = TRUE;
+    $data['if']['view'] = FALSE;
+    $detail = 0;
+  }
+
   $usersgallery_id = $cs_gallery[$move]['usersgallery_id'];
   $where = 'voted_fid = "' . $usersgallery_id . '" AND voted_mod = \'usersgallery\'';
   $cs_voted = cs_sql_select(__FILE__,'voted','users_id, voted_answer',$where,'',0,0);
@@ -201,11 +207,6 @@ else
         }
       }
     }
-  }
-
-  if($account['access_usersgallery'] < $cs_cat['folders_access']) {
-    $data['if']['error'] = TRUE;
-    $data['if']['view'] = FALSE;
   }
 
 	echo cs_subtemplate(__FILE__,$data,'usersgallery','com_view');
