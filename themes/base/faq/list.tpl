@@ -3,7 +3,7 @@
     <td class="headb">{lang:mod_name} - {lang:list}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:contents} {lang:total}: {count:faq}</td>
+    <td class="leftb">{lang:total}: {count:faq}</td>
   </tr>
 </table>
 <br />
