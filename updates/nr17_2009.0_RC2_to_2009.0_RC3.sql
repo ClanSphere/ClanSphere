@@ -1,6 +1,6 @@
-UPDATE {pre}_options SET options_value = '2009.0_svn' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
-UPDATE {pre}_options SET options_value = '2009-05-15' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
-UPDATE {pre}_options SET options_value = '39' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
+UPDATE {pre}_options SET options_value = '2009.0 RC 3' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
+UPDATE {pre}_options SET options_value = '2009-05-17' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
+UPDATE {pre}_options SET options_value = '40' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 DELETE FROM {pre}_options WHERE options_mod = 'fckeditor' AND options_name = 'mode';
 

@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0 RC3 >> 2009-05-xx
+ClanSphere 2009.0 RC3 >> 2009-05-17
 ___________________________________________________________
 
 -> Added abcode editor bridge to allow the usage of other wysiwyg software (hajo)
