@@ -57,7 +57,6 @@ ksort($settings);
 foreach($settings as $mod) {
   if(!array_key_exists('dir',$mod)) $mod['dir'] = 'users';
   if(!array_key_exists('file',$mod)) $mod['file'] = 'center';
-//  array_key_exists('file',$mod) ? $mod['dir'] = 'users' : $mod['file'] = 'center';
   $acc_dir = 'access_' . $mod['dir'];
   
   if(array_key_exists($acc_dir,$account) AND $account[$acc_dir] >= $mod['show']['users/settings']) {
