@@ -16,6 +16,7 @@ if(!empty($categories_loop)) {
   for($run=0; $run<$categories_loop; $run++) {
     $data['cat'][$run]['name'] = cs_secure($categories_data[$run]['categories_name']);
     $data['cat'][$run]['text'] = cs_secure($categories_data[$run]['categories_text']);
+    $data['if']['cat_text'] = empty($categories_data[$run]['categories_text']) ? false : true;
   }
 
   $cs_faq_cat1 = cs_sql_select(__FILE__,'faq','*',"categories_id = '" . $categories_id . "'",'categories_id DESC',0,0);

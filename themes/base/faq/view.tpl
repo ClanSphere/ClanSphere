@@ -3,9 +3,11 @@
   <tr>
     <td class="headb">{lang:mod_name} - {cat:name}</td>
   </tr>
+  {if:cat_text}
   <tr>
     <td class="leftb">{cat:text}</td>
   </tr>
+  {stop:cat_text}
 </table>
 {stop:cat} <br />
 {loop:faq}
