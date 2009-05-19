@@ -54,11 +54,11 @@ function cs_pictures_upload($file, $mod, $fid, $ajaxclean = 1) {
   if (empty($file['tmp_name'])) return true;
   
   settype($fid, 'integer');
-  $types_allowed = array('image/jpeg','image/png');
+  $types_allowed = array('image/jpeg','image/png','image/pjpeg','image/x-png');
   
   if (!in_array($file['type'], $types_allowed)) return false;
   
-  $exts = array('image/jpeg' => 'jpg', 'image/png' => 'png');
+  $exts = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'image/pjpeg' => 'jpg' ,'image/x-png' => 'png');
   $ext = $exts[$file['type']];
   
   $where = "pictures_fid = '" . $fid . "' AND pictures_mod = '" . $mod . "'";
