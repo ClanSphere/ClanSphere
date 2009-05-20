@@ -23,14 +23,7 @@ for($i = 0; $i<$cash_count; $i++)
 	{
    		$offrun++;
 	}
-	print_r($data['cash'][$i]['cash_id'] . ' ');
 }
-
-echo '<br>';
-
-print_r($offrun . ' ');
-
-echo '<br>';
 
 $count_cash = count($data['cash']);
 
@@ -41,7 +34,6 @@ for($run=0; $run<$offrun; $run++)
 	$data['cash'][$run]['users_flag'] = cs_html_img('symbols/countries/'.$data['cash'][$run]['users_country'].'.png');
 	$data['cash'][$run]['user'] = cs_user($data['cash'][$run]['users_id'], $data['cash'][$run]['users_nick'], $data['cash'][$run]['users_active'], $data['cash'][$run]['users_delete']);
 	$data['cash'][$run]['date'] = cs_date('date',$data['cash'][$run]['cash_time']);
-	print_r($data['cash'][$run]['cash_id'] . ' ');
 }
 
 echo cs_subtemplate(__FILE__,$data,'cash','view_cash');
