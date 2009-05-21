@@ -30,6 +30,14 @@ function cs_sql_connect($cs_db, $test = 0) {
   }
 }
 
+function cs_sql_replace($replace) {
+
+  $replace = str_replace('{optimize}','VACUUM',$replace);
+  $replace = str_replace('{serial}','integer',$replace);
+  $replace = str_replace('{engine}','',$replace);
+  return preg_replace("=int\((.*?)\)=si",'integer',$replace);
+}
+
 function cs_sql_version($cs_file) {
 
   global $cs_db;
@@ -42,18 +50,18 @@ function cs_sql_version($cs_file) {
   $sql_infos['server'] = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
   $sql_infos['server'] = str_replace('undefined', '', $sql_infos['server']);
 
-    $sql_query = 'SELECT COUNT(*) FROM sqlite_master WHERE type = \'table\' AND name LIKE \'' . $cs_db['prefix'] . '_%\'';
-    if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
-        $sql_result = $sql_data->fetch();
-        $sql_data = NULL;
-        $sql_infos['tables'] = $sql_result[0];
-        $sql_infos['data_size'] = filesize($cs_db['name']);
-    }
-    else {
-        $error = $cs_db['con']->errorInfo();
-        cs_error_sql($cs_file, 'cs_sql_count', $error[2]);
-        $sql_infos['tables'] = 0;
-    }
-    cs_log_sql($cs_file, $sql_query);
+  $sql_query = 'SELECT COUNT(*) FROM sqlite_master WHERE type = \'table\' AND name LIKE \'' . $cs_db['prefix'] . '_%\'';
+  if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
+      $sql_result = $sql_data->fetch();
+      $sql_data = NULL;
+      $sql_infos['tables'] = $sql_result[0];
+      $sql_infos['data_size'] = filesize($cs_db['name']);
+  }
+  else {
+      $error = $cs_db['con']->errorInfo();
+      cs_error_sql($cs_file, 'cs_sql_count', $error[2]);
+      $sql_infos['tables'] = 0;
+  }
+  cs_log_sql($cs_file, $sql_query);
   return $sql_infos;
 }

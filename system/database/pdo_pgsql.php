@@ -32,6 +32,14 @@ function cs_sql_connect($cs_db, $test = 0) {
   }
 }
 
+function cs_sql_replace($replace) {
+
+  $replace = str_replace('{optimize}','VACUUM',$replace);
+  $replace = str_replace('{serial}','serial NOT NULL',$replace);
+  $replace = str_replace('{engine}','',$replace);
+  return preg_replace("=int\((.*?)\)=si",'integer',$replace);
+}
+
 function cs_sql_version($cs_file) {
 
   global $cs_db;

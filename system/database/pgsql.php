@@ -150,6 +150,14 @@ function cs_sql_query($cs_file, $sql_query, $more = 0) {
   return $result;
 }
 
+function cs_sql_replace($replace) {
+
+  $replace = str_replace('{optimize}','VACUUM',$replace);
+  $replace = str_replace('{serial}','serial NOT NULL',$replace);
+  $replace = str_replace('{engine}','',$replace);
+  return preg_replace("=int\((.*?)\)=si",'integer',$replace);
+}
+
 function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order = 0,$first = 0,$max = 1, $cache = 0) {
 
   if (!empty($cache) && $return = cs_cache_load($cache)) {
@@ -253,9 +261,7 @@ function cs_sql_version($cs_file) {
 }
 
 function cs_sql_error() {
-  
-  global $cs_db;
 
+  global $cs_db;
   return pg_last_error($cs_db['con']);
-  
 }

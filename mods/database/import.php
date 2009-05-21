@@ -32,40 +32,7 @@ if(!empty($sql_content)) {
 
   $sql_update = str_replace('{time}',cs_time(),$sql_content);
 
-  if($cs_db['type'] == 'mysql' OR $cs_db['type'] == 'mysqli' OR $cs_db['type'] == 'pdo_mysql') {
-
-    #engine since 4.0.18, but collation works since 4.1.8
-    $version = cs_sql_version(__FILE__);
-    $myv = explode('.', $version['server']);
-    settype($myv[2], 'integer');
-    if($myv[0] > 4 OR $myv[0] == 4 AND $myv[1] > 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] > 7)
-      $engine = ' ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
-    else
-      $engine = ' TYPE=MyISAM CHARACTER SET utf8';
-  
-    $sql_update = str_replace('{optimize}','OPTIMIZE TABLE',$sql_update);
-    $sql_update = str_replace('{serial}','int(8) unsigned NOT NULL auto_increment',$sql_update);
-    $sql_update = str_replace('{engine}',$engine,$sql_update);
-    $sql_update = preg_replace("=create index (\S+) on (\S+) (\S+)=si",'ALTER TABLE $2 ADD KEY $1 $3',$sql_update);
-  }
-  elseif($cs_db['type'] == 'pgsql' OR $cs_db['type'] == 'pdo_pgsql') {
-    $sql_update = str_replace('{optimize}','VACUUM',$sql_update);
-    $sql_update = str_replace('{serial}','serial NOT NULL',$sql_update);
-    $sql_update = str_replace('{engine}','',$sql_update);
-    $sql_update = preg_replace("=int\((.*?)\)=si",'integer',$sql_update);
-  }
-  elseif($cs_db['type'] == 'sqlite' OR $cs_db['type'] == 'pdo_sqlite') {
-    $sql_update = str_replace('{optimize}','VACUUM',$sql_update);
-    $sql_update = str_replace('{serial}','integer',$sql_update);
-    $sql_update = str_replace('{engine}','',$sql_update);
-    $sql_update = preg_replace("=int\((.*?)\)=si",'integer',$sql_update);
-  }
-  elseif($cs_db['type'] == 'sqlsrv') {
-    $sql_update = preg_replace("={optimize}(.*?[;])=si",'',$sql_update);
-    $sql_update = str_replace('{serial}','int IDENTITY(1,1)',$sql_update);
-    $sql_update = str_replace('{engine}','',$sql_update);
-    $sql_update = preg_replace("=int\((.*?)\)=si",'int',$sql_update);
-  }
+  $sql_update = cs_sql_replace($sql_update);
 
   $sql_update = str_replace('\;','{serial}',$sql_update);
   $sql_array = explode(';',$sql_update);

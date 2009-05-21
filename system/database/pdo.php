@@ -223,7 +223,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
 }
 
 function cs_sql_error() {
-  
+
   global $cs_db;
   $error = $cs_db['con']->errorInfo();
 

@@ -141,6 +141,14 @@ function cs_sql_query($cs_file, $sql_query, $more = 0)
   return $result;
 }
 
+function cs_sql_replace($replace) {
+
+  $replace = preg_replace("={optimize}(.*?[;])=si",'',$replace);
+  $replace = str_replace('{serial}','int IDENTITY(1,1)',$replace);
+  $replace = str_replace('{engine}','',$replace);
+  return preg_replace("=int\((.*?)\)=si",'int',$replace);
+}
+
 function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0)
 {
   if (!empty($cache) && $return = cs_cache_load($cache)) {

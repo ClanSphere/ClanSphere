@@ -143,6 +143,23 @@ function cs_sql_query($cs_file, $sql_query, $more = 0)
   return $result;
 }
 
+function cs_sql_replace($replace) {
+
+  #engine since 4.0.18, but collation works since 4.1.8
+  $version = mysqli_get_server_info($cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_replace', mysqli_error($cs_db['con']));
+  $myv = explode('.', $version);
+  settype($myv[2], 'integer');
+  if($myv[0] > 4 OR $myv[0] == 4 AND $myv[1] > 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] > 7)
+    $engine = ' ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
+  else
+    $engine = ' TYPE=MyISAM CHARACTER SET utf8';
+
+  $replace = str_replace('{optimize}','OPTIMIZE TABLE',$replace);
+  $replace = str_replace('{serial}','int(8) unsigned NOT NULL auto_increment',$replace);
+  $replace = str_replace('{engine}',$engine,$replace);
+  return preg_replace("=create index (\S+) on (\S+) (\S+)=si",'ALTER TABLE $2 ADD KEY $1 $3',$replace);
+}
+
 function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0)
 {
   if (!empty($cache) && $return = cs_cache_load($cache)) {
@@ -246,8 +263,8 @@ function cs_sql_version($cs_file) {
 }
 
 function cs_sql_error() {
-  
+
   global $cs_db;
-  
+
   return mysqli_error($cs_db['con']);
 }
