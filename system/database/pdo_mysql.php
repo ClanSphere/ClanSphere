@@ -34,6 +34,7 @@ function cs_sql_connect($cs_db, $test = 0) {
 
 function cs_sql_replace($replace) {
 
+  global $cs_db;
   #engine since 4.0.18, but collation works since 4.1.8
   $version = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
   $myv = explode('.', $version);
