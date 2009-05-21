@@ -68,6 +68,11 @@ elseif($cs_db['type'] == 'sqlite' OR $cs_db['type'] == 'pdo_sqlite') {
   $sql_install = str_replace('{engine}','',$sql_install);
   $sql_install = preg_replace("=int\((.*?)\)=si",'integer',$sql_install);
 }
+elseif($cs_db['type'] == 'sqlsrv') {
+  $sql_install = str_replace('{serial}','int IDENTITY(1,1)',$sql_install);
+  $sql_install = str_replace('{engine}','',$sql_install);
+  $sql_install = preg_replace("=int\((.*?)\)=si",'int',$sql_install);
+}
 
 $sql_array = preg_split("=;[\n\r]+=",$sql_install); 
 foreach($sql_array AS $sql_query) {

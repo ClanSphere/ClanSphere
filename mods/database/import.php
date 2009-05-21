@@ -60,6 +60,12 @@ if(!empty($sql_content)) {
     $sql_update = str_replace('{engine}','',$sql_update);
     $sql_update = preg_replace("=int\((.*?)\)=si",'integer',$sql_update);
   }
+  elseif($cs_db['type'] == 'sqlsrv') {
+    $sql_update = preg_replace("={optimize}(.*?[;])=si",'',$sql_update);
+    $sql_update = str_replace('{serial}','int IDENTITY(1,1)',$sql_update);
+    $sql_update = str_replace('{engine}','',$sql_update);
+    $sql_update = preg_replace("=int\((.*?)\)=si",'int',$sql_update);
+  }
 
   $sql_update = str_replace('\;','{serial}',$sql_update);
   $sql_array = explode(';',$sql_update);

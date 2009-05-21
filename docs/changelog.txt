@@ -4,6 +4,11 @@ CHANGELOG
 ClanSphere 2009.0 >> 2009-05-xx
 ___________________________________________________________
 
+-> Added support for Microsoft SQL Server 2005 and 2008 using the sqlsrv extension (hajo)
+
+-- Fixed a huge number of bugs that were reported at "Trac" --
+
+
 ClanSphere 2009.0 RC3 >> 2009-05-17
 ___________________________________________________________
 
