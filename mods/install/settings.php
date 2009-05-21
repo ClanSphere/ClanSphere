@@ -52,7 +52,7 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
   }
   if(!empty($dberr)) {
     $error++;
-    $errormsg = $cs_lang['db_err'] . ' ' . $dberr;
+    $errormsg = $cs_lang['db_err'] . ' ' . nl2br($dberr);
   }
   if(empty($error)) {
 
