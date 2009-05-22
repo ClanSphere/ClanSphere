@@ -11,8 +11,8 @@ $data = array();
 $option = cs_sql_option(__FILE__,'categories');
 $option2 = cs_sql_option(__FILE__,'gallery');
 $img_filetypes = array('gif','jpg','png');
-require_once('mods/gallery/functions.php');
 
+require_once('mods/gallery/functions.php');
 
 $folders['sub_id'] = '';
 $folders['folders_name'] = '';
@@ -27,10 +27,9 @@ $adv_close = 0;
 $adv_dl = 1;
 $adv_dlo = 0;
 
-
 if(isset($_POST['submit'])) {
 
-  $folders['users_id'] = $account['users_id'];
+  $folders['users_id'] = 0;
   $folders['sub_id'] = $_POST['sub_id'];
   $folders['folders_name'] = $_POST['folders_name1'];
   $folders['folders_url'] = $_POST['folders_url'];
@@ -45,9 +44,8 @@ if(isset($_POST['submit'])) {
 	$advanced = array($adv_vote,$adv_close,$adv_dl,$adv_dlo);
   $folders['folders_advanced'] = implode(",",$advanced);
 
-  
   $error = '';
-  
+
   if(!empty($files_gl['picture']['tmp_name'])) {
     $img_size = getimagesize($files_gl['picture']['tmp_name']);
     if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
@@ -82,7 +80,6 @@ if(!isset($_POST['submit']))
   $data['head']['body'] = $cs_lang['body_folder'];
 elseif(!empty($error))
   $data['head']['body'] = $error;
-
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
@@ -121,17 +118,17 @@ else {
 
   $folder_cells = array_keys($folders);
   $folder_save = array_values($folders);
- cs_sql_insert(__FILE__,'folders',$folder_cells,$folder_save);
+  cs_sql_insert(__FILE__,'folders',$folder_cells,$folder_save);
  
 	if(!empty($files_gl['picture']['tmp_name'])) {
     $id = cs_sql_insertid(__FILE__);
     $filename = 'picture-' . $id . '.' . $extension;
-   cs_upload('folders',$filename,$files_gl['picture']['tmp_name']);
+    cs_upload('folders',$filename,$files_gl['picture']['tmp_name']);
 
     $cells = array('folders_picture');
     $save = array($filename);
-   cs_sql_update(__FILE__,'folders',$cells,$save,$id);
+    cs_sql_update(__FILE__,'folders',$cells,$save,$id);
   }
 
- cs_redirect($cs_lang['create_done'],'gallery','folders_manage');
+  cs_redirect($cs_lang['create_done'],'gallery','folders_manage');
 }

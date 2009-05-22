@@ -14,6 +14,7 @@ if (!empty($cs_post['id']))  $folders_id = $cs_post['id'];
 
 $option = cs_sql_option(__FILE__,'categories');
 $img_filetypes = array('gif','jpg','png');
+
 require_once('mods/gallery/functions.php');
 
 
@@ -29,10 +30,9 @@ $adv_close = $advanced[1];
 $adv_dl = $advanced[2];
 $adv_dlo = $advanced[3];
 
-
 if(isset($_POST['submit'])) {
 
-  $folders['users_id'] = $account['users_id'];
+  $folders['users_id'] = 0;
   $folders['sub_id'] = $_POST['sub_id'];
   $folders['folders_name'] = $_POST['folders_name1'];
   $folders['folders_url'] = $_POST['folders_url'];
@@ -87,7 +87,6 @@ if(!isset($_POST['submit']))
 elseif(!empty($error))
   $data['head']['body'] = $error;
 
-
 if(!empty($error) OR !isset($_POST['submit'])) {
 
 	$data['data'] = $folders;
@@ -131,8 +130,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['hidden']['folders_picture'] = $folders['folders_picture'];
   $data['hidden']['folders_id'] = $folders_id;
   
-  
- echo cs_subtemplate(__FILE__,$data,'gallery','folders_edit');
+  echo cs_subtemplate(__FILE__,$data,'gallery','folders_edit');
 }
 else {
 
@@ -142,14 +140,14 @@ else {
   }
   if(!empty($files_gl['picture']['tmp_name'])) {
     $filename = 'picture-' . $folders_id . '.' . $extension;
-   cs_upload('folders',$filename,$files_gl['picture']['tmp_name']);
+    cs_upload('folders',$filename,$files_gl['picture']['tmp_name']);
 
     $folders['folders_picture'] = $filename;
   }
 
   $folder_cells = array_keys($folders);
   $folder_save = array_values($folders);
- cs_sql_update(__FILE__,'folders',$folder_cells,$folder_save,$folders_id);
+  cs_sql_update(__FILE__,'folders',$folder_cells,$folder_save,$folders_id);
 
- cs_redirect($cs_lang['changes_done'],'gallery','folders_manage');
+  cs_redirect($cs_lang['changes_done'],'gallery','folders_manage');
 }
