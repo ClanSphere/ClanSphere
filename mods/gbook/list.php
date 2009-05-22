@@ -98,11 +98,12 @@ for($run=0; $run<$gbook_loop; $run++)
     $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
        $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'] . '&amp;from=list',0,$cs_lang['remove']);
     $ip = $cs_gbook[$run]['gbook_ip'];
-	$gbook[$run]['if']['admin'] = true;
+	  $gbook[$run]['if']['admin'] = true;
+
     if($account['access_gbook'] == 4) {
       $last = strlen(substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
-      $ip = strlen($gbook_ip);
-      $ip = substr($gbook_ip,0,$ip-$last);
+      $ip_len = strlen($ip);
+      $ip = substr($ip,0,$ip_len - $last);
       $ip = $ip . '*';	  
     }
     $gbook[$run]['icon_ip'] = cs_html_img('symbols/crystal_project/16/important.png',16,16,'title="'. $ip .'"');
@@ -113,5 +114,7 @@ for($run=0; $run<$gbook_loop; $run++)
 	$gbook[$run]['if']['admin'] = false;
   }
 }
+
 $data['gbook'] = !empty($gbook) ? $gbook : '';
+
 echo cs_subtemplate(__FILE__,$data,'gbook');
