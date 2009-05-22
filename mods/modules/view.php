@@ -35,8 +35,8 @@ if(file_exists('mods/' . $dir . '/access.php')) {
 
   $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 
-  $data['sort']['file'] = cs_sort('modules','view',0,$dir,1,$sort);
-  $data['sort']['access'] = cs_sort('modules','view',0,$dir,3,$sort);
+  $data['sort']['file'] = cs_sort('modules','view',0,0,1,$sort,'dir=' . $dir);
+  $data['sort']['access'] = cs_sort('modules','view',0,0,3,$sort,'dir=' . $dir);
 
   $axx_file = array();
   include 'mods/' . $dir . '/access.php';
