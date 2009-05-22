@@ -68,7 +68,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 }
 $categories_id = empty($data['art']['categories_id']) ? 0 : $data['art']['categories_id'];
 $data['categories']['dropdown'] = cs_categories_dropdown('articles',$categories_id);
-$data['pictures']['select'] = cs_pictures_select();
+$data['pictures']['select'] = cs_pictures_select('articles');
 $data['abcode']['features'] = cs_abcode_features('articles_text',1);
 $on = "onclick=\"javascript:abc_insert";
 if(empty($cs_main['rte_html'])) {

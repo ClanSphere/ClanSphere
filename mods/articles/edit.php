@@ -92,7 +92,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['data']['articles_navlist_checked'] = empty($cs_articles['articles_navlist']) ? '' : 'checked="checked"';
   $data['data']['articles_fornext_checked'] = empty($cs_articles['articles_fornext']) ? '' : 'checked="checked"';
   
-  $data['pictures']['select'] = cs_pictures_select($data['data']['articles_id']);
+  $data['pictures']['select'] = cs_pictures_select('articles', $data['data']['articles_id']);
   $data['categories']['dropdown'] = cs_categories_dropdown('articles',$cs_articles['categories_id']);
   $data['abcode']['features'] = cs_abcode_features('articles_text');                                
 

@@ -1,8 +1,8 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id:  $
+// $Id: info.php 1430 2008-12-10 13:08:44Z Fr33z3m4n $
 
-function cs_pictures_select($fid = 0) {
+function cs_pictures_select($mod, $fid = 0) {
   
   settype($fid, 'integer');
   $cs_lang = cs_translate('pictures');
@@ -12,7 +12,8 @@ function cs_pictures_select($fid = 0) {
   if (empty($fid))
     $data['if']['already'] = false;
   else {
-    $picture = cs_sql_select(__FILE__, 'pictures', 'pictures_file', "pictures_fid = '" . $fid . "'");
+    $where = "pictures_mod = '" . $mod . "' AND pictures_fid = " . $fid;
+    $picture = cs_sql_select(__FILE__, 'pictures', 'pictures_file', $where);
     if (empty($picture))
       $data['if']['already'] = false;
     else {
@@ -23,7 +24,6 @@ function cs_pictures_select($fid = 0) {
   $string = cs_subtemplate(__FILE__,$data,'pictures','select');
   
   return $string;
-  
 }
 
 function cs_pictures_delete ($var, $mod = 0) {
@@ -45,7 +45,6 @@ function cs_pictures_delete ($var, $mod = 0) {
   @unlink('uploads/pictures/' . $file);
   
   return true;
-  
 }
 
 function cs_pictures_upload($file, $mod, $fid, $ajaxclean = 1) {
