@@ -25,6 +25,7 @@ $data['sort']['count_id'] = cs_sort('count','manage',$start,0,3,$sort);
 $cs_counter = cs_sql_select(__FILE__,'count','*',0,$order,$start,$account['users_limit']);
 $count_loop = count($cs_counter);
 
+$data['count'] = array();
 for($run=0; $run<$count_loop; $run++) {
         
   $data['count'][$run]['count_id']      = $cs_counter[$run]['count_id'];
