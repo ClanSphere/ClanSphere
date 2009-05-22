@@ -12,7 +12,7 @@
 		<td class="leftb" colspan="3">
 			{icon:editpaste} {lang:user_gb} 
 			<input type="text" name="user_gb" value="{head:user_gb}" maxlength="200" size="20"  />
-			<input type="submit" name="submit" value="{lang:submit}" />
+			<input type="submit" name="submit" value="{lang:show}" />
 		</td>
 	</tr>
 </table>
