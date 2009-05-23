@@ -43,11 +43,12 @@ if ($op_counter['last_archiv_day'] < $yesterday) {
   
   $days_max = cs_datereal('t');
   $year = cs_datereal('Y');
+  $timer = mktime(0, 0, 0, $month, $op_counter['last_archiv_day'] - 1, $year);
   
   for ($day = $op_counter['last_archiv_day']; $day < $yesterday; $day++) {
     
-    $timer = mktime(0, 0, 0, $month, $day, $year);
-    $cond = "count_time < '" .$timer . "'";
+  	$timer2 = $timer + 86400;
+    $cond = "count_time > '" . $timer . "' AND count_time < '" .$timer2 . "'";
     $count_day = cs_sql_count(__FILE__, 'count', $cond);
     
     if (!empty($count_day)) {
@@ -55,9 +56,10 @@ if ($op_counter['last_archiv_day'] < $yesterday) {
 	    $values = array($day . '-' . $month . '-' . $year, $count_day, 1);
 	    cs_sql_insert(__FILE__, 'count_archiv', $cells, $values);
     }
+    $timer = $timer2;
   }
   
-  cs_sql_query(__FILE__, 'DELETE FROM {pre}_count WHERE ' . $cond);
+  cs_sql_query(__FILE__, "DELETE FROM {pre}_count WHERE count_time < '" . $timer . "'");
   
   $save = array('last_archiv_day' => $yesterday);
   
