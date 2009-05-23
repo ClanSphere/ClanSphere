@@ -26,7 +26,10 @@ $pub = $cs_news['categories_access'] > $account['access_news'] ? 0 : $cs_news['n
 if(!empty($pub)) {
   $com_where = "comments_mod = 'news' AND comments_fid = '" . $cs_news['news_id'] . "'";
   $data['news']['comments_count'] = cs_sql_count(__FILE__,'comments',$com_where);
+
+  $cs_main['page_title'] = $cs_news['news_headline'];
   $data['news']['news_headline'] = cs_secure($cs_news['news_headline']);
+
   $data['news']['news_time'] = cs_date('unix',$cs_news['news_time'],1);
   $data['news']['news_text'] = cs_secure($cs_news['news_text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
 

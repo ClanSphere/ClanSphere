@@ -31,29 +31,31 @@ if ($categories['categories_access'] > $account['access_categories']) {
 
 } else {
 
+  $cs_main['page_title'] = $cs_articles['articles_headline'];
+
   cs_articles_views($cs_articles_id, $cs_articles['articles_views']);
   
   $page = empty($cs_get['page']) ? 1 : $cs_get['page'];
   
-    $data['head']['articles_headline'] = cs_secure($cs_articles['articles_headline']);
-    $cs_articles_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $cs_articles['users_id'] . "'");
-    $data['head']['users_link'] = cs_user($cs_articles['users_id'],$cs_articles_user['users_nick'],$cs_articles_user['users_active'], $cs_articles_user['users_delete']).' ';
-    $data['head']['articles_date'] = cs_date('unix',$cs_articles['articles_time'],1);
-    $data['head']['pages'] = $page;
-  
-    $data['if']['catimg'] = empty($categories['categories_picture']) ? false : true;
-    $data['cat']['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$categories['categories_picture'];
-  
-  
-    $text = explode("[pagebreak]", $cs_articles['articles_text']);
-    $count_text = count($text);
-    $page_now = $page - 1;
+  $data['head']['articles_headline'] = cs_secure($cs_articles['articles_headline']);
+  $cs_articles_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $cs_articles['users_id'] . "'");
+  $data['head']['users_link'] = cs_user($cs_articles['users_id'],$cs_articles_user['users_nick'],$cs_articles_user['users_active'], $cs_articles_user['users_delete']).' ';
+  $data['head']['articles_date'] = cs_date('unix',$cs_articles['articles_time'],1);
+  $data['head']['pages'] = $page;
 
-    $secure_text = cs_secure($text[$page_now],1,0,1,1); 
+  $data['if']['catimg'] = empty($categories['categories_picture']) ? false : true;
+  $data['cat']['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$categories['categories_picture'];
 
-    include_once('mods/articles/cutpages.php');
-  
-    $data['articles']['articles_text'] = articles_secure($secure_text);
+
+  $text = explode("[pagebreak]", $cs_articles['articles_text']);
+  $count_text = count($text);
+  $page_now = $page - 1;
+
+  $secure_text = cs_secure($text[$page_now],1,0,1,1); 
+
+  include_once('mods/articles/cutpages.php');
+
+  $data['articles']['articles_text'] = articles_secure($secure_text);
   
   // navlist
   $data2['content'] = array();

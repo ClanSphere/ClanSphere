@@ -327,8 +327,10 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   // Set title proper related to module
   $cs_act_lang = cs_translate($cs_main['mod']);
-  $cs_main['def_title'] = $cs_main['def_title'] . ' - ' . $cs_act_lang['mod_name'];
-  $cs_temp_get = str_replace('{func:title}', $cs_main['def_title'], $cs_temp_get);
+  $title = $cs_main['def_title'] . ' - ' . $cs_act_lang['mod_name'];
+  if(!empty($cs_main['page_title']))
+    $title .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
+  $cs_temp_get = str_replace('{func:title}', $title, $cs_temp_get);
   $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
   $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 

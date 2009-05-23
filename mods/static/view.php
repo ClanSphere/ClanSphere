@@ -13,7 +13,9 @@ if (empty($cs_static)) {
   return;
 }
 
+$cs_main['page_title'] = $cs_static['static_title'];
 $cs_view_static['static']['title'] = $cs_static['static_title'];
+
 $cs_view_static['static']['content'] = cs_secure($cs_static['static_text'],1,1,1,1,1);
 
 $theme = empty($cs_static['static_table']) ? 'view' : 'view_table';

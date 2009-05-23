@@ -170,6 +170,8 @@ $data['thread']['board_link'] = cs_link(cs_secure($data['thread']['board_name'])
 #$arimportant = array('',$cs_lang['important']);
 $important = $data['thread']['threads_important'];
 #$data['thread']['abo'] = cs_secure($arimportant[$important],1) . ' ';
+
+$cs_main['page_title'] = $data['thread']['threads_headline'];
 $data['thread']['thread_link'] = cs_secure($data['thread']['threads_headline']);
 
 $data['thread']['getmessage'] = cs_getmsg();

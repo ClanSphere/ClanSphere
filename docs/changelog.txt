@@ -5,6 +5,7 @@ ClanSphere 2009.0 >> 2009-05-xx
 ___________________________________________________________
 
 -> Added support for Microsoft SQL Server 2005 and 2008 using the sqlsrv extension (hajo)
+-> Added title of articles, board threads, news and static pages to the end of func:title (hajo)
 
 -- Fixed a huge number of bugs that were reported at "Trac" --
 
