@@ -83,6 +83,13 @@ if (isset($_POST['submit'])) {
 	$error = 0;
 	$errormsg = '';
 
+  $old_acc = cs_sql_select(__FILE__, 'users', 'access_id', 'users_id = ' . (int) $users_id);
+	$get_acc = cs_sql_select(__FILE__, 'access', '*', 'access_id = ' . $old_acc['access_id']);
+	if ($get_acc['access_clansphere'] > $account['access_clansphere'] or $get_acc['access_access'] > $account['access_access'] or $get_acc['access_users'] > $account['access_users']) {
+		$error++;
+		$errormsg .= $cs_lang['access_denied'] . cs_html_br(1);
+	}
+
 	$nick2 = str_replace(' ', '', $cs_user['users_nick']);
 	$nickchars = strlen($nick2);
 	if ($nickchars < $op_users['min_letters']) {
@@ -141,7 +148,6 @@ if (!isset($_POST['submit'])) {
 } elseif (!empty($error)) {
 	$data['users']['body'] = $errormsg;
 }
-
 
 if (!empty($error) or !isset($_POST['submit'])) {
 
@@ -209,7 +215,6 @@ if (!empty($error) or !isset($_POST['submit'])) {
 	$fixed_lang[]['data[users_lang]'] = $lang['name'];
 
 	$data['users']['language_dropdown'] = cs_dropdown('data[users_lang]', 'data[users_lang]', $fixed_lang, $cs_user['users_lang']);
-
 
 	// Output
 	echo cs_subtemplate(__FILE__,$data,'users','edit');
