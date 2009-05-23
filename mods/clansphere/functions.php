@@ -9,6 +9,7 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
   $show = $mod . '/' . $action;
   if (empty($head['message'])) $head['message'] = '';
   $data = array('head' => $head);
+  $data['content'] = array();
 
   $options = array('info' => 0, 'size' => 48 , 'theme' => '');
   $options['theme'] = empty($account['users_view']) ? 'manage' : 'manage_' . $account['users_view'];
