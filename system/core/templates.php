@@ -277,11 +277,11 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_temp_get = file_get_contents($tpl_path . '/' . $tpl_file);
   $tpl_path = $wp . $tpl_path;
 
-  $pattern = "=\<link(.*?)href\=\"(?!http)(.*?)\"(.*?)\>=i";
+  $pattern = "=\<link(.*?)href\=\"(?!http|\/)(.*?)\"(.*?)\>=i";
   $cs_temp_get = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $cs_temp_get);
-  $pattern = "=background\=\"(?!http)(.*?)\"=i";
+  $pattern = "=background\=\"(?!http|\/)(.*?)\"=i";
   $cs_temp_get = preg_replace($pattern, "background=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
-  $pattern = "=src\=\"(?!http)(.*?)\"=i";
+  $pattern = "=src\=\"(?!http|\/)(.*?)\"=i";
   $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
 
   cs_scriptload('clansphere', 'javascript', 'js/clansphere.js');
