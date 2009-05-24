@@ -4,7 +4,10 @@
 	</tr>
 	<tr>
 		<td class="leftb">{head:body}</td>
-		<td class="rightb"><a href="{url:computers_center}">{lang:center}</a></td>
+		<td class="rightb">
+      {if:own}<a href="{url:computers_center}">{lang:center}</a>{stop:own}
+      {unless:own}<a href="{url:computers_manage}">{lang:manage}</a>{stop:own}
+    </td>
 	</tr>
 </table>
 <br />

@@ -81,6 +81,9 @@ elseif(!empty($_POST['submit'])) {
   }
 }
 
+$data = array();
+$data['if']['own'] = $computer['users_id'] == $account['users_id'] ? true : false;
+
 if(!empty($error)) {
   $data['head']['body'] = $error;
 }
