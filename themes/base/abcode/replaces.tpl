@@ -7,7 +7,7 @@
 <strong>{var:1}</strong>
 <u>{var:1}</u>
 <em>{var:1}</em>
-<span style="padding-left: {var:1}px;">{var:2}</span>
+<div style="padding-left: {var:1}px;">{var:2}</div>
 <span style="text-decoration: line-through;">{var:1}</span>
 <hr style="width: 100%;" />
 <span class="h{var:1}">{var:2}</span>
