@@ -249,10 +249,10 @@ else {
   $save = array_values($cs_gbook);
   cs_sql_insert(__FILE__,'gbook',$cells,$save);
   
+  $msg = empty($cs_options['lock']) ? $cs_lang['create_done'] : $cs_lang['create_done_lock'];
   if(empty($id)) {
-    $msg = !empty($cs_options['lock']) ? $cs_lang['create_done_lock'] : $cs_lang['create_done'];
     cs_redirect($msg,'gbook',$from);
   } else {
-    cs_redirect($cs_lang['create_done'],'gbook','users','id=' . $id);
+    cs_redirect($msg,'gbook','users','id=' . $id);
   }
 }

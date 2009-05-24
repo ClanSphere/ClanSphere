@@ -46,7 +46,7 @@ $gbook_count = cs_sql_count(__FILE__,'gbook',$where);
 
 $data['head']['count'] = $gbook_count;
 $data['head']['pages'] = cs_pages('gbook','manage',$gbook_count,$start,$id,$sort);
-$data['head']['user_gb'] = $user_gb;
+$data['head']['user_gb'] = empty($user_gb) ? '' : $user_gb;
 $data['head']['getmsg'] = cs_getmsg();
 
 $data['sort']['email'] = cs_sort('gbook','manage',$start,$id,3,$sort);
