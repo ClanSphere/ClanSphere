@@ -291,10 +291,18 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
   $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
+  $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
+  $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
+
+  if($account['access_clansphere'] >= 5 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
+    require_once 'mods/clansphere/sec_func.php';
+    $content = cs_cspnews() . $content;
+  }
+  
   if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
     $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
     $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);
-    $content = strpos($cs_temp_get,'id="content"') === false ? '<div id="content"></div>' : '';
+    if (strpos($cs_temp_get,'id="content"') === false) $content = '<div id="content">' . $content . '</div>';
     $ajaxes = explode(',',$cs_main['ajax_navlists']);
     if (!empty($cs_main['debug'])) {
       $ajaxes[] = 'func_parse';
@@ -311,14 +319,6 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
           $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_'.$ajax.'">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
       }
     }
-  }
-
-  $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
-  $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
-
-  if($account['access_clansphere'] >= 5 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
-    require_once 'mods/clansphere/sec_func.php';
-    $content = cs_cspnews() . $content;
   }
 
   $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
