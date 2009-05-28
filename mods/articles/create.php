@@ -49,7 +49,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
         cs_sql_insert(__FILE__,'articles',$articles_cells,$articles_save);
         
         $articles_id = cs_sql_insertid(__FILE__);
-        if (!empty($files['picture'])) cs_pictures_upload($files['picture'], 'articles', $articles_id);
+        if (!empty($_FILES['picture'])) cs_pictures_upload($_FILES['picture'], 'articles', $articles_id);
         
         cs_redirect($cs_lang['create_done'],'articles');
     }
