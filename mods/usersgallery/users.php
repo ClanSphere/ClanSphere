@@ -14,7 +14,7 @@ if (!empty($cs_post['cat_id']))  $cat_id = $cs_post['cat_id'];
 $start = empty($cs_get['start']) ? 0 : $cs_get['start'];
 if (!empty($cs_post['start']))  $start = $cs_post['start'];
 
-require_once('mods/gallery/functions.php');
+require_once 'mods/gallery/functions.php';
 $options = cs_sql_option(__FILE__,'gallery');
 $cols = $options['cols'];
 $rows = $options['rows'];
@@ -38,7 +38,7 @@ if(!empty($id)) {
 
     $from = 'folders';
     $select = 'folders_id, sub_id, folders_name, folders_picture, folders_text';
-    $where = "folders_mod='usersgallery' AND users_id='" . $id . "'";
+    $where = "folders_mod='usersgallery' AND users_id='" . $id . "' AND folders_access <= '" . $access_id . "'";
     $order = 'folders_name ASC';
     $folders = cs_sql_select(__FILE__,$from,$select,$where,$order,'',0);
     $folders_loop = count($folders);

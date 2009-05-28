@@ -43,7 +43,7 @@
 	<tr>
 		<td class="leftc">
 		{loop:top_views}
-			<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?usersthumb={top_views:img})">
+			<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url({page:path}mods/gallery/image.php?usersthumb={top_views:img})">
 				{top_views:link}
 			</div>
 		{stop:top_views}
@@ -63,7 +63,7 @@
 	<tr>
 		<td class="leftc">
 		{loop:last_update}
-			<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?usersthumb={last_update:img})">
+			<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url({page:path}mods/gallery/image.php?usersthumb={last_update:img})">
 				{last_update:link}
 			</div>
 		{stop:last_update}
@@ -83,7 +83,7 @@
 	<tr>
 		<td class="leftc">
 		{loop:vote}
-			<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?usersthumb={vote:img})">
+			<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url({page:path}mods/gallery/image.php?usersthumb={vote:img})">
 				{vote:link}
 			</div>
 		{stop:vote}
@@ -108,7 +108,7 @@
 				</div>
 			{stop:cat_1}
 			{loop:img}
-				<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url(mods/gallery/image.php?usersthumb={img:img})">
+				<div style="float: left; width: 100px; height: 100px; margin: 5px; padding: 0px; background-position: center; background-repeat: no-repeat; background-image: url({page:path}mods/gallery/image.php?usersthumb={img:img})">
 				{img:link}
 			</div>
 		{stop:img}
