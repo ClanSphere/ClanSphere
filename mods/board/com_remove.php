@@ -34,7 +34,7 @@ $thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_del',"users_id = '"
 $allowed = 0;      
 
 if(empty($comments_id) || (count($cs_comments) == 0))
-  return errorPage('com_remove');
+  return errorPage('com_remove', $cs_lang);
   
 if($account['access_board'] >= $cs_thread['board_access'])
 {
@@ -42,10 +42,10 @@ if($account['access_board'] >= $cs_thread['board_access'])
   if($account['access_comments'] >= 5 OR !empty($thread_mods['boardmods_del'])) 
     $allowed = 1;
   else  
-     return errorPage('com_remove');
+     return errorPage('com_remove', $cs_lang);
 }  
 else if(empty($allowed))
-  return errorPage('com_remove');
+  return errorPage('com_remove', $cs_lang);
 //Sicherheitsabfrage Ende
 
 

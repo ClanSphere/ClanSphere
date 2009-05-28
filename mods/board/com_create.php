@@ -49,13 +49,13 @@ if(!empty($data['thread']['squads_id']) AND $account['access_board'] < $data['th
   $check_sq = cs_sql_count(__FILE__,'members',$sq_where);
 }
 if(empty($fid) || (count($data['thread']) == 0)) {
-  return errorPage('com_create');
+  return errorPage('com_create', $cs_lang);
 }
 if($account['access_board'] < $data['thread']['board_access'] AND empty($check_sq)) {
-  return errorPage('com_create');
+  return errorPage('com_create', $cs_lang);
 }
 if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'] == -1 || ($last_comment['comments_time'] + $options['doubleposts']) > cs_time() )) {
-  return errorPage('com_create', $cs_lang['last_own']);
+  return errorPage('com_create', $cs_lang, $cs_lang['last_own']);
 }
 //ende sicherheits abfrage
 

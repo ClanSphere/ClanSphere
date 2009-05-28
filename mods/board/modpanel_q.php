@@ -23,9 +23,9 @@ $board_id = $thread_edit['board_id'];
 require_once('mods/board/functions.php');
 //Sicherheitsabfrage
 if($account['access_board'] < $thread_edit['board_access'])
-  return errorPage('modpanel_q');          
+  return errorPage('modpanel_q', $cs_lang);          
 if($account['access_board'] < 5 AND empty($thread_mods['boardmods_modpanel']))
-  return errorPage('modpanel_q');   
+  return errorPage('modpanel_q', $cs_lang);   
 //Sicherheitsabfarge Ende
 
 //Daten Abfragen

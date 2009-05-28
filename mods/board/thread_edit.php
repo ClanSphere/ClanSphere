@@ -28,17 +28,17 @@ if(!empty($board['squads_id'])) {
 //secure check
 $allowed = 0;
 if(empty($thread_id) || (count($board) == 0))
-  return errorPage('thread_edit');
+  return errorPage('thread_edit', $cs_lang);
 
 if($account['access_board'] >= $board['board_access']) {
   if($board['users_id'] == $account['users_id'] OR $account['access_comments'] >= 5 OR !empty($thread_mods['boardmods_edit']))
     $allowed = 1;
   else
-     return errorPage('thread_edit');
+     return errorPage('thread_edit', $cs_lang);
 } elseif(!empty($check_sq)) {
   $allowed = 1;  
 } else if(empty($allowed)) {
-  return errorPage('thread_edit');
+  return errorPage('thread_edit', $cs_lang);
 }
 //end secure check
 

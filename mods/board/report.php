@@ -30,11 +30,11 @@ if(!empty($cs_thread['squads_id']) AND $account['access_board'] < $cs_thread['bo
 }
 
 if(empty($tid) || (count($cs_thread) == 0)) {
-  return errorPage('report');
+  return errorPage('report', $cs_lang);
 }
 
 if($account['access_board'] < $cs_thread['board_access'] AND empty($check_sq)) {
-  return errorPage('report');
+  return errorPage('report', $cs_lang);
 }
 
 $report = isset($_POST['report']) ? $_POST['report'] : '';

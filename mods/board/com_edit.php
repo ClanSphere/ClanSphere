@@ -40,7 +40,7 @@ if(!empty($cs_thread['squads_id']) AND $account['access_board'] < $cs_thread['bo
 
 //Sicherheitsabfrage Beginn
 if(empty($fid) || (count($cs_thread) == 0))
-  return errorPage('com_edit');
+  return errorPage('com_edit', $cs_lang);
 
 if($account['access_board'] >= $cs_thread['board_access'] OR !empty($check_sq))
 {
@@ -48,10 +48,10 @@ if($account['access_board'] >= $cs_thread['board_access'] OR !empty($check_sq))
   if($cs_thread['users_id'] == $account['users_id'] OR $account['access_comments'] >= 4 OR !empty($thread_mods['boardmods_edit']))
     $allowed = 1;
   else
-     return errorPage('com_edit');
+     return errorPage('com_edit', $cs_lang);
 }
 else if(empty($allowed))
-  return errorPage('com_edit');
+  return errorPage('com_edit', $cs_lang);
 //Sicherheitsabfrage Ende
 
 // Boardfiles Berechnung Start

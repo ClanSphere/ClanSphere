@@ -31,7 +31,7 @@ if(!empty($cs_thread['squads_id'])) {
 
 $allowed = 0;
 if(empty($thread_id) || (count($cs_thread) == 0))
-  return errorPage('thread_remove');
+  return errorPage('thread_remove', $cs_lang);
 
 if($account['access_board'] >= $cs_thread['board_access']) {
   $where_com = "comments_mod = 'board' AND comments_fid = '" . $thread_id . "'";
@@ -41,12 +41,12 @@ if($account['access_board'] >= $cs_thread['board_access']) {
   } elseif($cs_thread['users_id'] == $account['users_id'] AND empty($sum)) {
     $allowed = 1;  
   } else {
-     return errorPage('thread_remove');
+     return errorPage('thread_remove', $cs_lang);
   }
 } elseif(!empty($check_sq)) {
   $allowed = 1;  
 } elseif(empty($allowed)) {
-  return errorPage('thread_remove');
+  return errorPage('thread_remove', $cs_lang);
 }
 //Sicherheitsabfrage Ende
 

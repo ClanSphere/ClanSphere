@@ -33,7 +33,7 @@ if($account['access_board'] < $cs_thread['board_access'] OR empty($check_pw)) {
   $errorpage = empty($check_sq) ? 1 : 0;
 }
 if(!empty($errorpage)) {
-  return errorPage('thread_add');
+  return errorPage('thread_add', $cs_lang);
 }
 //Sicherheitsabfrage Ende
 
