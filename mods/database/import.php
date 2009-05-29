@@ -43,8 +43,9 @@ if(!empty($sql_content)) {
     if(!empty($sql_query)) {
       $sql_lower = strtolower($sql_query);
       $look_up = 0;
-      if(strpos($sql_lower, 'explain') === 0 OR strpos($sql_lower, 'select') === 0)
+      if(strpos($sql_lower, 'explain') === 0 OR strpos($sql_lower, 'select') === 0 OR strpos($sql_lower, 'show') === 0)
         $look_up = 1;
+
       if($check = cs_sql_query(__FILE__, $sql_query, $look_up)) {
         $para[1] = 'green';
         $info = $check['affected_rows'];
