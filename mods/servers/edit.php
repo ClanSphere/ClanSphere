@@ -170,9 +170,6 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
   $servers_cells = array_keys($data['create']);
   $servers_save = array_values($data['create']);
   cs_sql_update(__FILE__,'servers',$servers_cells,$servers_save,$data['servers']['id']);
-  
-  // Include RSS Feed
-  include_once('mods/servers/rss.php');
 
   // Create Finish    
   cs_redirect($cs_lang['create_done'],'servers');

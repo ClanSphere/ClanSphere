@@ -13,7 +13,6 @@ if (!empty($cs_post['id']))  $servers_id = $cs_post['id'];
 if(isset($_POST['agree'])) {
 
  cs_sql_delete(__FILE__,'servers',$servers_id);
-  include_once('mods/servers/rss.php');
  cs_redirect($cs_lang['del_true'], 'servers');
 }
 
