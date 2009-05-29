@@ -99,7 +99,7 @@ else
 
   $head = cs_link($cs_lang['mod_name'],'usersgallery','users','id='. $id) .' - ';
   $head .= cs_link($cs_cat['folders_name'],'usersgallery','users','cat_id='. $cs_cat['folders_id'] .'&amp;id='. $id);
-  $cs_lap = cs_html_img("mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'] . "&amp;size=" . $cs_options['max_width']);
+  $cs_lap = cs_html_img( "mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'] . "&amp;size=" . $cs_options['max_width']);
 
 	$data['head']['view'] = $head;
 	$data['gallery']['titel'] = $cs_gallery[$move]['usersgallery_titel'];
@@ -107,15 +107,22 @@ else
   if(!empty($move)) {
     $back_1 = $move-1;
   }
+
   $forward_1 = $move+1;
   if($forward_1 < $gallery_loop) {
-    $forward = cs_html_img("mods/gallery/image.php?usersthumb=" . $cs_gallery[$forward_1]['usersgallery_id']);
+    $forward = cs_html_img($cs_main['php_self']['dirname'] . "mods/gallery/image.php?usersthumb=" . $cs_gallery[$forward_1]['usersgallery_id']);
   }
 
   if($cs_options['lightbox'] == '0' ) {
-    $img = cs_html_link("mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'],$cs_lap);
+    $img = cs_html_link($cs_main['php_self']['dirname'] . "mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'],$cs_lap);
   } else {
-    $img = cs_html_link("mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'],$cs_lap,0,0,0,'rel="lightbox"');
+  	/*
+  	 * TODO: start Scriptload everytime
+  	 * maybe core load first all content of his own, before starting parse template
+  	 */
+  	cs_scriptload('lightbox', 'javascript', 'js\mootols.js');
+  	cs_scriptload('lightbox', 'javascript', 'js\slimbox.js');
+    $img = cs_html_link($cs_main['php_self']['dirname'] . "mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'],$cs_lap,0,0,0,'rel="lightbox"');
   }
   $data['gallery']['img'] = $img;
   

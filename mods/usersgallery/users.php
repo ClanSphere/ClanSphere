@@ -18,7 +18,7 @@ require_once 'mods/gallery/functions.php';
 $options = cs_sql_option(__FILE__,'gallery');
 $cols = $options['cols'];
 $rows = $options['rows'];
-$cols_rows = $cols * $rows;
+$cols_rows = $account['users_limit'];
 
 $access_id = $account['access_usersgallery'];
 
@@ -261,8 +261,7 @@ if(!empty($id)) {
     }
     $data['img'] = !empty($img) ? $img : array();
     if(!empty($data['cat_1']) OR !empty($gallery_loop)) {
-      $sort = '';
-      $data['data']['pages'] = cs_pages('usersgallery','users',$gallery_count,$start,0,$sort . '&amp;cat_id=' . $cat_id . '&amp;id=' . $id,$cols_rows);
+      $data['data']['pages'] = cs_pages('usersgallery','users',$gallery_count,$start,0,'0&amp;cat_id=' . $cat_id . '&amp;id=' . $id,$cols_rows);
     } else {
       $empty_cat['lang']['empty_cat'] = $cs_lang['empty_cat'];
     }
