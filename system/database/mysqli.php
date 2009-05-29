@@ -12,8 +12,15 @@ function cs_sql_connect($cs_db, $test = 0)
     $connect = @mysqli_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd'], $cs_db['name']) OR $error = mysqli_connect_error();
   }
 
+  global $cs_main;
+  if(empty($error) AND $cs_main['charset'] == 'UTF-8') {
+    if(version_compare(phpversion(), '5.0.5', '>='))
+      mysqli_set_charset($connect, 'utf8');
+    elseif(mysqli_character_set_name($cs_db['con']) != 'utf8')
+      mysqli_query($connect, "SET NAMES 'utf8'") OR $error = mysqli_error($connect);
+  }
+
   if(empty($test) AND empty($error)) {
-    # mysqli_set_charset($connect, 'utf8'); // php 5.0.5+
     return $connect;
   }
   elseif(empty($test)) {

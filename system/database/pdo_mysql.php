@@ -21,6 +21,11 @@ function cs_sql_connect($cs_db, $test = 0) {
     }
   }
 
+  global $cs_main;
+  if(empty($error) AND $cs_main['charset'] == 'UTF-8') {
+    $connect->exec("SET NAMES 'utf8'");
+  }
+
   if(empty($test) AND empty($error)) {
     return $connect;
   }
