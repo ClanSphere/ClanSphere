@@ -16,8 +16,11 @@ function cs_sql_connect($cs_db, $test = 0)
     $connect = @pg_connect($pg_con) OR $error = empty($php_errormsg) ? 'Connection failed' : $php_errormsg;
   }
 
+  global $cs_main;
+  if(empty($error) AND $cs_main['charset'] == 'UTF-8')
+    pg_set_client_encoding('UNICODE');
+
   if(empty($test) AND empty($error)) {
-    # pg_set_client_encoding('UNICODE');
     return $connect;
   }
   elseif(empty($test)) {
