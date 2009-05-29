@@ -20,9 +20,7 @@ function cs_sql_connect($cs_db, $test = 0)
     if(version_compare(phpversion(), '5.2.3', '>='))
       mysql_set_charset('utf8', $connect);
     elseif(mysql_client_encoding() != 'utf8')
-      $error = 'PHP 5.2.3 or newer is required to change the encoding';
-#     USE THE NEXT LINE AT YOUR OWN RISK INSTEAD OF THE EARLIER ERROR MSG:
-#     mysql_unbuffered_query("SET NAMES 'utf8'", $connect) OR $error = mysql_error();
+     mysql_unbuffered_query("SET NAMES 'utf8'", $connect) OR $error = mysql_error();
   }
 
   if(empty($test) AND empty($error)) {
