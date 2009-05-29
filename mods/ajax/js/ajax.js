@@ -48,7 +48,6 @@ function cs_ajax_getcontent(url, objectid, onfinish, params, setanch) {
 }
 
 function cs_ajax_request (url, callback, method, params, request) {
-  
   if (!request) {
     if (url.substr(0,7) == 'content') {
       if (request_cont) request_cont.abort();
@@ -164,7 +163,7 @@ function form_to_string(form) {
   for(var i = 0; i < fields.length; i++) {
     switch(fields[i].type) {
       case 'text': case 'password': case 'hidden': case 'textarea':
-        string += encodeURI(fields[i].name) + "=" + fields[i].value + "&";
+        string += encodeURI(fields[i].name) + "=" + encodeURIComponent(fields[i].value) + "&";
         break;
       case 'submit':
         if (!firstsubmit) firstsubmit = fields[i].name; break;
