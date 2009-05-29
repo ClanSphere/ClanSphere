@@ -19,7 +19,7 @@ function cs_sql_connect($cs_db, $test = 0)
   if(empty($error) AND $cs_main['charset'] == 'UTF-8') {
     if(version_compare(phpversion(), '5.2.3', '>='))
       mysql_set_charset('utf8', $connect);
-    elseif(mysql_client_encoding() != 'utf8')
+    else
       mysql_unbuffered_query("SET NAMES 'utf8'", $connect) OR $error = mysql_error();
   }
 
