@@ -40,10 +40,12 @@
     </td>
   </tr>
   <tr>
+    <td class="leftb">{lang:search}</td>
     <td class="leftb" colspan="2">
-	  {lang:search}: <input type="text" name="search_name" value="{search:name}"  size="50" maxlength="100"/>
-	</td>
-	<td class="leftb"><input type="submit" name="{lang:submit}" /></td>
+      <input type="text" name="search_name" id="search_name" value="{search:name}" onkeyup="cs_ajax_getcontent('{page:path}mods/ajax/search_users.php?target=search_name&amp;term=' + document.getElementById('search_name').value, 'search_users_result')" size="50" maxlength="100"/>
+      <input type="submit" name="{lang:submit}" />
+      <div id="search_users_result"></div>
+    </td>
   </tr>
 </table>
 </form>
