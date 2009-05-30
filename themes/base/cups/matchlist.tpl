@@ -1,13 +1,14 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod_name} - {lang:matchlist}</td>
+    <td class="headb" colspan="3">{lang:mod_name} - {lang:matchlist}</td>
   </tr>
   <tr>
     <td class="leftb">{icon:contents} {lang:total}: {vars:matchcount}</td>
+    <td class="leftb"><a href="{url:cups_tree:id={cups:id}}">{lang:cupstree}</a></td>
     <td class="leftb">{pages:list}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="2">{loop:rounds} -> {if:notselected}<a href="{url:cups_matchlist:where={cups:id}&amp;round={rounds:value}}">{stop:notselected}{lang:round} {rounds:name}{if:notselected}</a>{stop:notselected} {stop:rounds}</td>
+    <td class="leftb" colspan="3">{loop:rounds} -> {if:notselected}<a href="{url:cups_matchlist:where={cups:id}&amp;round={rounds:value}}">{stop:notselected}{lang:round} {rounds:name}{if:notselected}</a>{stop:notselected} {stop:rounds}</td>
   </tr>
 </table>
 <br />

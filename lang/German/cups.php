@@ -123,6 +123,7 @@ $cs_lang['no_matches'] = 'Kein Match gefunden';
 $cs_lang['bracket'] = 'Bracket';
 $cs_lang['winners'] = 'Gewinner';
 $cs_lang['losers'] = 'Verlierer';
+$cs_lang['cupstree'] = 'Turnierbaum';
 
 // View
 $cs_lang['details'] = 'Details';
