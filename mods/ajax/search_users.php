@@ -27,10 +27,12 @@ if(!empty($current)) {
   $data['data']['target'] = empty($_GET['target']) ? 'users_nick' : $_GET['target'];
 
   $alike = cs_sql_escape($current);
-  $where = "users_active = 1 AND users_delete = 0 AND (users_nick LIKE '%"
-         . $alike . "%' OR users_name LIKE '%" . $alike . "%' OR users_surname LIKE '%"
-         . $alike . "%' OR users_email LIKE '%" . $alike . "%')";
+  $where = "users_active = 1 AND users_delete = 0 AND (users_nick LIKE '%" . $alike . "%'"
+         . " OR users_name LIKE '%" . $alike . "%' AND users_hidden NOT LIKE '%users_name%'"
+         . " OR users_surname LIKE '%" . $alike . "%' AND users_hidden NOT LIKE '%users_surname%'"
+         . " OR users_email LIKE '%" . $alike . "%' AND users_hidden NOT LIKE '%users_email%')";
   $cells = 'users_nick, users_name, users_surname, users_email';
+
   $data['result'] = cs_sql_select(__FILE__, 'users', $cells, $where, 0, 0, 5);
 
   if(!empty($data['result']))
