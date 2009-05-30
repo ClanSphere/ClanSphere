@@ -60,9 +60,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['buddys']['nick'] = $buddys_nick;
     
   if(empty($users_add_id)) {
-    $more  = 'onkeyup="cs_ajax_getcontent(\'' . $cs_main['php_self']['dirname'] . 'mods/messages/getusers.php';
-    $more .= '?name=\' + document.getElementById(\'name\').value,\'output\')"';
-    $more .= ' id="name"';
+    $more  = 'onkeyup="cs_ajax_getcontent(\'' . $cs_main['php_self']['dirname'] . 'mods/ajax/search_users.php';
+    $more .= '?target=buddys_nick&amp;term=\' + document.getElementById(\'buddys_nick\').value,\'output\')"';
+    $more .= ' id="buddys_nick"';
     $data['if']['empty_users_id'] = TRUE;
     $data['if']['users_id'] = FALSE;
     $data['input']['more'] = $more;
