@@ -26,7 +26,7 @@ if(!empty($current)) {
   $data['data']['old'] = htmlspecialchars($old);
   $data['data']['target'] = empty($_GET['target']) ? 'users_nick' : $_GET['target'];
 
-  $where = "users_nick LIKE '%" . cs_sql_escape($current) . "%' AND users_active = 1 AND users_delete = 0";
+  $where = "users_nick LIKE '%" . cs_sql_escape(trim($current)) . "%' AND users_active = 1 AND users_delete = 0";
   $data['result'] = cs_sql_select(__FILE__, 'users', 'users_nick', $where, 0, 0, 7);
 
   if(!empty($data['result'])) {
