@@ -155,7 +155,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$round++;
 		$run = 0;
 		$rounds_1--;
-		$cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . "'", 'cm.cupmatches_id',0,0);
+		$cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . "'",0,0,0);
 		$cupmatches[$round] = cs_cupmatches_fix ($cupmatches, $round);
 	}
 	
@@ -188,7 +188,7 @@ function cs_cupmatches_fix ($cupmatches, $round) {
 		
 	}
 	
-	return $fixes;
+	return $fixed;
 	
 }
 

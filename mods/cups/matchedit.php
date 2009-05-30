@@ -9,7 +9,7 @@ include 'mods/cups/generate.php';
 if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['accept_submit'])) {
   $cupmatches_id = (int) $_POST['cupmatches_id'];
   
-  $cells = 'cups_id, squad1_id, squad2_id, cupmatches_round';
+  $cells = 'cups_id, squad1_id, squad2_id, cupmatches_round, cupmatches_accepted1, cupmatches_accepted2, cupmatches_winner';
   $matchsel = cs_sql_select(__FILE__,'cupmatches',$cells,'cupmatches_id = \''.$cupmatches_id.'\'');
   
   $cup = cs_sql_select(__FILE__,'cups','cups_system, cups_brackets, cups_teams','cups_id = \''.$matchsel['cups_id'].'\'');
@@ -41,12 +41,24 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
       $values = array('1');
       cs_sql_update(__FILE__,'cupmatches',$cells,$values,$cupmatches_id);
       
-      $cond = '(cupmatches_accepted1 = \'0\' OR cupmatches_accepted2 = \'0\') AND cups_id = \''. $matchsel['cups_id'] .'\'';
+      $matchsel['cupmatches_accepted'.$squad] = 1;
+      
+      /*$cond = '(cupmatches_accepted1 = \'0\' OR cupmatches_accepted2 = \'0\') AND cups_id = \''. $matchsel['cups_id'] .'\'';
       $count = cs_sql_count(__FILE__,'cupmatches',$cond);
       
       if(empty($count) && $matchsel['cupmatches_round'] != 1) {
         cs_cupround($matchsel['cups_id'], $matchsel['cupmatches_round'], $cup['cups_teams'], $cup['cups_brackets']);
         $message = $cs_lang['new_round'];
+      }*/
+
+      if (!empty($matchsel['cupmatches_accepted1']) && !empty($matchsel['cupmatches_accepted2'])) {
+        
+      	$loser = $matchsel['cupmatches_winner'] == $matchsel['squad1_id'] ? $matchsel['squad2_id'] : $matchsel['squad1_id'];
+      	
+        $newmatch = cs_cupmatch ($cupmatches_id, $matchsel['cupmatches_winner'], $loser);
+      	
+        if ($newmatch) $msg = $cs_lang['new_match'];
+        
       }
       
       $msg = $cs_lang['successfully_confirmed'];
@@ -186,7 +198,17 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
         
       // Check for new round
         
-      $cells = 'cups_id, cupmatches_round';
+      if (!empty($cs_match['cupmatches_accepted1']) && !empty($cs_match['cupmatches_accepted2'])) {
+        
+      	$loser = $cs_match['cupmatches_winner'] == $_POST['squad1_id'] ? $_POST['squad2_id'] : $_POST['squad1_id'];
+      	
+        $newmatch = cs_cupmatch ($cupmatches_id, $cs_match['cupmatches_winner'], $loser);
+      	
+        if ($newmatch) $msg = $cs_lang['new_match'];
+        
+      }
+      	
+      /*$cells = 'cups_id, cupmatches_round';
       $matchsel = cs_sql_select(__FILE__,'cupmatches',$cells,"cupmatches_id = '" . $cupmatches_id . "'");
         
       $cond = '(cupmatches_accepted1 = \'0\' OR cupmatches_accepted2 = \'0\') AND cups_id = \''. $matchsel['cups_id'] .'\'';
@@ -198,7 +220,7 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
       
         cs_cupround($matchsel['cups_id'], $matchsel['cupmatches_round'], $cup['cups_teams'], $cup['cups_brackets']);
         $msg = $cs_lang['new_round'];
-      }
+      }*/
         
       echo $cs_lang['changes_done'] . '. ';
       

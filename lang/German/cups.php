@@ -96,6 +96,7 @@ $cs_lang['no_winner'] = '- Kein Gewinner gew&auml;hlt';
 
 $cs_lang['result_successful'] = 'Das Ergebnis wurde erfolgreich eingetragen.';
 $cs_lang['new_round'] = 'Ausserdem wurde eine neue Runde des Turniers begonnen.';
+$cs_lang['new_match'] = 'Ausserdem wurde eine neue Begegnung erstellt.';
 
 // Accept
 $cs_lang['really_confirm'] = 'Soll das Ergebnis wirklich best&auml;tigt werden? ';
