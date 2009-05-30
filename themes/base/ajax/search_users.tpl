@@ -5,9 +5,6 @@
     <td class="leftb">
       <a onclick="document.getElementById('search_users').style.visibility = 'hidden'" href="javascript:abc_set('{data:old}{result:users_nick}', '{data:target}')">{result:users_nick}</a>
     </td>
-    <td class="leftb">{result:users_name}</td>
-    <td class="leftb">{result:users_surname}</td>
-    <td class="leftb">{result:users_email}</td>
   </tr>
 {stop:result}
 </table>

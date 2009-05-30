@@ -26,14 +26,8 @@ if(!empty($current)) {
   $data['data']['old'] = htmlspecialchars($old);
   $data['data']['target'] = empty($_GET['target']) ? 'users_nick' : $_GET['target'];
 
-  $alike = cs_sql_escape($current);
-  $where = "users_active = 1 AND users_delete = 0 AND (users_nick LIKE '%" . $alike . "%'"
-         . " OR users_name LIKE '%" . $alike . "%' AND users_hidden NOT LIKE '%users_name%'"
-         . " OR users_surname LIKE '%" . $alike . "%' AND users_hidden NOT LIKE '%users_surname%'"
-         . " OR users_email LIKE '%" . $alike . "%' AND users_hidden NOT LIKE '%users_email%')";
-  $cells = 'users_nick, users_name, users_surname, users_email';
-
-  $data['result'] = cs_sql_select(__FILE__, 'users', $cells, $where, 0, 0, 5);
+  $where = "users_nick LIKE '%" . cs_sql_escape($current) . "%' AND users_active = 1 AND users_delete = 0";
+  $data['result'] = cs_sql_select(__FILE__, 'users', 'users_nick', $where, 0, 0, 7);
 
   if(!empty($data['result']))
     echo cs_subtemplate(__FILE__, $data, 'ajax', 'search_users');
