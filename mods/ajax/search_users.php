@@ -29,6 +29,12 @@ if(!empty($current)) {
   $where = "users_nick LIKE '%" . cs_sql_escape($current) . "%' AND users_active = 1 AND users_delete = 0";
   $data['result'] = cs_sql_select(__FILE__, 'users', 'users_nick', $where, 0, 0, 7);
 
-  if(!empty($data['result']))
+  if(!empty($data['result'])) {
+
+    $loop = count($data['result']);
+    for($run = 0; $run < $loop; $run++) {
+      $data['result'][$run]['users_nick'] = cs_secure($data['result'][$run]['users_nick']);
+    }
     echo cs_subtemplate(__FILE__, $data, 'ajax', 'search_users');
+  }
 }
