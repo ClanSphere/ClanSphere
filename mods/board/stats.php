@@ -35,7 +35,7 @@ $d['stats']['longest_thread'] = $select['threads_headline'];
 $d['stats']['longest_thread_posts'] = $select['comments'];
 $d['url']['longest_thread'] = cs_url('board','thread','where=' . $select['threads_id']);
 
-$d['stats']['average_posts'] = !empty($d['stats']['posts']) ? round($d['stats']['topics'] / $d['stats']['posts'],2) : 0;
+$d['stats']['average_posts'] = !empty($d['stats']['topics']) ? round($d['stats']['posts'] / $d['stats']['topics'],2) : 0;
 /*
 $tables = 'comments cms LEFT JOIN {pre}_users usr ON cms.users_id = usr.users_id GROUP BY usr.users_id';
 $cells = 'usr.users_nick AS users_nick, usr.users_id AS users_id, COUNT(cms.comments_id) AS smileys';
