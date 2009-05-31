@@ -4,23 +4,26 @@
 
 $cs_lang = cs_translate('events');
 
+$cs_eventguests['users_id'] = 0;
 $cs_eventguests['eventguests_since'] = cs_time();
-
 $cs_eventguests['events_id'] = empty($_REQUEST['events_id']) ? 0 : $_REQUEST['events_id'];
-$cs_eventguests['users_id'] = empty($_REQUEST['users_id']) ? 0 : $_REQUEST['users_id'];
-
 settype($cs_eventguests['events_id'],'integer');
-settype($cs_eventguests['users_id'],'integer');
+
+$users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
 
 if(isset($_POST['submit'])) {
 
   $error = 0;
   $errormsg = '';
 
-  if(empty($cs_eventguests['users_id'])) {
+  $where = "users_nick = '" . cs_sql_escape($users_nick) . "'";
+  $users_data = cs_sql_select(__FILE__, 'users', 'users_id', $where);
+  if(empty($users_data['users_id'])) {
     $error++;
     $errormsg .= $cs_lang['no_user'] . cs_html_br(1);
   }
+  else
+    $cs_eventguests['users_id'] = $users_data['users_id'];
   
   if(empty($cs_eventguests['events_id'])) {
     $error++;
@@ -55,17 +58,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['events']['name'] = $events_data['events_name'];
   $data['events']['time'] = cs_date('unix',$events_data['events_time'],1);
 
-  $users_data = cs_sql_select(__FILE__,'users','users_nick, users_id','users_active = "1" AND users_delete = "0"','users_nick',0,0);
-  $users_data_loop = count($users_data);
-
-  if(empty($users_data_loop)) {
-    $data['user'] = '';
-  }
-
-  for($run=0; $run<$users_data_loop; $run++) {
-    $data['user'][$run]['id'] = $users_data[$run]['users_id'];
-    $data['user'][$run]['name'] = $users_data[$run]['users_nick'];
-  }
+  $data['users']['nick'] = cs_secure($users_nick);
 
   echo cs_subtemplate(__FILE__,$data,'events','guestsnew');
 }

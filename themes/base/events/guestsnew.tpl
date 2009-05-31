@@ -19,13 +19,10 @@
     </tr>
     <tr>
       <td class="leftc">{icon:personal} {lang:user} *</td>
-      <td class="leftb" colspan="2">
-        <select name="users_id">
-        <option value="0">----</option>
-		  {loop:user}
-        <option value="{user:id}">{user:name}</option>
-		  {stop:user}
-        </select>
+      <td class="leftb">
+        <input type="text" name="users_nick" id="users_nick" value="{users:nick}" onkeyup="cs_ajax_getcontent('{page:path}mods/ajax/search_users.php?term=' + document.getElementById('users_nick').value, 'search_users_result')" maxlength="80" size="40" />
+        - <a href="{url:users_create}">{lang:create}</a><br />
+        <div id="search_users_result"></div>
       </td>
     </tr>
     <tr>
