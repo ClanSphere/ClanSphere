@@ -98,8 +98,8 @@
   <td class="leftc">{lang:options}</td>
   <td class="leftb">
     <input type="hidden" name="lang" value="{data:lang}" />
-    <input type="submit" name="create" value="{lang:create}"/>
-    <input type="submit" name="view" value="{lang:show}"/>
+    <input type="submit" name="create" value="{lang:create}" />
+    <input type="submit" name="view" value="{lang:show}" />
     
    </td>
  </tr>

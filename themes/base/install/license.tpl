@@ -46,7 +46,7 @@ POSSIBILITY OF SUCH DAMAGE.
   </td>
  </tr>
  <tr>
-  <td class="leftb"><input type="checkbox" name="accept" value="1"/> {lang:accept_license}</td>
+  <td class="leftb"><input type="checkbox" name="accept" value="1" /> {lang:accept_license}</td>
  </tr>
  <tr>
   <td class="leftc">

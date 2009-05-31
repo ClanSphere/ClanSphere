@@ -20,8 +20,8 @@
     </tr>
     <tr>
       <td class="leftc"> {icon:ksysguard} {lang:options}</td>
-      <td class="leftb"><input type="hidden" name="where" value="{file:id}"/>
-        <input type="submit" name="submit" value="{lang:save}"/></td>
+      <td class="leftb"><input type="hidden" name="where" value="{file:id}" />
+        <input type="submit" name="submit" value="{lang:save}" /></td>
     </tr>
   </table>
 </form>

@@ -6,8 +6,8 @@
  </td></tr><tr><td class="centerc">
 <form method="post" id="files_remove" action="{url:files_remove}">
 
- <input type="hidden" name="id" value="{file:id}"/>
- <input type="submit" name="agree" value="{lang:confirm}"/>
- <input type="submit" name="cancel" value="{lang:cancel}"/></form>
+ <input type="hidden" name="id" value="{file:id}" />
+ <input type="submit" name="agree" value="{lang:confirm}" />
+ <input type="submit" name="cancel" value="{lang:cancel}" /></form>
 
  </td></tr></table>

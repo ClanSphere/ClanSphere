@@ -72,8 +72,8 @@
 	<tr>
 		<td class="leftb">{icon:ksysguard} {lang:options}</td>
 		<td class="leftc">
-			<input type="hidden" name="id" value="{hidden:id}"/>
-			<input type="submit" name="preview" value="{lang:preview}"/>
+			<input type="hidden" name="id" value="{hidden:id}" />
+			<input type="submit" name="preview" value="{lang:preview}" />
 			<input type="submit" name="submit" value="{lang:send}" />
 		</td>
 	</tr>

@@ -67,17 +67,17 @@
         {lang:close}<br />
         <input type="checkbox" name="files_vote" value="1" {if:votes}checked="checked"{stop:votes}/>
         {lang:votes}<br />
-        <input type="checkbox" name="files_newtime" value="1"/>
+        <input type="checkbox" name="files_newtime" value="1" />
         {lang:new_date}<br />
-        <input type="checkbox" name="files_newcount" value="1"/>
+        <input type="checkbox" name="files_newcount" value="1" />
         {lang:new_count} </td>
     </tr>
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
-      <td class="leftb" colspan="2"><input type="hidden" name="id" value="{file:files_id}"/>
-        <input type="submit" name="submit" value="{lang:edit}"/>
-        <input type="hidden" name="run_loop" value="{mirror:run_loop}"/>
-        <input type="submit" name="mirror" value="{lang:mirrors+}"/></td>
+      <td class="leftb" colspan="2"><input type="hidden" name="id" value="{file:files_id}" />
+        <input type="submit" name="submit" value="{lang:edit}" />
+        <input type="hidden" name="run_loop" value="{mirror:run_loop}" />
+        <input type="submit" name="mirror" value="{lang:mirrors+}" /></td>
     </tr>
   </table>
 </form>

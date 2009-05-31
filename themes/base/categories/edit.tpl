@@ -69,7 +69,7 @@
 	{if:more}
 	<tr>
 		<td class="leftc">{icon:configure} {lang:more}</td>
-		<td class="leftb"><input type="checkbox" name="delete" value="1"/>{lang:pic_remove}</td>
+		<td class="leftb"><input type="checkbox" name="delete" value="1" />{lang:pic_remove}</td>
 	</tr>
 	{stop:more}
 	<tr>

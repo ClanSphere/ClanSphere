@@ -40,7 +40,7 @@
 	<tr>
 		<td class="leftb">{icon:ksysguard} {lang:options}</td>
 		<td class="leftc">
-			<input type="submit" name="search" value="{lang:search}"/>
+			<input type="submit" name="search" value="{lang:search}" />
 		</td>
 	</tr>
 </table>
@@ -69,19 +69,19 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftb">
-			<input type="hidden" name="keywords" value="{hidden:keywords}"/>
-			<input type="hidden" name="searchmode" value="{hidden:searchmode}"/>
-			<input type="hidden" name="searcharea" value="{hidden:searcharea}"/>
-			<input type="hidden" name="board_id" value="{hidden:board_id}"/>
-			<input type="hidden" name="page" value="{hidden:page}"/>
-			<input type="hidden" name="max_page" value="{hidden:max_page}"/>
+			<input type="hidden" name="keywords" value="{hidden:keywords}" />
+			<input type="hidden" name="searchmode" value="{hidden:searchmode}" />
+			<input type="hidden" name="searcharea" value="{hidden:searcharea}" />
+			<input type="hidden" name="board_id" value="{hidden:board_id}" />
+			<input type="hidden" name="page" value="{hidden:page}" />
+			<input type="hidden" name="max_page" value="{hidden:max_page}" />
 			{page:of}
 		</td>
 		<td class="centerb">
-			<input type="submit" name="first" value="<<"/>
-			<input type="submit" name="back" value="<"/>
-			<input type="submit" name="next" value=">"/>
-			<input type="submit" name="last" value=">>"/>
+			<input type="submit" name="first" value="<<" />
+			<input type="submit" name="back" value="<" />
+			<input type="submit" name="next" value=">" />
+			<input type="submit" name="last" value=">>" />
 		</td>
 		<td class="rightb">{count:results}</td>
 	</tr>

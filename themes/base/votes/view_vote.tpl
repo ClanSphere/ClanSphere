@@ -7,7 +7,7 @@
 {loop:answers}
  <tr>
   <td class="leftb">
-    <input name="voted_answer{if:several_name}[{answers:value}]{stop:several_name}" value="{answers:value}"  type="{votes:type}"/>		
+    <input name="voted_answer{if:several_name}[{answers:value}]{stop:several_name}" value="{answers:value}"  type="{votes:type}" />		
 	  {answers:answer}
   </td>
  </tr>

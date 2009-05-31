@@ -23,7 +23,7 @@
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
-			<input type="submit" name="submit" value="{lang:edit}"/>
+			<input type="submit" name="submit" value="{lang:edit}" />
 		</td>
 	</tr>
 </table>

@@ -25,7 +25,7 @@
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
 			<input type="hidden" name="id" value="{events:id}" />
-			<input type="submit" name="submit" value="{lang:save}"/>
+			<input type="submit" name="submit" value="{lang:save}" />
 		</td>
 	</tr>
 </table>

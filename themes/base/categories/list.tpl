@@ -15,7 +15,7 @@
 					{mod:sel}
 					{stop:mod}
 				</select>
-				<input type="submit" name="submit" value="{lang:show}"/>
+				<input type="submit" name="submit" value="{lang:show}" />
 			</form>
 		</td>
 	</tr>

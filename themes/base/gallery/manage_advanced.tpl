@@ -87,8 +87,8 @@
 	{loop:pictures}
 	<tr>
 		<td class="leftb" rowspan="3">
-			<input type="checkbox" name="status_{pictures:run}" value="1" checked="checked"/>
-			<input type="hidden" name="name_{pictures:run}" value="{pictures:name}"/>
+			<input type="checkbox" name="status_{pictures:run}" value="1" checked="checked" />
+			<input type="hidden" name="name_{pictures:run}" value="{pictures:name}" />
 		</td>
 		<td class="leftb" rowspan="3">{pictures:img}</td>
 		<td class="leftc">{lang:name}</td>
@@ -106,7 +106,7 @@
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb" colspan="3">
-			<input type="submit" name="submit_1" value="{lang:continue}"/>
+			<input type="submit" name="submit_1" value="{lang:continue}" />
 		</td>
 	</tr>
 </table>

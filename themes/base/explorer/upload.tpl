@@ -41,7 +41,7 @@
     <td class="leftb">
       <input type="hidden" name="dir" value="{var:dir}" />
       <input type="submit" name="submit" value="{lang:upload}" />{if:modsdir}
-      <input type="submit" name="accessadd" value="{lang:entry_in_accessfile}"/>{stop:modsdir}</td>
+      <input type="submit" name="accessadd" value="{lang:entry_in_accessfile}" />{stop:modsdir}</td>
   </tr>
 </table>
 </form>

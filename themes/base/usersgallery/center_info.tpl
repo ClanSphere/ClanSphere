@@ -47,7 +47,7 @@
 		<td class="leftc">
 			<div style="background-image:url({page:path}symbols/messages/messages03.png); width:100px; height:13px;">
 				<div style="background-image:url({img:01}); width:{data:count_space}px; text-align:right; padding-left:1px">
-					<img src="{page:path}{img:02}" style="height:13px;width:2px" alt=""/>
+					<img src="{page:path}{img:02}" style="height:13px;width:2px" alt="" />
 				</div>
 			</div>
 			<div style="float:left; clear:both; height:13px; width:35px;">

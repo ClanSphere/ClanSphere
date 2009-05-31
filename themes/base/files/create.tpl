@@ -72,10 +72,10 @@
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb" colspan="2">
-      	<input type="hidden" name="id" value="{file:files_id}"/>
-        <input type="submit" name="submit" value="{lang:create}"/>
-        <input type="hidden" name="run_loop" value="{mirror:run_loop}"/>
-        <input type="submit" name="mirror" value="{lang:mirrors+}"/></td>
+      	<input type="hidden" name="id" value="{file:files_id}" />
+        <input type="submit" name="submit" value="{lang:create}" />
+        <input type="hidden" name="run_loop" value="{mirror:run_loop}" />
+        <input type="submit" name="mirror" value="{lang:mirrors+}" /></td>
     </tr>
   </table>
 </form>

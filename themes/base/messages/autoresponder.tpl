@@ -68,10 +68,10 @@
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
-			<input type="hidden" name="autoresponder_id" value="{autoresponder:id}"/>
-			<input type="hidden" name="update" value="{autoresponder:update}"/>
-			<input type="submit" name="submit" value="{lang:edit}"/>
-			<input type="submit" name="preview" value="{lang:preview}"/>
+			<input type="hidden" name="autoresponder_id" value="{autoresponder:id}" />
+			<input type="hidden" name="update" value="{autoresponder:update}" />
+			<input type="submit" name="submit" value="{lang:edit}" />
+			<input type="submit" name="preview" value="{lang:preview}" />
 		</td>
 	</tr>
 </table>

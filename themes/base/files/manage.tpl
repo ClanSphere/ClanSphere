@@ -14,7 +14,7 @@
           <option value="0">----</option>
           {head:categories}
         </select>
-        <input type="submit" name="submit" value="{lang:show}"/>
+        <input type="submit" name="submit" value="{lang:show}" />
       </form></td>
   </tr>
 </table>

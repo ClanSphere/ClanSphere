@@ -28,7 +28,7 @@
     {if:nopass}
 	<tr>
       <td class="leftc"> {icon:password} {lang:password} *</td>
-      <td class="leftb"><input type="password" name="users_pwd" value="" maxlength="30" size="30"  onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);"/>
+      <td class="leftb"><input type="password" name="users_pwd" value="" maxlength="30" size="30"  onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" />
       </td>
     </tr>
 	<tr>
