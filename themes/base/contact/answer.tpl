@@ -16,15 +16,15 @@
 <tr><td class="leftc">{icon:personal} {lang:receiver}</td>
 <td class="leftb">{mail:mail_name} &lt;{mail:mail_email}&gt;</td></tr>
 <tr><td class="leftc">{icon:kedit} {lang:subject} *</td>
-<td class="leftb"><input type="text" name="subject" value="{mail:subject}" maxlength="200" size="50"  />
+<td class="leftb"><input type="text" name="subject" value="{mail:subject}" maxlength="200" size="50" />
 </td></tr>
 <tr><td class="leftc">{icon:mail_generic} {lang:message} *</td>
 <td class="leftb">
-<textarea class="rte_abcode" name="message" cols="50" rows="20" id="message" >{mail:message}</textarea>
+<textarea class="rte_abcode" name="message" cols="50" rows="20" id="message">{mail:message}</textarea>
 </td></tr><tr><td class="leftc">
 {icon:ksysguard} {lang:options}</td>
 <td class="leftb">
-<input type="hidden" name="id" value="{mail:id}"  />
+<input type="hidden" name="id" value="{mail:id}" />
 <input type="submit" name="submit" value="{lang:send}" />
 <input type="reset" name="reset" value="{lang:reset}" />
 </td></tr>

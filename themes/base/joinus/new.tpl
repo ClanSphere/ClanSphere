@@ -15,15 +15,15 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
 	  <td class="leftc">{icon:personal} {lang:nick} *</td>
-	  <td class="leftb"><input type="text" name="joinus_nick" value="{join:joinus_nick}" size="40" maxlength="40"  /></td>
+	  <td class="leftb"><input type="text" name="joinus_nick" value="{join:joinus_nick}" size="40" maxlength="40" /></td>
 	</tr>
 	<tr>
 	  <td class="leftc">{icon:personal} {lang:vorname}</td>
-	  <td class="leftb"><input type="text" name="joinus_name" value="{join:joinus_name}" size="50" maxlength="80"  /></td>	
+	  <td class="leftb"><input type="text" name="joinus_name" value="{join:joinus_name}" size="50" maxlength="80" /></td>	
 	</tr>
 	<tr>
 	  <td class="leftc">{icon:personal} {lang:surname}</td>
-	  <td class="leftb"><input type="text" name="joinus_surname" value="{join:joinus_surname}" size="50" maxlength="80"  /></td>	
+	  <td class="leftb"><input type="text" name="joinus_surname" value="{join:joinus_surname}" size="50" maxlength="80" /></td>	
 	</tr>	
     {if:nopass}
 	<tr>
@@ -74,7 +74,7 @@
 	</tr>
 	<tr>
 	  <td class="leftc">{icon:starthere} {lang:place}</td>
-	  <td class="leftb"><input type="text" name="joinus_place" value="{join:joinus_place}" size="40" maxlength="40"  /></td>
+	  <td class="leftb"><input type="text" name="joinus_place" value="{join:joinus_place}" size="40" maxlength="40" /></td>
 	</tr>
     <tr>
       <td class="leftc">{icon:locale} {lang:country}</td>
@@ -88,15 +88,15 @@
     </tr>
 	<tr>
 	  <td class="leftc">{icon:mail_generic} {lang:email} *</td>
-	  <td class="leftb"><input type="text" name="joinus_email" value="{join:joinus_email}" size="40" maxlength="40"  /></td>
+	  <td class="leftb"><input type="text" name="joinus_email" value="{join:joinus_email}" size="40" maxlength="40" /></td>
 	</tr>
 	<tr>
 	  <td class="leftc">{icon:licq} {lang:icq}</td>
-	  <td class="leftb"><input type="text" name="joinus_icq" value="{join:joinus_icq}" size="12" maxlength="12"  /></td>
+	  <td class="leftb"><input type="text" name="joinus_icq" value="{join:joinus_icq}" size="12" maxlength="12" /></td>
 	</tr>
 	<tr>
 	  <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-	  <td class="leftb"><input type="text" name="joinus_msn" value="{join:joinus_msn}" size="40" maxlength="40"  /></td>
+	  <td class="leftb"><input type="text" name="joinus_msn" value="{join:joinus_msn}" size="40" maxlength="40" /></td>
 	</tr>	
 	<tr>
 	  <td class="leftc">{icon:package_games} {lang:game}</td>
@@ -116,11 +116,11 @@
 	</tr>
 	<tr>
 	  <td class="leftc">{icon:network} {lang:webcon}</td>
-	  <td class="leftb"><input type="text" name="joinus_webcon" value="{join:joinus_webcon}" size="50" maxlength="80"  /></td>
+	  <td class="leftb"><input type="text" name="joinus_webcon" value="{join:joinus_webcon}" size="50" maxlength="80" /></td>
 	</tr>
 	<tr>
 	  <td class="leftc">{icon:network_local} {lang:lanact}</td>
-	  <td class="leftb"><input type="text" name="joinus_lanact" value="{join:joinus_lanact}" size="50" maxlength="80"  /></td>
+	  <td class="leftb"><input type="text" name="joinus_lanact" value="{join:joinus_lanact}" size="50" maxlength="80" /></td>
     </tr>
 	<tr>
 	  <td class="leftc">{icon:1day} {lang:joindate} *</td>
@@ -129,14 +129,14 @@
 	<tr>
 	  <td class="leftc">{icon:documentinfo} {lang:info}<br /><br />{abcode:smileys}</td>
 	  <td class="leftb">{abcode:features}<br />
-	  	<textarea class="rte_abcode" name="joinus_more" cols="50" rows="12" id="joinus_more" >{join:joinus_more}</textarea>
+	  	<textarea class="rte_abcode" name="joinus_more" cols="50" rows="12" id="joinus_more">{join:joinus_more}</textarea>
 	  </td>
 	</tr>
 	{if:captcha}
 	<tr>
 	  <td class="leftc">{icon:lockoverlay} {lang:security_code} *</td>
 	  <td class="leftb"><img src="{page:path}mods/captcha/generate.php" alt="" />
-	  	<input type="text" name="captcha" value="" size="8" maxlength="8"  />
+	  	<input type="text" name="captcha" value="" size="8" maxlength="8" />
 	  </td>
 	</tr>
 	{stop:captcha}

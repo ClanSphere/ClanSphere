@@ -36,7 +36,7 @@
 		</td>
 		<td class="leftb">
 			{cash:abcode_features}
-			<textarea class="rte_abcode" name="cash_info" cols="50" rows="20" id="cash_info" >{cash:cash_info}</textarea>
+			<textarea class="rte_abcode" name="cash_info" cols="50" rows="20" id="cash_info">{cash:cash_info}</textarea>
 		</td>
 	</tr>
 	<tr>

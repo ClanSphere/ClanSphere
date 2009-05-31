@@ -9,7 +9,7 @@
   <td class="leftb">
     <form method="post" id="gamechoice" action="{url:cups_list}">
     {lang:game}:
-    <select name="games_id" >
+    <select name="games_id">
       <option value="0">----</option>{loop:games}
       <option value="{games:games_id}"{games:selection}>{games:games_name}</option>{stop:games}
     </select>

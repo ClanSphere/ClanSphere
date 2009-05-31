@@ -28,7 +28,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kedit} {lang:frage} *</td>
-		<td class="leftb"><input type="text" name="faq_frage" value="{faq:frage}" maxlength="200" size="50"  /></td>
+		<td class="leftb"><input type="text" name="faq_frage" value="{faq:frage}" maxlength="200" size="50" /></td>
 	</tr>
 	{if:no_rte_html}
 	<tr>

@@ -17,7 +17,7 @@
 	<tr>
   <td class="leftc">{icon:yast_group_add} {lang:squad}</td>
   <td class="leftb">
-    <select name="squads_id" >
+    <select name="squads_id">
      <option value="0">----</option>{loop:squads}
      <option value="{squads:squads_id}"{squads:selection}>{squads:squads_name}</option>{stop:squads}
     </select>

@@ -20,7 +20,7 @@
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
  <tr>
   <td class="headb" style="width:170px">{lang:date}</td>
-  <td class="headb" >{lang:name}</td>
+  <td class="headb">{lang:name}</td>
  </tr>
 {loop:events}
  <tr>

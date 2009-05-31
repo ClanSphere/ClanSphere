@@ -28,11 +28,11 @@
 {loop:replays}
  <tr>
   <td class="leftc">{replays:game_icon}</td>
-  <td class="leftc"><a href="{replays:date_url}" >{replays:date}</a></td>
+  <td class="leftc"><a href="{replays:date_url}">{replays:date}</a></td>
   <td class="leftc">{replays:team1}</td>
   <td class="leftc">{replays:team2}</td>
-  <td class="leftc"><a href="{replays:url_edit}" title="{lang:edit}" >{icon:edit}</a></td>
-  <td class="leftc"><a href="{replays:url_remove}" title="{lang:remove}" >{icon:editdelete}</a></td>
+  <td class="leftc"><a href="{replays:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
+  <td class="leftc"><a href="{replays:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>
  </tr>
 {stop:replays}
 </table>

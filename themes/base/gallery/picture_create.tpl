@@ -22,7 +22,7 @@
 	<tr>
 		<td class="leftc">{icon:kedit} {lang:titel} *</td>
 		<td class="leftb">
-			<input name="gallery_titel" type="text" value="{data:gallery_titel}" size="50" maxlength="80"   />
+			<input name="gallery_titel" type="text" value="{data:gallery_titel}" size="50" maxlength="80" />
 		</td>
   </tr>
 	<tr>

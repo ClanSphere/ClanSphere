@@ -3,7 +3,7 @@
 		<td class="headb" colspan="3">{head:mod} - {lang:head_center}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:editpaste} <a href="{url:squads_new}" >{lang:new_label}</a></td>
+		<td class="leftb">{icon:editpaste} <a href="{url:squads_new}">{lang:new_label}</a></td>
 		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
 		<td class="rightb">{head:pages}</td>
 	</tr>

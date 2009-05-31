@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:enumList} {lang:access} *</td>
-    <td class="leftb">   <select name="static_access" >
+    <td class="leftb">   <select name="static_access">
 {loop:access}
     <option value="{access:level_id}" {access:selected}>{access:level_id} - {access:level_name}</option>
 {stop:access}

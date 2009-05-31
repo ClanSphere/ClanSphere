@@ -16,7 +16,7 @@
 	</tr>
 	{loop:com}
 	<tr>
-		<td class="leftc"><a href="{com:url_view}" >{com:name}</a></td>
+		<td class="leftc"><a href="{com:url_view}">{com:name}</a></td>
 		<td class="rightc">{com:since}</td>
 	</tr>
 	{stop:com}

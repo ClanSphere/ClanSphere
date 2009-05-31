@@ -20,7 +20,7 @@
  <tr>
   <td class="leftc" style="width:35px" align="center">{lang:country}</td>
   <td class="leftc" style="width:150px">{lang:nick}</td>
-  <td class="leftc" >{lang:task}</td>
+  <td class="leftc">{lang:task}</td>
   <td class="leftc" style="width:80px">{lang:since}</td>
   <td class="leftc" style="width:30px" align="center">{lang:page}</td>
  </tr>

@@ -24,7 +24,7 @@
 		<td class="leftc"><a href="{url:squads_view:id={squads:id}}">{squads:squads_name}</a></td>
 		<td class="leftc"><a href="{url:clans_view:id={squads:id}}">{squads:clans_name}</a></td>
 		<td class="leftc"><a href="{url:squads_edit:id={squads:id}}" title="{lang:edit}">{icon:edit}</a></td>
-		<td class="leftc"><a href="{url:squads_remove:id={squads:id}}" title="{lang:remove}" >{icon:editdelete}</a></td>
+		<td class="leftc"><a href="{url:squads_remove:id={squads:id}}" title="{lang:remove}">{icon:editdelete}</a></td>
 	</tr>
 	{stop:squads}
 </table>

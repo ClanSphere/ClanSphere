@@ -1,4 +1,4 @@
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" colspan="2"> {lang:board} - {lang:head_thread} </td>
   </tr>
@@ -7,12 +7,12 @@
     <td class="rightb">{thread:abo}</td>
   </tr>
   <tr>
-    <td class="leftc" colspan="2"><a href="#" id="threadanch" ></a><a href="{url:board_list}" >{lang:board}</a> -> {thread:categories_link} -> {thread:board_link} ->  {thread:thread_link} </td>
+    <td class="leftc" colspan="2"><a href="#" id="threadanch"></a><a href="{url:board_list}">{lang:board}</a> -> {thread:categories_link} -> {thread:board_link} ->  {thread:thread_link} </td>
   </tr>
 </table>
 <br />
 {thread:getmessage}
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   {if:vote}
   <tr>
     <td class="centerb" colspan="2"><div align="center">
@@ -201,7 +201,7 @@
 <br />
 {if:modpanel}
 <form method="post" id="boardmodpanel_q" action="{url:board_modpanel_q:id={thread:threads_id}}">
-  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
+  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="centerb"> {if:modp_close}
         <input type="submit" name="close" value="{lang:thread_close}" />
@@ -224,7 +224,7 @@
 </form>
 {stop:modpanel} <br />
 {if:no_user}
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="centerb">{lang:need_user}</td>
   </tr>
@@ -232,7 +232,7 @@
 {stop:no_user}
 
 {if:last_own}
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="centerb">{lang:last_own} {thread:doublepost}</td>
   </tr>
@@ -241,7 +241,7 @@
 
 {if:write_comment}
 <form method="post" id="board_com_create" action="{url:board_com_create}">
-  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
+  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" colspan="2"><input type="submit" name="advanced" value="{lang:adv_com}" />
       </td>
@@ -251,7 +251,7 @@
         <br />
         {wcomment:smileys} </td>
       <td class="leftb">{wcomment:abcode}
-        <textarea class="rte_abcode" name="comments_text" cols="50" rows="8" id="comments_text" ></textarea>
+        <textarea class="rte_abcode" name="comments_text" cols="50" rows="8" id="comments_text"></textarea>
       </td>
     </tr>
 		{if:allow_close}

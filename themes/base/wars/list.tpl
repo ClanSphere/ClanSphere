@@ -9,7 +9,7 @@
  <tr>
   <td class="leftb">{lang:squad}
     <form method="post" id="wars_list" action="{url:form}">
-      <select name="where" >
+      <select name="where">
         <option value="0">----</option>
         {loop:squads}<option value="{squads:squads_id}">{squads:name}</option>{stop:squads}
       </select>

@@ -18,7 +18,7 @@
 	<tr>
   		<td class="leftc">{icon:locale} {lang:lang}</td>
   		<td class="leftb">
-			<select name="users_lang" >
+			<select name="users_lang">
 				{setup:languages}        
 			</select>
   		</td>
@@ -26,7 +26,7 @@
  	<tr>
   		<td class="leftc">{icon:ktimer} {lang:timezone}</td>
   		<td class="leftb">
-			<select name="users_timezone" >
+			<select name="users_timezone">
 				{setup:timezone} 
 			</select>
   		</td>
@@ -34,7 +34,7 @@
  	<tr>
   		<td class="leftc">{icon:kweather} {lang:dstime}</td>
   		<td class="leftb">
-   			<select name="users_dstime" >
+   			<select name="users_dstime">
     			{setup:option_automatic}
     			{setup:option_on}
     			{setup:option_off}

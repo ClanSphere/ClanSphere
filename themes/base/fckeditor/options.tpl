@@ -15,7 +15,7 @@
  </tr>
  <tr>
   <td class="leftc">{icon:resizecol} {lang:height}</td>
-  <td class="leftb"><input type="text" name="height" value="{op:height}" maxlength="8" size="8"  /> {lang:pixel}</td>
+  <td class="leftb"><input type="text" name="height" value="{op:height}" maxlength="8" size="8" /> {lang:pixel}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>

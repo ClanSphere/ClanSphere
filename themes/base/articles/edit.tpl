@@ -28,7 +28,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:kedit} {lang:headline} *</td>
-    <td class="leftb"><input type="text" name="articles_headline" value="{data:articles_headline}" maxlength="200" size="50"  /></td>
+    <td class="leftb"><input type="text" name="articles_headline" value="{data:articles_headline}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:folder_yellow} {lang:categories} *</td>

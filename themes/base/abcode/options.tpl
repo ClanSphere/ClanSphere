@@ -21,15 +21,15 @@
     </tr>
     <tr>
       <td class="leftc">{icon:resizecol} {lang:max_width}</td>
-      <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4"  /> {lang:pixel}</td>
+      <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4" /> {lang:pixel}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:resizerow} {lang:max_height}</td>
-      <td class="leftb"><input type="text" name="max_height" value="{options:max_height}" maxlength="4" size="4"  /> {lang:pixel}</td>
+      <td class="leftb"><input type="text" name="max_height" value="{options:max_height}" maxlength="4" size="4" /> {lang:pixel}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:fileshare} {lang:max_size}</td>
-      <td class="leftb"><input type="text" name="max_size" value="{options:max_size}" maxlength="20" size="8"  /> {lang:bytes}</td>
+      <td class="leftb"><input type="text" name="max_size" value="{options:max_size}" maxlength="20" size="8" /> {lang:bytes}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:completion} {lang:def_func}</td>
@@ -37,15 +37,15 @@
     </tr>
     <tr>
       <td class="leftc">{icon:resizerow} {lang:image_height}</td>
-      <td class="leftb"><input type="text" name="image_height" value="{options:image_height}" maxlength="4" size="4"  /> {lang:pixel}</td>
+      <td class="leftb"><input type="text" name="image_height" value="{options:image_height}" maxlength="4" size="4" /> {lang:pixel}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:resizecol} {lang:image_width}</td>
-      <td class="leftb"><input type="text" name="image_width" value="{options:image_width}" maxlength="4" size="4"  /> {lang:pixel}</td>
+      <td class="leftb"><input type="text" name="image_width" value="{options:image_width}" maxlength="4" size="4" /> {lang:pixel}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:editcut} {lang:cut}</td>
-      <td class="leftb"><input type="text" name="word_cut" value="{options:word_cut}" maxlength="5" size="4"  /> {lang:cut_more}</td>
+      <td class="leftb"><input type="text" name="word_cut" value="{options:word_cut}" maxlength="5" size="4" /> {lang:cut_more}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:kopete} {lang:comments}</td>

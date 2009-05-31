@@ -3,7 +3,7 @@
     <td class="headb" colspan="3"> {lang:mod_name} - {lang:manage} </td>
   </tr>
   <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:files_create}" >{lang:new_file}</a></td>
+    <td class="leftb">{icon:editpaste} <a href="{url:files_create}">{lang:new_file}</a></td>
     <td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
     <td class="rightb">{head:paginator}</td>
   </tr>
@@ -31,7 +31,7 @@
   {loop:files}
   <tr>
     <td class="leftc">{loop:filetypes}{filetypes:icon}{stop:filetypes}</td>
-    <td class="leftc"><a href="{url:files_view:id={files:id}}" >{files:name}</a></td>
+    <td class="leftc"><a href="{url:files_view:id={files:id}}">{files:name}</a></td>
     <td class="leftc">{files:user}</td>
     <td class="leftc">{files:date}</td>
     <td class="leftc"><a href="{url:files_picture:id={files:id}}" title="{lang:preview}">{icon:image}</a></td>

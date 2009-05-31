@@ -11,7 +11,7 @@
   <td class="leftb" colspan="3">
     {lang:status}
       <form method="post" id="wars_manage" action="{url:wars_manage}">
-      <select name="where" >
+      <select name="where">
         <option value="0">----</option>
         <option value="upcoming"{selection:upcoming}>{lang:upcoming}</option>
         <option value="running"{selection:running}>{lang:running}</option>

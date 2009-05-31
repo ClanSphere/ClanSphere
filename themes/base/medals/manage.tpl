@@ -3,7 +3,7 @@
     <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:medals_create}" >{lang:new_medal}</a></td>
+    <td class="leftb">{icon:editpaste} <a href="{url:medals_create}">{lang:new_medal}</a></td>
     <td class="leftb">{icon:contents} {lang:total}: {count:medals}</td>
 	<td class="rightb">{pages:list}</td>
   </tr>

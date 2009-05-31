@@ -26,7 +26,7 @@
 {edit:abcode_smileys}
 </td><td class="leftb">
 {edit:abcode_features}
-<textarea class="rte_abcode" name="buddys_notice" cols="50" rows="20" id="buddys_notice" >{edit:buddys_notice}</textarea>
+<textarea class="rte_abcode" name="buddys_notice" cols="50" rows="20" id="buddys_notice">{edit:buddys_notice}</textarea>
 </td></tr>
 <tr><td class="leftc">
 {icon:ksysguard} {lang:options}</td>

@@ -27,8 +27,8 @@
  <tr>
   <td class="rightb" colspan="6">
     <input type="button" value="{lang:select_all}"  onclick="return cs_shoutbox_select();" />
-    <input type="submit" value="{lang:delete_selected}"  />
-    <input type="reset" value="{lang:remove_selection}"  />
+    <input type="submit" value="{lang:delete_selected}" />
+    <input type="reset" value="{lang:remove_selection}" />
    </td>
  </tr>
 </table>

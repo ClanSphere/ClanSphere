@@ -42,7 +42,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:search} {lang:robots}</td>
-      <td class="leftb"><select name="robots" >
+      <td class="leftb"><select name="robots">
           <option value="index,follow" {selected:robots_all}>{lang:yes}</option>
           <option value="noindex,nofollow" {selected:robots_no}>{lang:no}</option>
         </select>
@@ -50,7 +50,7 @@
     </tr>
     <tr>
       <td class="leftc"> {icon:neotux} {lang:distribution} </td>
-      <td class="leftb"><select name="distribution" >
+      <td class="leftb"><select name="distribution">
           <option value="global" {selected:distribution_global}>{lang:global}</option>
           <option value="IU" {selected:distribution_intern}>{lang:internal}</option>
         </select>

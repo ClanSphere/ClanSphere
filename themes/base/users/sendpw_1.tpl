@@ -4,12 +4,12 @@
 <tr><td class="leftc">
 {icon:mail_generic} {lang:email} *</td><td class="leftb">
 
- <input type="text" name="email" value="" maxlength="40" size="40"  />
+ <input type="text" name="email" value="" maxlength="40" size="40" />
  </td></tr><tr><td class="leftc">
 {icon:lockoverlay} {lang:security_code} *</td><td class="leftb">
 {captcha:img}<br /><br />
 
- <input type="text" name="captcha" value="" maxlength="8" size="8"  />
+ <input type="text" name="captcha" value="" maxlength="8" size="8" />
  </td></tr><tr><td class="leftc">
 {icon:ksysguard} {lang:options}</td><td class="leftb">
 

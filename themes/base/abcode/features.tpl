@@ -10,7 +10,7 @@
 <a href="javascript:abc_insert('[h=1]','[/h]','{var:textarea}','')" title="{lang:headline}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_headline.{var:ext}" alt="{lang:headline}" /></a>
 <a href="javascript:abc_insert('[indent=15]','[/indent]','{var:textarea}','')" title="{lang:indent}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_incrementindent.{var:ext}" alt="{lang:indent}" /></a>
 <a href="javascript:abc_insert('[quote]','[/quote]','{var:textarea}','')" title="{lang:quote}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_quote.{var:ext}" alt="{lang:quote}" /></a>
-<a href="javascript:abc_insert('[php]','[/php]','{var:textarea}','')" title="{lang:php}" ><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_sourcecode.{var:ext}" alt="{lang:php}" /></a>
+<a href="javascript:abc_insert('[php]','[/php]','{var:textarea}','')" title="{lang:php}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_sourcecode.{var:ext}" alt="{lang:php}" /></a>
 <a href="javascript:abc_insert('[list][*]','[/list]','{var:textarea}','')" title="{lang:list}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_list.{var:ext}" alt="{lang:list}" /></a>
 <a href="javascript:abc_insert('[img]','[/img]','{var:textarea}','')" title="{lang:image}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_grafmode.{var:ext}" alt="{lang:image}" /></a>
 <a href="javascript:abc_insert('[url]','[/url]','{var:textarea}','')" title="{lang:link}"><img src="{page:path}symbols/{var:imgpath}/openoffice/lc_openurl.{var:ext}" alt="{lang:link}" /></a>

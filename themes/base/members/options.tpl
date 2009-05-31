@@ -12,7 +12,7 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kdmconfig} {lang:label}</td>
-      <td class="leftb"><select name="label" >
+      <td class="leftb"><select name="label">
           <option value="members" {select:members_select}>{lang:members}</option>
           <option value="employees" {select:employees_select}>{lang:employees}</option>
           <option value="teammates" {select:teammates_select}>{lang:teammates}</option>

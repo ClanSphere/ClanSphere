@@ -4,12 +4,12 @@
 <tr><td class="leftc">
 {icon:personal} {lang:nick}</td><td class="leftb">
 
- <input type="text" name="nick" value="" maxlength="40" size="40"  />
+ <input type="text" name="nick" value="" maxlength="40" size="40" />
  </td></tr><tr><td class="leftc">
 
 {icon:password} {lang:password}</td><td class="leftb">
 
- <input type="password" name="password" value="" maxlength="40" size="40"  />
+ <input type="password" name="password" value="" maxlength="40" size="40" />
  </td></tr><tr><td class="leftc">
 {icon:cookie}  {lang:cookie}</td><td class="leftb">
 

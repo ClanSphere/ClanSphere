@@ -31,7 +31,7 @@
         <br />
         {signature:smileys}</td>
       <td class="leftb">{signature:abcode}<br />
-        <textarea class="rte_abcode" name="signature" cols="50" rows="20" id="signature" >{signature:text}</textarea>
+        <textarea class="rte_abcode" name="signature" cols="50" rows="20" id="signature">{signature:text}</textarea>
       </td>
     </tr>
     <tr>

@@ -3,7 +3,7 @@
 		<td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:editpaste} <a href="{url:boardranks_create}" >{lang:new_boardrank}</a></td>
+		<td class="leftb">{icon:editpaste} <a href="{url:boardranks_create}">{lang:new_boardrank}</a></td>
 		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
 		<td class="rightb">{head:pages}</td>
 	</tr>
@@ -21,8 +21,8 @@
 	<tr>
 		<td class="leftc">{bora:boardranks_min}</td>
 		<td class="leftc">{bora:boardranks_name}</td>
-		<td class="leftc"><a href="{bora:url_edit}" title="{lang:edit}" >{icon:edit}</a></td>
-		<td class="leftc"><a href="{bora:url_remove}" title="{lang:remove}" >{icon:editdelete}</a></td>
+		<td class="leftc"><a href="{bora:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
+		<td class="leftc"><a href="{bora:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>
 	</tr>
 	{stop:bora}
 </table>

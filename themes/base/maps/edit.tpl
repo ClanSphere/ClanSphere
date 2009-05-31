@@ -12,7 +12,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:name} *</td>
-		<td class="leftb"><input type="text" name="maps_name" value="{maps:maps_name}" maxlength="80" size="40"  /></td>
+		<td class="leftb"><input type="text" name="maps_name" value="{maps:maps_name}" maxlength="80" size="40" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:package_games} {lang:game} *</td>
@@ -38,19 +38,19 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:images} {lang:other_pic}</td>
-		<td class="leftb"><input type="file" name="picture" value=""  /><br /><br />
+		<td class="leftb"><input type="file" name="picture" value="" /><br /><br />
 		{maps:matches}</td>
 	</tr>{if:picture_remove}
 	<tr>
 		<td class="leftc">{icon:configure} {lang:extended}</td>
-		<td class="leftb"><input type="checkbox" name="pic_del" value="1"  /> {lang:rem_pic}</td>
+		<td class="leftb"><input type="checkbox" name="pic_del" value="1" /> {lang:rem_pic}</td>
 	</tr>{stop:picture_remove}
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
-			<input type="hidden" name="maps_id" value="{maps:maps_id}"  />
-			<input type="submit" name="submit" value="{lang:edit}"  />
-			<input type="reset" name="reset" value="{lang:reset}"  />
+			<input type="hidden" name="maps_id" value="{maps:maps_id}" />
+			<input type="submit" name="submit" value="{lang:edit}" />
+			<input type="reset" name="reset" value="{lang:reset}" />
 		</td>
 	</tr>
 </table>

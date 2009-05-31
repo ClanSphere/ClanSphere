@@ -11,7 +11,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftc">{icon:folder_yellow} {lang:name} *</td>
-		<td class="leftb"><input type="text" name="maps_name" value="{maps:maps_name}" maxlength="80" size="40"  /></td>
+		<td class="leftb"><input type="text" name="maps_name" value="{maps:maps_name}" maxlength="80" size="40" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:package_games} {lang:game} *</td>
@@ -34,13 +34,13 @@
     </tr>
 	<tr>
 		<td class="leftc">{icon:download} {lang:pic_up}</td>
-		<td class="leftb"><input type="file" name="picture" value=""  /><br /><br />{maps:matches}</td>
+		<td class="leftb"><input type="file" name="picture" value="" /><br /><br />{maps:matches}</td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftb">
-			<input type="submit" name="submit" value="{lang:create}"  />
-			<input type="reset" name="reset" value="{lang:reset}"  />
+			<input type="submit" name="submit" value="{lang:create}" />
+			<input type="reset" name="reset" value="{lang:reset}" />
 		</td>
 	</tr>
 </table>

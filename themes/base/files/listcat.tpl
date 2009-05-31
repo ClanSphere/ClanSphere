@@ -14,7 +14,7 @@
   </tr>
   {loop:subs}
   <tr>
-    <td class="leftc"><a href="{url:files_listcat:where={subs:id}}" >{subs:name}</a> ({subs:count}) </td>
+    <td class="leftc"><a href="{url:files_listcat:where={subs:id}}">{subs:name}</a> ({subs:count}) </td>
   </tr>
   {stop:subs}
 </table>

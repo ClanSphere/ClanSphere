@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2"><a href="{url:files}" >{lang:mod_name}</a> - <a href="{url:files_listcat:where={category:id}}" >{category:name}</a> - {file:name} </td>
+    <td class="headb" colspan="2"><a href="{url:files}">{lang:mod_name}</a> - <a href="{url:files_listcat:where={category:id}}">{category:name}</a> - {file:name} </td>
   </tr>
   <tr>
     <td class="leftc">{icon:kedit} {lang:name}</td>

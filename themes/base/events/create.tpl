@@ -66,8 +66,8 @@
 		<td class="leftc">{icon:5days} {lang:multi}</td>
 		<td class="leftb">
 			<select name="events_multi">
-				<option value="no" {check:multi_no} >{lang:no}</option>
-				<option value="yes" {check:multi_yes} >{lang:yes}</option>
+				<option value="no" {check:multi_no}>{lang:no}</option>
+				<option value="yes" {check:multi_yes}>{lang:yes}</option>
 			</select>
 			{lang:multi_info}<br /><br />
       {lang:multix} * 

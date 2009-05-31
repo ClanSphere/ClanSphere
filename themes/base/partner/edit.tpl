@@ -12,7 +12,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
     <td class="leftc" style="width: 125px;">{icon:kedit} {lang:name} *</td>
-    <td class="leftb"><input type="text" name="partner_name" value="{partner:partner_name}" maxlength="200" size="50"  /></td>
+    <td class="leftb"><input type="text" name="partner_name" value="{partner:partner_name}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:folder_yellow} {lang:category} *</td>
@@ -20,11 +20,11 @@
   </tr>
   <tr>
     <td class="leftc">{icon:gohome} {lang:url} *</td>
-    <td class="leftb">http:// <input type="text" name="partner_url" value="{partner:partner_url}" maxlength="200" size="50"  /></td>
+    <td class="leftb">http:// <input type="text" name="partner_url" value="{partner:partner_url}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:documentinfo} {lang:alt} *</td>
-    <td class="leftb"><input type="text" name="partner_alt" value="{partner:partner_alt}" maxlength="200" size="50"  /></td>
+    <td class="leftb"><input type="text" name="partner_alt" value="{partner:partner_alt}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:description} *<br /><br /> {abcode:smileys}</td>
@@ -32,20 +32,20 @@
   </tr>
   <tr>
     <td class="leftc">{icon:images} {lang:navimg} </td>
-    <td class="leftb"><div style="float: left;"> {partner:partner_nimg}<br /><input type="file" name="partner_nimg" value=""  /><br />{clip:nimg}</div>
-    <div style="float: right;"> <input type="checkbox" value="1" name="remove_nimg"  /> {lang:remove}</div> </td>
+    <td class="leftb"><div style="float: left;"> {partner:partner_nimg}<br /><input type="file" name="partner_nimg" value="" /><br />{clip:nimg}</div>
+    <div style="float: right;"> <input type="checkbox" value="1" name="remove_nimg" /> {lang:remove}</div> </td>
   </tr>
   <tr>
     <td class="leftc">{icon:images} {lang:listimg} </td>
     <td class="leftb"><div style="float: left;">
-    {partner:partner_limg}<br /><input type="file" name="partner_limg" value=""  /><br />{clip:limg}</div>
-    <div style="float: right;"> <input type="checkbox" value="1" name="remove_limg"  /> {lang:remove}</div> </td>
+    {partner:partner_limg}<br /><input type="file" name="partner_limg" value="" /><br />{clip:limg}</div>
+    <div style="float: right;"> <input type="checkbox" value="1" name="remove_limg" /> {lang:remove}</div> </td>
   </tr>
   <tr>
     <td class="leftc">{icon:images} {lang:rotimg} </td>
     <td class="leftb"><div style="float: left;">
-     {partner:partner_rimg}<br /> <input type="file" name="partner_rimg" value=""  /><br />{clip:rimg}</div>
-     <div style="float: right;"> <input type="checkbox" value="1" name="remove_rimg"  /> {lang:remove}</div> </td>
+     {partner:partner_rimg}<br /> <input type="file" name="partner_rimg" value="" /><br />{clip:rimg}</div>
+     <div style="float: right;"> <input type="checkbox" value="1" name="remove_rimg" /> {lang:remove}</div> </td>
   </tr>
   <tr>
    <td class="leftc">{icon:enumList} {lang:priority}</td>

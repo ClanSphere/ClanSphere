@@ -9,7 +9,7 @@
 <br />
 
 <form method="post" id="thread_cut" action="{url:board_thread_cut}">
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}" >
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
    <td class="leftc" style="width: 130px">{icon:kedit} {lang:headline} *</td>
    <td class="leftb" colspan="2"><input type="text" name="threads_headline" value="" maxlength="200" size="50" /></td>

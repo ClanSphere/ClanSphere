@@ -29,7 +29,7 @@
 	<tr>
 		<td class="leftc">{icon:access} {lang:needed_access}</td>
 		<td class="leftb" colspan="2">
-			<select name="categories_access" >
+			<select name="categories_access">
 				{loop:access}
 				{access:sel}
 				{stop:access}

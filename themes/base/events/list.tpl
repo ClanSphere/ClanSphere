@@ -23,7 +23,7 @@
 <table class="forum" style="width: {page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
  <tr>
   <td class="headb" style="width:170px">{sort:date} {lang:date}</td>
-  <td class="headb" >{sort:name} {lang:name}</td>
+  <td class="headb">{sort:name} {lang:name}</td>
   <td class="headb" style="width:170px">{lang:venue}</td>
  </tr>{loop:events}
  <tr>

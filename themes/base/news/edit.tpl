@@ -31,7 +31,7 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" style="width: 100px;">{icon:kedit} {lang:headline} *</td>
-      <td class="leftb" colspan="2"><input type="text" name="news_headline" value="{news:news_headline}" maxlength="200" size="50"  /></td>
+      <td class="leftb" colspan="2"><input type="text" name="news_headline" value="{news:news_headline}" maxlength="200" size="50" /></td>
     </tr>
     <tr>
       <td class="leftc">{icon:folder_yellow} {lang:category} *</td>
@@ -72,9 +72,9 @@
     {loop:mirror}
     <tr>
       <td class="leftc">{icon:html} {lang:mirror} {mirror:num}</td>
-      <td class="leftb">{lang:link}: <input type="text" name="news_mirror_{mirror:num}" value="{mirror:news_mirror}" maxlength="200" size="30"  />
+      <td class="leftb">{lang:link}: <input type="text" name="news_mirror_{mirror:num}" value="{mirror:news_mirror}" maxlength="200" size="30" />
       </td>
-      <td class="leftb">{lang:link_name}: <input type="text" name="news_mirror_name_{mirror:num}" value="{mirror:news_mirror_name}" maxlength="50" size="20"  /></td>
+      <td class="leftb">{lang:link_name}: <input type="text" name="news_mirror_name_{mirror:num}" value="{mirror:news_mirror_name}" maxlength="50" size="20" /></td>
     </tr>
     {stop:mirror}
     <tr>

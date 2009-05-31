@@ -40,7 +40,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:hdd_unmount} {lang:harddisks}</td>
-		<td class="leftb"><textarea class="rte_abcode" name="computers_harddisks" cols="50" rows="3" id="computers_harddisks" >{com:computers_harddisks}</textarea></td>
+		<td class="leftb"><textarea class="rte_abcode" name="computers_harddisks" cols="50" rows="3" id="computers_harddisks">{com:computers_harddisks}</textarea></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:cd_unmount} {lang:drives}</td>

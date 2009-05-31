@@ -33,8 +33,8 @@
 		<td class="leftc">{bm:boardmods_modpanel}</td>
 		<td class="leftc">{bm:boardmods_edit}</td>
 		<td class="leftc">{bm:boardmods_del}</td>
-		<td class="leftc"><a href="{bm:url_edit}" title="{lang:edit}" >{icon:edit}</a></td>
-		<td class="leftc"><a href="{bm:url_remove}" title="{lang:remove}" >{icon:editdelete}</a></td>
+		<td class="leftc"><a href="{bm:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
+		<td class="leftc"><a href="{bm:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>
 	</tr>
 	{stop:bm}
 </table>

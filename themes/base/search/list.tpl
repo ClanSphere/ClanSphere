@@ -12,12 +12,12 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
     <td class="leftc">{icon:kedit} {lang:text} *</td>
-    <td class="leftb"><input type="text" name="text" value="{if:text}{search:text}{stop:text}" maxlength="200" size="50"  /></td>
+    <td class="leftb"><input type="text" name="text" value="{if:text}{search:text}{stop:text}" maxlength="200" size="50" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:kcmdf} {lang:modul} *</td>
     <td class="leftb">
-	<select name="where" >
+	<select name="where">
     <option value="0">----</option>
 	<option value="articles" {search:articles_check}>{lang:articles}</option>
 	<option value="clans" {search:clans_check}>{lang:clans}</option>

@@ -7,13 +7,13 @@
 <br />
 
 <form method="post" id="shout_navlist" action="{form:url}">
-	<input type="text" name="sh_nick" value="{form:nick}" onfocus="if(this.value=='Nick') this.value=''" onblur="if(this.value=='')this.value='Nick'" maxlength="40" size="15"  /><br />
-	<textarea class="rte_abcode" name="sh_text" cols="15" rows="2" ></textarea><br />
+	<input type="text" name="sh_nick" value="{form:nick}" onfocus="if(this.value=='Nick') this.value=''" onblur="if(this.value=='')this.value='Nick'" maxlength="40" size="15" /><br />
+	<textarea class="rte_abcode" name="sh_text" cols="15" rows="2"></textarea><br />
 	{if:captcha}
 	{captcha:img}<br />
 	<input type="text" name="captcha" value="" maxlength="3" size="3" />
 	{stop:captcha}<br />
-<input type="submit" name="submit" value="{lang:save}"  />
+<input type="submit" name="submit" value="{lang:save}" />
 <input type="hidden" name="uri" value="{form:uri}" />
 </form>
 <br /><br />

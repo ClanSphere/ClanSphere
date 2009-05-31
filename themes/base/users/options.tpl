@@ -12,19 +12,19 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:resizecol} {lang:max_width}</td>
-  <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4"  /> {lang:pixel}</td>
+  <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4" /> {lang:pixel}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:resizerow} {lang:max_height}</td>
-  <td class="leftb"><input type="text" name="max_height" value="{options:max_height}" maxlength="4" size="4"  /> {lang:pixel}</td>
+  <td class="leftb"><input type="text" name="max_height" value="{options:max_height}" maxlength="4" size="4" /> {lang:pixel}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:fileshare} {lang:max_size}</td>
-  <td class="leftb"><input type="text" name="max_size" value="{options:max_size}" maxlength="20" size="8"  /> {lang:bytes}</td>
+  <td class="leftb"><input type="text" name="max_size" value="{options:max_size}" maxlength="20" size="8" /> {lang:bytes}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:cell_edit} {lang:min_letters}</td>
-  <td class="leftb"><input type="text" name="min_letters" value="{options:min_letters}" maxlength="10" size="4"  /> {lang:letters}</td>
+  <td class="leftb"><input type="text" name="min_letters" value="{options:min_letters}" maxlength="10" size="4" /> {lang:letters}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:completion} {lang:def_register}</td>
@@ -33,7 +33,7 @@
  <tr>
   <td class="leftc">{icon:personal} {lang:register}</td>
   <td class="leftb">
-  <select name="register" >
+  <select name="register">
   {options:register_off}
   {options:register_on}
   </select>

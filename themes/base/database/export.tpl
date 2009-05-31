@@ -22,9 +22,9 @@
 				{tables:option}
 				{stop:tables}
 			</select>
-			<a href="javascript:cs_select_multiple('sql_tables',1)" >{lang:all}</a> -
-			<a href="javascript:cs_select_multiple('sql_tables',0)" >{lang:none}</a> -
-			<a href="javascript:cs_select_multiple('sql_tables','reverse')" >{lang:reverse}</a>
+			<a href="javascript:cs_select_multiple('sql_tables',1)">{lang:all}</a> -
+			<a href="javascript:cs_select_multiple('sql_tables',0)">{lang:none}</a> -
+			<a href="javascript:cs_select_multiple('sql_tables','reverse')">{lang:reverse}</a>
 		</td>
 		<td class="leftc">{lang:prefix}</td>
 		<td class="leftb"><input type="text" name="prefix" value="&#123;pre&#125;" maxlength="20" size="20" /></td>

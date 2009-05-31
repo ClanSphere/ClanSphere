@@ -3,7 +3,7 @@
     <td class="headb" colspan="3">{lang:mod_name} - {lang:head_manage}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:editpaste} <a href="{lang:create}" >{lang:new_access}</a></td>
+    <td class="leftb">{icon:editpaste} <a href="{lang:create}">{lang:new_access}</a></td>
     <td class="leftb">{icon:contents} {lang:total}: {lang:count}</td>
     <td class="rightb">{pages:list}</td>
   </tr>

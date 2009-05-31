@@ -17,7 +17,7 @@
 	<tr>
 		<td class="leftc">{icon:atlantikdesigner} {lang:map} *</td>
 		<td class="leftb">
-			<select name="maps_id" >
+			<select name="maps_id">
 				<option value="0">----</option>
 				{loop:map}
 				{map:sel}

@@ -3,8 +3,8 @@
     <td class="headb" colspan="2"> {head:mod}  -  {head:action} </td>
   </tr>
   <tr>
-    <td class="leftb" > {lang:total}: {head:total}</td>
-    <td class="rightb" > {head:pages} </td>
+    <td class="leftb"> {lang:total}: {head:total}</td>
+    <td class="rightb"> {head:pages} </td>
   </tr>
   <tr>
     <td class="centerb" colspan="2"> 

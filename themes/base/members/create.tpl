@@ -13,7 +13,7 @@
  <tr>
   <td class="leftc">{icon:yast_group_add} {lang:squad} *</td>
   <td class="leftb">
-    <select name="squads_id" >
+    <select name="squads_id">
      <option value="0">----</option>{loop:squads}
      <option value="{squads:squads_id}"{squads:selection}>{squads:squads_name}</option>{stop:squads}
     </select>
@@ -30,13 +30,13 @@
  <tr>
   <td class="leftc">{icon:todo} {lang:task} *</td>
   <td class="leftb">
-    <input type="text" name="members_task" value="{value:task}" maxlength="80" size="40"  />
+    <input type="text" name="members_task" value="{value:task}" maxlength="80" size="40" />
   </td>
  </tr>
  <tr>
   <td class="leftc">{icon:enumList} {lang:order}</td>
   <td class="leftb">
-    <input type="text" name="members_order" value="{value:order}" maxlength="4" size="4"  />
+    <input type="text" name="members_order" value="{value:order}" maxlength="4" size="4" />
   </td>
  </tr>
  <tr>

@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:download} {lang:upload}</td>
-      <td class="leftb"><input type="file" name="picture" value=""  />
+      <td class="leftb"><input type="file" name="picture" value="" />
         <br />
         <br />
         {avatar:clip}</td>

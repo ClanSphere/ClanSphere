@@ -4,7 +4,7 @@
 	</tr>
 	<tr>
 		<td class="leftb">{head:body}</td>
-		<td class="rightb"><a href="{url:wars_manage}" >{lang:manage}</a></td>
+		<td class="rightb"><a href="{url:wars_manage}">{lang:manage}</a></td>
 	</tr>
 </table>
 <br />

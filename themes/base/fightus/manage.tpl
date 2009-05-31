@@ -26,7 +26,7 @@
 		<td class="leftc">{fightus:date}</td>
 		<td class="leftc"><a href="{fightus:url_convert_clan}" title="{lang:convert_clan}">{icon:convert_clan}</a></td>
 		<td class="leftc"><a href="{fightus:url_convert_war}" title="{lang:convert_war}">{icon:convert_war}</a></td>
-		<td class="leftc"><a href="{fightus:url_remove}" title="{lang:remove}" >{icon:editdelete}</a></td>
+		<td class="leftc"><a href="{fightus:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>
 	</tr>
 	{stop:fightus}
 </table>

@@ -11,22 +11,22 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" style="width:140px">{icon:kdmconfig} {lang:name} *</td>
-      <td class="leftb"><input type="text" name="clans_name" value="{clans:name}" maxlength="200" size="50"  />
+      <td class="leftb"><input type="text" name="clans_name" value="{clans:name}" maxlength="200" size="50" />
       </td>
     </tr>
     <tr>
       <td class="leftc">{icon:signature} {lang:short} *</td>
-      <td class="leftb"><input type="text" name="clans_short" value="{clans:short}" maxlength="20" size="12"  />
+      <td class="leftb"><input type="text" name="clans_short" value="{clans:short}" maxlength="20" size="12" />
       </td>
     </tr>
     <tr>
       <td class="leftc">{icon:attach} {lang:tag}</td>
-      <td class="leftb"><input type="text" name="clans_tag" value="{clans:tag}" maxlength="40" size="20"  />
+      <td class="leftb"><input type="text" name="clans_tag" value="{clans:tag}" maxlength="40" size="20" />
       </td>
     </tr>
     <tr>
       <td class="leftc">{icon:reload} {lang:tagpos}</td>
-      <td class="leftb"><select name="tag_pos" >
+      <td class="leftb"><select name="tag_pos">
           <option value="0">----</option>
           <option value="1" {select:before}>{lang:before}</option>
           <option value="2" {select:next}>{lang:next}</option>
@@ -40,7 +40,7 @@
     <tr>
       <td class="leftc">{icon:gohome} {lang:url}</td>
       <td class="leftb" colspan="2"> http://
-        <input type="text" name="clans_url" value="{clans:url}" maxlength="80" size="50"  />
+        <input type="text" name="clans_url" value="{clans:url}" maxlength="80" size="50" />
       </td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:download} {lang:pic_up}</td>
-      <td class="leftb"><input type="file" name="picture" value=""  />
+      <td class="leftb"><input type="file" name="picture" value="" />
         <input type="hidden" name="clans_picture" value="" />
         <br />
 		<br />

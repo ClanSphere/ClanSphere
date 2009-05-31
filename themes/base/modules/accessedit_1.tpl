@@ -14,7 +14,7 @@
  <tr>
   <td class="leftc">{icon:access}{access:access_name}</td>
   <td class="leftb">
-    <select name="access_{access:access_id}" >
+    <select name="access_{access:access_id}">
       <option value="0" {access:sel0}>0 - {lang:lev_0}</option>
       <option value="1" {access:sel1}>1 - {lang:lev_1}</option>
       <option value="2" {access:sel2}>2 - {lang:lev_2}</option>

@@ -12,22 +12,22 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:resizecol} {lang:max_width} </td>
-      <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4"  />
+      <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4" />
         {lang:pixel}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:resizerow} {lang:max_height}</td>
-      <td class="leftb"><input type="text" name="max_height" value="{options:max_height}" maxlength="4" size="4"  />
+      <td class="leftb"><input type="text" name="max_height" value="{options:max_height}" maxlength="4" size="4" />
         {lang:pixel} </td>
     </tr>
     <tr>
       <td class="leftc">{icon:fileshare} {lang:max_size}</td>
-      <td class="leftb"><input type="text" name="max_size" value="{options:max_size}" maxlength="20" size="8"  />
+      <td class="leftb"><input type="text" name="max_size" value="{options:max_size}" maxlength="20" size="8" />
         {lang:bytes} </td>
     </tr>
     <tr>
       <td class="leftc">{icon:enumList} {lang:def_order}</td>
-      <td class="leftb"><input type="text" name="def_order" value="{options:def_order}" maxlength="4" size="4"  />
+      <td class="leftb"><input type="text" name="def_order" value="{options:def_order}" maxlength="4" size="4" />
       </td>
     </tr>
     <tr>

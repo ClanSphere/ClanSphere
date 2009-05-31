@@ -11,12 +11,12 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:access} {lang:name} *</td>
-      <td class="leftb"><input type="text" name="access_name" value="{access2:name}" maxlength="40" size="40"  />
+      <td class="leftb"><input type="text" name="access_name" value="{access2:name}" maxlength="40" size="40" />
       </td>
     </tr>
     <tr>
       <td class="leftc">{icon:package_system} {access2:clansphere}</td>
-      <td class="leftb"><select name="access_clansphere" >
+      <td class="leftb"><select name="access_clansphere">
           <option value="0">0 - {lang:clansphere_0}</option>
           <option value="3" {access2:select_3}>3 - {lang:clansphere_3}</option>
           <option value="4" {access2:select_4}>4 - {lang:clansphere_4}</option>

@@ -25,7 +25,7 @@
   </tr>
   {loop:temp_list}
   <tr>
-    <td class="leftc"><a href="{temp_list:link}" >{temp_list:name}</a></td>
+    <td class="leftc"><a href="{temp_list:link}">{temp_list:name}</a></td>
     <td class="leftc">{temp_list:version}</td>
     <td class="leftc">{temp_list:date}</td>
     <td class="centerc">{temp_list:preview}</td>

@@ -24,8 +24,8 @@
 		<td class="leftc">{newsletter:user}</td>
 		<td class="leftc">{newsletter:subject}</td>
 		<td class="leftc">{newsletter:date}</td>
-		<td class="centerc"><a href="{url:newsletter_view:id={newsletter:id}}" >{icon:info}</a></td>
-		<td class="centerc"><a href="{url:newsletter_remove:id={newsletter:id}}" >{icon:editdelete}</a></td>
+		<td class="centerc"><a href="{url:newsletter_view:id={newsletter:id}}">{icon:info}</a></td>
+		<td class="centerc"><a href="{url:newsletter_remove:id={newsletter:id}}">{icon:editdelete}</a></td>
 	</tr>
 	{stop:newsletter}
 </table>

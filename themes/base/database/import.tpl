@@ -32,12 +32,12 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kate} {lang:sql_text}</td>
-      <td class="leftb"><textarea name="text" cols="50" rows="12" id="text" >{import:sql_text}</textarea>
+      <td class="leftb"><textarea name="text" cols="50" rows="12" id="text">{import:sql_text}</textarea>
       </td>
     </tr>
     <tr>
       <td class="leftc">{icon:download}{lang:sql_file}</td>
-      <td class="leftb"><input type="file" name="update" value=""  />
+      <td class="leftb"><input type="file" name="update" value="" />
       </td>
     </tr>
     <tr>

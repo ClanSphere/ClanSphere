@@ -12,7 +12,7 @@
  <tr>
   <td class="leftc">{icon:enumList} {lang:access} *</td>
   <td class="leftb">
-   <select name="votes_access" >
+   <select name="votes_access">
 {loop:access}
     <option value="{access:level_id}" {access:selected}>{access:level_id} - {access:level_name}</option>
 {stop:access}
@@ -26,13 +26,13 @@
 {loop:form_answers}
  <tr>
   <td class="leftc">{icon:kate} {lang:answer} {form_answers:number} *</td>
-  <td class="leftb"><input type="text" name="{form_answers:name}" value="{form_answers:value}" maxlength="80" size="50"  /></td>
+  <td class="leftb"><input type="text" name="{form_answers:name}" value="{form_answers:value}" maxlength="80" size="50" /></td>
  </tr>
 {stop:form_answers}
  <tr>
   <td class="leftc">{icon:configure} {lang:more}</td>
   <td class="leftb">
-    <input type="checkbox" name="votes_close" value="1"  />{lang:restrict_comments}<br />
+    <input type="checkbox" name="votes_close" value="1" />{lang:restrict_comments}<br />
 	<input type="checkbox" name="votes_several" value="1"  {several:checked} />{lang:several}
   
   </td>

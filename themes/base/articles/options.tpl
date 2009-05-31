@@ -12,7 +12,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:playlist} {lang:max_navlist}</td>
-  <td class="leftb"><input type="text" name="max_navlist" value="{op:max_navlist}" maxlength="2" size="2"  /></td>
+  <td class="leftb"><input type="text" name="max_navlist" value="{op:max_navlist}" maxlength="2" size="2" /></td>
  </tr> 
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>

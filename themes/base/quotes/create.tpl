@@ -13,7 +13,7 @@
     <tr>
       <td class="leftc">{icon:kedit} {lang:headline} *</td>
       <td class="leftb">
-        <input type="text" name="quotes_headline" value="{quotes:quotes_headline}" maxlength="200" size="50"  />
+        <input type="text" name="quotes_headline" value="{quotes:quotes_headline}" maxlength="200" size="50" />
       </td>
     </tr>
     <tr>
