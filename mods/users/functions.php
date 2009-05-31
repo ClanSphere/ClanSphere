@@ -25,17 +25,16 @@ function generate_code($anz = 0) {
 //-----------------------------------------------------------------// 
 function create_user($access,$nick,$pwd,$lang,$email,$country,$timezone,$dst,$newsletter = 0,$active = 1,$limit = 20,$regkey = '') {
 
-  global $cs_db, $op_users;
-
-  $time = cs_time();
-
+  global $cs_db;
   if($cs_db['hash'] == 'md5') { 
     $sec_pwd = md5($pwd); 
   } elseif($cs_db['hash'] == 'sha1') { 
     $sec_pwd = sha1($pwd);
   }
 
+  $op_users = cs_sql_option(__FILE__,'users');
   $picture = empty($op_users['def_picture']) ? '' : 'nopicture.jpg';
+  $time = cs_time();
 
   $users_cells = array('access_id', 'users_nick', 'users_pwd', 'users_lang', 'users_email', 'users_country', 'users_register', 'users_laston', 'users_timezone', 'users_dstime', 'users_newsletter', 'users_active', 'users_limit', 'users_regkey', 'users_picture');
   $users_save = array($access,$nick,$sec_pwd,$lang,$email,$country,$time,$time,$timezone,$dst,$newsletter,$active,$limit,$regkey,$picture);
@@ -43,4 +42,3 @@ function create_user($access,$nick,$pwd,$lang,$email,$country,$timezone,$dst,$ne
   
   return cs_sql_insertid(__FILE__);
 }
- 
