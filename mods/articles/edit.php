@@ -106,7 +106,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $articles_save = array_values($cs_articles);
   cs_sql_update(__FILE__,'articles',$articles_cells,$articles_save,$articles_id);
 
-  if(!empty($_FILES['picture'])) cs_pictures_upload($_FILES['picture'], 'articles', $articles_id);
+  if(!empty($files['picture'])) cs_pictures_upload($files['picture'], 'articles', $articles_id);
 
   cs_redirect($cs_lang['changes_done'], 'articles') ;
 }
