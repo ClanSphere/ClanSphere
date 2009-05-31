@@ -66,7 +66,7 @@
   </tr>
  <tr>
    <td class="leftc">{icon:ksysguard} {lang:options}</td>
-   <td class="leftb"><input type="submit" name="submit" value="{lang:edit}" /> <input type="reset" name="reset" value="{lang:reset}" /></td>
+   <td class="leftb"><input type="submit" name="submit" value="{lang:edit}" /> </td>
  </tr>
 </table>
 </form>

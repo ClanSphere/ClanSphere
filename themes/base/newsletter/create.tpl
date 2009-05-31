@@ -27,8 +27,7 @@
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 		<td class="leftc">
-			<input type="submit" name="submit" value="Eintragen" />
-			<input type="reset" name="reset" value="Nochmal" />
+			<input type="submit" name="submit" value="{lang:create}" />
 		</td>
 	</tr>
 </table>

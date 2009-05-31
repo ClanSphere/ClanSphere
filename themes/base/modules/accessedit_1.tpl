@@ -30,7 +30,6 @@
   <td class="leftb">
     <input type="hidden" name="dir" value="{value:dir}" />
     <input type="submit" name="submit" value="{lang:edit}" />
-    <input type="reset" name="reset" value="{lang:reset}" />
-  </td>
+      </td>
 </table>
 </form>

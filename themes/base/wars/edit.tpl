@@ -106,8 +106,7 @@
 			<input type="hidden" name="players" value="{wars:check_player}" />
 			<input type="hidden" name="id" value="{wars:id}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-			<input type="submit" name="playeradd" value="{lang:add_player}" />
+						<input type="submit" name="playeradd" value="{lang:add_player}" />
 		</td>
 	</tr>
 </table>

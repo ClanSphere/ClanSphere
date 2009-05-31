@@ -54,8 +54,7 @@
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
       <input type="submit" name="submit" value="{lang:edit}" />
-      <input type="reset" name="reset" value="{lang:reset}" />
-      <input type="hidden" name="cups_id" value="{cups:cups_id}" />
+            <input type="hidden" name="cups_id" value="{cups:cups_id}" />
      </td>
   </tr>
 </table>

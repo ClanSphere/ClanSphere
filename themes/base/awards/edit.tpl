@@ -45,8 +45,7 @@
 		<td class="leftb">
 			<input type="submit" name="submit" value="{lang:create}" />
  			<input type="submit" name="preview" value="{lang:preview}" />
- 			<input type="reset" name="reset" value="{lang:reset}" />
- 			<input type="hidden" name="id" value="{awards:awards_id}" />
+ 			 			<input type="hidden" name="id" value="{awards:awards_id}" />
  		</td>
  	</tr>
 </table>

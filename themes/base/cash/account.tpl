@@ -46,8 +46,7 @@
   <td class="leftc">{icon:ksysguard} {lang:options}</td>
   <td class="leftb">{if:id}<input type="hidden" name="id" value="{id:account_id}" />{stop:id}
     <input type="submit" name="submit" value="{lang:edit}" />
-    <input type="reset" name="reset" value="{lang:reset}" />
-   </td>
+       </td>
  </tr>
 </table>
 </form>

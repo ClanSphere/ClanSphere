@@ -75,7 +75,6 @@
 			<input type="hidden" name="id" value="{hidden:id}"/>
 			<input type="submit" name="preview" value="{lang:preview}"/>
 			<input type="submit" name="submit" value="{lang:send}" />
-			<input type="reset" name="reset" value="{lang:reset}"/>
 		</td>
 	</tr>
 </table>

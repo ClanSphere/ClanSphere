@@ -88,7 +88,6 @@
    <input type="hidden" name="tablescount" value="{value:tablescount}" />
    <input type="hidden" name="showcount" value="{value:showcount}" />
    <input type="submit" name="submit" value="{lang:create}" />
-   <input type="submit" name="reset" value="{lang:reset}" />
    <input type="submit" name="addshow" value="{lang:add_show}" />
    <input type="submit" name="addtable" value="{lang:add_table}" />
   </td>

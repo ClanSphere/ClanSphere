@@ -28,8 +28,7 @@
 		<input type="hidden" name="from" value="{gbook:from}" />
 		<input type="submit" name="submit" value="{lang:submit}" />
 		<input type="submit" name="preview" value="{lang:preview}" />
-        <input type="reset" name="reset" value="{lang:reset}" />
-	</td>
+        	</td>
   </tr>
 </table>
 </form>

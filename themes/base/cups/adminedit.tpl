@@ -31,7 +31,7 @@
       <input type="hidden" name="squad2_id" value="{match:team2_id}" />
       <input type="hidden" name="cupmatches_id" value="{match:id}" />
       <input type="submit" name="admin_submit" value="{lang:edit}" />
-      <input type="reset" name="reset" value="{lang:reset}" /></td>
+      </td>
   </tr>
 </table>
 </form>

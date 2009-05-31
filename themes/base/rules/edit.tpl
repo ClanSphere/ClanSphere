@@ -44,7 +44,7 @@
     <input type="hidden" name="id" value="{data:rules_id}" />
     <input type="submit" name="submit" value="{lang:edit}" />
     <input type="submit" name="preview" value="{lang:preview}" />
-    <input type="reset" name="reset" value="{lang:reset}" /></td>
+    </td>
   </tr>
 </table>
 </form>

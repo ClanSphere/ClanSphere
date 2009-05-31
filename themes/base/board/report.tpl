@@ -19,8 +19,7 @@
       <td class="leftb"><input type="hidden" name="tid" value="{report:tid}" />
         <input type="hidden" name="cid" value="{report:cid}" />
         <input type="submit" name="submit" value="{lang:create}" />
-        <input type="reset" name="reset" value="{lang:reset}" />
-      </td>
+              </td>
     </tr>
   </table>
 </form>

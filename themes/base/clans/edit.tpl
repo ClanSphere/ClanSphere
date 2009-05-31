@@ -110,8 +110,7 @@
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="hidden" name="id" value="{data:id}" />
-        <input type="submit" name="submit" value="Bearbeiten" />
-        <input type="reset" name="reset" value="Nochmal" />
+        <input type="submit" name="submit" value="{lang:edit}" />
       </td>
     </tr>
   </table>

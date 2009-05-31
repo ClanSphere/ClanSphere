@@ -36,8 +36,7 @@
 		<td class="leftb">{icon:ksysguard} {lang:options}</td>
 		<td class="leftc">
 			<input type="submit" name="submit" value="{lang:create}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

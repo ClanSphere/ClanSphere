@@ -65,8 +65,7 @@
       <input type="hidden" name="reply_id" value="{var:reply_id}" />
       <input type="submit" name="submit" value="{lang:send}" />
       <input type="submit" name="preview" value="{lang:preview}" />
-      <input type="reset" name="reset" value="{lang:reset}" />
-     </td>
+           </td>
   </tr>
 </table>
 </form>

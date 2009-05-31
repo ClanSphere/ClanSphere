@@ -42,8 +42,7 @@
   <td class="leftb">
    <input type="submit" name="submit" value="{votes:lang_submit}" />
    <input type="submit" name="preview" value="{lang:preview}" />
-   <input type="reset" name="reset" value="{lang:reset}" />
-   <input type="submit" name="election" value="{lang:add_election}" />
+      <input type="submit" name="election" value="{lang:add_election}" />
    <input type="hidden" name="run_loop" value="{votes:answers_count}" />
    <input type="hidden" name="id" value="{votes:id}" />
    </td>

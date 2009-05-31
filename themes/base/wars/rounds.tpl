@@ -48,8 +48,7 @@
 		<td class="leftb">
 			<input type="hidden" name="id" value="{wars:id}" />
 			<input type="submit" name="submit" value="{lang:create}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

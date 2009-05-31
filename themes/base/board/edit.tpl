@@ -98,8 +98,7 @@
 			<input type="hidden" name="board_pwd" value="{data:board_pwd}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
 			<input type="submit" name="preview" value="{lang:preview}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

@@ -53,7 +53,7 @@
  </tr>
  <tr>
    <td class="leftc">{icon:ksysguard} {lang:options}</td>
-   <td class="leftb"><input type="submit" name="submit" value="{lang:edit}" /> <input type="reset" name="reset" value="{lang:reset}" /> <input type="hidden" name="id" value="{partner:partner_id}" /></td>
+   <td class="leftb"><input type="submit" name="submit" value="{lang:edit}" />  <input type="hidden" name="id" value="{partner:partner_id}" /></td>
  </tr>
 </table>
 </form>

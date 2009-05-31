@@ -75,8 +75,7 @@
 			<input type="hidden" name="folders_picture" value="{hidden:folders_picture}" />
 			<input type="hidden" name="id" value="{hidden:folders_id}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
   </tr>
 </table>
 </form>

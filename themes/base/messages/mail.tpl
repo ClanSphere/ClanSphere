@@ -20,8 +20,7 @@
 			<input type="hidden" name="autoresponder_id" value="{hidden:id}" />
 			<input type="hidden" name="update" value="{hidden:update}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

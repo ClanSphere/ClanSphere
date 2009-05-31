@@ -37,7 +37,6 @@
     <td class="leftb">
       <input type="hidden" value="{form:medals_id}" name="medals_id" />
       <input type="submit" value="{lang:edit}" name="submit" />
-      <input type="reset" value="{lang:reset}" name="reset" />
      </td>
   </tr>
 </table>

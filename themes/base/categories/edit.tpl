@@ -79,8 +79,7 @@
 			<input type="hidden" name="cat_mod" value="{cat:cat_mod}" />
 			<input type="hidden" name="categories_picture" value="{cat:categories_picture}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

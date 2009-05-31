@@ -44,8 +44,7 @@
       <td class="leftb"><input type="hidden" name="abcode_file" value="{abcode:file}" />
         <input type="hidden" name="id" value="{abcode:id}" />
         <input type="submit" name="submit" value="{lang:edit}" />
-        <input type="reset" name="reset" value="{lang:reset}" />
-      </td>
+              </td>
     </tr>
   </table>
 </form>

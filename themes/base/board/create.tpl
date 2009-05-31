@@ -99,7 +99,6 @@
       <td class="leftb">
         <input name="submit" value="{lang:create}" type="submit" />
         <input name="preview" value="{lang:preview}" type="submit" />
-        <input name="reset" value="{lang:reset}" type="reset" />
       </td>
     </tr>
   </table>

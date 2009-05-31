@@ -40,8 +40,7 @@
     <td class="leftb">
 		<input type="submit" name="submit" value="{static:lang_form}" />
 		<input type="submit" name="preview" value="{lang:preview}" />
- 		<input type="reset" name="reset" value="{lang:reset}" />
-		<input type="hidden" name="id" value="{static:id}" />
+ 				<input type="hidden" name="id" value="{static:id}" />
 		 </td>
   </tr>
 </table>

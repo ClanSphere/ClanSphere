@@ -9,8 +9,7 @@
 				<input type="text" name="text" value="" maxlength="200" size="50" />
 				<input type="hidden" name="where" value="{search:mod}" />
 				<input type="submit" name="submit" value="{lang:search}" />
-				<input type="reset" name="reset" value="{lang:reset}" />
-			</form>
+							</form>
 		</td>
 	</tr>
 </table>

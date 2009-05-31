@@ -19,6 +19,5 @@
 {icon:ksysguard} {lang:options}</td><td class="leftb">
 
  <input type="submit" name="login" value="{lang:submit}" />
- <input type="reset" name="reset" value="{lang:reset}" />
- </td></tr></table>
+  </td></tr></table>
 </form>

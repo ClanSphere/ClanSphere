@@ -47,8 +47,7 @@
 		<td class="leftb">
 			<input type="hidden" name="id" value="{rounds:id}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

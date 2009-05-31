@@ -72,8 +72,7 @@
 			<input type="hidden" name="gallery_name" value="{hidden:name}" />
 			<input type="hidden" name="id" value="{hidden:id}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-	</td>
+				</td>
   </tr>
 </table>
 </form>

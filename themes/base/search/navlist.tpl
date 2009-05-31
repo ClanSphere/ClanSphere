@@ -16,8 +16,7 @@
 	<tr>
 		<td class="center">
 			<input type="submit" name="submit" value="{lang:search}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

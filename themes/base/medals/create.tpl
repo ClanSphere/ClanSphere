@@ -26,7 +26,6 @@
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
       <input type="submit" value="{lang:create}" name="submit" />
-      <input type="reset" value="{lang:reset}" name="reset" />
      </td>
   </tr>
 </table>

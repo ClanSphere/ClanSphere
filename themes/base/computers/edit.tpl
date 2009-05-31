@@ -68,8 +68,7 @@
 			<input type="hidden" name="referer" value="{com:referer}" />
 			<input type="hidden" name="id" value="{com:id}" />
 			<input type="submit" name="submit" value="{lang:edit}" />
-			<input type="reset" name="reset" value="{lang:reset}" />
-		</td>
+					</td>
 	</tr>
 </table>
 </form>

@@ -35,7 +35,7 @@
       <td class="leftb"><input type="hidden" name="id" value="{data:quotes_id}" />
         <input type="hidden" name="quotes_time" value="{data:quotes_time}" />
         <input type="submit" name="submit" value="{lang:edit}" />
-        <input type="reset" name="reset" value="{lang:reset}" /></td>
+        </td>
     </tr>
   </table>
 </form>
