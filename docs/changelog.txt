@@ -6,6 +6,7 @@ ___________________________________________________________
 
 -> Added support for Microsoft SQL Server 2005 and 2008 using the sqlsrv extension (hajo)
 -> Added title of articles, board threads, news and static pages to the end of func:title (hajo)
+-> Removed many reset buttons, because they are not useful (hajo)
 -> Removed support for RSS in servers mod (hajo)
 -> Reworked handling of charsets for PostgreSQL and MySQL drivers (hajo)
 -> Reworked parts of the cups module: now a cups tree is included and the match generation is no longer by random after the first round (duriel)
