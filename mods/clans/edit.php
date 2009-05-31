@@ -11,6 +11,9 @@ settype($clans_id,'integer');
 $op_clans = cs_sql_option(__FILE__,'clans');
 $img_filetypes = array('gif','jpg','png');
 
+$users_nick = '';
+$cs_clans['users_id'] = 0;
+
 if(isset($_POST['submit'])) {
   $cs_clans['clans_name'] = $_POST['clans_name'];
   $cs_clans['clans_short'] = $_POST['clans_short'];
@@ -24,10 +27,18 @@ if(isset($_POST['submit'])) {
   
   $cs_clans['clans_picture'] = empty($_POST['clans_picture']) ? $picture['clans_picture'] : $_POST['clans_picture'];
   $cs_clans['clans_pwd'] = $_POST['clans_pwd'];
-  $cs_clans['users_id'] = $_POST['users_id'];
+
+  $users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
 
   $error = 0;
   $errormsg = '';
+
+  $where = "users_nick = '" . cs_sql_escape($users_nick) . "'";
+  $users_data = cs_sql_select(__FILE__, 'users', 'users_id', $where);
+  if(empty($users_data['users_id']))
+    $users_nick = '';
+  else
+    $cs_clans['users_id'] = $users_data['users_id'];
 
   if(isset($_POST['delete'])) {
     cs_unlink('clans', $cs_clans['clans_picture']);
@@ -107,6 +118,8 @@ if(!empty($search)) {
 else {
   $cells = 'clans_name, clans_short, clans_tag, clans_tagpos, clans_country, clans_url, clans_since, clans_pwd, clans_picture, users_id';
   $cs_clans = cs_sql_select(__FILE__,'clans',$cells,"clans_id = '" . $clans_id . "'");
+  $cs_users = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . (int) $cs_clans['users_id']);
+  $users_nick = $cs_users['users_nick'];
 }
 
 if(!isset($_POST['submit'])) {
@@ -153,24 +166,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['clans']['since'] = cs_dateselect('since','date',$cs_clans['clans_since']);
   $data['clans']['password'] = $cs_clans['clans_pwd'];
 
-  $users_data = cs_sql_select(__FILE__,'users','users_nick,users_id',0,'users_nick',0,0);
-  $users_data_loop = count($users_data);
-  
-  if(empty($users_data_loop)) {
-    $data['users'] = '';
-  }
-
-  for($run=0; $run<$users_data_loop; $run++) {
-    $data['users'][$run]['id'] = $users_data[$run]['users_id'];
-    $data['users'][$run]['name'] = $users_data[$run]['users_nick'];
-  
-  if($cs_clans['users_id'] == $users_data[$run]['users_id']) {
-      $data['users'][$run]['select'] = 'selected="selected"';
-    }
-    else {
-      $data['users'][$run]['select'] = '';
-    }
-  }
+  $data['users']['nick'] = $users_nick;
   
   if(empty($cs_clans['clans_picture'])) {
     $data['clans']['pic'] = $cs_lang['nopic'];

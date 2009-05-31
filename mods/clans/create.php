@@ -8,6 +8,9 @@ $files = cs_files();
 $op_clans = cs_sql_option(__FILE__,'clans');
 $img_filetypes = array('gif','jpg','png');
 
+$users_nick = '';
+$cs_clans['users_id'] = 0;
+
 if(isset($_POST['submit'])) {
 	
   $cs_clans['clans_name'] = $_POST['clans_name'];
@@ -18,10 +21,18 @@ if(isset($_POST['submit'])) {
   $cs_clans['clans_url'] = $_POST['clans_url'];
   $cs_clans['clans_since'] = cs_datepost('since','date');
   $cs_clans['clans_pwd'] = $_POST['clans_pwd'];
-  $cs_clans['users_id'] = $_POST['users_id'];
+
+  $users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
 
   $error = 0;
   $errormsg = '';
+
+  $where = "users_nick = '" . cs_sql_escape($users_nick) . "'";
+  $users_data = cs_sql_select(__FILE__, 'users', 'users_id', $where);
+  if(empty($users_data['users_id']))
+    $users_nick = '';
+  else
+    $cs_clans['users_id'] = $users_data['users_id'];
   
   if (!empty($files['picture']['tmp_name'])) {
 	  $img_size = getimagesize($files['picture']['tmp_name']);
@@ -69,102 +80,92 @@ if(isset($_POST['submit'])) {
   }
 }
 else {
-    $cs_clans['clans_name'] = '';
-    $cs_clans['clans_short'] = '';
-    $cs_clans['clans_tag'] = '';
-    $cs_clans['clans_tagpos'] = 0;
-    $cs_clans['clans_country'] = 'fam';
-    $cs_clans['clans_url'] = '';
-    
-    $cs_clans['clans_since'] = cs_date('unix',cs_time(),0,1,'Y-m-d');
-    $cs_clans['clans_pwd'] = '';
-    $cs_clans['users_id'] = 0;
+  $cs_clans['clans_name'] = '';
+  $cs_clans['clans_short'] = '';
+  $cs_clans['clans_tag'] = '';
+  $cs_clans['clans_tagpos'] = 0;
+  $cs_clans['clans_country'] = 'fam';
+  $cs_clans['clans_url'] = '';
   
-    if(!empty($_GET['fightus'])) {
-      $fightus_where = "fightus_id = '" . cs_sql_escape($_GET['fightus']) . "'";
-      $cs_fightus = cs_sql_select(__FILE__,'fightus','*',$fightus_where);
-      if(!empty($cs_fightus)) {
-          $cs_clans['clans_name'] = $cs_fightus['fightus_clan'];
-          $cs_clans['clans_short'] = $cs_fightus['fightus_short'];
-          $cs_clans['clans_country'] = $cs_fightus['fightus_country'];
-          $cs_clans['clans_url'] = $cs_fightus['fightus_url'];
-      }
+  $cs_clans['clans_since'] = cs_date('unix',cs_time(),0,1,'Y-m-d');
+  $cs_clans['clans_pwd'] = '';
+
+  if(!empty($_GET['fightus'])) {
+    $fightus_where = "fightus_id = '" . cs_sql_escape($_GET['fightus']) . "'";
+    $cs_fightus = cs_sql_select(__FILE__,'fightus','*',$fightus_where);
+    if(!empty($cs_fightus)) {
+        $cs_clans['clans_name'] = $cs_fightus['fightus_clan'];
+        $cs_clans['clans_short'] = $cs_fightus['fightus_short'];
+        $cs_clans['clans_country'] = $cs_fightus['fightus_country'];
+        $cs_clans['clans_url'] = $cs_fightus['fightus_url'];
     }
+  }
 }
 
 if(!isset($_POST['submit'])) {
-    $data['lang']['body'] = $cs_lang['fill_req'];
+  $data['lang']['body'] = $cs_lang['fill_req'];
 }
 if(!empty($error)) {
-    $data['lang']['body'] = $errormsg;
+  $data['lang']['body'] = $errormsg;
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
-  
-    $data['lang']['mod'] = $cs_lang[$op_clans['label']];
-    $data['clans']['name'] = $cs_clans['clans_name'];
-    $data['clans']['short'] = $cs_clans['clans_short'];
-    $data['clans']['tag'] = $cs_clans['clans_tag'];
-  
-    $el_id = 'country_1';
-    $onc = "document.getElementById('" . $el_id . "').src='" . $cs_main['php_self']['dirname'] . "symbols/countries/' + this.form.";
-    $onc .= "clans_country.options[this.form.clans_country.selectedIndex].value + '.png'";
-    $data['clans']['country'] = cs_html_select(1,'clans_country',"onchange=\"" . $onc . "\"");
-    include_once('lang/' . $account['users_lang'] . '/countries.php');
-    foreach ($cs_country AS $short => $full) {
-      $short == $cs_clans['clans_country'] ? $sel = 1 : $sel = 0;
-      $data['clans']['country'] .= cs_html_option($full,$short,$sel);
-    }
-  
-    $data['clans']['country'] .= cs_html_select(0) . ' ';
-    $data['clans']['country'] .= cs_html_img('symbols/countries/' . $cs_clans['clans_country'] . '.png',11,16,'id="' . $el_id . '"');
-    $data['clans']['url'] = $cs_clans['clans_url'];
-    $data['clans']['since'] = cs_dateselect('since','date',$cs_clans['clans_since']);
-    $data['clans']['pw'] = $cs_clans['clans_pwd'];
 
-    $users_data = cs_sql_select(__FILE__,'users','users_nick,users_id','users_active = "1" AND users_delete = "0"','users_nick',0,0);
-    $users_data_loop = count($users_data);
+  $data['lang']['mod'] = $cs_lang[$op_clans['label']];
+  $data['clans']['name'] = $cs_clans['clans_name'];
+  $data['clans']['short'] = $cs_clans['clans_short'];
+  $data['clans']['tag'] = $cs_clans['clans_tag'];
 
-    if(empty($users_data_loop)) {
-      $data['users'] = '';
-    }
+  $el_id = 'country_1';
+  $onc = "document.getElementById('" . $el_id . "').src='" . $cs_main['php_self']['dirname'] . "symbols/countries/' + this.form.";
+  $onc .= "clans_country.options[this.form.clans_country.selectedIndex].value + '.png'";
+  $data['clans']['country'] = cs_html_select(1,'clans_country',"onchange=\"" . $onc . "\"");
+  include_once('lang/' . $account['users_lang'] . '/countries.php');
+  foreach ($cs_country AS $short => $full) {
+    $short == $cs_clans['clans_country'] ? $sel = 1 : $sel = 0;
+    $data['clans']['country'] .= cs_html_option($full,$short,$sel);
+  }
 
-    for($run=0; $run<$users_data_loop; $run++) {
-      $data['users'][$run]['id'] = $users_data[$run]['users_id'];
-      $data['users'][$run]['name'] = $users_data[$run]['users_nick'];
-    }
+  $data['clans']['country'] .= cs_html_select(0) . ' ';
+  $data['clans']['country'] .= cs_html_img('symbols/countries/' . $cs_clans['clans_country'] . '.png',11,16,'id="' . $el_id . '"');
+  $data['clans']['url'] = $cs_clans['clans_url'];
+  $data['clans']['since'] = cs_dateselect('since','date',$cs_clans['clans_since']);
+  $data['clans']['pw'] = $cs_clans['clans_pwd'];
 
-    $matches[1] = $cs_lang['pic_infos'];
-    $return_types = '';
-    foreach($img_filetypes AS $add) {
-      $return_types .= empty($return_types) ? $add : ', ' . $add;
-    }
-    $matches[2] = $cs_lang['max_width'] . $op_clans['max_width'] . ' px' . cs_html_br(1);
-    $matches[2] .= $cs_lang['max_height'] . $op_clans['max_height'] . ' px' . cs_html_br(1);
-    $matches[2] .= $cs_lang['max_size'] . cs_filesize($op_clans['max_size']) . cs_html_br(1);
-    $matches[2] .= $cs_lang['filetypes'] . $return_types;
-    $data['clans']['clip'] = cs_abcode_clip($matches);
+  $data['users']['nick'] = $users_nick;
 
-    $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
-    echo cs_subtemplate(__FILE__,$data,'clans','create');
+  $matches[1] = $cs_lang['pic_infos'];
+  $return_types = '';
+  foreach($img_filetypes AS $add) {
+    $return_types .= empty($return_types) ? $add : ', ' . $add;
+  }
+  $matches[2] = $cs_lang['max_width'] . $op_clans['max_width'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_height'] . $op_clans['max_height'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . cs_filesize($op_clans['max_size']) . cs_html_br(1);
+  $matches[2] .= $cs_lang['filetypes'] . $return_types;
+  $data['clans']['clip'] = cs_abcode_clip($matches);
+
+  $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
+  echo cs_subtemplate(__FILE__,$data,'clans','create');
 }
 else {
-    $clans_cells = array_keys($cs_clans);
-    $clans_save = array_values($cs_clans);
-    cs_sql_insert(__FILE__,'clans',$clans_cells,$clans_save);
 
-    if(!empty($files['picture']['tmp_name'])) {
-      $where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
-      $getid = cs_sql_select(__FILE__,'clans','clans_id',$where);
-      $filename = 'picture-' . $getid['clans_id'] . '.' . $extension;
-      cs_upload('clans',$filename,$files['picture']['tmp_name']);
+  $clans_cells = array_keys($cs_clans);
+  $clans_save = array_values($cs_clans);
+  cs_sql_insert(__FILE__,'clans',$clans_cells,$clans_save);
 
-      $cs_clans2['clans_picture'] = $filename;
-      $clans2_cells = array_keys($cs_clans2);
-      $clans2_save = array_values($cs_clans2);      
-      cs_sql_update(__FILE__,'clans',$clans2_cells,$clans2_save,$getid['clans_id']);
-    }
-    if($account['access_wizard'] == 5) {
+  if(!empty($files['picture']['tmp_name'])) {
+    $where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
+    $getid = cs_sql_select(__FILE__,'clans','clans_id',$where);
+    $filename = 'picture-' . $getid['clans_id'] . '.' . $extension;
+    cs_upload('clans',$filename,$files['picture']['tmp_name']);
+
+    $cs_clans2['clans_picture'] = $filename;
+    $clans2_cells = array_keys($cs_clans2);
+    $clans2_save = array_values($cs_clans2);      
+    cs_sql_update(__FILE__,'clans',$clans2_cells,$clans2_save,$getid['clans_id']);
+  }
+  if($account['access_wizard'] == 5) {
     cs_redirect($cs_lang['create_done'],'clans','manage');
   }
   else {
