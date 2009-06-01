@@ -119,7 +119,8 @@ function cs_cupmatches_fix ($cupmatches, $round) {
 	
 	for ($i = 0; $i < $count; $i++) {
 		
-		if ($cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['team1_id'] &&
+		if (!empty($cupmatches[$round][$i]['cupmatches_winner']) && 
+		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['team1_id'] &&
 		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['team2_id']) {
 		    	$key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'team1_id');
 		    	if (!$key) $key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'team2_id');
@@ -130,7 +131,7 @@ function cs_cupmatches_fix ($cupmatches, $round) {
 		}
 		
 	}
-
+	
 	$fixed = array();
 	$arr1 = array_keys($fixes); $arr2 = array_keys($cupmatches[$round]);
 	$count = max( max($arr1), max ($arr2));
@@ -163,7 +164,6 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 	$i2 = $i + 1;
 	
 	$round_2 = floor($round / 2);
-	//echo $round . ": " . $run . " - ";
 
 	if (!empty($round)) {
 		$currheight += (pow(2, $round - 1) - 0.5) * $entityheight;

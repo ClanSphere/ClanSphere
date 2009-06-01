@@ -100,6 +100,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 	$match = cs_sql_select(__FILE__,'cupmatches','cups_id, cupmatches_round, cupmatches_loserbracket',"cupmatches_id = '" . $cupmatches_id . "'");
 	$cups_id = $match['cups_id'];
 	$round = $match['cupmatches_round'];
+	$loserbracket = empty($match['cupmatches_loserbracket']) ? 0 : 1;
 	
 	if ($round == 1) return false;
 	
@@ -138,10 +139,10 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 		for ($r = 1; $r <= $round_now; $r++) {
 			$roundsel = $rounds - $r;
 			
-			$cupmatches[$r] = cs_sql_select(__FILE__, 'cupmatches', $cells, $where . $roundsel . '"',0,0,0);
+			$cupmatches[$r] = cs_sql_select(__FILE__, 'cupmatches', $cells, $where . $roundsel . '" AND cupmatches_loserbracket = "' . $loserbracket . '"',0,0,0);
 			$cupmatches[$r] = cs_cupmatches_fix ($cupmatches, $r);
 		}
-		
+
 		$cupmatches = $cupmatches[$round_now]; // Delete unnecessary matches
 		
 		foreach ($cupmatches AS $key => $values) {
@@ -165,16 +166,17 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 	
 	if (empty($opponent['cupmatches_accepted1']) || empty($opponent['cupmatches_accepted2']))
 		return false;
-		
+	
 	$newmatch = array();
 	$newmatch['cups_id'] = $cups_id;
 	$newmatch['squad1_id'] = $winner;
 	$newmatch['squad2_id'] = $opponent['cupmatches_winner'];
 	$newmatch['cupmatches_round'] = $round - 1;
+	$newmatch['cupmatches_loserbracket'] = $match['cupmatches_loserbracket'];
 	
 	cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
 	
-	if (!empty($cup['cups_brackets'])) {
+	if (!empty($cup['cups_brackets']) && $round == $rounds) { // If it was the first round, now create a match for the losers too
 		
 		$newmatch = array();
 		$newmatch['cups_id'] = $cups_id;
@@ -197,20 +199,28 @@ function cs_cupmatches_fix ($cupmatches, $round) {
 	
 	for ($i = 0; $i < $count; $i++) {
 		
-		if ($cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['squad1_id'] &&
+		if (!empty($cupmatches[$round][$i]['cupmatches_winner']) && 
+		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['squad1_id'] &&
 		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['squad2_id']) {
 		    	$key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'squad1_id');
 		    	if (!$key) $key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'squad2_id');
-		    	$key = ($key + 1) / 2 - 1;
+		    	$key = ceil(($key + 1) / 2) - 1;
 				$fixes[$key] = $cupmatches[$round][$i];
 				unset($cupmatches[$round][$i]);
+				
 		}
+		
 	}
 
 	$fixed = array();
+	$max1 = empty($fixes) ? 0 : max(array_keys($fixes));
+	$max2 = empty($cupmatches[$round]) ? 0 : max(array_keys($cupmatches[$round]));
+	$count = max($max1, $max2);
 
-	for ($i = 0; $i < $count; $i++) {
-		$fixed[$i] = empty($fixes) ? $cupmatches[$round][$i] : $fixes[$i];
+	for ($i = 0; $i <= $count; $i++) {
+		
+		$fixed[$i] = empty($fixes[$i]) ? $cupmatches[$round][$i] : $fixes[$i];
+		
 	}
 	
 	return $fixed;
