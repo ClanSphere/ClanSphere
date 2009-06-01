@@ -23,13 +23,11 @@ if(isset($_POST['submit'])) {
 
   $error = '';
   
-  if (!empty($_POST['new_clan'])) {
-    if (!empty($clans_pwd)) {
-      $cells = array('clans_name', 'clans_short','clans_pwd');
-      $values = array($_POST['new_clan'], $_POST['new_clan'], $clans_pwd);
-      cs_sql_insert(__FILE__,'clans',$cells,$values);
-      $cs_squads['clans_id'] = cs_sql_insertid(__FILE__);
-    }
+  if (!empty($_POST['new_clan']) && !empty($clans_pwd)) {
+    $cells = array('clans_name', 'clans_short','clans_pwd', 'users_id');
+    $values = array($_POST['new_clan'], $_POST['new_clan'], $clans_pwd, $account['users_id']);
+    cs_sql_insert(__FILE__,'clans',$cells,$values);
+    $cs_squads['clans_id'] = cs_sql_insertid(__FILE__);
   }
 
   $img_size = false;
