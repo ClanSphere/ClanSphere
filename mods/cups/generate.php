@@ -97,7 +97,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 	
 	settype($winner, 'integer');
 	
-	$match = cs_sql_select(__FILE__,'cupmatches','cups_id, cupmatches_round',"cupmatches_id = '" . $cupmatches_id . "'");
+	$match = cs_sql_select(__FILE__,'cupmatches','cups_id, cupmatches_round, cupmatches_loserbracket',"cupmatches_id = '" . $cupmatches_id . "'");
 	$cups_id = $match['cups_id'];
 	$round = $match['cupmatches_round'];
 	
