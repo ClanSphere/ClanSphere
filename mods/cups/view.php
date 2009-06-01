@@ -69,6 +69,12 @@ if (empty($matchsel['cupmatches_winner'])) {
   }
 }
 
+$data['cup']['extended'] = '-';
+
+if (empty($login['mode'])) {
+  $data['cup']['extended'] = cs_link($cs_lang['login'],'users','login');
+}
+
 if ($time_now > $data['cup']['cups_start'])
   $data['cup']['extended'] = $cs_lang['cup_started'];
 elseif ($data['cup']['reg'] < $data['cup']['cups_teams']) {

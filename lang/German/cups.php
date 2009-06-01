@@ -149,6 +149,7 @@ $cs_lang['cup_squads'] = 'Teilnehmende Squads';
 $cs_lang['members'] = 'Mitglieder';
 $cs_lang['players'] = 'Spieler';
 $cs_lang['player'] = 'Spieler';
+$cs_lang['login'] = 'Einloggen';
 
 // Teams
 $cs_lang['join'] = 'Anmeldung';
