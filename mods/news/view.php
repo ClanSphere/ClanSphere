@@ -4,12 +4,13 @@
 
 $cs_lang = cs_translate('news');
 
-$cs_get = cs_get('id');
+$cs_get = cs_get('id', 'where');
 
 $cs_option = cs_sql_option(__FILE__, 'news');
 $abcode = explode(",", $cs_option['abcode']);
 
 $cs_news_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+if (!empty($cs_get['where'])) $cs_news_id = $cs_get['where'];
 
 $from = 'news nws INNER JOIN {pre}_users usr ON nws.users_id = usr.users_id INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
 $select = 'nws.news_id AS news_id, nws.news_headline AS news_headline, nws.news_time AS news_time, nws.news_text AS news_text, nws.news_close AS news_close, nws.news_public AS news_public, nws.news_pictures as news_pictures, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, nws.categories_id AS categories_id, cat.categories_access AS categories_access, cat.categories_picture AS categories_picture, nws.news_mirror AS news_mirror, nws.news_mirror_name AS news_mirror_name, nws.news_readmore AS news_readmore, nws.news_readmore_active AS news_readmore_active';
