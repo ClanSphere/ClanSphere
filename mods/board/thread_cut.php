@@ -99,6 +99,28 @@ if (!empty($_POST['submit']) && empty($error)) {
   
   cs_sql_update(__FILE__,'threads',$cells,$values,$old_threads_id);
   
+  // Update board information
+  
+  include_once 'mods/board/repair.php';
+  
+  $board_id = (int) $_POST['board_id'];
+  
+  cs_board_comments($board_id);
+  cs_board_last($board_id);
+  cs_board_threads($board_id);
+  
+  $thread = cs_sql_select(__FILE__, 'threads', 'board_id', 'threads_id = "' . $old_threads_id . '"');
+  
+  if ($thread['board_id'] != $board_id) {
+  	
+  	$board_id = $thread['board_id'];
+  	
+  	cs_board_comments($board_id);
+    cs_board_last($board_id);
+    cs_board_threads($board_id);
+  
+  }  
+  
   cs_redirect($cs_lang['success'] . ' ' . cs_link($cs_lang['to_old_thread'],'board','thread','where=' . $comment['comments_fid']),'board','thread','where=' . $threads_id);
   
 } else {
