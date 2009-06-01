@@ -218,7 +218,7 @@ function forms_to_ajax() {
       if(active_upload_count==0) {
         for (var i = 0; i < parent.frames.length; ++i )
           if ( parent.frames[i].FCK )
-            parent.frames[i].FCK.LinkedField.value = escape(parent.frames[i].FCK.GetData());
+            parent.frames[i].FCK.LinkedField.value = parent.frames[i].FCK.GetData();
         FCKeditorAPI = null;
         document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
         cs_ajax_getcontent(this.action.replace(/([a-zA-Z0-9\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_to_string(this), 1);
