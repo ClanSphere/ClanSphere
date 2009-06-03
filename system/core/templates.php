@@ -331,6 +331,8 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   if(!empty($cs_main['page_title']))
     $title .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
   $cs_temp_get = str_replace('{func:title}', $title, $cs_temp_get);
+  // Title2 sets the Title without the current page
+  $cs_temp_get = str_replace('{func:title2}', htmlentities($cs_main['def_title']), $cs_temp_get);
   $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
   $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
