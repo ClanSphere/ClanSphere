@@ -55,6 +55,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/default.jpg';
 						}
 						$data['servers'][$run]['servers_ip'] = $cs_servers[$run]['servers_ip'];
+						$data['servers'][$run]['servers_port'] = $cs_servers[$run]['servers_port'];
 						/* if TS View, use teamspeak:// */
 						preg_match_all("/Teamspeak/", $data['servers'][$run]['gametype'], $teamspeak);
 						if(in_array("Teamspeak", $teamspeak[0])) {
@@ -71,7 +72,8 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 			}
 		}
 		echo cs_subtemplate(__FILE__,$data,'servers','navlist');
-	} else {
+	}
+  else {
 		//Old PHP Version
 		echo $cs_lang['php'];
 	}
