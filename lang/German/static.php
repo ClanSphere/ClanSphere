@@ -1,4 +1,7 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang['mod_name']  = 'Statische Seiten';
 $cs_lang['mod_text']  = 'Verwaltung eigener Unterseiten';
 $cs_lang['head_create'] = 'Eintragen';
@@ -19,9 +22,9 @@ $cs_lang['id'] = '#ID';
 $cs_lang['all'] = 'Alle';
 $cs_lang['no_title'] = '- Es wurde kein Titel eingegeben.';
 $cs_lang['edit_done'] = 'Eintrag erfolgreich bearbeitet.';
-$cs_lang['lev_0'] = 'Alle';
-$cs_lang['lev_1'] = 'Besucher =>';
-$cs_lang['lev_2'] = 'Benutzer =>';
-$cs_lang['lev_3'] = 'Mitglieder =>';
-$cs_lang['lev_4'] = 'Organisatoren =>';
-$cs_lang['lev_5'] = 'Webmaster';
+$cs_lang['lev_0'] = 'Gesperrt';
+$cs_lang['lev_1'] = 'Lesen';
+$cs_lang['lev_2'] = 'Erweitertes Lesen';
+$cs_lang['lev_3'] = 'mit Erstellen';
+$cs_lang['lev_4'] = 'mit Bearbeiten';
+$cs_lang['lev_5'] = 'mit Entfernen'; 

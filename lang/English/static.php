@@ -1,4 +1,7 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang['mod_name']  = 'Static Pages';
 $cs_lang['mod_text']  = 'Manage static pages online';
 $cs_lang['head_create'] = 'Create';
@@ -19,9 +22,9 @@ $cs_lang['id'] = '#ID';
 $cs_lang['all'] = 'All';
 $cs_lang['no_title'] = '- Please enter a title';
 $cs_lang['edit_done'] = 'Successfully edited';
-$cs_lang['lev_0'] = 'All';
-$cs_lang['lev_1'] = 'Visitor =>';
-$cs_lang['lev_2'] = 'User =>';
-$cs_lang['lev_3'] = 'Member =>';
-$cs_lang['lev_4'] = 'Organisator =>';
-$cs_lang['lev_5'] = 'Webmaster';
+$cs_lang['lev_0'] = 'Disabled';
+$cs_lang['lev_1'] = 'Read';
+$cs_lang['lev_2'] = 'Extended Reading';
+$cs_lang['lev_3'] = 'Create';
+$cs_lang['lev_4'] = 'Edit';
+$cs_lang['lev_5'] = 'Remove';
