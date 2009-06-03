@@ -48,11 +48,11 @@ $cs_lang['restrict_comments']    = 'Restrict comments';
 $cs_lang['more']    = 'More';
 $cs_lang['add_election'] = 'Add a vote';
 
-$cs_lang['lev_0'] = 'All';
-$cs_lang['lev_1'] = 'Visitors =>';
-$cs_lang['lev_2'] = 'Community =>';
-$cs_lang['lev_3'] = 'Members =>';
-$cs_lang['lev_4'] = 'Organisators =>';
-$cs_lang['lev_5'] = 'Webmaster';
+$cs_lang['lev_0'] = 'Disabled';
+$cs_lang['lev_1'] = 'Read';
+$cs_lang['lev_2'] = 'Extended Reading';
+$cs_lang['lev_3'] = 'Create';
+$cs_lang['lev_4'] = 'Edit';
+$cs_lang['lev_5'] = 'Remove';
 
 $cs_lang['several'] = 'Allow multi entries';

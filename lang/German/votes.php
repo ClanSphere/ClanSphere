@@ -30,7 +30,6 @@ $cs_lang['error_time']      = '- Es ist ein Fehler in der End Zeit aufgetreten. 
 $cs_lang['error_election']  = '- Sie m&uuml;ssen mindestens 2 Antworten angeben.';
 $cs_lang['error_question']  = '- Bitte eine Frage eingeben.';
 
-
 $cs_lang['current_vote']  = 'aktuelle Umfrage';
 $cs_lang['new_vote']      = 'Neue Umfrage';
 $cs_lang['votes_start']    = 'Start Datum';
@@ -49,11 +48,11 @@ $cs_lang['restrict_comments']    = 'Kommentare sperren';
 $cs_lang['more']    = 'Erweitert';
 $cs_lang['add_election'] = 'Antwort hinzuf&uuml;gen';
 
-$cs_lang['lev_0'] = 'Alle';
-$cs_lang['lev_1'] = 'Besucher =>';
-$cs_lang['lev_2'] = 'Benutzer =>';
-$cs_lang['lev_3'] = 'Mitglieder =>';
-$cs_lang['lev_4'] = 'Organisatoren =>';
-$cs_lang['lev_5'] = 'Webmaster';
+$cs_lang['lev_0'] = 'Gesperrt';
+$cs_lang['lev_1'] = 'Lesen';
+$cs_lang['lev_2'] = 'Erweitertes Lesen';
+$cs_lang['lev_3'] = 'mit Erstellen';
+$cs_lang['lev_4'] = 'mit Bearbeiten';
+$cs_lang['lev_5'] = 'mit Entfernen'; 
 
 $cs_lang['several'] = 'Mehrfachauswahl erlauben';
