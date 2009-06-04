@@ -13,7 +13,7 @@ include_once 'lang/' . $account['users_lang'] . '/countries.php';
 $squads_id = $_GET['id'];
 settype($squads_id,'integer');
 
-$data['lang']['mod'] = $cs_lang[$op_squads['label'].'s'];
+$data['lang']['mod_name'] = $cs_lang[$op_squads['label'].'s'];
 
 $select = 'sqd.games_id AS games_id, sqd.squads_name AS squads_name, cln.clans_name AS ';
 $select .= 'clans_name, cln.clans_tag AS clans_tag, cln.clans_tagpos AS clans_tagpos, ';
