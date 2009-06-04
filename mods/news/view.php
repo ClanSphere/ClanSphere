@@ -4,7 +4,7 @@
 
 $cs_lang = cs_translate('news');
 
-$cs_get = cs_get('id', 'where');
+$cs_get = cs_get('id,where');
 
 $cs_option = cs_sql_option(__FILE__, 'news');
 $abcode = explode(",", $cs_option['abcode']);
