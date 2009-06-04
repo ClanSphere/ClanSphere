@@ -8,11 +8,19 @@
     <td class="rightb">{head:pages} </td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3"> {lang:access}:
+    <td class="leftb" colspan="3">
       <form method="post" id="static_manage" action="{url:form}">
-        {head:dropdown}
+      <fieldset style="border: 0; padding: 0">
+        {lang:access}:
+        <select name="where">
+        {loop:access}
+          <option value="{access:level_id}" {access:selected}>{access:level_id} - {access:level_name}</option>
+        {stop:access}
+         </select>
         <input type="submit" name="submit" value="{lang:show}" />
-      </form></td>
+      </fieldset>
+      </form>
+    </td>
   </tr>
 </table>
 <br />
