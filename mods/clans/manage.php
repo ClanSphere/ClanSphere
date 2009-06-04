@@ -15,9 +15,8 @@ $cs_sort[4] = 'clans_short ASC';
 $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
-$data['lang']['mod'] = $cs_lang[$op_clans['label']];
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 $data['count']['all'] = cs_sql_count(__FILE__,'clans');
-$data['lang']['mod'] = $cs_lang[$op_clans['label']];
 $data['lang']['new_clan'] = $cs_lang['new_'.$op_clans['label']];
 $data['pages']['list'] = cs_pages('clans','manage',$data['count']['all'],$start,0,$sort);
 

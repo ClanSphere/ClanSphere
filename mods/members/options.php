@@ -20,7 +20,7 @@ if (!empty($_POST['submit'])) {
 $data = array();
 $data['op'] = cs_sql_option(__FILE__,'members');
 
-$data['lang']['mod'] = $cs_lang[$data['op']['label']];
+$data['lang']['mod_name'] = $cs_lang[$data['op']['label']];
 
 $data['select']['members_select'] = $data['op']['label'] == 'members' ? 'selected="selected"': '';
 $data['select']['memberemployees_select'] = $data['op']['label'] == 'employees' ? 'selected="selected"': '';

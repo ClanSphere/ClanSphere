@@ -14,7 +14,7 @@ settype($cs_clans_id,'integer');
 $where = "clans_id='" . $cs_clans_id . "'";  
 $cs_clan = cs_sql_select(__FILE__,'clans','*',$where);
 
-$data['lang']['mod'] = $cs_lang[$op_clans['label']];
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 $data['clans']['name'] = cs_secure($cs_clan['clans_name']);
 
 if(empty($cs_clan['clans_picture'])) {

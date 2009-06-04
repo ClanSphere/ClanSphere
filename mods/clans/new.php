@@ -95,7 +95,7 @@ else {
   }
 }
 
-$data['lang']['mod'] = $cs_lang[$op_clans['label']];
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 
 if(!isset($_POST['submit'])) {
   $data['lang']['body'] = $cs_lang['fill_req'];

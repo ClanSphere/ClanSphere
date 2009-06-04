@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
   $op_clans = cs_sql_option(__FILE__,'clans');
 	
   $data['lang']['getmsg'] = cs_getmsg();
-  $data['lang']['mod'] = $cs_lang[$op_clans['label']];
+  $data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
   
   $data['clans']['clan'] = $op_clans['label'] == 'clan' ? 'selected="selected"' : '';
   $data['clans']['association'] = $op_clans['label'] == 'association' ? 'selected="selected"' : '';

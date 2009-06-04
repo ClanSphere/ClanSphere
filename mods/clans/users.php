@@ -21,7 +21,7 @@ $order = $cs_sort[$sort];
 $cru = "users_id = '" . $where . "'";
 $clans_count = cs_sql_count(__FILE__,'members',$cru);
 
-$data['lang']['mod'] = $cs_lang[$op_clans['label']];
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 $data['lang']['addons'] = cs_addons('users','view',$where,'clans');
 $data['pages']['list'] = cs_pages('clans','users',$clans_count,$start,$where,$sort);
 

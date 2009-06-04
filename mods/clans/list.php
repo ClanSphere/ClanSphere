@@ -15,8 +15,7 @@ empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $clans_count = cs_sql_count(__FILE__,'clans');
 
-$data['lang']['mod'] = $cs_lang[$op_clans['label']];
-
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 
 $data['lang']['all'] = $cs_lang['total'].': ';
 $data['lang']['count'] = $clans_count;
@@ -39,5 +38,5 @@ for($run=0; $run<$clans_loop; $run++) {
   $data['clans'][$run]['name'] = cs_link(cs_secure($cs_clans[$run]['clans_name']),'clans','view','id=' . $cs_clans[$run]['clans_id']);
   $data['clans'][$run]['short'] = cs_secure($cs_clans[$run]['clans_short']);
 }
-
+print_R($data);
 echo cs_subtemplate(__FILE__,$data,'clans','list');

@@ -15,7 +15,7 @@ $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $data['lang']['getmsg'] = cs_getmsg();
-$data['lang']['mod'] = $cs_lang[$op_clans['label']];
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 
 $own = "users_id = '" . $account['users_id'] . "'";
 $clans_count = cs_sql_count(__FILE__,'clans',$own);

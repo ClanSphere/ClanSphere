@@ -39,7 +39,7 @@ if(isset($_GET['cancel']) OR $clans_id == 1)
   cs_redirect($cs_lang['del_false'], 'clans');
 
 if(!empty($clans_form)) {
-  $data['lang']['mod'] = $cs_lang[$op_clans['label']];
+  $data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
   $data['lang']['body'] = sprintf($cs_lang['del_rly'],$clans_id);
   
   $data['lang']['content'] = cs_link($cs_lang['confirm'],'clans','remove','id=' . $clans_id . '&amp;agree');

@@ -34,7 +34,7 @@ if(!empty($_GET['del_id'])) {
   }
 }
 
-$data['lang']['mod'] = $cs_lang[$op_members['label']];
+$data['lang']['mod_name'] = $cs_lang[$op_members['label']];
 $data['url']['form'] = cs_url('members','center');
 $data['lang']['team'] = $cs_lang[$op_squads['label']];
 
