@@ -13,7 +13,7 @@ if (!empty($cs_post['where']))  $cat_id = $cs_post['where'];
 $cs_option = cs_sql_option(__FILE__, 'news');
 $abcode = explode(",", $cs_option['abcode']);
 
-$where = "nws.news_public > 0 AND cat.categories_access <= " . $account['access_news'];
+$where = "nws.news_public = 1 AND cat.categories_access <= " . $account['access_news'];
 if(!empty($cat_id)) {
   $where .= " AND cat.categories_id = '" . $cat_id . "'";
 }
