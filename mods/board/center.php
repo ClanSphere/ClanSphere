@@ -25,7 +25,7 @@ if(empty($count_abo)) {
 }
 
 for($run = 0; $run < $count_abo; $run++) {
-  $com_count = cs_sql_count($file,'comments','comments_fid=' .$cs_abo[$run]['threads_id']);
+  $com_count = cs_sql_count(__FILE__, 'comments', "comments_mod = 'board' AND comments_fid = " . $cs_abo[$run]['threads_id']);
   
   $start = floor($com_count / $account['users_limit']) * $account['users_limit'];
   $more = 'where=' . $cs_abo[$run]['threads_id'] . '&amp;start=' . $start . '#' . $com_count;
