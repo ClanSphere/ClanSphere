@@ -45,6 +45,7 @@ $cs_lang['error_receiver']  = '- Please check receiver datas.';
 $cs_lang['error_sender']  = '- Please check senders datas.';
 $cs_lang['error_text']  = '- Please check title and/or text.';
 $cs_lang['error_zip']  = 'Zip archive could not be opened.';
+$cs_lang['email_false'] = '- Please provide a valid E-Mail adress.';
 $cs_lang['error1']  = 'The picture you are about to see does not exist or is inaccessible for you.';
 $cs_lang['ext_error']  = '- Unknown filetype';
 $cs_lang['filesize']  = 'Filesize';

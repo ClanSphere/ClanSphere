@@ -96,6 +96,7 @@ $cs_lang['no_winner'] = '- No winner chosen';
 
 $cs_lang['result_successful'] = 'Result successfully entered.';
 $cs_lang['new_round'] = 'A new round of the cup started.';
+$cs_lang['new_match'] = 'Generated a new match, too.';
 
 // Accept
 $cs_lang['really_confirm'] = 'Really confirm the result? ';
@@ -122,6 +123,7 @@ $cs_lang['no_matches'] = 'No matches found';
 $cs_lang['bracket'] = 'Bracket';
 $cs_lang['winners'] = 'Winner';
 $cs_lang['losers'] = 'Loser';
+$cs_lang['cupstree'] = 'Cuptree';
 
 // View
 $cs_lang['details'] = 'Details';
