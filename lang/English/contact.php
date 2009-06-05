@@ -12,7 +12,9 @@ $cs_lang['task_done'] = 'Mark task as done';
 $cs_lang['body_options'] = 'Administration of settings in the module.';
 $cs_lang['def_org'] = 'E-Mail Prefix and Identifier';
 $cs_lang['def_mail'] = 'Default E-Mail';
-
+$cs_lang['empty_uses_default'] = 'Leave blank to keep PHP default';
+$cs_lang['smtp_host'] = 'SMTP Host';
+$cs_lang['smtp_port'] = 'SMTP Port';
 
 // manage.php
 $cs_lang['head_manage'] = 'Manage all contact information here';

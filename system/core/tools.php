@@ -347,6 +347,12 @@ function cs_mail($email,$title,$message,$from = 0,$type = 0) {
     $message = html_entity_decode($message, ENT_NOQUOTES, $cs_main['charset']);
   }
 
+  if(!empty($cs_contact['smtp_host'])) {
+    @ini_set('SMTP', $cs_contact['smtp_host']);
+    @ini_set('smtp_port', $cs_contact['smtp_port']);
+  }
+  @ini_set('sendmail_from', $from);
+
   $result = mail($email,$subject,$message,$headers) ? TRUE : FALSE;
   return $result;
 }

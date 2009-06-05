@@ -21,6 +21,18 @@
       </td>
     </tr>
     <tr>
+      <td class="leftc">{icon:nfs_unmount} {lang:smtp_host}</td>
+      <td class="leftb">
+        {lang:empty_uses_default}<br />
+        <input type="text" name="smtp_host" value="{options:smtp_host}" maxlength="80" size="40" />
+      </td>
+    </tr>
+    <tr>
+      <td class="leftc">{icon:pipe} {lang:smtp_port}</td>
+      <td class="leftb"><input type="text" name="smtp_port" value="{options:smtp_port}" maxlength="20" size="20" />
+      </td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="submit" name="submit" value="{lang:edit}" /></td>
     </tr>

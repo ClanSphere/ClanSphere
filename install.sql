@@ -791,6 +791,8 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('co
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_size', '204800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'def_org', 'yourdomain.com');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'def_mail', 'noreply@yourdomain.com');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_host', '');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_port', 25);
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'last_archiv_day', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'last_archiv', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'width', '90');
