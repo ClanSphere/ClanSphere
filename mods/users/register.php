@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('users');
 
 $op_users = cs_sql_option(__FILE__,'users');
+$cs_contact = cs_sql_option(__FILE__, 'contact');
 
 require_once('mods/users/functions.php');
 
@@ -161,7 +162,7 @@ if(empty($op_users['register'])) {
       $content .= 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
       $content .= $cs_lang['mail_key_link2'] . $register['users_key'] . $cs_lang['mail_key_email'] . $register['email'];
     }
-    $content .= $cs_lang['mail_reg_ask'] . $cs_main['def_mail'] . $cs_lang['mail_reg_end'];
+    $content .= $cs_lang['mail_reg_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_reg_end'];
     cs_mail($register['email'],$cs_lang['mail_reg_head'],$content);
   }
 

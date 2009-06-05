@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('users');
 
 include_once('lang/' . $account['users_lang'] . '/countries.php');
+
 $data = array();
 $users_id = (int)$_REQUEST['id'];
 
@@ -30,7 +31,7 @@ if(isset($_POST['sendpw'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
   $content .= sprintf($cs_lang['mail_admin_sendpw_url'], $url);
   $content .= $cs_lang['mail_admin_sendpw_end'] . $cs_main['def_title'];
-  cs_mail($_POST['data']['users_email'],$cs_main['def_title'] . ' ' . $cs_lang['pwd_new'],$content,$cs_main['def_mail']);
+  cs_mail($_POST['data']['users_email'],$cs_main['def_title'] . ' ' . $cs_lang['pwd_new'],$content);
   #cs_redirect($cs_lang['mail_admin_sendpw_ok'], 'users');
 }
 

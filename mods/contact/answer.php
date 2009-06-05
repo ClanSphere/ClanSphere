@@ -14,8 +14,9 @@ settype($id,'integer');
 $cs_answer_user = cs_sql_select(__FILE__,'users','users_email, users_name, users_surname',"users_id = '" . $account['users_id'] . "'");
 $cs_answer_mail = cs_sql_select(__FILE__,'mail','mail_name, mail_email, mail_time, mail_message',"mail_id = '" . $id . "'");
 
+$cs_contact = cs_sql_option(__FILE__, 'contact');
 if(empty($cs_answer_user['users_email'])){
-  $from = $cs_main['def_mail'];
+  $from = $cs_contact['def_mail'];
 } else {
   $from = $cs_answer_user['users_email'];
 }

@@ -1,10 +1,17 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net 
+// $Id$
 
 $cs_lang['mod_name']           = 'Kontakt';
 $cs_lang['mod_text']      = 'Kontakt zu den Webmastern aufnehmen';
 
 $cs_lang['wizard'] = 'Assistent';
 $cs_lang['task_done'] = 'Aufgabe erledigt markieren';
+
+// options.php
+$cs_lang['body_options']  = 'Verwaltung der Einstellungen im Modul.';
+$cs_lang['def_org'] = 'E-Mail Pr&auml;fix und Bezeichner';
+$cs_lang['def_mail'] = 'Standard E-Mail';
 
 // manage.php
 $cs_lang['head_manage'] = 'Hier haben Sie Zugriff auf alle Kontaktoptionen';

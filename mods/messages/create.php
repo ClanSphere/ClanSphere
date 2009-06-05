@@ -162,11 +162,12 @@ if (isset($_POST['submit']) && empty($messages_error)) {
     		$cs_lang = cs_translate('messages');
     	}
     	
+      $cs_contact = cs_sql_option(__FILE__, 'contact');
       $email = $cs_messages[$run]['users_email'];
       $title = $cs_lang['mail_titel'];
       $message = $cs_lang['mail_text'] . $cs_messages[$run]['users_nick'];
       $message .= $cs_lang['mail_text_2'] . $cs_main['def_title'] . $cs_lang['mail_text_3'];
-      $message .= $cs_main['def_org'] . $cs_lang['mail_text_4'];
+      $message .= $cs_contact['def_org'] . $cs_lang['mail_text_4'];
       
       cs_mail($email,$title,$message);
       

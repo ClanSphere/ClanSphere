@@ -332,8 +332,9 @@ function cs_link($name,$mod,$action = 'list',$more = 0,$class = 0, $title = 0) {
 function cs_mail($email,$title,$message,$from = 0,$type = 0) {
 
   global $cs_main;
-  $subject = $cs_main['def_org'] . ' - ' . $title;
-  $from = empty($from) ? $cs_main['def_mail'] : $from;
+  $cs_contact = cs_sql_option(__FILE__, 'contact');
+  $subject = $cs_contact['def_org'] . ' - ' . $title;
+  $from = empty($from) ? $cs_contact['def_mail'] : $from;
   $type = empty($type) ? 'text/plain' : $type;
   $headers = "From: " . $from . "\r\n";
   $headers .= "Content-type: " . $type . "; charset=" . $cs_main['charset'];

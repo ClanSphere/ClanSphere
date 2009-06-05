@@ -771,8 +771,6 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_path', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_timezone', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_dstime', '');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_org', 'yourdomain.com');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_mail', 'noreply@yourdomain.com');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_parameters', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_flood', '30');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'img_path', 'crystal_project');
@@ -791,6 +789,8 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('co
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_width', '800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_height', '600');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_size', '204800');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'def_org', 'yourdomain.com');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'def_mail', 'noreply@yourdomain.com');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'last_archiv_day', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'last_archiv', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'width', '90');

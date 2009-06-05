@@ -11,3 +11,4 @@ $axx_file['view']      = 3;
 $axx_file['answer']    = 4;
 $axx_file['delete']    = 5; 
 $axx_file['imp_edit']  = 5;
+$axx_file['options']   = 5;

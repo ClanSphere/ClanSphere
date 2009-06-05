@@ -40,8 +40,6 @@ if(isset($_POST['submit'])) {
   $save['def_timezone'] = (int) $_POST['def_timezone'];
   $save['def_dstime'] = $_POST['def_dstime'];
   $save['def_flood'] = $_POST['def_flood'];
-  $save['def_org'] = $_POST['def_org'];
-  $save['def_mail'] = $_POST['def_mail'];
   $save['img_path'] = $_POST['img_path'];
   $save['img_ext'] = $_POST['img_ext'];
   $save['def_admin'] = $_POST['def_admin'];
@@ -120,8 +118,6 @@ else {
   $data['options']['time_auto'] = $cs_main['def_dstime'] == '0' ? 'selected="selected"' : '';
 
   $data['options']['def_flood'] = $cs_main['def_flood'];
-  $data['options']['def_org'] = $cs_main['def_org'];
-  $data['options']['def_mail'] = $cs_main['def_mail'];
   $data['options']['img_path'] = $cs_main['img_path'];
   $data['options']['img_ext'] = $cs_main['img_ext'];
   $data['options']['cellspacing'] = $cs_main['cellspacing'];

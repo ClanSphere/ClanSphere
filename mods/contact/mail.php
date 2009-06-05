@@ -15,8 +15,9 @@ settype($id,'integer');
 $cs_answer_user = cs_sql_select(__FILE__,'users','users_name, users_surname',"users_id = '" . $account['users_id'] . "'");
 $cs_answer_mail = cs_sql_select(__FILE__,'mail','mail_name, mail_email, mail_time',"mail_id = '" . $id . "'");
 
+$cs_contact = cs_sql_option(__FILE__, 'contact');
 if(empty($cs_answer_user['users_email'])){
-  $from = $cs_main['def_mail'];
+  $from = $cs_contact['def_mail'];
 } else {
   $from = $cs_answer_user['users_email'];
 }
@@ -125,7 +126,7 @@ else {
   $mail_save = array($mail['name'],cs_time(),$_SERVER['REMOTE_ADDR'],$mail['email'],$mail['icq'],$mail['msn'],$mail['firm'],$mail['categories_id'],$mail['why'],$mail['text']);
   cs_sql_insert(__FILE__,'mail',$mail_cells,$mail_save);
   
-  cs_mail($cs_main['def_mail'],$mail['why'],$message,$mail['email']);
+  cs_mail($cs_contact['def_mail'],$mail['why'],$message,$mail['email']);
 
 }
 

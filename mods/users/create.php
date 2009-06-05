@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('users');
 
 $op_users = cs_sql_option(__FILE__,'users');
+$cs_contact = cs_sql_option(__FILE__, 'contact');
 
 require_once('mods/users/functions.php');
 
@@ -175,7 +176,7 @@ else {
       $content .= $cs_lang['mail_reg_password'] . $cs_lang['mail_reg_password2'];
     }
     $content .= $cs_lang['mail_reg_ip'] . $_SERVER['REMOTE_ADDR'];
-    $content .= $cs_lang['mail_reg_ask'] . $cs_main['def_mail'] . $cs_lang['mail_reg_end'];
+    $content .= $cs_lang['mail_reg_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_reg_end'];
 
     cs_mail($create['users_email'],$cs_lang['mail_reg_head'],$content);
   }

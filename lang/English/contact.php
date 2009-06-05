@@ -1,10 +1,18 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net 
+// $Id$
 
 $cs_lang['mod_name']      = 'Contact';
 $cs_lang['mod_text']      = 'Contact';
 
 $cs_lang['wizard'] = 'Wizard';
 $cs_lang['task_done'] = 'Mark task as done';
+
+// options.php
+$cs_lang['body_options'] = 'Administration of settings in the module.';
+$cs_lang['def_org'] = 'E-Mail Prefix and Identifier';
+$cs_lang['def_mail'] = 'Default E-Mail';
+
 
 // manage.php
 $cs_lang['head_manage'] = 'Manage all contact information here';
