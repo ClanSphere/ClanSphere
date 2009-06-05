@@ -2,10 +2,12 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-# Overwrite global settings by using the following array
+# PHP 4 has no multibyte support in some functions, so it should use a charset like iso
+$charset = version_compare(phpversion(), '5.0', '>=') ? 'UTF-8' : 'ISO-8859-15';
 
+# Overwrite global settings by using the following array
 $cs_main = array( 'cellspacing'     => 1,
-                  'charset'         => 'UTF-8',
+                  'charset'         => $charset,
                   'def_action'      => 'list',
                   'def_lang'        => 'English',
                   'def_mod'         => 'install',

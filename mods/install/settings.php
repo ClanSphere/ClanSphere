@@ -56,9 +56,6 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
   }
   if(empty($error)) {
 
-    # php 4 has no multibyte support in some functions, so it should use a charset like iso
-    $charset = version_compare(phpversion(), '5.0', '>=') ? 'UTF-8' : 'ISO-8859-15';
-
     $setup_php = "<?php\n\n\$cs_db['hash'] = '" . $cs_db['hash'] . "'; # don't change!\n";
     $setup_php .= "\$cs_db['type'] = '" . $cs_db['type'] . "';\n";
     $setup_php .= "\$cs_db['place'] = '" . $cs_db['place'] . "';\n";
@@ -68,7 +65,7 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
     $setup_php .= "\$cs_db['prefix'] = '" . $cs_db['prefix'] . "';\n\n";
     $setup_php .= "\$cs_logs['save_actions'] = " . $log['save_actions'] . ";\n";
     $setup_php .= "\$cs_logs['save_errors'] = " . $log['save_errors'] . ";\n\n";
-    $setup_php .= "\$cs_main['charset'] = '" . $charset . "';";
+    $setup_php .= "\$cs_main['charset'] = '" . $cs_main['charset'] . "';";
 
     if(isset($_POST['create'])) {
       $flerr = 0;
