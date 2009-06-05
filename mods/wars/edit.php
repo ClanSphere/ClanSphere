@@ -148,7 +148,7 @@ if (!empty($error) or !isset($_POST['submit'])) {
   $clans_data = cs_sql_select(__FILE__, 'clans', 'clans_name,clans_id', $cid, 'clans_name', 0, 0);
   $data['wars']['enemy_sel'] = cs_dropdown('clans_id', 'clans_name', $clans_data, $cs_wars['clans_id']);
   
-  $where = "squads_own = '1' AND squads_fightus = '0'";
+  $where = "squads_own = '1' AND (squads_fightus = '0' OR squads_id = " . $cs_wars['squads_id'] . ")";
   $squads_data = cs_sql_select(__FILE__, 'squads', 'squads_name,squads_id', $where, 'squads_name', 0, 0);
   $data['wars']['squad_sel'] = cs_dropdown('squads_id', 'squads_name', $squads_data, $cs_wars['squads_id']);
 
