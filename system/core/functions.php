@@ -153,8 +153,12 @@ function cs_init($predefined) {
     cs_tasks('system/runstartup'); # load startup files
   }
 
-  if(!empty($predefined['init_tpl']))
-    echo cs_template($cs_micro, $predefined['tpl_file']);
+  if(!empty($predefined['init_tpl'])) {
+    $content = cs_template($cs_micro, $predefined['tpl_file']);
+    if(extension_loaded('zlib'))
+      ob_start('ob_gzhandler');
+    echo $content;
+  }
 }
 
 // Array walking with refereced altering
