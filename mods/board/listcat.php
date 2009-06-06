@@ -17,6 +17,9 @@ $select = 'cat.categories_name AS categories_name, cat.categories_id AS categori
 $from = 'board boa INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id';
 $cs_board = cs_sql_select(__FILE__, $from, $select, $where);
 
+$data = array();
+$data['count']['topics'] = 0;
+$data['pages']['list'] = '';
 $data['link']['board'] = cs_url('board', 'list');
 $data['link']['name'] = cs_url('board', 'list', 'id=' . $cs_board['categories_id']);
 $data['categories']['name'] = $cs_board['categories_name'];
