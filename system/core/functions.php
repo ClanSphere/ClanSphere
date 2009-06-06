@@ -91,6 +91,7 @@ function cs_init($predefined) {
   require_once 'system/output/xhtml_10.php';
   require_once 'system/core/cachegen.php';
   require_once 'system/core/templates.php';
+  require_once 'system/core/gd.php';
 
   if ($cs_main['php_self']['basename'] != 'install.php')
     file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
@@ -149,7 +150,6 @@ function cs_init($predefined) {
 
     require_once 'system/core/account.php';
 
-    cs_tasks('system/extensions', 1); # load extensions
     cs_tasks('system/runstartup'); # load startup files
   }
 
@@ -211,16 +211,12 @@ function cs_parsetime($micro, $precision = 3) {
   return $getparse;
 }
 
-function cs_tasks($dir, $check = 0) {
+function cs_tasks($dir) {
 
   $goal = opendir($dir . '/');
   while(false !== ($filename = readdir($goal))) {
-    if($filename != '.' AND $filename != '..' AND $filename != '.svn') {
-      if(empty($check) OR 
-      extension_loaded(substr($filename, 0, strpos($filename, '.php')))) {
-        include_once($dir . '/' . $filename);
-      }
-    }
+    if($filename != '.' AND $filename != '..' AND $filename != '.svn')
+      include_once $dir . '/' . $filename;
   }
   closedir($goal);
 }
