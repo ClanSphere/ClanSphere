@@ -366,5 +366,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $getmemory = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
   if (function_exists('memory_get_peak_usage')) $getmemory .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
   $cs_temp_get = str_replace('{func:memory}', $getmemory, $cs_temp_get);
+
+  if(extension_loaded('zlib'))
+    ob_start('ob_gzhandler');
+
   return $cs_temp_get;
 }
