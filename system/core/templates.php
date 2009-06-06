@@ -324,17 +324,17 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
   $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
   $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $cs_temp_get);
+  $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
+  $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
-  // Set title proper related to module
+  # Provide the def_title and a title with mod and page info
+  $title_website = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
+  $cs_temp_get = str_replace('{func:title_website}', $title_website, $cs_temp_get);
   $cs_act_lang = cs_translate($cs_main['mod']);
-  $title = $cs_main['def_title'] . ' - ' . $cs_act_lang['mod_name'];
+  $title = $title_website . ' - ' . $cs_act_lang['mod_name'];
   if(!empty($cs_main['page_title']))
     $title .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
   $cs_temp_get = str_replace('{func:title}', $title, $cs_temp_get);
-  // Title_Website sets the Title without the current page
-  $cs_temp_get = str_replace('{func:title_website}', htmlentities($cs_main['def_title']), $cs_temp_get);
-  $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
-  $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
   $logsql = '';
   if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
