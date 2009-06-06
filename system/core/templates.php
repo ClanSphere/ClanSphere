@@ -294,11 +294,14 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
   $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
 
-  if($account['access_clansphere'] >= 5 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
+  if($account['access_clansphere'] > 4 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
     require_once 'mods/clansphere/sec_func.php';
     $content = cs_cspnews() . $content;
   }
-  
+
+  if($account['access_clansphere'] > 3 AND file_exists('install.php') AND !file_exists('.svn'))
+    $content = cs_subtemplate(__FILE__, array(), 'clansphere', 'del_install') . $content;
+
   if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
     $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
     $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);

@@ -208,3 +208,4 @@ $cs_lang['view'] = 'Anzeigen';
 $cs_lang['read'] = 'Gelesen';
 $cs_lang['showall'] = 'Alle anzeigen';
 $cs_lang['new_infos'] = 'Alle Mitteilungen vom ClanSphere Team';
+$cs_lang['del_install_file'] = 'Achtung: Die Datei "install.php" ist aus Sicherheitsgr&uuml;nden zu entfernen';
