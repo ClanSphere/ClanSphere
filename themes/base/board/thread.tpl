@@ -127,7 +127,7 @@
       <hr style="width:100%" />
       {if:com_report}
       <div class="quote">{comment:com_clip}</div>
-      {stop:com_Report}
+      {stop:com_report}
       {comment:text}
       {if:c_files}
       <div style="margin-top: 10px;" class="quote"><strong>{lang:files}</strong> {loop:com_files}
