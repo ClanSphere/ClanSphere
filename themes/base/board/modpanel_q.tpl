@@ -29,8 +29,8 @@
 	<tr>
 		<td class="leftb">{icon:lockoverlay} {lang:thread_close}</td>
 		<td class="leftc">
-			<input type="radio" name="thread_closed" value="1" /> {lang:yes}
-			<input type="radio" name="thread_closed" value="0" checked="checked" /> {lang:no}
+			<input type="radio" name="thread_closed" value="1" {checked:closed}/> {lang:yes}
+			<input type="radio" name="thread_closed" value="0" {checked:notclosed}/> {lang:no}
 		</td>
 	</tr>
 	<tr>

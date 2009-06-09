@@ -100,7 +100,7 @@ if(isset($_POST['close'])) {
     $tables = "board boa INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id";
     $select = "boa.board_id AS board_id, boa.board_name AS board_name, cat.categories_name AS categories_name";
     $axx_where = "boa.board_access <= '" . $account['access_board'] . "'";
-    $sorting = "cat.categories_name ASC, boa.board_name ASC";
+    $sorting = 'cat.categories_name ASC, boa.board_name ASC';
     $board_data = cs_sql_select(__FILE__,$tables,$select,$axx_where,$sorting,0,0);
 
     $data['board']['select'] = '';
@@ -109,6 +109,8 @@ if(isset($_POST['close'])) {
       $content = $board['categories_name'] . ' -> ' . $board['board_name'];
       $data['board']['select'] .= cs_html_option($content,$board['board_id'],$sel);
     }
+    $data['checked']['closed']    =  empty($thread_edit['threads_close']) ? '' : 'checked="checked" ';
+    $data['checked']['notclosed'] = !empty($thread_edit['threads_close']) ? '' : 'checked="checked" ';
   
   }
 
@@ -128,7 +130,7 @@ if(isset($_POST['close'])) {
 //Daten verarbeiten und in SQL Eintragen   
 if(!empty($thread_cells) AND !empty($thread_save)) {
   cs_sql_update(__FILE__,'threads',$thread_cells,$thread_save,$thread_id);
-  
+
   if (!empty($update_board)) {
     include_once('mods/board/repair.php');
     cs_board_last($board_id);
@@ -142,6 +144,7 @@ if(!empty($thread_cells) AND !empty($thread_save)) {
     cs_board_comments($board_id);
     cs_board_threads($board_new_id);
     cs_board_comments($board_new_id);
+    cs_board_last($board_id);
   }
   header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id);
 }

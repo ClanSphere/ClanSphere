@@ -27,8 +27,15 @@ function cs_board_last($board_id) {
            ' AS board_last_threadid, thr.threads_last_user AS board_last_userid, usr.users_nick AS board_last_user';
   $last_sql = cs_sql_select(__FILE__,$from,$cells,$where,'thr.threads_last_time DESC');
 
-  if(isset($last_sql['board_last_time']))
-    cs_sql_update(__FILE__,'board',array_keys($last_sql),array_values($last_sql),$board_id);
+  if (empty($last_sql)) {
+    $last_sql['board_last_time'] = 0;
+    $last_sql['board_last_thread'] = 0;
+    $last_sql['board_last_threadid'] = 0;
+    $last_sql['board_last_user'] = 0;
+    $last_sql['board_last_userid'] = 0;
+  }
+  
+  cs_sql_update(__FILE__,'board',array_keys($last_sql),array_values($last_sql),$board_id);
 
   return $last_sql;
 }
