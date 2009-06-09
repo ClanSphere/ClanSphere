@@ -77,6 +77,7 @@ if(isset($_POST['close'])) {
   $thread_headline = $_POST['thread_headline'];
   $thread_cells = array('threads_headline');
   $thread_save = array($thread_headline);
+  $update_board = 1;
 
 } elseif(!empty($_POST['move']) OR !empty($_POST['rename'])) {
   
@@ -127,7 +128,12 @@ if(isset($_POST['close'])) {
 //Daten verarbeiten und in SQL Eintragen   
 if(!empty($thread_cells) AND !empty($thread_save)) {
   cs_sql_update(__FILE__,'threads',$thread_cells,$thread_save,$thread_id);
-
+  
+  if (!empty($update_board)) {
+    include_once('mods/board/repair.php');
+    cs_board_last($board_id);
+  }
+  
   if(isset($board_new_id)) {
     //Update board entry to get correct threads and comments count
 
