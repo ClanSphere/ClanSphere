@@ -7,7 +7,7 @@
     {lang:time}: {head:time}
   </td>
   <td class="centerb">
-    {lang:year}: < {year:last} - {year:current} - {year:next}>
+    {lang:year}: &lt; {year:last} - {year:current} - {year:next} &gt;
   </td>
  </tr>
 </table>
