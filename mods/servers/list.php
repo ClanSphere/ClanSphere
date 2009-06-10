@@ -65,13 +65,13 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 						}
 						$data['servers'][$run]['servers_ip'] = $cs_servers[$run]['servers_ip'];
 						$data['servers'][$run]['servers_port'] = $cs_servers[$run]['servers_port'];
-						/* if TS View, use teamspeak:// */
-						preg_match_all("/Teamspeak/", $data['servers'][$run]['gametype'], $teamspeak);
-						if(in_array("Teamspeak", $teamspeak[0])) {
-							$data['servers'][$run]['proto'] = 'teamspeak://';
-						}
-						else {
-							$data['servers'][$run]['proto'] = 'hlsw://';
+
+            /* if TS View, use teamspeak:// */
+            if($data['servers'][$run]['mapname'] == 'Teamspeak')
+              $data['servers'][$run]['proto'] = 'teamspeak://';
+            else
+              $data['servers'][$run]['proto'] = 'hlsw://';
+
 						}
 						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['needpass']) ? $cs_lang['no'] : $cs_lang['yes'];
 						flush();
