@@ -6,6 +6,11 @@
 
 #Options +FollowSymLinks
 
+## Uncomment the next line to disable Multiviews (if you have a line like this in your log):
+## [error] Negotiation: discovered file(s) matching request: /var/www/website/htdocs/index.html (None could be negotiated).
+
+#Options -Multiviews
+
 ## Uncomment the next line to enable the usage of mod_rewrite (needed)
 
 RewriteEngine on
