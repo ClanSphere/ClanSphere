@@ -73,12 +73,10 @@ else {
       $date = cs_date('unix',$thread['threads_last_time'],1);
       $goto = floor($thread['threads_comments'] / $account['users_limit']) * $account['users_limit'];
       $goto .= '#' . $thread['threads_comments'];
-      $link = cs_link($date,'board','thread','where=' . $thread['threads_id'] . '&amp;start=' . $goto);
+      $data['threads'][$run]['last_time'] = cs_link($date,'board','thread','where=' . $thread['threads_id'] . '&amp;start=' . $goto);
       if(!empty($thread['users_id'])) {
-        $before = cs_html_br(1) . $cs_lang['from'] . ' ';
-        $user = $before . cs_user($thread['users_id'],$thread['users_nick'], $thread['users_active']);
-      }
-    	$data['threads'][$run]['last_time'] = $link . $user;
+        $data['threads'][$run]['last_user'] = cs_user($thread['users_id'],$thread['users_nick'], $thread['users_active']);
+      } else $data['threads'][$run]['last_user'] = '';
     }
     $run++;
   }

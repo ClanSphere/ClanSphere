@@ -35,7 +35,7 @@
 		</td>
 		<td class="rightb" style="width:60px">{threads:comments}</td>
 		<td class="rightb" style="width:60px">{threads:view}</td>
-		<td class="leftb" style="width:180px">{threads:last_time}</td>
+		<td class="leftb" style="width:180px">{threads:last_time}<br/>{lang:from} {threads:last_user}</td>
 	</tr>
 	{stop:threads}
 	<tr>
