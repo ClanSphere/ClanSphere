@@ -1,5 +1,4 @@
 <?php
-$cs_lang = cs_translate('servers');
 // Call of Duty 2 Game Class
 /*
  * Copyright (c) 2004-2006, woah-projekt.de

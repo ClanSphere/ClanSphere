@@ -1,4 +1,9 @@
 <?php // phgstats factory class
+
+# the following commands make $cs_lang available in all phg classes
+global $cs_lang;
+$cs_lang = cs_translate('servers');
+
 /*
  * Copyright (c) 2004-2006, woah-projekt.de
  * All rights reserved.

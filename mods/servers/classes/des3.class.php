@@ -1,5 +1,4 @@
 <?php
-$cs_lang = cs_translate('servers');
 // Descent 3 Game Class
 /*
  * Copyright (c) 2004-2006, woah-projekt.de

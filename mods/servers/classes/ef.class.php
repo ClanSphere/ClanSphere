@@ -1,5 +1,4 @@
 <?php
-$cs_lang = cs_translate('servers');
 // Elite Force Game Class
 /*
  * Copyright (c) 2004-2007, woah-projekt.de
