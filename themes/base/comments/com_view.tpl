@@ -2,7 +2,7 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="bottom" colspan="2"><div style="float:left">{lang:comments} {comments:sum}</div>
+		<td class="bottom" colspan="2"><div style="float:left">{lang:comments}: {comments:sum}</div>
 		<div style="float:right">{comments:pages}</div></td>
 	</tr>
 	{loop:com}
