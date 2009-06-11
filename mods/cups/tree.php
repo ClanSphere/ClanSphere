@@ -42,8 +42,8 @@ $rounds_1 = $rounds - 1;
 $loserbracket = isset($_GET['losers']) ? 1 : 0;
 
 $tables = 'cupmatches cm INNER JOIN ';
-$tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id INNER JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
-	'{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id INNER JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id';
+$tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
+	'{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id';
 $cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id' :
 	'sq1.squads_name AS team1_name, sq1.squads_id AS team1_id, sq2.squads_name AS team2_name, sq2.squads_id AS team2_id';
 $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
@@ -229,7 +229,6 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 	}
 	
 }
-#print_r($cupmatches);
 
 header ('Content-type: image/png');
 imagepng($img);
