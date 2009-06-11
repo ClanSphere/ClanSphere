@@ -50,7 +50,7 @@
 		<td class="headb" colspan="4">{lang:newpic}</td>
 	</tr>
 	<tr>
-		<td class="leftc">{icon:folder_yellow} {lang:category}</td>
+		<td class="leftc">{icon:folder_yellow} {lang:folder}</td>
 		<td class="leftb" colspan="3">
 			{folders:select}
 		</td>
