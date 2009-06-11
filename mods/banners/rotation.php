@@ -5,7 +5,8 @@
 $op_banners = cs_sql_option(__FILE__,'banners');
 
 if(!empty($_GET['cat_id'])) {
-  $where = "categories_id = '" . $_GET['cat_id'] . "' AND banners_id != '" . $op_banners['last_id'] . "'";
+  $cat_id = (int) $_GET['cat_id'];
+  $where = "categories_id = '" . $cat_id . "' AND banners_id != '" . $op_banners['last_id'] . "'";
 }
 else {
   $where = "banners_id != '" . $op_banners['last_id'] . "'";
