@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0 >> 2009-06-xx
+ClanSphere 2009.0 >> 2009-06-12
 ___________________________________________________________
 
 -> Added support for Microsoft SQL Server 2005 and 2008 using the sqlsrv extension (hajo)
