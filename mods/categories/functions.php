@@ -26,10 +26,10 @@ function cs_categories_create($mod, $categories_name) {
 function cs_categories_dropdown($mod, $categories_id) {
 
   $where = "categories_mod='" . $mod . "'";
-  $list_data = cs_sql_select(__FILE__,'categories','categories_id, categories_name',$where,'categories_name',0,0);
+  $list_data = cs_sql_select(__FILE__,'categories','categories_id, categories_name',$where,'categories_order ASC, categories_name',0,0);
 
 	$data = array();
-	$data['categories']['dropdown'] = cs_dropdown('categories_id','categories_order ASC, categories_name',$list_data,$categories_id);
+	$data['categories']['dropdown'] = cs_dropdown('categories_id','categories_name',$list_data,$categories_id);
 	
  return cs_subtemplate(__FILE__,$data,'categories','cat_dropdown');
 }
