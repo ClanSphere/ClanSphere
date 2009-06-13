@@ -25,18 +25,16 @@ $select = 'clans_name, clans_short, clans_country, clans_id';
 $cs_clans = cs_sql_select(__FILE__,'clans',$select,0,$order,$start,$account['users_limit']);
 $clans_loop = count($cs_clans);
 
-
 $data['sort']['name'] = cs_sort('clans','list',$start,0,1,$sort);
 $data['sort']['short'] = cs_sort('clans','list',$start,0,3,$sort);
 
-if(empty($clans_loop)) {
+if(empty($clans_loop))
   $data['clans'] = '';
-}
 
 for($run=0; $run<$clans_loop; $run++) {
   $data['clans'][$run]['country'] = cs_html_img('symbols/countries/' . $cs_clans[$run]['clans_country'] . '.png',11,16);
   $data['clans'][$run]['name'] = cs_link(cs_secure($cs_clans[$run]['clans_name']),'clans','view','id=' . $cs_clans[$run]['clans_id']);
   $data['clans'][$run]['short'] = cs_secure($cs_clans[$run]['clans_short']);
 }
-print_R($data);
+
 echo cs_subtemplate(__FILE__,$data,'clans','list');
