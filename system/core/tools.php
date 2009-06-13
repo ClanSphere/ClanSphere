@@ -150,6 +150,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
   global $com_lang;
   $data = array();
   $data['date']['name'] = $name;
+  $data['if']['ampm'] = 0;
 
   $real_start = $mode == 'unix' ? 1970 : 1950;
   $year_start = empty($year_start) ? $real_start : $year_start;
@@ -168,7 +169,6 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
 
     if(strpos($com_lang['timeset'], 'a') === false AND strpos($com_lang['timeset'], 'A') === false) {
       $explode[3] = cs_datereal('H',$time);
-      $data['if']['ampm'] = 0;
     }
     else {
       $am_or_pm = cs_datereal('H',$time);
