@@ -1,6 +1,14 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2009.0.1 >> 2009-06-XX
+___________________________________________________________
+
+-> Fixed cs_sql_insertid with Microsoft SQL Server [sqlsrv extension] (hajo)
+
+-- Fixed a few bugs that were reported at "Trac" --
+
+
 ClanSphere 2009.0 >> 2009-06-12
 ___________________________________________________________
 
