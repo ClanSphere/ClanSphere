@@ -94,14 +94,9 @@ function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
 
 function cs_sql_insertid($cs_file) {
 
-  global $cs_db;
-  $sql_query = 'SELECT LASTVAL()';
-  $sql_data = pg_query($cs_db['con'], $sql_query) OR 
-    cs_error_sql($cs_file, 'cs_sql_insertid', pg_last_error($cs_db['con']));
-  $result = pg_fetch_row($sql_data);
-  pg_free_result($sql_data);
-  cs_log_sql($cs_file, $sql_query);
-  return $result[0];
+  $found = cs_sql_query($cs_file, 'SELECT LASTVAL()', 1);
+  $lastval = isset($found['more'][0]['lastval']) ? $found['more'][0]['lastval'] : false;
+  return $lastval;
 }
 
 function cs_sql_option($cs_file,$mod) {
