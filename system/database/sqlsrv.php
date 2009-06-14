@@ -90,7 +90,11 @@ function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content)
 
 function cs_sql_insertid($cs_file) {
 
-  return cs_sql_query($cs_file, 'SELECT @@IDENTITY', 1);
+  $found = cs_sql_query($cs_file, 'SELECT @@IDENTITY', 1);
+  if(is_array($lastval['more'][0])) {
+    $key = array_keys($lastval['more'][0]);
+    return $lastval['more'][0][ . $key[0] . ];
+  }
 }
 
 function cs_sql_option($cs_file, $mod)
