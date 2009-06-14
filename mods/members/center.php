@@ -64,22 +64,17 @@ $data['sort']['task'] = cs_sort('members','center',0,$squads_id,3,$sort);
 $img_edit = cs_icon('edit',16,$cs_lang['edit']);
 $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
 
-if (empty($members_loop)) {
+if (empty($members_loop))
   $data['members'] = '';
-}
 
 for($run=0; $run<$members_loop; $run++) {
 
-  $users_nick = cs_secure($cs_members[$run]['users_nick']);
-  if(!empty($cs_members[$run]['members_admin'])) {
-    $users_nick = cs_html_big(1) . $users_nick . cs_html_big(0);
-  }
-  $data['members'][$run]['user'] = cs_user($cs_members[$run]['users_id'],$users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);
+  $users_nick = cs_user($cs_members[$run]['users_id'],$users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);
+  $data['members'][$run]['user'] = empty($cs_members[$run]['members_admin']) ? $users_nick : cs_html_big(1) . $users_nick . cs_html_big(0);
   $data['members'][$run]['task'] = cs_secure($cs_members[$run]['members_task']);
   $data['members'][$run]['order'] = $cs_members[$run]['members_order'];
   $data['members'][$run]['edit'] = cs_link($img_edit,'members','change','id=' . $cs_members[$run]['members_id'],0,$cs_lang['edit']);
   $data['members'][$run]['remove'] = cs_link($img_del,'members','center','del_id=' . $cs_members[$run]['members_id'],0,$cs_lang['remove']);
-
 }
 
 echo cs_subtemplate(__FILE__,$data,'members','center');
