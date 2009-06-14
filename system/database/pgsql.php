@@ -251,14 +251,9 @@ function cs_sql_version($cs_file) {
   $sql_infos['client'] = isset($pg_infos['client']) ? $pg_infos['client'] : '-';
   $sql_infos['server'] = isset($pg_infos['server_version']) ? $pg_infos['server_version'] : '-';
   if($sql_infos['server'] == '-') {
-    $sql_query = 'SELECT VERSION()';
-    $sql_data = pg_query($cs_db['con'], $sql_query) OR 
-      cs_error_sql($cs_file, 'cs_sql_version', pg_last_error($cs_db['con']));
-    $sql_result = pg_fetch_row($sql_data);
-    pg_free_result($sql_data);
-    preg_match('=\d+\.\d+\.\d+=',$sql_result[0],$matches,PREG_OFFSET_CAPTURE);
-    $sql_infos['server'] = isset($matches[0][0]) ? $matches[0][0] : '--';
-    cs_log_sql($cs_file, $sql_query);
+    $found = cs_sql_query($cs_file, 'SELECT VERSION()', 1);
+    preg_match('=[\d|.]+=',$found['more'][0]['version'],$matches,PREG_OFFSET_CAPTURE);
+    $sql_infos['server'] = isset($matches[0][0]) ? $matches[0][0] : $found['more'][0]['version'];
   }
   return $sql_infos;
 }
