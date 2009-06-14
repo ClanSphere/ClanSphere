@@ -69,7 +69,7 @@ if (empty($members_loop))
 
 for($run=0; $run<$members_loop; $run++) {
 
-  $users_nick = cs_user($cs_members[$run]['users_id'],$users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);
+  $users_nick = cs_user($cs_members[$run]['users_id'], $cs_members[$run]['users_nick'], $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);
   $data['members'][$run]['user'] = empty($cs_members[$run]['members_admin']) ? $users_nick : cs_html_big(1) . $users_nick . cs_html_big(0);
   $data['members'][$run]['task'] = cs_secure($cs_members[$run]['members_task']);
   $data['members'][$run]['order'] = $cs_members[$run]['members_order'];
