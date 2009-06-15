@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('news');
-
+$data = array();
 $cs_post = cs_post('where');
 $cs_get = cs_get('where');
 
@@ -21,8 +21,13 @@ if(!empty($cat_id)) {
 $start = empty($_REQUEST['start']) ? 0 : (int)$_REQUEST['start'];
 
 $newsmod = "categories_mod = 'news' AND categories_access <= " . $account['access_news'];
-$cat_data = cs_sql_select(__FILE__, 'categories', 'categories_name, categories_id', $newsmod, 'categories_name', 0, 0);
-$data['head']['dropdown'] = cs_dropdown('where', 'categories_name', $cat_data, $cat_id, 'categories_id');
+$data['cats'] = cs_sql_select(__FILE__, 'categories', 'categories_name, categories_id', $newsmod, 'categories_name', 0, 0);
+$count_cats = count($data['cats']);
+for ($i = 0; $i < $count_cats; $i++) {
+  $data['cats'][$i]['categories_name'] = cs_secure($data['cats'][$i]['categories_name']);
+  $data['cats'][$i]['if']['selected'] = $data['cats'][$i]['categories_id'] == $cat_id ? true : false;
+}
+
 $join = 'news nws INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
 $news_count = cs_sql_count(__FILE__, $join, $where, 'news_id');
 $data['head']['pages'] = cs_pages('news', 'recent', $news_count, $start, $cat_id, 0, $cs_option['max_recent']);
