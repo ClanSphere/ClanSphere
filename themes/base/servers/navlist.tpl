@@ -10,7 +10,7 @@
   <tr>
     <td class="leftb">
       <b>{lang:host_navlist}</b><br />
-      <a href="{servers:proto}{servers:servers_ip}">{servers:servers_ip}</a>
+      <a href="{servers:proto}{servers:servers_ip}:{servers:servers_port}">{servers:servers_ip}:{servers:servers_port}</a>
     </td>
   </tr>
   <tr>
