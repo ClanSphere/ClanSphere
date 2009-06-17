@@ -88,13 +88,15 @@ function cs_init($predefined) {
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
   require_once 'system/core/abcode.php';
-  require_once 'system/output/xhtml_10.php';
   require_once 'system/core/cachegen.php';
   require_once 'system/core/templates.php';
   require_once 'system/core/gd.php';
 
   if ($cs_main['php_self']['basename'] != 'install.php')
     file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
+
+  $xhtml_mode = empty($cs_main['xhtml_old']) ? '' : '_old';
+  require_once 'system/output/xhtml_10' . $xhtml_mode . '.php';
 
   if(!empty($predefined['init_sql'])) {
 
