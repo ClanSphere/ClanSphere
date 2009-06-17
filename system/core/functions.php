@@ -113,8 +113,10 @@ function cs_init($predefined) {
 
   $cs_main = array_merge($cs_main, $cs_options, $predefined);
 
-  if(empty($cs_main['charset']))
+  if(empty($cs_main['charset'])) {
+    $cs_main['charset'] = 'UTF-8';
     die(cs_error_internal(0,'No charset information found in setup.php'));
+  }
 
   if(empty($cs_main['def_path']))
     $cs_main['def_path'] = getcwd();
