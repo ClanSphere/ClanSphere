@@ -82,6 +82,7 @@ $cs_lang['prefix'] = 'Table Prefix';
 $cs_lang['more'] = 'More';
 $cs_lang['save_actions'] = ' Log database querys.';
 $cs_lang['save_errors'] = ' Log common portal errors.';
+$cs_lang['charset'] = 'Charset';
 
 $cs_lang['no_hash'] = '-  An encryption type must be selected!';
 $cs_lang['no_type'] = '- A database type must be selected';

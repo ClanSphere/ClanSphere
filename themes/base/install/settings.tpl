@@ -88,6 +88,10 @@
    <td class="leftb"><input type="password" name="pwd" value="{value:pwd}" maxlength="50" size="25" /></td>
  </tr>
  <tr>
+   <td class="leftc">{lang:charset}</td>
+   <td class="leftb">{value:charset}</td>
+ </tr>
+ <tr>
    <td class="leftc">{lang:more}</td>
    <td class="leftb">
      <input type="checkbox" name="save_actions" value="1"{checked:save_actions} /> {lang:save_actions}<br />

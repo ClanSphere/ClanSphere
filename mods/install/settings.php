@@ -128,6 +128,7 @@ if(!empty($setup_exists)) {
     }
   }
 
+	$data['value']['charset'] = $cs_main['charset'];
 	$data['value']['place'] = $cs_db['place'];
 	$data['value']['name'] = $cs_db['name'];
 	$data['value']['prefix'] = $cs_db['prefix'];

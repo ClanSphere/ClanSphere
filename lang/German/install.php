@@ -82,6 +82,7 @@ $cs_lang['prefix'] = 'Tabellen Pr&auml;fix';
 $cs_lang['more'] = 'Erweitert';
 $cs_lang['save_actions'] = ' Datenbank-Aktionen protokollieren';
 $cs_lang['save_errors'] = ' Bekannte Portal-Fehler protokollieren';
+$cs_lang['charset'] = 'Zeichensatz';
 
 $cs_lang['no_hash'] = '- Es muss eine Verschl&uuml;sselung ausgew&auml;hlt werden';
 $cs_lang['no_type'] = '- Es muss ein Datenbank Server ausgew&auml;hlt werden';
