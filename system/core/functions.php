@@ -95,6 +95,11 @@ function cs_init($predefined) {
   if ($cs_main['php_self']['basename'] != 'install.php')
     file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
 
+  if(empty($cs_main['charset'])) {
+    $cs_main['charset'] = 'UTF-8';
+    die(cs_error_internal(0,'No charset information found in setup.php'));
+  }
+
   $xhtml_mode = empty($cs_main['xhtml_old']) ? '' : '_old';
   require_once 'system/output/xhtml_10' . $xhtml_mode . '.php';
 
@@ -112,11 +117,6 @@ function cs_init($predefined) {
     $cs_options = array();
 
   $cs_main = array_merge($cs_main, $cs_options, $predefined);
-
-  if(empty($cs_main['charset'])) {
-    $cs_main['charset'] = 'UTF-8';
-    die(cs_error_internal(0,'No charset information found in setup.php'));
-  }
 
   if(empty($cs_main['def_path']))
     $cs_main['def_path'] = getcwd();
