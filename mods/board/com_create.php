@@ -16,6 +16,7 @@ if (!empty($cs_post['id']))  $fid = $cs_post['id'];
 
 include('mods/board/functions.php');
 
+$check_pw = 1;
 $check_sq = 0;
 $quote = '';
 $options = cs_sql_option(__FILE__,'board');
@@ -34,7 +35,7 @@ $last_comment = cs_sql_select(__FILE__,'comments','users_id, comments_time',$con
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
 $select  = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, frm.board_read AS board_read, ';
 $select .= 'cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, ';
-$select .= 'cat.categories_id AS categories_id, frm.board_access AS board_access, frm.squads_id AS squads_id';
+$select .= 'cat.categories_id AS categories_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.squads_id AS squads_id';
 if (empty($last_comment)) $select .= ', thr.users_id AS users_id, thr.threads_time AS threads_time';
 $where = "thr.threads_id = '" . $fid . "'";
 $data['thread'] = cs_sql_select(__FILE__,$from,$select,$where);
@@ -44,6 +45,12 @@ if (empty($last_comment)) {
   $last_comment['comments_time'] = $data['thread']['threads_time'];
 }
 
+//Sicherheitsabfrage Beginn 
+if(!empty($data['thread']['board_pwd'])) {
+  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $data['thread']['board_id'] . '"';
+  $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
+}
+
 if(!empty($data['thread']['squads_id']) AND $account['access_board'] < $data['thread']['board_access']) {
   $sq_where = "users_id = '" . $account['users_id'] . "' AND squads_id = '" . $data['thread']['squads_id'] . "'";
   $check_sq = cs_sql_count(__FILE__,'members',$sq_where);
@@ -51,7 +58,7 @@ if(!empty($data['thread']['squads_id']) AND $account['access_board'] < $data['th
 if(empty($fid) || (count($data['thread']) == 0)) {
   return errorPage('com_create', $cs_lang);
 }
-if($account['access_board'] < $data['thread']['board_access'] AND empty($check_sq)) {
+if($account['access_board'] < $data['thread']['board_access'] AND empty($check_sq) OR empty($check_pw)) {
   return errorPage('com_create', $cs_lang);
 }
 if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'] == -1 || ($last_comment['comments_time'] + $options['doubleposts']) > cs_time() )) {

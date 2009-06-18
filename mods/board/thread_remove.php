@@ -12,18 +12,25 @@ if (!empty($cs_post['id']))  $thread_id = $cs_post['id'];
 
 require_once('mods/board/functions.php');
 
+$check_pw = 1;
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
-$select = 'frm.board_access AS board_access, frm.board_id AS board_id, thr.threads_headline AS threads_headline, ';
+$select = 'frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.board_id AS board_id, thr.threads_headline AS threads_headline, ';
 $select .= 'thr.users_id AS users_id, frm.squads_id AS squads_id';
 $where = "thr.threads_id = '" . $thread_id . "'";
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where);
 
+//Sicherheitsabfrage Beginn
 $cs_boardfiles = cs_sql_select(__FILE__,'boardfiles','boardfiles_name,boardfiles_id',"threads_id='$thread_id'",0,0,0);
 $cs_boardfiles_loop = count($cs_boardfiles); 
 
-//Sicherheitsabfrage Beginn 
 $thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_del',"users_id = '" . $account['users_id'] . "'",0,0,1);
+
+if(!empty($cs_thread['board_pwd'])) {
+  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $cs_thread['board_id'] . '"';
+  $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
+}
+
 if(!empty($cs_thread['squads_id'])) {
   $where = "squads_id = '" . $cs_thread['squads_id'] . "' AND users_id = '" .$account['users_id'] . "'";
   $check_sq = cs_sql_count(__FILE__,'members',$where);
@@ -45,7 +52,7 @@ if($account['access_board'] >= $cs_thread['board_access']) {
   }
 } elseif(!empty($check_sq)) {
   $allowed = 1;  
-} elseif(empty($allowed)) {
+} elseif(empty($allowed) OR empty($check_pw)) {
   return errorPage('thread_remove', $cs_lang);
 }
 //Sicherheitsabfrage Ende

@@ -6,6 +6,7 @@ $cs_lang = cs_translate('board');
 
 include('mods/board/functions.php');
 
+$check_pw = 1;
 $check_sq = 0;
 
 $cid = empty($_REQUEST['cid']) ? 0 : $_REQUEST['cid'];
@@ -20,9 +21,15 @@ if(empty($tid) AND !empty($cid)) {
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'frm.board_access AS board_access, frm.squads_id AS squads_id';
+$select = 'frm.board_id AS board_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.squads_id AS squads_id';
 $where = "thr.threads_id = '" . $tid . "'";
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where,0,0,1);
+
+//Sicherheitsabfrage Beginn
+if(!empty($cs_thread['board_pwd'])) {
+  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $cs_thread['board_id'] . '"';
+  $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
+}
 
 if(!empty($cs_thread['squads_id']) AND $account['access_board'] < $cs_thread['board_access']) {
   $sq_where = "users_id = '" . $account['users_id'] . "' AND squads_id = '" . $cs_thread['squads_id'] . "'";
@@ -33,7 +40,7 @@ if(empty($tid) || (count($cs_thread) == 0)) {
   return errorPage('report', $cs_lang);
 }
 
-if($account['access_board'] < $cs_thread['board_access'] AND empty($check_sq)) {
+if($account['access_board'] < $cs_thread['board_access'] AND empty($check_sq) OR empty($check_pw)) {
   return errorPage('report', $cs_lang);
 }
 

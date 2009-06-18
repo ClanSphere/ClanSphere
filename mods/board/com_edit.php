@@ -12,6 +12,7 @@ $files_gl = cs_files();
 $comments_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $comments_id = $cs_post['id'];
 
+$check_pw = 1;
 $check_sq = 0;
 include('mods/board/functions.php');
 
@@ -27,25 +28,30 @@ $ori_text = $cs_comments['comments_text'];
 
 
 $from = 'comments com INNER JOIN {pre}_threads thr ON com.comments_fid = thr.threads_id INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, cat.categories_id AS categories_id, com.comments_edit AS comments_edit, com.users_id AS users_id, frm.board_access AS board_access, frm.squads_id AS squads_id';
+$select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, cat.categories_id AS categories_id, com.comments_edit AS comments_edit, com.users_id AS users_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.squads_id AS squads_id';
 $where = "com.comments_id = '" . $comments_id . "'";
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where,0,0,1);
 
 $thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_edit',"users_id = '" . $account['users_id'] . "'",0,0,1);
+
+//Sicherheitsabfrage Beginn
+if(!empty($cs_thread['board_pwd'])) {
+  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $cs_thread['board_id'] . '"';
+  $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
+}
 
 if(!empty($cs_thread['squads_id']) AND $account['access_board'] < $cs_thread['board_access']) {
   $sq_where = "users_id = '" . $account['users_id'] . "' AND squads_id = '" . $cs_thread['squads_id'] . "'";
   $check_sq = cs_sql_count(__FILE__,'members',$sq_where);
 }
 
-//Sicherheitsabfrage Beginn
 if(empty($fid) || (count($cs_thread) == 0))
   return errorPage('com_edit', $cs_lang);
 
 if($account['access_board'] >= $cs_thread['board_access'] OR !empty($check_sq))
 {
   $allowed = 0;
-  if($cs_thread['users_id'] == $account['users_id'] OR $account['access_comments'] >= 4 OR !empty($thread_mods['boardmods_edit']))
+  if(($cs_thread['users_id'] == $account['users_id'] OR $account['access_comments'] >= 4 OR !empty($thread_mods['boardmods_edit'])) AND !empty($check_pw))
     $allowed = 1;
   else
      return errorPage('com_edit', $cs_lang);

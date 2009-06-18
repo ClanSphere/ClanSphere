@@ -14,13 +14,22 @@ if (!empty($cs_post['id']))  $thread_id = $cs_post['id'];
 
 include_once 'mods/board/functions.php';
 
+$check_pw = 1;
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, thr.users_id AS users_id, thr.threads_id AS threads_id, thr.threads_edit AS threads_edit, frm.board_id AS board_id, frm.board_access AS board_access, cat.categories_id AS categories_id, frm.squads_id AS squads_id';
+$select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, thr.users_id AS users_id, thr.threads_id AS threads_id, thr.threads_edit AS threads_edit, frm.board_id AS board_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, cat.categories_id AS categories_id, frm.squads_id AS squads_id';
 $where = "thr.threads_id = '" . $thread_id . "'";
 $board = cs_sql_select(__FILE__,$from,$select,$where);
+
 $thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_edit',"users_id = '" . $account['users_id'] . "'",0,0,1);
+
+//Sicherheitsabfrage Beginn
+if(!empty($board['board_pwd'])) {
+  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $board['board_id'] . '"';
+  $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
+}
+
 if(!empty($board['squads_id'])) {
   $where = "squads_id = '" . $board['squads_id'] . "' AND users_id = '" .$account['users_id'] . "'";
   $check_sq = cs_sql_count(__FILE__,'members',$where);
@@ -37,7 +46,7 @@ if($account['access_board'] >= $board['board_access']) {
      return errorPage('thread_edit', $cs_lang);
 } elseif(!empty($check_sq)) {
   $allowed = 1;  
-} else if(empty($allowed)) {
+} else if(empty($allowed) OR empty($check_pw)) {
   return errorPage('thread_edit', $cs_lang);
 }
 //end secure check
