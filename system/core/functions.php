@@ -244,7 +244,7 @@ function cs_getip () {
   elseif (getenv('HTTP_FORWARDED'))
     $ip = getenv('HTTP_FORWARDED');
   else
-    $ip = $_SERVER['REMOTE_ADDR'];
+    $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
   return $ip;
 }
 

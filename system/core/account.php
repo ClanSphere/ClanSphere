@@ -4,18 +4,19 @@
 
 global $_COOKIE, $_POST, $cs_lang, $cs_main, $login;
 
-$domain = (strpos($_SERVER['HTTP_HOST'], '.') !== FALSE) ? $_SERVER['HTTP_HOST'] : '';
+$domain = '';
+if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
+  $domain = $_SERVER['HTTP_HOST'];
 $cookie = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
 
 $login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
 $account = array('users_id' => 0);
 
-if(version_compare(PHP_VERSION,'5.2.0','>')) {
   # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
+if(version_compare(PHP_VERSION,'5.2.0','>'))
   session_set_cookie_params(0,$cookie['path'],$cookie['domain'],FALSE,TRUE);
-} else {
+else
   session_set_cookie_params(0,$cookie['path'],$cookie['domain']);
-}
 session_start();
 
 if(empty($_SESSION['users_id'])) {
