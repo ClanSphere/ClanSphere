@@ -47,6 +47,9 @@ if(empty($_POST['submit'])) {
   $file = $file_test . $ending;
   
   $data = @fopen($file,'w');
+  # set stream encoding if possible to avoid converting issues
+  if(function_exists('stream_encoding'))
+    stream_encoding($data, $cs_main['charset']);
   @fwrite($data,$_POST['data_content']);
   @fclose($data);
   

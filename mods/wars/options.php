@@ -22,6 +22,9 @@ if(isset($_POST['submit'])) {
   $text = $_POST['news_text'];
   
   $fp = fopen('uploads/wars/news_' . $lang . '.txt','w');
+  # set stream encoding if possible to avoid converting issues
+  if(function_exists('stream_encoding'))
+    stream_encoding($fp, $cs_main['charset']);
   fwrite($fp, $text);
   fclose($fp);
 

@@ -37,6 +37,9 @@ if(isset($_POST['submit'])) {
     $content  = $imp_time; 
     $content .= '{laststandbreak}';
     $content .= $imprint;
+    # set stream encoding if possible to avoid converting issues
+    if(function_exists('stream_encoding'))
+      stream_encoding($fp, $cs_main['charset']);
     fwrite ($fp, $content);
     chmod($filename,0644);
     fclose ($fp);

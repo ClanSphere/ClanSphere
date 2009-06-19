@@ -70,6 +70,9 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
     if(isset($_POST['create'])) {
       $flerr = 0;
       $create_setup = @fopen('setup.php','w') OR $flerr++;
+      # set stream encoding if possible to avoid converting issues
+      if(function_exists('stream_encoding'))
+        stream_encoding($create_setup, $cs_main['charset']);
       @fwrite($create_setup,$setup_php) OR $flerr++;
       @fclose($create_setup) OR $flerr++;
     }

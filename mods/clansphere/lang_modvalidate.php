@@ -99,6 +99,9 @@ foreach ($fp AS $line) {
 
 if(!empty($fix)) {
   $fp2 = fopen($file,'w');
+  # set stream encoding if possible to avoid converting issues
+  if(function_exists('stream_encoding'))
+    stream_encoding($fp2, $cs_main['charset']);
   fwrite($fp2,$file_new);
   fclose($fp2);
   

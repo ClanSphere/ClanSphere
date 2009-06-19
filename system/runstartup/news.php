@@ -17,6 +17,9 @@ if ($cs_main['mod'] == 'news') {
     $next_publish = empty($next_publish) ? '0' : $next_publish['news_publishs_at'];
     
     $fp = fopen($filename, 'w');
+    # set stream encoding if possible to avoid converting issues
+    if(function_exists('stream_encoding'))
+      stream_encoding($fp, $cs_main['charset']);
     fwrite($fp, $next_publish);
     fclose($fp);
     

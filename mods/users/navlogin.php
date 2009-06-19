@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('users');
 
+$uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+
 $data = array();
 
 global $login;
@@ -26,7 +28,7 @@ if(empty($login['mode'])) {
   $data['lang']['sendpw'] = $cs_lang['sendpw'];
   $data['link']['register'] = cs_url('users','register');
   $data['link']['sendpw'] = cs_url('users','sendpw');
-  $data['link']['uri'] = str_replace('&','&amp;',$_SERVER['REQUEST_URI']);
+  $data['link']['uri'] = str_replace('&','&amp;',$uri);
 
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_1');
 }
@@ -81,7 +83,7 @@ else {
       else {
         $shorten  = $cs_main['php_self']['filename'];
         $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
-        $panel_url = str_replace($shorten, '', $_SERVER['REQUEST_URI']);
+        $panel_url = str_replace($shorten, '', $uri);
         $data['link']['panel'] .= cs_html_link($panel_url . 'admin',$cs_lang['panel']);
       }
       $data['link']['panel'] .= cs_html_br(2);

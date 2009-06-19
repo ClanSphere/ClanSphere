@@ -56,6 +56,9 @@ if(empty($_POST['submit'])) {
   }
   
   $data = fopen($_POST['file'],'w');
+  # set stream encoding if possible to avoid converting issues
+  if(function_exists('stream_encoding'))
+    stream_encoding($data, $cs_main['charset']);
   $message = fwrite($data,$_POST['data_content']) ? $cs_lang['changes_done'] : $cs_lang['error_edit'];
   fclose($data);
   

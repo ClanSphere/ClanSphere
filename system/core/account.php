@@ -4,6 +4,7 @@
 
 global $_COOKIE, $_POST, $cs_lang, $cs_main, $login;
 
+$user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 $domain = '';
 if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
   $domain = $_SERVER['HTTP_HOST'];
@@ -12,7 +13,7 @@ $cookie = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => 
 $login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
 $account = array('users_id' => 0);
 
-  # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
+# Send cookie only by http protocol (available in PHP 5.2.0 or higher)
 if(version_compare(PHP_VERSION,'5.2.0','>'))
   session_set_cookie_params(0,$cookie['path'],$cookie['domain'],FALSE,TRUE);
 else
@@ -54,7 +55,7 @@ if(empty($_SESSION['users_id'])) {
 
         $_SESSION['users_id'] = $login_db['users_id'];
         $_SESSION['users_ip'] = cs_getip();
-        $_SESSION['users_agent'] = $_SERVER['HTTP_USER_AGENT'];
+        $_SESSION['users_agent'] = $user_agent;
         $_SESSION['users_pwd'] = $login['securepw'];
         if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax']))
           empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
@@ -88,12 +89,11 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($cs_main['ajax'])) $account['users_ajax'] = 0;
 }
 
-if(!empty($_COOKIE['cs_userid'])) { 
+if(!empty($_COOKIE['cs_userid'])) {
   setcookie('cs_userid',$account['users_id'], $cookie['lifetime'], $cookie['path'], $cookie['domain']);
   setcookie('cs_securepw',array_pop($account), $cookie['lifetime'], $cookie['path'], $cookie['domain']);  
 }
-if(!empty($account['users_id'])) { 
-  $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+if(!empty($account['users_id'])) {
   if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
     session_destroy();
     $login['mode'] = FALSE;
@@ -143,9 +143,8 @@ require_once('lang/' . $lang . '/system/comlang.php');
 
 
 $gma = cs_sql_select(__FILE__,'access','*','access_id = "' . (int) $account['access_id'] . '"', 0,0,1, 'access_' . $account['access_id']);
-if(is_array($gma)) {
+if(is_array($gma))
   $account = array_merge($account,$gma);
-}
 
 if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['access_clansphere'] < 3) {
   setcookie('cs_userid', '', 1, $cookie['path'], $cookie['domain']);

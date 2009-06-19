@@ -153,7 +153,6 @@ function cs_init($predefined) {
   if(!empty($predefined['init_sql'])) {
 
     require_once 'system/core/account.php';
-
     cs_tasks('system/runstartup'); # load startup files
   }
 
@@ -168,12 +167,15 @@ function cs_int_walk(&$item, $key) {
   
 function cs_log($target,$content) {
 
-  global $cs_logs;
+  global $cs_logs, $cs_main;
   $full_path = $cs_logs['dir'] . '/' . $target;
   if(is_writeable($full_path . '/')) {
     $log = "-------- \n" . date('H:i:s') . "\n" . $content;
     $log_file = $full_path . '/' . date('Y-m-d') . '.log';
     $save_error = fopen($log_file,'a');
+    # set stream encoding if possible to avoid converting issues
+    if(function_exists('stream_encoding'))
+      stream_encoding($save_error, $cs_main['charset']);
     fwrite($save_error,$log);
     fclose($save_error);
     chmod($log_file,0644);

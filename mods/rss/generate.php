@@ -43,6 +43,9 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
   $content .= cs_rss_mode(0);
 
   $save_file = fopen($target . $mod . '.xml','w');
+  # set stream encoding if possible to avoid converting issues
+  if(function_exists('stream_encoding'))
+    stream_encoding($save_file, $cs_main['charset']);
   fwrite($save_file,$content);
   fclose($save_file);
   @chmod($target . $mod . '.xml',0644);

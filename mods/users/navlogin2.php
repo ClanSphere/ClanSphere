@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('users');
 
+$uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+
 $data = array();
 
 global $login;
@@ -52,7 +54,7 @@ else {
       else {
         $shorten  = $cs_main['php_self']['filename'];
         $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
-        $panel_url = str_replace($shorten, '', $_SERVER['REQUEST_URI']);
+        $panel_url = str_replace($shorten, '', $uri);
         $data['link']['panel'] .= cs_html_link($panel_url . 'admin',$cs_lang['panel']) . ' - ';
       }
       $data['login']['panel'] .= '-';
