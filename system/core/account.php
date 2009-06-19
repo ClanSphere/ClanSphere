@@ -93,7 +93,8 @@ if(!empty($_COOKIE['cs_userid'])) {
   setcookie('cs_securepw',array_pop($account), $cookie['lifetime'], $cookie['path'], $cookie['domain']);  
 }
 if(!empty($account['users_id'])) { 
-  if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $_SERVER['HTTP_USER_AGENT']) {
+  $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+  if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
     session_destroy();
     $login['mode'] = FALSE;
   }
