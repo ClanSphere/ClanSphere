@@ -66,7 +66,7 @@ $cs_lang['message'] = 'Nachricht';
 $cs_lang['error_subject'] = '- Der Betreff darf nicht leer sein.';
 $cs_lang['error_message'] = '- Die Nachricht darf nicht leer sein.';
 $cs_lang['sender'] = 'Absender';
-$cs_lang['receiver'] = 'Empf&auml;gner';
+$cs_lang['receiver'] = 'Empf&auml;nger';
 $cs_lang['in_response'] = 'Antwort auf Ihre Nachricht vom %s:';
 
 // users_home.php
