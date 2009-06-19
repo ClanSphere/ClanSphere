@@ -275,7 +275,7 @@ $cs_lang['stage_4_text'] = ': mind. 8 Character, 3 small Letters, 2 large Letter
 // Navrand
 $cs_lang['since'] = 'Registered';
 $cs_lang['noname'] = 'No Name';
-$cs_lang['403_body']  = 'The page you´ve called needs a higher access level.';
+$cs_lang['403_body']  = 'The page you have called needs a higher access level.';
 
 // Notifications
 $cs_lang['notifications']    = 'Notifications';

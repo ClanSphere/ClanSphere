@@ -55,6 +55,6 @@ $cs_lang['no_tables']     = 'You must select one or more tables';
 $cs_lang['tables']        = 'Tables';
 $cs_lang['sql_data_for']  = 'SQL data for table "%s"';
 
-$cs_lang['error_inst_sql'] = "The <b>install.sql</b> file can not be imported, <br />because it´s only needed for the' ";
+$cs_lang['error_inst_sql'] = "The <b>install.sql</b> file can not be imported, <br />because it is only needed for the' ";
 $cs_lang['error_inst_sql'] .= "<b>Installation</b>.<br />";
 $cs_lang['error_inst_sql'] .= "If you wish an update, please use the SQL update files from the directory <br /><b>\"updates/clansphere\"</b>";
