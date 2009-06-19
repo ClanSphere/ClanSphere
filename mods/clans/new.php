@@ -24,6 +24,9 @@ if(isset($_POST['submit'])) {
 
   if(!empty($files_gl['picture']['tmp_name']))
     $img_size = getimagesize($files_gl['picture']['tmp_name']);
+  else
+    $img_size = 0;
+
   if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
     $error++;
@@ -36,40 +39,40 @@ if(isset($_POST['submit'])) {
       $extension = 'jpg'; break;
       case 3:
       $extension = 'png'; break;
+    }
+    
+    if($img_size[0]>$op_clans['max_width']) {
+      $message .= $cs_lang['too_wide'] . cs_html_br(1);
+      $error++;
+    }
+    
+    if($img_size[1]>$op_clans['max_height']) { 
+      $message .= $cs_lang['too_high'] . cs_html_br(1);
+      $error++;
+    }
+    
+    if($files_gl['picture']['size']>$op_clans['max_size']) { 
+      $message .= $cs_lang['too_big'] . cs_html_br(1);
+      $error++;
+    }
+  }
+
+  if(empty($cs_clans['clans_name'])) {
+    $error++;
+    $errormsg .= $cs_lang['no_name'] . cs_html_br(1);
   }
     
-  if($img_size[0]>$op_clans['max_width']) {
-    $message .= $cs_lang['too_wide'] . cs_html_br(1);
+  if(empty($cs_clans['clans_short'])) {
     $error++;
+    $errormsg .= $cs_lang['no_short'] . cs_html_br(1);
   }
   
-  if($img_size[1]>$op_clans['max_height']) { 
-    $message .= $cs_lang['too_high'] . cs_html_br(1);
-    $error++;
-  }
-  
-  if($files_gl['picture']['size']>$op_clans['max_size']) { 
-    $message .= $cs_lang['too_big'] . cs_html_br(1);
-    $error++;
-  }
-}
+  $where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
+  $search = cs_sql_count(__FILE__,'clans',$where);
 
-if(empty($cs_clans['clans_name'])) {
-  $error++;
-  $errormsg .= $cs_lang['no_name'] . cs_html_br(1);
-}
-  
-if(empty($cs_clans['clans_short'])) {
-  $error++;
-  $errormsg .= $cs_lang['no_short'] . cs_html_br(1);
-}
-  
-$where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
-$search = cs_sql_count(__FILE__,'clans',$where);
-
-if(!empty($search)) {
-  $error++;
-  $errormsg .= $cs_lang['name_exists'] . cs_html_br(1);
+  if(!empty($search)) {
+    $error++;
+    $errormsg .= $cs_lang['name_exists'] . cs_html_br(1);
   }
 }
 else {
