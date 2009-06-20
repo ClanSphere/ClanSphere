@@ -114,7 +114,7 @@
 				<input type="hidden" name="players_id" value="{status:players_id}" />
 				<input type="hidden" name="wars_id" value="{status:wars_id}" />
 				<input type="submit" name="status" value="{lang:submit}" />
-			</from>
+			</form>
 		</td>
 	</tr>
 	{stop:status}
