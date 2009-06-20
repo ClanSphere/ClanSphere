@@ -245,6 +245,7 @@ $cs_lang['sub_folder']  = 'Subfoler of:';
 $cs_lang['url']  = 'Website';
 $cs_lang['cat_exists'] = 'Category already exists.';
 $cs_lang['folders'] = 'Folders';
+$cs_lang['folder'] = 'Folder';
 $cs_lang['folder_create'] = 'Create category';
 $cs_lang['folder_create_here'] = 'Here you can create new categories.';
 $cs_lang['no_name'] = 'No name given';
