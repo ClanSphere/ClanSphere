@@ -4,4 +4,4 @@
 
 $cs_lang['online']   = 'Online';
 $cs_lang['offline']  = 'Offline';
-$cs_lang['inactive'] = 'Inative';
+$cs_lang['inactive'] = 'Inactive';
