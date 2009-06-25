@@ -60,35 +60,29 @@ else {
   $data['lang']['logout'] = $cs_lang['logout'];
   $data['link']['logout'] = cs_url('users','logout');
 
-  if($cs_main['def_admin'] != 'separated') {
+  if($cs_main['def_admin'] != 'separated' OR $cs_main['php_self']['basename'] == 'admin.php') {
     if($account['access_clansphere'] >= 3) {
-/*      $data['lang']['admin'] .= $cs_lang['admin'];
-      $data['link']['admin'] .= cs_url('clansphere','admin');*/
-      $adm_link = cs_icon('package_settings') . $cs_lang['admin'];
-      $data['link']['admin'] .= cs_link($adm_link,'clansphere','admin');
+
+      $data['link']['admin'] .= cs_icon('package_settings') . cs_link($cs_lang['admin'],'clansphere','admin');
       $data['link']['admin'] .= cs_html_br(1);
     }
     if($account['access_clansphere'] >= 4) {
-      /*$data['lang']['system'] .= $cs_lang['system'];*/
-      $sys_link = cs_icon('package_system') . $cs_lang['system'];
-      $data['link']['system'] .= cs_link($sys_link,'clansphere','system');
-      
+
+      $data['link']['system'] .= cs_icon('package_system') . cs_link($cs_lang['system'],'clansphere','system');
       $data['link']['system'] .= cs_html_br(2);
     }
   }
   elseif($account['access_clansphere'] >= 3) {
-      /*$data['lang']['panel'] .= $cs_lang['panel'];*/
-      $pan_link = cs_icon('package_system') . $cs_lang['panel'];
+
       if(empty($cs_main['mod_rewrite']))
-        $data['link']['panel'] .= cs_html_link('admin.php', $pan_link);
+        $data['link']['panel'] .= cs_icon('package_system') . cs_html_link('admin.php', $cs_lang['panel']);
       else {
         $shorten  = $cs_main['php_self']['filename'];
         $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
         $panel_url = str_replace($shorten, '', $uri);
-        $data['link']['panel'] .= cs_html_link($panel_url . 'admin', $pan_link);
+        $data['link']['panel'] .= cs_icon('package_system') . cs_html_link($panel_url . 'admin', $cs_lang['panel']);
       }
       $data['link']['panel'] .= cs_html_br(2);
   }
-
   echo cs_subtemplate(__FILE__,$data,'users','navlogin3_2');
 }
