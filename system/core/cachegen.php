@@ -2,6 +2,18 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
+function cs_cache_clear() {
+
+  $content = cs_paths('uploads/cache');
+  unset($content['index.html'], $content['.htaccess']);
+  foreach($content AS $file => $name)
+    unlink('uploads/cache/' . $file);
+
+  $unicode = extension_loaded('unicode') ? 1 : 0;
+  $where = "options_mod = 'clansphere' AND options_name = 'cache_unicode'";
+  cs_sql_update(__FILE__, 'options', array('options_value'), array($unicode), 0, $where); 
+ }
+
 function cs_cache_dirs($dir, $lang) {
 
   # $cs_lang and $cs_main are needed for info.php file content parsing
@@ -10,7 +22,6 @@ function cs_cache_dirs($dir, $lang) {
   $content = cs_cache_load($filename);
 
   if($content === false) {
-
     $cs_lang_old = $cs_lang;
     $info = array();
     $directories = array_keys(cs_paths($dir));

@@ -12,10 +12,6 @@ $install_sql = 0;
 $actions = '';
 $sql_content = '';
 
-$content = cs_paths('uploads/cache');
-unset($content['index.html']);
-unset($content['.htaccess']);
-
 if(isset($files['update']['name']) AND preg_match("=^(.*?)\.sql$=si",$files['update']['name'])) {
   if($files['update']['name'] == 'install.sql') {
     $install_sql++;
@@ -31,9 +27,7 @@ elseif(!empty($_POST['text'])) {
 if(!empty($sql_content)) {
 
   $sql_update = str_replace('{time}',cs_time(),$sql_content);
-
   $sql_update = cs_sql_replace($sql_update);
-
   $sql_update = str_replace('\;','{serial}',$sql_update);
   $sql_array = explode(';',$sql_update);
   cs_abcode_load();
@@ -95,11 +89,8 @@ $data['if']['actions'] = empty($actions) ? false : true;
 
 if(!empty($actions)) {
 
-  foreach($content AS $file => $name) {
-    unlink('uploads/cache/' . $file);
-  }
+  cs_cache_clear();
   $cs_lang2 = cs_translate('clansphere');
-    $content = array();
     $data['lang']['cache_cleared'] = $cs_lang2['cache_cleared'];
 
   $data['message']['actions'] = $actions;

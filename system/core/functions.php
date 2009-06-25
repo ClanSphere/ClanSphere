@@ -108,10 +108,13 @@ function cs_init($predefined) {
     require_once 'system/database/' . $cs_db['type'] . '.php';
 
     $cs_db['con'] = cs_sql_connect($cs_db);
-    unset($cs_db['pwd']);
-    unset($cs_db['user']);
+    unset($cs_db['pwd'], $cs_db['user']);
 
     $cs_options = cs_sql_option(__FILE__,'clansphere');
+    
+    $cs_options['unicode'] = extension_loaded('unicode') ? 1 : 0;
+    if($cs_options['cache_unicode'] != $cs_options['unicode'])
+      cs_cache_clear();
   }
   else
     $cs_options = array();

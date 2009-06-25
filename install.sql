@@ -759,6 +759,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_navlists', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_reload', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cache_unicode', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cellspacing', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_lang', '{def_lang}');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_tpl', 'clansphere');
