@@ -113,7 +113,7 @@ function cs_init($predefined) {
     $cs_options = cs_sql_option(__FILE__,'clansphere');
     
     $cs_options['unicode'] = extension_loaded('unicode') ? 1 : 0;
-    if($cs_options['cache_unicode'] != $cs_options['unicode'])
+    if(!isset($cs_options['cache_unicode']) OR $cs_options['cache_unicode'] != $cs_options['unicode'])
       cs_cache_clear();
   }
   else
