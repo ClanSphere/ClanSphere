@@ -14,10 +14,10 @@
   <td class="leftb">{ok:php}</td>
  </tr>
  <tr>
-  <td class="leftb">{lang:compatible_database}</td>
-  <td class="leftb">{lang:any} <a href="#" title="{rq:database}">(?)</a></td>
-  <td class="leftb">{av:database}</td>
-  <td class="leftb">{ok:database}</td>
+  <td class="leftc">{lang:compatible_database}</td>
+  <td class="leftc">{lang:any} <a href="#" title="{rq:database}">(?)</a></td>
+  <td class="leftc">{av:database}</td>
+  <td class="leftc">{ok:database}</td>
  </tr>
 </table>
 <br />
@@ -42,34 +42,34 @@
   <td class="leftc">{data:ok}</td>
  </tr>
  <tr>
-  <td class="leftc">{lang:reg_global}</td>
-  <td class="leftc">{rc:register_globals}</td>
-  <td class="leftc">{av:register_globals}</td>
-  <td class="leftc">{data:ok}</td>
- </tr>
- <tr>
-  <td class="leftb">{lang:magic_quotes}</td>
-  <td class="leftb">{rc:magic_quotes}</td>
-  <td class="leftb">{av:magic_quotes}</td>
+  <td class="leftb">{lang:reg_global}</td>
+  <td class="leftb">{rc:register_globals}</td>
+  <td class="leftb">{av:register_globals}</td>
   <td class="leftb">{data:ok}</td>
  </tr>
  <tr>
-  <td class="leftc">{lang:safe_mode}</td>
-  <td class="leftc">{rc:safe_mode}</td>
-  <td class="leftc">{av:safe_mode}</td>
+  <td class="leftc">{lang:magic_quotes}</td>
+  <td class="leftc">{rc:magic_quotes}</td>
+  <td class="leftc">{av:magic_quotes}</td>
   <td class="leftc">{data:ok}</td>
  </tr>
  <tr>
-  <td class="leftb">{lang:trans_sid}</td>
-  <td class="leftb">{rc:trans_sid}</td>
-  <td class="leftb">{av:trans_sid}</td>
+  <td class="leftb">{lang:safe_mode}</td>
+  <td class="leftb">{rc:safe_mode}</td>
+  <td class="leftb">{av:safe_mode}</td>
   <td class="leftb">{data:ok}</td>
  </tr>
  <tr>
-  <td class="leftc">{lang:basedir_restriction}</td>
-  <td class="leftc">{rc:basedir}</td>
-  <td class="leftc">{av:basedir}</td>
+  <td class="leftc">{lang:trans_sid}</td>
+  <td class="leftc">{rc:trans_sid}</td>
+  <td class="leftc">{av:trans_sid}</td>
   <td class="leftc">{data:ok}</td>
+ </tr>
+ <tr>
+  <td class="leftb">{lang:basedir_restriction}</td>
+  <td class="leftb">{rc:basedir}</td>
+  <td class="leftb">{av:basedir}</td>
+  <td class="leftb">{data:ok}</td>
  </tr>
  <tr>
   <td class="leftc">{lang:file_uploads}</td>
@@ -90,12 +90,11 @@
   <td class="leftc">{data:ok}</td>
  </tr>
  <tr>
-  <td class="leftc">{lang:gd_extension}</td>
-  <td class="leftc">{rc:gd}</td>
-  <td class="leftc">{av:gd}</td>
-  <td class="leftc">{data:ok}</td>
+  <td class="leftb">{lang:gd_extension}</td>
+  <td class="leftb">{rc:gd}</td>
+  <td class="leftb">{av:gd}</td>
+  <td class="leftb">{data:ok}</td>
  </tr>
 </table>
 <br />
-
 {info:result}
