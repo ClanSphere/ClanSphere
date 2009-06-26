@@ -400,8 +400,13 @@ CREATE TABLE {pre}_eventguests (
   events_id int(8) NOT NULL default '0',
   users_id int(8) NOT NULL default '0',
   eventguests_since int(14) NOT NULL default '0',
-  PRIMARY KEY (eventguests_id),
-  UNIQUE (events_id, users_id)
+  eventguests_name varchar(80) NOT NULL default '',
+  eventguests_surname varchar(80) NOT NULL default '',
+  eventguests_phone varchar(40) NOT NULL default '0',
+  eventguests_mobile varchar(40) NOT NULL default '0',
+  eventguests_residence text,
+  eventguests_notice text,
+  PRIMARY KEY (eventguests_id)
 ){engine};
 
 CREATE TABLE {pre}_events (

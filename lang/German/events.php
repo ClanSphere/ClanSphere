@@ -148,15 +148,18 @@ $cs_lang['body_signin']     = 'Erfolgreich eingetragen';
 $cs_lang['no_event']       = '- Kein Termin gefunden';
 $cs_lang['user_found']     = '- Sie sind bereits angemeldet';
 $cs_lang['err_time']       = '- Der Termin ist abgesagt oder abgelaufen';
-$cs_lang['err_age']        = '- Ihr Alter entspricht nicht den Anforderungen';
-$cs_lang['err_name']       = '- Ihr Profil beinhaltet keinen Vor- und Zunamen';
-$cs_lang['err_adress']     = '- Ihr Profil beinhaltet keine komplette Adresse';
-$cs_lang['err_phone']      = '- Angabe im Profil fehlt oder zu kurz: Telefon';
-$cs_lang['err_mobile']     = '- Angabe im Profil fehlt oder zu kurz: Handy';
+$cs_lang['err_age']        = '- Das Alter entspricht nicht den Anforderungen';
+$cs_lang['err_name']       = '- Vor- und Zuname werden ben&ouml;tigt';
+$cs_lang['err_adress']     = '- Eine komplette Adresse wird ben&ouml;tigt';
+$cs_lang['err_phone']      = '- Angabe fehlt oder zu kurz: Telefon';
+$cs_lang['err_mobile']     = '- Angabe fehlt oder zu kurz: Handy';
 
 // Guests
 
 $cs_lang['new_guest']         = 'Neuer Gast';
+$cs_lang['new_guest_info']    = 'Bitte einen Benutzer ausw&auml;hlen oder einen neuen Gast erstellen';
+$cs_lang['guest']             = 'Gast';
+$cs_lang['notice']            = 'Notizen';
 $cs_lang['event']             = 'Termin';
 $cs_lang['no_user']           = '- Kein Benutzer selektiert';
 $cs_lang['user_event_exists'] = '- Der Benutzer ist bereits angemeldet';

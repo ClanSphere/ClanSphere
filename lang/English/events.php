@@ -148,15 +148,18 @@ $cs_lang['body_signin']     = 'Signin successful';
 $cs_lang['no_event']       = '- The event could not be found';
 $cs_lang['user_found']     = '- You are already signed in';
 $cs_lang['err_time']       = '- The event is canceled or has taken place';
-$cs_lang['err_age']        = '- You are not old enough to signin for the event';
-$cs_lang['err_name']       = '- Your profile must contain a full name';
-$cs_lang['err_adress']     = '- Your profile must contain a full adress';
-$cs_lang['err_phone']      = '- Data in profile too short or missing: Phone';
-$cs_lang['err_mobile']     = '- Data in profile too short or missing: Cell Phone';
+$cs_lang['err_age']        = '- Not old enough to signin for the event';
+$cs_lang['err_name']       = '- A full name is required';
+$cs_lang['err_adress']     = '- A full adress is required';
+$cs_lang['err_phone']      = '- Data too short or missing: Phone';
+$cs_lang['err_mobile']     = '- Data too short or missing: Cell Phone';
 
 // Guests
 
 $cs_lang['new_guest']         = 'New guest';
+$cs_lang['new_guest_info']    = 'Please select a user or create a new guest';
+$cs_lang['guest']             = 'Guest';
+$cs_lang['notice']            = 'Notice';
 $cs_lang['event']             = 'Event';
 $cs_lang['no_user']           = '- No user is selected';
 $cs_lang['user_event_exists'] = '- User has already signed in for the event';

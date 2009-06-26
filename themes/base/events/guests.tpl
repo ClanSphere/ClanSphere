@@ -26,7 +26,7 @@
     <td class="headb">{sort:name} {lang:name}</td>
     <td class="headb">{sort:time} {lang:time}</td>
 {if:admin}
-    <td class="headb"> {lang:options} </td>
+    <td class="headb" colspan="2"> {lang:options} </td>
 {stop:admin}
   </tr>
   {loop:eventguests}
@@ -35,6 +35,7 @@
     <td class="leftc">{eventguests:name}</td>
     <td class="leftc">{eventguests:since}</td>
 {if:admin}
+    <td class="centerc">{eventguests:edit}</td>
     <td class="centerc">{eventguests:remove}</td>
 {stop:admin}
   </tr>

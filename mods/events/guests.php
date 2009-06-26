@@ -38,7 +38,10 @@ $data['sort']['name'] = cs_sort('events','guests',$start,$events_id,3,$sort);
 $data['sort']['time'] = cs_sort('events','guests',$start,$events_id,5,$sort);
 
 $from = 'eventguests egt LEFT JOIN {pre}_users usr ON egt.users_id = usr.users_id';
-$select = 'egt.eventguests_since AS eventguests_since, egt.users_id AS users_id, usr.users_nick AS users_nick, usr.users_surname AS users_surname, usr.users_hidden AS users_hidden, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_name AS users_name, egt.eventguests_id AS eventguests_id';
+$select = 'egt.eventguests_name AS eventguests_name, egt.eventguests_surname AS eventguests_surname, '
+        . 'egt.eventguests_since AS eventguests_since, egt.users_id AS users_id, usr.users_nick AS users_nick, '
+        . 'usr.users_surname AS users_surname, usr.users_hidden AS users_hidden, usr.users_active AS users_active, '
+        . 'usr.users_delete AS users_delete, usr.users_name AS users_name, egt.eventguests_id AS eventguests_id';
 $cs_eventguests = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $eventguests_loop = count($cs_eventguests);
 
@@ -52,19 +55,16 @@ for($run=0; $run<$eventguests_loop; $run++) {
     $allow = 1;
 
   $hidden = explode(',',$cs_eventguests[$run]['users_hidden']);
-
   $content = cs_secure($cs_eventguests[$run]['users_surname']);
   if(in_array('users_surname',$hidden)) {
     $content = empty($allow) ? '' : cs_html_italic(1) . $content . cs_html_italic(0);
   }
-  $surname = empty($cs_eventguests[$run]['users_surname']) ? '' : $content;
-
+  $surname = empty($cs_eventguests[$run]['users_surname']) ? $cs_eventguests[$run]['eventguests_surname'] : $content;
   $content = cs_secure($cs_eventguests[$run]['users_name']);
   if(in_array('users_name',$hidden)) {
     $content = empty($allow) ? '' : cs_html_italic(1) . $content . cs_html_italic(0);
   }
-  $name = empty($cs_eventguests[$run]['users_name']) ? '' : $content;
-
+  $name = empty($cs_eventguests[$run]['users_name']) ? $cs_eventguests[$run]['eventguests_name'] : $content;
   if(!empty($surname) AND !empty($name))
     $data['eventguests'][$run]['name'] = $surname . ', ' . $name;
   elseif(!empty($surname) OR !empty($name))
@@ -72,8 +72,9 @@ for($run=0; $run<$eventguests_loop; $run++) {
   else
     $data['eventguests'][$run]['name'] = '';
 
-  $data['eventguests'][$run]['user'] = cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
+  $data['eventguests'][$run]['user'] = empty($cs_eventguests[$run]['users_id']) ? '-' : cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
   $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since'],1);
+  $data['eventguests'][$run]['edit'] = cs_link(cs_icon('edit',16,$cs_lang['edit']),'events','guestsadm','id=' . $cs_eventguests[$run]['eventguests_id'],0,$cs_lang['edit']);
   $data['eventguests'][$run]['remove'] = cs_link(cs_icon('editdelete',16,$cs_lang['remove']),'events','guestsdel','id=' . $cs_eventguests[$run]['eventguests_id'],0,$cs_lang['remove']);
 }
 

@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod_name} - {lang:new_guest}</td>
+    <td class="headb">{lang:mod_name} - {lang:guest}</td>
   </tr>
   <tr>
     <td class="leftb">{head:info}</td>
@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" id="events_guestsnew" action="{url:form}">
+<form method="post" id="events_guestsadm" action="{url:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc" rowspan="2">{icon:cal} {lang:event} *</td>
@@ -48,8 +48,8 @@
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb">
-        <input type="hidden" name="events_id" value="{events:id}" />
-        <input type="submit" name="submit" value="{lang:create}" />
+        <input type="hidden" name="id" value="{eventguests:eventguests_id}" />
+        <input type="submit" name="submit" value="{lang:edit}" />
       </td>
     </tr>
   </table>
