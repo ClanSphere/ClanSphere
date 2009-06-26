@@ -264,6 +264,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
   if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); }
 
+  if ($tpl_file == 'error.htm') $cs_main['template'] = 'install';
   $tpl_path = 'templates/' . $cs_main['template'];
   if (!file_exists($tpl_path . '/' . $tpl_file))
   {
@@ -334,7 +335,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $title_website = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
   $cs_temp_get = str_replace('{func:title_website}', $title_website, $cs_temp_get);
   $cs_act_lang = cs_translate($cs_main['mod']);
-  $title = $title_website . ' - ' . $cs_act_lang['mod_name'];
+  $title = ($cs_main['mod'] == 'static' AND $cs_main['action'] == 'view') ? $title_website : $title_website . ' - ' . $cs_act_lang['mod_name'];
   if(!empty($cs_main['page_title']))
     $title .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
   $cs_temp_get = str_replace('{func:title}', $title, $cs_temp_get);
