@@ -98,7 +98,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['if']['form'] = TRUE;
   $data['if']['done'] = FALSE;
 
-  $categories_data = cs_sql_select(__FILE__,'categories','*',"categories_mod = 'contact'",'categories_name',0,0);
+  $categories_data = cs_sql_select(__FILE__,'categories','*',"categories_mod = 'contact'",'categories_order ASC, categories_name',0,0);
 
   $data['mail']['name']           = $mail['name'];
   $data['mail']['email']          = $mail['email'];
