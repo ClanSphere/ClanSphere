@@ -6,11 +6,22 @@ UPDATE {pre}_users SET users_view = '' WHERE users_view NOT IN ('float', 'list')
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cache_unicode', '0');
 
-ALTER TABLE {pre}_eventguests DROP INDEX 'events_id';
+RENAME TABLE {pre}_eventguests TO {pre}_eventguests2;
 
-ALTER TABLE {pre}_eventguests ADD eventguests_name varchar(80) NOT NULL default '';
-ALTER TABLE {pre}_eventguests ADD eventguests_surname varchar(80) NOT NULL default '';
-ALTER TABLE {pre}_eventguests ADD eventguests_phone varchar(40) NOT NULL default '';
-ALTER TABLE {pre}_eventguests ADD eventguests_mobile varchar(40) NOT NULL default '';
-ALTER TABLE {pre}_eventguests ADD eventguests_residence text;
-ALTER TABLE {pre}_eventguests ADD eventguests_notice text;
+CREATE TABLE {pre}_eventguests (
+  eventguests_id {serial},
+  events_id int(8) NOT NULL default '0',
+  users_id int(8) NOT NULL default '0',
+  eventguests_since int(14) NOT NULL default '0',
+  eventguests_name varchar(80) NOT NULL default '',
+  eventguests_surname varchar(80) NOT NULL default '',
+  eventguests_phone varchar(40) NOT NULL default '0',
+  eventguests_mobile varchar(40) NOT NULL default '0',
+  eventguests_residence text,
+  eventguests_notice text,
+  PRIMARY KEY (eventguests_id)
+){engine};
+
+INSERT INTO {pre}_eventguests (eventguests_id, events_id, users_id, eventguests_since) SELECT eventguests_id, events_id, users_id, eventguests_since FROM {pre}_eventguests2;
+
+DROP TABLE {pre}_eventguests2;
