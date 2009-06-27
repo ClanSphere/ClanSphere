@@ -11,6 +11,12 @@
 <form method="post" id="cash_edit" action="{url:cash_edit}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
+		<td class="leftc">{icon:personal} {lang:nick} *</td>
+		<td class="leftb">
+			{cash:users_sel}
+		</td>
+	</tr>
+	<tr>
 		<td class="leftc">{icon:money} {lang:money} *</td>
 		<td class="leftb"><input type="text" name="cash_money" value="{cash:cash_money}" maxlength="14" size="10" /> {lang:euro}</td>
 	</tr>

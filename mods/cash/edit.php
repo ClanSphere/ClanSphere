@@ -36,8 +36,8 @@ if(isset($_POST['submit'])) {
 }
 else {
 
-  $select = 'cash_id, cash_inout, cash_money, cash_time, cash_text, cash_info';
-  $cs_cash = cs_sql_select(__FILE__,'cash',$select,"cash_id = '" . $cash_id . "'",0,0,1);
+  $select = 'cash_id, cash_inout, cash_money, cash_time, cash_text, cash_info, users_id';
+  $cs_cash = cs_sql_select(__FILE__,'cash',$select,"cash_id = '" . $cash_id . "'");
   
 }
 
@@ -64,6 +64,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['cash']['id'] = $cash_id;
 
+  $cs_user = cs_sql_select(__FILE__,'users','users_nick',"users_id = '" . $cs_cash['users_id'] . "'");
+  $data['cash']['users_sel'] = cs_user($cs_cash['users_id'], $cs_user['users_nick']);
 
   echo cs_subtemplate(__FILE__,$data,'cash','edit');
 }
