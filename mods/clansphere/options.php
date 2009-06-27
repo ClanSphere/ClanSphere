@@ -6,6 +6,7 @@ $cs_lang = cs_translate('clansphere');
 
 $data = array();
 $data['if']['done'] = false;
+$data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
 if($account['access_wizard'] == 5) {
 	
@@ -32,7 +33,7 @@ if(isset($_POST['submit'])) {
   $save['def_width'] = $_POST['def_width'];
   $save['cellspacing'] = (int) $_POST['cellspacing'];
   $save['def_title'] = $_POST['def_title'];
-  $save['def_mod'] = empty($allow) ? $cs_main['def_mod'] : $_POST['def_mod'];
+  $save['def_mod'] = empty($allow) ? $data['options']['def_mod'] : $_POST['def_mod'];
   $save['def_action'] = empty($_POST['def_action']) ? 'list' : $_POST['def_action'];
   $save['def_parameters'] = $_POST['def_parameters'];
   $save['def_path'] = $_POST['def_path_mode'] == 'automatic' ? '' : $_POST['def_path'];
@@ -64,7 +65,7 @@ else {
 
 	$data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
-  if (empty($cs_main['mod_rewrite'])) {
+  if (empty($data['options']['mod_rewrite'])) {
     $data['options']['mod_rewrite_on'] = '';
     $data['options']['mod_rewrite_off'] = ' selected="selected"';
   } else {
@@ -72,7 +73,7 @@ else {
     $data['options']['mod_rewrite_off'] = '';
   }
 
-  if(empty($cs_main['developer'])) {
+  if(empty($data['options']['developer'])) {
     $data['options']['developer_on'] = '';
     $data['options']['developer_off'] = ' selected="selected"';
   } else {
@@ -84,20 +85,20 @@ else {
   $run = 0;
 
   foreach($modules as $mods) {
-    $sel = $mods['dir'] == $cs_main['def_mod'] ? 1 : 0;
+    $sel = $mods['dir'] == $data['options']['def_mod'] ? 1 : 0;
     $data['sel'][$run]['options'] = cs_html_option($mods['name'],$mods['dir'],$sel);
     $run++;
   }
 
-  $data['options']['action'] = $cs_main['def_action'];
-  $data['options']['parameters'] = $cs_main['def_parameters'];
-  $data['options']['automatic'] = $cs_main['def_path'] == '1' ? 'selected="selected"' : '';
-  $data['options']['manual'] = $cs_main['def_path'] == '0' ? 'selected="selected"' : '';
+  $data['options']['action'] = $data['options']['def_action'];
+  $data['options']['parameters'] = $data['options']['def_parameters'];
+  $data['options']['automatic'] = $data['options']['def_path'] == '1' ? 'selected="selected"' : '';
+  $data['options']['manual'] = $data['options']['def_path'] == '0' ? 'selected="selected"' : '';
   $data['options']['def_path'] = $cs_main['def_path'];
-  $data['options']['public_1'] = $cs_main['public'] == '1' ? 'checked="checked"' : '';
-  $data['options']['public_2'] = $cs_main['public'] == '0' ? 'checked="checked"' : '';
-  $data['options']['admin_1'] = $cs_main['def_admin'] == 'integrated' || empty($cs_main['def_admin']) ? 'checked="checked"' : '';
-  $data['options']['admin_2'] = $cs_main['def_admin'] == 'separated' ? 'checked="checked"' : '';
+  $data['options']['public_1'] = $data['options']['public'] == '1' ? 'checked="checked"' : '';
+  $data['options']['public_2'] = $data['options']['public'] == '0' ? 'checked="checked"' : '';
+  $data['options']['admin_1'] = $data['options']['def_admin'] == 'integrated' || empty($data['options']['def_admin']) ? 'checked="checked"' : '';
+  $data['options']['admin_2'] = $data['options']['def_admin'] == 'separated' ? 'checked="checked"' : '';
 
   $data['options']['def_timezone'] = cs_html_select(1,'def_timezone');
   $timezone = -10;
@@ -105,23 +106,23 @@ else {
   while($timezone <= 12) {
     $zonename = $timezone >= 0 ? 'UTC +' . $timezone: 'UTC ' . $timezone;
     $offset = $timezone * 3600;
-    $sel = $offset == $cs_main['def_timezone'] ? 1 : 0;
+    $sel = $offset == $data['options']['def_timezone'] ? 1 : 0;
     $data['options']['def_timezone'] .= cs_html_option($zonename,$offset,$sel);
     $timezone = $timezone + 0.5;
   }
 
   $data['options']['def_timezone'] .= cs_html_select(0);
 
-  $data['options']['time_1'] = $cs_main['def_dstime'] == 'on' ? 'selected="selected"' : '';
-  $data['options']['time_0'] = $cs_main['def_dstime'] == 'off' ? 'selected="selected"' : '';
+  $data['options']['time_1'] = $data['options']['def_dstime'] == 'on' ? 'selected="selected"' : '';
+  $data['options']['time_0'] = $data['options']['def_dstime'] == 'off' ? 'selected="selected"' : '';
 
-  $data['options']['time_auto'] = $cs_main['def_dstime'] == '0' ? 'selected="selected"' : '';
+  $data['options']['time_auto'] = $data['options']['def_dstime'] == '0' ? 'selected="selected"' : '';
 
-  $data['options']['def_flood'] = $cs_main['def_flood'];
-  $data['options']['img_path'] = $cs_main['img_path'];
-  $data['options']['img_ext'] = $cs_main['img_ext'];
-  $data['options']['cellspacing'] = $cs_main['cellspacing'];
-  $data['options']['ajax_reload'] = empty($cs_main['ajax_reload']) ? 10 : $cs_main['ajax_reload'];
+  $data['options']['def_flood'] = $data['options']['def_flood'];
+  $data['options']['img_path'] = $data['options']['img_path'];
+  $data['options']['img_ext'] = $data['options']['img_ext'];
+  $data['options']['cellspacing'] = $data['options']['cellspacing'];
+  $data['options']['ajax_reload'] = empty($data['options']['ajax_reload']) ? 10 : $data['options']['ajax_reload'];
 
   echo cs_subtemplate(__FILE__,$data,'clansphere','options');
 }
