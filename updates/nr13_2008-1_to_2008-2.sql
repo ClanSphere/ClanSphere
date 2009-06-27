@@ -23,8 +23,8 @@ UPDATE {pre}_access SET access_templates = '5' WHERE access_id = '5';
 
 ALTER TABLE {pre}_users ADD users_tpl varchar(80) NOT NULL default '';
 ALTER TABLE {pre}_users ADD users_invisible int(2) NOT NULL default '0';
-ALTER TABLE {pre}_news ADD news_readmore text after news_headline;
-ALTER TABLE {pre}_news ADD news_readmore_active int(2) NOT NULL default '0' after news_text;
+ALTER TABLE {pre}_news ADD news_readmore text;
+ALTER TABLE {pre}_news ADD news_readmore_active int(2) NOT NULL default '0';
 ALTER TABLE {pre}_news ADD news_mirror text;
 ALTER TABLE {pre}_news ADD news_mirror_name text;
 
