@@ -36,7 +36,7 @@ $cs_lang['no_inout'] = '- Die Art der Zahlung muss festgelegt werden.';
 $cs_lang['no_money'] = '- Es wurde kein Betrag angegeben.';
 $cs_lang['no_text'] = '- Der Zweck der Zahlung muss angegeben werden.';
 $cs_lang['no_date'] = '- Das Datum Zahlung muss ausgew&auml;hlt werden.';
-$cs_lang['no_user'] = '- Es muss ein Benutzer ausge&auml;hlt werden.';
+$cs_lang['no_user'] = '- Es muss ein Benutzer ausgew&auml;hlt werden.';
 
 // Kontodaten
 $cs_lang['kt'] = 'Kontodaten';

@@ -3,7 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('cash');
+
 $data = array();
+
+$users_nick = '';
+$cs_cash['users_id'] = 0;
 
 if(isset($_POST['submit'])) {
   
@@ -11,11 +15,20 @@ if(isset($_POST['submit'])) {
   $cs_cash['cash_money'] = $_POST['cash_money'];
   $cs_cash['cash_text'] = $_POST['cash_text'];
   $cs_cash['cash_info'] = $_POST['cash_info'];
-  $cs_cash['users_id'] = $_POST['users_id'];
   $cs_cash['cash_time'] = cs_datepost('datum','date');
-  
+
+  $users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
+
   $error = '';
-  
+
+  $where = "users_nick = '" . cs_sql_escape($users_nick) . "'";
+  $users_data = cs_sql_select(__FILE__, 'users', 'users_id', $where);
+  if(empty($users_data['users_id'])) {
+    $error .= $cs_lang['no_user'] . cs_html_br(1);
+  }
+  else
+    $cs_cash['users_id'] = $users_data['users_id'];
+
   if(empty($cs_cash['cash_inout'])) {
     $error .= $cs_lang['no_inout'] . cs_html_br(1);
   }
@@ -28,10 +41,6 @@ if(isset($_POST['submit'])) {
   if(empty($cs_cash['cash_time'])) {
     $error .= $cs_lang['no_date'] . cs_html_br(1);
   }
-  if(empty($cs_cash['users_id'])) {
-    $error .= $cs_lang['no_user'] . cs_html_br(1);
-  }
-  
 }
 else {
 
@@ -53,8 +62,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['cash'] = $cs_cash;
 
-   $cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id','users_delete = "0"','users_nick',0,0);
-   $data['cash']['users_sel'] = cs_dropdown('users_id','users_nick',$cs_users,$cs_cash['users_id']);
+  $cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id','users_delete = "0"','users_nick',0,0);
+  $data['cash']['users_sel'] = cs_dropdown('users_id','users_nick',$cs_users,$cs_cash['users_id']);
 
   $inoutlist[0]['cash_inout'] = 'in';
   $inoutlist[0]['name'] = $cs_lang['drop_in'];
@@ -64,9 +73,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['cash']['date_sel'] = cs_dateselect('datum','date',$cs_cash['cash_time'],2000);
 
-   $data['cash']['abcode_smileys'] = cs_abcode_smileys('cash_info');
-   $data['cash']['abcode_features'] = cs_abcode_features('cash_info');
+  $data['cash']['abcode_smileys'] = cs_abcode_smileys('cash_info');
+  $data['cash']['abcode_features'] = cs_abcode_features('cash_info');
 
+  $data['users']['nick'] = $users_nick;
 
   echo cs_subtemplate(__FILE__,$data,'cash','create');
 }
