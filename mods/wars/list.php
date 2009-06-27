@@ -5,7 +5,8 @@
 $cs_lang = cs_translate('wars');
 
 $squads_id = empty($_REQUEST['where']) ? 0 : (int) $_REQUEST['where'];
-$where = empty($squads_id) ? 0 : "squads_id = '" . $squads_id . "'";
+$where_count = empty($squads_id) ? 0 : "squads_id = '" . $squads_id . "'";
+$where = empty($squads_id) ? 0 : "war.squads_id = '" . $squads_id . "'";
 
 $start = empty($_REQUEST['start']) ? 0 : (int) $_REQUEST['start'];
 $cs_sort[1] = 'war.wars_date DESC';
@@ -16,7 +17,7 @@ $cs_sort[5] = 'cat.categories_name DESC';
 $cs_sort[6] = 'cat.categories_name ASC';
 $sort = empty($_REQUEST['sort']) ? 1 : (int) $_REQUEST['sort'];
 $order = $cs_sort[$sort];
-$wars_count = cs_sql_count(__FILE__,'wars',$where);
+$wars_count = cs_sql_count(__FILE__,'wars',$where_count);
 
 $data = array();
 $data['info']['warcount'] = sprintf($cs_lang['count'], $wars_count);
