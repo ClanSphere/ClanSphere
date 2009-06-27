@@ -28,6 +28,7 @@ $nav_array = array('----',
   'users/navonline',
   'votes/navlist',
   'wars/navlist',
+  'wars/navlist2',
   'wars/navnext'
 );
 
