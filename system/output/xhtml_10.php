@@ -7,6 +7,20 @@
 # Add the following line to your setup.php file to use them further on:
 # $cs_main['xhtml_old'] = 1;
 
+if(version_compare(phpversion(), '5.2.1', '>='))
+  require_once 'mods/ajax/mail_func.php';
+else
+  require_once 'mods/ajax/mail_func_old.php';
+
+function cs_html_mail($mail, $link = '')
+{
+  return cs_ajax_mail($mail, $link);
+}
+function cs_html_msnmail($mail, $link = '')
+{
+  return cs_ajax_mail($mail, $link, 'http://members.msn.com/');
+}
+
 function cs_html_br($run)
 {
   $var = '';
@@ -37,22 +51,6 @@ function cs_html_img($url, $height = 0, $width = 0, $more = 0, $alt = '')
     $var .= $more . ' ';
   }
   return $var . "alt=\"" . $alt . "\" />";
-}
-
-function cs_html_mail($mail, $link = '', $service = 'mailto:')
-{
-	global $cs_main;
-  $email = explode("@", $mail);
-  $domain = empty($email[1]) ? array(0,1) : explode(".", $email[1]);
-  $link = empty($link) ? $email[0] . ' (at) ' . $domain[0] . ' (dot) ' . $domain[1] : $link;
-  $str = base64_encode($mail);
-
-  return '<a href="#" onclick="cs_ajax_request(\''.$cs_main['php_self']['dirname'].'mods/ajax/mail.php?mail=' . $str
-       . '\',function(http_request){window.location=\'' . $service . '\'+http_request.responseText;})">' . $link . '</a>';
-}
-function cs_html_msnmail($mail, $link = '')
-{
-  return cs_html_mail($mail, $link, 'http://members.msn.com/');
 }
 
 function cs_html_link($url, $link, $use_target = 1, $class = 0, $title = 0, $more = 0)
