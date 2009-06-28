@@ -100,8 +100,9 @@ function cs_init($predefined) {
     die(cs_error_internal(0,'No charset information found in setup.php'));
   }
 
-  $xhtml_mode = empty($cs_main['xhtml_old']) ? '' : '_old';
-  require_once 'system/output/xhtml_10' . $xhtml_mode . '.php';
+  require_once 'system/output/xhtml_10.php';
+  if(!empty($cs_main['xhtml_old']))
+    require_once 'system/output/xhtml_10_old.php';
 
   if(!empty($predefined['init_sql'])) {
 
