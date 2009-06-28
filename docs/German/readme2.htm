@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>ClanSphere Readme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ClanSphere - Liesmich</title>
 <link href="layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -15,7 +15,7 @@
 		<ul>
 		  <li><a href="#vorraussetzungen">Voraussetzungen</a></li>
 		  <li><a href="#installation">Installation</a></li>
-	   	  <li><a href="#update_old">Update von älteren Versionen</a></li>
+	   	  <li><a href="#update_old">Update von &auml;lteren Versionen</a></li>
 		  <li><a href="#update_bxcp">Update vom BXCP 0.3.2.2</a></li>
 		  <li><a href="#templates">Templates Platzhalter</a>
 		  	<ul>
@@ -44,12 +44,12 @@
 		  </tr>
 		  <tr>
 		    <td colspan="2">- Webspace (m&ouml;glichst mit FTP-Zugang)<br />
-				  - PHP 4.3.0+ auf dem Webserver<br />
-				  - PHP Option &quot;Dateien hochladen&quot; aktiviert<br />
-				  - Eine der folgenden Datenbanken (Dabei unterstütze PHP-Erweiterungen):<br />
+				  - PHP 4.3.0 oder eine neuere Version auf dem Webserver<br />
+				  - Eine der folgenden Datenbanken (Dabei unterst&uuml;tze PHP-Erweiterungen):<br />
 					-- MySQL ab 4.0 (mysql, mysqli, pdo_mysql)<br />
 					-- PostgreSQL ab 8.1 (pgsql, pdo_pgsql)<br />
-					-- SQLite ab 2 (sqlite, pdo_sqlite)
+					-- SQLite ab 2 (sqlite, pdo_sqlite)<br />
+          -- Microsoft SQL Server ab 2005 (sqlsrv)
 		  </td></tr>
 	 	</table>
 		<br />
@@ -61,9 +61,9 @@
 			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
 		  </tr>
 		  <tr><td colspan="2">Laden Sie den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'docs' und 'updates') auf Ihren Webspace 
-		  		und setzen Sie die entsprechenden Dateirechte in übergeordneten Verzeichnissen, um der install.php das Schreiben einer setup.php
-				zu erlauben. Diese wird während der Installation angelegt, um die Datenbankverbindungsdaten zu sichern. Als nächstes öffnen Sie einen Browser Ihrer Wahl 
-				und rufen die install.php auf. Diese liefert nun alle folgenden Instruktionen, welche für die Installation notwendig sind.
+		  		und setzen Sie die entsprechenden Dateirechte in &uuml;bergeordneten Verzeichnissen, um der install.php das Schreiben einer setup.php
+				zu erlauben. Diese wird w&auml;hrend der Installation angelegt, um die Datenbankverbindungsdaten zu sichern. Als n&auml;chstes &ouml;ffnen Sie einen Browser Ihrer Wahl 
+				und rufen die install.php auf. Diese liefert nun alle folgenden Instruktionen, welche f&uuml;r die Installation notwendig sind.
 		  </td></tr>
 		</table>
 		<br />
@@ -71,14 +71,14 @@
 		<br />
 		<table cellspacing="0" cellpadding="2" width="100%">
 		  <tr>
-		    <td class="head"><a name="update_old"></a>Update von älteren ClanSphere Versionen</td>
+		    <td class="head"><a name="update_old"></a>Update von &auml;lteren ClanSphere Versionen</td>
 			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
 		  </tr>
-		  <tr><td colspan="2">Führen Sie den SQL Patch (wenn ein Neuer im 'updates' Verzeichnis vorhanden sein sollte, ansonsten überspringen
-		  		Sie diesen Punkt) aus, indem dieser über das Browserfenster ausgeführt wird (Eingeloggt als Admin, zu finden unter dem Menüpunkt: 
-				System -&gt; Updates). Laden Sie als nächstes den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'convert', 
-				'docs' und 'updates') auf Ihren Webspace und setzen Sie am 'uploads' Verzeichnis rekursiv die nötigen Dateirechte um Dateien 
-				hochladen zu können.
+		  <tr><td colspan="2">F&uuml;hren Sie den SQL Patch (wenn ein Neuer im 'updates' Verzeichnis vorhanden sein sollte, ansonsten &uuml;berspringen
+		  		Sie diesen Punkt) aus, indem dieser &uuml;ber das Browserfenster ausgef&uuml;hrt wird (Eingeloggt als Admin, zu finden unter dem Men&uuml;punkt: 
+				System -&gt; Updates). Laden Sie als n&auml;chstes den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'convert', 
+				'docs' und 'updates') auf Ihren Webspace und setzen Sie am 'uploads' Verzeichnis rekursiv die n&ouml;tigen Dateirechte um Dateien 
+				hochladen zu k&ouml;nnen.
 		  </td></tr>
 		</table>
 		<br />
@@ -89,12 +89,12 @@
 		    <td class="head"><a name="update_bxcp"></a>Update vom BXCP 0.3.2.2</td>
 			<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
 		  </tr>		  
-		  <tr><td colspan="2">Aufgrund interner Umstellungen, die den Kern betreffen, ist es nötig, als Vorsichtsmaßnahme die Datenbank, sowie bisher 
-		  		vorhandenen FTP Inhalt im Installationsverzeichnis zu sichern und eine Liste manuell geänderter Dateien anzufertigen. 
-				Als zweites muss die Datei 'bxcp_0322_to_clansphere.sql', eingeloggt als Admin, unter dem Menüpunkt System -> Updates 
-				ausgeführt werden. Entfernen Sie nun den alten Inhalt vom FTP, ausgenommen die Verzeichnisse logs, templates und uploads. 
-				Laden Sie als viertes jetzt alle neuen Dateien auf den Webspace und öffnen Sie die setup.php zum bearbeiten mit einem Texteditor. 
-				Jedes $bx_db nun zu $cs_db und jedes $bx_log zu $cs_log ändern und die Datei abspeichern. Sollten nachfolgend noch Probleme 
+		  <tr><td colspan="2">Aufgrund interner Umstellungen, die den Kern betreffen, ist es n&ouml;tig, als Vorsichtsma&szlig;nahme die Datenbank, sowie bisher 
+		  		vorhandenen FTP Inhalt im Installationsverzeichnis zu sichern und eine Liste manuell ge&auml;nderter Dateien anzufertigen. 
+				Als zweites muss die Datei 'bxcp_0322_to_clansphere.sql', eingeloggt als Admin, unter dem Men&uuml;punkt System -> Updates 
+				ausgef&uuml;hrt werden. Entfernen Sie nun den alten Inhalt vom FTP, ausgenommen die Verzeichnisse logs, templates und uploads. 
+				Laden Sie als viertes jetzt alle neuen Dateien auf den Webspace und &ouml;ffnen Sie die setup.php zum bearbeiten mit einem Texteditor. 
+				Jedes $bx_db nun zu $cs_db und jedes $bx_log zu $cs_log &auml;ndern und die Datei abspeichern. Sollten nachfolgend noch Probleme 
 				auftauchen, schauen Sie bitte in die Instruktionen zur Hilfe.
 		  </td></tr>
 		</table>
@@ -108,12 +108,12 @@
 		  </tr>
 		  <tr><td colspan="2"><a name="templates_sys"></a><em>System Templates</em></td></tr>
 		  <tr><td style="width: 125px;">{func:charset}</td><td>Das Charset der aktiven Sprache wird ausgegeben, Standard ist ISO-8859-15</td></tr>
-		  <tr><td>{func:errors}</td><td>Vom System erkannte Fehler werden ausgegeben (für Entwickler gedacht)</td></tr>
+		  <tr><td>{func:errors}</td><td>Vom System erkannte Fehler werden ausgegeben (f&uuml;r Entwickler gedacht)</td></tr>
 		  <tr><td>{func:memory}</td><td>Vom Script aktuell genutzter Arbeitsspeicher</td></tr>
-		  <tr><td>{func:parse}</td><td>Anzeige der benötigten Ladezeit für die generierte Ausgabe</td></tr>
-		  <tr><td>{func:queries}</td><td>Gibt die Anzahl der durchgeführten SQL-Queries aus</td></tr>
-		  <tr><td>{func:show}</td><td>Zeigt die über mod= und action= definierte Unterseite an</td></tr>
-		  <tr><td>{func:sql}</td><td>Ausgabe der durchgeführten SQL-Queries (für Entwickler gedacht)</td></tr>
+		  <tr><td>{func:parse}</td><td>Anzeige der ben&ouml;tigten Ladezeit f&uuml;r die generierte Ausgabe</td></tr>
+		  <tr><td>{func:queries}</td><td>Gibt die Anzahl der durchgef&uuml;hrten SQL-Queries aus</td></tr>
+		  <tr><td>{func:show}</td><td>Zeigt die &uuml;ber mod= und action= definierte Unterseite an</td></tr>
+		  <tr><td>{func:sql}</td><td>Ausgabe der durchgef&uuml;hrten SQL-Queries (f&uuml;r Entwickler gedacht)</td></tr>
 		  <tr><td>{func:title}</td><td>Der in den Optionen eingestellte Seiten-Titel wird angezeigt</td></tr>
 		  <tr><td colspan="2"><a name="templates_mod"></a><em>Module Templates</em></td></tr>
 		  <tr><td style="width: 125px;">{func:charset}</td><td>Das Charset der aktiven Sprache wird ausgegeben, Standard ist ISO-8859-15</td></tr>
@@ -140,8 +140,8 @@
 		  <tr><td>{news:navlist}</td><td>Die letzten News mit Datum und Kopfzeile (Anzahl einstellbar)</td></tr>
 		  <tr><td>{shoutbox:navlist}</td><td>Anzeige einer Shoutbox</td></tr>
 		  <tr><td>{users:navbirth}</td><td>Zeigt Benutzer, die am aktuellen Tag ihren Geburtstag haben</td></tr>
-		  <tr><td>{users:navlang}</td><td>Auflistung der Sprachen, mit Flagge und Name, untereinander, sowie Wechselfunktion für Besucher und Benutzer</td></tr>
-		  <tr><td>{users:navlang2}</td><td>Auflistung der Sprachen, mit Flagge, nebeneinander, sowie Wechselfunktion für Besucher und Benutzer</td></tr>
+		  <tr><td>{users:navlang}</td><td>Auflistung der Sprachen, mit Flagge und Name, untereinander, sowie Wechselfunktion f&uuml;r Besucher und Benutzer</td></tr>
+		  <tr><td>{users:navlang2}</td><td>Auflistung der Sprachen, mit Flagge, nebeneinander, sowie Wechselfunktion f&uuml;r Besucher und Benutzer</td></tr>
 		  <tr><td>{users:navlast}</td><td>Benutzer, die sich zuletzt registriert haben</td></tr>
 		  <tr><td>{users:navlogin}</td><td>Zeigt Extern ein Login-Formular und Intern eine Funktionsliste</td></tr>
 		  <tr><td>{users:navlogin2}</td><td>Zeigt Extern diverse Links, wie z.B. Login und Intern eine Funktionsliste</td></tr>
@@ -150,7 +150,7 @@
 		  <tr><td>{users:navonline}</td><td>Benutzer, die aktuell Online sind</td></tr>
 		  <tr><td>{users:navonline_ava}</td><td>Benutzer, die aktuell Online sind mit ihrem Avatar</td></tr>
 		  <tr><td>{users:navonline_pic}</td><td>Benutzer, die aktuell Online sind mit ihrem Bild</td></tr>
-		  <tr><td>{users:navrand}</td><td>Zeigt zufällig einen Benutzer</td></tr>		  
+		  <tr><td>{users:navrand}</td><td>Zeigt zuf&auml;llig einen Benutzer</td></tr>		  
 		  <tr><td>{votes:navlist}</td><td>Zeigt die derzeit aktuelle Abstimmung an</td></tr>
 		  <tr><td>{wars:navlist}</td><td>Die letzten Wars mit Spiel, Gegner und Ergebnis (Anzahl einstellbar)</td></tr>
 		  <tr><td>{wars:navlist2}</td><td>Die letzten Wars mit Datum, Spiel, Gegner und Ergebnis (Anzahl einstellbar)</td></tr>
@@ -166,11 +166,11 @@
 		  </tr>
 		  <tr><td class="leftc" colspan="2">[html]HTML[/html]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">In diesem Bereich ist HTML erlaubt. Diese Funktion ist in den meisten Modulen gesperrt 
-		 	und ist nicht öffentlich zugänglich.</td></tr>
+		 	und ist nicht &ouml;ffentlich zug&auml;nglich.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>
 		  <tr><td class="leftc" colspan="2">[phpcode]Code[/phpcode]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">In diesem Bereich wird PHP-Code vom Webserver interpretiert. Diese Funktion kann man 
-		 	ausschließlich im Statische Seiten Modul verwenden und dort nur auf Admin-Seiten ab Level 5. Der Code ist ohne 
+		 	ausschlie&szlig;lich im Statische Seiten Modul verwenden und dort nur auf Admin-Seiten ab Level 5. Der Code ist ohne 
 			"< ? php" und "? >" anzugeben.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>
 		  <tr><td class="leftc" colspan="2">[php]Code[/php]</td></tr>
@@ -192,36 +192,36 @@
 		  <tr><td class="leftc" colspan="2">[img]Pfad[/img]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion zeigt ein Bild des angegebenen Pfades an (image).</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>			
-		  <tr><td class="leftc" colspan="2">[img width=Breite height=Höhe]Pfad[/img]</td></tr>
+		  <tr><td class="leftc" colspan="2">[img width=Breite height=H&ouml;he]Pfad[/img]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion zeigt ein Bild des angegeben Pfades mit angegebener H&ouml;he und Breite an.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>			
 		  <tr><td class="leftc" colspan="2">[mail]Adresse[/mail]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion erstellt einen Hyperlink auf eine E-Mail-Adresse. Bei Klick wird der Standard
-		 	E-Mail-Browser geöffnet. Dies geschieht inzwischen allerdings auch automatisch, ist also nicht mehr notwendig.</td></tr>
+		 	E-Mail-Browser ge&ouml;ffnet. Dies geschieht inzwischen allerdings auch automatisch, ist also nicht mehr notwendig.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>					
 		  <tr><td class="leftc" colspan="2">[url]Adresse[/url]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Diese Funktion erstellt einen Hyperlink auf die angegebene Adresse. Valide Adressen 
-			werden aber inzwischen automatisch erkannt, ist in den meisten Fällen also unnötig.</td></tr>
+			werden aber inzwischen automatisch erkannt, ist in den meisten F&auml;llen also unn&ouml;tig.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>					
 		  <tr><td class="leftc" colspan="2">[url=Adresse]Anzeige[/url]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Erstellt einen Hyperlink auf die angegebene Adresse mit der angegebenen Anzeige.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>	
-		  <tr><td class="leftc" colspan="2">[size=Größe]Text[/size]</td></tr>
-		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird in der angegebenen Größe angezeigt. Maximale Größe ist 50.</td></tr>
+		  <tr><td class="leftc" colspan="2">[size=Gr&ouml;&szlig;e]Text[/size]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird in der angegebenen Gr&ouml;&szlig;e angezeigt. Maximale Gr&ouml;&szlig;e ist 50.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>	
 		  <tr><td class="leftc" colspan="2">[left]Text[/left]<br />[center]Text[/center]<br />[right]Text[/right]<br />[justify]Text[/justify]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Dieser Text wird links (left), rechts (right) oder mittig (center) angeordnet. Bei justify 
 			erscheint der Text als Blocksatz.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>	
 		  <tr><td class="leftc" colspan="2">[list]<br />[*]Listen-Eintrag 1<br />[*]Listen-Eintrag 2<br />[/list]</td></tr>
-		  <tr><td style="padding-left: 15px;" colspan="2">Erstellt eine Liste. Für jeden Eintrag muss ein [*] geschrieben werden.</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Erstellt eine Liste. F&uuml;r jeden Eintrag muss ein [*] geschrieben werden.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>	
-		  <tr><td class="leftc" colspan="2">[flag=Kürzel]</td></tr>
-		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt ein Icon mit der Flagge des angegebenen Landes an. Es ist das Kürzel des Landes 
-		  	anzugeben. Eine vollständige Liste ist bei Wikipedia zu finden: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2</td></tr>
+		  <tr><td class="leftc" colspan="2">[flag=K&uuml;rzel]</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt ein Icon mit der Flagge des angegebenen Landes an. Es ist das K&uuml;rzel des Landes 
+		  	anzugeben. Eine vollst&auml;ndige Liste ist bei Wikipedia zu finden: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>	
 		  <tr><td class="leftc" colspan="2">[indent=Anzahl]Text[/indent]</td></tr>
-		  <tr><td style="padding-left: 15px;" colspan="2">Rückt den Text um die angegebene Anzahl an Leerzeichen ein.</td></tr>
+		  <tr><td style="padding-left: 15px;" colspan="2">R&uuml;ckt den Text um die angegebene Anzahl an Leerzeichen ein.</td></tr>
  		  <tr><td style="height: 10px; border: 0;"></td></tr>	
 		  <tr><td class="leftc" colspan="2">[hr]</td></tr>
 		  <tr><td style="padding-left: 15px;" colspan="2">Zeigt eine horizontale Trennlinie an.</td></tr>

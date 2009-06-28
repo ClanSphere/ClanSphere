@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>ClanSphere Readme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ClanSphere - Funktionen</title>
 <link href="layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<a name="top"></a>
+<a name="top">&nbsp;</a>
 <div id="container">
   <div id="header"></div>
   <div id="main_text"><br />
@@ -28,7 +28,6 @@
 			<li><a href="#cs_sql_select">cs_sql_select()</a></li>	
 			<li><a href="#cs_sql_update">cs_sql_update()</a></li>		
 			<li><a href="#cs_sql_version">cs_sql_version()</a></li>		
-			<li><a href="#sql_list">Liste unterstützer Datenbank-Erweiterungen</a></li>		
 		  </ul>
 		</li>
 	  </ul>
@@ -36,7 +35,7 @@
 	<div id="other_help">
 	  <strong>Weitere Hilfen</strong>
 	  <ul>
-	    <li><a href="Readme.htm">Readme</a></li>
+	    <li><a href="readme.htm">Liesmich</a></li>
 	  </ul>
 	</div>
 	<div style="clear: both;"></div>
@@ -49,16 +48,16 @@
 		<td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
 	  </tr>
   	  <tr><td class="leftc" colspan="2">Allgemeines zur Schreibweise und Hinweise</td></tr>
-	  <tr><td colspan="2">Die Variablen in den Klammern sind die Parameter der Funktionen. Nicht alle Parameter muessen an eine Funktion
-		  		uebergeben werden, optionale Parameter sind in eckigen Klammern [ ]. Ist eine Variable optional, hat sie einen Standard 
+	  <tr><td colspan="2">Die Variablen in den Klammern sind die Parameter der Funktionen. Nicht alle Parameter m&uuml;ssen an eine Funktion
+		  		&uuml;bergeben werden, optionale Parameter sind in eckigen Klammern [ ]. Ist eine Variable optional, hat sie einen Standard 
 				Wert. Dieser ist in den Runden Klammern hinter der Variable zu finden. Ist der Standard Wert 0, so heisst das entweder, 
-				dass die Variable nicht benutzt wird, oder, dass statt dem uebergebenen Parameter eine vordefinierte Variable benutzt wird.
+				dass die Variable nicht benutzt wird, oder, dass statt dem &uuml;bergebenen Parameter eine vordefinierte Variable benutzt wird.
 				Die Variable "Funktion" ist wie "An / Aus" oder "Anfang / Ende". 1 ist dabei an, 0 aus.
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2">cs_html_br(Anzahl)</td></tr>
 	  <tr>
-	    <td colspan="2">Diese Funktion gibt "Anzahl" HTML Zeilenumbr&uuml;che zurueck.</td>
+	    <td colspan="2">Diese Funktion gibt "Anzahl" HTML Zeilenumbr&uuml;che zur&uuml;ck.</td>
 	  </tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2">cs_html_hr(Breite)</td></tr>
@@ -66,7 +65,7 @@
 	    <td colspan="2">Diese Funktion gibt eine Trennlinie mit der Breite "Breite" zur&uuml;ck.</td>
 	  </tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
-	  <tr><td class="leftc" colspan="2">cs_html_img(Bildpfad [, Hoehe (0) [, Breite (0) [, Mehr (0) [, Alternativ-Text (leer) ] ] ] ])</td></tr>
+	  <tr><td class="leftc" colspan="2">cs_html_img(Bildpfad [, H&ouml;he (0) [, Breite (0) [, Mehr (0) [, Alternativ-Text (leer) ] ] ] ])</td></tr>
 	  <tr><td colspan="2">--</td></tr>
    	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2">cs_html_link(Zieladresse, Anzeige [, Neues Fenster (1) [, Klasse (0) [, Titel (0) ] ] ])</td></tr>
@@ -75,7 +74,7 @@
 	  <tr><td class="leftc" colspan="2">cs_html_anchor(Name [, Text (leer) [, Mehr (leer) ] ])</td></tr>
 	  <tr><td colspan="2">--</td></tr>
  	  <tr><td style="height: 10px; border: 0;"></td></tr>
-	  <tr><td class="leftc" colspan="2">cs_html_option(Name, Wert [, Gewaehlt (0) [, CSS Style (0) ] ])</td></tr>
+	  <tr><td class="leftc" colspan="2">cs_html_option(Name, Wert [, Gew&auml;hlt (0) [, CSS Style (0) ] ])</td></tr>
 	  <tr><td colspan="2">--</td></tr>
  	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2">cs_html_underline(Funktion)</td></tr>
@@ -104,17 +103,18 @@
 			Sicherheitsbibel behandeln und im Zweifelsfall hier nachsehen.<br /><br />
 			Textstellen die farblich Fett oder Farbig hervorgehoben sind sollten dabei besonders beachtet werden, wobei speziell die rote 
 			Farbe eine Gefahrenstelle markiert. Dateinamen und Verzeichnisse sind an der cyan Farbe zu erkennen. Die Klammern [ und ] 
-			kennzeichnen Optional mögliche Zusätze und sind nicht notwendig, aber oftmals hilfreich.<br /><br />
+			kennzeichnen Optional m&ouml;gliche Zus&auml;tze und sind nicht notwendig, aber oftmals hilfreich.<br /><br />
 			<font style="color:#FF0000;">Achtung</font>: Bei roter Hervorhebung besteht die akute Gefahr der SQL-Injektion! Daten aus 
 			globalen Arrays wie z.B. $_GET, $_POST, $_REQUEST usw., sowie andere oder auch bereits gespeicherte Benutzer-Eingaben sind hier 
-			erst nach Filterung über die Funktion '''cs_sql_escape''' zu verwenden!
+			erst nach Filterung &uuml;ber die Funktion '''cs_sql_escape''' zu verwenden!
 	  </td></tr>
    	  <tr><td style="height: 10px; border: 0;"></td></tr>
-	  <tr><td class="leftc" colspan="2"><a name="cs_sql_connect"></a>cs_sql_connect(array Verbindungsdaten)</td></tr>
-	  <tr><td colspan="2">Die Verbindungsdaten werden aus der setup.php ausgelesen. Im Regelfall wird hier das Array $cs_db übergeben 
+	  <tr><td class="leftc" colspan="2"><a name="cs_sql_connect"></a>cs_sql_connect(array Verbindungsdaten, [int Test])</td></tr>
+	  <tr><td colspan="2">Die Verbindungsdaten werden aus der setup.php ausgelesen. Im Regelfall wird hier das Array $cs_db &uuml;bergeben 
 	  		und ausgewertet.<br /><br />
 			Diese Funktion wird beim Single-SQL-Server-Betrieb auf den ClanSphere normalerweise ausgelegt ist nur in der Start-Datei 
-			wie z.B. der index.php benötigt und dort aufgerufen um die Verbindung zur Datenbank zu initialisieren.<br /><br />
+			wie z.B. der index.php ben&ouml;tigt und dort aufgerufen um die Verbindung zur Datenbank zu initialisieren. Der optionale Parameter
+      Test ist zum &Uuml;berpr&uuml;fen von Verbindungen, z.B. bei der Installation, gedacht.<br /><br />
 			Beispiel:<br />
 			<div class="quote">$cs_db['con'] = cs_sql_connect($cs_db);</div><br />
 			Dabei wird das Verbindungsobjekt in die Array-Variable 'con' von $cs_db gesichert.
@@ -122,66 +122,66 @@
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_count"></a>cs_sql_count(var Datei, var SQL-Tabelle(n), [var Bedingungen, [var Eindeutig]]) )
 	  </td></tr>
-	  <tr><td colspan="2">Mit dieser Funktion werden Zahlen als Integer abgeholt, z.B. um eine Anzahl oder Existenz von Datensätzen festzustellen.
-	  		<br /><br />Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht um im
+	  <tr><td colspan="2">Mit dieser Funktion werden Zahlen als Integer abgeholt, z.B. um eine Anzahl oder Existenz von Datens&auml;tzen festzustellen.
+	  		<br /><br />Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht um im
 			Fehlerfall den Ursprung zu finden.<br /><br />
 			Die SQL-Tabelle ist ohne Prefix anzugeben, sofern weitere SQL-Tabellen per JOIN folgen sind die folgenden mit dem Prefix anzugeben 
-			und zudem für alle SQL-Tabellen Abkürzungen zu definieren, z.B. sqd für {pre}_squads.<br /><br />
-			Bedingungen sind die Entsprechung für die WHERE-Klausel bei normalen SQL-Querys und sind ohne das WHERE anzugeben. Beachtet bei
-			vorhandenen JOINS bei den SQL-Tabellen, hier die Spalten, der Identifikation wegen, mit ihrer Abkürzung anzusprechen, z.B.
+			und zudem f&uuml;r alle SQL-Tabellen Abk&uuml;rzungen zu definieren, z.B. sqd f&uuml;r {pre}_squads.<br /><br />
+			Bedingungen sind die Entsprechung f&uuml;r die WHERE-Klausel bei normalen SQL-Queries und sind ohne das WHERE anzugeben. Beachtet bei
+			vorhandenen JOINS bei den SQL-Tabellen, hier die Spalten, der Identifikation wegen, mit ihrer Abk&uuml;rzung anzusprechen, z.B.
 			{pre}_squads.squads_id angeben als sqd.squads_id.<br /><br />
-			Das mitgeben der Option Eindeutig legt fest welche Spalten bei der Abfrage jeweils nur einmal je aufgefundenem Wert berücksichtigt
-			bzw. darüber zusammengefasst werden. Dies erfordert oft ausgibiges Testen um das Ziel zu erreichen.<br /><br />
+			Das mitgeben der Option Eindeutig legt fest welche Spalten bei der Abfrage jeweils nur einmal je aufgefundenem Wert ber&uuml;cksichtigt
+			bzw. dar&uuml;ber zusammengefasst werden. Dies erfordert oft ausgibiges Testen um das Ziel zu erreichen.<br /><br />
 			Beispiel:<br />
 			<div class="quote">$number_of_squads = cs_sql_count(__FILE__, 'squads');</div><br />
 			Liest die Anzahl der in der SQL-Tabelle {pre}_squads eingetragenen Squads aus und liefert das Resultat als Integer
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_delete"></a>cs_sql_delete(var Datei, var SQL-Tabelle(n), int ID, [var Feldname]])</td></tr>	  
-	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
 	  		um im Fehlerfall den Ursprung zu finden.<br /><br />
 			Die SQL-Tabelle ist ohne Prefix anzugeben, sofern weitere SQL-Tabellen per JOIN folgen sind die folgenden mit dem Prefix anzugeben 
-			und zudem für alle SQL-Tabellen Abkürzungen zu definieren, z.B. sqd für {pre}_squads.<br /><br />
+			und zudem f&uuml;r alle SQL-Tabellen Abk&uuml;rzungen zu definieren, z.B. sqd f&uuml;r {pre}_squads.<br /><br />
 			Die ID gibt an welcher Datensatz betroffen ist, wobei der Feldname sich aus der folgenden Option ergibt.<br /><br />
-			Der Feldname ist Standardmäßig die SQL-Tabelle ohne Prefix mit _id dahinter, also bei {pre}_squads würde dies squads_id entsprechen.
+			Der Feldname ist Standardm&auml;&szlig;ig die SQL-Tabelle ohne Prefix mit _id dahinter, also bei {pre}_squads w&uuml;rde dies squads_id entsprechen.
 			Um einen anderen Feldnamen anzusprechen bzw. unter verwendung von JOINS bei den SQL-Tabellen ist es hier erforderlich eine Angabe 
 			zu machen.<br /><br />
 			Beispiel:<br />
 			<div class="quote">cs_sql_delete(FILE, 'squads', 5);</div><br />
-			Dies würde die ID 5 aus der Tabelle {pre}_squads entfernen
+			Dies w&uuml;rde die ID 5 aus der Tabelle {pre}_squads entfernen
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_escape"></a>cs_sql_escape(var Daten) </td></tr>	  
-	  <tr><td colspan="2">Die Daten werden gegen SQL-Injektion gesichert, indem gefährliche Zeichen durch, für die Datenbank gekennzeichnete, 
+	  <tr><td colspan="2">Die Daten werden gegen SQL-Injektion gesichert, indem gef&auml;hrliche Zeichen durch, f&uuml;r die Datenbank gekennzeichnete, 
 	  		gleiche Zeichen ersetzt werden. Dies hat im Normalfall keine Auswirkungen auf die Daten an sich, falls doch kann es sein das 
 			die veralteten PHP-Optionen magic_quotes_gpc oder magic_quotes_runtime auf dem Webserver aktiviert sind, unbedingt abschalten 
 			(off)! Solltet ihr keinen Zugriff auf diese Optionen haben, dann bittet euren Provider um die Umstellung.<br /><br />
 			Hinweis: Mit PHP 6 fallen die magic_quotes Funktionen eh weg, falls der Provider sich also weigern sollte diese abzuschalten 
-			wird ihn spätestens dieses Argument überzeugen. Zudem ist es unprofessionelle Stützradprogrammierung sich auf diese zu verlassen!
+			wird ihn sp&auml;testens dieses Argument &uuml;berzeugen. Zudem ist es unprofessionelle St&uuml;tzradprogrammierung sich auf diese zu verlassen!
 			<br /><br />
 			Tipp: Achtet darauf das Daten nicht mehrfach abgesichert werden, dies hat ungewollte Nebenwirkungen (z.B. das sich diverse Zeichen 
-			öfter als ursprünglich wiederholen)!<br /><br />
+			&ouml;fter als urspr&uuml;nglich wiederholen)!<br /><br />
 			Beispiel:<br />
 			<div class="quote">$secure_string = cs_sql_escape('this is a simple string');</div><br />
-			Dies sichert die Daten die der Funktion übergeben werden ab um zu verhindern das diese folgende SQL-Anfragen beeinflussen.
+			Dies sichert die Daten die der Funktion &uuml;bergeben werden ab um zu verhindern das diese folgende SQL-Anfragen beeinflussen.
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
-	  <tr><td class="leftc" colspan="2"><a name="cs_sql_insert"></a>cs_sql_insert (var Datei, var SQL-Tabelle, array Feldnamen, array Werte)</td></tr>	  	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td class="leftc" colspan="2"><a name="cs_sql_insert"></a>cs_sql_insert (var Datei, var SQL-Tabelle, array Feldnamen, array Werte)</td></tr>	  	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
 	  		um im Fehlerfall den Ursprung zu finden.<br /><br />
 			Die SQL-Tabelle ist ohne Prefix anzugeben.<br /><br />
 			Alle Feldnamen, wobei auch nur einer angegeben werden kann, sind als Array zu liefern. Dieser wird dann in der vorher festgelegten 
 			Sortierung abgearbeitet und muss die gleiche Anzahl Array-Elemente enthalten wie der Werte-Array.<br /><br />
-			Mit den Werten verhält es sich genau wie mit den Feldnamen, nur das hier die zu verwendenen Daten enthalten sind.<br /><br />
+			Mit den Werten verh&auml;lt es sich genau wie mit den Feldnamen, nur das hier die zu verwendenen Daten enthalten sind.<br /><br />
 			Beispiel:<br />
 			<div class="quote">cs_sql_insert(FILE, 'squads', array('squads_name'), array('example_squad'));</div><br />
-			Dies würde den example_squad in die SQL-Tabelle {pre}_squads eintragen
+			Dies w&uuml;rde den example_squad in die SQL-Tabelle {pre}_squads eintragen
 	  	</td>
 	  </tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_insertid"></a>cs_sql_insertid (var Datei)</td></tr>
-	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
 	  		um im Fehlerfall den Ursprung zu finden.<br /><br />
-			Liefert die ID der letzten cs_sql_insert Ausführung und sollte möglichst direkt nach diesem Befehl verwendet werden. Diese 
+			Liefert die ID der letzten cs_sql_insert Ausf&uuml;hrung und sollte m&ouml;glichst direkt nach diesem Befehl verwendet werden. Diese 
 			Funktion wird z.B. verwendet um die Themen-ID des gerade erstellten Themas zu holen um den Benutzer direkt auf dieses Thema 
 			weiterzuleiten.<br /><br />
 			Beispiel:<br />
@@ -190,96 +190,83 @@
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_option"></a>cs_sql_option(var Datei, var Modul)</td></tr>
-	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
 	  		um im Fehlerfall den Ursprung zu finden.<br /><br />
 			Das Modul entspricht meistens dem Verzeichnisnamen vom Modul, dessen Optionen als Array abgeholt werden sollen.<br /><br />
-			Tipp: Alle globalen Optionen vom Modul clansphere sind bereits im Array $cs_main verfügbar.<br /><br />
+			Tipp: Alle globalen Optionen vom Modul clansphere sind bereits im Array $cs_main verf&uuml;gbar.<br /><br />
 			Beispiel:<br />
 			<div class="quote">$squad_options = cs_sql_option(FILE, 'squads');</div><br />
-			Damit wären alle Optionen vom Modul Squads im Array $squads_options vorhanden
+			Damit w&auml;ren alle Optionen vom Modul Squads im Array $squads_options vorhanden
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_query"></a>cs_sql_query(var Datei, var Anfrage)</td></tr>
-	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
 	  		um im Fehlerfall den Ursprung zu finden.<br /><br />
-			Die Anfrage ist ein vollständiges SQL-Query und sollte daher keine Befehle enthalten die vom SQL-Standard abweichen 
+			Die Anfrage ist ein vollst&auml;ndiges SQL-Query und sollte daher keine Befehle enthalten die vom SQL-Standard abweichen 
 			(SQL 2003 Core bzw. vorher SQL 99). Folgende SQL-Befehle sollten z.B. vermieden werden: ALTER TABLE CHANGE ... , ALTER TABLE 
 			ALTER ...<br /><br />
 			Um den Erfolg auszuwerten liefert die Funktion im Fehlerfall den Integer 0 und bei Erfolg einen Array mit dem Element 
-			affected_rows zurück in dem als Integer die Anzahl betroffener Datensätze enthalten ist.<br /><br />
+			affected_rows zur&uuml;ck in dem als Integer die Anzahl betroffener Datens&auml;tze enthalten ist.<br /><br />
 			Beispiel:<br />
 			<div class="quote">$query_result = cs_sql_query(FILE, 'UPDATE {pre}_squads SET squads_name = 'test' WHERE squads_id = 3');</div><br />
 			Dies setzt den Squadnamen bei dem Squad mit der ID 3 auf den Wert test
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_select"></a>cs_sql_select(var Datei, var SQL-Tabelle(n), var Feldnamen, [var Bedingungen, [var Sortierung, [int Anfang, [int Anzahl]]]]) </td></tr>
-	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
 	  		um im Fehlerfall den Ursprung zu finden.<br /><br />
 			Die SQL-Tabelle ist ohne Prefix anzugeben, sofern weitere SQL-Tabellen per JOIN folgen sind die folgenden mit dem Prefix anzugeben 
-			und zudem für alle SQL-Tabellen Abkürzungen zu definieren, z.B. sqd für {pre}_squads.<br /><br />
-			Die Feldnamen entsprechen dem SELECT Abschnitt eines SQL-Querys und sind ohne das SELECT zu übergeben. Nur ein * zu übergeben um 
-			alle Feldnamen zu selektieren wird aus Geschwindigkeitsgründen nicht empfohlen, da die meisten SQL-Server dann mehr Zeit verbrauchen
-			um die Meta-Tabelle abzufragen welche Feldnamen überhaupt verfügbar sind. Beachtet bei vorhandenen JOINS bei den SQL-Tabellen, hier 
-			die Spalten, der Identifikation wegen, mit ihrer Abkürzung anzusprechen, z.B. {pre}_squads.squads_id angeben als sqd.squads_id und 
-			zudem ein alias zu setzen um diese in der Ausgabe wie gewohnt benutzen zu können, z.B. sql.squads_id AS squads_id.<br /><br />
-			Bedingungen sind die Entsprechung für die WHERE-Klausel bei normalen SQL-Querys und sind ohne das WHERE anzugeben. Beachtet bei 
-			vorhandenen JOINS bei den SQL-Tabellen, hier die Spalten, der Identifikation wegen, mit ihrer Abkürzung anzusprechen, z.B. 
+			und zudem f&uuml;r alle SQL-Tabellen Abk&uuml;rzungen zu definieren, z.B. sqd f&uuml;r {pre}_squads.<br /><br />
+			Die Feldnamen entsprechen dem SELECT Abschnitt eines SQL-Queries und sind ohne das SELECT zu &uuml;bergeben. Nur ein * zu &uuml;bergeben um 
+			alle Feldnamen zu selektieren wird aus Geschwindigkeitsgr&uuml;nden nicht empfohlen, da die meisten SQL-Server dann mehr Zeit verbrauchen
+			um die Meta-Tabelle abzufragen welche Feldnamen &uuml;berhaupt verf&uuml;gbar sind. Beachtet bei vorhandenen JOINS bei den SQL-Tabellen, hier 
+			die Spalten, der Identifikation wegen, mit ihrer Abk&uuml;rzung anzusprechen, z.B. {pre}_squads.squads_id angeben als sqd.squads_id und 
+			zudem ein alias zu setzen um diese in der Ausgabe wie gewohnt benutzen zu k&ouml;nnen, z.B. sql.squads_id AS squads_id.<br /><br />
+			Bedingungen sind die Entsprechung f&uuml;r die WHERE-Klausel bei normalen SQL-Queries und sind ohne das WHERE anzugeben. Beachtet bei 
+			vorhandenen JOINS bei den SQL-Tabellen, hier die Spalten, der Identifikation wegen, mit ihrer Abk&uuml;rzung anzusprechen, z.B. 
 			{pre}_squads.squads_id angeben als sqd.squads_id.<br /><br />
-			Die Sortierung entspricht dem ORDER BY Abschnitt eines SQL-Querys und ist ohne das ORDER BY zu übergeben. Standardmäßig wird 
-			vorwärts (ASC) sortiert, dies kann mit dem Anhängen von DESC hinter den Feldnamen umgedreht werden. Beachtet bei vorhandenen JOINS 
-			bei den SQL-Tabellen, hier die Spalten, der Identifikation wegen, mit ihrer Abkürzung anzusprechen, z.B. {pre}_squads.squads_id 
+			Die Sortierung entspricht dem ORDER BY Abschnitt eines SQL-Queries und ist ohne das ORDER BY zu &uuml;bergeben. Standardm&auml;&szlig;ig wird 
+			vorw&auml;rts (ASC) sortiert, dies kann mit dem Anh&auml;ngen von DESC hinter den Feldnamen umgedreht werden. Beachtet bei vorhandenen JOINS 
+			bei den SQL-Tabellen, hier die Spalten, der Identifikation wegen, mit ihrer Abk&uuml;rzung anzusprechen, z.B. {pre}_squads.squads_id 
 			angeben als sqd.squads_id.<br /><br />
-			Der Anfang legt die Treffernummer fest aber der für das Auslesen selektiert wird, wobei es mit 0 los geht und auch 0 der Standardwert 
-			ist wenn der Parameter unausgefüllt bleibt.<br /><br />
-			Die Anzahl legt fest wie viele Datensätze ab dem Anfang selektiert werden. Standard ist hier 1 und daher wird dann auch bei Erfolg 
-			nur ein eindimensionales Array zurückgeliefert. Bei 0 werden Alle und bei Zahlen über 1 die jeweilige Anzahl selektiert, was dann 
-			egal wie viele Treffer es am Ende tatsächlich werden zu einem zweidimensionalen Array ändert.<br /><br />
+			Der Anfang legt die Treffernummer fest aber der f&uuml;r das Auslesen selektiert wird, wobei es mit 0 los geht und auch 0 der Standardwert 
+			ist wenn der Parameter unausgef&uuml;llt bleibt.<br /><br />
+			Die Anzahl legt fest wie viele Datens&auml;tze ab dem Anfang selektiert werden. Standard ist hier 1 und daher wird dann auch bei Erfolg 
+			nur ein eindimensionales Array zur&uuml;ckgeliefert. Bei 0 werden Alle und bei Zahlen &uuml;ber 1 die jeweilige Anzahl selektiert, was dann 
+			egal wie viele Treffer es am Ende tats&auml;chlich werden zu einem zweidimensionalen Array &auml;ndert.<br /><br />
 			Achtung: Aufgrund der Anzahl und verwundbarkeit der Parameter ist vor allem bei dieser Funktion auf die Sicherheit zu achten!<br /><br />
 			Beispiel:<br />
 			<div class="quote">$squad_data = cs_sql_select(FILE, 'squads', 'squads_id, squads_name', 0, 'squads_name DESC', 0, 0);</div><br />
-			Als Resultat wären alle Squads vorhanden mit ihrer ID und dem Namen, rückwärts nach ihrem Namen sortiert.
+			Als Resultat w&auml;ren alle Squads vorhanden mit ihrer ID und dem Namen, r&uuml;ckw&auml;rts nach ihrem Namen sortiert.
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_update"></a>cs_sql_update(var Datei, var SQL-Tabelle, array Feldnamen, array Werte, int ID, [var [Bedingungen])</td></tr>
-	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
 	  		um im Fehlerfall den Ursprung zu finden.<br /><br />
 			Die SQL-Tabelle ist ohne Prefix anzugeben.<br /><br />
 			Alle Feldnamen, wobei auch nur einer angegeben werden kann, sind als Array zu liefern. Dieser wird dann in der vorher festgelegten 
 			Sortierung abgearbeitet und muss die gleiche Anzahl Array-Elemente enthalten wie der Werte-Array.<br /><br />
-			Mit den Werten verhält es sich genau wie mit den Feldnamen, nur das hier die zu verwendenen Daten enthalten sind.<br /><br />
+			Mit den Werten verh&auml;lt es sich genau wie mit den Feldnamen, nur das hier die zu verwendenen Daten enthalten sind.<br /><br />
 			Die ID gibt an welcher Datensatz betroffen ist, wobei der Feldname sich aus der folgenden Option ergibt.<br /><br />
-			Der Feldname ist Standardmäßig die SQL-Tabelle ohne Prefix mit _id dahinter, also bei {pre}_squads würde dies squads_id entsprechen. 
-			Um einen anderen Feldnamen anzusprechen muss als ID 0 und zudem eine Bedingung übergeben werden. Bedingungen sind die Entsprechung 
-			für die WHERE-Klausel bei normalen SQL-Querys und sind ohne das WHERE anzugeben.<br /><br />
+			Der Feldname ist Standardm&auml;&szlig;ig die SQL-Tabelle ohne Prefix mit _id dahinter, also bei {pre}_squads w&uuml;rde dies squads_id entsprechen. 
+			Um einen anderen Feldnamen anzusprechen muss als ID 0 und zudem eine Bedingung &uuml;bergeben werden. Bedingungen sind die Entsprechung 
+			f&uuml;r die WHERE-Klausel bei normalen SQL-Queries und sind ohne das WHERE anzugeben.<br /><br />
 			Beispiel:<br />
 			<div class="quote">cs_sql_update(FILE, 'squads', array('squads_name'), array('alpha_squad'),4);</div><br />
 			Setzt bei Squad ID 4 den Squadnamen auf alpha_squad
 	  </td></tr>
 	  <tr><td style="height: 10px; border: 0;"></td></tr>
 	  <tr><td class="leftc" colspan="2"><a name="cs_sql_version"></a>cs_sql_version(var Datei)</td></tr>
-	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ übergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
+	  <tr><td colspan="2">Als Datei wird im Regelfall nur __FILE__ &uuml;bergeben, ein in PHP vordefinierter Wert der den Dateinamen weiterreicht 
   			um im Fehlerfall den Ursprung zu finden.<br /><br />
-			Liefert einen Array mit folgenden Daten zurück: type, host, client, server.<br /><br />
+			Liefert einen Array mit folgenden Daten zur&uuml;ck: type, host, client, server.<br /><br />
 			Bei MySQL-Erweiterungen werden auch folgende Elemente genutzt: data_size, index_size, tables.<br /><br />
 			Hinweis: Diese Informationen oft bzw. sogar auf jeder Unterseite abzufragen kann bei MySQL-Erweiterungen zu Geschwindigkeitsverlusten
-			führen. Daher sind diese Informationen für Administratoren zentral unter System -&#62; Software gelistet.<br /><br />
+			f&uuml;hren. Daher sind diese Informationen f&uuml;r Administratoren zentral unter System -&#62; Software gelistet.<br /><br />
 			Beispiel:<br />
 			<div class="quote">$sql_infos = cs_sql_version(FILE);</div><br />
-			Liest als Array alle zur Datenbank verfügbaren Details aus	  
-	  </td></tr>
-	   <tr><td style="height: 10px; border: 0;"></td></tr>
-	  <tr><td class="leftc" colspan="2"><a name="sql_list"></a>Liste unterstützer Datenbank-Erweiterungen</td></tr>
-	  <tr><td colspan="2">Liste bisher unterstützer Datenbank-Erweiterungen und eine ungefähre Einschätzung von deren Geschwindigkeit 
-	  		bei größerer Besucherlast auf dem Webserver:<br /><br />
-			mysql - 100%<br /><br />
-			mysqli - 95%<br /><br />
-			pgsql - 100%<br /><br />
-			pdo_mysql - 85%<br /><br />
-			pdo_pgsql - 85%<br /><br />
-			pdo_sqlite - 20%<br /><br />
-			sqlite - 25%<br /><br />
-			Verteilte Datenbanksysteme wie z.B. Oracle werden von ClanSphere aufgrund ihrer speziellen Eigenheiten nicht unterstützt.
-	  </td></tr>			
+			Liest als Array alle zur Datenbank verf&uuml;gbaren Details aus	  
+	  </td></tr>		
 	</table>
   </div>	
   <div id="footer">Copyright 2007-2009 clansphere.net. All rights reserved.</div>
