@@ -8,6 +8,7 @@ ___________________________________________________________
 -> Added the possibility to use xhtml_old mode by using a setup.php entry (hajo)
 -> Fixed charset handling with file operations and escaped special lang chars (hajo)
 -> Fixed cs_sql_insertid with Microsoft SQL Server [sqlsrv extension] (hajo)
+-> Reworked eventguests to make user_id optional and contain more details (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
