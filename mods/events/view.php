@@ -19,8 +19,12 @@ if(empty($cs_events['events_cancel']) AND cs_time() < $cs_events['events_time'])
   $data['if']['topinfo'] = 1;
   $data['head']['status'] = $cs_lang['signed'] . ': ';
 
-  $where = "events_id = '" . $events_id . "' AND users_id = '" . $account['users_id'] . "'";
-  $status = cs_sql_select(__FILE__,'eventguests','eventguests_id, eventguests_since',$where);
+  if(empty($account['users_id']))
+    $status = array('eventguests_since' => 0, 'eventguests_id' => 0);
+  else {
+    $where = "events_id = '" . $events_id . "' AND users_id = '" . $account['users_id'] . "'";
+    $status = cs_sql_select(__FILE__,'eventguests','eventguests_id, eventguests_since',$where);
+  }
 
   if(empty($status['eventguests_since'])) {
     $data['head']['status'] .= $cs_lang['no'] . ' -> ';
