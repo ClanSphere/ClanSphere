@@ -53,7 +53,7 @@ $data['check']['comments'] = empty($checked[2]) ? '' : $check_it;
 
 $tables = "board boa INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id";
 $select = "boa.board_id AS board_id, boa.board_name AS board_name, cat.categories_name AS categories_name";
-$axx_where = "boa.board_access <= '" . $account['access_board'] . "'";
+$axx_where = "boa.board_access <= '" . $account['access_board'] . "' AND boa.board_pwd = ''";
 $sorting = "cat.categories_name ASC, boa.board_name ASC";
 $board_data = cs_sql_select(__FILE__,$tables,$select,$axx_where,$sorting,0,0);
 
@@ -115,6 +115,7 @@ if(!empty($go_search)) {
       $from = "comments com INNER JOIN {pre}_threads thr ON com.comments_fid = thr.threads_id INNER JOIN {pre}_board boa ON thr.board_id = boa.board_id INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id";
       $order = 'com.comments_id DESC';
     }
+    $conditions += " AND boa.board_pwd = ''";
     $count = cs_sql_count(__FILE__,$from,$conditions);
 
     if(empty($count)) {

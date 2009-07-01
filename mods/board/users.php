@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$posts    = 10;
+$posts   = 10;
 $threads = 10;
 
 include 'mods/board/functions.php';
@@ -42,7 +42,7 @@ $select  = 'DISTINCT thr.threads_id AS threads_id, cat.categories_name AS catego
 $select .= 'cat.categories_id AS categories_id, frm.board_name AS board_name, frm.board_id AS board_id, '; 
 $select .= 'thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, ';
 $select .= 'thr.threads_last_user AS threads_last_user, cms.comments_time AS comments_time';
-$where = 'cms.users_id = \''.$user_id.'\' AND frm.board_access <= \''.$board_access.'\'';
+$where = 'cms.users_id = \''.$user_id.'\' AND frm.board_access <= \''.$board_access.'\' AND frm.board_pwd = \'\'';
 $order = 'cms.comments_time DESC'; 
 $cs_comments = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$posts);
 $comments_loop = count($cs_comments);
@@ -53,7 +53,6 @@ if(empty($comments_loop)) {
 
 for($run=0; $run < $comments_loop; $run++) {  
   $last[1] = $cs_comments[$run]['threads_last_user'];
-
 
   $data['com'][$run]['cat'] = $cs_comments[$run]['categories_name'];
   $data['com'][$run]['cat_link'] = cs_url('board','list','where=' . $cs_comments[$run]['categories_id']);
@@ -69,7 +68,7 @@ $from .= ' INNER JOIN {pre}_categories cat ON cat.categories_id = frm.categories
 $select  = 'cat.categories_name AS categories_name, cat.categories_id AS categories_id,';
 $select .= ' frm.board_name AS board_name, frm.board_id AS board_id,'; 
 $select .= ' thr.threads_headline AS threads_headline, thr.threads_time AS threads_time, thr.threads_id AS threads_id';
-$where = "frm.board_access <= '" . $board_access . "' AND thr.users_id = '" . $user_id . "'"; 
+$where = "frm.board_access <= '" . $board_access . "' AND thr.users_id = '" . $user_id . "' AND frm.board_pwd = ''"; 
 $order = 'thr.threads_time DESC'; 
 $cs_threads = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$threads);
 $threads_loop = count($cs_threads);
