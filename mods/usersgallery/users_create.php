@@ -58,8 +58,11 @@ if(isset($_POST['submit'])) {
     $error .= $cs_lang['error_pic'] . cs_html_br(1);
   if(empty($_POST['gallery_titel']))
     $error .= $cs_lang['no_titel'] . cs_html_br(1);
-  
-  $img_size = getimagesize($files_gl['picture']['tmp_name']);
+
+  if(!empty($files_gl['picture']['tmp_name']))
+    $img_size = getimagesize($files_gl['picture']['tmp_name']);
+  else
+    $img_size = 0;
   if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
