@@ -36,7 +36,7 @@ if(!empty($cs_clan['clans_country'])) {
 }
 
 if(!empty($cs_clan['clans_url'])) {
-  $data['clans']['url'] = cs_html_link('http://' . cs_secure($cs_clan['clans_url']),$cs_clan['clans_url']);
+  $data['clans']['url'] = cs_html_link('http://' . $cs_clan['clans_url'],cs_secure($cs_clan['clans_url']));
 }
 else {
   $data['clans']['url'] = '';
