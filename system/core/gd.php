@@ -36,15 +36,15 @@ function cs_captcha($hash) {
   header("Cache-Control: no-cache, must-revalidate");
   header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
   
-  if($gd_info["PNG Support"] == TRUE) {
+  if(!empty($gd_info["PNG Support"])) {
     header("Content-type:image/png");
     ImagePNG($img);
   }
-  elseif($gd_info["JPG Support"] == TRUE) {
+  elseif(!empty($gd_info["JPG Support"]) OR !empty($gd_info["JPEG Support"])) {
     header("Content-type:image/jpg");
     ImageJPEG($img);
   }
-  elseif($gd_info["GIF Create Support"] == TRUE) {
+  elseif(!empty($gd_info["GIF Create Support"])) {
     header("Content-type:image/gif");
     ImageGIF($img);
   }
@@ -66,13 +66,13 @@ function cs_resample($image, $target, $max_width, $max_height) {
     return false;
   }
 
-  if($im_info[2] == 1 AND $gd_info["GIF Read Support"] == TRUE) {
+  if($im_info[2] == 1 AND !empty($gd_info["GIF Read Support"])) {
     $src = ImageCreateFromGIF($image);
   }
-  elseif($im_info[2] == 2 AND $gd_info["JPG Support"] == TRUE) {
+  elseif($im_info[2] == 2 AND (!empty($gd_info["JPG Support"]) OR !empty($gd_info["JPEG Support"]))) {
     $src = ImageCreateFromJPEG($image);
   }
-  elseif($im_info[2] == 3 AND $gd_info["PNG Support"] == TRUE) {
+  elseif($im_info[2] == 3 AND !empty($gd_info["PNG Support"])) {
     $src = ImageCreateFromPNG($image);
   }
   else {
@@ -87,13 +87,13 @@ function cs_resample($image, $target, $max_width, $max_height) {
 
   ImageCopyResampled($dst,$src,0,0,0,0,$im_new[0],$im_new[1],$im_info[0],$im_info[1]);
 
-  if($im_info[2] == 1 AND $gd_info["GIF Create Support"] == TRUE) {
+  if($im_info[2] == 1) {
     $return = ImageGIF($dst,$target) ? 1 : 0;
   }
-  elseif($im_info[2] == 2 AND $gd_info["JPG Support"] == TRUE) {
+  elseif($im_info[2] == 2) {
     $return = ImageJPEG($dst,$target,100) ? 1 : 0;
   }
-  elseif($im_info[2] == 3 AND $gd_info["PNG Support"] == TRUE) {
+  elseif($im_info[2] == 3) {
     $return = ImagePNG($dst,$target) ? 1 : 0;
   }
   else {
