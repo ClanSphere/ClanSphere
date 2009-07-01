@@ -206,7 +206,7 @@ function make_folders_options($array, $hierarchy = 0, $select = 0, $folders_id =
       if (!empty($folder[0]['name'])) {
         $string .= make_folders_options($folder,$hierarchy+1,$select,$folders_id);
       } elseif ($folder['folders_id'] != $folders_id) {
-        $string .= cs_html_option($space . $folder['name'],$folder['folders_id'],$folder['folders_id'] == $select);
+        $string .= cs_html_option($space . cs_secure($folder['name']),$folder['folders_id'],$folder['folders_id'] == $select);
       }
     }
   }
