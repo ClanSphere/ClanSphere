@@ -107,6 +107,12 @@
         {lang:seconds}</td>
     </tr>
     <tr>
+      <td class="leftc">{icon:view_text} {lang:data_limit}</td>
+      <td class="leftb"><input type="text" name="data_limit" value="{options:data_limit}" maxlength="2" size="4" /><br />
+        <input type="checkbox" name="data_limit_all" value="1" />
+        {lang:change_data_limit_all}</td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:image} {lang:img_path}</td>
       <td class="leftb"><input type="text" name="img_path" value="{options:img_path}" maxlength="80" size="40" />
       </td>

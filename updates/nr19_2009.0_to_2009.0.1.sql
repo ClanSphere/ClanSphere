@@ -5,6 +5,7 @@ UPDATE {pre}_options SET options_value = 43 WHERE options_mod = 'clansphere' AND
 UPDATE {pre}_users SET users_view = '' WHERE users_view NOT IN ('float', 'list');
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cache_unicode', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'data_limit', 20);
 
 ALTER TABLE {pre}_eventguests ADD eventguests_name varchar(80) NOT NULL default '';
 ALTER TABLE {pre}_eventguests ADD eventguests_surname varchar(80) NOT NULL default '';

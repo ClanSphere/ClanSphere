@@ -43,7 +43,7 @@
  	</tr>
  	<tr>
   		<td class="leftc">{icon:view_text} {lang:datasheet_per_page}</td>
-  		<td class="leftb" colspan="2">{setup:users_limit}</td>
+  		<td class="leftb" colspan="2"><input type="text" name="users_limit" value="{data:users_limit}" maxlength="2" size="4" /></td>
  	</tr>
  	<tr>
   		<td class="leftc">{icon:view_text} {lang:readtime}</td>

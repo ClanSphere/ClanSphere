@@ -112,16 +112,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['setup']['option_on'] =  cs_html_option($cs_lang['on'],'on',$sel);
   $sel = $cs_user['users_dstime'] == 'off' ? 1 : 0;
   $data['setup']['option_off'] = cs_html_option($cs_lang['off'],'off',$sel);
-  
-  $limits[0]['users_limit'] = 10;
-  $limits[0]['name'] = '10';
-  $limits[1]['users_limit'] = 20;
-  $limits[1]['name'] = '20';
-  $limits[2]['users_limit'] = 35;
-  $limits[2]['name'] = '35';
-  $limits[3]['users_limit'] = 50;
-  $limits[3]['name'] = '50';
-  $data['setup']['users_limit'] = cs_dropdown('users_limit','name',$limits,$cs_user['users_limit'],0,1);
+
+  $data['setup']['users_limit'] = $cs_user['users_limit'];
 
   $views[0]['users_view'] = '';
   $views[0]['name'] = $cs_lang['default'];

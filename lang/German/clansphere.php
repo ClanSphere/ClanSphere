@@ -138,6 +138,9 @@ $cs_lang['value']  = 'Wert';
 $cs_lang['extended'] = 'Erweitert';
 $cs_lang['change_dstime_for_all'] = 'Sommerzeit f&uuml;r alle Benutzer umstellen';
 
+$cs_lang['data_limit'] = 'Datens&auml;tze je Seite';
+$cs_lang['change_data_limit_all'] = 'Bei allen Benutzern umstellen';
+
 // Metatags
 $cs_lang['metatags']  = 'Metatags';
 $cs_lang['generate_metatags']  = 'Hier k&ouml;nnen Metatags generiert werden';

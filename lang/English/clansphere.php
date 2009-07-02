@@ -138,6 +138,9 @@ $cs_lang['value']  = 'Value';
 $cs_lang['extended'] = 'Extended';
 $cs_lang['change_dstime_for_all'] = 'Change Daylight Saving Time for all users';
 
+$cs_lang['data_limit'] = 'Dataset limit';
+$cs_lang['change_data_limit_all'] = 'Change for all users';
+
 // Metatags
 $cs_lang['metatags']  = 'Metatags';
 $cs_lang['generate_metatags']  = 'Here, you can generate metatags';

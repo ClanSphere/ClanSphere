@@ -44,7 +44,8 @@ if(isset($_POST['submit'])) {
   $save['img_path'] = $_POST['img_path'];
   $save['img_ext'] = $_POST['img_ext'];
   $save['def_admin'] = $_POST['def_admin'];
-  $save['developer'] = (int) $_POST['developer'];  
+  $save['developer'] = (int) $_POST['developer'];
+  $save['data_limit'] = (int) $_POST['data_limit'];
 
   require_once 'mods/clansphere/func_options.php';
   
@@ -54,6 +55,12 @@ if(isset($_POST['submit'])) {
     $query = 'UPDATE {pre}_users SET users_dstime = \''.$_POST['def_dstime'].'\'';
     cs_sql_query(__FILE__,$query);
   }
+
+  if(!empty($_POST['data_limit_all'])) {
+    $query = 'UPDATE {pre}_users SET users_limit = \'' . (int) $_POST['data_limit'] . '\'';
+    cs_sql_query(__FILE__,$query);
+  }
+
   if (!empty($cs_main['ajax']) && !empty($account['users_ajax']) && (empty($_POST['mod_rewrite']) && !empty($cs_main['mod_rewrite'])) | 
     (!empty($_POST['mod_rewrite']) && empty($cs_main['mod_rewrite'])))
     die(ajax_js("window.location.hash='#'; window.location.href=window.location.href.substr(window.location.href.lastIndexOf('/')); window.location.reload();"));
@@ -118,9 +125,6 @@ else {
 
   $data['options']['time_auto'] = $data['options']['def_dstime'] == '0' ? 'selected="selected"' : '';
 
-  $data['options']['def_flood'] = $data['options']['def_flood'];
-  $data['options']['img_path'] = $data['options']['img_path'];
-  $data['options']['img_ext'] = $data['options']['img_ext'];
   $data['options']['cellspacing'] = $data['options']['cellspacing'];
   $data['options']['ajax_reload'] = empty($data['options']['ajax_reload']) ? 10 : $data['options']['ajax_reload'];
 
