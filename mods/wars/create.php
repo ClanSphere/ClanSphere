@@ -103,7 +103,7 @@ if(isset($_POST['submit'])) {
       $cs_wars['wars_url'] = $cs_fightus['fightus_url'];
       $cs_wars['wars_report'] = $cs_fightus['fightus_more'];
 
-      $where = "clans_name = '" . $cs_fightus['fightus_clan'] . "'";
+      $where = "clans_name = '" . cs_sql_escape($cs_fightus['fightus_clan']) . "'";
       $cs_wars['clans_id'] = cs_sql_select(__FILE__,'clans','clans_id',$where);
     }
   }
