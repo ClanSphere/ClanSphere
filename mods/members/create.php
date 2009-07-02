@@ -63,7 +63,7 @@ else {
       $cs_members['members_since'] = $cs_joinus['joinus_date'];
 
       $users_nick = $cs_joinus['joinus_nick'];
-      $where = "users_nick = '" . $users_nick . "'";
+      $where = "users_nick = '" . cs_sql_escape($users_nick) . "'";
       $cs_member = cs_sql_select(__FILE__,'users','users_id',$where);
       $cs_members['users_id'] = $cs_member['users_id'];
     }
