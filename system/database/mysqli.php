@@ -14,21 +14,19 @@ function cs_sql_connect($cs_db, $test = 0)
 
   global $cs_main;
   if(empty($error) AND $cs_main['charset'] == 'UTF-8') {
-    if(version_compare(phpversion(), '5.0.5', '>='))
+    # since php 5.0.5 - depends on mysql libs, too
+    if(function_exists('mysqli_set_charset'))
       mysqli_set_charset($connect, 'utf8');
     else
       mysqli_query($connect, "SET NAMES 'utf8'") OR $error = mysqli_error($connect);
   }
 
-  if(empty($test) AND empty($error)) {
+  if(empty($test) AND empty($error))
     return $connect;
-  }
-  elseif(empty($test)) {
+  elseif(empty($test))
     cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
-  }
-  else {
+  else
     return $error;
-  }
 }
 
 function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
