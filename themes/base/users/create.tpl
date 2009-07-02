@@ -1,4 +1,3 @@
-<form method="post" id="users_create" action="{url:users_create}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb">{lang:mod_name} - {lang:create}</td>
@@ -8,7 +7,7 @@
 	</tr>
 </table>
 <br />
-
+<form method="post" id="users_create" action="{url:users_create}">
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftc" style="width:25%">{icon:locale} {lang:lang} *</td>
