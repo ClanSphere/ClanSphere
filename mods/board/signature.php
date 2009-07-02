@@ -37,4 +37,6 @@ if(isset($_POST['submit'])) {
   cs_redirect($cs_lang['create_done'], 'board','signature');
 }
 
+$data['signature']['text'] = cs_secure($data['signature']['text']);
+
 echo cs_subtemplate(__FILE__,$data,'board','signature');

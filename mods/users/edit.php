@@ -184,10 +184,12 @@ if (!empty($error) or !isset($_POST['submit'])) {
 		$data['hidden']['users_phone'] = isset($hidden['users_phone']) ? $checked : '';
 		$data['hidden']['users_mobile'] = isset($hidden['users_mobile']) ? $checked : '';
 
-		$data['abcode']['features'] =cs_abcode_features('users_info');
+    $data['users']['users_info'] = cs_secure($data['users']['users_info']);
+		$data['abcode']['features'] = cs_abcode_features('users_info');
 		$data['abcode']['smileys'] = cs_abcode_smileys('users_info');
 
-		$data['abcode2']['features'] =cs_abcode_features('users_signature');
+    $data['users']['users_signature'] = cs_secure($data['users']['users_signature']);
+		$data['abcode2']['features'] = cs_abcode_features('users_signature');
 		$data['abcode2']['smileys'] = cs_abcode_smileys('users_signature');
 
 		$data['country'] = array();

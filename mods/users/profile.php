@@ -98,60 +98,59 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   if(empty($cs_user['users_height'])) { $cs_user['users_height'] = ''; }
   if(empty($cs_user['users_icq'])) { $cs_user['users_icq'] = ''; }
 
-$sel = 'selected="selected"';
-$checked = 'checked="checked"';
+  $sel = 'selected="selected"';
+  $checked = 'checked="checked"';
 
-$data['form']['action'] = cs_url('users','profile');
-$data['users']['users_nick'] = $cs_user['users_nick'];
-$data['users']['users_name'] = $cs_user['users_name'];
-$data['users']['users_surname'] = $cs_user['users_surname'];
-$data['users']['users_age'] = cs_dateselect('age','date',$cs_user['users_age']);
-$data['users']['male_check'] = $cs_user['users_sex'] == 'male' ? $sel : '';
-$data['users']['female_check'] = $cs_user['users_sex'] == 'female' ? $sel : '';
-$data['users']['users_height'] = $cs_user['users_height'];
-$data['users']['users_postalcode'] = $cs_user['users_postalcode'];
-$data['users']['users_place'] = $cs_user['users_place'];
-$data['users']['users_adress'] = $cs_user['users_adress'];
-$data['users']['users_icq'] = $cs_user['users_icq'];
-$data['users']['users_msn'] = $cs_user['users_msn'];
-$data['users']['users_skype'] = $cs_user['users_skype'];
-$data['users']['users_email'] = $cs_user['users_email'];
-$data['users']['users_url'] = $cs_user['users_url'];
-$data['users']['users_phone'] = $cs_user['users_phone'];
-$data['users']['users_mobile'] = $cs_user['users_mobile'];
-$data['users']['users_info'] = $cs_user['users_info'];
-$data['users']['country_url'] = cs_html_img('symbols/countries/' . $cs_user['users_country'] . '.png',0,0,'id="country_1"');
+  $data['form']['action'] = cs_url('users','profile');
+  $data['users']['users_nick'] = $cs_user['users_nick'];
+  $data['users']['users_name'] = $cs_user['users_name'];
+  $data['users']['users_surname'] = $cs_user['users_surname'];
+  $data['users']['users_age'] = cs_dateselect('age','date',$cs_user['users_age']);
+  $data['users']['male_check'] = $cs_user['users_sex'] == 'male' ? $sel : '';
+  $data['users']['female_check'] = $cs_user['users_sex'] == 'female' ? $sel : '';
+  $data['users']['users_height'] = $cs_user['users_height'];
+  $data['users']['users_postalcode'] = $cs_user['users_postalcode'];
+  $data['users']['users_place'] = $cs_user['users_place'];
+  $data['users']['users_adress'] = $cs_user['users_adress'];
+  $data['users']['users_icq'] = $cs_user['users_icq'];
+  $data['users']['users_msn'] = $cs_user['users_msn'];
+  $data['users']['users_skype'] = $cs_user['users_skype'];
+  $data['users']['users_email'] = $cs_user['users_email'];
+  $data['users']['users_url'] = $cs_user['users_url'];
+  $data['users']['users_phone'] = $cs_user['users_phone'];
+  $data['users']['users_mobile'] = $cs_user['users_mobile'];
+  $data['users']['users_info'] = cs_secure($cs_user['users_info']);
+  $data['users']['country_url'] = cs_html_img('symbols/countries/' . $cs_user['users_country'] . '.png',0,0,'id="country_1"');
 
-$data['hidden']['users_name'] = isset($hidden['users_name']) ? $checked : '';
-$data['hidden']['users_surname'] = isset($hidden['users_surname']) ? $checked : '';
-$data['hidden']['users_age'] = isset($hidden['users_age']) ? $checked : '';
-$data['hidden']['users_height'] = isset($hidden['users_height']) ? $checked : '';
-$data['hidden']['users_postalcode'] = isset($hidden['users_postalcode']) ? $checked : '';
-$data['hidden']['users_place'] = isset($hidden['users_place']) ? $checked : '';
-$data['hidden']['users_adress'] = isset($hidden['users_adress']) ? $checked : '';
-$data['hidden']['users_icq'] = isset($hidden['users_icq']) ? $checked : '';
-$data['hidden']['users_msn'] = isset($hidden['users_msn']) ? $checked : '';
-$data['hidden']['users_skype'] = isset($hidden['users_skype']) ? $checked : '';
-$data['hidden']['users_email'] = isset($hidden['users_email']) ? $checked : '';
-$data['hidden']['users_url'] = isset($hidden['users_url']) ? $checked : '';
-$data['hidden']['users_phone'] = isset($hidden['users_phone']) ? $checked : '';
-$data['hidden']['users_mobile'] = isset($hidden['users_mobile']) ? $checked : '';
+  $data['hidden']['users_name'] = isset($hidden['users_name']) ? $checked : '';
+  $data['hidden']['users_surname'] = isset($hidden['users_surname']) ? $checked : '';
+  $data['hidden']['users_age'] = isset($hidden['users_age']) ? $checked : '';
+  $data['hidden']['users_height'] = isset($hidden['users_height']) ? $checked : '';
+  $data['hidden']['users_postalcode'] = isset($hidden['users_postalcode']) ? $checked : '';
+  $data['hidden']['users_place'] = isset($hidden['users_place']) ? $checked : '';
+  $data['hidden']['users_adress'] = isset($hidden['users_adress']) ? $checked : '';
+  $data['hidden']['users_icq'] = isset($hidden['users_icq']) ? $checked : '';
+  $data['hidden']['users_msn'] = isset($hidden['users_msn']) ? $checked : '';
+  $data['hidden']['users_skype'] = isset($hidden['users_skype']) ? $checked : '';
+  $data['hidden']['users_email'] = isset($hidden['users_email']) ? $checked : '';
+  $data['hidden']['users_url'] = isset($hidden['users_url']) ? $checked : '';
+  $data['hidden']['users_phone'] = isset($hidden['users_phone']) ? $checked : '';
+  $data['hidden']['users_mobile'] = isset($hidden['users_mobile']) ? $checked : '';
 
-$data['abcode']['features'] =cs_abcode_features('users_info');
-$data['abcode']['smileys'] = cs_abcode_smileys('users_info');
+  $data['abcode']['features'] =cs_abcode_features('users_info');
+  $data['abcode']['smileys'] = cs_abcode_smileys('users_info');
 
-$data['country'] = array();
+  $data['country'] = array();
 
-$run = 0;
-foreach ($cs_country AS $short => $full) {
-  $data['country'][$run]['short'] = $short;
-  $data['country'][$run]['selection'] = $short == $cs_user['users_country'] ? ' selected="selected"' : '';
-  $data['country'][$run]['full'] = $full;
-  $run++;
-}
+  $run = 0;
+  foreach ($cs_country AS $short => $full) {
+    $data['country'][$run]['short'] = $short;
+    $data['country'][$run]['selection'] = $short == $cs_user['users_country'] ? ' selected="selected"' : '';
+    $data['country'][$run]['full'] = $full;
+    $run++;
+  }
 
-echo cs_subtemplate(__FILE__,$data,'users','profile');
-
+  echo cs_subtemplate(__FILE__,$data,'users','profile');
 }
 else {
   settype($cs_user['users_height'],'integer');
