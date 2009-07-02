@@ -26,7 +26,6 @@ if(isset($_POST['submit'])) {
   $mail['subject']  = $_POST['subject'];
   $mail['message']  = $_POST['message'];
   
-
   if(empty($mail['subject'])) {
     $error++;
     $message .= $cs_lang['error_subject'] . cs_html_br(1);
@@ -35,7 +34,6 @@ if(isset($_POST['submit'])) {
     $error++;
     $message .= $cs_lang['error_message'] . cs_html_br(1);
   }
-
 }
 else {
   $mail['subject']  = '';
@@ -66,7 +64,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['mail']['subject']        = $mail['subject'];
   $data['mail']['message']        = $mail['message'];
   $data['mail']['id']             = $id;
-
 }
 else {
   
@@ -81,7 +78,10 @@ else {
   $cells = array('mail_answered', 'mail_answertime', 'mail_answer', 'mail_answeruser');
   $save = array(1, cs_time(), $mail['message'], $account['users_id']);
   cs_sql_update(__FILE__,'mail',$cells,$save,$id);
-
 }
+
+$data['mail']['mail_name'] = cs_secure($data['mail']['mail_name']);
+$data['mail']['users_name'] = cs_secure($data['mail']['users_name']);
+$data['mail']['users_surname'] = cs_secure($data['mail']['users_surname']);
 
 echo cs_subtemplate(__FILE__,$data,'contact','answer');
