@@ -98,11 +98,11 @@ else
   }
 
   $head = cs_link($cs_lang['mod_name'],'usersgallery','users','id='. $id) .' - ';
-  $head .= cs_link($cs_cat['folders_name'],'usersgallery','users','cat_id='. $cs_cat['folders_id'] .'&amp;id='. $id);
+  $head .= cs_link(cs_secure($cs_cat['folders_name']),'usersgallery','users','cat_id='. $cs_cat['folders_id'] .'&amp;id='. $id);
   $cs_lap = cs_html_img( "mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'] . "&amp;size=" . $cs_options['max_width']);
 
 	$data['head']['view'] = $head;
-	$data['gallery']['titel'] = $cs_gallery[$move]['usersgallery_titel'];
+	$data['gallery']['titel'] = cs_secure($cs_gallery[$move]['usersgallery_titel']);
 
   if(!empty($move)) {
     $back_1 = $move-1;
