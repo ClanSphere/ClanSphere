@@ -58,7 +58,7 @@ if(!empty($id)) {
           }
           $cat[$run]['img'] = cs_link($cs_lap,'usersgallery','users','id='. $id .'&amp;cat_id=' . $a['folders_id']);
           $more = 'id='. $id .'&amp;cat_id=' . $a['folders_id'];
-          $cat[$run]['folders_name'] = cs_link($a['folders_name'],'usersgallery','users',$more);
+          $cat[$run]['folders_name'] = cs_link(cs_secure($a['folders_name']),'usersgallery','users',$more);
           $cat[$run]['folders_text'] = !empty($a['folders_text']) ? cs_secure($a['folders_text'],1,1) : cs_html_br(1);
 
           $cat_id_a = $a['folders_id'];
