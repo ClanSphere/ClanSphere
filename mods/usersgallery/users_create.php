@@ -73,7 +73,7 @@ if(isset($_POST['submit'])) {
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1]>$cs_option['height'])
       $error .= $cs_lang['too_high'] . cs_html_br(1);
-    if($files_gl['picture']['size']>$cs_option['size']) {
+    if($files_gl['picture']['size']>$cs_option['size2']) {
       $size = $files_gl['picture']['size'] - $cs_option['size2'];
       $size = cs_filesize($size);
       $error .= sprintf($cs_lang['too_big'], $size) . cs_html_br(1);
@@ -119,7 +119,7 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   }
   $matches[2]  = $cs_lang['max_width'] . $cs_option['width'] . ' px' . cs_html_br(1);
   $matches[2] .= $cs_lang['max_height'] . $cs_option['height'] . ' px' . cs_html_br(1);
-  $matches[2] .= $cs_lang['max_size'] . cs_filesize($cs_option['size']) . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . cs_filesize($cs_option['size2']) . cs_html_br(1);
   $matches[2] .= $cs_lang['filetypes'] . $return_types;
   $data['data']['infobox'] = cs_abcode_clip($matches);
 

@@ -68,7 +68,7 @@
 	</tr>
 	<tr>
 		<td class="leftc"><img src="{page:path}symbols/clansphere/grey.gif" alt="" /></td>
-		<td class="rightc" style="width:20">{lang:now}</td>
+		<td class="rightc" style="width:20px">{lang:now}</td>
 		<td class="leftc">{ov:now} {lang:euro}</td>
 	</tr>
 </table>

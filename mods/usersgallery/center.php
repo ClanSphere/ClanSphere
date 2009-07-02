@@ -34,10 +34,10 @@ $data['head']['count'] = $count;
 $data['head']['pages'] = cs_pages('usersgallery','center',$count,$start,0,$sort);
 $data['head']['getmsg'] = cs_getmsg();
 
-$data['sort']['id'] = cs_sort('gallery','manage',$start,0,1,$sort);
-$data['sort']['name'] = cs_sort('gallery','manage',$start,0,3,$sort);
-$data['sort']['date'] = cs_sort('gallery','manage',$start,0,5,$sort);
-$data['sort']['folder'] = cs_sort('gallery','manage',$start,0,7,$sort);
+$data['sort']['id'] = cs_sort('usersgallery','center',$start,0,1,$sort);
+$data['sort']['name'] = cs_sort('usersgallery','center',$start,0,3,$sort);
+$data['sort']['date'] = cs_sort('usersgallery','center',$start,0,5,$sort);
+$data['sort']['folder'] = cs_sort('usersgallery','center',$start,0,7,$sort);
 
 $from = 'usersgallery ugy INNER JOIN {pre}_users usr ON ugy.users_id = usr.users_id ';
 $from .= 'INNER JOIN {pre}_folders fol ON ugy.folders_id = fol.folders_id';
