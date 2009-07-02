@@ -76,6 +76,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['head']['text'] = !empty($error) ? $error : $cs_lang['errors_here'];
 
   $data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id',0,'squads_name',0,0);
+  $data_squads_count = count($data_squads);
+  for ($run = 0; $run < $data_squads_count; $run++)
+    $data_squads[$run]['squads_name'] = cs_secure($data_squads[$run]['squads_name']);
   $data['squads'] = cs_dropdownsel($data_squads, $cs_members['squads_id'], 'squads_id');
 
   $data['users']['nick'] = $users_nick;

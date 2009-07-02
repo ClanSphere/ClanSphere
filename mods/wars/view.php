@@ -29,12 +29,12 @@ $wars['category']['link'] = cs_link($cs_cat['categories_name'],'categories','vie
 
 $where = "clans_id = '" . $cs_wars['clans_id'] . "'";
 $cs_clan = cs_sql_select(__FILE__,'clans','clans_name, clans_id',$where);
-$wars['enemy']['link'] = cs_link($cs_clan['clans_name'],'clans','view','id=' . $cs_clan['clans_id']);
+$wars['enemy']['link'] = cs_link(cs_secure($cs_clan['clans_name']),'clans','view','id=' . $cs_clan['clans_id']);
 $wars['wars']['opponents'] = cs_secure($cs_wars['wars_opponents'],0,0,0);
 
 $where = "squads_id = '" . $cs_wars['squads_id'] . "'";
 $cs_squad = cs_sql_select(__FILE__,'squads','squads_name, squads_id',$where);
-$wars['squad']['link'] = cs_link($cs_squad['squads_name'],'squads','view','id=' . $cs_squad['squads_id']);
+$wars['squad']['link'] = cs_link(cs_secure($cs_squad['squads_name']),'squads','view','id=' . $cs_squad['squads_id']);
 
 $cells = 'pl.users_id AS users_id, usr.users_nick AS users_nick';
 $tables = 'players pl INNER JOIN {pre}_users usr ON pl.users_id = usr.users_id';

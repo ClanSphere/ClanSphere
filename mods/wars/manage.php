@@ -43,6 +43,8 @@ $count_wars = count($data['wars']);
 
 for ($run = 0; $run < $count_wars; $run++) {
   $data['wars'][$run]['date'] = cs_date('unix',$data['wars'][$run]['wars_date']);
+  $data['wars'][$run]['clans_name'] = cs_secure($data['wars'][$run]['clans_name']);
+  $data['wars'][$run]['squads_name'] = cs_secure($data['wars'][$run]['squads_name']);
 }
 
 echo cs_subtemplate(__FILE__,$data,'wars','manage');

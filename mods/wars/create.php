@@ -177,8 +177,16 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['games'] = cs_dropdownsel($data_games,$cs_wars['games_id'],'games_id');
   $data['categories'] = cs_dropdownsel($data_categories,$cs_wars['categories_id'],'categories_id');
+
   $data['clans'] = cs_dropdownsel($data_clans,$cs_wars['clans_id'],'clans_id');
+  $data_clans_count = count($data['clans']);
+  for ($run = 0; $run < $data_clans_count; $run++)
+    $data['clans'][$run]['clans_name'] = cs_secure($data['clans'][$run]['clans_name']);
+
   $data['squads'] = cs_dropdownsel($data_squads,$cs_wars['squads_id'],'squads_id');
+  $data_squads_count = count($data['squads']);
+  for ($run = 0; $run < $data_squads_count; $run++)
+    $data['squads'][$run]['squads_name'] = cs_secure($data['squads'][$run]['squads_name']);
 
   $data['players'] = array();
   for($run = 1; $run <= $players; $run++) {
@@ -198,7 +206,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['value']['score1'] = $cs_wars['wars_score1'];
   $data['value']['score2'] = $cs_wars['wars_score2'];
   $data['value']['url'] = $cs_wars['wars_url'];
-  $data['value']['report'] = $cs_wars['wars_report'];
+  $data['value']['report'] = cs_secure($cs_wars['wars_report']);
 
   $data['upcoming']['selection'] = $cs_wars['wars_status'] != 'upcoming' ? '' : ' selected="selected"';
   $data['running']['selection'] = $cs_wars['wars_status'] != 'running' ? '' : ' selected="selected"';
