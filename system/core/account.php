@@ -112,7 +112,7 @@ if(!empty($account['users_id'])) {
   }
 }
 else {
-  $account = array('access_id' => 1, 'users_id' => 0, 'users_lang' => $cs_main['def_lang'], 'users_limit' => 20, 'users_timezone' => $cs_main['def_timezone'], 'users_dstime' => $cs_main['def_dstime']);
+  $account = array('access_id' => 1, 'users_id' => 0, 'users_lang' => $cs_main['def_lang'], 'users_limit' => $cs_main['data_limit'], 'users_timezone' => $cs_main['def_timezone'], 'users_dstime' => $cs_main['def_dstime']);
 }
 
 if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_lang'])) {
