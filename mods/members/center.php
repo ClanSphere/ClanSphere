@@ -45,8 +45,9 @@ $sqd_data = cs_sql_select(__FILE__,$from,$select,$where,'sqd.squads_name',0,0);
 $sqd_loop = count($sqd_data);
 
 for($run=0; $run<$sqd_loop; $run++) {
+  $data['squad'][$run]['selected'] = $sqd_data[$run]['squads_id'] == $squads_id ? ' selected="selected"' : '';
   $data['squad'][$run]['id'] = $sqd_data[$run]['squads_id'];
-  $data['squad'][$run]['name'] = $sqd_data[$run]['squads_name'];
+  $data['squad'][$run]['name'] = cs_secure($sqd_data[$run]['squads_name']);
 }
 
 if (empty($sqd_loop)) $data['squad'] = array();

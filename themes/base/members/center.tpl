@@ -3,20 +3,20 @@
     <td class="headb">{lang:mod_name} - {lang:head_center} </td>
   </tr>
   <tr>
-    <td class="leftb"><form method="post" id="members_center" action="{url:form}">
+    <td class="leftb">
+      <form method="post" id="members_center" action="{url:form}">
+      <fieldset style="border: 0; padding: 0">
         {lang:team}:
         <select name="id">
           <option value="0">----</option>
-          
 		{loop:squad}
-          
-          <option value="{squad:id}">{squad:name}</option>
-          
+          <option value="{squad:id}"{squad:selected}>{squad:name}</option>
 		  {stop:squad}
-        
         </select>
         <input type="submit" name="submit" value="{lang:show}" />
-      </form></td>
+      </fieldset>
+      </form>
+    </td>
   </tr>
 </table>
 <br />
