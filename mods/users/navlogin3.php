@@ -12,77 +12,44 @@ global $login;
 
 if(empty($login['mode'])) {
 
-  if(empty($login['nick'])) {
+  if(empty($login['nick']))
     $login['nick'] = 'Nick';
-  }
-  if(empty($login['password'])) {
+  if(empty($login['password']))
     $login['password'] = 'Pass';
-  }
 
   $data['form']['navlogin'] = cs_url('users','login');
   $data['login']['nick'] = cs_secure($login['nick']);
   $data['login']['password'] = cs_secure($login['password']);
-  $data['lang']['cookie'] = $cs_lang['cookie'];
-  $data['lang']['submit'] = $cs_lang['submit'];
-  $data['lang']['register'] = $cs_lang['register'];
-  $data['lang']['sendpw'] = $cs_lang['sendpw'];
-  $data['link']['register'] = cs_url('users','register');
-  $data['link']['sendpw'] = cs_url('users','sendpw');
   $data['link']['uri'] = str_replace('&','&amp;',$uri);
 
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_form_icons');
 }
 else {
 
-  $where_new = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receiver = 1 AND messages_view = 0";
-  $messages_count_new = cs_sql_count(__FILE__,'messages',$where_new);
-
-  $data['lang']['home'] = $cs_lang['home'];
-  $data['link']['home'] = cs_url('users','home');
-  $data['lang']['messages'] = $cs_lang['messages'];
-  $data['link']['messages'] = cs_url('messages','center');
-
+  $where_msg = 'users_id_to = ' . (int) $account['users_id'] . ' AND messages_show_receiver = 1 AND messages_view = 0';
+  $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
   $data['messages']['new'] = $messages_count_new;
-  $data['link']['messages'] = cs_url('messages','inbox');
-  $data['lang']['settings'] = $cs_lang['settings'];
-  $data['link']['settings'] = cs_url('users','settings');
 
-  $data['lang']['admin'] = '';
-  $data['link']['admin'] = '';
-  $data['br']['admin'] = '';
-  $data['lang']['system'] = '';
-  $data['link']['system'] = '';
-  $data['br']['system_panel'] = '';
+  if($cs_main['def_admin'] != 'separated' AND $account['access_contact'] >= 3) {
+    $mail_count_new = cs_sql_count(__FILE__,'mail','mail_answered = 0');
+    $data['contact']['new'] = $mail_count_new;
+  }
 
-  $data['lang']['panel'] = '';
-  $data['link']['panel'] = '';
-
-  $data['lang']['logout'] = $cs_lang['logout'];
-  $data['link']['logout'] = cs_url('users','logout');
-
-  if($cs_main['def_admin'] != 'separated' OR $cs_main['php_self']['basename'] == 'admin.php') {
-    if($account['access_clansphere'] >= 3) {
-
-      $data['link']['admin'] .= cs_icon('package_settings') . cs_link($cs_lang['admin'],'clansphere','admin');
-      $data['link']['admin'] .= cs_html_br(1);
-    }
-    if($account['access_clansphere'] >= 4) {
-
-      $data['link']['system'] .= cs_icon('package_system') . cs_link($cs_lang['system'],'clansphere','system');
-      $data['link']['system'] .= cs_html_br(2);
+  if($cs_main['def_admin'] == 'separated' AND $account['access_clansphere'] >= 3) {
+    if(empty($cs_main['mod_rewrite']))
+      $data['link']['panel'] = 'admin.php';
+    else {
+      $shorten  = $cs_main['php_self']['filename'];
+      $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
+      $data['link']['panel'] = str_replace($shorten, '', $uri) . 'admin';
     }
   }
-  elseif($account['access_clansphere'] >= 3) {
 
-      if(empty($cs_main['mod_rewrite']))
-        $data['link']['panel'] .= cs_icon('package_system') . cs_html_link('admin.php', $cs_lang['panel']);
-      else {
-        $shorten  = $cs_main['php_self']['filename'];
-        $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
-        $panel_url = str_replace($shorten, '', $uri);
-        $data['link']['panel'] .= cs_icon('package_system') . cs_html_link($panel_url . 'admin', $cs_lang['panel']);
-      }
-      $data['link']['panel'] .= cs_html_br(2);
-  }
+  $data['if']['panel'] = $cs_main['def_admin'] == 'separated' ? 1 : 0;
+  $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
+  $data['if']['admin'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) ? 1 : 0;
+  $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
+  $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
+
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_view_icons');
 }
