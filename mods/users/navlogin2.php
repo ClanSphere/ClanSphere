@@ -16,7 +16,7 @@ if(empty($login['mode'])) {
   $data['link']['register'] = cs_url('users','register');
   $data['link']['sendpw'] = cs_url('users','sendpw');
   
-  echo cs_subtemplate(__FILE__,$data,'users','navlogin2_1');
+  echo cs_subtemplate(__FILE__,$data,'users','navlogin_form_vertical');
 }
 else {
 
@@ -60,5 +60,5 @@ else {
       $data['login']['panel'] .= '-';
   }
   
-  echo cs_subtemplate(__FILE__,$data,'users','navlogin2_2');
+  echo cs_subtemplate(__FILE__,$data,'users','navlogin_view_vertical');
 }

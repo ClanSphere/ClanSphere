@@ -30,7 +30,7 @@ if(empty($login['mode'])) {
   $data['link']['sendpw'] = cs_url('users','sendpw');
   $data['link']['uri'] = str_replace('&','&amp;',$uri);
 
-  echo cs_subtemplate(__FILE__,$data,'users','navlogin3_1');
+  echo cs_subtemplate(__FILE__,$data,'users','navlogin_form_icons');
 }
 else {
 
@@ -84,5 +84,5 @@ else {
       }
       $data['link']['panel'] .= cs_html_br(2);
   }
-  echo cs_subtemplate(__FILE__,$data,'users','navlogin3_2');
+  echo cs_subtemplate(__FILE__,$data,'users','navlogin_view_icons');
 }
