@@ -93,7 +93,7 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
     $quote = cs_sql_select($file,'comments','users_id,comments_text,comments_time',"comments_id = '" . cs_sql_escape($def[1]) . "'");
     $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick',"users_id = '" . $quote['users_id'] . "'");
     $ori_text = '[quote]' .$quote['comments_text']. '[/quote]';
-    $url = $_SERVER['PHP_SELF'] . '?mod=users&action=view&id=' . $cs_users['users_id'];
+    $url = cs_url('users', 'view', 'id=' . $cs_users['users_id']);
     $ori_text = cs_date('unix',$quote['comments_time'],1) . ' - [url=' . $url . ']';
     $ori_text .= $cs_users['users_nick'] . "[/url]:\n[quote]" . $quote['comments_text'] . '[/quote]';
   }
@@ -395,7 +395,7 @@ else {
 }
 
 if(!empty($data['thread']['board_read']) AND $account['access_clansphere'] < 5) {
-
+  # this part seems to need some rework
 }
 else {
 	require_once('mods/comments/functions.php');
