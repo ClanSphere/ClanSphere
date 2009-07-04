@@ -21,7 +21,12 @@ $limit['memory_limit'] = str_replace('M',' MiB', ini_get('memory_limit'));
 $data['software']['os'] = @php_uname('s') . ' ' . @php_uname('r') . ' ' . @php_uname('v');
 $data['software']['machine'] = @php_uname('m');
 $data['software']['host'] = @php_uname('n');
-$data['software']['webserver'] = isset($_SERVER['SERVER_SOFTWARE']) ? str_replace('/',' ',$_SERVER['SERVER_SOFTWARE']) : '';
+
+if(function_exists('apache_get_version'))
+  $data['software']['webserver'] = apache_get_version();
+if(empty($data['software']['webserver']))
+  $data['software']['webserver'] = isset($_SERVER['SERVER_SOFTWARE']) ? str_replace('/',' ',$_SERVER['SERVER_SOFTWARE']) : '';
+
 $data['software']['php_mode'] = php_sapi_name();
 $data['software']['php_mod'] = phpversion();
 $data['software']['zend_core'] = zend_version();
@@ -75,14 +80,9 @@ $data['software']['memory_limit'] = $limit['memory_limit'];
 $data['software']['recom_memory_limit'] = '-';
 
 $gle = get_loaded_extensions();
-$eco = count($gle);
-$run = 0;
-$ext = '';
-
-while($run != $eco) {
-  $ext .= $gle[$run] . ', ';
-  $run++;
-}
-$data['software']['php_extensions'] = substr($ext,0,-2);
+$ext_all = '';
+foreach($gle AS $ext)
+  $ext_all .= $ext . ', ';
+$data['software']['php_extensions'] = substr($ext_all,0,-2);
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','software');
