@@ -20,7 +20,7 @@ if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($userpic) && 
   $del = 1;
   cs_unlink('users', $userpic);
   $cells = array('users_picture');
-  $content = empty($op_users['def_picture']) ? array() : array('nopicture.jpg');
+  $content = empty($op_users['def_picture']) ? array('') : array('nopicture.jpg');
   cs_sql_update(__FILE__,'users',$cells,$content,$account['users_id']);
   
   cs_redirect($cs_lang['success'],'users','home');
