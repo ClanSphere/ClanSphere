@@ -1,14 +1,20 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0.1 >> 2009-06-XX
+ClanSphere 2009.0.1 >> 2009-07-0X
 ___________________________________________________________
 
+-- Recommended PHP version changed to 5.3.0
+
+>> Security: Closed at least two retroactive SQL Injection possibilities (hajo)
+
 -> Added function cs_cache_clear and a check for the unicode extension (hajo)
--> Added the possibility to use xhtml_old mode by using a setup.php entry (hajo)
 -> Fixed charset handling with file operations and escaped special lang chars (hajo)
 -> Fixed cs_sql_insertid with Microsoft SQL Server [sqlsrv extension] (hajo)
+-> Fixed handling of JPG files in gd-lib with PHP 5.3 and newer (hajo)
+-> Moved 'xhtml_old' mode activation to array cs_main for use in setup.php (hajo)
 -> Reworked eventguests to make user_id optional and contain more details (hajo)
+-> Reworked users navlogin content and theme files (hajo, x-ray)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
