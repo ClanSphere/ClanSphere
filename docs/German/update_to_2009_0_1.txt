@@ -7,7 +7,7 @@ sind einige Änderungen in ClanSphere zu beachten und gegebenenfalls anzupassen:
 1. Die navlogin.php verwaltet nun alle möglichen Funktionalitäten des Platzhalters
    {users:navlogin}, die alte Variante mit den Zahlen 2-4 dahinter angehängt, um
    andere Ansichten zu erlangen wird nun als Parameter übergeben, wobei 'icons',
-   'vertical' und 'picture' gültige Werte sind.
+   'horizontal' und 'picture' gültige Werte sind.
 
 2. Die veralteten XHTML-Funktionen aus BXCP 0.3 Zeiten fallen vorraussichtlich mit
    dem nächsten Major-Release heraus. Bis dahin sind diese nun über einen Eintrag
