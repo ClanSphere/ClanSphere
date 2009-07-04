@@ -11,54 +11,45 @@ $data = array();
 global $login;
 
 if(empty($login['mode'])) {
-  
-  $data['link']['login'] = cs_url('users','login');
-  $data['link']['register'] = cs_url('users','register');
-  $data['link']['sendpw'] = cs_url('users','sendpw');
-  
+
+  if(empty($login['nick']))
+    $login['nick'] = 'Nick';
+  if(empty($login['password']))
+    $login['password'] = 'Pass';
+
+  $data['form']['navlogin'] = cs_url('users','login');
+  $data['login']['nick'] = cs_secure($login['nick']);
+  $data['login']['password'] = cs_secure($login['password']);
+  $data['link']['uri'] = str_replace('&','&amp;',$uri);
+
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_form_vertical');
 }
 else {
 
-  $where = "users_id_to = '" . $account['users_id'] . "' AND messages_show_receiver = '1' AND messages_view = '0'";
-  $messages_count = cs_sql_count(__FILE__,'messages',$where);
+  $where_msg = 'users_id_to = ' . (int) $account['users_id'] . ' AND messages_show_receiver = 1 AND messages_view = 0';
+  $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
+  $data['messages']['new'] = $messages_count_new;
 
-  $data['link']['home'] = cs_url('users','home');
-  $data['link']['messages'] = cs_url('messages','center');
-  $data['messages']['count_new'] = $messages_count;
-  $data['link']['settings'] = cs_url('users','settings');
+  if($cs_main['def_admin'] != 'separated' AND $account['access_contact'] >= 3) {
+    $mail_count_new = cs_sql_count(__FILE__,'mail','mail_answered = 0');
+    $data['contact']['new'] = $mail_count_new;
+  }
 
-  $data['link']['admin'] = '';
-  $data['login']['admin'] = '';
-  $data['link']['system'] = '';
-  $data['login']['system'] = '';
-  
-  $data['link']['panel'] = '';
-  $data['login']['panel'] = '';
-
-  $data['link']['logout'] = cs_url('users','logout');
-  
-  if($cs_main['def_admin'] != 'separated') {
-    if($account['access_clansphere'] >= 3) {
-      $data['link']['admin'] .= cs_link($cs_lang['admin'],'clansphere','admin') . ' - ';
-      $data['login']['admin'] .= '-';
-    }
-    if($account['access_clansphere'] >= 4) {
-      $data['link']['system'] .= cs_link($cs_lang['system'],'clansphere','system') . ' - ';
-      $data['login']['system'] .= '-';
+  if($cs_main['def_admin'] == 'separated' AND $account['access_clansphere'] >= 3) {
+    if(empty($cs_main['mod_rewrite']))
+      $data['link']['panel'] = 'admin.php';
+    else {
+      $shorten  = $cs_main['php_self']['filename'];
+      $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
+      $data['link']['panel'] = str_replace($shorten, '', $uri) . 'admin';
     }
   }
-  elseif($account['access_clansphere'] >= 3) {
-      if(empty($cs_main['mod_rewrite']))
-        $data['link']['panel'] .= cs_html_link('admin.php',$cs_lang['panel']) . ' - ';
-      else {
-        $shorten  = $cs_main['php_self']['filename'];
-        $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
-        $panel_url = str_replace($shorten, '', $uri);
-        $data['link']['panel'] .= cs_html_link($panel_url . 'admin',$cs_lang['panel']) . ' - ';
-      }
-      $data['login']['panel'] .= '-';
-  }
-  
+
+  $data['if']['panel'] = $cs_main['def_admin'] == 'separated' ? 1 : 0;
+  $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
+  $data['if']['admin'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) ? 1 : 0;
+  $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
+  $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
+
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_view_vertical');
 }
