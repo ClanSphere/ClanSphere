@@ -29,7 +29,7 @@ if(empty($login['mode'])) {
 }
 else {
 
-  if($style == '_picture')
+  if($style == '_picture') {
     $cells = 'users_picture, users_id, users_country, users_active';
     $user = cs_sql_select(__FILE__, 'users', $cells, 'users_id = ' . (int) $account['users_id']);
     $data['users']['country_icon'] = cs_html_img('symbols/countries/' . cs_secure($user['users_country']) . '.png');
