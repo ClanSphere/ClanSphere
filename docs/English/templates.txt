@@ -136,14 +136,6 @@ Last few registrations of users
 
 login form when logged out, list of account functions when logged in (line by line)
 
-{users:navlogin2}
-
-login hyperlinks when logged out, list of account functions when logged in (single line)
-
-{users:navlogin3}
-
-login form when logged out, list of account functions with icons when logged in (line by line)
-
 {users:navonline}
 
 Users who are actually watching the page

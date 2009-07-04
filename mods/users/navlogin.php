@@ -4,6 +4,9 @@
 
 $cs_lang = cs_translate('users');
 
+$styles_array = array('icons', 'pictures', 'vertical');
+$style = (!empty($_GET['style']) AND in_array($_GET['style'], $styles_array)) ? '_' . $_GET['style'] : '';
+
 $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
 
 $data = array();
@@ -22,9 +25,20 @@ if(empty($login['mode'])) {
   $data['login']['password'] = cs_secure($login['password']);
   $data['link']['uri'] = str_replace('&','&amp;',$uri);
 
-  echo cs_subtemplate(__FILE__,$data,'users','navlogin_form');
+  echo cs_subtemplate(__FILE__,$data,'users','navlogin_form' . $style);
 }
 else {
+
+  if($style == '_picture')
+    $cells = 'users_picture, users_id, users_country, users_active';
+    $user = cs_sql_select(__FILE__, 'users', $cells, 'users_id = ' . (int) $account['users_id']);
+    $data['users']['country_icon'] = cs_html_img('symbols/countries/' . cs_secure($user['users_country']) . '.png');
+    $data['users']['nick'] = cs_user($account['users_id'], $account['users_nick'], $user['users_active']);
+    if(empty($user['users_picture']))
+      $data['users']['pic'] = cs_html_img('uploads/users/nopic.jpg');
+    else
+      $data['users']['pic'] = cs_html_img('uploads/users/' . $user['users_picture']);
+  }
 
   $where_msg = 'users_id_to = ' . (int) $account['users_id'] . ' AND messages_show_receiver = 1 AND messages_view = 0';
   $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
@@ -51,5 +65,5 @@ else {
   $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
   $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
 
-  echo cs_subtemplate(__FILE__,$data,'users','navlogin_view');
+  echo cs_subtemplate(__FILE__,$data,'users','navlogin_view' . $style);
 }
