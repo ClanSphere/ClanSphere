@@ -97,35 +97,33 @@ else {
     $run++;
   }
 
-  $data['options']['action'] = $data['options']['def_action'];
-  $data['options']['parameters'] = $data['options']['def_parameters'];
   $data['options']['automatic'] = $data['options']['def_path'] == '1' ? 'selected="selected"' : '';
   $data['options']['manual'] = $data['options']['def_path'] == '0' ? 'selected="selected"' : '';
   $data['options']['def_path'] = $cs_main['def_path'];
+
   $data['options']['public_1'] = $data['options']['public'] == '1' ? 'checked="checked"' : '';
   $data['options']['public_2'] = $data['options']['public'] == '0' ? 'checked="checked"' : '';
   $data['options']['admin_1'] = $data['options']['def_admin'] == 'integrated' || empty($data['options']['def_admin']) ? 'checked="checked"' : '';
   $data['options']['admin_2'] = $data['options']['def_admin'] == 'separated' ? 'checked="checked"' : '';
 
-  $data['options']['def_timezone'] = cs_html_select(1,'def_timezone');
+  $data['options']['timezone_select'] = cs_html_select(1,'def_timezone');
   $timezone = -10;
 
   while($timezone <= 12) {
     $zonename = $timezone >= 0 ? 'UTC +' . $timezone: 'UTC ' . $timezone;
     $offset = $timezone * 3600;
     $sel = $offset == $data['options']['def_timezone'] ? 1 : 0;
-    $data['options']['def_timezone'] .= cs_html_option($zonename,$offset,$sel);
+    $data['options']['timezone_select'] .= cs_html_option($zonename,$offset,$sel);
     $timezone = $timezone + 0.5;
   }
 
-  $data['options']['def_timezone'] .= cs_html_select(0);
+  $data['options']['timezone_select'] .= cs_html_select(0);
 
   $data['options']['time_1'] = $data['options']['def_dstime'] == 'on' ? 'selected="selected"' : '';
   $data['options']['time_0'] = $data['options']['def_dstime'] == 'off' ? 'selected="selected"' : '';
 
   $data['options']['time_auto'] = $data['options']['def_dstime'] == '0' ? 'selected="selected"' : '';
 
-  $data['options']['cellspacing'] = $data['options']['cellspacing'];
   $data['options']['ajax_reload'] = empty($data['options']['ajax_reload']) ? 10 : $data['options']['ajax_reload'];
 
   echo cs_subtemplate(__FILE__,$data,'clansphere','options');

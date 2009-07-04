@@ -47,9 +47,9 @@
           {stop:sel}
         </select>
         <br />
-        {lang:action}: <input type="text" name="def_action" value="{options:action}" maxlength="80" size="20" />
+        {lang:action}: <input type="text" name="def_action" value="{options:def_action}" maxlength="80" size="20" />
         <br />
-        {lang:parameters}: <input type="text" name="def_parameters" value="{options:parameters}" maxlength="80" size="18" />
+        {lang:parameters}: <input type="text" name="def_parameters" value="{options:def_parameters}" maxlength="80" size="18" />
       </td>
     </tr>
     <tr>
@@ -88,7 +88,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:ktimer} {lang:def_timezone}</td>
-      <td class="leftb">{options:def_timezone} </td>
+      <td class="leftb">{options:timezone_select} </td>
     </tr>
     <tr>
       <td class="leftc">{icon:kweather} {lang:def_dstime}</td>
