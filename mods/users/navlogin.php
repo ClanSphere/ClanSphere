@@ -45,12 +45,18 @@ else {
   $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
   $data['messages']['new'] = $messages_count_new;
 
-  if($cs_main['def_admin'] != 'separated' AND $account['access_contact'] >= 3) {
+  $data['if']['panel'] = ($cs_main['def_admin'] == 'separated' AND $cs_main['tpl_file'] != 'admin.htm') ? 1 : 0;
+  $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
+  $data['if']['admin'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) ? 1 : 0;
+  $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
+  $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
+
+  if(empty($data['if']['panel']) AND $account['access_contact'] >= 3) {
     $mail_count_new = cs_sql_count(__FILE__,'mail','mail_answered = 0');
     $data['contact']['new'] = $mail_count_new;
   }
 
-  if($cs_main['def_admin'] == 'separated' AND $account['access_clansphere'] >= 3) {
+  if(!empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) {
     if(empty($cs_main['mod_rewrite']))
       $data['link']['panel'] = 'admin.php';
     else {
@@ -59,12 +65,6 @@ else {
       $data['link']['panel'] = str_replace($shorten, '', $uri) . 'admin';
     }
   }
-
-  $data['if']['panel'] = $cs_main['def_admin'] == 'separated' ? 1 : 0;
-  $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
-  $data['if']['admin'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) ? 1 : 0;
-  $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
-  $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
 
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_view' . $style);
 }
