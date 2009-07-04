@@ -7,5 +7,5 @@
 <input type="submit" name="login" value="{lang:submit}" />
 </fieldset>
 </form>
-<a href="{link:register}">{lang:register}</a><br />
-<a href="{link:sendpw}">{lang:sendpw}</a>
+<a href="{url:users_register}">{lang:register}</a><br />
+<a href="{url:users_sendpw}">{lang:sendpw}</a>

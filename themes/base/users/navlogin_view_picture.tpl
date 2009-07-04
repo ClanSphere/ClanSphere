@@ -1,11 +1,25 @@
-<div style="text-align: center; width: 170px; font-weight: bold;">{users:nick}</div>
-<div style="clear:both; width: 141px; padding-left: 35px;">{users:pic}</div>
-<div style="clear:both; float:left; width: 170px; text-align: left;">
-  <a href="{link:home}">{lang:home}</a><br />
-  <a href="{link:messages}">{lang:messages}</a> ({messages:new})<br />
-  <a href="{link:settings}">{lang:settings}</a><br />
-  {link:admin}
-  {link:system}
-  {link:panel}
-  <a href="{link:logout}">{lang:logout}</a>
+<div style="text-align: center; width: 100%">
+  <span style="font-weight: bold">{users:country_icon} {users:nick}</span><br />
+  <div style="padding: 4px">{users:pic}</div>
 </div>
+
+<a href="{url:users_home}">{lang:home}</a><br />
+<a href="{url:messages_inbox}">{lang:messages}</a> (<span id="cs_messages_navmsgs">{messages:new}</span>)<br />
+<a href="{url:users_settings}">{lang:settings}</a><br />
+<br />
+{if:more}
+  {if:contact}
+    <a href="{url:contact_manage}">{lang:contact}</a> (<span id="cs_contact_navmsgs">{contact:new}</span>)<br />
+  {stop:contact}
+  {if:admin}
+    <a href="{url:clansphere_admin}">{lang:admin}</a><br />
+  {stop:admin}
+  {if:system}
+    <a href="{url:clansphere_system}">{lang:system}</a><br />
+  {stop:system}
+  {if:panel}
+    <a href="{link:panel}">{lang:panel}</a><br />
+  {stop:panel}
+  <br />
+{stop:more}
+<a href="{url:users_logout}">{lang:logout}</a>
