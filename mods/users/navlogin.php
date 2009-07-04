@@ -30,15 +30,16 @@ if(empty($login['mode'])) {
 else {
 
   if($style == '_picture') {
-    $cells = 'users_picture, users_id, users_country, users_active';
+    $cells = 'users_picture, users_country';
     $user = cs_sql_select(__FILE__, 'users', $cells, 'users_id = ' . (int) $account['users_id']);
     $data['users']['country_icon'] = cs_html_img('symbols/countries/' . cs_secure($user['users_country']) . '.png');
-    $data['users']['nick'] = cs_user($account['users_id'], $account['users_nick'], $user['users_active']);
     if(empty($user['users_picture']))
       $data['users']['pic'] = cs_html_img('uploads/users/nopic.jpg');
     else
       $data['users']['pic'] = cs_html_img('uploads/users/' . $user['users_picture']);
   }
+
+  $data['users']['link'] = cs_user($account['users_id'], $account['users_nick']);
 
   $where_msg = 'users_id_to = ' . (int) $account['users_id'] . ' AND messages_show_receiver = 1 AND messages_view = 0';
   $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);

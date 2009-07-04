@@ -1,5 +1,5 @@
 <div style="text-align: center; width: 100%">
-  <span style="font-weight: bold">{users:country_icon} {users:nick}</span><br />
+  <span style="font-weight: bold">{users:country_icon} {users:link}</span><br />
   <div style="padding: 4px">{users:pic}</div>
 </div>
 
