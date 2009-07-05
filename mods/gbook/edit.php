@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
@@ -18,11 +19,11 @@ if (isset($_POST['from'])) $from = $_POST['from'];
 elseif (isset($_GET['from'])) $from = $_GET['from'];
 
 $select = 'users_id, gbook_nick, gbook_email, gbook_icq, gbook_msn, gbook_skype, gbook_url, gbook_town, gbook_text, gbook_time';
-$cs_gbook = cs_sql_select(__FILE__,'gbook',$select,"gbook_id = '" . $gbook_id . "'");
+$cs_gbook = cs_sql_select(__FILE__,'gbook',$select,"gbook_id = '" . (int) $gbook_id . "'");
 
 if(!empty($cs_gbook['users_id'])) {
   $select = 'users_nick, users_email, users_place, users_icq, users_msn, users_skype, users_url';
-  $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . $cs_gbook['users_id'] . "'");
+  $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . (int) $cs_gbook['users_id'] . "'");
 }
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
@@ -40,7 +41,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
     //check nick if exists or empty
     if (!empty($cs_gbook['gbook_nick'])) {
-      $exists_user = cs_sql_select(__FILE__,'users','users_nick',"users_nick = '" . $cs_gbook['gbook_nick'] . "'");
+      $exists_user = cs_sql_select(__FILE__,'users','users_nick',"users_nick = '" . cs_sql_escape($cs_gbook['gbook_nick']) . "'");
       
       if(!empty($exists_user)) {
         $error .= $cs_lang['error_exist_nick'] . cs_html_br(1);
@@ -51,7 +52,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
     
     //check email if exists, chars or empty
     if (!empty($cs_gbook['gbook_email'])) {
-      $exists_user = cs_sql_select(__FILE__,'users','users_email',"users_email = '" . $_POST['gbook_email'] . "'");
+      $exists_user = cs_sql_select(__FILE__,'users','users_email',"users_email = '" . cs_sql_escape($_POST['gbook_email']) . "'");
     
       if(!empty($exists_user)) {
         $error .= $cs_lang['error_exist_email'] . cs_html_br(1);
@@ -97,14 +98,12 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
   if(empty($cs_gbook['gbook_text']))
     $error .= $cs_lang['no_text'] . cs_html_br(1);
-
 }
 
 if(!isset($_POST['submit']))
   $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($error))
   $data['head']['body'] = $error;
-
 
 //preview
 if (isset($_POST['preview']) AND empty($error)) {
@@ -130,7 +129,6 @@ if (isset($_POST['preview']) AND empty($error)) {
   $data['gbook']['time'] = cs_date('unix',$cs_gbook['gbook_time'],1);
   
   $data['tpl']['preview'] = cs_subtemplate(__FILE__,$data,'gbook','preview');
-
 }
 
 if (!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
@@ -145,7 +143,7 @@ if (!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   $data['abcode']['features'] = cs_abcode_features('gbook_text');
   $data['check']['newtime'] = !empty($_POST['gbook_newtime']) ? 'checked="checked"' : '';
   $data['gbook']['id'] = $gbook_id;
-  $data['gbook']['from'] = $from;
+  $data['gbook']['from'] = cs_secure($from);
   
   echo cs_subtemplate(__FILE__,$data,'gbook','edit');
 }
