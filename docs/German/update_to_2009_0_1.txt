@@ -5,9 +5,10 @@ Der Update-Vorgang als solches ist in diesem Falle kein Besonderer, allerdings
 sind einige Änderungen in ClanSphere zu beachten und gegebenenfalls anzupassen:
 
 1. Die navlogin.php verwaltet nun alle möglichen Funktionalitäten des Platzhalters
-   {users:navlogin}, die alte Variante mit den Zahlen 2-4 dahinter angehängt, um
+   {users:navlogin}. Die alte Variante mit den Zahlen 2-4 dahinter angehängt, um
    andere Ansichten zu erlangen wird nun als Parameter übergeben, wobei 'icons',
-   'horizontal' und 'picture' gültige Werte sind.
+   'horizontal' und 'picture' gültige Werte sind. Beispiel:
+   {users:navlogin:style=icons}
 
 2. Die veralteten XHTML-Funktionen aus BXCP 0.3 Zeiten fallen vorraussichtlich mit
    dem nächsten Major-Release heraus. Bis dahin sind diese nun über einen Eintrag

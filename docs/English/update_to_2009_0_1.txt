@@ -7,7 +7,8 @@ following changes and maybe customize that things on your page:
 1. The navlogin.php file is now the center of all navlogin functionalities and
    decidedes on which theme files to use. The old way, passing 2-4 to the placeholder
    {users:navlogin} is no longer supported and replaced by a parameter with 'icons',
-   'horizontal' and 'picture' as valid values.
+   'horizontal' and 'picture' as valid values. Example:
+   {users:navlogin:style=icons}
 
 2. The deprecated XHTML-Functions from BXCP 0.3 are going to be removed within the
    next Major-Release. If you want to use them on add this line to your setup.php file:
