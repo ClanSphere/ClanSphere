@@ -19,8 +19,8 @@ $cs_main = array( 'cellspacing'     => 1,
                   'init_sql'        => false,
                   'init_tpl'        => false,
                   'public'          => 1,
-                  'version_name'    => '2009.0.1',
-                  'version_date'    => '2009-07-05');
+                  'version_name'    => '2009.0.2 SVN',
+                  'version_date'    => '2009-07-06');
 
 require_once 'system/core/functions.php';
 
