@@ -11,7 +11,6 @@ settype($members_id,'integer');
 
 $data['members']['mod'] = $cs_lang[$op_members['label']];
 
-
 $cells = 'squads_id,users_id,members_task,members_order,members_since,members_admin';
 $cs_members = cs_sql_select(__FILE__,'members',$cells,"members_id = '" . $members_id . "'");
 
@@ -58,20 +57,16 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $users_nick = cs_secure($users_infos['users_nick']);
   $data['members']['user'] = cs_user($users_infos['users_id'],$users_infos['users_nick'], $users_infos['users_active'], $users_infos['users_delete']);
 
-   $data['members']['task'] = $cs_members['members_task'];
+  $data['members']['task'] = cs_secure($cs_members['members_task']);
 
-   $data['members']['order'] = $cs_members['members_order'];
+  $data['members']['order'] = (int) $cs_members['members_order'];
   
   $data['members']['since'] = cs_dateselect('since','date',$cs_members['members_since']);
 
-  
-  if($cs_members['members_admin'] == '1') {
-    $data['members']['admin'] = '1';
-  }
-  else {
-    $data['members']['admin'] = '0';
-  }
-
+  if($cs_members['members_admin'] == '1')
+    $data['members']['admin'] = 'checked="checked"';
+  else
+    $data['members']['admin'] = '';
 
   $data['members']['id'] = $members_id;
   
@@ -90,5 +85,4 @@ else {
   cs_sql_update(__FILE__,'members',$members_cells,$members_save,$members_id);  
 
   cs_redirect($cs_lang['changes_done'],'members','center', $more);
-} 
-  
+}

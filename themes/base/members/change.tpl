@@ -34,7 +34,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:configure} {lang:more}</td>
-      <td class="leftb"><input type="checkbox" name="members_admin" value="1" checked="{members:admin}" />
+      <td class="leftb"><input type="checkbox" name="members_admin" value="1" {members:admin} />
         {lang:manage} </td>
     </tr>
     <tr>
