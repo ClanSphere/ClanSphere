@@ -73,7 +73,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $squads_data = cs_sql_select(__FILE__,'squads','squads_name,squads_id',0,'squads_name',0,0);
   $data['members']['squad_sel'] = cs_dropdown('squads_id','squads_name',$squads_data,$cs_members['squads_id']);
 
-  $data['users']['nick'] = $users_nick;
+  $data['users']['nick'] = cs_secure($users_nick);
 
   $data['members']['task'] = cs_secure($cs_members['members_task']);
   $data['members']['order'] = cs_secure($cs_members['members_order']);

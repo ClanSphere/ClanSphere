@@ -81,10 +81,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data_squads[$run]['squads_name'] = cs_secure($data_squads[$run]['squads_name']);
   $data['squads'] = cs_dropdownsel($data_squads, $cs_members['squads_id'], 'squads_id');
 
-  $data['users']['nick'] = $users_nick;
+  $data['users']['nick'] = cs_secure($users_nick);
 
-  $data['value']['task'] = $cs_members['members_task'];
-  $data['value']['order'] = $cs_members['members_order'];
+  $data['value']['task'] = cs_secure($cs_members['members_task']);
+  $data['value']['order'] = cs_secure($cs_members['members_order']);
   $data['value']['admin_sel'] = empty($cs_members['members_admin']) ? '' : ' checked="checked"';
 
   $data['dropdown']['since_year'] = cs_dateselect('since','date',$cs_members['members_since']);

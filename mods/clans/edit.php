@@ -132,9 +132,9 @@ if(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   $data['lang']['mod'] = $cs_lang[$op_clans['label']];
-  $data['clans']['name'] = $cs_clans['clans_name'];
-  $data['clans']['short'] = $cs_clans['clans_short'];
-  $data['clans']['tag'] = $cs_clans['clans_tag'];  
+  $data['clans']['name'] = cs_secure($cs_clans['clans_name']);
+  $data['clans']['short'] = cs_secure($cs_clans['clans_short']);
+  $data['clans']['tag'] = cs_secure($cs_clans['clans_tag']);  
   
   if($cs_clans['clans_tagpos'] == '1') {
     $data['select']['before'] = 'selected="selected"';
@@ -162,9 +162,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   }
   
   $data['clans']['country'] .= cs_html_select(0) . ' ' . cs_html_img('symbols/countries/' . $cs_clans['clans_country'] . '.png',11,16,'id="' . $el_id . '"');
-  $data['clans']['url'] = $cs_clans['clans_url'];
+  $data['clans']['url'] = cs_secure($cs_clans['clans_url']);
   $data['clans']['since'] = cs_dateselect('since','date',$cs_clans['clans_since']);
-  $data['clans']['password'] = $cs_clans['clans_pwd'];
+  $data['clans']['password'] = cs_secure($cs_clans['clans_pwd']);
 
   $data['users']['nick'] = $users_nick;
   

@@ -108,7 +108,9 @@ elseif(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-  $data['squads'] = $cs_squads;
+  foreach($cs_squads AS $key => $value)
+    $data['squads'][$key] = cs_secure($value);
+
   $data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
   
   $data['squads']['abcode'] = cs_abcode_features('squads_text');

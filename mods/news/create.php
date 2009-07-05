@@ -204,9 +204,9 @@ if(isset($_POST['mirror'])) {
 if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   
   $data['categories']['dropdown'] = cs_categories_dropdown('news', $cs_news['categories_id']);
-  $data['news']['news_headline'] = $cs_news['news_headline'];
-  $data['news']['news_text'] = $cs_news['news_text'];
-  $data['news']['news_readmore'] = $cs_news['news_readmore'];
+  $data['news']['news_headline'] = cs_secure($cs_news['news_headline']);
+  $data['news']['news_text'] = cs_secure($cs_news['news_text']);
+  $data['news']['news_readmore'] = cs_secure($cs_news['news_readmore']);
 
   if(isset($_POST['mirror'])) {
     $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
