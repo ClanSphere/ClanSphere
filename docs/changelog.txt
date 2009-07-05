@@ -1,13 +1,13 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0.1 >> 2009-07-0X
+ClanSphere 2009.0.1 >> 2009-07-05
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.3.0
 
 >> Security: Closed at least two retroactive SQL Injection possibilities (hajo)
->> Security: Closed at least one SQL Injection possibility in gbook mod (hajo)
+>> Security: Closed at least four SQL Injection possibilities in gbook mod (hajo, schiri)
 
 -> Added function cs_cache_clear and a check for the unicode extension (hajo)
 -> Fixed charset handling with file operations and escaped special lang chars (hajo)
