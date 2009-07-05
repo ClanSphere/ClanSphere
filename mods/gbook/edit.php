@@ -133,10 +133,10 @@ if (isset($_POST['preview']) AND empty($error)) {
 
 }
 
-
 if (!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-  $data['gbook'] = $cs_gbook;
+  foreach($cs_gbook AS $key => $value)
+    $data['gbook'][$key] = cs_secure($value);
 
   if($cs_gbook['users_id'] == 0) {
     $data['tpl']['extension'] = cs_subtemplate(__FILE__,$data,'gbook','extension');
@@ -165,5 +165,4 @@ else {
   }
     
   cs_redirect($cs_lang['changes_done'],'gbook',$action,$more) ;
-
 }

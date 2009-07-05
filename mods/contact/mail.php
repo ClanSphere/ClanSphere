@@ -100,13 +100,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $categories_data = cs_sql_select(__FILE__,'categories','*',"categories_mod = 'contact'",'categories_order ASC, categories_name',0,0);
 
-  $data['mail']['name']           = $mail['name'];
-  $data['mail']['email']          = $mail['email'];
-  $data['mail']['why']            = $mail['why'];
-  $data['mail']['text']           = $mail['text'];
-  $data['mail']['icq']            = $mail['icq'];
-  $data['mail']['msn']            = $mail['msn'];  
-  $data['mail']['firm']           = $mail['firm'];
+  foreach($mail AS $key => $value)
+    $data['mail'][$key] = cs_secure($value);
+
   $data['mail']['categories_id']  = cs_dropdown('categories_id','categories_name',$categories_data,$mail['categories_id']);
 
   $data['if']['captcha'] = !empty($captcha) ? TRUE : FALSE;

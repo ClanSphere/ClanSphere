@@ -33,7 +33,10 @@ if(isset($_POST['submit'])) {
     $cs_clans['clans_picture'] = '';
   }
 
-  $img_size = getimagesize($files_gl['picture']['tmp_name']);
+  if(!empty($files_gl['picture']['tmp_name']))
+    $img_size = getimagesize($files_gl['picture']['tmp_name']);
+  else
+    $img_size = 0;
   
   if(!empty($files_gl['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
     $message .= $cs_lang['ext_error'] . cs_html_br(1);
@@ -123,9 +126,9 @@ if(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   $data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
-  $data['clans']['name'] = $cs_clans['clans_name'];
-  $data['clans']['short'] = $cs_clans['clans_short'];
-  $data['clans']['tag'] = $cs_clans['clans_tag'];  
+  $data['clans']['name'] = cs_secure($cs_clans['clans_name']);
+  $data['clans']['short'] = cs_secure($cs_clans['clans_short']);
+  $data['clans']['tag'] = cs_secure($cs_clans['clans_tag']);  
   
   if($cs_clans['clans_tagpos'] == '1') {
     $data['select']['before'] = 'selected="selected"';
@@ -151,9 +154,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['clans']['country'] .= cs_html_option($full,$short,$sel);
   }
   $data['clans']['country'] .= cs_html_select(0) . ' ' . cs_html_img('symbols/countries/' . $cs_clans['clans_country'] . '.png',11,16,'id="' . $el_id . '"');
-  $data['clans']['url'] = $cs_clans['clans_url'];
+  $data['clans']['url'] = cs_secure($cs_clans['clans_url']);
   $data['clans']['since'] = cs_dateselect('since','date',$cs_clans['clans_since']);
-  $data['clans']['password'] = $cs_clans['clans_pwd'];
+  $data['clans']['password'] = cs_secure($cs_clans['clans_pwd']);
 
   if(empty($cs_clans['clans_picture'])) {
     $data['clans']['pic'] = $cs_lang['nopic'];

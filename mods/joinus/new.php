@@ -155,6 +155,9 @@ if(!isset($_POST['submit'])) {
 
 if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit']))) {
 
+  foreach($data['join'] AS $key => $value)
+    $data['join'][$key] = cs_secure($value);
+
   $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
   $data['join']['date'] = cs_dateselect('age','date',$data['join']['joinus_age']);
   $data['join']['country_url'] = cs_html_img('/symbols/countries/' . $data['join']['joinus_country'] . '.png',0,0,'id="country_1"');

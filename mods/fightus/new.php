@@ -106,7 +106,8 @@ elseif(!empty($error)) {
 
 if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit']))) {
   
-  $data['fightus'] = $cs_fightus;
+  foreach($cs_fightus AS $key => $value)
+    $data['fightus'][$key] = cs_secure($value);
 
   $data['games'] = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   $games_count = count($data['games']);

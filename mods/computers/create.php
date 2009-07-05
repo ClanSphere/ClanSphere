@@ -60,7 +60,9 @@ elseif(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-  $data['com'] = $cs_computers; 
+  foreach($cs_computers AS $key => $value)
+    $data['com'][$key] = cs_secure($value);
+
   $data['com']['referer'] = empty($_SERVER['HTTP_REFERER']) ? 'center' : $_SERVER['HTTP_REFERER'];
 
   echo cs_subtemplate(__FILE__,$data,'computers','create');

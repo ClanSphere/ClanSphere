@@ -110,9 +110,9 @@ if(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   
-  $data['clans']['name'] = $cs_clans['clans_name'];
-  $data['clans']['short'] = $cs_clans['clans_short'];
-  $data['clans']['tag'] = $cs_clans['clans_tag'];  
+  $data['clans']['name'] = cs_secure($cs_clans['clans_name']);
+  $data['clans']['short'] = cs_secure($cs_clans['clans_short']);
+  $data['clans']['tag'] = cs_secure($cs_clans['clans_tag']);  
   
   $el_id = 'country_1';
   $onc = "document.getElementById('" . $el_id . "').src='" . $cs_main['php_self']['dirname'] . "symbols/countries/' + this.form.";
@@ -126,11 +126,11 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['clans']['country'] .= cs_html_select(0) . ' ' . cs_html_img('symbols/countries/' . $cs_clans['clans_country'] . '.png',11,16,'id="' . $el_id . '"');
   
-  $data['clans']['url'] = $cs_clans['clans_url'];
+  $data['clans']['url'] = cs_secure($cs_clans['clans_url']);
 
   $data['clans']['since'] = cs_dateselect('since','date',$cs_clans['clans_since']);
 
-  $data['clans']['pw'] = $cs_clans['clans_pwd'];
+  $data['clans']['pw'] = cs_secure($cs_clans['clans_pwd']);
   
   $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';
