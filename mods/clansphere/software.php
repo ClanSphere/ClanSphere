@@ -19,7 +19,6 @@ $limit['upload_max_filesize'] = str_replace('M',' MiB', ini_get('upload_max_file
 $limit['memory_limit'] = str_replace('M',' MiB', ini_get('memory_limit'));
 
 $data['software']['os'] = @php_uname('s') . ' ' . @php_uname('r') . ' ' . @php_uname('v');
-$data['software']['machine'] = @php_uname('m');
 $data['software']['host'] = @php_uname('n');
 
 if(function_exists('apache_get_version'))

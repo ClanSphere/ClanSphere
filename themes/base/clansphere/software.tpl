@@ -10,12 +10,11 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc" style="width:240px">{icon:samba} {lang:os}</td>
-    <td class="leftb">{software:os}</td>
-    <td class="leftb">{software:machine}</td>
+    <td class="leftb" colspan="2">{software:os}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:mycomputer} {lang:host}</td>
-    <td class="leftb"colspan="2">{software:host}</td>
+    <td class="leftb" colspan="2">{software:host}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:web} {lang:webserver}</td>
@@ -28,7 +27,7 @@
   <tr>
     <td class="leftc">{icon:php} {lang:php_mod}</td>
     <td class="leftb">{software:php_mod}</td>
-    <td class="leftb">{lang:zend_core} {software:zend_core}</td>
+    <td class="leftb" style="width:180px">{lang:zend_core} {software:zend_core}</td>
   </tr>
 </table>
 <br />
