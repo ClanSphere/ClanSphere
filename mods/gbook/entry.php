@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
+
 $cs_post = cs_post('id,from');
 $cs_get = cs_get('id,from');
 $data = array();
@@ -19,7 +20,7 @@ $error = '';
 
 //check if user exists
 if($id != 0) {
-  $users_check = cs_sql_count(__FILE__,'users',"users_id = '" . $id . "'");
+  $users_check = cs_sql_count(__FILE__,'users',"users_id = '" . (int) $id . "'");
   if(empty($users_check)) {
     cs_redirect($cs_lang['user_not_exist'],'gbook','list');
   }
@@ -30,20 +31,20 @@ if($id != 0) {
 
 //check last own
 if(empty($account['users_id'])) {
-    $last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip, users_id',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
+    $last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip, users_id',"gbook_users_id = '" . (int) $id . "'",'gbook_id DESC');
     if ($last_entry['gbook_ip'] == $_SERVER['REMOTE_ADDR'] && empty($last_entry['users_id'])) {
       $error .= $cs_lang['last_own'] . cs_html_br(1);
     }
 } 
 else {
-    $last_entry = cs_sql_select(__FILE__,'gbook','users_id',"gbook_users_id = '" . $id . "'",'gbook_id DESC');
+    $last_entry = cs_sql_select(__FILE__,'gbook','users_id',"gbook_users_id = '" . (int) $id . "'",'gbook_id DESC');
     if ($last_entry['users_id'] == $account['users_id']) {
       $error .= $cs_lang['last_own'] . cs_html_br(1);
     }
 }
 
 //check flood
-$flood = cs_sql_select(__FILE__,'gbook','gbook_time',"users_id = '" . $users_id . "'",'gbook_time DESC');
+$flood = cs_sql_select(__FILE__,'gbook','gbook_time',"users_id = '" . (int) $users_id . "'",'gbook_time DESC');
 $maxtime = $flood['gbook_time'] + $cs_main['def_flood'];
 if ($maxtime > cs_time()) {
   $diff = $maxtime - cs_time();
@@ -94,7 +95,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
     
     //check nick if exists or empty
     if (!empty($cs_gbook['gbook_nick'])) {
-      $exists_user = cs_sql_select(__FILE__,'users','users_nick',"users_nick = '" . $cs_gbook['gbook_nick'] . "'");
+      $exists_user = cs_sql_select(__FILE__,'users','users_nick',"users_nick = '" . cs_sql_escape($cs_gbook['gbook_nick']) . "'");
       
       if(!empty($exists_user)) {
         $g_error .= $cs_lang['error_exist_nick'] . cs_html_br(1);
@@ -105,7 +106,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
     
     //check email if exists, chars or empty
     if (!empty($cs_gbook['gbook_email'])) {
-      $exists_user = cs_sql_select(__FILE__,'users','users_email',"users_email = '" . $_POST['gbook_email'] . "'");
+      $exists_user = cs_sql_select(__FILE__,'users','users_email',"users_email = '" . cs_sql_escape($_POST['gbook_email']) . "'");
     
       if(!empty($exists_user)) {
         $g_error .= $cs_lang['error_exist_email'] . cs_html_br(1);
@@ -151,16 +152,15 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   else {
     //if user
     $select = 'users_nick, users_email, users_icq, users_msn, users_skype, users_place, users_url';
-    $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . $users_id . "'");
+    $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . (int) $users_id . "'");
 
-    $cs_gbook['gbook_nick'] = cs_secure($cs_user['users_nick']);
-    $cs_gbook['gbook_email'] = cs_secure($cs_user['users_email']);
-    $cs_gbook['gbook_icq'] = cs_secure($cs_user['users_icq']);
-    $cs_gbook['gbook_msn'] = cs_secure($cs_user['users_msn']);
-    $cs_gbook['gbook_skype'] = cs_secure($cs_user['users_skype']);
-    $cs_gbook['gbook_url'] = cs_secure($cs_user['users_url']);
-    $cs_gbook['gbook_town'] = cs_secure($cs_user['users_place']);
-  
+    $cs_gbook['gbook_nick'] = $cs_user['users_nick'];
+    $cs_gbook['gbook_email'] = $cs_user['users_email'];
+    $cs_gbook['gbook_icq'] = $cs_user['users_icq'];
+    $cs_gbook['gbook_msn'] = $cs_user['users_msn'];
+    $cs_gbook['gbook_skype'] = $cs_user['users_skype'];
+    $cs_gbook['gbook_url'] = $cs_user['users_url'];
+    $cs_gbook['gbook_town'] = $cs_user['users_place'];
   }
 
   $cs_gbook['gbook_time'] = cs_time();
@@ -177,19 +177,17 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   } else {
     $g_error .= $cs_lang['no_text'] . cs_html_br(1);
   }
-
 }
 
 if(!isset($_POST['submit']))
   $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($g_error))
   $data['head']['body'] = $g_error;
-  
 
 //preview
 if (isset($_POST['preview']) AND empty($g_error)) {
   
-  $where_user = !empty($id) ? "gbook_users_id = '" . $id . "'" : 0;
+  $where_user = !empty($id) ? "gbook_users_id = '" . (int) $id . "'" : 0;
   $count_entry = cs_sql_count(__FILE__,'gbook',$where_user);
   print_r($count_entry);
   $data['gbook']['entry_count'] = $count_entry + 1;
@@ -210,13 +208,12 @@ if (isset($_POST['preview']) AND empty($g_error)) {
   $data['gbook']['time'] = cs_date('unix',$cs_gbook['gbook_time'],1);
   
   $data['tpl']['preview'] = cs_subtemplate(__FILE__,$data,'gbook','preview');
-
 }
-
 
 if(!empty($g_error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-  $data['gbook'] = $cs_gbook;
+  foreach($cs_gbook AS $key => $value)
+    $data['gbook'][$key] = cs_secure($value);
 
   if($users_id == 0) {
     $data['tpl']['extension'] = cs_subtemplate(__FILE__,$data,'gbook','extension');
@@ -233,7 +230,6 @@ if(!empty($g_error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   $data['gbook']['from'] = $from;
   
  echo cs_subtemplate(__FILE__,$data,'gbook','entry');
-
 } 
 else {
 
