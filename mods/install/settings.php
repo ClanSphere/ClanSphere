@@ -91,6 +91,9 @@ else {
   $log = array('save_actions' => 0, 'save_errors' => 0);
 }
 
+// check again to skip form page after setup.php creation
+$setup_exists = file_exists('setup.php') ? 1 : 0;
+
 $data = array();
 
 $data['head']['message'] = $cs_lang['body_settings'];
