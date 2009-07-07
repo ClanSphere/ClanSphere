@@ -29,10 +29,10 @@ $data['count']['archivbox'] = cs_sql_count(__FILE__, 'messages', $archivcond1 . 
 $data['var']['pages'] = cs_pages('messages','inbox',$data['count']['inbox'],$start,$users_id,$sort);
 $data['var']['new_msgs'] = cs_sql_count(__FILE__,'messages','users_id_to = "'.$users_id.'" AND messages_show_receiver = "1" AND messages_view = "0"');
 
-$data['sort']['view']    = cs_sort('messages','inbox',$start,'',5,$sort);
-$data['sort']['subject'] = cs_sort('messages','inbox',$start,'',3,$sort);
-$data['sort']['sender']  = cs_sort('messages','inbox',$start,'',7,$sort);
-$data['sort']['date']    = cs_sort('messages','inbox',$start,'',1,$sort);
+$data['sort']['view']    = cs_sort('messages','outbox',$start,'',5,$sort);
+$data['sort']['subject'] = cs_sort('messages','outbox',$start,'',3,$sort);
+$data['sort']['sender']  = cs_sort('messages','outbox',$start,'',7,$sort);
+$data['sort']['date']    = cs_sort('messages','outbox',$start,'',1,$sort);
 
 $where = "msg.users_id = '" . $users_id . "' AND msg.messages_show_sender ='1'";
 if ($page === 'new') $where .= ' AND msg.messages_view = "0"';
