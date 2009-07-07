@@ -1,4 +1,24 @@
 <?php
+//  start of access check by clansphere
+
+session_start();
+
+if(empty($_SESSION['users_id']) OR empty($_SESSION['access_fckeditor']) OR $_SESSION['access_fckeditor'] < 3) {
+
+  $userdir = false;
+  $enabled = false;
+}
+else {
+
+  $pathinf = pathinfo($_SERVER['PHP_SELF']);
+  $dirname = $pathinf['dirname'] == '/' ? '/' : $pathinf['dirname'] . '/';
+  $dirname = str_replace('/mods/fckeditor/editor/filemanager/connectors/php/', '', $dirname);
+  $userdir = $dirname . '/uploads/fckeditor/';
+  $enabled = true;
+}
+
+// end of access check by clansphere
+
 /*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2009 Frederico Caldeira Knabben
@@ -24,27 +44,10 @@
 
 global $Config ;
 
-session_start();
-
-if(empty($_SESSION['users_id']) OR empty($_SESSION['access_fckeditor']) OR $_SESSION['access_fckeditor'] < 3) {
-
-    $userdir = false;
-    $enabled = false;
-}
-else {
-
-    $pathinf = pathinfo($_SERVER['PHP_SELF']);
-    $dirname = $pathinf['dirname'] == '/' ? '/' : $pathinf['dirname'] . '/';
-    $dirname = str_replace('/mods/fckeditor/editor/filemanager/connectors/php/', '', $dirname);
-    $userdir = $dirname . '/uploads/fckeditor/';
-    $enabled = true;
-}
-
 // SECURITY: You must explicitly enable this "connector". (Set it to "true").
 // WARNING: don't just set "$Config['Enabled'] = true ;", you must be sure that only
 //		authenticated users can access this file or use some kind of session checking.
 $Config['Enabled'] = $enabled;
-
 
 // Path to user files relative to the document root.
 $Config['UserFilesPath'] = $userdir;
