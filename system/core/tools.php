@@ -253,7 +253,6 @@ function cs_dropdownsel($data, $id, $index) {
 function cs_files() {
 
   global $account, $cs_main;
-
   if (!empty($_FILES) || $cs_main['php_self']['basename'] != 'content.php' || (empty($account['users_ajax']) && $cs_main['ajax'] != 2) || empty($_SESSION['ajaxuploads']) || (!empty($_SESSION['ajaxuploads']) && empty($_POST))) {
     cs_ajaxfiles_clear();
     return $_FILES;
@@ -266,14 +265,14 @@ function cs_files() {
     $files[$key]['size'] = @filesize($files[$key]['tmp_name']);
     $files[$key]['type'] = cs_mimetype($files[$key]['tmp_name']);
   }
-
   return $files;
 }
 
 function cs_mimetype ($file) {
 
+  global $cs_main;
   if (function_exists('mime_content_type'))
-    return mime_content_type($file);
+    return mime_content_type($cs_main['def_path'] . '/' . $file);
 
   if (function_exists('finfo_open') && $fp = finfo_open(FILEINFO_MIME)) {
     $return = finfo_file($fp, $file);
@@ -286,7 +285,6 @@ function cs_mimetype ($file) {
     'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
 
   $ending = strtolower(substr(strrchr($file, '.'),1));
-
   return isset($mimes[$ending]) ? $mimes[$ending] : 'text/plain';
 }
 
@@ -360,19 +358,8 @@ function cs_mail($email,$title,$message,$from = 0,$type = 0) {
 // Sends a private message
 function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_to) {
 
-  $messages_cells = array(  'users_id',
-                            'messages_time',
-                            'messages_subject',
-                            'messages_text',
-                            'users_id_to',
-                            'messages_show_receiver');
-
-  $messages_save = array(   $users_id,
-                            cs_time(),
-                            $messages_subject,
-                            $messages_text,
-                            $users_id_to,
-                            1 );
+  $messages_cells = array('users_id','messages_time','messages_subject','messages_text','users_id_to','messages_show_receiver');
+  $messages_save = array($users_id,cs_time(),$messages_subject,$messages_text,$users_id_to,1);
 
   cs_sql_insert(__FILE__,'messages',$messages_cells,$messages_save);
 }
@@ -544,7 +531,8 @@ function cs_ajaxfiles_clear() {
 
   if (!empty($_SESSION['ajaxuploads'])) {
     foreach ($_SESSION['ajaxuploads'] as $name) {
-      @unlink('uploads/cache/' . $name);
+      if(file_exists('uploads/cache/' . $name))
+        unlink('uploads/cache/' . $name);
     }
     unset($_SESSION['ajaxuploads']);
   }
