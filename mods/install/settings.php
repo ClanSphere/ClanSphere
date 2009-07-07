@@ -116,7 +116,7 @@ if(!empty($setup_exists)) {
 } elseif(isset($_POST['view']) AND empty($error)) {
 
 	$data['if']['display_setup'] = true;
-	$data['data']['setup'] = cs_secure($setup_php);
+	$data['data']['setup'] = htmlentities($setup_php, ENT_QUOTES, $cs_main['charset']);
 
 } else {
 
