@@ -1,14 +1,15 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.0.2 >> 2009-07-XX
+ClanSphere 2009.0.2 >> 2009-07-07
 ___________________________________________________________
 
->> Security: Updated FCKEditor to 2.6.4.1
+>> Security: Updated FCKEditor to 2.6.4.1 (hajo)
 
 -> Changed fckeditor quickupload to use the matching subdirectory (hajo)
--> Fixed install settings to detect 'setup.php' when it was created (hajo)
-
+-> Fixed ajax uploads to not cause php errors in some cases (hajo)
+-> Fixed install settings 'show' form to work again (hajo)
+-> Fixed messages sorting and subject error message (hajo)
 
 ClanSphere 2009.0.1 >> 2009-07-05
 ___________________________________________________________
