@@ -115,7 +115,7 @@ if(!empty($go_search)) {
       $from = "comments com INNER JOIN {pre}_threads thr ON com.comments_fid = thr.threads_id INNER JOIN {pre}_board boa ON thr.board_id = boa.board_id INNER JOIN {pre}_categories cat ON boa.categories_id = cat.categories_id";
       $order = 'com.comments_id DESC';
     }
-    $conditions += " AND boa.board_pwd = ''";
+    $conditions = $conditions . " AND boa.board_pwd = ''";
     $count = cs_sql_count(__FILE__,$from,$conditions);
 
     if(empty($count)) {
