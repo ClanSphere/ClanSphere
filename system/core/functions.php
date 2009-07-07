@@ -125,7 +125,7 @@ function cs_init($predefined) {
   if(empty($cs_main['def_path']))
     $cs_main['def_path'] = getcwd();
 
-  $cs_main['template'] = $cs_main['def_tpl'];
+  $cs_main['template'] = empty($cs_main['def_tpl']) ? 'clansphere' : $cs_main['def_tpl'];
   if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
     $cs_main['template'] = $_GET['template'];
 
@@ -137,7 +137,7 @@ function cs_init($predefined) {
     $cs_main['mod'] = $cs_main['def_mod'];
     $cs_main['action'] = $cs_main['def_action'];
 
-    $parameters_split = explode('&',$cs_main['def_parameters']);
+    $parameters_split = empty($cs_main['def_parameters']) ? array() : explode('&', $cs_main['def_parameters']);
 
     foreach($parameters_split AS $parameter) {
       if(empty($parameter))

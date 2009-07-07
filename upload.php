@@ -3,7 +3,7 @@
 // $Id$
 
 # Overwrite global settings by using the following array
-$cs_main = array('init_sql' => false, 'init_tpl' => false);
+$cs_main = array('init_sql' => false, 'init_tpl' => false, 'def_mod' => 'ajax', 'def_action' => '');
 
 require_once 'system/core/functions.php';
 
@@ -13,9 +13,10 @@ session_start();
 
 if(!empty($_SESSION)) {
 
-  if($_POST['remove']) {
-    $file = $_POST['remove']; 
-    cs_unlink('cache',$_SESSION['ajaxuploads'][$file]);
+  if(isset($_POST['remove'])) {
+    $file = $_POST['remove'];
+    if(file_exists('uploads/cache/' . $_SESSION['ajaxuploads'][$file]))
+      cs_unlink('cache',$_SESSION['ajaxuploads'][$file]);
     unset($_SESSION['ajaxuploads'][$file]);
     echo $file;
   }
