@@ -75,6 +75,11 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
         stream_encoding($create_setup, $cs_main['charset']);
       @fwrite($create_setup,$setup_php) OR $flerr++;
       @fclose($create_setup) OR $flerr++;
+
+      # check again to skip form page and prohibite errors
+      $setup_exists = file_exists('setup.php') ? 1 : 0;
+      if(empty($setup_exists))
+        $flerr++;
     }
     if(!empty($flerr)) {
       $error++;
@@ -90,9 +95,6 @@ else {
   'user' => '', 'pwd' => '', 'name' => '', 'prefix' => 'cs');
   $log = array('save_actions' => 0, 'save_errors' => 0);
 }
-
-// check again to skip form page after setup.php creation
-$setup_exists = file_exists('setup.php') ? 1 : 0;
 
 $data = array();
 
