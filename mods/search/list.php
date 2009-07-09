@@ -7,8 +7,8 @@ $cs_lang = cs_translate('search');
 $data = array();
 
 $search_error = 0; 
-$data['search']['where'] = ''; 
-$data['search']['text'] = '';
+$data['search']['raw_where'] = ''; 
+$data['search']['raw_text'] = '';
 $data['search']['errmsg'] = '';
 $submit = empty($_REQUEST['submit']) ? 0 : 1;
 
@@ -18,13 +18,13 @@ $data['if']['text'] = false;
 if(!empty($submit)) {
   if(!empty($_REQUEST['text'])) {
     $data['if']['text'] = true;
-    $data['search']['text'] = $_REQUEST['text'];
+    $data['search']['raw_text'] = $_REQUEST['text'];
     } else {
     $data['search']['errmsg'] = cs_icon('important'). $cs_lang['error_text'] . cs_html_br(1);
     $search_error++;
   } 
   if(!empty($_REQUEST['where'])) {
-    $data['search']['where'] = $_REQUEST['where'];
+    $data['search']['raw_where'] = $_REQUEST['where'];
     } else {
     $data['search']['errmsg'] .= cs_icon('important'). $cs_lang['error_modul'];
     $search_error++;
@@ -34,20 +34,24 @@ if(!empty($submit)) {
 $sel = 'selected="selected"';
 $checked = 'checked="checked"';
 
-$data['search']['articles_check'] = $data['search']['where'] == 'articles' ? $sel : '';
-$data['search']['clans_check'] = $data['search']['where'] == 'clans' ? $sel : '';
-$data['search']['news_check'] = $data['search']['where'] == 'news' ? $sel : '';
-$data['search']['users_check'] = $data['search']['where'] == 'users' ? $sel : '';
-$data['search']['files_check'] = $data['search']['where'] == 'files' ? $sel : '';
+$data['search']['articles_check'] = $data['search']['raw_where'] == 'articles' ? $sel : '';
+$data['search']['clans_check'] = $data['search']['raw_where'] == 'clans' ? $sel : '';
+$data['search']['news_check'] = $data['search']['raw_where'] == 'news' ? $sel : '';
+$data['search']['users_check'] = $data['search']['raw_where'] == 'users' ? $sel : '';
+$data['search']['files_check'] = $data['search']['raw_where'] == 'files' ? $sel : '';
 
-
-if(!empty($search_error)) {
+if(!empty($search_error))
   $data['if']['errmsg'] = true;
-}
+
+$data['search']['text'] = cs_secure($data['search']['raw_text']);
+$data['search']['where'] = cs_secure($data['search']['raw_where']);
 
 echo cs_subtemplate(__FILE__,$data,'search','list');
 
 if(!empty($submit) AND empty($search_error)) {
+
+  $data['search']['text'] = $data['search']['raw_text'];
+  $data['search']['where'] = $data['search']['raw_where'];
     
   switch ($data['search']['where']) {
     case 'articles':
