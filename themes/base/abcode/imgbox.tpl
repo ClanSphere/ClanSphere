@@ -41,7 +41,7 @@
 {if:features}
   <tr>
     <td class="centerc" colspan="3">
-      <a href="#" id="list_{var:textarea}" onclick="window.open('{page:path}features.php?name={var:textarea}', '{lang:list}', 'width=450,height=600,scrollbars=yes')">{lang:list}</a>
+      <a href="#" id="list_{var:textarea}" onclick="window.open('{page:path}features.php?name={var:textarea}', '{lang:list}', 'width=450,height=600,scrollbars=yes'); return false">{lang:list}</a>
     </td>
   </tr>
 {stop:features}
