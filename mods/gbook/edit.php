@@ -110,7 +110,7 @@ if (isset($_POST['preview']) AND empty($error)) {
   
   $where_user = !empty($id) ? "gbook_users_id = '" . $id . "'" : 0;
   $count_entry = cs_sql_count(__FILE__,'gbook',$where_user);
-  print_r($count_entry);
+
   $data['gbook']['entry_count'] = $count_entry + 1;
   $data['gbook']['users_nick'] = $cs_gbook['gbook_nick'];
   $data['gbook']['icon_town'] = empty($cs_gbook['gbook_town']) ? '' : cs_icon('gohome');
