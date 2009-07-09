@@ -553,7 +553,8 @@ function cs_url($mod, $action = 'list', $more = 0, $base = 0) {
     return empty($more) ? $return : $return . '&amp;' . $more;
   }
   else {
-    $return .= basename($cs_main['php_self']['basename'], '.php') . '/' . $mod . '/' . $action;
+    $base = empty($base) ? basename($cs_main['php_self']['basename'], '.php') : $base;
+    $return .= $base . '/' . $mod . '/' . $action;
     return empty($more) ? $return : $return . '/' . strtr($more, array('&amp;' => '/', '=' => '/', '&' => '/'));
   }
 }
