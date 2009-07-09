@@ -14,7 +14,8 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="leftc" colspan="2">{icon:email} <a href="{url:messages_inbox:page=new}">{count:new_messages} {lang:new_messages}</a>
+    <td class="leftc" colspan="2">{icon:email} <a href="{url:messages_inbox:page=new}">{count:new_messages} {lang:new_messages}</a></td>
+  </tr>
   <tr>
     <td class="leftc">{icon:kedit} <a href="{url:messages_autoresponder}">{lang:autoresponder}</a></td>
     <td class="rightb">{var:autoresponder}</td>
