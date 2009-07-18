@@ -66,10 +66,8 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
 
   
   for($run=0; $run<$members_loop; $run++) {
-    
-    $users_nick = cs_secure($cs_members[$run]['users_nick']);
-    
-    $data['members'][$sq_run]['squad_members'][$run]['members'] =  cs_user($cs_members[$run]['users_id'], $users_nick, $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);  
+        
+    $data['members'][$sq_run]['squad_members'][$run]['members'] =  cs_user($cs_members[$run]['users_id'], $cs_members[$run]['users_nick'], $cs_members[$run]['users_active'], $cs_members[$run]['users_delete']);  
     
     if($run == ($members_loop - 1)) {
       $data['members'][$sq_run]['squad_members'][$run]['dot'] =  '';
