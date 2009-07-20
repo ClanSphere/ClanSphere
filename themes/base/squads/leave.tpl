@@ -1,6 +1,6 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb">Squads - {lang:head_leave}</td>
+		<td class="headb">{head:mod} - {lang:head_leave}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{lang:body_leave}</td>

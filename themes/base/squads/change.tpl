@@ -42,8 +42,8 @@
 	</tr>
 	<tr>
 		<td class="leftb">
-			<div style="float:left; background-image:url(/symbols/votes/vote03.png); width:100px; height:13px; margin-top: 3px; margin-left: 2px;">
-				<div style="float:left; background-image:url(/symbols/votes/vote01.png); width: 1px; height: 13px;" id="pass_secure"></div>
+			<div style="float:left; background-image:url({page:path}symbols/votes/vote03.png); width:100px; height:13px; margin-top: 3px; margin-left: 2px;">
+				<div style="float:left; background-image:url({page:path}symbols/votes/vote01.png); width: 1px; height: 13px;" id="pass_secure"></div>
 			</div>
 			<div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_1">{lang:stage_1}</div>
 			<div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_2">{lang:stage_2}</div>
