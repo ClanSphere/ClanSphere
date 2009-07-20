@@ -32,7 +32,7 @@ if(empty($cs_events['events_cancel']) AND cs_time() < $cs_events['events_time'])
   }
   else {
     $data['head']['status'] .= $cs_lang['yes'] . ' -> ';
-    $data['head']['status'] .= cs_link($cs_lang['signout'],'events','signout','id=' . $events_id);
+    $data['head']['status'] .= cs_link($cs_lang['signout'],'events','signout','id=' . $status['eventguests_id']);
   }
 }
 elseif(!empty($cs_events['events_cancel'])) {
