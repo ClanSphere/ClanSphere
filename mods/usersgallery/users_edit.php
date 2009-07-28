@@ -37,7 +37,9 @@ if(isset($_POST['submit'])) {
 
 	$error = '';
 
-  if(empty($edit['usersgallery_titel']))
+	if($edit['users_id'] != $account['users_id'] AND $account['access_usersgallery'] < 4)
+		$error .= $cs_lang['not_own'] . cs_html_br(1);
+	if(empty($edit['usersgallery_titel']))
 		$error .= $cs_lang['no_titel'] . cs_html_br(1);
 	if(empty($edit['folders_id']))
 		$error .= $cs_lang['no_cat'] . cs_html_br(1);

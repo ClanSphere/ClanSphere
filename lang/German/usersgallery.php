@@ -5,4 +5,5 @@
 $cs_lang['mod_name'] = 'Benutzer-Gallerie';
 $cs_lang['modtext'] = 'Multimedia Benutzer-Galerie nutzen und verwalten.';
 
+$cs_lang['not_own'] = 'Das Bild gehört einem anderen Benutzer';
 # further translation in gallery.php
