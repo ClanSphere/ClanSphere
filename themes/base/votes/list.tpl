@@ -27,7 +27,7 @@
   <td class="leftb">{votes:question_link}</td>
   <td class="rightb" style="width:80px">{votes:com_count}</td>
   <td class="rightb" style="width:80px">{votes:elect_count}</td>
-  <td class="rightb" style="widht:170px">{votes:ends_on}</td>
+  <td class="rightb" style="width:170px">{votes:ends_on}</td>
  </tr>
  {stop:votes}
 </table>
