@@ -20,11 +20,15 @@ $order = $cs_sort[$sort];
 $where = !empty($categories_id) ? "categories_id = '" . $categories_id . "'" : 0;
 $links_count = cs_sql_count(__FILE__,'links',$where);
 
-$select = 'categories_name, categories_text';
-$categories_data = cs_sql_select(__FILE__,'categories',$select,$where,'categories_name',0);
-
-$data['categories']['name'] = cs_secure($categories_data['categories_name']);
-$data['categories']['text'] = cs_secure ($categories_data['categories_text']);
+if (empty($categories_id)){
+  $data['categories']['name'] = $cs_lang['head_list'];
+  $data['categories']['text'] = '';
+} else {
+  $select = 'categories_name, categories_text';
+  $categories_data = cs_sql_select(__FILE__,'categories',$select,$where,'categories_name',0);
+  $data['categories']['name'] = cs_secure($categories_data['categories_name']);
+  $data['categories']['text'] = cs_secure ($categories_data['categories_text']);
+}
 $data['head']['pages'] = cs_pages('links','listcat',$links_count,$start,$categories_id,$sort);
 
 $data['sort']['name'] = cs_sort('links','listcat',$start,$categories_id,1,$sort);
