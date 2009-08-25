@@ -2,8 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$axx_file['mail']      = 0;
-$axx_file['send']      = 0;
+$axx_file['mail']      = 1;
+$axx_file['send']      = 1;
 $axx_file['imprint']   = 0;
 $axx_file['manage']    = 3;
 $axx_file['archive']   = 3;
