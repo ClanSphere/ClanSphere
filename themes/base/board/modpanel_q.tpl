@@ -45,7 +45,7 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="leftb" style="width:20%">{icon:kate} {lang:rename}</td>
-		<td class="leftc"><input type="text" name="thread_headline" value="" maxlength="200" size="50" /></td>
+		<td class="leftc"><input type="text" name="thread_headline" value="{val:thread_headline}" maxlength="200" size="50" /></td>
 	</tr>
 	<tr>
 		<td class="leftb">{icon:ksysguard} {lang:options}</td>
