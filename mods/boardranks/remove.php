@@ -7,8 +7,8 @@ $cs_get = cs_get('id,agree,cancel');
 $data = array();
 
 $boardranks_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
-$agree = empty($cs_get['agree']) ? 0 : $cs_get['agree'];
-$cancel = empty($cs_get['cancel']) ? 0 : $cs_get['cancel'];
+$agree = !isset($cs_get['agree']) ? 0 : $cs_get['agree'];
+$cancel = !isset($cs_get['cancel']) ? 0 : $cs_get['cancel'];
 
 if(!empty($agree)) {
   cs_sql_delete(__FILE__,'boardranks',$boardranks_id);
