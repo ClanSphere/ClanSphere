@@ -11,7 +11,7 @@ $tables = 'medalsuser mu LEFT JOIN {pre}_medals md ON md.medals_id = mu.medals_i
 $cells = 'mu.users_id AS users_id, md.medals_id AS medals_id, mu.medalsuser_date AS medalsuser_date, mu.medalsuser_id AS medalsuser_id, ';
 $cells .= 'md.medals_name AS medals_name, md.medals_text AS medals_text, md.medals_extension AS medals_extension';
 
-$data['medalsuser'] = cs_sql_select(__FILE__,$tables, $cells, "users_id = '" . $users_id . "'",0,0,0);
+$data['medalsuser'] = cs_sql_select(__FILE__,$tables, $cells, "mu.users_id = '" . $users_id . "'",0,0,0);
 $data['count']['medalsuser'] = count($data['medalsuser']);
 
 for ($i = 0; $i < $data['count']['medalsuser']; $i++) {
