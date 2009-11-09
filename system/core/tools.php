@@ -335,10 +335,10 @@ function cs_mail($email,$title,$message,$from = 0,$type = 0) {
   $from = empty($from) ? $cs_contact['def_mail'] : $from;
   $type = empty($type) ? 'text/plain' : $type;
   $headers = "From: " . $from . "\r\n";
-  $headers .= "Content-type: " . $type . "; charset=" . $cs_main['charset'];
+  $headers .= "Content-type: " . $type . "; charset=" . $cs_main['charset'] . "\r\n";
   $headers .= "Reply-To: " . $from;
   $headers .= "MIME-Version: 1.0";
-  $headers .= "X-Mailer: PHP/" . phpversion();
+  $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
   if($type == 'text/plain') {
     $subject = html_entity_decode($subject, ENT_NOQUOTES, $cs_main['charset']);
