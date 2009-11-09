@@ -13,7 +13,7 @@
 {lang:getmsg}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	{loop:cat_list}
-	{tmp:no_cat}
+	{tmp:empty_cat}
 	{loop:cat}
 	<tr>
 		<td class="leftc">
