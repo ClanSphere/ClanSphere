@@ -422,6 +422,8 @@ class ut3
 			$srv_rules['sets'] = '-';
 		}
 
+		$srv_rules['version'] = 'not available';
+		
 		// return all server rules
 		return $srv_rules;
 	}
