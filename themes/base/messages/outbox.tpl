@@ -39,7 +39,7 @@
   <tr>
     <td class="headb" style="width: 40px">{sort:view}</td>
     <td class="headb">{sort:subject} {lang:subject}</td>
-    <td class="headb">{sort:sender} {lang:from}</td>
+    <td class="headb">{sort:sender} {lang:to}</td>
     <td class="headb">{sort:date} {lang:date}</td>
     <td class="headb" colspan="3" style="width: 80px">{lang:options}</td>
   </tr>{loop:msgs}{if:new_period}
