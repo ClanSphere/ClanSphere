@@ -410,6 +410,6 @@ class des3gs
 			$run++;
 		}
 
-		return $srv_player;
+		return $tdata;
 	}
 }

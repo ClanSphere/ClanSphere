@@ -318,7 +318,7 @@ class warsow
 
 		// manage the player data in the following code
 		$index = 1;
-		$run++;
+		$run = 1;
 		while ($clients)
 		{
 			$clients--;

@@ -326,7 +326,7 @@ class q2
 
 			$tdata[$run][0] = '<td class="centerb">' . $index . '</td>';
 			$tdata[$run][0] .= '<td class="centerb">' . $player[$index] . '</td>';
-			$tdata[$run][0] .= '<td class="centerb">' . $points1[$index] . '</td>';
+			$tdata[$run][0] .= '<td class="centerb">' . $points[$index] . '</td>';
 			$tdata[$run][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
 
 			$run++;
