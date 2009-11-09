@@ -152,7 +152,7 @@ function cs_sql_replace($replace) {
 
   global $cs_db;
   #engine since 4.0.18, but collation works since 4.1.8
-  $version = mysqli_get_server_info($cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_replace', mysqli_error($cs_db['con']));
+  $version = mysqli_get_server_info($cs_db['con']) or cs_error_sql(__FILE__, 'cs_sql_replace', mysqli_error($cs_db['con']));
   $myv = explode('.', $version);
   settype($myv[2], 'integer');
   if($myv[0] > 4 OR $myv[0] == 4 AND $myv[1] > 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] > 7)

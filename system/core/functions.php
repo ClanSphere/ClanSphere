@@ -45,14 +45,14 @@ function cs_error_internal($error = 0, $report = 0) {
   echo cs_template($cs_micro, 'error.htm');
 }
 
-function cs_error_sql($file,$part,$message,$stop = 0) {
+function cs_error_sql($cs_file,$part,$message,$stop = 0) {
 
   global $cs_db;
   if(empty($message)) {
     $message = 'Database connection error';
   }
   $cs_db['last_error'] = $part . ' - ' . $message;
-  cs_error($file,$cs_db['last_error']);
+  cs_error($cs_file,$cs_db['last_error']);
 
   if(!empty($stop)) {
     die(cs_error_internal('sql', $message));
