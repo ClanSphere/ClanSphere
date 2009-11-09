@@ -34,11 +34,11 @@ for($run = 0; $run < $count_att; $run++) {
 
   if(file_exists('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext)) {
     $file_file = filesize('uploads/board/files/'.$cs_att[$run]['boardfiles_id'].'.'.$ext);
-    $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?id='.$cs_att[$run]['boardfiles_id'],$file,1);
+    $data['attachments'][$run]['filename'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?id='.$cs_att[$run]['boardfiles_id'],$file,1);
     $data['attachments'][$run]['size'] = cs_filesize($file_file);
   } elseif(file_exists('uploads/board/files/'.$file)) {
     $file_file = filesize('uploads/board/files/'.$file);
-    $data['attachments'][$run]['filename'] = cs_html_link('mods/board/attachment.php?name='.$file,$file,1);
+    $data['attachments'][$run]['filename'] = cs_html_link($cs_main['php_self']['dirname'].'mods/board/attachment.php?name='.$file,$file,1);
     $data['attachments'][$run]['size'] = cs_filesize($file_file);
   } else {
     $data['attachments'][$run]['filename'] = $cs_lang['no_att_exist'];
