@@ -36,13 +36,16 @@
   <tr>
     <td class="leftb">{icon:Volume Manager} {lang:gallery_vote} </td>
     <td class="leftb">
-    	<form method="post" id="com_view" action="{url:gallery_com_view}">
-				<input type="hidden" name="where" value="{hidden:id}" />
-				<select name="voted_answer">
-					{vote:options}
-				</select>
-				<input type="submit" name="submit" value="{lang:ok}" />
-			</form>	
+        {if:vote_allow}
+            <form method="post" id="com_view" action="{url:gallery_com_view}">
+                <input type="hidden" name="where" value="{hidden:id}" />
+                <select name="voted_answer">{vote:options}</select>
+                <input type="submit" name="submit" value="{lang:ok}" />
+            </form>
+        {stop:vote_allow}
+        {if:voted}
+            {data:vote}
+        {stop:voted}
     </td>
   </tr>
   {stop:vote}
