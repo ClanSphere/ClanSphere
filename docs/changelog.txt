@@ -1,6 +1,17 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2009.x.x >> xxxx-xx-xx
+___________________________________________________________
+
+-> Added possibility to list only wars of one squad in wars/navlist (gahero/palle)
+-> Fixed security incident in usergallery (nenti)
+-> Fixed deactivation of contact, joinus and fightus modul (duriel)
+-> Fixed vote for gallery pics (fr33z3m4n)
+-> Fixed categories creation without access (fr33z3m4n)
+-> Fixed many bugs in the server modul (fr33z3m4n)
+
+
 ClanSphere 2009.0.2 >> 2009-07-07
 ___________________________________________________________
 
@@ -10,6 +21,7 @@ ___________________________________________________________
 -> Fixed ajax uploads to not cause php errors in some cases (hajo)
 -> Fixed install settings 'show' form to work again (hajo)
 -> Fixed messages sorting and subject error message (hajo)
+
 
 ClanSphere 2009.0.1 >> 2009-07-05
 ___________________________________________________________
@@ -271,7 +283,7 @@ ___________________________________________________________
 -> Added hidden squads at joinus and fightus (fr33z3m4n)
 -> Added function cs_timediff to calculate the difference between sql and output time (hajo)
 -> Added functions at users modul (fr33z3m4n)
--> HTML <link> tags inside template files must now link the href directly for ease of use (hajo) 
+-> HTML <link> tags inside template files must now link the href directly for ease of use (hajo)
 -> Now displaying who closed a thread in the board (duriel)
 -> Removed internal support for HTML 4 output (hajo)
 -> Reworked RSS mod to support mod_rewrite setting and added options for feed title and description (hajo)
@@ -305,7 +317,7 @@ ___________________________________________________________
 >> Security: Fixed sql injection possibilities inside banners navlist (duriel)
 
 -> Added Apache mod_rewrite support for search engine optimized and virtual directory based links (hajo)
--> Added needed database extensions to installation and a system check for error handling (hajo) 
+-> Added needed database extensions to installation and a system check for error handling (hajo)
 -> Added database size and number of tables information for sqlite and pdo_sqlite extension (hajo)
 -> Added cs_textarea_resize function to resize textareas with javascript on the fly (hajo)
 -> Added php_self subarray to array cs_main that contains real path information (hajo)
