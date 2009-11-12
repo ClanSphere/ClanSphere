@@ -11,11 +11,10 @@ $squad_id = empty($_GET['squadid']) ? '' : (int) $_GET['squadid'];
 $data = array();
 
 $select = 'war.games_id AS games_id, cln.clans_short AS clans_short, war.wars_score1 AS wars_score1, '
-        . 'war.wars_score2 AS wars_score2, war.wars_id AS wars_id, war.squads_id AS squad_id';
+        . 'war.wars_score2 AS wars_score2, war.wars_id AS wars_id';
 $from = 'wars war INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id';
 $order = 'war.wars_date DESC';
-$where = "war.wars_status = 'played'";
-$where .= !empty($squad_id) ? " AND war.squads_id = '" . $squad_id . "'" : "";
+$where = empty($squad_id) ? "war.wars_status = 'played'" : "war.wars_status = 'played' AND war.squads_id = '" . $squad_id . "'";
 
 $cs_wars = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$cs_option['max_navlist']);
 
