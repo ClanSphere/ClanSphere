@@ -41,7 +41,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
         $data['if']['preview'] = true;
         $data['if']['catimg'] = empty($categories['categories_picture']) ? false : true;
         $data['cat']['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$categories['categories_picture'];
-        $data['art']['articles_text_preview'] = cs_secure($data['art']['articles_text'],1,1,1,1,1);
+        $data['art']['articles_text_preview'] = cs_secure($data['art']['articles_text'],1,1,1,1);
     }
     elseif(empty($errormsg)) {
         $articles_cells = array_keys($data['art']);

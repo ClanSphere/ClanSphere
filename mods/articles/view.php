@@ -51,7 +51,7 @@ if ($categories['categories_access'] > $account['access_categories']) {
   $count_text = count($text);
   $page_now = $page - 1;
 
-  $secure_text = cs_secure($text[$page_now],1,0,1,1); 
+  $secure_text = cs_secure($text[$page_now],1,1,1,1); 
 
   include_once('mods/articles/cutpages.php');
 
