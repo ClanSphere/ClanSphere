@@ -14,7 +14,7 @@ $cs_sort[6] = 'users_laston ASC';
 $sort = empty($_GET['sort']) ? 2 : (int) $_GET['sort'];
 $order = $cs_sort[$sort];
 //$where = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
-//$mof = empty($where) ? '' : " AND users_sex = '" . cs_sql_escape($where) . "'";     
+//$mof = empty($where) ? '' : " AND users_sex = '" . cs_sql_escape($where) . "'";
 $where = empty($_GET['where']) ? 0 : $_GET['where'];
 $mof = empty($where) ? '' : " AND users_nick LIKE '" . cs_sql_escape($where) . "%'";
 $condition = 'users_delete = 0 AND users_active = 1' . $mof;
@@ -23,7 +23,7 @@ $users_count = cs_sql_count(__FILE__,'users',$condition);
 $data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['list'];
 
-$data['head']['total'] = $users_count;                 
+$data['head']['total'] = $users_count;
 $data['head']['pages'] = cs_pages('users','list',$users_count,$start,$where,$sort);
 $sel_female = $where === 'female' ? 'selected' : '';
 $data['head']['sel_female'] = $sel_female;
@@ -57,4 +57,3 @@ for($run=0; $run<$users_loop; $run++) {
 
 $data['users'] = $cs_users;
 echo cs_subtemplate(__FILE__,$data,'users','list');
-  
