@@ -5,11 +5,13 @@ ClanSphere 2009.x.x >> xxxx-xx-xx
 ___________________________________________________________
 
 -> Added possibility to list only wars of one squad in wars/navlist (gahero/palle)
+-> Reworked board toplist for much better performance (duriel)
 -> Fixed security incident in usergallery (nenti)
 -> Fixed deactivation of contact, joinus and fightus modul (duriel)
 -> Fixed vote for gallery pics (fr33z3m4n)
 -> Fixed categories creation without access (fr33z3m4n)
 -> Fixed many bugs in the server modul (fr33z3m4n)
+-> Fixed many bugs in the comments modul, also two security bugs (gahero)
 
 
 ClanSphere 2009.0.2 >> 2009-07-07

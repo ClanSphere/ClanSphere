@@ -7,6 +7,7 @@
   </tr>
 </table>
 <br />
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{lang:number}</td>
@@ -17,7 +18,7 @@
   {loop:toplist}
   <tr>
     <td class="{toplist:class}">{toplist:number}</td>
-    <td class="{toplist:class}"><a href="{toplist:nick_link}">{toplist:nick}</a></td>
+    <td class="{toplist:class}">{toplist:user}</td>
     <td class="{toplist:class}">{toplist:comments}</td>
     <td class="{toplist:class}">{toplist:rank}</td>
   </tr>
