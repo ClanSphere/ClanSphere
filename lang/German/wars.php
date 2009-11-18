@@ -64,6 +64,8 @@ $cs_lang['looses'] = 'Niederlagen';
 $cs_lang['draws'] = 'Unentschieden';
 $cs_lang['categories'] = 'Kategorien';
 $cs_lang['maps'] = 'Karten';
+$cs_lang['missions'] = 'Eins&auml;tze';
+$cs_lang['games'] = 'Spiele';
 
 // Options
 $cs_lang['body_options']  = 'Verwaltung der Einstellungen im Modul.';

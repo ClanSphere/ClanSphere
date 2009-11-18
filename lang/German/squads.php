@@ -155,6 +155,7 @@ $cs_lang['place'] = 'Platz';
 $cs_lang['wars']  = 'Clanwars';
 $cs_lang['enemy']  = 'Gegner';
 $cs_lang['score'] = 'Ergebnis';
+$cs_lang['stats'] = 'Statistik';
 
 // Join
 $cs_lang['head_join']  = 'Beitreten';

@@ -103,6 +103,9 @@
   <td class="leftb"><a href="{wars:url}">{wars:result}</a></td>
   <td class="leftb">{wars:resulticon}</td>
  </tr>
+<tr>
+	<td class="leftb" colspan="5"><a href="{url:wars_stats:id={squad:squads_id}}">{lang:stats}</a></td>		
+</tr>
  {stop:wars}
 </table>
 {stop:war}

@@ -64,6 +64,8 @@ $cs_lang['looses'] = 'Loss';
 $cs_lang['draws'] = 'Draws';
 $cs_lang['categories'] = 'Categories';
 $cs_lang['maps'] = 'Maps';
+$cs_lang['missions'] = 'Missions';
+$cs_lang['games'] = 'Games';
 
 // Options
 $cs_lang['body_options']  = 'Manage settings of a module.';

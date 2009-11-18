@@ -17,7 +17,7 @@ $data['lang']['mod_name'] = $cs_lang[$op_squads['label'].'s'];
 
 $select = 'sqd.games_id AS games_id, sqd.squads_name AS squads_name, cln.clans_name AS ';
 $select .= 'clans_name, cln.clans_tag AS clans_tag, cln.clans_tagpos AS clans_tagpos, ';
-$select .= 'cln.clans_id AS clans_id, sqd.squads_picture AS squads_picture, sqd.squads_text AS squads_text ';
+$select .= 'cln.clans_id AS clans_id, sqd.squads_picture AS squads_picture, sqd.squads_text AS squads_text, sqd.squads_id AS squads_id ';
 $from = 'squads sqd INNER JOIN {pre}_clans cln ON sqd.clans_id = cln.clans_id ';
 $where = "sqd.squads_id = '" . $squads_id . "'";
 $data['squad'] = cs_sql_select(__FILE__,$from,$select,$where);
