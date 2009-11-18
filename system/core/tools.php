@@ -21,12 +21,12 @@ function cs_addons($modul,$action,$id,$modul_now) {
             if($modul == 'users') {
               $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $id . "'");
               $user = cs_user($id,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
-              $var = $mod['name'] . ' - ' . $user . cs_html_hr('100%') . $var;         
+              $var = $mod['name'] . ' - ' . $user . cs_html_hr('100%') . $var;
             }
             else {
               $cs_refer = cs_sql_select(__FILE__,$modul,$modul . '_name',$modul . "_id = '" . $id . "'");
               $name = cs_secure($cs_refer[$modul . '_name']);
-              $var = $mod['name'] . ' - ' . cs_link($name,$modul,$action,'id=' . $id) . cs_html_hr('100%') . $var;             
+              $var = $mod['name'] . ' - ' . cs_link($name,$modul,$action,'id=' . $id) . cs_html_hr('100%') . $var;
             }
           }
           else {
@@ -127,7 +127,7 @@ function cs_datepost($name,$mode) {
       $time['hours'] = $time['hours'] + 12;
     }
     $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
-    $var = cs_timediff($var, 1); 
+    $var = cs_timediff($var, 1);
   }
   elseif($mode == 'date' AND !empty($time['year'])) {
     if(strlen($time['month']) == 1) $time['month'] = '0' . $time['month'];
@@ -173,7 +173,7 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
     else {
       $am_or_pm = cs_datereal('H',$time);
       $explode[3] = cs_datereal('h',$time);
-      $explode[5] = (empty($am_or_pm) OR $am_or_pm > 12) ? 'pm' : 'am'; 
+      $explode[5] = (empty($am_or_pm) OR $am_or_pm > 12) ? 'pm' : 'am';
       $data['if']['ampm'] = 1;
       $data['ampm']['options']  = cs_html_option('am', 'am', $explode[5] == 'am' ? 1 : 0);
       $data['ampm']['options'] .= cs_html_option('pm', 'pm', $explode[5] == 'pm' ? 1 : 0);
@@ -380,7 +380,7 @@ function cs_pages($mod,$action,$records,$start,$where = 0,$sort = 0, $limit = 0,
   $last = $actual <= 2 ? 0 : $start - $limit;
   $next = $actual >= $pages ? ($pages - 1) * $limit : $start + $limit;
   $more = 'start=' . $last . $add_where . $add_sort;
-  $result = empty($small) ? cs_link('&lt;',$mod,$action,$more) . ' ' : '';
+  $result = (empty($small) AND $actual != 1) ? cs_link('&lt;',$mod,$action,$more) . ' ' : '';
 
   $run = 0;
   while($maxpages > 0) {
@@ -403,7 +403,7 @@ function cs_pages($mod,$action,$records,$start,$where = 0,$sort = 0, $limit = 0,
     $maxpages--;
   }
   $more = 'start=' . $next . $add_where . $add_sort;
-  $result .= empty($small) ? ' ' . cs_link('&gt;',$mod,$action,$more): '';
+  $result .= (empty($small) AND $actual != $pages) ? ' ' . cs_link('&gt;',$mod,$action,$more): '';
   $result = $cs_lang['page'] . ' ' . $result;
 
   return $result;
@@ -563,7 +563,7 @@ function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
 
   settype($users_id, 'integer');
   $users_nick = cs_secure($users_nick);
-  if(!empty($users_active) && empty($users_delete)) 
+  if(!empty($users_active) && empty($users_delete))
     return cs_link($users_nick, 'users', 'view', 'id=' . $users_id);
   else
     return $users_nick;
