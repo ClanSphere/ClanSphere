@@ -11,14 +11,17 @@
 
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="4">{lang:user_cash_ok}</td>
+    <td class="headb">{lang:nick}</td>	
+    <td class="headb">{lang:date}</td>
+    <td class="headb">{lang:for}</td>
+    <td class="headb">{lang:money}</td>		
 	</tr>
 	{loop:cash}
 	<tr>
 		<td class="leftb">{cash:user}</td>
+    <td class="leftb">{cash:date}</td>
 		<td class="leftb"><a href="{url:cash_view:id={cash:cash_id}}">{cash:cash_text}</a></td>
-		<td class="leftb">{cash:cash_money} {lang:euro}</td>
-		<td class="leftb">{cash:date}</td>
+		<td class="leftb">{cash:cash_money} {lang:euro}</td>		
 	</tr>
 	{stop:cash}
 </table>
