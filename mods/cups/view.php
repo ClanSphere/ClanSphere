@@ -45,7 +45,7 @@ if (empty($matchsel)) {
   $data['cup']['status'] = $cs_lang['upcoming'];
 }
 else {
-  if($matchsel['cupmatches_round'] == '1' && ( !empty($matchsel['cupmatches_score1']) || !empty($matchsel['cupmatches_score2']) ) && ( !empty($matchsel['cupmatches_accepted1']) && !empty($matchsel['cupmatches_accepted2']) )) {
+  if( $matchsel['cupmatches_round'] == '1' && ( !empty($matchsel['cupmatches_score1']) || !empty($matchsel['cupmatches_score2']) ) && ( !empty($matchsel['cupmatches_accepted1']) && !empty($matchsel['cupmatches_accepted2']) )) {
     $data['cup']['status'] = $cs_lang['finished'];  
   }
   else {
@@ -57,7 +57,7 @@ else {
 
 $data['cup']['rounds'] = empty($matchsel) ? '-' : $matchsel['cupmatches_round'] - 1;
 
-if (empty($matchsel['cupmatches_winner'])) {
+if (empty($matchsel['cupmatches_winner']) || !empty($data['if']['running'])) {
   $data['cup']['winner'] = '-';
 } else {
   if ($data['cup']['cups_system'] == 'teams') {

@@ -19,7 +19,7 @@ if (!empty($_POST['reduce'])) {
   
 }
 
-if (!empty($_POST['start'])) {
+if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   
   $id = (int) $_POST['id'];
   
@@ -44,6 +44,8 @@ if (!empty($_POST['start'])) {
     $round = strlen(decbin($maxteams['cups_teams'])) - 1;
     
     foreach ($matches AS $match) {
+      
+      $cs_cups = array();
       $cs_cups['cups_id'] = $id;
       $cs_cups['squad1_id'] = $match[1];
       $cs_cups['squad2_id'] = empty($match[2]) ? 0 : $match[2];
@@ -71,7 +73,7 @@ if (!empty($_POST['start'])) {
   $cupsel = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$id.'\'');
   $squads_count = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$id.'\'');
   
-  if (($cupsel['cups_teams'] / 2) > $squads_count) {
+  if (($cupsel['cups_teams'] / 2) >= $squads_count) {
     
     $bin = decbin($squads_count);
     if (substr_count($bin,'1') != 1) {

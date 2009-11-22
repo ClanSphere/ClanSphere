@@ -185,6 +185,14 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 		$newmatch['cupmatches_round'] = $round - 1;
 		$newmatch['cupmatches_loserbracket'] = 1;
 		
+		if (empty($newmatch['squad2_id'])) { // If there is no opponent
+			$newmatch["cupmatches_accepted1"] = 1;
+			$newmatch["cupmatches_accepted2"] = 1;
+			$newmatch["cupmatches_winner"] = $loser;
+			$newmatch["cupmatches_score1"] = 1;
+			$newmatch["cupmatches_score2"] = 0;
+		}
+		
 		cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
 		
 	}
