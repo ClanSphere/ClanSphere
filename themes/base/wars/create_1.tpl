@@ -11,6 +11,10 @@
 <form method="post" id="wars_create" action="{url:wars_create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
+  <td class="leftc">{icon:bookmark} {lang:top}</td>
+  <td class="leftb"><input type="checkbox" name="wars_topmatch" value="1" {value:wars_topmatch_check} /></td>
+ </tr>
+ <tr>
   <td class="leftc">{icon:package_games} {lang:game} *</td>
   <td class="leftb">
     <select name="games_id"  onchange="cs_gamechoose(this.form)">

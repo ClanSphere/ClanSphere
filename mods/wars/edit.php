@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
   $cs_wars['wars_report'] = $_POST['wars_report'];
   $cs_wars['wars_date'] = cs_datepost('date', 'unix');
   $cs_wars['wars_close'] = isset($_POST['wars_close']) ? $_POST['wars_close'] : 0;
+  $cs_wars['wars_topmatch'] = empty($_POST['wars_topmatch']) ? 0 : 1;  
   
   $old_cells = 'users_id, players_status, players_played, players_time';
   $old_players = cs_sql_select(__FILE__, 'players', $old_cells, 'wars_id = ' . $wars_id, 0, 0, 0);
@@ -180,6 +181,8 @@ if (!empty($error) or !isset($_POST['submit'])) {
 
   $data['wars']['close_check'] = empty($cs_wars['wars_close']) ? '' : 'checked="checked"';
 
+  $data['value']['wars_topmatch_check'] = empty($cs_wars['wars_topmatch']) ? '' : 'checked="checked"';   
+  
   $data['wars']['id'] = $wars_id;
 
   echo cs_subtemplate(__FILE__,$data,'wars','edit');

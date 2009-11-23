@@ -13,6 +13,7 @@ $cs_lang['squad']  = 'Squad';
 
 $cs_lang['rounds'] = 'Runden';
 $cs_lang['pictures'] = 'Bilder';
+$cs_lang['top'] = 'Topmatch';
 
 $cs_lang['upcoming'] = 'Bevorstehend';
 $cs_lang['running'] = 'Laufend';
@@ -43,6 +44,10 @@ $cs_lang['no_date'] = '- Es muss ein Datum festgelegt werden';
 $cs_lang['no_status'] = '- Der Status darf nicht Leer sein';
 
 $cs_lang['close'] = 'Kommentare sperren';
+
+// Navtop
+$cs_lang['det']  = 'Mehr';
+$cs_lang['no_logo'] = 'Kein Logo';
 
 // Join
 $cs_lang['join'] = 'Teilnehmen';
