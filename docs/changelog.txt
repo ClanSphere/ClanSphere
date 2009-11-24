@@ -4,6 +4,7 @@ CHANGELOG
 ClanSphere 2009.x.x >> xxxx-xx-xx
 ___________________________________________________________
 
+-> Added topmatch checkbox for clanwars and wars/navtop (palle)
 -> Added possibility to list only wars of one squad in wars/navlist (gahero/palle)
 -> Reworked board toplist for much better performance (duriel)
 -> Reworked war statistic - squadbased and more information (gahero)
