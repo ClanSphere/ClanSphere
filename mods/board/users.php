@@ -9,7 +9,7 @@ include 'mods/board/functions.php';
 
 $cs_lang = cs_translate('board');
 
-$user_id = $_GET['id']; 
+$user_id = $_GET['id'];
 settype($user_id,'integer');
 $board_access = $account['access_board'];
 
@@ -25,11 +25,11 @@ $cs_ranks = cs_sql_select(__FILE__,'boardranks','boardranks_min, boardranks_name
 
 $data['count']['com'] = $userposts;
 $since = cs_time() - $cs_user['users_register'];
-$since = $since / 86400;
+$since = $since <= 86400 ? 1 : $since / 86400;
 $posts_per_day = $userposts / $since;
 $data['count_com']['per_day'] = round($posts_per_day,2) . $cs_lang['posts_per_day'];
 
-$data['count']['rank'] = cs_secure(getRankTitle($userposts, $cs_ranks)); 
+$data['count']['rank'] = cs_secure(getRankTitle($userposts, $cs_ranks));
 
 $data['last']['com'] = sprintf($cs_lang['last_com'], $posts);
 $data['last']['thr'] = sprintf($cs_lang['last_thr'], $threads);
@@ -39,11 +39,11 @@ $from .= 'INNER JOIN {pre}_board frm ON frm.board_id = thr.board_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON cat.categories_id = frm.categories_id';
 
 $select  = 'DISTINCT thr.threads_id AS threads_id, cat.categories_name AS categories_name, ';
-$select .= 'cat.categories_id AS categories_id, frm.board_name AS board_name, frm.board_id AS board_id, '; 
+$select .= 'cat.categories_id AS categories_id, frm.board_name AS board_name, frm.board_id AS board_id, ';
 $select .= 'thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, ';
 $select .= 'thr.threads_last_user AS threads_last_user, cms.comments_time AS comments_time';
 $where = 'cms.users_id = \''.$user_id.'\' AND frm.board_access <= \''.$board_access.'\' AND frm.board_pwd = \'\'';
-$order = 'cms.comments_time DESC'; 
+$order = 'cms.comments_time DESC';
 $cs_comments = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$posts);
 $comments_loop = count($cs_comments);
 
@@ -51,7 +51,7 @@ if(empty($comments_loop)) {
   $data['com'] = '';
 }
 
-for($run=0; $run < $comments_loop; $run++) {  
+for($run=0; $run < $comments_loop; $run++) {
   $last[1] = $cs_comments[$run]['threads_last_user'];
 
   $data['com'][$run]['cat'] = $cs_comments[$run]['categories_name'];
@@ -66,10 +66,10 @@ for($run=0; $run < $comments_loop; $run++) {
 $from  = 'threads thr INNER JOIN {pre}_board frm ON frm.board_id = thr.board_id';
 $from .= ' INNER JOIN {pre}_categories cat ON cat.categories_id = frm.categories_id';
 $select  = 'cat.categories_name AS categories_name, cat.categories_id AS categories_id,';
-$select .= ' frm.board_name AS board_name, frm.board_id AS board_id,'; 
+$select .= ' frm.board_name AS board_name, frm.board_id AS board_id,';
 $select .= ' thr.threads_headline AS threads_headline, thr.threads_time AS threads_time, thr.threads_id AS threads_id';
-$where = "frm.board_access <= '" . $board_access . "' AND thr.users_id = '" . $user_id . "' AND frm.board_pwd = ''"; 
-$order = 'thr.threads_time DESC'; 
+$where = "frm.board_access <= '" . $board_access . "' AND thr.users_id = '" . $user_id . "' AND frm.board_pwd = ''";
+$order = 'thr.threads_time DESC';
 $cs_threads = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$threads);
 $threads_loop = count($cs_threads);
 
