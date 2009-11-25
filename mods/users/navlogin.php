@@ -4,7 +4,7 @@
 
 $cs_lang = cs_translate('users');
 
-$styles_array = array('horizontal', 'icons', 'pictures');
+$styles_array = array('horizontal', 'icons', 'picture');
 $style = (!empty($_GET['style']) AND in_array($_GET['style'], $styles_array)) ? '_' . $_GET['style'] : '';
 
 $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
