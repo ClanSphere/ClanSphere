@@ -1171,7 +1171,7 @@ CREATE TABLE {pre}_wars (
   squads_id int(8) NOT NULL default '0',
   wars_date int(14) NOT NULL default '0',
   wars_status varchar(20) NOT NULL default '',
-  wars_topmatch varchar(20) NOT NULL default '';  
+  wars_topmatch int(2) NOT NULL default '0';  
   wars_score1 int(6) NOT NULL default '0',
   wars_score2 int(6) NOT NULL default '0',
   wars_url varchar(80) NOT NULL default '',

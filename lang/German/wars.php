@@ -46,7 +46,6 @@ $cs_lang['no_status'] = '- Der Status darf nicht Leer sein';
 $cs_lang['close'] = 'Kommentare sperren';
 
 // Navtop
-$cs_lang['det']  = 'Mehr';
 $cs_lang['no_logo'] = 'Kein Logo';
 
 // Join

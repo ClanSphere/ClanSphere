@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
         $time = $old_players[$key]['players_time'];
       } else {
         $status = 'admin';
-        $played = $cs_wars['wars_status'] == 'played' ? '1' : '0';
+        $played = '1';
         $time = cs_time();
       }
       cs_sql_insert(__FILE__, 'players', $pcells, array($users_id, $wars_id, $status, $played, $time));
@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
 
 } else {
   $cells = 'games_id, clans_id, squads_id, wars_date, wars_status, wars_url, wars_report, ';
-  $cells .= 'wars_score1, wars_score2, wars_players1, wars_players2, wars_opponents, wars_close';
+  $cells .= 'wars_score1, wars_score2, wars_players1, wars_players2, wars_opponents, wars_close, wars_topmatch';
   $cs_wars = cs_sql_select(__FILE__, 'wars', 'categories_id, ' . $cells, "wars_id = '" . $wars_id . "'");
 }
 if (!isset($_POST['submit']))

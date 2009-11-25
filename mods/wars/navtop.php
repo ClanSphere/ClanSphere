@@ -9,7 +9,7 @@ $data = array();
 $select = 'war.wars_date AS wars_date, sqd.squads_name AS squads_name, sqd.squads_id AS squads_id, sqd.squads_picture AS squads_picture, cln.clans_name AS clans_name, owncln.clans_picture AS squad_picture, cln.clans_picture AS clans_picture, cln.clans_id AS clans_id, war.wars_id AS wars_id';
 $from = 'wars war INNER JOIN {pre}_squads sqd ON war.squads_id = sqd.squads_id INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id INNER JOIN {pre}_clans owncln ON owncln.clans_id = sqd.clans_id';
 $where = "war.wars_date > '" . cs_time() . "' AND war.wars_status = 'upcoming' AND war.wars_topmatch = 1";
-$data['wars'] = cs_sql_select(__FILE__,$from,$select,$where,'rand()',0,1);
+$data['wars'] = cs_sql_select(__FILE__,$from,$select,$where,'RAND()',0,1);
 
 if(empty($data['wars'])) {
 

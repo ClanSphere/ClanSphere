@@ -46,7 +46,6 @@ $cs_lang['no_status'] = '- Status must not be empty';
 $cs_lang['close'] = 'Close for comments';
 
 // Navtop
-$cs_lang['det']  = 'More';
 $cs_lang['no_logo'] = 'No Logo';
 
 // Join

@@ -11,10 +11,6 @@
 <form method="post" id="wars_create" action="{url:wars_create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="leftc">{icon:bookmark} {lang:top}</td>
-  <td class="leftb"><input type="checkbox" name="wars_topmatch" value="1" {value:wars_topmatch_check} /></td>
- </tr>
- <tr>
   <td class="leftc">{icon:package_games} {lang:game} *</td>
   <td class="leftb">
     <select name="games_id"  onchange="cs_gamechoose(this.form)">
@@ -31,7 +27,7 @@
     <select name="categories_id">
      <option value="0">----</option>{loop:categories}
      <option value="{categories:categories_id}"{categories:selection}>{categories:categories_name}</option>{stop:categories}
-    </select> - 
+    </select> -
     <input type="text" name="categories_name" value="" maxlength="80" size="20" />
   </td>
  </tr>
@@ -41,7 +37,7 @@
     <select name="clans_id">
      <option value="0">----</option>{loop:clans}
      <option value="{clans:clans_id}"{clans:selection}>{clans:clans_name}</option>{stop:clans}
-    </select> - 
+    </select> -
     <input type="text" name="new_enemy" value="" maxlength="30" size="20" />
     <br />
     {lang:players}:
@@ -54,7 +50,7 @@
     <select name="squads_id">
      <option value="0">----</option>{loop:squads}
      <option value="{squads:squads_id}"{squads:selection}>{squads:squads_name}</option>{stop:squads}
-    </select> - 
+    </select> -
     <a href="{url:squads_create}">{lang:create}</a>
   </td>
  </tr>
@@ -66,16 +62,17 @@
     <input type="text" name="wars_players2" value="{value:players2}" maxlength="4" size="4" />
   </td>
  </tr>
- {loop:players}
  <tr>
-  <td class="leftc">{icon:personal} {lang:player} {players:run}</td>
+  <td class="leftc">{icon:personal} {lang:player}</td>
   <td class="leftb">
-    <input type="text" name="player{players:run}" value="{players:value}" maxlength="35" size="25" /> - 
+    {loop:players}
+    <input type="text" name="player{players:run}" value="{players:value}" maxlength="35" size="25" /> -
     {players:dropdown}
-     - <input type="submit" name="playeradd" value="{lang:add_player}" />
+    <br />
+    {stop:players}
+    <input type="submit" name="playeradd" value="{lang:add_player}" />
   </td>
  </tr>
- {stop:players}
  <tr>
   <td class="leftc">{icon:1day} {lang:date} *</td>
   <td class="leftb">{dropdown:date}</td>
@@ -93,9 +90,13 @@
   </td>
  </tr>
  <tr>
+  <td class="leftc">{icon:bookmark} {lang:top}</td>
+  <td class="leftb"><input type="checkbox" name="wars_topmatch" value="1" {value:wars_topmatch_check} /></td>
+ </tr>
+ <tr>
   <td class="leftc">{icon:smallcal} {lang:score}</td>
   <td class="leftb">
-    <input type="text" name="wars_score1" value="{value:score1}" maxlength="5" size="5" /> : 
+    <input type="text" name="wars_score1" value="{value:score1}" maxlength="5" size="5" /> :
     <input type="text" name="wars_score2" value="{value:score2}" maxlength="5" size="5" />
   </td>
  </tr>

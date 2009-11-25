@@ -10,10 +10,6 @@
 
 <form method="post" id="wars_edit" action="{url:wars_edit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
- <tr>
-  <td class="leftc">{icon:bookmark} {lang:top}</td>
-  <td class="leftb"><input type="checkbox" name="wars_topmatch" value="1" {value:wars_topmatch_check} /></td>
- </tr>
 	<tr>
 		<td class="leftc">{icon:package_games} {lang:game} *</td>
 		<td class="leftb">
@@ -54,17 +50,18 @@
 			<input type="text" name="wars_players1" value="{wars:wars_players1}" maxlength="4" size="4" /> {lang:on}
 			<input type="text" name="wars_players2" value="{wars:wars_players2}" maxlength="4" size="4" />
 		</td>
-	</tr>
-	{loop:player}
+	</tr>	
 	<tr>
-		<td class="leftc">{icon:personal} {lang:players} {player:x2}</td>
+		<td class="leftc">{icon:personal} {lang:players}</td>
 		<td class="leftb">
+    {loop:player}
 			<input type="text" name="player{player:x}" value="{player:player_name}" maxlength="35" size="25" /> -
 			{player:user_sel}
-			- <input type="submit" name="playeradd" value="{lang:add_player}" />
+      <br />
+      {stop:player}
+			<input type="submit" name="playeradd" value="{lang:add_player}" />
 		</td>
-	</tr>
-	{stop:player}
+	</tr>	
 	<tr>
 		<td class="leftc">{icon:1day} {lang:date} *</td>
 		<td class="leftb">
@@ -77,10 +74,14 @@
 			{wars:status_dropdown}
 		</td>
 	</tr>
+  <tr>
+    <td class="leftc">{icon:bookmark} {lang:top}</td>
+    <td class="leftb"><input type="checkbox" name="wars_topmatch" value="1" {value:wars_topmatch_check} /></td>
+  </tr>
 	<tr>
 		<td class="leftc">{icon:smallcal} {lang:score}</td>
 		<td class="leftb">
-			<input type="text" name="wars_score1" value="{wars:wars_score1}" maxlength="5" size="5" /> : 
+			<input type="text" name="wars_score1" value="{wars:wars_score1}" maxlength="5" size="5" /> :
 			<input type="text" name="wars_score2" value="{wars:wars_score2}" maxlength="5" size="5" />
 		</td>
 	</tr>
