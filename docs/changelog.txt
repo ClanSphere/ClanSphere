@@ -6,8 +6,6 @@ ___________________________________________________________
 
 -> Added topmatch checkbox for clanwars and wars/navtop (palle)
 -> Added possibility to list only wars of one squad in wars/navlist (gahero/palle)
--> Reworked board toplist for much better performance (duriel)
--> Reworked war statistic - squadbased and more information (gahero)
 -> Fixed security incident in usergallery (nenti)
 -> Fixed deactivation of contact, joinus and fightus modul (duriel)
 -> Fixed vote for gallery pics (fr33z3m4n)
@@ -15,6 +13,9 @@ ___________________________________________________________
 -> Fixed many bugs in the server module (fr33z3m4n)
 -> Fixed many bugs in the comments module, also two security bugs (gahero)
 -> Fixed some bugs in the cups module (duriel)
+-> Reworked board toplist for much better performance (duriel)
+-> Reworked war statistic - squadbased and more information (gahero)
+-> Updated FCKEditor to 2.6.5 (hajo)
 
 
 ClanSphere 2009.0.2 >> 2009-07-07
