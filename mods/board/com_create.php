@@ -69,7 +69,7 @@ if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'
 #check mod
 $acc_close = 0;
 $check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = "' . $account['users_id'] . '"',0,0,1);
-if(!empty($check['boardmods_modpanel']) OR $account['access_board'] == 5) {
+if(!empty($check_mod['boardmods_modpanel']) OR $account['access_board'] == 5) {
 	$acc_close = 1;
 }
 
