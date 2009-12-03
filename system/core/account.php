@@ -47,7 +47,7 @@ if(empty($_SESSION['users_id'])) {
   if(isset($login['method'])) {
     $login_db = cs_sql_select(__FILE__,'users','users_id, users_pwd, users_active, users_ajax',$login_where);
     if(!empty($login_db['users_pwd']) AND $login_db['users_pwd'] == $login['securepw']) { 
-      if(empty($login_db['users_active'])) {
+      if(empty($login_db['users_active']) || !empty($login_db['users_delete'])) {
         $login['error'] = 'closed'; 
       }
       else {
@@ -81,7 +81,7 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($login['method'])) $login['method'] = 'session';
   $login['mode'] = TRUE;
   $acc_sc = 'users_id, users_nick, users_lang, access_id, users_limit, users_view, users_timezone, users_dstime, users_ajax, users_tpl, users_pwd';
-  $account = cs_sql_select(__FILE__,'users',$acc_sc,'users_id = "' . (int) $_SESSION['users_id'] . '" AND users_pwd = \''.$_SESSION['users_pwd'].'\' AND users_active = "1"');
+  $account = cs_sql_select(__FILE__,'users',$acc_sc,'users_id = ' . (int) $_SESSION['users_id'] . ' AND users_pwd = \''.$_SESSION['users_pwd'].'\' AND users_active = 1 AND users_delete = 0');
   if (empty($account) ) {
     session_destroy();
     $login['mode'] = FALSE;
