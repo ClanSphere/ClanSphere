@@ -15,6 +15,8 @@ function manageData (&$array, $key) {
 $comments = cs_sql_select (__FILE__, 'comments GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
 $threads = cs_sql_select (__FILE__, 'threads GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
 
+global $array_result;
+
 if (!empty($comments)) array_walk($comments, 'manageData');
 if (!empty($threads)) array_walk($threads, 'manageData');
 arsort ($array_result);
