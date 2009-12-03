@@ -43,7 +43,8 @@ if(!empty($temp_file) AND isset($temp_file[$log])) {
     $explode = explode("\n",$temps);
     $explode[3] = cs_secure($explode[3]);
     $data['logs'][$run] = array('id' => $run,'time' => $explode[1],'message' => $explode[3],
-      'file' => $explode[2], 'file2' => $explode[4]);
+      'file' => $explode[2]);
+    $data['logs'][$run]['file2'] = cs_secure($explode[4]);
     if ($folder == 'errors') {
       $data['logs'][$run]['ip'] = $explode[6];
       $data['logs'][$run]['browser'] = $explode[5];
