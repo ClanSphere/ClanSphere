@@ -25,10 +25,10 @@ else {
   }
 }
 
-$data['version']['version'] = $local['version'];
-$data['version']['version_date'] = cs_date('date',$local['published']);
-$data['version']['available'] = $remote['version'];
-$data['version']['available_date'] = cs_date('date',$remote['published']);
+$data['version']['version'] = htmlentities($local['version'], ENT_QUOTES, $cs_main['charset']);
+$data['version']['version_date'] = cs_date('date', $local['published']);
+$data['version']['available'] = htmlentities($remote['version'], ENT_QUOTES, $cs_main['charset']);
+$data['version']['available_date'] = cs_date('date', $remote['published']);
 
 if(empty($error)) {
   $data['version']['msg'] = $local['id'] >= $remote['id'] ? $cs_lang['up_to_date'] : $cs_lang['new_release'] . ' ' . cs_html_link('http://www.clansphere.net/index.php?mod=files&action=listcat&where=14',$cs_lang['visit_dlpage']);
