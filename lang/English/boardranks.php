@@ -9,7 +9,7 @@ $cs_lang['body'] = 'All fields with * are required';
 
 $cs_lang['min'] = 'From posts';
 $cs_lang['points'] = 'Points';
-$cs_lang['rangname'] = 'Rankname';
+$cs_lang['rankname'] = 'Rankname';
 $cs_lang['new_boardrank'] = 'New Rank';
 $cs_lang['id']='ID';
 

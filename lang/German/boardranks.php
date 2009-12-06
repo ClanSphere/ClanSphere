@@ -9,8 +9,8 @@ $cs_lang['body'] = 'Bitte alle Felder mit * ausf&uuml;llen';
 
 $cs_lang['min'] = 'Ab Beitr&auml;gen';
 $cs_lang['points'] = 'Beitr&auml;ge';
-$cs_lang['rangname'] = 'Rangname';
-$cs_lang['new_boardrank'] = 'Neuer Rank';
+$cs_lang['rankname'] = 'Rangname';
+$cs_lang['new_boardrank'] = 'Neuer Rang';
 $cs_lang['id'] = 'ID';
 
 $cs_lang['no_min'] = '- Die Beitr&auml;ge m&uuml;ssen angegeben werden';

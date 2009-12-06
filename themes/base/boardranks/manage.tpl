@@ -14,7 +14,7 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb">{sort:boardranks_min} {lang:min}</td>
-		<td class="headb">{sort:boardranks_name} {lang:rangname}</td>
+		<td class="headb">{sort:boardranks_name} {lang:rankname}</td>
 		<td class="headb" colspan="2">{lang:options}</td>
 	</tr>
 	{loop:bora}

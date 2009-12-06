@@ -15,7 +15,7 @@
 		<td class="leftb"><input type="text" name="boardranks_min" value="{boardranks:min}" maxlength="8" size="5" /> {lang:points}</td>
 	</tr>
 	<tr>
-		<td class="leftc">{icon:kate} {lang:rangname} *</td>
+		<td class="leftc">{icon:kate} {lang:rankname} *</td>
 		<td class="leftb"><input type="text" name="boardranks_name" value="{boardranks:name}" maxlength="200" size="30" /></td>
 	</tr>
 	<tr>
