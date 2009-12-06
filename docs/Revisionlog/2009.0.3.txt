@@ -1,0 +1,655 @@
+Revision: 3565
+Autor: hajo
+Datum: 20:07:38, Sonntag, 6. Dezember 2009
+Meldung:
+fixed naming of rang/rank in board mod (fixed #706)
+----
+Verändert : /trunk/lang/English/boardranks.php
+Verändert : /trunk/lang/German/boardranks.php
+Verändert : /trunk/themes/base/boardranks/create.tpl
+Verändert : /trunk/themes/base/boardranks/edit.tpl
+Verändert : /trunk/themes/base/boardranks/manage.tpl
+
+Revision: 3564
+Autor: hajo
+Datum: 13:04:41, Freitag, 4. Dezember 2009
+Meldung:
+html escaped version check information
+----
+Verändert : /trunk/mods/clansphere/version.php
+
+Revision: 3563
+Autor: hajo
+Datum: 12:35:27, Freitag, 4. Dezember 2009
+Meldung:
+changed htmlspecialchars to htmlentities in rss feed generation (fixed #691)
+----
+Verändert : /trunk/mods/rss/generate.php
+
+Revision: 3562
+Autor: Fr33z3m4n
+Datum: 18:14:28, Donnerstag, 3. Dezember 2009
+Meldung:
+fixed #695 mods cant close threads
+----
+Verändert : /trunk/mods/board/com_create.php
+
+Revision: 3561
+Autor: Fr33z3m4n
+Datum: 18:09:15, Donnerstag, 3. Dezember 2009
+Meldung:
+fixed users_login when users_deleted 1 (fixed #701)
+----
+Verändert : /trunk/system/core/account.php
+
+Revision: 3560
+Autor: Fr33z3m4n
+Datum: 18:05:17, Donnerstag, 3. Dezember 2009
+Meldung:
+
+----
+Verändert : /trunk/mods/board/toplist.php
+
+Revision: 3559
+Autor: Fr33z3m4n
+Datum: 18:03:06, Donnerstag, 3. Dezember 2009
+Meldung:
+fixed #693 toplist  placeholder and PHP Warnings
+----
+Verändert : /trunk/mods/board/toplist.php
+
+Revision: 3558
+Autor: hajo
+Datum: 16:02:20, Donnerstag, 3. Dezember 2009
+Meldung:
+updated and fixed version information
+----
+Verändert : /trunk/install.sql
+Verändert : /trunk/updates/nr21_2009.0.2_to_2009.0.3.sql
+
+Revision: 3557
+Autor: hajo
+Datum: 14:57:05, Donnerstag, 3. Dezember 2009
+Meldung:
+updated fckeditor to version 2.6.5 - part 2 of 2
+----
+Verändert : /trunk/docs/changelog.txt
+Verändert : /trunk/mods/fckeditor/editor/filemanager/connectors/php/io.php
+Verändert : /trunk/mods/fckeditor/info.php
+
+Revision: 3556
+Autor: hajo
+Datum: 14:49:15, Donnerstag, 3. Dezember 2009
+Meldung:
+updated fckeditor to version 2.6.5 - part 1 of 2
+----
+Verändert : /trunk/mods/fckeditor/_whatsnew.html
+Verändert : /trunk/mods/fckeditor/editor/dialog/fck_about.html
+Verändert : /trunk/mods/fckeditor/editor/dialog/fck_docprops/fck_document_preview.html
+Verändert : /trunk/mods/fckeditor/editor/dialog/fck_docprops.html
+Verändert : /trunk/mods/fckeditor/editor/dialog/fck_paste.html
+Hinzugefügt : /trunk/mods/fckeditor/editor/dialog/fck_scayt
+Hinzugefügt : /trunk/mods/fckeditor/editor/dialog/fck_scayt/scayt_dialog.css
+Hinzugefügt : /trunk/mods/fckeditor/editor/dialog/fck_scayt.html
+Verändert : /trunk/mods/fckeditor/editor/dialog/fck_spellerpages/spellerpages/server-scripts/spellchecker.pl
+Verändert : /trunk/mods/fckeditor/editor/dialog/fck_table.html
+Verändert : /trunk/mods/fckeditor/editor/dialog/fck_tablecell.html
+Verändert : /trunk/mods/fckeditor/editor/fckeditor.html
+Verändert : /trunk/mods/fckeditor/editor/fckeditor.original.html
+Verändert : /trunk/mods/fckeditor/editor/filemanager/browser/default/frmresourceslist.html
+Verändert : /trunk/mods/fckeditor/editor/js/fckeditorcode_gecko.js
+Verändert : /trunk/mods/fckeditor/editor/js/fckeditorcode_ie.js
+Verändert : /trunk/mods/fckeditor/editor/lang/_translationstatus.txt
+Verändert : /trunk/mods/fckeditor/editor/lang/de.js
+Verändert : /trunk/mods/fckeditor/editor/lang/en-au.js
+Verändert : /trunk/mods/fckeditor/editor/lang/en-ca.js
+Verändert : /trunk/mods/fckeditor/editor/lang/en-uk.js
+Verändert : /trunk/mods/fckeditor/editor/lang/en.js
+Verändert : /trunk/mods/fckeditor/editor/lang/es.js
+Verändert : /trunk/mods/fckeditor/editor/lang/fr.js
+Verändert : /trunk/mods/fckeditor/editor/lang/it.js
+Verändert : /trunk/mods/fckeditor/editor/lang/nl.js
+Verändert : /trunk/mods/fckeditor/editor/lang/sl.js
+Verändert : /trunk/mods/fckeditor/fckconfig.js
+Verändert : /trunk/mods/fckeditor/fckeditor.js
+Verändert : /trunk/mods/fckeditor/fckpackager.xml
+
+Revision: 3555
+Autor: hajo
+Datum: 01:05:13, Donnerstag, 3. Dezember 2009
+Meldung:
+html escaped params in error details
+----
+Verändert : /trunk/mods/logs/view.php
+
+Revision: 3554
+Autor: hajo
+Datum: 00:55:45, Donnerstag, 3. Dezember 2009
+Meldung:
+fixed wars table creation bug in install.sql
+----
+Verändert : /trunk/install.sql
+
+Revision: 3553
+Autor: hajo
+Datum: 15:44:12, Mittwoch, 2. Dezember 2009
+Meldung:
+added z-index to lightbox css file which keeps it on top at most z-index based templates
+----
+Verändert : /trunk/mods/lightbox/css/slimbox.css
+
+Revision: 3552
+Autor: GaHero
+Datum: 22:06:31, Mittwoch, 25. November 2009
+Meldung:
+fixed picture style in users/navlogin (fixed #702)
+----
+Verändert : /trunk/mods/users/navlogin.php
+
+Revision: 3551
+Autor: GaHero
+Datum: 21:47:19, Mittwoch, 25. November 2009
+Meldung:
+fixed high values in posts per day (fixed #696)
+----
+Verändert : /trunk/mods/board/users.php
+
+Revision: 3550
+Autor: GaHero
+Datum: 16:52:37, Mittwoch, 25. November 2009
+Meldung:
+fixed editing of war players (fixed #700)
+fixes and improvements for topmatch option
+----
+Verändert : /trunk/install.sql
+Verändert : /trunk/lang/English/wars.php
+Verändert : /trunk/lang/German/wars.php
+Verändert : /trunk/mods/wars/create.php
+Verändert : /trunk/mods/wars/edit.php
+Verändert : /trunk/mods/wars/navtop.php
+Verändert : /trunk/templates/clansphere/index.htm
+Verändert : /trunk/themes/base/wars/create_1.tpl
+Verändert : /trunk/themes/base/wars/edit.tpl
+Verändert : /trunk/themes/base/wars/navtop.tpl
+Hinzugefügt : /trunk/updates/nr21_2009.0.2_to_2009.0.3.sql
+
+Revision: 3549
+Autor: Palle
+Datum: 17:06:19, Dienstag, 24. November 2009
+Meldung:
+updated changelog and german/readme.htm
+----
+Verändert : /trunk/docs/German/readme.htm
+Verändert : /trunk/docs/changelog.txt
+
+Revision: 3548
+Autor: Palle
+Datum: 20:06:17, Montag, 23. November 2009
+Meldung:
+
+----
+Verändert : /trunk/install.sql
+Verändert : /trunk/lang/English/wars.php
+Verändert : /trunk/lang/German/wars.php
+Verändert : /trunk/mods/wars/create.php
+Verändert : /trunk/mods/wars/edit.php
+Hinzugefügt : /trunk/mods/wars/navtop.php
+Verändert : /trunk/themes/base/wars/create_1.tpl
+Verändert : /trunk/themes/base/wars/edit.tpl
+Hinzugefügt : /trunk/themes/base/wars/navtop.tpl
+
+Revision: 3547
+Autor: duRiel
+Datum: 17:09:27, Montag, 23. November 2009
+Meldung:
+fixed a small html validation bug in ajax
+----
+Verändert : /branches/2009.1/system/core/templates.php
+Verändert : /trunk/system/core/templates.php
+
+Revision: 3546
+Autor: duRiel
+Datum: 15:54:00, Sonntag, 22. November 2009
+Meldung:
+Fixed some bugs in the cups module
+----
+Verändert : /trunk/docs/changelog.txt
+Verändert : /trunk/mods/cups/generate.php
+Verändert : /trunk/mods/cups/start.php
+Verändert : /trunk/mods/cups/view.php
+
+Revision: 3545
+Autor: GaHero
+Datum: 12:14:57, Samstag, 21. November 2009
+Meldung:
+ fixed list of cash in the current month (fixed #689)
+----
+Verändert : /trunk/mods/cash/view_cash.php
+Verändert : /trunk/themes/base/cash/view_cash.tpl
+
+Revision: 3544
+Autor: Fr33z3m4n
+Datum: 15:21:01, Donnerstag, 19. November 2009
+Meldung:
+fixed #500 mail header
+----
+Verändert : /trunk/system/core/tools.php
+
+Revision: 3543
+Autor: GaHero
+Datum: 21:55:34, Mittwoch, 18. November 2009
+Meldung:
+cs_pages will only show arrows, if necessary (copied from branch)
+----
+Verändert : /trunk/system/core/tools.php
+
+Revision: 3542
+Autor: GaHero
+Datum: 16:26:59, Mittwoch, 18. November 2009
+Meldung:
+reworked wars statistic - it is squadbased now and contains more information (copied from branch)
+added a link in squads/view for all fighting squads to their stats
+improved result icons
+----
+Verändert : /trunk/lang/English/wars.php
+Verändert : /trunk/lang/German/wars.php
+Verändert : /trunk/docs/changelog.txt
+Verändert : /trunk/lang/English/squads.php
+Verändert : /trunk/lang/German/squads.php
+Verändert : /trunk/mods/squads/view.php
+Verändert : /trunk/mods/wars/stats.php
+Verändert : /trunk/symbols/clansphere/green.gif
+Verändert : /trunk/symbols/clansphere/grey.gif
+Verändert : /trunk/symbols/clansphere/red.gif
+Verändert : /trunk/themes/base/squads/view.tpl
+Verändert : /trunk/themes/base/wars/stats.tpl
+
+Revision: 3541
+Autor: GaHero
+Datum: 20:07:26, Dienstag, 17. November 2009
+Meldung:
+added missing navlist to debug mod
+fixed differences in user number in a few situations(fixed #446)
+----
+Verändert : /trunk/templates/clansphere/index.htm
+Verändert : /trunk/mods/board/statistik.php
+Verändert : /trunk/mods/clansphere/navdebug.php
+Verändert : /trunk/mods/count/navusr.php
+Verändert : /trunk/mods/users/list.php
+
+Revision: 3540
+Autor: GaHero
+Datum: 19:41:13, Dienstag, 17. November 2009
+Meldung:
+Reworked board toplist for much better performance (fixed #361) (duriel)
+Changelog update
+----
+Verändert : /trunk/docs/changelog.txt
+Verändert : /trunk/mods/board/toplist.php
+Verändert : /trunk/themes/base/board/toplist.tpl
+
+Revision: 3539
+Autor: GaHero
+Datum: 17:33:52, Montag, 16. November 2009
+Meldung:
+
+----
+Verändert : /trunk/mods/articles/access.php
+Verändert : /trunk/mods/comments/functions.php
+
+Revision: 3538
+Autor: duRiel
+Datum: 22:39:39, Donnerstag, 12. November 2009
+Meldung:
+fixed wars navlist to be faster
+----
+Verändert : /trunk/mods/wars/navlist.php
+
+Revision: 3537
+Autor: GaHero
+Datum: 19:34:20, Donnerstag, 12. November 2009
+Meldung:
+fixed cs_secure usage in articles create and view
+----
+Verändert : /trunk/mods/articles/create.php
+Verändert : /trunk/mods/articles/view.php
+
+Revision: 3536
+Autor: GaHero
+Datum: 21:09:03, Mittwoch, 11. November 2009
+Meldung:
+Changelog update
+Added possibility to list only wars of one squad in wars/navlist
+----
+Verändert : /trunk/docs/changelog.txt
+Verändert : /trunk/mods/wars/navlist.php
+
+Revision: 3535
+Autor: Fr33z3m4n
+Datum: 16:44:42, Montag, 9. November 2009
+Meldung:
+fixed #476 messages inbox/outbox
+----
+Verändert : /trunk/mods/messages/view.php
+Verändert : /trunk/themes/base/messages/outbox.tpl
+Verändert : /trunk/themes/base/messages/view.tpl
+
+Revision: 3534
+Autor: Fr33z3m4n
+Datum: 16:31:54, Montag, 9. November 2009
+Meldung:
+fixed #502
+----
+Verändert : /trunk/themes/base/usersgallery/users.tpl
+
+Revision: 3533
+Autor: Fr33z3m4n
+Datum: 16:05:54, Montag, 9. November 2009
+Meldung:
+fixed #458 wrong quote link
+----
+Verändert : /trunk/themes/base/abcode/replaces.tpl
+
+Revision: 3532
+Autor: Fr33z3m4n
+Datum: 15:56:34, Montag, 9. November 2009
+Meldung:
+fixed #485 fixed many servers class errors
+----
+Verändert : /trunk/mods/servers/classes/aa.class.php
+Verändert : /trunk/mods/servers/classes/cod5.class.php
+Verändert : /trunk/mods/servers/classes/des3gs.class.php
+Verändert : /trunk/mods/servers/classes/q2.class.php
+Verändert : /trunk/mods/servers/classes/warsow.class.php
+
+Revision: 3531
+Autor: Fr33z3m4n
+Datum: 15:51:42, Montag, 9. November 2009
+Meldung:
+fixed #475 dont create Kategories if have no access
+----
+Verändert : /trunk/mods/categories/functions.php
+Verändert : /trunk/themes/base/categories/cat_dropdown.tpl
+
+Revision: 3530
+Autor: Fr33z3m4n
+Datum: 15:44:35, Montag, 9. November 2009
+Meldung:
+fixed #452 serverstats
+----
+Verändert : /trunk/mods/servers/classes/ut3.class.php
+
+Revision: 3529
+Autor: Fr33z3m4n
+Datum: 15:30:41, Montag, 9. November 2009
+Meldung:
+fixed #457 Download files @ff
+----
+Verändert : /trunk/mods/board/attachment.php
+
+Revision: 3528
+Autor: Fr33z3m4n
+Datum: 15:14:36, Montag, 9. November 2009
+Meldung:
+fixed #480 Vote for Gallery Pics
+----
+Verändert : /trunk/mods/gallery/com_view.php
+Verändert : /trunk/themes/base/gallery/com_view.tpl
+
+Revision: 3527
+Autor: Fr33z3m4n
+Datum: 14:56:10, Montag, 9. November 2009
+Meldung:
+fixed #484 missing $cs_file var, changed to __FILE__
+----
+Verändert : /trunk/system/core/functions.php
+Verändert : /trunk/system/database/mysql.php
+Verändert : /trunk/system/database/mysqli.php
+
+Revision: 3526
+Autor: Fr33z3m4n
+Datum: 14:47:37, Montag, 9. November 2009
+Meldung:
+fixed #00 Mail header
+----
+Verändert : /trunk/system/core/tools.php
+
+Revision: 3525
+Autor: Fr33z3m4n
+Datum: 14:45:29, Montag, 9. November 2009
+Meldung:
+fixed #459 wrong link for files @boardadmin (mod_rewrite)
+----
+Verändert : /trunk/mods/board/attachments_admin.php
+
+Revision: 3524
+Autor: Fr33z3m4n
+Datum: 14:30:27, Montag, 9. November 2009
+Meldung:
+fixed #483 wrong php syntax, and missing var
+----
+Verändert : /trunk/system/database/sqlsrv.php
+
+Revision: 3523
+Autor: Fr33z3m4n
+Datum: 14:17:19, Montag, 9. November 2009
+Meldung:
+fixed #495 wrong translation
+----
+Verändert : /trunk/lang/English/users.php
+
+Revision: 3522
+Autor: Fr33z3m4n
+Datum: 14:15:08, Montag, 9. November 2009
+Meldung:
+fixed #501 missing constants for php_error
+----
+Verändert : /trunk/system/core/functions.php
+
+Revision: 3521
+Autor: duRiel
+Datum: 12:29:03, Donnerstag, 29. Oktober 2009
+Meldung:
+fixed medals users sql (threadid 11892)
+----
+Verändert : /branches/2009.1/mods/medals/users.php
+Verändert : /trunk/mods/medals/users.php
+
+Revision: 3516
+Autor: GaHero
+Datum: 23:24:55, Freitag, 11. September 2009
+Meldung:
+added missing navlists to debug mode
+----
+Verändert : /trunk/mods/clansphere/navdebug.php
+Verändert : /branches/2009.1/mods/clansphere/navdebug.php
+
+Revision: 3507
+Autor: matti
+Datum: 09:31:37, Freitag, 28. August 2009
+Meldung:
+moved getmsg to head array for theme support
+----
+Verändert : /branches/2009.1/mods/options/roots.php
+Verändert : /trunk/mods/options/roots.php
+
+Revision: 3501
+Autor: duRiel
+Datum: 19:45:25, Dienstag, 25. August 2009
+Meldung:
+fixed #465, previous commit was incomplete
+----
+Verändert : /branches/2009.1/mods/boardranks/remove.php
+Verändert : /trunk/mods/boardranks/remove.php
+
+Revision: 3500
+Autor: duRiel
+Datum: 15:38:19, Dienstag, 25. August 2009
+Meldung:
+fixed #461
+----
+Verändert : /branches/2009.1/mods/contact/access.php
+Verändert : /branches/2009.1/mods/fightus/access.php
+Verändert : /branches/2009.1/mods/joinus/access.php
+Verändert : /trunk/mods/contact/access.php
+Verändert : /trunk/mods/fightus/access.php
+Verändert : /trunk/mods/joinus/access.php
+
+Revision: 3499
+Autor: duRiel
+Datum: 14:58:38, Dienstag, 25. August 2009
+Meldung:
+fixed #468
+----
+Verändert : /branches/2009.1/themes/base/board/modpanel_q.tpl
+Verändert : /trunk/themes/base/board/modpanel_q.tpl
+
+Revision: 3498
+Autor: duRiel
+Datum: 14:46:13, Dienstag, 25. August 2009
+Meldung:
+fixed #465
+----
+Verändert : /branches/2009.1/mods/boardranks/remove.php
+Verändert : /trunk/mods/boardranks/remove.php
+
+Revision: 3482
+Autor: GaHero
+Datum: 10:58:49, Mittwoch, 5. August 2009
+Meldung:
+fixed linkus list
+----
+Verändert : /trunk/themes/base/linkus/list.tpl
+
+Revision: 3475
+Autor: hajo
+Datum: 19:04:45, Donnerstag, 30. Juli 2009
+Meldung:
+fixed translation changes of rev 3469
+----
+Verändert : /branches/2009.1/lang/German/usersgallery.php
+Verändert : /trunk/lang/German/usersgallery.php
+
+Revision: 3473
+Autor: matti
+Datum: 18:35:14, Donnerstag, 30. Juli 2009
+Meldung:
+Bugfix: calling links/listcat.php without "where" statement shows information from a wrong category
+----
+Verändert : /branches/2009.1/mods/links/listcat.php
+Verändert : /trunk/mods/links/listcat.php
+
+Revision: 3472
+Autor: matti
+Datum: 17:36:41, Donnerstag, 30. Juli 2009
+Meldung:
+fixed a spelling bug
+----
+Verändert : /branches/2009.1/themes/base/votes/list.tpl
+Verändert : /trunk/themes/base/votes/list.tpl
+
+Revision: 3469
+Autor: nenTi
+Datum: 10:52:25, Dienstag, 28. Juli 2009
+Meldung:
+Fixed security incident for usersgallery.
+----
+Verändert : /branches/2009.1/lang/German/usersgallery.php
+Verändert : /trunk/lang/German/usersgallery.php
+Verändert : /branches/2009.1/lang/English/usersgallery.php
+Verändert : /branches/2009.1/mods/usersgallery/users_edit.php
+Verändert : /tags/2009.0.2/lang/English/usersgallery.php
+Verändert : /tags/2009.0.2/lang/German/usersgallery.php
+Verändert : /tags/2009.0.2/mods/usersgallery/users_edit.php
+Verändert : /trunk/lang/English/usersgallery.php
+Verändert : /trunk/mods/usersgallery/users_edit.php
+
+Revision: 3466
+Autor: matti
+Datum: 00:43:20, Dienstag, 21. Juli 2009
+Meldung:
+fixed some template bugs
+----
+Verändert : /branches/2009.1/themes/base/squads/change.tpl
+Verändert : /branches/2009.1/themes/base/squads/leave.tpl
+Verändert : /branches/2009.1/themes/base/squads/new.tpl
+Verändert : /branches/2009.1/themes/base/users/password.tpl
+Verändert : /trunk/themes/base/squads/change.tpl
+Verändert : /trunk/themes/base/squads/leave.tpl
+Verändert : /trunk/themes/base/squads/new.tpl
+Verändert : /trunk/themes/base/users/password.tpl
+
+Revision: 3465
+Autor: matti
+Datum: 00:37:17, Dienstag, 21. Juli 2009
+Meldung:
+fixed wrong id in signout button
+----
+Verändert : /branches/2009.1/mods/events/view.php
+Verändert : /trunk/mods/events/view.php
+
+Revision: 3463
+Autor: SCHIRI
+Datum: 22:35:59, Samstag, 18. Juli 2009
+Meldung:
+removed double use of cs_secure
+----
+Verändert : /trunk/mods/members/teams.php
+
+Revision: 3457
+Autor: SCHIRI
+Datum: 16:58:55, Donnerstag, 9. Juli 2009
+Meldung:
+fixed $base in cs_url with modrewrite
+----
+Verändert : /trunk/system/core/tools.php
+
+Revision: 3456
+Autor: hajo
+Datum: 11:50:40, Donnerstag, 9. Juli 2009
+Meldung:
+removed print_r commands - reported by astmaih
+----
+Verändert : /branches/2009.1/mods/gbook/edit.php
+Verändert : /branches/2009.1/mods/gbook/entry.php
+Verändert : /branches/2009.1/mods/usersgallery/users.php
+Verändert : /trunk/mods/gbook/edit.php
+Verändert : /trunk/mods/gbook/entry.php
+Verändert : /trunk/mods/usersgallery/users.php
+
+Revision: 3455
+Autor: hajo
+Datum: 11:40:18, Donnerstag, 9. Juli 2009
+Meldung:
+fixed #448 - added return false to imgbox list link
+----
+Verändert : /branches/2009.1/themes/base/abcode/imgbox.tpl
+Verändert : /trunk/themes/base/abcode/imgbox.tpl
+
+Revision: 3454
+Autor: hajo
+Datum: 11:14:49, Donnerstag, 9. Juli 2009
+Meldung:
+fixed html bug reported by astmaih
+----
+Verändert : /branches/2009.1/themes/base/messages/center.tpl
+Verändert : /trunk/themes/base/messages/center.tpl
+
+Revision: 3453
+Autor: hajo
+Datum: 10:25:34, Donnerstag, 9. Juli 2009
+Meldung:
+sanitized request vars in search list - reported by dopekick
+----
+Verändert : /branches/2009.1/mods/search/list.php
+Verändert : /trunk/mods/search/list.php
+
+Revision: 3449
+Autor: hajo
+Datum: 23:22:44, Dienstag, 7. Juli 2009
+Meldung:
+fixed board search to work again - will be added in 2009.0.2
+----
+Verändert : /branches/2009.1/mods/board/search.php
+Verändert : /trunk/mods/board/search.php
+

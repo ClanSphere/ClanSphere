@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2009.x.x >> xxxx-xx-xx
+ClanSphere 2009.0.3 >> 2009-12-06
 ___________________________________________________________
 
 -> Added topmatch checkbox for clanwars and wars/navtop (palle)
