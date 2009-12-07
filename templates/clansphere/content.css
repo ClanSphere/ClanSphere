@@ -182,3 +182,19 @@ input, textarea, select {
   margin: 4px 8px 4px 8px;
   padding: 4px;
 }
+
+/* UserStatus */
+.uonline {
+  padding: 4px 0 4px 0; 
+  color: #00BB00;
+}
+
+.uoffline {
+  padding: 4px 0 4px 0; 
+  color: maroon;
+}
+
+.uinactive {
+  padding: 4px 0 4px 0; 
+  color: #555555
+}
