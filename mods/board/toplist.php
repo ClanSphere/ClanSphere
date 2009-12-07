@@ -6,6 +6,8 @@ include 'mods/board/functions.php';
 
 $start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 $array_result = array();
+$toplist = array();
+$count = 0;
 
 function manageData (&$array, $key) {
     global $array_result;
@@ -19,11 +21,12 @@ global $array_result;
 
 if (!empty($comments)) array_walk($comments, 'manageData');
 if (!empty($threads)) array_walk($threads, 'manageData');
-arsort ($array_result);
 
-
-$toplist = array_slice ($array_result, $start, $account['users_limit'], true); // Comments + threads
-$count = count($array_result);
+if(is_array($array_result)) {
+    arsort ($array_result);
+    $toplist = array_slice ($array_result, $start, $account['users_limit'], true); // Comments + threads
+    $count = count($array_result);
+}
 
 $array_result = array();
 $user_cond = '';
