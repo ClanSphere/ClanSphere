@@ -6,6 +6,8 @@ $cs_lang = cs_translate('news');
 $cs_post = cs_post('where,start,sort');
 $cs_get = cs_get('where,start,sort');
 
+require_once 'mods/categories/functions.php';
+
 $categories_id = empty($cs_get['where']) ? 0 : $cs_get['where'];
 if (!empty($cs_post['where']))  $categories_id = $cs_post['where'];
 $start = empty($cs_get['start']) ? 0 : $cs_get['start'];
@@ -32,7 +34,7 @@ $data['head']['message'] = cs_getmsg();
 
 $newsmod = "categories_mod = 'news' AND categories_access <= '" . $account['access_news'] . "'";
 $cat_data = cs_sql_select(__FILE__,'categories','*',$newsmod,'categories_name',0,0);
-$data['head']['dropdown'] = cs_dropdown('where','categories_name',$cat_data,$categories_id,'categories_id');
+$data['head']['dropdown'] = cs_categories_dropdown2('news', $categories_id,0,'where');
 
 $from = 'news nws LEFT JOIN {pre}_users usr ON nws.users_id = usr.users_id';
 $select = 'nws.news_headline AS news_headline, nws.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, nws.news_time AS news_time, nws.news_public AS news_public, nws.news_id AS news_id';

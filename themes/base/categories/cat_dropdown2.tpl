@@ -1,4 +1,4 @@
-<select name="categories_id">
+<select name="{dropdown:name}">
 	<option value="0">----</option>
 	{categories:options}
 </select>

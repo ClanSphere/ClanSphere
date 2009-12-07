@@ -35,11 +35,11 @@ function cs_categories_dropdown($mod, $categories_id) {
     return cs_subtemplate(__FILE__,$data,'categories','cat_dropdown');
 }
 
-function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1) {
+function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1, $name = 'categories_id') {
 
     $data = array();
     $cells = 'categories_id, categories_name, categories_subid';
-    $categories = cs_sql_select(__FILE__,'categories',$cells,"categories_mod = '".$mod. "'",'categories_subid ASC, categories_name',0,0);
+    $categories = cs_sql_select(__FILE__,'categories',$cells,"categories_mod = '".$mod. "' AND categories_access <= '" . $account['access_news'] . "'",'categories_subid ASC, categories_name',0,0);
     $categories = cs_catsort($categories);
 
     if (!empty($categories)) {
@@ -55,6 +55,7 @@ function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1) {
     }
 
     $data['if']['new'] = !empty($new) ? TRUE : FALSE;
+    $data['dropdown']['name'] = $name;
     return cs_subtemplate(__FILE__,$data,'categories','cat_dropdown2');
 }
 

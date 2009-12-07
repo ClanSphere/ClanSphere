@@ -4,7 +4,7 @@
 
 $cs_lang = cs_translate('news');
 global $cs_http;
-require_once('mods/categories/functions.php');
+require_once 'mods/categories/functions.php';
 $news_newtime = 0;
 $op_news = cs_sql_option(__FILE__,'news');
 
@@ -203,7 +203,7 @@ if(isset($_POST['mirror'])) {
 
 if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   
-  $data['categories']['dropdown'] = cs_categories_dropdown('news', $cs_news['categories_id']);
+  $data['categories']['dropdown'] = cs_categories_dropdown2('news',$cs_news['categories_id'],0);
   $data['news']['news_headline'] = cs_secure($cs_news['news_headline']);
   $data['news']['news_text'] = cs_secure($cs_news['news_text']);
   $data['news']['news_readmore'] = cs_secure($cs_news['news_readmore']);

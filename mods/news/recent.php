@@ -7,6 +7,8 @@ $data = array();
 $cs_post = cs_post('where');
 $cs_get = cs_get('where');
 
+require_once 'mods/categories/functions.php';
+
 $cat_id = empty($cs_get['where']) ? 0 : $cs_get['where'];
 if (!empty($cs_post['where']))  $cat_id = $cs_post['where'];
 
@@ -20,13 +22,7 @@ if(!empty($cat_id)) {
 
 $start = empty($_REQUEST['start']) ? 0 : (int)$_REQUEST['start'];
 
-$newsmod = "categories_mod = 'news' AND categories_access <= " . $account['access_news'];
-$data['cats'] = cs_sql_select(__FILE__, 'categories', 'categories_name, categories_id', $newsmod, 'categories_name', 0, 0);
-$count_cats = count($data['cats']);
-for ($i = 0; $i < $count_cats; $i++) {
-  $data['cats'][$i]['categories_name'] = cs_secure($data['cats'][$i]['categories_name']);
-  $data['cats'][$i]['if']['selected'] = $data['cats'][$i]['categories_id'] == $cat_id ? true : false;
-}
+$data['cats']['dropdown'] = cs_categories_dropdown2('news', $cat_id,0,'where');
 
 $join = 'news nws INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
 $news_count = cs_sql_count(__FILE__, $join, $where, 'news_id');

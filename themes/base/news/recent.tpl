@@ -5,10 +5,7 @@
  </tr>
  <tr>
   <td class="leftb">{lang:category}
-    <select name="where" class="form">
-      <option value="0">----</option>{loop:cats}
-      <option value="{cats:categories_id}" {if:selected}selected="selected"{stop:selected}>{cats:categories_name}</option>{stop:cats}
-     </select>
+    {cats:dropdown}
     <input type="submit" name="submit" value="{lang:show}" />
   </td>
   <td class="leftb"><a href="{url:news_list}">{lang:list}</a></td>
