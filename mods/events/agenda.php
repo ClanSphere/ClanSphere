@@ -43,7 +43,7 @@ for ($i = 0; $i < $events_count; $i++) {
 
   $data['events'][$i]['time'] = cs_date('unix',$data['events'][$i]['events_time'],1);
   $data['events'][$i]['canceled'] = empty($data['events'][$i]['events_cancel']) ? '' : $cs_lang['canceled'];
-  $signed = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$i]['events_id'] . "' AND users_id = '" . $account['users_id'] . "'");
+  $signed = empty($account['users_id']) ? 0 : cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$i]['events_id'] . "' AND users_id = '" . $account['users_id'] . "'");
   $data['events'][$i]['signed'] = empty($signed) ? '' : $cs_lang['signed'];
   $data['events'][$i]['eventguests'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$i]['events_id'] . "'");
   $data['events'][$i]['class'] = $data['events'][$i]['events_time'] > cs_time() ? 'b' : 'c';
