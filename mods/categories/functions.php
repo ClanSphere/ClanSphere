@@ -44,8 +44,8 @@ function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1, $name = 'ca
     $categories = cs_sql_select(__FILE__,'categories',$cells,"categories_mod = '".$mod. "' AND categories_access <= '" . $account['access_news'] . "'",'categories_subid ASC, categories_name',0,0);
     $categories = cs_catsort($categories);
 
+    $data['categories']['options'] = '';
     if (!empty($categories)) {
-        $data['categories']['options'] = '';
         foreach ($categories AS $cat) {
             $blank = '';
             if (!empty($cat['layer'])) {
