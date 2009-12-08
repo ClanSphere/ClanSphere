@@ -22,12 +22,12 @@ $cs_sort[6] = 'egt.eventguests_since ASC';
 $sort = empty($_REQUEST['sort']) ? 4 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
-$data['if']['other'] = $account['access_events'] >= 5 ? 0 : 1;
 $data['if']['admin'] = $account['access_events'] >= 5 ? 1 : 0;
 
 $data['head']['count'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $events_id . "'");
 
-$data['events'] = cs_sql_select(__FILE__,'events','events_id, events_name, events_time',$where,0,0,1);
+$columns = 'events_id, events_name, events_time, events_needage';
+$data['events'] = cs_sql_select(__FILE__,'events',$columns,$where,0,0,1);
 $data['events']['time'] = cs_date('unix',$data['events']['events_time'],1);
 
 $data['head']['pages'] = cs_pages('squads','manage',$data['head']['count'],$start,$events_id,$sort);
