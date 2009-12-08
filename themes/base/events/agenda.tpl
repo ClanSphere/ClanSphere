@@ -40,12 +40,12 @@
   <td class="headb" style="width:30%">{lang:guests}</td>
  </tr>{loop:events}
  <tr>
-  <td class="leftc">
+  <td class="left{events:class}">
     {events:time}<br />
     {events:signed}<br />
     {events:canceled}
   </td>
-  <td class="leftc">
+  <td class="left{events:class}">
     <span style="float:left; padding-right:8px">
       {events:categories_picture}
     </span> 
@@ -53,7 +53,7 @@
     <hr style="width:100%" />
     <a href="{url:events_view:id={events:events_id}}">{events:events_name}</a>
   </td>
-  <td class="leftc">
+  <td class="left{events:class}">
     {if:access}
     {events:bar}<br />
     {lang:signed}: {events:eventguests} {events:perc}<br />

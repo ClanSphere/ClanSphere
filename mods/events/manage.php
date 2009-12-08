@@ -15,7 +15,6 @@ $sort = empty($cs_get['sort']) ? 3 : $cs_get['sort'];
 if (!empty($cs_post['sort']))  $sort = $cs_post['sort'];
 
 $where = empty($categories_id) ? 0 : "categories_id = '" . $categories_id . "'";
-#$where2 = empty($categories_id) ? 0 : 'evs.' . $where;
 
 $cs_sort[1] = 'events_name DESC';
 $cs_sort[2] = 'events_name ASC';
@@ -43,6 +42,7 @@ for ($run = 0; $run < $count_events; $run++) {
   $data['events'][$run]['time'] = cs_date('unix',$data['events'][$run]['events_time'],1);
   $data['events'][$run]['guests'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$run]['events_id'] . "'");
   $data['events'][$run]['canceled'] = empty($data['events'][$run]['events_cancel']) ? '' : ' - ' . $cs_lang['canceled'];
+  $data['events'][$run]['class'] = $data['events'][$run]['events_time'] > cs_time() ? 'b' : 'c';
 }
 
 echo cs_subtemplate(__FILE__,$data,'events','manage');

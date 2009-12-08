@@ -46,6 +46,7 @@ for ($i = 0; $i < $events_count; $i++) {
   $signed = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$i]['events_id'] . "' AND users_id = '" . $account['users_id'] . "'");
   $data['events'][$i]['signed'] = empty($signed) ? '' : $cs_lang['signed'];
   $data['events'][$i]['eventguests'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$i]['events_id'] . "'");
+  $data['events'][$i]['class'] = $data['events'][$i]['events_time'] > cs_time() ? 'b' : 'c';
 
   if(empty($data['events'][$i]['events_guestsmax'])) {
     $data['events'][$i]['bar'] = '';
