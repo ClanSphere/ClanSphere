@@ -24,6 +24,7 @@ function cs_categories_create($mod, $categories_name) {
 }
 
 function cs_categories_dropdown($mod, $categories_id) {
+
     global $account;
     $where = "categories_mod='" . $mod . "'";
     $list_data = cs_sql_select(__FILE__,'categories','categories_id, categories_name',$where,'categories_order ASC, categories_name',0,0);
@@ -37,6 +38,7 @@ function cs_categories_dropdown($mod, $categories_id) {
 
 function cs_categories_dropdown2($mod, $categories_id = 0, $new = 1, $name = 'categories_id') {
 
+    global $account;
     $data = array();
     $cells = 'categories_id, categories_name, categories_subid';
     $categories = cs_sql_select(__FILE__,'categories',$cells,"categories_mod = '".$mod. "' AND categories_access <= '" . $account['access_news'] . "'",'categories_subid ASC, categories_name',0,0);
@@ -116,6 +118,7 @@ function cs_catsort ($array, $id = 0) {
 }
 
 function cs_catspaces ($count = 0, $letter = '&nbsp;&nbsp;') {
+
     if (empty($count)) return '';
     $string = '';
     for ($i = 0; $i < $count; $i++) {
@@ -125,6 +128,7 @@ function cs_catspaces ($count = 0, $letter = '&nbsp;&nbsp;') {
 }
 
 function multiarray_search ($array, $innerkey, $value) {
+
     foreach ($array AS $outerkey => $innerarray) {
         if ($innerarray[$innerkey] == $value)
         return $outerkey;
