@@ -127,7 +127,7 @@ function cs_html_option($name, $value, $select = 0, $style = 0)
 
 function cs_html_underline($func)
 {
-  $func == 1 ? $var = '<u>' : $var = '</u>';
+  $func == 1 ? $var = '<span style="text-decoration:underline>' : $var = '</span>';
   return $var;
 }
 

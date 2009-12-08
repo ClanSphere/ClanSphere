@@ -33,8 +33,8 @@
   <td class="left{events:class}"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
   <td class="left{events:class}">{events:indicator}</td>
   <td class="left{events:class}">{events:guests}</td>
-  <td class="left{events:class}"><u>{events:events_guestsmin}</u></td>
-  <td class="left{events:class}"><strong>{events:events_guestsmax}</td>
+  <td class="left{events:class}"><span style="text-decoration: underline">{events:events_guestsmin}</span></td>
+  <td class="left{events:class}"><strong>{events:events_guestsmax}</strong></td>
   <td class="left{events:class}"><a href="{url:events_guests:id={events:events_id}}" title="{lang:guests}">{icon:kdmconfig}</a></td>
   <td class="left{events:class}"><a href="{url:events_picture:id={events:events_id}}" title="{lang:pictures}">{icon:image}</a></td>
   <td class="left{events:class}"><a href="{url:events_edit:id={events:events_id}}" title="{lang:edit}">{icon:edit}</a></td>
