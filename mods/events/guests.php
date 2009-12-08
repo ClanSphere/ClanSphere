@@ -26,7 +26,7 @@ $data['if']['admin'] = $account['access_events'] >= 5 ? 1 : 0;
 
 $data['head']['count'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $events_id . "'");
 
-$columns = 'events_id, events_name, events_time, events_needage';
+$columns = 'events_id, events_name, events_time, events_needage, events_guestsmax, events_guestsmin';
 $data['events'] = cs_sql_select(__FILE__,'events',$columns,$where,0,0,1);
 $data['events']['time'] = cs_date('unix',$data['events']['events_time'],1);
 
