@@ -28,8 +28,9 @@
     <tr>
       <td class="leftc">{icon:yast_user_add} {lang:guest}</td>
       <td class="leftb">
-        {lang:req_fullname}<br />
+        {lang:req_name}<br />
         <input type="text" name="eventguests_name" value="{eventguests:eventguests_name}" maxlength="80" size="40" /><br />
+        {lang:req_surname}<br />
         <input type="text" name="eventguests_surname" value="{eventguests:eventguests_surname}" maxlength="80" size="40" /><br />
         {lang:req_phone}<br />
         <input type="text" name="eventguests_phone" value="{eventguests:eventguests_phone}" maxlength="40" size="20" /><br />

@@ -76,6 +76,9 @@ if(!empty($errormsg) OR !isset($_POST['submit'])) {
 
   $data['users']['nick'] = cs_secure($users_nick);
 
+  if(empty($data['eventguests']['eventguests_phone'])) $data['eventguests']['eventguests_phone'] = '';
+  if(empty($data['eventguests']['eventguests_mobile'])) $data['eventguests']['eventguests_mobile'] = '';
+
   echo cs_subtemplate(__FILE__,$data,'events','guestsadm');
 }
 else {
