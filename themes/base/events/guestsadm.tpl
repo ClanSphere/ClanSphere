@@ -8,15 +8,23 @@
 </table>
 <br />
 
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="leftc" rowspan="2">{icon:cal} {lang:event}</td>
+    <td class="leftb"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
+  </tr>
+  <tr>
+    <td class="leftb">{events:time}</td>
+  </tr>
+	<tr>
+		<td class="leftc">{icon:organizer} {lang:needage}</td>
+		<td class="leftb" colspan="2">{events:events_needage}</td>
+	</tr>
+</table>
+<br />
+
 <form method="post" id="events_guestsadm" action="{url:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-    <tr>
-      <td class="leftc" rowspan="2">{icon:cal} {lang:event} *</td>
-      <td class="leftb"><a href="{url:events_view:id={events:id}}">{events:name}</a></td>
-    </tr>
-    <tr>
-      <td class="leftb">{events:time}</td>      
-    </tr>
     <tr>
       <td class="leftc">{icon:personal} {lang:user}</td>
       <td class="leftb">

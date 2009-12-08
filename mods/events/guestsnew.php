@@ -63,12 +63,11 @@ if(!empty($errormsg))
 if(!empty($errormsg) OR !isset($_POST['submit'])) {
   $data['url']['form'] = cs_url('events','guestsnew');
 
+  $columns = 'events_time, events_name, events_needage, events_id';
   $where = "events_id = '" . $data['eventguests']['events_id'] . "'";
-  $events_data = cs_sql_select(__FILE__, 'events', 'events_time, events_name, events_id', $where);
+  $data['events'] = cs_sql_select(__FILE__, 'events', $columns, $where);
 
-  $data['events']['id'] = $events_data['events_id'];
-  $data['events']['name'] = $events_data['events_name'];
-  $data['events']['time'] = cs_date('unix',$events_data['events_time'],1);
+  $data['events']['time'] = cs_date('unix',$data['events']['events_time'],1);
 
   $data['users']['nick'] = cs_secure($users_nick);
 

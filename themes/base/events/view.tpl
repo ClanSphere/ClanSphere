@@ -35,7 +35,11 @@
 		<td class="leftb" colspan="2">{data:events_venue}</td>
 	</tr>
 	<tr>
-		<td class="leftc" rowspan="4">{icon:kdmconfig} {lang:guests}</td>
+		<td class="leftc">{icon:organizer} {lang:needage}</td>
+		<td class="leftb" colspan="2">{data:events_needage}</td>
+	</tr>
+	<tr>
+		<td class="leftc" rowspan="3">{icon:kdmconfig} {lang:guests}</td>
 		<td class="leftb" style="width:140px">
           <a href="{url:events_guests:id={data:events_id}}">{lang:signed}</a>
         </td>
@@ -43,15 +47,11 @@
 	</tr>
 	<tr>
 		<td class="leftb">{lang:min}</td>
-		<td class="leftc">{data:events_guestsmin}</td>
+		<td class="leftc"><span style="text-decoration: underline">{data:events_guestsmin}</span></td>
 	</tr>
 	<tr>
 		<td class="leftb">{lang:max}</td>
-		<td class="leftc">{data:events_guestsmax}</td>
-	</tr>
-	<tr>
-		<td class="leftb">{lang:needage}</td>
-		<td class="leftc">{data:events_needage}</td>
+		<td class="leftc"><strong>{data:events_guestsmax}</strong></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:gohome} {lang:url}</td>
