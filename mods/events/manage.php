@@ -34,7 +34,7 @@ $data['head']['categories'] = cs_dropdown('where','categories_name',$categories_
 $data['sort']['name'] = cs_sort('events','manage',$start,$categories_id,1,$sort);
 $data['sort']['date'] = cs_sort('events','manage',$start,$categories_id,3,$sort);
 
-$select = 'events_time, events_id, events_name, events_cancel, events_guestsmax';
+$select = 'events_time, events_id, events_name, events_cancel, events_guestsmax, events_guestsmin';
 $data['events'] = cs_sql_select(__FILE__,'events',$select,$where,$order,$start,$account['users_limit']);
 $count_events = count($data['events']);
 
@@ -43,6 +43,13 @@ for ($run = 0; $run < $count_events; $run++) {
   $data['events'][$run]['guests'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$run]['events_id'] . "'");
   $data['events'][$run]['canceled'] = empty($data['events'][$run]['events_cancel']) ? '' : ' - ' . $cs_lang['canceled'];
   $data['events'][$run]['class'] = $data['events'][$run]['events_time'] > cs_time() ? 'b' : 'c';
+
+  if(empty($data['events'][$run]['events_guestsmax']) OR $data['events'][$run]['events_time'] < cs_time())
+    $data['events'][$run]['indicator'] = cs_html_img('symbols/clansphere/grey.gif');
+  elseif($data['events'][$run]['guests'] >= $data['events'][$run]['events_guestsmax'])
+    $data['events'][$run]['indicator'] = cs_html_img('symbols/clansphere/red.gif');
+  else
+    $data['events'][$run]['indicator'] = cs_html_img('symbols/clansphere/green.gif');
 }
 
 echo cs_subtemplate(__FILE__,$data,'events','manage');
