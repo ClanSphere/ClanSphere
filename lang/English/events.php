@@ -157,7 +157,6 @@ $cs_lang['err_phone']      = '- Data too short or missing: Phone';
 $cs_lang['err_mobile']     = '- Data too short or missing: Cell Phone';
 
 // Guests
-
 $cs_lang['new_guest']         = 'New guest';
 $cs_lang['new_guest_info']    = 'Please select a user or create a new guest';
 $cs_lang['guest']             = 'Guest';
@@ -165,3 +164,5 @@ $cs_lang['notice']            = 'Notice';
 $cs_lang['event']             = 'Event';
 $cs_lang['no_user']           = '- No user is selected';
 $cs_lang['user_event_exists'] = '- User has already signed in for the event';
+$cs_lang['print_view']        = 'Print view';
+$cs_lang['contact']           = 'Contakt';
