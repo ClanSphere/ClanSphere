@@ -20,6 +20,7 @@ $axx_file['guests']         = 2;
 $axx_file['guestsadm']      = 5;
 $axx_file['guestsdel']      = 5;
 $axx_file['guestsnew']      = 5;
+$axx_file['guestsprint']    = 5;
 
 $axx_file['com_create']     = 1;
 $axx_file['com_edit']       = 2;

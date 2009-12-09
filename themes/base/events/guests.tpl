@@ -37,7 +37,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="centerb">{icon:yast_user_add} <a href="{url:events_guestsnew:events_id={events:events_id}}">{lang:new_guest}</a></td>
-    <td class="centerb">{icon:printmgr} <a href="#" onclick="window.open('{page:path}print.php', '{lang:print_view}', 'width=800,height=600,scrollbars=yes'); return false">{lang:print_view}</a></td>
+    <td class="centerb">{icon:printmgr} <a href="#" onclick="window.open('{page:path}features.php?mod=events&amp;action=guestsprint&amp;id={events:events_id}', '{lang:print_view}', 'width=800,height=600,scrollbars=yes'); return false">{lang:print_view}</a></td>
     <td class="centerb">{icon:view_text} <a href="{url:events_manage}">{lang:manage}</a></td>
   </tr>
 </table>
