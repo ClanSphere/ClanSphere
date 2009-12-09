@@ -19,7 +19,7 @@ $cs_sort[3] = 'usr.users_surname DESC';
 $cs_sort[4] = 'usr.users_surname ASC';
 $cs_sort[5] = 'egt.eventguests_since DESC';
 $cs_sort[6] = 'egt.eventguests_since ASC';
-$sort = empty($_REQUEST['sort']) ? 4 : $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 6 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $data['if']['admin'] = $account['access_events'] >= 5 ? 1 : 0;
@@ -30,7 +30,7 @@ $columns = 'events_id, events_name, events_time, events_needage, events_guestsma
 $data['events'] = cs_sql_select(__FILE__,'events',$columns,$where,0,0,1);
 $data['events']['time'] = cs_date('unix',$data['events']['events_time'],1);
 
-$data['head']['pages'] = cs_pages('squads','manage',$data['head']['count'],$start,$events_id,$sort);
+$data['head']['pages'] = cs_pages('events','guests',$data['head']['count'],$start,$events_id,$sort);
 $data['head']['getmsg'] = cs_getmsg();
 
 $data['sort']['user'] = cs_sort('events','guests',$start,$events_id,1,$sort);
