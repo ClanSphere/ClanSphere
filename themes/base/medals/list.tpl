@@ -14,7 +14,7 @@
     <td class="headb">{lang:mod_name}</td>
   </tr>{loop:users}
   <tr>
-    <td class="leftb">{users:users_nick}</a></td>
-    <td class="leftc">{users:medals}</td>
+    <td class="leftb">{users:user}</td>
+    <td class="leftc"><a href="{url:medals_users:id={users:users_id}}">{users:medals}</a></td>
   </tr>{stop:users}
 </table>
