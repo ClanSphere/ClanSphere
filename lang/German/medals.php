@@ -3,6 +3,9 @@
 $cs_lang['mod_name'] = 'Medaillen';
 $cs_lang['modtext'] = 'Vergeben und Verwalten von Medaillen';
 
+// List
+$cs_lang['list'] = 'Liste';
+
 // Manage
 $cs_lang['new_medal'] = 'Neue Medallie erstellen';
 $cs_lang['awarded'] = 'mal verliehen';
