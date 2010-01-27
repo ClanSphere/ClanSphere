@@ -24,7 +24,9 @@ function cs_cache_dirs($dir, $lang) {
   if($content === false) {
     $cs_lang_old = $cs_lang;
     $info = array();
-    $directories = array_keys(cs_paths($dir));
+    $dirlist = cs_paths($dir);
+    unset($dirlist['index.html']);
+    $directories = array_keys($dirlist);
     foreach($directories as $target) {
       $this_info = $dir . '/' . $target . '/info.php';
       if(file_exists($this_info)) {
