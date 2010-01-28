@@ -56,7 +56,7 @@ if (!empty($_POST['submit'])) {
     
     $infocontent  = '<?php'."\r\n";
     $infocontent .= '// ClanSphere 2009 - www.clansphere.net'."\r\n";
-    $infocontent .= '// $Id$'."\r\n\r\n";
+    $infocontent .= '// File created by mod modules'."\r\n\r\n";
     
     $infocontent .= '$cs_lang = cs_translate(\''.$_POST['moddir'].'\');'."\r\n\r\n";
     
@@ -90,7 +90,7 @@ if (!empty($_POST['submit'])) {
     
     $langinfocontent  = '<?php'."\r\n";
     $langinfocontent .= '// ClanSphere 2009 - www.clansphere.net'."\r\n";
-    $langinfocontent .= '// $Id$'."\r\n\r\n";
+    $langinfocontent .= '// File created by mod modules'."\r\n\r\n";
     
     $langinfocontent .= '$cs_lang[\'mod\'] = \''.$_POST['modname']."';\r\n";
     $langinfocontent .= '$cs_lang[\'mod_info\'] = \''.$_POST['description']."';\r\n\r\n";
