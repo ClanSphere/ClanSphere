@@ -6,10 +6,9 @@
     <td class="leftb">{lang:our_partner}</td>
   </tr>
 </table>
-<br />
-
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};" cellpadding="0" cellspacing="0">
 {loop:categories}
+<br />
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftb" colspan="2">
      <strong>{categories:categories_name}:</strong>
@@ -25,5 +24,5 @@
 	  <td class="leftb" colspan="2"><hr style="width: 100%;" size="1" /></td>
 	</tr>
 	{stop:partner}
-{stop:categories}	
 </table>
+{stop:categories}	
