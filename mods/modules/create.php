@@ -107,6 +107,7 @@ if (!empty($_POST['submit'])) {
     
     // SQL
     $query = 'ALTER TABLE {pre}_access ADD access_'.cs_sql_escape($_POST['moddir']).' int(2) NOT NULL default \'0\';';
+    $query = cs_sql_replace($query);
     if (!cs_sql_query(__FILE__,$query)) {
       $error .= cs_html_br(1) . $cs_lang['sqlaccess_failed'];
     }
