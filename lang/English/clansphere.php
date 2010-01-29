@@ -212,3 +212,6 @@ $cs_lang['read'] = 'Mark as read';
 $cs_lang['showall'] = 'Show all';
 $cs_lang['new_infos'] = 'All messages from the ClanSphere Team';
 $cs_lang['del_install_file'] = 'Warning: It is strongly recommended to remove the "install.php" file';
+
+// Options
+$cs_lang['maintenance_access'] = 'maintenance Access';

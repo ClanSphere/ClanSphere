@@ -45,20 +45,27 @@ if(empty($_SESSION['users_id'])) {
   }
 
   if(isset($login['method'])) {
-    $login_db = cs_sql_select(__FILE__,'users','users_id, users_pwd, users_active, users_ajax',$login_where);
+    $table = 'users usr INNER JOIN {pre}_access acc ON acc.access_id = usr.access_id INNER JOIN {pre}_options opt ON ';
+    $table .= ' opt.options_mod = \'clansphere\' AND opt.options_name = \'maintenance_access\'';
+  	$login_db = cs_sql_select(__FILE__,$table,'users_id, users_pwd, users_active, users_ajax, access_clansphere, options_value',$login_where);
     if(!empty($login_db['users_pwd']) AND $login_db['users_pwd'] == $login['securepw']) { 
       if(empty($login_db['users_active']) || !empty($login_db['users_delete'])) {
         $login['error'] = 'closed'; 
       }
       else {
-        $login['mode'] = TRUE;
-
-        $_SESSION['users_id'] = $login_db['users_id'];
-        $_SESSION['users_ip'] = cs_getip();
-        $_SESSION['users_agent'] = $user_agent;
-        $_SESSION['users_pwd'] = $login['securepw'];
-        if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax']))
-          empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
+      	if ((empty($cs_main['public']) or $tpl_file != 'admin.htm') and $login_db['access_clansphere'] < $login_db['options_value']) {
+      		
+      	}
+      	else {
+	        $login['mode'] = TRUE;
+	        $_SESSION['users_id'] = $login_db['users_id'];
+    	    $_SESSION['users_ip'] = cs_getip();
+        	$_SESSION['users_agent'] = $user_agent;
+        	$_SESSION['users_pwd'] = $login['securepw'];
+        	if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax'])) {
+          		empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
+        	}
+      	}
       }
     }
     elseif(!empty($login_db['users_id'])) { 

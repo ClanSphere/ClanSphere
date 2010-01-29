@@ -38,6 +38,7 @@ if(isset($_POST['submit'])) {
   $save['def_parameters'] = $_POST['def_parameters'];
   $save['def_path'] = $_POST['def_path_mode'] == 'automatic' ? '' : $_POST['def_path'];
   $save['public'] = (int) $_POST['public'];
+  $save['maintenance_access'] = (int) $_POST['maintenance_access'];
   $save['def_timezone'] = (int) $_POST['def_timezone'];
   $save['def_dstime'] = $_POST['def_dstime'];
   $save['def_flood'] = $_POST['def_flood'];
@@ -125,6 +126,12 @@ else {
   $data['options']['time_auto'] = $data['options']['def_dstime'] == '0' ? 'selected="selected"' : '';
 
   $data['options']['ajax_reload'] = empty($data['options']['ajax_reload']) ? 10 : $data['options']['ajax_reload'];
+  
+  $data['options']['main_acc1_checked'] = $data['options']['maintenance_access'] == 1 ? 'selected' : '';
+  $data['options']['main_acc2_checked'] = $data['options']['maintenance_access'] == 2 ? 'selected' : '';
+  $data['options']['main_acc3_checked'] = $data['options']['maintenance_access'] == 3 ? 'selected' : '';
+  $data['options']['main_acc4_checked'] = $data['options']['maintenance_access'] == 4 ? 'selected' : '';
+  $data['options']['main_acc5_checked'] = $data['options']['maintenance_access'] == 5 ? 'selected' : '';
 
   echo cs_subtemplate(__FILE__,$data,'clansphere','options');
 }
