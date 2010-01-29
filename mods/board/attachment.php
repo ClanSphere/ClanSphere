@@ -15,7 +15,22 @@ chdir('mods/board/');
 
 if(!empty($_GET['id'])) {
     $id = $_GET['id'];
-    $cs_thread_file = cs_sql_select(__FILE__,'boardfiles','*',"boardfiles_id = '" . cs_sql_escape($id) . "'",0,0,1);
+    $tables = 'boardfiles fil INNER JOIN {pre}_threads thr ON thr.threads_id = fil.threads_id ';
+    $tables .= 'INNER JOIN {pre}_board brd ON brd.board_id = thr.board_id ';
+    $tables .= 'LEFT OUTER JOIN {pre}_boardpws bpw ON bpw.board_id = brd.board_id AND bpw.users_id = \'' . $account['users_id'] . '\'';
+    $where = 'brd.board_access <= \'' . $account['access_board'] . '\' fil.boardfiles_id = \'' . cs_sql_escape($id) . '\'';
+    $where = 'fil.boardfiles_id = \'' . cs_sql_escape($id) . '\'';
+    $cs_thread_file = cs_sql_select(__FILE__,$tables,'*',$where,0,0,1);
+    if(!empty($cs_thread_file)) {
+    	if(!empty($cs_thread_file['board_pwd'])) {
+    		if(empty($cs_thread_file['boardpws_id'])) {
+    			die;
+    		}
+    	}
+    }
+    else {
+    	die;
+    }
 }
 elseif (!empty($_GET['name'])) {
     $name = $_GET['name'];
