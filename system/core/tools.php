@@ -50,6 +50,17 @@ function cs_addons($modul,$action,$id,$modul_now) {
   return $var;
 }
 
+function cs_ajaxfiles_clear() {
+
+  if (!empty($_SESSION['ajaxuploads'])) {
+    foreach ($_SESSION['ajaxuploads'] as $name) {
+      if(file_exists('uploads/cache/' . $name))
+        unlink('uploads/cache/' . $name);
+    }
+    unset($_SESSION['ajaxuploads']);
+  }
+}
+
 function cs_captchacheck($input, $mini = 0) {
 
   if(!extension_loaded('gd'))
@@ -268,26 +279,6 @@ function cs_files() {
   return $files;
 }
 
-function cs_mimetype ($file) {
-
-  global $cs_main;
-  if (function_exists('mime_content_type'))
-    return mime_content_type($cs_main['def_path'] . '/' . $file);
-
-  if (function_exists('finfo_open') && $fp = finfo_open(FILEINFO_MIME)) {
-    $return = finfo_file($fp, $file);
-    finfo_close($fp);
-    return $return;
-  }
-
-  $zip_type = version_compare(phpversion(), '5.0', '>=') ? 'application/x-zip-compressed' : 'application/zip';
-  $mimes = array('jpg' => 'image/jpeg','jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
-    'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
-
-  $ending = strtolower(substr(strrchr($file, '.'),1));
-  return isset($mimes[$ending]) ? $mimes[$ending] : 'text/plain';
-}
-
 function cs_filesize($size, $float = 2) {
 
   $name = array(0 => 'Byte', 1 => 'KiB', 2 => 'MiB', 3 => 'GiB', 4 => 'TiB');
@@ -353,6 +344,26 @@ function cs_mail($email,$title,$message,$from = 0,$type = 0) {
 
   $result = mail($email,$subject,$message,$headers) ? TRUE : FALSE;
   return $result;
+}
+
+function cs_mimetype ($file) {
+
+  global $cs_main;
+  if (function_exists('mime_content_type'))
+    return mime_content_type($cs_main['def_path'] . '/' . $file);
+
+  if (function_exists('finfo_open') && $fp = finfo_open(FILEINFO_MIME)) {
+    $return = finfo_file($fp, $file);
+    finfo_close($fp);
+    return $return;
+  }
+
+  $zip_type = version_compare(phpversion(), '5.0', '>=') ? 'application/x-zip-compressed' : 'application/zip';
+  $mimes = array('jpg' => 'image/jpeg','jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
+    'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
+
+  $ending = strtolower(substr(strrchr($file, '.'),1));
+  return isset($mimes[$ending]) ? $mimes[$ending] : 'text/plain';
 }
 
 // Sends a private message
@@ -525,17 +536,6 @@ function cs_upload($mod,$filename,$upname, $ajaxclean = 1) {
   }
   if (!empty($ajaxclean)) cs_ajaxfiles_clear();
   return $return;
-}
-
-function cs_ajaxfiles_clear() {
-
-  if (!empty($_SESSION['ajaxuploads'])) {
-    foreach ($_SESSION['ajaxuploads'] as $name) {
-      if(file_exists('uploads/cache/' . $name))
-        unlink('uploads/cache/' . $name);
-    }
-    unset($_SESSION['ajaxuploads']);
-  }
 }
 
 function cs_url($mod, $action = 'list', $more = 0, $base = 0) {
