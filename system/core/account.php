@@ -45,27 +45,20 @@ if(empty($_SESSION['users_id'])) {
   }
 
   if(isset($login['method'])) {
-    $table = 'users usr INNER JOIN {pre}_access acc ON acc.access_id = usr.access_id INNER JOIN {pre}_options opt ON ';
-    $table .= ' opt.options_mod = \'clansphere\' AND opt.options_name = \'maintenance_access\'';
-  	$login_db = cs_sql_select(__FILE__,$table,'users_id, users_pwd, users_active, users_ajax, access_clansphere, options_value',$login_where);
+    $login_db = cs_sql_select(__FILE__,'users','users_id, users_pwd, users_active, users_ajax',$login_where);
     if(!empty($login_db['users_pwd']) AND $login_db['users_pwd'] == $login['securepw']) { 
       if(empty($login_db['users_active']) || !empty($login_db['users_delete'])) {
         $login['error'] = 'closed'; 
       }
       else {
-      	if ((empty($cs_main['public']) or $tpl_file != 'admin.htm') and $login_db['access_clansphere'] < $login_db['options_value']) {
-      		
-      	}
-      	else {
-	        $login['mode'] = TRUE;
-	        $_SESSION['users_id'] = $login_db['users_id'];
-    	    $_SESSION['users_ip'] = cs_getip();
-        	$_SESSION['users_agent'] = $user_agent;
-        	$_SESSION['users_pwd'] = $login['securepw'];
-        	if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax'])) {
-          		empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
-        	}
-      	}
+        $login['mode'] = TRUE;
+
+        $_SESSION['users_id'] = $login_db['users_id'];
+        $_SESSION['users_ip'] = cs_getip();
+        $_SESSION['users_agent'] = $user_agent;
+        $_SESSION['users_pwd'] = $login['securepw'];
+        if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax']))
+          empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
       }
     }
     elseif(!empty($login_db['users_id'])) { 
@@ -153,7 +146,10 @@ $gma = cs_sql_select(__FILE__,'access','*','access_id = "' . (int) $account['acc
 if(is_array($gma))
   $account = array_merge($account,$gma);
 
-if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['access_clansphere'] < 3) {
+if(empty($cs_main['maintenance_access']))
+  $cs_main['maintenance_access'] = 3;
+
+if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['access_clansphere'] < $cs_main['maintenance_access']) {
   setcookie('cs_userid', '', 1, $cookie['path'], $cookie['domain']);
   setcookie('cs_securepw', '', 1, $cookie['path'], $cookie['domain']);
   session_destroy();
