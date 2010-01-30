@@ -253,8 +253,8 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
     }
   }
-	$opt = cs_sql_select(__FILE__,'options','options_value','options_mod = \'clansphere\' AND options_name = \'maintenance_access\'');
-  if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < $opt['options_value'])
+
+  if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < $cs_main['maintenance_access'])
   {
     $cs_main['show'] = 'mods/users/login.php';
     $tpl_file = 'login.htm';
