@@ -83,8 +83,7 @@
       <td class="leftc">{icon:folder_public} {lang:maintenance_access}</td>
       <td class="leftb">
       	<select name="maintenance_access">
-      		<option value="1" {options:main_acc1_checked}>Level 1</option>
-      		<option value="2" {options:main_acc2_checked}>Level 2</option>
+      		<option value="0" {options:main_acc0_checked}>Level 0</option>
       		<option value="3" {options:main_acc3_checked}>Level 3</option>
       		<option value="4" {options:main_acc4_checked}>Level 4</option>
       		<option value="5" {options:main_acc5_checked}>Level 5</option>

@@ -127,11 +127,10 @@ else {
 
   $data['options']['ajax_reload'] = empty($data['options']['ajax_reload']) ? 10 : $data['options']['ajax_reload'];
   
-  $data['options']['main_acc1_checked'] = $data['options']['maintenance_access'] == 1 ? 'selected' : '';
-  $data['options']['main_acc2_checked'] = $data['options']['maintenance_access'] == 2 ? 'selected' : '';
-  $data['options']['main_acc3_checked'] = $data['options']['maintenance_access'] == 3 ? 'selected' : '';
-  $data['options']['main_acc4_checked'] = $data['options']['maintenance_access'] == 4 ? 'selected' : '';
-  $data['options']['main_acc5_checked'] = $data['options']['maintenance_access'] == 5 ? 'selected' : '';
+  $data['options']['main_acc0_checked'] = $data['options']['maintenance_access'] == 1 ? 'selected="selected"' : '';
+  $data['options']['main_acc3_checked'] = $data['options']['maintenance_access'] == 3 ? 'selected="selected"' : '';
+  $data['options']['main_acc4_checked'] = $data['options']['maintenance_access'] == 4 ? 'selected="selected"' : '';
+  $data['options']['main_acc5_checked'] = $data['options']['maintenance_access'] == 5 ? 'selected="selected"' : '';
 
   echo cs_subtemplate(__FILE__,$data,'clansphere','options');
 }
