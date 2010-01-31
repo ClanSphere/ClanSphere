@@ -11,14 +11,13 @@ else {
   # set access for uploads
   $_SESSION['access_ckeditor'] = empty($account['access_ckeditor']) ? 0 : $account['access_ckeditor'];
 
-  cs_scriptload('ckeditor', 'javascript', 'ckeditor.js');
-
   function cs_rte_html($name, $value = '') {
 
     # handle abcode html tag behavior
     $value = cs_abcode_inhtml($value, 'del');
 
     global $cs_main;
+    static $loaded = 0;
     $data = array('ckeditor');
     $data['ckeditor'] = cs_sql_option(__FILE__,'ckeditor');
     $data['ckeditor']['skin'] = empty($data['ckeditor']['skin']) ? 'kama' : $data['ckeditor']['skin'];
@@ -29,6 +28,7 @@ else {
 
       require_once $cs_main['def_path'] . '/mods/ckeditor/ckeditor.php';
 
+      $loaded = 1;
       $CKEditor = new CKEditor();
       $CKEditor->returnOutput = true;
       $CKEditor->basePath = $data['ckeditor']['path'] . '/mods/ckeditor/';
@@ -40,6 +40,11 @@ else {
       return $CKEditor->editor($name, $value);
     }
     else {
+
+      if(empty($loaded)) {
+        $loaded = 1;
+        cs_scriptload('ckeditor', 'javascript', 'ckeditor.js');
+      }
 
       $data['ckeditor']['name'] = $name;
       $data['ckeditor']['value'] = str_replace(array('"',"\n","\r"),array('\"','',''),$value);
