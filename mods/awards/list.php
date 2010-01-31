@@ -46,6 +46,7 @@ for($run=0; $run<$awards_loop; $run++) {
   $data['awards'][$run]['awards_game_name'] = cs_secure($cs_awards[$run]['games_name']);
   $data['awards'][$run]['squads_name'] = cs_secure($cs_awards[$run]['squads_name']);
   $data['awards'][$run]['awards_game_id'] = $cs_awards[$run]['games_id'];
+  $data['awards'][$run]['squads_id'] = $cs_awards[$run]['squads_id'];
   
   $cs_awards_place = $cs_awards[$run]['awards_rank'];
   if ($cs_awards_place == 1){
