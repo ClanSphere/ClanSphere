@@ -29,6 +29,13 @@
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript">
 
+/* used later on for funcnum */
+function getQueryValue(key,txt){
+	var r = new RegExp('(?:[\?&]|&amp;)'+key+'=([^&]+)','i');
+	var v = txt.match(r);
+	return (v && v.length > 1 ) ? v[1]:'';
+}
+
 var oListManager = new Object() ;
 
 oListManager.Clear = function()
@@ -89,7 +96,15 @@ function OpenFolder( folderPath )
 
 function OpenFile( fileUrl )
 {
-	window.top.opener.SetUrl( fileUrl ) ;
+	
+	/* handle ckeditor funcnum */
+	if( typeof(window.top.opener.CKEDITOR) != 'undefined' ){
+		var funcNum = getQueryValue('CKEditorFuncNum',window.top.location.search);
+		window.top.opener.CKEDITOR.tools.callFunction( funcNum, fileUrl );
+	}else{
+		window.top.opener.SetUrl( fileUrl );
+	}
+	
 	window.top.close() ;
 	window.top.opener.focus() ;
 }
