@@ -3,13 +3,9 @@
 <script type="text/javascript">
 CKEDITOR.replace( '{ckeditor:name}',
   {
-    baseHref         : '{ckeditor:path}/',
-    basePath         : '{ckeditor:path}/mods/ckeditor/',
-    defaultLanguage  : 'en',
-    height           : '{ckeditor:height}',
-    resize_minHeight : '{ckeditor:height}',
-    resize_minWidth  : '450',
-    skin             : '{ckeditor:skin}',
-    width            : '100%'
+    baseHref : '{ckeditor:path}/',
+    basePath : '{ckeditor:path}/mods/ckeditor/',
+    height   : '{ckeditor:height}',
+    skin     : '{ckeditor:skin}',
   });
 </script>
