@@ -12,8 +12,8 @@ else {
 
   $pathinf = pathinfo($_SERVER['PHP_SELF']);
   $dirname = $pathinf['dirname'] == '/' ? '/' : $pathinf['dirname'] . '/';
-  $dirname = str_replace('/mods/fckeditor/editor/filemanager/connectors/php/', '', $dirname);
-  $userdir = $dirname . '/uploads/fckeditor/';
+  $dirname = str_replace('/mods/ckeditor/filemanager/connectors/php/', '', $dirname);
+  $userdir = $dirname . '/uploads/ckeditor/';
   $enabled = true;
 }
 
