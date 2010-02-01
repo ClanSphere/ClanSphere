@@ -6,6 +6,6 @@ CKEDITOR.replace( '{ckeditor:name}',
     baseHref : '{ckeditor:path}/',
     basePath : '{ckeditor:path}/mods/ckeditor/',
     height   : '{ckeditor:height}',
-    skin     : '{ckeditor:skin}',
+    skin     : '{ckeditor:skin}'
   });
 </script>
