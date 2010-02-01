@@ -3,7 +3,7 @@
 
 session_start();
 
-if(empty($_SESSION['users_id']) OR empty($_SESSION['access_fckeditor']) OR $_SESSION['access_fckeditor'] < 3) {
+if(empty($_SESSION['users_id']) OR empty($_SESSION['access_ckeditor']) OR $_SESSION['access_ckeditor'] < 3) {
 
   $userdir = false;
   $enabled = false;
