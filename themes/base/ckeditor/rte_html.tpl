@@ -2,11 +2,13 @@
 
 <script type="text/javascript">
 CKEDITOR.replace( '{ckeditor:name}',
-    {
-        basePath : '{ckeditor:path}/mods/ckeditor/',
-        width : '100%',
-        height : '{ckeditor:height}px',
-        defaultLanguage : 'en',
-        skin : '{ckeditor:skin}'
-    });
+  {
+    basePath : '{ckeditor:path}/mods/ckeditor/',
+    width : '100%',
+    height : '{ckeditor:height}',
+    resize_minWidth : '450',
+    resize_minHeight : '400',
+    defaultLanguage : 'en',
+    skin : '{ckeditor:skin}'
+  });
 </script>
