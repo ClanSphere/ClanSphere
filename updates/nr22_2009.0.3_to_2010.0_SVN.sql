@@ -5,6 +5,7 @@ UPDATE {pre}_options SET options_value = 49 WHERE options_mod = 'clansphere' AND
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUE ('clansphere','maintenance_access','3');
 
 UPDATE {pre}_options SET options_mod = 'ckeditor' WHERE options_mod = 'fckeditor';
+UPDATE {pre}_options SET options_value = 'kama' WHERE options_mod = 'ckeditor' AND options_name = 'skin';
 
 ALTER TABLE {pre}_access ADD access_ckeditor int(2) NOT NULL default '0';
 
