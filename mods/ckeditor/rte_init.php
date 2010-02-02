@@ -24,9 +24,8 @@ else {
     $data['ckeditor']['skin'] = empty($data['ckeditor']['skin']) ? 'kama' : $data['ckeditor']['skin'];
     $data['ckeditor']['height'] = empty($data['ckeditor']['height']) ? '300' : $data['ckeditor']['height'];
     $data['ckeditor']['path'] = 'http://' . $_SERVER['HTTP_HOST'] . substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'));
-
     $data['ckeditor']['name'] = $name;
-    $data['ckeditor']['value'] = str_replace(array('"',"\n","\r"),array('\"','',''),$value);
+    $data['ckeditor']['value'] = htmlentities(str_replace(array("\n","\r"),array('',''),$value), ENT_QUOTES, $cs_main['charset']);
 
     return cs_subtemplate(__FILE__, $data, 'ckeditor', 'rte_html');
   }
