@@ -31,8 +31,8 @@ for($run=0; $run<$categories_loop; $run++) {
         $data['categories'][$run]['partner'][$run2]['partner_text'] = cs_secure($cs_partner[$run2]['partner_text'],1);
         $data['categories'][$run]['partner'][$run2]['partner_alt'] = cs_secure($cs_partner[$run2]['partner_alt']);
         $place ="uploads/partner/";
-        $data['categories'][$run]['partner'][$run2]['partner_limg'] = cs_html_link('http://'.$cs_partner[$run2]['partner_url'],cs_html_img($place.$cs_partner[$run2]['partner_limg']),0,0,0,$cs_partner[$run2]['partner_alt']);
-    } 
+        $data['categories'][$run]['partner'][$run2]['partner_limg'] = cs_html_link('http://'.$cs_partner[$run2]['partner_url'],cs_html_img($place.$cs_partner[$run2]['partner_limg'],0,0,0,$cs_partner[$run2]['partner_alt']));
+    }
 
 }
 echo cs_subtemplate(__FILE__,$data,'partner','list');

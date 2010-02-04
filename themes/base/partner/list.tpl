@@ -12,7 +12,7 @@
 	<tr>
 		<td class="leftb" colspan="2">
      <strong>{categories:categories_name}:</strong>
-     <hr style="width: 100%;" size="1" />
+     <hr style="width: 100%;" />
     </td>
 	</tr>
 	{loop:partner}
@@ -21,7 +21,7 @@
 		<td class="leftb"><strong>{partner:partner_name}</strong><br /><br />{partner:partner_text}</td>
 	</tr>
 	<tr>
-	  <td class="leftb" colspan="2"><hr style="width: 100%;" size="1" /></td>
+	  <td class="leftb" colspan="2"><hr style="width: 100%;" /></td>
 	</tr>
 	{stop:partner}
 </table>
