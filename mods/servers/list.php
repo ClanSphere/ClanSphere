@@ -60,6 +60,9 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 						if(file_exists($phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
 							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
 						}
+						elseif(file_exists($phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.png')) {
+							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.png';
+						}
 						else {
 							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/default.jpg';
 						}
