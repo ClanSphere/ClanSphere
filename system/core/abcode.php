@@ -9,7 +9,7 @@ function cs_abcode_inhtml($string, $mode = 0) {
     return $search;
   elseif($mode == 'del' AND !empty($search))
     $string = substr($string, 6, -7);
-  elseif($mode == 'add' AND empty($search))
+  elseif($mode == 'add' AND empty($search) AND $string != '')
     $string = '[html]' . $string . '[/html]';
   return $string;
 }
