@@ -11,8 +11,8 @@ CKEDITOR.editorConfig = function( config )
   config.resize_minWidth  = '450';
   config.width            = '100%';
 
-  config.enterMode = CKEDITOR.ENTER_BR;
-  config.shiftEnterMode = CKEDITOR.ENTER_P;
+  config.enterMode = CKEDITOR.ENTER_P;
+  config.shiftEnterMode = CKEDITOR.ENTER_BR;
 
   var _connector = CKEDITOR.basePath + 'filemanager/connectors/php/connector.php';
 
