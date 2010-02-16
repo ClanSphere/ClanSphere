@@ -3,6 +3,7 @@ UPDATE {pre}_options SET options_value = '2010-01-31' WHERE options_mod = 'clans
 UPDATE {pre}_options SET options_value = 49 WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','maintenance_access','3');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','last_id','1');
 
 UPDATE {pre}_options SET options_mod = 'ckeditor' WHERE options_mod = 'fckeditor';
 UPDATE {pre}_options SET options_value = 'ckeditor' WHERE options_mod = 'abcode' AND options_value = 'fckeditor';
