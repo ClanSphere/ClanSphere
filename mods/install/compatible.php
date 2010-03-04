@@ -4,6 +4,19 @@
 
 $cs_lang = cs_translate('install');
 
+function cs_phpconfigcheck ($name, $exception = 0) {
+
+  $value = strtolower(ini_get($name));
+  $array_false = array('0', 'off', 'false');
+  $array_true = array('1', 'on', 'true');
+  if(empty($value) OR in_array($value, $array_false))
+    return false;
+  elseif(!empty($exception) OR in_array($value, $array_true))
+    return true;
+  else
+    cs_error(__FILE__, 'PHP configuration of "' . $name . '" is not within expected values: "' . $value . '"');
+}
+
 $sql_files = cs_paths('system/database');
 unset($sql_files['pdo.php']);
 
@@ -46,41 +59,40 @@ $comparison = version_compare($data['av']['php'],$data['rc']['php'],'>=');
 if (empty($comparison)) { $data['av']['php'] = '<div style="color:#B91F1D">' . $data['av']['php'] . '</div>'; $check_recommended = 0;}
 
 $data['rc']['short_open_tag'] = $switch[0];
-$data['av']['short_open_tag'] = $switch[(int) ini_get('short_open_tag')];
+$data['av']['short_open_tag'] = $switch[(int) cs_phpconfigcheck('short_open_tag')];
 if ($data['av']['short_open_tag'] != $data['rc']['short_open_tag']) { $data['av']['short_open_tag'] = '<div style="color:#B91F1D">' . $data['av']['short_open_tag'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['register_globals'] = $switch[0];
-$data['av']['register_globals'] = $switch[(int) ini_get('register_globals')];
+$data['av']['register_globals'] = $switch[(int) cs_phpconfigcheck('register_globals')];
 if ($data['av']['register_globals'] != $data['rc']['register_globals']) { $data['av']['register_globals'] = '<div style="color:#B91F1D">' . $data['av']['register_globals'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['magic_quotes'] = $switch[0];
-$data['av']['magic_quotes'] = $switch[(int) ini_get('magic_quotes_gpc')];
+$data['av']['magic_quotes'] = $switch[(int) cs_phpconfigcheck('magic_quotes_gpc')];
 if ($data['av']['magic_quotes'] != $data['rc']['magic_quotes']) { $data['av']['magic_quotes'] = '<div style="color:#B91F1D">' . $data['av']['magic_quotes'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['safe_mode'] = $switch[0];
-$data['av']['safe_mode'] = $switch[(int) ini_get('safe_mode')];
+$data['av']['safe_mode'] = $switch[(int) cs_phpconfigcheck('safe_mode')];
 if ($data['av']['safe_mode'] != $data['rc']['safe_mode']) { $data['av']['safe_mode'] = '<div style="color:#B91F1D">' . $data['av']['safe_mode'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['trans_sid'] = $switch[0];
-$data['av']['trans_sid'] = $switch[(int) ini_get('session.use_trans_sid')];
+$data['av']['trans_sid'] = $switch[(int) cs_phpconfigcheck('session.use_trans_sid')];
 if ($data['av']['trans_sid'] != $data['rc']['trans_sid']) { $data['av']['trans_sid'] = '<div style="color:#B91F1D">' . $data['av']['trans_sid'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['basedir'] = $switch[1];
-$basedir = ini_get('open_basedir');
-$basedir = empty($basedir) ? 0 : 1;
+$basedir = cs_phpconfigcheck('open_basedir', true);
 $data['av']['basedir'] = $switch[$basedir];
 if ($data['av']['basedir'] != $data['rc']['basedir']) { $data['av']['basedir'] = '<div style="color:#B91F1D">' . $data['av']['basedir'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['file_uploads'] = $switch[1];
-$data['av']['file_uploads'] = $switch[(int) ini_get('file_uploads')];
+$data['av']['file_uploads'] = $switch[(int) cs_phpconfigcheck('file_uploads')];
 if ($data['av']['file_uploads'] != $data['rc']['file_uploads']) { $data['av']['file_uploads'] = '<div style="color:#B91F1D">' . $data['av']['file_uploads'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['fopen'] = $switch[1];
-$data['av']['fopen'] = $switch[(int) ini_get('allow_url_fopen')];
+$data['av']['fopen'] = $switch[(int) cs_phpconfigcheck('allow_url_fopen')];
 if ($data['av']['fopen'] != $data['rc']['fopen']) { $data['av']['fopen'] = '<div style="color:#B91F1D">' . $data['av']['fopen'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['allow_url_include'] = $switch[0];
-$data['av']['allow_url_include'] = $switch[(int) ini_get('allow_url_include')];
+$data['av']['allow_url_include'] = $switch[(int) cs_phpconfigcheck('allow_url_include')];
 if ($data['av']['allow_url_include'] != $data['rc']['allow_url_include']) { $data['av']['allow_url_include'] = '<div style="color:#B91F1D">' . $data['av']['allow_url_include'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['gd'] = $switch[1];
