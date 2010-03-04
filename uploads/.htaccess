@@ -1,0 +1,3 @@
+## Disallow PHP inside all upload directories
+
+php_flag engine 0 
