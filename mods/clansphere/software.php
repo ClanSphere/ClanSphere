@@ -4,16 +4,29 @@
 
 $cs_lang = cs_translate('clansphere');
 
-$display_errors = ini_get('display_errors');
-$file_uploads = ini_get('file_uploads');
-$short_open_tag = ini_get('short_open_tag');
-$register_globals = ini_get('register_globals');
-$magic_quotes = ini_get('magic_quotes_gpc');
-$safe_mode = ini_get('safe_mode');
-$trans_sid = ini_get('session.use_trans_sid');
-$basedir = ini_get('open_basedir');
-$url_fopen = ini_get('allow_url_fopen');
-$url_include = ini_get('allow_url_include');
+function cs_phpconfigcheck ($name, $exception = 0) {
+
+  $value = strtolower(ini_get($name));
+  $array_false = array('0', 'off', 'false');
+  $array_true = array('1', 'on', 'true');
+  if(empty($value) OR in_array($value, $array_false))
+    return false;
+  elseif(!empty($exception) OR in_array($value, $array_true))
+    return true;
+  else
+    cs_error(__FILE__, 'PHP configuration of "' . $name . '" is not within expected values: "' . $value . '"');
+}
+
+$display_errors = cs_phpconfigcheck('display_errors');
+$file_uploads = cs_phpconfigcheck('file_uploads');
+$short_open_tag = cs_phpconfigcheck('short_open_tag');
+$register_globals = cs_phpconfigcheck('register_globals');
+$magic_quotes = cs_phpconfigcheck('magic_quotes_gpc');
+$safe_mode = cs_phpconfigcheck('safe_mode');
+$trans_sid = cs_phpconfigcheck('session.use_trans_sid');
+$basedir = cs_phpconfigcheck('open_basedir', true);
+$url_fopen = cs_phpconfigcheck('allow_url_fopen');
+$url_include = cs_phpconfigcheck('allow_url_include');
 $limit['post_max_size'] = str_replace('M',' MiB', ini_get('post_max_size'));
 $limit['upload_max_filesize'] = str_replace('M',' MiB', ini_get('upload_max_filesize'));
 $limit['memory_limit'] = str_replace('M',' MiB', ini_get('memory_limit'));
