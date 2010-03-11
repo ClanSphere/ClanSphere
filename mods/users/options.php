@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id $
+// $Id$
 
 $cs_lang = cs_translate('users');
 
@@ -12,7 +12,7 @@ $files = cs_files();
 if(isset($_POST['submit'])) {
 
   require_once 'mods/clansphere/func_options.php';
-	$error = '';
+  $error = '';
   $save = array();
 
   $save['max_width'] = (int) $_POST['max_width'];
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])) {
 
 if(!isset($_POST['submit']) || !empty($error)) {
 
-	if (!empty($error)) $data['lang']['manage_options'] = $cs_lang['error_occured'] . $error;
+  if (!empty($error)) $data['lang']['manage_options'] = $cs_lang['error_occured'] . $error;
   
   $data['dropdown']['def_register'] = cs_html_select(1,'def_register');
   $sel = $data['options']['def_register'] == '0' ? 1 : 0;
