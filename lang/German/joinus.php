@@ -1,4 +1,6 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
 
 $cs_lang['mod_name']  = 'Joinus';
 $cs_lang['mod_text']  = 'Anfragen auf Mitgliedschaft';
@@ -34,6 +36,7 @@ $cs_lang['no_age'] = '- Das Geburtsdatum ist eine Pflichtangabe';
 $cs_lang['no_date'] = '- Das m&ouml;gliche Eintrittsdatum ist anzugeben';
 $cs_lang['nick_exists'] = '- Der Nick existiert bereits.';
 $cs_lang['email_exists'] = '- Die E-Mail-Adresse ist bereits vergeben.';
+$cs_lang['age_false'] = '- Der Geburtstag muss in der Vergangenheit liegen.';
 
 $cs_lang['new_join']  = 'Neue Anfrage';
 $cs_lang['new_joinus']  = 'Neue Join Us Anfrage. Squad: ';

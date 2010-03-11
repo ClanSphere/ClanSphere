@@ -75,6 +75,7 @@ $cs_lang['email_false'] = '- E-mail address is not valid';
 $cs_lang['no_access'] = '- Choose an access level';
 $cs_lang['access_denied'] = '- Chosen access level is higher than your own';
 $cs_lang['chars_in_nick'] = '- Not allowed Chars at Nick.';
+$cs_lang['age_false'] = '- Birthday must be in the past';
 
 $cs_lang['auto_pass']  = 'Password will be generated automatically';
 

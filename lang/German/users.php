@@ -76,6 +76,7 @@ $cs_lang['email_false'] = '- Die E-Mail-Adresse ist ung&uuml;ltig.';
 $cs_lang['no_access'] = '- Es muss ein Zugriff ausgew&auml;hlt werden.';
 $cs_lang['access_denied'] = '- Der Zugriff &uuml;bersteigt den eigenen.';
 $cs_lang['chars_in_nick'] = '- Es werden unerlaubte Zeichen im Nick benutzt.';
+$cs_lang['age_false'] = '- Der Geburtstag muss in der Vergangenheit liegen.';
 
 $cs_lang['auto_pass']  = '********';
 

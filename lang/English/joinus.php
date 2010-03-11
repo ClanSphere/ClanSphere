@@ -1,4 +1,6 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
 
 $cs_lang['mod_name']  = 'Join us';
 $cs_lang['mod_text']  = 'Join requests';
@@ -34,6 +36,7 @@ $cs_lang['no_age'] = '- Birthdate is required';
 $cs_lang['no_date'] = '- Join date must be given';
 $cs_lang['nick_exists'] = '- Nickname already exists';
 $cs_lang['email_exists'] = '- E-mail address already exists';
+$cs_lang['age_false'] = '- Birthday must be in the past';
 
 $cs_lang['new_join']  = 'New Request';
 $cs_lang['new_joinus']  = 'New Joinus Request. Squad: ';

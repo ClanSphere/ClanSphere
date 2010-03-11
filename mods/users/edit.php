@@ -129,6 +129,11 @@ if (isset($_POST['submit'])) {
     $error++;
     $errormsg .= $cs_lang['no_access'] . cs_html_br(1);
   }
+  
+  if ((int) $_POST['age_year'].$_POST['age_month'].$_POST['age_day'] > (int) cs_datereal('Ymd')) {
+    $error++;
+    $errormsg .= $cs_lang['age_false'] . cs_html_br(1);
+  }
 
 } else {
 

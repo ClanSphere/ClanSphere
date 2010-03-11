@@ -76,6 +76,11 @@ if(isset($_POST['submit'])) {
   }
   $country = $cs_user['users_country'];
   $cs_user['users_country'] = isset($cs_country[$country]) ? $cs_user['users_country'] : 'fam';
+  
+  if ((int) $_POST['age_year'].$_POST['age_month'].$_POST['age_day'] > (int) cs_datereal('Ymd')) {
+    $error++;
+    $errormsg .= $cs_lang['age_false'] . cs_html_br(1);
+  }
 }
 else {
   $cells = 'users_nick, users_name, users_surname, users_sex, users_age, users_height, users_country, users_postalcode, users_place, users_adress, users_icq, users_msn, users_skype, users_email, users_url, users_phone, users_mobile, users_info, users_hidden';

@@ -110,6 +110,11 @@ if(isset($_POST['submit'])) {
     $error++;
     $errormsg .= $cs_lang['nick_exists'] . cs_html_br(1);
   }
+  
+  if ((int) $_POST['age_year'].$_POST['age_month'].$_POST['age_day'] > (int) cs_datereal('Ymd')) {
+    $error++;
+    $errormsg .= $cs_lang['age_false'] . cs_html_br(1);
+  }
 }
 else {
   $data['join']['games_id'] = '';
@@ -169,7 +174,7 @@ if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit'])))
     $data['country'][$run]['full'] = $full;
     $run++;
   }
-	$data['join']['games_url'] = cs_html_img('uploads/games/0.gif',0,0,'id="game"');
+  $data['join']['games_url'] = cs_html_img('uploads/games/0.gif',0,0,'id="game"');
   $data['games'] = array();
   $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   for($run = 0; $run < count($cs_games); $run++) {
