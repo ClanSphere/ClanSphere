@@ -14,7 +14,7 @@ $data['if']['oldphp'] = false;
 /* Test if fsockopen active */
 if (fsockopen("udp://127.0.0.1", 1)) {
 	if (4.3 <= substr(phpversion(), 0, 3)) {
-		include_once 'functions.php';
+		include_once 'mods/servers/functions.php';
 
 		/* Get Server SQL-Data */
 		$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query';
