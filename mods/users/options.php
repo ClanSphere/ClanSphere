@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id$
+// $Id $
 
 $cs_lang = cs_translate('users');
 
@@ -19,13 +19,15 @@ if(isset($_POST['submit'])) {
   $save['max_height'] = (int) $_POST['max_height'];
   $save['max_size'] = (int) $_POST['max_size'];
   $save['min_letters'] = (int) $_POST['min_letters'];
+  $save['navbirth_max_users'] = (int) $_POST['navbirth_max_users'];
+  $save['nextbirth_max_users'] = (int) $_POST['nextbirth_max_users'];
+  $save['nextbirth_time_interval'] = (int) $_POST['nextbirth_time_interval']*86400;
   $save['def_register'] = (int) $_POST['def_register'];
   $save['register'] = $_POST['register'];
   $save['def_picture'] = !empty($_POST['def_picture_on']) ? 1 : 0;
   if(!empty($files['def_picture']['tmp_name'])) $save['def_picture'] =  1;
 
   cs_optionsave('users', $save);
-
   if (!empty($save['def_picture']) && empty($data['options']['def_picture']))
     cs_sql_update(__FILE__, 'users', array('users_picture'), array('nopicture.jpg'), 0, "users_picture = ''");
   elseif (empty($save['def_picture']) && !empty($data['options']['def_picture']))
@@ -47,6 +49,7 @@ if(isset($_POST['submit'])) {
 if(!isset($_POST['submit']) || !empty($error)) {
 
 	if (!empty($error)) $data['lang']['manage_options'] = $cs_lang['error_occured'] . $error;
+  
   $data['dropdown']['def_register'] = cs_html_select(1,'def_register');
   $sel = $data['options']['def_register'] == '0' ? 1 : 0;
   $data['dropdown']['def_register'] .= cs_html_option($cs_lang['reg_captcha'],0,$sel);
@@ -55,11 +58,24 @@ if(!isset($_POST['submit']) || !empty($error)) {
   $sel = $data['options']['def_register'] == '2' ? 1 : 0;
   $data['dropdown']['def_register'] .= cs_html_option($cs_lang['reg_captcha_mail'],2,$sel);
   $data['dropdown']['def_register'] .= cs_html_select(0);
-
+  
   $sel = empty($data['options']['register']) ? 1 : 0;
   $data['options']['register_off'] = cs_html_option($cs_lang['off'],0,$sel);
   $sel = !empty($data['options']['register']) ? 1 : 0;
   $data['options']['register_on'] =  cs_html_option($cs_lang['on'],1,$sel);
+  
+  #nextbirth_time_interval
+  $data['options']['nextbirth_time_interval'] /= 86400;
+  $data['dropdown']['nextbirth_time_interval'] = cs_html_select(1,'nextbirth_time_interval');
+  $sel = $data['options']['nextbirth_time_interval'] == '3' ? 1 : 0;
+  $data['dropdown']['nextbirth_time_interval'] .= cs_html_option(3,3,$sel);
+  $sel = $data['options']['nextbirth_time_interval'] == '7' ? 1 : 0;
+  $data['dropdown']['nextbirth_time_interval'] .= cs_html_option(7,7,$sel);
+  $sel = $data['options']['nextbirth_time_interval'] == '14' ? 1 : 0;
+  $data['dropdown']['nextbirth_time_interval'] .= cs_html_option(14,14,$sel);
+  $sel = $data['options']['nextbirth_time_interval'] == '30' ? 1 : 0;
+  $data['dropdown']['nextbirth_time_interval'] .= cs_html_option(30,30,$sel);
+  $data['dropdown']['nextbirth_time_interval'] .= cs_html_select(0);
 
   $data['selected']['def_picture'] = empty($data['options']['def_picture']) ? '' : 'checked="checked" ';
 

@@ -14,3 +14,6 @@ ALTER TABLE {pre}_access ADD access_ckeditor int(2) NOT NULL default '0';
 UPDATE {pre}_access SET access_ckeditor = access_fckeditor;
 
 ALTER TABLE {pre}_access DROP access_fckeditor;
+
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'nextbirth_max_users', '5'),
+('users', 'navbirth_max_users', '5'), ('users', 'nextbirth_time_interval', '1209600');

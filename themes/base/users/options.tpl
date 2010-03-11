@@ -27,6 +27,18 @@
   <td class="leftb"><input type="text" name="min_letters" value="{options:min_letters}" maxlength="10" size="4" /> {lang:letters}</td>
  </tr>
  <tr>
+  <td class="leftc">{icon:groupevent} {lang:navbirth_max_users}</td>
+  <td class="leftb"><input type="text" name="navbirth_max_users" value="{options:navbirth_max_users}" maxlength="10" size="4" /></td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:groupevent} {lang:nextbirth_max_users}</td>
+  <td class="leftb"><input type="text" name="nextbirth_max_users" value="{options:nextbirth_max_users}" maxlength="10" size="4" /></td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:ktimer} {lang:nextbirth_time_interval}</td>
+  <td class="leftb">{dropdown:nextbirth_time_interval} {lang:days}</td>
+ </tr>
+ <tr>
   <td class="leftc">{icon:completion} {lang:def_register}</td>
   <td class="leftb">{dropdown:def_register}</td>
  </tr>

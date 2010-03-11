@@ -214,6 +214,9 @@ $cs_lang['reg_captcha'] = 'Enter security code';
 $cs_lang['reg_captcha_mail'] = 'email and security code';
 $cs_lang['default_picture'] = 'Default picture';
 $cs_lang['other_one'] = 'Other one';
+$cs_lang['navbirth_max_users'] = 'Dataset in navbirth';
+$cs_lang['nextbirth_max_users'] = 'Dataset in nextbirth';
+$cs_lang['nextbirth_time_interval'] = 'Time interval of nextbirth';
 
 // SendPW
 $cs_lang['sendpw_info']  = 'Please indicate the e-mail address as it is in you user profile. ';
