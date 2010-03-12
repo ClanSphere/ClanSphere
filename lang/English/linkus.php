@@ -37,3 +37,9 @@ $cs_lang['abcode'] = 'ABcode:';
 $cs_lang['banner'] = 'Banner';
 $cs_lang['mass'] = 'Mass';
 $cs_lang['new_banner'] = 'New Link Us Banner';
+
+//options.php
+$cs_lang['head_options']  = 'Options';
+$cs_lang['body_options']  = 'Options Administration of a Module.';
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';

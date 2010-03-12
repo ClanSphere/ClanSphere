@@ -17,3 +17,6 @@ ALTER TABLE {pre}_access DROP access_fckeditor;
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'nextbirth_max_users', '5'),
 ('users', 'navbirth_max_users', '5'), ('users', 'nextbirth_time_interval', '1209600');
+
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_width','470'),
+('linkus','max_height','100'), ('linkus','max_size','256000');

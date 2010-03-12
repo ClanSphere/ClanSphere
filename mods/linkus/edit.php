@@ -6,13 +6,15 @@ $cs_lang = cs_translate('linkus');
 
 $files_gl = cs_files();
 
+$op_linkus = cs_sql_option(__FILE__,'linkus');
+
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
 
-$img_max['width'] = 470;
-$img_max['height'] = 100;
-$img_max['size'] = 256000;
+$img_max['width'] = $op_linkus['max_width'];
+$img_max['height'] = $op_linkus['max_height'];
+$img_max['size'] = $op_linkus['max_size'];
 $img_filetypes = array('image/png' => 'png','image/jpeg' => 'jpg','image/gif' => 'gif');
 
 $linkus_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
