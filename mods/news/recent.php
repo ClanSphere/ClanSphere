@@ -17,9 +17,20 @@ $abcode = explode(",", $cs_option['abcode']);
 
 $where = "nws.news_public = 1 AND cat.categories_access <= " . $account['access_news'];
 if(!empty($cat_id)) {
-  $where .= " AND cat.categories_id = '" . $cat_id . "'";
+	$cat_where = 'categories_subid = ' . $cat_id;
+	$categories = cs_sql_select(__FILE__,'categories','categories_id',$cat_where,0,0,0);
+	if(!empty($categories)) {
+		$where .= " AND (cat.categories_id = '" . $cat_id . "'";
+		for($a=0; $a<count($categories); $a++) {
+			$where .= " OR cat.categories_id = '" . $categories[$a]['categories_id'] . "'";
+		}
+		$where .= ")";
+	}
+	else {
+		$where .= " AND cat.categories_id = '" . $cat_id . "'";
+	}
+  
 }
-
 $start = empty($_REQUEST['start']) ? 0 : (int)$_REQUEST['start'];
 
 $data['cats']['dropdown'] = cs_categories_dropdown2('news', $cat_id,0,'where');
