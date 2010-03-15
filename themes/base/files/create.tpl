@@ -11,7 +11,7 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:kedit} {lang:name} *</td>
-      <td class="leftb" colspan="2"><input type="text" name="files_name" value="{file:files_name}" maxlength="200" size="50" /></td>
+      <td class="leftb" colspan="2"><input type="text" name="files_name" value="{file:files_name}" maxlength="80" size="50" /></td>
     </tr>
     <tr>
       <td class="leftc">{icon:package_editors} {lang:version} *</td>
