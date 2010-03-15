@@ -28,7 +28,7 @@
   <td class="headb">{lang:matchlist}</td>
  </tr>{loop:cups}
  <tr>
-  <td class="leftc"></td>
+  <td class="leftc">{cups:games_img}</td>
   <td class="leftc"><a href="{url:cups_view:id={cups:cups_id}}">{cups:cups_name}</a></td>
   <td class="leftc">{cups:start}</td>
   <td class="leftc">{cups:cups_joined} {lang:of} {cups:cups_teams}</td>

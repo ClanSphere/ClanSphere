@@ -29,7 +29,7 @@ $data['count']['all'] = cs_sql_count(__FILE__,'cups');
 $count_cups = count($data['cups']);
 
 for ($run = 0; $run < $count_cups; $run++) {
-  
+  $data['cups'][$run]['games_img'] = cs_html_img('uploads/games/' . $data['cups'][$run]['games_id'] . '.gif');
   $data['cups'][$run]['start'] = cs_date('unix',$data['cups'][$run]['cups_start'],1);
   
 }
