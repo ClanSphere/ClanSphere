@@ -7,6 +7,13 @@ ClanSphere 2010.0 >> xxxx-xx-xx
 ___________________________________________________________
 
 -> Added a medals list (duriel)
+-> Added mail-function to subscription (spongebob)
+-> Added cache-function to {board:navtop} (spongebob)
+-> Added {board:navtop2} (spongebob)
+-> Added verification for users birthdate (spongebob)
+-> Added date to {files:navlist} (spongebob)
+-> Changed: static linkus-vars now changeable (spongebob)
+-> Reworked {users:nextbirth} and {users:navbirth} (spongebob)
 
 
 ClanSphere 2009.0.3 >> 2009-12-06
