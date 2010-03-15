@@ -21,6 +21,7 @@ if(isset($_POST['submit'])) {
   $cs_user['users_readtime'] = $_POST['users_readtime'];
   $cs_user['users_homelimit'] = $_POST['users_homelimit'];
   $cs_user['users_invisible'] = $_POST['users_invisible'];
+  $cs_user['users_abomail'] = (int)$_POST['users_abomail'];
   $cs_user['users_ajax'] = isset($_POST['users_ajax']) ? $_POST['users_ajax'] : 0;
 
   settype($cs_user['users_limit'],'integer');
@@ -57,7 +58,7 @@ if(isset($_POST['submit'])) {
   settype($cs_user['users_timezone'],'integer');
 }
 else {
-  $cells = 'users_lang, users_timezone, users_limit, users_view, users_dstime, users_homelimit, users_readtime, users_invisible, users_ajax';
+  $cells = 'users_lang, users_timezone, users_limit, users_view, users_dstime, users_homelimit, users_readtime, users_invisible, users_abomail, users_ajax';
   $cs_user = cs_sql_select(__FILE__,'users',$cells,"users_id = '" . $account['users_id'] . "'");
   $cs_user['users_readtime'] = $cs_user['users_readtime'] / 86400;
 }
@@ -128,6 +129,12 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $mode[1]['users_invisible'] = 1;
   $mode[1]['name'] = $cs_lang['on'];
   $data['setup']['users_invisible'] = cs_dropdown('users_invisible','name',$mode,$cs_user['users_invisible'],0,1);
+  
+  $mode[0]['users_abomail'] = 0;
+  $mode[0]['name'] = $cs_lang['off'];
+  $mode[1]['users_abomail'] = 1;
+  $mode[1]['name'] = $cs_lang['on'];
+  $data['setup']['users_abomail'] = cs_dropdown('users_abomail','name',$mode,$cs_user['users_abomail'],0,1);
   
   $mode[0]['users_ajax'] = 0;
   $mode[0]['name'] = $cs_lang['off'];

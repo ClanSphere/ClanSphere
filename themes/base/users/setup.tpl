@@ -61,6 +61,10 @@
   		<td class="leftc">{icon:msn_invisible} {lang:invisible}</td>
   		<td class="leftb" colspan="2">{setup:users_invisible}</td>
  	</tr>
+ 	<tr>
+  		<td class="leftc">{icon:mail_generic} {lang:abomail}</td>
+  		<td class="leftb" colspan="2">{setup:users_abomail}</td>
+ 	</tr>
  	{if:ajax_allowed}
  	<tr>
   		<td class="leftc">{icon:agt_reload} {lang:ajax}</td>

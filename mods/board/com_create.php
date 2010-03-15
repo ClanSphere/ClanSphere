@@ -385,7 +385,52 @@ else {
 		$close_save = array($account['users_id']);
 	  cs_sql_update(__FILE__,'threads',$close_cells,$close_save,$data['thread']['threads_id']);
 	}
-
+  // START Abo-Mail
+  $from = "abonements abo LEFT JOIN {pre}_read red ON (abo.users_id = red.users_id AND abo.threads_id = red.threads_id)
+                               INNER JOIN {pre}_users usr ON abo.users_id = usr.users_id";
+  $where = "abo.threads_id = '".$data['thread']['threads_id']."'
+            AND abo.users_id != '".$account['users_id']."'
+            AND usr.users_delete != 1
+            AND usr.users_abomail = 1
+            AND (abo.last_mail IS NULL
+                 OR abo.last_mail <= red.read_since
+                 OR abo.last_mail <= (".cs_time()."-usr.users_readtime))";  // if no read_since
+  $abo_users = cs_sql_select(__FILE__,$from,'abo.abonements_id, usr.users_lang, usr.users_email',$where,0,0,0);
+  
+  $abo['count'] = count($abo_users);
+  $abo_lang[$account['users_lang']]['text'] = $cs_lang['abo_mail_text'];
+  $abo_lang[$account['users_lang']]['subject'] = $cs_lang['mod2'];
+  $pattern1 = '/abo_mail_text\'\] = \'(.*)\';/';
+  $pattern2 = '/mod2\'\]    = \'(.*)\';/';
+  $abo['new_time'] = array(cs_time());
+  $abo['update'] = array('last_mail');
+  
+  for($run=0; $run < $abo['count']; $run++) {
+    $abo['lang'] = empty($abo_users[$run]['users_lang']) ? 'English' : $abo_users[$run]['users_lang'];
+    if (empty($abo_lang[$abo['lang']]['text'])) {
+      $abo_lang[$abo['lang']] = cs_cache_load('lang_abo_'.$abo['lang']);
+      if ($abo_lang[$abo['lang']] === FALSE) {
+        // read lang-file and search for text- & subject-placeholder
+        $fp   = fopen($cs_main["def_path"]."/lang/".$abo['lang']."/board.php", "r");
+        $file_content = '';
+        while ( !feof($fp) ) {
+            $file_content .= fgets($fp, 4096);
+        }
+        preg_match($pattern1, $file_content, $match);
+          $abo_lang[$abo['lang']]['text'] = $match[1];
+        preg_match($pattern2, $file_content, $match);
+          $abo_lang[$abo['lang']]['subject'] = $match[1];
+        cs_cache_save('lang_abo_'.$abo['lang'], $abo_lang[$abo['lang']]);
+      }
+    }
+    
+    if (empty($abo_text[$abo['lang']]['text']))
+      $abo_text[$abo['lang']]['text'] = sprintf($abo_lang[$abo['lang']]['text'],$data['thread']['threads_headline'],$account['users_nick']);
+    
+    cs_mail($abo_users[$run]['users_email'],$abo_lang[$abo['lang']]['subject'],$abo_text[$abo['lang']]['text']);
+    cs_sql_update(__FILE__,'abonements',$abo['update'],$abo['new_time'],0,"abonements_id = '".$abo_users[$run]['abonements_id']."'");
+  }
+  // END Abo-Mail
 	$where = "comments_mod = 'board' AND comments_fid = '" . $fid . "'";
 	$count_com = cs_sql_count(__FILE__,'comments',$where);
 

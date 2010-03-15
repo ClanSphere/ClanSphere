@@ -20,3 +20,5 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('us
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_width','470'),
 ('linkus','max_height','100'), ('linkus','max_size','256000');
+
+ALTER TABLE {pre}_users ADD users_abomail INT(1) NOT NULL DEFAULT '1';
