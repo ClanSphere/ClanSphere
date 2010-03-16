@@ -14,10 +14,12 @@
     <td class="leftc" style="width:20%">{lang:name}</td>
     <td class="leftb">{members:icon} {members:name} </td>
   </tr>
+  {if:game}
   <tr>
-    <td class="leftc"> {lang:game}</td>
+    <td class="leftc">{lang:game}</td>
     <td class="leftb">{members:game}</td>
   </tr>
+  {stop:game}
   <tr>
     <td class="leftc"> {lang:members}</td>
     <td class="leftb">{loop:squad_members}{squad_members:members}{squad_members:dot}{stop:squad_members}</td>

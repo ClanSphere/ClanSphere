@@ -52,7 +52,9 @@ for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
     $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
     $id = 'id=' . $cs_game['games_id'];
     $data['members'][$sq_run]['game'] = ' ' . cs_link($cs_game['games_name'],'games','view',$id);
+    $data['members'][$sq_run]['if']['game'] = TRUE;
   } else {
+    $data['members'][$sq_run]['if']['game'] = FALSE;
     $data['members'][$sq_run]['game'] = ' - ';
     $data['members'][$sq_run]['icon'] = '';
   }
