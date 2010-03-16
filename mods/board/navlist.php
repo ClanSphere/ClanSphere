@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('board');
 
+require_once 'mods/board/functions.php';
+
 $cs_usertime = cs_sql_select(__FILE__,'users','users_readtime',"users_id = '" . $account["users_id"] . "'");
 $cs_readtime = cs_time() - $cs_usertime['users_readtime'];
 
@@ -31,7 +33,8 @@ else {
     $data['threads'][$run]['threads_date'] = cs_date('unix',$data['threads'][$run]['threads_last_time'],1);
     $data['threads'][$run]['threads_headline'] = cs_secure($data['threads'][$run]['threads_headline']);
     $data['threads'][$run]['threads_headline_short'] = strlen($data['threads'][$run]['threads_headline']) <= $figures ?
-      $data['threads'][$run]['threads_headline'] : substr($data['threads'][$run]['threads_headline'],0,$figures-2) . '..';
+    $data['threads'][$run]['threads_headline'] : substr($data['threads'][$run]['threads_headline'],0,$figures-2) . '..';
+    $data['threads'][$run]['new_posts'] = last_comment($data['threads'][$run]['threads_id'], $account["users_id"], $account['users_limit']);
   }
   echo cs_subtemplate(__FILE__,$data,'board','navlist');
 }

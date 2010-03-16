@@ -7,6 +7,7 @@ $cs_lang = cs_translate('board');
 $options = cs_sql_option(__FILE__, 'board');
 
 require 'mods/categories/functions.php';
+require_once 'mods/board/functions.php';
  
 $data = array();
 
@@ -134,9 +135,10 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 	      $board['of'] = '';
 	    }
 
-	    $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['board_last_threadid']);
+	    $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['board_last_threadid'] . last_comment($board['board_last_threadid'], $account["users_id"], $account['users_limit']));
 	    $board['user_url'] = cs_url('users', 'view', 'id=' . $board['board_last_userid']);
 	    $board['board_name'] = cs_secure($board['board_name']);
+		
 	    
 	    $data['categories'][$run_1]['board'][$run_2] = $board;
 	  }
