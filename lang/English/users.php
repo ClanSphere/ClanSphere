@@ -293,3 +293,7 @@ $cs_lang['pm_notification'] = 'Notify me via private message';
 
 // Abo
 $cs_lang['abomail']    = 'Subscriptionnotifications';
+
+//Fightus & Joinus
+$cs_lang['fightus']    = 'Fightus';
+$cs_lang['joinus']    = 'Join us';

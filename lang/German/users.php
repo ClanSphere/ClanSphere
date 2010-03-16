@@ -294,3 +294,7 @@ $cs_lang['pm_notification'] = 'Per privater Nachricht benachrichtigen';
 
 // Abo
 $cs_lang['abomail']    = 'Abonnementbenachrichtigungen';
+
+//Fightus & Joinus
+$cs_lang['fightus']    = 'Fightus';
+$cs_lang['joinus']    = 'Joinus';

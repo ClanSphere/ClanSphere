@@ -47,6 +47,8 @@ else {
 
   $data['if']['panel'] = ($cs_main['def_admin'] == 'separated' AND $cs_main['tpl_file'] != 'admin.htm') ? 1 : 0;
   $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
+  $data['if']['joinus'] = (empty($data['if']['panel']) AND $account['access_joinus'] >= 3) ? 1 : 0;
+  $data['if']['fightus'] = (empty($data['if']['panel']) AND $account['access_fightus'] >= 3) ? 1 : 0;
   $data['if']['admin'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) ? 1 : 0;
   $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
   $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
@@ -54,6 +56,14 @@ else {
   if(empty($data['if']['panel']) AND $account['access_contact'] >= 3) {
     $mail_count_new = cs_sql_count(__FILE__,'mail','mail_answered = 0');
     $data['contact']['new'] = $mail_count_new;
+  }
+
+  if(empty($data['if']['panel']) AND $account['access_joinus'] >= 3) {
+    $data['joinus']['joinus_count'] = cs_sql_count(__FILE__,'joinus');
+  }
+
+  if(empty($data['if']['panel']) AND $account['access_fightus'] >= 3) {
+    $data['fightus']['fightus_count'] = cs_sql_count(__FILE__,'fightus');
   }
 
   if(!empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) {
