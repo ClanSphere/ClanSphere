@@ -1,0 +1,28 @@
+<?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id: $ 
+
+$cs_lang['mod_name']   = 'Benachrichtigungen';
+$cs_lang['text'] = 'Das Benachrichtigungen Modul';
+
+$cs_lang['head_create'] = 'Hinzuf&uuml;gen';
+$cs_lang['body'] = 'Bitte alle Felder mit * ausf&uuml;llen.';
+
+$cs_lang['user'] = 'Benutzer';
+$cs_lang['access'] = 'Rechte';
+
+$cs_lang['no_user'] = '- Es muss ein Benutzer ausgew&auml;hlt werden.';
+$cs_lang['user_exists'] = '- Der ausgew&auml;hlte Benutzer ist bereits eingetragen.';
+
+$cs_lang['new'] = 'Neuer Benutzer';
+
+$cs_lang['gbook'] = 'G&auml;stebuch';
+$cs_lang['joinus'] = 'Joinus';
+$cs_lang['fightus'] = 'Fightus';
+
+$cs_lang['gbook_text'] = 'Es ist ein neuer Eintrag im G&auml;stebuch vorhanden.';
+$cs_lang['gbook_subject'] = 'Neuer G&auml;stebuch-Eintrag';
+$cs_lang['joinus_text'] = 'Es ist eine neue Joinus-Bewerbung vorhanden.';
+$cs_lang['joinus_subject'] = 'Neuer Joinus-Eintrag';
+$cs_lang['fightus_text'] = 'Es ist eine neue Fightus-Herausforderung vorhanden.';
+$cs_lang['fightus_subject'] = 'Neuer Fightus-Eintrag';

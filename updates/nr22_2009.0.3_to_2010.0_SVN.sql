@@ -22,3 +22,14 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('li
 ('linkus','max_height','100'), ('linkus','max_size','256000');
 
 ALTER TABLE {pre}_users ADD users_abomail INT(1) NOT NULL DEFAULT '1';
+
+ALTER TABLE {pre}_access ADD access_notifymods int(2) NOT NULL default '0';
+
+CREATE TABLE {pre}_notifymods (
+  notifymods_id {serial},
+  notifymods_user INT(8) NOT NULL,
+  notifymods_gbook INT(2) NOT NULL DEFAULT '0',
+  notifymods_joinus INT(2) NOT NULL DEFAULT '0',
+  notifymods_fightus INT(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (notifymods_id)
+) {engine};
