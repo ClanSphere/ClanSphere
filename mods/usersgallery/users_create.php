@@ -25,6 +25,13 @@ $cs_gallery['users_id'] = $account['users_id'];
 $gray = '0';
 $file_up = 0;
 
+if (file_exists('uploads/usersgallery/pics/' . $cs_gallery['users_id'] . '.' . $files_gl['picture']['name'])) {
+  $filename_tmp = ( str_split($files_gl['picture']['name'], strrpos($files_gl['picture']['name'], '.')) );
+  $filename_counter = 0;
+  while (file_exists('uploads/usersgallery/pics/' . $cs_gallery['users_id'] . '.' . $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1]))
+    $filename_counter++;
+  $files_gl['picture']['name'] = $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1];
+}
 
 if(isset($_POST['submit'])) {
   $file_up = isset($_POST['file_up']) ? $_POST['file_up'] : 0;
@@ -43,7 +50,7 @@ if(isset($_POST['submit'])) {
   $gray = isset($_POST['gray']) ? $_POST['gray'] : 0;
 
 
-	$error = '';
+  $error = '';
 
   $check_file = $files_gl['picture']['name'];
   $where = "usersgallery_name = '" . cs_sql_escape($check_file) . "'";
@@ -67,8 +74,7 @@ if(isset($_POST['submit'])) {
     $error .= $cs_lang['ext_error'] . cs_html_br(1);
   }
   elseif(!empty($files_gl['picture']['tmp_name'])) {
-  
-		$filename = $cs_gallery['users_id'] . '.' . $files_gl['picture']['name'];
+    $filename = $cs_gallery['users_id'] . '.' . $files_gl['picture']['name'];
     if($img_size[0]>$cs_option['width'])
       $error .= $cs_lang['too_wide'] . cs_html_br(1);
     if($img_size[1]>$cs_option['height'])
@@ -103,14 +109,14 @@ if(isset($_POST['submit'])) {
 }
 
 if(!isset($_POST['submit']))
-	$data['head']['body'] = $cs_lang['body_picture'];
+  $data['head']['body'] = $cs_lang['body_picture'];
 elseif(!empty($error) OR empty($files_gl['picture']['tmp_name']))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 
 if(!isset($_POST['submit']) OR !empty($error)) {
 
-	$data['data'] = $cs_gallery;
+  $data['data'] = $cs_gallery;
 
   $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';
@@ -153,9 +159,9 @@ if(!isset($_POST['submit']) OR !empty($error)) {
 }
 else {
 
-	$cells = array_keys($cs_gallery);
-	$save = array_values($cs_gallery);
- cs_sql_insert(__FILE__,'usersgallery',$cells,$save);
+  $cells = array_keys($cs_gallery);
+  $save = array_values($cs_gallery);
+  cs_sql_insert(__FILE__,'usersgallery',$cells,$save);
 
- cs_redirect($cs_lang['create_done'],'usersgallery','center');
+  cs_redirect($cs_lang['create_done'],'usersgallery','center');
 }
