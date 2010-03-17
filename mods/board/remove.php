@@ -61,6 +61,12 @@ if(isset($_POST['agree'])) {
     $query = "UPDATE {pre}_threads SET board_id='$cs_board_id' ";
     $query .= "WHERE board_id = '$board_id'";
     cs_sql_query(__FILE__,$query);
+
+    # Update board entry to get correct threads and comments count
+    include_once('mods/board/repair.php');
+    cs_board_threads($cs_board_id);
+    cs_board_last($cs_board_id);
+    cs_board_comments($cs_board_id);
   }
   cs_redirect($cs_lang['del_true'], 'board');
 }
@@ -96,6 +102,8 @@ if(!empty($board_form)) {
     $data['if']['threads_loop'] = false;
   }
   $data['remove']['id'] = $board_id;
+  $board_name = cs_sql_select(__FILE__,'board','board_name',"board_id = '" . $board_id . "'");
+  $data['remove']['name'] = cs_secure($board_name['board_name']);
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','remove');

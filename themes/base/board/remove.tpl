@@ -5,6 +5,7 @@
  </tr>
  <tr>
   <td class="leftb">{lang:body}
+    <br/>"{remove:name}"
     {if:threads_loop}
     <br /><br />
     <input type="checkbox" name="change_threads" value="1" {remove:checked} />
