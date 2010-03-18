@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id: $
+// $Id$
 
 $max = 5;
 $data = array();

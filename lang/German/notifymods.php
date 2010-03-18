@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id: $ 
+// $Id$ 
 
 $cs_lang['mod_name']   = 'Benachrichtigungen';
 $cs_lang['text'] = 'Das Benachrichtigungen Modul';
