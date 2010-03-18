@@ -46,7 +46,7 @@ if(isset($_POST['submit'])) {
   for($run=0; $run < $run_loop; $run++)
   {
       $num = $run+1;
-    if(!empty($_POST["files_mirror_url_$num"]) AND !empty($_POST["files_mirror_ext_$num"]))
+    if(!empty($_POST["files_mirror_url_$num"]) AND !empty($_POST["files_mirror_ext_$num"]) AND empty($_POST["files_mirror_remove_$num"]))
     {
       $data['file']["files_mirror"] = $data['file']["files_mirror"] . "\n-----\n" . $_POST["files_mirror_url_$num"] . "\n" . $_POST["files_mirror_name_$num"] . "\n". $_POST["files_mirror_ext_$num"] . "\n" . $_POST["files_access_$num"];
     }

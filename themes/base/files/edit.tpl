@@ -42,7 +42,8 @@
     </tr>
     {loop:mirrors}
     <tr>
-      <td class="leftc" rowspan="2">{icon:kedit} {lang:mirrors} {mirrors:run} *</td>
+      <td class="leftc" rowspan="2">{icon:kedit} {lang:mirrors} {mirrors:run} * <br/>
+        <input type="checkbox" name="files_mirror_remove_{mirrors:num}" value="1" /> {lang:remove}</td>
       <td class="leftb">{icon:html} {lang:url} *
         <input type="text" name="files_mirror_url_{mirrors:num}" value="{mirrors:url}" maxlength="200" size="30" /></td>
       <td class="leftb">{icon:kedit} {lang:name}
