@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id: $
+// $Id$
 
 $cs_lang = cs_translate('articles');
 $cs_option = cs_sql_option(__FILE__,'articles');
