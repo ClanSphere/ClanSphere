@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id: $
+// $Id$
 
 $axx_file['create']  = 3;
 $axx_file['edit']  = 4; 

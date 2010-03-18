@@ -26,6 +26,14 @@ $select .= ', fls.files_vote AS files_vote, fls.files_size AS files_size, fls.fi
 $where = "files_id = '" . $file_id . "'";
 $cs_file = cs_sql_select(__FILE__,$from,$select,$where);
 
+if(!empty($_POST['brokenlink'])) {
+  require_once('mods/notifymods/functions.php');
+  notifymods_mail('files', $account['users_id'], $cs_file['files_name']);
+  $data['if']['brokenlink'] = FALSE;
+}
+else
+  $data['if']['brokenlink'] = TRUE;
+
 $from = 'voted';
 $select = 'users_id, voted_answer';
 $where = "voted_fid = '" . $file_id . "' AND voted_mod = '" . $modul . "'"; 

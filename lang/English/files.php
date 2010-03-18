@@ -86,3 +86,6 @@ $cs_lang['current']  = 'Current';
 $cs_lang['nopic'] = 'No picture available';
 
 $cs_lang['remove_done']  = 'Picture successfully removed';
+
+$cs_lang['brokenlink'] = 'Broken link';
+$cs_lang['report'] = 'report';

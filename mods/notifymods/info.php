@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id: info.php 3009 2009-05-03 14:57:11Z hajo $
+// $Id$
 
 $cs_lang = cs_translate('notifymods');
 

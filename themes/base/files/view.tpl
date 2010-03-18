@@ -24,8 +24,17 @@
   </tr>
   <tr>
     <td class="leftc">{icon:download} {lang:downloaded}</td>
-    <td class="leftb" style="width:60%"><strong>{file:count}</strong> {lang:mal} </td>
+    <td class="leftb" style="width:60%"><strong>{file:count}</strong> {lang:mal}</td>
   </tr>
+  {if:brokenlink}
+  <tr>
+    <td class="leftc">{icon:db_status} {lang:brokenlink}</td>
+    <td class="leftb" style="width:60%"><form method="post" action="{url:files_view:where={file:id}}">
+      <input type="hidden" name="brokenlink" value="{file:id}" />
+      <input type="submit" name="submit" value="{lang:report}" />
+    </form></td>
+  </tr>
+  {stop:brokenlink}
   {if:vote}
   <tr>
   	<td class="leftc">{icon:Volume Manager} {lang:evaluation}</td>

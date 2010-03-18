@@ -33,3 +33,5 @@ CREATE TABLE {pre}_notifymods (
   notifymods_fightus INT(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (notifymods_id)
 ) {engine};
+
+ALTER TABLE {pre}_notifymods ADD notifymods_files INT(2) NOT NULL DEFAULT '0';

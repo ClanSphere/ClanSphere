@@ -1,6 +1,10 @@
 <?php
-function notifymods_mail($mod, $users_id=0) {
-  // $mail_text[$lang] = cs_translate('notifymods');
+// ClanSphere 2009 - www.clansphere.net
+// $Id$ 
+
+function notifymods_mail($mod, $users_id=0, $var=0) { // "$var" can be an array
+  // $mail_text[$lang] = cs_translate('notifymods');  // not implicitly necessary
+  $mails_send = 0;
   $from = "notifymods ntm INNER JOIN {pre}_users usr ON ntm.notifymods_user = usr.users_id";
   $where = "ntm.notifymods_user != '".$users_id."'
             AND usr.users_delete != 1
@@ -39,6 +43,11 @@ function notifymods_mail($mod, $users_id=0) {
         cs_cache_save('lang_notifymods_'.$lang, $mail_text[$lang]);
       }
     }
-    cs_mail($mail_user['users_email'],$mail_text[$lang][$mod.'_subject'],$mail_text[$lang][$mod.'_text']);
+    if (empty($text[$lang]))
+      $text[$lang] = empty($var) ? $mail_text[$lang][$mod.'_text'] : vsprintf($mail_text[$lang][$mod.'_text'], $var);
+    
+    if(cs_mail($mail_user['users_email'],$mail_text[$lang][$mod.'_subject'],$text[$lang]))
+      $mails_send++;
   }
+  return $mails_send;
 }

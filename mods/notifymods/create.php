@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id: $
+// $Id$
 
 $cs_lang = cs_translate('notifymods');
 
@@ -13,6 +13,7 @@ if(isset($_POST['submit'])) {
   $data['nm']['notifymods_gbook'] = isset($_POST['notifymods_gbook']) ? 1 : 0;
   $data['nm']['notifymods_joinus'] = isset($_POST['notifymods_joinus']) ? 1 : 0;
   $data['nm']['notifymods_fightus'] = isset($_POST['notifymods_fightus']) ? 1 : 0;
+  $data['nm']['notifymods_files'] = isset($_POST['notifymods_files']) ? 1 : 0;
 
   $users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
 
@@ -39,6 +40,7 @@ if(isset($_POST['submit'])) {
   $data['nm']['notifymods_gbook'] = 0;
   $data['nm']['notifymods_joinus'] = 0;
   $data['nm']['notifymods_fightus'] = 0;
+  $data['nm']['notifymods_files'] = 0;
   $users_nick = '';
 }
 
@@ -57,12 +59,13 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['nm']['notifymods_gbook'] = $data['nm']['notifymods_gbook'] == 1 ? 'checked="checked"' : '';
   $data['nm']['notifymods_joinus'] = $data['nm']['notifymods_joinus'] == 1 ? 'checked="checked"' : '';
   $data['nm']['notifymods_fightus'] = $data['nm']['notifymods_fightus'] == 1 ? 'checked="checked"' : '';
+  $data['nm']['notifymods_files'] = $data['nm']['notifymods_files'] == 1 ? 'checked="checked"' : '';
 
   $data['users']['nick'] = $users_nick;
 
 } else {
-  $sql_cells = array('notifymods_user', 'notifymods_gbook', 'notifymods_joinus', 'notifymods_fightus');
-  $sql_content = array($data['nm']['users_id'], $data['nm']['notifymods_gbook'], $data['nm']['notifymods_joinus'], $data['nm']['notifymods_fightus']);
+  $sql_cells = array('notifymods_user', 'notifymods_gbook', 'notifymods_joinus', 'notifymods_fightus', 'notifymods_files');
+  $sql_content = array($data['nm']['users_id'], $data['nm']['notifymods_gbook'], $data['nm']['notifymods_joinus'], $data['nm']['notifymods_fightus'], $data['nm']['notifymods_files']);
   cs_sql_insert(__FILE__,'notifymods',$sql_cells, $sql_content);
   
   cs_redirect($cs_lang['create_done'],'notifymods');
