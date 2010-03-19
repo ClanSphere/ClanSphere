@@ -236,6 +236,7 @@ $cs_lang['sort_num'] = 'Nr.';
 $cs_lang['using'] = 'Funktionen';
 $cs_lang['up'] = 'Hoch';
 $cs_lang['down'] = 'Runter';
+$cs_lang['delall'] = 'Sortierung zur&uuml;cksetzen';
 
 //thread.php
 $cs_lang['theme']  = 'Thema';

@@ -243,6 +243,8 @@ $cs_lang['sort_num'] = 'Nr.';
 $cs_lang['using'] = 'Functions';
 $cs_lang['up'] = 'Up';
 $cs_lang['down'] = 'Down';
+$cs_lang['delall'] = 'Reset sort';
+
 
 //thread.php
 $cs_lang['theme']    = 'Thread';
