@@ -36,6 +36,10 @@
         {lang:clip}</td>
     </tr>
     <tr>
+      <td class="leftc">{icon:favorites} {lang:order}</td>
+      <td class="leftb"><input type="text" name="abcode_order" value="" size="2" maxlength="2"/></td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="submit" name="submit" value="{lang:create}" />
               </td>

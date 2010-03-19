@@ -35,3 +35,6 @@ CREATE TABLE {pre}_notifymods (
 ) {engine};
 
 ALTER TABLE {pre}_notifymods ADD notifymods_files INT(2) NOT NULL DEFAULT '0';
+
+ALTER TABLE {pre}_abcode ADD abcode_order INT(2) NOT NULL DEFAULT '0';
+CREATE INDEX {pre}_abcode_abcode_order_index ON {pre}_abcode (abcode_order);

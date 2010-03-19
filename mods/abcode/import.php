@@ -1,4 +1,7 @@
 <?php
+// ClanSphere 2009 - www.clansphere.net
+// $Id$
+
 $cs_lang = cs_translate('abcode');
 $data = array();
 
@@ -12,6 +15,7 @@ if(isset($_POST['submit'])) {
   
   $_POST['pattern'] = array_unique($_POST['pattern']);
   
+  $counter = 0;
   for($run=0; $run<count($_POST['file']); $run++) {
     if(!empty($_POST['pattern'][$run])) {
       if(!empty($smileys)) {
@@ -32,6 +36,9 @@ if(isset($_POST['submit'])) {
     }
     $data['file'][$run]['name'] = $_POST['file'][$run];
     $data['file'][$run]['preview'] = cs_html_img('uploads/abcode/' . $_POST['file'][$run]);
+    $data['file'][$run]['order'] = empty($_POST['order_'.$counter]) ? 0 : (int) $_POST['order_'.$counter];
+    $data['file'][$run]['counter'] = $counter;
+    $counter++;
   }
 }
 
@@ -63,17 +70,21 @@ if(!isset($_POST['submit']) OR !empty($error)) {
     }
     $result = array_values(array_diff($all_smileys, $act_smileys));
     if(!empty($result)) {
+      $counter = 0;
       for($run=0; $run<count($result); $run++) {
         $data['file'][$run]['name'] = $result[$run];
         $data['file'][$run]['preview'] = cs_html_img('uploads/abcode/' . $result[$run]);
         $data['file'][$run]['run'] = empty($data['file'][$run]['run']) ? '' : $data['file'][$run]['run'];
+        $data['file'][$run]['order'] = empty($_POST['order_'.$counter]) ? '' : (int) $_POST['order_'.$counter];
+        $data['file'][$run]['counter'] = $counter;
+        $counter++;
       }
     }
 }
 else {
   for($run=0; $run<count($data['file']); $run++) {
-    $sql_cells = array('abcode_func','abcode_pattern','abcode_file');
-    $sql_saves = array('img',$data['file'][$run]['run'],$data['file'][$run]['name']);
+    $sql_cells = array('abcode_func', 'abcode_pattern', 'abcode_file', 'abcode_order');
+    $sql_saves = array('img', $data['file'][$run]['run'], $data['file'][$run]['name'], $data['file'][$run]['order']);
     cs_sql_insert(__FILE__,'abcode',$sql_cells,$sql_saves);
   }
   cs_redirect($cs_lang['changes_done'],'abcode','manage');

@@ -31,6 +31,7 @@
     <td class="headb">{sort:function} {lang:function}</td>
     <td class="headb">{sort:pattern} {lang:pattern}</td>
     <td class="headb">{lang:result}</td>
+    <td class="headb">{sort:order} {lang:order}</td>
     <td class="headb" colspan="2">{lang:options}</td>
   </tr>
   {loop:abcode}
@@ -38,6 +39,7 @@
     <td class="leftc">{abcode:function}</td>
     <td class="leftc">{abcode:pattern}</td>
     <td class="leftc">{abcode:result}</td>
+    <td class="leftc">{abcode:order}</td>
     <td class="leftc">{abcode:edit}</td>
     <td class="leftc">{abcode:remove}</td>
   </tr>

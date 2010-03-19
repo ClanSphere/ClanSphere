@@ -44,7 +44,7 @@ function cs_abcode_smileys($name) {
   $cs_lang = cs_translate('system/abcodes', 1);
 
   $select = 'abcode_pattern, abcode_file';
-  $loop_abc = cs_sql_select(__FILE__,'abcode',$select,"abcode_func = 'img'",0,0,10);
+  $loop_abc = cs_sql_select(__FILE__,'abcode',$select,"abcode_func = 'img'","abcode_order DESC, abcode_id",0,10);
   $abc_count = count($loop_abc);
 
   $data = array();

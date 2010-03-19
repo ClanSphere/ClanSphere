@@ -12,6 +12,7 @@ if(isset($_POST['submit'])) {
   $cs_abcode['abcode_func'] = $_POST['abcode_func'];
   $cs_abcode['abcode_pattern'] = $_POST['abcode_pattern'];
   $cs_abcode['abcode_result'] = $_POST['abcode_result'];
+  $cs_abcode['abcode_order'] = empty($_POST['abcode_order']) ? 0 : (int) $_POST['abcode_order'];
   
   $error = 0;
   $message = '';
@@ -84,6 +85,7 @@ else {
   $cs_abcode['abcode_pattern'] = '';
   $cs_abcode['abcode_result'] = '';
   $cs_abcode['abcode_file'] = '';
+  $cs_abcode['abcode_order'] = '';
 }
 
 if(!isset($_POST['submit'])) {

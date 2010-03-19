@@ -18,6 +18,7 @@ if(isset($cs_post['submit'])) {
   $cs_abcode['abcode_pattern'] = $cs_post['abcode_pattern'];
   $cs_abcode['abcode_result'] = $cs_post['abcode_result'];
   $cs_abcode['abcode_file'] = $cs_post['abcode_file'];
+  $cs_abcode['abcode_order'] = empty($cs_post['abcode_order']) ? 0 : (int) $cs_post['abcode_order'];
   
   $error = '';
 
@@ -80,7 +81,7 @@ if(isset($cs_post['submit'])) {
 else {
   $abcode_id = $cs_get['id'];
   
-  $cells = 'abcode_func, abcode_pattern, abcode_result, abcode_file';
+  $cells = 'abcode_func, abcode_pattern, abcode_result, abcode_file, abcode_order';
   $cs_abcode = cs_sql_select(__FILE__,'abcode',$cells,'abcode_id = \'' . $abcode_id . '\'');
 }
 
@@ -122,6 +123,7 @@ if(!empty($error) OR !isset($cs_post['submit'])) {
   
   $data['abcode']['clip'] = cs_abcode_clip($matches);
   $data['abcode']['file'] = $cs_abcode['abcode_file'];
+  $data['abcode']['order'] = $cs_abcode['abcode_order'];
   $data['abcode']['id'] = $abcode_id;
 
   echo cs_subtemplate(__FILE__,$data,'abcode','edit');

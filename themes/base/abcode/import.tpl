@@ -13,17 +13,19 @@
   <tr>
     <td class="headb">{lang:name}</td>
     <td class="headb">{lang:preview}</td>
-    <td class="headb">{lang:pattern}</td>
+    <td class="headb">{lang:pattern} *</td>
+    <td class="headb">{lang:order}</td>
   </tr>
   {loop:file}
   <tr>
     <td class="leftb"><input type="hidden" name="file[]" value="{file:name}" />{file:name}</td>
     <td class="leftb">{file:preview}</td>
     <td class="leftb"><input type="text" name="pattern[]" value="{file:run}" /></td>
+    <td class="leftb"><input type="text" name="order_{file:counter}" value="{file:order}" size="2" maxlength="2"/></td>
   </tr>
   {stop:file}
   <tr>
-    <td class="centerb" colspan="3"><input type="submit" name="submit" value="{lang:submit}" /></td>
+    <td class="centerb" colspan="4"><input type="submit" name="submit" value="{lang:submit}" /></td>
   </tr>
 </table>
 {stop:smileys}

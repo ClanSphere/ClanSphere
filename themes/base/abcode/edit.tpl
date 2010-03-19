@@ -40,6 +40,10 @@
         {abcode:clip}</td>
     </tr>
     <tr>
+      <td class="leftc">{icon:favorites} {lang:order}</td>
+      <td class="leftb"><input type="text" name="abcode_order" value="{abcode:order}" size="2" maxlength="2"/></td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="hidden" name="abcode_file" value="{abcode:file}" />
         <input type="hidden" name="id" value="{abcode:id}" />

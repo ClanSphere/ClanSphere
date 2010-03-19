@@ -32,6 +32,7 @@ $cs_lang['pic_current']  = 'Aktuelles Bild';
 $cs_lang['nopic'] = 'Kein Bild vorhanden';
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['filetypes'] = 'Dateiformate: ';
+$cs_lang['order'] = 'Top9';
 
 $cs_lang['too_big']  = '- Die Datei ist zu gro&szlig;';
 $cs_lang['too_wide']  = '- Das Bild ist zu breit';

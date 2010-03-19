@@ -12,7 +12,7 @@ $abcode_func = empty($_POST['type']) ? '' : (string)$_POST['type'];
 $start = empty($cs_get['start']) ? 0 : $cs_get['start'];
 if (!empty($cs_post['start'])) $start = $cs_post['start'];
 
-$sort = empty($cs_get['sort']) ? 4 : $cs_get['sort'];
+$sort = empty($cs_get['sort']) ? 5 : $cs_get['sort'];
 if (!empty($cs_post['sort'])) $sort = $cs_post['sort'];
 
 $where = empty($abcode_func) ? 0 : "abcode_func = '" . $abcode_func . "'";
@@ -21,6 +21,8 @@ $cs_sort[1] = 'abcode_func DESC';
 $cs_sort[2] = 'abcode_func ASC';
 $cs_sort[3] = 'abcode_pattern DESC';
 $cs_sort[4] = 'abcode_pattern ASC';
+$cs_sort[5] = 'abcode_order DESC';
+$cs_sort[6] = 'abcode_order ASC';
 $order = $cs_sort[$sort];
 $abcode_count = cs_sql_count(__FILE__,'abcode',$where);
 
@@ -32,13 +34,14 @@ $data['action']['form'] = cs_url('abcode','manage');
 
 $data['lang']['getmsg'] = cs_getmsg();
 
-$cells = 'abcode_func, abcode_pattern, abcode_id';
+$cells = 'abcode_func, abcode_pattern, abcode_id, abcode_order';
 $cs_abcode = cs_sql_select(__FILE__,'abcode',$cells,$where,$order,$start,$account['users_limit']);
 $abcode_loop = count($cs_abcode);
 
 
 $data['sort']['function'] = cs_sort('abcode','manage',$start,$abcode_func,1,$sort);
 $data['sort']['pattern'] = cs_sort('abcode','manage',$start,$abcode_func,3,$sort);
+$data['sort']['order'] = cs_sort('abcode','manage',$start,$abcode_func,5,$sort);
 
 if(empty($abcode_loop)) {
   $data['abcode'] = '';
@@ -55,6 +58,7 @@ for($run=0; $run<$abcode_loop; $run++) {
   
   $data['abcode'][$run]['pattern'] = cs_secure($cs_abcode[$run]['abcode_pattern']);
   $data['abcode'][$run]['result'] = cs_secure($cs_abcode[$run]['abcode_pattern'],1,1);
+  $data['abcode'][$run]['order'] = $cs_abcode[$run]['abcode_order'] == 0 ? '' : $cs_abcode[$run]['abcode_order'];
 
   $img_edit = cs_icon('edit',16,$cs_lang['edit']);
   $data['abcode'][$run]['edit'] = cs_link($img_edit,'abcode','edit','id=' . $cs_abcode[$run]['abcode_id'],0,$cs_lang['edit']);
