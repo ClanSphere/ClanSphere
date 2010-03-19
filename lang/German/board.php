@@ -276,6 +276,7 @@ $cs_lang['thread_closed1'] = 'Dieses Thema ist geschlossen.';
 $cs_lang['thread_closed2'] = 'Dieses Thema wurde von %s geschlossen.';
 $cs_lang['thread_only_read'] = 'Das Thema befindet sich in einem "Nur lesbarem Forum". Antworten sind nicht m&ouml;glich!';
 $cs_lang['cut_comment_as_thread'] = 'Kommentar als Thread auslagern';
+$cs_lang['thread_author'] = 'Thread-Ersteller';
 
 //thread_add.php
 $cs_lang['head']  = 'Thema Hinzuf&uuml;gen';

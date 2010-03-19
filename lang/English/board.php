@@ -257,6 +257,7 @@ $cs_lang['boardmod'] = 'Moderator';
 $cs_lang['quote'] = 'Quote';
 $cs_lang['thread_only_read'] = 'This thread exists in the "Only read board". Answers are`nt possible!';
 $cs_lang['cut_comment_as_thread'] = 'Convert comment to own thread';
+$cs_lang['thread_author'] = 'Thread-Author';
 
 //$cs_lang['veryimportant'] = ' "Very important" '; 
 $cs_lang['next_thread'] =  'Next thread';

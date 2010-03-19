@@ -109,6 +109,9 @@
   <tr>
     <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{comment:country}.png" style="height:11px;width:16px" alt="" /> {comment:users_link}<br />
       <br />
+      {if:thread_author}
+      {lang:thread_author} <br />
+      {stop:thread_author}
       {if:com_moderator}<img src="{page:path}mods/board/rankimg.php?width=100" alt="{comment:boardmod}" /><br />
       {comment:boardmod} <br />
       {stop:com_moderator}
