@@ -4,6 +4,12 @@
 
 $cs_lang = cs_translate('board');
 
+if (!empty($_GET['delall'])) {
+  cs_sql_update(__FILE__,'board',array('board_order'),array(0),0,'board_order != 0');
+  cs_sql_update(__FILE__,'categories',array('categories_order'),array(0),0,"categories_mod = 'board'");
+  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=sort');
+}
+
 if (!empty($_GET['board'])) {
   $board_cells = array('board_order');
   $board_save = empty($_GET['order']) ? array(0) : array(cs_sql_escape($_GET['order']));
@@ -19,6 +25,7 @@ if (!empty($_GET['cat'])) {
 }
 
 $data['link']['back'] = cs_url('board','manage');
+$data['link']['delall'] = cs_url('board','sort&amp;delall=1');
 
 $where = "categories_mod = 'board'";
 $select = 'categories_name, categories_id, categories_order';
@@ -30,19 +37,23 @@ if (!empty($cs_categories)) {
     $data['cat'][$run]['categories_name'] = cs_secure($cs_categories[$run]['categories_name']);
     $data['cat'][$run]['categories_order'] = cs_secure($cs_categories[$run]['categories_order']);
 
-    if ($cs_categories[$run]['categories_order'] != 0) {
-    $data['cat'][$run]['categories_up'] = cs_html_img('symbols/clansphere/down_arrow_active.png') . ' ' . cs_link($cs_lang['down'],'board','sort','cat=' . $cs_categories[$run]['categories_id'] . '&order=' . ($cs_categories[$run]['categories_order']-1));
+    if ($run > 0 AND ($cs_categories[$run]['categories_order'] - 1) >= $cs_categories[$run-1]['categories_order'])
+      $data['cat'][$run]['categories_up'] = cs_html_img('symbols/clansphere/up_arrow_active.png') . ' ' . cs_link($cs_lang['up'],'board','sort','cat=' . $cs_categories[$run]['categories_id'] . '&order=' . $cs_categories[$run-1]['categories_order']);
+    else if ($run > 0 AND $cs_categories[$run]['categories_order'] > 0) {
+      $cat_new = ($cs_categories[$run-1]['categories_order'] - 1) > 0 ? ($cs_categories[$run-1]['categories_order'] - 1) : 0;
+      $data['cat'][$run]['categories_up'] = cs_html_img('symbols/clansphere/up_arrow_active.png') . ' ' . cs_link($cs_lang['up'],'board','sort','cat=' . $cs_categories[$run]['categories_id'] . '&order=' . $cat_new);
     }
-    else {
+    else
       $data['cat'][$run]['categories_up'] = '';
+    
+    if ($run < ($loop_categories-1) AND ($cs_categories[$run]['categories_order'] + 1) <= $cs_categories[$run+1]['categories_order'])
+      $data['cat'][$run]['categories_down'] = cs_html_img('symbols/clansphere/down_arrow_active.png') . ' ' . cs_link($cs_lang['down'],'board','sort','cat=' . $cs_categories[$run]['categories_id'] . '&order=' . $cs_categories[$run+1]['categories_order']);
+    else if ($run < ($loop_categories-1) AND $cs_categories[$run]['categories_order'] < 9999) {
+      $cat_new = ($cs_categories[$run+1]['categories_order'] + 1) < 9999 ? ($cs_categories[$run+1]['categories_order'] + 1) : 9999;
+      $data['cat'][$run]['categories_down'] = cs_html_img('symbols/clansphere/down_arrow_active.png') . ' ' . cs_link($cs_lang['down'],'board','sort','cat=' . $cs_categories[$run]['categories_id'] . '&order=' . $cat_new);
     }
-
-    if ($cs_categories[$run]['categories_order'] <= 9999) {
-      $data['cat'][$run]['categories_down'] = cs_html_img('symbols/clansphere/up_arrow_active.png') . ' ' . cs_link($cs_lang['up'],'board','sort','cat=' . $cs_categories[$run]['categories_id'] . '&order=' . ($cs_categories[$run]['categories_order']+1));
-    }
-    else {
+    else
       $data['cat'][$run]['categories_down'] = '';
-    }
 
     $loop_board = 0;
     $select = 'board_id, board_name, board_order';
@@ -51,22 +62,28 @@ if (!empty($cs_categories)) {
     $loop_board = count($cs_board);
     
     if (!empty($cs_board)) {
-      for($board_run = 0; $board_run < $loop_board; $board_run++) {   
-      $data['cat'][$run]['board'][$board_run]['board_name'] = cs_secure($cs_board[$board_run]['board_name']);
-      $data['cat'][$run]['board'][$board_run]['board_order'] = cs_secure($cs_board[$board_run]['board_order']);
+      for($board_run = 0; $board_run < $loop_board; $board_run++) {
+        $data['cat'][$run]['board'][$board_run]['board_name'] = cs_secure($cs_board[$board_run]['board_name']);
+        $data['cat'][$run]['board'][$board_run]['board_order'] = cs_secure($cs_board[$board_run]['board_order']);
 
-      if ($cs_board[$board_run]['board_order'] != 0)
-        $data['cat'][$run]['board'][$board_run]['board_up'] = cs_html_img('symbols/clansphere/down_arrow.png') . ' ' . 
-        cs_link($cs_lang['down'],'board','sort','board='.$cs_board[$board_run]['board_id'] . '&order=' . ($cs_board[$board_run]['board_order']-1)); 
-      else
-        $data['cat'][$run]['board'][$board_run]['board_up'] = '';
+        if ($board_run > 0 AND ($cs_board[$board_run]['board_order'] - 1) >= $cs_board[$board_run-1]['board_order'])
+          $data['cat'][$run]['board'][$board_run]['board_up'] = cs_html_img('symbols/clansphere/up_arrow.png') . ' ' . cs_link($cs_lang['up'],'board','sort','board=' . $cs_board[$board_run]['board_id'] . '&order=' . $cs_board[$board_run-1]['board_order']);
+        else if ($board_run > 0 AND $cs_board[$board_run]['board_order'] > 0) {
+          $board_new = ($cs_board[$board_run-1]['board_order'] - 1) > 0 ? ($cs_board[$board_run-1]['board_order'] - 1) : 0;
+          $data['cat'][$run]['board'][$board_run]['board_up'] = cs_html_img('symbols/clansphere/up_arrow.png') . ' ' . cs_link($cs_lang['up'],'board','sort','board='.$cs_board[$board_run]['board_id'] . '&order=' . $board_new); 
+        }
+        else
+          $data['cat'][$run]['board'][$board_run]['board_up'] = '';
 
-      if ($cs_board[$board_run]['board_order'] <= 9999)
-        $data['cat'][$run]['board'][$board_run]['board_down'] = cs_html_img('symbols/clansphere/up_arrow.png') . ' ' . 
-        cs_link($cs_lang['up'],'board','sort','board=' . $cs_board[$board_run]['board_id'] . '&order=' . ($cs_board[$board_run]['board_order']+1));
-      else
-        $data['cat'][$run]['board'][$board_run]['board_down'] = ''; 
-      }   
+        if ($board_run < ($loop_board-1) AND ($cs_board[$board_run]['board_order'] + 1) <= $cs_board[$board_run+1]['board_order'])
+          $data['cat'][$run]['board'][$board_run]['board_down'] = cs_html_img('symbols/clansphere/down_arrow.png') . ' ' . cs_link($cs_lang['down'],'board','sort','board=' . $cs_board[$board_run]['board_id'] . '&order=' . $cs_board[$board_run+1]['board_order']);
+        else if ($board_run < ($loop_board-1) AND $cs_board[$board_run]['board_order'] < 9999) {
+          $board_new = ($cs_board[$board_run+1]['board_order'] + 1) < 9999 ? ($cs_board[$board_run+1]['board_order'] + 1) : 9999;
+          $data['cat'][$run]['board'][$board_run]['board_down'] = cs_html_img('symbols/clansphere/down_arrow.png') . ' ' . cs_link($cs_lang['down'],'board','sort','board=' . $cs_board[$board_run]['board_id'] . '&order=' . $board_new);
+        }
+        else
+          $data['cat'][$run]['board'][$board_run]['board_down'] = '';
+      }  
     }
     else {
       $data['cat'][$run]['board'] = array();

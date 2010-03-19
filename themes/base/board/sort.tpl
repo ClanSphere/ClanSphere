@@ -1,9 +1,10 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod_name} - {lang:sort}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:sort}</td>
   </tr>
   <tr>
     <td class="leftb"><a href="{link:back}">{lang:back}</a> </td>
+    <td class="rightb"><a href="{link:delall}">{lang:delall}</a> </td>
   </tr>
 </table>
 <br />
