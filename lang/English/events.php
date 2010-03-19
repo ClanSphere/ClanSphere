@@ -26,9 +26,9 @@ $cs_lang['pictures'] = 'Pictures';
 $cs_lang['calweek']  = 'W';
 
 $cs_lang['Mon']  = 'M';
-$cs_lang['Tue']  = 'D';
-$cs_lang['Wed']  = 'M';
-$cs_lang['Thu']  = 'D';
+$cs_lang['Tue']  = 'T';
+$cs_lang['Wed']  = 'W';
+$cs_lang['Thu']  = 'T';
 $cs_lang['Fri']  = 'F';
 $cs_lang['Sat']  = 'S';
 $cs_lang['Sun']  = 'S';
