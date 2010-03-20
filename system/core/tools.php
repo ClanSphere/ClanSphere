@@ -348,7 +348,8 @@ function cs_mail($email,$title,$message,$from = 0,$type = 0) {
   }
   @ini_set('sendmail_from', $from);
 
-  $subject = '=?' . $cs_main['charset'] . '?B?' . base64_encode($subject) . '=?=';
+  $subject = '=?' . $cs_main['charset'] . '?B?' . base64_encode($subject) . '?=';
+  $message = '=?' . $cs_main['charset'] . '?B?' . base64_encode($message) . '?=';
 
   $result = mail($email,$subject,$message,$headers) ? TRUE : FALSE;
   return $result;
