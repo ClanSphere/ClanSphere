@@ -46,12 +46,19 @@ if ($categories['categories_access'] > $account['access_categories']) {
   $data['if']['catimg'] = empty($categories['categories_picture']) ? false : true;
   $data['cat']['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$categories['categories_picture'];
 
+  $with_html = cs_abcode_inhtml($cs_articles['articles_text']);
+  $text = trim(cs_abcode_inhtml($cs_articles['articles_text'], 'del'));
+  if(substr($text,0,3) == '<p>' AND substr($text,-4,4) == '</p>')
+    $text = substr($text, 3, -4);
 
-  $text = explode("[pagebreak]", $cs_articles['articles_text']);
+  $text = explode("[pagebreak]", $text);
   $count_text = count($text);
   $page_now = $page - 1;
 
-  $secure_text = cs_secure($text[$page_now],1,1,1,1); 
+  if(!empty($with_html))
+    $text[$page_now] = cs_abcode_inhtml($text[$page_now], 'add');
+
+    $secure_text = cs_secure($text[$page_now],1,1,1,1); 
 
   include_once('mods/articles/cutpages.php');
 
@@ -99,8 +106,8 @@ if ($categories['categories_access'] > $account['access_categories']) {
   if (empty($cs_articles['articles_fornext'])) {
     echo cs_subtemplate(__FILE__,$data2,'articles','navpages');
   }
+
   // comments
-  
   if(!empty($cs_articles)) {
   include_once('mods/comments/functions.php');
   $where1 = "comments_mod = 'articles' AND comments_fid = '" . $cs_articles_id . "'";
@@ -111,6 +118,5 @@ if ($categories['categories_access'] > $account['access_categories']) {
     echo cs_comments_view($cs_articles_id,'articles','view',$count_com);
   }
   echo cs_comments_add($cs_articles_id,'articles',$cs_articles['articles_com']);
-  
   }
 }
