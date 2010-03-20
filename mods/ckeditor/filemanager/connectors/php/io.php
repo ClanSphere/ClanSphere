@@ -285,10 +285,17 @@ function SendUploadResults( $errorNumber, $fileUrl = '', $fileName = '', $custom
 
   // Check for CKEditor
   $funcnum  = $_GET['CKEditorFuncNum'];
+  $filePlace = '';
 
   if ($errorNumber && $errorNumber != 201) {
-    $fileUrl = "";
-    $fileName = "";
+    $sendMsg = $errorNumber . ' - ' . strtr( $customMsg, $rpl );
+    $fileUrl = '';
+    $fileName = '';
+    $filePlace = '';
+  }
+  else {
+    $sendMsg = '';
+    $filePlace = strtr( $fileUrl, $rpl ) . '/' . strtr( $fileName, $rpl );
   }
 
   $rpl = array( '\\' => '\\\\', '"' => '\\"' );
@@ -303,11 +310,10 @@ EOF;
 
     echo 'window.parent.OnUploadCompleted(' . $errorNumber . ',"' . strtr( $fileUrl, $rpl ) . '","' . strtr( $fileName, $rpl ) . '", "' . strtr( $customMsg, $rpl ) . '") ;' ;
     echo '</script>' ;
-    exit ;
   }
   else {
     // CKEditor
-    echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" . $funcnum . ", '" . strtr( $fileUrl, $rpl ) . '/' . strtr( $fileName, $rpl ) . "', '" . $errorNumber . ' - ' . strtr( $customMsg, $rpl ) . "');</script>";
+    echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" . $funcnum . ", '" . $filePlace . "', '" . $sendMsg . "');</script>";
   }
 }
 
