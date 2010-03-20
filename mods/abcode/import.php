@@ -87,6 +87,10 @@ else {
     $sql_saves = array('img', $data['file'][$run]['run'], $data['file'][$run]['name'], $data['file'][$run]['order']);
     cs_sql_insert(__FILE__,'abcode',$sql_cells,$sql_saves);
   }
+
+  cs_unlink('cache', 'abcode_smileys.tmp');
+  cs_unlink('cache', 'abcode_content.tmp');
+
   cs_redirect($cs_lang['changes_done'],'abcode','manage');
 }
 
@@ -98,4 +102,5 @@ else {
   $data['if']['no_smileys'] = false;
   $data['if']['smileys'] = true;	
 }
+
 echo cs_subtemplate(__FILE__,$data,'abcode','import');

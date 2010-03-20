@@ -134,6 +134,10 @@ else {
     $abcode2_cells = array_keys($cs_abcode2);
     $abcode2_save = array_values($cs_abcode2);      
     cs_sql_update(__FILE__,'abcode',$abcode2_cells,$abcode2_save,$getid['abcode_id']);
-  }  
+  }
+
+  cs_unlink('cache', 'abcode_smileys.tmp');
+  cs_unlink('cache', 'abcode_content.tmp');
+
   cs_redirect($cs_lang['create_done'],'abcode');
 }
