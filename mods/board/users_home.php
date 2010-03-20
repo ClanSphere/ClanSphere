@@ -28,4 +28,4 @@ if (!empty($data['threads'])) {
   }
   echo cs_subtemplate(__FILE__,$data,'board','users_home');
 }
-else echo "Es gibt leider noch nix neues auf unserer Seite";
+else echo "Der alte Text hier war zu langweilig *troll* :)";
