@@ -21,7 +21,7 @@ else {
 
 /*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
- * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ * Copyright (C) 2003-2010 Frederico Caldeira Knabben
  *
  * == BEGIN LICENSE ==
  *
@@ -166,3 +166,5 @@ $Config['FileTypesPath']['Media']		= $Config['UserFilesPath'] . 'media/' ;
 $Config['FileTypesAbsolutePath']['Media']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'media/' ;
 $Config['QuickUploadPath']['Media']		= $Config['FileTypesPath']['Media'] ;
 $Config['QuickUploadAbsolutePath']['Media']= $Config['FileTypesAbsolutePath']['Media'] ;
+
+?>
