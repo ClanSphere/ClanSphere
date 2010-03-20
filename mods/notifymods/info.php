@@ -11,7 +11,7 @@ $mod_info['creator']  = 'Spongebob';
 $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['text'];
-$mod_info['icon']     = 'agt_family';
+$mod_info['icon']     = 'folder_outbox';
 $mod_info['show']    = array('clansphere/admin' => 3);
 $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
