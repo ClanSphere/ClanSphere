@@ -14,7 +14,7 @@ function manageData (&$array, $key) {
     $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
 }
 
-$comments = cs_sql_select (__FILE__, 'comments', 'COUNT(*) AS important, users_id', "comments_mod = 'board' GROUP BY (users_id)", 'important DESC', 0, 0);
+$comments = cs_sql_select (__FILE__, 'comments GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
 $threads = cs_sql_select (__FILE__, 'threads GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
 
 global $array_result;
