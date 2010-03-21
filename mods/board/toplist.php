@@ -14,7 +14,7 @@ function manageData (&$array, $key) {
     $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
 }
 
-$comments = cs_sql_select (__FILE__, 'comments GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
+$comments = cs_sql_select (__FILE__, 'comments', 'COUNT(*) AS important, users_id', "comments_mod = 'board' GROUP BY (users_id)", 'important DESC', 0, 0);
 $threads = cs_sql_select (__FILE__, 'threads GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
 
 global $array_result;
@@ -56,7 +56,7 @@ if(!empty($toplist)) {
 
         if ($users_id != 0) //dont list comments of visitors
         {
-            $data['toplist'][$i]['user'] = cs_user ($users_id, $users[$users_id]['users_nick'], $users[$users_id]['users_active'], $users[$users_id]['users_delete']);
+            $data['toplist'][$i]['user'] = empty($users[$users_id]) ? '' : cs_user ($users_id, $users[$users_id]['users_nick'], $users[$users_id]['users_active'], $users[$users_id]['users_delete']);
             $data['toplist'][$i]['comments'] = $comments;
             $data['toplist'][$i]['number'] = $i + $start + 1;
             $data['toplist'][$i]['rank'] = cs_secure(getRankTitle($comments, $cs_ranks));

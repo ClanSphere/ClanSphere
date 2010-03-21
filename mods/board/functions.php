@@ -69,7 +69,7 @@ function getUserPlace($cs_lang, $place = "")
 
 function getUserPosts($id)
 {
-	$cnt = cs_sql_count(__FILE__,'comments','users_id = \'' . $id . '\'');
+	$cnt = cs_sql_count(__FILE__,'comments','users_id = \'' . $id . '\' AND comments_mod = \'board\'');
 	$topics = cs_sql_count(__FILE__,'threads','users_id = \'' . $id . '\'');
 	return $cnt + $topics;
 }
