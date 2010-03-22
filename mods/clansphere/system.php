@@ -57,6 +57,11 @@ $sys_array = array(
     'icon' => 'krdc',
     'name' => $cs_lang['support'],
     'show' => array('clansphere/system' => 4)
+  ), $cs_lang['charset'] => array(
+    'file' => 'charset',
+    'icon' => 'txt',
+    'name' => $cs_lang['charset'],
+    'show' => array('clansphere/system' => 5)
   )
 );
 
