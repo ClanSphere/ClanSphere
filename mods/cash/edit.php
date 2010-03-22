@@ -54,9 +54,6 @@ if(!isset($_POST['submit']) AND empty($error)) {
   $data['head']['body'] = $cs_lang['body_info'];
 } elseif (!empty($error)) {
   $data['head']['body'] = $error;
-
-  $cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id','users_delete = "0"','users_nick',0,0);
-  $data['cash']['users_sel'] = cs_dropdown('users_id','users_nick',$cs_users,$cs_cash['users_id']);
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
