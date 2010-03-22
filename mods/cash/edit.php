@@ -17,8 +17,17 @@ if(isset($_POST['submit'])) {
   $cs_cash['cash_text'] = $_POST['cash_text'];
   $cs_cash['cash_info'] = $_POST['cash_info'];
   $cs_cash['cash_time'] = cs_datepost('datum','date');
-  
+  $users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
+
   $error = '';
+
+  $where = "users_nick = '" . cs_sql_escape($users_nick) . "'";
+  $users_data = cs_sql_select(__FILE__, 'users', 'users_id', $where);
+  if(empty($users_data['users_id'])) {
+    $error .= $cs_lang['no_user'] . cs_html_br(1);
+  }
+  else
+    $cs_cash['users_id'] = $users_data['users_id'];
   
   if(empty($cs_cash['cash_inout'])) {
     $error .= $cs_lang['no_inout'] . cs_html_br(1);
@@ -45,6 +54,9 @@ if(!isset($_POST['submit']) AND empty($error)) {
   $data['head']['body'] = $cs_lang['body_info'];
 } elseif (!empty($error)) {
   $data['head']['body'] = $error;
+
+  $cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id','users_delete = "0"','users_nick',0,0);
+  $data['cash']['users_sel'] = cs_dropdown('users_id','users_nick',$cs_users,$cs_cash['users_id']);
 }
 
 if(!empty($error) OR !isset($_POST['submit'])) {
@@ -66,6 +78,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $cs_user = cs_sql_select(__FILE__,'users','users_nick',"users_id = '" . $cs_cash['users_id'] . "'");
   $data['cash']['users_sel'] = cs_user($cs_cash['users_id'], $cs_user['users_nick']);
+  
+  $data['users']['nick'] = empty($users_nick) ? $cs_user['users_nick'] : $users_nick;
 
   echo cs_subtemplate(__FILE__,$data,'cash','edit');
 }
