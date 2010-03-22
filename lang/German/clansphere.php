@@ -215,3 +215,14 @@ $cs_lang['del_install_file'] = 'Achtung: Die Datei "install.php" ist aus Sicherh
 
 // Options
 $cs_lang['maintenance_access'] = 'Wartungs-Zugriff ab';
+
+// Charset
+$cs_lang['body_charset'] = 'Diese Seite hilft beim Auffinden von Zeichensatz-Problemen';
+$cs_lang['old_php'] = 'Warnung: Der Webspace verwendet PHP 4 und unterst&uuml;tzt Unicode-Zeichens&auml;tze damit nicht gen&uuml;gend';
+$cs_lang['test'] = 'Test';
+$cs_lang['result'] = 'Ergebnis';
+$cs_lang['setup_file'] = 'Setup Datei';
+$cs_lang['tpl_setting'] = 'Template Dateien';
+$cs_lang['web_setting'] = 'Webserver Einstellung';
+$cs_lang['php_setting'] = 'PHP Einstellung';
+$cs_lang['sql_setting'] = 'SQL Einstellung';

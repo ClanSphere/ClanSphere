@@ -214,4 +214,15 @@ $cs_lang['new_infos'] = 'All messages from the ClanSphere Team';
 $cs_lang['del_install_file'] = 'Warning: It is strongly recommended to remove the "install.php" file';
 
 // Options
-$cs_lang['maintenance_access'] = 'maintenance Access';
+$cs_lang['maintenance_access'] = 'Maintenance access';
+
+// Charset
+$cs_lang['body_charset'] = 'This page provides help in finding charset related problems';
+$cs_lang['old_php'] = 'Warning: This webspace uses PHP 4 and has therefore not enough support for unicode-based charsets';
+$cs_lang['test'] = 'Test';
+$cs_lang['result'] = 'Result';
+$cs_lang['setup_file'] = 'Setup File';
+$cs_lang['tpl_setting'] = 'Template Files';
+$cs_lang['web_setting'] = 'Webserver Config';
+$cs_lang['php_setting'] = 'PHP Config';
+$cs_lang['sql_setting'] = 'SQL Config';
