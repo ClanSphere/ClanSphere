@@ -29,7 +29,7 @@ if(isset($_POST['submit'])) {
   else
     $data['nm']['users_id'] = $users_data['users_id'];
 
-  $check = "notifymods_user = '" . $data['nm']['users_id'] . "'";
+  $check = 'notifymods_user = ' . $data['nm']['users_id'];
   $find_user = cs_sql_count(__FILE__,'notifymods',$check);
   if(!empty($find_user)) {
   $error++;
@@ -53,7 +53,7 @@ elseif(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   
-  $users = cs_sql_select(__FILE__,'users','users_nick, users_id','users_active = "1" AND users_delete = "0"','users_nick ASC',0,0);
+  $users = cs_sql_select(__FILE__,'users','users_nick, users_id','users_active = 1 AND users_delete = 0','users_nick ASC',0,0);
   $data['nm']['users_dropdown'] = cs_dropdown('users_id','users_nick',$users,$data['nm']['users_id']);
   
   $data['nm']['notifymods_gbook'] = $data['nm']['notifymods_gbook'] == 1 ? 'checked="checked"' : '';

@@ -11,7 +11,7 @@ if($cache['day'] != $thisday) {
   $cache['day'] = $thisday;
   
   $select = 'users_id, users_nick, users_age';
-  $where = "users_age LIKE '%-" .$cache['day'] . "' AND users_hidden NOT LIKE '%users_age%' AND users_active = '1'";
+  $where = "users_age LIKE '%-" .$cache['day'] . "' AND users_hidden NOT LIKE '%users_age%' AND users_active = 1";
   $order = 'users_nick ASC';
   $cs_users = cs_sql_select(__FILE__,'users',$select,$where,$order,0,0);
   $count = empty($options['navbirth_max_users']) ? count($cs_users) : min(count($cs_users), $options['navbirth_max_users']);

@@ -12,7 +12,7 @@ $change_threads = 0;
 
 $from = 'threads';
 $select = 'threads_id';
-$where = "board_id = '" . $board_id . "'";
+$where = 'board_id = ' . $board_id;
 $cs_threads = cs_sql_select(__FILE__,$from,$select,$where,'','',0);
 $threads_loop = count($cs_threads);
 
@@ -22,24 +22,28 @@ if(isset($_POST['agree'])) {
 
   $board_form = 0;
   cs_sql_delete(__FILE__,'board',$board_id);
-  $query = "DELETE FROM {pre}_boardpws WHERE board_id = '" . $board_id . "'";
-  cs_sql_query(__FILE__,$query);
+  // $query = 'DELETE FROM {pre}_boardpws WHERE board_id = ' . $board_id;
+  // cs_sql_query(__FILE__,$query);
+  cs_sql_delete(__FILE__,'boardpws',$board_id,'board_id');
   
   if(empty($cs_board['change_threads'])) {
-    $query = "DELETE FROM {pre}_threads WHERE board_id = '" . $board_id . "'";
-    cs_sql_query(__FILE__,$query);
+    // $query = 'DELETE FROM {pre}_threads WHERE board_id = ' . $board_id;
+    // cs_sql_query(__FILE__,$query);
+    cs_sql_delete(__FILE__,'threads',$board_id,'board_id');
     
   for($run = 0; $run < $threads_loop; $run++) {
       $thread_id = $cs_threads[$run]['threads_id'];
-      $query = "DELETE FROM {pre}_comments WHERE comments_fid = '" . $thread_id . "' ";
-      $query .= "AND comments_mod = 'board'";
-      cs_sql_query(__FILE__,$query);  
-      $query = "DELETE FROM {pre}_abonements WHERE threads_id='" . $thread_id . "'";
-      cs_sql_query(__FILE__,$query);
+      // $query = 'DELETE FROM {pre}_comments WHERE comments_fid = ' . $thread_id;
+      // $query .= "AND comments_mod = 'board'";
+      // cs_sql_query(__FILE__,$query);
+      cs_sql_delete(__FILE__,'comments',$thread_id,'comments_mod = \'board\' AND comments_fid');
+      // $query = 'DELETE FROM {pre}_abonements WHERE threads_id=' . $thread_id;
+      // cs_sql_query(__FILE__,$query);
+      cs_sql_delete(__FILE__,'abonements',$thread_id,'threads_id');
       
       
       $files_select = 'boardfiles_id, threads_id, boardfiles_name';
-      $files_where = "threads_id = '" . $thread_id . "'";
+      $files_where = 'threads_id = ' . $thread_id;
       $files_id = cs_sql_select(__FILE__,'boardfiles',$files_select,$files_where,0,0,0);
       $files_loop = count($files_id);    
 
@@ -52,15 +56,17 @@ if(isset($_POST['agree'])) {
         cs_unlink('board', $files_id[$run2]['boardfiles_id'] . '.' . $ext, 'files');
       }
       
-    $query = "DELETE FROM {pre}_boardfiles WHERE threads_id= '" . $thread_id . "'";
-      cs_sql_query(__FILE__,$query);
+      // $query = 'DELETE FROM {pre}_boardfiles WHERE threads_id= ' . $thread_id;
+      // cs_sql_query(__FILE__,$query);
+      cs_sql_delete(__FILE__,'boardfiles',$thread_id,'threads_id');
     }
   }
   else {
     $cs_board_id = $cs_board['board_id'];
-    $query = "UPDATE {pre}_threads SET board_id='$cs_board_id' ";
-    $query .= "WHERE board_id = '$board_id'";
-    cs_sql_query(__FILE__,$query);
+    // $query = "UPDATE {pre}_threads SET board_id='$cs_board_id' ";
+    // $query .= "WHERE board_id = '$board_id'";
+    // cs_sql_query(__FILE__,$query);
+    cs_sql_update(__FILE__, 'threads', array('board_id'), array($cs_board_id), 0, 'board_id = '.$board_id);
 
     # Update board entry to get correct threads and comments count
     include_once('mods/board/repair.php');

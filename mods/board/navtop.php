@@ -8,7 +8,7 @@ $time = (int) date('mdHi');
 $data = cs_cache_load('brd_navtop');
 if (empty($data) OR $data['time'] < $time-100) {
   $data['time'] = $time;
-  $tables  = "comments cms LEFT JOIN {pre}_users usr ON cms.users_id = usr.users_id AND usr.users_active = '1' ";
+  $tables  = 'comments cms LEFT JOIN {pre}_users usr ON cms.users_id = usr.users_id AND usr.users_active = 1 ';
   $tables .= 'LEFT JOIN {pre}_threads thr ON thr.users_id = usr.users_id GROUP BY usr.users_id, usr.users_nick';
   $cells  = 'usr.users_id AS users_id, usr.users_nick AS users_nick, ';
   $cells .= 'COUNT(DISTINCT cms.comments_id) + COUNT(DISTINCT thr.threads_id) AS comments';

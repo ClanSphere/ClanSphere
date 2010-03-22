@@ -12,7 +12,7 @@ if (!empty($cs_post['id']))  $gallery_id = $cs_post['id'];
 $cs_gallery = cs_sql_select(__FILE__,'usersgallery','*',"usersgallery_id = '" . $gallery_id . "'");
 $pic = cs_secure($cs_gallery['usersgallery_name']);
 
-if ($cs_gallery['users_id'] != $account['users_id'] OR $account['access_usersgallery'] < 5)
+if ($cs_gallery['users_id'] != $account['users_id'] OR $account['access_usersgallery'] < 4)
   cs_redirect($cs_lang['del_false'],'usersgallery','center');
 
 if (isset($_POST['agree'])) {

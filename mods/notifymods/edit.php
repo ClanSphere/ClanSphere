@@ -23,7 +23,7 @@ else {
   $tables = 'notifymods ntm INNER JOIN {pre}_users usr ON usr.users_id = ntm.notifymods_user';
   $cells  = 'ntm.notifymods_id, ntm.notifymods_user, usr.users_nick AS users_nick, ' .
             'ntm.notifymods_gbook, ntm.notifymods_joinus, ntm.notifymods_fightus, ntm.notifymods_files';
-  $cs_bm = cs_sql_select(__FILE__,$tables,$cells,"notifymods_id = '" . $notifymods_id . "'");
+  $cs_bm = cs_sql_select(__FILE__,$tables,$cells,'notifymods_id = ' . $notifymods_id);
 }
 
 if (!isset($_POST['submit']) AND empty($error)) {

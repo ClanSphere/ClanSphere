@@ -292,7 +292,7 @@ $cs_lang['email_notification'] = 'Notify me via eMail';
 $cs_lang['pm_notification'] = 'Notify me via private message';
 
 // Abo
-$cs_lang['abomail']    = 'Subscriptionnotifications';
+$cs_lang['abomail']    = 'Subscription notification';
 
 //Fightus & Joinus
 $cs_lang['fightus']    = 'Fightus';

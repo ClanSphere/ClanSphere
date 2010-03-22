@@ -10,7 +10,7 @@ $data = array();
 $figures = 15;
 
 $select = 'ar.articles_id AS articles_id, ar.articles_headline AS articles_headline, ar.articles_views AS articles_views';
-$check = 'ar.articles_navlist > \'0\' AND cat.categories_access <= \'' . $account['access_articles'] . '\'';
+$check = 'ar.articles_navlist > 0 AND cat.categories_access <= ' . $account['access_articles'];
 $order = 'ar.articles_views DESC';
 $tables = 'articles ar INNER JOIN {pre}_categories cat ON ar.categories_id = cat.categories_id';
 $cs_articles = cs_sql_select(__FILE__,$tables,$select,$check,'ar.articles_views DESC',0,$cs_option['max_navlist']);

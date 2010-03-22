@@ -388,13 +388,13 @@ else {
   // START Abo-Mail
   $from = "abonements abo LEFT JOIN {pre}_read red ON (abo.users_id = red.users_id AND abo.threads_id = red.threads_id)
                                INNER JOIN {pre}_users usr ON abo.users_id = usr.users_id";
-  $where = "abo.threads_id = '".$data['thread']['threads_id']."'
-            AND abo.users_id != '".$account['users_id']."'
+  $where = 'abo.threads_id = '.$data['thread']['threads_id'].'
+            AND abo.users_id != '.$account['users_id'].'
             AND usr.users_delete != 1
             AND usr.users_abomail = 1
             AND (abo.last_mail IS NULL
                  OR abo.last_mail <= red.read_since
-                 OR abo.last_mail <= (".cs_time()."-usr.users_readtime))";  // if no read_since
+                 OR abo.last_mail <= ('.cs_time().'-usr.users_readtime))';  // if no read_since
   $abo_users = cs_sql_select(__FILE__,$from,'abo.abonements_id, usr.users_lang, usr.users_email',$where,0,0,0);
   
   $abo['count'] = count($abo_users);
@@ -411,7 +411,7 @@ else {
       $abo_lang[$abo['lang']] = cs_cache_load('lang_abo_'.$abo['lang']);
       if ($abo_lang[$abo['lang']] === FALSE) {
         // read lang-file and search for text- & subject-placeholder
-        $fp   = fopen($cs_main["def_path"]."/lang/".$abo['lang']."/board.php", "r");
+        $fp   = fopen($cs_main['def_path'].'/lang/'.$abo['lang'].'/board.php', 'r');
         $file_content = '';
         while ( !feof($fp) ) {
             $file_content .= fgets($fp, 4096);
@@ -428,7 +428,7 @@ else {
       $abo_text[$abo['lang']]['text'] = sprintf($abo_lang[$abo['lang']]['text'],$data['thread']['threads_headline'],$account['users_nick']);
     
     cs_mail($abo_users[$run]['users_email'],$abo_lang[$abo['lang']]['subject'],$abo_text[$abo['lang']]['text']);
-    cs_sql_update(__FILE__,'abonements',$abo['update'],$abo['new_time'],0,"abonements_id = '".$abo_users[$run]['abonements_id']."'");
+    cs_sql_update(__FILE__,'abonements',$abo['update'],$abo['new_time'],0,'abonements_id = '.$abo_users[$run]['abonements_id']);
   }
   // END Abo-Mail
 	$where = "comments_mod = 'board' AND comments_fid = '" . $fid . "'";

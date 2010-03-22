@@ -19,9 +19,9 @@ function notifymods_mail($mod, $users_id=0, $var=0) { // "$var" can be an array
     $lang = empty($mail_user['users_lang']) ? $cs_main['def_lang'] : $mail_user['users_lang'];
     if (empty($mail_text[$lang][$mod.'_text'])) {
       $mail_text[$lang] = cs_cache_load('lang_notifymods_'.$lang);
-      if ($mail_text[$lang] === FALSE AND file_exists("lang/" . $lang . "/notifymods.php"))
+      if ($mail_text[$lang] === FALSE AND file_exists('lang/' . $lang . '/notifymods.php'))
       { // read lang-file and search for text- & subject-placeholder
-        $fp   = fopen("lang/" . $lang . "/notifymods.php", "r");
+        $fp   = fopen('lang/' . $lang . '/notifymods.php', 'r');
         $file_content = '';
         while ( !feof($fp) ) {
             $file_content .= fgets($fp, 4096);

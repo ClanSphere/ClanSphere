@@ -19,12 +19,12 @@ function cs_addons($modul,$action,$id,$modul_now) {
 
           if($mod['dir'] == $modul) {
             if($modul == 'users') {
-              $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete',"users_id = '" . $id . "'");
+              $cs_user = cs_sql_select(__FILE__,'users','users_nick, users_active, users_delete','users_id = ' . $id);
               $user = cs_user($id,$cs_user['users_nick'], $cs_user['users_active'], $cs_user['users_delete']);
               $var = $mod['name'] . ' - ' . $user . cs_html_hr('100%') . $var;
             }
             else {
-              $cs_refer = cs_sql_select(__FILE__,$modul,$modul . '_name',$modul . "_id = '" . $id . "'");
+              $cs_refer = cs_sql_select(__FILE__,$modul,$modul . '_name',$modul . '_id = ' . $id);
               $name = cs_secure($cs_refer[$modul . '_name']);
               $var = $mod['name'] . ' - ' . cs_link($name,$modul,$action,'id=' . $id) . cs_html_hr('100%') . $var;
             }
@@ -41,7 +41,7 @@ function cs_addons($modul,$action,$id,$modul_now) {
           $count = getUserPosts($id);
         }
         else
-          $count = cs_sql_count(__FILE__, $mod['references'][$modul], $column . " = '" . $id . "'" . $more);
+          $count = cs_sql_count(__FILE__, $mod['references'][$modul], $column . ' = ' . $id . $more);
           
               $var .= $out . " (" . $count . ")\r\n - ";
             }
