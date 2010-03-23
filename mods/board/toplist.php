@@ -2,17 +2,12 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-include 'mods/board/functions.php';
+require_once 'mods/board/functions.php';
 
 $start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 $array_result = array();
 $toplist = array();
 $count = 0;
-
-function manageData (&$array, $key) {
-    global $array_result;
-    $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
-}
 
 $comments = cs_sql_select (__FILE__, 'comments GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
 $threads = cs_sql_select (__FILE__, 'threads GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
@@ -33,13 +28,6 @@ $user_cond = '';
 
 foreach ($toplist as $users_id => $noneed) $user_cond .= 'users_id = "' . $users_id . '" OR '; // Select only the users needed
 $user_cond = substr($user_cond, 0, -4);
-
-
-function manageUsers (&$array, $key) {
-    global $array_result;
-    $array_result[ $array['users_id'] ] = $array;
-}
-
 
 $users = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
 

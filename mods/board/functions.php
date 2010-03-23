@@ -179,3 +179,14 @@ function last_comment($board_id,$users_id=0,$users_limit=20) {
 	else
 		return "";
 }
+//-----------------------------------------------------------------------------
+function manageData (&$array, $key) {
+    global $array_result;
+    $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
+}
+
+function manageUsers (&$array, $key) {
+    global $array_result;
+    $array_result[ $array['users_id'] ] = $array;
+}
+//-----------------------------------------------------------------------------
