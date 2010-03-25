@@ -397,7 +397,7 @@ else {
                  OR abo.last_mail <= ('.cs_time().'-usr.users_readtime))';  // if no read_since
   $abo_users = cs_sql_select(__FILE__,$from,'abo.abonements_id, usr.users_lang, usr.users_email',$where,0,0,0);
   
-  $abo['count'] = count($abo_users);
+  $abo['count'] = empty($abo_users) ? 0 : count($abo_users);
   $abo_lang[$account['users_lang']]['text'] = $cs_lang['abo_mail_text'];
   $abo_lang[$account['users_lang']]['subject'] = $cs_lang['mod2'];
   $pattern1 = '/abo_mail_text\'\] = \'(.*)\';/';
