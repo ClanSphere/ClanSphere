@@ -185,13 +185,61 @@ function last_comment($board_id,$users_id=0,$users_limit=20) {
 		return '';
 }
 //-----------------------------------------------------------------------------
-function manageData (&$array, $key) {
-    global $array_result;
-    $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
-}
+function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0, $count_comments=1, $count_threads=1) {
+  $array_result = array();
+  $toplist = array();
+  $return = array();
+  $count = 0;
 
-function manageUsers (&$array, $key) {
-    global $array_result;
-    $array_result[ $array['users_id'] ] = $array;
+  $comments = empty($count_comments) ? 0 : cs_sql_select(__FILE__, 'comments GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
+  $threads = empty($count_threads) ? 0 : cs_sql_select(__FILE__, 'threads GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
+
+  if (!empty($threads))
+    foreach ($threads as $array)
+      $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
+  if (!empty($comments))
+    foreach ($comments as $array)
+      $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
+
+  if (is_array($array_result))
+    arsort($array_result);
+  
+  $count_limit = empty($count_limit) ? count($array_result) : $count_limit;
+  
+  if(!empty($count_users_active)) {
+    $user_cond = '(';
+    foreach ($array_result as $users_id => $comments)
+      $user_cond .= 'users_id = "' . $users_id . '" OR ';
+    $user_cond = substr($user_cond, 0, -4);
+    $user_cond .= ') AND users_active = 1 AND users_delete = 0';
+
+    $users_active = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
+    return empty($users_active) ? 0 : count($users_active);
+  }
+  else {
+    if(is_array($array_result)) {
+      $toplist = array_slice ($array_result, $start, $count_limit, true);
+      $count = count($array_result);
+    }
+    
+    $user_cond = '';
+    foreach ($toplist as $users_id => $noneed) $user_cond .= 'users_id = "' . $users_id . '" OR '; // Select only the users needed
+    $user_cond = substr($user_cond, 0, -4);
+
+    $user = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
+    
+    $array_result = array();
+    foreach($user as $array)
+      $array_result[ $array['users_id'] ] = $array;
+    
+    if (!empty($toplist))
+      foreach ($toplist as $users_id => $comments) {
+        $array_return[ $users_id ] = $array_result[$users_id];
+        $array_return[ $users_id ]['comments'] = $comments;
+        $run++;
+      }
+    
+    return $array_return;
+  }
 }
 //-----------------------------------------------------------------------------
