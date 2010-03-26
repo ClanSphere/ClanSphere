@@ -13,7 +13,7 @@ $data['top2'] = '';
 if(!empty($toplist)) {
   $run = 0;
   foreach ($toplist AS $users_id => $user_data) {
-    $data['top2'][$run]['users'] = empty($user_data) ? '' : cs_user($users_id, $user_data['users_nick'], $user_data['users_active'], $user_data['users_delete']);
+    $data['top2'][$run]['users'] = empty($user_data['users_nick']) ? '' : cs_user($users_id, $user_data['users_nick'], $user_data['users_active'], $user_data['users_delete']);
     $data['top2'][$run]['threads'] = $user_data['comments'];
     $run++;
   }
