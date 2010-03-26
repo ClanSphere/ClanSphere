@@ -4,14 +4,47 @@
 
 $max = 5;
 $data = array();
-$time = (int) date('mdHi');
-$data = cs_cache_load('brd_navtop2');
-if (empty($data) OR $data['time'] < $time-100) {
-  $data['time'] = $time;
-  $tables  = 'threads thr LEFT JOIN {pre}_users usr ON thr.users_id = usr.users_id AND usr.users_active = 1 GROUP BY usr.users_id, usr.users_nick';
-  $cells  = 'usr.users_id AS users_id, usr.users_nick AS users_nick, ';
-  $cells .= 'COUNT(DISTINCT thr.threads_id) AS threads';
-  $data['top2'] = cs_sql_select(__FILE__,$tables,$cells,0,'threads DESC, usr.users_nick',0,$max);
-  cs_cache_save('brd_navtop2', $data);
-}
+
+  // START user-top
+  require_once 'mods/board/functions.php';
+  $array_result = array();
+  $toplist = array();
+  $count = 0;
+  global $array_result;
+
+  $threads = cs_sql_select(__FILE__, 'threads GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
+
+  foreach($threads as $thr) {
+    $array_result[ $thr['users_id'] ] = $thr['important'];
+  }
+  
+  if(is_array($array_result)) {
+      arsort($array_result);
+      $toplist = array_slice($array_result, 0, $max, true); // only $max needed
+      $count = count($array_result);
+  }
+
+  $array_result = array();
+  $user_cond = '';
+
+  foreach ($toplist as $users_id => $noneed) $user_cond .= 'users_id = "' . $users_id . '" OR '; // Select only the users needed
+  $user_cond = substr($user_cond, 0, -4);
+
+  $user = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
+
+  array_walk ($user, 'manageUsers'); // To make the users more accessable
+  $user = $array_result; // Users
+  unset($array_result);
+
+  $data['top2'] = '';
+  if(!empty($toplist)) {
+    $run = 0;
+    foreach ($toplist AS $users_id => $comments) {
+      $data['top2'][$run]['users'] = empty($user[$users_id]) ? '' : cs_user($users_id, $user[$users_id]['users_nick'], $user[$users_id]['users_active'], $user[$users_id]['users_delete']);
+      $data['top2'][$run]['threads'] = $comments;
+      $run++;
+    }
+  }
+  // STOP user-top
+  
 echo cs_subtemplate(__FILE__,$data, 'board', 'navtop2');
