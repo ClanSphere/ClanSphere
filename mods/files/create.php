@@ -34,7 +34,7 @@ if(isset($_POST['submit']))
   $data['file']['files_name'] = $_POST['files_name'];
   $data['file']['files_version'] = $_POST['files_version'];
   $data['file']['files_description'] = $_POST['files_description'];
-  $data['file']['files_size'] = $_POST['files_size'];
+  $data['file']['files_size'] = strtr($_POST['files_size'], ',', '.');
   $size = $_POST['size'];
   $run_loop = isset($_POST['run_loop']) ? (int) $_POST['run_loop'] : 1;
 
@@ -86,7 +86,7 @@ if(isset($_POST['mirror'])) {
   $data['file']['files_name'] = $_POST['files_name'];
   $data['file']['files_version'] = $_POST['files_version'];
   $data['file']['files_description'] = $_POST['files_description'];
-  $data['file']['files_size'] = $_POST['files_size'];
+  $data['file']['files_size'] = strtr($_POST['files_size'], ',', '.');
   $size = $_POST['size'];
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
 	
@@ -107,7 +107,7 @@ if(!empty($error) OR !isset($_POST['submit']))
   $data['file']['files_size'] /= 1024;
   
   while($data['file']['files_size'] >= 1024 && $size < 2) {
-    $data['file']['files_size'] = round($data['file']['files_size'] / 1024); 
+    $data['file']['files_size'] = round($data['file']['files_size'] / 1024, 2); 
     $size++;
   }
   for($l=0; $l < 3; $l++) {
