@@ -12,8 +12,8 @@ function notifymods_mail($mod, $users_id=0, $var=0) { // "$var" can be an array
             AND ntm.notifymods_" . $mod . " = 1";
   $ntm_users = cs_sql_select(__FILE__,$from,'usr.users_lang, usr.users_email',$where,0,0,0);
   
-  $pattern1 = '/\'(?<mod>.*)_text\'\] = \'(?<value>.*)\';/';
-  $pattern2 = '/\'(?<mod>.*)_subject\'\] = \'(?<value>.*)\';/';
+  $pattern1 = '/\'(?<mod>.*)_text\'\](\s*)=(\s*)\'(?<value>.*)\';/';
+  $pattern2 = '/\'(?<mod>.*)_subject\'\](\s*)=(\s*)\'(?<value>.*)\';/';
   
   foreach($ntm_users as $mail_user) {
     $lang = empty($mail_user['users_lang']) ? $cs_main['def_lang'] : $mail_user['users_lang'];

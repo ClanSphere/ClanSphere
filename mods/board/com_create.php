@@ -400,8 +400,8 @@ else {
   $abo['count'] = empty($abo_users) ? 0 : count($abo_users);
   $abo_lang[$account['users_lang']]['text'] = $cs_lang['abo_mail_text'];
   $abo_lang[$account['users_lang']]['subject'] = $cs_lang['mod2'];
-  $pattern1 = '/abo_mail_text\'\] = \'(.*)\';/';
-  $pattern2 = '/mod2\'\]    = \'(.*)\';/';
+  $pattern1 = '/abo_mail_text\'\](\s*)=(\s*)\'(?<value>.*)\';/';
+  $pattern2 = '/mod2\'\](\s*)=(\s*)\'(?<value>.*)\';/';
   $abo['new_time'] = array(cs_time());
   $abo['update'] = array('last_mail');
   
@@ -417,9 +417,9 @@ else {
             $file_content .= fgets($fp, 4096);
         }
         preg_match($pattern1, $file_content, $match);
-          $abo_lang[$abo['lang']]['text'] = $match[1];
+          $abo_lang[$abo['lang']]['text'] = $match['value'];
         preg_match($pattern2, $file_content, $match);
-          $abo_lang[$abo['lang']]['subject'] = $match[1];
+          $abo_lang[$abo['lang']]['subject'] = $match['value'];
         cs_cache_save('lang_abo_'.$abo['lang'], $abo_lang[$abo['lang']]);
       }
     }
