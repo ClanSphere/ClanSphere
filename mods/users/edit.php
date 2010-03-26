@@ -237,5 +237,8 @@ if (!empty($error) or !isset($_POST['submit'])) {
   $users_save = array_values($cs_user);
   cs_sql_update(__FILE__, 'users', $users_cells, $users_save, $users_id);
 
+  unlink('uploads/cache/navbirth.tmp');
+  unlink('uploads/cache/nextbirth.tmp');
+
   cs_redirect($cs_lang['changes_done'], 'users');
 }

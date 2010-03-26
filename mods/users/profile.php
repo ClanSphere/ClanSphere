@@ -166,6 +166,9 @@ else {
   $users_save = array_values($cs_user);
   cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
 
+  unlink('uploads/cache/navbirth.tmp');
+  unlink('uploads/cache/nextbirth.tmp');
+
   $data['link']['continue'] = cs_url('users','home');
   $data['lang']['head'] = $cs_lang['profile'];
   echo cs_subtemplate(__FILE__,$data,'users','done');
