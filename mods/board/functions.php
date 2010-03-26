@@ -236,7 +236,6 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
       foreach ($toplist as $users_id => $comments) {
         $array_return[ $users_id ] = $array_result[$users_id];
         $array_return[ $users_id ]['comments'] = $comments;
-        $run++;
       }
     
     return $array_return;
