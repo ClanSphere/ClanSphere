@@ -40,6 +40,7 @@ if(isset($_POST['submit'])) {
   $data['file']['files_version'] = $_POST['files_version'];
   $data['file']['files_description'] = $_POST['files_description'];
   $data['file']['files_size'] = stripos($_POST['files_size'], ',') === FALSE ? $_POST['files_size'] : strtr($_POST['files_size'], ',', '.');
+  $data['file']['files_size'] = round($data['file']['files_size'], 2);
   $size = $_POST['size'];
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 2;
   $data['file']['files_mirror'] = '';
@@ -51,17 +52,23 @@ if(isset($_POST['submit'])) {
       $data['file']["files_mirror"] = $data['file']["files_mirror"] . "\n-----\n" . $_POST["files_mirror_url_$num"] . "\n" . $_POST["files_mirror_name_$num"] . "\n". $_POST["files_mirror_ext_$num"] . "\n" . $_POST["files_access_$num"];
     }
   }
-  if($size == 0) { 
-    $data['file']['files_size'] = $data['file']['files_size'] * 1024;
-  }
-  elseif($size == 1) {
-    $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024;
-  }
-  elseif($size == 2) {
-    $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024 * 1024;
-  }  
-
+  
   $error = '';
+  
+  if(empty($data['file']['files_size']))
+    $error .= $cs_lang['no_size'] . cs_html_br(1);
+  else {
+    if($size == 0) { 
+      $data['file']['files_size'] = $data['file']['files_size'] * 1024;
+    }
+    elseif($size == 1) {
+      $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024;
+    }
+    elseif($size == 2) {
+      $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024 * 1024;
+    }
+    $data['file']['files_size'] = round($data['file']['files_size'], 2);
+  }
 
   if(empty($data['file']['categories_id']))
     $error .= $cs_lang['no_cat'] . cs_html_br(1);
@@ -71,8 +78,6 @@ if(isset($_POST['submit'])) {
     $error .= $cs_lang['no_text'] . cs_html_br(1);
   if(empty($data['file']['files_mirror']))
     $error .= $cs_lang['no_mirror'] . cs_html_br(1);
-  if(empty($data['file']['files_size']))
-    $error .= $cs_lang['no_size'] . cs_html_br(1);
 
 }
 else
@@ -82,14 +87,15 @@ else
 }
 if(isset($_POST['mirror']))
 {
-    $data['file']['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] : 
+  $data['file']['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] : 
   cs_categories_create('files',$_POST['categories_name']);
   $data['file']['files_close'] = isset($_POST['files_close']) ? $_POST['files_close'] : 0; 
   $data['file']['files_vote'] = isset($_POST['files_vote']) ? $_POST['files_vote'] : 0;
   $data['file']['files_name'] = $_POST['files_name'];
   $data['file']['files_version'] = $_POST['files_version'];
   $data['file']['files_description'] = $_POST['files_description'];
-  $data['file']['files_size'] = $_POST['files_size'];    
+  $data['file']['files_size'] = stripos($_POST['files_size'], ',') === FALSE ? $_POST['files_size'] : strtr($_POST['files_size'], ',', '.');
+  $data['file']['files_size'] = round($data['file']['files_size'], 2);
   $size = $_POST['size'];
     $_POST['run_loop']++;
 }
@@ -106,9 +112,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['file']['files_size'] /= 1024;
 
   while($data['file']['files_size'] >= 1024 && $size < 2) {
-    $data['file']['files_size'] = round($data['file']['files_size'] / 1024, 2); 
+    $data['file']['files_size'] /= 1024; 
     $size++;
   }
+  $data['file']['files_size'] = round($data['file']['files_size'], 2);
   
   for($l=0; $l < 3; $l++) {
     $data['levels'][$l]['value'] = $l;
@@ -159,7 +166,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   echo cs_subtemplate(__FILE__,$data,'files','edit');
 }
 else {
-    
 	$files_cells = array_keys($data['file']);
 	$files_save = array_values($data['file']);
  cs_sql_update(__FILE__,'files',$files_cells,$files_save,$files_id);

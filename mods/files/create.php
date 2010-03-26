@@ -35,6 +35,7 @@ if(isset($_POST['submit']))
   $data['file']['files_version'] = $_POST['files_version'];
   $data['file']['files_description'] = $_POST['files_description'];
   $data['file']['files_size'] = stripos($_POST['files_size'], ',') === FALSE ? $_POST['files_size'] : strtr($_POST['files_size'], ',', '.');
+  $data['file']['files_size'] = round($data['file']['files_size'], 2);
   $size = $_POST['size'];
   $run_loop = isset($_POST['run_loop']) ? (int) $_POST['run_loop'] : 1;
 
@@ -46,17 +47,21 @@ if(isset($_POST['submit']))
     }
   }
 
-  if($size == 0) {
-    $data['file']['files_size'] = $data['file']['files_size'] * 1024;
-  }
-  elseif($size == 1) {
-    $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024;
-  }
-  elseif($size == 2) {
-    $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024 * 1024;
-  }
-
   $error = '';
+  if(empty($data['file']['files_size']))
+    $error .= $cs_lang['no_size'] . cs_html_br(1);
+  else {
+    if($size == 0) {
+      $data['file']['files_size'] = $data['file']['files_size'] * 1024;
+    }
+    elseif($size == 1) {
+      $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024;
+    }
+    elseif($size == 2) {
+      $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024 * 1024;
+    }
+    $data['file']['files_size'] = round($data['file']['files_size'], 2);
+  }
 
   if(empty($data['file']['categories_id']))
     $error .= $cs_lang['no_cat'] . cs_html_br(1);
@@ -66,8 +71,6 @@ if(isset($_POST['submit']))
     $error .= $cs_lang['no_text'] . cs_html_br(1);
   if(empty($data['file']['files_mirror']))
     $error .= $cs_lang['no_mirror'] . cs_html_br(1);
-  if(empty($data['file']['files_size']))
-    $error .= $cs_lang['no_size'] . cs_html_br(1);
 
   $flood = cs_sql_select(__FILE__,'files','files_time',0,'files_time DESC');
   $maxtime = $flood['files_time'] + $cs_main['def_flood'];
@@ -87,6 +90,7 @@ if(isset($_POST['mirror'])) {
   $data['file']['files_version'] = $_POST['files_version'];
   $data['file']['files_description'] = $_POST['files_description'];
   $data['file']['files_size'] = stripos($_POST['files_size'], ',') === FALSE ? $_POST['files_size'] : strtr($_POST['files_size'], ',', '.');
+  $data['file']['files_size'] = round($data['file']['files_size'], 2);
   $size = $_POST['size'];
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
 	
