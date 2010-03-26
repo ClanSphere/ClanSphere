@@ -474,7 +474,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
     else
     $current--;
 
-    $data['comment'][$run]['if']['thread_author'] = $userid == $cs_com[$run]['users_id'] ? TRUE : FALSE;
+    $data['comment'][$run]['if']['thread_author'] = $data['thread']['users_id'] == $cs_com[$run]['users_id'] ? TRUE : FALSE;
     $data['comment'][$run]['country'] = $cs_com[$run]['users_country'];
     $data['comment'][$run]['users_link'] = cs_user($cs_com[$run]['users_id'], $cs_com[$run]['users_nick'], $cs_com[$run]['users_active'], $cs_com[$run]['users_delete']);
     if (empty($postscache[$cs_com[$run]['users_id']])) $postscache[$cs_com[$run]['users_id']] = getUserPosts($cs_com[$run]['users_id']);
