@@ -519,13 +519,17 @@ function cs_unlink($mod, $filename, $sub = '') {
   $path = $cs_main['def_path'] . '/uploads/' . $mod . '/';
   $path = $sub == '' ? $path : $path . str_replace('..','',$sub) . '/';
   $target = $path . str_replace('..','',$filename);
-  if(unlink($target)) {
-    return TRUE;
+  if(is_file($target)) {
+    if(unlink($target)) {
+      return TRUE;
+    }
+    else {
+      cs_error($target,'cs_unlink - Failed to remove the file');
+      return FALSE;
+    }
   }
-  else {
-    cs_error($target,'cs_unlink - Failed to remove the file');
+  else
     return FALSE;
-  }
 }
 
 function cs_upload($mod,$filename,$upname, $ajaxclean = 1) {
