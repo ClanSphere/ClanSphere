@@ -11,7 +11,7 @@ $mod_info['creator']  = 'Fr33z3m4n';
 $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['modinfo'];
-$mod_info['icon']    = 'package_system';
+$mod_info['icon']    = 'csp';
 $mod_info['show']     = array('options/roots' => 5);
 $mod_info['categories'] = FALSE;
 $mod_info['comments']  = FALSE;

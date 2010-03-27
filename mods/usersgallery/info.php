@@ -11,7 +11,7 @@ $mod_info['creator']  = 'NosNos';
 $mod_info['team']    = 'Clansphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['info_text_users_gallery'];
-$mod_info['icon']     = 'image';
+$mod_info['icon']     = 'usergallery';
 $mod_info['show']     = array('users/view' => 1, 'users/settings' => 2);
 $mod_info['references'] = array('users' => 'usersgallery');
 $mod_info['categories'] = FALSE;

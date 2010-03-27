@@ -11,7 +11,7 @@ $mod_info['creator']  = 'NosNos';
 $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['info_text'];
-$mod_info['icon']     = 'image';
+$mod_info['icon']     = 'folder_images';
 $mod_info['show']     = array('clansphere/admin' => 3, 'options/roots' => 5);
 $mod_info['categories'] = FALSE;
 $mod_info['comments']  = TRUE;
