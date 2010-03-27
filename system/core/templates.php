@@ -299,6 +299,11 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     require_once 'mods/clansphere/sec_func.php';
     $content = cs_cspnews() . $content;
   }
+  
+  if(($cs_main['action'] == 'manage' OR $cs_main['action'] == 'create' OR $cs_main['action'] == 'options') && $account['access_' . $cs_main['mod']] >=3) {
+    require_once 'mods/clansphere/admin_menu.php';
+    $content = cs_admin_menu() . $content;
+  }
 
   if($account['access_clansphere'] > 3 AND file_exists('install.php') AND !file_exists('.svn'))
     $content = cs_subtemplate(__FILE__, array(), 'clansphere', 'del_install') . $content;
