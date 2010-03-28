@@ -31,9 +31,9 @@ else {
   
   for ($run = 0; $run < $count_threads; $run++) {
     $data['threads'][$run]['threads_date'] = cs_date('unix',$data['threads'][$run]['threads_last_time'],1);
+    $data['threads'][$run]['threads_headline_short'] = strlen($data['threads'][$run]['threads_headline']) <= $figures ? $data['threads'][$run]['threads_headline'] : substr($data['threads'][$run]['threads_headline'],0,$figures-2) . '..';
+    $data['threads'][$run]['threads_headline_short'] = cs_secure($data['threads'][$run]['threads_headline_short']);
     $data['threads'][$run]['threads_headline'] = cs_secure($data['threads'][$run]['threads_headline']);
-    $data['threads'][$run]['threads_headline_short'] = strlen($data['threads'][$run]['threads_headline']) <= $figures ?
-    $data['threads'][$run]['threads_headline'] : substr($data['threads'][$run]['threads_headline'],0,$figures-2) . '..';
     $data['threads'][$run]['new_posts'] = last_comment($data['threads'][$run]['threads_id'], $account["users_id"], $account['users_limit']);
   }
   echo cs_subtemplate(__FILE__,$data,'board','navlist');
