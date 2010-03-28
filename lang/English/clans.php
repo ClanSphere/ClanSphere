@@ -111,3 +111,5 @@ $cs_lang['stage_1_text'] = ': min. 8 Character.';
 $cs_lang['stage_2_text'] = ': mind. 8 Character with 2 Numbers.';
 $cs_lang['stage_3_text'] = ': mind. 8 Character, 3 small Letters, 2 large Letters & 2 Numbers.';
 $cs_lang['stage_4_text'] = ': mind. 8 Character, 3 small Letters, 2 large Letters, 2 Numbers & 1 Special character';
+
+$cs_lang['search'] = 'Search';
