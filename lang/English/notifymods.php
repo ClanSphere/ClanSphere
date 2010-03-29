@@ -28,5 +28,5 @@ $cs_lang['joinus_text'] = 'There is a new join us application available.';
 $cs_lang['joinus_subject'] = 'new join us entry';
 $cs_lang['fightus_text'] = 'There is a new fightus challenge available.';
 $cs_lang['fightus_subject'] = 'new fightus entry';
-$cs_lang['files_text'] = 'One or more mirrors from download "%1" are maybe offline.';
+$cs_lang['files_text'] = 'One or more mirrors from download "%s" are maybe offline.';
 $cs_lang['files_subject'] = 'Download offline';

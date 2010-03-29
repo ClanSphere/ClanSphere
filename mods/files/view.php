@@ -26,14 +26,6 @@ $select .= ', fls.files_vote AS files_vote, fls.files_size AS files_size, fls.fi
 $where = "files_id = '" . $file_id . "'";
 $cs_file = cs_sql_select(__FILE__,$from,$select,$where);
 
-if(!empty($_POST['brokenlink'])) {
-  require_once('mods/notifymods/functions.php');
-  notifymods_mail('files', $account['users_id'], $cs_file['files_name']);
-  $data['if']['brokenlink'] = FALSE;
-}
-else
-  $data['if']['brokenlink'] = TRUE;
-
 $from = 'voted';
 $select = 'users_id, voted_answer';
 $where = "voted_fid = '" . $file_id . "' AND voted_mod = '" . $modul . "'"; 
@@ -54,29 +46,6 @@ if(!empty($account['users_id']))
 else
 {
   $users_id = '0';
-}  
-
-$check_user_voted = 0;
-for ($run = 0; $run < $voted_loop; $run++)
-{
-  $voted_users_id = $cs_voted[$run]['users_id'];
-  if($voted_users_id == $users_id)
-  {
-    $check_user_voted++;
-  }
-}
-
-if(empty($check_user_voted))
-{  
-  if(isset($_POST['submit'])) 
-  {        
-    $time = cs_time();
-    $voted_ip =$_SERVER['REMOTE_ADDR'];
-    $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
-    $votes_save = array($file_id,$users_id,$time,$voted_answer,$voted_ip,$modul);
-    cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
-    header('location:' . $_SERVER['PHP_SELF'] . '?mod=files&action=view&where=' .$file_id);
-  }
 }
 
 
@@ -94,37 +63,70 @@ $data['if']['vote'] = false;
 
 $data['if']['unvoted'] = false;
 
-if(!empty($cs_file['files_vote'])) {
-  $data['if']['vote'] = true;
-  $data['votes'] = array();
-  if(empty($check_user_voted)) {  
-    $data['if']['unvoted'] = true;
-    for($l = 1;$l < 7;$l++) {
-      $data['votes'][$l-1]['name'] = $l . ' - ' . $cs_lang['vote_' . $l];
-      $data['votes'][$l-1]['value'] = $l;
-    }   
-  }
-  else
+if(!empty($_POST['brokenlink'])) {
+  require_once('mods/notifymods/functions.php');
+  notifymods_mail('files', $account['users_id'], $cs_file['files_name']);
+  $data['if']['brokenlink'] = FALSE;
+}
+else {
+  $data['if']['brokenlink'] = TRUE;
+
+
+  $check_user_voted = 0;
+  for ($run = 0; $run < $voted_loop; $run++)
   {
-    $files_votes = 0;
-    for($run=0; $run<$voted_loop; $run++) 
+    $voted_users_id = $cs_voted[$run]['users_id'];
+    if($voted_users_id == $users_id)
     {
-      $a = cs_secure($cs_voted[$run]['voted_answer']);
-      $files_votes += $a;
-    }  
-    $files_votes = $files_votes / $voted_loop;
-    $files_votes = round($files_votes,2);
-    $files_votes = round($files_votes,0);
-    $stars = '';
-    for($run=6; $run>$files_votes; $run--) 
-    {
-      $stars .= cs_icon('favorites');
+      $check_user_voted++;
     }
-    for($run=1; $run<$files_votes; $run++) 
-    {
-      $stars .= cs_icon('favorites1');
+  }
+
+  if(empty($check_user_voted))
+  {  
+    if(isset($_POST['submit'])) 
+    {        
+      $time = cs_time();
+      $voted_ip =$_SERVER['REMOTE_ADDR'];
+      $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
+      $votes_save = array($file_id,$users_id,$time,$voted_answer,$voted_ip,$modul);
+      cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+      header('location:' . $_SERVER['PHP_SELF'] . '?mod=files&action=view&where=' .$file_id);
     }
-    $data['vote']['stars'] = $stars;
+  }
+
+  if(!empty($cs_file['files_vote'])) {
+    $data['if']['vote'] = true;
+    $data['votes'] = array();
+    if(empty($check_user_voted)) {  
+      $data['if']['unvoted'] = true;
+      for($l = 1;$l < 7;$l++) {
+        $data['votes'][$l-1]['name'] = $l . ' - ' . $cs_lang['vote_' . $l];
+        $data['votes'][$l-1]['value'] = $l;
+      }   
+    }
+    else
+    {
+      $files_votes = 0;
+      for($run=0; $run<$voted_loop; $run++) 
+      {
+        $a = cs_secure($cs_voted[$run]['voted_answer']);
+        $files_votes += $a;
+      }  
+      $files_votes = $files_votes / $voted_loop;
+      $files_votes = round($files_votes,2);
+      $files_votes = round($files_votes,0);
+      $stars = '';
+      for($run=6; $run>$files_votes; $run--) 
+      {
+        $stars .= cs_icon('favorites');
+      }
+      for($run=1; $run<$files_votes; $run++) 
+      {
+        $stars .= cs_icon('favorites1');
+      }
+      $data['vote']['stars'] = $stars;
+    }
   }
 }
 

@@ -28,5 +28,5 @@ $cs_lang['joinus_text'] = 'Es ist eine neue Joinus-Bewerbung vorhanden.';
 $cs_lang['joinus_subject'] = 'Neuer Joinus-Eintrag';
 $cs_lang['fightus_text'] = 'Es ist eine neue Fightus-Herausforderung vorhanden.';
 $cs_lang['fightus_subject'] = 'Neuer Fightus-Eintrag';
-$cs_lang['files_text'] = 'Ein oder mehrere Spiegel vom Download "%1" sind m&ouml;glicherweise nicht erreichbar.';
+$cs_lang['files_text'] = 'Ein oder mehrere Spiegel vom Download "%s" sind m&ouml;glicherweise nicht erreichbar.';
 $cs_lang['files_subject'] = 'Download nicht erreichbar';
