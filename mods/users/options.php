@@ -28,8 +28,8 @@ if(isset($_POST['submit'])) {
   if(!empty($files['def_picture']['tmp_name'])) $save['def_picture'] =  1;
 
   cs_optionsave('users', $save);
-  unlink('uploads/cache/navbirth.tmp');
-  unlink('uploads/cache/nextbirth.tmp');
+  cs_unlink('cache', 'navbirth.tmp');
+  cs_unlink('cache', 'nextbirth.tmp');
   if (!empty($save['def_picture']) && empty($data['options']['def_picture']))
     cs_sql_update(__FILE__, 'users', array('users_picture'), array('nopicture.jpg'), 0, "users_picture = ''");
   elseif (empty($save['def_picture']) && !empty($data['options']['def_picture']))

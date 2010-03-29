@@ -25,7 +25,7 @@ if (!empty($_GET['cat'])) {
 }
 
 $data['link']['back'] = cs_url('board','manage');
-$data['link']['delall'] = cs_url('board','sort&amp;delall=1');
+$data['link']['delall'] = cs_url('board','sort', 'delall=1');
 
 $where = "categories_mod = 'board'";
 $select = 'categories_name, categories_id, categories_order';

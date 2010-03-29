@@ -42,7 +42,7 @@ function cs_pictures_delete ($var, $mod = 0) {
   
   cs_sql_delete(__FILE__, 'pictures', $pictures_id);
   
-  @unlink('uploads/pictures/' . $file);
+  cs_unlink('pictures' . $file);
   
   return true;
 }

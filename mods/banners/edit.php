@@ -16,7 +16,6 @@ if(isset($_POST['submit'])) {
   $cs_banners['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] : cs_categories_create('banners',$_POST['categories_name']);
   $cs_banners['banners_name'] = $_POST['banners_name'];
   $cs_banners['banners_url'] = $_POST['banners_url'];
-  $cs_banners['banners_picture'] = $_POST['banners_picture'];
   $cs_banners['banners_alt'] = $_POST['banners_alt'];
   $cs_banners['banners_order'] = empty($_POST['banners_order']) ? $op_banners['def_order'] : $_POST['banners_order'];
   $cs_banners['banners_picture'] = $_POST['banners_picture'];

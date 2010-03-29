@@ -25,6 +25,7 @@ if(isset($_POST['submit'])) {
   $users_data = cs_sql_select(__FILE__, 'users', 'users_id', $where);
   if(empty($users_data['users_id'])) {
     $error .= $cs_lang['no_user'] . cs_html_br(1);
+    $cs_cash['users_id'] = 0;
   }
   else
     $cs_cash['users_id'] = $users_data['users_id'];
