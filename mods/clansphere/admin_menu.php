@@ -19,40 +19,42 @@ function cs_admin_menu()
   if (file_exists('mods/' . $recent_mod . '/manage.php') && $account['access_' . $recent_mod] >= 3)
   {
     $link_count++;	
-	$data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage');
-	$data['menu']['manage'] .= ' (' . cs_sql_count(__FILE__, $recent_mod) . ')';
-	$data['if']['manage'] = true;
+    $data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage') .' (' . cs_sql_count(__FILE__, $recent_mod) . ')';	
+    $data['if']['manage'] = true;
   }
   else
   {
     $data['menu']['manage'] = '';
-	$data['if']['manage'] = false;
+    $data['if']['manage'] = false;
   }
   
   if (file_exists('mods/' . $recent_mod . '/create.php') && $account['access_' . $recent_mod] >= 3)
   {
     $link_count++;	
-	$data['menu']['create'] = $recent_action == 'create' ? $cs_lang['create'] : cs_link($cs_lang['create'], $recent_mod,'create');
+    $data['menu']['create'] = $recent_action == 'create' ? $cs_lang['create'] : cs_link($cs_lang['create'], $recent_mod,'create');
     $data['if']['create'] = true;	
   }
   else
   {
     $data['menu']['create'] = '';
-	$data['if']['create'] = false;
+    $data['if']['create'] = false;
   }
   
   if (file_exists('mods/' . $recent_mod . '/options.php') && $account['access_' . $recent_mod] >= 5)
   {
     $link_count++;	
-	$data['menu']['options'] = $recent_action == 'options' ? $cs_lang['options'] : cs_link($cs_lang['options'], $recent_mod,'options');
-	$data['if']['options'] = true;
+    $data['menu']['options'] = $recent_action == 'options' ? $cs_lang['options'] : cs_link($cs_lang['options'], $recent_mod,'options');
+    $data['if']['options'] = true;
   }
   else
   {
     $data['menu']['options'] = '';
-	$data['if']['options'] = false;
+    $data['if']['options'] = false;
   }
 
   if ($link_count > 1)
-  return cs_subtemplate(__FILE__,$data,'clansphere','admin_menu');
+  {
+    $data['links']['count'] = $link_count;
+    return cs_subtemplate(__FILE__,$data,'clansphere','admin_menu');
+  }
 }
