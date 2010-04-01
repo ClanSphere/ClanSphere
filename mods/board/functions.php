@@ -156,33 +156,39 @@ function checkLastEdit($string ,$cs_lang ,$offset = 0)
 }
 //-----------------------------------------------------------------------------
 function last_comment($board_id,$users_id=0,$users_limit=20) {
-	if(!empty($users_id)) {
-		$comments_read = cs_sql_select(__FILE__,'read red','read_since','red.threads_id = ' . $board_id . ' AND red.users_id = ' . $users_id);
-		if (!empty($comments_read['read_since'])) {
-			$where = 'com.comments_fid = ' . $board_id . ' AND com.comments_mod = \'board\' AND com.comments_time > ' . $comments_read['read_since'];
-			$comments_new = cs_sql_count(__FILE__,'comments com',$where);
-			$comments_all = cs_sql_select(__FILE__,'threads thr','threads_comments','threads_id = '.$board_id);
-			$opt_board_sort = cs_sql_select(__FILE__,'options opt','opt.options_value','opt.options_mod = \'board\' AND opt.options_name = \'sort\'');
-			if ($opt_board_sort['options_value'] == 'ASC') {
-				$comments_new = $comments_new-- > 0 ? $comments_all['threads_comments'] - $comments_new : $comments_all['threads_comments'];
-				$com_start = (int) ($comments_new / $users_limit) * $users_limit;
-			}
-			else {
-        if($comments_new <= 1)
-          return '';
-        else {
-          $comments_new--;
+  if(!empty($users_id)) {
+    $comments_read = cs_sql_select(__FILE__,'read red','read_since','red.threads_id = ' . $board_id . ' AND red.users_id = ' . $users_id);
+    if (!empty($comments_read['read_since'])) {
+      $where = 'com.comments_fid = ' . $board_id . ' AND com.comments_mod = \'board\' AND com.comments_time > ' . $comments_read['read_since'];
+      $comments_new = cs_sql_count(__FILE__,'comments com',$where);
+      $comments_all = cs_sql_select(__FILE__,'threads thr','threads_comments','threads_id = '.$board_id);
+      if(!empty($comments_all['threads_comments'])) {
+        $opt_board_sort = cs_sql_select(__FILE__,'options opt','opt.options_value','opt.options_mod = \'board\' AND opt.options_name = \'sort\'');
+        if ($opt_board_sort['options_value'] == 'ASC') {
+          $comments_new = $comments_new-- > 0 ? $comments_all['threads_comments'] - $comments_new : $comments_all['threads_comments'];
           $com_start = (int) ($comments_new / $users_limit) * $users_limit;
-          $comments_new = $comments_all['threads_comments'] - $comments_new;
+          if($com_start == $comments_new)
+            $com_start -= $users_limit;
         }
-			}
-			return '&amp;start=' . $com_start . '#com' . $comments_new;
-		}
-		else
-			return '';
-	}
-	else
-		return '';
+        else {
+          if($comments_new <= 1)
+            return '';
+          else {
+            $comments_new--;
+            $com_start = (int) ($comments_new / $users_limit) * $users_limit;
+            $comments_new = $comments_all['threads_comments'] - $comments_new;
+          }
+        }
+        return '&amp;start=' . $com_start . '#com' . $comments_new;
+      }
+      else
+        return '';
+    }
+    else
+      return '';
+  }
+  else
+    return '';
 }
 //-----------------------------------------------------------------------------
 function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0, $count_comments=1, $count_threads=1) {
