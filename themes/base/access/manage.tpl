@@ -15,7 +15,7 @@
     <td class="headb">{sort:name} {lang:name}</td>
     <td class="headb">{sort:access} {lang:access}</td>
     <td class="headb">{sort:clansphere} ClanSphere</td>
-    <td class="headb" colspan="2">{lang:options}</td>
+    <td class="headb" colspan="3">{lang:options}</td>
   </tr>
   {loop:access}
   <tr>
@@ -24,6 +24,7 @@
     <td class="leftc">{access:clansphere}</td>
     <td class="leftc">{access:edit}</td>
     <td class="leftc">{access:remove}</td>
+	<td class="leftc">{access:users}</td>
   </tr>
   {stop:access}
 </table>
