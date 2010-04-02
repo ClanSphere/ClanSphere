@@ -18,7 +18,6 @@ empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $articles_count = cs_sql_count(__FILE__,'articles');
 
-$data['link']['new_article'] =  cs_link($cs_lang['new_article'],'articles','create');
 $data['head']['articles_count'] = $articles_count;
 $data['head']['pages'] = cs_pages('articles','manage',$articles_count,$start,$categories_id,$sort);
 $catmod = "categories_mod = 'articles'";

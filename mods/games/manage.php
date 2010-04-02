@@ -11,7 +11,6 @@ empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $games_count = cs_sql_count(__FILE__,'games');
 
-$data['lang']['new'] = cs_link($cs_lang['new_game'],'games','create');
 $data['lang']['all'] = $cs_lang['total'] . ': ';
 $data['lang']['count'] = $games_count;
 $data['pages']['list'] = cs_pages('games','manage',$games_count,$start,0,$sort);

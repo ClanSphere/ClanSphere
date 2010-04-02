@@ -1,14 +1,13 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+  <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
  </tr>
- <tr>
-  <td class="leftb">{icon:editpaste} <a href="{url:events_create}">{lang:new_event}</a></td>
+ <tr>  
   <td class="leftb">{icon:contents} {lang:total}: {count:all}</td>
   <td class="rightb">{pages:list}</td>
  </tr>
  <tr>
-  <td class="leftb" colspan="3">
+  <td class="leftb" colspan="2">
     <form method="post" id="events_manage" action="{url:events_manage}">
       <fieldset style="border: 0; padding: 0">
         {lang:category}

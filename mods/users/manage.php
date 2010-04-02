@@ -26,7 +26,6 @@ $users_count = cs_sql_count(__FILE__, 'users', $where);
 
 $data['head']['total'] = $users_count;
 $data['head']['pages'] = cs_pages('users', 'manage', $users_count, $start, $letter, $sort);
-$data['url']['new_user'] = cs_url('users', 'create');
 $data['url']['form'] = cs_url('users', 'manage');
 
 $data['head']['message'] = cs_getmsg();

@@ -6,6 +6,7 @@
 //add Access Name
 //add mutiple users at once
 //check for empty access_id
+//check for own user_id
 
 $cs_lang = cs_translate('access');
 

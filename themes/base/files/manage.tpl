@@ -1,14 +1,13 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3"> {lang:mod_name} - {lang:manage} </td>
+    <td class="headb" colspan="2"> {lang:mod_name} - {lang:manage} </td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:files_create}">{lang:new_file}</a></td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
     <td class="rightb">{head:paginator}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3"> {lang:category}
+    <td class="leftb" colspan="2"> {lang:category}
       <form method="post" id="files_manage" action="{url:files_manage}">
         <select name="where">
           <option value="0">----</option>

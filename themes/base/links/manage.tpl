@@ -1,14 +1,13 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:links_create}">{lang:new_link}</a></td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
     <td class="rightb">{head:pages}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3">{lang:cat}
+    <td class="leftb" colspan="2">{lang:cat}
 			<form method="post" id="categorie_select" action="{url:links_manage}">
 					{head:cat_dropdown}
 				<input type="submit" name="submit" value="{lang:show}" />

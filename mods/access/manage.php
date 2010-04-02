@@ -15,7 +15,6 @@ empty($_REQUEST['sort']) ? $sort = 5 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $access_count = cs_sql_count(__FILE__,'access');
 
-$data['lang']['link'] = cs_link($cs_lang['new_access'],'access','create');
 $data['lang']['create'] = cs_url('access','create');
 $data['lang']['count'] = $access_count;
 $data['pages']['list'] = cs_pages('access','manage',$access_count,$start,0,$sort);

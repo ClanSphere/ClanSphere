@@ -1,10 +1,9 @@
 <form method="post" action="{url:users_manage}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:users} - {lang:manage}</td>
+  <td class="headb" colspan="2">{lang:users} - {lang:manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:new_user}">{lang:new_user}</a></td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:total}: {head:total}</td>
     <td class="rightb">{head:pages} </td>
   </tr>

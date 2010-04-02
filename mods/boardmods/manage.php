@@ -15,7 +15,6 @@ empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $boardmods_count = cs_sql_count(__FILE__,'boardmods',$where);
 
-$data['head']['new'] = cs_link($cs_lang['new'],'boardmods','create');
 $data['head']['count'] = $boardmods_count;
 $data['head']['pages'] = cs_pages('boardmods','manage',$boardmods_count,$start,$categories_id,$sort);
 

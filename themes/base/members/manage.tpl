@@ -2,10 +2,8 @@
   <tr>
     <td class="headb" colspan="4">{lang:mod_name} - {lang:manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} {lang:link}</td>
-    <td class="leftb">{icon:contents} {lang:total}: {lang:all}</td>
-    <td class="leftb">{icon:package_settings} {member:options}</td>
+  <tr>    
+    <td class="leftb">{icon:contents} {lang:total}: {lang:all}</td>    
     <td class="rightb">{pages:list}</td>
   </tr>
 </table>

@@ -19,10 +19,8 @@ $quotes_count = cs_sql_count(__FILE__,'quotes',$where);
 
 $data = array();
 
-
 $data['url']['form'] = cs_url('quotes','manage');
 
-$data['head']['create'] = cs_link($cs_lang['new_quote'],'quotes','create');
 $data['lang']['all'] = $cs_lang['total'].': ';
 $data['head']['count'] = $quotes_count;
 $data['head']['pages'] = cs_pages('quotes','manage',$quotes_count,$start,$categories_id,$sort);

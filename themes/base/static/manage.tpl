@@ -1,14 +1,13 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+  <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:new_staticpage}">{lang:new_staticpage}</a></td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:total}: {head:total}</td>
     <td class="rightb">{head:pages} </td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3">
+    <td class="leftb" colspan="2">
       <form method="post" id="static_manage" action="{url:form}">
       <fieldset style="border: 0; padding: 0">
         {lang:access}:

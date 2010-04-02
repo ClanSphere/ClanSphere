@@ -1,9 +1,8 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod_name} - {lang:head_manage}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:head_manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{lang:create}">{lang:new_access}</a></td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:total}: {lang:count}</td>
     <td class="rightb">{pages:list}</td>
   </tr>
@@ -24,7 +23,7 @@
     <td class="leftc">{access:clansphere}</td>
     <td class="leftc">{access:edit}</td>
     <td class="leftc">{access:remove}</td>
-	<td class="leftc">{access:users}</td>
+    <td class="leftc">{access:users}</td>
   </tr>
   {stop:access}
 </table>

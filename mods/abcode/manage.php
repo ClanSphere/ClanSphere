@@ -26,7 +26,6 @@ $cs_sort[6] = 'abcode_order ASC';
 $order = $cs_sort[$sort];
 $abcode_count = cs_sql_count(__FILE__,'abcode',$where);
 
-$data['lang']['create'] = cs_link($cs_lang['new_abcode'],'abcode','create');
 $data['lang']['count'] = $abcode_count;
 $data['pages']['list'] = cs_pages('abcode','manage',$abcode_count,$start,$abcode_func,$sort);
 
@@ -68,7 +67,7 @@ for($run=0; $run<$abcode_loop; $run++) {
 }
 
 $data['if']['access'] = ($account['access_abcode'] == 5) ? true : false;
-$data['head']['colspan'] = ($account['access_abcode'] == 5) ? 4 : 3;
+$data['head']['colspan'] = ($account['access_abcode'] == 5) ? 3 : 2;
 
 $data['sel']['img'] = $abcode_func == 'img' ? 'selected="selected"' : '';
 $data['sel']['str'] = $abcode_func == 'str' ? 'selected="selected"' : '';

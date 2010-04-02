@@ -22,6 +22,8 @@ ___________________________________________________________
 -> Added thread author annotation to board/thread (spongebob)
 -> Added search for clan names to clans/manage (spongebob)
 -> Added an admin menu to manage, create and option pages (gahero)
+-> Added a user list to the access module for displaying and adding users to an access (gahero)
+-> Added and improved many modules icons (gahero)
 -> Fixed bug in user-gallery and gallery (spongebob)
 -> Fixed board-counter after delete a thread (spongebob)
 -> Fixed delete own board/subscription and board/attachments (spongebob)

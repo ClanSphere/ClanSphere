@@ -1,9 +1,8 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
+    <td class="headb">{lang:mod_name} - {lang:manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:cups_create}">{lang:new_cup}</a></td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:total}: {vars:count}</td>
   </tr>
 </table>

@@ -1,9 +1,8 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} {lang:new}</td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:all} {lang:count}</td>
     <td class="rightb">{pages:list}</td>
   </tr>

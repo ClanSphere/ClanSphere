@@ -2,8 +2,7 @@
   <tr>
     <td class="headb" colspan="{head:colspan}">{lang:mod_name} - {lang:manage}</td>
   </tr>
-  <tr>
-    <td class="leftb" style="width: 25%">{icon:editpaste} {lang:create}</td>
+  <tr>    
     {if:access}<td class="leftb" style="width: 25%">{icon:download} <a href="{url:abcode_import}">{lang:import}</a></td>{stop:access}
     <td class="leftb">{icon:contents} {lang:total}: {lang:count}</td>
     <td class="rightb">{pages:list}</td>

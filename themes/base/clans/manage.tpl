@@ -1,18 +1,17 @@
 <form method="post" action="{url:clans_manage}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-  		<td class="headb" colspan="4">{lang:mod_name} - {lang:manage}</td>
+  		<td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
  	</tr>
- 	<tr>
-  		<td class="leftb">{icon:editpaste} <a href="{url:clans_create}">{lang:new_clan}</a></td>
-  		<td class="leftb">{icon:contents} {lang:total}: {count:search}{count:all}</td>
-  		<td class="leftb">{icon:package_settings} <a href="{url:clans_options}">{lang:options}</a></td>
+ 	<tr>  		
+  		<td class="leftb">{icon:contents} {lang:total}: {count:search}{count:all}</td>  		
   		<td class="rightb">{pages:list}</td>
  	</tr>
-  <tr>
-    <td class="leftb">{lang:search}</td>
-    <td class="leftb" colspan="2"><input type="text" name="search_name" id="search_name" value="{search:name}" size="50" maxlength="100" /></td>
-    <td class="leftb"><input type="submit" name="{lang:submit}" /></td>
+  <tr>    
+    <td class="leftb" colspan="2">
+		  {lang:search}: <input type="text" name="search_name" id="search_name" value="{search:name}" size="50" maxlength="100" />
+			<input type="submit" name="{lang:submit}" />
+    </td>    
   </tr>
 	{if:done}
 	<tr>

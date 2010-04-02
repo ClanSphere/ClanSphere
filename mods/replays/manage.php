@@ -23,24 +23,24 @@ $cs_sort[6] = 'replays_team2 ASC';
 empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $replays_count = cs_sql_count(__FILE__,'replays',$where);
+ 
+$data['head']['replays_count'] = $replays_count;
+$data['head']['pages'] = cs_pages('replays','manage',$replays_count,$start,$categories_id,$sort);
+$catmod = "categories_mod = 'replays'";
+$categories_data = cs_sql_select(__FILE__,'categories','*',$catmod,'categories_name',0,0);
+$data['head']['dropdown'] = cs_dropdown('categories_id','categories_name',$categories_data,$categories_id);
 
-  $data['link']['new_replay'] =  cs_link($cs_lang['new_replay'],'replays','create');
-  $data['head']['replays_count'] = $replays_count;
-  $data['head']['pages'] = cs_pages('replays','manage',$replays_count,$start,$categories_id,$sort);
-  $catmod = "categories_mod = 'replays'";
-  $categories_data = cs_sql_select(__FILE__,'categories','*',$catmod,'categories_name',0,0);
-  $data['head']['dropdown'] = cs_dropdown('categories_id','categories_name',$categories_data,$categories_id);
-
-  $data['head']['message'] = cs_getmsg();
+$data['head']['message'] = cs_getmsg();
   
 if(empty($categories_id)) { $cat_where = ''; } else { $cat_where = "categories_id = '" . $categories_id . "'"; }
+
 $select = 'games_id, replays_date, replays_team1, replays_team2, replays_id';
 $data['replays'] = cs_sql_select(__FILE__,'replays',$select,$cat_where,$order,$start,$account['users_limit']);
 $replays_loop = count($data['replays']);
 
-  $data['sort']['date'] = cs_sort('replays','manage',$start,$categories_id,1,$sort);
-  $data['sort']['team1'] = cs_sort('replays','manage',$start,$categories_id,3,$sort);
-  $data['sort']['team2'] = cs_sort('replays','manage',$start,$categories_id,5,$sort);
+$data['sort']['date'] = cs_sort('replays','manage',$start,$categories_id,1,$sort);
+$data['sort']['team1'] = cs_sort('replays','manage',$start,$categories_id,3,$sort);
+$data['sort']['team2'] = cs_sort('replays','manage',$start,$categories_id,5,$sort);
 
 
 for($run=0; $run<$replays_loop; $run++) {
@@ -59,4 +59,4 @@ for($run=0; $run<$replays_loop; $run++) {
 
 }
 
-  echo cs_subtemplate(__FILE__,$data,'replays','manage');
+echo cs_subtemplate(__FILE__,$data,'replays','manage');

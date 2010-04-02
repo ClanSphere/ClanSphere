@@ -1,16 +1,15 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="4">{lang:mod_name} - {lang:head_manage}</td>
+    <td class="headb" colspan="3">{lang:mod_name} - {lang:head_manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:board_create}">{lang:new_board}</a></td>
+  <tr>    
     <td class="leftb">{icon:agt_reload} <a href="{url:board_sort}">{lang:sort}</a></td>
     <td class="leftb">{icon:special_paste} <a href="{url:board_reportlist}">{lang:reports}</a></td>
     <td class="leftb">{icon:attach} <a href="{url:board_attachments_admin}">{lang:attachments}</a> ({head:count_attachments})</td>
   </tr>
   <tr>
     <td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
-    <td class="rightb" colspan="3">{head:pages}</td>
+    <td class="rightb" colspan="2">{head:pages}</td>
   </tr>
 </table>
 <br />

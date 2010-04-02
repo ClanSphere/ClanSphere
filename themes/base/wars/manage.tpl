@@ -1,14 +1,13 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+  <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
  </tr>
- <tr>
-  <td class="leftb">{icon:editpaste} <a href="{url:wars_create}">{lang:new_war}</a></td>
+ <tr>  
   <td class="leftb">{icon:contents} {lang:total}: {count:all}</td>
   <td class="rightb">{pages:list}</td>
  </tr>
  <tr>
-  <td class="leftb" colspan="3">
+  <td class="leftb" colspan="2">
     {lang:status}
       <form method="post" id="wars_manage" action="{url:wars_manage}">
       <select name="where">

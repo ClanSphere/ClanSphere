@@ -1,14 +1,13 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod_name} - {lang:head_manage}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:head_manage}</td>
   </tr>
-  <tr>
-    <td class="leftb">{icon:editpaste} <a href="{url:servers_create}">{lang:new_serv}</a></td>
+  <tr>    
     <td class="leftb">{icon:contents} {lang:total} {server:count}</td>
     <td class="rightb">{server:pages}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3"><a href="http://www.clansphere.net/index/files/view/where/9" target="_blank">{lang:mapsdl}</a></td>
+    <td class="leftb" colspan="2"><a href="http://www.clansphere.net/index/files/view/where/9" target="_blank">{lang:mapsdl}</a></td>
   </tr>
 </table>
 <br />

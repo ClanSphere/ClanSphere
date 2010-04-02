@@ -1,9 +1,8 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+		<td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
 	</tr>
-	<tr>
-		<td class="leftb">{icon:editpaste} <a href="{url:linkus_create}">{lang:new_banner}</a></td>
+	<tr>		
 		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
 		<td class="rightb">{head:pages}</td>
 	</tr>

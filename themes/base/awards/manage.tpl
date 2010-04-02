@@ -1,11 +1,10 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod_name}</td>
+		<td class="headb" colspan="2">{lang:mod_name}</td>
 	</tr>
-	<tr>
-		<td class="leftb" style="width: 33%;">{icon:editpaste} <a href="{url:awards_create}">{lang:new_award}</a></td>
-		<td class="leftb" style="width: 33%;">{icon:contents} {lang:total}: {count:all}</td>
-		<td class="rightb" style="width: 33%;">{head:pages}</td>
+	<tr>		
+		<td class="leftb">{icon:contents} {lang:total}: {count:all}</td>
+		<td class="rightb">{head:pages}</td>
 	</tr>
 </table>
 <br />

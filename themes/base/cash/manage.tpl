@@ -1,16 +1,14 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
-		<td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+		<td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
 	</tr>
 	<tr>
-		<td class="leftb">{icon:editpaste} <a href="{url:cash_create}">{lang:new_cash}</a></td>
 		<td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
 		<td class="rightb">{head:pages}</td>
 	</tr>
 	<tr>
 		<td class="leftb">{icon:business} <a href="{url:cash_manage}">{lang:overview}</a>
-		<td class="leftb">{icon:editpaste} <a href="{url:cash_account}">{lang:kt}</a></td>
-		<td class="leftb">{icon:package_settings} <a href="{url:cash_options}">{lang:options}</a></td>
+		<td class="leftb">{icon:editpaste} <a href="{url:cash_account}">{lang:kt}</a></td>		
 	</tr>
 </table>
 <br />

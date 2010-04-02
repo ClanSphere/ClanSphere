@@ -1,14 +1,13 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
+  <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
+ </tr>
+ <tr>  
+  <td class="leftb">{icon:contents} {lang:total}: {head:count_maps}</td>
+  <td class="rightb">{head:pages}</td>
  </tr>
  <tr>
-  <td class="leftc">{icon:editpaste} <a href="{url:maps_create}">{lang:new_map}</a></td>
-  <td class="leftc">{icon:contents} {lang:total}: {head:count_maps}</td>
-  <td class="rightc">{head:pages}</td>
- </tr>
- <tr>
- 	<td class="leftc"colspan="3">{lang:game}
+ 	<td class="leftb"colspan="2">{lang:game}
  		<form method="post" id="maps_manage" action="{url:maps_manage}">
  			{head:dropdown}
  			<input type="submit" name="submit" value="{lang:show}" /> 		

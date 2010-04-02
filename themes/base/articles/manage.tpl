@@ -1,15 +1,14 @@
 <form method="post" action="{url:articles_manage}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3"> {lang:mod_name} - {lang:head_manage} </td>
+    <td class="headb" colspan="2"> {lang:mod_name} - {lang:head_manage} </td>
   </tr>
-  <tr>
-    <td class="leftb"> {icon:editpaste}{link:new_article}</td>
+  <tr>    
     <td class="leftb"> {icon:contents} {lang:all} {head:articles_count} </td>
 		<td class="rightb"> {head:pages} </td>
   </tr>
 	  <tr>
-    <td class="leftb" colspan="3"> {lang:category}{head:dropdown} <input name="submit" value="{lang:show}" type="submit" /></td>
+    <td class="leftb" colspan="2"> {lang:category}{head:dropdown} <input name="submit" value="{lang:show}" type="submit" /></td>
   </tr>
 </table>
 </form>

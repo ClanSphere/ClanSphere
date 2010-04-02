@@ -18,9 +18,7 @@ $members_count = cs_sql_count(__FILE__,'members');
 
 
 $data['lang']['mod_name'] = $cs_lang[$op_members['label']];
-$data['lang']['link'] = cs_link($cs_lang['new_'.$op_members['label']],'members','create');
 $data['lang']['all'] = $members_count;
-$data['member']['options'] = cs_link($cs_lang['options'],'members','options');
 $data['pages']['list'] = cs_pages('members','manage',$members_count,$start,0,$sort);
 
 

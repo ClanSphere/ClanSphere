@@ -13,8 +13,6 @@ $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $banners_count = cs_sql_count(__FILE__,'banners');
 
-
-$data['link']['new'] = cs_url('banners','create');
 $data['count']['all'] = $banners_count;
 $data['pages']['list'] = cs_pages('banners','manage',$banners_count,$start,0,$sort);
 

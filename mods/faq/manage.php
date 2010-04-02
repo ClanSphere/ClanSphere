@@ -13,11 +13,8 @@ empty($_REQUEST['sort']) ? $sort = 4 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $faq_count = cs_sql_count(__FILE__,'faq');
 
-
-$data['lang']['create'] = cs_link($cs_lang['new'],'faq','create');
 $data['lang']['count'] = $faq_count;
 $data['pages']['list'] = cs_pages('faq','manage',$faq_count,$start,0,$sort);
-
 
 $data['lang']['getmsg'] = cs_getmsg();
 

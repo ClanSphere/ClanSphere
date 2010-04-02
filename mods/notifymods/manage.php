@@ -11,7 +11,6 @@ empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $notifymods_count = cs_sql_count(__FILE__,'notifymods');
 
-$data['head']['new'] = cs_link($cs_lang['new'],'notifymods','create');
 $data['head']['count'] = $notifymods_count;
 $data['head']['pages'] = cs_pages('notifymods','manage',$notifymods_count,$start,0,$sort);
 
