@@ -2,20 +2,11 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-//TODO
-//add Access Name
-//add mutiple users at once
-//check for empty access_id
-//check for own user_id
-
 $cs_lang = cs_translate('access');
 
 empty($_REQUEST['id']) ? $access_id = 0 : $access_id = $_REQUEST['id'];
 
 $data = array();
-
-$data['access']['id'] = $access_id;
-
 
 if(isset($_POST['submit']) && isset($_POST['users_nick']) && isset($_REQUEST['id'])) {
 
@@ -24,27 +15,21 @@ if(isset($_POST['submit']) && isset($_POST['users_nick']) && isset($_REQUEST['id
   $cs_user = cs_sql_select(__FILE__,'users', $select, $where);
   
   $errormsg = '';
+
+  $errormsg .= count($cs_user) > 0 ? '' : $cs_lang['user_notfound'] . cs_html_br(1);
+  $errormsg .= $cs_user['access_id'] != $access_id ? '' : $cs_lang['user_ingroup'] . cs_html_br(1);
+  $errormsg .= $account['users_id'] != $cs_user['users_id'] ? '' : $cs_lang['user_account'] . cs_html_br(1);
+  $errormsg .= $access_id > 0 ? '' : $cs_lang['no_access'];
   
-  if (count($cs_user) > 0)
-  {
-    if($cs_user['access_id'] != $access_id)
-	{
-      $cs_access_user['access_id'] = $access_id;
+  if (empty($errormsg))
+  {    
+    $cs_access_user['access_id'] = $access_id;
 	  $users_id = $cs_user['users_id'];
 	
 	  $user_cells = array_keys($cs_access_user);
-      $user_save = array_values($cs_access_user);
-      cs_sql_update(__FILE__,'users',$user_cells,$user_save,$users_id);
+    $user_save = array_values($cs_access_user);
+    cs_sql_update(__FILE__,'users',$user_cells,$user_save,$users_id);
 	}
-	else
-	{
-	  $errormsg .= $cs_lang['user_ingroup'];;
-	}
-  }
-  else
-  {
-    $errormsg .= $cs_lang['user_notfound'];
-  }
 }
 
 if(!isset($_POST['submit'])) {
@@ -56,6 +41,14 @@ elseif(!empty($errormsg)) {
 else {
   $data['head']['msg'] = $cs_lang['user_added'];
 }
+
+$select = 'access_id, access_name';
+$where = "access_id = '" . $access_id . "'";
+$cs_access = cs_sql_select(__FILE__,'access', $select, $where);
+
+$data['access']['id'] = $access_id;
+$data['access']['name'] = $cs_access['access_name'];
+
 
 $select = 'users_id, access_id, users_nick, users_delete, users_active';
 $where = "users_delete = '0' AND access_id = '" . $access_id . "'";

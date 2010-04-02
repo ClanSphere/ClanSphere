@@ -33,3 +33,5 @@ $cs_lang['user_notfound']  = 'The user can not be found';
 $cs_lang['user_ingroup']  = 'The user already is a member of this group';
 $cs_lang['users_head']  = 'Individual users can be added here';
 $cs_lang['user_added']  = 'The user was added successfully';
+$cs_lang['user_account']  = 'You can not move yourself';
+$cs_lang['no_access']  = 'No access selected';

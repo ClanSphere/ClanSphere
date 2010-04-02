@@ -28,7 +28,7 @@ function cs_admin_menu()
     $data['if']['manage'] = false;
   }
   
-  if (file_exists('mods/' . $recent_mod . '/create.php') && $account['access_' . $recent_mod] >= 3)
+  if (file_exists('mods/' . $recent_mod . '/create.php') && $account['access_' . $recent_mod] >= 3 && $recent_mod != 'shoutbox')
   {
     $link_count++;	
     $data['menu']['create'] = $recent_action == 'create' ? $cs_lang['create'] : cs_link($cs_lang['create'], $recent_mod,'create');
