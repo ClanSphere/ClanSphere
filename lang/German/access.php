@@ -26,3 +26,10 @@ $cs_lang['clansphere_3'] = 'Verwaltung';
 $cs_lang['clansphere_4'] = 'System';
 $cs_lang['clansphere_5'] = 'Webmaster';
 $cs_lang['del_error']  = 'Die Standard-Klassen k&ouml;nnen nicht gel&ouml;scht werden.';
+
+$cs_lang['add_user']  = 'Benutzer hinzuf&uuml;gen';
+$cs_lang['user_list']  = 'Benutzerliste';
+$cs_lang['user_notfound']  = 'Der Benutzer wurde nicht gefunden';
+$cs_lang['user_ingroup']  = 'Der Benutzer ist bereits in dieser Gruppe';
+$cs_lang['users_head']  = 'Einzelne Benutzer k&ouml;nnen hier hinzugef&uuml;gt werden';
+$cs_lang['user_added']  = 'Der Benutzer wurde erfolgreich hinzugef&uuml;gt';

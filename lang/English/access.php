@@ -26,3 +26,10 @@ $cs_lang['clansphere_3'] = 'Administration';
 $cs_lang['clansphere_4'] = 'System';
 $cs_lang['clansphere_5'] = 'Webmaster';
 $cs_lang['del_error']  = 'Default-classes cannot be deleted.';
+
+$cs_lang['add_user']  = 'Add User';
+$cs_lang['user_list']  = 'Userlist';
+$cs_lang['user_notfound']  = 'The user can not be found';
+$cs_lang['user_ingroup']  = 'The user already is a member of this group';
+$cs_lang['users_head']  = 'Individual users can be added here';
+$cs_lang['user_added']  = 'The user was added successfully';

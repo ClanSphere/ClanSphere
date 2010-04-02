@@ -31,6 +31,7 @@ $data['sort']['clansphere'] = cs_sort('access','manage',$start,0,5,$sort);
 
 $img_edit = cs_icon('edit',16,$cs_lang['edit']);
 $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
+$img_users = cs_icon('kdmconfig',16,$cs_lang['remove']);
 
 if(empty($access_loop)) {
   $data['access'] = '';
@@ -41,6 +42,7 @@ for($run=0; $run<$access_loop; $run++) {
   $data['access'][$run]['access'] = $cs_access[$run]['access_access'] . ' - ' . $cs_lang['lev_' . $cs_access[$run]['access_access']];
   $data['access'][$run]['clansphere'] = $cs_access[$run]['access_clansphere'] . ' - ' . $cs_lang['clansphere_' . $cs_access[$run]['access_clansphere']];
   $data['access'][$run]['edit'] = cs_link($img_edit,'access','edit','id=' . $cs_access[$run]['access_id'],0,$cs_lang['edit']);
+  $data['access'][$run]['users'] = cs_link($img_users,'access','users','id=' . $cs_access[$run]['access_id'],0,$cs_lang['user_list']);
 
   if($cs_access[$run]['access_id'] < 6) {
     $data['access'][$run]['remove'] = '-';
