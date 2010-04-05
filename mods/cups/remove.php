@@ -22,6 +22,8 @@ elseif(!isset($_POST['submit'])) {
   }
 } else {
   $cups_id = (int) $_POST['id'];
+  cs_sql_delete(__FILE__,'cupmatches',$cups_id,'cups_id');
+  cs_sql_delete(__FILE__,'cupsquads',$cups_id,'cups_id');
   cs_sql_delete(__FILE__,'cups',$cups_id);
   cs_redirect($cs_lang['del_true'], 'cups');
 }

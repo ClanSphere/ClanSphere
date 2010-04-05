@@ -59,7 +59,7 @@ if ($cups_system == 'users') {
 }
 
 $count_teams = count($data['teams']);
-
+$data['if']['teams_loop'] = empty($count_teams) ? FALSE : TRUE;
 for ($i = 0; $i < $count_teams; $i++) {
 	$data['teams'][$i]['join'] = cs_date('unix', $data['teams'][$i]['cupsquads_time'],1);
 	if ($cups_system == 'teams') {

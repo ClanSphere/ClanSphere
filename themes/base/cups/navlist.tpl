@@ -1,4 +1,4 @@
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:100%">
+<table cellpadding="0" cellspacing="{page:cellspacing}" style="width:100%">
 {loop:cups}
  <tr>
   <td><a href="{cups:view_url}">{cups:cups_name}</a></td>

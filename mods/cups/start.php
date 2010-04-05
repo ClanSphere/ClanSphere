@@ -23,9 +23,9 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   
   $id = (int) $_POST['id'];
   
-  $maxteams = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$id.'\'');
+  $maxteams = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = ' . $id);
   $halfmax = $maxteams['cups_teams'] / 2;
-  $select = cs_sql_select(__FILE__,'cupsquads','squads_id','cups_id = \''.$id.'\'',0,0,0);
+  $select = cs_sql_select(__FILE__,'cupsquads','squads_id','cups_id = ' . $id,0,0,0);
   
   if(!empty($select)) {
     $x = 0;
@@ -70,8 +70,8 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   
   $id = (int) $_GET['id'];
   
-  $cupsel = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = \''.$id.'\'');
-  $squads_count = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$id.'\'');
+  $cupsel = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = ' . $id);
+  $squads_count = cs_sql_count(__FILE__,'cupsquads','cups_id = ' . $id);
   
   if (($cupsel['cups_teams'] / 2) >= $squads_count) {
     

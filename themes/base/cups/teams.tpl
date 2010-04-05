@@ -10,6 +10,7 @@
 </table>
 <br />
 {var:message}
+{if:teams_loop}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:name} {lang:name}</td>
@@ -22,3 +23,4 @@
     <td class="leftc"><a href="{url:cups_teamremove:id={teams:cupsquads_id}}" title="{lang:remove}">{icon:editdelete}</a></td>
   </tr>{stop:teams}
 </table>
+{stop:teams_loop}
