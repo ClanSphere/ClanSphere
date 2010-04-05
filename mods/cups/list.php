@@ -20,7 +20,7 @@ if (empty($games_id)) {
   $where = 0;
   $tables .= ' GROUP BY cp.cups_id';
 } else {
-  $where  = 'cp.games_id = \''.$games_id.'\'';
+  $where  = 'cp.games_id = ' . $games_id;
   $where .= ' GROUP BY cp.cups_id';
 }
 

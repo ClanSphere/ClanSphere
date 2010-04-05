@@ -16,36 +16,55 @@ $sort = empty($_GET['sort']) ? 3 : (int) $_GET['sort'];
 $order = $cs_sort[$sort];
 
 $data = array();
-$data['count']['all'] = cs_sql_count(__FILE__,'cupsquads','cups_id = \''.$cups_id.'\'');
+$data['count']['all'] = cs_sql_count(__FILE__,'cupsquads','cups_id = ' . $cups_id);
 $data['pages']['list'] = cs_pages('cups','teams',$data['count']['all'],$start,$cups_id,$sort);
 $data['sort']['name'] = cs_sort('cups', 'teams', $start, $cups_id, 1, $sort);
 $data['sort']['join'] = cs_sort('cups','teams',$start,$cups_id,3,$sort);
 $data['var']['message'] = cs_getmsg();
 
-$cups_system = cs_sql_select(__FILE__,'cups','cups_system','cups_id = "' . $cups_id . '"');
+$cups_system = cs_sql_select(__FILE__,'cups','cups_system','cups_id = ' . $cups_id);
 $cups_system = $cups_system['cups_system'];
 
-$cells  = 'cs.cupsquads_id AS cupsquads_id, cs.cupsquads_time AS cupsquads_time, cs.squads_id AS squads_id, ';
-$tables = 'cupsquads cs INNER JOIN {pre}_';
 
 if ($cups_system == 'users') {
+  $tables  = 'cupsquads cs INNER JOIN {pre}_';
   $tables .= 'users usr ON cs.squads_id = usr.users_id';
+  $cells   = 'cs.cupsquads_id AS cupsquads_id, cs.cupsquads_time AS cupsquads_time, cs.squads_id AS squads_id, ';
   $cells  .= 'usr.users_nick AS squads_name, usr.users_active AS users_active, usr.users_delete AS users_delete';
   $mod     = 'users';
+  $data['teams'] = cs_sql_select(__FILE__,$tables,$cells,'cups_id = ' . $cups_id,$order,$start,$account['users_limit']);
 } else {
-  $tables .= 'squads sq ON cs.squads_id = sq.squads_id';
-  $cells  .= 'sq.squads_name AS squads_name';
+  $squads_ids = cs_sql_select(__FILE__,'cupsquads','squads_id, squads_name, cupsquads_id, cupsquads_time','cups_id = ' . $cups_id,0,0,0);
+  $run=0;
+  foreach($squads_ids as $squads_run) {
+    $squads_name = cs_sql_select(__FILE__,'squads','squads_name','squads_id = ' . $squads_run['squads_id']);
+    if(empty($squads_name)) {
+      $data['teams'][$run]['squads_id'] = 0;
+      if(empty($squads_run['squads_name'])) {
+        $data['teams'][$run]['squads_name'] = 'ID: ' . $squads_run['squads_id'];
+        cs_sql_update(__FILE__, 'cupsquads', array('squads_name'), array($data['teams'][$run]['squads_name']), $squads_run['cupsquads_id']);
+      }
+      else
+        $data['teams'][$run]['squads_name'] = $squads_run['squads_name'];
+    }
+    else {
+      $data['teams'][$run]['squads_id'] = $squads_run['squads_id'];
+      $data['teams'][$run]['squads_name'] = $squads_name['squads_name'];
+    }
+    $data['teams'][$run]['cupsquads_time'] = $squads_run['cupsquads_time'];
+    $data['teams'][$run]['cupsquads_id'] = $squads_run['cupsquads_id'];
+    $run++;
+  }
   $mod     = 'squads';
 }
 
-$data['teams'] = cs_sql_select(__FILE__,$tables,$cells,'cups_id = "' . $cups_id . '"',$order,$start,$account['users_limit']);
 $count_teams = count($data['teams']);
 
 for ($i = 0; $i < $count_teams; $i++) {
 	$data['teams'][$i]['join'] = cs_date('unix', $data['teams'][$i]['cupsquads_time'],1);
 	if ($cups_system == 'teams') {
-		$data['teams'][$i]['team'] = cs_link($data['teams'][$i]['squads_name'], 'squads', 'view', 'id=' . $data['teams'][$i]['squads_id']);
-	} else {
+		$data['teams'][$i]['team'] = empty($data['teams'][$i]['squads_id']) ? cs_secure($data['teams'][$i]['squads_name']) : cs_link(cs_secure($data['teams'][$i]['squads_name']),'squads','view','id=' . $$data['teams'][$i]['squads_id']);
+  } else {
 		$data['teams'][$i]['team'] = cs_user($data['teams'][$i]['squads_id'],$data['teams'][$i]['squads_name'], $data['teams'][$i]['users_active'], $data['teams'][$i]['users_delete']);
 	}
 }

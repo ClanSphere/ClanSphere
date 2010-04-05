@@ -153,7 +153,7 @@ if($data['cup']['cups_system'] == 'teams') {
   
   $squads_loop = count($squads);
   
-  if(!empty($data['cup']['reg'])) {
+  if(!empty($squads_loop)) {
     $data['if']['teams'] = true;
     
     $run=0;
