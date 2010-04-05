@@ -1,6 +1,6 @@
 <?PHP
 // ClanSphere 2009 - www.clansphere.net
-// $Id: users.php 3456 2009-07-09 09:50:40Z hajo $
+// $Id$
 
 $cs_lang = cs_translate('gallery', 1);
 $data = array();

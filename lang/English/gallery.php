@@ -249,3 +249,4 @@ $cs_lang['folder'] = 'Folder';
 $cs_lang['folder_create'] = 'Create category';
 $cs_lang['folder_create_here'] = 'Here you can create new categories.';
 $cs_lang['no_name'] = 'No name given';
+$cs_lang['top_list'] = 'Top5';

@@ -249,3 +249,4 @@ $cs_lang['folder'] = 'Ordner';
 $cs_lang['folder_create'] = 'Ordner erstellen';
 $cs_lang['folder_create_here'] = 'Hier k&ouml;nnen neue Ordner erstellt werden.';
 $cs_lang['no_name'] = 'Kein Name angegeben';
+$cs_lang['top_list'] = 'Top5';
