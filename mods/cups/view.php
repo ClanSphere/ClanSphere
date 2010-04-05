@@ -130,34 +130,52 @@ $data['if']['players'] = false;
 $run = 0;
 $run2 = 0;
 if($data['cup']['cups_system'] == 'teams') {
-  $tables = 'cupsquads csp INNER JOIN {pre}_squads sqd ON csp.squads_id = sqd.squads_id';
-  $cells = 'sqd.squads_id AS squads_id, sqd.squads_name AS squads_name';
-  $squads = cs_sql_select(__FILE__,$tables,$cells,'csp.cups_id = \''.$cups_id.'\'','squads_name',0,0);
+  $squads_ids = cs_sql_select(__FILE__,'cupsquads','squads_id, squads_name, cupsquads_id','cups_id = ' . $cups_id,0,0,0);
+  $run=0;
+  $squads = array();
+  foreach($squads_ids as $squads_run) {
+    $squads_name = cs_sql_select(__FILE__,'squads','squads_name','squads_id = ' . $squads_run['squads_id']);
+    if(empty($squads_name)) {
+      $squads[$run]['squads_id'] = 0;
+      if(empty($squads_run['squads_name'])) {
+        $squads[$run]['squads_name'] = 'ID: ' . $squads_run['squads_id'];
+        cs_sql_update(__FILE__, 'cupsquads', array('squads_name'), array($squads[$run]['squads_name']), $squads_run['cupsquads_id']);
+      }
+      else
+        $squads[$run]['squads_name'] = $squads_run['squads_name'];
+    }
+    else {
+      $squads[$run]['squads_id'] = $squads_run['squads_id'];
+      $squads[$run]['squads_name'] = $squads_name['squads_name'];
+    }
+    $run++;
+  }
   
   $squads_loop = count($squads);
   
-  if(!empty($squads_loop)) {
+  if(!empty($data['cup']['reg'])) {
     $data['if']['teams'] = true;
     
-    for($run=0; $run<$squads_loop; $run++) {
-      $data['squads'][$run]['name'] = cs_link(cs_secure($squads[$run]['squads_name']),'squads','view','id=' . $squads[$run]['squads_id']);
+    $run=0;
+    foreach($squads as $squads_run) {
+      $data['squads'][$run]['name'] = empty($squads_run['squads_id']) ? cs_secure($squads_run['squads_name']) : cs_link(cs_secure($squads_run['squads_name']),'squads','view','id=' . $squads_run['squads_id']);
     
       $part_tab = 'members mem INNER JOIN {pre}_users usr ON mem.users_id = usr.users_id';
       $part_cells = 'mem.members_admin AS members_admin, usr.users_nick AS users_nick, usr.users_id AS users_id, usr.users_active AS users_active, usr.users_country AS users_country';
-      $where = "mem.squads_id = '" . $squads[$run]['squads_id'] . "'";
+      $where = "mem.squads_id = '" . $squads_run['squads_id'] . "'";
       $members = cs_sql_select(__FILE__,$part_tab,$part_cells,$where,'mem.members_order',0,0);
       
       $members_loop = count($members);
       
-      if(empty($members_loop)) {
+      if(empty($members)) {
         $data['loop']['members'] = '';
         $data['stop']['members'] = '';
         $data['squads'][$run]['members']['country'] = '';
         $data['squads'][$run]['members']['name'] = '';
         $data['squads'][$run]['members']['dot'] = '';
-     }
-     else {    
-       for($run_2=0; $run_2<$members_loop; $run_2++) {
+      }
+      else {
+        for($run_2=0; $run_2<$members_loop; $run_2++) {
           $users_nick = cs_secure($members[$run_2]['users_nick']);
           $users_link = cs_user($members[$run_2]['users_id'],$members[$run_2]['users_nick'], $members[$run_2]['users_active']);
            
@@ -180,7 +198,9 @@ if($data['cup']['cups_system'] == 'teams') {
           
         }
       }
+      $run++;
     }
+    
   }  
 }
 else {

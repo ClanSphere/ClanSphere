@@ -39,5 +39,7 @@ ALTER TABLE {pre}_notifymods ADD notifymods_files INT(2) NOT NULL DEFAULT '0';
 ALTER TABLE {pre}_abcode ADD abcode_order INT(2) NOT NULL DEFAULT '0';
 CREATE INDEX {pre}_abcode_abcode_order_index ON {pre}_abcode (abcode_order);
 
-ALTER TABLE {pre}_files CHANGE files_size files_size DECIMAL(18, 2) UNSIGNED NOT NULL
+ALTER TABLE {pre}_files CHANGE files_size files_size DECIMAL(18, 2) UNSIGNED NOT NULL;
+
+ALTER TABLE {pre}_cupsquads ADD squads_name VARCHAR(80) NOT NULL DEFAULT '';
 

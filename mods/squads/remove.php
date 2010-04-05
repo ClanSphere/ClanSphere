@@ -7,24 +7,27 @@ $cs_get = cs_get('id');
 $data = array();
 
 $squads_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+settype($squads_id,'integer');
 
 $op_squads = cs_sql_option(__FILE__,'squads');
 $data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
 
 if(isset($_GET['agree'])) {
 
-  $where = "squads_id = '" . $squads_id . "' AND users_id = '" . $account['users_id'] . "'";
+  $where = 'squads_id = ' . $squads_id . ' AND users_id = ' . $account['users_id'];
   $search_admin = cs_sql_select(__FILE__,'members','members_admin',$where);
 
   if(empty($search_admin['members_admin']) AND $account['access_squads'] < 5) {
     $msg = $cs_lang['no_admin'];
   }
   else {
-    $where = "squads_id = '" . $squads_id . "'";
-    $getpic = cs_sql_select(__FILE__,'squads','squads_picture',$where);
+    $where = 'squads_id = ' . $squads_id;
+    $getpic = cs_sql_select(__FILE__,'squads','squads_picture, squads_name',$where);
     if(!empty($getpic['squads_picture'])) {
       cs_unlink('squads', $getpic['squads_picture']);
     }
+    $where = 'squads_id = ' . $squads_id;
+    cs_sql_update(__FILE__, 'cupsquads', array('squads_name'), array($getpic['squads_name']), 0, $where);
     cs_sql_delete(__FILE__,'squads',$squads_id);
     cs_sql_delete(__FILE__,'members',$squads_id,'squads_id');
     $msg = $cs_lang['sq_del_true'];

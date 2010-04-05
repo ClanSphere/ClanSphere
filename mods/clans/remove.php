@@ -26,6 +26,14 @@ if(isset($_GET['agree']) AND $clans_id != 1) {
   if(is_array($cs_squads)) {
     foreach($cs_squads AS $key => $squads_id) {
       cs_sql_delete(__FILE__,'members',$squads_id,'squads_id');
+  
+      $where = 'squads_id = ' . $squads_id;
+      $getpic = cs_sql_select(__FILE__,'squads','squads_picture, squads_name',$where);
+      if(!empty($getpic['squads_picture'])) {
+        cs_unlink('squads', $getpic['squads_picture']);
+      }
+      $where = 'squads_id = ' . $squads_id;
+      cs_sql_update(__FILE__, 'cupsquads', array('squads_name'), array($getpic['squads_name']), 0, $where);
     }
   }
   
