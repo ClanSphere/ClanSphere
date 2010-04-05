@@ -8,17 +8,19 @@ $match_id = (int) $_GET['id'];
 
 $tables = 'cupmatches cm INNER JOIN {pre}_cups cp ON cm.cups_id = cp.cups_id';
 $cells = 'cp.cups_system AS cups_system';
-$system = cs_sql_select(__FILE__,$tables,$cells,'cm.cupmatches_id = \''.$match_id.'\'');
+$system = cs_sql_select(__FILE__,$tables,$cells,'cm.cupmatches_id = ' . $match_id);
 
 $tables  = 'cupmatches cm ';
-$tables .= 'INNER JOIN {pre}_cups cp ON cm.cups_id = cp.cups_id ';
-$tables .= 'INNER JOIN {pre}_games gms ON cp.games_id = gms.games_id ';
+$tables .= 'LEFT JOIN {pre}_cups cp ON cm.cups_id = cp.cups_id ';
+$tables .= 'LEFT JOIN {pre}_games gms ON cp.games_id = gms.games_id ';
 
 if ($system['cups_system'] == 'teams') {
-  $tables .= 'INNER JOIN {pre}_squads sq1 ON cm.squad1_id = sq1.squads_id ';
-  $tables .= 'LEFT JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id';
+  $tables .= 'LEFT JOIN {pre}_squads sq1 ON cm.squad1_id = sq1.squads_id ';
+  $tables .= 'LEFT JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id ';
+  $tables .= 'LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id ';
+  $tables .= 'LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
 } else {
-  $tables .= 'INNER JOIN {pre}_users usr1 ON cm.squad1_id = usr1.users_id ';
+  $tables .= 'LEFT JOIN {pre}_users usr1 ON cm.squad1_id = usr1.users_id ';
   $tables .= 'LEFT JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id';
 }
 
@@ -33,7 +35,8 @@ $cells .= 'cm.cupmatches_round AS cupmatches_round, ';
 
 if ($system['cups_system'] == 'teams') {
   $cells .= 'sq1.squads_name AS squad1_name, sq2.squads_name AS squad2_name, ';
-  $cells .= 'cm.squad1_id AS squad1_id, cm.squad2_id AS squad2_id';
+  $cells .= 'cm.squad1_id AS squad1_id, cm.squad2_id AS squad2_id, ';
+  $cells .= 'cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
 } else {
   $cells .= 'usr1.users_nick AS user1_nick, usr2.users_nick AS user2_nick, ';
   $cells .= 'cm.squad1_id AS user1_id, cm.squad2_id AS user2_id';
@@ -42,12 +45,24 @@ if ($system['cups_system'] == 'teams') {
 $data = array();
 
 $data['get']['message'] = cs_getmsg();
-$data['match'] = cs_sql_select(__FILE__,$tables,$cells,'cupmatches_id = \''.$match_id.'\'');
+$data['match'] = cs_sql_select(__FILE__,$tables,$cells,'cupmatches_id = ' . $match_id);
 
 if ($system['cups_system'] == 'teams') {
-  $data['match']['team1'] = cs_link($data['match']['squad1_name'],'squads','view','id=' . $data['match']['squad1_id']);
-  $data['match']['team2'] = cs_link($data['match']['squad2_name'],'squads','view','id=' . $data['match']['squad2_id']);
-} else {
+  if(empty($data['match']['squad1_name'])) {
+    $data['match']['team1'] = cs_secure($data['match']['squad1_name_c']);
+    $data['match']['squad1_id'] = 0;
+  }
+  else
+    $data['match']['team1'] = cs_link(cs_secure($data['match']['squad1_name']),'squads','view','id=' . $data['match']['squad1_id']);
+  
+  if(empty($data['match']['squad2_name'])) {
+    $data['match']['team2'] = cs_secure($data['match']['squad2_name_c']);
+    $data['match']['squad2_id'] = 0;
+  }
+  else
+    $data['match']['team2'] = cs_link(cs_secure($data['match']['squad2_name']),'squads','view','id=' . $data['match']['squad2_id']);
+}
+else {
   $data['lang']['team'] = $cs_lang['player'];
   
   $users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $data['match']['user1_id'] . "'");

@@ -10,9 +10,9 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
   $cupmatches_id = (int) $_POST['cupmatches_id'];
   
   $cells = 'cups_id, squad1_id, squad2_id, cupmatches_round, cupmatches_accepted1, cupmatches_accepted2, cupmatches_winner';
-  $matchsel = cs_sql_select(__FILE__,'cupmatches',$cells,'cupmatches_id = \''.$cupmatches_id.'\'');
-  
-  $cup = cs_sql_select(__FILE__,'cups','cups_system, cups_brackets, cups_teams','cups_id = \''.$matchsel['cups_id'].'\'');
+  $matchsel = cs_sql_select(__FILE__,'cupmatches',$cells,'cupmatches_id = ' . $cupmatches_id);
+
+  $cup = cs_sql_select(__FILE__,'cups','cups_system, cups_brackets, cups_teams','cups_id = ' . $matchsel['cups_id']);
   
   $squad = empty($_POST['squad']) ? 0 : $_POST['squad'];
   $squad = $squad == 1 || !empty($_POST['accept1']) ? 1 : 2;
@@ -233,18 +233,21 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
       
       $tables = 'cupmatches cm INNER JOIN {pre}_cups cp ON cm.cups_id = cp.cups_id';
       $cells = 'cp.cups_system AS cups_system';
-      $system = cs_sql_select(__FILE__,$tables,$cells,'cm.cupmatches_id = \''.$cupmatches_id.'\'');
+      $system = cs_sql_select(__FILE__,$tables,$cells,'cm.cupmatches_id = ' . $cupmatches_id);
       
       $tables  = 'cupmatches cm ';
       
       if($system['cups_system'] == 'teams') {
-        $tables .= 'INNER JOIN {pre}_squads sq1 ON cm.squad1_id = sq1.squads_id ';
-        $tables .= 'INNER JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id';  
+        $tables .= 'LEFT JOIN {pre}_squads sq1 ON cm.squad1_id = sq1.squads_id ';
+        $tables .= 'LEFT JOIN {pre}_squads sq2 ON cm.squad2_id = sq2.squads_id ';
+        $tables .= 'LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id ';
+        $tables .= 'LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id ';
         $cells = 'cm.squad1_id AS squad1_id, cm.squad2_id AS squad2_id, ';
         $cells .='sq1.squads_name AS squad1_name, sq2.squads_name AS squad2_name, ';
+        $cells .= 'cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c, ';
       } else {
-        $tables .= 'INNER JOIN {pre}_users usr1 ON cm.squad1_id = usr1.users_id ';
-        $tables .= 'INNER JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id ';
+        $tables .= 'LEFT JOIN {pre}_users usr1 ON cm.squad1_id = usr1.users_id ';
+        $tables .= 'LEFT JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id ';
         $cells  = 'cm.squad1_id AS user1_id, usr1.users_nick AS user1_nick, ';
         $cells .= 'cm.squad2_id AS user2_id, usr2.users_nick AS user2_nick, ';
       }
@@ -256,13 +259,13 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
        
       $data = array();
       
-      $data['match'] = cs_sql_select(__FILE__,$tables,$cells,'cm.cupmatches_id = \''.$cupmatches_id.'\'');
+      $data['match'] = cs_sql_select(__FILE__,$tables,$cells,'cm.cupmatches_id = ' . $cupmatches_id);
       
       if ($system['cups_system'] == 'teams') {
         $data['match']['team1_id'] = $data['match']['squad1_id'];
         $data['match']['team2_id'] = $data['match']['squad2_id'];
-        $data['match']['team1_name'] = $data['match']['squad1_name'];
-        $data['match']['team2_name'] = $data['match']['squad2_name'];
+        $data['match']['team1_name'] = empty($data['match']['squad1_name']) ? cs_secure($data['match']['squad1_name_c']) : cs_secure($data['match']['squad1_name']);
+        $data['match']['team2_name'] = empty($data['match']['squad2_name']) ? cs_secure($data['match']['squad2_name_c']) : cs_secure($data['match']['squad2_name']);
       } else {
         $data['match']['team1_id'] = $data['match']['user1_id'];
         $data['match']['team2_id'] = $data['match']['user2_id'];
