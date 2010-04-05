@@ -20,6 +20,7 @@ ___________________________________________________________
 -> Added top9 (order) to abcode (spongebob)
 -> Added thread author annotation to board/thread (spongebob)
 -> Added search for clan names to clans/manage (spongebob)
+-> Added usergallery/top (spongebob)
 -> Added an admin menu to manage, create and option pages (gahero)
 -> Added a user list to the access module for displaying and adding users to an access (gahero)
 -> Added and improved many modules icons (gahero)

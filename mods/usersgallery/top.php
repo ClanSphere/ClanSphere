@@ -59,7 +59,8 @@ $access_id = $account['access_usersgallery'];
       $from = 'voted vod INNER JOIN {pre}_usersgallery gal ON vod.voted_fid = gal.usersgallery_id';
       $select = 'gal.usersgallery_id AS usersgallery_id, AVG(vod.voted_answer) AS voted_answer, ';
       $select .= 'gal.folders_id AS folders_id, gal.users_id AS users_id';
-      $where = "gal.usersgallery_status = 1 AND vod.voted_mod = 'usersgallery' GROUP BY gal.usersgallery_id";
+      $where = 'gal.usersgallery_status = 1 AND gal.usersgallery_access <= ' . $access_id;
+      $where .= " AND vod.voted_mod = 'usersgallery' GROUP BY gal.usersgallery_id";
       $order = 'voted_answer DESC';
       $cs_voted = cs_sql_select(__FILE__,$from,$select,$where,$order,0,5);
       if(count($cs_voted) == 1) {
