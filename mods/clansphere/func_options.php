@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id:  $
+// $Id$
 
 function cs_optionsave ($mod, $save) {
   

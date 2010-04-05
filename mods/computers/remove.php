@@ -3,8 +3,8 @@
 // Id: remove.php (Tue Nov 25 19:52:50 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('computers');
-$cs_get = cs_get('id');
-$cs_post = cs_post('id');
+$cs_get = (int) cs_get('id');
+$cs_post = (int) cs_post('id');
 $data = array();
 
 $computers_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
@@ -15,7 +15,7 @@ $referrer = $account['access_computers'] < 3 ? 'center' : 'manage';
 if(isset($_POST['agree'])) {
   
   $select = 'users_id, computers_pictures';
-  $computer = cs_sql_select(__FILE__,'computers',$select,"computers_id = '" . $computers_id . "'");
+  $computer = cs_sql_select(__FILE__,'computers',$select,'computers_id = ' . $computers_id);
   if($computer['users_id'] == $account['users_id'] OR $account['access_computers'] >= 5) {
     $computer_string = $computer['computers_pictures'];
     $computer_pics = empty($computer_string) ? array() : explode("\n",$computer_string);
@@ -37,7 +37,7 @@ if(isset($_POST['cancel']))
 
 if(!isset($_POST['agree'])) {
   
-  $search_user = cs_sql_select(__FILE__,'computers','users_id',"computers_id = '" . $computers_id . "'");
+  $search_user = cs_sql_select(__FILE__,'computers','users_id','computers_id = ' . $computers_id);
   if($search_user['users_id'] != $account['users_id'] AND $account['access_computers'] < 5) {
     $data['head']['body'] = $cs_lang['not_own'];
     $data['if']['own'] = FALSE;

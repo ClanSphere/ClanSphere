@@ -11,7 +11,7 @@ settype($att_id,'integer');
 if(isset($_POST['agree'])) {
   $att_form = 0;
   $select = 'users_id, boardfiles_name';
-  $computer = cs_sql_select(__FILE__,'boardfiles',$select,"boardfiles_id = '" . $att_id . "'");
+  $computer = cs_sql_select(__FILE__,'boardfiles',$select,'boardfiles_id = ' . $att_id);
   
   if($computer['users_id'] == $account['users_id'] OR $account['access_board'] >= 5) {       
     $file = $computer['boardfiles_name'];
@@ -31,19 +31,19 @@ if(isset($_POST['cancel'])) {
 }
 
 if(!empty($att_form)) {
-  $search_user = cs_sql_select(__FILE__,'boardfiles','users_id',"boardfiles_id = '" . $att_id . "'");
+  $search_user = cs_sql_select(__FILE__,'boardfiles','users_id','boardfiles_id = ' . $att_id);
   
-  if($search_user['users_id'] == $account['users_id'] AND $account['access_board'] >= 5) {      
-  $data['if']['not_account'] = false;
-  $data['if']['account'] = true;
-  
-  $data['lang']['body'] = sprintf($cs_lang['del_rly'],$att_id);
+  if($search_user['users_id'] == $account['users_id'] OR $account['access_board'] >= 5) {      
+    $data['if']['not_account'] = false;
+    $data['if']['account'] = true;
+    
+    $data['lang']['body'] = sprintf($cs_lang['del_rly'],$att_id);
     $data['action']['form'] = cs_url('board','delatt');
     $data['att']['id'] = $att_id;
   }
   else {
     $data['if']['not_account'] = true;
-  $data['if']['account'] = false;
+    $data['if']['account'] = false;
   }
   
   echo cs_subtemplate(__FILE__,$data,'board','delatt');
