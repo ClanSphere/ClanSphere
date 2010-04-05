@@ -67,8 +67,12 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   cs_redirect($cs_lang['started_successfully'],'cups','manage');
   
 } else {
-  
+
   $id = (int) $_GET['id'];
+  
+  $del = cs_sql_select(__FILE__,'cupsquads cq LEFT JOIN {pre}_squads sq ON cq.squads_id = sq.squads_id','cq.squads_id','sq.squads_id IS NULL AND cups_id = ' . $id,0,0,0);
+  foreach($del as $del_id)
+    cs_sql_delete(__FILE__,'cupsquads', $del_id['squads_id'], 'squads_id');
   
   $cupsel = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = ' . $id);
   $squads_count = cs_sql_count(__FILE__,'cupsquads','cups_id = ' . $id);

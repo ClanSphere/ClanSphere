@@ -43,9 +43,9 @@ $loserbracket = isset($_GET['losers']) ? 1 : 0;
 
 $tables = 'cupmatches cm INNER JOIN ';
 $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
-	'{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id';
+	'{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
 $cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id' :
-	'sq1.squads_name AS team1_name, sq1.squads_id AS team1_id, sq2.squads_name AS team2_name, sq2.squads_id AS team2_id';
+	'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id, cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
 $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
 $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2';
 $where = "cm.cups_id = '" . $cups_id . "' AND cm.cupmatches_round = '";
@@ -176,7 +176,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 	$string = '';
 	
 	if (empty($round))
-		$string = $cupmatches[0][$i]['team1_name'];
+		$string = $cupmatches[0][$i]['team1_name'] = empty($cupmatches[0][$i]['team1_name']) ? $cupmatches[0][$i]['squad1_name_c'] : $cupmatches[0][$i]['team1_name'];
 	elseif (!empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
 		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
 		if ($loserbracket && $round == 1) $cond = !$cond;
@@ -198,7 +198,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 	
 	$string = '';
 	if (empty($round))
-		$string = $cupmatches[0][$i]['team2_name'];
+		$string = $cupmatches[0][$i]['team2_name'] = empty($cupmatches[0][$i]['team2_name']) ? $cupmatches[0][$i]['squad2_name_c'] : $cupmatches[0][$i]['team2_name'];
 	elseif (!empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
 		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
 		if ($loserbracket && $round == 1) $cond = !$cond;
