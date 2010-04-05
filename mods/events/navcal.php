@@ -104,8 +104,8 @@ $next = $month == 12 ? 'year=' . ($year + 1) . '&amp;month=1' :
   'year=' . $year . '&amp;month=' . ($month + 1);
 $last = $month == 1 ? 'year=' . ($year - 1) . '&amp;month=12' : 
   'year=' . $year . '&amp;month=' . ($month - 1);
-$data['cal1']['bef_month'] = ($year < 1970 OR $year == 1970 AND $month == 1) ? '&lt;' : cs_link('&lt;','events','calendar',$last);
+$data['cal1']['bef_month'] = ($year < 1970 OR $year == 1970 AND $month == 1) ? '&lt;' : cs_link('&lt;',$cs_main['mod'],$cs_main['action'],$last);
 $data['cal1']['now_month'] = $cs_lang[$nom] . ' ' . $year;
-$data['cal1']['nxt_month'] = ($year > 2037 OR $year == 2037 AND $month == 12) ? '&gt;' : cs_link('&gt;','events','calendar',$next);
+$data['cal1']['nxt_month'] = ($year > 2037 OR $year == 2037 AND $month == 12) ? '&gt;' : cs_link('&gt;',$cs_main['mod'],$cs_main['action'],$next);
 
 echo cs_subtemplate(__FILE__,$data,'events','navcal');
