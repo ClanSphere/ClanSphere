@@ -42,9 +42,8 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   if(!empty($matches)) {
     
     $round = strlen(decbin($maxteams['cups_teams'])) - 1;
-    
+    $run=1;
     foreach ($matches AS $match) {
-      
       $cs_cups = array();
       $cs_cups['cups_id'] = $id;
       $cs_cups['squad1_id'] = $match[1];
@@ -56,12 +55,31 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
         $cs_cups['cupmatches_accepted1'] = 1;
         $cs_cups['cupmatches_accepted2'] = 1;
         $cs_cups['cupmatches_score1'] = 1;
+        $temp[$run] = TRUE;
       }
+      else
+        $temp[$run] = FALSE;
       
       $cells = array_keys($cs_cups);
       $values = array_values($cs_cups);
       cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
+      
+      if($run%2 == 0 AND $temp[$run] === $temp[$run-1]) {
+        $cs_cups = array();
+        $cs_cups['cups_id'] = $id;
+        $cs_cups['squad1_id'] = $last_squad;
+        $cs_cups['squad2_id'] = $match[1];
+        $cs_cups['cupmatches_round'] = $round-1;
+        
+        $cells = array_keys($cs_cups);
+        $values = array_values($cs_cups);
+        cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
+      }
+      $last_squad = $match[1];
+      $run++;
     }
+    
+    
   }
 
   cs_redirect($cs_lang['started_successfully'],'cups','manage');
