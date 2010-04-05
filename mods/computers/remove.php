@@ -3,12 +3,13 @@
 // Id: remove.php (Tue Nov 25 19:52:50 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('computers');
-$cs_get = (int) cs_get('id');
-$cs_post = (int) cs_post('id');
+$cs_get = cs_get('id');
+$cs_post = cs_post('id');
 $data = array();
 
 $computers_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $computers_id = $cs_post['id'];
+settype($computers_id,'integer');
 
 $referrer = $account['access_computers'] < 3 ? 'center' : 'manage';
 
