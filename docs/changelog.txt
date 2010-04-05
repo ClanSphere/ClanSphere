@@ -8,7 +8,6 @@ ___________________________________________________________
 
 -> Added a medals list (duriel)
 -> Added mail-function to subscription (spongebob)
--> Added cache-function to board/navtop (spongebob)
 -> Added board/navtop2 (spongebob)
 -> Added verification for users birthdate (spongebob)
 -> Added date to files/navlist (spongebob)
@@ -24,15 +23,16 @@ ___________________________________________________________
 -> Added an admin menu to manage, create and option pages (gahero)
 -> Added a user list to the access module for displaying and adding users to an access (gahero)
 -> Added and improved many modules icons (gahero)
--> Fixed bug in user-gallery and gallery (spongebob)
 -> Fixed board-counter after delete a thread (spongebob)
 -> Fixed delete own board/subscription and board/attachments (spongebob)
+-> Fixed file size (sort) in files-module (spongebob)
 -> Changed: static linkus-vars now changeable (spongebob)
 -> Changed: rename gallery-image if filename already existent (spongebob)
 -> Changed: user now changeable in cash/edit (spongebob)
 -> Reworked users/nextbirth and users/navbirth (spongebob)
 -> Reworked board/sort (spongebob)
 -> Reworked board/stats (spongebob)
+-> Reworked board/navtop (spongebob)
 
 
 ClanSphere 2009.0.3 >> 2009-12-06
