@@ -23,7 +23,7 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   
   $id = (int) $_POST['id'];
   
-  $maxteams = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = ' . $id);
+  $maxteams = cs_sql_select(__FILE__,'cups','cups_teams, cups_brackets','cups_id = ' . $id);
   $halfmax = $maxteams['cups_teams'] / 2;
   $select = cs_sql_select(__FILE__,'cupsquads','squads_id','cups_id = ' . $id,0,0,0);
   
@@ -42,6 +42,7 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   if(!empty($matches)) {
     
     $round = strlen(decbin($maxteams['cups_teams'])) - 1;
+    $round_tmp = $round-1;
     $run=1;
     foreach ($matches AS $match) {
       $cs_cups = array();
@@ -64,13 +65,26 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
       $values = array_values($cs_cups);
       cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
       
+      if(empty($match[2]) AND $maxteams['cups_brackets']) {
+        $cs_cups = array();
+        $cs_cups['cups_id'] = $id;
+        $cs_cups['squad1_id'] = $match[1];
+        $cs_cups['cupmatches_round'] = $round_tmp;
+        $cs_cups['cupmatches_accepted1'] = 1;
+        $cs_cups['cupmatches_accepted2'] = 1;
+        $cs_cups['cupmatches_score2'] = 1;
+        $cs_cups['cupmatches_loserbracket'] = 1;
+        $cells = array_keys($cs_cups);
+        $values = array_values($cs_cups);
+        cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
+      }
+      
       if($run%2 == 0 AND $temp[$run] === $temp[$run-1]) {
         $cs_cups = array();
         $cs_cups['cups_id'] = $id;
         $cs_cups['squad1_id'] = $last_squad;
         $cs_cups['squad2_id'] = $match[1];
-        $cs_cups['cupmatches_round'] = $round-1;
-        
+        $cs_cups['cupmatches_round'] = $round_tmp;
         $cells = array_keys($cs_cups);
         $values = array_values($cs_cups);
         cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
@@ -78,10 +92,30 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
       $last_squad = $match[1];
       $run++;
     }
-    
-    
+  
+    if ($maxteams['cups_brackets']) {
+      $run2 = 2;
+      while (--$round_tmp > 0) {
+        $run = 1;
+        while ($run < $halfmax) {
+          if ($temp[$run*$run2] === TRUE AND $temp[$run*$run2+$run2] === TRUE) {
+            $cs_cups = array();
+            $cs_cups['cups_id'] = $id;
+            $cs_cups['cupmatches_round'] = $round_tmp;
+            $cs_cups['cupmatches_accepted1'] = 1;
+            $cs_cups['cupmatches_accepted2'] = 1;
+            $cs_cups['cupmatches_score2'] = 1;
+            $cs_cups['cupmatches_loserbracket'] = 1;
+            $cells = array_keys($cs_cups);
+            $values = array_values($cs_cups);
+            cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
+          }
+          $run += 2;
+          $run2 *= 2;
+        }
+      }
+    }
   }
-
   cs_redirect($cs_lang['started_successfully'],'cups','manage');
   
 } else {
