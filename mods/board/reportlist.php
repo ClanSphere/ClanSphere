@@ -37,9 +37,9 @@ for($run=0; $run<$report_loop; $run++) {
   $data['boardreport'][$run]['boardreport_done'] = empty($cs_report[$run]['boardreport_done']) ? $cs_lang['no'] : $cs_lang['yes'];
 
   $headline = cs_secure($cs_report[$run]['threads_headline']);
-  $comments_count = empty($cs_report[$run]['comments_id']) ? 0 : cs_sql_count(__FILE__,'comments',"comments_mod = 'board' AND comments_fid = '" . $cs_report[$run]['threads_id'] . "'");
-  $goto = floor($comments_count / $account['users_limit']) * $account['users_limit'] . '#com' . $comments_count;
-  $link = cs_link($headline,'board','thread','where=' . $cs_report[$run]['threads_id'] . '&amp;start=' . $goto);
-  $data['boardreport'][$run]['threads_headline'] = $link . ' #' . $comments_count;
+  // $comments_count = empty($cs_report[$run]['comments_id']) ? 0 : cs_sql_count(__FILE__,'comments',"comments_mod = 'board' AND comments_fid = '" . $cs_report[$run]['threads_id'] . "'");
+  // $goto = floor($comments_count / $account['users_limit']) * $account['users_limit'] . '#com' . $comments_count;
+  $link = cs_link($headline,'board','thread','where=' . $cs_report[$run]['threads_id']); // . '&amp;start=' . $goto);
+  $data['boardreport'][$run]['threads_headline'] = $link . ' #' . $cs_report[$run]['comments_id'];
 }
 echo cs_subtemplate(__FILE__,$data,'board','reportlist');
