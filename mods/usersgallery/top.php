@@ -69,13 +69,14 @@ $access_id = $account['access_usersgallery'];
         $data['lang']['vote'] = sprintf($cs_lang['vote'], count($cs_voted));
       }
       $run=0;
-      foreach($cs_voted as $voted_run) {
-        $vote[$run]['img'] = $voted_run['usersgallery_id'];
-        $cs_lap = cs_html_img('symbols/gallery/nowatermark.gif','100','100');
-        $more = 'id=' . $voted_run['users_id'] . '&amp;cat_id=' . $voted_run['folders_id'];
-        $vote[$run]['link'] = cs_link($cs_lap,'usersgallery','users',$more);
-        $run++;
-      }
+      if(!empty($cs_voted))
+        foreach($cs_voted as $voted_run) {
+          $vote[$run]['img'] = $voted_run['usersgallery_id'];
+          $cs_lap = cs_html_img('symbols/gallery/nowatermark.gif','100','100');
+          $more = 'id=' . $voted_run['users_id'] . '&amp;cat_id=' . $voted_run['folders_id'];
+          $vote[$run]['link'] = cs_link($cs_lap,'usersgallery','users',$more);
+          $run++;
+        }
       $data['vote'] = !empty($vote) ? $vote : '';
     }
     $vote_1['0']['vote'] = empty($data['vote']) ? '' : '1';

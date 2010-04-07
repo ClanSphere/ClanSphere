@@ -85,6 +85,7 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($account) ) {
     session_destroy();
     $login['mode'] = FALSE;
+    $account = array('users_id' => 0);
   }
   if (empty($cs_main['ajax'])) $account['users_ajax'] = 0;
 }
