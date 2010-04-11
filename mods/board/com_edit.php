@@ -322,7 +322,8 @@ else {
   $count_com = cs_sql_count(__FILE__,'comments',$opt);
 	
   if ($options['sort'] == 'ASC') {
-    $start = $count_com - $count_com %  $account['users_limit'];
+    $remainder = $count_com % $account['users_limit'];
+    $start = $count_com % $account['users_limit'] == 0 ? $count_com - $remainder - $account['users_limit'] : $count_com - $remainder;
   } else {
     $where = "comments_fid = \"" . $fid . "\" AND comments_mod = 'board' AND comments_id > \"" . $comments_id . "\"";
     $after = cs_sql_count(__FILE__,'comments',$where);
