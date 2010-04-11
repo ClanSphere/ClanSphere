@@ -98,7 +98,7 @@ if(!empty($cs_com)) {
   }
 }
 $data['com'] = !empty($com) ? $com : '';
-$data['if']['com'] = empty($data['com']) ? FALSE : TRUE;
+$data['if']['com_1'] = empty($data['com']) ? FALSE : TRUE;
 
 
 echo cs_subtemplate(__FILE__,$data,'usersgallery','top');

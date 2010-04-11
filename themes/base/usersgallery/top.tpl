@@ -66,7 +66,7 @@
 <br />
 {stop:vote_1}
 
-{if:com}
+{if:com_1}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 	<tr>
 		<td class="leftb">
@@ -84,4 +84,4 @@
 	</tr>
 </table>
 <br />
-{stop:com}
+{stop:com_1}
