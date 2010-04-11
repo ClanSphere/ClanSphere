@@ -6,6 +6,11 @@ $cs_lang = cs_translate('messages');
 require_once('mods/messages/functions.php');
 $messages_form = 1;
 $messages_to = !empty($_REQUEST['to']) ? $_REQUEST['to'] : '';
+if(!empty($_GET['to_id'])) {
+  $messages_to_id = (int) $_GET['to_id'];
+  $messages_to_id_nick = cs_sql_select(__FILE__, 'users', 'users_nick', 'users_id = ' . $messages_to_id);
+  $messages_to = empty($messages_to_id_nick['users_nick']) ? $messages_to : $messages_to_id_nick['users_nick'];
+}
 
 $messages_subject = '';
 $messages_text = '';

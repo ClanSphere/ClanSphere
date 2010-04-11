@@ -47,7 +47,7 @@ else {
 
   $data['users']['nick'] = cs_secure($cs_user['users_nick']);
   $data['url']['buddy_create'] = cs_url('buddys','create','id=' . $cs_user['users_id']);
-  $data['url']['message_create'] = cs_url('messages','create','to=' . cs_secure($cs_user['users_nick']));
+  $data['url']['message_create'] = cs_url('messages','create','to_id=' . $cs_user['users_id']);
   if(empty($cs_user['users_picture'])) {
     $data['users']['picture'] = $cs_lang['nopic'];
   } else {
