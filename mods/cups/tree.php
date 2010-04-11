@@ -1,15 +1,16 @@
 <?php
 // ClanSphere 2009 - www.clansphere.net
-// $Id: view.php 3009 2009-05-03 14:57:11Z hajo $
+// $Id$
 
 if (!empty($cs_main)) {
 	
   $data = array();
   $data['cups']['id'] = (int) $_GET['id'];
   
-  $brackets = cs_sql_count(__FILE__, 'cups', 'cups_id = "' . $data['cups']['id'] . '" AND cups_brackets = "1"');
-  
-  $data['if']['brackets'] = (bool) $brackets;
+  if (cs_sql_count(__FILE__, 'cups', 'cups_id = ' . $data['cups']['id'] . ' AND cups_brackets = 1') AND (cs_sql_count(__FILE__,'cupsquads','cups_id = '.$cups_id) - $cup['cups_teams'] / 2) > 1)
+    $data['if']['brackets'] = TRUE;
+  else
+    $data['if']['brackets'] = FALSE;
   
   echo cs_subtemplate(__FILE__, $data, 'cups', 'tree');
 
@@ -30,16 +31,10 @@ chdir('mods/cups/');
 
 $cups_id = (int) $_GET['id'];
 
-$cells = 'cups_teams, cups_name, cups_system';
-if (!isset($_GET['losers'])) $cells .= ', cups_brackets';
-
-$cup = cs_sql_select(__FILE__, 'cups', $cells, "cups_id = '" . $cups_id . "'");
-if (isset($_GET['losers'])) $cup['cups_brackets'] = 1;
-//$cup['cups_teams'] = 128;
+$cup = cs_sql_select(__FILE__, 'cups', 'cups_teams, cups_name, cups_system', 'cups_id = ' . $cups_id);
 $rounds = strlen(decbin($cup['cups_teams']));
 $rounds_1 = $rounds - 1;
 
-$loserbracket = isset($_GET['losers']) ? 1 : 0;
 
 $tables = 'cupmatches cm INNER JOIN ';
 $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
@@ -48,10 +43,10 @@ $cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users
 	'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id, cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
 $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
 $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2';
-$where = "cm.cups_id = '" . $cups_id . "' AND cm.cupmatches_round = '";
+$where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = ';
 
 $cupmatches = array();
-$cupmatches[0] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . "'", 'cm.cupmatches_id',0,0);
+$cupmatches[0] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1, 'cm.cupmatches_id',0,0);
 
 
 $height = 400;
@@ -179,7 +174,6 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$string = $cupmatches[0][$i]['team1_name'] = empty($cupmatches[0][$i]['team1_name']) ? $cupmatches[0][$i]['squad1_name_c'] : $cupmatches[0][$i]['team1_name'];
 	elseif (!empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
 		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
-		if ($loserbracket && $round == 1) $cond = !$cond;
 		$string = $cond ? $cupmatches[$round-1][$run]['team1_name'] : $cupmatches[$round-1][$run]['team2_name'];
 		if (empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
     $string = empty($string) ? '-' : $string;
@@ -203,7 +197,6 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$string = $cupmatches[0][$i]['team2_name'] = empty($cupmatches[0][$i]['team2_name']) ? $cupmatches[0][$i]['squad2_name_c'] : $cupmatches[0][$i]['team2_name'];
 	elseif (!empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
 		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
-		if ($loserbracket && $round == 1) $cond = !$cond;
 		$string = $cond ? $cupmatches[$round-1][$run]['team1_name'] : $cupmatches[$round-1][$run]['team2_name'];
 		if (empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
 	  $string = empty($string) ? '-' : $string;
@@ -228,7 +221,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$round++;
 		$run = 0;
 		$rounds_1--;
-		$cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . "' AND cm.cupmatches_loserbracket = '" . $loserbracket . "'",0,0,0);
+		$cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . ' AND cm.cupmatches_loserbracket = 0',0,0,0);
 		$cupmatches[$round] = cs_cupmatches_fix ($cupmatches, $round);
 	}
 	
