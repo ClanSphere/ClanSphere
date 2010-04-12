@@ -188,6 +188,11 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
         $cs_match['cupmatches_winner'] = $_POST['squad2_id'];
       }
       
+      if($_POST['cupmatches_score2'] == $_POST['cupmatches_score1']) {
+        $error = cs_html_br(1) . $cs_lang['no_winner'];
+        cs_redirect($cs_lang['error_occured'] . $error, 'cups', 'match', 'id='.$cupmatches_id);
+      }
+      
       $cs_match['cupmatches_accepted1'] = empty($_POST['cupmatches_accepted1']) ? 0 : (int) $_POST['cupmatches_accepted1'];
       $cs_match['cupmatches_accepted2'] = empty($_POST['cupmatches_accepted2']) ? 0 : (int) $_POST['cupmatches_accepted2'];
       

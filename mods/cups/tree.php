@@ -38,7 +38,7 @@ $rounds = strlen(decbin($cup['cups_teams']));
 $rounds_1 = $rounds - 1;
 
 
-$tables = 'cupmatches cm INNER JOIN ';
+$tables = 'cupmatches cm LEFT JOIN ';
 $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
 	'{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
 $cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id' :
@@ -50,9 +50,17 @@ $where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = ';
 $cupmatches = array();
 $cupmatches[0] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1, 'cm.cupmatches_id',0,0);
 
+$yspace_enemies = 4;
+$yspace_normal = 8;
+$xspace = 15;
+$space_top = 45;
+$space_bottom = 5;
+$space_left = 15;
+$space_right = 10;
+$entityheight = 25;
 
-$height = 400;
-$width = 600;
+$height = $cup['cups_teams'] * ($entityheight + $yspace_normal/2 + $yspace_enemies/2) + $space_top + $space_bottom;
+$width = empty($_GET['width']) ? 600 : $_GET['width'];
 
 
 $img = imagecreatetruecolor($width, $height) or die('Cannot Initialize new GD image stream');
@@ -78,17 +86,10 @@ imagestring($img, $font_csp, 15, 15, 'CLAN', $col_csp_red);
 imagestring($img, $font_csp, $font_csp_width * 4 + 15, 15, 'SPHERE', $col_csp_grey);
 imagestring($img, $font_cup_headline, $font_csp_width * 10 + 15, 15, ' - Turnier: ' . $cup['cups_name'], $col_cup_headline);
 
-$yspace_enemies = 4;
-$yspace_normal = 8;
-$xspace = 15;
-$space_top = 45;
-$space_bottom = 5;
-$space_left = 15;
-$space_right = 10;
 
 
 $halfteams = $cup['cups_teams'] / 2;
-$entityheight = round(($height - $space_top - $space_bottom - $halfteams * $yspace_enemies - $halfteams * $yspace_normal) / $cup['cups_teams']) ;
+// $entityheight = round(($height - $space_top - $space_bottom - $halfteams * $yspace_enemies - $halfteams * $yspace_normal) / $cup['cups_teams']) ;
 $entitywidth = round(($width - $space_left - $space_right - ($rounds) * $xspace) / ($rounds));
 
 

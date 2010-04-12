@@ -83,9 +83,9 @@ $data['vars']['matchcount'] = count($data['matches']);
 $data['vars']['cups_id'] = $cups_id;
 $data['pages']['list'] = cs_pages('cups','matchlist', $data['vars']['matchcount'], $start, $cups_id, $sort);
 $data['if']['brackets'] = empty($system['cups_brackets']) ? false : true;
-$data['sort']['team1'] = cs_sort('cups','matchlist', $start, $cups_id . '&amp;round=' . $round, 1, $sort);
-$data['sort']['team2'] = cs_sort('cups','matchlist', $start, $cups_id . '&amp;round=' . $round, 3, $sort);
-$data['sort']['bracket'] = cs_sort('cups','matchlist', $start, $cups_id . '&amp;round=' . $round, 5, $sort);
+$data['sort']['team1'] = cs_sort('cups','matchlist', $start, $cups_id, 1, $sort, 'round=' . $round);
+$data['sort']['team2'] = cs_sort('cups','matchlist', $start, $cups_id, 3, $sort, 'round=' . $round);
+$data['sort']['bracket'] = cs_sort('cups','matchlist', $start, $cups_id, 5, $sort, 'round=' . $round);
 if ($system['cups_system'] != 'teams') $data['lang']['team'] = $cs_lang['player'];
 
 for ($i = 0; $i < $data['vars']['matchcount']; $i++) {

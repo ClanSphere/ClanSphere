@@ -17,11 +17,24 @@ chdir('mods/cups/');
 $cups_id = (int) $_GET['id'];
 
 $cup = cs_sql_select(__FILE__, 'cups', 'cups_teams, cups_name, cups_system', 'cups_id = ' . $cups_id);
-
+$losers = cs_sql_count(__FILE__,'cupsquads','cups_id = '.$cups_id) - $cup['cups_teams'] / 2;
+// calc number of matches
+$n=2;
+while ( $losers >= $n ) $n *= 2;
+$count_matches = $n;
 
 // Style-Defs
-$height = 400;
-$width = 600;
+$yspace_enemies = 4;
+$yspace_normal = 8;
+$xspace = 15;
+$space_top = $currheight = 45;
+$space_bottom = 5;
+$space_left = $currwidth = 15;
+$space_right = 10;
+$entityheight = 25;
+
+$height = $count_matches * ($entityheight + $yspace_normal/2 + $yspace_enemies/2) + $space_top + $space_bottom;
+$width = empty($_GET['width']) ? 600 : $_GET['width'];
 
 $img = imagecreatetruecolor($width, $height) or die('Cannot Initialize new GD image stream');
 
@@ -46,20 +59,11 @@ imagestring($img, $font_csp, 15, 15, 'CLAN', $col_csp_red);
 imagestring($img, $font_csp, $font_csp_width * 4 + 15, 15, 'SPHERE', $col_csp_grey);
 imagestring($img, $font_cup_headline, $font_csp_width * 10 + 15, 15, ' - Turnier: ' . $cup['cups_name'], $col_cup_headline);
 
-$yspace_enemies = 4;
-$yspace_normal = 8;
-$xspace = 15;
-$space_top = $currheight = 45;
-$space_bottom = 5;
-$space_left = $currwidth = 15;
-$space_right = 10;
-
 // Calc-Defs
-$losers = cs_sql_count(__FILE__,'cupsquads','cups_id = '.$cups_id) - $cup['cups_teams'] / 2;
-$rounds = strlen(decbin($losers));
-$halfteams = $losers / 2;
+$rounds = strlen(decbin($count_matches));
+$halfteams = $count_matches / 2;
 
-$entityheight = round(($height - $space_top - $space_bottom - $halfteams * $yspace_enemies - $halfteams * $yspace_normal) / $cup['cups_teams']) ;
+// $entityheight = round(($height - $space_top - $space_bottom - $halfteams * $yspace_enemies - $halfteams * $yspace_normal) / $cup['cups_teams']) ;
 $entitywidth = round(($width - $space_left - $space_right - ($rounds) * $xspace) / ($rounds));
 $entity_font_height = round($entityheight / 2 - $font_match_height / 2);
 $entityheight_2 = round($entityheight / 2);
@@ -72,15 +76,11 @@ $round = 0;
 $run = 0;
 
 if($losers > 1) {
-  // calc number of matches
-  $n=2;
-  while ( $losers >= $n ) $n *= 2;
-  $count_matches = $n / 2;
   
   // select all losermatches and store in $cupmatches[rounds]
   $cupmatches = array();
-  $rounds_loop = $rounds;
-  $tables = 'cupmatches cm INNER JOIN ';
+  $rounds_loop = $rounds-1;
+  $tables = 'cupmatches cm LEFT JOIN ';
   $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
     '{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
   $cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id' :
@@ -94,7 +94,7 @@ if($losers > 1) {
   }
   
   // create image
-  $rounds_loop = $rounds;
+  $rounds_loop = $rounds-1;
   for ($i = 0; $i < $count_matches; $i++) {
     $i2 = $i + 1;
     $round_2 = floor($round / 2);

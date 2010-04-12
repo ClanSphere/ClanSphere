@@ -118,10 +118,11 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
 	  $data['if']['confirmed'] = true;
   } elseif (!empty($data['match']['cupmatches_accepted1']) || !empty($data['match']['cupmatches_accepted2'])) {
   	$data['if']['waiting'] = true;
-  	$other_team = empty($squad2_member) ? 2 : 1;
     if ($system['cups_system'] == 'teams') {
-      $link = cs_link($data['match']['squad'.$other_team.'_name'],'squads','view','id='.$data['match']['squad'.$other_team.'_id']);
+      $other_team = $data['match']['cupmatches_accepted1'] == 1 ? 2 : 1;
+      $link = empty($data['match']['squad'.$other_team.'_name']) ? $data['match']['squad'.$other_team.'_name_c'] : cs_link($data['match']['squad'.$other_team.'_name'],'squads','view','id='.$data['match']['squad'.$other_team.'_id']);
     } else {
+      $other_team = empty($squad2_member) ? 2 : 1;
       $users_data = cs_sql_select(__FILE__,'users','users_active',"users_id = '" . $data['match']['user'.$other_team.'_id'] . "'");
       $link =  cs_user($data['match']['user'.$other_team.'_id'],$data['match']['user'.$other_team.'_nick'], $users_data['users_active']);
     }
