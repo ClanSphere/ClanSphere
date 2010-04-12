@@ -71,7 +71,7 @@ $max = $nexthalf;
 $round = 0;
 $run = 0;
 
-if($losers > 1) { // > 1
+if($losers > 1) {
   // calc number of matches
   $n=2;
   while ( $losers >= $n ) $n *= 2;
@@ -79,7 +79,7 @@ if($losers > 1) { // > 1
   
   // select all losermatches and store in $cupmatches[rounds]
   $cupmatches = array();
-  $rounds_loop = $rounds-1;
+  $rounds_loop = $rounds;
   $tables = 'cupmatches cm INNER JOIN ';
   $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
     '{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
@@ -94,7 +94,7 @@ if($losers > 1) { // > 1
   }
   
   // create image
-  $rounds_loop = $rounds-1;
+  $rounds_loop = $rounds;
   for ($i = 0; $i < $count_matches; $i++) {
     $i2 = $i + 1;
     $round_2 = floor($round / 2);
@@ -112,7 +112,6 @@ if($losers > 1) { // > 1
       $cond = $cupmatches[$rounds_loop+1][$run]['cupmatches_winner'] == $cupmatches[$rounds_loop+1][$run]['team1_id'];
       $string = $cond ? $cupmatches[$rounds_loop+1][$run]['team1_name'] : $cupmatches[$rounds_loop+1][$run]['team2_name'];
       if (empty($cupmatches[$rounds_loop+1][$run]['cupmatches_accepted1']) || empty($cupmatches[$rounds_loop+1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
-      $string = empty($string) ? '-' : $string;
     }
     $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
     if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);
@@ -135,7 +134,6 @@ if($losers > 1) { // > 1
       $cond = $cupmatches[$rounds_loop+1][$run]['cupmatches_winner'] == $cupmatches[$rounds_loop+1][$run]['team1_id'];
       $string = $cond ? $cupmatches[$rounds_loop+1][$run]['team1_name'] : $cupmatches[$rounds_loop+1][$run]['team2_name'];
       if (empty($cupmatches[$rounds_loop+1][$run]['cupmatches_accepted1']) || empty($cupmatches[$rounds_loop+1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
-      $string = empty($string) ? '-' : $string;
     }
     $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
     if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);

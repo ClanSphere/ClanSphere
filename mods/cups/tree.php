@@ -7,7 +7,9 @@ if (!empty($cs_main)) {
   $data = array();
   $data['cups']['id'] = (int) $_GET['id'];
   
-  if (cs_sql_count(__FILE__, 'cups', 'cups_id = ' . $data['cups']['id'] . ' AND cups_brackets = 1') AND (cs_sql_count(__FILE__,'cupsquads','cups_id = '.$cups_id) - $cup['cups_teams'] / 2) > 1)
+  $cond_1 = (bool) cs_sql_count(__FILE__, 'cups', 'cups_id = ' . $data['cups']['id'] . ' AND cups_brackets = 1');
+  $cond_2 = cs_sql_count(__FILE__,'cupsquads','cups_id = ' . $data['cups']['id']) - $cup['cups_teams'] / 2;
+  if ($cond_1 AND $cond_2 > 1)
     $data['if']['brackets'] = TRUE;
   else
     $data['if']['brackets'] = FALSE;
@@ -176,7 +178,6 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
 		$string = $cond ? $cupmatches[$round-1][$run]['team1_name'] : $cupmatches[$round-1][$run]['team2_name'];
 		if (empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
-    $string = empty($string) ? '-' : $string;
   }
   $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
 	if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);
@@ -199,7 +200,6 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
 		$string = $cond ? $cupmatches[$round-1][$run]['team1_name'] : $cupmatches[$round-1][$run]['team2_name'];
 		if (empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
-	  $string = empty($string) ? '-' : $string;
   }
   $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
 	if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);

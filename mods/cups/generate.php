@@ -109,7 +109,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 	
 	if ($round == $rounds) { // If it was the first round
 		
-		$cond = 'cupmatches_id < "' . $cupmatches_id . '" AND cups_id = "' . $cups_id . '" AND cupmatches_round = "' . $round . '"';
+		$cond = 'cups_id = ' . $cups_id . ' AND cupmatches_round = ' . $round . ' AND cupmatches_id < "' . $cupmatches_id . '"';
 		$matches_before = cs_sql_count(__FILE__, 'cupmatches', $cond);
 		
 		$opponent_position = $matches_before % 2 == 0 ? 1 : 0; // 1 for opponent below, 0 for opponent above
@@ -132,14 +132,14 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 		$round_now = $rounds - $round;
 		
 		$cells = 'squad1_id, squad2_id, cupmatches_winner';
-		$where = 'cups_id = "' . $cups_id . '" AND cupmatches_round = "';
+		$where = 'cups_id = ' . $cups_id . ' AND cupmatches_round = ';
 		
-		$cupmatches[0] = cs_sql_select(__FILE__, 'cupmatches', $cells, $where . $rounds . '"','cupmatches_id',0,0);
+		$cupmatches[0] = cs_sql_select(__FILE__, 'cupmatches', $cells, $where . $rounds,'cupmatches_id',0,0);
 		
 		for ($r = 1; $r <= $round_now; $r++) {
 			$roundsel = $rounds - $r;
 			
-			$cupmatches[$r] = cs_sql_select(__FILE__, 'cupmatches', $cells, $where . $roundsel . '" AND cupmatches_loserbracket = "' . $loserbracket . '"',0,0,0);
+			$cupmatches[$r] = cs_sql_select(__FILE__, 'cupmatches', $cells, $where . $roundsel . ' AND cupmatches_loserbracket = "' . $loserbracket . '"',0,0,0);
 			$cupmatches[$r] = cs_cupmatches_fix ($cupmatches, $r);
 		}
 
