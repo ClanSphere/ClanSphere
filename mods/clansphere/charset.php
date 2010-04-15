@@ -32,6 +32,10 @@ foreach($tpl_files AS $file => $int)
     fclose($fp);
 
     preg_match_all("=(charset|encoding)\s*\=\s*\"*(.*?)(\s+|\")=si", $tpl_content, $tpl_check);
+    if(empty($tpl_check[2])) {
+      $data['charset']['result_tpl_setting'] .= $cs_lang['charset_missing'] . cs_html_br(1);
+      $data['charset']['result_tpl_setting'] .= $cs_lang['file'] . ': ' . $filename . cs_html_br(2);
+    }
     foreach($tpl_check[2] AS $found) {
       $foundlow = strtolower($found);
       if($foundlow != '{func:charset}' AND $foundlow != $charset) {

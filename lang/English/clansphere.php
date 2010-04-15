@@ -230,4 +230,5 @@ $cs_lang['sql_setting'] = 'SQL Config';
 
 $cs_lang['charset_unexpected'] = 'Found unexpected charset';
 $cs_lang['charset_unexpected_hint'] = 'Hint: Charset should be UTF-8 or any European ISO Standard (e.g. ISO-8859-15)';
+$cs_lang['charset_missing'] = 'No charset information found';
 $cs_lang['charset_tpl_hint'] = 'Hint: Charset should be {func:charset} as it is replaced with the setup file entry';
