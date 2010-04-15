@@ -69,14 +69,26 @@ if(empty($match)) {
 }
 if(!empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] .= $cs_lang['charset_web_hint'];
 
-$data['charset']['result_sql_setting'] = 'To be done';
+# Check for possible SQL related charset problems
+$sql_info = cs_sql_version(__FILE__);
+$sql_charset = strtolower($sql_info['encoding']);
+$sql_valid = 0;
+if($charset == 'utf-8' AND ($sql_charset == 'utf-8' OR $sql_charset == 'utf8' OR $sql_charset == 'unicode'))
+  $sql_valid = 1;
+elseif(substr($charset, 0, 9) == 'iso-8859-' AND (substr($sql_charset, 0, 9) == 'iso-8859-' OR substr($sql_charset,0,5) == 'latin'))
+  $sql_valid = 1;
+elseif($sql_charset == 'default' OR $sql_charset == 'pdo encoding')
+  $sql_valid = 1;
+else
+  $data['charset']['result_sql_setting'] = $cs_lang['charset_unexpected'] . ' : ' . $sql_info['encoding'];
 
+# Define test result icons
 $data['charset']['check_setup_file']  = empty($data['charset']['result_setup_file'])  ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_tpl_setting'] = empty($data['charset']['result_tpl_setting']) ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_web_setting'] = empty($data['charset']['result_web_setting']) ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_sql_setting'] = empty($data['charset']['result_sql_setting']) ? cs_icon('submit') : cs_icon('stop');
 
-if(empty($data['charset']['result_setup_file']))  $data['charset']['result_setup_file']  = $cs_lang['passed'];
+if(empty($data['charset']['result_setup_file']))  $data['charset']['result_setup_file']  = $cs_main['charset'];
 if(empty($data['charset']['result_tpl_setting'])) $data['charset']['result_tpl_setting'] = $cs_lang['passed'];
 if(empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] = $cs_lang['passed'];
 if(empty($data['charset']['result_sql_setting'])) $data['charset']['result_sql_setting'] = $cs_lang['passed'];
