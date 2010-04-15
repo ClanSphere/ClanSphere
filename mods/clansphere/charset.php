@@ -46,7 +46,30 @@ foreach($tpl_files AS $file => $int)
   }
 if(!empty($data['charset']['result_tpl_setting'])) $data['charset']['result_tpl_setting'] .= $cs_lang['charset_tpl_hint'];
 
-$data['charset']['result_web_setting'] = 'To be done';
+# Check for charset information inside the .htaccess file
+$file = '.htaccess';
+$match = 0;
+if(file_exists($file)) {
+  $fp = fopen($file, 'r');
+  $web_content = fread($fp, filesize($file));
+  fclose($fp);
+
+  preg_match_all("=(#\s*|)adddefaultcharset\s+(.*?)\s+=si", $web_content, $web_check, PREG_SET_ORDER);
+  foreach($web_check AS $found) {
+    if(!empty($found[2])) $match++;
+    $foundlow = strtolower($found[2]);
+    if(substr($found[1],0,1) != '#' AND $foundlow != $charset) {
+      $data['charset']['result_web_setting'] .= $cs_lang['charset_unexpected'] . ' : ' . $found[2] . cs_html_br(1);
+      $data['charset']['result_web_setting'] .= $cs_lang['file'] . ': ' . $file . cs_html_br(2);
+    }
+  }
+}
+if(empty($match)) {
+  $data['charset']['result_web_setting'] .= $cs_lang['charset_missing'] . cs_html_br(1);
+  $data['charset']['result_web_setting'] .= $cs_lang['file'] . ': ' . $file . cs_html_br(2);
+}
+if(!empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] .= $cs_lang['charset_web_hint'];
+
 $data['charset']['result_php_setting'] = 'To be done';
 $data['charset']['result_sql_setting'] = 'To be done';
 
