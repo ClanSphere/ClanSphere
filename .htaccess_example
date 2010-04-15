@@ -1,5 +1,8 @@
-## Comment out the needed lines and save it as ".htaccess" to use ClanSphere with mod_rewrite
-## You need at least Apache 1.3 or newer to use the following!
+## CHARSET - Uncomment this and change it to your setup value if you have charset related problems
+
+# AddDefaultCharset UTF-8
+
+## MOD_REWRITE - Comment out the needed lines to use Apache mod_rewrite
 ## Documentation = http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html
 
 ## Uncomment the next line when symlinks are not set in Apache configuration
@@ -30,4 +33,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 ## Uncomment the line and edit the php index files that should be accessible by the mod_rewrite rule (needed)
 
-RewriteRule ^(admin|content|debug|index)(.*)$ $1.php?params=$2 [NC,L]
+RewriteRule ^(admin|content|debug|features|index)(.*)$ $1.php?params=$2 [NC,L]
