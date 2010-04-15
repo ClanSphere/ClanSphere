@@ -36,11 +36,6 @@
     <td class="leftb">{charset:result_web_setting}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:php} {lang:php_setting}</td>
-    <td class="centerb">{charset:check_php_setting}</td>
-    <td class="leftb">{charset:result_php_setting}</td>
-  </tr>
-  <tr>
     <td class="leftb">{icon:db_status} {lang:sql_setting}</td>
     <td class="centerb">{charset:check_sql_setting}</td>
     <td class="leftb">{charset:result_sql_setting}</td>

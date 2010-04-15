@@ -9,7 +9,6 @@ $data = array();
 $data['charset']['result_setup_file']  = '';
 $data['charset']['result_tpl_setting'] = '';
 $data['charset']['result_web_setting'] = '';
-$data['charset']['result_php_setting'] = '';
 $data['charset']['result_sql_setting'] = '';
 
 # Check for PHP 5 or newer due to charset support
@@ -70,19 +69,16 @@ if(empty($match)) {
 }
 if(!empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] .= $cs_lang['charset_web_hint'];
 
-$data['charset']['result_php_setting'] = 'To be done';
 $data['charset']['result_sql_setting'] = 'To be done';
 
 $data['charset']['check_setup_file']  = empty($data['charset']['result_setup_file'])  ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_tpl_setting'] = empty($data['charset']['result_tpl_setting']) ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_web_setting'] = empty($data['charset']['result_web_setting']) ? cs_icon('submit') : cs_icon('stop');
-$data['charset']['check_php_setting'] = empty($data['charset']['result_php_setting']) ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_sql_setting'] = empty($data['charset']['result_sql_setting']) ? cs_icon('submit') : cs_icon('stop');
 
 if(empty($data['charset']['result_setup_file']))  $data['charset']['result_setup_file']  = $cs_lang['passed'];
 if(empty($data['charset']['result_tpl_setting'])) $data['charset']['result_tpl_setting'] = $cs_lang['passed'];
 if(empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] = $cs_lang['passed'];
-if(empty($data['charset']['result_php_setting'])) $data['charset']['result_php_setting'] = $cs_lang['passed'];
 if(empty($data['charset']['result_sql_setting'])) $data['charset']['result_sql_setting'] = $cs_lang['passed'];
 
 echo cs_subtemplate(__FILE__, $data, 'clansphere', 'charset');

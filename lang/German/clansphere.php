@@ -225,7 +225,6 @@ $cs_lang['passed'] = 'Bestanden';
 $cs_lang['setup_file'] = 'Setup Datei';
 $cs_lang['tpl_setting'] = 'Template Dateien';
 $cs_lang['web_setting'] = 'Webserver Einstellung';
-$cs_lang['php_setting'] = 'PHP Einstellung';
 $cs_lang['sql_setting'] = 'SQL Einstellung';
 
 $cs_lang['charset_missing'] = 'Keine Zeichensatzinformationen vorhanden';
