@@ -229,4 +229,5 @@ $cs_lang['php_setting'] = 'PHP Einstellung';
 $cs_lang['sql_setting'] = 'SQL Einstellung';
 
 $cs_lang['charset_unexpected'] = 'Unerwarteter Zeichensatz definiert';
-$cs_lang['charset_unexpected_hint'] = 'Der Zeichensatz sollte UTF-8 oder ein Europ&auml;ischer ISO Standard sein (z.B. ISO-8859-15)';
+$cs_lang['charset_unexpected_hint'] = 'Hinweis: Der Zeichensatz sollte UTF-8 oder ein Europ&auml;ischer ISO Standard sein (z.B. ISO-8859-15)';
+$cs_lang['charset_tpl_hint'] = 'Hinweis: Der Zeichensatz sollte {func:charset} sein, da dies mit dem Eintrag aus der Setup Datei ersetzt wird';

@@ -22,7 +22,26 @@ if($charset != 'utf-8' AND substr($charset, 0, 9) != 'iso-8859-') {
   $data['charset']['result_setup_file'] .= cs_html_br(2) . $cs_lang['charset_unexpected_hint'];
 }
 
-$data['charset']['result_tpl_setting'] = 'To be done';
+# Check every .htm file in the activated template for a matching charset definition
+$tpl_files = cs_paths('templates/' . $cs_main['def_tpl']);
+foreach($tpl_files AS $file => $int)
+  if(strtolower(substr($file,-4,4)) == '.htm') {
+    $filename = 'templates/' . $cs_main['def_tpl'] . '/' . $file;
+    $fp = fopen($filename, 'r');
+    $tpl_content = fread($fp, filesize($filename));
+    fclose($fp);
+
+    preg_match_all("=(charset|encoding)\s*\=\s*\"*(.*?)(\s+|\")=si", $tpl_content, $tpl_check);
+    foreach($tpl_check[2] AS $found) {
+      $foundlow = strtolower($found);
+      if($foundlow != '{func:charset}' AND $foundlow != $charset) {
+        $data['charset']['result_tpl_setting'] .= $cs_lang['charset_unexpected'] . ' : ' . $found . cs_html_br(1);
+        $data['charset']['result_tpl_setting'] .= $cs_lang['file'] . ': ' . $filename . cs_html_br(2);
+      }
+    }
+  }
+if(!empty($data['charset']['result_tpl_setting'])) $data['charset']['result_tpl_setting'] .= $cs_lang['charset_tpl_hint'];
+
 $data['charset']['result_web_setting'] = 'To be done';
 $data['charset']['result_php_setting'] = 'To be done';
 $data['charset']['result_sql_setting'] = 'To be done';
