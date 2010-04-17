@@ -219,6 +219,7 @@ $cs_lang['maintenance_access'] = 'Wartungs-Zugriff ab';
 // Charset
 $cs_lang['body_charset'] = 'Diese Seite hilft beim Auffinden von Zeichensatz-Problemen';
 $cs_lang['old_php'] = 'Warnung: Der Webspace verwendet PHP 4 und unterst&uuml;tzt Unicode-Zeichens&auml;tze damit nicht gen&uuml;gend';
+$cs_lang['old_mysql'] = 'Warnung: Der Webspace verwendet eine sehr alte Version von MySQL. Bitte auf 4.1.8 oder neuer aktualisieren';
 $cs_lang['test'] = 'Test';
 $cs_lang['result'] = 'Ergebnis';
 $cs_lang['setup_file'] = 'Setup Datei';

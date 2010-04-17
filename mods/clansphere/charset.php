@@ -84,14 +84,26 @@ elseif($sql_charset == 'default' OR $sql_charset == 'pdo encoding')
 else
   $data['charset']['result_sql_setting'] = $cs_lang['charset_unexpected'] . ' : ' . $sql_info['encoding'];
 
+# Check for MySQL version 4.1.8 or above due to charset / collation support
+$data['if']['old_mysql'] = 0;
+global $cs_db;
+$ext_mysql = array('mysql', 'mysqli', 'pdo_mysql');
+if(in_array($cs_db['type'], $ext_mysql)) {
+  $myv = explode('.', $sql_info['server']);
+  settype($myv[2], 'integer');
+  if($myv[0] < 4 OR $myv[0] == 4 AND $myv[1] < 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] < 8)
+    $data['if']['old_mysql'] = 1;
+}
+
 # Define test result icons
 $data['charset']['check_setup_file']  = empty($data['charset']['result_setup_file'])  ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_tpl_setting'] = empty($data['charset']['result_tpl_setting']) ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_web_setting'] = empty($data['charset']['result_web_setting']) ? cs_icon('submit') : cs_icon('stop');
 $data['charset']['check_sql_setting'] = empty($data['charset']['result_sql_setting']) ? cs_icon('submit') : cs_icon('stop');
 
+# Add positive results to output variables
 if(empty($data['charset']['result_setup_file']))  $data['charset']['result_setup_file']  = $cs_main['charset'];
-if(empty($data['charset']['result_tpl_setting'])) 
+if(empty($data['charset']['result_tpl_setting']))
   foreach($tpl_charset AS $lowercase => $found)
     $data['charset']['result_tpl_setting'] .= $found . cs_html_br(1);
 if(empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] = $web_charset;

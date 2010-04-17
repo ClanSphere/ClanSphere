@@ -15,6 +15,14 @@
 </table>
 <br />
 {stop:old_php}
+{if:old_mysql}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="centerc">{icon:error} {lang:old_mysql}</td>
+  </tr>
+</table>
+<br />
+{stop:old_mysql}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="width: 170px">{lang:test}</td>
