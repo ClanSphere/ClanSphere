@@ -221,7 +221,6 @@ $cs_lang['body_charset'] = 'Diese Seite hilft beim Auffinden von Zeichensatz-Pro
 $cs_lang['old_php'] = 'Warnung: Der Webspace verwendet PHP 4 und unterst&uuml;tzt Unicode-Zeichens&auml;tze damit nicht gen&uuml;gend';
 $cs_lang['test'] = 'Test';
 $cs_lang['result'] = 'Ergebnis';
-$cs_lang['passed'] = 'Bestanden';
 $cs_lang['setup_file'] = 'Setup Datei';
 $cs_lang['tpl_setting'] = 'Template Dateien';
 $cs_lang['web_setting'] = 'Webserver Einstellung';

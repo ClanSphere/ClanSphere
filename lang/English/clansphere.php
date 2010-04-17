@@ -221,7 +221,6 @@ $cs_lang['body_charset'] = 'This page provides help in finding charset related p
 $cs_lang['old_php'] = 'Warning: This webspace uses PHP 4 and has therefore not enough support for unicode-based charsets';
 $cs_lang['test'] = 'Test';
 $cs_lang['result'] = 'Result';
-$cs_lang['passed'] = 'Passed';
 $cs_lang['setup_file'] = 'Setup File';
 $cs_lang['tpl_setting'] = 'Template Files';
 $cs_lang['web_setting'] = 'Webserver Config';

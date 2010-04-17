@@ -22,6 +22,7 @@ if($charset != 'utf-8' AND substr($charset, 0, 9) != 'iso-8859-') {
 }
 
 # Check every .htm file in the activated template for a matching charset definition
+$tpl_charset = array();
 $tpl_files = cs_paths('templates/' . $cs_main['def_tpl']);
 foreach($tpl_files AS $file => $int)
   if(strtolower(substr($file,-4,4)) == '.htm') {
@@ -41,13 +42,14 @@ foreach($tpl_files AS $file => $int)
         $data['charset']['result_tpl_setting'] .= $cs_lang['charset_unexpected'] . ' : ' . $found . cs_html_br(1);
         $data['charset']['result_tpl_setting'] .= $cs_lang['file'] . ': ' . $filename . cs_html_br(2);
       }
+      else $tpl_charset[$foundlow] = $found;
     }
   }
 if(!empty($data['charset']['result_tpl_setting'])) $data['charset']['result_tpl_setting'] .= $cs_lang['charset_tpl_hint'];
 
 # Check for charset information inside the .htaccess file
+$web_charset = '';
 $file = '.htaccess';
-$match = 0;
 if(file_exists($file)) {
   $fp = fopen($file, 'r');
   $web_content = fread($fp, filesize($file));
@@ -55,7 +57,7 @@ if(file_exists($file)) {
 
   preg_match_all("=(#\s*|)adddefaultcharset\s+(.*?)\s+=si", $web_content, $web_check, PREG_SET_ORDER);
   foreach($web_check AS $found) {
-    if(!empty($found[2])) $match++;
+    if(!empty($found[2])) $web_charset = $found[2];
     $foundlow = strtolower($found[2]);
     if(substr($found[1],0,1) != '#' AND $foundlow != $charset) {
       $data['charset']['result_web_setting'] .= $cs_lang['charset_unexpected'] . ' : ' . $found[2] . cs_html_br(1);
@@ -63,7 +65,7 @@ if(file_exists($file)) {
     }
   }
 }
-if(empty($match)) {
+if(empty($web_charset)) {
   $data['charset']['result_web_setting'] .= $cs_lang['charset_missing'] . cs_html_br(1);
   $data['charset']['result_web_setting'] .= $cs_lang['file'] . ': ' . $file . cs_html_br(2);
 }
@@ -89,8 +91,10 @@ $data['charset']['check_web_setting'] = empty($data['charset']['result_web_setti
 $data['charset']['check_sql_setting'] = empty($data['charset']['result_sql_setting']) ? cs_icon('submit') : cs_icon('stop');
 
 if(empty($data['charset']['result_setup_file']))  $data['charset']['result_setup_file']  = $cs_main['charset'];
-if(empty($data['charset']['result_tpl_setting'])) $data['charset']['result_tpl_setting'] = $cs_lang['passed'];
-if(empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] = $cs_lang['passed'];
-if(empty($data['charset']['result_sql_setting'])) $data['charset']['result_sql_setting'] = $cs_lang['passed'];
+if(empty($data['charset']['result_tpl_setting'])) 
+  foreach($tpl_charset AS $lowercase => $found)
+    $data['charset']['result_tpl_setting'] .= $found . cs_html_br(1);
+if(empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] = $web_charset;
+if(empty($data['charset']['result_sql_setting'])) $data['charset']['result_sql_setting'] = $sql_info['encoding'];
 
 echo cs_subtemplate(__FILE__, $data, 'clansphere', 'charset');
