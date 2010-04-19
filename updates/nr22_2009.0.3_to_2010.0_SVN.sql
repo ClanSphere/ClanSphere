@@ -15,31 +15,30 @@ UPDATE {pre}_access SET access_ckeditor = access_fckeditor;
 
 ALTER TABLE {pre}_access DROP access_fckeditor;
 
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'nextbirth_max_users', '5'),
-('users', 'navbirth_max_users', '5'), ('users', 'nextbirth_time_interval', '1209600');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'nextbirth_max_users', '5');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'navbirth_max_users', '5');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'nextbirth_time_interval', '1209600');
 
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_width','470'),
-('linkus','max_height','100'), ('linkus','max_size','256000');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_width','470');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_height','100');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_size','256000');
 
-ALTER TABLE {pre}_users ADD users_abomail INT(1) NOT NULL DEFAULT '1';
+ALTER TABLE {pre}_users ADD users_abomail int(1) NOT NULL default '1';
 
 ALTER TABLE {pre}_access ADD access_notifymods int(2) NOT NULL default '0';
 
 CREATE TABLE {pre}_notifymods (
   notifymods_id {serial},
-  notifymods_user INT(8) NOT NULL,
-  notifymods_gbook INT(2) NOT NULL DEFAULT '0',
-  notifymods_joinus INT(2) NOT NULL DEFAULT '0',
-  notifymods_fightus INT(2) NOT NULL DEFAULT '0',
+  notifymods_user int(8) NOT NULL,
+  notifymods_gbook int(2) NOT NULL default '0',
+  notifymods_joinus int(2) NOT NULL default '0',
+  notifymods_fightus int(2) NOT NULL default '0',
   PRIMARY KEY (notifymods_id)
 ) {engine};
 
-ALTER TABLE {pre}_notifymods ADD notifymods_files INT(2) NOT NULL DEFAULT '0';
+ALTER TABLE {pre}_notifymods ADD notifymods_files int(2) NOT NULL default '0';
 
-ALTER TABLE {pre}_abcode ADD abcode_order INT(2) NOT NULL DEFAULT '0';
+ALTER TABLE {pre}_abcode ADD abcode_order int(2) NOT NULL default '0';
 CREATE INDEX {pre}_abcode_abcode_order_index ON {pre}_abcode (abcode_order);
 
-ALTER TABLE {pre}_files CHANGE files_size files_size DECIMAL(18, 2) UNSIGNED NOT NULL;
-
-ALTER TABLE {pre}_cupsquads ADD squads_name VARCHAR(80) NOT NULL DEFAULT '';
-
+ALTER TABLE {pre}_cupsquads ADD squads_name varchar(80) NOT NULL default '';
