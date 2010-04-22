@@ -17,7 +17,8 @@ function cs_sql_connect($cs_db, $test = 0)
   }
 
   global $cs_main;
-  if(empty($error) AND $cs_main['charset'] == 'UTF-8')
+  $sql_charset = strtolower($cs_main['charset']);
+  if(empty($error) AND $sql_charset == 'utf-8')
     pg_set_client_encoding('UNICODE');
 
   if(empty($test) AND empty($error)) {
