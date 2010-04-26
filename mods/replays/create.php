@@ -88,6 +88,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['replays'] = $cs_replays;
   $data['replays']['cat_dropdown'] = cs_categories_dropdown('replays',$cs_replays['categories_id']);
 
+  $data['games'] = array();
   $el_id = 'game_1';
   $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
   $games_count = count($cs_games);
