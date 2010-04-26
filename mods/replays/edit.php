@@ -29,7 +29,8 @@ if(isset($_POST['submit'])) {
   $cs_replays['replays_team2'] = $_POST['replays_team2'];
   $cs_replays['replays_date'] = cs_datepost('date','date');
   $cs_replays['replays_map'] = $_POST['replays_map'];
-  $cs_replays['replays_mirrors'] = $_POST['replays_mirrors'];
+  $cs_replays['replays_mirror_urls'] = $_POST['replays_mirror_urls'];
+  $cs_replays['replays_mirror_names'] = $_POST['replays_mirror_names'];
   $cs_replays['replays_info'] = $_POST['replays_info'];
   $cs_replays['replays_close'] = isset($_POST['replays_close']) ? $_POST['replays_close'] : 0;
 
@@ -51,8 +52,8 @@ if(isset($_POST['submit'])) {
     $filename = 'replay-' . $replays_id . '-' . cs_time() . '.' . $extension;
     if(empty($error) AND cs_upload('replays', $filename, $files_gl['replay']['tmp_name'])) {
     $replay_file = 'uploads/replays/' . $filename;
-    $cs_replays['replays_mirrors'] = empty($cs_replays['replays_mirrors']) ? $replay_file : 
-      $replay_file . "\n" . $cs_replays['replays_mirrors'];
+    $cs_replays['replays_mirror_urls'] = empty($cs_replays['replays_mirror_urls']) ? $replay_file : 
+      $replay_file . "\n" . $cs_replays['replays_mirror_urls'];
     }
     else {
       $error .= $cs_lang['up_error'];
@@ -80,7 +81,7 @@ if(isset($_POST['submit'])) {
 }
 else {
 
-  $cells = 'categories_id, games_id, replays_version, replays_team1, replays_team2, replays_date, replays_map, replays_mirrors, replays_info, replays_close';
+  $cells = 'categories_id, games_id, replays_version, replays_team1, replays_team2, replays_date, replays_map, replays_mirror_urls, replays_info, replays_close, replays_mirror_names';
   $cs_replays = cs_sql_select(__FILE__,'replays',$cells,"replays_id = '" . $replays_id . "'");
 }
 if(!isset($_POST['submit'])) {

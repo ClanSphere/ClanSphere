@@ -8,7 +8,7 @@ $cs_replays_id = empty($_REQUEST['where']) ? $_GET['id'] : $_REQUEST['where'];
 settype($cs_replays_id,'integer');
 
 $select = 'users_id, replays_since, categories_id, games_id, replays_version, replays_team1, ';
-$select .= 'replays_team2, replays_date, replays_map, replays_mirrors, replays_info, replays_id, replays_close';
+$select .= 'replays_team2, replays_date, replays_map, replays_mirror_urls, replays_info, replays_id, replays_close, replays_mirror_names';
 $cs_replays = cs_sql_select(__FILE__,'replays',$select,"replays_id = '" . $cs_replays_id . "'");
 
 
@@ -39,13 +39,16 @@ $data['replays']['team2'] = cs_secure($cs_replays['replays_team2']);
 $data['replays']['date'] = cs_date('date',$cs_replays['replays_date']);
 $data['replays']['map'] = cs_secure($cs_replays['replays_map']);
 
-if(empty($cs_replays['replays_mirrors'])) {
-  $data['replays']['mirrors'] = ' - ';
-}
-else {
-  $mirror = explode("\n", $cs_replays['replays_mirrors']); 
-  foreach($mirror AS $load) {
-    $data['replays']['mirrors'] = cs_html_link($load,$load) . cs_html_br(1);
+$data['replays']['mirrors'] = ' - ';
+if(!empty($cs_replays['replays_mirror_urls'])) {
+  $data['replays']['mirrors'] = '';
+  $mirror_names = explode("\n", $cs_replays['replays_mirror_names']);
+  $mirror_urls = explode("\n", $cs_replays['replays_mirror_urls']);
+  $mirror_count = count($mirror_urls);
+
+  for($run=0; $run < $mirror_count; $run++) {
+    if(empty($mirror_names[$run])) $mirror_names[$run] = $mirror_urls[$run];
+    $data['replays']['mirrors'] .= cs_html_link($mirror_urls[$run],$mirror_names[$run]) . cs_html_br(1);
   }
 }
 

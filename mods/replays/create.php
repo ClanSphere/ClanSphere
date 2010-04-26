@@ -23,7 +23,8 @@ if(isset($_POST['submit'])) {
   $cs_replays['replays_team2'] = $_POST['replays_team2'];
   $cs_replays['replays_date'] = cs_datepost('date','date');
   $cs_replays['replays_map'] = $_POST['replays_map'];
-  $cs_replays['replays_mirrors'] = $_POST['replays_mirrors'];
+  $cs_replays['replays_mirror_urls'] = $_POST['replays_mirror_urls'];
+  $cs_replays['replays_mirror_names'] = $_POST['replays_mirror_names'];
   $cs_replays['replays_info'] = $_POST['replays_info'];
   $cs_replays['replays_close'] = isset($_POST['replays_close']) ? $_POST['replays_close'] : 0;
 
@@ -69,7 +70,8 @@ else {
   $cs_replays['replays_team2'] = '';
   $cs_replays['replays_date'] = cs_datereal('Y-m-d');
   $cs_replays['replays_map'] = '';
-  $cs_replays['replays_mirrors'] = '';
+  $cs_replays['replays_mirror_urls'] = '';
+  $cs_replays['replays_mirror_names'] = '';
   $cs_replays['replays_info'] = '';
   $cs_replays['replays_close'] = 0;
 }
@@ -126,13 +128,13 @@ else {
   if(!empty($files_gl['replay']['tmp_name'])) {
     $where = "replays_team1 = '" . cs_sql_escape($cs_replays['replays_team1']) . "'";
     $order = 'replays_since DESC';
-    $getid = cs_sql_select(__FILE__,'replays','replays_id, replays_mirrors',$where,$order);
+    $getid = cs_sql_select(__FILE__,'replays','replays_id, replays_mirror_urls',$where,$order);
     $filename = 'replay-' . $getid['replays_id'] . '-' . cs_time() . '.' . $extension;
     cs_upload('replays',$filename,$files_gl['replay']['tmp_name']);
 
     $replay_file = 'uploads/replays/' . $filename;
-    $cs_replays2['replays_mirrors'] = empty($cs_replays2['replays_mirrors']) ? $replay_file : 
-      $replay_file . "\n" . $cs_replays2['replays_mirrors'];
+    $cs_replays2['replays_mirror_urls'] = empty($cs_replays2['replays_mirror_urls']) ? $replay_file : 
+      $replay_file . "\n" . $cs_replays2['replays_mirror_urls'];
     $replays2_cells = array_keys($cs_replays2);
     $replays2_save = array_values($cs_replays2);      
     cs_sql_update(__FILE__,'replays',$replays2_cells,$replays2_save,$getid['replays_id']);
