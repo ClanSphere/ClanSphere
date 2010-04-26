@@ -48,7 +48,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:openterm} {lang:map}</td>
-		<td class="leftb" colspan="2"><input type="text" name="replays_map" value="{replays:replays_map}" maxlength="80" size="40" /></td>
+		<td class="leftb"><input type="text" name="replays_map" value="{replays:replays_map}" maxlength="80" size="40" /></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:download} {lang:upload}</td>
@@ -59,13 +59,15 @@
 		</td>
 	</tr>
 	<tr>	
-		<td class="leftc">{icon:download} {lang:mirrors}<br />
-			<br />
-			{lang:seperate_by_enter}
-		</td>
+		<td class="leftc">{icon:download} {lang:mirror_urls}<br /></td>
 		<td class="leftb">
-			<textarea class="rte_abcode" name="replays_mirrors" cols="50" rows="4" id="replays_mirrors">{replays:replays_mirrors}</textarea>
+			<textarea class="rte_abcode" name="replays_mirror_urls" id="replays_mirror_urls" cols="50" rows="4">{replays:replays_mirror_urls}</textarea>
 		</td>
+	</tr>
+	<tr>
+		<td class="leftc">{icon:download} {lang:mirror_names}</td>
+		<td class="leftb">
+			<textarea class="rte_abcode" name="replays_mirror_names" id="replays_mirror_names" cols="50" rows="4">{replays:replays_mirror_names}</textarea>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:documentinfo} {lang:info}<br />
