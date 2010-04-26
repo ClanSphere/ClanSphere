@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('count');
 
+$data = array('count' => array());
+
 $geton = cs_time() - 150;
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
 
