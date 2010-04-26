@@ -69,7 +69,8 @@
 		<td class="leftc">{icon:download} {lang:mirror_names}</td>
 		<td class="leftb">
 			<textarea class="rte_abcode" name="replays_mirror_names" id="replays_mirror_names" cols="50" rows="4">{replays:replays_mirror_names}</textarea>
-	</tr>
+		</td>
+  </tr>
 	<tr>
 		<td class="leftc">{icon:documentinfo} {lang:info}<br />
 			<br />
