@@ -157,14 +157,20 @@ function cs_init($predefined) {
   if(!empty($predefined['init_sql'])) {
 
     require_once 'system/core/account.php';
-    cs_tasks('system/runstartup'); # load startup files
+
+    # load startup files
+    $startup = array('abcode', 'count', 'news', 'lightbox');
+    foreach($startup AS $sup) {
+      $file = $cs_main['def_path'] . '/mods/' . $sup . '/startup.php';
+      file_exists($file) ? include_once $file : cs_error($file, 'cs_init - Startup file not found');
+    }
   }
 
   if(!empty($predefined['init_tpl']))
     echo cs_template($cs_micro, $predefined['tpl_file']);
 }
 
-// Array walking with refereced altering
+// Array walking with referenced altering
 function cs_int_walk(&$item, $key) {
     $item = (int)$item;
 }
@@ -219,16 +225,6 @@ function cs_parsetime($micro, $precision = 3) {
   $getparse = $new_time[1] + $new_time[0] - $micro[0] - $micro[1];
   $getparse = round($getparse,$precision) * 1000;
   return $getparse;
-}
-
-function cs_tasks($dir) {
-
-  $goal = opendir($dir . '/');
-  while(false !== ($filename = readdir($goal))) {
-    if($filename != '.' AND $filename != '..' AND $filename != '.svn')
-      include_once $dir . '/' . $filename;
-  }
-  closedir($goal);
 }
 
 function cs_time() {
