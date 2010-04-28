@@ -158,8 +158,14 @@ function cs_init($predefined) {
 
     require_once 'system/core/account.php';
 
-    # load startup files
+    # fetch startup files
     $startup = cs_cache_load('startup');
+    # fallback to create startup files overview
+    if($startup == false) {
+      cs_cache_dirs('mods', $account['users_lang']);
+      $startup = cs_cache_load('startup');
+    }
+    # execute startup files
     if(is_array($startup)) {
       foreach($startup AS $sup) {
         $file = $cs_main['def_path'] . '/mods/' . $sup . '/startup.php';
