@@ -23,8 +23,7 @@ if(empty($cs_users)) {
   for ($run = 0; $run < $count_users; $run++) {
     $data['users'][$run]['nick'] = cs_user($cs_users[$run]['users_id'], $cs_users[$run]['users_nick'], $cs_users[$run]['users_active']);
     $data['users'][$run]['countryicon'] = cs_html_img('symbols/countries/'.$cs_users[$run]['users_country'].'.png');
-    $nick = str_replace(' ', '%20', cs_secure($cs_users[$run]['users_nick']));
-    $data['users'][$run]['messageurl'] = cs_url('messages','create','to='.$nick);
+    $data['users'][$run]['messageurl'] = cs_url('messages','create','to_id='.$cs_users[$run]['users_id']);
   }
   echo cs_subtemplate(__FILE__,$data,'users','navonline');
 }
