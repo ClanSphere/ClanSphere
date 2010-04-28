@@ -242,12 +242,13 @@ function cs_parsetime($micro, $precision = 3) {
 function cs_tasks($dir) {
 
   global $cs_main;
-  $goal = opendir($cs_main['def_path'] . '/' . $dir . '/');
-  while(false !== ($filename = readdir($goal))) {
-    if($filename != '.' AND $filename != '..' AND $filename != '.svn')
-      include_once $dir . '/' . $filename;
+  if($goal = opendir($cs_main['def_path'] . '/' . $dir . '/')) {
+    while(false !== ($filename = readdir($goal))) {
+      if($filename != '.' AND $filename != '..' AND $filename != '.svn')
+        include_once $dir . '/' . $filename;
+    }
+    closedir($goal);
   }
-  closedir($goal);
 }
  
 function cs_time() {
