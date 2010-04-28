@@ -16,4 +16,5 @@ $mod_info['show']    = array();
 $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = TRUE;
-$mod_info['tables']    = array(''); 
+$mod_info['tables']    = array('');
+$mod_info['startup'] = TRUE;

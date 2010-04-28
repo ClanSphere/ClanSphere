@@ -22,6 +22,7 @@ function cs_cache_dirs($dir, $lang) {
   $content = cs_cache_load($filename);
 
   if($content === false) {
+    $startup = array();
     $cs_lang_old = $cs_lang;
     $info = array();
     $dirlist = cs_paths($dir);
@@ -41,6 +42,8 @@ function cs_cache_dirs($dir, $lang) {
           $info[$name] = $mod_info;
           $info[$name]['name'] = $name;
           $info[$name]['dir'] = $target;
+          if(!empty($mod_info['startup']))
+            $startup[$target] = TRUE;
         }
         unset($info[$name]['text'], $info[$name]['url'], $info[$name]['team'], $info[$name]['creator']);
       }
@@ -51,6 +54,7 @@ function cs_cache_dirs($dir, $lang) {
     ksort($info);
     $cs_lang = $cs_lang_old;
 
+    cs_cache_save('startup', array_keys($startup));
     return cs_cache_save($filename, $info);
   }
   else {

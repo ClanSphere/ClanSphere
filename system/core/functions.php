@@ -159,10 +159,12 @@ function cs_init($predefined) {
     require_once 'system/core/account.php';
 
     # load startup files
-    $startup = array('abcode', 'count', 'news', 'lightbox');
-    foreach($startup AS $sup) {
-      $file = $cs_main['def_path'] . '/mods/' . $sup . '/startup.php';
-      file_exists($file) ? include_once $file : cs_error($file, 'cs_init - Startup file not found');
+    $startup = cs_cache_load('startup');
+    if(is_array($startup)) {
+      foreach($startup AS $sup) {
+        $file = $cs_main['def_path'] . '/mods/' . $sup . '/startup.php';
+        file_exists($file) ? include_once $file : cs_error($file, 'cs_init - Startup file not found');
+      }
     }
   }
 
