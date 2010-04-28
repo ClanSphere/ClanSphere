@@ -239,7 +239,7 @@ function cs_parsetime($micro, $precision = 3) {
   return $getparse;
 }
 
--function cs_tasks($dir) {
+function cs_tasks($dir) {
 
   global $cs_main;
   $goal = opendir($cs_main['def_path'] . '/' . $dir . '/');
