@@ -158,6 +158,10 @@ function cs_init($predefined) {
 
     require_once 'system/core/account.php';
 
+    # check for deprecated runstartup behavior
+    if(!empty($cs_main['runstartup']))
+      cs_tasks('system/runstartup');
+
     # fetch startup files
     $startup = cs_cache_load('startup');
     # fallback to create startup files overview
@@ -235,6 +239,17 @@ function cs_parsetime($micro, $precision = 3) {
   return $getparse;
 }
 
+-function cs_tasks($dir) {
+
+  global $cs_main;
+  $goal = opendir($cs_main['def_path'] . '/' . $dir . '/');
+  while(false !== ($filename = readdir($goal))) {
+    if($filename != '.' AND $filename != '..' AND $filename != '.svn')
+      include_once $dir . '/' . $filename;
+  }
+  closedir($goal);
+}
+ 
 function cs_time() {
 
   $time = time() - date('Z');
