@@ -13,6 +13,10 @@
     <td class="leftb">{link:ecard} {link:download_picture} {link:download_zip} {link:print}</td>
   </tr>
   <tr>
+    <td class="leftb">{icon:personal} {lang:user}</td>
+    <td class="leftb">{data:user}</td>
+  </tr>
+  <tr>
     <td class="leftb">{icon:today} {lang:date}</td>
     <td class="leftb">{data:date}</td>
   </tr>

@@ -22,7 +22,7 @@ $option = cs_sql_option(__FILE__,'gallery');
 $id = empty($gid) ? $folder_id : $gid;
 
 $select = 'gallery_id, gallery_name, gallery_titel, gallery_description, ';
-$select .= 'gallery_time, gallery_vote, gallery_count, folders_id';
+$select .= 'gallery_time, gallery_vote, gallery_count, folders_id, users_id';
 $where = 'gallery_id = ' . $id . ' AND gallery_status = 1 AND gallery_access <=' . $account['access_gallery'];
 $cs_gallery = cs_sql_select(__FILE__,'gallery',$select,$where);
 $gallery_loop = count($cs_gallery);
@@ -221,6 +221,8 @@ if(empty($gallery_loop)) {
     }
     $data['data']['titel'] = $cs_gallery['gallery_titel'];
     $data['data']['date'] = cs_date('unix',$cs_gallery['gallery_time'],1);
+    $users_nick = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . $cs_gallery['users_id']);
+    $data['data']['user'] = cs_secure($users_nick['users_nick'],1,1);
     $data['data']['description'] = cs_secure($cs_gallery['gallery_description'],1,1);
     $data['data']['pic_size'] = $img_size[0] . 'x' . $img_size[1] . ' Pixel';
     $size = filesize('uploads/gallery/pics/' . $cs_gallery['gallery_name']);
