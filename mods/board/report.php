@@ -21,7 +21,7 @@ if(empty($tid) AND !empty($cid)) {
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'frm.board_id AS board_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.squads_id AS squads_id';
+$select = 'frm.board_id AS board_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.squads_id AS squads_id, thr.threads_headline';
 $where = "thr.threads_id = '" . $tid . "'";
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where,0,0,1);
 
@@ -82,8 +82,10 @@ else {
   $report_cells = array('threads_id', 'comments_id', 'users_id', 'boardreport_time', 'boardreport_text');
   $report_save = array($tid, $cid, $account['users_id'], cs_time(), $report);
   cs_sql_insert(__FILE__,'boardreport',$report_cells,$report_save);
-
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' . $tid);
+  require_once('mods/notifymods/functions.php');
+  $users_nick = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . $account['users_id']);
+  notifymods_mail('board', $account['users_id'], array($users_nick['users_nick'], $cs_thread['threads_headline'], $report));
+  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&amp;action=thread&amp;where=' . $tid);
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','report');

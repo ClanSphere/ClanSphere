@@ -45,3 +45,5 @@ ALTER TABLE {pre}_replays ADD replays_mirror_urls text;
 UPDATE {pre}_replays SET replays_mirror_names = replays_mirrors;
 UPDATE {pre}_replays SET replays_mirror_urls = replays_mirrors;
 ALTER TABLE {pre}_replays DROP replays_mirrors;
+
+ALTER TABLE {pre}_notifymods ADD notifymods_board int(2) NOT NULL default '0';

@@ -21,6 +21,7 @@ $cs_lang['gbook'] = 'G&auml;stebuch';
 $cs_lang['joinus'] = 'Joinus';
 $cs_lang['fightus'] = 'Fightus';
 $cs_lang['files'] = 'Downloads';
+$cs_lang['board'] = 'Forum';
 
 $cs_lang['gbook_text'] = 'Es ist ein neuer Eintrag im G&auml;stebuch vorhanden.';
 $cs_lang['gbook_subject'] = 'Neuer G&auml;stebuch-Eintrag';
@@ -30,3 +31,5 @@ $cs_lang['fightus_text'] = 'Es ist eine neue Fightus-Herausforderung vorhanden.'
 $cs_lang['fightus_subject'] = 'Neuer Fightus-Eintrag';
 $cs_lang['files_text'] = 'Ein oder mehrere Spiegel vom Download "%s" sind m&ouml;glicherweise nicht erreichbar.';
 $cs_lang['files_subject'] = 'Download nicht erreichbar';
+$cs_lang['board_text'] = '"%s" meldete ein Kommentar im Forenthema "%s", mit der Nachricht: "%s"';
+$cs_lang['board_subject'] = 'Meldung eines Forum-Kommentars';

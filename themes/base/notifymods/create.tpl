@@ -22,7 +22,8 @@
 			<input type="checkbox" name="notifymods_gbook" value="1" {nm:notifymods_gbook} />{lang:gbook}<br />
 			<input type="checkbox" name="notifymods_joinus" value="1" {nm:notifymods_joinus} />{lang:joinus}<br />
 			<input type="checkbox" name="notifymods_fightus" value="1" {nm:notifymods_fightus} />{lang:fightus}<br />
-			<input type="checkbox" name="notifymods_files" value="1" {nm:notifymods_files} />{lang:files}
+			<input type="checkbox" name="notifymods_files" value="1" {nm:notifymods_files} />{lang:files}<br />
+			<input type="checkbox" name="notifymods_board" value="1" {nm:notifymods_board} />{lang:board}
 		</td>
 	</tr>
 	<tr>

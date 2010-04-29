@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
   $cs_bm['notifymods_joinus'] = isset($_POST['notifymods_joinus']) ? $_POST['notifymods_joinus'] : 0;
   $cs_bm['notifymods_fightus'] = isset($_POST['notifymods_fightus']) ? $_POST['notifymods_fightus'] : 0;
   $cs_bm['notifymods_files'] = isset($_POST['notifymods_files']) ? $_POST['notifymods_files'] : 0;
+  $cs_bm['notifymods_board'] = isset($_POST['notifymods_board']) ? $_POST['notifymods_board'] : 0;
   
   $error = 0;
   $errormsg = '';
@@ -22,7 +23,7 @@ else {
   $notifymods_id = $_GET['id'];
   $tables = 'notifymods ntm INNER JOIN {pre}_users usr ON usr.users_id = ntm.notifymods_user';
   $cells  = 'ntm.notifymods_id, ntm.notifymods_user, usr.users_nick AS users_nick, ' .
-            'ntm.notifymods_gbook, ntm.notifymods_joinus, ntm.notifymods_fightus, ntm.notifymods_files';
+            'ntm.notifymods_gbook, ntm.notifymods_joinus, ntm.notifymods_fightus, ntm.notifymods_files, ntm.notifymods_board';
   $cs_bm = cs_sql_select(__FILE__,$tables,$cells,'notifymods_id = ' . $notifymods_id);
 }
 
@@ -40,6 +41,7 @@ if (!empty($error) OR !isset($_POST['submit'])) {
   $data['nm']['notifymods_joinus'] = $cs_bm['notifymods_joinus'] == 1 ? 'checked="checked"' : '';
   $data['nm']['notifymods_fightus'] = $cs_bm['notifymods_fightus'] == 1 ? 'checked="checked"' : '';
   $data['nm']['notifymods_files'] = $cs_bm['notifymods_files'] == 1 ? 'checked="checked"' : '';
+  $data['nm']['notifymods_board'] = $cs_bm['notifymods_board'] == 1 ? 'checked="checked"' : '';
 }
 else {
   $notifymods_cells = array_keys($cs_bm);

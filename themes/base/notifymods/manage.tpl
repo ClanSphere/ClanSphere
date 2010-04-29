@@ -17,7 +17,7 @@
 		<td class="headb" colspan="2">{lang:mod_name} - {lang:caption}</td>
 	</tr>
 	<tr>
-		<td class="leftb">Gbook</td>
+		<td class="leftb">GB</td>
 		<td class="leftb">{lang:gbook}</td>
 	</tr>
 	<tr>
@@ -32,15 +32,20 @@
 		<td class="leftb">Down</td>
 		<td class="leftb">{lang:files}</td>
 	</tr>
+	<tr>
+		<td class="leftb">Board</td>
+		<td class="leftb">{lang:board}</td>
+	</tr>
 </table>
 <br />
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>
 		<td class="headb">{sort:users_nick} {lang:user}</td>
-		<td class="headb">Gbook</td>
+		<td class="headb">GB</td>
 		<td class="headb">Join</td>
 		<td class="headb">Fight</td>
 		<td class="headb">Down</td>
+		<td class="headb">Board</td>
 		<td class="headb" colspan="2">{lang:options}</td>
 	</tr>
 	{loop:nm}
@@ -50,6 +55,7 @@
 		<td class="leftc">{nm:notifymods_joinus}</td>
 		<td class="leftc">{nm:notifymods_fightus}</td>
 		<td class="leftc">{nm:notifymods_files}</td>
+		<td class="leftc">{nm:notifymods_board}</td>
 		<td class="leftc"><a href="{nm:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
 		<td class="leftc"><a href="{nm:url_remove}" title="{lang:remove}">{icon:editdelete}</a></td>
 	</tr>

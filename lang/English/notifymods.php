@@ -21,6 +21,7 @@ $cs_lang['gbook'] = 'Guestbook';
 $cs_lang['joinus'] = 'Join us';
 $cs_lang['fightus'] = 'Fightus';
 $cs_lang['files'] = 'Downloads';
+$cs_lang['board'] = 'Board';
 
 $cs_lang['gbook_text'] = 'There is a new guestbook entry available.';
 $cs_lang['gbook_subject'] = 'new guestbook entry';
@@ -30,3 +31,5 @@ $cs_lang['fightus_text'] = 'There is a new fightus challenge available.';
 $cs_lang['fightus_subject'] = 'new fightus entry';
 $cs_lang['files_text'] = 'One or more mirrors from download "%s" are maybe offline.';
 $cs_lang['files_subject'] = 'Download offline';
+$cs_lang['board_text'] = '"%s" reported a comment into the thread "%s", with following massage: "%s"';
+$cs_lang['board_subject'] = 'Report of a board comment';
