@@ -222,7 +222,7 @@ if(empty($gallery_loop)) {
     $data['data']['titel'] = $cs_gallery['gallery_titel'];
     $data['data']['date'] = cs_date('unix',$cs_gallery['gallery_time'],1);
     $users_nick = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . $cs_gallery['users_id']);
-    $data['data']['user'] = cs_secure($users_nick['users_nick'],1,1);
+    $data['data']['user'] = cs_secure($users_nick['users_nick']);
     $data['data']['description'] = cs_secure($cs_gallery['gallery_description'],1,1);
     $data['data']['pic_size'] = $img_size[0] . 'x' . $img_size[1] . ' Pixel';
     $size = filesize('uploads/gallery/pics/' . $cs_gallery['gallery_name']);
