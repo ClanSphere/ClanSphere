@@ -18,25 +18,26 @@ if($data['day'] != $time_now['2'].$time_now['1']) {
   $where = "users_hidden NOT LIKE '%users_age%' AND users_active = 1 ";
   $where .= $nextmonth == $time_now['1'] ? " AND users_age LIKE '%-". $time_now['1'] ."-%'" : "AND (users_age LIKE '%-". $time_now['1'] ."-%' OR users_age LIKE '%-". $nextmonth ."-%')";
   $cs_users = cs_sql_select(__FILE__,'users',$select,$where,0,0,0);
-  
-  $run=0;
-  foreach($cs_users as $birth_users) {
-    $birth = explode('-', $birth_users['users_age']);
-    if($birth[1].$birth[2] < $nextmonth.$nextday AND $birth[1].$birth[2] > $time_now['1'].$time_now['2']) {
-      $data['users'][$run]['users_id'] =  $birth_users['users_id'];
-      $data['users'][$run]['users_nick'] = $birth_users['users_nick'];
-      $data['users'][$run]['users_day'] = $birth[2];
-      $data['users'][$run]['users_month'] = $birth[1];
-      $data['users'][$run]['users_year'] = $birth[0];
-      $run++;
+  if(!empty($cs_users)) {
+    $run=0;
+    foreach($cs_users as $birth_users) {
+      $birth = explode('-', $birth_users['users_age']);
+      if($birth[1].$birth[2] < $nextmonth.$nextday AND $birth[1].$birth[2] > $time_now['1'].$time_now['2']) {
+        $data['users'][$run]['users_id'] =  $birth_users['users_id'];
+        $data['users'][$run]['users_nick'] = $birth_users['users_nick'];
+        $data['users'][$run]['users_day'] = $birth[2];
+        $data['users'][$run]['users_month'] = $birth[1];
+        $data['users'][$run]['users_year'] = $birth[0];
+        $run++;
+      }
     }
-  }
 
-  foreach($data['users'] as $sortarray) {
-    $column[] = $sortarray['users_month'];
-    $column2[] = $sortarray['users_day'];
+    foreach($data['users'] as $sortarray) {
+      $column[] = $sortarray['users_month'];
+      $column2[] = $sortarray['users_day'];
+    }
+    if(!empty($data['users'])) array_multisort($column, SORT_ASC, $column2, SORT_ASC, $data['users']);
   }
-  if(!empty($data['users'])) array_multisort($column, SORT_ASC, $column2, SORT_ASC, $data['users']);
   cs_cache_save('nextbirth', $data);
 }
 
