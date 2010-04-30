@@ -197,7 +197,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
 		
 	}
 	
-	return false;
+	return TRUE;
 }
 
 function cs_cupmatches_fix ($cupmatches, $round) {

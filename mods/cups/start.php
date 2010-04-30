@@ -64,7 +64,7 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
       $values = array_values($cs_cups);
       cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
       
-      if($run%2 == 0 AND $temp[$run] === $temp[$run-1]) {
+      if($run%2 == 0 AND $temp[$run] === TRUE AND $temp[$run-1] === TRUE) {
         $cs_cups = array();
         $cs_cups['cups_id'] = $id;
         $cs_cups['squad1_id'] = $last_squad;
@@ -88,9 +88,12 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
 
   $id = (int) $_GET['id'];
   
+  // if you like to remove squads automatically which doesn't exist anymore in the datebase uncomment the following lines:
+  /*
   $del = cs_sql_select(__FILE__,'cupsquads cq LEFT JOIN {pre}_squads sq ON cq.squads_id = sq.squads_id','cq.squads_id','sq.squads_id IS NULL AND cups_id = ' . $id,0,0,0);
   foreach($del as $del_id)
     cs_sql_delete(__FILE__,'cupsquads', $del_id['squads_id'], 'squads_id');
+  */
   
   $cupsel = cs_sql_select(__FILE__,'cups','cups_teams','cups_id = ' . $id);
   $squads_count = cs_sql_count(__FILE__,'cupsquads','cups_id = ' . $id);
