@@ -181,7 +181,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   settype($first, 'integer');
   settype($max, 'integer');
   $run = 0;
-  $sql_where = str_replace('"', '', $sql_where);
+  $sql_where = str_replace('"', "'", $sql_where);
   
   $sql_query = 'SELECT ' . $sql_select . ' FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   if (!empty($sql_where)) {
