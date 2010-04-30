@@ -15,7 +15,7 @@ function notifymods_mail($mod, $users_id=0, array $var = NULL) {
   $pattern1 = '/\'(?<mod>.*)_text\'\](\s*)=(\s*)\'(?<value>.*)\';/';
   $pattern2 = '/\'(?<mod>.*)_subject\'\](\s*)=(\s*)\'(?<value>.*)\';/';
   
-  if($ntm_users != NULL) {
+  if(!empty($ntm_users)) {
     foreach($ntm_users as $mail_user) {
       $lang = empty($mail_user['users_lang']) ? $cs_main['def_lang'] : $mail_user['users_lang'];
       if (empty($mail_text[$lang][$mod.'_text'])) {
