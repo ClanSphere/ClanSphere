@@ -303,9 +303,9 @@ function cs_chmod_TextChange() {
 	}
 }
 
-function cs_select_checkboxes(formname) {
+function cs_select_checkboxes(formcontent) {
 
-  elements = document.forms[formname.form.name].getElementsByTagName('input');
+  elements = formcontent.form.getElementsByTagName('input');
   
   for (run = 0; run < elements.length; run++) {
     if (elements[run].name.substr(0,7) == 'select_') {
