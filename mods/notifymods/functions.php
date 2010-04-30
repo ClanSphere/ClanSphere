@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$ 
 
-function notifymods_mail($mod, $users_id=0, array $var) {
+function notifymods_mail($mod, $users_id=0, array $var = NULL) {
   // $mail_text[$lang] = cs_translate('notifymods');  // not implicitly necessary
   $mails_send = 0;
   $from = "notifymods ntm INNER JOIN {pre}_users usr ON ntm.notifymods_user = usr.users_id";
