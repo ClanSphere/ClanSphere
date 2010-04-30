@@ -9,7 +9,7 @@
 </table>
 <br />
 {head:message}
-<form method="post" action="{url:shoutbox_multiremove}">
+<form method="post" id="shoutbox_manage" name="shoutbox_manage" action="{url:shoutbox_multiremove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb">{sort:nick} {lang:nick}</td>
@@ -26,7 +26,7 @@
  </tr>{stop:shoutbox}
  <tr>
   <td class="rightb" colspan="6">
-    <input type="button" value="{lang:select_all}"  onclick="return cs_shoutbox_select();" />
+    <input type="button" value="{lang:select_all}"  onclick="return cs_select_checkboxes(this);" />
     <input type="submit" value="{lang:delete_selected}" />
     <input type="reset" value="{lang:remove_selection}" />
    </td>

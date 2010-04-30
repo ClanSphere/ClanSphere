@@ -31,7 +31,7 @@
 </table>
 <br />
 
-<form method="post" id="messages_archivbox1" action="{url:messages_multiremove}">
+<form method="post" id="messages_archivbox1" name="messages_archivbox1" action="{url:messages_multiremove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="width: 40px">{sort:view}</td>
@@ -56,7 +56,7 @@
   </tr>{stop:msgs_in}
   <tr>
     <td class="rightb" colspan="6">
-      <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_shoutbox_select();" />
+      <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_select_checkboxes(this);" />
       <input type="submit" name="submit" value="{lang:remove_selected}" />
       <input type="reset" name="reset_sel" value="{lang:drop_selection}" />
      </td>
@@ -65,7 +65,7 @@
 <br />
 </form>
 
-<form method="post" id="messages_archivbox2" action="{url:messages_multiremove}">
+<form method="post" id="messages_archivbox2" name="messages_archivbox2" action="{url:messages_multiremove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="width: 40px">{sort:view}</td>
@@ -90,7 +90,7 @@
   </tr>{stop:msgs_out}
   <tr>
     <td class="rightb" colspan="6">
-      <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_shoutbox_select();" />
+      <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_select_checkboxes(this);" />
       <input type="submit" name="submit" value="{lang:remove_selected}" />
       <input type="reset" name="reset_sel" value="{lang:drop_selection}" />
      </td>

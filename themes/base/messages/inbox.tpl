@@ -31,7 +31,7 @@
 </table>
 <br />
 
-<form method="post" id="messages_inbox" action="{url:messages_multiremove}">
+<form method="post" id="messages_inbox" name="messages_inbox" action="{url:messages_multiremove}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="width: 40px">{sort:view}</td>
@@ -57,7 +57,7 @@
   </tr>{stop:msgs}
   <tr>
     <td class="rightb" colspan="7">
-      <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_shoutbox_select();" />
+      <input type="button" name="sel_all" value="{lang:select_all}" onclick="return cs_select_checkboxes(this);" />
       <input type="submit" name="submit" value="{lang:remove_selected}" />
       <input type="reset" name="reset_sel" value="{lang:drop_selection}" />
      </td>

@@ -303,9 +303,9 @@ function cs_chmod_TextChange() {
 	}
 }
 
-function cs_shoutbox_select() {
-  
-  elements = document.getElementsByTagName('input');
+function cs_select_checkboxes(formname) {
+
+  elements = document.forms[formname.form.name].getElementsByTagName('input');
   
   for (run = 0; run < elements.length; run++) {
     if (elements[run].name.substr(0,7) == 'select_') {
