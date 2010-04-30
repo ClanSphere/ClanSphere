@@ -19,12 +19,12 @@ $max = isset($_GET['mini']) ? 3 : 6;
 for($i=0;$i<$max;$i++) {
   $hash .= $pattern{rand(0,34)};
 }
-#$ip = cs_sql_escape($_SERVER['REMOTE_ADDR']);
+
 $ip = cs_getip();
 $timeout = cs_time() - 900;
 $save_hash = isset($_GET['mini']) ? 'mini_' . $hash : $hash;
 
-$where = "captcha_ip = '" . $ip . "' AND captcha_time < '" . $timeout . "'";
+$where = "captcha_ip = '" . cs_sql_escape($ip) . "' AND captcha_time < '" . $timeout . "'";
 $old = cs_sql_select(__FILE__,'captcha','captcha_id',$where,'captcha_time DESC');
 
 if(empty($old['captcha_id'])) {
