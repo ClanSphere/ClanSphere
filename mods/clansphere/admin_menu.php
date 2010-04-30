@@ -13,13 +13,16 @@ function cs_admin_menu()
   
   $recent_mod = $cs_main['mod'];
   $recent_action = $cs_main['action'];
+
+  # replace known modules on different sql table name
+  $recent_sql = $recent_mod == 'contact' ? 'mail' : $recent_mod;
   
   $link_count = 0;
   
   if (file_exists('mods/' . $recent_mod . '/manage.php') && $account['access_' . $recent_mod] >= 3)
   {
     $link_count++;	
-    $data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage') .' (' . cs_sql_count(__FILE__, $recent_mod) . ')';	
+    $data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage') .' (' . cs_sql_count(__FILE__, $recent_sql) . ')';	
     $data['if']['manage'] = true;
   }
   else
