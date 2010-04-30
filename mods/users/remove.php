@@ -60,6 +60,8 @@ if(isset($_GET['agree'])) {
   $array_values = array_values($array_data);
   cs_sql_update(__FILE__, 'users', $array_keys, $array_values, $users_id);
   cs_sql_delete(__FILE__, 'members', $users_id, 'users_id');
+  cs_unlink('cache', 'navbirth.tmp');
+  cs_unlink('cache', 'nextbirth.tmp');
   cs_redirect($cs_lang['del_true'], 'users');
 }
 
