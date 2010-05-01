@@ -64,7 +64,7 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
       $values = array_values($cs_cups);
       cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
       
-      if($run%2 == 0 AND $temp[$run] === TRUE AND $temp[$run-1] === TRUE) { // if there are too free tickets consecutive
+      if($run%2 == 0 AND $temp[$run] === TRUE AND $temp[$run-1] === TRUE) { // if there are two free tickets consecutive
         $cs_cups = array();
         $cs_cups['cups_id'] = $id;
         $cs_cups['squad1_id'] = $last_squad;
