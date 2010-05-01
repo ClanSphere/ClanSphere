@@ -6,7 +6,7 @@ if (!empty($cs_main)) {
 	
   $data = array();
   $data['cups']['id'] = (int) $_GET['id'];
-  
+  $cup = cs_sql_select(__FILE__, 'cups', 'cups_teams', 'cups_id = ' . $data['cups']['id']);
   $cond_1 = (bool) cs_sql_count(__FILE__, 'cups', 'cups_id = ' . $data['cups']['id'] . ' AND cups_brackets = 1');
   $cond_2 = cs_sql_count(__FILE__,'cupsquads','cups_id = ' . $data['cups']['id']) - $cup['cups_teams'] / 2;
   if ($cond_1 AND $cond_2 > 1)
