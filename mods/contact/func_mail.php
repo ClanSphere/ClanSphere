@@ -17,13 +17,13 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
   }
 
   $mail['subject'] = '=?' . $cs_main['charset'] . '?B?' . base64_encode($subject) . '?=';
-  $mail['message'] = $message;
+  $mail['message'] = base64_encode($message);
   $mail['from'] = empty($from) ? $options['def_mail'] : $from;
   $mail['to'] = $email;
 
-  $mail['headers'] = "Reply-To: " . $mail['from'] . $nl;
-  $mail['headers'] .= "Content-type: " . $type . "; charset=" . $cs_main['charset'] . $nl;
-  $mail['headers'] .= "MIME-Version: 1.0" . $nl;
+  $mail['headers'] = "MIME-Version: 1.0" . $nl;
+  $mail['headers'] .= "Content-Type: " . $type . "; charset=" . $cs_main['charset'] . $nl;
+  $mail['headers'] .= "Content-Transfer-Encoding: base64" . $nl;
   $mail['headers'] .= "X-Mailer: PHP/" . phpversion() . $nl;
 
   return $mail;
