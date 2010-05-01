@@ -326,33 +326,15 @@ function cs_link($name,$mod,$action = 'list',$more = 0,$class = 0, $title = 0) {
 
 function cs_mail($email,$title,$message,$from = 0,$type = 0) {
 
-  global $cs_main;
-  $cs_contact = cs_sql_option(__FILE__, 'contact');
-  $subject = $cs_contact['def_org'] . ' - ' . $title;
-  $from = empty($from) ? $cs_contact['def_mail'] : $from;
-  $type = empty($type) ? 'text/plain' : $type;
-  $headers = "From: " . $from . "\r\n";
-  $headers .= "Content-type: " . $type . "; charset=" . $cs_main['charset'] . "\r\n";
-  $headers .= "Reply-To: " . $from . "\r\n";
-  $headers .= "MIME-Version: 1.0" . "\r\n";
-  $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+  include_once 'mods/contact/func_mail.php';
 
-  if($type == 'text/plain') {
-    $subject = html_entity_decode($subject, ENT_NOQUOTES, $cs_main['charset']);
-    $message = html_entity_decode($message, ENT_NOQUOTES, $cs_main['charset']);
-  }
+  $options = cs_sql_option(__FILE__, 'contact');
+  $mail = cs_mail_prepare($email, $title, $message, $from, $type, $options);
 
-  if(!empty($cs_contact['smtp_host'])) {
-    @ini_set('SMTP', $cs_contact['smtp_host']);
-    @ini_set('smtp_port', $cs_contact['smtp_port']);
-  }
-  @ini_set('sendmail_from', $from);
-
-  $subject = '=?' . $cs_main['charset'] . '?B?' . base64_encode($subject) . '?=';
-#  $message = '=?' . $cs_main['charset'] . '?B?' . base64_encode($message) . '?=';
-
-  $result = mail($email,$subject,$message,$headers) ? TRUE : FALSE;
-  return $result;
+  if(empty($options['smtp_host']))
+    return cs_mail_send($mail);
+  else
+    return cs_mail_smtp($mail, $options);
 }
 
 function cs_mimetype ($file) {

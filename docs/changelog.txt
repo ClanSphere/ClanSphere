@@ -27,6 +27,7 @@ ___________________________________________________________
 -> Added replay mirror names addition provided by aschti (hajo)
 -> Added possibility to use features.php for print views (hajo)
 -> Added charset page to check for possible charset related problems (hajo)
+-> Added SMTP authentication with user and password for send mails (hajo)
 -> Fixed board-counter after delete a thread (spongebob)
 -> Fixed delete own board/subscription and board/attachments (spongebob)
 -> Fixed file size (sort) in files-module (spongebob)
