@@ -47,3 +47,6 @@ UPDATE {pre}_replays SET replays_mirror_urls = replays_mirrors;
 ALTER TABLE {pre}_replays DROP replays_mirrors;
 
 ALTER TABLE {pre}_notifymods ADD notifymods_board int(2) NOT NULL default '0';
+
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_user', '');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_pw', '');

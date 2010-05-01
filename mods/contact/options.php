@@ -13,13 +13,13 @@ if(isset($_POST['submit'])) {
   $save['def_mail'] = $_POST['def_mail'];
   $save['smtp_host'] = $_POST['smtp_host'];
   $save['smtp_port'] = $_POST['smtp_port'];
+  $save['smtp_user'] = $_POST['smtp_user'];
+  $save['smtp_pw'] = $_POST['smtp_pw'];
 
   require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('contact', $save);
-
   cs_redirect($cs_lang['success'], 'options','roots');
-
 } 
 else {
 

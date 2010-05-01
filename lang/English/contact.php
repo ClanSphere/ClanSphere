@@ -15,6 +15,8 @@ $cs_lang['def_mail'] = 'Default E-Mail';
 $cs_lang['empty_uses_default'] = 'Leave blank to keep PHP default';
 $cs_lang['smtp_host'] = 'SMTP Host';
 $cs_lang['smtp_port'] = 'SMTP Port';
+$cs_lang['smtp_user'] = 'SMTP User';
+$cs_lang['smtp_pw'] = 'SMTP Password';
 
 // manage.php
 $cs_lang['head_manage'] = 'Manage all contact information here';

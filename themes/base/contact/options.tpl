@@ -29,7 +29,17 @@
     </tr>
     <tr>
       <td class="leftc">{icon:pipe} {lang:smtp_port}</td>
-      <td class="leftb"><input type="text" name="smtp_port" value="{options:smtp_port}" maxlength="20" size="20" />
+      <td class="leftb"><input type="text" name="smtp_port" value="{options:smtp_port}" maxlength="20" size="8" />
+      </td>
+    </tr>
+    <tr>
+      <td class="leftc">{icon:personal} {lang:smtp_user}</td>
+      <td class="leftb"><input type="text" name="smtp_user" value="{options:smtp_user}" maxlength="20" size="20" />
+      </td>
+    </tr>
+    <tr>
+      <td class="leftc">{icon:password} {lang:smtp_pw}</td>
+      <td class="leftb"><input type="text" name="smtp_pw" value="{options:smtp_pw}" maxlength="20" size="20" />
       </td>
     </tr>
     <tr>
