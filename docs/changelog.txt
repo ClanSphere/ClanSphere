@@ -2,7 +2,6 @@ CHANGELOG
 --------------------------
 
 
-
 ClanSphere 2010.0 >> xxxx-xx-xx
 ___________________________________________________________
 
@@ -45,6 +44,13 @@ ___________________________________________________________
 -> Switched from FCKEditor to the most current version of the CKEditor (hajo)
 
 -- CKEditor 3.2 and FCKEditor Filebrowser 2.6.6 included in this release
+
+
+ClanSphere 2009.0.3.1 >> 2010-05-01
+___________________________________________________________
+
+- /mods/captcha/generate.php: Secured IP adress in query string
+- /system/database/mysql.php: Changed where-condition quote replacement
 
 
 ClanSphere 2009.0.3 >> 2009-12-06
