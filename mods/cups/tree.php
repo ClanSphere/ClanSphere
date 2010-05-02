@@ -121,7 +121,7 @@ function cs_cupmatches_fix ($cupmatches, $round) {
 		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['team1_id'] &&
 		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['team2_id']) {
 		    	$key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'team1_id');
-		    	if (!$key) $key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'team2_id');
+		    	if ($key === FALSE) $key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'team2_id');
 		    	$key = ceil(($key + 1) / 2) - 1;
 				$fixes[$key] = $cupmatches[$round][$i];
 				unset($cupmatches[$round][$i]);
