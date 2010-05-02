@@ -13,36 +13,7 @@ cs_init($cs_main);
 
 header("Content-Type: text/html; charset=UTF-8");
 
-global $cs_logs, $com_lang, $cs_main, $account;
-$wp = $cs_main['php_self']['dirname'];
-$mod = $cs_main['mod'];
-$action = $cs_main['action'];
-$get_axx = 'mods/' . $mod . '/access.php';
-
-if (!file_exists($cs_main['show'])) {
-  $message = 'cs_template - File not found';
-  cs_error($cs_main['show'], $message);
-  $cs_main['show'] = 'mods/errors/404.php';
-} elseif (!file_exists($get_axx)) {
-  $message = 'cs_template - Access file not found';
-  cs_error($get_axx, $message);
-  $cs_main['show'] = 'mods/errors/403.php';
-} else {
-  $axx_file = array();
-  include($get_axx);
-  if (!isset($axx_file[$action]))
-  {
-      $message = 'cs_template - No access defined for target file';
-      cs_error($cs_main['show'], $message);
-      $cs_main['show'] = 'mods/errors/403.php';
-  } elseif (!isset($account['access_' . $mod])) {
-      $message = 'cs_template - No module access defined in database';
-      cs_error($cs_main['show'], $message);
-      $cs_main['show'] = 'mods/errors/403.php';
-  } elseif ($account['access_' . $mod] < $axx_file[$action]) {
-      $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
-  }
-}
+global $cs_main, $account;
 
 if (empty($cs_main['public']) and $account['access_clansphere'] < 3)
     $cs_main['show'] = 'mods/users/login.php';
