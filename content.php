@@ -22,6 +22,7 @@ if ($cs_main['mod'] == 'users' && $cs_main['action'] == 'logout') die(ajax_js('w
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
 $temp = cs_filecontent($cs_main['show']);
+$temp = cs_content_append($temp);
 $temp = str_replace('action="#','action="index.php?',$temp);
 
 $location = cs_url($cs_main['mod'],$cs_main['action']);

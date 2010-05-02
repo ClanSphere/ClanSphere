@@ -94,19 +94,19 @@ function cs_content_check ($cs_main) {
   global $account;
   $get_axx = 'mods/' . $cs_main['mod'] . '/access.php';
   if (!file_exists($cs_main['show'])) {
-    cs_error($cs_main['show'], 'cs_content_prepare - File not found');
+    cs_error($cs_main['show'], 'cs_content_check - File not found');
     $cs_main['show'] = 'mods/errors/404.php';
   } elseif (!file_exists($get_axx)) {
-    cs_error($get_axx, 'cs_content_prepare - Access file not found');
+    cs_error($get_axx, 'cs_content_check - Access file not found');
     $cs_main['show'] = 'mods/errors/403.php';
   } else {
     $axx_file = array();
     include($get_axx);
     if (!isset($axx_file['' . $cs_main['action'] . ''])) {
-      cs_error($cs_main['show'], 'cs_content_prepare - No access defined for target file');
+      cs_error($cs_main['show'], 'cs_content_check - No access defined for target file');
       $cs_main['show'] = 'mods/errors/403.php';
     } elseif (!isset($account['access_' . $cs_main['mod'] . ''])) {
-      cs_error($cs_main['show'], 'cs_content_prepare - No module access defined in database');
+      cs_error($cs_main['show'], 'cs_content_check - No module access defined in database');
       $cs_main['show'] = 'mods/errors/403.php';
     } elseif ($account['access_' . $cs_main['mod'] . ''] < $axx_file['' . $cs_main['action'] . '']) {
       $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
@@ -114,6 +114,25 @@ function cs_content_check ($cs_main) {
   }
 
   return $cs_main;
+}
+
+function cs_content_append ($content) {
+
+  global $account, $cs_main;
+  if($account['access_clansphere'] > 4 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
+    require_once 'mods/clansphere/sec_func.php';
+    $content = cs_cspnews() . $content;
+  }
+  
+  if(($cs_main['action'] == 'manage' OR $cs_main['action'] == 'create' OR $cs_main['action'] == 'options') && $account['access_' . $cs_main['mod']] >=3) {
+    require_once 'mods/clansphere/admin_menu.php';
+    $content = cs_admin_menu() . $content;
+  }
+
+  if($account['access_clansphere'] > 3 AND file_exists('install.php') AND !file_exists('.svn'))
+    $content = cs_subtemplate(__FILE__, array(), 'clansphere', 'del_install') . $content;
+
+  return $content;
 }
 
 function cs_init($predefined) {
