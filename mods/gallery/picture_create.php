@@ -16,15 +16,15 @@ $data['error']['icon'] = '';
 $data['error']['error'] = '';
 $data['error']['message'] = '';
 
-if (file_exists('uploads/gallery/pics/' . $files_gl['picture']['name'])) {
-  $filename_tmp = ( str_split($files_gl['picture']['name'], strrpos($files_gl['picture']['name'], '.')) );
-  $filename_counter = 0;
-  while (file_exists('uploads/gallery/pics/' . $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1]))
-    $filename_counter++;
-  $files_gl['picture']['name'] = $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1];
-}
-
 if(isset($_POST['submit'])) {
+  if (file_exists('uploads/gallery/pics/' . $files_gl['picture']['name'])) {
+    $filename_tmp = ( str_split($files_gl['picture']['name'], strrpos($files_gl['picture']['name'], '.')) );
+    $filename_counter = 0;
+    while (file_exists('uploads/gallery/pics/' . $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1]))
+      $filename_counter++;
+    $files_gl['picture']['name'] = $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1];
+  }
+
   $file_up = !empty($_POST['file_up']) ? $_POST['file_up'] : 0;
   if ($file_up == 0) {
     $cs_gallery['gallery_name'] = $files_gl['picture']['name'];
