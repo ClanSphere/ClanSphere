@@ -60,7 +60,6 @@ if(isset($_POST['submit']))
     elseif($size == 2) {
       $data['file']['files_size'] = $data['file']['files_size'] * 1024 * 1024 * 1024;
     }
-    $data['file']['files_size'] = round($data['file']['files_size'], 2);
   }
 
   if(empty($data['file']['categories_id']))
@@ -111,7 +110,7 @@ if(!empty($error) OR !isset($_POST['submit']))
   $data['file']['files_size'] /= 1024;
   
   while($data['file']['files_size'] >= 1024 && $size < 2) {
-    $data['file']['files_size'] = round($data['file']['files_size'] / 1024, 2); 
+    $data['file']['files_size'] = $data['file']['files_size'] / 1024; 
     $size++;
   }
   for($l=0; $l < 3; $l++) {
