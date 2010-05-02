@@ -46,7 +46,9 @@ function cs_getlog() {
 
 
 if (!empty($string)) {
+
   $temp = '';
+  $var = '';
   $specials = array('func_parse' => 'cs_parsetime($cs_micro)', 'func_queries' => '\''.$cs_logs['queries'].'\'',
     'func_errors' => '\'' . $cs_logs["php_errors"] . $cs_logs["errors"] . '\'');
   $special_names = array('func_errors' => 'errors', 'func_sql' => 'sql');
