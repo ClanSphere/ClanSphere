@@ -59,6 +59,59 @@ function cs_error_sql($cs_file,$part,$message,$stop = 0) {
   }
 }
 
+function cs_content_prepare($cs_main) {
+
+  if(!empty($_GET['mod'])) {
+    $cs_main['mod'] = $_GET['mod'];
+    $cs_main['action'] = empty($_GET['action']) ? 'list' : $_GET['action'];  
+  }
+  else {
+    $cs_main['mod'] = $cs_main['def_mod'];
+    $cs_main['action'] = $cs_main['def_action'];
+
+    $parameters_split = empty($cs_main['def_parameters']) ? array() : explode('&', $cs_main['def_parameters']);
+
+    foreach($parameters_split AS $parameter) {
+      if(empty($parameter))
+        break;
+      $par_array = explode('=',$parameter);
+      $_GET[$par_array[0]] = empty($_GET[$par_array[0]]) ? $par_array[1] : $_GET[$par_array[0]];
+    }
+  }
+
+  if(!preg_match("=^[_a-z0-9-]+$=i",$cs_main['mod']) OR !preg_match("=^[_a-z0-9-]+$=i",$cs_main['action'])) {
+    $cs_main['mod'] = 'errors';
+    $cs_main['action'] = '404';
+  }
+
+  $cs_main['show'] = 'mods/' . $cs_main['mod'] . '/' . $cs_main['action'] . '.php';
+
+  # prepare for possible errors
+  global $account;
+  $get_axx = 'mods/' . $mod . '/access.php';
+  if (!file_exists($cs_main['show'])) {
+    cs_error($cs_main['show'], 'cs_template - File not found');
+    $cs_main['show'] = 'mods/errors/404.php';
+  } elseif (!file_exists($get_axx)) {
+    cs_error($get_axx, 'cs_template - Access file not found');
+    $cs_main['show'] = 'mods/errors/403.php';
+  } else {
+    $axx_file = array();
+    include($get_axx);
+    if (!isset($axx_file[$action])) {
+      cs_error($cs_main['show'], 'cs_template - No access defined for target file');
+      $cs_main['show'] = 'mods/errors/403.php';
+    } elseif (!isset($account['access_' . $cs_main['mod'] . ''])) {
+      cs_error($cs_main['show'], 'cs_template - No module access defined in database');
+      $cs_main['show'] = 'mods/errors/403.php';
+    } elseif ($account['access_' . $cs_main['mod'] . ''] < $axx_file['' . $cs_main['action'] . '']) {
+      $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
+    }
+  }
+
+  return $cs_main;
+}
+
 function cs_init($predefined) {
 
   $phpversion = phpversion();
@@ -125,34 +178,8 @@ function cs_init($predefined) {
   if(empty($cs_main['def_path']))
     $cs_main['def_path'] = getcwd();
 
-  $cs_main['template'] = empty($cs_main['def_tpl']) ? 'clansphere' : $cs_main['def_tpl'];
-  if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
-    $cs_main['template'] = $_GET['template'];
-
-  if(!empty($_GET['mod'])) {
-    $cs_main['mod'] = $_GET['mod'];
-    $cs_main['action'] = empty($_GET['action']) ? 'list' : $_GET['action'];  
-  }
-  else {
-    $cs_main['mod'] = $cs_main['def_mod'];
-    $cs_main['action'] = $cs_main['def_action'];
-
-    $parameters_split = empty($cs_main['def_parameters']) ? array() : explode('&', $cs_main['def_parameters']);
-
-    foreach($parameters_split AS $parameter) {
-      if(empty($parameter))
-        break;
-      $par_array = explode('=',$parameter);
-      $_GET[$par_array[0]] = empty($_GET[$par_array[0]]) ? $par_array[1] : $_GET[$par_array[0]];
-    }
-  }
-
-  if(!preg_match("=^[_a-z0-9-]+$=i",$cs_main['mod']) OR !preg_match("=^[_a-z0-9-]+$=i",$cs_main['action'])) {
-    $cs_main['mod'] = 'errors';
-    $cs_main['action'] = '404';
-  }
-
-  $cs_main['show'] = 'mods/' . $cs_main['mod'] . '/' . $cs_main['action'] . '.php';
+  # process mod and action data
+  $cs_main = cs_content_prepare($cs_main);
 
   if(!empty($predefined['init_sql'])) {
 

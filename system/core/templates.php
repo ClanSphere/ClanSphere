@@ -230,35 +230,16 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 {
   global $account, $cs_logs, $cs_main;
   $wp = $cs_main['php_self']['dirname'];
-  $mod = $cs_main['mod'];
-  $action = $cs_main['action'];
-  $get_axx = 'mods/' . $mod . '/access.php';
-
-  if (!file_exists($cs_main['show'])) {
-    cs_error($cs_main['show'], 'cs_template - File not found');
-    $cs_main['show'] = 'mods/errors/404.php';
-  } elseif (!file_exists($get_axx)) {
-    cs_error($get_axx, 'cs_template - Access file not found');
-    $cs_main['show'] = 'mods/errors/403.php';
-  } else {
-    $axx_file = array();
-    include($get_axx);
-    if (!isset($axx_file[$action])) {
-      cs_error($cs_main['show'], 'cs_template - No access defined for target file');
-      $cs_main['show'] = 'mods/errors/403.php';
-    } elseif (!isset($account['access_' . $mod])) {
-      cs_error($cs_main['show'], 'cs_template - No module access defined in database');
-      $cs_main['show'] = 'mods/errors/403.php';
-    } elseif ($account['access_' . $mod] < $axx_file[$action]) {
-      $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
-    }
-  }
 
   if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < $cs_main['maintenance_access'])
   {
     $cs_main['show'] = 'mods/users/login.php';
     $tpl_file = 'login.htm';
   }
+
+  $cs_main['template'] = empty($cs_main['def_tpl']) ? 'clansphere' : $cs_main['def_tpl'];
+  if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
+    $cs_main['template'] = $_GET['template'];
 
   $cs_main['template'] = empty($account['users_tpl']) ? $cs_main['def_tpl'] : $account['users_tpl'];
   if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
