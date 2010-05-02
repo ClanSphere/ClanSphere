@@ -86,23 +86,27 @@ function cs_content_prepare($cs_main) {
 
   $cs_main['show'] = 'mods/' . $cs_main['mod'] . '/' . $cs_main['action'] . '.php';
 
-  # prepare for possible errors
+  return $cs_main;
+}
+
+function cs_content_check ($cs_main) {
+
   global $account;
   $get_axx = 'mods/' . $cs_main['mod'] . '/access.php';
   if (!file_exists($cs_main['show'])) {
-    cs_error($cs_main['show'], 'cs_template - File not found');
+    cs_error($cs_main['show'], 'cs_content_prepare - File not found');
     $cs_main['show'] = 'mods/errors/404.php';
   } elseif (!file_exists($get_axx)) {
-    cs_error($get_axx, 'cs_template - Access file not found');
+    cs_error($get_axx, 'cs_content_prepare - Access file not found');
     $cs_main['show'] = 'mods/errors/403.php';
   } else {
     $axx_file = array();
     include($get_axx);
     if (!isset($axx_file['' . $cs_main['action'] . ''])) {
-      cs_error($cs_main['show'], 'cs_template - No access defined for target file');
+      cs_error($cs_main['show'], 'cs_content_prepare - No access defined for target file');
       $cs_main['show'] = 'mods/errors/403.php';
     } elseif (!isset($account['access_' . $cs_main['mod'] . ''])) {
-      cs_error($cs_main['show'], 'cs_template - No module access defined in database');
+      cs_error($cs_main['show'], 'cs_content_prepare - No module access defined in database');
       $cs_main['show'] = 'mods/errors/403.php';
     } elseif ($account['access_' . $cs_main['mod'] . ''] < $axx_file['' . $cs_main['action'] . '']) {
       $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
@@ -204,6 +208,9 @@ function cs_init($predefined) {
       }
     }
   }
+
+  # search for possible mod and action errors
+  $cs_main = cs_content_check($cs_main);
 
   if(!empty($predefined['init_tpl']))
     echo cs_template($cs_micro, $predefined['tpl_file']);
