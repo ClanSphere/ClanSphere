@@ -88,7 +88,7 @@ function cs_content_prepare($cs_main) {
 
   # prepare for possible errors
   global $account;
-  $get_axx = 'mods/' . $mod . '/access.php';
+  $get_axx = 'mods/' . $cs_main['mod'] . '/access.php';
   if (!file_exists($cs_main['show'])) {
     cs_error($cs_main['show'], 'cs_template - File not found');
     $cs_main['show'] = 'mods/errors/404.php';
@@ -98,7 +98,7 @@ function cs_content_prepare($cs_main) {
   } else {
     $axx_file = array();
     include($get_axx);
-    if (!isset($axx_file[$action])) {
+    if (!isset($axx_file['' . $cs_main['action'] . ''])) {
       cs_error($cs_main['show'], 'cs_template - No access defined for target file');
       $cs_main['show'] = 'mods/errors/403.php';
     } elseif (!isset($account['access_' . $cs_main['mod'] . ''])) {
