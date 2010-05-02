@@ -102,13 +102,13 @@ function cs_content_check ($cs_main) {
   } else {
     $axx_file = array();
     include($get_axx);
-    if (!isset($axx_file['' . $cs_main['action'] . ''])) {
+    if (!isset($axx_file[$cs_main['action']])) {
       cs_error($cs_main['show'], 'cs_content_check - No access defined for target file');
       $cs_main['show'] = 'mods/errors/403.php';
-    } elseif (!isset($account['access_' . $cs_main['mod'] . ''])) {
+    } elseif (!isset($account['access_' . $cs_main['mod']])) {
       cs_error($cs_main['show'], 'cs_content_check - No module access defined in database');
       $cs_main['show'] = 'mods/errors/403.php';
-    } elseif ($account['access_' . $cs_main['mod'] . ''] < $axx_file['' . $cs_main['action'] . '']) {
+    } elseif ($account['access_' . $cs_main['mod']] < $axx_file[$cs_main['action']]) {
       $cs_main['show'] = empty($account['users_id']) ? 'mods/users/login.php' : 'mods/errors/403.php';
     }
   }
