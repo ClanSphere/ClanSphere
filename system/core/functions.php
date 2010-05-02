@@ -231,6 +231,10 @@ function cs_init($predefined) {
   # search for possible mod and action errors
   $cs_main = cs_content_check($cs_main);
 
+  $cs_main['template'] = empty($cs_main['def_tpl']) ? 'clansphere' : $cs_main['def_tpl'];
+  if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
+    $cs_main['template'] = $_GET['template'];
+
   if(!empty($predefined['init_tpl']))
     echo cs_template($cs_micro, $predefined['tpl_file']);
 }
