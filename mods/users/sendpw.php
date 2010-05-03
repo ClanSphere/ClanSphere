@@ -68,11 +68,12 @@ if(isset($_POST['submit'])) {
     $key2 = cs_sql_select(__FILE__,'users','users_pwd',"users_email = '" . cs_sql_escape($sendpw['email']) . "'");
     $key = substr($key2['users_pwd'],4,16);
 
+    $ip = cs_getip();
     $cs_contact = cs_sql_option(__FILE__, 'contact');
     $content = $cs_lang['mail_spw_start'] . $cs_contact['def_org'] . $cs_lang['mail_spw_start2'];
   $content .= $cs_lang['mail_spw_start3'];
   $content .= $cs_lang['mail_spw_key'] . $key;
-    $content .= $cs_lang['mail_spw_ip'] . $_SERVER['REMOTE_ADDR'];
+    $content .= $cs_lang['mail_spw_ip'] . $ip;
     $content .= $cs_lang['mail_spw_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_spw_end'];
 
     cs_mail($sendpw['email'],$cs_lang['mail_spw_head'],$content);

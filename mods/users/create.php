@@ -175,7 +175,8 @@ else {
     } else {
       $content .= $cs_lang['mail_reg_password'] . $cs_lang['mail_reg_password2'];
     }
-    $content .= $cs_lang['mail_reg_ip'] . $_SERVER['REMOTE_ADDR'];
+    $ip = cs_getip();
+    $content .= $cs_lang['mail_reg_ip'] . $ip;
     $content .= $cs_lang['mail_reg_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_reg_end'];
 
     cs_mail($create['users_email'],$cs_lang['mail_reg_head'],$content);

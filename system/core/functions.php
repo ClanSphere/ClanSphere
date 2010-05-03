@@ -5,11 +5,12 @@
 function cs_error($file, $message, $log_only = 0) {
 
   global $cs_logs;
+  $remote_ip = cs_getip();
   if(!empty($cs_logs['save_errors'])) {
     $log = $file . "\n" . $message . "\n";
     $log .= isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] . "\n" : "unknown\n";
     $log .= isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] . "\n" : "unknown\n";
-    $log .= isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] . "\n" : "unknown\n";
+    $log .= !empty($remote_ip) ? $remote_ip . "\n" : "unknown\n";
     $log .= isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] . "\n" : "unknown\n";
     cs_log('errors',$log);
   }

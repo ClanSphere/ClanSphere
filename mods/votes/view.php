@@ -21,7 +21,7 @@ if(empty($_REQUEST['where'])) {
   $select = 'votes_access, votes_question, votes_election, votes_close, votes_end, votes_several';
   $cs_votes = cs_sql_select(__FILE__,$from,$select,"votes_id = '" . $cs_votes_id . "'");
   $votes_access = $cs_votes['votes_access'];
-  $cs_votes_save['voted_ip'] = $_SERVER['REMOTE_ADDR'];
+  $cs_votes_save['voted_ip'] = cs_getip();
   $cs_votes_save['users_id'] = $account['users_id'];
   $user_id = $account['access_votes'];
   $votes_form = '1';
@@ -39,10 +39,10 @@ if(empty($_REQUEST['where'])) {
     {
       if(!empty($voted_loop))
       {
-        $where = "voted_mod = 'votes' AND voted_fid = '$cs_votes_id' AND voted_ip = '" . $cs_votes_save['voted_ip'] . "'";
+        $where = "voted_mod = 'votes' AND voted_fid = '" . $cs_votes_id . "' AND voted_ip = '" . cs_sql_escape($cs_votes_save['voted_ip']) . "'";
         if($cs_votes_save['users_id'] > 0)
         {
-          $where = "voted_mod = 'votes' AND voted_fid = '$cs_votes_id' AND users_id = '" . $cs_votes_save['users_id'] . "'";
+          $where = "voted_mod = 'votes' AND voted_fid = '" . $cs_votes_id . "' AND users_id = '" . $cs_votes_save['users_id'] . "'";
         }
         $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
       }
@@ -80,7 +80,7 @@ if(empty($_REQUEST['where'])) {
           $count_election = count($temp);
           $count_voted = count($_POST['voted_answer']);
           $error_several = 0;
-          $where = 'voted_fid = "' . $cs_votes_id . '" AND voted_mod = \'votes\' AND voted_ip = \'' . $cs_votes_save['voted_ip'] . '\'';
+          $where = "voted_fid = '" . $cs_votes_id . "' AND voted_mod = 'votes' AND voted_ip = '" . cs_sql_escape($cs_votes_save['voted_ip']) . "'";
           $where .= ' AND users_id = "' . $cs_votes_save['users_id'] . '" AND (';
           $voting = array();
           

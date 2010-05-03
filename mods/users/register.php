@@ -153,10 +153,11 @@ if(empty($op_users['register'])) {
   $def_dstime = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
   create_user(2,$register['nick'],$register['password'],$register['lang'],$register['email'],'fam',$def_timezone,$def_dstime,$register['newsletter'],$active,20,$register['users_key']);
 
+  $ip = cs_getip();
   if(!empty($register['send_mail']) OR !empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     $content = $cs_lang['mail_reg_start'] . $cs_lang['mail_reg_nick'] . $register['nick'];
     $content .= $cs_lang['mail_reg_password'] . $register['password'];
-    $content .= $cs_lang['mail_reg_ip'] . $_SERVER['REMOTE_ADDR'];
+    $content .= $cs_lang['mail_reg_ip'] . $ip;
     if(!empty($op_users['def_register'])) {
       $content .= "\n" . $cs_lang['mail_key'] . ': ';
       $content .= 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];

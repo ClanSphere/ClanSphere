@@ -80,7 +80,7 @@ else
   $voted['users_id'] = !empty($account['users_id']) ? $account['users_id'] : 0;
   $voted['voted_answer'] = !empty($_POST['voted_answer']) ? $_POST['voted_answer'] : 0;
   $voted['voted_time'] = cs_time();
-  $voted['voted_ip'] = $_SERVER['REMOTE_ADDR'];
+  $voted['voted_ip'] = cs_getip();
   $voted['voted_mod'] = 'usersgallery';
 
   $check_user_voted = 0;

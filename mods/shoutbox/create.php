@@ -10,7 +10,7 @@ if(isset($_POST['submit'])) {
   
   $opt = cs_sql_option(__FILE__,'shoutbox');
   
-  $cs_shout['shoutbox_ip'] = $_SERVER['REMOTE_ADDR'];
+  $cs_shout['shoutbox_ip'] = cs_getip();
   $cs_shout['shoutbox_name'] = trim($_POST['sh_nick']);
   $cs_shout['shoutbox_text'] = !empty($_POST['sh_text']) ? $_POST['sh_text'] : '' ;
   $cs_shout['shoutbox_date'] = cs_time();
@@ -53,7 +53,7 @@ if(isset($_POST['submit'])) {
   
   $text = cs_sql_escape($cs_shout['shoutbox_text']);
   $min = $time_now - 600; // 10 min
-  $where = "shoutbox_text = '" . $text . "' AND shoutbox_ip = '" . $cs_shout['shoutbox_ip'] . "'";
+  $where = "shoutbox_text = '" . $text . "' AND shoutbox_ip = '" . cs_sql_escape($cs_shout['shoutbox_ip']) . "'";
   $where .= " AND shoutbox_date > '" . $min . "'";
   $count_double = cs_sql_count(__FILE__,'shoutbox',$where);
   

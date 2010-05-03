@@ -186,11 +186,11 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
     if($account['access_board'] >= $cs_thread_votes['boardvotes_access'] OR $time_now <= $cs_thread_votes['boardvotes_end'])
     {
       $votes_error = '';
-      $users_ip = $_SERVER['REMOTE_ADDR'];
+      $users_ip = cs_getip();
       $users_id = $account['users_id'];
-      $where = "voted_mod = 'board' AND voted_fid = \"" . $id . "\" AND voted_ip = '" . $users_ip . "'";
+      $where = "voted_mod = 'board' AND voted_fid = '" . $id . "' AND voted_ip = '" . cs_sql_escape($users_ip) . "'";
       if($users_id > 0)
-      $where .= " OR voted_mod = 'board' AND voted_fid = \"" . $id . "\" AND users_id = '" . $users_id . "'";
+        $where .= " OR voted_mod = 'board' AND voted_fid = '" . $id . "' AND users_id = '" . $users_id . "'";
 
       $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
       if(!empty($checkit_userip))

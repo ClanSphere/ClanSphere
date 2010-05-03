@@ -15,7 +15,7 @@ if (!empty($cs_post['folders_id']))  $folder_id = $cs_post['folders_id'];
 require_once('mods/gallery/functions.php');
 
 $time = cs_time();
-$voted_ip = $_SERVER['REMOTE_ADDR'];
+$voted_ip = cs_getip();
 $exp = extension_loaded('gd');
 $option = cs_sql_option(__FILE__,'gallery');
 

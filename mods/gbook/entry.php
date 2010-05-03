@@ -19,6 +19,8 @@ $cs_options = cs_sql_option(__FILE__,'gbook');
 $users_id = $account['users_id'];
 $error = '';
 
+$ip = cs_getip();
+
 //check if user exists
 if($id != 0) {
   $users_check = cs_sql_count(__FILE__,'users',"users_id = '" . (int) $id . "'");
@@ -33,7 +35,7 @@ if($id != 0) {
 //check last own
 if(empty($account['users_id'])) {
     $last_entry = cs_sql_select(__FILE__,'gbook','gbook_ip, users_id',"gbook_users_id = '" . (int) $id . "'",'gbook_id DESC');
-    if ($last_entry['gbook_ip'] == $_SERVER['REMOTE_ADDR'] && empty($last_entry['users_id'])) {
+    if ($last_entry['gbook_ip'] == $ip && empty($last_entry['users_id'])) {
       $error .= $cs_lang['last_own'] . cs_html_br(1);
     }
 } 
@@ -165,7 +167,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   }
 
   $cs_gbook['gbook_time'] = cs_time();
-  $cs_gbook['gbook_ip'] = $_SERVER['REMOTE_ADDR'];
+  $cs_gbook['gbook_ip'] = $ip;
   $cs_gbook['gbook_text'] = $_POST['gbook_text'];
 
   //check text (min figures and resize img)

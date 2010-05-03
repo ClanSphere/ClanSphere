@@ -39,8 +39,9 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
   }
 
+  $ip = cs_getip();
   $time15 = cs_time()-900;
-  $checklock = cs_sql_select(__FILE__,'mail','*',"mail_time > '" . $time15 . "' AND mail_ip = '" . cs_sql_escape($_SERVER['REMOTE_ADDR']) . "' AND mail_answered = 0");
+  $checklock = cs_sql_select(__FILE__,'mail','*',"mail_time > '" . $time15 . "' AND mail_ip = '" . cs_sql_escape($ip) . "' AND mail_answered = 0");
   if(!empty($checklock)){ 
     $error++; 
     $errormsg .= $cs_lang['15min'] . cs_html_br(1); 
@@ -114,12 +115,12 @@ else {
 
   $categories_data = cs_sql_select(__FILE__,'categories','categories_name',"categories_id = '" . $mail['categories_id'] . "'");
 
-  $message = sprintf($cs_lang['mailtxt'],date('d.m.Y'),date('H:i'),$_SERVER['REMOTE_ADDR'],$mail['name'],$mail['firm'],$mail['icq'],$mail['email'],$categories_data['categories_name'],$mail['why'],$mail['text']);
+  $message = sprintf($cs_lang['mailtxt'],date('d.m.Y'),date('H:i'),$ip,$mail['name'],$mail['firm'],$mail['icq'],$mail['email'],$categories_data['categories_name'],$mail['why'],$mail['text']);
 
   settype($mail['icq'], 'integer');
 
   $mail_cells = array('mail_name','mail_time','mail_ip','mail_email','mail_icq','mail_msn','mail_firm','categories_id','mail_subject','mail_message');
-  $mail_save = array($mail['name'],cs_time(),$_SERVER['REMOTE_ADDR'],$mail['email'],$mail['icq'],$mail['msn'],$mail['firm'],$mail['categories_id'],$mail['why'],$mail['text']);
+  $mail_save = array($mail['name'],cs_time(),$ip,$mail['email'],$mail['icq'],$mail['msn'],$mail['firm'],$mail['categories_id'],$mail['why'],$mail['text']);
   cs_sql_insert(__FILE__,'mail',$mail_cells,$mail_save);
   
   cs_mail($cs_contact['def_mail'],$mail['why'],$message,$mail['email']);

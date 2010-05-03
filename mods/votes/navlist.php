@@ -5,7 +5,7 @@
 $cs_lang = cs_translate('votes');
 
 $users_id = $account['users_id'];
-$users_ip = $_SERVER['REMOTE_ADDR'];
+$users_ip = cs_getip();
 $time = cs_time();
 $mod = 'votes';
 $votes_error = '';
@@ -25,9 +25,9 @@ $votes_loop = count($cs_votes);
 $votes_id = $cs_votes['votes_id'];
 
 if(!empty($votes_loop)) {
-  $where = "voted_mod = 'votes' AND voted_fid = \"" . $votes_id . "\" AND voted_ip = '" . $users_ip . "'";
+  $where = "voted_mod = 'votes' AND voted_fid = '" . $votes_id . "' AND voted_ip = '" . cs_sql_escape($users_ip) . "'";
   if($users_id > 0) {
-    $where = "voted_mod = 'votes' AND voted_fid = \"" . $votes_id . "\" AND users_id = \"" . $users_id . "\"";
+    $where = "voted_mod = 'votes' AND voted_fid = '" . $votes_id . "' AND users_id = '" . $users_id . "'";
   }
   $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
 }
@@ -81,8 +81,8 @@ if(isset($_POST['submit_votes']) ) {
   	$count_election = count($temp);
   	$count_voted = count($_POST['voted_answer']);
   	$error_several = 0;
-  	$where = 'voted_fid = "' . $votes_id . '" AND voted_mod = \'' . $mod . '\' AND voted_ip = \'' . $users_ip . '\'';
-  	$where .= ' AND users_id = "' . $users_id . '" AND (';
+  	$where = "voted_fid = '" . $votes_id . "' AND voted_mod = '" . $mod . "' AND voted_ip = '" . cs_sql_escape($users_ip) . "'";
+  	$where .= " AND users_id = '" . $users_id . "' AND (";
   	$voting = array();
   	for ($run = 0; $run < $count_voted; $run++) {
   		settype($voted_answer[$run], 'integer');

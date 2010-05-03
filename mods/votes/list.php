@@ -13,7 +13,7 @@ $cs_sort[5] = 'votes_id DESC';
 empty($_REQUEST['sort']) ? $sort = 1 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
-$users_ip = $_SERVER['REMOTE_ADDR'];
+$users_ip = cs_getip();
 $users_id = $account['users_id'];
 $votes_access = $account['access_votes'];
 
@@ -27,10 +27,10 @@ $votes_id = $cs_votes[0]['votes_id'];
 
 if(!empty($votes_loop))
 {
-  $where = "voted_mod='votes' AND voted_fid='$votes_id' AND voted_ip='$users_ip'";
+  $where = "voted_mod = 'votes' AND voted_fid = '" . $votes_id . "' AND voted_ip = '" . cs_sql_escape($users_ip) . "'";
   if($users_id > 0)
   {
-    $where = "voted_mod='votes' AND voted_fid='$votes_id' AND users_id='$users_id'";
+    $where = "voted_mod = 'votes' AND voted_fid = '" . $votes_id . "' AND users_id = '" . $users_id . "'";
   }
   $checkit_userip = cs_sql_count(__FILE__,'voted',$where);
 }

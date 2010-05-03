@@ -348,7 +348,7 @@ else {
     $count_com = $count_com % $account['users_limit'];
   }
 
-  $user_ip = $_SERVER['REMOTE_ADDR'];
+  $user_ip = cs_getip();
   $users_id = $account['users_id'];
   $time = cs_time();
 

@@ -135,6 +135,8 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
   $where = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = '" . $com_fid . "'";
   $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_ip',$where,'comments_id DESC');
 
+  $ip = cs_getip();
+
   if(empty($account['users_id']) AND empty($options['allow_unreg'])) {
     $data['lang']['need_user'] = $cs_lang['need_user'];
     echo cs_subtemplate(__FILE__,$data,'comments','need_user');
@@ -143,7 +145,7 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
     $data['lang']['closed'] = $cs_lang['closed'];
     echo cs_subtemplate(__FILE__,$data,'comments','close');
   }
-  elseif(($account['users_id'] == $last_from['users_id']) AND ($_SERVER['REMOTE_ADDR'] == $last_from['comments_ip'])) {
+  elseif(($account['users_id'] == $last_from['users_id']) AND ($ip == $last_from['comments_ip'])) {
     $data['lang']['last_own'] = $cs_lang['last_own'];
     echo cs_subtemplate(__FILE__,$data,'comments','last_own');
   }
@@ -216,6 +218,8 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
       $find = "comments_mod = '".$mod."' AND comments_fid = '" . $com_fid . "'";
       $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_ip',$find,'comments_id DESC');
 
+      $ip = cs_getip();
+
       $error = '';
 
       if(empty($account['users_id'])) {
@@ -238,11 +242,11 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
         if (!cs_captchacheck($_POST['captcha'])) {
           $error .= $cs_lang['captcha_false'] . cs_html_br(1);
         }
-        if($_SERVER['REMOTE_ADDR'] == $last_from['comments_ip']) {
+        if($ip == $last_from['comments_ip']) {
             $error .= $cs_lang['last_own'] . cs_html_br(1);
         }
 
-        $where = "comments_ip = '" . $_SERVER['REMOTE_ADDR'];
+        $where = "comments_ip = '" . cs_sql_escape($ip);
 
       }
       else {
@@ -354,7 +358,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
       $count_com = cs_sql_count(__FILE__,'comments',$opt);
       $start = floor($count_com / $account['users_limit']) * $account['users_limit'];
 
-      $user_ip = $_SERVER['REMOTE_ADDR'];
+      $user_ip = cs_getip();
       $com_cells = array('users_id', 'comments_fid', 'comments_mod', 'comments_ip', 'comments_time', 'comments_text', 'comments_guestnick');
       $com_save = array($account['users_id'], $com_fid, $mod, $user_ip, cs_time(), $text, $guestnick);
       cs_sql_insert(__FILE__,'comments',$com_cells,$com_save);
