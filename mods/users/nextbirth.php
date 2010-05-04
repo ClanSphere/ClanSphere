@@ -31,12 +31,14 @@ if($data['day'] != $time_now['2'].$time_now['1']) {
         $run++;
       }
     }
-
-    foreach($data['users'] as $sortarray) {
-      $column[] = $sortarray['users_month'];
-      $column2[] = $sortarray['users_day'];
+    
+    if(!empty($data['users'])) {
+      foreach($data['users'] as $sortarray) {
+        $column[] = $sortarray['users_month'];
+        $column2[] = $sortarray['users_day'];
+      }
+      array_multisort($column, SORT_ASC, $column2, SORT_ASC, $data['users']);
     }
-    if(!empty($data['users'])) array_multisort($column, SORT_ASC, $column2, SORT_ASC, $data['users']);
   }
   cs_cache_save('nextbirth', $data);
 }
