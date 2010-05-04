@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('users');
 
 include_once('lang/' . $account['users_lang'] . '/countries.php');
+include_once('mods/users/functions.php');
 
 $data = array();
 $users_id = (int)$_REQUEST['id'];
@@ -207,6 +208,15 @@ if (!empty($error) or !isset($_POST['submit'])) {
       $run++;
     }
   }
+  
+  $old_nicks = cs_sql_select(__FILE__,'usernicks','users_nick','users_id = ' . $users_id,'users_changetime DESC',0,0);
+  $data['if']['old_nicks'] = false;
+  if(!empty($old_nicks)) {
+  	$data['if']['old_nicks'] = true;
+  	for($a=0; $a<count($old_nicks); $a++) {
+  		$data['old'][$a]['nicks'] = $old_nicks[$a]['users_nick'];
+  	}
+  }
 
   // State selections
   $data['users']['state_activated'] = $cs_user['users_active'] == 1 ? $sel : '';
@@ -232,6 +242,11 @@ if (!empty($error) or !isset($_POST['submit'])) {
   // OMG! Bitte irgendwann mal atomar machen!! 1NF
   $cs_user['users_hidden'] = implode(',',$hidden);
 
+  $old_nick = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . $users_id,0,0,1);
+  if($old_nick['users_nick'] != $cs_user['users_nick']) {
+  	change_nick($users_id, $old_nick['users_nick']);
+  }
+  
   // DB update
   $users_cells = array_keys($cs_user);
   $users_save = array_values($cs_user);

@@ -50,3 +50,12 @@ ALTER TABLE {pre}_notifymods ADD notifymods_board int(2) NOT NULL default '0';
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_user', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_pw', '');
+
+CREATE TABLE {pre}_usernicks (
+	usernicks_id {serial},
+	users_id int(8) NOT NULL default '0',
+	users_nick varchar(255) NOT NULL default '',
+	users_changetime int(8) NOT NULL default '0',
+	PRIMARY KEY (usernicks_id)
+) {engine};
+	

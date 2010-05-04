@@ -59,6 +59,8 @@ $cs_lang['skype'] = 'Skype';
 $cs_lang['info'] = 'Information';
 $cs_lang['message_send'] = 'Send Message';
 
+$cs_lang['old_nick'] = 'Old Nick';
+
 // Create
 $cs_lang['create_users']  = 'Create new Useraccounts.';
 $cs_lang['lang'] = 'Language';

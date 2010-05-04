@@ -6,6 +6,7 @@
     <td class="leftc" style="width:140px">{icon:personal} {lang:nick}</td>
     <td class="leftb">{users:nick} {if:buddies_active}<a href="{url:buddy_create}" title="{lang:buddy_add}">{icon:xchat}</a>{stop:buddies_active} 
     <a href="{url:message_create}" title="{lang:message_send}">{icon:mail_send}</a>
+    {if:old_nick}&nbsp;&nbsp;({lang:old_nick}: {users:old_nick}){stop:old_nick}
     </td>
     <td class="centerc" rowspan="9" style="width:160px"><br />
       {users:picture}

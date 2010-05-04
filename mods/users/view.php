@@ -32,6 +32,13 @@ else {
 
   echo cs_subtemplate(__FILE__,$data,'users','head');
   
+  $old_nick = cs_sql_select(__FILE__,'usernicks','users_nick','users_id = ' . $users_id,'users_changetime DESC',0,1);
+  $data['if']['old_nick'] = false;
+  if(!empty($old_nick)) {
+  	$data['if']['old_nick'] = true;
+  	$data['users']['old_nick'] = $old_nick['users_nick'];	
+  }
+  
   $data['if']['buddies_active'] = $account['access_buddys'] >= 2 ? true : false;
 
   $hidden = explode(',',$cs_user['users_hidden']);

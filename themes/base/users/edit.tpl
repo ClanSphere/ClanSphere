@@ -15,7 +15,15 @@
   </tr>
   <tr>
 	<td class="leftc">{icon:personal} {lang:nick} *</td>
-	<td class="leftb"><input type="text" name="data[users_nick]" value="{users:users_nick}" maxlength="40" size="40" /></td>
+	<td class="leftb">
+		<input type="text" name="data[users_nick]" value="{users:users_nick}" maxlength="40" size="40" />
+		{if:old_nicks}
+			<br />{lang:old_nick}:
+			{loop:old}
+				{old:nicks},
+			{stop:old}
+		{stop:old_nicks}
+	</td>
   </tr>
   <tr>
 	<td class="leftc">{icon:mail_generic} {lang:email} *</td>

@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('users');
 
 include_once('lang/' . $account['users_lang'] . '/countries.php');
+include_once('mods/users/functions.php');
 
 $data = array();
 
@@ -161,6 +162,10 @@ else {
   settype($cs_user['users_height'],'integer');
   settype($cs_user['users_icq'],'integer');
   $cs_user['users_hidden'] = implode(',',$hidden);
+  
+  if($cs_user['users_nick'] != $account['users_nick']) {
+	  change_nick($account['users_id'], $account['users_nick']);
+  }
 
   $users_cells = array_keys($cs_user);
   $users_save = array_values($cs_user);
