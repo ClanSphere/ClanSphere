@@ -78,10 +78,10 @@
 			{page:of}
 		</td>
 		<td class="centerb">
-			<input type="submit" name="first" value="<<" />
-			<input type="submit" name="back" value="<" />
-			<input type="submit" name="next" value=">" />
-			<input type="submit" name="last" value=">>" />
+			<input type="submit" name="first" value="&lt;&lt;" />
+			<input type="submit" name="back" value="&lt;" />
+			<input type="submit" name="next" value="&gt;" />
+			<input type="submit" name="last" value="&gt;&gt;" />
 		</td>
 		<td class="rightb">{count:results}</td>
 	</tr>
