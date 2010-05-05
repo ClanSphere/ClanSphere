@@ -115,8 +115,8 @@ else {
 if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_lang'])) {
 
   $languages = cs_checkdirs('lang');
-  $cs_main['cookie']_lang = empty($_COOKIE['cs_lang']) ? '' : $_COOKIE['cs_lang'];
-  $cs_user['users_lang'] = empty($_GET['lang']) ? $cs_main['cookie']_lang : $_GET['lang'];
+  $cookie = empty($_COOKIE['cs_lang']) ? '' : $_COOKIE['cs_lang'];
+  $cs_user['users_lang'] = empty($_GET['lang']) ? $cookie : $_GET['lang'];
   $allow = 0;
 
   foreach($languages as $mod) {
@@ -124,7 +124,7 @@ if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_
   }
   $cs_user['users_lang'] = empty($allow) ? $cs_main['def_lang'] : $cs_user['users_lang'];
 
-  if(empty($account['users_id']) AND $cs_main['cookie']_lang != $cs_user['users_lang']) {
+  if(empty($account['users_id']) AND $cookie != $cs_user['users_lang']) {
     setcookie('cs_lang',$cs_user['users_lang'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
   }
   elseif(!empty($account['users_id']) AND $account['users_lang'] != $cs_user['users_lang']) {
