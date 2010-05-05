@@ -112,33 +112,6 @@ else {
   $account = array('access_id' => 1, 'users_id' => 0, 'users_lang' => $cs_main['def_lang'], 'users_limit' => $cs_main['data_limit'], 'users_timezone' => $cs_main['def_timezone'], 'users_dstime' => $cs_main['def_dstime']);
 }
 
-if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_lang'])) {
-
-  $languages = cs_checkdirs('lang');
-  $cookie = empty($_COOKIE['cs_lang']) ? '' : $_COOKIE['cs_lang'];
-  $cs_user['users_lang'] = empty($_GET['lang']) ? $cookie : $_GET['lang'];
-  $allow = 0;
-
-  foreach($languages as $mod) {
-    if($mod['dir'] == $cs_user['users_lang']) { $allow++; }
-  }
-  $cs_user['users_lang'] = empty($allow) ? $cs_main['def_lang'] : $cs_user['users_lang'];
-
-  if(empty($account['users_id']) AND $cookie != $cs_user['users_lang']) {
-    setcookie('cs_lang',$cs_user['users_lang'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
-  }
-  elseif(!empty($account['users_id']) AND $account['users_lang'] != $cs_user['users_lang']) {
-    $users_cells = array_keys($cs_user);
-    $users_save = array_values($cs_user);
-    cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
-  }
-  $account['users_lang'] = $cs_user['users_lang'];
-}
-
-$lang = empty($account['users_lang']) ? 'English' : $account['users_lang'];
-require_once('lang/' . $lang . '/system/comlang.php');
-
-
 $gma = cs_sql_select(__FILE__,'access','*','access_id = "' . (int) $account['access_id'] . '"', 0,0,1, 'access_' . $account['access_id']);
 if(is_array($gma))
   $account = array_merge($account,$gma);

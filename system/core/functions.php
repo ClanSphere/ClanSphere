@@ -136,6 +136,39 @@ function cs_content_append ($content) {
   return $content;
 }
 
+function cs_content_lang () {
+
+  global $account, $com_lang, $cs_main;
+  $allow = 0;
+  $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
+
+  if(!empty($_COOKIE['cs_lang']))
+    $lang = $_COOKIE['cs_lang'];
+  if(!empty($_REQUEST['lang']))
+    $lang = $_REQUEST['lang'];
+  elseif(!empty($_GET['lang']))
+    $lang = $_GET['lang'];
+
+  $languages = cs_checkdirs('lang');
+  foreach($languages as $mod)
+    if($mod['dir'] == $lang)
+      $allow++;
+
+  $lang = empty($allow) ? $cs_main['def_lang'] : $lang;
+  require_once 'lang/' . $lang . '/system/comlang.php';
+
+  # update language changes and return language
+  if(empty($account['users_id']) AND $_COOKIE['cs_lang'] != $lang) {
+    setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+  }
+  elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
+    $users_cells = array_keys($cs_user);
+    $users_save = array_values($cs_user);
+    cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
+  }
+  return $lang;
+}
+
 function cs_init($predefined) {
 
   $phpversion = phpversion();
@@ -169,10 +202,10 @@ function cs_init($predefined) {
   require_once 'system/core/templates.php';
   require_once 'system/core/gd.php';
 
-  if($cs_main['php_self']['basename'] != 'install.php')
-    file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
+  if($cs_main['php_self']['basename'] == 'install.php')
+    $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'access_install' => 5);
   else
-    $account['access_install'] = 5;
+    file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
 
   if(empty($cs_main['charset'])) {
     $cs_main['charset'] = 'UTF-8';
@@ -230,6 +263,9 @@ function cs_init($predefined) {
       }
     }
   }
+
+  # determine users language
+  $account['users_lang'] = cs_content_lang();
 
   # search for possible mod and action errors
   $cs_main = cs_content_check($cs_main);

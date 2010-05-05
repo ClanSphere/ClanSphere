@@ -41,16 +41,4 @@ else {
   $cs_logs['save_errors'] = 0;
 }
 
-if(!empty($_REQUEST['lang'])) {
-  $languages = cs_checkdirs('lang');
-  foreach($languages as $mod) {
-    if($mod['dir'] == $_REQUEST['lang']) { $lang = $_REQUEST['lang']; break; }
-  }
-}
-
-$lang = empty($lang) ? 'English' : $lang;
-
-$account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'users_lang' => $lang);
-require 'lang/' . $account['users_lang'] . '/system/comlang.php';
-
 echo cs_template($cs_micro);
