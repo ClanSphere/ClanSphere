@@ -140,10 +140,13 @@ function cs_content_lang () {
 
   global $account, $com_lang, $cs_main;
   $allow = 0;
+  $cookie_lang = '';
   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
 
-  if(!empty($_COOKIE['cs_lang']))
+  if(!empty($_COOKIE['cs_lang'])) {
     $lang = $_COOKIE['cs_lang'];
+    $cookie_lang = $lang;
+  }
   if(!empty($_REQUEST['lang']))
     $lang = $_REQUEST['lang'];
   elseif(!empty($_GET['lang']))
@@ -157,8 +160,8 @@ function cs_content_lang () {
   $lang = empty($allow) ? $cs_main['def_lang'] : $lang;
   require_once 'lang/' . $lang . '/system/comlang.php';
 
-  # update language changes and return language
-  if(empty($account['users_id']) AND $_COOKIE['cs_lang'] != $lang) {
+  # update language changes
+  if(empty($account['users_id']) AND $cookie_lang != $lang) {
     setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
   }
   elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
@@ -166,6 +169,7 @@ function cs_content_lang () {
     $users_save = array_values($cs_user);
     cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
   }
+
   return $lang;
 }
 
