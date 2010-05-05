@@ -57,11 +57,13 @@ if(file_exists($file)) {
 
   preg_match_all("=(#\s*|)adddefaultcharset\s+(.*?)\s+=si", $web_content, $web_check, PREG_SET_ORDER);
   foreach($web_check AS $found) {
-    if(!empty($found[2])) $web_charset = $found[2];
-    $foundlow = strtolower($found[2]);
-    if(substr($found[1],0,1) != '#' AND $foundlow != $charset) {
-      $data['charset']['result_web_setting'] .= $cs_lang['charset_unexpected'] . ' : ' . $found[2] . cs_html_br(1);
-      $data['charset']['result_web_setting'] .= $cs_lang['file'] . ': ' . $file . cs_html_br(2);
+    if(substr($found[1],0,1) != '#') {
+      if(!empty($found[2])) $web_charset = $found[2];
+      $foundlow = strtolower($found[2]);
+      if($foundlow != $charset) {
+        $data['charset']['result_web_setting'] .= $cs_lang['charset_unexpected'] . ' : ' . $found[2] . cs_html_br(1);
+        $data['charset']['result_web_setting'] .= $cs_lang['file'] . ': ' . $file . cs_html_br(2);
+      }
     }
   }
 }
