@@ -46,11 +46,19 @@ ___________________________________________________________
 -- CKEditor 3.2 and FCKEditor Filebrowser 2.6.6 included in this release
 
 
+ClanSphere 2009.0.3.2 >> 2010-05-05
+___________________________________________________________
+
+-> Replaced $_SERVER['remote_addr'] with cs_getip function
+
+- /system/database/mysql.php: Changed where-condition quote replacement in cs_sql_count
+
+
 ClanSphere 2009.0.3.1 >> 2010-05-01
 ___________________________________________________________
 
 - /mods/captcha/generate.php: Secured IP adress in query string
-- /system/database/mysql.php: Changed where-condition quote replacement
+- /system/database/mysql.php: Changed where-condition quote replacement in cs_sql_select
 
 
 ClanSphere 2009.0.3 >> 2009-12-06
@@ -222,7 +230,7 @@ ___________________________________________________________
 
 -> Fixed a wrong image for the savedatas Bugtracker id 172 (drag0n)
 -> Fixed abcode @rules listcat (ThreadID: 6156, fr33z3m4n)
--> Fixed def_admin setting noch working for new installations (hajo)
+-> Fixed def_admin setting not working for new installations (hajo)
 -> Fixed delete not own pic @usersgallery (fr33z3m4n)
 -> Fixed edit email as Webmaster Bugtracker ID: 181 (fr33z3m4n)
 -> Fixed empty lang_view placeholder Bugtracker ID: 178 (fr33z3m4n)
