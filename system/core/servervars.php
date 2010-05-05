@@ -80,3 +80,8 @@ $cs_main['php_self'] = pathinfo($_SERVER['PHP_SELF']);
 if($cs_main['php_self']['dirname']{0} == '\\')
   $cs_main['php_self']['dirname']{0} = '/';
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
+
+$domain = '';
+if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
+  $domain = $_SERVER['HTTP_HOST'];
+$cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);

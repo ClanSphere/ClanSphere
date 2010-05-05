@@ -5,19 +5,15 @@
 global $_COOKIE, $_POST, $cs_lang, $cs_main, $login;
 
 $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
-$domain = '';
-if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
-  $domain = $_SERVER['HTTP_HOST'];
-$cookie = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
 
 $login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
 $account = array('users_id' => 0);
 
 # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
 if(version_compare(PHP_VERSION,'5.2.0','>'))
-  session_set_cookie_params(0,$cookie['path'],$cookie['domain'],FALSE,TRUE);
+  session_set_cookie_params(0,$cs_main['cookie']['path'],$cs_main['cookie']['domain'],FALSE,TRUE);
 else
-  session_set_cookie_params(0,$cookie['path'],$cookie['domain']);
+  session_set_cookie_params(0,$cs_main['cookie']['path'],$cs_main['cookie']['domain']);
 session_start();
 
 if(empty($_SESSION['users_id'])) {
@@ -70,8 +66,8 @@ if(empty($_SESSION['users_id'])) {
 
     if(!empty($login['cookie']) AND !empty($login['mode'])) {
       $login['method'] = 'form_cookie';
-      setcookie('cs_userid',$login_db['users_id'], $cookie['lifetime'], $cookie['path'], $cookie['domain']);
-      setcookie('cs_securepw',$login['securepw'], $cookie['lifetime'], $cookie['path'], $cookie['domain']);
+      setcookie('cs_userid',$login_db['users_id'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+      setcookie('cs_securepw',$login['securepw'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
     }
   }
 }
@@ -91,8 +87,8 @@ if(!empty($_SESSION['users_id'])) {
 }
 
 if(!empty($_COOKIE['cs_userid'])) {
-  setcookie('cs_userid',$account['users_id'], $cookie['lifetime'], $cookie['path'], $cookie['domain']);
-  setcookie('cs_securepw',array_pop($account), $cookie['lifetime'], $cookie['path'], $cookie['domain']);  
+  setcookie('cs_userid',$account['users_id'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+  setcookie('cs_securepw',array_pop($account), $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);  
 }
 if(!empty($account['users_id'])) {
   if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
@@ -100,8 +96,8 @@ if(!empty($account['users_id'])) {
     $login['mode'] = FALSE;
   }
   elseif($cs_main['mod']=='users' AND $cs_main['action']=='logout') {
-    setcookie('cs_userid', '', 1, $cookie['path'], $cookie['domain']);
-    setcookie('cs_securepw', '', 1, $cookie['path'], $cookie['domain']);
+    setcookie('cs_userid', '', 1, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+    setcookie('cs_securepw', '', 1, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
     session_destroy();
     $login['mode'] = FALSE;
     if (!empty($account['users_ajax']) AND !empty($cs_main['ajax'])) die(ajax_js('window.location.reload()'));
@@ -119,8 +115,8 @@ else {
 if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_lang'])) {
 
   $languages = cs_checkdirs('lang');
-  $cookie_lang = empty($_COOKIE['cs_lang']) ? '' : $_COOKIE['cs_lang'];
-  $cs_user['users_lang'] = empty($_GET['lang']) ? $cookie_lang : $_GET['lang'];
+  $cs_main['cookie']_lang = empty($_COOKIE['cs_lang']) ? '' : $_COOKIE['cs_lang'];
+  $cs_user['users_lang'] = empty($_GET['lang']) ? $cs_main['cookie']_lang : $_GET['lang'];
   $allow = 0;
 
   foreach($languages as $mod) {
@@ -128,8 +124,8 @@ if(!empty($_GET['lang']) OR empty($account['users_id']) AND !empty($_COOKIE['cs_
   }
   $cs_user['users_lang'] = empty($allow) ? $cs_main['def_lang'] : $cs_user['users_lang'];
 
-  if(empty($account['users_id']) AND $cookie_lang != $cs_user['users_lang']) {
-    setcookie('cs_lang',$cs_user['users_lang'], $cookie['lifetime'], $cookie['path'], $cookie['domain']);
+  if(empty($account['users_id']) AND $cs_main['cookie']_lang != $cs_user['users_lang']) {
+    setcookie('cs_lang',$cs_user['users_lang'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
   }
   elseif(!empty($account['users_id']) AND $account['users_lang'] != $cs_user['users_lang']) {
     $users_cells = array_keys($cs_user);
@@ -151,8 +147,8 @@ if(empty($cs_main['maintenance_access']))
   $cs_main['maintenance_access'] = 3;
 
 if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['access_clansphere'] < $cs_main['maintenance_access']) {
-  setcookie('cs_userid', '', 1, $cookie['path'], $cookie['domain']);
-  setcookie('cs_securepw', '', 1, $cookie['path'], $cookie['domain']);
+  setcookie('cs_userid', '', 1, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+  setcookie('cs_securepw', '', 1, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
   session_destroy();
   $login['mode'] = FALSE;
   $login['error'] = 'not_public'; 
