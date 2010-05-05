@@ -165,8 +165,8 @@ function cs_content_lang () {
     setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
   }
   elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
-    $users_cells = array_keys($cs_user);
-    $users_save = array_values($cs_user);
+    $users_cells = array('users_lang');
+    $users_save = array($lang);
     cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
   }
 
