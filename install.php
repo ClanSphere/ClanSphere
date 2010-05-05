@@ -20,25 +20,23 @@ $cs_main = array( 'cellspacing'     => 1,
                   'init_tpl'        => false,
                   'public'          => 1,
                   'version_name'    => '2010.0_SVN',
-                  'version_date'    => '2009-05-05');
+                  'version_date'    => '2010-05-05');
 
 require_once 'system/core/functions.php';
 
 cs_init($cs_main);
-
-global $cs_logs, $cs_main, $account;
 
 if(file_exists('setup.php')) {
     
   require 'setup.php';
   require 'system/database/' . $cs_db['type'] . '.php';
   $cs_db['con'] = cs_sql_connect($cs_db);
-  unset($cs_db['pwd']);
-  unset($cs_db['user']);
+  unset($cs_db['pwd'], $cs_db['user']);
 }
 else {
+  global $cs_logs;
   $cs_logs['save_actions'] = 0;
-  $cs_logs['save_errors'] = 0;
+  $cs_logs['save_errors'] = 1;
 }
 
 echo cs_template($cs_micro);
