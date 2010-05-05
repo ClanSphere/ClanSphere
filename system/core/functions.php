@@ -161,7 +161,7 @@ function cs_content_lang () {
   require_once 'lang/' . $lang . '/system/comlang.php';
 
   # update language changes
-  if(empty($account['users_id']) AND $cookie_lang != $lang) {
+  if(!empty($cookie_lang) AND $cookie_lang != $lang) {
     setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
   }
   elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
