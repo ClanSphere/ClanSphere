@@ -20,12 +20,11 @@ $cs_main = array( 'cellspacing'     => 1,
                   'init_tpl'        => false,
                   'public'          => 1,
                   'version_name'    => '2010.0_SVN',
-                  'version_date'    => '2009-12-06');
+                  'version_date'    => '2009-05-05');
 
 require_once 'system/core/functions.php';
 
 cs_init($cs_main);
-
 
 global $cs_logs, $cs_main, $account;
 
@@ -51,7 +50,7 @@ if(!empty($_REQUEST['lang'])) {
 
 $lang = empty($lang) ? 'English' : $lang;
 
-$account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'access_install' => 5, 'users_lang' => $lang);
+$account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'users_lang' => $lang);
 require 'lang/' . $account['users_lang'] . '/system/comlang.php';
 
 echo cs_template($cs_micro);

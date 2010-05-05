@@ -169,8 +169,10 @@ function cs_init($predefined) {
   require_once 'system/core/templates.php';
   require_once 'system/core/gd.php';
 
-  if ($cs_main['php_self']['basename'] != 'install.php')
+  if($cs_main['php_self']['basename'] != 'install.php')
     file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
+  else
+    $account['access_install'] = 5;
 
   if(empty($cs_main['charset'])) {
     $cs_main['charset'] = 'UTF-8';
