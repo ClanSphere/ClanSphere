@@ -37,6 +37,8 @@ input, textarea, select {
 .forum {
   background-color:#888888;
   color:inherit;
+  font-family: Verdana,Helvetica,sans-serif;
+  font-size: 8pt;
   margin:auto;
   border-collapse:separate;
   border-spacing:1px;
