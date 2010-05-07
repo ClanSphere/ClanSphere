@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td class="leftc" rowspan="2" style="width: 50%">{icon:cal} {lang:event}</td>
-    <td class="leftb" colspan="2"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
+    <td class="leftb" colspan="2">{events:events_name}</td>
   </tr>
   <tr>
     <td class="leftb" colspan="2">{events:time}</td>
@@ -19,7 +19,7 @@
 	<tr>
 		<td class="leftc" rowspan="3">{icon:kdmconfig} {lang:guests}</td>
 		<td class="leftb" style="width:140px">
-          <a href="{url:events_guests:id={data:events_id}}">{lang:signed}</a>
+          {lang:signed}
         </td>
         <td class="leftc">{head:count}</td>
 	</tr>
