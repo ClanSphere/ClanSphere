@@ -79,7 +79,7 @@ function cs_cache_save($filename, $content) {
   elseif(is_writeable('uploads/cache/')) {
     $store = serialize($content);
     $cache_file = 'uploads/cache/' . $filename . '.tmp';
-    $save_cache = fopen($cache_file,'w');
+    $save_cache = fopen($cache_file,'a');
     # set stream encoding if possible to avoid converting issues
     if(function_exists('stream_encoding'))
       stream_encoding($save_cache, $cs_main['charset']);
