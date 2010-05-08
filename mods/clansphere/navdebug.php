@@ -2,7 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$nav_array = array('----',
+$nav_array = array(
+  '----',
   'articles/navlist',
   'banners/navlist',
   'banners/navright',
@@ -42,7 +43,10 @@ $nav_array = array('----',
 $cs_lang = cs_translate('clansphere');
 
 if(isset($_REQUEST['debug_navfile']))
-  $_SESSION['debug_navfile'] = (int) $_REQUEST['debug_navfile'];
+  if($_REQUEST['debug_navfile'] == 'none')
+    $_SESSION['debug_navfile'] = 0;
+  else
+    $_SESSION['debug_navfile'] = (int) $_REQUEST['debug_navfile'];
 
 if(empty($_SESSION['debug_navfile'])) {
 
@@ -58,7 +62,7 @@ if(empty($_SESSION['debug_navfile'])) {
 else {
 
   $nav_file = $nav_array[$_SESSION['debug_navfile']];
-  $remove = cs_link($cs_lang['remove'], $cs_main['def_mod'], $cs_main['def_action'], 'debug_navfile=0');
+  $remove = cs_link($cs_lang['remove'], $cs_main['def_mod'], $cs_main['def_action'], 'debug_navfile=none');
   echo $nav_file . ' [ ' . $remove . ' ]' . cs_html_br(2);
   include 'mods/' . $nav_file . '.php';
 }
