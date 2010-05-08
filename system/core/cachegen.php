@@ -42,7 +42,7 @@ function cs_cache_dirs($dir, $lang) {
           $info[$name] = $mod_info;
           $info[$name]['name'] = $name;
           $info[$name]['dir'] = $target;
-          if(!empty($mod_info['startup']))
+          if($dir == 'mods' AND !empty($mod_info['startup']))
             $startup[$target] = TRUE;
         }
         unset($info[$name]['text'], $info[$name]['url'], $info[$name]['team'], $info[$name]['creator']);
@@ -54,7 +54,9 @@ function cs_cache_dirs($dir, $lang) {
     ksort($info);
     $cs_lang = $cs_lang_old;
 
-    cs_cache_save('startup', array_keys($startup));
+    if($dir == 'mods' AND cs_cache_load('startup') === false)
+      cs_cache_save('startup', array_keys($startup));
+
     return cs_cache_save($filename, $info);
   }
   else {
