@@ -160,7 +160,6 @@ function cs_content_lang () {
         $allow++;
 
     $lang = empty($allow) ? $cs_main['def_lang'] : $new_lang;
-    require_once 'lang/' . $lang . '/system/comlang.php';
 
     # update language changes
     if(!empty($cookie_lang) AND $cookie_lang != $lang) {
@@ -172,6 +171,8 @@ function cs_content_lang () {
       cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
     }
   }
+
+  require_once 'lang/' . $lang . '/system/comlang.php';
   return $lang;
 }
 
