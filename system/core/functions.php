@@ -156,7 +156,7 @@ function cs_content_lang () {
   elseif(!empty($_GET['lang']))
     $new_lang = $_GET['lang'];
 
-  if($lang != $new_lang) {
+  if($lang != $new_lang OR $cookie_lang != $new_lang) {
     $languages = cs_checkdirs('lang');
     foreach($languages as $mod)
       if($mod['dir'] == $new_lang)
