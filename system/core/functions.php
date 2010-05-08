@@ -142,34 +142,36 @@ function cs_content_lang () {
   $allow = 0;
   $cookie_lang = '';
   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
+  $new_lang = $lang;
 
   if(!empty($_COOKIE['cs_lang'])) {
-    $lang = $_COOKIE['cs_lang'];
-    $cookie_lang = $lang;
+    $new_lang = $_COOKIE['cs_lang'];
+    $cookie_lang = $new_lang;
   }
   if(!empty($_REQUEST['lang']))
-    $lang = $_REQUEST['lang'];
+    $new_lang = $_REQUEST['lang'];
   elseif(!empty($_GET['lang']))
-    $lang = $_GET['lang'];
+    $new_lang = $_GET['lang'];
 
-  $languages = cs_checkdirs('lang');
-  foreach($languages as $mod)
-    if($mod['dir'] == $lang)
-      $allow++;
+  if($lang != $new_lang) {
+    $languages = cs_checkdirs('lang');
+    foreach($languages as $mod)
+      if($mod['dir'] == $new_lang)
+        $allow++;
 
-  $lang = empty($allow) ? $cs_main['def_lang'] : $lang;
-  require_once 'lang/' . $lang . '/system/comlang.php';
+    $lang = empty($allow) ? $cs_main['def_lang'] : $new_lang;
+    require_once 'lang/' . $lang . '/system/comlang.php';
 
-  # update language changes
-  if(!empty($cookie_lang) AND $cookie_lang != $lang) {
-    setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+    # update language changes
+    if(!empty($cookie_lang) AND $cookie_lang != $lang) {
+      setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+    }
+    elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
+      $users_cells = array('users_lang');
+      $users_save = array($lang);
+      cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
+    }
   }
-  elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
-    $users_cells = array('users_lang');
-    $users_save = array($lang);
-    cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
-  }
-
   return $lang;
 }
 
