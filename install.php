@@ -9,7 +9,6 @@ $charset = version_compare(phpversion(), '5.0', '>=') ? 'UTF-8' : 'ISO-8859-15';
 $cs_main = array( 'cellspacing'     => 1,
                   'charset'         => $charset,
                   'def_action'      => 'list',
-                  'def_lang'        => 'English',
                   'def_mod'         => 'install',
                   'def_title'       => 'ClanSphere Installation',
                   'def_tpl'         => 'install',

@@ -25,7 +25,6 @@ function cs_error_internal($error = 0, $report = 0) {
   $cs_main['error_internal'] = $error;
   $cs_main['error_reported'] = $report;
   $cs_main['def_title'] = 'ClanSphere';
-  $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
   $cs_main['def_tpl'] = 'install';
   $cs_main['mod'] = 'errors';
   $cs_main['action'] = '500';
@@ -205,6 +204,7 @@ function cs_init($predefined) {
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
+  $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
 
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
