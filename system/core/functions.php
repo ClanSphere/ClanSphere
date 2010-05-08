@@ -165,7 +165,7 @@ function cs_content_lang () {
     $lang = empty($allow) ? $cs_main['def_lang'] : $new_lang;
 
     # update language changes
-    if(!empty($cookie_lang) AND $cookie_lang != $lang) {
+    if($cookie_lang != $lang) {
       setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
     }
     elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
