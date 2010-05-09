@@ -44,27 +44,27 @@ function cs_getlog() {
   return $logsql;
 }
 
+if (empty($string)) return;
 
-if (!empty($string)) {
+$navlists = array();
 
-  $temp = '';
-  $var = '';
-  $specials = array('func_parse' => 'cs_parsetime($cs_micro)', 'func_queries' => '\''.$cs_logs['queries'].'\'',
-    'func_errors' => '\'' . $cs_logs["php_errors"] . $cs_logs["errors"] . '\'');
-  $special_names = array('func_errors' => 'errors', 'func_sql' => 'sql');
+
+$specials = array('func_parse' => 'cs_parsetime($cs_micro)', 'func_queries' => '\''.$cs_logs['queries'].'\'',
+  'func_errors' => '\'' . $cs_logs["php_errors"] . $cs_logs["errors"] . '\'');
+$special_names = array('func_errors' => 'errors', 'func_sql' => 'sql');
+
+foreach ($ajaxes as $ajax) {
   
-  $last = end($ajaxes);
+  if (empty($ajax)) continue;
+  $name = !empty($special_names[$ajax]) ? $special_names[$ajax] : 'cs_' . $ajax;
   
-  foreach ($ajaxes as $ajax) {
-    if (empty($ajax)) continue;
-    $name = !empty($special_names[$ajax]) ? $special_names[$ajax] : 'cs_' . $ajax;
-    if (empty($specials[$ajax])) {
-      $temp .= '!33/' . $name . '!33/' . cs_filecontent('mods/' . str_replace('_','/',$ajax) . '.php');
-    } else {
-      eval('$var = ' . $specials[$ajax] . ';');
-      $temp .= '!33/' . $name . '!33/' . $var;
-    }
-    if ($last == $ajax) $temp .= '!33/sql!33/' . cs_getlog();
-  }
-  echo $temp;
+  empty($specials[$ajax]) ? $value = cs_filecontent('mods/' . str_replace('_','/',$ajax) . '.php') : eval('$value = ' . $specials[$ajax] . ';');
+  $navlists[$name] = $value;
+  
+}
+
+$navlists['sql'] = cs_getlog();
+
+if (strpos($_SERVER['PHP_SELF'], 'content.php') === false) {
+  echo json_encode($navlists);
 }

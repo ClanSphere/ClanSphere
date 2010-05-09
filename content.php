@@ -21,26 +21,22 @@ if (empty($cs_main['public']) and $account['access_clansphere'] < 3)
 if ($cs_main['mod'] == 'users' && $cs_main['action'] == 'logout') die(ajax_js('window.location.href=""'));
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
-$temp = cs_filecontent($cs_main['show']);
-$temp = cs_content_append($temp);
-$temp = str_replace('action="#','action="index.php?',$temp);
+$content = cs_filecontent($cs_main['show']);
 
-$location = cs_url($cs_main['mod'],$cs_main['action']);
 $cs_act_lang = cs_translate($cs_main['mod']); 
-$temp .= '<a style="display:none" id="ajax_location" href="' . $location . '"></a>';
-$temp .= '<div style="display:none" id="ajax_title">' . $cs_main['def_title'] . ' - ' . ucfirst($cs_act_lang['mod_name']) . '</div>';
-$temp .= "\n" . '<div style="display: none;" id="ajax_scripts">' . (isset($cs_main['scripts']) ? $cs_main['scripts'] : '') . '</div>';
 
-echo $temp;
-
-function ajax_js($js) { return '<script type="text/javascript">' . $js . '</script>'; }
-
-if (!empty($cs_main['ajax_js'])) echo ajax_js($cs_main['ajax_js']);
+$json = array();
+$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_act_lang['mod_name']);
+$json['location'] = str_replace('&debug','', preg_replace('/(.*?)content\.php\?(.*?)/s','\\2',$_SERVER['REQUEST_URI']) );
+$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
+$json['content'] = $content;
 
 if (!isset($_GET['first'])) {
-  echo '<div style="display:none" id="contenttemp">';
   
-  include 'navlists.php';
+  require_once 'navlists.php';
   
-  echo '</div>';
+  $json['navlists'] = $navlists;
+  
 }
+
+echo json_encode($json);

@@ -263,6 +263,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
 
   cs_scriptload('clansphere', 'javascript', 'js/clansphere.js');
+  cs_scriptload('clansphere', 'javascript', 'js/jquery.js');
   cs_scriptload('ajax', 'javascript', 'js/ajax.js');
 
   global $cs_main;
@@ -276,7 +277,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
     $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
-    $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);
+    # $cs_temp_get = str_replace('<body', '<body onload="initializeAJAX('.$var.','.$cs_main['ajax_reload'].')"', $cs_temp_get);
     if (strpos($cs_temp_get,'id="content"') === false) $content = '<div id="content">' . $content . '</div>';
     $ajaxes = explode(',',$cs_main['ajax_navlists']);
     if (!empty($cs_main['debug'])) {

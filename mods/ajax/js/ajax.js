@@ -1,287 +1,269 @@
-function cs_ajax_setcontent (request, id, onfinish, setanch) {
+var Clansphere = {
+  ajax: {
+    debug: '',
+    hash: '',
+    options: {
+      checkURLInterval: 50,
+      loadingImage: '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading..." />',
+      contentSelector: "#content",
+      label_upload_delete: 'Delete',
+      label_upload_progress: 'Uploading File...',
+      error_upload_progress: 'Upload still in progress! Formular can not be sumited until file is uploaded completly.'
+    },
     
-  if (request.status != 200) return;
-
-  if (!document.getElementById(id)) { window.setTimeout(function() { cs_ajax_setcontent(request, id, onfinish); },50); return; }
-  response = request.responseText;
-  response = response.replace(/href=\"#([a-zA-Z0-9-_]*?)\"/g,"href=\"javascript:cs_scrollto_by_name('$1')\"");
-  document.getElementById(id).innerHTML = (!mod_rewrite) ? response.replace(/href=\"([a-zA-Z0-9\/\.\-\_]*?)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"") :
-    response.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(content|navlists)\/(\w.+?)\"/g,"href=\"#$2\"");
-  scripts = response.match(/<script(.*)src="(.+?)"(.*)?><\/script>/g); // Soll aus der Antwort die JavaScript-URLs rauslesen und dann an javascript_include uebergeben.
-  if(scripts) {
-    for (var i = 0; i < scripts.length; ++i)
-      include_javascript(scripts[i].match(/src="(.+?)"/)[1]);
-  }
-  if (id == 'content' && response.lastIndexOf('<script') != 0) {
-    request_cont = 0;
-    if (setanch) {
-      anch = "#" + document.getElementById('ajax_location').href.replace('&amp;','&');
-      anch = anch.substr(anch.lastIndexOf("#"));
-      window.location.hash = anch;
-    }
-    document.title = document.getElementById('ajax_title').innerHTML;
-  }
-  delete response;
-
-  if (onfinish) window.setTimeout(onfinish,0);
-}
-
-function include_javascript(path) {
-  if(document.getElementById(path))
-    return;
-  var head = document.getElementsByTagName("head")[0];
-  script = document.createElement('script');
-  script.id = path;
-  script.type = 'text/javascript';
-  script.src = path;
-  head.appendChild(script);
-
-}
-
-function cs_scrollto_by_name(target) {
-  pos = document.getElementsByName(target)[0].offsetTop;
-  window.scrollTo(0,pos);
-}
-
-function cs_ajax_getcontent(url, objectid, onfinish, params, setanch) {
-  cs_ajax_request(url, function(request) { cs_ajax_setcontent(request, objectid, onfinish, setanch); }, (params) ? 'POST' : 'GET', params );
-}
-
-function cs_ajax_request (url, callback, method, params, request) {
-  if (!request) {
-    if (url.substr(0,7) == 'content') {
-      if (request_cont) request_cont.abort();
-      else request_cont = cs_ajax_start();
-      cs_ajax_request (url, callback, method, params, request_cont);
-    } else
-      cs_ajax_request (url, callback, method, params, cs_ajax_start());
-    return;
-  }
-  if (!method) method = 'GET';
-  request.open (method, url, true);
+    active_upload_count: 0,
     
-  request.onreadystatechange = function() {
-    if (request.readyState == 4) {
-      request.onreadystatechange = function(){};
-      callback (request);
-    }
-  };
-  
-  if(method == 'POST') {
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-    request.setRequestHeader("Content-length", params.length);
-    request.send(params);
-  } else {
-    request.send (url);
-  }
-}
+    initialize: function() {
 
-function cs_ajax_start() {
-  if (window.XMLHttpRequest) return new XMLHttpRequest();
-  return (window.ActiveXObject) ? new ActiveXObject("Msxml2.XMLHTTP") : false;
-}
+      Clansphere.ajax.debug = window.location.href.lastIndexOf('debug.php') != -1 ? '&debug' : '';
 
-var anch = "__START__";
-var done = 1;
-var debug = 0;
-var away;
-var lastmove;
-var mod_rewrite;
-var request_cont;
-var active_upload_count = 0;
-  
-function initializeAJAX(modrewrite, navinterval) {
-  var cont = document.getElementsByTagName('body')[0].innerHTML;
-  if (modrewrite) {
-    mod_rewrite = 1;
-    cont = cont.replace(/href=\"\/[a-zA-Z0-9\/\.\-\_]*?(index|debug|board)\/(\w.+)\"/g,"href=\"#$2\"");
-  } else
-    cont = cont.replace(/href=\"([a-zA-Z0-9\/\.\-\_]*)\?mod=(\w.+?)\"/g,"href=\"#mod=$2\"");
-  document.getElementsByTagName('body')[0].innerHTML = cont;
-  delete cont;
-  lastmove = GetMins();
-  if (window.location.href.indexOf('debug') != -1) debug = 1;
-  
-  window.setInterval("checkanch()",50);
-  
-  if (!navinterval) return;
-  
-  window.setInterval("updatenavs()", navinterval * 1000);
-  window.setTimeout('window.onmousemove = Movement;',60000);
-  window.setInterval('CheckActivity()',120000);
-  window.onunload = function() { if (typeof request != "undefined") request.abort(); };
-}
+      window.setInterval(Clansphere.ajax.checkURL, Clansphere.ajax.options.checkURLInterval);
 
-function checkanch() {
-  anch_new = window.location.hash;
-  if (anch_new == anch || anch_new == "") return;
-  subanch = (!mod_rewrite) ? anch_new.substr(1) : "params=/" + anch_new.substr(1);
-  if (debug) subanch += '&debug';
-  url = anch != "__START__" ? 'content.php?'+ subanch : 'content.php?'+subanch+'&first';
-  document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
-  
-  cs_ajax_getcontent(url,'content', "cloaded('"+anch+"')");
-  anch = anch_new;
-}
+      Clansphere.ajax.convertLinksToAnchor('body');
+      
+      $('input[type=file]').live('change', function() {
+        Clansphere.ajax.upload_file(this);
+      });
+      
+      $('form').live('submit', function() {
+        if(Clansphere.ajax.active_upload_count > 0) {
+          alert(Clansphere.ajax.options.error_upload_progress);
+          return false;
+        }
+        $.ajax({
+              type: 'POST',
+              url: $(this).attr('action') + Clansphere.ajax.debug,
+              data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1'),
+              dataType: 'json',
+              success: function(response){
+                  Clansphere.ajax.updatePage(response);
+                  Clansphere.ajax.hash = "#" + response.location;
+                  window.location.hash = Clansphere.ajax.hash;
+              }
+          });
+          if($(this).hasClass('noajax'))
+            window.location.reload();
+          return false;
+      });
 
-function cloaded(anch) {
-  forms_to_ajax();
-  ajaxes = document.getElementsByTagName('script');
-  for (var i = 0; i < ajaxes.length; i++)
-    if (ajaxes[i].src == "") {
-      var ajax = ajaxes[i].innerHTML;
-      window.setTimeout(function() { eval(ajax); },0);
-    }
-  if (anch != "__START__") setnavs(1);
-}
+      $('input').live('click', function() {
+        if($(this).attr('type') == 'submit') {
+          $(this.form).data('ajax_submit_button',$(this).attr('name'))
+        }
+      });
 
-function updatenavs() {
-  if (!done || away) return;
-  if (!document.getElementById('temp_div')) {
-    temp = document.createElement("div");
-    temp.id = 'temp_div';
-    temp.style.display = 'none';
-    document.getElementsByTagName('body')[0].appendChild(temp);
-  }
-  done = 0;
-  cs_ajax_getcontent('navlists.php','temp_div','setnavs()');
-}
+    },
 
-function setnavs(cache) {
-  var cnttmp = cache == 1 && document.getElementById('contenttemp') ? document.getElementById('contenttemp').innerHTML : '';
-  var cont = cache != 1 ? document.getElementById('temp_div').innerHTML : cnttmp;
-  done = 1;
-  parts = cont.split('!33/');
-  for (run = 1; run < parts.length; run+=2)
-    if (document.getElementById(parts[run])) document.getElementById(parts[run]).innerHTML = parts[run+1];
-}
+    updatePage: function (response) {
+      $(Clansphere.ajax.options.contentSelector).html(response.content);
+      Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
+      document.title = response.title;
+      if (response.scripts) window.setTimeout(function(){ eval(response.scripts); }, 0);
+      for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
+    },
 
-function form_to_string(form) {
-  var string = "";
-  firstsubmit = "";
-  var fields = form.elements;
-  for(var i = 0; i < fields.length; i++) {
-    switch(fields[i].type) {
-      case 'text': case 'password': case 'hidden': case 'textarea':
-        string += encodeURI(fields[i].name) + "=" + encodeURIComponent(fields[i].value) + "&";
+    checkURL: function() {
+      if (window.location.hash == Clansphere.ajax.hash) return;
+      if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
+      Clansphere.ajax.hash = window.location.hash;
+      mod = window.location.hash.substr(1).replace(/(.*?)mod=(.*?)\&action(.*?)$/, "$2");
+      //Clansphere.validation.requestRules(mod);
+      $.ajax({
+            type: 'GET',
+            url: 'content.php',
+            data: Clansphere.ajax.hash.substr(1) + Clansphere.ajax.debug,
+            dataType: 'json',
+            success: Clansphere.ajax.updatePage
+      });
+
+    },
+    
+    convertLinksToAnchor: function (element) {
+      element = $(element);  
+      element.find('a').each(function(i,e){
+        if(!$(e).hasClass('noajax')) {
+          e.href = e.href.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "#mod=$2");
+        }
+      });
+      
+      return element;
+    },
+    
+    upload_complete: function(upload_name, file_name) {
+      document.getElementById('upload_' + upload_name).innerHTML = "<a href=\"javascript:Clansphere.ajax.remove_file('" + upload_name + "');\">" + Clansphere.ajax.options.label_upload_delete  + "</a> | " + file_name;
+      Clansphere.ajax.active_upload_count -= 1;
+    },
+
+    remove_file: function(upload_name) {
+      $.ajax({
+            type: 'POST',
+            url: 'upload.php',
+            data: {'remove': upload_name},
+            success: Clansphere.ajax.remove_complete(upload_name)
+      });
+    },
+
+    remove_complete: function(upload_name) {
+      element = document.getElementById('upload_' + upload_name).parentNode;
+      new_file_input = document.createElement('input');
+      new_file_input.type = 'file';
+      new_file_input.name = upload_name;
+      new_file_input.onchange = function() { upload_file(this); };
+      element.innerHTML = '';
+      element.appendChild(new_file_input);
+    },
+    
+    upload_file: function(element) {
+
+      Clansphere.ajax.active_upload_count += 1;
+
+      if (!document.getElementById('upload_frame_div')) {
+        upload_frame_div = document.createElement("div");
+        upload_frame_div.setAttribute('id','upload_frame_div');
+        upload_frame_div.style.display = 'none';
+        document.getElementsByTagName('body')[0].appendChild(upload_frame_div);
+      }
+
+      upload_frame = false;
+      for(i = 0; i < document.getElementById('upload_frame_div').getElementsByTagName('iframe').length; i++) {
+        upload_frame = document.getElementById('upload_frame_div').getElementsByTagName('iframe')[0];
         break;
-      case 'submit':
-        if (!firstsubmit) firstsubmit = fields[i].name; break;
-      case 'radio': case 'checkbox':
-        if(fields[i].checked)
-          string += encodeURI(fields[i].name) + "=" + encodeURI(fields[i].value) + "&";
-        break;
-      case 'select-one':
-        string += encodeURI(fields[i].name) + "=" + encodeURI(fields[i].options[fields[i].selectedIndex].value) + "&";
-    }
-  }
-  clickedbutton = document.getElementById('submitbutton').innerHTML;
-  ending = (!clickedbutton) ? firstsubmit + "=1" : clickedbutton + "=1";
-  return string + ending;
-}
+      }
+      if(!upload_frame) {
+        document.getElementById('upload_frame_div').innerHTML += "<iframe width=\"0\" height=\"0\" frameborder=\"0\" name=\"upload_frame_" + i + "\"></iframe>";
+        upload_frame = document.getElementsByName("upload_frame_" + i)[0];
+      }
+      form = document.createElement('form');
+      form.name = "upload_form";
+      form.target = upload_frame.name;
+      form.method = "post";
+      form.action = "upload.php";
+      form.setAttribute("enctype","multipart/form-data");
 
-function upload_complete(upload_name, file_name) {
-  document.getElementById('upload_' + upload_name).innerHTML = "<a href=\"javascript:remove_file('" + upload_name + "');\">Delete</a> | " + file_name;
-  active_upload_count -= 1;
-}
+      enctype = form.getAttributeNode("enctype");
+      enctype.value = "multipart/form-data";
 
-function remove_file(upload_name) {
-  cs_ajax_request ('upload.php', function(req){ remove_complete(upload_name); }, 'POST', 'remove=' + upload_name);
-}
+      element.parentNode.innerHTML = "<div id=\"upload_"+element.name+"\">" + Clansphere.ajax.options.label_upload_progress + "</div>";
+      document.getElementById('upload_frame_div').appendChild(form);
+      upload_name = document.createElement("input");
+      upload_name.type = 'hidden';
+      upload_name.name = 'upload_name';
+      upload_name.value = element.name;
 
-function remove_complete(upload_name) {
-  element = document.getElementById('upload_' + upload_name).parentNode;
-  new_file_input = document.createElement('input');
-  new_file_input.type = 'file';
-  new_file_input.name = upload_name;
-  new_file_input.onchange = function() { upload_file(this); };
-  element.innerHTML = '';
-  element.appendChild(new_file_input);
-}
 
-function forms_to_ajax() {
-  forms = document.getElementsByTagName('form');
-  document.getElementById('content').innerHTML += '<div id="submitbutton" style="display:none"></div>';
-  for(i = 0; i <forms.length; i++) {
-    felements = forms[i].elements;
-    for(j = 0; j < felements.length; j++) {
-      switch(felements[j].type) {
-        case 'submit':
-          felements[j].onclick = function() { document.getElementById('submitbutton').innerHTML = this.name; };
-          break;
-        case 'file':
-          felements[j].onchange = function() { upload_file(this); };
-          break;
+      with(form) {
+        appendChild(element);
+        appendChild(upload_name);
+        submit();
       }
     }
-    forms[i].onsubmit = function() {
-      if(active_upload_count==0) {
-        for (var i = 0; i < parent.frames.length; ++i )
-          if ( parent.frames[i].FCK )
-            parent.frames[i].FCK.LinkedField.value = parent.frames[i].FCK.GetData();
-        FCKeditorAPI = null;
-        document.getElementById('content').innerHTML += '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading.." />';
-        cs_ajax_getcontent(this.action.replace(/([a-zA-Z0-9\/\.\-\_\:]*)\?mod\=(\w.+)/g,"content.php?mod=$2"),'content',  "cloaded('"+anch+"')" , form_to_string(this), 1);
+  },
+
+  validation: {
+    mod: {
+      name: '',
+      rules: {}
+    },
+    lang: 0,
+
+    options: {
+      valideClass: 'valide',
+      invalideClass: 'invalide',
+      errorMsgClass: 'error'
+    },
+
+    initialize: function() {
+
+      $('input, textarea').live( 'keyup', function () {
+        input_field = $(this)
+        if(Clansphere.validation.mod.rules[ input_field.attr('name')]) {
+          field = Clansphere.validation.mod.rules[input_field.attr('name')];
+          value = input_field.attr('value');
+          if (!value && !field.min){ Clansphere.validation.mark_as_valide(this); }
+
+          if (field.min && value.length < field.min){ Clansphere.validation.mark_as_invalide(this, 'min'); return;}
+          if (field.max && value.length > field.max){ Clansphere.validation.mark_as_invalide(this, 'max'); return;}
+          if (field.regex) {
+              end = field.regex.lastIndexOf($(field).attr('regex').substr(0,1));
+              pattern = field.regex.substr(1,end - 1);
+              modifiers = field.regex.substr(end + 1);
+              
+              if (!new RegExp(pattern, modifiers).test(value)){ Clansphere.validation.mark_as_invalide(this, 'regex'); return;}
+          }
+
+          Clansphere.validation.mark_as_valide(this);
+        }
+      });
+    },
+
+    requestRules: function(mod) {
+
+      if (Clansphere.validation.mod.name == mod) return false;
+      
+      Clansphere.validation.mod.name = mod;
+      if(Clansphere.validation.lang==0) {
+        $.ajax({
+            type: 'GET',
+            url: 'mods/ajax/validation.php',
+            data: mod,
+            dataType: 'json',
+            success: function (json) { 
+              Clansphere.validation.mod.name = mod
+              Clansphere.validation.mod.rules = json.data;
+              Clansphere.validation.lang = json.translations;
+            }
+        });
       } else {
-        alert('Upload proccess still running');
+        $.ajax({
+            type: 'GET',
+            url: 'mods/' + mod + '/config.json',
+            dataType: 'json',
+            success: function (json) { 
+              Clansphere.validation.mod.rules = json.data; 
+            }
+        });
       }
-      return false;
-    };
-  }
-}
+      return true;
+    },
+       
+    mark_as_invalide: function(element, error) {
+      options = Clansphere.validation.options;
+      element = $(element);
+      
+      
+      if(element.next('.' + options.errorMsgClass).size() == 0) {
+        element.after('<div class="' + options.errorMsgClass + '">');
+      }
+      element.removeClass(options.valideClass)
+             .addClass(options.valideClass)
+             .next('.' + options.errorMsgClass)
+             .text(Clansphere.validation.lang[error]);
+             
+      return element;
+    },
+    
+    mark_as_valide: function (element) {
+      element = $(element);
+      options = Clansphere.validation.options;
+      element.removeClass(options.invalideClass)
+           .addClass(options.valideClass)
+           .next('.' + options.errorMsgClass)
+           .text('');
+           
+      return element;
+    }
 
-function upload_file(element) {
-  
-  active_upload_count += 1;
-  
-  if (!document.getElementById('upload_frame_div')) {
-    upload_frame_div = document.createElement("div");
-    upload_frame_div.setAttribute('id','upload_frame_div');
-    upload_frame_div.style.display = 'none';
-    document.getElementsByTagName('body')[0].appendChild(upload_frame_div);
-  }
-  
-  upload_frame = false;
-  for(i = 0; i < document.getElementById('upload_frame_div').getElementsByTagName('iframe').length; i++) {
-    upload_frame = document.getElementById('upload_frame_div').getElementsByTagName('iframe')[0];
-    break;
-  }
-  if(!upload_frame) {
-    document.getElementById('upload_frame_div').innerHTML += "<iframe width=\"0\" height=\"0\" frameborder=\"0\" name=\"upload_frame_" + i + "\"></iframe>";
-    upload_frame = document.getElementsByName("upload_frame_" + i)[0];
-  }
-  form = document.createElement('form');
-  form.name = "upload_form";
-  form.target = upload_frame.name;
-  form.method = "post";
-  form.action = "upload.php";
-  form.setAttribute("enctype","multipart/form-data");
-  
-  enctype = form.getAttributeNode("enctype");
-  enctype.value = "multipart/form-data";
-  
-  element.parentNode.innerHTML = "<div id=\"upload_"+element.name+"\">Uploading file...</div>";
-  document.getElementById('upload_frame_div').appendChild(form);
-  upload_name = document.createElement("input");
-  upload_name.type = 'hidden';
-  upload_name.name = 'upload_name';
-  upload_name.value = element.name;
-  
 
-  with(form) {
-    appendChild(element);
-    appendChild(upload_name);
-    submit();
+  },
+
+  initialize: function() {
+
+    // Clansphere.ajax.initialize();   // Activate this line for ajax
+    // Clansphere.validation.initialize();
   }
-}
 
-// User activity
-function GetMins() { now = new Date(); return now.getMinutes(); }
+};
 
-function Movement (Event) {
-  lastmove = GetMins();
-  away = 0;
-  window.onmousemove = function() { };
-  window.setTimeout('window.onmousemove = Movement;',60000);
-}
-function CheckActivity() { if ((GetMins() - lastmove) % 60 > 1) away = 1; }
+$(function() {
+   Clansphere.initialize();
+});
