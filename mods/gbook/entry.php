@@ -182,7 +182,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   }
 }
 
-if(!isset($_POST['submit']))
+if(!isset($_POST['submit']) && !isset($_POST['preview']))
   $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($g_error))
   $data['head']['body'] = $g_error;
