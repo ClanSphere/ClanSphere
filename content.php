@@ -22,6 +22,7 @@ if ($cs_main['mod'] == 'users' && $cs_main['action'] == 'logout') die(ajax_js('w
 if (empty($account['access_ajax'])) die('No access on AJAX');
 
 $content = cs_filecontent($cs_main['show']);
+$content = cs_content_append($content);
 
 $cs_act_lang = cs_translate($cs_main['mod']); 
 
