@@ -5,13 +5,14 @@
 if(!empty($protect) AND !empty($_SESSION)) {
 
   if(isset($_POST['remove'])) {
+
     $file = $_POST['remove'];
     if(file_exists('uploads/cache/' . $_SESSION['ajaxuploads'][$file]))
       cs_unlink('cache',$_SESSION['ajaxuploads'][$file]);
     unset($_SESSION['ajaxuploads'][$file]);
     echo $file;
   }
-  else {
+  elseif(isset($_POST['upload_name'])) {
     
     $upload_name = $_POST['upload_name'];
     $file = $_FILES[$upload_name]['tmp_name'];
