@@ -25,11 +25,11 @@
   </tr>
   {loop:temp_list}
   <tr>
-    <td class="leftc"><a href="{temp_list:link}">{temp_list:name}</a></td>
+    <td class="leftc"><a href="{url:clansphere_temp_view:dir={temp_list:dir}}">{temp_list:name}</a></td>
     <td class="leftc">{temp_list:version}</td>
     <td class="leftc">{temp_list:date}</td>
-    <td class="centerc">{temp_list:preview}</td>
-    <td class="centerc">{temp_list:active}</td>
+    <td class="centerc">{if:active}{icon:submit}{stop:active}{unless:active}<a href="{url:clansphere_temp_list:template={temp_list:dir}}" class="noajax">{icon:cancel}</a>{stop:active}</td>
+    <td class="centerc">{if:def}{icon:submit}{stop:def}{unless:def}<a href="{url:clansphere_temp_list:activate={temp_list:dir}}" class="noajax">{icon:cancel}</a>{stop:def}</td>
   </tr>
   {stop:temp_list}
 </table>
