@@ -69,12 +69,13 @@ var Clansphere = {
       if (window.location.hash == Clansphere.ajax.hash) return;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       Clansphere.ajax.hash = window.location.hash;
-      mod = window.location.hash.substr(1).replace(/(.*?)mod=(.*?)\&action(.*?)$/, "$2");
+      base = window.location.href.replace(/http.*?([a-z_0-9]*?).php.*/g, "$1") + ".php";
+      //mod = window.location.hash.substr(1).replace(/(.*?)mod=(.*?)\&action(.*?)$/, "$2");
       //Clansphere.validation.requestRules(mod);
       $.ajax({
             type: 'GET',
-            url: 'content.php',
-            data: Clansphere.ajax.hash.substr(1) + Clansphere.ajax.debug,
+            url: base,
+            data: Clansphere.ajax.hash.substr(1) + "&ajax=1",
             dataType: 'json',
             success: Clansphere.ajax.updatePage
       });

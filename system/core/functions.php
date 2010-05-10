@@ -284,9 +284,44 @@ function cs_init($predefined) {
   $cs_main['template'] = empty($cs_main['def_tpl']) ? 'clansphere' : $cs_main['def_tpl'];
   if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
     $cs_main['template'] = $_GET['template'];
-
-  if(!empty($predefined['init_tpl']))
+  
+  if (!empty($_GET['ajax'])) {
+  	$content = cs_contentload($cs_main['show']);
+  	echo cs_ajaxwrap($content);
+  }
+  elseif(!empty($predefined['init_tpl']))
     echo cs_template($cs_micro, $predefined['tpl_file']);
+  		
+}
+
+function cs_ajaxwrap($content) {
+	
+	global $cs_main;
+	$cs_act_lang = cs_translate($cs_main['mod']); 
+
+	$json = array();
+	$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_act_lang['mod_name']);
+	$json['location'] = str_replace('&debug','', preg_replace('/(.*?)content\.php\?(.*?)/s','\\2',$_SERVER['REQUEST_URI']) );
+	$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
+	$json['content'] = $content;
+	
+	/*if (!isset($_GET['first'])) {
+	  
+	  require_once 'navlists.php';
+	  
+	  $json['navlists'] = $navlists;
+	  
+	}*/
+	
+	return json_encode($json);
+}
+
+function cs_contentload($file) {
+	
+  $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($file));
+  $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
+
+  return cs_content_append($content);
 }
 
 // Array walking with referenced altering

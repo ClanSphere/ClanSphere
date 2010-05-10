@@ -270,10 +270,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
   $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
 
-  $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($cs_main['show']));
-  $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
-
-  $content = cs_content_append($content);
+  $content = cs_contentload($cs_main['show']);
 
   if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
     $var = empty($cs_main['mod_rewrite']) ? 0 : 1;
