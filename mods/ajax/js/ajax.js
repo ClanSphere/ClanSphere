@@ -36,7 +36,7 @@ var Clansphere = {
         
         $.ajax({
               type: 'POST',
-              url: $(this).attr('action') + Clansphere.ajax.debug + '&ajax=1',
+              url: $(this).attr('action') + Clansphere.ajax.debug + '&ajax',
               data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1'),
               dataType: 'json',
               success: function(response){
@@ -76,16 +76,11 @@ var Clansphere = {
       $.ajax({
             type: 'GET',
             url: base,
-            data: Clansphere.ajax.hash.substr(1),
+            data: Clansphere.ajax.hash.substr(1) + "&ajax",
             dataType: 'json',
-            beforeSend: Clansphere.ajax.setHeaders,
             success: Clansphere.ajax.updatePage
       });
 
-    },
-    
-    setHeaders: function (request) {
-    	request.setRequestHeader('HTTP_X_REQUESTED_WITH', "XMLHttpRequest");
     },
     
     convertLinksToAnchor: function (element) {

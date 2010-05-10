@@ -205,6 +205,7 @@ function cs_init($predefined) {
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
   $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
+  $cs_main['ajaxrequest'] = isset($_GET['ajax']) ? true : false;
 
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
@@ -288,7 +289,7 @@ function cs_init($predefined) {
   //if (!empty($_GET['ajax'])) {
   //print_r($_SERVER);die();
   if(!empty($predefined['init_tpl'])) {
-	  if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+	  if ($cs_main['ajaxrequest'] === true) {
 	  	$content = cs_contentload($cs_main['show']);
 	  	echo cs_ajaxwrap($content);
 	  }

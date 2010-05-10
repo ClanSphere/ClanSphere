@@ -194,6 +194,7 @@ function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $ic
   }
 
     $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
+    if (isset($_GET['ajax'])) $url .= '&ajax';
     header('Location: ' . $url);
     exit();
 }
