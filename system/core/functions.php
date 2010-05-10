@@ -285,7 +285,9 @@ function cs_init($predefined) {
   if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
     $cs_main['template'] = $_GET['template'];
   
-  if (!empty($_GET['ajax'])) {
+  //if (!empty($_GET['ajax'])) {
+  //print_r($_SERVER);die();
+  if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
   	$content = cs_contentload($cs_main['show']);
   	echo cs_ajaxwrap($content);
   }

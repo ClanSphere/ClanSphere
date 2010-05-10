@@ -69,18 +69,23 @@ var Clansphere = {
       if (window.location.hash == Clansphere.ajax.hash) return;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       Clansphere.ajax.hash = window.location.hash;
-      base = window.location.href.replace(/^.*?([a-z_0-9]*?)(\.php|).*$/g, "$1");
-      base = !base ? "index.php" : base + ".php";
+      base = window.location.href.replace(/^.*?([a-z_0-9]*?)\.php.*$/g, "$1");
+      base = base == window.location.href ? "index.php" : base + ".php";
       //mod = window.location.hash.substr(1).replace(/(.*?)mod=(.*?)\&action(.*?)$/, "$2");
       //Clansphere.validation.requestRules(mod);
       $.ajax({
             type: 'GET',
             url: base,
-            data: Clansphere.ajax.hash.substr(1) + "&ajax=1",
+            data: Clansphere.ajax.hash.substr(1),
             dataType: 'json',
+            beforeSend: Clansphere.ajax.setHeaders,
             success: Clansphere.ajax.updatePage
       });
 
+    },
+    
+    setHeaders: function (request) {
+    	request.setRequestHeader('HTTP_X_REQUESTED_WITH', "XMLHttpRequest");
     },
     
     convertLinksToAnchor: function (element) {
@@ -273,7 +278,7 @@ var Clansphere = {
 
   initialize: function() {
 
-    // Clansphere.ajax.initialize();   // Activate this line for ajax
+    Clansphere.ajax.initialize();   // Activate this line for ajax
     // Clansphere.validation.initialize();
   }
 
