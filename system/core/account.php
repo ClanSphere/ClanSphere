@@ -53,8 +53,8 @@ if(empty($_SESSION['users_id'])) {
         $_SESSION['users_ip'] = cs_getip();
         $_SESSION['users_agent'] = $user_agent;
         $_SESSION['users_pwd'] = $login['securepw'];
-        if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax']))
-          empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
+        //if (!empty($login_db['users_ajax']) && !empty($cs_main['ajax']))
+        //  empty($cs_main['mod_rewrite']) ? header('Location: index.php') : header('Location: ../../index.php');
       }
     }
     elseif(!empty($login_db['users_id'])) { 
@@ -100,7 +100,7 @@ if(!empty($account['users_id'])) {
     setcookie('cs_securepw', '', 1, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
     session_destroy();
     $login['mode'] = FALSE;
-    if (!empty($account['users_ajax']) AND !empty($cs_main['ajax'])) die(ajax_js('window.location.reload()'));
+    //if (!empty($account['users_ajax']) AND !empty($cs_main['ajax'])) die(ajax_js('window.location.reload()'));
   }
   else {
     $cells = array('users_laston');

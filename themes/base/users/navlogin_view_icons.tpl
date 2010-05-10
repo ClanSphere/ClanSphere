@@ -17,4 +17,4 @@
   {stop:panel}
   <br />
 {stop:more}
-{icon:exit} <a href="{url:users_logout}">{lang:logout}</a>
+{icon:exit} <a href="{url:users_logout}" class="noajax">{lang:logout}</a>

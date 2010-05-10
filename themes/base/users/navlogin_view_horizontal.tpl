@@ -15,4 +15,4 @@
     <a href="{link:panel}">{lang:panel}</a> -
   {stop:panel}
 {stop:more}
-<a href="{url:users_logout}">{lang:logout}</a>
+<a href="{url:users_logout}" class="noajax">{lang:logout}</a>

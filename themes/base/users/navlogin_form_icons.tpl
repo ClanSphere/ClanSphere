@@ -1,4 +1,4 @@
-<form method="post" action="{form:navlogin}">
+<form method="post" action="{form:navlogin}" class="noajax">
 <fieldset style="border: 0">
 <input type="hidden" name="uri" value="{link:uri}" />
 {icon:personal} <input type="text" name="nick" value="{login:nick}" onfocus="if(this.value=='Nick') this.value=''" onblur="if(this.value=='')this.value='Nick'" maxlength="40" size="20" /><br />

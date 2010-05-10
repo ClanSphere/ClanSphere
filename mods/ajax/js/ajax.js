@@ -30,6 +30,10 @@ var Clansphere = {
           alert(Clansphere.ajax.options.error_upload_progress);
           return false;
         }
+        if($(this).hasClass('noajax'))
+        //    window.location.reload();
+        	return true;
+        
         $.ajax({
               type: 'POST',
               url: $(this).attr('action') + Clansphere.ajax.debug,
@@ -41,8 +45,7 @@ var Clansphere = {
                   window.location.hash = Clansphere.ajax.hash;
               }
           });
-          if($(this).hasClass('noajax'))
-            window.location.reload();
+          
           return false;
       });
 

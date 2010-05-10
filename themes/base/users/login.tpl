@@ -1,4 +1,4 @@
-<form method="post" id="users_login" action="{url:users_login}">
+<form method="post" id="users_login" action="{url:users_login}" class="noajax">
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr><td class="leftc">
