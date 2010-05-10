@@ -36,7 +36,7 @@ var Clansphere = {
         
         $.ajax({
               type: 'POST',
-              url: $(this).attr('action') + Clansphere.ajax.debug,
+              url: $(this).attr('action') + Clansphere.ajax.debug + '&ajax=1',
               data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1'),
               dataType: 'json',
               success: function(response){
@@ -69,7 +69,8 @@ var Clansphere = {
       if (window.location.hash == Clansphere.ajax.hash) return;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       Clansphere.ajax.hash = window.location.hash;
-      base = window.location.href.replace(/http.*?([a-z_0-9]*?).php.*/g, "$1") + ".php";
+      base = window.location.href.replace(/^.*?([a-z_0-9]*?)(\.php|).*$/g, "$1");
+      base = !base ? "index.php" : base + ".php";
       //mod = window.location.hash.substr(1).replace(/(.*?)mod=(.*?)\&action(.*?)$/, "$2");
       //Clansphere.validation.requestRules(mod);
       $.ajax({
@@ -160,6 +161,16 @@ var Clansphere = {
         appendChild(upload_name);
         submit();
       }
+    },
+    
+    user_autocomplete: function(field_from, field_to) {
+    	$.ajax({
+    		url: 'mods/ajax/search_users.php',
+    		data: 'target=' + field_from + '&term=' + $('#'+field_from).val(),
+    		success : function(response) {
+    			$('#'+field_to).html(response)
+    		}
+    	});
     }
   },
 
