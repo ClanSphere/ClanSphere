@@ -287,13 +287,14 @@ function cs_init($predefined) {
   
   //if (!empty($_GET['ajax'])) {
   //print_r($_SERVER);die();
-  if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
-  	$content = cs_contentload($cs_main['show']);
-  	echo cs_ajaxwrap($content);
+  if(!empty($predefined['init_tpl'])) {
+	  if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+	  	$content = cs_contentload($cs_main['show']);
+	  	echo cs_ajaxwrap($content);
+	  }
+	  else
+	    echo cs_template($cs_micro, $predefined['tpl_file']);
   }
-  elseif(!empty($predefined['init_tpl']))
-    echo cs_template($cs_micro, $predefined['tpl_file']);
-  		
 }
 
 function cs_ajaxwrap($content) {

@@ -86,7 +86,7 @@
     <tr>
       <td class="leftc">{icon:personal} {lang:owner}</td>
       <td class="leftb">
-        <input type="text" name="users_nick" id="users_nick" value="{users:nick}" onkeyup="cs_ajax_getcontent('{page:path}mods/ajax/search_users.php?term=' + document.getElementById('users_nick').value, 'search_users_result')" maxlength="80" size="40" /><br />
+        <input type="text" name="users_nick" id="users_nick" value="{users:nick}" onkeyup="Clansphere.ajax.user_autocomplete('users_nick', 'search_users_result')" maxlength="80" size="40" /><br />
         <div id="search_users_result"></div>
       </td>
     </tr>

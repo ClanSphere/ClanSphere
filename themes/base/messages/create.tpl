@@ -38,7 +38,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc">{icon:personal} {lang:to} *</td>
-    <td class="leftb"><input type="text" name="messages_to" id="messages_to" value="{msg:to}" onkeyup="cs_ajax_getcontent('{page:path}mods/ajax/search_users.php?target=messages_to&amp;term=' + document.getElementById('messages_to').value, 'search_users_result')" maxlength="200" size="50" /><br />
+    <td class="leftb"><input type="text" name="messages_to" id="messages_to" value="{msg:to}" onkeyup="Clansphere.ajax.user_autocomplete('messages_to','search_users_result')" maxlength="200" size="50" /><br />
       <div id="search_users_result"></div>
      </td>
   </tr>
