@@ -22,7 +22,7 @@ if(!empty($protect) AND !empty($_SESSION)) {
     $_SESSION['ajaxuploads'][$upload_name] = $new_name;
 
     echo '<script language="javascript" type="text/javascript">';
-    echo 'window.top.window.upload_complete(\'' . $upload_name . '\',\'' . $_FILES[$upload_name]['name'] . '\');';
+    echo 'window.top.Clansphere.ajax.upload_complete(\'' . $upload_name . '\',\'' . $_FILES[$upload_name]['name'] . '\');';
     echo '</script>';
   }
 }
