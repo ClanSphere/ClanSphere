@@ -13,7 +13,7 @@
 </table>
 <br />
 
-<form method="post" id="clansphere_options" action="{url:clansphere_options}">
+<form method="post" id="clansphere_options" action="{url:clansphere_options}" class="noajax">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:fileshare} Apache mod_rewrite</td>
