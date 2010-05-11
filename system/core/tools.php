@@ -270,7 +270,7 @@ function cs_dropdownsel($data, $id, $index) {
 function cs_files() {
 
   global $account, $cs_main;
-  if (!empty($_FILES) || $cs_main['php_self']['basename'] != 'content.php' || (empty($account['users_ajax']) && $cs_main['ajax'] != 2) || empty($_SESSION['ajaxuploads']) || (!empty($_SESSION['ajaxuploads']) && empty($_POST))) {
+  if (!empty($_FILES) || empty($cs_main['ajaxrequest']) || empty($_SESSION['ajaxuploads']) || (!empty($_SESSION['ajaxuploads']) && empty($_POST))) {
     cs_ajaxfiles_clear();
     return $_FILES;
   }
