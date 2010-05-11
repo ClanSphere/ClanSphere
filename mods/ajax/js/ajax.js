@@ -1,7 +1,9 @@
 var Clansphere = {
   ajax: {
-    debug: '',
     hash: '',
+    base: '',
+    index: '',
+    mod_rewrite: false,
     options: {
       checkURLInterval: 50,
       loadingImage: '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading..." />',
@@ -13,11 +15,14 @@ var Clansphere = {
     
     active_upload_count: 0,
     
-    initialize: function() {
-
-      Clansphere.ajax.debug = window.location.href.lastIndexOf('debug.php') != -1 ? '&debug' : '';
+    initialize: function(mod_rewrite, basepath) {
 
       window.setInterval(Clansphere.ajax.checkURL, Clansphere.ajax.options.checkURLInterval);
+      
+      Clansphere.ajax.mod_rewrite = mod_rewrite ? true : false;
+      
+      Clansphere.ajax.base = basepath;
+      Clansphere.ajax.index = basepath.replace(/.*?\/([a-z]*?)\.php/g, "$1");
 
       Clansphere.ajax.convertLinksToAnchor('body');
       
@@ -36,7 +41,7 @@ var Clansphere = {
         
         $.ajax({
               type: 'POST',
-              url: $(this).attr('action') + Clansphere.ajax.debug + '&ajax',
+              url: $(this).attr('action') + '&ajax',
               data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1'),
               dataType: 'json',
               success: function(response){
@@ -69,14 +74,14 @@ var Clansphere = {
       if (window.location.hash == Clansphere.ajax.hash) return;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       Clansphere.ajax.hash = window.location.hash;
-      base = window.location.href.replace(/^.*?([a-z_0-9]*?)\.php.*$/g, "$1");
-      base = base == window.location.href ? "index.php" : base + ".php";
-      //mod = window.location.hash.substr(1).replace(/(.*?)mod=(.*?)\&action(.*?)$/, "$2");
+      
+      var prefix = !Clansphere.ajax.mod_rewrite ? "" : "params=/";
+      
       //Clansphere.validation.requestRules(mod);
       $.ajax({
             type: 'GET',
-            url: base,
-            data: Clansphere.ajax.hash.substr(1) + "&ajax",
+            url: Clansphere.ajax.base,
+            data: prefix + Clansphere.ajax.hash.substr(1) + "&ajax",
             dataType: 'json',
             success: Clansphere.ajax.updatePage
       });
@@ -84,10 +89,15 @@ var Clansphere = {
     },
     
     convertLinksToAnchor: function (element) {
-      element = $(element);  
+      element = $(element);
       element.find('a').each(function(i,e){
         if(!$(e).hasClass('noajax')) {
-          e.href = e.href.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "#mod=$2");
+          if (!Clansphere.ajax.mod_rewrite) {
+            e.href = e.href.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "#mod=$2");
+          } else {
+        	var regexp = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?/" + Clansphere.ajax.index + "/(.+?)","g");
+        	e.href = e.href.replace(regexp, "#$1");
+          }
         }
       });
       
@@ -173,7 +183,7 @@ var Clansphere = {
     	});
     }
   },
-
+/*
   validation: {
     mod: {
       name: '',
@@ -270,15 +280,15 @@ var Clansphere = {
 
 
   },
-
-  initialize: function() {
-
-    Clansphere.ajax.initialize();   // Activate this line for ajax
+*/
+  initialize: function(mod_rewrite, basepath, reload) {
+	
+    Clansphere.ajax.initialize(mod_rewrite, basepath);   // Activate this line for ajax
     // Clansphere.validation.initialize();
   }
 
 };
 
 $(function() {
-   Clansphere.initialize();
+   //Clansphere.initialize();
 });
