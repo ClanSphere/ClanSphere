@@ -33,7 +33,7 @@
  <tr>
   <td class="leftb" colspan="2">{lang:php_mod}</td>
   <td class="leftb">{rc:php}</td>
-  <td class="leftb">{av:php}</td>
+  <td class="leftb">{sv:php}</td>
   <td class="leftb">{data:ok}</td>
  </tr>
  <tr>

@@ -54,9 +54,10 @@ $data['data']['ok'] = $ok[1];
 
 $check_recommended = true;
 
-$data['rc']['php'] = '5.3.0';
+$data['rc']['php'] = '5.3.2';
+$data['sv']['php'] = $data['av']['php'];
 $comparison = version_compare($data['av']['php'],$data['rc']['php'],'>=');
-if (empty($comparison)) { $data['av']['php'] = '<div style="color:#B91F1D">' . $data['av']['php'] . '</div>'; $check_recommended = 0;}
+if (empty($comparison)) { $data['sv']['php'] = '<div style="color:#B91F1D">' . $data['av']['php'] . '</div>'; $check_recommended = 0;}
 
 $data['rc']['short_open_tag'] = $switch[0];
 $data['av']['short_open_tag'] = $switch[(int) cs_phpconfigcheck('short_open_tag')];
