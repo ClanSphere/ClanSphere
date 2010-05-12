@@ -41,7 +41,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if (!$sql_data = mysqli_query($cs_db['con'], $sql_query)) {
     cs_error_sql($cs_file, 'cs_sql_count', mysqli_error($cs_db['con']));
-    return false;
+    return NULL;
   }
   $sql_result = mysqli_fetch_row($sql_data);
   mysqli_free_result($sql_data);
@@ -192,7 +192,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   
   if (!$sql_data = mysqli_query($cs_db['con'], $sql_query)) {
     cs_error_sql($cs_file, 'cs_sql_select', mysqli_error($cs_db['con']));
-    return false;
+    return NULL;
   }
   if ($max == 1) {
     $new_result = mysqli_fetch_assoc($sql_data);

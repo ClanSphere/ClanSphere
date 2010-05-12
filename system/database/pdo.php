@@ -78,7 +78,7 @@ function cs_sql_insertid($cs_file) {
   global $cs_db;
   if($cs_db['type'] == 'pdo_pgsql') {
     $found = cs_sql_query($cs_file, 'SELECT LASTVAL()', 1);
-    $result = isset($found['more'][0]['lastval']) ? $found['more'][0]['lastval'] : false;
+    $result = isset($found['more'][0]['lastval']) ? $found['more'][0]['lastval'] : NULL;
   }
   else {
     $result = $cs_db['con']->lastInsertId();
@@ -222,7 +222,7 @@ function cs_sql_error() {
   global $cs_db;
   $error = $cs_db['con']->errorInfo();
   if(empty($error) OR $error = array(0 => '00000'))
-    return false;
+    return FALSE;
   else
     return $error;
 }

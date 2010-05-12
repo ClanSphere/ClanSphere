@@ -37,7 +37,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if(!$sql_data = $cs_db['con']->query($sql_query)) {
     cs_error_sql($cs_file, 'cs_sql_count', cs_sql_error());
-    return FALSE;
+    return NULL;
   }
   $sql_result = $sql_data->fetcharray(SQLITE3_NUM);
   cs_log_sql($cs_file, $sql_query);
@@ -174,7 +174,7 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if (!$sql_data = $cs_db['con']->query($sql_query)) {
     cs_error_sql($cs_file, 'cs_sql_select', cs_sql_error());
-    return FALSE;
+    return NULL;
   }
   if($max == 1) {
     $new_result = $sql_data->fetcharray(SQLITE3_ASSOC);
@@ -256,5 +256,5 @@ function cs_sql_error($object = 0) {
   $cs_db['con'] = isset($cs_db['con']) ? $cs_db['con'] : $object;
   $error_code = $cs_db['con']->lasterrorcode();
   $error_string = empty($error_code) ? '' : $error_code . ' - ' . $cs_db['con']->lasterrormsg();
-  return empty($error_string) ? false : $error_string;
+  return empty($error_string) ? FALSE : $error_string;
 }

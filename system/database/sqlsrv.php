@@ -36,7 +36,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if (!$sql_data = sqlsrv_query($cs_db['con'], $sql_query)) {
     cs_error_sql($cs_file, 'cs_sql_count', cs_sql_error());
-    return false;
+    return NULL;
   }
   sqlsrv_fetch($sql_data);
   $sql_result = sqlsrv_get_field($sql_data, 0);
@@ -91,7 +91,7 @@ function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content) {
 function cs_sql_insertid($cs_file) {
 
   $found = cs_sql_query($cs_file, 'SELECT @@IDENTITY AS lastval', 1);
-  $lastval = isset($found['more'][0]['lastval']) ? $found['more'][0]['lastval'] : false;
+  $lastval = isset($found['more'][0]['lastval']) ? $found['more'][0]['lastval'] : NULL;
   return $lastval;
 }
 
@@ -187,7 +187,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
 
   if (!$sql_data = sqlsrv_query($cs_db['con'], $sql_query)) {
     cs_error_sql($cs_file, 'cs_sql_select', cs_sql_error());
-    return false;
+    return NULL;
   }
   if ($max == 1) {
     $new_result = sqlsrv_fetch_array($sql_data, SQLSRV_FETCH_ASSOC);
