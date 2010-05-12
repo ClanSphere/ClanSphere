@@ -5,7 +5,7 @@
 <tr><td class="leftc">
 {lang:all}{head:all}</td>
 <td class="leftc">
-{lang:month}{head:month}</td>
+{lang:month}: {head:month}</td>
 <td class="leftc">
 {lang:today}{head:today}
 </td></tr>

@@ -4,7 +4,7 @@
 </tr>
 <tr>
   <td class="leftb">{lang:all}{head:all}</td>
-  <td class="leftb">{lang:month}{head:month}</td>
+  <td class="leftb">{lang:month}: {head:month}</td>
   <td class="leftb">{lang:today}{head:today}</td>
 </tr>
 </table>

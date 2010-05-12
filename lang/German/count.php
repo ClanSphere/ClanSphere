@@ -26,7 +26,6 @@ $cs_lang['browser']        = 'Browser';
 $cs_lang['now']          = 'Befindet sich gerade auf:';
 $cs_lang['visitors']          = 'Besucher';
 $cs_lang['all']          = 'Gesamt: ';
-$cs_lang['month']        = 'Monat: ';
 $cs_lang['today']        = 'Heute: ';
 $cs_lang['trend']        = 'Entwicklung';
 $cs_lang['yearmon']        = 'Jahr - Monat';

@@ -91,7 +91,6 @@ $cs_lang['gamemod']  = 'Mod';
 $cs_lang['rank']  = 'Rank';
 $cs_lang['honor']  = 'Honor';
 $cs_lang['frags']  = 'Kills';
-$cs_lang['time']  = 'Onlinezeit';
 $cs_lang['score']  = 'Punkte';
 $cs_lang['ping']  = 'Ping';
 $cs_lang['team']  = 'Team';

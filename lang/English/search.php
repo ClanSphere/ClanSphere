@@ -41,5 +41,4 @@ $cs_lang['short']    = 'Short';
 
 //Files
 $cs_lang['cat']      = 'Category';
-$cs_lang['time']    = 'Date';
 $cs_lang['files']    = 'Files';

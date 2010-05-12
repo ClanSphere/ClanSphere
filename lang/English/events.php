@@ -9,7 +9,6 @@ $cs_lang['all']         = 'Total: ';
 
 // agenda.php
 $cs_lang['agenda']  = 'Agenda';
-$cs_lang['year']  = 'Year';
 
 // Center
 $cs_lang['head_center']  = 'Center';
@@ -55,7 +54,6 @@ $cs_lang['head_remove']  = 'Remove';
 
 // timer.php
 $cs_lang['head_timer']  = 'Timer';
-$cs_lang['time']        = 'Time';
 $cs_lang['user']        = 'User';
 $cs_lang['new_age']     = 'New age';
 $cs_lang['place']       = 'Hometown';
