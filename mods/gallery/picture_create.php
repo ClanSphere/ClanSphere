@@ -25,7 +25,7 @@ if(isset($_POST['submit'])) {
     $files_gl['picture']['name'] = $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1];
   }
   else
-    $files_gl['picture']['tmp_name'] = 0;
+    $files_gl['picture']['name'] = 0;
 
   $file_up = !empty($_POST['file_up']) ? $_POST['file_up'] : 0;
   if ($file_up == 0) {
