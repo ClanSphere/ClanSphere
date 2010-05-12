@@ -17,13 +17,15 @@ $data['error']['error'] = '';
 $data['error']['message'] = '';
 
 if(isset($_POST['submit'])) {
-  if (file_exists('uploads/gallery/pics/' . $files_gl['picture']['name'])) {
+  if (isset($files_gl['picture']['name']) AND file_exists('uploads/gallery/pics/' . $files_gl['picture']['name'])) {
     $filename_tmp = ( str_split($files_gl['picture']['name'], strrpos($files_gl['picture']['name'], '.')) );
     $filename_counter = 0;
     while (file_exists('uploads/gallery/pics/' . $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1]))
       $filename_counter++;
     $files_gl['picture']['name'] = $filename_tmp[0] . '_' . $filename_counter . $filename_tmp[1];
   }
+  else
+    $files_gl['picture']['tmp_name'] = 0;
 
   $file_up = !empty($_POST['file_up']) ? $_POST['file_up'] : 0;
   if ($file_up == 0) {
@@ -101,7 +103,8 @@ if(isset($_POST['submit'])) {
       }
     }
   }
-} else {
+}
+else {
   $cs_gallery['gallery_titel'] = '';
   $cs_gallery['folders_id'] = '';
   $cs_gallery['gallery_access'] =  0;
@@ -117,18 +120,18 @@ if(isset($_POST['submit'])) {
 
 if(!isset($_POST['submit'])) {
   $data['body']['picture_create'] = $cs_lang['body_edit'];
-} elseif(!empty($error)) {
+}
+elseif(!empty($error)) {
   $data['error']['icon'] = cs_icon('important');
   $data['error']['error'] = $cs_lang['error_occured'] . cs_html_br(1);
   $data['error']['message'] = $error;
 }
 
-
 if(!empty($error) OR !isset($_POST['submit'])) {
- 
+
   $data['data'] = $cs_gallery;
   $data['data']['folders_select'] = make_folders_select('folders_id',$cs_gallery['folders_id'],'0','gallery');
-  
+
   if(empty($file_up)) {
   	$data['if']['file_up'] = FALSE;
   	$data['if']['no_up'] = TRUE;
@@ -168,7 +171,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   }
   $var .= cs_html_select(0);
   $data['data']['gallery_status'] = $var;
-    
 
   if(extension_loaded('gd')) {
     $no_cat_data_watermark = array('0' => array('categories_id' => '', 'categories_mod' => 'gallery-watermark', 'categories_name' => $cs_lang['no_watermark'], 'categories_picture' => ''));
@@ -214,11 +216,10 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['data']['w_position'] .= cs_html_select(0);
     $data['data']['w_trans'] = $gallery_watermark_trans;
   }
-  
 
   $data['abcode']['smileys'] = cs_abcode_smileys('gallery_description');
   $data['abcode']['features'] = cs_abcode_features('gallery_description');
-  
+
   $checked = 'checked="checked"';
   $data['check']['gray'] = empty($gray) ? '' : $checked;
 
@@ -229,8 +230,7 @@ else {
   $cs_gallery['gallery_watermark_pos'] = $watermark_pos;
 	$cells = array_keys($cs_gallery);
 	$save = array_values($cs_gallery);
- cs_sql_insert(__FILE__,'gallery',$cells,$save);
+  cs_sql_insert(__FILE__,'gallery',$cells,$save);
 
- cs_redirect($cs_lang['create_done'],'gallery','manage');
-
+  cs_redirect($cs_lang['create_done'],'gallery','manage');
 }
