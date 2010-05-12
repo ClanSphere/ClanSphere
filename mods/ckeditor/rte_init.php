@@ -12,6 +12,7 @@ else {
   $_SESSION['access_ckeditor'] = empty($account['access_ckeditor']) ? 0 : $account['access_ckeditor'];
 
   cs_scriptload('ckeditor', 'javascript', 'ckeditor.js');
+  cs_scriptload('ckeditor', 'javascript', 'adapters/jquery.js');
 
   function cs_rte_html($name, $value = '') {
 
