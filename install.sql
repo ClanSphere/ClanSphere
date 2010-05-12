@@ -393,6 +393,7 @@ CREATE TABLE {pre}_cupmatches (
   cupmatches_accepted1 int(2) NOT NULL default '0',
   cupmatches_accepted2 int(2) NOT NULL default '0',
   cupmatches_round int(2) NOT NULL default '0',
+  cupmatches_tree_order int(6),
   PRIMARY KEY (cupmatches_id),
   UNIQUE (cups_id, squad1_id, squad2_id),
   UNIQUE (cups_id, squad1_id, cupmatches_round)
