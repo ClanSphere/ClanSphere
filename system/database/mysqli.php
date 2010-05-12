@@ -2,8 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_sql_connect($cs_db, $test = 0)
-{
+function cs_sql_connect($cs_db, $test = 0) {
   $error = '';
   if(!extension_loaded('mysqli')) {
     $error = 'PHP extension mysqli must be activated!';
@@ -35,10 +34,10 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
   global $cs_db;
   $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
   $sql_where = str_replace('"', '\'', $sql_where);
-  
+
   $sql_query = 'SELECT COUNT(' . $row . ') FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
-  
+
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if (!$sql_data = mysqli_query($cs_db['con'], $sql_query)) {
     cs_error_sql($cs_file, 'cs_sql_count', mysqli_error($cs_db['con']));
@@ -69,8 +68,8 @@ function cs_sql_escape($string) {
   return mysqli_real_escape_string($cs_db['con'],$string);
 }
 
-function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content)
-{
+function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content) {
+
   global $cs_db;
   $max = count($sql_cells);
   $set = " (";
@@ -88,7 +87,7 @@ function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content)
     }
   }
   $set .= "')";
-  
+
   $sql_insert = 'INSERT INTO ' . $cs_db['prefix'] . '_' . $sql_table . $set;
   mysqli_query($cs_db['con'], $sql_insert) or cs_error_sql($cs_file, 'cs_sql_insert', mysqli_error($cs_db['con']));
   cs_log_sql($cs_file, $sql_insert);
@@ -101,8 +100,8 @@ function cs_sql_insertid($cs_file) {
   return $result;
 }
 
-function cs_sql_option($cs_file, $mod)
-{
+function cs_sql_option($cs_file, $mod) {
+
   global $cs_db;
   static $options = array();
 
@@ -129,8 +128,8 @@ function cs_sql_option($cs_file, $mod)
   return $options[$mod];
 }
 
-function cs_sql_query($cs_file, $sql_query, $more = 0)
-{
+function cs_sql_query($cs_file, $sql_query, $more = 0) {
+
   global $cs_db;
   $sql_query = str_replace('{pre}', $cs_db['prefix'], $sql_query);
   if ($sql_data = mysqli_query($cs_db['con'], $sql_query)) {
@@ -167,18 +166,18 @@ function cs_sql_replace($replace) {
   return preg_replace("=create index (\S+) on (\S+) (\S+)=si",'ALTER TABLE $2 ADD KEY $1 $3',$replace);
 }
 
-function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0)
-{
+function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0) {
+
   if (!empty($cache) && $return = cs_cache_load($cache)) {
     return $return;
   }
-  
+
   global $cs_db;
   settype($first, 'integer');
   settype($max, 'integer');
   $run = 0;
   $sql_where = str_replace('"', "'", $sql_where);
-  
+
   $sql_query = 'SELECT ' . $sql_select . ' FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   if (!empty($sql_where)) {
     $sql_query .= ' WHERE ' . $sql_where;
@@ -205,14 +204,14 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   }
   mysqli_free_result($sql_data);
   cs_log_sql($cs_file, $sql_query);
-  
+
   if (!empty($new_result)) {
-    
     if (!empty($cache))
       cs_cache_save($cache, $new_result);
-    
+
     return $new_result;
   }
+  return NULL;
 }
 
 function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, $sql_where = 0) {
@@ -228,7 +227,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
     }
   }
   $set .= "' ";
-  
+
   $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
   if (empty($sql_where)) { 
     $sql_update .= $sql_table . '_id = ' . $sql_id;
@@ -237,7 +236,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
     $sql_update .= $sql_where;
   }
   mysqli_query($cs_db['con'], $sql_update) or cs_error_sql($cs_file, 'cs_sql_update', mysqli_error($cs_db['con']));
-  
+
   $action = 1;
   if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
     $action = 0;
@@ -272,6 +271,5 @@ function cs_sql_version($cs_file) {
 function cs_sql_error() {
 
   global $cs_db;
-
   return mysqli_error($cs_db['con']);
 }

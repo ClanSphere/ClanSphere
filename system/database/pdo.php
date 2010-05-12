@@ -7,10 +7,10 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
   global $cs_db;
   $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
   $sql_where = str_replace('"', '\'', $sql_where);
-  
+
   $sql_query = 'SELECT COUNT('.$row.') FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
-  
+
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
     $sql_result = $sql_data->fetch();
@@ -121,7 +121,7 @@ function cs_sql_option($cs_file,$mod) {
       cs_cache_save('op_' . $mod, $options[$mod]);
     }
   }
-  
+
   return $options[$mod];
 }
 
@@ -152,14 +152,14 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   if (!empty($cache) && $return = cs_cache_load($cache)) {
     return $return;
   }
-  
+
   global $cs_db;
   settype($first, 'integer');
   settype($max, 'integer');
   $new_result = 0;
   $run = 0;
   $sql_where = str_replace('"', "'", $sql_where);
-  
+
   $sql_query = 'SELECT ' . $sql_select . ' FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   if (!empty($sql_where)) {
     $sql_query .= ' WHERE ' . $sql_where;
@@ -183,12 +183,12 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   }
 
   if (!empty($new_result)) {
-    
     if (!empty($cache))
       cs_cache_save($cache, $new_result);
-    
+
     return $new_result;
   }
+  return NULL;
 }
 
 function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_where = 0) {
@@ -201,7 +201,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
     $set .= $sql_cells[$run] . '=' . $cs_db['con']->quote($sql_content[$run]);
     if($run != $max - 1) { $set .= ', '; }
   }
-  
+
   $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
   if(empty($sql_where)) { 
     $sql_update .= $sql_table . '_id = ' . $sql_id;
@@ -221,7 +221,6 @@ function cs_sql_error() {
 
   global $cs_db;
   $error = $cs_db['con']->errorInfo();
-
   if(empty($error) OR $error = array(0 => '00000'))
     return false;
   else

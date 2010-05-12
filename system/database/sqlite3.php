@@ -2,8 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_sql_connect($cs_db, $test = 0)
-{
+function cs_sql_connect($cs_db, $test = 0) {
+
   $error = '';
   if(!extension_loaded('sqlite3')) {
     $error = 'PHP extension sqlite3 must be activated!';
@@ -30,7 +30,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
 
   $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
   $sql_where = str_replace('"', '\'', $sql_where);
-  
+
   $sql_query = 'SELECT COUNT(*) FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
 
@@ -79,7 +79,7 @@ function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
     if($run != $max - 1) { $set .= "','"; }
   }
   $set .= "')";
-  
+
   $sql_insert = 'INSERT INTO ' . $cs_db['prefix'] . '_' . $sql_table . $set;
   $cs_db['con']->query($sql_insert) OR 
     cs_error_sql($cs_file, 'cs_sql_insert', cs_sql_error());
@@ -117,7 +117,7 @@ function cs_sql_option($cs_file,$mod) {
       cs_cache_save('op_' . $mod, $options[$mod]);
     }
   }
-  
+
   return $options[$mod];
 }
 
@@ -154,13 +154,13 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
   if (!empty($cache) && $return = cs_cache_load($cache)) {
     return $return;
   }
-  
+
   global $cs_db;
   settype($first,'integer');
   settype($max,'integer');
   $run = 0;
   $sql_where = str_replace('"', "'", $sql_where);
-  
+
   $sql_query = 'SELECT ' . $sql_select . ' FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   if(!empty($sql_where)) {
     $sql_query .= ' WHERE ' . $sql_where;
@@ -186,14 +186,14 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
     }
   }
   cs_log_sql($cs_file, $sql_query);
-  
+
   if(!empty($new_result)) {
-    
     if (!empty($cache))
       cs_cache_save($cache, $new_result);
-    
+
     return $new_result;
   }
+  return NULL;
 }
 
 function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_where = 0) {
@@ -207,7 +207,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
     if($run != $max - 1) { $set .= "', "; }
   }
   $set .= "' ";
-  
+
   $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
   if(empty($sql_where)) { 
     $sql_update .= $sql_table . '_id = ' . $sql_id;
@@ -217,7 +217,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
   }
   $cs_db['con']->query($sql_update) OR 
     cs_error_sql($cs_file, 'cs_sql_update', cs_sql_error());
-  
+
   $action = 1;
   if($sql_cells[0] == 'users_laston' OR $sql_table == 'count') {
     $action = 0;
