@@ -9,6 +9,10 @@ $data['options'] = cs_sql_option(__FILE__,'users');
 
 $files = cs_files();
 
+# this prevents updates from overwriting the nopicture.jpg
+if(!file_exists('uploads/users/nopicture.jpg'))
+  copy('uploads/users/picture-0.jpg', 'uploads/users/nopicture.jpg');
+
 if(isset($_POST['submit'])) {
 
   require_once 'mods/clansphere/func_options.php';
