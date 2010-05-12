@@ -86,10 +86,10 @@ if($losers > 1) {
   $cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id' :
     'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id, cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
   $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
-  $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2';
+  $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2, cm.cupmatches_tree_order AS cupmatches_tree_order';
   while ($rounds_loop > 1) {
     $where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = '. $rounds_loop . ' AND cupmatches_loserbracket = 1';
-    $cupmatches[$rounds_loop] = cs_sql_select(__FILE__, $tables, $cells, $where, 'cm.cupmatches_id',0,0);
+    $cupmatches[$rounds_loop] = cs_sql_select(__FILE__, $tables, $cells, $where, 'cm.cupmatches_tree_order',0,0);
     $rounds_loop--;
   }
   
@@ -137,7 +137,7 @@ if($losers > 1) {
     }
     $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
     if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);
-	
+
     if (empty($round))
         $currheight += $entityheight + $yspace_normal;
     else {

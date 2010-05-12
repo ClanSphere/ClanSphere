@@ -48,7 +48,7 @@ $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2';
 $where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = ';
 
 $cupmatches = array();
-$cupmatches[0] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1, 'cm.cupmatches_id',0,0);
+$cupmatches[0] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1, 'cm.cupmatches_tree_order',0,0);
 
 $yspace_enemies = 4;
 $yspace_normal = 8;
@@ -110,59 +110,9 @@ $count_cupmatches += 2;
 $round = 0;
 $run = 0;
 
-function cs_cupmatches_fix ($cupmatches, $round) {
-	
-	$count = count($cupmatches[$round]);
-	$fixes = array();
-	
-	for ($i = 0; $i < $count; $i++) {
-		
-		if (!empty($cupmatches[$round][$i]['cupmatches_winner']) && 
-		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['team1_id'] &&
-		    $cupmatches[$round][$i]['cupmatches_winner'] != $cupmatches[$round-1][$i]['team2_id']) {
-		    	$key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'team1_id');
-		    	if ($key === FALSE) $key = cs_multiarray_search ($cupmatches[$round-1], $cupmatches[$round][$i]['cupmatches_winner'], 'team2_id');
-		    	$key = ceil(($key + 1) / 2) - 1;
-				$fixes[$key] = $cupmatches[$round][$i];
-				unset($cupmatches[$round][$i]);
-				
-		}
-		
-	}
-	
-	$fixed = array();
-	$arr1 = array_keys($fixes); $arr2 = array_keys($cupmatches[$round]);
-	$count = max( max($arr1), max ($arr2));
-
-	for ($i = 0; $i <= $count; $i++) {
-		
-		$fixed[$i] = empty($fixes[$i]) ? $cupmatches[$round][$i] : $fixes[$i];
-		
-	}
-	
-	return $fixed;
-	
-}
-
-function cs_multiarray_search ($array, $search, $key) {
-	
-	$count = count($array);
-	for ($i = 0; $i < $count; $i++) {
-		
-		if ($array[$i][$key] == $search) return $i;
-		
-	}
-	
-	return false;
-	
-}
-
 for ($i = 0; $i < $count_cupmatches; $i++) {
-	
 	$i2 = $i + 1;
-	
 	$round_2 = floor($round / 2);
-
 	if (!empty($round)) {
 		$currheight += (pow(2, $round - 1) - 0.5) * $entityheight;
 		$currheight += (pow(2, $round - 2))       * $yspace_enemies;
@@ -222,8 +172,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$round++;
 		$run = 0;
 		$rounds_1--;
-		$cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . ' AND cm.cupmatches_loserbracket = 0',0,0,0);
-		$cupmatches[$round] = cs_cupmatches_fix ($cupmatches, $round);
+		$cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . ' AND cm.cupmatches_loserbracket = 0', 'cm.cupmatches_tree_order',0,0);
 	}
 	
 }

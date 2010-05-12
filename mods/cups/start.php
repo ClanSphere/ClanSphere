@@ -43,12 +43,16 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
     
     $round = strlen(decbin($maxteams['cups_teams'])) - 1;
     $run=1;
+    $run_fewer = 0;
+    $run2 = 0;
     foreach ($matches AS $match) {
+      if($run_fewer%2 == 0 AND $run_fewer!=0) $run2++;
       $cs_cups = array();
       $cs_cups['cups_id'] = $id;
       $cs_cups['squad1_id'] = $match[1];
       $cs_cups['squad2_id'] = empty($match[2]) ? 0 : $match[2];
       $cs_cups['cupmatches_round'] = $round;
+      $cs_cups['cupmatches_tree_order'] = $run_fewer;
       
       if (empty($match[2])) {
         $cs_cups['cupmatches_winner'] = $match[1];
@@ -64,12 +68,13 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
       $values = array_values($cs_cups);
       cs_sql_insert(__FILE__,'cupmatches',$cells,$values);
       
-      if($run%2 == 0 AND $temp[$run] === TRUE AND $temp[$run-1] === TRUE) { // if there are two free tickets consecutive
+      if($run%2 == 0 AND $temp[$run] === TRUE AND $temp[$run_fewer] === TRUE) { // if there are two free tickets consecutive
         $cs_cups = array();
         $cs_cups['cups_id'] = $id;
         $cs_cups['squad1_id'] = $last_squad;
         $cs_cups['squad2_id'] = $match[1];
         $cs_cups['cupmatches_round'] = $round-1;
+        $cs_cups['cupmatches_tree_order'] = $run2;
         
         $cells = array_keys($cs_cups);
         $values = array_values($cs_cups);
@@ -77,6 +82,7 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
       }
       $last_squad = $match[1];
       $run++;
+      $run_fewer++;
     }
     
     
