@@ -25,7 +25,9 @@
     <td class="centerc" style="width:10px">{abos:replies}</td>
     <td class="leftc"><a href="{abos:date_link}">{abos:date}</a><br />
       {lang:created_by} {abos:lastpost_user}</td>
-    <td class="centerc" style="width:10px"><a href="{abos:remove}" title="{lang:remove}"><img src="{page:path}symbols/crystal_project/16/editdelete.png" style="height:16px;width:16px" alt="{lang:remove}" /> </a> </td>
+    <td class="centerc" style="width:10px">
+      <a href="{abos:remove}" title="{lang:remove}">{icon:editdelete}</a>
+    </td>
   </tr>
   {stop:abos}
 </table>
