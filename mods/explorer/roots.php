@@ -12,7 +12,7 @@ $var = empty($_GET['dir']) ? '.' : $_GET['dir'];
 if(!empty($_GET['where'])) $var = $_GET['where'];
 $var = str_replace('..','',$var);
 if (substr($var,-1) != '/' && $var != '.') $var .= '/';
-
+$var = str_replace("@_@","/",$var);
 $count = 0;
 
 if (@chdir($cs_main['def_path'].'/'.$var)) {
@@ -42,6 +42,7 @@ if (@chdir($cs_main['def_path'].'/'.$var)) {
 
 $more = $var == '.' ? '' : 'dir='.$var;
 $var2 = $var == '.' ? '0' : $var;
+$var2 = str_replace("/","@_@",$var2);
 
 $data['lang']['getmsg'] = cs_getmsg();
 $data['link']['new_file'] = cs_link($cs_lang['new_file'],'explorer','create',$more);
