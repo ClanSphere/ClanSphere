@@ -5,7 +5,6 @@
 function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head = array()) {
 
   global $account, $cs_lang;
-//  cs_checkuploaddirs();
   $merge = is_array($merge) ? $merge : array();
   $show = $mod . '/' . $action;
   if (empty($head['message'])) $head['message'] = '';
@@ -59,5 +58,6 @@ function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head
   }
 
   $data['head']['total'] = $loop;
+
   return cs_subtemplate(__FILE__,$data,'clansphere',$options['theme']);  
 }

@@ -2,7 +2,6 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$axx_file['rss']        = 0;
 $axx_file['create']        = 3;
 $axx_file['edit']          = 3;
 $axx_file['manage']        = 3;

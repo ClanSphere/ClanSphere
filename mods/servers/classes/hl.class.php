@@ -41,7 +41,6 @@ class hl {
 	var $q_player = "\xFF\xFF\xFF\xFF\x55";
 	var $s_info   = false;
 	var $response = false;
-	var $socket   = null; 
 
 	function microtime_float() {
 		list($usec, $sec) = explode(" ", microtime());
@@ -55,9 +54,6 @@ class hl {
 		// get challenge number from server
 		fwrite($socket, $this->q_num);
 		$challenge = fread($socket, $this->maxlen);
-		echo '<pre>';
-		var_dump($challenge);
-		die;
 		$time_end  = $this->microtime_float();
 
 		// response time
@@ -102,7 +98,6 @@ class hl {
 			echo "Error: $errno - $errstr<br>\n";
 		}
 		else {
-			$this->socket = $socket;
 			$this->get_info($socket);
 			/* at this time: rules not important
 			 $this->get_rules($socket);
@@ -166,14 +161,13 @@ class hl {
 	}
 
 	function getrules($phgdir) {
-		$this->get_rules($this->socket);
 		$srv_rules['sets'] = false;
 
 		// response time
 		$srv_rules['response'] = $this->response . ' ms';
 
 		// game setting pics
-		$sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
+    $sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
 		// set array key to info
 		$def = 'info';
@@ -186,28 +180,28 @@ class hl {
 
 		// if server running hl1 game get the following values
 		if ($servertype == 'm')	{
-			$srv_rules['gameip']        = $this->getvalue_string($def);
-			$srv_rules['hostname']      = $this->getvalue_string($def);
-			$srv_rules['mapname']       = $this->getvalue_string($def);
-			$srv_rules['gamedir']       = $this->getvalue_string($def);
-			$srv_rules['gametype']      = $this->getvalue_string($def);
-			$srv_rules['nowplayers']    = $this->getvalue_byte($def);
-			$srv_rules['maxplayers']    = $this->getvalue_byte($def);
-			$srv_rules['netver']        = $this->getvalue_byte($def);
-			$srv_rules['dedicated']     = $this->getvalue_byte($def);
-			$srv_rules['version']       = $this->getvalue_byte($def);
-			$srv_rules['password']    	= $this->getvalue_byte($def);
-			$srv_rules['is_mod']      	= $this->getvalue_byte($def);
-			$srv_rules['url_info']    	= $this->getvalue_string($def);
-			$srv_rules['url_down']    	= $this->getvalue_string($def);
-			$srv_rules['unused']      	= $this->getvalue_string($def);
-			$srv_rules['mod_version'] 	= $this->getvalue_lint($def);
-			$srv_rules['mod_size']    	= $this->getvalue_lint($def);
-			$srv_rules['sv_only']     	= $this->getvalue_byte($def);
-			$srv_rules['cus_cl']      	= $this->getvalue_byte($def);
-			$srv_rules['secure']      	= $this->getvalue_byte($def);
-			$srv_rules['bots']        	= $this->getvalue_byte($def);
-			$srv_rules[]      			= $this->getvalue_string($def);
+			$srv_rules['gameip']      = $this->getvalue_string($def);
+			$srv_rules['hostname']    = $this->getvalue_string($def);
+			$srv_rules['mapname']     = $this->getvalue_string($def);
+			$srv_rules['gamedir']     = $this->getvalue_string($def);
+			$srv_rules['gametype']    = $this->getvalue_string($def);
+			$srv_rules['nowplayers']  = $this->getvalue_byte($def);
+			$srv_rules['maxplayers']  = $this->getvalue_byte($def);
+			$srv_rules['netver']      = $this->getvalue_byte($def);
+			$srv_rules['dedicated']   = $this->getvalue_byte($def);
+			$srv_rules['version']          = $this->getvalue_byte($def);
+			$srv_rules['password']    = $this->getvalue_byte($def);
+			$srv_rules['is_mod']      = $this->getvalue_byte($def);
+			$srv_rules['url_info']    = $this->getvalue_string($def);
+			$srv_rules['url_down']    = $this->getvalue_string($def);
+			$srv_rules['unused']      = $this->getvalue_string($def);
+			$srv_rules['mod_version'] = $this->getvalue_lint($def);
+			$srv_rules['mod_size']    = $this->getvalue_lint($def);
+			$srv_rules['sv_only']     = $this->getvalue_byte($def);
+			$srv_rules['cus_cl']      = $this->getvalue_byte($def);
+			$srv_rules['secure']      = $this->getvalue_byte($def);
+			$srv_rules['bots']        = $this->getvalue_byte($def);
+			$srv_rules[]      = $this->getvalue_string($def);
 
 			// path to map picture
 			#$srv_rules['map_path'] = 'maps/hl';
@@ -235,11 +229,11 @@ class hl {
 			$srv_rules['map_path'] = $srv_rules['app_id'] < 200 ? 'maps/hl' : 'maps/hl2';
 		}
 		// set gamename with gametype value (because no gametype info in hl data
-		$srv_rules['gamename'] = $srv_rules['gametype'];
-
-		// set other Infos behind gametype
-		$srv_rules['gametype'] = empty($srv_rules['secure']) ? $srv_rules['gametype'] : $srv_rules['gametype'] . ' (VAC)';
-		$srv_rules['maxplayers'] = empty($srv_rules['bots']) ? $srv_rules['maxplayers'] : $srv_rules['maxplayers'] . ' (Bots: ' . $srv_rules['bots'] . ')';
+    $srv_rules['gamename'] = $srv_rules['gametype'];
+    
+    // set other Infos behind gametype
+    $srv_rules['gametype'] = empty($srv_rules['secure']) ? $srv_rules['gametype'] : $srv_rules['gametype'] . ' (VAC)';
+		$srv_rules['maxplayers'] = empty($srv_rules['bots']) ? $srv_rules['maxplayers'] : $srv_rules['maxplayers'] . ' (Bots: ' . $srv_rules['bots'] . ')'; 
 		// return all server rules
 		return $srv_rules;
 	}
@@ -269,8 +263,6 @@ class hl {
 		while ($nowplayers != 0) {
 			$index = $this->getvalue_byte($def);
 			$nick  = $this->getvalue_string($def);
-			echo '<pre>';
-			print_R($nick);
 			$frags = $this->getvalue_lint($def);
 			$time  = $this->getvalue_float($def);
 
@@ -308,7 +300,7 @@ class hl {
 		$index = 1;
 		$run = 0;
 		while ($clients != -1) {
-
+				
 			list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
 			list ($points[$index], $ping[$index]) =  split(' ', $cache[$index]);
 

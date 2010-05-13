@@ -2,7 +2,7 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0, $id) {
+function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
 
   global $cs_main;
   $cs_main['rss'] = 1;
@@ -20,7 +20,7 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0, $id) {
           $title = htmlentities($item['title'], ENT_QUOTES, $cs_main['charset']);
         $save = $cs_main['php_self']['basename'];
         $cs_main['php_self']['basename'] = 'index.php';
-        $link = $page . cs_url($mod,$action,$id . '=' . $item['id']);
+        $link = $page . cs_url($mod,$action,'id=' . $item['id']);
         $cs_main['php_self']['basename'] = $save;
           
         if(!empty($item['readmore'])) {

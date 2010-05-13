@@ -111,34 +111,6 @@ function cs_checkdirs($dir,$show = 0) {
   return $clean;
 }
 
-function cs_checkuploaddirs() {
-	$sReturn = '';
-	$sReturn .= changedirs('uploads');
-	if(!empty($sReturn)) {
-		$_SESSION['message'] = '<div id="errors">' . $sReturn . '</div>';;
-		$_SESSION['messageadd'] = 'alert,0';
-	}
-	return $sReturn;
-}
-
-function changedirs($folder) {
-	$sResult = '';
-	if ($handle = opendir($folder)) {
-    	while (false !== ($file = readdir($handle))) {
-        	if ($file{0} != ".") {
-            	if(is_dir($folder . '/' . $file)) {
-//            		if(is_writable($file) === true) {
-            			$sResult .= '<strong>PHP-Error</strong>: Unable write to ' . $folder . '/' . $file . '<br />';
-            			changedirs($folder . '/' . $file);
-//            		}
-            	}
-        	}
-    	}
-    	closedir($handle);
-	}
-	return $sResult;
-}
-
 function cs_date($mode,$data,$show_time = 0, $show_date = 1, $format = 0) {
 
   global $com_lang;
