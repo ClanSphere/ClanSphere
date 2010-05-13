@@ -25,7 +25,7 @@
 			{com:comments_edit}
 			{if:quote_board}<br /><br />
 			<div style="float:right">
-				<input type="submit" name="fquote" value="{com:id}" style="width:16px;height:16px;background:url({page:path}symbols/crystal_project/16/xchat.png);border:none;cursor:pointer;padding:0px;font-size:0px;" />
+				<input type="submit" name="fquote" value="{com:id}" style="width:16px;height:16px;background:url({page:path}{fquote:icon});border:none;cursor:pointer;padding:0px;font-size:0px;" />
 			</div>{stop:quote_board}
 			{if:edit_delete}<br /><br />
 			<div style="float:right">

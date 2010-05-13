@@ -113,8 +113,9 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
   }
 
 	$data['if']['bottom_pages'] = $sum > $com_loop ? TRUE : FALSE;
-
+  $data['fquote']['icon'] = 'symbols/' . $cs_main['img_path'] . '/16/xchat.' . $cs_main['img_ext'];
   $data['com'] = !empty($com) ? $com : '';
+
   echo cs_subtemplate(__FILE__,$data,'comments','com_view');
 }
 
