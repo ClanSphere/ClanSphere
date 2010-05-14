@@ -1,6 +1,7 @@
 var Clansphere = {
   ajax: {
     hash: '',
+    scrollTarget: '',
     base: '',
     index: '',
     mod_rewrite: false,
@@ -47,7 +48,7 @@ var Clansphere = {
               success: function(response){
                   Clansphere.ajax.updatePage(response);
                   Clansphere.ajax.hash = "#" + response.location;
-                  window.location.hash = Clansphere.ajax.hash;
+                  window.location.hash = Clansphere.ajax.hash + '#' + Clansphere.ajax.scrollTarget;
               }
           });
           
@@ -68,13 +69,22 @@ var Clansphere = {
       document.title = response.title;
       if (response.scripts) window.setTimeout(function(){ eval(response.scripts); }, 0);
       for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
+      if(Clansphere.ajax.scrollTarget) {
+        $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
+      }
     },
 
     checkURL: function() {
-      if (window.location.hash == Clansphere.ajax.hash) return;
+      var hash = window.location.hash.split('#');
+      if ('#' + hash[1] == Clansphere.ajax.hash) return;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
-      Clansphere.ajax.hash = window.location.hash;
       
+      Clansphere.ajax.hash = '#' + hash[1];
+      if(hash[2]) {
+        Clansphere.ajax.scrollTarget = hash[2];
+      } else {
+        Clansphere.ajax.scrollTarget = null;
+      }
       var prefix = !Clansphere.ajax.mod_rewrite ? "" : "params=/";
       
       //Clansphere.validation.requestRules(mod);
@@ -99,7 +109,7 @@ var Clansphere = {
         	e.href = e.href.replace(regexp, "#$1");
           }
         }
-      });
+      })
       
       return element;
     },
