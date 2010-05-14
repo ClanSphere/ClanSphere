@@ -84,6 +84,7 @@ var Clansphere = {
 
     checkURL: function() {
       var hash = window.location.hash.split('#');
+      hash[1] = hash[1] || '';
       if ('#' + hash[1] == Clansphere.ajax.hash && Clansphere.ajax.forceReload!==true) return;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       
