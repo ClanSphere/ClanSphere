@@ -47,12 +47,12 @@ var Clansphere = {
               dataType: 'json',
               success: function(response){
                 $('html, body').animate({scrollTop: $(Clansphere.ajax.options.contentSelector).offset().top-10}, 500);
-                
                 Clansphere.ajax.updatePage(response);
                 Clansphere.ajax.hash = "#" + response.location;
                 window.location.hash = Clansphere.ajax.hash;
                 Clansphere.ajax.scrollTarget = '';
-              }
+              },
+              error: Clansphere.ajax.errorHandler
           });
           
           return false;
@@ -67,7 +67,9 @@ var Clansphere = {
     },
 
     updatePage: function (response) {
+
       $(Clansphere.ajax.options.contentSelector).html(response.content);
+    
       Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
       document.title = response.title;
       if (response.scripts) window.setTimeout(function(){ eval(response.scripts); }, 0);
@@ -75,6 +77,7 @@ var Clansphere = {
       if(Clansphere.ajax.scrollTarget) {
         $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
       }
+    
     },
 
     checkURL: function() {
@@ -96,9 +99,9 @@ var Clansphere = {
             url: Clansphere.ajax.base,
             data: prefix + Clansphere.ajax.hash.substr(1) + "&ajax",
             dataType: 'json',
-            success: Clansphere.ajax.updatePage
+            success: Clansphere.ajax.updatePage,
+            error: Clansphere.ajax.errorHandler
       });
-
     },
     
     convertLinksToAnchor: function (element) {
@@ -115,6 +118,10 @@ var Clansphere = {
       })
       
       return element;
+    },
+    
+    errorHandler: function(xhr) {
+      console.log("There was in error in processing the XHRequest. Check out the Request Object:\n", xhr); $('#ajax_loading').fadeOut();
     },
     
     upload_complete: function(upload_name, file_name) {
