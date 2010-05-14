@@ -5,8 +5,8 @@
 $cs_lang = cs_translate('files');
 $advanced = 0;
 
-if(empty($_REQUEST['where']) OR empty($_REQUEST['where'])) 
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=files');
+if(empty($_REQUEST['where'])) 
+  cs_redirect(NULL, 'files', 'list');
 
 $files_id = $_REQUEST['where'];
 settype($files_id,'integer');

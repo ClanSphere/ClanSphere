@@ -48,8 +48,6 @@ var Clansphere = {
               success: function(response){
                 $('html, body').animate({scrollTop: $(Clansphere.ajax.options.contentSelector).offset().top-10}, 500);
                 Clansphere.ajax.updatePage(response);
-                Clansphere.ajax.hash = "#" + response.location;
-                window.location.hash = Clansphere.ajax.hash;
                 Clansphere.ajax.scrollTarget = '';
               },
               error: Clansphere.ajax.errorHandler
@@ -77,7 +75,10 @@ var Clansphere = {
       if(Clansphere.ajax.scrollTarget) {
         $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
       }
-    
+      
+      Clansphere.ajax.hash = "#" + response.location;
+      window.location.hash = Clansphere.ajax.hash;
+      
     },
 
     checkURL: function() {

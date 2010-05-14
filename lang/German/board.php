@@ -109,6 +109,9 @@ $cs_lang['only_read'] = 'Nur lesen';
 $cs_lang['mod2']  = 'Abonnement';
 $cs_lang['head_delabo']  = 'Entfernen';
 
+//delatt.php
+$cs_lang['delatt_done'] = 'Dateianhang wurde erfolgreich gel&aouml;scht.';
+
 //edit.php
 $cs_lang['head_edit'] = 'Bearbeiten';
 $cs_lang['new_date'] = ' Datum aktualisieren';

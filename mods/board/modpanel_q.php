@@ -47,7 +47,7 @@ if(isset($_POST['close'])) {
 
 } elseif(!empty($_POST['submit_move'])) {       
   if(empty($_POST['board_id']) OR $_POST['board_id'] == $board_id) {
-    return header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id); 
+ 		return cs_redirect(NULL, 'board', 'thread', 'where=' . $thread_id);
   }
   if($_POST['ghost'] == '1') {
     $ghost['board_id'] = $thread_edit['board_id'];
@@ -72,7 +72,7 @@ if(isset($_POST['close'])) {
 
 } elseif(!empty($_POST['submit_rename'])) {       
   if(empty($_POST['thread_headline'])) {
-    return header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id);
+	 	return cs_redirect($cs_lang['mark_all'], 'board', 'thread', 'where=' . $thread_id);
   }
   $thread_headline = $_POST['thread_headline'];
   $thread_cells = array('threads_headline');
@@ -124,7 +124,7 @@ if(isset($_POST['close'])) {
  echo cs_subtemplate(__FILE__,$data,'board','modpanel_q');
 
 } else {
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id);  
+   cs_redirect($cs_lang['mark_all'], 'board', 'thread', 'where=' . $thread_id);
 }
 
 //Daten verarbeiten und in SQL Eintragen   
@@ -146,5 +146,5 @@ if(!empty($thread_cells) AND !empty($thread_save)) {
     cs_board_comments($board_new_id);
     cs_board_last($board_id);
   }
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=thread&where=' .$thread_id);
+   cs_redirect($cs_lang['mark_all'], 'board', 'thread', 'where=' . $thread_id);
 }

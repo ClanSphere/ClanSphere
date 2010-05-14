@@ -85,7 +85,7 @@ else {
   require_once('mods/notifymods/functions.php');
   $users_nick = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . $account['users_id']);
   notifymods_mail('board', $account['users_id'], array($users_nick['users_nick'], $cs_thread['threads_headline'], $report));
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&amp;action=thread&amp;where=' . $tid);
+  cs_redirect($cs_lang['report_success'], 'board', 'thread', 'where=' . $tid);
 }
 
 echo cs_subtemplate(__FILE__,$data,'board','report');

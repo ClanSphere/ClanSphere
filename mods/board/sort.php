@@ -7,21 +7,21 @@ $cs_lang = cs_translate('board');
 if (!empty($_GET['delall'])) {
   cs_sql_update(__FILE__,'board',array('board_order'),array(0),0,'board_order != 0');
   cs_sql_update(__FILE__,'categories',array('categories_order'),array(0),0,"categories_mod = 'board'");
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=sort');
+	cs_redirect(NULL, 'board', 'sort');
 }
 
 if (!empty($_GET['board'])) {
   $board_cells = array('board_order');
   $board_save = empty($_GET['order']) ? array(0) : array(cs_sql_escape($_GET['order']));
   cs_sql_update(__FILE__,'board',$board_cells,$board_save,cs_sql_escape($_GET['board']));
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=sort');
+  cs_redirect(NULL, 'board', 'sort');
 }
 
 if (!empty($_GET['cat'])) {
   $board_cells = array('categories_order');
   $board_save = empty($_GET['order']) ? array(0) : array(cs_sql_escape($_GET['order']));
   cs_sql_update(__FILE__,'categories',$board_cells,$board_save,cs_sql_escape($_GET['cat']));
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=sort');
+  cs_redirect(NULL, 'board', 'sort');
 }
 
 $data['link']['back'] = cs_url('board','manage');

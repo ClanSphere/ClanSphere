@@ -5,6 +5,8 @@
 $cs_usertime = cs_sql_select(__FILE__,'users','users_readtime',"users_id = '" . $account["users_id"] . "'");
 $cs_readtime = cs_time() - $cs_usertime['users_readtime'];
 
+$cs_lang = cs_translate('board');
+
 $cells = 'thr.threads_id, thr.board_id, rea.users_id, rea.read_id, rea.read_since';
 $from ='threads thr INNER JOIN {pre}_read rea ON thr.threads_id = rea.threads_id';
 $order = 'thr.threads_id';
@@ -42,8 +44,8 @@ for($run=0; $run < $threads_loop; $run++) {
 }
            
 if($thr_where == "threads_last_time > '" . $cs_readtime . "'") {
-    header('location:' . $_SERVER['PHP_SELF'] . '?mod=board');
+    cs_redirect($cs_lang['mark_all'], 'board', 'list');
 }
 else {
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=listcat&id=' .$_GET['id']);
+	cs_redirect($cs_lang['mark_board'], 'board', 'listcat', 'id=' . $_GET['id']);
 }

@@ -189,15 +189,17 @@ function cs_getmsg()
 
 function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $icon = 0)
 {    
-  if($mod != "install") {
+  if($mod != "install" && $message) {
       cs_redirectmsg($message, $id, $icon);
   }
 
     $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
-    if (isset($_GET['ajax'])) $url .= '&ajax';
-    header('Location: ' . $url);
+    global $cs_main;
+		if (isset($_GET['ajax'])) $url .= '&ajax';
+    header('location: ' . $url);
     exit();
 }
+
 function cs_redirectmsg($message, $id = 0, $icon = 0) {
 
   global $cs_lang, $cs_logs, $cs_main;

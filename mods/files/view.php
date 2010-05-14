@@ -54,7 +54,7 @@ if(empty($check_user_voted) AND isset($_POST['submit']) AND empty($_POST['broken
   $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
   $votes_save = array($file_id,$users_id,$time,$voted_answer,$voted_ip,'files');
   cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=files&action=view&where=' .$file_id);
+	cs_redirect(NULL, 'files', 'view','where=' . $file_id);
 }
 
 

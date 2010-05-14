@@ -22,12 +22,12 @@ if(isset($_POST['agree'])) {
     cs_unlink('board', $att_id . '.' . $ext, 'files');
     cs_sql_delete(__FILE__,'boardfiles',$att_id);  
   }
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=manage');
+  cs_redirect($cs_lang['delatt_done'], 'board');
 }
 
 if(isset($_POST['cancel'])) {
   $att_form = 0;
-  header('location:' . $_SERVER['PHP_SELF'] . '?mod=board&action=manage');
+  cs_redirect($cs_lang['delatt_done'], 'board');
 }
 
 if(!empty($att_form)) {
