@@ -5,17 +5,10 @@
 // Load scripts for lightbox if needed
 global $cs_main, $account;
 
+$gallery = cs_sql_option(__FILE__, 'gallery');
 
-if(!empty($account['access_gallery']) && $cs_main['mod'] == 'gallery') {
+if($gallery['lightbox'] == 1) {
 
-  $gallery = cs_sql_option(__FILE__, 'gallery');
-  if($gallery['lightbox'] == '1') {
-    cs_scriptload('lightbox', 'javascript', 'js/mootools.js');
-    cs_scriptload('lightbox', 'javascript', 'js/slimbox.js');
-    cs_scriptload('lightbox', 'stylesheet', 'css/slimbox.css');
-    if(isset($cs_main['ajax_js']))
-      $cs_main['ajax_js'] .= 'Lightbox.init.bind(Lightbox)';
-    else
-      $cs_main['ajax_js'] = 'Lightbox.init.bind(Lightbox)';
-  }
+  cs_scriptload('lightbox', 'javascript', 'js/slimbox2.js');
+  cs_scriptload('lightbox', 'stylesheet', 'css/slimbox2.css');
 }

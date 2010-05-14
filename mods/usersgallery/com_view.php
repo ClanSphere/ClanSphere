@@ -115,13 +115,8 @@ else
 
   if($cs_options['lightbox'] == '0' ) {
     $img = cs_html_link($cs_main['php_self']['dirname'] . "mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'],$cs_lap);
-  } else {
-  	/*
-  	 * TODO: start Scriptload everytime
-  	 * maybe core load first all content of his own, before starting parse template
-  	 */
-  	cs_scriptload('lightbox', 'javascript', 'js\mootols.js');
-  	cs_scriptload('lightbox', 'javascript', 'js\slimbox.js');
+  }
+  else {
     $img = cs_html_link($cs_main['php_self']['dirname'] . "mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'],$cs_lap,0,0,0,'rel="lightbox"');
   }
   $data['gallery']['img'] = $img;

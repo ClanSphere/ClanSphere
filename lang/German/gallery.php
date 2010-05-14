@@ -222,7 +222,7 @@ $cs_lang['create_picture'] = 'Bild erstellen';
 $cs_lang['picture'] = 'Bild';
 $cs_lang['lightbox'] = 'Lightbox aktivieren';
 $cs_lang['light_0'] = 'Nein';
-$cs_lang['light_1'] = 'Ja - Mootools';
+$cs_lang['light_1'] = 'Ja';
 $cs_lang['err_auto_size'] = 'Info: Das Bild konnte an die n&ouml;tigen Werte angepasst werden';
 
 // Access
