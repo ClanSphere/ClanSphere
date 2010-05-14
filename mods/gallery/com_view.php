@@ -150,7 +150,7 @@ if(empty($gallery_loop)) {
         }
         else {
             $host = 'http://' . $_SERVER['HTTP_HOST'];
-            $host .= str_replace('index.php','',$_SERVER['PHP_SELF']);
+            $host .= $cs_main['php_self']['basename'];
             $host .= 'mods/gallery/image.php?down=1&amp;pic=' . $cs_gallery['gallery_id'];
 
             $data['link']['download_picture'] = cs_html_link($host,$print,0);
@@ -163,7 +163,7 @@ if(empty($gallery_loop)) {
             }
             else {
                 $host = 'http://' . $_SERVER['HTTP_HOST'];
-                $host .= str_replace('index.php','',$_SERVER['PHP_SELF']);
+                $host .= $cs_main['php_self']['basename'];
                 $host .= 'mods/gallery/download.php?zip=1&amp;name=' . $cs_gallery['gallery_name'];
 
                 $data['link']['download_zip'] = cs_html_link($host,$print,0);
@@ -176,7 +176,7 @@ if(empty($gallery_loop)) {
             }
             else {
                 $host = 'http://' . $_SERVER['HTTP_HOST'];
-                $host .= str_replace('index.php','',$_SERVER['PHP_SELF']);
+                $host .= $cs_main['php_self']['basename'];
                 $host .= 'mods/gallery/download.php?zip=1&amp;name=' . $cs_gallery['gallery_name'];
 
                 $data['link']['download_zip'] = cs_html_link($host,$print,0);
@@ -201,7 +201,7 @@ if(empty($gallery_loop)) {
         }
         else {
             $host = 'http://' . $_SERVER['HTTP_HOST'];
-            $host .= str_replace('index.php','',$_SERVER['PHP_SELF']);
+            $host .= $cs_main['php_self']['basename'];
             $host .= 'mods/gallery/image.php?pic=' . $cs_gallery['gallery_id'];
 
             $data['data']['picture'] = cs_html_link($host,$cs_lap);
@@ -213,7 +213,7 @@ if(empty($gallery_loop)) {
         }
         else {
             $host = 'http://' . $_SERVER['HTTP_HOST'];
-            $host .= str_replace('index.php','',$_SERVER['PHP_SELF']);
+            $host .= $cs_main['php_self']['basename'];
             $host .= 'mods/gallery/image.php?pic=' . $cs_gallery['gallery_id'];
 
             $data['data']['picture'] = cs_html_link($host,$cs_lap,0,0,0,'rel="lightbox"');
