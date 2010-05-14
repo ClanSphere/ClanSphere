@@ -215,16 +215,22 @@ function cs_redirectmsg($message, $id = 0, $icon = 0) {
   if (!empty($id) || !empty($icon)) $_SESSION['messageadd'] = $icon . ',' . $id;
 }
 
-function cs_scriptload($mod, $type, $file) {
+function cs_scriptload($mod, $type, $file, $top = 0) {
 
   global $cs_main;
   $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
   $wp = $cs_main['php_self']['dirname'];
 
+  $script = '';
   if($type == 'javascript')
-    $cs_main['scripts'] .= '<script src="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/javascript"></script>' . "\r\n";
+    $script = '<script src="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/javascript"></script>' . "\r\n";
   elseif($type == 'stylesheet')
-    $cs_main['scripts'] .= '<link rel="stylesheet" href="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/css" media="screen" />' . "\r\n";
+    $script = '<link rel="stylesheet" href="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/css" media="screen" />' . "\r\n";
+
+  if(empty($top))
+    $cs_main['scripts'] .= $script;
+  else
+    $cs_main['scripts'] = $script . $cs_main['scripts'];
 }
 
 function cs_template($cs_micro, $tpl_file = 'index.htm')
@@ -263,9 +269,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $pattern = "=src\=\"(?!http|\/)(.*?)\"=i";
   $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
 
-  cs_scriptload('clansphere', 'javascript', 'js/clansphere.js');
-  cs_scriptload('clansphere', 'javascript', 'js/jquery.js');
-  cs_scriptload('ajax', 'javascript', 'js/ajax.js');
+  cs_scriptload('ajax', 'javascript', 'js/ajax.js', 1);
+  cs_scriptload('clansphere', 'javascript', 'js/clansphere.js', 1);
+  cs_scriptload('clansphere', 'javascript', 'js/jquery.js', 1);
 
   global $cs_main;
   $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
