@@ -46,8 +46,7 @@ ___________________________________________________________
 -> Reworked events mod (hajo)
 -> Reworked how and what install plus clansphere mod check for in the webserver environment (hajo)
 -> Switched from FCKEditor to the most current version of the CKEditor (hajo)
-
--- CKEditor 3.2.1 and FCKEditor Filebrowser 2.6.6 included in this release
+-> Updated Slimbox to the most current version that uses jQuery (hajo)
 
 
 ClanSphere 2009.0.3.2 >> 2010-05-05
