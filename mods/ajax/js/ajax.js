@@ -46,9 +46,12 @@ var Clansphere = {
               data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1'),
               dataType: 'json',
               success: function(response){
-                  Clansphere.ajax.updatePage(response);
-                  Clansphere.ajax.hash = "#" + response.location;
-                  window.location.hash = Clansphere.ajax.hash + '#' + Clansphere.ajax.scrollTarget;
+                $('html, body').animate({scrollTop: $(Clansphere.ajax.options.contentSelector).offset().top-10}, 500);
+                
+                Clansphere.ajax.updatePage(response);
+                Clansphere.ajax.hash = "#" + response.location;
+                window.location.hash = Clansphere.ajax.hash;
+                Clansphere.ajax.scrollTarget = '';
               }
           });
           
