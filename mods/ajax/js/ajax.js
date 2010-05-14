@@ -5,6 +5,7 @@ var Clansphere = {
     base: '',
     index: '',
     mod_rewrite: false,
+    forceReload: false,
     options: {
       checkURLInterval: 50,
       loadingImage: '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading..." />',
@@ -65,7 +66,7 @@ var Clansphere = {
     },
 
     updatePage: function (response) {
-
+      Clansphere.ajax.forceReload = false;
       $(Clansphere.ajax.options.contentSelector).html(response.content);
     
       Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
@@ -83,7 +84,7 @@ var Clansphere = {
 
     checkURL: function() {
       var hash = window.location.hash.split('#');
-      if ('#' + hash[1] == Clansphere.ajax.hash) return;
+      if ('#' + hash[1] == Clansphere.ajax.hash && Clansphere.ajax.forceReload!==true) return;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       
       Clansphere.ajax.hash = '#' + hash[1];
@@ -116,7 +117,9 @@ var Clansphere = {
         	e.href = e.href.replace(regexp, "#$1");
           }
         }
-      })
+      }).live('click', function(e) {
+    	  Clansphere.ajax.forceReload = true;
+    	});
       
       return element;
     },
