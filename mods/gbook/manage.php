@@ -88,7 +88,7 @@ for($run=0; $run<$gbook_loop; $run++) {
       $ip = substr($gbook_ip,0,$ip-$last);
       $ip = $ip . '*';
     }
-    $gbook[$run]['ip'] = cs_html_img('symbols/crystal_project/16/important.png',16,16,'title="'. $ip .'"');
+    $gbook[$run]['ip'] = cs_html_img('symbols/' . $cs_main['img_path'] . '/16/important.' . $cs_main['img_ext'],16,16,'title="'. $ip .'"');
   }
 
 }
