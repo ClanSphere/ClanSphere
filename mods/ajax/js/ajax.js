@@ -27,42 +27,8 @@ var Clansphere = {
       Clansphere.ajax.index = basepath.replace(/.*?\/([a-z]*?)\.php/g, "$1");
 
       Clansphere.ajax.convertLinksToAnchor('body');
+      Clansphere.ajax.convertForms('body');
       
-      $('input[type=file]').live('change', function() {
-        Clansphere.ajax.upload_file(this);
-      });
-      
-      $('form').live('submit', function() {
-        if(Clansphere.ajax.active_upload_count > 0) {
-          alert(Clansphere.ajax.options.error_upload_progress);
-          return false;
-        }
-        if($(this).hasClass('noajax'))
-        //    window.location.reload();
-        	return true;
-        
-        $.ajax({
-              type: 'POST',
-              url: $(this).attr('action') + '&ajax',
-              data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1'),
-              dataType: 'json',
-              success: function(response){
-                $('html, body').animate({scrollTop: $(Clansphere.ajax.options.contentSelector).offset().top-10}, 500);
-                Clansphere.ajax.updatePage(response);
-                Clansphere.ajax.scrollTarget = '';
-              },
-              error: Clansphere.ajax.errorHandler
-          });
-          
-          return false;
-      });
-
-      $('input').live('click', function() {
-        if($(this).attr('type') == 'submit') {
-          $(this.form).data('ajax_submit_button',$(this).attr('name'))
-        }
-      });
-
     },
 
     updatePage: function (response) {
@@ -78,6 +44,7 @@ var Clansphere = {
       $(Clansphere.ajax.options.contentSelector).html(response.content);
     
       Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
+      Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);
       document.title = response.title;
       if (response.scripts) window.setTimeout(function(){ eval(response.scripts); }, 0);
       for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
@@ -127,11 +94,55 @@ var Clansphere = {
     	  Clansphere.ajax.forceReload = true;
     	});
       
+      element
+      
       return element;
     },
     
+    convertForms: function(element) {
+      element = $(element);
+      
+      element.find('input[type=file]').change(function() {
+        Clansphere.ajax.upload_file(this);
+      });
+      
+      element.find('form').submit(function() {
+        if(Clansphere.ajax.active_upload_count > 0) {
+          alert(Clansphere.ajax.options.error_upload_progress);
+          return false;
+        }
+        if($(this).hasClass('noajax'))
+        //    window.location.reload();
+        	return true;
+        
+        $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1&ajax=1'),
+              dataType: 'json',
+              success: function(response){
+                Clansphere.ajax.scrollTarget = 'content';
+                Clansphere.ajax.updatePage(response);
+                Clansphere.ajax.scrollTarget = '';
+              },
+              error: Clansphere.ajax.errorHandler
+          });
+          
+          return false;
+      });
+
+      element.find('input').click(function() {
+        if($(this).attr('type') == 'submit') {
+          $(this.form).data('ajax_submit_button',$(this).attr('name'))
+        }
+      });
+      
+      return element;
+      
+    },
+    
     errorHandler: function(xhr) {
-      console.log("There was in error in processing the XHRequest. Check out the Request Object:\n", xhr); $('#ajax_loading').fadeOut();
+      try { console.log("There was in error in processing the XHRequest. Check out the Request Object:\n", xhr); $('#ajax_loading').fadeOut(); } catch(e) { alert("There was in error in processing the XHRequest."); }
     },
     
     upload_complete: function(upload_name, file_name) {

@@ -205,7 +205,7 @@ function cs_init($predefined) {
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
   $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
-  $cs_main['ajaxrequest'] = isset($_GET['ajax']) ? true : false;
+  $cs_main['ajaxrequest'] = isset($_REQUEST['ajax']) ? true : false;
 
   require_once 'system/core/servervars.php';
   require_once 'system/core/tools.php';
@@ -286,7 +286,7 @@ function cs_init($predefined) {
   if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
     $cs_main['template'] = $_GET['template'];
   
-  //if (!empty($_GET['ajax'])) {
+  //if (!empty($_REQUEST['ajax'])) {
   //print_r($_SERVER);die();
   if(!empty($predefined['init_tpl'])) {
 	  if ($cs_main['ajaxrequest'] === true) {

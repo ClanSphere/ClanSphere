@@ -192,12 +192,15 @@ function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $ic
   if($mod != "install" && $message) {
       cs_redirectmsg($message, $id, $icon);
   }
-
-    $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
-    global $cs_main;
-		if (isset($_GET['ajax'])) $url .= '&ajax';
-    header('location: ' . $url);
-    exit();
+	if (isset($_REQUEST['ajax'])) {
+		$more = explode('#', $more);
+	 $more = $more[0] .'&ajax=1#' . $more[1];
+	}
+	
+   $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
+	
+   header('location: ' . $url);
+   exit();
 }
 
 function cs_redirectmsg($message, $id = 0, $icon = 0) {
