@@ -22,8 +22,8 @@ unset($sql_files['pdo.php']);
 
 $data = array();
 $ok = array();
-$ok[0] = cs_html_img('symbols/crystal_project/16/stop.png');
-$ok[1] = cs_html_img('symbols/crystal_project/16/submit.png');
+$ok[0] = cs_html_img('symbols/' . $cs_main['img_path'] . '/16/stop.' . $cs_main['img_ext']);
+$ok[1] = cs_html_img('symbols/' . $cs_main['img_path'] . '/16/submit.' . $cs_main['img_ext']);
 
 $switch = array();
 $switch[0] = $cs_lang['off'];

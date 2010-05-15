@@ -18,6 +18,8 @@ $cs_main = array( 'cellspacing'     => 1,
                   'init_sql'        => false,
                   'init_tpl'        => false,
                   'public'          => 1,
+                  'img_path'        => 'crystal_project',
+                  'img_ext'         => 'png',
                   'version_name'    => '2010.0_SVN',
                   'version_date'    => '2010-05-05');
 
@@ -26,7 +28,6 @@ require_once 'system/core/functions.php';
 cs_init($cs_main);
 
 if(file_exists('setup.php')) {
-    
   require 'setup.php';
   require 'system/database/' . $cs_db['type'] . '.php';
   $cs_db['con'] = cs_sql_connect($cs_db);
