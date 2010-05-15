@@ -73,6 +73,11 @@ else {
 
 	$data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
+  $data['if']['mod_rewrite'] = true;
+  if(!file_exists($cs_main['def_path'] . '/.htaccess')) {
+		$data['if']['mod_rewrite'] = false;
+  }
+	
   if (empty($data['options']['mod_rewrite'])) {
     $data['options']['mod_rewrite_on'] = '';
     $data['options']['mod_rewrite_off'] = ' selected="selected"';

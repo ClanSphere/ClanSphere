@@ -215,6 +215,7 @@ $cs_lang['del_install_file'] = 'Warning: It is strongly recommended to remove th
 
 // Options
 $cs_lang['maintenance_access'] = 'Maintenance access';
+$cs_lang['missing_htaccess'] = 'Mod-rewrite can not be activated because the. Htaccess file in the root directory is missing from ClanSphere.';
 
 // Charset
 $cs_lang['body_charset'] = 'This page provides help in finding charset related problems';

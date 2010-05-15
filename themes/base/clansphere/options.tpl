@@ -17,11 +17,17 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:fileshare} Apache mod_rewrite</td>
-      <td class="leftb"><select name="mod_rewrite">
-          <option value="1"{options:mod_rewrite_on}>{lang:on}</option>
-          <option value="0"{options:mod_rewrite_off}>{lang:off}</option>
-        </select>
-      </td>
+      {if:mod_rewrite}
+        <td class="leftb">
+          <select name="mod_rewrite" readonly>
+            <option value="1"{options:mod_rewrite_on}>{lang:on}</option>
+            <option value="0"{options:mod_rewrite_off}>{lang:off}</option>
+          </select>
+        </td>
+      {stop:mod_rewrite}
+      {unless:mod_rewrite}
+      	<td class="leftb">{lang:missing_htaccess}<input type="hidden" name="mod_rewrite" value="0" /></td>
+      {stop:mod_rewrite}
     </tr>
     <tr>
       <td class="leftc">{icon:window_fullscreen} {lang:def_width}</td>
