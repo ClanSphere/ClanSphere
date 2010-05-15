@@ -67,6 +67,7 @@ var Clansphere = {
 
     updatePage: function (response) {
       Clansphere.ajax.forceReload = false;
+      
       $(Clansphere.ajax.options.contentSelector).html(response.content);
     
       Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
@@ -78,21 +79,25 @@ var Clansphere = {
       }
       
       Clansphere.ajax.hash = "#" + response.location;
-      window.location.hash = Clansphere.ajax.hash;
-      
+      if(Clansphere.ajax.scrollTarget) {
+        window.location.hash = Clansphere.ajax.hash + '#' + Clansphere.ajax.scrollTarget;
+      } else {
+        window.location.hash = Clansphere.ajax.hash;
+      }
     },
 
     checkURL: function() {
       var hash = window.location.hash.split('#');
       hash[1] = hash[1] || '';
       if ('#' + hash[1] == Clansphere.ajax.hash && Clansphere.ajax.forceReload!==true) return;
+      Clansphere.ajax.forceReload = false;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       
       Clansphere.ajax.hash = '#' + hash[1];
       if(hash[2]) {
         Clansphere.ajax.scrollTarget = hash[2];
       } else {
-        Clansphere.ajax.scrollTarget = null;
+        Clansphere.ajax.scrollTarget = '';
       }
       var prefix = !Clansphere.ajax.mod_rewrite ? "" : "params=/";
       

@@ -40,7 +40,7 @@ if(!empty($_REQUEST['down'])) {
 }
 if(!empty($_REQUEST['del'])) { 
   cs_unlink('../' . $cs_logs['dir'] . '/' . $folder, $_REQUEST['del']);
-	cs_redirect(NULL, 'logs', 'root','where=' . $log_id);
+	cs_redirect(NULL, 'logs', 'roots','where=' . $log_id);
 }
 $handle = opendir($cs_logs['dir'] . '/' . $folder);  
 while ($file = readdir ($handle)) {
