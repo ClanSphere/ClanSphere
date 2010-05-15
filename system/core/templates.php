@@ -194,7 +194,11 @@ function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $ic
   }
 	if (isset($_REQUEST['ajax'])) {
 		$more = explode('#', $more);
-	 $more = $more[0] .'&ajax=1#' . $more[1];
+	 	$more = $more[0] . '&ajax=1';
+		for($i=1,$c=count($more);$i<$c;$i++)
+		{
+			$more .= '#' . $more[$i];
+		}
 	}
 	
    $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));

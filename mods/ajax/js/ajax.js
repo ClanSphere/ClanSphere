@@ -72,7 +72,7 @@ var Clansphere = {
       $.ajax({
             type: 'GET',
             url: Clansphere.ajax.base,
-            data: prefix + Clansphere.ajax.hash.substr(1) + "&ajax",
+            data: prefix + Clansphere.ajax.hash.substr(1) + "&ajax=1",
             dataType: 'json',
             success: Clansphere.ajax.updatePage,
             error: Clansphere.ajax.errorHandler

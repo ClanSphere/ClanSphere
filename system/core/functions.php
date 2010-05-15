@@ -305,7 +305,7 @@ function cs_ajaxwrap($content) {
 
 	$json = array();
 	$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_act_lang['mod_name']);
-	$json['location'] = str_replace(array('&debug', '&ajax'),'', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) );
+	$json['location'] = str_replace(array('&debug', '&ajax=1', '&ajax'),'', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) );
 	$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
 	$json['content'] = $content;
 	
