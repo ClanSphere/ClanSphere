@@ -68,6 +68,13 @@ var Clansphere = {
     updatePage: function (response) {
       Clansphere.ajax.forceReload = false;
       
+      Clansphere.ajax.hash = "#" + response.location;
+      if(Clansphere.ajax.scrollTarget) {
+        window.location.hash = Clansphere.ajax.hash + '#' + Clansphere.ajax.scrollTarget;
+      } else {
+        window.location.hash = Clansphere.ajax.hash;
+      }
+      
       $(Clansphere.ajax.options.contentSelector).html(response.content);
     
       Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
@@ -76,13 +83,6 @@ var Clansphere = {
       for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
       if(Clansphere.ajax.scrollTarget) {
         $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
-      }
-      
-      Clansphere.ajax.hash = "#" + response.location;
-      if(Clansphere.ajax.scrollTarget) {
-        window.location.hash = Clansphere.ajax.hash + '#' + Clansphere.ajax.scrollTarget;
-      } else {
-        window.location.hash = Clansphere.ajax.hash;
       }
     },
 
@@ -123,7 +123,7 @@ var Clansphere = {
         	e.href = e.href.replace(regexp, "#$1");
           }
         }
-      }).live('click', function(e) {
+      }).click(function(e) {
     	  Clansphere.ajax.forceReload = true;
     	});
       
