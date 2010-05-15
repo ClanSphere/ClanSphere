@@ -8,7 +8,7 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
 
   $options = cs_sql_option(__FILE__,'comments');
 
-  global $account;
+  global $account, $cs_main;
 
   $class = 'leftb';
   $start = isset($_REQUEST['start']) ? $_REQUEST['start'] : 0;
