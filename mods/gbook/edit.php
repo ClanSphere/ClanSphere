@@ -17,7 +17,7 @@ if (!empty($cs_post['id']))  $gbook_id = $cs_post['id'];
 $from = 'manage';
 if (isset($_POST['from'])) $from = $_POST['from'];
 elseif (isset($_GET['from'])) $from = $_GET['from'];
-
+$from = cs_secure($from, 0, 0, 0, 0, 0);
 $select = 'users_id, gbook_nick, gbook_email, gbook_icq, gbook_msn, gbook_skype, gbook_url, gbook_town, gbook_text, gbook_time';
 $cs_gbook = cs_sql_select(__FILE__,'gbook',$select,"gbook_id = '" . (int) $gbook_id . "'");
 

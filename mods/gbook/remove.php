@@ -11,7 +11,7 @@ $gbook_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $gbook_id = $cs_post['id'];
 if(!empty($_POST['from'])) $from = $_POST['from'];
 elseif(!empty($_GET['from'])) $from = $_GET['from'];
-
+$from = cs_secure($from, 0, 0, 0, 0, 0);
 if($from == 'users') {
   $selid = cs_sql_select(__FILE__,'gbook','gbook_users_id',"gbook_id = '" . $gbook_id . "'",0,0);
   $action = 'users';
