@@ -106,7 +106,8 @@ for($run=0; $run<$gbook_loop; $run++)
       $ip = substr($ip,0,$ip_len - $last);
       $ip = $ip . '*';	  
     }
-    $gbook[$run]['icon_ip'] = cs_html_img('symbols/' . $cs_main['img_path'] . '/16/important.' . $cs_main['img_ext'],16,16,'title="'. $ip .'"');
+    $ip_show = empty($ip) ? '-' : $ip;
+    $gbook[$run]['icon_ip'] = cs_html_img('symbols/' . $cs_main['img_path'] . '/16/important.' . $cs_main['img_ext'],16,16,'title="'. $ip_show .'"');
   } else {
     $gbook[$run]['icon_edit'] = '';
     $gbook[$run]['icon_remove'] = '';
