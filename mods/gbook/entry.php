@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
+require_once('mods/notifymods/functions.php');
 
 $cs_post = cs_post('id,from');
 $cs_get = cs_get('id,from');
@@ -13,7 +14,8 @@ $id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $id = $cs_post['id'];
 if(!empty($_POST['from'])) $from = $_POST['from'];
 elseif(!empty($_GET['from'])) $from = $_GET['from'];
-$from = cs_secure($from, 0, 0, 0, 0, 0);
+$from = cs_secure($from, 0, 0, 0, 0, 0); 
+
 $cs_options = cs_sql_option(__FILE__,'gbook');
 $users_id = $account['users_id'];
 $error = '';
@@ -181,7 +183,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   }
 }
 
-if(!isset($_POST['submit']))
+if(!isset($_POST['submit']) && !isset($_POST['preview']))
   $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($g_error))
   $data['head']['body'] = $g_error;
@@ -246,6 +248,7 @@ else {
   $cells = array_keys($cs_gbook);
   $save = array_values($cs_gbook);
   cs_sql_insert(__FILE__,'gbook',$cells,$save);
+  notifymods_mail('gbook', $account['users_id']);
   
   $msg = empty($cs_options['lock']) ? $cs_lang['create_done'] : $cs_lang['create_done_lock'];
   if(empty($id)) {
