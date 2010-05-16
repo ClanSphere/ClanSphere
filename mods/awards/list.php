@@ -13,8 +13,7 @@ $cs_sort[5] = 'awards_event DESC';
 $cs_sort[6] = 'awards_event ASC';
 $cs_sort[7] = 'games_name DESC';
 $cs_sort[8] = 'games_name ASC';
-$cs_sort[9] = 'squads_name DESC';
-$cs_sort[10] = 'squads_name ASC';
+settype($_REQUEST['sort'],'integer');
 empty($_REQUEST['sort']) ? $sort = 1 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $awards_count = cs_sql_count(__FILE__,'awards');
@@ -28,14 +27,13 @@ $data['sort']['date'] = cs_sort('awards','list',$start,0,1,$sort);
 $data['sort']['event'] = cs_sort('awards','list',$start,0,5,$sort);
 $data['sort']['place'] = cs_sort('awards','list',$start,0,3,$sort);
 $data['sort']['game'] = cs_sort('awards','list',$start,0,7,$sort);
-$data['sort']['squad'] = cs_sort('awards','list',$start,0,9,$sort);
 
-$from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id INNER JOIN {pre}_squads sqd ON sqd.squads_id = aws.squads_id';
-$select = 'aws.awards_id AS awards_id, aws.awards_time AS awards_time, aws.awards_event AS awards_event, aws.awards_event_url AS awards_event_url,';
-$select .= ' aws.games_id AS games_id, aws.awards_rank AS awards_rank, gms.games_name AS games_name, sqd.squads_name AS squads_name,';
-$select .= ' sqd.squads_id AS squads_id';
+$from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id';
+$select = 'aws.awards_id AS awards_id, aws.awards_time AS awards_time, aws.awards_event AS awards_event, aws.awards_event_url AS awards_event_url, aws.games_id AS games_id, aws.awards_rank AS awards_rank, gms.games_name AS games_name';
+
 $cs_awards = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
 $awards_loop = count($cs_awards);
+
 
 for($run=0; $run<$awards_loop; $run++) {
 
@@ -43,10 +41,11 @@ for($run=0; $run<$awards_loop; $run++) {
   $data['awards'][$run]['awards_time'] = cs_date('date',$cs_awards[$run]['awards_time']);
   $data['awards'][$run]['awards_event'] = cs_secure($cs_awards[$run]['awards_event']);
   $data['awards'][$run]['awards_event_url'] = $cs_awards[$run]['awards_event_url'];
-  $data['awards'][$run]['awards_game_name'] = cs_secure($cs_awards[$run]['games_name']);
-  $data['awards'][$run]['squads_name'] = cs_secure($cs_awards[$run]['squads_name']);
+  
+  $cs_awards_id = $cs_awards[$run]['games_id'];
+  $cs_awards_game = cs_sql_select(__FILE__,'games','games_name',"games_id = '" . $cs_awards_id . "'");
+  $data['awards'][$run]['awards_game_name'] = cs_secure($cs_awards_game['games_name']);
   $data['awards'][$run]['awards_game_id'] = $cs_awards[$run]['games_id'];
-  $data['awards'][$run]['squads_id'] = $cs_awards[$run]['squads_id'];
   
   $cs_awards_place = $cs_awards[$run]['awards_rank'];
   if ($cs_awards_place == 1){
