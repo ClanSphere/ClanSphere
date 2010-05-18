@@ -109,6 +109,9 @@ $cs_lang['only_read'] = 'Only for reading';
 $cs_lang['mod2']    = 'Subscription';
 $cs_lang['head_delabo']    = 'Remove';
 
+//delatt.php
+$cs_lang['delatt_done'] = 'Attached file deleted successfully';
+
 //edit.php
 $cs_lang['head_edit'] = 'Edit';
 $cs_lang['new_date'] = ' new date';
