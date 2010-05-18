@@ -6,7 +6,7 @@ $where = "partner_rimg != '' ";
 
 if ($op_partner['method'] == 'random') {
   
-  $banner = cs_sql_select(__FILE__,'partner',$cells,$where,'rand()');
+  $banner = cs_sql_select(__FILE__,'partner',$cells,$where,'{random}');
 
 } elseif ($op_partner['method'] == 'rotation') {
   

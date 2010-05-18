@@ -11,7 +11,7 @@ $cells .= 'usr.users_picture AS users_picture, usr.users_country AS users_countr
 $cells .= 'usr.users_nick AS users_nick, usr.users_name AS users_name, usr.users_surname AS users_surname';
 $tables = 'members mm INNER JOIN {pre}_users usr ON mm.users_id = usr.users_id';
 
-$data['members'] = cs_sql_select(__FILE__,$tables,$cells,0,'RAND()',0,1);
+$data['members'] = cs_sql_select(__FILE__,$tables,$cells,0,'{random}',0,1);
 $found = count($data['members']);
 
 if(!empty($found)) {

@@ -12,7 +12,7 @@ else {
   $where = "banners_id != '" . $op_banners['last_id'] . "'";
 }
 
-$cs_banners = cs_sql_select(__FILE__,'banners','banners_id, banners_picture, banners_alt, banners_url, categories_id',$where,'rand()',0,1);
+$cs_banners = cs_sql_select(__FILE__,'banners','banners_id, banners_picture, banners_alt, banners_url, categories_id',$where,'{random}',0,1);
 
 if(empty($cs_banners)) {
   

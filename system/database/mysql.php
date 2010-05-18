@@ -188,7 +188,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
     $sql_query .= ' WHERE ' . $sql_where;
   }
   if (!empty($sql_order)) {
-    $sql_query .= ' ORDER BY ' . $sql_order;
+    $sql_query .= ' ORDER BY ' . str_replace('{random}', 'RAND()', $sql_order);
   }
   if (!empty($max)) {
     $sql_query .= ' LIMIT ' . $first . ',' . $max;

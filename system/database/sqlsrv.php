@@ -164,7 +164,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   $run = 0;
   $sql_where = str_replace('"', "'", $sql_where);
 
-  if(!empty($max)) {
+  if(!empty($max) OR $sql_order == '{random}') {
     $sql_select = ' TOP ' . $max . ' ' . $sql_select;
     if(!empty($first)) {
       $cell = explode(' ',$sql_table);
@@ -180,7 +180,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
     $sql_query .= ' WHERE ' . $sql_where;
   }
   if (!empty($sql_order)) {
-    $sql_query .= ' ORDER BY ' . $sql_order;
+    $sql_query .= ' ORDER BY ' . str_replace('{random}', 'NEWID()', $sql_order);
   }
 
   $sql_query = str_replace('{pre}', $cs_db['prefix'], $sql_query);
