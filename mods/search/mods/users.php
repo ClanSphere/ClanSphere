@@ -59,7 +59,7 @@ if (!empty($cs_loop)) {
       $data2['results'][$run]['icon'] = cs_html_img('symbols/clansphere/' . $icon . '.gif'); 
     if ($account['access_id'] >= 2) {
       $icon_kon = cs_icon('mail_send');
-      $data2['results'][$run]['msg'] = cs_link($icon_kon,'messages','create','to=' . $cs_search[$run]['users_nick']);
+      $data2['results'][$run]['msg'] = cs_link($icon_kon,'messages','create','to_id=' . $cs_search[$run]['users_id']);
     }
   }
 } else {

@@ -53,7 +53,7 @@ function getUserIcons($cs_lang,$users_id,$nick,$hidden = 0,$email=0,$icq=0, $msn
 
 	$icons = '';
 	$icons .= !empty($email) ? cs_html_mail($email,cs_icon('mail_generic')) : '';
-	$icons .= $account['access_users'] >= 2 ? cs_link(cs_icon('mail_send'),'messages','create','to=' . $nick,0,$cs_lang['send_message']) : '';
+	$icons .= $account['access_users'] >= 2 ? cs_link(cs_icon('mail_send'),'messages','create','to_id=' . $users_id,0,$cs_lang['send_message']) : '';
 	$icons .= !empty($icq) ? cs_html_link('http://www.icq.com/scripts/search.dll?to=' . $icq,cs_icon('licq'),1,0,$cs_lang['icq']) : '';
 	$icons .= !empty($msn) ? cs_html_link('http://members.msn.com/' . $msn,cs_icon('msn_protocol')) : '';
 	$icons .= !empty($skype) ? cs_html_link('skype:' . $skype . '?userinfo',cs_html_img('http://mystatus.skype.com/smallicon/' . $skype,'16','16','0','Skype'),0,0,$cs_lang['skype']) : '';

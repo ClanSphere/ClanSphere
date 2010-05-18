@@ -24,7 +24,7 @@ else {
   for ($run = 0; $run < $count_users; $run++) {
     $data['users'][$run]['url'] = cs_user($cs_users[$run]['users_id'], $cs_users[$run]['users_nick'], $cs_users[$run]['users_active'], $cs_users[$run]['users_delete']);
     $data['users'][$run]['countryicon'] = cs_html_img('symbols/countries/'.$cs_users[$run]['users_country'].'.png');
-    $data['users'][$run]['messageurl'] = cs_url('messages','create','to='.cs_secure($cs_users[$run]['users_nick']));
+    $data['users'][$run]['messageurl'] = cs_url('messages','create','to_id='.$cs_users[$run]['users_id']);
   }
 }
 

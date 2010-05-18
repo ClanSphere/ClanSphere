@@ -729,7 +729,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
     } else {
       $user = cs_sql_select(__FILE__,'users','users_nick,users_active','users_id = "'.$data['thread']['threads_close'].'"');
       $user_lnk = cs_user($data['thread']['threads_close'],$user['users_nick'],$user['users_active']);
-      $user_lnk .= ' ' . cs_link(cs_icon('mail_send',16,'PM'),'messages','create','to='.$user['users_nick']);
+      $user_lnk .= ' ' . cs_link(cs_icon('mail_send',16,'PM'),'messages','create','to_id='.$data['thread']['threads_close']);
       $message = sprintf($cs_lang['thread_closed2'],$user_lnk);
     }
 
