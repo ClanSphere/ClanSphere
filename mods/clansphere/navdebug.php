@@ -2,14 +2,15 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$nav_array = array(
-  '----',
+$nav_array = array('----',
   'articles/navlist',
+  'articles/navtop',
   'banners/navlist',
   'banners/navright',
   'banners/rotation',
   'board/navlist',
   'board/navtop',
+  'board/navtop2',
   'buddys/navlist',
   'count/navall',
   'count/navday',
@@ -18,26 +19,37 @@ $nav_array = array(
   'count/navusr',
   'count/navyes',
   'cups/navlist',
+  'events/nav_birthday',
   'events/navcal',
   'events/navnext',
-  'gallery/navlist',
   'files/navlist',
   'files/navtop',
   'gallery/navlist',
   'members/navrand',
   'news/navlist',
+  'partner/navlist',
+  'ranks/navlist',
+  'replays/navlist',
   'search/navlist',
   'servers/navlist',
   'shoutbox/navlist',
+  'shoutbox/navlist2',
   'users/navbirth',
   'users/navlang',
   'users/navlang2',
   'users/navlast',
   'users/navonline',
+  'users/navonline_ava',
+  'users/navonline_pic',
   'votes/navlist',
+  'wars/navdraw',
+  'wars/navlast',
   'wars/navlist',
   'wars/navlist2',
-  'wars/navnext'
+  'wars/navlost',
+  'wars/navnext',
+  'wars/navtop',
+  'wars/navwon'
 );
 
 $cs_lang = cs_translate('clansphere');
