@@ -29,7 +29,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
   $newmatch['squad1_id'] = $opponent['cupmatches_winner'];
   $newmatch['cupmatches_round'] = $round - 1;
   $newmatch['cupmatches_loserbracket'] = $match['cupmatches_loserbracket'];
-  $newmatch['cupmatches_tree_order'] = (int) $match['cupmatches_tree_order'] / 2;
+  $newmatch['cupmatches_tree_order'] = floor($match['cupmatches_tree_order'] / 2);
   cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
   
   if (!empty($cup['cups_brackets']) && $round == $rounds) { // If it was the first round, now create a match for the losers too

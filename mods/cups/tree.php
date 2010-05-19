@@ -16,7 +16,8 @@ if (!empty($cs_main)) {
   
   echo cs_subtemplate(__FILE__, $data, 'cups', 'tree');
 
-} else {
+}
+else {
 	
 
 # Overwrite global settings by using the following array
@@ -41,67 +42,26 @@ $rounds_1 = $rounds - 1;
 $tables = 'cupmatches cm LEFT JOIN ';
 $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
 	'{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
-$cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id' :
-	'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id, cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
+$cells = $cup['cups_system'] == 'users'
+  ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id'
+  : 'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id, '
+    . 'cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
 $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
-$cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2';
+$cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2, cm.cupmatches_tree_order AS cupmatches_tree_order';
 $where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = ';
 
 $cupmatches = array();
-$cupmatches[0] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1, 'cm.cupmatches_tree_order',0,0);
+for ($i=0; $i < $rounds_1; $i++) {
+  $temp = cs_sql_select(__FILE__, $tables, $cells, $where . ($rounds_1 - $i), 'cm.cupmatches_tree_order',0,0);
+  // $cupmatches[$i] = array();
+  foreach ($temp as $match)
+    $cupmatches[$i][ $match['cupmatches_tree_order'] ] = $match;
+}
+// var_dump($cupmatches);
+// Calc-Defs
+$count_matches = $cup['cups_teams'];
+include 'tree_inc.php';
 
-$yspace_enemies = 4;
-$yspace_normal = 8;
-$xspace = 15;
-$space_top = 45;
-$space_bottom = 5;
-$space_left = 15;
-$space_right = 10;
-$entityheight = 25;
-
-$height = $cup['cups_teams'] * ($entityheight + $yspace_normal/2 + $yspace_enemies/2) + $space_top + $space_bottom;
-$width = empty($_GET['width']) ? 600 : $_GET['width'];
-
-
-$img = imagecreatetruecolor($width, $height) or die('Cannot Initialize new GD image stream');
-
-$col_bg = imagecolorallocate($img, 255, 255, 255);
-$col_csp_red = imagecolorallocate ($img, 186, 22, 22);
-$col_csp_grey = imagecolorallocate ($img, 137, 137, 137);
-$col_cup_headline = imagecolorallocate ($img, 0, 0, 0);
-$col_team_bg = imagecolorallocate ($img, 200, 200, 200);
-$col_team_font = imagecolorallocate ($img, 0, 0, 0);
-
-$font_csp = 3;
-$font_csp_width = imagefontwidth($font_csp);
-$font_cup_headline = 2;
-$font_match = 3;
-$font_match_height = imagefontheight($font_match);
-
-// Set background
-imagefilledrectangle($img, 0,0, $width, $height, $col_bg);
-
-// Headline
-imagestring($img, $font_csp, 15, 15, 'CLAN', $col_csp_red);
-imagestring($img, $font_csp, $font_csp_width * 4 + 15, 15, 'SPHERE', $col_csp_grey);
-imagestring($img, $font_cup_headline, $font_csp_width * 10 + 15, 15, ' - Turnier: ' . $cup['cups_name'], $col_cup_headline);
-
-
-
-$halfteams = $cup['cups_teams'] / 2;
-// $entityheight = round(($height - $space_top - $space_bottom - $halfteams * $yspace_enemies - $halfteams * $yspace_normal) / $cup['cups_teams']) ;
-$entitywidth = round(($width - $space_left - $space_right - ($rounds) * $xspace) / ($rounds));
-
-
-$currheight = $space_top;
-$currwidth = $space_left;
-
-// "Cached" variables
-$entity_font_height = round($entityheight / 2 - $font_match_height / 2);
-$nexthalf = $cup['cups_teams'] / 2;
-$max = $nexthalf;
-$entityheight_2 = round($entityheight / 2);
-$yspace_normal_2 = round($yspace_normal / 2);
 
 $count_cupmatches = 0;
 $result = $cup['cups_teams'];
@@ -171,8 +131,8 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$max += $nexthalf;
 		$round++;
 		$run = 0;
-		$rounds_1--;
-		$cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . ' AND cm.cupmatches_loserbracket = 0', 'cm.cupmatches_tree_order',0,0);
+		// $rounds_1--;
+		// $cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . ' AND cm.cupmatches_loserbracket = 0', 'cm.cupmatches_tree_order',0,0);
 	}
 	
 }
