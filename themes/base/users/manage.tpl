@@ -8,7 +8,7 @@
     <td class="rightb">{head:pages} </td>
   </tr>
   <tr>
-    <td class="centerb" colspan="3"> 
+    <td class="centerb" colspan="2">
       <a href="{url:users_manage:where=a}">A</a> - 
       <a href="{url:users_manage:where=b}">B</a> - 
       <a href="{url:users_manage:where=c}">C</a> - 
@@ -40,7 +40,7 @@
   </tr>
   <tr>
     <td class="leftb">{lang:search}</td>
-    <td class="leftb" colspan="2">
+    <td class="leftb">
       <input type="text" name="search_name" id="search_name" value="{search:name}" onkeyup="Clansphere.ajax.user_autocomplete('search_name','search_users_result')" size="50" maxlength="100" />
       <input type="submit" name="{lang:submit}" />
       <div id="search_users_result"></div>
