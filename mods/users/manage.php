@@ -35,13 +35,13 @@ $data['sort']['laston'] = cs_sort('users', 'manage', $start, $access_id, 3, $sor
 $data['sort']['active'] = cs_sort('users', 'manage', $start, $access_id, 5, $sort);
 $data['sort']['access'] = cs_sort('users', 'manage', $start, $access_id, 7, $sort);
 
-$select = 'users_id, users_nick, users_laston, users_country, users_active, users_invisible, access_id';
+$select = 'users_id, users_nick, users_laston, users_country, users_active, users_delete, users_invisible, access_id';
 $cs_users = cs_sql_select(__FILE__, 'users', $select, $where, $order, $start, $account['users_limit']);
 $users_loop = count($cs_users);
 
 for ($run = 0; $run < $users_loop; $run++) {
-  $cs_users[$run]['country'] = 'symbols/countries/' . $cs_users[$run]['users_country'] . '.png';
-  $cs_users[$run]['nick'] = cs_secure($cs_users[$run]['users_nick']);
+  $cs_users[$run]['country'] = empty($cs_users[$run]['users_country']) ? 'symbols/countries/fam.png' : 'symbols/countries/' . $cs_users[$run]['users_country'] . '.png';
+  $cs_users[$run]['nick'] = cs_user($cs_users[$run]['users_id'], $cs_users[$run]['users_nick'], $cs_users[$run]['users_active'], $cs_users[$run]['users_delete']);
   $cs_users[$run]['laston'] = cs_date('unix', $cs_users[$run]['users_laston']);
   $cs_users[$run]['page'] = cs_userstatus($cs_users[$run]['users_laston'],$cs_users[$run]['users_invisible']);
   $cs_users[$run]['active'] = cs_secure($cs_users[$run]['users_active']);

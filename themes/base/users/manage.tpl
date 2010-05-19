@@ -63,7 +63,7 @@
   {loop:users}
   <tr>
     <td class="centerc"><img src="{page:path}{users:country}" style="height:11px;width:16px" alt="" /></td>
-    <td class="leftc"><a href="{users:url_view}" title="{lang:show}">{users:nick}</a></td>
+    <td class="leftc">{users:nick}</td>
     <td class="rightc">{users:laston}</td>
     <td class="centerc">{users:page}</td>
     <td class="leftc">{users:active}</td>
