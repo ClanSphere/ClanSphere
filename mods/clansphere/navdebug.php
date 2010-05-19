@@ -2,7 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$nav_array = array('----',
+$nav_array = array(
+  '----',
   'articles/navlist',
   'articles/navtop',
   'banners/navlist',
@@ -41,6 +42,7 @@ $nav_array = array('----',
   'users/navonline',
   'users/navonline_ava',
   'users/navonline_pic',
+  'users/navrand',
   'votes/navlist',
   'wars/navdraw',
   'wars/navlast',
