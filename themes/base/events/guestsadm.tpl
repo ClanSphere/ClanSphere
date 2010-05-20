@@ -28,7 +28,7 @@
     <tr>
       <td class="leftc">{icon:personal} {lang:user}</td>
       <td class="leftb">
-        <input type="text" name="users_nick" id="users_nick" value="{users:nick}" onkeyup="Clansphere.ajax.user_autocomplete('users_nick', 'search_users_result')" maxlength="80" size="40" />
+        <input type="text" name="users_nick" id="users_nick" value="{users:nick}" autocompletion="off" onkeyup="Clansphere.ajax.user_autocomplete('users_nick', 'search_users_result')" maxlength="80" size="40" />
         - <a href="{url:users_create}">{lang:create}</a><br />
         <div id="search_users_result"></div>
       </td>

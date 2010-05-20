@@ -41,7 +41,7 @@
   <tr>
     <td class="leftb">{lang:search}</td>
     <td class="leftb">
-      <input type="text" name="search_name" id="search_name" value="{search:name}" onkeyup="Clansphere.ajax.user_autocomplete('search_name','search_users_result')" size="50" maxlength="100" />
+      <input type="text" name="search_name" id="search_name" value="{search:name}" autocompletion="off" onkeyup="Clansphere.ajax.user_autocomplete('search_name','search_users_result')" size="50" maxlength="100" />
       <input type="submit" name="{lang:submit}" />
       <div id="search_users_result"></div>
     </td>
