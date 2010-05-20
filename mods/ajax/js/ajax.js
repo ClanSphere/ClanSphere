@@ -72,7 +72,7 @@ var Clansphere = {
       $.ajax({
             type: 'GET',
             url: Clansphere.ajax.base,
-            data: prefix + Clansphere.ajax.hash.substr(1) + "&ajax=1",
+            data: prefix + Clansphere.ajax.hash.substr(1) + "&xhr=1",
             dataType: 'json',
             success: Clansphere.ajax.updatePage,
             error: Clansphere.ajax.errorHandler
@@ -100,6 +100,8 @@ var Clansphere = {
     },
     
     convertForms: function(element) {
+
+      
       element = $(element);
       
       element.find('input[type=file]').change(function() {
@@ -111,14 +113,23 @@ var Clansphere = {
           alert(Clansphere.ajax.options.error_upload_progress);
           return false;
         }
-        if($(this).hasClass('noajax'))
-        //    window.location.reload();
-        	return true;
+        
+        var prefix = !Clansphere.ajax.mod_rewrite ? "" : "?params=/";
+        
+        var target;
+        var action = $(this).attr('action');
+        
+        if (!Clansphere.ajax.mod_rewrite) {
+          target = action.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "mod=$2");
+        } else {
+      	  var regexp = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?/" + Clansphere.ajax.index + "/(.+?)","g");
+      	  target = action.replace(regexp, "$1");
+        }
         
         $.ajax({
               type: 'POST',
-              url: $(this).attr('action'),
-              data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1&ajax=1'),
+              url: prefix + target,
+              data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1&xhr=1'),
               dataType: 'json',
               success: function(response){
                 Clansphere.ajax.scrollTarget = 'content';
