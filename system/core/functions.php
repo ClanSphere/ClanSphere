@@ -285,9 +285,7 @@ function cs_init($predefined) {
   $cs_main['template'] = empty($cs_main['def_tpl']) ? 'clansphere' : $cs_main['def_tpl'];
   if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
     $cs_main['template'] = $_GET['template'];
-  
-  //if (!empty($_REQUEST['ajax'])) {
-  //print_r($_SERVER);die();
+
   if(!empty($predefined['init_tpl'])) {
 	  if ($cs_main['ajaxrequest'] === true) {
 	  	$content = cs_contentload($cs_main['show']);
@@ -321,7 +319,11 @@ function cs_ajaxwrap($content) {
 }
 
 function cs_contentload($file) {
-	
+
+  global $account, $cs_main;
+  if(empty($cs_main['public']) and $account['access_clansphere'] < $cs_main['maintenance_access'])
+    $file = 'mods/users/login.php';
+
   $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($file));
   $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
 
