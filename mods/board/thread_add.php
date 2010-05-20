@@ -299,7 +299,7 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
          		$return_types .= empty($return_types) ? $add : ', ' . $add;
         	}
         	$matches[2] = $cs_lang['max_size'] . cs_filesize($max_size) . cs_html_br(1);
-        	$matches[2] .= $cs_lang['filetypes'] . $return_types;
+        	$matches[2] .= $cs_lang['filetypes'] . ': ' . $return_types;
         $data['files'][$run]['clip'] = cs_abcode_clip($matches);
       }
       else {
