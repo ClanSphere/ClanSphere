@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('explorer');
+
 $data = array();
 
 $max_data = $account['users_limit'];
@@ -13,6 +14,8 @@ if(!empty($_GET['where'])) $var = $_GET['where'];
 $var = str_replace('..','',$var);
 if (substr($var,-1) != '/' && $var != '.') $var .= '/';
 $var = str_replace("@_@","/",$var);
+$var = rtrim($var, "/") . "/";
+
 $count = 0;
 
 if (@chdir($cs_main['def_path'].'/'.$var)) {
