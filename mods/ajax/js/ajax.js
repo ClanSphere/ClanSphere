@@ -113,22 +113,20 @@ var Clansphere = {
           alert(Clansphere.ajax.options.error_upload_progress);
           return false;
         }
-        
-        var prefix = !Clansphere.ajax.mod_rewrite ? "" : "?params=/";
-        
+                
         var target;
         var action = $(this).attr('action');
         
         if (!Clansphere.ajax.mod_rewrite) {
-          target = action.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "mod=$2");
+          target = action.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "$1?mod=$2");
         } else {
       	  var regexp = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?/" + Clansphere.ajax.index + "/(.+?)","g");
-      	  target = action.replace(regexp, "$1");
+      	  target = action.replace(regexp, "?params=/$1");
         }
         
         $.ajax({
               type: 'POST',
-              url: prefix + target,
+              url: target,
               data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1&xhr=1'),
               dataType: 'json',
               success: function(response){
