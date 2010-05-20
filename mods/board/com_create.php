@@ -391,10 +391,7 @@ else {
   $where = 'abo.threads_id = '.$data['thread']['threads_id'].'
             AND abo.users_id != '.$account['users_id'].'
             AND usr.users_delete != 1
-            AND usr.users_abomail = 1
-            AND (abo.last_mail IS NULL
-                 OR abo.last_mail <= red.read_since
-                 OR abo.last_mail <= ('.cs_time().'-usr.users_readtime))';  // if no read_since
+            AND usr.users_abomail = 1';
   $abo_users = cs_sql_select(__FILE__,$from,'abo.abonements_id, usr.users_lang, usr.users_email',$where,0,0,0);
   
   $abo['count'] = empty($abo_users) ? 0 : count($abo_users);
@@ -403,7 +400,6 @@ else {
   $pattern1 = '/abo_mail_text\'\](\s*)=(\s*)\'(?<value>.*)\';/';
   $pattern2 = '/mod2\'\](\s*)=(\s*)\'(?<value>.*)\';/';
   $abo['new_time'] = array(cs_time());
-  $abo['update'] = array('last_mail');
   
   for($run=0; $run < $abo['count']; $run++) {
     $abo['lang'] = empty($abo_users[$run]['users_lang']) ? 'English' : $abo_users[$run]['users_lang'];
