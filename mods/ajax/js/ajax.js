@@ -223,9 +223,9 @@ var Clansphere = {
       }
     },
     
-    user_autocomplete: function(field_from, field_to) {
+    user_autocomplete: function(field_from, field_to, path) {
     	$.ajax({
-    		url: 'mods/ajax/search_users.php',
+    		url: path + 'mods/ajax/search_users.php',
         data: 'target=' + field_from + '&term=' + $('#'+field_from).val(),
     		success : function(response) {
     			$('#'+field_to).html(response)
