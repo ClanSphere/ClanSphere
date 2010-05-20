@@ -226,7 +226,7 @@ var Clansphere = {
     user_autocomplete: function(field_from, field_to) {
     	$.ajax({
     		url: 'mods/ajax/search_users.php',
-    		data: 'target=' + field_from + '&term=' + $('#'+field_from).attr('autocomplete', 'off').val(),
+        data: 'target=' + field_from + '&term=' + $('#'+field_from).val(),
     		success : function(response) {
     			$('#'+field_to).html(response)
     		}
