@@ -2,12 +2,16 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-$languages = cs_checkdirs('lang');
+$data = array('langs' => array());
+$data['form']['navlang'] = cs_url('users','navlang');
+$langs = cs_checkdirs('lang');
+$row = 0;
 
-foreach($languages as $lang) {
-  $img = cs_html_img('symbols/countries/' . $lang['symbol'] . '.png');
-  $lnk = cs_link($lang['name'],$cs_main['def_mod'],$cs_main['def_action'],'lang=' . $lang['name']);
-  $out = $lang['name'] == $account['users_lang'] ? $lang['name'] : $lnk;
-  echo $img . ' ' . $out;
-  echo cs_html_br(2);
+foreach($langs as $lang) {
+  $data['langs'][$row]['name'] = $lang['name'];
+  $data['langs'][$row]['img'] = $cs_main['php_self']['dirname'] . 'symbols/countries/' . $lang['symbol'] . '.png';
+  $data['langs'][$row]['selected'] = $lang['name'] == $account['users_lang'] ? ' selected="selected"' : '';
+  $row++;
 }
+
+echo cs_subtemplate(__FILE__,$data,'users','navlang');
