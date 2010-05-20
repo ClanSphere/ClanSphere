@@ -1,5 +1,5 @@
 <form method="post" action="{form:navlogin}" class="noajax">
-<fieldset style="border: 0">
+<fieldset style="border: 0; padding: 0">
 <input type="hidden" name="uri" value="{link:uri}" />
 {icon:personal} <input type="text" name="nick" value="{login:nick}" onfocus="if(this.value=='Nick') this.value=''" onblur="if(this.value=='')this.value='Nick'" maxlength="40" size="20" /><br />
 {icon:password} <input type="password" name="password" value="{login:password}" onfocus="if(this.value=='Pass') this.value=''" onblur="if(this.value=='')this.value='Pass'" maxlength="40" size="20" /><br />

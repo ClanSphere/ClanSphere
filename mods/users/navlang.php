@@ -3,7 +3,6 @@
 // $Id$
 
 $data = array('langs' => array());
-$data['form']['navlang'] = cs_url('users','navlang');
 $langs = cs_checkdirs('lang');
 $row = 0;
 
