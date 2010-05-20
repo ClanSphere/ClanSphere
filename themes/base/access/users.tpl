@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <td class="leftb">
-    <input type="text" name="users_nick" id="users_nick" autocompletion="off" onkeyup="Clansphere.ajax.user_autocomplete('users_nick', 'search_users_result')" maxlength="80" size="40" /><br />
+    <input type="text" name="users_nick" id="users_nick" autocomplete="off" onkeyup="Clansphere.ajax.user_autocomplete('users_nick', 'search_users_result')" maxlength="80" size="40" /><br />
     <div id="search_users_result"></div>
     <input type="submit" name="submit" value="{lang:submit}" />
     <input type="hidden" name="id" value="{access:id}" />
