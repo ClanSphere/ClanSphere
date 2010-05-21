@@ -302,7 +302,7 @@ function cs_ajaxwrap($content) {
 	$cs_act_lang = cs_translate($cs_main['mod']); 
 
 	$json = array();
-	$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst($cs_act_lang['mod_name']);
+	$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
 	$json['location'] = str_replace(array('&debug', '&xhr=1', '&xhr','params=/'),'', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) );
 	$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
 	$json['content'] = $content;
