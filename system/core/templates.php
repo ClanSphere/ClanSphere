@@ -187,7 +187,7 @@ function cs_getmsg()
   return cs_subtemplate(__FILE__, $data, 'clansphere', 'message');
 }
 
-function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $icon = 0)
+function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $icon = 0)
 {    
   if($mod != "install" && $message) {
       cs_redirectmsg($message, $id, $icon);
@@ -203,10 +203,13 @@ function cs_redirect($message, $mod, $action = 'manage', $more = 0, $id = 0, $ic
 		}
 	} 
 	
-   $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
+	$more = empty($more) ? 0 : $more;
+		
+  $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
 	
-   header('location: ' . $url);
-   exit();
+	
+	header('location: ' . $url);
+  exit();
 }
 
 function cs_redirectmsg($message, $id = 0, $icon = 0) {
