@@ -10,6 +10,7 @@ var Clansphere = {
       checkURLInterval: 50,
       loadingImage: '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading..." />',
       contentSelector: "#content",
+      debugSelector: '#debug',
       label_upload_delete: 'Delete',
       label_upload_progress: 'Uploading File...',
       error_upload_progress: 'Upload still in progress! Formular can not be sumited until file is uploaded completly.'
@@ -50,6 +51,10 @@ var Clansphere = {
       for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
       if(Clansphere.ajax.scrollTarget) {
         $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
+      }
+      if(response.debug)
+      {
+        $(Clansphere.ajax.options.debugSelector).replaceWith(response.debug);
       }
     },
 
@@ -154,6 +159,11 @@ var Clansphere = {
     
     errorHandler: function(xhr) {
       try { console.log("There was in error in processing the XHRequest. Check out the Request Object:\n", xhr); $('#ajax_loading').fadeOut(); } catch(e) { alert("There was in error in processing the XHRequest."); }
+      if($(Clansphere.ajax.options.debugSelector).size() > 0)
+      {
+      $(Clansphere.ajax.options.debugSelector + ' #errors').prepend('<span>Error in XHRequest!</span>\n<br/>\n<br/>');
+      $('html, body').animate({scrollTop: 0 }, 300);
+      }
     },
     
     upload_complete: function(upload_name, file_name) {

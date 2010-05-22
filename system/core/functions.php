@@ -307,6 +307,22 @@ function cs_ajaxwrap($content) {
 	$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
 	$json['content'] = $content;
 	
+	if (!empty($cs_main['debug'])) {
+		global $cs_logs, $logsql;
+		$cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
+    $cs_logs['errors'] = nl2br($cs_logs['errors']);
+    if(is_array($cs_logs['sql']))
+      foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
+        $logsql .= cs_html_big(1) . str_replace('\\', '\\\\', $sql_file) . cs_html_big(0) . cs_html_br(1);
+        $logsql .= nl2br(htmlentities($sql_queries, ENT_QUOTES, $cs_main['charset']));
+      }
+    $data = array('data');
+    $data['data']['log_sql'] = $logsql;
+    $data['data']['php_errors'] = $cs_logs['php_errors'];
+    $data['data']['csp_errors'] = $cs_logs['errors'];
+    $json['debug'] = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
+	}
+	
 	/*if (!isset($_GET['first'])) {
 	  
 	  require_once 'navlists.php';
