@@ -91,8 +91,8 @@ var Clansphere = {
           }
         }
       }).click(function(e) {
-        if(e.href.substr(0,1)=='#') {
-    	  Clansphere.ajax.forceReload = true;
+        if(this.href.substr(0,7)=='http://') {
+    	    Clansphere.ajax.forceReload = true;
     	  }
     	});
       
