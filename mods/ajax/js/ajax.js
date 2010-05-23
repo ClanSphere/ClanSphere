@@ -253,9 +253,9 @@ var Clansphere = {
         data: 'target=' + field_from + '&term=' + $('#'+field_from).val(),
     		success : function(response) {
     			$('#'+field_to).html(response)
-    			$('#'+field_from).bind('blur', function() {
-    				$('#'+field_to).html('')
-    			});    			
+//    			$('#'+field_from).bind('blur', function() {
+//    				$('#'+field_to).html('')
+//    			});    			
     		}
     	});
     }
