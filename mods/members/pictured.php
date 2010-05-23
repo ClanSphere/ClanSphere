@@ -17,7 +17,7 @@ $squads_loop = count($data['squads']);
 
 $data['head']['mod'] = $cs_lang[$op_members['label']];
 $data['head']['body'] = sprintf($cs_lang['body_pictured'], $squads_loop);
-
+$data['lang']['members'] = $cs_lang[$op_members['label']];
 
 for($sq_run=0; $sq_run<$squads_loop; $sq_run++) {
 

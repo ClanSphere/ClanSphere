@@ -10,6 +10,7 @@ $img_filetypes = array('gif','jpg','png');
 
 $users_nick = '';
 $cs_clans['users_id'] = 0;
+$data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 
 if(isset($_POST['submit'])) {
 	
@@ -111,7 +112,7 @@ if(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-  $data['lang']['mod'] = $cs_lang[$op_clans['label']];
+  
   $data['clans']['name'] = cs_secure($cs_clans['clans_name']);
   $data['clans']['short'] = cs_secure($cs_clans['clans_short']);
   $data['clans']['tag'] = cs_secure($cs_clans['clans_tag']);
