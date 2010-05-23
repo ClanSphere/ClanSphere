@@ -252,10 +252,12 @@ var Clansphere = {
     		url: path + 'mods/ajax/search_users.php',
         data: 'target=' + field_from + '&term=' + $('#'+field_from).val(),
     		success : function(response) {
-    			$('#'+field_to).html(response)
-//    			$('#'+field_from).bind('blur', function() {
-//    				$('#'+field_to).html('')
-//    			});    			
+    			$('#'+field_to).html(response).show().bind('click', function() {
+    			  event.stopPropagation();
+    			});
+    			$(document).bind('click', function() {
+    				$('#'+field_to).hide();
+    			});    			
     		}
     	});
     }
