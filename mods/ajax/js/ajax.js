@@ -42,19 +42,26 @@ var Clansphere = {
         window.location.hash = Clansphere.ajax.hash;
       }
       
-      $(Clansphere.ajax.options.contentSelector).html(response.content);
+      if(!response.reload) {
+        $(Clansphere.ajax.options.contentSelector).html(response.content);
     
-      Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
-      Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);
-      document.title = response.title;
-      if (response.scripts) window.setTimeout(function(){ eval(response.scripts); }, 0);
-      for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
-      if(Clansphere.ajax.scrollTarget) {
-        $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
+        Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
+        Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);
+        document.title = response.title;
+        if (response.scripts) window.setTimeout(function(){ eval(response.scripts); }, 0);
+        for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
+        if(Clansphere.ajax.scrollTarget) {
+          $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
+        }
+        if(response.debug)
+        {
+          $(Clansphere.ajax.options.debugSelector).replaceWith(response.debug);
+        }
       }
-      if(response.debug)
+      else
       {
-        $(Clansphere.ajax.options.debugSelector).replaceWith(response.debug);
+        alert('test');
+        window.location.reload();
       }
     },
 
