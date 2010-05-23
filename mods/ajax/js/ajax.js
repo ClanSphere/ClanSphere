@@ -157,13 +157,18 @@ var Clansphere = {
       
     },
     
-    errorHandler: function(xhr) {
-      try { console.log("There was in error in processing the XHRequest. Check out the Request Object:\n", xhr); $('#ajax_loading').fadeOut(); } catch(e) { alert("There was in error in processing the XHRequest."); }
+    errorHandler: function(xhr, textStatus, error) {
+      $('#ajax_loading').fadeOut();
       if($(Clansphere.ajax.options.debugSelector).size() > 0)
       {
-      $(Clansphere.ajax.options.debugSelector + ' #errors').prepend('<span>Error in XHRequest!</span>\n<br/>\n<br/>');
-      $('html, body').animate({scrollTop: 0 }, 300);
-      }
+        more = '';
+        if(console) {
+          more = ' - Check Firebug for further details.';
+          console.error("[Clansphere] Failed to process the XHRequest(Type:" + textStatus + "). Check out the Request Object:\n", xhr);
+        }
+        $(Clansphere.ajax.options.debugSelector + ' #errors').prepend('<strong>XHRequest Error:</strong> ' + textStatus + ' [HttpStatus: ' + xhr.status + ']' + more + '\n<br/>\n<br/>');
+        $('html, body').animate({scrollTop: 0 }, 100);
+      } else alert("[Clansphere] Failed to process the XHRequest.");
     },
     
     upload_complete: function(upload_name, file_name) {
