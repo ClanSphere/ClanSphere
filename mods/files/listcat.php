@@ -3,14 +3,15 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
+
 require_once 'mods/clansphere/filetype.php';
 
 $data = array();
 
 $files_size = '';
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
-$categories_id = $_REQUEST['where'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
+$categories_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
 settype($categories_id,'integer');
 $where = "categories_id = '" . $categories_id . "'";
 
@@ -22,7 +23,6 @@ $cs_sort[5] = 'files_size DESC';
 $cs_sort[6] = 'files_size ASC';
 empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
-
 
 $categories = cs_sql_select(__FILE__,'categories','categories_name',"categories_id = '" . $categories_id . "'");
 $data['category']['name'] = $categories['categories_name'];
@@ -50,14 +50,12 @@ if(!empty($sub_loop)) {
   }   
 }
 
-
 $from = 'files fls INNER JOIN {pre}_users usr ON fls.users_id = usr.users_id';
 $select = 'fls.files_name AS files_name, fls.users_id AS users_id, usr.users_nick'; 
 $select .= ' AS users_nick, usr.users_active AS users_active, fls.files_time AS files_time, fls.files_id AS files_id';
 $select .= ', fls.files_mirror AS files_mirror, fls.files_size AS files_size';
 $cs_files = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $files_loop = count($cs_files);
-
 
 $data['sort']['name'] = cs_sort('files','listcat',$start,$categories_id,1,$sort);
 $data['sort']['date'] = cs_sort('files','listcat',$start,$categories_id,3,$sort);
@@ -71,10 +69,9 @@ for($run=0; $run<$files_loop; $run++) {
   $data['files'][$run]['user'] = cs_user($cs_files[$run]['users_id'],$cs_files[$run]['users_nick'], $cs_files[$run]['users_active']);
   $data['files'][$run]['date'] = cs_date('unix',$cs_files[$run]['files_time'],1);
   $data['files'][$run]['size'] = '';
-  
+
   $data['files'][$run]['size'] = cs_filesize($cs_files[$run]['files_size']);
-      
-    
+
   $data['files'][$run]['filetypes'] = array();
   $files_mirror = $cs_files[$run]['files_mirror'];
   $temp = explode("-----", $files_mirror);
@@ -91,7 +88,7 @@ for($run=0; $run<$files_loop; $run++) {
   $loop_file_typ_array = count($file_typ_array);
   for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++) {
     $ext = $file_typ_array[$run_2];
-	
+
     $data['files'][$run]['filetypes'][$run_2]['icon'] = cs_filetype($ext);  
   }
 }
