@@ -155,6 +155,7 @@ $cs_lang['err_phone']      = '- Angabe fehlt oder zu kurz: Telefon';
 $cs_lang['err_mobile']     = '- Angabe fehlt oder zu kurz: Handy';
 
 // Guests
+$cs_lang['guests_latest']     = 'Neueste Anmeldungen';
 $cs_lang['new_guest']         = 'Neuer Gast';
 $cs_lang['new_guest_info']    = 'Bitte einen Benutzer ausw&auml;hlen oder einen neuen Gast erstellen';
 $cs_lang['guest']             = 'Gast';
@@ -162,6 +163,7 @@ $cs_lang['notice']            = 'Notizen';
 $cs_lang['event']             = 'Termin';
 $cs_lang['no_user']           = '- Kein Benutzer selektiert';
 $cs_lang['user_event_exists'] = '- Der Benutzer ist bereits angemeldet';
+$cs_lang['name_event_exists'] = '- Die Person ist bereits angemeldet';
 $cs_lang['print_view']        = 'Druckansicht';
 $cs_lang['contact']           = 'Kontakt';
 $cs_lang['number']            = 'Nr.';

@@ -48,7 +48,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb" style="min-width: 100px">{sort:user} {lang:user}</td>
-    <td class="headb">{sort:name} {lang:name}</td>
+    <td class="headb" style="min-width: 100px">{sort:name} {lang:name}</td>
     <td class="headb">{sort:time} {lang:time}</td>
 {if:admin}
     <td class="headb" style="min-width: 140px">{lang:contact}</td>

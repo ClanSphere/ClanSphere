@@ -39,7 +39,7 @@ if(isset($_POST['submit'])) {
     $where = "events_id = '" . $data['eventguests']['events_id'] . "' AND users_id = '";
     $where .= $data['eventguests']['users_id'] . "'";
     $search_collision = cs_sql_count(__FILE__,'eventguests',$where);
-    
+
     if(!empty($search_collision))
       $errormsg .= $cs_lang['user_event_exists'] . cs_html_br(1);
   }
@@ -52,6 +52,14 @@ if(isset($_POST['submit'])) {
       $errormsg .= $cs_lang['err_phone'] . cs_html_br(1);
     if(!empty($events_options['req_mobile']) AND (strlen(trim($data['eventguests']['eventguests_mobile'])) < 8))
       $errormsg .= $cs_lang['err_mobile'] . cs_html_br(1);
+
+    $where = "events_id = '" . $data['eventguests']['events_id'] . "' AND eventguests_name = '"
+           . cs_sql_escape($data['eventguests']['eventguests_name']) . "' AND eventguests_surname = '"
+           . cs_sql_escape($data['eventguests']['eventguests_surname']) . "'";
+    $search_collision = cs_sql_count(__FILE__,'eventguests',$where);
+
+    if(!empty($search_collision))
+      $errormsg .= $cs_lang['name_event_exists'] . cs_html_br(1);
   }
   else
     $errormsg = $cs_lang['new_guest_info'];
@@ -74,7 +82,6 @@ if(!empty($errormsg) OR !isset($_POST['submit'])) {
   echo cs_subtemplate(__FILE__,$data,'events','guestsnew');
 }
 else {
-
   $eventguests_cells = array_keys($data['eventguests']);
   $eventguests_save = array_values($data['eventguests']);
   cs_sql_insert(__FILE__,'eventguests',$eventguests_cells,$eventguests_save);

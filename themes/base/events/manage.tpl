@@ -7,7 +7,7 @@
   <td class="rightb">{pages:list}</td>
  </tr>
  <tr>
-  <td class="leftb" colspan="2">
+  <td class="leftb">
     <form method="post" id="events_manage" action="{url:events_manage}">
       <fieldset style="border: 0; padding: 0">
         {lang:category}
@@ -15,6 +15,9 @@
         <input type="submit" name="submit" value="{lang:show}" />
       </fieldset>
       </form>
+  </td>
+  <td class="rightb">
+    <a href="{url:events_guestslatest}">{lang:guests_latest}</a>
   </td>
  </tr>
 </table>
