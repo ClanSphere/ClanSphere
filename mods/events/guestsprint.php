@@ -24,7 +24,8 @@ $select = 'egt.eventguests_name AS eventguests_name, egt.eventguests_surname AS 
         . 'usr.users_surname AS users_surname, usr.users_hidden AS users_hidden, usr.users_active AS users_active, '
         . 'usr.users_delete AS users_delete, usr.users_name AS users_name, usr.users_phone AS users_phone, '
         . 'usr.users_mobile AS users_mobile, usr.users_age AS users_age, egt.eventguests_notice AS eventguests_notice, '
-        . 'egt.eventguests_phone AS eventguests_phone, egt.eventguests_mobile AS eventguests_mobile';
+        . 'egt.eventguests_phone AS eventguests_phone, egt.eventguests_mobile AS eventguests_mobile, '
+        . 'egt.eventguests_age AS eventguests_age';
 $cs_eventguests = cs_sql_select(__FILE__,$from,$select,$where,'egt.eventguests_since',0,0);
 $eventguests_loop = count($cs_eventguests);
 
@@ -60,7 +61,7 @@ for($run=0; $run<$eventguests_loop; $run++) {
     elseif(!empty($allow))
       $cs_eventguests[$run]['eventguests_mobile'] = $cs_eventguests[$run]['users_phone'];
 
-  $age = '';
+  $age = $cs_eventguests[$run]['eventguests_age'];
   if(!empty($cs_eventguests[$run]['users_age'])) {
     $birth = explode ('-', $cs_eventguests[$run]['users_age']);
     $age = cs_datereal('Y') - $birth[0];
@@ -73,7 +74,7 @@ for($run=0; $run<$eventguests_loop; $run++) {
   $data['eventguests'][$run]['number'] = $run + 1;
   $data['eventguests'][$run]['surname'] = $surname;
   $data['eventguests'][$run]['name'] = $name;
-  $data['eventguests'][$run]['age'] = $age;
+  $data['eventguests'][$run]['age'] = empty($age) ? '' : $age;
   $data['eventguests'][$run]['notice'] = cs_secure($cs_eventguests[$run]['eventguests_notice']);
   $data['eventguests'][$run]['user'] = empty($cs_eventguests[$run]['users_id']) ? '-' : cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
   $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since'],1);

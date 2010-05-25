@@ -26,6 +26,7 @@ if(isset($_POST['submit'])) {
   $data['eventguests']['eventguests_mobile'] = empty($_POST['eventguests_mobile']) ? '' : $_POST['eventguests_mobile'];
   $data['eventguests']['eventguests_residence'] = empty($_POST['eventguests_residence']) ? '' : $_POST['eventguests_residence'];
   $data['eventguests']['eventguests_notice'] = empty($_POST['eventguests_notice']) ? '' : $_POST['eventguests_notice'];
+  $data['eventguests']['eventguests_age'] = empty($_POST['eventguests_age']) ? '' : $_POST['eventguests_age'];
 
   $errormsg = '';
 
@@ -80,6 +81,7 @@ if(!empty($errormsg) OR !isset($_POST['submit'])) {
   echo cs_subtemplate(__FILE__,$data,'events','guestsadm');
 }
 else {
+  settype($data['eventguests']['eventguests_age'], 'integer');
   $eventguests_cells = array_keys($data['eventguests']);
   $eventguests_save = array_values($data['eventguests']);
   cs_sql_update(__FILE__,'eventguests',$eventguests_cells,$eventguests_save, $eventguests_id);

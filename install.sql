@@ -406,6 +406,7 @@ CREATE TABLE {pre}_eventguests (
   eventguests_since int(14) NOT NULL default '0',
   eventguests_name varchar(80) NOT NULL default '',
   eventguests_surname varchar(80) NOT NULL default '',
+  eventguests_age int(4) NOT NULL default '0',
   eventguests_phone varchar(40) NOT NULL default '0',
   eventguests_mobile varchar(40) NOT NULL default '0',
   eventguests_residence text,
