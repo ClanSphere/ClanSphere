@@ -52,7 +52,7 @@
     <td class="headb">{sort:time} {lang:time}</td>
 {if:admin}
     <td class="headb" style="min-width: 140px">{lang:contact}</td>
-    <td class="headb" colspan="2">{lang:options}</td>
+    <td class="headb" colspan="3">{lang:options}</td>
 {stop:admin}
   </tr>
   {loop:eventguests}
@@ -62,6 +62,7 @@
     <td class="leftc">{eventguests:since}</td>
 {if:admin}
     <td class="leftc">{eventguests:phone}<br />{eventguests:mobile}</td>
+    <td class="centerc">{eventguests:notice}</td>
     <td class="centerc">{eventguests:edit}</td>
     <td class="centerc">{eventguests:remove}</td>
 {stop:admin}

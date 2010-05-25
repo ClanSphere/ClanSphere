@@ -41,7 +41,8 @@ $from = 'eventguests egt LEFT JOIN {pre}_users usr ON egt.users_id = usr.users_i
 $select = 'egt.eventguests_name AS eventguests_name, egt.eventguests_surname AS eventguests_surname, '
         . 'egt.eventguests_since AS eventguests_since, egt.users_id AS users_id, usr.users_nick AS users_nick, '
         . 'usr.users_surname AS users_surname, usr.users_hidden AS users_hidden, usr.users_active AS users_active, '
-        . 'usr.users_delete AS users_delete, usr.users_name AS users_name, egt.eventguests_id AS eventguests_id, '
+        . 'usr.users_delete AS users_delete, usr.users_name AS users_name, usr.users_phone AS users_phone, '
+        . 'usr.users_mobile AS users_mobile, egt.eventguests_id AS eventguests_id, egt.eventguests_notice AS eventguests_notice, '
         . 'egt.eventguests_phone AS eventguests_phone, egt.eventguests_mobile AS eventguests_mobile';
 $cs_eventguests = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $eventguests_loop = count($cs_eventguests);
@@ -73,10 +74,22 @@ for($run=0; $run<$eventguests_loop; $run++) {
   else
     $data['eventguests'][$run]['name'] = '';
 
+  if(empty($cs_eventguests[$run]['eventguests_phone']))
+    if(in_array('users_phone',$hidden))
+      $cs_eventguests[$run]['eventguests_phone'] = empty($allow) ? '' : cs_html_italic(1) . $cs_eventguests[$run]['users_phone'] . cs_html_italic(0);
+    elseif(!empty($allow))
+      $cs_eventguests[$run]['eventguests_phone'] = $cs_eventguests[$run]['users_phone'];
+  if(empty($cs_eventguests[$run]['eventguests_mobile']))
+    if(in_array('users_mobile',$hidden))
+      $cs_eventguests[$run]['eventguests_mobile'] = empty($allow) ? '' : cs_html_italic(1) . $cs_eventguests[$run]['users_mobile'] . cs_html_italic(0);
+    elseif(!empty($allow))
+      $cs_eventguests[$run]['eventguests_mobile'] = $cs_eventguests[$run]['users_phone'];
+
   $data['eventguests'][$run]['user'] = empty($cs_eventguests[$run]['users_id']) ? '-' : cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
-  $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since'],1);
+  $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since']);
   $data['eventguests'][$run]['phone'] = empty($cs_eventguests[$run]['eventguests_phone']) ? '&nbsp;' : cs_icon('linphone') . $cs_eventguests[$run]['eventguests_phone'];
   $data['eventguests'][$run]['mobile'] = empty($cs_eventguests[$run]['eventguests_mobile']) ? '&nbsp;' : cs_icon('sms_protocol') . $cs_eventguests[$run]['eventguests_mobile'];
+  $data['eventguests'][$run]['notice'] = empty($cs_eventguests[$run]['eventguests_notice']) ? '&nbsp;' : cs_icon('txt',16,$cs_lang['notice']);
   $data['eventguests'][$run]['edit'] = cs_link(cs_icon('edit',16,$cs_lang['edit']),'events','guestsadm','id=' . $cs_eventguests[$run]['eventguests_id'],0,$cs_lang['edit']);
   $data['eventguests'][$run]['remove'] = cs_link(cs_icon('editdelete',16,$cs_lang['remove']),'events','guestsdel','id=' . $cs_eventguests[$run]['eventguests_id'],0,$cs_lang['remove']);
 }

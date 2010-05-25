@@ -20,7 +20,6 @@ if(isset($_POST['submit'])) {
   $users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
 
   $data['eventguests']['users_id'] = 0;
-  $data['eventguests']['eventguests_since'] = cs_time();
   $data['eventguests']['eventguests_name'] = empty($_POST['eventguests_name']) ? '' : $_POST['eventguests_name'];
   $data['eventguests']['eventguests_surname'] = empty($_POST['eventguests_surname']) ? '' : $_POST['eventguests_surname'];
   $data['eventguests']['eventguests_phone'] = empty($_POST['eventguests_phone']) ? '' : $_POST['eventguests_phone'];
@@ -81,7 +80,6 @@ if(!empty($errormsg) OR !isset($_POST['submit'])) {
   echo cs_subtemplate(__FILE__,$data,'events','guestsadm');
 }
 else {
-
   $eventguests_cells = array_keys($data['eventguests']);
   $eventguests_save = array_values($data['eventguests']);
   cs_sql_update(__FILE__,'eventguests',$eventguests_cells,$eventguests_save, $eventguests_id);

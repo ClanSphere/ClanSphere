@@ -36,17 +36,21 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
+    <td class="headb">{lang:number}</td>
     <td class="headb">{lang:req_surname}</td>
     <td class="headb">{lang:req_name}</td>
-    <td class="headb">{lang:time}</td>
-    <td class="headb">{lang:contact}</td>
+    <td class="headb">{lang:age}</td>
+    <td class="headb" style="min-width: 140px">{lang:contact}</td>
+    <td class="headb" style="min-width: 100px">{lang:notice}</td>
   </tr>
   {loop:eventguests}
   <tr>
+    <td class="rightc">{eventguests:number}</td>
     <td class="leftc">{eventguests:surname}</td>
     <td class="leftc">{eventguests:name}</td>
-    <td class="leftc">{eventguests:since}</td>
+    <td class="centerc">{eventguests:age}</td>
     <td class="leftc">{eventguests:phone}<br />{eventguests:mobile}</td>
+    <td class="leftc">{eventguests:notice}</td>
   </tr>
   {stop:eventguests}
 </table>

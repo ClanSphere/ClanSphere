@@ -164,3 +164,5 @@ $cs_lang['no_user']           = '- Kein Benutzer selektiert';
 $cs_lang['user_event_exists'] = '- Der Benutzer ist bereits angemeldet';
 $cs_lang['print_view']        = 'Druckansicht';
 $cs_lang['contact']           = 'Kontakt';
+$cs_lang['number']            = 'Nr.';
+$cs_lang['age']               = 'Alter';
