@@ -15,6 +15,9 @@ $data['eventguests'] = cs_sql_select(__FILE__, 'eventguests', '*', 'eventguests_
 $cs_user = cs_sql_select(__FILE__, 'users', 'users_nick', 'users_id = ' . $data['eventguests']['users_id']);
 $users_nick = empty($cs_user['users_nick']) ? '' : $cs_user['users_nick'];
 
+if(empty($data['eventguests']['eventguests_age']))
+  $data['eventguests']['eventguests_age'] = '';
+
 if(isset($_POST['submit'])) {
 
   $users_nick = empty($_REQUEST['users_nick']) ? '' : $_REQUEST['users_nick'];
