@@ -17,7 +17,7 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">Spiel</td>
+  <td class="headb">{lang:game}</td>
   <td class="headb">{sort:date} {lang:date}</td>
   <td class="headb">{sort:team1} {lang:team1}</td>
   <td class="headb">{sort:team2} {lang:team2}</td>
