@@ -3,11 +3,12 @@
 // $Id$
 
 $cs_lang = cs_translate('events');
+$max = 4;
 
 $from = 'events evs INNER JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
 $select = 'evs.events_id AS events_id, evs.events_name AS events_name, evs.events_time AS events_time';
 $upcome = "evs.events_time > '" . cs_time() . "' AND cat.categories_access <= " . $account['access_events'];
-$cs_events = cs_sql_select(__FILE__,$from,$select,$upcome,'evs.events_time',0,4);
+$cs_events = cs_sql_select(__FILE__,$from,$select,$upcome,'evs.events_time',0,$max);
 $events_loop = count($cs_events);
 
 $data = array();
