@@ -50,7 +50,7 @@
     <td class="headb">{lang:req_name}</td>
     <td class="headb">{lang:age}</td>
     <td class="headb">{lang:status}</td>
-    <td class="headb" style="min-width: 150px">{lang:contact}</td>
+    <td class="headb" style="min-width: 100px">{lang:contact}</td>
     <td class="headb" style="min-width: 100px">{lang:notice}</td>
   </tr>
   {loop:eventguests}

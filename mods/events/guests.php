@@ -97,9 +97,9 @@ for($run=0; $run<$eventguests_loop; $run++) {
       $cs_eventguests[$run]['eventguests_mobile'] = $cs_eventguests[$run]['users_mobile'];
 
   $data['eventguests'][$run]['user'] = empty($cs_eventguests[$run]['users_id']) ? '-' : cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
-  $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since'], 1);
-  $data['eventguests'][$run]['phone'] = empty($cs_eventguests[$run]['eventguests_phone']) ? '&nbsp;' : cs_icon('linphone') . $cs_eventguests[$run]['eventguests_phone'];
-  $data['eventguests'][$run]['mobile'] = empty($cs_eventguests[$run]['eventguests_mobile']) ? '&nbsp;' : cs_icon('sms_protocol') . $cs_eventguests[$run]['eventguests_mobile'];
+  $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since']);
+  $data['eventguests'][$run]['phone'] = empty($cs_eventguests[$run]['eventguests_phone']) ? '&nbsp;' : cs_html_img('symbols/' . $cs_main['img_path'] . '/16/linphone.' . $cs_main['img_ext'],16,16,'title="'. $cs_eventguests[$run]['eventguests_phone'] .'"');
+  $data['eventguests'][$run]['mobile'] = empty($cs_eventguests[$run]['eventguests_mobile']) ? '&nbsp;' : cs_html_img('symbols/' . $cs_main['img_path'] . '/16/sms_protocol.' . $cs_main['img_ext'],16,16,'title="'. $cs_eventguests[$run]['eventguests_mobile'] .'"');
   $data['eventguests'][$run]['status'] = $cs_lang['status_' . $cs_eventguests[$run]['eventguests_status']];
   $data['eventguests'][$run]['notice'] = empty($cs_eventguests[$run]['eventguests_notice']) ? '&nbsp;' : cs_icon('txt',16,$cs_lang['notice']);
   $data['eventguests'][$run]['edit'] = cs_link(cs_icon('edit',16,$cs_lang['edit']),'events','guestsadm','id=' . $cs_eventguests[$run]['eventguests_id'],0,$cs_lang['edit']);

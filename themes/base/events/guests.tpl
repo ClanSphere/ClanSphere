@@ -66,10 +66,10 @@
   <tr>
     <td class="headb">{sort:user} {lang:user}</td>
     <td class="headb">{sort:name} {lang:name}</td>
-    <td class="headb">{sort:time} {lang:time}</td>
+    <td class="headb">{sort:time} {lang:date}</td>
     <td class="headb">{sort:status} {lang:status}</td>
 {if:admin}
-    <td class="headb" style="min-width: 150px">{lang:contact}</td>
+    <td class="headb">{lang:contact}</td>
     <td class="headb" colspan="3">{lang:options}</td>
 {stop:admin}
   </tr>

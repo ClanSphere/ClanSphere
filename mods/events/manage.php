@@ -40,6 +40,7 @@ $count_events = count($data['events']);
 
 for ($run = 0; $run < $count_events; $run++) {
   $data['events'][$run]['time'] = cs_date('unix',$data['events'][$run]['events_time'],1);
+  $data['events'][$run]['signed'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$run]['events_id'] . "' AND eventguests_status < 4");
   $data['events'][$run]['guests'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $data['events'][$run]['events_id'] . "' AND eventguests_status > 3");
   $data['events'][$run]['canceled'] = empty($data['events'][$run]['events_cancel']) ? '' : ' - ' . $cs_lang['canceled'];
   $data['events'][$run]['class'] = $data['events'][$run]['events_time'] > cs_time() ? 'b' : 'c';

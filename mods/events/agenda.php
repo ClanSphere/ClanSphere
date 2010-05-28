@@ -32,7 +32,7 @@ $data['year']['current'] = $year;
 $data['year']['next'] = (2037 < $year) ? '' : cs_link(($year + 1), 'events','agenda','year=' . ($year + 1) . '&amp;month=' . $month);
 $data['head']['time'] = $cs_lang[$nom] . ' ' . $year;
 
-$order = 'events_time ASC';
+$order = 'events_time DESC';
 $where = "events_time >= '" . $min . "' AND events_time <= '" . $max . "'";
 $cells = 'evs.events_name AS events_name, evs.events_time AS events_time, evs.events_guestsmax AS events_guestsmax, evs.events_id AS events_id, evs.categories_id AS categories_id, cat.categories_name AS categories_name, cat.categories_picture AS categories_picture, evs.events_cancel AS events_cancel';
 $tables = 'events evs INNER JOIN {pre}_categories cat ON evs.categories_id = cat.categories_id';
