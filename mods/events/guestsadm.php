@@ -82,6 +82,10 @@ if(!empty($errormsg) OR !isset($_POST['submit'])) {
   if(empty($data['eventguests']['eventguests_phone'])) $data['eventguests']['eventguests_phone'] = '';
   if(empty($data['eventguests']['eventguests_mobile'])) $data['eventguests']['eventguests_mobile'] = '';
 
+  $data['select'] = array(0 => '', 3 => '', 4 => '', 5 => '');
+  $select = $data['eventguests']['eventguests_status'];
+  $data['select'][$select] = ' selected ="selected"';
+
   echo cs_subtemplate(__FILE__,$data,'events','guestsadm');
 }
 else {
