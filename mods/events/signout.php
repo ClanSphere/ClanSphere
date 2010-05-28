@@ -27,7 +27,7 @@ if($events['events_time'] < cs_time()) {
 
 if($eventguests['eventguests_status'] > 3) {
   $error++;
-  $errormsg .= $cs_lang['event_payed'] . cs_html_br(1);
+  $errormsg .= $cs_lang['event_paid'] . cs_html_br(1);
 }
 
 if(isset($_GET['agree']) AND empty($error)) {

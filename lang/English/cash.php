@@ -25,7 +25,7 @@ $cs_lang['now'] = 'Amount:';
 $cs_lang['nick'] = 'User';
 $cs_lang['mycash'] = 'My payments';
 $cs_lang['user_money'] = 'Monthly outgo/user:';
-$cs_lang['akt_users_month'] = 'Payed this month:';
+$cs_lang['akt_users_month'] = 'paid this month:';
 $cs_lang['user_cash_month'] = 'Users Payments/nonpayments';
 $cs_lang['body_details'] = 'Detail of the selected payment';
 $cs_lang['low_access'] = 'You have not enough access to view this payment';
@@ -59,5 +59,5 @@ $cs_lang['month_out'] = 'Monthly outgo:';
 $cs_lang['create_options'] = 'Options successfully changed.';
 
 // Users_view
-$cs_lang['user_cash_ok'] = 'Payed users';
-$cs_lang['user_cash_no'] = 'Nonpayed users';
+$cs_lang['user_cash_ok'] = 'paid users';
+$cs_lang['user_cash_no'] = 'Nonpaid users';
