@@ -26,6 +26,7 @@ $data['count']['status_booked'] = $data['count']['status_4'] + $data['count']['s
 $data['count']['status_available'] = $data['events']['events_guestsmax'] - $data['count']['status_booked'];
 $data['head']['count'] = $data['count']['status_0'] + $data['count']['status_3'] + $data['count']['status_booked'];
 
+$order = 'egt.eventguests_status DESC, usr.users_surname ASC, egt.eventguests_surname ASC';
 $from = 'eventguests egt LEFT JOIN {pre}_users usr ON egt.users_id = usr.users_id';
 $select = 'egt.eventguests_name AS eventguests_name, egt.eventguests_surname AS eventguests_surname, '
         . 'egt.eventguests_since AS eventguests_since, egt.users_id AS users_id, usr.users_nick AS users_nick, '
@@ -34,7 +35,7 @@ $select = 'egt.eventguests_name AS eventguests_name, egt.eventguests_surname AS 
         . 'usr.users_mobile AS users_mobile, usr.users_age AS users_age, egt.eventguests_notice AS eventguests_notice, '
         . 'egt.eventguests_phone AS eventguests_phone, egt.eventguests_mobile AS eventguests_mobile, '
         . 'egt.eventguests_age AS eventguests_age, egt.eventguests_status AS eventguests_status';
-$cs_eventguests = cs_sql_select(__FILE__,$from,$select,$where,'egt.eventguests_status DESC, egt.eventguests_since ASC',0,0);
+$cs_eventguests = cs_sql_select(__FILE__,$from,$select,$where,$order,0,0);
 $eventguests_loop = count($cs_eventguests);
 
 if(empty($eventguests_loop))

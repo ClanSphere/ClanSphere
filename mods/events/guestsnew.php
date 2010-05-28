@@ -24,9 +24,18 @@ $data['eventguests']['eventguests_notice'] = empty($_POST['eventguests_notice'])
 $data['eventguests']['eventguests_age'] = empty($_POST['eventguests_age']) ? '' : $_POST['eventguests_age'];
 $data['eventguests']['eventguests_status'] = empty($_POST['eventguests_status']) ? 0 : $_POST['eventguests_status'];
 
+$columns = 'events_time, events_name, events_needage, events_guestsmax, events_id';
+$where = "events_id = '" . $data['eventguests']['events_id'] . "'";
+$data['events'] = cs_sql_select(__FILE__, 'events', $columns, $where);
+
 if(isset($_POST['submit'])) {
 
   $errormsg = '';
+
+  $count_where = "events_id = '" . $data['eventguests']['events_id'] . "' AND eventguests_status > 3";
+  $count = cs_sql_count(__FILE__, 'eventguests', $count_where);
+  if($count >= $data['events']['events_guestsmax'] AND $data['eventguests']['eventguests_status'] > 3)
+    $errormsg .= $cs_lang['event_full'] . cs_html_br(1);
 
   if(empty($data['eventguests']['events_id']))
     $errormsg .= $cs_lang['no_event'] . cs_html_br(1);
@@ -72,10 +81,6 @@ if(!empty($errormsg))
 
 if(!empty($errormsg) OR !isset($_POST['submit'])) {
   $data['url']['form'] = cs_url('events','guestsnew');
-
-  $columns = 'events_time, events_name, events_needage, events_id';
-  $where = "events_id = '" . $data['eventguests']['events_id'] . "'";
-  $data['events'] = cs_sql_select(__FILE__, 'events', $columns, $where);
 
   $data['events']['time'] = cs_date('unix',$data['events']['events_time'],1);
 
