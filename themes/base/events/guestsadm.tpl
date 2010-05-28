@@ -51,6 +51,17 @@
       </td>
     </tr>
     <tr>
+      <td class="leftc">{icon:status_unknown} {lang:status}</td>
+      <td class="leftb">
+        <select name="eventguests_status">
+          <option value="0"{select:0}>{lang:status_0}</option>
+          <option value="3"{select:3}>{lang:status_3}</option>
+          <option value="4"{select:4}>{lang:status_4}</option>
+          <option value="5"{select:5}>{lang:status_5}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:kedit} {lang:notice}</td>
       <td class="leftb">
         <textarea class="rte_abcode" name="eventguests_notice" cols="50" rows="4">{eventguests:eventguests_notice}</textarea>

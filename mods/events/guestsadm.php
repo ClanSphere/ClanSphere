@@ -30,6 +30,7 @@ if(isset($_POST['submit'])) {
   $data['eventguests']['eventguests_residence'] = empty($_POST['eventguests_residence']) ? '' : $_POST['eventguests_residence'];
   $data['eventguests']['eventguests_notice'] = empty($_POST['eventguests_notice']) ? '' : $_POST['eventguests_notice'];
   $data['eventguests']['eventguests_age'] = empty($_POST['eventguests_age']) ? '' : $_POST['eventguests_age'];
+  $data['eventguests']['eventguests_status'] = empty($_POST['eventguests_status']) ? 0 : $_POST['eventguests_status'];
 
   $errormsg = '';
 

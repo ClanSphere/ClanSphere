@@ -22,6 +22,7 @@ $data['eventguests']['eventguests_mobile'] = empty($_POST['eventguests_mobile'])
 $data['eventguests']['eventguests_residence'] = empty($_POST['eventguests_residence']) ? '' : $_POST['eventguests_residence'];
 $data['eventguests']['eventguests_notice'] = empty($_POST['eventguests_notice']) ? '' : $_POST['eventguests_notice'];
 $data['eventguests']['eventguests_age'] = empty($_POST['eventguests_age']) ? '' : $_POST['eventguests_age'];
+$data['eventguests']['eventguests_status'] = empty($_POST['eventguests_status']) ? 0 : $_POST['eventguests_status'];
 
 if(isset($_POST['submit'])) {
 
@@ -79,6 +80,10 @@ if(!empty($errormsg) OR !isset($_POST['submit'])) {
   $data['events']['time'] = cs_date('unix',$data['events']['events_time'],1);
 
   $data['users']['nick'] = cs_secure($users_nick);
+
+  $data['select'] = array(0 => '', 3 => '', 4 => '', 5 => '');
+  $select = $data['eventguests']['eventguests_status'];
+  $data['select'][$select] = ' selected ="selected"';
 
   echo cs_subtemplate(__FILE__,$data,'events','guestsnew');
 }

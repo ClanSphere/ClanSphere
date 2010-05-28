@@ -46,6 +46,7 @@ UPDATE {pre}_replays SET replays_mirror_urls = replays_mirrors;
 ALTER TABLE {pre}_replays DROP replays_mirrors;
 
 ALTER TABLE {pre}_eventguests ADD eventguests_age int(4) NOT NULL default '0';
+ALTER TABLE {pre}_eventguests ADD eventguests_status int(2) NOT NULL default '0';
 
 ALTER TABLE {pre}_abcode ADD abcode_order int(2) NOT NULL default '0';
 CREATE INDEX {pre}_abcode_abcode_order_index ON {pre}_abcode (abcode_order);
