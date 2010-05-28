@@ -176,5 +176,5 @@ $cs_lang['status']            = 'Status';
 $cs_lang['status_0']          = 'Submitted';
 $cs_lang['status_3']          = 'Waiting list';
 $cs_lang['status_4']          = 'Confirmed';
-$cs_lang['status_5']          = 'paid';
+$cs_lang['status_5']          = 'Paid';
 $cs_lang['status_info']       = 'Attention: Your participation is not guaranteed until your status changes to confirmed or paid';
