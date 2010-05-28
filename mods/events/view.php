@@ -14,7 +14,7 @@ $data['head']['getmsg'] = cs_getmsg();
 
 $data['if']['topinfo'] = 0;
 
-if(empty($cs_events['events_cancel']) AND cs_time() < $cs_events['events_time']) {
+if(empty($cs_events['events_cancel']) AND !empty($cs_events['events_guestsmax']) AND cs_time() < $cs_events['events_time']) {
 
   $data['if']['topinfo'] = 1;
   $data['head']['status'] = $cs_lang['signed'] . ': ';

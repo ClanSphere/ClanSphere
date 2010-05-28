@@ -12,9 +12,9 @@ $error = '';
 $where = "events_id = '" . $events_id . "' AND users_id ='" . $account['users_id'] . "'";
 $eventguests = cs_sql_count(__FILE__,'eventguests',$where);
 $where2 = "events_id = '" . $events_id . "'";
-$events = cs_sql_select(__FILE__,'events','events_time, events_cancel, events_needage',$where2);
+$events = cs_sql_select(__FILE__,'events','events_time, events_cancel, events_needage, events_guestsmax',$where2);
 
-if(empty($events_id) OR empty($events))
+if(empty($events_id) OR empty($events) OR empty($events['events_guestsmax']))
   $error .= $cs_lang['no_event'] . cs_html_br(1);
 elseif(($events['events_time'] < cs_time()) OR !empty($events['events_cancel']))
   $error .= $cs_lang['err_time'] . cs_html_br(1);
