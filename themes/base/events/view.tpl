@@ -5,13 +5,21 @@
 	<tr>
 		<td class="leftc">{lang:body_view}</td>
 	</tr>
-{if:topinfo}
-	<tr>
-		<td class="centerb">{head:status}</td>
-	</tr>
-{stop:topinfo}
 </table>
 <br />
+{if:topinfo}
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+{if:statusinfo}
+	<tr>
+		<td class="centerb">{lang:status_info}</td>
+	</tr>
+{stop:statusinfo}
+	<tr>
+		<td class="centerc">{head:status}</td>
+	</tr>
+</table>
+<br />
+{stop:topinfo}
 {head:getmsg}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
 	<tr>

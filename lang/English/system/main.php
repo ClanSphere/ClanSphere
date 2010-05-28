@@ -36,6 +36,7 @@ $cs_lang['no']  = 'No';
 $cs_lang['no_data']  = 'No data found.';
 $cs_lang['options']  = 'Options';
 $cs_lang['preview']  = 'Preview';
+$cs_lang['print'] = 'Print';
 $cs_lang['remove']  = 'Remove';
 $cs_lang['reset']  = 'Reset';
 $cs_lang['save']  = 'Save';

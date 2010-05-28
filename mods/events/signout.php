@@ -25,6 +25,11 @@ if($events['events_time'] < cs_time()) {
   $errormsg .= $cs_lang['event_done'] . cs_html_br(1);
 }
 
+if($eventguests['eventguests_status'] > 3) {
+  $error++;
+  $errormsg .= $cs_lang['event_payed'] . cs_html_br(1);
+}
+
 if(isset($_GET['agree']) AND empty($error)) {
   cs_sql_delete(__FILE__,'eventguests',$eventguests_id);
 

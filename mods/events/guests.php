@@ -94,7 +94,7 @@ for($run=0; $run<$eventguests_loop; $run++) {
     if(in_array('users_mobile',$hidden))
       $cs_eventguests[$run]['eventguests_mobile'] = empty($allow) ? '' : cs_html_italic(1) . $cs_eventguests[$run]['users_mobile'] . cs_html_italic(0);
     elseif(!empty($allow))
-      $cs_eventguests[$run]['eventguests_mobile'] = $cs_eventguests[$run]['users_phone'];
+      $cs_eventguests[$run]['eventguests_mobile'] = $cs_eventguests[$run]['users_mobile'];
 
   $data['eventguests'][$run]['user'] = empty($cs_eventguests[$run]['users_id']) ? '-' : cs_user($cs_eventguests[$run]['users_id'],$cs_eventguests[$run]['users_nick'], $cs_eventguests[$run]['users_active'], $cs_eventguests[$run]['users_delete']);
   $data['eventguests'][$run]['since'] = cs_date('unix',$cs_eventguests[$run]['eventguests_since'], 1);

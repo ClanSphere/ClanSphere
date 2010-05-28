@@ -13,25 +13,28 @@ $cs_events = cs_sql_select(__FILE__,'events','*',"events_id = '" . $events_id . 
 $data['head']['getmsg'] = cs_getmsg();
 
 $data['if']['topinfo'] = 0;
+$data['if']['statusinfo'] = 0;
 
 if(empty($cs_events['events_cancel']) AND !empty($cs_events['events_guestsmax']) AND cs_time() < $cs_events['events_time']) {
 
   $data['if']['topinfo'] = 1;
-  $data['head']['status'] = $cs_lang['signed'] . ': ';
+  $data['if']['statusinfo'] = 1;
+  $data['head']['status'] = $cs_lang['status'] . ': ';
 
   if(empty($account['users_id']))
-    $status = array('eventguests_since' => 0, 'eventguests_id' => 0);
+    $status = array('eventguests_id' => 0, 'eventguests_since' => 0, 'eventguests_status' => 0);
   else {
     $where = "events_id = '" . $events_id . "' AND users_id = '" . $account['users_id'] . "'";
-    $status = cs_sql_select(__FILE__,'eventguests','eventguests_id, eventguests_since',$where);
+    $status = cs_sql_select(__FILE__,'eventguests','eventguests_id, eventguests_since, eventguests_status',$where);
   }
 
-  if(empty($status['eventguests_since'])) {
-    $data['head']['status'] .= $cs_lang['no'] . ' -> ';
+  if(empty($status['eventguests_since']))
     $data['head']['status'] .= cs_link($cs_lang['signin'],'events','signin','id=' . $events_id);
-  }
   else {
-    $data['head']['status'] .= $cs_lang['yes'] . ' -> ';
+    if($status['eventguests_status'] > 3)
+      $data['if']['statusinfo'] = 0;
+
+    $data['head']['status'] .= $cs_lang['status_' . $status['eventguests_status']] . ' -> ';
     $data['head']['status'] .= cs_link($cs_lang['signout'],'events','signout','id=' . $status['eventguests_id']);
   }
 }

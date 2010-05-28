@@ -15,9 +15,9 @@ $order = $cs_sort[$sort];
 $data['lang']['getmsg'] = cs_getmsg();
 $data['lang']['agenda'] = cs_link($cs_lang['agenda'],'events','agenda');
 
-$select = 'evs.events_name AS events_name, evs.events_id AS events_id, ';
-$select .= 'evs.events_time AS events_time, evs.events_cancel AS events_cancel, ';
-$select .= 'evs.events_guestsmax AS events_guestsmax, egt.eventguests_id AS eventguests_id';
+$select = 'evs.events_name AS events_name, evs.events_id AS events_id, evs.events_time AS events_time, '
+        . 'evs.events_cancel AS events_cancel, evs.events_guestsmax AS events_guestsmax, '
+        . 'egt.eventguests_id AS eventguests_id, egt.eventguests_status AS eventguests_status';
 $from = 'eventguests egt INNER JOIN {pre}_events evs ON egt.events_id = evs.events_id';
 $where = 'events_time > ' . cs_time() . ' AND users_id = ' . $account['users_id'];
 
@@ -37,6 +37,7 @@ for($run=0; $run<$events_loop; $run++) {
   $data['events'][$run]['guests'] = cs_sql_count(__FILE__, 'eventguests', "events_id = '" . $cs_events[$run]['events_id'] . "'");
   $data['events'][$run]['guestsmax'] = $cs_events[$run]['events_guestsmax'];
   $data['events'][$run]['canceled'] = empty($cs_events[$run]['events_cancel']) ? '' : ' - ' . $cs_lang['canceled'];
+  $data['events'][$run]['status'] = $cs_lang['status_' . $cs_events[$run]['eventguests_status']];
   $data['events'][$run]['remove'] = cs_link(cs_icon('cancel',16,$cs_lang['signout']),'events','signout','id=' . $cs_events[$run]['eventguests_id'],0,$cs_lang['remove']);
 }
 

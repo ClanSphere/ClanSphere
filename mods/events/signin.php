@@ -21,7 +21,6 @@ elseif(($events['events_time'] < cs_time()) OR !empty($events['events_cancel']))
 elseif(!empty($eventguests))
   $error .= $cs_lang['user_found'] . cs_html_br(1);
 else {
-  
   $fields = 'users_age, users_name, users_surname, users_phone, users_mobile, users_adress, users_postalcode, users_place, users_country';
   $where3 = "users_id = '" . $account['users_id'] . "'";
   $cs_user = cs_sql_select(__FILE__,'users',$fields,$where3);  
@@ -49,8 +48,13 @@ else {
 }
   
 if(empty($error)) {
-  $array_keys = array('events_id','users_id','eventguests_since');
-  $array_values = array($events_id,$account['users_id'],cs_time());
+
+  $count_where = "events_id = '" . $events_id . "' AND eventguests_status > 3";
+  $count = cs_sql_count(__FILE__, 'eventguests', $count_where);
+  $status = $events['events_guestsmax'] > $count ? 0 : 3;
+
+  $array_keys = array('events_id','users_id','eventguests_since','eventguests_status');
+  $array_values = array($events_id,$account['users_id'],cs_time(),$status);
   cs_sql_insert(__FILE__,'eventguests',$array_keys,$array_values);
 
   $msg = $cs_lang['body_signin'];
