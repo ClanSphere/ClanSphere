@@ -16,7 +16,7 @@ $(function() {
   
   $('#content').bind('load', function() { 
   
-    $(this).find('textarea.editor').each(function() {
+    $(this).find('textarea.rte_html').each(function() {
       var instance = CKEDITOR.instances[this.id];
       if(instance) {
           CKEDITOR.remove(instance);
@@ -25,6 +25,6 @@ $(function() {
     
   });
   
-  $( 'textarea.editor' ).ckeditor(null, options);
+  $( 'textarea.rte_html' ).ckeditor(null, options);
 
 });
