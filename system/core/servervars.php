@@ -80,6 +80,9 @@ $cs_main['php_self'] = pathinfo($_SERVER['PHP_SELF']);
 if($cs_main['php_self']['dirname']{0} == '\\')
   $cs_main['php_self']['dirname']{0} = '/';
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
+# available since php 5.2.0
+if(!isset($cs_main['php_self']['filename']))
+  $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
 
 $domain = '';
 if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
