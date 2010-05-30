@@ -61,6 +61,9 @@ var Clansphere = {
     
         Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
         Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);
+        
+        $(Clansphere.ajax.options.contentSelector).trigger('load');
+        
         document.title = response.title;
         for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
         if(Clansphere.ajax.scrollTarget) {
