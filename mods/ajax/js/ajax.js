@@ -269,8 +269,13 @@ var Clansphere = {
       } else alert("[Clansphere] Failed to process the XHRequest.");
     },
     
-    upload_complete: function(upload_name, file_name) {
-      document.getElementById('upload_' + upload_name).innerHTML = "<a href=\"javascript:Clansphere.ajax.remove_file('" + upload_name + "');\">" + Clansphere.ajax.options.label_upload_delete  + "</a> | " + file_name;
+    upload_complete: function(upload) {
+      if(upload.error) {
+        Clansphere.ajax.remove_complete(upload.name);
+        alert('Upload failed! Please try again');
+      } else {
+        document.getElementById('upload_' + upload.name).innerHTML = "<a href=\"javascript:Clansphere.ajax.remove_file('" + upload.name + "');\">" + Clansphere.ajax.options.label_upload_delete  + "</a> | " + upload.original_name + ' (' + upload.size + ')';
+      }
       Clansphere.ajax.active_upload_count -= 1;
     },
 
@@ -284,13 +289,13 @@ var Clansphere = {
     },
 
     remove_complete: function(upload_name) {
-      element = document.getElementById('upload_' + upload_name).parentNode;
+      element = document.getElementById('upload_' + upload_name);
       new_file_input = document.createElement('input');
       new_file_input.type = 'file';
       new_file_input.name = upload_name;
-      new_file_input.onchange = function() { upload_file(this); };
+      new_file_input.onchange = function() { Clansphere.ajax.upload_file(this); };
       element.innerHTML = '';
-      element.appendChild(new_file_input);
+      $(element).html(new_file_input);
     },
     
     upload_file: function(element) {
@@ -323,7 +328,7 @@ var Clansphere = {
       enctype = form.getAttributeNode("enctype");
       enctype.value = "multipart/form-data";
 
-      element.parentNode.innerHTML = "<div id=\"upload_"+element.name+"\">" + Clansphere.ajax.options.label_upload_progress + "</div>";
+      $(element).replaceWith("<div id=\"upload_"+element.name+"\">" + Clansphere.ajax.options.label_upload_progress + "</div>");
       document.getElementById('upload_frame_div').appendChild(form);
       upload_name = document.createElement("input");
       upload_name.type = 'hidden';
