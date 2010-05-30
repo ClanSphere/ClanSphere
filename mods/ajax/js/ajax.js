@@ -113,19 +113,23 @@ var Clansphere = {
     convertLinksToAnchor: function (element) {
       element = $(element);
       element.find('a').each(function(i,e){
-        if(!$(e).hasClass('noajax')) {
+        var jEle = $(e);
+        if(!jEle.hasClass('noajax')) {
           if (!Clansphere.ajax.mod_rewrite) {
             e.href = e.href.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "#mod=$2");
           } else {
         	var regexp = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?/" + Clansphere.ajax.index + "/(.+?)","g");
         	e.href = e.href.replace(regexp, "#$1");
           }
+          if(!jEle.data('events') || !jEle.data('events').click) {
+            jEle.click(function(e) {
+              if(this.href.substr(0,7)=='http://') {
+        	      Clansphere.ajax.forceReload = true;
+        	    }
+        	  });
+      	  }
         }
-      }).click(function(e) {
-        if(this.href.substr(0,7)=='http://') {
-    	    Clansphere.ajax.forceReload = true;
-    	  }
-    	});
+      });
       
       element
       
