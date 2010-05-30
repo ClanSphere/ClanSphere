@@ -302,14 +302,14 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       $ajaxes[] = 'func_queries';
      }
     if (!empty($ajaxes)) {
-      if (strpos($cs_temp_get,'id="cs_users_navlogin"') === false)
-        $cs_temp_get = preg_replace("={users:navlogin(.*?)}=i", "<div id=\"cs_users_navlogin\">{users:navlogin\\1}</div>", $cs_temp_get);
+      if (strpos($cs_temp_get,'id="cs_navlist_users_navlogin"') === false)
+        $cs_temp_get = preg_replace("={users:navlogin(.*?)}=i", "<div id=\"cs_navlist_users_navlogin\" class=\"csp_navlist\">{users:navlogin\\1}</div>", $cs_temp_get);
       $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navyes','func_parse','func_queries');
       foreach ($ajaxes as $ajax) {
         $placeholder = '{'.str_replace('_',':',$ajax).'}';
-        if (strpos($cs_temp_get,'id="cs_'.$ajax.'"') === false) {
+        if (strpos($cs_temp_get,'id="cs_navlist_'.$ajax.'"') === false) {
           $el = !in_array($ajax,$spans) ? 'div' : 'span';
-          $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_'.$ajax.'" class="csp_navlist">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
+          $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_navlist_'.$ajax.'" class="csp_navlist">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
       }
     }
   }

@@ -13,6 +13,7 @@ var Clansphere = {
       contentSelector: "#content",
       debugSelector: '#debug',
       navlistSelector: '.csp_navlist',
+      navlistPrefix: 'cs_navlist_',
       label_upload_delete: 'Delete',
       label_upload_progress: 'Uploading File...',
       error_upload_progress: 'Upload still in progress! Formular can not be sumited until file is uploaded completly.'
@@ -174,11 +175,10 @@ var Clansphere = {
     {
       navlists = [];
       $(element).find(Clansphere.ajax.options.navlistSelector).each(function(index) {
-        navlists.push(this.id);
-        
+        navlists.push(this.id.substr(Clansphere.ajax.options.navlistPrefix.length));
       });
       if(navlists.length)
-        return '&navlists=' + navlists.join(',');
+        return '&xhr_navlists=' + navlists.join(',');
       else return '';
     },
     
@@ -198,8 +198,10 @@ var Clansphere = {
     
     updateNavlists: function(navlists) {
       for(id in navlists) {
-        if(document.getElementById(id)) {
-          document.getElementById(id).innerHTML = navlists[id];
+        if(document.getElementById(Clansphere.ajax.options.navlistPrefix + id)) {
+          document.getElementById(Clansphere.ajax.options.navlistPrefix + id).innerHTML = navlists[id];
+          Clansphere.ajax.convertLinksToAnchor('#' + Clansphere.ajax.options.navlistPrefix + id);
+          Clansphere.ajax.convertForms('#' + Clansphere.ajax.options.navlistPrefix + id);
         }
       }
     },
