@@ -290,24 +290,32 @@ function cs_init($predefined) {
 
   if(!empty($predefined['init_tpl'])) {
 	  if ($cs_main['ajaxrequest'] === true) {
-	  	$content = cs_contentload($cs_main['show']);
-	  	echo cs_ajaxwrap($content);
+	  	echo cs_ajaxwrap();
 	  }
 	  else
 	    echo cs_template($cs_micro, $predefined['tpl_file']);
   }
 }
 
-function cs_ajaxwrap($content) {
+function cs_ajaxwrap() {
 	
 	global $cs_main;
 	$cs_act_lang = cs_translate($cs_main['mod']); 
-
 	$json = array();
-	$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
-	$json['location'] = str_replace(array('&debug', '&xhr=1', '&xhr','params=/'),'', preg_replace('/[&\?]?(xhr_navlists=)[^&]*/s','', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ) );
-	$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
-	$json['content'] = $content;
+	
+	if(!isset($_REQUEST['xhr_nocontent'])) {
+		
+		$content = cs_contentload($cs_main['show']);
+
+		$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
+		$json['location'] = str_replace(array('&debug', '&xhr=1', '&xhr', '&xhr_nocontent=1', '&xhr_nocontent','params=/'),'', preg_replace('/[&\?]?(xhr_navlists=)[^&]*/s','', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ) );
+		if(isset($cs_main['ajax_js'])) {
+			$json['scripts'] = $cs_main['ajax_js'];
+		}
+		$json['content'] = $content;
+		
+	}
+	
 	
 	if($_REQUEST['xhr_navlists']) {
 		$navs = explode(',', $_REQUEST['xhr_navlists']);

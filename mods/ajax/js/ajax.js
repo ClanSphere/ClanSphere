@@ -11,12 +11,14 @@ var Clansphere = {
     userIsActive: true,
     urlChecker: null,
     navlistRefresher: null,
+    navlistPaused: false,
     options: {
       checkURLInterval: 50,
       refreshNavlistsInterval: 10000,
       loadingImage: '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading..." />',
       contentSelector: "#content",
       debugSelector: '#debug',
+      debugNavlistRequets: false,
       navlistSelector: '.csp_navlist',
       navlistPrefix: 'cs_navlist_',
       label_upload_delete: 'Delete',
@@ -60,7 +62,6 @@ var Clansphere = {
         Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
         Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);
         document.title = response.title;
-        if (response.scripts) window.setTimeout(function(){ eval(response.scripts); }, 0);
         for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
         if(Clansphere.ajax.scrollTarget) {
           $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
@@ -68,10 +69,10 @@ var Clansphere = {
         if(response.navlists) {
           Clansphere.ajax.updateNavlists(response.navlists);
         }
-        if(response.debug)
-        {
-          $(Clansphere.ajax.options.debugSelector).replaceWith(response.debug);
-        }
+        
+        Clansphere.ajax.debug(response);
+        
+        if (response.scripts) eval(response.scripts);
         Clansphere.ajax.switchNavlistRefresher(true);
       }
       
@@ -197,16 +198,20 @@ var Clansphere = {
     },
     
     refreshNavlists: function() {   
-      if(!Clansphere.ajax.checkActivity() || !Clansphere.ajax.navlists) {
+      if(!Clansphere.ajax.checkActivity() || !Clansphere.ajax.navlists || Clansphere.ajax.navlistPaused) {
         return null;
       }
       
       $.ajax({
         type: 'GET',
-        url: '?xhr=1' + Clansphere.ajax.navlists,
+        url: '?xhr=1&xhr_nocontent=1' + Clansphere.ajax.navlists,
         dataType: 'json',
         success: function(response){
           Clansphere.ajax.updateNavlists(response.navlists);
+          if(Clansphere.ajax.options.debugNavlistRequets===true)
+          {
+            Clansphere.ajax.debug(response);
+          }
         },
         error: Clansphere.ajax.errorHandler
       });
@@ -266,6 +271,13 @@ var Clansphere = {
         $(Clansphere.ajax.options.debugSelector + ' #errors').prepend('<strong>XHRequest Error:</strong> ' + textStatus + ' [HttpStatus: ' + xhr.status + ']' + more + '\n<br/>\n<br/>');
         $('html, body').animate({scrollTop: 0 }, 100);
       } else alert("[Clansphere] Failed to process the XHRequest.");
+    },
+    
+    debug: function(response) {
+      if(response.debug)
+      {
+        $(Clansphere.ajax.options.debugSelector).replaceWith(response.debug);
+      }
     },
     
     upload_complete: function(upload) {
