@@ -197,7 +197,7 @@ var Clansphere = {
     },
     
     refreshNavlists: function() {   
-      if(!Clansphere.ajax.checkActivity()) {
+      if(!Clansphere.ajax.checkActivity() || !Clansphere.ajax.navlists) {
         return null;
       }
       
