@@ -227,8 +227,12 @@ function cs_init($predefined) {
     die(cs_error_internal(0,'No charset information found in setup.php'));
   }
 
+  # backfall if json extension is not available
+  if(!extension_loaded('json'))
+	  require_once 'system/output/json.php';
+
   require_once 'system/output/xhtml_10.php';
-	require_once 'system/output/json.php';
+  # add old xhtml functions if needed (going away soon)
   if(!empty($cs_main['xhtml_old']))
     require_once 'system/output/xhtml_10_old.php';
 	
