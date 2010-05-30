@@ -298,13 +298,13 @@ function cs_init($predefined) {
 }
 
 function cs_ajaxwrap() {
-	
+
 	global $cs_main;
 	$cs_act_lang = cs_translate($cs_main['mod']); 
 	$json = array();
-	
+
 	if(!isset($_REQUEST['xhr_nocontent'])) {
-		
+
 		$content = cs_contentload($cs_main['show']);
 
 		$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
@@ -313,10 +313,8 @@ function cs_ajaxwrap() {
 			$json['scripts'] = $cs_main['ajax_js'];
 		}
 		$json['content'] = $content;
-		
 	}
-	
-	
+
 	if($_REQUEST['xhr_navlists']) {
 		$navs = explode(',', $_REQUEST['xhr_navlists']);
 		$navlists = array();
@@ -329,31 +327,27 @@ function cs_ajaxwrap() {
 		}
 		$json['navlists'] = $navlists;
 	}
-	
+
 	if (!empty($cs_main['debug'])) {
-		global $cs_logs, $logsql;
+		global $cs_logs;
 		$cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
     $cs_logs['errors'] = nl2br($cs_logs['errors']);
-    if(is_array($cs_logs['sql']))
-      foreach($cs_logs['sql'] AS $sql_file => $sql_queries) {
-        $logsql .= cs_html_big(1) . str_replace('\\', '\\\\', $sql_file) . cs_html_big(0) . cs_html_br(1);
-        $logsql .= nl2br(htmlentities($sql_queries, ENT_QUOTES, $cs_main['charset']));
-      }
+
     $data = array('data');
-    $data['data']['log_sql'] = $logsql;
+    $data['data']['log_sql'] = cs_log_format('sql');
     $data['data']['php_errors'] = $cs_logs['php_errors'];
     $data['data']['csp_errors'] = $cs_logs['errors'];
     $json['debug'] = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
 	}
-	
+
 	/*if (!isset($_GET['first'])) {
-	  
+
 	  require_once 'navlists.php';
-	  
+
 	  $json['navlists'] = $navlists;
-	  
+
 	}*/
-	
+
 	return json_encode($json);
 }
 
@@ -406,6 +400,21 @@ function cs_log_sql($file, $sql, $action = 0) {
     $log = 'USERS_ID ' . $account['users_id'] . "\n" . $sql . "\n";
     cs_log('actions',$log);
   }
+}
+
+function cs_log_format($part) {
+
+  global $cs_logs, $cs_main;
+  $log = '';
+  if(is_array($cs_logs[$part])) {
+    foreach($cs_logs[$part] AS $file => $content) {
+      $log .= cs_html_big(1) . str_replace('\\', '\\\\', $file) . cs_html_big(0) . cs_html_br(1);
+      $log .= nl2br(htmlentities($content, ENT_QUOTES, $cs_main['charset']));
+    }
+    return $log;
+  }
+  else
+    return '';
 }
 
 function cs_warning($message) {
