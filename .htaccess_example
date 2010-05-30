@@ -7,12 +7,12 @@
 
 ## Uncomment the next line when symlinks are not set in Apache configuration
 
-#Options +FollowSymLinks
+Options +FollowSymLinks
 
 ## Uncomment the next line to disable Multiviews (if you have a line like this in your log):
 ## [error] Negotiation: discovered file(s) matching request: /var/www/website/htdocs/index.html (None could be negotiated).
 
-#Options -Multiviews
+Options -Multiviews
 
 ## Uncomment the next line to enable the usage of mod_rewrite (needed)
 
@@ -33,4 +33,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 ## Uncomment the line and edit the php index files that should be accessible by the mod_rewrite rule (needed)
 
-RewriteRule ^(admin|content|debug|features|index)(.*)$ $1.php?params=$2 [NC,L]
+RewriteRule ^(admin|debug|features|index)(.*)$ $1.php?params=$2 [NC,L]

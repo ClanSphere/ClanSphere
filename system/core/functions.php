@@ -314,7 +314,14 @@ function cs_ajaxwrap() {
 		$content = cs_contentload($cs_main['show']);
 
 		$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
-		$json['location'] = str_replace(array('&debug', '&xhr=1', '&xhr', '&xhr_nocontent=1', '&xhr_nocontent','params=/'),'', preg_replace('/[&\?]?(xhr_navlists=)[^&]*/s','', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ) );
+		
+		$pathPrefix = $cs_main['php_self']['dirname'] . $cs_main['php_self']['filename'] . '/';
+		
+		$uri = preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ;
+		$uri = preg_replace('/[&\?\/]?(xhr_navlists[=\/])[^&\/]*/s','', $uri);
+		
+		$json['location'] = str_replace(array('&debug', '/debug', '&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix),'', $uri);
+		
 		if(isset($cs_main['ajax_js'])) {
 			$json['scripts'] = $cs_main['ajax_js'];
 		}
