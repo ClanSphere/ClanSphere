@@ -205,9 +205,11 @@ function cs_init($predefined) {
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
   $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
-  $cs_main['ajaxrequest'] = isset($_REQUEST['xhr']) ? true : false;
 
   require_once 'system/core/servervars.php';
+
+	$cs_main['ajaxrequest'] = isset($_REQUEST['xhr']) ? true : false;
+
   require_once 'system/core/tools.php';
   require_once 'system/core/abcode.php';
   require_once 'system/core/cachegen.php';
@@ -303,7 +305,7 @@ function cs_ajaxwrap($content) {
 
 	$json = array();
 	$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
-	$json['location'] = str_replace(array('&debug', '&xhr=1', '&xhr','params=/'),'', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) );
+	$json['location'] = str_replace(array('&debug', '&xhr=1', '&xhr','params=/'),'', preg_replace('/[&\?]?(navlists=)[^&]*/s','', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ) );
 	$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
 	$json['content'] = $content;
 	

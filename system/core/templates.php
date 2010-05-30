@@ -309,7 +309,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
         $placeholder = '{'.str_replace('_',':',$ajax).'}';
         if (strpos($cs_temp_get,'id="cs_'.$ajax.'"') === false) {
           $el = !in_array($ajax,$spans) ? 'div' : 'span';
-          $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_'.$ajax.'">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
+          $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_'.$ajax.'" class="csp_navlist">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
       }
     }
   }

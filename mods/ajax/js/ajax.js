@@ -6,11 +6,13 @@ var Clansphere = {
     index: '',
     mod_rewrite: false,
     forceReload: false,
+    navlists: '',
     options: {
       checkURLInterval: 50,
       loadingImage: '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading..." />',
       contentSelector: "#content",
       debugSelector: '#debug',
+      navlistSelector: '.csp_navlist',
       label_upload_delete: 'Delete',
       label_upload_progress: 'Uploading File...',
       error_upload_progress: 'Upload still in progress! Formular can not be sumited until file is uploaded completly.'
@@ -29,6 +31,7 @@ var Clansphere = {
 
       Clansphere.ajax.convertLinksToAnchor('body');
       Clansphere.ajax.convertForms('body');
+      Clansphere.ajax.navlists = Clansphere.ajax.getNavlists('body');
       
     },
 
@@ -52,6 +55,9 @@ var Clansphere = {
         for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
         if(Clansphere.ajax.scrollTarget) {
           $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, 1000);
+        }
+        if(response.navlists) {
+          Clansphere.ajax.updateNavlists(response.navlists);
         }
         if(response.debug)
         {
@@ -84,7 +90,7 @@ var Clansphere = {
       $.ajax({
             type: 'GET',
             url: Clansphere.ajax.base,
-            data: prefix + Clansphere.ajax.hash.substr(1) + "&xhr=1",
+            data: prefix + Clansphere.ajax.hash.substr(1) + "&xhr=1" + Clansphere.ajax.navlists,
             dataType: 'json',
             success: Clansphere.ajax.updatePage,
             error: Clansphere.ajax.errorHandler
@@ -141,7 +147,7 @@ var Clansphere = {
         $.ajax({
               type: 'POST',
               url: target,
-              data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1&xhr=1'),
+              data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1&xhr=1' + Clansphere.ajax.navlists),
               dataType: 'json',
               success: function(response){
                 Clansphere.ajax.scrollTarget = 'content';
@@ -162,6 +168,40 @@ var Clansphere = {
       
       return element;
       
+    },
+    
+    getNavlists: function(element)
+    {
+      navlists = [];
+      $(element).find(Clansphere.ajax.options.navlistSelector).each(function(index) {
+        navlists.push(this.id);
+        
+      });
+      if(navlists.length)
+        return '&navlists=' + navlists.join(',');
+      else return '';
+    },
+    
+    refreshNavlists: function() {      
+      $.ajax({
+        type: 'GET',
+        url: 'index.php',
+        data: 'xhr=1' + Clansphere.ajax.navlists,
+        dataType: 'json',
+        success: function(response){
+          Clansphere.ajax.updateNavlists(response.navlists);
+        },
+        error: Clansphere.ajax.errorHandler
+      });
+      
+    },
+    
+    updateNavlists: function(navlists) {
+      for(id in navlists) {
+        if(document.getElementById(id)) {
+          document.getElementById(id).innerHTML = navlists[id];
+        }
+      }
     },
     
     errorHandler: function(xhr, textStatus, error) {
