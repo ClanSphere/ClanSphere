@@ -62,7 +62,7 @@ var Clansphere = {
         Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
         Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);
         
-        $(Clansphere.ajax.options.contentSelector).trigger('load');
+        $(Clansphere.ajax.options.contentSelector).trigger('csAjaxLoad');
         
         document.title = response.title;
         for (navlist in response.navlists) $("#"+navlist).html(response.navlists[navlist]);
@@ -146,6 +146,11 @@ var Clansphere = {
       });
       
       element.find('form').submit(function() {
+
+        if($(this).hasClass('noajax')) {
+          return true;
+        }
+        
         if(Clansphere.ajax.active_upload_count > 0) {
           alert(Clansphere.ajax.options.error_upload_progress);
           return false;
@@ -175,7 +180,7 @@ var Clansphere = {
               },
               error: Clansphere.ajax.errorHandler
           });
-          
+
           return false;
       });
 

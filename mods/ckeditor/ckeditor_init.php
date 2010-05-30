@@ -16,7 +16,7 @@ $(function() {
   
   var options = { language : '<?php echo $lang; ?>', skin : '<?php echo $skin; ?>', height : '<?php echo $height; ?>', baseHref : '<?php echo $path; ?>/', basePath : '<?php echo $path; ?>/mods/ckeditor/' }
   
-  $('#content').bind('load', function() { 
+  $('#content').bind('csAjaxLoad', function() { 
   
     $(this).find('textarea.rte_html').each(function() {
       var instance = CKEDITOR.instances[this.id];
