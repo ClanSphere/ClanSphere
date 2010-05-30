@@ -203,8 +203,7 @@ var Clansphere = {
       
       $.ajax({
         type: 'GET',
-        url: 'index.php',
-        data: 'xhr=1' + Clansphere.ajax.navlists,
+        url: '?xhr=1' + Clansphere.ajax.navlists,
         dataType: 'json',
         success: function(response){
           Clansphere.ajax.updateNavlists(response.navlists);
