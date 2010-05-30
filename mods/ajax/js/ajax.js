@@ -7,8 +7,13 @@ var Clansphere = {
     mod_rewrite: false,
     forceReload: false,
     navlists: '',
+    last_activity: 0,
+    userIsActive: true,
+    urlChecker: null,
+    navlistRefresher: null,
     options: {
       checkURLInterval: 50,
+      refreshNavlistsInterval: 10000,
       loadingImage: '<img src="uploads/ajax/loading.gif" id="ajax_loading" alt="Loading..." />',
       contentSelector: "#content",
       debugSelector: '#debug',
@@ -23,7 +28,8 @@ var Clansphere = {
     
     initialize: function(mod_rewrite, basepath) {
 
-      window.setInterval(Clansphere.ajax.checkURL, Clansphere.ajax.options.checkURLInterval);
+      Clansphere.ajax.urlChecker = window.setInterval(Clansphere.ajax.checkURL, Clansphere.ajax.options.checkURLInterval);
+      Clansphere.ajax.switchNavlistRefresher(true);
       
       Clansphere.ajax.mod_rewrite = mod_rewrite ? true : false;
       
@@ -33,6 +39,8 @@ var Clansphere = {
       Clansphere.ajax.convertLinksToAnchor('body');
       Clansphere.ajax.convertForms('body');
       Clansphere.ajax.navlists = Clansphere.ajax.getNavlists('body');
+      
+      Clansphere.ajax.trackActivity();
       
     },
 
@@ -64,10 +72,11 @@ var Clansphere = {
         {
           $(Clansphere.ajax.options.debugSelector).replaceWith(response.debug);
         }
+        Clansphere.ajax.switchNavlistRefresher(true);
       }
+      
       else
       {
-        alert('test');
         window.location.reload();
       }
     },
@@ -76,6 +85,9 @@ var Clansphere = {
       var hash = window.location.hash.split('#');
       hash[1] = hash[1] || '';
       if ('#' + hash[1] == Clansphere.ajax.hash && Clansphere.ajax.forceReload!==true) return;
+      
+      Clansphere.ajax.switchNavlistRefresher(false);
+      
       Clansphere.ajax.forceReload = false;
       if (Clansphere.ajax.hash != '') $(Clansphere.ajax.options.contentSelector).append(Clansphere.ajax.options.loadingImage);
       
@@ -145,6 +157,8 @@ var Clansphere = {
       	  target = action.replace(regexp, "?params=/$1");
         }
         
+        Clansphere.ajax.switchNavlistRefresher(false);
+        
         $.ajax({
               type: 'POST',
               url: target,
@@ -182,7 +196,11 @@ var Clansphere = {
       else return '';
     },
     
-    refreshNavlists: function() {      
+    refreshNavlists: function() {   
+      if(!Clansphere.ajax.checkActivity()) {
+        return null;
+      }
+      
       $.ajax({
         type: 'GET',
         url: 'index.php',
@@ -193,7 +211,6 @@ var Clansphere = {
         },
         error: Clansphere.ajax.errorHandler
       });
-      
     },
     
     updateNavlists: function(navlists) {
@@ -204,6 +221,38 @@ var Clansphere = {
           Clansphere.ajax.convertForms('#' + Clansphere.ajax.options.navlistPrefix + id);
         }
       }
+    },
+    
+    switchNavlistRefresher: function(status) {
+      switch(status) {
+        case true:
+          if(!Clansphere.ajax.navlistRefresher) {
+            Clansphere.ajax.navlistRefresher = window.setInterval(Clansphere.ajax.refreshNavlists, Clansphere.ajax.options.refreshNavlistsInterval);
+          }
+          break;
+        case false:
+        default:
+          if(Clansphere.ajax.navlistRefresher) {
+            window.clearInterval(Clansphere.ajax.navlistRefresher);
+            Clansphere.ajax.navlistRefresher = null;
+          }
+      }
+    },
+    
+    trackActivity: function() {
+      $(window).unbind('mousemove');
+      
+      Clansphere.ajax.lastActivity = new Date().getMinutes();
+      Clansphere.ajax.checkActivity;
+      
+      window.setTimeout(function() {
+        $(window).bind('mousemove', Clansphere.ajax.trackActivity);
+      }, 60000);
+    },
+    
+    checkActivity: function() {
+      Clansphere.ajax.userIsActive = ((new Date().getMinutes() - Clansphere.ajax.lastActivity) > 1) ? false : true;
+      return Clansphere.ajax.userIsActive;
     },
     
     errorHandler: function(xhr, textStatus, error) {

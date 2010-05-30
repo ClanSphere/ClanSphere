@@ -307,6 +307,7 @@ function cs_ajaxwrap($content) {
 	$json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
 	$json['location'] = str_replace(array('&debug', '&xhr=1', '&xhr','params=/'),'', preg_replace('/[&\?]?(xhr_navlists=)[^&]*/s','', preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ) );
 	$json['scripts'] = isset($cs_main['ajax_js']) ? $cs_main['ajax_js'] : '';
+	$json['content'] = $content;
 	
 	if($_REQUEST['xhr_navlists']) {
 		$navs = explode(',', $_REQUEST['xhr_navlists']);
@@ -320,8 +321,6 @@ function cs_ajaxwrap($content) {
 		}
 		$json['navlists'] = $navlists;
 	}
-	
-	$json['content'] = $content;
 	
 	if (!empty($cs_main['debug'])) {
 		global $cs_logs, $logsql;
