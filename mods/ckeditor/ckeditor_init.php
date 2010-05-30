@@ -2,6 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
+header('Content-type: application/javascript');
+
 session_start();
 
 $lang = empty($_SESSION['ckeditor_lang']) ? 'en' : $_SESSION['ckeditor_lang'];
