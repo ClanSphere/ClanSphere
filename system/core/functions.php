@@ -402,13 +402,15 @@ function cs_log_sql($file, $sql, $action = 0) {
   }
 }
 
-function cs_log_format($part) {
+function cs_log_format($part, $addslashes = 0) {
 
   global $cs_logs, $cs_main;
   $log = '';
   if(is_array($cs_logs[$part])) {
     foreach($cs_logs[$part] AS $file => $content) {
-      $log .= cs_html_big(1) . str_replace('\\', '\\\\', $file) . cs_html_big(0) . cs_html_br(1);
+      if(!empty($addslashes))
+        $file = str_replace('\\', '\\\\', $file);
+      $log .= cs_html_big(1) . $file . cs_html_big(0) . cs_html_br(1);
       $log .= nl2br(htmlentities($content, ENT_QUOTES, $cs_main['charset']));
     }
     return $log;

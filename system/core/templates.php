@@ -353,7 +353,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
     $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
     $cs_logs['errors'] = nl2br($cs_logs['errors']);
-    $logsql = cs_log_format('sql');
+    $logsql = cs_log_format('sql', 1);
   }
   else {
     $cs_logs['php_errors'] = '';
