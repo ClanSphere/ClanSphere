@@ -116,14 +116,12 @@ var Clansphere = {
     
     convertLinksToAnchor: function (element) {
       element = $(element);
-      element.find('a').each(function(i,e){
-        if(!$(e).hasClass('noajax')) {
-          if (!Clansphere.ajax.mod_rewrite) {
-            e.href = e.href.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "#mod=$2");
-          } else {
-        	var regexp = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?/" + Clansphere.ajax.index + "/(.+?)","g");
-        	e.href = e.href.replace(regexp, "#$1");
-          }
+      element.find('a:not(.noajax)').each(function(i,e){
+        if (!Clansphere.ajax.mod_rewrite) {
+          e.href = e.href.replace(/([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)/g, "#mod=$2");
+        } else {
+      	var regexp = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?/" + Clansphere.ajax.index + "/(.+?)","g");
+      	e.href = e.href.replace(regexp, "#$1");
         }
       }).bind('click', function(e) {
         if(this.href.substr(0,7)=='http://') {
@@ -145,11 +143,7 @@ var Clansphere = {
         Clansphere.ajax.upload_file(this);
       });
       
-      element.find('form').submit(function() {
-
-        if($(this).hasClass('noajax')) {
-          return true;
-        }
+      element.find('form:not(.noajax)').submit(function() {
         
         if(Clansphere.ajax.active_upload_count > 0) {
           alert(Clansphere.ajax.options.error_upload_progress);

@@ -23,10 +23,10 @@ $(function() {
       if(instance) {
           CKEDITOR.remove(instance);
       } 
-    }).ckeditor(null, options); 
+    }).ckeditor(function(){}, options); 
     
   });
   
-  $( 'textarea.rte_html' ).ckeditor(null, options);
+  $( 'textarea.rte_html' ).ckeditor(function(){}, options);
 
 });
