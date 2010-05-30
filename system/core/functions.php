@@ -216,6 +216,7 @@ function cs_init($predefined) {
   require_once 'system/core/templates.php';
   require_once 'system/core/gd.php';
 
+
   if($cs_main['php_self']['basename'] == 'install.php')
     $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'access_install' => 5);
   else
@@ -227,9 +228,10 @@ function cs_init($predefined) {
   }
 
   require_once 'system/output/xhtml_10.php';
+	require_once 'system/output/json.php';
   if(!empty($cs_main['xhtml_old']))
     require_once 'system/output/xhtml_10_old.php';
-
+	
   if(!empty($predefined['init_sql'])) {
 
     require_once 'system/database/' . $cs_db['type'] . '.php';
@@ -339,14 +341,6 @@ function cs_ajaxwrap() {
     $data['data']['csp_errors'] = $cs_logs['errors'];
     $json['debug'] = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
 	}
-
-	/*if (!isset($_GET['first'])) {
-
-	  require_once 'navlists.php';
-
-	  $json['navlists'] = $navlists;
-
-	}*/
 
 	return json_encode($json);
 }
