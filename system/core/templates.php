@@ -243,22 +243,26 @@ function cs_redirectmsg($message, $id = 0, $icon = 0) {
   if (!empty($id) || !empty($icon)) $_SESSION['messageadd'] = $icon . ',' . $id;
 }
 
-function cs_scriptload($mod, $type, $file, $top = 0) {
+function cs_scriptload($mod, $type, $file, $top = 0, $media = 'screen') {
 
   global $cs_main;
-  $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
-  $wp = $cs_main['php_self']['dirname'];
+  if(!isset($cs_main['scriptload']))
+    $cs_main['scriptload'] = array('javascript' => '', 'stylesheet' => '');
 
+  $target = $cs_main['php_self']['dirname'] . 'mods/' . $mod . '/' . $file;
   $script = '';
-  if($type == 'javascript')
-    $script = '<script src="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/javascript"></script>' . "\r\n";
-  elseif($type == 'stylesheet')
-    $script = '<link rel="stylesheet" href="' . $wp . 'mods/' . $mod . '/' . $file . '" type="text/css" media="screen" />' . "\r\n";
 
-  if(empty($top))
-    $cs_main['scripts'] .= $script;
+  if($type == 'javascript')
+    $script = '<script src="' . $target . '" type="text/javascript"></script>' . "\r\n";
+  elseif($type == 'stylesheet')
+    $script = '<link rel="stylesheet" href="' . $target . '" type="text/css" media="' . $media . '" />' . "\r\n";
+
+  if(!isset($cs_main['scriptload'][$type]))
+    cs_error($target, 'cs_scriptload - Incorrect filetype specified: ' . $type);
+  elseif(empty($top))
+    $cs_main['scriptload'][$type] .= $script;
   else
-    $cs_main['scripts'] = $script . $cs_main['scripts'];
+    $cs_main['scriptload'][$type] = $script . $cs_main['scriptload'][$type];
 }
 
 function cs_template($cs_micro, $tpl_file = 'index.htm')
@@ -302,8 +306,10 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   cs_scriptload('clansphere', 'javascript', 'js/jquery.js', 1);
 
   global $cs_main;
-  $cs_main['scripts'] = empty($cs_main['scripts']) ? '' : $cs_main['scripts'];
-  $cs_temp_get = str_replace('</head>', $cs_main['scripts'] . '</head>', $cs_temp_get);
+  if(!empty($cs_main['scriptload']['stylesheet']))
+    $cs_temp_get = str_replace('</head>', $cs_main['scriptload']['stylesheet'] . '</head>', $cs_temp_get);
+  if(!empty($cs_main['scriptload']['javascript']))
+    $cs_temp_get = str_replace('</body>', $cs_main['scriptload']['javascript'] . '</body>', $cs_temp_get);
 
   $content = cs_contentload($cs_main['show']);
 
