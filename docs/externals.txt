@@ -3,7 +3,7 @@ EXTERNALS
 
 ClanSphere uses parts of the following Software:
 
-- CKEditor 3.2.1 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
+- CKEditor 3.3 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
 - jQuery 1.4.2 (http://www.jquery.com)
 - phgstats 0.6.9b (http://sourceforge.net/projects/phgstats)
 - Slimbox 2.0.4 (http://www.digitalia.be/software/slimbox2)
