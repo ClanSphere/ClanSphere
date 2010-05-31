@@ -182,7 +182,7 @@ function cs_content_lang () {
 function cs_init($predefined) {
 
   $phpversion = phpversion();
-  if(version_compare($phpversion, '5.0', '>=') && version_compare($phpversion, '6.0', '<'))
+  if(version_compare($phpversion, '6.0', '<'))
     @error_reporting(E_ALL | E_STRICT);
   else
     @error_reporting(E_ALL);
@@ -216,6 +216,8 @@ function cs_init($predefined) {
   require_once 'system/core/templates.php';
   require_once 'system/core/gd.php';
 
+  if(version_compare($phpversion, '5.0', '<'))
+    die(cs_error_internal('cs_init', 'PHP Version 5.0 or newer is required, but found ' . $phpversion));
 
   if($cs_main['php_self']['basename'] == 'install.php')
     $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'access_install' => 5);
@@ -497,7 +499,6 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   );
 
   // Added E_Strict for PHP 5 Version
-  if(substr(phpversion(), 0, 3) >= '5.0')
     $errortype['2048'] = 'Strict Notice/Error';
   
   // Added E_RECOVERABLE_ERROR for PHP 5.2.0 Version

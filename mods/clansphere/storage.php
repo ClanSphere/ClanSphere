@@ -2,10 +2,6 @@
 
 $cs_lang = cs_translate('clansphere');
 
-$php_fo = phpversion();
-$php_ne = '5.0.0';
-$v_com = version_compare($php_fo,$php_ne,'>=');
-
 function pasteError($err){
   $cs_err[1] = 'ERROR....';
   $cs_err[2] = $err;
@@ -13,93 +9,57 @@ function pasteError($err){
   echo cs_abcode_clip($cs_err);
 }
 
-if(!empty($v_com)) {
-  include_once('mods/clansphere/func.php');
-  
-  //Total
-  if(!$space_total = disk_total_space($cs_main['def_path'])) {
-    pasteError($cs_lang['err']);
-    return;
-  }
+include_once('mods/clansphere/func.php');
 
-  //Free
-  $tmpvar = get_disk_free_space();
-  if (is_array($tmpvar)){
-    $cs_err = $tmpvar;
-  }
-  else{
-    $space_free = $tmpvar;
-  }
-  
-  //Modul
-  $tmpvar = get_directorysize('/mods');
-  if(is_array($tmpvar)){
-    $cs_err = $tmpvar;
-  }
-  else{
-    $space_mods = $tmpvar;
-  }
-  
-  //Upload
-  $tmpvar = get_directorysize('/uploads');
-  if(is_array($tmpvar)){
-    $cs_err = $tmpvar;
-  }
-  else{
-    $space_up = $tmpvar;
-  }
-  
-  //Symbols
-  $tmpvar = get_directorysize('/symbols');
-  if(is_array($tmpvar)){
-    $cs_err = $tmpvar;
-  }
-  else{
-    $space_sym = $tmpvar;
-  }
-  
-  //Templates
-  $tmpvar = get_directorysize('/templates');
-  if(is_array($tmpvar)){
-    $cs_err = $tmpvar;
-  }
-  else{
-    $space_temp = $tmpvar;
-  }
+//Total
+if(!$space_total = disk_total_space($cs_main['def_path'])) {
+  pasteError($cs_lang['err']);
+  return;
 }
-else {
-  error_reporting(E_ERROR);
-  include_once('mods/clansphere/func4.php');
-  
-  if(!$space_total = disk_total_space($cs_main['def_path'])){
-    pasteError($cs_lang['err']);
-    return;
-  }
-  
-  if(!$space_free = disk_free_space($cs_main['def_path'])){
-    pasteError($cs_lang['err']);
-    return;
-  }    
-      
-  if(!$space_mods =  get_size($cs_main['def_path']) . '/mods'){
-    pasteError($cs_lang['err']);
-    return;
-  }
-  
-  if(!$space_up =  get_size($cs_main['def_path']) . '/uploads'){
-    pasteError($cs_lang['err']);
-    return;
-  }
-  
-  if(!$space_sym =  get_size($cs_main['def_path']) . '/symbols'){
-    pasteError($cs_lang['err']);
-    return;
-  }
-  
-  if(!$space_temp =  get_size($cs_main['def_path']) . '/templates'){
-    pasteError($cs_lang['err']);
-    return;
-  }
+
+//Free
+$tmpvar = get_disk_free_space();
+if (is_array($tmpvar)){
+  $cs_err = $tmpvar;
+}
+else{
+  $space_free = $tmpvar;
+}
+
+//Modul
+$tmpvar = get_directorysize('/mods');
+if(is_array($tmpvar)){
+  $cs_err = $tmpvar;
+}
+else{
+  $space_mods = $tmpvar;
+}
+
+//Upload
+$tmpvar = get_directorysize('/uploads');
+if(is_array($tmpvar)){
+  $cs_err = $tmpvar;
+}
+else{
+  $space_up = $tmpvar;
+}
+
+//Symbols
+$tmpvar = get_directorysize('/symbols');
+if(is_array($tmpvar)){
+  $cs_err = $tmpvar;
+}
+else{
+  $space_sym = $tmpvar;
+}
+
+//Templates
+$tmpvar = get_directorysize('/templates');
+if(is_array($tmpvar)){
+  $cs_err = $tmpvar;
+}
+else{
+  $space_temp = $tmpvar;
 }
 
 if(empty($space_total) or empty($space_free)) {

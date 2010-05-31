@@ -36,8 +36,6 @@ $cs_lang['fsockoff'] .= 'Die Funktion <strong>fsockopen</strong> wurde vom Websp
 $cs_lang['fsockoff'] .= 'Um die Server-Anzeige nutzen zu k&ouml;nnen, ist es unbedingt erforderlich, das die Funktion aktiviert wird.<br />';
 $cs_lang['fsockoff'] .= 'Um die Funktion zu aktivieren, bitte in der php.ini die Zeile <strong>disable_functions = fsockopen</strong> auskommentieren.';
 $cs_lang['fsockoff'] .= '<br /><b>Live-Status nicht m&ouml;glich!</b>';
-$cs_lang['php'] = '<strong>Es ist ein Fehler aufgetreten:</strong><br />';
-$cs_lang['php'] .= 'Um die Server-Anzeige nutzen zu k&ouml;nnen, ist es unbedingt erforderlich, das die PHP Version aktualisiert wird.<br />';
 $cs_lang['headline'] = 'Servername';
 $cs_lang['new_serv'] = 'Neuer Server';
 $cs_lang['number'] = 'Anzahl ';

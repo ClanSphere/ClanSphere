@@ -2,10 +2,11 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2010.0 >> xxxx-xx-xx
+ClanSphere 2010.0 >> 2010-06-xx
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.3.2
+-- Required PHP version changed to 5.0
 
 -> Added a medals list (duriel)
 -> Added mail-function to subscription (spongebob)

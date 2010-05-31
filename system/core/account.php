@@ -10,7 +10,7 @@ $login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
 $account = array('users_id' => 0);
 
 # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
-if(version_compare(PHP_VERSION,'5.2.0','>'))
+if(version_compare(phpversion(),'5.2.0','>'))
   session_set_cookie_params(0,$cs_main['cookie']['path'],$cs_main['cookie']['domain'],FALSE,TRUE);
 else
   session_set_cookie_params(0,$cs_main['cookie']['path'],$cs_main['cookie']['domain']);

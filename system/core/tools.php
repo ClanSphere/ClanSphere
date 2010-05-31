@@ -349,7 +349,7 @@ function cs_mimetype ($file) {
     return $return;
   }
 
-  $zip_type = version_compare(phpversion(), '5.0', '>=') ? 'application/x-zip-compressed' : 'application/zip';
+  $zip_type = 'application/x-zip-compressed';
   $mimes = array('jpg' => 'image/jpeg','jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
     'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
 

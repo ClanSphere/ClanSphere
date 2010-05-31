@@ -219,7 +219,6 @@ $cs_lang['missing_htaccess'] = 'Mod-rewrite can not be activated because the. Ht
 
 // Charset
 $cs_lang['body_charset'] = 'This page provides help in finding charset related problems';
-$cs_lang['old_php'] = 'Warning: This webspace uses PHP 4 and has therefore not enough support for unicode-based charsets';
 $cs_lang['old_mysql'] = 'Warning: This webspace uses a very old version of MySQL. Please update to 4.1.8 or newer';
 $cs_lang['test'] = 'Test';
 $cs_lang['result'] = 'Result';

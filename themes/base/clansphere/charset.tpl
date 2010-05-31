@@ -7,14 +7,6 @@
   </tr>
 </table>
 <br />
-{if:old_php}
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-  <tr>
-    <td class="centerc">{icon:error} {lang:old_php}</td>
-  </tr>
-</table>
-<br />
-{stop:old_php}
 {if:old_mysql}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>

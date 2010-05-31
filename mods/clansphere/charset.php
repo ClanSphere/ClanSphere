@@ -11,9 +11,6 @@ $data['charset']['result_tpl_setting'] = '';
 $data['charset']['result_web_setting'] = '';
 $data['charset']['result_sql_setting'] = '';
 
-# Check for PHP 5 or newer due to charset support
-$data['if']['old_php'] = version_compare(phpversion(), 5, '<');
-
 # Check for correct setup.php charset information
 $charset = strtolower($cs_main['charset']);
 if($charset != 'utf-8' AND substr($charset, 0, 9) != 'iso-8859-') {

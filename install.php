@@ -2,8 +2,8 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-# PHP 4 has no multibyte support in some functions, so it should use a charset like iso
-$charset = version_compare(phpversion(), '5.0', '>=') ? 'UTF-8' : 'ISO-8859-15';
+# This can be set to e.g. 'ISO-8859-15', but ClanSphere prefers unicode
+$charset = 'UTF-8';
 
 # Overwrite global settings by using the following array
 $cs_main = array( 'cellspacing'     => 1,

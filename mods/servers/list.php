@@ -13,81 +13,78 @@ $data['if']['oldphp'] = false;
 
 /* Test if fsockopen active */
 if (fsockopen("udp://127.0.0.1", 1)) {
-	if (4.3 <= substr(phpversion(), 0, 3)) {
-		include_once 'mods/servers/functions.php';
 
-		/* Get Server SQL-Data */
-		$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query';
-		$select .= ', servers_class, servers_stats, servers_order, servers_id';
-		$order = 'servers_order ASC';
-		$where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
-		$cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
-		$cs_servers_count = count($cs_servers);
+include_once 'mods/servers/functions.php';
 
-		/* if Server in SQL */
-		if(!empty($cs_servers_count)) {
-			$data['if']['server'] = true;
+/* Get Server SQL-Data */
+$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query';
+$select .= ', servers_class, servers_stats, servers_order, servers_id';
+$order = 'servers_order ASC';
+$where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
+$cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
+$cs_servers_count = count($cs_servers);
 
-			/* Settings */
-			if (!defined('PHGDIR')) {
-				define('PHGDIR', 'mods/servers/');
-			}
-			$use_file = '?mod=servers&action=list';
-			$use_bind = '&';
-			$country = array('Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany');
-			include_once(PHGDIR . 'classes/phgstats.class.php');
-			$phgdir = PHGDIR;
+/* if Server in SQL */
+if(!empty($cs_servers_count)) {
+	$data['if']['server'] = true;
 
-			$phgstatsc = new phgstats();
-			for($run=0; $run<$cs_servers_count; $run++) {
-				$data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
-				$data['servers'][$run]['if']['live'] = false;
-				$data['servers'][$run]['map'] = $phgdir . 'maps/no_response.jpg';
-				$data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
-				if(!empty($cs_servers[$run]['servers_stats'])) {
-					$phgstats = $phgstatsc->query($cs_servers[$run]['servers_class']);
-					/* resolve ip adress */
-					$host = dns($cs_servers[$run]['servers_ip']);
-					/* get the serverinfo string */
-					$server = $phgstats->getstream($host, $cs_servers[$run]['servers_port'], $cs_servers[$run]['servers_query']);
-					/* get the server rules */
-					if($server === true) {
-						$data['servers'][$run] = $phgstats->getrules($phgdir);
-						$data['servers'][$run]['if']['live'] = true;
-						$data['servers'][$run]['playershead'] = $phgstats->getplayers_head();
-						$data['servers'][$run]['players'] = $phgstats->getplayers();
-						/* full path to the map picture */
-						if(file_exists($phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
-							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
-						}
-						elseif(file_exists($phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.png')) {
-							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.png';
-						}
-						else {
-							$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/default.jpg';
-						}
-						$data['servers'][$run]['servers_ip'] = $cs_servers[$run]['servers_ip'];
-						$data['servers'][$run]['servers_port'] = $cs_servers[$run]['servers_port'];
+	/* Settings */
+	if (!defined('PHGDIR')) {
+		define('PHGDIR', 'mods/servers/');
+	}
+	$use_file = '?mod=servers&action=list';
+	$use_bind = '&';
+	$country = array('Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany','Germany');
+	include_once(PHGDIR . 'classes/phgstats.class.php');
+	$phgdir = PHGDIR;
 
-            /* if TS View, use teamspeak:// */
-            if($data['servers'][$run]['mapname'] == 'Teamspeak')
-              $data['servers'][$run]['proto'] = 'teamspeak://';
-            else
-              $data['servers'][$run]['proto'] = 'hlsw://';
-
-						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['needpass']) ? $cs_lang['no'] : $cs_lang['yes'];
-						flush();
-					}
+	$phgstatsc = new phgstats();
+	for($run=0; $run<$cs_servers_count; $run++) {
+		$data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
+		$data['servers'][$run]['if']['live'] = false;
+		$data['servers'][$run]['map'] = $phgdir . 'maps/no_response.jpg';
+		$data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
+		if(!empty($cs_servers[$run]['servers_stats'])) {
+			$phgstats = $phgstatsc->query($cs_servers[$run]['servers_class']);
+			/* resolve ip adress */
+			$host = dns($cs_servers[$run]['servers_ip']);
+			/* get the serverinfo string */
+			$server = $phgstats->getstream($host, $cs_servers[$run]['servers_port'], $cs_servers[$run]['servers_query']);
+			/* get the server rules */
+			if($server === true) {
+				$data['servers'][$run] = $phgstats->getrules($phgdir);
+				$data['servers'][$run]['if']['live'] = true;
+				$data['servers'][$run]['playershead'] = $phgstats->getplayers_head();
+				$data['servers'][$run]['players'] = $phgstats->getplayers();
+				/* full path to the map picture */
+				if(file_exists($phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
+					$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
 				}
+				elseif(file_exists($phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.png')) {
+					$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/' . $data['servers'][$run]['mapname'] . '.png';
+				}
+				else {
+					$data['servers'][$run]['map'] = $phgdir . $data['servers'][$run]['map_path'] . '/default.jpg';
+				}
+				$data['servers'][$run]['servers_ip'] = $cs_servers[$run]['servers_ip'];
+				$data['servers'][$run]['servers_port'] = $cs_servers[$run]['servers_port'];
 
+          /* if TS View, use teamspeak:// */
+          if($data['servers'][$run]['mapname'] == 'Teamspeak')
+            $data['servers'][$run]['proto'] = 'teamspeak://';
+          else
+            $data['servers'][$run]['proto'] = 'hlsw://';
+
+				$data['servers'][$run]['pass'] = empty($data['servers'][$run]['needpass']) ? $cs_lang['no'] : $cs_lang['yes'];
+				flush();
 			}
 		}
-		/* Show Serverslist */
-		echo cs_subtemplate(__FILE__,$data,'servers','list');
+
 	}
-	else {
-		/* Old PHP Version */
-		echo cs_subtemplate(__FILE__,$data,'servers','oldphp');
+}
+
+/* Show Serverslist */
+echo cs_subtemplate(__FILE__,$data,'servers','list');
 	}
 }
 else {
