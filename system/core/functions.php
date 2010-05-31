@@ -260,10 +260,13 @@ function cs_init($predefined) {
   # process mod and action data
   $cs_main = cs_content_prepare($cs_main);
 
-  if(!empty($predefined['init_sql'])) {
-
+  if(!empty($predefined['init_sql']))
     require_once 'system/core/account.php';
 
+  # determine users language
+  $account['users_lang'] = cs_content_lang();
+
+  if(!empty($predefined['init_sql'])) {
     # check for deprecated runstartup behavior
     if(!empty($cs_main['runstartup']))
       cs_tasks('system/runstartup');
@@ -283,9 +286,6 @@ function cs_init($predefined) {
       }
     }
   }
-
-  # determine users language
-  $account['users_lang'] = cs_content_lang();
 
   # search for possible mod and action errors
   $cs_main = cs_content_check($cs_main);
