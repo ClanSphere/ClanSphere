@@ -20,7 +20,7 @@
  </tr>
  <tr>
    <td class="leftc">{icon:kate} {lang:text}</td>
-   <td class="leftb" colspan="2">{abcode:features}<br /><textarea class="rte_abcode" rows="20" cols="50" name="threads_text" id="threads_text">{comment:comments_text}</textarea></td>
+   <td class="leftb" colspan="2">{abcode:features}<br /><textarea class="rte_abcode" cols="50" name="threads_text" id="threads_text">{comment:comments_text}</textarea></td>
  </tr>
  <tr>
   <td class="leftb" colspan="2">{lang:comments}</td>

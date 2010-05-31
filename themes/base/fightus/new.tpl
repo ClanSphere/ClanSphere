@@ -78,7 +78,7 @@
 		</td>
 		<td class="leftb">
 			{fightus:abcode_features}
-			<textarea class="rte_abcode" name="fightus_more" cols="50" rows="12" id="fightus_more">{fightus:fightus_more}</textarea>
+			<textarea class="rte_abcode" name="fightus_more" cols="50" id="fightus_more">{fightus:fightus_more}</textarea>
 		</td>
 	</tr>
 	{if:captcha}

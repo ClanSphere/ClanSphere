@@ -47,7 +47,7 @@
 		</td>
 		<td class="leftb">
 			{cat:abcode_features}
-			<textarea class="rte_abcode" name="categories_text" cols="50" rows="8" id="categories_text">{cat:categories_text}</textarea>
+			<textarea class="rte_abcode" name="categories_text" cols="50" id="categories_text">{cat:categories_text}</textarea>
 		</td>
 	</tr>
 	<tr>

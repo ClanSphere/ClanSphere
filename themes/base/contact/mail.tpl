@@ -41,7 +41,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:text} *</td>
-	<td class="leftb"><textarea class="rte_abcode" name="text" cols="50" rows="12" id="text">{mail:text}</textarea></td>
+	<td class="leftb"><textarea class="rte_abcode" name="text" cols="50" id="text">{mail:text}</textarea></td>
   </tr>
   {if:captcha}
   <tr>

@@ -56,7 +56,7 @@
     <td class="leftc">{icon:kate} {lang:text} <br /> <br />
   	 {abcode:smileys}</td>
     <td class="leftb">{abcode:features} <br />
-    	<textarea class="rte_abcode" name="gallery_description" cols="50" rows="5" id="gallery_description" style="width:98%;">{data:gallery_description}</textarea> 
+    	<textarea class="rte_abcode" name="gallery_description" cols="50" id="gallery_description" style="width:98%;">{data:gallery_description}</textarea> 
     </td>
   </tr>
 	<tr>

@@ -16,7 +16,7 @@
  </tr>
  <tr>
   <td class="leftc">{icon:kate} {lang:message} *</td>
-  <td class="leftb"><textarea class="rte_abcode" name="message2" cols="17" rows="2">{value:text}</textarea></td>
+  <td class="leftb"><textarea class="rte_abcode" name="message2" cols="17">{value:text}</textarea></td>
  </tr>
  <tr>
   <td class="leftc">{icon:configure} {lang:extended}</td>

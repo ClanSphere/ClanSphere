@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 		<td class="leftc">{icon:kedit} {lang:text} *</td>
-		<td class="leftb"><textarea class="rte_abcode" name="newsletter_text" cols="50" rows="30" id="newsletter_text">{nl:newsletter_text}</textarea></td>
+		<td class="leftb"><textarea class="rte_abcode" name="newsletter_text" cols="50" id="newsletter_text">{nl:newsletter_text}</textarea></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>

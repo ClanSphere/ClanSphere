@@ -37,7 +37,7 @@
         </td>
       <td class="leftb" colspan="2">
       	{text:features}
-      	<textarea class="rte_abcode" name="files_description" cols="50" rows="10" id="files_description">{file:files_description}</textarea>
+      	<textarea class="rte_abcode" name="files_description" cols="50" id="files_description">{file:files_description}</textarea>
       </td>
     </tr>
     {loop:mirrors}

@@ -28,7 +28,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:description} *<br /><br /> {abcode:smileys}</td>
-    <td class="leftb">{abcode:features}<textarea class="rte_abcode" name="partner_text" id="partner_text" cols="5" rows="5"  style="width: 98%;">{partner:partner_text}</textarea></td>
+    <td class="leftb">{abcode:features}<textarea class="rte_abcode" name="partner_text" id="partner_text" cols="5"  style="width: 98%;">{partner:partner_text}</textarea></td>
   </tr>
   <tr>
     <td class="leftc">{icon:images} {lang:navimg} </td>

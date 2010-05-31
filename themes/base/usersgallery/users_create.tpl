@@ -45,7 +45,7 @@
     </td>
     <td class="leftb">
     	{abcode:features} 
-			<textarea class="rte_abcode" name="description" cols="50" rows="15" id="description" style="width:98%;">{data:usersgallery_description}</textarea>
+			<textarea class="rte_abcode" name="description" cols="50" id="description" style="width:98%;">{data:usersgallery_description}</textarea>
 		</td>
   </tr>
 	<tr>

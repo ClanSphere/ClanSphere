@@ -37,7 +37,7 @@
 			{abcode:smileys}
 		</td>
 		<td class="leftb">{abcode:features}<br />
-			<textarea name="faq_antwort" cols="99" rows="35" id="faq_antwort"  style="width: 98%;">{faq:antwort}</textarea>
+			<textarea name="faq_antwort" cols="99" id="faq_antwort"  style="width: 98%;">{faq:antwort}</textarea>
 		</td>
 	</tr>
 	{stop:no_rte_html}

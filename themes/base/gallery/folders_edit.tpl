@@ -41,7 +41,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:text}</td>
-    <td class="leftb"><textarea class="rte_abcode" name="folders_text" cols="50" rows="12" id="folders_text" style="width:98%;">{data:folders_text}</textarea></td>
+    <td class="leftb"><textarea class="rte_abcode" name="folders_text" cols="50" id="folders_text" style="width:98%;">{data:folders_text}</textarea></td>
   </tr>
 	<tr>
 	  <td class="leftc">{icon:images} {lang:pic_current}</td>

@@ -17,7 +17,7 @@
     <td class="leftc">{icon:kate} {lang:text} *<br /><br /> {abcode:smileys}</td>
     <td class="leftb">
 		{abcode:features} 
-		<textarea class="rte_abcode" name="gbook_text" cols="50" rows="15" id="gbook_text"  style="width: 98%;">{gbook:gbook_text}</textarea> 
+		<textarea class="rte_abcode" name="gbook_text" cols="50" id="gbook_text"  style="width: 98%;">{gbook:gbook_text}</textarea> 
 	</td>
   </tr>
   {tpl:captcha}

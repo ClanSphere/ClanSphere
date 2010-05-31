@@ -27,7 +27,7 @@
  <tr>
   <td class="leftc">
     <form method="post" id="setup_file" action="">
-    <textarea cols="50" rows="15">{data:setup}</textarea>
+    <textarea cols="50">{data:setup}</textarea>
     </form>  
   </td>
  </tr>

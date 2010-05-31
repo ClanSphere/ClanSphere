@@ -47,7 +47,7 @@
         {lang:req_mobile}<br />
         <input type="text" name="eventguests_mobile" value="{eventguests:eventguests_mobile}" maxlength="40" size="20" /><br />
         {lang:req_fulladress}<br />
-        <textarea class="rte_abcode" name="eventguests_residence" cols="50" rows="4">{eventguests:eventguests_residence}</textarea>
+        <textarea class="rte_abcode" name="eventguests_residence" cols="50">{eventguests:eventguests_residence}</textarea>
       </td>
     </tr>
     <tr>
@@ -64,7 +64,7 @@
     <tr>
       <td class="leftc">{icon:kedit} {lang:notice}</td>
       <td class="leftb">
-        <textarea class="rte_abcode" name="eventguests_notice" cols="50" rows="4">{eventguests:eventguests_notice}</textarea>
+        <textarea class="rte_abcode" name="eventguests_notice" cols="50">{eventguests:eventguests_notice}</textarea>
       </td>
     </tr>
     <tr>

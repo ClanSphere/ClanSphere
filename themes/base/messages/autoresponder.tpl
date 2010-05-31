@@ -58,7 +58,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea class="rte_abcode" name="autoresponder_text" cols="50" rows="20" id="autoresponder_text">{autoresponder2:text}</textarea>
+			<textarea class="rte_abcode" name="autoresponder_text" cols="50" id="autoresponder_text">{autoresponder2:text}</textarea>
 		</td>
 	</tr>
 	<tr>

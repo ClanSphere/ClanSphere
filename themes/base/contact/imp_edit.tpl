@@ -16,7 +16,7 @@
   <td class="leftc">{icon:kate} {lang:text}</td>
   <td class="leftb">
     {abcode:features}
-    <textarea name="imprint" cols="50" rows="20" id="imprint">{imprint:content}</textarea>
+    <textarea name="imprint" cols="50" id="imprint">{imprint:content}</textarea>
   </td>
 </tr>
 {stop:abcode}

@@ -40,7 +40,7 @@
 		<td class="leftc">{icon:kate} {lang:text} *</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea class="rte_abcode" name="board_text" cols="50" rows="5" id="board_text">{data:board_text}</textarea>
+			<textarea class="rte_abcode" name="board_text" cols="50" id="board_text">{data:board_text}</textarea>
 		</td>
 	</tr>
 	<tr>
