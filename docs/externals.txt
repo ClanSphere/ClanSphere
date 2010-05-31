@@ -7,3 +7,4 @@ ClanSphere uses parts of the following Software:
 - jQuery 1.4.2 (http://www.jquery.com)
 - phgstats 0.6.9b (http://sourceforge.net/projects/phgstats)
 - Slimbox 2.0.4 (http://www.digitalia.be/software/slimbox2)
+- TextAreaExpander v1.0 (http://www.sitepoint.com/blogs/2009/07/29/build-auto-expanding-textarea-1)
