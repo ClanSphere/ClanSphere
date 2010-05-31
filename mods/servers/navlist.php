@@ -5,7 +5,7 @@ $cs_lang = cs_translate('servers');
 
 $id = empty($_GET['sid']) ? '' : (int) $_GET['sid'];
 
-$data = array();
+$data = array('servers' => array());
 
 // Test if fsockopen active
 if (fsockopen("udp://127.0.0.1", 1)) {
