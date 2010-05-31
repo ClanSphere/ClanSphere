@@ -1,19 +1,64 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id: clansphere.js 1430 2008-12-10 13:08:44Z Fr33z3m4n $
 
-var cs_textarea_size = 0;
+(function($) {
 
-function cs_textarea_resize(id, operation) {
+	// jQuery plugin definition
+	$.fn.TextAreaExpander = function(minHeight, maxHeight) {
 
-  cs_textarea_size = document.getElementById(id).rows;
-  if(operation == '-' && cs_textarea_size > 1) {
-    document.getElementById(id).rows = cs_textarea_size - 1;
-  }
-  else if(operation == '+') {
-    document.getElementById(id).rows = cs_textarea_size + 1;
-  }
-  document.getElementById("span_" + id).innerHTML = document.getElementById(id).rows;
-}
+		var hCheck = !($.browser.msie || $.browser.opera);
+
+		// resize a textarea
+		function ResizeTextarea(e) {
+
+			// event or initialize element?
+			e = e.target || e;
+
+			// find content length and box width
+			var vlen = e.value.length, ewidth = e.offsetWidth;
+			if (vlen != e.valLength || ewidth != e.boxWidth) {
+
+				if (hCheck && (vlen < e.valLength || ewidth != e.boxWidth)) e.style.height = "0px";
+				var h = Math.max(e.expandMin, Math.min(e.scrollHeight, e.expandMax));
+
+				e.style.overflow = (e.scrollHeight > h ? "auto" : "hidden");
+				e.style.height = h + "px";
+
+				e.valLength = vlen;
+				e.boxWidth = ewidth;
+			}
+
+			return true;
+		};
+
+		// initialize
+		this.each(function() {
+
+			// is a textarea?
+			if (this.nodeName.toLowerCase() != "textarea") return;
+
+			// set height restrictions
+			var p = this.className.match(/expand(\d+)\-*(\d+)*/i);
+			this.expandMin = minHeight || (p ? parseInt('0'+p[1], 10) : 0);
+			this.expandMax = maxHeight || (p ? parseInt('0'+p[2], 10) : 99999);
+
+			// initial resize
+			ResizeTextarea(this);
+
+			// zero vertical padding and add events
+			if (!this.Initialized) {
+				this.Initialized = true;
+				$(this).css("padding-top", 0).css("padding-bottom", 0);
+				$(this).bind("keyup", ResizeTextarea).bind("focus", ResizeTextarea);
+			}
+		});
+
+		return this;
+	};
+
+})(jQuery);
+
+$("textarea[class!=rte_html]").TextAreaExpander(100, 500);
 
 function passwordcheck(pass) {
 
@@ -42,32 +87,44 @@ function passwordcheck(pass) {
 		}
 	}
 	
-	width = "";
+	w = "";
 	
-	if(new_pass.length >= 8) { width = "25%"; }
-	if(new_pass.length >= 8 && password_numbers >= 2) {	width = "50%"; }
-	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2) {	width = "75%"; }
-	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2 && special > 0) {	width = "100%"; }
+	if(new_pass.length >= 8) { w = "25%"; }
+	if(new_pass.length >= 8 && password_numbers >= 2) {	w = "50%"; }
+	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2) {	w = "75%"; }
+	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2 && special > 0) {	w = "100%"; }
 	
-	document.getElementById("pass_secure").style.width = width;
+	$("#pass_secure").css('width', w);
 
 	
 }
 
+
+$(".clip").click(function () { 
+	$(this).children('img').toggle();
+	$(this).next('div').slideToggle("slow");
+});
+
+
+/*
 var cs_clip_id = 0;
 
 function cs_clip(id) {
 
 	cs_clip_id = id;
-  if(document.getElementById("span_" + id).style.display == 'none') {
-    document.getElementById("img_" + id).src = document.getElementById("img_" + id).src.replace(/plus/g,'minus');
-    document.getElementById("span_" + id).style.display = "block";
-  }
-  else {
-    document.getElementById("img_" + id).src = document.getElementById("img_" + id).src.replace(/minus/g,'plus');
-    document.getElementById("span_" + id).style.display = "none";
-  }
+	
+	$("div#span_" + id).slideToggle("slow", function () { 
+		if($("div#span_" + id).css('display') == 'none') {
+			$("img#img_" + id).attr('src', $("img#img_" + id).attr('src').replace(/minus/g,'plus'));
+		}
+		else {
+			$("img#img_" + id).attr('src', $("img#img_" + id).attr('src').replace(/plus/g,'minus'));
+		}
+	});
+
 }
+*/
+
 
 function cs_select_multiple(id, status) {
 
@@ -209,96 +266,80 @@ function abc_insert_list(aTag,eTag, name) {
   }
 }
 
-function cs_visible(id) {
-
-  if (document.getElementById(id).style.visibility == "hidden") func = "visible"; else func = "hidden";
-  document.getElementById(id).style.visibility = func;
-}
-
 function cs_display(id) {
 
-  if (document.getElementById(id).style.display == "none") func = "block"; else func = "none";
-  document.getElementById(id).style.display = func;
+  $("#" + id).slideToggle('slow');
 }
 
 function cs_validate(language, module) {
   
-  modcontent = document.getElementById('mod_' + language + '_' + module);
+  modcontent = $('#mod_' + language + '_' + module);
   if (modcontent.style.display != "none") {
     modcontent.style.display = "none";
     return;
   }
   modcontent.style.display = "block";
-  cs_ajax_getcontent('mods/clansphere/lang_modvalidate.php?language=' + language + '&module=' + module,'mod_' + language + '_' + module);
+  $.ajax({ url: 'mods/clansphere/lang_modvalidate.php?language=' + language + '&module=' + module, context: '#mod_' + language + '_' + module });
   
 }
 
 function cs_chmod_CheckChange(Checkbox, Value) {
 	
-	if (document.getElementById(Checkbox).checked == true) {
+	if ($("#" + Checkbox).is(':checked') == true) {
 	
-		document.getElementById('chmod').value = parseInt(document.getElementById('chmod').value) + Value;
+		$('#chmod').attr('value', parseInt($('#chmod').attr('value')) + Value);
 	
 	} else {
 		
-		document.getElementById('chmod').value = parseInt(document.getElementById('chmod').value) - Value;
+		$('#chmod').attr('value', parseInt($('#chmod').attr('value')) - Value);
 		
 	}
 	
 }
 
+
 function cs_chmod_TextChange() {
 	
-	var chmod = parseInt(document.getElementById('chmod').value);
+	var chmod = parseInt($('#chmod').attr('value'));
 	
-	document.getElementById('owner_read').checked = false;
-	document.getElementById('owner_write').checked = false;
-	document.getElementById('owner_execute').checked = false;
-	
-	document.getElementById('group_read').checked = false;
-	document.getElementById('group_write').checked = false;
-	document.getElementById('group_execute').checked = false;
-	
-	document.getElementById('public_read').checked = false;
-	document.getElementById('public_write').checked = false;
-	document.getElementById('public_execute').checked = false;
-	
+		$('form#explorer_chmod :checkbox').attr('checked', false);
+
 	if (chmod >= 400) {
-		document.getElementById('owner_read').checked = true;
+		$('#owner_read').attr('checked', true);
 		chmod = chmod - 400;
 	}
 	if (chmod >= 200) {
-		document.getElementById('owner_write').checked = true;
+		$('#owner_write').attr('checked', true);
 		chmod = chmod - 200;
 	}
 	if (chmod >= 100) {
-		document.getElementById('owner_execute').checked = true;
+		$('#owner_execute').attr('checked', true);
 		chmod = chmod - 100;
 	}
 	
 	if (chmod >= 40) {
-		document.getElementById('group_read').checked = true;
+		$('#group_read').attr('checked', true);
 		chmod = chmod - 40;
 	}
 	if (chmod >= 20) {
-		document.getElementById('group_write').checked = true;
+		$('#group_write').attr('checked', true);
 		chmod = chmod - 20;
 	}
 	if (chmod >= 10) {
-		document.getElementById('group_execute').checked = true;
+		$('#group_execute').attr('checked', true);
 		chmod = chmod - 10;
 	}
 	
 	if (chmod >= 4) {
-		document.getElementById('public_read').checked = true;
+		$('#public_read').attr('checked', true);
 		chmod = chmod - 4;
 	}
 	if (chmod >= 2) {
-		document.getElementById('public_write').checked = true;
+		$('#public_write').attr('checked', true);
 		chmod = chmod - 2;
 	}
 	if (chmod >= 1) {
-		document.getElementById('public_execute').checked = true;
+		$('#public_execute').attr('checked', true);
 		chmod = chmod - 1;
 	}
 }
@@ -354,22 +395,8 @@ var cs_debugheight = 0;
 function cs_debugmode() {
 
   if(cs_debugheight == 0)
-    cs_debugheight = document.getElementById('debug').style.height;
-  if(cs_debugheight == 0)
-    cs_debugheight = document.getElementById('debug').offsetHeight + 'px';
-  if(cs_debugheight == 0)
-    cs_debugheight = document.getElementById('debug').clientHeight + 'px';
+    cs_debugheight = $('#debug').css('height');
 
-  height = document.getElementById('debug').style.height;
-  document.getElementById('debug').style.height = height == '100%' ? cs_debugheight : '100%';
-}
-
-function cs_visible(id) {
-
-  var cs_lines_shown = document.getElementById(id).style.visibility;
-
-  if(cs_lines_shown == 'hidden')
-    document.getElementById(id).style.visibility = 'visible';
-  else
-    document.getElementById(id).style.visibility = 'hidden';
+  height = $('#debug').css('height');
+  $('#debug').css('height', height == '100%' ? cs_debugheight : '100%');
 }

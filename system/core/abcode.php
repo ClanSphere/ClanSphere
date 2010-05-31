@@ -243,11 +243,11 @@ function cs_abcode_clip($matches) {
   static $clip_id;
   $clip_id++;
 
-  $var = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_' . $clip_id . '"') . ' ';
-  $var .= cs_html_link("javascript:cs_clip('" . $clip_id . "')",$matches[1],0);
-  $var .= cs_html_br(1);
-  $var .= '<div style="display:none" id="span_' . $clip_id . '">';
-  $var .= $matches[2] . '</div>';
+  $var = '<a class="clip">' . $matches[1] . ' ';
+  $var .= cs_html_img('symbols/clansphere/plus.gif',0,0,0,'+');
+  $var .= cs_html_img('symbols/clansphere/minus.gif',0,0,'style="display:none"','-');
+  $var .= '</a>';
+  $var .= '<div style="display:none">' . $matches[2] . '</div>';
   return $var;
 }
 
