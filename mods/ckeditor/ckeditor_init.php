@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
@@ -13,20 +13,20 @@ $path = empty($_SESSION['ckeditor_path']) ? '' : $_SESSION['ckeditor_path'];
 
 ?>
 $(function() {
-  
+
   var options = { language : '<?php echo $lang; ?>', skin : '<?php echo $skin; ?>', height : '<?php echo $height; ?>', baseHref : '<?php echo $path; ?>/', basePath : '<?php echo $path; ?>/mods/ckeditor/' }
-  
+
   $('#content').bind('csAjaxLoad', function() { 
-  
+
     $(this).find('textarea.rte_html').each(function() {
       var instance = CKEDITOR.instances[this.id];
       if(instance) {
           CKEDITOR.remove(instance);
       } 
     }).ckeditor(function(){}, options); 
-    
+
   });
-  
+
   $( 'textarea.rte_html' ).ckeditor(function(){}, options);
 
 });
