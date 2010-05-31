@@ -64,17 +64,17 @@ if(!empty($board_form)) {
   
   if($cs_board['doubleposts'] == -1) {
     $doubleposts = 0;
-    $visibility = 'hidden';
+    $display = 'none';
     $checked = '';
   }
   else {
-    $visibility = 'visible';
+    $display = 'block';
     $doubleposts = $cs_board['doubleposts'] / 86400;
     $checked = 'checked="checked"';
   }
   
   $data['options']['double_posts'] = $checked;
-  $data['options']['visible'] = $visibility;
+  $data['options']['display'] = $display;
   $data['options']['doubleposts'] = $doubleposts;
   
   $data['options']['list_subforums'] = empty($cs_board['list_subforums']) ? '' : ' checked="checked"';
