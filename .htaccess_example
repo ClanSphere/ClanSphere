@@ -2,19 +2,18 @@
 
 # AddDefaultCharset UTF-8
 
-## MOD_REWRITE - Comment out the needed lines to use Apache mod_rewrite
+## MOD_REWRITE - Uncommend the required lines to use ClanSphere with Apache mod_rewrite
 ## Documentation = http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html
 
 ## Uncomment the next line when symlinks are not set in Apache configuration
 
 Options +FollowSymLinks
 
-## Uncomment the next line to disable Multiviews (if you have a line like this in your log):
-## [error] Negotiation: discovered file(s) matching request: /var/www/website/htdocs/index.html (None could be negotiated).
+## Uncomment the next line to disable Multiviews (if you have negotiation errors in your log files)
 
 Options -Multiviews
 
-## Uncomment the next line to enable the usage of mod_rewrite (needed)
+## Uncomment the next line to enable the usage of mod_rewrite (required)
 
 RewriteEngine on
 
@@ -26,11 +25,11 @@ RewriteEngine on
 
 #RewriteBase /
 
-## Uncomment this to prevent overcuttings between real directories/files and virtual ones (needed)
+## Uncomment this to prevent overcuttings between real directories/files and virtual ones (required)
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-## Uncomment the line and edit the php index files that should be accessible by the mod_rewrite rule (needed)
+## Uncomment the line and edit the php index files that should be accessible by the mod_rewrite rule (required)
 
 RewriteRule ^(admin|debug|features|index)(.*)$ $1.php?params=$2 [NC,L,QSA]
