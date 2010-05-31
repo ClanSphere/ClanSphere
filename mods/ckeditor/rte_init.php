@@ -18,7 +18,7 @@ else {
   global $com_lang, $cs_main;
   $_SESSION['ckeditor_lang'] = empty($com_lang['short']) ? 'en' : $com_lang['short'];
   $_SESSION['ckeditor_skin'] = empty($op_ckeditor['skin']) ? 'kama' : $op_ckeditor['skin'];
-  $_SESSION['ckeditor_height'] = empty($data['ckeditor']['height']) ? '300' : $data['ckeditor']['height'];
+  $_SESSION['ckeditor_height'] = empty($op_ckeditor['height']) ? '300' : $op_ckeditor['height'];
   $_SESSION['ckeditor_path'] = 'http://' . $_SERVER['HTTP_HOST'] . substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'));
 
   cs_scriptload('ckeditor', 'javascript', 'ckeditor.js');
