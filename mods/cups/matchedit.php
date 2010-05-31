@@ -33,7 +33,7 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
       $data['match']['id'] = $cupmatches_id;
       $data['match']['squadnr'] = $squad;
       
-      echo cs_subtemplate(__FILE__, $data, 'cups', 'confirm');
+      cs_subtemplate(__FILE__, $data, 'cups', 'confirm');
       
     } else {
       
@@ -43,13 +43,13 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
       
       $matchsel['cupmatches_accepted'.$squad] = 1;
       
-      /*$cond = '(cupmatches_accepted1 = \'0\' OR cupmatches_accepted2 = \'0\') AND cups_id = \''. $matchsel['cups_id'] .'\'';
+      $cond = '(cupmatches_accepted1 = 0 OR cupmatches_accepted2 = 0) AND cups_id = '. $matchsel['cups_id'];
       $count = cs_sql_count(__FILE__,'cupmatches',$cond);
       
       if(empty($count) && $matchsel['cupmatches_round'] != 1) {
         cs_cupround($matchsel['cups_id'], $matchsel['cupmatches_round'], $cup['cups_teams'], $cup['cups_brackets']);
         $message = $cs_lang['new_round'];
-      }*/
+      }
 
       if (!empty($matchsel['cupmatches_accepted1']) && !empty($matchsel['cupmatches_accepted2'])) {
         
@@ -213,10 +213,10 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
         
       }
       	
-      /*$cells = 'cups_id, cupmatches_round';
+      $cells = 'cups_id, cupmatches_round';
       $matchsel = cs_sql_select(__FILE__,'cupmatches',$cells,"cupmatches_id = '" . $cupmatches_id . "'");
         
-      $cond = '(cupmatches_accepted1 = \'0\' OR cupmatches_accepted2 = \'0\') AND cups_id = \''. $matchsel['cups_id'] .'\'';
+      $cond = '(cupmatches_accepted1 = 0 OR cupmatches_accepted2 = 0) AND cups_id = '. $matchsel['cups_id'];
       $count = cs_sql_count(__FILE__,'cupmatches',$cond);
       
       if(empty($count) && $matchsel['cupmatches_round'] != 1) {
@@ -225,7 +225,7 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
       
         cs_cupround($matchsel['cups_id'], $matchsel['cupmatches_round'], $cup['cups_teams'], $cup['cups_brackets']);
         $msg = $cs_lang['new_round'];
-      }*/
+      }
         
       echo $cs_lang['changes_done'] . '. ';
       

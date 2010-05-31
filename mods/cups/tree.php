@@ -48,14 +48,17 @@ $cells = $cup['cups_system'] == 'users'
     . 'cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
 $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
 $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2, cm.cupmatches_tree_order AS cupmatches_tree_order';
-$where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = ';
+$where = 'cm.cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 0 AND cm.cupmatches_round = ';
 
 $cupmatches = array();
 for ($i=0; $i < $rounds_1; $i++) {
   $temp = cs_sql_select(__FILE__, $tables, $cells, $where . ($rounds_1 - $i), 'cm.cupmatches_tree_order',0,0);
   // $cupmatches[$i] = array();
-  foreach ($temp as $match)
+  foreach ($temp as $match) {
+    if (empty($match['team1_name'])) $match['team1_name'] = $match['squad1_name_c'];
+    if (empty($match['team2_name'])) $match['team2_name'] = $match['squad2_name_c'];
     $cupmatches[$i][ $match['cupmatches_tree_order'] ] = $match;
+    }
 }
 // var_dump($cupmatches);
 // Calc-Defs
@@ -69,6 +72,7 @@ while ($result > 2) { $result /= 2; $count_cupmatches += $result; }
 $count_cupmatches += 2;
 $round = 0;
 $run = 0;
+$match_run = 0;
 
 for ($i = 0; $i < $count_cupmatches; $i++) {
 	$i2 = $i + 1;
@@ -80,15 +84,16 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 	}
 	
 	imagefilledrectangle ($img, $currwidth, $currheight, $currwidth + $entitywidth, $currheight + $entityheight, $col_team_bg);
-	
+
 	$string = '';
 	
-	if (empty($round))
-		$string = $cupmatches[0][$i]['team1_name'] = empty($cupmatches[0][$i]['team1_name']) ? $cupmatches[0][$i]['squad1_name_c'] : $cupmatches[0][$i]['team1_name'];
-	elseif (!empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
-		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
-		$string = $cond ? $cupmatches[$round-1][$run]['team1_name'] : $cupmatches[$round-1][$run]['team2_name'];
-		if (empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
+	if (empty($round) OR isset($cupmatches[$round][$match_run]))
+		$string = $cupmatches[$round][$match_run]['team1_name'];
+  elseif (isset($cupmatches[$round-1][$run]) AND !empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
+      $cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
+      $string = $cond ? $cupmatches[$round-1][$run]['team1_name'] : $cupmatches[$round-1][$run]['team2_name'];
+      $cond = empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2']);
+      $string = $cond ? '(' . $string . ')' : $string;
   }
   $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
 	if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);
@@ -105,12 +110,13 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 	imagefilledrectangle ($img, $currwidth, $currheight, $currwidth + $entitywidth, $currheight + $entityheight, $col_team_bg);
 	
 	$string = '';
-	if (empty($round))
-		$string = $cupmatches[0][$i]['team2_name'] = empty($cupmatches[0][$i]['team2_name']) ? $cupmatches[0][$i]['squad2_name_c'] : $cupmatches[0][$i]['team2_name'];
-	elseif (!empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
+	if (empty($round) OR isset($cupmatches[$round][$match_run]))
+		$string = $cupmatches[$round][$match_run]['team2_name'];
+  elseif (isset($cupmatches[$round-1][$run]) AND !empty($cupmatches[$round-1][$run]['cupmatches_winner'])) {
 		$cond = $cupmatches[$round-1][$run]['cupmatches_winner'] == $cupmatches[$round-1][$run]['team1_id'];
 		$string = $cond ? $cupmatches[$round-1][$run]['team1_name'] : $cupmatches[$round-1][$run]['team2_name'];
-		if (empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2'])) $string = '(' . $string . ')';
+    $cond = empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2']);
+		$string = $cond ? '(' . $string . ')' : $string;
   }
   $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
 	if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);
@@ -121,9 +127,9 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$currheight += (pow(2, $round - 1) + 0.5) * $entityheight;
 		$currheight +=  pow(2, $round - 2)        * $yspace_enemies;
 		$currheight += (pow(2, $round - 2) + 0.5) * $yspace_normal;
-		
 	}
 	$run++;
+  $match_run++;
 	if ($i2 >= $max) {
 		$currheight = $space_top;
 		$currwidth += $entitywidth + $xspace;
@@ -131,6 +137,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
 		$max += $nexthalf;
 		$round++;
 		$run = 0;
+    $match_run = 0;
 		// $rounds_1--;
 		// $cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . ' AND cm.cupmatches_loserbracket = 0', 'cm.cupmatches_tree_order',0,0);
 	}
