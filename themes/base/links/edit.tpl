@@ -38,7 +38,7 @@
 		</td>
 		<td class="leftc">
 			{abcode:features}
-			<textarea name="links_info" cols="50" id="links_info">{data:links_info}</textarea>
+			<textarea name="links_info" cols="50" rows="15" id="links_info">{data:links_info}</textarea>
 		</td>
 	</tr>
 	{stop:abcode}

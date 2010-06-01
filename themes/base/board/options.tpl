@@ -50,8 +50,8 @@
     <tr>
       <td class="leftc">{icon:agt_reload} {lang:double_posts}</td>
       <td class="leftb">
-      	<input type="checkbox" name="doublep_allowed" value="1" onclick="javascript:cs_display('dpdiv')" {options:double_posts} />
-      	<div style="display:{options:display}" id="dpdiv">
+      	<input type="checkbox" name="doublep_allowed" value="1" onclick="javascript:cs_visible('dpdiv')" {options:double_posts} />
+      	<div style="visibility:{options:visible}" id="dpdiv">
       		{lang:days_after1} <input type="text" name="doubleposts" value="{options:doubleposts}" maxlength="5" size="5" /> {lang:days_after2}
       	</div>
       </td>

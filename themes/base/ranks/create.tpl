@@ -35,7 +35,7 @@
 	<tr>
 		<td class="leftc">{icon:html} {lang:code}</td>
 		<td class="leftb">
-			<textarea class="rte_abcode" name="ranks_code" cols="50" id="ranks_code">{ranks:ranks_code}</textarea><br />
+			<textarea class="rte_abcode" name="ranks_code" cols="50" rows="12" id="ranks_code">{ranks:ranks_code}</textarea><br />
 			<br />
 			{lang:code_info}
 		</td>

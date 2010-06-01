@@ -40,7 +40,7 @@
  </tr>
  <tr>
   <td class="leftc">{icon:kedit} {lang:description} *</td>
-  <td class="leftb"><textarea class="rte_abcode" name="description" cols="50">{value:description}</textarea></td>
+  <td class="leftb"><textarea class="rte_abcode" name="description" cols="50" rows="5">{value:description}</textarea></td>
  </tr>
  <tr>
   <td class="leftc">{icon:images} {lang:icon} *</td>

@@ -18,7 +18,7 @@
 <tr>
 <td class="leftc">{icon:kedit} {lang:content} *</td>
 <td class="leftb">{abcode:features} {if:access_php}<input type="button" name="phpcode" value="phpcode" onclick="javascript:abc_insert('[phpcode]','[/phpcode]','static_text','')" />{stop:access_php}
-<textarea name="static_text" cols="99" id="static_text"  style="width: 98%;">{static:content}</textarea></td>
+<textarea name="static_text" cols="99" rows="35" id="static_text"  style="width: 98%;">{static:content}</textarea></td>
 </tr>
 {stop:no_rte_html}
 {if:rte_html}

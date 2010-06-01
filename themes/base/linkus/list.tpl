@@ -19,11 +19,11 @@
 	<tr>
 		<td class="leftc">
 			<strong>{lang:html}</strong><br />
-			<textarea name="html_{linkus:run}" cols="50" readonly="readonly" id="html_{linkus:run}">{linkus:html_code}</textarea>
+			<textarea name="html_{linkus:run}" cols="50" rows="2" readonly="readonly" id="html_{linkus:run}">{linkus:html_code}</textarea>
 			<br />
 			<strong>{lang:abcode}</strong>
 			<br />
-			<textarea name="abcode_{linkus:run}" cols="50" readonly="readonly" id="abcode_{linkus:run}">{linkus:abcode}</textarea>
+			<textarea name="abcode_{linkus:run}" cols="50" rows="2" readonly="readonly" id="abcode_{linkus:run}">{linkus:abcode}</textarea>
 		</td>
 	</tr>
 </table>

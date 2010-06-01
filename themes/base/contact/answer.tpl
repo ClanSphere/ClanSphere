@@ -20,7 +20,7 @@
 </td></tr>
 <tr><td class="leftc">{icon:mail_generic} {lang:message} *</td>
 <td class="leftb">
-<textarea class="rte_abcode" name="message" cols="50" id="message">{mail:message}</textarea>
+<textarea class="rte_abcode" name="message" cols="50" rows="20" id="message">{mail:message}</textarea>
 </td></tr><tr><td class="leftc">
 {icon:ksysguard} {lang:options}</td>
 <td class="leftb">

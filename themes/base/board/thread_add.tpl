@@ -58,7 +58,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea class="rte_abcode" name="threads_text" cols="50" id="threads_text" style="width:98%">{data:threads_text}</textarea>
+			<textarea class="rte_abcode" name="threads_text" cols="50" rows="20" id="threads_text" style="width:98%">{data:threads_text}</textarea>
 		</td>
 	</tr>
 	{if:vote}

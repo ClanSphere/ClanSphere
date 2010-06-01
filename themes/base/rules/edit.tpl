@@ -36,7 +36,7 @@
   <td class="leftc">{icon:kate} {lang:rule} *<br /><br /></td>
   <td class="leftb">
 	{abcode:features}
-    <textarea class="rte_abcode" name="rules_rule" cols="50" id="rules_rule" style="width:98%;">{data:rules_rule}</textarea></td>
+    <textarea class="rte_abcode" name="rules_rule" cols="50" rows="20" id="rules_rule" style="width:98%;">{data:rules_rule}</textarea></td>
  </tr>
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>

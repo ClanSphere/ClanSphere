@@ -40,7 +40,7 @@
     {abcode:sql}
     {abcode:js}
     {abcode:html2} <br />
-		<textarea name="data_content" cols="50" id="data_content"></textarea></td>
+		<textarea name="data_content" cols="50" rows="35" id="data_content"></textarea></td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:ksysguard} {lang:options}</td>

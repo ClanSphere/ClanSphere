@@ -50,7 +50,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea name="events_more" cols="50" id="events_more">{data:events_more}</textarea>
+			<textarea name="events_more" cols="50" rows="8" id="events_more">{data:events_more}</textarea>
 		</td>
 	</tr>
 	{stop:abcode}

@@ -23,7 +23,7 @@
         <br />
         {data:smileys}</td>
       <td class="leftc">{abcode:features}
-        <textarea class="rte_abcode" name="quotes_text" cols="99" id="quotes_text"  style="width: 98%;">{data:quotes_text}</textarea></td>
+        <textarea class="rte_abcode" name="quotes_text" cols="99" rows="35" id="quotes_text"  style="width: 98%;">{data:quotes_text}</textarea></td>
     </tr>
     <tr>
       <td class="leftc">{icon:configure} {lang:more}</td>

@@ -46,7 +46,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea class="rte_abcode" name="comments_text" cols="50" id="comments_text">{data:comments_text}</textarea>
+			<textarea class="rte_abcode" name="comments_text" cols="50" rows="20" id="comments_text">{data:comments_text}</textarea>
 		</td>
 	</tr>
 	{if:file}

@@ -29,7 +29,7 @@
         <br />
         {abcode:smileys}</td>
 		<td class="leftb">{abcode:features}
-			<textarea class="rte_abcode" name="maps_text" cols="50" id="maps_text"  style="width: 98%;">{maps:maps_text}</textarea>
+			<textarea class="rte_abcode" name="maps_text" cols="50" rows="8" id="maps_text"  style="width: 98%;">{maps:maps_text}</textarea>
 		</td>
     </tr>
 	<tr>

@@ -62,7 +62,7 @@
       <td class="leftb" colspan="2">
         <div id="editor_readmore"{if:no_readmore} style="display:none"{stop:no_readmore}>
           {abcode:features_readmore}
-          <textarea name="news_readmore" cols="50" id="news_readmore"  style="width: 98%;">{news:news_readmore}</textarea>
+          <textarea name="news_readmore" cols="50" rows="10" id="news_readmore"  style="width: 98%;">{news:news_readmore}</textarea>
         </div>
       </td>
     </tr>
@@ -71,7 +71,7 @@
         <br />
         {abcode:smileys}</td>
       <td class="leftb" colspan="2">{abcode:features}
-        <textarea name="news_text" cols="50" id="news_text"  style="width: 98%;">{news:news_text}</textarea></td>
+        <textarea name="news_text" cols="50" rows="20" id="news_text"  style="width: 98%;">{news:news_text}</textarea></td>
     </tr>
 	{stop:abcode}
     {loop:mirror}

@@ -11,7 +11,7 @@
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:special_paste} {lang:report} *</td>
-      <td class="leftb"><textarea class="rte_abcode" name="report" cols="50" id="report"></textarea>
+      <td class="leftb"><textarea class="rte_abcode" name="report" cols="50" rows="12" id="report"></textarea>
       </td>
     </tr>
     <tr>

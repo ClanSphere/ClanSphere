@@ -61,13 +61,13 @@
 	<tr>	
 		<td class="leftc">{icon:download} {lang:mirror_urls}<br /></td>
 		<td class="leftb">
-			<textarea class="rte_abcode" name="replays_mirror_urls" id="replays_mirror_urls" cols="50">{replays:replays_mirror_urls}</textarea>
+			<textarea class="rte_abcode" name="replays_mirror_urls" id="replays_mirror_urls" cols="50" rows="4">{replays:replays_mirror_urls}</textarea>
 		</td>
 	</tr>
 	<tr>
 		<td class="leftc">{icon:download} {lang:mirror_names}</td>
 		<td class="leftb">
-			<textarea class="rte_abcode" name="replays_mirror_names" id="replays_mirror_names" cols="50">{replays:replays_mirror_names}</textarea>
+			<textarea class="rte_abcode" name="replays_mirror_names" id="replays_mirror_names" cols="50" rows="4">{replays:replays_mirror_names}</textarea>
 		</td>
   </tr>
 	<tr>
@@ -77,7 +77,7 @@
 		</td>
 		<td class="leftb">
 			{replays:abcode_features}
-			<textarea class="rte_abcode" name="replays_info" cols="50" id="replays_info">{replays:replays_info}</textarea>
+			<textarea class="rte_abcode" name="replays_info" cols="50" rows="8" id="replays_info">{replays:replays_info}</textarea>
 		</td>
 	</tr>
 	<tr>

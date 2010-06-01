@@ -40,7 +40,7 @@
 		</td>
 		<td class="leftb">
 			{abcode:features}
-			<textarea class="rte_abcode" name="rounds_description" cols="20" id="rounds_description">{wars:rounds_description}</textarea>
+			<textarea class="rte_abcode" name="rounds_description" cols="20" rows="15" id="rounds_description">{wars:rounds_description}</textarea>
 		</td>
 	</tr>
 	<tr>

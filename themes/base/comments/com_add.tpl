@@ -17,7 +17,7 @@
 		</td>
 		<td class="leftb">
 			{comments:abcode}
-			<textarea class="rte_abcode" name="comments_text" cols="50" id="comments_text"></textarea>
+			<textarea class="rte_abcode" name="comments_text" cols="50" rows="8" id="comments_text"></textarea>
 		</td>
 	</tr>
 	{if:captcha}

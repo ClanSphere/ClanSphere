@@ -85,7 +85,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:serverinfo}</td>
-    <td class="leftb"><textarea class="rte_abcode" name="servers_info" cols="75" id="servers_info">{create:servers_info}</textarea></td>
+    <td class="leftb"><textarea class="rte_abcode" name="servers_info" cols="75" rows="5" id="servers_info">{create:servers_info}</textarea></td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:slots}</td>
