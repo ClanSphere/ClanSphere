@@ -23,11 +23,11 @@ if(!isset($_GET['notice'])) {
   
   $from = 'buddys bds INNER JOIN {pre}_users usr ON bds.buddys_user = usr.users_id';
   $select = 'bds.buddys_id AS buddys_id, bds.buddys_time AS buddys_time, bds.buddys_user AS ';
-  $select .= 'buddys_user, bds.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_country AS users_country, usr.users_laston AS ';
+  $select .= 'buddys_user, bds.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_invisible AS users_invisible, usr.users_country AS users_country, usr.users_laston AS ';
   $select .= 'users_laston';
   
-  $online = "bds.users_id = '" . $users_id . "' AND users_laston > '" . $on_now . "'";
-  $offline = "bds.users_id = '" . $users_id . "' AND users_laston < '" . $on_now . "'";
+  $online = "bds.users_id = '" . $users_id . "' AND users_laston > '" . $on_now . "' AND users_invisible = '0'";
+  $offline = "bds.users_id = '" . $users_id . "' AND users_laston < '" . $on_now . "' AND users_invisible = '0'";
   
   $buddys_off = cs_sql_select(__FILE__,$from,$select,$offline,'users_nick DESC',0,0);
   $loop_off = count($buddys_off);
