@@ -9,10 +9,14 @@ function cs_sql_connect($cs_db, $test = 0) {
     $error = 'PHP extension sqlite3 must be activated!';
   }
   else {
-    $connect = new sqlite3($cs_db['name']);
+    try {
+      $connect = new sqlite3($cs_db['name']);
+    }
+    catch(Exception $err) {
+      $error = $err->getMessage();
+    }
   }
 
-  $error = cs_sql_error($connect);
   if(empty($test) AND empty($error)) {
     return $connect;
   }
