@@ -95,36 +95,13 @@ function passwordcheck(pass) {
 	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2 && special > 0) {	w = "100%"; }
 	
 	$("#pass_secure").css('width', w);
-
 	
 }
-
 
 $(".clip").click(function () { 
 	$(this).children('img').toggle();
 	$(this).next('div').slideToggle("slow");
 });
-
-
-/*
-var cs_clip_id = 0;
-
-function cs_clip(id) {
-
-	cs_clip_id = id;
-	
-	$("div#span_" + id).slideToggle("slow", function () { 
-		if($("div#span_" + id).css('display') == 'none') {
-			$("img#img_" + id).attr('src', $("img#img_" + id).attr('src').replace(/minus/g,'plus'));
-		}
-		else {
-			$("img#img_" + id).attr('src', $("img#img_" + id).attr('src').replace(/plus/g,'minus'));
-		}
-	});
-
-}
-*/
-
 
 function cs_select_multiple(id, status) {
 
