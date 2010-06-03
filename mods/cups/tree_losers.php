@@ -34,12 +34,12 @@ if($losers > 1) {
   
   // select all losermatches and store in $cupmatches[rounds]
   $cupmatches = array();
-  $rounds_loop = $rounds-1;
+  $rounds_loop = $rounds;
   $tables = 'cupmatches cm LEFT JOIN ';
   $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
-    '{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
+    '{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id';
   $cells = $cup['cups_system'] == 'users' ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id' :
-    'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id, cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
+    'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id';
   $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
   $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2, cm.cupmatches_tree_order AS cupmatches_tree_order';
   while ($rounds_loop > 1) {
@@ -47,9 +47,8 @@ if($losers > 1) {
     $cupmatches[$rounds_loop] = cs_sql_select(__FILE__, $tables, $cells, $where, 'cm.cupmatches_tree_order',0,0);
     $rounds_loop--;
   }
-  
   // create image
-  $rounds_loop = $rounds-1;
+  $rounds_loop = $rounds;
   for ($i = 0; $i < $count_matches; $i++) {
     $i2 = $i + 1;
     $round_2 = floor($round / 2);
@@ -62,7 +61,7 @@ if($losers > 1) {
     imagefilledrectangle ($img, $currwidth, $currheight, $currwidth + $entitywidth, $currheight + $entityheight, $col_team_bg);
     $string = '';
     if (empty($round))
-      $string = $cupmatches[$rounds_loop][$i]['team1_name'] = empty($cupmatches[$rounds_loop][$i]['team1_name']) ? $cupmatches[$rounds_loop][$i]['squad1_name_c'] : $cupmatches[$rounds_loop][$i]['team1_name'];
+      $string = $cupmatches[$rounds_loop][$i]['team1_name'] = (empty($cupmatches[$rounds_loop][$i]['team1_name']) AND !empty($cupmatches[$rounds_loop][$i]['team1_id'])) ? '? ID:'.$cupmatches[$rounds_loop][$i]['team1_id'] : $cupmatches[$rounds_loop][$i]['team1_name'];
     elseif (!empty($cupmatches[$rounds_loop+1][$run]['cupmatches_winner'])) {
       $cond = $cupmatches[$rounds_loop+1][$run]['cupmatches_winner'] == $cupmatches[$rounds_loop+1][$run]['team1_id'];
       $string = $cond ? $cupmatches[$rounds_loop+1][$run]['team1_name'] : $cupmatches[$rounds_loop+1][$run]['team2_name'];
@@ -84,7 +83,7 @@ if($losers > 1) {
     imagefilledrectangle ($img, $currwidth, $currheight, $currwidth + $entitywidth, $currheight + $entityheight, $col_team_bg);
     $string = '';
     if (empty($round))
-      $string = $cupmatches[$rounds_loop][$i]['team2_name'] = empty($cupmatches[$rounds_loop][$i]['team2_name']) ? $cupmatches[$rounds_loop][$i]['squad2_name_c'] : $cupmatches[$rounds_loop][$i]['team2_name'];
+      $string = $cupmatches[$rounds_loop][$i]['team2_name'] = (empty($cupmatches[$rounds_loop][$i]['team2_name']) AND !empty($cupmatches[$rounds_loop][$i]['team2_id'])) ? '? ID:'.$cupmatches[$rounds_loop][$i]['team2_id'] : $cupmatches[$rounds_loop][$i]['team2_name'];
     elseif (!empty($cupmatches[$rounds_loop+1][$run]['cupmatches_winner'])) {
       $cond = $cupmatches[$rounds_loop+1][$run]['cupmatches_winner'] == $cupmatches[$rounds_loop+1][$run]['team1_id'];
       $string = $cond ? $cupmatches[$rounds_loop+1][$run]['team1_name'] : $cupmatches[$rounds_loop+1][$run]['team2_name'];

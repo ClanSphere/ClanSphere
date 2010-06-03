@@ -44,8 +44,7 @@ $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.
 	'{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id LEFT JOIN {pre}_cupsquads cs1 ON cm.squad1_id = cs1.squads_id LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id';
 $cells = $cup['cups_system'] == 'users'
   ? 'u1.users_nick AS team1_name, u1.users_id AS team1_id, u2.users_nick AS team2_name, u2.users_id AS team2_id'
-  : 'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id, '
-    . 'cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c';
+  : 'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id';
 $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
 $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2, cm.cupmatches_tree_order AS cupmatches_tree_order';
 $where = 'cm.cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 0 AND cm.cupmatches_round = ';
@@ -55,8 +54,8 @@ for ($i=0; $i < $rounds_1; $i++) {
   $temp = cs_sql_select(__FILE__, $tables, $cells, $where . ($rounds_1 - $i), 'cm.cupmatches_tree_order',0,0);
   // $cupmatches[$i] = array();
   foreach ($temp as $match) {
-    if (empty($match['team1_name'])) $match['team1_name'] = $match['squad1_name_c'];
-    if (empty($match['team2_name'])) $match['team2_name'] = $match['squad2_name_c'];
+    if (empty($match['team1_name']) AND !empty($match['team1_id'])) $match['team1_name'] = '? ID:'.$match['team1_id'];
+    if (empty($match['team2_name']) AND !empty($match['team2_id'])) $match['team2_name'] = '? ID:'.$match['team2_id'];
     $cupmatches[$i][ $match['cupmatches_tree_order'] ] = $match;
     }
 }

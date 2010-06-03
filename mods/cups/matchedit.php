@@ -45,11 +45,6 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
       
       $cond = '(cupmatches_accepted1 = 0 OR cupmatches_accepted2 = 0) AND cups_id = '. $matchsel['cups_id'];
       $count = cs_sql_count(__FILE__,'cupmatches',$cond);
-      
-      if(empty($count) && $matchsel['cupmatches_round'] != 1) {
-        cs_cupround($matchsel['cups_id'], $matchsel['cupmatches_round'], $cup['cups_teams'], $cup['cups_brackets']);
-        $message = $cs_lang['new_round'];
-      }
 
       if (!empty($matchsel['cupmatches_accepted1']) && !empty($matchsel['cupmatches_accepted2'])) {
         
@@ -218,14 +213,6 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
         
       $cond = '(cupmatches_accepted1 = 0 OR cupmatches_accepted2 = 0) AND cups_id = '. $matchsel['cups_id'];
       $count = cs_sql_count(__FILE__,'cupmatches',$cond);
-      
-      if(empty($count) && $matchsel['cupmatches_round'] != 1) {
-        $cells = 'cups_brackets, cups_teams';
-        $cup = cs_sql_select(__FILE__,'cups',$cells,"cups_id = '" . $matchsel['cups_id'] . "'");
-      
-        cs_cupround($matchsel['cups_id'], $matchsel['cupmatches_round'], $cup['cups_teams'], $cup['cups_brackets']);
-        $msg = $cs_lang['new_round'];
-      }
         
       echo $cs_lang['changes_done'] . '. ';
       
@@ -249,7 +236,6 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
         $tables .= 'LEFT JOIN {pre}_cupsquads cs2 ON cm.squad2_id = cs2.squads_id ';
         $cells = 'cm.squad1_id AS squad1_id, cm.squad2_id AS squad2_id, ';
         $cells .='sq1.squads_name AS squad1_name, sq2.squads_name AS squad2_name, ';
-        $cells .= 'cs1.squads_name AS squad1_name_c, cs2.squads_name AS squad2_name_c, ';
       } else {
         $tables .= 'LEFT JOIN {pre}_users usr1 ON cm.squad1_id = usr1.users_id ';
         $tables .= 'LEFT JOIN {pre}_users usr2 ON cm.squad2_id = usr2.users_id ';
@@ -269,8 +255,8 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
       if ($system['cups_system'] == 'teams') {
         $data['match']['team1_id'] = $data['match']['squad1_id'];
         $data['match']['team2_id'] = $data['match']['squad2_id'];
-        $data['match']['team1_name'] = empty($data['match']['squad1_name']) ? cs_secure($data['match']['squad1_name_c']) : cs_secure($data['match']['squad1_name']);
-        $data['match']['team2_name'] = empty($data['match']['squad2_name']) ? cs_secure($data['match']['squad2_name_c']) : cs_secure($data['match']['squad2_name']);
+        $data['match']['team1_name'] = (empty($data['match']['squad1_name']) AND !empty($data['match']['squad1_id'])) ? '? ID:'.$data['match']['squad1_id'] : cs_secure($data['match']['squad1_name']);
+        $data['match']['team2_name'] = (empty($data['match']['squad2_name']) AND !empty($data['match']['squad2_id'])) ? '? ID:'.$data['match']['squad2_id'] : cs_secure($data['match']['squad2_name']);
       } else {
         $data['match']['team1_id'] = $data['match']['user1_id'];
         $data['match']['team2_id'] = $data['match']['user2_id'];

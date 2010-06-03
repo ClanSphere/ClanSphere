@@ -375,7 +375,6 @@ CREATE TABLE {pre}_cupsquads (
   cupsquads_id {serial},
   cups_id int(8) NOT NULL default '0',
   squads_id int(8) NOT NULL default '0',
-  squads_name varchar(80) NOT NULL default '',
   cupsquads_time int(14) NOT NULL default '0',
   PRIMARY KEY (cupsquads_id),
   UNIQUE (cups_id, squads_id)

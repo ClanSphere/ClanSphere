@@ -14,7 +14,8 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
   $cup = cs_sql_select(__FILE__,'cups','cups_teams, cups_brackets','cups_id = ' . $cups_id);
   $rounds = strlen(decbin($cup['cups_teams'])) - 1;
   
-  $opponent_position = $match['cupmatches_tree_order']%2 == 0 ? $match['cupmatches_tree_order']+1 : $match['cupmatches_tree_order']-1;
+  $position = $match['cupmatches_tree_order']%2 == 0 ? 1 : -1;
+  $opponent_position = $match['cupmatches_tree_order']+$position;
   $where = 'cups_id = ' . $cups_id . ' AND cupmatches_round = ' . $round . ' AND cupmatches_tree_order = ' . $opponent_position;
   $cells = 'cupmatches_accepted1, cupmatches_accepted2, cupmatches_winner';
   if (!empty($cup['cups_brackets'])) $cells .= ', squad1_id, squad2_id';
@@ -25,8 +26,8 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
   
   $newmatch = array();
   $newmatch['cups_id'] = $cups_id;
-  $newmatch['squad2_id'] = $winner;
-  $newmatch['squad1_id'] = $opponent['cupmatches_winner'];
+  $newmatch['squad1_id'] = $position==1 ? $winner : $opponent['cupmatches_winner'];
+  $newmatch['squad2_id'] = $position==1 ? $opponent['cupmatches_winner'] : $winner;
   $newmatch['cupmatches_round'] = $round - 1;
   $newmatch['cupmatches_loserbracket'] = $match['cupmatches_loserbracket'];
   $newmatch['cupmatches_tree_order'] = floor($match['cupmatches_tree_order'] / 2);
