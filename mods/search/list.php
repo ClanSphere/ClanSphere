@@ -69,6 +69,8 @@ if(!empty($submit) AND empty($search_error)) {
     case 'files':
       $target = 'mods/search/mods/files.php';
     break;
+    default:
+      $target = 'mods/search/mods/news.php';
   }
   require($target);
 }
