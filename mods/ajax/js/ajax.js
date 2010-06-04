@@ -129,7 +129,7 @@ var Clansphere = {
     
     convertLinksToAnchor: function (element) {
       element = $(element);
-      element.find('a:not(.noajax)').each(function(i,e){
+      element.find('a:not(.noajax)[href]').each(function(i,e){
         var href = e.href;
         href = href.replace(Clansphere.ajax.hashMarker, Clansphere.ajax.options.anchorMarker);
         if (!Clansphere.ajax.modRewrite) {
