@@ -33,11 +33,11 @@
         </tr>
 		    <tr>
           <td class="leftc" style="width:125px;">{lang:ip}</td>
-          <td class="leftb">{servers:servers_ip}:{servers:servers_port}</td>
+          <td class="leftb">{servers:gq_address}:{servers:gq_port}</td>
         </tr>
         <tr>
           <td class="leftc">{lang:game}</td>
-          <td class="leftb">{servers:gamename}</td>
+          <td class="leftb">{servers:game_descr}</td>
         </tr>        
         <tr>
           <td class="leftc">{lang:gametype}</td>
@@ -45,11 +45,11 @@
         </tr>
         <tr>
           <td class="leftc">{lang:map}</td>
-          <td class="leftb">{servers:mapname}</td>
+          <td class="leftb">{servers:map}</td>
         </tr>
         <tr>
           <td class="leftc">{lang:players}</td>
-          <td class="leftb">{servers:nowplayers} / {servers:maxplayers}</td>
+          <td class="leftb">{servers:num_players} / {servers:max_players} ({servers:num_bots})</td>
         </tr>   
         <tr>
           <td class="leftc">{lang:ping}</td>
@@ -82,7 +82,7 @@
   </tr>
   {loop:players}
   <tr>
-    {players:0}
+	{players:0}
   </tr>
   {stop:players}
 </table>
@@ -95,6 +95,7 @@
 </table>
 {stop:live}
 <br />
+<br />
 {stop:servers}
 {stop:server}
 {unless:server}
@@ -103,6 +104,7 @@
     <td class="centerb">{lang:no_server}</td>
   </tr>
 </table>
+<br />
 <br />
 {stop:server}
 
