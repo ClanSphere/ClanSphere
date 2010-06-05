@@ -57,6 +57,8 @@ var Clansphere = {
         Clansphere.ajax.regex = new RegExp("^(?:[a-zA-Z0-9\/\.\-\_\:]*)?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/(.+?)","g")
       }
       
+      Clansphere.ajax.checkUrlConsistency();
+      
       Clansphere.ajax.options.loadingImage.attr('src', Clansphere.ajax.basePath + '/uploads/ajax/loading.gif' );
       
       Clansphere.ajax.convertLinksToAnchor('body');
@@ -142,17 +144,31 @@ var Clansphere = {
       });
     },
     
+    checkUrlConsistency: function() {
+      var testconsistence = window.location.pathname.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index,'').replace(Clansphere.ajax.basePath, '').replace('/','').replace('.php','');
+      
+      if(testconsistence.length > 0)
+      {
+        var newpath = window.location.pathname.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '#');
+        window.location = newpath;
+      }
+    },
+    
     convertLinksToAnchor: function (element) {
       element = $(element);
       element.find('a:not(.noajax)[href]').each(function(i,e){
         var href = e.href;
         href = href.replace(Clansphere.ajax.hashMarker, Clansphere.ajax.options.anchorMarker);
         if (!Clansphere.ajax.modRewrite) {
-          href = href.replace(Clansphere.ajax.regex, Clansphere.ajax.hashMarker + "mod=$1"); 
+          href = href.replace(Clansphere.ajax.regex, "mod=$1"); 
         } else {
-      	  href = href.replace(Clansphere.ajax.regex, Clansphere.ajax.hashMarker + "$1");
+      	  href = href.replace(Clansphere.ajax.regex, "$1");
         }
-        e.href = href;
+        var hrefsplitter = href.split(Clansphere.ajax.options.anchorMarker);
+        if(hrefsplitter[1] && hrefsplitter[0].substr(hrefsplitter[0].length - location.pathname.length, hrefsplitter[0].length) == location.pathname) {
+          href = Clansphere.ajax.hash.substr(1) + Clansphere.ajax.options.anchorMarker + hrefsplitter[1];
+        }
+        e.href = Clansphere.ajax.hashMarker + href;
       }).bind('click', function(e) {
         if(this.href.substr(0,7)=='http://') {
   	      Clansphere.ajax.forceReload = true;
