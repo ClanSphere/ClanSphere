@@ -193,30 +193,21 @@ function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $i
   if($mod != "install" && $message) {
       cs_redirectmsg($message, $id, $icon);
   }
+
 	
-	/*
-		TODO: Refactor this:
-		- make use an array() named $persistent_params
-		- the array contains a list of paramters that should be kept during the redirect
-		
-		$persistent_params = array('xhr', 'xhr_navlists')
-	*/
-	if (isset($_REQUEST['xhr'])) {
-		$more = explode('#', $more);
-	 	$more = $more[0]; 
-		if(!empty($more)) $more .= '&';
-		$more .= 'xhr=1';
-		if(isset($_REQUEST['xhr_navlists'])) {
-			$more .= '&xhr_navlists=' . $_REQUEST['xhr_navlists']; 
+	$persistent_params = array('xhr', 'xhr_navlists');
+	
+	$more = explode('#', $more);
+	
+	foreach($persistent_params AS $p) {
+		if(isset($_REQUEST[$p])) {
+			$more[0] .= empty($more[0]) ? '&' : '';
+			$more[0] .= $p . '=' . $_REQUEST[$p];
 		}
-		for($i=1,$c=count($more);$i<$c;$i++)
-		{
-			$more .= '#' . $more[$i];
-		}
-	} 
-	/*
-	----------
-	*/
+	}
+	
+	$more = implode('#', $more);
+
 	$more = empty($more) ? 0 : $more;
 		
   $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
