@@ -319,10 +319,10 @@ function cs_ajaxwrap() {
 		
 		$pathPrefix = str_replace('\\','/',$cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']) . '/';
 
-		$uri = preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\?(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ;	
+		$uri = preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\??(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ;	
 		$uri = preg_replace('/[&\?\/]?(xhr_navlists[=\/])[^&\/]*/s','', $uri);
 		
-		$json['location'] = str_replace(array('&debug', '/debug', '&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix,$cs_main['php_self']['dirname']),'', $uri);
+		$json['location'] = str_replace(array('&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix,$cs_main['php_self']['dirname']),'', $uri);
 		
 		if(isset($cs_main['ajax_js'])) {
 			$json['scripts'] = $cs_main['ajax_js'];
