@@ -54,7 +54,7 @@ var Clansphere = {
       if(!Clansphere.ajax.modRewrite) {
         Clansphere.ajax.regex = new RegExp("(?:[a-zA-Z0-9\/\.\-\_\:]*)?\?mod=(.+?)","g");
       } else {
-        Clansphere.ajax.regex = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/(.+?)","g")
+        Clansphere.ajax.regex = new RegExp("^(?:[a-zA-Z0-9\/\.\-\_\:]*)?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/(.+?)","g")
       }
       
       Clansphere.ajax.options.loadingImage.attr('src', Clansphere.ajax.basePath + '/uploads/ajax/loading.gif' );
