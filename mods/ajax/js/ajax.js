@@ -7,6 +7,7 @@ var Clansphere = {
     index: '',
     modRewrite: false,
     forceReload: false,
+    forceScroll: false,
     navlists: '',
     last_activity: 0,
     userIsActive: true,
@@ -90,11 +91,8 @@ var Clansphere = {
       
         document.title = response.title;
       
-        if(Clansphere.ajax.scrollTarget) {
-          
-          $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, Clansphere.ajax.options.scrollDuration);
-          Clansphere.ajax.scrollTarget = '';
-        }
+        Clansphere.ajax.performScroll();
+        
         if(response.navlists) {
           Clansphere.ajax.updateNavlists(response.navlists);
         }
@@ -118,22 +116,32 @@ var Clansphere = {
     checkURL: function() {
       var hash = window.location.hash.substr(1).split(Clansphere.ajax.options.anchorMarker);
       hash[0] = hash[0] || '';
-      if (Clansphere.ajax.hashMarker + hash[0] == Clansphere.ajax.hash && Clansphere.ajax.forceReload!==true) return;
+      
+      
+      
+      if (Clansphere.ajax.hashMarker + hash[0] == Clansphere.ajax.hash && Clansphere.ajax.forceReload!==true)  {
+        if(hash[1]!==Clansphere.ajax.scrollTarget || Clansphere.ajax.forceScroll===true) {
+          Clansphere.ajax.scrollTarget = hash[1];
+          Clansphere.ajax.performScroll();
+        }
+        return;
+      }
       
       Clansphere.ajax.switchNavlistRefresher(false);
       
-      Clansphere.ajax.forceReload = false;
-      if (Clansphere.ajax.hash != '') Clansphere.ajax.toggleSpinner(1);
-      
-      Clansphere.ajax.hash = Clansphere.ajax.hashMarker + hash[0];
       if(hash[1]) {
         Clansphere.ajax.scrollTarget = hash[1];
       } else {
         Clansphere.ajax.scrollTarget = '';
       }
+      
+      Clansphere.ajax.forceReload = false;
+      if (Clansphere.ajax.hash != '') Clansphere.ajax.toggleSpinner(1);
+      
+      Clansphere.ajax.hash = Clansphere.ajax.hashMarker + hash[0];
+
       var prefix = !Clansphere.ajax.modRewrite ? "" : "params=/";
       
-      //Clansphere.validation.requestRules(mod);
       $.ajax({
             type: 'GET',
             url: Clansphere.ajax.baseFile,
@@ -149,12 +157,12 @@ var Clansphere = {
       
       if(testconsistence.length > 0)
       {
-        var newpath = window.location.pathname.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '#');
+        var newpath = window.location.pathname.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + Clansphere.ajax.hashMarker);
         window.location = newpath;
         return;
       }
       if(window.location.search) {
-        window.location = window.location.pathname + '#' + window.location.search.substr(1);
+        window.location = window.location.pathname + Clansphere.ajax.hashMarker + window.location.search.substr(1);
       }
     },
     
@@ -171,12 +179,14 @@ var Clansphere = {
         var hrefsplitter = href.split(Clansphere.ajax.options.anchorMarker);
         if(hrefsplitter[1] && hrefsplitter[0].substr(hrefsplitter[0].length - location.pathname.length, hrefsplitter[0].length) == location.pathname) {
           href = Clansphere.ajax.hash.substr(1) + Clansphere.ajax.options.anchorMarker + hrefsplitter[1];
+          $(e).data('noreload',true);
         }
         e.href = Clansphere.ajax.hashMarker + href;
       }).bind('click', function(e) {
-        if(this.href.substr(0,7)=='http://') {
+        if(this.href.substr(0,7)=='http://' && !$(this).data('noreload')) {
   	      Clansphere.ajax.forceReload = true;
   	    }
+  	    Clansphere.ajax.forceScroll = true;
   	  });
       
       return element;
@@ -246,6 +256,13 @@ var Clansphere = {
         default:
           loadingImage.fadeOut(10).remove();
       }
+    },
+    
+    performScroll: function() {
+      if(Clansphere.ajax.scrollTarget) {
+        $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, Clansphere.ajax.options.scrollDuration);
+      }
+      Clansphere.ajax.forceScroll = false;
     },
     
     getNavlists: function(element)
