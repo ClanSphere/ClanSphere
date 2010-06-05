@@ -324,6 +324,33 @@ var Clansphere = {
       }
     },
     
+    debugInfo: function() {
+      
+      var box = $('#cspAjaxDebugInfoBox');
+      
+      var d = '',
+          debugInfos = [
+            'Clansphere.ajax.regex',
+            'Clansphere.ajax.index',
+            'Clansphere.ajax.basePath',
+            'Clansphere.ajax.baseFile',
+            'Clansphere.ajax.regex'
+          ];
+            
+      d += '<h2>Ajax Debug Information</h2>';
+      
+      d += '<a href="#" onclick="javascript:$(this).parent().remove();">Close</a>';
+      
+      for(dbg in debugInfos) {
+        d += '<p><b>' + debugInfos[dbg] + ':</b><br/>' + eval(debugInfos[dbg]) + '</p>';
+      }
+            
+      if(box.size()==0)
+        $('<div id="cspAjaxDebugInfoBox"/>').css({position:'absolute', left:'5%', top: '5%', width: '86%', background: '#fff', padding: '2%', border:'5px solid #666'}).html(d).appendTo('body');
+      else
+        box.html(d);
+    },
+    
     upload_complete: function(upload) {
       if(upload.error) {
         Clansphere.ajax.remove_complete(upload.name);
