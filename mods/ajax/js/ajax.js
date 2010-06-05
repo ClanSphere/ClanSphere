@@ -1,6 +1,6 @@
 var Clansphere = {
   ajax: {
-    hash: '',
+    hash: '#',
     scrollTarget: '',
     baseFile: '',
     basePath: '',
@@ -51,7 +51,7 @@ var Clansphere = {
       Clansphere.ajax.index = basepath.replace(basePathRegExp, "$2");
       
       if(!Clansphere.ajax.modRewrite) {
-        Clansphere.ajax.regex = new RegExp("([a-zA-Z0-9\/\.\-\_\:]*?)\?mod=(\w.+?)","g");
+        Clansphere.ajax.regex = new RegExp("(?:[a-zA-Z0-9\/\.\-\_\:]*)?\?mod=(.+?)","g");
       } else {
         Clansphere.ajax.regex = new RegExp("^[a-zA-Z0-9\/\.\-\_\:]*?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/(.+?)","g")
       }
@@ -149,7 +149,7 @@ var Clansphere = {
         var href = e.href;
         href = href.replace(Clansphere.ajax.hashMarker, Clansphere.ajax.options.anchorMarker);
         if (!Clansphere.ajax.modRewrite) {
-          href = href.replace(Clansphere.ajax.regex, Clansphere.ajax.hashMarker + "mod=$2"); 
+          href = href.replace(Clansphere.ajax.regex, Clansphere.ajax.hashMarker + "mod=$1"); 
         } else {
       	  href = href.replace(Clansphere.ajax.regex, Clansphere.ajax.hashMarker + "$1");
         }
@@ -183,7 +183,7 @@ var Clansphere = {
         var action = $(this).attr('action');
         
         if (!Clansphere.ajax.modRewrite) {
-          target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?mod=$2");
+          target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?mod=$1");
         } else {
       	  target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?params=/$1");
         }
