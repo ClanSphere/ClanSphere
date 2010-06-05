@@ -28,7 +28,7 @@ var Clansphere = {
       anchorMarker: '::scrollTo:',
       scrollDuration: 1000,
       activityCheckTime: 60000,
-      navlistSelector: '.csp_navlist',
+      navlistSelector: '.cs_navlist',
       navlistIdPrefix: 'cs_navlist_',
       uploadScript: 'upload.php',
       labelUploadDelete: 'Delete',

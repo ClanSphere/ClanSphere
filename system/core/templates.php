@@ -104,7 +104,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
     
   if(!empty($navfiles))
-    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $string);
+    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_templatefile', $string);
 
   global $account;
   if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
@@ -126,6 +126,28 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   return $string;
 }
 
+function cs_wrap_templatefile($matches)
+{
+	global $cs_main;
+	$default = array('users_navlogin');
+	$spans = array('count_navday','count_navone','count_navall','count_navmon','count_navyes','func_parse','func_queries');
+	
+	$nav = $matches[1] . '_' . $matches[2];
+	
+	$ajaxes = explode(',',$cs_main['ajax_navlists']);
+	$ajaxes = array_unique(array_merge($ajaxes, $default));
+	if(!in_array($nav, $ajaxes)){
+		return cs_templatefile($matches);
+	}
+	
+	$m = $matches;
+	array_shift($m);
+	$id = str_replace('=','_', implode('_', $m));
+	$el = !in_array($nav,$spans) ? 'div' : 'span';
+	
+	return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
+}
+
 function cs_templatefile($matches)
 {
   $file = 'mods/' . $matches[1] . '/' . $matches[2] . '.php';
@@ -134,15 +156,15 @@ function cs_templatefile($matches)
     cs_error($file, 'cs_templatefile - File not found');
     return $matches[0];
   }
-  if (!empty($matches[3]))
-  {
-    $data = explode('=', substr($matches[3], 1));
-    $backup = empty($_GET[$data[0]]) ? '' : $_GET[$data[0]];
-    $_GET[$data[0]] = $data[1];
-    $return = cs_filecontent($file);
-    if (empty($backup)) unset($_GET[$data[0]]); else $_GET[$data[0]] = $backup;
-    return $return;
-  }
+	
+	if (!empty($matches[3]) && !empty($matches[4]))
+	{
+	  $backup = isset($_GET[$matches[3]]) ? NULL : $_GET[$matches[3]];
+	  $_GET[$matches[3]] = $matches[4];
+	  $return = cs_filecontent($file);
+	  if (isset($backup)) unset($_GET[$matches[3]]); else $_GET[$matches[4]] = $backup;
+	  return $return;
+	}
   return cs_filecontent($file);
 }
 
@@ -307,27 +329,11 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
     $cs_temp_get = str_replace('<body', '<body onload="Clansphere.initialize('.$cs_main['mod_rewrite'].',\''.$_SERVER['PHP_SELF'].'\','.$cs_main['ajax_reload'].')"', $cs_temp_get);
     if (strpos($cs_temp_get,'id="content"') === false) $content = '<div id="content">' . $content . '</div>';
-    $ajaxes = explode(',',$cs_main['ajax_navlists']);
-    if (!empty($cs_main['debug'])) {
-      $ajaxes[] = 'func_parse';
-      $ajaxes[] = 'func_queries';
-     }
-    if (!empty($ajaxes)) {
-      if (strpos($cs_temp_get,'id="cs_navlist_users_navlogin"') === false)
-        $cs_temp_get = preg_replace("={users:navlogin(.*?)}=i", "<div id=\"cs_navlist_users_navlogin\" class=\"csp_navlist\">{users:navlogin\\1}</div>", $cs_temp_get);
-      $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navyes','func_parse','func_queries');
-      foreach ($ajaxes as $ajax) {
-        $placeholder = '{'.str_replace('_',':',$ajax).'}';
-        if (strpos($cs_temp_get,'id="cs_navlist_'.$ajax.'"') === false) {
-          $el = !in_array($ajax,$spans) ? 'div' : 'span';
-          $cs_temp_get = str_replace($placeholder,'<'.$el.' id="cs_navlist_'.$ajax.'" class="csp_navlist">' . $placeholder . '</'.$el.'>',$cs_temp_get); }
-      }
-    }
   }
 
   $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
   $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
-  $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(:(.*?))*}=i", 'cs_templatefile', $cs_temp_get);
+  $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_wrap_templatefile', $cs_temp_get);
   $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
   $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
