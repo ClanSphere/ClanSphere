@@ -330,7 +330,7 @@ function cs_ajaxwrap() {
 		$json['content'] = $content;
 	}
 
-	if($_REQUEST['xhr_navlists']) {
+	if(isset($_REQUEST['xhr_navlists'])) {
 		$navs = explode(',', $_REQUEST['xhr_navlists']);
 		$navlists = array();
 		foreach($navs AS $nav) {

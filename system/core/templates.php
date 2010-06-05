@@ -201,15 +201,15 @@ function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $i
 	
 	foreach($persistent_params AS $p) {
 		if(isset($_REQUEST[$p])) {
-			$more[0] .= empty($more[0]) ? '&' : '';
+			$more[0] .= !empty($more[0]) ? '&' : '';
 			$more[0] .= $p . '=' . $_REQUEST[$p];
 		}
 	}
 	
 	$more = implode('#', $more);
-
+	
 	$more = empty($more) ? 0 : $more;
-		
+
   $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
 	
 	
