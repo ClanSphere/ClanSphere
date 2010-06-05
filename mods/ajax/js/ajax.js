@@ -151,6 +151,10 @@ var Clansphere = {
       {
         var newpath = window.location.pathname.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '#');
         window.location = newpath;
+        return;
+      }
+      if(window.location.search) {
+        window.location = window.location.pathname + '#' + window.location.search.substr(1);
       }
     },
     

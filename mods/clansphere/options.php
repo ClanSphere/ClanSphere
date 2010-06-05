@@ -62,10 +62,10 @@ if(isset($_POST['submit'])) {
     cs_sql_query(__FILE__,$query);
   }
 
-  if (!empty($cs_main['ajax']) && !empty($account['users_ajax']) && (empty($_POST['mod_rewrite']) && !empty($cs_main['mod_rewrite'])) | 
-    (!empty($_POST['mod_rewrite']) && empty($cs_main['mod_rewrite'])))
-    die(ajax_js("window.location.hash='#'; window.location.href=window.location.href.substr(window.location.href.lastIndexOf('/')); window.location.reload();"));
-  
+	global $cs_main;
+	
+	$cs_main['mod_rewrite'] = $save['mod_rewrite'];
+	
   cs_redirect($cs_lang['success'], 'options','roots');
 
 } 
