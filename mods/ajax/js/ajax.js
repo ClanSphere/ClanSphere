@@ -53,9 +53,9 @@ var Clansphere = {
       Clansphere.ajax.index = basepath.replace(basePathRegExp, "$2");
       
       if(!Clansphere.ajax.modRewrite) {
-        Clansphere.ajax.regex = new RegExp("(?:[a-zA-Z0-9\/\.\-\_\:]*)?\?mod=(.+?)","g");
+        Clansphere.ajax.regex = new RegExp("^(?:[a-zA-Z0-9\/\.\-\_\:]*)?\?mod=(.+?)$","g");
       } else {
-        Clansphere.ajax.regex = new RegExp("^(?:[a-zA-Z0-9\/\.\-\_\:]*)?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/(.+?)","g")
+        Clansphere.ajax.regex = new RegExp("^(?:[a-zA-Z0-9\/\.\-\_\:]*)?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/(.+?)$","g")
       }
       
       Clansphere.ajax.checkUrlConsistency();
