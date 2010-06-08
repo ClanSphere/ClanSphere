@@ -206,7 +206,7 @@ else {
     $data['if']['players'] = true;
     
     foreach ($select AS $user) {
-      $data['cup_loop'][$run]['players'] = cs_user($user['users_id'],$user['users_nick'], $user['users_active']);
+      $data['cup_loop'][]['players'] = cs_user($user['users_id'],$user['users_nick'], $user['users_active']);
       $run ++;
     }
   }
