@@ -15,13 +15,30 @@ if(!empty($mq_gpc)) {
   $_REQUEST = cs_stripslashes($_REQUEST);
 }
 
-if(!empty($_GET['params']{1})) {
-  
-  $params = explode('/', $_GET['params']);
+$_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES);
+$cs_main['def_path'] = getcwd();
+$cs_main['php_self'] = pathinfo($_SERVER['SCRIPT_NAME']);
+if($cs_main['php_self']['dirname']{0} == '\\')
+  $cs_main['php_self']['dirname']{0} = '/';
+$cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
+# available since php 5.2.0
+if(!isset($cs_main['php_self']['filename']))
+  $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
+# get params for mod_rewrite
+if(empty($_GET['mod']) AND empty($_GET['action'])) {
+  if(empty($_GET['params']))
+    $cs_main['php_self']['params'] = substr($_SERVER['REQUEST_URI'], strlen($cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']));
+  else
+    $cs_main['php_self']['params'] = $_GET['params'];
+}
+
+if(!empty($cs_main['php_self']['params']{1})) {
+
+  $params = explode('/', $cs_main['php_self']['params']);
   $_GET['mod'] = $params[1];
   $_GET['action'] = empty($params[2]) ? 'list' : $params[2];
   $pm_cnt = count($params);
-  
+
   for($i=3;$i<$pm_cnt;$i++) {
     if(!empty($params[$i]) AND !empty($params[($i+1)]) OR !isset($params[($i+1)])) {
       $value = isset($params[($i+1)]) ? $params[($i+1)] : 1;
@@ -31,6 +48,12 @@ if(!empty($_GET['params']{1})) {
     }
   }
 }
+
+# define basic data for cookies
+$domain = '';
+if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
+  $domain = htmlentities($_SERVER['HTTP_HOST']);
+$cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
 
 function cs_servervars($mode, $integers = 0, $unharmed = 0) {
   
@@ -69,19 +92,3 @@ unset($_REQUEST);
  *
  *
 */
-
-$_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES);
-
-$cs_main['def_path'] = getcwd();
-$cs_main['php_self'] = pathinfo($_SERVER['SCRIPT_NAME']);
-if($cs_main['php_self']['dirname']{0} == '\\')
-  $cs_main['php_self']['dirname']{0} = '/';
-$cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
-# available since php 5.2.0
-if(!isset($cs_main['php_self']['filename']))
-  $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
-
-$domain = '';
-if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
-  $domain = $_SERVER['HTTP_HOST'];
-$cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
