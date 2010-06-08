@@ -68,7 +68,7 @@ function passwordcheck(pass) {
 	var password_upper = '0';
 	var special = '0';
 	var new_pass = pass.split("");
-	
+
 	for (x=0;x<new_pass.length;x++) {	
 		if (isNaN(new_pass[x])) {
 			password_letters++;
@@ -86,16 +86,15 @@ function passwordcheck(pass) {
 			special++;
 		}
 	}
-	
+
 	w = "";
-	
+
 	if(new_pass.length >= 8) { w = "25%"; }
 	if(new_pass.length >= 8 && password_numbers >= 2) {	w = "50%"; }
 	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2) {	w = "75%"; }
 	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2 && special > 0) {	w = "100%"; }
-	
+
 	$("#pass_secure").css('width', w);
-	
 }
 
 $(".clip").live('click', function () { 
@@ -252,6 +251,22 @@ function cs_display(id) {
   $("#" + id).slideToggle('slow');
 }
 
+function cs_visible(id) {
+
+  if($("#" + id).css('visibility') == 'visible')
+    $("#" + id).css('visibility', 'hidden');
+  else
+    $("#" + id).css('visibility', 'visible');
+}
+
+ $(".visible").live('click', function () { 
+ $(this).prev('div').toggle(function() {
+    $(this).css('visibility', 'hidden');
+  }, function() {
+    $(this).css('visibility', 'visibile');
+  });
+});
+
 function cs_validate(language, module) {
   
   modcontent = $('#mod_' + language + '_' + module);
@@ -277,7 +292,6 @@ function cs_chmod_CheckChange(Checkbox, Value) {
 	}
 	
 }
-
 
 function cs_chmod_TextChange() {
 	
