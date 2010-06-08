@@ -207,7 +207,6 @@ else {
     
     foreach ($select AS $user) {
       $data['cup_loop'][]['players'] = cs_user($user['users_id'],$user['users_nick'], $user['users_active']);
-      $run ++;
     }
   }
 }

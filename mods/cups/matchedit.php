@@ -27,13 +27,14 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
   }
   
   if(!empty($check)) {
+  	
     if(empty($_POST['accept_submit'])) {
       
       $data = array();
       $data['match']['id'] = $cupmatches_id;
       $data['match']['squadnr'] = $squad;
       
-      cs_subtemplate(__FILE__, $data, 'cups', 'confirm');
+      echo cs_subtemplate(__FILE__, $data, 'cups', 'confirm');
       
     } else {
       
