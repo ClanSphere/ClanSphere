@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('static');
 
+$cs_option = cs_sql_option(__FILE__, 'static');
+
 $static_id = (int) $_GET['id'];
 
 $where = "static_id = '" . $static_id . "' AND static_access <= '" . $account['access_static'] . "'";
@@ -18,7 +20,7 @@ if (empty($cs_static)) {
 $cs_main['page_title'] = $cs_static['static_title'];
 $cs_view_static['static']['title'] = $cs_static['static_title'];
 
-$cs_view_static['static']['content'] = cs_secure($cs_static['static_text'],1,1,1,1,1);
+$cs_view_static['static']['content'] = cs_secure($cs_static['static_text'],1,1,1,1,$cs_option['php_eval']);
 
 $theme = empty($cs_static['static_table']) ? 'view' : 'view_table';
 echo cs_subtemplate(__FILE__,$cs_view_static,'static',$theme);
@@ -33,5 +35,6 @@ if(!empty($cs_static['static_comments'])) {
     echo cs_html_br(1);
     echo cs_comments_view($static_id,'static','view',$count_com);
   }
+
   echo cs_comments_add($static_id,'static');
 }

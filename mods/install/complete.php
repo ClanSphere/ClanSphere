@@ -35,9 +35,14 @@ $data = array();
 
 $data['errors']['show'] = '';
 
-if(!unlink('uninstall.sql')) $data['errors']['show'] .= $cs_lang['remove_file'] . " 'uninstall.sql'" . cs_html_br(1);
-if(!unlink('install.sql'))   $data['errors']['show'] .=  $cs_lang['remove_file'] . " 'install.sql'" . cs_html_br(1);
-if(!unlink('install.php'))   $data['errors']['show'] .=  $cs_lang['remove_file'] . " 'install.php'" . cs_html_br(1);
+# do not delete files in development environments
+if(!is_dir('.git') AND !is_dir('.svn')) {
+
+  if(!unlink('uninstall.sql')) $data['errors']['show'] .= $cs_lang['remove_file'] . " 'uninstall.sql'" . cs_html_br(1);
+  if(!unlink('install.sql'))   $data['errors']['show'] .=  $cs_lang['remove_file'] . " 'install.sql'" . cs_html_br(1);
+  if(!unlink('install.php'))   $data['errors']['show'] .=  $cs_lang['remove_file'] . " 'install.php'" . cs_html_br(1);
+}
+
 if(empty($set_logs) OR empty($set_uploads) OR empty($set_cache)) $data['errors']['show'] .=  $cs_lang['err_chmod'];
 
 echo cs_subtemplate(__FILE__, $data, 'install', 'complete');

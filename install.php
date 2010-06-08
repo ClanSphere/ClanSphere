@@ -20,8 +20,8 @@ $cs_main = array( 'cellspacing'     => 1,
                   'public'          => 1,
                   'img_path'        => 'crystal_project',
                   'img_ext'         => 'png',
-                  'version_name'    => '2010.0_SVN',
-                  'version_date'    => '2010-05-05');
+                  'version_name'    => '2010.0_DEV',
+                  'version_date'    => '2010-06-08');
 
 require_once 'system/core/functions.php';
 

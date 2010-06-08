@@ -98,9 +98,13 @@ function passwordcheck(pass) {
 	
 }
 
-$(".clip").click(function () { 
+$(".clip").live('click', function () { 
 	$(this).children('img').toggle();
 	$(this).next('div').slideToggle("slow");
+}).next('div').hide();
+
+$(document).bind('csAjaxLoad', function(e,ele) {
+  $(ele).find('.clip').next('div').hide();
 });
 
 function cs_select_multiple(id, status) {

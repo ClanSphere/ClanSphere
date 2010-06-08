@@ -4,64 +4,59 @@
 
 $cs_lang = cs_translate('explorer');
 
+include_once 'mods/explorer/functions.php';
+
+$dir = cs_explorer_path($_REQUEST['file'], 'raw');
+$lsd = cs_explorer_path($dir, 'escape');
+$red_lsd = cs_explorer_path($dir, 'escape', 1);
+
+$data = array();
 
 if(empty($_POST['submit'])) {
-  
-	if(!empty($cs_main['mod_rewrite'])) $_GET['file'] = substr($_GET['params'], strpos($_GET['params'], 'explorer/edit/file/')+19);
-	$source = str_replace('..', '', $_GET['file']);
-  
-  if(empty($source)) {
+
+  if(empty($dir)) {
     cs_redirect($cs_lang['no_file'], 'explorer', 'roots');
-  } elseif(!file_exists($source)) {
-    cs_redirect($cs_lang['not_found'] . ': ' . $source, 'explorer', 'roots');
-  } elseif (@!$file = fopen($source,"r")) {
+  } elseif(!file_exists($cs_main['def_path'] . '/' . $dir)) {
+    cs_redirect($cs_lang['not_found'] . ': ' . $dir, 'explorer', 'roots');
+  } elseif (@!$file = fopen($cs_main['def_path'] . '/' . $dir,'r')) {
     cs_redirect($cs_lang['file_not_opened'], 'explorer', 'roots');
   } else {
-    
-  	$content = fread($file,filesize($_GET['file']));
+
+  	$content = fread($file,filesize($cs_main['def_path'] . '/' . $dir));
     fclose($file);
-    
-    $data = array();
-    $ending = strtolower(substr(strrchr($source,'.'),1));
-    
+
+    $ending = strtolower(substr(strrchr($dir,'.'),1));
+
     if ($ending == 'php') {
-     
+
       $data['if']['phpfile'] = true;
       include_once 'mods/explorer/abcode.php';
-      
+
       $data['abcode']['tools'] = cs_abcode_tools('data_content');
       $data['abcode']['html1'] = cs_abcode_toolshtml('data_content');
       $data['abcode']['sql'] = cs_abcode_sql('data_content');
       $data['abcode']['js'] = cs_abcode_js('data_content');
       $data['abcode']['html2'] = cs_abcode_toolshtml2('data_content');
-     
+
     } else {
     	$data['if']['phpfile'] = false;
     }
-    
+
     $data['var']['content'] = cs_secure($content);
-    $data['var']['source'] = $source;
+    $data['var']['source'] = $dir;
     $data['icn']['unknown'] = cs_html_img('symbols/files/filetypes/unknown.gif', 16, 16);
-    
+
     echo cs_subtemplate(__FILE__, $data, 'explorer', 'edit');
   }
-} else {
-  
-  $parent_dir = '';
-  $parent_single_dirs = explode('/',$_POST['file']);
-  $count_dirs = count($parent_single_dirs) - 1;
-  
-  for ($x = 0; $x < $count_dirs; $x++) {
-    $parent_dir .= $parent_single_dirs[$x] . '/';
-  }
-  
-  $data = fopen($_POST['file'],'w');
+}
+else {
+
+  $data = fopen($cs_main['def_path'] . '/' . $dir,'w');
   # set stream encoding if possible to avoid converting issues
   if(function_exists('stream_encoding'))
     stream_encoding($data, $cs_main['charset']);
   $message = fwrite($data,$_POST['data_content']) ? $cs_lang['changes_done'] : $cs_lang['error_edit'];
   fclose($data);
-  
-  cs_redirect($message, 'explorer', 'roots', 'dir=' . $parent_dir);
-  
+
+  cs_redirect($message, 'explorer', 'roots', 'dir=' . $red_lsd);
 }

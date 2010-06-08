@@ -778,7 +778,6 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clans', 'max_size', '51200');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clans', 'label', 'clan');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_navlists', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_reload', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cache_unicode', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cellspacing', '1');
@@ -805,8 +804,8 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_last', 488);
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', 488);
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2010.0_SVN');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2010-05-05');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2010.0_DEV');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2010-06-08');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', 53);
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
@@ -900,6 +899,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('sq
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'max_size', '76800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'def_order', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'label', 'squad');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('static', 'php_eval', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_width', '140');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_height', '170');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_size', '51200');

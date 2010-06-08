@@ -11,7 +11,7 @@ Options +FollowSymLinks
 
 ## Uncomment the next line to disable Multiviews (if you have negotiation errors in your log files)
 
-Options -Multiviews
+#Options -Multiviews
 
 ## Uncomment the next line to enable the usage of mod_rewrite (required)
 

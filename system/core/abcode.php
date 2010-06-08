@@ -122,22 +122,27 @@ function cs_abcode_php($matches) {
 }
 
 function cs_abcode_u($matches) {
+
   return cs_abcode_output(7, $matches);
 }
 
 function cs_abcode_b($matches) {
+
   return cs_abcode_output(6, $matches);
 }
 
 function cs_abcode_i($matches) {
+
   return cs_abcode_output(8, $matches);
 }
 
 function cs_abcode_indent($matches) {
+
   return cs_abcode_output(9, $matches);
 }
 
 function cs_abcode_s($matches) {
+
   return cs_abcode_output(10, $matches);
 }
 
@@ -165,6 +170,7 @@ function cs_abcode_list($matches) {
 }
 
 function cs_abcode_img($matches) {
+
   if ($matches[0]{4} == ']') {
   	return cs_html_img($matches[1]);
   } else {
@@ -188,15 +194,18 @@ function cs_abcode_mail($matches) {
 }
 
 function cs_abcode_color($matches) {
+
   return cs_abcode_output(5, $matches);
 }
 
 function cs_abcode_size($matches) {
+
   $matches[1] = $matches[1] > 50 ? 50 : $matches[1];
   return cs_abcode_output(4, $matches);
 }
 
 function cs_abcode_align($matches) {
+
   return cs_abcode_output(3, $matches);
 }
 
@@ -235,7 +244,6 @@ function cs_abcode_quote($matches) {
     return cs_abcode_output(1);
 
   return cs_abcode_output(0,$matches);
-
 }
 
 function cs_abcode_clip($matches) {
@@ -243,11 +251,11 @@ function cs_abcode_clip($matches) {
   static $clip_id;
   $clip_id++;
 
-  $var = '<a class="clip">' . $matches[1] . ' ';
+  $var = '<a class="clip" href="#">' . $matches[1] . ' ';
   $var .= cs_html_img('symbols/clansphere/plus.gif',0,0,0,'+');
   $var .= cs_html_img('symbols/clansphere/minus.gif',0,0,'style="display:none"','-');
   $var .= '</a>';
-  $var .= '<div style="display:none">' . $matches[2] . '</div>';
+  $var .= '<div>' . $matches[2] . '</div>';
   return $var;
 }
 
@@ -256,7 +264,6 @@ $htmlcode = array();
 function cs_abcode_html($matches) {
 
   global $cs_main, $htmlcode;
-
   $nr = count($htmlcode);
   $htmlcode[] = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
   return '{html' . $nr . '}';
@@ -265,7 +272,6 @@ function cs_abcode_html($matches) {
 function cs_abcode_eval($matches) {
 
   global $cs_main;
-
   $matches[1] = str_replace('<br />',"\r\n",$matches[1]);
   $matches[1] = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
   $matches[1] = str_replace(array('<?php','<?','?>'),'',$matches[1]);
@@ -281,7 +287,6 @@ function cs_abcode_eval($matches) {
 function cs_abcode_flag ($matches) {
 
   $path = 'symbols/countries/' . $matches[1] . '.png';
-
   return file_exists($path) ? cs_html_img($path) : '';
 }
 
@@ -293,10 +298,11 @@ function cs_abcode_threadid($matches) {
 function cs_abcode_decode($matches) {
 
   global $cs_main;
-  
   return html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
 }
+
 $replaces = array();
+
 function cs_abcode_load() {
   
   global $replaces, $cs_main;
@@ -304,8 +310,8 @@ function cs_abcode_load() {
   $theme = empty($cs_main['def_theme']) || !file_exists('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl') ? 'base' : $cs_main['def_theme'];
   
   $replaces = file('themes/' . $theme . '/abcode/replaces.tpl');
-  
 }
+
 function cs_abcode_output($id, $matches = 0, $limit = 0) {
   
   global $replaces;
@@ -315,7 +321,6 @@ function cs_abcode_output($id, $matches = 0, $limit = 0) {
     foreach ($matches AS $key => $value) $replace['{var:' . $key . '}'] = $value;
     return str_replace(array_keys($replace), array_values($replace), rtrim($replaces[$id]));
   }
-  
 }
 
 function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $phpeval = 0) {
@@ -328,8 +333,8 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   $replace = str_replace(array('{','}'),array('&#123;','&#125;'),$replace);
 
   if(!empty($features)) { 
-  cs_abcode_mode(1); 
-  $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace); 
+    cs_abcode_mode(1); 
+    $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace); 
   }
 
   if(!empty($smileys)) {
@@ -408,16 +413,18 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
       for ($i = 0; $i < $count; $i++) $replace = str_replace('{html'.$i.'}',$htmlcode[$i],$replace);
     }
   }
-  
+
   if(!empty($features)) {
+
     cs_abcode_mode(1);
-    $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
 
     if(empty($html))
       $replace = preg_replace_callback('=(www\.|http://|ftp://)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)=si','cs_abcode_urlauto',$replace);
 
     if(!empty($op_abcode['word_cut']))
       $replace = preg_replace("=([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
+
+    $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
   }
 
   return $replace;
@@ -462,12 +469,12 @@ function cs_abcode_resize ($matches) {
       $new_height = empty($new_height) ? $matches[2] : $new_height;
     }
   }
-  
+
   if (!empty($change)) {
     $var = '[img width='.$new_width.' height='.$new_height.']'.$img.'[/img]';
   } else {
     $var = $matches[0];
   }
-  
+
   return $var;
 }

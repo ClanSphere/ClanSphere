@@ -27,4 +27,5 @@ $cs_lang['lev_1'] = 'Lesen';
 $cs_lang['lev_2'] = 'Erweitertes Lesen';
 $cs_lang['lev_3'] = 'mit Erstellen';
 $cs_lang['lev_4'] = 'mit Bearbeiten';
-$cs_lang['lev_5'] = 'mit Entfernen'; 
+$cs_lang['lev_5'] = 'mit Entfernen';
+$cs_lang['php_eval'] = 'Ausf&uuml;hren von PHP-Code erlauben';

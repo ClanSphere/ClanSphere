@@ -7,7 +7,6 @@ $cs_lang = cs_translate('explorer');
 function cs_abcode_tools($field) {
   
   global $cs_lang;
-  
   $more = "onchange=\"javascript:abc_insert(this.form.cs_tools.options";
   $more .= "[this.form.cs_tools.selectedIndex].value + '(',')','".$field."');";
   $more .= "this.selectedIndex=0\"";
@@ -34,13 +33,10 @@ function cs_abcode_tools($field) {
   
   return $var;
 }
-  
-
 
 function cs_abcode_toolshtml($name) {
   
   global $cs_lang;
-  
   $more = "onchange=\"javascript:abc_insert(this.form.cs_html.options";
   $more .= "[this.form.cs_html.selectedIndex].value + '(',')','".$name."');";
   $more .= "this.selectedIndex=0\"";
@@ -61,7 +57,6 @@ function cs_abcode_toolshtml($name) {
 function cs_abcode_toolshtml2($name) {
   
   global $cs_lang;
-  
   $more = "onchange=\"javascript:abc_insert(this.form.cs_html2.options";
   $more .= "[this.form.cs_html2.selectedIndex].value + '(',')','".$name."');";
   $more .= "this.selectedIndex=0\"";
@@ -79,11 +74,9 @@ function cs_abcode_toolshtml2($name) {
   return $var;
 }
 
-
 function cs_abcode_sql($name) {
   
   global $cs_lang;
-  
   $more = "onchange=\"javascript:abc_insert(this.form.cs_sql.options";
   $more .= "[this.form.cs_sql.selectedIndex].value + '(',')','".$name."');";
   $more .= "this.selectedIndex=0\"";

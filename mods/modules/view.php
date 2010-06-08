@@ -5,6 +5,8 @@
 $cs_lang = cs_translate('modules', 1);
 $cs_lang = cs_translate('access', 1);
 
+include_once 'mods/explorer/functions.php';
+
 $data['if']['access_explorer'] = FALSE;
 
 $dir = empty($_GET['dir']) ? $_REQUEST['where'] : $_GET['dir'];
@@ -27,7 +29,8 @@ $data['mod']['text'] = $mod_info['text'];
 
 if(!empty($account['access_explorer'])) {
     $data['if']['access_explorer'] = TRUE;
-    $data['extended']['link'] = cs_link($cs_lang['jump_to_explorer'],'explorer','roots','dir=mods/'.$dir.'/');
+    $more = 'dir=mods' . cs_explorer_path('/', 'escape') . $dir;
+    $data['extended']['link'] = cs_link($cs_lang['jump_to_explorer'],'explorer','roots',$more);
 }
 
 

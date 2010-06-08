@@ -30,9 +30,6 @@ if(!empty($_GET['params']{1})) {
       $i++;
     }
   }
-  if($_GET['mod'] == 'explorer') {
-    $_GET['dir'] = substr(stristr($_GET['params'],'dir/'),4);
-  }
 }
 
 function cs_servervars($mode, $integers = 0, $unharmed = 0) {

@@ -133,7 +133,7 @@ function cs_content_append ($content) {
     $content = cs_admin_menu() . $content;
   }
 
-  if($account['access_clansphere'] > 3 AND file_exists('install.php') AND !file_exists('.svn'))
+  if($account['access_clansphere'] > 3 AND file_exists('install.php') AND !file_exists('.git') AND !file_exists('.svn'))
     $content = cs_subtemplate(__FILE__, array(), 'clansphere', 'del_install') . $content;
 
   return $content;
@@ -310,7 +310,9 @@ function cs_ajaxwrap() {
 	global $cs_main;
 	$cs_act_lang = cs_translate($cs_main['mod']); 
 	$json = array();
-
+	
+	header('Content-Type:application/json');
+	
 	if(!isset($_REQUEST['xhr_nocontent'])) {
 
 		$content = cs_contentload($cs_main['show']);
@@ -319,10 +321,16 @@ function cs_ajaxwrap() {
 		
 		$pathPrefix = str_replace('\\','/',$cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']) . '/';
 
-		$uri = preg_replace('/(.*?)([a-zA-Z-_]*?)\.php\??(.*?)/s','\\3',$_SERVER['REQUEST_URI']) ;	
+		$uri = preg_replace('/^(.*?)\.php\??(.*?)$/s','\\2',$_SERVER['REQUEST_URI']) ;	
 		$uri = preg_replace('/[&\?\/]?(xhr_navlists[=\/])[^&\/]*/s','', $uri);
+		$uri = str_replace(array('&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix),'', $uri);
+		$uri = preg_replace('/' . str_replace('/','\/', $cs_main['php_self']['dirname']) . '/s', '',$uri, 0);		
 		
-		$json['location'] = str_replace(array('&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix,$cs_main['php_self']['dirname']),'', $uri);
+		# $uri = str_replace(array('&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix, $cs_main['php_self']['dirname']),'', $uri);
+		
+		$json['location'] = $uri;
+		
+		
 		
 		if(isset($cs_main['ajax_js'])) {
 			$json['scripts'] = $cs_main['ajax_js'];
@@ -357,6 +365,7 @@ function cs_ajaxwrap() {
 
 	return json_encode($json);
 }
+
 
 function cs_contentload($file) {
 

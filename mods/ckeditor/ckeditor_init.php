@@ -16,9 +16,9 @@ $(function() {
 
   var options = { language : '<?php echo $lang; ?>', skin : '<?php echo $skin; ?>', height : '<?php echo $height; ?>', baseHref : '<?php echo $path; ?>/', basePath : '<?php echo $path; ?>/mods/ckeditor/' }
 
-  $('#content').bind('csAjaxLoad', function() { 
+  $(document).bind('csAjaxLoad', function(e,ele) { 
 
-    $(this).find('textarea.rte_html').each(function() {
+    $(ele).find('textarea.rte_html').each(function() {
       var instance = CKEDITOR.instances[this.id];
       if(instance) {
           CKEDITOR.remove(instance);

@@ -1,4 +1,4 @@
-<form method="post" id="users_navlang" action="{page:self}">
+<form method="post" id="users_navlang" action="{form:url}">
 <fieldset style="border: 0; padding: 0">
 <select name="lang">
 {loop:langs}

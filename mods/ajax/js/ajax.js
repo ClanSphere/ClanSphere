@@ -33,14 +33,15 @@ var Clansphere = {
       uploadScript: 'upload.php',
       labelUploadDelete: 'Delete',
       labelUploadProgress: 'Uploading File...',
-      errorUploadProgress: 'Upload still in progress! Formular can not be sumited until file is uploaded completly.',
+      errorUploadProgress: 'Upload still in progress! Formular can not be submitted until the file is uploaded completly.',
       uploadFailedMessage: 'Upload failed! Please try again'
     },
     
     active_upload_count: 0,
     
-    initialize: function(modRewrite, basepath) {
+    initialize: function(modRewrite, basepath, reloadInterval) {
       
+      Clansphere.ajax.options.refreshNavlistsInterval = reloadInterval;
       Clansphere.ajax.urlChecker = window.setInterval(Clansphere.ajax.checkURL, Clansphere.ajax.options.checkURLInterval);
       Clansphere.ajax.switchNavlistRefresher(true);
       
@@ -53,9 +54,9 @@ var Clansphere = {
       Clansphere.ajax.index = basepath.replace(basePathRegExp, "$2");
       
       if(!Clansphere.ajax.modRewrite) {
-        Clansphere.ajax.regex = new RegExp("^(?:[a-zA-Z0-9\/\.\-\_\:]*)?\?mod=(.+?)$","g");
+        Clansphere.ajax.regex = new RegExp("^(?:.*?)?" + Clansphere.ajax.baseFile + "\\??(.+?)$","g");
       } else {
-        Clansphere.ajax.regex = new RegExp("^(?:[a-zA-Z0-9\/\.\-\_\:]*)?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/?(.+?)$","g")
+        Clansphere.ajax.regex = new RegExp("^(?:.*?)?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/?(.+?)$","g");
       }
       
       Clansphere.ajax.checkUrlConsistency();
@@ -87,7 +88,7 @@ var Clansphere = {
         Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
         Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);
       
-        $(Clansphere.ajax.options.contentSelector).trigger(Clansphere.ajax.options.loadEventName);
+        $(document).trigger(Clansphere.ajax.options.loadEventName, $(Clansphere.ajax.options.contentSelector)[0]);
       
         document.title = response.title;
       
@@ -153,16 +154,19 @@ var Clansphere = {
     },
     
     checkUrlConsistency: function() {
-      var testconsistence = window.location.pathname.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index,'').replace(Clansphere.ajax.basePath, '').replace('/','').replace('.php','');
+      var newpath,
+          path = window.location.pathname+window.location.search,
+          testconsistence = path.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index,'').replace('/','').replace('.php','');
       
       if(testconsistence.length > 0)
       {
-        var newpath = window.location.pathname.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + Clansphere.ajax.hashMarker);
+        if(Clansphere.ajax.modRewrite)
+        {
+          newpath = path.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/',Clansphere.ajax.basePath + '/').replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index, Clansphere.ajax.basePath + '/').replace(Clansphere.ajax.basePath + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + Clansphere.ajax.hashMarker) + window.location.hash.substr(1);
+        } else {
+          newpath = Clansphere.ajax.baseFile + Clansphere.ajax.hashMarker + window.location.search.substr(1) + window.location.hash.substr(1);
+        }
         window.location = newpath;
-        return;
-      }
-      if(window.location.search) {
-        window.location = window.location.pathname + Clansphere.ajax.hashMarker + window.location.search.substr(1);
       }
     },
     
@@ -172,16 +176,16 @@ var Clansphere = {
         var href = e.href;
         href = href.replace(Clansphere.ajax.hashMarker, Clansphere.ajax.options.anchorMarker);
         if (!Clansphere.ajax.modRewrite) {
-          href = href.replace(Clansphere.ajax.regex, "mod=$1"); 
+          href = href.replace(Clansphere.ajax.regex, "$1");
         } else {
       	  href = href.replace(Clansphere.ajax.regex, "$1");
         }
         var hrefsplitter = href.split(Clansphere.ajax.options.anchorMarker);
-        if(hrefsplitter[1] && hrefsplitter[0].length===0) {
-          href = Clansphere.ajax.hash.substr(1) + Clansphere.ajax.options.anchorMarker + hrefsplitter[1];
+        if(hrefsplitter[0].length===0) {
+          href = Clansphere.ajax.hash.substr(1) + (hrefsplitter[1] ? Clansphere.ajax.options.anchorMarker + hrefsplitter[1] : '');
           $(e).data('noreload',true);
         }
-        e.href = Clansphere.ajax.hashMarker + href;
+        e.href = e.href===href ? e.href : Clansphere.ajax.hashMarker + href;
       }).bind('click', function(e) {
         if(this.href.substr(0,7)=='http://' && !$(this).data('noreload')) {
   	      Clansphere.ajax.forceReload = true;
@@ -212,7 +216,7 @@ var Clansphere = {
         var action = $(this).attr('action');
         
         if (!Clansphere.ajax.modRewrite) {
-          target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?mod=$1");
+          target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?$1");
         } else {
       	  target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?params=/$1");
         }
@@ -301,7 +305,7 @@ var Clansphere = {
       for(id in navlists) {
         if(nav = $(document.getElementById(Clansphere.ajax.options.navlistIdPrefix + id))) {
           nav.html(navlists[id]);
-          nav.trigger(Clansphere.ajax.options.loadEventName);
+          $(document).trigger(Clansphere.ajax.options.loadEventName, nav[0]);
           Clansphere.ajax.convertLinksToAnchor('#' + Clansphere.ajax.options.navlistIdPrefix + id);
           Clansphere.ajax.convertForms('#' + Clansphere.ajax.options.navlistIdPrefix + id);
         }
@@ -311,10 +315,12 @@ var Clansphere = {
     switchNavlistRefresher: function(status) {
       switch(status) {
         case true:
-          if(!Clansphere.ajax.navlistRefresher) {
-            Clansphere.ajax.navlistRefresher = window.setInterval(Clansphere.ajax.refreshNavlists, Clansphere.ajax.options.refreshNavlistsInterval);
+          if(Clansphere.ajax.options.refreshNavlistsInterval>0) {
+            if(!Clansphere.ajax.navlistRefresher) {
+              Clansphere.ajax.navlistRefresher = window.setInterval(Clansphere.ajax.refreshNavlists, Clansphere.ajax.options.refreshNavlistsInterval);
+            }
+            break;
           }
-          break;
         case false:
         default:
           if(Clansphere.ajax.navlistRefresher) {
@@ -357,7 +363,7 @@ var Clansphere = {
     debug: function(response) {
       if(response.debug)
       {
-        $(Clansphere.ajax.options.debugSelector).replaceWith(response.debug);
+        $(Clansphere.ajax.options.debugSelector).html($(response.debug).html());
       }
     },
     
@@ -577,7 +583,7 @@ var Clansphere = {
 */
   initialize: function(modRewrite, basepath, reload) {
 	
-    Clansphere.ajax.initialize(modRewrite, basepath);   // Activate this line for ajax
+    Clansphere.ajax.initialize(modRewrite, basepath, reload);   // Activate this line for ajax
     // Clansphere.validation.initialize();
   }
 

@@ -93,7 +93,6 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 
   $string = file_get_contents($target);
   $string = str_replace('{page:width}', $cs_main['def_width'], $string);
-  $string = str_replace('{page:self}', $_SERVER['PHP_SELF'], $string);
   $string = str_replace('{page:path}', $cs_main['php_self']['dirname'], $string);
   $string = str_replace('{page:mod}', $cs_main['mod'], $string);
   $string = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $string);
@@ -112,13 +111,18 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
     $forbidden = array('abcode/sourcebox', 'clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500', 'pictures/select');
     if(!in_array($mod . '/' . $action, $forbidden)) {
 
+      include_once 'mods/explorer/functions.php';
+
       $data = array();
       $data['data']['load'] = cs_parsetime($micro,5);
-      $data['data']['target'] = $target;
       $data['data']['content'] = $string;
-      $data['data']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
+      $data['raw']['target'] = $target;
+      $data['raw']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
       $phpsource = str_replace('\\', '/', str_replace($cs_main['def_path'], '', $source));
-      $data['data']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
+      $data['raw']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
+      $data['link']['target'] = cs_explorer_path($data['raw']['target'], 'escape');
+      $data['link']['langfile'] = cs_explorer_path($data['raw']['langfile'], 'escape');
+      $data['link']['phpsource'] = cs_explorer_path($data['raw']['phpsource'], 'escape');
       $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
     }
   }
@@ -129,23 +133,21 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 function cs_wrap_templatefile($matches)
 {
 	global $cs_main;
-	$default = array('users_navlogin');
-	$spans = array('count_navday','count_navone','count_navall','count_navmon','count_navyes','func_parse','func_queries');
+	$exceptions = array('clansphere_navmeta');
+	if(!in_array($matches[1] . '_' . $matches[2], $exceptions)) {
+		if(isset($cs_main['ajax']) && $cs_main['ajax']) {
+			$spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
 	
-	$nav = $matches[1] . '_' . $matches[2];
+			$nav = $matches[1] . '_' . $matches[2];
 	
-	$ajaxes = explode(',',$cs_main['ajax_navlists']);
-	$ajaxes = array_unique(array_merge($ajaxes, $default));
-	if(!in_array($nav, $ajaxes)){
-		return cs_templatefile($matches);
+			$m = $matches;
+			array_shift($m);
+			$id = str_replace('=','_', implode('_', $m));
+			$el = !in_array($nav,$spans) ? 'div' : 'span';
+			return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
+		}
 	}
-	
-	$m = $matches;
-	array_shift($m);
-	$id = str_replace('=','_', implode('_', $m));
-	$el = !in_array($nav,$spans) ? 'div' : 'span';
-	
-	return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
+	return cs_templatefile($matches);
 }
 
 function cs_templatefile($matches)
@@ -327,7 +329,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $content = cs_contentload($cs_main['show']);
 
   if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
-    $cs_temp_get = str_replace('<body', '<body onload="Clansphere.initialize('.$cs_main['mod_rewrite'].',\''.$_SERVER['PHP_SELF'].'\','.$cs_main['ajax_reload'].')"', $cs_temp_get);
+    $cs_temp_get = str_replace('<body', '<body onload="Clansphere.initialize('.$cs_main['mod_rewrite'].',\''.$_SERVER['PHP_SELF'].'\','.$cs_main['ajax_reload']*1000 .')"', $cs_temp_get);
     if (strpos($cs_temp_get,'id="content"') === false) $content = '<div id="content">' . $content . '</div>';
   }
 

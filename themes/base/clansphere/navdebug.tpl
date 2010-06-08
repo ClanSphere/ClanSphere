@@ -1,4 +1,4 @@
-<form method="post" id="clansphere_navdebug" action="{page:self}">
+<form method="post" id="clansphere_navdebug" action="{form:url}">
 <fieldset style="border: 0; padding: 0">
   <select name="debug_navfile">
     {loop:navfiles}

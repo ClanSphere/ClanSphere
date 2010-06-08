@@ -4,6 +4,8 @@
 
 $cs_lang = cs_translate('static');
 
+$cs_option = cs_sql_option(__FILE__, 'static');
+
 $cs_static_tpl = array();
 $errormsg = '';
 $levels = 0;
@@ -69,7 +71,7 @@ if(isset($_POST['preview']) AND empty($error)) {
   $cs_static['static_admins'] = isset($_POST['static_admins']) ? 1 : 0;
 
 $cs_view_static['static']['title'] = $cs_static['static_title'];
-$cs_view_static['static']['content'] = cs_secure($cs_static['static_text'],1,1,1,1,1);
+$cs_view_static['static']['content'] = cs_secure($cs_static['static_text'],1,1,1,1,$cs_option['php_eval']);
 
 if(empty($cs_static['static_table'])) {
 echo cs_subtemplate(__FILE__,$cs_view_static,'static','view');
