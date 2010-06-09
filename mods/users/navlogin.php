@@ -71,7 +71,7 @@ else {
       $data['link']['panel'] = 'admin.php';
     else {
       $shorten  = $cs_main['php_self']['filename'];
-      $shorten .= empty($_REQUEST['params']) ? '' : $_REQUEST['params'];
+      $shorten .= empty($cs_main['php_self']['params']) ? '' : $cs_main['php_self']['params'];
       $data['link']['panel'] = str_replace($shorten, '', $uri) . 'admin';
     }
   }
