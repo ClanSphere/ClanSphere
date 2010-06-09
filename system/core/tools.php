@@ -474,11 +474,11 @@ function cs_translate($mod, $main = 0) {
 
   global $account, $cs_main;
   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
-  static $lang_main = array();
+  static $lang_main = 0;
   static $lang_mods = array();
   $cs_lang = array();
 
-  if(empty(count($lang_main))) {
+  if(empty($lang_main)) {
     require 'lang/'.$lang.'/system/main.php';
     $lang_main = $cs_lang;
     $cs_lang = array();
@@ -495,6 +495,9 @@ function cs_translate($mod, $main = 0) {
     else
       cs_error($file,'cs_translate - File not found');
   }
+
+  if(empty($lang_mods[$mod]))
+    return $lang_main;
 
   return array_merge($lang_main, $lang_mods[$mod]);
 }
