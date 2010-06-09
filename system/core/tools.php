@@ -474,11 +474,11 @@ function cs_translate($mod, $main = 0) {
 
   global $account, $cs_main;
   $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
-  static $lang_main = 0;
+  static $lang_main = array();
   static $lang_mods = array();
   $cs_lang = array();
 
-  if(empty($lang_main)) {
+  if(empty(count($lang_main))) {
     require 'lang/'.$lang.'/system/main.php';
     $lang_main = $cs_lang;
     $cs_lang = array();
