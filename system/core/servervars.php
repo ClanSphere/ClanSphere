@@ -35,7 +35,7 @@ if(empty($_GET['mod']) AND empty($_GET['action'])) {
 if(!empty($cs_main['php_self']['params']{1})) {
 
   $params = explode('/', $cs_main['php_self']['params']);
-  $_GET['mod'] = $params[1];
+  $_GET['mod'] =  empty($params[1]) ? '' : $params[1];
   $_GET['action'] = empty($params[2]) ? 'list' : $params[2];
   $pm_cnt = count($params);
 
