@@ -342,7 +342,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   # Provide the def_title and a title with mod and page info
   $title_website = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
   $cs_temp_get = str_replace('{func:title_website}', $title_website, $cs_temp_get);
-  $cs_act_lang = cs_translate($cs_main['mod']);
+  $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
   $title = ($cs_main['mod'] == 'static' AND $cs_main['action'] == 'view') ? $title_website : $title_website . ' - ' . $cs_act_lang['mod_name'];
   if(!empty($cs_main['page_title']))
     $title .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
