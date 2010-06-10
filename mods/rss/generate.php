@@ -17,7 +17,7 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
     if(!empty($array)) {
       foreach($array AS $item) {
         if(!empty($item['id']) AND !empty($item['title']) AND !empty($item['text'])) {
-          $title = htmlentities($item['title'], ENT_QUOTES, $cs_main['charset']);
+          $title = htmlspecialchars($item['title'], ENT_NOQUOTES, $cs_main['charset']);
         $save = $cs_main['php_self']['basename'];
         $cs_main['php_self']['basename'] = 'index.php';
         $link = $page . cs_url($mod,$action,'id=' . $item['id']);
@@ -34,7 +34,7 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
         $date = empty($item['time']) ? 0 : date('D, d M Y H:i:s',$item['time']) . ' +0000';
         $author = empty($item['author']) ? 0 : $item['author'];
         $author .= empty($item['nick']) ? '' : ' (' . cs_secure($item['nick']) . ')';
-        $category = empty($item['cat']) ? 0 : htmlentities($item['cat'], ENT_QUOTES, $cs_main['charset']);
+        $category = empty($item['cat']) ? 0 : htmlspecialchars($item['cat'], ENT_NOQUOTES, $cs_main['charset']);
         $content .= cs_rss_item($title, $link, $text, $date, $author, $category);
       }
     }
