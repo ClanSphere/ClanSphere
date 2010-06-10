@@ -84,9 +84,11 @@ else {
     $data['temp_list'][$run]['version'] = $mod['version'];
     $data['temp_list'][$run]['date'] = cs_date('date',$mod['released']);
 
-    if(isset($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template'])) {
+    if(isset($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
       $cs_main['template'] = $_GET['template'];
-    }
+    else
+      $cs_main['template'] = $cs_main['def_tpl'];
+
     if($mod['dir'] == $cs_main['template']) { 
       $data['temp_list'][$run]['preview'] = cs_icon('submit','16',$cs_lang['yes']);
     }
