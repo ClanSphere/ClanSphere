@@ -24,7 +24,7 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
   $mail['headers'] = "MIME-Version: 1.0" . $nl;
   $mail['headers'] .= "Content-Type: " . $type . "; charset=" . $cs_main['charset'] . $nl;
   $mail['headers'] .= "Content-Transfer-Encoding: base64" . $nl;
-  $mail['headers'] .= "X-Mailer: PHP/" . phpversion() . $nl;
+  $mail['headers'] .= "X-Mailer: ClanSphere" . $nl;
 
   return $mail;
 }
