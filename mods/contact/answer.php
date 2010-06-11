@@ -80,8 +80,8 @@ else {
   cs_sql_update(__FILE__,'mail',$cells,$save,$id);
 }
 
-$data['mail']['mail_name'] = cs_secure($data['mail']['mail_name']);
-$data['mail']['users_name'] = cs_secure($data['mail']['users_name']);
-$data['mail']['users_surname'] = cs_secure($data['mail']['users_surname']);
+$data['mail']['mail_name'] = cs_secure($cs_answer_mail['mail_name']);
+$data['mail']['users_name'] = cs_secure($cs_answer_user['users_name']);
+$data['mail']['users_surname'] = cs_secure($cs_answer_user['users_surname']);
 
 echo cs_subtemplate(__FILE__,$data,'contact','answer');
