@@ -36,9 +36,6 @@ if(!empty($activate)) {
   }
 }
 
-$data['lang']['body'] = sprintf($cs_lang['body_temp_list'],$tpl_all);
-$data['link']['cache'] = cs_url('clansphere','cache');
-
 $data['if']['done'] = false;
 
 if($account['access_wizard'] == 5) {
@@ -77,8 +74,10 @@ else {
   
   foreach($templates as $mod) {
   	
-  	if ($mod['dir'] == 'install')
+  	if ($mod['dir'] == 'install') {
+      $tpl_all--;
     	continue;
+    }
     
     $data['temp_list'][$run]['name'] = $mod['name'];
     $data['temp_list'][$run]['dir'] = $mod['dir'];
@@ -90,5 +89,8 @@ else {
     $run++;
   }
 }
+
+$data['lang']['body'] = sprintf($cs_lang['body_temp_list'],$tpl_all);
+$data['link']['cache'] = cs_url('clansphere','cache');
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','temp_list');
