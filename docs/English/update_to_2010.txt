@@ -1,0 +1,25 @@
+UPDATE ClanSphere 2009.0.3 to ClanSphere 2010.0
+------------------------------------------------------------------------
+
+Attention: ClanSphere 2010 requires 2009.0.3 or newer to be installed on SQL-side.
+All shipped files with this release must replace their old counterparts on your webspace, too.
+
+The following steps inform you about changes that may need your attention in order to keep 
+ClanSphere running after the update process is finished. Please read them carefully.
+
+1. The directory /system/runstartup does no longer exist by default and is no longer needed, 
+   because startup files moved to the corresponding mods directory. To restore the old and 
+   obsolete behavior you have to delete the switched files and add this to your setup.php file:
+     $cs_main['runstartup'] = 1;
+
+2. Your template files should not contain code in languages like e.g. CSS or JavaScript. Such 
+   parts are better separated from HTML and loaded with a <link> tag in the source code. This 
+   will result in big performance gains, but also prevent strange errors from occuring.
+   
+3. ClanSphere does no longer ship with Mootools included. Be sure to use jQuery Syntax instead 
+   as it is the only JavaScript Library bundled with upcoming releases. We have also moved all 
+   JavaScript includes to the very bottom of the HTML body tag by default so that DOM parsing is 
+   only done once which speeds up page generation in every web-browser.
+
+Please visit the wiki for questions: http://wiki.clansphere.net/Update
+Alternatively ask for help in the board: http://board.clansphere.net
