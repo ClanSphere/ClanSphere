@@ -288,7 +288,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $tpl_file = 'login.htm';
   }
 
-  $cs_main['template'] = empty($account['users_tpl']) ? $cs_main['def_tpl'] : $account['users_tpl'];
+  if(!empty($account['users_tpl']) AND is_dir('templates/' . $account['users_tpl'])) $cs_main['template'] = $account['users_tpl'];
   if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
   if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); }
 
