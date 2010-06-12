@@ -25,6 +25,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('li
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_height','100');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_size','256000');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','maintenance_access','3');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_remote', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_user', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_pw', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','last_id','1');

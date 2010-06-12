@@ -75,6 +75,7 @@ $cs_lang['img_ext'] = 'Iconformat';
 $cs_lang['def_admin'] = 'Administration';
 $cs_lang['integrated'] = 'Integrated';
 $cs_lang['separated'] = 'Seperated';
+$cs_lang['sec_remote'] = 'Update Check';
 
 $cs_lang['maintenance'] = 'maintenance';
 $cs_lang['modul'] = 'Modul';

@@ -18,7 +18,7 @@ if($account['access_wizard'] == 5) {
 }
 
 if(isset($_POST['submit'])) {
-	
+
   $modules = cs_checkdirs('mods');
   $allow = 0;
 
@@ -47,9 +47,10 @@ if(isset($_POST['submit'])) {
   $save['def_admin'] = $_POST['def_admin'];
   $save['developer'] = (int) $_POST['developer'];
   $save['data_limit'] = (int) $_POST['data_limit'];
+  $save['sec_remote'] = (int) $_POST['sec_remote'];
 
   require_once 'mods/clansphere/func_options.php';
-  
+
   cs_optionsave('clansphere', $save);
 
   if(!empty($_POST['dstime_all'])) {
@@ -63,11 +64,10 @@ if(isset($_POST['submit'])) {
   }
 
 	global $cs_main;
-	
-	$cs_main['mod_rewrite'] = $save['mod_rewrite'];
-	
-  cs_redirect($cs_lang['success'], 'options','roots');
 
+	$cs_main['mod_rewrite'] = $save['mod_rewrite'];
+
+  cs_redirect($cs_lang['success'], 'options','roots');
 } 
 else {
 
@@ -77,7 +77,7 @@ else {
   if(!file_exists($cs_main['def_path'] . '/.htaccess')) {
 		$data['if']['mod_rewrite'] = false;
   }
-	
+
   if (empty($data['options']['mod_rewrite'])) {
     $data['options']['mod_rewrite_on'] = '';
     $data['options']['mod_rewrite_off'] = ' selected="selected"';
@@ -111,6 +111,8 @@ else {
   $data['options']['public_2'] = $data['options']['public'] == '0' ? 'checked="checked"' : '';
   $data['options']['admin_1'] = $data['options']['def_admin'] == 'integrated' || empty($data['options']['def_admin']) ? 'checked="checked"' : '';
   $data['options']['admin_2'] = $data['options']['def_admin'] == 'separated' ? 'checked="checked"' : '';
+  $data['options']['sec_remote_1'] = !empty($data['options']['sec_remote']) ? 'checked="checked"' : '';
+  $data['options']['sec_remote_2'] = empty($data['options']['sec_remote']) ? 'checked="checked"' : '';
 
   $data['options']['timezone_select'] = cs_html_select(1,'def_timezone');
   $timezone = -10;

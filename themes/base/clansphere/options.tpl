@@ -79,6 +79,13 @@
       </td>
     </tr>
     <tr>
+      <td class="leftc">{icon:agt_update-product} {lang:sec_remote}</td>
+      <td class="leftb"><input type="radio" name="sec_remote" value="1" {options:sec_remote_1} />
+        {lang:yes}
+        <input type="radio" name="sec_remote" value="0" {options:sec_remote_2} />
+        {lang:no} </td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:folder_public} {lang:page_mode}</td>
       <td class="leftb"><input type="radio" name="public" value="1" {options:public_1} />
         {lang:active}

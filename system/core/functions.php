@@ -122,12 +122,12 @@ function cs_content_check ($cs_main) {
 function cs_content_append ($content) {
 
   global $account, $cs_main;
-  if($account['access_clansphere'] > 4 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
+  if(!empty($cs_main['sec_remote']) AND $account['access_clansphere'] > 4 AND ($cs_main['sec_news'] > $cs_main['sec_last'] OR (cs_time() - $cs_main['sec_time']) > 9000)) {
     require_once 'mods/clansphere/sec_func.php';
     $content = cs_cspnews() . $content;
   }
   
-  if(($cs_main['action'] == 'manage' OR $cs_main['action'] == 'create' OR $cs_main['action'] == 'options') && $account['access_' . $cs_main['mod']] >=3) {
+  if(($cs_main['action'] == 'manage' OR $cs_main['action'] == 'create' OR $cs_main['action'] == 'options') AND $account['access_' . $cs_main['mod']] >= 3) {
     require_once 'mods/clansphere/admin_menu.php';
     $content = cs_admin_menu() . $content;
   }
