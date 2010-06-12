@@ -5,7 +5,7 @@
 function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
 
   global $cs_main;
-  $nl = "\r\n";
+  $nl = "\n";
   $mail = array();
 
   $subject = $options['def_org'] . ' - ' . $title;
@@ -46,30 +46,30 @@ function cs_mail_smtp ($mail, $options) {
       return false;
   }
   else {
-    $nl = "\r\n";
+    $nl = "\n";
     $mail_data = "To: " . $mail['to'] . "\nFrom: " . $mail['from'] . "\nSubject: ";
-    $mail_data .= $mail['subject'] . "\n" . $mail['headers'] . "\n\n" . $mail['message'] . "\n.\n";
+    $mail_data .= $mail['subject'] . "\n" . $mail['headers'] . "\n\n" . $mail['message'] . "\n.";
     stream_set_timeout($smtp_con, $timeout);
 
-    $log = 'response: ' . fgets($smtp_con);
+    $log = 'response: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, 'AUTH LOGIN' . $nl);
-    $log .= 'login: ' . fgets($smtp_con);
+    $log .= 'login: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, base64_encode($options['smtp_user']) . $nl);
-    $log .= 'user: ' . fgets($smtp_con);
+    $log .= 'user: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, base64_encode($options['smtp_pw']) . $nl);
-    $log .= 'pw: ' . fgets($smtp_con);
+    $log .= 'pw: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, 'HELO ' . $_SERVER['SERVER_ADDR'] . $nl);
-    $log .= 'helo: ' . fgets($smtp_con);
+    $log .= 'helo: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, 'MAIL FROM: ' . $mail['from'] . $nl);
-    $log .= 'from: ' . fgets($smtp_con);
+    $log .= 'from: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, 'RCPT TO:' . $mail['to'] . $nl);
-    $log .= 'to: ' . fgets($smtp_con);
+    $log .= 'to: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, 'DATA' . $nl);
-    $log .= 'data: ' . fgets($smtp_con);
+    $log .= 'data: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, $mail_data . $nl);
-    $log .= 'headers: ' . fgets($smtp_con);
+    $log .= 'headers: ' . fread($smtp_con, 2048);
     fwrite($smtp_con, 'QUIT' . $nl);
-    $log .= 'quit: ' . fgets($smtp_con);
+    $log .= 'quit: ' . fread($smtp_con, 2048);
 
     global $cs_logs;
     static $num = 0;
