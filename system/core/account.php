@@ -76,8 +76,8 @@ if(!empty($_SESSION['users_id'])) {
 
   if (empty($login['method'])) $login['method'] = 'session';
   $login['mode'] = TRUE;
-  $acc_sc = 'users_id, users_nick, users_lang, access_id, users_limit, users_view, users_timezone, users_dstime, users_ajax, users_tpl, users_pwd';
-  $account = cs_sql_select(__FILE__, 'users', $acc_sc, "users_id = '" . (int) $_SESSION['users_id'] . "' AND users_active = 1 AND users_delete = 0");
+  // $acc_sc = 'users_id, users_nick, users_lang, access_id, users_limit, users_view, users_timezone, users_dstime, users_ajax, users_tpl, users_theme, users_pwd';
+  $account = cs_sql_select(__FILE__, 'users', '*', "users_id = '" . (int) $_SESSION['users_id'] . "' AND users_active = 1 AND users_delete = 0");
   if (empty($account) OR ($account['users_pwd'] != $_SESSION['users_pwd'])) {
     session_destroy();
     $login['mode'] = FALSE;

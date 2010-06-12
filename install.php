@@ -6,13 +6,11 @@
 $charset = 'UTF-8';
 
 # Overwrite global settings by using the following array
-$cs_main = array( 'cellspacing'     => 1,
-                  'charset'         => $charset,
+$cs_main = array( 'charset'         => $charset,
                   'def_action'      => 'list',
                   'def_mod'         => 'install',
                   'def_title'       => 'ClanSphere Installation',
                   'def_tpl'         => 'install',
-                  'def_theme'       => 'base',
                   'def_parameters'  => '',
                   'def_width'       => '100%',
                   'init_sql'        => false,

@@ -1145,6 +1145,7 @@ CREATE TABLE {pre}_users (
   users_readtime int(14) NOT NULL default '1209600',
   users_newsletter int(2) NOT NULL default '0',
   users_tpl varchar(80) NOT NULL default '',
+  users_theme varchar(80) NOT NULL default '',
   users_invisible int(2) NOT NULL default '0',
   users_ajax int(2) NOT NULL default '0',
   users_delete int(2) NOT NULL default '0',

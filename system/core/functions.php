@@ -24,14 +24,13 @@ function cs_error_internal($error = 0, $report = 0) {
 
   $cs_main['error_internal'] = $error;
   $cs_main['error_reported'] = $report;
+
   $cs_main['def_title'] = 'ClanSphere';
   $cs_main['def_tpl'] = 'install';
   $cs_main['mod'] = 'errors';
   $cs_main['action'] = '500';
   $cs_main['show'] = 'mods/errors/500.php';
   $cs_main['public'] = 1;
-  $cs_main['def_theme'] = 'base';
-  $cs_main['cellspacing'] = 1;
   $cs_main['def_width'] = '100%';
 
   if(empty($account['users_lang']))
@@ -204,7 +203,9 @@ function cs_init($predefined) {
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
+  $cs_main['cellspacing'] = 1;
   $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
+  $cs_main['def_theme'] = 'base';
 
   require_once 'system/core/servervars.php';
 
@@ -262,8 +263,10 @@ function cs_init($predefined) {
   # process mod and action data
   $cs_main = cs_content_prepare($cs_main);
 
-  if(!empty($predefined['init_sql']))
+  if(!empty($predefined['init_sql'])) {
     require_once 'system/core/account.php';
+    $cs_main['def_theme'] = empty($account['users_theme']) ? $cs_main['def_theme'] : $account['users_theme']; 
+  }
 
   # determine users language
   $account['users_lang'] = cs_content_lang();

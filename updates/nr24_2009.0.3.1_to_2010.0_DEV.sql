@@ -54,6 +54,8 @@ ALTER TABLE {pre}_eventguests ADD eventguests_status int(2) NOT NULL default '0'
 ALTER TABLE {pre}_abcode ADD abcode_order int(2) NOT NULL default '0';
 CREATE INDEX {pre}_abcode_abcode_order_index ON {pre}_abcode (abcode_order);
 
+ALTER TABLE {pre}_users ADD users_theme varchar(80) NOT NULL default '';
+
 ALTER TABLE {pre}_users ADD users_abomail int(2) NOT NULL default '1';
 ALTER TABLE {pre}_access ADD access_notifymods int(2) NOT NULL default '0';
 
