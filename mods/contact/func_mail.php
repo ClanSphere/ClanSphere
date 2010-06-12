@@ -17,7 +17,7 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
   }
 
   $mail['subject'] = '=?' . $cs_main['charset'] . '?B?' . base64_encode($subject) . '?=';
-  $mail['message'] = base64_encode($message);
+  $mail['message'] = chunk_split(base64_encode($message));
   $mail['from'] = empty($from) ? $options['def_mail'] : $from;
   $mail['to'] = $email;
 
