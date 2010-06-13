@@ -26,13 +26,16 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
   $mail['headers'] .= "Content-Transfer-Encoding: base64" . $nl;
   $mail['headers'] .= "X-Mailer: ClanSphere" . $nl;
 
+  $mail['from_header'] = "From: " . $mail['from'] . $nl;
+
   return $mail;
 }
 
 function cs_mail_send ($mail) {
 
   @ini_set('sendmail_from', $mail['from']);
-  $result = mail($mail['to'], $mail['subject'], $mail['message'], $mail['headers']) ? true : false;
+  $content = $mail['headers'] . $mail['from_header'];
+  $result = mail($mail['to'], $mail['subject'], $mail['message'], $content) ? true : false;
   return $result;
 }
 
