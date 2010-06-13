@@ -6,6 +6,9 @@ $cs_lang = cs_translate('gallery', 1);
 
 $files_gl = cs_files();
 
+if(!isset($files_gl['picture']))
+  $files_gl['picture'] = array('name' => '', 'size' => '', 'tmp_name' => '');
+
 $data = array();
 
 require_once('mods/gallery/functions.php');
