@@ -258,11 +258,14 @@ function cs_redirectmsg($message, $id = 0, $icon = 0) {
 function cs_scriptload($mod, $type, $file, $top = 0, $media = 'screen') {
 
   global $cs_main;
+  $script = '';
   if(!isset($cs_main['scriptload']))
     $cs_main['scriptload'] = array('javascript' => '', 'stylesheet' => '');
 
-  $target = $cs_main['php_self']['dirname'] . 'mods/' . $mod . '/' . $file;
-  $script = '';
+  if(strpos($file, '://') === false)
+    $target = $cs_main['php_self']['dirname'] . 'mods/' . $mod . '/' . $file;
+  else
+    $target = $file;
 
   if($type == 'javascript')
     $script = '<script src="' . $target . '" type="text/javascript"></script>' . "\r\n";
