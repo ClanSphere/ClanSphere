@@ -1,7 +1,7 @@
 UPDATE ClanSphere 2009.0.3 to ClanSphere 2010.0
 ------------------------------------------------------------------------
 
-Achtung: ClanSpher 2010 erfordert den SQL-Stand von 2009.0.3 oder neuer vor der Installation.
+Achtung: ClanSphere 2010 erfordert den SQL-Stand von 2009.0.3 oder neuer vor der Installation.
 Alle mitgelieferten Dateien dieses Archivs ersetzen zudem zwingend ihre Gegenstücke auf dem Webspace.
 
 Die folgenden Schritte informieren über Änderungen, die Ihrer Aufmerksamkeit bedürfen, um sicherzustellen, 
