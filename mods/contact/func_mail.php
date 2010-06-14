@@ -25,8 +25,7 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
   $mail['headers'] .= "Content-Type: " . $type . "; charset=" . $cs_main['charset'] . $nl;
   $mail['headers'] .= "Content-Transfer-Encoding: base64" . $nl;
   $mail['headers'] .= "X-Mailer: ClanSphere" . $nl;
-
-  $mail['from_header'] = "From: " . $mail['from'] . $nl;
+  $mail['headers'] .= "From: " . $mail['from'] . $nl;
 
   return $mail;
 }
@@ -34,8 +33,7 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
 function cs_mail_send ($mail) {
 
   @ini_set('sendmail_from', $mail['from']);
-  $content = $mail['headers'] . $mail['from_header'];
-  $result = mail($mail['to'], $mail['subject'], $mail['message'], $content) ? true : false;
+  $result = mail($mail['to'], $mail['subject'], $mail['message'], $mail['headers']) ? true : false;
   return $result;
 }
 
@@ -50,8 +48,8 @@ function cs_mail_smtp ($mail, $options) {
   }
   else {
     $nl = "\n";
-    $mail_data = "To: " . $mail['to'] . "\nFrom: " . $mail['from'] . "\nSubject: ";
-    $mail_data .= $mail['subject'] . "\n" . $mail['headers'] . "\n\n" . $mail['message'] . "\n.";
+    $mail_top = $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'] . $nl;
+    $mail_data =  $mail_top . $nl . $mail['message'] . $nl . ".";
     stream_set_timeout($smtp_con, $timeout);
 
     $log = 'response: ' . fread($smtp_con, 2048);
