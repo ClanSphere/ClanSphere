@@ -3,7 +3,6 @@
 // $Id$
 
 $cs_lang = cs_translate('joinus');
-require_once('mods/notifymods/functions.php');
 
 include_once('lang/' . $account['users_lang'] . '/countries.php');
 
@@ -209,6 +208,7 @@ elseif(!empty($data['if']['form'])) {
   $joinus_cells = array_keys($data['join']);
   $joinus_save = array_values($data['join']);
   cs_sql_insert(__FILE__,'joinus',$joinus_cells,$joinus_save);
+  require_once('mods/notifymods/functions.php');
   notifymods_mail('joinus', $account['users_id']);
   
   $joinus_id = cs_sql_insertid(__FILE__);

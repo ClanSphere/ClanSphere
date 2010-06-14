@@ -3,7 +3,6 @@
 // $Id$
 
 $cs_lang = cs_translate('fightus');
-require_once('mods/notifymods/functions.php');
 
 $op_users = cs_sql_option(__FILE__,'users');
 
@@ -151,6 +150,7 @@ elseif(!empty($data['if']['form'])) {
   $fightus_cells = array_keys($cs_fightus);
   $fightus_save = array_values($cs_fightus);
   cs_sql_insert(__FILE__,'fightus',$fightus_cells,$fightus_save);
+  require_once('mods/notifymods/functions.php');
   notifymods_mail('fightus', $account['users_id']);
   
   cs_redirect($cs_lang['success'],'fightus','new');

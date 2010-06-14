@@ -3,7 +3,6 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
-require_once('mods/notifymods/functions.php');
 
 $cs_post = cs_post('id,from');
 $cs_get = cs_get('id,from');
@@ -248,6 +247,7 @@ else {
   $cells = array_keys($cs_gbook);
   $save = array_values($cs_gbook);
   cs_sql_insert(__FILE__,'gbook',$cells,$save);
+  require_once('mods/notifymods/functions.php');
   notifymods_mail('gbook', $account['users_id']);
   
   $msg = empty($cs_options['lock']) ? $cs_lang['create_done'] : $cs_lang['create_done_lock'];
