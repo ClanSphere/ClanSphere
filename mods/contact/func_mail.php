@@ -50,33 +50,38 @@ function cs_mail_smtp ($mail, $options) {
     $nl = "\n";
     $mail_top = $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'] . $nl;
     $mail_data =  $mail_top . $nl . $mail['message'] . $nl . ".";
-    stream_set_timeout($smtp_con, $timeout);
 
-    $log = 'response: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, 'AUTH LOGIN' . $nl);
-    $log .= 'login: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, base64_encode($options['smtp_user']) . $nl);
-    $log .= 'user: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, base64_encode($options['smtp_pw']) . $nl);
-    $log .= 'pw: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, 'HELO ' . $_SERVER['SERVER_ADDR'] . $nl);
-    $log .= 'helo: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, 'MAIL FROM: ' . $mail['from'] . $nl);
-    $log .= 'from: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, 'RCPT TO:' . $mail['to'] . $nl);
-    $log .= 'to: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, 'DATA' . $nl);
-    $log .= 'data: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, $mail_data . $nl);
-    $log .= 'headers: ' . fread($smtp_con, 2048);
-    fwrite($smtp_con, 'QUIT' . $nl);
-    $log .= 'quit: ' . fread($smtp_con, 2048);
+    $mail_com = array('login' => 'AUTH LOGIN',
+                      'user' => base64_encode($options['smtp_user']),
+                      'pw' => base64_encode($options['smtp_pw']),
+                      'helo' => 'HELO ' . $_SERVER['SERVER_ADDR'],
+                      'from' => 'MAIL FROM: ' . $mail['from'],
+                      'to' => 'RCPT TO:' . $mail['to'],
+                      'data' => 'DATA',
+                      'response' => $mail_data,
+                      'quit' => 'QUIT');
+
+    stream_set_timeout($smtp_con, $timeout);
 
     global $cs_logs;
     static $num = 0;
     $num++;
-    $log = 'MAIL ' . $num . "\n" . $log;
+    $log = 'MAIL ' . $num . "\n";
+    $log .= 'connect: ' . fread($smtp_con, 2048);
     $cs_logs['sql'][__FILE__] = isset($cs_logs['sql'][__FILE__]) ? $cs_logs['sql'][__FILE__] . $log : $log;
+
+    foreach($mail_com AS $com_info => $command) {
+
+      fwrite($smtp_con, $command . $nl);
+      $read = fread($smtp_con, 2048);
+      $code = (int) substr($read, 0, 3);
+      $cs_logs['sql'][__FILE__] .=  $com_info . ': ' . $read;
+
+      if($code >= 400) {
+        cs_error($com_info, 'cs_mail_smtp - Bad status code: ' . substr($read, 0, -2));
+        return false;
+      }
+    }
 
     return true;
   }
