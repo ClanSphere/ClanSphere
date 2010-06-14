@@ -46,16 +46,9 @@ if($losers > 1) {
     $where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = '. $rounds_loop . ' AND cupmatches_loserbracket = 1';
     $temp = cs_sql_select(__FILE__, $tables, $cells, $where, 'cm.cupmatches_tree_order',0,0);
     // bringe das array in die richtige reihenfolge (nur für die erste runde wichtig)
-    if ($rounds_loop == $rounds) {
-      if (!empty($temp)) {
+    if ($rounds_loop == $rounds AND !empty($temp)) {
       foreach ($temp as $tmatch)
         $cupmatches[$rounds_loop][$tmatch['cupmatches_tree_order']] = $tmatch;
-      }
-      $matches_in_round = pow(2, $rounds_loop-1);
-      for ($z=0; $z < $matches_in_round; $z++) {
-        if (!isset($cupmatches[$rounds_loop][$z]))
-          $cupmatches[$rounds_loop][$z] = FALSE;
-      }
     }
     $rounds_loop--;
   }
@@ -73,7 +66,7 @@ if($losers > 1) {
     
     imagefilledrectangle ($img, $currwidth, $currheight, $currwidth + $entitywidth, $currheight + $entityheight, $col_team_bg);
     $string = '';
-    if (empty($round) AND $cupmatches[$rounds_loop][$i] !== FALSE)
+    if (empty($round) AND !empty($cupmatches[$rounds_loop][$i]))
       $string = $cupmatches[$rounds_loop][$i]['team1_name'] = (empty($cupmatches[$rounds_loop][$i]['team1_name']) AND !empty($cupmatches[$rounds_loop][$i]['team1_id'])) ? '? ID:'.$cupmatches[$rounds_loop][$i]['team1_id'] : $cupmatches[$rounds_loop][$i]['team1_name'];
     elseif (!empty($cupmatches[$rounds_loop+1][$run]['cupmatches_winner'])) {
       $cond = $cupmatches[$rounds_loop+1][$run]['cupmatches_winner'] == $cupmatches[$rounds_loop+1][$run]['team1_id'];
@@ -95,7 +88,7 @@ if($losers > 1) {
     
     imagefilledrectangle ($img, $currwidth, $currheight, $currwidth + $entitywidth, $currheight + $entityheight, $col_team_bg);
     $string = '';
-    if (empty($round) AND $cupmatches[$rounds_loop][$i] !== FALSE)
+    if (empty($round) AND !empty($cupmatches[$rounds_loop][$i]))
       $string = $cupmatches[$rounds_loop][$i]['team2_name'] = (empty($cupmatches[$rounds_loop][$i]['team2_name']) AND !empty($cupmatches[$rounds_loop][$i]['team2_id'])) ? '? ID:'.$cupmatches[$rounds_loop][$i]['team2_id'] : $cupmatches[$rounds_loop][$i]['team2_name'];
     elseif (!empty($cupmatches[$rounds_loop+1][$run]['cupmatches_winner'])) {
       $cond = $cupmatches[$rounds_loop+1][$run]['cupmatches_winner'] == $cupmatches[$rounds_loop+1][$run]['team1_id'];
