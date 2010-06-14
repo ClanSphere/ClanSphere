@@ -16,6 +16,17 @@ else
   session_set_cookie_params(0,$cs_main['cookie']['path'],$cs_main['cookie']['domain']);
 session_start();
 
+
+# xsrf protection
+if(!empty($_POST)) {
+	if(!isset($_SESSION['cs_xsrf_key']) || $_SESSION['cs_xsrf_key']!=$_REQUEST['cs_xsrf_key']) {
+		unset($_SESSION['cs_xsrf_key']);
+		cs_redirect('XSRF PROTECTION TRIGGERD', $cs_main['def_mod'], $cs_main['def_action']);
+	}
+}
+unset($_SESSION['cs_xsrf_key']);
+
+
 if(empty($_SESSION['users_id'])) {
 
   if(isset($_POST['login'])) {

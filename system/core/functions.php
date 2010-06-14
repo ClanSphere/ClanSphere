@@ -267,7 +267,7 @@ function cs_init($predefined) {
     require_once 'system/core/account.php';
     $cs_main['def_theme'] = empty($account['users_theme']) ? $cs_main['def_theme'] : $account['users_theme']; 
   }
-
+	
   # determine users language
   $account['users_lang'] = cs_content_lang();
 

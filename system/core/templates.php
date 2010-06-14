@@ -96,6 +96,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $string);
   $string = cs_conditiontemplate($string, $data);
   $string = cs_looptemplate($source, $string, $data);
+	$string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
   $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
   $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
     
@@ -127,6 +128,16 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   }
   
   return $string;
+}
+
+function cs_xsrf_protection_field($matches) {
+	static $xsrf_key;
+	if(empty($xsrf_key)) {
+		$xsrf_key = md5(rand());
+		$_SESSION['cs_xsrf_key'] = $xsrf_key;
+	}
+	
+	return $matches[0] . "\n" . '<input type="hidden" name="cs_xsrf_key" value="' . $xsrf_key . '" />';
 }
 
 function cs_wrap_templatefile($matches)
