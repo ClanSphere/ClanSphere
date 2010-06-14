@@ -83,7 +83,7 @@ var Clansphere = {
       
       if(!response.reload) {
         $(Clansphere.ajax.options.contentSelector).html(response.content);
-        
+        Clansphere.ajax.active_upload_count = 0;
     
         Clansphere.ajax.convertLinksToAnchor(Clansphere.ajax.options.contentSelector);
         Clansphere.ajax.convertForms(Clansphere.ajax.options.contentSelector);

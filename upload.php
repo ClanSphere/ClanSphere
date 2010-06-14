@@ -9,6 +9,6 @@ require_once 'system/core/functions.php';
 
 cs_init($cs_main);
 
-$protect = 1;
+define('UPLOAD_PROTECTED', 1);
 
 require_once 'mods/ajax/upload.php';

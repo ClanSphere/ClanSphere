@@ -99,8 +99,10 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
   $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
     
-  if(!empty($navfiles))
-    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_templatefile', $string);
+  if(!empty($navfiles)) {
+		$string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $string);
+		$string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_templatefile', $string);
+	}
 
   global $account;
   if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
@@ -335,6 +337,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
   $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
+	$cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $cs_temp_get);
   $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_wrap_templatefile', $cs_temp_get);
   $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
   $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);

@@ -2,15 +2,15 @@
 // ClanSphere 2009 - www.clansphere.net
 // $Id$
 
-if(!empty($protect) AND !empty($_SESSION)) {
+if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
 
   if(isset($_POST['remove'])) {
 
     $file = $_POST['remove'];
-    if(file_exists('uploads/cache/' . $_SESSION['ajaxuploads'][$file]))
+    if(isset($_SESSION['ajaxuploads'][$file]) && file_exists('uploads/cache/' . $_SESSION['ajaxuploads'][$file]))
       cs_unlink('cache',$_SESSION['ajaxuploads'][$file]);
     unset($_SESSION['ajaxuploads'][$file]);
-    echo $file;
+    echo $file . ' deleted';
   }
   elseif(isset($_POST['upload_name'])) {
     
@@ -34,4 +34,8 @@ if(!empty($protect) AND !empty($_SESSION)) {
     echo 'window.top.Clansphere.ajax.upload_complete(' . json_encode($upload) . ');';
     echo '</script>';
   }
+} else {
+	echo '<script language="javascript" type="text/javascript">';
+  echo 'alert("Permission denied");';
+  echo '</script>';
 }
