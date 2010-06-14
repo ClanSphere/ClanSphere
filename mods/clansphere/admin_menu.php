@@ -6,23 +6,26 @@ function cs_admin_menu()
 {
 
   global $cs_main,$account;
-  
+
   $cs_lang = cs_translate('clansphere');
 
   $data = array();
-  
+
   $recent_mod = $cs_main['mod'];
   $recent_action = $cs_main['action'];
 
-  # replace known modules on different sql table name
-  $recent_sql = $recent_mod == 'contact' ? 'mail' : $recent_mod;
-  
   $link_count = 0;
-  
+
   if (file_exists('mods/' . $recent_mod . '/manage.php') && $account['access_' . $recent_mod] >= 3)
   {
+    include_once($cs_main['def_path'] . '/mods/' . $recent_mod . '/info.php');
+    # contact mod is the only exception that needs to be checked here
+    $sql_modul = $recent_mod == 'contact' ? 'mail' : $recent_mod;
+    $sql_table = in_array($sql_modul, $mod_info['tables']) ? $sql_modul: '';
+    $sql_count = empty($sql_table) ? '' : ' (' . cs_sql_count(__FILE__, $sql_table) . ')';
+
     $link_count++;	
-    $data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage') .' (' . cs_sql_count(__FILE__, $recent_sql) . ')';	
+    $data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage') . $sql_count;	
     $data['if']['manage'] = true;
   }
   else
@@ -30,7 +33,7 @@ function cs_admin_menu()
     $data['menu']['manage'] = '';
     $data['if']['manage'] = false;
   }
-  
+
   if (file_exists('mods/' . $recent_mod . '/create.php') && $account['access_' . $recent_mod] >= 3 && $recent_mod != 'shoutbox')
   {
     $link_count++;	
@@ -42,7 +45,7 @@ function cs_admin_menu()
     $data['menu']['create'] = '';
     $data['if']['create'] = false;
   }
-  
+
   if (file_exists('mods/' . $recent_mod . '/options.php') && $account['access_' . $recent_mod] >= 5)
   {
     $link_count++;	
