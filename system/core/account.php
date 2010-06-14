@@ -88,7 +88,7 @@ if(!empty($_SESSION['users_id'])) {
 
 if(!empty($_COOKIE['cs_userid'])) {
   setcookie('cs_userid',$account['users_id'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
-  setcookie('cs_securepw',array_pop($account), $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);  
+  setcookie('cs_securepw',$account['users_pwd'], $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);  
 }
 if(!empty($account['users_id'])) {
   if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
@@ -126,3 +126,5 @@ if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['acce
   $login['mode'] = FALSE;
   $login['error'] = 'not_public'; 
 }
+
+unset($account['users_pwd']);
