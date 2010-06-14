@@ -7,7 +7,7 @@ global $_COOKIE, $_POST, $cs_lang, $cs_main, $login;
 $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
 $login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
-$account = array('users_id' => 0, 'users_pwd' = '');
+$account = array('users_id' => 0, 'users_pwd' => '');
 
 # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
 if(version_compare(phpversion(),'5.2.0','>'))
