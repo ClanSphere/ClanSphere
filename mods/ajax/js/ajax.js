@@ -155,14 +155,20 @@ var Clansphere = {
     
     checkUrlConsistency: function() {
       var newpath,
+          ext = Clansphere.ajax.modRewrite ? '.php' : '',
           path = window.location.pathname+window.location.search,
-          testconsistence = path.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index,'').replace('/','').replace('.php','');
+          testconsistence = path.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index,'').replace('.php',ext).replace(/\/{2,}/i,'');
       
       if(testconsistence.length > 0)
       {
         if(Clansphere.ajax.modRewrite)
         {
-          newpath = path.replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/',Clansphere.ajax.basePath + '/').replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index, Clansphere.ajax.basePath + '/').replace(Clansphere.ajax.basePath + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + Clansphere.ajax.hashMarker) + window.location.hash.substr(1);
+          newpath = path
+          .replace('.php','')
+          .replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/')
+          .replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index, Clansphere.ajax.basePath + '/')
+          .replace(Clansphere.ajax.basePath + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + Clansphere.ajax.hashMarker)
+          + window.location.hash.substr(1);
         } else {
           newpath = Clansphere.ajax.baseFile + Clansphere.ajax.hashMarker + window.location.search.substr(1) + window.location.hash.substr(1);
         }
