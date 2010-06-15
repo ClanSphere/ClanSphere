@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id$
 
 function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {

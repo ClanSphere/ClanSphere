@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // Id: com_remove.php (Tue Nov 18 10:58:14 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('votes');

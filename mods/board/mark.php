@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id$
 
 $cs_usertime = cs_sql_select(__FILE__,'users','users_readtime',"users_id = '" . $account["users_id"] . "'");

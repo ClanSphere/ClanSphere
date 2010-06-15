@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id$
 
 $op_news = cs_sql_option(__FILE__,'news');

@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // Id: com_create.php (Mon Nov 17 20:14:46 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('news');

@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // Id: convert.php (Tue Nov 25 12:37:53 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('joinus');

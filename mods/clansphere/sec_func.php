@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id: functions.php 2500 2009-04-02 18:39:00Z hajo $
 
 function cs_cspnews($all = 0) {

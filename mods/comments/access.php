@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // Id: access.php (Sat Nov 15 13:22:13 CET 2008) fAY-pA!N
 
 $axx_file['manage']    = 3;

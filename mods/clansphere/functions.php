@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id$
 
 function cs_manage($mod, $action, $def_mod, $def_action, $merge = array(), $head = array()) {

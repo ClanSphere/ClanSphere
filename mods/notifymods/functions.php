@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id$ 
 
 function notifymods_mail($mod, $users_id=0, $var = NULL) {

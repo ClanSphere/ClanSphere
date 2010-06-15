@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id: signin.php 1430 2008-12-10 13:08:44Z Fr33z3m4n $
 
 $cs_lang = cs_translate('events');

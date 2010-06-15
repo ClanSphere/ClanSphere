@@ -1,5 +1,5 @@
 <?PHP
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id: manage_advanced.php 1927 2009-03-07 16:03:25Z hajo $
 
 $cs_lang = cs_translate('gallery');

@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // Id: roots.php (Wed Nov 26 00:15:50 CET 2008) fAY-pA!N
 
 if($account['access_clansphere'] >= 3 AND $account['access_logs'] >= 3) {
