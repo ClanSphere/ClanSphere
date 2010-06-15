@@ -95,14 +95,14 @@ var Clansphere = {
       
         $(document).trigger(Clansphere.ajax.options.loadEventName, $(Clansphere.ajax.options.contentSelector)[0]);
       
-        document.title = response.title;
-      
         Clansphere.ajax.performScroll();
         
         if(response.navlists) {
           Clansphere.ajax.updateNavlists(response.navlists);
         }
-      
+        
+        document.title = response.title;
+        
         Clansphere.ajax.debug(response);
       
         if (response.scripts) eval(response.scripts);
@@ -270,8 +270,8 @@ var Clansphere = {
     },
     
     performScroll: function() {
-      if(Clansphere.ajax.scrollTarget) {
-        $('html, body').animate({scrollTop: $('#' + Clansphere.ajax.scrollTarget).offset().top}, Clansphere.ajax.options.scrollDuration);
+      if(Clansphere.ajax.scrollTarget && (target = document.getElementById(Clansphere.ajax.scrollTarget))) {
+        $('html, body').animate({scrollTop: $(target).offset().top}, Clansphere.ajax.options.scrollDuration);
       }
       Clansphere.ajax.forceScroll = false;
     },
