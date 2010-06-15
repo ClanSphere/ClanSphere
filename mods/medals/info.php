@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: articles.php 1775 2009-02-17 20:59:11Z duRiel $
+// $Id: info.php 1775 2009-02-17 20:59:11Z duRiel $
 
 $cs_lang = cs_translate('medals');
 
