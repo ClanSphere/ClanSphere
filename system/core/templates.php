@@ -96,7 +96,8 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $string);
   $string = cs_conditiontemplate($string, $data);
   $string = cs_looptemplate($source, $string, $data);
-	$string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
+	if($cs_main['xsrf_protection']===true)
+		$string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
   $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
   $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
     
@@ -110,7 +111,11 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 
     $forbidden = array('abcode/sourcebox', 'clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500', 'pictures/select');
     if(!in_array($mod . '/' . $action, $forbidden)) {
-
+			
+			// prevent from double inserting the xsrf protection key
+			$xsrf = $cs_main['xsrf_protection'];
+			$cs_main['xsrf_protection'] = false;
+			
       include_once 'mods/explorer/functions.php';
 
       $data = array();
@@ -122,8 +127,11 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
       $data['raw']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
       $data['link']['target'] = cs_explorer_path($data['raw']['target'], 'escape');
       $data['link']['langfile'] = cs_explorer_path($data['raw']['langfile'], 'escape');
-      $data['link']['phpsource'] = cs_explorer_path($data['raw']['phpsource'], 'escape');
+      $data['link']['phpsource'] = cs_explorer_path($data['raw']['phpsource'], 'escape');			 
       $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
+			
+			// reset the xsrf protection option
+			$cs_main['xsrf_protection'] = $xsrf;
     }
   }
   
