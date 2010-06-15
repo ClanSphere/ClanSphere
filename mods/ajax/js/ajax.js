@@ -25,6 +25,7 @@ var Clansphere = {
       contentSelector: "#content",
       debugSelector: '#debug',
       debugNavlistRequets: false,
+      alertErrors: false,
       anchorMarker: '::scrollTo:',
       scrollDuration: 1000,
       activityCheckTime: 60000,
@@ -363,7 +364,7 @@ var Clansphere = {
         }
         $(Clansphere.ajax.options.debugSelector + ' #errors').prepend('<strong>XHRequest Error:</strong> ' + textStatus + ' [HttpStatus: ' + xhr.status + ']' + more + '\n<br/>\n<br/>');
         $('html, body').animate({scrollTop: 0 }, 100);
-      } else alert("[Clansphere] Failed to process the XHRequest.");
+      } else if(Clansphere.ajax.options.alertErrors===true) alert("[Clansphere] Failed to process the XHRequest.");
     },
     
     debug: function(response) {
