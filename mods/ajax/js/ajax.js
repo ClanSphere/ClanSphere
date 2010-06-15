@@ -208,7 +208,7 @@ var Clansphere = {
       
       element = $(element);
       
-      element.find('input[type=file]').change(function() {
+      element.find('form:not(.' + Clansphere.ajax.options.noAjaxClass + ') input[type=file]').change(function() {
         Clansphere.ajax.upload_file(this);
       });
       
