@@ -1,5 +1,5 @@
 UPDATE {pre}_options SET options_value = '2010.0_DEV' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
-UPDATE {pre}_options SET options_value = '2010-06-08' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
+UPDATE {pre}_options SET options_value = '2010-06-15' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
 UPDATE {pre}_options SET options_value = 53 WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 CREATE TABLE {pre}_notifymods (

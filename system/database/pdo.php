@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.net
 // $Id$
 
 function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {

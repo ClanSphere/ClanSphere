@@ -3,8 +3,8 @@
     <td class="headb"> ClanSphere - {lang:about} </td>
   </tr>
   <tr>
-    <td class="leftc"> ClanSphere 2009<br />
-      Copyright (c) 2007-2009, <a href="http://www.clansphere.net" target="_blank">ClanSphere Project</a><br />
+    <td class="leftc"> ClanSphere 2010<br />
+      Copyright (c) 2003-2010, <a href="http://www.clansphere.net" target="_blank">ClanSphere Project</a><br />
       All rights reserved. </td>
   </tr>
   <tr>

@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2009 - www.clansphere.net 
+// ClanSphere 2010 - www.clansphere.net 
 // $Id shoutbox.php 2007-08-01 17:00:00Z Drag0n $
 
 $cs_lang['mod_name']              = 'Shoutbox';
