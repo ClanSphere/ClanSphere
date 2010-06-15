@@ -24,8 +24,6 @@ if(!empty($_POST)) {
 		cs_redirect('XSRF PROTECTION TRIGGERD', $cs_main['def_mod'], $cs_main['def_action']);
 	}
 }
-unset($_SESSION['cs_xsrf_key']);
-
 
 if(empty($_SESSION['users_id'])) {
 

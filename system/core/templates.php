@@ -137,7 +137,7 @@ function cs_xsrf_protection_field($matches) {
 		$_SESSION['cs_xsrf_key'] = $xsrf_key;
 	}
 	
-	return $matches[0] . "\n" . '<input type="hidden" name="cs_xsrf_key" value="' . $xsrf_key . '" />';
+	return $matches[0] . "\n" . '<div style="display:none;"><input type="hidden" name="cs_xsrf_key" value="' . $xsrf_key . '" /></div>' . "\n";
 }
 
 function cs_wrap_templatefile($matches)
