@@ -100,7 +100,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 		$string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
   $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
   $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
-    
+
   if(!empty($navfiles)) {
 		$string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $string);
 		$string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_templatefile', $string);
@@ -127,9 +127,9 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
       $data['raw']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
       $data['link']['target'] = cs_explorer_path($data['raw']['target'], 'escape');
       $data['link']['langfile'] = cs_explorer_path($data['raw']['langfile'], 'escape');
-      $data['link']['phpsource'] = cs_explorer_path($data['raw']['phpsource'], 'escape');			 
+      $data['link']['phpsource'] = cs_explorer_path($data['raw']['phpsource'], 'escape');
       $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
-			
+
 			// reset the xsrf protection option
 			$cs_main['xsrf_protection'] = $xsrf;
     }
@@ -155,9 +155,9 @@ function cs_wrap_templatefile($matches)
 	if(!in_array($matches[1] . '_' . $matches[2], $exceptions)) {
 		if(isset($cs_main['ajax']) && $cs_main['ajax']) {
 			$spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
-	
+
 			$nav = $matches[1] . '_' . $matches[2];
-	
+
 			$m = $matches;
 			array_shift($m);
 			$id = str_replace('=','_', implode('_', $m));
@@ -191,7 +191,7 @@ function cs_templatefile($matches)
 function cs_filecontent($file)
 {
   global $account, $cs_main;
-    
+
   ob_start();
   include $file;
   $content = ob_get_contents();
@@ -230,31 +230,29 @@ function cs_getmsg()
 }
 
 function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $icon = 0)
-{ 
-	
+{
+
   if($mod != "install" && $message) {
       cs_redirectmsg($message, $id, $icon);
   }
 
-	
 	$persistent_params = array('xhr', 'xhr_navlists');
-	
+
 	$more = explode('#', $more);
-	
+
 	foreach($persistent_params AS $p) {
 		if(isset($_REQUEST[$p])) {
 			$more[0] .= !empty($more[0]) ? '&' : '';
 			$more[0] .= $p . '=' . $_REQUEST[$p];
 		}
 	}
-	
+
 	$more = implode('#', $more);
-	
+
 	$more = empty($more) ? 0 : $more;
 
   $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
-	
-	
+
 	header('location: ' . $url);
   exit();
 }
