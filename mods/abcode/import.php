@@ -51,7 +51,7 @@ else {
 
 if(!isset($_POST['submit']) OR !empty($error)) {
    $act_smileys = array();
-   $all_smileys = array();	   
+   $all_smileys = array();     
    if(!empty($smileys)) {
       for($run=0; $run<count($smileys); $run++) {
       $act_smileys[] = $smileys[$run]['abcode_file'];
@@ -100,7 +100,7 @@ if(empty($data['file'])) {
 }
 else {
   $data['if']['no_smileys'] = false;
-  $data['if']['smileys'] = true;	
+  $data['if']['smileys'] = true;  
 }
 
 echo cs_subtemplate(__FILE__,$data,'abcode','import');

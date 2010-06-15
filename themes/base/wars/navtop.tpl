@@ -1,6 +1,6 @@
 <table style="width:100%; overflow:hidden" cellspacing="0" cellpadding="2" border="0">
   <tr>
-    <td align="center">{wars:squads_name}</td>		
+    <td align="center">{wars:squads_name}</td>    
     <td align="center">{wars:clans_name}</td>
   </tr>
   <tr>

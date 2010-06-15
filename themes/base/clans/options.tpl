@@ -13,7 +13,7 @@
     <tr>
       <td class="leftc">{icon:kdmconfig} {lang:label}</td>
       <td class="leftb"><select name="label">
-		  <option value="clan" {clans:clan}>{lang:clan}</option>
+      <option value="clan" {clans:clan}>{lang:clan}</option>
           <option value="association" {clans:association}>{lang:association}</option>
           <option value="club" {clans:club}>{lang:club}</option>
           <option value="guild" {clans:guild}>{lang:guild}</option>

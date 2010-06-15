@@ -98,13 +98,13 @@ for($run=0; $run<$gbook_loop; $run++)
     $img_del = cs_icon('editdelete',16,$cs_lang['remove']);
        $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'] . '&amp;from=list',0,$cs_lang['remove']);
     $ip = $cs_gbook[$run]['gbook_ip'];
-	  $gbook[$run]['if']['admin'] = true;
+    $gbook[$run]['if']['admin'] = true;
 
     if($account['access_gbook'] == 4) {
       $last = strlen(substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
       $ip_len = strlen($ip);
       $ip = substr($ip,0,$ip_len - $last);
-      $ip = $ip . '*';	  
+      $ip = $ip . '*';    
     }
     $ip_show = empty($ip) ? '-' : $ip;
     $gbook[$run]['icon_ip'] = cs_html_img('symbols/' . $cs_main['img_path'] . '/16/important.' . $cs_main['img_ext'],16,16,'title="'. $ip_show .'"');
@@ -112,7 +112,7 @@ for($run=0; $run<$gbook_loop; $run++)
     $gbook[$run]['icon_edit'] = '';
     $gbook[$run]['icon_remove'] = '';
     $gbook[$run]['icon_ip'] = '';
-	$gbook[$run]['if']['admin'] = false;
+  $gbook[$run]['if']['admin'] = false;
   }
 }
 

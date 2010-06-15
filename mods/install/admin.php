@@ -47,27 +47,27 @@ else {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
   
-	$data = array();
-	
-	if (isset($_POST['submit'])) $data['lang']['create_admin'] = $errormsg;
+  $data = array();
+  
+  if (isset($_POST['submit'])) $data['lang']['create_admin'] = $errormsg;
 
-	$langs = cs_checkdirs('lang');
-	$i = 0;
-	$data['langs'] = array();
-	
-	foreach ($langs AS $lang) {
-	  $data['langs'][$i]['name'] = $lang['name'];
-	  $data['langs'][$i]['selected'] = $lang['name'] == $create['users_lang'] ? ' selected="selected"' : '';
-	  $i++;
-	}
-	
-	$data['value']['users_nick'] = $create['users_nick'];
-	$data['value']['users_email'] = $create['users_email'];
-	$data['value']['users_password'] = $create_['password'];
-	
-	
-	echo cs_subtemplate(__FILE__, $data, 'install', 'admin');
-	
+  $langs = cs_checkdirs('lang');
+  $i = 0;
+  $data['langs'] = array();
+  
+  foreach ($langs AS $lang) {
+    $data['langs'][$i]['name'] = $lang['name'];
+    $data['langs'][$i]['selected'] = $lang['name'] == $create['users_lang'] ? ' selected="selected"' : '';
+    $i++;
+  }
+  
+  $data['value']['users_nick'] = $create['users_nick'];
+  $data['value']['users_email'] = $create['users_email'];
+  $data['value']['users_password'] = $create_['password'];
+  
+  
+  echo cs_subtemplate(__FILE__, $data, 'install', 'admin');
+  
 } else {
 
   $dstime = date('I');

@@ -46,7 +46,7 @@ if(isset($_POST['submit'])) {
   }
 
   if (!empty($files['picture']['tmp_name']))
-	  $img_size = getimagesize($files['picture']['tmp_name']);
+    $img_size = getimagesize($files['picture']['tmp_name']);
   else
     $img_size = 0;
   

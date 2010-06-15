@@ -1100,11 +1100,11 @@ CREATE TABLE {pre}_threads (
 ){engine};
 
 CREATE TABLE {pre}_usernicks (
-	usernicks_id {serial},
-	users_id int(8) NOT NULL default '0',
-	users_nick varchar(200) NOT NULL default '',
-	users_changetime int(14) NOT NULL default '0',
-	PRIMARY KEY (usernicks_id)
+  usernicks_id {serial},
+  users_id int(8) NOT NULL default '0',
+  users_nick varchar(200) NOT NULL default '',
+  users_changetime int(14) NOT NULL default '0',
+  PRIMARY KEY (usernicks_id)
 ) {engine};
 
 CREATE TABLE {pre}_users (

@@ -19,10 +19,10 @@ session_start();
 
 # xsrf protection
 if($cs_main['xsrf_protection']===TRUE && !empty($_POST)) {
-	if(!isset($_SESSION['cs_xsrf_key']) || $_SESSION['cs_xsrf_key']!=$_REQUEST['cs_xsrf_key']) {
-		unset($_SESSION['cs_xsrf_key']);
-		cs_redirect('XSRF PROTECTION TRIGGERD', $cs_main['def_mod'], $cs_main['def_action']);
-	}
+  if(!isset($_SESSION['cs_xsrf_key']) || $_SESSION['cs_xsrf_key']!=$_REQUEST['cs_xsrf_key']) {
+    unset($_SESSION['cs_xsrf_key']);
+    cs_redirect('XSRF PROTECTION TRIGGERD', $cs_main['def_mod'], $cs_main['def_action']);
+  }
 }
 
 if(empty($_SESSION['users_id'])) {

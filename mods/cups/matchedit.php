@@ -27,7 +27,7 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
   }
   
   if(!empty($check)) {
-  	
+    
     if(empty($_POST['accept_submit'])) {
       
       $data = array();
@@ -49,10 +49,10 @@ if(!empty($_POST['accept1']) OR !empty($_POST['accept2']) OR !empty($_POST['acce
 
       if (!empty($matchsel['cupmatches_accepted1']) && !empty($matchsel['cupmatches_accepted2'])) {
         
-      	$loser = $matchsel['cupmatches_winner'] == $matchsel['squad1_id'] ? $matchsel['squad2_id'] : $matchsel['squad1_id'];
-      	
+        $loser = $matchsel['cupmatches_winner'] == $matchsel['squad1_id'] ? $matchsel['squad2_id'] : $matchsel['squad1_id'];
+        
         $newmatch = cs_cupmatch ($cupmatches_id, $matchsel['cupmatches_winner'], $loser);
-      	
+        
         if ($newmatch) $msg = $cs_lang['new_match'];
         
       }
@@ -201,14 +201,14 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
         
       if (!empty($cs_match['cupmatches_accepted1']) && !empty($cs_match['cupmatches_accepted2'])) {
         
-      	$loser = $cs_match['cupmatches_winner'] == $_POST['squad1_id'] ? $_POST['squad2_id'] : $_POST['squad1_id'];
-      	
+        $loser = $cs_match['cupmatches_winner'] == $_POST['squad1_id'] ? $_POST['squad2_id'] : $_POST['squad1_id'];
+        
         $newmatch = cs_cupmatch ($cupmatches_id, $cs_match['cupmatches_winner'], $loser);
-      	
+        
         if ($newmatch) $msg = $cs_lang['new_match'];
         
       }
-      	
+        
       $cells = 'cups_id, cupmatches_round';
       $matchsel = cs_sql_select(__FILE__,'cupmatches',$cells,"cupmatches_id = '" . $cupmatches_id . "'");
         

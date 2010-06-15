@@ -75,25 +75,25 @@ $error = '';
 if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['new_votes']) OR isset($_POST['election']) OR isset($_POST['files+']) OR isset($_POST['new_file']))
 {
 
-	$board['threads_headline'] = $_POST['threads_headline'];
-	$board['threads_text'] = $_POST['threads_text'];
+  $board['threads_headline'] = $_POST['threads_headline'];
+  $board['threads_text'] = $_POST['threads_text'];
 
-	$error = '';
-	
-	if(empty($board['threads_headline']))
-		$error .= $cs_lang['no_headline'] . cs_html_br(1);
-	
-	if(!empty($board['threads_text'])) {
-		$count_figures = strlen($board['threads_text']);
-		if($count_figures >= $cs_board_opt['max_text']) {
-			$diff = $count_figures - $cs_board_opt['max_text'];
-			$error .= sprintf($cs_lang['text_to_long_sprint'],$count_figures,$diff) . cs_html_br(1);
-		}
-		$board['threads_text'] = preg_replace_callback("=\[img\](.*?)\[/img\]=si","cs_abcode_resize",$board['threads_text']);
-		$board['threads_text'] = preg_replace_callback("=\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]=si","cs_abcode_resize",$board['threads_text']);
-	}else{
-		$error .= $cs_lang['no_text'] . cs_html_br(1);
-	}
+  $error = '';
+  
+  if(empty($board['threads_headline']))
+    $error .= $cs_lang['no_headline'] . cs_html_br(1);
+  
+  if(!empty($board['threads_text'])) {
+    $count_figures = strlen($board['threads_text']);
+    if($count_figures >= $cs_board_opt['max_text']) {
+      $diff = $count_figures - $cs_board_opt['max_text'];
+      $error .= sprintf($cs_lang['text_to_long_sprint'],$count_figures,$diff) . cs_html_br(1);
+    }
+    $board['threads_text'] = preg_replace_callback("=\[img\](.*?)\[/img\]=si","cs_abcode_resize",$board['threads_text']);
+    $board['threads_text'] = preg_replace_callback("=\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]=si","cs_abcode_resize",$board['threads_text']);
+  }else{
+    $error .= $cs_lang['no_text'] . cs_html_br(1);
+  }
 
 }
 
@@ -212,8 +212,8 @@ if(isset($_POST['files+'])) {
 
 $data['if']['error'] = FALSE;
 if(!empty($error)) {
-	$data['if']['error'] = TRUE;
-	$data['show']['errors'] = $error;
+  $data['if']['error'] = TRUE;
+  $data['show']['errors'] = $error;
 }
 
 $data['if']['preview'] = FALSE;
@@ -221,34 +221,34 @@ $data['if']['preview'] = FALSE;
 //////////// PREVIEW ////////////
 if(isset($_POST['preview']) AND empty($error)) {
 
-	$data['if']['preview'] = TRUE;	
-	$data['preview']['text'] = cs_secure($board['threads_text'],1,1);
+  $data['if']['preview'] = TRUE;  
+  $data['preview']['text'] = cs_secure($board['threads_text'],1,1);
 }
 
 
 if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
-	$data['data'] = $board;
+  $data['data'] = $board;
   
   $data['abcode']['smileys'] = cs_abcode_smileys('threads_text');
   $data['abcode']['features'] = cs_abcode_features('threads_text');
   $data['max']['text'] = $cs_board_opt['max_text'];
 
-	//////////// FILES ////////////
-	$data['if']['file'] = FALSE;
+  //////////// FILES ////////////
+  $data['if']['file'] = FALSE;
 
   $a = $run_loop_files;
   $run_loop_files = !empty($run_loop_files) ? $run_loop_files : 1;
   if($files == 1)
   {
-  	$data['if']['file'] = TRUE;
-	
-	require_once 'mods/clansphere/filetype.php';
+    $data['if']['file'] = TRUE;
+  
+  require_once 'mods/clansphere/filetype.php';
     
     for($run=0; $run < $run_loop_files; $run++)
     {
-			$num = $run + 1;
-			$cs_files["text_$num"] = isset($_POST["text_$num"]) ? $_POST["text_$num"] : '';
+      $num = $run + 1;
+      $cs_files["text_$num"] = isset($_POST["text_$num"]) ? $_POST["text_$num"] : '';
 
       $data['files'][$run]['num'] = $num;
       
@@ -257,15 +257,15 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
       
       if(empty($cs_boardfiles[$run]['boardfiles_name']) OR !empty($file_error[$num]))
       {
-      	$data['files'][$run]['if']['empty_file'] = TRUE;
+        $data['files'][$run]['if']['empty_file'] = TRUE;
       
-        	$matches[1] = $cs_lang['infos'];
-        	$return_types = '';
-        	foreach($filetypes AS $add) {
-         		$return_types .= empty($return_types) ? $add : ', ' . $add;
-        	}
-        	$matches[2] = $cs_lang['max_size'] . cs_filesize($max_size) . cs_html_br(1);
-        	$matches[2] .= $cs_lang['filetypes'] . ': ' . $return_types;
+          $matches[1] = $cs_lang['infos'];
+          $return_types = '';
+          foreach($filetypes AS $add) {
+             $return_types .= empty($return_types) ? $add : ', ' . $add;
+          }
+          $matches[2] = $cs_lang['max_size'] . cs_filesize($max_size) . cs_html_br(1);
+          $matches[2] .= $cs_lang['filetypes'] . ': ' . $return_types;
         $data['files'][$run]['clip'] = cs_abcode_clip($matches);
       }
       else {
@@ -274,15 +274,15 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
           $ext = substr($file_x,strlen($file_x)+1-strlen(strrchr($file_x,'.')));
           $file_upload_name[$run] = $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext;
         }
-      	$data['files'][$run]['if']['file_exists'] = TRUE;
+        $data['files'][$run]['if']['file_exists'] = TRUE;
       
-      	$data['files'][$run]['name'] = $cs_boardfiles[$run]['boardfiles_name'];
-      	$data['files'][$run]['up_name'] = $file_upload_name[$run];
-      	$data['files'][$run]['b_id'] = $cs_boardfiles[$run]['boardfiles_id'];
-      	$data['files'][$run]['user'] = $cs_boardfiles[$run]['users_id'];
-      	$data['files'][$run]['del'] = $cs_boardfiles[$run]['boardfiles_del'];
+        $data['files'][$run]['name'] = $cs_boardfiles[$run]['boardfiles_name'];
+        $data['files'][$run]['up_name'] = $file_upload_name[$run];
+        $data['files'][$run]['b_id'] = $cs_boardfiles[$run]['boardfiles_id'];
+        $data['files'][$run]['user'] = $cs_boardfiles[$run]['users_id'];
+        $data['files'][$run]['del'] = $cs_boardfiles[$run]['boardfiles_del'];
         
-				$file = $cs_boardfiles[$run]['boardfiles_name'];
+        $file = $cs_boardfiles[$run]['boardfiles_name'];
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
         $ext = substr($file,$name - $extension + 1,$name);
@@ -293,19 +293,19 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
         $data['files'][$run]['if']['del_button'] = FALSE;
         $data['files'][$run]['file_del'] = '';
         if($cs_boardfiles[$run]['boardfiles_del'] == '0') {
-        	$data['files'][$run]['if']['del_button'] = TRUE;
-				} elseif($cs_boardfiles[$run]['boardfiles_del'] == '1') {
-					$data['files'][$run]['file_del'] = $cs_lang['file_del'];
-				}
+          $data['files'][$run]['if']['del_button'] = TRUE;
+        } elseif($cs_boardfiles[$run]['boardfiles_del'] == '1') {
+          $data['files'][$run]['file_del'] = $cs_lang['file_del'];
+        }
         
         $data['files'][$run]['if']['file_is_picture'] = FALSE;
         $data['files'][$run]['if']['file_is_other'] = FALSE;
         
         #check if file is picture
         if(strcasecmp($ext,'jpg') == '0' OR strcasecmp($ext,'jpeg') == '0' OR strcasecmp($ext,'gif') == '0' OR strcasecmp($ext,'png') == '0') {
-        	$data['files'][$run]['if']['file_is_picture'] = TRUE;
+          $data['files'][$run]['if']['file_is_picture'] = TRUE;
         } else {
-        	$data['files'][$run]['if']['file_is_other'] = TRUE;
+          $data['files'][$run]['if']['file_is_other'] = TRUE;
         }
       }
     }
@@ -315,11 +315,11 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   $data['if']['new_file'] = FALSE;
   
   if($files == '1' AND $account['access_board'] >= '2') {
-  	$data['if']['add_file'] = TRUE;
-  	$data['hidden']['files_loop'] = $run_loop_files;
+    $data['if']['add_file'] = TRUE;
+    $data['hidden']['files_loop'] = $run_loop_files;
   }
   if($files == '0' AND $account['access_board'] >= '2') {
-  	$data['if']['new_file'] = TRUE;
+    $data['if']['new_file'] = TRUE;
   }
 
   $data['thread']['id'] = $thread_id;
@@ -329,48 +329,48 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 }
 else {
 
-	if(!empty($board['threads_edit'])){
-		$threads_edits_now = explode('/',$board['threads_edit']);
-	}else{
-		$threads_edits_now[3] = 0;
-	}
-	
-	$new_count = 1 + $threads_edits_now[3];
-	$threads_edit = $account['users_id'].'/'.$account['users_nick'].'/'.cs_time().'/'.$new_count;
-	$thread_cells = array('threads_headline','threads_text','threads_edit');
-	$thread_save = array($board['threads_headline'],$board['threads_text'],$threads_edit);
+  if(!empty($board['threads_edit'])){
+    $threads_edits_now = explode('/',$board['threads_edit']);
+  }else{
+    $threads_edits_now[3] = 0;
+  }
+  
+  $new_count = 1 + $threads_edits_now[3];
+  $threads_edit = $account['users_id'].'/'.$account['users_nick'].'/'.cs_time().'/'.$new_count;
+  $thread_cells = array('threads_headline','threads_text','threads_edit');
+  $thread_save = array($board['threads_headline'],$board['threads_text'],$threads_edit);
  cs_sql_update(__FILE__,'threads',$thread_cells,$thread_save,$thread_id);
 
-	for($run=0; $run < $run_loop_files; $run++)
-	{
-		if($cs_boardfiles[$run]['boardfiles_del'] == 1)
-		{
-			$ext = substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
-			$del_file_x = $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext;
-		 cs_unlink('board', $del_file_x, 'files');
-			$sql_id = $cs_boardfiles[$run]['boardfiles_id'];
-		 cs_sql_delete(__FILE__,'boardfiles',$sql_id);
-		}
-		if($cs_boardfiles[$run]['boardfiles_id'] == '')
-		{
-			$thread_time = cs_time();
-			$files_cells = array('users_id','threads_id','boardfiles_time','boardfiles_name');
-			$files_save = array($cs_boardfiles[$run]['users_id'],$thread_id,$thread_time,$cs_boardfiles[$run]['boardfiles_name']);
+  for($run=0; $run < $run_loop_files; $run++)
+  {
+    if($cs_boardfiles[$run]['boardfiles_del'] == 1)
+    {
+      $ext = substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
+      $del_file_x = $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext;
+     cs_unlink('board', $del_file_x, 'files');
+      $sql_id = $cs_boardfiles[$run]['boardfiles_id'];
+     cs_sql_delete(__FILE__,'boardfiles',$sql_id);
+    }
+    if($cs_boardfiles[$run]['boardfiles_id'] == '')
+    {
+      $thread_time = cs_time();
+      $files_cells = array('users_id','threads_id','boardfiles_time','boardfiles_name');
+      $files_save = array($cs_boardfiles[$run]['users_id'],$thread_id,$thread_time,$cs_boardfiles[$run]['boardfiles_name']);
 //    $files_cells = array_keys($cs_boardfiles[$run]);
 //    $files_save = array_values($cs_boardfiles[$run]);
-		 cs_sql_insert(__FILE__,'boardfiles',$files_cells,$files_save);
-			$files_select_new_id = cs_sql_insertid(__FILE__);
-			$ext = substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
-			$path = $cs_main['def_path'] . '/uploads/board/files/';
-			$target = $path . $file_upload_name[$run];
-			$target2 = $path . $files_select_new_id . '.' . $ext;
-			$fileHand = fopen($target, 'r');
-			fclose($fileHand);
-			rename( $target, $target2 );
-		}
-	}
-	# Update board entry to get correct threads and comments count
-	include_once('mods/board/repair.php');
+     cs_sql_insert(__FILE__,'boardfiles',$files_cells,$files_save);
+      $files_select_new_id = cs_sql_insertid(__FILE__);
+      $ext = substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
+      $path = $cs_main['def_path'] . '/uploads/board/files/';
+      $target = $path . $file_upload_name[$run];
+      $target2 = $path . $files_select_new_id . '.' . $ext;
+      $fileHand = fopen($target, 'r');
+      fclose($fileHand);
+      rename( $target, $target2 );
+    }
+  }
+  # Update board entry to get correct threads and comments count
+  include_once('mods/board/repair.php');
   cs_board_threads($board['board_id']);
 
   cs_redirect($cs_lang['changes_done'], 'board', 'thread', 'where=' . $thread_id);

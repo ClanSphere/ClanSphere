@@ -31,7 +31,7 @@ function cs_cspnews($all = 0) {
 
       if($content = file_get_contents('http://www.clansphere.net/uploads/clansphere/sec_news.txt')) {
         $content = str_replace(array("\r","\n"),'',$content);
-      	$news = explode(';',$content);
+        $news = explode(';',$content);
         $content = explode('@', $news[0]);
 
         if($content[0] > $cs_main['sec_news']) {

@@ -37,11 +37,11 @@ if(isset($_POST['submit'])) {
   $folders['folders_access'] = $_POST['folders_access'];
   $folders['folders_position'] = $_POST['folders_position'];
   
-		$adv_vote = isset($_POST['adv_vote']) ? $_POST['adv_vote'] : 0;
-		$adv_close = isset($_POST['adv_close']) ? $_POST['adv_close'] : 0;
-		$adv_dl = isset($_POST['adv_download']) ? $_POST['adv_download'] : 0;
-		$adv_dlo = isset($_POST['adv_download_original']) ? $_POST['adv_download_original'] : 0;  
-	$advanced = array($adv_vote,$adv_close,$adv_dl,$adv_dlo);
+    $adv_vote = isset($_POST['adv_vote']) ? $_POST['adv_vote'] : 0;
+    $adv_close = isset($_POST['adv_close']) ? $_POST['adv_close'] : 0;
+    $adv_dl = isset($_POST['adv_download']) ? $_POST['adv_download'] : 0;
+    $adv_dlo = isset($_POST['adv_download_original']) ? $_POST['adv_download_original'] : 0;  
+  $advanced = array($adv_vote,$adv_close,$adv_dl,$adv_dlo);
   $folders['folders_advanced'] = implode(",",$advanced);
 
   $error = '';
@@ -83,16 +83,16 @@ elseif(!empty($error))
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $folders;
-	$data['data']['folders_select'] = make_folders_select('sub_id',$folders['sub_id'],'0','gallery');
+  $data['data'] = $folders;
+  $data['data']['folders_select'] = make_folders_select('sub_id',$folders['sub_id'],'0','gallery');
 
-	$levels = 0;
-	$data['data']['folders_access'] = '';
-	while($levels < 6) {
-		$folders['folders_access'] == $levels ? $sel = 1 : $sel = 0;
-		$data['data']['folders_access'] .= cs_html_option($levels . ' - ' . $cs_lang['lev_' . $levels],$levels,$sel);
-		$levels++;
-	}
+  $levels = 0;
+  $data['data']['folders_access'] = '';
+  while($levels < 6) {
+    $folders['folders_access'] == $levels ? $sel = 1 : $sel = 0;
+    $data['data']['folders_access'] .= cs_html_option($levels . ' - ' . $cs_lang['lev_' . $levels],$levels,$sel);
+    $levels++;
+  }
    
   $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';
@@ -120,7 +120,7 @@ else {
   $folder_save = array_values($folders);
   cs_sql_insert(__FILE__,'folders',$folder_cells,$folder_save);
  
-	if(!empty($files_gl['picture']['tmp_name'])) {
+  if(!empty($files_gl['picture']['tmp_name'])) {
     $id = cs_sql_insertid(__FILE__);
     $filename = 'picture-' . $id . '.' . $extension;
     cs_upload('folders',$filename,$files_gl['picture']['tmp_name']);

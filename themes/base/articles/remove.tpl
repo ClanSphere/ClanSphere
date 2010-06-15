@@ -3,7 +3,7 @@
   <tr>
     <td class="headb"> {lang:mod_name} - {lang:head_remove} </td>
   </tr>
-	<tr>
+  <tr>
     <td class="leftb"> {head:body} </td>
   </tr>
   <tr>

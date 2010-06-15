@@ -90,9 +90,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   }
   $data['data']['gallery_access'] = $var;
 
-	$selected = 'selected="selected"';
-	$data['check']['show1'] = $cs_gallery['gallery_status'] == 0 ? $selected : '';
-	$data['check']['show2'] = $cs_gallery['gallery_status'] == 1 ? $selected : '';  
+  $selected = 'selected="selected"';
+  $data['check']['show1'] = $cs_gallery['gallery_status'] == 0 ? $selected : '';
+  $data['check']['show2'] = $cs_gallery['gallery_status'] == 1 ? $selected : '';  
   
   
   if(extension_loaded('gd')) {
@@ -152,8 +152,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['check']['time'] = empty($new_time) ? '' : $checked;
   $data['check']['counter'] = empty($reset_counter) ? '' : $checked;
   
-	$data['hidden']['name'] = $cs_gallery['gallery_name'];
-	$data['hidden']['id'] = $gallery_id;
+  $data['hidden']['name'] = $cs_gallery['gallery_name'];
+  $data['hidden']['id'] = $gallery_id;
 
 
  echo cs_subtemplate(__FILE__,$data,'gallery','picture_edit');

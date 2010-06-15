@@ -54,20 +54,20 @@ $messages_loop = count($data['msgs']);
 $period = 0;
 
 for ($i = 0; $i < $messages_loop; $i++) {
-	
-	$data['msgs'][$i]['icon'] = empty($data['msgs'][$i]['messages_view']) ? cs_icon('email',16,$cs_lang['new']) : cs_icon('mail_generic',16,$cs_lang['read']);
-	if ($data['msgs'][$i]['messages_view'] == 2) $data['msgs'][$i]['icon'] = cs_icon('mail_replay',16,$cs_lang['answered']);
-	$data['msgs'][$i]['messages_time'] = cs_date('unix', $data['msgs'][$i]['messages_time'],1);
-	$data['msgs'][$i]['user_to'] = cs_user($data['msgs'][$i]['users_id_to'],$data['msgs'][$i]['users_nick'],$data['msgs'][$i]['users_active'],$data['msgs'][$i]['users_delete']);
-	$data['msgs'][$i]['messages_subject'] = cs_secure($data['msgs'][$i]['messages_subject']);
-	if ($data['msgs'][$i]['period'] === $period) {
-		$data['msgs'][$i]['if']['new_period'] = false;
-	} else {
-		$data['msgs'][$i]['if']['new_period'] = true;
-		$data['msgs'][$i]['period_name'] = $cs_lang[$data['msgs'][$i]['period']];
-		$data['msgs'][$i]['period_count'] = $count[$data['msgs'][$i]['period']];
-		$period = $data['msgs'][$i]['period'];
-	}
+  
+  $data['msgs'][$i]['icon'] = empty($data['msgs'][$i]['messages_view']) ? cs_icon('email',16,$cs_lang['new']) : cs_icon('mail_generic',16,$cs_lang['read']);
+  if ($data['msgs'][$i]['messages_view'] == 2) $data['msgs'][$i]['icon'] = cs_icon('mail_replay',16,$cs_lang['answered']);
+  $data['msgs'][$i]['messages_time'] = cs_date('unix', $data['msgs'][$i]['messages_time'],1);
+  $data['msgs'][$i]['user_to'] = cs_user($data['msgs'][$i]['users_id_to'],$data['msgs'][$i]['users_nick'],$data['msgs'][$i]['users_active'],$data['msgs'][$i]['users_delete']);
+  $data['msgs'][$i]['messages_subject'] = cs_secure($data['msgs'][$i]['messages_subject']);
+  if ($data['msgs'][$i]['period'] === $period) {
+    $data['msgs'][$i]['if']['new_period'] = false;
+  } else {
+    $data['msgs'][$i]['if']['new_period'] = true;
+    $data['msgs'][$i]['period_name'] = $cs_lang[$data['msgs'][$i]['period']];
+    $data['msgs'][$i]['period_count'] = $count[$data['msgs'][$i]['period']];
+    $period = $data['msgs'][$i]['period'];
+  }
 }
 
 echo cs_subtemplate(__FILE__, $data, 'messages', 'outbox');

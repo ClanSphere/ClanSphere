@@ -45,11 +45,11 @@ for($run=0; $run<$links_loop; $run++) {
   $data['links'][$run]['url_short'] = substr($data['links'][$run]['links_url'],0,30);
 
   if($data['links'][$run]['links_stats'] == 'on') {
-  	$data['links'][$run]['color'] = 'lime';
-  	$data['links'][$run]['on_off'] = $cs_lang['online'];
+    $data['links'][$run]['color'] = 'lime';
+    $data['links'][$run]['on_off'] = $cs_lang['online'];
   }else{
     $data['links'][$run]['color'] = 'red';
-  	$data['links'][$run]['on_off'] = $cs_lang['offline'];
+    $data['links'][$run]['on_off'] = $cs_lang['offline'];
   }
   $data['links'][$run]['id'] = $data['links'][$run]['links_id'];
 }

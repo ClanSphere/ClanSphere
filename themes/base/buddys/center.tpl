@@ -21,7 +21,7 @@
       {loop:buddys_on}
       <tr>
         <td class="leftb"><div style="float: left;">
-		  <img src="{page:path}symbols/countries/{buddys_on:users_country}.png" width="16" height="11" alt="" />
+      <img src="{page:path}symbols/countries/{buddys_on:users_country}.png" width="16" height="11" alt="" />
         {buddys_on:users_link} </div>
           <div style="float: right;">
           <a href="{url:buddys_center:notice={buddys_on:buddys_id}}">{icon:documentinfo}</a>
@@ -41,7 +41,7 @@
       {loop:buddys_off}
       <tr>
         <td class="leftb"><div style="float: left;">
-		  <img src="{page:path}symbols/countries/{buddys_off:users_country}.png" width="16" height="11" alt="" />
+      <img src="{page:path}symbols/countries/{buddys_off:users_country}.png" width="16" height="11" alt="" />
         {buddys_off:users_link} </div>
           <div style="float: right;">
           <a href="{url:buddys_center:notice={buddys_off:buddys_id}}">{icon:documentinfo}</a>

@@ -8,12 +8,12 @@ if(isset($_POST['submit'])) {
   if(!empty($_POST['users_nick'])) {
     $users_nick = cs_sql_escape($_POST['users_nick']);
     $users_id = cs_sql_select(__FILE__,'users','users_id',"users_nick = '$users_nick'",0,0,1);
-	if($users_id > 0) {
-		$insertion = array('medals_id' => $medals_id, 'users_id' => $users_id['users_id'], 'medalsuser_date' => cs_time());
-		cs_sql_insert(__FILE__, 'medalsuser', array_keys($insertion), array_values($insertion)); 
-		cs_redirect($cs_lang['create_done'], 'medals', 'user', 'where='.$medals_id);
-	}
-	else cs_redirect($cs_lang['user_not_found'], 'medals', 'user', 'where='.$medals_id);
+  if($users_id > 0) {
+    $insertion = array('medals_id' => $medals_id, 'users_id' => $users_id['users_id'], 'medalsuser_date' => cs_time());
+    cs_sql_insert(__FILE__, 'medalsuser', array_keys($insertion), array_values($insertion)); 
+    cs_redirect($cs_lang['create_done'], 'medals', 'user', 'where='.$medals_id);
+  }
+  else cs_redirect($cs_lang['user_not_found'], 'medals', 'user', 'where='.$medals_id);
   }
 } else {
   $medals_id = $_GET['where'];

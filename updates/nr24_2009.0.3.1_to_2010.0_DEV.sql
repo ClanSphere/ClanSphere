@@ -14,11 +14,11 @@ CREATE TABLE {pre}_notifymods (
 ) {engine};
 
 CREATE TABLE {pre}_usernicks (
-	usernicks_id {serial},
-	users_id int(8) NOT NULL default '0',
-	users_nick varchar(200) NOT NULL default '',
-	users_changetime int(14) NOT NULL default '0',
-	PRIMARY KEY (usernicks_id)
+  usernicks_id {serial},
+  users_id int(8) NOT NULL default '0',
+  users_nick varchar(200) NOT NULL default '',
+  users_changetime int(14) NOT NULL default '0',
+  PRIMARY KEY (usernicks_id)
 ) {engine};
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_width','470');

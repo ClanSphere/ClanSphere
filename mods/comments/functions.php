@@ -22,9 +22,9 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
   $data['comments']['pages'] = cs_pages($mod,$action,$sum,$start,$com_fid);
 
   if($mod == 'board' AND !empty($sum)) {
-  	$data['if']['form'] = TRUE;
+    $data['if']['form'] = TRUE;
   }else{
-  	$data['if']['form'] = FALSE;
+    $data['if']['form'] = FALSE;
   }
 
   $where = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = '" . $com_fid . "'";
@@ -85,17 +85,17 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
     } else { $com[$run]['comments_edit'] = ''; }
 
 
-		if($mod == 'board') {
-			$com[$run]['if']['quote_board'] = TRUE;
-			$com[$run]['fid'] = $com_fid;
-			$com[$run]['id'] = $cs_com[$run]['comments_id'];
-		}else{
-			$com[$run]['if']['quote_board'] = FALSE;
-		}
+    if($mod == 'board') {
+      $com[$run]['if']['quote_board'] = TRUE;
+      $com[$run]['fid'] = $com_fid;
+      $com[$run]['id'] = $cs_com[$run]['comments_id'];
+    }else{
+      $com[$run]['if']['quote_board'] = FALSE;
+    }
 
     if(!empty($account['users_id']) AND $mod != 'board') {
-    	$com[$run]['if']['edit_delete'] = TRUE;
-    	
+      $com[$run]['if']['edit_delete'] = TRUE;
+      
       $img_quote = cs_icon('xchat',16,$cs_lang['quote']);
       $com[$run]['edit_delete'] = cs_link($img_quote,$mod,'com_create','id=' . $cs_com[$run]['comments_id'],0,$cs_lang['quote']);
 
@@ -112,7 +112,7 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
 
   }
 
-	$data['if']['bottom_pages'] = $sum > $com_loop ? TRUE : FALSE;
+  $data['if']['bottom_pages'] = $sum > $com_loop ? TRUE : FALSE;
   $data['fquote']['icon'] = 'symbols/' . $cs_main['img_path'] . '/16/xchat.' . $cs_main['img_ext'];
   $data['com'] = !empty($com) ? $com : '';
 

@@ -60,43 +60,43 @@ ALTER TABLE {pre}_wars ADD wars_opponents varchar(200) NOT NULL default '';
 ALTER TABLE {pre}_access ADD access_cups int(8) NOT NULL default '0';
 ALTER TABLE {pre}_board ADD board_order int(4) NOT NULL default '0';
 CREATE TABLE {pre}_cups (
-	cups_id {serial},
-	games_id int(8) NOT NULL DEFAULT '0',
-	cups_name varchar(80) NOT NULL DEFAULT '',
-	cups_system varchar(20) NOT NULL DEFAULT '',
-	cups_text text,
-	cups_teams int(4) NOT NULL DEFAULT '0',
-	cups_start int(8) NOT NULL DEFAULT '0',
-	PRIMARY KEY (cups_id)
+  cups_id {serial},
+  games_id int(8) NOT NULL DEFAULT '0',
+  cups_name varchar(80) NOT NULL DEFAULT '',
+  cups_system varchar(20) NOT NULL DEFAULT '',
+  cups_text text,
+  cups_teams int(4) NOT NULL DEFAULT '0',
+  cups_start int(8) NOT NULL DEFAULT '0',
+  PRIMARY KEY (cups_id)
 ){engine};
 CREATE TABLE {pre}_cupsquads (
-	cupsquads_id {serial},
-	cups_id int(8) NOT NULL DEFAULT '0',
-	squads_id int(8) NOT NULL DEFAULT '0',
-	cupsquads_time varchar(14) NOT NULL default '',
-	PRIMARY KEY (cupsquads_id),
-	UNIQUE (cups_id, squads_id)
+  cupsquads_id {serial},
+  cups_id int(8) NOT NULL DEFAULT '0',
+  squads_id int(8) NOT NULL DEFAULT '0',
+  cupsquads_time varchar(14) NOT NULL default '',
+  PRIMARY KEY (cupsquads_id),
+  UNIQUE (cups_id, squads_id)
 ){engine};
 CREATE TABLE {pre}_cupmatches (
-	cupmatches_id {serial},
-	cups_id int(8) NOT NULL DEFAULT '0',
-	squad1_id int(8) NOT NULL DEFAULT '0',
-	squad2_id int(8) NOT NULL DEFAULT '0',
-	cupmatches_score1 int(6) NOT NULL DEFAULT '0',
-	cupmatches_score2 int(6) NOT NULL DEFAULT '0',
-	cupmatches_winner int(8) NOT NULL DEFAULT '0',
-	cupmatches_loserbracket int(2) NOT NULL DEFAULT '0',
-	cupmatches_accepted1 int(2) NOT NULL DEFAULT '0',
-	cupmatches_accepted2 int(2) NOT NULL DEFAULT '0',
-	cupmatches_round int(2) NOT NULL DEFAULT '0',
-	PRIMARY KEY (cupmatches_id),
-	UNIQUE (cups_id, squad1_id, squad2_id, cupmatches_round)
+  cupmatches_id {serial},
+  cups_id int(8) NOT NULL DEFAULT '0',
+  squad1_id int(8) NOT NULL DEFAULT '0',
+  squad2_id int(8) NOT NULL DEFAULT '0',
+  cupmatches_score1 int(6) NOT NULL DEFAULT '0',
+  cupmatches_score2 int(6) NOT NULL DEFAULT '0',
+  cupmatches_winner int(8) NOT NULL DEFAULT '0',
+  cupmatches_loserbracket int(2) NOT NULL DEFAULT '0',
+  cupmatches_accepted1 int(2) NOT NULL DEFAULT '0',
+  cupmatches_accepted2 int(2) NOT NULL DEFAULT '0',
+  cupmatches_round int(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (cupmatches_id),
+  UNIQUE (cups_id, squad1_id, squad2_id, cupmatches_round)
 ){engine};
 CREATE TABLE {pre}_count_archiv (
-	count_id {serial},
-	count_month varchar(10) NOT NULL DEFAULT '',
-	count_num int(30) NOT NULL DEFAULT '0',
-	PRIMARY KEY (count_id)
+  count_id {serial},
+  count_month varchar(10) NOT NULL DEFAULT '',
+  count_num int(30) NOT NULL DEFAULT '0',
+  PRIMARY KEY (count_id)
 ){engine};
 CREATE TABLE {pre}_folders (
   folders_id {serial},
@@ -208,14 +208,14 @@ ALTER TABLE {pre}_awards DROP awards_info;
 ALTER TABLE {pre}_access ADD access_mailbox int(2) NOT NULL default '0';
 ALTER TABLE {pre}_access ADD access_static int(2) NOT NULL default '0';
 CREATE TABLE {pre}_static (
-	static_id {serial},
-	static_title varchar(200) NOT NULL DEFAULT '',
-	static_text TEXT,
-	static_table INT(2) NOT NULL DEFAULT '0',
-	static_comments INT(2) NOT NULL DEFAULT '0',
-	static_admins INT(2) NOT NULL DEFAULT '0',
-	static_access INT(2) NOT NULL DEFAULT '0',
-	PRIMARY KEY (static_id)
+  static_id {serial},
+  static_title varchar(200) NOT NULL DEFAULT '',
+  static_text TEXT,
+  static_table INT(2) NOT NULL DEFAULT '0',
+  static_comments INT(2) NOT NULL DEFAULT '0',
+  static_admins INT(2) NOT NULL DEFAULT '0',
+  static_access INT(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (static_id)
 ) {engine};
 
 -- ClanSphere rc3 to final

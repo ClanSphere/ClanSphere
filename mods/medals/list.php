@@ -20,9 +20,9 @@ $data['users'] = cs_sql_select(__FILE__, $tables, $cells, 0, "medals DESC", $sta
 $count = count($data['users']);
 
 for ($i = 0; $i < $count; $i++) {
-	
-	$data['users'][$i]['user'] = cs_user($data['users'][$i]['users_id'], $data['users'][$i]['users_nick'], $data['users'][$i]['users_active'], $data['users'][$i]['users_delete']);
-	
+  
+  $data['users'][$i]['user'] = cs_user($data['users'][$i]['users_id'], $data['users'][$i]['users_nick'], $data['users'][$i]['users_active'], $data['users'][$i]['users_delete']);
+  
 }
 
 

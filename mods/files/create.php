@@ -80,7 +80,7 @@ if(isset($_POST['submit']))
 }
 
 if(isset($_POST['mirror'])) {
-	$_POST['run_loop']++;
+  $_POST['run_loop']++;
     $data['file']['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] :
   cs_categories_create('files',$_POST['categories_name']);
   $data['file']['files_close'] = isset($_POST['files_close']) ? $_POST['files_close'] : 0;
@@ -92,7 +92,7 @@ if(isset($_POST['mirror'])) {
   $data['file']['files_size'] = round($data['file']['files_size'], 2);
   $size = $_POST['size'];
   $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
-	
+  
 } else {
   $files_mirror = $data['file']['files_mirror'];
   $temp = explode("-----", $files_mirror);
@@ -126,7 +126,7 @@ if(!empty($error) OR !isset($_POST['submit']))
   $data['mirrors'] = array();
   
   for($run=0; $run < $run_loop; $run++){
-  	$num = $run+1;
+    $num = $run+1;
     $data['mirrors'][$run]['run'] = $run+1;
     $data['mirrors'][$run]['num'] = $num;
     
@@ -137,14 +137,14 @@ if(!empty($error) OR !isset($_POST['submit']))
    
     $data['mirrors'][$run]['accesses'] = array();
     for($a = 0; $a < 6; $a++) {
-			$data['mirrors'][$run]['accesses'][$a]['name'] = $a . ' - ' . $cs_lang['lev_' . $a];
+      $data['mirrors'][$run]['accesses'][$a]['name'] = $a . ' - ' . $cs_lang['lev_' . $a];
       $data['mirrors'][$run]['accesses'][$a]['value'] = $a;
       $data['mirrors'][$run]['accesses'][$a]['selected'] = $a == $data['mirrors'][$run]['access'] ? ' selected="selected"' : '';
     }
   }
   $data['if']['closed'] = $data['file']['files_close'] ? true : false;
   $data['if']['votes'] = $data['file']['files_vote'] ? true : false;
-	$data['mirror']['run_loop'] = $run_loop;
+  $data['mirror']['run_loop'] = $run_loop;
 
  echo cs_subtemplate(__FILE__,$data,'files','create');  
 }

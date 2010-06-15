@@ -86,35 +86,35 @@ if (fsockopen("udp://127.0.0.1", 1)) {
   echo cs_subtemplate(__FILE__,$data,'servers','list');
 }
 else {
-	/* if fsockopen deactive, list servers */
-	$tables = 'servers srv INNER JOIN {pre}_games gam ON srv.games_id = gam.games_id';
-	$select = 'srv.servers_name AS servers_name, srv.servers_ip AS servers_ip, srv.servers_port AS servers_port';
-	$select .= ', srv.servers_info AS servers_info, srv.servers_slots AS servers_slots, srv.servers_type AS servers_type';
-	$select .= ', gam.games_name AS games_name, gam.games_id AS games_id';
-	$order = 'srv.servers_order';
-	$cs_servers = cs_sql_select(__FILE__,$tables,$select,0,$order,0,0);
-	$cs_servers_count = count($cs_servers);
+  /* if fsockopen deactive, list servers */
+  $tables = 'servers srv INNER JOIN {pre}_games gam ON srv.games_id = gam.games_id';
+  $select = 'srv.servers_name AS servers_name, srv.servers_ip AS servers_ip, srv.servers_port AS servers_port';
+  $select .= ', srv.servers_info AS servers_info, srv.servers_slots AS servers_slots, srv.servers_type AS servers_type';
+  $select .= ', gam.games_name AS games_name, gam.games_id AS games_id';
+  $order = 'srv.servers_order';
+  $cs_servers = cs_sql_select(__FILE__,$tables,$select,0,$order,0,0);
+  $cs_servers_count = count($cs_servers);
 
-	$data['servers'] = array();
+  $data['servers'] = array();
 
-	for($serv=0; $serv < $cs_servers_count; $serv++) {
-		$data['servers'][$serv]['name'] = $cs_servers[$serv]['servers_name'];
-		$data['servers'][$serv]['url'] = $cs_servers[$serv]['servers_ip'] . ':' . $cs_servers[$serv]['servers_port'];
-		switch ($cs_servers[$serv]['servers_type']) {
-			case 1:
-				$data['servers'][$serv]['type'] = $cs_lang['clanserver'];
-				break;
-			case 2:
-				$data['servers'][$serv]['type'] = $cs_lang['pubserver'];
-				break;
-			case 3:
-				$data['servers'][$serv]['type'] = $cs_lang['voiceserver'];
-				break;
-		}
-		$data['servers'][$serv]['slots'] = $cs_servers[$serv]['servers_slots'];
-		$data['servers'][$serv]['img'] = 'uploads/games/' . $cs_servers[$serv]['games_id'] . '.gif';
-		$data['servers'][$serv]['game'] = $cs_servers[$serv]['games_name'];
-		$data['servers'][$serv]['info'] = $cs_servers[$serv]['servers_info'];
-	}
-	echo cs_subtemplate(__FILE__,$data,'servers','noquery');
+  for($serv=0; $serv < $cs_servers_count; $serv++) {
+    $data['servers'][$serv]['name'] = $cs_servers[$serv]['servers_name'];
+    $data['servers'][$serv]['url'] = $cs_servers[$serv]['servers_ip'] . ':' . $cs_servers[$serv]['servers_port'];
+    switch ($cs_servers[$serv]['servers_type']) {
+      case 1:
+        $data['servers'][$serv]['type'] = $cs_lang['clanserver'];
+        break;
+      case 2:
+        $data['servers'][$serv]['type'] = $cs_lang['pubserver'];
+        break;
+      case 3:
+        $data['servers'][$serv]['type'] = $cs_lang['voiceserver'];
+        break;
+    }
+    $data['servers'][$serv]['slots'] = $cs_servers[$serv]['servers_slots'];
+    $data['servers'][$serv]['img'] = 'uploads/games/' . $cs_servers[$serv]['games_id'] . '.gif';
+    $data['servers'][$serv]['game'] = $cs_servers[$serv]['games_name'];
+    $data['servers'][$serv]['info'] = $cs_servers[$serv]['servers_info'];
+  }
+  echo cs_subtemplate(__FILE__,$data,'servers','noquery');
 }

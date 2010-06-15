@@ -62,7 +62,7 @@ function cs_filetype($name) {
   }  
       
   $iconpath = 'symbols/files/filetypes/' . $ext . '.gif';
-	
+  
   if(file_exists($iconpath)) {    
     return cs_html_img($iconpath,16,16,0,$name);
   }

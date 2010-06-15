@@ -37,13 +37,13 @@
   {stop:brokenlink}
   {if:vote}
   <tr>
-  	<td class="leftc">{icon:Volume Manager} {lang:evaluation}</td>
+    <td class="leftc">{icon:Volume Manager} {lang:evaluation}</td>
     <td class="leftb">
     {if:unvoted}
     <form method="post" action="{url:files_view:where={file:id}}">
-    	<select name="voted_answer" id="voted_answer">
-      	{loop:votes}
-        	<option value="{votes:value}">{votes:name}</option>
+      <select name="voted_answer" id="voted_answer">
+        {loop:votes}
+          <option value="{votes:value}">{votes:name}</option>
         {stop:votes}
       </select>
       <input type="hidden" name="file_id" value="{file:id}" />
@@ -51,7 +51,7 @@
     </form> 
     {stop:unvoted}
     {unless:unvoted}
-			{vote:stars}
+      {vote:stars}
     {stop:unvoted}
     </td>
   </tr>

@@ -68,9 +68,9 @@ if(file_exists('mods/' . $dir . '/access.php')) {
     $run++;
   }
 } else {
-	$data['axx'] = array();
-	$data['sort']['file'] = '';
-	$data['sort']['access'] = '';
+  $data['axx'] = array();
+  $data['sort']['file'] = '';
+  $data['sort']['access'] = '';
 }
 
 echo cs_subtemplate(__FILE__,$data,'modules','view');

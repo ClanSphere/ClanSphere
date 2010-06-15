@@ -40,11 +40,11 @@ if(isset($_POST['submit'])) {
   $folders['folders_position'] = $_POST['folders_position'];
   $folders['folders_picture'] = $_POST['folders_picture'];
   
-		$adv_vote = isset($_POST['adv_vote']) ? $_POST['adv_vote'] : 0;
-		$adv_close = isset($_POST['adv_close']) ? $_POST['adv_close'] : 0;
-		$adv_dl = isset($_POST['adv_download']) ? $_POST['adv_download'] : 0;
-		$adv_dlo = isset($_POST['adv_download_original']) ? $_POST['adv_download_original'] : 0;  
-	$advanced = array($adv_vote,$adv_close,$adv_dl,$adv_dlo);
+    $adv_vote = isset($_POST['adv_vote']) ? $_POST['adv_vote'] : 0;
+    $adv_close = isset($_POST['adv_close']) ? $_POST['adv_close'] : 0;
+    $adv_dl = isset($_POST['adv_download']) ? $_POST['adv_download'] : 0;
+    $adv_dlo = isset($_POST['adv_download_original']) ? $_POST['adv_download_original'] : 0;  
+  $advanced = array($adv_vote,$adv_close,$adv_dl,$adv_dlo);
   $folders['folders_advanced'] = implode(",",$advanced);
   
   $error = '';
@@ -89,7 +89,7 @@ elseif(!empty($error))
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $folders;
+  $data['data'] = $folders;
   $data['data']['folders_select'] = make_folders_select('sub_id',$folders['sub_id'],$account['users_id'],'usersgallery',1,$folders_id);
   
   $levels = 0;
@@ -108,7 +108,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $data['data']['picture'] = cs_html_img($url);
     $data['if']['picture_exists'] = TRUE;
   }
-	  
+    
   $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';
   foreach($img_filetypes AS $add) {

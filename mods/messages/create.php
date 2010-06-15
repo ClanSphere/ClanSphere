@@ -23,19 +23,19 @@ $messages_show_receiver = '1';
 $reply_id = 0;
 
 if (!empty($_GET['rep'])) {
-	$messages_id = (int) $_GET['rep'];
-	$reply_id = $messages_id;
-	$tables = 'messages m INNER JOIN {pre}_users u ON m.users_id = u.users_id';
-	$cells  = 'm.messages_text AS messages_text, m.messages_subject AS messages_subject, m.users_id AS users_id, ';
-	$cells .= 'u.users_nick AS users_nick, u.users_active AS users_active, u.users_delete AS users_delete';
-	$msg = cs_sql_select(__FILE__, $tables, $cells, 'messages_id = "' . $messages_id . '" AND users_id_to = "' . $account['users_id'] . '"');
-	if (empty($msg)) cs_redirect('This message doesnt exist or is not sent to you.', 'messages', 'center');
-	if (empty($msg['users_active']) || !empty($msg['users_delete'])) cs_redirect('The user you want to write a message to is not active or has been deleted.', 'messages', 'center');
-	$messages_subject = 'Re: ' . cs_secure($msg['messages_subject']);
-	$messages_to = cs_secure($msg['users_nick']);
-	$messages_text = "\r\n\r\n\r\n\r\n\r\n" . '[clip=' . $cs_lang['clip_more'] . ']';
-	$messages_text .= '[quote][b]---------- ' . $messages_to . ' ' . $cs_lang['wrote'] . ' ----------[/b]';
-	$messages_text .= "\r\n" . cs_secure($msg['messages_text']) . '[/quote][/clip]';
+  $messages_id = (int) $_GET['rep'];
+  $reply_id = $messages_id;
+  $tables = 'messages m INNER JOIN {pre}_users u ON m.users_id = u.users_id';
+  $cells  = 'm.messages_text AS messages_text, m.messages_subject AS messages_subject, m.users_id AS users_id, ';
+  $cells .= 'u.users_nick AS users_nick, u.users_active AS users_active, u.users_delete AS users_delete';
+  $msg = cs_sql_select(__FILE__, $tables, $cells, 'messages_id = "' . $messages_id . '" AND users_id_to = "' . $account['users_id'] . '"');
+  if (empty($msg)) cs_redirect('This message doesnt exist or is not sent to you.', 'messages', 'center');
+  if (empty($msg['users_active']) || !empty($msg['users_delete'])) cs_redirect('The user you want to write a message to is not active or has been deleted.', 'messages', 'center');
+  $messages_subject = 'Re: ' . cs_secure($msg['messages_subject']);
+  $messages_to = cs_secure($msg['users_nick']);
+  $messages_text = "\r\n\r\n\r\n\r\n\r\n" . '[clip=' . $cs_lang['clip_more'] . ']';
+  $messages_text .= '[quote][b]---------- ' . $messages_to . ' ' . $cs_lang['wrote'] . ' ----------[/b]';
+  $messages_text .= "\r\n" . cs_secure($msg['messages_text']) . '[/quote][/clip]';
 }
 
 /*+-------------------------------------------------------------+*/
@@ -44,98 +44,98 @@ if (!empty($_GET['rep'])) {
 /*+-------------------------------------------------------------+*/
 
 if (!empty($_POST['submit']) || !empty($_POST['preview'])) {
-	if (!empty($_POST['messages_to'])) {
-	
-	  $messages_to = $_POST['messages_to'];
-	  $temp = explode(';', $messages_to);
-	  $loop_temp = count($temp);
-	  $where = '';
-	  
-	  for($run=0; $run<$loop_temp; $run++) {
-	    $a = substr($temp[$run], 0, 6); //check is this a squad
-	    $b = substr($temp[$run], 0, 5); //check is this a clan
-	    if($a == 'Squad:') {
-	      if(!empty($where)) {
-	        $where = $where . ' OR ';
-	      }
-	      $z = substr($temp[$run], 6);
-	      $where .= "squ.squads_name = '" . cs_sql_escape($z) . "'";
-	    } elseif($b == 'Clan:') {
-	      if(!empty($where)) {
-	        $where = $where . ' OR ';
-	      }
-	      $z = substr($temp[$run], 5);
-	      $where .= "cla.clans_name = '" . cs_sql_escape($z) . "'";
-	    } else {
-	      if(!empty($where)) {
-	        $where .= ' OR ';
-	      }
-	      $where .= "usr.users_nick = '" . cs_sql_escape($temp[$run]) . "'";
-	      $z = $temp[$run];
-	    }
-	  }
-	
-	  $from = 'users usr LEFT JOIN {pre}_members mem ON usr.users_id = mem.users_id ';
-	  $from .= 'LEFT JOIN {pre}_squads squ ON mem.squads_id = squ.squads_id ';
-	  $from .= 'LEFT JOIN {pre}_clans cla ON squ.clans_id = cla.clans_id';
-	  $select = 'usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_email AS users_email';
-	  $order = '';
-	  $cs_messages = cs_sql_select(__FILE__,$from,$select,$where,0,0,0);
-	  $cs_messages_loop = count($cs_messages);
-	
-	  if(empty($cs_messages_loop) OR empty($where)) {
-	    $messages_error++;
-	    $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
-	    $error_to = '1';
-	  } else {
-	    $cs_messages = remove_dups($cs_messages,'users_nick');
-	    $cs_messages_loop = count($cs_messages);
-	  }
-	
-	  if(empty($cs_messages_loop) AND empty($error_to)) {
-	    $messages_error++;
-	    $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
-	  }
-	} else {
-	  $messages_error++;
-	  $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
-	}
-	if (!empty($_POST['messages_subject'])) {
-	  $_POST['messages_subject'] = preg_replace("=\<script\>(.*?)\</script\>=si","",$_POST['messages_subject']);
-	}
-	if (!empty($_POST['messages_subject'])) {
-	  $messages_subject = $_POST['messages_subject'];
-	} else {
-	  $messages_error++;
-	  $errormsg .= $cs_lang['error_subject'] . cs_html_br(1);
-	}
-	if (!empty($_POST['messages_text'])) {
-	  $messages_text = $_POST['messages_text'];
-	} else {
-	  $messages_error++;
-	  $errormsg .= $cs_lang['error_text'] . cs_html_br(1);
-	}
-	if (!empty($_POST['messages_show_sender'])) {
-	  $messages_show_sender = $_POST['messages_show_sender'];
-	} else {
-	  $messages_show_sender = '0';
-	}
+  if (!empty($_POST['messages_to'])) {
+  
+    $messages_to = $_POST['messages_to'];
+    $temp = explode(';', $messages_to);
+    $loop_temp = count($temp);
+    $where = '';
+    
+    for($run=0; $run<$loop_temp; $run++) {
+      $a = substr($temp[$run], 0, 6); //check is this a squad
+      $b = substr($temp[$run], 0, 5); //check is this a clan
+      if($a == 'Squad:') {
+        if(!empty($where)) {
+          $where = $where . ' OR ';
+        }
+        $z = substr($temp[$run], 6);
+        $where .= "squ.squads_name = '" . cs_sql_escape($z) . "'";
+      } elseif($b == 'Clan:') {
+        if(!empty($where)) {
+          $where = $where . ' OR ';
+        }
+        $z = substr($temp[$run], 5);
+        $where .= "cla.clans_name = '" . cs_sql_escape($z) . "'";
+      } else {
+        if(!empty($where)) {
+          $where .= ' OR ';
+        }
+        $where .= "usr.users_nick = '" . cs_sql_escape($temp[$run]) . "'";
+        $z = $temp[$run];
+      }
+    }
+  
+    $from = 'users usr LEFT JOIN {pre}_members mem ON usr.users_id = mem.users_id ';
+    $from .= 'LEFT JOIN {pre}_squads squ ON mem.squads_id = squ.squads_id ';
+    $from .= 'LEFT JOIN {pre}_clans cla ON squ.clans_id = cla.clans_id';
+    $select = 'usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_email AS users_email';
+    $order = '';
+    $cs_messages = cs_sql_select(__FILE__,$from,$select,$where,0,0,0);
+    $cs_messages_loop = count($cs_messages);
+  
+    if(empty($cs_messages_loop) OR empty($where)) {
+      $messages_error++;
+      $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
+      $error_to = '1';
+    } else {
+      $cs_messages = remove_dups($cs_messages,'users_nick');
+      $cs_messages_loop = count($cs_messages);
+    }
+  
+    if(empty($cs_messages_loop) AND empty($error_to)) {
+      $messages_error++;
+      $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
+    }
+  } else {
+    $messages_error++;
+    $errormsg .= $cs_lang['error_to'] . cs_html_br(1);
+  }
+  if (!empty($_POST['messages_subject'])) {
+    $_POST['messages_subject'] = preg_replace("=\<script\>(.*?)\</script\>=si","",$_POST['messages_subject']);
+  }
+  if (!empty($_POST['messages_subject'])) {
+    $messages_subject = $_POST['messages_subject'];
+  } else {
+    $messages_error++;
+    $errormsg .= $cs_lang['error_subject'] . cs_html_br(1);
+  }
+  if (!empty($_POST['messages_text'])) {
+    $messages_text = $_POST['messages_text'];
+  } else {
+    $messages_error++;
+    $errormsg .= $cs_lang['error_text'] . cs_html_br(1);
+  }
+  if (!empty($_POST['messages_show_sender'])) {
+    $messages_show_sender = $_POST['messages_show_sender'];
+  } else {
+    $messages_show_sender = '0';
+  }
 }
 
 if (isset($_POST['submit']) && empty($messages_error)) {
   
-	if (!empty($_POST['reply_id'])) {
-		
-		$messages_id = (int) $_POST['reply_id'];
-		$tables = 'messages m INNER JOIN {pre}_users u ON m.users_id = u.users_id';
-		$where = 'm.messages_id = "' . $messages_id . '" AND m.users_id_to = "' . $account['users_id'] . '"';
-		$message = cs_sql_select(__FILE__, $tables, 'u.users_nick AS users_nick', $where);
-		
-		if (!empty($message) && strpos($_POST['messages_to'], $message['users_nick']) !== false) {
-			cs_sql_update(__FILE__, 'messages', array('messages_view'), array(2), $messages_id);
-		}
-	}
-	
+  if (!empty($_POST['reply_id'])) {
+    
+    $messages_id = (int) $_POST['reply_id'];
+    $tables = 'messages m INNER JOIN {pre}_users u ON m.users_id = u.users_id';
+    $where = 'm.messages_id = "' . $messages_id . '" AND m.users_id_to = "' . $account['users_id'] . '"';
+    $message = cs_sql_select(__FILE__, $tables, 'u.users_nick AS users_nick', $where);
+    
+    if (!empty($message) && strpos($_POST['messages_to'], $message['users_nick']) !== false) {
+      cs_sql_update(__FILE__, 'messages', array('messages_view'), array(2), $messages_id);
+    }
+  }
+  
   for($run=0; $run<$cs_messages_loop; $run++) {
     $users_id_to = $cs_messages[$run]['users_id'];
     $messages_cells = array('users_id','messages_time','messages_subject','messages_text',
@@ -158,15 +158,15 @@ if (isset($_POST['submit']) && empty($messages_error)) {
     }
     if(!empty($autoresponder['autoresponder_mail']) && !empty($cs_messages[$run]['users_email'])) {
       
-    	$lang = cs_sql_select(__FILE__, 'users', 'users_lang', 'users_id = "' . $users_id_to . '"');
-    	
-    	if ($lang['users_lang'] != $account['users_lang']) {
-    		$lang_save = $account['users_lang'];
-    		$account['users_lang'] = $lang['users_lang'];
-    		$cs_lang_save = $cs_lang;
-    		$cs_lang = cs_translate('messages');
-    	}
-    	
+      $lang = cs_sql_select(__FILE__, 'users', 'users_lang', 'users_id = "' . $users_id_to . '"');
+      
+      if ($lang['users_lang'] != $account['users_lang']) {
+        $lang_save = $account['users_lang'];
+        $account['users_lang'] = $lang['users_lang'];
+        $cs_lang_save = $cs_lang;
+        $cs_lang = cs_translate('messages');
+      }
+      
       $cs_contact = cs_sql_option(__FILE__, 'contact');
       $email = $cs_messages[$run]['users_email'];
       $title = $cs_lang['mail_titel'];
@@ -177,8 +177,8 @@ if (isset($_POST['submit']) && empty($messages_error)) {
       cs_mail($email,$title,$message);
       
       if (!empty($lang_save)) {
-      	$cs_lang = $cs_lang_save;
-      	$account['users_lang'] = $lang_save;
+        $cs_lang = $cs_lang_save;
+        $account['users_lang'] = $lang_save;
       }
     }
   }

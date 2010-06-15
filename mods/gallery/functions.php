@@ -4,11 +4,11 @@
 
 
 function multiarray_search ($array, $innerkey, $value) {
-	foreach ($array AS $outerkey => $innerarray) {
-	if ($innerarray[$innerkey] == $value)
-		return $outerkey;
-	}
-	return FALSE;
+  foreach ($array AS $outerkey => $innerarray) {
+  if ($innerarray[$innerkey] == $value)
+    return $outerkey;
+  }
+  return FALSE;
 }
 
 function cs_foldersort ($array, $id = 0) {

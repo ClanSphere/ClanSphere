@@ -334,7 +334,7 @@ class cod5
         $nowplayers = count($this->p_info)-1;
         $nowplayers = $nowplayers - 1;
         $clients = 0;
-        	
+          
         // get the data of each player
         while ($nowplayers != -1)
         {

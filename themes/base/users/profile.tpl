@@ -121,8 +121,8 @@
     </tr>
     <tr>
       <td class="leftc"> {icon:documentinfo} {lang:info}<br /><br />
-		{abcode:smileys}
-	 </td>
+    {abcode:smileys}
+   </td>
       <td class="leftb" colspan="2">{abcode:features}
         <textarea class="rte_abcode" name="users_info" cols="50" rows="12" id="users_info">{users:users_info}</textarea>
       </td>

@@ -241,7 +241,7 @@ else {
   $cs_gbook['gbook_lock'] = empty($cs_options['lock']) ? 1 : 0;
   
   if(!empty($account['users_id'])) {
-  	unset($cs_gbook['gbook_ip']);
+    unset($cs_gbook['gbook_ip']);
   }
 
   $cells = array_keys($cs_gbook);

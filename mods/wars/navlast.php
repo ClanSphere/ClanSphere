@@ -15,11 +15,11 @@ $cells .= 'c.clans_name AS clans_name, c.clans_picture AS clans_picture';
 $data['war'] = cs_sql_select(__FILE__,$tables, $cells, 0, 'wars_date DESC');
 
 if(!empty($data['war']) && $data['war']['status'] == 'played' ) {
-	$data['if']['win'] = $data['war']['score1'] > $data['war']['score2'] ? 1 : 0;
-	$data['if']['draw'] = $data['war']['score1'] == $data['war']['score2'] ? 1 : 0;
+  $data['if']['win'] = $data['war']['score1'] > $data['war']['score2'] ? 1 : 0;
+  $data['if']['draw'] = $data['war']['score1'] == $data['war']['score2'] ? 1 : 0;
 
-	echo cs_subtemplate(__FILE__,$data,'wars','navlast');
+  echo cs_subtemplate(__FILE__,$data,'wars','navlast');
 }
 else {
-	echo $cs_lang['no_data'];
+  echo $cs_lang['no_data'];
 }

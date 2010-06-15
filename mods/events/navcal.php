@@ -64,9 +64,9 @@ $row = $colspan + 2;
 $count = 1;
 for($run = 0; $run <= $days-1; $run++) {
 
-	$data['cal'][$run]['if']['row'] = FALSE;
-	$data['cal'][$run]['if']['event'] = FALSE;
-	
+  $data['cal'][$run]['if']['row'] = FALSE;
+  $data['cal'][$run]['if']['event'] = FALSE;
+  
   if($row == 9) {
     $data['cal'][$run]['if']['row'] = TRUE;
     $data['cal'][$run]['week'] = date('W', mktime(0, 0, 0, $month, $count, $year));

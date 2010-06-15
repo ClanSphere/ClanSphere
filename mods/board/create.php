@@ -41,7 +41,7 @@ else {
 $data['if']['preview'] = false;
 
 if(isset($_POST['preview']) AND empty($errormsg)) {
-	$data['if']['preview'] = true;
+  $data['if']['preview'] = true;
   if(empty($data['create']['board_pwd']))
     $data['create']['board_ico'] = cs_icon('tutorials');
   else
@@ -51,14 +51,14 @@ if(isset($_POST['preview']) AND empty($errormsg)) {
 
 $data['if']['error'] = false;
 if(!empty($errormsg)) {
-	$data['if']['error'] = true;
+  $data['if']['error'] = true;
   $data['if']['preview'] = false;
   $data['create']['errormsg'] = $errormsg;
 }
 
 if(!empty($errormsg) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
   $data['create']['cat_drop'] = cs_categories_dropdown2('board',$data['create']['categories_id']);
-	$data['create']['ab_box'] = cs_abcode_features('board_text');
+  $data['create']['ab_box'] = cs_abcode_features('board_text');
 
   $levels = 0;
   $sel = 0;
@@ -84,8 +84,8 @@ else
 {
   global $cs_db;
   if(!empty($data['create']['board_pwd'])) {
-  	if($cs_db['hash'] == 'md5') 
-    	$data['create']['board_pwd'] = md5($data['create']['board_pwd']);
+    if($cs_db['hash'] == 'md5') 
+      $data['create']['board_pwd'] = md5($data['create']['board_pwd']);
     elseif($cs_db['hash'] == 'sha1')
       $data['create']['board_pwd'] = sha1($data['create']['board_pwd']);
   }

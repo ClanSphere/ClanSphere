@@ -20,34 +20,34 @@
 <br />
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	 <tr>
-	  <td class="headb" colspan="5">	    
-	    {lang:members}
-	  </td>
-	 </tr>
-	 <tr>
-	  <td class="leftc" style="width:40px">{lang:country}</td>
-	  <td class="leftc">{lang:nick}</td>
-	  <td class="leftc">{lang:task}</td>
-	  <td class="leftc" style="width:80px">{lang:since}</td>
-	  <td class="leftc" style="width:40px">{lang:page}</td>
-	 </tr>
-	 {loop:members}
-	 <tr>
-	  <td class="leftb"><img src="{page:path}{members:countrypath}" style="height:11px;width:16px" alt="{members:country}" /></td>
-	  <td class="leftb">{members:users_url}</td>
-	  <td class="leftb">{members:members_task}</td>
-	  <td class="leftb">{members:members_since}</td>
-	  <td class="leftb">{members:page}</td>
-	 </tr>
-	 {stop:members}
-	</table>
+   <tr>
+    <td class="headb" colspan="5">      
+      {lang:members}
+    </td>
+   </tr>
+   <tr>
+    <td class="leftc" style="width:40px">{lang:country}</td>
+    <td class="leftc">{lang:nick}</td>
+    <td class="leftc">{lang:task}</td>
+    <td class="leftc" style="width:80px">{lang:since}</td>
+    <td class="leftc" style="width:40px">{lang:page}</td>
+   </tr>
+   {loop:members}
+   <tr>
+    <td class="leftb"><img src="{page:path}{members:countrypath}" style="height:11px;width:16px" alt="{members:country}" /></td>
+    <td class="leftb">{members:users_url}</td>
+    <td class="leftb">{members:members_task}</td>
+    <td class="leftb">{members:members_since}</td>
+    <td class="leftb">{members:page}</td>
+   </tr>
+   {stop:members}
+  </table>
 <br />
 
 {if:rank}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:ranks}</td>		
+    <td class="headb" colspan="2">{lang:ranks}</td>    
   </tr>
   <tr>
     <td class="leftc">{lang:name}</td>
@@ -66,7 +66,7 @@
 {if:award}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:awards}</td>		
+    <td class="headb" colspan="3">{lang:awards}</td>    
   </tr>
   <tr>
     <td class="leftc">{lang:date}</td>
@@ -86,9 +86,9 @@
 
 {if:war}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	<tr>
-		<td class="headb" colspan="5">{lang:wars}</td>		
-	</tr>
+  <tr>
+    <td class="headb" colspan="5">{lang:wars}</td>    
+  </tr>
  <tr>
   <td class="leftc">{lang:date}</td>
   <td class="leftc">{lang:enemy}</td>
@@ -104,7 +104,7 @@
   <td class="leftb">{wars:resulticon}</td>
  </tr>
 <tr>
-	<td class="leftb" colspan="5"><a href="{url:wars_stats:id={squad:squads_id}}">{lang:stats}</a></td>		
+  <td class="leftb" colspan="5"><a href="{url:wars_stats:id={squad:squads_id}}">{lang:stats}</a></td>    
 </tr>
  {stop:wars}
 </table>

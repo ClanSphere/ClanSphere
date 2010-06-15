@@ -35,160 +35,160 @@
 
 class rune
 {
-	var $host     = false;
-	var $port     = false;
-	var $socket   = false;
-	var $maxlen   = 2048;
-	var $s_info   = false;
-	var $g_info   = false;
-	var $response = false;
+  var $host     = false;
+  var $port     = false;
+  var $socket   = false;
+  var $maxlen   = 2048;
+  var $s_info   = false;
+  var $g_info   = false;
+  var $response = false;
 
-	function getvalue($srv_value, $srv_data)
-	{
-		// search the value of selected rule and return it
-		$srv_value = array_search ($srv_value, $srv_data);
+  function getvalue($srv_value, $srv_data)
+  {
+    // search the value of selected rule and return it
+    $srv_value = array_search ($srv_value, $srv_data);
 
-		if ($srv_value === false)
-		{
-			return false;
-		}
-		else
-		{
-			$srv_value = $srv_data[$srv_value+1];
+    if ($srv_value === false)
+    {
+      return false;
+    }
+    else
+    {
+      $srv_value = $srv_data[$srv_value+1];
 
-			return $srv_value;
-		}
-	}
+      return $srv_value;
+    }
+  }
 
-	function splitdata()
-	{
-		// get rules from stream and write to g_info
-		$c_info = explode("\n", $this->s_info);
-		$this->g_info = explode("\\", $c_info[0]);
-	}
+  function splitdata()
+  {
+    // get rules from stream and write to g_info
+    $c_info = explode("\n", $this->s_info);
+    $this->g_info = explode("\\", $c_info[0]);
+  }
 
-	function microtime_float()
-	{
-		list($usec, $sec) = explode(" ", microtime());
+  function microtime_float()
+  {
+    list($usec, $sec) = explode(" ", microtime());
 
-		return ((float)$usec + (float)$sec);
-	}
+    return ((float)$usec + (float)$sec);
+  }
 
-	function connect()
-	{
-		if (($this->socket = fsockopen('udp://'. $this->host, $this->port, $errno, $errstr, 30)))
-		{
-			return true;
-		}
+  function connect()
+  {
+    if (($this->socket = fsockopen('udp://'. $this->host, $this->port, $errno, $errstr, 30)))
+    {
+      return true;
+    }
 
-		return false;
-	}
+    return false;
+  }
 
-	function disconnect()
-	{
-		if ((fclose($this->socket)))
-		{
-			return true;
-		}
+  function disconnect()
+  {
+    if ((fclose($this->socket)))
+    {
+      return true;
+    }
 
-		return false;
-	}
+    return false;
+  }
 
-	function get_info()
-	{
-		$write = "\\info\\";
-		$stream = $this->get_status($write);
+  function get_info()
+  {
+    $write = "\\info\\";
+    $stream = $this->get_status($write);
 
-		return $stream;
-	}
+    return $stream;
+  }
 
-	function get_players()
-	{
-		$write = "\\players\\";
-		$stream = $this->get_status($write);
+  function get_players()
+  {
+    $write = "\\players\\";
+    $stream = $this->get_status($write);
 
-		return $stream;
-	}
+    return $stream;
+  }
 
-	function get_status($write)
-	{
-		if ($this->connect() === false)
-		{
-			return false;
-		}
+  function get_status($write)
+  {
+    if ($this->connect() === false)
+    {
+      return false;
+    }
 
-		socket_set_timeout($this->socket, 3);
+    socket_set_timeout($this->socket, 3);
 
-		$time_begin = $this->microtime_float();
+    $time_begin = $this->microtime_float();
 
-		fwrite($this->socket, $write);
+    fwrite($this->socket, $write);
 
-		$info = fread($this->socket, 1);
-		$status = socket_get_status($this->socket);
-		$length = $status['unread_bytes'];
+    $info = fread($this->socket, 1);
+    $status = socket_get_status($this->socket);
+    $length = $status['unread_bytes'];
 
-		if ($length > 0)
-		{
-			$info = fread($this->socket, $length);
-		}
+    if ($length > 0)
+    {
+      $info = fread($this->socket, $length);
+    }
 
-		$time_end = $this->microtime_float();
+    $time_end = $this->microtime_float();
 
-		if (empty($info))
-		{
-			return false;
-		}
+    if (empty($info))
+    {
+      return false;
+    }
 
-		/*while (substr($info, -6) != "\final")
-		 {
-		 $info .= fread($this->socket, 1);
-		 }*/
+    /*while (substr($info, -6) != "\final")
+     {
+     $info .= fread($this->socket, 1);
+     }*/
 
-		// response time
-		$this->response = $time_end - $time_begin;
-		$this->response = ($this->response * 1000);
-		$this->response = (int)$this->response;
+    // response time
+    $this->response = $time_end - $time_begin;
+    $this->response = ($this->response * 1000);
+    $this->response = (int)$this->response;
 
-		if ($this->disconnect() === false)
-		{
-			return false;
-		}
+    if ($this->disconnect() === false)
+    {
+      return false;
+    }
 
-		return $info;
-	}
+    return $info;
+  }
 
-	function getstream($host, $port, $queryport)
-	{
-		if (empty($queryport))
-		{
-			$this->port = $port + 1;
-		}
-		else
-		{
-			$this->port = $queryport;
-		}
+  function getstream($host, $port, $queryport)
+  {
+    if (empty($queryport))
+    {
+      $this->port = $port + 1;
+    }
+    else
+    {
+      $this->port = $queryport;
+    }
 
-		$this->host = $host;
+    $this->host = $host;
 
-		// get the infostream from server
-		$this->s_info = $this->get_info();
-		$this->s_info .= $this->get_players();
+    // get the infostream from server
+    $this->s_info = $this->get_info();
+    $this->s_info .= $this->get_players();
 
-		if ($this->s_info)
-		{
-			$this->splitdata();
+    if ($this->s_info)
+    {
+      $this->splitdata();
 
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
 
-	function check_color($text)
-	{
-		$clr = array ( // colors
+  function check_color($text)
+  {
+    $clr = array ( // colors
         "\"#000000\"", "\"#DA0120\"", "\"#00B906\"", "\"#E8FF19\"", //  1
         "\"#170BDB\"", "\"#23C2C6\"", "\"#E201DB\"", "\"#FFFFFF\"", //  2
         "\"#CA7C27\"", "\"#757575\"", "\"#EB9F53\"", "\"#106F59\"", //  3
@@ -200,157 +200,157 @@ class rune
         "\"#FFFFFF\"", "\"#CA7C27\"", "\"#757575\"", "\"#CC8034\"", //  9
         "\"#DBDF70\"", "\"#BBBBBB\"", "\"#747228\"", "\"#993400\"", // 10
         "\"#670504\"", "\"#623307\""                                // 11
-		);
+    );
 
-		// colored numbers
-		if ($text <= 39)
-		{
-			$ctext = "<font color=$clr[7]>$text</font>";
-		}
-		elseif ($text <= 69)
-		{
-			$ctext = "<font color=$clr[5]>$text</font>";
-		}
-		elseif ($text <= 129)
-		{
-			$ctext = "<font color=$clr[8]>$text</font>";
-		}
-		elseif ($text <= 399)
-		{
-			$ctext = "<font color=$clr[9]>$text</font>";
-		}
-		else
-		{
-			$ctext = "<font color=$clr[1]>$text</font>";
-		}
+    // colored numbers
+    if ($text <= 39)
+    {
+      $ctext = "<font color=$clr[7]>$text</font>";
+    }
+    elseif ($text <= 69)
+    {
+      $ctext = "<font color=$clr[5]>$text</font>";
+    }
+    elseif ($text <= 129)
+    {
+      $ctext = "<font color=$clr[8]>$text</font>";
+    }
+    elseif ($text <= 399)
+    {
+      $ctext = "<font color=$clr[9]>$text</font>";
+    }
+    else
+    {
+      $ctext = "<font color=$clr[1]>$text</font>";
+    }
 
-		return $ctext;
-	}
+    return $ctext;
+  }
 
-	function getrules($phgdir)
-	{
-		$srv_rules['sets'] = false;
+  function getrules($phgdir)
+  {
+    $srv_rules['sets'] = false;
 
-		// response time
-		$srv_rules['response'] = $this->response . ' ms';
+    // response time
+    $srv_rules['response'] = $this->response . ' ms';
 
-		// rune setting pics
+    // rune setting pics
     $sets['pass'] = cs_html_img('mods/servers/privileges/pass.gif',0,0,0,'Pass');
 
-		// get the info strings from server info stream
-		$srv_rules['hostname']     = $this->getvalue('hostname',   $this->g_info);
-		$srv_rules['gametype']     = $this->getvalue('gametype',   $this->g_info);
-		$srv_rules['gamename']     = $this->getvalue('gamename',   $this->g_info);
-		$srv_rules['version']      = $this->getvalue('gamever',    $this->g_info);
-		$srv_rules['mapname']      = $this->getvalue('mapname',    $this->g_info);
-		$srv_rules['maxplayers']   = $this->getvalue('maxplayers', $this->g_info);
-		$srv_rules['needpass']     = $this->getvalue('password',   $this->g_info);
+    // get the info strings from server info stream
+    $srv_rules['hostname']     = $this->getvalue('hostname',   $this->g_info);
+    $srv_rules['gametype']     = $this->getvalue('gametype',   $this->g_info);
+    $srv_rules['gamename']     = $this->getvalue('gamename',   $this->g_info);
+    $srv_rules['version']      = $this->getvalue('gamever',    $this->g_info);
+    $srv_rules['mapname']      = $this->getvalue('mapname',    $this->g_info);
+    $srv_rules['maxplayers']   = $this->getvalue('maxplayers', $this->g_info);
+    $srv_rules['needpass']     = $this->getvalue('password',   $this->g_info);
 
-		// path to map picture and default info picture
-		$srv_rules['map_path'] = 'maps/rune';
-		$srv_rules['map_default'] = 'default.jpg';
+    // path to map picture and default info picture
+    $srv_rules['map_path'] = 'maps/rune';
+    $srv_rules['map_default'] = 'default.jpg';
 
-		// get the connected player
-		$srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
+    // get the connected player
+    $srv_rules['nowplayers'] = $this->getvalue('numplayers', $this->g_info);
 
-		// complete the gamename
-		$srv_rules['gamename'] = 'Rune<br>Version ' . $srv_rules['version'];
+    // complete the gamename
+    $srv_rules['gamename'] = 'Rune<br>Version ' . $srv_rules['version'];
 
-		// server privileges
-		if ($srv_rules['needpass'] == 'True')
-		{
-			$srv_rules['sets'] .= $sets['pass'];
-		}
+    // server privileges
+    if ($srv_rules['needpass'] == 'True')
+    {
+      $srv_rules['sets'] .= $sets['pass'];
+    }
 
-		if ($srv_rules['sets'] === false)
-		{
-			$srv_rules['sets'] = '-';
-		}
+    if ($srv_rules['sets'] === false)
+    {
+      $srv_rules['sets'] = '-';
+    }
 
-		// return all server rules
-		return $srv_rules;
-	}
+    // return all server rules
+    return $srv_rules;
+  }
 
-	function getplayers_head() {
-		global $cs_lang;
-		$head[]['name'] = $cs_lang['rank'];
-		$head[]['name'] = $cs_lang['name'];
-		$head[]['name'] = $cs_lang['score'];
-		$head[]['name'] = $cs_lang['team'];
-		$head[]['name'] = $cs_lang['mesh'];
-		$head[]['name'] = $cs_lang['skin'];
-		$head[]['name'] = $cs_lang['ping'];
-		return $head;
-	}
+  function getplayers_head() {
+    global $cs_lang;
+    $head[]['name'] = $cs_lang['rank'];
+    $head[]['name'] = $cs_lang['name'];
+    $head[]['name'] = $cs_lang['score'];
+    $head[]['name'] = $cs_lang['team'];
+    $head[]['name'] = $cs_lang['mesh'];
+    $head[]['name'] = $cs_lang['skin'];
+    $head[]['name'] = $cs_lang['ping'];
+    return $head;
+  }
 
 
-	function getplayers()
-	{
-		$players = array();
+  function getplayers()
+  {
+    $players = array();
 
-		// how many players must search
-		$nowplayers = $this->getvalue('numplayers', $this->g_info);
-		$nowplayers = $nowplayers - 1;
-		$clients = 0;
-			
-		// get the data of each player and add the team status
-		while ($nowplayers != -1)
-		{
-			$pl       = $this->getvalue("player_$clients", $this->g_info);
-			$pl_frags = $this->getvalue("frags_$clients",  $this->g_info);
-			$pl_team  = $this->getvalue("team_$clients",   $this->g_info);
-			$pl_mesh  = $this->getvalue("mesh_$clients",   $this->g_info);
-			$pl_skin  = $this->getvalue("skin_$clients",   $this->g_info);
-			$pl_ping  = $this->getvalue("ping_$clients",   $this->g_info);
+    // how many players must search
+    $nowplayers = $this->getvalue('numplayers', $this->g_info);
+    $nowplayers = $nowplayers - 1;
+    $clients = 0;
+      
+    // get the data of each player and add the team status
+    while ($nowplayers != -1)
+    {
+      $pl       = $this->getvalue("player_$clients", $this->g_info);
+      $pl_frags = $this->getvalue("frags_$clients",  $this->g_info);
+      $pl_team  = $this->getvalue("team_$clients",   $this->g_info);
+      $pl_mesh  = $this->getvalue("mesh_$clients",   $this->g_info);
+      $pl_skin  = $this->getvalue("skin_$clients",   $this->g_info);
+      $pl_ping  = $this->getvalue("ping_$clients",   $this->g_info);
 
-			$players[$clients] = $pl_frags  . ' ' .
-			$pl_team   . ' ' .
-			$pl_mesh   . ' ' .
-			$pl_skin   .
-			$pl_ping   . ' ' .
+      $players[$clients] = $pl_frags  . ' ' .
+      $pl_team   . ' ' .
+      $pl_mesh   . ' ' .
+      $pl_skin   .
+      $pl_ping   . ' ' .
          "\"$pl\"";
-			$nowplayers--;
-			$clients++;
-		}
+      $nowplayers--;
+      $clients++;
+    }
 
-		// check the connected players and sort the ranking
-		if ($players == false)
-		{
-			return array();
-		}
-		else
-		{
-			sort($players, SORT_NUMERIC);
-		}
+    // check the connected players and sort the ranking
+    if ($players == false)
+    {
+      return array();
+    }
+    else
+    {
+      sort($players, SORT_NUMERIC);
+    }
 
-		// manage the player data in the following code
-		$index = 1;
-		$run = 0;
-		while ($clients)
-		{
-			$clients--;
+    // manage the player data in the following code
+    $index = 1;
+    $run = 0;
+    while ($clients)
+    {
+      $clients--;
 
-			list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
-			list ($frags[$index],
-			$team[$index],
-			$mesh[$index],
-			$skin[$index],
-			$ping[$index])  = split (' ',  $cache[$index]);
+      list ($cache[$index], $player[$index]) = split ('\"', $players[$clients]);
+      list ($frags[$index],
+      $team[$index],
+      $mesh[$index],
+      $skin[$index],
+      $ping[$index])  = split (' ',  $cache[$index]);
 
-			$player[$index] = htmlentities($player[$index]);
-			$ping[$index]   = $this->check_color($ping[$index]);
+      $player[$index] = htmlentities($player[$index]);
+      $ping[$index]   = $this->check_color($ping[$index]);
 
-			$tdata[$run][0] = '<td class="centerb">' . $index . '</td>';
-			$tdata[$run][0] .= '<td class="centerb">' . $player[$index] . '</td>';
-			$tdata[$run][0] .= '<td class="centerb">' . $frags[$index] . '</td>';
-			$tdata[$run][0] .= '<td class="centerb">' . $team[$index] . '</td>';
-			$tdata[$run][0] .= '<td class="centerb">' . $mesh[$index] . '</td>';
-			$tdata[$run][0] .= '<td class="centerb">' . $skin[$index] . '</td>';
-			$tdata[$run][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
+      $tdata[$run][0] = '<td class="centerb">' . $index . '</td>';
+      $tdata[$run][0] .= '<td class="centerb">' . $player[$index] . '</td>';
+      $tdata[$run][0] .= '<td class="centerb">' . $frags[$index] . '</td>';
+      $tdata[$run][0] .= '<td class="centerb">' . $team[$index] . '</td>';
+      $tdata[$run][0] .= '<td class="centerb">' . $mesh[$index] . '</td>';
+      $tdata[$run][0] .= '<td class="centerb">' . $skin[$index] . '</td>';
+      $tdata[$run][0] .= '<td class="centerb">' . $ping[$index] . '</td>';
 
-			$run++;
-			$index++;
-		}
-		return $tdata;
-	}
+      $run++;
+      $index++;
+    }
+    return $tdata;
+  }
 }

@@ -18,7 +18,7 @@ for($run=0; $run<$categories_loop; $run++) {
   $data['categories'][$run]['url'] = cs_url('links','listcat','where=' . $data['categories'][$run]['categories_id']);
   $count_links = cs_sql_count(__FILE__,'links','categories_id = ' .$data['categories'][$run]['categories_id']);
   $data['categories'][$run]['count_links'] = $count_links;
-	$data['categories'][$run]['text'] = cs_secure($data['categories'][$run]['categories_text'],1,1);
+  $data['categories'][$run]['text'] = cs_secure($data['categories'][$run]['categories_text'],1,1);
 } 
 
 echo cs_subtemplate(__FILE__,$data,'links','list');

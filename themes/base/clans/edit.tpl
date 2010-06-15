@@ -53,36 +53,36 @@
       <td class="leftb"><input type="password" name="clans_pwd" value="{clans:password}" maxlength="30" size="30"  onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" />
       </td>
     </tr>
-	<tr>
-	  <td class="leftc"> {icon:password} {lang:secure}</td>
-	  <td class="leftb">
-	    <div style="float:left; background-image:url({page:path}symbols/votes/vote03.png); width:100px; height:13px; margin-top: 3px; margin-left: 2px;">
-		  <div style="float:left; background-image:url({page:path}symbols/votes/vote01.png); width: 1px; height: 13px;" id="pass_secure">
-		  </div>
-		</div>
-		<div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_1">
-		  {lang:stage_1}
-		</div>
-		<div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_2">
-		  {lang:stage_2}
-		</div>
-		<div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_3">
-		  {lang:stage_3}
-		</div>
-		<div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_4">
-		  {lang:stage_4}
-		</div>
-		<div style="clear:both;">
-		  {clip:plus} <a href="javascript:cs_clip('pass')">{lang:secure_stages}</a>
-		  <div style="display:none" id="span_pass">
-		    {lang:stage_1}{lang:stage_1_text}<br />
-  		    {lang:stage_2}{lang:stage_2_text}<br />
-  		    {lang:stage_3}{lang:stage_3_text}<br />
-  		    {lang:stage_4}{lang:stage_4_text}
-		  </div>
+  <tr>
+    <td class="leftc"> {icon:password} {lang:secure}</td>
+    <td class="leftb">
+      <div style="float:left; background-image:url({page:path}symbols/votes/vote03.png); width:100px; height:13px; margin-top: 3px; margin-left: 2px;">
+      <div style="float:left; background-image:url({page:path}symbols/votes/vote01.png); width: 1px; height: 13px;" id="pass_secure">
       </div>
-      </td>	  
-	</tr>
+    </div>
+    <div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_1">
+      {lang:stage_1}
+    </div>
+    <div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_2">
+      {lang:stage_2}
+    </div>
+    <div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_3">
+      {lang:stage_3}
+    </div>
+    <div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_4">
+      {lang:stage_4}
+    </div>
+    <div style="clear:both;">
+      {clip:plus} <a href="javascript:cs_clip('pass')">{lang:secure_stages}</a>
+      <div style="display:none" id="span_pass">
+        {lang:stage_1}{lang:stage_1_text}<br />
+          {lang:stage_2}{lang:stage_2_text}<br />
+          {lang:stage_3}{lang:stage_3_text}<br />
+          {lang:stage_4}{lang:stage_4_text}
+      </div>
+      </div>
+      </td>    
+  </tr>
     <tr>
       <td class="leftc">{icon:personal} {lang:owner}</td>
       <td class="leftb">
@@ -99,8 +99,8 @@
       <td class="leftb"><input type="file" name="picture" value="" />
         <input type="hidden" name="clans_picture" value="" />
         <br />
-		<br />
-		{clans:clip}</td>
+    <br />
+    {clans:clip}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:configure} {lang:more}</td>

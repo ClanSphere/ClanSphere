@@ -38,8 +38,8 @@ $loop_maps = count($data['maps']);
 
 for($run=0; $run<$loop_maps; $run++){
 
-	$data['maps'][$run]['id'] = $data['maps'][$run]['maps_id'];
-	$data['maps'][$run]['name'] = $data['maps'][$run]['maps_name']; 
+  $data['maps'][$run]['id'] = $data['maps'][$run]['maps_id'];
+  $data['maps'][$run]['name'] = $data['maps'][$run]['maps_name']; 
 
 }
 

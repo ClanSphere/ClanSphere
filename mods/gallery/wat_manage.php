@@ -35,17 +35,17 @@ $watermarks_loop = count($data['watermarks']);
 
 
 for($run=0; $run<$watermarks_loop; $run++) {
-	$pic = cs_secure($data['watermarks'][$run]['categories_picture']);
-	$img_size = getimagesize('uploads/categories/' . $pic);
-	$img_width = $img_size[0];
-	$img_height = $img_size[1];
-	$img_w_h = $img_width / $img_height;
-	$img_new_height = 40;
-	$img_new_width = $img_new_height * $img_w_h;
+  $pic = cs_secure($data['watermarks'][$run]['categories_picture']);
+  $img_size = getimagesize('uploads/categories/' . $pic);
+  $img_width = $img_size[0];
+  $img_height = $img_size[1];
+  $img_w_h = $img_width / $img_height;
+  $img_new_height = 40;
+  $img_new_width = $img_new_height * $img_w_h;
 
-	$data['watermarks'][$run]['img'] = cs_html_img('uploads/categories/' . $pic,$img_new_height,$img_new_width);
-	$data['watermarks'][$run]['name'] = cs_secure($data['watermarks'][$run]['categories_name']);
-	$data['watermarks'][$run]['id'] = $data['watermarks'][$run]['categories_id'];
+  $data['watermarks'][$run]['img'] = cs_html_img('uploads/categories/' . $pic,$img_new_height,$img_new_width);
+  $data['watermarks'][$run]['name'] = cs_secure($data['watermarks'][$run]['categories_name']);
+  $data['watermarks'][$run]['id'] = $data['watermarks'][$run]['categories_id'];
 }
 
 echo cs_subtemplate(__FILE__,$data,'gallery','wat_manage');

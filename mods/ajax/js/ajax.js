@@ -195,10 +195,10 @@ var Clansphere = {
         e.href = e.href===href ? e.href : Clansphere.ajax.hashMarker + href;
       }).bind('click', function(e) {
         if(this.href.substr(0,7)=='http://' && !$(this).data('noreload')) {
-  	      Clansphere.ajax.forceReload = true;
-  	    }
-  	    Clansphere.ajax.forceScroll = true;
-  	  });
+          Clansphere.ajax.forceReload = true;
+        }
+        Clansphere.ajax.forceScroll = true;
+      });
       
       return element;
     },
@@ -225,7 +225,7 @@ var Clansphere = {
         if (!Clansphere.ajax.modRewrite) {
           target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?$1");
         } else {
-      	  target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?params=/$1");
+          target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?params=/$1");
         }
         
         Clansphere.ajax.switchNavlistRefresher(false);
@@ -474,23 +474,23 @@ var Clansphere = {
     },
     
     user_autocomplete: function(field_from, field_to, path) {
-    	$.ajax({
-    		url: path + 'mods/ajax/search_users.php',
+      $.ajax({
+        url: path + 'mods/ajax/search_users.php',
         data: 'target=' + field_from + '&term=' + $('#'+field_from).val(),
-    		success : function(response) {
-    			$('#'+field_to).html(response).show().bind('click', function() {
-    			  event.stopPropagation();
-    			});
-    			$(document).bind('click', function() {
-    				$('#'+field_to).hide();
-    			});    			
-    		}
-    	});
+        success : function(response) {
+          $('#'+field_to).html(response).show().bind('click', function() {
+            event.stopPropagation();
+          });
+          $(document).bind('click', function() {
+            $('#'+field_to).hide();
+          });          
+        }
+      });
     }
   },
   
   initialize: function(modRewrite, basepath, reload) {
-	
+  
     Clansphere.ajax.initialize(modRewrite, basepath, reload);   // Activate this line for ajax
     // Clansphere.validation.initialize();
   }

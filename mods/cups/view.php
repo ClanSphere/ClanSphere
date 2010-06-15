@@ -31,7 +31,7 @@ if(file_exists('uploads/games/' . $data['cup']['games_id'] . '.gif')) {
   } else {
     $data['cup']['game'] = '';
   }
-	
+  
   $where = "games_id = '" . $data['cup']['games_id'] . "'";
   $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
   $id = 'id=' . $cs_game['games_id'];
@@ -106,8 +106,8 @@ elseif ($data['cup']['reg'] < $data['cup']['cups_teams']) {
     }
   }
 } else {
-	$data['cup']['extended'] = $cs_lang['already_full'];
-	
+  $data['cup']['extended'] = $cs_lang['already_full'];
+  
   if ($data['cup']['cups_system'] == 'teams') {
 
     $membership = cs_sql_count(__FILE__,'members',"users_id = '" . $account['users_id'] . "' AND members_admin = '1'");

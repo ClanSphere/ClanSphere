@@ -7,12 +7,12 @@
   <td class="rightb">{head:pages}</td>
  </tr>
  <tr>
- 	<td class="leftb"colspan="2">{lang:game}
- 		<form method="post" id="maps_manage" action="{url:maps_manage}">
- 			{head:dropdown}
- 			<input type="submit" name="submit" value="{lang:show}" /> 		
- 		</form>
- 	</td>
+   <td class="leftb"colspan="2">{lang:game}
+     <form method="post" id="maps_manage" action="{url:maps_manage}">
+       {head:dropdown}
+       <input type="submit" name="submit" value="{lang:show}" />     
+     </form>
+   </td>
  </tr>
 </table>
 <br />
@@ -29,4 +29,4 @@
   <td class="leftc"><a href="{url:maps_edit:id={maps:id}}">{icon:edit}</a></td>
   <td class="leftc"><a href="{url:maps_remove:id={maps:id}}">{icon:editdelete}</a></td>
  </tr>{stop:maps}
-</table>	
+</table>  

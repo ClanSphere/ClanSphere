@@ -16,14 +16,14 @@ $gallery_views = cs_sql_select(__FILE__,'gallery','gallery_count,gallery_count_c
 $loop_views = count($gallery_views);
 $views = 0;
 for($run=0; $run<$loop_views; $run++) {
-	$a = cs_secure($gallery_views[$run]['gallery_count']);
-	$views += $a;
+  $a = cs_secure($gallery_views[$run]['gallery_count']);
+  $views += $a;
 }
 
 $cards = 0;
 for($run=0; $run<$loop_views; $run++) {
-	$a = cs_secure($gallery_views[$run]['gallery_count_cards']);
-	$cards += $a;
+  $a = cs_secure($gallery_views[$run]['gallery_count_cards']);
+  $cards += $a;
 }
 $data['data']['info_views'] = $views;
 $data['data']['info_ecards'] = $cards;
@@ -42,21 +42,21 @@ $cs_gallery_pic = cs_sql_select(__FILE__,'gallery','*',0,'gallery_id DESC',0,0);
 $gallery_loop_pic = count($cs_gallery_pic);
 $ges_size = 0;
 for($run=0; $run<$gallery_loop_pic; $run++) {
-	$file = 'uploads/gallery/pics/' . $cs_gallery_pic[$run]['gallery_name'];
-	$size = filesize($file);
-	$size = $size;
-	$ges_size += $size;
+  $file = 'uploads/gallery/pics/' . $cs_gallery_pic[$run]['gallery_name'];
+  $size = filesize($file);
+  $size = $size;
+  $ges_size += $size;
 }
 $data['data']['info_picsize'] = cs_filesize($ges_size);
 
 $ges_size = 0;
 for($run=0; $run<$gallery_loop_pic; $run++) {
-	$file = 'uploads/gallery/pics/' . $cs_gallery_pic[$run]['gallery_name'];
-	$count = $cs_gallery_pic[$run]['gallery_count'];
-	$size = filesize($file);
-	$size = $size;
-	$size = $size*$count;
-	$ges_size += $size;
+  $file = 'uploads/gallery/pics/' . $cs_gallery_pic[$run]['gallery_name'];
+  $count = $cs_gallery_pic[$run]['gallery_count'];
+  $size = filesize($file);
+  $size = $size;
+  $size = $size*$count;
+  $ges_size += $size;
 }
 $data['data']['info_trafik'] = cs_filesize($ges_size);
 
@@ -69,13 +69,13 @@ $gallery_views = cs_sql_select(__FILE__,'usersgallery','usersgallery_count, user
 $loop_views = count($gallery_views);
 $views = 0;
 for($run=0; $run<$loop_views; $run++) {
-	$a = cs_secure($gallery_views[$run]['usersgallery_count']);
-	$views += $a;
+  $a = cs_secure($gallery_views[$run]['usersgallery_count']);
+  $views += $a;
 }
 $cards = 0;
 for($run=0; $run<$loop_views; $run++) {
-	$a = cs_secure($gallery_views[$run]['usersgallery_count_cards']);
-	$cards += $a;
+  $a = cs_secure($gallery_views[$run]['usersgallery_count_cards']);
+  $cards += $a;
 }
 $data['data']['info_user_views'] = $views;
 $data['data']['info_user_ecards'] = $cards;
@@ -85,8 +85,8 @@ $count_downloads = cs_sql_select(__FILE__,'usersgallery','usersgallery_count_dow
 $loop_downloads = count($count_downloads);
 $downloads = 0;
 for($run=0; $run<$loop_downloads; $run++) {
-	$a = cs_secure($count_downloads[$run]['usersgallery_count_downloads']);
-	$downloads += $a;
+  $a = cs_secure($count_downloads[$run]['usersgallery_count_downloads']);
+  $downloads += $a;
 }
 $data['data']['info_user_downloads'] = $downloads;
 
@@ -94,21 +94,21 @@ $cs_gallery_pic = cs_sql_select(__FILE__,'usersgallery','*',0,'usersgallery_id D
 $gallery_loop_pic = count($cs_gallery_pic);
 $ges_size = 0;
 for($run=0; $run<$gallery_loop_pic; $run++) {
-	$file = 'uploads/usersgallery/pics/' . $cs_gallery_pic[$run]['usersgallery_name'];
-	$size = filesize($file);
-	$size = $size;
-	$ges_size += $size;
+  $file = 'uploads/usersgallery/pics/' . $cs_gallery_pic[$run]['usersgallery_name'];
+  $size = filesize($file);
+  $size = $size;
+  $ges_size += $size;
 }
 $data['data']['info_user_picsize'] = cs_filesize($ges_size);
 
 $ges_size = 0;
 for($run=0; $run<$gallery_loop_pic; $run++) {
-	$file = 'uploads/usersgallery/pics/' . $cs_gallery_pic[$run]['usersgallery_name'];
-	$count = $cs_gallery_pic[$run]['usersgallery_count'];
-	$size = filesize($file);
-	$size = $size;
-	$size = $size*$count;
-	$ges_size += $size;
+  $file = 'uploads/usersgallery/pics/' . $cs_gallery_pic[$run]['usersgallery_name'];
+  $count = $cs_gallery_pic[$run]['usersgallery_count'];
+  $size = filesize($file);
+  $size = $size;
+  $size = $size*$count;
+  $ges_size += $size;
 }
 $data['data']['info_user_trafik'] = cs_filesize($ges_size);
 $data['data']['show'] = cs_subtemplate(__FILE__,$data,'gallery','manage_info');

@@ -4,7 +4,7 @@
   </tr>
   <tr>
     <td class="leftb"> {lang:from} {head:users_link} {lang:at} {head:articles_date}</td>
-		<td class="rightb"> {lang:page}: {head:pages} </td>
+    <td class="rightb"> {lang:page}: {head:pages} </td>
   </tr>
 </table>
 <br />

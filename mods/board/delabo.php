@@ -15,8 +15,8 @@ if(isset($_POST['agree'])) {
   
   if($computer['users_id'] == $account['users_id'] OR $account['access_board'] >= 5) 
   cs_sql_delete(__FILE__,'abonements',$abo_id);
-	
-	cs_redirect($cs_lang['abo_del_done'], 'board', 'center');
+  
+  cs_redirect($cs_lang['abo_del_done'], 'board', 'center');
 }
 
 if(isset($_POST['cancel'])) {

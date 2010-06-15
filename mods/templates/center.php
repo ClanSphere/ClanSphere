@@ -59,13 +59,13 @@ else {
   }
   
   if (empty($_GET['template']) && empty($ajax_preview)) {
-	  $cs_users = cs_sql_select(__FILE__,'users','users_tpl','users_id = "' . $account['users_id'] . '"');
+    $cs_users = cs_sql_select(__FILE__,'users','users_tpl','users_id = "' . $account['users_id'] . '"');
 
-	  if(!empty($cs_users['users_tpl']) && $cs_main['template'] == $cs_main['def_tpl']) {
-	    $cs_main['template'] = $cs_users['users_tpl'];
-	  } else {
-	    $cs_main['template'] = $cs_main['def_tpl'];
-	  }
+    if(!empty($cs_users['users_tpl']) && $cs_main['template'] == $cs_main['def_tpl']) {
+      $cs_main['template'] = $cs_users['users_tpl'];
+    } else {
+      $cs_main['template'] = $cs_main['def_tpl'];
+    }
   }
   
   $cs_users = cs_sql_select(__FILE__,'users','users_tpl','users_id = "' . $account['users_id'] . '"');

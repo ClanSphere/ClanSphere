@@ -164,7 +164,7 @@ else {
   $cs_user['users_hidden'] = implode(',',$hidden);
   
   if($cs_user['users_nick'] != $account['users_nick']) {
-	  change_nick($account['users_id'], $account['users_nick']);
+    change_nick($account['users_id'], $account['users_nick']);
   }
 
   $users_cells = array_keys($cs_user);

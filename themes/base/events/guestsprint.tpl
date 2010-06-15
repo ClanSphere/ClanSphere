@@ -10,36 +10,36 @@
   <tr>
     <td class="leftb" colspan="4">{events:time}</td>
   </tr>
-	<tr>
-		<td class="leftc">{icon:organizer} {lang:needage}</td>
-		<td class="leftb" colspan="4">{events:events_needage}</td>
-	</tr>
-	<tr>
-		<td class="leftc" rowspan="2">{icon:kdmconfig} {lang:guests}</td>
-		<td class="centerc">{lang:min}</td>
-		<td class="centerc">{lang:max}</td>
-		<td class="centerc">{lang:booked}</td>
-		<td class="centerc">{lang:bookable}</td>
-	</tr>
-	<tr>
-		<td class="centerb"><span style="text-decoration: underline">{events:events_guestsmin}</span></td>
-		<td class="centerb"><strong>{events:events_guestsmax}</strong></td>
-		<td class="centerb">{count:status_booked}</td>
-		<td class="centerb">{count:status_available}</td>
-	</tr>
-	<tr>
-		<td class="leftc" rowspan="2">{icon:status_unknown} {lang:status}</td>
-		<td class="centerc">{lang:status_0}</td>
-		<td class="centerc">{lang:status_3}</td>
-		<td class="centerc">{lang:status_4}</td>
-		<td class="centerc">{lang:status_5}</td>
-	</tr>
-	<tr>
-		<td class="centerb">{count:status_0}</td>
-		<td class="centerb">{count:status_3}</td>
-		<td class="centerb">{count:status_4}</td>
-		<td class="centerb">{count:status_5}</td>
-	</tr>
+  <tr>
+    <td class="leftc">{icon:organizer} {lang:needage}</td>
+    <td class="leftb" colspan="4">{events:events_needage}</td>
+  </tr>
+  <tr>
+    <td class="leftc" rowspan="2">{icon:kdmconfig} {lang:guests}</td>
+    <td class="centerc">{lang:min}</td>
+    <td class="centerc">{lang:max}</td>
+    <td class="centerc">{lang:booked}</td>
+    <td class="centerc">{lang:bookable}</td>
+  </tr>
+  <tr>
+    <td class="centerb"><span style="text-decoration: underline">{events:events_guestsmin}</span></td>
+    <td class="centerb"><strong>{events:events_guestsmax}</strong></td>
+    <td class="centerb">{count:status_booked}</td>
+    <td class="centerb">{count:status_available}</td>
+  </tr>
+  <tr>
+    <td class="leftc" rowspan="2">{icon:status_unknown} {lang:status}</td>
+    <td class="centerc">{lang:status_0}</td>
+    <td class="centerc">{lang:status_3}</td>
+    <td class="centerc">{lang:status_4}</td>
+    <td class="centerc">{lang:status_5}</td>
+  </tr>
+  <tr>
+    <td class="centerb">{count:status_0}</td>
+    <td class="centerb">{count:status_3}</td>
+    <td class="centerb">{count:status_4}</td>
+    <td class="centerb">{count:status_5}</td>
+  </tr>
 </table>
 <br />
 

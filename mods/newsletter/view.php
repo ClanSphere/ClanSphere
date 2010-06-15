@@ -28,7 +28,7 @@ switch ($check_to[0])
   case 2:
   {
     $group = cs_sql_select(__FILE__,'access','access_name',"access_id = '" . $check_to[1] . "'");
-  	$newsletter_to = $cs_lang['ac_group'] . ' ' . $group['access_name'];
+    $newsletter_to = $cs_lang['ac_group'] . ' ' . $group['access_name'];
     break;
   }
   case 3:

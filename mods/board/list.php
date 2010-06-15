@@ -71,33 +71,33 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
   }
   
   if ($data['categories'][$run_1]['layer'] == 0 || !empty($options['list_subforums'])) {
-  	$data['categories'][$run_1]['if']['small_subforums'] = false;
-	  $count_boards = count($data['categories'][$run_1]['board']);
+    $data['categories'][$run_1]['if']['small_subforums'] = false;
+    $count_boards = count($data['categories'][$run_1]['board']);
 
-	  for ($run_2 = 0; $run_2 < $count_boards; $run_2++) {
-	    $board = $data['categories'][$run_1]['board'][$run_2];
-	    $board['listcat_url'] = cs_url('board', 'listcat', 'id=' . $board['board_id']);
+    for ($run_2 = 0; $run_2 < $count_boards; $run_2++) {
+      $board = $data['categories'][$run_1]['board'][$run_2];
+      $board['listcat_url'] = cs_url('board', 'listcat', 'id=' . $board['board_id']);
 
-	    $check_pw = 1;
-	    if (!empty($board['board_pwd'])) {
-	      $pw_where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $board['board_id'] . '"';
-	      $check_pw = cs_sql_count(__FILE__, 'boardpws', $pw_where);
-	    }
+      $check_pw = 1;
+      if (!empty($board['board_pwd'])) {
+        $pw_where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $board['board_id'] . '"';
+        $check_pw = cs_sql_count(__FILE__, 'boardpws', $pw_where);
+      }
 
-	    if (empty($check_pw)) {
-	      $icon = 'password';
-	    } else {
-	      $icon = 'board_read_';
-	    }
+      if (empty($check_pw)) {
+        $icon = 'password';
+      } else {
+        $icon = 'board_read_';
+      }
 
-	    if (!empty($check_pw)) {
-	      if (isset($unread_array['' . $board['board_id'] . ''])) {
-	        $icon = 'board_unread_';
-	      }
-	    }
+      if (!empty($check_pw)) {
+        if (isset($unread_array['' . $board['board_id'] . ''])) {
+          $icon = 'board_unread_';
+        }
+      }
 
-	    $board['icon'] = cs_html_img('symbols/board/' . $icon . '.png');
-	    $board['board_text'] = cs_secure($board['board_text'], 1);
+      $board['icon'] = cs_html_img('symbols/board/' . $icon . '.png');
+      $board['board_text'] = cs_secure($board['board_text'], 1);
 
       # new - set board_last_* content if empty
       if(empty($board['board_last_threadid']) AND !empty($board['board_threads'])) {
@@ -106,51 +106,51 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
         $board = is_array($new) ? array_merge($board, $new) : $board;
       }
 
-	    if(!empty($board['board_last_threadid']) and !empty($check_pw)) {
-	      $board['last_name'] = cs_secure($board['board_last_thread']);
-	      $board['board_last_id'] = $board['board_last_threadid'];
+      if(!empty($board['board_last_threadid']) and !empty($check_pw)) {
+        $board['last_name'] = cs_secure($board['board_last_thread']);
+        $board['board_last_id'] = $board['board_last_threadid'];
 
-	      if (empty($board['board_last_time']))
-	        $board['last_time'] = '';
-	      else
-	        $board['last_time'] = cs_date('unix', $board['board_last_time'], 1);
+        if (empty($board['board_last_time']))
+          $board['last_time'] = '';
+        else
+          $board['last_time'] = cs_date('unix', $board['board_last_time'], 1);
 
-	      if (empty($board['board_last_userid']))
-	        $board['last_usernick'] = empty($board['board_last_user']) ? '-' : cs_secure($board['board_last_user']);
-	      else
-	        $board['last_usernick'] = cs_user($board['board_last_userid'], $board['board_last_user']);
+        if (empty($board['board_last_userid']))
+          $board['last_usernick'] = empty($board['board_last_user']) ? '-' : cs_secure($board['board_last_user']);
+        else
+          $board['last_usernick'] = cs_user($board['board_last_userid'], $board['board_last_user']);
 
-	      $board['of'] = $cs_lang['of'];
-	    }
+        $board['of'] = $cs_lang['of'];
+      }
       else {
         if(empty($check_pw)) {
           $board['board_threads'] = '-';
-	        $board['board_comments'] = '-';
+          $board['board_comments'] = '-';
         }
-	      $board['last_name'] = '';
-	      $board['board_last_id'] = '';
-	      $board['last_time'] = '';
-	      $board['last_usernick'] = '';
-	      $board['board_last_userid'] = '';
-	      $board['of'] = '';
-	    }
+        $board['last_name'] = '';
+        $board['board_last_id'] = '';
+        $board['last_time'] = '';
+        $board['last_usernick'] = '';
+        $board['board_last_userid'] = '';
+        $board['of'] = '';
+      }
 
-	    $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['board_last_threadid'] . last_comment($board['board_last_threadid'], $account["users_id"], $account['users_limit']));
-	    $board['user_url'] = cs_url('users', 'view', 'id=' . $board['board_last_userid']);
-	    $board['board_name'] = cs_secure($board['board_name']);
-		
-	    
-	    $data['categories'][$run_1]['board'][$run_2] = $board;
-	  }
+      $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['board_last_threadid'] . last_comment($board['board_last_threadid'], $account["users_id"], $account['users_limit']));
+      $board['user_url'] = cs_url('users', 'view', 'id=' . $board['board_last_userid']);
+      $board['board_name'] = cs_secure($board['board_name']);
+    
+      
+      $data['categories'][$run_1]['board'][$run_2] = $board;
+    }
   } else {
     $data['categories'][$run_1]['subboard'] = $data['categories'][$run_1]['board'];
-  	$data['categories'][$run_1]['board'] = array();
+    $data['categories'][$run_1]['board'] = array();
     $data['categories'][$run_1]['if']['small_subforums'] = true;
     $count_boards = count($data['categories'][$run_1]['subboard']);
     $count_boards_less = $count_boards - 1;
     
     for ($j = 0; $j < $count_boards; $j++) {
-    	$data['categories'][$run_1]['subboard'][$j][','] = $j != $count_boards_less ? ', ' : '';
+      $data['categories'][$run_1]['subboard'][$j][','] = $j != $count_boards_less ? ', ' : '';
     }
   }
 }

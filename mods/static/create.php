@@ -91,12 +91,12 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   $cs_static_tpl['static']['comments'] = $sel;
   
   if($account['access_static'] < 5) {
-  	$cs_static_tpl['if']['access_php'] = FALSE;
-  	$cs_static_tpl['if']['access_admin'] = FALSE;
+    $cs_static_tpl['if']['access_php'] = FALSE;
+    $cs_static_tpl['if']['access_admin'] = FALSE;
   } else {
-  	$cs_static_tpl['if']['access_php'] = TRUE;
-  	$cs_static_tpl['if']['access_admin'] = TRUE;
-  	$cs_static_tpl['check']['admin'] = '';
+    $cs_static_tpl['if']['access_php'] = TRUE;
+    $cs_static_tpl['if']['access_admin'] = TRUE;
+    $cs_static_tpl['check']['admin'] = '';
   }
   
   #$cs_static_tpl['static']['action'] = 'create';

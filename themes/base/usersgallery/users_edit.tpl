@@ -1,9 +1,9 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-	<td class="headb">{lang:mod_name} - {lang:edit}</td>
+  <td class="headb">{lang:mod_name} - {lang:edit}</td>
   </tr>
   <tr>
-	<td class="leftb">{head:body}</td>
+  <td class="leftb">{head:body}</td>
   </tr>
 </table>
 <br />
@@ -22,45 +22,45 @@
     <td class="leftc">{icon:folder_yellow} {lang:folders} *</td>
     <td class="leftb">{folders:select}</td>
   </tr>
-	<tr>
+  <tr>
     <td class="leftc">{icon:access} {lang:access}</td>
     <td class="leftb">
-    	<select name="gallery_access">
-    		{access:options}
-    	</select>
+      <select name="gallery_access">
+        {access:options}
+      </select>
     </td>
   </tr>
   <tr>
     <td class="leftc">{icon:xpaint} {lang:show}</td>
     <td class="leftb">
-    	<select name="gallery_status">
-    		{status:options}
-    	</select>
+      <select name="gallery_status">
+        {status:options}
+      </select>
     </td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:comment}<br />
-    	<br />
-    	{abcode:smileys}
+      <br />
+      {abcode:smileys}
     </td>
     <td class="leftb">
-    	{abcode:features} 
-			<textarea class="rte_abcode" name="gallery_description" cols="50" rows="15" id="gallery_description" style="width:98%;">{data:usersgallery_description}</textarea>
-		</td>
+      {abcode:features} 
+      <textarea class="rte_abcode" name="gallery_description" cols="50" rows="15" id="gallery_description" style="width:98%;">{data:usersgallery_description}</textarea>
+    </td>
   </tr>
-	<tr>
+  <tr>
     <td class="leftc">{icon:configure} {lang:head}</td>
     <td class="leftb">
-    	<input type="checkbox" name="new_time" value="1" {check:newtime}/> {lang:new_date}<br />
-    	<input type="checkbox" name="gallery_count_reset" value="1" {check:count}/> {lang:gallery_count_reset}
+      <input type="checkbox" name="new_time" value="1" {check:newtime}/> {lang:new_date}<br />
+      <input type="checkbox" name="gallery_count_reset" value="1" {check:count}/> {lang:gallery_count_reset}
     </td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-			<input type="hidden" name="id" value="{hidden:id}" />
-			<input type="submit" name="submit" value="{lang:edit}" />
-		</td>
+      <input type="hidden" name="id" value="{hidden:id}" />
+      <input type="submit" name="submit" value="{lang:edit}" />
+    </td>
   </tr>
 </table>
 </form>

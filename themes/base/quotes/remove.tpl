@@ -8,8 +8,8 @@
  </tr>
  <tr>
   <td class="centerc">
-	  <input type="hidden" name="id" value="{quotes:id}" />
-	  <input type="submit" name="agree" value="{lang:confirm}" />
+    <input type="hidden" name="id" value="{quotes:id}" />
+    <input type="submit" name="agree" value="{lang:confirm}" />
     <input type="submit" name="cancel" value="{lang:cancel}" /></td>
  </tr>
 </table>

@@ -9,8 +9,8 @@ if (!empty($ending) && $ending != '{2}') {
   $_SESSION['tpl_preview'] .= '{2}';
   die();
 } elseif (!empty($ending)) {
-	$cs_main['template'] = substr($_SESSION['tpl_preview'],0,-3);
-	unset($_SESSION['tpl_preview']);
+  $cs_main['template'] = substr($_SESSION['tpl_preview'],0,-3);
+  unset($_SESSION['tpl_preview']);
 } elseif (!empty($_GET['template']) && !empty($account['users_ajax'])) {
   $_SESSION['tpl_preview'] = $_GET['template'];
   $shorten = "window.location.href = window.location.href.substr(0,window.location.href.lastIndexOf('template')); ";
@@ -73,10 +73,10 @@ else {
   $run = 0;
   
   foreach($templates as $mod) {
-  	
-  	if ($mod['dir'] == 'install') {
+    
+    if ($mod['dir'] == 'install') {
       $tpl_all--;
-    	continue;
+      continue;
     }
     
     $data['temp_list'][$run]['name'] = $mod['name'];

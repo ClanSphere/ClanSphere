@@ -52,22 +52,22 @@ $pictures_loop = count($data['pictures']);
 
 for($run=0; $run < $pictures_loop; $run++) {
 
-	$pid = $data['pictures'][$run]['usersgallery_id'];
+  $pid = $data['pictures'][$run]['usersgallery_id'];
 
-	$data['pictures'][$run]['class'] = '';
-	if($data['pictures'][$run]['usersgallery_status'] == 0) {
-		$data['pictures'][$run]['class'] = 'notpublic';
-	}
+  $data['pictures'][$run]['class'] = '';
+  if($data['pictures'][$run]['usersgallery_status'] == 0) {
+    $data['pictures'][$run]['class'] = 'notpublic';
+  }
 
-	$link = 'id=' . $id . '&amp;cat_id=' . $data['pictures'][$run]['folders_id'] . '&amp;more=1';
-	$data['pictures'][$run]['link'] = cs_url('usersgallery','com_view',$link);
-	    
-	$data['pictures'][$run]['name'] = cs_link(cs_secure($data['pictures'][$run]['usersgallery_titel']),'usersgallery','com_view',$link);
-	$to_folder = 'id=' . $id . '&amp;cat_id=' . $data['pictures'][$run]['folders_id'];
-	$data['pictures'][$run]['folder'] = cs_link(cs_secure($data['pictures'][$run]['folders_name']),'usersgallery','users',$to_folder);
-	$data['pictures'][$run]['time'] = cs_date('unix',$data['pictures'][$run]['usersgallery_time'],1);
+  $link = 'id=' . $id . '&amp;cat_id=' . $data['pictures'][$run]['folders_id'] . '&amp;more=1';
+  $data['pictures'][$run]['link'] = cs_url('usersgallery','com_view',$link);
+      
+  $data['pictures'][$run]['name'] = cs_link(cs_secure($data['pictures'][$run]['usersgallery_titel']),'usersgallery','com_view',$link);
+  $to_folder = 'id=' . $id . '&amp;cat_id=' . $data['pictures'][$run]['folders_id'];
+  $data['pictures'][$run]['folder'] = cs_link(cs_secure($data['pictures'][$run]['folders_name']),'usersgallery','users',$to_folder);
+  $data['pictures'][$run]['time'] = cs_date('unix',$data['pictures'][$run]['usersgallery_time'],1);
 
-	$data['pictures'][$run]['id'] = $pid;
+  $data['pictures'][$run]['id'] = $pid;
 }
 
 echo cs_subtemplate(__FILE__,$data,'usersgallery','center');

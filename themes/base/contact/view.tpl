@@ -14,7 +14,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:personal} {lang:from}</td>
-	<td class="leftb">{mail:mail_name} &lt;{mail:mail_email}&gt;</td>
+  <td class="leftb">{mail:mail_name} &lt;{mail:mail_email}&gt;</td>
   </tr>
   <tr>
     <td class="leftc">{icon:important} {lang:request}</td>
@@ -22,31 +22,31 @@
   </tr>
   <tr>
     <td class="leftc">{icon:kedit} {lang:subject}</td>
-	<td class="leftb">{mail:mail_subject}</td>
+  <td class="leftb">{mail:mail_subject}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:licq} {lang:icq}</td>
-	<td class="leftb">{mail:mail_icq}</td>
+  <td class="leftb">{mail:mail_icq}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-	<td class="leftb">{mail:mail_msn}</td>
+  <td class="leftb">{mail:mail_msn}</td>
   </tr>  
   <tr>
     <td class="leftc">{icon:kdmconfig} {lang:firm}</td>
-	<td class="leftb">{mail:mail_firm}</td>
+  <td class="leftb">{mail:mail_firm}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:clock} {lang:date}</td>
-	<td class="leftb">{mail:mail_date}</td>
+  <td class="leftb">{mail:mail_date}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:network} {lang:ip}</td>
-	<td class="leftb">{mail:mail_ip}</td>
+  <td class="leftb">{mail:mail_ip}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:mail_generic} {lang:message}</td>
-	<td class="leftb">{mail:mail_message}</td>
+  <td class="leftb">{mail:mail_message}</td>
   </tr>
   {if:answer}
   <tr>
@@ -54,15 +54,15 @@
   </tr>
   <tr>
     <td class="leftc">{icon:personal} {lang:editor}</td>
-	<td class="leftb">{mail:user}</td>
+  <td class="leftb">{mail:user}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:clock} {lang:date}</td>
-	<td class="leftb">{mail:mail_answertime}</td>
+  <td class="leftb">{mail:mail_answertime}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:mail_generic} {lang:message}</td>
-	<td class="leftb">{mail:mail_answer}</td>
+  <td class="leftb">{mail:mail_answer}</td>
   </tr>
   {stop:answer}
   <tr>
@@ -70,7 +70,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
-	<td class="leftb"><a href="{url:contact_manage}">{lang:back}</a>
+  <td class="leftb"><a href="{url:contact_manage}">{lang:back}</a>
       {if:noanswer}
       <br />
       <a href="{url:contact_answer:id={mail:mail_id}}">{lang:answer}</a>

@@ -65,7 +65,7 @@ if(isset($_REQUEST['debug_navfile']))
 if(empty($_SESSION['debug_navfile'])) {
 
   $data = array();
-	$data['form']['url'] = cs_url($cs_main['def_mod'], $cs_main['def_action'], $cs_main['def_parameters']);
+  $data['form']['url'] = cs_url($cs_main['def_mod'], $cs_main['def_action'], $cs_main['def_parameters']);
   foreach($nav_array AS $num => $value) {
     $data['navfiles'][$num]['value'] = $value;
     $data['navfiles'][$num]['num'] = $num;

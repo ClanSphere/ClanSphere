@@ -48,22 +48,22 @@ $cs_gallery = cs_sql_select(__FILE__,'usersgallery',$select,$where,$order,$move,
 $gallery_loop = count($cs_gallery);
 if(empty($gallery_loop))
 {
-	$data['if']['error'] = TRUE;
+  $data['if']['error'] = TRUE;
 
-	$head = cs_link($cs_lang['mod_name'],'usersgallery','users','id='. $id) .' - ';
-	$data['head']['mod'] = $head . $cs_lang['head_view'];
-	$data['link']['back'] = cs_link($cs_lang['back'],'usersgallery','users','id='. $id);
+  $head = cs_link($cs_lang['mod_name'],'usersgallery','users','id='. $id) .' - ';
+  $data['head']['mod'] = $head . $cs_lang['head_view'];
+  $data['link']['back'] = cs_link($cs_lang['back'],'usersgallery','users','id='. $id);
 }
 else
 {
-	$data['if']['view'] = TRUE;
+  $data['if']['view'] = TRUE;
 
-	$select = 'folders_id, folders_name, folders_access, folders_picture, folders_text, folders_advanced';
+  $select = 'folders_id, folders_name, folders_access, folders_picture, folders_text, folders_advanced';
   $where = 'folders_mod = \'usersgallery\' AND folders_id = "' . $cat_id . '"';  
   $cs_cat = cs_sql_select(__FILE__,'folders',$select,$where);
 
   $advanced = empty($cs_cat['folders_advanced']) ? '0,0,0,0' : $cs_cat['folders_advanced'];
-	$advanced = explode(",",$advanced);
+  $advanced = explode(",",$advanced);
 
   if($account['access_usersgallery'] < $cs_cat['folders_access']) {
     $data['if']['error'] = TRUE;
@@ -101,8 +101,8 @@ else
   $head .= cs_link(cs_secure($cs_cat['folders_name']),'usersgallery','users','cat_id='. $cs_cat['folders_id'] .'&amp;id='. $id);
   $cs_lap = cs_html_img( "mods/gallery/image.php?userspic=" . $cs_gallery[$move]['usersgallery_id'] . "&amp;size=" . $cs_options['max_width']);
 
-	$data['head']['view'] = $head;
-	$data['gallery']['titel'] = cs_secure($cs_gallery[$move]['usersgallery_titel']);
+  $data['head']['view'] = $head;
+  $data['gallery']['titel'] = cs_secure($cs_gallery[$move]['usersgallery_titel']);
 
   if(!empty($move)) {
     $back_1 = $move-1;
@@ -144,7 +144,7 @@ else
 
   if($detail == '1')
   {
-  	$data['if']['details'] = TRUE;
+    $data['if']['details'] = TRUE;
     $data['details']['date'] = cs_date('unix',$cs_gallery[$move]['usersgallery_time'],1);
     $data['details']['description'] = cs_secure($cs_gallery[$move]['usersgallery_description'],1,1);
 
@@ -156,22 +156,22 @@ else
 
     $file = 'uploads/usersgallery/pics/' . $cs_gallery[$move]['usersgallery_name'];
     $size = filesize($file);
-		$data['details']['filesize'] = cs_filesize($size);
+    $data['details']['filesize'] = cs_filesize($size);
     $data['details']['count'] = $cs_gallery[$move]['usersgallery_count'] + 1;
 
 
-		#if voting is allowed
+    #if voting is allowed
     if(!empty($advanced[0]))
     {
-    	$data['if']['vote'] = TRUE;
-    	$data['if']['vote_now'] = FALSE;
-    	$data['if']['voted'] = FALSE;
-    	
-    	#if user hasn't voted yet
+      $data['if']['vote'] = TRUE;
+      $data['if']['vote_now'] = FALSE;
+      $data['if']['voted'] = FALSE;
+      
+      #if user hasn't voted yet
       if(empty($check_user_voted))
       {
-      	$data['if']['vote_now'] = TRUE;
-      	$data['form']['action'] = cs_url('usersgallery','com_view','cat_id='. $cat_id .'&amp;move='. $move .'&amp;more=1&amp;id=' . $id);
+        $data['if']['vote_now'] = TRUE;
+        $data['form']['action'] = cs_url('usersgallery','com_view','cat_id='. $cat_id .'&amp;move='. $move .'&amp;more=1&amp;id=' . $id);
 
         $levels = 1;
         $voted_answer = 1;
@@ -186,9 +186,9 @@ else
       }
       else
       {
-      	#when already voted -> show result
-      	
-      	$data['if']['voted'] = TRUE;
+        #when already voted -> show result
+        
+        $data['if']['voted'] = TRUE;
         $gallery_votes = 0;
         for($run=0; $run<$voted_loop; $run++)
         {
@@ -211,7 +211,7 @@ else
     }
   }
 
-	echo cs_subtemplate(__FILE__,$data,'usersgallery','com_view');
+  echo cs_subtemplate(__FILE__,$data,'usersgallery','com_view');
 
   if($detail == '1')
   {

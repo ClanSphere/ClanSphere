@@ -12,16 +12,16 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb"> {sort:headline}{lang:headline}</td>
-	<td class="headb"> {lang:user}</td>
-	<td class="headb"> {sort:date}{lang:release}</td>
-	<td class="headb"> {lang:views}</td>
+  <td class="headb"> {lang:user}</td>
+  <td class="headb"> {sort:date}{lang:release}</td>
+  <td class="headb"> {lang:views}</td>
   </tr>
 {loop:articles}
   <tr>
     <td class="leftc"> {articles:articles_headline}</td>
-	<td class="leftc"> {articles:articles_user}</td>
-	<td class="leftc"> {articles:articles_date}</td>
-	<td class="leftc"> {articles:articles_views}</td>
+  <td class="leftc"> {articles:articles_user}</td>
+  <td class="leftc"> {articles:articles_date}</td>
+  <td class="leftc"> {articles:articles_views}</td>
   </tr>
 {stop:articles}
 </table>

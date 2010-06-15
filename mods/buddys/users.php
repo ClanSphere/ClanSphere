@@ -40,7 +40,7 @@ $loop_on = count($b_on);
 for($i=0; $i < $loop_on; $i++) {
 
     $b_on[$i]['users_link'] = cs_user($b_on[$i]['buddys_user'], $b_on[$i]['users_nick'], $b_on[$i]['users_active'], $b_on[$i]['users_delete']);    
-		$b_on[$i]['users_nick'] = $b_on[$i]['users_nick'];
+    $b_on[$i]['users_nick'] = $b_on[$i]['users_nick'];
     $b_on[$i]['users_country'] = cs_html_img('symbols/countries/' . $b_on[$i]['users_country'] . '.png');
 }
   

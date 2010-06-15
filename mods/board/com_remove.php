@@ -91,14 +91,14 @@ if(isset($_POST['cancel'])) {
   $comnr = cs_sql_count(__FILE__,'comments',$where);
 
   if ($options_board['sort'] == 'ASC') {
-  	$start = $comnr - $comnr % $account['users_limit'];
+    $start = $comnr - $comnr % $account['users_limit'];
   } else {
     $where = "comments_fid = \"" . $com_fid . "\" AND comments_mod = 'board' AND comments_id > \"" . $comments_id . "\"";
     $after = cs_sql_count(__FILE__,'comments',$where);
     $start = $after - $after % $account['users_limit'];
   }
 
-	$add_start = empty($start) ? '' : '&start=' . $start;
+  $add_start = empty($start) ? '' : '&start=' . $start;
   $more = 'where=' . $com_fid . $add_start . '#com' . $comnr;
   cs_redirect($cs_lang['del_false'],'board','thread',$more);
 }
@@ -106,7 +106,7 @@ if(isset($_POST['cancel'])) {
 else {
 
   $data['head']['body'] = sprintf($cs_lang['del_rly'],$comments_id);
-	$data['comments']['id'] = $comments_id;
+  $data['comments']['id'] = $comments_id;
 
   echo cs_subtemplate(__FILE__,$data,'board','com_remove');
 }

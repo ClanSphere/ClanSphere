@@ -30,18 +30,18 @@
 </tr>
 {stop:rte_html}
   <tr>
-  	<td class="leftc">{icon:configure} {lang:config}</td>
+    <td class="leftc">{icon:configure} {lang:config}</td>
     <td class="leftb">{if:access_admin}<input type="checkbox" name="static_admins" value="1" {check:admin}/> {lang:admins_only}<br />{stop:access_admin}
-	<input type="checkbox" name="static_table" value="1"  {static:table} /> {lang:tablelayout}<br />
+  <input type="checkbox" name="static_table" value="1"  {static:table} /> {lang:tablelayout}<br />
 <input type="checkbox" name="static_comments" value="1"  {static:comments} /> {lang:activate_comments}<br /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-		<input type="submit" name="submit" value="{static:lang_form}" />
-		<input type="submit" name="preview" value="{lang:preview}" />
- 				<input type="hidden" name="id" value="{static:id}" />
-		 </td>
+    <input type="submit" name="submit" value="{static:lang_form}" />
+    <input type="submit" name="preview" value="{lang:preview}" />
+         <input type="hidden" name="id" value="{static:id}" />
+     </td>
   </tr>
 </table>
 </form>

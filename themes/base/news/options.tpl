@@ -53,8 +53,8 @@
     <input type="checkbox" name="features" value="1" {op:features} />{lang:features}<br />
     <input type="checkbox" name="smileys" value="1" {op:smileys} />{lang:smileys}<br />
     <input type="checkbox" name="clip" value="1"  {op:clip} />{lang:clip}<br />
-    <input type="checkbox" name="html" value="1" {op:html} />{lang:html}<br />		
-	<input type="checkbox" name="php" value="1"  {op:php} />{lang:php}<br />
+    <input type="checkbox" name="html" value="1" {op:html} />{lang:html}<br />    
+  <input type="checkbox" name="php" value="1"  {op:php} />{lang:php}<br />
   </td>
  </tr> 
  <tr>

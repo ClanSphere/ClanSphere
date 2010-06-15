@@ -60,9 +60,9 @@
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-		<input type="submit" name="submit" value="{lang:create}" />
-		<input type="submit" name="preview" value="{lang:preview}" />
- 			</td>
+    <input type="submit" name="submit" value="{lang:create}" />
+    <input type="submit" name="preview" value="{lang:preview}" />
+       </td>
   </tr>
 </table>
 </form>

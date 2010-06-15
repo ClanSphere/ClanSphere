@@ -47,14 +47,14 @@ if ($op_counter['last_archiv_day'] < $yesterday) {
   
   for ($day = $op_counter['last_archiv_day']; $day < $yesterday; $day++) {
     
-  	$timer2 = $timer + 86400;
+    $timer2 = $timer + 86400;
     $cond = "count_time > '" . $timer . "' AND count_time < '" .$timer2 . "'";
     $count_day = cs_sql_count(__FILE__, 'count', $cond);
     
     if (!empty($count_day)) {
-    	$cells = array('count_month', 'count_num', 'count_mode');
-	    $values = array($day . '-' . $month . '-' . $year, $count_day, 1);
-	    cs_sql_insert(__FILE__, 'count_archiv', $cells, $values);
+      $cells = array('count_month', 'count_num', 'count_mode');
+      $values = array($day . '-' . $month . '-' . $year, $count_day, 1);
+      cs_sql_insert(__FILE__, 'count_archiv', $cells, $values);
     }
     $timer = $timer2;
   }

@@ -24,12 +24,12 @@ if(isset($_POST['submit']) && isset($_POST['users_nick']) && isset($_REQUEST['id
   if (empty($errormsg))
   {    
     $cs_access_user['access_id'] = $access_id;
-	  $users_id = $cs_user['users_id'];
-	
-	  $user_cells = array_keys($cs_access_user);
+    $users_id = $cs_user['users_id'];
+  
+    $user_cells = array_keys($cs_access_user);
     $user_save = array_values($cs_access_user);
     cs_sql_update(__FILE__,'users',$user_cells,$user_save,$users_id);
-	}
+  }
 }
 
 if(!isset($_POST['submit'])) {

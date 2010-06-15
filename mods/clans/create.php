@@ -13,7 +13,7 @@ $cs_clans['users_id'] = 0;
 $data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
 
 if(isset($_POST['submit'])) {
-	
+  
   $cs_clans['clans_name'] = $_POST['clans_name'];
   $cs_clans['clans_short'] = $_POST['clans_short'];
   $cs_clans['clans_tag'] = $_POST['clans_tag'];  
@@ -36,32 +36,32 @@ if(isset($_POST['submit'])) {
     $cs_clans['users_id'] = $users_data['users_id'];
   
   if (!empty($files['picture']['tmp_name'])) {
-	  $img_size = getimagesize($files['picture']['tmp_name']);
-	  if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
-	    $errormsg .= $cs_lang['ext_error'] . cs_html_br(1);
-	    $error++;
-	  }
-	  elseif(!empty($files['picture']['tmp_name'])) {
-	    switch($img_size[2]) {
-	      case 1:
-	          $extension = 'gif'; break;
-	      case 2:
-	          $extension = 'jpg'; break;
-	      case 3:
-	          $extension = 'png'; break;
-		  }
-		  if($img_size[0] > $op_clans['max_width']) {
-		    $errormsg .= $cs_lang['too_wide'] . cs_html_br(1);
-		    $error++;
-		  }
-		  if($img_size[1] > $op_clans['max_height']) { 
-		    $errormsg .= $cs_lang['too_high'] . cs_html_br(1);
-		    $error++;
-		  }
-		  if($files['picture']['size'] > $op_clans['max_size']) { 
-		    $errormsg .= $cs_lang['too_big'] . cs_html_br(1);
-		    $error++;
-		  }
+    $img_size = getimagesize($files['picture']['tmp_name']);
+    if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+      $errormsg .= $cs_lang['ext_error'] . cs_html_br(1);
+      $error++;
+    }
+    elseif(!empty($files['picture']['tmp_name'])) {
+      switch($img_size[2]) {
+        case 1:
+            $extension = 'gif'; break;
+        case 2:
+            $extension = 'jpg'; break;
+        case 3:
+            $extension = 'png'; break;
+      }
+      if($img_size[0] > $op_clans['max_width']) {
+        $errormsg .= $cs_lang['too_wide'] . cs_html_br(1);
+        $error++;
+      }
+      if($img_size[1] > $op_clans['max_height']) { 
+        $errormsg .= $cs_lang['too_high'] . cs_html_br(1);
+        $error++;
+      }
+      if($files['picture']['size'] > $op_clans['max_size']) { 
+        $errormsg .= $cs_lang['too_big'] . cs_html_br(1);
+        $error++;
+      }
     }
   }
   if(empty($cs_clans['clans_name'])) {

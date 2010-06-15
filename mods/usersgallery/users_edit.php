@@ -22,12 +22,12 @@ $new_time = 0;
 
 if(isset($_POST['submit'])) {
 
-	$edit['usersgallery_titel'] = $_POST['gallery_titel'];
-	$edit['folders_id'] = empty($_POST['folders_name']) ? $_POST['folders_id'] : make_folders_create('usersgallery',$_POST['folders_name'], $account['users_id']);
-	$edit['usersgallery_access'] = $_POST['gallery_access'];
-	$edit['usersgallery_status'] = $_POST['gallery_status'];
-	$edit['usersgallery_description'] = $_POST['gallery_description'];
-	$edit['usersgallery_vote'] = isset($_POST['gallery_vote']) ? $_POST['gallery_vote'] : 0;
+  $edit['usersgallery_titel'] = $_POST['gallery_titel'];
+  $edit['folders_id'] = empty($_POST['folders_name']) ? $_POST['folders_id'] : make_folders_create('usersgallery',$_POST['folders_name'], $account['users_id']);
+  $edit['usersgallery_access'] = $_POST['gallery_access'];
+  $edit['usersgallery_status'] = $_POST['gallery_status'];
+  $edit['usersgallery_description'] = $_POST['gallery_description'];
+  $edit['usersgallery_vote'] = isset($_POST['gallery_vote']) ? $_POST['gallery_vote'] : 0;
 
   if(!empty($_POST['new_time']))
     $edit['usersgallery_time'] = cs_time();
@@ -35,28 +35,28 @@ if(isset($_POST['submit'])) {
     $edit['usersgallery_count'] = 0;
 
 
-	$error = '';
+  $error = '';
 
-	if($edit['users_id'] != $account['users_id'] AND $account['access_usersgallery'] < 4)
-		$error .= $cs_lang['not_own'] . cs_html_br(1);
-	if(empty($edit['usersgallery_titel']))
-		$error .= $cs_lang['no_titel'] . cs_html_br(1);
-	if(empty($edit['folders_id']))
-		$error .= $cs_lang['no_cat'] . cs_html_br(1);
+  if($edit['users_id'] != $account['users_id'] AND $account['access_usersgallery'] < 4)
+    $error .= $cs_lang['not_own'] . cs_html_br(1);
+  if(empty($edit['usersgallery_titel']))
+    $error .= $cs_lang['no_titel'] . cs_html_br(1);
+  if(empty($edit['folders_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
 
 }
 
 if(!isset($_POST['submit']))
-	$data['head']['body'] = $cs_lang['body_picture'];
+  $data['head']['body'] = $cs_lang['body_picture'];
 elseif(!empty($error))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $edit;
-	$data['current']['img'] = cs_html_img('mods/gallery/image.php?usersthumb=' . $edit['usersgallery_id']);
-	$data['folders']['select'] = make_folders_select('folders_id',$edit['folders_id'],$account['users_id'],'usersgallery');
+  $data['data'] = $edit;
+  $data['current']['img'] = cs_html_img('mods/gallery/image.php?usersthumb=' . $edit['usersgallery_id']);
+  $data['folders']['select'] = make_folders_select('folders_id',$edit['folders_id'],$account['users_id'],'usersgallery');
 
   $data['access']['options'] = '';
   $levels = 0;
@@ -81,15 +81,15 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['check']['newtime'] = empty($new_time) ? '' : $checked;
   $data['check']['count'] = empty($gallery_count_reset) ? '' : $checked;
     
-	$data['hidden']['id'] = $gallery_id;
+  $data['hidden']['id'] = $gallery_id;
     
     
  echo cs_subtemplate(__FILE__,$data,'usersgallery','users_edit');
 }
 else {
 
-	$cells = array_keys($edit);
-	$save = array_values($edit);
+  $cells = array_keys($edit);
+  $save = array_values($edit);
  cs_sql_update(__FILE__,'usersgallery',$cells,$save,$gallery_id);
 
  cs_redirect($cs_lang['changes_done'],'usersgallery','center');

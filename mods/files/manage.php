@@ -66,7 +66,7 @@ for($run=0; $run<$files_loop; $run++)
   for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++)
   {
     $ext = $file_typ_array[$run_2];
-	
+  
     require_once 'mods/clansphere/filetype.php';
     $data['files'][$run]['filetypes'][$run_2]['icon'] = cs_filetype($ext);
   }

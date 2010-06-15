@@ -9,9 +9,9 @@
         {lang:team}:
         <select name="id">
           <option value="0">----</option>
-		{loop:squad}
+    {loop:squad}
           <option value="{squad:id}"{squad:selected}>{squad:name}</option>
-		  {stop:squad}
+      {stop:squad}
         </select>
         <input type="submit" name="submit" value="{lang:show}" />
       </fieldset>
@@ -34,7 +34,7 @@
     <td class="leftc">{members:task}</td>
     <td class="leftc"> {members:order}</td>
     <td class="leftc"> {members:edit}</td>
-	<td class="leftc"> {members:remove}</td>
+  <td class="leftc"> {members:remove}</td>
   </tr>
   {stop:members}
 </table>

@@ -69,7 +69,7 @@ $votes_close = '';
   }
   
   if (!empty($_POST['votes_start_year'])) { 
-  	$votes_end = cs_datepost('votes_end','unix');
+    $votes_end = cs_datepost('votes_end','unix');
     $vote_error--;
   } else {
     $errormsg .= $cs_lang['error_time'] . cs_html_br(1);

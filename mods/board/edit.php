@@ -48,44 +48,44 @@ else {
 
 
 if(!isset($_POST['submit']) OR isset($_POST['preview']))
-	$data['head']['body'] = $cs_lang['body_edit'];
+  $data['head']['body'] = $cs_lang['body_edit'];
 elseif(!empty($error))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 
 if(isset($_POST['preview']) AND empty($error)) {
-	$data['if']['preview'] = TRUE;
+  $data['if']['preview'] = TRUE;
   if(!empty($board['board_pwd'])) {
     $data['prev']['icon'] = cs_html_img('symbols/board/password.png');
   }elseif(!empty($board['squads_id'])) {
-  	$data['prev']['icon'] = cs_html_img('symbols/board/board_read_.png');
+    $data['prev']['icon'] = cs_html_img('symbols/board/board_read_.png');
   }else{
-  	$data['prev']['icon'] = cs_icon('password');
+    $data['prev']['icon'] = cs_icon('password');
   }
-	$data['prev']['text'] = cs_secure($board['board_text'],1);
+  $data['prev']['text'] = cs_secure($board['board_text'],1);
 }
 
 
 if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $board;
+  $data['data'] = $board;
 
   $data['categories']['dropdown'] = cs_categories_dropdown2('board',$board['categories_id']);
-	$data['abcode']['features'] = cs_abcode_features('board_text');
+  $data['abcode']['features'] = cs_abcode_features('board_text');
 
-	$data['access']['options'] = '';
+  $data['access']['options'] = '';
   $levels = 0;
   while($levels < 6) {
     $board['board_access'] == $levels ? $sel = 1 : $sel = 0;
     $data['access']['options'] .= cs_html_option($levels . ' - ' . $cs_lang['lev_' . $levels],$levels,$sel);
     $levels++;
   }
-	
+  
   $checked = 'checked="checked"';
   $data['check']['yes'] = !empty($board['board_read']) ? $checked : '';
   $data['check']['no'] = empty($board['board_read']) ? $checked : '';
   
-	
+  
   $matches[1] = $cs_lang['secure_stages'];
   $matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
   $matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_2_text'] . cs_html_br(1);
@@ -93,9 +93,9 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
   $matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
   $data['clip']['sec_level'] = cs_abcode_clip($matches);
 
-	$data['if']['pwd_remove'] = !empty($board['board_pwd']) ? TRUE : FALSE;
+  $data['if']['pwd_remove'] = !empty($board['board_pwd']) ? TRUE : FALSE;
 
-	$op_squads = cs_sql_option(__FILE__,'squads');
+  $op_squads = cs_sql_option(__FILE__,'squads');
   $data['squads']['lang'] = $cs_lang[$op_squads['label']];
   $data_squads = cs_sql_select(__FILE__,'squads','squads_name,squads_id','squads_own=1','squads_name',0,0); 
   $data['squads']['dropdown'] = cs_dropdown('squads_id','squads_name',$data_squads,$board['squads_id']);   
@@ -109,13 +109,13 @@ else {
 
   if(!empty($new_board_pwd)) {
     global $cs_db;
-		if($cs_db['hash'] == 'md5')
-			$board['board_pwd'] = md5($new_board_pwd);
-		elseif($cs_db['hash'] == 'sha1') 
-			$board['board_pwd'] = sha1($new_board_pwd);
-			$sql_del = 1;
-	}
-	
+    if($cs_db['hash'] == 'md5')
+      $board['board_pwd'] = md5($new_board_pwd);
+    elseif($cs_db['hash'] == 'sha1') 
+      $board['board_pwd'] = sha1($new_board_pwd);
+      $sql_del = 1;
+  }
+  
   if(!empty($board_pwdel)) {
     $board['board_pwd'] = '';  
     $sql_del = 1;

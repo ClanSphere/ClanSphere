@@ -13,7 +13,7 @@
  <tr>
   <td class="leftc">{icon:yast_group_add} {members:label} *</td>
   <td class="leftb">
-	{members:squad_sel}
+  {members:squad_sel}
   </td>
  </tr>
  <tr>
@@ -49,7 +49,7 @@
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>
   <td class="leftb">
-	<input type="hidden" name="id" value="{members:id}" />
+  <input type="hidden" name="id" value="{members:id}" />
     <input type="submit" name="submit" value="{lang:edit}" />
       </td>
  </tr>

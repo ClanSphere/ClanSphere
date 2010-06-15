@@ -31,7 +31,7 @@ if(in_array('users_surname',$hidden)) {
 }
 if(empty($name) && empty($surname)) {
   $name = $cs_lang['noname'];
-	$surname = '';
+  $surname = '';
 }
 
 $data['users']['name'] = $name;

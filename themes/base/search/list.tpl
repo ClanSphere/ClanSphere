@@ -17,20 +17,20 @@
   <tr>
     <td class="leftc">{icon:kcmdf} {lang:modul} *</td>
     <td class="leftb">
-	<select name="where">
+  <select name="where">
     <option value="0">----</option>
-	<option value="articles" {search:articles_check}>{lang:articles}</option>
-	<option value="clans" {search:clans_check}>{lang:clans}</option>
+  <option value="articles" {search:articles_check}>{lang:articles}</option>
+  <option value="clans" {search:clans_check}>{lang:clans}</option>
     <option value="news" {search:news_check}>{lang:news}</option>
     <option value="users" {search:users_check}>{lang:user}</option>
     <option value="files" {search:files_check}>{lang:files}</option>
-	</select>
-	</td>
+  </select>
+  </td>
   </tr>
   <tr>
-  	<td class="leftc">{icon:ksysguard} {lang:options}</td>
-	<td class="leftb"><input type="submit" name="submit" value="{lang:search}" />
-	</td>
+    <td class="leftc">{icon:ksysguard} {lang:options}</td>
+  <td class="leftb"><input type="submit" name="submit" value="{lang:search}" />
+  </td>
   </tr>
 </table>
 </form>
@@ -38,7 +38,7 @@
 {if:errmsg}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
-	<td class="leftc">{search:errmsg}</td>
+  <td class="leftc">{search:errmsg}</td>
   </tr>
 </table>
 {stop:errmsg}

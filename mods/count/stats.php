@@ -120,7 +120,7 @@ if ($op_count['view'] == 'stats'){
 }
 $run = 0;
 if ($op_count['view'] == 'amstats'){
-	$backup = $data['count'];
+  $backup = $data['count'];
   
   echo cs_subtemplate(__FILE__,$data,'count','statshead');
 

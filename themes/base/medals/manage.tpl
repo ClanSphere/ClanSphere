@@ -4,7 +4,7 @@
   </tr>
   <tr>    
     <td class="leftb">{icon:contents} {lang:total}: {count:medals}</td>
-	<td class="rightb">{pages:list}</td>
+  <td class="rightb">{pages:list}</td>
   </tr>
 </table>
 <br />

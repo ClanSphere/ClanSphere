@@ -24,7 +24,7 @@
     <td class="leftc">{events:name}</td>
     <td class="leftc">{events:guests} / <strong>{events:guestsmax}</strong> {events:canceled}</td>
     <td class="leftc">{events:status}</td>
-	  <td class="centerc">{events:remove}</td>
+    <td class="centerc">{events:remove}</td>
   </tr>
   {stop:events}
 </table>

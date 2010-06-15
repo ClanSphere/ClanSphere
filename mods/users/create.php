@@ -112,13 +112,13 @@ else {
 }
 
 if(!isset($_POST['submit']))
-	$data['head']['body'] = $cs_lang['create_users'];
+  $data['head']['body'] = $cs_lang['create_users'];
 elseif(!empty($error))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $create;
+  $data['data'] = $create;
 
   $data['lang']['opts'] = '';
   $languages = cs_checkdirs('lang');
@@ -132,19 +132,19 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['access']['dropdown'] = cs_dropdown('access_id','access_name',$access_data,$create['access_id']);
 
   if(empty($conv_joinus)) {
-  	$data['if']['simple'] = TRUE;
-		$data['if']['convert'] = FALSE;
+    $data['if']['simple'] = TRUE;
+    $data['if']['convert'] = FALSE;
 
-		$matches[1] = $cs_lang['secure_stages'];
-		$matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
-		$matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_2_text'] . cs_html_br(1);
-		$matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
-		$matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
-		$data['clip']['pw_sec'] = cs_abcode_clip($matches);
+    $matches[1] = $cs_lang['secure_stages'];
+    $matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
+    $matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_2_text'] . cs_html_br(1);
+    $matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
+    $matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
+    $data['clip']['pw_sec'] = cs_abcode_clip($matches);
 
-	} else {
-  	$data['if']['simple'] = FALSE;
-		$data['if']['convert'] = TRUE;
+  } else {
+    $data['if']['simple'] = FALSE;
+    $data['if']['convert'] = TRUE;
 
     $code_id = generate_code(8);
     $data['hidden']['password'] = $code_id;

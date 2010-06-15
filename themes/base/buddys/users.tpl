@@ -7,10 +7,10 @@
       {loop:bon}
       <tr>
         <td class="leftc">
-        	<div style="float: left;">
-						{bon:users_country}
-        		{bon:users_link}
-        	</div>
+          <div style="float: left;">
+            {bon:users_country}
+            {bon:users_link}
+          </div>
           <div style="float: right;"><a href="{url:messages_create:to={bon:users_nick}}">{icon:mail_send}</a></div></td>
       </tr>
       {stop:bon}
@@ -24,10 +24,10 @@
       {loop:boff}
       <tr>
         <td class="leftc">
-        	<div style="float: left;">
-						{boff:users_country}
-						{boff:users_link}
-					</div>
+          <div style="float: left;">
+            {boff:users_country}
+            {boff:users_link}
+          </div>
           <div style="float:right;"><a href="{url:messages_create:to={boff:users_nick}}">{icon:mail_send}</a></div></td>
       </tr>
       {stop:boff}

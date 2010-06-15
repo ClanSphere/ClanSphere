@@ -11,7 +11,7 @@ if (!empty($_POST['submit'])) {
   $save['order'] = $_POST['order'];
   $save['linebreak'] = (int) $_POST['linebreak'];
   $save['limit'] = (int) $_POST['limit'];
-	
+  
   require_once 'mods/clansphere/func_options.php';
   
   cs_optionsave('shoutbox', $save);

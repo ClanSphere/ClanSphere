@@ -16,10 +16,10 @@
   <tr>
     <td class="leftb">{events:time}</td>
   </tr>
-	<tr>
-		<td class="leftc">{icon:organizer} {lang:needage}</td>
-		<td class="leftb" colspan="2">{events:events_needage}</td>
-	</tr>
+  <tr>
+    <td class="leftc">{icon:organizer} {lang:needage}</td>
+    <td class="leftb" colspan="2">{events:events_needage}</td>
+  </tr>
 </table>
 <br />
 

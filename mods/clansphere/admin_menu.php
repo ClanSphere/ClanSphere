@@ -24,8 +24,8 @@ function cs_admin_menu()
     $sql_table = in_array($sql_modul, $mod_info['tables']) ? $sql_modul: '';
     $sql_count = empty($sql_table) ? '' : ' (' . cs_sql_count(__FILE__, $sql_table) . ')';
 
-    $link_count++;	
-    $data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage') . $sql_count;	
+    $link_count++;  
+    $data['menu']['manage'] = $recent_action == 'manage' ? $cs_lang['manage'] : cs_link($cs_lang['manage'], $recent_mod,'manage') . $sql_count;  
     $data['if']['manage'] = true;
   }
   else
@@ -36,9 +36,9 @@ function cs_admin_menu()
 
   if (file_exists('mods/' . $recent_mod . '/create.php') && $account['access_' . $recent_mod] >= 3 && $recent_mod != 'shoutbox')
   {
-    $link_count++;	
+    $link_count++;  
     $data['menu']['create'] = $recent_action == 'create' ? $cs_lang['create'] : cs_link($cs_lang['create'], $recent_mod,'create');
-    $data['if']['create'] = true;	
+    $data['if']['create'] = true;  
   }
   else
   {
@@ -48,7 +48,7 @@ function cs_admin_menu()
 
   if (file_exists('mods/' . $recent_mod . '/options.php') && $account['access_' . $recent_mod] >= 5)
   {
-    $link_count++;	
+    $link_count++;  
     $data['menu']['options'] = $recent_action == 'options' ? $cs_lang['options'] : cs_link($cs_lang['options'], $recent_mod,'options');
     $data['if']['options'] = true;
   }

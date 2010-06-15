@@ -22,7 +22,7 @@ for ($i = 0; $i < $count_cups; $i++) {
   } else {
     $data['cups'][$i]['game'] = '';
   }
-	
+  
   $where = "games_id = '" . $data['cups'][$i]['games_id'] . "'";
   $cs_game = cs_sql_select(__FILE__,'games','games_name, games_id',$where);
   $id = 'id=' . $cs_game['games_id'];

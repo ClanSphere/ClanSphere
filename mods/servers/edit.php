@@ -57,10 +57,10 @@ if(isset($_POST['submit'])) {
 // Create new Entry
 } 
 else {
-	$data['servers']['id'] = empty($_GET['id']) ? 0 : $_GET['id'];
-	$select = 'servers_name, servers_ip, servers_port, games_id, servers_info, servers_slots, servers_stats';
-	$select .= ', servers_type, servers_class, servers_query, servers_order';
-	$where = 'servers_id = \'' . $data['servers']['id'] . '\'';
+  $data['servers']['id'] = empty($_GET['id']) ? 0 : $_GET['id'];
+  $select = 'servers_name, servers_ip, servers_port, games_id, servers_info, servers_slots, servers_stats';
+  $select .= ', servers_type, servers_class, servers_query, servers_order';
+  $where = 'servers_id = \'' . $data['servers']['id'] . '\'';
   $data['create'] = cs_sql_select(__FILE__,'servers',$select,$where,0,0,1);
 }
 if(!isset($_POST['submit'])) {

@@ -1,8 +1,8 @@
 <?php
 
 /*
-	function by Steve
-	http://usphp.com/manual/en/function.json-encode.php#82904
+  function by Steve
+  http://usphp.com/manual/en/function.json-encode.php#82904
 */
 
 if (!function_exists('json_encode'))

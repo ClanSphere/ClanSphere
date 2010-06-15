@@ -33,7 +33,7 @@
   <td class="leftc">{icon:configure} {lang:more}</td>
   <td class="leftb">
     <input type="checkbox" name="votes_close" value="1" />{lang:restrict_comments}<br />
-	<input type="checkbox" name="votes_several" value="1"  {several:checked} />{lang:several}
+  <input type="checkbox" name="votes_several" value="1"  {several:checked} />{lang:several}
   
   </td>
  </tr>

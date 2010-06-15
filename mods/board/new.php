@@ -31,11 +31,11 @@ $cs_threads = cs_sql_select(__FILE__,$from,$select,$conditions,$order,$start,$ac
 $data['if']['no_threads'] = FALSE;
 
 if(empty($cs_threads)) {
-	$data['if']['no_threads'] = TRUE;
-	$data['threads'] = '';
+  $data['if']['no_threads'] = TRUE;
+  $data['threads'] = '';
 }
 else {
-	$run = 0;
+  $run = 0;
   foreach($cs_threads AS $thread) {
 
     if(empty($thread['threads_comments'])) {
@@ -60,15 +60,15 @@ else {
     $headline = cs_secure($thread['threads_headline']);
     $data['threads'][$run]['name'] = $imp . cs_link($headline,'board','thread','where=' . $thread['threads_id']);
 
-		$data['threads'][$run]['pages'] = '';
+    $data['threads'][$run]['pages'] = '';
     if($thread['threads_comments'] > $account['users_limit']) {
-    	$before = cs_html_br(1) . $cs_lang['page'] . ' ';
+      $before = cs_html_br(1) . $cs_lang['page'] . ' ';
       $data['threads'][$run]['pages'] = $before . cs_pages('board','thread',$thread['threads_comments'],0,$thread['threads_id'],0,0,1);
     }
     $data['threads'][$run]['comments'] = $thread['threads_comments'];
     $data['threads'][$run]['view'] = $thread['threads_view'];
 
-		$data['threads'][$run]['last_time'] = '';
+    $data['threads'][$run]['last_time'] = '';
     if(!empty($thread['threads_last_time'])) {
       $date = cs_date('unix',$thread['threads_last_time'],1);
       $goto = floor($thread['threads_comments'] / $account['users_limit']) * $account['users_limit'];

@@ -45,7 +45,7 @@ function create_user($access,$nick,$pwd,$lang,$email,$country,$timezone,$dst,$ne
 }
 
 function change_nick($users_id, $users_nick) {
-	$save_cont = array('users_id','users_nick','users_changetime');
-	$save_cells = array($users_id,$users_nick,cs_time());
-	cs_sql_insert(__FILE__,'usernicks',$save_cont,$save_cells);
+  $save_cont = array('users_id','users_nick','users_changetime');
+  $save_cells = array($users_id,$users_nick,cs_time());
+  cs_sql_insert(__FILE__,'usernicks',$save_cont,$save_cells);
 }

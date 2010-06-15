@@ -71,10 +71,10 @@ $data['if']['bottom'] = FALSE;
 
 if(!empty($go_search)) {
 
-	$data['if']['bottom'] = TRUE;
-	$data['if']['results'] = FALSE;
-	$data['if']['too_short'] = FALSE;
-	$data['if']['not_found'] = FALSE;
+  $data['if']['bottom'] = TRUE;
+  $data['if']['results'] = FALSE;
+  $data['if']['too_short'] = FALSE;
+  $data['if']['not_found'] = FALSE;
 
   $key_check = strlen(trim($keywords));
   $key_esc = cs_sql_escape($keywords);
@@ -96,7 +96,7 @@ if(!empty($go_search)) {
     $conditions = substr($conditions,0,-5) . ')';
   }
   if($key_check < 3 OR $conditions == ')' AND $searchmode != 1) {
-  	$data['if']['too_short'] = TRUE;
+    $data['if']['too_short'] = TRUE;
   }
   else {
     if(!empty($board_id)) {
@@ -119,10 +119,10 @@ if(!empty($go_search)) {
     $count = cs_sql_count(__FILE__,$from,$conditions);
 
     if(empty($count)) {
-    	$data['if']['not_found'] = TRUE;
+      $data['if']['not_found'] = TRUE;
     }
     else {
-    	$data['if']['results'] = TRUE;
+      $data['if']['results'] = TRUE;
 
       $data['hidden']['keywords'] = $keywords;
       $data['hidden']['searchmode'] = $searchmode;
@@ -147,7 +147,7 @@ if(!empty($go_search)) {
         $headline = cs_secure($thread['threads_headline']);
         $data['res'][$run]['thread'] = cs_link($headline,'board','thread','where=' . $thread['threads_id']);
 
-				$data['res'][$run]['target'] = '';
+        $data['res'][$run]['target'] = '';
         if(!empty($thread['comments_id'])) {
           $start = cs_sql_count(__FILE__,'comments',"comments_fid = '" . $thread['threads_id'] . "' AND comments_id < '" . $thread['comments_id'] . "' AND comments_mod = 'board'");
           $page = floor(++$start / $account['users_limit']) * $account['users_limit'];
@@ -155,7 +155,7 @@ if(!empty($go_search)) {
           $data['res'][$run]['target'] = cs_html_br(1) . cs_link($cs_lang['go_target'],'board','thread',$go_target);
         }
 
-				$data['res'][$run]['date'] = '';
+        $data['res'][$run]['date'] = '';
         if(!empty($thread['last_action'])) {
           $data['res'][$run]['date'] = cs_date('unix',$thread['last_action'],1);
         }

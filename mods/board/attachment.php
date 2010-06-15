@@ -22,14 +22,14 @@ if(!empty($_GET['id'])) {
     $where = 'fil.boardfiles_id = \'' . cs_sql_escape($id) . '\'';
     $cs_thread_file = cs_sql_select(__FILE__,$tables,'*',$where,0,0,1);
     if(!empty($cs_thread_file)) {
-    	if(!empty($cs_thread_file['board_pwd'])) {
-    		if(empty($cs_thread_file['boardpws_id'])) {
-    			die;
-    		}
-    	}
+      if(!empty($cs_thread_file['board_pwd'])) {
+        if(empty($cs_thread_file['boardpws_id'])) {
+          die;
+        }
+      }
     }
     else {
-    	die;
+      die;
     }
 }
 elseif (!empty($_GET['name'])) {

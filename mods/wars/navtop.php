@@ -17,11 +17,11 @@ if(empty($data['wars'])) {
 
 } else {
 
-			$data['wars']['squads_name'] = cs_link(cs_secure($data['wars']['squads_name']),'squads','view','id=' . $data['wars']['squads_id']);
-			$data['wars']['clans_name'] = cs_link(cs_secure($data['wars']['clans_name']),'clans','view','id=' . $data['wars']['clans_id']);					
-			$data['wars']['ownlogo'] = ! empty($data['wars']['squad_picture']) ? cs_html_img('uploads/clans/' . $data['wars']['squad_picture']) : $cs_lang['no_logo']; 			
-			$data['wars']['enemylogo'] = ! empty($data['wars']['clans_picture']) ? cs_html_img('uploads/clans/' . $data['wars']['clans_picture']) : $cs_lang['no_logo']; 				
-			$data['wars']['date'] = cs_date('unix',$data['wars']['wars_date'],1,1);
+      $data['wars']['squads_name'] = cs_link(cs_secure($data['wars']['squads_name']),'squads','view','id=' . $data['wars']['squads_id']);
+      $data['wars']['clans_name'] = cs_link(cs_secure($data['wars']['clans_name']),'clans','view','id=' . $data['wars']['clans_id']);          
+      $data['wars']['ownlogo'] = ! empty($data['wars']['squad_picture']) ? cs_html_img('uploads/clans/' . $data['wars']['squad_picture']) : $cs_lang['no_logo'];       
+      $data['wars']['enemylogo'] = ! empty($data['wars']['clans_picture']) ? cs_html_img('uploads/clans/' . $data['wars']['clans_picture']) : $cs_lang['no_logo'];         
+      $data['wars']['date'] = cs_date('unix',$data['wars']['wars_date'],1,1);
 
   echo cs_subtemplate(__FILE__,$data,'wars','navtop');
 }

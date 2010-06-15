@@ -7,7 +7,7 @@ $cs_lang = cs_translate('board');
 if (!empty($_GET['delall'])) {
   cs_sql_update(__FILE__,'board',array('board_order'),array(0),0,'board_order != 0');
   cs_sql_update(__FILE__,'categories',array('categories_order'),array(0),0,"categories_mod = 'board'");
-	cs_redirect(NULL, 'board', 'sort');
+  cs_redirect(NULL, 'board', 'sort');
 }
 
 if (!empty($_GET['board'])) {

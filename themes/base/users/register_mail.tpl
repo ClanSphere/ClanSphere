@@ -22,7 +22,7 @@
     <tr>
       <td class="leftc">{icon:configure} {lang:extended}</td>
       <td class="leftb"><input type="checkbox" name="newsletter" value="1" {checked:newsletter} />{lang:newsletter_reg}</td>
-    </tr>	
+    </tr>  
     <tr>
       <td class="leftc"> {icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="submit" name="submit" value="{lang:signup}" />

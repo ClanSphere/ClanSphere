@@ -57,7 +57,7 @@
     <td class="headb" style="width:125px"> {sort:laston} {lang:laston}</td>
     <td class="headb" style="width:50px"> {lang:page}</td>
     <td class="headb"> {sort:active} {lang:active}</td>
-	<td class="headb"> {sort:access} {lang:access}</td>
+  <td class="headb"> {sort:access} {lang:access}</td>
     <td class="headb" colspan="3" style="width:50px"> {lang:options} </td>
   </tr>
   {loop:users}
@@ -67,7 +67,7 @@
     <td class="rightc">{users:laston}</td>
     <td class="centerc">{users:page}</td>
     <td class="leftc">{users:active}</td>
-	<td class="leftc">{users:access}</td>
+  <td class="leftc">{users:access}</td>
     <td class="leftc"><a href="{users:url_picture}" title="{lang:picture_edit}">{icon:camera_unmount}</a></td>
     <td class="leftc"><a href="{users:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
     <td class="leftc"><a href="{users:url_delete}" title="{lang:remove}">{icon:editdelete}</a> </td>

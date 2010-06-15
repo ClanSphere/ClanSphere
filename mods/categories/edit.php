@@ -160,7 +160,7 @@ else {
   $check = cs_sql_count(__FILE__, 'categories', 'categories_id = "' . $cs_categories['categories_subid'] . '" AND categories_subid = "' . $categories_id . '"');
   
   if (!empty($check))
-  	cs_sql_update(__FILE__, 'categories', array('categories_subid'), array(0), $cs_categories['categories_subid']);
+    cs_sql_update(__FILE__, 'categories', array('categories_subid'), array(0), $cs_categories['categories_subid']);
   
   $cs_categories = cs_sql_select(__FILE__,'categories','categories_mod',"categories_id = '" . $categories_id . "'",0,0,1);
   cs_redirect($cs_lang['changes_done'],'categories','manage','where=' . $cs_categories['categories_mod']);

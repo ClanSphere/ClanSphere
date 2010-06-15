@@ -25,7 +25,7 @@
  
 {loop:count}
 <tr>
-	<td class="leftc">{count:count_id}</td>
+  <td class="leftc">{count:count_id}</td>
   <td class="leftc">{count:count_ip}</td>
   <td class="leftc">{count:count_locate}</td>
   <td class="leftc">{count:count_time}</td>

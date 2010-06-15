@@ -17,8 +17,8 @@
      <option value="0">----</option>{loop:games}
      <option value="{games:games_id}"{games:selection}>{games:games_name}</option>{stop:games}
     </select>
-	{img:game}
-	 - <a href="{url:games_create}">{lang:create}</a>
+  {img:game}
+   - <a href="{url:games_create}">{lang:create}</a>
   </td>
  </tr>
  <tr>
@@ -116,10 +116,10 @@
     <textarea class="rte_abcode" name="wars_report" cols="50" rows="8" id="wars_report">{value:report}</textarea>
   </td>
  </tr>
- 	<tr>
-		<td class="leftc">{icon:configure} {lang:more}</td>
-		<td class="leftb"><input type="checkbox" name="wars_close" value="1" {value:close_check} /> {lang:close}</td>
-	</tr>
+   <tr>
+    <td class="leftc">{icon:configure} {lang:more}</td>
+    <td class="leftb"><input type="checkbox" name="wars_close" value="1" {value:close_check} /> {lang:close}</td>
+  </tr>
  <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>
   <td class="leftb">

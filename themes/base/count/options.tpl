@@ -10,7 +10,7 @@
     <tr>
       <td class="leftc"  style="width:30%">{icon:kdvi} {lang:view}</td>
       <td class="leftb"><select name="view">
-	  <option value="stats" {count:stats}>{lang:stats}</option>
+    <option value="stats" {count:stats}>{lang:stats}</option>
           <option value="amstats" {count:amstats}>{lang:amstats}</option>
         </select>
       </td>
@@ -20,7 +20,7 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
-	<td class="headb" colspan="2">{lang:amstats} - {lang:options}</td>
+  <td class="headb" colspan="2">{lang:amstats} - {lang:options}</td>
     </tr>
     <tr>
       <td class="leftc"  style="width:30%">{icon:resizecol} {lang:width}</td>

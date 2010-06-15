@@ -82,41 +82,41 @@
 {if:squadmember}
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-	<tr>
-		<td class="headb" colspan="3">{lang:players}</td>
-	</tr>
-	<tr>
-		<td class="leftc">{lang:player}</td>
-		<td class="leftc">{lang:plays}</td>
-		<td class="leftc">{lang:date}</td>
-	</tr>
-	{if:no_players}
-	<tr>
-		<td class="leftb" colspan="3">{lang:no_players}</td>
-	</tr>
-	{stop:no_players}
-	{loop:nplayers}
-	<tr>
-		<td class="leftb">{nplayers:user}</td>
-		<td class="leftb">{nplayers:status}</td>
-		<td class="leftb">{nplayers:date}</td>
-	</tr>
-	{stop:nplayers}
-	{if:status}
-	<tr>
-		<td class="rightb" colspan="3">{lang:join_war}
-			<form method="post" id="statusedit" action="{url:wars_view:id={status:wars_id}}">
-				<select name="players_status">
-					<option value="yes" {status:yes}>{lang:yes}</option>
-					<option value="maybe" {status:maybe}>{lang:maybe}</option>
-					<option value="no" {status:no}>{lang:no}</option>
-				</select>
-				<input type="hidden" name="players_id" value="{status:players_id}" />
-				<input type="hidden" name="wars_id" value="{status:wars_id}" />
-				<input type="submit" name="status" value="{lang:submit}" />
-			</form>
-		</td>
-	</tr>
-	{stop:status}
+  <tr>
+    <td class="headb" colspan="3">{lang:players}</td>
+  </tr>
+  <tr>
+    <td class="leftc">{lang:player}</td>
+    <td class="leftc">{lang:plays}</td>
+    <td class="leftc">{lang:date}</td>
+  </tr>
+  {if:no_players}
+  <tr>
+    <td class="leftb" colspan="3">{lang:no_players}</td>
+  </tr>
+  {stop:no_players}
+  {loop:nplayers}
+  <tr>
+    <td class="leftb">{nplayers:user}</td>
+    <td class="leftb">{nplayers:status}</td>
+    <td class="leftb">{nplayers:date}</td>
+  </tr>
+  {stop:nplayers}
+  {if:status}
+  <tr>
+    <td class="rightb" colspan="3">{lang:join_war}
+      <form method="post" id="statusedit" action="{url:wars_view:id={status:wars_id}}">
+        <select name="players_status">
+          <option value="yes" {status:yes}>{lang:yes}</option>
+          <option value="maybe" {status:maybe}>{lang:maybe}</option>
+          <option value="no" {status:no}>{lang:no}</option>
+        </select>
+        <input type="hidden" name="players_id" value="{status:players_id}" />
+        <input type="hidden" name="wars_id" value="{status:wars_id}" />
+        <input type="submit" name="status" value="{lang:submit}" />
+      </form>
+    </td>
+  </tr>
+  {stop:status}
 </table>
 {stop:squadmember}

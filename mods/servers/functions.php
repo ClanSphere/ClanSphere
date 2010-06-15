@@ -1,4 +1,4 @@
 <?php
 function dns($host) {
-	return gethostbyname($host); 
+  return gethostbyname($host); 
 }      

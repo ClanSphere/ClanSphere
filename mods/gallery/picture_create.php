@@ -133,8 +133,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['data']['folders_select'] = make_folders_select('folders_id',$cs_gallery['folders_id'],'0','gallery');
 
   if(empty($file_up)) {
-  	$data['if']['file_up'] = FALSE;
-  	$data['if']['no_up'] = TRUE;
+    $data['if']['file_up'] = FALSE;
+    $data['if']['no_up'] = TRUE;
     $matches[1] = $cs_lang['pic_infos'];
     $return_types = '';
     foreach($img_filetypes AS $add) {
@@ -146,8 +146,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $matches[2] .= $cs_lang['filetypes'] . $return_types;
     $data['data']['info_clip'] = cs_abcode_clip($matches);
   } elseif($file_up ==1) {
-  	$data['if']['no_up'] = FALSE;
-  	$data['if']['file_up'] = TRUE;
+    $data['if']['no_up'] = FALSE;
+    $data['if']['file_up'] = TRUE;
     $data['hidden']['gallery_name'] = $cs_gallery['gallery_name'];
     $data['show']['picture'] = cs_html_img('mods/gallery/image.php?picname=' . $cs_gallery['gallery_name']);
   }
@@ -228,8 +228,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 else {
 
   $cs_gallery['gallery_watermark_pos'] = $watermark_pos;
-	$cells = array_keys($cs_gallery);
-	$save = array_values($cs_gallery);
+  $cells = array_keys($cs_gallery);
+  $save = array_values($cs_gallery);
   cs_sql_insert(__FILE__,'gallery',$cells,$save);
 
   cs_redirect($cs_lang['create_done'],'gallery','manage');

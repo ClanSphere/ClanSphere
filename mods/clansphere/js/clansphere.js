@@ -3,58 +3,58 @@
 
 (function($) {
 
-	// jQuery plugin definition
-	$.fn.TextAreaExpander = function(minHeight, maxHeight) {
+  // jQuery plugin definition
+  $.fn.TextAreaExpander = function(minHeight, maxHeight) {
 
-		var hCheck = !($.browser.msie || $.browser.opera);
+    var hCheck = !($.browser.msie || $.browser.opera);
 
-		// resize a textarea
-		function ResizeTextarea(e) {
+    // resize a textarea
+    function ResizeTextarea(e) {
 
-			// event or initialize element?
-			e = e.target || e;
+      // event or initialize element?
+      e = e.target || e;
 
-			// find content length and box width
-			var vlen = e.value.length, ewidth = e.offsetWidth;
-			if (vlen != e.valLength || ewidth != e.boxWidth) {
+      // find content length and box width
+      var vlen = e.value.length, ewidth = e.offsetWidth;
+      if (vlen != e.valLength || ewidth != e.boxWidth) {
 
-				if (hCheck && (vlen < e.valLength || ewidth != e.boxWidth)) e.style.height = "0px";
-				var h = Math.max(e.expandMin, Math.min(e.scrollHeight, e.expandMax));
+        if (hCheck && (vlen < e.valLength || ewidth != e.boxWidth)) e.style.height = "0px";
+        var h = Math.max(e.expandMin, Math.min(e.scrollHeight, e.expandMax));
 
-				e.style.overflow = (e.scrollHeight > h ? "auto" : "hidden");
-				e.style.height = h + "px";
+        e.style.overflow = (e.scrollHeight > h ? "auto" : "hidden");
+        e.style.height = h + "px";
 
-				e.valLength = vlen;
-				e.boxWidth = ewidth;
-			}
+        e.valLength = vlen;
+        e.boxWidth = ewidth;
+      }
 
-			return true;
-		};
+      return true;
+    };
 
-		// initialize
-		this.each(function() {
+    // initialize
+    this.each(function() {
 
-			// is a textarea?
-			if (this.nodeName.toLowerCase() != "textarea") return;
+      // is a textarea?
+      if (this.nodeName.toLowerCase() != "textarea") return;
 
-			// set height restrictions
-			var p = this.className.match(/expand(\d+)\-*(\d+)*/i);
-			this.expandMin = minHeight || (p ? parseInt('0'+p[1], 10) : 0);
-			this.expandMax = maxHeight || (p ? parseInt('0'+p[2], 10) : 99999);
+      // set height restrictions
+      var p = this.className.match(/expand(\d+)\-*(\d+)*/i);
+      this.expandMin = minHeight || (p ? parseInt('0'+p[1], 10) : 0);
+      this.expandMax = maxHeight || (p ? parseInt('0'+p[2], 10) : 99999);
 
-			// initial resize
-			ResizeTextarea(this);
+      // initial resize
+      ResizeTextarea(this);
 
-			// zero vertical padding and add events
-			if (!this.Initialized) {
-				this.Initialized = true;
-				$(this).css("padding-top", 0).css("padding-bottom", 0);
-				$(this).bind("keyup", ResizeTextarea).bind("focus", ResizeTextarea);
-			}
-		});
+      // zero vertical padding and add events
+      if (!this.Initialized) {
+        this.Initialized = true;
+        $(this).css("padding-top", 0).css("padding-bottom", 0);
+        $(this).bind("keyup", ResizeTextarea).bind("focus", ResizeTextarea);
+      }
+    });
 
-		return this;
-	};
+    return this;
+  };
 
 })(jQuery);
 
@@ -62,44 +62,44 @@ $("textarea[class!=rte_html]").TextAreaExpander(100, 500);
 
 function passwordcheck(pass) {
 
-	var password_numbers = '0';
-	var password_letters = '0';
-	var password_lower = '0';
-	var password_upper = '0';
-	var special = '0';
-	var new_pass = pass.split("");
+  var password_numbers = '0';
+  var password_letters = '0';
+  var password_lower = '0';
+  var password_upper = '0';
+  var special = '0';
+  var new_pass = pass.split("");
 
-	for (x=0;x<new_pass.length;x++) {	
-		if (isNaN(new_pass[x])) {
-			password_letters++;
-		} else {
-			password_numbers++;
-		}
-		var letter = new_pass[x];
-		if (letter.match(/[a-z]/)) {
-			password_lower++;
-		}
-		if (letter.match(/[A-Z]/)) {
-			password_upper++;
-		}
-		if (letter.match(/\W/)) {
-			special++;
-		}
-	}
+  for (x=0;x<new_pass.length;x++) {  
+    if (isNaN(new_pass[x])) {
+      password_letters++;
+    } else {
+      password_numbers++;
+    }
+    var letter = new_pass[x];
+    if (letter.match(/[a-z]/)) {
+      password_lower++;
+    }
+    if (letter.match(/[A-Z]/)) {
+      password_upper++;
+    }
+    if (letter.match(/\W/)) {
+      special++;
+    }
+  }
 
-	w = "";
+  w = "";
 
-	if(new_pass.length >= 8) { w = "25%"; }
-	if(new_pass.length >= 8 && password_numbers >= 2) {	w = "50%"; }
-	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2) {	w = "75%"; }
-	if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2 && special > 0) {	w = "100%"; }
+  if(new_pass.length >= 8) { w = "25%"; }
+  if(new_pass.length >= 8 && password_numbers >= 2) {  w = "50%"; }
+  if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2) {  w = "75%"; }
+  if(new_pass.length >= 8 && password_lower >= 3 && password_upper >= 2 && password_numbers >= 2 && special > 0) {  w = "100%"; }
 
-	$("#pass_secure").css('width', w);
+  $("#pass_secure").css('width', w);
 }
 
 $(".clip").live('click', function () { 
-	$(this).children('img').toggle();
-	$(this).next('div').slideToggle("slow");
+  $(this).children('img').toggle();
+  $(this).next('div').slideToggle("slow");
 }).next('div').hide();
 
 $(document).bind('csAjaxLoad', function(e,ele) {
@@ -134,7 +134,7 @@ function abc_set(text, id) {
 
 function abc_insert(aTag,eTag, name) {
 
-	//http://aktuell.de.selfhtml.org/tippstricks/javascript/bbcode/ modified
+  //http://aktuell.de.selfhtml.org/tippstricks/javascript/bbcode/ modified
   var input = document.getElementById(name);
   input.focus();
   /* fuer Internet Explorer */
@@ -191,7 +191,7 @@ function abc_insert(aTag,eTag, name) {
 
 function abc_insert_list(aTag,eTag, name) {
 
-	//http://aktuell.de.selfhtml.org/tippstricks/javascript/bbcode/ modified
+  //http://aktuell.de.selfhtml.org/tippstricks/javascript/bbcode/ modified
   var input = opener.document.getElementById(name);
   input.focus();
   /* fuer Internet Explorer */
@@ -280,63 +280,63 @@ function cs_validate(language, module) {
 }
 
 function cs_chmod_CheckChange(Checkbox, Value) {
-	
-	if ($("#" + Checkbox).is(':checked') == true) {
-	
-		$('#chmod').attr('value', parseInt($('#chmod').attr('value')) + Value);
-	
-	} else {
-		
-		$('#chmod').attr('value', parseInt($('#chmod').attr('value')) - Value);
-		
-	}
-	
+  
+  if ($("#" + Checkbox).is(':checked') == true) {
+  
+    $('#chmod').attr('value', parseInt($('#chmod').attr('value')) + Value);
+  
+  } else {
+    
+    $('#chmod').attr('value', parseInt($('#chmod').attr('value')) - Value);
+    
+  }
+  
 }
 
 function cs_chmod_TextChange() {
-	
-	var chmod = parseInt($('#chmod').attr('value'));
-	
-		$('form#explorer_chmod :checkbox').attr('checked', false);
+  
+  var chmod = parseInt($('#chmod').attr('value'));
+  
+    $('form#explorer_chmod :checkbox').attr('checked', false);
 
-	if (chmod >= 400) {
-		$('#owner_read').attr('checked', true);
-		chmod = chmod - 400;
-	}
-	if (chmod >= 200) {
-		$('#owner_write').attr('checked', true);
-		chmod = chmod - 200;
-	}
-	if (chmod >= 100) {
-		$('#owner_execute').attr('checked', true);
-		chmod = chmod - 100;
-	}
-	
-	if (chmod >= 40) {
-		$('#group_read').attr('checked', true);
-		chmod = chmod - 40;
-	}
-	if (chmod >= 20) {
-		$('#group_write').attr('checked', true);
-		chmod = chmod - 20;
-	}
-	if (chmod >= 10) {
-		$('#group_execute').attr('checked', true);
-		chmod = chmod - 10;
-	}
-	
-	if (chmod >= 4) {
-		$('#public_read').attr('checked', true);
-		chmod = chmod - 4;
-	}
-	if (chmod >= 2) {
-		$('#public_write').attr('checked', true);
-		chmod = chmod - 2;
-	}
-	if (chmod >= 1) {
-		$('#public_execute').attr('checked', true);
-		chmod = chmod - 1;
-	}
+  if (chmod >= 400) {
+    $('#owner_read').attr('checked', true);
+    chmod = chmod - 400;
+  }
+  if (chmod >= 200) {
+    $('#owner_write').attr('checked', true);
+    chmod = chmod - 200;
+  }
+  if (chmod >= 100) {
+    $('#owner_execute').attr('checked', true);
+    chmod = chmod - 100;
+  }
+  
+  if (chmod >= 40) {
+    $('#group_read').attr('checked', true);
+    chmod = chmod - 40;
+  }
+  if (chmod >= 20) {
+    $('#group_write').attr('checked', true);
+    chmod = chmod - 20;
+  }
+  if (chmod >= 10) {
+    $('#group_execute').attr('checked', true);
+    chmod = chmod - 10;
+  }
+  
+  if (chmod >= 4) {
+    $('#public_read').attr('checked', true);
+    chmod = chmod - 4;
+  }
+  if (chmod >= 2) {
+    $('#public_write').attr('checked', true);
+    chmod = chmod - 2;
+  }
+  if (chmod >= 1) {
+    $('#public_execute').attr('checked', true);
+    chmod = chmod - 1;
+  }
 }
 
 function cs_select_checkboxes(formcontent) {
@@ -352,28 +352,28 @@ function cs_select_checkboxes(formcontent) {
 }
 
 function js_toggle_all(formobj, formtype, option, exclude, setto) {
-	for (var i =0; i < formobj.elements.length; i++)
-	{
-		var elm = formobj.elements[i];
-		if (elm.type == formtype)
-		{
-			switch (formtype)
-			{
-				case 'radio':
-					if (elm.value == option) // option == '' evaluates true when option = 0
-					{
-						elm.checked = setto;
-					}
-				break;
-				case 'select-one':
-					elm.selectedIndex = setto;
-				break;
-				default:
-					elm.checked = setto;
-				break;
-			}
-		}
-	}
+  for (var i =0; i < formobj.elements.length; i++)
+  {
+    var elm = formobj.elements[i];
+    if (elm.type == formtype)
+    {
+      switch (formtype)
+      {
+        case 'radio':
+          if (elm.value == option) // option == '' evaluates true when option = 0
+          {
+            elm.checked = setto;
+          }
+        break;
+        case 'select-one':
+          elm.selectedIndex = setto;
+        break;
+        default:
+          elm.checked = setto;
+        break;
+      }
+    }
+  }
 }
 
 function js_check_all(formobj) {

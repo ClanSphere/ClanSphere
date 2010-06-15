@@ -36,8 +36,8 @@
         {text:smileys}
       </td>
       <td class="leftb" colspan="2">
-      	{text:features}
-      	<textarea class="rte_abcode" name="files_description" cols="50" rows="10" id="files_description">{file:files_description}</textarea>
+        {text:features}
+        <textarea class="rte_abcode" name="files_description" cols="50" rows="10" id="files_description">{file:files_description}</textarea>
       </td>
     </tr>
     {loop:mirrors}
@@ -67,12 +67,12 @@
         {lang:close}<br />
         <input type="checkbox" name="files_vote" value="1" {if:votes}checked="checked"{stop:votes}/>
         {lang:votes}
-			</td>
+      </td>
     </tr>
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb" colspan="2">
-      	<input type="hidden" name="id" value="{file:files_id}" />
+        <input type="hidden" name="id" value="{file:files_id}" />
         <input type="submit" name="submit" value="{lang:create}" />
         <input type="hidden" name="run_loop" value="{mirror:run_loop}" />
         <input type="submit" name="mirror" value="{lang:mirrors+}" /></td>

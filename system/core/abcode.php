@@ -172,7 +172,7 @@ function cs_abcode_list($matches) {
 function cs_abcode_img($matches) {
 
   if ($matches[0]{4} == ']') {
-  	return cs_html_img($matches[1]);
+    return cs_html_img($matches[1]);
   } else {
     $img  = cs_html_img($matches[3],$matches[2],$matches[1]);
     return cs_html_link($matches[3],$img);

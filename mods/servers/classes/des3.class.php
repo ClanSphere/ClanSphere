@@ -35,257 +35,257 @@
 
 class descent3
 {
-	var $host     = false;
-	var $port     = false;
-	var $socket   = false;
-	var $g_info   = false;
-	var $r_info   = false;
-	var $p_info   = false;
-	var $response = false;
+  var $host     = false;
+  var $port     = false;
+  var $socket   = false;
+  var $g_info   = false;
+  var $r_info   = false;
+  var $p_info   = false;
+  var $response = false;
 
-	function microtime_float()
-	{
-		list($usec, $sec) = explode(" ", microtime());
+  function microtime_float()
+  {
+    list($usec, $sec) = explode(" ", microtime());
 
-		return ((float)$usec + (float)$sec);
-	}
+    return ((float)$usec + (float)$sec);
+  }
 
-	function connect()
-	{
-		if (($this->socket = fsockopen('udp://'. $this->host, $this->port, $errno, $errstr, 30)))
-		{
-			return true;
-		}
+  function connect()
+  {
+    if (($this->socket = fsockopen('udp://'. $this->host, $this->port, $errno, $errstr, 30)))
+    {
+      return true;
+    }
 
-		return false;
-	}
+    return false;
+  }
 
-	function disconnect()
-	{
-		if ((fclose($this->socket)))
-		{
-			return true;
-		}
+  function disconnect()
+  {
+    if ((fclose($this->socket)))
+    {
+      return true;
+    }
 
-		return false;
-	}
+    return false;
+  }
 
-	function get_rules()
-	{
-		$write = "\x01\x1e\x0b\x00\x1b\x2f\xf4\x41\x09\x00\x00\x00";
-		$stream = $this->get_status($write);
+  function get_rules()
+  {
+    $write = "\x01\x1e\x0b\x00\x1b\x2f\xf4\x41\x09\x00\x00\x00";
+    $stream = $this->get_status($write);
 
-		return $stream;
-	}
+    return $stream;
+  }
 
-	function get_players()
-	{
+  function get_players()
+  {
 
-		$write = "\x01\x72\x03\x00";
-		$stream = $this->get_status($write);
+    $write = "\x01\x72\x03\x00";
+    $stream = $this->get_status($write);
 
-		return $stream;
-	}
+    return $stream;
+  }
 
-	function get_status($write)
-	{
-		$info = '';
+  function get_status($write)
+  {
+    $info = '';
 
-		if ($this->connect() === false)
-		{
-			return false;
-		}
+    if ($this->connect() === false)
+    {
+      return false;
+    }
 
-		socket_set_timeout($this->socket, 2);
+    socket_set_timeout($this->socket, 2);
 
-		$time_begin = microtime();
+    $time_begin = microtime();
 
-		fwrite($this->socket, $write);
+    fwrite($this->socket, $write);
 
-		$first = fread($this->socket, 1);
-		$this->response =  microtime() - $time_begin;
+    $first = fread($this->socket, 1);
+    $this->response =  microtime() - $time_begin;
 
-		$status = socket_get_status($this->socket);
-		$length = $status['unread_bytes'];
+    $status = socket_get_status($this->socket);
+    $length = $status['unread_bytes'];
 
-		if ($length > 0)
-		{
-			$info = $first.fread($this->socket, $length);
-		}
+    if ($length > 0)
+    {
+      $info = $first.fread($this->socket, $length);
+    }
 
-		// response time
-		$this->response = ($this->response * 1000);
-		$this->response = (int)$this->response;
+    // response time
+    $this->response = ($this->response * 1000);
+    $this->response = (int)$this->response;
 
-		if ($this->disconnect() === false)
-		{
-			return false;
-		}
+    if ($this->disconnect() === false)
+    {
+      return false;
+    }
 
-		return $info;
-	}
+    return $info;
+  }
 
-	function getstream($host, $port, $queryport)
-	{
-		if (empty($queryport))
-		{
-			$this->port = $port;
-		}
-		else
-		{
-			$this->port = $queryport;
-		}
+  function getstream($host, $port, $queryport)
+  {
+    if (empty($queryport))
+    {
+      $this->port = $port;
+    }
+    else
+    {
+      $this->port = $queryport;
+    }
 
-		$this->host = $host;
+    $this->host = $host;
 
-		// get the infostream from server
-		$this->r_info = $this->get_rules();
-		$this->p_info = $this->get_players();
+    // get the infostream from server
+    $this->r_info = $this->get_rules();
+    $this->p_info = $this->get_players();
 
-		if ($this->r_info)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+    if ($this->r_info)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
 
-	function getvalue_byte($def)
-	{
-		// get value (byte) from raw data
-		$tmp = $def[0];
-		$this->r_info = substr($def, 1);
+  function getvalue_byte($def)
+  {
+    // get value (byte) from raw data
+    $tmp = $def[0];
+    $this->r_info = substr($def, 1);
 
-		return ord($tmp);
-	}
+    return ord($tmp);
+  }
 
-	function getvalue_string($def)
-	{
+  function getvalue_string($def)
+  {
 
-		// get value (string) from raw data
-		$tmp = '';
-		$index = 0;
+    // get value (string) from raw data
+    $tmp = '';
+    $index = 0;
 
-		while (ord($def[$index]) != 0)
-		{
-			$tmp .= $def[$index];
-			$index++;
-		}
-		$this->r_info = substr($def, $index+1);
+    while (ord($def[$index]) != 0)
+    {
+      $tmp .= $def[$index];
+      $index++;
+    }
+    $this->r_info = substr($def, $index+1);
 
-		return $tmp;
-	}
+    return $tmp;
+  }
 
-	function getrules($phgdir)
-	{
-		// response time
-		$srv_rules['response'] = $this->response . ' ms';
+  function getrules($phgdir)
+  {
+    // response time
+    $srv_rules['response'] = $this->response . ' ms';
 
-		// get the rules values
-		$srv_rules['cache']       = $this->getvalue_byte($this->r_info);   // 1 byte
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+    // get the rules values
+    $srv_rules['cache']       = $this->getvalue_byte($this->r_info);   // 1 byte
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
-		$srv_rules['hostname']    = $this->getvalue_string($this->r_info); // string (hostname)
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+    $srv_rules['hostname']    = $this->getvalue_string($this->r_info); // string (hostname)
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['mapfile']     = $this->getvalue_string($this->r_info); // string (mapfile)
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['mapfile']     = $this->getvalue_string($this->r_info); // string (mapfile)
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['mapname']     = $this->getvalue_string($this->r_info);  // string (mapname)
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['mapname']     = $this->getvalue_string($this->r_info);  // string (mapname)
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['gametype']    = $this->getvalue_string($this->r_info); // string (gametype)
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['gametype']    = $this->getvalue_string($this->r_info); // string (gametype)
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // 1 byte
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['nowplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['nowplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
 
-		$srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
-		$srv_rules['maxplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
+    $srv_rules['cache']      .= $this->getvalue_byte($this->r_info);   // x00
+    $srv_rules['maxplayers']  = $this->getvalue_byte($this->r_info);   // 1 byte (nowplayers)
 
-		// path to map picture
-		$srv_rules['map_path'] = 'maps/descent3';
+    // path to map picture
+    $srv_rules['map_path'] = 'maps/descent3';
 
 
-		// set default map picture
-		$srv_rules['map_default'] = 'default.jpg';
-		$srv_rules['mapname'] = $srv_rules['mapfile'];
+    // set default map picture
+    $srv_rules['map_default'] = 'default.jpg';
+    $srv_rules['mapname'] = $srv_rules['mapfile'];
 
-		// set gamename
-		$srv_rules['gamename'] = "Descent 3";
+    // set gamename
+    $srv_rules['gamename'] = "Descent 3";
 
-		// no privileges
-		$srv_rules['sets'] = '-';
+    // no privileges
+    $srv_rules['sets'] = '-';
 
-		// return all server rules
-		return $srv_rules;
-	}
+    // return all server rules
+    return $srv_rules;
+  }
 
-	function getplayers_head() {
-		global $cs_lang;
-		$head[]['name'] = $cs_lang['id'];
-		$head[]['name'] = $cs_lang['name'];
-		return $head;
-	}
+  function getplayers_head() {
+    global $cs_lang;
+    $head[]['name'] = $cs_lang['id'];
+    $head[]['name'] = $cs_lang['name'];
+    return $head;
+  }
 
-	function getplayers()
-	{
-		$players = array();
-			
-		// filter the not needed code & create array
-		$cache = substr($this->p_info, 4, -1);
-		$players = explode("\x00", $cache);
+  function getplayers()
+  {
+    $players = array();
+      
+    // filter the not needed code & create array
+    $cache = substr($this->p_info, 4, -1);
+    $players = explode("\x00", $cache);
 
-		// how many player must search
-		$nowplayers = count($players) - 1;
+    // how many player must search
+    $nowplayers = count($players) - 1;
 
-		// check the connected players and sort the ranking
-		if ($nowplayers == 0)
-		{
-			return array();
-		}
+    // check the connected players and sort the ranking
+    if ($nowplayers == 0)
+    {
+      return array();
+    }
 
-		// manage the player data in the following code
-		$index = 1;
-		$client = 0;
+    // manage the player data in the following code
+    $index = 1;
+    $client = 0;
 
-		while ($nowplayers != 0)
-		{
-			// strip html code from player name
-			$players[$client] = htmlentities($players[$client]);
+    while ($nowplayers != 0)
+    {
+      // strip html code from player name
+      $players[$client] = htmlentities($players[$client]);
 
-			$tdata[$client][0] = '<td class="centerb">' . $index . '</td>';
-			$tdata[$client][0] .= '<td class="centerb">' . $players[$client] . '</td>';
+      $tdata[$client][0] = '<td class="centerb">' . $index . '</td>';
+      $tdata[$client][0] .= '<td class="centerb">' . $players[$client] . '</td>';
 
-			$nowplayers--;
-			$client++;
-			$index++;
-		}
-		return $tdata;
-	}
+      $nowplayers--;
+      $client++;
+      $index++;
+    }
+    return $tdata;
+  }
 }

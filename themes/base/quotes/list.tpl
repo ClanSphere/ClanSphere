@@ -9,8 +9,8 @@
  </tr>
  <tr>
   <td class="leftb" colspan="2">{lang:category}
-  	{head:dropdown}
-  	<input type="submit" name="submit" value="{lang:show}" />
+    {head:dropdown}
+    <input type="submit" name="submit" value="{lang:show}" />
   </td>
  </tr>
 </table>

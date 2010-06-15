@@ -53,7 +53,7 @@ if(!empty($data['thread']['board_pwd'])) {
 }
 
 if(!empty($data['thread']['threads_ghost'])) {
-	cs_redirect(NULL, 'board', 'thread','where=' . $data['thread']['threads_ghost_thread']);
+  cs_redirect(NULL, 'board', 'thread','where=' . $data['thread']['threads_ghost_thread']);
 }
 
 if(!empty($data['thread']['squads_id']) AND $account['access_board'] < $data['thread']['board_access']) {
@@ -217,7 +217,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
             $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
             $votes_save = array($id,$account['users_id'],$time_now,$voted_election,$users_ip,'board');
             cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
-						cs_redirect(NULL, 'board', 'thread','where=' . $id);
+            cs_redirect(NULL, 'board', 'thread','where=' . $id);
           }
         }
       }

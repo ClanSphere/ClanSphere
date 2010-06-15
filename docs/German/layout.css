@@ -1,6 +1,6 @@
 /* CSS Document */
 body { margin: 0; border: 0; text-align:center; background-image: url('img/body_bg.png'); background-repeat: repeat-x; background-x-position: 0pt;
-	background-y-position: 0pt; font-family: Verdana, Helvetica, sans-serif; font-size: 10pt; }
+  background-y-position: 0pt; font-family: Verdana, Helvetica, sans-serif; font-size: 10pt; }
 img { border: 0; }
 td { border: dashed 1px #CCCCCC; }
 a:link, a:visited { text-decoration: none; color:#000000;}
@@ -10,10 +10,10 @@ a:link, a:visited { text-decoration: none; color:#000000;}
 #container { clear:both; width: 1000px; height: auto; margin: 0 auto; }
 #header { clear:both; float:left; width: 1000px; height: 75px; background-image:url('img/header.png'); background-repeat: no-repeat; }
 #head_text { clear:both; width: 988px; text-align: center; background-color: #cfcfcf; font-weight:bold; font-size: 18px; border-left-width: 6px;
-	border-left-style: solid; border-left-color: #bdbdbd; border-right-width: 6px; border-right-style: solid; border-right-color: #bdbdbd; }
+  border-left-style: solid; border-left-color: #bdbdbd; border-right-width: 6px; border-right-style: solid; border-right-color: #bdbdbd; }
 #main_text { clear:both; width: 958px; text-align: left; padding-left: 15px; padding-right: 15px; background-color: #e8e7e7; border-left-width: 6px; 
-	border-left-style: solid; border-left-color: #bdbdbd; border-right-width: 6px; border-right-style: solid; border-right-color: #bdbdbd; }
+  border-left-style: solid; border-left-color: #bdbdbd; border-right-width: 6px; border-right-style: solid; border-right-color: #bdbdbd; }
 #main_help { clear:both; float:left; width: 479px; height: auto; }
 #other_help { float:left; width: 479px; height: auto; }
-#footer { width: 1000px; height: 20px; background-color: #dfdfdf; float: left; padding-top: 5px; margin-top: 0px; border-top-width: 1px;	
-	border-top-style: solid; border-top-color: #949494; text-align: center; font-size: 6pt; }
+#footer { width: 1000px; height: 20px; background-color: #dfdfdf; float: left; padding-top: 5px; margin-top: 0px; border-top-width: 1px;  
+  border-top-style: solid; border-top-color: #949494; text-align: center; font-size: 6pt; }

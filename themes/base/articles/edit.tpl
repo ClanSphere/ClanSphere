@@ -55,18 +55,18 @@
       {lang:nav}<br />
       <input type="checkbox" name="articles_fornext" value="1"  {data:articles_fornext_checked} />
       {lang:fornext}<br />
-	  <input type="checkbox" name="articles_newtime" value="1" />
+    <input type="checkbox" name="articles_newtime" value="1" />
       {lang:new_date}</td>
   </tr>
   {pictures:select}
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-		<input type="hidden" name="id" value="{data:articles_id}" />
-		<input type="hidden" name="articles_time" value="{data:articles_time}" />
-		<input type="submit" name="submit" value="{lang:edit}" />
-	    <input type="submit" name="preview" value="{lang:preview}" />
- 			</td>
+    <input type="hidden" name="id" value="{data:articles_id}" />
+    <input type="hidden" name="articles_time" value="{data:articles_time}" />
+    <input type="submit" name="submit" value="{lang:edit}" />
+      <input type="submit" name="preview" value="{lang:preview}" />
+       </td>
   </tr>
 </table>
 </form>

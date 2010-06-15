@@ -113,9 +113,9 @@ if (!empty($_POST['submit']) && empty($error)) {
 
   if ($thread['board_id'] != $board_id) {
 
-  	$board_id = $thread['board_id'];
+    $board_id = $thread['board_id'];
 
-  	cs_board_comments($board_id);
+    cs_board_comments($board_id);
     cs_board_last($board_id);
     cs_board_threads($board_id);
   }  

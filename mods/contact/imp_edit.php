@@ -57,13 +57,13 @@ if(!empty($imp_form)) {
   $data['imprint']['content'] = file_exists($filename) ? $imprint[1] : '';
 
   if(empty($cs_main['rte_html'])) {
-		$data['if']['abcode'] = TRUE;
-		$data['if']['rte_html'] = FALSE;
+    $data['if']['abcode'] = TRUE;
+    $data['if']['rte_html'] = FALSE;
     $data['abcode']['features'] = cs_abcode_features('imprint');
   } else {
-  	$data['if']['abcode'] = FALSE;
-		$data['if']['rte_html'] = TRUE;
-		$data['rte']['html'] = cs_rte_html('imprint',$data['imprint']['content']);
+    $data['if']['abcode'] = FALSE;
+    $data['if']['rte_html'] = TRUE;
+    $data['rte']['html'] = cs_rte_html('imprint',$data['imprint']['content']);
   }
 
   $data['if']['done']     = FALSE;

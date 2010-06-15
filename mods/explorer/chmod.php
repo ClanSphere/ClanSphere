@@ -36,11 +36,11 @@ if(empty($_POST['submit'])) {
     $rights['p_r'] =   4; $rights['p_w'] =   2; $rights['p_e'] =   1;
  
     foreach ($rights AS $name => $min) {
-    	if ($temp >= $min) {
-    		$temp -= $min;
-    		$data['check'][$name] = $check;
-    	} else
-    	  $data['check'][$name] = '';
+      if ($temp >= $min) {
+        $temp -= $min;
+        $data['check'][$name] = $check;
+      } else
+        $data['check'][$name] = '';
     }
 
     echo cs_subtemplate(__FILE__, $data, 'explorer', 'chmod');

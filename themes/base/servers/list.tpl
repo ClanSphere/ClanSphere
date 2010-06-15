@@ -31,7 +31,7 @@
           <td class="leftc" style="width:125px;">{lang:host}</td>
           <td class="leftb"><a href="{servers:proto}{servers:servers_ip}:{servers:servers_port}">{servers:hostname}</a></td>
         </tr>
-		    <tr>
+        <tr>
           <td class="leftc" style="width:125px;">{lang:ip}</td>
           <td class="leftb">{servers:gq_address}:{servers:gq_port}</td>
         </tr>
@@ -82,7 +82,7 @@
   </tr>
   {loop:players}
   <tr>
-	{players:0}
+  {players:0}
   </tr>
   {stop:players}
 </table>

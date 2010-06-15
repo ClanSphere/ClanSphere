@@ -47,5 +47,5 @@ if($thr_where == "threads_last_time > '" . $cs_readtime . "'") {
     cs_redirect($cs_lang['mark_all'], 'board', 'list');
 }
 else {
-	cs_redirect($cs_lang['mark_board'], 'board', 'listcat', 'id=' . $_GET['id']);
+  cs_redirect($cs_lang['mark_board'], 'board', 'listcat', 'id=' . $_GET['id']);
 }

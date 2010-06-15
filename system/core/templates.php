@@ -96,26 +96,26 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $string);
   $string = cs_conditiontemplate($string, $data);
   $string = cs_looptemplate($source, $string, $data);
-	if($cs_main['xsrf_protection']===true)
-		$string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
+  if($cs_main['xsrf_protection']===true)
+    $string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
   $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
   $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
 
   if(!empty($navfiles)) {
-		$string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $string);
-		$string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_templatefile', $string);
-	}
+    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $string);
+    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_templatefile', $string);
+  }
 
   global $account;
   if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
 
     $forbidden = array('abcode/sourcebox', 'clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500', 'pictures/select');
     if(!in_array($mod . '/' . $action, $forbidden)) {
-			
-			// prevent from double inserting the xsrf protection key
-			$xsrf = $cs_main['xsrf_protection'];
-			$cs_main['xsrf_protection'] = false;
-			
+      
+      // prevent from double inserting the xsrf protection key
+      $xsrf = $cs_main['xsrf_protection'];
+      $cs_main['xsrf_protection'] = false;
+      
       include_once 'mods/explorer/functions.php';
 
       $data = array();
@@ -130,8 +130,8 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
       $data['link']['phpsource'] = cs_explorer_path($data['raw']['phpsource'], 'escape');
       $string = cs_subtemplate(__FILE__, $data, 'clansphere', 'themebar');
 
-			// reset the xsrf protection option
-			$cs_main['xsrf_protection'] = $xsrf;
+      // reset the xsrf protection option
+      $cs_main['xsrf_protection'] = $xsrf;
     }
   }
   
@@ -139,33 +139,33 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 }
 
 function cs_xsrf_protection_field($matches) {
-	static $xsrf_key;
-	if(empty($xsrf_key)) {
-		$xsrf_key = md5(rand());
-		$_SESSION['cs_xsrf_key'] = $xsrf_key;
-	}
-	
-	return $matches[0] . "\n" . '<div style="display:none;"><input type="hidden" name="cs_xsrf_key" value="' . $xsrf_key . '" /></div>' . "\n";
+  static $xsrf_key;
+  if(empty($xsrf_key)) {
+    $xsrf_key = md5(rand());
+    $_SESSION['cs_xsrf_key'] = $xsrf_key;
+  }
+  
+  return $matches[0] . "\n" . '<div style="display:none;"><input type="hidden" name="cs_xsrf_key" value="' . $xsrf_key . '" /></div>' . "\n";
 }
 
 function cs_wrap_templatefile($matches)
 {
-	global $cs_main;
-	$exceptions = array('clansphere_navmeta');
-	if(!in_array($matches[1] . '_' . $matches[2], $exceptions)) {
-		if(isset($cs_main['ajax']) && $cs_main['ajax']) {
-			$spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
+  global $cs_main;
+  $exceptions = array('clansphere_navmeta');
+  if(!in_array($matches[1] . '_' . $matches[2], $exceptions)) {
+    if(isset($cs_main['ajax']) && $cs_main['ajax']) {
+      $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
 
-			$nav = $matches[1] . '_' . $matches[2];
+      $nav = $matches[1] . '_' . $matches[2];
 
-			$m = $matches;
-			array_shift($m);
-			$id = str_replace('=','_', implode('_', $m));
-			$el = !in_array($nav,$spans) ? 'div' : 'span';
-			return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
-		}
-	}
-	return cs_templatefile($matches);
+      $m = $matches;
+      array_shift($m);
+      $id = str_replace('=','_', implode('_', $m));
+      $el = !in_array($nav,$spans) ? 'div' : 'span';
+      return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
+    }
+  }
+  return cs_templatefile($matches);
 }
 
 function cs_templatefile($matches)
@@ -176,15 +176,15 @@ function cs_templatefile($matches)
     cs_error($file, 'cs_templatefile - File not found');
     return $matches[0];
   }
-	
-	if (!empty($matches[3]) && !empty($matches[4]))
-	{
-	  $backup = isset($_GET[$matches[3]]) ? NULL : $_GET[$matches[3]];
-	  $_GET[$matches[3]] = $matches[4];
-	  $return = cs_filecontent($file);
-	  if (isset($backup)) unset($_GET[$matches[3]]); else $_GET[$matches[4]] = $backup;
-	  return $return;
-	}
+  
+  if (!empty($matches[3]) && !empty($matches[4]))
+  {
+    $backup = isset($_GET[$matches[3]]) ? NULL : $_GET[$matches[3]];
+    $_GET[$matches[3]] = $matches[4];
+    $return = cs_filecontent($file);
+    if (isset($backup)) unset($_GET[$matches[3]]); else $_GET[$matches[4]] = $backup;
+    return $return;
+  }
   return cs_filecontent($file);
 }
 
@@ -236,24 +236,24 @@ function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $i
       cs_redirectmsg($message, $id, $icon);
   }
 
-	$persistent_params = array('xhr', 'xhr_navlists');
+  $persistent_params = array('xhr', 'xhr_navlists');
 
-	$more = explode('#', $more);
+  $more = explode('#', $more);
 
-	foreach($persistent_params AS $p) {
-		if(isset($_REQUEST[$p])) {
-			$more[0] .= !empty($more[0]) ? '&' : '';
-			$more[0] .= $p . '=' . $_REQUEST[$p];
-		}
-	}
+  foreach($persistent_params AS $p) {
+    if(isset($_REQUEST[$p])) {
+      $more[0] .= !empty($more[0]) ? '&' : '';
+      $more[0] .= $p . '=' . $_REQUEST[$p];
+    }
+  }
 
-	$more = implode('#', $more);
+  $more = implode('#', $more);
 
-	$more = empty($more) ? 0 : $more;
+  $more = empty($more) ? 0 : $more;
 
   $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
 
-	header('location: ' . $url);
+  header('location: ' . $url);
   exit();
 }
 
@@ -354,7 +354,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
   $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
-	$cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $cs_temp_get);
+  $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $cs_temp_get);
   $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_wrap_templatefile', $cs_temp_get);
   $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
   $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);

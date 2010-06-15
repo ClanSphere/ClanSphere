@@ -47,18 +47,18 @@ if(isset($_POST['submit'])) {
       $error .= sprintf($cs_lang['too_big'], $size) . cs_html_br(1);
     }
   } else {
-  	$error .= $cs_lang['no_watermark'] . cs_html_br(1);
+    $error .= $cs_lang['no_watermark'] . cs_html_br(1);
   }
   
 
   if(!empty($cs_gallery_wm['categories_name'])) {
-  	$where = "categories_name = '" . cs_sql_escape($cs_gallery_wm['categories_name']) . "' AND categories_mod = 'gallery-watermark' ";
-  	$where .= "AND categories_id != '" . $wm_id . "'";
-  	$check_name = cs_sql_count(__FILE__,'categories',$where);
-  	if(!empty($check_name))
-  		$error .= $cs_lang['watermark_exists'] . cs_html_br(1);
+    $where = "categories_name = '" . cs_sql_escape($cs_gallery_wm['categories_name']) . "' AND categories_mod = 'gallery-watermark' ";
+    $where .= "AND categories_id != '" . $wm_id . "'";
+    $check_name = cs_sql_count(__FILE__,'categories',$where);
+    if(!empty($check_name))
+      $error .= $cs_lang['watermark_exists'] . cs_html_br(1);
   } else {
-  	$error .= $cs_lang['no_name'] . cs_html_br(1);
+    $error .= $cs_lang['no_name'] . cs_html_br(1);
   } 
 }
 
@@ -70,7 +70,7 @@ elseif(!empty($error))
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $cs_gallery_wm;
+  $data['data'] = $cs_gallery_wm;
 
   $select = 'categories_picture, categories_name'; 
   $where = "categories_id = '" . $wm_id . "'";

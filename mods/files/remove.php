@@ -35,9 +35,9 @@ if(isset($_POST['cancel']))
   cs_redirect($cs_lang['del_false'], 'files');
 
 else {
-	
-	$data['lang']['del_rly'] = sprintf($cs_lang['del_rly'],$files_id);
-	$data['file']['id'] = $files_id;
+  
+  $data['lang']['del_rly'] = sprintf($cs_lang['del_rly'],$files_id);
+  $data['file']['id'] = $files_id;
 
   echo cs_subtemplate(__FILE__,$data,'files','remove');
 }

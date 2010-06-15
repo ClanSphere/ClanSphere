@@ -61,12 +61,12 @@ if ($cups_system == 'users') {
 $count_teams = count($data['teams']);
 $data['if']['teams_loop'] = empty($count_teams) ? FALSE : TRUE;
 for ($i = 0; $i < $count_teams; $i++) {
-	$data['teams'][$i]['join'] = cs_date('unix', $data['teams'][$i]['cupsquads_time'],1);
-	if ($cups_system == 'teams') {
-		$data['teams'][$i]['team'] = empty($data['teams'][$i]['squads_id']) ? cs_secure($data['teams'][$i]['squads_name']) : cs_link(cs_secure($data['teams'][$i]['squads_name']),'squads','view','id=' . $$data['teams'][$i]['squads_id']);
+  $data['teams'][$i]['join'] = cs_date('unix', $data['teams'][$i]['cupsquads_time'],1);
+  if ($cups_system == 'teams') {
+    $data['teams'][$i]['team'] = empty($data['teams'][$i]['squads_id']) ? cs_secure($data['teams'][$i]['squads_name']) : cs_link(cs_secure($data['teams'][$i]['squads_name']),'squads','view','id=' . $$data['teams'][$i]['squads_id']);
   } else {
-		$data['teams'][$i]['team'] = cs_user($data['teams'][$i]['squads_id'],$data['teams'][$i]['squads_name'], $data['teams'][$i]['users_active'], $data['teams'][$i]['users_delete']);
-	}
+    $data['teams'][$i]['team'] = cs_user($data['teams'][$i]['squads_id'],$data['teams'][$i]['squads_name'], $data['teams'][$i]['users_active'], $data['teams'][$i]['users_delete']);
+  }
 }
 
 echo cs_subtemplate(__FILE__, $data, 'cups', 'teams');

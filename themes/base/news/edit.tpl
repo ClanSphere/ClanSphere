@@ -52,9 +52,9 @@
     <tr>
       <td class="leftc" colspan="3" style="padding: 0">{rte:html}</td>
     </tr>
-	{stop:rte_html}
-	{if:abcode}
-	<tr>
+  {stop:rte_html}
+  {if:abcode}
+  <tr>
       <td class="leftc">{icon:kate} {lang:readmore} <br />
         <br />
         {abcode:smileys_readmore}</td>
@@ -68,7 +68,7 @@
       <td class="leftb" colspan="2">{abcode:features}
         <textarea name="news_text" cols="50" rows="20" id="news_text"  style="width: 98%;">{news:news_text}</textarea></td>
     </tr>
-	{stop:abcode}
+  {stop:abcode}
     {loop:mirror}
     <tr>
       <td class="leftc">{icon:html} {lang:mirror} {mirror:num}</td>
@@ -98,25 +98,25 @@
         <input type="checkbox" name="publish_at" value="1" {news:check_publish}/>
         {lang:publishs_at}: {news:news_publishs_at}</td>
     </tr>
-	<tr>
-	  <td class="leftc">{icon:configure} {lang:features}</td>
-	  <td class="leftb" colspan="2">
-	  	{lang:features}: {op:features}<br />
-	  	{lang:smileys}: {op:smileys}<br />
-	  	{lang:clip}: {op:clip}<br />
-	  	{lang:html}: {op:html}<br />
-	  	{lang:php}: {op:php}							
-	  </td>
-	</tr>	
+  <tr>
+    <td class="leftc">{icon:configure} {lang:features}</td>
+    <td class="leftb" colspan="2">
+      {lang:features}: {op:features}<br />
+      {lang:smileys}: {op:smileys}<br />
+      {lang:clip}: {op:clip}<br />
+      {lang:html}: {op:html}<br />
+      {lang:php}: {op:php}              
+    </td>
+  </tr>  
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb" colspan="2"><input type="hidden" name="id" value="{news:news_id}" />
-	    <input type="hidden" name="users_id" value="{news:users_id}" />
+      <input type="hidden" name="users_id" value="{news:users_id}" />
         <input type="submit" name="submit" value="{lang:edit}" />
         <input type="submit" name="preview" value="{lang:preview}" />
         <input type="submit" name="mirror" value="{lang:add_mirror}" />
         <input type="hidden" name="run_loop" value="{news:loop}" />
-	  </td>
+    </td>
     </tr>
   </table>
 </form>

@@ -18,9 +18,9 @@ if(isset($_POST['submit'])) {
   cs_redirect($cs_lang['changes_done'],'options','roots');
   
 } else {
-	
+  
   $op_clans = cs_sql_option(__FILE__,'clans');
-	
+  
   $data['lang']['getmsg'] = cs_getmsg();
   $data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
   

@@ -111,40 +111,40 @@ $data['if']['display_form'] = false;
 
 if(!empty($setup_exists)) {
 
-	$data['if']['setup'] = true;
+  $data['if']['setup'] = true;
 
 } elseif(isset($_POST['view']) AND empty($error)) {
 
-	$data['if']['display_setup'] = true;
-	$data['data']['setup'] = htmlentities($setup_php, ENT_QUOTES, $cs_main['charset']);
+  $data['if']['display_setup'] = true;
+  $data['data']['setup'] = htmlentities($setup_php, ENT_QUOTES, $cs_main['charset']);
 
 } else {
 
-	$data['if']['display_form'] = true;
+  $data['if']['display_form'] = true;
 
-	$data['selected']['md5'] = $cs_db['hash'] == 'md5' ? ' selected="selected"' : '';
-	$data['selected']['sha1'] = $cs_db['hash'] == 'sha1' ? ' selected="selected"' : '';
+  $data['selected']['md5'] = $cs_db['hash'] == 'md5' ? ' selected="selected"' : '';
+  $data['selected']['sha1'] = $cs_db['hash'] == 'sha1' ? ' selected="selected"' : '';
 
-	$data['data']['types'] = '';
+  $data['data']['types'] = '';
 
   foreach($sql_files AS $sql_file => $num) {
 
     $extension = substr($sql_file, 0, -4);
-		if(extension_loaded($extension)) {
+    if(extension_loaded($extension)) {
         $selected = $cs_db['type'] == $extension ? 1 : 0;
-      	$data['data']['types'] .= cs_html_option($extension, $extension, $selected);
+        $data['data']['types'] .= cs_html_option($extension, $extension, $selected);
     }
   }
 
-	$data['value']['charset'] = $cs_main['charset'];
-	$data['value']['place'] = $cs_db['place'];
-	$data['value']['name'] = $cs_db['name'];
-	$data['value']['prefix'] = $cs_db['prefix'];
-	$data['value']['user'] = $cs_db['user'];
-	$data['value']['pwd'] = $cs_db['pwd'];
+  $data['value']['charset'] = $cs_main['charset'];
+  $data['value']['place'] = $cs_db['place'];
+  $data['value']['name'] = $cs_db['name'];
+  $data['value']['prefix'] = $cs_db['prefix'];
+  $data['value']['user'] = $cs_db['user'];
+  $data['value']['pwd'] = $cs_db['pwd'];
 
-	$data['checked']['save_actions'] = empty($log['save_actions']) ? '' : ' checked="checked"';
-	$data['checked']['save_errors'] = empty($log['save_errors']) ? '' : ' checked="checked"';
+  $data['checked']['save_actions'] = empty($log['save_actions']) ? '' : ' checked="checked"';
+  $data['checked']['save_errors'] = empty($log['save_errors']) ? '' : ' checked="checked"';
 }
 
 echo cs_subtemplate(__FILE__, $data, 'install', 'settings');

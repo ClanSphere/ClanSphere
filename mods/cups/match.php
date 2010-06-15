@@ -87,32 +87,32 @@ if ($system['cups_system'] == 'teams') {
 }
 
 if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] >= 4) {
-	$data['if']['participator'] = true;
-	$data['match']['id'] = $match_id;
-	
-	if (!empty($data['match']['cupmatches_winner'])) {
-		$squad1 = $system['cups_system'] == 'teams' ? $data['match']['squad1_id'] : $data['match']['user1_id'];
-	  $winner = $data['match']['cupmatches_winner'] == $squad1 ? $data['match']['team1'] : $data['match']['team2'];
-	  $data['match']['cupmatches_score2'] .= ' (' . $cs_lang['winner'] . ': ' . $winner . ')';
-	}
-	
-	$data['if']['nothingyet'] = false;
-	$data['if']['accept'] = false;
-	$data['if']['confirmed'] = false;
-	$data['if']['waiting'] = false;
-	$data['if']['admin'] = $account['access_cups'] >= 4 ? true : false;
-	
-	$data['match']['teamnr'] = empty($squad2_member) ? 1 : 2;
-	if ($data['match']['teamnr'] == 1 && empty($squad1_member)) $data['match']['teamnr'] = 0;
-	
-	if (!empty($data['match']['teamnr']) && !empty($nothingyet)) {
+  $data['if']['participator'] = true;
+  $data['match']['id'] = $match_id;
+  
+  if (!empty($data['match']['cupmatches_winner'])) {
+    $squad1 = $system['cups_system'] == 'teams' ? $data['match']['squad1_id'] : $data['match']['user1_id'];
+    $winner = $data['match']['cupmatches_winner'] == $squad1 ? $data['match']['team1'] : $data['match']['team2'];
+    $data['match']['cupmatches_score2'] .= ' (' . $cs_lang['winner'] . ': ' . $winner . ')';
+  }
+  
+  $data['if']['nothingyet'] = false;
+  $data['if']['accept'] = false;
+  $data['if']['confirmed'] = false;
+  $data['if']['waiting'] = false;
+  $data['if']['admin'] = $account['access_cups'] >= 4 ? true : false;
+  
+  $data['match']['teamnr'] = empty($squad2_member) ? 1 : 2;
+  if ($data['match']['teamnr'] == 1 && empty($squad1_member)) $data['match']['teamnr'] = 0;
+  
+  if (!empty($data['match']['teamnr']) && !empty($nothingyet)) {
     $data['if']['nothingyet'] = true;
   } elseif ((!empty($squad1_member) && empty($data['match']['cupmatches_accepted1'])) || (!empty($squad2_member) && empty($data['match']['cupmatches_accepted2']))) {
-  	$data['if']['accept'] = true;
+    $data['if']['accept'] = true;
   } elseif (!empty($data['match']['cupmatches_accepted1']) && !empty($data['match']['cupmatches_accepted2'])) {
-	  $data['if']['confirmed'] = true;
+    $data['if']['confirmed'] = true;
   } elseif (!empty($data['match']['cupmatches_accepted1']) || !empty($data['match']['cupmatches_accepted2'])) {
-  	$data['if']['waiting'] = true;
+    $data['if']['waiting'] = true;
     if ($system['cups_system'] == 'teams') {
       $other_team = $data['match']['cupmatches_accepted1'] == 1 ? 2 : 1;
       $link = empty($data['match']['squad'.$other_team.'_name']) ? $data['match']['squad'.$other_team.'_name_c'] : cs_link($data['match']['squad'.$other_team.'_name'],'squads','view','id='.$data['match']['squad'.$other_team.'_id']);
@@ -123,8 +123,8 @@ if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] 
     }
     $data['lang']['waiting'] = sprintf($cs_lang['waiting'],$link);  
   } else {
-  	$data['if']['waiting'] = true;
-  	$data['lang']['waiting'] = $cs_lang['waiting_both'];
+    $data['if']['waiting'] = true;
+    $data['lang']['waiting'] = $cs_lang['waiting_both'];
   }
 } else
   $data['if']['participator'] = false;

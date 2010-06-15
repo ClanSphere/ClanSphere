@@ -54,7 +54,7 @@ if(empty($check_user_voted) AND isset($_POST['submit']) AND empty($_POST['broken
   $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
   $votes_save = array($file_id,$users_id,$time,$voted_answer,$voted_ip,'files');
   cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
-	cs_redirect(NULL, 'files', 'view','where=' . $file_id);
+  cs_redirect(NULL, 'files', 'view','where=' . $file_id);
 }
 
 
@@ -136,7 +136,7 @@ for ($run = 1; $run < $temp_loop; $run++) {
   if($account['access_files'] >= $temp_a['4']) {
     $data['mirrors'][$run-1]['name'] = empty($temp_a['2']) ? $temp_a['1'] : $temp_a['2'];
     $data['mirrors'][$run-1]['id'] = $run;
-	  $data['mirrors'][$run-1]['filetype_image'] = cs_filetype($temp_a['3']);	
+    $data['mirrors'][$run-1]['filetype_image'] = cs_filetype($temp_a['3']);  
     $data['mirrors'][$run-1]['filetype_name'] = $temp_a['3'];
   }
 }

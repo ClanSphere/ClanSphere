@@ -41,7 +41,7 @@ elseif(!empty($error)) {
   $data['head']['body'] = $error;
 }
 elseif(isset($_POST['preview']) AND empty($error)) {
-	$data['head']['body'] = $cs_lang['preview'];
+  $data['head']['body'] = $cs_lang['preview'];
   $data['if']['preview'] = true;
   $data['ru']['order'] = cs_secure($data['ru']['rules_order']);
   $data['ru']['title'] = cs_secure($data['ru']['rules_title']);
@@ -52,8 +52,8 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
   $categories_id = empty($_POST['categories_id']) ? 0 : $_POST['categories_id'];
   $data['categories']['dropdown'] = cs_categories_dropdown('rules',$categories_id);
-	$data['abcode']['features'] = cs_abcode_features('rules_rule');
-	
+  $data['abcode']['features'] = cs_abcode_features('rules_rule');
+  
  echo cs_subtemplate(__FILE__,$data,'rules','create');
 
 } else {

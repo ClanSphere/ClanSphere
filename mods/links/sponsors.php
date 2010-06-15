@@ -20,12 +20,12 @@ for($run = 0; $run < $links_loop; $run++) {
   $data['links'][$run]['url_img'] = cs_html_link($target,$data['links'][$run]['links_url']);
   
   if(!empty($data['links'][$run]['links_banner'])) {
-  	$place = 'uploads/links/' .$data['links'][$run]['links_banner'];
-  	$img = cs_html_img ($place,0,0,0,$data['links'][$run]['links_name']);
-  	$data['links'][$run]['url_img'] = cs_html_link($target,$img);
+    $place = 'uploads/links/' .$data['links'][$run]['links_banner'];
+    $img = cs_html_img ($place,0,0,0,$data['links'][$run]['links_name']);
+    $data['links'][$run]['url_img'] = cs_html_link($target,$img);
   }
   
-	$data['links'][$run]['info'] = cs_secure($data['links'][$run]['links_info'],1,1,1,1);
+  $data['links'][$run]['info'] = cs_secure($data['links'][$run]['links_info'],1,1,1,1);
 }
 
 echo cs_subtemplate(__FILE__,$data,'links','sponsors');

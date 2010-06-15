@@ -22,7 +22,7 @@ if(empty($_POST['submit'])) {
     cs_redirect($cs_lang['file_not_opened'], 'explorer', 'roots');
   } else {
 
-  	$content = fread($file,filesize($cs_main['def_path'] . '/' . $dir));
+    $content = fread($file,filesize($cs_main['def_path'] . '/' . $dir));
     fclose($file);
 
     $ending = strtolower(substr(strrchr($dir,'.'),1));
@@ -39,7 +39,7 @@ if(empty($_POST['submit'])) {
       $data['abcode']['html2'] = cs_abcode_toolshtml2('data_content');
 
     } else {
-    	$data['if']['phpfile'] = false;
+      $data['if']['phpfile'] = false;
     }
 
     $data['var']['content'] = cs_secure($content);

@@ -43,10 +43,10 @@ class GameQ_Communicate
     {
         // Create a socket for each packet
         foreach ($packets as $pid => &$packet) {
-			
+      
             // We only send packets for the current type
             if (!isset($packet[$type])) continue;
-			
+      
             // Open a socket on the server
             $socket = $this->open($packet['addr'], $packet['port'], $pid, $sock, $timeout, $packet['transport']);
             if ($socket === false) continue;
@@ -107,12 +107,12 @@ class GameQ_Communicate
         // Set socket context
        
         $context = stream_context_create();
-		if ($sock != 0)
-		{
-			$opts['socket']['bindto'] = '0:' . $sock;
-			stream_context_set_option ($context, $opts);
-		}
-		
+    if ($sock != 0)
+    {
+      $opts['socket']['bindto'] = '0:' . $sock;
+      stream_context_set_option ($context, $opts);
+    }
+    
         // Open udp socket to client
         $addr    = sprintf("%s://%s:%d", $transport, $address, $port);
         // Timeout is only applied for tcp connections

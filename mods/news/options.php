@@ -6,12 +6,12 @@ $cs_lang = cs_translate('news');
 
 if(isset($_POST['submit'])) {
   
-	$abcode = array();
-	$abcode[] = empty($_POST['features']) ? 0 : 1;
-	$abcode[] = empty($_POST['smileys']) ? 0 : 1;
-	$abcode[] = empty($_POST['clip']) ? 0 : 1;
-	$abcode[] = empty($_POST['html']) ? 0 : 1;
-	$abcode[] = empty($_POST['php']) ? 0 : 1;
+  $abcode = array();
+  $abcode[] = empty($_POST['features']) ? 0 : 1;
+  $abcode[] = empty($_POST['smileys']) ? 0 : 1;
+  $abcode[] = empty($_POST['clip']) ? 0 : 1;
+  $abcode[] = empty($_POST['html']) ? 0 : 1;
+  $abcode[] = empty($_POST['php']) ? 0 : 1;
 
   $abcode = implode(",",$abcode);
 

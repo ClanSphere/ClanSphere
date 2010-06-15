@@ -164,8 +164,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   echo cs_subtemplate(__FILE__,$data,'files','edit');
 }
 else {
-	$files_cells = array_keys($data['file']);
-	$files_save = array_values($data['file']);
+  $files_cells = array_keys($data['file']);
+  $files_save = array_values($data['file']);
  cs_sql_update(__FILE__,'files',$files_cells,$files_save,$files_id);
     
  cs_redirect($cs_lang['changes_done'],'files');

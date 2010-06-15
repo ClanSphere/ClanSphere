@@ -15,18 +15,18 @@ $data['links']['name'] = cs_secure($cs_links['links_name']);
 $data['links']['url'] = $cs_links['links_url'];
 
 if($cs_links['links_stats'] == 'on') {
-	$data['links']['color'] = 'lime';
-	$data['links']['on_off'] = $cs_lang['online'];
+  $data['links']['color'] = 'lime';
+  $data['links']['on_off'] = $cs_lang['online'];
 }else{
-	$data['links']['color'] = 'red';
-	$data['links']['on_off'] = $cs_lang['offline'];
+  $data['links']['color'] = 'red';
+  $data['links']['on_off'] = $cs_lang['offline'];
 }
 
 $data['if']['img'] = FALSE;
 if(!empty($cs_links['links_banner'])) {
-	$src = 'uploads/links/' . $cs_links['links_banner'];
-	$data['links']['img'] = cs_html_img($src);
-	$data['if']['img'] = TRUE;
+  $src = 'uploads/links/' . $cs_links['links_banner'];
+  $data['links']['img'] = cs_html_img($src);
+  $data['if']['img'] = TRUE;
 }
 
 $data['links']['info'] = cs_secure ($cs_links['links_info'],1,1,1,1);

@@ -14,9 +14,9 @@
     <td class="leftc">{icon:yast_group_add} {lang:winner}</td>
     <td class="leftb">
       <select name="cupmatches_winner">
-	      <option value="0">----</option>
-	      <option value="{match:team1_id}">{match:team1_name}</option>
-	      <option value="{match:team2_id}">{match:team2_name}</option>
+        <option value="0">----</option>
+        <option value="{match:team1_id}">{match:team1_name}</option>
+        <option value="{match:team2_id}">{match:team2_name}</option>
       </select>
      </td>
   </tr>

@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
   $cs_messages['autoresponder_mail'] = isset($_POST['autoresponder_mail']) ? $_POST['autoresponder_mail'] : 0;
   $cs_messages['users_id'] = $users_id;
 
-	if(empty($update)) {
+  if(empty($update)) {
     $messages_cells = array_keys($cs_messages);
     $messages_save = array_values($cs_messages);
    cs_sql_insert(__FILE__,'autoresponder',$messages_cells,$messages_save);
@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
 }
 else {
 
-	$data['check']['responder'] = empty($cs_messages['autoresponder_mail']) ? '' : 'checked="checked"';
+  $data['check']['responder'] = empty($cs_messages['autoresponder_mail']) ? '' : 'checked="checked"';
   
   $data['hidden']['id'] = $cs_messages['autoresponder_id'];
   $data['hidden']['update'] = $update;

@@ -1,9 +1,9 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-	<td class="headb">{lang:mod_name} - {lang:pic}</td>
+  <td class="headb">{lang:mod_name} - {lang:pic}</td>
   </tr>
   <tr>
-	<td class="leftb">{head:body}</td>
+  <td class="leftb">{head:body}</td>
   </tr>
 </table>
 <br />
@@ -22,43 +22,43 @@
     <td class="leftc">{icon:folder_yellow} {lang:folders} *</td>
     <td class="leftb">{data:folders}</td>
   </tr>
-	<tr>
+  <tr>
     <td class="leftc">{icon:access} {lang:access}</td>
     <td class="leftb">
-    	<select name="gallery_access">
-    		{access:options}
-    	</select>
+      <select name="gallery_access">
+        {access:options}
+      </select>
     </td>
   </tr>
   <tr>
     <td class="leftc">{icon:xpaint} {lang:show}</td>
     <td class="leftb">
-    	<select name="gallery_status">
-    		{status:options}
-    	</select>
+      <select name="gallery_status">
+        {status:options}
+      </select>
     </td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:comment}<br />
-    	<br />
-    	{abcode:smileys}
+      <br />
+      {abcode:smileys}
     </td>
     <td class="leftb">
-    	{abcode:features} 
-			<textarea class="rte_abcode" name="description" cols="50" rows="15" id="description" style="width:98%;">{data:usersgallery_description}</textarea>
-		</td>
+      {abcode:features} 
+      <textarea class="rte_abcode" name="description" cols="50" rows="15" id="description" style="width:98%;">{data:usersgallery_description}</textarea>
+    </td>
   </tr>
-	<tr>
+  <tr>
     <td class="leftc">{icon:configure} {lang:head}</td>
     <td class="leftb">
-    	<input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray_show}
+      <input type="checkbox" name="gray" value="1" {check:gray}/> {lang:gray_show}
     </td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
-			<input type="submit" name="submit" value="{lang:submit}" />
-		</td>
+      <input type="submit" name="submit" value="{lang:submit}" />
+    </td>
   </tr>
 </table>
 </form>

@@ -212,10 +212,10 @@ if (!empty($error) or !isset($_POST['submit'])) {
   $old_nicks = cs_sql_select(__FILE__,'usernicks','users_nick','users_id = ' . $users_id,'users_changetime DESC',0,0);
   $data['if']['old_nicks'] = false;
   if(!empty($old_nicks)) {
-  	$data['if']['old_nicks'] = true;
-  	for($a=0; $a<count($old_nicks); $a++) {
-  		$data['old'][$a]['nicks'] = $old_nicks[$a]['users_nick'];
-  	}
+    $data['if']['old_nicks'] = true;
+    for($a=0; $a<count($old_nicks); $a++) {
+      $data['old'][$a]['nicks'] = $old_nicks[$a]['users_nick'];
+    }
   }
 
   // State selections
@@ -244,7 +244,7 @@ if (!empty($error) or !isset($_POST['submit'])) {
 
   $old_nick = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . $users_id,0,0,1);
   if($old_nick['users_nick'] != $cs_user['users_nick']) {
-  	change_nick($users_id, $old_nick['users_nick']);
+    change_nick($users_id, $old_nick['users_nick']);
   }
   
   // DB update

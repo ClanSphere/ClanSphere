@@ -21,14 +21,14 @@ $options = cs_sql_option(__FILE__,'gallery');
 
 $where = 0;
 if(!empty($folders_id) AND empty($access_id)) {
-	$where = "folders_id = '" . cs_sql_escape($folders_id) . "'";
+  $where = "folders_id = '" . cs_sql_escape($folders_id) . "'";
 }
 elseif(!empty($access_id) AND empty($folders_id)) {
-	$where = "gallery_access = '" . cs_sql_escape($access_id) . "'";
+  $where = "gallery_access = '" . cs_sql_escape($access_id) . "'";
 }
 elseif(!empty($access_id) AND !empty($folders_id)) {
-	$where  = "gallery_access = '" . cs_sql_escape($access_id) . "'";
-	$where .= "AND folders_id = '" . cs_sql_escape($folders_id) . "'";
+  $where  = "gallery_access = '" . cs_sql_escape($access_id) . "'";
+  $where .= "AND folders_id = '" . cs_sql_escape($folders_id) . "'";
 }
 
 $where_x = !empty($access_id) ? $folders_id . '&amp;access=' . $access_id : $folders_id;
@@ -57,28 +57,28 @@ $data['head']['getmsg'] = cs_getmsg();
 $where = '';
 $status_id = '';
 if (!empty($folders_id) AND empty($access_id)) {
-	$where = "gal.folders_id= '" . $folders_id . "' ";
-	$folder_arr = get_subfolders($folders_id);
-	if (!empty($folder_arr)) {
-		foreach ($folder_arr AS $cond) {
-			$where .= "OR gal.folders_id = '" . $cond['folders_id'] ."' ";
-		}
-	}
+  $where = "gal.folders_id= '" . $folders_id . "' ";
+  $folder_arr = get_subfolders($folders_id);
+  if (!empty($folder_arr)) {
+    foreach ($folder_arr AS $cond) {
+      $where .= "OR gal.folders_id = '" . $cond['folders_id'] ."' ";
+    }
+  }
 }
 if (!empty($access_id) AND empty($folders_id)) {
-	$where = "gal.gallery_access = '" . $access_id . "' ";
+  $where = "gal.gallery_access = '" . $access_id . "' ";
 }
 if(!empty($access_id) AND !empty($folders_id)) {
-	$where = "gal.folders_id = '" . $folders_id . "' AND gallery_access = '" . $access_id . "'";
+  $where = "gal.folders_id = '" . $folders_id . "' AND gallery_access = '" . $access_id . "'";
 }
 $where = trim($where);
 
 $access_data = array (
-	0 => array('access_id' => '1', 'access_name' => $cs_lang['lev_1']),
-	1 => array('access_id' => '2', 'access_name' => $cs_lang['lev_2']),
-	2 => array('access_id' => '3', 'access_name' => $cs_lang['lev_3']),
-	3 => array('access_id' => '4', 'access_name' => $cs_lang['lev_4']),
-	4 => array('access_id' => '5', 'access_name' => $cs_lang['lev_5'])
+  0 => array('access_id' => '1', 'access_name' => $cs_lang['lev_1']),
+  1 => array('access_id' => '2', 'access_name' => $cs_lang['lev_2']),
+  2 => array('access_id' => '3', 'access_name' => $cs_lang['lev_3']),
+  3 => array('access_id' => '4', 'access_name' => $cs_lang['lev_4']),
+  4 => array('access_id' => '5', 'access_name' => $cs_lang['lev_5'])
 );
   
 $data['dropdown']['folders'] = make_folders_select('where',$folders_id,0,'gallery',0);
@@ -103,24 +103,24 @@ $pictures_loop = count($data['pictures']);
 
 for($run=0; $run < $pictures_loop; $run++) {
 
-	$id = $data['pictures'][$run]['gallery_id'];
+  $id = $data['pictures'][$run]['gallery_id'];
 
-	$data['pictures'][$run]['class'] = '';
-	if($data['pictures'][$run]['gallery_status'] == 0) {
-		$data['pictures'][$run]['class'] = 'notpublic';
-	}
+  $data['pictures'][$run]['class'] = '';
+  if($data['pictures'][$run]['gallery_status'] == 0) {
+    $data['pictures'][$run]['class'] = 'notpublic';
+  }
 
-	$link = 'folders_id=' . $data['pictures'][$run]['folders_id'] . '&amp;where=' . $id;
-	$data['pictures'][$run]['link'] = cs_url('gallery','com_view',$link);
-	
-	$data['pictures'][$run]['gallery_name'] = cs_secure($data['pictures'][$run]['gallery_name']);    
+  $link = 'folders_id=' . $data['pictures'][$run]['folders_id'] . '&amp;where=' . $id;
+  $data['pictures'][$run]['link'] = cs_url('gallery','com_view',$link);
+  
+  $data['pictures'][$run]['gallery_name'] = cs_secure($data['pictures'][$run]['gallery_name']);    
     
-	$data['pictures'][$run]['name'] = cs_link(cs_secure($data['pictures'][$run]['gallery_titel']),'gallery','com_view',$link);
-	$to_folder = '&amp;folders_id=' . $data['pictures'][$run]['folders_id'];
-	$data['pictures'][$run]['folder'] = cs_link(cs_secure($data['pictures'][$run]['folders_name']),'gallery','list',$to_folder);
-	$data['pictures'][$run]['time'] = cs_date('unix',$data['pictures'][$run]['gallery_time'],1);
+  $data['pictures'][$run]['name'] = cs_link(cs_secure($data['pictures'][$run]['gallery_titel']),'gallery','com_view',$link);
+  $to_folder = '&amp;folders_id=' . $data['pictures'][$run]['folders_id'];
+  $data['pictures'][$run]['folder'] = cs_link(cs_secure($data['pictures'][$run]['folders_name']),'gallery','list',$to_folder);
+  $data['pictures'][$run]['time'] = cs_date('unix',$data['pictures'][$run]['gallery_time'],1);
 
-	$data['pictures'][$run]['id'] = $id;
+  $data['pictures'][$run]['id'] = $id;
 }
 
 echo cs_subtemplate(__FILE__,$data,'gallery','manage');

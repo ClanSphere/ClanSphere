@@ -120,7 +120,7 @@ class GameQ_Protocol_ts2 extends GameQ_Protocol
                 }
             }
         }
-		throw new GameQ_ParsingException($this->p);
+    throw new GameQ_ParsingException($this->p);
         return false;
     }
     

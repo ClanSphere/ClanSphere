@@ -30,8 +30,8 @@
   <tr>
     <td class="leftc" style="width:140px"> {icon:images} {lang:current}</td>
     <td class="leftb">
-    	{if:nopics}
-      	{lang:nopic}
+      {if:nopics}
+        {lang:nopic}
       {stop:nopics}
       
       {loop:pictures} 

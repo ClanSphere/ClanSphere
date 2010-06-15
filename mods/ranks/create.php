@@ -35,9 +35,9 @@ if(isset($_POST['submit'])) {
 }
 
 if(!isset($_POST['submit']))
-	$data['head']['body'] = $cs_lang['body_create'];
+  $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($error))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 

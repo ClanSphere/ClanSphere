@@ -46,14 +46,14 @@ if(isset($_POST['submit'])) {
 }
 
 if(!isset($_POST['submit']))
-	$data['head']['body'] = $cs_lang['body_edit'];
+  $data['head']['body'] = $cs_lang['body_edit'];
 elseif(!empty($error))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $cs_events;
+  $data['data'] = $cs_events;
 
   $data['categories']['dropdown'] = cs_categories_dropdown('events',$cs_events['categories_id']);
   $data['select']['time'] = cs_dateselect('time','unix',$cs_events['events_time'],1995);
@@ -63,21 +63,21 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['data']['events_needage'] = !empty($cs_events['events_needage']) ? $cs_events['events_needage'] : '';
 
   if(empty($cs_main['rte_html'])) {
-		$data['if']['abcode'] = TRUE;
-		$data['if']['rte_html'] = FALSE;
+    $data['if']['abcode'] = TRUE;
+    $data['if']['rte_html'] = FALSE;
     $data['abcode']['smileys'] = cs_abcode_smileys('events_more');
     $data['abcode']['features'] = cs_abcode_features('events_more');
   } else {
-  	$data['if']['abcode'] = FALSE;
-		$data['if']['rte_html'] = TRUE;
-		$data['rte']['html'] = cs_rte_html('events_more',$cs_events['events_more']);
+    $data['if']['abcode'] = FALSE;
+    $data['if']['rte_html'] = TRUE;
+    $data['rte']['html'] = cs_rte_html('events_more',$cs_events['events_more']);
   }
 
   $checked = 'checked="checked"';
   $data['check']['close'] = empty($cs_events['events_close']) ? '' : $checked;
   $data['check']['cancel'] = empty($cs_events['events_cancel']) ? '' : $checked;  
 
-	$data['events']['id'] = $events_id;
+  $data['events']['id'] = $events_id;
 
  echo cs_subtemplate(__FILE__,$data,'events','edit');
 }

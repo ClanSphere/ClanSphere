@@ -89,18 +89,18 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
     }
   }
   
-	$server_stats = array(
+  $server_stats = array(
     array('name' => $cs_lang['no'], 'value' => '0'),
     array('name' => $cs_lang['yes'], 'value' => '1')
-	);
-	$run=0;
-	foreach($server_stats AS $stats) {
-		$selected = ($stats['value'] == $data['create']['servers_stats']) ? 'selected="selected"' : '';
-		$data['stats'][$run]['name'] = $stats['name'];
-		$data['stats'][$run]['value'] = $stats['value'];
-		$data['stats'][$run]['selected'] = $selected;
-		$run++;
-	}
+  );
+  $run=0;
+  foreach($server_stats AS $stats) {
+    $selected = ($stats['value'] == $data['create']['servers_stats']) ? 'selected="selected"' : '';
+    $data['stats'][$run]['name'] = $stats['name'];
+    $data['stats'][$run]['value'] = $stats['value'];
+    $data['stats'][$run]['selected'] = $selected;
+    $run++;
+  }
 
   $server_array = array(
     array('name' => '(kein)', 'servers_class' => '1'),
@@ -160,11 +160,11 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
   );
   $run=0;
   foreach($servers_type AS $type) {
-  	$selected = ($type['type'] == $data['create']['servers_type']) ? 'selected="selected"' : '';
-  	$data['typ'][$run]['name'] = $type['gtype'];
-  	$data['typ'][$run]['type'] = $type['type'];
-  	$data['typ'][$run]['selected'] = $selected;
-  	$run++; 
+    $selected = ($type['type'] == $data['create']['servers_type']) ? 'selected="selected"' : '';
+    $data['typ'][$run]['name'] = $type['gtype'];
+    $data['typ'][$run]['type'] = $type['type'];
+    $data['typ'][$run]['selected'] = $selected;
+    $run++; 
   }
 
 } else {

@@ -46,7 +46,7 @@ foreach ($ini as $key => &$entry) $entry['id'] = $key;
             <td>Default port</td>
         </tr>
     </thead>
-	<tbody>
+  <tbody>
 <?php
 function namecmp($a, $b) {
 

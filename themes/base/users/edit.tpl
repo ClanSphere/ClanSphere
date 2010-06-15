@@ -14,35 +14,35 @@
     <td class="leftb">{users:language_dropdown}</td>
   </tr>
   <tr>
-	<td class="leftc">{icon:personal} {lang:nick} *</td>
-	<td class="leftb">
-		<input type="text" name="data[users_nick]" value="{users:users_nick}" maxlength="40" size="40" />
-		{if:old_nicks}
-			<br />{lang:old_nick}:
-			{loop:old}
-				{old:nicks},
-			{stop:old}
-		{stop:old_nicks}
-	</td>
+  <td class="leftc">{icon:personal} {lang:nick} *</td>
+  <td class="leftb">
+    <input type="text" name="data[users_nick]" value="{users:users_nick}" maxlength="40" size="40" />
+    {if:old_nicks}
+      <br />{lang:old_nick}:
+      {loop:old}
+        {old:nicks},
+      {stop:old}
+    {stop:old_nicks}
+  </td>
   </tr>
   <tr>
-	<td class="leftc">{icon:mail_generic} {lang:email} *</td>
-	<td class="leftb" colspan="2">
-	  <input type="text" name="data[users_email]" value="{users:users_email}" maxlength="40" size="40" />
-	</td>
+  <td class="leftc">{icon:mail_generic} {lang:email} *</td>
+  <td class="leftb" colspan="2">
+    <input type="text" name="data[users_email]" value="{users:users_email}" maxlength="40" size="40" />
+  </td>
   </tr>
   <tr>
-	<td class="leftc">{icon:access} {lang:access} *</td>
-	<td class="leftb">{users:access_dropdown}</td>
+  <td class="leftc">{icon:access} {lang:access} *</td>
+  <td class="leftb">{users:access_dropdown}</td>
   </tr>
   <tr>
-	<td class="leftc">{icon:gpg} {lang:state}</td>
-	<td class="leftb">
-	  <select name="data[users_active]">
-	    <option value="0" {users:state_deactivated}>Deaktiviert</option>
-	    <option value="1" {users:state_activated}>Aktiviert</option>
-	  </select>
-	</td>
+  <td class="leftc">{icon:gpg} {lang:state}</td>
+  <td class="leftb">
+    <select name="data[users_active]">
+      <option value="0" {users:state_deactivated}>Deaktiviert</option>
+      <option value="1" {users:state_activated}>Aktiviert</option>
+    </select>
+  </td>
   </tr>
   {if:access_4}
   <tr>

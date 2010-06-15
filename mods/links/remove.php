@@ -9,10 +9,10 @@ $data = array();
 $links_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
 if(isset($_GET['agree'])) {
-	
-	$banner = cs_sql_select(__FILE__,'links','links_banner',"links_id = '" . $links_id . "'");
+  
+  $banner = cs_sql_select(__FILE__,'links','links_banner',"links_id = '" . $links_id . "'");
   if(!empty($banner['links_banner'])) {
-		cs_unlink('links',$banner['links_banner']);
+    cs_unlink('links',$banner['links_banner']);
   }
   
  cs_sql_delete(__FILE__,'links',$links_id);

@@ -6,8 +6,8 @@ $cs_lang = cs_translate('comments');
 
 if (isset($_POST['submit'])) {
   
-	require_once 'mods/clansphere/func_options.php';
-	
+  require_once 'mods/clansphere/func_options.php';
+  
   $save['show_avatar'] = $_POST['show_avatar'];
   $save['allow_unreg'] = $_POST['allow_unreg'];
   

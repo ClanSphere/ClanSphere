@@ -28,14 +28,14 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 
   $error = '';
 
-	if(empty($cs_rules['categories_id']))
-		$error .= $cs_lang['no_cat'] . cs_html_br(1);
-	if(empty($cs_rules['rules_order']))
-  	$error .= $cs_lang['no_order'] . cs_html_br(1);
-	if(empty($cs_rules['rules_title']))
-		$error .= $cs_lang['no_title'] . cs_html_br(1);
-	if(empty($cs_rules['rules_rule']))
-		$error .= $cs_lang['no_rule'] . cs_html_br(1);
+  if(empty($cs_rules['categories_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
+  if(empty($cs_rules['rules_order']))
+    $error .= $cs_lang['no_order'] . cs_html_br(1);
+  if(empty($cs_rules['rules_title']))
+    $error .= $cs_lang['no_title'] . cs_html_br(1);
+  if(empty($cs_rules['rules_rule']))
+    $error .= $cs_lang['no_rule'] . cs_html_br(1);
 
 }
 
@@ -46,7 +46,7 @@ elseif(!empty($error)) {
   $data['head']['body'] = $error;
 }
 elseif(isset($_POST['preview']) AND empty($error)) {
-	$data['head']['body'] = $cs_lang['preview'];
+  $data['head']['body'] = $cs_lang['preview'];
   $data['if']['preview'] = true;
   $data['ru']['rules_order'] = cs_secure($cs_rules['rules_order']);
   $data['ru']['rules_title'] = cs_secure($cs_rules['rules_title']);

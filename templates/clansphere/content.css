@@ -122,7 +122,7 @@ input, textarea, select {
 }
 
 #msg_normal, #msg_success {
-	width: 90%;
+  width: 90%;
   color:inherit;
   margin:auto;
   border: 1px solid #888;
@@ -130,13 +130,13 @@ input, textarea, select {
   text-align:center;
 }
 #msg_normal div, #msg_success div {
-	padding: 8px 0 8px 20px;
+  padding: 8px 0 8px 20px;
 }
 #msg_normal {
-	background-color: #fff;
+  background-color: #fff;
 }
 #msg_success {
-	background-color: #ddffdd;
+  background-color: #ddffdd;
 }
 
 /*Cal*/

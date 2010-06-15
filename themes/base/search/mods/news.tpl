@@ -1,23 +1,23 @@
 {if:result}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
-  	<td class="headb" colspan="2">{lang:result}</td>
+    <td class="headb" colspan="2">{lang:result}</td>
   </tr>
   <tr>
-  	<td class="leftb">{icon:contents}{lang:hit}: {result:count}</td>
-	<td class="rightb">{result:pages}</td>
+    <td class="leftb">{icon:contents}{lang:hit}: {result:count}</td>
+  <td class="rightb">{result:pages}</td>
   </tr>
 </table>
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
-	<td class="headb">{sort:headline}{lang:headline}</td>
-	<td class="headb">{sort:date}{lang:date}</td>
+  <td class="headb">{sort:headline}{lang:headline}</td>
+  <td class="headb">{sort:date}{lang:date}</td>
   </tr>
   {loop:results}
   <tr>
-  	<td class="leftc" style="font-weight:bold;">{results:headline}</td>
-	<td class="leftc">{results:date}</td>
+    <td class="leftc" style="font-weight:bold;">{results:headline}</td>
+  <td class="leftc">{results:date}</td>
   </tr>
   {stop:results}
 </table>
@@ -25,7 +25,7 @@
 {if:noresults}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
-  	<td class="leftb" colspan="3">{icon:important}{lang:nohit}</td>
+    <td class="leftb" colspan="3">{icon:important}{lang:nohit}</td>
   </tr>
  </table>
 {stop:noresults}

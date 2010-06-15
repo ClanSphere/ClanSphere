@@ -9,7 +9,7 @@ $data['if']['done'] = false;
 $data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
 if($account['access_wizard'] == 5) {
-	
+  
   $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_opts' AND options_value = \"1\"");
   if(empty($wizard)) {
     $data['if']['done'] = true;
@@ -63,19 +63,19 @@ if(isset($_POST['submit'])) {
     cs_sql_query(__FILE__,$query);
   }
 
-	global $cs_main;
+  global $cs_main;
 
-	$cs_main['mod_rewrite'] = $save['mod_rewrite'];
+  $cs_main['mod_rewrite'] = $save['mod_rewrite'];
 
   cs_redirect($cs_lang['success'], 'options','roots');
 } 
 else {
 
-	$data['options'] = cs_sql_option(__FILE__, 'clansphere');
+  $data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
   $data['if']['mod_rewrite'] = true;
   if(!file_exists($cs_main['def_path'] . '/.htaccess')) {
-		$data['if']['mod_rewrite'] = false;
+    $data['if']['mod_rewrite'] = false;
   }
 
   if (empty($data['options']['mod_rewrite'])) {

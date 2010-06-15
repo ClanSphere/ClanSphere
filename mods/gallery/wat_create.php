@@ -43,29 +43,29 @@ if(isset($_POST['submit'])) {
       $error .= sprintf($cs_lang['too_big'], $size) . cs_html_br(1);
     }
   } else {
-  	$error .= $cs_lang['no_watermark'] . cs_html_br(1);
+    $error .= $cs_lang['no_watermark'] . cs_html_br(1);
   }
 
   if(!empty($cs_categories['categories_name'])) {
-  	$where = "categories_name = '" . cs_sql_escape($cs_categories['categories_name']) . "' AND categories_mod = 'gallery-watermark'";
-  	$check_name = cs_sql_count(__FILE__,'categories',$where);
-  	if(!empty($check_name))
-  		$error .= $cs_lang['watermark_exists'] . cs_html_br(1);
+    $where = "categories_name = '" . cs_sql_escape($cs_categories['categories_name']) . "' AND categories_mod = 'gallery-watermark'";
+    $check_name = cs_sql_count(__FILE__,'categories',$where);
+    if(!empty($check_name))
+      $error .= $cs_lang['watermark_exists'] . cs_html_br(1);
   } else {
-  	$error .= $cs_lang['no_name'] . cs_html_br(1);
+    $error .= $cs_lang['no_name'] . cs_html_br(1);
   } 
 
 } 
 
 if(!isset($_POST['submit'])) 
-	$data['head']['body'] = $cs_lang['body_create'];
+  $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($error)) 
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $cs_categories;
+  $data['data'] = $cs_categories;
 
   $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';

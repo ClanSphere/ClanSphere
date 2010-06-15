@@ -73,7 +73,7 @@ for($run=0; $run<$gbook_loop; $run++) {
     $deactive = cs_link(cs_icon('submit'),'gbook','manage','deactive=' . $cs_gbook[$run]['gbook_id'],0,$cs_lang['deactive']);
   }
   else {
-  	$active = cs_link(cs_icon('cancel'),'gbook','manage','active=' . $cs_gbook[$run]['gbook_id'] . '&amp;user_gb=' . $user_gb,0,$cs_lang['active']);
+    $active = cs_link(cs_icon('cancel'),'gbook','manage','active=' . $cs_gbook[$run]['gbook_id'] . '&amp;user_gb=' . $user_gb,0,$cs_lang['active']);
     $deactive = cs_link(cs_icon('submit'),'gbook','manage','deactive=' . $cs_gbook[$run]['gbook_id'] . '&amp;user_gb=' . $user_gb,0,$cs_lang['deactive']);
   }
   $gbook[$run]['lock'] = empty($cs_gbook[$run]['gbook_lock']) ? $active : $deactive;

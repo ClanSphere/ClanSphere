@@ -180,7 +180,7 @@
     <tr>
       <td class="leftc">{lang:news}</td>
       <td class="leftc"><input type="checkbox" name="news" value="1" checked=checked /></td>
-    </tr>	
+    </tr>  
     <tr>
       <td class="leftc">{lang:newsletter}</td>
       <td class="leftc"><input type="checkbox" name="newsletter" value="1" checked=checked /></td>

@@ -112,12 +112,12 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   
   
   if($account['access_static'] < 5) {
-  	$cs_static_tpl['if']['access_php'] = FALSE;
-  	$cs_static_tpl['if']['access_admin'] = FALSE;
+    $cs_static_tpl['if']['access_php'] = FALSE;
+    $cs_static_tpl['if']['access_admin'] = FALSE;
   } else {
-  	$cs_static_tpl['if']['access_php'] = TRUE;
-  	$cs_static_tpl['if']['access_admin'] = TRUE;
-  	$cs_static_tpl['check']['admin'] = empty($static_edit['static_admins']) ? '' : 'checked="checked"';
+    $cs_static_tpl['if']['access_php'] = TRUE;
+    $cs_static_tpl['if']['access_admin'] = TRUE;
+    $cs_static_tpl['check']['admin'] = empty($static_edit['static_admins']) ? '' : 'checked="checked"';
   }
   
   $cs_static_tpl['static']['id'] = $static_edit['static_id'];

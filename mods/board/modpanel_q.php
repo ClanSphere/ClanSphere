@@ -47,7 +47,7 @@ if(isset($_POST['close'])) {
 
 } elseif(!empty($_POST['submit_move'])) {       
   if(empty($_POST['board_id']) OR $_POST['board_id'] == $board_id) {
- 		return cs_redirect(NULL, 'board', 'thread', 'where=' . $thread_id);
+     return cs_redirect(NULL, 'board', 'thread', 'where=' . $thread_id);
   }
   if($_POST['ghost'] == '1') {
     $ghost['board_id'] = $thread_edit['board_id'];
@@ -72,7 +72,7 @@ if(isset($_POST['close'])) {
 
 } elseif(!empty($_POST['submit_rename'])) {       
   if(empty($_POST['thread_headline'])) {
-	 	return cs_redirect($cs_lang['mark_all'], 'board', 'thread', 'where=' . $thread_id);
+     return cs_redirect($cs_lang['mark_all'], 'board', 'thread', 'where=' . $thread_id);
   }
   $thread_headline = $_POST['thread_headline'];
   $thread_cells = array('threads_headline');

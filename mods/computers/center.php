@@ -36,9 +36,9 @@ for($run=0; $run<$computers_loop; $run++) {
 
   $id = $data['com'][$run]['computers_id'];
   $data['com'][$run]['name'] = cs_secure($data['com'][$run]['computers_name']);
-	$data['com'][$run]['since'] = cs_date('unix',$data['com'][$run]['computers_since'],1);
+  $data['com'][$run]['since'] = cs_date('unix',$data['com'][$run]['computers_since'],1);
 
-	$data['com'][$run]['id'] = $id;
+  $data['com'][$run]['id'] = $id;
 
 }
 

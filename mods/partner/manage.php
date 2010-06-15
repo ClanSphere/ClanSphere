@@ -38,5 +38,5 @@ for($run=0; $run<$partner_loop; $run++) {
   $data['partner'][$run]['url_edit'] = cs_url('partner','edit','id='.$cs_partner[$run]['partner_id']);
     
   }
-	
+  
 echo cs_subtemplate(__FILE__,$data,'partner','manage');

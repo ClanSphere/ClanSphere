@@ -50,8 +50,8 @@
     <tr>
       <td class="leftc">{icon:agt_reload} {lang:double_posts}</td>
       <td class="leftb">
-      	<input type="checkbox" name="doublep_allowed" value="1" {options:double_posts} /><br /><br />
-      		{lang:days_after1} <input type="text" name="doubleposts" value="{options:doubleposts}" maxlength="5" size="5" /> {lang:days_after2}
+        <input type="checkbox" name="doublep_allowed" value="1" {options:double_posts} /><br /><br />
+          {lang:days_after1} <input type="text" name="doubleposts" value="{options:doubleposts}" maxlength="5" size="5" /> {lang:days_after2}
       </td>
     </tr>
     <tr>

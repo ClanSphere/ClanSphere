@@ -14,11 +14,11 @@ elseif(!isset($_POST['submit'])) {
     cs_redirect($cs_lang['no_selection'],'cups','manage');
   } else {
     
-  	$data = array();
-  	$data['lang']['del_rly'] = sprintf($cs_lang['del_rly'],$cups_id);
-  	$data['cup']['id'] = $cups_id;
-  	
-  	echo cs_subtemplate(__FILE__, $data, 'cups', 'remove');
+    $data = array();
+    $data['lang']['del_rly'] = sprintf($cs_lang['del_rly'],$cups_id);
+    $data['cup']['id'] = $cups_id;
+    
+    echo cs_subtemplate(__FILE__, $data, 'cups', 'remove');
   }
 } else {
   $cups_id = (int) $_POST['id'];

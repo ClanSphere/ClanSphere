@@ -19,7 +19,7 @@
       <td class="leftb"><textarea class="rte_abcode" name="sh_text2" cols="10" rows="5" id="sh_text2">{form:message}</textarea>
       </td>
     </tr>
-	{form:show}
+  {form:show}
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="hidden" name="uri" value="{form:url}" />

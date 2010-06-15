@@ -28,44 +28,44 @@ $cs_links['links_sponsor'] = '';
 
 if(isset($_POST['submit'])) {
 
-	$cs_links['links_name'] = $_POST['links_name'];
-	$cs_links['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] : cs_categories_create('links', $_POST['categories_name']);
-	$cs_links['links_url'] = $_POST['links_url'];
-	$cs_links['links_stats'] = $_POST['links_stats'];
+  $cs_links['links_name'] = $_POST['links_name'];
+  $cs_links['categories_id'] = empty($_POST['categories_name']) ? $_POST['categories_id'] : cs_categories_create('links', $_POST['categories_name']);
+  $cs_links['links_url'] = $_POST['links_url'];
+  $cs_links['links_stats'] = $_POST['links_stats'];
   $cs_links['links_info'] = empty($cs_main['rte_html']) ? $_POST['links_info'] : cs_abcode_inhtml($_POST['links_info'], 'add');
-	$cs_links['links_sponsor'] = isset($_POST['links_sponsor']) ? $_POST['links_sponsor'] : 0;
-	
-	$error = '';
-	
-	//check name
-	if(!empty($cs_links['links_name'])) {
-		$check_name = cs_sql_count(__FILE__,'links',"links_name = '" . $cs_links['links_name'] ."'");
-		if(!empty($check_name))
-			$error .= sprintf($cs_lang['name_exists'],$cs_links['links_name']) . cs_html_br(1);
-	} else {
-		$error .= $cs_lang['no_name'] . cs_html_br(1);
-	}
-		
-	if(empty($cs_links['categories_id']))
-		$error .= $cs_lang['no_cat'] . cs_html_br(1);
+  $cs_links['links_sponsor'] = isset($_POST['links_sponsor']) ? $_POST['links_sponsor'] : 0;
+  
+  $error = '';
+  
+  //check name
+  if(!empty($cs_links['links_name'])) {
+    $check_name = cs_sql_count(__FILE__,'links',"links_name = '" . $cs_links['links_name'] ."'");
+    if(!empty($check_name))
+      $error .= sprintf($cs_lang['name_exists'],$cs_links['links_name']) . cs_html_br(1);
+  } else {
+    $error .= $cs_lang['no_name'] . cs_html_br(1);
+  }
+    
+  if(empty($cs_links['categories_id']))
+    $error .= $cs_lang['no_cat'] . cs_html_br(1);
 
-	//check url
-	if(!empty($cs_links['links_url'])) {
-		$where = "links_url = '" . $cs_links['links_url'] ."'";
-		$check_url = cs_sql_count(__FILE__,'links',$where);
-		if(!empty($check_url)) {
-			$link_exists = cs_sql_select(__FILE__,'links','links_name',$where);
-			$url = cs_html_link($cs_links['links_url'],$cs_links['links_url']);
-			$error .= sprintf($cs_lang['url_exists'],$link_exists['links_name'],$url) . cs_html_br(1);
-		}
-	} else {
-		$error .= $cs_lang['no_url'] . cs_html_br(1);
-	}
+  //check url
+  if(!empty($cs_links['links_url'])) {
+    $where = "links_url = '" . $cs_links['links_url'] ."'";
+    $check_url = cs_sql_count(__FILE__,'links',$where);
+    if(!empty($check_url)) {
+      $link_exists = cs_sql_select(__FILE__,'links','links_name',$where);
+      $url = cs_html_link($cs_links['links_url'],$cs_links['links_url']);
+      $error .= sprintf($cs_lang['url_exists'],$link_exists['links_name'],$url) . cs_html_br(1);
+    }
+  } else {
+    $error .= $cs_lang['no_url'] . cs_html_br(1);
+  }
 
-	if(empty($cs_links['links_stats']))
-		$error .= $cs_lang['no_status'] . cs_html_br(1);
-	if(empty($cs_links['links_info']))
-		$error .= $cs_lang['no_info'] . cs_html_br(1);
+  if(empty($cs_links['links_stats']))
+    $error .= $cs_lang['no_status'] . cs_html_br(1);
+  if(empty($cs_links['links_info']))
+    $error .= $cs_lang['no_info'] . cs_html_br(1);
 
   $img_size = false;
   if(!empty($files_gl['symbol']['tmp_name']))
@@ -94,43 +94,43 @@ if(isset($_POST['submit'])) {
 }
 
 if(!isset($_POST['submit']))
-	$data['head']['body'] = $cs_lang['body_create'];
+  $data['head']['body'] = $cs_lang['body_create'];
 elseif(!empty($error))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-	$data['data'] = $cs_links;
-	$data['cat']['dropdown'] = cs_categories_dropdown('links',$cs_links['categories_id']);
+  $data['data'] = $cs_links;
+  $data['cat']['dropdown'] = cs_categories_dropdown('links',$cs_links['categories_id']);
 
-	$linksstat[0]['links_stats'] = 'on';
-	$linksstat[0]['name'] = $cs_lang['online'];
-	$linksstat[1]['links_stats'] = 'off';
-	$linksstat[1]['name'] = $cs_lang['offline'];
-	$data['status']['dropdown'] = cs_dropdown('links_stats','name',$linksstat,$cs_links['links_stats']);
+  $linksstat[0]['links_stats'] = 'on';
+  $linksstat[0]['name'] = $cs_lang['online'];
+  $linksstat[1]['links_stats'] = 'off';
+  $linksstat[1]['name'] = $cs_lang['offline'];
+  $data['status']['dropdown'] = cs_dropdown('links_stats','name',$linksstat,$cs_links['links_stats']);
 
-	if(empty($cs_main['rte_html'])) {
-		$data['if']['abcode'] = TRUE;
-		$data['abcode']['smileys'] = cs_abcode_smileys('links_info');
-		$data['abcode']['features'] = cs_abcode_features('links_info');
-	} else {
-		$data['if']['rte_html'] = TRUE;
-		$data['rte']['html'] = cs_rte_html('links_info',$cs_links['links_info']);
-	}	
-	
-	$matches[1] = $cs_lang['pic_infos'];
+  if(empty($cs_main['rte_html'])) {
+    $data['if']['abcode'] = TRUE;
+    $data['abcode']['smileys'] = cs_abcode_smileys('links_info');
+    $data['abcode']['features'] = cs_abcode_features('links_info');
+  } else {
+    $data['if']['rte_html'] = TRUE;
+    $data['rte']['html'] = cs_rte_html('links_info',$cs_links['links_info']);
+  }  
+  
+  $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';
   foreach($img_filetypes AS $add) {
     $return_types .= empty($return_types) ? $add : ', ' . $add;
   }
-	$matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
-	$matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
-	$matches[2] .= $cs_lang['filetypes'] . $return_types;
-	$data['picup']['clip'] = cs_abcode_clip($matches);
+  $matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
+  $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
+  $matches[2] .= $cs_lang['filetypes'] . $return_types;
+  $data['picup']['clip'] = cs_abcode_clip($matches);
 
-	$data['check']['sponsor'] = empty($cs_links['links_sponsor']) ? '' : 'checked="checked"';
+  $data['check']['sponsor'] = empty($cs_links['links_sponsor']) ? '' : 'checked="checked"';
 
  echo cs_subtemplate(__FILE__,$data,'links','create');
 }
@@ -141,7 +141,7 @@ else {
  cs_sql_insert(__FILE__,'links',$cells,$save);
 
   if(!empty($files_gl['symbol']['tmp_name'])) {
-  	$id = cs_sql_insertid(__FILE__);
+    $id = cs_sql_insertid(__FILE__);
     $filename = $id . '.' . $ext;
    cs_upload('links',$filename,$files_gl['symbol']['tmp_name']);
 

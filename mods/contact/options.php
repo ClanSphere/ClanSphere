@@ -23,7 +23,7 @@ if(isset($_POST['submit'])) {
 } 
 else {
 
-	$data['options'] = cs_sql_option(__FILE__, 'contact');
+  $data['options'] = cs_sql_option(__FILE__, 'contact');
   $data['sendmail']['path'] = ini_get('sendmail_path');
 
   echo cs_subtemplate(__FILE__,$data,'contact','options');

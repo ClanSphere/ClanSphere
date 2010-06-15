@@ -18,24 +18,24 @@ if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
     $file = $_FILES[$upload_name]['tmp_name'];
     $new_name = 'tmp_'.time().strrchr($_FILES[$upload_name]['name'],'.');
     
-		$error = !cs_upload('cache', $new_name, $_FILES[$upload_name]['tmp_name'], 0);
+    $error = !cs_upload('cache', $new_name, $_FILES[$upload_name]['tmp_name'], 0);
     if (!isset($_SESSION['ajaxuploads'])) $_SESSION['ajaxuploads'] = array();
     $_SESSION['ajaxuploads'][$upload_name] = $new_name;
-		
-		$upload = array();
-		
-		$upload['name'] = $upload_name;
-		$upload['original_name'] = $_FILES[$upload_name]['name'];
-		$upload['size'] = cs_filesize($_FILES[$upload_name]['size']);
-		if($error){
-			$upload['error'] = true;
-		}
+    
+    $upload = array();
+    
+    $upload['name'] = $upload_name;
+    $upload['original_name'] = $_FILES[$upload_name]['name'];
+    $upload['size'] = cs_filesize($_FILES[$upload_name]['size']);
+    if($error){
+      $upload['error'] = true;
+    }
     echo '<script language="javascript" type="text/javascript">';
     echo 'window.top.Clansphere.ajax.upload_complete(' . json_encode($upload) . ');';
     echo '</script>';
   }
 } else {
-	echo '<script language="javascript" type="text/javascript">';
+  echo '<script language="javascript" type="text/javascript">';
   echo 'alert("Permission denied");';
   echo '</script>';
 }

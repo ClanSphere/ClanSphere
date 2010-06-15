@@ -24,9 +24,9 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
   $error = '';
   
   if(empty($cs_messages['autoresponder_subject']))
-  	$error .= $cs_lang['error_subject'] . cs_html_br(1);
+    $error .= $cs_lang['error_subject'] . cs_html_br(1);
   if(empty($cs_messages['autoresponder_text']))
-  	$error .= $cs_lang['no_text'] . cs_html_br(1);
+    $error .= $cs_lang['no_text'] . cs_html_br(1);
 
 }
 else {
@@ -36,45 +36,45 @@ else {
 }
 
 if(!isset($_POST['submit']) AND !isset($_POST['preview'])) 
-	$data['head']['body'] = $cs_lang['body_edit'];
+  $data['head']['body'] = $cs_lang['body_edit'];
 elseif(isset($_POST['preview'])) 
-	$data['head']['body'] = $cs_lang['preview'];
+  $data['head']['body'] = $cs_lang['preview'];
 elseif(!empty($error))
-	$data['head']['body'] = $error;
+  $data['head']['body'] = $error;
 
 
 $data['if']['preview'] = FALSE;
 
 if(isset($_POST['preview'])) {
 
-	$data['if']['preview'] = TRUE;
-	$data['autoresponder']['subject'] = cs_secure($cs_messages['autoresponder_subject']);
-	$data['autoresponder']['time'] = cs_date('unix',$cs_messages['autoresponder_time'],1);
-	$data['autoresponder']['text'] = cs_secure($cs_messages['autoresponder_text'],1,1);
+  $data['if']['preview'] = TRUE;
+  $data['autoresponder']['subject'] = cs_secure($cs_messages['autoresponder_subject']);
+  $data['autoresponder']['time'] = cs_date('unix',$cs_messages['autoresponder_time'],1);
+  $data['autoresponder']['text'] = cs_secure($cs_messages['autoresponder_text'],1,1);
 }
 
 if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
 
-	$data['autoresponder2']['subject'] = $cs_messages['autoresponder_subject'];
-	$data['autoresponder2']['text'] = $cs_messages['autoresponder_text'];
+  $data['autoresponder2']['subject'] = $cs_messages['autoresponder_subject'];
+  $data['autoresponder2']['text'] = $cs_messages['autoresponder_text'];
 
-	$data['abcode']['smileys'] = cs_abcode_smileys('autoresponder_text');
-	$data['abcode']['features'] = cs_abcode_features('autoresponder_text');
+  $data['abcode']['smileys'] = cs_abcode_smileys('autoresponder_text');
+  $data['abcode']['features'] = cs_abcode_features('autoresponder_text');
 
   $data['check']['close'] = empty($cs_messages['autoresponder_close']) ? '' : 'checked="checked"';
 
-	$data['autoresponder']['id'] = $cs_messages['autoresponder_id'];
-	$data['autoresponder']['update'] = $update;
+  $data['autoresponder']['id'] = $cs_messages['autoresponder_id'];
+  $data['autoresponder']['update'] = $update;
 
  echo cs_subtemplate(__FILE__,$data,'messages','autoresponder');
 }
 else {
 
-	$messages_cells = array_keys($cs_messages);
-	$messages_save = array_values($cs_messages);
+  $messages_cells = array_keys($cs_messages);
+  $messages_save = array_values($cs_messages);
 
   if(empty($update)) {
-	 	cs_sql_insert(__FILE__,'autoresponder',$messages_cells,$messages_save);
+     cs_sql_insert(__FILE__,'autoresponder',$messages_cells,$messages_save);
     $msg = $cs_lang['create_done'];
   } else {
     cs_sql_update(__FILE__,'autoresponder',$messages_cells,$messages_save,$cs_messages['autoresponder_id']);

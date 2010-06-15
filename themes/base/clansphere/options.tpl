@@ -26,7 +26,7 @@
         </td>
       {stop:mod_rewrite}
       {unless:mod_rewrite}
-      	<td class="leftb">{lang:missing_htaccess}<input type="hidden" name="mod_rewrite" value="0" /></td>
+        <td class="leftb">{lang:missing_htaccess}<input type="hidden" name="mod_rewrite" value="0" /></td>
       {stop:mod_rewrite}
     </tr>
     <tr>
@@ -95,11 +95,11 @@
     <tr>
       <td class="leftc">{icon:folder_public} {lang:maintenance_access}</td>
       <td class="leftb">
-      	<select name="maintenance_access">
-      		<option value="3" {options:main_acc3_checked}>Level 3</option>
-      		<option value="4" {options:main_acc4_checked}>Level 4</option>
-      		<option value="5" {options:main_acc5_checked}>Level 5</option>
-      	</select>
+        <select name="maintenance_access">
+          <option value="3" {options:main_acc3_checked}>Level 3</option>
+          <option value="4" {options:main_acc4_checked}>Level 4</option>
+          <option value="5" {options:main_acc5_checked}>Level 5</option>
+        </select>
       </td>
     </tr>    
     <tr>

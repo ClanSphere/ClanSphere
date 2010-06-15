@@ -1,19 +1,19 @@
 <div style="float: left; text-align: left; padding-right: 10px">
 {lang:year}<br />
 <select name="{date:name}_year">
-	{year:options}
+  {year:options}
 </select>
 </div>
 <div style="float: left; text-align: left; padding-right: 10px">
 {lang:month}<br />
 <select name="{date:name}_month">
-	{month:options}
+  {month:options}
 </select>
 </div>
 <div style="float: left; text-align: left; padding-right: 10px">
 {lang:day}<br />
 <select name="{date:name}_day">
-	{day:options}
+  {day:options}
 </select>
 </div>
 {if:unix}
@@ -23,7 +23,7 @@
 <input type="text" name="{date:name}_mins" value="{expl:mins}" maxlength="2" size="2" /> 
 {if:ampm}
 <select name="{date:name}_ampm">
-	{ampm:options}
+  {ampm:options}
 </select> 
 {stop:ampm}
 </div>

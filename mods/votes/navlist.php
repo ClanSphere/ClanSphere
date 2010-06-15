@@ -76,29 +76,29 @@ if(isset($_POST['submit_votes']) ) {
   if(empty($votes_error)) {
     $votes_form = 0;
   if(isset($_POST['votes_several'])) {
-  	
-  	$temp = explode("\n", $cs_votes['votes_election']);
-  	$count_election = count($temp);
-  	$count_voted = count($_POST['voted_answer']);
-  	$error_several = 0;
-  	$where = "voted_fid = '" . $votes_id . "' AND voted_mod = '" . $mod . "' AND voted_ip = '" . cs_sql_escape($users_ip) . "'";
-  	$where .= " AND users_id = '" . $users_id . "' AND (";
-  	$voting = array();
-  	for ($run = 0; $run < $count_voted; $run++) {
-  		settype($voted_answer[$run], 'integer');
-  		if ($voted_answer[$run] < 1 || $voted_answer[$run] >= $count_election || in_array($voted_answer[$run], $voting)) {
-  			$error_several = 1;
-  			break;
-  		}
-  		$voting[] = $voted_answer[$run];
-  		$where .= 'voted_answer = "' . $voted_answer[$run] . '" OR ';
-  	}
-  	$where = substr($where,0,-4) . ')';
-  	
-  	$error_several += cs_sql_count(__FILE__, 'voted', $where);
-  	
-  	if (!empty($error_several)) die('Multivote triggered an error with answers -> Execution halted.');
-  	
+    
+    $temp = explode("\n", $cs_votes['votes_election']);
+    $count_election = count($temp);
+    $count_voted = count($_POST['voted_answer']);
+    $error_several = 0;
+    $where = "voted_fid = '" . $votes_id . "' AND voted_mod = '" . $mod . "' AND voted_ip = '" . cs_sql_escape($users_ip) . "'";
+    $where .= " AND users_id = '" . $users_id . "' AND (";
+    $voting = array();
+    for ($run = 0; $run < $count_voted; $run++) {
+      settype($voted_answer[$run], 'integer');
+      if ($voted_answer[$run] < 1 || $voted_answer[$run] >= $count_election || in_array($voted_answer[$run], $voting)) {
+        $error_several = 1;
+        break;
+      }
+      $voting[] = $voted_answer[$run];
+      $where .= 'voted_answer = "' . $voted_answer[$run] . '" OR ';
+    }
+    $where = substr($where,0,-4) . ')';
+    
+    $error_several += cs_sql_count(__FILE__, 'voted', $where);
+    
+    if (!empty($error_several)) die('Multivote triggered an error with answers -> Execution halted.');
+    
     for($run = 0; $run < $count_voted; $run++) {
       $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
       $votes_save = array($votes_id,$users_id,$time,$voted_answer[$run],$users_ip,$mod);

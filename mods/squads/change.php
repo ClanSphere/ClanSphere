@@ -103,14 +103,14 @@ if(isset($_POST['submit'])) {
     $error .= $cs_lang['no_admin'] . cs_html_br(1);
   }
   if ($cs_squads['clans_id'] != $cs_squads_select['clans_id']) {
-	  $where = "clans_id = '" . cs_sql_escape($cs_squads['clans_id']) . "'";
-	  $search = cs_sql_select(__FILE__,'clans','clans_pwd',$where);
-	  if(empty($search['clans_pwd']) OR $search['clans_pwd'] != $clans_pwd) {
-	    $error .= $cs_lang['pwd_wrong'] . cs_html_br(1);
-	  }
+    $where = "clans_id = '" . cs_sql_escape($cs_squads['clans_id']) . "'";
+    $search = cs_sql_select(__FILE__,'clans','clans_pwd',$where);
+    if(empty($search['clans_pwd']) OR $search['clans_pwd'] != $clans_pwd) {
+      $error .= $cs_lang['pwd_wrong'] . cs_html_br(1);
+    }
   }
 } else {
-	$cs_squads = $cs_squads_select;
+  $cs_squads = $cs_squads_select;
 }
 
 if(!isset($_POST['submit'])) {

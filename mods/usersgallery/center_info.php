@@ -26,8 +26,8 @@ $views = cs_sql_select(__FILE__,'usersgallery','usersgallery_count','users_id=' 
 $loop_views = count($views);
 $view = 0;
 for($run=0; $run<$loop_views; $run++) {
-	$a = cs_secure($views[$run]['usersgallery_count']);
-	$view += $a;
+  $a = cs_secure($views[$run]['usersgallery_count']);
+  $view += $a;
 }
 $data['data']['count_views'] = $view;
 
@@ -41,12 +41,12 @@ $loop = count($gallery);
 $ges_size = 0;
 $ges_traffic = 0;
 for($run=0; $run<$loop; $run++) {
-	$file = 'uploads/usersgallery/pics/' . $gallery[$run]['usersgallery_name'];
-	$count = $gallery[$run]['usersgallery_count'];
-	$size = filesize($file);
-	$traffic = $size*$count;
-	$ges_traffic += $traffic;
-	$ges_size += $size;
+  $file = 'uploads/usersgallery/pics/' . $gallery[$run]['usersgallery_name'];
+  $count = $gallery[$run]['usersgallery_count'];
+  $size = filesize($file);
+  $traffic = $size*$count;
+  $ges_traffic += $traffic;
+  $ges_size += $size;
 }
 $data['data']['count_size'] = cs_filesize($ges_size,2);
 
@@ -54,29 +54,29 @@ $data['data']['count_trafik'] = cs_filesize($ges_traffic,2);
 
 $space = 0;
 if(!empty($count_pics)) {
-	$space = $count_pics / $options['max_files'] * 100;
-	$space = round($space,1);
+  $space = $count_pics / $options['max_files'] * 100;
+  $space = round($space,1);
 }
 $data['data']['count_space'] = $space;
 if($space <= 50) {
-	$data['img']['01'] = 'symbols/messages/messages01.png';
+  $data['img']['01'] = 'symbols/messages/messages01.png';
 }
 elseif($space > 50 AND $space < 95) {
-	$data['img']['01'] = 'symbols/messages/messages01_orange.png';
+  $data['img']['01'] = 'symbols/messages/messages01_orange.png';
 }
 else {
-	$data['img']['01'] = 'symbols/messages/messages01_red.png';
+  $data['img']['01'] = 'symbols/messages/messages01_red.png';
 }
 if(!empty($space)) {
-	if($space <= 50) {
-		$data['img']['02'] = 'symbols/messages/messages02.png';
-	}
-	elseif($space > 50 AND $space < 95) {
-		$data['img']['02'] = 'symbols/messages/messages02_orange.png';
-	}
-	else {
-		$data['img']['02'] = 'symbols/messages/messages02_red.png';
-	}
+  if($space <= 50) {
+    $data['img']['02'] = 'symbols/messages/messages02.png';
+  }
+  elseif($space > 50 AND $space < 95) {
+    $data['img']['02'] = 'symbols/messages/messages02_orange.png';
+  }
+  else {
+    $data['img']['02'] = 'symbols/messages/messages02_red.png';
+  }
 }
 
 
