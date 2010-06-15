@@ -2,6 +2,7 @@ body {
   background-color: #E5E5E5;
   padding: 10px 10px 0 10px;
   font-size: 12px;
+  font-family: Tahoma, Arial, sans-serif;
 }
 
 .clearfix:after {
@@ -34,7 +35,6 @@ a:hover {
   border: 1px solid #888888;
   padding: 5px 1%;
   color: #757575;
-  font-family: Tahoma, Arial, sans-serif;
 }
 #head {
   height: 100px;
@@ -52,7 +52,6 @@ a:hover {
 }
 #head div {
   font-size: 12px;
-  font-family: Tahoma, Arial, sans-serif;
   letter-spacing: 1px;
 }
 #bottom {
@@ -80,7 +79,6 @@ a:hover {
   color: #000000;
   padding: 2px 0 2px 15px;
   background-color: #FFFFFF;
-  font-family: Tahoma, Arial, sans-serif;
   font-size: 13px;
 }
 .dark {
@@ -102,7 +100,6 @@ a:hover {
   margin-bottom: 20px;
   margin-top: 20px;
   font-size: 12px;
-  font-family: Tahoma, Arial, sans-serif;
   position: relative;
 }
 #nav-right {
@@ -117,7 +114,6 @@ a:hover {
   background-color: #FFFFFF;
   padding:4px 6px 4px 8px;
   color: #000000;
-  font-family: Tahoma, Arial, sans-serif;
   font-size: 13px; 
 }
 .navbody td {
@@ -128,7 +124,6 @@ a:hover {
   border: 1px solid #888888;
   color: #B91F1D;
   border-right: 4px solid #BA1616 !important;
-  font-family: Tahoma, Arial, sans-serif;
   letter-spacing: 3px;
   padding:4px 6px 4px 8px !important;
   background-color: #FFFFFF;

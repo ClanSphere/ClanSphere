@@ -23,6 +23,7 @@ var Clansphere = {
       refreshNavlistsInterval: 10000,
       loadingImage: $('<img id="ajax_loading" alt="Loading..." />'),
       contentSelector: "#content",
+      loadingSpinnerPath: '/uploads/ajax/loading.gif',
       debugSelector: '#debug',
       debugNavlistRequets: false,
       alertErrors: false,
@@ -31,6 +32,7 @@ var Clansphere = {
       activityCheckTime: 60000,
       navlistSelector: '.cs_navlist',
       navlistIdPrefix: 'cs_navlist_',
+      noAjaxClass: 'noajax',
       uploadScript: 'upload.php',
       labelUploadDelete: 'Delete',
       labelUploadProgress: 'Uploading File...',
@@ -62,13 +64,15 @@ var Clansphere = {
       
       Clansphere.ajax.checkUrlConsistency();
       
-      Clansphere.ajax.options.loadingImage.attr('src', Clansphere.ajax.basePath + '/uploads/ajax/loading.gif' );
+      Clansphere.ajax.options.loadingImage.attr('src', Clansphere.ajax.basePath + Clansphere.ajax.options.loadingSpinnerPath );
       
       Clansphere.ajax.convertLinksToAnchor('body');
       Clansphere.ajax.convertForms('body');
       Clansphere.ajax.navlists = Clansphere.ajax.getNavlists('body');
       
       Clansphere.ajax.trackActivity();
+      
+      $(Clansphere.ajax.options.debugSelector).before('<p><a href="#" onclick="Clansphere.ajax.debugInfo();return false;">Ajax Debugger</a></p>');
       
     },
 
@@ -179,14 +183,10 @@ var Clansphere = {
     
     convertLinksToAnchor: function (element) {
       element = $(element);
-      element.find('a:not(.noajax)[href]').each(function(i,e){
+      element.find('a:not(.' + Clansphere.ajax.options.noAjaxClass + ')[href]').each(function(i,e){
         var href = e.href;
         href = href.replace(Clansphere.ajax.hashMarker, Clansphere.ajax.options.anchorMarker);
-        if (!Clansphere.ajax.modRewrite) {
-          href = href.replace(Clansphere.ajax.regex, "$1");
-        } else {
-      	  href = href.replace(Clansphere.ajax.regex, "$1");
-        }
+        href = href.replace(Clansphere.ajax.regex, "$1");
         var hrefsplitter = href.split(Clansphere.ajax.options.anchorMarker);
         if(hrefsplitter[0].length===0) {
           href = Clansphere.ajax.hash.substr(1) + (hrefsplitter[1] ? Clansphere.ajax.options.anchorMarker + hrefsplitter[1] : '');
@@ -212,7 +212,7 @@ var Clansphere = {
         Clansphere.ajax.upload_file(this);
       });
       
-      element.find('form:not(.noajax)').submit(function() {
+      element.find('form:not(.' + Clansphere.ajax.options.noAjaxClass + ')').submit(function() {
         
         if(Clansphere.ajax.active_upload_count > 0) {
           alert(Clansphere.ajax.options.errorUploadProgress);
@@ -276,8 +276,7 @@ var Clansphere = {
       Clansphere.ajax.forceScroll = false;
     },
     
-    getNavlists: function(element)
-    {
+    getNavlists: function(element) {
       navlists = [];
       $(element).find(Clansphere.ajax.options.navlistSelector).each(function(index) {
         navlists.push(this.id.substr(Clansphere.ajax.options.navlistIdPrefix.length));
@@ -383,13 +382,12 @@ var Clansphere = {
             'Clansphere.ajax.regex',
             'Clansphere.ajax.index',
             'Clansphere.ajax.basePath',
-            'Clansphere.ajax.baseFile',
-            'Clansphere.ajax.regex'
+            'Clansphere.ajax.baseFile'
           ];
+        
+      d += '<a href="#" onclick="$(this).parent().remove();return false;">Close</a>';  
             
       d += '<h2>Ajax Debug Information</h2>';
-      
-      d += '<a href="#" onclick="javascript:$(this).parent().remove();">Close</a>';
       
       for(dbg in debugInfos) {
         d += '<p><b>' + debugInfos[dbg] + ':</b><br/>' + eval(debugInfos[dbg]) + '</p>';
@@ -490,104 +488,7 @@ var Clansphere = {
     	});
     }
   },
-/*
-  validation: {
-    mod: {
-      name: '',
-      rules: {}
-    },
-    lang: 0,
-
-    options: {
-      valideClass: 'valide',
-      invalideClass: 'invalide',
-      errorMsgClass: 'error'
-    },
-
-    initialize: function() {
-
-      $('input, textarea').live( 'keyup', function () {
-        input_field = $(this)
-        if(Clansphere.validation.mod.rules[ input_field.attr('name')]) {
-          field = Clansphere.validation.mod.rules[input_field.attr('name')];
-          value = input_field.attr('value');
-          if (!value && !field.min){ Clansphere.validation.mark_as_valide(this); }
-
-          if (field.min && value.length < field.min){ Clansphere.validation.mark_as_invalide(this, 'min'); return;}
-          if (field.max && value.length > field.max){ Clansphere.validation.mark_as_invalide(this, 'max'); return;}
-          if (field.regex) {
-              end = field.regex.lastIndexOf($(field).attr('regex').substr(0,1));
-              pattern = field.regex.substr(1,end - 1);
-              modifiers = field.regex.substr(end + 1);
-              
-              if (!new RegExp(pattern, modifiers).test(value)){ Clansphere.validation.mark_as_invalide(this, 'regex'); return;}
-          }
-
-          Clansphere.validation.mark_as_valide(this);
-        }
-      });
-    },
-
-    requestRules: function(mod) {
-
-      if (Clansphere.validation.mod.name == mod) return false;
-      
-      Clansphere.validation.mod.name = mod;
-      if(Clansphere.validation.lang==0) {
-        $.ajax({
-            type: 'GET',
-            url: 'mods/ajax/validation.php',
-            data: mod,
-            dataType: 'json',
-            success: function (json) { 
-              Clansphere.validation.mod.name = mod
-              Clansphere.validation.mod.rules = json.data;
-              Clansphere.validation.lang = json.translations;
-            }
-        });
-      } else {
-        $.ajax({
-            type: 'GET',
-            url: 'mods/' + mod + '/config.json',
-            dataType: 'json',
-            success: function (json) { 
-              Clansphere.validation.mod.rules = json.data; 
-            }
-        });
-      }
-      return true;
-    },
-       
-    mark_as_invalide: function(element, error) {
-      options = Clansphere.validation.options;
-      element = $(element);
-      
-      
-      if(element.next('.' + options.errorMsgClass).size() == 0) {
-        element.after('<div class="' + options.errorMsgClass + '">');
-      }
-      element.removeClass(options.valideClass)
-             .addClass(options.valideClass)
-             .next('.' + options.errorMsgClass)
-             .text(Clansphere.validation.lang[error]);
-             
-      return element;
-    },
-    
-    mark_as_valide: function (element) {
-      element = $(element);
-      options = Clansphere.validation.options;
-      element.removeClass(options.invalideClass)
-           .addClass(options.valideClass)
-           .next('.' + options.errorMsgClass)
-           .text('');
-           
-      return element;
-    }
-
-
-  },
-*/
+  
   initialize: function(modRewrite, basepath, reload) {
 	
     Clansphere.ajax.initialize(modRewrite, basepath, reload);   // Activate this line for ajax
@@ -595,7 +496,3 @@ var Clansphere = {
   }
 
 };
-
-$(function() {
-   //Clansphere.initialize();
-});
