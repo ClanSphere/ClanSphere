@@ -206,7 +206,8 @@ function cs_init($predefined) {
   $cs_main['cellspacing'] = 1;
   $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
   $cs_main['def_theme'] = 'base';
-
+	$cs_main['xsrf_protection'] = TRUE;
+	
   require_once 'system/core/servervars.php';
 
 	$cs_main['ajaxrequest'] = isset($_REQUEST['xhr']) ? true : false;
