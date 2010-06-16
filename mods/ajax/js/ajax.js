@@ -5,6 +5,7 @@ var Clansphere = {
     baseFile: '',
     basePath: '',
     index: '',
+    documentTitle: '',
     modRewrite: false,
     forceReload: false,
     forceScroll: false,
@@ -43,6 +44,8 @@ var Clansphere = {
     active_upload_count: 0,
     
     initialize: function(modRewrite, basepath, reloadInterval) {
+      
+      Clansphere.ajax.documentTitle = document.title;
       
       Clansphere.ajax.options.refreshNavlistsInterval = reloadInterval;
       Clansphere.ajax.urlChecker = window.setInterval(Clansphere.ajax.checkURL, Clansphere.ajax.options.checkURLInterval);
@@ -97,11 +100,11 @@ var Clansphere = {
       
         Clansphere.ajax.performScroll();
         
+        Clansphere.ajax.documentTitle = response.title;
+        
         if(response.navlists) {
           Clansphere.ajax.updateNavlists(response.navlists);
         }
-        
-        document.title = response.title;
         
         Clansphere.ajax.debug(response);
       
@@ -118,7 +121,11 @@ var Clansphere = {
         window.location.reload();
       }
     },
-
+    
+    resetTitle: function() {
+      document.title = Clansphere.ajax.documentTitle;
+    },
+    
     checkURL: function() {
       var hash = window.location.hash.substr(1).split(Clansphere.ajax.options.anchorMarker);
       hash[0] = hash[0] || '';
@@ -316,6 +323,7 @@ var Clansphere = {
           Clansphere.ajax.convertForms('#' + Clansphere.ajax.options.navlistIdPrefix + id);
         }
       }
+      Clansphere.ajax.resetTitle();
     },
     
     switchNavlistRefresher: function(status) {
