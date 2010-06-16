@@ -1,4 +1,6 @@
 <?php
+// ClanSphere 2010 - www.clansphere.net  
+// $Id$
 
 $cs_lang['mod_name']  = 'Termine';
 $cs_lang['mod_text']  = 'Veranstaltungen, Geburtstage und Weiteres';
@@ -178,4 +180,3 @@ $cs_lang['status_3']          = 'Warteliste';
 $cs_lang['status_4']          = 'Best&auml;tigt';
 $cs_lang['status_5']          = 'Bezahlt';
 $cs_lang['status_info']       = 'Achtung: Ihre Teilnahme ist erst gesichert, wenn der Status auf Best&auml;tigt oder Bezahlt steht';
-$cs_lang['print']             = 'Drucken';
