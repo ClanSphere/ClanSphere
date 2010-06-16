@@ -72,9 +72,11 @@
     <div style="float:left; padding-left: 3px; padding-top: 3px; display:none" id="pass_stage_4">
       {lang:stage_4}
     </div>
-    <div style="clear:both;">
-      {clip:plus} <a href="javascript:cs_clip('pass')">{lang:secure_stages}</a>
-      <div style="display:none" id="span_pass">
+    <div style="clear:both">
+      <a class="clip" href="#">{lang:secure_stages}
+      <img src="{page:path}/symbols/clansphere/plus.gif" alt="+" />
+      <img src="{page:path}/symbols/clansphere/minus.gif" style="display:none" alt="-" /></a>
+      <div style="display:none">
         {lang:stage_1}{lang:stage_1_text}<br />
           {lang:stage_2}{lang:stage_2_text}<br />
           {lang:stage_3}{lang:stage_3_text}<br />
