@@ -123,8 +123,6 @@ if(empty($op_users['register'])) {
   $data['register']['languages'] .= cs_html_option($lang['name'],$lang['name'],$sel);
   }
 
-  $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
-
   $data['if']['captcha'] = 0;
 
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {

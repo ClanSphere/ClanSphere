@@ -178,8 +178,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $matches[2] .= $cs_lang['filetypes'] . $return_types;
   $data['clans']['clip'] = cs_abcode_clip($matches);
   $data['data']['id'] = $clans_id;
-  
-  $data['clip']['plus'] = cs_html_img('symbols/clansphere/plus.gif',0,0,'id="img_pass"');
+
   echo cs_subtemplate(__FILE__,$data,'clans','change');
 }
 else {
