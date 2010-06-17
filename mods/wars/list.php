@@ -37,7 +37,7 @@ $data['sort']['date'] = cs_sort('wars','list',$start,$squads_id,1,$sort);
 $data['sort']['enemy'] = cs_sort('wars','list',$start,$squads_id,3,$sort);
 $data['sort']['category'] = cs_sort('wars','list',$start,$squads_id,5,$sort);
 
-$select = 'war.games_id AS games_id, war.wars_date AS wars_date, war.clans_id AS clans_id, cln.clans_short AS clans_short, cat.categories_name AS categories_name, war.categories_id AS categories_id, war.wars_score1 AS wars_score1, war.wars_score2 AS wars_score2, war.wars_id AS wars_id';
+$select = 'war.games_id AS games_id, war.wars_date AS wars_date, war.wars_status AS status, war.clans_id AS clans_id, cln.clans_short AS clans_short, cat.categories_name AS categories_name, war.categories_id AS categories_id, war.wars_score1 AS wars_score1, war.wars_score2 AS wars_score2, war.wars_id AS wars_id';
 $from = 'wars war INNER JOIN {pre}_categories cat ON war.categories_id = cat.categories_id ';
 $from .= 'INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id ';
 $cs_wars = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
@@ -54,6 +54,8 @@ for ($run = 0; $run < $count_wars; $run++) {
   $data['wars'][$run]['category'] = cs_secure($cs_wars[$run]['categories_name']);
   $data['wars'][$run]['url'] = cs_url('wars','view','id=' . $cs_wars[$run]['wars_id']);
   $data['wars'][$run]['result'] = $cs_wars[$run]['wars_score1'] . ' : ' . $cs_wars[$run]['wars_score2'];
+  $data['wars'][$run]['if']['upcoming'] = ($cs_wars[$run]['status'] == 'upcoming') ? true : false;
+  $data['wars'][$run]['if']['played'] = ($cs_wars[$run]['status'] == 'played') ? true : false;
   $result = $cs_wars[$run]['wars_score1'] - $cs_wars[$run]['wars_score2'];
   $icon = $result >= 1 ? 'green' : 'red';
   $icon = !empty($result) ? $icon : 'grey';
