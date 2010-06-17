@@ -52,7 +52,8 @@ $cs_lang['cat_error'] ='- Genre must not be empty';
 $cs_lang['ext_error'] ='- Unknown filetype ';
 $cs_lang['too_wide'] ='- Symbol is too wide';
 $cs_lang['too_high'] ='- Symbol is too high';
-$cs_lang['too_big'] ='- The file is too big;';
+$cs_lang['too_big'] ='- The file is too big';
+$cs_lang['no_icon'] ='- You have to upload an icon';
 
 $cs_lang['details'] = 'Details';
 $cs_lang['pixel'] = 'Pixel';

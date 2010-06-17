@@ -113,6 +113,10 @@ if(!empty($files['symbol']['tmp_name'])) {
     $symbol_error++;
   }
 }
+elseif(!file_exists($cs_main['def_path'] . '/uploads/games/' . $games_id . '.gif')) {
+  $errormsg .= $cs_lang['no_icon'] . cs_html_br(1);
+  $games_error++;
+}
 
 $data['lang']['body'] = !isset($_POST['submit']) ? $cs_lang['body_edit'] : $errormsg;
 

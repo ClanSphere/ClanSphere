@@ -45,7 +45,7 @@
       </td>
     </tr>
     <tr>
-      <td class="leftc">{icon:images} {lang:iconedit}</td>
+      <td class="leftc">{icon:images} {lang:icon} *</td>
       <td class="leftb"><input type="file" name="symbol" value="" />
         <br />
         <br />

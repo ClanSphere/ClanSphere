@@ -82,6 +82,10 @@ if(!empty($files['symbol']['tmp_name'])) {
     $symbol_error++;
   }
 }
+else {
+  $errormsg .= $cs_lang['no_icon'] . cs_html_br(1);
+  $games_error++;
+}
 
 if(!empty($_POST['games_creator'])) {
   $games_creator = $_POST['games_creator'];
