@@ -24,7 +24,7 @@ var Clansphere = {
       refreshNavlistsInterval: 10000,
       loadingImage: $('<img id="ajax_loading" alt="Loading..." />'),
       contentSelector: '#content',
-      spinnerTargetSelector: '#content',
+      spinnerTargetSelector: 'body',
       loadingSpinnerPath: '/uploads/ajax/loading.gif',
       debugSelector: '#debug',
       debugNavlistRequets: false,
@@ -200,12 +200,15 @@ var Clansphere = {
           href = Clansphere.ajax.hash.substr(1) + (hrefsplitter[1] ? Clansphere.ajax.options.anchorMarker + hrefsplitter[1] : '');
           $(e).data('noreload',true);
         }
-        e.href = e.href===href ? e.href : Clansphere.ajax.hashMarker + href;
-      }).bind('click', function(e) {
-        if(this.href.substr(0,7)=='http://' && !$(this).data('noreload')) {
-          Clansphere.ajax.forceReload = true;
+        if(e.href!==href) {
+          e.href = Clansphere.ajax.hashMarker + href;
+          $(e).bind('click', function(e) {
+            if(this.href.substr(0,7)=='http://' && !$(this).data('noreload')) {
+              Clansphere.ajax.forceReload = true;
+            }
+            Clansphere.ajax.forceScroll = true;
+          });
         }
-        Clansphere.ajax.forceScroll = true;
       });
       
       return element;
