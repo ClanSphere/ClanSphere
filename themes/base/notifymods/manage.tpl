@@ -12,32 +12,6 @@
 <br />
 {head:getmsg}
 
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}">
-  <tr>
-    <td class="headb" colspan="2">{lang:mod_name} - {lang:caption}</td>
-  </tr>
-  <tr>
-    <td class="leftb">GB</td>
-    <td class="leftb">{lang:gbook}</td>
-  </tr>
-  <tr>
-    <td class="leftb">Join</td>
-    <td class="leftb">{lang:joinus}</td>
-  </tr>
-  <tr>
-    <td class="leftb">Fight</td>
-    <td class="leftb">{lang:fightus}</td>
-  </tr>
-  <tr>
-    <td class="leftb">Down</td>
-    <td class="leftb">{lang:files}</td>
-  </tr>
-  <tr>
-    <td class="leftb">Board</td>
-    <td class="leftb">{lang:board}</td>
-  </tr>
-</table>
-<br />
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
     <td class="headb">{sort:users_nick} {lang:user}</td>
