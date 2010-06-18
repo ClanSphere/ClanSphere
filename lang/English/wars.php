@@ -31,8 +31,9 @@ $cs_lang['players'] = 'Players';
 $cs_lang['on'] = 'versus';
 $cs_lang['player'] = 'Players';
 $cs_lang['score'] = 'Result';
-$cs_lang['url'] = 'Website';
+$cs_lang['url'] = 'Matchlink';
 $cs_lang['report'] = 'Report';
+$cs_lang['report2'] = 'Report of the adversary';
 $cs_lang['add_player'] = 'Add player';
 $cs_lang['add_news'] = 'Add news';
 

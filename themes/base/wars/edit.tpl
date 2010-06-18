@@ -101,6 +101,16 @@
       <textarea class="rte_abcode" name="wars_report" cols="50" rows="8" id="wars_report">{wars:wars_report}</textarea>
     </td>
   </tr>
+    <tr>
+    <td class="leftc">{icon:kate} {lang:report2}<br />
+      <br />
+      {abcode:smileys2}
+    </td>
+    <td class="leftb">
+      {abcode:features2}
+      <textarea class="rte_abcode" name="wars_report2" cols="50" rows="8" id="wars_report2">{wars:wars_report2}</textarea>
+    </td>
+  </tr>
   <tr>
     <td class="leftc">{icon:configure} {lang:more}</td>
     <td class="leftb"><input type="checkbox" name="wars_close" value="1" {wars:close_check} /> {lang:close}</td>

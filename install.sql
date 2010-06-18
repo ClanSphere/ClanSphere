@@ -1217,6 +1217,7 @@ CREATE TABLE {pre}_wars (
   wars_players1 int(4) NOT NULL default '0',
   wars_players2 int(4) NOT NULL default '0',
   wars_report text,
+  wars_report2 text,
   wars_close int(2) NOT NULL default '0',
   wars_pictures text,
   PRIMARY KEY (wars_id)

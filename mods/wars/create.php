@@ -24,6 +24,7 @@ if(isset($_POST['submit'])) {
   $cs_wars['wars_opponents'] = $_POST['wars_opponents'];
   $cs_wars['wars_url'] = strpos($_POST['wars_url'],'http://') === false ? $_POST['wars_url'] : substr($_POST['wars_url'],7);
   $cs_wars['wars_report'] = $_POST['wars_report'];
+  $cs_wars['wars_report2'] = $_POST['wars_report2'];
   $cs_wars['wars_date'] = cs_datepost('date','unix');
   $cs_wars['wars_close'] = isset($_POST['wars_close']) ? $_POST['wars_close'] : 0;
   $cs_wars['wars_topmatch'] = empty($_POST['wars_topmatch']) ? 0 : 1;
@@ -91,6 +92,7 @@ if(isset($_POST['submit'])) {
   $cs_wars['wars_opponents'] = '';
   $cs_wars['wars_url'] = '';
   $cs_wars['wars_report'] = '';
+  $cs_wars['wars_report2'] = '';
   $cs_wars['wars_close'] = 0;
   $cs_wars['wars_topmatch'] = 0;
 
@@ -104,7 +106,8 @@ if(isset($_POST['submit'])) {
       $cs_wars['wars_status'] = 'upcoming';
       $cs_wars['wars_url'] = $cs_fightus['fightus_url'];
       $cs_wars['wars_report'] = $cs_fightus['fightus_more'];
-
+      $cs_wars['wars_report2'] = $cs_fightus['fightus_more'];
+	  
       $where = "clans_name = '" . cs_sql_escape($cs_fightus['fightus_clan']) . "'";
       $cs_wars['clans_id'] = cs_sql_select(__FILE__,'clans','clans_id',$where);
     }
@@ -138,6 +141,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $cs_wars['wars_opponents'] =  $_POST['wars_opponents'];
     $cs_wars['wars_url'] = $_POST['wars_url'];
     $cs_wars['wars_report'] = $_POST['wars_report'];
+	$cs_wars['wars_report2'] = $_POST['wars_report2'];
     $cs_wars['wars_date'] = cs_datepost('date','unix');
 
     for ($x = 0; $x <= $players; $x++) {
@@ -200,6 +204,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['dropdown']['date'] = cs_dateselect('date','unix',$cs_wars['wars_date'],1995);
   $data['abcode']['smileys'] = cs_abcode_smileys('wars_report');
   $data['abcode']['features'] = cs_abcode_features('wars_report');
+  $data['abcode']['smileys2'] = cs_abcode_smileys('wars_report2');
+  $data['abcode']['features2'] = cs_abcode_features('wars_report2');
   $data['form']['players'] = $players;
 
   $data['value']['opponents'] = $cs_wars['wars_opponents'];
@@ -209,7 +215,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['value']['score2'] = $cs_wars['wars_score2'];
   $data['value']['url'] = $cs_wars['wars_url'];
   $data['value']['report'] = cs_secure($cs_wars['wars_report']);
-
+  $data['value']['report2'] = cs_secure($cs_wars['wars_report2']);
+  
   $data['upcoming']['selection'] = $cs_wars['wars_status'] != 'upcoming' ? '' : ' selected="selected"';
   $data['running']['selection'] = $cs_wars['wars_status'] != 'running' ? '' : ' selected="selected"';
   $data['canceled']['selection'] = $cs_wars['wars_status'] != 'canceled' ? '' : ' selected="selected"';

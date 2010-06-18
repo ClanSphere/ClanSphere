@@ -62,3 +62,5 @@ ALTER TABLE {pre}_access ADD access_notifymods int(2) NOT NULL default '0';
 
 ALTER TABLE {pre}_cupmatches ADD cupmatches_tree_order int(6);
 ALTER TABLE {pre}_cupsquads DROP squads_name;
+
+ALTER TABLE `{pre}_wars` ADD  `wars_report2` text COLLATE utf8_unicode_ci NOT NULL;

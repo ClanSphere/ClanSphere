@@ -8,7 +8,7 @@ $wars['if']['squadmember'] = FALSE;
 
 $wars_id = empty($_REQUEST['where']) ? (int) $_GET['id'] : (int) $_REQUEST['where'];
 $cells  = 'games_id, categories_id, clans_id, wars_opponents, squads_id, wars_status, wars_players1, wars_players2, ';
-$cells .= 'wars_score1, wars_score2, wars_url, wars_pictures, wars_report, wars_date, wars_status, wars_close';
+$cells .= 'wars_score1, wars_score2, wars_url, wars_pictures, wars_report, wars_report2, wars_date, wars_status, wars_close';
 $cs_wars = cs_sql_select(__FILE__,'wars',$cells,"wars_id = '" . $wars_id . "'");
 
 $wars['head']['topline'] = $cs_lang['body_view'];
@@ -28,13 +28,33 @@ $wars['lang']['category'] = $cs_lang['category'];
 $wars['category']['link'] = cs_link($cs_cat['categories_name'],'categories','view','id=' . $cs_cat['categories_id']);
 
 $where = "clans_id = '" . $cs_wars['clans_id'] . "'";
-$cs_clan = cs_sql_select(__FILE__,'clans','clans_name, clans_id',$where);
+$cs_clan = cs_sql_select(__FILE__,'clans','clans_name, clans_picture, clans_country, clans_id',$where);
 $wars['enemy']['link'] = cs_link(cs_secure($cs_clan['clans_name']),'clans','view','id=' . $cs_clan['clans_id']);
+$wars['enemy']['logo'] = ! empty($cs_clan['clans_picture']) ? cs_html_img('uploads/clans/' . $cs_clan['clans_picture']) : $cs_lang['no_logo'];   
+if(!empty($cs_wars['wars_opponents'])) {
 $wars['wars']['opponents'] = cs_secure($cs_wars['wars_opponents'],0,0,0);
+} else {
+$wars['wars']['opponents'] = '-';
+}
+if(!empty($cs_clan['clans_country'])) {
+$wars['enemy']['country'] = cs_html_img('symbols/countries/' . $cs_clan['clans_country'] . '.png',11,16);
+} else {
+$wars['enemy']['country'] = '-';
+}
 
+
+$select = 'sqd.squads_name AS squads_name, sqd.squads_id AS squads_id, sqd.squads_picture AS squads_picture, owncln.clans_picture AS squad_picture, cln.clans_country AS clans_country';
+$from = 'squads sqd INNER JOIN {pre}_clans cln ON sqd.clans_id = cln.clans_id INNER JOIN {pre}_clans owncln ON owncln.clans_id = sqd.clans_id';
 $where = "squads_id = '" . $cs_wars['squads_id'] . "'";
-$cs_squad = cs_sql_select(__FILE__,'squads','squads_name, squads_id',$where);
+$cs_squad = cs_sql_select(__FILE__,$from,$select,$where);
 $wars['squad']['link'] = cs_link(cs_secure($cs_squad['squads_name']),'squads','view','id=' . $cs_squad['squads_id']);
+$wars['squad']['logo'] = ! empty($cs_squad['squad_picture']) ? cs_html_img('uploads/clans/' . $cs_squad['squad_picture']) : $cs_lang['no_logo'];   
+if(!empty($cs_squad['clans_country'])) {
+$wars['squad']['country'] = cs_html_img('symbols/countries/' . $cs_squad['clans_country'] . '.png',11,16);
+} else {
+$wars['squad']['country'] = '-';
+}
+
 
 $cells = 'pl.users_id AS users_id, usr.users_nick AS users_nick';
 $tables = 'players pl INNER JOIN {pre}_users usr ON pl.users_id = usr.users_id';
@@ -72,6 +92,13 @@ $wars['war']['score2'] = $cs_wars['wars_score2'];
 $result = $cs_wars['wars_score1'] - $cs_wars['wars_score2'];
 $icon = $result >= 1 ? 'green' : 'red';
 $icon = empty($result) ? 'grey' : $icon;
+$icon3 = $result >= 1 ? '#74B200' : '#DE0002';
+$icon3 = empty($result) ? '#c0c0c0' : $icon3;
+$icon4 = $result <= 1 ? '#74B200' : '#DE0002';
+$icon4 = empty($result) ? '#c0c0c0' : $icon4;
+$wars['result']['color1'] = $icon3;
+$wars['result']['color2'] = $icon4;
+
 $wars['result']['img'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
 
 $wars_url = cs_secure($cs_wars['wars_url']);
@@ -91,6 +118,7 @@ if(empty($cs_wars['wars_pictures'])) {
 }
 
 $wars['war']['report'] = empty($cs_wars['wars_report']) ? '-' : cs_secure($cs_wars['wars_report'],1,1);
+$wars['war']['report2'] = empty($cs_wars['wars_report2']) ? '-' : cs_secure($cs_wars['wars_report2'],1,1);
 
 $tables2 = 'rounds rnd INNER JOIN {pre}_maps mps ON rnd.maps_id = mps.maps_id';
 $cells2 = 'rnd.rounds_score1 AS rounds_score1, rnd.rounds_score2 AS rounds_score2, '

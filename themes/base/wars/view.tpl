@@ -1,14 +1,33 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb">{lang:mod_name} - {lang:details}</td>
+  <td class="headb" colspan="2">{lang:mod_name} - {lang:details}</td>
  </tr>
  <tr>
   <td class="leftb">{head:topline}</td>
+  <td class="rightb">{lang:status}: {war:status} {result:img}</td> 
  </tr>
 </table>
 <br />
 {lang:getmsg}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+ <tr>
+  <td class="centerb" style="width:45%">{squad:logo}<br />{squad:country} {squad:link}</td> 
+  <td class="centerb" style="vertical-align:middle;font-size:14px;font-weight:bold;"><span style="color:{result:color1}">{war:score1}</span> : <span style="color:{result:color2}">{war:score2}</span></td>   
+  <td class="centerb" style="width:45%">{enemy:logo}<br />{enemy:country} {enemy:link}</td>
+ </tr>
+ <tr>
+  <td class="centerb">{wars:players}</td>
+  <td class="centerb">{wars:players1} {lang:on} {wars:players2}</td>
+  <td class="centerb">{wars:opponents}</td>
+ </tr>
+</table>
+<br />
+ 
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}"> 
+ <tr>
+  <td class="headb" colspan="2">{lang:details}</td>
+ </tr>
  <tr>
   <td class="leftc">{icon:package_games}{lang:game}</td>
   <td class="leftb" colspan="2">{game:icon}{game:link}</td>
@@ -18,32 +37,8 @@
   <td class="leftb">{category:link}</td>
  </tr>
  <tr>
-  <td class="leftc">{icon:kdmconfig}{lang:enemy}</td>
-  <td class="leftb">{enemy:link}<br />{wars:opponents}</td>
- </tr>
- <tr>
-  <td class="leftc">{icon:yast_group_add}{lang:squad}</td>
-  <td class="leftb">{squad:link}</td>
- </tr>
- <tr>
-  <td class="leftc">{icon:kdmconfig}{lang:players}</td>
-  <td class="leftb">{wars:players1} {lang:on} {wars:players2}</td>
- </tr>
- <tr>
-  <td class="leftc">{icon:kdmconfig}{lang:players}</td>
-  <td class="leftb">{wars:players}</td>
- </tr>
- <tr>
   <td class="leftc">{icon:1day}{lang:date}</td>
   <td class="leftb">{date:show}</td>
- </tr>
- <tr>
-  <td class="leftc">{icon:demo}{lang:status}</td>
-  <td class="leftb">{war:status}</td>
- </tr>
- <tr>
-  <td class="leftc">{icon:smallcal}{lang:score}</td>
-  <td class="leftb">{war:score1} : {war:score2} {result:img}</td>
  </tr>
  <tr>
   <td class="leftc">{icon:gohome}{lang:url}</td>
@@ -53,9 +48,17 @@
   <td class="leftc">{icon:images}{lang:pictures}</td>
   <td class="leftb">{pictures:show}</td>
  </tr>
+</table>
+<br />
+
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="leftc">{icon:kate}{lang:report}</td>
+  <td class="headb" style="width:50%">{lang:report}</td>
+  <td class="headb">{lang:report2}</td>  
+ </tr>
+ <tr>
   <td class="leftb">{war:report}</td>
+  <td class="leftb">{war:report2}</td>  
  </tr>
 </table>
 <br />

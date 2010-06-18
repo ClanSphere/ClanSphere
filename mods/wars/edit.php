@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) {
   $cs_wars['wars_opponents'] = $_POST['wars_opponents'];
   $cs_wars['wars_url'] = strpos($_POST['wars_url'], 'http://') === false ? $_POST['wars_url'] : substr($_POST['wars_url'], 7);
   $cs_wars['wars_report'] = $_POST['wars_report'];
+  $cs_wars['wars_report2'] = $_POST['wars_report2'];
   $cs_wars['wars_date'] = cs_datepost('date', 'unix');
   $cs_wars['wars_close'] = isset($_POST['wars_close']) ? $_POST['wars_close'] : 0;
   $cs_wars['wars_topmatch'] = empty($_POST['wars_topmatch']) ? 0 : 1;  
@@ -89,7 +90,7 @@ if (isset($_POST['submit'])) {
     $error .= $cs_lang['no_status'] . cs_html_br(1);
 
 } else {
-  $cells = 'games_id, clans_id, squads_id, wars_date, wars_status, wars_url, wars_report, ';
+  $cells = 'games_id, clans_id, squads_id, wars_date, wars_status, wars_url, wars_report, wars_report2, ';
   $cells .= 'wars_score1, wars_score2, wars_players1, wars_players2, wars_opponents, wars_close, wars_topmatch';
   $cs_wars = cs_sql_select(__FILE__, 'wars', 'categories_id, ' . $cells, "wars_id = '" . $wars_id . "'");
 }
@@ -176,7 +177,9 @@ if (!empty($error) or !isset($_POST['submit'])) {
 
   $data['abcode']['smileys'] = cs_abcode_smileys('wars_report');
   $data['abcode']['features'] = cs_abcode_features('wars_report');
-
+  $data['abcode']['smileys2'] = cs_abcode_smileys('wars_report2');
+  $data['abcode']['features2'] = cs_abcode_features('wars_report2');
+  
   $data['wars']['check_player'] = !empty($players) ? $players : 1;
 
   $data['wars']['close_check'] = empty($cs_wars['wars_close']) ? '' : 'checked="checked"';
