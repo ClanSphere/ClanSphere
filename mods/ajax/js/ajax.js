@@ -23,7 +23,8 @@ var Clansphere = {
       checkURLInterval: 50,
       refreshNavlistsInterval: 10000,
       loadingImage: $('<img id="ajax_loading" alt="Loading..." />'),
-      contentSelector: "#content",
+      contentSelector: '#content',
+      spinnerTargetSelector: '#content',
       loadingSpinnerPath: '/uploads/ajax/loading.gif',
       debugSelector: '#debug',
       debugNavlistRequets: false,
@@ -264,15 +265,23 @@ var Clansphere = {
     
     toggleSpinner: function(bin){
 
-      loadingImage = Clansphere.ajax.options.loadingImage.appendTo(Clansphere.ajax.options.contentSelector).hide();
+      var loadingImage = Clansphere.ajax.options.loadingImage.hide().appendTo(Clansphere.ajax.options.spinnerTargetSelector);
       
       switch(bin) {
         case 1:
-          loadingImage.fadeIn(10);
+          if(Clansphere.ajax.options.spinnerTargetSelector==Clansphere.ajax.options.contentSelector) {
+            loadingImage.show();
+          } else {
+            loadingImage.hide().fadeIn(100);
+          }
           break;
-        case 0:
         default:
-          loadingImage.fadeOut(10).remove();
+          if(Clansphere.ajax.options.spinnerTargetSelector==Clansphere.ajax.options.contentSelector) {
+            loadingImage.detach();
+          } else {
+            loadingImage.show().fadeOut(100, function() {$(this).detach();});
+          }
+          
       }
     },
     
@@ -437,48 +446,52 @@ var Clansphere = {
     },
     
     upload_file: function(element) {
-
+      
       Clansphere.ajax.active_upload_count += 1;
-
-      if (!document.getElementById('upload_frame_div')) {
-        upload_frame_div = document.createElement("div");
-        upload_frame_div.setAttribute('id','upload_frame_div');
-        upload_frame_div.style.display = 'none';
-        document.getElementsByTagName('body')[0].appendChild(upload_frame_div);
+      
+      var upload_frame_div, upload_frames;
+      
+      if (!(upload_frame_div = document.getElementById('upload_frame_div'))) {
+        upload_frame_div = $('<div/>');
+        upload_frame_div.attr('id','upload_frame_div');
+        upload_frame_div.css('display', 'none');
+        upload_frame_div.appendTo('body');
+      } else {
+        upload_frame_div = $(upload_frame_div);
       }
-
+      
       upload_frame = false;
-      for(i = 0; i < document.getElementById('upload_frame_div').getElementsByTagName('iframe').length; i++) {
-        upload_frame = document.getElementById('upload_frame_div').getElementsByTagName('iframe')[0];
+      upload_frames = $('#upload_frame_div').find('iframe');
+      for(var i = 0; i < upload_frames.size(); i++) {
+        upload_frame = upload_frames.eq(i);
         break;
       }
       if(!upload_frame) {
-        document.getElementById('upload_frame_div').innerHTML += "<iframe width=\"0\" height=\"0\" frameborder=\"0\" name=\"upload_frame_" + i + "\"></iframe>";
-        upload_frame = document.getElementsByName("upload_frame_" + i)[0];
+        upload_frame = '<iframe width="0" height="0" frameborder="0" name="upload_frame_' + i + '"></iframe>';
+        upload_frame_div.append(upload_frame);
+        upload_frame = $('iframe[name=upload_frame_' + i + ']');
       }
-      form = document.createElement('form');
-      form.name = "upload_form";
-      form.target = upload_frame.name;
-      form.method = "post";
-      form.action = Clansphere.ajax.basePath + '/' + Clansphere.ajax.options.uploadScript;
-      form.setAttribute("enctype","multipart/form-data");
-
-      enctype = form.getAttributeNode("enctype");
-      enctype.value = "multipart/form-data";
-
+      
+      form = $('<form>');
+      form.attr('name', 'upload_form');
+      form.attr('target', upload_frame.attr('name'));
+      form.attr('method', 'post');
+      form.attr('action', Clansphere.ajax.basePath + '/' + Clansphere.ajax.options.uploadScript);
+      form.attr("enctype","multipart/form-data");
+      form.attr( "encoding", "multipart/form-data" );
+      form.addClass(Clansphere.ajax.options.noAjaxClass);
+      
+      
       $(element).replaceWith("<div id=\"upload_"+element.name+"\">" + Clansphere.ajax.options.labelUploadProgress + "</div>");
-      document.getElementById('upload_frame_div').appendChild(form);
-      upload_name = document.createElement("input");
-      upload_name.type = 'hidden';
-      upload_name.name = 'upload_name';
-      upload_name.value = element.name;
+      upload_frame_div.append(form);
+      upload_name = $('<input>');
+      upload_name.attr('type', 'hidden');
+      upload_name.attr('name', 'upload_name');
+      upload_name.attr('value', element.name);
 
-
-      with(form) {
-        appendChild(element);
-        appendChild(upload_name);
-        submit();
-      }
+      form.append(element);
+      form.append(upload_name);
+      form.submit();
     },
     
     user_autocomplete: function(field_from, field_to, path) {
