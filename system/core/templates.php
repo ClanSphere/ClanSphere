@@ -302,7 +302,6 @@ function cs_scriptload($mod, $type, $file, $top = 0, $media = 'screen') {
 function cs_template($cs_micro, $tpl_file = 'index.htm')
 {
   global $account, $cs_logs, $cs_main;
-  $wp = $cs_main['php_self']['dirname'];
 
   if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < $cs_main['maintenance_access'])
   {
@@ -315,25 +314,18 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); }
 
   if ($tpl_file == 'error.htm') $cs_main['template'] = 'install';
-  $tpl_path = 'templates/' . $cs_main['template'];
-  if (!file_exists($tpl_path . '/' . $tpl_file))
+
+  if (!file_exists('templates/' . $cs_main['template'] . '/' . $tpl_file))
   {
-    cs_error($tpl_path . '/' . $tpl_file, 'cs_template - Template not found');
-    $msg = 'Template not found: ' . $tpl_path . '/' . $tpl_file;
+    cs_error('templates/' . $cs_main['template'] . '/' . $tpl_file, 'cs_template - Template not found');
+    $msg = 'Template not found: ' . 'templates/' . $cs_main['template'] . '/' . $tpl_file;
     if($tpl_file != 'error.htm')
       die(cs_error_internal('tpl', $msg));
     else
       die($msg);
   }
-  $cs_temp_get = file_get_contents($tpl_path . '/' . $tpl_file);
-  $tpl_path = $wp . $tpl_path;
 
-  $pattern = "=\<link(.*?)href\=\"(?!http|\/)(.*?)\"(.*?)\>=i";
-  $cs_temp_get = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $cs_temp_get);
-  $pattern = "=background\=\"(?!http|\/)(.*?)\"=i";
-  $cs_temp_get = preg_replace($pattern, "background=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
-  $pattern = "=src\=\"(?!http|\/)(.*?)\"=i";
-  $cs_temp_get = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $cs_temp_get);
+  $cs_temp_get = cs_cache_template($tpl_file);
 
   cs_scriptload('ajax', 'javascript', 'js/ajax.js', 1);
   cs_scriptload('clansphere', 'javascript', 'js/clansphere.js', 1);
@@ -353,10 +345,8 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   }
 
   $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
-  $cs_temp_get = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $cs_temp_get);
   $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $cs_temp_get);
   $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_wrap_templatefile', $cs_temp_get);
-  $cs_temp_get = str_replace('{func:charset}', $cs_main['charset'], $cs_temp_get);
   $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
 
   # Provide the def_title and a title with mod and page info

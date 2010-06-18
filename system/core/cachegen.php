@@ -94,3 +94,29 @@ function cs_cache_save($filename, $content) {
   }
   return $content;
 }
+
+function cs_cache_template($filename) {
+
+  global $cs_main;
+  $tpl_temp = 'tpl_' . $cs_main['template'] . '_' . $cs_main['php_self']['filename'];
+
+  if($content = cs_cache_load($tpl_temp))
+    return $content;
+  else {
+    $tpl_data = file_get_contents($cs_main['def_path'] . '/templates/' . $cs_main['template'] . '/' . $filename);
+    $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
+
+    $pattern = "=\<link(.*?)href\=\"(?!http|\/)(.*?)\"(.*?)\>=i";
+    $tpl_data = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $tpl_data);
+    $pattern = "=background\=\"(?!http|\/)(.*?)\"=i";
+    $tpl_data = preg_replace($pattern, "background=\"" . $tpl_path . "/\\1\"", $tpl_data);
+    $pattern = "=src\=\"(?!http|\/)(.*?)\"=i";
+    $tpl_data = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $tpl_data);
+
+    $tpl_data = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $tpl_data);
+
+    $tpl_data = str_replace('{func:charset}', $cs_main['charset'], $tpl_data);
+
+    return cs_cache_save($tpl_temp, $tpl_data);
+  }
+}
