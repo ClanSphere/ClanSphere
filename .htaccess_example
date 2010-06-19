@@ -30,6 +30,7 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-## Uncomment the line and edit the php index files that should be accessible by the mod_rewrite rule (required)
+RewriteRule ^([^/]+)(.*)$ $1.php?params=$2 [NC,QSA]
 
-RewriteRule ^([^/]+)(.*)$ $1.php?params=$2 [NC,L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*)? $1 [R=404,L]

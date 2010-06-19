@@ -203,7 +203,7 @@ var Clansphere = {
         if(e.href!==href) {
           e.href = Clansphere.ajax.hashMarker + href;
           $(e).bind('click', function(e) {
-            if(this.href.substr(0,7)=='http://' && !$(this).data('noreload')) {
+            if(''+window.location === ''+this.href && this.href.substr(0,7)=='http://' && !$(this).data('noreload')) {
               Clansphere.ajax.forceReload = true;
             }
             Clansphere.ajax.forceScroll = true;
