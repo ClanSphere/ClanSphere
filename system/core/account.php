@@ -7,18 +7,20 @@ function cs_login_cookies($userid = 0) {
   global $cs_main;
   $lifetime = empty($userid) ? 1 : $cs_main['cookie']['lifetime'];
   $thistime = empty($userid) ? '' : cs_time();
-  # TODO: Generate cookie hash
-  $thishash = empty($userid) ? '' : 'to_be_done';
-
-  setcookie('cs_userid', $userid, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
-  setcookie('cs_cookietime', $thistime, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
-  setcookie('cs_cookiehash', $thishash, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+  $thishash = '';
 
   if(!empty($userid)) {
+    $pattern = '1234567890abcdefghijklmnpqrstuvwxyz';
+    for($i=0;$i<34;$i++) { $thishash .= $pattern{rand(0,34)}; }
+
     $cells = array('users_cookietime', 'users_cookiehash');
     $content = array($thistime, $thishash);
     cs_sql_update(__FILE__,'users',$cells,$content,$userid);
   }
+
+  setcookie('cs_userid', $userid, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+  setcookie('cs_cookietime', $thistime, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
+  setcookie('cs_cookiehash', $thishash, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
 }
 
 global $_COOKIE, $_POST, $cs_lang, $cs_main, $login;
