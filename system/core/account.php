@@ -102,6 +102,11 @@ if(empty($_SESSION['users_id'])) {
   }
 }
 
+# refresh cookie lifetime after a while
+if(!empty($_COOKIE['cs_userid']) AND !empty($_COOKIE['cs_cookiehash']) AND !empty($_COOKIE['cs_cookietime']) AND
+   $_COOKIE['cs_cookietime'] < ($cs_main['cookie']['lifetime'] - 43200))
+  cs_login_cookies($_COOKIE['cs_userid'], $_COOKIE['cs_cookiehash']);
+
 if(!empty($_SESSION['users_id'])) {
 
   if (empty($login['method'])) $login['method'] = 'session';
@@ -153,8 +158,3 @@ if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['acce
 }
 
 unset($account['users_pwd']);
-
-# refresh cookie lifetime after a while
-if(!empty($_COOKIE['cs_userid']) AND !empty($_COOKIE['cs_cookiehash']) AND !empty($_COOKIE['cs_cookietime']) AND
-   $_COOKIE['cs_cookietime'] < ($cs_main['cookie']['lifetime'] - 43200))
-  cs_login_cookies($_COOKIE['cs_userid'], $_COOKIE['cs_cookiehash']);
