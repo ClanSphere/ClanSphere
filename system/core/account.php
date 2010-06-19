@@ -102,10 +102,15 @@ if(empty($_SESSION['users_id'])) {
   }
 }
 
-# refresh cookie lifetime after a while
-if(!empty($_COOKIE['cs_userid']) AND !empty($_COOKIE['cs_cookiehash']) AND !empty($_COOKIE['cs_cookietime']) AND
-   $_COOKIE['cs_cookietime'] < ($cs_main['cookie']['lifetime'] - 43200))
-  cs_login_cookies($_COOKIE['cs_userid'], $_COOKIE['cs_cookiehash']);
+if(isset($_COOKIE['cs_userid'])) {
+  # refresh cookie lifetime after a while
+  if(isset($_COOKIE['cs_cookiehash']) AND isset($_COOKIE['cs_cookietime']) AND $_COOKIE['cs_cookietime'] < ($cs_main['cookie']['lifetime'] - 43200))
+    cs_login_cookies($_COOKIE['cs_userid'], $_COOKIE['cs_cookiehash']);
+
+  # empty old and bad cookie data
+  if(empty($_COOKIE['cs_cookiehash']) OR $_COOKIE['cs_cookiehash'] != $account['users_cookiehash'])
+    cs_login_cookies();
+}
 
 if(!empty($_SESSION['users_id'])) {
 
@@ -127,8 +132,7 @@ if(!empty($account['users_id'])) {
     session_destroy();
     $login['mode'] = FALSE;
   }
-  elseif($cs_main['mod'] == 'users' AND $cs_main['action'] == 'logout' OR
-         isset($_COOKIE['cs_cookiehash']) AND $_COOKIE['cs_cookiehash'] != $account['users_cookiehash']) {
+  elseif($cs_main['mod'] == 'users' AND $cs_main['action'] == 'logout') {
     cs_login_cookies();
     session_destroy();
     $login['mode'] = FALSE;
