@@ -341,7 +341,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $content = cs_contentload($cs_main['show']);
 
   if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
-    $cs_temp_get = str_replace('<body', '<body onload="Clansphere.initialize('.$cs_main['mod_rewrite'].',\''.$_SERVER['PHP_SELF'].'\','.$cs_main['ajax_reload']*1000 .')"', $cs_temp_get);
+    $cs_temp_get = str_replace('<body', '<body onload="Clansphere.initialize('.$cs_main['mod_rewrite'].',\''.$_SERVER['SCRIPT_NAME'].'\','.$cs_main['ajax_reload']*1000 .')"', $cs_temp_get);
     if (strpos($cs_temp_get,'id="content"') === false) $content = '<div id="content">' . $content . '</div>';
   }
 
