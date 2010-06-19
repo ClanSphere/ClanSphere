@@ -117,7 +117,7 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($cs_main['ajax'])) $account['users_ajax'] = 0;
 }
 
-if(!empty($_COOKIE['cs_userid']))
+if(!empty($_COOKIE['cs_userid']) AND isset($account['users_cookiehash']))
   cs_login_cookies($account['users_id'], $account['users_cookiehash']);
 
 if(!empty($account['users_id'])) {
