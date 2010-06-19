@@ -116,7 +116,7 @@ function cs_cache_template($filename) {
     $tpl_data = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $tpl_data);
 
     $tpl_data = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $tpl_data);
-    $tpl_data = str_replace($cs_main['php_self']['dirname'], '{func:path}', $tpl_data);
+#   $tpl_data = str_replace($cs_main['php_self']['dirname'], '{func:path}', $tpl_data);
     $tpl_data = str_replace('{func:charset}', $cs_main['charset'], $tpl_data);
 
     return cs_cache_save($tpl_temp, $tpl_data);

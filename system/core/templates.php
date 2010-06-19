@@ -326,7 +326,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   }
 
   $cs_temp_get = cs_cache_template($tpl_file);
-  $cs_temp_get = str_replace('{func:path}', $cs_main['php_self']['dirname'], $cs_temp_get);
+# $cs_temp_get = str_replace('{func:path}', $cs_main['php_self']['dirname'], $cs_temp_get);
 
   cs_scriptload('ajax', 'javascript', 'js/ajax.js', 1);
   cs_scriptload('clansphere', 'javascript', 'js/clansphere.js', 1);
