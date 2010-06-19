@@ -27,6 +27,7 @@ $cups_system = $cups_system['cups_system'];
 
 
 if ($cups_system == 'users') {
+  // user
   $tables  = 'cupsquads cs INNER JOIN {pre}_';
   $tables .= 'users usr ON cs.squads_id = usr.users_id';
   $cells   = 'cs.cupsquads_id AS cupsquads_id, cs.cupsquads_time AS cupsquads_time, cs.squads_id AS squads_id, ';
@@ -34,36 +35,34 @@ if ($cups_system == 'users') {
   $mod     = 'users';
   $data['teams'] = cs_sql_select(__FILE__,$tables,$cells,'cups_id = ' . $cups_id,$order,$start,$account['users_limit']);
 } else {
-  $squads_ids = cs_sql_select(__FILE__,'cupsquads','squads_id, squads_name, cupsquads_id, cupsquads_time','cups_id = ' . $cups_id,0,0,0);
+  // squad
+  $squads_ids = cs_sql_select(__FILE__,'cupsquads cup LEFT JOIN {pre}_squads AS team ON cup.squads_id = team.squads_id','cup.squads_id, cup.cupsquads_id, cup.cupsquads_time, team.squads_name','cup.cups_id = ' . $cups_id,$order,$start,$account['users_limit']);
   $run=0;
-  foreach($squads_ids as $squads_run) {
-    $squads_name = cs_sql_select(__FILE__,'squads','squads_name','squads_id = ' . $squads_run['squads_id']);
-    if(empty($squads_name)) {
-      $data['teams'][$run]['squads_id'] = 0;
+  if(!empty($squads_ids)) {
+    foreach($squads_ids as $squads_run) {
       if(empty($squads_run['squads_name'])) {
-        $data['teams'][$run]['squads_name'] = 'ID: ' . $squads_run['squads_id'];
-        cs_sql_update(__FILE__, 'cupsquads', array('squads_name'), array($data['teams'][$run]['squads_name']), $squads_run['cupsquads_id']);
+        // squad wurde bereits gelöscht
+        $data['teams'][$run]['squads_name'] = '? ID: ' . $squads_run['squads_id'];
+        $data['teams'][$run]['squads_id'] = 0;
       }
-      else
+      else {
+        $data['teams'][$run]['squads_id'] = $squads_run['squads_id'];
         $data['teams'][$run]['squads_name'] = $squads_run['squads_name'];
+      }
+      $data['teams'][$run]['cupsquads_time'] = $squads_run['cupsquads_time'];
+      $data['teams'][$run]['cupsquads_id'] = $squads_run['cupsquads_id'];
+      $run++;
     }
-    else {
-      $data['teams'][$run]['squads_id'] = $squads_run['squads_id'];
-      $data['teams'][$run]['squads_name'] = $squads_name['squads_name'];
-    }
-    $data['teams'][$run]['cupsquads_time'] = $squads_run['cupsquads_time'];
-    $data['teams'][$run]['cupsquads_id'] = $squads_run['cupsquads_id'];
-    $run++;
   }
   $mod     = 'squads';
 }
 
-$count_teams = count($data['teams']);
+$count_teams = empty($data['teams']) ? 0 : count($data['teams']);
 $data['if']['teams_loop'] = empty($count_teams) ? FALSE : TRUE;
 for ($i = 0; $i < $count_teams; $i++) {
   $data['teams'][$i]['join'] = cs_date('unix', $data['teams'][$i]['cupsquads_time'],1);
   if ($cups_system == 'teams') {
-    $data['teams'][$i]['team'] = empty($data['teams'][$i]['squads_id']) ? cs_secure($data['teams'][$i]['squads_name']) : cs_link(cs_secure($data['teams'][$i]['squads_name']),'squads','view','id=' . $$data['teams'][$i]['squads_id']);
+    $data['teams'][$i]['team'] = empty($data['teams'][$i]['squads_id']) ? cs_secure($data['teams'][$i]['squads_name']) : cs_link(cs_secure($data['teams'][$i]['squads_name']),'squads','view','id=' . $data['teams'][$i]['squads_id']);
   } else {
     $data['teams'][$i]['team'] = cs_user($data['teams'][$i]['squads_id'],$data['teams'][$i]['squads_name'], $data['teams'][$i]['users_active'], $data['teams'][$i]['users_delete']);
   }
