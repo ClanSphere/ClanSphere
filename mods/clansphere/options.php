@@ -53,6 +53,9 @@ if(isset($_POST['submit'])) {
 
   cs_optionsave('clansphere', $save);
 
+  # clear cache to not run into trouble on mod_rewrite changes
+  cs_cache_clear();
+
   if(!empty($_POST['dstime_all'])) {
     $query = 'UPDATE {pre}_users SET users_dstime = \''.$_POST['def_dstime'].'\'';
     cs_sql_query(__FILE__,$query);
