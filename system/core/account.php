@@ -2,14 +2,14 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-function cs_login_cookies($userid = 0) {
+function cs_login_cookies($userid = 0, $use_old_hash = 0) {
 
   global $cs_main;
   $lifetime = empty($userid) ? 1 : $cs_main['cookie']['lifetime'];
   $thistime = empty($userid) ? '' : cs_time();
-  $thishash = '';
+  $thishash = empty($use_old_hash) ? '' : $use_old_hash;
 
-  if(!empty($userid)) {
+  if(!empty($userid) AND empty($use_old_hash)) {
     $pattern = '1234567890abcdefghijklmnpqrstuvwxyz';
     for($i=0;$i<34;$i++) { $thishash .= $pattern{rand(0,34)}; }
 
@@ -23,7 +23,7 @@ function cs_login_cookies($userid = 0) {
   setcookie('cs_cookiehash', $thishash, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
 }
 
-global $_COOKIE, $_POST, $cs_lang, $cs_main, $login;
+global $cs_lang, $cs_main, $login;
 
 $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
@@ -72,11 +72,9 @@ if(empty($_SESSION['users_id'])) {
   }
 
   if(isset($login['method'])) {
-    // $login_sc = 'users','users_id, users_pwd, users_active, users_ajax, users_cookietime, users_cookiehash';
     $login_db = cs_sql_select(__FILE__,'users','*',$login_where);
 
     if(!empty($login_db['users_pwd']) AND ($login['method'] == 'cookie' OR $login_db['users_pwd'] == $login['securepw'])) {
-
       if(empty($login_db['users_active']) || !empty($login_db['users_delete']))
         $login['error'] = 'closed'; 
       elseif($login['method'] == 'cookie' AND $login_db['users_cookietime'] > $login['cookietime'])
@@ -108,8 +106,7 @@ if(!empty($_SESSION['users_id'])) {
 
   if (empty($login['method'])) $login['method'] = 'session';
   $login['mode'] = TRUE;
-  // $acc_sc = 'users_id, users_nick, users_lang, access_id, users_limit, users_view, users_timezone, 
-  // users_dstime, users_ajax, users_tpl, users_theme, users_pwd';
+
   $acc_wr = "users_id = '" . (int) $_SESSION['users_id'] . "' AND users_active = 1 AND users_delete = 0";
   $account = cs_sql_select(__FILE__, 'users', '*', $acc_wr);
   if (empty($account) OR ($account['users_pwd'] != $_SESSION['users_pwd'])) {
@@ -120,15 +117,15 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($cs_main['ajax'])) $account['users_ajax'] = 0;
 }
 
-if(!empty($_COOKIE['cs_userid'])) {
-  cs_login_cookies($account['users_id']);
-}
+if(!empty($_COOKIE['cs_userid']))
+  cs_login_cookies($account['users_id'], 1);
+
 if(!empty($account['users_id'])) {
   if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
     session_destroy();
     $login['mode'] = FALSE;
   }
-  elseif($cs_main['mod']=='users' AND $cs_main['action']=='logout') {
+  elseif($cs_main['mod'] == 'users' AND $cs_main['action'] == 'logout') {
     cs_login_cookies();
     session_destroy();
     $login['mode'] = FALSE;
