@@ -77,7 +77,7 @@ if(empty($_SESSION['users_id'])) {
     if(!empty($login_db['users_pwd']) AND ($login['method'] == 'cookie' OR $login_db['users_pwd'] == $login['securepw'])) {
       if(empty($login_db['users_active']) || !empty($login_db['users_delete']))
         $login['error'] = 'closed'; 
-      elseif($login['method'] == 'cookie' AND $login_db['users_cookietime'] > $login['cookietime'])
+      elseif($login['method'] == 'cookie' AND ($login['cookietime'] < $login_db['users_cookietime'] OR $login['cookietime'] > cs_time()))
         $login['error'] = 'user_notfound';
       elseif($login['method'] == 'cookie' AND $login_db['users_cookiehash'] != $login['cookiehash'])
         $login['error'] = 'wrong_pwd';
