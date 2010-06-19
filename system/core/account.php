@@ -28,7 +28,7 @@ global $cs_lang, $cs_main, $login;
 $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
 $login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
-$account = array('users_id' => 0, 'users_pwd' => '');
+$account = array('users_id' => 0, 'users_pwd' => '', 'users_cookiehash' => '');
 
 # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
 if(version_compare(phpversion(),'5.2.0','>'))
@@ -102,16 +102,6 @@ if(empty($_SESSION['users_id'])) {
   }
 }
 
-if(isset($_COOKIE['cs_userid'])) {
-  # refresh cookie lifetime after a while
-  if(isset($_COOKIE['cs_cookiehash']) AND isset($_COOKIE['cs_cookietime']) AND $_COOKIE['cs_cookietime'] < ($cs_main['cookie']['lifetime'] - 43200))
-    cs_login_cookies($_COOKIE['cs_userid'], $_COOKIE['cs_cookiehash']);
-
-  # empty old and bad cookie data
-  if(empty($_COOKIE['cs_cookiehash']) OR $_COOKIE['cs_cookiehash'] != $account['users_cookiehash'])
-    cs_login_cookies();
-}
-
 if(!empty($_SESSION['users_id'])) {
 
   if (empty($login['method'])) $login['method'] = 'session';
@@ -125,6 +115,16 @@ if(!empty($_SESSION['users_id'])) {
     $account = array('users_id' => 0);
   }
   if (empty($cs_main['ajax'])) $account['users_ajax'] = 0;
+}
+
+if(isset($_COOKIE['cs_userid'])) {
+  # refresh cookie lifetime after a while
+  if(isset($_COOKIE['cs_cookiehash']) AND isset($_COOKIE['cs_cookietime']) AND $_COOKIE['cs_cookietime'] < ($cs_main['cookie']['lifetime'] - 43200))
+    cs_login_cookies($_COOKIE['cs_userid'], $_COOKIE['cs_cookiehash']);
+
+  # empty old and bad cookie data
+  if(empty($_COOKIE['cs_cookiehash']) OR $_COOKIE['cs_cookiehash'] != $account['users_cookiehash'])
+    cs_login_cookies();
 }
 
 if(!empty($account['users_id'])) {
