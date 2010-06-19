@@ -31,6 +31,7 @@ ___________________________________________________________
 -> Added charset page to check for possible charset related problems (hajo)
 -> Added SMTP authentication with user and password for send mails (hajo)
 -> Added SQLite 3 support via sqlite3 php extension (hajo)
+-> Added XSRF protection to every html form with method=post
 -> Fixed board-counter after delete a thread (spongebob)
 -> Fixed delete own board/subscription and board/attachments (spongebob)
 -> Fixed file size (sort) in files-module (spongebob)
@@ -41,6 +42,7 @@ ___________________________________________________________
 -> Changed: runstartup directory has turned into a mod based info.php setting (hajo)
 -> Changed: the htaccess_example does now contain a charset example (hajo)
 -> Removed sqlite v2 database support due to a lack of needed features (hajo)
+-> Reworked ajax implementation to be based on jquery (schiri, duriel)
 -> Reworked clansphere javascript code to use jQuery (x-ray)
 -> Reworked users/nextbirth and users/navbirth (spongebob)
 -> Reworked board/sort (spongebob)
