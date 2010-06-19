@@ -56,6 +56,8 @@ for ($run = 0; $run < $count_wars; $run++) {
   $data['wars'][$run]['result'] = $cs_wars[$run]['wars_score1'] . ' : ' . $cs_wars[$run]['wars_score2'];
   $data['wars'][$run]['if']['upcoming'] = ($cs_wars[$run]['status'] == 'upcoming') ? true : false;
   $data['wars'][$run]['if']['played'] = ($cs_wars[$run]['status'] == 'played') ? true : false;
+  $data['wars'][$run]['if']['running'] = ($cs_wars[$run]['status'] == 'running') ? true : false;
+  $data['wars'][$run]['if']['canceled'] = ($cs_wars[$run]['status'] == 'canceled') ? true : false;  
   $result = $cs_wars[$run]['wars_score1'] - $cs_wars[$run]['wars_score2'];
   $icon = $result >= 1 ? 'green' : 'red';
   $icon = !empty($result) ? $icon : 'grey';

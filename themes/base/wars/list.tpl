@@ -36,9 +36,15 @@
   <td class="leftc">{wars:date}</td>
   <td class="leftc"><a href="{wars:enemyurl}">{wars:enemy}</a></td>
   <td class="leftc"><a href="{wars:caturl}">{wars:category}</a></td>
-  <td class="centerc" {if:upcoming}colspan="2"{stop:upcoming}>
+  <td class="centerc" 
+  {if:upcoming}colspan="2"{stop:upcoming}
+  {if:running}colspan="2"{stop:running}
+  {if:canceled}colspan="2"{stop:canceled}>
   <a href="{wars:url}">{if:played}{wars:result}{stop:played}</a>
-  {if:upcoming}<a href="{wars:url}">{lang:upcoming}</a>{stop:upcoming}</td>
+  {if:upcoming}<a href="{wars:url}">{lang:upcoming}</a>{stop:upcoming}
+  {if:running}<a href="{wars:url}">{lang:running}</a>{stop:running}
+  {if:canceled}<a href="{wars:url}">{lang:canceled}</a>{stop:canceled}
+  </td>
   {if:played}
   <td class="centerc"><a href="{wars:url}">{wars:resulticon}</a></td>
   {stop:played}
