@@ -33,4 +33,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^/]+)(.*)$ $1.php?params=$2 [NC,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
 RewriteRule (.*)? $1 [R=404,L]
