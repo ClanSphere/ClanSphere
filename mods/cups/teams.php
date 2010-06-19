@@ -36,7 +36,7 @@ if ($cups_system == 'users') {
   $data['teams'] = cs_sql_select(__FILE__,$tables,$cells,'cups_id = ' . $cups_id,$order,$start,$account['users_limit']);
 } else {
   // squad
-  $squads_ids = cs_sql_select(__FILE__,'cupsquads cup LEFT JOIN {pre}_squads AS team ON cup.squads_id = team.squads_id','cup.squads_id, cup.cupsquads_id, cup.cupsquads_time, team.squads_name','cup.cups_id = ' . $cups_id,$order,$start,$account['users_limit']);
+  $squads_ids = cs_sql_select(__FILE__,'cupsquads cup LEFT JOIN {pre}_squads team ON cup.squads_id = team.squads_id','cup.squads_id, cup.cupsquads_id, cup.cupsquads_time, team.squads_name','cup.cups_id = ' . $cups_id,$order,$start,$account['users_limit']);
   $run=0;
   if(!empty($squads_ids)) {
     foreach($squads_ids as $squads_run) {

@@ -130,20 +130,19 @@ $data['if']['teams'] = false;
 $data['if']['players'] = false;
 
 if($data['cup']['cups_system'] == 'teams') {
-  $squads_ids = cs_sql_select(__FILE__,'cupsquads','squads_id, cupsquads_id','cups_id = ' . $cups_id,0,0,0);
+  $squads_ids = cs_sql_select(__FILE__,'cupsquads cup LEFT JOIN {pre}_squads team ON cup.squads_id = team.squads_id','cup.squads_id, cup.cupsquads_id, team.squads_name','cups_id = ' . $cups_id,'team.squads_name',0,0);
   $run=0;
   $squads = array();
   
   if (!empty($squads_ids)) {
     foreach($squads_ids as $squads_run) {
-      $squads_name = cs_sql_select(__FILE__,'squads','squads_name','squads_id = ' . $squads_run['squads_id']);
-      if(empty($squads_name)) {
+      if(empty($squads_run['squads_name'])) {
         $squads[$run]['squads_id'] = 0;
         $squads[$run]['squads_name'] = '? ID:'.$squads_run['squads_id'];
       }
       else {
         $squads[$run]['squads_id'] = $squads_run['squads_id'];
-        $squads[$run]['squads_name'] = $squads_name['squads_name'];
+        $squads[$run]['squads_name'] = $squads_run['squads_name'];
       }
       $run++;
     }
