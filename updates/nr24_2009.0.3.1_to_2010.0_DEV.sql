@@ -1,5 +1,5 @@
 UPDATE {pre}_options SET options_value = '2010.0_DEV' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
-UPDATE {pre}_options SET options_value = '2010-06-15' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
+UPDATE {pre}_options SET options_value = '2010-06-19' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
 UPDATE {pre}_options SET options_value = 53 WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 CREATE TABLE {pre}_notifymods (
@@ -63,6 +63,5 @@ ALTER TABLE {pre}_users ADD users_abomail int(2) NOT NULL default '1';
 ALTER TABLE {pre}_access ADD access_notifymods int(2) NOT NULL default '0';
 
 ALTER TABLE {pre}_cupmatches ADD cupmatches_tree_order int(6);
-ALTER TABLE {pre}_cupsquads DROP squads_name;
 
 ALTER TABLE {pre}_wars ADD wars_report2 text;

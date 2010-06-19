@@ -2,7 +2,7 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2010.0 >> 2010-06-xx
+ClanSphere 2010.0 beta 1 >> 2010-06-XX
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.3.2
@@ -51,6 +51,7 @@ ___________________________________________________________
 -> Reworked cups mod (spongebob)
 -> Reworked events mod (hajo)
 -> Reworked wars mod (palle!)
+-> Reworked cookie settings and security to use a hash value (hajo)
 -> Reworked how and what install plus clansphere mod check for in the webserver environment (hajo)
 -> Switched from FCKEditor to the most current version of the CKEditor (hajo)
 -> Updated Slimbox to the most current version that uses jQuery (hajo)
