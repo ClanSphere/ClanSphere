@@ -179,7 +179,7 @@ function cs_templatefile($matches)
   
   if (!empty($matches[3]) && !empty($matches[4]))
   {
-    $backup = isset($_GET[$matches[3]]) ? NULL : $_GET[$matches[3]];
+    $backup = !isset($_GET[$matches[3]]) ? NULL : $_GET[$matches[3]];
     $_GET[$matches[3]] = $matches[4];
     $return = cs_filecontent($file);
     if (isset($backup)) unset($_GET[$matches[3]]); else $_GET[$matches[4]] = $backup;
