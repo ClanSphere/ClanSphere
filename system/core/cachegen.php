@@ -99,11 +99,13 @@ function cs_cache_template($filename) {
 
   global $cs_main;
   $tpl_temp = 'tpl_' . $cs_main['template'] . '_' . $cs_main['php_self']['filename'];
+  $tpl_real = $cs_main['def_path'] . '/templates/' . $cs_main['template'] . '/' . $filename;
+# $tpl_diff = filemtime($tpl_real) > filemtime($cs_main['def_path'] . '/uploads/cache/' . $tpl_temp . '.tmp') ? 1 : 0;
 
   if($content = cs_cache_load($tpl_temp))
     return $content;
   else {
-    $tpl_data = file_get_contents($cs_main['def_path'] . '/templates/' . $cs_main['template'] . '/' . $filename);
+    $tpl_data = file_get_contents($tpl_real);
     $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
 
     $pattern = "=\<link(.*?)href\=\"(?!http|\/)(.*?)\"(.*?)\>=i";
