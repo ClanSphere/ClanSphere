@@ -4,6 +4,7 @@ $cs_lang = cs_translate('install');
 
 $step = array();
 
+$step['500'] = 'error';
 $step['list'] = 'language_choose';
 $step['compatible'] = 'install_check';
 $step['license'] = 'license';
