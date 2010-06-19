@@ -13,11 +13,16 @@ dass ClanSphere nach dem Update-Prozess einwandfrei funktioniert. Bitte lesen Si
    Zeile der setup.php Datei anzufügen:
      $cs_main['runstartup'] = 1;
 
-2. Template Dateien sollten keinen Quelltext anderer Sprachen, wie z.B. CSS oder JavaScript, enthalten.
+2. Wir haben den Inhalt der .htaccess_example Datei erheblich verbessert und dieser Informationen über den 
+   verwendeten Zeichensatz angefügt, sowie Einstellungen für mod_rewrite und wie dies mit AJAX funktioniert.
+   Diese Änderungen müssen auf Ihre aktive .htaccess Datei angewendet werden, wenn Sie mod_rewrite und/oder
+   AJAX verwenden. Dies sollte bereits nützlich sein, wenn Sie "nur" einige Zeichensatzprobleme beobachten.
+
+3. Template Dateien sollten keinen Quelltext anderer Sprachen, wie z.B. CSS oder JavaScript, enthalten.
    Diese Abschnitte sollten vom HTML separiert und per <link> Tag im Quelltext nachgeladen werden.
    Dadurch lassen sich große Leistungssteigerungen erreichen und seltsame Fehler vermeiden.
 
-3. ClanSphere wird nicht länger mit Mootools ausgeliefert. Stellen Sie sicher, dass die jQuery Syntax 
+4. ClanSphere wird nicht länger mit Mootools ausgeliefert. Stellen Sie sicher, dass die jQuery Syntax 
    stattdessen verwendet wird, da dies die in Zukunft einzig mit ausgelieferte JavaScript-Bibliothek ist.
    Außerdem werden nun standardmäßig alle Javascript Dateien erst am ende des HTML body nachgeladen, weil 
    dies den Aufbau des DOM beschleunigt und sich dadurch die Seite im Browser schneller generiert.
