@@ -32,7 +32,7 @@ if ($system['cups_system'] == 'teams') {
 $cs_sort[5] = 'cm.cupmatches_loserbracket ASC';
 $cs_sort[6] = 'cm.cupmatches_loserbracket DESC';
 
-$sort = empty($_GET['sort']) ? 3 : $_GET['sort'];
+$sort = empty($_GET['sort']) ? 1 : $_GET['sort'];
 $order = $cs_sort[$sort];
 
 $tables  = 'cupmatches cm ';
@@ -55,7 +55,9 @@ if ($system['cups_system'] == 'teams') {
   $cells .= 'cm.squad2_id AS squad2_id, sq2.squads_name AS squad2_name';
 } else {
   $cells .= 'usr1.users_id AS user1_id, usr1.users_nick AS user1_nick, ';
-  $cells .= 'usr2.users_id AS user2_id, usr2.users_nick AS user2_nick';
+  $cells .= 'usr2.users_id AS user2_id, usr2.users_nick AS user2_nick, ';
+  $cells .= 'usr1.users_active AS user1_active, usr1.users_delete AS user1_delete, ';
+  $cells .= 'usr2.users_active AS user2_active, usr2.users_delete AS user2_delete';
 }
 
 $cond = 'cm.cupmatches_round = \''.$round2.'\' and cm.cups_id = \''.$cups_id.'\'';
@@ -96,13 +98,13 @@ for ($i = 0; $i < $data['vars']['matchcount']; $i++) {
   if ($system['cups_system'] == 'teams') {
     $data['matches'][$i]['team1'] = (empty($data['matches'][$i]['squad1_name']) AND !empty($data['matches'][$i]['squad1_id'])) ? '? ID:'.$data['matches'][$i]['squad1_id'] : cs_link(cs_secure($data['matches'][$i]['squad1_name']),'squads','view','id='.$data['matches'][$i]['squad1_id']);
     $data['matches'][$i]['team2'] = (empty($data['matches'][$i]['squad2_name']) AND !empty($data['matches'][$i]['squad2_id'])) ? '? ID:'.$data['matches'][$i]['squad2_id'] : cs_link(cs_secure($data['matches'][$i]['squad2_name']),'squads','view','id='.$data['matches'][$i]['squad2_id']);
+    $emptyname = empty($data['matches'][$i]['squad2_id']) ? TRUE : FALSE;
   } else {
-    $users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $data['matches'][$i]['user1_id'] . "'");
-    $data['matches'][$i]['team1'] = cs_user($data['matches'][$i]['user1_id'],$data['matches'][$i]['user1_nick'], $users_data['users_active'], $users_data['users_delete']);
-    $users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $data['matches'][$i]['user2_id'] . "'");
-    $data['matches'][$i]['team2'] = cs_user($data['matches'][$i]['user2_id'],$data['matches'][$i]['user2_nick'], $users_data['users_active'], $users_data['users_delete']);
+    $data['matches'][$i]['team1'] = cs_user($data['matches'][$i]['user1_id'],$data['matches'][$i]['user1_nick'], $data['matches'][$i]['user1_active'], $data['matches'][$i]['user1_delete']);
+    $data['matches'][$i]['team2'] = cs_user($data['matches'][$i]['user2_id'],$data['matches'][$i]['user2_nick'], $data['matches'][$i]['user2_active'], $data['matches'][$i]['user2_delete']);
+    $emptyname = empty($data['matches'][$i]['user2_nick']) ? TRUE : FALSE;
   }
-  if (empty($data['matches'][$i]['team2']) && $data['matches'][$i]['cupmatches_score1'] == 1 && $data['matches'][$i]['cupmatches_score2'] == 0) $data['matches'][$i]['team2'] = $cs_lang['bye'];
+  if ($emptyname && $data['matches'][$i]['cupmatches_score1'] == 1 && $data['matches'][$i]['cupmatches_score2'] == 0) $data['matches'][$i]['team2'] = $cs_lang['bye'];
 }
 
 echo cs_subtemplate(__FILE__, $data, 'cups', 'matchlist');

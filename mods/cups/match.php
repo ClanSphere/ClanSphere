@@ -65,8 +65,11 @@ else {
   $users_data = cs_sql_select(__FILE__,'users','users_active, users_delete',"users_id = '" . $data['match']['user2_id'] . "'");
   $data['match']['team2'] = cs_user($data['match']['user2_id'], $data['match']['user2_nick'], $users_data['users_active'], $users_data['users_delete']);
 }
-if (empty($data['match']['team2']) && $data['match']['cupmatches_score1'] == 1 && $data['match']['cupmatches_score2'] == 0) $data['match']['team2'] = $cs_lang['bye'];
-
+$not_bye = TRUE;
+if (empty($data['match']['team2']) && $data['match']['cupmatches_score1'] == 1 && $data['match']['cupmatches_score2'] == 0) {
+  $data['match']['team2'] = $cs_lang['bye'];
+  $not_bye = FALSE;
+}
 $nothingyet = empty($data['match']['cupmatches_score1']) && empty($data['match']['cupmatches_score2']) ? true : false;
 $nothingyet = !empty($nothingyet) && empty($data['match']['cupmatches_accepted1']) ? true : false;
 $nothingyet = !empty($nothingyet) && empty($data['match']['cupmatches_accepted2']) && empty($data['match']['cupmatches_winner']) ? true : false;
@@ -86,7 +89,7 @@ if ($system['cups_system'] == 'teams') {
   $squad2_member = $data['match']['user2_id'] == $account['users_id'] ? 1 : 0;
 }
 
-if (!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] >= 4) {
+if ((!empty($squad1_member) OR !empty($squad2_member) OR $account['access_cups'] >= 4) AND $not_bye) {
   $data['if']['participator'] = true;
   $data['match']['id'] = $match_id;
   

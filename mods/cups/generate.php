@@ -34,15 +34,6 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
   cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
   
   if (!empty($cup['cups_brackets']) && $round == $rounds) { // If it was the first round, now create a match for the losers too
-    $newmatch = array();
-    $newmatch['cups_id'] = $cups_id;
-    $newmatch['squad1_id'] = $loser;
-    $newmatch['squad2_id'] = $opponent['cupmatches_winner'] == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
-    $newmatch['cupmatches_round'] = $round - 1;
-    $newmatch['cupmatches_loserbracket'] = 1;
-    $where = 'cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 1 AND cupmatches_round = ' . ($round - 1);
-    $newmatch['cupmatches_tree_order'] = (int) cs_sql_count(__FILE__,'cupmatches',$where);
-    
     // calc number of loser-matches
     $losers = cs_sql_count(__FILE__,'cupsquads','cups_id = '.$cups_id) - $cup['cups_teams'] / 2;
     $n=2;
@@ -55,8 +46,16 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
       $y = $x > $halfmax ? 2 : 1;
       $matches[$z][$y] = TRUE;
     }
-    $where = 'cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 1 AND cupmatches_round = ' . ($rounds-1);
-    $loser_matches = cs_sql_count(__FILE__,'cupmatches',$where);
+    
+    $newmatch = array();
+    $newmatch['cups_id'] = $cups_id;
+    $newmatch['squad1_id'] = $loser;
+    $newmatch['squad2_id'] = $opponent['cupmatches_winner'] == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
+    $newmatch['cupmatches_round'] = $round - 1;
+    $newmatch['cupmatches_loserbracket'] = 1;
+    $where = 'cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 1 AND cupmatches_round = ' . ($round - 1);
+                                                                                      //(int) cs_sql_count... muss noch ersetzt werden!
+    $newmatch['cupmatches_tree_order'] = empty($newmatch['squad2_id']) ? ($halfmax-1) : (int) cs_sql_count(__FILE__,'cupmatches',$where);
     
     if (empty($matches[$loser_matches+1][2])) { // If there is no opponent
       $newmatch["cupmatches_accepted1"] = 1;
