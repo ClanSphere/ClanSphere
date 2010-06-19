@@ -1151,6 +1151,8 @@ CREATE TABLE {pre}_users (
   users_ajax int(2) NOT NULL default '0',
   users_delete int(2) NOT NULL default '0',
   users_abomail int(2) NOT NULL default '1',
+  users_cookiehash varchar(80) NOT NULL default '',
+  users_cookietime int(14) NOT NULL default '0',
   PRIMARY KEY (users_id),
   UNIQUE (users_nick),
   UNIQUE (users_email)
