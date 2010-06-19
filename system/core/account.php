@@ -118,14 +118,15 @@ if(!empty($_SESSION['users_id'])) {
 }
 
 if(!empty($_COOKIE['cs_userid']))
-  cs_login_cookies($account['users_id'], 1);
+  cs_login_cookies($account['users_id'], $account['users_cookiehash']);
 
 if(!empty($account['users_id'])) {
   if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
     session_destroy();
     $login['mode'] = FALSE;
   }
-  elseif($cs_main['mod'] == 'users' AND $cs_main['action'] == 'logout') {
+  elseif($cs_main['mod'] == 'users' AND $cs_main['action'] == 'logout' OR
+         isset($_COOKIE['cs_cookiehash']) AND $_COOKIE['cs_cookiehash'] != $account['users_cookiehash']) {
     cs_login_cookies();
     session_destroy();
     $login['mode'] = FALSE;
