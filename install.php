@@ -18,7 +18,7 @@ $cs_main = array( 'charset'         => $charset,
                   'public'          => 1,
                   'img_path'        => 'crystal_project',
                   'img_ext'         => 'png',
-                  'version_name'    => '2010.0_DEV',
+                  'version_name'    => '2010.0 beta 1',
                   'version_date'    => '2010-06-19');
 
 require_once 'system/core/functions.php';
