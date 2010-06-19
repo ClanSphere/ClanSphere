@@ -117,9 +117,6 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($cs_main['ajax'])) $account['users_ajax'] = 0;
 }
 
-if(!empty($_COOKIE['cs_userid']) AND isset($account['users_cookiehash']))
-  cs_login_cookies($account['users_id'], $account['users_cookiehash']);
-
 if(!empty($account['users_id'])) {
   if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
     session_destroy();
@@ -156,3 +153,8 @@ if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['acce
 }
 
 unset($account['users_pwd']);
+
+# refresh cookie lifetime after a while
+if(!empty($_COOKIE['cs_userid']) AND !empty($_COOKIE['cs_cookiehash']) AND !empty($_COOKIE['cs_cookietime']) AND
+   $_COOKIE['cs_cookietime'] < ($cs_main['cookie']['lifetime'] - 43200))
+  cs_login_cookies($_COOKIE['cs_userid'], $_COOKIE['cs_cookiehash']);
