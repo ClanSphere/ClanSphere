@@ -28,7 +28,7 @@ global $cs_lang, $cs_main, $login;
 $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
 $login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
-$account = array('users_id' => 0, 'users_pwd' => '', 'users_cookiehash' => '');
+$account = array('users_id' => 0, 'users_pwd' => '', 'users_cookiehash' => '', 'users_cookietime' => 0);
 
 # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
 if(version_compare(phpversion(),'5.2.0','>'))
@@ -99,6 +99,7 @@ if(empty($_SESSION['users_id'])) {
       $login['method'] = 'form_cookie';
       cs_login_cookies($login_db['users_id']);
     }
+    unset($login_db);
   }
 }
 
@@ -161,4 +162,4 @@ if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['acce
   $login['error'] = 'not_public'; 
 }
 
-unset($account['users_pwd']);
+unset($account['users_pwd'], $account['users_cookiehash'], $account['users_cookietime']);
