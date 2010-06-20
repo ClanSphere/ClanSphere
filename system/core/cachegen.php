@@ -100,9 +100,9 @@ function cs_cache_template($filename) {
   global $cs_main;
   $tpl_temp = 'tpl_' . $cs_main['template'] . '_' . $cs_main['php_self']['filename'];
   $tpl_real = $cs_main['def_path'] . '/templates/' . $cs_main['template'] . '/' . $filename;
-# $tpl_diff = filemtime($tpl_real) > filemtime($cs_main['def_path'] . '/uploads/cache/' . $tpl_temp . '.tmp') ? 1 : 0;
+  $tpl_diff = filemtime($tpl_real) > filemtime($cs_main['def_path'] . '/uploads/cache/' . $tpl_temp . '.tmp') ? 1 : 0;
 
-  if($content = cs_cache_load($tpl_temp))
+  if(empty($tpl_diff) AND $content = cs_cache_load($tpl_temp))
     return $content;
   else {
     $tpl_data = file_get_contents($tpl_real);
@@ -116,9 +116,7 @@ function cs_cache_template($filename) {
     $tpl_data = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $tpl_data);
 
     $tpl_data = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $tpl_data);
-#   $tpl_data = str_replace($cs_main['php_self']['dirname'], '{func:path}', $tpl_data);
     $tpl_data = str_replace('{func:charset}', $cs_main['charset'], $tpl_data);
-
     return cs_cache_save($tpl_temp, $tpl_data);
   }
 }
