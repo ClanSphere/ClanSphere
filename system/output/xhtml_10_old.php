@@ -80,7 +80,7 @@ function cs_html_form($func, $form_id = 0, $mod = 0, $action = 0, $enctype = 0, 
     {
       $form .= " enctype=\"multipart/form-data\"";
     }
-    return $form . ">\n";
+    return $form . ">\n" . '<div style="display:none"><input type="hidden" name="' . cs_get_xsrf_key() . '" value="" /></div>';
   }
   else
   {

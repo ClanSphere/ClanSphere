@@ -99,7 +99,7 @@ function cs_cache_template($filename) {
 
   global $cs_main;
   $tpl_real = 'templates/' . $cs_main['template'] . '/' . $filename;
-  $tpl_temp = 'tpl_' . $cs_main['template'] . '_' . $cs_main['php_self']['filename'];
+  $tpl_temp = 'tpl_' . $cs_main['template'] . '_' . $filename;
   $tpl_data = cs_cache_load($tpl_temp);
 
   if($tpl_data != false)
