@@ -106,8 +106,9 @@ function cs_cache_template($filename) {
   if($tpl_data != false)
     if(filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
+    else
+      unlink('uploads/cache/' . $tpl_temp . '.tmp');
 
-  unlink('uploads/cache/' . $tpl_temp . '.tmp');
   $tpl_data = file_get_contents($tpl_real);
   $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
 
