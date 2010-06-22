@@ -307,6 +307,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   {
     $cs_main['show'] = 'mods/users/login.php';
     $tpl_file = 'login.htm';
+    $cs_main['ajax'] = 0;
   }
 
   if(!empty($account['users_tpl']) AND is_dir('templates/' . $account['users_tpl'])) $cs_main['template'] = $account['users_tpl'];

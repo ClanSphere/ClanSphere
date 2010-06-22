@@ -311,12 +311,16 @@ function cs_init($predefined) {
 
 function cs_ajaxwrap() {
 
-  global $cs_main;
+  global $cs_main, $account;
   $cs_act_lang = cs_translate($cs_main['mod']); 
   $json = array();
   
   header('Content-Type:application/json');
   
+  if (empty($cs_main['public']) and $account['access_clansphere'] < $cs_main['maintenance_access'])
+  {
+    return json_encode(array('location' => '', 'reload' => 1));
+  }
   if(!isset($_REQUEST['xhr_nocontent'])) {
 
     $content = cs_contentload($cs_main['show']);
