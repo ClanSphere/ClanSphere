@@ -29,7 +29,7 @@ $data['mod']['text'] = $mod_info['text'];
 
 if(!empty($account['access_explorer'])) {
     $data['if']['access_explorer'] = TRUE;
-    $more = 'dir=mods' . cs_explorer_path('/', 'escape') . $dir;
+    $more = 'dir=' . cs_explorer_path('mods/' . $dir, 'escape');
     $data['extended']['link'] = cs_link($cs_lang['jump_to_explorer'],'explorer','roots',$more);
 }
 
