@@ -11,6 +11,12 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
   $subject = $options['def_org'] . ' - ' . $title;
   $type = empty($type) ? 'text/plain' : $type;
 
+  # add mail signature if available
+  static $signature = '';
+  if(empty($signature) AND file_exists('uploads/imprint/mailsig.txt'))
+    $signature = file_get_contents('uploads/imprint/mailsig.txt');
+  $message .= $nl . $nl . $signature;
+
   if($type == 'text/plain') {
     $subject = html_entity_decode($subject, ENT_NOQUOTES, $cs_main['charset']);
     $message = html_entity_decode($message, ENT_NOQUOTES, $cs_main['charset']);

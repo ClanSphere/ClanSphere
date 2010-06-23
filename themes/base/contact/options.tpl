@@ -16,6 +16,11 @@
       </td>
     </tr>
     <tr>
+      <td class="leftc">{icon:colors} {lang:mailsig}</td>
+      <td class="leftb"><a href="{mailsig:url}">{lang:edit}</a><br />{lang:lastchange} {mailsig:date}
+      </td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:mail_find} {lang:def_org}</td>
       <td class="leftb"><input type="text" name="def_org" value="{options:def_org}" maxlength="80" size="40" />
       </td>

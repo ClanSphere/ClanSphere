@@ -17,6 +17,7 @@ $cs_lang['smtp_host'] = 'SMTP Host';
 $cs_lang['smtp_port'] = 'SMTP Port';
 $cs_lang['smtp_user'] = 'SMTP Benutzer';
 $cs_lang['smtp_pw'] = 'SMTP Passwort';
+$cs_lang['mailsig'] = 'E-Mail Signatur';
 
 // manage.php
 $cs_lang['head_manage'] = 'Hier haben Sie Zugriff auf alle Kontaktoptionen';
