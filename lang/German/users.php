@@ -235,7 +235,7 @@ $cs_lang['error_key'] = '- Der Schl&uuml;ssel ist nicht korrekt.';
 $cs_lang['sendpw_done'] = 'Das Passwort wurde erfolgreich ge&auml;ndert.';
 
 $cs_lang['mail_spw_head'] = "Passwort vergessen";
-$cs_lang['mail_spw_start'] = "Auf der Seite http://";
+$cs_lang['mail_spw_start'] = "Auf der Seite ";
 $cs_lang['mail_spw_start2'] = " wurde ein neues Passwort beantragt.";
 $cs_lang['mail_spw_start3'] = "\n\nFolgend die angefragten Daten: ";
 $cs_lang['mail_spw_key'] = "\n\nSchluessel: ";
