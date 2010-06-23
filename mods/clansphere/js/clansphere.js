@@ -100,6 +100,7 @@ function passwordcheck(pass) {
 $(".clip").live('click', function () { 
   $(this).children('img').toggle();
   $(this).next('div').slideToggle("slow");
+  return false;
 }).next('div').hide();
 
 $(document).bind('csAjaxLoad', function(e,ele) {
