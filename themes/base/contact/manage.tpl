@@ -32,14 +32,3 @@
 </td></tr>
 {stop:mail}
 </table>
-<br />
-
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-<tr><td class="headb" colspan="2">
-{lang:imprinttxt}
-</td></tr>
-<tr><td class="leftb">
-<a href="{url:imp_edit}">{lang:imp_edit}</a></td>
-<td class="leftb">{lang:lastchange} {body:date}
-</td></tr>
-</table>

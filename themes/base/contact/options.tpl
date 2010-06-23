@@ -11,6 +11,11 @@
 <form method="post" id="contact_options" action="{url:contact_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
+      <td class="leftc">{icon:kontact} {lang:imprinttxt}</td>
+      <td class="leftb"><a href="{imprint:url}">{lang:imp_edit}</a><br />{lang:lastchange} {imprint:date}
+      </td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:mail_find} {lang:def_org}</td>
       <td class="leftb"><input type="text" name="def_org" value="{options:def_org}" maxlength="80" size="40" />
       </td>

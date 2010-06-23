@@ -26,5 +26,15 @@ else {
   $data['options'] = cs_sql_option(__FILE__, 'contact');
   $data['sendmail']['path'] = ini_get('sendmail_path');
 
+  $date = '-';
+  if (file_exists('uploads/imprint/imprint.txt')) {
+    $content = file_get_contents('uploads/imprint/imprint.txt');
+    $imprint = explode("{laststandbreak}", $content);
+    $date = cs_date('unix',$imprint[0],1);
+  }
+
+  $data['imprint']['date'] = cs_secure($date);
+  $data['imprint']['url'] = cs_url('contact','imp_edit');
+
   echo cs_subtemplate(__FILE__,$data,'contact','options');
 }

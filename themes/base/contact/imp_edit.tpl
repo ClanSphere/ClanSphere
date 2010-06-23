@@ -49,7 +49,7 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 <tr><td class="centerb">
-<a href="{url:contact_manage}">{lang:continue}</a>
+<a href="{url:contact_options}">{lang:continue}</a>
 </td></tr>
 </table>
 <br />
