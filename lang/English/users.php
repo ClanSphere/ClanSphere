@@ -234,7 +234,7 @@ $cs_lang['error_key'] = '- Incorrect Key';
 $cs_lang['sendpw_done'] = 'Password successfully changed.';
 
 $cs_lang['mail_spw_head'] = "Forgot password";
-$cs_lang['mail_spw_start'] = "On the webpage at ";
+$cs_lang['mail_spw_start'] = "On the webpage ";
 $cs_lang['mail_spw_start2'] = " a new password was requested.";
 $cs_lang['mail_spw_start3'] = "\n\nThe requested data: ";
 $cs_lang['mail_spw_key'] = "\n\nKey: ";

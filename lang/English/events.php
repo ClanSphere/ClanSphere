@@ -180,3 +180,9 @@ $cs_lang['status_3']          = 'Waiting list';
 $cs_lang['status_4']          = 'Confirmed';
 $cs_lang['status_5']          = 'Paid';
 $cs_lang['status_info']       = 'Attention: Your participation is not guaranteed until your status changes to confirmed or paid';
+
+// Guests info mail
+$cs_lang['evg_mail_subject'] = 'Participance on event';
+$cs_lang['evg_mail_signups'] = 'You get this notification because you have signed up for a new event.';
+$cs_lang['evg_mail_updates'] = 'You get this notification because your status of participation or important data has changed.';
+$cs_lang['evg_mail_weblink'] = 'More information is available by visiting the following hyperlink';

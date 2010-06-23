@@ -166,7 +166,7 @@ $cs_lang['event']             = 'Termin';
 $cs_lang['no_user']           = '- Kein Benutzer selektiert';
 $cs_lang['user_event_exists'] = '- Der Benutzer ist bereits angemeldet';
 $cs_lang['name_event_exists'] = '- Die Person ist bereits angemeldet';
-$cs_lang['event_paid']       = '- Ihr Status erfordert die Kontaktaufnahme mit einem Admin zur Abmeldung';
+$cs_lang['event_paid']        = '- Ihr Status erfordert die Kontaktaufnahme mit einem Admin zur Abmeldung';
 $cs_lang['event_full']        = '- Es ist kein buchbarer Platz frei';
 $cs_lang['print_view']        = 'Druckansicht';
 $cs_lang['contact']           = 'Kontakt';
@@ -180,3 +180,9 @@ $cs_lang['status_3']          = 'Warteliste';
 $cs_lang['status_4']          = 'Best&auml;tigt';
 $cs_lang['status_5']          = 'Bezahlt';
 $cs_lang['status_info']       = 'Achtung: Ihre Teilnahme ist erst gesichert, wenn der Status auf Best&auml;tigt oder Bezahlt steht';
+
+// Guests info mail
+$cs_lang['evg_mail_subject'] = 'Teilnahme an Termin';
+$cs_lang['evg_mail_signups'] = 'Sie erhalten diese Benachrichtigung, da Sie sich zu einem Termin als Teilnehmer angemeldet haben.';
+$cs_lang['evg_mail_updates'] = 'Sie erhalten diese Benachrichtigung, da sich Ihr Teilnehmerstatus oder wichtige Daten geändert haben.';
+$cs_lang['evg_mail_weblink'] = 'Weitere Informationen hierzu finden Sie unter dem folgenden Link';
