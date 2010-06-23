@@ -4,37 +4,33 @@
 
 $cs_lang = cs_translate('contact');
 
+$data = array();
+
 $filename = 'uploads/imprint/imprint.txt';
 $imp_form = 1;
 $imprint = '';
-$data = array();
 
-if (file_exists($filename)) {
-  $fp = fopen ($filename, "r");
-  $content = fread ($fp, filesize($filename));
-  fclose ($fp);
-}
+$content = file_exists($filename) ? file_get_contents($filename) : '';
 
-if(!empty($_POST['imprint'])) {
+if(!empty($_POST['imprint']))
   $imprint = empty($cs_main['rte_html']) ? $_POST['imprint'] : cs_abcode_inhtml($_POST['imprint'], 'add');
-} 
-if (!isset($_POST['submit']) AND file_exists($filename)) {   
-  $imprint = explode("{laststandbreak}", $content); 
-}
+
+if(!isset($_POST['submit']) AND file_exists($filename))
+  $imprint = explode("{laststandbreak}", $content);
 
 if(isset($_POST['submit'])) {
-  $imp_form = 0;  
+  $imp_form = 0;
   $data['if']['done']     = TRUE;
   $data['if']['form']     = FALSE;
   $data['if']['wizzard']  = FALSE;
-  
-  if (file_exists($filename)) {
+
+  if (file_exists($filename))
     cs_unlink('imprint', 'imprint.txt');
-  }
-  $fp = fopen ($filename, "w");
+
+    $fp = fopen ($filename, "w");
     chmod($filename,0777);
     $imp_time = cs_time();
-    $content  = $imp_time; 
+    $content  = $imp_time;
     $content .= '{laststandbreak}';
     $content .= $imprint;
     # set stream encoding if possible to avoid converting issues
@@ -43,7 +39,7 @@ if(isset($_POST['submit'])) {
     fwrite ($fp, $content);
     chmod($filename,0644);
     fclose ($fp);
-  
+
   if($account['access_wizard'] == 5) {
     $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_cont' AND options_value = '1'");
     if(empty($wizard)) {
@@ -60,7 +56,8 @@ if(!empty($imp_form)) {
     $data['if']['abcode'] = TRUE;
     $data['if']['rte_html'] = FALSE;
     $data['abcode']['features'] = cs_abcode_features('imprint');
-  } else {
+  }
+  else {
     $data['if']['abcode'] = FALSE;
     $data['if']['rte_html'] = TRUE;
     $data['rte']['html'] = cs_rte_html('imprint',$data['imprint']['content']);
