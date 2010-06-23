@@ -13,7 +13,7 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
 {if:abcode}
 <tr>
-  <td class="leftc">{icon:kate} {lang:text}</td>
+  <td class="leftc">{icon:kate} {lang:imprint}</td>
   <td class="leftb">
     {abcode:features}
     <textarea name="imprint" cols="50" rows="20" id="imprint">{imprint:content}</textarea>
@@ -22,7 +22,7 @@
 {stop:abcode}
 {if:rte_html}
 <tr>
-  <td class="leftc" colspan="2">{icon:kate} {lang:text}</td>
+  <td class="leftc" colspan="2">{icon:kate} {lang:imprint}</td>
 </tr>
 <tr>
   <td class="leftc" colspan="2" style="padding:0px;">{rte:html}</td>

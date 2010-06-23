@@ -37,6 +37,7 @@ $cs_lang['body_archive'] = 'Hier finden Sie alle bereits beantworteten Nachricht
 $cs_lang['head_mail']  = 'Anfrage Formular';
 $cs_lang['body_mail']  = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
 $cs_lang['design']  = 'Design';
+$cs_lang['email']   = 'E-Mail';
 $cs_lang['general']  = 'Allgemein';
 $cs_lang['head']  = 'Betreff';
 $cs_lang['help']  = 'Hilfe';
@@ -52,7 +53,6 @@ $cs_lang['head_edit']  = 'Bearbeiten';
 $cs_lang['body_edit']  = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
 $cs_lang['error_occurred'] = 'Ein Fehler ist aufgetreten';
 $cs_lang['headline'] = 'Text';
-$cs_lang['text'] = 'Antwort';
 $cs_lang['more'] = 'Erweitert';
 
 // delete.php
@@ -84,10 +84,8 @@ $cs_lang['the_request'] = 'Anfrage';
 $cs_lang['the_answer'] = 'Antwort';
 $cs_lang['editor'] = 'Bearbeiter';
 
-
 // send.php
 $cs_lang['err_direct']    = 'Diese Datei kann nicht direkt aufgerufen werden!';
-$cs_lang['email']   = 'E-Mail';
 $cs_lang['icq']     = 'ICQ Nummer';
 $cs_lang['msn']     = 'MSN';
 $cs_lang['empty']   = 'nicht angegeben';

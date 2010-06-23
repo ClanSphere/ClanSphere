@@ -53,7 +53,6 @@ $cs_lang['head_edit']  = 'Edit';
 $cs_lang['body_edit']  = 'Please fill out as many fields as possible.';
 $cs_lang['error_occurred'] = 'An error occurred';
 $cs_lang['headline'] = 'Text';
-$cs_lang['text'] = 'Answer';
 $cs_lang['more'] = 'More';
 
 // delete.php
