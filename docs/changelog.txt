@@ -4,6 +4,7 @@ CHANGELOG
 ClanSphere 2010.0 >> 2010-XX-XX
 ___________________________________________________________
 
+-> Added mail notification for every eventguest status change case (hajo)
 -> Added mail signature that is added to the end of every mail (hajo)
 -> Fixed maintenance mode in some situations (schiri)
 -> Fixed template caching in some situations (hajo, schiri)

@@ -47,7 +47,7 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['no_event'] . cs_html_br(1);
   elseif(!empty($users_nick)) {
     $where = "users_nick = '" . cs_sql_escape($users_nick) . "'";
-    $users_data = cs_sql_select(__FILE__, 'users', 'users_id', $where);
+    $users_data = cs_sql_select(__FILE__, 'users', 'users_id, users_email', $where);
     if(empty($users_data['users_id']))
       $errormsg .= $cs_lang['no_user'] . cs_html_br(1);
     else
@@ -98,6 +98,19 @@ else {
   $eventguests_cells = array_keys($data['eventguests']);
   $eventguests_save = array_values($data['eventguests']);
   cs_sql_update(__FILE__,'eventguests',$eventguests_cells,$eventguests_save, $eventguests_id);
-  
+
+  # email notification for eventguest interactions
+  if(!empty($data['eventguests']['users_id'])) {
+    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $data['events']['events_name'];
+    $message  = $cs_lang['evg_mail_reasons'] . $cs_lang['evg_mail_updates'] . "\n\n";
+    $message .= $cs_lang['event'] . ': ' . $data['events']['events_name'] . "\n";
+    $message .= $cs_lang['date'] . ': ' . cs_date('unix',$data['events']['events_time'],1) . "\n";
+    $message .= $cs_lang['status'] . ': ' . $cs_lang['status_' . $data['eventguests']['eventguests_status']] . "\n\n";
+    $message .= $cs_lang['evg_mail_weblink'] . "\n";
+    $message .= 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
+    $message .= cs_url('events', 'view', 'id=' . $data['events']['events_id']);
+    cs_mail($users_data['users_email'], $subject, $message);
+  }
+
   cs_redirect($cs_lang['create_done'],'events','guests','id=' . $data['eventguests']['events_id']);
 }

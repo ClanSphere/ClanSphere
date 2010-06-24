@@ -13,7 +13,7 @@ $errormsg = '';
 $where = "eventguests_id = '" . $eventguests_id . "'";
 $eventguests = cs_sql_select(__FILE__,'eventguests','*',$where);
 $where2 = "events_id = '" . $eventguests['events_id'] . "'";
-$events = cs_sql_select(__FILE__,'events','events_time',$where2);
+$events = cs_sql_select(__FILE__,'events','events_time, events_name, events_id',$where2);
 
 if($eventguests['users_id'] != $account['users_id']) {
   $error++;
@@ -32,6 +32,19 @@ if($eventguests['eventguests_status'] > 3) {
 
 if(isset($_GET['agree']) AND empty($error)) {
   cs_sql_delete(__FILE__,'eventguests',$eventguests_id);
+
+  # email notification for eventguest interactions
+  if(!empty($account['users_id'])) {
+    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $data['events']['events_name'];
+    $message  = $cs_lang['evg_mail_reasons'] . $cs_lang['evg_mail_deletes'] . "\n\n";
+    $message .= $cs_lang['event'] . ': ' . $events['events_name'] . "\n";
+    $message .= $cs_lang['date'] . ': ' . cs_date('unix',$events['events_time'],1) . "\n";
+    $message .= $cs_lang['status'] . ': ' . $cs_lang['status_' . $eventguests['eventguests_status']] . "\n\n";
+    $message .= $cs_lang['evg_mail_weblink'] . "\n";
+    $message .= 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
+    $message .= cs_url('events', 'view', 'id=' . $events['events_id']);
+    cs_mail($account['users_email'], $subject, $message);
+  }
 
   cs_redirect($cs_lang['signout_true'],'events','center');
 }

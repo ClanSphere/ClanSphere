@@ -183,6 +183,8 @@ $cs_lang['status_info']       = 'Achtung: Ihre Teilnahme ist erst gesichert, wen
 
 // Guests info mail
 $cs_lang['evg_mail_subject'] = 'Teilnahme an Termin';
-$cs_lang['evg_mail_signups'] = 'Sie erhalten diese Benachrichtigung, da Sie sich zu einem Termin als Teilnehmer angemeldet haben.';
-$cs_lang['evg_mail_updates'] = 'Sie erhalten diese Benachrichtigung, da sich Ihr Teilnehmerstatus oder wichtige Daten geändert haben.';
+$cs_lang['evg_mail_reasons'] = 'Sie erhalten diese Benachrichtigung, da ';
+$cs_lang['evg_mail_signups'] = 'Sie sich zu einem Termin als Teilnehmer angemeldet haben.';
+$cs_lang['evg_mail_updates'] = 'sich Ihr Teilnehmerstatus oder wichtige Daten geändert haben.';
+$cs_lang['evg_mail_deletes'] = 'Sie sich abgemeldet haben oder Ihre Teilnahme entfernt worden ist.';
 $cs_lang['evg_mail_weblink'] = 'Weitere Informationen hierzu finden Sie unter dem folgenden Link';

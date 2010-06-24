@@ -8,15 +8,35 @@ $events_form = 1;
 $eventguests_id = $_REQUEST['id'];
 settype($eventguests_id, 'integer');
 
-$cs_events = cs_sql_select(__FILE__, 'eventguests', 'events_id', "eventguests_id = '" . $eventguests_id . "'");
+$cols = 'events_id, users_id, eventguests_status';
+$cs_events = cs_sql_select(__FILE__, 'eventguests', $cols, "eventguests_id = '" . $eventguests_id . "'");
 
 $events_id = empty($cs_events['events_id']) ? 0 : $cs_events['events_id'];
+$users_id = empty($cs_events['users_id']) ? 0 : $cs_events['users_id'];
 
 if(isset($_GET['agree'])) {
 
   $events_form = 0;
 
   cs_sql_delete(__FILE__, 'eventguests', $eventguests_id);
+
+  # email notification for eventguest interactions
+  if(!empty($users_id)) {
+    $columns = 'events_time, events_name, events_id';
+    $where = "events_id = '" . $events_id . "'";
+    $event = cs_sql_select(__FILE__, 'events', $columns, $where);
+    $user  = cs_sql_select(__FILE__, 'users', 'users_id, users_email', "users_id = '" . $users_id . "'");
+
+    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $data['events']['events_name'];
+    $message  = $cs_lang['evg_mail_reasons'] . $cs_lang['evg_mail_deletes'] . "\n\n";
+    $message .= $cs_lang['event'] . ': ' . $event['events_name'] . "\n";
+    $message .= $cs_lang['date'] . ': ' . cs_date('unix',$event['events_time'],1) . "\n";
+    $message .= $cs_lang['status'] . ': ' . $cs_lang['status_' . $cs_events['eventguests_status']] . "\n\n";
+    $message .= $cs_lang['evg_mail_weblink'] . "\n";
+    $message .= 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
+    $message .= cs_url('events', 'view', 'id=' . $event['events_id']);
+    cs_mail($user['users_email'], $subject, $message);
+  }
   
   cs_redirect($cs_lang['del_true'], 'events', 'guests', 'id=' . $events_id);
 }

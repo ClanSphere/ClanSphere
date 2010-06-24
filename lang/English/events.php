@@ -183,6 +183,8 @@ $cs_lang['status_info']       = 'Attention: Your participation is not guaranteed
 
 // Guests info mail
 $cs_lang['evg_mail_subject'] = 'Participance on event';
-$cs_lang['evg_mail_signups'] = 'You get this notification because you have signed up for a new event.';
-$cs_lang['evg_mail_updates'] = 'You get this notification because your status of participation or important data has changed.';
+$cs_lang['evg_mail_reasons'] = 'You get this notification because ';
+$cs_lang['evg_mail_signups'] = 'you have signed up for a new event.';
+$cs_lang['evg_mail_updates'] = 'your status of participation or important data has changed.';
+$cs_lang['evg_mail_deletes'] = 'you signed out or have been removed from an event.';
 $cs_lang['evg_mail_weblink'] = 'More information is available by visiting the following hyperlink';

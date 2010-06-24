@@ -12,7 +12,7 @@ $error = '';
 $where = "events_id = '" . $events_id . "' AND users_id ='" . $account['users_id'] . "'";
 $eventguests = cs_sql_count(__FILE__,'eventguests',$where);
 $where2 = "events_id = '" . $events_id . "'";
-$events = cs_sql_select(__FILE__,'events','events_time, events_cancel, events_needage, events_guestsmax',$where2);
+$events = cs_sql_select(__FILE__,'events','events_time, events_name, events_cancel, events_needage, events_guestsmax, events_id',$where2);
 
 if(empty($events_id) OR empty($events) OR empty($events['events_guestsmax']))
   $error .= $cs_lang['no_event'] . cs_html_br(1);
@@ -58,9 +58,21 @@ if(empty($error)) {
   cs_sql_insert(__FILE__,'eventguests',$array_keys,$array_values);
 
   $msg = $cs_lang['body_signin'];
+
+  # email notification for eventguest interactions
+  if(!empty($account['users_id'])) {
+    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $events['events_name'];
+    $message  = $cs_lang['evg_mail_reasons'] . $cs_lang['evg_mail_signups'] . "\n\n";
+    $message .= $cs_lang['event'] . ': ' . $events['events_name'] . "\n";
+    $message .= $cs_lang['date'] . ': ' . cs_date('unix',$events['events_time'],1) . "\n";
+    $message .= $cs_lang['status'] . ': ' . $cs_lang['status_' . $status] . "\n\n";
+    $message .= $cs_lang['evg_mail_weblink'] . "\n";
+    $message .= 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
+    $message .= cs_url('events', 'view', 'id=' . $events['events_id']);
+    cs_mail($account['users_email'], $subject, $message);
+  }
 }
-else {
+else
   $msg = $error;
-}
 
 cs_redirect($msg,'events','view','id=' . $events_id);
