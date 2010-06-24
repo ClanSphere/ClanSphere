@@ -253,10 +253,6 @@ $cs_lang['count_users']   = 'Es sind %s Benutzer auf der Seite';
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signatur';
 
-$cs_lang['mail_key_link'] = '<a href="http://';
-$cs_lang['mail_key_link2'] = '?mod=users&action=activate&key=';
-$cs_lang['mail_key_email'] ='&email=';
-$cs_lang['mail_key2'] = '">Aktivierungslink</a>';
 $cs_lang['mail_no_link'] = '\n\nWenn der Link nicht ordnungsgem&auml;&szlig; angezeigt wird, kopieren Sie bitte folgenden Text und f&uuml;gen ihn in der Adressleiste Ihres Browsers ein';
 $cs_lang['key_mail_false'] = '- Key oder E-Mail ung&uuml;tig.';
 $cs_lang['already_activated'] = '- Account bereits aktiviert.';

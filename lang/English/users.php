@@ -252,10 +252,6 @@ $cs_lang['count_users']   = 'There are %s users on the page';
 $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signature';
 
-$cs_lang['mail_key_link'] = '<a href="http://';
-$cs_lang['mail_key_link2'] = '?mod=users&action=activate&key=';
-$cs_lang['mail_key_email'] ='&email=';
-$cs_lang['mail_key2'] = '">Activation link</a>';
 $cs_lang['mail_no_link'] = '\n\nIf the activation link does not work for you, please copy and paste into your browsers address bar';
 $cs_lang['key_mail_false'] = '- Key or E-mail not valid';
 $cs_lang['already_activated'] = '- Account already activated';
