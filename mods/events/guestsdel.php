@@ -27,7 +27,7 @@ if(isset($_GET['agree'])) {
     $event = cs_sql_select(__FILE__, 'events', $columns, $where);
     $user  = cs_sql_select(__FILE__, 'users', 'users_id, users_email', "users_id = '" . $users_id . "'");
 
-    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $data['events']['events_name'];
+    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $event['events_name'];
     $message  = $cs_lang['evg_mail_reasons'] . $cs_lang['evg_mail_deletes'] . "\n\n";
     $message .= $cs_lang['event'] . ': ' . $event['events_name'] . "\n";
     $message .= $cs_lang['date'] . ': ' . cs_date('unix',$event['events_time'],1) . "\n";

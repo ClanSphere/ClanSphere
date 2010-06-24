@@ -35,7 +35,7 @@ if(isset($_GET['agree']) AND empty($error)) {
 
   # email notification for eventguest interactions
   if(!empty($account['users_id'])) {
-    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $data['events']['events_name'];
+    $subject  = $cs_lang['evg_mail_subject'] . ': ' . $events['events_name'];
     $message  = $cs_lang['evg_mail_reasons'] . $cs_lang['evg_mail_deletes'] . "\n\n";
     $message .= $cs_lang['event'] . ': ' . $events['events_name'] . "\n";
     $message .= $cs_lang['date'] . ': ' . cs_date('unix',$events['events_time'],1) . "\n";
