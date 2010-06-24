@@ -40,9 +40,12 @@ session_start();
 
 # xsrf protection
 if($cs_main['xsrf_protection']===TRUE && !empty($_POST)) {
-  if(!isset($_SESSION['cs_xsrf_key']) || $_SESSION['cs_xsrf_key']!=$_POST['cs_xsrf_key']) {
+  $needed_key = isset($_SESSION['cs_xsrf_key']) ? $_SESSION['cs_xsrf_key'] : '';
+  $given_key = isset($_POST['cs_xsrf_key']) ? $_POST['cs_xsrf_key'] : '';
+  if(empty($given_key) || $given_key!=$needed_key) {
     unset($_SESSION['cs_xsrf_key']);
-    cs_redirect('XSRF PROTECTION TRIGGERD', $cs_main['def_mod'], $cs_main['def_action']);
+    cs_error(__FILE__, 'XSRF Protection triggered: ' . $needed_key . ' != ' . $given_key . ', Referer: ' . $_SERVER['HTTP_REFERER']);
+    cs_redirect(false, $cs_main['def_mod'], $cs_main['def_action']);
   }
 }
 
