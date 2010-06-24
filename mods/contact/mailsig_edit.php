@@ -11,7 +11,7 @@ $sig_form = 1;
 $mailsig = file_exists($filename) ? file_get_contents($filename) : '';
 
 if(!empty($_POST['mailsig']))
-  $mailsig = empty($cs_main['rte_html']) ? $_POST['mailsig'] : cs_abcode_inhtml($_POST['mailsig'], 'add');
+  $mailsig = $_POST['mailsig'];
 
 if(isset($_POST['submit'])) {
   $sig_form = 0;
@@ -34,17 +34,6 @@ if(!empty($sig_form)) {
 
   $data = array();
   $data['mailsig']['content'] = $mailsig;
-
-  if(empty($cs_main['rte_html'])) {
-    $data['if']['abcode'] = TRUE;
-    $data['if']['rte_html'] = FALSE;
-    $data['abcode']['features'] = cs_abcode_features('mailsig');
-  }
-  else {
-    $data['if']['abcode'] = FALSE;
-    $data['if']['rte_html'] = TRUE;
-    $data['rte']['html'] = cs_rte_html('mailsig',$data['mailsig']['content']);
-  }
 
   $data['if']['done']     = FALSE;
   $data['if']['form']     = TRUE;
