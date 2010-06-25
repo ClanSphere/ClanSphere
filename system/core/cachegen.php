@@ -99,8 +99,7 @@ function cs_cache_template($filename) {
 
   global $cs_main;
   $tpl_real = 'templates/' . $cs_main['template'] . '/' . $filename;
-  $tpl_pref = empty($cs_main['mod_rewrite']) ? 'tpl_' : 'tpl_mr_';
-  $tpl_temp = $tpl_pref . $cs_main['template'] . '_' . $filename;
+  $tpl_temp = 'tpl_' . $cs_main['template'] . '_' . $cs_main['php_self']['filename'] . '_' . $filename;
   $tpl_data = cs_cache_load($tpl_temp);
 
   if($tpl_data != false)
