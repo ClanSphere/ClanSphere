@@ -40,15 +40,16 @@ session_start();
 
 # xsrf protection
 if($cs_main['xsrf_protection']===TRUE && !empty($_POST)) {
-  $needed_key = isset($_SESSION['cs_xsrf_key']) ? $_SESSION['cs_xsrf_key'] : '';
+  $needed_keys = isset($_SESSION['cs_xsrf_keys']) ? $_SESSION['cs_xsrf_keys'] : array();
   $given_key = isset($_POST['cs_xsrf_key']) ? $_POST['cs_xsrf_key'] : '';
-  if(empty($given_key) || $given_key!=$needed_key) {
-    unset($_SESSION['cs_xsrf_key']);
+  if(empty($given_key) || !in_array($given_key, $needed_keys)) {
+    $_SESSION['cs_xsrf_keys'] = array();
     $referer = empty($_SERVER['HTTP_REFERER']) ? 'empty' : $_SERVER['HTTP_REFERER'];
-    cs_error(__FILE__, 'XSRF Protection triggered: ' . $needed_key . ' != ' . $given_key . ', Referer: ' . $referer);
+    cs_error(__FILE__, 'XSRF Protection triggered: ' . str_replace(array("\n","\l"),'',print_r($needed_keys,true)) . ' does not include ' . $given_key . ', Referer: ' . $referer);
 
     cs_redirect(false, $cs_main['def_mod'], $cs_main['def_action']);
   }
+  $_SESSION['cs_xsrf_keys'] = array();
 }
 
 if(empty($_SESSION['users_id'])) {
