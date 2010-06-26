@@ -1,0 +1,12 @@
+*.patch
+/.buildpath
+/.htaccess
+/.project
+/.settings
+/setup.php
+/uploads/cache/*.tmp
+/uploads/imprint/*.txt
+/uploads/logs/actions/*.log
+/uploads/logs/errors/*.log
+/uploads/rss/*.xml
+/uploads/users/nopicture.*
