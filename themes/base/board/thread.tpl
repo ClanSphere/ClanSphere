@@ -19,13 +19,14 @@
         <div style="width: 320px;" align="left">
           <div style="padding: 3px;">
             <div style="margin-bottom: 10px;">{thread:vote_question}</div>
-            <form method="post" id="thread_vote" action="{url:board_thread}&amp;where={thread:threads_id}">
+            <form method="post" id="thread_vote" action="{url:board_thread:where={thread:threads_id}}">
               {loop:votes}
               <div><input type="radio" name="voted_election" value="{votes:run}" /> {votes:vote_election_text}</div>
               {stop:votes}
               <div style="margin-top: 10px;">
-              <input type="hidden" name="threads_votes_id" value="{thread:threads_id}" />
-              <input type="submit" name="submit_v" value="{lang:vote}" />
+                <input type="hidden" name="threads_votes_id" value="{thread:threads_id}" />
+                <input type="submit" name="submit_v" value="{lang:vote}" />
+              </div>
             </form>
           </div>
         </div>
