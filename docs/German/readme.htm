@@ -76,9 +76,8 @@
       </tr>
       <tr><td colspan="2">F&uuml;hren Sie den SQL Patch (wenn ein Neuer im 'updates' Verzeichnis vorhanden sein sollte, ansonsten &uuml;berspringen
           Sie diesen Punkt) aus, indem dieser &uuml;ber das Browserfenster ausgef&uuml;hrt wird (Eingeloggt als Admin, zu finden unter dem Men&uuml;punkt: 
-        System -&gt; Updates). Laden Sie als n&auml;chstes den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'convert', 
-        'docs' und 'updates') auf Ihren Webspace und setzen Sie am 'uploads' Verzeichnis rekursiv die n&ouml;tigen Dateirechte um Dateien 
-        hochladen zu k&ouml;nnen.
+        System -&gt; Datenbank -&gt; Import). Laden Sie als n&auml;chstes den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'docs' und 'updates') 
+        auf Ihren Webspace und setzen Sie am 'uploads' Verzeichnis rekursiv die n&ouml;tigen Dateirechte um Dateien hochladen zu k&ouml;nnen.
       </td></tr>
     </table>
     <br />
@@ -107,7 +106,7 @@
         <td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
       </tr>
       <tr><td colspan="2"><a name="templates_sys"></a><em>System Templates</em></td></tr>
-      <tr><td style="width: 125px;">{func:charset}</td><td>Das Charset der aktiven Sprache wird ausgegeben, Standard ist ISO-8859-15</td></tr>
+      <tr><td style="width: 125px;">{func:charset}</td><td>Der Zeichensatz aus der setup.php wird ausgegeben, Standard ist UTF-8</td></tr>
       <tr><td>{func:errors}</td><td>Vom System erkannte Fehler werden ausgegeben (f&uuml;r Entwickler gedacht)</td></tr>
       <tr><td>{func:memory}</td><td>Vom Script aktuell genutzter Arbeitsspeicher</td></tr>
       <tr><td>{func:parse}</td><td>Anzeige der ben&ouml;tigten Ladezeit f&uuml;r die generierte Ausgabe</td></tr>
@@ -116,7 +115,7 @@
       <tr><td>{func:sql}</td><td>Ausgabe der durchgef&uuml;hrten SQL-Queries (f&uuml;r Entwickler gedacht)</td></tr>
       <tr><td>{func:title}</td><td>Der in den Optionen eingestellte Seiten-Titel wird angezeigt</td></tr>
       <tr><td colspan="2"><a name="templates_mod"></a><em>Module Templates</em></td></tr>
-      <tr><td style="width: 125px;">{func:charset}</td><td>Das Charset der aktiven Sprache wird ausgegeben, Standard ist ISO-8859-15</td></tr>
+      <tr><td style="width: 125px;">{func:charset}</td><td>Der Zeichensatz aus der setup.php wird ausgegeben, Standard ist UTF-8</td></tr>
       <tr><td>{articles:navlist}</td><td>Zeigt aktuelle Artikel an</td></tr>
       <tr><td>{banners:navlist}</td><td>Auflistung aller eingetragenen Banner untereinander</td></tr>
       <tr><td>{banners:navright}</td><td>Auflistung aller eingetragenen Banner nebeneinander</td></tr>
