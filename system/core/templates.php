@@ -140,11 +140,11 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 
 function cs_xsrf_protection_field($matches) {
   static $xsrf_key;
-  if(!is_array($_SESSION['cs_xsrf_keys'])) {
+  if(!isset($_SESSION['cs_xsrf_keys']) || !is_array($_SESSION['cs_xsrf_keys'])) {
     $_SESSION['cs_xsrf_keys'] = array();
   }
   if(empty($xsrf_key)) {
-    $xsrf_key = md5(rand());
+    $xsrf_key = md5(microtime() . rand());
     $_SESSION['cs_xsrf_keys'] = array_slice($_SESSION['cs_xsrf_keys'], -4, 4);
     $_SESSION['cs_xsrf_keys'][] = $xsrf_key;
   }
