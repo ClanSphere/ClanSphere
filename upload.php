@@ -12,3 +12,4 @@ cs_init($cs_main);
 define('UPLOAD_PROTECTED', 1);
 
 require_once 'mods/ajax/upload.php';
+
