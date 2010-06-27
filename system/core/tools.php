@@ -375,7 +375,7 @@ function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit
   $limit = empty($limit) ? (int) $account['users_limit'] : (int) $limit;
 
   $add_where = empty($where) ? '' : '&amp;where=' . $where;
-  $add_where .= empty($more) ? '' : $more;
+  $add_where .= empty($more) ? '' : '&amp;' . $more;
   $add_sort = empty($sort) ? '' : '&amp;sort=' . $sort;
   $pages = $records / $limit;
   if(round($pages) < $pages OR round($pages) < 1) {
