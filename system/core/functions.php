@@ -466,7 +466,7 @@ function cs_tasks($dir) {
   global $cs_main;
   if($goal = opendir($cs_main['def_path'] . '/' . $dir . '/')) {
     while(false !== ($filename = readdir($goal))) {
-      if($filename != '.' AND $filename != '..' AND $filename != '.svn')
+      if($filename != '.' AND $filename != '..' AND $filename != '.svn' AND $filename != '.git')
         include_once $dir . '/' . $filename;
     }
     closedir($goal);
@@ -493,6 +493,15 @@ function cs_getip () {
     $ip = getenv('HTTP_FORWARDED');
   else
     $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+
+  // check for multiple ip's in case of multiple x-forwarders
+  $pos = stripos($ip, ',');
+  if ($pos !== false)
+    $ip = trim(substr($ip, 0, $pos));
+  // optional extra flags: FILTER_FLAG_IPV4, FILTER_FLAG_IPV6, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE
+  if (function_exists('filter_var') AND filter_var($ip, FILTER_VALIDATE_IP) === false)
+    $ip = '0.0.0.0';
+
   return $ip;
 }
 
@@ -502,17 +511,17 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   global $cs_logs, $cs_main;
  
   $errortype = Array(
-    E_ERROR    => 'Error',
-    E_WARNING   => 'Warning',
-    E_PARSE    => 'Parsing Error',
-    E_NOTICE   => 'Notice',
-    E_CORE_ERROR  => 'Core Error',
-    E_CORE_WARNING  => 'Core Warning',
-    E_COMPILE_ERROR  => 'Compile Error',
+    E_ERROR           => 'Error',
+    E_WARNING         => 'Warning',
+    E_PARSE           => 'Parsing Error',
+    E_NOTICE          => 'Notice',
+    E_CORE_ERROR      => 'Core Error',
+    E_CORE_WARNING    => 'Core Warning',
+    E_COMPILE_ERROR   => 'Compile Error',
     E_COMPILE_WARNING => 'Compile Warning',
-    E_USER_ERROR  => 'User Error',
-    E_USER_WARNING  => 'User Warning',
-    E_USER_NOTICE  => 'User Notice',
+    E_USER_ERROR      => 'User Error',
+    E_USER_WARNING    => 'User Warning',
+    E_USER_NOTICE     => 'User Notice',
   );
 
   // Added E_Strict for PHP 5 Version
