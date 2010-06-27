@@ -366,15 +366,16 @@ function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_
   cs_sql_insert(__FILE__,'messages',$messages_cells,$messages_save);
 }
 
-function cs_pages($mod,$action,$records,$start,$where = 0,$sort = 0, $limit = 0, $small = 0) {
+function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit = 0, $small = 0, $more = 0) {
 
   global $account, $cs_lang;
-  
+
   settype($sort, 'integer');
   settype($start, 'integer');
   $limit = empty($limit) ? (int) $account['users_limit'] : (int) $limit;
-  
+
   $add_where = empty($where) ? '' : '&amp;where=' . $where;
+  $add_where .= empty($more) ? '' : $more;
   $add_sort = empty($sort) ? '' : '&amp;sort=' . $sort;
   $pages = $records / $limit;
   if(round($pages) < $pages OR round($pages) < 1) {
