@@ -38,7 +38,7 @@ if(isset($_POST['submit']))
       {
         $data['if']['zipfile'] = TRUE;
       }
-      if(isset($_POST['submit_zipfile']))
+      else
       {
         $file = $files_gl['zipfile']['tmp_name'];
         $file_type = $files_gl['zipfile']['type'];
