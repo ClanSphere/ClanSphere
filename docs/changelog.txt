@@ -9,6 +9,7 @@ ___________________________________________________________
 -> Fixed maintenance mode in some situations (schiri)
 -> Fixed template caching in some situations (hajo, schiri)
 -> Moved imprint edit link from manage to options (hajo)
+-> Removed legacy bxcp update and information (hajo)
 -> Updated CKEditor to 3.3.1 (hajo)
 
 

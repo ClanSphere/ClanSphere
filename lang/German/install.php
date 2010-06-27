@@ -69,9 +69,9 @@ $cs_lang['head_settings']  = 'Konfiguration';
 $cs_lang['body_settings']  = 'Erstellung einer Setup Datei f&uuml;r das Portal';
 
 $cs_lang['hash'] = 'Verschl&uuml;sselung';
-$cs_lang['hash_info'] = 'Sha1 empfohlen, bei Update von BXCP Md5 benutzen!';
+$cs_lang['hash_info'] = 'Sha1 wird empfohlen';
 $cs_lang['type'] = 'Datenbank Server';
-$cs_lang['type_info'] = 'Bei Update von BXCP MySQL (mysql) benutzen!';
+$cs_lang['type_info'] = 'Meistens ist dies MySQL (mysql)';
 $cs_lang['place'] = 'Ort der Datenbank';
 $cs_lang['place_info'] = 'Angabe von IP, DNS, oder nichts bei UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'Bei SQLite gesch&uuml;tzten Pfad mit Dateinamen angeben';

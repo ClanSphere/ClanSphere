@@ -69,9 +69,9 @@ $cs_lang['head_settings']  = 'Configuration';
 $cs_lang['body_settings']  = 'Creating a setup file for the portal';
 
 $cs_lang['hash'] = 'Encryption type';
-$cs_lang['hash_info'] = 'If updating from BXCP please use MD5!';
+$cs_lang['hash_info'] = 'Sha1 is recommended';
 $cs_lang['type'] = 'Database Server';
-$cs_lang['type_info'] = 'If importing from BXCP use MySQL (mysql)!';
+$cs_lang['type_info'] = 'In most cases this will be MySQL (mysql)';
 $cs_lang['place'] = 'Location of Database';
 $cs_lang['place_info'] = 'Angabe von IP, DNS, oder nichts bei UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'If SQLite please enter the total path to the database file.';

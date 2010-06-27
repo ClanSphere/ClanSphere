@@ -15,8 +15,7 @@
     <ul>
       <li><a href="#vorraussetzungen">Voraussetzungen</a></li>
       <li><a href="#installation">Installation</a></li>
-         <li><a href="#update_old">Update von &auml;lteren Versionen</a></li>
-      <li><a href="#update_bxcp">Update vom BXCP 0.3.2.2</a></li>
+      <li><a href="#update_old">Update von &auml;lteren Versionen</a></li>
       <li><a href="#templates">Templates Platzhalter</a>
         <ul>
         <li><a href="#templates_sys">System</a></li>
@@ -78,23 +77,6 @@
           Sie diesen Punkt) aus, indem dieser &uuml;ber das Browserfenster ausgef&uuml;hrt wird (Eingeloggt als Admin, zu finden unter dem Men&uuml;punkt: 
         System -&gt; Datenbank -&gt; Import). Laden Sie als n&auml;chstes den Inhalt (ausgenommen die 'debug.php', sowie die Verzeichnisse 'docs' und 'updates') 
         auf Ihren Webspace und setzen Sie am 'uploads' Verzeichnis rekursiv die n&ouml;tigen Dateirechte um Dateien hochladen zu k&ouml;nnen.
-      </td></tr>
-    </table>
-    <br />
-    <hr style="width: 75%;" />
-    <br />
-    <table cellspacing="0" cellpadding="2" width="100%">
-      <tr>
-        <td class="head"><a name="update_bxcp"></a>Update vom BXCP 0.3.2.2</td>
-      <td class="head" style="text-align: right; font-weight: normal;"><a href="#top">nach oben</a></td>
-      </tr>      
-      <tr><td colspan="2">Aufgrund interner Umstellungen, die den Kern betreffen, ist es n&ouml;tig, als Vorsichtsma&szlig;nahme die Datenbank, sowie bisher 
-          vorhandenen FTP Inhalt im Installationsverzeichnis zu sichern und eine Liste manuell ge&auml;nderter Dateien anzufertigen. 
-        Als zweites muss die Datei 'bxcp_0322_to_clansphere.sql', eingeloggt als Admin, unter dem Men&uuml;punkt System -> Updates 
-        ausgef&uuml;hrt werden. Entfernen Sie nun den alten Inhalt vom FTP, ausgenommen die Verzeichnisse logs, templates und uploads. 
-        Laden Sie als viertes jetzt alle neuen Dateien auf den Webspace und &ouml;ffnen Sie die setup.php zum bearbeiten mit einem Texteditor. 
-        Jedes $bx_db nun zu $cs_db und jedes $bx_log zu $cs_log &auml;ndern und die Datei abspeichern. Sollten nachfolgend noch Probleme 
-        auftauchen, schauen Sie bitte in die Instruktionen zur Hilfe.
       </td></tr>
     </table>
     <br />
