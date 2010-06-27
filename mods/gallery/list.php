@@ -313,8 +313,7 @@ if ($folders_id >= 1) {
       $img[$run]['link'] = cs_link($cs_lap, 'gallery', 'com_view', 'folders_id=' . $folders_id . '&amp;where=' . $cs_gallery[$run]['gallery_id']);
     }
     $data['img'] = !empty($img) ? $img : '';
-    $sort = '1&amp;folders_id=' . $folders_id;
-    $data['data']['pages'] = cs_pages('gallery', 'list', $gallery_count, $start, 0, $sort, $cols_rows);
+    $data['data']['pages'] = cs_pages('gallery', 'list', $gallery_count, $start, 'folders_id=' . $folders_id, 1, $cols_rows);
   } elseif (empty($data['sub_folders'])) {
     $data['img'] = '';
     $data['data']['pages'] = '';
