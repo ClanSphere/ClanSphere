@@ -9,7 +9,7 @@ $time_now = cs_time();
 
 $cups_id = (int) $_GET['id'];
 
-$tables = 'cups cp INNER JOIN {pre}_games gms ON cp.games_id = gms.games_id';
+$tables = 'cups cp LEFT JOIN {pre}_games gms ON cp.games_id = gms.games_id';
 $cells = 'cp.cups_name AS cups_name, gms.games_name AS games_name, cp.cups_system AS cups_system, ';
 $cells .='cp.cups_teams AS cups_teams, cp.cups_text AS cups_text, cp.cups_start AS cups_start, ';
 $cells .='cp.games_id AS games_id, cp.cups_brackets AS cups_brackets';
