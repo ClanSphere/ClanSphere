@@ -139,14 +139,16 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 }
 
 function cs_xsrf_protection_field($matches) {
+  $length = 10;
+  global $cs_main;
   static $xsrf_key;
   if(!isset($_SESSION['cs_xsrf_keys']) || !is_array($_SESSION['cs_xsrf_keys'])) {
     $_SESSION['cs_xsrf_keys'] = array();
   }
   if(empty($xsrf_key)) {
-    $xsrf_key = md5(microtime() . rand());
-    $_SESSION['cs_xsrf_keys'] = array_slice($_SESSION['cs_xsrf_keys'], -4, 4);
-    $_SESSION['cs_xsrf_keys'][] = $xsrf_key;
+    $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
+    $_SESSION['cs_xsrf_keys'] = array_slice($_SESSION['cs_xsrf_keys'], (-1 * $length), $length);
+    $_SESSION['cs_xsrf_keys'][time()] = $xsrf_key;
   }
   
   return $matches[0] . "\n" . '<div style="display:none;"><input type="hidden" name="cs_xsrf_key" value="' . end($_SESSION['cs_xsrf_keys']) . '" /></div>' . "\n";
