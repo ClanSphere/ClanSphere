@@ -2,21 +2,21 @@
  <tr>
   <td class="headb" colspan="3">{lang:mod_name} - {lang:manage}</td>
  </tr>
- <tr>  
-  <td class="leftb" colspan="2">{lang:total}: {count:all}</td>
+ <tr>
+  <td class="leftb">
+    {icon:strokedocker} <a href="{url:events_guestslatest}">{lang:guests_latest}</a>
+  </td>
+  <td class="leftb" style="min-width: 100px">{icon:contents} {lang:total}: {count:all}</td>
   <td class="rightb">{pages:list}</td>
  </tr>
  <tr>
-  <td class="centerb">
-    <a href="{url:events_guestsmulti}">{lang:guests_multi}</a>
+  <td class="leftb">
+    {icon:7days} <a href="{url:events_guestsmulti}">{lang:guests_multi}</a>
   </td>
-  <td class="centerb">
-    <a href="{url:events_guestslatest}">{lang:guests_latest}</a>
-  </td>
-  <td class="centerb">
+  <td class="leftb" colspan="2">
     <form method="post" id="events_manage" action="{url:events_manage}">
       <fieldset style="border: 0; padding: 0">
-        {lang:category}
+        {icon:folder_yellow} {lang:category}
         {head:categories}
         <input type="submit" name="submit" value="{lang:show}" />
       </fieldset>

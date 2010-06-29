@@ -62,6 +62,7 @@
 {stop:admin}
 
 {head:getmsg}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb">{sort:user} {lang:user}</td>
@@ -69,7 +70,7 @@
     <td class="headb">{sort:time} {lang:date}</td>
     <td class="headb">{sort:status} {lang:status}</td>
 {if:admin}
-    <td class="headb">{lang:contact}</td>
+    <td class="headb" colspan="2">{lang:contact}</td>
     <td class="headb" colspan="3">{lang:options}</td>
 {stop:admin}
   </tr>
@@ -80,7 +81,8 @@
     <td class="leftc">{eventguests:since}</td>
     <td class="leftc">{eventguests:status}</td>
 {if:admin}
-    <td class="leftc">{eventguests:phone}<br />{eventguests:mobile}</td>
+    <td class="centerc">{eventguests:phone}</td>
+    <td class="centerc">{eventguests:mobile}</td>
     <td class="centerc">{eventguests:notice}</td>
     <td class="centerc">{eventguests:edit}</td>
     <td class="centerc">{eventguests:remove}</td>
