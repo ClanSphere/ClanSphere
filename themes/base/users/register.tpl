@@ -16,7 +16,7 @@
     </tr>
     <tr>
       <td class="leftc"> {icon:password} {lang:password} *</td>
-      <td class="leftb"><input type="password" name="password" value="" maxlength="30" size="30"  onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" />
+      <td class="leftb"><input type="password" name="password" value="" maxlength="30" size="30"  onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" autocomplete="off" />
       </td>
     </tr>
   <tr>

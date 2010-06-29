@@ -31,7 +31,7 @@
   </tr>
   <tr>
     <td class="leftc">{lang:password} *</td>
-    <td class="leftb"><input type="password" name="password" value="{value:users_password}" maxlength="30" size="30" /></td>
+    <td class="leftb"><input type="password" name="password" value="{value:users_password}" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
     <td class="leftb" colspan="2">{lang:show}</td>

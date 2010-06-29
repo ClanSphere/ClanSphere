@@ -85,7 +85,7 @@
  </tr>
  <tr>
    <td class="leftc">{lang:pwd}</td>
-   <td class="leftb"><input type="password" name="pwd" value="{value:pwd}" maxlength="50" size="25" /></td>
+   <td class="leftb"><input type="password" name="pwd" value="{value:pwd}" maxlength="50" size="25" autocomplete="off" /></td>
  </tr>
  <tr>
    <td class="leftc">{lang:charset}</td>

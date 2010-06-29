@@ -34,7 +34,7 @@
   {if:simple}
   <tr>
     <td class="leftc">{icon:password} {lang:password} *</td>
-    <td class="leftb"><input type="password" name="password" value="" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" /></td>
+    <td class="leftb"><input type="password" name="password" value="" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:password} Sicherheitsstufe:</td>

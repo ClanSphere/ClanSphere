@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:password} {lang:password} *</td>
-    <td class="leftb"><input type="password" name="squads_pwd" value="" maxlength="30" size="30" /></td>
+    <td class="leftb"><input type="password" name="squads_pwd" value="" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>

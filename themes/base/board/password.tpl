@@ -5,7 +5,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:password} {lang:password}</td>
-    <td class="leftb"><input type="password" name="sec_pw" value="" maxlength="30" size="30" />
+    <td class="leftb"><input type="password" name="sec_pw" value="" maxlength="30" size="30" autocomplete="off" />
       <input type="hidden" name="id" value="{pw:id}" />
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>

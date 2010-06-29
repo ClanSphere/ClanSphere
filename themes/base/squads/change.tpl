@@ -19,7 +19,7 @@
     <td class="leftb">
       {squads:clans_sel}<br />
       {lang:password}<br />
-      <input type="password" name="clans_pwd" value="{squads:clans_pwd}" maxlength="30" size="30" />
+      <input type="password" name="clans_pwd" value="{squads:clans_pwd}" maxlength="30" size="30" autocomplete="off" />
     </td>
   </tr>
   <tr>
@@ -38,7 +38,7 @@
   </tr>
   <tr>
     <td class="leftc" rowspan="2">{icon:password} {lang:password}</td>
-    <td class="leftb"><input type="password" name="squads_pwd" value="" maxlength="30" size="30" /></td>
+    <td class="leftb"><input type="password" name="squads_pwd" value="" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
     <td class="leftb">

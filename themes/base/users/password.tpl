@@ -12,15 +12,15 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
     <td class="leftc" style="width:200px">{icon:password} {lang:pwd_current} *</td>
-    <td class="leftb"><input type="password" name="pwd_current" value="{users:current_pwd}" maxlength="30" size="30" /></td>
+    <td class="leftb"><input type="password" name="pwd_current" value="{users:current_pwd}" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:password} {lang:pwd_new} *</td>
-    <td class="leftb"><input type="password" name="pwd_new" value="{users:new_pwd}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" /></td>
+    <td class="leftb"><input type="password" name="pwd_new" value="{users:new_pwd}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:password} {lang:pwd_again} *</td>
-    <td class="leftb"><input type="password" name="pwd_again" value="{users:pwd_again}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" /></td>
+    <td class="leftb"><input type="password" name="pwd_again" value="{users:pwd_again}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:password} {lang:secure}</td>
