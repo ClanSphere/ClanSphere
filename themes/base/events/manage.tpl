@@ -27,15 +27,14 @@
  <tr>
   <td class="headb">{sort:date} {lang:date}</td>
   <td class="headb">{sort:name} {lang:name}</td>
-  <td class="headb" colspan="5">{lang:guests}</td>
+  <td class="headb" colspan="4">{lang:guests}</td>
   <td class="headb" colspan="4">{lang:options}</td>
  </tr>{loop:events}
  <tr>
   <td class="left{events:class}">{events:time} {events:canceled}</td>
   <td class="left{events:class}"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
   <td class="right{events:class}"><em>{events:signed}</em></td>
-  <td class="left{events:class}">{events:indicator}</td>
-  <td class="right{events:class}">{events:guests}</td>
+  <td class="center{events:class}">{events:indicator}</td>
   <td class="right{events:class}"><span style="text-decoration: underline">{events:events_guestsmin}</span></td>
   <td class="right{events:class}"><strong>{events:events_guestsmax}</strong></td>
   <td class="left{events:class}"><a href="{url:events_guests:id={events:events_id}}" title="{lang:guests}">{icon:kdmconfig}</a></td>
