@@ -49,7 +49,6 @@ if($cs_main['xsrf_protection']===TRUE && !empty($_POST)) {
 
     cs_redirect(false, $cs_main['def_mod'], $cs_main['def_action']);
   }
-  $_SESSION['cs_xsrf_keys'] = array();
 }
 
 if(empty($_SESSION['users_id'])) {
