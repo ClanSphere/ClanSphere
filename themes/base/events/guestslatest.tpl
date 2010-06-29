@@ -1,10 +1,11 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod_name} - {lang:guests_latest}</td>
+    <td class="headb" colspan="3">{lang:mod_name} - {lang:guests_latest}</td>
   </tr>
   <tr>
-    <td class="leftb">{lang:total}: {head:count}</td>
-    <td class="rightb">{head:pages}</td>
+    <td class="leftb" style="min-width: 30%">{lang:total}: {head:count}</td>
+    <td class="centerb"><a href="{url:events_manage}">{lang:manage}</a></td>
+    <td class="rightb" style="min-width: 30%">{head:pages}</td>
   </tr>
 </table>
 <br />

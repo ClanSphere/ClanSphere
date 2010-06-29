@@ -158,6 +158,7 @@ $cs_lang['err_mobile']     = '- Data too short or missing: Cell Phone';
 
 // Guests
 $cs_lang['guests_latest']     = 'Latest guest signins';
+$cs_lang['guests_multi']      = 'Multiple signin form';
 $cs_lang['new_guest']         = 'New guest';
 $cs_lang['new_guest_info']    = 'Please select a user or create a new guest';
 $cs_lang['guest']             = 'Guest';
