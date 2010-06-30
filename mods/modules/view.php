@@ -3,7 +3,8 @@
 // Id: view.php (Tue Nov 25 23:43:05 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('modules', 1);
-$cs_lang = cs_translate('access', 1);
+$cs_lang_acc = cs_translate('access', 1);
+$cs_lang = array_merge($cs_lang, $cs_lang_acc);
 
 include_once 'mods/explorer/functions.php';
 
