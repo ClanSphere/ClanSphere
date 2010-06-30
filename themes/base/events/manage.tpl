@@ -32,7 +32,8 @@
   <td class="headb">{sort:name} {lang:name}</td>
   <td class="headb" colspan="4">{lang:guests}</td>
   <td class="headb" colspan="4">{lang:options}</td>
- </tr>{loop:events}
+ </tr>
+ {loop:events}
  <tr>
   <td class="left{events:class}">{events:time} {events:canceled}</td>
   <td class="left{events:class}"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
@@ -44,5 +45,6 @@
   <td class="left{events:class}"><a href="{url:events_picture:id={events:events_id}}" title="{lang:pictures}">{icon:image}</a></td>
   <td class="left{events:class}"><a href="{url:events_edit:id={events:events_id}}" title="{lang:edit}">{icon:edit}</a></td>
   <td class="left{events:class}"><a href="{url:events_remove:id={events:events_id}}" title="{lang:remove}">{icon:editdelete}</a></td>
- </tr>{stop:events}
+ </tr>
+ {stop:events}
 </table>

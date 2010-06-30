@@ -1,24 +1,9 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:mod_name} - {lang:new_guest}</td>
+    <td class="headb">{lang:mod_name} - {lang:guests_multi}</td>
   </tr>
   <tr>
     <td class="leftb">{head:info}</td>
-  </tr>
-</table>
-<br />
-
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-  <tr>
-    <td class="leftc" rowspan="2">{icon:cal} {lang:event}</td>
-    <td class="leftb"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
-  </tr>
-  <tr>
-    <td class="leftb">{events:time}</td>
-  </tr>
-  <tr>
-    <td class="leftc">{icon:organizer} {lang:needage}</td>
-    <td class="leftb" colspan="2">{events:events_needage}</td>
   </tr>
 </table>
 <br />
@@ -56,20 +41,35 @@
         <textarea class="rte_abcode" name="eventguests_notice" cols="50" rows="4">{eventguests:eventguests_notice}</textarea>
       </td>
     </tr>
-    <tr>
-      <td class="leftc">{icon:status_unknown} {lang:status}</td>
-      <td class="leftb">
-        <select name="eventguests_status">
-          <option value="0"{select:0}>{lang:status_0}</option>
-          <option value="3"{select:3}>{lang:status_3}</option>
-          <option value="4"{select:4}>{lang:status_4}</option>
-          <option value="5"{select:5}>{lang:status_5}</option>
-        </select>
-      </td>
-    </tr>
+  </table>
+  <div><br /></div>
+  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+   <tr>
+    <td class="headb" colspan="2">{lang:status}</td>
+    <td class="headb">{lang:date}</td>
+    <td class="headb">{lang:name}</td>
+   </tr>
+   {loop:events}
+   <tr>
+    <td class="centerc"><input type="checkbox" name="events_checked[{events:events_id}]" value="1"{events:events_checked} /></td>
+    <td class="centerc">
+      <select name="events_status[{events:events_id}]">
+        <option value="0"{events:events_status_0}>{lang:status_0}</option>
+        <option value="3"{events:events_status_3}>{lang:status_3}</option>
+        <option value="4"{events:events_status_4}>{lang:status_4}</option>
+        <option value="5"{events:events_status_5}>{lang:status_5}</option>
+      </select>
+    </td>
+    <td class="centerc">{events:time}</td>
+    <td class="leftc" style="min-width: 40%"><a href="{url:events_view:id={events:events_id}}">{events:events_name}</a></td>
+   </tr>
+   {stop:events}
+  </table>
+  <div><br /></div>
+  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
-      <td class="leftb">
+      <td class="leftb" style="width: 50%">
         <input type="hidden" name="events_id" value="{events:events_id}" />
         <input type="submit" name="submit" value="{lang:create}" />
       </td>

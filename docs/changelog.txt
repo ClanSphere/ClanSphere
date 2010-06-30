@@ -6,6 +6,7 @@ ___________________________________________________________
 
 -> Added mail notification for every eventguest status change case (hajo)
 -> Added mail signature that is added to the end of every mail (hajo)
+-> Added multi eventguest entry form to events mod (hajo)
 -> Fixed maintenance mode in some situations (schiri)
 -> Fixed template caching in some situations (hajo, schiri)
 -> Moved imprint edit link from manage to options (hajo)
