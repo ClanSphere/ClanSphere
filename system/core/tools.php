@@ -368,8 +368,7 @@ function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_
 
 function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit = 0, $small = 0, $more = 0) {
 
-  global $account, $cs_lang;
-
+  global $account;
   settype($sort, 'integer');
   settype($start, 'integer');
   $limit = empty($limit) ? (int) $account['users_limit'] : (int) $limit;
@@ -411,7 +410,7 @@ function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit
   }
   $more = 'start=' . $next . $add_where . $add_sort;
   $result .= (empty($small) AND $actual != $pages) ? ' ' . cs_link('&gt;',$mod,$action,$more): '';
-  $result = $cs_lang['page'] . ' ' . $result;
+  $result = '{lang:page} ' . $result;
 
   return $result;
 }
