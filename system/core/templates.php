@@ -146,6 +146,14 @@ function cs_xsrf_protection_field($matches) {
     $_SESSION['cs_xsrf_keys'] = array();
   }
   if(empty($xsrf_key)) {
+    
+    # disable caching to prevent proxy server to deliver an expired or foreign xsrf key
+    header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); 
+    header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT'); 
+    header('Cache-Control: no-store, no-cache, must-revalidate'); 
+    header('Cache-Control: post-check=0, pre-check=0', false); 
+    header('Pragma: no-cache');
+    
     $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
     $_SESSION['cs_xsrf_keys'] = array_slice($_SESSION['cs_xsrf_keys'], (-1 * $length), $length);
     $_SESSION['cs_xsrf_keys'][time()] = $xsrf_key;
