@@ -32,10 +32,10 @@ function cs_captcha($hash) {
     ImageString($img,rand(3,5),rand(($i * 20 + 2),($i * 20 + 8)),rand(2,$height - 20),$hash{$i},$textcolor);
   }
 
-  /* no image Caching */
-  header("Cache-Control: no-cache, must-revalidate");
-  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
-  
+  # disable browser / proxy caching
+  header("Cache-Control: max-age=0, no-cache, no-store, must-revalidate");
+  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+
   if(!empty($gd_info["PNG Support"])) {
     header("Content-type:image/png");
     ImagePNG($img);

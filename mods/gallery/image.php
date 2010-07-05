@@ -120,10 +120,10 @@ class PictureEngine
     $gallery_save = array($gallery_count_downloads);
     cs_sql_update(__FILE__,'gallery',$gallery_cells,$gallery_save,$_REQUEST['pic']);
 
-    header('Pragma: public');
-    header('Last-Modified: '.gmdate('D, d M Y H:i:s') . ' GMT');
-    header('Cache-Control: no-store, no-cache, must-revalidate');
-    header('Cache-Control: pre-check=0, post-check=0, max-age=0');
+    # disable browser / proxy caching
+    header("Cache-Control: max-age=0, no-cache, no-store, must-revalidate");
+    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+
     header('Content-Transfer-Encoding: none');
     header("Accept-Ranges: bytes");
     header("Content-type: image/jpg");

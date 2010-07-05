@@ -63,20 +63,21 @@ if($ext == 'jpg' OR $ext=='JPG' OR $ext == 'jpeg' OR $ext=='JPEG' OR $ext == 'gi
 }
 else {
 
-    $varMimeTypes = Array(  'doc' => 'application/msword',
-                                'pdf' => 'application/pdf', 
-                                'zip' => 'application/zip',
-                                'txt' => 'text/plain', 
-                                'sql' => 'text/plain', 
-                                'htm' => 'text/html', 
-                                'html'=> 'text/html');
-    header("Pragma: public");
-    header("Expires: 0");
-    header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-    header("Cache-Control: public");
-    header("Content-Description: File Transfer");
-    header("Content-Type: " . $varMimeTypes[$ext]);
-    header("Content-Disposition: attachment; filename=". $cs_thread_file['boardfiles_name'] .";");
-    header("Content-Transfer-Encoding: binary");
-    @readfile($file_path);
+  # disable browser / proxy caching
+  header("Cache-Control: max-age=0, no-cache, no-store, must-revalidate");
+  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+
+  $varMimeTypes = Array('doc' => 'application/msword',
+                        'pdf' => 'application/pdf', 
+                        'zip' => 'application/zip',
+                        'txt' => 'text/plain', 
+                        'sql' => 'text/plain', 
+                        'htm' => 'text/html', 
+                        'html'=> 'text/html');
+
+  header("Content-Description: File Transfer");
+  header("Content-Type: " . $varMimeTypes[$ext]);
+  header("Content-Disposition: attachment; filename=". $cs_thread_file['boardfiles_name'] .";");
+  header("Content-Transfer-Encoding: binary");
+  @readfile($file_path);
 }
