@@ -30,7 +30,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
   
   $position = $match['cupmatches_tree_order']%2 == 0 ? 1 : -1;
   $opponent_position = $match['cupmatches_tree_order']+$position;
-  $where = 'cups_id = ' . $cups_id . ' AND cupmatches_round = ' . $round . ' AND cupmatches_tree_order = ' . $opponent_position . ' AND  = cupmatches_loserbracket' . $match['cupmatches_loserbracket'];
+  $where = 'cups_id = ' . $cups_id . ' AND cupmatches_round = ' . $round . ' AND cupmatches_tree_order = ' . $opponent_position . ' AND cupmatches_loserbracket = ' . $match['cupmatches_loserbracket'];
   $cells = 'cupmatches_accepted1, cupmatches_accepted2, cupmatches_winner';
   if (!empty($cup['cups_brackets'])) $cells .= ', squad1_id, squad2_id';
   $opponent = cs_sql_select(__FILE__, 'cupmatches', $cells, $where);
