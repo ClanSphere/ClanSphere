@@ -222,7 +222,8 @@ elseif(!empty($_POST['adminedit']) || !empty($_POST['admin_submit'])) {
       
       cs_redirect($message, 'cups', 'match', 'id=' . $cupmatches_id);
       
-    } else {
+    }
+    else {
       
       $tables = 'cupmatches cm INNER JOIN {pre}_cups cp ON cm.cups_id = cp.cups_id';
       $cells = 'cp.cups_system AS cups_system';

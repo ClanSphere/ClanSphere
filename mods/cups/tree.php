@@ -52,14 +52,13 @@ $where = 'cm.cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 0 AND cm.c
 $cupmatches = array();
 for ($i=0; $i < $rounds_1; $i++) {
   $temp = cs_sql_select(__FILE__, $tables, $cells, $where . ($rounds_1 - $i), 'cm.cupmatches_tree_order',0,0);
-  // $cupmatches[$i] = array();
   foreach ($temp as $match) {
     if (empty($match['team1_name']) AND !empty($match['team1_id'])) $match['team1_name'] = '? ID:'.$match['team1_id'];
     if (empty($match['team2_name']) AND !empty($match['team2_id'])) $match['team2_name'] = '? ID:'.$match['team2_id'];
     $cupmatches[$i][ $match['cupmatches_tree_order'] ] = $match;
     }
 }
-// var_dump($cupmatches);
+
 // Calc-Defs
 $count_matches = $cup['cups_teams'];
 include 'tree_inc.php';
@@ -137,8 +136,6 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
     $round++;
     $run = 0;
     $match_run = 0;
-    // $rounds_1--;
-    // $cupmatches[$round] = cs_sql_select(__FILE__, $tables, $cells, $where . $rounds_1 . ' AND cm.cupmatches_loserbracket = 0', 'cm.cupmatches_tree_order',0,0);
   }
   
 }

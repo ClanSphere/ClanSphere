@@ -34,7 +34,7 @@ if($losers > 1) {
   
   // select all losermatches and store in $cupmatches[rounds]
   $cupmatches = array();
-  $rounds_loop = $rounds;
+  $rounds_loop = $rounds - 1;
   $tables = 'cupmatches cm LEFT JOIN ';
   $tables .= $cup['cups_system'] == 'users' ? '{pre}_users u1 ON u1.users_id = cm.squad1_id LEFT JOIN {pre}_users u2 ON u2.users_id = cm.squad2_id' :
     '{pre}_squads sq1 ON sq1.squads_id = cm.squad1_id LEFT JOIN {pre}_squads sq2 ON sq2.squads_id = cm.squad2_id';
@@ -42,22 +42,18 @@ if($losers > 1) {
     'sq1.squads_name AS team1_name, cm.squad1_id AS team1_id, sq2.squads_name AS team2_name, cm.squad2_id AS team2_id';
   $cells .= ', cm.cupmatches_winner AS cupmatches_winner, cm.cupmatches_accepted1 AS cupmatches_accepted1';
   $cells .= ', cm.cupmatches_accepted2 AS cupmatches_accepted2, cm.cupmatches_tree_order AS cupmatches_tree_order';
-  while ($rounds_loop > 1) {
+  while ($rounds_loop > 0) {
     $where = 'cm.cups_id = ' . $cups_id . ' AND cm.cupmatches_round = '. $rounds_loop . ' AND cupmatches_loserbracket = 1';
     $temp = cs_sql_select(__FILE__, $tables, $cells, $where, 'cm.cupmatches_tree_order',0,0);
-    // bringe das array in die richtige reihenfolge (nur für die erste runde wichtig)
-    if ($rounds_loop == $rounds AND !empty($temp)) {
-      foreach ($temp as $tmatch)
-        $cupmatches[$rounds_loop][$tmatch['cupmatches_tree_order']] = $tmatch;
-    }
+    // bringe das array in die richtige reihenfolge
+    foreach ($temp as $tmatch)
+      $cupmatches[$rounds_loop][$tmatch['cupmatches_tree_order']] = $tmatch;
     $rounds_loop--;
   }
-  
   // create image
-  $rounds_loop = $rounds;
+  $rounds_loop = $rounds - 1;
   for ($i = 0; $i < $count_matches; $i++) {
     $i2 = $i + 1;
-    $round_2 = floor($round / 2);
     if (!empty($round)) {
       $currheight += (pow(2, $round - 1) - 0.5) * $entityheight;
       $currheight += (pow(2, $round - 2))       * $yspace_enemies;

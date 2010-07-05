@@ -1,4 +1,18 @@
 <?php
+function find_current_order ($aMatches) {
+  if(!is_array($aMatches))
+    return 0;
+  
+  $iTemp = 0;
+  foreach ($aMatches as $aMatch) {
+    if($iTemp != $aMatch['cupmatches_tree_order']) // match noch nicht vorhanden also abbrechen
+      break;
+    
+    $iTemp++;
+  }      
+  return $iTemp;
+}
+
 function cs_cupmatch ($cupmatches_id, $winner, $loser) {
   settype($cupmatches_id,'integer');
   settype($winner,'integer');
@@ -16,7 +30,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
   
   $position = $match['cupmatches_tree_order']%2 == 0 ? 1 : -1;
   $opponent_position = $match['cupmatches_tree_order']+$position;
-  $where = 'cups_id = ' . $cups_id . ' AND cupmatches_round = ' . $round . ' AND cupmatches_tree_order = ' . $opponent_position;
+  $where = 'cups_id = ' . $cups_id . ' AND cupmatches_round = ' . $round . ' AND cupmatches_tree_order = ' . $opponent_position . ' AND  = cupmatches_loserbracket' . $match['cupmatches_loserbracket'];
   $cells = 'cupmatches_accepted1, cupmatches_accepted2, cupmatches_winner';
   if (!empty($cup['cups_brackets'])) $cells .= ', squad1_id, squad2_id';
   $opponent = cs_sql_select(__FILE__, 'cupmatches', $cells, $where);
@@ -40,6 +54,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
     while ( $losers >= $n ) $n *= 2;
     $count_matches = $n;
     $halfmax = $count_matches / 2;
+    $round = strlen(decbin($count_matches)) - 1;
     $matches = array();
     for ($x=1; $x <= $losers; $x++) {
       $z = $x > $halfmax ? $x - $halfmax : $x;
@@ -51,13 +66,13 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
     $newmatch['cups_id'] = $cups_id;
     $newmatch['squad1_id'] = $loser;
     $newmatch['squad2_id'] = $opponent['cupmatches_winner'] == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
-    $newmatch['cupmatches_round'] = $round - 1;
+    $newmatch['cupmatches_round'] = $round;
     $newmatch['cupmatches_loserbracket'] = 1;
-    $where = 'cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 1 AND cupmatches_round = ' . ($round - 1);
-                                                                                      //(int) cs_sql_count... muss noch ersetzt werden!
-    $newmatch['cupmatches_tree_order'] = empty($newmatch['squad2_id']) ? ($halfmax-1) : (int) cs_sql_count(__FILE__,'cupmatches',$where);
+    $where = 'cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 1 AND cupmatches_round = ' . $round;
+    $temp = find_current_order(cs_sql_select(__FILE__,'cupmatches','cupmatches_tree_order', $where, 'cupmatches_tree_order ASC',0,0));
+    $newmatch['cupmatches_tree_order'] = empty($newmatch['squad2_id']) ? ($halfmax-1) : $temp;
     
-    if (empty($matches[$loser_matches+1][2])) { // If there is no opponent
+    if (empty($matches[$newmatch['cupmatches_tree_order']+1][2])) { // Keine Gegner mehr, also Freilose erstellen
       $newmatch["cupmatches_accepted1"] = 1;
       $newmatch["cupmatches_accepted2"] = 1;
       $newmatch["cupmatches_winner"] = $loser;
@@ -68,8 +83,20 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
       $newmatch['squad1_id'] = $loser == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
       $newmatch["cupmatches_winner"] = $newmatch['squad1_id'];
       $newmatch['cupmatches_tree_order']++;
+      $new_match = floor($newmatch['cupmatches_tree_order'] / 2);
     }
+    
     cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
+    if(isset($new_match)) { // neues match für die beiden freilos-spiele erstellen
+      $newmatch = array();
+      $newmatch['cups_id'] = $cups_id;
+      $newmatch['squad1_id'] = $loser;
+      $newmatch['squad2_id'] = $opponent['cupmatches_winner'] == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
+      $newmatch['cupmatches_round'] = $round - 1;
+      $newmatch['cupmatches_loserbracket'] = 1;
+      $newmatch['cupmatches_tree_order'] = $new_match;
+      cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
+    }
   }
   return TRUE;
 }
