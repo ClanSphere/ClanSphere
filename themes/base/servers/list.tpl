@@ -29,7 +29,7 @@
       <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:100%">
         <tr>
           <td class="leftc" style="width:125px;">{lang:host}</td>
-          <td class="leftb"><a href="{servers:proto}{servers:servers_ip}:{servers:servers_port}">{servers:hostname}</a></td>
+          <td class="leftb"><a href="{servers:proto}{servers:ip}:{servers:port}">{servers:hostname}</a></td>
         </tr>
         <tr>
           <td class="leftc" style="width:125px;">{lang:ip}</td>
@@ -39,10 +39,6 @@
           <td class="leftc">{lang:game}</td>
           <td class="leftb">{servers:game_descr}</td>
         </tr>        
-        <tr>
-          <td class="leftc">{lang:gametype}</td>
-          <td class="leftb">{servers:gametype}</td>
-        </tr>
         <tr>
           <td class="leftc">{lang:map}</td>
           <td class="leftb">{servers:map}</td>

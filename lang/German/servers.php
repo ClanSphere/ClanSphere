@@ -103,6 +103,7 @@ $cs_lang['skill']    = 'Skill';
 $cs_lang['channels']    = 'Channels';
 $cs_lang['channel']    = 'Channel';
 $cs_lang['privileg']  = 'Status';
+$cs_lang['nick']	= 'Spieler';
 
 // Navlist
 $cs_lang['host_navlist'] = 'IP/Host ';
