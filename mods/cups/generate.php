@@ -54,7 +54,7 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
     while ( $losers >= $n ) $n *= 2;
     $count_matches = $n;
     $halfmax = $count_matches / 2;
-    $round = strlen(decbin($count_matches)) - 1;
+    $roundl = strlen(decbin($count_matches)) - 1;
     $matches = array();
     for ($x=1; $x <= $losers; $x++) {
       $z = $x > $halfmax ? $x - $halfmax : $x;
@@ -66,9 +66,9 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
     $newmatch['cups_id'] = $cups_id;
     $newmatch['squad1_id'] = $loser;
     $newmatch['squad2_id'] = $opponent['cupmatches_winner'] == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
-    $newmatch['cupmatches_round'] = $round;
+    $newmatch['cupmatches_round'] = $roundl;
     $newmatch['cupmatches_loserbracket'] = 1;
-    $where = 'cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 1 AND cupmatches_round = ' . $round;
+    $where = 'cups_id = ' . $cups_id . ' AND cupmatches_loserbracket = 1 AND cupmatches_round = ' . $roundl;
     $temp = find_current_order(cs_sql_select(__FILE__,'cupmatches','cupmatches_tree_order', $where, 'cupmatches_tree_order ASC',0,0));
     $newmatch['cupmatches_tree_order'] = empty($newmatch['squad2_id']) ? ($halfmax-1) : $temp;
     
@@ -80,19 +80,26 @@ function cs_cupmatch ($cupmatches_id, $winner, $loser) {
       $newmatch["cupmatches_score2"] = 0;
       $newmatch['squad2_id'] = 0;
       cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
-      $newmatch['squad1_id'] = $loser == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
-      $newmatch["cupmatches_winner"] = $newmatch['squad1_id'];
+      
+      // erstes freilos-match ist drin, also kommt jetzt das zweite
+      // 2^(n - 1) - 1 == letzte cupmatches_tree_order-nummer in dieser runde
       $newmatch['cupmatches_tree_order']++;
-      $new_match = floor($newmatch['cupmatches_tree_order'] / 2);
+      if(pow(2, $roundl - 1) > $newmatch['cupmatches_tree_order']) {
+        $new_match = floor($newmatch['cupmatches_tree_order'] / 2);
+        $newmatch['squad1_id'] = $loser == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
+        $newmatch["cupmatches_winner"] = $newmatch['squad1_id'];
+        cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
+      }
     }
+    else
+      cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
     
-    cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
-    if(isset($new_match)) { // neues match für die beiden freilos-spiele erstellen
+    if(isset($new_match) && $roundl > 2) { // neues match für die beiden freilos-spiele erstellen, die gerade erstellt wurden
       $newmatch = array();
       $newmatch['cups_id'] = $cups_id;
       $newmatch['squad1_id'] = $loser;
       $newmatch['squad2_id'] = $opponent['cupmatches_winner'] == $opponent['squad1_id'] ? $opponent['squad2_id'] : $opponent['squad1_id'];
-      $newmatch['cupmatches_round'] = $round - 1;
+      $newmatch['cupmatches_round'] = $roundl - 1;
       $newmatch['cupmatches_loserbracket'] = 1;
       $newmatch['cupmatches_tree_order'] = $new_match;
       cs_sql_insert (__FILE__, 'cupmatches', array_keys($newmatch), array_values($newmatch));
