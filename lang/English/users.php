@@ -279,16 +279,6 @@ $cs_lang['since'] = 'Registered';
 $cs_lang['noname'] = 'No Name';
 $cs_lang['403_body']  = 'The page you have called needs a higher access level.';
 
-// Notifications
-$cs_lang['notifications']    = 'Notifications';
-$cs_lang['manage_notifications']    = 'Manage notifications';
-$cs_lang['notifications_board']    = 'Send me messages, when users reply on my <b>threads or posts</b>.';
-$cs_lang['notifications_pm']    = 'Send me messages, when I receive new <b>private messages</b>.';
-$cs_lang['notifications_clanwar']    = 'Send me messages, when a <b>clanwar</b> is entered for my squad.';
-$cs_lang['no_notification'] = 'No notifications';
-$cs_lang['email_notification'] = 'Notify me via eMail';
-$cs_lang['pm_notification'] = 'Notify me via private message';
-
 // Abo
 $cs_lang['abomail']    = 'Subscription notification';
 

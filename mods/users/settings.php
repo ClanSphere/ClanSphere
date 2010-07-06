@@ -51,12 +51,6 @@ $opt_array = array(
     'name' => $cs_lang['signature'],
     'show' => array('users/settings' => 1)
   ));
-/*  $cs_lang['notifications'] => array(
-    'file' => 'notifications',
-    'icon' => 'xfmail',
-    'name' => $cs_lang['notifications'],
-    'show' => array('users/settings' => 1)
-  ));*/
 
 require_once('mods/clansphere/functions.php');
 echo cs_manage('users', 'settings', 'users', 'center', $opt_array, $head);

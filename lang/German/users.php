@@ -277,18 +277,7 @@ $cs_lang['stage_4_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;
 // Navrand
 $cs_lang['since'] = 'Registriert';
 $cs_lang['noname'] = 'Kein Name hinterlegt';
-
 $cs_lang['403_body']  = 'Die von Ihnen angeforderte Seite ben&ouml;tigt eine h&ouml;here Berechtigung.';
-
-// Notifications
-$cs_lang['notifications']    = 'Benachrichtigungen';
-$cs_lang['manage_notifications']    = 'Benachrichtigungen bearbeiten.';
-$cs_lang['notifications_board']    = 'Benachrichtige mich, wenn jemand auf meine <b>Themen oder Posts</b> anwortet.';
-$cs_lang['notifications_pm']    = 'Benachrichtige mich, wenn ich eine neue <b>private Nachricht</b> erhalten habe.';
-$cs_lang['notifications_clanwar']    = 'Benachrichtige mich, wenn ein <b>Clanwar</b> f&uuml;r mein Squad eingetragen wird.';
-$cs_lang['no_notification'] = 'Keine Benachrichtigung';
-$cs_lang['email_notification'] = 'Per eMail benachrichtigen';
-$cs_lang['pm_notification'] = 'Per privater Nachricht benachrichtigen';
 
 // Abo
 $cs_lang['abomail']    = 'Abonnement - Benachrichtigung';

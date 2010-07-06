@@ -387,11 +387,6 @@ function cs_contentload($file) {
   return cs_content_append($content);
 }
 
-// Array walking with referenced altering
-function cs_int_walk(&$item, $key) {
-    $item = (int)$item;
-}
-  
 function cs_log($target,$content) {
 
   global $cs_logs, $cs_main;
@@ -505,7 +500,6 @@ function cs_getip () {
   return $ip;
 }
 
-// Log_error
 function php_error($errno, $errmsg, $filename, $linenum) {
  
   global $cs_logs, $cs_main;

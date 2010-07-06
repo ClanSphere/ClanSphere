@@ -47,7 +47,6 @@ DROP TABLE {pre}_messages;
 DROP TABLE {pre}_metatags;
 DROP TABLE {pre}_news;
 DROP TABLE {pre}_newsletter;
-DROP TABLE {pre}_notifications;
 DROP TABLE {pre}_notifymods;
 DROP TABLE {pre}_options;
 DROP TABLE {pre}_partner;
