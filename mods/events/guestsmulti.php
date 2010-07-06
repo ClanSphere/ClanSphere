@@ -16,7 +16,8 @@ $where = 'events_cancel = 0 AND events_guestsmax > 0 AND events_time > ' . (int)
 $data['events'] = cs_sql_select(__FILE__, 'events', $select, $where, 'events_time ASC', 0, 50);
 $count_events = count($data['events']);
 
-$checked = empty($_REQUEST['events_checked']) ? array() : $_REQUEST['events_checked'];
+$checked = empty($_POST['events_checked']) ? array() : $_POST['events_checked'];
+$checked = empty($_GET['events_id']) ? $checked : array((int) $_GET['events_id'] => 1);
 $status = empty($_POST['events_status']) ? array() : $_POST['events_status'];
 $status_empty = array('events_status_0' => '', 'events_status_3' => '', 'events_status_4' => '', 'events_status_5' => '');
 
@@ -26,7 +27,7 @@ for ($run = 0; $run < $count_events; $run++) {
   $data['events'][$run]['events_name'] = cs_secure($data['events'][$run]['events_name']);
   $data['events'][$run]['events_checked'] = empty($checked[$data['events'][$run]['events_id']]) ? '' : ' checked = "checked"';
   $data['events'][$run] = array_merge($data['events'][$run], $status_empty);
-  $data['events'][$run]['events_status'] = isset($status[$data['events'][$run]['events_id']]) ? $status[$data['events'][$run]['events_id']] : 0;
+  $data['events'][$run]['events_status'] = isset($status[$data['events'][$run]['events_id']]) ? $status[$data['events'][$run]['events_id']] : 4;
   $data['events'][$run]['events_status_' . $data['events'][$run]['events_status']] = ' selected = "selected"';
 }
 

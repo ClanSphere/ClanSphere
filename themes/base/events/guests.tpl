@@ -1,10 +1,11 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod_name} - {lang:guests}</td>
+    <td class="headb" colspan="3">{lang:mod_name} - {lang:guests}</td>
   </tr>
   <tr>
-    <td class="leftb" style="width: 50%">{lang:total}: {head:count}</td>
-    <td class="rightb">{head:pages}</td>
+    <td class="leftb" style="min-width: 30%">{lang:total}: {head:count}</td>
+    <td class="centerb"><a href="{url:events_manage}">{lang:manage}</a></td>
+    <td class="rightb" style="min-width: 30%">{head:pages}</td>
   </tr>
 </table>
 <br />
@@ -55,7 +56,7 @@
   <tr>
     <td class="centerb">{icon:yast_user_add} <a href="{url:events_guestsnew:events_id={events:events_id}}">{lang:new_guest}</a></td>
     <td class="centerb">{icon:printmgr} <a href="#" onclick="window.open('{page:path}features.php?mod=events&amp;action=guestsprint&amp;id={events:events_id}', '{lang:print_view}', 'width=800,height=600,scrollbars=yes'); return false">{lang:print_view}</a></td>
-    <td class="centerb">{icon:view_text} <a href="{url:events_manage}">{lang:manage}</a></td>
+    <td class="centerb">{icon:7days} <a href="{url:events_guestsmulti:events_id={events:events_id}}">{lang:guests_multi}</a></td>
   </tr>
 </table>
 <br />
