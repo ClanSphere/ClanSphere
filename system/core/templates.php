@@ -153,7 +153,7 @@ function cs_xsrf_protection_field($matches) {
     
     $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
     $_SESSION['cs_xsrf_keys'] = array_slice($_SESSION['cs_xsrf_keys'], (-1 * $length), $length);
-    $_SESSION['cs_xsrf_keys'][time()] = $xsrf_key;
+    $_SESSION['cs_xsrf_keys'][] = $xsrf_key;
   }
   
   return $matches[0] . "\n" . '<div style="display:none;"><input type="hidden" name="cs_xsrf_key" value="' . end($_SESSION['cs_xsrf_keys']) . '" /></div>' . "\n";
