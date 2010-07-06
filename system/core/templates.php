@@ -264,7 +264,7 @@ function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $i
 
   $url = str_replace('&amp;', '&', cs_url($mod, $action, $more));
 
-  header('location: ' . $url);
+  header('Location: ' . $url);
   exit();
 }
 

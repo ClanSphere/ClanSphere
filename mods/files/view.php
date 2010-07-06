@@ -126,7 +126,7 @@ if (isset($_REQUEST['target'])) {
   cs_sql_update(__FILE__,'files',$files_cells,$files_save,$file_id);
   $temp_a = explode("\n", $temp[$_REQUEST['target']]);
   $select_mirrow = $temp_a['1'];
-  header("location:".$select_mirrow."");
+  header("Location: ".$select_mirrow."");
 } 
 
 require_once 'mods/clansphere/filetype.php';

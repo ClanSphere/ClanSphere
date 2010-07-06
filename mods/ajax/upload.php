@@ -1,11 +1,8 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
-
   if(isset($_POST['remove'])) {
-
     $file = $_POST['remove'];
     if(isset($_SESSION['ajaxuploads'][$file]) && file_exists('uploads/cache/' . $_SESSION['ajaxuploads'][$file]))
       cs_unlink('cache',$_SESSION['ajaxuploads'][$file]);
@@ -34,8 +31,14 @@ if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
     echo 'window.top.Clansphere.ajax.upload_complete(' . json_encode($upload) . ');';
     echo '</script>';
   }
+  else {
+    echo '<script language="javascript" type="text/javascript">';
+    echo 'alert("no file given");';
+    echo '</script>';
+  }
 } else {
   echo '<script language="javascript" type="text/javascript">';
   echo 'alert("Permission denied");';
   echo '</script>';
 }
+
