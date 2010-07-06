@@ -2,11 +2,6 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-# List of removed functions:
-# cs_html_table, cs_html_roco, cs_html_form, cs_html_textarea, cs_html_vote, cs_html_input, cs_html_div, cs_html_span
-# Add the following line to your setup.php file to use them further on:
-# $cs_main['xhtml_old'] = 1;
-
 if(version_compare(phpversion(), '5.2.1', '>='))
   require_once 'mods/ajax/mail_func.php';
 else

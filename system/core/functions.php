@@ -236,7 +236,10 @@ function cs_init($predefined) {
     require_once 'system/output/json.php';
 
   require_once 'system/output/xhtml_10.php';
-
+  # add old xhtml functions if needed (going away soon)
+  if(!empty($cs_main['xhtml_old']))
+    require_once 'system/output/xhtml_10_old.php';
+  
   if(!empty($predefined['init_sql'])) {
 
     require_once 'system/database/' . $cs_db['type'] . '.php';
