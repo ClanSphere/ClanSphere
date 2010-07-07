@@ -1,3 +1,8 @@
 ## Disallow PHP inside all upload directories
 
 Options -ExecCGI -Includes
+
+<Files ~ ".*\.php$">
+Order deny,allow
+Deny from all
+</Files>
