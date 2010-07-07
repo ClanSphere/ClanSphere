@@ -39,6 +39,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="rightb">
-      <a href="http://phgstats.sourceforge.net" target="_blank">based on phgstats</a></td>
+      <a href="http://gameq.sourceforge.net" target="_blank">based on GameQ</a></td>
   </tr>
 </table>
