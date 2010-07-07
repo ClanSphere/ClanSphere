@@ -4,7 +4,10 @@
   </tr>
   <tr>
     <td class="leftb" style="min-width: 30%">{lang:total}: {head:count}</td>
-    <td class="centerb"><a href="{url:events_manage}">{lang:manage}</a></td>
+    <td class="centerb">
+      {if:admin}<a href="{url:events_manage}">{lang:manage}</a>{stop:admin}
+      {unless:admin}<a href="{url:events_agenda}">{lang:agenda}</a>{stop:admin}
+    </td>
     <td class="rightb" style="min-width: 30%">{head:pages}</td>
   </tr>
 </table>
