@@ -3,9 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('wars');
-
 $cs_option = cs_sql_option(__FILE__,'wars');
-
 $data = array();
 
 $select = 'war.games_id AS games_id, cln.clans_short AS clans_short, war.wars_score1 AS wars_score1, '
@@ -17,6 +15,9 @@ $order = 'wars_date DESC';
 $cs_wars = cs_sql_select(__FILE__,$from,$select,"war.wars_status = 'played'",$order,0,$cs_option['max_navlist']);
 
 if (!empty($cs_wars)) {
+
+  if($cs_option['max_navlist'] == 1)
+    $cs_wars = array(0 => $cs_wars);
 
   $all = count($cs_wars);
   for ($i = 0; $i < $all; $i++) {

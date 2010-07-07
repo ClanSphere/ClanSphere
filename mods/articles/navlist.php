@@ -19,6 +19,9 @@ if(empty($cs_articles)) {
   echo $cs_lang['no_data'];
 }
 else {
+  if($cs_option['max_navlist'] == 1)
+    $cs_articles = array(0 => $cs_articles);
+
   $run = 0;
   foreach ($cs_articles AS $articles) {
     $data['articles'][$run]['articles_time'] = cs_date('unix',$articles['articles_time'],1,1,0);
