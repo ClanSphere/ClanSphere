@@ -29,15 +29,9 @@ if (!empty($_POST['submit'])) {
 
     cs_optionsave('clansphere', $save);
 
-    if ($cs_main['ajax'] && empty($_POST['ajax']) && function_exists('ajax_js'))
-      die(ajax_js("window.location.reload();"));
-    if (empty($cs_main['ajax']) && !empty($save['ajax']) && !empty($cs_main['mod_rewrite'])) {
-      $turned_on = cs_sql_count(__FILE__, 'users', 'users_id = "' . $account['users_id'] . '" AND users_ajax = "1"');
-      if (!empty($turned_on))
-        header('Location: ../../' . $cs_main['php_self']['basename']);
-    } else
 
     cs_redirect($cs_lang['success'], 'options','roots');
+    
   }
 }
 
