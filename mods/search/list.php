@@ -6,6 +6,8 @@ $cs_lang = cs_translate('search');
 
 $data = array();
 
+$mods_allowed = array('articles', 'clans', 'files', 'news', 'users');
+
 $search_error = 0; 
 $data['search']['raw_where'] = ''; 
 $data['search']['raw_text'] = '';
@@ -23,7 +25,7 @@ if(!empty($submit)) {
     $data['search']['errmsg'] = cs_icon('important'). $cs_lang['error_text'] . cs_html_br(1);
     $search_error++;
   } 
-  if(!empty($_REQUEST['where'])) {
+  if(!empty($_REQUEST['where']) AND in_array($_REQUEST['where'], $mods_allowed)) {
     $data['search']['raw_where'] = $_REQUEST['where'];
     } else {
     $data['search']['errmsg'] .= cs_icon('important'). $cs_lang['error_modul'];
@@ -51,26 +53,8 @@ echo cs_subtemplate(__FILE__,$data,'search','list');
 if(!empty($submit) AND empty($search_error)) {
 
   $data['search']['text'] = $data['search']['raw_text'];
-  $data['search']['where'] = $data['search']['raw_where'];
-    
-  switch ($data['search']['where']) {
-    case 'articles':
-      $target = 'mods/search/mods/articles.php';
-    break;
-    case 'clans':
-      $target = 'mods/search/mods/clans.php';
-    break;
-    case 'news':
-      $target = 'mods/search/mods/news.php';
-    break;
-    case 'users':
-      $target = 'mods/search/mods/users.php';
-    break;
-    case 'files':
-      $target = 'mods/search/mods/files.php';
-    break;
-    default:
-      $target = 'mods/search/mods/news.php';
-  }
+  $data['search']['where'] = str_replace('..', '', $data['search']['raw_where']);
+
+  $target = 'mods/search/mods/' . $data['search']['where'] . '.php';
   require($target);
 }
