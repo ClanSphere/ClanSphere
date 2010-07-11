@@ -20,7 +20,7 @@ $cup = cs_sql_select(__FILE__, 'cups', 'cups_teams, cups_name, cups_system', 'cu
 $losers = cs_sql_count(__FILE__,'cupsquads','cups_id = '.$cups_id) - $cup['cups_teams'] / 2;
 // calc number of matches
 $n=2;
-while ( $losers >= $n ) $n *= 2;
+while ( $losers > $n ) $n *= 2;
 $count_matches = $n;
 $rounds = strlen(decbin($count_matches));
 
