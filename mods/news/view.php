@@ -28,6 +28,10 @@ if(!empty($pub)) {
   $com_where = "comments_mod = 'news' AND comments_fid = '" . $cs_news['news_id'] . "'";
   $data['news']['comments_count'] = cs_sql_count(__FILE__,'comments',$com_where);
 
+  $start = floor($data['news']['comments_count'] / ($account['users_limit'] + 1)) * $account['users_limit'];
+  $cs_news_com_count = $data['news']['comments_count'] - $start;
+  $data['news']['comments_link'] = cs_link($cs_lang['comments'],'news','view','id=' . $cs_news['news_id'] . '&amp;start=' . $start . '#com' . $cs_news_com_count);
+
   $cs_main['page_title'] = $cs_news['news_headline'];
   $data['news']['news_headline'] = cs_secure($cs_news['news_headline']);
 
@@ -42,7 +46,6 @@ if(!empty($pub)) {
   }
   
   $data['news']['users_link'] = cs_user($cs_news['users_id'],$cs_news['users_nick'], $cs_news['users_active'], $cs_news['users_delete']);
-  $data['news']['comments_link'] = cs_link($cs_lang['comments'],'news','view','id=' . $cs_news['news_id']);
   $data['if']['catimg'] = empty($cs_news['categories_picture']) ? false : true;
   $data['news']['url_catimg'] = empty($data['if']['catimg']) ? '' : 'uploads/categories/'.$cs_news['categories_picture'];
 
@@ -62,26 +65,26 @@ if(!empty($pub)) {
     $data['if']['show'] = true;
 
     $temp_mirror = explode("\n", $cs_news['news_mirror']);
-  $temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
+    $temp_mirror_name = explode("\n", $cs_news['news_mirror_name']);
 
-  $tpl_run = 0;
+    $tpl_run = 0;
 
-  for($run_mirror=1; $run_mirror < count($temp_mirror); $run_mirror++) {
-    $num = $run_mirror;
+    for($run_mirror=1; $run_mirror < count($temp_mirror); $run_mirror++) {
+      $num = $run_mirror;
 
-    if($run_mirror == (count($temp_mirror) - 1)) {
-        $data['mirror'][$tpl_run]['dot'] =  '';
+      if($run_mirror == (count($temp_mirror) - 1)) {
+          $data['mirror'][$tpl_run]['dot'] =  '';
+      }
+      elseif(!empty($run_mirror)) {
+        $data['mirror'][$tpl_run]['dot'] =  ' - ';
+      }
+      else {
+        $data['mirror'][$tpl_run]['dot'] =  ' - ';
+      }
+      $url = strpos($temp_mirror[$run_mirror],'://') === false ? 'http://' . $temp_mirror[$run_mirror] : $temp_mirror[$run_mirror];
+      $data['mirror'][$tpl_run]['news_mirror'] = cs_html_link($url,$temp_mirror_name[$run_mirror]);
+      $tpl_run++;
     }
-    elseif(!empty($run_mirror)) {
-      $data['mirror'][$tpl_run]['dot'] =  ' - ';
-    }
-    else {
-      $data['mirror'][$tpl_run]['dot'] =  ' - ';
-    }
-    $url = strpos($temp_mirror[$run_mirror],'://') === false ? 'http://' . $temp_mirror[$run_mirror] : $temp_mirror[$run_mirror];
-    $data['mirror'][$tpl_run]['news_mirror'] = cs_html_link($url,$temp_mirror_name[$run_mirror]);
-    $tpl_run++;
-  }
   }
 
   echo cs_subtemplate(__FILE__,$data,'news','view');
@@ -91,7 +94,7 @@ if(!empty($pub)) {
 
   if(!empty($data['news']['comments_count'])) {
     echo cs_html_br(1);
-  echo cs_comments_view($cs_news_id,'news','view',$data['news']['comments_count']);
+    echo cs_comments_view($cs_news_id,'news','view',$data['news']['comments_count']);
   }
   echo cs_comments_add($cs_news_id,'news',$cs_news['news_close']);
 }
