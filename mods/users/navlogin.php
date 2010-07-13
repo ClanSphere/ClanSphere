@@ -67,13 +67,7 @@ else {
   }
 
   if(!empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) {
-    if(empty($cs_main['mod_rewrite']))
-      $data['link']['panel'] = 'admin.php';
-    else {
-      $shorten  = $cs_main['php_self']['filename'];
-      $shorten .= empty($cs_main['php_self']['params']) ? '' : $cs_main['php_self']['params'];
-      $data['link']['panel'] = str_replace($shorten, '', $uri) . 'admin';
-    }
+      $data['link']['panel'] = cs_url('clansphere', 'admin', '', 'admin');
   }
 
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_view' . $style);
