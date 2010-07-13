@@ -179,7 +179,7 @@ var Clansphere = {
           newpath = path
           .replace('.php','')
           .replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/')
-          .replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index, Clansphere.ajax.basePath + '/')
+          .replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '(.*)', Clansphere.ajax.basePath + '/$1')
           .replace(Clansphere.ajax.basePath + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + Clansphere.ajax.hashMarker)
           + window.location.hash.substr(1);
         } else {
