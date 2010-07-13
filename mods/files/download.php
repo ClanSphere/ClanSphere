@@ -31,7 +31,7 @@ cs_sql_update(__FILE__,'files',$files_cells,$files_save,$files_id);
 
 if(empty($advanced))
 {
-  strpos($_SERVER['PHP_SELF'],'content.php') !== false && !empty($account['access_ajax']) ? $cs_main['ajax_js'] .= 'window.location.href = "' . $mirror[1] . '";' : header('Location: ' .$mirror[1]);
+  header('Location: ' .$mirror[1]);
 }  
 elseif(!empty($advanced))
 {
