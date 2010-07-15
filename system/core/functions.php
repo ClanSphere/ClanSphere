@@ -32,6 +32,8 @@ function cs_error_internal($error = 0, $report = 0) {
   $cs_main['show'] = 'mods/errors/500.php';
   $cs_main['public'] = 1;
   $cs_main['def_width'] = '100%';
+  $cs_main['ajax'] = 0;
+
 
   if(empty($account['users_lang']))
     $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'users_lang' => $cs_main['def_lang']);
@@ -40,7 +42,7 @@ function cs_error_internal($error = 0, $report = 0) {
     chdir('../../');
     $cs_main['php_self']['dirname'] .= '../../';
   }
-
+  
   echo cs_template($cs_micro, 'error.htm');
 }
 
