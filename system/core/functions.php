@@ -492,7 +492,7 @@ function cs_getip () {
     $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
 
   // check for multiple ip's in case of multiple x-forwarders
-  $pos = stripos($ip, ',');
+  $pos = function_exists('stripos') ? stripos($ip, ',') : false;
   if ($pos !== false)
     $ip = trim(substr($ip, 0, $pos));
   // optional extra flags: FILTER_FLAG_IPV4, FILTER_FLAG_IPV6, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE
