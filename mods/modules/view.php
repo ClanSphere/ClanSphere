@@ -2,20 +2,21 @@
 // ClanSphere 2010 - www.clansphere.net
 // Id: view.php (Tue Nov 25 23:43:05 CET 2008) fAY-pA!N
 
-$cs_lang = cs_translate('modules', 1);
-$cs_lang_acc = cs_translate('access', 1);
-$cs_lang = array_merge($cs_lang, $cs_lang_acc);
-
 include_once 'mods/explorer/functions.php';
 
 $data['if']['access_explorer'] = FALSE;
 
 $dir = empty($_GET['dir']) ? $_REQUEST['where'] : $_GET['dir'];
-if(empty($dir) OR !preg_match("=^[_a-z0-9-]+$=i",$dir)) { 
+if(empty($dir) OR !preg_match("=^[_a-z0-9-]+$=i",$dir))
   $dir = $cs_main['def_mod'];
-}
+
+$cs_lang_mod = cs_translate('modules', 1);
+$cs_lang_acc = cs_translate('access', 1);
 
 include('mods/' . $dir . '/info.php');
+
+# combine translations of target info file with mods access and modules
+$cs_lang = array_merge($cs_lang, $cs_lang_acc, $cs_lang_mod);
 
 $data['mod']['name'] = $mod_info['name'];
 $data['mod']['version'] = $mod_info['version'];
