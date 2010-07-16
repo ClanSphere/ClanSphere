@@ -24,7 +24,8 @@ $cs_sort[6] = 'files_size ASC';
 empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
-$categories = cs_sql_select(__FILE__,'categories','categories_name',"categories_id = '" . $categories_id . "'");
+$where_acc = 'categories_access <= ' . (int) $account['access_files'] . ' AND categories_id = ' . (int) $categories_id;
+$categories = cs_sql_select(__FILE__,'categories','categories_name',$where_acc);
 $data['category']['name'] = $categories['categories_name'];
 $data['category']['count'] = cs_sql_count(__FILE__,'files',$where);
 
@@ -93,4 +94,7 @@ for($run=0; $run<$files_loop; $run++) {
   }
 }
 
-echo cs_subtemplate(__FILE__,$data,'files','listcat');
+if(empty($categories))
+  require 'mods/errors/403.php';
+else
+  echo cs_subtemplate(__FILE__,$data,'files','listcat');

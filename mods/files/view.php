@@ -18,7 +18,7 @@ $select .= ', fls.files_mirror AS files_mirror ,cat.categories_name AS categorie
 $select .= ', cat.categories_id AS categories_id, fls.files_count AS files_count';
 $select .= ', fls.files_description AS files_description, fls.files_close AS files_close';
 $select .= ', fls.files_vote AS files_vote, fls.files_size AS files_size, fls.files_version AS files_version, fls.files_previews AS files_previews';
-$where = 'files_id = ' . $file_id;
+$where = 'cat.categories_access <= ' . (int) $account['access_files'] . ' AND fls.files_id = ' . $file_id;
 $cs_file = cs_sql_select(__FILE__,$from,$select,$where);
 
 if(!empty($_POST['brokenlink'])) {
@@ -146,8 +146,12 @@ include_once('mods/comments/functions.php');
 $where_com = 'comments_mod = \'files\' AND comments_fid = ' . $file_id;
 $count_com = cs_sql_count(__FILE__,'comments',$where_com);
 
-echo cs_subtemplate(__FILE__,$data,'files','view');
+if(empty($cs_file))
+  require 'mods/errors/403.php';
+else {
+  echo cs_subtemplate(__FILE__,$data,'files','view');
 
-if(!empty($count_com))
-  echo cs_comments_view($file_id,'files','view',$count_com);
-echo cs_comments_add($file_id,'files',$cs_file['files_close']);
+  if(!empty($count_com))
+    echo cs_comments_view($file_id,'files','view',$count_com);
+  echo cs_comments_add($file_id,'files',$cs_file['files_close']);
+}
