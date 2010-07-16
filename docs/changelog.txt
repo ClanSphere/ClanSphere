@@ -4,6 +4,11 @@ CHANGELOG
 ClanSphere 2010.0 Final >> 2010-07-XX
 ___________________________________________________________
 
+-> Fixed cups module (spongebob)
+-> Fixed error page for PHP 4 to be shown again (hajo)
+-> Removed a part of the upload htaccess file as it caused some errors (hajo)
+
+-- Fixed a few bugs that were reported at "Trac" --
 
 
 ClanSphere 2010.0 RC 1 >> 2010-07-07
