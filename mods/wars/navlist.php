@@ -9,7 +9,7 @@ $data = array();
 $squad_id = empty($_GET['squadid']) ? '' : (int) $_GET['squadid'];
 
 $select = 'war.games_id AS games_id, cln.clans_short AS clans_short, war.wars_score1 AS wars_score1, '
-        . 'war.wars_score2 AS wars_score2, war.wars_id AS wars_id';
+        . 'war.wars_score2 AS wars_score2, war.wars_date AS wars_date, war.wars_id AS wars_id';
 $from = 'wars war INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id';
 $order = 'war.wars_date DESC';
 $where = empty($squad_id) ? "war.wars_status = 'played'" : "war.wars_status = 'played' AND war.squads_id = '" . $squad_id . "'";
@@ -33,6 +33,8 @@ if (!empty($cs_wars)) {
     $icon = $result > 0 ? 'green' : 'red';
     if(empty($result)) $icon = 'grey';
     $cs_wars[$i]['icon'] = cs_html_img('symbols/clansphere/' . $icon . '.gif');
+
+    $cs_wars[$i]['date'] = cs_date('unix',$cs_wars[$i]['wars_date']);
   }
 
   $data['wars'] = $cs_wars;
