@@ -27,12 +27,12 @@ $order = $cs_sort[$sort];
 
 $run = 0;
 
-if($log_id == 1) {
+if($log_id == 1)
   $folder = 'errors';
-}
-elseif($log_id == 2) {
+elseif($log_id == 2)
   $folder = 'actions';
-}  
+else
+  $folder = 'errors';
 
 if(!empty($_REQUEST['down'])) {
   if (!empty($cs_main['ajax']) && !empty($account['users_ajax'])) die(ajax_js('window.location.href=\'' . $cs_logs['dir'] . '/' . $folder . '/' .$_REQUEST['down'] . '\';history.back()'));
