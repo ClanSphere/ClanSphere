@@ -216,7 +216,7 @@ $cs_lang['del_install_file'] = 'Achtung: Die Datei "install.php" ist aus Sicherh
 
 // Options
 $cs_lang['maintenance_access'] = 'Wartungs-Zugriff ab';
-$cs_lang['missing_htaccess'] = 'Mod-Rewrite kann nicht aktiviert werden, da die .htaccess Datei im Hauptverzeichnis von ClanSphere fehlt.';
+$cs_lang['missing_htaccess'] = 'Mod-Rewrite kann erst aktiviert werden, wenn, je nach Webserver, die .htaccess oder web.config Datei vorhanden ist.';
 
 // Charset
 $cs_lang['body_charset'] = 'Diese Seite hilft beim Auffinden von Zeichensatz-Problemen';
