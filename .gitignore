@@ -4,6 +4,7 @@
 /.project
 /.settings
 /setup.php
+/web.config
 /uploads/cache/*.tmp
 /uploads/imprint/*.txt
 /uploads/logs/actions/*.log
