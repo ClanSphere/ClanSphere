@@ -77,7 +77,7 @@ else {
   $data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
   $data['if']['mod_rewrite'] = true;
-  if(!file_exists($cs_main['def_path'] . '/.htaccess') AND !file_exists($cs_main['def_path'] . '/web.config') {
+  if(!file_exists($cs_main['def_path'] . '/.htaccess') AND !file_exists($cs_main['def_path'] . '/web.config')) {
     $data['if']['mod_rewrite'] = false;
   }
 
