@@ -35,8 +35,9 @@ else
   $folder = 'errors';
 
 if(!empty($_REQUEST['down'])) {
-  if (!empty($cs_main['ajax']) && !empty($account['users_ajax'])) die(ajax_js('window.location.href=\'' . $cs_logs['dir'] . '/' . $folder . '/' .$_REQUEST['down'] . '\';history.back()'));
-  header('Location: ' . $cs_logs['dir'] . '/' . $folder . '/' .$_REQUEST['down']);
+  $down_url = $cs_main['php_self']['dirname'] . $cs_logs['dir'] . '/' . $folder . '/' . $_REQUEST['down'];
+  if (!empty($cs_main['ajax']) && !empty($account['users_ajax'])) die(ajax_js('window.location.href=\'' . $down_url . '\';history.back()'));
+  header('Location: ' . $down_url);
 }
 if(!empty($_REQUEST['del'])) { 
   cs_unlink('../' . $cs_logs['dir'] . '/' . $folder, $_REQUEST['del']);
