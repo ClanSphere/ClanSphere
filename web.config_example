@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <rules>
+                <rule name="ClanSphere URL Rewrite Part 1">
+                    <match url="^([^/]+)(.*)$" />
+                    <conditions logicalGrouping="MatchAll">
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+                    </conditions>
+                    <action type="Rewrite" url="{R:1}.php?params={R:2}" appendQueryString="true" />
+                </rule>
+                <rule name="ClanSphere URL Rewrite Part 2" stopProcessing="true">
+                    <match url="(.*)?" ignoreCase="false" />
+                    <conditions logicalGrouping="MatchAll">
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+                    </conditions>
+                    <action type="Redirect" url="{R:1}" redirectType="Temporary" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
