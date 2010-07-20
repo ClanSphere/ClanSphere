@@ -46,7 +46,9 @@ if(!empty($data['charset']['result_tpl_setting'])) $data['charset']['result_tpl_
 
 # Check for charset information inside the .htaccess file
 $web_charset = '';
-$file = '.htaccess';
+$file = $cs_main['def_path'] . '/.htaccess';
+if(file_exists($cs_main['def_path'] . '/web.config'))
+  $web_charset = 'IIS default';
 if(file_exists($file)) {
   $fp = fopen($file, 'r');
   $web_content = fread($fp, filesize($file));
@@ -68,7 +70,8 @@ if(empty($web_charset)) {
   $data['charset']['result_web_setting'] .= $cs_lang['charset_missing'] . cs_html_br(1);
   $data['charset']['result_web_setting'] .= $cs_lang['file'] . ': ' . $file . cs_html_br(2);
 }
-if(!empty($data['charset']['result_web_setting'])) $data['charset']['result_web_setting'] .= $cs_lang['charset_web_hint'];
+if(!empty($data['charset']['result_web_setting']))
+  $data['charset']['result_web_setting'] .= $cs_lang['charset_web_hint'];
 
 # Check for possible SQL related charset problems
 $sql_info = cs_sql_version(__FILE__);
