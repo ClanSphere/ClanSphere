@@ -1,5 +1,5 @@
 ## Disallow PHP inside all upload directories
 <Files ~ ".*\.php$">
-Order deny,allow
-Deny from all
+  Order deny,allow
+  Deny from all
 </Files>
