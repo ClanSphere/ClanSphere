@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <system.webServer>
+        <defaultDocument>
+            <files>
+                <add value="index.php" />
+            </files>
+        </defaultDocument>
+        <directoryBrowse enabled="false" />
         <rewrite>
             <rules>
                 <rule name="ClanSphere URL Rewrite Part 1">
@@ -21,10 +27,5 @@
                 </rule>
             </rules>
         </rewrite>
-        <defaultDocument>
-            <files>
-                <add value="index.php" />
-            </files>
-        </defaultDocument>
     </system.webServer>
 </configuration>

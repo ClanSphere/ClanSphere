@@ -5,7 +5,7 @@
 $cs_lang = cs_translate('clansphere');
 
 $content = cs_paths('uploads/cache');
-unset($content['index.html'], $content['.htaccess']);
+unset($content['index.html'], $content['.htaccess'], $content['web.config']);
 
 $data['lang']['cache_cleared'] = '';
 $data['link']['reload'] = cs_url('clansphere','cache');
