@@ -1,9 +1,11 @@
-*.patch
+/*.patch
+/*.sqlite
 /.buildpath
 /.htaccess
 /.project
 /.settings
 /setup.php
+/setup*.php
 /web.config
 /uploads/cache/*.tmp
 /uploads/imprint/*.txt
