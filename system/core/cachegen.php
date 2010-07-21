@@ -5,7 +5,7 @@
 function cs_cache_clear() {
 
   $content = cs_paths('uploads/cache');
-  unset($content['index.html'], $content['.htaccess']);
+  unset($content['index.html'], $content['.htaccess'], $content['web.config']);
   foreach($content AS $file => $name)
     unlink('uploads/cache/' . $file);
 

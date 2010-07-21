@@ -16,7 +16,7 @@
 <form method="post" id="clansphere_options" action="{url:clansphere_options}" class="noajax">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
-      <td class="leftc">{icon:fileshare} Apache mod_rewrite</td>
+      <td class="leftc">{icon:fileshare} {lang:url_rewrite}</td>
       {if:mod_rewrite}
         <td class="leftb">
           <select name="mod_rewrite">

@@ -215,6 +215,7 @@ $cs_lang['new_infos'] = 'Alle Mitteilungen vom ClanSphere Team';
 $cs_lang['del_install_file'] = 'Achtung: Die Datei "install.php" ist aus Sicherheitsgr&uuml;nden zu entfernen';
 
 // Options
+$cs_lang['url_rewrite'] = 'H&uuml;bsche URLs';
 $cs_lang['maintenance_access'] = 'Wartungs-Zugriff ab';
 $cs_lang['missing_htaccess'] = 'Mod-Rewrite kann erst aktiviert werden, wenn, je nach Webserver, die .htaccess oder web.config Datei vorhanden ist.';
 
