@@ -1,12 +1,12 @@
 <?php
-// ClanSphere 2010 - www.clansphere.net 
+// ClanSphere 2010 - www.clansphere.net
 // $Id$
 
 $cs_lang = cs_translate('servers');
 
 $data = array();
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start']; 
+empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
 $cs_sort[1] = 'servers_name DESC';
 $cs_sort[2] = 'servers_name ASC';
 empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
@@ -20,24 +20,29 @@ $data['server']['headmsg'] = cs_getmsg();
 $data['if']['viewfsock'] = false;
 
 if (!@fsockopen("udp://127.0.0.1", 1)) {
-  $data['if']['viewfsock'] = true;
+	$data['if']['viewfsock'] = true;
 }
 
 $from = "servers serv LEFT JOIN {pre}_games gam ON gam.games_id = serv.games_id";
-$select = "serv.servers_id AS servers_id, serv.servers_name AS servers_name, serv.servers_class AS servers_class, gam.games_name AS games_name";
+$select = "serv.servers_id servers_id, serv.servers_name servers_name, serv.servers_class servers_class, gam.games_name games_name, ";
+$select .= "serv.servers_stats servers_stats";
 $cs_server = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
 
 if(!empty($cs_server)) {
-  for($run=0; $run<count($cs_server); $run++) {
-    $data['servers'][$run]['id'] = $cs_server[$run]['servers_id'];
-    $data['servers'][$run]['name'] = $cs_server[$run]['servers_name'];
-    $data['servers'][$run]['game'] = $cs_server[$run]['games_name'];
-    $data['servers'][$run]['class'] = $cs_server[$run]['servers_class'];
-    $data['servers'][$run]['edit'] = cs_link(cs_icon('edit'),'servers','edit','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['edit']);
-    $data['servers'][$run]['remove'] = cs_link(cs_icon('editdelete'),'servers','remove','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['remove']);
-  }
+	for($run=0; $run<count($cs_server); $run++) {
+		$server_query_ex = explode(";",$cs_server[$run]['servers_class']);
+		$cs_server[$run]['servers_class'] = $server_query_ex[0];
+		$cs_server[$run]['servers_game'] = $server_query_ex[1];
+		$data['servers'][$run]['id'] = $cs_server[$run]['servers_id'];
+		$data['servers'][$run]['name'] = $cs_server[$run]['servers_name'];
+		$data['servers'][$run]['game'] = $cs_server[$run]['games_name'];
+		$data['servers'][$run]['class'] = $cs_server[$run]['servers_class'];
+		$data['servers'][$run]['stats'] = $cs_server[$run]['servers_stats'] == 1 ? cs_icon('submit') : cs_icon('cancel');
+		$data['servers'][$run]['edit'] = cs_link(cs_icon('edit'),'servers','edit','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['edit']);
+		$data['servers'][$run]['remove'] = cs_link(cs_icon('editdelete'),'servers','remove','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['remove']);
+	}
 }
 else {
-  $data['servers'] = array();
+	$data['servers'] = array();
 }
 echo cs_subtemplate(__FILE__,$data,'servers','manage');

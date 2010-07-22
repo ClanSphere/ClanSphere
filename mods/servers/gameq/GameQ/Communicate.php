@@ -116,7 +116,7 @@ class GameQ_Communicate
         // Open udp socket to client
         $addr    = sprintf("%s://%s:%d", $transport, $address, $port);
         // Timeout is only applied for tcp connections
-        $socket  = stream_socket_client($addr, $errno, $errstr, ($timeout/1000), STREAM_CLIENT_CONNECT, $context);
+        $socket  = @stream_socket_client($addr, $errno, $errstr, ($timeout/1000), STREAM_CLIENT_CONNECT, $context);
 
         // Set non-blocking, add socket to list
         if ($socket !== false) {

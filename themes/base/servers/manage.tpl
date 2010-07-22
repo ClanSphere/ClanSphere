@@ -25,6 +25,7 @@
     <td class="headb">{lang:id}</td>
     <td class="headb">{server:sort} {lang:headline}</td>
     <td class="headb">{lang:gametype}</td>
+    <td class="headb">{lang:stats}</td>
     <td class="headb">{lang:gameclass}</td>
     <td class="headb" colspan="2">{lang:options}</td>
   </tr>
@@ -33,6 +34,7 @@
       <td class="leftc">{servers:id}</td>
       <td class="leftc">{servers:name}</td>
       <td class="leftc">{servers:game}</td>
+      <td class="centerc">{servers:stats}</td>
       <td class="leftc">{servers:class}</td>
       <td class="leftc">{servers:edit}</td>
       <td class="leftc">{servers:remove}</td>

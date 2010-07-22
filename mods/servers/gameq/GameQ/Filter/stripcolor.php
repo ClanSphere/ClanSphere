@@ -46,6 +46,8 @@ class GameQ_Filter_stripcolor extends GameQ_Filter
 
             case 'quake2':
             case 'quake3':
+            	array_walk_recursive($result, array($this, 'stripQuake'));
+            	break;
             case 'doom3':
                 array_walk_recursive($result, array($this, 'stripQuake'));
                 break;
