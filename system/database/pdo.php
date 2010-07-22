@@ -45,6 +45,9 @@ function cs_sql_delete($cs_file,$sql_table,$sql_id,$sql_field = 0) {
 function cs_sql_escape($string) {
 
   global $cs_db;
+  if($cs_db['type'] == 'pdo_sqlsrv')
+    return str_replace("'","''",$string);
+
   $string = $cs_db['con']->quote($string);
   return substr($string,1,-1);
 }
@@ -160,6 +163,18 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   $run = 0;
   $sql_where = str_replace('"', "'", $sql_where);
 
+  if($cs_db['type'] == 'pdo_sqlsrv' AND (!empty($max) OR $sql_order == '{random}')) {
+    $sql_select = ' TOP ' . $max . ' ' . $sql_select;
+    if(!empty($first)) {
+      $cell = explode(' ',$sql_table);
+      $same_qry = ' ' . $cell[0] . '_id FROM ' . $cs_db['prefix'] . '_' . $sql_table;
+      $same_qry .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
+      $same_qry .= empty($sql_order) ? '' : ' ORDER BY ' . $sql_order;
+      $sql_notin = '(' . $cell[0] . '_id NOT IN (SELECT TOP ' . $first . ' ' . $same_qry . '))';
+      $sql_where = empty($sql_where) ? $sql_notin : $sql_notin . ' AND ';
+    }
+  }
+
   $sql_query = 'SELECT ' . $sql_select . ' FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   if (!empty($sql_where)) {
     $sql_query .= ' WHERE ' . $sql_where;
@@ -167,12 +182,14 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   if (!empty($sql_order)) {
     if($cs_db['type'] == 'pdo_mysql')
       $random = 'RAND()';
+    elseif($cs_db['type'] == 'pdo_sqlsrv')
+      $random = 'NEWID()';
     else
       $random = 'RANDOM()';
 
     $sql_query .= ' ORDER BY ' . str_replace('{random}', $random, $sql_order);
   }
-  if (!empty($max)) {
+  if ($cs_db['type'] != 'pdo_sqlsrv' AND !empty($max)) {
     $limit = $cs_db['type'] == 'pdo_pgsql' ? $max . ' OFFSET ' . $first : $first . ',' . $max;
     $sql_query .= ' LIMIT ' . $limit;
   }
