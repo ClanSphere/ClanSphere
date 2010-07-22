@@ -7,7 +7,8 @@ $data = array();
 
 $start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 
-$tables = "users u RIGHT JOIN {pre}_medalsuser m ON u.users_id = m.users_id AND u.users_active = 1 AND u.users_delete = 0 GROUP BY u.users_id";
+$tables = "users u RIGHT JOIN {pre}_medalsuser m ON u.users_id = m.users_id AND u.users_active = 1 AND u.users_delete = 0"
+        . " GROUP BY u.users_id, u.users_nick, u.users_active, u.users_delete";
 $count = cs_sql_count(__FILE__, $tables);
 
 $data['pages']['list'] = cs_pages('medals','list',$count,$start);

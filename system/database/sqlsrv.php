@@ -258,13 +258,9 @@ function cs_sql_version($cs_file) {
 function cs_sql_error() {
 
   global $cs_db;
-  $return = '';
   $errors_array = sqlsrv_errors();
-  if(is_array($errors_array)) {
-    foreach($errors_array AS $num => $err) {
-      foreach($err AS $key => $value)
-      if(!is_integer($key)) $return .= "\n[" . $num . '][' . $key . '] => ' . $value;
-    }
-  }
-  return $return;
+  $code = isset($errors_array[0]['code']) ? $errors_array[0]['code'] : 0;
+  $message = isset($errors_array[0]['message']) ? $errors_array[0]['message'] : '';
+  if(!empty($code))
+    return $code . ' - ' . $message;
 }

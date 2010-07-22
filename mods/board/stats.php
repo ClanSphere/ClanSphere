@@ -25,10 +25,10 @@ if(!empty($user)) {
 }
 
 
-$tables  = 'threads t INNER JOIN {pre}_board b ON t.board_id = b.board_id ';
-$tables .= 'AND b.board_access <= \''.$account['access_board'].'\' AND b.board_pwd = \'\' ';
-$tables .= 'INNER JOIN {pre}_comments cms ON cms.comments_mod = \'board\' ';
-$tables .= 'AND cms.comments_fid = t.threads_id GROUP BY t.threads_id';
+$tables  = 'threads t INNER JOIN {pre}_board b ON t.board_id = b.board_id '
+         . 'AND b.board_access <= \''.$account['access_board'].'\' AND b.board_pwd = \'\' '
+         . 'INNER JOIN {pre}_comments cms ON cms.comments_mod = \'board\' '
+         . 'AND cms.comments_fid = t.threads_id GROUP BY t.threads_id, t.threads_comments, t.threads_headline';
 $cells  = 't.threads_id AS threads_id, t.threads_comments AS threads_comments, ';
 $cells .= 't.threads_headline AS threads_headline, COUNT(cms.comments_id) AS comments';
 $select = cs_sql_select(__FILE__,$tables,$cells,0,'comments DESC');
@@ -36,10 +36,5 @@ $data['stats']['longest_thread'] = $select['threads_headline'];
 $data['stats']['longest_thread_posts'] = $select['comments'];
 $data['url']['longest_thread'] = cs_url('board','thread','where=' . $select['threads_id']);
 $data['stats']['average_posts'] = !empty($data['stats']['topics']) ? round($data['stats']['posts'] / $data['stats']['topics'],2) : 0;
-/*
-$tables = 'comments cms LEFT JOIN {pre}_users usr ON cms.users_id = usr.users_id GROUP BY usr.users_id';
-$cells = 'usr.users_nick AS users_nick, usr.users_id AS users_id, COUNT(cms.comments_id) AS smileys';
-$cond = 'cms.comments_text LIKE \'%:)%\'';
-$select = cs_sql_select(__FILE__,$tables,$cells,$cond,'smileys DESC');*/
 
 echo cs_subtemplate(__FILE__,$data,'board','stats');

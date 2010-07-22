@@ -30,7 +30,7 @@ $data['wars']['lost_percent'] = empty($data['wars']['lost_count']) ? 0 : round($
 $data['wars']['draw_count'] = cs_sql_count(__FILE__,'wars','wars_score1 = wars_score2 AND wars_status = \'played\'' . $squad_and);
 $data['wars']['draw_percent'] = empty($data['wars']['draw_count']) ? 0 : round($data['wars']['draw_count'] / $data['wars']['played'] * 100);
 
-$tables = 'users usr INNER JOIN {pre}_players ply ON (ply.users_id = usr.users_id) ' . $squad_players . ' GROUP BY usr.users_id, usr.users_nick';
+$tables = 'users usr INNER JOIN {pre}_players ply ON (ply.users_id = usr.users_id) ' . $squad_players . ' GROUP BY usr.users_id, usr.users_nick, usr.users_active, usr.users_delete';
 $cells  = 'usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, COUNT(ply.players_id) AS wars';
 $data['players'] = cs_sql_select(__FILE__,$tables,$cells,0,'wars DESC',0,0);
 
