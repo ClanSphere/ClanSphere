@@ -151,7 +151,7 @@ if(!empty($account['users_id'])) {
 }
 else
   $account = array('access_id' => 1, 'users_id' => 0, 'users_lang' => $cs_main['def_lang'], 'users_limit' => $cs_main['data_limit'],
-                   'users_timezone' => $cs_main['def_timezone'], 'users_dstime' => $cs_main['def_dstime']);
+                   'users_timezone' => $cs_main['def_timezone'], 'users_dstime' => $cs_main['def_dstime'], 'access_clansphere' => 0);
 
 $gma = cs_sql_select(__FILE__,'access','*','access_id = "' . (int) $account['access_id'] . '"', 0,0,1, 'access_' . $account['access_id']);
 if(is_array($gma))

@@ -178,13 +178,16 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   }
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   cs_log_sql($cs_file, $sql_query);
-  if($sql_data = $cs_db['con']->query($sql_query)) {
+  try {
+    $sql_data = $cs_db['con']->query($sql_query);
+  }
+  catch(PDOException $err) {
+    $error = $err->getMessage();
+    cs_error_sql($cs_file, 'cs_sql_select', $error);
+  }
+  if(empty($error)) {
     $new_result = $max == 1 ? $sql_data->fetch(PDO::FETCH_ASSOC) : $sql_data->fetchAll(PDO::FETCH_ASSOC);
     $sql_data = NULL;
-  }
-  else {
-    $error = $cs_db['con']->errorInfo();
-    cs_error_sql($cs_file, 'cs_sql_select', $error[2]);
   }
 
   if (!empty($new_result)) {
