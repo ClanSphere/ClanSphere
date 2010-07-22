@@ -6,14 +6,13 @@ $cs_lang = cs_translate('servers');
 
 $id = empty($_GET['id']) ? '' : (int) $_GET['id'];
 
+$results = array();
 $data = array('servers');
 
 $data['if']['server'] = false;
-$data['if']['oldphp'] = false;
 
 /* Test if fsockopen active */
 if (fsockopen("udp://127.0.0.1", 1)) {
-	if (4.3 <= substr(phpversion(), 0, 3)) {
 		include_once 'mods/servers/gameq/GameQ.php';
 
 		/* Get Server SQL-Data */
@@ -108,16 +107,10 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 		}
 		/* Show Serverslist */
 		echo cs_subtemplate(__FILE__,$data,'servers','list');
-		echo '<pre>';
-		print_R($results);
+#		echo '<pre>';
+#		print_R($results);
 		//		print_R($data);
-		echo '</pre>';
-
-	}
-	else {
-		/* Old PHP Version */
-		echo cs_subtemplate(__FILE__,$data,'servers','oldphp');
-	}
+#		echo '</pre>';
 }
 else {
 	/* if fsockopen deactive, list servers */
