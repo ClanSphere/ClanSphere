@@ -15,5 +15,5 @@ $mod_info['icon']    = 'kontact';
 $mod_info['show']    = array('options/roots' => 5, 'clansphere/admin' => 3, 'users/home' => 3);
 $mod_info['categories']  = TRUE;
 $mod_info['comments']  = FALSE;
-$mod_info['protected']  = FALSE;
+$mod_info['protected']  = TRUE;
 $mod_info['tables']    = array('mail');

@@ -12,6 +12,13 @@ $errormsg = '';
 $id = isset($_POST['id']) ? $_POST['id'] : $_GET['id'];
 settype($id,'integer');
 
+$captcha = 0;
+if(empty($account['users_id']) AND extension_loaded('gd')) {
+  $captcha = 1;
+}
+
+$data['if']['captcha'] = 0;
+
 $cs_answer_user = cs_sql_select(__FILE__,'users','users_name, users_surname',"users_id = '" . $account['users_id'] . "'");
 $cs_answer_mail = cs_sql_select(__FILE__,'mail','mail_name, mail_email, mail_time',"mail_id = '" . $id . "'");
 
@@ -33,10 +40,11 @@ if(isset($_POST['submit'])) {
   $mail['firm']           = $_POST['firm'];
   $mail['categories_id']  = $_POST['categories_id'];
   
-  $captcha = empty($_POST['captcha']) ? '' : $_POST['captcha'];
-  if(!cs_captchacheck($captcha)) {
-    $error++;
-    $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
+  if(empty($account['users_id'])) {
+    if (!cs_captchacheck($_POST['captcha'])) {
+      $error++;
+      $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
+    }
   }
 
   $ip = cs_getip();
@@ -106,8 +114,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['mail']['categories_id']  = cs_dropdown('categories_id','categories_name',$categories_data,$mail['categories_id']);
 
-  $data['if']['captcha'] = !empty($captcha) ? TRUE : FALSE;
-
+  if(!empty($captcha)) {
+    $data['if']['captcha'] = 1;
+  }
 }
 else {
   $data['if']['form'] = FALSE;
@@ -124,7 +133,6 @@ else {
   cs_sql_insert(__FILE__,'mail',$mail_cells,$mail_save);
   
   cs_mail($cs_contact['def_mail'],$mail['why'],$message,$mail['email']);
-
 }
 
 $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
