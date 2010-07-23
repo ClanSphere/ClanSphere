@@ -4,6 +4,11 @@
 
 $cs_lang = cs_translate('clansphere');
 
+function cs_kisort($k1, $k2) {
+
+  return strtolower($k1) > strtolower($k2);
+}
+
 function cs_phpconfigcheck ($name, $exception = 0) {
 
   $value = strtolower(ini_get($name));
@@ -91,10 +96,15 @@ $data['software']['recom_upload_max_filesize'] = '-';
 $data['software']['memory_limit'] = $limit['memory_limit'];
 $data['software']['recom_memory_limit'] = '-';
 
+# fetch active php extensions and order them from a to z
 $gle = get_loaded_extensions();
-$ext_all = '';
-foreach($gle AS $ext)
-  $ext_all .= $ext . ', ';
-$data['software']['php_extensions'] = substr($ext_all,0,-2);
+$gle = array_flip($gle);
+uksort($gle, "cs_kisort");
+$gle = array_flip($gle);
+
+# parse php extensions into a loop compatible array
+$data['php_ext'] = array();
+foreach($gle AS $num => $ext)
+  $data['php_ext'][$num]['name'] = $ext;
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','software');
