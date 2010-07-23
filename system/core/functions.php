@@ -288,9 +288,11 @@ function cs_init($predefined) {
     }
     # execute startup files
     if(is_array($startup)) {
-      foreach($startup AS $sup) {
-        $file = $cs_main['def_path'] . '/mods/' . $sup . '/startup.php';
-        file_exists($file) ? include_once $file : cs_error($file, 'cs_init - Startup file not found');
+      foreach($startup AS $mod) {
+        if(!empty($account['access_' . $mod])) {
+          $file = $cs_main['def_path'] . '/mods/' . $mod . '/startup.php';
+          file_exists($file) ? include_once $file : cs_error($file, 'cs_init - Startup file not found');
+        }
       }
     }
   }
@@ -316,9 +318,9 @@ function cs_ajaxwrap() {
   global $cs_main, $account;
   $cs_act_lang = cs_translate($cs_main['mod']); 
   $json = array();
-  
+
   header('Content-Type:application/json');
-  
+
   if (empty($cs_main['public']) and $account['access_clansphere'] < $cs_main['maintenance_access'])
   {
     return json_encode(array('location' => '', 'reload' => 1));
@@ -328,20 +330,16 @@ function cs_ajaxwrap() {
     $content = cs_contentload($cs_main['show']);
 
     $json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
-    
+
     $pathPrefix = str_replace('\\','/',$cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']) . '/';
 
     $uri = preg_replace('/^(.*?)\.php\??(.*?)$/s','\\2',$_SERVER['REQUEST_URI']) ;  
     $uri = preg_replace('/[&\?\/]?(xhr_navlists[=\/])[^&\/]*/s','', $uri);
     $uri = str_replace(array('&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix),'', $uri);
     $uri = preg_replace('/' . str_replace('/','\/', $cs_main['php_self']['dirname']) . '/s', '',$uri, 0);    
-    
-    # $uri = str_replace(array('&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//',$pathPrefix, $cs_main['php_self']['dirname']),'', $uri);
-    
+
     $json['location'] = $uri;
-    
-    
-    
+
     if(isset($cs_main['ajax_js'])) {
       $json['scripts'] = $cs_main['ajax_js'];
     }
