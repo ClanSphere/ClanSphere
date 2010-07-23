@@ -41,17 +41,20 @@ else {
 
   $data['users']['link'] = cs_user($account['users_id'], $account['users_nick']);
 
-  $where_msg = 'users_id_to = ' . (int) $account['users_id'] . ' AND messages_show_receiver = 1 AND messages_view = 0';
-  $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
-  $data['messages']['new'] = $messages_count_new;
-
   $data['if']['panel'] = ($cs_main['def_admin'] == 'separated' AND $cs_main['tpl_file'] != 'admin.htm') ? 1 : 0;
+  $data['if']['messages'] = $account['access_messages'] >= 2 ? 1 : 0;
   $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
   $data['if']['joinus'] = (empty($data['if']['panel']) AND $account['access_joinus'] >= 3) ? 1 : 0;
   $data['if']['fightus'] = (empty($data['if']['panel']) AND $account['access_fightus'] >= 3) ? 1 : 0;
   $data['if']['admin'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) ? 1 : 0;
   $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
   $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
+
+  if($account['access_messages'] >= 2) {
+    $where_msg = 'users_id_to = ' . (int) $account['users_id'] . ' AND messages_show_receiver = 1 AND messages_view = 0';
+    $messages_count_new = cs_sql_count(__FILE__,'messages',$where_msg);
+    $data['messages']['new'] = $messages_count_new;
+  }
 
   if(empty($data['if']['panel']) AND $account['access_contact'] >= 3) {
     $mail_count_new = cs_sql_count(__FILE__,'mail','mail_answered = 0');

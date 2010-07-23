@@ -4,7 +4,9 @@
 </div>
 
 <a href="{url:users_home}">{lang:home}</a><br />
-<a href="{url:messages_inbox}">{lang:messages}</a> (<span id="cs_messages_navmsgs">{messages:new}</span>)<br />
+{if:messages}
+  <a href="{url:messages_inbox}">{lang:messages}</a> (<span id="cs_messages_navmsgs">{messages:new}</span>)<br />
+{stop:messages}
 <a href="{url:users_settings}">{lang:settings}</a><br />
 <br />
 {if:more}

@@ -1,5 +1,7 @@
 <a href="{url:users_home}">{lang:home}</a> -
-<a href="{url:messages_inbox}">{lang:messages}</a> (<span id="cs_messages_navmsgs">{messages:new}</span>) -
+{if:messages}
+  <a href="{url:messages_inbox}">{lang:messages}</a> (<span id="cs_messages_navmsgs">{messages:new}</span>) -
+{stop:messages}
 <a href="{url:users_settings}">{lang:settings}</a> -
 {if:more}
   {if:contact}
