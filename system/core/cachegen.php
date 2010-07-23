@@ -26,7 +26,7 @@ function cs_cache_dirs($dir, $lang) {
     $cs_lang_old = $cs_lang;
     $info = array();
     $dirlist = cs_paths($dir);
-    unset($dirlist['index.html'], $dirlist['.htaccess']);
+    unset($dirlist['index.html'], $dirlist['.htaccess'], $dirlist['web.config']);
     $directories = array_keys($dirlist);
     foreach($directories as $target) {
       $this_info = $dir . '/' . $target . '/info.php';
