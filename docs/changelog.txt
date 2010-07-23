@@ -6,12 +6,13 @@ ___________________________________________________________
 
 -- Recommended PHP version changed to 5.3.3
 
--> Added full support for Microsoft IIS 7.0 and 7.5 webserver (hajo)
--> Added full support for Microsoft SQL Server 2005+ with PDO (hajo)
+-> Added full support for Microsoft IIS 7.0+ webserver (hajo)
+-> Added full support for Microsoft SQL Server 2005+ with PDO [pdo_sqlsrv extension] (hajo)
 -> Fixed cups module (spongebob)
+-> Fixed servers module (fr33z3m4n)
 -> Fixed error page for PHP 4 to be shown again (hajo)
 -> Removed a part of the upload htaccess file as it caused some errors (hajo)
--> Updated amLine to the most current version and added it to externals (hajo)
+-> Updated amLine to the most current version [used by count mod] (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
