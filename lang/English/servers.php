@@ -15,6 +15,7 @@ $cs_lang['body_create'] =  'Please fill out all * marked fields.';
 $cs_lang['head_remove']  = 'Remove';
 $cs_lang['body_remove']  = 'Please fill out as many fields as possible.';
 
+$cs_lang['stats']	= 'Live';
 $cs_lang['refresh'] = 'Refresh';
 $cs_lang['slist'] = 'Serverlist';
 $cs_lang['server'] = 'Server';
@@ -103,6 +104,7 @@ $cs_lang['skill']    = 'Skill';
 $cs_lang['channels']    = 'Channels';
 $cs_lang['channel']    = 'Channel';
 $cs_lang['privileg']  = 'Status';
+$cs_lang['nick']	= 'Player';
 
 // Navlist
 $cs_lang['host_navlist'] = 'IP/Host: ';
