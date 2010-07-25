@@ -163,11 +163,11 @@ function cs_wrap_templatefile($matches)
 {
   global $cs_main;
   $exceptions = array('clansphere_navmeta');
-  if(!in_array($matches[1] . '_' . $matches[2], $exceptions)) {
+  if(!in_array($matches[0] . '_' . $matches[1], $exceptions)) {
     if(isset($cs_main['ajax']) && $cs_main['ajax']) {
       $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
 
-      $nav = $matches[1] . '_' . $matches[2];
+      $nav = $matches[0] . '_' . $matches[1];
 
       $m = $matches;
       array_shift($m);
@@ -181,19 +181,18 @@ function cs_wrap_templatefile($matches)
 
 function cs_templatefile($matches)
 {
-  $file = 'mods/' . $matches[1] . '/' . $matches[2] . '.php';
+  $file = 'mods/' . $matches[0] . '/' . $matches[1] . '.php';
   if (!file_exists($file))
   {
     cs_error($file, 'cs_templatefile - File not found');
-    return $matches[0];
+    return $file;
   }
   
-  if (!empty($matches[3]) && !empty($matches[4]))
+  if (!empty($matches[2]))
   {
-    $backup = !isset($_GET[$matches[3]]) ? NULL : $_GET[$matches[3]];
-    $_GET[$matches[3]] = $matches[4];
+    $backup = explode('=', $matches[2]);
+    $_GET[$backup[0]] = $backup[1];
     $return = cs_filecontent($file);
-    if (isset($backup)) unset($_GET[$matches[3]]); else $_GET[$matches[4]] = $backup;
     return $return;
   }
   return cs_filecontent($file);
@@ -310,6 +309,57 @@ function cs_scriptload($mod, $type, $file, $top = 0, $media = 'screen') {
     $cs_main['scriptload'][$type] = $script . $cs_main['scriptload'][$type];
 }
 
+function cs_tokenizer_split($content)
+{
+  $content = preg_split("=\{(.*?:.*?(?::(?:.*?)\=(?:.*?))*(?:\|noajax)*)\}=i", $content, -1, PREG_SPLIT_DELIM_CAPTURE);
+  $parts   = count($content);
+  $ajax    = 0;
+
+  for($i = 1; $i < $parts; $i++)
+  {
+    if(substr($content[$i], 0, 5) != 'func:')
+    {
+      if(substr($content[$i], -7, 7) == '|noajax')
+      {
+        $content[$i] = substr($content[$i], 0, -7);
+        $ajax = 1;
+      }
+
+      $content[$i] = explode(':', $content[$i]);
+
+      if($ajax == 1)
+      {
+        $content[$i][99] = 'noajax';
+      }
+
+      $content[$i] = array_flip($content[$i]);
+    }
+    $ajax = 0;
+    $i++;
+  }
+
+  return $content;
+}
+
+function cs_tokenizer_parse($template)
+{
+  $parts = count($template);
+
+  for($i = 1; $i < $parts; $i++)
+  {
+    if(is_array($template[$i]))
+    {
+      if(isset($template[$i]['noajax']))
+        $template[$i] = cs_templatefile(array_flip($template[$i]));
+      else
+        $template[$i] = cs_wrap_templatefile(array_flip($template[$i]));
+    }
+    $i++;
+  }
+
+  return $template;
+}
+
 function cs_template($cs_micro, $tpl_file = 'index.htm')
 {
   global $account, $cs_logs, $cs_main;
@@ -321,12 +371,14 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['ajax'] = 0;
   }
 
-  if(!empty($account['users_tpl']) AND is_dir('templates/' . $account['users_tpl'])) $cs_main['template'] = $account['users_tpl'];
-  if (!empty($_GET['template'])) $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
-  if (!empty($_SESSION['tpl_preview'])) { $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']); }
-
-  if ($tpl_file == 'error.htm') $cs_main['template'] = 'install';
-
+  if (!empty($account['users_tpl']) AND is_dir('templates/' . $account['users_tpl']))
+    $cs_main['template'] = $account['users_tpl'];
+  if (!empty($_GET['template']))
+    $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
+  if (!empty($_SESSION['tpl_preview']))
+    $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']);
+  if ($tpl_file == 'error.htm')
+    $cs_main['template'] = 'install';
   if (!file_exists('templates/' . $cs_main['template'] . '/' . $tpl_file))
   {
     cs_error('templates/' . $cs_main['template'] . '/' . $tpl_file, 'cs_template - Template not found');
@@ -337,69 +389,81 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       die($msg);
   }
 
-  $cs_temp_get = cs_cache_template($tpl_file);
-
   cs_scriptload('ajax', 'javascript', 'js/ajax.js', 1);
   cs_scriptload('clansphere', 'javascript', 'js/clansphere.js', 1);
   cs_scriptload('clansphere', 'javascript', 'js/jquery.js', 1);
 
+  # Initalize array of upcoming additions and get show content
+  $replace = array('func:head_end' => '', 'func:body_add' => '', 'func:body_end' => '');
+  $replace['func:show'] = '<div id="content">' . cs_contentload($cs_main['show']) . '</div>';
+  $replace['func:queries'] = $cs_logs['queries'];
+
   global $cs_main;
   if(!empty($cs_main['scriptload']['stylesheet']))
-    $cs_temp_get = str_replace('</head>', $cs_main['scriptload']['stylesheet'] . '</head>', $cs_temp_get);
+    $replace['func:head_end'] = $cs_main['scriptload']['stylesheet'];
   if(!empty($cs_main['scriptload']['javascript']))
-    $cs_temp_get = str_replace('</body>', $cs_main['scriptload']['javascript'] . '</body>', $cs_temp_get);
+    $replace['func:body_end'] = $cs_main['scriptload']['javascript'];
 
-  $content = cs_contentload($cs_main['show']);
-
-  if (isset($cs_main['ajax']) && $cs_main['ajax'] == 2 || (!empty($account['users_ajax']) && !empty($account['access_ajax']))) {
-    $cs_temp_get = str_replace('<body', '<body onload="Clansphere.initialize('.$cs_main['mod_rewrite'].',\''.$_SERVER['SCRIPT_NAME'].'\','.$cs_main['ajax_reload']*1000 .')"', $cs_temp_get);
-    if (strpos($cs_temp_get,'id="content"') === false) $content = '<div id="content">' . $content . '</div>';
+  if (isset($cs_main['ajax']) AND $cs_main['ajax'] == 2 OR (!empty($account['users_ajax']) AND !empty($account['access_ajax'])))
+  {
+    $replace['func:body_add'] = ' onload="Clansphere.initialize(' . $cs_main['mod_rewrite'] . ',\'' . $_SERVER['SCRIPT_NAME'] . '\',' . $cs_main['ajax_reload'] * 1000 . ')"';
   }
 
-  $cs_temp_get = str_replace('{func:show}', $content, $cs_temp_get);
-  $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $cs_temp_get);
-  $cs_temp_get = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_wrap_templatefile', $cs_temp_get);
-  $cs_temp_get = str_replace('{func:queries}', $cs_logs['queries'], $cs_temp_get);
-
-  # Provide the def_title and a title with mod and page info
-  $title_website = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
-  $cs_temp_get = str_replace('{func:title_website}', $title_website, $cs_temp_get);
+  # Provide the def_title or a title with mod and page info
+  $replace['func:title_website'] = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
   $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
-  $title = ($cs_main['mod'] == 'static' AND $cs_main['action'] == 'view') ? $title_website : $title_website . ' - ' . $cs_act_lang['mod_name'];
+  if ($cs_main['mod'] == 'static' AND $cs_main['action'] == 'view')
+    $replace['func:title'] = $replace['func:title_website'];
+  else
+    $replace['func:title'] = $replace['func:title_website'] . ' - ' . $cs_act_lang['mod_name'];
   if(!empty($cs_main['page_title']))
-    $title .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
-  $cs_temp_get = str_replace('{func:title}', $title, $cs_temp_get);
+    $replace['func:title'] .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
 
+  # Fetch template file and parse exploded contents
+  $template = cs_cache_template($tpl_file);
+  $template = cs_tokenizer_parse($template);
+
+  # Prepare debug and log data
+  $debug = '';
   $logsql = '';
-  if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4) {
+  if (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)
+  {
     $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
     $cs_logs['errors'] = nl2br($cs_logs['errors']);
-    $logsql = cs_log_format('sql', 1);
+    $logsql = cs_log_format('sql');
   }
-  else {
+  else
+  {
     $cs_logs['php_errors'] = '';
     $cs_logs['errors'] = 'Developer mode is turned off';
   }
-
-  if (!empty($cs_main['debug'])) {
+  if (!empty($cs_main['debug']))
+  {
     $data = array('data');
     $data['data']['log_sql'] = $logsql;
     $data['data']['php_errors'] = $cs_logs['php_errors'];
     $data['data']['csp_errors'] = $cs_logs['errors'];
-    $script = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
-    $cs_temp_get = preg_replace('=\<body(.*?)\>=si', '<body\\1>' . $script, $cs_temp_get, 1);
+    $debug = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
   }
 
-  $cs_temp_get = str_replace('{func:errors}', $cs_logs['php_errors'] . $cs_logs['errors'], $cs_temp_get);
-  $cs_temp_get = str_replace('{func:sql}', $logsql, $cs_temp_get);
-  $getparse = cs_parsetime($cs_micro);
-  $cs_temp_get = str_replace('{func:parse}', $getparse, $cs_temp_get);
-  $getmemory = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
-  if (function_exists('memory_get_peak_usage')) $getmemory .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
-  $cs_temp_get = str_replace('{func:memory}', $getmemory, $cs_temp_get);
+  $replace['func:errors'] = $cs_logs['php_errors'] . $cs_logs['errors'];
+  $replace['func:sql']    = $logsql;
+  $replace['func:debug']  = $debug;
+  $replace['func:parse']  = cs_parsetime($cs_micro);
+
+  $replace['func:memory'] = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
+  if (function_exists('memory_get_peak_usage'))
+    $replace['func:memory'] .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
+
+  $result = '';
+  foreach($template AS $num => $content)
+    if(array_key_exists($content, $replace))
+      $result .= $replace[$content];
+    else
+      $result .= $content;
 
   if(extension_loaded('zlib'))
     ob_start('ob_gzhandler');
 
-  return $cs_temp_get;
+  return $result;
 }

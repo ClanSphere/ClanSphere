@@ -111,6 +111,14 @@ function cs_cache_template($filename) {
   $tpl_data = file_get_contents($tpl_real);
   $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
 
+  if(strpos($tpl_data, 'id="content"') !== false)
+    cs_error($tpl_real, 'cs_cache_template - The ID tag "content" is reserved for AJAX');
+
+  $tpl_data = str_replace('</head>', '{func:head_end}</head>', $tpl_data);
+  $tpl_data = str_replace('</body>', '{func:body_end}</body>', $tpl_data);
+
+  $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>{func:debug}', $tpl_data, 1);
+
   $pattern = "=\<link(.*?)href\=\"(?!http|\/)(.*?)\"(.*?)\>=i";
   $tpl_data = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $tpl_data);
   $pattern = "=background\=\"(?!http|\/)(.*?)\"=i";
@@ -120,6 +128,8 @@ function cs_cache_template($filename) {
 
   $tpl_data = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $tpl_data);
   $tpl_data = str_replace('{func:charset}', $cs_main['charset'], $tpl_data);
+
+  $tpl_data = cs_tokenizer_split($tpl_data);
 
   return cs_cache_save($tpl_temp, $tpl_data);
 }

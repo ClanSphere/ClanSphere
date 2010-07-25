@@ -12,6 +12,7 @@ ___________________________________________________________
 -> Fixed servers module (fr33z3m4n)
 -> Fixed error page for PHP 4 to be shown again (hajo)
 -> Removed a part of the upload htaccess file as it caused some errors (hajo)
+-> Rewrite of template engine from regex to tokenizer [thx to jokey for idea] (hajo)
 -> Updated amLine to the most current version [used by count mod] (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
