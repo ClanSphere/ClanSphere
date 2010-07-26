@@ -541,11 +541,15 @@ function cs_upload($mod,$filename,$upname, $ajaxclean = 1) {
   return $return;
 }
 
-function cs_url($mod, $action = 'list', $more = 0, $base = 0) {
+function cs_url($mod, $action = 'list', $more = 0, $base = 0, $placeholder = 0) {
 
   global $cs_main, $account;
-  if(!file_exists('mods/' . $mod . '/' . $action . '.php')) {
-    cs_error('mods/' . $mod . '/' . $action . '.php','cs_url - File not found');
+  if(!file_exists('mods/' . $mod . '/' . $action . '.php'))
+  {
+    if(empty($placeholder))
+      cs_error('mods/' . $mod . '/' . $action . '.php','cs_url - File not found');
+    else
+      return $action == 'list' ? '{url:' . $mod . '}' : '{url:' . $mod . '_' . $action . '}';
   }
 
   $return = $cs_main['php_self']['dirname'];

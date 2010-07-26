@@ -71,7 +71,7 @@ function cs_templateurl($matches) {
   else
     $more = $matches[4];
 
-  return cs_url($matches[2], $action, $more, $base);
+  return cs_url($matches[2], $action, $more, $base, 1);
 }
 
 function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
