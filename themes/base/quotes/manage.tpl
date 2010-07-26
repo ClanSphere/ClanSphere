@@ -1,4 +1,4 @@
-<form method="post" id="quotes_manage" action="{url:form}">
+<form method="post" id="quotes_manage" action="{url:quotes_manage}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>

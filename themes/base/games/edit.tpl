@@ -7,7 +7,7 @@
   </tr>
 </table>
 <br />
-<form method="post" id="games_edit" action="{url:form}" enctype="multipart/form-data">
+<form method="post" id="games_edit" action="{url:games_edit}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:package_games} {lang:name} *</td>

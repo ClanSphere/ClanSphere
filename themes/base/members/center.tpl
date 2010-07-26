@@ -4,7 +4,7 @@
   </tr>
   <tr>
     <td class="leftb">
-      <form method="post" id="members_center" action="{url:form}">
+      <form method="post" id="members_center" action="{url:members_center}">
       <fieldset style="border: 0; padding: 0">
         {lang:team}:
         <select name="id">

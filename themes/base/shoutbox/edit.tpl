@@ -8,7 +8,7 @@
 </table>
 <br />
 
-<form method="post" id="shoutboxedit" action="{url:form}">
+<form method="post" id="shoutbox_edit" action="{url:shoutbox_edit}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
   <td class="leftc">{icon:personal} {lang:nick} *</td>

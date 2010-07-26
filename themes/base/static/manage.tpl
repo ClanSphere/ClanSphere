@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <td class="leftb" colspan="2">
-      <form method="post" id="static_manage" action="{url:form}">
+      <form method="post" id="static_manage" action="{url:static_manage}">
       <fieldset style="border: 0; padding: 0">
         {lang:access}:
         <select name="where">

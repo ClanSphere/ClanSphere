@@ -23,7 +23,7 @@
 </table>
 <br />
 
-<form method="post" id="events_guestsnew" action="{url:form}">
+<form method="post" id="events_guestsnew" action="{url:events_guestsnew}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="leftc">{icon:personal} {lang:user}</td>
