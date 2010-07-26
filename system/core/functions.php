@@ -351,7 +351,6 @@ function cs_ajaxwrap() {
     $navlists = array();
     foreach($navs AS $nav) {
       $navlist = explode('_',$nav);
-      array_unshift($navlist, $nav);
       if($navlist[1]!='func') {
         $navlists[$nav] = cs_templatefile($navlist);
       }      
