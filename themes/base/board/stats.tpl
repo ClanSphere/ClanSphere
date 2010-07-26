@@ -28,7 +28,7 @@
  </tr>
  <tr>
   <td class="leftc">{lang:longest_thread}</td>
-  <td class="leftb"><a href="{url:longest_thread}">{stats:longest_thread}</a> ({stats:longest_thread_posts} {lang:answers})</td>
+  <td class="leftb"><a href="{link:longest_thread}">{stats:longest_thread}</a> ({stats:longest_thread_posts} {lang:answers})</td>
  </tr>
  <tr>
   <td class="leftc">{lang:average_posts}</td>

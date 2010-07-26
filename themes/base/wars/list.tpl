@@ -17,7 +17,7 @@
     </form>
   </td>
   <td class="leftb"><a href="{url:ranks}">{lang:ranks}</a></td>
-  <td class="rightb"><a href="{url:stats}">{lang:stats}</a></td>
+  <td class="rightb"><a href="{url:wars_stats}">{lang:stats}</a></td>
  </tr>
 </table>
 <br />

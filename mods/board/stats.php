@@ -34,7 +34,7 @@ $cells .= 't.threads_headline AS threads_headline, COUNT(cms.comments_id) AS com
 $select = cs_sql_select(__FILE__,$tables,$cells,0,'comments DESC');
 $data['stats']['longest_thread'] = $select['threads_headline'];
 $data['stats']['longest_thread_posts'] = $select['comments'];
-$data['url']['longest_thread'] = cs_url('board','thread','where=' . $select['threads_id']);
+$data['link']['longest_thread'] = cs_url('board','thread','where=' . $select['threads_id']);
 $data['stats']['average_posts'] = !empty($data['stats']['topics']) ? round($data['stats']['posts'] / $data['stats']['topics'],2) : 0;
 
 echo cs_subtemplate(__FILE__,$data,'board','stats');

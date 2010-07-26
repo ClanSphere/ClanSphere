@@ -31,8 +31,6 @@ for ($run = 0; $run < $count_squads; $run++) {
   $data['squads'][$run]['name'] = cs_secure($data['squads'][$run]['squads_name']);
 }
 
-$data['url']['stats'] = cs_url('wars','stats');
-
 $data['sort']['date'] = cs_sort('wars','list',$start,$squads_id,1,$sort);
 $data['sort']['enemy'] = cs_sort('wars','list',$start,$squads_id,3,$sort);
 $data['sort']['category'] = cs_sort('wars','list',$start,$squads_id,5,$sort);
