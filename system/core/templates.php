@@ -386,7 +386,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   # Initalize array of upcoming additions and get show content
   $replace = array('func:head_end' => '', 'func:body_add' => '', 'func:body_end' => '');
-  $replace['func:show'] = '<div id="content">' . cs_contentload($cs_main['show']) . '</div>';
+  $replace['func:show'] = '<div id="csp_content">' . cs_contentload($cs_main['show']) . '</div>';
 
   global $cs_main;
   if(!empty($cs_main['scriptload']['stylesheet']))

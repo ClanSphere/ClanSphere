@@ -23,7 +23,7 @@ var Clansphere = {
       checkURLInterval: 50,
       refreshNavlistsInterval: 10000,
       loadingImage: $('<img id="ajax_loading" alt="Loading..." />'),
-      contentSelector: '#content',
+      contentSelector: '#csp_content',
       spinnerTargetSelector: 'body',
       loadingSpinnerPath: '/uploads/ajax/loading.gif',
       debugSelector: '#debug',
@@ -248,7 +248,7 @@ var Clansphere = {
               data: $(this).serialize() + ('&' + $(this).data('ajax_submit_button') + '=1&xhr=1' + Clansphere.ajax.navlists),
               dataType: 'json',
               success: function(response){
-                Clansphere.ajax.scrollTarget = 'content';
+                Clansphere.ajax.scrollTarget = 'csp_content';
                 Clansphere.ajax.updatePage(response);
               },
               error: Clansphere.ajax.errorHandler
