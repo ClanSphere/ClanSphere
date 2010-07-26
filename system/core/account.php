@@ -27,8 +27,9 @@ global $cs_lang, $cs_main, $login;
 
 $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 
-$login = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
-$account = array('users_id' => 0, 'users_pwd' => '', 'users_cookiehash' => '', 'users_cookietime' => 0);
+$login   = array('mode' => FALSE, 'error' => '', 'cookie' => 0);
+$noacc   = array('users_id' => 0, 'users_pwd' => '', 'users_cookiehash' => '', 'users_cookietime' => 0);
+$account = $noacc;
 
 # Send cookie only by http protocol (available in PHP 5.2.0 or higher)
 if(version_compare(phpversion(),'5.2.0','>'))
@@ -118,7 +119,7 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($account) OR ($account['users_pwd'] != $_SESSION['users_pwd'])) {
     session_destroy();
     $login['mode'] = FALSE;
-    $account = array('users_id' => 0);
+    $account = $noacc;
   }
   if (empty($cs_main['ajax'])) $account['users_ajax'] = 0;
 }
@@ -133,6 +134,7 @@ if(isset($_COOKIE['cs_userid'])) {
     cs_login_cookies();
 }
 
+$time = cs_time();
 if(!empty($account['users_id'])) {
   if($_SESSION['users_ip'] != cs_getip() OR $_SESSION['users_agent'] != $user_agent) {
     session_destroy();
@@ -143,9 +145,9 @@ if(!empty($account['users_id'])) {
     session_destroy();
     $login['mode'] = FALSE;
   }
-  else {
+  elseif($time > ($account['users_laston'] + 30)) {
     $cells = array('users_laston');
-    $content = array(cs_time());
+    $content = array($time);
     cs_sql_update(__FILE__,'users',$cells,$content,$account['users_id']);
   }
 }
