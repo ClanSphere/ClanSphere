@@ -26,5 +26,9 @@ ClanSphere running after the update process is finished. Please read them carefu
    JavaScript includes to the very bottom of the HTML body tag by default so that DOM parsing is 
    only done once which speeds up page generation in every web-browser.
 
+5. After every update between 2010 versions you have to clear the cache next to it. Usually this 
+   happens when SQL updates are applied or by using the system -> cache menu. If both solutions
+   are not possible you can delete all .tmp files inside the uploads/cache directory to do this.
+
 Please visit the wiki for questions: http://wiki.clansphere.net/Update
 Alternatively ask for help in the board: http://board.clansphere.net
