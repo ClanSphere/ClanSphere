@@ -136,10 +136,9 @@ function cs_cache_template($filename) {
 
 function cs_cache_theme($mod, $action) {
 
-  global $account, $cs_main;
-  $nice_url = empty($cs_main['mod_rewrite']) ? '' : '_mr';
+  global $com_lang, $cs_main;
   $tpl_real = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
-  $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $account['users_lang'] . $nice_url;
+  $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $com_lang["short"] . '_' . $cs_main['php_self']['filename'];
   $tpl_data = cs_cache_load($tpl_temp);
 
   if($tpl_data != false)
