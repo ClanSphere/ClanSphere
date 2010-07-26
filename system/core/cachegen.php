@@ -141,14 +141,14 @@ function cs_cache_theme($mod, $action) {
   $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $cs_main['php_self']['filename'];
   $tpl_data = cs_cache_load($tpl_temp);
 
+  if($cs_main['def_theme'] != 'base' and !file_exists($tpl_real))
+    $tpl_real = 'themes/base/' . $mod . '/' . $action . '.tpl';
   if($tpl_data != false)
     if(filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
     else
       unlink('uploads/cache/' . $tpl_temp . '.tmp');
 
-  if($cs_main['def_theme'] != 'base' and !file_exists($tpl_real))
-    $tpl_real = 'themes/base/' . $mod . '/' . $action . '.tpl';
   if(!file_exists($tpl_real))
   {
     cs_error($source, 'cs_subtemplate - Theme file not found: "' . $tpl_real . '"');
