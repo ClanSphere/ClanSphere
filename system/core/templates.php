@@ -73,40 +73,26 @@ function cs_templateurl($matches) {
 
 function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 {
-  global $cs_lang, $cs_main;
+  global $account, $cs_lang, $cs_main;
   $cs_lang = cs_translate($mod);
-  $micro = explode(' ', microtime());
 
-  $target = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
-  if ($cs_main['def_theme'] != 'base' and !file_exists($target))
-  {
-    $target = 'themes/base/' . $mod . '/' . $action . '.tpl';
-  }
-  if (!file_exists($target))
-  {
-    cs_error($source, 'cs_subtemplate - Theme file not found: "' . $target . '"');
-    return false;
-  }
+  $string = cs_cache_theme($mod, $action, $navfiles);
 
-  $string = file_get_contents($target);
-  $string = str_replace('{page:width}', $cs_main['def_width'], $string);
-  $string = str_replace('{page:path}', $cs_main['php_self']['dirname'], $string);
-  $string = str_replace('{page:mod}', $cs_main['mod'], $string);
-  $string = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $string);
-  $string = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $string);
   $string = cs_conditiontemplate($string, $data);
   $string = cs_looptemplate($source, $string, $data);
-  if($cs_main['xsrf_protection']===true)
-    $string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
-  $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
-  $string = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $string);
 
-  if(!empty($navfiles)) {
-    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*\|noajax}=i", 'cs_templatefile', $string);
-    $string = preg_replace_callback("={(?!func)(.*?):(.*?)(?::(.*?)\=(.*?))*}=i", 'cs_templatefile', $string);
+  if($cs_main['xsrf_protection'] === true)
+    $string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
+
+  if(!empty($navfiles))
+  {
+    $string = cs_tokenizer_split($string);
+    $theme = cs_tokenizer_parse($string);
+    $string = '';
+    foreach($theme AS $num => $content)
+      $string .= $content;
   }
 
-  global $account;
   if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
 
     $forbidden = array('abcode/sourcebox', 'clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500', 'pictures/select');
@@ -119,9 +105,8 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
       include_once 'mods/explorer/functions.php';
 
       $data = array();
-      $data['data']['load'] = cs_parsetime($micro,5);
       $data['data']['content'] = $string;
-      $data['raw']['target'] = $target;
+      $data['raw']['target'] = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
       $data['raw']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
       $phpsource = str_replace('\\', '/', str_replace($cs_main['def_path'], '', $source));
       $data['raw']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
@@ -162,16 +147,13 @@ function cs_xsrf_protection_field($matches) {
 function cs_wrap_templatefile($matches)
 {
   global $cs_main;
+  $nav = $matches[0] . '_' . $matches[1];
   $exceptions = array('clansphere_navmeta');
-  if(!in_array($matches[0] . '_' . $matches[1], $exceptions)) {
-    if(isset($cs_main['ajax']) && $cs_main['ajax']) {
+  if(!in_array($nav, $exceptions)) {
+    if(isset($cs_main['ajax']) AND $cs_main['ajax']) {
       $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
 
-      $nav = $matches[0] . '_' . $matches[1];
-
-      $m = $matches;
-      array_shift($m);
-      $id = str_replace('=','_', implode('_', $m));
+      $id = str_replace('=','_', implode('_', $matches));
       $el = !in_array($nav,$spans) ? 'div' : 'span';
       return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
     }
@@ -181,11 +163,15 @@ function cs_wrap_templatefile($matches)
 
 function cs_templatefile($matches)
 {
+  $return = '';
   $file = 'mods/' . $matches[0] . '/' . $matches[1] . '.php';
   if (!file_exists($file))
   {
     cs_error($file, 'cs_templatefile - File not found');
-    return $file;
+    $match_count = count($matches);
+    for($i = 0; $i < $match_count; $i++)
+      $return .= 'm[' . $i . '] ' . $matches[$i] . ' - ';
+      return $return;
   }
   
   if (!empty($matches[2]))

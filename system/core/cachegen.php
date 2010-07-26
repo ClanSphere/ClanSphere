@@ -133,3 +133,38 @@ function cs_cache_template($filename) {
 
   return cs_cache_save($tpl_temp, $tpl_data);
 }
+
+function cs_cache_theme($mod, $action) {
+
+  global $account, $cs_main;
+  $nice_url = empty($cs_main['mod_rewrite']) ? '' : '_mr';
+  $tpl_real = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
+  $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $account['users_lang'] . $nice_url;
+  $tpl_data = cs_cache_load($tpl_temp);
+
+  if($tpl_data != false)
+    if(filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
+      return $tpl_data;
+    else
+      unlink('uploads/cache/' . $tpl_temp . '.tmp');
+
+  if($cs_main['def_theme'] != 'base' and !file_exists($tpl_real))
+    $tpl_real = 'themes/base/' . $mod . '/' . $action . '.tpl';
+  if(!file_exists($tpl_real))
+  {
+    cs_error($source, 'cs_subtemplate - Theme file not found: "' . $tpl_real . '"');
+    return false;
+  }
+
+  $tpl_data = file_get_contents($tpl_real);
+
+  $tpl_data = str_replace('{page:width}', $cs_main['def_width'], $tpl_data);
+  $tpl_data = str_replace('{page:path}', $cs_main['php_self']['dirname'], $tpl_data);
+  $tpl_data = str_replace('{page:mod}', $cs_main['mod'], $tpl_data);
+  $tpl_data = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $tpl_data);
+  $tpl_data = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $tpl_data);
+  $tpl_data = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $tpl_data);
+  $tpl_data = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $tpl_data);
+
+  return cs_cache_save($tpl_temp, $tpl_data);
+}
