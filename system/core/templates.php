@@ -64,11 +64,14 @@ function cs_conditiontemplate($string, $data)
 
 function cs_templateurl($matches) {
 
-  $action = !empty($matches[5]) ? $matches[5] : 'list';
-  $more = empty($matches[7]) ? 0 : str_replace(':', '&amp;', $matches[7]);
-  $base = empty($matches[2]) ? 0 : $matches[2];
+  $action = empty($matches[3]) ? 'list' : $matches[3];
+  $base = empty($matches[1]) ? 0 : $matches[1];
+  if(empty($matches[4]))
+    $more = 0;
+  else
+    $more = $matches[4];
 
-  return cs_url($matches[3], $action, $more, $base);
+  return cs_url($matches[2], $action, $more, $base);
 }
 
 function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
