@@ -410,8 +410,9 @@ function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit
   }
   $more = 'start=' . $next . $add_where . $add_sort;
   $result .= (empty($small) AND $actual != $pages) ? ' ' . cs_link('&gt;',$mod,$action,$more): '';
-  $result = '{lang:page} ' . $result;
 
+  $cs_lang = cs_translate($mod);
+  $result = $cs_lang['page'] . ' ' . $result;
   return $result;
 }
 
