@@ -111,8 +111,8 @@ function cs_cache_template($filename) {
   $tpl_data = file_get_contents($tpl_real);
   $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
 
-  if(strpos($tpl_data, 'id="content"') !== false)
-    cs_error($tpl_real, 'cs_cache_template - The ID tag "content" is reserved for AJAX');
+  if(strpos($tpl_data, 'id="csp_content"') !== false)
+    cs_error($tpl_real, 'cs_cache_template - The ID tag "csp_content" is reserved for AJAX');
 
   $tpl_data = str_replace('</head>', '{func:head_end}</head>', $tpl_data);
   $tpl_data = str_replace('</body>', '{func:body_end}</body>', $tpl_data);
