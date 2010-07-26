@@ -81,6 +81,8 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = cs_conditiontemplate($string, $data);
   $string = cs_looptemplate($source, $string, $data);
 
+  $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
+
   if($cs_main['xsrf_protection'] === true)
     $string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
 

@@ -138,7 +138,7 @@ function cs_cache_theme($mod, $action) {
 
   global $com_lang, $cs_main;
   $tpl_real = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
-  $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $com_lang["short"] . '_' . $cs_main['php_self']['filename'];
+  $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $cs_main['php_self']['filename'];
   $tpl_data = cs_cache_load($tpl_temp);
 
   if($tpl_data != false)
@@ -162,7 +162,6 @@ function cs_cache_theme($mod, $action) {
   $tpl_data = str_replace('{page:mod}', $cs_main['mod'], $tpl_data);
   $tpl_data = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $tpl_data);
   $tpl_data = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $tpl_data);
-  $tpl_data = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $tpl_data);
   $tpl_data = preg_replace_callback('={url(_([\w]*?))?:(.*?)(_(.*?))?(:(.*?))?}=i', 'cs_templateurl', $tpl_data);
 
   return cs_cache_save($tpl_temp, $tpl_data);
