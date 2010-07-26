@@ -8,8 +8,8 @@ ___________________________________________________________
 
 -> Added full support for Microsoft IIS 7.0+ webserver (hajo)
 -> Added full support for Microsoft SQL Server 2005+ with PDO [pdo_sqlsrv extension] (hajo)
--> Fixed cups module (spongebob)
--> Fixed servers module (fr33z3m4n)
+-> Fixes in cups module (spongebob)
+-> Fixes in servers module (fr33z3m4n)
 -> Fixed error page for PHP 4 to be shown again (hajo)
 -> Removed a part of the upload htaccess file as it caused some errors (hajo)
 -> Rewrite of template engine from regex to tokenizer [thx to jokey for idea] (hajo)

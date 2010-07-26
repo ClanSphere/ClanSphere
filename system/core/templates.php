@@ -387,7 +387,6 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   # Initalize array of upcoming additions and get show content
   $replace = array('func:head_end' => '', 'func:body_add' => '', 'func:body_end' => '');
   $replace['func:show'] = '<div id="content">' . cs_contentload($cs_main['show']) . '</div>';
-  $replace['func:queries'] = $cs_logs['queries'];
 
   global $cs_main;
   if(!empty($cs_main['scriptload']['stylesheet']))
@@ -437,6 +436,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $debug = cs_subtemplate(__FILE__, $data, 'clansphere', 'debug');
   }
 
+  $replace['func:queries'] = $cs_logs['queries'];
   $replace['func:errors'] = $cs_logs['php_errors'] . $cs_logs['errors'];
   $replace['func:sql']    = $logsql;
   $replace['func:debug']  = $debug;
