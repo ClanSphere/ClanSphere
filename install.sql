@@ -60,6 +60,7 @@ CREATE TABLE {pre}_access (
   access_gbook int(2) NOT NULL default '0',
   access_history int(2) NOT NULL default '0',
   access_joinus int(2) NOT NULL default '0',
+  access_lightbox int(2) NOT NULL default '0',
   access_links int(2) NOT NULL default '0',
   access_linkus int(2) NOT NULL default '0',
   access_logs int(2) NOT NULL default '0',
