@@ -159,7 +159,7 @@ else {
     header('Location: ../../' . $cs_main['php_self']['basename']);
   } else {
     $account['users_ajax'] = empty($cs_main['ajax']) ? 0 : $cs_user['users_ajax'];
-    
-    cs_redirect($cs_lang['success'],'users','settings');
+
+    cs_redirect($cs_lang['success'],'users','settings', 'lang=' . $cs_user['users_lang']);
   }
 }
