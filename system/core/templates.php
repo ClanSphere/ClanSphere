@@ -69,7 +69,10 @@ function cs_templateurl($matches) {
   if(empty($matches[4]))
     $more = 0;
   else
-    $more = $matches[4];
+  {
+    $more = substr($matches[4], 1);
+    $more = preg_replace('=:(?![^{]+})=i', '&amp;', $more);
+  }
 
   return cs_url($matches[2], $action, $more, $base, 1);
 }
