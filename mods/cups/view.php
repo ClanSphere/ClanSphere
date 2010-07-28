@@ -10,10 +10,14 @@ $time_now = cs_time();
 $cups_id = (int) $_GET['id'];
 
 $tables = 'cups cp LEFT JOIN {pre}_games gms ON cp.games_id = gms.games_id';
-$cells = 'cp.cups_name AS cups_name, gms.games_name AS games_name, cp.cups_system AS cups_system, ';
-$cells .='cp.cups_teams AS cups_teams, cp.cups_text AS cups_text, cp.cups_start AS cups_start, ';
-$cells .='cp.games_id AS games_id, cp.cups_brackets AS cups_brackets';
+$cells = 'cp.cups_name AS cups_name, gms.games_name AS games_name, cp.cups_system AS cups_system,
+          cp.cups_teams AS cups_teams, cp.cups_text AS cups_text, cp.cups_start AS cups_start,
+          cp.games_id AS games_id, cp.cups_brackets AS cups_brackets';
 $data['cup'] = cs_sql_select(__FILE__,$tables,$cells,'cp.cups_id = '.$cups_id.'');
+
+if (empty($data['cup'])) {
+  cs_redirect($cs_lang['no_selection'], 'cups', 'list');
+}
 
 $data['lang']['max_participants'] = $cs_lang['max_'.$data['cup']['cups_system']];
 $data['lang']['registered_participants'] = $cs_lang['registered_'.$data['cup']['cups_system']];
