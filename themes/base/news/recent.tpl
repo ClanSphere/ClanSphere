@@ -34,7 +34,9 @@
     <img src="{page:path}{news:url_catimg}" style="float:right" alt="" />{stop:catimg}
     {news:news_readmore}
     {news:news_text}
-    {if:readmore}<br /><br /><a href="{url:news_view:id={news:news_id}}">{lang:readmore_go}</a>{stop:readmore}
+    {if:readmore}
+      <br /><br /><a href="{url:news_view:id={news:news_id}}">{lang:readmore_go}</a>
+    {stop:readmore}
 {news:pictures}
   </td>
  </tr>
