@@ -130,7 +130,7 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
     $data['threads'][$run]['ghost_thread'] .= cs_link($cs_lang['ghost_topic'], 'board', 'thread', 'where=' . $thread['threads_ghost_thread']);
         $data['threads'][$run]['ghost_board'] = ' - ' . cs_link($cs_lang['ghost_board'], 'board', 'listcat', 'id=' . $thread['threads_ghost_board']);
       } else {
-        $data['threads'][$run]['headline'] = cs_link($headline, 'board', 'thread', 'where=' . $thread['threads_id'] . last_comment($thread['threads_id'], $account["users_id"], $account['users_limit']));
+        $data['threads'][$run]['headline'] = cs_link($headline, 'board', 'thread', 'where=' . $thread['threads_id'] . '&amp;start=' . last_comment($thread['threads_id'], $account["users_id"], $account['users_limit']));
         $data['threads'][$run]['ghost_thread'] = '';
         $data['threads'][$run]['ghost_board'] = '';
       }

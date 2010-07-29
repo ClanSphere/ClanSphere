@@ -135,7 +135,7 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
         $board['of'] = '';
       }
 
-      $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['board_last_threadid'] . last_comment($board['board_last_threadid'], $account["users_id"], $account['users_limit']));
+      $board['last_url'] = cs_url('board', 'thread', 'where=' . $board['board_last_threadid'] . '&amp;start=' . last_comment($board['board_last_threadid'], $account["users_id"], $account['users_limit']));
       $board['user_url'] = cs_url('users', 'view', 'id=' . $board['board_last_userid']);
       $board['board_name'] = cs_secure($board['board_name']);
     
