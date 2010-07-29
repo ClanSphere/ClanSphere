@@ -151,7 +151,7 @@ function cs_cache_theme($mod, $action) {
 
   if(!file_exists($tpl_real))
   {
-    cs_error($source, 'cs_subtemplate - Theme file not found: "' . $tpl_real . '"');
+    cs_error($source, 'cs_cache_theme - Theme file not found: "' . $tpl_real . '"');
     return false;
   }
 
