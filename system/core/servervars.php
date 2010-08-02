@@ -2,8 +2,8 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
+# check for and remove magic quotes
 $mq_gpc = ini_get('magic_quotes_gpc');
-
 if(!empty($mq_gpc)) {
   function cs_stripslashes($content) {
     $result = is_array($content) ? array_map('cs_stripslashes', $content) : stripslashes($content);
@@ -15,23 +15,24 @@ if(!empty($mq_gpc)) {
   $_REQUEST = cs_stripslashes($_REQUEST);
 }
 
+# get and secure path environment information
 $_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES);
 $cs_main['def_path'] = getcwd();
 $cs_main['php_self'] = pathinfo($_SERVER['SCRIPT_NAME']);
 if($cs_main['php_self']['dirname']{0} == '\\')
   $cs_main['php_self']['dirname']{0} = '/';
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
-# available since php 5.2.0
+  // workaround since filename is available as of php 5.2.0
 if(!isset($cs_main['php_self']['filename']))
   $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
-# get params for mod_rewrite
+
+# handle mod_rewrite params and split them for default usage
 if(empty($_GET['mod']) AND empty($_GET['action'])) {
   if(empty($_GET['params']))
     $cs_main['php_self']['params'] = substr($_SERVER['REQUEST_URI'], strlen($cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']));
   else
     $cs_main['php_self']['params'] = $_GET['params'];
 }
-
 if(!empty($cs_main['php_self']['params']{1})) {
 
   $params = explode('/', $cs_main['php_self']['params']);
@@ -49,12 +50,19 @@ if(!empty($cs_main['php_self']['params']{1})) {
   }
 }
 
-# define basic data for cookies
+# define basic settings for cookies
 $domain = '';
 if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
   $domain = htmlentities($_SERVER['HTTP_HOST']);
 $cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
 
+# set some request and get data to integer for backwards compatibility with old modules
+settype($_REQUEST['id'],'integer');
+settype($_REQUEST['fid'],'integer');
+settype($_GET['id'],'integer');
+settype($_GET['cat_id'], 'integer');
+
+# provide functions that assist with get and post data
 function cs_servervars($mode, $integers = 0, $unharmed = 0) {
   
   $return = array();
@@ -75,11 +83,6 @@ function cs_servervars($mode, $integers = 0, $unharmed = 0) {
 function cs_get($integers = 0, $unharmed = 0) { return cs_servervars('get',$integers,$unharmed); }
 function cs_post($integers = 0, $unharmed = 0) { return cs_servervars('post',$integers,$unharmed); }
 
-settype($_GET['id'],'integer');
-settype($_REQUEST['id'],'integer');
-settype($_REQUEST['fid'],'integer');
-settype($_GET['cat_id'], 'integer');
-
 /* Part that can be enabled after
  * including this function in the whole script
  *
@@ -89,6 +92,5 @@ $cs_get_hidden = $_GET;
 unset($_POST);
 unset($_GET);
 unset($_REQUEST);
- *
  *
 */
