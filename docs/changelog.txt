@@ -1,10 +1,23 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2010.0 Final >> 2010-07-XX
+ClanSphere 2010.0 Final >> 2010-08-XX
 ___________________________________________________________
 
+-> Added new optional template placeholders func:stylesheet and func:javascript (hajo)
+   They contain additional link and script tags for the html output
+   By default stylesheets are added to end of head and javascripts to end of body
+-> Added page separation to cache info site since their could be many files now (hajo)
 
+-- Fixed a few bugs that were reported at "Trac" --
+
+
+ClanSphere 2010.0 RC 2 Patch 2 >> 2010-07-30
+___________________________________________________________
+
+-> Changed content div name from content to csp_content (schiri)
+-> Fixed template and theme caching related issues (hajo)
+-> Fixed url placeholders not working as intended (hajo)
 
 
 ClanSphere 2010.0 RC 2 >> 2010-07-26
