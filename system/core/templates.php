@@ -388,14 +388,14 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   cs_scriptload('clansphere', 'javascript', 'js/jquery.js', 1);
 
   # Initalize array of upcoming additions and get show content
-  $replace = array('func:head_end' => '', 'func:body_add' => '', 'func:body_end' => '');
+  $replace = array('func:stylesheet' => '', 'func:javascript' => '', 'func:body_add' => '');
   $replace['func:show'] = '<div id="csp_content">' . cs_contentload($cs_main['show']) . '</div>';
 
   global $cs_main;
   if(!empty($cs_main['scriptload']['stylesheet']))
-    $replace['func:head_end'] = $cs_main['scriptload']['stylesheet'];
+    $replace['func:stylesheet'] = $cs_main['scriptload']['stylesheet'];
   if(!empty($cs_main['scriptload']['javascript']))
-    $replace['func:body_end'] = $cs_main['scriptload']['javascript'];
+    $replace['func:javascript'] = $cs_main['scriptload']['javascript'];
 
   if (isset($cs_main['ajax']) AND $cs_main['ajax'] == 2 OR (!empty($account['users_ajax']) AND !empty($account['access_ajax'])))
   {

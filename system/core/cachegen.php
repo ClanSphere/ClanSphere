@@ -113,9 +113,10 @@ function cs_cache_template($filename) {
 
   if(strpos($tpl_data, 'id="csp_content"') !== false)
     cs_error($tpl_real, 'cs_cache_template - The ID tag "csp_content" is reserved for AJAX');
-
-  $tpl_data = str_replace('</head>', '{func:head_end}</head>', $tpl_data);
-  $tpl_data = str_replace('</body>', '{func:body_end}</body>', $tpl_data);
+  if(strpos($tpl_data, '{func:stylesheet}') === false)
+    $tpl_data = str_replace('</head>', '{func:stylesheet}</head>', $tpl_data);
+  if(strpos($tpl_data, '{func:javascript}') === false)
+    $tpl_data = str_replace('</body>', '{func:javascript}</body>', $tpl_data);
 
   $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>{func:debug}', $tpl_data, 1);
 
@@ -127,6 +128,7 @@ function cs_cache_template($filename) {
   $tpl_data = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $tpl_data);
 
   $tpl_data = preg_replace_callback('={url(?:_([\w]*?))?:([\w]*?)(?:_([\w]*?)((?::(?:(?:[\S]*?{.*?}[\S]*?)*|[\S]*?))*))?}=i', 'cs_templateurl', $tpl_data);
+
   $tpl_data = str_replace('{func:charset}', $cs_main['charset'], $tpl_data);
 
   $tpl_data = cs_tokenizer_split($tpl_data);
