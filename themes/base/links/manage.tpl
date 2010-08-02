@@ -7,10 +7,13 @@
     <td class="rightb">{head:pages}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="2">{lang:cat}
+    <td class="leftb" colspan="2">
       <form method="post" id="categorie_select" action="{url:links_manage}">
+        <fieldset style="border: 0; padding: 0">
+          {icon:folder_yellow} {lang:cat}
           {head:cat_dropdown}
-        <input type="submit" name="submit" value="{lang:show}" />
+          <input type="submit" name="submit" value="{lang:show}" />
+        </fieldset>
       </form>
     </td>
   </tr>

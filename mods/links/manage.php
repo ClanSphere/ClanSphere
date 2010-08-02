@@ -26,7 +26,7 @@ $cells = 'categories_id, categories_name';
 $categories_data = cs_sql_select(__FILE__,'categories',$cells,"categories_mod = 'links'",'categories_name',0,0);
 
 $data['head']['count'] = $links_count;
-$data['head']['pages'] = cs_pages('links','manage',$links_count,$categories_id,$start,$sort);
+$data['head']['pages'] = cs_pages('links','manage',$links_count,$start,$categories_id,$sort);
 $data['head']['cat_dropdown'] = cs_dropdown('where','categories_name',$categories_data,$categories_id,'categories_id');
 $data['head']['getmsg'] = cs_getmsg();
 
