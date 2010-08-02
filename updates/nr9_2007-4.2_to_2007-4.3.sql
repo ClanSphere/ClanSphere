@@ -10,7 +10,7 @@ UPDATE {pre}_threads SET threads_close = threads_close2;
 ALTER TABLE {pre}_threads DROP threads_close2;
 
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_title', 'News');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_description', 'Recent informations');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_description', 'Recent information');
 
 ALTER TABLE {pre}_squads ADD squads_joinus int(1) NOT NULL default '0',
 ADD squads_fightus int(1) NOT NULL default '0';

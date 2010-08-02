@@ -29,7 +29,7 @@ $cs_lang['lang_list'] = 'Languages';
 $cs_lang['creator'] = 'Creator';
 
 $cs_lang['head_lang_view']  = 'Language details';
-$cs_lang['body_lang_view']  = 'Informations about a translation.';
+$cs_lang['body_lang_view']  = 'Information about a translation.';
 
 $cs_lang['mod_released']    = 'Date';
 $cs_lang['mod_team']        = 'Team';
@@ -110,7 +110,7 @@ $cs_lang['memory_limit'] = 'Max. Memoryconsumption';
 $cs_lang['found'] = 'Found';
 $cs_lang['recommend'] = 'Recommended';
 
-$cs_lang['body_storage']  = 'Important statistics and informations';
+$cs_lang['body_storage']  = 'Important statistics and information';
 
 $cs_lang['space_total'] = 'Total space';
 $cs_lang['space_free'] = 'Free space';
@@ -125,7 +125,7 @@ $cs_lang['theme_found'] = 'Theme with same name was found. Change theme?';
 $cs_lang['change_to_this'] = 'Change to this one';
 
 $cs_lang['head_temp_view']  = 'Template Details';
-$cs_lang['body_temp_view']  = 'Informations about a Design.';
+$cs_lang['body_temp_view']  = 'Information about a Design.';
 
 $cs_lang['themes_list'] = 'Themes List';
 $cs_lang['themes_listed'] = 'List of %s available Themes.';

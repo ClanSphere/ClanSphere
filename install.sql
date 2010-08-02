@@ -868,7 +868,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ne
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_size', '204800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'def_public', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_title', 'News');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_description', 'Recent informations');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'rss_description', 'Recent information');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'abcode', '1,1,1,0,0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_width_listimg', '180');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_height_listimg', '70');

@@ -38,7 +38,7 @@ $cs_lang['error_edit']    = 'The file coud not be edited.';
 $cs_lang['not_found']  = 'File not found';
 
 // Information
-$cs_lang['information']  = 'Informations';
+$cs_lang['information']  = 'Information';
 $cs_lang['get_information']  = 'Get information about a file.';
 $cs_lang['f_size']    = 'Filesize';
 $cs_lang['f_name']    = 'Filename';

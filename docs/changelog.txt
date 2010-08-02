@@ -454,7 +454,7 @@ ___________________________________________________________
 >> Security: Fixed sql injection possibilities inside whole search mod [reported by xsign.dll@gravediggers.eu]
 
 -> Added new function cs_unlink to replace nearly all calls to unlink (hajo)
--> Added PAD informations to docs at the new pad directory (hajo)
+-> Added PAD information to docs at the new pad directory (hajo)
 -> Added PHP version recommendation to use 5.2.0 or newer for installation (hajo)
 -> Added sql-file to Update from BXCP 0.3.2.2 (Fr33z3m4n)
 -> Added themes files mod lanpartys (Drag0n)
@@ -650,7 +650,7 @@ ___________________________________________________________
 -> Added conditions to the themes (duriel)
 -> Added brackets feature to the cup module (duriel)
 -> Added navwon.php, navdraw.php and navlost.php to war module to show stats in navigation (duriel)
--> Added database index and data size informations to software page [supported by MySQL extensions only] (hajo)
+-> Added database index and data size information to software page [supported by MySQL extensions only] (hajo)
 -> Added possibility to remove teams or players of a cup (duriel)
 -> Extended war stats (duriel)
 -> Added choice of the label of the clans mod: clan / association / club / guild / enterprise (duriel)
