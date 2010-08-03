@@ -289,10 +289,8 @@ function cs_init($predefined) {
     # execute startup files
     if(is_array($startup)) {
       foreach($startup AS $mod) {
-        if(!empty($account['access_' . $mod])) {
-          $file = $cs_main['def_path'] . '/mods/' . $mod . '/startup.php';
-          file_exists($file) ? include_once $file : cs_error($file, 'cs_init - Startup file not found');
-        }
+        $file = $cs_main['def_path'] . '/mods/' . $mod . '/startup.php';
+        file_exists($file) ? include_once $file : cs_error($file, 'cs_init - Startup file not found');
       }
     }
   }
