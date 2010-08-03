@@ -493,12 +493,11 @@ function cs_translate($mod, $main = 0) {
       if(!empty($main))
         $lang_main = array_merge($lang_main, $cs_lang);
     }
-    else
+    else {
       cs_error($file,'cs_translate - File not found');
+      $lang_mods[$mod] = array('mod' => $mod, 'mod_info' => '');
+    }
   }
-
-  if(empty($lang_mods[$mod]))
-    return $lang_main;
 
   return array_merge($lang_main, $lang_mods[$mod]);
 }

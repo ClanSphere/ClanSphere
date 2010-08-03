@@ -31,7 +31,6 @@ function cs_cache_dirs($dir, $lang) {
     foreach($directories as $target) {
       $this_info = $dir . '/' . $target . '/info.php';
       if(file_exists($this_info)) {
-        $cs_lang = array('mod' => '', 'mod_info' => '');
         $mod_info = array('show' => array());
         include($this_info);
         $name = empty($mod_info['name']) ? '[' . $target . ']' : $mod_info['name'];
