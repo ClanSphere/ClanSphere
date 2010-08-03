@@ -7,7 +7,7 @@ ___________________________________________________________
 -> Added new optional template placeholders func:stylesheet and func:javascript (hajo)
    They contain additional link and script tags for the html output
    By default stylesheets are added to end of head and javascripts to end of body
--> Added page separation to cache info site since their could be many files now (hajo)
+-> Added page separation to cache info site since there could be many files now (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
