@@ -50,9 +50,9 @@ if(isset($_POST['submit'])) {
 
   $nick2 = str_replace(' ','',$data['join']['joinus_nick']);
   $nickchars = strlen($nick2);
-  
+
   $op_users = cs_sql_option(__FILE__,'users');
-  
+
   if($nickchars < $op_users['min_letters']) {
     $error++;
     $errormsg .= sprintf($cs_lang['short_nick'], $op_users['min_letters']) . cs_html_br(1);
@@ -77,7 +77,7 @@ if(isset($_POST['submit'])) {
     $error++;
     $errormsg .= $cs_lang['no_rules'] . cs_html_br(1);
   }
-  
+
   $pattern = "=^[_a-z0-9-]+(\.[_a-z0-9-]+)*@([0-9a-z](-?[0-9a-z])*\.)+[a-z]{2}([zmuvtg]|fo|me)?$=i";
   if(!preg_match($pattern,$data['join']['joinus_email'])) {
     $error++;
@@ -110,7 +110,7 @@ if(isset($_POST['submit'])) {
     $error++;
     $errormsg .= $cs_lang['nick_exists'] . cs_html_br(1);
   }
-  
+
   if ((int) $_POST['age_year'].$_POST['age_month'].$_POST['age_day'] > (int) cs_datereal('Ymd')) {
     $error++;
     $errormsg .= $cs_lang['age_false'] . cs_html_br(1);
@@ -137,11 +137,11 @@ else {
 
   if(!empty($account['users_id'])) {
     $fetch = 'users_nick, users_name, users_surname, users_age, users_country, users_place, users_icq, users_msn, users_email';
-  $cs_user = cs_sql_select(__FILE__,'users',$fetch,"users_id = '" . $account['users_id'] . "'");
+    $cs_user = cs_sql_select(__FILE__,'users',$fetch,"users_id = '" . $account['users_id'] . "'");
     $data['join']['joinus_nick'] = $cs_user['users_nick'];
     $data['join']['joinus_name'] = $cs_user['users_name'];
     $data['join']['joinus_surname'] = $cs_user['users_surname'];
-  $data['join']['joinus_age'] = $cs_user['users_age'];
+    $data['join']['joinus_age'] = $cs_user['users_age'];
     $data['join']['joinus_country'] = $cs_user['users_country'];
     $data['join']['joinus_place'] = $cs_user['users_place'];
     $data['join']['joinus_icq'] = empty($cs_user['users_icq']) ? '' : $cs_user['users_icq'];
@@ -152,11 +152,12 @@ else {
   }
 }
 
-if(!isset($_POST['submit'])) {
+if (!empty($data['head']['getmsg']))
+  $data['lang']['body'] = $cs_lang['new_join'];
+elseif(!isset($_POST['submit']))
   $data['lang']['body'] = $cs_lang['body_new'];
-} elseif(!empty($error)) {
+elseif(!empty($error))
   $data['lang']['body'] = $errormsg;
-}
 
 if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit']))) {
 
@@ -187,7 +188,7 @@ if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit'])))
   $data['date']['join'] = cs_dateselect('join','date',$data['join']['joinus_date'],2000);
   $data['abcode']['smileys'] = cs_abcode_smileys('joinus_more');
   $data['abcode']['features'] = cs_abcode_features('joinus_more');
-  
+
   $data['rules']['link'] = cs_html_link(cs_url('rules','list'),$cs_lang['rules']);
   $data['joinus']['rules_selected'] = !empty($data2['join']['joinus_rules']) ? 'checked="checked"' : '';
   if(!empty($captcha)) {
@@ -207,17 +208,18 @@ elseif(!empty($data['if']['form'])) {
   $joinus_cells = array_keys($data['join']);
   $joinus_save = array_values($data['join']);
   cs_sql_insert(__FILE__,'joinus',$joinus_cells,$joinus_save);
+
+  $joinus_id = cs_sql_insertid(__FILE__);
+
   require_once('mods/notifymods/functions.php');
   notifymods_mail('joinus', $account['users_id']);
-  
-  $joinus_id = cs_sql_insertid(__FILE__);
-    
+
   $tables = "joinus ju INNER JOIN {pre}_members mem ON ju.squads_id = mem.squads_id AND mem.members_admin = '1' ";
   $tables .= 'INNER JOIN {pre}_squads sq ON ju.squads_id = sq.squads_id';
   $cells = 'ju.squads_id AS squads_id, mem.users_id AS users_id, sq.squads_name AS squads_name';
   $select = cs_sql_select(__FILE__,$tables,$cells,"ju.joinus_id = '" . $joinus_id . "'",0,0,0);
   $select_count = count($select);
-  
+
   for ($run = 0; $run < $select_count; $run++) {
     $user = cs_sql_select(__FILE__,'users','users_id',"users_id = '" . $select[$run]['users_id'] . "'");
     $message['users_id'] = '1';
