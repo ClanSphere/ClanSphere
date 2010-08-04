@@ -574,8 +574,9 @@ function cs_url_self($full, $ignore_post = 0) {
   $url  = empty($full) ? '' : $cs_main['php_self']['website'];
   $url .= rtrim($cs_main['php_self']['dirname'], '/');
   if(empty($cs_main['mod_rewrite'])) {
-    $ajax = strrpos($_SERVER['REQUEST_URI'], '&xhr=');
-    $url .= empty($ajax) ? $_SERVER['REQUEST_URI'] : substr($_SERVER['REQUEST_URI'], 0, $ajax);
+    $request = htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, $cs_main['charset']);
+    $ajax = strrpos($request, '&amp;xhr=');
+    $url .= empty($ajax) ? $request : substr($request, 0, $ajax);
   }
   else
     $url .= '/' . $cs_main['php_self']['filename'] . $cs_main['php_self']['params'];

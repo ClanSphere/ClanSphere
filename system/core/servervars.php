@@ -16,7 +16,7 @@ if(!empty($mq_gpc)) {
 }
 
 # get and secure path environment information
-$_SERVER['PHP_SELF'] = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES);
+$_SERVER['PHP_SELF'] = htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, $cs_main['charset']);
 $cs_main['def_path'] = getcwd();
 $cs_main['php_self'] = pathinfo($_SERVER['SCRIPT_NAME']);
 if($cs_main['php_self']['dirname']{0} == '\\')
@@ -25,7 +25,7 @@ $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' :
   // workaround since filename is available as of php 5.2.0
 if(!isset($cs_main['php_self']['filename']))
   $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
-$domain = htmlentities($_SERVER['HTTP_HOST']);
+$domain = htmlspecialchars($_SERVER['HTTP_HOST'], ENT_QUOTES, $cs_main['charset']);
 $cs_main['php_self']['website'] = 'http://' . $domain;
 
 # handle mod_rewrite params and split them for default usage
