@@ -8,7 +8,8 @@ ___________________________________________________________
    They contain additional link and script tags for the html output
    By default stylesheets are added to end of head and javascripts to end of body
 -> Added page separation to cache info site since there could be many files now (hajo)
--> Added {ajax:navbookmark} placeholder for templates and function cs_url_self for url sharing (hajo)
+-> Added cs_url_self function for url sharing with two example template placeholders (hajo)
+   {ajax:navaddthis} for addthis.com and {ajax:navbookmark} for simple bookmarking and url checks
 
 -- Fixed a few bugs that were reported at "Trac" --
 
