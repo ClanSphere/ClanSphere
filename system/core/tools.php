@@ -565,7 +565,7 @@ function cs_url($mod, $action = 'list', $more = 0, $base = 0, $placeholder = 0) 
   }
 }
 
-function cs_url_self($full, $ignore_post = 0) {
+function cs_url_self($full, $ignore_post = 0, $encode = 0) {
 
   global $cs_main;
   if(empty($ignore_post) AND !empty($_POST))
@@ -580,7 +580,10 @@ function cs_url_self($full, $ignore_post = 0) {
   }
   else
     $url .= '/' . $cs_main['php_self']['filename'] . $cs_main['php_self']['params'];
-  return $url;
+  if(empty($encode))
+    return $url;
+  else
+    return rawurlencode(html_entity_decode($url, ENT_QUOTES, $cs_main['charset']));
 }
 
 function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
