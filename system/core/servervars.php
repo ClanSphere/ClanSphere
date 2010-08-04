@@ -25,6 +25,8 @@ $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' :
   // workaround since filename is available as of php 5.2.0
 if(!isset($cs_main['php_self']['filename']))
   $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
+$domain = htmlentities($_SERVER['HTTP_HOST']);
+$cs_main['php_self']['website'] = 'http://' . $domain;
 
 # handle mod_rewrite params and split them for default usage
 if(empty($_GET['mod']) AND empty($_GET['action'])) {
@@ -51,9 +53,7 @@ if(!empty($cs_main['php_self']['params']{1})) {
 }
 
 # define basic settings for cookies
-$domain = '';
-if((isset($_SERVER['HTTP_HOST']) AND strpos($_SERVER['HTTP_HOST'], '.') !== FALSE))
-  $domain = htmlentities($_SERVER['HTTP_HOST']);
+$domain = (strpos($domain, '.') !== FALSE) ? $domain : '';
 $cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
 
 # set some request and get data to integer for backwards compatibility with old modules

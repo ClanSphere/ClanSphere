@@ -12,7 +12,7 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
   if(is_writeable($target)) {
     include_once('system/output/rss_20.php');
     $content = cs_rss_mode(1);
-    $page = 'http://' . $_SERVER['HTTP_HOST'];
+    $page = $cs_main['php_self']['website'];
     $content .= cs_rss_channel(1,$mod,$name,$page,$desc);
     if(!empty($array)) {
       foreach($array AS $item) {

@@ -33,7 +33,7 @@ if(isset($_GET['agree'])) {
     $message .= $cs_lang['date'] . ': ' . cs_date('unix',$event['events_time'],1) . "\n";
     $message .= $cs_lang['status'] . ': ' . $cs_lang['status_' . $cs_events['eventguests_status']] . "\n\n";
     $message .= $cs_lang['evg_mail_weblink'] . "\n";
-    $message .= 'http://' . $_SERVER['HTTP_HOST'] . cs_url('events', 'view', 'id=' . $event['events_id']);
+    $message .= $cs_main['php_self']['website'] . cs_url('events', 'view', 'id=' . $event['events_id']);
     cs_mail($user['users_email'], $subject, $message);
   }
   

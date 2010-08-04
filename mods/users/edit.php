@@ -29,7 +29,7 @@ if(isset($_POST['sendpw'])) {
   $content = $cs_lang['mail_admin_sendpw_start'] . $_POST['data']['users_nick'];
   $content .= $cs_lang['mail_admin_sendpw_content'];
   $content .= $cs_lang['mail_admin_sendpw_pass'] . $sPass;
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
+  $url = $cs_main['php_self']['website'] . $cs_main['php_self']['dirname'];
   $content .= sprintf($cs_lang['mail_admin_sendpw_url'], $url);
   $content .= $cs_lang['mail_admin_sendpw_end'] . $cs_main['def_title'];
   cs_mail($_POST['data']['users_email'],$cs_main['def_title'] . ' ' . $cs_lang['pwd_new'],$content);

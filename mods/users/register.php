@@ -158,7 +158,7 @@ if(empty($op_users['register'])) {
     $content .= $cs_lang['mail_reg_ip'] . $ip;
     if(!empty($op_users['def_register'])) {
       $content .= "\n" . $cs_lang['mail_key'] . ': ';
-      $content .= 'http://' . $_SERVER['HTTP_HOST'] . str_replace('&amp;', '&', cs_url('users', 'activate', 'key=' . $register['users_key'] . '&email=' . $register['email']));
+      $content .= $cs_main['php_self']['website'] . str_replace('&amp;', '&', cs_url('users', 'activate', 'key=' . $register['users_key'] . '&email=' . $register['email']));
     }
     $content .= $cs_lang['mail_reg_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_reg_end'];
     cs_mail($register['email'],$cs_lang['mail_reg_head'],$content);

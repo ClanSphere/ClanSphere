@@ -80,8 +80,7 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 else {
   
   $send['data'] = $ecard;
-  $host = $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
-  $send['data']['src'] = 'http://' . $host . '/mods/gallery/image.php?pic=' . $picture_id . '&size=300';
+  $send['data']['src'] = $cs_main['php_self']['website'] . '/mods/gallery/image.php?pic=' . $picture_id . '&size=300';
   $send['data']['time'] = cs_date('unix',cs_time(),1);
   $send['data']['ecard_titel'] = cs_secure($ecard['ecard_titel']);
   $send['data']['ecard_text'] = cs_secure($ecard['ecard_text'],1);

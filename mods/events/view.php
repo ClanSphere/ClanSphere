@@ -79,7 +79,7 @@ else {
 
   foreach($events_pics AS $pic) {
     $link = cs_html_img('uploads/events/thumb-' . $pic);
-    $path = empty($cs_main['mod_rewrite']) ? '' : 'http://' . $_SERVER['HTTP_HOST'] . str_replace('index.php','',$_SERVER['PHP_SELF']);
+    $path = empty($cs_main['mod_rewrite']) ? '' : $cs_main['php_self']['website'] . str_replace('index.php','',$_SERVER['PHP_SELF']);
     $data['data']['pictures'] .= cs_html_link($path . 'uploads/events/picture-' . $pic,$link) . ' ';
   }
 }

@@ -19,7 +19,7 @@ function cs_rss_channel($func,$mod='',$title = 0,$link = 0,$desc = 0) {
 
   if(!empty($func)) {
         global $cs_main;
-        $rss_file = 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'] . 'uploads/rss/' . $mod . '.xml';
+        $rss_file = $cs_main['php_self']['website'] . $cs_main['php_self']['dirname'] . 'uploads/rss/' . $mod . '.xml';
         $var = "<channel> \n";
     $var .= "<generator>ClanSphere</generator>\n";
         $var .= "<atom:link href=\"" . $rss_file . "\" rel=\"self\" type=\"application/rss+xml\" />\n";

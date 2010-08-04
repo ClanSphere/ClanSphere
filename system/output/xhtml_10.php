@@ -56,11 +56,11 @@ function cs_html_link($url, $link, $use_target = 1, $class = 0, $title = 0, $mor
   {
     if (!empty($cs_main['php_self']['dirname']) and strpos($url, $cs_main['php_self']['dirname']) === false)
     {
-      $url = 'http://' . $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'] . $url;
+      $url = $cs_main['php_self']['website'] . $cs_main['php_self']['dirname'] . $url;
     }
     else
     {
-      $url = 'http://' . $_SERVER['HTTP_HOST'] . $url;
+      $url = $cs_main['php_self']['website'] . $url;
     }
   }
   $var = "<a href=\"" . str_replace(' ', '%20', $url) . "\"";

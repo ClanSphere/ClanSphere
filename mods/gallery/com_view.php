@@ -149,7 +149,7 @@ if(empty($gallery_loop)) {
             $data['link']['download_picture'] = cs_html_link('mods/gallery/image.php?down=1&amp;pic=' . $cs_gallery['gallery_id'],$print,0);
         }
         else {
-            $host = 'http://' . $_SERVER['HTTP_HOST'];
+            $host = $cs_main['php_self']['website'];
             $host .= $cs_main['php_self']['dirname'];
             $host .= 'mods/gallery/image.php?down=1&amp;pic=' . $cs_gallery['gallery_id'];
 
@@ -162,7 +162,7 @@ if(empty($gallery_loop)) {
                 $data['link']['download_zip'] = cs_html_link('mods/gallery/download.php?zip=1&amp;name=' . $cs_gallery['gallery_name'],$print,0);
             }
             else {
-                $host = 'http://' . $_SERVER['HTTP_HOST'];
+                $host = $cs_main['php_self']['website'];
                 $host .= $cs_main['php_self']['dirname'];
                 $host .= 'mods/gallery/download.php?zip=1&amp;name=' . $cs_gallery['gallery_name'];
 
@@ -175,7 +175,7 @@ if(empty($gallery_loop)) {
                 $data['link']['download_zip'] = cs_html_link('mods/gallery/download.php?zip=1&amp;name=' . $cs_gallery['gallery_name'],$print,0);
             }
             else {
-                $host = 'http://' . $_SERVER['HTTP_HOST'];
+                $host = $cs_main['php_self']['website'];
                 $host .= $cs_main['php_self']['dirname'];
                 $host .= 'mods/gallery/download.php?zip=1&amp;name=' . $cs_gallery['gallery_name'];
 
@@ -200,7 +200,7 @@ if(empty($gallery_loop)) {
             $data['data']['picture'] = cs_html_link('mods/gallery/image.php?pic=' . $cs_gallery['gallery_id'],$cs_lap);
         }
         else {
-            $host = 'http://' . $_SERVER['HTTP_HOST'];
+            $host = $cs_main['php_self']['website'];
             $host .= $cs_main['php_self']['dirname'];
             $host .= 'mods/gallery/image.php?pic=' . $cs_gallery['gallery_id'];
 
@@ -212,7 +212,7 @@ if(empty($gallery_loop)) {
             $data['data']['picture'] = cs_html_link('mods/gallery/image.php?pic=' . $cs_gallery['gallery_id'],$cs_lap,0,0,0,'rel="lightbox"');
         }
         else {
-            $host = 'http://' . $_SERVER['HTTP_HOST'];
+            $host = $cs_main['php_self']['website'];
             $host .= $cs_main['php_self']['dirname'];
             $host .= 'mods/gallery/image.php?pic=' . $cs_gallery['gallery_id'];
 

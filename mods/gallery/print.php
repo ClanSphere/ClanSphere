@@ -59,8 +59,8 @@ if(isset($_POST['preview']) AND empty($error)) {
   
   if(extension_loaded('gd')) {
     $data['print']['img'] = cs_html_img("mods/gallery/image.php?pic=" . $picture_id . "&amp;size=" . $width);
-    $host = $_SERVER['HTTP_HOST'] . $cs_main['php_self']['dirname'];
-    $data['print']['url'] = 'http://'.$host."mods/gallery/print_now.php?pic=" . $picture_id . "&amp;size=" . $width;
+    $host = $cs_main['php_self']['website'] . $cs_main['php_self']['dirname'];
+    $data['print']['url'] = $host . "mods/gallery/print_now.php?pic=" . $picture_id . "&amp;size=" . $width;
     $data['if']['extension'] = TRUE;
   } else {
     $data['print']['img'] = cs_html_img("mods/gallery/image.php?pic=" . $picture_id,$height,$width,'',$picture_id);
