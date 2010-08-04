@@ -36,5 +36,6 @@ $cs_lang['d_count_navusr'] = 'Registrierte Benutzer (nicht empfohlen)';
 $cs_lang['d_count_navall'] = 'Besucher insgesamt (nicht empfohlen)';
 
 $cs_lang['bookmark_add'] = 'Lesezeichen hinzuf&uuml;gen';
+$cs_lang['bookmark_addthis'] = 'Teilen mit AddThis.com';
 $cs_lang['bookmark_view'] = 'Adresse Anzeigen';
 $cs_lang['bookmark_not'] = 'Diese Adresse ist nicht teilbar';
