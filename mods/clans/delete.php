@@ -6,6 +6,7 @@ $cs_lang = cs_translate('clans');
 
 $op_clans = cs_sql_option(__FILE__,'clans');
 
+$center = ($account['access_clans'] > 2) ? 'manage' : 'center';
 $clans_form = 1;
 $clans_id = $_REQUEST['id'];
 settype($clans_id,'integer');
@@ -39,13 +40,13 @@ if(isset($_GET['agree']) AND $clans_id != 1) {
     $msg = sprintf($cs_lang['del_true_clan'],$cs_lang[$op_clans['label']]);
   }
   
-  cs_redirect($msg,'clans','center');
+  cs_redirect($msg,'clans',$center);
 }
 
 if(isset($_GET['cancel']) OR $clans_id == 1) {
+
   $clans_form = 0;
-  
-  cs_redirect($cs_lang['del_false'],'clans','center');
+  cs_redirect($cs_lang['del_false'],'clans',$center);
 }
 
 if(!empty($clans_form)) {
