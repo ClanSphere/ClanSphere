@@ -396,3 +396,19 @@ function cs_debugmode() {
   height = $('#debug').css('height');
   $('#debug').css('height', height == '100%' ? cs_debugheight : '100%');
 }
+
+function cs_bookmark(uri, title) {
+
+  // trident + ie
+  if(window.external && document.all) {
+    window.external.AddFavorite(uri, title);
+  }
+  // mozilla + firefox and presto + opera
+  else if(window.sidebar) {
+    window.sidebar.addPanel(title, uri, '');
+  }
+  // handle opera hotlist
+  else if(window.opera && window.print) {
+    return true;
+  }
+}

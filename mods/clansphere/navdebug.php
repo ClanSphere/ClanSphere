@@ -4,6 +4,7 @@
 
 $nav_array = array(
   '----',
+  'ajax/navbookmark',
   'articles/navlist',
   'articles/navtop',
   'banners/navlist',
