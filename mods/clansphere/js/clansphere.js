@@ -58,7 +58,7 @@
 
 })(jQuery);
 
-$("textarea[class!=rte_html]").TextAreaExpander(100, 500);
+$("textarea[class!=rte_html], textarea[class!=rte_abcode]").TextAreaExpander(100, 500);
 
 function passwordcheck(pass) {
 
