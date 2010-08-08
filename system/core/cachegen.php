@@ -137,7 +137,7 @@ function cs_cache_template($filename) {
 
 function cs_cache_theme($mod, $action) {
 
-  global $com_lang, $cs_main;
+  global $cs_main;
   $tpl_real = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
   $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $cs_main['php_self']['filename'];
   $tpl_data = cs_cache_load($tpl_temp);
@@ -159,7 +159,8 @@ function cs_cache_theme($mod, $action) {
   $tpl_data = file_get_contents($tpl_real);
 
   $tpl_data = str_replace('{page:width}', $cs_main['def_width'], $tpl_data);
-  $tpl_data = str_replace('{page:path}', $cs_main['php_self']['dirname'], $tpl_data);
+  # remove last slash for easier usage in theme files
+  $tpl_data = str_replace('{page:path}', rtrim($cs_main['php_self']['dirname'], '/'), $tpl_data);
   $tpl_data = str_replace('{page:mod}', $cs_main['mod'], $tpl_data);
   $tpl_data = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $tpl_data);
   $tpl_data = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $tpl_data);
