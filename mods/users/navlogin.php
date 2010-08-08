@@ -4,10 +4,15 @@
 
 $cs_lang = cs_translate('users');
 
-$styles_array = array('horizontal', 'icons', 'picture');
-$style = (!empty($_GET['style']) AND in_array($_GET['style'], $styles_array)) ? '_' . $_GET['style'] : '';
-
 $data = array();
+
+$styles_array = array('horizontal', 'icons', 'picture');
+$style = '';
+if(!empty($_GET['style']))
+  if(in_array($_GET['style'], $styles_array))
+    $style = '_' . $_GET['style'];
+  else
+    cs_error($_GET['style'], 'The given navlogin style cannot be found');
 
 global $login;
 
