@@ -55,7 +55,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $matches[1] = $cs_lang['secure_stages'];
   $matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
-  $matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_1_text'] . cs_html_br(1);
+  $matches[2] .= $cs_lang['stage_2'] . $cs_lang['stage_2_text'] . cs_html_br(1);
   $matches[2] .= $cs_lang['stage_3'] . $cs_lang['stage_3_text'] . cs_html_br(1);
   $matches[2] .= $cs_lang['stage_4'] . $cs_lang['stage_4_text'];
   $data['users']['secure_clip'] = cs_abcode_clip($matches);
