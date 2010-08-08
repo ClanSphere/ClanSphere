@@ -61,6 +61,8 @@ settype($_REQUEST['id'],'integer');
 settype($_REQUEST['fid'],'integer');
 settype($_GET['id'],'integer');
 settype($_GET['cat_id'], 'integer');
+# preserved for navlogin functionality
+unset($_GET['style']);
 
 # provide functions that assist with get and post data
 function cs_servervars($mode, $integers = 0, $unharmed = 0) {
@@ -83,8 +85,7 @@ function cs_servervars($mode, $integers = 0, $unharmed = 0) {
 function cs_get($integers = 0, $unharmed = 0) { return cs_servervars('get',$integers,$unharmed); }
 function cs_post($integers = 0, $unharmed = 0) { return cs_servervars('post',$integers,$unharmed); }
 
-/* Part that can be enabled after
- * including this function in the whole script
+/* Part that can be enabled after including this function in the whole script
  *
 $cs_post_hidden = $_POST;
 $cs_get_hidden = $_GET;
