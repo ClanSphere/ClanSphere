@@ -20,7 +20,6 @@ if (!empty($_POST['submit'])) {
     settype($_POST['ajax_reload'],'integer');
     if (empty($_POST['ajax'])) $_POST['ajax_reload'] = 0;
 
-
     require_once 'mods/clansphere/func_options.php';
 
     $save = array();
@@ -29,9 +28,10 @@ if (!empty($_POST['submit'])) {
 
     cs_optionsave('clansphere', $save);
 
+    # clear cache to not run into trouble on ajax changes
+    cs_cache_clear();
 
     cs_redirect($cs_lang['success'], 'options','roots');
-    
   }
 }
 
@@ -40,7 +40,6 @@ $selected = ' selected="selected"';
 if (!empty($errors)) $data['lang']['errors_here'] = $cs_lang['error_occured'] . $errors;
 
 $data['options']['ajax_reload'] = $cs_main['ajax_reload'];
-
 
 if (empty($cs_main['ajax'])) {
   $data['options']['ajax_on'] = '';
@@ -60,6 +59,5 @@ if (empty($cs_main['ajax'])) {
 }
 
 $data['switch']['ajax_on'] = empty($cs_main['ajax']) ? 'display: none' : '';
-
 
 echo cs_subtemplate(__FILE__,$data,'ajax','options');
