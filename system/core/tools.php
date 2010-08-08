@@ -565,25 +565,27 @@ function cs_url($mod, $action = 'list', $more = 0, $base = 0, $placeholder = 0) 
   }
 }
 
-function cs_url_self($full, $ignore_post = 0, $encode = 0) {
+function cs_url_self($full, $ignore_post = 0, $decode = 0) {
 
   global $cs_main;
   if(empty($ignore_post) AND !empty($_POST))
     return false;
 
-  $url  = empty($full) ? '' : $cs_main['php_self']['website'];
-  $url .= rtrim($cs_main['php_self']['dirname'], '/');
+  # do not use htmlspecialchars with charset in this function due to website
+  $url = empty($full) ? '' : $cs_main['php_self']['website'];
+
   if(empty($cs_main['mod_rewrite'])) {
-    $request = htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, $cs_main['charset']);
+    $request = htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES);
     $ajax = strrpos($request, '&amp;xhr=');
     $url .= empty($ajax) ? $request : substr($request, 0, $ajax);
   }
   else
-    $url .= '/' . $cs_main['php_self']['filename'] . $cs_main['php_self']['params'];
-  if(empty($encode))
+    $url .= $cs_main['php_self']['dirname'] . $cs_main['php_self']['filename'] . $cs_main['php_self']['params'];
+
+  if(empty($decode))
     return $url;
   else
-    return rawurlencode(html_entity_decode($url, ENT_QUOTES, $cs_main['charset']));
+    return html_entity_decode($url, ENT_QUOTES);
 }
 
 function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
