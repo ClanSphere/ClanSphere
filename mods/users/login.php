@@ -4,9 +4,10 @@
 
 $cs_lang = cs_translate('users');
 
-  $data['head']['mod'] = $cs_lang['mod_name'];
-  $data['head']['action'] = $cs_lang['login'];
-  
+$data = array();
+$data['head']['mod'] = $cs_lang['mod_name'];
+$data['head']['action'] = $cs_lang['login'];
+
 global $login;
 if(empty($login['mode'])) {
 
@@ -32,7 +33,7 @@ if(empty($login['mode'])) {
     $cookie_yes = 1;
     $cookie_no = 0;
   }
-  
+
   $data['head']['body_text'] = empty($login_msg) ? $cs_lang['login_messages'] : $login_msg;  
   $data['lang']['nick'] = $cs_lang['nick'];
   $data['lang']['password'] = $cs_lang['pwd'];
@@ -42,25 +43,26 @@ if(empty($login['mode'])) {
   $data['lang']['options'] = $cs_lang['options'];
   $data['lang']['submit'] = $cs_lang['submit'];
   $data['lang']['reset'] = $cs_lang['reset'];
-  
+
   echo cs_html_br(0);
   echo cs_subtemplate(__FILE__,$data,'users','head');
   echo cs_subtemplate(__FILE__,$data,'users','login');
 }
 else {
-  
+
   $data['head']['mod'] = $cs_lang['mod_name'];
   $data['head']['action'] = $cs_lang['login'];
   $login_method = $login['method'];
   $data['head']['body_text'] = $cs_lang['method_' . $login_method];
   echo cs_subtemplate(__FILE__,$data,'users','head');
 
-  
-  if((empty($_POST['uri']))|| (strstr($_POST['uri'], 'logout'))) {
+  if(empty($_POST['uri']) OR strstr($_POST['uri'], 'logout')) {
     cs_redirect('','users','home');
   }
   else {
-    $data['link']['continue'] = cs_html_link(str_replace('&','&amp;',$_POST['uri']),$cs_lang['continue'],0);
+    # do not use htmlspecialchars with charset here due to website
+    $uri = htmlspecialchars($_POST['uri'], ENT_QUOTES);
+    $data['link']['continue'] = cs_html_link($uri,$cs_lang['continue'],0);
     echo cs_subtemplate(__FILE__,$data,'users','continue');
   }
 }

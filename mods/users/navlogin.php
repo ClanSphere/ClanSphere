@@ -7,8 +7,6 @@ $cs_lang = cs_translate('users');
 $styles_array = array('horizontal', 'icons', 'picture');
 $style = (!empty($_GET['style']) AND in_array($_GET['style'], $styles_array)) ? '_' . $_GET['style'] : '';
 
-$uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
-
 $data = array();
 
 global $login;
@@ -23,7 +21,7 @@ if(empty($login['mode'])) {
   $data['form']['navlogin'] = cs_url('users','login');
   $data['login']['nick'] = cs_secure($login['nick']);
   $data['login']['password'] = cs_secure($login['password']);
-  $data['link']['uri'] = str_replace('&','&amp;',$uri);
+  $data['link']['uri'] = cs_url_self();
 
   echo cs_subtemplate(__FILE__,$data,'users','navlogin_form' . $style);
 }
