@@ -106,12 +106,13 @@
       <input type="hidden" name="file_name_{files:num}" value="{files:name}" />
       <input type="hidden" name="file_upload_name_{files:num}" value="{files:up_name}" />
       {if:file_is_picture}
-      <div style="float:left;padding:3px;border:1px solid black;background:gainsboro;">
+      <!--  <div style="float:left;padding:3px;border:1px solid black;background:gainsboro;">
       <a href="{page:path}mods/gallery/image.php?boardpic={files:name}" target="_blank"><img src="{page:path}mods/gallery/image.php?boardpic={files:name}&boardthumb" alt="" /></a>
       </div>
-      <div style="float:left;padding:3px;margin-left:10px;">{files:ext} {files:name}<br />
+      <div style="float:left;padding:3px;margin-left:10px;">  -->
+      {files:ext} {files:name}<br />
         <input type="submit" name="remove_file_{files:num}" value="{lang:remove}" />
-      </div>
+      <!--  </div>  -->
       {stop:file_is_picture}
       {if:file_is_other}
       {files:ext} {files:name}<br />

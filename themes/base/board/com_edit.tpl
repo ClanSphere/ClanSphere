@@ -68,13 +68,16 @@
       <input type="hidden" name="file_user_{files:num}" value="{files:user}" />
       <input type="hidden" name="file_del_{files:num}" value="{files:del}" />
       {if:file_is_picture}
-      <div style="float:left;padding:3px;border:1px solid black;background:gainsboro;">
-      <a href="{page:path}mods/gallery/image.php?boardpic={files:name}" target="_blank"><img src="{page:path}mods/gallery/image.php?boardpic={files:name}&boardthumb" alt="" /></a>
+      <!--  <div style="float:left;padding:3px;border:1px solid black;background:gainsboro;">
+      <a href="{page:path}mods/gallery/image.php?boardpic={files:name}" target="_blank">
+        <img src="{page:path}mods/gallery/image.php?boardpic={files:name}&amp;boardthumb" alt="" />
+      </a>
       </div>
-      <div style="float:left;padding:3px;margin-left:10px;">{files:ext} {files:name}<br />
+      <div style="float:left;padding:3px;margin-left:10px;">  -->
+      {files:ext} {files:name}<br />
         {if:del_button}<input type="submit" name="remove_file_{files:num}" value="{lang:remove}" />{stop:del_button}
         {files:file_del}
-      </div>
+      <!--  </div>  -->
       {stop:file_is_picture}
       {if:file_is_other}
       {files:ext} {files:name}<br />
