@@ -270,9 +270,8 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   
   cs_unlink('cache', 'news_publish.tmp');
 
-  if (!empty($cs_news['news_public'])) {
+  if (!empty($cs_news['news_public']))
     include_once 'mods/news/rss.php';
-  }
 
   cs_redirect($cs_lang['news_created'], 'news');
 }

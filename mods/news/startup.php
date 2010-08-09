@@ -38,5 +38,8 @@ if ($cs_main['mod'] == 'news' AND !empty($account['access_news'])) {
     }
 
     cs_unlink('cache', 'news_publish.tmp');
+
+    if (!empty($publish))
+      include_once 'mods/news/rss.php';
   }
 }
