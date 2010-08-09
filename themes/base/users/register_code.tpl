@@ -40,8 +40,8 @@
     </div>
     <div style="clear:both">
       <a class="clip" href="#">{lang:secure_stages}
-      <img src="{page:path}/symbols/clansphere/plus.gif" alt="+" />
-      <img src="{page:path}/symbols/clansphere/minus.gif" style="display:none" alt="-" /></a>
+      <img src="{page:path}symbols/clansphere/plus.gif" alt="+" />
+      <img src="{page:path}symbols/clansphere/minus.gif" style="display:none" alt="-" /></a>
       <div style="display:none">
         {lang:stage_1}{lang:stage_1_text}<br />
           {lang:stage_2}{lang:stage_2_text}<br />
