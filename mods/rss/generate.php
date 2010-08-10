@@ -12,46 +12,44 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
   if(is_writeable($target)) {
     include_once('system/output/rss_20.php');
     $content = cs_rss_mode(1);
-    $page = $cs_main['php_self']['website'];
-    $content .= cs_rss_channel(1,$mod,$name,$page,$desc);
+    $content .= cs_rss_channel(1,$mod,$name,$cs_main['php_self']['website'],$desc);
     if(!empty($array)) {
       foreach($array AS $item) {
         if(!empty($item['id']) AND !empty($item['title']) AND !empty($item['text'])) {
           $title = htmlspecialchars($item['title'], ENT_NOQUOTES, $cs_main['charset']);
-        $save = $cs_main['php_self']['basename'];
-        $cs_main['php_self']['basename'] = 'index.php';
-        $link = $page . cs_url($mod,$action,'id=' . $item['id']);
-        $cs_main['php_self']['basename'] = $save;
-          
-        if(!empty($item['readmore'])) {
-          $text  = '<![CDATA[ ' . cs_secure($item['readmore'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
-          $text .= cs_html_br(2) . cs_secure($item['text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . ' ]]>';
+          $link = $cs_main['php_self']['website'] . cs_url($mod,$action,'id=' . $item['id'], 'index');
+
+          $text = empty($item['readmore']) ? $item['text'] : $item['readmore'];
+          $text = cs_secure($text, $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]);
+          $text  = '<![CDATA[ ' . $text . ' ]]>';
+          if(!empty($abcode[3])) {
+            # use full uri if needed in html content
+            $url_pre = $cs_main['php_self']['website'] . $cs_main['php_self']['dirname'];
+            $pattern = "=(background|href|src)\=\"(?!http|\/)(.*?)\"=i";
+            $text    = preg_replace($pattern, "\\1=\"" . $url_pre . "\\2\"", $text);
+          }
+
+          $date = empty($item['time']) ? 0 : date('D, d M Y H:i:s',$item['time']) . ' +0000';
+          $author = empty($item['author']) ? 0 : $item['author'];
+          $author .= empty($item['nick']) ? '' : ' (' . cs_secure($item['nick']) . ')';
+          $category = empty($item['cat']) ? 0 : htmlspecialchars($item['cat'], ENT_NOQUOTES, $cs_main['charset']);
+          $content .= cs_rss_item($title, $link, $text, $date, $author, $category);
         }
-        else {
-          $text = '<![CDATA[ ' . cs_secure($item['text'], $abcode[0], $abcode[1], $abcode[2], $abcode[3], $abcode[4]) . ' ]]>';
-        }
-    
-        $date = empty($item['time']) ? 0 : date('D, d M Y H:i:s',$item['time']) . ' +0000';
-        $author = empty($item['author']) ? 0 : $item['author'];
-        $author .= empty($item['nick']) ? '' : ' (' . cs_secure($item['nick']) . ')';
-        $category = empty($item['cat']) ? 0 : htmlspecialchars($item['cat'], ENT_NOQUOTES, $cs_main['charset']);
-        $content .= cs_rss_item($title, $link, $text, $date, $author, $category);
       }
     }
-  }
-  $content .= cs_rss_channel(0);
-  $content .= cs_rss_mode(0);
+    $content .= cs_rss_channel(0);
+    $content .= cs_rss_mode(0);
 
-  $save_file = fopen($target . $mod . '.xml','w');
-  # set stream encoding if possible to avoid converting issues
-  if(function_exists('stream_encoding'))
-    stream_encoding($save_file, $cs_main['charset']);
-  fwrite($save_file,$content);
-  fclose($save_file);
-  @chmod($target . $mod . '.xml',0644);
+    $save_file = fopen($target . $mod . '.xml','w');
+    # set stream encoding if possible to avoid converting issues
+    if(function_exists('stream_encoding'))
+      stream_encoding($save_file, $cs_main['charset']);
+    fwrite($save_file,$content);
+    fclose($save_file);
+    @chmod($target . $mod . '.xml',0644);
   }
   else {
-  cs_error($target,'cs_update_rss - Unable to write into directory');
+    cs_error($target,'cs_update_rss - Unable to write into directory');
   }
   $cs_main['rss'] = 0;
 }
