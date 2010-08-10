@@ -48,6 +48,6 @@ else
   }
 
   $data['url']['archieve'] = cs_url('shoutbox','list');
-  $data['form']['uri'] = cs_secure($_SERVER['REQUEST_URI']);
+  $data['form']['uri'] = cs_url_self();
   
   echo cs_subtemplate(__FILE__,$data,'shoutbox','navlist');

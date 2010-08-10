@@ -14,8 +14,9 @@ if(isset($_POST['submit'])) {
   $cs_shout['shoutbox_name'] = trim($_POST['sh_nick']);
   $cs_shout['shoutbox_text'] = !empty($_POST['sh_text']) ? $_POST['sh_text'] : '' ;
   $cs_shout['shoutbox_date'] = cs_time();
-  
-  $uri = empty($_POST['uri']) ? '' : cs_secure($_POST['uri']);
+
+  # do not use htmlspecialchars with charset here due to website
+  $uri = empty($_POST['uri']) ? '' : htmlspecialchars($_POST['uri'], ENT_QUOTES);
   
   if(!empty($_POST['sh_text2'])) {
     $cs_shout['shoutbox_text'] = $_POST['sh_text2'];
@@ -87,15 +88,13 @@ if(isset($_POST['submit'])) {
     $cells = array_keys($cs_shout);
     $values  = array_values($cs_shout);
     cs_sql_insert(__FILE__,'shoutbox',$cells,$values);
-    
-    if(!empty($_POST['uri'])) {
-      $data['shoutbox']['done'] = cs_html_link( cs_secure($_POST['uri']), $cs_lang['continue'],0);
-    }
-    
-    echo cs_subtemplate(__FILE__,$data,'shoutbox','submit');
-   
+
+    $data['shoutbox']['done'] = cs_html_link($uri, $cs_lang['continue'], 0);
+
+    echo cs_subtemplate(__FILE__,$data,'shoutbox','submit');   
   }
-} else {  
+}
+else {
   $data['shoutbox']['no_submit'] = $cs_lang['no_submit'];
   echo cs_subtemplate(__FILE__,$data,'shoutbox','no_submit');
 }
