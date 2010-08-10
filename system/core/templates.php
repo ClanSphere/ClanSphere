@@ -181,14 +181,11 @@ function cs_templatefile($matches)
       $return .= 'm[' . $i . '] ' . $matches[$i] . ' - ';
       return $return;
   }
-  
+
+  # only one get parameter is allowed
   if (!empty($matches[2]))
-  {
-    $backup = explode('=', $matches[2]);
-    $_GET[$backup[0]] = $backup[1];
-    $return = cs_filecontent($file);
-    return $return;
-  }
+    $_GET[$matches[2]] = $matches[3];
+
   return cs_filecontent($file);
 }
 
