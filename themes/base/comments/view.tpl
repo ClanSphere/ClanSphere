@@ -3,7 +3,7 @@
     <td class="headb">{lang:mod_name} - {lang:details}</td>
   </tr>
   <tr>
-    <td class="leftb">Details des ausgewählten Kommentars</td>
+    <td class="leftb">{lang:body_view}</td>
   </tr>
 </table>
 <br />
