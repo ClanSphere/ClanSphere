@@ -85,7 +85,7 @@ if(isset($_POST['submit']) AND (empty($error))) {
 
     cs_sql_insert(__FILE__,'games',$games_cells,$games_save); 
 
-    $lastid = mysql_insert_id(); 
+    $lastid = cs_sql_insertid(__FILE__);
     $cs_awards['games_id'] = $lastid; 
 
   } 
