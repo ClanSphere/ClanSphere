@@ -5,7 +5,7 @@
 function cs_ajax_mail($mail, $link = '', $service = 'mailto:')
 {
   global $cs_main;
-  $mail_lnk = str_replace(array('@', '.'), array(' (at) ', ' (dot) '), $mail);
+  $mail_lnk = empty($link) ? str_replace(array('@', '.'), array(' (at) ', ' (dot) '), $mail) : $link;
   $mail_bin = (binary) $mail; # only difference between mail_func files
   $mail_str = base64_encode($mail_bin);
 
