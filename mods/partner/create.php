@@ -171,9 +171,8 @@ echo cs_subtemplate(__FILE__,$data,'partner','create');
   cs_sql_insert(__FILE__,'partner',$cells,$values);
 
   // upload navlist-image
-    $partner_id = mysql_insert_id();
-    
-    $where = "partner_id = '".$partner_id."'";
+
+	$where = "partner_name = '" . cs_sql_escape($data['partner']['partner_name']) . "'";
     $getid = cs_sql_select(__FILE__,'partner','partner_id',$where);
     
   if(!empty($files['partner_nimg']['tmp_name'])) {
