@@ -113,9 +113,9 @@ function cs_cache_template($filename) {
   if(strpos($tpl_data, 'id="csp_content"') !== false)
     cs_error($tpl_real, 'cs_cache_template - The ID tag "csp_content" is reserved for AJAX');
   if(strpos($tpl_data, '{func:stylesheet}') === false)
-    $tpl_data = str_replace('</head>', '{func:stylesheet}</head>', $tpl_data);
+    $tpl_data = str_ireplace('</head>', '{func:stylesheet}</head>', $tpl_data);
   if(strpos($tpl_data, '{func:javascript}') === false)
-    $tpl_data = str_replace('</body>', '{func:javascript}</body>', $tpl_data);
+    $tpl_data = str_ireplace('</body>', '{func:javascript}</body>', $tpl_data);
 
   $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>{func:debug}', $tpl_data, 1);
 
