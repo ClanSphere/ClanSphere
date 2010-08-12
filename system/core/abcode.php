@@ -255,7 +255,7 @@ function cs_abcode_clip($matches) {
   $var .= cs_html_img('symbols/clansphere/plus.gif',0,0,0,'+');
   $var .= cs_html_img('symbols/clansphere/minus.gif',0,0,'style="display:none"','-');
   $var .= '</a>';
-  $var .= '<div>' . $matches[2] . '</div>';
+  $var .= '<div style="display:none">' . $matches[2] . '</div>';
   return $var;
 }
 
@@ -344,7 +344,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
       $loop_abc = cs_sql_select(__FILE__,'abcode',$select,0,0,0,0, 'abcode_content');
       $loop = count($loop_abc);
     }
-    for($run=0; $run<$loop; $run++) {
+    for($run=0; $run < $loop; $run++) {
       if($loop_abc[$run]['abcode_func'] == 'img') {
         $img_file = 'uploads/abcode/' . $loop_abc[$run]['abcode_file'];
         $img_src = cs_html_img($img_file);
