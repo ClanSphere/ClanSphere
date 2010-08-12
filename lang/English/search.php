@@ -30,7 +30,7 @@ $cs_lang['country']    = 'Country';
 $cs_lang['nick']    = 'Nickname';
 $cs_lang['place']    = 'Location';
 $cs_lang['laston']    = 'Last visit';
-$cs_lang['page']    = 'Status';
+$cs_lang['status']    = 'Status';
 $cs_lang['creator']    = 'Creator';
 
 //News

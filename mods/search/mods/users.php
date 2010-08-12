@@ -2,8 +2,6 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-$cs_lang = cs_translate('search');
-
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
 $cs_sort[1] = 'users_nick DESC';
 $cs_sort[2] = 'users_nick ASC';
@@ -65,4 +63,4 @@ if (!empty($cs_loop)) {
 } else {
   $data2['if']['noresults'] = true;
 }
-echo cs_subtemplate(__FILE__,$data2,'search','mods/users');
+echo cs_subtemplate(__FILE__,$data2,'search','mods_users');

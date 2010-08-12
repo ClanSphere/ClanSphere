@@ -11,28 +11,16 @@
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
-    <td class="headb" style="width:40px;">{lang:country}</td>
-  <td class="headb">{sort:nick}{lang:nick}</td>
-  <td class="headb">{sort:place}{lang:place}</td>
-  <td class="headb">{sort:laston}{lang:laston}</td>  
-    <td class="headb" style="width:40px;">{lang:page}</td>  
-  {if:access}
-  <td class="headb"></td>
-  {stop:access}
+  <td class="headb">{sort:headline}{lang:headline}</td>
+  <td class="headb">{sort:date}{lang:date}</td>
   </tr>
   {loop:results}
   <tr>
-  <td class="leftc">{results:img}</td>
-  <td class="leftc" style="font-weight:bold;">{results:user}</td>
-  <td class="leftc">{results:place}</td>
+    <td class="leftc" style="font-weight:bold;">{results:headline}</td>
   <td class="leftc">{results:date}</td>
-  <td class="leftc">{results:icon}</td>
-  {if:access}
-  <td class="leftc">{results:msg}</td>
-  {stop:access}
   </tr>
   {stop:results}
- </table>
+</table>
 {stop:result}
 {if:noresults}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
@@ -41,8 +29,3 @@
   </tr>
  </table>
 {stop:noresults}
-<br />
-
-
-
-

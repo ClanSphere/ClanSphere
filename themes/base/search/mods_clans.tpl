@@ -11,17 +11,15 @@
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
-    <td class="headb">{sort:name}{lang:name}</td>
-  <td class="headb">{sort:cat}{lang:cat}</td>
-  <td class="headb">{sort:time}{lang:time}</td>
-  <td class="headb">{lang:creator}</td>
+    <td class="headb">{lang:country}</td>
+  <td class="headb">{sort:name}{lang:name}</td>
+  <td class="headb">{sort:short}{lang:short}</td>
   </tr>
   {loop:results}
   <tr>
-     <td class="leftc" style="font-weight:bold;">{results:name}</td>
-  <td class="leftc">{results:cat}</td>
-  <td class="leftc">{results:date}</td>
-  <td class="leftc">{results:user}</td>
+     <td class="leftc">{results:country}</td>
+  <td class="leftc" style="font-weight:bold;">{results:clan}</td>
+  <td class="leftc" style="width:15%;">{results:short}</td>
   </tr>
   {stop:results}
 </table>
@@ -33,4 +31,3 @@
   </tr>
  </table>
 {stop:noresults}
-
