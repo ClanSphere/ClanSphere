@@ -173,8 +173,7 @@ function cs_templatefile($matches)
 {
   $return = '';
   $file = 'mods/' . $matches[0] . '/' . $matches[1] . '.php';
-  if (!file_exists($file))
-  {
+  if(!file_exists($file)) {
     cs_error($file, 'cs_templatefile - File not found');
     $match_count = count($matches);
     for($i = 0; $i < $match_count; $i++)
@@ -183,8 +182,13 @@ function cs_templatefile($matches)
   }
 
   # only one get parameter is allowed
-  if (!empty($matches[2]))
+  if(!empty($matches[2])) {
+    if(empty($matches[3]) AND $pos = strpos($matches[2], '=')) {
+      $matches[3] = substr($matches[2], $pos + 1);
+      $matches[2] = substr($matches[2], 0, $pos);
+    }
     $_GET[$matches[2]] = $matches[3];
+  }
 
   return cs_filecontent($file);
 }
