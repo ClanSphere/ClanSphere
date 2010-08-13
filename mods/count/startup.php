@@ -40,6 +40,7 @@ if(!empty($account['access_count']))
       $counter_cells = array('count_ip','count_time','count_location');
       $counter_save = array($ip,$time,$cs_main['mod'] . '/' . $cs_main['action']);
       cs_sql_insert(__FILE__,'count',$counter_cells,$counter_save);
+      $_SESSION['count_id'] = cs_sql_insertid(__FILE__);
     }
     $_SESSION['count_last'] = $time;
   }
