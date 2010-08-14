@@ -572,12 +572,14 @@ function cs_url_self($full = 0, $ignore_post = 0, $decode = 0) {
     return false;
 
   if(empty($cs_main['mod_rewrite'])) {
-    $request = $_SERVER['REQUEST_URI'];
+    $request = empty($_SERVER['REQUEST_URI']) ? '' : $_SERVER['REQUEST_URI'];
     $ajax = strrpos($request, '&xhr=');
     $url = empty($ajax) ? $request : substr($request, 0, $ajax);
   }
-  else
-    $url = $cs_main['php_self']['dirname'] . $cs_main['php_self']['filename'] . $cs_main['php_self']['params'];
+  else {
+    $request = empty($cs_main['php_self']['params']) ? '' : $cs_main['php_self']['params'];
+    $url = $cs_main['php_self']['dirname'] . $cs_main['php_self']['filename'] . $request;
+  }
 
   # do not use htmlspecialchars with charset in this function due to website
   $url = htmlspecialchars($url, ENT_QUOTES);
