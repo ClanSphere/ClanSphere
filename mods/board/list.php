@@ -150,7 +150,7 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
     $count_boards_less = $count_boards - 1;
     
     for ($j = 0; $j < $count_boards; $j++) {
-      $data['categories'][$run_1]['subboard'][$j][','] = $j != $count_boards_less ? ', ' : '';
+      $data['categories'][$run_1]['subboard'][$j]['comma'] = $j != $count_boards_less ? ', ' : '';
     }
   }
 }
