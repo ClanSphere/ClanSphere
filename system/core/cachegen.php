@@ -116,15 +116,15 @@ function cs_cache_template($filename) {
     $tpl_data = str_ireplace('</head>', '{func:stylesheet}</head>', $tpl_data);
   if(strpos($tpl_data, '{func:javascript}') === false)
     $tpl_data = str_ireplace('</body>', '{func:javascript}</body>', $tpl_data);
-
-  $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>{func:debug}', $tpl_data, 1);
+  if(strpos($tpl_data, '{func:debug}') === false)
+    $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>{func:debug}', $tpl_data, 1);
+  else
+    $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>', $tpl_data, 1);
 
   $pattern = "=\<link(.*?)href\=\"(?!http|\/)(.*?)\"(.*?)\>=i";
   $tpl_data = preg_replace($pattern, "<link\\1href=\"" . $tpl_path . "/\\2\"\\3>", $tpl_data);
-  $pattern = "=background\=\"(?!http|\/)(.*?)\"=i";
-  $tpl_data = preg_replace($pattern, "background=\"" . $tpl_path . "/\\1\"", $tpl_data);
-  $pattern = "=src\=\"(?!http|\/)(.*?)\"=i";
-  $tpl_data = preg_replace($pattern, "src=\"" . $tpl_path . "/\\1\"", $tpl_data);
+  $pattern = "=(background|src)\=\"(?!http|\/)(.*?)\"=i";
+  $tpl_data = preg_replace($pattern, "\\1=\"" . $tpl_path . "/\\2\"", $tpl_data);
 
   $tpl_data = preg_replace_callback('={url(?:_([\w]*?))?:([\w]*?)(?:_([\w]*?)((?::(?:(?:[\S]*?{[\S]*?}[\S]*?)*?|[\S]*?))*?))?}=i', 'cs_templateurl', $tpl_data);
 
