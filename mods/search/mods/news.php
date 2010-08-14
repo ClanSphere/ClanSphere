@@ -20,6 +20,7 @@ for($prerun=1; $prerun<$recount; $prerun++) {
   $sql_where = $sql_where . " OR news_headline LIKE '%" . cs_sql_escape($results[$prerun]) . "%'"; 
 }
 $select = 'news_headline, news_time, news_id';
+$cs_count  = cs_sql_count(__FILE__, 'news', $sql_where);
 $cs_search = cs_sql_select(__FILE__,'news',$select,$sql_where,$order,$start,$account['users_limit']);
 $search_loop = count($cs_search);
 
@@ -30,8 +31,8 @@ $data2['if']['noresults'] = false;
 
 if (!empty($search_loop)) {
   $data2['if']['result'] = true;
-  $data2['result']['count'] = $search_loop;
-  $data2['result']['pages'] = cs_pages('search','list',$search_loop,$start,$where1,$sort);
+  $data2['result']['count'] = $cs_count;
+  $data2['result']['pages'] = cs_pages('search','list',$cs_count,$start,$where1,$sort);
   $data2['sort']['headline'] = cs_sort('search','list',$start,$where1,3,$sort);
   $data2['sort']['date'] = cs_sort('search','list',$start,$where1,1,$sort);
 
@@ -40,7 +41,8 @@ if (!empty($search_loop)) {
       $data2['results'][$run]['headline'] = cs_link($cs_news_headline,'news','view','id=' . $cs_search[$run]['news_id']);
     $data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['news_time'],1);
   }
-} else {
-$data2['if']['noresults'] = true;
 }
+else
+  $data2['if']['noresults'] = true;
+
 echo cs_subtemplate(__FILE__,$data2,'search','mods_news');
