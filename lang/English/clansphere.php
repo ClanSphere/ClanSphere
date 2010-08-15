@@ -41,6 +41,7 @@ $cs_lang['file']                = 'File';
 $cs_lang['diff']                = 'Differences';
 $cs_lang['missing_file']        = 'File not found';
 $cs_lang['total_diff']          = 'Differences found in %s files';
+$cs_lang['lang_stats']          = 'This translation contains %s files and %s translated values';
 
 $cs_lang['head_system']  = 'System';
 $cs_lang['body_system']  = 'Important information and settings.';

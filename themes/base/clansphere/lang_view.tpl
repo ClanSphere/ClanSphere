@@ -40,7 +40,7 @@
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:translation_status}</td>
+    <td class="headb" colspan="2">{lang:translation_status}</td>
   </tr>
   <tr>
     <td class="leftc">{lang:file}</td>
@@ -53,6 +53,6 @@
   </tr>
   {stop:diff}
   <tr>
-    <td class="centerb" colspan="3">{count:total}</td>
+    <td class="centerb" colspan="2">{count:total}<br /><br />{count:stats}</td>
   </tr>
 </table>
