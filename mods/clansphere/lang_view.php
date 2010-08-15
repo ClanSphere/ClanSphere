@@ -24,7 +24,7 @@ $data['lang_view']['mod_desc'] = $mod_info['text'];
 
 $php_ok = version_compare(phpversion(),'5.1.0','>=');
 
-$missing_file = $cs_lang['missing_file'];
+# note: translation of countries is not checked
 $lang_mods = cs_checkdirs('mods');
 
 $data['diff'] = array();
@@ -37,8 +37,9 @@ $files = 0;
 $count = 0;
 $diff_count = 0;
 
-$total_diff = $cs_lang['total_diff'];
-$lang_stats = $cs_lang['lang_stats'];
+$missing_file = $cs_lang['missing_file'];
+$total_diff   = $cs_lang['total_diff'];
+$lang_stats   = $cs_lang['lang_stats'];
 
 foreach($lang_mods AS $mods) {
   $file_origine = 'lang/' . $lang_diff . '/' . $mods['dir'] . '.php';
@@ -46,6 +47,7 @@ foreach($lang_mods AS $mods) {
 
   if(file_exists($file_origine)) {
     if(file_exists($file_lang)) {
+      $files++;
       $diff = 0;
       $cs_lang = array();
       include $file_origine;
@@ -69,7 +71,6 @@ foreach($lang_mods AS $mods) {
     }
   }
 
-  $files++;
   if(!empty($diff)) {
     $data['diff'][$diff_count]['file'] = $file_lang;
     $data['diff'][$diff_count]['diff'] = $diff;
