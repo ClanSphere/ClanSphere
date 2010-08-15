@@ -97,7 +97,7 @@
       {stop:thread_asc_edited}</td>
   </tr>
   <tr>
-    <td class="leftc"><div style="color:#00FF00; padding-top:4px; padding-bottom:4px;">{thread_asc:laston}</div></td>
+    <td class="leftc"><div style="padding-top:4px; padding-bottom:4px;">{thread_asc:laston}</div></td>
     <td class="leftc"><div style="float:left">{thread_asc:usericons}</div>
       <div style="float:right">{thread_asc:report} {thread_asc:quote} {thread_asc:edit} {thread_asc:remove}</div></td>
   </tr>
@@ -144,7 +144,7 @@
       <br /><br />{comment:checkedit}</td>
   </tr>
   <tr>
-    <td class="leftc"><div style="color:#00FF00; padding-top:4px; padding-bottom:4px;">{comment:laston}</div></td>
+    <td class="leftc"><div style="padding-top:4px; padding-bottom:4px;">{comment:laston}</div></td>
     <td class="leftc"><div style="float:left">{comment:usericons}</div>
       <div style="float:right">{if:com_user}{comment:report} {comment:quote}{stop:com_user} {if:com_admin}{comment:cut}{comment:edit} {comment:remove}{stop:com_admin}{comment:anch}</div></td>
   </tr>
@@ -185,7 +185,7 @@
       </td>
   </tr>
   <tr>
-    <td class="leftc"><div style="color:#00FF00; padding-top:4px; padding-bottom:4px;">{thread_desc:laston}</div></td>
+    <td class="leftc"><div style="padding-top:4px; padding-bottom:4px;">{thread_desc:laston}</div></td>
     <td class="leftc"><div style="float:left">{thread_desc:users_icons}</div>
       <div style="float:right">{thread_desc:report} {thread_desc:quote} {thread_desc:edit} {thread_desc:remove}</div></td>
   </tr>
