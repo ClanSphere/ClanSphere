@@ -173,6 +173,8 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
     $data['url']['create'] = cs_url($mod,'com_create','fid=' . $com_fid);
 
     $data['comments']['fid'] = $com_fid;
+    $data['comments']['mod'] = $mod;
+
     echo cs_subtemplate(__FILE__,$data,'comments','com_add');
   }
 }

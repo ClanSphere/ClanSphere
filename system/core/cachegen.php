@@ -161,9 +161,9 @@ function cs_cache_theme($mod, $action) {
   $tpl_data = str_replace('{page:width}', $cs_main['def_width'], $tpl_data);
   # path does always end with a slash
   $tpl_data = str_replace('{page:path}', $cs_main['php_self']['dirname'], $tpl_data);
-  $tpl_data = str_replace('{page:mod}', $cs_main['mod'], $tpl_data);
   $tpl_data = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $tpl_data);
   $tpl_data = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $tpl_data);
+
   $tpl_data = preg_replace_callback('={url(?:_([\w]*?))?:([\w]*?)(?:_([\w]*?)((?::(?:(?:[\S]*?{[\S]*?}[\S]*?)*?|[\S]*?))*?))?}=i', 'cs_templateurl', $tpl_data);
 
   return cs_cache_save($tpl_temp, $tpl_data);

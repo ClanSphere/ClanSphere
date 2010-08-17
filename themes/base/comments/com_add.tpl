@@ -1,5 +1,5 @@
 <br />
-<form method="post" id="{page:mod}_com_create" action="{url:create}">
+<form method="post" id="{comments:mod}_com_create" action="{url:create}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="leftc" colspan="2"><input type="submit" name="advanced" value="{lang:adv_com}" /></td>
