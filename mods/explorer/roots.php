@@ -58,7 +58,7 @@ if ($dir != '.') {
   $folders = explode('/',$dir);
 
   foreach ($folders AS $folder) {
-    $output_folder .= $folder . cs_explorer_path('/', 'escape');
+    $output_folder .= empty($output_folder) ? $folder : cs_explorer_path('/', 'escape') . $folder;
     $data['path']['show'] .= cs_link($folder,'explorer','roots','dir='.$output_folder) . '/';
   }
 }

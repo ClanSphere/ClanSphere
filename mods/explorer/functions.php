@@ -38,7 +38,7 @@ function cs_explorer_path($path, $method, $sub = 0) {
     $path = str_replace($slash_esc,'/',$path);
 
   $path = str_replace('..', '', $path);
-  $path = rtrim($path, '/');
+  $path = ($path == '/') ? $path : rtrim($path, '/');
 
   if(!empty($sub))
     $path = substr($path, 0, strrpos($path, '/'));
