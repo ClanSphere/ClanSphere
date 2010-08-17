@@ -10,7 +10,7 @@ ___________________________________________________________
 -> Added page separation to cache info site since there could be many files now (hajo)
 -> Added cs_url_self function for url sharing with two example template placeholders (hajo)
    {ajax:navaddthis} for addthis.com and {ajax:navbookmark} for simple bookmarking and url checks
--> Updated CKEditor to 3.3.2 (hajo)
+-> Updated CKEditor to 3.4.0 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
