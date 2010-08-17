@@ -255,7 +255,7 @@ function cs_abcode_clip($matches) {
   $var .= cs_html_img('symbols/clansphere/plus.gif',0,0,0,'+');
   $var .= cs_html_img('symbols/clansphere/minus.gif',0,0,'style="display:none"','-');
   $var .= '</a>';
-  $var .= '<div style="display:none">' . $matches[2] . '</div>';
+  $var .= '<div>' . $matches[2] . '</div>';
   return $var;
 }
 

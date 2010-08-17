@@ -3,6 +3,8 @@
 
 (function($) {
 
+$(function(){ 
+
   // jQuery plugin definition
   $.fn.TextAreaExpander = function(minHeight, maxHeight) {
 
@@ -56,9 +58,12 @@
     return this;
   };
 
-})(jQuery);
-
 $("textarea").not(".rte_html").TextAreaExpander(100, 500);
+
+$(document).bind('csAjaxLoad', function(e,ele) {
+  $(ele).find('textarea').not(".rte_html").TextAreaExpander(100, 500);
+});
+
 
 function passwordcheck(pass) {
 
@@ -412,3 +417,7 @@ function cs_bookmark(uri, title) {
     return true;
   }
 }
+
+});
+
+})(jQuery);
