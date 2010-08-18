@@ -117,7 +117,7 @@ function cs_cache_template($filename) {
   if(strpos($tpl_data, '{func:javascript}') === false)
     $tpl_data = str_ireplace('</body>', '{func:javascript}</body>', $tpl_data);
   if(strpos($tpl_data, '{func:debug}') === false)
-    $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>{func:debug}', $tpl_data, 1);
+    $tpl_data = preg_replace('=\<body(.*?)\>=si', "<body\\1{func:body_add}>\n{func:debug}", $tpl_data, 1);
   else
     $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>', $tpl_data, 1);
 

@@ -702,7 +702,7 @@ ___________________________________________________________
 -> Added HTML function (alcatraz, duriel)
 -> Fixed count of the user comments to be equal everywhere (duriel)
 -> Reworked members list (duriel)
--> Clansphere now turns magic_quotes_runtime off to view templates without problems (duriel)
+-> ClanSphere now turns magic_quotes_runtime off to view templates without problems (duriel)
 -> Fixed many bugs in cup module (duriel)
 -> Seperated modules information to an extra module to add more features (duriel)
 -> Added mod: modules (duriel)

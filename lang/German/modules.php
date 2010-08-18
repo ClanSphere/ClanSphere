@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang['mod_name'] = 'Module';
-$cs_lang['info_text'] = 'Verwaltung aller Module von Clansphere';
+$cs_lang['info_text'] = 'Verwaltung aller Module von ClanSphere';
 
 $cs_lang['wizard'] = 'Assistent';
 $cs_lang['task_done'] = 'Aufgabe erledigt markieren';
@@ -52,7 +52,7 @@ $cs_lang['add_show'] = 'Anzeige hinzuf&uuml;gen';
 $cs_lang['help'] = 'Hilfe';
 $cs_lang['helptext']  = 'Hier wird bestimmt, wo das Modul angezeigt werden soll und welches Mindestzugangslevel ';
 $cs_lang['helptext'] .= 'man ben&ouml;tigt, um es dort zu sehen. M&ouml;chte man zB., dass Organisatoren (4) und ';
-$cs_lang['helptext'] .= 'Webmaster (5) das Modul unter der Clansphere Verwaltung sehen, gibt man ein:<br />';
+$cs_lang['helptext'] .= 'Webmaster (5) das Modul unter der ClanSphere Verwaltung sehen, gibt man ein:<br />';
 $cs_lang['helptext'] .= 'clansphere/admin => 4';
 
 $cs_lang['no_name'] = '- Kein Name eingegeben';

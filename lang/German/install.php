@@ -6,7 +6,7 @@ $cs_lang['mod_name']  = 'Installation';
 $cs_lang['modtext']  = 'Richtet das Portalsystem ein';
 
 $cs_lang['head_list']  = 'Liste';
-$cs_lang['body_list']  = 'Willkommen bei der Installation von Clansphere!' . cs_html_br(2) . 'Bitte w&auml;hlen Sie eine Sprache:';
+$cs_lang['body_list']  = 'Willkommen bei der Installation von ClanSphere!' . cs_html_br(2) . 'Bitte w&auml;hlen Sie eine Sprache:';
 
 $cs_lang['lang'] = 'Sprache';
 
@@ -17,7 +17,7 @@ $cs_lang['configuration'] = 'Konfiguration';
 $cs_lang['database'] = 'Datenbank';
 $cs_lang['login'] = 'Login';
 
-$cs_lang['this_is_compatible_check'] = 'Hier wird gepr&uuml;ft, ob sich der Webserver f&uuml;r die Installation von Clansphere eignet.';
+$cs_lang['this_is_compatible_check'] = 'Hier wird gepr&uuml;ft, ob sich der Webserver f&uuml;r die Installation von ClanSphere eignet.';
 $cs_lang['enough'] = 'Ausreichend';
 $cs_lang['compatible_database'] = 'Kompatible Datenbank';
 $cs_lang['change'] = 'Wechseln';
@@ -207,5 +207,5 @@ $cs_lang['usersgallery'] = 'Benutzergallery';
 $cs_lang['votes'] = 'Umfragen';
 $cs_lang['wars'] = 'Clanwars';
 $cs_lang['wizard'] = 'Installations Assistent';
-$cs_lang['clansphere_core'] = 'Clansphere Basis';
+$cs_lang['clansphere_core'] = 'ClanSphere Basis';
 $cs_lang['metatags'] = 'Metatags';

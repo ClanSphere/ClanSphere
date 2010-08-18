@@ -54,7 +54,7 @@ $cs_lang['themes'] = 'Themes';
 $cs_lang['using'] = 'using';
 $cs_lang['dstime'] = 'Daylight Savings Time';
 
-$cs_lang['body_options']  = 'Clansphere portalwide settings administration.';
+$cs_lang['body_options']  = 'ClanSphere settings administration.';
 $cs_lang['off'] = 'off';
 $cs_lang['on'] = 'on';
 $cs_lang['automatic'] = 'automatic';
