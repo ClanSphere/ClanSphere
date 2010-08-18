@@ -1,7 +1,6 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id: clansphere.js 1430 2008-12-10 13:08:44Z Fr33z3m4n $
 
-(function($) {
 
 $(function(){ 
 
@@ -58,12 +57,32 @@ $(function(){
     return this;
   };
 
-$("textarea").not(".rte_html").TextAreaExpander(100, 500);
+  $("textarea").not(".rte_html").TextAreaExpander(100, 500);
 
-$(document).bind('csAjaxLoad', function(e,ele) {
-  $(ele).find('textarea').not(".rte_html").TextAreaExpander(100, 500);
+  $(document).bind('csAjaxLoad', function(e,ele) {
+    $(ele).find('textarea').not(".rte_html").TextAreaExpander(100, 500);
+  });
+
+
+  $(".clip").live('click', function () { 
+    $(this).children('img').toggle();
+    $(this).next('div').slideToggle("slow");
+    return false;
+  }).next('div').hide();
+
+  $(document).bind('csAjaxLoad', function(e,ele) {
+    $(ele).find('.clip').next('div').hide();
+  });
+  
+  $(".visible").live('click', function () { 
+    $(this).prev('div').toggle(function() {
+       $(this).css('visibility', 'hidden');
+     }, function() {
+       $(this).css('visibility', 'visibile');
+     });
+  });
+
 });
-
 
 function passwordcheck(pass) {
 
@@ -101,16 +120,6 @@ function passwordcheck(pass) {
 
   $("#pass_secure").css('width', w);
 }
-
-$(".clip").live('click', function () { 
-  $(this).children('img').toggle();
-  $(this).next('div').slideToggle("slow");
-  return false;
-}).next('div').hide();
-
-$(document).bind('csAjaxLoad', function(e,ele) {
-  $(ele).find('.clip').next('div').hide();
-});
 
 function cs_select_multiple(id, status) {
 
@@ -265,13 +274,6 @@ function cs_visible(id) {
     $("#" + id).css('visibility', 'visible');
 }
 
- $(".visible").live('click', function () { 
- $(this).prev('div').toggle(function() {
-    $(this).css('visibility', 'hidden');
-  }, function() {
-    $(this).css('visibility', 'visibile');
-  });
-});
 
 function cs_validate(language, module) {
   
@@ -417,7 +419,3 @@ function cs_bookmark(uri, title) {
     return true;
   }
 }
-
-});
-
-})(jQuery);
