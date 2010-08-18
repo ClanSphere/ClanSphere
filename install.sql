@@ -676,12 +676,12 @@ CREATE TABLE {pre}_metatags (
   UNIQUE (metatags_name)
 ){engine};
 
-INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('description', 'ClanSphere', 1);
-INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('keywords', 'ClanSphere', 1);
-INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('language', 'de,en', 1);
-INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('author', 'ClanSphere', 1);
-INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('publisher', 'ClanSphere', 1);
-INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('designer', 'ClanSphere', 1);
+INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('description', '', 1);
+INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('keywords', '', 1);
+INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('language', 'en,de', 1);
+INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('author', '', 1);
+INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('publisher', '', 1);
+INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('designer', '', 1);
 INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('robots', 'index,follow', 1);
 INSERT INTO {pre}_metatags (metatags_name, metatags_content, metatags_active) VALUES ('distribution', 'global', 1);
 
@@ -791,7 +791,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'img_ext', 'png');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_admin', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'developer', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere','maintenance_access','3');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'maintenance_access', '3');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'public', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_last', 512);
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', 512);
@@ -855,9 +855,9 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ga
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_size', '15360');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_width', '30');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('gbook', 'lock', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_width','470');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_height','100');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus','max_size','256000');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus', 'max_width', '470');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus', 'max_height', '100');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus', 'max_size', '256000');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('members', 'label', 'members');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('messages', 'max_space', '20');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('messages', 'del_time', '10');
@@ -880,7 +880,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('pa
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'def_height_rotimg', '70');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'max_size_rotimg', '512000');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'method', 'rotation');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner','last_id','1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'last_id', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('replays', 'file_size', '10000000');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('replays', 'file_type', 'wmv,avi');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('shoutbox', 'max_text', '100');
