@@ -338,13 +338,14 @@ function cs_tokenizer_split($content)
 
 function cs_tokenizer_parse($template)
 {
+  global $cs_main;
   $parts = count($template);
 
   for($i = 1; $i < $parts; $i++)
   {
     if(is_array($template[$i]))
     {
-      if(isset($template[$i]['noajax']))
+      if(isset($template[$i]['noajax']) OR empty($cs_main['ajax']))
         $template[$i] = cs_templatefile(array_flip($template[$i]));
       else
         $template[$i] = cs_wrap_templatefile(array_flip($template[$i]));
