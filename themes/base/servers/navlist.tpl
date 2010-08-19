@@ -4,7 +4,7 @@
 	    	<td class="centerb">{servers:hostname}</td>
 	  	</tr>   
 	  	<tr>
-	    	<td class="centerb"><img src="{page:path}{servers:map}" alt="" /></td>
+	    	<td class="centerb"><img src="{page:path}{servers:mappic}" alt="" /></td>
 	  	</tr> 
 	  	{if:live}
 	  		<tr>
@@ -16,7 +16,7 @@
 	    		<td class="leftb"><b>{lang:game_navlist}</b><br />{servers:game_descr}</td>
 	  		</tr>
 	  		<tr>
-	    		<td class="leftb"><b>{lang:map_navlist}</b><br />{servers:mapname}</td>
+	    		<td class="leftb"><b>{lang:map_navlist}</b><br />{servers:map}</td>
 	  		</tr>
 	  		<tr>
 	    		<td class="leftb"><b>{lang:players_navlist}</b><br />{servers:num_players} / {servers:max_players}</td>

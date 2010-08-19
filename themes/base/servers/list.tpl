@@ -40,7 +40,7 @@
 	        				</tr>
 	        				<tr>
 	          					<td class="leftc">{lang:players}</td>
-	          					<td class="leftb">{servers:num_players} / {servers:max_players} ({servers:num_bots})</td>
+	          					<td class="leftb">{servers:num_players} / {servers:max_players}</td>
 	        				</tr>   
 	        				<tr>
 	          					<td class="leftc">{lang:pass}</td>

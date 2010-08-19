@@ -94,6 +94,16 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 							$data['servers'][$run]['mappic'] = 'mods/servers/maps/' . $cs_servers[$run]['servers_class'] . '/default.jpg';
 						}
 					}
+					elseif(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
+						$data['servers'][$run]['map'] = $server[$run]['mapname'];
+						if(file_exists('mods/servers/maps/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
+							$data['servers'][$run]['mappic'] = 'mods/servers/maps/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
+						}
+						else {
+							$data['servers'][$run]['mappic'] = 'mods/servers/maps/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+						}
+					}
+						
 
 					/* if TS View, use teamspeak:// */
 					if($cs_servers[$run]['servers_class'] == 'ts2' OR $cs_servers[$run]['servers_class'] == 'ts3') {
