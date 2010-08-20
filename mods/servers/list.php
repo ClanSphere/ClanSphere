@@ -44,7 +44,6 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 				$gq->setFilter('stripcolor');
 				$results[$run] = $gq->requestData();
 				$server[$run] = $results[$run][0];
-
 				if(!empty($server[$run]['gq_online'])) {
 					$data['servers'][$run] = $server[$run];
 					$data['servers'][$run]['if']['playersexist'] = false;
@@ -52,6 +51,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 					$data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
 					$data['servers'][$run]['if']['live'] = true;
 					$data['servers'][$run]['pass'] = empty($server[$run]['password']) ? $cs_lang['no'] : $cs_lang['yes'];
+					$data['servers'][$run]['num_players'] = 0;
 					if(!isset($server[$run]['game_descr']) OR empty($server[$run]['game_descr'])) {
 						$data['servers'][$run]['game_descr'] = $server[$run]['gamename'];
 					}
@@ -66,12 +66,8 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 							$data['servers'][$run]['max_players'] = $server[$run]['sv_maxclients'];
 						}
 					}
-					if(!isset($server[$run]['num_players'])) {
-						if(isset($server[$run]['clients'])) {
-							$data['servers'][$run]['num_players'] = $server[$run]['clients'];
-						}
-					}
 					if(!empty($server[$run]['players'])) {
+						$data['servers'][$run]['num_players'] = count($server[$run]['players']);
 						$data['servers'][$run]['if']['playersexist'] = true;
 						foreach(array_keys($server[$run]['players'][0]) AS $value) {
 							$playershead[$run][]['name'] = $cs_lang[$value];
@@ -103,7 +99,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
 						}
 					}
-						
+
 
 					/* if TS View, use teamspeak:// */
 					if($cs_servers[$run]['servers_class'] == 'ts2' OR $cs_servers[$run]['servers_class'] == 'ts3') {

@@ -19,7 +19,7 @@
  */
 
 
-define('GAMEQ_BASE', dirname(__FILE__) . '/GameQ/');
+define('GAMEQ_BASE', dirname(__FILE__) . '/');
 
 require_once GAMEQ_BASE . 'Buffer.php';
 require_once GAMEQ_BASE . 'Config.php';
