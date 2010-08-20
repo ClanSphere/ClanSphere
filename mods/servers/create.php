@@ -160,7 +160,7 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
 	array('name' => 'Half-Life (old Protocol)', 'servers_class' => 'halflife;hlold'),
 	array('name' => 'Halo: Combat Evolved', 'servers_class' => 'gamespy2;halo'),
 	array('name' => 'Halo 2', 'servers_class' => 'gamespy2;halo2'),
-	array('name' => 'Heretic 2', 'servers_class' => 'gamespy;heretic'),
+	array('name' => 'Heretic 2', 'servers_class' => 'gamespy;heretic2'),
 	array('name' => 'Hexen World', 'servers_class' => 'quake2;hexen'),
 	array('name' => 'Homeworld 2', 'servers_class' => 'gamespy;homeworld2'),
 	array('name' => 'IGI 2', 'servers_class' => 'gamespy;igi2'),
@@ -170,18 +170,20 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
 	array('name' => 'Kingpin: Life of Crime', 'servers_class' => 'quake2;kingpin'),
 	array('name' => 'Killing Floor', 'servers_class' => 'unreal2;killingfloor'),
 	array('name' => 'Natural Selection', 'servers_class' => 'source;naturalsel'),
-//	array('name' => 'OpenTTD', 'servers_class' => 'openttd'),
-//	array('name' => 'Quake 1 / Quakeworld', 'servers_class' => 'q1'),
 	array('name' => 'Quake 2', 'servers_class' => 'quake2;quake2'),
-	array('name' => 'Quake 3 Arena', 'servers_class' => 'quake3;quake3'),
+	array('name' => 'Quake 3 Arena', 'servers_class' => 'quake3;quake3a'),
 	array('name' => 'Quake 4', 'servers_class' => 'quake3;quake4'),
+	array('name' => 'SWAT 4', 'servers_class' => 'gamespy;swat4'),
+	array('name' => 'TeamSpeak 2', 'servers_class' => 'ts2;ts2'),
+	array('name' => 'TeamSpeak 3', 'servers_class' => 'ts3;ts3'),
+	array('name' => 'Unreal Tournament', 'servers_class' => 'gamespy;ut'),
+	array('name' => 'Unreal Tournament 3', 'servers_class' => 'ut3;ut3'),
+	array('name' => 'Unreal Tournament 2003', 'servers_class' => 'unreal2;ut2003'),
+	array('name' => 'Unreal Tournament 2004', 'servers_class' => 'unreal2;ut2004'),
 
-
-
+	//	  array('name' => 'OpenTTD', 'servers_class' => 'openttd'),
+	//	  array('name' => 'Quake 1 / Quakeworld', 'servers_class' => 'q1'),
 	//    array('name' => 'Elite Force', 'servers_class' => 'ef'),
-	//    
-	//
-	//
 	//    array('name' => 'Hidden &amp; Dangerous 2', 'servers_class' => 'hd2'),
 	//    array('name' => 'Jedi Knight: Jedi Academy / Jedi Knight 2', 'servers_class' => 'jedi'),
 	//    array('name' => 'Medal of Honor', 'servers_class' => 'mohaa'),
@@ -200,9 +202,7 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
 	//    array('name' => 'Unreal Tournament 2003 &amp; 2004 / Red Orchestra', 'servers_class' => 'ut2004'),
 	//    array('name' => 'Unreal Tournament 3', 'servers_class' => 'ut3'),
 	//    array('name' => 'Warsor', 'servers_class' => 'warsow')
-	array('name' => 'TeamSpeak 2', 'servers_class' => 'ts2;ts2'),
-	array('name' => 'TeamSpeak 3', 'servers_class' => 'ts3;ts3'),
-	array('name' => 'Wolfenstein: Enemy Territory', 'servers_class' => 'quake3;wet'),
+
 	);
 	$run = 0;
 	foreach($server_array AS $class) {

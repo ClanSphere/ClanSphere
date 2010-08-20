@@ -57,20 +57,20 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 
 						if(isset($server[$run]['map']) && !empty($server[$run]['map'])) {
 							$data['servers'][$run]['map'] = $server[$run]['map'];
-							if(file_exists('mods/servers/maps/' . $cs_servers[$run]['servers_class'] . '/' . $data['servers'][$run]['map'] . '.jpg')) {
-								$data['servers'][$run]['mappic'] = 'mods/servers/maps/' . $cs_servers[$run]['servers_class'] . '/' . $data['servers'][$run]['map'] . '.jpg';
+							if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_class'] . '/' . $data['servers'][$run]['map'] . '.jpg')) {
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_class'] . '/' . $data['servers'][$run]['map'] . '.jpg';
 							}
 							else {
-								$data['servers'][$run]['mappic'] = 'mods/servers/maps/' . $cs_servers[$run]['servers_class'] . '/default.jpg';
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_class'] . '/default.jpg';
 							}
 						}
 						elseif(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
 							$data['servers'][$run]['map'] = $server[$run]['mapname'];
-							if(file_exists('mods/servers/maps/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
-								$data['servers'][$run]['mappic'] = 'mods/servers/maps/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
+							if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
 							}
 							else {
-								$data['servers'][$run]['mappic'] = 'mods/servers/maps/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
 							}
 						}
 
