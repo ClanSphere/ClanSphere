@@ -42,7 +42,8 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 
 				if(!empty($server[$run]['gq_online'])) {
 					$data['servers'][$run]['if']['live'] = true;
-					$data['servers'][$run]['map'] = 'mods/servers/maps/no_response.jpg';
+					$data['servers'][$run]['map'] = '';
+					$data['servers'][$run]['mappic'] = 'uploads/servers/no_response.jpg';
 					$data['servers'][$run]['mapname'] = '';
 					$data['servers'][$run]['max_players'] = isset($server[$run]['max_players']) ? $server[$run]['max_players'] : 0;
 					$data['servers'][$run]['num_players'] = isset($server[$run]['num_players']) ? $server[$run]['num_players'] : 0;

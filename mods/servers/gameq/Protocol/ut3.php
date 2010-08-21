@@ -60,7 +60,13 @@ class GameQ_Protocol_ut3 extends GameQ_Protocol_gamespy3
         $this->mv('p268435704',  'frag_limit');
         $this->mv('p268435705',  'time_limit');
         $this->mv('p268435703',  'numbots');
+        
         $this->mv('p268435717',  'stock_mutators');
+        $this->mv('p268435706',  'num_players');
+        $this->mv('NumPublicConnections',  'sv_maxclients');
+        $this->mv('OwningPlayerName',  'hostname');
+//        OwningPlayerName
+//        NumPublicConnections
 
         // Put custom mutators into an array
         $this->res['custom_mutators'] = explode("\x1c", $this->res['custom_mutators']);

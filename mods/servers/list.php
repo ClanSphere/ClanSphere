@@ -32,23 +32,33 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 		for($run=0; $run<count($cs_servers); $run++) {
 			$data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
 			$data['servers'][$run]['if']['live'] = false;
-			$data['servers'][$run]['map'] = 'mods/servers/maps/no_response.jpg';
+			$data['servers'][$run]['mappic'] = '';
+			$data['servers'][$run]['mappic'] = 'uploads/servers/no_response.jpg';
 			$data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
 			$data['servers'][$run]['if']['playersexist'] = false;
 			$server_query_ex = explode(";",$cs_servers[$run]['servers_class']);
 			$cs_servers[$run]['servers_class'] = $server_query_ex[0];
 			$cs_servers[$run]['servers_game'] = $server_query_ex[1];
 			if(!empty($cs_servers[$run]['servers_stats'])) {
-				$gq->addServer(0, array($cs_servers[$run]['servers_class'],$cs_servers[$run]['servers_ip'],$cs_servers[$run]['servers_port']));
+				if($cs_servers[$run]['servers_game'] == 'ut3') {
+					$gq->addServer(0, array($cs_servers[$run]['servers_class'],$cs_servers[$run]['servers_ip'],$cs_servers[$run]['servers_query']));
+				}
+				else {
+					$gq->addServer(0, array($cs_servers[$run]['servers_class'],$cs_servers[$run]['servers_ip'],$cs_servers[$run]['servers_port']));
+				}
 				$gq->setOption('timeout', 200);
 				$gq->setFilter('stripcolor');
 				$results[$run] = $gq->requestData();
 				$server[$run] = $results[$run][0];
+
 				if(!empty($server[$run]['gq_online'])) {
 					$data['servers'][$run] = $server[$run];
 					$data['servers'][$run]['if']['playersexist'] = false;
 					$data['servers'][$run]['ip'] = $cs_servers[$run]['servers_ip'];
 					$data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
+					if($cs_servers[$run]['servers_game'] == 'ut3') {
+						$data['servers'][$run]['port'] = $cs_servers[$run]['servers_query'];
+					}
 					$data['servers'][$run]['if']['live'] = true;
 					$data['servers'][$run]['pass'] = empty($server[$run]['password']) ? $cs_lang['no'] : $cs_lang['yes'];
 					$data['servers'][$run]['num_players'] = 0;
