@@ -21,7 +21,10 @@ $max_step = 8;
 $ayear = cs_datereal('Y');
 $aday = cs_datereal('j');
 $amonth = cs_datereal('n');
-$mon = array($cs_lang['jan'], $cs_lang['feb'], $cs_lang['mar'], $cs_lang['apr'], $cs_lang['mai'], $cs_lang['jun'], $cs_lang['jul'], $cs_lang['aug'], $cs_lang['sept'], $cs_lang['okt'], $cs_lang['nov'], $cs_lang['dez']);
+
+$mon = array($cs_lang['January'], $cs_lang['February'], $cs_lang['March'], $cs_lang['April'],
+             $cs_lang['May'], $cs_lang['June'], $cs_lang['July'], $cs_lang['August'],
+             $cs_lang['September'], $cs_lang['October'], $cs_lang['November'], $cs_lang['December']);
 
 $vyear = $ayear;
 $vmon = $amonth - $max_step;
