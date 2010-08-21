@@ -29,20 +29,16 @@ if (($ayear <= $year) && ($ayear >= ($year - $year_min + 1))){
 }
 
 // other months from given years
-$where = "";
-for ($run=0; $run < $year_min; $run++){
-  $where .= "count_month LIKE '%" . ($year - $run) . "' AND count_mode = 0";
-  if ($run < ($year_min - 1)){
-    $where .= " OR ";
-  }
-}
-$cs_arcmon = cs_sql_select(__FILE__, 'count_archiv', 'count_month, count_num', $where, 0, 0, 0);
+$cs_arcmon = cs_sql_select(__FILE__, 'count_archiv', 'count_month, count_num', "count_mode = 0", 0, 0, 0);
 $count_arcmon = count($cs_arcmon);
 for ($run=0; $run < $count_arcmon; $run++){
   $date = explode("-", $cs_arcmon[$run]['count_month']);
   $days = cs_datereal('t', mktime(0,0,0,(int)$date[0],1,$year));
 
-  $data['countall'][((int)$date[1]) - $year + $year_min - 1]['value'] += $cs_arcmon[$run]['count_num'];
+  $place = ((int)$date[1]) - $year + $year_min - 1;
+  if ($place >= 0 && $place < $year_min){
+    $data['countall'][$place]['value'] += $cs_arcmon[$run]['count_num'];
+  }
 }
 
 echo cs_subtemplate(__FILE__,$data,'count','statsall');
