@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2010.0 Final >> 2010-08-XX
+ClanSphere 2010.0 >> 2010-08-XX
 ___________________________________________________________
 
 -> Added new optional template placeholders func:stylesheet and func:javascript (hajo)
@@ -10,9 +10,11 @@ ___________________________________________________________
 -> Added page separation to cache info site since there could be many files now (hajo)
 -> Added cs_url_self function for url sharing with two example template placeholders (hajo)
    {ajax:navaddthis} for addthis.com and {ajax:navbookmark} for simple bookmarking and url checks
+-> Reworked mod count (astmaih)
+-> Reworked mod servers (fr33z3m4n)
 -> Updated CKEditor to 3.4.0 (hajo)
 
--- Fixed a few bugs that were reported at "Trac" --
+-- Fixed alot of bugs that were reported at "Trac" --
 
 
 ClanSphere 2010.0 RC 2 Patch 2 >> 2010-07-30
