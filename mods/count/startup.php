@@ -83,7 +83,9 @@ if(!empty($account['access_count']))
 
     $year = cs_datereal('Y');
     $timer = mktime(0, 0, 0, $month, 1, $year);
+    $timer2 = $timer - 86400;
     $cond = "count_time < '" .$timer . "'";
+    $last_day = cs_sql_count(__FILE__,'count',$cond . " AND count_time > '" . $timer2 . "'");
     $count_month = cs_sql_count(__FILE__,'count',$cond);
 
     $month_archieve = cs_sql_select(__FILE__, 'count_archiv', 'SUM(count_num) AS count', 'count_mode = "1"', 0, 0, 0);
@@ -110,7 +112,7 @@ if(!empty($account['access_count']))
     }
 
     //Save the newest month
-    $save = array('last_archiv' => $month, 'last_archiv_day' => 1);
+    $save = array('last_archiv' => $month, 'last_archiv_day' => 1, 'count_lastday' => $last_day);
 
     require_once 'mods/clansphere/func_options.php';
 

@@ -11,5 +11,10 @@ $daystart = cs_timediff($daystart, 1);
 $yes_start = $daystart - 86400;
 $yes_stop = $daystart - 1;
 
-$where = 'count_time > \'' . $yes_start . '\' AND count_time < \'' . $yes_stop . '\'';
-echo cs_sql_count(__FILE__,'count',$where);
+if ($tday == 1){
+  $op_counter = cs_sql_option(__FILE__, 'counter');
+  echo $op_counter['count_lastday'];
+} else {
+  $where = 'count_time > \'' . $yes_start . '\' AND count_time < \'' . $yes_stop . '\'';
+  echo cs_sql_count(__FILE__,'count',$where);
+}
