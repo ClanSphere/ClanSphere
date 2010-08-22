@@ -6,13 +6,17 @@ $cs_lang = cs_translate('wars');
 $cs_option = cs_sql_option(__FILE__,'wars');
 $data = array();
 
+$squad_id = empty($_GET['squadid']) ? '' : (int) $_GET['squadid'];
+
 $select = 'war.games_id AS games_id, cln.clans_short AS clans_short, war.wars_score1 AS wars_score1, '
         . 'war.wars_score2 AS wars_score2, war.wars_date AS wars_date, sqd.squads_name AS squads_name, '
         . 'war.wars_id AS wars_id, cat.categories_id AS categories_id, cat.categories_name AS categories_name';
 $from = 'wars war INNER JOIN {pre}_categories cat ON war.categories_id = cat.categories_id '
       . 'INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id INNER JOIN {pre}_squads sqd ON war.squads_id = sqd.squads_id';
 $order = 'wars_date DESC';
-$cs_wars = cs_sql_select(__FILE__,$from,$select,"war.wars_status = 'played'",$order,0,$cs_option['max_navlist']);
+$where = empty($squad_id) ? "war.wars_status = 'played'" : "war.wars_status = 'played' AND war.squads_id = '" . $squad_id . "'";
+
+$cs_wars = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$cs_option['max_navlist']);
 
 if (!empty($cs_wars)) {
 
