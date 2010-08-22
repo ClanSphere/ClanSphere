@@ -75,6 +75,16 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 							}
 						}
 
+						$select = 'maps_name, maps_picture, server_name';
+						$where = 'server_name = \'' . $data['servers'][$run]['map'] . '\'';
+						$sqlmap = cs_sql_select(__FILE__,'maps',$select,$where,0,0,1);
+						if(!empty($sqlmap)) {
+							$data['servers'][$run]['map'] = $sqlmap['maps_name'];
+							if(file_exists('uploads/maps/' . $sqlmap['maps_picture'])) {
+								$data['servers'][$run]['mappic'] = 'uploads/maps/' . $sqlmap['maps_picture'];
+							}
+						}
+
 						if(!isset($server[$run]['max_players'])) {
 							if(isset($server[$run]['sv_maxclients'])) {
 								$data['servers'][$run]['max_players'] = $server[$run]['sv_maxclients'];

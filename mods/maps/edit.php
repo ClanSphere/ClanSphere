@@ -63,7 +63,7 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
   if (empty($_POST['submit']) || !empty($error)) {
 
     $maps_id = empty($_POST['submit']) ? (int) $_GET['id'] : $_POST['maps_id'];
-    $cells = 'games_id, maps_name, maps_text, maps_picture';
+    $cells = 'games_id, maps_name, maps_text, maps_picture, server_name';
     $data['maps'] = cs_sql_select(__FILE__,'maps',$cells,'maps_id = \''.$maps_id.'\'');
     $data['maps']['maps_id'] = empty($error) ? (int) $_GET['id'] : (int) $_POST['maps_id'];
     $data['maps']['message'] = empty($error) ? $cs_lang['fill_in'] : $cs_lang['error_occured'] . $error;
@@ -94,6 +94,7 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
 
     $cs_maps['games_id'] = (int) $_POST['games_id'];
     $cs_maps['maps_name'] = $_POST['maps_name'];
+    $cs_maps['server_name'] = $_POST['server_name'];
     $cs_maps['maps_text'] = $_POST['maps_text'];
 
     $maps_id = (int) $_POST['maps_id'];

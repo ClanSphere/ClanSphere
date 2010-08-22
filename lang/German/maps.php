@@ -11,6 +11,7 @@ $cs_lang['fill_in']      = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
 $cs_lang['game']  = 'Spiel';
 $cs_lang['text']  = 'Text';
 
+$cs_lang['servername'] = 'Name auf dem Server';
 $cs_lang['pic_up']    = 'Bild hochladen';
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['max_width'] = 'Maximale Breite: ';
