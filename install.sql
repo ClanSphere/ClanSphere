@@ -621,6 +621,7 @@ CREATE TABLE {pre}_maps (
   maps_name varchar(100) NOT NULL default '',
   maps_text text,
   maps_picture varchar(80) NOT NULL default '',
+  server_name varchar(100) NOT NULL default '',
   PRIMARY KEY (maps_id)
 ){engine};
 

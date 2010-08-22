@@ -11,6 +11,7 @@ $cs_lang['fill_in']    = 'Please fill out as many fields as possible.';
 $cs_lang['game']    = 'Game';
 $cs_lang['text']    = 'Text';
 
+$cs_lang['servername'] = 'Name on Server';
 $cs_lang['pic_up']    = 'Upload picture';
 $cs_lang['pic_infos']  = 'Informationbox';
 $cs_lang['max_width']  = 'Maximum width: ';

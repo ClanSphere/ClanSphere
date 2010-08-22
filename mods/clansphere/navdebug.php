@@ -35,6 +35,7 @@ $nav_array = array(
   'replays/navlist',
   'search/navlist',
   'servers/navlist',
+  'servers/navrandom',
   'shoutbox/navlist',
   'shoutbox/navlist2',
   'users/navbirth',
