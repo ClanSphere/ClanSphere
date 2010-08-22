@@ -45,9 +45,8 @@ class GameQ_Protocol_ut3 extends GameQ_Protocol_gamespy3
         $this->res = $this->r->fetch();
 
         // Move some stuff around
-        $this->mv('hostname', 'OwningPlayerName');
         $this->mv('p1073741825', 'mapname');
-        $this->mv('p1073741826', 'gametype');
+        $this->mv('p1073741826', 'gamename');
         $this->mv('p1073741827', 'servername');
         $this->mv('p1073741828', 'custom_mutators');
         $this->mv('gamemode',    'open');
@@ -64,9 +63,7 @@ class GameQ_Protocol_ut3 extends GameQ_Protocol_gamespy3
         $this->mv('p268435717',  'stock_mutators');
         $this->mv('p268435706',  'num_players');
         $this->mv('NumPublicConnections',  'sv_maxclients');
-        $this->mv('OwningPlayerName',  'hostname');
-//        OwningPlayerName
-//        NumPublicConnections
+        $this->mv('EngineVersion',  'shortversion');
 
         // Put custom mutators into an array
         $this->res['custom_mutators'] = explode("\x1c", $this->res['custom_mutators']);
