@@ -182,18 +182,20 @@ function cs_templatefile($matches)
   }
 
   # only one get parameter is allowed
+  $param = '';
   if(!empty($matches[2])) {
     if(empty($matches[3]) AND $pos = strpos($matches[2], '=')) {
       $matches[3] = substr($matches[2], $pos + 1);
       $matches[2] = substr($matches[2], 0, $pos);
     }
-    $_GET[$matches[2]] = $matches[3];
+    $param = $matches[2];
+    $_GET[$param] = $matches[3];
   }
 
-  return cs_filecontent($file);
+  return cs_filecontent($file, $param);
 }
 
-function cs_filecontent($file)
+function cs_filecontent($file, $param = '')
 {
   global $account, $cs_main;
 
@@ -201,6 +203,9 @@ function cs_filecontent($file)
   include $file;
   $content = ob_get_contents();
   ob_end_clean();
+
+  if(!empty($param))
+    unset($_GET[$param]);
 
   return $content;
 }
