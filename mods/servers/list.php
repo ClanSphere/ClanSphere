@@ -32,7 +32,6 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 		for($run=0; $run<count($cs_servers); $run++) {
 			$data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
 			$data['servers'][$run]['if']['live'] = false;
-			$data['servers'][$run]['mappic'] = '';
 			$data['servers'][$run]['mappic'] = 'uploads/servers/no_response.jpg';
 			$data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
 			$data['servers'][$run]['if']['playersexist'] = false;

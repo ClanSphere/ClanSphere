@@ -58,7 +58,7 @@
 		{unless:live}
 	  			<tr>
 	    			<td class="centerb">{servers:info}</td>
-	    			<td class="centerb"><img src="{page:path}{servers:map}" alt="" /></td>
+	    			<td class="centerb"><img src="{page:path}{servers:mappic}" alt="" /></td>
 	  			</tr>
 		{stop:live}
 		</table>
