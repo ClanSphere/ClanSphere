@@ -15,7 +15,7 @@
     <td class="leftb"><input type="text" name="maps_name" value="{maps:maps_name}" maxlength="80" size="40" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:folder_yellow} {lang:servername} *</td>
+    <td class="leftc">{icon:folder_yellow} {lang:servername}</td>
     <td class="leftb"><input type="text" name="server_name" value="{maps:server_name}" maxlength="80" size="40" /></td>
   </tr>   
   <tr>

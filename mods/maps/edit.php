@@ -8,8 +8,8 @@ $files_gl = cs_files();
 
 $data = array();
 
-$img_max['width'] = 150;
-$img_max['height'] = 150;
+$img_max['width'] = 500;
+$img_max['height'] = 500;
 $img_max['size'] = 51200;
 $img_filetypes = array('gif','jpg','png');
 
