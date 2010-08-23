@@ -44,7 +44,7 @@
   {stop:iban}
   {if:bic}
   <tr>
-    <td class="leftb">BIC-Nummer:</td>
+    <td class="leftb">{lang:bic}</td>
     <td class="leftc">{kt:account_bic}</td>
   </tr>
   {stop:bic}

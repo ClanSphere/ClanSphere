@@ -46,8 +46,8 @@ $cs_lang['rss_info']  = 'Server Details';
 $cs_lang['servername'] = 'Servername';
 $cs_lang['serverip'] = 'Server IP';
 $cs_lang['serverport'] = 'Server Port'; 
-$cs_lang['Erweiterter'] = 'Extensions';
-$cs_lang['Serverstatus'] = 'Live Status';
+$cs_lang['advanced'] = 'Advanced';
+$cs_lang['serverstatus'] = 'Live Status';
 $cs_lang['proto'] = 'Log';
 $cs_lang['serverquerry'] = 'Query Port';
 $cs_lang['serverspiel'] = 'Game';
@@ -113,5 +113,5 @@ $cs_lang['version_navlist'] = 'Version: ';
 $cs_lang['response_navlist'] = 'Ping: ';
 $cs_lang['players_navlist'] = 'Players: ';
 $cs_lang['map_navlist'] = 'Map: ';
-
+$cs_lang['more_info'] = 'More information';
 $cs_lang['no_connect'] = 'Could not connect to server. Live status is not possible.';

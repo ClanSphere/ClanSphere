@@ -1,6 +1,6 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">Turniere - Starten</td>
+    <td class="headb">{lang:mod_name} - {lang:start}</td>
   </tr>
   <tr>
     <td class="leftc">{lang:reduce}</td>

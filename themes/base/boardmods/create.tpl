@@ -24,7 +24,7 @@
     </td>
   </tr>
   <tr>
-    <td class="leftc">{icon:access} Rechte</td><td class="leftb">
+    <td class="leftc">{icon:access} {lang:access}</td><td class="leftb">
       <input type="checkbox" name="boardmods_modpanel" value="1" {bm:boardmods_modpanel} />{lang:modpanel}<br />
       <input type="checkbox" name="boardmods_edit" value="1" {bm:boardmods_edit} />{lang:edit}<br />
       <input type="checkbox" name="boardmods_del" value="1" {bm:boardmods_del} />{lang:remove}

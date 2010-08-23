@@ -37,7 +37,7 @@
     <td class="leftb"><input type="password" name="password" value="" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" autocomplete="off" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:password} Sicherheitsstufe:</td>
+    <td class="leftc">{icon:password} {lang:secure}</td>
     <td class="leftb">
       <div style="float:left; background-image:url(/symbols/votes/vote03.png); width:100px; height:13px;">
         <div style="float:left; background-image:url(/symbols/votes/vote01.png); width: 1%; height:13px;" id="pass_secure"></div>

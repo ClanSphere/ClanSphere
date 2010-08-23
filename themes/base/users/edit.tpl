@@ -39,8 +39,8 @@
   <td class="leftc">{icon:gpg} {lang:state}</td>
   <td class="leftb">
     <select name="data[users_active]">
-      <option value="0" {users:state_deactivated}>Deaktiviert</option>
-      <option value="1" {users:state_activated}>Aktiviert</option>
+      <option value="0" {users:state_deactivated}>{lang:not_active}</option>
+      <option value="1" {users:state_activated}>{lang:active}</option>
     </select>
   </td>
   </tr>

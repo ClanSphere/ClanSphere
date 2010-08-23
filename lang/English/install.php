@@ -146,6 +146,9 @@ $cs_lang['classmates'] = 'Classmates';
 $cs_lang['full_install'] = 'Complete Installation';
 $cs_lang['module_select'] = 'Select Module';
 
+$cs_lang['mark_all'] = 'Mark all';
+$cs_lang['unmark_all'] = 'Unmark all';
+
 $cs_lang['database_modselect'] = 'Please select datdabase &raquo; modules';
 $cs_lang['select_module'] = 'Please select the modules to be installed';
 $cs_lang['sys_module'] = 'System Modules';

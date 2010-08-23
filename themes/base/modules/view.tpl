@@ -38,7 +38,7 @@
     <td class="leftb">{mod:url}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:icons} Icons</td>
+    <td class="leftc">{icon:icons} {lang:icon}</td>
     <td class="leftb">{mod:icon_48}  - {mod:icon_16}</td>
   </tr>
   <tr>

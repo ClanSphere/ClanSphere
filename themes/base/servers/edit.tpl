@@ -35,10 +35,10 @@
     </td>
   </tr>  
   <tr>
-    <td class="headb" colspan="2">{lang:Erweiterter} - {lang:Serverstatus}</td>
+    <td class="headb" colspan="2">{lang:advanced} - {lang:serverstatus}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:kate} {lang:Serverstatus} *</td>
+    <td class="leftc">{icon:kate} {lang:serverstatus} *</td>
     <td class="leftb">
       <select name="servers_stats">
         {loop:stats}
@@ -63,14 +63,14 @@
     <td class="leftb"><input type="text" name="servers_query"  value="{create:servers_query}" maxlength="200" size="10" /></td>
   </tr>
   <tr>
-    <td class="headb" colspan="2">{lang:Erweiterter} - {lang:order}</td>
+    <td class="headb" colspan="2">{lang:advanced} - {lang:order}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:serverorder}</td>
     <td class="leftb"><input type="text" name="servers_order"  value="{create:servers_order}" maxlength="3" size="3" /></td>
   </tr>
   <tr>
-    <td class="headb" colspan="2">{lang:Erweiterter} - {lang:liveoff}</td>
+    <td class="headb" colspan="2">{lang:advanced} - {lang:liveoff}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:type}</td>

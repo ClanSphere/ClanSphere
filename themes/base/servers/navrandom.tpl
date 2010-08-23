@@ -21,7 +21,7 @@
     		<td class="leftb"><b>{lang:players_navlist}</b><br />{servers:num_players} / {servers:max_players}</td>
   		</tr>
   		<tr>
-    		<td class="centerb"><a href="{url:servers_list}&id={servers:id}">Weitere Infos</a>
+    		<td class="centerb"><a href="{url:servers_list}&id={servers:id}">{lang:more_info}</a>
     	</tr>
 	{stop:live}
   	{unless:live}

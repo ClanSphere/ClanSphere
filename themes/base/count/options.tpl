@@ -73,7 +73,7 @@
         {lang:hex}</td>
     </tr>
     <tr>
-      <td class="leftc">{icon:ksysguard} Optionen</td>
+      <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="submit" name="submit" value="{lang:edit}" />
               </td>
     </tr>

@@ -143,6 +143,9 @@ $cs_lang['employees'] = 'Mitarbeiter';
 $cs_lang['teammates'] = 'Mitspieler';
 $cs_lang['classmates'] = 'Mitsch&uuml;ler';
 
+$cs_lang['mark_all'] = 'Alle markieren';
+$cs_lang['unmark_all'] = 'Alle demarkieren';
+
 $cs_lang['database_modselect'] = 'Datenbank &raquo; Module ausw&auml;hlen';
 $cs_lang['full_install'] = 'Komplettinstallation';
 $cs_lang['module_select'] = 'Module ausw&auml;hlen';

@@ -56,7 +56,7 @@
     </td>
   </tr>
   <tr>
-    <td class="leftc">{icon:access} Zugriff</td>
+    <td class="leftc">{icon:access} {lang:access}</td>
     <td class="leftb" colspan="3">
       <select name="gallery_access">
         {access:options}

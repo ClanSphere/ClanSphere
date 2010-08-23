@@ -242,8 +242,8 @@
       <td class="leftb"><input type="checkbox" name="wizard" value="1" checked=checked /></td>
     </tr>
     <tr>
-      <td class="centerb" colspan="2"><input type="button" name="sel_all" value="Alle markieren" onclick="return check_all();" />
-        <input type="button" name="sel_all" value="Alle demarkieren" onclick="return decheck_all();" /></td>
+      <td class="centerb" colspan="2"><input type="button" name="sel_all" value="{lang:mark_all}" onclick="return check_all();" />
+        <input type="button" name="sel_all" value="{lang:unmark_all}" onclick="return decheck_all();" /></td>
     <tr>
       <td class="centerb" colspan="2"><br />
         <input type="hidden" name="module_select" value="1">
