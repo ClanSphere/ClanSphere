@@ -6,7 +6,15 @@
     <td class="leftb">{users:body}</td>
   </tr>
 </table>
-<br />
+<div><br /></div>
+{unless:allowed}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
+  <tr>
+    <td class="centerc"><a href="{url:users_manage}">{lang:continue}</a></td>
+  </tr>
+</table>
+{stop:allowed}
+{if:allowed}
 <form method="post" action="{form:action}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};">
   <tr>
@@ -44,15 +52,12 @@
     </select>
   </td>
   </tr>
-  {if:access_4}
   <tr>
     <td class="leftc">{icon:password} {lang:password}</td>
     <td class="leftb"><input type="submit" name="sendpw" value="{lang:pwd_new}" /></td>
   </tr>
-  {stop:access_4}
 </table>
-{if:access_4}
-<br />
+<div><br /></div>
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width};"> 
    <tr>
     <td class="headb">{lang:column}</td>
@@ -172,12 +177,11 @@
   </tr>
   <tr>
     <td class="leftc"> {icon:ksysguard} {lang:options}</td>
-    <td class="leftb" colspan="2"><input type="submit" name="submit" value="{lang:edit}" />
-          </td>
+    <td class="leftb" colspan="2">
+      <input type="submit" name="submit" value="{lang:edit}" />
+      <input type="hidden" name="id" value="{users:users_id}" />
+    </td>
   </tr>
 </table>
-
-{stop:access_4}
-<input type="hidden" name="id" value="{users:users_id}" />
-
 </form>
+{stop:allowed}
