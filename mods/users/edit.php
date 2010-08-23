@@ -22,7 +22,7 @@ if($account['access_clansphere'] >= $target_user['access_clansphere'] AND
    $account['access_users'] >= $target_user['access_users'])
   $data['if']['allowed'] = true;
 
-# if target user is granted more than the current user deny accees
+# if target user is granted more than the current user deny access
 if(empty($data['if']['allowed'])) {
   $data['users']['body'] = $cs_lang['access_denied'];
   echo cs_subtemplate(__FILE__,$data,'users','edit');
