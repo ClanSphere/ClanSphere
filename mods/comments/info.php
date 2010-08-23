@@ -12,7 +12,7 @@ $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['mod_text'];
 $mod_info['icon']    = 'irc_protocol';
-$mod_info['show']    = array('clansphere/admin' => 3,'options/roots' => 4);
+$mod_info['show']    = array('clansphere/admin' => 3,'options/roots' => 5);
 $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = TRUE;
