@@ -22,7 +22,7 @@
     <td class="leftb"><input type="text" name="servers_port"  value="{create:servers_port}" maxlength="15" size="10" /></td>
   </tr> 
   <tr>
-    <td class="leftc">{icon:kedit} {lang:serverspiel} *</td>
+    <td class="leftc">{icon:kedit} {lang:servergame} *</td>
     <td class="leftb">
       <select name="games_id" onchange="cs_gamechoose(this.form)">
         <option value="">----</option>
@@ -59,7 +59,7 @@
     </td>
   </tr>
   <tr>
-    <td class="leftc">{icon:kate} {lang:serverquerry} *</td>
+    <td class="leftc">{icon:kate} {lang:serverquery} *</td>
     <td class="leftb"><input type="text" name="servers_query"  value="{create:servers_query}" maxlength="200" size="10" /></td>
   </tr>
   <tr>

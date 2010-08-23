@@ -96,9 +96,9 @@
       <td class="leftc">{icon:folder_public} {lang:maintenance_access}</td>
       <td class="leftb">
         <select name="maintenance_access">
-          <option value="3" {options:main_acc3_checked}>Level 3</option>
-          <option value="4" {options:main_acc4_checked}>Level 4</option>
-          <option value="5" {options:main_acc5_checked}>Level 5</option>
+          <option value="3" {options:main_acc3_checked}>{lang:level} 3</option>
+          <option value="4" {options:main_acc4_checked}>{lang:level} 4</option>
+          <option value="5" {options:main_acc5_checked}>{lang:level} 5</option>
         </select>
       </td>
     </tr>    

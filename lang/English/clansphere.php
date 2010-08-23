@@ -219,6 +219,7 @@ $cs_lang['del_install_file'] = 'Warning: It is strongly recommended to remove th
 $cs_lang['url_rewrite'] = 'Pretty URLs';
 $cs_lang['maintenance_access'] = 'Maintenance access';
 $cs_lang['missing_htaccess'] = 'Mod-rewrite cannot be activated until, depending on the webserver, the .htaccess or web.config file is found.';
+$cs_lang['level'] = 'Level';
 
 // Charset
 $cs_lang['body_charset'] = 'This page provides help in finding charset related problems';
