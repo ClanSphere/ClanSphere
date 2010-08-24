@@ -14,16 +14,16 @@ function cs_cache_clear() {
 
 function cs_cache_delete($name) {
 
-  apc_delete($name);
+  if(apc_exists($name))
+    apc_delete($name);
 }
 
 function cs_cache_load($name) {
 
-  $content = apc_fetch($name, $success);
-  if($success === false)
-    return $success;
+  if(apc_exists($name))
+    return apc_fetch($name);
   else
-    return $content;
+    return false;
 }
 
 function cs_cache_save($name, $content) {

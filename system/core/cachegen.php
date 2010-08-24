@@ -59,10 +59,10 @@ function cs_cache_template($filename) {
   $tpl_data = cs_cache_load($tpl_temp);
 
   if($tpl_data != false)
-    if(filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
+    if($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
     else
-      unlink('uploads/cache/' . $tpl_temp . '.tmp');
+      cs_cache_delete($tpl_temp);
 
   $tpl_data = file_get_contents($tpl_real);
   $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
@@ -102,10 +102,10 @@ function cs_cache_theme($mod, $action) {
   if($cs_main['def_theme'] != 'base' and !file_exists($tpl_real))
     $tpl_real = 'themes/base/' . $mod . '/' . $action . '.tpl';
   if($tpl_data != false)
-    if(filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
+    if($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
     else
-      unlink('uploads/cache/' . $tpl_temp . '.tmp');
+      cs_cache_delete($tpl_temp);
 
   if(!file_exists($tpl_real))
   {
