@@ -26,6 +26,9 @@ function cs_cache_info() {
 
   ksort($form);
   $form = array_values($form);
+  if(count($info['cache_list']) != count($form))
+    cs_error('APC User Cache', 'cs_cache_info - Duplicate entries found: ' . (count($info['cache_list']) - count($form)));
+
   return $form;
 }
 
@@ -41,6 +44,8 @@ function cs_cache_save($name, $content) {
 
   if(is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
+  elseif(apc_exists($name))
+    cs_error($name, 'cs_cache_save - This name is already placed in the cache');
   else
     apc_store($name, $content);
 

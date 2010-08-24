@@ -46,6 +46,8 @@ function cs_cache_save($name, $content) {
   global $cs_main;
   if(is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
+  elseif(file_exists('uploads/cache/' . $name . '.tmp'))
+    cs_error($name, 'cs_cache_save - This name is already placed in the cache');
   elseif(is_writeable('uploads/cache/')) {
     $store = serialize($content);
     $cache_file = 'uploads/cache/' . $name . '.tmp';
