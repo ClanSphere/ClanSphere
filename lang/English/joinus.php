@@ -65,3 +65,17 @@ $cs_lang['stage_4_text'] = ': min. 8 Character, 3 small Letters, 2 large Letters
 $cs_lang['rules'] = 'Rules';
 $cs_lang['rules2'] = 'read and accepted';
 $cs_lang['no_rules'] = '- You have to read and accept the rules';
+
+$cs_lang['no_name'] = '- A name is required';
+$cs_lang['no_surname'] = '- A surname is required';
+$cs_lang['no_place'] = '- A place is required';
+$cs_lang['no_icq'] = '- A icq is required';
+$cs_lang['no_msn'] = '- A msn is required';
+$cs_lang['no_game'] = '- A game is required';
+$cs_lang['no_squad'] = '- A squad is required';
+$cs_lang['no_webcon'] = '- A inet connection is required';
+$cs_lang['no_lanact'] = '- A lanparty activity is required';
+$cs_lang['no_info'] = '- A info is required';
+
+// Options
+$cs_lang['options_info'] = 'Definieren Sie die gew&uuml;nschten Pflichtfelder.';

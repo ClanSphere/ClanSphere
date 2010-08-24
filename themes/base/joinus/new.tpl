@@ -18,11 +18,11 @@
     <td class="leftb"><input type="text" name="joinus_nick" value="{join:joinus_nick}" size="40" maxlength="40" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:personal} {lang:vorname}</td>
+    <td class="leftc">{icon:personal} {lang:vorname} {if:vorname}*{stop:vorname}</td>
     <td class="leftb"><input type="text" name="joinus_name" value="{join:joinus_name}" size="50" maxlength="80" /></td>  
   </tr>
   <tr>
-    <td class="leftc">{icon:personal} {lang:surname}</td>
+    <td class="leftc">{icon:personal} {lang:surname} {if:surname}*{stop:surname}</td>
     <td class="leftb"><input type="text" name="joinus_surname" value="{join:joinus_surname}" size="50" maxlength="80" /></td>  
   </tr>  
     {if:nopass}
@@ -75,11 +75,11 @@
     <td class="leftb">{join:date}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:starthere} {lang:place}</td>
+    <td class="leftc">{icon:starthere} {lang:place} {if:place}*{stop:place}</td>
     <td class="leftb"><input type="text" name="joinus_place" value="{join:joinus_place}" size="40" maxlength="40" /></td>
   </tr>
     <tr>
-      <td class="leftc">{icon:locale} {lang:country}</td>
+      <td class="leftc">{icon:locale} {lang:country} {if:country}*{stop:country}</td>
       <td class="leftb">
         <select name="joinus_country"  onchange="document.getElementById('country_1').src='{page:path}symbols/countries/' + this.form.joinus_country.options[this.form.joinus_country.selectedIndex].value + '.png'">
        {loop:country}
@@ -93,15 +93,15 @@
     <td class="leftb"><input type="text" name="joinus_email" value="{join:joinus_email}" size="40" maxlength="40" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:licq} {lang:icq}</td>
+    <td class="leftc">{icon:licq} {lang:icq} {if:icq}*{stop:icq}</td>
     <td class="leftb"><input type="text" name="joinus_icq" value="{join:joinus_icq}" size="12" maxlength="12" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
+    <td class="leftc">{icon:msn_protocol} {lang:msn} {if:msn}*{stop:msn}</td>
     <td class="leftb"><input type="text" name="joinus_msn" value="{join:joinus_msn}" size="40" maxlength="40" /></td>
   </tr>  
   <tr>
-    <td class="leftc">{icon:package_games} {lang:game}</td>
+    <td class="leftc">{icon:package_games} {lang:game} {if:game}*{stop:game}</td>
     <td class="leftb">
      <select name="games_id"  onchange="document.getElementById('game').src='{page:path}uploads/games/' + this.form.games_id.options[this.form.games_id.selectedIndex].value + '.gif'">
      <option value="0">---</option>
@@ -113,15 +113,15 @@
     </td>
   </tr>
   <tr>
-    <td class="leftc">{icon:yast_group_add} {lang:squad}</td>
+    <td class="leftc">{icon:yast_group_add} {lang:squad} {if:squad}*{stop:squad}</td>
     <td class="leftb">{squad:list}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:network} {lang:webcon}</td>
+    <td class="leftc">{icon:network} {lang:webcon} {if:webcon}*{stop:webcon}</td>
     <td class="leftb"><input type="text" name="joinus_webcon" value="{join:joinus_webcon}" size="50" maxlength="80" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:network_local} {lang:lanact}</td>
+    <td class="leftc">{icon:network_local} {lang:lanact} {if:lanact}*{stop:lanact}</td>
     <td class="leftb"><input type="text" name="joinus_lanact" value="{join:joinus_lanact}" size="50" maxlength="80" /></td>
     </tr>
   <tr>
@@ -129,7 +129,7 @@
     <td class="leftb">{date:join}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:documentinfo} {lang:info}<br /><br />{abcode:smileys}</td>
+    <td class="leftc">{icon:documentinfo} {lang:info} {if:more}*{stop:more}<br /><br />{abcode:smileys}</td>
     <td class="leftb">{abcode:features}<br />
       <textarea class="rte_abcode" name="joinus_more" cols="50" rows="12" id="joinus_more">{join:joinus_more}</textarea>
     </td>

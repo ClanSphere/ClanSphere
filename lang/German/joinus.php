@@ -65,3 +65,16 @@ $cs_lang['stage_4_text'] = ': mind. 8 Zeichen, 3 kleine Buchstaben, 2 gro&szlig;
 $cs_lang['rules'] = 'Regeln';
 $cs_lang['rules2'] = 'gelesen und akzeptiert';
 $cs_lang['no_rules'] = '- Die Regeln wurden nicht gelesen und akzeptiert';
+$cs_lang['no_name'] = '- Es wurde kein Vorname eingetragen';
+$cs_lang['no_surname'] = '- Es wurde kein Nachname eingetragen';
+$cs_lang['no_place'] = '- Es wurde kein Wohnort eingetragen';
+$cs_lang['no_icq'] = '- Es wurde keine ICQ-Nummer eingetragen';
+$cs_lang['no_msn'] = '- Es wurde keine MSN-Nummer eingetragen';
+$cs_lang['no_game'] = '- Es wurde kein Spiel ausgew&auml;hlt';
+$cs_lang['no_squad'] = '- Es wurde kein Squad ausgew&auml;hlt';
+$cs_lang['no_webcon'] = '- Es wurde keine Inet-Verbindung eingetragen';
+$cs_lang['no_lanact'] = '- Es wurden keine Lanparty Besuche eingetragen';
+$cs_lang['no_info'] = '- Es wurden keine weiteren Informationen eingetragen';
+
+// Options
+$cs_lang['options_info'] = 'Definieren Sie die gew&uuml;nschten Pflichtfelder.';

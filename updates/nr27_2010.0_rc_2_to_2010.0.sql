@@ -5,3 +5,15 @@ UPDATE {pre}_options SET options_value = 59 WHERE options_mod = 'clansphere' AND
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'count_lastday', '0');
 
 ALTER TABLE {pre}_maps ADD server_name varchar(100) NOT NULL default '';
+
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'vorname', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'surname', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'place', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'country', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'icq', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'msn', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'game', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'squad', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'webcon', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'lanact', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'more', '1');
