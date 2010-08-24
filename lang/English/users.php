@@ -116,6 +116,7 @@ $cs_lang['login'] = 'Login';
 $cs_lang['login_messages']  = 'Login messages appear here.';
 $cs_lang['pwd'] = 'Password';
 $cs_lang['user_notfound'] = 'User not found in the database.';
+$cs_lang['user_login_notfound'] = 'Benutzer and/or Password wrong. Plesae try again.';
 $cs_lang['wrong_pwd'] = 'Wrong password.';
 $cs_lang['closed'] = 'This user is deactivated.';
 $cs_lang['method_form'] = 'Successfully logged in.';

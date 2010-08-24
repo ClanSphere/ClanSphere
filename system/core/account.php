@@ -88,9 +88,9 @@ if(empty($_SESSION['users_id'])) {
       if(empty($login_db['users_active']) || !empty($login_db['users_delete']))
         $login['error'] = 'closed'; 
       elseif($login['method'] == 'cookie' AND ($login['cookietime'] < $login_db['users_cookietime'] OR $login['cookietime'] > cs_time()))
-        $login['error'] = 'user_notfound';
+        $login['error'] = 'user_login_notfound';
       elseif($login['method'] == 'cookie' AND $login_db['users_cookiehash'] != $login['cookiehash'])
-        $login['error'] = 'wrong_pwd';
+        $login['error'] = 'user_login_notfound';
       else {
         $login['mode'] = TRUE;
 
@@ -101,9 +101,9 @@ if(empty($_SESSION['users_id'])) {
       }
     }
     elseif(!empty($login_db['users_id']))
-      $login['error'] = 'wrong_pwd';
+      $login['error'] = 'user_login_notfound';
     else
-      $login['error'] = 'user_notfound';
+      $login['error'] = 'user_login_notfound';
 
     if(!empty($login['cookie']) AND !empty($login['mode'])) {
       $login['method'] = 'form_cookie';
