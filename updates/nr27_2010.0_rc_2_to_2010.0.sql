@@ -17,3 +17,4 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('jo
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'webcon', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'lanact', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'more', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'login', 'nick');

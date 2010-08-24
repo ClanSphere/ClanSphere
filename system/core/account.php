@@ -67,7 +67,11 @@ if(empty($_SESSION['users_id'])) {
     if(isset($_POST['cookie'])) {
       $login['cookie'] = $_POST['cookie'];
     }
+    $data['options'] = cs_sql_option(__FILE__,'users');
     $login_where = "users_nick = '" . cs_sql_escape($login['nick']) . "'";
+    if($data['options']['login'] == 'email') {
+    	$login_where = "users_email = '" . cs_sql_escape($login['nick']) . "'";
+    }
   }
   elseif(isset($_COOKIE['cs_userid']) AND isset($_COOKIE['cs_cookietime']) AND isset($_COOKIE['cs_cookiehash'])) {
     $login['method'] = 'cookie';
