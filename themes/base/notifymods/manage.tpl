@@ -15,11 +15,11 @@
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
     <td class="headb">{sort:users_nick} {lang:user}</td>
-    <td class="headb">GB</td>
-    <td class="headb">Join</td>
-    <td class="headb">Fight</td>
-    <td class="headb">Down</td>
-    <td class="headb">Board</td>
+    <td class="headb">{lang:gbook}</td>
+    <td class="headb">{lang:joinus}</td>
+    <td class="headb">{lang:fightus}</td>
+    <td class="headb">{lang:files}</td>
+    <td class="headb">{lang:board}</td>
     <td class="headb" colspan="2">{lang:options}</td>
   </tr>
   {loop:nm}
