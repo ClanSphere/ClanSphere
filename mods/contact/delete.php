@@ -10,6 +10,7 @@ $contact_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
 if(isset($_GET['agree'])) {
   cs_sql_delete(__FILE__,'mail',$contact_id);
+  cs_cache_delete('count_mail_unread');
   cs_redirect($cs_lang['del_true'], 'contact');
 }
 elseif(isset($_GET['cancel']))   

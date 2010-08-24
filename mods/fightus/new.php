@@ -150,6 +150,9 @@ elseif(!empty($data['if']['form'])) {
   $fightus_cells = array_keys($cs_fightus);
   $fightus_save = array_values($cs_fightus);
   cs_sql_insert(__FILE__,'fightus',$fightus_cells,$fightus_save);
+
+  cs_cache_delete('count_fightus');
+
   require_once('mods/notifymods/functions.php');
   notifymods_mail('fightus', $account['users_id']);
   

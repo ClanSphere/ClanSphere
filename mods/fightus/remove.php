@@ -10,6 +10,7 @@ $fightus_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 
 if(isset($_GET['agree'])) {
   cs_sql_delete(__FILE__,'fightus',$fightus_id);
+  cs_cache_delete('count_fightus');
   cs_redirect($cs_lang['fight_del_true'], 'fightus');
 }
 

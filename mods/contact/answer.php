@@ -78,6 +78,7 @@ else {
   $cells = array('mail_answered', 'mail_answertime', 'mail_answer', 'mail_answeruser');
   $save = array(1, cs_time(), $mail['message'], $account['users_id']);
   cs_sql_update(__FILE__,'mail',$cells,$save,$id);
+  cs_cache_delete('count_mail_unread');
 }
 
 $data['mail']['mail_name'] = cs_secure($cs_answer_mail['mail_name']);

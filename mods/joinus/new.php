@@ -208,8 +208,9 @@ elseif(!empty($data['if']['form'])) {
   $joinus_cells = array_keys($data['join']);
   $joinus_save = array_values($data['join']);
   cs_sql_insert(__FILE__,'joinus',$joinus_cells,$joinus_save);
-
   $joinus_id = cs_sql_insertid(__FILE__);
+
+  cs_cache_delete('count_joinus');
 
   require_once('mods/notifymods/functions.php');
   notifymods_mail('joinus', $account['users_id']);

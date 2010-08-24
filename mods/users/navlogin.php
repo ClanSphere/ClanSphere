@@ -60,16 +60,21 @@ else {
   }
 
   if(empty($data['if']['panel']) AND $account['access_contact'] >= 3) {
-    $mail_count_new = cs_sql_count(__FILE__,'mail','mail_answered = 0');
-    $data['contact']['new'] = $mail_count_new;
+    $data['contact']['new'] = cs_cache_load('count_mail_unread');
+    if($data['contact']['new'] === false) 
+      $data['contact']['new'] = cs_cache_save('count_mail_unread', (int) cs_sql_count(__FILE__,'mail','mail_answered = 0'));
   }
 
   if(empty($data['if']['panel']) AND $account['access_joinus'] >= 3) {
-    $data['joinus']['joinus_count'] = cs_sql_count(__FILE__,'joinus');
+    $data['joinus']['joinus_count'] = cs_cache_load('count_joinus');
+    if($data['joinus']['joinus_count'] === false) 
+      $data['joinus']['joinus_count'] = cs_cache_save('count_joinus', (int) cs_sql_count(__FILE__,'joinus'));
   }
 
   if(empty($data['if']['panel']) AND $account['access_fightus'] >= 3) {
-    $data['fightus']['fightus_count'] = cs_sql_count(__FILE__,'fightus');
+    $data['fightus']['fightus_count'] = cs_cache_load('count_fightus');
+    if($data['fightus']['fightus_count'] === false) 
+      $data['fightus']['fightus_count'] = cs_cache_save('count_fightus', (int) cs_sql_count(__FILE__,'fightus'));
   }
 
   if(!empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) {

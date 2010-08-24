@@ -131,7 +131,9 @@ else {
   $mail_cells = array('mail_name','mail_time','mail_ip','mail_email','mail_icq','mail_msn','mail_firm','categories_id','mail_subject','mail_message');
   $mail_save = array($mail['name'],cs_time(),$ip,$mail['email'],$mail['icq'],$mail['msn'],$mail['firm'],$mail['categories_id'],$mail['why'],$mail['text']);
   cs_sql_insert(__FILE__,'mail',$mail_cells,$mail_save);
-  
+
+  cs_cache_delete('count_mail_unread');
+
   cs_mail($cs_contact['def_mail'],$mail['why'],$message,$mail['email']);
 }
 
