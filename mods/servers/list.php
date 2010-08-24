@@ -55,11 +55,20 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 					$data['servers'][$run]['if']['playersexist'] = false;
 					$data['servers'][$run]['ip'] = $cs_servers[$run]['servers_ip'];
 					$data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
+					$data['servers'][$run]['pass'] = '--';
 					if($cs_servers[$run]['servers_game'] == 'ut3') {
 						$data['servers'][$run]['port'] = $cs_servers[$run]['servers_query'];
 					}
 					$data['servers'][$run]['if']['live'] = true;
-					$data['servers'][$run]['pass'] = empty($server[$run]['password']) ? $cs_lang['no'] : $cs_lang['yes'];
+					if(isset($server[$run]['password'])) {
+						$data['servers'][$run]['pass'] = empty($server[$run]['password']) ? $cs_lang['no'] : $cs_lang['yes'];
+					}
+					if(isset($server[$run]['pswrd'])) {
+						$data['servers'][$run]['pass'] = empty($server[$run]['pswrd']) ? $cs_lang['no'] : $cs_lang['yes'];
+					}
+					if(isset($server[$run]['g_needpass'])) {
+						$data['servers'][$run]['pass'] = empty($server[$run]['g_needpass']) ? $cs_lang['no'] : $cs_lang['yes'];
+					}
 					$data['servers'][$run]['num_players'] = 0;
 					if(!isset($server[$run]['game_descr']) OR empty($server[$run]['game_descr'])) {
 						$data['servers'][$run]['game_descr'] = $server[$run]['gamename'];
