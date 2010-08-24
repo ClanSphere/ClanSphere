@@ -10,7 +10,6 @@ $def_cell = array('options_value');
 $def_cont = array($turn);
 cs_sql_update(__FILE__,'options',$def_cell,$def_cont,0,$opt_where . "'welcome'");
 
-if(file_exists('uploads/cache/op_wizard.tmp'))
-  cs_unlink('cache', 'op_wizard.tmp');
+cs_cache_delete('op_wizard');
 
 cs_redirect(empty($turn) ? $cs_lang['turn_off'] : $cs_lang['turn_on'],'users','home');

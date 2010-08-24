@@ -14,12 +14,17 @@ function cs_cache_clear() {
   cs_sql_update(__FILE__, 'options', array('options_value'), array($unicode), 0, $where); 
  }
 
+function cs_cache_delete($name) {
+
+  unlink('uploads/cache/' . $name . '.tmp');
+}
+
 function cs_cache_dirs($dir, $lang) {
 
   # $cs_lang and $cs_main are needed for info.php file content parsing
   global $cs_lang, $cs_main;
-  $filename = $dir . '_' . $lang;
-  $content = cs_cache_load($filename);
+  $cachename = $dir . '_' . $lang;
+  $content = cs_cache_load($cachename);
 
   if($content === false) {
     $startup = array();
@@ -56,30 +61,30 @@ function cs_cache_dirs($dir, $lang) {
     if($dir == 'mods' AND cs_cache_load('startup') === false)
       cs_cache_save('startup', array_keys($startup));
 
-    return cs_cache_save($filename, $info);
+    return cs_cache_save($cachename, $info);
   }
   else {
     return $content;
   }
 }
 
-function cs_cache_load($filename) {
+function cs_cache_load($name) {
 
-  if(!file_exists('uploads/cache/' . $filename . '.tmp'))
+  if(!file_exists('uploads/cache/' . $name . '.tmp'))
     return false;
   else
-    return unserialize(file_get_contents('uploads/cache/' . $filename . '.tmp'));
+    return unserialize(file_get_contents('uploads/cache/' . $name . '.tmp'));
 }
 
-function cs_cache_save($filename, $content) {
+function cs_cache_save($name, $content) {
 
   global $cs_main;
   if(is_bool($content)) {
-    cs_error('uploads/cache/' . $filename . '.tmp', 'cs_cache_save - It is not allowed to just store a boolean');
+    cs_error('uploads/cache/' . $name . '.tmp', 'cs_cache_save - It is not allowed to just store a boolean');
   }
   elseif(is_writeable('uploads/cache/')) {
     $store = serialize($content);
-    $cache_file = 'uploads/cache/' . $filename . '.tmp';
+    $cache_file = 'uploads/cache/' . $name . '.tmp';
     $save_cache = fopen($cache_file,'a');
     # set stream encoding if possible to avoid converting issues
     if(function_exists('stream_encoding'))
@@ -89,7 +94,7 @@ function cs_cache_save($filename, $content) {
     chmod($cache_file,0644);
   }
   elseif($cs_main['mod'] != 'install') {
-    cs_error('uploads/cache/' . $filename . '.tmp', 'cs_cache_save - Unable to write cache file');
+    cs_error('uploads/cache/' . $name . '.tmp', 'cs_cache_save - Unable to write cache file');
   }
   return $content;
 }

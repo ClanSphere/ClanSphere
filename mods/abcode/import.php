@@ -88,8 +88,8 @@ else {
     cs_sql_insert(__FILE__,'abcode',$sql_cells,$sql_saves);
   }
 
-  cs_unlink('cache', 'abcode_smileys.tmp');
-  cs_unlink('cache', 'abcode_content.tmp');
+  cs_cache_delete('abcode_smileys');
+  cs_cache_delete('abcode_content');
 
   cs_redirect($cs_lang['changes_done'],'abcode','manage');
 }

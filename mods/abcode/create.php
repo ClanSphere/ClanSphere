@@ -136,8 +136,8 @@ else {
     cs_sql_update(__FILE__,'abcode',$abcode2_cells,$abcode2_save,$getid['abcode_id']);
   }
 
-  cs_unlink('cache', 'abcode_smileys.tmp');
-  cs_unlink('cache', 'abcode_content.tmp');
+  cs_cache_delete('abcode_smileys');
+  cs_cache_delete('abcode_content');
 
   cs_redirect($cs_lang['create_done'],'abcode');
 }

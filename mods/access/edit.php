@@ -108,7 +108,7 @@ else {
   $access_save = array_values($cs_access);
   cs_sql_update(__FILE__,'access',$access_cells,$access_save,$access_id);
   
-  cs_unlink('cache', 'access_' . $access_id . '.tmp');
+  cs_cache_delete('access_' . $access_id);
   
   cs_redirect($cs_lang['changes_done'], 'access') ;
 }  

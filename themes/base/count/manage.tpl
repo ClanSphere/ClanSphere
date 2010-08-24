@@ -23,7 +23,7 @@
 <br />
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-<tr><td class="headb">oha
+<tr><td class="headb">
 {sort:count_id} {lang:id}</td>
 <td class="headb">
 {lang:ip}</td>

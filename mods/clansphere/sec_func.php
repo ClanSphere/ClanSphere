@@ -8,8 +8,7 @@ function cs_cspnews($all = 0) {
 
   $cs_lang = cs_translate('clansphere');
 
-  if(file_exists('uploads/cache/op_clansphere.tmp'))
-    cs_unlink('cache', 'op_clansphere.tmp');
+  cs_cache_delete('op_clansphere');
 
   $id = empty($_GET['sec_news']) ? 0 : (int) $_GET['sec_news'];
 

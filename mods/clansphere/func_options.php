@@ -12,7 +12,5 @@ function cs_optionsave ($mod, $save) {
     cs_sql_update(__FILE__,'options',$cells,$values,0,$condition . "'" . $options_name . "'");
   }
   
-  if (file_exists('uploads/cache/op_' . $mod . '.tmp'))
-    cs_unlink('cache', 'op_' . $mod . '.tmp');
-  
+  cs_cache_delete('op_' . $mod);
 }

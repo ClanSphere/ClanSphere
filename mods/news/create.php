@@ -268,7 +268,7 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   $news_save = array_values($cs_news);
   cs_sql_insert(__FILE__, 'news', $news_cells, $news_save);
   
-  cs_unlink('cache', 'news_publish.tmp');
+  cs_cache_delete('news_publish');
 
   if (!empty($cs_news['news_public']))
     include_once 'mods/news/rss.php';

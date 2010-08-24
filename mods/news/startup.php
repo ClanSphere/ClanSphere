@@ -37,7 +37,7 @@ if ($cs_main['mod'] == 'news' AND !empty($account['access_news'])) {
         cs_sql_update(__FILE__, 'news', array('news_public','news_time'), array('1',$publish[$run]['news_publishs_at']), $publish[$run]['news_id']);
     }
 
-    cs_unlink('cache', 'news_publish.tmp');
+    cs_cache_delete('news_publish');
 
     if (!empty($publish))
       include_once 'mods/news/rss.php';

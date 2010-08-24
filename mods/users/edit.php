@@ -257,8 +257,8 @@ else {
     $users_save = array_values($cs_user);
     cs_sql_update(__FILE__, 'users', $users_cells, $users_save, $users_id);
 
-    cs_unlink('cache', 'navbirth.tmp');
-    cs_unlink('cache', 'nextbirth.tmp');
+    cs_cache_delete('navbirth');
+    cs_cache_delete('nextbirth');
 
     cs_redirect($cs_lang['changes_done'], 'users');
   }

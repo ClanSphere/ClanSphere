@@ -244,7 +244,7 @@ else {
   $news_save = array_values($cs_news);
   cs_sql_update(__FILE__, 'news', $news_cells, $news_save, $news_id);
   
-  cs_unlink('cache', 'news_publish.tmp');
+  cs_cache_delete('news_publish');
 
   if(!empty($cs_news['news_public'])) {
     include_once('mods/news/rss.php');
