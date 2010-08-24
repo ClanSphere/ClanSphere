@@ -16,7 +16,8 @@ function cs_cache_clear() {
 
 function cs_cache_delete($name) {
 
-  unlink('uploads/cache/' . $name . '.tmp');
+  if(file_exists('uploads/cache/' . $name . '.tmp'))
+    unlink('uploads/cache/' . $name . '.tmp');
 }
 
 function cs_cache_dirs($dir, $lang) {
