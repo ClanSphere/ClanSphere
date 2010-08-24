@@ -54,3 +54,4 @@ $cs_lang['year']  = 'Year';
 $cs_lang['head_com_create']  = 'Create comments';
 $cs_lang['body_com_create']  = 'Please fill out all fields.';
 $cs_lang['page'] = 'Page';
+$cs_lang['all']  = 'All';

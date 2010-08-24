@@ -247,7 +247,6 @@ $cs_lang['key'] = 'Schl&uuml;ssel';
 $cs_lang['new_pwd'] = 'Passwort';
 
 $cs_lang['online']  = 'Online';
-$cs_lang['all']  = 'Alle';
 $cs_lang['count_users']   = 'Es sind %s Benutzer auf der Seite';
 
 $cs_lang['avatar'] = 'Avatar';
