@@ -21,6 +21,18 @@ function cs_cache_delete($name) {
     unlink('uploads/cache/' . $name . '.tmp');
 }
 
+function cs_cache_info() {
+
+  $info = cs_paths('uploads/cache');
+  unset($info['index.html'], $info['.htaccess'], $info['web.config']);
+
+  foreach($info AS $filename => $num)
+    $form[$filename] = array('name' => $filename, 'time' => (filemtime('uploads/cache/' . $filename) - date('Z')), 'size' => filesize('uploads/cache/' . $filename));
+
+  $form = array_values($form);
+  return $form;
+}
+
 function cs_cache_load($name) {
 
   if(!file_exists('uploads/cache/' . $name . '.tmp'))

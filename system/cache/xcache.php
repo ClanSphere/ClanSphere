@@ -17,6 +17,11 @@ function cs_cache_delete($name) {
     xcache_unset($name);
 }
 
+function cs_cache_info() {
+
+  return array();
+}
+
 function cs_cache_load($name) {
 
   if(xcache_isset($name))

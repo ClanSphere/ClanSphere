@@ -16,6 +16,11 @@ function cs_cache_delete($name) {
   eaccelerator_rm($name);
 }
 
+function cs_cache_info() {
+
+  return array();
+}
+
 function cs_cache_load($name) {
 
   $content = eaccelerator_get($name);

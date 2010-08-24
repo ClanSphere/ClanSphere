@@ -4,7 +4,6 @@
 
 function cs_cache_clear() {
 
-  apc_clear_cache();
   apc_clear_cache('user');
 
   $unicode = extension_loaded('unicode') ? 1 : 0;
@@ -16,6 +15,18 @@ function cs_cache_delete($name) {
 
   if(apc_exists($name))
     apc_delete($name);
+}
+
+function cs_cache_info() {
+
+  $info = apc_cache_info('user');
+  $form = array();
+  foreach($info['cache_list'] AS $num)
+    $form[$num['info']] = array('name' => $num['info'], 'time' => $num['mtime'], 'size' => $num['mem_size']);
+
+  ksort($form);
+  $form = array_values($form);
+  return $form;
 }
 
 function cs_cache_load($name) {

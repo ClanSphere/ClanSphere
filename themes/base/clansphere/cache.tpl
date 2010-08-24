@@ -1,9 +1,10 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="2">{lang:mod_name} - {lang:cache}</td>
+    <td class="headb" colspan="3">{lang:mod_name} - {lang:cache}</td>
   </tr>
   <tr>
-    <td class="leftb" style="width: 50%">{lang:total}: {count:files}</td>
+    <td class="leftb">{lang:total}: {count:total}</td>
+    <td class="centerb">{lang:size}: {count:size}</td>
     <td class="rightb">{pages:show}</td>
   </tr>
 </table>
@@ -19,13 +20,13 @@
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb">{lang:file}</td>
+    <td class="headb">{lang:name}</td>
     <td class="headb">{lang:date}</td>
     <td class="headb">{lang:size}</td>
   </tr>
   {loop:cache}
   <tr>
-    <td class="leftb">{cache:file}</td>
+    <td class="leftb">{cache:name}</td>
     <td class="leftb">{cache:date}</td>
     <td class="rightb">{cache:size}</td>
   </tr>
