@@ -7,29 +7,29 @@ $cs_lang = cs_translate('servers');
 $id = empty($_GET['id']) ? '' : (int) $_GET['id'];
 
 $results = array();
-$data = array('servers');
+$data = array('servers' => array());
 
 $data['if']['server'] = false;
 
-/* Test if fsockopen active */
+// Test if fsockopen active
 if (fsockopen("udp://127.0.0.1", 1)) {
 	include_once 'mods/servers/gameq/GameQ.php';
 
 	/* Get Server SQL-Data */
-	$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query';
-	$select .= ', servers_class, servers_stats, servers_order, servers_id';
+	$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order, servers_id';
 	$order = 'servers_order ASC';
 	$where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
 	$cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
+	$servers_count = count($cs_servers);
 
 	/* if Server in SQL */
-	if(!empty($cs_servers)) {
+	if(!empty($servers_count)) {
 		$data['if']['server'] = true;
 
 		/* Settings */
 		$gq = new GameQ();
 
-		for($run=0; $run<count($cs_servers); $run++) {
+		for($run=0; $run<$servers_count; $run++) {
 			$data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
 			$data['servers'][$run]['if']['live'] = false;
 			$data['servers'][$run]['mappic'] = 'uploads/servers/no_response.jpg';
