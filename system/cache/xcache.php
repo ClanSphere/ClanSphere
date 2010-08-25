@@ -4,8 +4,10 @@
 
 function cs_cache_clear() {
 
-  xcache_clear_cache();
-
+  $cache_count = xcache_count(XC_TYPE_VAR);
+  for($i = 0; $i < $cache_count; $i++)
+    xcache_clear_cache(XC_TYPE_VAR, $i);
+    
   $unicode = extension_loaded('unicode') ? 1 : 0;
   $where = "options_mod = 'clansphere' AND options_name = 'cache_unicode'";
   cs_sql_update(__FILE__, 'options', array('options_value'), array($unicode), 0, $where); 
@@ -34,6 +36,8 @@ function cs_cache_save($name, $content) {
 
   if(is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
+  if(xcache_isset($name))
+    cs_error($name, 'cs_cache_save - This name is already placed in the cache');
   else
     xcache_set($name, $content);
 
