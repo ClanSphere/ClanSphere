@@ -14,6 +14,8 @@ $cs_lang['empty_cache'] = 'Cache Dateien entfernen';
 $cs_lang['reload'] = 'Anzeige aktualisieren';
 $cs_lang['cache_cleared'] = 'Cache geleert';
 $cs_lang['size'] = 'Gr&ouml;&szlig;e';
+$cs_lang['size_of_page'] = 'Gr&ouml;&szlig;e der angezeigten Eintr&auml;ge';
+$cs_lang['used_cache_mode'] = 'Verwendeter Cache Modus';
 
 $cs_lang['wizard'] = 'Assistent';
 $cs_lang['task_done'] = 'Aufgabe erledigt markieren';

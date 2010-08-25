@@ -6,6 +6,7 @@ $cs_lang = cs_translate('clansphere');
 
 $content = cs_cache_info();
 
+$data['data']['cache_mode'] = $cs_main['cache_mode'];
 $data['info']['cache_cleared'] = '';
 $data['link']['reload'] = cs_url('clansphere','cache');
 $data['link']['empty_cache'] = cs_url('clansphere','cache','clear=1');

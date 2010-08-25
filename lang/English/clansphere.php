@@ -14,6 +14,8 @@ $cs_lang['empty_cache'] = 'Remove cache files';
 $cs_lang['reload'] = 'Reload view';
 $cs_lang['cache_cleared'] = 'Cache cleared';
 $cs_lang['size'] = 'Size';
+$cs_lang['size_of_page'] = 'Size of listed entries';
+$cs_lang['used_cache_mode'] = 'Used Cache Mode';
 
 $cs_lang['wizard'] = 'Wizard';
 $cs_lang['task_done'] = 'Mark task as done';

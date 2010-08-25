@@ -1,11 +1,14 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="headb" colspan="3">{lang:mod_name} - {lang:cache}</td>
+    <td class="headb" colspan="2">{lang:mod_name} - {lang:cache}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:total}: {count:total}</td>
-    <td class="centerb">{lang:size}: {count:size}</td>
     <td class="rightb">{pages:show}</td>
+  </tr>
+  <tr>
+    <td class="leftb">{lang:size_of_page}: {count:size}</td>
+    <td class="rightb">{lang:used_cache_mode}: {data:cache_mode}</td>
   </tr>
 </table>
 <br />
