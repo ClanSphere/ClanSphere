@@ -85,11 +85,8 @@ a:hover {
   background-color: #F0F0F0 !important;
 }
 #nav-left a:hover {
-  padding-left: 3px;
   border-right: 4px solid #BA1616;
-}
-#nav-left a:hover:before {
-  content:"» ";
+  text-decoration: underline;
 }
 * html #nav-left a:hover, *:first-child+html #nav-left a:hover {
   padding-left: 15px;
