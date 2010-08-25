@@ -220,10 +220,10 @@ function cs_init($predefined) {
   require_once 'system/core/gd.php';
   require_once 'system/core/cachegen.php';
 
-  $cs_main['cache_mode'] = empty($predefined['cache_mode']) ? 'file' : $predefined['cache_mode'];
-  if($cs_main['cache_mode'] != 'file' AND !extension_loaded($cs_main['cache_mode']))
-    $cs_main['cache_mode'] = 'file';
-  require_once 'system/cache/' . $cs_main['cache_mode'] . '.php';
+  $predefined['cache_mode'] = empty($predefined['cache_mode']) ? 'file' : $predefined['cache_mode'];
+  if($predefined['cache_mode'] != 'file' AND !extension_loaded($predefined['cache_mode']))
+    $predefined['cache_mode'] = 'file';
+  require_once 'system/cache/' . $predefined['cache_mode'] . '.php';
 
   if(version_compare($phpversion, '5.0', '<'))
     die(cs_error_internal('cs_init', 'PHP Version 5.0 or newer is required, but found ' . $phpversion));
