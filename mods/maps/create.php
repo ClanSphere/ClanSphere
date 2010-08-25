@@ -52,7 +52,7 @@ if (!empty($_POST['submit'])) {
 	}
 
 	$data['maps']['maps_name'] = empty($_POST['maps_name']) ? '' : $_POST['maps_name'];
-	$data['maps']['server_name'] = empty($_POST['server_name']) ? 0 : (int) $_POST['server_name'];
+	$data['maps']['server_name'] = empty($_POST['server_name']) ? 0 : $_POST['server_name'];
 	$data['maps']['maps_text'] = empty($_POST['maps_text']) ? '' : $_POST['maps_text'];
 	$data['maps']['games_id'] = empty($_POST['games_id']) ? 0 : (int) $_POST['games_id'];
 } else {

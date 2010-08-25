@@ -16,7 +16,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:folder_yellow} {lang:servername}</td>
-    <td class="leftb"><input type="text" name="server_name" value="{maps:server_name}" maxlength="80" size="40" /></td>
+    <td class="leftb"><input type="text" name="server_name" value="{maps:server_name}" maxlength="100" size="40" /></td>
   </tr>   
   <tr>
     <td class="leftc">{icon:package_games} {lang:game} *</td>
