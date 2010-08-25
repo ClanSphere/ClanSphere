@@ -21,7 +21,17 @@ function cs_cache_delete($name) {
 
 function cs_cache_info() {
 
-  return array();
+  $form = array();
+  $cache_count = xcache_count(XC_TYPE_VAR);
+  for($i = 0; $i < $cache_count; $i++) {
+    $info = xcache_list(XC_TYPE_VAR, $i);
+    foreach($info['cache_list'] AS $num => $data) {
+      $handle = $data['name'] . ' (' . $i . '.' . $num . ')';
+      $form[$handle] = array('name' => $handle, 'time' => $data['ctime'], 'size' => $data['size']);
+    }
+  }
+  ksort($form);
+  return array_values($form);
 }
 
 function cs_cache_load($name) {

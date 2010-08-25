@@ -19,8 +19,8 @@ function cs_cache_delete($name) {
 
 function cs_cache_info() {
 
-  $info = apc_cache_info('user');
   $form = array();
+  $info = apc_cache_info('user');
   foreach($info['cache_list'] AS $num => $data) {
     $handle = $data['info'] . ' (' . $num . ')';
     $form[$handle] = array('name' => $handle, 'time' => $data['mtime'], 'size' => $data['mem_size']);
