@@ -857,6 +857,17 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ga
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_size', '15360');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('games', 'max_width', '30');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('gbook', 'lock', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'vorname', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'surname', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'place', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'country', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'icq', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'msn', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'game', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'squad', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'webcon', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'lanact', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'more', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus', 'max_width', '470');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus', 'max_height', '100');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('linkus', 'max_size', '256000');
@@ -895,6 +906,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('sq
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'def_order', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('squads', 'label', 'squad');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('static', 'php_eval', '0');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'login', 'nick');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_width', '140');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_height', '170');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('users', 'max_size', '51200');
