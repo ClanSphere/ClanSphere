@@ -61,9 +61,9 @@ var Clansphere = {
       Clansphere.ajax.index = basepath.replace(basePathRegExp, "$2");
       
       if(!Clansphere.ajax.modRewrite) {
-        Clansphere.ajax.regex = new RegExp("^(?:.*?)?" + Clansphere.ajax.baseFile + "\\??(.+?)$","g");
+        Clansphere.ajax.regex = new RegExp("^(?:.*?)??" + Clansphere.ajax.baseFile + "\\??(.+?)$","g");
       } else {
-        Clansphere.ajax.regex = new RegExp("^(?:.*?)?" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/?(.+?)$","g");
+        Clansphere.ajax.regex = new RegExp("^(?:.*?)??" + Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + "/?(.+?)$","g");
       }
       
       Clansphere.ajax.checkUrlConsistency();
@@ -239,6 +239,7 @@ var Clansphere = {
         } else {
           target = action.replace(Clansphere.ajax.regex, Clansphere.ajax.baseFile + "?params=/$1");
         }
+        
         
         Clansphere.ajax.switchNavlistRefresher(false);
         Clansphere.ajax.toggleSpinner(1);
