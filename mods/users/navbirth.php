@@ -15,6 +15,7 @@ if($data['day'] != $thisday) {
   $where = "users_age LIKE '%-" .$data['day'] . "' AND users_hidden NOT LIKE '%users_age%' AND users_active = 1";
   $order = 'users_nick ASC';
   $data['users'] = cs_sql_select(__FILE__,'users',$select,$where,$order,0,0);
+  cs_cache_delete('navbirth');
   cs_cache_save('navbirth', $data);
 }
 
