@@ -10,7 +10,6 @@ $data = array('servers' => array());
 
 // Test if fsockopen active
 if (fsockopen("udp://127.0.0.1", 1)) {
-
 	include_once 'mods/servers/gameq/GameQ.php';
 
 	/* Get Server SQL-Data */
@@ -28,6 +27,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 
 		for($run=0; $run<$servers_count; $run++) {
 			$data['servers'][$run]['if']['live'] = false;
+			$data['servers'][$run]['mappic'] = 'uploads/servers/no_response.jpg';
 			$data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
 			$server_query_ex = explode(";",$cs_servers[$run]['servers_class']);
 			$cs_servers[$run]['servers_class'] = $server_query_ex[0];
@@ -54,36 +54,36 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 						$data['servers'][$run]['servers_port'] = $cs_servers[$run]['servers_port'];
 						if(isset($server[$run]['gamename']) AND !empty($server[$run]['gamename'])) {
 							$data['servers'][$run]['game_descr'] = $server[$run]['gamename'];
-						}
+					}
 
-						if(isset($server[$run]['map']) && !empty($server[$run]['map'])) {
-							$data['servers'][$run]['map'] = $server[$run]['map'];
-							if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_class'] . '/' . $data['servers'][$run]['map'] . '.jpg')) {
-								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_class'] . '/' . $data['servers'][$run]['map'] . '.jpg';
-							}
-							else {
-								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_class'] . '/default.jpg';
-							}
+					if(isset($server[$run]['map']) && !empty($server[$run]['map'])) {
+						$data['servers'][$run]['map'] = $server[$run]['map'];
+						if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['map'] . '.jpg')) {
+							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['map'] . '.jpg';
 						}
-						elseif(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
-							$data['servers'][$run]['map'] = $server[$run]['mapname'];
-							if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
-								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
-							}
-							else {
-								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
-							}
+						else {
+							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
 						}
+					}
+					elseif(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
+						$data['servers'][$run]['map'] = $server[$run]['mapname'];
+						if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
+							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
+						}
+						else {
+							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+						}
+					}
 
-						$select = 'maps_name, maps_picture, server_name';
-						$where = 'server_name = \'' . $data['servers'][$run]['map'] . '\'';
-						$sqlmap = cs_sql_select(__FILE__,'maps',$select,$where,0,0,1);
-						if(!empty($sqlmap)) {
-							$data['servers'][$run]['map'] = $sqlmap['maps_name'];
-							if(file_exists('uploads/maps/' . $sqlmap['maps_picture'])) {
-								$data['servers'][$run]['mappic'] = 'uploads/maps/' . $sqlmap['maps_picture'];
-							}
+					$select = 'maps_name, maps_picture, server_name';
+					$where = 'server_name = \'' . $data['servers'][$run]['map'] . '\'';
+					$sqlmap = cs_sql_select(__FILE__,'maps',$select,$where,0,0,1);
+					if(!empty($sqlmap)) {
+						$data['servers'][$run]['map'] = $sqlmap['maps_name'];
+						if(file_exists('uploads/maps/' . $sqlmap['maps_picture'])) {
+							$data['servers'][$run]['mappic'] = 'uploads/maps/' . $sqlmap['maps_picture'];
 						}
+					}
 
 						if(!isset($server[$run]['max_players'])) {
 							if(isset($server[$run]['sv_maxclients'])) {
@@ -100,23 +100,23 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 
 						/* if TS View, use teamspeak:// */
 						if($cs_servers[$run]['servers_class'] == 'ts3') {
-							$data['servers'][$run]['proto'] = 'teamspeak://';
+						$data['servers'][$run]['proto'] = 'teamspeak://';
 							$data['servers'][$run]['num_players'] = 0;
 							for($a=0; $a<count($server[$run]['teams']); $a++) {
 								$data['servers'][$run]['num_players'] = $data['servers'][$run]['num_players'] + $server[$run]['teams'][$a]['total_clients'];
 							}
 						}
-						else {
+					else {
 							$data['servers'][$run]['proto'] = 'hlsw://';
 						}
 
 						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['pass']) ? $cs_lang['no'] : $cs_lang['yes'];
 						$data['servers'][$run]['id'] = $cs_servers[$run]['servers_id'];
-						flush();
-					}
+					flush();
 				}
 			}
 		}
+	}
 	}
 	echo cs_subtemplate(__FILE__,$data,'servers','navlist');
 }
