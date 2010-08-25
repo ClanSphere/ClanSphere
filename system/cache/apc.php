@@ -21,15 +21,12 @@ function cs_cache_info() {
 
   $info = apc_cache_info('user');
   $form = array();
-  foreach($info['cache_list'] AS $num)
-    $form[$num['info']] = array('name' => $num['info'], 'time' => $num['mtime'], 'size' => $num['mem_size']);
-
+  foreach($info['cache_list'] AS $num => $data) {
+    $handle = $data['info'] . ' (' . $num . ')';
+    $form[$handle] = array('name' => $handle, 'time' => $data['mtime'], 'size' => $data['mem_size']);
+  }
   ksort($form);
-  $form = array_values($form);
-  if(count($info['cache_list']) != count($form))
-    cs_error('APC User Cache', 'cs_cache_info - Duplicate entries found: ' . (count($info['cache_list']) - count($form)));
-
-  return $form;
+  return array_values($form);
 }
 
 function cs_cache_load($name) {
