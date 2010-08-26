@@ -9,7 +9,10 @@ require_once 'mods/board/functions.php';
 $zugriff = 1;
 $check_pw = 1;
 $check_sq = 0;
-$board_id = empty($_REQUEST['id']) ? (int)$_REQUEST['where'] : (int)$_REQUEST['id'];
+
+$board_id = empty($_REQUEST['id']) ? 0 : (int) $_REQUEST['id'];
+if(!empty($_REQUEST['where']))
+  $board_id = (int) $_REQUEST['where']; 
 
 $cs_usertime = cs_sql_select(__FILE__, 'users', 'users_readtime', "users_id = " . $account["users_id"]);
 $cs_readtime = cs_time() - $cs_usertime['users_readtime'];
