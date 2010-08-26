@@ -12,7 +12,7 @@ ___________________________________________________________
 -> Added cs_url_self function for url sharing with two example template placeholders (hajo)
    {ajax:navaddthis} for addthis.com and {ajax:navbookmark} for simple bookmarking and url checks
 -> Added support for data memcache storage using apc or xcache php extension
-    Can be enabled inside main files like index.php by adding e.g. $cs_main['cache_mode'] = 'apc';
+    Can be enabled inside setup.php by adding e.g. $cs_main['cache_mode'] = 'apc';
 -> Reworked mod count (astmaih)
 -> Reworked mod servers (fr33z3m4n)
 -> Updated CKEditor to 3.4.0 (hajo)
