@@ -30,7 +30,7 @@ function cs_board_last($board_id) {
   $last_sql = cs_sql_select(__FILE__,$from,$cells,$where,'thr.threads_last_time DESC');
 
   if (empty($last_sql))
-    $last_sql = array('board_last_time' => 0, 'board_last_thread' => 0, 'board_last_threadid'] => 0, 'board_last_user' = 0, 'board_last_userid' => 0);
+    $last_sql = array('board_last_time' => 0, 'board_last_thread' => 0, 'board_last_threadid' => 0, 'board_last_user' => 0, 'board_last_userid' => 0);
   else {
     # fallback to creation if no last data is available
     if(empty($last_sql['board_last_user'])) {
