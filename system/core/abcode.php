@@ -386,13 +386,13 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[color\=(#*[\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
     $replace = preg_replace_callback("=\[size\=([\d]*?)\](.*?)\[/size\]=si","cs_abcode_size",$replace);
     $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si","cs_abcode_align",$replace);
-    $replace = preg_replace_callback("=\[list\=(.*?)\](.*?)\[/list\]=si","cs_abcode_list",$replace);
+    $replace = preg_replace_callback("=\[list\=([\w]*?)\](.*?)\[/list\]=si","cs_abcode_list",$replace);
     $replace = preg_replace_callback("=\[list\](.*?)\[/list\]=si","cs_abcode_list",$replace);
     $replace = preg_replace_callback("=\[url\=(.*?)\](.*?)\[/url\]=si","cs_abcode_url",$replace);
     $replace = preg_replace_callback("=\[url\](.*?)\[/url\]=i","cs_abcode_url",$replace);
-    $replace = preg_replace_callback('=\[flag\=(.*?)\]=i','cs_abcode_flag',$replace);
+    $replace = preg_replace_callback('=\[flag\=([\w]*?)\]=i','cs_abcode_flag',$replace);
     $replace = preg_replace_callback("=\[indent\=([\d]*?)\](.*?)\[/indent\]=si","cs_abcode_indent",$replace);
-    $replace = preg_replace_callback("=\[threadid\=(.*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
+    $replace = preg_replace_callback("=\[threadid\=([\w]*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
     $replace = preg_replace_callback("=\[h\=([\d]*?)\](.*?)\[/h\]=si","cs_abcode_h",$replace);
     $replace = preg_replace_callback("=\[hr\]=i","cs_abcode_hr",$replace);
     preg_match_all('=\[quote\=?(.*?)\]=si', $replace, $quote_sub);
