@@ -384,7 +384,7 @@ function cs_contentload($file) {
     $file = 'mods/users/login.php';
 
   $content = str_replace(array('{', '}'), array('&#123;', '&#125;'), cs_filecontent($file));
-  $content = preg_replace_callback('/<script([^>]*)>([^<]*)<\/script>/is', 'cs_revert_script_braces', $content);
+  $content = preg_replace_callback('/<script([^>]*?)>(.*?)<\/script>/is', 'cs_revert_script_braces', $content);
 
   return cs_content_append($content);
 }
