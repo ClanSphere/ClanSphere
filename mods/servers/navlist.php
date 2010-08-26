@@ -10,7 +10,7 @@ $data = array('servers' => array());
 
 // Test if fsockopen active
 if (fsockopen("udp://127.0.0.1", 1)) {
-	include_once 'mods/servers/gameq/GameQ.php';
+	include_once 'mods/servers/servers.php';
 
 	/* Get Server SQL-Data */
 	$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order, servers_id';
@@ -23,7 +23,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 	if(!empty($servers_count)) {
 
 		/* Settings */
-		$gq = new GameQ();
+		$objServers = Servers::__getInstance();
 
 		for($run=0; $run<$servers_count; $run++) {
 			$data['servers'][$run]['if']['live'] = false;
@@ -34,10 +34,8 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 			$cs_servers[$run]['servers_game'] = $server_query_ex[1];
 			if(!empty($cs_servers[$run]['servers_stats'])) {
 
-				$gq->addServer(0, array($cs_servers[$run]['servers_class'],$cs_servers[$run]['servers_ip'],$cs_servers[$run]['servers_port']));
-				$gq->setOption('timeout', 200);
-				$gq->setFilter('stripcolor');
-				$results[$run] = $gq->requestData();
+				$objServers->addServer(0, $cs_servers[$run]);
+				$results[$run] = $objServers->requestData();
 				$server[$run] = $results[$run][0];
 
 				if(!empty($server[$run]['gq_online'])) {
@@ -95,21 +93,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 								$data['servers'][$run]['num_players'] = $server[$run]['clients'];
 							}
 						}
-
-
-
-						/* if TS View, use teamspeak:// */
-						if($cs_servers[$run]['servers_class'] == 'ts3') {
-						$data['servers'][$run]['proto'] = 'teamspeak://';
-							$data['servers'][$run]['num_players'] = 0;
-							for($a=0; $a<count($server[$run]['teams']); $a++) {
-								$data['servers'][$run]['num_players'] = $data['servers'][$run]['num_players'] + $server[$run]['teams'][$a]['total_clients'];
-							}
-						}
-					else {
-							$data['servers'][$run]['proto'] = 'hlsw://';
-						}
-
+						$data['servers'][$run] = $objServers->setProtocolLink($cs_servers[$run], $data['servers'][$run]);
 						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['pass']) ? $cs_lang['no'] : $cs_lang['yes'];
 						$data['servers'][$run]['id'] = $cs_servers[$run]['servers_id'];
 					flush();

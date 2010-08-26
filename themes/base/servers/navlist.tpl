@@ -9,7 +9,7 @@
 	  	{if:live}
 	  		<tr>
 	    		<td class="leftb"><b>{lang:host_navlist}</b><br />
-	      			<a href="{servers:proto}{servers:servers_ip}:{servers:servers_port}">{servers:servers_ip}:{servers:servers_port}</a>
+	      			<a href="{servers:servers_link}">{servers:hostname}</a>
 	    		</td>
 	  		</tr>
 	  		<tr>
