@@ -27,7 +27,7 @@ function cs_cache_info() {
   unset($info['index.html'], $info['.htaccess'], $info['web.config']);
 
   foreach($info AS $filename => $num)
-    $form[$filename] = array('name' => $filename, 'time' => (filemtime('uploads/cache/' . $filename) - date('Z')), 'size' => filesize('uploads/cache/' . $filename));
+    $form[$filename] = array('name' => $filename, 'time' => filemtime('uploads/cache/' . $filename), 'size' => filesize('uploads/cache/' . $filename));
 
   $form = array_values($form);
   return $form;
