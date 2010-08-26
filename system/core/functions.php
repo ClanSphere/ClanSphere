@@ -34,6 +34,7 @@ function cs_error_internal($error = 0, $report = 0) {
   $cs_main['def_width'] = '100%';
   $cs_main['ajax'] = 0;
 
+  require_once 'system/cache/' . $cs_main['cache_mode'] . '.php';
 
   if(empty($account['users_lang']))
     $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'users_lang' => $cs_main['def_lang']);
@@ -218,7 +219,9 @@ function cs_init($predefined) {
   require_once 'system/core/abcode.php';
   require_once 'system/core/templates.php';
   require_once 'system/core/gd.php';
+
   require_once 'system/core/cachegen.php';
+  $cs_main['cache_mode'] = 'file';
 
   if(version_compare($phpversion, '5.0', '<'))
     die(cs_error_internal('cs_init', 'PHP Version 5.0 or newer is required, but found ' . $phpversion));
@@ -228,7 +231,6 @@ function cs_init($predefined) {
   else
     file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
 
-  $cs_main['cache_mode'] = empty($cs_main['cache_mode']) ? 'file' : $cs_main['cache_mode'];
   if($cs_main['cache_mode'] != 'file' AND !extension_loaded($cs_main['cache_mode']))
     $cs_main['cache_mode'] = 'file';
   require_once 'system/cache/' . $cs_main['cache_mode'] . '.php';
