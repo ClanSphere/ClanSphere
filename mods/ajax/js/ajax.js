@@ -181,9 +181,9 @@ var Clansphere = {
           .replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '/', Clansphere.ajax.basePath + '/')
           .replace(Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + '(.*)', Clansphere.ajax.basePath + '/$1')
           .replace(Clansphere.ajax.basePath + '/', Clansphere.ajax.basePath + '/' + Clansphere.ajax.index + Clansphere.ajax.hashMarker)
-          + window.location.hash.substr(1);
+          + (window.location.hash.substr(1).length > 0 ? Clansphere.ajax.options.anchorMarker : '') + window.location.hash.substr(1);
         } else {
-          newpath = Clansphere.ajax.baseFile + Clansphere.ajax.hashMarker + window.location.search.substr(1) + window.location.hash.substr(1);
+          newpath = Clansphere.ajax.baseFile + Clansphere.ajax.hashMarker + window.location.search.substr(1) + (window.location.hash.substr(1).length > 0 ? Clansphere.ajax.options.anchorMarker : '') + window.location.hash.substr(1);
         }
         window.location = newpath;
       }
@@ -193,7 +193,6 @@ var Clansphere = {
       element = $(element);
       element.find('a:not(.' + Clansphere.ajax.options.noAjaxClass + ')[href]').each(function(i,e){
         var href = e.href;
-        href = href.replace(Clansphere.ajax.hashMarker, Clansphere.ajax.options.anchorMarker);
         href = href.replace(Clansphere.ajax.regex, "$1");
         var hrefsplitter = href.split(Clansphere.ajax.options.anchorMarker);
         if(hrefsplitter[0].length===0) {
@@ -201,6 +200,7 @@ var Clansphere = {
           $(e).data('noreload',true);
         }
         if(e.href!==href) {
+          href = href.replace(Clansphere.ajax.hashMarker, Clansphere.ajax.options.anchorMarker);
           e.href = Clansphere.ajax.hashMarker + href;
           
           $(e).bind('click', function(e) {
