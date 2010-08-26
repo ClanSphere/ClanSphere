@@ -21,18 +21,24 @@ function cs_board_comments($board_id) {
 function cs_board_last($board_id) {
 
   settype($board_id,'integer');
-  $from = 'threads thr LEFT JOIN {pre}_users usr ON thr.threads_last_user = usr.users_id';
+
+  $from = 'threads thr LEFT JOIN {pre}_users usr ON thr.users_id = usr.users_id LEFT JOIN {pre}_users uco ON thr.threads_last_user = uco.users_id';
   $where = "thr.board_id = '" . $board_id . "'";
-  $cells = 'thr.threads_last_time AS board_last_time, thr.threads_headline AS board_last_thread, thr.threads_id' .
-           ' AS board_last_threadid, thr.threads_last_user AS board_last_userid, usr.users_nick AS board_last_user';
+  $cells = 'thr.threads_last_time AS board_last_time, thr.threads_headline AS board_last_thread, thr.threads_id AS board_last_threadid, '
+            . 'thr.threads_last_user AS board_last_userid, uco.users_nick AS board_last_user, '
+            . 'usr.users_nick AS create_user, usr.users_id AS create_userid, thr.threads_time AS create_time';
   $last_sql = cs_sql_select(__FILE__,$from,$cells,$where,'thr.threads_last_time DESC');
 
-  if (empty($last_sql)) {
-    $last_sql['board_last_time'] = 0;
-    $last_sql['board_last_thread'] = 0;
-    $last_sql['board_last_threadid'] = 0;
-    $last_sql['board_last_user'] = 0;
-    $last_sql['board_last_userid'] = 0;
+  if (empty($last_sql))
+    $last_sql = array('board_last_time' => 0, 'board_last_thread' => 0, 'board_last_threadid'] => 0, 'board_last_user' = 0, 'board_last_userid' => 0);
+  else {
+    # fallback to creation if no last data is available
+    if(empty($last_sql['board_last_user'])) {
+      $last_sql['board_last_user'] = $last_sql['create_user'];
+      $last_sql['board_last_userid'] = $last_sql['create_userid'];
+      $last_sql['board_last_time'] = $last_sql['create_time'];
+    }
+    unset($last_sql['create_user'], $last_sql['create_userid'], $last_sql['create_time']);
   }
   
   cs_sql_update(__FILE__,'board',array_keys($last_sql),array_values($last_sql),$board_id);
