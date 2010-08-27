@@ -57,10 +57,10 @@ $(function(){
     return this;
   };
 
-  $("textarea").not(".rte_html").TextAreaExpander(100, 500);
+  $("textarea").not(".rte_html, .noexpand").TextAreaExpander(100, 500);
 
   $(document).bind('csAjaxLoad', function(e,ele) {
-    $(ele).find('textarea').not(".rte_html").TextAreaExpander(100, 500);
+    $(ele).find('textarea').not(".rte_html, .noexpand").TextAreaExpander(100, 500);
   });
 
 
