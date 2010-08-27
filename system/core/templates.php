@@ -161,7 +161,7 @@ function cs_wrap_templatefile($matches)
     if(isset($cs_main['ajax']) AND $cs_main['ajax']) {
       $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
 
-      $id = str_replace('=','_', implode('_', $matches));
+      $id = str_replace('=','-', implode('-', $matches));
       $el = !in_array($nav,$spans) ? 'div' : 'span';
       return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
     }
