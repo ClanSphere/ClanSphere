@@ -142,7 +142,7 @@ if(!empty($id)) {
       $from = 'voted vod INNER JOIN {pre}_usersgallery gal ON vod.voted_fid = gal.usersgallery_id';
       $select = 'gal.usersgallery_id AS usersgallery_id, vod.voted_answer AS voted_answer, ';
       $select .= 'gal.folders_id AS folders_id';
-      $where = "gal.users_id = '". $id ."' AND gal.usersgallery_status = '1' AND vod.voted_mod = 'usersgallery'";
+      $where = "gal.users_id = '". $id ."' AND gal.usersgallery_status = '1' AND vod.voted_mod = 'usersgallery'  AND gal.usersgallery_access <= '" . $access_id . "'";
       $order = 'gal.usersgallery_id ASC';
       $cs_voted = cs_sql_select(__FILE__,$from,$select,$where,$order,0,0);
       $voted_loop = count($cs_voted);
