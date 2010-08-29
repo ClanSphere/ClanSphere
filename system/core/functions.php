@@ -224,7 +224,7 @@ function cs_init($predefined) {
   $cs_main['cache_mode'] = 'file';
 
   if(version_compare($phpversion, '5.0', '<'))
-    die(cs_error_internal('cs_init', 'PHP Version 5.0 or newer is required, but found ' . $phpversion));
+    require_once 'system/core/fallback.php';
 
   if($cs_main['php_self']['basename'] == 'install.php')
     $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'access_install' => 5);
@@ -245,7 +245,7 @@ function cs_init($predefined) {
     require_once 'system/output/json.php';
 
   require_once 'system/output/xhtml_10.php';
-  # add old xhtml functions if needed (going away soon)
+  # add old xhtml functions if needed
   if(!empty($cs_main['xhtml_old']))
     require_once 'system/output/xhtml_10_old.php';
   
@@ -494,7 +494,7 @@ function cs_getip () {
     $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
 
   // check for multiple ip's in case of multiple x-forwarders
-  $pos = function_exists('stripos') ? stripos($ip, ',') : false;
+  $pos = stripos($ip, ',');
   if ($pos !== false)
     $ip = trim(substr($ip, 0, $pos));
   // optional extra flags: FILTER_FLAG_IPV4, FILTER_FLAG_IPV6, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE
