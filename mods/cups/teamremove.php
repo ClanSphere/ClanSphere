@@ -10,7 +10,7 @@ $teams_id = (int) $_GET['id'];
 if (isset($_GET['cancel'])) {
   $cs_team = cs_sql_select(__FILE__,'cupsquads','cups_id','cupsquads_id = ' . $teams_id);
 
-  cs_redirect($cs_lang['del_false'],'cups','teams','where = ' . $cs_team['cups_id']);
+  cs_redirect($cs_lang['del_false'],'cups','teams','where=' . $cs_team['cups_id']);
 } elseif (isset($_GET['confirm'])) {
   $cs_team = cs_sql_select(__FILE__,'cupsquads','cups_id, squads_id','cupsquads_id = ' . $teams_id);
   cs_sql_delete(__FILE__,'cupsquads',$teams_id);
