@@ -46,7 +46,7 @@ if($cs_main['xsrf_protection']===TRUE && !empty($_POST)) {
   if(empty($given_key) || !in_array($given_key, $needed_keys)) {
     $_SESSION['cs_xsrf_keys'] = array();
     $referer = empty($_SERVER['HTTP_REFERER']) ? 'empty' : $_SERVER['HTTP_REFERER'];
-    cs_error(__FILE__, 'XSRF Protection triggered: ' . implode(',', $needed_keys) . ' does not include "' . $given_key . '", Referer: ' . $referer);
+    cs_error(__FILE__, 'XSRF Protection triggered: Array(' . implode(', ', $needed_keys) . ') does not include "' . $given_key . '", Referer: ' . $referer);
 
     cs_redirect(false, $cs_main['def_mod'], $cs_main['def_action']);
   }
