@@ -424,9 +424,9 @@ else {
       $abo_text[$abo['lang']]['text'] = sprintf($abo_lang[$abo['lang']]['text'],$data['thread']['threads_headline'],$account['users_nick']);
     
     cs_mail($abo_users[$run]['users_email'],$abo_lang[$abo['lang']]['subject'],$abo_text[$abo['lang']]['text']);
-    cs_sql_update(__FILE__,'abonements',$abo['update'],$abo['new_time'],0,'abonements_id = '.$abo_users[$run]['abonements_id']);
   }
   // END Abo-Mail
+
   $where = "comments_mod = 'board' AND comments_fid = '" . $fid . "'";
   $count_com = cs_sql_count(__FILE__,'comments',$where);
 
