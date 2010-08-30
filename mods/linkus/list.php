@@ -19,8 +19,7 @@ for($run = 0; $run < $linkus_loop; $run++) {
   $data['linkus'][$run]['banner'] = cs_html_img($place);
 
   $path = $cs_main['php_self']['website'] . $cs_main['php_self']['dirname'];
-  $url = $path . '/' . $place;
-  $url = str_replace('//','/',$url);
+  $url = $path . $place;
   $code ='<a href="http://' .$data['linkus'][$run]['linkus_url']. '" target="_blank">';
   $code .='<img src="' . $url . '"></a>';
   $data['linkus'][$run]['html_code'] = $code;
