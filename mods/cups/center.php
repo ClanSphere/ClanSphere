@@ -11,7 +11,7 @@ $matchcond = '';
 if(!empty($get_memberships)) {
 
   $x = 0;
-  $condition .= ' OR (';
+  $condition .= ' OR (cp.cups_system = \'teams\' AND (';
   
   foreach($get_memberships AS $membership) {
     $x++;
@@ -21,13 +21,12 @@ if(!empty($get_memberships)) {
       $matchcond .= ' OR ';
     }
 
-    $condition .= 'squads_id = \''.$membership['squads_id'].'\' OR ';
-    $condition .= 'squads_id = \''.$account['users_id'].'\'';
+    $condition .= 'squads_id = '.$membership['squads_id'];
     $matchcond .= 'squad1_id = \''.$membership['squads_id'].'\' OR ';
     $matchcond .= 'squad2_id = \''.$membership['squads_id'].'\'';
     $squads[] = $membership['squads_id'];
   }
-  $condition .= ')';
+  $condition .= '))';
 }
 
 $data = array();
