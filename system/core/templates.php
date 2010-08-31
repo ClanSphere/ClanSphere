@@ -131,6 +131,21 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   return $string;
 }
 
+function cs_subtemplate_check($mod, $action) {
+
+  global $cs_main;
+  $theme_file = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
+
+  if($cs_main['def_theme'] != 'base' and !file_exists($theme_file))
+    $theme_file = 'themes/base/' . $mod . '/' . $action . '.tpl';
+  if(file_exists($theme_file))
+    return $theme_file;
+  else {
+    cs_error($theme_file, 'cs_subtemplate_check - Theme file not found');
+    return false;
+  }
+}
+
 function cs_xsrf_protection_field($matches) {
   $length = 10;
   global $cs_main;
