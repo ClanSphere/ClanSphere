@@ -10,18 +10,27 @@ $local = array('version' => $cs_main['version_name'], 'published' => $cs_main['v
 
 $remote = array('version' => '-', 'published' => '1970-01-01', 'id' => 0);
 
+$remote_url_download = 'http://www.clansphere.net/index/files/listcat/where/14';
+
+$remote_url_version = 'http://www.clansphere.net/version.txt';
+
+$timeout = 10;
+
 $allow_url_fopen = ini_get('allow_url_fopen');
 if(empty($allow_url_fopen)) {
   $error = $cs_lang['need_url_fopen'];
 }
 else {
-  if($content = file_get_contents('http://www.clansphere.net/version.txt')) {
-    $content = explode(' ',$content);
-    $remote = array('version' => $content[0], 'published' => $content[1], 'id' => $content[2]);
-    settype($remote['id'],'integer');
-  }
-  else {
+  $rfp = fopen($remote_url_version, 'r');
+  stream_set_timeout($rfp, $timeout);
+  $content = fread($rfp, 4096);
+  fclose($rfp);
+  if(empty($content))
     $error = $cs_lang['file_not_read'];
+  else {
+    $content = explode(' ', $content);
+    $remote = array('version' => $content[0], 'published' => $content[1], 'id' => $content[2]);
+    settype($remote['id'], 'integer');
   }
 }
 
@@ -30,11 +39,9 @@ $data['version']['version_date'] = cs_date('date', $local['published']);
 $data['version']['available'] = htmlentities($remote['version'], ENT_QUOTES, $cs_main['charset']);
 $data['version']['available_date'] = cs_date('date', $remote['published']);
 
-if(empty($error)) {
-  $data['version']['msg'] = $local['id'] >= $remote['id'] ? $cs_lang['up_to_date'] : $cs_lang['new_release'] . ' ' . cs_html_link('http://www.clansphere.net/index.php?mod=files&action=listcat&where=14',$cs_lang['visit_dlpage']);
-}
-else {
+if(empty($error))
+  $data['version']['msg'] = $local['id'] >= $remote['id'] ? $cs_lang['up_to_date'] : $cs_lang['new_release'] . ' ' . cs_html_link($remote_url_download, $cs_lang['visit_dlpage']);
+else
   $data['version']['msg'] = $error;
-}
 
 echo cs_subtemplate(__FILE__,$data,'clansphere','version');

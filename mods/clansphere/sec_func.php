@@ -4,6 +4,12 @@
 
 function cs_cspnews($all = 0) {
 
+  $remote_url_secnews = 'http://www.clansphere.net/uploads/clansphere/sec_news.txt';
+
+  $remote_url_newsid = 'http://www.clansphere.net/index/news/view/id/';
+
+  $timeout = 10;
+
   global $cs_lang, $cs_main;
 
   $cs_lang = cs_translate('clansphere');
@@ -28,7 +34,12 @@ function cs_cspnews($all = 0) {
       $opt_where = "options_mod = 'clansphere' AND options_name = 'sec_time'";
       cs_sql_update(__FILE__, 'options', array('options_value'), array(cs_time()), 0, $opt_where);
 
-      if($content = file_get_contents('http://www.clansphere.net/uploads/clansphere/sec_news.txt')) {
+      $rfp = fopen($remote_url_secnews, 'r');
+      stream_set_timeout($rfp, $timeout);
+      $content = fread($rfp, 4096);
+      fclose($rfp);
+
+      if(!empty($content)) {
         $content = str_replace(array("\r","\n"),'',$content);
         $news = explode(';',$content);
         $content = explode('@', $news[0]);
@@ -41,7 +52,7 @@ function cs_cspnews($all = 0) {
 
         if(empty($all)) {
           if($content[0] > $cs_main['sec_last']) {
-            $url = 'http://www.clansphere.net/index/news/view/id/' . $content[0];
+            $url = $remote_url_newsid . $content[0];
             $data['info']['text'] = htmlentities($content[1], ENT_QUOTES, $cs_main['charset']);
             $data['info']['view'] = cs_html_link($url,$cs_lang['view']);
             $data['info']['read'] = cs_link($cs_lang['read'],'clansphere','sec_news','sec_news=' . $content[0]);
@@ -58,7 +69,7 @@ function cs_cspnews($all = 0) {
           for($run=0; $run < $count; $run++) {
             $content = explode("@", $news[$run]);
             $data['infos'][$run]['text'] = cs_secure($content[1]);
-            $url = 'http://www.clansphere.net/index/news/view/id/' . $content[0];
+            $url = $remote_url_newsid . $content[0];
             $data['infos'][$run]['view'] = cs_html_link($url,$cs_lang['view']);
           }
           return cs_subtemplate(__FILE__,$data,'clansphere','news');
