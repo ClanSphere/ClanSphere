@@ -19,7 +19,7 @@
   <tr>
     <td class="leftc">{squads:games_img}</td>
     <td class="leftc"><a href="{url:squads_view:id={squads:id}}">{squads:squads_name}</a></td>
-    <td class="leftc"><a href="{url:clans_view:id={squads:id}}">{squads:clans_name}</a></td>
+    <td class="leftc"><a href="{url:clans_view:id={squads:clans_id}}">{squads:clans_name}</a></td>
   </tr>
   {stop:squads}
 </table>
