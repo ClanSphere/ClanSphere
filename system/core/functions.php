@@ -540,3 +540,13 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
   cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . ' -> ' . trim($errmsg), 1);
 }
+
+function cs_trashmail($eMail) {
+	$tMail = cs_sql_select(__FILE__,'trashmail','trashmail_entry',0,0,0,0);
+	for($i=0; $i<count($tMail); $i++) {
+		if(stristr($eMail, $tMail[$i]['trashmail_entry']) !== FALSE) {
+			return true;
+		}
+	}
+	return false;
+}

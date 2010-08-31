@@ -71,6 +71,10 @@ if(isset($_POST['submit'])) {
     $error++;
     $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
   }
+  if(cs_trashmail($cs_user['users_email'])) {
+    $error++;
+    $errormsg .= $cs_lang['email_trash'] . cs_html_br(1);    	
+  }  
 
   if(!empty($cs_user['users_sex'])) {
     $cs_user['users_sex'] = $cs_user['users_sex'] == 'male' ? 'male' : 'female';
