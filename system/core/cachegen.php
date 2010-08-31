@@ -61,8 +61,6 @@ function cs_cache_template($filename) {
   if($tpl_data != false)
     if($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
-    else
-      cs_cache_delete($tpl_temp);
 
   $tpl_data = file_get_contents($tpl_real);
   $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
@@ -105,8 +103,6 @@ function cs_cache_theme($mod, $action) {
   elseif($tpl_data != false)
     if($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
-    else
-      cs_cache_delete($tpl_temp);
 
   $tpl_data = file_get_contents($tpl_real);
 

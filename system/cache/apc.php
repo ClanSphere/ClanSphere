@@ -39,10 +39,10 @@ function cs_cache_load($name) {
 
 function cs_cache_save($name, $content) {
 
+  cs_cache_delete($name);
+
   if(is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
-  elseif(apc_exists($name))
-    cs_error($name, 'cs_cache_save - This name is already placed in the cache');
   else
     apc_store($name, $content);
 

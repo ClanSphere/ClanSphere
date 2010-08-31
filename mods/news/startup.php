@@ -15,7 +15,6 @@ if ($cs_main['mod'] == 'news' AND !empty($account['access_news'])) {
     $where = 'news_public = 0 AND news_publishs_at != 0';
     $next_publish = cs_sql_select(__FILE__, 'news', 'news_publishs_at', $where, 'news_publishs_at ASC');
     $next_publish = empty($next_publish) ? '0' : $next_publish['news_publishs_at'];
-    cs_cache_delete('news_publish');
     cs_cache_save('news_publish', $next_publish);
   }
 
