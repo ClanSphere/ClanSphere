@@ -8,7 +8,7 @@ global $cs_logs;
 
 $log_id = !empty($_GET['art']) ? (int) $_GET['art'] : 0;
 $folder = $log_id == 1 ? 'errors' : 'actions';
-$id = (int) $_GET['id'];
+$id = empty($_GET['id']) ? 0 : (int) $_GET['id'];
 
 $log = empty($_GET['log']) ? 0 : $_GET['log'];
 $data = array();
