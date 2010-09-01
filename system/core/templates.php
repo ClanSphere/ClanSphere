@@ -9,6 +9,11 @@ function cs_revert_script_braces($hits) {
 
 function cs_looptemplate($source, $string, $data)
 {
+  if(!is_array($data)) {
+    cs_error($source, 'cs_looptemplate - Data is not delivered as an array');
+    $data = array();
+  }
+
   foreach ($data as $subname => $subdata)
   {
     if (empty($subdata) or isset($subdata[0]) and is_array($subdata[0]))
@@ -35,7 +40,7 @@ function cs_looptemplate($source, $string, $data)
       }
       else
       {
-        cs_error($source, 'cs_subtemplate - Loop not found: "' . $subname . '"');
+        cs_error($source, 'cs_looptemplate - Loop not found: "' . $subname . '"');
       }
     }
     elseif (is_array($subdata))
