@@ -1,9 +1,18 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2010.0.X >> 2010-XX-XX
+ClanSphere 2010.0.1 >> 2010-09-XX
 ___________________________________________________________
 
+-> Added class "noexpand" for textareas to exclude them from the autoexpander (x-ray)
+-> Added function cs_subtemplate_check to look for the existance and path of theme files (hajo)
+-> Added trashmail check to user registration (fr33z3m4n)
+-> Changed behavior of cs_cache_save a bit for more simple usage (hajo)
+-> Fixed ajax with underscores in filenames, due to this hyphens are no longer allowed in them (schiri)
+-> Fixed error page on too old php versions using a fallback file (hajo)
+-> Fixed linkus image url to work again (hajo)
+
+-- Fixed a few bugs that were reported at "Trac" --
 
 
 ClanSphere 2010.0 >> 2010-08-27
