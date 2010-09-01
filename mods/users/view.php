@@ -38,8 +38,10 @@ else {
     $data['if']['old_nick'] = true;
     $data['users']['old_nick'] = $old_nick['users_nick'];  
   }
-  
-  $data['if']['buddies_active'] = $account['access_buddys'] >= 2 ? true : false;
+
+  $data['users']['id'] = $cs_user['users_id'];
+
+  $data['if']['buddies_active'] = (empty($account['access_buddys']) OR $account['access_buddys'] < 2) ? false : true;
 
   $hidden = explode(',',$cs_user['users_hidden']);
   #$allow = $users_id == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
@@ -53,7 +55,6 @@ else {
   $data['url']['profile'] = cs_url('users','profile');
 
   $data['users']['nick'] = cs_secure($cs_user['users_nick']);
-  $data['url']['buddy_create'] = cs_url('buddys','create','id=' . $cs_user['users_id']);
   $data['url']['message_create'] = cs_url('messages','create','to_id=' . $cs_user['users_id']);
   if(empty($cs_user['users_picture'])) {
     $data['users']['picture'] = $cs_lang['nopic'];

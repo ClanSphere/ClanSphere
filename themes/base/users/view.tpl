@@ -4,7 +4,7 @@
   </tr>
   <tr>
     <td class="leftc" style="width:140px">{icon:personal} {lang:nick}</td>
-    <td class="leftb">{users:nick} {if:buddies_active}<a href="{url:buddy_create}" title="{lang:buddy_add}">{icon:xchat}</a>{stop:buddies_active} 
+    <td class="leftb">{users:nick} {if:buddies_active}<a href="{url:buddys_create:id={users:id}}" title="{lang:buddy_add}">{icon:xchat}</a>{stop:buddies_active} 
     <a href="{url:message_create}" title="{lang:message_send}">{icon:mail_send}</a>
     {if:old_nick}&nbsp;&nbsp;({lang:old_nick}: {users:old_nick}){stop:old_nick}
     </td>
