@@ -4,7 +4,7 @@
   </tr>
   <tr>    
     <td class="leftb">{icon:agt_reload} <a href="{url:board_sort}">{lang:sort}</a></td>
-    <td class="leftb">{icon:special_paste} <a href="{url:board_reportlist}">{lang:reports}</a></td>
+    <td class="leftb">{icon:special_paste} <a href="{url:board_reportlist}">{lang:reports}</a> ({head:count_reports})</td>
     <td class="leftb">{icon:attach} <a href="{url:board_attachments_admin}">{lang:attachments}</a> ({head:count_attachments})</td>
   </tr>
   <tr>
