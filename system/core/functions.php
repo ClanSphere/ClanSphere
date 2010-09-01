@@ -224,7 +224,7 @@ function cs_init($predefined) {
   $cs_main['cache_mode'] = 'file';
 
   if(version_compare($phpversion, '5.0', '<'))
-    require_once 'system/core/fallback.php';
+    require_once 'mods/clansphere/fallback.php';
 
   if($cs_main['php_self']['basename'] == 'install.php')
     $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'access_install' => 5);
@@ -539,14 +539,4 @@ function php_error($errno, $errmsg, $filename, $linenum) {
   $cs_logs['php_errors'] = empty($cs_logs['php_errors']) ? '' : $cs_logs['php_errors'];
   $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
   cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . ' -> ' . trim($errmsg), 1);
-}
-
-function cs_trashmail($eMail) {
-	$tMail = cs_sql_select(__FILE__,'trashmail','trashmail_entry',0,0,0,0);
-	for($i=0; $i<count($tMail); $i++) {
-		if(stristr($eMail, $tMail[$i]['trashmail_entry']) !== FALSE) {
-			return true;
-		}
-	}
-	return false;
 }

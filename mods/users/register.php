@@ -66,9 +66,11 @@ if(empty($op_users['register'])) {
       $error++;
       $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
     }
+
+    include_once 'mods/contact/trashmail.php';
     if(cs_trashmail($register['email'])) {
       $error++;
-      $errormsg .= $cs_lang['email_trash'] . cs_html_br(1);    	
+      $errormsg .= $cs_lang['email_trash'] . cs_html_br(1);
     }
 
   $flood = cs_sql_select(__FILE__,'users','users_register',0,'users_register DESC');
@@ -138,40 +140,41 @@ if(empty($op_users['register'])) {
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     if($op_users['def_register'] != '2') {
       $data['if']['reg_mail'] = 1;
-    } else {
-         $data['if']['reg_mail'] = 0;
+    }
+    else {
+      $data['if']['reg_mail'] = 0;
     }
       echo cs_subtemplate(__FILE__,$data,'users','register_code');
-  } else {
-    echo cs_subtemplate(__FILE__,$data,'users','register_mail');
-  }
+    }
+    else {
+      echo cs_subtemplate(__FILE__,$data,'users','register_mail');
+    }
   }
   else {
+    $code_id = generate_code(30); // 30 Zeichen lang
+    $register['users_key'] = $code_id;
+    $active = empty($op_users['def_register']) ? $register['users_active'] = 1 : $register['users_active'] = 0;
+    $def_timezone = empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
+    $def_dstime = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
+    create_user(2,$register['nick'],$register['password'],$register['lang'],$register['email'],'fam',$def_timezone,$def_dstime,$register['newsletter'],$active,20,$register['users_key']);
 
-  $code_id = generate_code(30); // 30 Zeichen lang
-  $register['users_key'] = $code_id;
-  $active = empty($op_users['def_register']) ? $register['users_active'] = 1 : $register['users_active'] = 0;
-  $def_timezone = empty($cs_main['def_timezone']) ? 0 : $cs_main['def_timezone'];
-  $def_dstime = empty($cs_main['def_dstime']) ? 0 : $cs_main['def_dstime'];
-  create_user(2,$register['nick'],$register['password'],$register['lang'],$register['email'],'fam',$def_timezone,$def_dstime,$register['newsletter'],$active,20,$register['users_key']);
-
-  $ip = cs_getip();
-  if(!empty($register['send_mail']) OR !empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
-    $content = $cs_lang['mail_reg_start'] . $cs_lang['mail_reg_nick'] . $register['nick'];
-    $content .= $cs_lang['mail_reg_password'] . $register['password'];
-    $content .= $cs_lang['mail_reg_ip'] . $ip;
-    if(!empty($op_users['def_register'])) {
-      $content .= "\n" . $cs_lang['mail_key'] . ': ';
-      $content .= $cs_main['php_self']['website'] . str_replace('&amp;', '&', cs_url('users', 'activate', 'key=' . $register['users_key'] . '&email=' . $register['email']));
+    $ip = cs_getip();
+    if(!empty($register['send_mail']) OR !empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
+      $content = $cs_lang['mail_reg_start'] . $cs_lang['mail_reg_nick'] . $register['nick'];
+      $content .= $cs_lang['mail_reg_password'] . $register['password'];
+      $content .= $cs_lang['mail_reg_ip'] . $ip;
+      if(!empty($op_users['def_register'])) {
+        $content .= "\n" . $cs_lang['mail_key'] . ': ';
+        $content .= $cs_main['php_self']['website'] . str_replace('&amp;', '&', cs_url('users', 'activate', 'key=' . $register['users_key'] . '&email=' . $register['email']));
+      }
+      $content .= $cs_lang['mail_reg_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_reg_end'];
+      cs_mail($register['email'],$cs_lang['mail_reg_head'],$content);
     }
-    $content .= $cs_lang['mail_reg_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_reg_end'];
-    cs_mail($register['email'],$cs_lang['mail_reg_head'],$content);
-  }
 
-  $data['lang']['head'] = $cs_lang['register'];
-  $data['link']['continue'] = cs_url('users','login');
+    $data['lang']['head'] = $cs_lang['register'];
+    $data['link']['continue'] = cs_url('users','login');
 
-  $data['lang']['success'] = !empty($op_users['def_register']) ? $cs_lang['done2'] : $cs_lang['done'];
+    $data['lang']['success'] = !empty($op_users['def_register']) ? $cs_lang['done2'] : $cs_lang['done'];
     echo cs_subtemplate(__FILE__,$data,'users','done');
   }
 }
