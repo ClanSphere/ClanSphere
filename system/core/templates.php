@@ -9,11 +9,6 @@ function cs_revert_script_braces($hits) {
 
 function cs_looptemplate($source, $string, $data)
 {
-  if(!is_array($data)) {
-    cs_error($source, 'cs_looptemplate - Data is not delivered as an array');
-    $data = array();
-  }
-
   foreach ($data as $subname => $subdata)
   {
     if (empty($subdata) or isset($subdata[0]) and is_array($subdata[0]))
@@ -86,9 +81,9 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 {
   global $account, $cs_lang, $cs_main;
   $cs_lang = cs_translate($mod);
+  $data = is_array($data) ? $data : array();
 
   $string = cs_cache_theme($mod, $action, $navfiles);
-
   $string = cs_conditiontemplate($string, $data);
   $string = cs_looptemplate($source, $string, $data);
 
