@@ -1,4 +1,5 @@
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width: 100%">
+<div style="overflow: auto; width: 400px">
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}">
 <tr>
 {loop:keys}
   <td class="leftc">{keys:name}</td>
@@ -12,3 +13,4 @@
 </tr>
 {stop:more}
 </table>
+</div>
