@@ -70,7 +70,7 @@ if(empty($op_users['register'])) {
     include_once 'mods/contact/trashmail.php';
     if(cs_trashmail($register['email'])) {
       $error++;
-      $errormsg .= $cs_lang['email_trash'] . cs_html_br(1);
+      $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
     }
 
   $flood = cs_sql_select(__FILE__,'users','users_register',0,'users_register DESC');

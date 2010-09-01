@@ -160,6 +160,12 @@ if(isset($_POST['submit'])) {
 		$errormsg .= $cs_lang['email_false'] . cs_html_br(1);
 	}
 
+  include_once 'mods/contact/trashmail.php';
+  if(cs_trashmail($data['join']['joinus_email'])) {
+    $error++;
+    $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
+  }
+
 	$flood = cs_sql_select(__FILE__,'joinus','joinus_since',0,'joinus_since DESC');
 	$maxtime = $flood['joinus_since'] + $cs_main['def_flood'];
 	if($maxtime > cs_time()) {

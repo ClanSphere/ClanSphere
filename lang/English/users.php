@@ -134,9 +134,6 @@ $cs_lang['done2'] = 'You soon get an e-mail with activation link.';
 
 $cs_lang['mail_key'] = 'Activationlink';
 
-$cs_lang['email_trash'] = '- Diese eMail-Adresse ist nicht g&uuml;ltig.';
-
-
 // Remove
 $cs_lang['rly_rmv_user'] = 'Really remove %s from users?';
 

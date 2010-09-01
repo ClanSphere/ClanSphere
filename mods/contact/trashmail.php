@@ -2,13 +2,14 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-function cs_trashmail($eMail) {
+function cs_trashmail($email) {
 
-  $tMail = cs_sql_select(__FILE__,'trashmail','trashmail_entry',0,0,0,0);
-  for($i=0; $i<count($tMail); $i++) {
-    if(stristr($eMail, $tMail[$i]['trashmail_entry']) !== FALSE) {
-      return true;
-    }
+  $parts = explode('@', $email, 2);
+  if(empty($parts[1]))
+    return false;
+  else {
+    $where = "trashmail_entry LIKE '%" . cs_sql_escape($parts[1]) . "%'";
+    $check = cs_sql_count(__FILE__, 'trashmail', $where);
+    return (empty($check)) ? false : true;
   }
-  return false;
 }

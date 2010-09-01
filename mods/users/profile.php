@@ -75,7 +75,7 @@ if(isset($_POST['submit'])) {
   include_once 'mods/contact/trashmail.php';
   if(cs_trashmail($cs_user['users_email'])) {
     $error++;
-    $errormsg .= $cs_lang['email_trash'] . cs_html_br(1);
+    $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
   }
 
   if(!empty($cs_user['users_sex'])) {

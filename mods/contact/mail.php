@@ -70,6 +70,11 @@ if(isset($_POST['submit'])) {
     $error++; 
     $errormsg .= $cs_lang['error_email'] . cs_html_br(1); 
   }
+  include_once 'mods/contact/trashmail.php';
+  if(cs_trashmail($mail['email'])) {
+    $error++;
+    $errormsg .= $cs_lang['error_email'] . cs_html_br(1);
+  }
   if(!empty($mail['icq']) AND !preg_match('#^[\d-]*$#', $mail['icq'])){ 
     $error++; 
     $errormsg .= $cs_lang['error_icq'] . cs_html_br(1); 

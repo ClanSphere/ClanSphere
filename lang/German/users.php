@@ -134,7 +134,6 @@ $cs_lang['done'] = 'Ihr Benutzerkonto wurde erfolgreich erstellt und aktiviert. 
 $cs_lang['done2'] = 'Ihr Benutzerkonto wurde erfolgreich erstellt. <br>Sie erhalten in k&uuml;rze eine E-Mail mit dem Aktivierungslink, um Ihr Konto freizuschalten.';
 
 $cs_lang['mail_key'] = 'Aktivierungslink';
-$cs_lang['email_trash'] = '- Diese eMail-Adresse ist nicht g&uuml;ltig.';
 
 // Remove
 $cs_lang['rly_rmv_user'] = 'Soll der Benutzer %s wirklich gel&ouml;scht werden?';

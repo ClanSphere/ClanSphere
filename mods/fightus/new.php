@@ -58,6 +58,11 @@ if(isset($_POST['submit'])) {
     $error .= $cs_lang['email_false'] . cs_html_br(1);
   }
 
+  include_once 'mods/contact/trashmail.php';
+  if(cs_trashmail($cs_fightus['fightus_email'])) {
+    $error .= $cs_lang['email_false'] . cs_html_br(1);
+  }
+
   $flood = cs_sql_select(__FILE__,'fightus','fightus_since',0,'fightus_since DESC');
   $maxtime = $flood['fightus_since'] + $cs_main['def_flood'];
   if($maxtime > cs_time()) {
