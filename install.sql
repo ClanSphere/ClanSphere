@@ -1108,7 +1108,8 @@ CREATE TABLE {pre}_threads (
 CREATE TABLE {pre}_trashmail (
 	trashmail_id {serial},
 	trashmail_entry varchar(255) NOT NULL default '',
-	PRIMARY KEY (trashmail_id)
+	PRIMARY KEY (trashmail_id),
+  UNIQUE (trashmail_entry)
 ){engine};
 
 CREATE TABLE {pre}_usernicks (
@@ -1331,6 +1332,8 @@ CREATE INDEX {pre}_wars_games_id_index ON {pre}_wars (games_id);
 CREATE INDEX {pre}_wars_categories_id_index ON {pre}_wars (categories_id);
 CREATE INDEX {pre}_wars_squads_id_index ON {pre}_wars (squads_id);
 CREATE INDEX {pre}_wars_clans_id_index ON {pre}_wars (clans_id);
+
+CREATE INDEX {pre}_trashmail_entry_index ON {pre}_trashmail (trashmail_entry);
 CREATE INDEX {pre}_captcha_speedup_index ON {pre}_captcha (captcha_id, captcha_ip, captcha_time);
 CREATE INDEX {pre}_comments_speedup_index ON {pre}_comments (comments_fid, comments_id, comments_mod);
 CREATE INDEX {pre}_count_speedup_index ON {pre}_count (count_id, count_ip, count_time);
