@@ -2,10 +2,9 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-function cs_admin_menu()
-{
+function cs_admin_menu() {
 
-  global $cs_main,$account;
+  global $cs_main, $account;
 
   $cs_lang = cs_translate('clansphere');
 
@@ -18,10 +17,17 @@ function cs_admin_menu()
 
   if (file_exists('mods/' . $recent_mod . '/manage.php') && $account['access_' . $recent_mod] >= 3)
   {
-    include_once($cs_main['def_path'] . '/mods/' . $recent_mod . '/info.php');
-    # contact mod is the only exception that needs to be checked here
-    $sql_modul = $recent_mod == 'contact' ? 'mail' : $recent_mod;
-    $sql_table = in_array($sql_modul, $mod_info['tables']) ? $sql_modul: '';
+    include $cs_main['def_path'] . '/mods/' . $recent_mod . '/info.php';
+
+    # look for sql table named like mod, else use first sql table given
+    $mod_tables = is_array($mod_info['tables']) ? $mod_info['tables'] : array();
+    if(in_array($recent_mod, $mod_tables))
+      $sql_table = $recent_mod;
+    elseif(isset($mod_tables[0]))
+      $sql_table = $mod_tables[0];
+    else
+      $sql_table = false;
+
     $sql_count = empty($sql_table) ? '' : ' (' . cs_sql_count(__FILE__, $sql_table) . ')';
 
     $link_count++;  
