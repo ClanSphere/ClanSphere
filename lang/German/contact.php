@@ -19,6 +19,14 @@ $cs_lang['smtp_user'] = 'SMTP Benutzer';
 $cs_lang['smtp_pw'] = 'SMTP Passwort';
 $cs_lang['mailsig'] = 'E-Mail Signatur';
 
+// blocklist
+$cs_lang['blocklist'] = 'Blockierte Domains';
+$cs_lang['blocklist_head'] = 'Folgend eingetragene Domains werden bestm&ouml;glich blockiert';
+$cs_lang['domain'] = 'Domain';
+$cs_lang['blocklist_success'] = 'Domain erfolgreich eingetragen';
+$cs_lang['blocklist_exists']  = 'Domain existiert bereits';
+$cs_lang['blocklist_delete']  = 'Domain erfolgreich entfernt';
+
 // manage.php
 $cs_lang['head_manage'] = 'Hier haben Sie Zugriff auf alle Kontaktoptionen';
 $cs_lang['id'] = 'ID#';

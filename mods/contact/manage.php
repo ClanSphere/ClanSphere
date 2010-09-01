@@ -6,22 +6,22 @@ $cs_lang = cs_translate('contact');
 
 $data = array('mail' => array());
 
-empty($_GET['start']) ? $start = 0 : $start = $_GET['start'];
+$start = empty($_GET['start']) ? 0 : (int) $_GET['start'];
 $cs_sort[1] = 'mail_name DESC';
 $cs_sort[2] = 'mail_name ASC';
 $cs_sort[3] = 'mail_subject DESC';
 $cs_sort[4] = 'mail_subject ASC';
 $cs_sort[5] = 'mail_time DESC';
 $cs_sort[6] = 'mail_time ASC';
-empty($_GET['sort']) ? $sort = 5 : $sort = $_GET['sort'];
+$sort = empty($_GET['sort']) ? 5 : (int) $_GET['sort'];
 $order = $cs_sort[$sort];
-
+$mail_count = cs_sql_count(__FILE__, 'mail');
 $select = 'mail_id, mail_name, categories_id, mail_subject, mail_time';
 $where = "mail_answered = 0";
 $cs_mail = cs_sql_select(__FILE__,'mail',$select,$where,$order,$start,$account['users_limit']);
 $mail_loop = count($cs_mail);
 
-$data['head']['pages']  = cs_pages('contact','manage',$mail_loop,$start,0,$sort);
+$data['head']['pages']  = cs_pages('contact','manage',$mail_count,$start,0,$sort);
 $data['head']['sort_name'] = cs_sort('contact','manage',$start,0,1,$sort);
 $data['head']['sort_subject'] = cs_sort('contact','manage',$start,0,3,$sort);
 $data['head']['sort_date'] = cs_sort('contact','manage',$start,0,5,$sort);

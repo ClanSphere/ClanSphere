@@ -1,13 +1,14 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
-<tr><td class="headb" colspan="3">
+<tr>
+<td class="headb" colspan="3">
 {lang:mod_name} - {lang:manage}
-</td></tr>
-<tr><td class="leftb">
-{lang:head_manage}</td>
+</td>
+</tr>
+<tr>
 <td class="leftb">{icon:folder_yellow} <a href="{url:contact_archive}">{lang:archive}</a></td>
-<td class="rightb">
-{head:pages}
-</td></tr>
+<td class="centerb">{icon:folder_red} <a href="{url:contact_blocklist}">{lang:blocklist}</a></td>
+<td class="rightb">{head:pages}</td>
+</tr>
 </table>
 <br />
 {head:message}

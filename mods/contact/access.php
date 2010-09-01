@@ -13,3 +13,4 @@ $axx_file['delete']       = 5;
 $axx_file['imp_edit']     = 5;
 $axx_file['mailsig_edit'] = 5;
 $axx_file['options']      = 5;
+$axx_file['blocklist']    = 5;
