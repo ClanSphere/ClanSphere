@@ -6,6 +6,7 @@
 </div>
 <br />
 
+{if:form}
 <form method="post" id="shout_navlist" action="{form:url}">
 <fieldset style="border: 0; padding: 0">
   <input type="text" name="sh_nick" value="{form:nick}" onfocus="if(this.value=='Nick') this.value=''" onblur="if(this.value=='')this.value='Nick'" maxlength="40" size="15" /><br />
@@ -18,5 +19,6 @@
 <input type="hidden" name="uri" value="{form:uri}" />
 </fieldset>
 </form>
-<br />
+<br />{stop:form}
+
 <a href="{url:archieve}">{lang:archieve}</a>
