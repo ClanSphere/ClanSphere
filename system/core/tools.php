@@ -602,8 +602,8 @@ function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
 
 function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
 
-  $cs_lang = cs_translate('users');
-
+  global $cs_main;
+  $cs_lang = cs_translate($cs_main['mod']);
   $on_now = cs_time() - 300;
   $on_week = cs_time() - 604800;
 
