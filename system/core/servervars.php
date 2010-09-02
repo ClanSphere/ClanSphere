@@ -57,10 +57,8 @@ $domain = (strpos($domain, '.') !== FALSE) ? $domain : '';
 $cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
 
 # set some request and get data to integer for backwards compatibility with old modules
-if(isset($_REQUEST['id']))
-  settype($_REQUEST['id'],'integer');
-if(isset($_GET['id']))
-  settype($_GET['id'],'integer');
+settype($_GET['id'],'integer');
+settype($_REQUEST['id'],'integer');
 
 # preserved for navlogin functionality
 unset($_GET['style']);
