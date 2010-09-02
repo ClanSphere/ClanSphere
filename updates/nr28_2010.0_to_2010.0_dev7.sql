@@ -5,7 +5,7 @@ UPDATE {pre}_options SET options_value = 61 WHERE options_mod = 'clansphere' AND
 ALTER TABLE {pre}_users ADD users_emailregister varchar(255) NOT NULL default '';
 UPDATE {pre}_users SET users_emailregister = users_email;
 ALTER TABLE {pre}_users DROP users_email;
-ALTER TABLE {pre}_users ADD users_email varchar(255) NOT NULL UNIQUE default '';
+ALTER TABLE {pre}_users ADD users_email varchar(255) NOT NULL default '';
 UPDATE {pre}_users SET users_email = users_emailregister;
 
 CREATE TABLE {pre}_trashmail (
