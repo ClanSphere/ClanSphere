@@ -2,7 +2,10 @@
 
 $cs_lang = cs_translate('banners');
 
-if(!empty($_GET['cat_id'])) $where = "categories_id = '" . $_GET['cat_id'] . "'"; else $where = 0;
+if(!empty($_GET['cat_id']))
+  $where = "categories_id = '" . (int) $_GET['cat_id'] . "'";
+else
+  $where = 0;
 
 $data = array();
 

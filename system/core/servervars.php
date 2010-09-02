@@ -59,12 +59,8 @@ $cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', '
 # set some request and get data to integer for backwards compatibility with old modules
 if(isset($_REQUEST['id']))
   settype($_REQUEST['id'],'integer');
-if(isset($_REQUEST['fid']))
-  settype($_REQUEST['fid'],'integer');
 if(isset($_GET['id']))
   settype($_GET['id'],'integer');
-if(isset($_GET['cat_id']))
-  settype($_GET['cat_id'], 'integer');
 
 # preserved for navlogin functionality
 unset($_GET['style']);
