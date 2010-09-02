@@ -7,7 +7,6 @@ $cs_lang['mod_text']  = 'Events, Birthdays and more';
 
 // list.php
 $cs_lang['head_list']  = 'List';
-$cs_lang['all']         = 'Total: ';
 
 // agenda.php
 $cs_lang['agenda']  = 'Agenda';
@@ -157,6 +156,8 @@ $cs_lang['err_phone']      = '- Data too short or missing: Phone';
 $cs_lang['err_mobile']     = '- Data too short or missing: Cell Phone';
 
 // Guests
+$cs_lang['search']            = 'Search';
+$cs_lang['guests_search']     = 'Guest Search';
 $cs_lang['guests_latest']     = 'Latest guest signins';
 $cs_lang['guests_multi']      = 'Multiple signin form';
 $cs_lang['new_guest']         = 'New guest';
