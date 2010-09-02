@@ -21,7 +21,6 @@ $cs_lang['replies'] = 'Postings';
 $cs_lang['lastpost'] = 'Last post';
 $cs_lang['important'] = 'Important:';
 $cs_lang['from'] = 'from';
-$cs_lang['page'] = 'Page';
 $cs_lang['no_threads'] = 'No threads found'; 
 
 //avatar.php

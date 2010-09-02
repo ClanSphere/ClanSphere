@@ -57,7 +57,6 @@ $cs_lang['body_remove']    = 'Datensatz Nr. %s wirklich entfernen?';
 // view.php
 $cs_lang['from'] = 'Verfasst von';
 $cs_lang['at'] = 'am';
-$cs_lang['page'] = 'Seite';
 $cs_lang['pages'] = 'Seiten';
 
 $cs_lang['new_date'] = 'Datum aktualisieren';

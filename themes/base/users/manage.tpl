@@ -55,7 +55,7 @@
     <td class="headb" style="width:30px"> {lang:country}</td>
     <td class="headb"> {sort:nick} {lang:nick}</td>
     <td class="headb" style="width:125px"> {sort:laston} {lang:laston}</td>
-    <td class="headb" style="width:50px"> {lang:page}</td>
+    <td class="headb" style="width:50px"> {lang:status}</td>
     <td class="headb"> {sort:active} {lang:active}</td>
   <td class="headb"> {sort:access} {lang:access}</td>
     <td class="headb" colspan="3" style="width:50px"> {lang:options} </td>

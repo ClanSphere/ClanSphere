@@ -21,7 +21,6 @@ $cs_lang['replies'] = 'Beitr&auml;ge';
 $cs_lang['lastpost'] = 'Letzter Beitrag';
 $cs_lang['important'] = 'Wichtig:';
 $cs_lang['from'] = 'von';
-$cs_lang['page'] = 'Seite';
 $cs_lang['no_threads'] = 'Keine Themen gefunden'; 
 
 //avatar.php   

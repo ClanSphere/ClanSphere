@@ -141,7 +141,7 @@ $cs_lang['head_list']  = 'Details';
 $cs_lang['body_list'] = 'Squad of the Clan %s.';
 $cs_lang['country']  = 'Country';
 $cs_lang['nick']  = 'Nickname';
-$cs_lang['page']  = 'Status';
+$cs_lang['status']  = 'Status';
 $cs_lang['since']  = 'Member since';
 $cs_lang['no_desc']  = 'No describtion available';
 

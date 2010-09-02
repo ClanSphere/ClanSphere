@@ -57,7 +57,6 @@ $cs_lang['body_remove']    = 'Really delete dataset No. %s ?';
 // view.php
 $cs_lang['from'] = 'Writer';
 $cs_lang['at'] = 'at';
-$cs_lang['page'] = 'Page';
 $cs_lang['pages'] = 'Pages';
 
 $cs_lang['new_date'] = 'Refresh Date';

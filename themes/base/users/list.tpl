@@ -44,7 +44,7 @@
     <td class="headb">{sort:nick} {lang:nick}</td>
     <td class="headb">{sort:place} {lang:place}</td>
     <td class="headb">{sort:laston} {lang:laston}</td>
-    <td class="headb" style="width:40px"> {lang:page} </td>
+    <td class="headb" style="width:40px"> {lang:status} </td>
   </tr>
   {loop:users}
   <tr>

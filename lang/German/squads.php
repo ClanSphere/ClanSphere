@@ -141,7 +141,7 @@ $cs_lang['head_list']  = 'Liste';
 $cs_lang['body_list'] = 'Teil von %s';
 $cs_lang['country']  = 'Land';
 $cs_lang['nick']  = 'Nick';
-$cs_lang['page']  = 'Status';
+$cs_lang['status']  = 'Status';
 $cs_lang['since']  = 'Dabei seit';
 $cs_lang['no_desc']  = 'Keine Beschreibung vorhanden';
 

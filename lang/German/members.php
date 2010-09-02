@@ -66,7 +66,7 @@ $cs_lang['pictured']  = 'Bildansicht';
 
 $cs_lang['country']  = 'Land';
 $cs_lang['nick']  = 'Nick';
-$cs_lang['page']  = 'Status';
+$cs_lang['status']  = 'Status';
 
 // Pictured
 $cs_lang['head_pictured']  = 'Bebilderung';

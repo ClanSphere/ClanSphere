@@ -30,7 +30,7 @@
     <td class="leftc">{lang:nick}</td>
     <td class="leftc">{lang:task}</td>
     <td class="leftc" style="width:80px">{lang:since}</td>
-    <td class="leftc" style="width:40px">{lang:page}</td>
+    <td class="leftc" style="width:40px">{lang:status}</td>
    </tr>
    {loop:members}
    <tr>
