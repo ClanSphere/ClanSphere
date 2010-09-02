@@ -27,6 +27,10 @@ $php_ok = version_compare(phpversion(),'5.1.0','>=');
 # note: translation of countries is not checked
 $lang_mods = cs_checkdirs('mods');
 
+$lang_more = array('system/main' => array('dir' => 'system/main'), 'system/abcodes' => array('dir' => 'system/abcodes'));
+
+$lang_mods = array_merge($lang_mods, $lang_more);
+
 $data['diff'] = array();
 
 if(empty($lang_mods))
@@ -42,6 +46,7 @@ $total_diff   = $cs_lang['total_diff'];
 $lang_stats   = $cs_lang['lang_stats'];
 
 foreach($lang_mods AS $mods) {
+
   $file_origine = 'lang/' . $lang_diff . '/' . $mods['dir'] . '.php';
   $file_lang = 'lang/' . $dir . '/' . $mods['dir'] . '.php';
 
