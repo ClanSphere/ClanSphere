@@ -24,10 +24,12 @@
     <td class="leftc">{icon:mail_send} <a href="{url:messages_mail}">{lang:mail_message}</a></td>
     <td class="rightb">{var:mailmessage}</td>
   </tr>
+{if:buddies}
   <tr>
     <td class="leftc">{icon:xchat} <a href="{url:buddys_center}">{lang:buddys}</a></td>
     <td class="rightb">{count:buddys}</td>
   </tr>
+{stop:buddies}
   <tr>
     <td class="leftc">{icon:inbox} {lang:in_inbox}</td>
     <td class="rightb">{count:inbox}</td>

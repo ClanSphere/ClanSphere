@@ -50,7 +50,9 @@ $cs_messages_options = cs_sql_select(__FILE__,'autoresponder','autoresponder_clo
 $data['var']['autoresponder'] = empty($cs_messages_options['autoresponder_close']) ? $cs_lang['autore_false'] : $cs_lang['autore_true'];
 $data['var']['mailmessage'] = empty($cs_messages_options['autoresponder_mail']) ? $cs_lang['autore_false'] : $cs_lang['autore_true'];
 
-$data['count']['buddys'] = cs_sql_count(__FILE__,'buddys','users_id = "' . $users_id . '"');
+$data['if']['buddies'] = empty($account['access_buddys']) ? 0 : 1;
+if(!empty($account['access_buddys']))
+  $data['count']['buddys'] = cs_sql_count(__FILE__,'buddys','users_id = "' . $users_id . '"');
 
 $data['var']['space_used'] = !empty($data['count']['archivbox']) ? round($data['count']['archivbox'] / $data['option']['max_space'] * 100) : 0;
 
