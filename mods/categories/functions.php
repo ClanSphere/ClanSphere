@@ -98,6 +98,7 @@ function cs_catsort ($array, $id = 0) {
         }
     }
 
+    $start = 0;
     if (!empty($id)) { // Get right (sub)categories
         $count = count($result);
         for ($i = 0; $i < $count; $i++) {
