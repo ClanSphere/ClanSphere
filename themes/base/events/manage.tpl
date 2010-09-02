@@ -1,16 +1,13 @@
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="4">{lang:mod_name} - {lang:manage}</td>
+  <td class="headb" colspan="2">{lang:mod_name} - {lang:manage}</td>
  </tr>
  <tr>
-  <td class="leftb">{icon:strokedocker} <a href="{url:events_guestslatest}">{lang:guests_latest}</a></td>
-  <td class="leftb">{icon:kghostview} <a href="{url:events_guestsearch}">{lang:guests_search}</a></td>
-  <td class="leftb" style="min-width: 100px">{icon:contents} {lang:total}: {count:all}</td>
+  <td class="leftb">{icon:contents} {lang:total}: {count:all}</td>
   <td class="rightb">{pages:list}</td>
  </tr>
  <tr>
-  <td class="leftb">{icon:7days} <a href="{url:events_guestsmulti}">{lang:guests_multi}</a></td>
-  <td class="leftb" colspan="3">
+  <td class="leftb" colspan="2">
     <form method="post" id="events_manage" action="{url:events_manage}">
       <fieldset style="border: 0; padding: 0">
         {icon:folder_yellow} {lang:category}
@@ -22,6 +19,16 @@
  </tr>
 </table>
 <br />
+
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+ <tr>
+  <td class="centerb">{icon:7days} <a href="{url:events_guestsmulti}">{lang:guests_multi}</a></td>
+  <td class="centerb">{icon:kghostview} <a href="{url:events_guestsearch}">{lang:guests_search}</a></td>
+  <td class="centerb">{icon:strokedocker} <a href="{url:events_guestslatest}">{lang:guests_latest}</a></td>
+ </tr>
+</table>
+<br />
+
 {head:message}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
