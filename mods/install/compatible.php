@@ -45,8 +45,8 @@ foreach($sql_files AS $sql_file => $num) {
     $data['av']['database'] .= $extension . ', ';
   }
 }
-$data['rq']['database'] = @substr($data['rq']['database'],0,-2);
-$data['av']['database'] = @substr($data['av']['database'],0,-2);
+$data['rq']['database'] = substr($data['rq']['database'],0,-2);
+$data['av']['database'] = substr($data['av']['database'],0,-2);
 $data['ok']['database'] = $ok[!empty($data['av']['database'])];
 if ($data['ok']['database'] != $ok[1]) { $check_required = false; }
 

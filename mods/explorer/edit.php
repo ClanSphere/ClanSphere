@@ -18,7 +18,7 @@ if(empty($_POST['submit'])) {
     cs_redirect($cs_lang['no_file'], 'explorer', 'roots');
   } elseif(!file_exists($cs_main['def_path'] . '/' . $dir)) {
     cs_redirect($cs_lang['not_found'] . ': ' . $dir, 'explorer', 'roots');
-  } elseif (@!$file = fopen($cs_main['def_path'] . '/' . $dir,'r')) {
+  } elseif (!$file = fopen($cs_main['def_path'] . '/' . $dir,'r')) {
     cs_redirect($cs_lang['file_not_opened'], 'explorer', 'roots');
   } else {
 

@@ -279,7 +279,7 @@ function cs_files() {
   foreach ($_SESSION['ajaxuploads'] as $key => $name) {
     $files[$key]['tmp_name'] = 'uploads/cache/' . $name;
     $files[$key]['name'] = $name;
-    $files[$key]['size'] = @filesize($files[$key]['tmp_name']);
+    $files[$key]['size'] = filesize($files[$key]['tmp_name']);
     $files[$key]['type'] = cs_mimetype($files[$key]['tmp_name']);
   }
   return $files;

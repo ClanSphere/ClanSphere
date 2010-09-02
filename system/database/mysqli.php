@@ -8,7 +8,7 @@ function cs_sql_connect($cs_db, $test = 0) {
     $error = 'PHP extension mysqli must be activated!';
   }
   else {
-    $connect = @mysqli_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd'], $cs_db['name']) OR $error = mysqli_connect_error();
+    $connect = mysqli_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd'], $cs_db['name']) OR $error = mysqli_connect_error();
   }
 
   global $cs_main;

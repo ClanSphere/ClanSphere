@@ -25,7 +25,7 @@ $threads = cs_sql_select(__FILE__,'threads','threads_id, threads_last_time',$thr
 $threads_loop=count($threads);
          
 for($run=0; $run < $threads_loop; $run++) {
-  if(@!in_array($readed[$run]['threads_id'], $threads[$run])) {
+  if(!in_array($readed[$run]['threads_id'], $threads[$run])) {
     $data['threads_id'] = $threads[$run]['threads_id'];
     $data['users_id'] = $account['users_id'];
     $data['read_since'] = cs_time();

@@ -10,7 +10,7 @@ function cs_sql_connect($cs_db, $test = 0) {
   }
   else {
     $cn_info = array('UID' => $cs_db['user'], 'PWD' => $cs_db['pwd'], 'Database' => $cs_db['name']);
-    $connect = @sqlsrv_connect($cs_db['place'], $cn_info) OR $error = cs_sql_error();
+    $connect = sqlsrv_connect($cs_db['place'], $cn_info) OR $error = cs_sql_error();
   }
 
   if(empty($test) AND empty($error)) {

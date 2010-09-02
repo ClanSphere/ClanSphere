@@ -47,19 +47,19 @@ else {
   $x = 1;
   $file_test = $file;
 
-  while(@file_exists($file_test . $ending)) {
+  while(file_exists($file_test . $ending)) {
     $x++;
     $file_test = $file . $x;
   }
 
   $file = $file_test . $ending;
 
-  $data = @fopen($file,'w');
+  $data = fopen($file,'w');
   # set stream encoding if possible to avoid converting issues
   if(function_exists('stream_encoding'))
     stream_encoding($data, $cs_main['charset']);
-  @fwrite($data,$_POST['data_content']);
-  @fclose($data);
+  fwrite($data,$_POST['data_content']);
+  fclose($data);
 
   $message = is_file($file) ? sprintf($cs_lang['file_created'],$file) : $cs_lang['file_error'];
   $red_lsd = cs_explorer_path($dir, 'escape');

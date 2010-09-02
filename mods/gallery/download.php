@@ -96,7 +96,7 @@ class zipfile
   }
 }
 
-if (@function_exists('gzcompress'))
+if (function_exists('gzcompress'))
 {
   $zip = isset($_REQUEST['zip']) ? '1' : 0;
   $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : 0;

@@ -20,7 +20,7 @@ if(!empty($_REQUEST['uninstall'])) {
   $sql_uninstall = file_get_contents('uninstall.sql');
   $sql_array = preg_split("=;[\n\r]+=",$sql_uninstall); 
   foreach($sql_array AS $sql_query) {
-    @cs_sql_query(__FILE__, $sql_query);
+    cs_sql_query(__FILE__, $sql_query);
   }
   cs_redirect('','install','sql','lang=' . $account['users_lang']);
 }

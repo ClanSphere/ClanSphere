@@ -19,7 +19,7 @@ $data['server']['sort'] = cs_sort('servers','manage',$start,0,1,$sort);
 $data['server']['headmsg'] = cs_getmsg();
 $data['if']['viewfsock'] = false;
 
-if (!@fsockopen("udp://127.0.0.1", 1)) {
+if (!fsockopen("udp://127.0.0.1", 1)) {
 	$data['if']['viewfsock'] = true;
 }
 

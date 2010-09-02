@@ -13,7 +13,7 @@ function cs_sql_connect($cs_db, $test = 0) {
     $pg_con .= 'dbname=' . $cs_db['name'] . ' user=' . $cs_db['user'] . ' password=' . $cs_db['pwd'];
 
     @ini_set('track_errors', 1);
-    $connect = @pg_connect($pg_con) OR $error = empty($php_errormsg) ? 'Connection failed' : $php_errormsg;
+    $connect = pg_connect($pg_con) OR $error = empty($php_errormsg) ? 'Connection failed' : $php_errormsg;
   }
 
   global $cs_main;

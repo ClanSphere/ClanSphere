@@ -9,7 +9,7 @@ function cs_sql_connect($cs_db, $test = 0) {
     $error = 'PHP extension mysql must be activated!';
   }
   else {
-    $connect = @mysql_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd']) OR $error = mysql_error();
+    $connect = mysql_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd']) OR $error = mysql_error();
   }
   if(empty($error)) {
     mysql_select_db($cs_db['name']) OR $error = mysql_error($connect);
