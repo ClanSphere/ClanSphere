@@ -37,7 +37,6 @@ $nav_array = array(
   'servers/navlist',
   'servers/navrandom',
   'shoutbox/navlist',
-  'shoutbox/navlist2',
   'users/navbirth',
   'users/navlang',
   'users/navlang2',
