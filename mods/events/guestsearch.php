@@ -9,7 +9,7 @@ $data = array();
 $guests_search = empty($_POST['guests_search']) ? 0 : trim($_POST['guests_search']);
 $guests_search = empty($_REQUEST['where']) ? $guests_search : $_REQUEST['where'];
 $data['guests']['search'] = empty($guests_search) ? '' : cs_secure($guests_search);
-$url_search =  = empty($guests_search) ? '' : rawurlencode($guests_search);
+$url_search = empty($guests_search) ? '' : rawurlencode($guests_search);
 
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'users_nick DESC';
