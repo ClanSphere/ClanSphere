@@ -1,18 +1,18 @@
 <form method="post" action="{url:events_guestsearch}">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
  <tr>
-  <td class="headb" colspan="2">{lang:mod_name} - {lang:guests_search}</td>
+  <td class="headb" colspan="3">{lang:mod_name} - {lang:guests_search}</td>
   </tr>
-  <tr>    
-    <td class="leftb">{icon:contents} {lang:total}: {head:count}</td>
-    <td class="rightb">{head:pages} </td>
+  <tr>
+    <td class="leftb"><a href="{url:events_manage}">{lang:manage}</a></td>
+    <td class="leftb">{lang:total}: {head:count}</td>
+    <td class="rightb">{head:pages}</td>
   </tr>
   <tr>
     <td class="leftb">{lang:search}</td>
-    <td class="leftb">
+    <td class="leftb" colspan="2">
       <input type="text" name="guests_search" id="guests_search" value="{guests:search}" size="50" maxlength="100" />
       <input type="submit" name="{lang:submit}" />
-      <div id="search_users_result"></div>
     </td>
   </tr>
 </table>
