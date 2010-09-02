@@ -55,3 +55,6 @@ $cs_lang['head_com_create']  = 'Create comments';
 $cs_lang['body_com_create']  = 'Please fill out all fields.';
 $cs_lang['page'] = 'Page';
 $cs_lang['all']  = 'All';
+$cs_lang['online']   = 'Online';
+$cs_lang['offline']  = 'Offline';
+$cs_lang['inactive'] = 'Inactive';
