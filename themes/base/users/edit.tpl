@@ -40,6 +40,10 @@
   </td>
   </tr>
   <tr>
+  <td class="leftc">{icon:mail_generic} {lang:emailregister} *</td>
+  <td class="leftb" colspan="2">{users:users_emailregister}</td>
+  </tr>  
+  <tr>
   <td class="leftc">{icon:access} {lang:access} *</td>
   <td class="leftb">{users:access_dropdown}</td>
   </tr>

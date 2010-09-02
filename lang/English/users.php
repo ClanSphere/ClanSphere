@@ -52,6 +52,7 @@ $cs_lang['edit_picture'] = 'Edit picture';
 
 $cs_lang['contact'] = 'Contact';
 $cs_lang['email'] = 'E-Mail';
+$cs_lang['emailregister'] = 'E-Mail at Registry';
 $cs_lang['icq'] = 'ICQ';
 $cs_lang['mobile'] = 'Cell Phone';
 $cs_lang['msn'] = 'MSN';

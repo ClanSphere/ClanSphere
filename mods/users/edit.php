@@ -153,7 +153,8 @@ else {
     // Get user from DB
     $cells = 'access_id, users_lang, users_nick, users_email, users_active, users_name, users_surname, users_sex, '
            . 'users_age, users_height, users_id, users_adress, users_postalcode, users_place, users_url, users_icq, '
-           . 'users_msn, users_skype, users_phone, users_mobile, users_info, users_signature, users_hidden, users_country';
+           . 'users_msn, users_skype, users_phone, users_mobile, users_info, users_signature, users_hidden, users_country, '
+           . 'users_emailregister';
 
     $cs_user = cs_sql_select(__FILE__, 'users', $cells, 'users_id = ' . $users_id);
     $data['users'] = $cs_user;

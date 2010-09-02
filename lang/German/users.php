@@ -52,6 +52,7 @@ $cs_lang['edit_profile'] = 'Profil bearbeiten';
 
 $cs_lang['contact'] = 'Kontakt';
 $cs_lang['email'] = 'E-Mail';
+$cs_lang['emailregister'] = 'RegistrierungseMail';
 $cs_lang['icq'] = 'ICQ';
 $cs_lang['mobile'] = 'Handy';
 $cs_lang['msn'] = 'MSN';
