@@ -6,7 +6,9 @@ function cs_themebar($source, $string, $mod, $action) {
 
   global $cs_main, $account; 
   // themebar has some side-effects, so it is forbidden in a few mod/action combinations
-  $forbidden = array('abcode/sourcebox', 'clansphere/debug', 'clansphere/navmeta', 'clansphere/themebar', 'errors/500', 'pictures/select');
+  $forbidden = array('abcode/sourcebox', 'errors/500', 'pictures/select', 'clansphere/debug', 
+                     'clansphere/navmeta', 'clansphere/themebar', 'clansphere/themebar_light');
+
   if(!in_array($mod . '/' . $action, $forbidden)) {
 
     // prevent from double inserting the xsrf protection key
