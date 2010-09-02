@@ -84,6 +84,7 @@ for($run = 0; $run < $data['squad']['members']; $run++) {
 }
 
 //ranks
+$data['if']['rank'] = 0;
 if(!empty($account['access_ranks'])) {
   $cells = 'ranks_id, ranks_name, ranks_url, ranks_img, ranks_code';
   $ranks = cs_sql_select(__FILE__,'ranks',$cells, "squads_id = '" . $squads_id . "'", 'ranks_name', 0, 5);
@@ -105,6 +106,7 @@ if(!empty($account['access_ranks'])) {
 $data['ranks'] = !empty($ranks) ? $ranks : array(0 => '');
 
 //awards
+$data['if']['award'] = 0;
 if(!empty($account['access_awards'])) {
   $from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id';
   $select = 'aws.awards_id AS awards_id, aws.awards_time AS awards_time, aws.awards_event AS awards_event, aws.awards_event_url AS awards_event_url, aws.awards_rank AS awards_rank';
@@ -122,6 +124,7 @@ if(!empty($account['access_awards'])) {
 $data['awards'] = !empty($awards) ? $awards : array(0 => '');
 
 // wars
+$data['if']['war'] = 0;
 if(!empty($account['access_wars'])) {
   $select = 'war.games_id AS games_id, war.wars_date AS wars_date, war.clans_id AS clans_id, cln.clans_short AS clans_short, cat.categories_name AS categories_name, war.categories_id AS categories_id, war.wars_score1 AS wars_score1, war.wars_score2 AS wars_score2, war.wars_id AS wars_id';
   $from = 'wars war INNER JOIN {pre}_categories cat ON war.categories_id = cat.categories_id ';
