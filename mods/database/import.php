@@ -44,13 +44,14 @@ if(!empty($sql_content)) {
         $para[1] = 'green';
         $info = $check['affected_rows'];
         if(!empty($look_up) AND isset($check['more'][0])) {
+          $hide = array('users_pwd', 'users_cookiehash');
           $explains = array();
           foreach($check['more'][0] AS $key => $value) {
             $explains['keys'][]['name'] = $key;
           }
           foreach($check['more'] AS $id => $more) {
             foreach($more AS $unused => $value)
-            $explains['more'][$id]['values'][]['name'] = $value;
+            $explains['more'][$id]['values'][]['name'] = in_array($unused, $hide) ? '****' : $value;
           }
           $info .= cs_subtemplate(__FILE__, $explains, 'database', 'explain');
         }

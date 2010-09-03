@@ -1,4 +1,4 @@
-<div style="overflow: auto; width: 400px">
+<div style="overflow:visible; width: 400px">
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}">
 <tr>
 {loop:keys}
