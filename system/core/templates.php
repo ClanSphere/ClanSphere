@@ -126,7 +126,6 @@ function cs_subtemplate_check($mod, $action) {
 }
 
 function cs_xsrf_protection_field($matches) {
-  $length = 10;
   global $cs_main;
   static $xsrf_key;
   if(!isset($_SESSION['cs_xsrf_keys']) || !is_array($_SESSION['cs_xsrf_keys'])) {
@@ -139,7 +138,6 @@ function cs_xsrf_protection_field($matches) {
     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
     
     $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
-    $_SESSION['cs_xsrf_keys'] = array_slice($_SESSION['cs_xsrf_keys'], (-1 * $length), $length);
     $_SESSION['cs_xsrf_keys'][] = $xsrf_key;
   }
   
