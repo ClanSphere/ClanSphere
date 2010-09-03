@@ -6,9 +6,10 @@ $cs_lang = cs_translate('events');
 
 $data = array();
 
-$guests_search = empty($_POST['guests_search']) ? 0 : trim($_POST['guests_search']);
-$guests_search = empty($_REQUEST['where']) ? $guests_search : rawurldecode($_REQUEST['where']);
+$guests_search = empty($_POST['guests_search']) ? 0 : $_POST['guests_search'];
+$guests_search = empty($_REQUEST['where']) ? $guests_search : $_REQUEST['where'];
 $data['guests']['search'] = empty($guests_search) ? '' : cs_secure($guests_search);
+$guests_url = rawurlencode(str_replace(array('/', '&', '\\'), '', $guests_search));
 
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'users_nick DESC';
@@ -40,10 +41,9 @@ $from = 'eventguests egt INNER JOIN {pre}_events evt ON egt.events_id = evt.even
 
 $data['head']['count'] = empty($data['if']['search']) ? 0 : cs_sql_count(__FILE__, $from, $where);
 
-$data['head']['pages'] = cs_pages('events','guestsearch',$data['head']['count'],$start,$data['guests']['search'],$sort);
-
-$data['sort']['user'] = cs_sort('events','guestsearch',$start,$data['guests']['search'],1,$sort);
-$data['sort']['name'] = cs_sort('events','guestsearch',$start,$data['guests']['search'],3,$sort);
+$data['head']['pages'] = cs_pages('events','guestsearch',$data['head']['count'],$start,$guests_url,$sort);
+$data['sort']['user'] = cs_sort('events','guestsearch',$start,$guests_url,1,$sort);
+$data['sort']['name'] = cs_sort('events','guestsearch',$start,$guests_url,3,$sort);
 
 if($data['if']['search']) {
   $select = 'egt.eventguests_name AS eventguests_name, egt.eventguests_surname AS eventguests_surname, egt.users_id AS users_id, '
