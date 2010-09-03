@@ -23,13 +23,14 @@ $search_fields = array('usr.users_nick', 'usr.users_name', 'usr.users_surname',
 $search_terms = (strlen($guests_search) > 2) ? explode(' ', $guests_search) : array();
 
 $where = '';
-foreach($search_fields AS $field) {
-  $where .= '(';
-  foreach($search_terms AS $term)
-    if(strlen(trim($term)) > 2)
+foreach($search_terms AS $term) {
+  if(strlen(trim($term)) > 2) {
+    $where .= '(';
+    foreach($search_fields AS $field) {
       $where .= $field . ' LIKE \'%' . cs_sql_escape($term) . '%\' OR ';
-
-  $where = substr($where, 0, -4) . ') AND ';
+    }
+    $where = substr($where, 0, -4) . ') AND ';
+  }
 }
 $where = substr($where, 0, -5);
 
