@@ -21,14 +21,18 @@ $order = $cs_sort[$sort];
 $search_fields = array('usr.users_nick', 'usr.users_name', 'usr.users_surname',
                        'egt.eventguests_name', 'egt.eventguests_surname');
 $search_terms = (strlen($guests_search) > 2) ? explode(' ', $guests_search) : array();
-$search_where = '';
 
-foreach($search_fields AS $field)
+$where = '';
+foreach($search_fields AS $field) {
+  $where .= '(';
   foreach($search_terms AS $term)
     if(strlen(trim($term)) > 2)
-      $search_where .= $field . ' LIKE \'%' . cs_sql_escape($term) . '%\' OR ';
+      $where .= $field . ' LIKE \'%' . cs_sql_escape($term) . '%\' OR ';
 
-$where = substr($search_where, 0, -4);
+  $where = substr($where, 0, -4) . ') AND ';
+}
+$where = substr($where, 0, -5);
+
 $data['if']['search'] = (strlen($where) > 5) ? 1 : 0;
 
 $from = 'eventguests egt INNER JOIN {pre}_events evt ON egt.events_id = evt.events_id LEFT JOIN {pre}_users usr ON egt.users_id = usr.users_id';
