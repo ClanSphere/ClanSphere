@@ -30,7 +30,7 @@ $data['link']['name'] = cs_url('board', 'list', 'id=' . $cs_board['categories_id
 $data['categories']['name'] = $cs_board['categories_name'];
 $data['board']['name'] = cs_secure($cs_board['board_name']);
 $data['link']['newthread'] = cs_url('board', 'thread_add', 'id=' . $cs_board['board_id']);
-$data['link']['mark_board'] = cs_url('board', 'mark', '&amp;id=' . $board_id);
+$data['link']['mark_board'] = cs_url('board', 'mark', 'id=' . $board_id);
 if(!empty($cs_board['board_read']) AND $account['access_board'] < 5) { $data['if']['newthread'] = false; } else { $data['if']['newthread'] = true; }
 
 if (!empty($cs_board['squads_id']) and $account['access_board'] < $cs_board['board_access']) {
