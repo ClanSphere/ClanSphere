@@ -168,6 +168,13 @@ else {
 
   if (!empty($error) or !isset($_POST['submit'])) {
 
+    // Set empty data when user is not found
+    if(empty($cs_user['users_id'])) {
+      $cs_user = array('access_id' => 0, 'users_active' => '', 'users_age' => '', 'users_country' => '',
+                       'users_info' => '', 'users_lang' => '', 'users_sex' => '', 'users_signature' => '');
+      $data['users'] = $cs_user;
+    }
+
     // Edit addditional user information
     $hidden = empty($cs_user['users_hidden']) ? array() : explode(',',$cs_user['users_hidden']);
     $hidden = array_flip($hidden);
