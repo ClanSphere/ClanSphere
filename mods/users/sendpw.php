@@ -65,14 +65,15 @@ if(isset($_POST['submit'])) {
   }
   elseif(empty($error)) {
     $checked = 1;
-    $key2 = cs_sql_select(__FILE__,'users','users_pwd',"users_email = '" . cs_sql_escape($sendpw['email']) . "'");
+    $key2 = cs_sql_select(__FILE__,'users','users_pwd, users_nick',"users_email = '" . cs_sql_escape($sendpw['email']) . "'");
     $key = substr($key2['users_pwd'],4,16);
 
     $ip = cs_getip();
     $cs_contact = cs_sql_option(__FILE__, 'contact');
     $content = $cs_lang['mail_spw_start'] . $cs_contact['def_org'] . $cs_lang['mail_spw_start2'];
-  $content .= $cs_lang['mail_spw_start3'];
-  $content .= $cs_lang['mail_spw_key'] . $key;
+    $content .= $cs_lang['mail_spw_start3'];
+    $content .= $cs_lang['mail_reg_nick'] . $key2['users_nick'];
+    $content .= $cs_lang['mail_spw_key'] . $key;
     $content .= $cs_lang['mail_spw_ip'] . $ip;
     $content .= $cs_lang['mail_spw_ask'] . $cs_contact['def_mail'] . $cs_lang['mail_spw_end'];
 
@@ -85,7 +86,6 @@ else {
 
 $data['head']['mod'] = $cs_lang['mod_name'];
 $data['head']['action'] = $cs_lang['sendpw'];
-
 
 if(!isset($_POST['submit'])) {
   $data['head']['body_text'] = $cs_lang['sendpw_info'];
@@ -102,17 +102,16 @@ else {
 
 echo cs_subtemplate(__FILE__,$data,'users','head');
 
-
 if(empty($success)) {
 
   if(!empty($checked)) {
-  
+
   $data['lang']['key'] = $cs_lang['key'];
   $data['lang']['new_pwd'] = $cs_lang['new_pwd'];
   $data['hidden']['email'] = $sendpw['email'];
   $data['lang']['options'] = $cs_lang['options'];
   $data['lang']['save'] = $cs_lang['save'];
-    $data['lang']['reset'] = $cs_lang['reset'];
+  $data['lang']['reset'] = $cs_lang['reset'];
   echo cs_subtemplate(__FILE__,$data,'users','sendpw_2');
   }
   else {
@@ -121,13 +120,11 @@ if(empty($success)) {
     $data['lang']['options'] = $cs_lang['options'];
     $data['lang']['request'] = $cs_lang['request'];
     $data['lang']['reset'] = $cs_lang['reset'];
-    
+
     $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
 
     echo cs_subtemplate(__FILE__,$data,'users','sendpw_1');
   }
 }
-else {
+else
   cs_redirect('','users','login');
-}  
-  
