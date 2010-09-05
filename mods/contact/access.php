@@ -2,6 +2,7 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
+$axx_file['list']         = 1;
 $axx_file['mail']         = 1;
 $axx_file['send']         = 1;
 $axx_file['imprint']      = 0;
