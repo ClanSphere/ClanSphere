@@ -316,7 +316,7 @@ function cs_init($predefined) {
       echo cs_ajaxwrap();
     }
     else
-      echo cs_template($cs_micro, $predefined['tpl_file']);
+      echo cs_template($cs_micro, $cs_main['tpl_file']);
   }
 }
 
