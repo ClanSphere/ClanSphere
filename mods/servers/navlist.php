@@ -52,36 +52,36 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 						$data['servers'][$run]['servers_port'] = $cs_servers[$run]['servers_port'];
 						if(isset($server[$run]['gamename']) AND !empty($server[$run]['gamename'])) {
 							$data['servers'][$run]['game_descr'] = $server[$run]['gamename'];
-					}
+						}
 
-					if(isset($server[$run]['map']) && !empty($server[$run]['map'])) {
-						$data['servers'][$run]['map'] = $server[$run]['map'];
-						if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['map'] . '.jpg')) {
-							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['map'] . '.jpg';
+						if(isset($server[$run]['map']) && !empty($server[$run]['map'])) {
+							$data['servers'][$run]['map'] = $server[$run]['map'];
+							if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['map'] . '.jpg')) {
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['map'] . '.jpg';
+							}
+							else {
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+							}
 						}
-						else {
-							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+						elseif(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
+							$data['servers'][$run]['map'] = $server[$run]['mapname'];
+							if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
+							}
+							else {
+								$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+							}
 						}
-					}
-					elseif(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
-						$data['servers'][$run]['map'] = $server[$run]['mapname'];
-						if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg')) {
-							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['mapname'] . '.jpg';
-						}
-						else {
-							$data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
-						}
-					}
 
-					$select = 'maps_name, maps_picture, server_name';
-					$where = 'server_name = \'' . $data['servers'][$run]['map'] . '\'';
-					$sqlmap = cs_sql_select(__FILE__,'maps',$select,$where,0,0,1);
-					if(!empty($sqlmap)) {
-						$data['servers'][$run]['map'] = $sqlmap['maps_name'];
-						if(file_exists('uploads/maps/' . $sqlmap['maps_picture'])) {
-							$data['servers'][$run]['mappic'] = 'uploads/maps/' . $sqlmap['maps_picture'];
+						$select = 'maps_name, maps_picture, server_name';
+						$where = 'server_name = \'' . $data['servers'][$run]['map'] . '\'';
+						$sqlmap = cs_sql_select(__FILE__,'maps',$select,$where,0,0,1);
+						if(!empty($sqlmap)) {
+							$data['servers'][$run]['map'] = $sqlmap['maps_name'];
+							if(file_exists('uploads/maps/' . $sqlmap['maps_picture'])) {
+								$data['servers'][$run]['mappic'] = 'uploads/maps/' . $sqlmap['maps_picture'];
+							}
 						}
-					}
 
 						if(!isset($server[$run]['max_players'])) {
 							if(isset($server[$run]['sv_maxclients'])) {
@@ -96,11 +96,11 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 						$data['servers'][$run] = $objServers->setProtocolLink($cs_servers[$run], $data['servers'][$run]);
 						$data['servers'][$run]['pass'] = empty($data['servers'][$run]['pass']) ? $cs_lang['no'] : $cs_lang['yes'];
 						$data['servers'][$run]['id'] = $cs_servers[$run]['servers_id'];
-					flush();
+						flush();
+					}
 				}
 			}
 		}
-	}
 	}
 	echo cs_subtemplate(__FILE__,$data,'servers','navlist');
 }

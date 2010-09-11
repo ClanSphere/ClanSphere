@@ -40,6 +40,12 @@ class Servers {
 			$this->_gameQ->addServer($iId, array($server['servers_class'], $server['servers_ip'], $server['servers_port']));
 		}
 	}
+	
+	public function normalize($data) {
+		if($data['servername']) { $data['hostname'] = $data['servername']; }
+		if($data['maxplayers']) { $data['max_players'] = $data['maxplayers']; }
+		return $data;
+	}
 
 	/**
 	 * 

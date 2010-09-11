@@ -120,11 +120,13 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 						}
 					}
 					$data['servers'][$run] = $objServers->setProtocolLink($cs_servers[$run], $data['servers'][$run]);
+					$data['servers'][$run] = $objServers->normalize($data['servers'][$run]);
 					flush();
 				}
 			}
 		}
 	}
+
 	/* Show Serverslist */
 	echo cs_subtemplate(__FILE__,$data,'servers','list');
 }

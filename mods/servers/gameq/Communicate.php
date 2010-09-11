@@ -160,7 +160,7 @@ class GameQ_Communicate
 
         while (($t = $timeout * 1000 - (microtime(true) - $starttime) * 10000) > 0 ) {
 
-            $s = stream_select($r, $w, $e, 0, $t);
+            $s = stream_select($r, $w, $e, 1, $t);
             if ($s === false || $s <= 0) break;
 
             if (++$loops > $maxloops) break;
