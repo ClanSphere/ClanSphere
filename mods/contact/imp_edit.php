@@ -37,7 +37,7 @@ if(isset($_POST['submit'])) {
     if(function_exists('stream_encoding'))
       stream_encoding($fp, $cs_main['charset']);
     fwrite ($fp, $content);
-    chmod($filename,0644);
+    chmod($filename, 0755);
     fclose ($fp);
 
   if($account['access_wizard'] == 5) {

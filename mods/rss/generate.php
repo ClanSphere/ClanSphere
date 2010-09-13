@@ -46,7 +46,7 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
       stream_encoding($save_file, $cs_main['charset']);
     fwrite($save_file,$content);
     fclose($save_file);
-    @chmod($target . $mod . '.xml',0644);
+    @chmod($target . $mod . '.xml', 0755);
   }
   else {
     cs_error($target,'cs_update_rss - Unable to write into directory');

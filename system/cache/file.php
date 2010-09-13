@@ -57,7 +57,7 @@ function cs_cache_save($name, $content) {
       stream_encoding($save_cache, $cs_main['charset']);
     fwrite($save_cache, $store);
     fclose($save_cache);
-    chmod($cache_file, 0644);
+    chmod($cache_file, 0755);
   }
   elseif($cs_main['mod'] != 'install')
     cs_error('uploads/cache/' . $name . '.tmp', 'cs_cache_save - Unable to write cache file');

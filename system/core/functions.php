@@ -406,7 +406,7 @@ function cs_log($target,$content) {
       stream_encoding($save_error, $cs_main['charset']);
     fwrite($save_error,$log);
     fclose($save_error);
-    chmod($log_file,0644);
+    chmod($log_file, 0755);
   }
   else {
     $msg = 'cs_log - Unable to write into directory -> ' . $full_path;
