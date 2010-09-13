@@ -68,7 +68,7 @@
   </tr>
   <tr>
     <td class="leftb" colspan="2">{loop:previews}
-    <a href="{previews:path}">{previews:image}</a>
+    <a href="{page:path}{previews:path}">{previews:image}</a>
     {stop:previews}</td>
   </tr>
   {stop:preview}
