@@ -4,7 +4,7 @@
 
 function cs_newsletter_to($select) {
 
-  global $cs_lang;
+  $cs_lang = cs_translate('newsletter');
   # TODO: Make $select work and insert clan and squad translation naming switch
 
   $dp = cs_html_option('----','0',1);
