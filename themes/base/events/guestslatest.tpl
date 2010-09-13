@@ -14,7 +14,7 @@
   <tr>
     <td class="headb" style="min-width: 100px">{lang:event}</td>
     <td class="headb" style="min-width: 100px">{lang:user}</td>
-    <td class="headb" style="min-width: 100px">{lang:name}</td>
+    <td class="headb" style="min-width: 100px">{sort:name} {lang:name}</td>
     <td class="headb">{sort:time} {lang:time}</td>
     <td class="headb" colspan="3">{lang:options}</td>
   </tr>

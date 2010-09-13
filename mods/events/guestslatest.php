@@ -9,6 +9,8 @@ $data = array();
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'egt.eventguests_since DESC';
 $cs_sort[2] = 'egt.eventguests_since ASC';
+$cs_sort[3] = 'usr.users_surname DESC, egt.eventguests_surname DESC';
+$cs_sort[4] = 'usr.users_surname ASC, egt.eventguests_surname ASC';
 $sort = empty($_REQUEST['sort']) ? 1 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
@@ -17,6 +19,7 @@ $data['head']['count'] = cs_sql_count(__FILE__, 'eventguests');
 $data['head']['pages'] = cs_pages('events','guestslatest',$data['head']['count'],$start,0,$sort);
 
 $data['sort']['time'] = cs_sort('events','guestslatest',$start,0,1,$sort);
+$data['sort']['name'] = cs_sort('events','guestslatest',$start,0,3,$sort);
 
 $from = 'eventguests egt INNER JOIN {pre}_events evt ON egt.events_id = evt.events_id LEFT JOIN {pre}_users usr ON egt.users_id = usr.users_id';
 $select = 'egt.eventguests_name AS eventguests_name, egt.eventguests_surname AS eventguests_surname, '
