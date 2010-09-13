@@ -3,7 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('newsletter');
+
+include_once 'mods/newsletter/functions.php';
+
 $data = array();
+$cs_nl = array();
 
 $cs_nl['newsletter_subject'] = '';
 $cs_nl['newsletter_to'] = '';
@@ -18,7 +22,7 @@ if(isset($_POST['submit'])) {
   $cs_nl['newsletter_text'] = $_POST['newsletter_text'];
   
   $error = '';
-  
+
   if(empty($cs_nl['newsletter_subject']))
     $error .= $cs_lang['no_subject'] . cs_html_br(1);
   if(empty($cs_nl['newsletter_to']))
@@ -37,77 +41,19 @@ elseif(!empty($error)) {
 if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['nl'] = $cs_nl;
-  
-  $dp = cs_html_option('----','0',1);
-  $dp .= cs_html_option($cs_lang['all_users'],'1');
-  $dp .= cs_html_option('&raquo;' .$cs_lang['ac_group'],'');
-  $usergroups = cs_sql_select(__FILE__,'access','access_id,access_name','access_id != 1',0,0,0);
-  foreach($usergroups AS $value) {
-    $dp .= cs_html_option('&nbsp;&nbsp;&nbsp;' . cs_secure($value['access_name']),'2?' .$value['access_id']);
-  }
-  $dp .= cs_html_option(' &raquo;' .$cs_lang['squad'],'');
-  $squads = cs_sql_select(__FILE__,'squads','squads_id, squads_name',0,'squads_name',0,0);
-  $squads = empty($squads) ? array() : $squads;
-  foreach($squads AS $squad) {
-    $dp .= cs_html_option('&nbsp;&nbsp;&nbsp;' . cs_secure($squad['squads_name']),'3?' .$squad['squads_id']);
-  }   
-  $dp .= cs_html_option('&raquo;' .$cs_lang['clan'],'');
 
-  $clans = cs_sql_select(__FILE__,'clans','clans_id, clans_name',0,'clans_name',0,0);
-  $clans = empty($clans) ? array() : $clans;
-  foreach($clans AS $clan) {
-    $dp .= cs_html_option('&nbsp;&nbsp;&nbsp;' . cs_secure($clan['clans_name']),'4?' .$clan['clans_id']);
-  }
-  $data['nl']['to_dropdown'] = $dp;
+  $data['nl']['to_dropdown'] = cs_newsletter_to($cs_nl['newsletter_to']);
 
  echo cs_subtemplate(__FILE__,$data,'newsletter','create');
 
 }
 else {
 
-  $check_to = explode('?',$cs_nl['newsletter_to']); 
-  switch ($check_to[0]) 
-  {
-    case 1:
-       {
-         $from  = 'users';
-      $where = "users_active = '1' AND users_newsletter = '1'";
-      $select = 'users_email';
-         break;
-       }
-       break;
-           case 2:
-       {
-         $from  = 'access acs INNER JOIN {pre}_users usr ON usr.access_id = acs.access_id ';
-      $where = "acs.access_id = '" . $check_to[1] . "' AND usr.users_newsletter = '1'";
-      $select = 'usr.users_email';
-         break;
-       }
-       break;
-    case 3:
-    {
-         $from  = 'squads squ INNER JOIN {pre}_members meb ON meb.squads_id = squ.squads_id ';
-      $from .= 'INNER JOIN {pre}_users usr ON meb.users_id = usr.users_id';
-      $where = "squ.squads_id = '" . $check_to[1] . "' AND usr.users_newsletter = '1'";
-      $select = 'usr.users_email';
-         break;
-       } 
-       case 4:
-       {
-         $from  = 'clans cln INNER JOIN {pre}_squads squ ON squ.clans_id = cln.clans_id ';
-         $from .= 'INNER JOIN {pre}_members meb ON meb.squads_id = squ.squads_id ';
-      $from .= 'INNER JOIN {pre}_users usr ON meb.users_id = usr.users_id';
-      $where = "cln.clans_id = '" . $check_to[1] . "' AND usr.users_newsletter = '1'";
-      $select = 'usr.users_email';
-         break;
-       }
-       break;
-  }
+  $mail_targets = cs_newsletter_emails($cs_nl['newsletter_to']);
 
-  $mail_addys = cs_sql_select(__FILE__,$from,$select,$where,0,0,0);
-  $count_mails = 0; 
-  if (!empty($mail_addys)) {
-    foreach($mail_addys as $value) {       
+  $count_mails = 0;
+  if (!empty($mail_targets)) {
+    foreach($mail_targets as $value) {       
       cs_mail($value['users_email'],$cs_nl['newsletter_subject'],$cs_nl['newsletter_text']);
       $count_mails++; 
     }
