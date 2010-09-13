@@ -28,7 +28,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
-    <td class="leftc">
+    <td class="leftb">
       <input type="submit" name="submit" value="{lang:create}" />
     </td>
   </tr>

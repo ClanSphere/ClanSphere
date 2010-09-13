@@ -33,3 +33,7 @@ $cs_lang['newsletter'] = 'Newsletter';
 $cs_lang['subscribe'] = 'Anmelden';
 $cs_lang['unsubscribe_letter'] = 'Erfolgreich abgemeldet';
 $cs_lang['subscribe_letter'] = 'Erfolgreich angemeldet';
+
+# export
+$cs_lang['export'] = 'Export';
+$cs_lang['body_export'] = 'Die Email-Adressen der ausgew&auml;hlten Gruppe werden als Komma-getrennte Werte gepackt';

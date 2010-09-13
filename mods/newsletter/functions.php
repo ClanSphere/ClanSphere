@@ -35,44 +35,46 @@ function cs_newsletter_to($select) {
 
 function cs_newsletter_emails($select) {
 
+  $from = '';
+  $where = '';
   $check_to = explode('?', $select); 
   switch ($check_to[0]) 
   {
     case 1:
-       {
-         $from  = 'users';
-      $where = "users_active = '1' AND users_newsletter = '1'";
-      $select = 'users_email';
-         break;
-       }
-       break;
-           case 2:
-       {
-         $from  = 'access acs INNER JOIN {pre}_users usr ON usr.access_id = acs.access_id ';
-      $where = "acs.access_id = '" . $check_to[1] . "' AND usr.users_newsletter = '1'";
-      $select = 'usr.users_email';
-         break;
-       }
-       break;
+    {
+      $from   = 'users usr';
+      $where  = '';
+      break;
+    }
+    break;
+    case 2:
+    {
+      $from   = 'access acs INNER JOIN {pre}_users usr ON usr.access_id = acs.access_id ';
+      $where  = "acs.access_id = " . (int) $check_to[1];
+      break;
+    }
+    break;
     case 3:
     {
-         $from  = 'squads squ INNER JOIN {pre}_members meb ON meb.squads_id = squ.squads_id ';
-      $from .= 'INNER JOIN {pre}_users usr ON meb.users_id = usr.users_id';
-      $where = "squ.squads_id = '" . $check_to[1] . "' AND usr.users_newsletter = '1'";
-      $select = 'usr.users_email';
-         break;
-       } 
-       case 4:
-       {
-         $from  = 'clans cln INNER JOIN {pre}_squads squ ON squ.clans_id = cln.clans_id ';
-         $from .= 'INNER JOIN {pre}_members meb ON meb.squads_id = squ.squads_id ';
-      $from .= 'INNER JOIN {pre}_users usr ON meb.users_id = usr.users_id';
-      $where = "cln.clans_id = '" . $check_to[1] . "' AND usr.users_newsletter = '1'";
-      $select = 'usr.users_email';
-         break;
-       }
-       break;
+      $from   = 'squads squ INNER JOIN {pre}_members meb ON meb.squads_id = squ.squads_id '
+              . 'INNER JOIN {pre}_users usr ON meb.users_id = usr.users_id';
+      $where  = "squ.squads_id = " . (int) $check_to[1];
+      break;
+    }
+    break;
+    case 4:
+    {
+      $from  = 'clans cln INNER JOIN {pre}_squads squ ON squ.clans_id = cln.clans_id '
+             . 'INNER JOIN {pre}_members meb ON meb.squads_id = squ.squads_id '
+             . 'INNER JOIN {pre}_users usr ON meb.users_id = usr.users_id';
+      $where = "cln.clans_id = " . (int) $check_to[1];
+      break;
+    }
+    break;
   }
 
+  $select = 'usr.users_email AS email';
+  $where_add = 'usr.users_newsletter = 1 AND usr.users_active = 1 AND usr.users_delete = 0';
+  $where = empty($where) ? $where_add : $where . ' AND ' . $where_add;
   return cs_sql_select(__FILE__,$from,$select,$where,0,0,0);
 }
