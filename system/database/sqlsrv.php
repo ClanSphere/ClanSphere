@@ -210,7 +210,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   return NULL;
 }
 
-function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, $sql_where = 0) {
+function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, $sql_where = 0, $sql_log = 1) {
 
   global $cs_db;
   settype($sql_id, 'integer');
@@ -233,11 +233,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
   }
   sqlsrv_query($cs_db['con'], $sql_update) or cs_error_sql($cs_file, 'cs_sql_update', cs_sql_error());
 
-  $action = 1;
-  if ($sql_cells[0] == 'users_laston' or $sql_table == 'count') {
-    $action = 0;
-  }
-  cs_log_sql($cs_file, $sql_update, $action);
+  cs_log_sql($cs_file, $sql_update, $sql_log);
 }
 
 function cs_sql_version($cs_file) {
