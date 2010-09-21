@@ -29,7 +29,7 @@ for($run=0; $run < $threads_loop; $run++) {
       $data['read_since'] = cs_time();
       $cells = array_keys($data);
       $save = array_values($data);  
-      cs_sql_update(__FILE__,'read',$cells,$save,$readed[$run]['read_id']);
+      cs_sql_update(__FILE__,'read',$cells,$save,$readed[$run]['read_id'], 0, 0);
     }
   }
   else {

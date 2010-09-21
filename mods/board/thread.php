@@ -71,7 +71,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
   // Update view
   $thread_cells = array('threads_view');
   $thread_save = array($data['thread']['threads_view'] +1);
-  cs_sql_update(__FILE__,'threads',$thread_cells,$thread_save,$id);
+  cs_sql_update(__FILE__,'threads',$thread_cells,$thread_save,$id, 0, 0);
 
   // Update read
   if(!empty($account['users_id']) AND $data['thread']['threads_last_time'] > $cs_readtime) {
@@ -82,7 +82,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
       $read_save = array($data['thread']['threads_id'],$account['users_id'],$time_now);
       cs_sql_insert(__FILE__,'read',$read_cells,$read_save);
     } else {
-      cs_sql_update(__FILE__,'read',array('read_since'),array($time_now),$read_set['read_id']);
+      cs_sql_update(__FILE__,'read',array('read_since'),array($time_now),$read_set['read_id'], 0, 0);
     }
   }
 
