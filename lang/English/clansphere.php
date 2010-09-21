@@ -222,7 +222,7 @@ $cs_lang['url_rewrite'] = 'Pretty URLs';
 $cs_lang['maintenance_access'] = 'Maintenance access';
 $cs_lang['missing_htaccess'] = 'Mod-rewrite cannot be activated until, depending on the webserver, the .htaccess or web.config file is found.';
 $cs_lang['level'] = 'Level';
-$cs_lang['notfound_info'] = 'Treat requests to unkown modules or actions as errors';
+$cs_lang['notfound_info'] = 'Treat requests to unknown modules or actions as errors';
 
 // Charset
 $cs_lang['body_charset'] = 'This page provides help in finding charset related problems';
