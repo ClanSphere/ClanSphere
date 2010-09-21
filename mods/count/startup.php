@@ -33,7 +33,7 @@ if(!empty($account['access_count']))
     {
       $counter_cells = array('count_time','count_location');
       $counter_content = array($time,$cs_main['mod'] . '/' . $cs_main['action']);
-      cs_sql_update(__FILE__,'count',$counter_cells,$counter_content,$fetch_me['count_id']);
+      cs_sql_update(__FILE__,'count',$counter_cells,$counter_content,$fetch_me['count_id'], 0, 0);
     }
     else 
     {
