@@ -152,7 +152,7 @@ if(!empty($account['users_id'])) {
   elseif($time > ($account['users_laston'] + 30)) {
     $cells = array('users_laston');
     $content = array($time);
-    cs_sql_update(__FILE__,'users',$cells,$content,$account['users_id']);
+    cs_sql_update(__FILE__,'users',$cells,$content,$account['users_id'], 0, 0);
   }
 }
 else
