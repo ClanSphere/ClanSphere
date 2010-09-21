@@ -176,7 +176,7 @@ function cs_content_lang () {
     elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
       $users_cells = array('users_lang');
       $users_save = array($lang);
-      cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
+      cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id'], 0, 0);
     }
   }
 

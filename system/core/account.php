@@ -15,7 +15,7 @@ function cs_login_cookies($userid = 0, $use_old_hash = 0) {
 
     $cells = array('users_cookietime', 'users_cookiehash');
     $content = array($thistime, $thishash);
-    cs_sql_update(__FILE__,'users',$cells,$content,$userid);
+    cs_sql_update(__FILE__,'users',$cells,$content,$userid, 0, 0);
   }
 
   setcookie('cs_userid', $userid, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
