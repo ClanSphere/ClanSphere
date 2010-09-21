@@ -53,9 +53,9 @@ else {
 
   $count_mails = 0;
   if (!empty($mail_targets)) {
-    foreach($mail_targets as $value) {       
-      cs_mail($value['users_email'],$cs_nl['newsletter_subject'],$cs_nl['newsletter_text']);
-      $count_mails++; 
+    foreach($mail_targets as $value) {
+      cs_mail($value['email'],$cs_nl['newsletter_subject'],$cs_nl['newsletter_text']);
+      $count_mails++;
     }
   }
   $cells = array_keys($cs_nl);
