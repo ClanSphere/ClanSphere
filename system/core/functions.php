@@ -96,7 +96,8 @@ function cs_content_check ($cs_main) {
   global $account;
   $get_axx = 'mods/' . $cs_main['mod'] . '/access.php';
   if (!file_exists($cs_main['show'])) {
-    cs_error($cs_main['show'], 'cs_content_check - File not found');
+    if (!empty($cs_main['notfound_info']))
+      cs_error($cs_main['show'], 'cs_content_check - File not found');
     $cs_main['show'] = 'mods/errors/404.php';
   }
   elseif (!file_exists($get_axx)) {

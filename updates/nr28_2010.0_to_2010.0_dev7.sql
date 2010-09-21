@@ -1,6 +1,6 @@
 UPDATE {pre}_options SET options_value = '2010.0 DEV 7' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
 UPDATE {pre}_options SET options_value = '2010-08-27' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
-UPDATE {pre}_options SET options_value = 61 WHERE options_mod = 'clansphere' AND options_name = 'version_id';
+UPDATE {pre}_options SET options_value = '61' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 ALTER TABLE {pre}_users ADD users_emailregister varchar(255) NOT NULL default '';
 UPDATE {pre}_users SET users_emailregister = users_email;
@@ -16,3 +16,5 @@ CREATE TABLE {pre}_trashmail (
 ){engine};
 
 CREATE INDEX {pre}_trashmail_entry_index ON {pre}_trashmail (trashmail_entry);
+
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'notfound_info', '0');

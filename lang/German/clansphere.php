@@ -222,6 +222,7 @@ $cs_lang['url_rewrite'] = 'H&uuml;bsche URLs';
 $cs_lang['maintenance_access'] = 'Wartungs-Zugriff ab';
 $cs_lang['missing_htaccess'] = 'Mod-Rewrite kann erst aktiviert werden, wenn, je nach Webserver, die .htaccess oder web.config Datei vorhanden ist.';
 $cs_lang['level'] = 'Stufe';
+$cs_lang['notfound_info'] = 'Aufrufe an fehlende Module oder Aktionen als Fehler behandeln';
 
 // Charset
 $cs_lang['body_charset'] = 'Diese Seite hilft beim Auffinden von Zeichensatz-Problemen';

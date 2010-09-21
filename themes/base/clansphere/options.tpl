@@ -76,6 +76,12 @@
           <option value="1"{options:developer_on}>{lang:on}</option>
           <option value="0"{options:developer_off}>{lang:off}</option>
         </select>
+        <br />
+        {lang:notfound_info}<br />
+        <select name="notfound_info">
+          <option value="1"{options:notfound_on}>{lang:on}</option>
+          <option value="0"{options:notfound_off}>{lang:off}</option>
+        </select>
       </td>
     </tr>
     <tr>

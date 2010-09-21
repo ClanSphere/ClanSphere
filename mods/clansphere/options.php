@@ -46,6 +46,7 @@ if(isset($_POST['submit'])) {
   $save['img_ext'] = $_POST['img_ext'];
   $save['def_admin'] = $_POST['def_admin'];
   $save['developer'] = (int) $_POST['developer'];
+  $save['notfound_info'] = (int) $_POST['notfound_info'];
   $save['data_limit'] = (int) $_POST['data_limit'];
   $save['sec_remote'] = (int) $_POST['sec_remote'];
 
@@ -95,6 +96,14 @@ else {
   } else {
     $data['options']['developer_on'] = ' selected="selected"';
     $data['options']['developer_off'] = '';
+  }
+
+  if(empty($data['options']['notfound_info'])) {
+    $data['options']['notfound_on'] = '';
+    $data['options']['notfound_off'] = ' selected="selected"';
+  } else {
+    $data['options']['notfound_on'] = ' selected="selected"';
+    $data['options']['notfound_off'] = '';
   }
 
   $modules = cs_checkdirs('mods');

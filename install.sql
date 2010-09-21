@@ -774,7 +774,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'ajax_reload', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cache_unicode', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'cellspacing', '1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'data_limit', 20);
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'data_limit', '20');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_lang', '{def_lang}');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_tpl', 'clansphere');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_theme', 'base');
@@ -793,14 +793,15 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'def_admin', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'developer', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'maintenance_access', '3');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'notfound_info', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'public', '1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_last', 521);
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', 521);
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_last', '521');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '521');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_remote', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2010.0 DEV 7');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2010-08-27');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', 61);
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '61');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_width', '800');
@@ -809,7 +810,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('co
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'def_org', 'yourdomain.com');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'def_mail', 'noreply@yourdomain.com');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_host', '');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_port', 25);
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_port', '25');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_user', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('contact', 'smtp_pw', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('counter', 'count_lastday', '0');
