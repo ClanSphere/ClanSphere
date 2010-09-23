@@ -37,6 +37,7 @@ if(version_compare(phpversion(),'5.2.0','>'))
 else
   session_set_cookie_params(0,$cs_main['cookie']['path'],$cs_main['cookie']['domain']);
 
+session_name('cs' . md5($cs_main['cookie']['domain'])); 
 session_start();
 
 # xsrf protection
