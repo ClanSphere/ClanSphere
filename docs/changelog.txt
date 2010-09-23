@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2010.0.1 >> 2010-09-XX
+ClanSphere 2010.1 >> 2010-09-XX
 ___________________________________________________________
 
 -> Added class "noexpand" for textareas to exclude them from the autoexpander (x-ray)
@@ -13,6 +13,7 @@ ___________________________________________________________
 -> Fixed ajax with underscores in filenames, due to this hyphens are no longer allowed in them (schiri)
 -> Fixed error page on too old php versions by using a fallback file (hajo)
 -> Fixed linkus image url to work again (hajo)
+-> Updated CKEditor to 3.4.1 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
