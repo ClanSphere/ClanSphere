@@ -10,7 +10,7 @@ $files = cs_files();
 
 $data = array();
 
-$data['if']['games'] = empty($account['access_games']) ? FALSE : TRUE;
+$data['if']['gamesmod'] = empty($account['access_games']) ? FALSE : TRUE;
 
 $img_filetypes = array('gif','jpg','png');
 
@@ -105,7 +105,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',0,'clans_name',0,0);
   $data['squads']['clan_sel'] = cs_dropdown('clans_id','clans_name',$cs_clans,$cs_squads['clans_id']);
 
-  if($data['if']['games'] == TRUE) {
+  if($data['if']['gamesmod'] == TRUE) {
     $data['games'] = array();
     $el_id = 'game_1';
     $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);

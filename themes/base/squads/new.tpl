@@ -23,7 +23,7 @@
       <input type="password" name="clans_pwd" value="{squads:clans_pwd}" onkeydown="javascript:passwordcheck(this.value);" onkeyup="javascript:passwordcheck(this.value);" maxlength="30" size="30" autocomplete="off" />
     </td>
   </tr>
-  {if:games}
+  {if:gamesmod}
   <tr>
     <td class="leftc">{icon:package_games} {lang:game}</td>
     <td class="leftb">
@@ -34,7 +34,7 @@
       {squads:games_img}
     </td>
   </tr>
-  {stop:games}
+  {stop:gamesmod}
   <tr>
     <td class="leftc">{icon:enumList} {lang:order}</td>
     <td class="leftb"><input type="text" name="squads_order" value="{squads:squads_order}" maxlength="4" size="4" /></td>

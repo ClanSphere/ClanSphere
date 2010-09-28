@@ -13,7 +13,7 @@ $clans_pwd = isset($_POST['clans_pwd']) ? $_POST['clans_pwd'] : '';
 
 $data = array();
 
-$data['if']['games'] = empty($account['access_games']) ? FALSE : TRUE;
+$data['if']['gamesmod'] = empty($account['access_games']) ? FALSE : TRUE;
 
 $img_filetypes = array('gif','jpg','png');
 
@@ -109,7 +109,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['squads']['clans_pwd'] = $clans_pwd;
 
-  if($data['if']['games'] == TRUE) {
+  if($data['if']['gamesmod'] == TRUE) {
     $el_id = 'game_1';
     $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
     $games_count = count($cs_games);
