@@ -32,6 +32,7 @@
       - <a href="{url:clans_create}">{lang:create}</a>
     </td>
   </tr>
+  {if:games}
   <tr>
     <td class="leftc">{icon:package_games} {lang:game}</td>
     <td class="leftb">
@@ -45,6 +46,7 @@
       - <a href="{url:games_create}">{lang:create}</a>
     </td>
   </tr>
+  {stop:games}
   <tr>
     <td class="leftc">{icon:enumList} {lang:order}</td>
     <td class="leftb"><input type="text" name="squads_order" value="{squads:squads_order}" maxlength="4" size="4" /></td>

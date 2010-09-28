@@ -11,12 +11,16 @@ $op_clans = cs_sql_option(__FILE__,'clans');
 
 $clans_pwd = isset($_POST['clans_pwd']) ? $_POST['clans_pwd'] : '';
 
+$data = array();
+
+$data['if']['games'] = empty($account['access_games']) ? FALSE : TRUE;
+
 $img_filetypes = array('gif','jpg','png');
 
 if(isset($_POST['submit'])) {
 
   $cs_squads['clans_id'] = $_POST['clans_id'];
-  $cs_squads['games_id'] = $_POST['games_id'];
+  $cs_squads['games_id'] = empty($_POST['games_id']) ? 0 : $_POST['games_id'];
   $cs_squads['squads_name'] = $_POST['squads_name'];
   $cs_squads['squads_order'] = empty($_POST['squads_order']) ? $op_squads['def_order'] : $_POST['squads_order'];
   $cs_squads['squads_pwd'] = $_POST['squads_pwd'];
@@ -105,16 +109,18 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['squads']['clans_pwd'] = $clans_pwd;
 
-  $el_id = 'game_1';
-  $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
-  $games_count = count($cs_games);
-  $data['squads']['games_sel'] = '';
-  for($run = 0; $run < $games_count; $run++) {
-    $sel = $cs_games[$run]['games_id'] == $cs_squads['games_id'] ? 1 : 0;
-    $data['squads']['games_sel'] .= cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
+  if($data['if']['games'] == TRUE) {
+    $el_id = 'game_1';
+    $cs_games = cs_sql_select(__FILE__,'games','games_name,games_id',0,'games_name',0,0);
+    $games_count = count($cs_games);
+    $data['squads']['games_sel'] = '';
+    for($run = 0; $run < $games_count; $run++) {
+      $sel = $cs_games[$run]['games_id'] == $cs_squads['games_id'] ? 1 : 0;
+      $data['squads']['games_sel'] .= cs_html_option($cs_games[$run]['games_name'],$cs_games[$run]['games_id'],$sel);
+    }
+    $url = 'uploads/games/' . $cs_squads['games_id'] . '.gif';
+    $data['squads']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');
   }
-  $url = 'uploads/games/' . $cs_squads['games_id'] . '.gif';
-  $data['squads']['games_img'] = cs_html_img($url,0,0,'id="' . $el_id . '"');
 
   $matches[1] = $cs_lang['secure_stages'];
   $matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);
