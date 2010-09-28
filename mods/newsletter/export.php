@@ -51,10 +51,10 @@ else {
   header("Content-Disposition: attachment; filename=newsletter_export.csv;");
   header("Content-Transfer-Encoding: binary");
 
-  $csv = '';
-  foreach($mail_targets AS $target)
-    $csv .= $target['email'] . ', ';
-
-  $csv = substr($csv, 0, -2);
+  $csv = "E-Mail,\n";
+  if (!empty($mail_targets)) {
+    foreach($mail_targets AS $target)
+      $csv .= $target['email'] . ",\n";
+  }
   die($csv);
 }
