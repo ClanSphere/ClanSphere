@@ -15,9 +15,9 @@ $img_filetypes = array('gif','jpg','png');
 $own = "users_id = '" . $account['users_id'] . "'";
 $cells = 'clans_name, clans_short, clans_tag, clans_tagpos, clans_country, clans_url, clans_since, clans_pwd, clans_picture';
 $cs_clans = cs_sql_select(__FILE__,'clans',$cells,$own . " AND clans_id = '" . $clans_id . "'");
-if(empty($cs_clans)) {
-	cs_redirect('Kein Zugriff', 'errors', '404');	
-}
+
+if(empty($cs_clans))
+	cs_redirect('', 'errors', '404');
 
 if(isset($_POST['submit'])) {
 	$cs_clans['clans_name'] = $_POST['clans_name'];

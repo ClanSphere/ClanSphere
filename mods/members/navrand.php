@@ -9,9 +9,9 @@ $data = array();
 $cells  = 'mm.members_task AS members_task, mm.members_since AS members_since, ';
 $cells .= 'usr.users_picture AS users_picture, usr.users_country AS users_country, usr.users_hidden AS users_hidden, usr.users_id AS users_id, ';
 $cells .= 'usr.users_nick AS users_nick, usr.users_name AS users_name, usr.users_surname AS users_surname';
-$tables = 'members mm INNER JOIN {pre}_users usr ON mm.users_id = usr.users_id';
+$tables = 'members mm INNER JOIN {pre}_users usr ON mm.users_id = usr.users_id INNER JOIN {pre}_squads sq ON mm.squads_id = sq.squads_id';
 
-$data['members'] = cs_sql_select(__FILE__,$tables,$cells,'squads_own = 1','{random}',0,1);
+$data['members'] = cs_sql_select(__FILE__,$tables,$cells,'sq.squads_own = 1','{random}',0,1);
 $found = count($data['members']);
 
 if(!empty($found)) {
