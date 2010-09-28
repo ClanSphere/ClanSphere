@@ -23,3 +23,4 @@
   <td class="leftb" colspan="2"><input type="submit" name="submit" value="{lang:edit}" /></td>
  </tr>
 </table>
+</form>
