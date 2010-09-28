@@ -44,7 +44,7 @@
     </td>
   </tr>
   <tr>
-    <td class="leftc">{icon:access} {lang:access} *</td>
+    <td class="leftc">{icon:access} {lang:access_req} *</td>
     <td class="leftb" colspan="2">
       <select name="board_access">
         {access:options}

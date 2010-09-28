@@ -93,6 +93,7 @@ $cs_lang['no_name'] = '- Es muss ein Name angegeben werden.';
 $cs_lang['cat_manage'] = 'Verwaltung';
 $cs_lang['cat_create'] = 'Neu';
 $cs_lang['access'] = 'Zugriff';
+$cs_lang['access_req'] = 'Erforderlicher Zugriff';
 $cs_lang['close'] = 'Kommentare sperren';
 $cs_lang['add_password'] = 'Passwort Hinzuf&uuml;gen';
 $cs_lang['password1'] = 'Optional, wenn keine Eingabe, Forum ohne Passwortschutz.';

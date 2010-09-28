@@ -93,6 +93,7 @@ $cs_lang['no_name'] = '- No name is given';
 $cs_lang['cat_manage'] = 'Administration';
 $cs_lang['cat_create'] = 'New';
 $cs_lang['access'] = 'Access';
+$cs_lang['access_req'] = 'Required access';
 $cs_lang['close'] = 'Close thread';
 $cs_lang['add_password'] = 'Add password';
 $cs_lang['password1'] = 'Optional, if not given, thread without password.';
