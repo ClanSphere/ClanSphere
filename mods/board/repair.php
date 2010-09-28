@@ -11,7 +11,7 @@ function cs_board_comments($board_id) {
 
   $cells = array('board_comments');
   $content = array($com_sql);
-  cs_sql_update(__FILE__,'board',$cells,$content,$board_id);
+  cs_sql_update(__FILE__,'board',$cells,$content,$board_id,0,0);
 
   cs_board_last($board_id);
 
@@ -53,7 +53,7 @@ function cs_board_threads($board_id) {
 
   $cells = array('board_threads');
   $content = array($threads);
-  cs_sql_update(__FILE__,'board',$cells,$content,$board_id);
+  cs_sql_update(__FILE__,'board',$cells,$content,$board_id,0,0);
 
   cs_board_last($board_id);
 
@@ -68,7 +68,7 @@ function cs_threads_comments($threads_id) {
 
   $cells = array('threads_comments');
   $content = array($comments);
-  cs_sql_update(__FILE__,'threads',$cells,$content,$threads_id);
+  cs_sql_update(__FILE__,'threads',$cells,$content,$threads_id,0,0);
 
   return $comments;
 }
