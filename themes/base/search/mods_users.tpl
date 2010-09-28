@@ -13,7 +13,6 @@
   <tr>
     <td class="headb" style="width:40px;">{lang:country}</td>
     <td class="headb">{sort:nick}{lang:nick}</td>
-    <td class="headb">{sort:place}{lang:place}</td>
     <td class="headb">{sort:laston}{lang:laston}</td>  
     <td class="headb" style="width:40px;">{lang:status}</td>  
   {if:access}
@@ -24,7 +23,6 @@
   <tr>
   <td class="leftc">{results:img}</td>
   <td class="leftc" style="font-weight:bold;">{results:user}</td>
-  <td class="leftc">{results:place}</td>
   <td class="leftc">{results:date}</td>
   <td class="leftc">{results:icon}</td>
   {if:access}
