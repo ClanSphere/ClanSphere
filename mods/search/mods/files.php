@@ -3,13 +3,13 @@
 // $Id$
 
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
-$cs_sort[1] = 'files_name DESC';
-$cs_sort[2] = 'files_name ASC';
-$cs_sort[3] = 'categories_id DESC';
-$cs_sort[4] = 'categories_id ASC';
-$cs_sort[5] = 'files_time DESC';
-$cs_sort[6] = 'files_time ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
+$cs_sort[1] = 'files_name DESC, files_time DESC';
+$cs_sort[2] = 'files_name ASC, files_time DESC';
+$cs_sort[3] = 'categories_id DESC, files_name ASC';
+$cs_sort[4] = 'categories_id ASC, files_name ASC';
+$cs_sort[5] = 'files_time DESC, files_name ASC';
+$cs_sort[6] = 'files_time ASC, files_name ASC';
+empty($_REQUEST['sort']) ? $sort = 5 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $where1 = $data['search']['where'] .'&text='. $data['search']['text'] .'&submit=1';
@@ -18,12 +18,14 @@ $result_count = '';
 $results = explode(',' ,$data['search']['text']);
 $recount = count($results);
 
-$sql_where = "files_name LIKE '%" . cs_sql_escape($results[0]) . "%' OR files_description LIKE '%" . cs_sql_escape($results[0]) . "%'";
+$sql_where = "(fil.files_name LIKE '%" . cs_sql_escape($results[0]) . "%' OR fil.files_description LIKE '%" . cs_sql_escape($results[0]) . "%'";
 for($prerun=1; $prerun<$recount; $prerun++) {
-  $sql_where = $sql_where . " OR files_name LIKE '%" . cs_sql_escape($results[$prerun]) . "%' OR files_description LIKE '%" . cs_sql_escape($results[0]) . "%'";
+  $sql_where = $sql_where . " OR fil.files_name LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%' OR fil.files_description LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'";
 }
-$select = 'files_id, files_name, files_time, users_id, categories_id';
-$cs_search = cs_sql_select(__FILE__,'files',$select,$sql_where,$order,$start,$account['users_limit']);
+$sql_where .= ') AND fil.files_access <> 0 AND fil.files_access <= '.$account['access_files'].' AND cat.categories_access <= '.$account['access_files'];
+$select = 'fil.files_id, fil.files_name, fil.files_time, fil.users_id, fil.categories_id';
+$tables = 'files fil INNER JOIN {pre}_categories cat ON cat.categories_id = fil.categories_id'; 
+$cs_search = cs_sql_select(__FILE__,$tables,$select,$sql_where,$order,$start,$account['users_limit']);
 $search_loop = count($cs_search);
 
 $data2 = array();

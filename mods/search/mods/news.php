@@ -15,13 +15,15 @@ $where1 = $data['search']['where'] .'&text='. $data['search']['text'] .'&submit=
 $results = explode(',' ,$data['search']['text']);
 $recount = count($results);
 
-$sql_where = "news_headline LIKE '%" . cs_sql_escape($results[0]) . "%'";
+$sql_where = "(nws.news_headline LIKE '%" . cs_sql_escape(trim($results[0])) . "%'";
 for($prerun=1; $prerun<$recount; $prerun++) {
-  $sql_where = $sql_where . " OR news_headline LIKE '%" . cs_sql_escape($results[$prerun]) . "%'"; 
+  $sql_where = $sql_where . " OR nws.news_headline LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'"; 
 }
-$select = 'news_headline, news_time, news_id';
-$cs_count  = cs_sql_count(__FILE__, 'news', $sql_where);
-$cs_search = cs_sql_select(__FILE__,'news',$select,$sql_where,$order,$start,$account['users_limit']);
+$sql_where .= ') AND nws.news_public = 1 AND cat.categories_access <= '.$account['access_news'];
+$select = 'nws.news_headline, nws.news_time, nws.news_id';
+$tables = 'news nws INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
+$cs_count  = cs_sql_count(__FILE__, $tables, $sql_where);
+$cs_search = cs_sql_select(__FILE__,$tables,$select,$sql_where,$order,$start,$account['users_limit']);
 $search_loop = count($cs_search);
 
 $data2 = array();

@@ -16,9 +16,9 @@ $result_count = '';
 $results = explode(',' ,$data['search']['text']);
 $recount = count($results);
 
-$sql_where = "clans_name LIKE '%" . cs_sql_escape($results[0]) . "%'";
+$sql_where = "clans_name LIKE '%" . cs_sql_escape(trim($results[0])) . "%'";
 for($prerun=1; $prerun<$recount; $prerun++) {
-  $sql_where = $sql_where . " OR clans_name LIKE '%" . cs_sql_escape($results[$prerun]) . "%'"; 
+  $sql_where = $sql_where . " OR clans_name LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'"; 
 }
 $select = 'clans_country, clans_name, clans_id, clans_short';
 $cs_search = cs_sql_select(__FILE__,'clans',$select,$sql_where,$order,$start,$account['users_limit']);

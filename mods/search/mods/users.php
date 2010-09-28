@@ -17,10 +17,11 @@ $where1 = $data['search']['where'] .'&text='. $data['search']['text'] .'&submit=
 $results = explode(',' ,$data['search']['text']);
 $recount = count($results);
 
-$sql_where = "users_nick LIKE '%" . cs_sql_escape($results[0]) . "%'";
+$sql_where = "(users_nick LIKE '%" . cs_sql_escape(trim($results[0])) . "%'";
 for($prerun=1; $prerun<$recount; $prerun++) {
-  $sql_where = $sql_where . " OR users_nick LIKE '%" . cs_sql_escape($results[$prerun]) . "%'"; 
+  $sql_where = $sql_where . " OR users_nick LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'"; 
 }
+$sql_where .= ') AND users_delete = 0';
 $sql_select = 'users_country, users_nick, users_id, users_place, users_laston, users_active';
 $cs_search = cs_sql_select(__FILE__,'users',$sql_select,$sql_where,$order,$start,$account['users_limit']);
 $cs_loop = count($cs_search);

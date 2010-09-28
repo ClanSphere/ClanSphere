@@ -15,13 +15,14 @@ $where1 = $data['search']['where'] .'&text='. $data['search']['text'] .'&submit=
 $results = explode(',' ,$data['search']['text']);
 $recount = count($results);
 
-$sql_where = "articles_headline LIKE '%" . cs_sql_escape($results[0]) . "%' OR articles_text LIKE '%" . cs_sql_escape($results[0]) . "%'";
-
+$sql_where = "(articles_headline LIKE '%" . cs_sql_escape(trim($results[0])) . "%' OR articles_text LIKE '%" . cs_sql_escape(trim($results[0])) . "%'";
 for($prerun=1; $prerun<$recount; $prerun++) {
-  $sql_where = $sql_where . " OR articles_headline LIKE '%" . cs_sql_escape($results[$prerun]) . "%'"; 
+  $sql_where = $sql_where . " OR articles_headline LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%' OR articles_text LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'";; 
 }
+$sql_where .= ') AND cat.categories_access <= '.$account['access_articles'];
 $select = 'articles_headline, articles_time, articles_id';
-$cs_search = cs_sql_select(__FILE__,'articles',$select,$sql_where,$order,$start,$account['users_limit']);
+$tables = 'articles art INNER JOIN {pre}_categories cat ON art.categories_id = cat.categories_id';
+$cs_search = cs_sql_select(__FILE__,$tables,$select,$sql_where,$order,$start,$account['users_limit']);
 $search_loop = count($cs_search);
 
 $data2 = array();
