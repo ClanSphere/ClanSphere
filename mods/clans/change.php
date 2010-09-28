@@ -16,6 +16,8 @@ $own = "users_id = '" . $account['users_id'] . "'";
 $cells = 'clans_name, clans_short, clans_tag, clans_tagpos, clans_country, clans_url, clans_since, clans_pwd, clans_picture';
 $cs_clans = cs_sql_select(__FILE__,'clans',$cells,$own . " AND clans_id = '" . $clans_id . "'");
 
+$picture = empty($cs_clans['clans_picture']) ? '' : $cs_clans['clans_picture'];
+
 if(empty($cs_clans))
 	cs_redirect('', 'errors', '404');
 
@@ -32,6 +34,9 @@ if(isset($_POST['submit'])) {
 
 	$error = 0;
 	$errormsg = '';
+
+  if(empty($cs_clans['clans_picture']))
+    $cs_clans['clans_picture'] = $picture;
 
 	if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($cs_clans['clans_picture'])) {
 		cs_unlink('clans', $cs_clans['clans_picture']);
