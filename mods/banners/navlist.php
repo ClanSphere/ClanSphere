@@ -5,8 +5,8 @@
 $cs_lang = cs_translate('banners');
 
 $where = 0;
-if(!empty($_GET['cat_id'])) {
-  $cat_id = (int) $_GET['cat_id'];
+if(!empty($_GET['bc_id'])) {
+  $cat_id = (int) $_GET['bc_id'];
   $cat_banners = cs_sql_count(__FILE__, 'categories', "categories_id = '" . $cat_id . "' AND categories_mod = 'banners'");
   if(!empty($cat_banners)) $where = "categories_id = '" . $cat_id . "'";
 }
