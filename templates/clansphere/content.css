@@ -200,3 +200,11 @@ input, textarea, select {
   padding: 4px 0 4px 0; 
   color: #555555
 }
+
+.uthreadstarter {
+  color: #aa5500;
+}
+
+.thread_author_comment .leftc {
+  background-color:#f1eae6;
+}
