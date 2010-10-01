@@ -36,4 +36,4 @@ $cs_lang['subscribe_letter'] = 'Successfully subscribe';
 
 # export
 $cs_lang['export'] = 'Export';
-$cs_lang['body_export'] = 'Email addresses of the selected group are packaged as comma seperated values';
+$cs_lang['body_export'] = 'Email addresses of the selected group are offered as an LDIF file';

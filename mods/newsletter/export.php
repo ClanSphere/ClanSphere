@@ -48,13 +48,17 @@ else {
 
   header("Content-Description: File Transfer");
   header("Content-Type: text/plain");
-  header("Content-Disposition: attachment; filename=newsletter_export.csv;");
+  header("Content-Disposition: attachment; filename=newsletter_export.ldif;");
   header("Content-Transfer-Encoding: binary");
 
-  $csv = "E-Mail,\n";
+  $ldif = '';
   if (!empty($mail_targets)) {
-    foreach($mail_targets AS $target)
-      $csv .= $target['email'] . ",\n";
+    foreach($mail_targets AS $target) {
+      $ldif .= 'dn: mail=' . $target['email'] . "\n"
+             . 'objectclass: top' . "\n"
+             . 'objectclass: person' . "\n"
+             . 'mail: ' . $target['email'] . "\n\n";
+    }
   }
-  die($csv);
+  die($ldif);
 }
