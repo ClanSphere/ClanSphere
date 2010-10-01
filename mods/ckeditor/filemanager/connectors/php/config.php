@@ -1,7 +1,13 @@
 <?php
-//  start of access check by clansphere
+// copy domain and session settings from clansphere servervars
 
+$domain = htmlspecialchars($_SERVER['HTTP_HOST'], ENT_QUOTES);
+$domain = (strpos($domain, '.') !== FALSE) ? $domain : '';
+
+session_name('cs' . md5($domain)); 
 session_start();
+
+// check if the session contains enough access
 
 if(empty($_SESSION['users_id']) OR empty($_SESSION['access_ckeditor']) OR $_SESSION['access_ckeditor'] < 3) {
 
@@ -17,7 +23,7 @@ else {
   $enabled = true;
 }
 
-// end of access check by clansphere
+// end of clansphere related additions
 
 /*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
@@ -166,5 +172,3 @@ $Config['FileTypesPath']['Media']    = $Config['UserFilesPath'] . 'media/' ;
 $Config['FileTypesAbsolutePath']['Media']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'media/' ;
 $Config['QuickUploadPath']['Media']    = $Config['FileTypesPath']['Media'] ;
 $Config['QuickUploadAbsolutePath']['Media']= $Config['FileTypesAbsolutePath']['Media'] ;
-
-?>
