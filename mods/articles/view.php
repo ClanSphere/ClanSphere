@@ -16,7 +16,7 @@ function cs_articles_views($id, $views) {
 
   if(empty($_SESSION['articles'][$id])) {
     $_SESSION['articles'][$id] = true;
-    cs_sql_update(__FILE__, 'articles', array('articles_views'), array(1 + $views), $id);
+    cs_sql_update(__FILE__, 'articles', array('articles_views'), array(1 + $views), $id, 0, 0);
   }
 }
 

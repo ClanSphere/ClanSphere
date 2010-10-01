@@ -123,7 +123,7 @@ $temp_loop = count($temp);
 if (isset($_REQUEST['target'])) {
   $files_cells = array('files_count');
   $files_save = array(++$cs_file['files_count']);
-  cs_sql_update(__FILE__,'files',$files_cells,$files_save,$file_id);
+  cs_sql_update(__FILE__,'files',$files_cells,$files_save,$file_id,0,0);
   $temp_a = explode("\n", $temp[$_REQUEST['target']]);
   $select_mirrow = $temp_a['1'];
   header("Location: ".$select_mirrow."");
