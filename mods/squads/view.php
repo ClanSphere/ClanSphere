@@ -41,9 +41,9 @@ if(!empty($data['squad']['games_id'])) {
   $data['squad']['game'] = ' - ';
   }
 
-$data['squad']['squads_name'] = cs_secure($data['squad']['squads_name']);
+$data['squad']['squads_name'] = empty($data['squad']['squads_name']) ? $cs_lang['no_desc'] : cs_secure($data['squad']['squads_name']);
 
-$data['squad']['squads_text'] = !empty($data['squad']['squads_text']) ? cs_secure($data['squad']['squads_text'],1,1) : $cs_lang['no_desc'];
+$data['squad']['squads_text'] = empty($data['squad']['squads_text']) ? $cs_lang['no_desc'] : cs_secure($data['squad']['squads_text'],1,1);
 
 if(empty($data['squad']['squads_picture'])) {
   $data['squad']['squads_pic'] = $cs_lang['nopic'];
