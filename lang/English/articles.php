@@ -49,6 +49,7 @@ $cs_lang['new_article'] = 'New Article';
 // options.php
 $cs_lang['options_info'] = 'Administration of module settings.';
 $cs_lang['max_navlist'] = 'Dataset in the navlist';
+$cs_lang['max_navlist'] = 'Dataset in the navtop';
 
 // remove.php
 $cs_lang['head_remove']  = 'Remove';

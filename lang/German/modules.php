@@ -79,3 +79,6 @@ $cs_lang['activate'] = 'Aktivieren';
 $cs_lang['edit_access'] = 'Hier werden die Zugriffe des Moduls %s festgelegt.';
 
 $cs_lang['more_modules'] = 'Weitere Module herunterladen';
+
+// Options
+$cs_lang['options_info'] = 'Verwaltung der Einstellungen der Module.<br />Leere Textfelder werden durch die Zahl 0 ersetzt.';

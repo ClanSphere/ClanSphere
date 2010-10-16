@@ -4,11 +4,12 @@
 
 $categories_id = empty($_GET['pid']) ? 0 : $_GET['pid'];
 settype($categorie_id,'integer');
+$cs_option = cs_sql_option(__FILE__,'partner');
 
 $select = 'partner_id, partner_name, partner_url, partner_alt, partner_nimg';
 $order = 'partner_priority ASC';
 $where = empty($categories_id) ? "partner_nimg != ''" : "partner_nimg != '' AND categories_id = '".$categories_id."'";
-$cs_partner = cs_sql_select(__FILE__,'partner',$select,$where,$order,0,0);
+$cs_partner = cs_sql_select(__FILE__,'partner',$select,$where,$order,0,$cs_option['max_navlist']);
 $data['partner'] = array();
 
 if(!empty($cs_partner)) {

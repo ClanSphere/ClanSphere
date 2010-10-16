@@ -16,7 +16,7 @@ $from = 'wars war INNER JOIN {pre}_categories cat ON war.categories_id = cat.cat
 $order = 'wars_date DESC';
 $where = empty($squad_id) ? "war.wars_status = 'played'" : "war.wars_status = 'played' AND war.squads_id = '" . $squad_id . "'";
 
-$cs_wars = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$cs_option['max_navlist']);
+$cs_wars = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$cs_option['max_navlist2']);
 
 if (!empty($cs_wars)) {
 

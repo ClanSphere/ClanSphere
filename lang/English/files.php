@@ -81,6 +81,8 @@ $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['max_width'] = 'Maximum width: ';
 $cs_lang['max_height'] = 'Maximum height: ';
 $cs_lang['max_size'] = 'Maximum filesize: ';
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';
 $cs_lang['filetypes'] = 'Filetype: ';
 $cs_lang['current']  = 'Current';
 $cs_lang['nopic'] = 'No picture available';
@@ -89,3 +91,10 @@ $cs_lang['remove_done']  = 'Picture successfully removed';
 
 $cs_lang['brokenlink'] = 'Broken link';
 $cs_lang['report'] = 'report';
+
+// Options
+$cs_lang['options_info'] = 'Administration of module settings.';
+$cs_lang['max_navlist'] = 'Datasets in the navlist';
+$cs_lang['max_headline'] = 'Titell&auml;nge in der Navlist';
+$cs_lang['max_navtop'] = 'Datasets in the navtop';
+$cs_lang['max_headline_navtop'] = 'Titell&auml;nge in der Navtop';

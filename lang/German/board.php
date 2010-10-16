@@ -188,6 +188,10 @@ $cs_lang['sort_asc'] = 'Aufsteigend';
 $cs_lang['sort_desc'] = 'Absteigend';
 $cs_lang['list_subforums'] = 'Unterforen in der &Uuml;bersicht anzeigen';
 $cs_lang['subforums'] = 'Unterforen';
+$cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
+$cs_lang['max_headline'] = 'Titell&auml;nge in der Navlist';
+$cs_lang['max_navtop'] = 'Datens&auml;tze in der Navtop';
+$cs_lang['max_navtop2'] = 'Datens&auml;tze in der Navtop 2';
 
 //remove.php
 $cs_lang['change_threads'] = 'Themen und Beitr&auml;ge verschieben';

@@ -205,7 +205,7 @@ function cs_init($predefined) {
   if(version_compare($phpversion, '5.1', '>='))
     @date_default_timezone_set('Europe/Berlin');
 
-  global $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro;
+  global $account, $com_lang, $cs_db, $cs_logs, $cs_main, $cs_micro, $cs_template;
 
   $cs_micro = explode(' ', microtime()); # starting parsetime
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
@@ -309,6 +309,7 @@ function cs_init($predefined) {
   $cs_main = cs_content_check($cs_main);
 
   $cs_main['template'] = empty($cs_main['def_tpl']) ? 'clansphere' : $cs_main['def_tpl'];
+  $cs_template = cs_template_info($cs_main['template']);
   if(!empty($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
     $cs_main['template'] = $_GET['template'];
 

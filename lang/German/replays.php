@@ -55,3 +55,9 @@ $cs_lang['body_options'] = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['head_options'] = 'Optionen';
 $cs_lang['user'] = 'Benutzer';
 $cs_lang['since'] = 'Erstellungszeit';
+
+// Options
+$cs_lang['options_info'] = 'Verwaltung der Einstellungen im Modul.';
+$cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
+$cs_lang['max_headline_team1'] = 'Titell&auml;nge Team 1 in der Navlist';
+$cs_lang['max_headline_team2'] = 'Titell&auml;nge Team 2 in der Navlist';

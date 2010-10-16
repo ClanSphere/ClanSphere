@@ -40,3 +40,7 @@ $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
 $cs_lang['def_order'] = 'Default order';
 $cs_lang['no_cat'] = '- Choose a category';
+
+// options.php
+$cs_lang['max_navlist'] = 'Dataset in the navlist';
+$cs_lang['max_navright'] = 'Dataset in the navright';

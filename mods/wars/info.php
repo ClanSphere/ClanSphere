@@ -18,3 +18,6 @@ $mod_info['categories'] = TRUE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('wars','rounds','players'); 
+$mod_info['navlist']	= array('navlist' => 'max_navlist',
+								'navlist2' => 'max_navlist2',
+								'navnext' => 'max_navnext');

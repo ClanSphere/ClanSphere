@@ -17,3 +17,4 @@ $mod_info['categories'] = TRUE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']   = array('banners');
+$mod_info['navlist'] = array('navlist' => 'max_navlist', 'navright' => 'max_navright');

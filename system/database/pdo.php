@@ -99,6 +99,7 @@ function cs_sql_insertid($cs_file) {
 function cs_sql_option($cs_file,$mod) {
 
   global $cs_db;
+  global $cs_template;
   static $options = array();
 
   if (empty($options[$mod])) {
@@ -119,8 +120,12 @@ function cs_sql_option($cs_file,$mod) {
         cs_error_sql($cs_file, 'cs_sql_option', $error[2], 1);
       }
       cs_log_sql($cs_file, $sql_query);
-      $options[$mod] = isset($new_result) ? $new_result : 0;
-
+      foreach($cs_template AS $navlist => $value) {
+      	if($navlist == $mod) {
+      		$new_result = array_merge($new_result,$value);
+      	}
+      }
+	  $options[$mod] = isset($new_result) ? $new_result : 0;
       cs_cache_save('op_' . $mod, $options[$mod]);
     }
   }

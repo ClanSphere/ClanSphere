@@ -2,11 +2,12 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-$data = '';
+$data = array();
+$cs_option = cs_sql_option(__FILE__,'events');
 $zero = date('m', mktime(0, 0, 0, cs_datereal('n'), cs_datereal('d'), cs_datereal('Y')));
 $zero .= '-' . date('d', mktime(0, 0, 0, cs_datereal('n'), cs_datereal('d'), cs_datereal('Y')));
 $like = "users_age LIKE '%-" . $zero . "' AND users_active = '1'";
-$birthdays = cs_sql_select(__FILE__,'users','users_id,users_nick,users_country,users_age,users_active,users_delete',$like,0,0,0);
+$birthdays = cs_sql_select(__FILE__,'users','users_id,users_nick,users_country,users_age,users_active,users_delete',$like,0,0,$cs_option['max_navbirthday']);
 
 $unix = cs_datereal('U');
 settype($unix,'integer');

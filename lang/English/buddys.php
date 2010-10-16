@@ -37,3 +37,5 @@ $cs_lang['buddys_notice'] = 'Note:';
 $cs_lang['off_buddies']  = 'Buddies offline...';
 $cs_lang['on_buddies']  = 'Buddies online...';
 $cs_lang['no_buddys_online'] = 'No buddies online.';
+
+$cs_lang['max_navlist'] = 'Dataset in the navlist';

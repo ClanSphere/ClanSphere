@@ -24,6 +24,10 @@ if(isset($_POST['submit'])) {
   $save['sort'] = $_POST['sort'];
   $save['doubleposts'] = empty($_POST['doublep_allowed']) ? -1 : (int) (86400 * str_replace(',','.',$_POST['doubleposts']));
   $save['list_subforums'] = empty($_POST['list_subforums']) ? 0 : 1;
+  $save['max_navlist'] = $_POST['max_navlist'];
+  $save['max_headline'] = $_POST['max_headline'];
+  $save['max_navtop'] = $_POST['max_navtop'];
+  $save['max_navtop2'] = $_POST['max_navtop2'];
   
   require_once 'mods/clansphere/func_options.php';
   
@@ -46,6 +50,10 @@ if(!empty($board_form)) {
   $data['options']['max_avatar_size'] = $size;
   $data['options']['max_filesize'] = $size2;
   $data['options']['filetypes'] = $cs_board['file_types'];
+  $data['options']['max_navlist'] = $cs_board['max_navlist'];
+  $data['options']['max_headline'] = $cs_board['max_headline'];
+  $data['options']['max_navtop'] = $cs_board['max_navtop'];
+  $data['options']['max_navtop2'] = $cs_board['max_navtop2'];
 
   
   if($cs_board['sort'] == 'DESC') {

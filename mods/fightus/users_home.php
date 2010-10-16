@@ -3,10 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('fightus');
+$cs_option = cs_sql_option(__FILE__,'fightus');
 $data = array();
 
 $select = 'games_id, fightus_clan, fightus_date, fightus_since, fightus_id';
-$cs_fightus = cs_sql_select(__FILE__,'fightus',$select,0,'fightus_since DESC',0,5);
+$cs_fightus = cs_sql_select(__FILE__,'fightus',$select,0,'fightus_since DESC',0,$cs_option['max_usershome']);
 
 if(!empty($cs_fightus)) {
 

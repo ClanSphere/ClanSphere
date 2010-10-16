@@ -78,4 +78,5 @@ $cs_lang['no_lanact'] = '- A lanparty activity is required';
 $cs_lang['no_info'] = '- A info is required';
 
 // Options
-$cs_lang['options_info'] = 'Definieren Sie die gew&uuml;nschten Pflichtfelder.';
+$cs_lang['options_info'] = 'Administration of module settings.';
+$cs_lang['max_usershome'] = 'Datasets in the users_home';

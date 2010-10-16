@@ -1,13 +1,14 @@
 <?php
 
 $cs_lang = cs_translate('buddys');
+$cs_option = cs_sql_option(__FILE__,'buddys');
 
 $five_min = cs_time() - 300;
 $from = 'buddys bs LEFT JOIN {pre}_users usr ON bs.buddys_user = usr.users_id';
 $select = 'usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, usr.users_country AS users_country';
 $upcome = "users_laston > '" . $five_min . "' AND bs.users_id = '" . $account['users_id'] . "'";
 $order = 'users_laston DESC';
-$cs_users = cs_sql_select(__FILE__,$from,$select,$upcome,$order,0,8);
+$cs_users = cs_sql_select(__FILE__,$from,$select,$upcome,$order,0,$cs_option['max_navlist']);
 
 if(empty($cs_users)) {
   $data['if']['empty']  = TRUE;

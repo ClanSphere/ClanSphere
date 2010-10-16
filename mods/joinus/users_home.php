@@ -3,11 +3,11 @@
 // Id: users_home.php (Tue Nov 25 10:27:23 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('joinus');
-
+$cs_option = cs_sql_option(__FILE__,'joinus');
 $data = array();
 
 $select = 'games_id, joinus_nick, joinus_age, joinus_since, joinus_id';
-$cs_joinus = cs_sql_select(__FILE__,'joinus',$select,0,'joinus_since DESC',0,3);
+$cs_joinus = cs_sql_select(__FILE__,'joinus',$select,0,'joinus_since DESC',0,$cs_option['max_usershome']);
 $join_loop = count($cs_joinus);
 
 if(!empty($cs_joinus)) {

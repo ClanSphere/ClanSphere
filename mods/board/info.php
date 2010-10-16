@@ -17,4 +17,8 @@ $mod_info['references'] = array('users' => 'comments', 'users_where' => "comment
 $mod_info['categories'] = TRUE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;
-$mod_info['tables']    = array('abonements','board','boardpws','boardreport','read','threads','boardfiles','boardvotes');
+$mod_info['tables']    = array('board','abonements','boardpws','boardreport','read','threads','boardfiles','boardvotes');
+$mod_info['navlist']	= array('navlist' => 'max_navlist', 
+								'headline' => 'max_headline',
+								'navtop' => 'max_navtop',
+								'navtop2' => 'max_navtop2');

@@ -11,6 +11,8 @@ if(isset($_POST['submit'])) {
   $save['max_height'] = (int) $_POST['max_height'];
   $save['max_size'] = (int) $_POST['max_size'];
   $save['max_navlist'] = (int) $_POST['max_navlist'];
+  $save['max_navlist2'] = (int) $_POST['max_navlist2'];
+  $save['max_navnext'] = (int) $_POST['max_navnext'];
   
   require_once 'mods/clansphere/func_options.php';
   

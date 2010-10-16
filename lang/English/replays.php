@@ -54,3 +54,9 @@ $cs_lang['body_options'] = 'Administration of settings in a module.';
 $cs_lang['head_options'] = 'Options';
 $cs_lang['user'] = 'User';
 $cs_lang['since'] = 'Created on';
+
+// Options
+$cs_lang['options_info'] = 'Administration of module settings.';
+$cs_lang['max_navlist'] = 'Datasets in the navlist';
+$cs_lang['max_headline_team1'] = 'Headline length Team 1 in the navlist';
+$cs_lang['max_headline_team2'] = 'Headline length Team 2 in the navlist';

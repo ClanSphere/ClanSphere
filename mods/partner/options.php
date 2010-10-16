@@ -17,6 +17,7 @@ if (!empty($_POST['submit'])) {
   $save['def_height_rotimg'] = (int) $_POST['def_height_rotimg'];
   $save['max_size_rotimg'] = (int) $_POST['max_size_rotimg'];
   $save['method'] = $_POST['method'];
+  $save['max_navlist'] 	= (int) $_POST['max_navlist'];
   
   require_once 'mods/clansphere/func_options.php';
   
@@ -28,7 +29,7 @@ if (!empty($_POST['submit'])) {
   
   $data = array();
   $data['partner'] = cs_sql_option(__FILE__,'partner');
-  
+    
   $data['sel']['random'] = $data['partner']['method'] == 'random' ? 'selected="selected"' : '';
   $data['sel']['rotation'] = $data['partner']['method'] == 'rotation' ? 'selected="selected"' : '';
   

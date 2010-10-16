@@ -49,6 +49,7 @@ $cs_lang['new_article'] = 'Neuer Artikel';
 // options.php
 $cs_lang['options_info'] = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
+$cs_lang['max_navtop'] = 'Datens&auml;tze in der Navtop';
 
 // remove.php
 $cs_lang['head_remove']  = 'Entfernen';

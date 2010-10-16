@@ -15,6 +15,8 @@ if(isset($_POST['submit'])) {
   $save['max_height'] = (int) $_POST['max_height'];
   $save['max_size'] = (int) $_POST['max_size'];
   $save['def_order'] = (int) $_POST['def_order'];
+  $save['max_navlist'] = (int) $_POST['max_navlist'];
+  $save['max_navright'] = (int) $_POST['max_navright'];
   
   cs_optionsave('banners', $save);
   
@@ -28,6 +30,8 @@ if(isset($_POST['submit'])) {
   $data['options']['max_height'] = $op_banners['max_height'];
   $data['options']['max_size'] = $op_banners['max_size'];
   $data['options']['def_order'] = $op_banners['def_order'];
+  $data['options']['max_navlist'] = $op_banners['max_navlist'];
+  $data['options']['max_navright'] = $op_banners['max_navright'];
   
   echo cs_subtemplate(__FILE__,$data,'banners','options');
   

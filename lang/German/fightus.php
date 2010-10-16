@@ -37,3 +37,7 @@ $cs_lang['no_date'] = '- Der Austragungszeitpunkt ist anzugeben';
 $cs_lang['last_fightus'] = 'Aktuelle Fightus-Anfragen';
 $cs_lang['fight_date'] = 'Austragung';
 $cs_lang['new_fight'] = 'Neue Anfrage';
+
+// Options
+$cs_lang['options_info'] = 'Verwaltung der Einstellungen im Modul.';
+$cs_lang['max_usershome'] = 'Datens&auml;tze in der Users Home';

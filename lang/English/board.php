@@ -195,6 +195,10 @@ $cs_lang['sort_asc'] = 'Ascending';
 $cs_lang['sort_desc'] = 'Descending';
 $cs_lang['list_subforums'] = 'Show subboards in list view';
 $cs_lang['subforums'] = 'Subboards';
+$cs_lang['max_navlist'] = 'Datasets in the navlist';
+$cs_lang['max_headline'] = 'Titell&auml;nge in der Navlist';
+$cs_lang['max_navtop'] = 'Datasets in the navtop';
+$cs_lang['max_navtop 2'] = 'Datasets in the navtop 2';
 
 //remove.php
 $cs_lang['change_threads'] = 'Move threads and comments';

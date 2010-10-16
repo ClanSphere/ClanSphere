@@ -18,3 +18,4 @@ $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('news');
 $mod_info['startup'] = TRUE;
+$mod_info['navlist'] = array('navlist' => 'max_navlist', 'recent' => 'max_recent');

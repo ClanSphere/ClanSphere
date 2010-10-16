@@ -164,3 +164,6 @@ $cs_lang['team_removed_mail'] .= 'Sie wurden aus dem Turnier "%s" entfernt.'."\r
 $cs_lang['team_removed_mail'] .= 'Bei Fragen wenden Sie sich bitte an den betreffenden Webmaster.'."\r\n\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Mit freundlichen Gr&uuml;&szlig;en,'."\r\n";
 $cs_lang['team_removed_mail'] .= 'Die Webmaster';
+
+// Options
+$cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';

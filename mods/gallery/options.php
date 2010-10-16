@@ -22,6 +22,7 @@ if(isset($_POST['submit'])) {
   $save['max_files'] = (int) $_POST['max_files'];
   $save['max_folders'] = (int) $_POST['max_folders'];
   $save['lightbox'] = (int) $_POST['lightbox'];
+  $save['max_navlist'] = (int) $_POST['max_navlist'];
   
   require_once 'mods/clansphere/func_options.php';
   

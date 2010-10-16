@@ -45,3 +45,6 @@ $cs_lang['too_big_limg'] ='- Die Dateigr&ouml;&szlig;e ist zu gro&szlig; (List-B
 $cs_lang['too_wide_rimg'] ='- Rotation-Banner ist zu breit.';
 $cs_lang['too_high_rimg'] ='- Rotation-Banner ist zu hoch.';
 $cs_lang['too_big_rimg'] ='- Die Dateigr&ouml;&szlig;e ist zu gro&szlig; (Rotation-Banner).';
+
+// Options
+$cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';

@@ -127,6 +127,8 @@ $cs_lang['req_fullname'] = 'Kompletter Name';
 $cs_lang['req_fulladress'] = 'Komplette Adresse';
 $cs_lang['req_phone'] = 'Telefon';
 $cs_lang['req_mobile'] = 'Handy';
+$cs_lang['max_navbirthday'] = 'Datens&auml;tze in der Nav-Birthday';
+$cs_lang['max_navnext'] = 'Datens&auml;tze in der Navnext';
 
 // War stuff
 $cs_lang['show_wars']   = 'Clanwars anzeigen';

@@ -38,6 +38,14 @@
   </td>
  </tr>
  <tr>
+  <td class="leftc">{icon:fileshare} {lang:max_navbirthday}</td>
+  <td class="leftb"><input type="text" name="max_navbirthday" value="{op:max_navbirthday}" maxlength="2" size="2" /></td>
+ </tr>
+ <tr>
+  <td class="leftc">{icon:fileshare} {lang:max_navnext}</td>
+  <td class="leftb"><input type="text" name="max_navnext" value="{op:max_navnext}" maxlength="2" size="2" /></td>
+ </tr>
+ <tr>
   <td class="leftc">{icon:ksysguard} {lang:options}</td>
   <td class="leftb">
     <input type="submit" name="submit" value="{lang:save}" />

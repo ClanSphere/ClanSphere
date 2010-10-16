@@ -123,6 +123,8 @@ $cs_lang['req_fullname'] = 'Full name';
 $cs_lang['req_fulladress'] = 'Full adress';
 $cs_lang['req_phone'] = 'Phone';
 $cs_lang['req_mobile'] = 'Cell Phone';
+$cs_lang['max_navbirthday'] = 'Datasets in the navbirthday';
+$cs_lang['max_navnext'] = 'Datasets in the navnext';
 
 // edit.php
 $cs_lang['head_edit']  = 'Edit';

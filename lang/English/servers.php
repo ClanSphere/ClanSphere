@@ -113,3 +113,7 @@ $cs_lang['players_navlist'] = 'Players: ';
 $cs_lang['map_navlist'] = 'Map: ';
 $cs_lang['more_info'] = 'More information';
 $cs_lang['no_connect'] = 'Could not connect to server. Live status is not possible.';
+
+// Options
+$cs_lang['options_info'] = 'Administration of module settings.';
+$cs_lang['max_navlist'] = 'Datasets in the navlist';

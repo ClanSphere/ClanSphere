@@ -2,10 +2,11 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id: navlist.php 2266 2009-03-21 10:37:39Z duRiel $
 
-$max = 0;
+$cs_lang = cs_translate('ranks');
+$cs_option = cs_sql_option(__FILE__,'ranks');
 
 $select = 'ranks_url, ranks_img, ranks_code';
-$data['ranks'] = cs_sql_select(__FILE__,'ranks',$select,0,$order,0,$max);
+$data['ranks'] = cs_sql_select(__FILE__,'ranks',$select,0,$order,0,$cs_option['max_navlist']);
 $ranks_loop = count($data['ranks']);
 
 for($run = 0; $run < $ranks_loop; $run++) {

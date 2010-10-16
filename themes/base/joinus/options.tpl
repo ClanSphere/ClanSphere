@@ -87,6 +87,10 @@
 	    		<input type="radio" name="more" value="0" {op:more_no} />{lang:no}
 	  		</td>
 	 	</tr>
+ 		<tr>
+  			<td class="leftc">{icon:playlist} {lang:max_usershome}</td>
+  			<td class="leftb"><input type="text" name="max_usershome" value="{op:max_usershome}" maxlength="2" size="2" /></td>
+ 		</tr> 	 	
 	 	<tr>
 	  		<td class="leftc">{icon:ksysguard} {lang:options}</td>
 	  		<td class="leftb"><input type="submit" name="submit" value="{lang:edit}" /></td>

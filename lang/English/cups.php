@@ -133,9 +133,9 @@ $cs_lang['ko'] = 'K.O.-System';
 $cs_lang['team_vs_team'] = 'Team versus Team';
 $cs_lang['user_vs_user'] = 'Player versus Player';
 $cs_lang['status'] = 'Status';
- $cs_lang['upcoming'] = 'Upcoming';
- $cs_lang['finished'] = 'Finished';
- $cs_lang['playing'] = 'Playing';
+$cs_lang['upcoming'] = 'Upcoming';
+$cs_lang['finished'] = 'Finished';
+$cs_lang['playing'] = 'Playing';
 $cs_lang['rounds_remaining'] = 'Rounds remaining';
 $cs_lang['to_the_tree'] = 'To the cuptree';
 $cs_lang['description'] = 'Description';
@@ -164,3 +164,6 @@ $cs_lang['team_removed_mail'] .= 'You have been removed from the cup "%s" .'."\r
 $cs_lang['team_removed_mail'] .= 'Please ask the Webmaster if you have any questions.'."\r\n\r\n\r\n";
 $cs_lang['team_removed_mail'] .= 'Kind regards,'."\r\n";
 $cs_lang['team_removed_mail'] .= 'The Webmaster';
+
+// Options
+$cs_lang['max_navlist'] = 'Dataset in the navlist';

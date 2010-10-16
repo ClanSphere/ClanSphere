@@ -29,6 +29,14 @@
   <td class="leftb"><input type="text" name="max_navlist" value="{op:max_navlist}" maxlength="2" size="2" /></td>
  </tr>
  <tr>
+  <td class="leftc">{icon:playlist} {lang:max_navlist2}</td>
+  <td class="leftb"><input type="text" name="max_navlist2" value="{op:max_navlist2}" maxlength="2" size="2" /></td>
+ </tr> 
+ <tr>
+  <td class="leftc">{icon:playlist} {lang:max_navnext}</td>
+  <td class="leftb"><input type="text" name="max_navnext" value="{op:max_navnext}" maxlength="2" size="2" /></td>
+ </tr> 
+ <tr>
   <td class="leftc">{icon:knode} {lang:news_text}<br /><br />
     {lang:placeholders}:<br /><br />
     {loop:pholders}{pholders:holder} &raquo; {pholders:meaning}<br />

@@ -4,10 +4,10 @@
 
 require_once 'mods/board/functions.php';
 
-$max = 5;
+$cs_option = cs_sql_option(__FILE__,'board');
 $data = array();
 
-$toplist = users_comments_toplist($max);
+$toplist = users_comments_toplist($cs_option['max_navtop']);
 
 $data['top'] = '';
 if(!empty($toplist)) {

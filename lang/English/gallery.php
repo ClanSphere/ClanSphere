@@ -252,3 +252,6 @@ $cs_lang['no_name'] = 'No name given';
 $cs_lang['top_list'] = 'Top';
 $cs_lang['com']  = 'The %s most commented pictures';
 $cs_lang['com1']  = 'The most commented picture';
+
+// Options
+$cs_lang['max_navlist'] = 'Datasets in the navlist';

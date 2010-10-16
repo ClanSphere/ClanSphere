@@ -77,4 +77,5 @@ $cs_lang['no_lanact'] = '- Es wurden keine Lanparty Besuche eingetragen';
 $cs_lang['no_info'] = '- Es wurden keine weiteren Informationen eingetragen';
 
 // Options
-$cs_lang['options_info'] = 'Definieren Sie die gew&uuml;nschten Pflichtfelder.';
+$cs_lang['options_info'] = 'Verwaltung der Einstellungen im Modul.';
+$cs_lang['max_usershome'] = 'Datens&auml;tze in der Users Home';

@@ -9,6 +9,9 @@ if(isset($_POST['submit'])) {
   $save = array();
   $save['file_size'] = (int) $_POST['file_size'] * 1024;
   $save['file_type'] = $_POST['file_type'];
+  $save['max_navlist'] = (int) $_POST['max_navlist'];
+  $save['max_headline_team1'] = (int) $_POST['max_headline_team1'];
+  $save['max_headline_team2'] = (int) $_POST['max_headline_team2'];
   
   require_once 'mods/clansphere/func_options.php';
   

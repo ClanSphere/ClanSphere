@@ -15,6 +15,8 @@ if (isset($_POST['submit'])) {
   $save['req_fulladress'] = empty($_POST['req_fulladress']) ? 0 : 1;
   $save['req_phone'] = empty($_POST['req_phone']) ? 0 : 1;
   $save['req_mobile'] = empty($_POST['req_mobile']) ? 0 : 1;
+  $save['max_navbirthday'] = $_POST['max_navbirthday'];
+  $save['max_navnext'] = $_POST['max_navnext'];
   
   require_once 'mods/clansphere/func_options.php';
   
@@ -36,6 +38,7 @@ if (isset($_POST['submit'])) {
   $data['checked']['req_fulladress'] = !empty($data['op']['req_fulladress']) ? $checked : '';
   $data['checked']['req_phone'] = !empty($data['op']['req_phone']) ? $checked : '';
   $data['checked']['req_mobile'] = !empty($data['op']['req_mobile']) ? $checked : '';
+  
   
   echo cs_subtemplate(__FILE__,$data,'events','options');
 }

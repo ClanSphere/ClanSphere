@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
-
+$cs_option = cs_sql_option(__FILE__,'files');
 $cs_files_id = empty($_REQUEST['where']) ? $_GET['id'] : $_REQUEST['where'];
 settype($cs_file_id,'integer');
 
@@ -11,9 +11,9 @@ $files_gl = cs_files();
 
 $data = array();
 
-$img_max['width'] = 1280;
-$img_max['height'] = 1024;
-$img_max['size'] = 204800;
+$img_max['width'] = $cs_option['max_width'];
+$img_max['height'] = $cs_option['max_height'];
+$img_max['size'] = $cs_option['max_size'];
 $img_filetypes = array('gif','jpg','png');
 
 $file = cs_sql_select(__FILE__,'files','files_previews',"files_id = '" . $cs_files_id . "'");

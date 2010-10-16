@@ -37,3 +37,5 @@ $cs_lang['buddys_notice'] = 'Notiz:';
 $cs_lang['off_buddies']  = 'Buddies offline...';
 $cs_lang['on_buddies']  = 'Buddies online...';
 $cs_lang['no_buddys_online'] = 'Keine Freunde online.';
+
+$cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';

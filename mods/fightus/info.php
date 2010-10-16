@@ -17,3 +17,4 @@ $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('fightus');
+$mod_info['navlist'] = array('usershome' => 'max_usershome');

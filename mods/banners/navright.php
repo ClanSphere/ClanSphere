@@ -1,6 +1,7 @@
 <?php
 
 $cs_lang = cs_translate('banners');
+$cs_option = cs_sql_option(__FILE__,'banners');
 
 if(!empty($_GET['bc_id']))
   $where = "categories_id = '" . (int) $_GET['bc_id'] . "'";
@@ -9,7 +10,7 @@ else
 
 $data = array();
 
-$data['banners'] = cs_sql_select(__FILE__,'banners','banners_picture, banners_alt, banners_url',$where,'banners_order ASC',0,0);
+$data['banners'] = cs_sql_select(__FILE__,'banners','banners_picture, banners_alt, banners_url',$where,'banners_order ASC',0,$cs_option['max_navright']);
 $banners_loop = count($data['banners']);
 
 if(empty($data['banners'])) {
