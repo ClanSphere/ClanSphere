@@ -4,7 +4,6 @@
 
 $cs_lang = cs_translate('wars');
 $cs_option = cs_sql_option(__FILE__,'wars');
-echo 'navnext: ' . $cs_option['max_navnext'];
 
 $select = 'war.games_id AS games_id, war.wars_date AS wars_date, sqd.squads_name AS squads_name, cln.clans_name AS clans_name, war.wars_id AS wars_id';
 $from = 'wars war INNER JOIN {pre}_squads sqd ON war.squads_id = sqd.squads_id INNER JOIN {pre}_clans cln ON war.clans_id = cln.clans_id ';

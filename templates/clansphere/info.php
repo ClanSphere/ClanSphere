@@ -10,6 +10,3 @@ $mod_info['team']		= 'ClanSphere';
 $mod_info['url']		= 'www.clansphere.net';
 $mod_info['text']		= 'Official skin';
 $mod_info['themes']		= 'base';
-$mod_info['navlist']	= array('news' => array('max_navlist' => '2'),
-								'wars' => array('max_navnext' => '10')
-							);
