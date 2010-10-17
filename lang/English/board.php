@@ -166,6 +166,12 @@ $cs_lang['rename'] = 'Rename';
 $cs_lang['move'] = 'Move to ...';
 $cs_lang['movedto'] = '-> Moved to';
 $cs_lang['ghostlink'] = 'Set link';
+$cs_lang['action_close'] = 'Thread are now closed.';
+$cs_lang['action_open '] = 'Thread are now opened.';
+$cs_lang['action_addpin'] = 'Thread are now pinned.';
+$cs_lang['action_delpin'] = 'Thread are now unpinned.';
+$cs_lang['action_move'] = 'Thread moved.';
+$cs_lang['action_rename'] = 'Thread renamed.';
 
 //signature.php
 $cs_lang['abos'] = 'Subscription'; 

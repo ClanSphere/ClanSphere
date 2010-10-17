@@ -32,18 +32,22 @@ if($account['access_board'] < 5 AND empty($thread_mods['boardmods_modpanel']))
 if(isset($_POST['close'])) {
   $thread_cells = array('threads_close');
   $thread_save = array($account['users_id']);
+  $action_lang = $cs_lang['action_close'];
 
 } elseif(!empty($_POST['open'])) {
   $thread_cells = array('threads_close');
   $thread_save = array(0);
+  $action_lang = $cs_lang['action_open'];
 
 } elseif(!empty($_POST['addpin'])) {
   $thread_cells = array('threads_important');
   $thread_save = array(1);
+  $action_lang = $cs_lang['action_addpin'];
 
 } elseif(!empty($_POST['delpin'])) {
   $thread_cells = array('threads_important');
   $thread_save = array(0);
+  $action_lang = $cs_lang['action_delpin'];
 
 } elseif(!empty($_POST['submit_move'])) {       
   if(empty($_POST['board_id']) OR $_POST['board_id'] == $board_id) {
@@ -64,11 +68,12 @@ if(isset($_POST['close'])) {
   }
   $board_new_id = $_POST['board_id'];
   $thread_closed = !empty($_POST['thread_closed']) ? $account['users_id'] : 0;
-  echo $thread_closed;
+//  echo $thread_closed;
   settype($board_new_id,'integer');
   settype($thread_closed,'integer');
   $thread_cells = array('board_id','threads_close');
   $thread_save = array($board_new_id,$thread_closed);
+  $action_lang = $cs_lang['action_move'];
 
 } elseif(!empty($_POST['submit_rename'])) {       
   if(empty($_POST['thread_headline'])) {
@@ -78,6 +83,7 @@ if(isset($_POST['close'])) {
   $thread_cells = array('threads_headline');
   $thread_save = array($thread_headline);
   $update_board = 1;
+  $action_lang = $cs_lang['action_rename'];
 
 } elseif(!empty($_POST['move']) OR !empty($_POST['rename'])) {
   
@@ -146,5 +152,5 @@ if(!empty($thread_cells) AND !empty($thread_save)) {
     cs_board_comments($board_new_id);
     cs_board_last($board_id);
   }
-   cs_redirect($cs_lang['mark_all'], 'board', 'thread', 'where=' . $thread_id);
+   cs_redirect($action_lang, 'board', 'thread', 'where=' . $thread_id);
 }

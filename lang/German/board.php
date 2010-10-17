@@ -162,6 +162,12 @@ $cs_lang['rename'] = 'Umbennen';
 $cs_lang['move'] = 'Verschieben nach...';
 $cs_lang['movedto'] = '-> Verschoben';
 $cs_lang['ghostlink'] = 'Verlinkung setzen';
+$cs_lang['action_close'] = 'Thema wurde erfolgreich geschlossen.';
+$cs_lang['action_open'] = 'Thema wurde erfolgreich ge&ouml;ffnet.';
+$cs_lang['action_addpin'] = 'Thema wurde erfolgreich angepinnt.';
+$cs_lang['action_delpin'] = 'Thema wurde erfolgreich abgepinnt.';
+$cs_lang['action_move'] = 'Thema wurde erfolgreich verschoben.';
+$cs_lang['action_rename'] = 'Thema wurde erfolgreich umbenannt.';
 
 //signature.php
 $cs_lang['nosig'] = 'Sie haben keine Signatur eingegeben.';
