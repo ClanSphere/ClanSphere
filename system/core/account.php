@@ -110,6 +110,7 @@ if(empty($_SESSION['users_id'])) {
       $login['method'] = 'form_cookie';
       cs_login_cookies($login_db['users_id']);
     }
+	session_regenerate_id(session_id());
     unset($login_db);
   }
 }
