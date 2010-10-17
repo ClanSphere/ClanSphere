@@ -2,6 +2,7 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
+$data = array();
 $op_banners = cs_sql_option(__FILE__,'banners');
 
 if(!empty($_GET['cat_id'])) {
@@ -19,14 +20,13 @@ if(empty($cs_banners)) {
   echo '----';
   
 } else {
-  $go = cs_secure($cs_banners['banners_picture']);
-  $picture = cs_html_img($go,0,0," style=\"margin-bottom:4px\"",cs_secure($cs_banners['banners_alt']));
-  
-  echo cs_html_link('http://' . cs_secure($cs_banners['banners_url']),$picture) . cs_html_br(1);
+
+  $data['banner']['pic'] = cs_secure($cs_banners['banners_picture']);
+  $data['banner']['alt'] = cs_secure($cs_banners['banners_alt']);
+  $data['banner']['url'] = cs_secure($cs_banners['banners_url']);
+  echo cs_subtemplate(__FILE__,$data,'banners','rotation');
   
   require_once 'mods/clansphere/func_options.php';
-  
   $save = array('last_id' => $cs_banners['banners_id']);
-  
   cs_optionsave('banners', $save);
 }
