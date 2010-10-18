@@ -7,6 +7,7 @@ $axx_file['remove']   = 5;
 $axx_file['edit']     = 4;
 $axx_file['list']     = 1;
 $axx_file['listcat']  = 1;
+$axx_file['listtree'] = 1;
 $axx_file['download'] = 1;
 $axx_file['view']     = 1;
 $axx_file['manage']   = 3;

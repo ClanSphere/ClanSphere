@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('board');
-
+$cs_get = cs_get('catid');
 $cs_option = cs_sql_option(__FILE__,'board');
 require_once 'mods/board/functions.php';
 
@@ -19,6 +19,9 @@ $cells  .= 'thr.threads_last_time AS threads_last_time, frm.board_name AS board_
 $cond    = 'frm.board_access <= \''.$account['access_board'].'\' AND frm.board_pwd = \'\'';
 if(!empty($account['users_id'])) {
   $cond   .= ' AND thr.threads_last_time > \'' . $cs_readtime . '\' AND (thr.threads_last_time > red.read_since OR red.threads_id IS NULL)';
+}
+if(!empty($cs_get['catid'])) {
+  $cond .= ' AND frm.categories_id = ' . $cs_get['catid'];
 }
 $order   = 'thr.threads_last_time DESC'; 
 $data['threads'] = cs_sql_select(__FILE__,$tables,$cells,$cond,$order,0,$cs_option['max_navlist']);

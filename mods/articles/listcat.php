@@ -4,8 +4,7 @@
 
 $cs_lang = cs_translate('articles');
 
-$categories_id = empty($_GET['id']) ? $_REQUEST['where'] : $_GET['id'];
-settype($categories_id,'integer');
+$cs_get = cs_get('id');
 
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
 $cs_sort[1] = 'articles_headline DESC';
@@ -14,9 +13,9 @@ $cs_sort[3] = 'articles_time DESC';
 $cs_sort[4] = 'articles_time ASC';
 empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
 $order = $cs_sort[$sort];
-$articles_count = cs_sql_count(__FILE__,'articles','categories_id =' .$categories_id);
+$articles_count = cs_sql_count(__FILE__,'articles','categories_id =' .$cs_get['id']);
 
-$where = "categories_id= '" . $categories_id . "' AND categories_access <= '" . $account['access_categories'] . "'";
+$where = "categories_id= '" . $cs_get['id'] . "' AND categories_access <= '" . $account['access_categories'] . "'";
 $category = cs_sql_select(__FILE__,'categories','categories_name',$where);
 
 if (empty($category)) {
@@ -24,13 +23,13 @@ if (empty($category)) {
 } else {
   $data['head']['categories_name'] = cs_secure($category['categories_name']);
   $data['head']['articles_count'] = $articles_count;
-  $data['head']['pages'] = cs_pages('articles','listcat',$articles_count,$start,$categories_id,$sort);
+  $data['head']['pages'] = cs_pages('articles','listcat',$articles_count,$start,$cs_get['id'],$sort);
   
-  $cs_articles = cs_sql_select(__FILE__,'articles','*',"categories_id = '" . $categories_id . "'",$order,$start,$account['users_limit']);
+  $cs_articles = cs_sql_select(__FILE__,'articles','*',"categories_id = '" . $cs_get['id'] . "'",$order,$start,$account['users_limit']);
   $articles_loop = count($cs_articles);
   
-  $data['sort']['headline'] = cs_sort('articles','listcat',$start,$categories_id,1,$sort);
-  $data['sort']['date'] = cs_sort('articles','listcat',$start,$categories_id,3,$sort);
+  $data['sort']['headline'] = cs_sort('articles','listcat',$start,$cs_get['id'],1,$sort);
+  $data['sort']['date'] = cs_sort('articles','listcat',$start,$cs_get['id'],3,$sort);
   
   for($run=0; $run<$articles_loop; $run++) {
   

@@ -14,9 +14,6 @@ $cs_lang['text']  = 'Text';
 $cs_lang['servername'] = 'Name auf dem Gameserver';
 $cs_lang['pic_up']    = 'Bild hochladen';
 $cs_lang['pic_infos'] = 'Infobox';
-$cs_lang['max_width'] = 'Maximale Breite: ';
-$cs_lang['max_height']= 'Maximale H&ouml;he: ';
-$cs_lang['max_size']  = 'Maximale Gr&ouml;&szlig;e: ';
 $cs_lang['filetypes'] = 'Dateiformate: ';
 
 $cs_lang['errors']    = 'Folgende Fehler sind aufgetreten:';
@@ -42,3 +39,10 @@ $cs_lang['picture']   = 'Bild';
 // List
 $cs_lang['list']  = 'Liste';
 $cs_lang['curr_maps'] = 'Derzeit sind %d Karten eingetragen.';
+
+// Options
+$cs_lang['max_width'] = 'Maximale Bildbreite';
+$cs_lang['max_height'] = 'Maximale Bildh&ouml;he';
+$cs_lang['max_size'] = 'Maximale Bildgr&ouml;&szlig;e';
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';

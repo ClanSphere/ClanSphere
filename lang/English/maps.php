@@ -42,3 +42,7 @@ $cs_lang['picture']    = 'Picture';
 // List
 $cs_lang['list']  = 'List';
 $cs_lang['curr_maps'] = 'Currently there are %d maps registered.';
+
+// Options
+$cs_lang['pixel'] = 'Pixel';
+$cs_lang['bytes'] = 'Bytes';

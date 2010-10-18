@@ -3,16 +3,11 @@
 // $Id$
 
 $cs_lang = cs_translate('banners');
+$cs_get = cs_get('catid');
 $cs_option = cs_sql_option(__FILE__,'banners');
-
-$where = 0;
-if(!empty($_GET['bc_id'])) {
-  $cat_id = (int) $_GET['bc_id'];
-  $cat_banners = cs_sql_count(__FILE__, 'categories', "categories_id = '" . $cat_id . "' AND categories_mod = 'banners'");
-  if(!empty($cat_banners)) $where = "categories_id = '" . $cat_id . "'";
-}
-
 $data = array();
+
+$where = empty($cs_get['catid']) ? 0 : 'categories_id = ' . $cs_get['catid'];
 $data['banners'] = cs_sql_select(__FILE__,'banners','banners_picture, banners_alt, banners_url',$where,'banners_order ASC',0,$cs_option['max_navlist']);
 $banners_loop = count($data['banners']);
 
