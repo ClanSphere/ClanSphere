@@ -119,10 +119,12 @@ function cs_sql_option($cs_file,$mod) {
 			}
 			pg_free_result($sql_data);
 			cs_log_sql($cs_file, $sql_query);
-			foreach($cs_template AS $navlist => $value) {
+			if(count($cs_template)) {
+			  foreach($cs_template AS $navlist => $value) {
 				if($navlist == $mod) {
 					$new_result = array_merge($new_result,$value);
 				}
+			  }
 			}
 			$options[$mod] = isset($new_result) ? $new_result : 0;
 
