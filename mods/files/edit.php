@@ -122,7 +122,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   } 
   
 
-  $data['categories']['dropdown'] = cs_categories_dropdown('files',$data['file']['categories_id']);
+  $data['categories']['dropdown'] = cs_categories_dropdown2('files',$data['file']['categories_id']);
   $data['text']['smileys'] = cs_abcode_smileys('files_description');
   $data['text']['features'] = cs_abcode_features('files_description');
   
