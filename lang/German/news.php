@@ -52,6 +52,7 @@ $cs_lang['bytes'] = 'Bytes';
 $cs_lang['rss_title'] = 'RSS Titel';
 $cs_lang['rss_description'] = 'RSS Beschreibung';
 $cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
+$cs_lang['max_headline'] = 'Titell&auml;nge in der Navlist';
 $cs_lang['max_recent'] = 'Datens&auml;tze in der Recent';
 $cs_lang['abcode'] = 'Erlaubte Zeichen';
 $cs_lang['features'] = 'Features';
@@ -83,7 +84,7 @@ $cs_lang['current']  = 'Aktuell';
 $cs_lang['recent']  = 'Aktuell';
 
 // Remove
-$cs_lang['remove_rly']    = 'Datensatz Nr. %s wirklich entfernen?';
+$cs_lang['remove_news']    = 'News "<b>%s</b>" wirklich entfernen?';
 
 // Summary
 $cs_lang['summary']  = 'Zusammenfassung';

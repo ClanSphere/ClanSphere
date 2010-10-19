@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <td class="centerc">
-      <input type="hidden" name="id" value="{bm:id}" />
+      <input type="hidden" name="id" value="{boardmod:id}" />
       <input type="submit" name="agree" value="{lang:confirm}" />
       <input type="submit" name="cancel" value="{lang:cancel}" />
     </td>

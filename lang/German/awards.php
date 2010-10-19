@@ -29,3 +29,6 @@ $cs_lang['no_game'] = '- Es wurde kein Spiel ausgew&auml;hlt oder angelegt';
 $cs_lang['no_rank'] = '- Es muss eine Platzierung angegeben werden';
 $cs_lang['remove_rly']    = 'Datensatz Nr. %s wirklich entfernen?';
 $cs_lang['squad'] = 'Squad';
+
+// Remove
+$cs_lang['mod_remove']  = 'Auszeichnung';

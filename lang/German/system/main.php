@@ -18,6 +18,7 @@ $cs_lang['create_done']  = 'Eintrag erfolgreich.';
 $cs_lang['date'] = 'Datum';
 $cs_lang['day']  = 'Tag';
 $cs_lang['del_rly'] = 'Datensatz Nr. %s wirklich l&ouml;schen?';
+$cs_lang['remove_entry'] = '%s "<b>%s</b>" wirklich l&ouml;schen?';
 $cs_lang['del_false']  = 'L&ouml;schung abgebrochen';
 $cs_lang['del_true'] = 'L&ouml;schung erfolgreich';
 $cs_lang['del_before'] = 'Datensatz Nr. ';

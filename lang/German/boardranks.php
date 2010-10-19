@@ -15,3 +15,6 @@ $cs_lang['id'] = 'ID';
 
 $cs_lang['no_min'] = '- Die Beitr&auml;ge m&uuml;ssen angegeben werden';
 $cs_lang['no_name'] = '- Ein Name muss angegeben werden.';
+
+// Remove
+$cs_lang['mod_remove'] = 'Forumrang';

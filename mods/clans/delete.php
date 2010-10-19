@@ -8,8 +8,9 @@ $op_clans = cs_sql_option(__FILE__,'clans');
 
 $center = ($account['access_clans'] > 2) ? 'manage' : 'center';
 $clans_form = 1;
-$clans_id = $_REQUEST['id'];
-settype($clans_id,'integer');
+$cs_get = cs_get('id');
+$cs_post = cs_post('id');
+$clans_id = empty($cs_get['id']) ? $cs_post['id'] : $cs_get['id'];
 
 if(isset($_GET['agree']) AND $clans_id != 1) {
   $clans_form = 0;
@@ -44,17 +45,21 @@ if(isset($_GET['agree']) AND $clans_id != 1) {
 }
 
 if(isset($_GET['cancel']) OR $clans_id == 1) {
-
   $clans_form = 0;
   cs_redirect($cs_lang['del_false'],'clans',$center);
 }
 
 if(!empty($clans_form)) {
-  $data['lang']['body'] = sprintf($cs_lang['del_rly'],$clans_id);
-  
-  $data['lang']['content'] = cs_link($cs_lang['confirm'],'clans','delete','id=' . $clans_id . '&amp;agree');
-  $data['lang']['content'] .= ' - ';
-  $data['lang']['content'] .= cs_link($cs_lang['cancel'],'clans','delete','id=' . $clans_id . '&amp;cancel');
-  
-  echo cs_subtemplate(__FILE__,$data,'clans','remove');
+  $clan = cs_sql_select(__FILE__,'clans','clans_name','clans_id = ' . $clans_id,0,0,1);
+  if(!empty($clan)) {
+    $data['lang']['mod_name'] = $cs_lang[$op_clans['label']];
+    $data['lang']['body'] = sprintf($cs_lang['remove_entry'],$data['lang']['mod_name'],$clan['clans_name']);
+    $data['lang']['content'] = cs_link($cs_lang['confirm'],'clans','remove','id=' . $clans_id . '&amp;agree');
+    $data['lang']['content'] .= ' - ';
+    $data['lang']['content'] .= cs_link($cs_lang['cancel'],'clans','remove','id=' . $clans_id . '&amp;cancel');
+    echo cs_subtemplate(__FILE__,$data,'clans','remove');
+  }
+  else {
+    cs_redirect('','clans');
+  }
 }

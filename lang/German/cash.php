@@ -61,3 +61,6 @@ $cs_lang['create_options'] = 'Optionen wurden erfolgreich ge&auml;ndert.';
 // Users_view
 $cs_lang['user_cash_ok'] = 'Bezahlte Benutzer';
 $cs_lang['user_cash_no'] = 'Nicht bezahlte Benutzer';
+
+// Remove
+$cs_lang['mod_remove'] = 'Zahlung';

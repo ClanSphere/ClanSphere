@@ -20,6 +20,7 @@ if(isset($_POST['submit'])) {
   $save['max_height'] = (int) $_POST['max_height'];
   $save['max_size'] = (int) $_POST['max_size'];
   $save['max_navlist'] = (int) $_POST['max_navlist'];
+  $save['max_headline'] = (int) $_POST['max_headline'];
   $save['max_recent'] = (int) $_POST['max_recent'];
   $save['def_public'] = (int) $_POST['def_public'];
   $save['rss_title'] = $_POST['rss_title'];

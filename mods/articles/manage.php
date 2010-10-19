@@ -35,7 +35,7 @@ $articles_loop = count($cs_articles);
 
   $data['sort']['headline'] = cs_sort('articles','manage',$start,$categories_id,1,$sort);
   $data['sort']['date'] = cs_sort('articles','manage',$start,$categories_id,3,$sort);
-  
+
 for($run=0; $run<$articles_loop; $run++) {
 
     $id = $cs_articles[$run]['articles_id'];

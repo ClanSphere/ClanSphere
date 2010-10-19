@@ -36,6 +36,10 @@
   <td class="leftb"><input type="text" name="max_navlist" value="{op:max_navlist}" maxlength="2" size="2" /></td>
  </tr>
  <tr>
+  <td class="leftc">{icon:playlist} {lang:max_headline}</td>
+  <td class="leftb"><input type="text" name="max_headline" value="{op:max_headline}" maxlength="2" size="2" /></td>
+ </tr> 
+ <tr>
   <td class="leftc">{icon:playlist} {lang:max_recent}</td>
   <td class="leftb"><input type="text" name="max_recent" value="{op:max_recent}" maxlength="2" size="2" /></td>
  </tr>

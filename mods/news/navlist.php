@@ -26,12 +26,12 @@ else {
   $run = 0;
   foreach ($cs_news AS $news) {    
     $data['news'][$run]['news_time'] = cs_date('unix',$news['news_time'],1,1,0);
-    $short = strlen($news['news_headline']) <= 15 ? $news['news_headline'] : substr($news['news_headline'],0,15) . '...';
+    mb_internal_encoding("UTF-8");
+    $short = strlen($news['news_headline']) <= $cs_option['max_headline'] ? $news['news_headline'] : mb_substr($news['news_headline'],0,$cs_option['max_headline']) . '...';
     $data['news'][$run]['news_url'] = cs_url('news','view','id=' . $news['news_id']);
     $data['news'][$run]['news_short'] = cs_secure($short);
     $data['news'][$run]['news_headline'] = cs_secure($news['news_headline']);
     $run++;
   }
-
   echo cs_subtemplate(__FILE__,$data,'news','navlist');
 }

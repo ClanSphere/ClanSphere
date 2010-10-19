@@ -38,4 +38,8 @@ $cs_lang['off_buddies']  = 'Buddies offline...';
 $cs_lang['on_buddies']  = 'Buddies online...';
 $cs_lang['no_buddys_online'] = 'Keine Freunde online.';
 
+// Options
 $cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
+
+// Remove
+$cs_lang['remove_buddy'] = 'Do you really want the user "<b>%s</ b>" remove from your friend list?';

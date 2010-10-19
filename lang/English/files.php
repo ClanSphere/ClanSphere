@@ -95,6 +95,6 @@ $cs_lang['report'] = 'report';
 // Options
 $cs_lang['options_info'] = 'Administration of module settings.';
 $cs_lang['max_navlist'] = 'Datasets in the navlist';
-$cs_lang['max_headline'] = 'Titell&auml;nge in der Navlist';
+$cs_lang['max_headline'] = 'Header length in the navlist';
 $cs_lang['max_navtop'] = 'Datasets in the navtop';
-$cs_lang['max_headline_navtop'] = 'Titell&auml;nge in der Navtop';
+$cs_lang['max_headline_navtop'] = 'Header length in the navtop';

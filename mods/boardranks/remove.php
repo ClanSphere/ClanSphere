@@ -15,14 +15,19 @@ if(!empty($agree)) {
   cs_redirect($cs_lang['del_true'], 'boardranks');
 }
 
-if(!empty($cancel))   
-  cs_redirect($cs_lang['del_false'], 'boardranks');
+if(!empty($cancel))
+cs_redirect($cs_lang['del_false'], 'boardranks');
 
 if(empty($agree) AND empty($cancel)) {
-  $data['head']['body'] = sprintf($cs_lang['del_rly'],$boardranks_id);
-  $data['url']['agree'] = cs_url('boardranks','remove','id=' . $boardranks_id . '&amp;agree');
-  $data['url']['cancel'] = cs_url('boardranks','remove','id=' . $boardranks_id . '&amp;cancel');
-  
-  echo cs_subtemplate(__FILE__,$data,'boardranks','remove');
-  
+  $boardrank = cs_sql_select(__FILE__,'boardranks','boardranks_name','boardranks_id = ' . $boardranks_id,0,0,1);
+  if(!empty($boardrank)) {
+    $data['head']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_remove'],$boardrank['boardranks_name']);
+    $data['url']['agree'] = cs_url('boardranks','remove','id=' . $boardranks_id . '&amp;agree');
+    $data['url']['cancel'] = cs_url('boardranks','remove','id=' . $boardranks_id . '&amp;cancel');
+    echo cs_subtemplate(__FILE__,$data,'boardranks','remove');
+  }
+  else {
+    cs_redirect('','boardranks');
+  }
+
 }

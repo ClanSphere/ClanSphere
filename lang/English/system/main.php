@@ -18,6 +18,7 @@ $cs_lang['create_done']  = 'Successfully created.';
 $cs_lang['date']  = 'Date';
 $cs_lang['day']  = 'Day';
 $cs_lang['del_rly'] = 'Really delete Dataset No. %s ?';
+$cs_lang['remove_entry'] = 'Really delete %s "<b>%s</b>"?';
 $cs_lang['del_false']  = 'Deletion cancelled';
 $cs_lang['del_true']  = 'Successfully deleted';
 $cs_lang['del_before'] = 'Dataset No. ';

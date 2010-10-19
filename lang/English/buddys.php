@@ -38,4 +38,8 @@ $cs_lang['off_buddies']  = 'Buddies offline...';
 $cs_lang['on_buddies']  = 'Buddies online...';
 $cs_lang['no_buddys_online'] = 'No buddies online.';
 
+// Options
 $cs_lang['max_navlist'] = 'Dataset in the navlist';
+
+// Remove
+$cs_lang['remove_buddy'] = 'Really delete User "<b>%s</b>" from your buddylist?';

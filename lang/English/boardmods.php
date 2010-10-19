@@ -21,3 +21,6 @@ $cs_lang['new'] = 'New Moderator';
 
 $cs_lang['1'] = 'Yes';
 $cs_lang['0'] = 'No';
+
+// Remove
+$cs_lang['mod_remove'] = 'Boardmoderator';

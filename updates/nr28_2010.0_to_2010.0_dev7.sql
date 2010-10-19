@@ -42,6 +42,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('jo
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('maps', 'max_width', '500');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('maps', 'max_height', '500');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('maps', 'max_size', '51200');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('news', 'max_headline', '15');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('partner', 'max_navlist', '5');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ranks', 'max_navlist', '5');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('replays', 'max_navlist', '5');
