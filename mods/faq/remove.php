@@ -5,7 +5,9 @@
 $cs_lang = cs_translate('faq');
 
 $faq_form = 1;
-$faq_id = $_REQUEST['id'];
+$cs_get = cs_get('id');
+$cs_post = cs_post('id');
+$faq_id = empty($cs_get['id']) ? $cs_post['id'] : $cs_get['id'];
 
 if(isset($_POST['agree'])) {
   $faq_form = 0;
@@ -18,9 +20,14 @@ if(isset($_POST['cancel'])) {
 }
 
 if(!empty($faq_form)) {
-  $data['lang']['body'] = sprintf($cs_lang['del_rly'],$faq_id);
-  $data['action']['form'] = cs_url('faq','remove');
-  $data['faq']['id'] = $faq_id;
-  
-  echo cs_subtemplate(__FILE__,$data,'faq','remove');
+  $faq = cs_sql_select(__FILE__,'faq','faq_question','faq_id = ' . $faq_id,0,0,1);
+  if(!empty($faq)) {
+    $data['lang']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_name'],$faq['faq_question']);
+    $data['action']['form'] = cs_url('faq','remove');
+    $data['faq']['id'] = $faq_id;
+    echo cs_subtemplate(__FILE__,$data,'faq','remove');
+  }
+  else {
+    cs_redirect('','faq');
+  }
 }

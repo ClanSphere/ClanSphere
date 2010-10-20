@@ -99,3 +99,6 @@ $cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
 $cs_lang['max_headline'] = 'Titell&auml;nge in der Navlist';
 $cs_lang['max_navtop'] = 'Datens&auml;tze in der Navtop';
 $cs_lang['max_headline_navtop'] = 'Titell&auml;nge in der Navtop';
+
+// Remove
+$cs_lang['mod_remove'] = 'Download';

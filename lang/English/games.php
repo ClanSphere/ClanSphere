@@ -58,3 +58,6 @@ $cs_lang['no_icon'] ='- You have to upload an icon';
 $cs_lang['details'] = 'Details';
 $cs_lang['pixel'] = 'Pixel';
 $cs_lang['bytes'] = 'Bytes';
+
+// Remove
+$cs_lang['mod_remove'] = 'Game';

@@ -11,7 +11,7 @@ if (!empty($cs_post['id']))  $files_id = $cs_post['id'];
 
 
 if(isset($_POST['agree'])) {
-  
+
   $previews = cs_sql_select(__FILE__,'files','files_previews',"files_id = '" . $files_id . "'");
   $file_string = $previews['files_previews'];
   $file_pics = empty($file_string) ? array() : explode("\n",$file_string);
@@ -19,7 +19,7 @@ if(isset($_POST['agree'])) {
     cs_unlink('files', 'picture-' . $pics);
     cs_unlink('files', 'thumb-' . $pics);
   }
-  
+
   cs_sql_delete(__FILE__,'files',$files_id);
   $query = "DELETE FROM {pre}_comments WHERE comments_mod='files' AND ";
   $query .= "comments_fid='" . $files_id . "'";
@@ -31,13 +31,17 @@ if(isset($_POST['agree'])) {
   cs_redirect($cs_lang['del_true'], 'files');
 }
 
-if(isset($_POST['cancel']))
+if(isset($_POST['cancel'])) {
   cs_redirect($cs_lang['del_false'], 'files');
-
+}
 else {
-  
-  $data['lang']['del_rly'] = sprintf($cs_lang['del_rly'],$files_id);
-  $data['file']['id'] = $files_id;
-
-  echo cs_subtemplate(__FILE__,$data,'files','remove');
+  $file = cs_sql_select(__FILE__,'files','files_name','files_id = ' . $files_id);
+  if(!empty($file)) {
+    $data['lang']['del_rly'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_remove'],$file['files_name']);
+    $data['file']['id'] = $files_id;
+    echo cs_subtemplate(__FILE__,$data,'files','remove');
+  }
+  else {
+    cs_redirect('','files');
+  }
 }

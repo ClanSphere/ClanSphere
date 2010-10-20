@@ -15,12 +15,18 @@ if(isset($_GET['agree'])) {
 }
 
 if(isset($_GET['cancel']))
-  cs_redirect($cs_lang['del_false'], 'fightus');
+cs_redirect($cs_lang['del_false'], 'fightus');
 
 else {
-  $data['head']['body'] = sprintf($cs_lang['del_rly'],$fightus_id);
-  $data['url']['agree'] = cs_url('fightus','remove','id=' . $fightus_id . '&amp;agree');
-  $data['url']['cancel'] = cs_url('fightus','remove','id=' . $fightus_id . '&amp;cancel');
+  $fightus = cs_sql_select(__FILE__,'fightus','fightus_nick','fightus_id = ' . $fightus_id,0,0,1);
+  if(!empty($fightus)) {
+    $data['head']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_name'],$fightus['fightus_nick']);
+    $data['url']['agree'] = cs_url('fightus','remove','id=' . $fightus_id . '&amp;agree');
+    $data['url']['cancel'] = cs_url('fightus','remove','id=' . $fightus_id . '&amp;cancel');
 
-  echo cs_subtemplate(__FILE__,$data,'fightus','remove');
+    echo cs_subtemplate(__FILE__,$data,'fightus','remove');
+  }
+  else {
+    cs_redirect('','fightus');
+  }
 }

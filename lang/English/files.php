@@ -98,3 +98,6 @@ $cs_lang['max_navlist'] = 'Datasets in the navlist';
 $cs_lang['max_headline'] = 'Header length in the navlist';
 $cs_lang['max_navtop'] = 'Datasets in the navtop';
 $cs_lang['max_headline_navtop'] = 'Header length in the navtop';
+
+// Remove
+$cs_lang['mod_remove'] = 'Download';
