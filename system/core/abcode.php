@@ -419,7 +419,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     cs_abcode_mode(1);
 
     if(empty($html))
-      $replace = preg_replace_callback('=(www\.|http://|ftp://)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)=si','cs_abcode_urlauto',$replace);
+      $replace = preg_replace_callback('=(www\.|http://|ftp://|https://)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)=si','cs_abcode_urlauto',$replace);
 
     if(!empty($op_abcode['word_cut']))
       $replace = preg_replace("=(?![>])([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
