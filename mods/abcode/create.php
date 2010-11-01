@@ -1,18 +1,18 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('abcode');
+$cs_post = cs_post();
 
 $op_abcode = cs_sql_option(__FILE__,'abcode');
 $img_filetypes = array('gif','jpg','png');
 $files = cs_files();
 
-if(isset($_POST['submit'])) {
-  $cs_abcode['abcode_func'] = $_POST['abcode_func'];
-  $cs_abcode['abcode_pattern'] = $_POST['abcode_pattern'];
-  $cs_abcode['abcode_result'] = $_POST['abcode_result'];
-  $cs_abcode['abcode_order'] = empty($_POST['abcode_order']) ? 0 : (int) $_POST['abcode_order'];
+if(isset($cs_post['submit'])) {
+  $cs_abcode['abcode_func'] = $cs_post['abcode_func'];
+  $cs_abcode['abcode_pattern'] = $cs_post['abcode_pattern'];
+  $cs_abcode['abcode_result'] = $cs_post['abcode_result'];
+  $cs_abcode['abcode_order'] = empty($cs_post['abcode_order']) ? 0 : (int) $cs_post['abcode_order'];
   
   $error = 0;
   $message = '';
@@ -88,7 +88,7 @@ else {
   $cs_abcode['abcode_order'] = '';
 }
 
-if(!isset($_POST['submit'])) {
+if(!isset($cs_post['submit'])) {
   $data['lang']['body'] = $cs_lang['body_create'];
 }
 
@@ -96,8 +96,8 @@ if(!empty($error)) {
   $data['lang']['body'] = $message;
 }
 
-if(!empty($error) OR !isset($_POST['submit'])) {
-  $data['action']['form'] = cs_url('abcode','create',1);
+if(!empty($error) OR !isset($cs_post['submit'])) {
+  $data['action']['form'] = cs_url('abcode','create');
   
   if(!empty($op_abcode['word_cut'])) {
     $data['word']['cut'] = 'maxlength="' . $op_abcode['word_cut'] . '"';

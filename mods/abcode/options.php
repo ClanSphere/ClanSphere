@@ -1,14 +1,13 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('abcode');
-
+$cs_post = cs_post();
 $data = array();
 
 $data['lang']['getmsg'] = cs_getmsg();
 
-if(empty($_POST['submit'])) {
+if(!isset($cs_post['submit'])) {
 
   $data['options'] = cs_sql_option(__FILE__,'abcode');
 
@@ -34,16 +33,16 @@ if(empty($_POST['submit'])) {
   require_once 'mods/clansphere/func_options.php';
 
   $save = array();
-  $save['rte_html'] = $_POST['rte_html'];
-  $save['rte_more'] = $_POST['rte_more'];
-  $save['max_width'] = (int) $_POST['max_width'];
-  $save['max_height'] = (int) $_POST['max_height'];
-  $save['max_size'] = (int) $_POST['max_size'];
-  $save['def_func'] = $_POST['def_func'];
-  $save['image_width'] = $_POST['image_width'];
-  $save['image_height'] = $_POST['image_height'];
-  $save['word_cut'] = $_POST['word_cut'] > 65535 ? 65535 : (int) $_POST['word_cut'];
-  $save['def_abcode'] = empty($_POST['def_abcode']) ? 0 : 1;
+  $save['rte_html'] = $cs_post['rte_html'];
+  $save['rte_more'] = $cs_post['rte_more'];
+  $save['max_width'] = (int) $cs_post['max_width'];
+  $save['max_height'] = (int) $cs_post['max_height'];
+  $save['max_size'] = (int) $cs_post['max_size'];
+  $save['def_func'] = $cs_post['def_func'];
+  $save['image_width'] = $cs_post['image_width'];
+  $save['image_height'] = $cs_post['image_height'];
+  $save['word_cut'] = $cs_post['word_cut'] > 65535 ? 65535 : (int) $cs_post['word_cut'];
+  $save['def_abcode'] = empty($cs_post['def_abcode']) ? 0 : 1;
 
   cs_optionsave('abcode', $save);
 

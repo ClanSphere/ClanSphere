@@ -1,39 +1,26 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('static');
+$cs_get = cs_get('id');
 
-$cs_static_tpl = array();
-$cs_static_tpl['head']['mod']    = $cs_lang['mod_name'];
-$cs_static_tpl['head']['action']  = $cs_lang['head_remove'];
-$cs_static_tpl['head']['body']  = '-';
-
-echo cs_subtemplate(__FILE__,$cs_static_tpl,'static','action_head');
-
-$static_form = 1;
-$static_id = $_REQUEST['id'];
-settype($static_id,'integer');
-
-if(isset($_GET['agree']))
-{
-  $static_form = 0;
-  cs_sql_delete(__FILE__,'static',$static_id);
-
+if(isset($cs_get['agree'])) {
+  cs_sql_delete(__FILE__,'static',$cs_get['id']);
   cs_redirect($cs_lang['del_true'], 'static');
 }
 
-if(isset($_GET['cancel']))
+if(isset($cs_get['cancel'])) {
   cs_redirect($cs_lang['del_false'], 'static');
+}
 
-if(!empty($static_form))
-{
-  $cs_static_tpl['remove']['mode'] = 'static_remove';
-  $cs_static_tpl['remove']['action'] = 'remove';
-  $cs_static_tpl['remove']['id'] = $static_id;
-  
-  $cs_static_tpl['remove']['agree'] = cs_link($cs_lang['confirm'],'static','remove','id=' . $static_id . '&amp;agree');
-  $cs_static_tpl['remove']['cancel'] = cs_link($cs_lang['cancel'],'static','remove','id=' . $static_id . '&amp;cancel');
-
-  echo cs_subtemplate(__FILE__,$cs_static_tpl,'static','remove');
+$static = cs_sql_select(__FILE__,'static','static_title', 'static_id = ' . $cs_get['id'],0,0,1);
+if(!empty($static)) {
+  $data = array();
+  $data['head']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_remove'],$static['static_title']);
+  $data['remove']['agree'] = cs_link($cs_lang['confirm'],'static','remove','id=' . $cs_get['id'] . '&amp;agree');
+  $data['remove']['cancel'] = cs_link($cs_lang['cancel'],'static','remove','id=' . $cs_get['id'] . '&amp;cancel');
+  echo cs_subtemplate(__FILE__,$data,'static','remove');
+}
+else {
+  cs_redirect('','static');
 }

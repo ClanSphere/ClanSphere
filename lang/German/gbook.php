@@ -48,3 +48,6 @@ $cs_lang['deactive'] = 'Sperren';
 $cs_lang['active_done'] = 'Eintrag wurde freigeschaltet.';
 $cs_lang['deactive_done'] = 'Eintrag wurde gesperrt.';
 $cs_lang['create_done_lock'] = 'Ihr G&auml;stebucheintrag wurde erfolgreich gespeichert. Nach &Uuml;berpr&uuml;fung eines Admins, wird dieser freigeschaltet.';
+
+// Remove
+$cs_lang['mod_remove'] = 'G&auml;stebuch Eintrag';

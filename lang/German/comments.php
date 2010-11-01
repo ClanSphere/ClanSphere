@@ -32,6 +32,7 @@ $cs_lang['body_com_edit']  = 'Bitte auf Text&auml;nderungen hinweisen.';
 
 //Remove
 $cs_lang['head_com_remove']  = 'Kommentar Entfernen';
+$cs_lang['mod_remove'] = 'Kommentar';
 
 //Errors
 $cs_lang['need_user']  = 'Bitte Login benutzen, um Kommentare zu schreiben.';

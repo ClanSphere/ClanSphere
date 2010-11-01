@@ -1,17 +1,16 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('access');
-
+$cs_post = cs_post();
 empty($_REQUEST['id']) ? $access_id = 0 : $access_id = $_REQUEST['id'];
 
 $data = array();
 
-if(isset($_POST['submit']) && isset($_POST['users_nick']) && isset($_REQUEST['id'])) {
+if(isset($cs_post['submit']) && isset($cs_post['users_nick']) && isset($_REQUEST['id'])) {
 
   $select = 'users_id, access_id, users_nick, users_delete';
-  $where = "users_delete = '0' AND users_nick = '" . $_POST['users_nick'] . "'";
+  $where = "users_delete = '0' AND users_nick = '" . $cs_post['users_nick'] . "'";
   $cs_user = cs_sql_select(__FILE__,'users', $select, $where);
   
   $errormsg = '';
@@ -32,7 +31,7 @@ if(isset($_POST['submit']) && isset($_POST['users_nick']) && isset($_REQUEST['id
   }
 }
 
-if(!isset($_POST['submit'])) {
+if(!isset($cs_post['submit'])) {
   $data['head']['msg'] = $cs_lang['users_head'];;
 }
 elseif(!empty($errormsg)) {

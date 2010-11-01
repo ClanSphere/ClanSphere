@@ -1,23 +1,27 @@
 <?php
-// ClanSphere 2010 - www.clansphere.net 
+// ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('history');
+$cs_get = cs_get('id,agree,cancel');
 
-$history_id = $_GET['id'];
-
-if(isset($_GET['agree'])) {
-  cs_sql_delete(__FILE__,'history',$history_id);
+if(isset($cs_get['agree'])) {
+  cs_sql_delete(__FILE__,'history',$cs_get['id']);
   cs_redirect($cs_lang['del_true'], 'history');
 }
-elseif(isset($_GET['cancel'])) 
-  cs_redirect($cs_lang['del_false'], 'history');
-else {
 
-  $data['head']['topline'] = sprintf($cs_lang['del_rly'],$history_id);
-  $data['history']['content'] = cs_link($cs_lang['confirm'],'history','remove','id=' . $history_id . '&amp;agree');
-  $data['history']['content'] .= ' - ';
-  $data['history']['content'] .= cs_link($cs_lang['cancel'],'history','remove','id=' . $history_id . '&amp;cancel');
+if(isset($cs_get['cancel'])) {
+  cs_redirect($cs_lang['del_false'], 'history');
 }
 
-echo cs_subtemplate(__FILE__,$data,'history','remove');
+$history = cs_sql_select(__FILE__,'history','history_text','history_id = ' . $cs_get['id']);
+if(!empty($history)) {
+  $data = array();
+  $data['head']['topline'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_name'],substr($history['history_text'],0,15));
+  $data['history']['content'] = cs_link($cs_lang['confirm'],'history','remove','id=' . $cs_get['id'] . '&amp;agree');
+  $data['history']['content'] .= ' - ';
+  $data['history']['content'] .= cs_link($cs_lang['cancel'],'history','remove','id=' . $cs_get['id'] . '&amp;cancel');
+  echo cs_subtemplate(__FILE__,$data,'history','remove');
+}
+else {
+  cs_redirect('','history');
+}

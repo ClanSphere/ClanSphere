@@ -1,12 +1,11 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('abcode');
 $cs_get = cs_get('start,sort');
 $cs_post = cs_post('start,sort');
 
-$abcode_func = empty($_POST['type']) ? '' : (string)$_POST['type'];
+$abcode_func = empty($cs_post['type']) ? '' : (string)$cs_post['type'];
 #if (!empty($cs_post['type'])) $abcode_func = $cs_post['type'];
 
 $start = empty($cs_get['start']) ? 0 : $cs_get['start'];

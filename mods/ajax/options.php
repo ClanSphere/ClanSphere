@@ -1,11 +1,11 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('ajax');
+$cs_post = cs_post('ajax_reload');
 $files = cs_files();
 
-if (!empty($_POST['submit'])) {
+if (!empty($cs_post['submit'])) {
   
   $errors = '';
   
@@ -17,14 +17,15 @@ if (!empty($_POST['submit'])) {
   if (empty($errors)) {
     if (!empty($files['loading']['tmp_name'])) cs_upload('ajax','loading.gif',$files['loading']['tmp_name']);
 
-    settype($_POST['ajax_reload'],'integer');
-    if (empty($_POST['ajax'])) $_POST['ajax_reload'] = 0;
+    if (empty($cs_post['ajax'])) {
+      $cs_post['ajax_reload'] = 0;
+    } 
 
     require_once 'mods/clansphere/func_options.php';
 
     $save = array();
-    $save['ajax'] = empty($_POST['ajax']) ? '0' : (int) $_POST['for'];
-    $save['ajax_reload'] = $_POST['ajax_reload'];
+    $save['ajax'] = empty($cs_post['ajax']) ? '0' : (int) $cs_post['for'];
+    $save['ajax_reload'] = $cs_post['ajax_reload'];
 
     cs_optionsave('clansphere', $save);
 

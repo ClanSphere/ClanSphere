@@ -1,10 +1,15 @@
-<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
- <tr>
-  <td class="leftb">{lang:del_before}{remove:id}{lang:del_next}</td>
- </tr>
- <tr>
-  <td class="centerc">
-{remove:agree} - {remove:cancel}
-  </td>
- </tr>
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+  <tr>
+    <td class="headb">{head:mod} - {lang:remove}</td>
+  </tr>
+  <tr>
+    <td class="leftb">{head:body}</td>
+  </tr>
+</table>
+<br />
+
+<table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
+  <tr>
+    <td class="centerc">{remove:agree} - {remove:cancel}</td>
+  </tr>
 </table>

@@ -8,7 +8,7 @@
   <tr>
     <td class="centerb">
       <form method="post" id="maps_remove" action="{maps:action}">
-        <input type="hidden" name="maps_id" value="{maps:maps_id}" />
+        <input type="hidden" name="id" value="{maps:maps_id}" />
         <input type="submit" name="agree" value="{lang:confirm}" />
         <input type="submit" name="cancel" value="{lang:cancel}" />
       </form>

@@ -30,3 +30,6 @@ $cs_lang['lev_4'] = 'mit Bearbeiten';
 $cs_lang['lev_5'] = 'mit Entfernen';
 $cs_lang['extended'] = 'Erweitert';
 $cs_lang['php_eval'] = 'Ausf&uuml;hren von PHP-Code erlauben';
+
+// Remove
+$cs_lang['mod_remove'] = 'Statische Seite';

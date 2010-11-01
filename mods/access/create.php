@@ -1,17 +1,17 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('access');
+$cs_post = cs_post();
 
 $cs_access = cs_sql_select(__FILE__,'access','*');
 unset($cs_access['access_id']);
 $cs_access['access_name'] = '';
 
-if(isset($_POST['submit'])) {
+if(isset($cs_post['submit'])) {
   foreach($cs_access AS $key => $value) {
-    if(isset($_POST[$key])) {
-      $cs_access[$key] = $_POST[$key];
+    if(isset($cs_post[$key])) {
+      $cs_access[$key] = $cs_post[$key];
     }
   }
   
@@ -34,7 +34,7 @@ if(isset($_POST['submit'])) {
   }
 }
 
-if(!isset($_POST['submit'])) {
+if(!isset($cs_post['submit'])) {
   $data['lang']['body'] = $cs_lang['body_create'];
 }
 elseif(!empty($error)) {
@@ -44,13 +44,13 @@ else {
   $data['lang']['body'] = $cs_lang['create_done'];
 }
 
-if(!empty($error) OR !isset($_POST['submit'])) {
+if(!empty($error) OR !isset($cs_post['submit'])) {
   $data['action']['form'] = cs_url('access','create');
   $data['access2']['name'] = $cs_access['access_name'];
   $data['access2']['clansphere'] = cs_link('ClanSphere','modules','view','dir=clansphere');
 
   $sel = array(0 => 0,3 => 0,4 => 0,5 => 0);
-  if(isset($_POST['submit'])) {
+  if(isset($cs_post['submit'])) {
     $cs_access['access_clansphere'] == 3 ? $sel[3] = 1 : $sel[3] = 0;
     $cs_access['access_clansphere'] == 4 ? $sel[4] = 1 : $sel[4] = 0;
     $cs_access['access_clansphere'] == 5 ? $sel[5] = 1 : $sel[5] = 0;
@@ -73,7 +73,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
       $levels = 0;
       $sel = 0;
       while($levels < 6) {
-        if(isset($_POST['submit'])) {
+        if(isset($cs_post['submit'])) {
           $cs_access[$acc_dir] == $levels ? $sel = 1 : $sel = 0;
         }
         $data['access'][$run]['select'] .= cs_html_option($levels . ' - ' . $cs_lang['lev_' . $levels],$levels,$sel);

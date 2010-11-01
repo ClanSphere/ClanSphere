@@ -26,3 +26,6 @@ $cs_lang['squad'] = 'Squad';
 // Options
 $cs_lang['options_info'] = 'Verwaltung der Einstellungen im Modul.';
 $cs_lang['max_navlist'] = 'Datens&auml;tze in der Navlist';
+
+// Remove
+$cs_lang['mod_remove'] = 'Ranglisteneintrag';

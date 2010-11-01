@@ -1,19 +1,18 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-
 $cs_lang = cs_translate('access');
-
-$access_id = empty($_REQUEST['id']) ? 0 : $_REQUEST['id'];
-settype($access_id,'integer');
+$cs_get = cs_get('id');
+$cs_post = cs_post('id');
+$access_id = empty($cs_get['id']) ? $cs_post['id'] : $cs_get['id'];
 
 $cs_access = cs_sql_select(__FILE__,'access','*',"access_id = '" . $access_id . "'");
 unset($cs_access['access_id']);
 
-if(isset($_POST['submit'])) {
+if(isset($cs_post['submit'])) {
   foreach($cs_access AS $key => $value) {
-    if(isset($_POST[$key])) {
-      $cs_access[$key] = $_POST[$key];
+    if(isset($cs_post[$key])) {
+      $cs_access[$key] = $cs_post[$key];
     }
   }
   
@@ -36,14 +35,14 @@ if(isset($_POST['submit'])) {
   }
 }
 
-if(!isset($_POST['submit'])) {
+if(!isset($cs_post['submit'])) {
   $data['lang']['body'] = $cs_lang['body_edit'];
 }
 elseif(!empty($error)) {
   $data['lang']['body'] = $errormsg;
 }
 
-if(!empty($error) OR !isset($_POST['submit'])) {
+if(!empty($error) OR !isset($cs_post['submit'])) {
   $data['action']['form'] = cs_url('access','edit');
   $data['access2']['name'] = $cs_access['access_name'];
   $data['access2']['clansphere'] = cs_link('ClanSphere','modules','view','dir=clansphere');

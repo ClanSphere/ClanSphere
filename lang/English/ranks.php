@@ -26,3 +26,6 @@ $cs_lang['squad'] = 'Squad';
 // Options
 $cs_lang['options_info'] = 'Administration of module settings.';
 $cs_lang['max_navlist'] = 'Datasets in the navlist';
+
+// Remove
+$cs_lang['mod_remove'] = 'Ranking';
