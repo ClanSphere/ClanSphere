@@ -31,9 +31,17 @@
       </td>
     </tr>
     <tr>
+      <td class="leftc">{icon:playlist} {lang:max_navlist}</td>
+      <td class="leftb"><input type="text" name="max_navlist" value="{options:max_navlist}" maxlength="2" size="2" /></td>
+    </tr>
+    <tr>
+      <td class="leftc">{icon:playlist} {lang:max_navright}</td>
+      <td class="leftb"><input type="text" name="max_navright" value="{options:max_navright}" maxlength="2" size="2" /></td>
+    </tr>
+    <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="submit" name="submit" value="{lang:edit}" />
-              </td>
+      </td>
     </tr>
   </table>
 </form>

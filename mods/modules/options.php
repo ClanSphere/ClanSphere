@@ -1,8 +1,7 @@
 <?php
-/**
- *
- * @var unknown_type
- */
+// ClanSphere 2010 - www.clansphere.net
+// $Id: options.php 4596 2010-10-16 18:43:42Z Fr33z3m4n $
+
 require_once 'mods/clansphere/func_options.php';
 
 $data = array();
@@ -23,6 +22,7 @@ if(isset($_POST['submit'])) {
 			}
 		}
 	}
+  global $cs_lang;
 	cs_redirect($cs_lang['success'], 'options', 'roots');
 }
 else {
@@ -42,4 +42,5 @@ else {
 		}
 	}
 }
+
 echo cs_subtemplate(__FILE__,$data,'modules','options');
