@@ -167,7 +167,7 @@ $cs_lang['move'] = 'Move to ...';
 $cs_lang['movedto'] = '-> Moved to';
 $cs_lang['ghostlink'] = 'Set link';
 $cs_lang['action_close'] = 'Thread are now closed.';
-$cs_lang['action_open '] = 'Thread are now opened.';
+$cs_lang['action_open'] = 'Thread are now opened.';
 $cs_lang['action_addpin'] = 'Thread are now pinned.';
 $cs_lang['action_delpin'] = 'Thread are now unpinned.';
 $cs_lang['action_move'] = 'Thread moved.';
@@ -204,7 +204,7 @@ $cs_lang['subforums'] = 'Subboards';
 $cs_lang['max_navlist'] = 'Datasets in the navlist';
 $cs_lang['max_headline'] = 'Header length in the navlist';
 $cs_lang['max_navtop'] = 'Datasets in the navtop';
-$cs_lang['max_navtop 2'] = 'Datasets in the navtop 2';
+$cs_lang['max_navtop2'] = 'Datasets in the navtop 2';
 
 //remove.php
 $cs_lang['change_threads'] = 'Move threads and comments';

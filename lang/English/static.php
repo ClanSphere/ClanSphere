@@ -30,3 +30,6 @@ $cs_lang['lev_4'] = 'Edit';
 $cs_lang['lev_5'] = 'Remove';
 $cs_lang['extended'] = 'Extended';
 $cs_lang['php_eval'] = 'Allow execution of PHP code';
+
+// Remove
+$cs_lang['mod_remove'] = 'Static Page';
