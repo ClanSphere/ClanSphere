@@ -394,19 +394,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       die($msg);
   }
 
-  cs_scriptload('ajax', 'javascript', 'js/ajax.js', 1);
-  cs_scriptload('clansphere', 'javascript', 'js/clansphere.js', 1);
-  cs_scriptload('clansphere', 'javascript', 'js/jquery.js', 1);
-
   # Initalize array of upcoming additions and get show content
-  $replace = array('func:stylesheet' => '', 'func:javascript' => '', 'func:body_add' => '');
+  $replace = array('func:body_add' => '');
   $replace['func:show'] = '<div id="csp_content">' . cs_contentload($cs_main['show']) . '</div>';
-
-  global $cs_main;
-  if(!empty($cs_main['scriptload']['stylesheet']))
-    $replace['func:stylesheet'] = $cs_main['scriptload']['stylesheet'];
-  if(!empty($cs_main['scriptload']['javascript']))
-    $replace['func:javascript'] = $cs_main['scriptload']['javascript'];
 
   if (isset($cs_main['ajax']) AND $cs_main['ajax'] == 2 OR (!empty($account['users_ajax']) AND !empty($account['access_ajax'])))
   {
@@ -426,6 +416,14 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   # Fetch template file and parse exploded contents
   $template = cs_cache_template($tpl_file);
   $template = cs_tokenizer_parse($template);
+
+  # Load basic scriptload content and add scriptload to replaces
+  cs_scriptload('ajax', 'javascript', 'js/ajax.js', 1);
+  cs_scriptload('clansphere', 'javascript', 'js/clansphere.js', 1);
+  cs_scriptload('clansphere', 'javascript', 'js/jquery.js', 1);
+  global $cs_main;
+  $replace['func:stylesheet'] = empty($cs_main['scriptload']['stylesheet']) ? '' : $cs_main['scriptload']['stylesheet'];
+  $replace['func:javascript'] = empty($cs_main['scriptload']['javascript']) ? '' : $cs_main['scriptload']['javascript'];
 
   # Prepare debug and log data
   $debug = '';
