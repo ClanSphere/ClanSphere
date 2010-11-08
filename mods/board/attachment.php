@@ -77,7 +77,7 @@ else {
 
   header("Content-Description: File Transfer");
   header("Content-Type: " . $varMimeTypes[$ext]);
-  header("Content-Disposition: attachment; filename=". $cs_thread_file['boardfiles_name'] .";");
+  header("Content-Disposition: attachment; filename=\"". $cs_thread_file['boardfiles_name'] ."\";");
   header("Content-Transfer-Encoding: binary");
   @readfile($file_path);
 }
