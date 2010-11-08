@@ -40,52 +40,6 @@ if(isset($_POST['submit'])) {
   
   $error = '';
 
-  if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($cs_squads['squads_picture'])) {
-    cs_unlink('squads', $cs_squads['squads_picture']);
-    $cs_squads['squads_picture'] = '';
-  }
-
-  $img_size = false;
-  if(!empty($files['picture']['tmp_name']))
-    $img_size = getimagesize($files['picture']['tmp_name']);
-
-  if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
-    $error .= $cs_lang['ext_error'] . cs_html_br(1);
-  }
-  elseif(!empty($files['picture']['tmp_name'])) {
-
-    switch($img_size[2]) {
-    case 1:
-      $ext = 'gif'; break;
-    case 2:
-      $ext = 'jpg'; break;
-    case 3:
-      $ext = 'png'; break;
-    }
-    $filename = 'picture-' . $squads_id . '.' . $ext;
-    
-    if($img_size[0]>$op_squads['max_width']) {
-      $error .= $cs_lang['too_wide'] . cs_html_br(1);
-    }
-    if($img_size[1]>$op_squads['max_height']) { 
-      $error .= $cs_lang['too_high'] . cs_html_br(1);
-    }
-    if($files['picture']['size']>$op_squads['max_size']) { 
-      $error .= $cs_lang['too_big'] . cs_html_br(1);
-    }
-    if(empty($error) AND cs_upload('squads', $filename, $files['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files['picture']['tmp_name'], 'uploads/squads/' . $filename, $op_squads['max_width'], $op_squads['max_height'])) {
-      $error = 0;
-      $error = '';
-      if($cs_squads['squads_picture'] != $filename AND !empty($cs_squads['squads_picture'])) {
-        cs_unlink('squads', $cs_squads['squads_picture']);
-      }
-      $cs_squads['squads_picture'] = $filename;
-    }
-    else {
-        $error .= $cs_lang['up_error'];
-    }
-  }
-  
   if(empty($cs_squads['clans_id'])) {
     $error .= $cs_lang['no_clan'] . cs_html_br(1);
   }
@@ -111,7 +65,59 @@ if(isset($_POST['submit'])) {
       $error .= $cs_lang['pwd_wrong'] . cs_html_br(1);
     }
   }
-} else {
+
+  # this is mainly to prevent changes to different squad ids
+  if(empty($error)) {
+
+    # squad picture related
+    if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($cs_squads['squads_picture'])) {
+      cs_unlink('squads', $cs_squads['squads_picture']);
+      $cs_squads['squads_picture'] = '';
+    }
+
+    $img_size = false;
+    if(!empty($files['picture']['tmp_name']))
+      $img_size = getimagesize($files['picture']['tmp_name']);
+
+    if(!empty($files['picture']['tmp_name']) AND empty($img_size) OR $img_size[2] > 3) {
+      $error .= $cs_lang['ext_error'] . cs_html_br(1);
+    }
+    elseif(!empty($files['picture']['tmp_name'])) {
+
+      switch($img_size[2]) {
+      case 1:
+        $ext = 'gif'; break;
+      case 2:
+        $ext = 'jpg'; break;
+      case 3:
+        $ext = 'png'; break;
+      }
+      $filename = 'picture-' . $squads_id . '.' . $ext;
+      
+      if($img_size[0]>$op_squads['max_width']) {
+        $error .= $cs_lang['too_wide'] . cs_html_br(1);
+      }
+      if($img_size[1]>$op_squads['max_height']) { 
+        $error .= $cs_lang['too_high'] . cs_html_br(1);
+      }
+      if($files['picture']['size']>$op_squads['max_size']) { 
+        $error .= $cs_lang['too_big'] . cs_html_br(1);
+      }
+      if(empty($error) AND cs_upload('squads', $filename, $files['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files['picture']['tmp_name'], 'uploads/squads/' . $filename, $op_squads['max_width'], $op_squads['max_height'])) {
+        $error = 0;
+        $error = '';
+        if($cs_squads['squads_picture'] != $filename AND !empty($cs_squads['squads_picture'])) {
+          cs_unlink('squads', $cs_squads['squads_picture']);
+        }
+        $cs_squads['squads_picture'] = $filename;
+      }
+      else {
+          $error .= $cs_lang['up_error'];
+      }
+    }
+  }
+}
+else {
   $cs_squads = $cs_squads_select;
 }
 
@@ -130,7 +136,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
 
   $data['lang']['clan_label'] = $cs_lang[$op_clans['label']];
-  $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',"clans_pwd != ''",'clans_name',0,0);
+  $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',"clans_pwd != '' OR clans_id = " . (int) $cs_squads['clans_id'],'clans_name',0,0);
   $data['squads']['clans_sel'] = cs_dropdown('clans_id','clans_name',$cs_clans,$cs_squads['clans_id']);
 
   $data['squads']['clans_pwd'] = $clans_pwd;
@@ -187,5 +193,4 @@ else {
   cs_sql_update(__FILE__,'squads',$squads_cells,$squads_save,$squads_id);
   
   cs_redirect($cs_lang['changes_done'],'squads','center');
-} 
-  
+}
