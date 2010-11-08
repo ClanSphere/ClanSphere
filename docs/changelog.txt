@@ -13,7 +13,8 @@ ___________________________________________________________
 -> Fixed ajax with underscores in filenames, due to this hyphens are no longer allowed in them (schiri)
 -> Fixed error page on too old php versions by using a fallback file (hajo)
 -> Fixed linkus image url to work again (hajo)
--> Updated CKEditor to 3.4.1 (hajo)
+-> Updated CKEditor to 3.4.2 (hajo)
+-> Updated jQuery to 1.4.3 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
