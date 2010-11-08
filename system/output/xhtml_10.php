@@ -16,7 +16,7 @@ function cs_html_msnmail($mail, $link = '')
   return cs_ajax_mail($mail, $link, 'http://members.msn.com/');
 }
 
-function cs_html_br($run)
+function cs_html_br($run = 1)
 {
   $var = '';
   while (0 < $run)
