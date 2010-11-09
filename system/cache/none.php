@@ -36,31 +36,15 @@ function cs_cache_info() {
 
 function cs_cache_load($name) {
 
-  if(!file_exists('uploads/cache/' . $name . '.tmp'))
-    return false;
-  else
-    return unserialize(file_get_contents('uploads/cache/' . $name . '.tmp'));
+  return false;
 }
 
 function cs_cache_save($name, $content) {
 
-  cs_cache_delete($name);
-
   global $cs_main;
   if(is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
-  elseif(is_writeable('uploads/cache/')) {
-    $store = serialize($content);
-    $cache_file = 'uploads/cache/' . $name . '.tmp';
-    $save_cache = fopen($cache_file, 'a');
-    # set stream encoding if possible to avoid converting issues
-    if(function_exists('stream_encoding'))
-      stream_encoding($save_cache, $cs_main['charset']);
-    fwrite($save_cache, $store);
-    fclose($save_cache);
-    chmod($cache_file, 0755);
-  }
-  elseif($cs_main['mod'] != 'install')
+  elseif(!is_writeable('uploads/cache/') AND $cs_main['mod'] != 'install')
     cs_error('uploads/cache/' . $name . '.tmp', 'cs_cache_save - Unable to write cache file');
 
   return $content;

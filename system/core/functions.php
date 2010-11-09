@@ -234,7 +234,7 @@ function cs_init($predefined) {
   else
     file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="install.php">Installation</a>'));
 
-  if($cs_main['cache_mode'] != 'file' AND !extension_loaded($cs_main['cache_mode']))
+  if(!in_array($cs_main['cache_mode'], array('file', 'none')) AND !extension_loaded($cs_main['cache_mode']))
     $cs_main['cache_mode'] = 'file';
   require_once 'system/cache/' . $cs_main['cache_mode'] . '.php';
 
