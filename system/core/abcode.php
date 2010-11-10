@@ -94,7 +94,7 @@ function cs_abcode_php($matches) {
   if(empty($mode)) {
     $php_code = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
     $php_code = str_replace(array("\r\n","\n"),"\r",$php_code);
-    $lines = cs_substr_count($php_code,"\r") + 2;
+    $lines = substr_count($php_code,"\r") + 2;
     
     if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
@@ -397,7 +397,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[hr\]=i","cs_abcode_hr",$replace);
     preg_match_all('=\[quote\=?(.*?)\]=si', $replace, $quote_sub);
     $quote_start_count  = count($quote_sub[0]);
-    $quote_end_count    = cs_substr_count($replace, '[/quote]');
+    $quote_end_count    = substr_count($replace, '[/quote]');
     if ($quote_start_count !== 0 && $quote_start_count == $quote_end_count) {
       $replace = preg_replace_callback('=\[quote\=?(.*?)\]=si',"cs_abcode_quote",$replace);
       $replace = preg_replace_callback('=\[/quote\]=si',"cs_abcode_quote",$replace);

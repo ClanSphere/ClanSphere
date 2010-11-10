@@ -110,7 +110,7 @@ if (!empty($_POST['start']) || !empty($_POST['reduce'])) {
   if (($cupsel['cups_teams'] / 2) >= $squads_count) {
     
     $bin = decbin($squads_count);
-    if (cs_substr_count($bin,'1') != 1) {
+    if (substr_count($bin,'1') != 1) {
       // Get the smallest potency of 2 bigger then the team count
       $new = '1';
       for ($x = 0; $x < strlen($bin); $x++) {
