@@ -24,14 +24,14 @@ if($cs_main['php_self']['dirname']{0} == '\\')
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
   // workaround since filename is available as of php 5.2.0
 if(!isset($cs_main['php_self']['filename']))
-  $cs_main['php_self']['filename'] = cs_substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
+  $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
 $domain = htmlspecialchars($_SERVER['HTTP_HOST'], ENT_QUOTES);
 $cs_main['php_self']['website'] = 'http://' . $domain;
 
 # handle mod_rewrite params and split them for default usage
 if(empty($_GET['mod']) AND empty($_GET['action'])) {
   if(empty($_GET['params']))
-    $cs_main['php_self']['params'] = cs_substr($_SERVER['REQUEST_URI'], strlen($cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']));
+    $cs_main['php_self']['params'] = substr($_SERVER['REQUEST_URI'], strlen($cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']));
   else
     $cs_main['php_self']['params'] = $_GET['params'];
 }
