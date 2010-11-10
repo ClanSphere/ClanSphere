@@ -93,7 +93,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
       $cond = empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2']);
       $string = $cond ? '(' . $string . ')' : $string;
   }
-  $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
+  $string = (extension_loaded('mbstring')) ? mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']) : $string;
   if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);
   
   $run++;
@@ -116,7 +116,7 @@ for ($i = 0; $i < $count_cupmatches; $i++) {
     $cond = empty($cupmatches[$round-1][$run]['cupmatches_accepted1']) || empty($cupmatches[$round-1][$run]['cupmatches_accepted2']);
     $string = $cond ? '(' . $string . ')' : $string;
   }
-  $string = mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']);
+  $string = (extension_loaded('mbstring')) ? mb_convert_encoding($string, "ISO-8859-1", $cs_main['charset']) : $string;
   if (!empty($string)) imagestring($img, $font_match, $currwidth + 10, $currheight + $entity_font_height, $string, $col_team_font);
   
   if (empty($round))
