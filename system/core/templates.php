@@ -186,30 +186,39 @@ function cs_templatefile($matches)
   }
 
   # only one get parameter is allowed
-  $param = '';
+  $param = NULL;
+  $value = NULL;
   if(!empty($matches[2])) {
     if(empty($matches[3]) AND $pos = strpos($matches[2], '=')) {
       $matches[3] = substr($matches[2], $pos + 1);
       $matches[2] = substr($matches[2], 0, $pos);
     }
     $param = $matches[2];
-    $_GET[$param] = $matches[3];
+    $value = $matches[3];
   }
 
-  return cs_filecontent($file, $param);
+  return cs_filecontent($file, $param, $value);
 }
 
-function cs_filecontent($file, $param = '')
+function cs_filecontent($file, $param = NULL, $value = NULL)
 {
   global $account, $cs_main;
+
+  if($param != NULL) {
+    $backup = isset($_GET[$param]) ? $_GET[$param] : NULL;
+    $_GET[$param] = $value;
+  }
 
   ob_start();
   include $file;
   $content = ob_get_contents();
   ob_end_clean();
 
-  if(!empty($param))
-    unset($_GET[$param]);
+  if($param != NULL)
+    if(isset($backup))
+      $_GET[$param] = $backup;
+    else
+      unset($_GET[$param]);
 
   return $content;
 }
@@ -245,7 +254,6 @@ function cs_getmsg()
 
 function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $icon = 0)
 {
-
   if($mod != "install" && $message) {
       cs_redirectmsg($message, $id, $icon);
   }
