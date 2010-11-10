@@ -461,6 +461,16 @@ function cs_sort($mod,$action,$start,$where,$up,$active = 0,$more = 0) {
   return $result;
 }
 
+function cs_substr($string, $start, $length = 0) {
+
+  # substr has no unicode support, damn it
+  global $cs_main;
+  if($cs_main['charset'] == 'UTF-8')
+    return utf8_encode(substr(utf8_decode($string), $start, $length));
+  else
+    return substr($string, $start, $length);
+}
+
 function cs_timediff($unix = 0, $reverse = 0) {
 
     global $account;
