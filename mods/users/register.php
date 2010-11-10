@@ -23,7 +23,7 @@ if(empty($op_users['register'])) {
     $register['lang'] = empty($_POST['lang']) ? '' : $_POST['lang'];
     $register['nick'] = empty($_POST['nick']) ? '' : $_POST['nick'];
     $register['password'] = empty($_POST['password']) ? '' : $_POST['password'];
-    $register['email'] = empty($_POST['email']) ? '' : $_POST['password'];
+    $register['email'] = empty($_POST['email']) ? '' : $_POST['email'];
     $register['newsletter'] = empty($_POST['newsletter']) ? 0 : 1;
 
     $userlang = $register['lang'];
