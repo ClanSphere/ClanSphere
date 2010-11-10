@@ -463,10 +463,12 @@ function cs_sort($mod,$action,$start,$where,$up,$active = 0,$more = 0) {
 
 function cs_substr($string, $start, $length = 0) {
 
-  # substr has no unicode support, damn it
+  # substr is based on byte offsets, but a real char offset is needed
   global $cs_main;
-  if($cs_main['charset'] == 'UTF-8')
-    return utf8_encode(substr(utf8_decode($string), $start, $length));
+  if(function_exists('iconv_substr'))
+    return iconv_substr($string, $start, $length, $cs_main['charset']);
+  elseif(function_exists('mb_substr'))
+    return mb_substr($string, $start, $length, $cs_main['charset']);
   else
     return substr($string, $start, $length);
 }
