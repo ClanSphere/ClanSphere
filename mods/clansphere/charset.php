@@ -13,7 +13,7 @@ $data['charset']['result_sql_setting'] = '';
 
 # Check for correct setup.php charset information
 $charset = strtolower($cs_main['charset']);
-if($charset != 'utf-8' AND substr($charset, 0, 9) != 'iso-8859-') {
+if($charset != 'utf-8' AND cs_substr($charset, 0, 9) != 'iso-8859-') {
   $data['charset']['result_setup_file'] = $cs_lang['charset_unexpected'] . ' : ' . $cs_main['charset'];
   $data['charset']['result_setup_file'] .= cs_html_br(2) . $cs_lang['charset_unexpected_hint'];
 }
@@ -22,7 +22,7 @@ if($charset != 'utf-8' AND substr($charset, 0, 9) != 'iso-8859-') {
 $tpl_charset = array();
 $tpl_files = cs_paths('templates/' . $cs_main['def_tpl']);
 foreach($tpl_files AS $file => $int)
-  if(strtolower(substr($file,-4,4)) == '.htm') {
+  if(strtolower(cs_substr($file,-4,4)) == '.htm') {
     $filename = 'templates/' . $cs_main['def_tpl'] . '/' . $file;
     $fp = fopen($filename, 'r');
     $tpl_content = fread($fp, filesize($filename));
@@ -56,7 +56,7 @@ if(file_exists($file)) {
 
   preg_match_all("=(#\s*|)adddefaultcharset\s+(.*?)\s+=si", $web_content, $web_check, PREG_SET_ORDER);
   foreach($web_check AS $found) {
-    if(substr($found[1],0,1) != '#') {
+    if(cs_substr($found[1],0,1) != '#') {
       if(!empty($found[2])) $web_charset = $found[2];
       $foundlow = strtolower($found[2]);
       if($foundlow != $charset) {
@@ -79,7 +79,7 @@ $sql_charset = strtolower($sql_info['encoding']);
 $sql_valid = 0;
 if($charset == 'utf-8' AND ($sql_charset == 'utf-8' OR $sql_charset == 'utf8' OR $sql_charset == 'unicode'))
   $sql_valid = 1;
-elseif(substr($charset, 0, 9) == 'iso-8859-' AND (substr($sql_charset, 0, 9) == 'iso-8859-' OR substr($sql_charset,0,5) == 'latin'))
+elseif(cs_substr($charset, 0, 9) == 'iso-8859-' AND (cs_substr($sql_charset, 0, 9) == 'iso-8859-' OR cs_substr($sql_charset,0,5) == 'latin'))
   $sql_valid = 1;
 elseif($sql_charset == 'default' OR $sql_charset == 'pdo encoding')
   $sql_valid = 1;

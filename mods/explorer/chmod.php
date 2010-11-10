@@ -21,7 +21,7 @@ if(empty($_POST['submit'])) {
 
   } else {
 
-    $chmod = substr(sprintf('%o', fileperms($dir)), -3);
+    $chmod = cs_substr(sprintf('%o', fileperms($dir)), -3);
 
     $data['var']['source'] = $dir;
     $data['var']['chmod'] = $chmod;
@@ -61,7 +61,7 @@ if(empty($_POST['submit'])) {
 
   @chmod($dir, $new_chmod);
 
-  $fileperms = octdec(substr(sprintf('%o', fileperms($dir)), -4));
+  $fileperms = octdec(cs_substr(sprintf('%o', fileperms($dir)), -4));
   $message = $new_chmod == $fileperms ? $cs_lang['success'] : $cs_lang['error_chmod'];
 
   cs_redirect($message, 'explorer','roots','dir=' . $red_lsd);

@@ -32,10 +32,10 @@ for ($run = 0; $run < $count_categories; $run++) {
   for ($run2 = 0; $run2 < $count_faq; $run2++) {
     $data['categories'][$run]['faq'][$run2]['faq_question'] = strlen($data['categories'][$run]['faq'][$run2]['faq_question']) < $max ?
       cs_secure($data['categories'][$run]['faq'][$run2]['faq_question'],1) :
-      substr(cs_secure($data['categories'][$run]['faq'][$run2]['faq_question']),0,$max-2) . '..';
+      cs_substr(cs_secure($data['categories'][$run]['faq'][$run2]['faq_question']),0,$max-2) . '..';
     $data['categories'][$run]['faq'][$run2]['faq_answer'] = strlen($data['categories'][$run]['faq'][$run2]['faq_answer']) < $max ?
       cs_secure($data['categories'][$run]['faq'][$run2]['faq_answer'],1,1,1,1) :
-      substr(cs_secure($data['categories'][$run]['faq'][$run2]['faq_answer'],1,1,1,1),0,$max-2) . '..';
+      cs_substr(cs_secure($data['categories'][$run]['faq'][$run2]['faq_answer'],1,1,1,1),0,$max-2) . '..';
   }
   
 }

@@ -29,14 +29,14 @@ else {
   
   foreach($values AS $key => $value) {
     if(strpos($key,'select_') === false) { continue; }
-    $ids .= substr($key,7) . '-';
+    $ids .= cs_substr($key,7) . '-';
   }
 
   if(empty($ids)) { 
   cs_redirect($cs_lang['no_selection'],'shoutbox','manage');
   }
   else { 
-    $ids = substr($ids,0,-1);
+    $ids = cs_substr($ids,0,-1);
     
     $data['content']['head'] = $cs_lang['really_remove_selected'];
     $data['content']['bottom']  = cs_link($cs_lang['confirm'],'shoutbox','multiremove','ids='.$ids.'&amp;confirm');

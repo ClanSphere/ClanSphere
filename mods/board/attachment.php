@@ -46,7 +46,7 @@ cs_sql_update(__FILE__,'boardfiles',$com_cells,$com_save,$cs_thread_file['boardf
 $file = $cs_thread_file['boardfiles_name'];
 $extension = strlen(strrchr($file,"."));
 $name = strlen($file);
-$ext = substr($file,$name - $extension + 1,$name);
+$ext = cs_substr($file,$name - $extension + 1,$name);
 
 if(!empty($id)) {
     $file_path = "../../uploads/board/files/".$cs_thread_file['boardfiles_id'].'.'.$ext;

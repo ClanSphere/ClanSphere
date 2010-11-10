@@ -500,7 +500,7 @@ function cs_getip () {
   // check for multiple ip's in case of multiple x-forwarders
   $pos = stripos($ip, ',');
   if ($pos !== false)
-    $ip = trim(substr($ip, 0, $pos));
+    $ip = trim(cs_substr($ip, 0, $pos));
   // optional extra flags: FILTER_FLAG_IPV4, FILTER_FLAG_IPV6, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE
   if (function_exists('filter_var') AND filter_var($ip, FILTER_VALIDATE_IP) === false)
     $ip = '0.0.0.0';
@@ -530,11 +530,11 @@ function php_error($errno, $errmsg, $filename, $linenum) {
     $errortype['2048'] = 'Strict Notice/Error';
   
   // Added E_RECOVERABLE_ERROR for PHP 5.2.0 Version
-  if (substr(phpversion(), 0, 3) >= '5.2')
+  if (cs_substr(phpversion(), 0, 3) >= '5.2')
     $errortype['4096'] = 'Recoverable Error';
     
   // Added E_DEPRECATED & E_USER_DEPRECATED for PHP 5.3.0 Version
-  if (substr(phpversion(), 0, 3) >= '5.3') {
+  if (cs_substr(phpversion(), 0, 3) >= '5.3') {
     $errortype['8192'] = 'Deprecate Notice';
     $errortype['16384'] = 'User Deprecated Warning';
   }

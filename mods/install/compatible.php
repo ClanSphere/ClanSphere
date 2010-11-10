@@ -39,14 +39,14 @@ if ($data['ok']['php'] != $ok[1]) { $check_required = false; }
 $data['rq']['database'] = '';
 $data['av']['database'] = '';
 foreach($sql_files AS $sql_file => $num) {
-  $extension = substr($sql_file, 0, -4);
+  $extension = cs_substr($sql_file, 0, -4);
   $data['rq']['database'] .= $extension . ', ';
   if(extension_loaded($extension)) {
     $data['av']['database'] .= $extension . ', ';
   }
 }
-$data['rq']['database'] = substr($data['rq']['database'],0,-2);
-$data['av']['database'] = substr($data['av']['database'],0,-2);
+$data['rq']['database'] = cs_substr($data['rq']['database'],0,-2);
+$data['av']['database'] = cs_substr($data['av']['database'],0,-2);
 $data['ok']['database'] = $ok[!empty($data['av']['database'])];
 if ($data['ok']['database'] != $ok[1]) { $check_required = false; }
 

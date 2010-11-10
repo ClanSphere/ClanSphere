@@ -27,7 +27,7 @@ for($run = 0; $run < $count_att; $run++) {
   $file = $cs_att[$run]['boardfiles_name'];
   $extension = strlen(strrchr($file,"."));
   $name = strlen($file);
-  $ext = substr($file,$name - $extension + 1,$name); 
+  $ext = cs_substr($file,$name - $extension + 1,$name); 
   $ext_lower = strtolower($ext);  
   
   $data['attachments'][$run]['img'] = cs_filetype($ext_lower);
@@ -45,7 +45,7 @@ for($run = 0; $run < $count_att; $run++) {
     $data['attachments'][$run]['size'] = cs_filesize(0);
   }      
 
-  $headline = strlen($cs_att[$run]['threads_headline']) <= 15 ? $cs_att[$run]['threads_headline'] : substr($cs_att[$run]['threads_headline'],0,15) . '...';
+  $headline = strlen($cs_att[$run]['threads_headline']) <= 15 ? $cs_att[$run]['threads_headline'] : cs_substr($cs_att[$run]['threads_headline'],0,15) . '...';
   $data['attachments'][$run]['topics'] = cs_link($headline,'board','thread','where=' . $cs_att[$run]['threads_id'],0,$cs_att[$run]['threads_headline']);
      
   $data['attachments'][$run]['downloaded'] = $cs_att[$run]['boardfiles_downloaded'];

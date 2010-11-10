@@ -34,7 +34,7 @@ if (!empty($_GET['warid'])) {
   
   $wars_id = (int) $_GET['warid'];
   
-  $lang = substr($account['users_lang'],0,2);
+  $lang = cs_substr($account['users_lang'],0,2);
   if (!file_exists('uploads/wars/news_' . $lang . '.txt')) $lang = 'de';
   
   $text = file_get_contents('uploads/wars/news_' . $lang . '.txt');

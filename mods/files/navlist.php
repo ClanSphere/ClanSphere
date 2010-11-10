@@ -19,7 +19,7 @@ if (!empty($data['files'])) {
   $files_loop = count($data['files']);
   for($run=0; $run<$files_loop; $run++) {
     $data['files'][$run]['date'] = cs_date('unix',$data['files'][$run]['files_time']);
-    $data['files'][$run]['files_name'] = strlen($data['files'][$run]['files_name']) > $cs_option['max_headline'] ? substr($data['files'][$run]['files_name'], 0, $cs_option['max_headline']).'..' : $data['files'][$run]['files_name'];
+    $data['files'][$run]['files_name'] = strlen($data['files'][$run]['files_name']) > $cs_option['max_headline'] ? cs_substr($data['files'][$run]['files_name'], 0, $cs_option['max_headline']).'..' : $data['files'][$run]['files_name'];
   }
 
   echo cs_subtemplate(__FILE__,$data,'files','navlist');

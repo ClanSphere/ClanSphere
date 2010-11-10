@@ -18,7 +18,7 @@ if(isset($_POST['submit'])) {
   
   cs_optionsave('wars', $save);
   
-  $lang = substr($account['users_lang'],0,2);
+  $lang = cs_substr($account['users_lang'],0,2);
   if (!file_exists('uploads/wars/news_' . $lang . '.txt')) $lang = 'de';
   
   $text = $_POST['news_text'];
@@ -49,7 +49,7 @@ if(isset($_POST['submit'])) {
   $pholders['{MATCH_URL}'] = $cs_lang['op_matchurl'];
   $pholders['{CAT_NAME}'] = $cs_lang['op_catname'];
   
-  $lang = substr($account['users_lang'],0,2);
+  $lang = cs_substr($account['users_lang'],0,2);
   if (!file_exists('uploads/wars/news_' . $lang . '.txt')) $lang = 'de';
   
   $data['news']['text'] = file_get_contents('uploads/wars/news_' . $lang . '.txt');

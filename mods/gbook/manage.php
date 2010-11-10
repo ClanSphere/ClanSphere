@@ -83,9 +83,9 @@ for($run=0; $run<$gbook_loop; $run++) {
   if($account['access_gbook'] >= 4) {
     $ip = $cs_gbook[$run]['gbook_ip'];
     if($account['access_gbook'] == 4) {
-      $last = strlen(substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
+      $last = strlen(cs_substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
       $ip = strlen($gbook_ip);
-      $ip = substr($gbook_ip,0,$ip-$last);
+      $ip = cs_substr($gbook_ip,0,$ip-$last);
       $ip = $ip . '*';
     }
     $ip_show = empty($ip) ? '-' : $ip;

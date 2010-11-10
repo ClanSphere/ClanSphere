@@ -4,17 +4,17 @@
 
 $cs_lang = cs_translate('templates');
 
-if (!empty($_SESSION['tpl_preview'])) $ending = substr($_SESSION['tpl_preview'],-3);
+if (!empty($_SESSION['tpl_preview'])) $ending = cs_substr($_SESSION['tpl_preview'],-3);
 if (!empty($ending) && $ending != '{2}') {
   $_SESSION['tpl_preview'] .= '{2}';
   die();
 } elseif (!empty($ending)) {
-  $cs_main['template'] = substr($_SESSION['tpl_preview'],0,-3);
+  $cs_main['template'] = cs_substr($_SESSION['tpl_preview'],0,-3);
   $ajax_preview = 1;
   unset($_SESSION['tpl_preview']);
 } elseif (!empty($_GET['template']) && !empty($account['users_ajax'])) {
   $_SESSION['tpl_preview'] = $_GET['template'];
-  $shorten = "window.location.href = window.location.href.substr(0,window.location.href.lastIndexOf('template')); ";
+  $shorten = "window.location.href = window.location.href.cs_substr(0,window.location.href.lastIndexOf('template')); ";
   die(ajax_js($shorten . "window.location.reload();"));
 }
 
@@ -43,7 +43,7 @@ if(!empty($activate) AND !empty($allow)) {
   
   if(!empty($account['users_ajax']) && $cs_main['php_self']['filename'] == 'content') {
     cs_redirectmsg($cs_lang['success']);
-    die(ajax_js('window.location.href=window.location.href.substr(0,window.location.href.lastIndexOf(\'activate\'));window.location.reload()'));
+    die(ajax_js('window.location.href=window.location.href.cs_substr(0,window.location.href.lastIndexOf(\'activate\'));window.location.reload()'));
   } else {
     cs_redirect($cs_lang['success'],'templates','center');
   }

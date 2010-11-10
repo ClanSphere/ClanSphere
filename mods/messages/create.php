@@ -52,19 +52,19 @@ if (!empty($_POST['submit']) || !empty($_POST['preview'])) {
     $where = '';
     
     for($run=0; $run<$loop_temp; $run++) {
-      $a = substr($temp[$run], 0, 6); //check is this a squad
-      $b = substr($temp[$run], 0, 5); //check is this a clan
+      $a = cs_substr($temp[$run], 0, 6); //check is this a squad
+      $b = cs_substr($temp[$run], 0, 5); //check is this a clan
       if($a == 'Squad:') {
         if(!empty($where)) {
           $where = $where . ' OR ';
         }
-        $z = substr($temp[$run], 6);
+        $z = cs_substr($temp[$run], 6);
         $where .= "squ.squads_name = '" . cs_sql_escape($z) . "'";
       } elseif($b == 'Clan:') {
         if(!empty($where)) {
           $where = $where . ' OR ';
         }
-        $z = substr($temp[$run], 5);
+        $z = cs_substr($temp[$run], 5);
         $where .= "cla.clans_name = '" . cs_sql_escape($z) . "'";
       } else {
         if(!empty($where)) {

@@ -61,7 +61,7 @@ if(!empty($temp_file) AND isset($temp_file[$log])) {
   $data['var']['log'] = $log;
 
   $data['log'] = isset($data['logs'][$id]) ? $data['logs'][$id] : array();
-  $data['log']['date'] = substr($temp_file[$log],0,strrpos($temp_file[$log],'.'));
+  $data['log']['date'] = cs_substr($temp_file[$log],0,strrpos($temp_file[$log],'.'));
 
   $data['if']['error'] = $folder == 'errors' ? true : false;
   $data['if']['log'] = $folder != 'errors' ? true : false;

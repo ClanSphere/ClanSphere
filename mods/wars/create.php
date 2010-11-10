@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
   $cs_wars['wars_players1'] = $_POST['wars_players1'] == '' ? 0 : $_POST['wars_players1'];
   $cs_wars['wars_players2'] = $_POST['wars_players2'] == '' ? 0 : $_POST['wars_players2'];
   $cs_wars['wars_opponents'] = $_POST['wars_opponents'];
-  $cs_wars['wars_url'] = strpos($_POST['wars_url'],'http://') === false ? $_POST['wars_url'] : substr($_POST['wars_url'],7);
+  $cs_wars['wars_url'] = strpos($_POST['wars_url'],'http://') === false ? $_POST['wars_url'] : cs_substr($_POST['wars_url'],7);
   $cs_wars['wars_report'] = $_POST['wars_report'];
   $cs_wars['wars_report2'] = $_POST['wars_report2'];
   $cs_wars['wars_date'] = cs_datepost('date','unix');

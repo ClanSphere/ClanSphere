@@ -80,11 +80,11 @@ function cs_mail_smtp ($mail, $options) {
 
       fwrite($smtp_con, $command . $nl);
       $read = fread($smtp_con, 2048);
-      $code = (int) substr($read, 0, 3);
+      $code = (int) cs_substr($read, 0, 3);
       $cs_logs['sql'][__FILE__] .=  $com_info . ': ' . $read;
 
       if($code >= 400) {
-        cs_error($com_info, 'cs_mail_smtp - Bad status code: ' . substr($read, 0, -2));
+        cs_error($com_info, 'cs_mail_smtp - Bad status code: ' . cs_substr($read, 0, -2));
         return false;
       }
     }

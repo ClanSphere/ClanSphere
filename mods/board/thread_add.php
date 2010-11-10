@@ -146,7 +146,7 @@ for($run=0; $run < $run_loop_files; $run++) {
   $num = $run+1;
   if(!empty($files_gl["file_$num"]['name'])) {
     $board_files_name = $cs_files[$run]['boardfiles_name'] = $files_gl["file_$num"]['name'];
-    $ext = substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
+    $ext = cs_substr($board_files_name,strlen($board_files_name)+1-strlen(strrchr($board_files_name,'.')));
     if($files_gl["file_$num"]['size'] > $max_size) {
       $error .= $cs_lang['error_filesize'] . cs_html_br(1);
       $file_error[$num] = '1';
@@ -311,7 +311,7 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
         $file = $file_name[$num];
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
-        $ext = substr($file,$name - $extension + 1,$name);
+        $ext = cs_substr($file,$name - $extension + 1,$name);
         $ext_lower = strtolower($ext);
 
         $data['files'][$run]['ext'] = cs_filetype($ext_lower);
@@ -386,7 +386,7 @@ else {
     $files_save = array($board['users_id'],$thread_now['threads_id'],$board['threads_time'],$file_name[$num]);
    cs_sql_insert(__FILE__,'boardfiles',$files_cells,$files_save);
     $files_select_new_id = cs_sql_insertid(__FILE__);
-    $ext = substr($file_name[$num],strlen($file_name[$num])+1-strlen(strrchr($file_name[$num],'.')));
+    $ext = cs_substr($file_name[$num],strlen($file_name[$num])+1-strlen(strrchr($file_name[$num],'.')));
     $path = $cs_main['def_path'] . '/uploads/board/files/';
     $target = $path . $file_upload_name[$num];
     $target2 = $path . $files_select_new_id . '.' . $ext;

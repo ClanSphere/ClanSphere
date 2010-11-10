@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     $error .= cs_html_br(1) . $cs_lang['no_game'];
   if (empty($cs_cups['cups_teams']))
     $error .= cs_html_br(1) . $cs_lang['no_maxteams'];
-  if (substr_count(decbin($cs_cups['cups_teams']),'1') != 1)
+  if (cs_substr_count(decbin($cs_cups['cups_teams']),'1') != 1)
     $error .= cs_html_br(1) . $cs_lang['wrong_maxteams'];
 }
 

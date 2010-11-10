@@ -84,8 +84,8 @@ $cells .= ', ca.cash_money AS cash_money, ca.cash_id AS cash_id';
 $cash = cs_sql_select(__FILE__,$tables,$cells,"cash_inout = 'in'" . $and_user2,$order,0,0);
 $cash_count = count($cash);
 for($run=0; $run<$cash_count; $run++) {
-$cash_year = substr($cash[$run]['cash_time'], 0, 4);
-$cash_month = (int) substr($cash[$run]['cash_time'], 5, 2);
+$cash_year = cs_substr($cash[$run]['cash_time'], 0, 4);
+$cash_month = (int) cs_substr($cash[$run]['cash_time'], 5, 2);
   if($cash_year == $year AND ($cash_month == $mon)) {
     $zahlungen++;
   }
@@ -113,7 +113,7 @@ for($run=0; $run<$cash_loop; $run++) {
   
   $data['cash'][$run]['date'] = cs_date('date',$data['cash'][$run]['cash_time']);
   $text = $data['cash'][$run]['cash_text'];
-  $text = substr($text, 0, 25);
+  $text = cs_substr($text, 0, 25);
   $data['cash'][$run]['text'] = cs_secure($text);
   $data['cash'][$run]['money'] = cs_secure($data['cash'][$run]['cash_money']);
   

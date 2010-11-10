@@ -18,7 +18,7 @@ $data['files'] = cs_sql_select(__FILE__,$join,$select,$where,$oder,0,$cs_option[
 if (!empty($data['files'])) {
   for($run=0; $run<count($data['files']); $run++) {
     $data['files'][$run]['date'] = cs_date('unix',$data['files'][$run]['files_time']);
-    $data['files'][$run]['files_name'] = strlen($data['files'][$run]['files_name']) > $cs_option['max_headline_navtop'] ? substr($data['files'][$run]['files_name'], 0, $cs_option['max_headline_navtop']).'..' : $data['files'][$run]['files_name'];
+    $data['files'][$run]['files_name'] = strlen($data['files'][$run]['files_name']) > $cs_option['max_headline_navtop'] ? cs_substr($data['files'][$run]['files_name'], 0, $cs_option['max_headline_navtop']).'..' : $data['files'][$run]['files_name'];
     $data['files'][$run]['count'] = $run+1;
   }
   echo cs_subtemplate(__FILE__,$data,'files','navtop');

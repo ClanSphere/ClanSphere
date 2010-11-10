@@ -29,7 +29,7 @@ else {
   $run = 0;
   foreach ($cs_articles AS $articles) {
     $data['articles'][$run]['articles_time'] = cs_date('unix',$articles['articles_time'],1,1,0);
-    $short = strlen($articles['articles_headline']) <= $figures ? $articles['articles_headline'] : substr($articles['articles_headline'],0,$figures) . '...';
+    $short = strlen($articles['articles_headline']) <= $figures ? $articles['articles_headline'] : cs_substr($articles['articles_headline'],0,$figures) . '...';
     $data['articles'][$run]['articles_url'] = cs_url('articles','view','id=' . $articles['articles_id']);
     $data['articles'][$run]['articles_short'] = cs_secure($short);
     $data['articles'][$run]['articles_headline'] = cs_secure($articles['articles_headline']);

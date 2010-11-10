@@ -64,7 +64,7 @@ $fp = file($file);
 foreach ($fp AS $line) {
   $count_line++;
   
-  if(substr($line,0,9) != '$cs_lang[' || strpos($line,'.=') !== false || substr($line,-3,1) != ';' || strpos($line,'"') !== false) {
+  if(cs_substr($line,0,9) != '$cs_lang[' || strpos($line,'.=') !== false || cs_substr($line,-3,1) != ';' || strpos($line,'"') !== false) {
     $file_new .= $line;
     continue;
   }
@@ -86,9 +86,9 @@ foreach ($fp AS $line) {
                 '<br />&nbsp;</font><font color="#0000BB">?&gt;</font>');
     $string = str_replace($search,array('','</span>','</font>'),$string);
     $data['errors'][$errors_count]['line'] = $count_line;
-    $data['errors'][$errors_count]['file'] = substr($result,0,4);
+    $data['errors'][$errors_count]['file'] = cs_substr($result,0,4);
     $data['errors'][$errors_count]['text'] = $string;
-    $data['errors'][$errors_count]['old_value'] = substr($result,4);
+    $data['errors'][$errors_count]['old_value'] = cs_substr($result,4);
     $data['errors'][$errors_count]['type'] = empty($data['errors'][$errors_count]['old_value']) ? $cs_lang2['repetition'] : $cs_lang2['overwrite'];
     
     $file_new .= empty($data['errors'][$errors_count]['old_value']) ? '' : $line;
@@ -120,7 +120,7 @@ if(!empty($fix)) {
   
     $count_line++;
     
-    if(substr($line,0,9) != '$cs_lang[' || strpos($line,'.=') !== false || substr($line,-3,1) != ';' || strpos($line,'"') !== false) {
+    if(cs_substr($line,0,9) != '$cs_lang[' || strpos($line,'.=') !== false || cs_substr($line,-3,1) != ';' || strpos($line,'"') !== false) {
       $file_new .= $line;
       continue;
     }
@@ -142,9 +142,9 @@ if(!empty($fix)) {
                   '<br />&nbsp;</font><font color="#0000BB">?&gt;</font>');
       $string = str_replace($search,array('','</span>','</font>'),$string);
       $data['errors'][$errors_count]['line'] = $count_line;
-      $data['errors'][$errors_count]['file'] = substr($result,0,4);
+      $data['errors'][$errors_count]['file'] = cs_substr($result,0,4);
       $data['errors'][$errors_count]['text'] = $string;
-      $data['errors'][$errors_count]['old_value'] = substr($result,4);
+      $data['errors'][$errors_count]['old_value'] = cs_substr($result,4);
       $data['errors'][$errors_count]['type'] = empty($data['errors'][$errors_count]['old_value']) ? $cs_lang2['repetition'] : $cs_lang2['overwrite'];
       
       $file_new .= empty($data['errors'][$errors_count]['old_value']) ? '' : $line;

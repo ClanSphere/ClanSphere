@@ -49,7 +49,7 @@ function cs_sql_escape($string) {
     return str_replace("'","''",$string);
 
   $string = $cs_db['con']->quote($string);
-  return substr($string,1,-1);
+  return cs_substr($string,1,-1);
 }
 
 function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {

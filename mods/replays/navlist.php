@@ -24,8 +24,8 @@ else {
     $data['replays'][$run]['game_icon'] = cs_html_img('uploads/games/' . $replays['games_id'] . '.gif');
     $data['replays'][$run]['date'] = cs_date('date',$replays['replays_date']);
     $data['replays'][$run]['view_url'] = cs_url('replays','view','id=' . $replays['replays_id']);
-    $short_team1 = strlen($replays['replays_team1']) <= $cs_option['max_headline_team1'] ? $replays['replays_team1'] : substr($replays['replays_team1'],0,$cs_option['max_headline_team1']) . '...';
-    $short_team2 = strlen($replays['replays_team2']) <= $cs_option['max_headline_team2'] ? $replays['replays_team2'] : substr($replays['replays_team2'],0,$cs_option['max_headline_team2']) . '...';
+    $short_team1 = strlen($replays['replays_team1']) <= $cs_option['max_headline_team1'] ? $replays['replays_team1'] : cs_substr($replays['replays_team1'],0,$cs_option['max_headline_team1']) . '...';
+    $short_team2 = strlen($replays['replays_team2']) <= $cs_option['max_headline_team2'] ? $replays['replays_team2'] : cs_substr($replays['replays_team2'],0,$cs_option['max_headline_team2']) . '...';
     $data['replays'][$run]['team1_short'] = cs_secure($short_team1);
     $data['replays'][$run]['team2_short'] = cs_secure($short_team2);
     $data['replays'][$run]['team1'] = cs_secure($replays['replays_team1']);

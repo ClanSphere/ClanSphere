@@ -31,7 +31,7 @@ else {
 
   $dir = str_replace('..','',$_POST['data_folder']);
 
-  if (substr($dir,-1) != '/' && !empty($dir))
+  if (cs_substr($dir,-1) != '/' && !empty($dir))
     $dir .= '/';
 
   $filename = empty($_POST['data_name']) ? 'unnamed' : str_replace('..', '', $_POST['data_name']);
@@ -41,7 +41,7 @@ else {
   if (empty($ending) && strpos($file,'.') !== false) {
     $ending = strtolower(strrchr($file,'.'));
     $endingpos = strlen($file) - strlen($ending);
-    $file = substr($file,0,$endingpos);
+    $file = cs_substr($file,0,$endingpos);
   }
 
   $x = 1;

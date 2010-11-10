@@ -21,7 +21,7 @@ $data['stats']['toplist'] = '';
 if(!empty($user)) {
   foreach ($user AS $users_id => $users_data)
     $data['stats']['toplist'] .= empty($users_data['users_nick']) ? '- (' . $users_data['comments'] . ' ' . $cs_lang['posts'] . '), ' : cs_user($users_id, $users_data['users_nick'], $users_data['users_active'], $users_data['users_delete']) . ' (' . $users_data['comments'] . ' ' . $cs_lang['posts'] . '), ';
-  $data['stats']['toplist'] = substr($data['stats']['toplist'],0,-2);
+  $data['stats']['toplist'] = cs_substr($data['stats']['toplist'],0,-2);
 }
 
 

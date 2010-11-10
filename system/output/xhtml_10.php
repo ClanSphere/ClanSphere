@@ -142,7 +142,7 @@ function cs_html_list($string, $style = 0, $element = '[*]')
 {
   $var = str_replace($element, '</li><li>', $string);
   $first = strpos($var, '</li>');
-  $var = substr($var, 0, $first) . substr($var, $first + 5) . '</li>';
+  $var = cs_substr($var, 0, $first) . cs_substr($var, $first + 5) . '</li>';
   $var = empty($style) ? '<ul>' . $var . '</ul>' : '<ol>' . $var . '</ol>';
   return $var;
 }

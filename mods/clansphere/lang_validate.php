@@ -14,8 +14,8 @@ while(false !== ($language = readdir($goal))) {
     $run_2 = 0;
     $goal2 = opendir($language);
     while (false !== ($module = readdir($goal2))) {
-      if($module{0} == '.' || substr($module, -4) != '.php') continue;
-      $module = substr($module,0,-4);
+      if($module{0} == '.' || cs_substr($module, -4) != '.php') continue;
+      $module = cs_substr($module,0,-4);
       $data['languages'][$run_1]['modules'][$run_2]['name'] = $module;
       $run_2++;
     }

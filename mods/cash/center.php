@@ -89,7 +89,7 @@ for($run=0; $run<$cash_loop; $run++) {
 
 	$data['in'][$run]['id'] = $data['in'][$run]['cash_id'];
 	$text = $data['in'][$run]['cash_text'];
-	$text = substr($text, 0, 25);
+	$text = cs_substr($text, 0, 25);
 	$data['in'][$run]['for'] = cs_secure($text);
 
 	$data['in'][$run]['money'] = cs_secure($data['in'][$run]['cash_money']);
@@ -115,7 +115,7 @@ for($run=0; $run<$cash_loop; $run++) {
 
 	$data['out'][$run]['id'] = $data['out'][$run]['cash_id'];
 	$text = $data['out'][$run]['cash_text'];
-	$text = substr($text, 0, 25);
+	$text = cs_substr($text, 0, 25);
 	$data['out'][$run]['for'] = cs_secure($text);
 
 	$data['out'][$run]['money'] = cs_secure($data['out'][$run]['cash_money']);

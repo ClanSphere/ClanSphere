@@ -48,8 +48,8 @@ if ($categories['categories_access'] > $account['access_categories']) {
 
   $with_html = cs_abcode_inhtml($cs_articles['articles_text']);
   $text = trim(cs_abcode_inhtml($cs_articles['articles_text'], 'del'));
-  if(substr($text,0,3) == '<p>' AND substr($text,-4,4) == '</p>')
-    $text = substr($text, 3, -4);
+  if(cs_substr($text,0,3) == '<p>' AND cs_substr($text,-4,4) == '</p>')
+    $text = cs_substr($text, 3, -4);
 
   $text = explode("[pagebreak]", $text);
   $count_text = count($text);

@@ -30,10 +30,10 @@ foreach($search_terms AS $term) {
     foreach($search_fields AS $field) {
       $where .= $field . ' LIKE \'%' . cs_sql_escape($term) . '%\' OR ';
     }
-    $where = substr($where, 0, -4) . ') AND ';
+    $where = cs_substr($where, 0, -4) . ') AND ';
   }
 }
-$where = substr($where, 0, -5);
+$where = cs_substr($where, 0, -5);
 
 $data['if']['search'] = (strlen($where) > 5) ? 1 : 0;
 

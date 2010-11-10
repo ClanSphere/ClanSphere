@@ -62,8 +62,8 @@ if(!isset($cs_post['submit']) OR !empty($error)) {
     $allowed = array('.gif', '.GIF', '.jpg', '.JPG', '.png', '.PNG', 'jpeg', 'JPEG');
     if ($handle = opendir($pfad)) {
       while (false !== ($file = readdir($handle))) {
-        $substr = substr($file,-4);
-        if ($file{0} != '.' AND in_array($substr, $allowed)) {
+        $cs_substr = cs_substr($file,-4);
+        if ($file{0} != '.' AND in_array($cs_substr, $allowed)) {
           $all_smileys[] = $file;
         }
       }

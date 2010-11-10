@@ -29,7 +29,7 @@ $data['sort']['text'] = cs_sort('history','manage',$start,0,3,$sort);
 
 for($run=0; $run<$history_loop; $run++) {
 
-  $data['history'][$run]['text'] = cs_secure(substr($data['history'][$run]['history_text'], 0, 17)) . '...';
+  $data['history'][$run]['text'] = cs_secure(cs_substr($data['history'][$run]['history_text'], 0, 17)) . '...';
   $data['history'][$run]['time'] = cs_date('unix',$data['history'][$run]['history_time'],1);
 
   $data['history'][$run]['url_edit'] = cs_url('history','edit','id='.$data['history'][$run]['history_id']);

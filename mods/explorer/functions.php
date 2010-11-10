@@ -4,7 +4,7 @@
 
 function cs_remove_dir($path) {
   
-  if (substr($path, -1, 1) != '/')
+  if (cs_substr($path, -1, 1) != '/')
     $path .= '/';
 
   $normal_files = glob($path . '*');
@@ -41,7 +41,7 @@ function cs_explorer_path($path, $method, $sub = 0) {
   $path = ($path == '/') ? $path : rtrim($path, '/');
 
   if(!empty($sub))
-    $path = substr($path, 0, strrpos($path, '/'));
+    $path = cs_substr($path, 0, strrpos($path, '/'));
 
   if($method == 'escape')
     $path = str_replace('/',$slash_esc,$path);

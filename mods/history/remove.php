@@ -16,7 +16,7 @@ if(isset($cs_get['cancel'])) {
 $history = cs_sql_select(__FILE__,'history','history_text','history_id = ' . $cs_get['id']);
 if(!empty($history)) {
   $data = array();
-  $data['head']['topline'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_name'],substr($history['history_text'],0,15));
+  $data['head']['topline'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_name'],cs_substr($history['history_text'],0,15));
   $data['history']['content'] = cs_link($cs_lang['confirm'],'history','remove','id=' . $cs_get['id'] . '&amp;agree');
   $data['history']['content'] .= ' - ';
   $data['history']['content'] .= cs_link($cs_lang['cancel'],'history','remove','id=' . $cs_get['id'] . '&amp;cancel');

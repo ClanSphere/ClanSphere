@@ -17,7 +17,7 @@ if(isset($_POST['agree'])) {
     $file = $computer['boardfiles_name'];
     $extension = strlen(strrchr($file,"."));
     $name = strlen($file);
-    $ext = substr($file,$name - $extension + 1,$name); 
+    $ext = cs_substr($file,$name - $extension + 1,$name); 
 
     cs_unlink('board', $att_id . '.' . $ext, 'files');
     cs_sql_delete(__FILE__,'boardfiles',$att_id);  

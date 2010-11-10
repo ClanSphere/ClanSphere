@@ -4,11 +4,11 @@
 
 function cs_abcode_inhtml($string, $mode = 0) {
 
-  $search = (substr($string,0,6) == '[html]' AND substr($string,-7,7) == '[/html]') ? true : false;
+  $search = (cs_substr($string,0,6) == '[html]' AND cs_substr($string,-7,7) == '[/html]') ? true : false;
   if(empty($mode))
     return $search;
   elseif($mode == 'del' AND !empty($search))
-    $string = substr($string, 6, -7);
+    $string = cs_substr($string, 6, -7);
   elseif($mode == 'add' AND empty($search) AND $string != '')
     $string = '[html]' . $string . '[/html]';
   return $string;
@@ -94,7 +94,7 @@ function cs_abcode_php($matches) {
   if(empty($mode)) {
     $php_code = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
     $php_code = str_replace(array("\r\n","\n"),"\r",$php_code);
-    $lines = substr_count($php_code,"\r") + 2;
+    $lines = cs_substr_count($php_code,"\r") + 2;
     
     if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
@@ -215,15 +215,15 @@ function cs_abcode_urlauto($matches) {
     return $matches[0];
 
   $after = '';
-  if (substr($matches[0],-1) == ',') { $matches[0] = substr($matches[0],0,-1); $after = ','; }
-  $url = substr($matches[0],0,4) == 'www.' ? 'http://' . $matches[0] : $matches[0];
+  if (cs_substr($matches[0],-1) == ',') { $matches[0] = cs_substr($matches[0],0,-1); $after = ','; }
+  $url = cs_substr($matches[0],0,4) == 'www.' ? 'http://' . $matches[0] : $matches[0];
 
   return cs_html_link($url,$matches[0]) . $after;
 }
 
 function cs_abcode_url($matches) {
 
-  $java = substr($matches[1],0,10);
+  $java = cs_substr($matches[1],0,10);
   if($java != 'javascript') {
     if(empty($matches[2])) {
       $matches[2] = $matches[1];
@@ -397,7 +397,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[hr\]=i","cs_abcode_hr",$replace);
     preg_match_all('=\[quote\=?(.*?)\]=si', $replace, $quote_sub);
     $quote_start_count  = count($quote_sub[0]);
-    $quote_end_count    = substr_count($replace, '[/quote]');
+    $quote_end_count    = cs_substr_count($replace, '[/quote]');
     if ($quote_start_count !== 0 && $quote_start_count == $quote_end_count) {
       $replace = preg_replace_callback('=\[quote\=?(.*?)\]=si',"cs_abcode_quote",$replace);
       $replace = preg_replace_callback('=\[/quote\]=si',"cs_abcode_quote",$replace);

@@ -42,7 +42,7 @@ for($run=0; $run<$links_loop; $run++) {
 
   $data['links'][$run]['name'] = cs_secure($data['links'][$run]['links_name']);
   $data['links'][$run]['url'] = $data['links'][$run]['links_url'];
-  $data['links'][$run]['url_short'] = substr($data['links'][$run]['links_url'],0,30);
+  $data['links'][$run]['url_short'] = cs_substr($data['links'][$run]['links_url'],0,30);
 
   if($data['links'][$run]['links_stats'] == 'on') {
     $data['links'][$run]['color'] = 'lime';
