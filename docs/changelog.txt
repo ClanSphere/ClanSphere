@@ -7,6 +7,7 @@ ___________________________________________________________
 -> Added class "noexpand" for textareas to exclude them from the autoexpander (x-ray)
 -> Added domain based blocklist to most email forms to reduce the usage of trashmail addresses (fr33z3m4n, hajo)
 -> Added field for registration email that is not changeable later on (fr33z3m4n)
+-> Added function cs_substr to resolve problems with cutting unicode charsets (hajo)
 -> Added function cs_subtemplate_check to look for the existance and path of theme files (hajo)
 -> Added search functionality for eventguest entries (hajo)
 -> Changed behavior of cs_cache_save a bit for more simple usage (hajo)
