@@ -462,9 +462,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $replace['func:debug']  = $debug;
   $replace['func:parse']  = cs_parsetime($cs_micro);
 
-  $replace['func:memory'] = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage()) : '-';
+  $replace['func:memory'] = function_exists('memory_get_usage') ? cs_filesize(memory_get_usage(), 0) : '-';
   if (function_exists('memory_get_peak_usage'))
-    $replace['func:memory'] .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
+    $replace['func:memory'] .= ' [peak ' . cs_filesize(memory_get_peak_usage(), 0) . ']';
 
   $result = '';
   foreach($template AS $num => $content)
