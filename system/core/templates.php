@@ -70,7 +70,7 @@ function cs_templateurl($matches) {
     $more = 0;
   else
   {
-    $more = cs_substr($matches[4], 1);
+    $more = substr($matches[4], 1);
     $more = preg_replace('=:(?![^{]+})=i', '&amp;', $more);
   }
 
@@ -190,8 +190,8 @@ function cs_templatefile($matches)
   $value = NULL;
   if(!empty($matches[2])) {
     if(empty($matches[3]) AND $pos = strpos($matches[2], '=')) {
-      $matches[3] = cs_substr($matches[2], $pos + 1);
-      $matches[2] = cs_substr($matches[2], 0, $pos);
+      $matches[3] = substr($matches[2], $pos + 1);
+      $matches[2] = substr($matches[2], 0, $pos);
     }
     $param = $matches[2];
     $value = $matches[3];
@@ -329,11 +329,11 @@ function cs_tokenizer_split($content)
 
   for($i = 1; $i < $parts; $i++)
   {
-    if(cs_substr($content[$i], 0, 5) != 'func:')
+    if(substr($content[$i], 0, 5) != 'func:')
     {
-      if(cs_substr($content[$i], -7, 7) == '|noajax')
+      if(substr($content[$i], -7, 7) == '|noajax')
       {
-        $content[$i] = cs_substr($content[$i], 0, -7);
+        $content[$i] = substr($content[$i], 0, -7);
         $ajax = 1;
       }
 
@@ -413,7 +413,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   # Provide the def_title or a title with mod and page info
   $replace['func:title_website'] = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
-  $cs_act_lang = cs_substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
+  $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
   if ($cs_main['mod'] == 'static' AND $cs_main['action'] == 'view')
     $replace['func:title'] = $replace['func:title_website'];
   else

@@ -52,7 +52,7 @@ function cs_addons($modul,$action,$id,$modul_now) {
       }
     }
   }
-  $var = cs_substr($var,0,-3);
+  $var = substr($var,0,-3);
   return $var;
 }
 
@@ -353,7 +353,7 @@ function cs_mimetype ($file) {
   $mimes = array('jpg' => 'image/jpeg','jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
     'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
 
-  $ending = strtolower(cs_substr(strrchr($file, '.'),1));
+  $ending = strtolower(substr(strrchr($file, '.'),1));
   return isset($mimes[$ending]) ? $mimes[$ending] : 'text/plain';
 }
 
@@ -586,7 +586,7 @@ function cs_url_self($full = 0, $ignore_post = 0, $decode = 0) {
   if(empty($cs_main['mod_rewrite'])) {
     $request = empty($_SERVER['REQUEST_URI']) ? '' : $_SERVER['REQUEST_URI'];
     $ajax = strrpos($request, '&xhr=');
-    $url = empty($ajax) ? $request : cs_substr($request, 0, $ajax);
+    $url = empty($ajax) ? $request : substr($request, 0, $ajax);
   }
   else {
     $request = empty($cs_main['php_self']['params']) ? '' : $cs_main['php_self']['params'];
