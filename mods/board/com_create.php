@@ -94,8 +94,7 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
     $fields = 'cmt.users_id AS users_id, cmt.comments_text AS comments_text, cmt.comments_time AS comments_time, '
             . 'cmt.comments_fid AS comments_fid, thr.threads_id AS threads_id, brd.board_access AS board_access';
     $quote = cs_sql_select($file, $joins, $fields,"cmt.comments_id = '" . cs_sql_escape($def[1]) . "' AND brd.board_access <= '" . $account['access_board'] . "'");
-    $where = "cmt.users_id = '" . $quote['users_id'] . "'";
-    $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick', $where);
+    $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick', "users_id = '" . $quote['users_id'] . "'");
     $ori_text = '[quote]' .$quote['comments_text']. '[/quote]';
     $url = cs_url('users', 'view', 'id=' . $cs_users['users_id']);
     $ori_text = cs_date('unix',$quote['comments_time'],1) . ' - [url=' . $url . ']';
