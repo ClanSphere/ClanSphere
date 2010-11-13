@@ -14,7 +14,6 @@ $select .= 'messages_archiv_sender, messages_archiv_receiver, messages_subject';
 $where = "messages_id = '" . $messages_id . "'";
 $cs_messages = cs_sql_select(__FILE__,'messages',$select,$where);
 
-
 if(isset($_POST['agree'])) {
  
   $users_id = $account['users_id'];
@@ -45,10 +44,10 @@ if(isset($_POST['agree'])) {
 if(isset($_POST['cancel']))
   cs_redirect($cs_lang['del_false'], 'messages','center');
 
-else {
+elseif($cs_messages['users_id'] == $account['users_id'] OR $cs_messages['users_id_to'] == $account['users_id']) {
 
   $data['head']['body'] = sprintf($cs_lang['msg_rly_rmv'], cs_html_big(1) . $cs_messages['messages_subject'] . cs_html_big(0));
   $data['messages']['id'] = $messages_id;
 
- echo cs_subtemplate(__FILE__,$data,'messages','remove');
+  echo cs_subtemplate(__FILE__,$data,'messages','remove');
 }
