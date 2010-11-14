@@ -57,10 +57,10 @@ function cs_mail_smtp ($mail, $options) {
     $mail_top = $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'] . $nl;
     $mail_data =  $mail_top . $nl . $mail['message'] . $nl . ".";
 
-    $mail_com = array('login' => 'AUTH LOGIN',
+    $mail_com = array('helo' => 'HELO ' . $_SERVER['SERVER_ADDR'],
+                      'login' => 'AUTH LOGIN',
                       'user' => base64_encode($options['smtp_user']),
                       'pw' => base64_encode($options['smtp_pw']),
-                      'helo' => 'HELO ' . $_SERVER['SERVER_ADDR'],
                       'from' => 'MAIL FROM: ' . $mail['from'],
                       'to' => 'RCPT TO:' . $mail['to'],
                       'data' => 'DATA',
