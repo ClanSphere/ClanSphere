@@ -22,7 +22,7 @@ for($run = 0; $run < $linkus_loop; $run++) {
   $url = $path . $place;
   $code ='<a href="http://' .$data['linkus'][$run]['linkus_url']. '" target="_blank">';
   $code .='<img src="' . $url . '"></a>';
-  $data['linkus'][$run]['html_code'] = $code;
+  $data['linkus'][$run]['html_code'] = htmlspecialchars($code, ENT_QUOTES, $cs_main['charset']);
 
   $ab = '[url=http://' . $data['linkus'][$run]['linkus_url'] . ']';
   $ab .= '[img]' . $url . '[/img][/url]';
