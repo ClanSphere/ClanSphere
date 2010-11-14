@@ -24,7 +24,7 @@ $birthdays = cs_sql_select(__FILE__,'users','users_age',$like,0,0,0);
 
 if(is_array($birthdays)) {
   foreach($birthdays AS $key => $value) {
-    $new_key = (int) cs_substr(strrchr($value['users_age'],'-'),1);
+    $new_key = (int) substr(strrchr($value['users_age'],'-'),1);
     $events[$new_key] = 0;
   }
 }
