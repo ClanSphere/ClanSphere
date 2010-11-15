@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2010.1 >> 2010-11-XX
+ClanSphere 2010.1 >> 2010-11-15
 ___________________________________________________________
 
 >> Security: Fixed possible sql injection in replays mod
