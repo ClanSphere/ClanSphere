@@ -7,10 +7,10 @@ echo '<SCRIPT LANGUAGE="JavaScript"><!-- if (window.print) { window.print(); set
 
 if(!empty($_REQUEST['pic'])) {
 
-  $pic = $_REQUEST['pic'];
-  $size = $_REQUEST['size'];
+  $pic = htmlentities($_REQUEST['pic'], ENT_QUOTES);
+  $size = empty($_REQUEST['size']) ? 0 : htmlentities($_REQUEST['size'], ENT_QUOTES);
   
-  echo "<img src=\"image.php?pic=$pic&size=$size class=\"mediumimage\" border=\"0\" alt=\"\">";
+  echo "<img src=\"image.php?pic=" . $pic . "&size=" . $size . " class=\"mediumimage\" border=\"0\" alt=\"\">";
 }
 else {
 
