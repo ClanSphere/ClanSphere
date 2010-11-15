@@ -4,6 +4,11 @@ CHANGELOG
 ClanSphere 2010.1 >> 2010-11-XX
 ___________________________________________________________
 
+>> Security: Fixed possible sql injection in replays mod
+>> Security: Fixed possible xss in abcode using nested tags
+>> Security: Fixed possible xss in gallery print page urls
+>> Security: Path disclosure in mods dir is no longer possible on apache servers
+
 -> Added class "noexpand" for textareas to exclude them from the autoexpander (x-ray)
 -> Added domain based blocklist to most email forms to reduce the usage of trashmail addresses (fr33z3m4n, hajo)
 -> Added field for registration email that is not changeable later on (fr33z3m4n)
