@@ -27,7 +27,7 @@ for($run = 0; $run < $count_att; $run++) {
   $file = $cs_att[$run]['boardfiles_name'];
   $extension = strlen(strrchr($file,"."));
   $name = strlen($file);
-  $ext = cs_substr($file,$name - $extension + 1,$name); 
+  $ext = substr($file,$name - $extension + 1,$name); 
   $ext_lower = strtolower($ext);
   
   $data['attachments'][$run]['icon'] = cs_filetype($ext_lower);

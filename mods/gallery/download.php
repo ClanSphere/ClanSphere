@@ -46,7 +46,7 @@ class zipfile
     $unc_len = strlen($data);
     $crc   = crc32($data);
     $zdata   = gzcompress($data);
-    $zdata   = cs_substr(cs_substr($zdata, 0, strlen($zdata) - 4), 2);
+    $zdata   = substr(substr($zdata, 0, strlen($zdata) - 4), 2);
     $c_len   = strlen($zdata);
     $fr .= pack('V', $crc);
     $fr  .= pack('V', $c_len);

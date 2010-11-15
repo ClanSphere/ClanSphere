@@ -19,7 +19,7 @@ else {
   $_SESSION['ckeditor_lang'] = empty($com_lang['short']) ? 'en' : $com_lang['short'];
   $_SESSION['ckeditor_skin'] = empty($op_ckeditor['skin']) ? 'kama' : $op_ckeditor['skin'];
   $_SESSION['ckeditor_height'] = empty($op_ckeditor['height']) ? '300' : $op_ckeditor['height'];
-  $_SESSION['ckeditor_path'] = $cs_main['php_self']['website'] . cs_substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'));
+  $_SESSION['ckeditor_path'] = $cs_main['php_self']['website'] . substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/'));
 
   cs_scriptload('ckeditor', 'javascript', 'ckeditor.js');
   cs_scriptload('ckeditor', 'javascript', 'adapters/jquery.js');

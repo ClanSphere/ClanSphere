@@ -93,7 +93,7 @@ if(!empty($go_search)) {
         $conditions .= $searcharea == 'threads' ? "(thr.threads_headline LIKE '%" . $key . "%' OR thr.threads_text LIKE '%" . $key . "%') AND " : "com.comments_text LIKE '%" . $key . "%' AND ";
       }
     }
-    $conditions = cs_substr($conditions,0,-5) . ')';
+    $conditions = substr($conditions,0,-5) . ')';
   }
   if($key_check < 3 OR $conditions == ')' AND $searchmode != 1) {
     $data['if']['too_short'] = TRUE;

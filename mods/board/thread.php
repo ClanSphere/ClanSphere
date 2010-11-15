@@ -338,7 +338,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
           $file = $cs_thread_files[$run]['boardfiles_name'];
           $extension = strlen(strrchr($file,"."));
           $name = strlen($file);
-          $ext = cs_substr($file,$name - $extension + 1,$name);
+          $ext = substr($file,$name - $extension + 1,$name);
           $cs_thread_files[$run]['boardfiles_typ'] = $ext;
         }
          
@@ -541,7 +541,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
         $file = $cs_comments_files[$run2]['boardfiles_name'];
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
-        $ext = cs_substr($file,$name - $extension + 1,$name);
+        $ext = substr($file,$name - $extension + 1,$name);
         $cs_comments_files[$run2]['boardfiles_typ'] = $ext;
         $ext_lower = strtolower($ext);
         if(file_exists('uploads/board/files/'.$cs_comments_files[$run2]['boardfiles_id'].'.'.$ext)) {
@@ -657,7 +657,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
           $file = $cs_thread_files[$run]['boardfiles_name'];
           $extension = strlen(strrchr($file,"."));
           $name = strlen($file);
-          $ext = cs_substr($file,$name - $extension + 1,$name);
+          $ext = substr($file,$name - $extension + 1,$name);
           $cs_thread_files[$run]['boardfiles_typ'] = $ext;
         }
          

@@ -115,10 +115,10 @@ function getReducedTitle($temp, $str)
 {
   if(strlen($temp) > $str)
   {
-    $temp = cs_substr($temp,0,$str - 1);
+    $temp = substr($temp,0,$str - 1);
     $cache = strrchr($temp," ");
 
-    $temp = cs_substr($temp,0,strlen($temp) - (strlen($cache)));
+    $temp = substr($temp,0,strlen($temp) - (strlen($cache)));
     $temp .= "...";
   }
   return $temp;
@@ -218,7 +218,7 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
     $user_cond = '(';
     foreach ($array_result as $users_id => $comments)
       $user_cond .= 'users_id = "' . $users_id . '" OR ';
-    $user_cond = cs_substr($user_cond, 0, -4);
+    $user_cond = substr($user_cond, 0, -4);
     $user_cond .= ') AND users_active = 1 AND users_delete = 0';
 
     $users_active = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
@@ -233,7 +233,7 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
       
       $user_cond = '';
       foreach ($toplist as $users_id => $noneed) $user_cond .= 'users_id = "' . $users_id . '" OR '; // Select only the users needed
-      $user_cond = cs_substr($user_cond, 0, -4);
+      $user_cond = substr($user_cond, 0, -4);
 
       $user = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
       

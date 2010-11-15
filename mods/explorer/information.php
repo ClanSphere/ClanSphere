@@ -19,7 +19,7 @@ $data['var']['dir'] = $red_lsd;
 
 $data['file']['name'] = $dir;
 $data['file']['size'] = cs_filesize($info[7]);
-$data['file']['chmod'] = cs_substr(sprintf('%o', fileperms($dir)), -4);
+$data['file']['chmod'] = substr(sprintf('%o', fileperms($dir)), -4);
 $data['file']['lastchange_date'] = date('d.m.Y', $info[10]);
 $data['file']['lastchange_time'] = date('G:i', $info[10]);
 $data['file']['lastaccess_date'] = date('d.m.Y', $info[8]);

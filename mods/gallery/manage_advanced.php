@@ -63,7 +63,7 @@ if(isset($_POST['submit']))
                 fclose($file);
                 zip_entry_close($zipped);
               } else {
-                $ext = cs_substr($filename,strlen($filename)+1-strlen(strrchr($filename,'.')));
+                $ext = substr($filename,strlen($filename)+1-strlen(strrchr($filename,'.')));
                 $count = '0';
                 while($count < '1')
                 {
@@ -89,7 +89,7 @@ if(isset($_POST['submit']))
               $aa = strrchr($filename,'.');
               $bb = strlen($filename);
               $ab = strlen($aa);
-              $bb = cs_substr($filename,$bb - $ab + 1);
+              $bb = substr($filename,$bb - $ab + 1);
               if($bb == 'jpg' OR $bb == 'jpeg' OR $bb == 'gif' OR $bb == 'png' OR $bb == 'JPG' OR $bb == 'JPEG' OR $bb == 'GIF' OR $bb == 'PNG')
               {
                 if(getimagesize($target))
@@ -129,7 +129,7 @@ if(isset($_POST['submit']))
       if ($filename != "." && $filename != ".." && $filename != ".keep" && $filename != ".git" && $filename != ".svn" && $filename != "Thumbs.db" && $filename != "index.html")
       {
         $name = strlen($filename);
-        $filename = cs_substr($filename,'6',$name);
+        $filename = substr($filename,'6',$name);
         $thumbnamesArray[] = $filename;
       }
     }
@@ -311,7 +311,7 @@ if(isset($_POST['submit_1']))
           }
           $extension = strlen(strrchr($name,"."));
           $file = strlen($name);
-          $filename = cs_substr($name,0,$file-$extension);
+          $filename = substr($name,0,$file-$extension);
           $cs_gallery_pic['gallery_titel'] = $filename;
           $cs_gallery_pic['gallery_time'] = cs_time();
           $gallery_cells = array_keys($cs_gallery_pic);

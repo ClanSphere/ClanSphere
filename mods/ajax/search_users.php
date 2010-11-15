@@ -18,7 +18,7 @@ $term_array = explode(';', $term);
 $current = is_array($term_array) ? end($term_array) : $term;
 
 # Strip current search term from search_users content
-$old = cs_substr($term, 0, strlen($term) - strlen($current));
+$old = substr($term, 0, strlen($term) - strlen($current));
 
 if(!empty($current)) {
 

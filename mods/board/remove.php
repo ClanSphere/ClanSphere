@@ -51,7 +51,7 @@ if(isset($_POST['agree'])) {
         $file = $files_id[$run2]['boardfiles_name'];
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
-        $ext = cs_substr($file,$name - $extension + 1,$name); 
+        $ext = substr($file,$name - $extension + 1,$name); 
         echo 'uploads/board/files/' . $files_id[$run2]['boardfiles_id'] . '.' . $ext . cs_html_br(1);
         cs_unlink('board', $files_id[$run2]['boardfiles_id'] . '.' . $ext, 'files');
       }

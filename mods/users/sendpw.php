@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
       $errormsg .= $cs_lang['short_pwd'] . cs_html_br(1);
     }
     $key2 = cs_sql_select(__FILE__,'users','users_pwd,users_id',"users_email = '" . cs_sql_escape($sendpw['email']) . "'");
-    $key = cs_substr($key2['users_pwd'],4,16);
+    $key = substr($key2['users_pwd'],4,16);
     if($key != $sendpw['key']) {
       $error++;
       $errormsg .= $cs_lang['error_key'] . cs_html_br(1);
@@ -66,7 +66,7 @@ if(isset($_POST['submit'])) {
   elseif(empty($error)) {
     $checked = 1;
     $key2 = cs_sql_select(__FILE__,'users','users_pwd, users_nick',"users_email = '" . cs_sql_escape($sendpw['email']) . "'");
-    $key = cs_substr($key2['users_pwd'],4,16);
+    $key = substr($key2['users_pwd'],4,16);
 
     $ip = cs_getip();
     $cs_contact = cs_sql_option(__FILE__, 'contact');

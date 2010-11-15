@@ -79,13 +79,13 @@ else {
       foreach($content[0] AS $column => $var) {
         $pattern .= $column . ', ';
       }
-      $pattern = cs_substr($pattern,0,-2) . ') VALUES (';
+      $pattern = substr($pattern,0,-2) . ') VALUES (';
       foreach($content AS $dataset) {
         $values = '';
         foreach($dataset AS $var) {
           $values .= "'" . cs_sql_escape($var) . "', ";
         }
-        $sql_content .= $pattern . cs_substr($values,0,-2) . ");\n";
+        $sql_content .= $pattern . substr($values,0,-2) . ");\n";
       }
     }
   }

@@ -25,7 +25,7 @@ if(empty($_POST['submit'])) {
     $content = fread($file,filesize($cs_main['def_path'] . '/' . $dir));
     fclose($file);
 
-    $ending = strtolower(cs_substr(strrchr($dir,'.'),1));
+    $ending = strtolower(substr(strrchr($dir,'.'),1));
 
     if ($ending == 'php') {
 

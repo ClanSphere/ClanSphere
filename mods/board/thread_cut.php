@@ -69,7 +69,7 @@ if (!empty($_POST['submit']) && empty($error)) {
 
     // Move attachments of the comments
     $cells = array('threads_id');
-    $cond_files = cs_substr($cond_files, 4);
+    $cond_files = substr($cond_files, 4);
     cs_sql_update(__FILE__, 'boardfiles', $cells, $content, 0, $cond_files);
     
   }

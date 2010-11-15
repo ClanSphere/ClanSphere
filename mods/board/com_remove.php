@@ -52,7 +52,7 @@ if(isset($_POST['agree'])) {
     $file = $cs_com_files[$run]['boardfiles_name'];
     $extension = strlen(strrchr($file,"."));
     $name = strlen($file);
-    $ext = cs_substr($file,$name - $extension + 1,$name); 
+    $ext = substr($file,$name - $extension + 1,$name); 
     //$file = cs_secure($cs_boardfiles[$run]['boardfiles_name']);
     //echo 'uploads/board/files/' . $cs_com_files[$run]['boardfiles_id'] . '.' . $ext . cs_html_br(1);
     cs_unlink('board', $cs_com_files[$run]['boardfiles_id'] . '.' . $ext, 'files');

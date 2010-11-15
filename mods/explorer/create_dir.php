@@ -20,7 +20,7 @@ if(empty($_POST['submit'])) {
 }
 else {
 
-  if (cs_substr($dir,-1,1) != '/' && !empty($dir)) $dir .= '/';
+  if (substr($dir,-1,1) != '/' && !empty($dir)) $dir .= '/';
 
   $dir_created = str_replace('..','',$dir . $_POST['folder_name']);
 

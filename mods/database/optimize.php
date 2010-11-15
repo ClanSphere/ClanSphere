@@ -17,7 +17,7 @@ foreach($modules as $mod) {
     }
   }
 }
-$sql_content = cs_substr($sql_content,0,-1);
+$sql_content = substr($sql_content,0,-1);
 
 $data['action']['form'] = cs_url('database','import');
 

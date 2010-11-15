@@ -67,7 +67,7 @@ foreach($lang_mods AS $mods) {
           foreach ($diff AS $out => $res) {
             $var .= $out . ', ';
           }
-          $diff = cs_substr($var,0,-2);
+          $diff = substr($var,0,-2);
         }
       }      
     }

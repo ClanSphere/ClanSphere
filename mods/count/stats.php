@@ -116,7 +116,7 @@ if ($op_count['view'] == 'stats'){
         $data['count'][$run]['diff'] = '-';
       } else {
         $diff = round($data['count'][$run]['count'] / $data['count'][$run-1]['count'] * 100 - 100,2) . '%';
-        $data['count'][$run]['diff'] = cs_substr($diff,0,1) == '-' ? str_replace('-', '- ', $diff) : '+ ' . $diff;
+        $data['count'][$run]['diff'] = substr($diff,0,1) == '-' ? str_replace('-', '- ', $diff) : '+ ' . $diff;
       }
 
       $data['count'][$run]['barp_start'] = cs_html_img('symbols/clansphere/bar1.gif',12,2);

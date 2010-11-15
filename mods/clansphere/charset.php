@@ -22,7 +22,7 @@ if($charset != 'utf-8' AND cs_substr($charset, 0, 9) != 'iso-8859-') {
 $tpl_charset = array();
 $tpl_files = cs_paths('templates/' . $cs_main['def_tpl']);
 foreach($tpl_files AS $file => $int)
-  if(strtolower(cs_substr($file,-4,4)) == '.htm') {
+  if(strtolower(substr($file,-4,4)) == '.htm') {
     $filename = 'templates/' . $cs_main['def_tpl'] . '/' . $file;
     $fp = fopen($filename, 'r');
     $tpl_content = fread($fp, filesize($filename));
@@ -56,7 +56,7 @@ if(file_exists($file)) {
 
   preg_match_all("=(#\s*|)adddefaultcharset\s+(.*?)\s+=si", $web_content, $web_check, PREG_SET_ORDER);
   foreach($web_check AS $found) {
-    if(cs_substr($found[1],0,1) != '#') {
+    if(substr($found[1],0,1) != '#') {
       if(!empty($found[2])) $web_charset = $found[2];
       $foundlow = strtolower($found[2]);
       if($foundlow != $charset) {

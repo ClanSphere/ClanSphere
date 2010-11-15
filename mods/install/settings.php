@@ -129,7 +129,7 @@ if(!empty($setup_exists)) {
 
   foreach($sql_files AS $sql_file => $num) {
 
-    $extension = cs_substr($sql_file, 0, -4);
+    $extension = substr($sql_file, 0, -4);
     if(extension_loaded($extension)) {
         $selected = $cs_db['type'] == $extension ? 1 : 0;
         $data['data']['types'] .= cs_html_option($extension, $extension, $selected);

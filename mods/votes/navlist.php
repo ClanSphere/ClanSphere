@@ -93,7 +93,7 @@ if(isset($_POST['submit_votes']) ) {
       $voting[] = $voted_answer[$run];
       $where .= 'voted_answer = "' . $voted_answer[$run] . '" OR ';
     }
-    $where = cs_substr($where,0,-4) . ')';
+    $where = substr($where,0,-4) . ')';
     
     $error_several += cs_sql_count(__FILE__, 'voted', $where);
     

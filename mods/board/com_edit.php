@@ -88,7 +88,7 @@ for($run=0; $run < $run_loop_files; $run++) {
   if(!empty($files_gl['file_'.$num]['name'])) {
     $board_files_name = $cs_boardfiles[$run]['boardfiles_name'] = $files_gl['file_'.$num]['name'];
 
-    $ext = strtolower(cs_substr(strrchr($board_files_name,'.'),1));
+    $ext = strtolower(substr(strrchr($board_files_name,'.'),1));
 
     if($files_gl['file_'.$num]['size'] > $options['file_size']) {
       $error .= $cs_lang['error_filesize'] . cs_html_br(1);
@@ -142,7 +142,7 @@ for($run=0; $run < $run_loop_files; $run++) {
         $b++;
         $check = '1';
       } else {
-        $ext = cs_substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
+        $ext = substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
         $del_file_x = $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext;
         cs_unlink('board', $del_file_x, 'files');
         $cs_boardfiles[$run]['boardfiles_name'] = '';
@@ -260,7 +260,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
       else {
         if(empty($_POST)) {
           $file_x = $cs_boardfiles[$run]['boardfiles_name'];
-          $ext = cs_substr($file_x,strlen($file_x)+1-strlen(strrchr($file_x,'.')));
+          $ext = substr($file_x,strlen($file_x)+1-strlen(strrchr($file_x,'.')));
           $file_upload_name[$run] = $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext;
         }
         $data['files'][$run]['if']['file_exists'] = TRUE;
@@ -274,7 +274,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
         $file = $cs_boardfiles[$run]['boardfiles_name'];
         $extension = strlen(strrchr($file,"."));
         $name = strlen($file);
-        $ext = cs_substr($file,$name - $extension + 1,$name);
+        $ext = substr($file,$name - $extension + 1,$name);
         $ext_lower = strtolower($ext);
                 
         $data['files'][$run]['ext'] = cs_filetype($ext_lower);;
@@ -343,7 +343,7 @@ else {
 
   for($run=0; $run < $run_loop_files; $run++) {
     if($cs_boardfiles[$run]['boardfiles_del'] == 1) {
-        $ext = cs_substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
+        $ext = substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
         $del_file_x = $cs_boardfiles[$run]['boardfiles_id'] . '.' . $ext;
       cs_unlink('board', $del_file_x, 'files');
       $sql_id = $cs_boardfiles[$run]['boardfiles_id'];
@@ -354,7 +354,7 @@ else {
       $files_save = array($cs_boardfiles[$run]['users_id'],$cs_thread['threads_id'],$comments_id,cs_time(),$cs_boardfiles[$run]['boardfiles_name']);
       cs_sql_insert(__FILE__,'boardfiles',$files_cells,$files_save);
       $files_select_new_id = cs_sql_insertid(__FILE__);
-      $ext = cs_substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
+      $ext = substr($cs_boardfiles[$run]['boardfiles_name'],strlen($cs_boardfiles[$run]['boardfiles_name'])+1-strlen(strrchr($cs_boardfiles[$run]['boardfiles_name'],'.')));
       $path = $cs_main['def_path'] . '/uploads/board/files/';
       $target = $path . $file_upload_name[$run];
       $target2 = $path . $files_select_new_id . '.' . $ext;

@@ -15,7 +15,7 @@ function generate_code($anz = 0) {
   $a = 'abcdefghijklmnopqrstuvwxyz1029384756';
   $l = strlen($a) - 1;
   for($i = 0; $i < $anz; $i++) {
-    $pass .= cs_substr($a, mt_rand(0, $l), 1);
+    $pass .= substr($a, mt_rand(0, $l), 1);
   }
   return $pass;
 }

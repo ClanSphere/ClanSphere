@@ -93,7 +93,7 @@ if(empty($_REQUEST['where'])) {
             $voting[] = $answer;
             $where .= 'voted_answer = "' . $answer . '" OR ';
           }
-          $where = cs_substr($where,0,-4) . ')';
+          $where = substr($where,0,-4) . ')';
           
           $error_several += cs_sql_count(__FILE__, 'voted', $where);
           

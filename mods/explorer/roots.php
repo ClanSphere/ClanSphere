@@ -82,11 +82,11 @@ if(!empty($success)) {
     $file = cs_explorer_path($file_raw, 'escape');
 
     chdir($cs_main['def_path'] . '/' . $dir . '/');
-    $type = is_dir($datas[$x]) ? 'dir' : strtolower(cs_substr(strrchr($datas[$x],'.'),1));
+    $type = is_dir($datas[$x]) ? 'dir' : strtolower(substr(strrchr($datas[$x],'.'),1));
     chdir($cs_main['def_path']);
 
     $save[$y]['name'] = $datas[$x];
-    $save[$y]['chmod'] = cs_substr(sprintf('%o', fileperms($file_raw)), -4);
+    $save[$y]['chmod'] = substr(sprintf('%o', fileperms($file_raw)), -4);
     $save[$y]['access'] = cs_link($img_access,'explorer','chmod','file='.$file);
     $save[$y]['remove'] = cs_link($img_del,'explorer','remove','file='.$file,0,$cs_lang['remove']);
     $save[$y]['info'] = cs_link($img_info,'explorer','information','file='.$file);

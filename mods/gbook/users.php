@@ -112,9 +112,9 @@ for($run=0; $run<$gbook_loop; $run++)
     $gbook[$run]['icon_remove'] = cs_link($img_del,'gbook','remove','id=' . $cs_gbook[$run]['gbook_id'] . '&amp;from=users',0,$cs_lang['remove']);
     $ip = $cs_gbook[$run]['gbook_ip'];
     if($account['access_gbook'] == 4) {
-      $last = strlen(cs_substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
+      $last = strlen(substr(strrchr ($cs_gbook[$run]['gbook_ip'], '.'), 1 ));
       $ip = strlen($gbook_ip);
-      $ip = cs_substr($gbook_ip,0,$ip-$last);
+      $ip = substr($gbook_ip,0,$ip-$last);
       $ip = $ip . '*';
     }
     $ip_show = empty($ip) ? '-' : $ip;

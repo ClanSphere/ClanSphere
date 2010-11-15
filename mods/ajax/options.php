@@ -10,7 +10,7 @@ if (!empty($cs_post['submit'])) {
   $errors = '';
   
   if (!empty($files['loading']['tmp_name'])) {
-    $ext = strtolower(cs_substr(strrchr($files['loading']['name'],'.'),1));
+    $ext = strtolower(substr(strrchr($files['loading']['name'],'.'),1));
     if ($ext != 'gif') $errors .= cs_html_br(1) . '- ' . $cs_lang['ext_only_gif'];
   }
   

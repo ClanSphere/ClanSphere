@@ -36,7 +36,7 @@ function cs_pictures_delete ($var, $mod = 0) {
     $file = $pic['pictures_file'];
     $pictures_id = $pic['pictures_id'];
   } else {
-    $pictures_id = (int) cs_substr($var,8);
+    $pictures_id = (int) substr($var,8);
     $file = $var;
   }
   

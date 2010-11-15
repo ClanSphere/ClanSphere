@@ -27,7 +27,7 @@ if (empty($dir)) {
     $dirs .= $single_dirs[$x] . '/';
   }
 
-  $ending = strtolower(cs_substr(strrchr($dir,'.'),1));
+  $ending = strtolower(substr(strrchr($dir,'.'),1));
 
   switch ($ending) {
        

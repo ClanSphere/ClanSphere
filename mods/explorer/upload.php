@@ -20,7 +20,7 @@ if (empty($_POST['submit'])) {
   $post_max_size = str_replace('M',' Mb', ini_get('post_max_size'));
   $data['lang']['max_upload'] = sprintf($cs_lang['max_upload'], $post_max_size);
 
-  #$data['if']['modsdir'] = cs_substr($dir,0,5) == 'mods/' && strpos(cs_substr($dir,5),'/') == strrpos(cs_substr($dir,5),'/') && empty($_POST['accessadd']) ? true : false;
+  #$data['if']['modsdir'] = substr($dir,0,5) == 'mods/' && strpos(substr($dir,5),'/') == strrpos(substr($dir,5),'/') && empty($_POST['accessadd']) ? true : false;
   $data['if']['modsdir'] = false;
   $data['var']['dir'] = $lsd;
   $data['var']['name'] = empty($_POST['name']) ? '' : str_replace('..','',$_POST['name']);
@@ -38,11 +38,11 @@ if (empty($_POST['submit'])) {
 else {
 
   $filename = $dir;
-  $extension = strtolower(cs_substr(strrchr($files_gl['file']['name'],'.'),1));
+  $extension = strtolower(substr(strrchr($files_gl['file']['name'],'.'),1));
 
   if (empty($_POST['name'])) {
     $filename .= str_replace('..','',$files_gl['file']['name']);
-    $action = cs_substr($files_gl['file']['name'],0,strlen($files_gl['file']['name']) - strlen($extension) - 1);
+    $action = substr($files_gl['file']['name'],0,strlen($files_gl['file']['name']) - strlen($extension) - 1);
   } else {
     $filename .= str_replace('..','',$_POST['name']);
     $filename .= '.' . strtolower($extension);
