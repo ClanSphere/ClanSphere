@@ -5,7 +5,7 @@ CHANGELOG
 ClanSphere 2010.2 >> 2010-XX-XX
 ___________________________________________________________
 
-
+-> Updated jQuery to 1.4.4 (hajo)
 
 
 ClanSphere 2010.1 >> 2010-11-15
