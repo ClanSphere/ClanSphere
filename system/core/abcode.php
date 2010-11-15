@@ -171,11 +171,13 @@ function cs_abcode_list($matches) {
 
 function cs_abcode_img($matches) {
 
+  global $cs_main;
   if ($matches[0]{4} == ']') {
-    return cs_html_img($matches[1]);
-  } else {
-    $img  = cs_html_img($matches[3],$matches[2],$matches[1]);
-    return cs_html_link($matches[3],$img);
+    return cs_html_img(htmlspecialchars($matches[1], ENT_QUOTES, $cs_main['charset']));
+  }
+  else {
+    $img  = cs_html_img(htmlspecialchars($matches[3], ENT_QUOTES, $cs_main['charset']), $matches[2], $matches[1]);
+    return cs_html_link($matches[3], $img);
   }
 }
 
@@ -378,9 +380,6 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[b\](.*?)\[/b\]=si","cs_abcode_b",$replace);
     $replace = preg_replace_callback("=\[i\](.*?)\[/i\]=si","cs_abcode_i",$replace);
     $replace = preg_replace_callback("=\[s\](.*?)\[/s\]=si","cs_abcode_s",$replace);
-    $replace = preg_replace_callback("=\[img\](.*?)\[/img\]=i","cs_abcode_img",$replace);
-    $replace = preg_replace_callback("=\[url\=(.*?)\]\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]\[/url\]=si","cs_abcode_urlimg",$replace);
-    $replace = preg_replace_callback("=\[img width\=([\d]*?) height\=([\d]*?)\](.*?)\[/img\]=si", "cs_abcode_img",$replace);
     $replace = preg_replace_callback("=\[mail\](.*?)\[/mail\]=i","cs_abcode_mail",$replace);
     $replace = preg_replace_callback('=([^\s]{3,})@([^\s]*?)\.([^\s]{2,7})(?![^<]+>|[^&]*;)=si','cs_abcode_mail',$replace);
     $replace = preg_replace_callback("=\[color\=(#*[\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
@@ -388,8 +387,11 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si","cs_abcode_align",$replace);
     $replace = preg_replace_callback("=\[list\=([\w]*?)\](.*?)\[/list\]=si","cs_abcode_list",$replace);
     $replace = preg_replace_callback("=\[list\](.*?)\[/list\]=si","cs_abcode_list",$replace);
+    $replace = preg_replace_callback("=\[url\=(.*?)\]\[img width\=(.*?) height\=(.*?)\](.*?)\[/img\]\[/url\]=si","cs_abcode_urlimg",$replace);
     $replace = preg_replace_callback("=\[url\=(.*?)\](.*?)\[/url\]=si","cs_abcode_url",$replace);
     $replace = preg_replace_callback("=\[url\](.*?)\[/url\]=i","cs_abcode_url",$replace);
+    $replace = preg_replace_callback("=\[img width\=([\d]*?) height\=([\d]*?)\](.*?)\[/img\]=si", "cs_abcode_img",$replace);
+    $replace = preg_replace_callback("=\[img\](.*?)\[/img\]=i","cs_abcode_img",$replace);
     $replace = preg_replace_callback('=\[flag\=([\w]*?)\]=i','cs_abcode_flag',$replace);
     $replace = preg_replace_callback("=\[indent\=([\d]*?)\](.*?)\[/indent\]=si","cs_abcode_indent",$replace);
     $replace = preg_replace_callback("=\[threadid\=([\w]*?)\](.*?)\[/threadid\]=si","cs_abcode_threadid",$replace);
@@ -439,7 +441,7 @@ function cs_abcode_resize ($matches) {
   
   if ($matches[0]{4} == ']') {
     $img = $matches[1];
-    if ($size = getimagesize($matches[1])) {
+    if (is_readable($matches[1]) AND $size = getimagesize($matches[1])) {
       if ($size[0] > $max_width) {
         $new_width = $max_width;
         $new_height = round($size[1] / $size[0] * $max_width);
