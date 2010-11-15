@@ -1,0 +1,4 @@
+# Do not show php errors inside here
+
+php_flag display_startup_errors off
+php_flag display_errors off
