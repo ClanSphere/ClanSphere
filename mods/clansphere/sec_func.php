@@ -3,7 +3,7 @@
 // $Id: sec_func.php 2500 2009-04-02 18:39:00Z hajo $
 
 function cs_cspnews($all = 0) {
-	return;
+
   $remote_url_secnews = 'http://www.clansphere.net/uploads/clansphere/sec_news.txt';
 
   $remote_url_newsid = 'http://www.clansphere.net/index/news/view/id/';
