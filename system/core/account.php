@@ -37,15 +37,15 @@ if(version_compare(phpversion(),'5.2.0','>'))
 else
   session_set_cookie_params(0,$cs_main['cookie']['path'],$cs_main['cookie']['domain']);
 
-session_name('cs' . md5($cs_main['cookie']['domain'])); 
+session_name('cs' . md5($cs_main['cookie']['domain']));
 session_start();
 
 # xsrf protection
 if($cs_main['xsrf_protection']===TRUE && !empty($_POST)) {
-  $needed_keys = isset($_SESSION['cs_xsrf_keys']) ? $_SESSION['cs_xsrf_keys'] : array();
+  $needed_keys = isset($_COOKIE['cs_xsrf_keys']) ? $_COOKIE['cs_xsrf_keys'] : array();
   $given_key = isset($_POST['cs_xsrf_key']) ? $_POST['cs_xsrf_key'] : '';
-  if(empty($given_key) || !in_array($given_key, $needed_keys)) {
-    $_SESSION['cs_xsrf_keys'] = array();
+  if(empty($given_key) || !in_array(cs_decrypt($given_key), $needed_keys)) {
+    setcookie('cs_xsrf_keys', array());
     $referer = empty($_SERVER['HTTP_REFERER']) ? 'empty' : $_SERVER['HTTP_REFERER'];
     cs_error(__FILE__, 'XSRF Protection triggered: Array(' . implode(', ', $needed_keys) . ') does not include "' . $given_key . '", Referer: ' . $referer);
 
@@ -87,7 +87,7 @@ if(empty($_SESSION['users_id'])) {
 
     if(!empty($login_db['users_pwd']) AND ($login['method'] == 'cookie' OR $login_db['users_pwd'] == $login['securepw'])) {
       if(empty($login_db['users_active']) || !empty($login_db['users_delete']))
-        $login['error'] = 'closed'; 
+        $login['error'] = 'closed';
       elseif($login['method'] == 'cookie' AND ($login['cookietime'] < $login_db['users_cookietime'] OR $login['cookietime'] > cs_time()))
         $login['error'] = 'user_login_notfound';
       elseif($login['method'] == 'cookie' AND $login_db['users_cookiehash'] != $login['cookiehash'])
@@ -172,7 +172,7 @@ if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['acce
   cs_login_cookies();
   session_destroy();
   $login['mode'] = FALSE;
-  $login['error'] = 'not_public'; 
+  $login['error'] = 'not_public';
 }
 
 unset($account['users_pwd'], $account['users_cookiehash'], $account['users_cookietime']);

@@ -106,7 +106,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
     include_once 'mods/clansphere/themebar.php';
     $string = cs_themebar($source, $string, $mod, $action);
   }
-  
+
   return $string;
 }
 
@@ -128,20 +128,30 @@ function cs_subtemplate_check($mod, $action) {
 function cs_xsrf_protection_field($matches) {
   global $cs_main;
   static $xsrf_key;
-  if(!isset($_SESSION['cs_xsrf_keys']) || !is_array($_SESSION['cs_xsrf_keys'])) {
-    $_SESSION['cs_xsrf_keys'] = array();
+
+  $exp = time()+60*60*24*1; // 1 day
+
+  if(!isset($_COOKIE['cs_xsrf_keys']) || !is_array($_COOKIE['cs_xsrf_keys'])) {
+	  setcookie('cs_xsrf_keys', array(), $exp);
   }
   if(empty($xsrf_key)) {
-    
+
     # disable browser / proxy caching
     header("Cache-Control: max-age=0, no-cache, no-store, must-revalidate");
     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-    
-    $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
-    $_SESSION['cs_xsrf_keys'][] = $xsrf_key;
+
+    $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_COOKIE['cs_xsrf_keys'])) ? end($_COOKIE['cs_xsrf_keys']) : md5(microtime() . rand());
+	  $i = count($_COOKIE['cs_xsrf_keys']);
+	  $j = isset($_COOKIE['cs_xsrf_keys_count']) ? $_COOKIE['cs_xsrf_keys_count']+1 : 1;
+	  if($i>10)
+	  {
+	    ksort($_COOKIE['cs_xsrf_keys'], SORT_NUMERIC);
+	    setcookie('cs_xsrf_keys['.key($_COOKIE['cs_xsrf_keys']).']', NULL, 1);
+	  }
+	  setcookie('cs_xsrf_keys['.$j.']', $xsrf_key, $exp);
+	  setcookie('cs_xsrf_keys_count', $j, $exp);
   }
-  
-  return $matches[0] . "\n" . '<div style="display:none;"><input type="hidden" name="cs_xsrf_key" value="' . end($_SESSION['cs_xsrf_keys']) . '" /></div>' . "\n";
+  return $matches[0] . "\n" . '<div style="display:none;"><input type="hidden" name="cs_xsrf_key" value="' . cs_encrypt(end($_COOKIE['cs_xsrf_keys'])) . '" /></div>' . "\n";
 }
 
 function cs_wrap_templatefile($matches)
