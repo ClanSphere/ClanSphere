@@ -42,7 +42,7 @@ function cs_addons($modul,$action,$id,$modul_now) {
         }
         else
           $count = cs_sql_count(__FILE__, $mod['references'][$modul], $column . ' = ' . $id . $more);
-
+          
               $var .= $out . " (" . $count . ")\r\n - ";
             }
             else {
@@ -612,8 +612,6 @@ function cs_user($users_id, $users_nick, $users_active = 1, $users_delete = 0) {
     return $users_nick;
 }
 
-
-
 function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
 
   global $cs_main;
@@ -633,41 +631,4 @@ function cs_userstatus($laston = 0, $invisible = 0, $mode = 0) {
   }
   if ($mode == 1) return $text;
   return $mode == 2 ? $icon . ' ' . $text : $icon;
-}
-
-
-function cs_encryption($string, $key = NULL)
-{
-  if($key === NULL)
-  {
-    global $cs_main;
-    if(isset($cs_main['encryption_key']))
-    {
-      $key = $cs_main['encryption_key'];
-    } else
-    {
-      $key = md5($cs_main["def_path"]);
-    }
-  }
-
-  $keyLength = strlen($key);
-  $inputLength = strlen($string);
-
-  for ($i = 0; $i < $inputLength; $i++){
-    $string[$i] = chr(ord($string[$i]) ^ ord($key[$i % $keyLength]));
-  }
-
-  return $string;
-}
-
-function cs_encrypt($string, $key = NULL){
-  $string = cs_encryption($string, $key);
-  $string = base64_encode($string);
-  return $string;
-}
-
-function cs_decrypt($string, $key = NULL){
-  $string = base64_decode($string);
-  $string = cs_encryption($string, $key);
-  return $string;
 }
