@@ -20,7 +20,7 @@ if(empty($account['users_id']) AND extension_loaded('gd')) {
 
 if(isset($_POST['submit'])) {
 
-  $cs_fightus['games_id'] = $_POST['games_id'];
+  $cs_fightus['games_id'] = empty($_POST['games_id']) ? 0 : $_POST['games_id'];
   $cs_fightus['squads_id'] = $_POST['squads_id'];
   $cs_fightus['fightus_nick'] = $_POST['fightus_nick'];
   $cs_fightus['fightus_clan'] = $_POST['fightus_clan'];
