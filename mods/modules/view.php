@@ -15,6 +15,8 @@ $cs_lang_acc = cs_translate('access', 1);
 
 include('mods/' . $dir . '/info.php');
 
+$cs_lang = empty($cs_lang) ? array() : $cs_lang;
+
 # combine translations of target info file with mods access and modules
 $cs_lang = array_merge($cs_lang, $cs_lang_acc, $cs_lang_mod);
 
