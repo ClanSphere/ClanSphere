@@ -9,7 +9,7 @@ if(!function_exists('str_ireplace')) {
 
   function str_ireplace($search, $replace, $subject, $count = 0) {
 
-    str_replace($search, $replace, $subject);
+    return str_replace($search, $replace, $subject);
   }
 }
 
@@ -18,7 +18,7 @@ if(!function_exists('stripos')) {
 
   function stripos($haystack, $needle, $offset = 0) {
 
-    strpos(strtolower($haystack), strtolower($needle), $offset);
+    return strpos(strtolower($haystack), strtolower($needle), $offset);
   }
 }
 
