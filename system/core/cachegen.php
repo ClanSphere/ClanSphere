@@ -2,7 +2,7 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-function cs_cache_dirs($dir, $lang) {
+function cs_cache_dirs($dir, $lang, $return_startup = 0) {
 
   # $cs_lang and $cs_main are needed for info.php file content parsing
   global $cs_lang, $cs_main;
@@ -44,10 +44,10 @@ function cs_cache_dirs($dir, $lang) {
     if($dir == 'mods' AND cs_cache_load('startup') === false)
       cs_cache_save('startup', array_keys($startup));
 
-    return cs_cache_save($cachename, $info);
+    return empty($return_startup) ? cs_cache_save($cachename, $info) : array_keys($startup);
   }
   else {
-    return $content;
+    return empty($return_startup) ? $content : cs_cache_load('startup');
   }
 }
 

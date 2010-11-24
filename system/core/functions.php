@@ -293,8 +293,7 @@ function cs_init($predefined) {
     $startup = cs_cache_load('startup');
     # fallback to create startup files overview
     if($startup == false) {
-      cs_cache_dirs('mods', $account['users_lang']);
-      $startup = cs_cache_load('startup');
+      $startup = cs_cache_dirs('mods', $account['users_lang'], 1);
     }
     # execute startup files
     if(is_array($startup)) {
