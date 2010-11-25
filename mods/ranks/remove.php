@@ -14,7 +14,7 @@ if(isset($cs_get['cancel'])) {
 }
 
 $rank = cs_sql_select(__FILE__,'ranks','ranks_name','ranks_id = ' . $cs_get['id'],0,0,1);
-if(!emtpy($rank)) {
+if(!empty($rank)) {
   $data = array();
   $data['head']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_remove'],$rank['ranks_name']);
   $data['url']['agree'] = cs_url('ranks','remove','id=' . $cs_get['id'] . '&amp;agree');
