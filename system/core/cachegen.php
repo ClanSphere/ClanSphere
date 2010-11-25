@@ -44,7 +44,9 @@ function cs_cache_dirs($dir, $lang, $return_startup = 0) {
     if($dir == 'mods' AND cs_cache_load('startup') === false)
       cs_cache_save('startup', array_keys($startup));
 
-    return empty($return_startup) ? cs_cache_save($cachename, $info) : array_keys($startup);
+    cs_cache_save($cachename, $info);
+
+    return empty($return_startup) ? $info : array_keys($startup);
   }
   else {
     return empty($return_startup) ? $content : cs_cache_load('startup');
