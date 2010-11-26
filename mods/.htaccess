@@ -1,4 +1,5 @@
-# Do not show php errors inside here
+## Uncomment the following to not show php errors inside here
+## Path disclosure protection, but may cause problems on bad configured webservers
 
-php_flag display_startup_errors off
-php_flag display_errors off
+# php_flag display_startup_errors off
+# php_flag display_errors off
