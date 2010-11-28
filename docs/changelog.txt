@@ -5,6 +5,7 @@ CHANGELOG
 ClanSphere 2010.2 >> 2010-12-XX
 ___________________________________________________________
 
+-> Added simple database integrity check to database mod (hajo)
 -> Changed mods/.htaccess content to be deactivated by default as it caused problems (hajo)
 -> Fixed PHP 4 error page introduced with last release to output its results (hajo)
 -> Fixed caching mode 'none' to work as expected (hajo)
