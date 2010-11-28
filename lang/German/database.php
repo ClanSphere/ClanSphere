@@ -21,6 +21,7 @@ $cs_lang['db_integrity'] = 'Datenbank Integrit&auml;t';
 $cs_lang['table_double_owned'] = 'SQL-Tabelle "%s" hat mehrere Modul-Zugeh&ouml;rigkeiten: "%s" und "%s"';
 $cs_lang['table_not_owned'] = 'SQL-Tabelle "%s" hat keine Modul-Zugeh&ouml;rigkeit';
 $cs_lang['table_not_found'] = 'SQL-Tabelle "%s" des Modules "%s" ist nicht vorhanden';
+$cs_lang['db_check_passed'] = 'Alle Pr&uuml;fungen bestanden';
 
 $cs_lang['roots'] = 'Basis';
 $cs_lang['body_roots']  = 'W&auml;hlen Sie aus den folgenden Aktionen aus.';

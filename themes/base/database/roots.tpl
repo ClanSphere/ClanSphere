@@ -51,7 +51,6 @@
     <td class="leftb">{sqlinfo:usage}</td>
   </tr>
 </table>
-{unless:integrity}
 <br />
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
@@ -61,4 +60,3 @@
     <td class="leftb">{integrity:errors}</td>
   </tr>
 </table>
-{stop:integrity}

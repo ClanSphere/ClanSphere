@@ -79,7 +79,6 @@ if($errors == false) {
   cs_cache_save('database_integrity', $errors);
 }
 
-$data['if']['integrity'] = empty($errors) ? 1 : 0;
-$data['integrity']['errors'] = $errors;
+$data['integrity']['errors'] = empty($errors) ? $cs_lang['db_check_passed'] : $errors;
 
 echo cs_subtemplate(__FILE__,$data,'database','roots');
