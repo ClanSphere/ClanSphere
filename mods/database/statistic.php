@@ -16,8 +16,6 @@ global $cs_db;
 
 $sql_infos = cs_sql_version(__FILE__);
 
-$names = array_flip($sql_infos['names']);
-
 foreach($modules as $mod) {
 
   if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha' OR $mod['dir'] == 'pictures') AND !empty($mod['tables'][0])) {
@@ -38,8 +36,6 @@ foreach($modules as $mod) {
     asort($mod['tables']);
     foreach($mod['tables'] AS $mod_table) {
 
-      unset($names['' . $cs_db['prefix'] . '_' . $mod_table]);
-
       if(isset($static[$mod_table])) {
         cs_error(__FILE__, 'SQL-Table "' . $mod_table . '" is owned by two modules: "' . $static[$mod_table] . '" and "' . $mod['dir'] . '"');
       }
@@ -54,17 +50,11 @@ foreach($modules as $mod) {
     }
     $data['statistic'][$run]['tables'] = $tables;
     $data['statistic'][$run]['counts'] = $counts;
-  $run++;
+    $run++;
   }
 }
 
 $data['data']['tables'] = $total_tables;
 $data['data']['dataset'] = $total_datasets;
-
-$names = array_flip($names);
-
-foreach($names AS $missing) {
- cs_error(__FILE__, 'SQL-Table "' . $missing . '" exists without an ownership');
-}
 
 echo cs_subtemplate(__FILE__,$data,'database','statistic');

@@ -35,4 +35,48 @@ $data['roots']['import_url'] = cs_url('database','import');
 $data['roots']['export_url'] = cs_url('database','export');
 $data['roots']['statistic_url'] = cs_url('database','statistic');
 
+// integrity checks
+$errors = cs_cache_load('database_integrity');
+if($errors == false) {
+  $errors = '';
+  $static = array();
+  $modules = cs_checkdirs('mods');
+  $names = array_flip($sql_infos['names']);
+
+  foreach($modules as $mod) {
+
+    if(!empty($mod['tables'][0])) {
+
+      asort($mod['tables']);
+
+      foreach($mod['tables'] AS $mod_table) {
+
+        $found = empty($static[$mod_table]) ? '' : $static[$mod_table];
+
+        if(empty($found)) {
+          $static[$mod_table] = $mod['dir'];
+
+          if(isset($names['' . $cs_db['prefix'] . '_' . $mod_table]))
+            unset($names['' . $cs_db['prefix'] . '_' . $mod_table]);
+          else
+            $errors .= sprintf($cs_lang['table_not_found'], $mod_table, $mod['dir']) . cs_html_br(1);
+        }
+        else
+          $errors .= sprintf($cs_lang['table_double_owned'], $mod_table, $found, $mod['dir']) . cs_html_br(1);
+      }
+    }
+  }
+
+  $names = array_flip($names);
+  $lnpre = strlen($cs_db['prefix']) + 1;
+
+  foreach($names AS $missing)
+    $errors .= sprintf($cs_lang['table_not_owned'], substr($missing, $lnpre)) . cs_html_br(1);
+
+  cs_cache_save('database_integrity', $errors);
+}
+
+$data['if']['integrity'] = empty($errors) ? 1 : 0;
+$data['integrity']['errors'] = $errors;
+
 echo cs_subtemplate(__FILE__,$data,'database','roots');

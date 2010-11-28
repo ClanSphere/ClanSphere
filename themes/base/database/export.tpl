@@ -21,7 +21,7 @@
         {loop:tables}
         {tables:option}
         {stop:tables}
-      </select>
+      </select><br />
       <a href="javascript:cs_select_multiple('sql_tables',1)">{lang:all}</a> -
       <a href="javascript:cs_select_multiple('sql_tables',0)">{lang:none}</a> -
       <a href="javascript:cs_select_multiple('sql_tables','reverse')">{lang:reverse}</a>

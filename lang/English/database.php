@@ -17,6 +17,10 @@ $cs_lang['usage'] = 'Usage';
 $cs_lang['data'] = 'Datas';
 $cs_lang['indexe'] = 'Indexes';
 $cs_lang['overhead'] = 'Overhead';
+$cs_lang['db_integrity'] = 'Database integrity';
+$cs_lang['table_double_owned'] = 'SQL-Table "%s" is owned by more than one module: "%s" and "%s"';
+$cs_lang['table_not_owned'] = 'SQL-Table "%s" is not owned by any module';
+$cs_lang['table_not_found'] = 'SQL-Table "%s" required by module "%s" not found';
 
 $cs_lang['roots'] = 'Roots';
 $cs_lang['body_roots']  = 'Please select from the following options.';
