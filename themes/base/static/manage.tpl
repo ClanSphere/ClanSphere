@@ -34,7 +34,7 @@
   {loop:static}
   <tr>
     <td class="rightc">{static:static_id}</td>
-    <td class="leftc"><a href="{static:url_view}" title="{lang:show}">{static:static_title}</td>
+    <td class="leftc"><a href="{static:url_view}" title="{lang:show}">{static:static_title}</a></td>
     <td class="leftc">{static:static_access}</td>
     <td class="leftc" style="width:25px"><a href="{static:url_edit}" title="{lang:edit}">{icon:edit}</a></td>
     <td class="leftc" style="width:25px"><a href="{static:url_delete}" title="{lang:remove}">{icon:editdelete}</a> </td>

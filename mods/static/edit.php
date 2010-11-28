@@ -103,8 +103,8 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   $cs_static_tpl['url']['action'] = cs_url('static','edit',$more);
   $cs_news_id = empty($_REQUEST['where']) ? $_REQUEST['id'] : $_REQUEST['where'];
   
-  $cs_static_tpl['static']['title'] = empty($cs_static['static_title']) ? $static_edit['static_title'] : $cs_static['static_title'];
-  $cs_static_tpl['static']['content'] = empty($cs_static['static_text']) ? $static_edit['static_text'] : $cs_static['static_text'];
+  $cs_static_tpl['static']['title'] = empty($cs_static['static_title']) ? cs_secure($static_edit['static_title']) : cs_secure($cs_static['static_title']);
+  $cs_static_tpl['static']['content'] = empty($cs_static['static_text']) ? cs_secure($static_edit['static_text']) : cs_secure($cs_static['static_text']);
   $static_edit['static_table'] == '1' ? $sel = 'checked' : $sel = '';
   $cs_static_tpl['static']['table'] = $sel;
   $static_edit['static_comments'] == '1' ? $sel = 'checked' : $sel = '';

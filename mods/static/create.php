@@ -83,8 +83,8 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   $cs_action_head['head']['body']    = $cs_lang['body_create'];
   }
   
-  $cs_static_tpl['static']['title'] = $cs_static['static_title'];
-  $cs_static_tpl['static']['content'] = $cs_static['static_text'];
+  $cs_static_tpl['static']['title'] = cs_secure($cs_static['static_title']);
+  $cs_static_tpl['static']['content'] = cs_secure($cs_static['static_text']);
   $cs_static['static_table'] == '1' ? $sel = 'checked' : $sel = '';
   $cs_static_tpl['static']['table'] = $sel;
   $cs_static['static_comments'] == '1' ? $sel = 'checked' : $sel = '';
