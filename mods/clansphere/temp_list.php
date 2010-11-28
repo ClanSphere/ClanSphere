@@ -4,6 +4,9 @@
 
 $cs_lang = cs_translate('clansphere');
 
+# clear old cache content to get actual results
+cs_cache_delete('templates_' . $account['users_lang']);
+
 /*if (!empty($_SESSION['tpl_preview'])) $ending = substr($_SESSION['tpl_preview'],-3);
 if (!empty($ending) && $ending != '{2}') {
   $_SESSION['tpl_preview'] .= '{2}';
