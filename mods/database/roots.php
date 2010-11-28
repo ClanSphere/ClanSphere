@@ -37,11 +37,14 @@ $data['roots']['statistic_url'] = cs_url('database','statistic');
 
 // integrity checks
 $errors = cs_cache_load('database_integrity');
+
 if($errors == false) {
+
   $errors = '';
   $static = array();
   $modules = cs_checkdirs('mods');
   $names = array_flip($sql_infos['names']);
+  $count = count($names);
 
   foreach($modules as $mod) {
 
@@ -58,7 +61,7 @@ if($errors == false) {
 
           if(isset($names['' . $cs_db['prefix'] . '_' . $mod_table]))
             unset($names['' . $cs_db['prefix'] . '_' . $mod_table]);
-          else
+          elseif(!empty($count))
             $errors .= sprintf($cs_lang['table_not_found'], $mod_table, $mod['dir']) . cs_html_br(1);
         }
         else
