@@ -17,6 +17,16 @@ function cs_login_cookies($userid = 0, $use_old_hash = 0) {
     $content = array($thistime, $thishash);
     cs_sql_update(__FILE__,'users',$cells,$content,$userid, 0, 0);
   }
+  elseif(!empty($userid) AND $use_old_hash == true) {
+    $user = cs_sql_select(__FILE__,'users','users_cookietime, users_cookiehash','users_id = ' . (int) $userid);
+    $thistime = $user['users_cookietime'];
+    $thishash = $user['users_cookiehash'];
+
+    if(empty($thistime) OR empty($thishash)) {
+      cs_login_cookies($userid);
+      return true;
+    }
+  }
 
   setcookie('cs_userid', $userid, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
   setcookie('cs_cookietime', $thistime, $lifetime, $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
@@ -108,7 +118,7 @@ if(empty($_SESSION['users_id'])) {
 
     if(!empty($login['cookie']) AND !empty($login['mode'])) {
       $login['method'] = 'form_cookie';
-      cs_login_cookies($login_db['users_id']);
+      cs_login_cookies($login_db['users_id'], true);
     }
 	session_regenerate_id(session_id());
     unset($login_db);
