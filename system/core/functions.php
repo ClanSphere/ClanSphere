@@ -232,7 +232,7 @@ function cs_init($predefined) {
   if($cs_main['php_self']['basename'] == 'install.php')
     $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 2, 'access_install' => 5);
   else
-    file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="/install.php">Installation</a>'));
+    file_exists('setup.php') ? require_once 'setup.php' : die(cs_error_internal('setup', '<a href="' . $cs_main['php_self']['dirname'] . 'install.php">Installation</a>'));
 
   if(!in_array($cs_main['cache_mode'], array('file', 'none')) AND !extension_loaded($cs_main['cache_mode']))
     $cs_main['cache_mode'] = 'file';
