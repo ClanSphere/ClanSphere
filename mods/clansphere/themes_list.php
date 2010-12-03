@@ -5,7 +5,9 @@
 $cs_lang = cs_translate('clansphere');
 
 # clear old cache content to get actual results
-cs_cache_delete('themes_' . $account['users_lang']);
+$languages = cs_checkdirs('lang');
+foreach($languages AS $ln)
+  cs_cache_delete('themes_' . $ln['dir']);
 
 $themes = cs_checkdirs('themes');
 $themes_count = count($themes);

@@ -5,7 +5,9 @@
 $cs_lang = cs_translate('clansphere');
 
 # clear old cache content to get actual results
-cs_cache_delete('templates_' . $account['users_lang']);
+$languages = cs_checkdirs('lang');
+foreach($languages AS $ln)
+  cs_cache_delete('templates_' . $ln['dir']);
 
 /*if (!empty($_SESSION['tpl_preview'])) $ending = substr($_SESSION['tpl_preview'],-3);
 if (!empty($ending) && $ending != '{2}') {

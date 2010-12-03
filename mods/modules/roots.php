@@ -5,7 +5,9 @@
 $cs_lang = cs_translate('modules');
 
 # clear old cache content to get actual results
-cs_cache_delete('mods_' . $account['users_lang']);
+$languages = cs_checkdirs('lang');
+foreach($languages AS $ln)
+  cs_cache_delete('mods_' . $ln['dir']);
 
 $data = array();
 

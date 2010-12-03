@@ -5,6 +5,8 @@ CHANGELOG
 ClanSphere 2010.2 >> 2010-12-XX
 ___________________________________________________________
 
+-> Added cache clearing to admin pages for languages, modules, themes and templates (hajo)
+   By using them new contents do no longer require to empty the whole cache
 -> Added simple database integrity check to database mod (hajo)
 -> Changed cookie to be valid in multiple places at a time again (hajo)
 -> Changed mods/.htaccess content to be deactivated by default as it caused problems (hajo)
