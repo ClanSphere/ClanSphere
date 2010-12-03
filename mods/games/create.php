@@ -62,7 +62,7 @@ if(!empty($files['symbol']['tmp_name'])) {
   }
   $img_size = getimagesize($files['symbol']['tmp_name']);
 
-  if(empty($symbol_error) AND $img_size[2] != 1) {
+  if(!empty($symbol_error) AND $img_size[2] != 1) {
     $errormsg .= $cs_lang['ext_error'] . cs_html_br(1); 
     $symbol_error++;
   }
@@ -97,7 +97,7 @@ if(!empty($_POST['games_url'])) {
 
 $data['lang']['body'] = !isset($_POST['submit']) ? $cs_lang['body_create'] : $errormsg;
 
-if(isset($_POST['submit']) && empty($games_error)) {
+if(isset($_POST['submit']) && empty($games_error) && empty($symbol_error)) {
 
   $games_cells = array('games_name','games_version','games_released','games_creator','categories_id','games_url','games_usk');
   $games_save = array($games_name,$games_version,$games_release,$games_creator,$categories_id,$games_url,$games_usk);

@@ -93,7 +93,7 @@ if(!empty($files['symbol']['tmp_name'])) {
 
   $img_size = getimagesize($files['symbol']['tmp_name']);
 
-  if(empty($symbol_error) AND $img_size[2] != 1) {
+  if(!empty($symbol_error) AND $img_size[2] != 1) {
     $errormsg .= $cs_lang['ext_error'] . cs_html_br(1); 
     $symbol_error++;
   }
@@ -121,7 +121,7 @@ elseif(!file_exists($cs_main['def_path'] . '/uploads/games/' . $games_id . '.gif
 $data['lang']['body'] = !isset($_POST['submit']) ? $cs_lang['body_edit'] : $errormsg;
 
 if(isset($_POST['submit'])) {
-  if(empty($games_error)) {
+  if(empty($games_error) && empty($symbol_error)) {
     $games_form = 0;
 
     $games_cells = array('games_name','games_version','games_released','games_creator','categories_id','games_url','games_usk');
