@@ -8,6 +8,7 @@ ___________________________________________________________
 -> Added cache clearing to admin pages for languages, modules, themes and templates (hajo)
    By using them new contents do no longer require to empty the whole cache
 -> Added simple database integrity check to database mod (hajo)
+-> Added template placeholder {func:path} that does what {page:path} is for themes (hajo)
 -> Changed cookie to be valid in multiple places at a time again (hajo)
 -> Changed mods/.htaccess content to be deactivated by default as it caused problems (hajo)
 -> Fixed PHP 4 error page introduced with last release to output its results (hajo)

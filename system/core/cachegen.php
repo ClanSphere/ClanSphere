@@ -67,6 +67,8 @@ function cs_cache_template($filename) {
   $tpl_data = file_get_contents($tpl_real);
   $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
 
+  $tpl_data = str_replace('{func:path}', $cs_main['php_self']['dirname'], $tpl_data);
+
   if(strpos($tpl_data, 'id="csp_content"') !== false)
     cs_error($tpl_real, 'cs_cache_template - The ID tag "csp_content" is reserved for AJAX');
   if(strpos($tpl_data, '{func:stylesheet}') === false)
