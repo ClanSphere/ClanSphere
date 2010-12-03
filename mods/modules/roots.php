@@ -3,6 +3,10 @@
 // Id: roots.php (Tue Nov 25 22:47:53 CET 2008) fAY-pA!N
 
 $cs_lang = cs_translate('modules');
+
+# clear old cache content to get actual results
+cs_cache_delete('mods_' . $account['users_lang']);
+
 $data = array();
 
 $modules = cs_checkdirs('mods');
@@ -51,6 +55,6 @@ foreach($modules as $mod) {
   $data['mod'][$run]['access'] = empty($listed) ? '' : cs_link(cs_icon('access'),'modules','accessedit','dir=' . $mod['dir'],'',$cs_lang['access']);
 
   $run++;
-
 }
+
 echo cs_subtemplate(__FILE__,$data,'modules','roots');
