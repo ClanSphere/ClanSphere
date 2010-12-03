@@ -392,7 +392,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']);
   if ($tpl_file == 'error.htm')
     $cs_main['template'] = 'install';
-  if (!is_dir('templates/' . $cs_main['template']))
+  if ($cs_main['template'] != $cs_main['def_tpl'] AND !is_dir('templates/' . $cs_main['template']))
     $cs_main['template'] = $cs_main['def_tpl'];
   if (!file_exists('templates/' . $cs_main['template'] . '/' . $tpl_file))
   {
