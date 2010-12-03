@@ -96,7 +96,8 @@
         {lang:new_date}
         <br/>
         <input type="checkbox" name="publish_at" value="1" {news:check_publish}/>
-        {lang:publishs_at}: {news:news_publishs_at}</td>
+        {lang:publishs_at}:<br />
+        {news:news_publishs_at}</td>
     </tr>
   <tr>
     <td class="leftc">{icon:configure} {lang:features}</td>
