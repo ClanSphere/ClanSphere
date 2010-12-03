@@ -384,7 +384,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['ajax'] = 0;
   }
 
-  if (!empty($account['users_tpl']) AND is_dir('templates/' . $account['users_tpl']))
+  if (!empty($account['users_tpl']))
     $cs_main['template'] = $account['users_tpl'];
   if (!empty($_GET['template']))
     $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
@@ -392,6 +392,8 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']);
   if ($tpl_file == 'error.htm')
     $cs_main['template'] = 'install';
+  if (!is_dir('templates/' . $cs_main['template']))
+    $cs_main['template'] = $cs_main['def_tpl'];
   if (!file_exists('templates/' . $cs_main['template'] . '/' . $tpl_file))
   {
     cs_error('templates/' . $cs_main['template'] . '/' . $tpl_file, 'cs_template - Template not found');
