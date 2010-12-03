@@ -12,7 +12,7 @@ $select = 'categories_id, partner_name, partner_url, partner_alt, partner_text, 
 $cs_partner = cs_sql_select(__FILE__,'partner',$select,"partner_id = '" . $partner_id . "'"); 
 
 $op_partner = cs_sql_option(__FILE__,'partner');
-$img_filetypes = array('image/pjpeg' => 'jpg','image/jpeg' => 'jpg','image/gif' => 'gif');
+$img_filetypes = array('image/pjpeg' => 'jpg','image/jpeg' => 'jpg','image/gif' => 'gif', 'image/png' => 'png');
 $error = '';
 $data = array();
 
@@ -129,11 +129,10 @@ if(empty($_POST['submit']) || !empty($error)) {
   $data['partner']['partner_url'] = $cs_partner['partner_url'];
   $data['partner']['partner_alt'] = $cs_partner['partner_alt'];
   $data['partner']['partner_priority'] = $cs_partner['partner_priority'];
-  
   $img_place = 'uploads/partner/';
-  $data['partner']['partner_nimg'] = empty($cs_partner['partner_nimg']) ? '' : cs_html_link($img_place.$cs_partner['partner_nimg'],$cs_lang['show'],1);
-  $data['partner']['partner_limg'] = empty($cs_partner['partner_limg']) ? '' : cs_html_link($img_place.$cs_partner['partner_limg'],$cs_lang['show'],1);
-  $data['partner']['partner_rimg'] = empty($cs_partner['partner_rimg']) ? '' : cs_html_link($img_place.$cs_partner['partner_rimg'],$cs_lang['show'],1);
+  $data['partner']['partner_nimg'] = empty($cs_partner['partner_nimg']) ? '' : cs_html_link($cs_main['php_self']['dirname'] . $img_place . $cs_partner['partner_nimg'],$cs_lang['show'],1);
+  $data['partner']['partner_limg'] = empty($cs_partner['partner_limg']) ? '' : cs_html_link($cs_main['php_self']['dirname'] . $img_place . $cs_partner['partner_limg'],$cs_lang['show'],1);
+  $data['partner']['partner_rimg'] = empty($cs_partner['partner_rimg']) ? '' : cs_html_link($cs_main['php_self']['dirname'] . $img_place . $cs_partner['partner_rimg'],$cs_lang['show'],1);
   
   $categories_id = $cs_partner['categories_id'];
   $data['partner']['partner_id'] = $partner_id;
