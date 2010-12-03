@@ -2,18 +2,18 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2010.2 >> 2010-12-XX
+ClanSphere 2010.2 >> 2010-12-03
 ___________________________________________________________
 
 -> Added cache clearing to admin pages for languages, modules, themes and templates (hajo)
-   By using them new contents do no longer require to empty the whole cache
+   By using them new content is no longer hidden until the full cache is cleared
 -> Added simple database integrity check to database mod (hajo)
 -> Added template placeholder {func:path} that does what {page:path} is for themes (hajo)
 -> Changed cookie to be valid in multiple places at a time again (hajo)
 -> Changed mods/.htaccess content to be deactivated by default as it caused problems (hajo)
 -> Fixed PHP 4 error page introduced with last release to output its results (hajo)
 -> Fixed caching mode 'none' to work as expected (hajo)
--> Fixed update check to work again (hajo)
+-> Fixed clansphere update check to work again (hajo)
 -> Updated jQuery to 1.4.4 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
