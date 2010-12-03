@@ -22,6 +22,7 @@ $cs_lang['table_double_owned'] = 'SQL-Table "%s" is owned by more than one modul
 $cs_lang['table_not_owned'] = 'SQL-Table "%s" is not owned by any module';
 $cs_lang['table_not_found'] = 'SQL-Table "%s" required by module "%s" not found';
 $cs_lang['db_check_passed'] = 'All checks passed';
+$cs_lang['access_not_found'] = 'SQL-Table "access" has no column for module "%s"';
 
 $cs_lang['roots'] = 'Roots';
 $cs_lang['body_roots']  = 'Please select from the following options.';
