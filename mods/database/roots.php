@@ -26,9 +26,8 @@ if(!empty($sql_infos['tables'])) {
   $data['sqlinfo']['usage'] .= cs_html_br(2);
   $data['sqlinfo']['usage'] .= cs_filesize($sql_infos['data_free']) . ' ' . $cs_lang['overhead'];
 }
-else {
+else
   $data['sqlinfo']['usage'] = '-';
-}
 
 $data['roots']['optimize_tables_url'] = cs_url('database','optimize');
 $data['roots']['import_url'] = cs_url('database','import');
@@ -36,52 +35,45 @@ $data['roots']['export_url'] = cs_url('database','export');
 $data['roots']['statistic_url'] = cs_url('database','statistic');
 
 // integrity checks
-$errors = cs_cache_load('database_integrity');
+$errors = '';
+$static = array();
+$modules = cs_checkdirs('mods');
+$names = array_flip($sql_infos['names']);
+$count = count($names);
+$noacc = array('captcha', 'install', 'pictures', 'rss');
 
-if($errors == false) {
+foreach($modules as $mod) {
 
-  $errors = '';
-  $static = array();
-  $modules = cs_checkdirs('mods');
-  $names = array_flip($sql_infos['names']);
-  $count = count($names);
-  $noacc = array('captcha', 'install', 'pictures', 'rss');
+  if(!in_array($mod['dir'], $noacc) AND !isset($account['access_' . $mod['dir'] . '']))
+    $errors .= sprintf($cs_lang['access_not_found'], $mod['dir']) . cs_html_br(1);
 
-  foreach($modules as $mod) {
+  if(!empty($mod['tables'][0])) {
 
-    if(!in_array($mod['dir'], $noacc) AND !isset($account['access_' . $mod['dir'] . '']))
-      $errors .= sprintf($cs_lang['access_not_found'], $mod['dir']) . cs_html_br(1);
+    asort($mod['tables']);
 
-    if(!empty($mod['tables'][0])) {
+    foreach($mod['tables'] AS $mod_table) {
 
-      asort($mod['tables']);
+      $found = empty($static[$mod_table]) ? '' : $static[$mod_table];
 
-      foreach($mod['tables'] AS $mod_table) {
+      if(empty($found)) {
+        $static[$mod_table] = $mod['dir'];
 
-        $found = empty($static[$mod_table]) ? '' : $static[$mod_table];
-
-        if(empty($found)) {
-          $static[$mod_table] = $mod['dir'];
-
-          if(isset($names['' . $cs_db['prefix'] . '_' . $mod_table]))
-            unset($names['' . $cs_db['prefix'] . '_' . $mod_table]);
-          elseif(!empty($count))
-            $errors .= sprintf($cs_lang['table_not_found'], $mod_table, $mod['dir']) . cs_html_br(1);
-        }
-        else
-          $errors .= sprintf($cs_lang['table_double_owned'], $mod_table, $found, $mod['dir']) . cs_html_br(1);
+        if(isset($names['' . $cs_db['prefix'] . '_' . $mod_table]))
+          unset($names['' . $cs_db['prefix'] . '_' . $mod_table]);
+        elseif(!empty($count))
+          $errors .= sprintf($cs_lang['table_not_found'], $mod_table, $mod['dir']) . cs_html_br(1);
       }
+      else
+        $errors .= sprintf($cs_lang['table_double_owned'], $mod_table, $found, $mod['dir']) . cs_html_br(1);
     }
   }
-
-  $names = array_flip($names);
-  $lnpre = strlen($cs_db['prefix']) + 1;
-
-  foreach($names AS $missing)
-    $errors .= sprintf($cs_lang['table_not_owned'], substr($missing, $lnpre)) . cs_html_br(1);
-
-  cs_cache_save('database_integrity', $errors);
 }
+
+$names = array_flip($names);
+$lnpre = strlen($cs_db['prefix']) + 1;
+
+foreach($names AS $missing)
+  $errors .= sprintf($cs_lang['table_not_owned'], substr($missing, $lnpre)) . cs_html_br(1);
 
 $data['integrity']['errors'] = empty($errors) ? $cs_lang['db_check_passed'] : $errors;
 
