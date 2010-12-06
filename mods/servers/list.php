@@ -22,9 +22,12 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 	$cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
 	$servers_count = count($cs_servers);
 
-	/* if Server in SQL */
-	if(!empty($servers_count)) {
-		$data['if']['server'] = true;
+	/* if no Server in SQL */
+	if(empty($servers_count)) {
+    unset($data['servers']);
+  }
+  else {
+    $data['if']['server'] = true;
 
 		/* Settings */
 		$objServers = Servers::__getInstance();

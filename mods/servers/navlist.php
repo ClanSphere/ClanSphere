@@ -3,7 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('servers');
-$cs_option = cs_sql_option('servers');
+$cs_option = cs_sql_option(__FILE__, 'servers');
 $id = empty($_GET['sid']) ? '' : (int) $_GET['sid'];
 
 $data = array('servers' => array());

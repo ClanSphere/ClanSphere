@@ -8,23 +8,24 @@ $id = empty($_GET['sid']) ? '' : (int) $_GET['sid'];
 
 $data = array('servers' => array());
 
+$data['if']['live'] = false;
+
 // Test if fsockopen active
 if (fsockopen("udp://127.0.0.1", 1)) {
 	include_once 'mods/servers/servers.php';
 
 	/* Get Server SQL-Data */
 	$select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order, servers_id';
-	$order = 'Rand()';
+	$order = '{random}';
 	$cs_servers = cs_sql_select(__FILE__,'servers',$select,0,$order,0,1);
 
 	/* Settings */
 	$objServers = Servers::__getInstance();
 
-	$data['servers']['if']['live'] = false;
 	$data['servers']['hostname'] = $cs_servers['servers_name'];
 	$server_query_ex = explode(";",$cs_servers['servers_class']);
 	$cs_servers['servers_class'] = $server_query_ex[0];
-	$cs_servers['servers_game'] = $server_query_ex[1];
+	$cs_servers['servers_game'] = empty($server_query_ex[1]) ? '' : $server_query_ex[1];
 	if(!empty($cs_servers['servers_stats'])) {
 
 		$objServers->addServer(0, $cs_servers);
