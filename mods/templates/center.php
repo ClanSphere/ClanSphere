@@ -32,8 +32,6 @@ if(!empty($activate)) {
   }
 }
 
-$data['lang']['body'] = sprintf($cs_lang['body_temp_list'],$tpl_all);
-
 if(!empty($activate) AND !empty($allow)) {
   $opt_where = "users_id='" . $account['users_id'] . "'";
   $usr_theme = is_dir($cs_main['def_path'] . '/themes/' . $activate) ? $activate : $cs_main['def_theme'];
@@ -81,36 +79,39 @@ else {
   }
   
   foreach($templates as $mod) {
-    $data['temp_list'][$run]['name'] = $mod['name'];
-    $data['temp_list'][$run]['version'] = $mod['version'];
-    $data['temp_list'][$run]['date'] = cs_date('date',$mod['released']);
 
-    if(isset($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
-      $cs_main['template'] = $_GET['template'];
-    else
-      $cs_main['template'] = $cs_main['def_tpl'];
-
-    if($mod['dir'] == $cs_main['template']) { 
-      $data['temp_list'][$run]['preview'] = cs_icon('submit','16',$cs_lang['yes']);
-    }
-    elseif($mod['dir'] != 'install') {  
-      $data['temp_list'][$run]['preview'] = cs_link(cs_icon('cancel','16',$cs_lang['no']),'templates','center','template=' . $mod['dir']);
-    }
+    if($mod['dir'] == 'install')
+      $tpl_all--;
     else {
-      $data['temp_list'][$run]['preview'] = cs_icon('editdelete','16','----');
-    }
 
-    if($mod['dir'] == $cs_main['def_tpl']) { 
-      $data['temp_list'][$run]['active'] = cs_icon('submit','16',$cs_lang['yes']);
+      $data['temp_list'][$run]['name'] = $mod['name'];
+      $data['temp_list'][$run]['version'] = $mod['version'];
+      $data['temp_list'][$run]['date'] = cs_date('date',$mod['released']);
+
+      if(isset($_GET['template']) AND preg_match("=^[_a-z0-9-]+$=i",$_GET['template']))
+        $cs_main['template'] = $_GET['template'];
+      else
+        $cs_main['template'] = $cs_main['def_tpl'];
+
+      if($mod['dir'] == $cs_main['template']) { 
+        $data['temp_list'][$run]['preview'] = cs_icon('submit','16',$cs_lang['yes']);
+      }
+      else {  
+        $data['temp_list'][$run]['preview'] = cs_link(cs_icon('cancel','16',$cs_lang['no']),'templates','center','template=' . $mod['dir']);
+      }
+
+      if($mod['dir'] == $cs_main['def_tpl']) { 
+        $data['temp_list'][$run]['active'] = cs_icon('submit','16',$cs_lang['yes']);
+      }
+      else {
+        $data['temp_list'][$run]['active'] = cs_link(cs_icon('cancel','16',$cs_lang['no']),'templates','center','activate=' . $mod['dir']);
+      }
+
+      $run++;
     }
-    elseif($mod['dir'] != 'install') {  
-      $data['temp_list'][$run]['active'] = cs_link(cs_icon('cancel','16',$cs_lang['no']),'templates','center','activate=' . $mod['dir']);
-    }
-    else {
-      $data['temp_list'][$run]['active'] = cs_icon('editdelete','16','----');
-    }
-    $run++;
   }
 }
+
+$data['lang']['body'] = sprintf($cs_lang['body_temp_list'],$tpl_all);
 
 echo cs_subtemplate(__FILE__,$data,'templates','center');
