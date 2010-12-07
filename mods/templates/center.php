@@ -33,8 +33,18 @@ if(!empty($activate)) {
 }
 
 if(!empty($activate) AND !empty($allow)) {
-  $opt_where = "users_id='" . $account['users_id'] . "'";
+
   $usr_theme = is_dir($cs_main['def_path'] . '/themes/' . $activate) ? $activate : $cs_main['def_theme'];
+
+  if(isset($templates[ucfirst($activate)]['themes'])) {
+    $themes = cs_checkdirs('themes');
+    if(isset($themes[ucfirst($templates[ucfirst($activate)]['themes'])])) {
+      $thm_new   = $themes[ucfirst($templates[ucfirst($activate)]['themes'])];
+      $usr_theme = is_dir($cs_main['def_path'] . '/themes/' . $thm_new) ? $thm_new : $usr_theme;
+    }
+  }
+
+  $opt_where = "users_id='" . $account['users_id'] . "'";
   $def_cell = array('users_tpl', 'users_theme');
   $def_cont = array($activate, $usr_theme);
   cs_sql_update(__FILE__,'users',$def_cell,$def_cont,0,$opt_where);
