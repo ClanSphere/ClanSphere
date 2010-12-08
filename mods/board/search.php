@@ -138,6 +138,7 @@ if(!empty($go_search)) {
 
       $start = $page * $account['users_limit'];
       $result = cs_sql_select(__FILE__,$from,$select,$conditions,$order,$start,$account['users_limit']);
+      $result = is_array($result) ? $result : array();
       $run = 0;
       foreach($result AS $thread) {
 
