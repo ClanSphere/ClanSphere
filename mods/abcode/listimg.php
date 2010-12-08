@@ -1,10 +1,10 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
-$cs_lang = cs_translate('abcode');
-$cs_get = cs_get();
 
-$name = empty($cs_get['name']) ? '' : $cs_get['name'];
+$cs_lang = cs_translate('abcode');
+
+$name = empty($_GET['name']) ? '' : $_GET['name'];
 $name = preg_replace('/[^\w]/s','',$name);
 
 $where = "abcode_func = 'img'";
