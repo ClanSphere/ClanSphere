@@ -45,6 +45,7 @@ $nav_array = array(
   'users/navonline_ava',
   'users/navonline_pic',
   'users/navrand',
+  'users/nextbirth',
   'votes/navlist',
   'wars/navdraw',
   'wars/navlast',
