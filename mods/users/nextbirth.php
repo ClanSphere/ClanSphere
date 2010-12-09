@@ -10,13 +10,15 @@ $cs_lang = cs_translate('users');
 $options = cs_sql_option(__FILE__,'users');
 
 if($data['day'] != $time_now['2'].$time_now['1']) {
+
   $nextday = cs_datereal('d', cs_time()+$options['nextbirth_time_interval']);
   $nextmonth = cs_datereal('m', cs_time()+$options['nextbirth_time_interval']);
+  $nextmonth = $nextmonth == '01' ? 13 : $nextmonth;
   $data['day'] = $time_now['2'].$time_now['1'];
 
   $select = 'users_id, users_nick, users_age';
   $where = "users_hidden NOT LIKE '%users_age%' AND users_active = 1 ";
-  $where .= $nextmonth == $time_now['1'] ? " AND users_age LIKE '%-". $time_now['1'] ."-%'" : "AND (users_age LIKE '%-". $time_now['1'] ."-%' OR users_age LIKE '%-". $nextmonth ."-%')";
+  $where .= ($nextmonth == $time_now['1']) ? " AND users_age LIKE '%-". $time_now['1'] ."-%'" : "AND (users_age LIKE '%-". $time_now['1'] ."-%' OR users_age LIKE '%-". $nextmonth ."-%')";
   $cs_users = cs_sql_select(__FILE__,'users',$select,$where,0,0,0);
   if(!empty($cs_users)) {
     $run=0;
@@ -31,7 +33,7 @@ if($data['day'] != $time_now['2'].$time_now['1']) {
         $run++;
       }
     }
-    
+
     if(!empty($data['users'])) {
       foreach($data['users'] as $sortarray) {
         $column[] = $sortarray['users_month'];
