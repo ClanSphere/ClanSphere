@@ -6,7 +6,8 @@ $cs_lang = cs_translate('ranks');
 $cs_option = cs_sql_option(__FILE__,'ranks');
 
 $select = 'ranks_url, ranks_img, ranks_code';
-$data['ranks'] = cs_sql_select(__FILE__,'ranks',$select,0,$order,0,$cs_option['max_navlist']);
+$data = array();
+$data['ranks'] = cs_sql_select(__FILE__,'ranks',$select,0,0,0,$cs_option['max_navlist']);
 $ranks_loop = count($data['ranks']);
 
 for($run = 0; $run < $ranks_loop; $run++) {
