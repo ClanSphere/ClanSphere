@@ -13,7 +13,6 @@ if($data['day'] != $time_now['2'].$time_now['1']) {
 
   $nextday = cs_datereal('d', cs_time()+$options['nextbirth_time_interval']);
   $nextmonth = cs_datereal('m', cs_time()+$options['nextbirth_time_interval']);
-  $nextmonth = $nextmonth == '01' ? 13 : $nextmonth;
   $data['day'] = $time_now['2'].$time_now['1'];
 
   $select = 'users_id, users_nick, users_age';
@@ -24,6 +23,7 @@ if($data['day'] != $time_now['2'].$time_now['1']) {
     $run=0;
     foreach($cs_users as $birth_users) {
       $birth = explode('-', $birth_users['users_age']);
+      $time_now['1'] = ($time_now['1'] == 12) ? 0 : $time_now['1'];
       if($birth[1].$birth[2] < $nextmonth.$nextday AND $birth[1].$birth[2] > $time_now['1'].$time_now['2']) {
         $data['users'][$run]['users_id'] =  $birth_users['users_id'];
         $data['users'][$run]['users_nick'] = $birth_users['users_nick'];
