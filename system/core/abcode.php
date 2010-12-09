@@ -95,11 +95,11 @@ function cs_abcode_php($matches) {
     $php_code = html_entity_decode($matches[1], ENT_QUOTES, $cs_main['charset']);
     $php_code = str_replace(array("\r\n","\n"),"\r",$php_code);
     $lines = substr_count($php_code,"\r") + 2;
-    
+
     if (strpos($php_code, '<?php') === false) { $without = true; $php_code = '<?php ' . $php_code; }
     $php_code = highlight_string($php_code,TRUE);
     if (!empty($without)) $php_code = str_replace('&lt;?php','',$php_code);
-    
+
     $content['source']['numbers'] = '';
     for($run = 1; $run < $lines; $run++) {
       $content['source']['numbers'] .= $run . ". \r";
@@ -212,7 +212,7 @@ function cs_abcode_align($matches) {
 }
 
 function cs_abcode_urlauto($matches) {
-  
+
   if (strpos($matches[0],'</a>') !== false || strpos($matches[0],'[/threadid]') !== false)
     return $matches[0];
 
@@ -224,10 +224,10 @@ function cs_abcode_urlauto($matches) {
 }
 
 function cs_abcode_url($matches) {
-	
+
   $matches[1] = trim($matches[1]);
   $java = cs_substr($matches[1],0,10);
-  if($java != 'javascript') {
+  if(strtolower($java) != 'javascript') {
     if(empty($matches[2])) {
       $matches[2] = $matches[1];
     }
@@ -307,16 +307,16 @@ function cs_abcode_decode($matches) {
 $replaces = array();
 
 function cs_abcode_load() {
-  
+
   global $replaces, $cs_main;
   if (!empty($replaces)) return;
   $theme = empty($cs_main['def_theme']) || !file_exists('themes/' . $cs_main['def_theme'] . '/abcode/replaces.tpl') ? 'base' : $cs_main['def_theme'];
-  
+
   $replaces = file('themes/' . $theme . '/abcode/replaces.tpl');
 }
 
 function cs_abcode_output($id, $matches = 0, $limit = 0) {
-  
+
   global $replaces;
   if (empty($matches)) return rtrim($replaces[$id]);
   if (empty($limit)) {
@@ -335,9 +335,9 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
 
   $replace = str_replace(array('{','}'),array('&#123;','&#125;'),$replace);
 
-  if(!empty($features)) { 
-    cs_abcode_mode(1); 
-    $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace); 
+  if(!empty($features)) {
+    cs_abcode_mode(1);
+    $replace = preg_replace_callback("=\[php\](.*?)\[/php\]=si","cs_abcode_php",$replace);
   }
 
   if(!empty($smileys)) {
@@ -363,7 +363,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
   $replace = htmlentities($replace, ENT_QUOTES, $cs_main['charset']);
   $replace = preg_replace('=&amp;#(\d+);=si', '&#\\1;', $replace);
   $replace = preg_replace_callback('={(.*?)}=si','cs_abcode_decode',$replace);
-  
+
   if(!empty($features)) {
 
     if(!empty($html)) {
@@ -436,10 +436,10 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
 function cs_abcode_resize ($matches) {
 
   $options = cs_sql_option(__FILE__,'abcode');
-  
+
   $max_width = $options['image_width'];
   $max_height = $options['image_height'];
-  
+
   if ($matches[0]{4} == ']') {
     $img = $matches[1];
     if (is_readable($matches[1]) AND $size = getimagesize($matches[1])) {
