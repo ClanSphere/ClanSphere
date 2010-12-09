@@ -224,7 +224,8 @@ function cs_abcode_urlauto($matches) {
 }
 
 function cs_abcode_url($matches) {
-
+	
+  $matches[1] = trim($matches[1]);
   $java = cs_substr($matches[1],0,10);
   if($java != 'javascript') {
     if(empty($matches[2])) {
