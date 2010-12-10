@@ -4,6 +4,8 @@ CHANGELOG
 ClanSphere 2010.2.1 >> 2011-XX-XX
 ___________________________________________________________
 
+-- Recommended PHP version changed to 5.3.4
+
 -> Fixed abcode create to work again and to remember input (hajo)
 -> Fixed escaping in static pages with rte_html turned on, e.g. ckeditor (hajo)
 -> Fixed xss possibility in url abcode tag (schiri)
