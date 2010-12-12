@@ -235,7 +235,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
           $nick2 = str_replace(' ','',$guestnick);
           $nickchars = strlen($nick2);
           if($nickchars < $op_users['min_letters']) {
-            $error .= sprintf($cs_lang['short_nick'],$op_users['min_letters']) . cs_html_br(1);
+            $error .= sprintf($cs_lang['short_guestnick'],$op_users['min_letters']) . cs_html_br(1);
           }
           $search_nick = cs_sql_count(__FILE__,'users',"users_nick = '" . cs_sql_escape($guestnick) . "'");
           if(!empty($search_nick)) {
@@ -414,7 +414,7 @@ function cs_comments_edit($mod,$action,$com_id,$mod_name,$more = 'id') {
           $nick2 = str_replace(' ','',$guestnick);
           $nickchars = strlen($nick2);
           if($nickchars < $op_users['min_letters']) {
-            $error .= sprintf($cs_lang['short_nick'],$op_users['min_letters']) . cs_html_br(1);
+            $error .= sprintf($cs_lang['short_guestnick'],$op_users['min_letters']) . cs_html_br(1);
           }
           $search_nick = cs_sql_count(__FILE__,'users',"users_nick = '" . cs_sql_escape($guestnick) . "'");
           if(!empty($search_nick)) {
