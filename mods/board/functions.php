@@ -1,4 +1,6 @@
 <?php
+// ClanSphere 2010 - www.clansphere.net
+// $Id$
 
 function getNextThread($catid, $threads_time)
 {
@@ -155,7 +157,8 @@ function checkLastEdit($string ,$cs_lang ,$offset = 0)
   return $sub_result;
 }
 //-----------------------------------------------------------------------------
-function last_comment($board_id, $users_id = 0, $users_limit = 20) {
+function last_comment($board_id, $users_id = 0, $users_limit = 20)
+{
   if(!empty($users_id)) {
     $comments_read = cs_sql_select(__FILE__,'read red','read_since','red.threads_id = ' . $board_id . ' AND red.users_id = ' . $users_id);
     if (!empty($comments_read['read_since'])) {
@@ -191,7 +194,8 @@ function last_comment($board_id, $users_id = 0, $users_limit = 20) {
     return 0;
 }
 //-----------------------------------------------------------------------------
-function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0, $count_comments=1, $count_threads=1) {
+function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0, $count_comments=1, $count_threads=1)
+{
   $array_result = array();
   $toplist = array();
   $return = array();
@@ -215,10 +219,10 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
   $count_limit = empty($count_limit) ? count($array_result) : $count_limit;
   
   if(!empty($count_users_active)) {
-    $user_cond = '(';
+    $user_cond = 'users_id IN (';
     foreach ($array_result as $users_id => $comments)
-      $user_cond .= 'users_id = "' . $users_id . '" OR ';
-    $user_cond = substr($user_cond, 0, -4);
+      $user_cond .= $users_id . ', ';
+    $user_cond = substr($user_cond, 0, -2) . ')';
     $user_cond .= ') AND users_active = 1 AND users_delete = 0';
 
     $users_active = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
@@ -231,9 +235,10 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
     }
     if (!empty($toplist)) {
       
-      $user_cond = '';
-      foreach ($toplist as $users_id => $noneed) $user_cond .= 'users_id = "' . $users_id . '" OR '; // Select only the users needed
-      $user_cond = substr($user_cond, 0, -4);
+      $user_cond = 'users_id IN (';
+      foreach ($toplist as $users_id => $noneed)
+        $user_cond .= $users_id . ', ';
+      $user_cond = substr($user_cond, 0, -2) . ')';
 
       $user = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
       
