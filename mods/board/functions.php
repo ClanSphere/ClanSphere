@@ -222,8 +222,7 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
     $user_cond = 'users_id IN (';
     foreach ($array_result as $users_id => $comments)
       $user_cond .= $users_id . ', ';
-    $user_cond = substr($user_cond, 0, -2) . ')';
-    $user_cond .= ') AND users_active = 1 AND users_delete = 0';
+    $user_cond = substr($user_cond, 0, -2) . ') AND users_active = 1 AND users_delete = 0';
 
     $users_active = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
     return empty($users_active) ? 0 : count($users_active);
