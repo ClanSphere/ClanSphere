@@ -6,9 +6,11 @@ ___________________________________________________________
 
 -- Recommended PHP version changed to 5.3.4
 
+>> Security: Fixed xss possibility in url abcode tag (schiri)
+
+-> Added database subtype support to switch between MySQL storage engines (hajo)
 -> Fixed abcode create to work again and to remember input (hajo)
 -> Fixed escaping in static pages with rte_html turned on, e.g. ckeditor (hajo)
--> Fixed xss possibility in url abcode tag (schiri)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
