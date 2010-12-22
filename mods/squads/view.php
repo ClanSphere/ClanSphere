@@ -53,6 +53,10 @@ if(empty($data['squad']['squads_picture'])) {
   $data['squad']['squads_pic'] = cs_html_img($place,$size[1],$size[0]);
 }
 
+//no squad found but members inside needs the following two lines to work
+$data['squad']['clans_tag']    = isset($data['squad']['clans_tag'])    ? $data['squad']['clans_tag']    : '';
+$data['squad']['clans_tagpos'] = isset($data['squad']['clans_tagpos']) ? $data['squad']['clans_tagpos'] : '';
+
 
 //members
 $select = 'mem.members_admin AS members_admin, mem.members_task AS members_task, mem.members_since AS members_since, ';
