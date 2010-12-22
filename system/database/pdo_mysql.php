@@ -41,14 +41,15 @@ function cs_sql_connect($cs_db, $test = 0) {
 function cs_sql_replace($replace) {
 
   global $cs_db;
+  $subtype = empty($cs_db['subtype']) ? 'myisam' : $cs_db['subtype'];
   #engine since 4.0.18, but collation works since 4.1.8
   $version = $cs_db['con']->getAttribute(PDO::ATTR_SERVER_VERSION);
   $myv = explode('.', $version);
   settype($myv[2], 'integer');
   if($myv[0] > 4 OR $myv[0] == 4 AND $myv[1] > 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] > 7)
-    $engine = ' ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
-  else
-    $engine = ' TYPE=MyISAM CHARACTER SET utf8';
+	$engine = ' ENGINE=' . $subtype . ' DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
+	else
+	$engine = ' TYPE=' . $subtype . ' CHARACTER SET utf8';
 
   $replace = str_replace('{optimize}','OPTIMIZE TABLE',$replace);
   $replace = str_replace('{serial}','int(8) unsigned NOT NULL auto_increment',$replace);
