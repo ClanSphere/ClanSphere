@@ -62,6 +62,13 @@
    </td>
  </tr>
  <tr>
+  <td class="leftc">{lang:subtype}</td>
+  <td class="leftb">
+    <input type="text" name="subtype" value="{value:subtype}" maxlength="200" size="50" /><br />
+    {lang:subtype_info}
+   </td>
+ </tr>
+ <tr>
   <td class="leftc">{lang:place}</td>
   <td class="leftb">
     <input type="text" name="place" value="{value:place}" maxlength="200" size="50" /><br />

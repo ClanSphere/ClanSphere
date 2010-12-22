@@ -13,6 +13,7 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
 
   $cs_db['hash'] = $_POST['hash'];
   $cs_db['type'] = $_POST['type'];
+  $cs_db['subtype'] = $_POST['subtype'];
   $cs_db['place'] = $_POST['place'];
   $cs_db['user'] = $_POST['user'];
   $cs_db['pwd'] = $_POST['pwd'];
@@ -58,6 +59,7 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
 
     $setup_php = "<?php\n\n\$cs_db['hash'] = '" . $cs_db['hash'] . "'; # don't change!\n";
     $setup_php .= "\$cs_db['type'] = '" . $cs_db['type'] . "';\n";
+    $setup_php .= "\$cs_db['subtype'] = '" . $cs_db['subtype'] . "';\n";
     $setup_php .= "\$cs_db['place'] = '" . $cs_db['place'] . "';\n";
     $setup_php .= "\$cs_db['user'] = '" . $cs_db['user'] . "';\n";
     $setup_php .= "\$cs_db['pwd'] = '" . $cs_db['pwd'] . "';\n";
@@ -91,8 +93,7 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
 }
 else {
 
-  $cs_db = array('hash' => '', 'type' => '', 'place' => 'localhost',
-  'user' => '', 'pwd' => '', 'name' => '', 'prefix' => 'cs');
+  $cs_db = array('hash' => '', 'type' => '', 'subtype' => '', 'place' => 'localhost', 'user' => '', 'pwd' => '', 'name' => '', 'prefix' => 'cs');
   $log = array('save_actions' => 0, 'save_errors' => 0);
 }
 
@@ -136,6 +137,7 @@ if(!empty($setup_exists)) {
     }
   }
 
+  $data['value']['subtype'] = $cs_db['subtype'];
   $data['value']['charset'] = $cs_main['charset'];
   $data['value']['place'] = $cs_db['place'];
   $data['value']['name'] = $cs_db['name'];

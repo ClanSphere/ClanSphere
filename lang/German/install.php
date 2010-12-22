@@ -70,8 +70,10 @@ $cs_lang['body_settings']  = 'Erstellung einer Setup Datei f&uuml;r das Portal';
 
 $cs_lang['hash'] = 'Verschl&uuml;sselung';
 $cs_lang['hash_info'] = 'Sha1 wird empfohlen';
-$cs_lang['type'] = 'Datenbank Server';
+$cs_lang['type'] = 'Datenbank Typ';
 $cs_lang['type_info'] = 'Meistens ist dies MySQL (mysql)';
+$cs_lang['subtype'] = 'Datenbank Speicherungstyp';
+$cs_lang['subtype_info'] = 'Nur bei MySQL! Verwendet myisam wenn leer gelassen';
 $cs_lang['place'] = 'Ort der Datenbank';
 $cs_lang['place_info'] = 'Angabe von IP, DNS, oder nichts bei UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'Bei SQLite gesch&uuml;tzten Pfad mit Dateinamen angeben';

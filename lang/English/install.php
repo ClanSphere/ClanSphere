@@ -70,10 +70,12 @@ $cs_lang['body_settings']  = 'Creating a setup file for the portal';
 
 $cs_lang['hash'] = 'Encryption type';
 $cs_lang['hash_info'] = 'Sha1 is recommended';
-$cs_lang['type'] = 'Database Server';
+$cs_lang['type'] = 'Database Type';
 $cs_lang['type_info'] = 'In most cases this will be MySQL (mysql)';
+$cs_lang['subtype'] = 'Database Storage Engine';
+$cs_lang['subtype_info'] = 'MySQL only! Defaults to myisam if empty';
 $cs_lang['place'] = 'Location of Database';
-$cs_lang['place_info'] = 'Angabe von IP, DNS, oder nichts bei UNIX Domain Socket';
+$cs_lang['place_info'] = 'Insert an IP, DNS, or nothing for UNIX Domain Socket';
 $cs_lang['sqlite_info'] = 'If SQLite please enter the total path to the database file.';
 $cs_lang['user'] = 'User (Database)';
 $cs_lang['pwd'] = 'Password (Database)';
