@@ -27,6 +27,10 @@
     <td class="leftb">{sqlinfo:type}</td>
   </tr>
   <tr>
+    <td class="leftc" style="width:240px">{icon:db} {lang:subtype}</td>
+    <td class="leftb">{sqlinfo:subtype}</td>
+  </tr>
+  <tr>
     <td class="leftc" style="width:240px">{icon:db_status} {lang:host}</td>
     <td class="leftb">{sqlinfo:host}</td>
   </tr>

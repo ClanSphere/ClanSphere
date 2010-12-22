@@ -9,6 +9,7 @@ global $cs_db;
 $sql_infos = cs_sql_version(__FILE__);
 
 $data['sqlinfo']['type'] = $sql_infos['type'];
+$data['sqlinfo']['subtype'] = empty($sql_infos['subtype']) ? '' : $sql_infos['subtype'];
 $data['sqlinfo']['host'] = $sql_infos['host'];
 $data['sqlinfo']['encoding'] = $sql_infos['encoding'];
 $data['sqlinfo']['server'] = $sql_infos['server'];

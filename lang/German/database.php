@@ -7,7 +7,8 @@ $cs_lang['modtext']  = 'Aktualisiert das Portalsystem';
 
 // roots.php
 $cs_lang['db_infos'] = 'Datenbank Informationen';
-$cs_lang['type'] = 'Datenbank Server';
+$cs_lang['type'] = 'Datenbank Typ';
+$cs_lang['subtype'] = 'Speicherungstyp';
 $cs_lang['encoding'] = 'Zeichensatz';
 $cs_lang['client'] = 'Client Version';
 $cs_lang['host'] = 'Ort der Datenbank';

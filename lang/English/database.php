@@ -7,7 +7,8 @@ $cs_lang['modtext']  = 'Database actions take place here';
 
 // roots.php
 $cs_lang['db_infos'] = 'Database information';
-$cs_lang['type'] = 'Database Server';
+$cs_lang['type'] = 'Database Type';
+$cs_lang['subtype'] = 'Storage Engine';
 $cs_lang['encoding'] = 'Encoding';
 $cs_lang['client'] = 'Client Version';
 $cs_lang['host'] = 'Database host';

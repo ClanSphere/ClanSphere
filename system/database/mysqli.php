@@ -266,6 +266,7 @@ function cs_sql_version($cs_file) {
 
 	$sql_infos['encoding'] = mysqli_character_set_name($cs_db['con']);
 	$sql_infos['type'] = 'MySQL (mysqli)';
+  $sql_infos['subtype'] = empty($cs_db['subtype']) ? 'myisam' : $cs_db['subtype'];
 	$sql_infos['client'] = mysqli_get_client_info();
 	$sql_infos['host'] = mysqli_get_host_info($cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_version', mysqli_error($cs_db['con']));
 	$sql_infos['server'] = mysqli_get_server_info($cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_version', mysqli_error($cs_db['con']));
