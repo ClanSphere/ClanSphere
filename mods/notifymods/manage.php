@@ -7,7 +7,7 @@ $cs_lang = cs_translate('notifymods');
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start']; 
 $cs_sort[1] = 'users_nick DESC';
 $cs_sort[2] = 'users_nick ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $notifymods_count = cs_sql_count(__FILE__,'notifymods');
 

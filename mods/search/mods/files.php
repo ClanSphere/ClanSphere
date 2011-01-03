@@ -2,14 +2,14 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'files_name DESC, files_time DESC';
 $cs_sort[2] = 'files_name ASC, files_time DESC';
 $cs_sort[3] = 'categories_id DESC, files_name ASC';
 $cs_sort[4] = 'categories_id ASC, files_name ASC';
 $cs_sort[5] = 'files_time DESC, files_name ASC';
 $cs_sort[6] = 'files_time ASC, files_name ASC';
-empty($_REQUEST['sort']) ? $sort = 5 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 5 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $where1 = $data['search']['where'] .'&text='. $data['search']['text'] .'&submit=1';

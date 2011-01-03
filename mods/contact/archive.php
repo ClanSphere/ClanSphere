@@ -4,14 +4,14 @@
 
 $cs_lang = cs_translate('contact');
 
-empty($_GET['start']) ? $start = 0 : $start = $_GET['start'];
+$start = empty($_GET['start']) ? 0 : $_GET['start'];
 $cs_sort[1] = 'mail_name DESC';
 $cs_sort[2] = 'mail_name ASC';
 $cs_sort[3] = 'mail_subject DESC';
 $cs_sort[4] = 'mail_subject ASC';
 $cs_sort[5] = 'mail_time DESC';
 $cs_sort[6] = 'mail_time ASC';
-empty($_GET['sort']) ? $sort = 5 : $sort = $_GET['sort'];
+$sort = empty($_GET['sort']) ? 5 : $_GET['sort'];
 $order = $cs_sort[$sort];
 
 $select = 'mail_id, mail_name, categories_id, mail_subject, mail_time';

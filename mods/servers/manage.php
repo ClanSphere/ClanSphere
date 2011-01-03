@@ -6,10 +6,10 @@ $cs_lang = cs_translate('servers');
 
 $data = array();
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'servers_name DESC';
 $cs_sort[2] = 'servers_name ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $server_count = cs_sql_count(__FILE__,'servers');
 

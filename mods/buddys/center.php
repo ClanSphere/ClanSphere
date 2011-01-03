@@ -5,7 +5,7 @@
 $cs_lang = cs_translate('buddys');
 
 $buddy_data = array();
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 
 $users_id = $account['users_id'];
 $buddys_count = cs_sql_count(__FILE__,'buddys',"users_id = '" . $users_id . "'");

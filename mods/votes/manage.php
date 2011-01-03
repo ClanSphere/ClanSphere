@@ -4,14 +4,14 @@
 
 $cs_lang = cs_translate('votes');
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'votes_start DESC';
 $cs_sort[2] = 'votes_start ASC';
 $cs_sort[3] = 'votes_end DESC';
 $cs_sort[4] = 'votes_end ASC';
 $cs_sort[5] = 'votes_question DESC';
 $cs_sort[6] = 'votes_question ASC';
-empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 3 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $cs_vote = cs_sql_select(__FILE__,'votes','*',0,$order,$start,$account['users_limit']);

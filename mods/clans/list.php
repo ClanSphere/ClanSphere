@@ -6,12 +6,12 @@ $cs_lang = cs_translate('clans');
 
 $op_clans = cs_sql_option(__FILE__,'clans');
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'clans_name DESC';
 $cs_sort[2] = 'clans_name ASC';
 $cs_sort[3] = 'clans_short DESC';
 $cs_sort[4] = 'clans_short ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $clans_count = cs_sql_count(__FILE__,'clans');
 

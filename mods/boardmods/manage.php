@@ -11,7 +11,7 @@ $where = empty($categories_id) ? 0 : 'categories_id = ' . cs_sql_escape($categor
 empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start']; 
 $cs_sort[1] = 'users_nick DESC';
 $cs_sort[2] = 'users_nick ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $boardmods_count = cs_sql_count(__FILE__,'boardmods',$where);
 

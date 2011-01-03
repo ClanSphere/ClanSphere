@@ -8,8 +8,8 @@ $data = array();
 
 settype($categories_id,'integer');
 
-empty($_REQUEST['where']) ? $categories_id = 0 : $categories_id = $_REQUEST['where'];
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$categories_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 if(!empty($_POST['categories_id'])) {
   $categories_id = $_POST['categories_id'];
 }
@@ -20,7 +20,7 @@ $cs_sort[3] = 'replays_team1 DESC';
 $cs_sort[4] = 'replays_team1 ASC';
 $cs_sort[5] = 'replays_team2 DESC';
 $cs_sort[6] = 'replays_team2 ASC';
-empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 3 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $replays_count = cs_sql_count(__FILE__,'replays',$where);
  

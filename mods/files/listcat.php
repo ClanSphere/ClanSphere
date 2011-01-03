@@ -21,7 +21,7 @@ $cs_sort[3] = 'files_time DESC';
 $cs_sort[4] = 'files_time ASC';
 $cs_sort[5] = 'files_size DESC';
 $cs_sort[6] = 'files_size ASC';
-empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 3 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $where_acc = 'categories_access <= ' . (int) $account['access_files'] . ' AND categories_id = ' . (int) $categories_id;

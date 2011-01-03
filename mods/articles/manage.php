@@ -4,8 +4,8 @@
 
 $cs_lang = cs_translate('articles');
 
-empty($_REQUEST['where']) ? $categories_id = 0 : $categories_id = $_REQUEST['where'];
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$categories_id = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 if(!empty($_POST['categories_id'])) {
   $categories_id = $_POST['categories_id'];
 }
@@ -14,7 +14,7 @@ $cs_sort[1] = 'articles_headline DESC';
 $cs_sort[2] = 'articles_headline ASC';
 $cs_sort[3] = 'articles_time DESC';
 $cs_sort[4] = 'articles_time ASC';
-empty($_REQUEST['sort']) ? $sort = 3 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 3 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $articles_count = cs_sql_count(__FILE__,'articles');
 

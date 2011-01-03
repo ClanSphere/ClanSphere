@@ -2,12 +2,12 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'clans_name DESC';
 $cs_sort[2] = 'clans_name ASC';
 $cs_sort[3] = 'clans_short DESC';
 $cs_sort[4] = 'clans_short ASC';
-empty($_REQUEST['sort']) ? $sort = 2 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $where1 = $data['search']['where'] .'&text='. $data['search']['text'] .'&submit=1';

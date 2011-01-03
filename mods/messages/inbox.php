@@ -17,7 +17,7 @@ $cs_sort[6] = 'messages_view ASC';
 $cs_sort[7] = 'users_nick DESC';
 $cs_sort[8] = 'users_nick ASC';
 
-empty($_REQUEST['sort']) ? $sort = 1 : $sort = (int) $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 1 : (int) $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $option = cs_sql_option(__FILE__,'messages');

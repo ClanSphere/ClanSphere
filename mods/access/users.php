@@ -3,7 +3,7 @@
 // $Id$
 $cs_lang = cs_translate('access');
 $cs_post = cs_post();
-empty($_REQUEST['id']) ? $access_id = 0 : $access_id = $_REQUEST['id'];
+$access_id = empty($_REQUEST['id']) ? 0 : $_REQUEST['id'];
 
 $data = array();
 

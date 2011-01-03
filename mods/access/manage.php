@@ -4,14 +4,14 @@
 
 $cs_lang = cs_translate('access');
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'access_name DESC';
 $cs_sort[2] = 'access_name ASC';
 $cs_sort[3] = 'access_access DESC';
 $cs_sort[4] = 'access_access ASC';
 $cs_sort[5] = 'access_clansphere DESC';
 $cs_sort[6] = 'access_clansphere ASC';
-empty($_REQUEST['sort']) ? $sort = 5 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 5 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $access_count = cs_sql_count(__FILE__,'access');
 

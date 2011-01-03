@@ -5,7 +5,7 @@
 $cs_lang = cs_translate('messages');
 require_once('mods/messages/functions.php');
 
-empty($_REQUEST['start']) ? $start = 0 : $start = $_REQUEST['start'];
+$start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'messages_time DESC';
 $cs_sort[2] = 'messages_time ASC';
 $cs_sort[3] = 'messages_subject DESC';
@@ -14,7 +14,7 @@ $cs_sort[5] = 'messages_view DESC';
 $cs_sort[6] = 'messages_view ASC';
 $cs_sort[7] = 'users_nick DESC';
 $cs_sort[8] = 'users_nick ASC';
-empty($_REQUEST['sort']) ? $sort = 1 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 1 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 
 $receiver_count = 0;

@@ -9,7 +9,7 @@ $cs_sort[1] = 'faq_question DESC';
 $cs_sort[2] = 'faq_question ASC';
 $cs_sort[3] = 'categories_id DESC';
 $cs_sort[4] = 'categories_id ASC';
-empty($_REQUEST['sort']) ? $sort = 4 : $sort = $_REQUEST['sort'];
+$sort = empty($_REQUEST['sort']) ? 4 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $faq_count = cs_sql_count(__FILE__,'faq');
 
