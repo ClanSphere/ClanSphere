@@ -7,6 +7,19 @@
   </tr>
 </table>
 <br />
+
+{if:warning}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="centerc">{icon:error} {lang:warning_id}</td>
+  </tr>
+  <tr>
+    <td class="centerb">{data:warning_detail}</td>
+  </tr>
+</table>
+<br />
+{stop:warning}
+
 <form method="post" id="access_create" action="{action:form}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
@@ -36,7 +49,7 @@
       <td class="leftb">
         <input type="hidden" name="id" value="{access2:id}" />
         <input type="submit" name="submit" value="{lang:edit}" />
-              </td>
+      </td>
     </tr>
   </table>
 </form>

@@ -35,3 +35,10 @@ $cs_lang['users_head']  = 'Individual users can be moved from their current acce
 $cs_lang['user_added']  = 'The user was added successfully';
 $cs_lang['user_account']  = 'You can not move yourself';
 $cs_lang['no_access']  = 'No access selected';
+
+$cs_lang['warning_id']  = 'Warning: Your are editing a preserved access level. Keep this in mind while changing values!';
+$cs_lang['warning_id_1']  = 'This access level is preserved for all kinds of visitors';
+$cs_lang['warning_id_2']  = 'This access level is preserved for new and default users';
+$cs_lang['warning_id_3']  = 'This access level is preserved for members of your teams';
+$cs_lang['warning_id_4']  = 'This access level is preserved for higher ranked members';
+$cs_lang['warning_id_5']  = 'This access level is preserved for site owner and admins';

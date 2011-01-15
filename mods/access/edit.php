@@ -99,7 +99,10 @@ if(!empty($error) OR !isset($cs_post['submit'])) {
   }
   
   $data['access2']['id'] = $access_id;
-      
+
+  $data['if']['warning'] = ($access_id < 6) ? 1 : 0;
+  $data['data']['warning_detail'] = empty($data['if']['warning']) ? '' : $cs_lang['warning_id_' . $access_id];
+
   echo cs_subtemplate(__FILE__,$data,'access','edit');
 }
 else {

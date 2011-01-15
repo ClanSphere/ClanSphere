@@ -34,4 +34,11 @@ $cs_lang['user_ingroup']  = 'Der Benutzer ist bereits in dieser Gruppe';
 $cs_lang['users_head']  = 'Einzelne Benutzer k&ouml;nnen hier aus ihrem jetzigen Zugriff in diesen Zugriff verschoben werden';
 $cs_lang['user_added']  = 'Der Benutzer wurde erfolgreich hinzugef&uuml;gt';
 $cs_lang['user_account']  = 'Man kann sich nicht selbst verschieben';
-$cs_lang['no_access']  = 'Kein Access angeben';
+$cs_lang['no_access']  = 'Kein Zugriff vorhanden';
+
+$cs_lang['warning_id']  = 'Warnung: Sie bearbeiten ein reserviertes Zugriffslevel. Denken sie beim Ver&auml;ndern der Werte daran!';
+$cs_lang['warning_id_1']  = 'Dieses Zugriffslevel ist reserviert f&uuml;r alle Varianten von Besuchern';
+$cs_lang['warning_id_2']  = 'Dieses Zugriffslevel ist reserviert f&uuml;r alle neuen und normalen Benutzer';
+$cs_lang['warning_id_3']  = 'Dieses Zugriffslevel ist reserviert f&uuml;r Mitglieder ihrer Teams';
+$cs_lang['warning_id_4']  = 'Dieses Zugriffslevel ist reserviert f&uuml;r h&ouml;herstufige Mitglieder';
+$cs_lang['warning_id_5']  = 'Dieses Zugriffslevel ist reserviert f&uuml;r den Seitenbetreiber und Administratoren';
