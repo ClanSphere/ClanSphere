@@ -4,7 +4,7 @@ CHANGELOG
 ClanSphere 2010.2.1 >> 2011-XX-XX
 ___________________________________________________________
 
--- Recommended PHP version changed to 5.3.4
+-- Recommended PHP version changed to 5.3.5
 
 >> Security: Fixed xss possibility in url abcode tag (schiri)
 
