@@ -92,7 +92,7 @@
     </tr>
     <tr>
       <td class="leftc">{icon:yast_group_add} {create:squad_lang}</td>
-      <td class="leftb">{create:squad_drop}</td>
+      <td class="leftb">{create:squad_drop}<br />{lang:squad_info2}</td>
     </tr>
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>

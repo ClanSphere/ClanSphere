@@ -88,7 +88,8 @@
   <tr>
     <td class="leftc">{icon:yast_group_add} {squads:lang}</td>
     <td class="leftb">
-      {squads:dropdown}
+      {squads:dropdown}<br />
+      {lang:squad_info2}
     </td>
   </tr>
   <tr>

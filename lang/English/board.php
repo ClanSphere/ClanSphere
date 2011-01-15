@@ -104,6 +104,7 @@ $cs_lang['lev_3'] = 'Create';
 $cs_lang['lev_4'] = 'Edit';
 $cs_lang['lev_5'] = 'Remove';
 $cs_lang['only_read'] = 'Only for reading';
+$cs_lang['squad_info2'] = 'Alternative to required access, which should be increased';
 
 //del_abo.php
 $cs_lang['mod2']    = 'Subscription';

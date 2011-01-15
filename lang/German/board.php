@@ -104,6 +104,7 @@ $cs_lang['lev_3'] = 'mit Erstellen';
 $cs_lang['lev_4'] = 'mit Bearbeiten';
 $cs_lang['lev_5'] = 'mit Entfernen'; 
 $cs_lang['only_read'] = 'Nur lesen';
+$cs_lang['squad_info2'] = 'Alternative zum erforderlichen Zugriff, dieser sollte daher erh&ouml;ht werden';
 
 //del_abo.php
 $cs_lang['mod2']  = 'Abonnement';
