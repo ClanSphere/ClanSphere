@@ -4,7 +4,7 @@ EXTERNALS
 ClanSphere uses parts of the following Software:
 
 - amLine 1.6.4.1 (http://www.amcharts.com)
-- CKEditor 3.4.2 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
+- CKEditor 3.4.3 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
 - GameQ 1.12 (http://gameq.sourceforge.net)
 - jQuery 1.4.4 (http://www.jquery.com)
 - Slimbox 2.0.4 (http://www.digitalia.be/software/slimbox2)
