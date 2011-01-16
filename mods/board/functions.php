@@ -202,18 +202,18 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
     $result = array();
   }
   elseif(empty($count_comments)) {
-    $from = 'threads thr INNER JOIN {pre}_users usr ON thr.users_id = usr.users_id';
-    $select = 'COUNT(thr.users_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $from = 'threads thr INNER JOIN {pre}_users usr ON thr.users_id = usr.users_id GROUP BY thr.users_id';
+    $select = 'COUNT(thr.threads_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
     $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_threads DESC', $start, $count_limit);
   }
   elseif(empty($count_threads)) {
-    $from = 'comments com INNER JOIN {pre}_users usr ON com.users_id = usr.users_id';
-    $select = 'COUNT(com.users_id) AS num_comments, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $from = 'comments com INNER JOIN {pre}_users usr ON com.users_id = usr.users_id GROUP BY com.users_id';
+    $select = 'COUNT(com.comments_id) AS num_comments, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
     $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_comments DESC', $start, $count_limit);
   }
   else {
-    $from = 'comments com LEFT JOIN {pre}_threads thr ON com.users_id = thr.users_id INNER JOIN {pre}_users usr ON com.users_id = usr.users_id';
-    $select = 'COUNT(com.users_id) AS num_comments, COUNT(thr.users_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $from = 'comments com LEFT JOIN {pre}_threads thr ON com.users_id = thr.users_id INNER JOIN {pre}_users usr ON com.users_id = usr.users_id GROUP BY com.users_id';
+    $select = 'COUNT(com.comments_id) AS num_comments, COUNT(thr.threads_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
     $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_comments DESC', $start, $count_limit);
   }
 
