@@ -196,62 +196,27 @@ function last_comment($board_id, $users_id = 0, $users_limit = 20)
 //-----------------------------------------------------------------------------
 function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0, $count_comments=1, $count_threads=1)
 {
-  $array_result = array();
-  $toplist = array();
-  $return = array();
-  $count = 0;
+  $where = empty($count_users_active) ? '' : 'users_active = 1 AND users_delete = 0';
 
-  $comments = empty($count_comments) ? 0 : cs_sql_select(__FILE__, 'comments GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
-  $threads = empty($count_threads) ? 0 : cs_sql_select(__FILE__, 'threads GROUP BY (users_id)', 'COUNT(*) AS important, users_id', 0, 'important DESC', 0, 0);
-
-  if (!empty($threads))
-    foreach ($threads as $array)
-      $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
-  if (!empty($comments))
-    foreach ($comments as $array)
-      $array_result[ $array['users_id'] ] = empty($array_result[ $array['users_id'] ]) ? $array['important'] : $array_result[ $array['users_id'] ] +  $array['important'];
-
-  if (empty($array_result)) return 0;
-  
-  if (is_array($array_result))
-    arsort($array_result);
-  
-  $count_limit = empty($count_limit) ? count($array_result) : $count_limit;
-  
-  if(!empty($count_users_active)) {
-    $user_cond = 'users_id IN (';
-    foreach ($array_result as $users_id => $comments)
-      $user_cond .= $users_id . ', ';
-    $user_cond = substr($user_cond, 0, -2) . ') AND users_active = 1 AND users_delete = 0';
-
-    $users_active = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
-    return empty($users_active) ? 0 : count($users_active);
+  if(empty($count_comments) AND empty($count_threads)) {
+    $result = array();
+  }
+  elseif(empty($count_comments)) {
+    $from = 'comments com INNER JOIN {pre}_users usr ON com.users_id = usr.users_id';
+    $select = 'COUNT(thr.users_id AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_threads DESC', $start, $count_limit);
+  }
+  elseif(empty($count_threads)) {
+    $from = 'comments com INNER JOIN {pre}_users usr ON com.users_id = usr.users_id';
+    $select = 'COUNT(com.users_id) AS num_comments, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_comments DESC', $start, $count_limit);
   }
   else {
-    if(is_array($array_result)) {
-      $toplist = array_slice ($array_result, $start, $count_limit, true);
-      $count = count($array_result);
-    }
-    if (!empty($toplist)) {
-      
-      $user_cond = 'users_id IN (';
-      foreach ($toplist as $users_id => $noneed)
-        $user_cond .= $users_id . ', ';
-      $user_cond = substr($user_cond, 0, -2) . ')';
-
-      $user = cs_sql_select (__FILE__, 'users', 'users_id, users_nick, users_active, users_delete', $user_cond, 0, 0, 0);
-      
-      $array_result = array();
-      foreach($user as $array)
-      $array_result[ $array['users_id'] ] = $array;
-    
-      foreach ($toplist as $users_id => $comments) {
-        $array_return[ $users_id ] = empty($array_result[$users_id]) ? '' : $array_result[$users_id];
-        $array_return[ $users_id ]['comments'] = $comments;
-      }
-    
-      return $array_return;
-    }
+    $from = 'comments com LEFT JOIN {pre}_threads thr ON com.users_id = thr.users_id INNER JOIN {pre}_users usr ON com.users_id = usr.users_id';
+    $select = 'COUNT(com.users_id) AS num_comments, COUNT(thr.users_id AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_comments DESC', $start, $count_limit);
   }
+
+  return $result;
 }
 //-----------------------------------------------------------------------------
