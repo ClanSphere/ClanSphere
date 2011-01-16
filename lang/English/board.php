@@ -17,6 +17,7 @@ $cs_lang['body_active']    = 'List of Topics with the most hits';
 $cs_lang['hits'] = 'Hits';
 $cs_lang['thread'] = 'Thread';
 $cs_lang['threads'] = 'Threads:';
+$cs_lang['threads2'] = 'Threads';
 $cs_lang['replies'] = 'Postings';
 $cs_lang['lastpost'] = 'Last post';
 $cs_lang['important'] = 'Important:';

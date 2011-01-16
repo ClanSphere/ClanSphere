@@ -184,7 +184,7 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
 	}
 	$sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
 	if (!$sql_data = $cs_db['con']->query($sql_query)) {
-		cs_error_sql($cs_file, 'cs_sql_select', cs_sql_error());
+		cs_error_sql($cs_file, 'cs_sql_select', $sql_query . ' => ' . cs_sql_error());
 		return NULL;
 	}
 	if($max == 1) {

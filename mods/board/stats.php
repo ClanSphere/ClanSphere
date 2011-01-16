@@ -13,14 +13,18 @@ $data['stats']['posts'] = cs_sql_count(__FILE__,'comments','comments_mod = \'boa
 $data['stats']['users'] = cs_sql_count(__FILE__,'users', 'users_active = 1 AND users_delete = 0');
 $data['stats']['categories'] = cs_sql_count(__FILE__,'categories','categories_mod = \'board\'');
 $data['stats']['boards'] = cs_sql_count(__FILE__,'board');
-$data['stats']['users_active'] = users_comments_toplist(0, 0, 1);
+$data['stats']['users_active'] = cs_sql_count(__FILE__,'comments','comments_mod = \'board\'', 'users_id');
 
 
-$user = users_comments_toplist(3,0);
+$user = users_comments_toplist(3,0,0,1,0);
 $data['stats']['toplist'] = '';
 if(!empty($user)) {
-  foreach ($user AS $users_id => $users_data)
-    $data['stats']['toplist'] .= empty($users_data['users_nick']) ? '- (' . $users_data['comments'] . ' ' . $cs_lang['posts'] . '), ' : cs_user($users_id, $users_data['users_nick'], $users_data['users_active'], $users_data['users_delete']) . ' (' . $users_data['comments'] . ' ' . $cs_lang['posts'] . '), ';
+  foreach ($user AS $users_data)
+    $data['stats']['toplist'] .= empty($users_data['users_nick']) ?
+      '- (' . $users_data['num_comments'] . ' ' . $cs_lang['posts'] . '), ' :
+      cs_user($users_data['users_id'], $users_data['users_nick'], $users_data['users_active'], $users_data['users_delete'])
+      . ' (' . $users_data['num_comments'] . ' ' . $cs_lang['posts'] . '), ';
+
   $data['stats']['toplist'] = substr($data['stats']['toplist'],0,-2);
 }
 

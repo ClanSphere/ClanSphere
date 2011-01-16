@@ -17,6 +17,7 @@ $cs_lang['body_active']  = 'Liste von Themen mit vielen Hits';
 $cs_lang['hits'] = 'Hits';
 $cs_lang['thread'] = 'Thema';
 $cs_lang['threads'] = 'Themen:';
+$cs_lang['threads2'] = 'Themen';
 $cs_lang['replies'] = 'Beitr&auml;ge';
 $cs_lang['lastpost'] = 'Letzter Beitrag';
 $cs_lang['important'] = 'Wichtig:';

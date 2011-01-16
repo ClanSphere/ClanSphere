@@ -16,13 +16,15 @@ $data = array();
 $data['pages']['list'] = cs_pages('board','toplist',$count,$start);
 $i = 0;
 if(!empty($toplist)) {
-  foreach ($toplist AS $users_id => $users_data) {
-    if ($users_id != 0) { //dont list comments of visitors
-      $data['toplist'][$i]['user'] = empty($users_data['users_nick']) ? '' : cs_user ($users_id, $users_data['users_nick'], $users_data['users_active'], $users_data['users_delete']);
-      $data['toplist'][$i]['comments'] = $users_data['comments'];
+  foreach ($toplist AS $users_data) {
+    if ($users_data['users_id'] != 0) { //dont list comments of visitors
+      $data['toplist'][$i]['user'] = empty($users_data['users_nick']) ? '' : 
+        cs_user($users_data['users_id'], $users_data['users_nick'], $users_data['users_active'], $users_data['users_delete']);
       $data['toplist'][$i]['number'] = $i + $start + 1;
-      $data['toplist'][$i]['rank'] = cs_secure(getRankTitle($users_data['comments'], $cs_ranks));
-      $data['toplist'][$i]['class'] = $users_id != $account['users_id'] ? 'leftb' : 'leftc';
+      $data['toplist'][$i]['rank'] = cs_secure(getRankTitle($users_data['num_comments'], $cs_ranks));
+      $data['toplist'][$i]['class'] = $users_data['users_id'] != $account['users_id'] ? 'leftb' : 'leftc';
+      $data['toplist'][$i]['comments'] = $users_data['num_comments'];
+      $data['toplist'][$i]['threads'] = $users_data['num_threads'];
       $i++;
     }
   }
