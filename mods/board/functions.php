@@ -202,8 +202,8 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
     $result = array();
   }
   elseif(empty($count_comments)) {
-    $from = 'comments com INNER JOIN {pre}_users usr ON com.users_id = usr.users_id';
-    $select = 'COUNT(thr.users_id AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $from = 'threads thr INNER JOIN {pre}_users usr ON thr.users_id = usr.users_id';
+    $select = 'COUNT(thr.users_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
     $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_threads DESC', $start, $count_limit);
   }
   elseif(empty($count_threads)) {
@@ -213,7 +213,7 @@ function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0,
   }
   else {
     $from = 'comments com LEFT JOIN {pre}_threads thr ON com.users_id = thr.users_id INNER JOIN {pre}_users usr ON com.users_id = usr.users_id';
-    $select = 'COUNT(com.users_id) AS num_comments, COUNT(thr.users_id AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
+    $select = 'COUNT(com.users_id) AS num_comments, COUNT(thr.users_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick';
     $result = cs_sql_select(__FILE__, $from, $select, $where, 'num_comments DESC', $start, $count_limit);
   }
 
