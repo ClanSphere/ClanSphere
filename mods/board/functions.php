@@ -196,7 +196,7 @@ function last_comment($board_id, $users_id = 0, $users_limit = 20)
 //-----------------------------------------------------------------------------
 function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0, $count_comments=1, $count_threads=1)
 {
-  $having = empty($count_users_active) ? '' : ' HAVING users_active = 1 AND users_delete = 0';
+  $having = " HAVING (com.comments_mod = 'board' OR com.comments_mod = NULL)" . (empty($count_users_active) ? '' : ' AND users_active = 1 AND users_delete = 0');
 
   if(empty($count_comments) AND empty($count_threads)) {
     $result = array();

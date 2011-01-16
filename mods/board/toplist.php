@@ -10,7 +10,7 @@ $toplist = array();
 $cs_ranks = cs_sql_select(__FILE__,'boardranks','boardranks_min, boardranks_name',0,'boardranks_min ASC',0,0);
 
 $toplist = users_comments_toplist($account['users_limit'], $start);
-$count = count(users_comments_toplist());
+$count = cs_sql_count(__FILE__,'comments','comments_mod = \'board\'', 'users_id');
 
 $data = array();
 $data['pages']['list'] = cs_pages('board','toplist',$count,$start);
