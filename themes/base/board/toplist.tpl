@@ -21,7 +21,7 @@
     <td class="{toplist:class}">{toplist:number}</td>
     <td class="{toplist:class}">{toplist:user}</td>
     <td class="{toplist:class}">{toplist:threads}</td>
-    <td class="{toplist:class}">{toplist:comments}</td>
+    <td class="{toplist:class}"><strong>{toplist:comments}</strong></td>
     <td class="{toplist:class}">{toplist:rank}</td>
   </tr>
   {stop:toplist}

@@ -11,7 +11,7 @@
 {if:warning}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
-    <td class="centerc">{icon:error} {lang:warning_id}</td>
+    <td class="centerc">{lang:warning_id}</td>
   </tr>
   <tr>
     <td class="centerb">{data:warning_detail}</td>
