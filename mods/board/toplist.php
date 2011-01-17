@@ -24,7 +24,6 @@ if(!empty($toplist)) {
       $data['toplist'][$i]['rank'] = cs_secure(getRankTitle($users_data['num_comments'], $cs_ranks));
       $data['toplist'][$i]['class'] = $users_data['users_id'] != $account['users_id'] ? 'leftb' : 'leftc';
       $data['toplist'][$i]['comments'] = $users_data['num_comments'];
-      $data['toplist'][$i]['threads'] = $users_data['num_threads'];
       $i++;
     }
   }
