@@ -9,7 +9,7 @@ $array_result = array();
 $toplist = array();
 $cs_ranks = cs_sql_select(__FILE__,'boardranks','boardranks_min, boardranks_name',0,'boardranks_min ASC',0,0);
 
-$toplist = users_comments_toplist($account['users_limit'], $start, 0, 1, 0);
+$toplist = toplist_comments($start, $account['users_limit']);
 $count = cs_sql_count(__FILE__,'comments','comments_mod = \'board\'', 'users_id');
 
 $data = array();

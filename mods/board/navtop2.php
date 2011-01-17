@@ -7,7 +7,7 @@ require_once 'mods/board/functions.php';
 $cs_option = cs_sql_option(__FILE__,'board');
 $data = array();
 
-$toplist = users_comments_toplist($cs_option['max_navtop2'],0,0,0,1);
+$toplist = toplist_threads(0, $cs_option['max_navtop2']);
 
 $data['top2'] = '';
 if(!empty($toplist)) {

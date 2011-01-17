@@ -16,7 +16,7 @@ $data['stats']['boards'] = cs_sql_count(__FILE__,'board');
 $data['stats']['users_active'] = cs_sql_count(__FILE__,'comments','comments_mod = \'board\'', 'users_id');
 
 
-$user = users_comments_toplist(3,0,0,1,0);
+$user = toplist_comments(0, 3);
 $data['stats']['toplist'] = '';
 if(!empty($user)) {
   foreach ($user AS $users_data)

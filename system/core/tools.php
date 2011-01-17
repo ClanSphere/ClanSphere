@@ -36,12 +36,8 @@ function cs_addons($modul,$action,$id,$modul_now) {
               */
               $column = empty($mod['references'][$modul . '_column']) ? $modul . '_id' : $mod['references'][$modul . '_column'];
               $more = empty($mod['references'][$modul . '_where']) ? '' : ' AND (' . $mod['references'][$modul . '_where'] . ')';
-        if ($mod['action'] == 'users' AND $mod['dir'] == 'board') {
-          require_once ('mods/board/functions.php');
-          $count = getUserPosts($id);
-        }
-        else
-          $count = cs_sql_count(__FILE__, $mod['references'][$modul], $column . ' = ' . $id . $more);
+
+            $count = cs_sql_count(__FILE__, $mod['references'][$modul], $column . ' = ' . $id . $more);
           
               $var .= $out . " (" . $count . ")\r\n - ";
             }
