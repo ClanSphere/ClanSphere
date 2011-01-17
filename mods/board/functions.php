@@ -198,8 +198,7 @@ function toplist_threads($first = 0, $limit = 20)
   $from = 'users usr INNER JOIN {pre}_threads thr ON usr.users_id = thr.users_id GROUP BY usr.users_id';
   $select = 'COUNT(*) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick, '
   . 'usr.users_active AS users_active, usr.users_delete AS users_delete';
-  $result = cs_sql_select(__FILE__, $from, $select, 0, 'num_threads DESC', $first, $limit);
-  return $result;
+  return cs_sql_select(__FILE__, $from, $select, 0, 'num_threads DESC, users_nick ASC', $first, $limit);
 }
 //-----------------------------------------------------------------------------
 function toplist_comments($first = 0, $limit = 20)
@@ -207,7 +206,6 @@ function toplist_comments($first = 0, $limit = 20)
   $from = 'users usr INNER JOIN {pre}_comments com ON (usr.users_id = com.users_id AND com.comments_mod = \'board\') GROUP BY usr.users_id';
   $select = 'COUNT(*) AS num_comments, usr.users_id AS users_id, usr.users_nick AS users_nick, '
   . 'usr.users_active AS users_active, usr.users_delete AS users_delete';
-  $result = cs_sql_select(__FILE__, $from, $select, 0, 'num_comments DESC', $first, $limit);
-  return $result;
+  return cs_sql_select(__FILE__, $from, $select, 0, 'num_comments DESC, users_nick ASC', $first, $limit);
 }
 //-----------------------------------------------------------------------------
