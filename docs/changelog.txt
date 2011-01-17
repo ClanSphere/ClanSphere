@@ -11,7 +11,7 @@ ___________________________________________________________
 -> Added database subtype support to switch between MySQL storage engines (hajo)
 -> Fixed abcode create to work again and to remember input (hajo)
 -> Fixed escaping in static pages with rte_html turned on, e.g. ckeditor (hajo)
--> Reworked board toplist and stats so that they do no longer cause heavy sql server load (hajo)
+-> Reworked board toplist, stats, navtop and navtop2 to not cause heavy sql server load (hajo)
 -> Updated CKEditor to 3.4.3 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
