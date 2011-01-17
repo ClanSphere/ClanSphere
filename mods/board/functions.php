@@ -196,16 +196,17 @@ function last_comment($board_id, $users_id = 0, $users_limit = 20)
 //-----------------------------------------------------------------------------
 function users_comments_toplist($count_limit=0, $start=0, $count_users_active=0, $count_comments=1, $count_threads=1)
 {
-  $having = " HAVING (comments_mod = 'board' OR comments_mod = NULL)" . (empty($count_users_active) ? '' : ' AND users_active = 1 AND users_delete = 0');
+  $users_active = empty($count_users_active) ? '' : ' HAVING users_active = 1 AND users_delete = 0';
 
   if(empty($count_comments)) {
-    $from = 'threads thr INNER JOIN {pre}_users usr ON thr.users_id = usr.users_id GROUP BY thr.users_id' . $having;
-    $select = 'COUNT(thr.threads_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, com.comments_mod AS comments_mod';
+    $from = 'threads thr INNER JOIN {pre}_users usr ON thr.users_id = usr.users_id GROUP BY thr.users_id' . $users_active;
+    $select = 'COUNT(DISTINCT thr.threads_id) AS num_threads, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete';
     $result = cs_sql_select(__FILE__, $from, $select, 0, 'num_threads DESC', $start, $count_limit);
   }
   elseif(empty($count_threads)) {
-    $from = 'comments com INNER JOIN {pre}_users usr ON com.users_id = usr.users_id GROUP BY com.users_id' . $having;
-    $select = 'COUNT(com.comments_id) AS num_comments, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, com.comments_mod AS comments_mod';
+    $having = empty($users_active) ? ' HAVING comments_mod = \'board\'' : ' AND comments_mod = \'board\'';
+    $from = 'comments com INNER JOIN {pre}_users usr ON com.users_id = usr.users_id GROUP BY com.users_id' . $users_active . $having;
+    $select = 'COUNT(DISTINCT com.comments_id) AS num_comments, usr.users_id AS users_id, usr.users_nick AS users_nick, usr.users_active AS users_active, usr.users_delete AS users_delete, com.comments_mod AS comments_mod';
     $result = cs_sql_select(__FILE__, $from, $select, 0, 'num_comments DESC', $start, $count_limit);
   }
   else {
