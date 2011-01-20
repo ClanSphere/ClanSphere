@@ -13,7 +13,7 @@ if(!empty($cs_get['catid'])) {
   $where .= ' AND cat.categories_id = ' . $cs_get['catid'];
 }
 $order = 'files_count DESC';
-$data['files'] = cs_sql_select(__FILE__,$join,$select,$where,$oder,0,$cs_option['max_navtop']);
+$data['files'] = cs_sql_select(__FILE__,$join,$select,$where,$order,0,$cs_option['max_navtop']);
 
 if (!empty($data['files'])) {
   for($run=0; $run<count($data['files']); $run++) {
