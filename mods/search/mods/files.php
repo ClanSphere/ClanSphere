@@ -19,12 +19,11 @@ $results = explode(',' ,$data['search']['text']);
 $recount = count($results);
 
 $sql_where = "(fil.files_name LIKE '%" . cs_sql_escape($results[0]) . "%' OR fil.files_description LIKE '%" . cs_sql_escape($results[0]) . "%'";
-for($prerun=1; $prerun<$recount; $prerun++) {
-  $sql_where = $sql_where . " OR fil.files_name LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%' OR fil.files_description LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'";
-}
-$sql_where .= ') AND fil.files_access <> 0 AND fil.files_access <= '.$account['access_files'].' AND cat.categories_access <= '.$account['access_files'];
-$select = 'fil.files_id, fil.files_name, fil.files_time, fil.users_id, fil.categories_id';
-$tables = 'files fil INNER JOIN {pre}_categories cat ON cat.categories_id = fil.categories_id'; 
+$sql_where .= ') AND fil.files_access <= '.$account['access_files'].' AND cat.categories_access <= '.$account['access_files'];
+$select  = 'fil.files_id, fil.files_name, fil.files_time, fil.categories_id, cat.categories_name AS categories_name';
+$select .= ', usr.users_nick AS users_nick, usr.users_id AS users_id, usr.users_active AS users_active, usr.users_delete AS users_delete';
+$tables  = 'files fil INNER JOIN {pre}_categories cat ON cat.categories_id = fil.categories_id'; 
+$tables	.= ' LEFT JOIN {pre}_users usr ON usr.users_id = fil.users_id';
 $cs_search = cs_sql_select(__FILE__,$tables,$select,$sql_where,$order,$start,$account['users_limit']);
 $search_loop = count($cs_search);
 
@@ -44,15 +43,9 @@ if (!empty($search_loop)) {
   for($run=0; $run<$search_loop; $run++) {
       $cs_clans_name = cs_secure($cs_search[$run]['files_name']);
       $data2['results'][$run]['name'] = cs_link(cs_secure($cs_clans_name),'files','view','where=' . $cs_search[$run]['files_id']);
-    $select = 'categories_id, categories_name';
-    $where = "categories_id = '" . $cs_search[$run]['categories_id'] . "'";
-    $files_cat = cs_sql_select(__FILE__,'categories',$select,$where,0,0,1);
-    $data2['results'][$run]['cat'] = $files_cat['categories_name'];
-    $data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['files_time'],1);
-    $select = 'users_id, users_nick';
-    $where = "users_id = '" . $cs_search[$run]['users_id'] . "'";
-    $files_user = cs_sql_select(__FILE__,'users',$select,$where,0,0,1);
-    $data2['results'][$run]['user'] = $files_user['users_nick'];
+	  $data2['results'][$run]['cat'] = cs_link($cs_search[$run]['categories_name'],'files','listcat','where=' . $cs_search[$run]['categories_id']);
+      $data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['files_time'],1);
+      $data2['results'][$run]['user'] = cs_user($cs_search[$run]['users_id'],$cs_search[$run]['users_nick'],$cs_search[$run]['users_active'],$cs_search[$run]['users_delete']);
   }
 } else {
 $data2['if']['noresults'] = true;
