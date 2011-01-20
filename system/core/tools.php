@@ -362,12 +362,15 @@ function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_
   cs_sql_insert(__FILE__,'messages',$messages_cells,$messages_save);
 }
 
-function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit = 20, $small = 0, $more = 0) {
+function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit = 0, $small = 0, $more = 0) {
 
   global $account;
   settype($sort, 'integer');
   settype($start, 'integer');
-  $limit = empty($limit) ? (int) $account['users_limit'] : (int) $limit;
+  settype($limit, 'integer');
+
+  if(empty($limit))
+    $limit = empty($account['users_limit']) ? 20 : $account['users_limit'];
 
   $add_where = empty($where) ? '' : '&amp;where=' . $where;
   $add_where .= empty($more) ? '' : '&amp;' . $more;
