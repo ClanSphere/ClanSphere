@@ -1,42 +1,42 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
+
 $cs_lang = cs_translate('abcode');
-$cs_post = cs_post();
 $data = array();
 
 $select = "abcode_pattern, abcode_file";
 $where = "abcode_func = 'img'";
 $smileys = cs_sql_select(__FILE__,'abcode',$select,$where,0,0,0);
 
-if(isset($cs_post['submit'])) {
+if(isset($_POST['submit'])) {
   $error = 0;
   $errormsg = $cs_lang['error'] . cs_html_br(1);
   
-  $cs_post['pattern'] = array_unique($cs_post['pattern']);
+  $_POST['pattern'] = array_unique($_POST['pattern']);
   
   $counter = 0;
-  for($run=0; $run<count($cs_post['file']); $run++) {
-    if(!empty($cs_post['pattern'][$run])) {
+  for($run=0; $run<count($_POST['file']); $run++) {
+    if(!empty($_POST['pattern'][$run])) {
       if(!empty($smileys)) {
         for($runb=0; $runb<count($smileys); $runb++) {
-          if($cs_post['pattern'][$run] == $smileys[$runb]['abcode_pattern']) {
+          if($_POST['pattern'][$run] == $smileys[$runb]['abcode_pattern']) {
             $error++;
-            $errormsg .= sprintf($cs_lang['error_pattern_sql'], $cs_post['file'][$run]) . cs_html_br(1);
+            $errormsg .= sprintf($cs_lang['error_pattern_sql'], $_POST['file'][$run]) . cs_html_br(1);
             $data['file'][$run]['run'] = '';
           } else {
-            $data['file'][$run]['run'] = $cs_post['pattern'][$run];
+            $data['file'][$run]['run'] = $_POST['pattern'][$run];
           }
         }
       }
     } else {
       $error++;
-      $errormsg .= sprintf($cs_lang['error_pattern'], $cs_post['file'][$run]) . cs_html_br(1);
-      $data['file'][$run]['run'] = isset($cs_post['pattern'][$run]) ? $cs_post['pattern'][$run] : '';
+      $errormsg .= sprintf($cs_lang['error_pattern'], $_POST['file'][$run]) . cs_html_br(1);
+      $data['file'][$run]['run'] = isset($_POST['pattern'][$run]) ? $_POST['pattern'][$run] : '';
     }
-    $data['file'][$run]['name'] = $cs_post['file'][$run];
-    $data['file'][$run]['preview'] = cs_html_img('uploads/abcode/' . $cs_post['file'][$run]);
-    $data['file'][$run]['order'] = empty($cs_post['order_'.$counter]) ? 0 : (int) $cs_post['order_'.$counter];
+    $data['file'][$run]['name'] = $_POST['file'][$run];
+    $data['file'][$run]['preview'] = cs_html_img('uploads/abcode/' . $_POST['file'][$run]);
+    $data['file'][$run]['order'] = empty($_POST['order_'.$counter]) ? 0 : (int) $_POST['order_'.$counter];
     $data['file'][$run]['counter'] = $counter;
     $counter++;
   }
@@ -49,7 +49,7 @@ else {
   $data['head']['msg'] = $cs_lang['new_import'];
 }
 
-if(!isset($cs_post['submit']) OR !empty($error)) {
+if(!isset($_POST['submit']) OR !empty($error)) {
    $act_smileys = array();
    $all_smileys = array();     
    if(!empty($smileys)) {
@@ -75,7 +75,7 @@ if(!isset($cs_post['submit']) OR !empty($error)) {
         $data['file'][$run]['name'] = $result[$run];
         $data['file'][$run]['preview'] = cs_html_img('uploads/abcode/' . $result[$run]);
         $data['file'][$run]['run'] = empty($data['file'][$run]['run']) ? '' : $data['file'][$run]['run'];
-        $data['file'][$run]['order'] = empty($cs_post['order_'.$counter]) ? '' : (int) $cs_post['order_'.$counter];
+        $data['file'][$run]['order'] = empty($_POST['order_'.$counter]) ? '' : (int) $_POST['order_'.$counter];
         $data['file'][$run]['counter'] = $counter;
         $counter++;
       }
