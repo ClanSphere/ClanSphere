@@ -107,7 +107,7 @@
   <tr>
     <td class="bottom" colspan="2"></td>
   </tr>
-  <tr{if:thread_author} class="thread_author_comment"{stop:thread_author}>
+  <tr {if:thread_author} class="thread_author_comment"{stop:thread_author}>
     <td class="leftc" style="width:150px"><img src="{page:path}symbols/countries/{comment:country}.png" style="height:11px;width:16px" alt="" /> {comment:users_link}<br />
       {if:thread_author}
       <span class="uthreadstarter">{lang:thread_author}</span> <br />
@@ -143,7 +143,7 @@
       
       <br /><br />{comment:checkedit}</td>
   </tr>
-  <tr{if:thread_author} class="thread_author_comment"{stop:thread_author}>
+  <tr {if:thread_author} class="thread_author_comment"{stop:thread_author}>
     <td class="leftc"><div style="padding-top:4px; padding-bottom:4px;">{comment:laston}</div></td>
     <td class="leftc"><div style="float:left">{comment:usericons}</div>
       <div style="float:right">{if:com_user}{comment:report} {comment:quote}{stop:com_user} {if:com_admin}{comment:cut}{comment:edit} {comment:remove}{stop:com_admin}{comment:anch}</div></td>
