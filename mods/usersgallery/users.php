@@ -261,7 +261,7 @@ if(!empty($id)) {
     }
     $data['img'] = !empty($img) ? $img : array();
     if(!empty($data['cat_1']) OR !empty($gallery_loop)) {
-      $data['data']['pages'] = cs_pages('usersgallery','users',$gallery_count,$start,0,'0&amp;cat_id=' . $cat_id . '&amp;id=' . $id,$cols_rows);
+      $data['data']['pages'] = cs_pages('usersgallery','users',$gallery_count,$start,0,0,$cols_rows,0,'cat_id=' . $cat_id . '&amp;id=' . $id);
     } else {
       $empty_cat['lang']['empty_cat'] = $cs_lang['empty_cat'];
     }
