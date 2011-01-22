@@ -14,7 +14,7 @@
     <tr>
       <td class="leftc">{icon:personal} {lang:user}</td>
       <td class="leftb">
-        <input type="text" name="users_nick" id="users_nick" value="" onkeyup="cs_ajax_getcontent('{form:dirname}mods/ajax/search_users.php?term=' + document.getElementById('users_nick').value, 'search_users_result')" maxlength="200" size="50" />
+        <input type="text" name="users_nick" id="users_nick" value="" autocomplete="off" onkeyup="Clansphere.ajax.user_autocomplete('users_nick', 'search_users_result')" maxlength="100" size="50" />
         <input type="submit" value="{lang:awardingto}" name="submit" />
         <input type="hidden" value="{medals:id}" name="medals_id" />
         <div id="search_users_result"></div>

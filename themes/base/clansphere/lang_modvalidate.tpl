@@ -16,5 +16,5 @@
   </tr>
   {stop:errors}
 </table>
-<div class="centerb" style="margin:1px 2px 2px 2px;"><a href="javascript:cs_display('{info:lang}_{info:mod}')">{lang:show_fixed}</a> - <a href="javascript:cs_ajax_getcontent('{page:path}mods/clansphere/lang_modvalidate.php?language={info:lang}&module={info:mod}&fix','mod_{info:lang}_{info:mod}');">{lang:save_fixed}</a></div>
+<div class="centerb" style="margin:1px 2px 2px 2px;"><a href="javascript:cs_display('{info:lang}_{info:mod}')">{lang:show_fixed}</a> - <a href="javascript:$('#mod_{info:lang}_{info:mod}').load('{page:path}mods/clansphere/lang_modvalidate.php?language={info:lang}&module={info:mod}&fix');">{lang:save_fixed}</a></div>
 <div id="{info:lang}_{info:mod}" class="leftb" style="margin:1px 2px 0px 2px; display:none;">{file:fixed}</div>
