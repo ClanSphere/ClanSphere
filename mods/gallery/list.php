@@ -19,7 +19,7 @@ $folders_id = empty($_REQUEST['folders_id']) ? 0 : (int)$_REQUEST['folders_id'];
 $access_id = $account['access_gallery'];
 
 if (empty($folders_id)) {
-  $data['lang']['getmsg'] = cs_getmsg();;
+  $data['lang']['getmsg'] = cs_getmsg();
   
   $from = 'gallery';
   $select = 'gallery_time, gallery_name, gallery_titel, ';

@@ -214,7 +214,7 @@ class GameQ
         $packs = $this->modifyPackets($packs);
 
         // Send only as many packets as we have sockets available
-        for ($i = 0;; $i += $sock_count) {
+        for ($i = 0; $i += $sock_count) {
 
             // Get as much packets as we have sockets available
             $packets = array_slice($packs, $i, $sock_count);

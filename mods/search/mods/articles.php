@@ -17,7 +17,7 @@ $recount = count($results);
 
 $sql_where = "(articles_headline LIKE '%" . cs_sql_escape(trim($results[0])) . "%' OR articles_text LIKE '%" . cs_sql_escape(trim($results[0])) . "%'";
 for($prerun=1; $prerun<$recount; $prerun++) {
-  $sql_where = $sql_where . " OR articles_headline LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%' OR articles_text LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'";; 
+  $sql_where = $sql_where . " OR articles_headline LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%' OR articles_text LIKE '%" . cs_sql_escape(trim($results[$prerun])) . "%'";
 }
 $sql_where .= ') AND cat.categories_access <= '.$account['access_articles'];
 $select = 'articles_headline, articles_time, articles_id';

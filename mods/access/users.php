@@ -32,7 +32,7 @@ if(isset($cs_post['submit']) && isset($cs_post['users_nick']) && isset($_REQUEST
 }
 
 if(!isset($cs_post['submit'])) {
-  $data['head']['msg'] = $cs_lang['users_head'];;
+  $data['head']['msg'] = $cs_lang['users_head'];
 }
 elseif(!empty($errormsg)) {
   $data['head']['msg'] = $errormsg;

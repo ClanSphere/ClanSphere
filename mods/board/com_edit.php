@@ -277,7 +277,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
         $ext = substr($file,$name - $extension + 1,$name);
         $ext_lower = strtolower($ext);
                 
-        $data['files'][$run]['ext'] = cs_filetype($ext_lower);;
+        $data['files'][$run]['ext'] = cs_filetype($ext_lower);
         
         $data['files'][$run]['if']['del_button'] = FALSE;
         $data['files'][$run]['file_del'] = '';

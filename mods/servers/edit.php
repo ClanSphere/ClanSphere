@@ -10,7 +10,7 @@ $data = array();
 if(isset($_POST['submit'])) {
 
 	$servers_error = 0;
-	$errormsg = $cs_lang['error_occurred'] . cs_html_br(1);;
+	$errormsg = $cs_lang['error_occurred'] . cs_html_br(1);
 
 	$data['servers']['id'] = $_POST['id'];
 	$data['create']['servers_name'] = $_POST['servers_name'];
