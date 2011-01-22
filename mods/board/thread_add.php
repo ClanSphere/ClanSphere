@@ -154,7 +154,7 @@ for($run=0; $run < $run_loop_files; $run++) {
     $check_type = '';
     $count_filetypes = count($filetypes);
     for($run_a=0; $run_a < $count_filetypes; $run_a++) {
-      if('0' == strcasecmp($filetypes[$run_a], $ext)) {
+      if($filetypes[$run_a] == $ext) {
         $check_type = 1;
       }
     }

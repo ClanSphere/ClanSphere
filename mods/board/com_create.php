@@ -190,7 +190,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
       $check_type = '';
       $count_filetypes = count($filetypes);
       for($run_a=0; $run_a < $count_filetypes; $run_a++) {
-        if('0' == strcasecmp($filetypes[$run_a], $ext)) {
+        if($filetypes[$run_a] == $ext) {
           $check_type = 1;
         }
       }
