@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2010.2.1 >> 2011-XX-XX
+ClanSphere 2010.3 >> 2011-01-XX
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.3.5

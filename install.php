@@ -18,8 +18,8 @@ $cs_main = array( 'charset'         => $charset,
                   'public'          => 1,
                   'img_path'        => 'crystal_project',
                   'img_ext'         => 'png',
-                  'version_name'    => '2010.2.1 DEV',
-                  'version_date'    => '2010-12-04');
+                  'version_name'    => '2010.3 DEV',
+                  'version_date'    => '2011-01-22');
 
 require_once 'system/core/functions.php';
 
