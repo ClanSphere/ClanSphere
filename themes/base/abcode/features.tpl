@@ -51,8 +51,4 @@
   <option value="white" style="color: white">{lang:white}</option>
   <option value="yellow" style="color: yellow">{lang:yellow}</option>
 </select>
-
-<a href="javascript:cs_textarea_resize('{var:textarea}','+')"><img src="{page:path}symbols/clansphere/plus.gif" alt="" /></a>
-<a href="javascript:cs_textarea_resize('{var:textarea}','-')"><img src="{page:path}symbols/clansphere/minus.gif" alt="" /></a>
-{lang:rows}: <span id="span_{var:textarea}">{lang:default}</span>
 <br />
