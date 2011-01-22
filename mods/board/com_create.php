@@ -90,10 +90,12 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
 
   #comment
   if($def[0]=='c') {
-    $joins = 'comments cmt INNER JOIN {pre}_threads thr ON cmt.comments_fid = thr.threads_id INNER JOIN {pre}_board brd ON thr.board_id = brd.board_id';
+    $joins = 'comments cmt INNER JOIN {pre}_threads thr ON cmt.comments_fid = thr.threads_id INNER JOIN {pre}_board brd ON '
+           . 'thr.board_id = brd.board_id LEFT JOIN {pre}_members mem ON brd.squads_id = mem.squads_id AND mem.users_id = ' . $account['users_id'];
     $fields = 'cmt.users_id AS users_id, cmt.comments_text AS comments_text, cmt.comments_time AS comments_time, '
             . 'cmt.comments_fid AS comments_fid, thr.threads_id AS threads_id, brd.board_access AS board_access';
-    $quote = cs_sql_select($file, $joins, $fields,"cmt.comments_id = '" . cs_sql_escape($def[1]) . "' AND brd.board_access <= '" . $account['access_board'] . "'");
+    $conditions = "cmt.comments_id = '" . cs_sql_escape($def[1]) . "' AND (brd.board_access <= '" . $account['access_board'] . "' OR mem.users_id = " . $account['users_id'] . ")";
+    $quote = cs_sql_select($file, $joins, $fields, $conditions);
     $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick', "users_id = '" . $quote['users_id'] . "'");
     $ori_text = '[quote]' .$quote['comments_text']. '[/quote]';
     $url = cs_url('users', 'view', 'id=' . $cs_users['users_id']);
@@ -102,9 +104,9 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
   }
   #thread
   else if($def[0]=='t') {
-    $select = "threads thr INNER JOIN {pre}_board brd ON thr.board_id = brd.board_id";
+    $select = "threads thr INNER JOIN {pre}_board brd ON thr.board_id = brd.board_id LEFT JOIN {pre}_members mem ON brd.squads_id = mem.squads_id AND mem.users_id = " . $account['users_id'];
     $cells = "thr.users_id AS users_id, thr.threads_text AS threads_text, thr.threads_time AS threads_time, brd.board_access AS board_access";
-    $where = "thr.threads_id = '" . cs_sql_escape($def[1]) . "' AND brd.board_access <= '" . $account['access_board'] . "'";
+    $where = "thr.threads_id = '" . cs_sql_escape($def[1]) . "' AND (brd.board_access <= '" . $account['access_board'] . "' OR mem.users_id = " . $account['users_id'] . ")";
     $quote = cs_sql_select($file,$select,$cells,$where);
     $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick',"users_id = '" . $quote['users_id'] . "'");
     $url = $_SERVER['PHP_SELF'] . '?mod=users&action=view&id=' . $cs_users['users_id'];
