@@ -63,7 +63,8 @@ settype($_REQUEST['id'],'integer');
 # preserved for navlogin functionality
 unset($_GET['style']);
 
-# provide functions that assist with get and post data
+# the following code is a perfect example for training wheel programming practices
+# please try to avoid the usage of these functions
 function cs_servervars($mode, $integers = 0, $unharmed = 0) {
 
   $return = array();

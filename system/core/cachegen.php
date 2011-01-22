@@ -110,9 +110,11 @@ function cs_cache_theme($mod, $action) {
 
   $tpl_data = file_get_contents($tpl_real);
 
-  $tpl_data = str_replace('{page:width}', $cs_main['def_width'], $tpl_data);
-  # path does always end with a slash
+  # the default template is used since users may have different templates activated
+  $tpl_data = str_replace('{page:template}', $cs_main['def_tpl'], $tpl_data);
+  # page path does always end with a slash
   $tpl_data = str_replace('{page:path}', $cs_main['php_self']['dirname'], $tpl_data);
+  $tpl_data = str_replace('{page:width}', $cs_main['def_width'], $tpl_data);
   $tpl_data = str_replace('{page:cellspacing}', $cs_main['cellspacing'], $tpl_data);
   $tpl_data = preg_replace_callback("={icon:(.*?)}=i", 'cs_icon', $tpl_data);
 
