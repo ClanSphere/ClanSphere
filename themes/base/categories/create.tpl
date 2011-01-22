@@ -25,7 +25,7 @@
   <tr>
     <td class="leftc">{icon:kcmdf} {lang:modul} *</td>
     <td class="leftb">
-      <select name="categories_mod" onchange="javascript: cs_ajax_getcontent('{page:path}mods/categories/getcats.php?mod='+this.value,'cat_dropdown')">
+      <select name="categories_mod" onchange="javascript: $('#cat_dropdown').load('{page:path}mods/categories/getcats.php?mod='+this.value)">
         {loop:mod}
         {mod:sel}
         {stop:mod}
@@ -72,7 +72,7 @@
     <td class="leftc">{icon:ksysguard} {lang:options}</td>
     <td class="leftb">
       <input type="submit" name="submit" value="{lang:create}" />
-          </td>
+    </td>
   </tr>
 </table>
 </form>
