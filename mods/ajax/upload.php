@@ -9,7 +9,7 @@ if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
     unset($_SESSION['ajaxuploads'][$file]);
     echo $file . ' deleted';
   }
-  elseif(isset($_POST['upload_name'])) {
+  elseif(isset($_POST['upload_name']) AND isset($_FILES['' . $_POST['upload_name'] . '']['tmp_name'])) {
     
     $upload_name = $_POST['upload_name'];
     $file = $_FILES[$upload_name]['tmp_name'];
@@ -24,7 +24,8 @@ if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
     $upload['name'] = $upload_name;
     $upload['original_name'] = $_FILES[$upload_name]['name'];
     $upload['size'] = cs_filesize($_FILES[$upload_name]['size']);
-    if($error){
+
+    if($error) {
       $upload['error'] = true;
     }
     echo '<script language="javascript" type="text/javascript">';
@@ -41,4 +42,3 @@ if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
   echo 'alert("Permission denied");';
   echo '</script>';
 }
-
