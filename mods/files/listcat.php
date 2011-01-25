@@ -36,10 +36,10 @@ $sub_where .= " AND categories_subid = '" . $categories_id . "'";
 $sub_data = cs_sql_select(__FILE__,'categories','*',$sub_where,'categories_name',0,0);
 $sub_loop = count($sub_data);
 $data['if']['subs'] = false;
+$data['subs'] = array();
 
 if(!empty($sub_loop)) {
   $data['if']['subs'] = true;
-  $data['subs'] = array();
   for($runb=0; $runb < $sub_loop; $runb++) {
     $data['subs'][$runb]['name'] = cs_secure($sub_data[$runb]['categories_name']);
     $data['subs'][$runb]['id'] = $sub_data[$runb]['categories_id'];
