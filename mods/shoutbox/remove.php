@@ -16,7 +16,7 @@ if(isset($cs_get['cancel'])) {
 $shoutbox = cs_sql_select(__FILE__,'shoutbox','shoutbox_name','shoutbox_id = ' . $cs_get['id'],0,0,1);
 if(!empty($shoutbox)) {
   $data = array();
-  $data['content']['head'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_name'],$shoutbox['shoutbos_name']);
+  $data['content']['head'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_name'],$shoutbox['shoutbox_name']);
   $data['content']['bottom']  = cs_link($cs_lang['confirm'],'shoutbox','remove','id='.$cs_get['id'].'&amp;confirm');
   $data['content']['bottom'] .= ' - ';
   $data['content']['bottom'] .= cs_link($cs_lang['cancel'],'shoutbox','remove','id='.$cs_get['id'].'&amp;cancel');
