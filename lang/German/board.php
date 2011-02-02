@@ -318,7 +318,7 @@ $cs_lang['error_election'] = '- Sie sollten mindestens 2 Antworten bei ihrer Umf
 $cs_lang['error_question'] = '- Bitte eine Frage bei ihrer Umfrage eingeben.';
 $cs_lang['error_filename'] = '- Diese Datei existiert schon. Bitte benennen Sie ihre Datei um.';
 $cs_lang['error_filesize'] = '- Die Datei ist zu gro&szlig;.';
-$cs_lang['error_filetype'] = '- Es wurde ein uneraubtes Dateiformat benutzt.';
+$cs_lang['error_filetype'] = '- Es wurde ein unerlaubtes Dateiformat benutzt.';
 $cs_lang['error_fileupload'] = '- Es ist ein unbekannter Fehler beim hochladen der Datei entstanden.';
 
 //thread_edit.php
