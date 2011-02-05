@@ -58,7 +58,7 @@ $cs_lang['err_chmod']  .= ' as well as all sub-directories manually on CHMOD 777
 $cs_lang['login']  = 'Login';
 
 $cs_lang['head_license']  = 'License';
-$cs_lang['body_license']  = 'Required condision for usage';
+$cs_lang['body_license']  = 'Required condition for usage';
 
 $cs_lang['accept_done'] = 'Conditions successfully accepted';
 $cs_lang['accept_license'] = 'Read and accepted';
@@ -146,12 +146,12 @@ $cs_lang['teammates'] = 'Teammates';
 $cs_lang['classmates'] = 'Classmates';
 
 $cs_lang['full_install'] = 'Complete Installation';
-$cs_lang['module_select'] = 'Select Module';
+$cs_lang['module_select'] = 'Select Modules';
 
 $cs_lang['mark_all'] = 'Mark all';
 $cs_lang['unmark_all'] = 'Unmark all';
 
-$cs_lang['database_modselect'] = 'Please select datdabase &raquo; modules';
+$cs_lang['database_modselect'] = 'Please select database &raquo; modules';
 $cs_lang['select_module'] = 'Please select the modules to be installed';
 $cs_lang['sys_module'] = 'System Modules';
 $cs_lang['opt_module'] = 'Optional Modules';
