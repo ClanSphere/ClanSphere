@@ -45,12 +45,12 @@ if (!empty($_GET['rep'])) {
 
 if (!empty($_POST['submit']) || !empty($_POST['preview'])) {
   if (!empty($_POST['messages_to'])) {
-  
+
     $messages_to = $_POST['messages_to'];
     $temp = explode(';', $messages_to);
     $loop_temp = count($temp);
     $where = '';
-    
+
     for($run=0; $run<$loop_temp; $run++) {
       $a = cs_substr($temp[$run], 0, 6); //check is this a squad
       $b = cs_substr($temp[$run], 0, 5); //check is this a clan
@@ -59,13 +59,13 @@ if (!empty($_POST['submit']) || !empty($_POST['preview'])) {
           $where = $where . ' OR ';
         }
         $z = cs_substr($temp[$run], 6);
-        $where .= "squ.squads_name = '" . cs_sql_escape($z) . "'";
+        $where .= "squ.squads_name = '" . str_replace('Squad:','',$temp[$run]) . "'";
       } elseif($b == 'Clan:') {
         if(!empty($where)) {
           $where = $where . ' OR ';
         }
         $z = cs_substr($temp[$run], 5);
-        $where .= "cla.clans_name = '" . cs_sql_escape($z) . "'";
+        $where .= "cla.clans_name = '" . str_replace('Clan:','',$temp[$run]) . "'";
       } else {
         if(!empty($where)) {
           $where .= ' OR ';
@@ -74,7 +74,7 @@ if (!empty($_POST['submit']) || !empty($_POST['preview'])) {
         $z = $temp[$run];
       }
     }
-  
+
     $from = 'users usr LEFT JOIN {pre}_members mem ON usr.users_id = mem.users_id ';
     $from .= 'LEFT JOIN {pre}_squads squ ON mem.squads_id = squ.squads_id ';
     $from .= 'LEFT JOIN {pre}_clans cla ON squ.clans_id = cla.clans_id';
