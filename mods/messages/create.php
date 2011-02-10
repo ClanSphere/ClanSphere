@@ -59,13 +59,13 @@ if (!empty($_POST['submit']) || !empty($_POST['preview'])) {
           $where = $where . ' OR ';
         }
         $z = cs_substr($temp[$run], 6);
-        $where .= "squ.squads_name = '" . str_replace('Squad:','',$temp[$run]) . "'";
+        $where .= "squ.squads_name = '" . cs_sql_escape(str_replace('Squad:','',$temp[$run])) . "'";
       } elseif($b == 'Clan:') {
         if(!empty($where)) {
           $where = $where . ' OR ';
         }
         $z = cs_substr($temp[$run], 5);
-        $where .= "cla.clans_name = '" . str_replace('Clan:','',$temp[$run]) . "'";
+        $where .= "cla.clans_name = '" . cs_sql_escape(str_replace('Clan:','',$temp[$run])) . "'";
       } else {
         if(!empty($where)) {
           $where .= ' OR ';
