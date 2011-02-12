@@ -32,7 +32,7 @@ $data['sort']['place'] = cs_sort('awards','list',$start,0,3,$sort);
 $data['sort']['game'] = cs_sort('awards','list',$start,0,7,$sort);
 $data['sort']['squad'] = cs_sort('awards','list',$start,0,9,$sort);
 
-$from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id INNER JOIN {pre}_squads sqd ON sqd.squads_id = aws.squads_id';
+$from = 'awards aws INNER JOIN {pre}_games gms ON aws.games_id = gms.games_id LEFT JOIN {pre}_squads sqd ON sqd.squads_id = aws.squads_id';
 $select = 'aws.awards_id AS awards_id, aws.awards_time AS awards_time, aws.awards_event AS awards_event, aws.awards_event_url AS awards_event_url,';
 $select .= ' aws.games_id AS games_id, aws.awards_rank AS awards_rank, gms.games_name AS games_name, sqd.squads_name AS squads_name,';
 $select .= ' sqd.squads_id AS squads_id';
