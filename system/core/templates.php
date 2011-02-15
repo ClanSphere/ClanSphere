@@ -413,15 +413,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $replace['func:body_add'] = ' onload="Clansphere.initialize(' . $cs_main['mod_rewrite'] . ',\'' . $_SERVER['SCRIPT_NAME'] . '\',' . $cs_main['ajax_reload'] * 1000 . ')"';
   }
 
-  # Provide the def_title or a title with mod and page info
+  # Provide the def_title and a title with more information
   $replace['func:title_website'] = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
-  $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
-  if ($cs_main['mod'] == 'static' AND $cs_main['action'] == 'view')
-    $replace['func:title'] = $replace['func:title_website'];
-  else
-    $replace['func:title'] = $replace['func:title_website'] . ' - ' . $cs_act_lang['mod_name'];
-  if(!empty($cs_main['page_title']))
-    $replace['func:title'] .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
+  $replace['func:title'] = htmlentities(cs_title(), ENT_QUOTES, $cs_main['charset']);
 
   # Fetch template file and parse exploded contents
   $template = cs_cache_template($tpl_file);

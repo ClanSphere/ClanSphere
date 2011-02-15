@@ -321,10 +321,29 @@ function cs_init($predefined) {
   }
 }
 
+function cs_title() {
+
+  # Provides the page title with as many information as possible
+  global $cs_main;
+  $title = $cs_main['def_title'];
+
+  if($cs_main['mod'] != 'static' AND $cs_main['action'] != 'view') {
+    $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
+    $title .= ' - ' . $cs_act_lang['mod_name'];
+    
+    if(isset($cs_act_lang['' . $cs_main['action'] . '']))
+    $title .= ' - ' . $cs_act_lang['' . $cs_main['action'] . ''];
+  }
+
+  if(!empty($cs_main['page_title']))
+    $title .= ' - ' . $cs_main['page_title'];
+
+  return $title;
+}
+
 function cs_ajaxwrap() {
 
   global $cs_main, $account;
-  $cs_act_lang = cs_translate($cs_main['mod']); 
   $json = array();
 
   header('Content-Type:application/json');
@@ -337,7 +356,7 @@ function cs_ajaxwrap() {
 
     $content = cs_contentload($cs_main['show']);
 
-    $json['title'] = $cs_main['def_title'] . ' - ' . ucfirst(html_entity_decode($cs_act_lang['mod_name'], ENT_NOQUOTES, $cs_main['charset']));
+    $json['title'] = html_entity_decode(cs_title(), ENT_NOQUOTES, $cs_main['charset']);
 
     $pathPrefix = str_replace('\\','/',$cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']) . '/';
 

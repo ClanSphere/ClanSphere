@@ -4,6 +4,8 @@ CHANGELOG
 ClanSphere 2010.3.1 >> 2011-05-XX
 ___________________________________________________________
 
+-> Added function cs_title to handle title generation (hajo)
+   Fixes title problems with ajax and includes action names if found
 
 
 ClanSphere 2010.3 >> 2011-01-24
