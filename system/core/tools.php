@@ -136,8 +136,11 @@ function cs_datepost($name,$mode) {
   if($mode == 'unix') {
     $time['mins'] = empty($_POST[$name . '_mins']) ? 0 : (int) $_POST[$name . '_mins'];
     $time['hours'] = empty($_POST[$name . '_hours']) ? 0 : (int) $_POST[$name . '_hours'];
-    if(!empty($_POST[$name . '_ampm']) AND $_POST[$name . '_ampm'] == 'pm') {
-      $time['hours'] = $time['hours'] + 12;
+    if(!empty($_POST[$name . '_ampm'])) {
+      if($_POST[$name . '_ampm'] == 'pm')
+        $time['hours'] += 12;
+      elseif($_POST[$name . '_ampm'] == 'am' AND $time['hours'] == 12)
+        $time['hours'] -= 12;
     }
     $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
     $var = cs_timediff($var, 1);
@@ -184,9 +187,9 @@ function cs_dateselect($name,$mode,$time,$year_start = 0) {
       $explode[3] = cs_datereal('H',$time);
     }
     else {
-      $am_or_pm = cs_datereal('H',$time);
       $explode[3] = cs_datereal('h',$time);
-      $explode[5] = (empty($am_or_pm) OR $am_or_pm > 12) ? 'pm' : 'am';
+      $explode[5] = cs_datereal('a',$time);
+
       $data['if']['ampm'] = 1;
       $data['ampm']['options']  = cs_html_option('am', 'am', $explode[5] == 'am' ? 1 : 0);
       $data['ampm']['options'] .= cs_html_option('pm', 'pm', $explode[5] == 'pm' ? 1 : 0);
