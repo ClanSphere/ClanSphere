@@ -327,7 +327,7 @@ function cs_title() {
   global $cs_main;
   $title = $cs_main['def_title'];
 
-  if(!($cs_main['mod'] == 'static' AND $cs_main['action'] == 'view')) {
+  if($cs_main['mod'] != 'static' OR $cs_main['action'] != 'view') {
     $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
     $title .= ' - ' . $cs_act_lang['mod_name'];
 
