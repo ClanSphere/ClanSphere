@@ -330,8 +330,8 @@ function cs_title() {
   if($cs_main['mod'] != 'static' AND $cs_main['action'] != 'view') {
     $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
     $title .= ' - ' . $cs_act_lang['mod_name'];
-    
-    if(isset($cs_act_lang['' . $cs_main['action'] . '']))
+
+    if(empty($cs_main['page_title']) AND isset($cs_act_lang['' . $cs_main['action'] . '']))
     $title .= ' - ' . $cs_act_lang['' . $cs_main['action'] . ''];
   }
 
