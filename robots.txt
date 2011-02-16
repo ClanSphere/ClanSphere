@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /lang/
+Disallow: /mods/
+Disallow: /system/
+Disallow: /themes/
