@@ -137,10 +137,10 @@ function cs_datepost($name,$mode) {
     $time['mins'] = empty($_POST[$name . '_mins']) ? 0 : (int) $_POST[$name . '_mins'];
     $time['hours'] = empty($_POST[$name . '_hours']) ? 0 : (int) $_POST[$name . '_hours'];
     if(!empty($_POST[$name . '_ampm'])) {
-      if($_POST[$name . '_ampm'] == 'pm')
+      if($_POST[$name . '_ampm'] == 'pm' AND $time['hours'] < 12)
         $time['hours'] += 12;
       elseif($_POST[$name . '_ampm'] == 'am' AND $time['hours'] == 12)
-        $time['hours'] -= 12;
+        $time['hours'] = 0;
     }
     $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
     $var = cs_timediff($var, 1);
