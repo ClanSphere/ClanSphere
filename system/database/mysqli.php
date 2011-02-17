@@ -251,13 +251,14 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
 function cs_sql_version($cs_file) {
 
 	global $cs_db;
+  $subtype = empty($cs_db['subtype']) ? 'myisam' : strtolower($cs_db['subtype']);
 	$sql_infos = array('data_free' => 0, 'data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
 	$sql_query = "SHOW TABLE STATUS LIKE '" . cs_sql_escape($cs_db['prefix'] . '_') . "%'";
 	$sql_data = mysqli_query($cs_db['con'], $sql_query) or cs_error_sql($cs_file, 'cs_sql_version', mysqli_error($cs_db['con']));
 	while($row = mysqli_fetch_assoc($sql_data)) {
 		$sql_infos['data_size'] += $row['Data_length'];
 		$sql_infos['index_size'] += $row['Index_length'];
-		$sql_infos['data_free'] += $row['Data_free'];
+    $sql_infos['data_free'] += ($subtype == 'innodb') ? 0 : $row['Data_free'];
 		$sql_infos['tables']++;
 		$sql_infos['names'][] .= $row['Name'];
 	}

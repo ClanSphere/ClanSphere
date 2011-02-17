@@ -60,6 +60,7 @@ function cs_sql_replace($replace) {
 function cs_sql_version($cs_file) {
 
   global $cs_db;
+  $subtype = empty($cs_db['subtype']) ? 'myisam' : strtolower($cs_db['subtype']);
   $sql_infos = array('data_free' => 0, 'data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_query = "SHOW TABLE STATUS LIKE '" . cs_sql_escape($cs_db['prefix'] . '_') . "%'";
   if($sql_data = $cs_db['con']->query($sql_query)) {
@@ -68,7 +69,7 @@ function cs_sql_version($cs_file) {
     foreach($new_result AS $row) {
       $sql_infos['data_size'] += $row['Data_length'];
       $sql_infos['index_size'] += $row['Index_length'];
-      $sql_infos['data_free'] += $row['Data_free'];
+      $sql_infos['data_free'] += ($subtype == 'innodb') ? 0 : $row['Data_free'];
       $sql_infos['tables']++;
       $sql_infos['names'][] .= $row['Name'];
     }
