@@ -15,7 +15,7 @@
   <td class="leftc">
   
 ClanSphere 2010<br />
-Copyright (c) 2003-2010, ClanSphere Project<br />
+Copyright (c) 2003-2011, ClanSphere Project<br />
 All rights reserved.<br /><br />
 
 Redistribution and use in source and binary forms, with or without modification, 

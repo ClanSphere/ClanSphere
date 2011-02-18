@@ -6,6 +6,10 @@ ___________________________________________________________
 
 -> Added function cs_title to handle title generation (hajo)
    Fixes title problems with ajax and includes action names if found
+-> Changed XSRF logs to require the developer mode (hajo)
+-> Fixed some issues with am/pm date handling (hajo)
+
+-- Fixed a few bugs that were reported at "Trac" --
 
 
 ClanSphere 2010.3 >> 2011-01-24
