@@ -220,7 +220,8 @@ $cs_lang['del_install_file'] = 'Achtung: Die Datei "install.php" ist aus Sicherh
 // Options
 $cs_lang['url_rewrite'] = 'H&uuml;bsche URLs';
 $cs_lang['maintenance_access'] = 'Wartungs-Zugriff ab';
-$cs_lang['missing_htaccess'] = 'Mod-Rewrite kann erst aktiviert werden, wenn, je nach Webserver, die .htaccess oder web.config Datei vorhanden ist.';
+$cs_lang['missing_htaccess'] = 'Das Umschreiben von URLs kann erst aktiviert werden, wenn, je nach Webserver, die .htaccess oder web.config Datei vorhanden ist.';
+$cs_lang['info_htaccess'] = 'Aktiviert und deaktiviert Apache mod_rewrite und IIS URL Rewrite';
 $cs_lang['level'] = 'Stufe';
 $cs_lang['notfound_info'] = 'Aufrufe an fehlende Module oder Aktionen als Fehler behandeln';
 

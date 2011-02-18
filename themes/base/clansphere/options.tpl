@@ -19,6 +19,7 @@
       <td class="leftc">{icon:fileshare} {lang:url_rewrite}</td>
       {if:mod_rewrite}
         <td class="leftb">
+          {lang:info_htaccess}<br />
           <select name="mod_rewrite">
             <option value="1"{options:mod_rewrite_on}>{lang:on}</option>
             <option value="0"{options:mod_rewrite_off}>{lang:off}</option>
