@@ -21,7 +21,6 @@ if(empty($_POST['submit'])) {
   $data['abcode']['tools'] = cs_abcode_tools('data_content');
   $data['abcode']['html1'] = cs_abcode_toolshtml('data_content');
   $data['abcode']['sql'] = cs_abcode_sql('data_content');
-  $data['abcode']['js'] = cs_abcode_js('data_content');
   $data['abcode']['html2'] = cs_abcode_toolshtml2('data_content');
 
   echo cs_subtemplate(__FILE__, $data, 'explorer', 'create');

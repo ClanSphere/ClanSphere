@@ -26,7 +26,6 @@
     {abcode:tools}
     {abcode:html1} <br />
     {abcode:sql}
-    {abcode:js}
     {abcode:html2} <br />{stop:phpfile}
     <textarea name="data_content" cols="50" rows="35" id="data_content">{var:content}</textarea>
    </td>

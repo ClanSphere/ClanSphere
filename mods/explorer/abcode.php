@@ -98,19 +98,3 @@ function cs_abcode_sql($name) {
   
   return $var;
 }
-
-function cs_abcode_js($name) {
-  
-  $more = "onchange=\"javascript:abc_insert(this.form.cs_js.options";
-  $more .= "[this.form.cs_js.selectedIndex].value + '(',')','".$name."');";
-  $more .= "this.selectedIndex=0\"";
-  
-  $var = cs_html_select(1,'cs_js',$more);
-  $var .= cs_html_option('Javascript',0);
-  $var .= cs_html_option('abc_insert','abc_insert');
-  $var .= cs_html_option('cs_display','cs_display');
-  $var .= cs_html_option('cs_visible','cs_visible');
-  $var .= cs_html_select(0);
-  
-  return $var;
-}
