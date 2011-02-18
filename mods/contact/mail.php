@@ -29,16 +29,16 @@ if(empty($cs_answer_user['users_email'])){
   $from = $cs_answer_user['users_email'];
 }
 
-if(isset($_POST['submit'])) {
+$mail['name']          = empty($_POST['name']) ? '' : $_POST['name'];
+$mail['email']         = empty($_POST['email']) ? '' : $_POST['email'];
+$mail['why']           = empty($_POST['why']) ? '' : $_POST['why'];
+$mail['text']          = empty($_POST['text']) ? '' : $_POST['text'];
+$mail['msn']           = empty($_POST['msn']) ? '' : $_POST['msn'];
+$mail['icq']           = empty($_POST['icq']) ? '' : str_replace('-','',$_POST['icq']);
+$mail['firm']          = empty($_POST['firm']) ? '' : $_POST['firm'];
+$mail['categories_id'] = empty($_POST['categories_id']) ? '' : $_POST['categories_id'];
 
-  $mail['name']           = $_POST['name'];
-  $mail['email']          = $_POST['email'];
-  $mail['why']            = $_POST['why'];
-  $mail['text']           = $_POST['text'];
-  $mail['msn']            = $_POST['msn'];
-  $mail['icq']            = str_replace('-','',$_POST['icq']);
-  $mail['firm']           = $_POST['firm'];
-  $mail['categories_id']  = $_POST['categories_id'];
+if(isset($_POST['submit'])) {
   
   if(empty($account['users_id'])) {
     if (!cs_captchacheck($_POST['captcha'])) {
@@ -84,17 +84,6 @@ if(isset($_POST['submit'])) {
     $errormsg .= $cs_lang['error_category'] . cs_html_br(1); 
   }
 }
-else {
-  $mail['name']           = '';
-  $mail['email']          = '';
-  $mail['why']            = '';
-  $mail['text']           = '';
-  $mail['msn']            = '';  
-  $mail['firm']           = '';
-  $mail['categories_id']  = 0;
-}
-
-$mail['icq'] = empty($mail['icq']) ? '' : $mail['icq'];
 
 if(!isset($_POST['submit'])) {
   $data['lang']['head'] = $cs_lang['body_mail'];
