@@ -88,7 +88,7 @@
   <tr>
     <td class="centerc">{in:in_out}</td>
     <td class="leftc">{in:date}</td>
-    <td class="leftc"><a href="{url:cash_view:id={in:id}}">{in:for}<a/></td>
+    <td class="leftc"><a href="{url:cash_view:id={in:id}}">{in:for}</a></td>
     <td class="leftc">{in:money} {lang:euro}</td>
   </tr>
   {stop:in}

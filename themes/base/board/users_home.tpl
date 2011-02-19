@@ -9,7 +9,7 @@
  </tr>{loop:threads}
  <tr>
   <td class="leftb">
-    <a href="{url:board_list:id={threads:categories_id}}">{threads:categories_name}</a><br /> -> 
+    <a href="{url:board_list:id={threads:categories_id}}">{threads:categories_name}</a><br /> -&gt; 
     <a href="{url:board_listcat:id={threads:board_id}}">{threads:board_name}</a>
   </td>
   <td class="leftb">

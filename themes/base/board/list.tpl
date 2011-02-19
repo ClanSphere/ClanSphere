@@ -11,7 +11,7 @@
  </tr>
  <tr>
   <td class="leftc" colspan="2"><a href="{url:board_list}">{lang:board}</a>
-    {if:category} -> {category:name}{stop:category}</td>
+    {if:category} -&gt; {category:name}{stop:category}</td>
   <td class="rightc" colspan="3"><a href="{url:board_mark}">{lang:mark_all}</a></td>
  </tr>
 </table>

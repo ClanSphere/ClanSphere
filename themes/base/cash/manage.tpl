@@ -91,7 +91,7 @@
   <tr>
     <td class="leftc">{cash:users_link}</td>
     <td class="leftc">{cash:date}</td>
-    <td class="leftc"><a href="{url:cash_view:id={cash:id}}">{cash:text}</td>
+    <td class="leftc"><a href="{url:cash_view:id={cash:id}}">{cash:text}</a></td>
     <td class="leftc">{cash:money} {lang:euro}</td>
     <td class="leftc">{cash:in_out}</td>
     <td class="leftc"><a href="{url:cash_edit:id={cash:id}}" title="{lang:edit}">{icon:edit}</a></td>

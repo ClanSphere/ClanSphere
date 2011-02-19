@@ -73,7 +73,7 @@
       {lang:stage_4}
     </div>
     <div style="clear:both">
-      <a class="clip" href="#"><b>{lang:secure_stages}
+      <a class="clip" href="#"><strong>{lang:secure_stages}</strong>
       <img src="{page:path}symbols/clansphere/plus.gif" alt="+" />
       <img src="{page:path}symbols/clansphere/minus.gif" style="display:none" alt="-" /></a>
       <div style="display:none">

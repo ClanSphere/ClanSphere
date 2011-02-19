@@ -14,7 +14,7 @@
   </tr>
   {loop:static}
   <tr>
-    <td class="leftc"><a href="{static:url_view}" title="{lang:show}">{static:static_title}</td>
+    <td class="leftc"><a href="{static:url_view}" title="{lang:show}">{static:static_title}</a></td>
   </tr>
   {stop:static}
 </table>

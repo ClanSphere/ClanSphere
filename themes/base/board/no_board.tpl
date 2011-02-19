@@ -3,7 +3,7 @@
     <td class="headb" colspan="2">{lang:mod_name} - {lang:head_listcat}</td>
   </tr>
   <tr>
-    <td class="leftb" style="width:50%"><a href="{link:board}">{lang:board}</a> -> <a href="{link:name}">{categories:name}</a> -> {board:name}</td>
+    <td class="leftb" style="width:50%"><a href="{link:board}">{lang:board}</a> -&gt; <a href="{link:name}">{categories:name}</a> -&gt; {board:name}</td>
     <td class="rightb" style="width:50%">{if:newthread}<a href="{link:newthread}">{lang:newthread}</a>{stop:newthread}</td>
   </tr>
   <tr>

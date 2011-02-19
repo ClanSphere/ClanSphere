@@ -99,7 +99,7 @@
   <tr>
     <td class="leftb">
       {res:category}<br />
-      -> {res:board}
+      -&gt; {res:board}
     </td>
     <td class="leftb">
       <strong>{res:thread}</strong>

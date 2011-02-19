@@ -27,3 +27,4 @@
   </tr>
   {stop:users}
 </table>
+</form>

@@ -8,7 +8,7 @@
     <td class="leftb">{pages:list}</td>
   </tr>
   <tr>
-    <td class="leftb" colspan="3">{loop:rounds} -> {if:notselected}<a href="{url:cups_matchlist:where={cups:id}&amp;round={rounds:value}}">{stop:notselected}{lang:round} {rounds:name}{if:notselected}</a>{stop:notselected} {stop:rounds}</td>
+    <td class="leftb" colspan="3">{loop:rounds} -&gt; {if:notselected}<a href="{url:cups_matchlist:where={cups:id}&amp;round={rounds:value}}">{stop:notselected}{lang:round} {rounds:name}{if:notselected}</a>{stop:notselected} {stop:rounds}</td>
   </tr>
 </table>
 <br />
