@@ -377,7 +377,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 {
   global $account, $cs_logs, $cs_main;
 
-  if ((empty($cs_main['public']) or $tpl_file == 'admin.htm') and $account['access_clansphere'] < $cs_main['maintenance_access'])
+  if ((empty($cs_main['public']) or ($tpl_file == 'admin.htm' and empty($account['users_id']))) and $account['access_clansphere'] < $cs_main['maintenance_access']) 
   {
     $cs_main['show'] = 'mods/users/login.php';
     $tpl_file = 'login.htm';
