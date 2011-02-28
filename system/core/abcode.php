@@ -115,7 +115,7 @@ function cs_abcode_php($matches) {
   }
   else {
     $use = $matches[1];
-    $data = nl2br($php[$use]);
+    $data = isset($php[$use]) ? nl2br($php[$use]) : '';
   }
 
   return $data;
