@@ -30,7 +30,7 @@ else {
     $data['if']['archiv'] = empty($data['msg']['messages_archiv_sender']) ? 1 : 0; 
 }
 
-if(isset($data['msg']['messages_id'])) {
+if(isset($data['msg']['messages_time'])) {
   $data['msg']['messages_time'] = cs_date('unix', $data['msg']['messages_time'],1);
   $data['msg']['messages_id'] = $messages_id;
   $data['msg']['messages_subject'] = cs_secure($data['msg']['messages_subject']);
