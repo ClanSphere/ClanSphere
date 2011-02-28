@@ -171,8 +171,8 @@ function cs_sql_select($cs_file,$sql_table,$sql_select,$sql_where = 0,$sql_order
 	}
 
 	global $cs_db;
-	settype($first,'integer');
-	settype($max,'integer');
+	$first = ($first < 0) ? 0 : (int) $first;
+	$max = ($max < 0) ? 20 : (int) $max;
 	$run = 0;
 	$sql_where = str_replace('"', "'", $sql_where);
 

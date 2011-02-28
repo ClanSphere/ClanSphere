@@ -186,4 +186,5 @@ if(empty($cs_main['public']) AND !empty($account['users_id']) AND $account['acce
   $login['error'] = 'not_public'; 
 }
 
+if($account['users_limit'] < 0) $account['users_limit'] = $cs_main['data_limit'];
 unset($account['users_pwd'], $account['users_cookiehash'], $account['users_cookietime']);
