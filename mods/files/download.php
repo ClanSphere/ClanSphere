@@ -3,14 +3,15 @@
 // $Id$
 
 $cs_lang = cs_translate('files');
+
 $advanced = 0;
 
-if(empty($_REQUEST['where'])) 
+if(empty($_REQUEST['where']))
   cs_redirect(NULL, 'files', 'list');
 
 $files_id = $_REQUEST['where'];
 settype($files_id,'integer');
-$mirror_id = $_REQUEST['target'];
+$mirror_id = isset($_REQUEST['target']) ? $_REQUEST['target'] : 0;
 settype($mirror_id,'integer');
 
 $from = 'files';
@@ -29,9 +30,9 @@ $files_cells = array('files_count');
 $files_save = array($files_count);
 cs_sql_update(__FILE__,'files',$files_cells,$files_save,$files_id);
 
-if(empty($advanced))
+if(empty($advanced) AND isset($mirror[1]))
 {
-  header('Location: ' .$mirror[1]);
+  header('Location: ' . $mirror[1]);
 }  
 elseif(!empty($advanced))
 {
