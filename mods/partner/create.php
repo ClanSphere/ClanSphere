@@ -172,7 +172,7 @@ echo cs_subtemplate(__FILE__,$data,'partner','create');
 
   // upload navlist-image
 
-	$where = "partner_name = '" . cs_sql_escape($data['partner']['partner_name']) . "'";
+  $where = "partner_name = '" . cs_sql_escape($data['partner']['partner_name']) . "'";
     $getid = cs_sql_select(__FILE__,'partner','partner_id',$where);
     
   if(!empty($files['partner_nimg']['tmp_name'])) {

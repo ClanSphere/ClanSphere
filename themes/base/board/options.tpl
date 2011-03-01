@@ -58,22 +58,22 @@
       <td class="leftc">{icon:add_sub_task} {lang:list_subforums}</td>
       <td class="leftb"><input type="checkbox" name="list_subforums" value="1"{options:list_subforums} /></td>
     </tr>
- 	<tr>
-  		<td class="leftc">{icon:playlist} {lang:max_navlist}</td>
-  		<td class="leftb"><input type="text" name="max_navlist" value="{options:max_navlist}" maxlength="2" size="2" /></td>
- 	</tr>
- 	<tr>
-  		<td class="leftc">{icon:playlist} {lang:max_headline}</td>
-  		<td class="leftb"><input type="text" name="max_headline" value="{options:max_headline}" maxlength="3" size="3" /></td>
- 	</tr>  
- 	<tr>
-  		<td class="leftc">{icon:playlist} {lang:max_navtop}</td>
-  		<td class="leftb"><input type="text" name="max_navtop" value="{options:max_navtop}" maxlength="3" size="3" /></td>
- 	</tr> 
- 	<tr>
-  		<td class="leftc">{icon:playlist} {lang:max_navtop2}</td>
-  		<td class="leftb"><input type="text" name="max_navtop2" value="{options:max_navtop2}" maxlength="3" size="3" /></td>
- 	</tr>   	
+   <tr>
+      <td class="leftc">{icon:playlist} {lang:max_navlist}</td>
+      <td class="leftb"><input type="text" name="max_navlist" value="{options:max_navlist}" maxlength="2" size="2" /></td>
+   </tr>
+   <tr>
+      <td class="leftc">{icon:playlist} {lang:max_headline}</td>
+      <td class="leftb"><input type="text" name="max_headline" value="{options:max_headline}" maxlength="3" size="3" /></td>
+   </tr>  
+   <tr>
+      <td class="leftc">{icon:playlist} {lang:max_navtop}</td>
+      <td class="leftb"><input type="text" name="max_navtop" value="{options:max_navtop}" maxlength="3" size="3" /></td>
+   </tr> 
+   <tr>
+      <td class="leftc">{icon:playlist} {lang:max_navtop2}</td>
+      <td class="leftb"><input type="text" name="max_navtop2" value="{options:max_navtop2}" maxlength="3" size="3" /></td>
+   </tr>     
     <tr>
       <td class="leftc">{icon:ksysguard} {lang:options}</td>
       <td class="leftb"><input type="hidden" name="id" value="1" />

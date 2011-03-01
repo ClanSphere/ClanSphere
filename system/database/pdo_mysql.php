@@ -47,9 +47,9 @@ function cs_sql_replace($replace) {
   $myv = explode('.', $version);
   settype($myv[2], 'integer');
   if($myv[0] > 4 OR $myv[0] == 4 AND $myv[1] > 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] > 7)
-	$engine = ' ENGINE=' . $subtype . ' DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
-	else
-	$engine = ' TYPE=' . $subtype . ' CHARACTER SET utf8';
+  $engine = ' ENGINE=' . $subtype . ' DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
+  else
+  $engine = ' TYPE=' . $subtype . ' CHARACTER SET utf8';
 
   $replace = str_replace('{optimize}','OPTIMIZE TABLE',$replace);
   $replace = str_replace('{serial}','int(8) unsigned NOT NULL auto_increment',$replace);

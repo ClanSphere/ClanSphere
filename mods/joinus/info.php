@@ -17,4 +17,4 @@ $mod_info['categories']  = FALSE;
 $mod_info['comments']  = FALSE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('joinus');
-$mod_info['navlist']	= array('users_home' => 'max_usershome');
+$mod_info['navlist']  = array('users_home' => 'max_usershome');

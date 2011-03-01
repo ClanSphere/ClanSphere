@@ -80,8 +80,8 @@ $cs_arcmon = cs_sql_select(__FILE__, 'count_archiv', 'count_month, count_num', "
 $count_arcmon = count($cs_arcmon);
 $count_month = 0;
 for ($run=0; $run < $count_arcmon; $run++){
-	$count_month += $cs_arcmon[$run]['count_num'];
-	
+  $count_month += $cs_arcmon[$run]['count_num'];
+  
   $date = explode("-", $cs_arcmon[$run]['count_month']);
   $days = cs_datereal('t', mktime(0,0,0,(int)$date[0],1,(int)$date[1]));
 
@@ -89,7 +89,7 @@ for ($run=0; $run < $count_arcmon; $run++){
   if ($place >= 0 && $place < $max_step){
     $data['count'][$place]['count'] = $cs_arcmon[$run]['count_num'];
     $data['count'][$place]['day'] = round($cs_arcmon[$run]['count_num'] / $days);
-		if ($cs_arcmon[$run]['count_num'] > $mon_max){
+    if ($cs_arcmon[$run]['count_num'] > $mon_max){
       $mon_max = $cs_arcmon[$run]['count_num'];
     }
 

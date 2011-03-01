@@ -17,4 +17,4 @@ $mod_info['categories']  = FALSE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']     = array('cups','cupsquads','cupmatches'); 
-$mod_info['navlist']	= array('navlist' => 'max_navlist');
+$mod_info['navlist']  = array('navlist' => 'max_navlist');

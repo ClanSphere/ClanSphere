@@ -162,15 +162,15 @@ function cs_wrap_templatefile($matches)
 }
 
 function cs_template_info($template) {
-	global $cs_main;
-	$tpl_navlist = array();
-	if(file_exists('templates/' . $template . '/info.php')) {
-		require_once 'templates/' . $template . '/info.php';
-		if(isset($mod_info['navlist'])) {
-			$tpl_navlist = $mod_info['navlist'];
-		}
-	}
-	return $tpl_navlist;
+  global $cs_main;
+  $tpl_navlist = array();
+  if(file_exists('templates/' . $template . '/info.php')) {
+    require_once 'templates/' . $template . '/info.php';
+    if(isset($mod_info['navlist'])) {
+      $tpl_navlist = $mod_info['navlist'];
+    }
+  }
+  return $tpl_navlist;
 }
 
 function cs_templatefile($matches)

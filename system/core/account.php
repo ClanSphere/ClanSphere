@@ -82,7 +82,7 @@ if(empty($_SESSION['users_id'])) {
     $data['options'] = cs_sql_option(__FILE__,'users');
     $login_where = "users_nick = '" . cs_sql_escape($login['nick']) . "'";
     if($data['options']['login'] == 'email') {
-    	$login_where = "users_email = '" . cs_sql_escape($login['nick']) . "'";
+      $login_where = "users_email = '" . cs_sql_escape($login['nick']) . "'";
     }
   }
   elseif(isset($_COOKIE['cs_userid']) AND isset($_COOKIE['cs_cookietime']) AND isset($_COOKIE['cs_cookiehash'])) {
@@ -121,7 +121,7 @@ if(empty($_SESSION['users_id'])) {
       $login['method'] = 'form_cookie';
       cs_login_cookies($login_db['users_id'], true);
     }
-	session_regenerate_id(session_id());
+  session_regenerate_id(session_id());
     unset($login_db);
   }
 }

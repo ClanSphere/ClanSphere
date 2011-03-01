@@ -41,7 +41,7 @@
     <td class="leftc">{icon:personal} {lang:to} *</td>
     <td class="leftb">
     <input type="text" name="messages_to" id="messages_to" value="{msg:to}" autocomplete="off" onkeyup="Clansphere.ajax.user_autocomplete('messages_to', 'search_users_result' ,'{page:path}')" maxlength="200" size="50" /><br />
-    	<div id="search_users_result"></div>  
+      <div id="search_users_result"></div>  
      </td>
   </tr>
   <tr>

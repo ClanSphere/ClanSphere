@@ -131,7 +131,7 @@
                      "<\/graph>" +
                    "<\/graphs>" +
                  "<\/settings>");
-	so.addVariable("chart_data", 
+  so.addVariable("chart_data", 
                  "<chart>" + 
                    "<series>" +
                      {loop:count}"<value xid='{count:id}'>{count:year-mon}<\/value>" + {stop:count}
@@ -147,6 +147,6 @@
                  "<\/chart>");
   so.addVariable("preloader_color", "#FFFFFF");
   so.write("flashcontent");
-	//]]>
+  //]]>
 </script>
 {stop:amstats}

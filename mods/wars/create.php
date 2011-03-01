@@ -107,7 +107,7 @@ if(isset($_POST['submit'])) {
       $cs_wars['wars_url'] = $cs_fightus['fightus_url'];
       $cs_wars['wars_report'] = $cs_fightus['fightus_more'];
       $cs_wars['wars_report2'] = $cs_fightus['fightus_more'];
-	  
+    
       $where = "clans_name = '" . cs_sql_escape($cs_fightus['fightus_clan']) . "'";
       $cs_wars['clans_id'] = cs_sql_select(__FILE__,'clans','clans_id',$where);
     }
@@ -141,7 +141,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
     $cs_wars['wars_opponents'] =  $_POST['wars_opponents'];
     $cs_wars['wars_url'] = $_POST['wars_url'];
     $cs_wars['wars_report'] = $_POST['wars_report'];
-	$cs_wars['wars_report2'] = $_POST['wars_report2'];
+  $cs_wars['wars_report2'] = $_POST['wars_report2'];
     $cs_wars['wars_date'] = cs_datepost('date','unix');
 
     for ($x = 0; $x <= $players; $x++) {

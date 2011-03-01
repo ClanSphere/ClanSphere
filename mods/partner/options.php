@@ -17,7 +17,7 @@ if (!empty($_POST['submit'])) {
   $save['def_height_rotimg'] = (int) $_POST['def_height_rotimg'];
   $save['max_size_rotimg'] = (int) $_POST['max_size_rotimg'];
   $save['method'] = $_POST['method'];
-  $save['max_navlist'] 	= (int) $_POST['max_navlist'];
+  $save['max_navlist']   = (int) $_POST['max_navlist'];
   
   require_once 'mods/clansphere/func_options.php';
   

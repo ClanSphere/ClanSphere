@@ -9,9 +9,9 @@ ALTER TABLE {pre}_users ADD users_email varchar(255) NOT NULL default '';
 UPDATE {pre}_users SET users_email = users_emailregister;
 
 CREATE TABLE {pre}_trashmail (
-	trashmail_id {serial},
-	trashmail_entry varchar(255) NOT NULL default '',
-	PRIMARY KEY (trashmail_id),
+  trashmail_id {serial},
+  trashmail_entry varchar(255) NOT NULL default '',
+  PRIMARY KEY (trashmail_id),
   UNIQUE (trashmail_entry)
 ){engine};
 

@@ -6,23 +6,23 @@ $cs_lang = cs_translate('joinus');
 
 if(isset($_POST['submit'])) {
 
-	$save = array();
-	$save['vorname'] 		= (int) $_POST['vorname'];
-	$save['surname'] 		= (int) $_POST['surname'];
-	$save['place']			= (int) $_POST['place'];
-	$save['country']		= (int) $_POST['country'];
-	$save['icq'] 			= (int) $_POST['icq'];
-	$save['msn'] 			= (int) $_POST['msn'];
-	$save['game'] 			= (int) $_POST['game'];
-	$save['squad'] 			= (int) $_POST['squad'];
-	$save['webcon'] 		= (int) $_POST['webcon'];
-	$save['lanact'] 		= (int) $_POST['lanact'];
-	$save['more'] 			= (int) $_POST['more'];
-	$save['max_usershome'] 	= (int) $_POST['max_usershome'];
+  $save = array();
+  $save['vorname']     = (int) $_POST['vorname'];
+  $save['surname']     = (int) $_POST['surname'];
+  $save['place']      = (int) $_POST['place'];
+  $save['country']    = (int) $_POST['country'];
+  $save['icq']       = (int) $_POST['icq'];
+  $save['msn']       = (int) $_POST['msn'];
+  $save['game']       = (int) $_POST['game'];
+  $save['squad']       = (int) $_POST['squad'];
+  $save['webcon']     = (int) $_POST['webcon'];
+  $save['lanact']     = (int) $_POST['lanact'];
+  $save['more']       = (int) $_POST['more'];
+  $save['max_usershome']   = (int) $_POST['max_usershome'];
 
-	require_once 'mods/clansphere/func_options.php';
-	cs_optionsave('joinus', $save);
-	cs_redirect($cs_lang['success'], 'options', 'roots');
+  require_once 'mods/clansphere/func_options.php';
+  cs_optionsave('joinus', $save);
+  cs_redirect($cs_lang['success'], 'options', 'roots');
 }
 
 $data = array();

@@ -17,5 +17,5 @@ $mod_info['categories']  = TRUE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('events', 'eventguests');
-$mod_info['navlist']	= array('navbirthday' => 'max_navbirthday',
-								'navnext' => 'max_navnext');
+$mod_info['navlist']  = array('navbirthday' => 'max_navbirthday',
+                'navnext' => 'max_navnext');

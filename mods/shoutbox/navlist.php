@@ -44,16 +44,16 @@ $data['url']['archieve'] = cs_url('shoutbox','list');
 $data['if']['form'] = $account['access_shoutbox'] >= $axx_file['create'];
 
 if($data['if']['form'] === TRUE) {
-	$data['form']['url'] = cs_url('shoutbox','create');
-	$data['form']['nick'] = empty($account['users_nick']) ? 'Nick' : cs_secure($account['users_nick']);
-	 
-	$data['if']['captcha'] = FALSE;
-	if(!empty($captcha) && empty($account['users_id'])) {
-	  $data['if']['captcha'] = TRUE;
-	  $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?mini');
-	}
-	
-	$data['form']['uri'] = cs_url_self();
+  $data['form']['url'] = cs_url('shoutbox','create');
+  $data['form']['nick'] = empty($account['users_nick']) ? 'Nick' : cs_secure($account['users_nick']);
+   
+  $data['if']['captcha'] = FALSE;
+  if(!empty($captcha) && empty($account['users_id'])) {
+    $data['if']['captcha'] = TRUE;
+    $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?mini');
+  }
+  
+  $data['form']['uri'] = cs_url_self();
 }
 
 echo cs_subtemplate(__FILE__,$data,'shoutbox','navlist');

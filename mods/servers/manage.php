@@ -20,7 +20,7 @@ $data['server']['headmsg'] = cs_getmsg();
 $data['if']['viewfsock'] = false;
 
 if (!fsockopen("udp://127.0.0.1", 1)) {
-	$data['if']['viewfsock'] = true;
+  $data['if']['viewfsock'] = true;
 }
 
 $from = "servers serv LEFT JOIN {pre}_games gam ON gam.games_id = serv.games_id";
@@ -29,20 +29,20 @@ $select .= "serv.servers_stats servers_stats";
 $cs_server = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
 
 if(!empty($cs_server)) {
-	for($run=0; $run<count($cs_server); $run++) {
-		$server_query_ex = explode(";",$cs_server[$run]['servers_class']);
-		$cs_server[$run]['servers_class'] = $server_query_ex[0];
-		$cs_server[$run]['servers_game'] = $server_query_ex[1];
-		$data['servers'][$run]['id'] = $cs_server[$run]['servers_id'];
-		$data['servers'][$run]['name'] = $cs_server[$run]['servers_name'];
-		$data['servers'][$run]['game'] = $cs_server[$run]['games_name'];
-		$data['servers'][$run]['class'] = $cs_server[$run]['servers_class'];
-		$data['servers'][$run]['stats'] = $cs_server[$run]['servers_stats'] == 1 ? cs_icon('submit') : cs_icon('cancel');
-		$data['servers'][$run]['edit'] = cs_link(cs_icon('edit'),'servers','edit','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['edit']);
-		$data['servers'][$run]['remove'] = cs_link(cs_icon('editdelete'),'servers','remove','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['remove']);
-	}
+  for($run=0; $run<count($cs_server); $run++) {
+    $server_query_ex = explode(";",$cs_server[$run]['servers_class']);
+    $cs_server[$run]['servers_class'] = $server_query_ex[0];
+    $cs_server[$run]['servers_game'] = $server_query_ex[1];
+    $data['servers'][$run]['id'] = $cs_server[$run]['servers_id'];
+    $data['servers'][$run]['name'] = $cs_server[$run]['servers_name'];
+    $data['servers'][$run]['game'] = $cs_server[$run]['games_name'];
+    $data['servers'][$run]['class'] = $cs_server[$run]['servers_class'];
+    $data['servers'][$run]['stats'] = $cs_server[$run]['servers_stats'] == 1 ? cs_icon('submit') : cs_icon('cancel');
+    $data['servers'][$run]['edit'] = cs_link(cs_icon('edit'),'servers','edit','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['edit']);
+    $data['servers'][$run]['remove'] = cs_link(cs_icon('editdelete'),'servers','remove','id=' . $cs_server[$run]['servers_id'],0,$cs_lang['remove']);
+  }
 }
 else {
-	$data['servers'] = array();
+  $data['servers'] = array();
 }
 echo cs_subtemplate(__FILE__,$data,'servers','manage');

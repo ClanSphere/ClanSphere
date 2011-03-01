@@ -17,5 +17,5 @@ $mod_info['categories'] = FALSE;
 $mod_info['comments']   = FALSE;
 $mod_info['protected']  = TRUE;
 $mod_info['tables']     = array('users', 'usernicks');
-$mod_info['navlist']	= array('nextbirth' => 'nextbirth_max_users',
-								'navbirth' => 'nextbirth_max_users');
+$mod_info['navlist']  = array('nextbirth' => 'nextbirth_max_users',
+                'navbirth' => 'nextbirth_max_users');

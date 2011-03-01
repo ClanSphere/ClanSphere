@@ -17,6 +17,6 @@ $mod_info['categories']  = TRUE;
 $mod_info['comments']  = TRUE;
 $mod_info['protected']  = FALSE;
 $mod_info['tables']    = array('replays');
-$mod_info['navlist']	= array('navlist' => 'max_navlist',
-								'max_headline_team1' => 'max_headline_team1',
-								'max_headline_team2' => 'max_headline_team2');
+$mod_info['navlist']  = array('navlist' => 'max_navlist',
+                'max_headline_team1' => 'max_headline_team1',
+                'max_headline_team2' => 'max_headline_team2');

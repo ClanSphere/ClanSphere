@@ -23,7 +23,7 @@ $sql_where .= ') AND fil.files_access <= '.$account['access_files'].' AND cat.ca
 $select  = 'fil.files_id, fil.files_name, fil.files_time, fil.categories_id, cat.categories_name AS categories_name';
 $select .= ', usr.users_nick AS users_nick, usr.users_id AS users_id, usr.users_active AS users_active, usr.users_delete AS users_delete';
 $tables  = 'files fil INNER JOIN {pre}_categories cat ON cat.categories_id = fil.categories_id'; 
-$tables	.= ' LEFT JOIN {pre}_users usr ON usr.users_id = fil.users_id';
+$tables  .= ' LEFT JOIN {pre}_users usr ON usr.users_id = fil.users_id';
 $cs_search = cs_sql_select(__FILE__,$tables,$select,$sql_where,$order,$start,$account['users_limit']);
 $search_loop = count($cs_search);
 
@@ -43,7 +43,7 @@ if (!empty($search_loop)) {
   for($run=0; $run<$search_loop; $run++) {
       $cs_clans_name = cs_secure($cs_search[$run]['files_name']);
       $data2['results'][$run]['name'] = cs_link(cs_secure($cs_clans_name),'files','view','where=' . $cs_search[$run]['files_id']);
-	  $data2['results'][$run]['cat'] = cs_link($cs_search[$run]['categories_name'],'files','listcat','where=' . $cs_search[$run]['categories_id']);
+    $data2['results'][$run]['cat'] = cs_link($cs_search[$run]['categories_name'],'files','listcat','where=' . $cs_search[$run]['categories_id']);
       $data2['results'][$run]['date'] = cs_date('unix',$cs_search[$run]['files_time'],1);
       $data2['results'][$run]['user'] = cs_user($cs_search[$run]['users_id'],$cs_search[$run]['users_nick'],$cs_search[$run]['users_active'],$cs_search[$run]['users_delete']);
   }

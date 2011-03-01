@@ -15,7 +15,7 @@ $cs_lang['body_create'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
 $cs_lang['head_remove']  = 'Entfernen';
 $cs_lang['body_remove']  = 'Bitte m&ouml;glichst viele Felder ausf&uuml;llen.';
 
-$cs_lang['stats']	= 'Live';
+$cs_lang['stats']  = 'Live';
 $cs_lang['refresh'] = 'Aktualisieren';
 $cs_lang['slist'] = 'Serverliste';
 $cs_lang['server'] = 'Server';
@@ -102,7 +102,7 @@ $cs_lang['skill']    = 'Skill';
 $cs_lang['channels']    = 'Channels';
 $cs_lang['channel']    = 'Channel';
 $cs_lang['privileg']  = 'Status';
-$cs_lang['nick']	= 'Spieler';
+$cs_lang['nick']  = 'Spieler';
 
 // Navlist
 $cs_lang['host_navlist'] = 'IP/Host ';

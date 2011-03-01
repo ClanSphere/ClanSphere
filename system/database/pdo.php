@@ -121,13 +121,13 @@ function cs_sql_option($cs_file,$mod) {
       }
       cs_log_sql($cs_file, $sql_query);
       if(count($cs_template)) {
-      	foreach($cs_template AS $navlist => $value) {
-      	  if($navlist == $mod) {
-      		$new_result = array_merge($new_result,$value);
-      	  }
-      	}
+        foreach($cs_template AS $navlist => $value) {
+          if($navlist == $mod) {
+          $new_result = array_merge($new_result,$value);
+          }
+        }
       }
-	  $options[$mod] = isset($new_result) ? $new_result : 0;
+    $options[$mod] = isset($new_result) ? $new_result : 0;
       cs_cache_save('op_' . $mod, $options[$mod]);
     }
   }
@@ -164,8 +164,8 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   }
 
   global $cs_db;
-	$first = ($first < 0) ? 0 : (int) $first;
-	$max = ($max < 0) ? 20 : (int) $max;
+  $first = ($first < 0) ? 0 : (int) $first;
+  $max = ($max < 0) ? 20 : (int) $max;
   $new_result = 0;
   $run = 0;
   $sql_where = str_replace('"', "'", $sql_where);

@@ -20,4 +20,4 @@ $mod_info['tables']    = array('news');
 $mod_info['startup'] = TRUE;
 $mod_info['navlist'] = array('navlist' => 'max_navlist',
                              'navlist_headline' => 'max_headline', 
-							 'recent' => 'max_recent',);
+               'recent' => 'max_recent',);
