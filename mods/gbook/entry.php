@@ -223,7 +223,7 @@ if(!empty($g_error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
     $data['tpl']['extension'] = cs_subtemplate(__FILE__,$data,'gbook','extension');
     
     if(!empty($captcha)) {
-      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
+      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
       $data['tpl']['captcha'] = cs_subtemplate(__FILE__,$data,'gbook','captcha');
     }
   }

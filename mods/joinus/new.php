@@ -277,7 +277,7 @@ if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit'])))
   $data['rules']['link'] = cs_html_link(cs_url('rules','list'),$cs_lang['rules']);
   $data['joinus']['rules_selected'] = !empty($data2['join']['joinus_rules']) ? 'checked="checked"' : '';
   if(!empty($captcha)) {
-          $data['join']['captcha_img'] = cs_html_img('mods/captcha/generate.php');
+          $data['join']['captcha_img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
           $data['if']['captcha'] = 1;
   }
 

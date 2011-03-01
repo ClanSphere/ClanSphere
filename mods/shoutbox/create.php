@@ -76,7 +76,7 @@ if(isset($_POST['submit'])) {
     $data['form']['message'] = $cs_shout['shoutbox_text'];
     
     if(!empty($captcha) && empty($account['users_id'])) {
-      $data['form']['captcha'] = cs_html_img('mods/captcha/generate.php?mini');
+      $data['form']['captcha'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time() . '&mini');
       $data['form']['show'] = cs_subtemplate(__FILE__,$data,'shoutbox','captcha');
     } else {
       $data['form']['show'] = '';

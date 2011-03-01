@@ -134,7 +134,7 @@ if(empty($op_users['register'])) {
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     if(!empty($captcha)) {
       $data['if']['captcha'] = 1;
-      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
+      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
     }
   }
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {

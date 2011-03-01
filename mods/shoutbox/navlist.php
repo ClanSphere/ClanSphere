@@ -50,7 +50,7 @@ if($data['if']['form'] === TRUE) {
   $data['if']['captcha'] = FALSE;
   if(!empty($captcha) && empty($account['users_id'])) {
     $data['if']['captcha'] = TRUE;
-    $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?mini');
+    $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time() . '&mini');
   }
   
   $data['form']['uri'] = cs_url_self();

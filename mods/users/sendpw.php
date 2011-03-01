@@ -121,7 +121,7 @@ if(empty($success)) {
     $data['lang']['request'] = $cs_lang['request'];
     $data['lang']['reset'] = $cs_lang['reset'];
 
-    $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
+    $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
 
     echo cs_subtemplate(__FILE__,$data,'users','sendpw_1');
   }

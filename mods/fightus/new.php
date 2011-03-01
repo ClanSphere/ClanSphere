@@ -145,7 +145,7 @@ if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit'])))
 
   if(!empty($captcha)) {
     $data['if']['captcha'] = TRUE;
-    $data['fightus']['captcha_img'] = cs_html_img('mods/captcha/generate.php');
+    $data['fightus']['captcha_img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
   }
 }
 elseif(!empty($data['if']['form'])) {

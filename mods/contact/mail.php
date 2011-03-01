@@ -131,6 +131,6 @@ else {
   cs_mail($cs_contact['def_mail'],$mail['why'],$message,$mail['email']);
 }
 
-$data['captcha']['img'] = cs_html_img('mods/captcha/generate.php');
+$data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
 
 echo cs_subtemplate(__FILE__,$data,'contact','mail');
