@@ -415,7 +415,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   # Provide the def_title and a title with more information
   $replace['func:title_website'] = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
-  $replace['func:title'] = htmlentities(cs_title(), ENT_QUOTES, $cs_main['charset']);
+  $replace['func:title'] = cs_title();
 
   # Fetch template file and parse exploded contents
   $template = cs_cache_template($tpl_file);

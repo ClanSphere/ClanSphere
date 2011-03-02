@@ -325,7 +325,7 @@ function cs_title() {
 
   # Provides the page title with as many information as possible
   global $cs_main;
-  $title = $cs_main['def_title'];
+  $title = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
 
   if($cs_main['mod'] != 'static' OR $cs_main['action'] != 'view') {
     $cs_act_lang = substr($cs_main['show'],0,11) == 'mods/errors' ? cs_translate('errors') : cs_translate($cs_main['mod']);
@@ -336,7 +336,7 @@ function cs_title() {
   }
 
   if(!empty($cs_main['page_title']))
-    $title .= ' - ' . $cs_main['page_title'];
+    $title .= ' - ' . htmlentities($cs_main['page_title'], ENT_QUOTES, $cs_main['charset']);
 
   return $title;
 }
