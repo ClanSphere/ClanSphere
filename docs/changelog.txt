@@ -6,8 +6,11 @@ ___________________________________________________________
 
 -> Added function cs_title to handle title generation (hajo)
    Fixes title problems with ajax and includes action names if found
+-> Added robots.txt file to keep crawlers away from some directories (hajo)
 -> Changed XSRF logs to require the developer mode (hajo)
 -> Fixed some issues with am/pm date handling (hajo)
+-> Updated CKEditor to 3.5.2 (hajo)
+-> Updated jQuery to 1.5.1 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
