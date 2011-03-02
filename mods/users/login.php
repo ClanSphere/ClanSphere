@@ -61,7 +61,9 @@ else {
   $data['head']['body_text'] = $cs_lang['method_' . $login_method];
   echo cs_subtemplate(__FILE__,$data,'users','head');
 
-  if(empty($_POST['uri']) OR strstr($_POST['uri'], 'logout')) {
+  	if($cs_main['tpl_file'] == 'admin.htm' and $account['access_clansphere'] < 3){
+		require('mods/errors/403.php');
+	}else if(empty($_POST['uri']) OR strstr($_POST['uri'], 'logout')) {
     cs_redirect('','users','home');
   }
   else {
