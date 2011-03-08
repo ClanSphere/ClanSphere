@@ -105,7 +105,7 @@ if (function_exists('gzcompress'))
     $pattern = "=^[_a-z0-9-]+(\.[_a-z0-9-]+)?$=i";
     if(!preg_match($pattern,$name))
     {
-      die(cs_error_internal(0, 'Invalid arguments passed'));
+      die('Error: Invalid arguments passed');
     }
     $file = '../../uploads/gallery/pics/' . $name;
     if(file_exists($file))
