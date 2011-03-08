@@ -17,12 +17,12 @@ $user = cs_sql_select(__FILE__,'users','users_picture',"users_id = '" . $users_i
 $userpic = $user['users_picture'];
 $del = 0;
 
-if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($userpic)) {
+if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($userpic) && $userpic != 'nopicture.jpg') {
   
   $del = 1;
   cs_unlink('users', $userpic);
   $cells = array('users_picture');
-  $content = array();
+  $content = empty($op_users['def_picture']) ? array('') : array('nopicture.jpg');
   cs_sql_update(__FILE__,'users',$cells,$content,$users_id);
 
   cs_redirect($cs_lang['success'],'users','manage');
@@ -74,11 +74,10 @@ elseif(!empty($files['picture']['tmp_name'])) {
   }
 }
 
-if(!isset($_POST['submit']) AND empty($error)) {
+if(empty($error))
   $data['head']['body'] = $cs_lang['picture_manage'];
-} elseif(!empty($error)) {
+else
   $data['head']['body'] = $error;
-}
 
 if(!empty($error) OR empty($files['picture']['tmp_name']) AND empty($del)) {
 

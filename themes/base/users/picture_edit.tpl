@@ -24,7 +24,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:configure} {lang:extended}</td>
-    <td class="leftb"><input type="checkbox" name="delete" value="1" />{lang:remove}</td>
+    <td class="leftb"><input type="checkbox" name="delete" value="1" /> {lang:remove}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:ksysguard} {lang:options}</td>

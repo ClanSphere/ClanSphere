@@ -73,11 +73,10 @@ elseif(!empty($files['picture']['tmp_name'])) {
   }
 }
 
-if(!isset($_POST['submit']) AND empty($error)) {
+if(empty($error))
   $data['head']['body'] = $cs_lang['picture_manage'];
-} elseif(!empty($error)) {
+else
   $data['head']['body'] = $error;
-}
 
 if(!empty($error) OR empty($files['picture']['tmp_name']) AND empty($del)) {
 
