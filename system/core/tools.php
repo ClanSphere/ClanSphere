@@ -133,7 +133,7 @@ function cs_datepost($name,$mode) {
   $time['day'] = empty($_POST[$name . '_day']) ? 1 : (int) $_POST[$name . '_day'];
 
   $var = '';
-  if($mode == 'unix') {
+  if($mode == 'unix' AND $time['year'] >= 1970) {
     $time['mins'] = empty($_POST[$name . '_mins']) ? 0 : (int) $_POST[$name . '_mins'];
     $time['hours'] = empty($_POST[$name . '_hours']) ? 0 : (int) $_POST[$name . '_hours'];
     if(!empty($_POST[$name . '_ampm'])) {
@@ -145,7 +145,7 @@ function cs_datepost($name,$mode) {
     $var = mktime($time['hours'], $time['mins'] , 0, $time['month'], $time['day'], $time['year']);
     $var = cs_timediff($var, 1);
   }
-  elseif($mode == 'date' AND !empty($time['year'])) {
+  elseif($mode == 'date' AND $time['year'] >= 1950) {
     if(strlen($time['month']) == 1) $time['month'] = '0' . $time['month'];
     if(strlen($time['day']) == 1) $time['day'] = '0' . $time['day'];
     $var = $time['year'] . '-' . $time['month'] . '-' . $time['day'];
