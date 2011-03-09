@@ -39,8 +39,8 @@
   <tr>
     <td class="leftc">{icon:password} {lang:secure}</td>
     <td class="leftb">
-      <div style="float:left; background-image:url(/symbols/votes/vote03.png); width:100px; height:13px;">
-        <div style="float:left; background-image:url(/symbols/votes/vote01.png); width: 1%; height:13px;" id="pass_secure"></div>
+      <div style="float:left; background-image:url({page:path}symbols/votes/vote03.png); width:100px; height:13px;">
+        <div style="float:left; background-image:url({page:path}symbols/votes/vote01.png); width: 1%; height:13px;" id="pass_secure"></div>
       </div>
       <div style="clear:both">
         {clip:pw_sec}
