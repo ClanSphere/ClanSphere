@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2010.3.1 >> 2011-05-XX
+ClanSphere 2011.0 >> 2011-04-XX
 ___________________________________________________________
 
 -> Added function cs_title to handle title generation (hajo)
