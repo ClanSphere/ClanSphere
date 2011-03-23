@@ -15,7 +15,7 @@
  </tr>
 {loop:answers}
  <tr>
-  <td class="leftb">{answers:answer}<div style="float:right;text-align:right;height:13px;width:35px;vertival-align:middle">&nbsp;</div></td>
+  <td class="leftb">{answers:answer}<div style="float:right;text-align:right;height:13px;width:35px;vertical-align:middle">&nbsp;</div></td>
   <td class="leftb" style="width:120px">
    <div style="background-image:url({page:path}symbols/votes/vote03.png); width:100px; height:13px;">
    <div style="background-image:url({page:path}symbols/votes/vote01.png); width:{answers:percent}px; text-align:right; padding-left:1px">
