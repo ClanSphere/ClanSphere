@@ -35,7 +35,7 @@ if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND !empty($useravatar))
   
   cs_redirect($cs_lang['remove_done'], 'board', 'avatar');
 }
-elseif(!empty($_POST['submit'])) {
+elseif(!empty($_POST['submit']) AND !empty($files_gl['picture']['tmp_name'])) {
 
   $message = $cs_lang['ext_error'] . cs_html_br(1);
   foreach($img_filetypes AS $allowed => $new_ext) {
@@ -110,7 +110,6 @@ if(!empty($error) OR empty($_POST['submit'])) {
 
   $data['action']['form'] = cs_url('board','avatar');
 
-
   if(empty($useravatar)) {
     $data['avatar']['img'] = $cs_lang['nopic'];
   }
@@ -119,7 +118,6 @@ if(!empty($error) OR empty($_POST['submit'])) {
     $size = getimagesize($cs_main['def_path'] . '/' . $place);
     $data['avatar']['img'] = cs_html_img($place,$size[1],$size[0]);
   }
-
 
   $matches[1] = $cs_lang['pic_infos'];
   $return_types = '';
