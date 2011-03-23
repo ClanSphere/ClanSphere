@@ -10,6 +10,8 @@ function cs_cspnews($all = 0) {
 
   $timeout = 10;
 
+  $content = '';
+
   global $cs_lang, $cs_main;
 
   $cs_lang = cs_translate('clansphere');
@@ -35,9 +37,11 @@ function cs_cspnews($all = 0) {
       cs_sql_update(__FILE__, 'options', array('options_value'), array(cs_time()), 0, $opt_where);
 
       $rfp = fopen($remote_url_secnews, 'r');
-      stream_set_timeout($rfp, $timeout);
-      $content = fread($rfp, 4096);
-      fclose($rfp);
+      if(is_resource($rfp)) {
+        stream_set_timeout($rfp, $timeout);
+        $content = fread($rfp, 4096);
+        fclose($rfp);
+      }
 
       if(!empty($content)) {
         $content = str_replace(array("\r","\n"),'',$content);

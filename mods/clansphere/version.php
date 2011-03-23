@@ -21,10 +21,14 @@ if(empty($allow_url_fopen)) {
   $error = $cs_lang['need_url_fopen'];
 }
 else {
+  $content = '';
   $rfp = fopen($remote_url_version, 'r');
-  stream_set_timeout($rfp, $timeout);
-  $content = fread($rfp, 4096);
-  fclose($rfp);
+  if(is_resource($rfp)) {
+    stream_set_timeout($rfp, $timeout);
+    $content = fread($rfp, 4096);
+    fclose($rfp);
+  }
+
   if(empty($content))
     $error = $cs_lang['file_not_read'];
   else {

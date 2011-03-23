@@ -90,7 +90,7 @@ if(empty($_SESSION['users_id'])) {
     $login['userid'] = (int) $_COOKIE['cs_userid'];
     $login['cookietime'] = (int) $_COOKIE['cs_cookietime'];
     $login['cookiehash'] = $_COOKIE['cs_cookiehash'];
-    $login_where = "users_id = '" . $login['userid'] . "'";
+    $login_where = 'users_id = ' . (int) $login['userid'];
   }
 
   if(isset($login['method'])) {
@@ -131,7 +131,7 @@ if(!empty($_SESSION['users_id'])) {
   if (empty($login['method'])) $login['method'] = 'session';
   $login['mode'] = TRUE;
 
-  $acc_wr = "users_id = '" . (int) $_SESSION['users_id'] . "' AND users_active = 1 AND users_delete = 0";
+  $acc_wr = 'users_id = ' . (int) $_SESSION['users_id'] . ' AND users_active = 1 AND users_delete = 0';
   $account = cs_sql_select(__FILE__, 'users', '*', $acc_wr);
   if (empty($account) OR ($account['users_pwd'] != $_SESSION['users_pwd'])) {
     session_destroy();
