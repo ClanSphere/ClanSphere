@@ -442,7 +442,8 @@ function cs_abcode_resize ($matches) {
 
   if ($matches[0]{4} == ']') {
     $img = $matches[1];
-    if (is_readable($matches[1]) AND $size = getimagesize($matches[1])) {
+    $size = getimagesize($img);
+    if (is_array($size)) {
       if ($size[0] > $max_width) {
         $new_width = $max_width;
         $new_height = round($size[1] / $size[0] * $max_width);
@@ -457,7 +458,8 @@ function cs_abcode_resize ($matches) {
         $change = 1;
       }
     }
-  } else {
+  }
+  else {
     $img = $matches[3];
     if ($matches[1] > $max_width) {
       $change = 1;
