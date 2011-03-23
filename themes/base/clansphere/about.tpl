@@ -3,7 +3,7 @@
     <td class="headb"> ClanSphere - {lang:about} </td>
   </tr>
   <tr>
-    <td class="leftc"> ClanSphere 2010<br />
+    <td class="leftc"> ClanSphere 2011<br />
       Copyright (c) 2003-2011, <a href="http://www.clansphere.net" target="_blank">ClanSphere Project</a><br />
       All rights reserved. </td>
   </tr>

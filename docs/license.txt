@@ -1,7 +1,7 @@
 LICENSE
 --------------------------
 
-ClanSphere 2010
+ClanSphere 2011
 Copyright (c) 2003 - 2011, ClanSphere Project
 All rights reserved.
 

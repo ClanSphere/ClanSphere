@@ -14,7 +14,7 @@
  <tr>
   <td class="leftc">
   
-ClanSphere 2010<br />
+ClanSphere 2011<br />
 Copyright (c) 2003-2011, ClanSphere Project<br />
 All rights reserved.<br /><br />
 
