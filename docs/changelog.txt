@@ -4,6 +4,8 @@ CHANGELOG
 ClanSphere 2011.0 >> 2011-04-XX
 ___________________________________________________________
 
+-- Recommended PHP version changed to 5.3.6
+
 -> Added function cs_title to handle title generation (hajo)
    Fixes title problems with ajax and includes action names if found
 -> Added robots.txt file to keep crawlers away from some directories (hajo)
