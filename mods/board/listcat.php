@@ -128,7 +128,7 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
       
       if (!empty($thread['threads_ghost'])) {
         $data['threads'][$run]['headline'] = $headline;
-    $data['threads'][$run]['headline'] .= cs_link(cs_icon('cancel'),'board','thread_remove','id=' . $thread['threads_id']);
+    $data['threads'][$run]['headline'] .= ' ' . cs_link(cs_icon('cancel'),'board','thread_remove','id=' . $thread['threads_id']);
         $data['threads'][$run]['ghost_thread'] = cs_html_br(2);
     $data['threads'][$run]['ghost_thread'] .= cs_link($cs_lang['ghost_topic'], 'board', 'thread', 'where=' . $thread['threads_ghost_thread']);
         $data['threads'][$run]['ghost_board'] = ' - ' . cs_link($cs_lang['ghost_board'], 'board', 'listcat', 'id=' . $thread['threads_ghost_board']);

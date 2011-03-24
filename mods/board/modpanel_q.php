@@ -6,16 +6,16 @@ $cs_lang = cs_translate('board');
 
 $thread_error = 2; 
 $thread_form = 1;
-$thread_id = $_GET['id']; 
+
+$thread_id = empty($_GET['id']) ? 0 : $_GET['id']; 
 
 settype($thread_id,'integer');
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $from .= 'INNER JOIN {pre}_users usr ON thr.users_id = usr.users_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, ';
-$select .= 'thr.threads_id AS threads_id, frm.board_id AS board_id, frm.board_threads AS board_threads, cat.categories_id AS categories_id, frm.board_access AS board_access, thr.threads_important AS threads_important, thr.threads_close AS threads_close, thr.threads_last_time AS threads_last_time, usr.users_nick AS users_nick';
-$where = "threads_id = '" . $thread_id . "'";
+$select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, frm.board_threads AS board_threads, cat.categories_id AS categories_id, frm.board_access AS board_access, thr.threads_important AS threads_important, thr.threads_close AS threads_close, thr.threads_time AS threads_time, thr.threads_last_time AS threads_last_time, usr.users_nick AS users_nick, usr.users_id AS users_id';
+$where = 'threads_id = ' . (int) $thread_id;
 $thread_edit = cs_sql_select(__FILE__,$from,$select,$where);
 $thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel',"users_id = '" . $account['users_id'] . "'",0,0,1);
 $thread_headline = $thread_edit['threads_headline'];
@@ -56,8 +56,9 @@ if(isset($_POST['close'])) {
   if($_POST['ghost'] == '1') {
     $ghost['board_id'] = $thread_edit['board_id'];
     $ghost['threads_headline'] = $cs_lang['movedto'] . ' (' . $thread_edit['threads_headline'] . ')';
-    $ghost['threads_close'] = 1;
-    $ghost['users_id'] = $account['users_id'];
+    $ghost['threads_close'] = $account['users_id'];
+    $ghost['users_id'] = $thread_edit['users_id'];
+    $ghost['threads_time'] = $thread_edit['threads_time'];
     $ghost['threads_last_time'] = $thread_edit['threads_last_time'];
     $ghost['threads_ghost'] = 1;
     $ghost['threads_ghost_board'] = $_POST['board_id'];

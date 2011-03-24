@@ -16,7 +16,7 @@ $tables  = 'threads thr INNER JOIN {pre}_board frm ON frm.board_id = thr.board_i
 $tables .= 'LEFT JOIN {pre}_read red ON thr.threads_id = red.threads_id AND red.users_id = \''.$account['users_id'].'\'';
 $cells   = 'thr.threads_headline AS threads_headline, thr.threads_id AS threads_id, ';
 $cells  .= 'thr.threads_last_time AS threads_last_time, frm.board_name AS board_name, frm.board_id AS board_id';
-$cond    = 'frm.board_access <= \''.$account['access_board'].'\' AND frm.board_pwd = \'\'';
+$cond    = 'thr.threads_ghost = 0 AND frm.board_access <= \''.$account['access_board'].'\' AND frm.board_pwd = \'\'';
 if(!empty($account['users_id'])) {
   $cond   .= ' AND thr.threads_last_time > \'' . $cs_readtime . '\' AND (thr.threads_last_time > red.read_since OR red.threads_id IS NULL)';
 }
