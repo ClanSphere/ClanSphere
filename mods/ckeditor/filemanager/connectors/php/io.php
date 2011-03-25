@@ -284,7 +284,7 @@ function SendUploadResults( $errorNumber, $fileUrl = '', $fileName = '', $custom
 {
 
   // Check for CKEditor
-  $funcnum  = $_GET['CKEditorFuncNum'];
+  $funcnum = (int) $_GET['CKEditorFuncNum'];
   $filePlace = '';
 
   if ($errorNumber && $errorNumber != 201) {
@@ -310,6 +310,7 @@ EOF;
 
     echo 'window.parent.OnUploadCompleted(' . $errorNumber . ',"' . strtr( $fileUrl, $rpl ) . '","' . strtr( $fileName, $rpl ) . '", "' . strtr( $customMsg, $rpl ) . '") ;' ;
     echo '</script>' ;
+    exit ;
   }
   else {
     // CKEditor
