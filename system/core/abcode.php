@@ -442,7 +442,7 @@ function cs_abcode_resize ($matches) {
 
   if ($matches[0]{4} == ']') {
     $img = $matches[1];
-    $size = empty($img) ? array(0, 1) : getimagesize($img);
+    $size = empty($img) ? false : @getimagesize($img);
     if (is_array($size)) {
       if ($size[0] > $max_width) {
         $new_width = $max_width;
