@@ -417,6 +417,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $replace['func:title_website'] = htmlentities($cs_main['def_title'], ENT_QUOTES, $cs_main['charset']);
   $replace['func:title'] = cs_title();
 
+  # Set path information compatible to requested dir structure (multidir mode)
+  $replace['func:path'] = $cs_main['php_self']['dirname'];
+
   # Fetch template file and parse exploded contents
   $template = cs_cache_template($tpl_file);
   $template = cs_tokenizer_parse($template);
@@ -469,6 +472,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     else
       $result .= $content;
 
+  # Enable zlib output compression if possible
   if(extension_loaded('zlib'))
     ob_start('ob_gzhandler');
 
