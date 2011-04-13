@@ -54,7 +54,10 @@ if(!empty($cs_main['php_self']['params']{1})) {
 
 # define basic settings for cookies
 $domain = (strpos($domain, '.') !== FALSE) ? $domain : '';
-$cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => '/', 'domain' => $domain);
+$port = strpos($domain, ':'); 
+if ($port !== FALSE)
+  $domain = substr($domain, 0, $port);
+$cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => $cs_main['php_self']['dirname'], 'domain' => $domain);
 
 # set some request and get data to integer for backwards compatibility with old modules
 settype($_GET['id'],'integer');
