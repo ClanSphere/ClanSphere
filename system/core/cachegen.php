@@ -65,7 +65,9 @@ function cs_cache_template($filename) {
       return $tpl_data;
 
   $tpl_data = file_get_contents($tpl_real);
-  $tpl_path = '{func:path}templates/' . $cs_main['template'];
+  $tpl_path = $cs_main['php_self']['dirname'] . 'templates/' . $cs_main['template'];
+
+  $tpl_data = str_replace('{func:path}', $cs_main['php_self']['dirname'], $tpl_data);
 
   if(strpos($tpl_data, 'id="csp_content"') !== false)
     cs_error($tpl_real, 'cs_cache_template - The ID tag "csp_content" is reserved for AJAX');
@@ -84,9 +86,6 @@ function cs_cache_template($filename) {
   $tpl_data = preg_replace($pattern, "\\1=\"" . $tpl_path . "/\\2\"", $tpl_data);
 
   $tpl_data = preg_replace_callback('={url(?:_([\w]*?))?:([\w]*?)(?:_([\w]*?)((?::(?:(?:[\S]*?{[\S]*?}[\S]*?)*?|[\S]*?))*?))?}=i', 'cs_templateurl', $tpl_data);
-
-  if(empty($cs_main['multidir']))
-    $tpl_data = str_replace('{func:path}', $cs_main['php_self']['dirname'], $tpl_data);
 
   $tpl_data = str_replace('{func:charset}', $cs_main['charset'], $tpl_data);
 

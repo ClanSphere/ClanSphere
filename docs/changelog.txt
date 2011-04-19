@@ -5,9 +5,10 @@ CHANGELOG
 ClanSphere 2011.0.1 >> 2011-XX-XX
 ___________________________________________________________
 
--> Added cs_main option 'multidir' that can be set in setup.php (hajo)
-   Enable this if you want to access one installation from different virtual places
+
 -> Fixed login to work on other ports than the default one (astmaih)
+
+-- Fixed a few bugs that were reported at "Trac" --
 
 
 ClanSphere 2011.0 >> 2011-03-28
