@@ -79,6 +79,7 @@ if(isset($_POST['new_file'])) {
 }
 
 $thread_error = 0;
+$file_error = array();
 
 $run_loop_files = isset($_POST['run_loop_files']) ? $_POST['run_loop_files'] + $run_loop_files : 0 + $run_loop_files;
 $a = '0';
