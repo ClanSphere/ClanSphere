@@ -87,7 +87,7 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
   $string = cs_conditiontemplate($string, $data);
   $string = cs_looptemplate($source, $string, $data);
 
-  $string = preg_replace_callback("={lang:(.*?)}=i", 'cs_templatelang', $string);
+  $string = preg_replace_callback("={lang:([\w]*?)}=i", 'cs_templatelang', $string);
 
   if($cs_main['xsrf_protection'] === true)
     $string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
@@ -323,7 +323,7 @@ function cs_scriptload($mod, $type, $file, $top = 0, $media = 'screen') {
 
 function cs_tokenizer_split($content)
 {
-  $content = preg_split("=\{(.*?:.*?(?::(?:.*?)\=(?:.*?))*(?:\|noajax)*)\}=i", $content, -1, PREG_SPLIT_DELIM_CAPTURE);
+  $content = preg_split("=\{([\w]*?:[\w]*?(?::(?:[\w]*?)\=(?:[\w]*?))*(?:\|noajax)*)\}=i", $content, -1, PREG_SPLIT_DELIM_CAPTURE);
   $parts   = count($content);
   $ajax    = 0;
 
