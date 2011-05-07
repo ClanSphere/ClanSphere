@@ -24,7 +24,7 @@
   </tr>
   {if:pre_votes}
   <tr>
-    <td class="leftb">{icon:Volume Manager} {preview:question}</td>
+    <td class="leftb">{icon:volume_manager} {preview:question}</td>
   </tr>
   <tr>
     <td class="leftb">
@@ -63,7 +63,7 @@
   </tr>
   {if:vote}
   <tr>
-    <td class="headb" colspan="2">{icon:Volume Manager} {lang:votes}</td>
+    <td class="headb" colspan="2">{icon:volume_manager} {lang:votes}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:today} {lang:votes_end} *</td>

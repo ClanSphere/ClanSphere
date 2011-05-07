@@ -38,7 +38,7 @@
   </tr>
   {if:vote}
   <tr>
-    <td class="leftb">{icon:Volume Manager} {lang:gallery_vote} </td>
+    <td class="leftb">{icon:volume_manager} {lang:gallery_vote} </td>
     <td class="leftb">
         {if:vote_allow}
             <form method="post" id="com_view" action="{url:gallery_com_view}">

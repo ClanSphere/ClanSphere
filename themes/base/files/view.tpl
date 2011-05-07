@@ -37,7 +37,7 @@
   {stop:brokenlink}
   {if:vote}
   <tr>
-    <td class="leftc">{icon:Volume Manager} {lang:evaluation}</td>
+    <td class="leftc">{icon:volume_manager} {lang:evaluation}</td>
     <td class="leftb">
     {if:unvoted}
     <form method="post" action="{url:files_view:where={file:id}}">

@@ -31,7 +31,7 @@
     <td class="leftc">{data:count_views}</td>
   </tr>
   <tr>
-    <td class="leftb">{icon:Volume Manager} {lang:info_votes}</td>
+    <td class="leftb">{icon:volume_manager} {lang:info_votes}</td>
     <td class="leftc">{data:count_votes}</td>
   </tr>
   <tr>

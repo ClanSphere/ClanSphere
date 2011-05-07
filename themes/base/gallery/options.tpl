@@ -46,7 +46,7 @@
     <td class="leftb"><input type="text" name="size" value="{op:size}" maxlength="5" size="5" />KiB</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:Volume Manager} {lang:top_votes}</td>
+    <td class="leftc">{icon:volume_manager} {lang:top_votes}</td>
     <td class="leftb">
       <input type="radio" name="top_5_votes" value="0" {check:top_5_votes_0} /> {lang:show_0}
       <input type="radio" name="top_5_votes" value="1" {check:top_5_votes_1} /> {lang:show_1}

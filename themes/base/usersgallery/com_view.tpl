@@ -69,7 +69,7 @@
   </tr>
   {if:vote}
   <tr>
-    <td class="leftb">{icon:Volume Manager} {lang:gallery_vote}</td>
+    <td class="leftb">{icon:volume_manager} {lang:gallery_vote}</td>
     <td class="leftc">
       {if:vote_now}
       <form method="post" action="{form:action}" id="com_view">

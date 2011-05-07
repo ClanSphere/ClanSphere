@@ -11,7 +11,7 @@ $mod_info['creator'] = 'ClanSphere';
 $mod_info['team']    = 'ClanSphere';
 $mod_info['url']    = 'www.clansphere.net';
 $mod_info['text']    = $cs_lang['modtext'];
-$mod_info['icon']    = 'Volume Manager';
+$mod_info['icon']    = 'volume_manager';
 $mod_info['show']    = array('clansphere/admin' => 3);
 $mod_info['categories']  = FALSE;
 $mod_info['comments']  = TRUE;

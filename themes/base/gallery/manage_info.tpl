@@ -31,7 +31,7 @@
     <td class="leftb">{data:info_views}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:Volume Manager} {lang:info_votes}</td>
+    <td class="leftc">{icon:volume_manager} {lang:info_votes}</td>
     <td class="leftb">{data:info_votes}</td>
   </tr>
   <tr>
@@ -78,7 +78,7 @@
     <td class="leftb">{data:info_user_views}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:Volume Manager} {lang:info_votes}</td>
+    <td class="leftc">{icon:volume_manager} {lang:info_votes}</td>
     <td class="leftb">{data:info_user_votes}</td>
   </tr>
   <tr>
