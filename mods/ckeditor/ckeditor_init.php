@@ -4,6 +4,10 @@
 
 header('Content-type: application/javascript');
 
+// copy domain and session settings from clansphere servervars
+$domain = htmlspecialchars($_SERVER['HTTP_HOST'], ENT_QUOTES);
+$domain = (strpos($domain, '.') !== FALSE) ? $domain : '';
+session_name('cs' . md5($domain)); 
 session_start();
 
 $lang = empty($_SESSION['ckeditor_lang']) ? 'en' : $_SESSION['ckeditor_lang'];
