@@ -5,8 +5,10 @@ CHANGELOG
 ClanSphere 2011.0.1 >> 2011-XX-XX
 ___________________________________________________________
 
+-> Added zlib flag for cs_main array to turn compression on and off (hajo)
 -> Fixed login to work on other ports than the default one (astmaih)
--> Updated CKEditor to 3.5.3 (hajo)
+-> Improved placeholder detections in template engine (hajo)
+-> Updated CKEditor to 3.5.4 (hajo)
 -> Updated jQuery to 1.6.0 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --

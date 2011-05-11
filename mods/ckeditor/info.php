@@ -8,7 +8,7 @@ $mod_info['released']   = $cs_main['version_date'];
 $mod_info['creator']    = 'CKSource';
 $mod_info['team']       = 'CKSource';
 $mod_info['url']        = 'www.ckeditor.com';
-$mod_info['text']       = 'Version 3.5.2';
+$mod_info['text']       = 'Version 3.5.4';
 $mod_info['icon']       = 'package_editors';
 $mod_info['show']       = array('abcode/rte_html' => 5, 'options/roots' => 5);
 $mod_info['categories'] = FALSE;
