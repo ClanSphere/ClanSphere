@@ -2,11 +2,8 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-# This can be set to e.g. 'ISO-8859-15', but ClanSphere prefers unicode
-$charset = 'UTF-8';
-
 # Overwrite global settings by using the following array
-$cs_main = array( 'charset'         => $charset,
+$cs_main = array( 'charset'         => 'UTF-8',
                   'def_action'      => 'list',
                   'def_mod'         => 'install',
                   'def_title'       => 'ClanSphere Installation',
@@ -18,8 +15,9 @@ $cs_main = array( 'charset'         => $charset,
                   'public'          => 1,
                   'img_path'        => 'crystal_project',
                   'img_ext'         => 'png',
-                  'version_name'    => '2011.0.1 DEV',
-                  'version_date'    => '2011-03-29');
+                  'version_name'    => '',
+                  'version_date'    => ''
+                  'zlib'            => false);
 
 require_once 'system/core/functions.php';
 
