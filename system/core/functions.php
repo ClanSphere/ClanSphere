@@ -186,12 +186,7 @@ function cs_content_lang () {
 
 function cs_init($predefined) {
 
-  $phpversion = phpversion();
-  if(version_compare($phpversion, '6.0', '<'))
-    @error_reporting(E_ALL | E_STRICT);
-  else
-    @error_reporting(E_ALL);
-
+  @error_reporting(E_ALL | E_STRICT);
   @set_error_handler("php_error");
 
   @ini_set('short_open_tag','off');
@@ -202,6 +197,7 @@ function cs_init($predefined) {
   @ini_set('display_errors','on');
   @ini_set('magic_quotes_runtime','off');
 
+  $phpversion = phpversion();
   if(version_compare($phpversion, '5.1', '>='))
     @date_default_timezone_set('Europe/Berlin');
 
