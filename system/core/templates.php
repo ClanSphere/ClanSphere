@@ -470,7 +470,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
       $result .= $content;
 
   # Enable zlib output compression if possible
-  if(extension_loaded('zlib'))
+  if(!empty($cs_main['zlib']) AND extension_loaded('zlib'))
     ob_start('ob_gzhandler');
 
   return $result;
