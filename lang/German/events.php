@@ -131,7 +131,7 @@ $cs_lang['max_navbirthday'] = 'Datens&auml;tze in der Nav-Birthday';
 $cs_lang['max_navnext'] = 'Datens&auml;tze in der Navnext';
 
 // War stuff
-$cs_lang['show_wars']   = 'Clanwars anzeigen';
+$cs_lang['show_wars']   = 'Clanwars anzeigen (nur Kalenderansichten)';
 $cs_lang['war_against'] = 'Clanwar gegen ';
 
 // Signout

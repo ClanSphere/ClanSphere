@@ -131,8 +131,8 @@ $cs_lang['head_edit']  = 'Edit';
 $cs_lang['body_edit']  = 'Errors may occur here.';
 
 // War stuff
-$cs_lang['show_wars']   = 'Show clanwars';
-$cs_lang['war_against'] = 'Clanwar versus ';
+$cs_lang['show_wars']   = 'Show clanwars (only in calendric views)';
+$cs_lang['war_against'] = 'Clanwar vs. ';
 
 // Signout
 $cs_lang['head_signout']   = 'Signout';
