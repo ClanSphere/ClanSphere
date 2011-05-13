@@ -18,19 +18,53 @@ $path = empty($_SESSION['ckeditor_path']) ? '' : $_SESSION['ckeditor_path'];
 ?>
 $(function() {
 
-  var options = { language : '<?php echo $lang; ?>', skin : '<?php echo $skin; ?>', height : '<?php echo $height; ?>', baseHref : '<?php echo $path; ?>/', basePath : '<?php echo $path; ?>/mods/ckeditor/' }
+  var options_html = {  language : '<?php echo $lang; ?>',
+                        skin : '<?php echo $skin; ?>',
+                        height : '<?php echo $height; ?>',
+                        baseHref : '<?php echo $path; ?>/',
+                        basePath : '<?php echo $path; ?>/mods/ckeditor/' }
 
-  $(document).bind('csAjaxLoad', function(e,ele) { 
+  $(document).bind('csAjaxLoad', function(e,ele) {
 
     $(ele).find('textarea.rte_html').each(function() {
       var instance = CKEDITOR.instances[this.id];
       if(instance) {
           CKEDITOR.remove(instance);
       } 
-    }).ckeditor(function(){}, options); 
+    }).ckeditor(function(){}, options_html); 
 
   });
 
-  $( 'textarea.rte_html' ).ckeditor(function(){}, options);
+  $( 'textarea.rte_html' ).ckeditor(function(){}, options_html);
+
+  var options_abcode = {  language : '<?php echo $lang; ?>',
+                          skin : '<?php echo $skin; ?>',
+                          baseHref : '<?php echo $path; ?>/',
+                          basePath : '<?php echo $path; ?>/mods/ckeditor/',
+                          extraPlugins : 'bbcode',
+                          removePlugins : 'bidi,button,dialogadvtab,div,filebrowser,flash,format,forms,horizontalrule,iframe,indent,justify,liststyle,pagebreak,showborders,stylescombo,table,tabletools,templates',
+                          toolbar : [
+                            ['Source', '-', 'Save','NewPage','-','Undo','Redo'],
+                            ['Find','Replace','-','SelectAll','RemoveFormat'],
+                            ['Link', 'Unlink', 'Image'],
+                            '/',
+                            ['FontSize', 'Bold', 'Italic','Underline'],
+                            ['NumberedList','BulletedList','-','Blockquote'],
+                            ['TextColor', '-','SpecialChar', '-', 'Maximize']
+                          ],
+                        }
+
+  $(document).bind('csAjaxLoad', function(e,ele) {
+
+    $(ele).find('textarea.rte_abcode').each(function() {
+      var instance = CKEDITOR.instances[this.id];
+      if(instance) {
+          CKEDITOR.remove(instance);
+      } 
+    }).ckeditor(function(){}, options_abcode); 
+
+  });
+
+  $( 'textarea.rte_abcode' ).ckeditor(function(){}, options_abcode);
 
 });
