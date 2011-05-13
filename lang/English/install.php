@@ -174,7 +174,6 @@ $cs_lang['comments'] = 'Comments';
 $cs_lang['computers'] = 'Computers';
 $cs_lang['contact'] = 'Contact';
 $cs_lang['count'] = 'Counter';
-$cs_lang['cups'] = 'Cups';
 $cs_lang['errors'] = 'Errors';
 $cs_lang['events'] = 'Events';
 $cs_lang['explorer'] = 'Explorer';

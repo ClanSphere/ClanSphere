@@ -46,7 +46,6 @@ CREATE TABLE {pre}_access (
   access_computers int(2) NOT NULL default '0',
   access_contact int(2) NOT NULL default '0',
   access_count int(2) NOT NULL default '0',
-  access_cups int(2) NOT NULL default '0',
   access_database int(2) NOT NULL default '0',
   access_errors int(2) NOT NULL default '0',
   access_events int(2) NOT NULL default '0',
@@ -93,11 +92,11 @@ CREATE TABLE {pre}_access (
   UNIQUE (access_name)
 ){engine};
 
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{guest}', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{community}', 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{member}', 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{orga}', 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0);
-INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_cups, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{admin}', 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{guest}', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{community}', 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{member}', 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{orga}', 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0);
+INSERT INTO {pre}_access (access_name, access_access, access_clansphere, access_abcode, access_ajax, access_articles, access_awards, access_banners, access_board, access_boardmods, access_boardranks, access_buddys, access_cash, access_categories, access_clans, access_comments, access_computers, access_contact, access_count, access_database, access_explorer, access_errors, access_events, access_faq, access_ckeditor, access_fightus, access_files, access_gallery, access_games, access_gbook, access_history, access_joinus, access_lightbox, access_links, access_linkus, access_logs, access_maps, access_medals, access_members, access_messages, access_modules, access_news, access_newsletter, access_notifymods, access_options, access_partner, access_quotes, access_ranks, access_replays, access_rules, access_static, access_search, access_servers, access_shoutbox, access_squads, access_templates, access_users, access_usersgallery, access_votes, access_wars, access_wizard) VALUES ('{admin}', 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5);
 
 CREATE TABLE {pre}_account (
   account_id {serial},
@@ -358,45 +357,6 @@ CREATE TABLE {pre}_count_archiv (
   count_num int(30) NOT NULL default '0',
   count_mode int(2) NOT NULL default '0',
   PRIMARY KEY (count_id)
-){engine};
-
-CREATE TABLE {pre}_cups (
-  cups_id {serial},
-  games_id int(8) NOT NULL default '0',
-  cups_name varchar(80) NOT NULL default '',
-  cups_system varchar(20) NOT NULL default '',
-  cups_text text,
-  cups_teams int(4) NOT NULL default '0',
-  cups_start int(8) NOT NULL default '0',
-  cups_brackets int(2) NOT NULL default '0',
-  PRIMARY KEY (cups_id)
-){engine};
-
-CREATE TABLE {pre}_cupsquads (
-  cupsquads_id {serial},
-  cups_id int(8) NOT NULL default '0',
-  squads_id int(8) NOT NULL default '0',
-  cupsquads_time int(14) NOT NULL default '0',
-  PRIMARY KEY (cupsquads_id),
-  UNIQUE (cups_id, squads_id)
-){engine};
-
-CREATE TABLE {pre}_cupmatches (
-  cupmatches_id {serial},
-  cups_id int(8) NOT NULL default '0',
-  squad1_id int(8) NOT NULL default '0',
-  squad2_id int(8) NOT NULL default '0',
-  cupmatches_score1 int(6) NOT NULL default '0',
-  cupmatches_score2 int(6) NOT NULL default '0',
-  cupmatches_winner int(8) NOT NULL default '0',
-  cupmatches_loserbracket int(2) NOT NULL default '0',
-  cupmatches_accepted1 int(2) NOT NULL default '0',
-  cupmatches_accepted2 int(2) NOT NULL default '0',
-  cupmatches_round int(2) NOT NULL default '0',
-  cupmatches_tree_order int(6),
-  PRIMARY KEY (cupmatches_id),
-  UNIQUE (cups_id, squad1_id, squad2_id),
-  UNIQUE (cups_id, squad1_id, cupmatches_round)
 ){engine};
 
 CREATE TABLE {pre}_eventguests (
@@ -837,7 +797,6 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('co
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'indicatorcolor', '3972AD');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'graphcolor1', '2BCB02');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('count', 'graphcolor2', 'FF0000');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cups', 'max_navlist', '4');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'show_wars', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_width', '800');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('events', 'max_height', '600');
@@ -1301,12 +1260,6 @@ CREATE INDEX {pre}_clans_users_id_index ON {pre}_clans (users_id);
 CREATE INDEX {pre}_comments_users_id_index ON {pre}_comments (users_id);
 CREATE INDEX {pre}_comments_comments_fid_index ON {pre}_comments (comments_fid);
 CREATE INDEX {pre}_computers_users_id_index ON {pre}_computers (users_id);
-CREATE INDEX {pre}_cupmatches_cups_id_index ON {pre}_cupmatches (cups_id);
-CREATE INDEX {pre}_cupmatches_squad1_id_index ON {pre}_cupmatches (squad1_id);
-CREATE INDEX {pre}_cupmatches_squad2_id_index ON {pre}_cupmatches (squad2_id);
-CREATE INDEX {pre}_cups_games_id_index ON {pre}_cups (games_id);
-CREATE INDEX {pre}_cupsquads_cups_id_index ON {pre}_cupsquads (cups_id);
-CREATE INDEX {pre}_cupsquads_squads_id_index ON {pre}_cupsquads (squads_id);
 CREATE INDEX {pre}_eventguests_events_id_index ON {pre}_eventguests (events_id);
 CREATE INDEX {pre}_eventguests_users_id_index ON {pre}_eventguests (users_id);
 CREATE INDEX {pre}_events_categories_id_index ON {pre}_events (categories_id);

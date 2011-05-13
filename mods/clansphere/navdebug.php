@@ -21,7 +21,6 @@ $nav_array = array(
   'count/navone',
   'count/navusr',
   'count/navyes',
-  'cups/navlist',
   'events/nav_birthday',
   'events/navcal',
   'events/navnext',

@@ -114,132 +114,128 @@
       <td class="leftb"><input type="checkbox" name="computers" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:cups}</td>
-      <td class="leftc"><input type="checkbox" name="cups" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:events}</td>
+      <td class="leftc"><input type="checkbox" name="events" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:events}</td>
-      <td class="leftb"><input type="checkbox" name="events" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:explorer}</td>
+      <td class="leftb"><input type="checkbox" name="faq" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:explorer}</td>
-      <td class="leftc"><input type="checkbox" name="faq" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:faq}</td>
+      <td class="leftc"><input type="checkbox" name="explorer" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:faq}</td>
-      <td class="leftb"><input type="checkbox" name="explorer" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:fightus}</td>
+      <td class="leftb"><input type="checkbox" name="fightus" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:fightus}</td>
-      <td class="leftc"><input type="checkbox" name="fightus" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:files}</td>
+      <td class="leftc"><input type="checkbox" name="files" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:files}</td>
-      <td class="leftb"><input type="checkbox" name="files" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:gallery}</td>
+      <td class="leftb"><input type="checkbox" name="gallery" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:gallery}</td>
-      <td class="leftc"><input type="checkbox" name="gallery" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:games}</td>
+      <td class="leftc"><input type="checkbox" name="games" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:games}</td>
-      <td class="leftb"><input type="checkbox" name="games" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:gbook}</td>
+      <td class="leftb"><input type="checkbox" name="gbook" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:gbook}</td>
-      <td class="leftc"><input type="checkbox" name="gbook" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:history}</td>
+      <td class="leftc"><input type="checkbox" name="history" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:history}</td>
-      <td class="leftb"><input type="checkbox" name="history" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:joinus}</td>
+      <td class="leftb"><input type="checkbox" name="joinus" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:joinus}</td>
-      <td class="leftc"><input type="checkbox" name="joinus" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:links}</td>
+      <td class="leftc"><input type="checkbox" name="links" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:links}</td>
-      <td class="leftb"><input type="checkbox" name="links" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:linkus}</td>
+      <td class="leftb"><input type="checkbox" name="linkus" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:linkus}</td>
-      <td class="leftc"><input type="checkbox" name="linkus" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:maps}</td>
+      <td class="leftc"><input type="checkbox" name="maps" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:maps}</td>
-      <td class="leftb"><input type="checkbox" name="maps" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:members}</td>
+      <td class="leftb"><input type="checkbox" name="members" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:members}</td>
-      <td class="leftc"><input type="checkbox" name="members" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:messages}</td>
+      <td class="leftc"><input type="checkbox" name="messages" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:messages}</td>
-      <td class="leftb"><input type="checkbox" name="messages" value="1" checked="checked" /></td>
-    </tr>
-    <tr>
-      <td class="leftc">{lang:news}</td>
-      <td class="leftc"><input type="checkbox" name="news" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:news}</td>
+      <td class="leftb"><input type="checkbox" name="news" value="1" checked="checked" /></td>
     </tr>  
     <tr>
-      <td class="leftb">{lang:newsletter}</td>
-      <td class="leftb"><input type="checkbox" name="newsletter" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:newsletter}</td>
+      <td class="leftc"><input type="checkbox" name="newsletter" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:partner}</td>
-      <td class="leftc"><input type="checkbox" name="partner" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:partner}</td>
+      <td class="leftb"><input type="checkbox" name="partner" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:quotes}</td>
-      <td class="leftb"><input type="checkbox" name="quotes" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:quotes}</td>
+      <td class="leftc"><input type="checkbox" name="quotes" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:ranks}</td>
-      <td class="leftc"><input type="checkbox" name="ranks" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:ranks}</td>
+      <td class="leftb"><input type="checkbox" name="ranks" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:replays}</td>
-      <td class="leftb"><input type="checkbox" name="replays" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:replays}</td>
+      <td class="leftc"><input type="checkbox" name="replays" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:rules}</td>
-      <td class="leftc"><input type="checkbox" name="rules" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:rules}</td>
+      <td class="leftb"><input type="checkbox" name="rules" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:search}</td>
-      <td class="leftb"><input type="checkbox" name="search" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:search}</td>
+      <td class="leftc"><input type="checkbox" name="search" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:servers}</td>
-      <td class="leftc"><input type="checkbox" name="servers" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:servers}</td>
+      <td class="leftb"><input type="checkbox" name="servers" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:static}</td>
-      <td class="leftb"><input type="checkbox" name="static" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:static}</td>
+      <td class="leftc"><input type="checkbox" name="static" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:shoutbox}</td>
-      <td class="leftc"><input type="checkbox" name="shoutbox" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:shoutbox}</td>
+      <td class="leftb"><input type="checkbox" name="shoutbox" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:squads}</td>
-      <td class="leftb"><input type="checkbox" name="squads" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:squads}</td>
+      <td class="leftc"><input type="checkbox" name="squads" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:usersgallery}</td>
-      <td class="leftc"><input type="checkbox" name="usersgallery" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:usersgallery}</td>
+      <td class="leftb"><input type="checkbox" name="usersgallery" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:votes}</td>
-      <td class="leftb"><input type="checkbox" name="votes" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:votes}</td>
+      <td class="leftc"><input type="checkbox" name="votes" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftc">{lang:wars}</td>
-      <td class="leftc"><input type="checkbox" name="wars" value="1" checked="checked" /></td>
+      <td class="leftb">{lang:wars}</td>
+      <td class="leftb"><input type="checkbox" name="wars" value="1" checked="checked" /></td>
     </tr>
     <tr>
-      <td class="leftb">{lang:wizard}</td>
-      <td class="leftb"><input type="checkbox" name="wizard" value="1" checked="checked" /></td>
+      <td class="leftc">{lang:wizard}</td>
+      <td class="leftc"><input type="checkbox" name="wizard" value="1" checked="checked" /></td>
     </tr>
     <tr>
       <td class="centerb" colspan="2">&nbsp;<br />

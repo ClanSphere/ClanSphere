@@ -173,7 +173,6 @@ $cs_lang['comments'] = 'Kommentare';
 $cs_lang['computers'] = 'Computer';
 $cs_lang['contact'] = 'Kontakt';
 $cs_lang['count'] = 'Besucher / Counter';
-$cs_lang['cups'] = 'Turniere';
 $cs_lang['errors'] = 'Fehler';
 $cs_lang['events'] = 'Termine';
 $cs_lang['explorer'] = 'Explorer';

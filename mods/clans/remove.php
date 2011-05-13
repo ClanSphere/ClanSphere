@@ -28,8 +28,6 @@ if(isset($cs_get['agree'])) {
       if(!empty($getpic['squads_picture'])) {
         cs_unlink('squads', $getpic['squads_picture']);
       }
-      $where = 'squads_id = ' . $squads_id;
-      cs_sql_update(__FILE__, 'cupsquads', array('squads_name'), array($getpic['squads_name']), 0, $where);
     }
   }
 
