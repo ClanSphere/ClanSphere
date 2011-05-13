@@ -3,9 +3,18 @@ EXTERNALS
 
 ClanSphere uses parts of the following Software:
 
-- amLine 1.6.4.1 (http://www.amcharts.com)
-- CKEditor 3.5.4 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
-- GameQ 1.12 (http://gameq.sourceforge.net)
+mod ckeditor:
+- CKEditor 3.6.0 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
+
+mod clansphere:
 - jQuery 1.6.0 (http://www.jquery.com)
-- Slimbox 2.0.4 (http://www.digitalia.be/software/slimbox2)
 - TextAreaExpander 1.0 (http://www.sitepoint.com/blogs/2009/07/29/build-auto-expanding-textarea-1)
+
+mod count:
+- amLine 1.6.4.1 (http://www.amcharts.com)
+
+mod servers:
+- GameQ 1.12 (http://gameq.sourceforge.net)
+
+mod lightbox:
+- Slimbox 2.0.4 (http://www.digitalia.be/software/slimbox2)
