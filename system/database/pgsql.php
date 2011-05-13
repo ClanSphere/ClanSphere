@@ -68,7 +68,7 @@ function cs_sql_delete($cs_file,$sql_table,$sql_id,$sql_field = 0) {
 
 function cs_sql_escape($string) {
 
-  return pg_escape_string($string);
+  return pg_escape_string((string) $string);
 }
 
 function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
@@ -82,7 +82,7 @@ function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
   }
   $set .= ") VALUES ('";
   for($run=0; $run<$max; $run++) {
-    $set .= pg_escape_string($sql_content[$run]);
+    $set .= pg_escape_string((string) $sql_content[$run]);
     if($run != $max - 1) { $set .= "','"; }
   }
   $set .= "')";
@@ -217,7 +217,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
   $max = count($sql_cells);
   $set = ' SET ';
   for($run=0; $run<$max; $run++) {
-    $set .= $sql_cells[$run] . "='" . pg_escape_string($sql_content[$run]);
+    $set .= $sql_cells[$run] . "='" . pg_escape_string((string) $sql_content[$run]);
     if($run != $max - 1) { $set .= "', "; }
   }
   $set .= "' ";

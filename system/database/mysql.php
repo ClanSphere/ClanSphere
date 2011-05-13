@@ -69,7 +69,7 @@ function cs_sql_delete($cs_file, $sql_table, $sql_id, $sql_field = 0) {
 function cs_sql_escape($string) {
 
   global $cs_db;
-  return mysql_real_escape_string($string, $cs_db['con']);
+  return mysql_real_escape_string((string) $string, $cs_db['con']);
 }
 
 function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content) {
@@ -85,7 +85,7 @@ function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content) {
   }
   $set .= ") VALUES ('";
   for ($run = 0; $run < $max; $run++) {
-    $set .= mysql_real_escape_string($sql_content[$run], $cs_db['con']);
+    $set .= mysql_real_escape_string((string) $sql_content[$run], $cs_db['con']);
     if ($run != $max - 1) {
       $set .= "','";
     }
@@ -235,7 +235,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
   $max = count($sql_cells);
   $set = ' SET ';
   for ($run = 0; $run < $max; $run++) {
-    $set .= $sql_cells[$run] . "='" . mysql_real_escape_string($sql_content[$run], $cs_db['con']);
+    $set .= $sql_cells[$run] . "='" . mysql_real_escape_string((string) $sql_content[$run], $cs_db['con']);
     if ($run != $max - 1) {
       $set .= "', ";
     }
