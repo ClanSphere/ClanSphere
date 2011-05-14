@@ -16,7 +16,7 @@ $cs_main = array( 'charset'         => 'UTF-8',
                   'img_path'        => 'crystal_project',
                   'img_ext'         => 'png',
                   'version_name'    => '',
-                  'version_date'    => ''
+                  'version_date'    => '',
                   'zlib'            => false);
 
 require_once 'system/core/functions.php';
