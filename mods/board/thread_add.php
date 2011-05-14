@@ -7,8 +7,11 @@ $cs_lang = cs_translate('board');
 $files_gl = cs_files();
 
 $check_pw = 1;
-$board_id = empty($_REQUEST['id']) ? $_REQUEST['where'] : $_REQUEST['id'];
+$board_id = empty($_REQUEST['id']) ? '' : $_REQUEST['id'];
+if(!empty($_REQUEST['where']))
+  $board_id = $_REQUEST['where'];
 settype($board_id,'integer');
+
 include('mods/board/functions.php');
 
 $from = 'board frm INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
