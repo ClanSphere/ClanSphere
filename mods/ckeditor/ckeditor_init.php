@@ -45,8 +45,8 @@ $(function() {
 <?php
 }
 if(!empty($mode_abcode)) {
-// currently not working are e.g.:
-// indent and outdent, bgcolor, strike, size, horizontalrule, justify
+  // currently not working are e.g.:
+  // indent and outdent, bgcolor, strike, size, horizontalrule, justify
 ?>
 $(function() {
 
@@ -54,6 +54,15 @@ $(function() {
                           skin : '<?php echo $skin; ?>',
                           baseHref : '<?php echo $path; ?>/',
                           basePath : '<?php echo $path; ?>/mods/ckeditor/',
+<?php
+  // hide "browse server buttons" if access to filemanager is not allowed
+  if(empty($_SESSION['users_id']) OR empty($_SESSION['access_ckeditor']) OR $_SESSION['access_ckeditor'] < 3) {
+?>
+                          filebrowserBrowseUrl : '',
+                          filebrowserImageBrowseUrl : '',
+<?php
+  }
+?>
                           extraPlugins : 'bbcode',
                           removePlugins : 'bidi,button,dialogadvtab,div,filebrowser,flash,format,forms,horizontalrule,iframe,indent,justify,liststyle,pagebreak,showborders,stylescombo,table,tabletools,templates',
                           toolbar : [
