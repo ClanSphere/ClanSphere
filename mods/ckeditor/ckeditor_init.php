@@ -55,13 +55,14 @@ $(function() {
                           extraPlugins : 'bbcode',
                           removePlugins : 'bidi,button,dialogadvtab,div,filebrowser,flash,format,forms,horizontalrule,iframe,indent,justify,liststyle,pagebreak,showborders,stylescombo,table,tabletools,templates',
                           toolbar : [
-                            ['Source', '-', 'Save','NewPage','-','Undo','Redo'],
-                            ['Find','Replace','-','SelectAll','RemoveFormat'],
-                            ['Link', 'Unlink', 'Image'],
+                            ['Source', '-', 'Undo', 'Redo'],
+                            ['Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+                            ['Maximize', 'ShowBlocks','-', 'About'],
                             '/',
-                            ['FontSize', 'Bold', 'Italic','Underline'],
-                            ['NumberedList','BulletedList','-','Blockquote'],
-                            ['TextColor', '-','SpecialChar', '-', 'Maximize']
+                            ['FontSize', 'Bold', 'Italic','Underline', 'Strike', 'TextColor', 'BGColor'],
+                            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                            ['NumberedList','BulletedList', 'Blockquote'],
+                            ['Link', 'Unlink', 'Image', 'HorizontalRule']
                           ],
                         }
 
