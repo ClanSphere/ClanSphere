@@ -2,19 +2,23 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-header('Content-type: application/javascript');
-
 // copy domain and session settings from clansphere servervars
 $domain = htmlspecialchars($_SERVER['HTTP_HOST'], ENT_QUOTES);
 $domain = (strpos($domain, '.') !== FALSE) ? $domain : '';
 session_name('cs' . md5($domain)); 
 session_start();
 
+// set content type header to identify this file as javascript
+header('Content-type: application/javascript');
+
 $lang = empty($_SESSION['ckeditor_lang']) ? 'en' : $_SESSION['ckeditor_lang'];
 $skin = empty($_SESSION['ckeditor_skin']) ? 'kama' : $_SESSION['ckeditor_skin'];
 $height = empty($_SESSION['ckeditor_height']) ? '300' : $_SESSION['ckeditor_height'];
 $path = empty($_SESSION['ckeditor_path']) ? '' : $_SESSION['ckeditor_path'];
+$mode = empty($_SESSION['ckeditor_mode']) ? 0 : $_SESSION['ckeditor_mode'];
+$mode_abcode = empty($_SESSION['ckeditor_mode_abcode']) ? 0 : $_SESSION['ckeditor_mode_abcode'];
 
+if(!empty($mode)) {
 ?>
 $(function() {
 
@@ -36,6 +40,13 @@ $(function() {
   });
 
   $( 'textarea.rte_html' ).ckeditor(function(){}, options_html);
+
+});
+<?php
+}
+if(!empty($mode_abcode)) {
+?>
+$(function() {
 
   var options_abcode = {  language : '<?php echo $lang; ?>',
                           skin : '<?php echo $skin; ?>',
@@ -68,3 +79,6 @@ $(function() {
   $( 'textarea.rte_abcode' ).ckeditor(function(){}, options_abcode);
 
 });
+<?php
+}
+?>
