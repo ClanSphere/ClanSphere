@@ -20,6 +20,14 @@
       <td class="leftb">{dropdown:rte_more}</td>
     </tr>
     <tr>
+      <td class="leftc">{icon:download} {lang:rte_web_info}</td>
+      <td class="leftb">{lang:rte_txt_info}<br /><br /><a href="http://mods.clansphere.net" target="_blank">{lang:rte_mod_info}</a></td>
+    </tr>
+  </table>
+  <br />
+
+  <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+    <tr>
       <td class="leftc">{icon:resizecol} {lang:max_width}</td>
       <td class="leftb"><input type="text" name="max_width" value="{options:max_width}" maxlength="4" size="4" /> {lang:pixel}</td>
     </tr>

@@ -12,6 +12,9 @@ $cs_lang['new_abcode'] = 'New Abcode';
 
 $cs_lang['rte_html'] = 'WYSIWYG at HTML: ';
 $cs_lang['rte_more'] = 'WYSIWYG at abcode: ';
+$cs_lang['rte_web_info'] = 'WYSIWYG Editors';
+$cs_lang['rte_txt_info'] = 'A list of installable and useable editors is available in the official Module Database.';
+$cs_lang['rte_mod_info'] = 'Go to Module Database';
 
 $cs_lang['max_width'] = 'Max image width: ';
 $cs_lang['max_height'] = 'Max image height: ';
@@ -55,4 +58,4 @@ $cs_lang['error_pattern'] = '- No or duplicate pattern for picture %s.';
 $cs_lang['error_pattern_sql'] = '- Pattern for picture %s already exists.';
 
 $cs_lang['no_smileys'] = 'No Smileys available.';
-$cs_lang['html_info'] = 'Achtung: HTML muss in einigen Modulen als Option aktiviert werden';
+$cs_lang['html_info'] = 'Attention: Some modules might require HTML to be turned on seperately';

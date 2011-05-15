@@ -12,6 +12,9 @@ $cs_lang['new_abcode'] = 'Neuer Abcode';
 
 $cs_lang['rte_html'] = 'WYSIWYG bei HTML: ';
 $cs_lang['rte_more'] = 'WYSIWYG bei Abcode: ';
+$cs_lang['rte_web_info'] = 'WYSIWYG Editoren';
+$cs_lang['rte_txt_info'] = 'Eine Auswahl an installier- und verwendbaren Editoren finden Sie in der offiziellen Modul Datenbank.';
+$cs_lang['rte_mod_info'] = 'Modul Datenbank besuchen';
 
 $cs_lang['max_width'] = 'Maximale Bildbreite: ';
 $cs_lang['max_height'] = 'Maximale Bildh&ouml;he: ';
