@@ -45,6 +45,8 @@ $(function() {
 <?php
 }
 if(!empty($mode_abcode)) {
+// currently not working are e.g.:
+// indent and outdent, bgcolor, strike, size, horizontalrule, justify
 ?>
 $(function() {
 
@@ -57,12 +59,11 @@ $(function() {
                           toolbar : [
                             ['Source', '-', 'Undo', 'Redo'],
                             ['Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-                            ['Maximize', 'ShowBlocks','-', 'About'],
+                            ['Maximize', 'ShowBlocks', '-', 'About'],
                             '/',
-                            ['FontSize', 'Bold', 'Italic','Underline', 'Strike', 'TextColor', 'BGColor'],
-                            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                            ['Bold', 'Italic', 'Underline', 'TextColor'],
                             ['NumberedList','BulletedList', 'Blockquote'],
-                            ['Link', 'Unlink', 'Image', 'HorizontalRule']
+                            ['Link', 'Unlink', 'Image']
                           ],
                         }
 
