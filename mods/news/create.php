@@ -239,10 +239,10 @@ if(!empty($error) or isset($_POST['preview']) or !isset($_POST['submit'])) {
   }
 
   if(empty($cs_main['rte_html'])) {
-    $data['abcode']['features'] = cs_abcode_features('news_text', $abcode[3]);
-    $data['abcode']['smileys'] = cs_abcode_smileys('news_text');
-    $data['abcode']['features_readmore'] = cs_abcode_features('news_readmore', $abcode[3]);
-    $data['abcode']['smileys_readmore'] = cs_abcode_smileys('news_readmore');
+    $data['abcode']['features'] = cs_abcode_features('news_text', $abcode[3], 1);
+    $data['abcode']['smileys'] = cs_abcode_smileys('news_text', 1);
+    $data['abcode']['features_readmore'] = cs_abcode_features('news_readmore', $abcode[3], 1);
+    $data['abcode']['smileys_readmore'] = cs_abcode_smileys('news_readmore', 1);
     $data['if']['rte_html'] = false;
     $data['if']['abcode'] = true;
   } else {

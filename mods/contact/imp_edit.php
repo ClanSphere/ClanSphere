@@ -55,7 +55,7 @@ if(!empty($imp_form)) {
   if(empty($cs_main['rte_html'])) {
     $data['if']['abcode'] = TRUE;
     $data['if']['rte_html'] = FALSE;
-    $data['abcode']['features'] = cs_abcode_features('imprint');
+    $data['abcode']['features'] = cs_abcode_features('imprint', 1, 1);
   }
   else {
     $data['if']['abcode'] = FALSE;

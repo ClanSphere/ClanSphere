@@ -64,8 +64,8 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
   $data['faq']['frage'] = $faq_frage;
 
   if(empty($cs_main['rte_html'])) {
-    $data['abcode']['smileys'] = cs_abcode_smileys('faq_antwort');
-    $data['abcode']['features'] = cs_abcode_features('faq_antwort',1);
+    $data['abcode']['smileys'] = cs_abcode_smileys('faq_antwort', 1);
+    $data['abcode']['features'] = cs_abcode_features('faq_antwort', 1, 1);
     $data['if']['rte_html'] = FALSE;
     $data['if']['no_rte_html'] = TRUE;
     $data['faq']['antwort'] = $faq_antwort;

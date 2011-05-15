@@ -20,10 +20,10 @@ function cs_abcode_button($name, $title, $tag1, $tag2, $content) {
   return cs_html_link($javascript, $content, 0, 0, $title) . ' ';
 }
 
-function cs_abcode_features($name, $html = 0) {
+function cs_abcode_features($name, $html = 0, $keep = 0) {
 
   global $cs_main;
-  if(!empty($cs_main['rte_more'])) return '';
+  if(!empty($cs_main['rte_more']) AND empty($keep)) return '';
 
   $cs_lang = cs_translate('system/abcodes', 1);
 
@@ -36,10 +36,10 @@ function cs_abcode_features($name, $html = 0) {
   return cs_subtemplate(__FILE__, $data, 'abcode', 'features');
 }
 
-function cs_abcode_smileys($name) {
+function cs_abcode_smileys($name, $keep = 0) {
 
   global $cs_main;
-  if(!empty($cs_main['rte_more'])) return '';
+  if(!empty($cs_main['rte_more']) AND empty($keep)) return '';
 
   $cs_lang = cs_translate('system/abcodes', 1);
 

@@ -117,8 +117,8 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   if(empty($cs_main['rte_html'])) {
     $data['if']['abcode'] = TRUE;
-    $data['abcode']['smileys'] = cs_abcode_smileys('links_info');
-    $data['abcode']['features'] = cs_abcode_features('links_info');
+    $data['abcode']['smileys'] = cs_abcode_smileys('links_info', 1);
+    $data['abcode']['features'] = cs_abcode_features('links_info', 1, 1);
   } else {
     $data['if']['rte_html'] = TRUE;
     $data['rte']['html'] = cs_rte_html('links_info',$cs_links['links_info']);

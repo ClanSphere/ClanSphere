@@ -48,8 +48,8 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
 
   if(empty($cs_main['rte_html'])) {
     $data['if']['no_rte_html'] = 1;
-    $data['history']['abcode_smileys'] = cs_abcode_smileys('history_text');
-    $data['history']['abcode_features'] = cs_abcode_features('history_text');
+    $data['history']['abcode_smileys'] = cs_abcode_smileys('history_text', 1);
+    $data['history']['abcode_features'] = cs_abcode_features('history_text', 1, 1);
     $data['history']['text'] = $history['history_text'];
     $data['if']['rte_html'] = 0;
   }

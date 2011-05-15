@@ -82,6 +82,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   if(empty($cs_main['rte_html'])) {
     $data['if']['rte_html'] = 0;
     $data['if']['no_rte_html'] = 1;
+    $data['abcode']['features'] = cs_abcode_features('articles_text', 1, 1);
   } else {
     $data['if']['rte_html'] = 1;
     $data['if']['no_rte_html'] = 0;
@@ -94,7 +95,6 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['pictures']['select'] = cs_pictures_select('articles', $data['data']['articles_id']);
   $data['categories']['dropdown'] = cs_categories_dropdown('articles',$cs_articles['categories_id']);
-  $data['abcode']['features'] = cs_abcode_features('articles_text');                                
 
   echo cs_subtemplate(__FILE__,$data,'articles','edit');
   

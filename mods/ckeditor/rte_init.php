@@ -27,7 +27,7 @@ else {
   cs_scriptload('ckeditor', 'javascript', 'adapters/jquery.js');
   cs_scriptload('ckeditor', 'javascript', 'ckeditor_init.php');
 
-  if($cs_main['rte_html'] == 'tinymce') {
+  if($cs_main['rte_html'] == 'ckeditor') {
     function cs_rte_html($name, $value = '') {
 
       # handle abcode html tag behavior

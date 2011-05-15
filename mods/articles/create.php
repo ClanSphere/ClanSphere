@@ -11,6 +11,9 @@ $data['head']['body'] = $cs_lang['body_create'];
 $data['if']['head'] = 1;
 $data['if']['preview'] = false;
 $data['url']['form'] = cs_url('articles','create');
+$data['data']['articles_com_checked'] = '';
+$data['data']['articles_navlist_checked'] = '';
+$data['data']['articles_fornext_checked'] = '';
 $files = cs_files();
 
 if(isset($_POST['submit']) OR isset($_POST['preview'])) {
@@ -69,11 +72,12 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
 $categories_id = empty($data['art']['categories_id']) ? 0 : $data['art']['categories_id'];
 $data['categories']['dropdown'] = cs_categories_dropdown('articles',$categories_id);
 $data['pictures']['select'] = cs_pictures_select('articles');
-$data['abcode']['features'] = cs_abcode_features('articles_text',1);
 $on = "onclick=\"javascript:abc_insert";
+
 if(empty($cs_main['rte_html'])) {
     $data['if']['rte_html'] = 0;
     $data['if']['no_rte_html'] = 1;
+    $data['abcode']['features'] = cs_abcode_features('articles_text', 1, 1);
 }
 else {
     $data['if']['rte_html'] = 1;
