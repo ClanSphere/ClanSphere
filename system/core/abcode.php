@@ -190,8 +190,12 @@ function cs_abcode_mail($matches) {
 
   if (strpos($matches[0],'</a>') !== false)
     return $matches[0];
+
   if ($matches[0]{0} != '[')
     $matches[1] = $matches[0];
+  if(isset($matches['name']))
+    $matches[1] = $matches[2];
+
   return cs_html_mail($matches[1]);
 }
 
@@ -381,7 +385,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[b\](.*?)\[/b\]=si","cs_abcode_b",$replace);
     $replace = preg_replace_callback("=\[i\](.*?)\[/i\]=si","cs_abcode_i",$replace);
     $replace = preg_replace_callback("=\[s\](.*?)\[/s\]=si","cs_abcode_s",$replace);
-    $replace = preg_replace_callback("=\[mail\](.*?)\[/mail\]=i","cs_abcode_mail",$replace);
+    $replace = preg_replace_callback("'\[(?P<name>email|mail)\](.*?)\[/(?P=name)\]'i","cs_abcode_mail",$replace);
     $replace = preg_replace_callback('=([^\s]{3,})@([^\s]*?)\.([^\s]{2,7})(?![^<]+>|[^&]*;)=si','cs_abcode_mail',$replace);
     $replace = preg_replace_callback("=\[color\=(#*[\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
     $replace = preg_replace_callback("=\[size\=([\d]*?)\](.*?)\[/size\]=si","cs_abcode_size",$replace);
