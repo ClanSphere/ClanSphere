@@ -1,8 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: view.php (Tue Nov 25 23:43:05 CET 2008) fAY-pA!N
-
-include_once 'mods/explorer/functions.php';
+// Id: $
 
 $data['if']['access_explorer'] = FALSE;
 
@@ -33,6 +31,8 @@ $data['mod']['text'] = $mod_info['text'];
 
 if(!empty($account['access_explorer'])) {
     $data['if']['access_explorer'] = TRUE;
+    include_once 'mods/explorer/functions.php';
+
     $more = 'dir=' . cs_explorer_path('mods/' . $dir, 'escape');
     $data['extended']['link'] = cs_link($cs_lang['jump_to_explorer'],'explorer','roots',$more);
 }
