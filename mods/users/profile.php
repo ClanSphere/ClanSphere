@@ -114,23 +114,23 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $checked = 'checked="checked"';
 
   $data['form']['action'] = cs_url('users','profile');
-  $data['users']['users_nick'] = $cs_user['users_nick'];
-  $data['users']['users_name'] = $cs_user['users_name'];
-  $data['users']['users_surname'] = $cs_user['users_surname'];
+  $data['users']['users_nick'] = cs_secure($cs_user['users_nick']);
+  $data['users']['users_name'] = cs_secure($cs_user['users_name']);
+  $data['users']['users_surname'] = cs_secure($cs_user['users_surname']);
   $data['users']['users_age'] = cs_dateselect('age','date',$cs_user['users_age']);
   $data['users']['male_check'] = $cs_user['users_sex'] == 'male' ? $sel : '';
   $data['users']['female_check'] = $cs_user['users_sex'] == 'female' ? $sel : '';
-  $data['users']['users_height'] = $cs_user['users_height'];
-  $data['users']['users_postalcode'] = $cs_user['users_postalcode'];
-  $data['users']['users_place'] = $cs_user['users_place'];
-  $data['users']['users_adress'] = $cs_user['users_adress'];
-  $data['users']['users_icq'] = $cs_user['users_icq'];
-  $data['users']['users_msn'] = $cs_user['users_msn'];
-  $data['users']['users_skype'] = $cs_user['users_skype'];
-  $data['users']['users_email'] = $cs_user['users_email'];
-  $data['users']['users_url'] = $cs_user['users_url'];
-  $data['users']['users_phone'] = $cs_user['users_phone'];
-  $data['users']['users_mobile'] = $cs_user['users_mobile'];
+  $data['users']['users_height'] = cs_secure($cs_user['users_height']);
+  $data['users']['users_postalcode'] = cs_secure($cs_user['users_postalcode']);
+  $data['users']['users_place'] = cs_secure($cs_user['users_place']);
+  $data['users']['users_adress'] = cs_secure($cs_user['users_adress']);
+  $data['users']['users_icq'] = cs_secure($cs_user['users_icq']);
+  $data['users']['users_msn'] = cs_secure($cs_user['users_msn']);
+  $data['users']['users_skype'] = cs_secure($cs_user['users_skype']);
+  $data['users']['users_email'] = cs_secure($cs_user['users_email']);
+  $data['users']['users_url'] = cs_secure($cs_user['users_url']);
+  $data['users']['users_phone'] = cs_secure($cs_user['users_phone']);
+  $data['users']['users_mobile'] = cs_secure($cs_user['users_mobile']);
   $data['users']['users_info'] = cs_secure($cs_user['users_info']);
   $data['users']['country_url'] = cs_html_img('symbols/countries/' . $cs_user['users_country'] . '.png',0,0,'id="country_1"');
 
