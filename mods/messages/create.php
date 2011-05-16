@@ -204,10 +204,10 @@ if (isset($_POST['preview']) && empty($messages_error))
 }
 
 $data['msg']['to'] = cs_secure($messages_to);
-$data['msg']['subject'] = $messages_subject;
+$data['msg']['subject'] = cs_secure($messages_subject);
 $data['msg']['smileys'] = cs_abcode_smileys('messages_text');
 $data['msg']['abcode'] = cs_abcode_features('messages_text');
-$data['msg']['text'] = $messages_text;
+$data['msg']['text'] = cs_secure($messages_text);
 $data['checked']['show_sender'] = empty($messages_show_sender) ? '' : ' checked="checked"';
 $data['var']['reply_id'] = $reply_id;
 

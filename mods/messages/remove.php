@@ -46,7 +46,7 @@ if(isset($_POST['cancel']))
 
 elseif($cs_messages['users_id'] == $account['users_id'] OR $cs_messages['users_id_to'] == $account['users_id']) {
 
-  $data['head']['body'] = sprintf($cs_lang['msg_rly_rmv'], cs_html_big(1) . $cs_messages['messages_subject'] . cs_html_big(0));
+  $data['head']['body'] = sprintf($cs_lang['msg_rly_rmv'], cs_html_big(1) . cs_secure($cs_messages['messages_subject']) . cs_html_big(0));
   $data['messages']['id'] = $messages_id;
 
   echo cs_subtemplate(__FILE__,$data,'messages','remove');

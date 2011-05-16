@@ -61,7 +61,7 @@ if(isset($_POST['submit'])) {
   if (!empty($count_double)) $error .= cs_html_br(1) . '- ' . $cs_lang['double'];
   
   if(empty($account['users_id']) || $cs_shout['shoutbox_name'] != $account['users_nick']) {
-    $nick_valid = cs_sql_count(__FILE__,'users','users_nick = \''.$cs_shout['shoutbox_name'].'\'');
+    $nick_valid = cs_sql_count(__FILE__,'users','users_nick = \'' . cs_sql_escape($cs_shout['shoutbox_name']) . '\'');
     
     if(!empty($nick_valid)) {
       $error .= cs_html_br(1) . '- ' . $cs_lang['user_exists'];
@@ -72,8 +72,8 @@ if(isset($_POST['submit'])) {
     $data['lang']['body'] = $cs_lang['errors'] . ' ' . $error;
     
     $data['form']['url'] = cs_url('shoutbox','create');
-    $data['form']['name'] = $cs_shout['shoutbox_name'];
-    $data['form']['message'] = $cs_shout['shoutbox_text'];
+    $data['form']['name'] = cs_secure($cs_shout['shoutbox_name']);
+    $data['form']['message'] = cs_secure($cs_shout['shoutbox_text']);
     
     if(!empty($captcha) && empty($account['users_id'])) {
       $data['form']['captcha'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time() . '&mini');
