@@ -63,7 +63,7 @@ function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
   }
   $set .= ") VALUES (";
   for($run=0; $run<$max; $run++) {
-    $set .= cs_sql_escape($sql_content[$run]);
+    $set .= $cs_db['con']->quote((string) $sql_content[$run]);
     if($run != $max - 1) { $set .= ','; }
   }
   $set .= ')';
@@ -230,7 +230,7 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
   $max = count($sql_cells);
   $set = ' SET ';
   for($run=0; $run<$max; $run++) {
-    $set .= $sql_cells[$run] . '=' . cs_sql_escape($sql_content[$run]);
+    $set .= $sql_cells[$run] . '=' . $cs_db['con']->quote((string) $sql_content[$run]);
     if($run != $max - 1) { $set .= ', '; }
   }
 
