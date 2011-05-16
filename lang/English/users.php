@@ -152,6 +152,7 @@ $cs_lang['column'] = 'Column';
 $cs_lang['value'] = 'Value';
 $cs_lang['hidden'] = 'Hide';
 $cs_lang['birthday'] = 'Birthday';
+$cs_lang['no_limit'] = 'The dataset limit should not be empty';
 
 // Picture
 $cs_lang['picture_manage']  = 'Manage your picture here.';

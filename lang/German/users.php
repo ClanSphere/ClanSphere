@@ -153,6 +153,7 @@ $cs_lang['column'] = 'Spalte';
 $cs_lang['value'] = 'Wert';
 $cs_lang['hidden'] = 'Verstecken';
 $cs_lang['birthday'] = 'Geburtstag';
+$cs_lang['no_limit'] = 'Die Datens&auml;tze je Seite d&uuml;rfen nicht leer sein';
 
 // Picture
 $cs_lang['picture_manage']  = 'Hier wird das Benutzerbild verwaltet.';
