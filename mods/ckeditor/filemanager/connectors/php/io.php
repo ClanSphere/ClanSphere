@@ -284,8 +284,10 @@ function SendUploadResults( $errorNumber, $fileUrl = '', $fileName = '', $custom
 {
 
   // Check for CKEditor
-  $funcnum = (int) $_GET['CKEditorFuncNum'];
+  $funcnum = isset($_GET['CKEditorFuncNum']) ? (int) $_GET['CKEditorFuncNum'] : 0;
   $filePlace = '';
+
+  $rpl = array( '\\' => '\\\\', '"' => '\\"' );
 
   if ($errorNumber && $errorNumber != 201) {
     $sendMsg = $errorNumber . ' - ' . strtr( $customMsg, $rpl );
@@ -297,8 +299,6 @@ function SendUploadResults( $errorNumber, $fileUrl = '', $fileName = '', $custom
     $sendMsg = '';
     $filePlace = strtr( $fileUrl, $rpl ) . '/' . strtr( $fileName, $rpl );
   }
-
-  $rpl = array( '\\' => '\\\\', '"' => '\\"' );
 
   if(empty($funcnum)) {
     // Minified version of the document.domain automatic fix script (#1919).
