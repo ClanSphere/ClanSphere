@@ -115,7 +115,7 @@ function cs_sql_option($cs_file, $mod) {
 
       $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
       $sql_query .= " WHERE options_mod = '" . $mod . "'";
-      $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_option', cs_sql_error(0, $sql_query)), 1);
+      $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_option', cs_sql_error(0, $sql_query), 1);
 
       while ($sql_result = mysql_fetch_assoc($sql_data)) {
         $name = $sql_result['options_name'];
