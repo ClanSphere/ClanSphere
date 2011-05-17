@@ -28,14 +28,13 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
 
   global $cs_db;
   $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
-  $sql_where = str_replace('"', '\'', $sql_where);
 
   $sql_query = 'SELECT COUNT(' . $row . ') FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
 
   $sql_query = str_replace('{pre}',$cs_db['prefix'],$sql_query);
   if (!$sql_data = sqlsrv_query($cs_db['con'], $sql_query)) {
-    cs_error_sql($cs_file, 'cs_sql_count', cs_sql_error());
+    cs_error_sql($cs_file, 'cs_sql_count', cs_sql_error(0, $sql_query));
     return NULL;
   }
   sqlsrv_fetch($sql_data);
@@ -54,7 +53,7 @@ function cs_sql_delete($cs_file,$sql_table,$sql_id,$sql_field = 0) {
   }
   $sql_delete = 'DELETE FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_delete .= ' WHERE ' . $sql_field . ' = ' . $sql_id;
-  sqlsrv_query($cs_db['con'], $sql_delete) or cs_error_sql($cs_file, 'cs_sql_delete', cs_sql_error());
+  sqlsrv_query($cs_db['con'], $sql_delete) or cs_error_sql($cs_file, 'cs_sql_delete', cs_sql_error(0, $sql_delete));
   cs_log_sql($cs_file, $sql_delete,1);
 }
 
@@ -84,7 +83,7 @@ function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content) {
   $set .= "')";
 
   $sql_insert = 'INSERT INTO ' . $cs_db['prefix'] . '_' . $sql_table . $set;
-  sqlsrv_query($cs_db['con'], $sql_insert) or cs_error_sql($cs_file, 'cs_sql_insert', cs_sql_error());
+  sqlsrv_query($cs_db['con'], $sql_insert) or cs_error_sql($cs_file, 'cs_sql_insert', cs_sql_error(0, $sql_insert));
   cs_log_sql($cs_file, $sql_insert);
 }
 
@@ -106,7 +105,7 @@ function cs_sql_option($cs_file, $mod) {
 
       $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
       $sql_query .= " WHERE options_mod = '" . $mod . "'";
-      $sql_data = sqlsrv_query($cs_db['con'], $sql_query) or cs_error_sql($cs_file, 'cs_sql_option', cs_sql_error, 1);
+      $sql_data = sqlsrv_query($cs_db['con'], $sql_query) or cs_error_sql($cs_file, 'cs_sql_option', cs_sql_error(0, $sql_query), 1);
 
       while ($sql_result = sqlsrv_fetch_array($sql_data, SQLSRV_FETCH_ASSOC)) {
         $name = $sql_result['options_name'];
@@ -144,7 +143,7 @@ function cs_sql_query($cs_file, $sql_query, $more = 0) {
     }
   }
   else {
-    cs_error_sql($cs_file, 'cs_sql_query', cs_sql_error());
+    cs_error_sql($cs_file, 'cs_sql_query', cs_sql_error(0, $sql_query));
     $result = 0;
   }
   cs_log_sql($cs_file, $sql_query);
@@ -169,7 +168,6 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   $first = ($first < 0) ? 0 : (int) $first;
   $max = ($max < 0) ? 20 : (int) $max;
   $run = 0;
-  $sql_where = str_replace('"', "'", $sql_where);
 
   if(!empty($max) OR $sql_order == '{random}') {
     $sql_select = ' TOP ' . $max . ' ' . $sql_select;
@@ -193,7 +191,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   $sql_query = str_replace('{pre}', $cs_db['prefix'], $sql_query);
 
   if (!$sql_data = sqlsrv_query($cs_db['con'], $sql_query)) {
-    cs_error_sql($cs_file, 'cs_sql_select', cs_sql_error());
+    cs_error_sql($cs_file, 'cs_sql_select', cs_sql_error(0, $sql_query));
     return NULL;
   }
   if ($max == 1) {
@@ -238,7 +236,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
   else {
     $sql_update .= $sql_where;
   }
-  sqlsrv_query($cs_db['con'], $sql_update) or cs_error_sql($cs_file, 'cs_sql_update', cs_sql_error());
+  sqlsrv_query($cs_db['con'], $sql_update) or cs_error_sql($cs_file, 'cs_sql_update', cs_sql_error(0, $sql_update));
 
   cs_log_sql($cs_file, $sql_update, $sql_log);
 }
@@ -258,12 +256,15 @@ function cs_sql_version($cs_file) {
   return $sql_infos;
 }
 
-function cs_sql_error() {
+function cs_sql_error($object = 0, $query = 0) {
 
   global $cs_db;
   $errors_array = sqlsrv_errors();
   $code = isset($errors_array[0]['code']) ? $errors_array[0]['code'] : 0;
-  $message = isset($errors_array[0]['message']) ? $errors_array[0]['message'] : '';
+  $error_string = isset($errors_array[0]['message']) ? $errors_array[0]['message'] : '';
   if(!empty($code))
-  return $code . ' - ' . $message;
+    $error_string = $code . ' - ' . $error_string;
+  if(!empty($query))
+    $error_string .= ' --Query: ' . $query;
+  return $error_string;
 }

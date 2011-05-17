@@ -6,7 +6,6 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
 
   global $cs_db;
   $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
-  $sql_where = str_replace('"', '\'', $sql_where);
 
   $sql_query = 'SELECT COUNT('.$row.') FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
@@ -18,8 +17,7 @@ function cs_sql_count($cs_file,$sql_table,$sql_where = 0, $distinct = 0) {
     $result = $sql_result[0];
   }
   else {
-    $error = $cs_db['con']->errorInfo();
-    cs_error_sql($cs_file, 'cs_sql_count', $error[2]);
+    cs_error_sql($cs_file, 'cs_sql_count', cs_sql_error(0, $sql_query));
     $result = 0;
   }
   cs_log_sql($cs_file, $sql_query);
@@ -36,8 +34,7 @@ function cs_sql_delete($cs_file,$sql_table,$sql_id,$sql_field = 0) {
   $sql_delete = 'DELETE FROM ' . $cs_db['prefix'] . '_' . $sql_table;
   $sql_delete .= ' WHERE ' . $sql_field . ' = ' . $sql_id;
   if(!$cs_db['con']->query($sql_delete)) {
-    $error = $cs_db['con']->errorInfo();
-    cs_error_sql($cs_file, 'cs_sql_delete', $error[2]);
+    cs_error_sql($cs_file, 'cs_sql_delete', cs_sql_error(0, $sql_delete));
   }
   cs_log_sql($cs_file, $sql_delete,1);
 }
@@ -70,8 +67,7 @@ function cs_sql_insert($cs_file,$sql_table,$sql_cells,$sql_content) {
 
   $sql_insert = 'INSERT INTO ' . $cs_db['prefix'] . '_' . $sql_table . $set;
   if(!$cs_db['con']->query($sql_insert)) {
-    $error = $cs_db['con']->errorInfo();
-    cs_error_sql($cs_file, 'cs_sql_insert', $error[2]);
+    cs_error_sql($cs_file, 'cs_sql_insert', cs_sql_error(0, $sql_insert));
   }
   cs_log_sql($cs_file, $sql_insert,1);
 }
@@ -90,9 +86,7 @@ function cs_sql_insertid($cs_file) {
     return $result;
   }
   else {
-    $error = $cs_db['con']->errorInfo();
-    $error[2] = empty($error[2]) ? 'Failed to receive ID of insert query' : $error[2];
-    cs_error_sql($cs_file, 'cs_sql_insertid', $error[2]);
+    cs_error_sql($cs_file, 'cs_sql_insertid', cs_sql_error());
   }
 }
 
@@ -117,7 +111,7 @@ function cs_sql_option($cs_file,$mod) {
       }
       else {
         $error = $cs_db['con']->errorInfo();
-        cs_error_sql($cs_file, 'cs_sql_option', $error[2], 1);
+        cs_error_sql($cs_file, 'cs_sql_option', cs_sql_error(0, $sql_query), 1);
       }
       cs_log_sql($cs_file, $sql_query);
       if(count($cs_template)) {
@@ -150,7 +144,7 @@ function cs_sql_query($cs_file, $sql_query, $more = 0) {
   }
   else {
     $error = $cs_db['con']->errorInfo();
-    cs_error_sql($cs_file, 'cs_sql_query', $error[2]);
+    cs_error_sql($cs_file, 'cs_sql_query',cs_sql_error(0, $sql_query));
     $result = 0;
   }
   cs_log_sql($cs_file, $sql_query);
@@ -168,7 +162,6 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   $max = ($max < 0) ? 20 : (int) $max;
   $new_result = 0;
   $run = 0;
-  $sql_where = str_replace('"', "'", $sql_where);
 
   if($cs_db['type'] == 'pdo_sqlsrv' AND (!empty($max) OR $sql_order == '{random}')) {
     $sql_select = ' TOP ' . $max . ' ' . $sql_select;
@@ -206,8 +199,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
     $sql_data = $cs_db['con']->query($sql_query);
   }
   catch(PDOException $err) {
-    $error = $err->getMessage();
-    cs_error_sql($cs_file, 'cs_sql_select', $error);
+    cs_error_sql($cs_file, 'cs_sql_select', cs_sql_error($err, $sql_query));
   }
   if(empty($error)) {
     $new_result = $max == 1 ? $sql_data->fetch(PDO::FETCH_ASSOC) : $sql_data->fetchAll(PDO::FETCH_ASSOC);
@@ -243,19 +235,26 @@ function cs_sql_update($cs_file,$sql_table,$sql_cells,$sql_content,$sql_id,$sql_
   }
 
   if(!$cs_db['con']->query($sql_update)) {
-    $error = $cs_db['con']->errorInfo();
-    cs_error_sql($cs_file, 'cs_sql_update', $error[2]);
+    cs_error_sql($cs_file, 'cs_sql_update', cs_sql_error(0, $sql_update));
   }
 
   cs_log_sql($cs_file, $sql_update, $sql_log);
 }
 
-function cs_sql_error() {
+function cs_sql_error($object = 0, $query = 0) {
 
   global $cs_db;
-  $error = $cs_db['con']->errorInfo();
-  if(empty($error) OR $error = array(0 => '00000'))
-    return FALSE;
-  else
-    return $error;
+  $error_string = is_object($object) ? $object->getMessage() : '';
+  if(empty($error_string)) {
+    $error = $cs_db['con']->errorInfo();
+    if(isset($error[2]))
+      $error_string = $error[2];
+    elseif(empty($error) OR $error_string = array(0 => '00000'))
+      $error_string = 'Unknown SQL Error';
+    else
+      $error_string = (string) $error;
+  }
+  if(!empty($query))
+    $error_string .= ' --Query: ' . $query;
+  return $error_string;
 }
