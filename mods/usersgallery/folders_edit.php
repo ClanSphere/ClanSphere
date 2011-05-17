@@ -129,9 +129,12 @@ if(!empty($error) OR !isset($_POST['submit'])) {
 
   $data['hidden']['folders_picture'] = $folders['folders_picture'];
   $data['hidden']['folders_id'] = $folders_id;
+
+  $data['data']['folders_name'] = cs_secure($data['data']['folders_name']);
+  $data['data']['folders_url'] = cs_secure($data['data']['folders_url']);
+  $data['data']['folders_text'] = cs_secure($data['data']['folders_text']);
   
-  
- echo cs_subtemplate(__FILE__,$data,'usersgallery','folders_edit');
+  echo cs_subtemplate(__FILE__,$data,'usersgallery','folders_edit');
 }
 else {
 

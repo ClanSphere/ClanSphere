@@ -11,8 +11,9 @@ require_once('mods/gallery/functions.php');
 
 $gallery_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $gallery_id = $cs_post['id'];
+settype($gallery_id, 'integer');
 
-$edit = cs_sql_select(__FILE__,'usersgallery','*',"usersgallery_id = '" . $gallery_id . "'");
+$edit = cs_sql_select(__FILE__,'usersgallery','*',"usersgallery_id = '" . (int) $gallery_id . "'");
 
 $cs_option = cs_sql_option(__FILE__,'gallery');
 
@@ -82,9 +83,12 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['check']['count'] = empty($gallery_count_reset) ? '' : $checked;
     
   $data['hidden']['id'] = $gallery_id;
-    
-    
- echo cs_subtemplate(__FILE__,$data,'usersgallery','users_edit');
+
+  $data['data']['usersgallery_name'] = cs_secure($data['data']['usersgallery_name']);
+  $data['data']['usersgallery_titel'] = cs_secure($data['data']['usersgallery_titel']);
+  $data['data']['usersgallery_description'] = cs_secure($data['data']['usersgallery_description']);
+
+  echo cs_subtemplate(__FILE__,$data,'usersgallery','users_edit');
 }
 else {
 
@@ -94,4 +98,3 @@ else {
 
  cs_redirect($cs_lang['changes_done'],'usersgallery','center');
 }
-  

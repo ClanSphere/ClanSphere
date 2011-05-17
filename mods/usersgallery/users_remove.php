@@ -8,8 +8,9 @@ $cs_get = cs_get('id');
 
 $gallery_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $gallery_id = $cs_post['id'];
+settype($gallery_id, 'integer');
 
-$cs_gallery = cs_sql_select(__FILE__,'usersgallery','*',"usersgallery_id = '" . $gallery_id . "'");
+$cs_gallery = cs_sql_select(__FILE__,'usersgallery','*',"usersgallery_id = " . (int) $gallery_id);
 $pic = cs_secure($cs_gallery['usersgallery_name']);
 
 if ($cs_gallery['users_id'] != $account['users_id'] OR $account['access_usersgallery'] < 4)
@@ -40,4 +41,3 @@ else {
 
   echo cs_subtemplate(__FILE__,$data,'usersgallery','users_remove');
 }
-  

@@ -49,9 +49,9 @@ elseif(!empty($error)) {
 
 if(!empty($error) OR !isset($_POST['submit'])) {
 
-  $data['users']['current_pwd'] = $pwd['current'];
-  $data['users']['new_pwd'] = $pwd['new'];
-  $data['users']['pwd_again'] = $pwd['again'];
+  $data['users']['current_pwd'] = '';
+  $data['users']['new_pwd'] = '';
+  $data['users']['pwd_again'] = '';
 
   $matches[1] = $cs_lang['secure_stages'];
   $matches[2] = $cs_lang['stage_1'] . $cs_lang['stage_1_text'] . cs_html_br(1);

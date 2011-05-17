@@ -73,22 +73,22 @@ if(!empty($error) OR !isset($_POST['agree'])){
   $ask = ' ' . $cs_lang['del_question'];
 
   if(!empty($count_subfolders) AND !empty($count_pictures)) {
-    $msg = sprintf($cs_lang['del_subfolder_pictures'],$folder['folders_name'],$count_subfolders,$all_pictures) . $ask;
+    $msg = sprintf($cs_lang['del_subfolder_pictures'],cs_secure($folder['folders_name']),$count_subfolders,$all_pictures) . $ask;
     $data['if']['pictures_in_folder'] = TRUE;
   }
   elseif(!empty($count_subfolders) AND empty($count_pictures)) {
-    $msg = sprintf($cs_lang['del_subfolder'],$folder['folders_name'],$count_subfolders) . $ask;
+    $msg = sprintf($cs_lang['del_subfolder'],cs_secure($folder['folders_name']),$count_subfolders) . $ask;
   }
   elseif(!empty($count_pictures) AND empty($count_subfolders)) {
-    $msg = sprintf($cs_lang['del_folder_pics'],$folder['folders_name'],$count_pictures) . $ask;
+    $msg = sprintf($cs_lang['del_folder_pics'],cs_secure($folder['folders_name']),$count_pictures) . $ask;
     $data['if']['pictures_in_folder'] = TRUE;    
   }
   else {
-    $msg = sprintf($cs_lang['del_folder_rly'],$folder['folders_name']);
+    $msg = sprintf($cs_lang['del_folder_rly'],cs_secure($folder['folders_name']));
     $data['if']['pictures_in_folder'] = FALSE;
   }
   
-  $data['lang']['fr_opt_2'] = sprintf($cs_lang['fr_opt_2'],$count_pictures,$folder['folders_name']);
+  $data['lang']['fr_opt_2'] = sprintf($cs_lang['fr_opt_2'],$count_pictures,cs_secure($folder['folders_name']));
     
   $where = "folders_mod = 'usersgallery' AND folders_id != '" . $folders_id . "' AND users_id = '" . $account['users_id'] . "'";
   $select = 'folders_id, folders_name, sub_id, folders_position';

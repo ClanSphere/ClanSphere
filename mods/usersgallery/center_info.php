@@ -8,7 +8,7 @@ $data = array();
 $data['center']['head'] = cs_subtemplate(__FILE__,$data,'usersgallery','center_head');
 
 
-$id = $account['users_id'];
+$id = (int) $account['users_id'];
 
 $count_pics = cs_sql_count(__FILE__,'usersgallery',"users_id='" . $id . "'");
 $data['data']['count_pics'] = $count_pics;
@@ -52,8 +52,10 @@ $data['data']['count_size'] = cs_filesize($ges_size,2);
 
 $data['data']['count_trafik'] = cs_filesize($ges_traffic,2);
 
+$options = cs_sql_option(__FILE__, 'usersgallery');
+
 $space = 0;
-if(!empty($count_pics)) {
+if(!empty($count_pics) AND !empty($options['max_files'])) {
   $space = $count_pics / $options['max_files'] * 100;
   $space = round($space,1);
 }
@@ -78,6 +80,5 @@ if(!empty($space)) {
     $data['img']['02'] = 'symbols/messages/messages02_red.png';
   }
 }
-
 
 echo cs_subtemplate(__FILE__,$data,'usersgallery','center_info');

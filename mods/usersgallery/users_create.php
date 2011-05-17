@@ -157,8 +157,11 @@ if(!isset($_POST['submit']) OR !empty($error)) {
   $checked = 'checked="checked"';
   $data['check']['gray'] = empty($gray) ? '' : $checked;
   
-  
- echo cs_subtemplate(__FILE__,$data,'usersgallery','users_create');
+  $data['data']['usersgallery_name'] = cs_secure($data['data']['usersgallery_name']);
+  $data['data']['usersgallery_titel'] = cs_secure($data['data']['usersgallery_titel']);
+  $data['data']['usersgallery_description'] = cs_secure($data['data']['usersgallery_description']);
+
+  echo cs_subtemplate(__FILE__,$data,'usersgallery','users_create');
 }
 else {
 
