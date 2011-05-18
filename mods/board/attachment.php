@@ -14,30 +14,30 @@ cs_init($cs_main);
 chdir('mods/board/');
 
 if(!empty($_GET['id'])) {
-    $id = $_GET['id'];
+    $id = (int) $_GET['id'];
     $tables = 'boardfiles fil INNER JOIN {pre}_threads thr ON thr.threads_id = fil.threads_id ';
     $tables .= 'INNER JOIN {pre}_board brd ON brd.board_id = thr.board_id ';
-    $tables .= 'LEFT OUTER JOIN {pre}_boardpws bpw ON bpw.board_id = brd.board_id AND bpw.users_id = \'' . $account['users_id'] . '\'';
-    $where = 'brd.board_access <= \'' . $account['access_board'] . '\' fil.boardfiles_id = \'' . cs_sql_escape($id) . '\'';
-    $where = 'fil.boardfiles_id = \'' . cs_sql_escape($id) . '\'';
+    $tables .= 'LEFT OUTER JOIN {pre}_boardpws bpw ON bpw.board_id = brd.board_id AND bpw.users_id = ' . (int) $account['users_id'];
+    $where = 'brd.board_access <= ' . (int) $account['access_board'] . ' AND fil.boardfiles_id = ' . (int) $id;
     $cs_thread_file = cs_sql_select(__FILE__,$tables,'*',$where,0,0,1);
     if(!empty($cs_thread_file)) {
       if(!empty($cs_thread_file['board_pwd'])) {
         if(empty($cs_thread_file['boardpws_id'])) {
-          die;
+            die(cs_error_internal(0, 'Permission denied'));
         }
       }
     }
     else {
-      die;
+        die(cs_error_internal(0, 'Permission denied'));
     }
 }
 elseif (!empty($_GET['name'])) {
-    $name = $_GET['name'];
-    $cs_thread_file = cs_sql_select(__FILE__,'boardfiles','*',"boardfiles_name = '" . cs_sql_escape($name) . "'",0,0,1);
+  $name = $_GET['name'];
+  $cs_thread_file = cs_sql_select(__FILE__,'boardfiles','*',"boardfiles_name = '" . cs_sql_escape($name) . "'",0,0,1);
 }
-else
-die(cs_error_internal(0, 'File not found'));
+else {
+  die(cs_error_internal(0, 'File not found'));
+}
 
 $com_cells = array('boardfiles_downloaded');
 $com_save = array((1+$cs_thread_file['boardfiles_downloaded']));
@@ -56,7 +56,7 @@ else {
 }
 
 if(!is_file($file_path))
-die(cs_error_internal(0, 'File not found'));
+  die(cs_error_internal(0, 'File not found'));
 
 if($ext == 'jpg' OR $ext=='JPG' OR $ext == 'jpeg' OR $ext=='JPEG' OR $ext == 'gif' OR $ext=='GIF' OR $ext == 'bmp' OR $ext=='BMP' OR $ext == 'png' OR $ext=='PNG') {
     echo "<img src='$file_path' alt='$file'></img>";
