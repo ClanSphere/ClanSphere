@@ -39,7 +39,7 @@ $cells .= 'md.medals_id AS medals_id, md.medalsuser_date AS medalsuser_date, md.
 
 $data['medals_user'] = array();
 
-$data['medals_user'] = cs_sql_select(__FILE__,$tables,$cells,'medals_id = '.$medals_id,$order,$start,$account['users_limit']);
+$data['medals_user'] = cs_sql_select(__FILE__,$tables,$cells,'medals_id = '.$medals_id.'',$order,$start,0);
 $data['count']['medals_user'] = count($data['medals_user']);
 
 $data['sort']['date'] = cs_sort('medals','user',$start,$medals_id,1,$sort);
