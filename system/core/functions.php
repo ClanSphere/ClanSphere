@@ -34,15 +34,15 @@ function cs_error_internal($error = 0, $report = 0) {
   $cs_main['def_width'] = '100%';
   $cs_main['ajax'] = 0;
 
-  require_once 'system/cache/' . $cs_main['cache_mode'] . '.php';
-
-  if(empty($account['users_lang']))
-    $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'users_lang' => $cs_main['def_lang']);
-
   if(!empty($cs_main['init_mod'])) {
     chdir('../../');
     $cs_main['php_self']['dirname'] .= '../../';
   }
+
+  require_once 'system/cache/' . $cs_main['cache_mode'] . '.php';
+
+  if(empty($account['users_lang']))
+    $account = array('users_id' => 0, 'access_clansphere' => 0, 'access_errors' => 0, 'users_lang' => $cs_main['def_lang']);
   
   echo cs_template($cs_micro, 'error.htm');
 }

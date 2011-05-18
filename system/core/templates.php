@@ -394,10 +394,12 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_main['template'] = 'install';
   if ($cs_main['template'] != $cs_main['def_tpl'] AND !is_dir('templates/' . $cs_main['template']))
     $cs_main['template'] = $cs_main['def_tpl'];
-  if (!file_exists('templates/' . $cs_main['template'] . '/' . $tpl_file))
+
+  $tpl_path = $cs_main['def_path'] . '/templates/' . $cs_main['template'] . '/' . $tpl_file;
+  if (!file_exists($tpl_path))
   {
-    cs_error('templates/' . $cs_main['template'] . '/' . $tpl_file, 'cs_template - Template not found');
-    $msg = 'Template not found: ' . 'templates/' . $cs_main['template'] . '/' . $tpl_file;
+    cs_error($tpl_path, 'cs_template - Template file not found');
+    $msg = 'Template file not found: ' . $tpl_file;
     if($tpl_file != 'error.htm')
       die(cs_error_internal('tpl', $msg));
     else
