@@ -386,7 +386,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     $replace = preg_replace_callback("=\[i\](.*?)\[/i\]=si","cs_abcode_i",$replace);
     $replace = preg_replace_callback("=\[s\](.*?)\[/s\]=si","cs_abcode_s",$replace);
     $replace = preg_replace_callback("'\[(?P<name>email|mail)\](.*?)\[/(?P=name)\]'i","cs_abcode_mail",$replace);
-    $replace = preg_replace_callback('=([^\s]{3,})@([^\s]*?)\.([^\s]{2,7})(?![^<]+>|[^&]*;)=si','cs_abcode_mail',$replace);
+    $replace = preg_replace_callback('=([^\s]{2,})@([^\s]{2,})\.([^\s]{2,7})(?![^<]+>|[^&]*;)=i','cs_abcode_mail',$replace);
     $replace = preg_replace_callback("=\[color\=(#*[\w]*?)\](.*?)\[/color\]=si","cs_abcode_color",$replace);
     $replace = preg_replace_callback("=\[size\=([\d]*?)\](.*?)\[/size\]=si","cs_abcode_size",$replace);
     $replace = preg_replace_callback("'\[(?P<align>left|center|right|justify)\](.*?)\[/(?P=align)\]'si","cs_abcode_align",$replace);
@@ -426,7 +426,7 @@ function cs_secure($replace,$features = 0,$smileys = 0, $clip = 1, $html = 0, $p
     cs_abcode_mode(1);
 
     if(empty($html)) {
-      $replace = preg_replace_callback('=(www\.|http://|ftp://|https://)([^\s,]+)\.([^\s]+)(?![^<]+>|[^&]*;)=si','cs_abcode_urlauto',$replace);
+      $replace = preg_replace_callback('=(www\.|http://|ftp://|https://)([^\s]+)\.([^\s]+)(?![^<]+>|[^&]*;)=si','cs_abcode_urlauto',$replace);
 
       if(!empty($op_abcode['word_cut']))
         $replace = preg_replace("=(?![>])([^\s*?]{".$op_abcode['word_cut']."})(?![^<]+>|[^&]*;)=","\\0 ",$replace);
