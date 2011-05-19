@@ -39,11 +39,11 @@ if (!empty($_POST['submit'])) {
     } elseif(!empty($files['partner_nimg']['tmp_name'])) {
       switch($img_size[2]) {
         case 1:
-          $extension = 'gif'; break;
+          $extension_nimg = 'gif'; break;
         case 2:
-          $extension = 'jpg'; break;
+          $extension_nimg = 'jpg'; break;
         case 3:
-          $extension = 'png'; break;
+          $extension_nimg = 'png'; break;
       }
     
       if($img_size[0] > $op_partner['def_width_navimg']) {
@@ -68,11 +68,11 @@ if (!empty($_POST['submit'])) {
     } elseif(!empty($files['partner_limg']['tmp_name'])) {
       switch($img_size[2]) {
         case 1:
-          $extension = 'gif'; break;
+          $extension_limg = 'gif'; break;
         case 2:
-          $extension = 'jpg'; break;
+          $extension_limg = 'jpg'; break;
         case 3:
-          $extension = 'png'; break;
+          $extension_limg = 'png'; break;
       }
     
       if($img_size[0] > $op_partner['def_width_listimg']) {
@@ -97,11 +97,11 @@ if (!empty($_POST['submit'])) {
     } elseif(!empty($files['partner_rimg']['tmp_name'])) {
       switch($img_size[2]) {
         case 1:
-          $extension = 'gif'; break;
+          $extension_rimg = 'gif'; break;
         case 2:
-          $extension = 'jpg'; break;
+          $extension_rimg = 'jpg'; break;
         case 3:
-          $extension = 'png'; break;
+          $extension_rimg = 'png'; break;
       }
     
       if($img_size[0] > $op_partner['def_width_rotimg']) {
@@ -197,7 +197,7 @@ echo cs_subtemplate(__FILE__,$data,'partner','edit');
     
   } else {
     if(!empty($files['partner_nimg']['tmp_name'])) {
-      $filename_navimg = 'navbanner-' . $getid['partner_id'] . '.' . $extension;
+      $filename_navimg = 'navbanner-' . $getid['partner_id'] . '.' . $extension_nimg;
       cs_upload('partner',$filename_navimg,$files['partner_nimg']['tmp_name']);
   
       $cells_navimg = array('partner_nimg');
@@ -215,7 +215,7 @@ echo cs_subtemplate(__FILE__,$data,'partner','edit');
   } else {
     if(!empty($files['partner_limg']['tmp_name'])) {
     
-      $filename_listimg = 'listbanner-' . $getid['partner_id'] . '.' . $extension;
+      $filename_listimg = 'listbanner-' . $getid['partner_id'] . '.' . $extension_limg;
       cs_upload('partner',$filename_listimg,$files['partner_limg']['tmp_name']);
   
       $cells_listimg = array('partner_limg');
@@ -234,7 +234,7 @@ echo cs_subtemplate(__FILE__,$data,'partner','edit');
   } else {
     if(!empty($files['partner_rimg']['tmp_name'])) {
     
-      $filename_rotimg = 'rotbanner-' . $getid['partner_id'] . '.' . $extension;
+      $filename_rotimg = 'rotbanner-' . $getid['partner_id'] . '.' . $extension_rimg;
       cs_upload('partner',$filename_rotimg,$files['partner_rimg']['tmp_name']);
   
       $cells_rotimg = array('partner_rimg');
