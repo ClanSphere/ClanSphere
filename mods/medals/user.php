@@ -36,16 +36,18 @@ $order = $cs_sort[$sort];
 $tables = 'medalsuser md LEFT JOIN {pre}_users usr ON usr.users_id = md.users_id';
 $cells  = 'usr.users_nick AS users_nick, md.users_id AS users_id, usr.users_active AS users_active, usr.users_delete AS users_delete, ';
 $cells .= 'md.medals_id AS medals_id, md.medalsuser_date AS medalsuser_date, md.medalsuser_id AS medalsuser_id';
+$where = 'medals_id = '.$medals_id.'';
 
 $data['medals_user'] = array();
 
-$data['medals_user'] = cs_sql_select(__FILE__,$tables,$cells,'medals_id = '.$medals_id.'',$order,$start,0);
+$data['medals_user'] = cs_sql_select(__FILE__,$tables,$cells,$where,$order,$start,$account['users_limit']);
 $data['count']['medals_user'] = count($data['medals_user']);
+$data['count']['all_medals_user'] = cs_sql_count(__FILE__, 'medalsuser',$where);
 
 $data['sort']['date'] = cs_sort('medals','user',$start,$medals_id,1,$sort);
 $data['sort']['users_nick'] = cs_sort('medals','user',$start,$medals_id,3,$sort);
 
-$data['pages']['list'] = cs_pages('medals','user',$data['count']['medals_user'],$start,$medals_id,$sort);
+$data['pages']['list'] = cs_pages('medals','user',$data['count']['all_medals_user'],$start,$medals_id,$sort);
 
 for ($i = 0; $i < $data['count']['medals_user']; $i++) {
   
