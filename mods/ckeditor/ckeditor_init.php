@@ -46,7 +46,7 @@ $(function() {
 }
 if(!empty($mode_abcode)) {
   // currently not working are e.g.:
-  // indent and outdent, bgcolor, strike, size, horizontalrule, justify
+  // indent and outdent, bgcolor, strike, horizontalrule, justify, size with pt format
 ?>
 $(function() {
 
@@ -65,6 +65,7 @@ $(function() {
 ?>
                           extraPlugins : 'bbcode',
                           removePlugins : 'bidi,button,dialogadvtab,div,filebrowser,flash,format,forms,horizontalrule,iframe,indent,justify,liststyle,pagebreak,showborders,stylescombo,table,tabletools,templates',
+                          disableObjectResizing : true,
                           toolbar : [
                             ['Source', '-', 'Undo', 'Redo'],
                             ['Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
@@ -74,6 +75,8 @@ $(function() {
                             ['NumberedList','BulletedList', 'Blockquote'],
                             ['Link', 'Unlink', 'Image']
                           ],
+                          smiley_images : [ '' ],
+                          smiley_descriptions : [ '' ]
                         }
 
   $(document).bind('csAjaxLoad', function(e,ele) {
