@@ -6,15 +6,15 @@ $cs_lang = cs_translate('board');
 
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
+$files_gl = cs_files();
 
 $data = array();
 
-$files_gl = cs_files();
-
 $fid = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $fid = $cs_post['id'];
+if (!empty($cs_get['where']))  $fid = $cs_get['where'];
 
-include('mods/board/functions.php');
+include 'mods/board/functions.php';
 
 $check_pw = 1;
 $check_sq = 0;
