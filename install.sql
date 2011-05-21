@@ -765,13 +765,13 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'maintenance_access', '3');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'notfound_info', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'public', '1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_last', '533');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '533');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_last', '543');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '543');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_remote', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.0.1 DEV');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2011-03-29');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '71');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2011-05-21');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '72');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_width', '800');
