@@ -31,7 +31,7 @@ $cs_main['php_self']['website'] = 'http://' . $domain;
 # handle mod_rewrite params and split them for default usage
 if(empty($_GET['mod']) AND empty($_GET['action'])) {
   if(empty($_GET['params']))
-    $cs_main['php_self']['params'] = substr($_SERVER['REQUEST_URI'], strlen($cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']));
+    $cs_main['php_self']['params'] = isset($_SERVER['REQUEST_URI']) ? substr($_SERVER['REQUEST_URI'], strlen($cs_main['php_self']['dirname'] . $cs_main['php_self']['filename'])) : '';
   else
     $cs_main['php_self']['params'] = $_GET['params'];
 }
