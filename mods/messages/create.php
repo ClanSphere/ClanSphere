@@ -31,11 +31,11 @@ if (!empty($_GET['rep'])) {
   $msg = cs_sql_select(__FILE__, $tables, $cells, 'messages_id = "' . $messages_id . '" AND users_id_to = "' . $account['users_id'] . '"');
   if (empty($msg)) cs_redirect('This message doesnt exist or is not sent to you.', 'messages', 'center');
   if (empty($msg['users_active']) || !empty($msg['users_delete'])) cs_redirect('The user you want to write a message to is not active or has been deleted.', 'messages', 'center');
-  $messages_subject = 'Re: ' . cs_secure($msg['messages_subject']);
-  $messages_to = cs_secure($msg['users_nick']);
+  $messages_subject = 'Re: ' . $msg['messages_subject'];
+  $messages_to = $msg['users_nick'];
   $messages_text = "\r\n\r\n\r\n\r\n\r\n" . '[clip=' . $cs_lang['clip_more'] . ']';
   $messages_text .= '[quote][b]---------- ' . $messages_to . ' ' . $cs_lang['wrote'] . ' ----------[/b]';
-  $messages_text .= "\r\n" . cs_secure($msg['messages_text']) . '[/quote][/clip]';
+  $messages_text .= "\r\n" . $msg['messages_text'] . '[/quote][/clip]';
 }
 
 /*+-------------------------------------------------------------+*/
