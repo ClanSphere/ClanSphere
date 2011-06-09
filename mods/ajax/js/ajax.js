@@ -362,7 +362,7 @@ var Clansphere = {
       $(window).unbind('mousemove');
       
       Clansphere.ajax.lastActivity = new Date().getMinutes();
-      Clansphere.ajax.checkActivity;
+      Clansphere.ajax.checkActivity();
       
       window.setTimeout(function() {
         $(window).bind('mousemove', Clansphere.ajax.trackActivity);
