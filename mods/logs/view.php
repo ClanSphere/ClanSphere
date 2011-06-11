@@ -49,7 +49,7 @@ if(!empty($temp_file) AND isset($temp_file[$log])) {
       $data['logs'][$run]['file2'] = cs_secure($explode[4]);
       if ($folder == 'errors') {
         $data['logs'][$run]['ip'] = $explode[6];
-        $data['logs'][$run]['browser'] = $explode[5];
+        $data['logs'][$run]['browser'] = $explode[7];
       }
     $run++;
     }
