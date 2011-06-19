@@ -22,7 +22,8 @@ if(!empty($mode)) {
 ?>
 $(function() {
 
-  var options_html = {  language : '<?php echo $lang; ?>',
+  var options_html = {  customConfig : 'config_special.js',
+                        language : '<?php echo $lang; ?>',
                         skin : '<?php echo $skin; ?>',
                         height : '<?php echo $height; ?>',
                         baseHref : '<?php echo $path; ?>/',
@@ -50,7 +51,8 @@ if(!empty($mode_abcode)) {
 ?>
 $(function() {
 
-  var options_abcode = {  language : '<?php echo $lang; ?>',
+  var options_abcode = {  customConfig : 'config_special.js',
+                          language : '<?php echo $lang; ?>',
                           skin : '<?php echo $skin; ?>',
                           baseHref : '<?php echo $path; ?>/',
                           basePath : '<?php echo $path; ?>/mods/ckeditor/',
