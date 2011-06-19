@@ -37,8 +37,9 @@ function create_user($access,$nick,$pwd,$lang,$email,$country,$timezone,$dst,$ne
   $time = cs_time();
   $limit = empty($cs_main['data_limit']) ? 20 : $cs_main['data_limit'];
 
-  $users_cells = array('access_id', 'users_nick', 'users_pwd', 'users_lang', 'users_email', 'users_emailregister', 'users_country', 'users_register', 'users_laston', 'users_timezone', 'users_dstime', 'users_newsletter', 'users_active', 'users_limit', 'users_regkey', 'users_picture');
-  $users_save = array($access,$nick,$sec_pwd,$lang,$email,$email,$country,$time,$time,$timezone,$dst,$newsletter,$active,$limit,$regkey,$picture);
+  $users_cells = array('access_id', 'users_nick', 'users_pwd', 'users_lang', 'users_email', 'users_emailregister', 'users_country', 'users_register', 'users_laston', 'users_timezone', 'users_dstime', 'users_newsletter', 'users_active', 'users_limit', 'users_regkey', 'users_picture', 'users_hidden');
+  $users_save = array($access, $nick, $sec_pwd, $lang,$email, $email, $country, $time, $time, $timezone, $dst, $newsletter,
+  $active, $limit, $regkey, $picture, 'users_email');
   cs_sql_insert(__FILE__,'users',$users_cells,$users_save);
   
   return cs_sql_insertid(__FILE__);
