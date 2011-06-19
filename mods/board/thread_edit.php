@@ -323,7 +323,8 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   }
 
   $data['thread']['id'] = $thread_id;
-  
+  $data['data']['threads_headline'] = cs_secure($data['data']['threads_headline']);
+  $data['data']['threads_text'] = cs_secure($data['data']['threads_text']);
  
  echo cs_subtemplate(__FILE__,$data,'board','thread_edit');
 }

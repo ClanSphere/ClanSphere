@@ -101,8 +101,7 @@ if(isset($_POST['cancel']))
  cs_redirect($cs_lang['del_false'],'board','thread','where=' .$thread_id);
 
 else {
-
-  $data['head']['body'] = sprintf($cs_lang['del_thread_rly'],$cs_thread['threads_headline']);
+  $data['head']['body'] = sprintf($cs_lang['del_thread_rly'], cs_secure($cs_thread['threads_headline']));
   $data['thread']['id'] = $thread_id;
   
  echo cs_subtemplate(__FILE__,$data,'board','thread_remove');
