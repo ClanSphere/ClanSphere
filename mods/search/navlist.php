@@ -41,6 +41,11 @@ $data['search']['news_check'] = $data['search']['where'] == 'news' ? $sel : '';
 $data['search']['users_check'] = $data['search']['where'] == 'users' ? $sel : '';
 $data['search']['files_check'] = $data['search']['where'] == 'files' ? $sel : '';
 
+$data['if']['articles'] = empty($account['access_articles']) ? 0 : 1;
+$data['if']['clans'] = empty($account['access_clans']) ? 0 : 1;
+$data['if']['news'] = empty($account['access_news']) ? 0 : 1;
+$data['if']['users'] = empty($account['access_users']) ? 0 : 1;
+$data['if']['files'] = empty($account['access_files']) ? 0 : 1;
 
 if(!empty($search_error)) {
   $data['if']['errmsg'] = true;
