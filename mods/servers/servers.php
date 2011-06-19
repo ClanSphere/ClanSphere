@@ -61,7 +61,10 @@ class Servers {
    */
   public function setProtocolLink($aServer, $data) {
     $data['servers_link'] = 'hlsw://'.$aServer['servers_ip'].':'.$aServer['servers_port'];
-    if($aServer['servers_class'] == 'ts2') {
+    if($aServer['servers_class'] == 'source') {
+      $data['servers_link'] = 'steam://connect/'.$aServer['servers_ip'].':'.$aServer['servers_port'];
+    }
+    elseif($aServer['servers_class'] == 'ts2') {
       $data['servers_link'] = 'teamspeak://'.$aServer['servers_ip'].':'.$aServer['servers_port'];
     }
     elseif($aServer['servers_class'] == 'ts3') {

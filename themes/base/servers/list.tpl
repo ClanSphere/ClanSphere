@@ -57,7 +57,30 @@
     {stop:live}
     {unless:live}
           <tr>
-            <td class="centerb">{servers:info}</td>
+            <td class="centerb">
+                <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:100%">
+                  <tr>
+                      <td class="leftc" style="width:125px;">{lang:host}</td>
+                      <td class="leftb"><a href="{servers:servers_link}">{servers:hostname}</a></td>
+                  </tr>
+                  <tr>
+                      <td class="leftc" style="width:125px;">{lang:ip}</td>
+                      <td class="leftb">{servers:ip}:{servers:port}</td>
+                  </tr>
+                  <tr>
+                      <td class="leftc">{lang:game}</td>
+                      <td class="leftb">{servers:game}</td>
+                  </tr>        
+                  <tr>
+                      <td class="leftc">{lang:players}</td>
+                      <td class="leftb">{servers:slots}</td>
+                  </tr>
+                  <tr>
+                      <td class="leftc">{lang:info}</td>
+                      <td class="leftb">{servers:info}</td>
+                  </tr>
+            </table>
+            </td>
             <td class="centerb"><img src="{page:path}{servers:mappic}" alt="" /></td>
           </tr>
     {stop:live}
@@ -77,7 +100,6 @@
           {stop:players}
       </table>
     {stop:playersexist}    
-    <br /><hr style="width:75%; height:0; border-top:0.5em dashed #000; font-size:0;" /><br />
   {stop:servers}
 {stop:server}
 {unless:server}
@@ -92,7 +114,7 @@
 
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
-      <td class="rightb">
+      <td class="centerb">
           <a href="http://gameq.sourceforge.net" target="_blank">based on GameQ</a>
       </td>
     </tr>

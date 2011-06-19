@@ -164,6 +164,8 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
   array('name' => 'James Bond: Nightfire', 'servers_class' => 'gamespy;jb'),
   array('name' => 'Kingpin: Life of Crime', 'servers_class' => 'quake2;kingpin'),
   array('name' => 'Killing Floor', 'servers_class' => 'unreal2;killingfloor'),
+  array('name' => 'Left 4 Dead', 'servers_class' => 'source;l4d'),
+  array('name' => 'Left 4 Dead 2', 'servers_class' => 'source;l4d2'),
   array('name' => 'Natural Selection', 'servers_class' => 'source;naturalsel'),
   array('name' => 'Quake 2', 'servers_class' => 'quake2;quake2'),
   array('name' => 'Quake 3 Arena', 'servers_class' => 'quake3;quake3a'),

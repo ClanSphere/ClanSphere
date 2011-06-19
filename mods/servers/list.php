@@ -16,7 +16,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
   include_once 'mods/servers/servers.php';
 
   /* Get Server SQL-Data */
-  $select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order, servers_id';
+  $select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_slots, servers_stats, servers_order, servers_id';
   $order = 'servers_order ASC';
   $where = empty($id) ? '' : 'servers_id = \'' . $id . '\'';
   $cs_servers = cs_sql_select(__FILE__,'servers',$select,$where,$order,0,0);
@@ -33,14 +33,19 @@ if (fsockopen("udp://127.0.0.1", 1)) {
     $objServers = Servers::__getInstance();
 
     for($run=0; $run<$servers_count; $run++) {
-      $data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
-      $data['servers'][$run]['if']['live'] = false;
-      $data['servers'][$run]['mappic'] = 'uploads/servers/no_response.jpg';
-      $data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
-      $data['servers'][$run]['if']['playersexist'] = false;
       $server_query_ex = explode(";",$cs_servers[$run]['servers_class']);
       $cs_servers[$run]['servers_class'] = $server_query_ex[0];
       $cs_servers[$run]['servers_game'] = $server_query_ex[1];
+      $data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
+      $data['servers'][$run]['if']['live'] = false;
+      $data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+      $data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
+      $data['servers'][$run]['ip'] = $cs_servers[$run]['servers_ip'];
+      $data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
+      $data['servers'][$run]['game'] = $cs_servers[$run]['servers_game'];
+      $data['servers'][$run]['slots'] = $cs_servers[$run]['servers_slots'];
+      $data['servers'][$run]['if']['playersexist'] = false;
+
       if(!empty($cs_servers[$run]['servers_stats'])) {
         $objServers->addServer(0, $cs_servers[$run]);
         $results[$run] = $objServers->requestData();
