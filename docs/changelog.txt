@@ -2,10 +2,15 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2011.1.1 >> 2011-XX-XX
+ClanSphere 2011.1.2 >> 2011-XX-XX
 ___________________________________________________________
 
--! Don't touch, dragons in here !-
+-> Updated CKEditor to 3.6.1 (hajo)
+
+!! Future third party software changes and updates (e.g. to CKEditor and jQuery)
+!! will be available in the official module database to not affect the release cycle.
+
+-- Fixed a few bugs that were reported at "Trac" --
 
 
 ClanSphere 2011.1 >> 2011-05-21
