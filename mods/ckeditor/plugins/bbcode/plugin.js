@@ -83,20 +83,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			 });
 	}
 
-	// Maintain the map of smiley-to-description.
-	var smileyMap = {"smiley":":)","sad":":(","wink":";)","laugh":":D","cheeky":":P","blush":":*)","surprise":":-o","indecision":":|","angry":">:(","angel":"o:)","cool":"8-)","devil":">:-)","crying":";(","kiss":":-*" },
-		smileyReverseMap = {},
-		smileyRegExp = [];
-
-	// Build regexp for the list of smiley text.
-	for ( var i in smileyMap )
-	{
-		smileyReverseMap[ smileyMap[ i ] ] = i;
-		smileyRegExp.push( smileyMap[ i ].replace( /\(|\)|\:|\/|\*|\-|\|/g, function( match ) { return '\\' + match; } ) );
-	}
-
-	smileyRegExp = new RegExp( smileyRegExp.join( '|' ), 'g' );
-
 	var decodeHtml = ( function ()
 	{
 		var regex = [],
@@ -452,14 +438,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					{
 						var lastIndex = 0;
 
-						// Create smiley from text emotion.
-						piece.replace( smileyRegExp, function( match, index )
-						{
-							addElement( new CKEDITOR.htmlParser.text( piece.substring( lastIndex, index ) ), currentNode );
-							addElement( new CKEDITOR.htmlParser.element( 'smiley', { 'desc': smileyReverseMap[ match ] } ), currentNode );
-							lastIndex = index + match.length;
-						});
-
 						if ( lastIndex != piece.length )
 							addElement( new CKEDITOR.htmlParser.text( piece.substring( lastIndex, piece.length ) ), currentNode );
 					}
@@ -734,22 +712,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					  {
 						  if ( !element.attributes.href )
 							  element.attributes.href = element.children[ 0 ].value;
-					  },
-					  'smiley' : function( element )
-					  {
-							element.name = 'img';
-
-							var description = element.attributes.desc,
-								image = config.smiley_images[ CKEDITOR.tools.indexOf( config.smiley_descriptions, description ) ],
-								src = CKEDITOR.tools.htmlEncode( config.smiley_path + image );
-
-						  element.attributes =
-						  {
-							  src : src,
-							  'data-cke-saved-src' : src,
-							  title :  description,
-							  alt : description
-						  };
 					  }
 				  }
 			  } );
@@ -851,12 +813,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						{
 							element.isEmpty = 0;
 
-							// Translate smiley (image) to text emotion.
-							var src = attributes[ 'data-cke-saved-src' ];
-							if ( src && src.indexOf( editor.config.smiley_path ) != -1 )
-								return new CKEDITOR.htmlParser.text( smileyMap[ attributes.alt ] );
-							else
-								element.children = [ new CKEDITOR.htmlParser.text( src ) ];
+						  element.children = [ new CKEDITOR.htmlParser.text( src ) ];
 						}
 
 						element.name = tagName;
@@ -918,8 +875,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							else if ( name == 'img' )
 							{
 								var src = element.data( 'cke-saved-src' );
-								if ( src && src.indexOf( editor.config.smiley_path ) === 0 )
-									name = 'smiley';
 							}
 
 							return name;
