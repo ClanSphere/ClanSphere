@@ -504,7 +504,7 @@ var Clansphere = {
         url: path + 'mods/ajax/search_users.php',
         data: 'target=' + field_from + '&term=' + $('#'+field_from).val(),
         success : function(response) {
-          $('#'+field_to).html(response).show().bind('click', function() {
+          $('#'+field_to).html(response).show().bind('click', function(event) {
             event.stopPropagation();
           });
           $(document).bind('click', function() {
