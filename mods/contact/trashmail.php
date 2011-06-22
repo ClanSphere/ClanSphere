@@ -8,7 +8,7 @@ function cs_trashmail($email) {
   if(empty($parts[1]))
     return false;
   else {
-    $where = "trashmail_entry LIKE '%" . cs_sql_escape($parts[1]) . "%'";
+    $where = "trashmail_entry = '" . strtolower(cs_sql_escape($parts[1])) . "'";
     $check = cs_sql_count(__FILE__, 'trashmail', $where);
     return (empty($check)) ? false : true;
   }
