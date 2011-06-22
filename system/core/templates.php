@@ -423,10 +423,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   $template = cs_cache_template($tpl_file);
   $template = cs_tokenizer_parse($template);
 
-  # Load basic scriptload content and add scriptload to replaces
-  cs_scriptload('ajax', 'javascript', 'js/ajax.js', 1);
-  cs_scriptload('clansphere', 'javascript', 'js/clansphere.js', 1);
-  cs_scriptload('clansphere', 'javascript', 'js/jquery.js', 1);
+  # Add scriptload to replaces
   global $cs_main;
   $replace['func:stylesheet'] = empty($cs_main['scriptload']['stylesheet']) ? '' : $cs_main['scriptload']['stylesheet'];
   $replace['func:javascript'] = empty($cs_main['scriptload']['javascript']) ? '' : $cs_main['scriptload']['javascript'];

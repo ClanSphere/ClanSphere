@@ -6,7 +6,7 @@ ClanSphere uses parts of the following Software:
 mod ckeditor:
 - CKEditor 3.6.1 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
 
-mod clansphere:
+mod jquery:
 - jQuery 1.6.1 (http://www.jquery.com)
 - TextAreaExpander (http://www.sitepoint.com/blogs/2009/07/29/build-auto-expanding-textarea-1)
 
@@ -17,4 +17,4 @@ mod servers:
 - GameQ 1.12 (http://gameq.sourceforge.net)
 
 mod lightbox:
-- Slimbox 2.0.4 (http://www.digitalia.be/software/slimbox2)
+- Slimbox 2.0.4 for jQuery (http://www.digitalia.be/software/slimbox2)
