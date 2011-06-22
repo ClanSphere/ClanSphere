@@ -116,7 +116,7 @@ if(!empty($cs_com)) {
   }
 }
 
-$data['if']['com_1'] = empty($data['com']) ? FALSE : TRUE;
+$data['if']['com_1'] = empty($com) ? FALSE : TRUE;
 
 if(!empty($data['if']['com_1']))
   $data['com'] = empty($com) ? array() : $com;
