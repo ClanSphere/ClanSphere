@@ -2,7 +2,7 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-$mod_info['name']       = 'jQuery';
+$mod_info['name']       = 'JQuery';
 $mod_info['version']    = $cs_main['version_name'];
 $mod_info['released']   = $cs_main['version_date'];
 $mod_info['creator']    = 'jQuery project';
