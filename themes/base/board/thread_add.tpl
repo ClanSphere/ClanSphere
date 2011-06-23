@@ -29,7 +29,7 @@
   <tr>
     <td class="leftb">
       {loop:pre_answers}
-      <input type="radio" name="voted_answer" value="{pre_answers:run}" /> {pre_answers:answer}<br />
+      <input type="{if:vote_several}checkbox{stop:vote_several}{unless:vote_several}radio{stop:vote_several}" name="voted_answer{if:vote_several}[]{stop:vote_several}" value="{pre_answers:run}" /> {pre_answers:answer}<br />
       {stop:pre_answers}
     </td>
   </tr>
@@ -89,6 +89,10 @@
     <td class="leftb"><input type="text" name="votes_election_{answers:num}" value="{answers:answer}" maxlength="50" size="50" /></td>
   </tr>
   {stop:answers}
+  <tr>
+    <td class="leftc">{icon:configure} {lang:more}</td>
+    <td class="leftb"><input type="checkbox" name="votes_several" value="1" {several:checked} /> {lang:several}</td>
+  </tr>
   {stop:vote}
   {if:file}
   <tr>

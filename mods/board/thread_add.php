@@ -83,6 +83,8 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['new_vote
 
   $bv['boardvotes_access'] = isset($_POST['votes_access']) ? $_POST['votes_access'] : '0';
   $bv['boardvotes_question'] = isset($_POST['votes_question']) ? $_POST['votes_question'] : '';
+  $bv['boardvotes_several'] = isset($_POST['votes_several']) ? '1' : '0';
+  $cs_vote_tpl['several']['checked'] = empty($votes_several) ? '' : 'checked';
   if(cs_datepost('votes_end','unix')) {
     $bv['boardvotes_end'] = cs_datepost('votes_end','unix');
   }else{
@@ -247,6 +249,7 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   if($votes == 1)
   {
     $data['if']['vote'] = TRUE;
+    $data['if']['vote_several'] = empty($bv['boardvotes_several']) ? false : true;
 
     $data['time']['select'] = cs_dateselect('votes_end','unix',$bv['boardvotes_end'],2005);
 
@@ -259,6 +262,7 @@ if(!empty($error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
     }
 
     $data['data']['votes_question'] = $bv['boardvotes_question'];
+    $data['several']['checked'] = empty($bv['boardvotes_several']) ? '' : 'checked="checked"';
 
     $run_loop = isset($_POST['run_loop']) ? $_POST['run_loop'] : 1;
     for($run=0; $run < $run_loop; $run++)

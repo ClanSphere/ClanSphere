@@ -320,6 +320,7 @@ $cs_lang['error_filename'] = '- Diese Datei existiert schon. Bitte benennen Sie 
 $cs_lang['error_filesize'] = '- Die Datei ist zu gro&szlig;.';
 $cs_lang['error_filetype'] = '- Es wurde ein unerlaubtes Dateiformat benutzt.';
 $cs_lang['error_fileupload'] = '- Es ist ein unbekannter Fehler beim hochladen der Datei entstanden.';
+$cs_lang['several'] = 'Mehrfachauswahl erlauben';
 
 //thread_edit.php
 $cs_lang['thread_edit']  = 'Thema &Auml;ndern';

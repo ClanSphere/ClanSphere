@@ -139,7 +139,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
 
   $rpno = 0;
 
-  $votes_cells = 'boardvotes_access, boardvotes_end, boardvotes_question, boardvotes_election';
+  $votes_cells = 'boardvotes_access, boardvotes_end, boardvotes_question, boardvotes_election, boardvotes_several';
   $cs_thread_votes = cs_sql_select(__FILE__,'boardvotes',$votes_cells,'threads_id = "' . $id . '"');
 
   $files_cells = 'comments_id, boardfiles_name, boardfiles_id, boardfiles_downloaded';
@@ -181,6 +181,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
   $data['thread']['pages'] = cs_pages($mod,$action,$sum,$start,$id);
   $data['if']['vote'] = false;
   $data['if']['vote_result'] = false;
+  $data['if']['vote_several'] = false;
   if(!empty($cs_thread_votes))
   {
     if($account['access_board'] >= $cs_thread_votes['boardvotes_access'] OR $time_now <= $cs_thread_votes['boardvotes_end'])
@@ -200,6 +201,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
       if(empty($votes_error))
       {
         $data['if']['vote'] = true;
+        $data['if']['vote_several'] = empty($cs_thread_votes['boardvotes_several']) ? false : true;
         $temp = explode("\n", $cs_thread_votes['boardvotes_election']);
         $votes_loop = count($temp) - 1;
 
@@ -215,8 +217,16 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
 
           if(empty($votes_error)) {
             $votes_cells = array('voted_fid','users_id','voted_time','voted_answer','voted_ip','voted_mod');
+            if ($data['if']['vote_several'] && is_array($voted_election)) {
+                foreach ($voted_election as $key => $election) {
+                    $votes_save = array($id,$account['users_id'],$time_now,$election,$users_ip,'board');
+                    cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+                }
+            }
+            else {
             $votes_save = array($id,$account['users_id'],$time_now,$voted_election,$users_ip,'board');
             cs_sql_insert(__FILE__,'voted',$votes_cells,$votes_save);
+            }
             cs_redirect(NULL, 'board', 'thread','where=' . $id);
           }
         }

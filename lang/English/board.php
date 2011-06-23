@@ -329,6 +329,7 @@ $cs_lang['error_filename'] = '- Filename already exists. Please rename the file.
 $cs_lang['error_filesize'] = '- The file is too big;.';
 $cs_lang['error_filetype'] = '- Unknown filetype.';
 $cs_lang['error_fileupload'] = '- Unexpected error occurred while uploading the file.';
+$cs_lang['several'] = 'Multiple choice';
 
 //thread_edit.php
 $cs_lang['thread_edit']    = 'Edit thread';
