@@ -2,10 +2,15 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2011.1.2 >> 2011-XX-XX
+ClanSphere 2011.2 DEV >> 2011-06-2X
 ___________________________________________________________
 
+-> Added multiple choice option to board vote functionality (patch by lava)
+-> Email of new registered users is now hidden by default (hajo)
+-> Moved jQuery and corresponding javascript files to new mod jquery (hajo)
+-> Renamed CKEditor config file to avoid conflicts with default one on updates (hajo)
 -> Updated CKEditor to 3.6.1 (hajo)
+-> Updated jQuery to 1.6.X (hajo)
 
 !! Future third party software changes and updates (e.g. to CKEditor and jQuery)
 !! will be available in the official module database to not affect the release cycle.
