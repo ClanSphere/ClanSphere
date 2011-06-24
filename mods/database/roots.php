@@ -41,11 +41,10 @@ $static = array();
 $modules = cs_checkdirs('mods');
 $names = array_flip($sql_infos['names']);
 $count = count($names);
-$noacc = array('captcha', 'install', 'pictures', 'rss');
 
 foreach($modules as $mod) {
 
-  if(!in_array($mod['dir'], $noacc) AND !isset($account['access_' . $mod['dir'] . '']))
+  if($mod['dir'] != 'install' AND file_exists('mods/' . $mod['dir'] . '/access.php') AND !isset($account['access_' . $mod['dir'] . '']))
     $errors .= sprintf($cs_lang['access_not_found'], $mod['dir']) . cs_html_br(1);
 
   if(!empty($mod['tables'][0])) {

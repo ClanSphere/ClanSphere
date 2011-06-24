@@ -18,7 +18,7 @@ $sql_infos = cs_sql_version(__FILE__);
 
 foreach($modules as $mod) {
 
-  if((isset($account['access_' . $mod['dir'] . '']) OR $mod['dir'] == 'captcha' OR $mod['dir'] == 'pictures') AND !empty($mod['tables'][0])) {
+  if(!empty($mod['tables'][0])) {
 
   $tables = '';
   $counts = '';
