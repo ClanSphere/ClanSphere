@@ -2,7 +2,7 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2011.2 DEV >> 2011-06-2X
+ClanSphere 2011.2 DEV >> 2011-07-0X
 ___________________________________________________________
 
 -> Added multiple choice option to board vote functionality (patch by lava)
