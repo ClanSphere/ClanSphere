@@ -17,13 +17,15 @@ $dir = cs_explorer_path($dir, 'raw');
 $lsd = cs_explorer_path($dir, 'escape');
 
 $count = 0;
+$success = 1;
+$dirs = array();
+$files = array();
 
-if (@chdir($cs_main['def_path'] . '/' . $dir . '/')) {
+$target = $cs_main['def_path'] . '/' . $dir . '/';
+
+if (is_dir($target) AND chdir($target)) {
 
   $goal = opendir('.');
-  $success = 1;
-  $dirs = array();
-  $files = array();
   
   while(false !== ($curr_data = readdir($goal))) {
     if($curr_data != '..' && $curr_data != '.' && $curr_data != '.git' && $curr_data != '.svn') {
@@ -81,7 +83,7 @@ if(!empty($success)) {
     $file_raw = $dir == '.' ? $datas[$x] : $dir . '/' . $datas[$x];
     $file = cs_explorer_path($file_raw, 'escape');
 
-    chdir($cs_main['def_path'] . '/' . $dir . '/');
+    chdir($target);
     $type = is_dir($datas[$x]) ? 'dir' : strtolower(substr(strrchr($datas[$x],'.'),1));
     chdir($cs_main['def_path']);
 

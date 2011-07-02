@@ -9,7 +9,6 @@ include_once 'mods/explorer/functions.php';
 $target = empty($_REQUEST['dir']) ? '' : $_REQUEST['dir'];
 $dir = cs_explorer_path($target, 'raw');
 $lsd = cs_explorer_path($dir, 'escape');
-$red_lsd = cs_explorer_path($dir, 'escape', 1);
 
 $files_gl = cs_files();
 
@@ -22,7 +21,7 @@ if (empty($_POST['submit'])) {
 
   #$data['if']['modsdir'] = substr($dir,0,5) == 'mods/' && strpos(substr($dir,5),'/') == strrpos(substr($dir,5),'/') && empty($_POST['accessadd']) ? true : false;
   $data['if']['modsdir'] = false;
-  $data['var']['dir'] = $lsd;
+  $data['var']['dir'] = $dir;
   $data['var']['name'] = empty($_POST['name']) ? '' : str_replace('..','',$_POST['name']);
   $data['icn']['dir'] = cs_html_img('symbols/files/filetypes/dir.gif',16,16);
 
@@ -37,7 +36,7 @@ if (empty($_POST['submit'])) {
 }
 else {
 
-  $filename = $dir;
+  $filename = $dir . '/';
   $extension = strtolower(substr(strrchr($files_gl['file']['name'],'.'),1));
 
   if (empty($_POST['name'])) {
@@ -51,7 +50,7 @@ else {
   
   $message = move_uploaded_file($files_gl['file']['tmp_name'],$filename) ? $cs_lang['success'] : $cs_lang['error_upload'];
   
-  cs_redirect($message,'explorer','roots','dir='.$red_lsd);
+  cs_redirect($message,'explorer','roots','dir='.$lsd);
 
   /*
   if (isset($_POST['minaxx'])) {
