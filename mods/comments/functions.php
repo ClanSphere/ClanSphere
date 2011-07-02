@@ -356,7 +356,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
       cs_comments_view($com_fid,$mod,'com_create',$count,false,5);
 
     }
-    else {
+    elseif(empty($quote_id)) {
       $opt = "comments_mod = '" . $mod . "' AND comments_fid = '" . $com_fid . "'";
       $count_com = cs_sql_count(__FILE__,'comments',$opt);
       $start = floor($count_com / $account['users_limit']) * $account['users_limit'];
