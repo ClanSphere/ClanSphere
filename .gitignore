@@ -7,7 +7,7 @@
 /setup.php
 /setup*.php
 /web.config
-/nbproject/*
+/nbproject
 /uploads/cache/*.tmp
 /uploads/imprint/*.txt
 /uploads/logs/actions/*.log
