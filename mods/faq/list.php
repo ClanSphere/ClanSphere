@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('faq');
+
 $max = 40;
 
 $data = array();
@@ -35,7 +36,7 @@ for ($run = 0; $run < $count_categories; $run++) {
       cs_substr(cs_secure($data['categories'][$run]['faq'][$run2]['faq_question']),0,$max-2) . '..';
     $data['categories'][$run]['faq'][$run2]['faq_answer'] = strlen($data['categories'][$run]['faq'][$run2]['faq_answer']) < $max ?
       cs_secure($data['categories'][$run]['faq'][$run2]['faq_answer'],1,1,1,1) :
-      cs_substr(cs_secure($data['categories'][$run]['faq'][$run2]['faq_answer'],1,1,1,1),0,$max-2) . '..';
+      cs_secure(cs_substr($data['categories'][$run]['faq'][$run2]['faq_answer'],0,$max-2),1,1,1,1) . '..';
   }
   
 }
