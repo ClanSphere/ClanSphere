@@ -17,7 +17,7 @@ if(isset($_POST['submit'])) {
   $data['account']['account_iban'] = $_POST['iban'];
   $data['account']['account_bic'] = $_POST['bic'];
   if(!empty($_POST['id'])) {
-      $data['id']['account_id'] = $_POST['id'];
+      $data['id']['account_id'] = (int)$_POST['id'];
     $data['if']['id'] = 1;
   }
   
@@ -42,12 +42,12 @@ if(isset($_POST['submit'])) {
   $konto_count = count($konto_daten);
   if(!empty($konto_count)) {
     $data['if']['id'] = 1;
-    $data['account']['account_owner'] = $konto_daten['account_owner'];
-    $data['account']['account_number'] = $konto_daten['account_number'];
-    $data['account']['account_bcn'] = $konto_daten['account_bcn'];
-    $data['account']['account_bank'] = $konto_daten['account_bank'];
-    $data['account']['account_iban'] = $konto_daten['account_iban'];
-    $data['account']['account_bic'] = $konto_daten['account_bic'];  
+    $data['account']['account_owner'] = cs_secure($konto_daten['account_owner'], 0, 0, 0);
+    $data['account']['account_number'] = cs_secure($konto_daten['account_number'], 0, 0, 0);
+    $data['account']['account_bcn'] = cs_secure($konto_daten['account_bcn'], 0, 0, 0);
+    $data['account']['account_bank'] = cs_secure($konto_daten['account_bank'], 0, 0, 0);
+    $data['account']['account_iban'] = cs_secure($konto_daten['account_iban'], 0, 0, 0);
+    $data['account']['account_bic'] = cs_secure($konto_daten['account_bic'], 0, 0, 0);
   $data['id']['account_id'] = $konto_daten['account_id'];
   } else {
     $data['account']['account_owner'] = '';

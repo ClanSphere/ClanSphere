@@ -37,7 +37,13 @@ if(!empty($konto_count)) {
 
   $data['if']['no_kt'] = FALSE;
   $data['if']['kt'] = TRUE;
-  $data['kt'] = $konto;
+  $data['kt']['account_id'] = cs_secure($konto['account_id'], 0, 0, 0);
+  $data['kt']['account_owner'] = cs_secure($konto['account_owner'], 0, 0, 0);
+  $data['kt']['account_number'] = cs_secure($konto['account_number'], 0, 0, 0);
+  $data['kt']['account_bcn'] = cs_secure($konto['account_bcn'], 0, 0, 0);
+  $data['kt']['account_iban'] = cs_secure($konto['account_iban'], 0, 0, 0);
+  $data['kt']['account_bic'] = cs_secure($konto['account_bic'], 0, 0, 0);
+  $data['kt']['account_bank'] = cs_secure($konto['account_bank'], 0, 0, 0);
   $data['if']['iban'] = false;
   $data['if']['bic'] = false;
 

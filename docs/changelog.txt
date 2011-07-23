@@ -10,6 +10,11 @@ There will be no further release except for security related issues.
 Upcoming PHP and MySQL branches don't seem to cause problems.
 Support for ClanSphere will still remain in our forums and contact forms.
 
+ClanSphere 20xx.x.x >> XXX
+___________________________________________________________
+
+>> Security: Fixed a bunch of xss possibilities (jam2)
+
 
 ClanSphere 2011.2 >> 2011-07-06
 ___________________________________________________________

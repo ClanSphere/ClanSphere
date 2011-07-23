@@ -61,7 +61,10 @@ if(!isset($_POST['submit']) AND empty($error)) {
 if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['cash'] = $cs_cash;
-
+  $data['cash']['cash_money'] = cs_secure($data['cash']['cash_money'], 0, 0, 0);
+  $data['cash']['cash_text'] = cs_secure($data['cash']['cash_text'], 0, 0, 0);
+  $data['cash']['cash_info'] = cs_secure($data['cash']['cash_info'], 0, 0, 0);
+  
   $cs_users = cs_sql_select(__FILE__,'users','users_nick,users_id','users_delete = "0"','users_nick',0,0);
   $data['cash']['users_sel'] = cs_dropdown('users_id','users_nick',$cs_users,$cs_cash['users_id']);
 
@@ -76,7 +79,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['cash']['abcode_smileys'] = cs_abcode_smileys('cash_info');
   $data['cash']['abcode_features'] = cs_abcode_features('cash_info');
 
-  $data['users']['nick'] = $users_nick;
+  $data['users']['nick'] = cs_secure($users_nick, 0, 0, 0);
 
   echo cs_subtemplate(__FILE__,$data,'cash','create');
 }

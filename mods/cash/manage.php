@@ -67,7 +67,7 @@ $money_now = $money_in - $money_out;
 
 $user_money = cs_sql_option(__FILE__,'cash');
 $user_money = $user_money['month_out'];
-
+settype($user_money, 'integer');
 $data['ov']['month_out'] = $user_money;
 
 $users = cs_sql_count(__FILE__,'users','access_id >= 3');

@@ -18,6 +18,8 @@ if (!empty($data['cash'])) {
     $data['cash'][$run]['users_flag'] = cs_html_img('symbols/countries/'.$data['cash'][$run]['users_country'].'.png');
     $data['cash'][$run]['user'] = cs_user($data['cash'][$run]['users_id'], $data['cash'][$run]['users_nick'], $data['cash'][$run]['users_active'], $data['cash'][$run]['users_delete']);
     $data['cash'][$run]['date'] = cs_date('date',$data['cash'][$run]['cash_time']);
+    $data['cash'][$run]['cash_text'] = cs_secure($data['cash'][$run]['cash_text'], 0, 0, 0);
+    $data['cash'][$run]['cash_money'] = cs_secure($data['cash'][$run]['cash_money'], 0, 0, 0);
   }
 }
 echo cs_subtemplate(__FILE__,$data,'cash','view_cash');

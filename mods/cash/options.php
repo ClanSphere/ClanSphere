@@ -22,6 +22,7 @@ if(isset($_POST['submit'])) {
   $data = array();
   
   $data['op'] = cs_sql_option(__FILE__, 'cash');
+  settype($data['op']['month_out'], 'integer');
 
   echo cs_subtemplate(__FILE__,$data,'cash','options');
 }

@@ -60,7 +60,9 @@ if(!isset($_POST['submit']) AND empty($error)) {
 if(!empty($error) OR !isset($_POST['submit'])) {
   
   $data['cash'] = $cs_cash;
-
+  $data['cash']['cash_money'] = cs_secure($data['cash']['cash_money'], 0, 0, 0);
+  $data['cash']['cash_text'] = cs_secure($data['cash']['cash_text'], 0, 0, 0);
+  $data['cash']['cash_info'] = cs_secure($data['cash']['cash_info'], 0, 0, 0);
   $inoutlist[0]['cash_inout'] = 'in';
   $inoutlist[0]['name'] = $cs_lang['drop_in'];
   $inoutlist[1]['cash_inout'] = 'out';
@@ -77,7 +79,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $cs_user = cs_sql_select(__FILE__,'users','users_nick',"users_id = '" . $cs_cash['users_id'] . "'");
   $data['cash']['users_sel'] = cs_user($cs_cash['users_id'], $cs_user['users_nick']);
   
-  $data['users']['nick'] = empty($users_nick) ? $cs_user['users_nick'] : $users_nick;
+  $data['users']['nick'] = empty($users_nick) ? $cs_user['users_nick'] : cs_secure($users_nick, 0, 0, 0);
 
   echo cs_subtemplate(__FILE__,$data,'cash','edit');
 }

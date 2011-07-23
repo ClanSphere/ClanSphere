@@ -17,7 +17,7 @@ if(isset($cs_get['cancel'])) {
 $cash = cs_sql_select(__FILE__,'cash','cash_text','cash_id = ' . $cash_id);
 if(!empty($cash)) {
   $data = array();
-  $data['head']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_remove'],$cash['cash_text']);
+  $data['head']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_remove'],cs_secure($cash['cash_text'], 0, 0, 0));
   $data['url']['agree'] = cs_url('cash','remove','id=' . $cash_id . '&amp;agree');
   $data['url']['cancel'] = cs_url('cash','remove','id=' . $cash_id . '&amp;cancel');
   echo cs_subtemplate(__FILE__,$data,'cash','remove');
