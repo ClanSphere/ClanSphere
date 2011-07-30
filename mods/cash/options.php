@@ -6,7 +6,7 @@ $cs_lang = cs_translate('cash');
 
 if(isset($_POST['submit'])) {
   
-  $opt['month_out'] = empty($_POST['month_out']) ? 0 : (int) $_POST['month_out'];
+  $opt['month_out'] = empty($_POST['month_out']) ? 0 : (float) $_POST['month_out'];
   
   require_once 'mods/clansphere/func_options.php';
   
@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
   $data = array();
   
   $data['op'] = cs_sql_option(__FILE__, 'cash');
-  settype($data['op']['month_out'], 'integer');
+  settype($data['op']['month_out'], 'float');
 
   echo cs_subtemplate(__FILE__,$data,'cash','options');
 }
