@@ -8,7 +8,6 @@ mod ckeditor:
 
 mod jquery:
 - jQuery 1.6.2 (http://www.jquery.com)
-- TextAreaExpander (http://www.sitepoint.com/blogs/2009/07/29/build-auto-expanding-textarea-1)
 
 mod count:
 - amLine 1.6.4.1 (http://www.amcharts.com)
