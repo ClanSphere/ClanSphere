@@ -16,6 +16,7 @@ ___________________________________________________________
 
 -> Escaped html form output in cash mod (jam2)
 -> Removed TextareaExpander due to the bugs it causes in some browsers (hajo)
+-> Updated CKEditor to 3.6.2 (hajo)
 -> Updated jQuery to 1.6.4 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
