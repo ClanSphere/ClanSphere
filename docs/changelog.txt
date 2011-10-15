@@ -6,14 +6,19 @@ ___________________________________________________________
 
 Future updates and extensions will be available in the module db.
 This will only happen if it is necessary or created by the community.
-There will be no further release except for security related issues.
+We don't plan to release new versions except for heavy issues.
 Upcoming PHP and MySQL branches don't seem to cause problems.
 Support for ClanSphere will still remain in our forums and contact forms.
 
-ClanSphere 20xx.x.x >> XXX
+
+ClanSphere 2011.2.1 >> 2011-10-XX
 ___________________________________________________________
 
->> Security: Fixed a bunch of xss possibilities (jam2)
+-> Escaped html form output in cash mod (jam2)
+-> Removed TextareaExpander due to the bugs it causes in some browsers (hajo)
+-> Updated jQuery to 1.6.4 (hajo)
+
+-- Fixed a few bugs that were reported at "Trac" --
 
 
 ClanSphere 2011.2 >> 2011-07-06
