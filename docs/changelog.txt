@@ -14,6 +14,8 @@ Support for ClanSphere will still remain in our forums and contact forms.
 ClanSphere 2011.2.1 >> 2011-10-XX
 ___________________________________________________________
 
+-- Recommended PHP version changed to 5.3.8
+
 -> Escaped html form output in cash mod (jam2)
 -> Removed TextareaExpander due to the bugs it causes in some browsers (hajo)
 -> Updated CKEditor to 3.6.2 (hajo)
