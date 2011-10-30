@@ -7,7 +7,7 @@
    </tr>
 </table>
 <br />
-<form method="post" action="#">
+<form method="post" action="{url:modules_options}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
      {loop:mods}
       <tr>

@@ -8,7 +8,7 @@
 </table>
 <br />
 {if:smileys}
-<form method="post" action="#">
+<form method="post" action="{url:abcode_import}">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>
       <td class="headb">{lang:name}</td>
