@@ -9,9 +9,10 @@ $data = cs_cache_load('nextbirth');
 $cs_lang = cs_translate('users');
 $options = cs_sql_option(__FILE__,'users');
 
-if(empty($data) OR $data['day'] != $time_now['2'].$time_now['1']) {
-   $data = array();  // We need to reset the data array here, else new birthdays will be added to existing cached entries!
-  
+
+if(empty($data) OR $data['day'] != $time_now['2'].$time_now['1']) { 
+  $data = array();  // We need to reset the data array here, else new birthdays will be added to existing cached entries! 
+
   $nextday = cs_datereal('d', cs_time()+$options['nextbirth_time_interval']);
   $nextmonth = cs_datereal('m', cs_time()+$options['nextbirth_time_interval']);
   $data['day'] = $time_now['2'].$time_now['1'];
@@ -36,11 +37,18 @@ if(empty($data) OR $data['day'] != $time_now['2'].$time_now['1']) {
         $data['users'][$run]['users_month'] = $birth[1];
         $data['users'][$run]['users_year'] = $birth[0];
         $run++;
-        }
       }
     }
 
-    cs_cache_save('nextbirth', $data);
+    if(!empty($data['users'])) {
+      foreach($data['users'] as $sortarray) {
+        $column[] = $sortarray['users_month'] . $sortarray['users_day'];
+      }
+      array_multisort($column, SORT_ASC, $data['users']);
+    }
+  }
+
+  cs_cache_save('nextbirth', $data);
 }
 
 if(empty($data['users'])) {
