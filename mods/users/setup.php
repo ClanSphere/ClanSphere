@@ -152,10 +152,8 @@ else {
   $users_cells = array_keys($cs_user);
   $users_save = array_values($cs_user);
   cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id']);
-  
-  if (!empty($account['users_ajax']) && empty($cs_user['users_ajax'])) {
-    empty($cs_main['mod_rewrite']) ? die(ajax_js("window.location.reload()")) : die(ajax_js("window.location.href='index.php';"));
-  } elseif (empty($account['users_ajax']) && !empty($cs_user['users_ajax']) && !empty($cs_main['mod_rewrite'])) {
+
+  if (!empty($cs_main['mod_rewrite'])) {
     header('Location: ../../' . $cs_main['php_self']['basename']);
   } else {
     $account['users_ajax'] = empty($cs_main['ajax']) ? 0 : $cs_user['users_ajax'];

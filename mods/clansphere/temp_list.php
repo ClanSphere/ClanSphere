@@ -9,19 +9,6 @@ $languages = cs_checkdirs('lang');
 foreach($languages AS $ln)
   cs_cache_delete('templates_' . $ln['dir']);
 
-/*if (!empty($_SESSION['tpl_preview'])) $ending = substr($_SESSION['tpl_preview'],-3);
-if (!empty($ending) && $ending != '{2}') {
-  $_SESSION['tpl_preview'] .= '{2}';
-  die();
-} elseif (!empty($ending)) {
-  $cs_main['template'] = substr($_SESSION['tpl_preview'],0,-3);
-  unset($_SESSION['tpl_preview']);
-} elseif (!empty($_GET['template']) && !empty($account['users_ajax'])) {
-  $_SESSION['tpl_preview'] = $_GET['template'];
-  $shorten = "window.location.href = window.location.href.substr(0,window.location.href.lastIndexOf('template')); ";
-  die(ajax_js($shorten . "window.location.reload();"));
-}*/
-
 $templates = cs_checkdirs('templates');
 $tpl_all = count($templates);
 
@@ -65,12 +52,7 @@ if(!empty($activate) AND !empty($allow)) {
   
   $msg = file_exists('themes/'.$activate) ? $cs_lang['theme_found'] . cs_link($cs_lang['change_to_this'],'clansphere','themes_list','activate='.$activate) : $cs_lang['success'];
   
-  #if(!empty($account['users_ajax']) && $cs_main['php_self']['filename'] == 'content') {
-   #   cs_redirectmsg($msg);
-   #   die(ajax_js('window.location.reload();'));
-   # } else {
-      cs_redirect($msg,'clansphere','temp_list');
-   # }
+  cs_redirect($msg,'clansphere','temp_list');
 }
 else {
   $data['lang']['getmsg'] = cs_getmsg();

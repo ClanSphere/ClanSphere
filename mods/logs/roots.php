@@ -36,7 +36,6 @@ else
 
 if(!empty($_REQUEST['down'])) {
   $down_url = $cs_main['php_self']['dirname'] . $cs_logs['dir'] . '/' . $folder . '/' . $_REQUEST['down'];
-  if (!empty($cs_main['ajax']) && !empty($account['users_ajax'])) die(ajax_js('window.location.href=\'' . $down_url . '\';history.back()'));
   header('Location: ' . $down_url);
 }
 if(!empty($_REQUEST['del'])) { 
