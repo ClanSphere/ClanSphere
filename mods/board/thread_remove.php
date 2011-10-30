@@ -21,7 +21,7 @@ $where = "thr.threads_id = '" . $thread_id . "'";
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where);
 
 //Sicherheitsabfrage Beginn
-$cs_boardfiles = cs_sql_select(__FILE__,'boardfiles','boardfiles_name,boardfiles_id',"threads_id='$thread_id'",0,0,0);
+$cs_boardfiles = cs_sql_select(__FILE__,'boardfiles','boardfiles_name,boardfiles_id',"threads_id='" . (int) $thread_id . "'",0,0,0);
 $cs_boardfiles_loop = count($cs_boardfiles); 
 
 $thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_del',"users_id = '" . $account['users_id'] . "'",0,0,1);
@@ -93,6 +93,9 @@ if(isset($_POST['agree'])) {
   include_once('mods/board/repair.php');
   cs_board_threads($cs_thread['board_id']);
   cs_board_comments($cs_thread['board_id']);
+
+  # Remove attached boardreports if there are any
+  cs_sql_delete(__FILE__, 'boardreport', $thread_id, 'threads_id');
   
   cs_redirect($cs_lang['del_true'],'board','listcat','where='.$cs_thread['board_id']);
 }

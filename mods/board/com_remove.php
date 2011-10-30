@@ -78,6 +78,9 @@ if(isset($_POST['agree'])) {
   cs_board_comments($cs_thread['board_id']);
   cs_board_last($cs_thread['board_id']);
   cs_threads_comments($com_fid);
+  
+  # Remove attached boardreport if there is one
+  cs_sql_delete(__FILE__, 'boardreport', $comments_id, 'comments_id');
 
   $more = 'where=' . $com_fid . '&amp;start=' . $start;
 
