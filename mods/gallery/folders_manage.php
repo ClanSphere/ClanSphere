@@ -14,8 +14,8 @@ if (!empty($cs_post['sort']))  $sort = $cs_post['sort'];
 
 require_once('mods/gallery/functions.php');
 
-$cs_sort[1] = 'folders_name ASC';
-$cs_sort[2] = 'folders_name DESC';
+$cs_sort[1] = 'sub_id ASC, folders_position ASC, folders_name ASC';
+$cs_sort[2] = 'sub_id ASC, folders_position DESC, folders_name DESC';
 $order = $cs_sort[$sort];
 $where = "folders_mod='gallery'";
 $count_folders = cs_sql_count(__FILE__,'folders',$where);
@@ -29,10 +29,11 @@ $data['head']['getmsg'] = cs_getmsg();
 $data['sort']['name'] = cs_sort('gallery','folders_manage',$start,0,1,$sort);
 
 $select = 'folders_id, sub_id, folders_name, folders_order, folders_position';
-$data['folders'] = cs_sql_select(__FILE__,'folders',$select,$where,$order,$start,$account['users_limit']);
-$data['folders'] = cs_foldersort($data['folders']);
-$folders_loop = !empty($data['folders']) ? count($data['folders']) : '';
 
+$data['folders'] = cs_sql_select(__FILE__,'folders',$select,$where,$order,$start,0);
+$data['folders'] = cs_foldersort($data['folders']);
+$data['folders'] = array_slice($data['folders'], $start, $account['users_limit']);
+$folders_loop = !empty($data['folders']) ? count($data['folders']) : '';
 
 for($run=0; $run<$folders_loop; $run++) {
   
