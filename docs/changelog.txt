@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-Development and Support Notice
+Development and Support Notice >> 2011-11-01
 ___________________________________________________________
 
 Future updates and extensions will be available in the module db.
@@ -11,7 +11,7 @@ Upcoming PHP and MySQL branches don't seem to cause problems.
 Support for ClanSphere will still remain in our forums and contact forms.
 
 
-ClanSphere 2011.2.1 >> 2011-10-XX
+ClanSphere 2011.2.1 >> 2011-11-01
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.3.8
