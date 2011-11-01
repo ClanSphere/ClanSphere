@@ -42,7 +42,8 @@ $select  = 'DISTINCT thr.threads_id AS threads_id, cat.categories_name AS catego
 $select .= 'cat.categories_id AS categories_id, frm.board_name AS board_name, frm.board_id AS board_id, ';
 $select .= 'thr.threads_headline AS threads_headline, thr.threads_last_time AS threads_last_time, ';
 $select .= 'thr.threads_last_user AS threads_last_user, cms.comments_time AS comments_time';
-$where = 'cms.users_id = \''.$user_id.'\' AND frm.board_access <= \''.$board_access.'\' AND frm.board_pwd = \'\'';
+$where   = 'cms.users_id = \''.$user_id.'\' AND frm.board_access <= \''.$board_access.'\' AND frm.board_pwd = \'\'';
+$where  .= ' AND cms.comments_mod = \'board\'';
 $order = 'cms.comments_time DESC';
 $cs_comments = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$posts);
 $comments_loop = count($cs_comments);
