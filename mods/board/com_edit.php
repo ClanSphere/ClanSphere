@@ -222,7 +222,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit'])) {
   $data['thread']['text_size'] = $max_text;
   $data['abcode']['smileys'] = cs_abcode_smileys('comments_text');
   $data['abcode']['features'] = cs_abcode_features('comments_text');
-  $data['data']['comments_text'] = $ori_text;
+  $data['data']['comments_text'] = cs_secure($ori_text,0,0,0,0,0);
   
   
   //files
