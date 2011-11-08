@@ -6,7 +6,7 @@ $cs_lang = cs_translate('count');
 
 $data = array('count' => array());
 
-$geton = cs_time() - 150;
+$geton = cs_time() - 300;
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 
 $where = "count_time > '" . $geton . "'";
