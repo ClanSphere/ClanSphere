@@ -4,7 +4,6 @@
 
 $cs_lang = cs_translate('servers');
 
-cs_scriptload('jquery', 'javascript', 'jquery.js', 1);
 cs_scriptload('servers', 'javascript', 'js/servers.js');
 include_once 'mods/servers/servers.class.php';
 
