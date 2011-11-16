@@ -9,7 +9,7 @@ require_once 'mods/categories/functions.php';
 $files = cs_files();
 
 $options = cs_sql_option(__FILE__, 'games');
-$img_filetypes = array('image/gif' => 'gif');
+$img_filetypes = array('image/gif' => 'gif', 'image/png' => 'png');
 
 $games_error = 3; 
 $games_form = 1;

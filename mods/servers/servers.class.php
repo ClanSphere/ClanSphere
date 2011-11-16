@@ -41,6 +41,11 @@ class Servers {
     }
   }
   
+  public function getServerQueryList() {
+  	$ini = parse_ini_file('gameq/games.ini', true);
+  	return $ini;
+  }
+  
   public function normalize($data) {
     if($data['servername']) { $data['hostname'] = $data['servername']; }
     if($data['maxplayers']) { $data['max_players'] = $data['maxplayers']; }

@@ -68,17 +68,17 @@ class GameQ_Filter_normalise extends GameQ_Filter
             foreach ($result['players'] as $key => $player) {
                 $result['players'][$key] = array_merge($player, $this->normalise($player, $this->player));
             }
-      
-      $result['gq_numplayers'] = count($result['players']);
+			
+			$result['gq_numplayers'] = count($result['players']);
         }
         else
-    {
-      $result['players'] = array();
-    }
+		{
+			$result['players'] = array();
+		}
 
         unset($result['gq_players']);
 
-    
+		
         // Merge and sort array
         $result = (array_merge($original, $result));
         ksort($result);

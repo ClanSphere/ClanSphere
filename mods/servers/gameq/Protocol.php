@@ -90,35 +90,6 @@ abstract class GameQ_Protocol
     {
         return $packet_conf;
     }
-    
-    /**
-     * 
-     * @param $seconds
-     */
-	public function berechneZeit($seconds) {
-		$tage = intval($seconds / 86400);
-
-		$stunden = $seconds - ($tage * 86400);
-		$stunden = intval($stunden / 3600);
-
-		$minuten = $seconds - ( ($tage * 86400) + ($stunden * 3600) );
-		$minuten = intval($minuten / 60);
-
-		$sekunden = intval($seconds - ( ($tage * 86400) + ($stunden * 3600) + ($minuten * 60) ));
-
-		if($stunden > 1)  $stunden = $stunden . " Stunden ";
-		if($stunden == 1) $stunden = $stunden . " Stunde ";
-		if($stunden == 0) $stunden = "";
-
-		if($minuten > 1)  $minuten = $minuten . " Minuten ";
-		if($minuten == 1) $minuten = $minuten . " Minute ";
-		if($minuten == 0) $minuten = "";
-
-		if($sekunden > 1)  $sekunden = $sekunden . " Sekunden";
-		if($sekunden == 1) $sekunden = $sekunden . " Sekunde";
-		if($sekunden == 0) $sekunden = "";
-
-		return ($stunden . $minuten . $sekunden);
-	}
 
 }
+?>

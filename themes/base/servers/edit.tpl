@@ -53,7 +53,7 @@
       <select name="servers_class">
         <option value="">----</option>
         {loop:classes}
-          <option value="{classes:class}" {classes:select}>{classes:name}</option>
+          <option value="{classes:class}" {classes:select} class="{classes:port}">{classes:name}</option>
         {stop:classes}
       </select>
     </td>
