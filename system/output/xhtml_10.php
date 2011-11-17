@@ -37,10 +37,16 @@ function cs_html_img($url, $height = 0, $width = 0, $more = 0, $alt = '')
   global $cs_main;
   $internal = strpos($url, '://') === false ? $cs_main['php_self']['dirname'] : '';
   $var = "<img src=\"" . $internal . str_replace(' ', '%20', $url) . "\" ";
-  if (!empty($height) and !empty($width))
-  {
-    $var .= "style=\"height:" . $height . 'px;width:' . $width . "px\" ";
-  }
+  if (!empty($height) or !empty($width)) {
+    $var .= 'style="';
+    if (!empty($width)) {
+      $var .= 'width:' . $width . 'px;';
+    }
+    if (!empty($height)) {
+      $var .= 'height:' . $height . 'px;';
+    }
+    $var .= '" ';
+  }  
   if (!empty($more))
   {
     $var .= $more . ' ';
