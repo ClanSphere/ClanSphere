@@ -17,6 +17,9 @@
       {if:reply}
         <a href="{url:messages_create:rep={msg:messages_id}}" title="{lang:replay}">{icon:mail_replay}</a>
       {stop:reply}
+      {if:forward}
+        <a href="{url:messages_create:forward={msg:messages_id}}" title="{lang:forward}">{icon:mail_forward}</a>
+      {stop:forward}      
       <a href="{url:messages_remove:id={msg:messages_id}}" title="{lang:remove}">{icon:mail_delete}</a>
       {if:archiv}
         <a href="{url:messages_archiv:id={msg:messages_id}}" title="{lang:archiv}">{icon:ark}</a></td>

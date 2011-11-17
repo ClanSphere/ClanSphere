@@ -20,6 +20,7 @@ if (empty($sender)) {
     $user_data = cs_sql_select(__FILE__, 'users', 'users_nick, users_active, users_delete', 'users_id = "' . $data['msg']['users_id'] . '"');
     $data['msg']['from'] = cs_user($data['msg']['users_id'], $user_data['users_nick'], $user_data['users_active'], $user_data['users_delete']);
     $data['if']['reply'] = true;
+    $data['if']['forward'] = true;
     $data['if']['archiv'] = empty($data['msg']['messages_archiv_receiver']) ? 1 : 0;
 }
 else {
@@ -27,6 +28,7 @@ else {
     $data['msg']['from'] = cs_user($data['msg']['users_id_to'], $user_data['users_nick'], $user_data['users_active'], $user_data['users_delete']);
     $data['lang']['from'] = $cs_lang['to'];
     $data['if']['reply'] = false;
+    $data['if']['forward'] = false;
     $data['if']['archiv'] = empty($data['msg']['messages_archiv_sender']) ? 1 : 0; 
 }
 

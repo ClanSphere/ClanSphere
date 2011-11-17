@@ -33,7 +33,22 @@ if (!empty($_GET['rep'])) {
   if (empty($msg['users_active']) || !empty($msg['users_delete'])) cs_redirect('The user you want to write a message to is not active or has been deleted.', 'messages', 'center');
   $messages_subject = 'Re: ' . $msg['messages_subject'];
   $messages_to = $msg['users_nick'];
-  $messages_text = "\r\n\r\n\r\n\r\n\r\n" . '[clip=' . $cs_lang['clip_more'] . ']';
+  $messages_text = "\r\n\r\n\r\n\r\n" . '[clip=' . $cs_lang['clip_more'] . ']';
+  $messages_text .= '[quote][b]---------- ' . $messages_to . ' ' . $cs_lang['wrote'] . ' ----------[/b]';
+  $messages_text .= "\r\n" . $msg['messages_text'] . '[/quote][/clip]';
+}
+
+if(!empty($_GET['forward'])) {
+  $messages_id = (int) $_GET['forward'];
+  $reply_id = $messages_id;
+  $tables = 'messages m INNER JOIN {pre}_users u ON m.users_id = u.users_id';
+  $cells  = 'm.messages_text AS messages_text, m.messages_subject AS messages_subject, m.users_id AS users_id, ';
+  $cells .= 'u.users_nick AS users_nick, u.users_active AS users_active, u.users_delete AS users_delete';
+  $msg = cs_sql_select(__FILE__, $tables, $cells, 'messages_id = "' . $messages_id . '" AND users_id_to = "' . $account['users_id'] . '"');
+  if (empty($msg)) cs_redirect('This message doesnt exist or is not sent to you.', 'messages', 'center');
+  if (empty($msg['users_active']) || !empty($msg['users_delete'])) cs_redirect('The user you want to write a message to is not active or has been deleted.', 'messages', 'center');
+  $messages_subject = 'Re: ' . $msg['messages_subject'];
+  $messages_text = "\r\n\r\n\r\n" . '[clip=' . $cs_lang['clip_more'] . ']';
   $messages_text .= '[quote][b]---------- ' . $messages_to . ' ' . $cs_lang['wrote'] . ' ----------[/b]';
   $messages_text .= "\r\n" . $msg['messages_text'] . '[/quote][/clip]';
 }
