@@ -35,17 +35,18 @@ if (fsockopen("udp://127.0.0.1", 1)) {
     for($run=0; $run<$servers_count; $run++) {
       $server_query_ex = explode(";",$cs_servers[$run]['servers_class']);
       $cs_servers[$run]['servers_class'] = $server_query_ex[0];
-      $cs_servers[$run]['servers_game'] = $server_query_ex[1];
+      $cs_servers[$run]['servers_game'] = isset($server_query_ex[1]) ? $server_query_ex[1] : $server_query_ex[0];
       $data['servers'][$run]['info'] = $cs_servers[$run]['servers_info'];
       $data['servers'][$run]['if']['live'] = false;
       $data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
       $data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
       $data['servers'][$run]['ip'] = $cs_servers[$run]['servers_ip'];
       $data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
-      $data['servers'][$run]['game'] = $cs_servers[$run]['servers_game'];
+      $data['servers'][$run]['game'] = isset($server_query_ex[1]) ? $server_query_ex[1] : $server_query_ex[0];
       $data['servers'][$run]['slots'] = $cs_servers[$run]['servers_slots'];
       $data['servers'][$run]['if']['playersexist'] = false;
-
+ 
+      
       if(!empty($cs_servers[$run]['servers_stats'])) {
         $objServers->addServer(0, $cs_servers[$run]);
         $results[$run] = $objServers->requestData();
@@ -53,6 +54,9 @@ if (fsockopen("udp://127.0.0.1", 1)) {
 
         if(!empty($server[$run]['gq_online'])) {
           $data['servers'][$run] = $server[$run];
+          $data['servers'][$run]['mappic'] = 'uploads/servers/' . $cs_servers[$run]['servers_game'] . '/default.jpg';
+          $data['servers'][$run]['game'] = isset($server_query_ex[1]) ? $server_query_ex[1] : $server_query_ex[0];
+          $data['servers'][$run]['map'] = '';
           $data['servers'][$run]['if']['playersexist'] = false;
           $data['servers'][$run]['ip'] = $cs_servers[$run]['servers_ip'];
           $data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
@@ -127,6 +131,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
               $data['servers'][$run]['mappic'] = 'uploads/maps/' . $sqlmap['maps_picture'];
             }
           }
+
           $data['servers'][$run] = $objServers->setProtocolLink($cs_servers[$run], $data['servers'][$run]);
           $data['servers'][$run] = $objServers->normalize($data['servers'][$run]);
           flush();
