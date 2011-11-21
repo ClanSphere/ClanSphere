@@ -110,12 +110,12 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
 
   $run = 0;
   foreach($server_array AS $type => $key) {
-    $select = $type == $data['create']['servers_class'] ? $select = 'selected="selected"' : $select = '';
     $data['classes'][$run]['name'] = $key['name'];
     $data['classes'][$run]['class'] = $type;
     if(isset($key['prot'])) {
     	$data['classes'][$run]['class'] .= ";" . $key['prot'];
     }
+    $select = $data['classes'][$run]['class'] == $data['create']['servers_class'] ? $select = 'selected="selected"' : $select = '';
     $data['classes'][$run]['select'] = $select;
     $data['classes'][$run]['port'] = $key['port'];
     $run++;

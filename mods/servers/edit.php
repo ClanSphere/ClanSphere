@@ -100,26 +100,26 @@ if(!empty($servers_error) OR !isset($_POST['submit'])) {
     $data['stats'][$run]['selected'] = $selected;
     $run++;
   }
-	
+
   $server_array = $objServers->getServerQueryList();
-  
+
   $run = 0;
   foreach($server_array AS $type => $key) {
-    $select = $type == $data['create']['servers_class'] ? $select = 'selected="selected"' : $select = '';
     $data['classes'][$run]['name'] = $key['name'];
     $data['classes'][$run]['class'] = $type;
     if(isset($key['prot'])) {
-    	$data['classes'][$run]['class'] .= ";" . $key['prot'];
+      $data['classes'][$run]['class'] .= ";" . $key['prot'];
     }
+    $select = $data['classes'][$run]['class'] == $data['create']['servers_class'] ? $select = 'selected="selected"' : $select = '';
     $data['classes'][$run]['select'] = $select;
     $data['classes'][$run]['port'] = $key['port'];
     $run++;
   }
 
   $servers_type = array(
-  array('gtype' => $cs_lang['clanserver'], 'type' => '1', 'selected' => ''),
-  array('gtype' => $cs_lang['pubserver'], 'type' => '2', 'selected' => ''),
-  array('gtype' => $cs_lang['voiceserver'], 'type' => '3', 'selected' => '')
+    array('gtype' => $cs_lang['clanserver'], 'type' => '1', 'selected' => ''),
+    array('gtype' => $cs_lang['pubserver'], 'type' => '2', 'selected' => ''),
+    array('gtype' => $cs_lang['voiceserver'], 'type' => '3', 'selected' => '')
   );
   $run=0;
   foreach($servers_type AS $type) {
