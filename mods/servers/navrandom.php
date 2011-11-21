@@ -12,7 +12,7 @@ $data['if']['live'] = false;
 
 // Test if fsockopen active
 if (fsockopen("udp://127.0.0.1", 1)) {
-  include_once 'mods/servers/servers.php';
+  include_once 'mods/servers/servers.class.php';
 
   /* Get Server SQL-Data */
   $select = 'servers_name, servers_ip, servers_port, servers_info, servers_query, servers_class, servers_stats, servers_order, servers_id';
