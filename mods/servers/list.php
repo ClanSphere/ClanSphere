@@ -63,42 +63,45 @@ if (fsockopen("udp://127.0.0.1", 1)) {
           $data['servers'][$run]['ip'] = $cs_servers[$run]['servers_ip'];
           $data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
           $data['servers'][$run]['pass'] = '--';
-          
+
           if($cs_servers[$run]['servers_game'] == 'ut3') {
             $data['servers'][$run]['port'] = $cs_servers[$run]['servers_query'];
           }
-          
-          
+
+
           if(isset($server[$run]['password'])) {
             $data['servers'][$run]['pass'] = empty($server[$run]['password']) ? $cs_lang['no'] : $cs_lang['yes'];
           }
-          
+
           if(isset($server[$run]['pswrd'])) {
             $data['servers'][$run]['pass'] = empty($server[$run]['pswrd']) ? $cs_lang['no'] : $cs_lang['yes'];
           }
-          
+
           if(isset($server[$run]['g_needpass'])) {
             $data['servers'][$run]['pass'] = empty($server[$run]['g_needpass']) ? $cs_lang['no'] : $cs_lang['yes'];
           }
           
+          /* GameName */
           if(!isset($server[$run]['game_descr']) OR empty($server[$run]['game_descr'])) {
             $data['servers'][$run]['game_descr'] = $server[$run]['gamename'];
           }
-          
+          $data['servers'][$run]['game_descr'] = $objServers->getGameName($data['servers'][$run]['game_descr']);
+
+          /* Version */
           if(!isset($server[$run]['version']) OR empty($server[$run]['version'])) {
             $data['servers'][$run]['version'] = $server[$run]['shortversion'];
           }
-          
+
           if(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
             $data['servers'][$run]['map'] = $server[$run]['mapname'];
           }
-          
+
           if(!isset($server[$run]['max_players'])) {
             if(isset($server[$run]['sv_maxclients'])) {
               $data['servers'][$run]['max_players'] = $server[$run]['sv_maxclients'];
             }
           }
-          
+
           /* Generate Players-HTML */
           if(!empty($server[$run]['players'])) {
             $data['servers'][$run]['if']['playersexist'] = true;
@@ -113,7 +116,11 @@ if (fsockopen("udp://127.0.0.1", 1)) {
               }
             }
           }
-          
+
+          if(!isset($server[$run]['num_players']) && isset($server[$run]['numplayers'])) {
+            $data['servers'][$run]['num_players'] = $server[$run]['numplayers'];
+          }
+
           if(isset($server[$run]['map']) && !empty($server[$run]['map'])) {
             $data['servers'][$run]['map'] = $server[$run]['map'];
             if(file_exists('uploads/servers/' . $cs_servers[$run]['servers_game'] . '/' . $data['servers'][$run]['map'] . '.jpg')) {
@@ -143,7 +150,6 @@ if (fsockopen("udp://127.0.0.1", 1)) {
           }
 
           $data['servers'][$run] = $objServers->setProtocolLink($cs_servers[$run], $data['servers'][$run]);
-          
           flush();
         }
       }

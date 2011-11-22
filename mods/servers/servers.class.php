@@ -4,6 +4,7 @@ class Servers {
 
 	static private $instance = null;
 	private $_gameQ = null;
+	private $_gamesList;
 
 	/**
 	 *
@@ -15,6 +16,7 @@ class Servers {
 		}
 		$this->_gameQ->setOption('timeout', 200);
 		$this->_gameQ->setFilter('stripcolor');
+		$this->_gamesList = parse_ini_file('gameq/games.ini', true);
 	}
 
 	/**
@@ -25,6 +27,18 @@ class Servers {
 			self::$instance = new self;
 		}
 		return self::$instance;
+	}
+	
+	/**
+	 * 
+	 * Enter description here ...
+	 * @param unknown_type $gamename
+	 */
+	public function getGameName($gamename) {
+	  if(isset($this->_gamesList[$gamename])) {
+	    return $this->_gamesList[$gamename]['name'];
+	  }
+	  return $gamename;
 	}
 
 	/**
@@ -41,11 +55,19 @@ class Servers {
 		}
 	}
 
+	/**
+	 * 
+	 * Enter description here ...
+	 */
 	public function getServerQueryList() {
-		$ini = parse_ini_file('gameq/games.ini', true);
-		return $ini;
+		return $this->_gamesList;
 	}
 
+	/**
+	 * 
+	 * Enter description here ...
+	 * @param unknown_type $data
+	 */
 	public function normalize($data) {
 		if($data['servername']) { $data['hostname'] = $data['servername']; }
 		if($data['maxplayers']) { $data['max_players'] = $data['maxplayers']; }

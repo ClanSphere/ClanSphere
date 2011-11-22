@@ -99,9 +99,11 @@
             </tr>
           {stop:players}
       </table>
-    {stop:playersexist}    
+    {stop:playersexist}
+    <br /><br /> 
   {stop:servers}
 {stop:server}
+
 {unless:server}
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
       <tr>
