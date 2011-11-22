@@ -46,7 +46,6 @@ if (fsockopen("udp://127.0.0.1", 1)) {
       $data['servers'][$run]['slots'] = $cs_servers[$run]['servers_slots'];
       $data['servers'][$run]['if']['playersexist'] = false;
 
-
       if(!empty($cs_servers[$run]['servers_stats'])) {
         $objServers->addServer(0, $cs_servers[$run]);
         $results[$run] = $objServers->requestData();
@@ -64,23 +63,17 @@ if (fsockopen("udp://127.0.0.1", 1)) {
           $data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
           $data['servers'][$run]['pass'] = '--';
 
-          if($cs_servers[$run]['servers_game'] == 'ut3') {
-            $data['servers'][$run]['port'] = $cs_servers[$run]['servers_query'];
-          }
-
-
+          /* Password */
           if(isset($server[$run]['password'])) {
             $data['servers'][$run]['pass'] = empty($server[$run]['password']) ? $cs_lang['no'] : $cs_lang['yes'];
           }
-
           if(isset($server[$run]['pswrd'])) {
             $data['servers'][$run]['pass'] = empty($server[$run]['pswrd']) ? $cs_lang['no'] : $cs_lang['yes'];
           }
-
           if(isset($server[$run]['g_needpass'])) {
             $data['servers'][$run]['pass'] = empty($server[$run]['g_needpass']) ? $cs_lang['no'] : $cs_lang['yes'];
           }
-          
+
           /* GameName */
           if(!isset($server[$run]['game_descr']) OR empty($server[$run]['game_descr'])) {
             $data['servers'][$run]['game_descr'] = $server[$run]['gamename'];
@@ -92,10 +85,12 @@ if (fsockopen("udp://127.0.0.1", 1)) {
             $data['servers'][$run]['version'] = $server[$run]['shortversion'];
           }
 
+          /* Mapname */
           if(isset($server[$run]['mapname']) && !empty($server[$run]['mapname'])) {
             $data['servers'][$run]['map'] = $server[$run]['mapname'];
           }
 
+          /* MaxPlayers */
           if(!isset($server[$run]['max_players'])) {
             if(isset($server[$run]['sv_maxclients'])) {
               $data['servers'][$run]['max_players'] = $server[$run]['sv_maxclients'];
