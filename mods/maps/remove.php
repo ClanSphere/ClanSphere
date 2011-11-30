@@ -11,7 +11,7 @@ if(isset($cs_post['agree'])) {
   if(!empty($maps['maps_picture'])) {
     cs_unlink('maps',$maps['maps_picture']);
   }
-  cs_sql_delete(__FILE__,'maps',$id);
+  cs_sql_delete(__FILE__,'maps',$maps_id);
   cs_redirect($cs_lang['del_true'], 'maps');
 }
 
