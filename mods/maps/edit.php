@@ -8,9 +8,7 @@ $files_gl = cs_files();
 
 $data = array();
 
-$img_max['width'] = 500;
-$img_max['height'] = 500;
-$img_max['size'] = 51200;
+$options = cs_sql_option(__FILE__,'maps');
 $img_filetypes = array('gif','jpg','png');
 
 if(empty($_GET['id']) AND empty($_POST['submit'])) {
@@ -46,15 +44,15 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
           $extension = 'png'; break;
       }
 
-      if($img_size[0] > $img_max['width']) {
+      if($img_size[0] > $options['max_width']) {
         $error .= cs_html_br(1) . '- ' . $cs_lang['too_wide'];
       }
 
-      if($img_size[1] > $img_max['height']) { 
+      if($img_size[1] > $options['max_height']) { 
         $error .= cs_html_br(1) . '- ' . $cs_lang['too_high'];
       }
 
-      if($files_gl['picture']['size'] > $img_max['size']) { 
+      if($files_gl['picture']['size'] > $options['max_size']) { 
         $error .= cs_html_br(1) . '- ' . $cs_lang['too_big'];
       }
     }
@@ -80,9 +78,9 @@ if(empty($_GET['id']) AND empty($_POST['submit'])) {
     foreach($img_filetypes AS $add) {
       $return_types .= empty($return_types) ? $add : ', ' . $add;
     }
-    $matches[2] = $cs_lang['max_width'] . $img_max['width'] . ' px' . cs_html_br(1);
-    $matches[2] .= $cs_lang['max_height'] . $img_max['height'] . ' px' . cs_html_br(1);
-    $matches[2] .= $cs_lang['max_size'] . cs_filesize($img_max['size']) . cs_html_br(1);
+    $matches[2] = $cs_lang['max_width'] . $options['max_width'] . ' px' . cs_html_br(1);
+    $matches[2] .= $cs_lang['max_height'] . $options['max_height'] . ' px' . cs_html_br(1);
+    $matches[2] .= $cs_lang['max_size'] . cs_filesize($options['max_size']) . cs_html_br(1);
     $matches[2] .= $cs_lang['filetypes'] . $return_types;
     $data['maps']['matches'] = cs_abcode_clip($matches);
 
