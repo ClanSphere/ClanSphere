@@ -147,30 +147,30 @@ function cs_content_append ($content) {
 function cs_content_lang () {
 
   global $account, $com_lang, $cs_main;
-  $allow = 0;
-  $cookie_lang = '';
-  $lang = empty($account['users_lang']) ? $cs_main['def_lang'] : $account['users_lang'];
-  $new_lang = $lang;
 
-  if(!empty($_COOKIE['cs_lang'])) {
-    $new_lang = $_COOKIE['cs_lang'];
-    $cookie_lang = $new_lang;
-  }
+  $lang = empty($account['users_id']) ? $cs_main['def_lang'] : $account['users_lang'];
+  $lang_new = '';
+
+  if(empty($account['users_id']) AND !empty($_COOKIE['cs_lang']))
+    $lang_new = $_COOKIE['cs_lang'];
+
   if(!empty($_REQUEST['lang']))
-    $new_lang = $_REQUEST['lang'];
+    $lang_new = $_REQUEST['lang'];
   elseif(!empty($_GET['lang']))
-    $new_lang = $_GET['lang'];
+    $lang_new = $_GET['lang'];
 
-  if($lang != $new_lang OR $cookie_lang != $new_lang) {
+  if(!empty($lang_new)) {
+    $allow = 0;
     $languages = cs_checkdirs('lang');
+
     foreach($languages as $mod)
-      if($mod['dir'] == $new_lang)
+      if($mod['dir'] == $lang_new)
         $allow++;
 
-    $lang = empty($allow) ? $cs_main['def_lang'] : $new_lang;
+    $lang = empty($allow) ? $cs_main['def_lang'] : $lang_new;
 
     # update language changes
-    if($cookie_lang != $lang) {
+    if(!empty($_COOKIE['cs_lang'])) {
       setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
     }
     elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
