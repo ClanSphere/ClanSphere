@@ -168,7 +168,7 @@ if(empty($_REQUEST['where'])) {
         }
         echo cs_subtemplate(__FILE__,$cs_votes_tpl,'votes','view_vote');
       }
-      else
+      elseif(!empty($cs_votes['votes_queston']))
       {
         $cs_sort[0] = '';
         $cs_sort[1] = array('answer',SORT_DESC);
