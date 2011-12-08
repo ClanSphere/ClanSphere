@@ -149,11 +149,11 @@ function cs_content_lang () {
   global $account, $com_lang, $cs_main;
 
   $lang = empty($account['users_id']) ? $cs_main['def_lang'] : $account['users_lang'];
-  $lang_new = '';
 
   if(empty($account['users_id']) AND !empty($_COOKIE['cs_lang']))
-    $lang_new = $_COOKIE['cs_lang'];
+    $lang = $_COOKIE['cs_lang'];
 
+  $lang_new = '';
   if(!empty($_REQUEST['lang']))
     $lang_new = $_REQUEST['lang'];
   elseif(!empty($_GET['lang']))
@@ -170,10 +170,10 @@ function cs_content_lang () {
     $lang = empty($allow) ? $cs_main['def_lang'] : $lang_new;
 
     # update language changes
-    if(!empty($_COOKIE['cs_lang'])) {
+    if(empty($account['users_id'])) {
       setcookie('cs_lang', $lang, $cs_main['cookie']['lifetime'], $cs_main['cookie']['path'], $cs_main['cookie']['domain']);
     }
-    elseif(!empty($account['users_id']) AND $account['users_lang'] != $lang) {
+    elseif($account['users_lang'] != $lang) {
       $users_cells = array('users_lang');
       $users_save = array($lang);
       cs_sql_update(__FILE__,'users',$users_cells,$users_save,$account['users_id'], 0, 0);
