@@ -67,9 +67,17 @@ $data['rc']['register_globals'] = $switch[0];
 $data['av']['register_globals'] = $switch[(int) cs_phpconfigcheck('register_globals')];
 if ($data['av']['register_globals'] != $data['rc']['register_globals']) { $data['av']['register_globals'] = '<div style="color:#B91F1D">' . $data['av']['register_globals'] . '</div>'; $check_recommended = 0; }
 
-$data['rc']['magic_quotes'] = $switch[0];
-$data['av']['magic_quotes'] = $switch[(int) cs_phpconfigcheck('magic_quotes_gpc')];
-if ($data['av']['magic_quotes'] != $data['rc']['magic_quotes']) { $data['av']['magic_quotes'] = '<div style="color:#B91F1D">' . $data['av']['magic_quotes'] . '</div>'; $check_recommended = 0; }
+$data['rc']['magic_quotes_gpc'] = $switch[0];
+$data['av']['magic_quotes_gpc'] = $switch[(int) cs_phpconfigcheck('magic_quotes_gpc')];
+if ($data['av']['magic_quotes_gpc'] != $data['rc']['magic_quotes_gpc']) { $data['av']['magic_quotes_gpc'] = '<div style="color:#B91F1D">' . $data['av']['magic_quotes_gpc'] . '</div>'; $check_recommended = 0; }
+
+$data['rc']['magic_quotes_runtime'] = $switch[0];
+$data['av']['magic_quotes_runtime'] = $switch[(int) cs_phpconfigcheck('magic_quotes_runtime')];
+if ($data['av']['magic_quotes_runtime'] != $data['rc']['magic_quotes_runtime']) { $data['av']['magic_quotes_runtime'] = '<div style="color:#B91F1D">' . $data['av']['magic_quotes_runtime'] . '</div>'; $check_recommended = 0; }
+
+$data['rc']['magic_quotes_sybase'] = $switch[0];
+$data['av']['magic_quotes_sybase'] = $switch[(int) cs_phpconfigcheck('magic_quotes_sybase')];
+if ($data['av']['magic_quotes_sybase'] != $data['rc']['magic_quotes_sybase']) { $data['av']['magic_quotes_sybase'] = '<div style="color:#B91F1D">' . $data['av']['magic_quotes_sybase'] . '</div>'; $check_recommended = 0; }
 
 $data['rc']['safe_mode'] = $switch[0];
 $data['av']['safe_mode'] = $switch[(int) cs_phpconfigcheck('safe_mode')];

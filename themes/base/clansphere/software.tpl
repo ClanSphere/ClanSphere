@@ -54,9 +54,9 @@
   </tr>
   <tr>
     <td class="leftc">{icon:wizard} {lang:m_quotes}</td>
-    <td class="leftb">magic_quotes_gpc</td>
-    <td class="leftb">{software:recom_m_quotes}</td>
-    <td class="leftb">{software:m_quotes}</td>
+    <td class="leftb">magic_quotes_gpc<br />magic_quotes_runtime<br />magic_quotes_sybase</td>
+    <td class="leftb">{software:recom_m_quotes_gpc}<br />{software:recom_m_quotes_runtime}<br />{software:recom_m_quotes_sybase}</td>
+    <td class="leftb">{software:m_quotes_gpc}<br />{software:m_quotes_runtime}<br />{software:m_quotes_sybase}</td>
     <td class="leftb">{software:check_m_quotes}</td>
   </tr>
   <tr>

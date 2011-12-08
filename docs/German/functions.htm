@@ -154,9 +154,9 @@
     <tr><td class="leftc" colspan="2"><a name="cs_sql_escape"></a>cs_sql_escape(var Daten) </td></tr>    
     <tr><td colspan="2">Die Daten werden gegen SQL-Injektion gesichert, indem gef&auml;hrliche Zeichen durch, f&uuml;r die Datenbank gekennzeichnete, 
         gleiche Zeichen ersetzt werden. Dies hat im Normalfall keine Auswirkungen auf die Daten an sich, falls doch kann es sein das 
-      die veralteten PHP-Optionen magic_quotes_gpc oder magic_quotes_runtime auf dem Webserver aktiviert sind, unbedingt abschalten 
+      die veralteten PHP-Optionen magic_quotes_gpc, magic_quotes_runtime oder magic_quotes_sybase auf dem Webserver aktiviert sind, unbedingt abschalten 
       (off)! Solltet ihr keinen Zugriff auf diese Optionen haben, dann bittet euren Provider um die Umstellung.<br /><br />
-      Hinweis: Mit PHP 6 fallen die magic_quotes Funktionen eh weg, falls der Provider sich also weigern sollte diese abzuschalten 
+      Hinweis: Seit PHP 5.4 sind magic_quotes Funktionen eh nicht mehr vorhanden, falls der Provider sich also weigern sollte diese abzuschalten 
       wird ihn sp&auml;testens dieses Argument &uuml;berzeugen. Zudem ist es unprofessionelle St&uuml;tzradprogrammierung sich auf diese zu verlassen!
       <br /><br />
       Tipp: Achtet darauf das Daten nicht mehrfach abgesichert werden, dies hat ungewollte Nebenwirkungen (z.B. das sich diverse Zeichen 

@@ -195,7 +195,6 @@ function cs_init($predefined) {
   @ini_set('session.use_cookies','1');
   @ini_set('session.use_only_cookies','1');
   @ini_set('display_errors','on');
-  @ini_set('magic_quotes_runtime','off');
 
   $phpversion = phpversion();
   if(version_compare($phpversion, '5.1', '>='))

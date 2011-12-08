@@ -52,9 +52,9 @@
  </tr>
  <tr>
   <td class="leftc">{lang:magic_quotes}</td>
-  <td class="leftc">magic_quotes_gpc</td>
-  <td class="leftc">{rc:magic_quotes}</td>
-  <td class="leftc">{av:magic_quotes}</td>
+  <td class="leftc">magic_quotes_gpc<br />magic_quotes_runtime<br />magic_quotes_sybase</td>
+  <td class="leftc">{rc:magic_quotes_gpc}<br />{rc:magic_quotes_runtime}<br />{rc:magic_quotes_sybase}</td>
+  <td class="leftc">{av:magic_quotes_gpc}<br />{av:magic_quotes_runtime}<br />{av:magic_quotes_sybase}</td>
   <td class="leftc">{data:ok}</td>
  </tr>
  <tr>

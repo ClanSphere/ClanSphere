@@ -26,7 +26,9 @@ $display_errors = cs_phpconfigcheck('display_errors');
 $file_uploads = cs_phpconfigcheck('file_uploads');
 $short_open_tag = cs_phpconfigcheck('short_open_tag');
 $register_globals = cs_phpconfigcheck('register_globals');
-$magic_quotes = cs_phpconfigcheck('magic_quotes_gpc');
+$magic_quotes_gpc = cs_phpconfigcheck('magic_quotes_gpc');
+$magic_quotes_runtime = cs_phpconfigcheck('magic_quotes_runtime');
+$magic_quotes_sybase = cs_phpconfigcheck('magic_quotes_sybase');
 $safe_mode = cs_phpconfigcheck('safe_mode');
 $trans_sid = cs_phpconfigcheck('session.use_trans_sid');
 $basedir = cs_phpconfigcheck('open_basedir', true);
@@ -60,9 +62,17 @@ $data['software']['reg_global'] = empty($register_globals) ? $cs_lang['off'] : $
 $data['software']['check_reg_global'] = empty($register_globals) ? cs_icon('submit') : cs_icon('stop');
 $data['software']['recom_reg_global'] = $cs_lang['off'];
 
-$data['software']['m_quotes'] = empty($magic_quotes) ? $cs_lang['off'] : $cs_lang['on'];
-$data['software']['check_m_quotes'] = empty($magic_quotes) ? cs_icon('submit') : cs_icon('stop');
-$data['software']['recom_m_quotes'] = $cs_lang['off'];
+$data['software']['m_quotes_gpc'] = empty($magic_quotes_gpc) ? $cs_lang['off'] : $cs_lang['on'];
+$data['software']['recom_m_quotes_gpc'] = $cs_lang['off'];
+$data['software']['m_quotes_runtime'] = empty($magic_quotes_runtime) ? $cs_lang['off'] : $cs_lang['on'];
+$data['software']['recom_m_quotes_runtime'] = $cs_lang['off'];
+$data['software']['m_quotes_sybase'] = empty($magic_quotes_sybase) ? $cs_lang['off'] : $cs_lang['on'];
+$data['software']['recom_m_quotes_sybase'] = $cs_lang['off'];
+
+if(empty($magic_quotes_gpc) AND empty($magic_quotes_runtime) AND empty($magic_quotes_sybase))
+  $data['software']['check_m_quotes'] = cs_icon('submit');
+else
+  $data['software']['check_m_quotes'] = cs_icon('stop');
 
 $data['software']['safe_mode'] = empty($safe_mode) ? $cs_lang['off'] : $cs_lang['on'];
 $data['software']['check_safe_mode'] = empty($safe_mode) ? cs_icon('submit') : cs_icon('stop');
