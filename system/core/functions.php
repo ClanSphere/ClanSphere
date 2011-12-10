@@ -523,9 +523,11 @@ function cs_getip () {
 }
 
 function php_error($errno, $errmsg, $filename, $linenum) {
- 
+
   global $cs_logs, $cs_main;
- 
+
+  $silent = (error_reporting() === 0) ? 1 : 0;
+
   $errortype = Array(
     E_ERROR           => 'Error',
     E_WARNING         => 'Warning',
@@ -542,19 +544,21 @@ function php_error($errno, $errmsg, $filename, $linenum) {
 
   // Added E_Strict for PHP 5 Version
     $errortype['2048'] = 'Strict Notice/Error';
-  
+
   // Added E_RECOVERABLE_ERROR for PHP 5.2.0 Version
   if (substr(phpversion(), 0, 3) >= '5.2')
     $errortype['4096'] = 'Recoverable Error';
-    
+
   // Added E_DEPRECATED & E_USER_DEPRECATED for PHP 5.3.0 Version
   if (substr(phpversion(), 0, 3) >= '5.3') {
     $errortype['8192'] = 'Deprecate Notice';
     $errortype['16384'] = 'User Deprecated Warning';
   }
 
-  $error = $errortype[$errno] . ": " . $errmsg . " in " . $filename . " on line " . $linenum . "\r\n";
+  $error = empty($silent) ? '' : '(@) ';
+  $error .= $errortype[$errno] . ": " . $errmsg . " in " . $filename . " on line " . $linenum . "\r\n";
   $cs_logs['php_errors'] = empty($cs_logs['php_errors']) ? '' : $cs_logs['php_errors'];
   $cs_logs['php_errors'] .= '<strong>PHP-Warning:</strong> ' . $error . "<br />";
-  cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . ' -> ' . trim($errmsg), 1);
+  if(empty($silent))
+    cs_error($filename, 'PHP ' . $errortype[$errno] . ' on line ' . $linenum . ' -> ' . trim($errmsg), 1);
 }
