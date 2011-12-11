@@ -11,8 +11,17 @@ Upcoming PHP and MySQL branches don't seem to cause problems.
 Support for ClanSphere will still remain in our forums and contact forms.
 
 
-ClanSphere 2011.2.2 >> 201X-XX-XX
+ClanSphere 2011.2.2 >> 2011-12-XX
 ___________________________________________________________
+
+-- Recommended PHP version changed to 5.4.0
+
+-> Added forwarding support to messages mod (fr33z3m4n)
+-> Fixed language switching problems (hajo) 
+-> Fixed options and removal in maps mod (palle!)
+-> Fixed php error handling with @ sign (hajo)
+-> Improved magic_quotes detection and handling (hajo)
+-> Reworked servers mod (fr33z3m4n)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
