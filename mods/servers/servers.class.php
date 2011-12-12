@@ -59,6 +59,9 @@ class Servers {
    * @param array $server
    */
   public function getGameVersion($server) {
+    if(isset($server['version'])) {
+      return $server['version'];
+    }
     if(isset($server['shortversion'])) {
       return $server['shortversion'];
     }

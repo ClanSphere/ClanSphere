@@ -52,9 +52,9 @@ if (fsockopen("udp://127.0.0.1", 1)) {
         $results[$run] = $objServers->requestData();
         $server = $results[$run][0];
 
-        if($run == 50) {
+        if($run == 10) {
           echo '<pre>';
-          print_R($results[$run]);
+          print_R($server);
         }
 
         if(!empty($server['gq_online'])) {
@@ -67,9 +67,9 @@ if (fsockopen("udp://127.0.0.1", 1)) {
           $data['servers'][$run]['if']['playersexist'] = false;
           $data['servers'][$run]['ip'] = $cs_servers[$run]['servers_ip'];
           $data['servers'][$run]['port'] = $cs_servers[$run]['servers_port'];
-          $data['servers'][$run]['pass'] = '--';
-
+         
           /* Password */
+          $data['servers'][$run]['pass'] = '--';
           if(isset($server['password'])) {
             $data['servers'][$run]['pass'] = empty($server['password']) ? $cs_lang['no'] : $cs_lang['yes'];
           }
@@ -118,6 +118,9 @@ if (fsockopen("udp://127.0.0.1", 1)) {
           }
           if(!isset($server['num_players']) && isset($server['playercount'])) {
             $data['servers'][$run]['num_players'] = $server['playercount'];
+          }
+          if(!isset($server['num_players']) && isset($server['clients'])) {
+            $data['servers'][$run]['num_players'] = $server['clients'];
           }
 
           if(isset($server['map']) && !empty($server['map'])) {
