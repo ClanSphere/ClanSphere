@@ -31,7 +31,7 @@ if (fsockopen("udp://127.0.0.1", 1)) {
       $data['servers'][$run]['hostname'] = $cs_servers[$run]['servers_name'];
       $server_query_ex = explode(";",$cs_servers[$run]['servers_class']);
       $cs_servers[$run]['servers_class'] = $server_query_ex[0];
-      $cs_servers[$run]['servers_game'] = !isset($server_query_ex[1]) ? $server_query_ex[1] : $server_query_ex[0];	  
+      $cs_servers[$run]['servers_game'] = isset($server_query_ex[1]) ? $server_query_ex[1] : $server_query_ex[0];	  
       if(!empty($cs_servers[$run]['servers_stats'])) {
 
         $objServers->addServer(0, $cs_servers[$run]);
