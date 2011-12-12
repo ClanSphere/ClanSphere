@@ -31,8 +31,20 @@ class Servers {
 
   /**
    *
+   * @param unknown_type $iId
+   * @param unknown_type $server
+   */
+  public function addServer($iId, $server) {
+    if(isset($this->_gamesList[$server['servers_class']]['prot'])) {
+      $server['servers_class'] = $this->_gamesList[$server['servers_class']]['prot'];
+    }
+    $this->_gameQ->addServer($iId, array($server['servers_class'], $server['servers_ip'], $server['servers_query']));
+  }
+
+  /**
+   *
    * Enter description here ...
-   * @param unknown_type $gamename
+   * @param String $gamename
    */
   public function getGameName($gamename) {
     if(isset($this->_gamesList[$gamename])) {
@@ -43,14 +55,23 @@ class Servers {
 
   /**
    *
-   * @param unknown_type $iId
-   * @param unknown_type $server
+   * Enter description here ...
+   * @param array $server
    */
-  public function addServer($iId, $server) {
-    if(isset($this->_gamesList[$server['servers_class']]['prot'])) {
-      $server['servers_class'] = $this->_gamesList[$server['servers_class']]['prot'];
+  public function getGameVersion($server) {
+    if(isset($server['shortversion'])) {
+      return $server['shortversion'];
     }
-    $this->_gameQ->addServer($iId, array($server['servers_class'], $server['servers_ip'], $server['servers_port']));
+    if(isset($server['ServerVersion'])) {
+      return $server['ServerVersion'];
+    }
+    if(isset($server['gamever'])) {
+      return $server['gamever'];
+    }
+    if(isset($server['EngineVersion'])) {
+      return $server['EngineVersion'];
+    }
+    return "";
   }
 
   /**
@@ -66,9 +87,16 @@ class Servers {
    * Enter description here ...
    * @param unknown_type $data
    */
-  public function normalize($data) {
-    if($data['servername']) { $data['hostname'] = $data['servername']; }
-    if($data['maxplayers']) { $data['max_players'] = $data['maxplayers']; }
+  public function normalize($data, $server_db) {
+    if(isset($data['servername']) && !empty($data['servername'])) {
+      $data['hostname'] = $data['servername'];
+    }
+    if(empty($data['hostname'])) {
+      $data['hostname'] = $server_db['servers_name'];
+    }
+    if(isset($data['maxplayers'])) {
+      $data['max_players'] = $data['maxplayers'];
+    }
 
     if(!empty($data['players'])) {
       for($a=0; $a<count($data['players']); $a++) {
@@ -87,18 +115,18 @@ class Servers {
     # Determine the number of seconds
     $totalSeconds = intval($time);
 
-    # Calculate number of seconds
-    $seconds = $totalSeconds % 60;
-    $totalSeconds = $totalSeconds / 60;
+  # Calculate number of seconds
+  $seconds = $totalSeconds % 60;
+  $totalSeconds = $totalSeconds / 60;
 
-    # Calculate number of minutes
-    $minutes = $totalSeconds % 60;
-    $totalSeconds = $totalSeconds / 60;
+  # Calculate number of minutes
+  $minutes = $totalSeconds % 60;
+  $totalSeconds = $totalSeconds / 60;
 
-    # Calculate number of hours
-    $hours = $totalSeconds % 60;
+  # Calculate number of hours
+  $hours = $totalSeconds % 60;
 
-    return sprintf("%d Std. %d Min. %d Sek.", $hours, $minutes, $seconds);
+  return sprintf("%d Std. %d Min. %d Sek.", $hours, $minutes, $seconds);
   }
 
   /**

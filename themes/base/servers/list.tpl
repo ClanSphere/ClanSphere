@@ -28,7 +28,7 @@
                   </tr>
                   <tr>
                       <td class="leftc" style="width:125px;">{lang:ip}</td>
-                      <td class="leftb">{servers:gq_address}:{servers:gq_port}</td>
+                      <td class="leftb">{servers:gq_address}:{servers:port}</td>
                   </tr>
                   <tr>
                       <td class="leftc">{lang:game}</td>
