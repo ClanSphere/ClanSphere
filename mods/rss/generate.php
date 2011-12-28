@@ -30,10 +30,11 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
           }
 
           $date = empty($item['time']) ? 0 : date('D, d M Y H:i:s',$item['time']) . ' +0000';
-          $author = empty($item['author']) ? 0 : $item['author'];
-          $author .= empty($item['nick']) ? '' : ' (' . cs_secure($item['nick']) . ')';
-          $category = empty($item['cat']) ? 0 : htmlspecialchars($item['cat'], ENT_NOQUOTES, $cs_main['charset']);
-          $content .= cs_rss_item($title, $link, $text, $date, $author, $category);
+          # author is presented as 'email (nick)'
+          $author = (empty($item['nick']) OR empty($item['author'])) ? '' : 
+            ($item['author'] . ' (' . cs_secure($item['nick']) . ')');
+          $category = empty($item['cat']) ? '' : htmlspecialchars($item['cat'], ENT_NOQUOTES, $cs_main['charset']);
+          $content .= cs_rss_item($title, $link, $text, $date, $category);
         }
       }
     }

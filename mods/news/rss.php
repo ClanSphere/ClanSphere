@@ -4,9 +4,9 @@
 
 $op_news = cs_sql_option(__FILE__,'news');
 
-$from = 'news nws INNER JOIN {pre}_users usr ON nws.users_id = usr.users_id INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
-$select = 'nws.news_headline AS title, nws.news_time AS time, nws.news_text AS text, nws.news_readmore AS readmore,';
-$select .= 'usr.users_email AS author, cat.categories_name AS cat, nws.news_id AS id, usr.users_nick AS nick';
+$from = 'news nws INNER JOIN {pre}_categories cat ON nws.categories_id = cat.categories_id';
+$select = 'nws.news_headline AS title, nws.news_time AS time, nws.news_text AS text, '
+        . 'nws.news_readmore AS readmore, cat.categories_name AS cat, nws.news_id AS id';
 $where = 'nws.news_public = 1 AND cat.categories_access < 2';
 $cs_news = cs_sql_select(__FILE__,$from,$select,$where,'news_time DESC',0,8);
 
