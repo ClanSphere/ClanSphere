@@ -33,7 +33,7 @@ function cs_rss_channel($func,$mod='',$title = 0,$link = 0,$desc = 0) {
   }
 }
 
-function cs_rss_item($title, $link, $desc, $date = 0, $category = '') {
+function cs_rss_item($title, $link, $desc, $date = 0, $author = '', $category = '') {
 
   $var = "<item>\n";
   if(!empty($date)) {
