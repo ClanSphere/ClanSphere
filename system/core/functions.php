@@ -509,15 +509,15 @@ function cs_getip () {
   elseif (getenv('HTTP_FORWARDED'))
     $ip = getenv('HTTP_FORWARDED');
   else
-    $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+    $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 0;
 
   // check for multiple ip's in case of multiple x-forwarders
   $pos = stripos($ip, ',');
   if ($pos !== false)
     $ip = trim(substr($ip, 0, $pos));
-  // optional extra flags: FILTER_FLAG_IPV4, FILTER_FLAG_IPV6, FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE
+  // possible extra flags: FILTER_FLAG_NO_PRIV_RANGE, FILTER_FLAG_NO_RES_RANGE
   if (function_exists('filter_var') AND filter_var($ip, FILTER_VALIDATE_IP) === false)
-    $ip = '0.0.0.0';
+    $ip = 0;
 
   return $ip;
 }
