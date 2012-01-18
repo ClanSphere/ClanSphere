@@ -11,9 +11,10 @@ Upcoming PHP and MySQL branches don't seem to cause problems.
 Support for ClanSphere will still remain in our forums and contact forms.
 
 
-ClanSphere 2011.2.2 >> 2011-12-XX
+ClanSphere 2011.3 >> 2011-01-2X
 ___________________________________________________________
 
+-- First version that is IPv6 ready
 -- Recommended PHP version changed to 5.4.0
 
 -> Added forwarding support to messages mod (fr33z3m4n)

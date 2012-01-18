@@ -502,7 +502,7 @@ CREATE TABLE {pre}_gbook (
   gbook_url varchar(40) NOT NULL default '',
   gbook_town varchar(20) NOT NULL default '',
   gbook_text text,
-  gbook_ip varchar(20) NOT NULL default '',
+  gbook_ip varchar(40) NOT NULL default '',
   gbook_lock int(2) NOT NULL default '0',
   PRIMARY KEY (gbook_id)
 ){engine};
@@ -770,8 +770,8 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '551');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_remote', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.2.2 DEV');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2011-12-12');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.3 DEV');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2011-01-18');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '77');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
@@ -1059,7 +1059,7 @@ CREATE TABLE {pre}_shoutbox (
   shoutbox_name varchar(80) NOT NULL default '',
   shoutbox_text text,
   shoutbox_date int(14) NOT NULL default '0',
-  shoutbox_ip varchar(20) NOT NULL default '',
+  shoutbox_ip varchar(40) NOT NULL default '',
   PRIMARY KEY (shoutbox_id)
 ){engine};
 
