@@ -5,7 +5,7 @@
 function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
 
   global $cs_main;
-  $nl = "\n";
+  $nl = "\r\n";
   $mail = array();
 
   $subject = $options['def_org'] . ' - ' . $title;
@@ -53,7 +53,7 @@ function cs_mail_smtp ($mail, $options) {
       return false;
   }
   else {
-    $nl = "\n";
+    $nl = "\r\n";
     $mail_top = $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'] . $nl;
     $mail_data =  $mail_top . $nl . $mail['message'] . $nl . ".";
 
@@ -61,7 +61,7 @@ function cs_mail_smtp ($mail, $options) {
                       'login' => 'AUTH LOGIN',
                       'user' => base64_encode($options['smtp_user']),
                       'pw' => base64_encode($options['smtp_pw']),
-                      'from' => 'MAIL FROM: ' . $mail['from'],
+                      'from' => 'MAIL FROM:' . $mail['from'],
                       'to' => 'RCPT TO:' . $mail['to'],
                       'data' => 'DATA',
                       'response' => $mail_data,
@@ -72,7 +72,7 @@ function cs_mail_smtp ($mail, $options) {
     global $cs_logs;
     static $num = 0;
     $num++;
-    $log = 'MAIL ' . $num . "\n";
+    $log = 'MAIL ' . $num . $nl;
     $log .= 'connect: ' . fread($smtp_con, 2048);
     $cs_logs['sql'][__FILE__] = isset($cs_logs['sql'][__FILE__]) ? $cs_logs['sql'][__FILE__] . $log : $log;
 
