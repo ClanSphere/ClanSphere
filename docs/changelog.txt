@@ -1,24 +1,16 @@
 CHANGELOG
 --------------------------
 
-Development and Support Notice >> Last update: 2011-11-01
-___________________________________________________________
 
-Future updates and extensions will be available in the module db.
-This will only happen if it is necessary or created by the community.
-We don't plan to release new versions except for heavy issues.
-Upcoming PHP and MySQL branches don't seem to cause problems.
-Support for ClanSphere will still remain in our forums and contact forms.
-
-
-ClanSphere 2011.3 >> 2011-01-2X
+ClanSphere 2011.3 >> 2011-02-0X
 ___________________________________________________________
 
 -- First version that is IPv6 ready
 -- Recommended PHP version changed to 5.4.0
 
 -> Added forwarding support to messages mod (fr33z3m4n)
--> Fixed language switching problems (hajo) 
+-> Fixed email line-endings and user email activation issues (hajo)
+-> Fixed language switching problems (hajo)
 -> Fixed options and removal in maps mod (palle!)
 -> Fixed php error handling with @ sign (hajo)
 -> Improved magic_quotes detection and handling (hajo)
