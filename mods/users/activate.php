@@ -9,10 +9,11 @@ $data = array();
 $key = empty($_GET['key']) ? '' : $_GET['key'];
 $key = preg_replace('/[^\w]/s','', $key);
 $uemail = empty($_GET['email']) ? '' : $_GET['email'];
-$uemail = preg_match('/^[a-zA-Z][a-zA-Z0-9._-]{3,40}\@[a-zA-Z][a-zA-Z0-9._-]+\.[a-zA-Z]{2,5}$/', $uemail) ? $uemail : '';
+$pattern = "=^[_a-z0-9-]+(\.[_a-z0-9-]+)*@([0-9a-z](-?[0-9a-z])*\.)+[a-z]{2}([zmuvtg]|fo|me)?$=i";
+$uemail = preg_match($pattern, $uemail) ? $uemail : '';
 
 $select = 'users_id';
-$where = "users_regkey= '" . $key . "' AND users_email= '"  . $uemail . "' AND users_active= '0' ";
+$where = "users_regkey = '" . cs_sql_escape($key) . "' AND users_email = '" . cs_sql_escape($uemail) . "' AND users_active = 0";
 $cs_user = cs_sql_select(__FILE__,'users',$select,$where,0,0);
 $users_count = count($cs_user);
 
