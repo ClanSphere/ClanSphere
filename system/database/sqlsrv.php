@@ -169,7 +169,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   $max = ($max < 0) ? 20 : (int) $max;
   $run = 0;
 
-  if(!empty($max) OR $sql_order == '{random}') {
+  if(!empty($max) OR $sql_order === '{random}') {
     $sql_select = ' TOP ' . $max . ' ' . $sql_select;
     if(!empty($first)) {
       $cell = explode(' ',$sql_table);

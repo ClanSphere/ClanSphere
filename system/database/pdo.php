@@ -163,7 +163,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   $new_result = 0;
   $run = 0;
 
-  if($cs_db['type'] == 'pdo_sqlsrv' AND (!empty($max) OR $sql_order == '{random}')) {
+  if($cs_db['type'] == 'pdo_sqlsrv' AND (!empty($max) OR $sql_order === '{random}')) {
     $sql_select = ' TOP ' . $max . ' ' . $sql_select;
     if(!empty($first)) {
       $cell = explode(' ',$sql_table);
