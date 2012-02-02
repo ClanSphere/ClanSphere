@@ -34,7 +34,7 @@ function cs_cache_info() {
   return $form;
 }
 
-function cs_cache_load($name) {
+function cs_cache_load($name, $ttl = 0) {
 
   return false;
 }
