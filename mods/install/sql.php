@@ -56,7 +56,7 @@ foreach($sql_array AS $sql_query) {
 }
 
 if(isset($_POST['module_select'])) {
-  $mods = array('articles','awards','banners','board','boardmods','boardranks','buddys','cash','clans','computers','cups','events','explorer','faq','fightus','files','gallery','games','gbook','history','joinus','links','linkus','maps','members','messages','news','newsletter','partner','quotes','ranks','replays','rules','search','servers','shoutbox','squads','static','usersgallery','votes','wars','wizard');
+  $mods = array('articles','awards','banners','board','boardmods','boardranks','buddys','cash','clans','computers','events','explorer','faq','fightus','files','gallery','games','gbook','history','joinus','links','linkus','maps','members','messages','news','newsletter','partner','quotes','ranks','replays','rules','search','servers','shoutbox','squads','static','usersgallery','votes','wars','wizard');
   $mods_count = count($mods);
   for($run=0; $run < $mods_count; $run++) {
     if(!isset($_POST[$mods[$run]])) {
