@@ -34,12 +34,13 @@ function cs_cache_info() {
   return $form;
 }
 
-function cs_cache_load($name) {
+function cs_cache_load($name, $ttl = 0) {
 
-  if(!file_exists('uploads/cache/' . $name . '.tmp'))
-    return false;
-  else
-    return unserialize(file_get_contents('uploads/cache/' . $name . '.tmp'));
+  if(file_exists('uploads/cache/' . $name . '.tmp')) {
+    if(empty($ttl) OR filemtime('uploads/cache/' . $name . '.tmp') < (cs_time() - $ttl))
+      return unserialize(file_get_contents('uploads/cache/' . $name . '.tmp'));
+    else
+      return false;
 }
 
 function cs_cache_save($name, $content) {
