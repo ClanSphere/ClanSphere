@@ -13,9 +13,11 @@ ___________________________________________________________
 -> Fixed language switching problems (hajo)
 -> Fixed options and removal in maps mod (palle!)
 -> Fixed php error handling with @ sign (hajo)
+-> Fixed some sql queries that don't follow the standard (patches by pico)
 -> Improved magic_quotes detection and handling (hajo)
 -> Removed author from news rss feed (hajo)
 -> Reworked servers mod (fr33z3m4n)
+-> Updated jQuery to 1.7.1 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
 
