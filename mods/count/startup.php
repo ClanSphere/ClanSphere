@@ -88,7 +88,7 @@ if(!empty($account['access_count']))
     $last_day = cs_sql_count(__FILE__,'count',$cond . " AND count_time > '" . $timer2 . "'");
     $count_month = cs_sql_count(__FILE__,'count',$cond);
 
-    $month_archieve = cs_sql_select(__FILE__, 'count_archiv', 'SUM(count_num) AS count', 'count_mode = "1"', 0, 0, 0);
+    $month_archieve = cs_sql_select(__FILE__, 'count_archiv', 'SUM(count_num) AS count', 'count_mode = 1', 0, 0, 0);
     $count_month += $month_archieve[0]['count'];
 
     if(!empty($count_month)) {
