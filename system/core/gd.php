@@ -84,6 +84,9 @@ function cs_resample($image, $target, $max_width, $max_height) {
   $im_new[0] = floor($im_info[0] / $factor);
   $im_new[1] = floor($im_info[1] / $factor);
   $dst = ImageCreateTrueColor($im_new[0],$im_new[1]);
+  
+  ImageAlphaBlending($dst, false);
+  ImageSaveAlpha($dst, true);
 
   ImageCopyResampled($dst,$src,0,0,0,0,$im_new[0],$im_new[1],$im_info[0],$im_info[1]);
 
