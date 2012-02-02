@@ -38,7 +38,7 @@ function cs_cache_load($name, $ttl = 0) {
 
   if(file_exists('uploads/cache/' . $name . '.tmp')) {
 
-    if(empty($ttl) OR filemtime('uploads/cache/' . $name . '.tmp') >= (cs_time() - $ttl))
+    if(empty($ttl) OR filemtime('uploads/cache/' . $name . '.tmp') >= (time() - $ttl))
       return unserialize(file_get_contents('uploads/cache/' . $name . '.tmp'));
   }
 
