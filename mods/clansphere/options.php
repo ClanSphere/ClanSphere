@@ -10,7 +10,7 @@ $data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
 if($account['access_wizard'] == 5) {
   
-  $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_opts' AND options_value = \"1\"");
+  $wizard = cs_sql_count(__FILE__,'options',"options_name = 'done_opts' AND options_value = 1");
   if(empty($wizard)) {
     $data['if']['done'] = true;
     $data['lang']['link_2'] = cs_link($cs_lang['show'],'wizard','roots') . ' - ' . cs_link($cs_lang['task_done'],'wizard','roots','handler=opts&amp;done=1');

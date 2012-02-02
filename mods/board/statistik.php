@@ -15,7 +15,7 @@ $data['stats']['comments'] = cs_html_big(1) . $all_comment . cs_html_big(0);
 
 $select = 'users_id, users_nick, users_register, users_active';
 $order = 'users_register DESC';
-$cs_users = cs_sql_select(__FILE__,'users',$select,'users_delete = "0" AND users_active = "1"',$order,0,1);
+$cs_users = cs_sql_select(__FILE__,'users',$select,'users_delete = 0 AND users_active = 1',$order,0,1);
 
 $secure_name = cs_secure($cs_users['users_nick']);
 $data['user']['newest'] = cs_user($cs_users['users_id'],$cs_users['users_nick'], $cs_users['users_active']);

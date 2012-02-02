@@ -25,19 +25,19 @@ $time = cs_time();
 $users_id = $account['users_id'];
 
 $data = array();
-$data['count']['inbox'] = cs_sql_count(__FILE__, 'messages', 'messages_show_receiver = "1" AND users_id_to = "' . $account['users_id'] . '"');
-$data['count']['outbox'] = cs_sql_count(__FILE__, 'messages', 'messages_show_sender = "1" AND users_id = "' . $account['users_id'] . '"');
-$archivcond1 = '(messages_archiv_sender = "1" AND users_id = "' . $account['users_id'] . '") OR ';
-$data['count']['archivbox'] = cs_sql_count(__FILE__, 'messages', $archivcond1 . '(messages_archiv_receiver = "1" AND users_id_to = "' . $account['users_id'] . '")');
+$data['count']['inbox'] = cs_sql_count(__FILE__, 'messages', 'messages_show_receiver = 1 AND users_id_to = ' . $account['users_id'] );
+$data['count']['outbox'] = cs_sql_count(__FILE__, 'messages', 'messages_show_sender = 1 AND users_id = ' . $account['users_id'] );
+$archivcond1 = '(messages_archiv_sender = 1 AND users_id = ' . $account['users_id'] . ') OR ';
+$data['count']['archivbox'] = cs_sql_count(__FILE__, 'messages', $archivcond1 . '(messages_archiv_receiver = 1 AND users_id_to = ' . $account['users_id'] . ')');
 $data['var']['pages'] = cs_pages('messages','inbox',$data['count']['inbox'],$start,$users_id,$sort);
-$data['var']['new_msgs'] = cs_sql_count(__FILE__,'messages','users_id_to = "'.$users_id.'" AND messages_show_receiver = "1" AND messages_view = "0"');
+$data['var']['new_msgs'] = cs_sql_count(__FILE__,'messages','users_id_to = '.$users_id.' AND messages_show_receiver = 1 AND messages_view = 0');
 
 $data['sort']['view']    = cs_sort('messages','archivbox',$start,'',5,$sort);
 $data['sort']['subject'] = cs_sort('messages','archivbox',$start,'',3,$sort);
 $data['sort']['sender']  = cs_sort('messages','archivbox',$start,'',7,$sort);
 $data['sort']['date']    = cs_sort('messages','archivbox',$start,'',1,$sort);
 
-$where = 'msg.users_id_to = "' . $users_id . '" AND msg.messages_archiv_receiver = "1"';
+$where = 'msg.users_id_to = ' . $users_id . ' AND msg.messages_archiv_receiver = 1';
 if (!empty($_POST['messages_filter'])) {
   $messages_data = cs_time_array();
   $id = (int) $_POST['messages_filter'] - 1;
@@ -73,7 +73,7 @@ for ($i = 0; $i < $messages_loop; $i++) {
 }
 
 
-$where = 'msg.users_id = "' . $users_id . '" AND msg.messages_archiv_sender = "1"';
+$where = 'msg.users_id = ' . $users_id . ' AND msg.messages_archiv_sender = 1';
 if (!empty($_POST['messages_filter'])) {
   $messages_data = cs_time_array();
   $id = (int) $_POST['messages_filter'] - 1;

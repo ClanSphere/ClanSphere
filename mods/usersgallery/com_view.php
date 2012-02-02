@@ -29,7 +29,7 @@ $data['if']['vote'] = FALSE;
 $select = 'usersgallery_id , usersgallery_name, usersgallery_titel, usersgallery_download, ';
 $select .= 'usersgallery_description, usersgallery_time, usersgallery_vote, usersgallery_count, ';
 $select .= 'usersgallery_close, folders_id';
-$where = 'folders_id = "' . $cat_id . '" AND usersgallery_status = "1" AND usersgallery_access <= "' . $access_id . '"';
+$where = 'folders_id = ' . $cat_id . ' AND usersgallery_status = 1 AND usersgallery_access <= ' . $access_id;
 switch($cs_options['list_sort']) {
   case 0:
     $order = 'usersgallery_id DESC';

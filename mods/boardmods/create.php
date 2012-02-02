@@ -63,7 +63,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $categories_id = empty($_POST['categories_id']) ? 0 : $_POST['categories_id'];
   $data['bm']['cat_dropdown'] = cs_categories_dropdown('boardmods',$categories_id);
   
-  $users = cs_sql_select(__FILE__,'users','users_nick, users_id','users_active = "1" AND users_delete = "0"','users_nick ASC',0,0);
+  $users = cs_sql_select(__FILE__,'users','users_nick, users_id','users_active = 1 AND users_delete = 0','users_nick ASC',0,0);
   $data['bm']['users_dropdown'] = cs_dropdown('users_id','users_nick',$users,$data['bm']['users_id']);
   
   $data['bm']['boardmods_modpanel'] = $data['bm']['boardmods_modpanel'] == 1 ? 'checked="checked"' : '';
