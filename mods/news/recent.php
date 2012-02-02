@@ -58,6 +58,22 @@ else {
   $news_loop = count($cs_news);
 }
 
+// Get number of comments per post
+// $comment_counts maps news_id to comment count
+$comment_counts = array();
+$news_ids = array();
+foreach($cs_news as $item){
+  $news_ids[] = $item['news_id'];
+  $comment_counts[$item['news_id']] = 0; // init to 0 as 0 comments won't be returned by query
+}
+$news_ids = implode(', ', $news_ids);
+$comment_count_res = cs_sql_select(__FILE__, 'comments', 'comments_fid as news_id, COUNT(*) as comment_count', "comments_mod = 'news' AND comments_fid in ($news_ids) GROUP BY comments_fid", 0, 0, 0, 0);
+if(!empty($comment_count_res)){
+  foreach($comment_count_res as $count_info){
+    $comment_counts[$count_info['news_id']] = $count_info['comment_count'];
+  }
+}
+
 for($run = 0; $run < $news_loop; $run++) {
   $cs_news[$run]['news_headline'] = cs_secure($cs_news[$run]['news_headline']);
   $cs_news[$run]['news_time'] = cs_date('unix', $cs_news[$run]['news_time'], 1);
@@ -75,8 +91,7 @@ for($run = 0; $run < $news_loop; $run++) {
 
   $cs_user = cs_secure($cs_news[$run]['users_nick']);
   $cs_news[$run]['users_link'] = cs_user($cs_news[$run]['users_id'],$cs_news[$run]['users_nick'], $cs_news[$run]['users_active'], $cs_news[$run]['users_delete']);
-  $where3 = "comments_mod = 'news' AND comments_fid = " . $cs_news[$run]['news_id'];
-  $cs_news[$run]['comments_count'] = cs_sql_count(__FILE__, 'comments', $where3);
+  $cs_news[$run]['comments_count'] = $comment_counts[$cs_news[$run]['news_id']];
   $start = floor($cs_news[$run]['comments_count'] / ($account['users_limit'] + 1)) * $account['users_limit'];
   $cs_news_com_count = $cs_news[$run]['comments_count'] - $start;
   $cs_news[$run]['comments_link'] = cs_link($cs_lang['comments'], 'news', 'view', 'id=' . $cs_news[$run]['news_id'] . '&amp;start=' . $start . '#com' . $cs_news_com_count);
