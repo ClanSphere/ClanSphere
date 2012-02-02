@@ -171,7 +171,7 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
       $same_qry .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
       $same_qry .= empty($sql_order) ? '' : ' ORDER BY ' . $sql_order;
       $sql_notin = '(' . $cell[0] . '_id NOT IN (SELECT TOP ' . $first . ' ' . $same_qry . '))';
-      $sql_where = empty($sql_where) ? $sql_notin : $sql_notin . ' AND ';
+      $sql_where = empty($sql_where) ? $sql_notin : $sql_notin . ' AND ' . $sql_where;
     }
   }
 
