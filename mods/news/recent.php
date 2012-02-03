@@ -62,17 +62,22 @@ else {
 // $comment_counts maps news_id to comment count
 $comment_counts = array();
 $news_ids = array();
-foreach($cs_news as $item){
-  $news_ids[] = $item['news_id'];
-  $comment_counts[$item['news_id']] = 0; // init to 0 as 0 comments won't be returned by query
-}
-$news_ids = implode(', ', $news_ids);
-$comment_count_res = cs_sql_select(__FILE__, 'comments', 'comments_fid as news_id, COUNT(*) as comment_count', "comments_mod = 'news' AND comments_fid in ($news_ids) GROUP BY comments_fid", 0, 0, 0, 0);
-if(!empty($comment_count_res)){
-  foreach($comment_count_res as $count_info){
-    $comment_counts[$count_info['news_id']] = $count_info['comment_count'];
+if(is_array($cs_news)) {
+  foreach($cs_news as $item){
+    $news_ids[] = $item['news_id'];
+    $comment_counts[$item['news_id']] = 0; // init to 0 as 0 comments won't be returned by query
+  }
+  $news_ids = implode(', ', $news_ids);
+  $where = "comments_mod = 'news' AND comments_fid in (" . $news_ids . ") GROUP BY comments_fid";
+  $comment_count_res = cs_sql_select(__FILE__, 'comments', 'comments_fid as news_id, COUNT(*) as comment_count', $where, 0, 0, 0, 0);
+  if(!empty($comment_count_res)){
+    foreach($comment_count_res as $count_info){
+      $comment_counts[$count_info['news_id']] = $count_info['comment_count'];
+    }
   }
 }
+else
+  $comment_count_res = array();
 
 for($run = 0; $run < $news_loop; $run++) {
   $cs_news[$run]['news_headline'] = cs_secure($cs_news[$run]['news_headline']);
