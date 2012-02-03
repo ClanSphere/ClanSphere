@@ -13,10 +13,11 @@ function cs_cache_clear() {
   cs_sql_update(__FILE__, 'options', array('options_value'), array($unicode), 0, $where); 
  }
 
-function cs_cache_delete($name) {
+function cs_cache_delete($name, $ttl = 0) {
 
-  if(xcache_isset($name))
-    xcache_unset($name);
+  $token = empty($ttl) ? $name : 'ttl_' . $name;
+  if(xcache_isset($token))
+    xcache_unset($token);
 }
 
 function cs_cache_info() {
@@ -34,22 +35,24 @@ function cs_cache_info() {
   return array_values($form);
 }
 
-function cs_cache_load($name) {
+function cs_cache_load($name, $ttl = 0) {
 
-  if(xcache_isset($name))
-    return xcache_get($name);
+  $token = empty($ttl) ? $name : 'ttl_' . $name;
+  if(xcache_isset($token))
+    return xcache_get($token);
   else
     return false;
 }
 
-function cs_cache_save($name, $content) {
+function cs_cache_save($name, $content, $ttl = 0) {
 
-  cs_cache_delete($name);
+  $token = empty($ttl) ? $name : 'ttl_' . $name;
+  cs_cache_delete($token);
 
   if(is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
   else
-    xcache_set($name, $content);
+    xcache_set($token, $content, $ttl);
 
   return $content;
 }

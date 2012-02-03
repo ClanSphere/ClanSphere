@@ -8,6 +8,7 @@ ___________________________________________________________
 -- First version that is IPv6 ready
 -- Recommended PHP version changed to 5.4.0
 
+-> Added caching support for a given number of seconds [ttl] (hajo)
 -> Added forwarding support to messages mod (fr33z3m4n)
 -> Fixed email line-endings and user email activation issues (hajo)
 -> Fixed language switching problems (hajo)

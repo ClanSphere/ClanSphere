@@ -13,8 +13,9 @@ function cs_cache_clear() {
 
 function cs_cache_delete($name, $ttl = 0) {
 
-  if(apc_exists($name))
-    apc_delete($name);
+  $token = empty($ttl) ? $name : 'ttl_' . $name;
+  if(apc_exists($token))
+    apc_delete($token);
 }
 
 function cs_cache_info() {
