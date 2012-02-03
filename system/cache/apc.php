@@ -11,7 +11,7 @@ function cs_cache_clear() {
   cs_sql_update(__FILE__, 'options', array('options_value'), array($unicode), 0, $where); 
  }
 
-function cs_cache_delete($name) {
+function cs_cache_delete($name, $ttl = 0) {
 
   if(apc_exists($name))
     apc_delete($name);
@@ -29,22 +29,25 @@ function cs_cache_info() {
   return array_values($form);
 }
 
-function cs_cache_load($name) {
+function cs_cache_load($name, $ttl = 0) {
 
-  if(apc_exists($name))
-    return apc_fetch($name);
-  else
-    return false;
+  $token = empty($ttl) ? $name : 'ttl_' . $name;
+  if(apc_exists($token)) {
+      return apc_fetch($token);
+  }
+
+  return false;
 }
 
-function cs_cache_save($name, $content) {
+function cs_cache_save($name, $content, $ttl = 0) {
 
-  cs_cache_delete($name);
+  $token = empty($ttl) ? $name : 'ttl_' . $name;
+  cs_cache_delete($token);
 
   if(is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
   else
-    apc_store($name, $content);
+    apc_store($token, $content, $ttl);
 
   return $content;
 }
