@@ -34,7 +34,7 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
           $author = (empty($item['nick']) OR empty($item['author'])) ? '' : 
             ($item['author'] . ' (' . cs_secure($item['nick']) . ')');
           $category = empty($item['cat']) ? '' : htmlspecialchars($item['cat'], ENT_NOQUOTES, $cs_main['charset']);
-          $content .= cs_rss_item($title, $link, $text, $date, $category);
+          $content .= cs_rss_item($title, $link, $text, $date, $author, $category);
         }
       }
     }
