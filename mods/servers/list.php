@@ -9,14 +9,14 @@ $id = empty($_GET['id']) ? 0 : (int) $_GET['id'];
 $cache_name = 'servers_list_' . (int) $id;
 $cache_time = 60;
 
-$data    = cs_cache_load($cache_name . '_data', $cache_time);
-$results = cs_cache_load($cache_name . '_results', $cache_time);
+$data = cs_cache_load($cache_name, $cache_time);
 
 // Test if fsockopen active
 if (empty($data) AND fsockopen("udp://127.0.0.1", 1)) {
 
   $results = array();
   $data = array('servers' => array());
+  $data['if']['noquery'] = false;
   $data['if']['server'] = false;
 
   include_once 'mods/servers/servers.class.php';
@@ -164,13 +164,12 @@ if (empty($data) AND fsockopen("udp://127.0.0.1", 1)) {
     }
   }
 
-  cs_cache_save($cache_name . '_data', $data, $cache_time);
-  cs_cache_save($cache_name . '_results', $results, $cache_time);
+  cs_cache_save($cache_name, $data, $cache_time);
 }
 elseif(empty($data)) {
 
-  $results = array();
   $data = array('servers' => array());
+  $data['if']['noquery'] = true;
 
   /* if fsockopen deactive, list servers */
   $tables = 'servers srv INNER JOIN {pre}_games gam ON srv.games_id = gam.games_id';
@@ -203,10 +202,10 @@ elseif(empty($data)) {
     $data['servers'][$serv]['info'] = $cs_servers[$serv]['servers_info'];
   }
 
-  cs_cache_save($cache_name . '_data', $data, $cache_time);
+  cs_cache_save($cache_name, $data, $cache_time);
 }
 
-if(empty($results))
-  echo cs_subtemplate(__FILE__,$data,'servers','noquery');
-else
+if(empty($data['if']['noquery']))
   echo cs_subtemplate(__FILE__,$data,'servers','list');
+else
+  echo cs_subtemplate(__FILE__,$data,'servers','noquery');

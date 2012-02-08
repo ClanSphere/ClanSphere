@@ -32,7 +32,7 @@ if(!empty($cs_server)) {
   for($run=0; $run<count($cs_server); $run++) {
     $server_query_ex = explode(";",$cs_server[$run]['servers_class']);
     $cs_server[$run]['servers_class'] = $server_query_ex[0];
-    $cs_server[$run]['servers_game'] = empty($server_query_ex[1]) ? '' : $server_query_ex[1];
+    $cs_server[$run]['servers_game'] = empty($server_query_ex[1]) ? $server_query_ex[0] : $server_query_ex[1];
     $data['servers'][$run]['id'] = $cs_server[$run]['servers_id'];
     $data['servers'][$run]['name'] = $cs_server[$run]['servers_name'];
     $data['servers'][$run]['game'] = $cs_server[$run]['games_name'];
