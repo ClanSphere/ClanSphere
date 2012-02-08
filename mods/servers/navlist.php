@@ -4,12 +4,18 @@
 
 $cs_lang = cs_translate('servers');
 $cs_option = cs_sql_option(__FILE__, 'servers');
-$id = empty($_GET['sid']) ? '' : (int) $_GET['sid'];
+$id = empty($_GET['sid']) ? 0 : (int) $_GET['sid'];
 
-$data = array('servers' => array());
+$cache_name = 'servers_navlist_' . (int) $id;
+$cache_time = 60;
+
+$data = cs_cache_load($cache_name, $cache_time);
 
 // Test if fsockopen active
-if (fsockopen("udp://127.0.0.1", 1)) {
+if (empty($data) AND fsockopen("udp://127.0.0.1", 1)) {
+
+  $data = array('servers' => array());
+
   include_once 'mods/servers/servers.class.php';
 
   /* Get Server SQL-Data */
@@ -124,5 +130,11 @@ if (fsockopen("udp://127.0.0.1", 1)) {
       }
     }
   }
-  echo cs_subtemplate(__FILE__,$data,'servers','navlist');
+
+  cs_cache_save($cache_name, $data, $cache_time);
 }
+
+if(empty($data))
+  echo 'fsockopen error';
+else
+  echo cs_subtemplate(__FILE__,$data,'servers','navlist');
