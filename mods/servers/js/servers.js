@@ -17,6 +17,6 @@ $(function() {
 });
 
 function hideServerQuery() {
-	var html = 'Not in used by TeamSpeak 3 <input type="hidden" name="servers_query" value="1" />';
+	var html = 'Not used by TeamSpeak 3 <input type="hidden" name="servers_query" value="1" />';
 	$('[name="servers_query"]').parent().html(html);
 }
