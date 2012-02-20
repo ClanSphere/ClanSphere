@@ -5,8 +5,8 @@ $cs_lang = cs_translate('replays');
 $cs_get = cs_get('id');
 
 if(isset($cs_get['agree'])) {
-  $replays = cs_sql_select(__FILE__,'replays','replays_mirrors',"replays_id = '" . $cs_get['id'] . "'");
-  $replays_string = $replays['replays_mirrors'];
+  $replays = cs_sql_select(__FILE__,'replays','replays_mirror_urls',"replays_id = '" . $cs_get['id'] . "'");
+  $replays_string = $replays['replays_mirror_urls'];
   $replays_pics = empty($replays_string) ? array() : explode("\n",$replays_string);
   foreach($replays_pics AS $pics) {
     cs_unlink('replays',$pics);
