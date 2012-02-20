@@ -47,7 +47,12 @@ if(!empty($cs_replays['replays_mirror_urls'])) {
   $mirror_count = count($mirror_urls);
 
   for($run=0; $run < $mirror_count; $run++) {
-    if(empty($mirror_names[$run])) $mirror_names[$run] = $mirror_urls[$run];
+
+    if(empty($mirror_names[$run]))
+      $mirror_names[$run] = $mirror_urls[$run];
+    if(substr($mirror_urls[$run],0,15) == 'uploads/replays')
+      $mirror_urls[$run] = $cs_main['php_self']['dirname'] . $mirror_urls[$run];
+
     $data['replays']['mirrors'] .= cs_html_link($mirror_urls[$run],$mirror_names[$run]) . cs_html_br(1);
   }
 }
