@@ -2,7 +2,7 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2011.3 >> 2011-02-0X
+ClanSphere 2011.3 >> 2012-02-2X
 ___________________________________________________________
 
 -- First version that is IPv6 ready
@@ -18,7 +18,7 @@ ___________________________________________________________
 -> Fixed some sql queries that don't follow the standard (patches by pico)
 -> Improved magic_quotes detection and handling (hajo)
 -> Removed author from news rss feed (hajo)
--> Reworked servers mod (fr33z3m4n)
+-> Reworked servers mod and added ttl caching (fr33z3m4n)
 -> Updated jQuery to 1.7.1 (hajo)
 
 -- Fixed a few bugs that were reported at "Trac" --
