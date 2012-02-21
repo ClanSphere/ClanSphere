@@ -11,6 +11,14 @@
 </table>
 <br />
 {lang:getmsg}
+{if:error}
+<table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
+  <tr>
+    <td class="leftb">{avatar:error}</td>
+  </tr>
+</table>
+<br />
+{stop:error}
 <form method="post" id="users_avatar" action="{action:form}" enctype="multipart/form-data">
   <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
     <tr>

@@ -16,6 +16,9 @@ $img_filetypes = array('image/pjpeg' => 'jpg','image/jpeg' => 'jpg','image/gif' 
 $count_abo = cs_sql_count(__FILE__,'abonements','users_id=' .$account['users_id']);
 $count_att = cs_sql_count(__FILE__,'boardfiles','users_id=' .$account['users_id']);
 
+$data = array();
+$data['if']['error'] = 0;
+
 $data['link']['abos'] = cs_url('board','center');
 $data['link']['abos_count'] = $count_abo;
 $data['link']['attachments'] = cs_url('board','attachments');
@@ -23,6 +26,7 @@ $data['link']['attachments_count'] = $count_att;
 $data['link']['signature'] = cs_url('board','signature');
 
 $error = 1;
+$doresize = 0;
 $user = cs_sql_select(__FILE__,'users','users_avatar',"users_id = '" . $account['users_id'] . "'");
 $useravatar = $user['users_avatar'];
 
@@ -42,7 +46,6 @@ elseif(!empty($_POST['submit']) AND !empty($files_gl['picture']['tmp_name'])) {
     if($allowed == $files_gl['picture']['type']) {
       $message = '';
       $error = 0;
-      $doresize = 0;
       $extension = $new_ext;
     }
   }
@@ -107,6 +110,11 @@ elseif(!empty($_POST['submit']) AND !empty($files_gl['picture']['tmp_name'])) {
 $data['lang']['getmsg'] = cs_getmsg();
 
 if(!empty($error) OR empty($_POST['submit'])) {
+
+  if(!empty($message)) {
+    $data['if']['error'] = 1;
+    $data['avatar']['error'] = $message;
+  }
 
   $data['action']['form'] = cs_url('board','avatar');
 
