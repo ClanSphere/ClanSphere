@@ -17,7 +17,8 @@ $cs_comments = cs_sql_select(__FILE__,'comments',$cells,"comments_id = '" . $com
 $com_fid = $cs_comments['comments_fid'];
 
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
-$select = 'frm.board_access AS board_access, frm.board_id AS board_id';
+$select = 'frm.board_access AS board_access, frm.board_id AS board_id, '
+        . 'thr.threads_time AS threads_time, thr.users_id AS users_id';
 $where = "thr.threads_id = '" . $com_fid . "'";
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where);
 
@@ -69,7 +70,11 @@ if(isset($_POST['agree'])) {
 
   $update_last = cs_sql_select(__FILE__,'comments','*',"comments_fid = '" . $com_fid . "'",'comments_time DESC',0,1);
   $cells = array('threads_last_time','threads_last_user');
-  $saves = array((int) $update_last['comments_time'], (int) $update_last['users_id']);
+
+  if(empty($update_last['comments_time']))
+    $saves = array((int) $cs_thread['threads_time'], (int) $cs_thread['users_id']);
+  else
+    $saves = array((int) $update_last['comments_time'], (int) $update_last['users_id']);
 
   cs_sql_update(__FILE__,'threads',$cells,$saves,$com_fid); 
 
