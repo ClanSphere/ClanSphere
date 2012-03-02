@@ -1,6 +1,6 @@
-UPDATE {pre}_options SET options_value = '2011.3 DEV' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
-UPDATE {pre}_options SET options_value = '2012-02-20' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
-UPDATE {pre}_options SET options_value = '77' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
+UPDATE {pre}_options SET options_value = '2011.3' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
+UPDATE {pre}_options SET options_value = '2012-03-02' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
+UPDATE {pre}_options SET options_value = '80' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 ALTER TABLE {pre}_gbook ADD gbook_ip2 varchar(40) NOT NULL default '';
 UPDATE {pre}_gbook SET gbook_ip2 = gbook_ip;

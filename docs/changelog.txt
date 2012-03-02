@@ -2,21 +2,22 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2011.3 >> 2012-02-2X
+ClanSphere 2011.3 >> 2012-03-02 [Last Release]
 ___________________________________________________________
 
--- First version that is IPv6 ready
 -- Recommended PHP version changed to 5.4.0
 
 -> Added caching support for a given number of seconds [ttl] (hajo)
 -> Added caching support for wincache extension (hajo)
 -> Added forwarding support to messages mod (fr33z3m4n)
+-> Added new country icons and dropdown entries (hajo)
 -> Fixed email line-endings and user email activation issues (hajo)
 -> Fixed language switching problems (hajo)
 -> Fixed options and removal in maps mod (palle!)
 -> Fixed php error handling with @ sign (hajo)
 -> Fixed some sql queries that don't follow the standard (patches by pico)
 -> Improved magic_quotes detection and handling (hajo)
+-> Improved support for IPv6 (hajo, fr33z3m4n)
 -> Removed author from news rss feed (hajo)
 -> Reworked servers mod and added ttl caching (fr33z3m4n)
 -> Updated jQuery to 1.7.1 (hajo)
