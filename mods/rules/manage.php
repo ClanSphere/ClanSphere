@@ -16,8 +16,8 @@ $cs_sort[1] = 'rules_order DESC';
 $cs_sort[2] = 'rules_order ASC';
 $cs_sort[3] = 'rules_title DESC';
 $cs_sort[4] = 'rules_title ASC';
-$cs_sort[5] = 'categories_id DESC';
-$cs_sort[6] = 'categories_id ASC';
+$cs_sort[5] = 'cat.categories_id DESC';
+$cs_sort[6] = 'cat.categories_id ASC';
 $order = $cs_sort[$sort];
 $rules_count = cs_sql_count(__FILE__,'rules');
 
