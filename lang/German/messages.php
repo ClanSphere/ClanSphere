@@ -31,6 +31,7 @@ $cs_lang['new_message']   = 'Neue Nachricht';
 $cs_lang['new_messages']   = ' Neue Nachrichten';
 $cs_lang['del_all_messages'] = 'Alle Nachrichten l&ouml;scchen';
 $cs_lang['archiv']      = 'Ins Archiv';
+$cs_lang['forward'] = 'Weiterleiten';
 
 $cs_lang['days']     = 'Tage';
 $cs_lang['today']     = 'Heute';

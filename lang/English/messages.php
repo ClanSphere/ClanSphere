@@ -31,6 +31,7 @@ $cs_lang['new_message']   = 'New message';
 $cs_lang['new_messages']   = ' new messages';
 $cs_lang['del_all_messages'] = 'Delete all messages';
 $cs_lang['archiv']      = 'Move to archive';
+$cs_lang['forward'] = 'Forward';
 
 $cs_lang['days']     = 'Days';
 $cs_lang['today']     = 'Today';
