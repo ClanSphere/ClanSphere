@@ -191,8 +191,8 @@ $cs_lang['name_lang'] = 'Language database';
 $cs_lang['text_lang'] = 'More languages for your website are available here.';
 $cs_lang['name_mods'] = 'Module Database';
 $cs_lang['text_mods'] = 'More modules for your website are available here.';
-$cs_lang['name_svn'] = 'Subversion';
-$cs_lang['text_svn'] = 'The latest developer version as download. Just for checking!';
+$cs_lang['name_vcs'] = 'Version control';
+$cs_lang['text_vcs'] = 'The latest developer version as download. Just for checking!';
 $cs_lang['name_wiki'] = 'Wiki';
 $cs_lang['text_wiki'] = 'Many helpful sites about the project.';
 

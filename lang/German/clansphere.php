@@ -191,8 +191,8 @@ $cs_lang['name_lang'] = 'Sprach Datenbank';
 $cs_lang['text_lang'] = 'Weitere Sprachen f&uuml;r die Seite gibt es hier.';
 $cs_lang['name_mods'] = 'Modul Datenbank';
 $cs_lang['text_mods'] = 'Weitere Module f&uuml;r die Seite gibt es hier.';
-$cs_lang['name_svn'] = 'Subversion';
-$cs_lang['text_svn'] = 'Der aktuelle Stand der Entwicklung zum herunterladen. Nur zum Ausprobieren!';
+$cs_lang['name_vcs'] = 'Versionskontrolle';
+$cs_lang['text_vcs'] = 'Der aktuelle Stand der Entwicklung zum herunterladen. Nur zum Ausprobieren!';
 $cs_lang['name_wiki'] = 'Wiki';
 $cs_lang['text_wiki'] = 'Viele vorgefertigte Hilfe- und Informationsseiten zum Projekt vorhanden.';
 

@@ -38,9 +38,9 @@ $data['support'] = array(
     'text' => $cs_lang['text_mods'],
   ),
   6 => array(
-    'url' => 'subversion.clansphere.net',
-    'name' => $cs_lang['name_svn'],
-    'text' => $cs_lang['text_svn'],
+    'url' => 'vcs.clansphere.net',
+    'name' => $cs_lang['name_vcs'],
+    'text' => $cs_lang['text_vcs'],
   ),
   7 => array(
     'url' => 'wiki.clansphere.net',
