@@ -31,7 +31,7 @@ $data = array();
 $data['errors']['show'] = '';
 
 # do not delete files in development environments
-if(!is_dir('.git') AND !is_dir('.svn')) {
+if(!is_dir('.git')) {
 
   if(!unlink('uninstall.sql')) $data['errors']['show'] .= $cs_lang['remove_file'] . " 'uninstall.sql'" . cs_html_br(1);
   if(!unlink('install.sql'))   $data['errors']['show'] .=  $cs_lang['remove_file'] . " 'install.sql'" . cs_html_br(1);

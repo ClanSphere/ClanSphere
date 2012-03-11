@@ -1,4 +1,4 @@
-UPDATE {pre}_options SET options_value = '2007.3_svn' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
+UPDATE {pre}_options SET options_value = '2007.3' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
 UPDATE {pre}_options SET options_value = '2007-06-26' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
 UPDATE {pre}_options SET options_value = '13' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('banners','last_id','0');

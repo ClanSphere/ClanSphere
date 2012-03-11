@@ -138,7 +138,7 @@ function cs_content_append ($content) {
     $content = cs_admin_menu() . $content;
   }
 
-  if($account['access_clansphere'] > 3 AND file_exists('install.php') AND !file_exists('.git') AND !file_exists('.svn'))
+  if($account['access_clansphere'] > 3 AND file_exists('install.php') AND !file_exists('.git'))
     $content = cs_subtemplate(__FILE__, array(), 'clansphere', 'del_install') . $content;
 
   return $content;
@@ -483,7 +483,7 @@ function cs_tasks($dir) {
   global $cs_main;
   if($goal = opendir($cs_main['def_path'] . '/' . $dir . '/')) {
     while(false !== ($filename = readdir($goal))) {
-      if($filename != '.' AND $filename != '..' AND $filename != '.svn' AND $filename != '.git')
+      if($filename != '.' AND $filename != '..' AND $filename != '.git')
         include_once $dir . '/' . $filename;
     }
     closedir($goal);

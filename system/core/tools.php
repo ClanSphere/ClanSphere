@@ -426,7 +426,7 @@ function cs_paths($dir) {
     if(is_dir($dir)) {
       $goal = opendir($dir);
       while(false !== ($filename = readdir($goal))) {
-        if($filename != '.' && $filename != '..' && $filename != '.git' && $filename != '.svn') {
+        if($filename != '.' && $filename != '..' && $filename != '.git') {
           $path_array[$filename] = 0;
         }
       }
@@ -436,7 +436,7 @@ function cs_paths($dir) {
   else {
     $scandir = is_dir($dir) ? scandir($dir) : array();
     foreach($scandir as $filename) {
-      if($filename != '.' && $filename != '..' && $filename != '.git' && $filename != '.svn') {
+      if($filename != '.' && $filename != '..' && $filename != '.git') {
         $path_array[$filename] = 0;
       }
     }

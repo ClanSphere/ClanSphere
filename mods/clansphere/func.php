@@ -4,7 +4,7 @@ function get_size($dir) {
   $handle = opendir($dir);
   $size = 0; 
   while(($file = readdir($handle)) !== FALSE) { 
-    if($file == '.' || $file == '..' || $file == '.git' || $file == '.svn') continue; 
+    if($file == '.' || $file == '..' || $file == '.git') continue; 
     $full_path = $dir.'/'.$file; 
     
   if(is_dir($full_path)) { 

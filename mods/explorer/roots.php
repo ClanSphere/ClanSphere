@@ -28,7 +28,7 @@ if (is_dir($target) AND chdir($target)) {
   $goal = opendir('.');
   
   while(false !== ($curr_data = readdir($goal))) {
-    if($curr_data != '..' && $curr_data != '.' && $curr_data != '.git' && $curr_data != '.svn') {
+    if($curr_data != '..' && $curr_data != '.' && $curr_data != '.git') {
       if (is_dir($curr_data)) {
         $dirs[] = $curr_data;
       } else {

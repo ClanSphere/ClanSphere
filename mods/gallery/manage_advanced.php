@@ -119,14 +119,14 @@ if(isset($_POST['submit']))
     $dirHandleThumbs = opendir("uploads/gallery/thumbs");
     while($filename = readdir($dirHandlePics))
     {
-      if ($filename != "." && $filename != ".." && $filename != ".keep" && $filename != ".git" && $filename != ".svn" && $filename != "Thumbs.db" && $filename != "index.html")
+      if ($filename != "." && $filename != ".." && $filename != ".keep" && $filename != ".git" && $filename != "Thumbs.db" && $filename != "index.html")
       {
         $picnamesArray[] = $filename;
       }
     }
     while($filename = readdir($dirHandleThumbs))
     {
-      if ($filename != "." && $filename != ".." && $filename != ".keep" && $filename != ".git" && $filename != ".svn" && $filename != "Thumbs.db" && $filename != "index.html")
+      if ($filename != "." && $filename != ".." && $filename != ".keep" && $filename != ".git" && $filename != "Thumbs.db" && $filename != "index.html")
       {
         $name = strlen($filename);
         $filename = substr($filename,'6',$name);
