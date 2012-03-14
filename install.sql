@@ -770,8 +770,8 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '557');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_remote', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.3');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2012-03-02');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.3 r1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2012-03-14');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '80');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
@@ -1125,7 +1125,7 @@ CREATE TABLE {pre}_users (
   users_age varchar(12) NOT NULL default '',
   users_height int(4) NOT NULL default '0',
   users_lang varchar(40) NOT NULL default '',
-  users_country varchar(8) NOT NULL default '',
+  users_country varchar(40) NOT NULL default '',
   users_postalcode varchar(8) NOT NULL default '',
   users_place varchar(40) NOT NULL default '',
   users_adress varchar(80) NOT NULL default '',

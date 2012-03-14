@@ -2,6 +2,16 @@ CHANGELOG
 --------------------------
 
 
+ClanSphere 2011.3 r1 >> 2012-03-14 [Service Updates]
+___________________________________________________________
+
+-> Fixed category sorting in rules manage (palle!)
+-> Fixed forward not translated in messages mod (hajo)
+-> Fixed new countries not usable due to database limitations (hajo)
+-> Fixed no selection error message in maps mod not working (hajo)
+-> Updated checks, information and links from svn to git (hajo)
+
+
 ClanSphere 2011.3 >> 2012-03-02 [Last Release]
 ___________________________________________________________
 
