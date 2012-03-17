@@ -5,7 +5,7 @@ CHANGELOG
 ClanSphere 2011.3 r1 >> 2012-03-14 [Service Updates]
 ___________________________________________________________
 
--> Fixed board com create file handling (patch by Tazzernator)
+-> Fixed board file handling issues (patches by Tazzernator)
 -> Fixed category sorting in rules manage (palle!)
 -> Fixed forward not translated in messages mod (hajo)
 -> Fixed new countries not usable due to database limitations (hajo)
