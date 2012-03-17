@@ -115,7 +115,7 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
   }
 }
 
-if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced']) OR isset($_POST['new_file']) OR isset($_POST['files+']) OR isset($_POST['fquote'])) {
+if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced']) OR isset($_POST['new_file']) OR isset($_POST['files']) OR isset($_POST['fquote'])) {
 
   $quote_in = !empty($ori_text) ? "\n" . $ori_text : '';
   $text = $_POST['comments_text'] . $quote_in ;
@@ -223,6 +223,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
         $file_name[$num] = '';
       } else {
         $file_name[$b] = $file_name[$num];
+        $file_upload_name[$b] = $file_upload_name[$num];
         $a++;
         $b++;
       }
