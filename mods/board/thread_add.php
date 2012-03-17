@@ -192,6 +192,7 @@ for($run=0; $run < $run_loop_files; $run++) {
       $file_name[$num] = '';
     }  else {
       $file_name[$b] = $file_name[$num];
+      $file_upload_name[$b] = $file_upload_name[$num];
       $a++;
       $b++;
     }
