@@ -184,6 +184,7 @@ for($run=0; $run < $run_loop_files; $run++) {
       }
     }  else {
       $cs_boardfiles[$b]['boardfiles_name'] = $cs_boardfiles[$run]['boardfiles_name'];
+      $file_upload_name[$b] = $file_upload_name[$run];
       $a++;
       $b++;
       $check = '1';
