@@ -13,7 +13,7 @@ $order = 'gallery_id DESC';
 $cs_gallery = cs_sql_select(__FILE__,$from,$select,$where,$order,0,$cs_option['max_navlist']);
 $gallery_loop = count($cs_gallery);
 
-$count = $gallery_loop - 1;
+$count = !empty($gallery_loop) ? ($gallery_loop - 1) : 0;
 mt_srand((double)microtime()*1000000);
 $run = mt_rand(0,$count);
 $pic = cs_secure($cs_gallery[$run]['gallery_id']);
