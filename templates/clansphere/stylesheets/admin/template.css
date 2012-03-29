@@ -50,6 +50,9 @@ a:hover {
 #head span {
   color: #B91F1D;
 }
+#head span.small {
+  font-size: 8px;
+}
 #head div {
   font-size: 12px;
   letter-spacing: 1px;

@@ -2,8 +2,10 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2011.3 r1 >> 2012-03-14 [Service Updates]
+ClanSphere 2011.3 Patch 1 >> 2012-03-XX
 ___________________________________________________________
+
+-- New default template and theme made by Seron with optimizations by eQual
 
 -> Fixed board file handling issues (patches by Tazzernator)
 -> Fixed category sorting in rules manage (palle!)

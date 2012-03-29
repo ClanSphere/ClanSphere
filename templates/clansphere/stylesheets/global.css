@@ -1,0 +1,62 @@
+/* ----------------------------------------------------------------------------
+	BEGIN BASIC STYLES CSS
+---------------------------------------------------------------------------- */
+
+
+body {
+		background: #DBDBDB url(../images/body_background.png) 0 0 repeat-x;
+		color: #525252;
+		font-family: Arial, Tahoma, Verdana, "Helvetica Neue", "Neue Helvetica", Helvetica, sans-serif;
+		font-size: 52%/1.52em;
+		margin: 25px 0 50px;
+		}
+
+
+/*  LINKS
+------------------------------------------------------------*/
+a:link, a:visited {
+		color: #525252;
+		outline: none;
+		text-decoration: none;
+		}
+a:hover { color: #111; text-decoration: none; }
+
+
+/*  SELECTIONS
+------------------------------------------------------------*/
+::-moz-selection {
+		background:#DA4040;
+		color:#FFF;
+		text-shadow: none;
+		}
+::selection {
+		background:#DA4040;
+		color:#FFF;
+		text-shadow: none;
+		}
+
+
+/*  HEADLINES
+------------------------------------------------------------*/
+h1 { font-size: 2.52em; }
+h2 { font-size: 1.952em; } 
+h3 { font-size: 1.652em; }
+h5 { font-size: 1.252em; } 
+h6 { font-size: 1.52em; }
+
+
+/*  SELF-CLEAR FLOATS
+------------------------------------------------------------*/
+.clear:after {
+		content: "."; 
+		display: block; 
+		height: 0; 
+		clear: both; 
+		visibility: hidden;
+		}
+.clear { display: inline-block; }
+
+/* Hides from IE-mac \*/
+* html .clear { height: 1%; }
+.clear { display: block ; }
+/* End hide from IE-mac */

@@ -1,0 +1,100 @@
+body {
+  background-color: #E5E5E5;
+  padding: 10px 10px 0 10px;
+  font-size: 12px;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.clearfix:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+/* End hide from IE-mac */
+
+a {
+  color: #000000;
+}
+a:hover {
+  text-decoration: none;
+}
+#head, #debug {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #888888;
+  height: 40px;
+  padding: 10px 0 0 0;
+  color: #757575;
+}
+#head {
+  font-size: 25px;
+  letter-spacing: 5px;
+  text-align: center;
+}
+#debug {
+  overflow: auto;
+  font-size: 10px;
+}
+#head span {
+  color: #B91F1D;
+}
+#head div {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+#errors {
+  color:#DD3300;
+}
+#sql {
+  color:#666666;
+}
+#nav-left {
+  float: left;
+  width: 16%;
+}
+.dark {
+  background-color: #F0F0F0 !important;
+}
+#content {
+  float: left;
+  width:64%;
+  margin-top: 20px;
+  font-size: 12px;
+  position: relative;
+}
+#nav-right {
+  float: right;
+  width: 20%;
+}
+.navbody { 
+  border-left: 1px solid #888888;
+  border-right: 1px solid #888888;
+  border-bottom: 1px solid #888888;
+  background-color: #FFFFFF;
+  padding:4px 6px 4px 8px;
+  color: #000000;
+  font-size: 13px; 
+  line-height: 1.5;
+}
+.navhead {
+  border: 1px solid #888888;
+  color: #B91F1D;
+  border-right: 4px solid #BA1616 !important;
+  letter-spacing: 3px;
+  padding:4px 6px 4px 8px !important;
+  background-color: #FFFFFF;
+  font-size: 14px;
+}
+.navhead {
+  margin-top:20px;
+}
+#counter span { float: right; }
+#ajax_loading {
+  position:absolute;
+  top:20px;
+  right:60px;
+}

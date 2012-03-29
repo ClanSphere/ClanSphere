@@ -1,0 +1,188 @@
+/* ----------------------------------------------------------------------------
+	BEGIN LAYOUT STYLES CSS
+---------------------------------------------------------------------------- */
+
+
+.container {
+		background: url(../images/container_background.png) 0 bottom no-repeat, #FFF url(../images/sidebar_background.png) 0 0 repeat-y;
+		border: 3px solid #B1B1B1;
+		margin: 0 auto;
+		position: relative;
+		width: 986px;
+		
+		-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.2);
+		-moz-box-shadow: 0 0 50px rgba(0,0,0,0.2);
+		-ms-box-shadow: 0 0 50px rgba(0,0,0,0.2);
+		box-shadow: 0 0 50px rgba(0,0,0,0.2);
+		}
+
+
+/*  HEADER
+------------------------------------------------------------*/
+#header { background: url(../images/header_background.png) 0 0 no-repeat; height: 209px; }
+#header > div { float: left; height: 160px; text-shadow: 1px 1px 0 #FFF; }
+
+/* ---- HEADLINE ---- */
+#header h1 {
+		color: #FFF;
+		font-size: 1em;
+		line-height: 47px;
+		padding-left: 12px;
+		text-shadow: 1px 1px 0 #000;
+		}
+
+/* ---- HEADER CLANSPHERE ---- */
+#header .clansphere { text-transform: uppercase; width: 392px; }
+#header .clansphere img { float: left; margin: 28px 20px 0 10px; }
+#header .clansphere h2 {
+		color: #666;
+		float: left;
+		font-size: 1.7em;
+		letter-spacing: 1px;
+		margin-top: 65px;
+		}
+#header .clansphere h2 b { color: #C00; }
+#header .clansphere h3 {
+		color: #999;
+		font-size: 0.8em;
+		float: left;
+		font-weight: normal;
+		}
+
+/* ---- HEADER TOPMATCH ---- */
+#header .topmatch {
+		height: 120px;
+		padding: 20px 20px 22px;
+		text-align: center;
+		width: 236px;
+		}
+#header .topmatch img { margin-bottom: 5px; width: 80px; }
+
+/* ---- HEADER LOGIN ---- */
+#header .login { height: 120px; padding: 20px; width: 276px; }
+
+
+/*  CONTENT
+------------------------------------------------------------*/
+#content {
+		background: #FFF url(../images/content_background_top.png) 0 0 no-repeat;
+		float: right;
+		margin-bottom: 25px;
+		padding: 10px 8px 0 6px;
+		width: 735px;
+		}
+#content > hr {
+		background: url(../images/content_break.png) center 0 no-repeat;
+		border: none;
+		display: block;
+		height: 21px;
+		margin: 0 0 5px 0;
+		padding: 0;
+		}
+
+/* ---- COTNENT INFOBOX ---- */
+#infobox {}
+#infobox > div {
+		background: #F7F7F7 url(../images/content_box_bottom.png) center bottom no-repeat;
+		border: 1px solid #D5D5D5;
+		border-left: 1px solid #D1D1D1;
+		border-right: 1px solid #D1D1D1;
+		float: left;
+		margin: 0 12px 10px 0;
+		min-height: 216px;
+		overflow: hidden;
+		text-shadow: 1px 1px 0 #FFF;
+		width: 235px;
+		
+		-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		-moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		-ms-box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		}
+#infobox > div:nth-child(3n) { margin-right: 0; }
+#infobox > div h2 {
+		background: url(../images/content_box_headline.png) 0 0 no-repeat;
+		color: #666;
+		font-size: 1.1em;
+		line-height: 36px;
+		margin-bottom: 5px;
+		padding-left: 45px;
+		}
+#infobox > div ul { margin-bottom: 25px; }
+#infobox > div ul li, #infobox > div tr {
+        background: url(../images/sidebar_list2.png) center 0 no-repeat;
+        color: #999;
+        font-weight: bold;
+        line-height: 30px;
+        margin-bottom: 1px;
+        padding-left: 30px;
+        }
+
+#infobox > div table { margin: 0 10px; width: 92%; }
+#infobox > div ul li a { color: #999; display: block; }
+#infobox > div ul li a:hover { color: #333; }
+
+
+/*  SIDEBAR
+------------------------------------------------------------*/
+#sidebar {
+		background: url(../images/sidebar_background_top.png) 0 0 no-repeat;
+		float: left;
+		margin-bottom: 25px;
+		padding: 10px 7px 0;
+		width: 223px;
+		}
+
+#sidebar > div {
+		background-color: #F7F7F7;
+		border: 1px solid #D5D5D5;
+		border-left: 1px solid #D1D1D1;
+		border-right: 1px solid #D1D1D1;
+		margin-bottom: 6px;
+		text-shadow: 1px 1px 0 #FFF;
+		
+		-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		-moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		-ms-box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+		}
+
+#sidebar > div h2 {
+		background: url(../images/sidebar_headline.png) 0 0 no-repeat;
+		color: #666;
+		font-size: 1.1em;
+		line-height: 36px;
+		margin-bottom: 5px;
+		padding-left: 45px;
+		}
+
+#sidebar > div ul { margin-bottom: 25px; }
+#sidebar > div ul li {
+		background: url(../images/sidebar_list.png) center 0 no-repeat;
+		color: #999;
+		font-weight: bold;
+		line-height: 30px;
+		padding-left: 30px;
+		}
+#sidebar > div ul li a { color: #999; display: block; }
+#sidebar > div ul li a:hover { color: #333; }
+
+
+/*  FOOTER
+------------------------------------------------------------*/
+#footer {
+		background: #808080 url(../images/footer_background.png) 0 0 repeat-x;
+		border: 1px solid #7A7A7A;
+		color: #FFF;
+		clear: both;
+		font-size: 1.1em;
+		font-weight: bold;
+		line-height: 45px;
+		padding: 0 25px;
+		text-align: center;
+		text-shadow: 1px 1px 0 #656565;
+		}
+#footer a { color: #FFF; }
+#footer a:hover { text-decoration: underline; }
+#footer span { float: right; }
+#footer span:first-child { float: left; }
