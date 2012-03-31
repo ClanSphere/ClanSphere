@@ -2,15 +2,15 @@ CHANGELOG
 --------------------------
 
 
-ClanSphere 2011.3 Patch 1 >> 2012-03-XX
+ClanSphere 2011.3 Patch 1 >> 2012-03-31
 ___________________________________________________________
 
--- New default template and theme made by Seron with optimizations by eQual
+-- New default template and theme made by Seron with optimizations by equal
 
 -> Fixed board file handling issues (patches by Tazzernator)
 -> Fixed category sorting in rules manage (palle!)
 -> Fixed forward not translated in messages mod (hajo)
--> Fixed new countries not usable due to database limitations (hajo)
+-> Fixed new countries not usable due to database limitations (reported by mindcrime)
 -> Fixed no selection error message in maps mod not working (hajo)
 -> Updated checks, information and links from svn to git (hajo)
 
