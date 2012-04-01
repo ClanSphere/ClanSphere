@@ -13,7 +13,7 @@ $data = array();
 $img_max['width'] = $op_linkus['max_width'];
 $img_max['height'] = $op_linkus['max_height'];
 $img_max['size'] = $op_linkus['max_size'];
-$img_filetypes = array('gif','jpg','png');
+$img_filetypes = array('image/png' => 'png','image/jpeg' => 'jpg','image/gif' => 'gif');
 
 if(isset($_POST['submit'])) {
   
