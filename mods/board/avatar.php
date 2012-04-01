@@ -11,7 +11,7 @@ $files_gl = cs_files();
 $img_max['width'] = $cs_board['avatar_width'];
 $img_max['height'] = $cs_board['avatar_height'];
 $img_max['size'] = $cs_board['avatar_size'];
-$img_filetypes = array('image/pjpeg' => 'jpg','image/jpeg' => 'jpg','image/gif' => 'gif', 'image/png' => 'png');
+$img_filetypes = array('gif','jpg','png');
 
 $count_abo = cs_sql_count(__FILE__,'abonements','users_id=' .$account['users_id']);
 $count_att = cs_sql_count(__FILE__,'boardfiles','users_id=' .$account['users_id']);

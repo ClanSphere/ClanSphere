@@ -6,7 +6,7 @@ $cs_lang = cs_translate('partner');
 require_once('mods/categories/functions.php');
 
 $op_partner = cs_sql_option(__FILE__,'partner');
-$img_filetypes = array('image/pjpeg' => 'jpg','image/jpeg' => 'jpg','image/gif' => 'gif', 'image/png' => 'png');
+$img_filetypes = array('gif','jpg','png');
 $error = '';
 $data = array();
 $files = cs_files();

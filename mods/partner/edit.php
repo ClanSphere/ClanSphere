@@ -12,7 +12,7 @@ $select = 'categories_id, partner_name, partner_url, partner_alt, partner_text, 
 $cs_partner = cs_sql_select(__FILE__,'partner',$select,"partner_id = '" . $partner_id . "'"); 
 
 $op_partner = cs_sql_option(__FILE__,'partner');
-$img_filetypes = array('image/pjpeg' => 'jpg','image/jpeg' => 'jpg','image/gif' => 'gif', 'image/png' => 'png');
+$img_filetypes = array('gif','jpg','png');
 $error = '';
 $data = array();
 

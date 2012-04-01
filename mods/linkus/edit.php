@@ -15,7 +15,7 @@ $data = array();
 $img_max['width'] = $op_linkus['max_width'];
 $img_max['height'] = $op_linkus['max_height'];
 $img_max['size'] = $op_linkus['max_size'];
-$img_filetypes = array('image/png' => 'png','image/jpeg' => 'jpg','image/gif' => 'gif');
+$img_filetypes = array('gif','jpg','png');
 
 $linkus_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id'])) $linkus_id = $cs_post['id'];
