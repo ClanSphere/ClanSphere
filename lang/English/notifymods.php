@@ -33,3 +33,6 @@ $cs_lang['files_text'] = 'One or more mirrors from download "%s" are maybe offli
 $cs_lang['files_subject'] = 'Download offline';
 $cs_lang['board_text'] = '"%s" reported a comment into the thread "%s", with following massage: "%s"';
 $cs_lang['board_subject'] = 'Report of a board comment';
+
+$cs_lang['files_info'] = 'Only applies to "defect download" reports';
+$cs_lang['board_info'] = 'Only applies to reported threads and comments';

@@ -1,6 +1,12 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2011.3 Patch 2 >> 2012-XX-XX
+___________________________________________________________
+
+-> Changed notifymods to contain a hint for files and board mod functionality (hajo)
+-> Updated jQuery to 1.7.2 (hajo)
+
 
 ClanSphere 2011.3 Patch 1 >> 2012-03-31
 ___________________________________________________________

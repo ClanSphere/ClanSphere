@@ -19,10 +19,15 @@
   <tr>
     <td class="leftc">{icon:access} {lang:access}</td><td class="leftb">
       <input type="checkbox" name="notifymods_gbook" value="1" {nm:notifymods_gbook} />{lang:gbook}<br />
+      <br />
       <input type="checkbox" name="notifymods_joinus" value="1" {nm:notifymods_joinus} />{lang:joinus}<br />
+      <br />
       <input type="checkbox" name="notifymods_fightus" value="1" {nm:notifymods_fightus} />{lang:fightus}<br />
+      <br />
       <input type="checkbox" name="notifymods_files" value="1" {nm:notifymods_files} />{lang:files}<br />
-      <input type="checkbox" name="notifymods_board" value="1" {nm:notifymods_board} />{lang:board}
+      {lang:files_info}<br />
+      <input type="checkbox" name="notifymods_board" value="1" {nm:notifymods_board} />{lang:board}<br />
+      {lang:board_info}
     </td>
   </tr>
   <tr>
@@ -31,7 +36,7 @@
       <input type="hidden" name="id" value="{nm:id}" />
       <input type="submit" name="submit" value="{lang:edit}" />
       <input type="submit" name="cancel" value="{lang:cancel}" />
-          </td>
+    </td>
   </tr>
 </table>
 </form>

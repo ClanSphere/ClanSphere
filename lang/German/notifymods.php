@@ -33,3 +33,6 @@ $cs_lang['files_text'] = 'Ein oder mehrere Spiegel vom Download "%s" sind m&ouml
 $cs_lang['files_subject'] = 'Download nicht erreichbar';
 $cs_lang['board_text'] = '"%s" meldete ein Kommentar im Forenthema "%s", mit der Nachricht: "%s"';
 $cs_lang['board_subject'] = 'Meldung eines Forum-Kommentars';
+
+$cs_lang['files_info'] = 'Betrifft nur die "Defekter Download" Meldungen';
+$cs_lang['board_info'] = 'Betrifft nur gemeldete Themen und Beitr&auml;ge';
