@@ -5,7 +5,7 @@
 function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
 
   global $cs_main;
-  $nl = "\r\n";
+  $nl = PHP_EOL;
   $mail = array();
 
   $subject = $options['def_org'] . ' - ' . $title;
@@ -27,11 +27,13 @@ function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
   $mail['from'] = empty($from) ? $options['def_mail'] : $from;
   $mail['to'] = $email;
 
-  $mail['headers'] = "MIME-Version: 1.0" . $nl;
+  $mail['headers'] = "From: " . $mail['from'] . $nl;
+  $mail['headers'] .= "Return-Path: " . $mail['from'] . $nl;
+  $mail['headers'] .= "Reply-To: " . $mail['from'] . $nl;
   $mail['headers'] .= "Content-Type: " . $type . "; charset=" . $cs_main['charset'] . $nl;
   $mail['headers'] .= "Content-Transfer-Encoding: base64" . $nl;
+  $mail['headers'] .= "MIME-Version: 1.0" . $nl;
   $mail['headers'] .= "X-Mailer: ClanSphere" . $nl;
-  $mail['headers'] .= "From: " . $mail['from'] . $nl;
 
   return $mail;
 }
