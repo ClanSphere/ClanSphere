@@ -9,10 +9,13 @@ function cs_update_rss($mod, $action, $name, $desc, $array, $abcode = 0) {
   $abcode = is_array($abcode) ? $abcode : array(0 => 1, 1 => 0, 2 => 0, 3 => 0, 4 => 0);
   $target = 'uploads/rss/';
 
+  $name_sec = htmlspecialchars($name, ENT_NOQUOTES, $cs_main['charset']);
+  $desc_sec = htmlspecialchars($desc, ENT_NOQUOTES, $cs_main['charset']);
+  
   if(is_writeable($target)) {
     include_once('system/output/rss_20.php');
     $content = cs_rss_mode(1);
-    $content .= cs_rss_channel(1,$mod,$name,$cs_main['php_self']['website'],$desc);
+    $content .= cs_rss_channel(1,$mod,$name_sec,$cs_main['php_self']['website'],$desc_sec);
     if(!empty($array)) {
       foreach($array AS $item) {
         if(!empty($item['id']) AND !empty($item['title']) AND !empty($item['text'])) {

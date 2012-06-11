@@ -7,6 +7,7 @@ ___________________________________________________________
 -> Changed notifymods to contain a hint for files and board mod functionality (hajo)
 -> Fixed news images not working in view action (hajo)
 -> Fixed pagination in medals list not working (reported by astmaih)
+-> Fixed rss title and description not escaped (hajo)
 -> Updated CKEditor to 3.6.3
 -> Updated jQuery to 1.7.2
 
