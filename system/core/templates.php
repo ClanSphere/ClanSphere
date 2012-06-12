@@ -461,6 +461,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   if (function_exists('memory_get_peak_usage'))
     $replace['func:memory'] .= ' [peak ' . cs_filesize(memory_get_peak_usage()) . ']';
 
+  # Assemble content parts
   $result = '';
   foreach($template AS $num => $content)
     if(array_key_exists($content, $replace))
@@ -471,6 +472,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   # Enable zlib output compression if possible
   if(!empty($cs_main['zlib']) AND extension_loaded('zlib'))
     ob_start('ob_gzhandler');
+
+  # Send content type header with charset
+  header('Content-type: text/html; charset=' . $cs_main['charset']);
 
   return $result;
 }
