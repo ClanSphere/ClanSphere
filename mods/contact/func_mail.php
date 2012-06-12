@@ -5,8 +5,10 @@
 function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
 
   global $cs_main;
-  $nl = "\r\n";
   $mail = array();
+
+  # mail content
+  $nl = "\n";
 
   $subject = $options['def_org'] . ' - ' . $title;
   $type = empty($type) ? 'text/plain' : $type;
@@ -47,8 +49,11 @@ function cs_mail_send ($mail) {
 
 function cs_mail_smtp ($mail, $options) {
 
-  $nl = "\r\n";
-  $nl_con = "\n";
+  # mail content
+  $nl = "\n";
+  # smtp following rfc 821
+  $nl_con = "\r\n";
+
   $timeout = 10;
   $smtp_con = fsockopen($options['smtp_host'], $options['smtp_port'], $errno, $errstr, $timeout);
 
@@ -58,8 +63,8 @@ function cs_mail_smtp ($mail, $options) {
   }
   else {
 
-    $mail_top = $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'] . $nl;
-    $mail_data =  $mail_top . $nl . $mail['message'] . $nl . ".";
+    $mail_top =  $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'];
+    $mail_data = $mail_top . $nl . $nl . $mail['message'] . $nl_con . ".";
 
     $mail_com = array('helo' => 'HELO ' . $_SERVER['SERVER_ADDR'],
                       'login' => 'AUTH LOGIN',
