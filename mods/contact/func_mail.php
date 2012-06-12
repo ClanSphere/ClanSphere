@@ -5,7 +5,7 @@
 function cs_mail_prepare ($email, $title, $message, $from, $type, $options) {
 
   global $cs_main;
-  $nl = PHP_EOL;
+  $nl = "\r\n";
   $mail = array();
 
   $subject = $options['def_org'] . ' - ' . $title;
@@ -47,6 +47,8 @@ function cs_mail_send ($mail) {
 
 function cs_mail_smtp ($mail, $options) {
 
+  $nl = "\r\n";
+  $nl_con = "\n";
   $timeout = 10;
   $smtp_con = fsockopen($options['smtp_host'], $options['smtp_port'], $errno, $errstr, $timeout);
 
@@ -55,7 +57,7 @@ function cs_mail_smtp ($mail, $options) {
       return false;
   }
   else {
-    $nl = "\r\n";
+
     $mail_top = $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'] . $nl;
     $mail_data =  $mail_top . $nl . $mail['message'] . $nl . ".";
 
@@ -72,15 +74,17 @@ function cs_mail_smtp ($mail, $options) {
     stream_set_timeout($smtp_con, $timeout);
 
     global $cs_logs;
+    if(empty($cs_logs['sql'][__FILE__]))
+      $cs_logs['sql'][__FILE__] = '';
     static $num = 0;
     $num++;
-    $log = 'MAIL ' . $num . $nl;
+    $log = 'MAIL ' . $num . "\n";
     $log .= 'connect: ' . fread($smtp_con, 2048);
-    $cs_logs['sql'][__FILE__] = isset($cs_logs['sql'][__FILE__]) ? $cs_logs['sql'][__FILE__] . $log : $log;
+    $cs_logs['sql'][__FILE__] .= $log;
 
     foreach($mail_com AS $com_info => $command) {
 
-      fwrite($smtp_con, $command . $nl);
+      fwrite($smtp_con, $command . $nl_con);
       $read = fread($smtp_con, 2048);
       $code = (int) substr($read, 0, 3);
       $cs_logs['sql'][__FILE__] .=  $com_info . ': ' . $read;

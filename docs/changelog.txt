@@ -5,6 +5,7 @@ ClanSphere 2011.3 Patch 2 >> 2012-XX-XX
 ___________________________________________________________
 
 -> Changed notifymods to contain a hint for files and board mod functionality (hajo)
+-> Fixed emails being malformed in some cases (fr33z3m4n, hajo)
 -> Fixed news images not working in view action (hajo)
 -> Fixed pagination in medals list not working (reported by astmaih)
 -> Fixed rss title and description not escaped (hajo)
