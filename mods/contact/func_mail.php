@@ -63,10 +63,12 @@ function cs_mail_smtp ($mail, $options) {
   }
   else {
 
+    $host = empty($_SERVER['SERVER_ADDR']) ? $_SERVER['LOCAL_ADDR'] : $_SERVER['SERVER_ADDR'];
+
     $mail_top =  $mail['headers'] . "To: " . $mail['to'] . $nl . "Subject: " . $mail['subject'];
     $mail_data = $mail_top . $nl . $nl . $mail['message'] . $nl_con . ".";
 
-    $mail_com = array('helo' => 'HELO ' . $_SERVER['SERVER_ADDR'],
+    $mail_com = array('helo' => 'HELO ' . $host,
                       'login' => 'AUTH LOGIN',
                       'user' => base64_encode($options['smtp_user']),
                       'pw' => base64_encode($options['smtp_pw']),
