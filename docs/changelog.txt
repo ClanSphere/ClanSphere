@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.3 Patch 2 >> 2012-XX-XX
+ClanSphere 2011.3 Patch 2 >> 2012-06-16
 ___________________________________________________________
 
 -> Changed notifymods to contain a hint for files and board mod functionality (hajo)
