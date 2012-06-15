@@ -254,7 +254,11 @@ function cs_sql_error($object = 0, $query = 0) {
     else
       $error_string = (string) $error;
   }
+
   if(!empty($query))
     $error_string .= ' --Query: ' . $query;
+  elseif($error_string == 'Unknown SQL Error')
+    return FALSE;
+
   return $error_string;
 }
