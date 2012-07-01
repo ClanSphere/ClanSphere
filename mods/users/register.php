@@ -72,13 +72,6 @@ if(empty($op_users['register'])) {
       $error++;
       $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
     }
-    
-    include_once 'mods/users/spam.class.php';
-    if(Spam::checkUser($register['email'])) {
-        $error++;
-        $errormsg .= $cs_lang['email_false'] . cs_html_br(1);
-    }
-    
 
   $flood = cs_sql_select(__FILE__,'users','users_register',0,'users_register DESC');
   $maxtime = $flood['users_register'] + $cs_main['def_flood'];
