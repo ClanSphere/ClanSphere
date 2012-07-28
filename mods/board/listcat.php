@@ -200,6 +200,8 @@ if (!empty($cs_board['board_name']) and !empty($check_pw)) {
       $run++;
     }
     
+	$data['head']['message'] = cs_getmsg();
+	
     echo cs_subtemplate(__FILE__, $data, 'board', 'listcat',1);
   }
 }

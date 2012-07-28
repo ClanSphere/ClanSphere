@@ -4,6 +4,7 @@ CHANGELOG
 ClanSphere 2011.3 Patch 3 >> 2012-XX-XX
 ___________________________________________________________
 
+-> Fixed head messages not shown in board listcat (reported by rapid)
 -> Updated CKEditor to 3.6.4
 
 

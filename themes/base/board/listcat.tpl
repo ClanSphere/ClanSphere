@@ -11,6 +11,8 @@
   </tr>
 </table>
 <br />
+{head:message}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="bottom" colspan="6"><div style="float:left">{lang:topics}: {count:topics}</div>
