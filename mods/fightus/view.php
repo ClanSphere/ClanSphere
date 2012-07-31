@@ -23,9 +23,7 @@ $data['fightus']['nick'] = cs_secure($cs_fightus['fightus_nick']);
 $data['fightus']['email'] = cs_html_mail($cs_fightus['fightus_email'],$cs_fightus['fightus_email']);
 
 if(!empty($cs_fightus['fightus_icq'])) { 
-  $cs_icqstart = 'http://web.icq.com/whitepages/online?icq=';
-  $data['fightus']['icq'] = cs_html_img($cs_icqstart . $cs_fightus['fightus_icq'] . '&amp;img=21','16','15');
-  $data['fightus']['icq'] .= cs_html_link('http://www.icq.com/' . $cs_fightus['fightus_icq'],$cs_fightus['fightus_icq']);
+  $data['fightus']['icq'] = cs_html_link('http://www.icq.com/people/' . $cs_fightus['fightus_icq'],$cs_fightus['fightus_icq']);
 } else {
   $data['fightus']['icq'] = '-'; 
 }

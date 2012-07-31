@@ -67,7 +67,7 @@ for($run=0; $run<$gbook_loop; $run++)
       $mail = empty($allow) ? '' : $mail;
     }
     $gbook[$run]['icon_mail'] = empty($cs_gbook[$run]['users_email']) ? '' : $mail;
-    $icq = cs_html_link('http://www.icq.com/' . $cs_gbook[$run]['users_icq'],cs_icon('licq'));
+    $icq = cs_html_link('http://www.icq.com/people/' . $cs_gbook[$run]['users_icq'],cs_icon('licq'));
     if(in_array('users_icq',$hidden)) {
       $icq = empty($allow) ? '' : $icq;
     }

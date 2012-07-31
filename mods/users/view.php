@@ -146,9 +146,7 @@ else {
   }
   $data['users']['url'] = empty($cs_user['users_url']) ? '--' : $content;
 
-  $cs_icqstart = 'http://web.icq.com/whitepages/online?icq=';
-  $content = cs_html_link('http://www.icq.com/' . $cs_user['users_icq'],$cs_user['users_icq']);
-  $content .= ' ' . cs_html_img($cs_icqstart . $cs_user['users_icq'] . '&amp;img=22','16','15');
+  $content = cs_html_link('http://www.icq.com/people/' . $cs_user['users_icq'],$cs_user['users_icq']);
   if(in_array('users_icq',$hidden)) {
     $content = empty($allow) ? '--' : cs_html_italic(1) . $content . cs_html_italic(0);
   }

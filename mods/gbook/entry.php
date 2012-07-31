@@ -199,7 +199,7 @@ if (isset($_POST['preview']) AND empty($g_error)) {
   $data['gbook']['icon_town'] = empty($cs_gbook['gbook_town']) ? '' : cs_icon('gohome');
   $data['gbook']['town'] = empty($cs_gbook['gbook_town']) ? '' : cs_secure($cs_gbook['gbook_town']);
   $data['gbook']['icon_mail'] = cs_html_link('mailto:' . $cs_gbook['gbook_email'],cs_icon('mail_generic'));
-   $icq = cs_html_link('http://www.icq.com/' . $cs_gbook['gbook_icq'],cs_icon('licq'));
+   $icq = cs_html_link('http://www.icq.com/people/' . $cs_gbook['gbook_icq'],cs_icon('licq'));
   $data['gbook']['icon_icq'] = empty($cs_gbook['gbook_icq']) ? '' : $icq;
    $msn = cs_html_link('http://members.msn.com/' . $cs_gbook['gbook_msn'],cs_icon('msn_protocol'));
   $data['gbook']['icon_msn'] = empty($cs_gbook['gbook_msn']) ? '' : $msn;
