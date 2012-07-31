@@ -13,7 +13,9 @@ function cs_html_mail($mail, $link = '')
 }
 function cs_html_msnmail($mail, $link = '')
 {
-  return cs_ajax_mail($mail, $link, 'http://profile.live.com/');
+  # members.msn.com/... target is outdated
+  # profile.live.com/... target does not work with emails
+  return cs_ajax_mail($mail, $link);
 }
 
 function cs_html_br($run = 1)
