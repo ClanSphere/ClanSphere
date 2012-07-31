@@ -153,7 +153,6 @@ else {
   $data['users']['icq'] = empty($cs_user['users_icq']) ? '--' : $content;
 
   $cs_user['users_msn'] = cs_secure($cs_user['users_msn']);
-#  $content = cs_html_link('http://members.msn.com/' . $cs_user['users_msn'],$cs_user['users_msn']);
   $content = cs_html_msnmail($cs_user['users_msn']);
   if(in_array('users_msn',$hidden)) {
     $content = empty($allow) ? '--' : cs_html_italic(1) . $content . cs_html_italic(0);

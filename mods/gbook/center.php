@@ -55,7 +55,7 @@ for($run=0; $run<$gbook_loop; $run++)
     $icq = cs_secure($cs_gbook[$run]['gbook_icq']);
     $gbook[$run]['icon_icq'] = empty($icq) ? '' : cs_html_link("http://www.icq.com/$icq",cs_icon('licq'));
     $msn = cs_secure($cs_gbook[$run]['gbook_msn']);
-    $gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_link("http://members.msn.com/$msn",cs_icon('msn_protocol'));
+    $gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_msnmail($msn,cs_icon('msn_protocol'));
     $skype = cs_secure($cs_gbook[$run]['gbook_skype']);
     $url = 'http://mystatus.skype.com/smallicon/' . $skype;
     $gbook[$run]['icon_skype'] = empty($skype) ? '' : cs_html_link("skype:$skype?userinfo",cs_html_img($url,'16','16','0','Skype'),'0');
@@ -87,7 +87,7 @@ for($run=0; $run<$gbook_loop; $run++)
     if(in_array('users_msn',$hidden)) {
       $msn = empty($allow) ? '' : $msn;
     }
-    $gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_link("http://members.msn.com/$msn",cs_icon('msn_protocol'));
+    $gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_msnmail($msn,cs_icon('msn_protocol'));
     $skype = cs_secure($cs_gbook[$run]['users_skype']);
     $url = 'http://mystatus.skype.com/smallicon/' . $skype;
     $skype = cs_html_link('skype:' . $cs_gbook[$run]['users_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');

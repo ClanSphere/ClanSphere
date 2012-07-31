@@ -48,7 +48,7 @@ else {
 if(empty($cs_joinus['joinus_msn'])) { $data['join']['msn'] = '-'; } 
 else { 
   $cs_joinus['joinus_msn'] = cs_secure($cs_joinus['joinus_msn']);
-  $data['join']['msn'] = cs_html_link('http://members.msn.com/' . $cs_joinus['joinus_msn'],$cs_joinus['joinus_msn']);
+  $data['join']['msn'] = cs_html_msnmail($cs_joinus['joinus_msn']);
 }
 
 if(empty($cs_joinus['games_id'])) { $data['join']['game'] = '-'; }

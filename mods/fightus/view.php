@@ -29,8 +29,7 @@ if(!empty($cs_fightus['fightus_icq'])) {
 }
 
 if(!empty($cs_fightus['fightus_msn'])) { 
-  $cs_fightus['fightus_msn'] = cs_secure($cs_fightus['fightus_msn']);
-  $data['fightus']['msn'] = cs_html_link('http://members.msn.com/' . $cs_fightus['fightus_msn'],$cs_fightus['fightus_msn']);
+  $data['fightus']['msn'] = cs_html_msnmail($cs_fightus['fightus_msn']);
 } else {
   $data['fightus']['msn'] = '-'; 
 }

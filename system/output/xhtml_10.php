@@ -13,7 +13,7 @@ function cs_html_mail($mail, $link = '')
 }
 function cs_html_msnmail($mail, $link = '')
 {
-  return cs_ajax_mail($mail, $link, 'http://members.msn.com/');
+  return cs_ajax_mail($mail, $link, 'http://profile.live.com/');
 }
 
 function cs_html_br($run = 1)

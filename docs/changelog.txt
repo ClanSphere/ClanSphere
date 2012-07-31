@@ -6,6 +6,7 @@ ___________________________________________________________
 
 -> Fixed head messages not shown in board listcat (reported by rapid)
 -> Fixed icq profile links and removed status images as they don't work anymore (hajo)
+-> Fixed msn profile links by using the cs_html_msnmail function everywhere (hajo)
 -> Updated CKEditor to 3.6.4
 
 

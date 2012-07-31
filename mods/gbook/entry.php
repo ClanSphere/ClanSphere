@@ -201,7 +201,7 @@ if (isset($_POST['preview']) AND empty($g_error)) {
   $data['gbook']['icon_mail'] = cs_html_link('mailto:' . $cs_gbook['gbook_email'],cs_icon('mail_generic'));
    $icq = cs_html_link('http://www.icq.com/people/' . $cs_gbook['gbook_icq'],cs_icon('licq'));
   $data['gbook']['icon_icq'] = empty($cs_gbook['gbook_icq']) ? '' : $icq;
-   $msn = cs_html_link('http://members.msn.com/' . $cs_gbook['gbook_msn'],cs_icon('msn_protocol'));
+   $msn = cs_html_msnmail($cs_gbook['gbook_msn'],cs_icon('msn_protocol'));
   $data['gbook']['icon_msn'] = empty($cs_gbook['gbook_msn']) ? '' : $msn;
    $url = 'http://mystatus.skype.com/smallicon/' . $cs_gbook['gbook_skype'];
    $skype = cs_html_link('skype:' . $cs_gbook['gbook_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');
