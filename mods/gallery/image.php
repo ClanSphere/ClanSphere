@@ -110,7 +110,7 @@ class PictureEngine
   function Dump()
   {
     header("Content-type: image/jpeg");
-    Imagejpeg($this->image,'',100);
+    Imagejpeg($this->image,null,100);
   }
 
   function Dump_down($count)
@@ -128,7 +128,7 @@ class PictureEngine
     header("Accept-Ranges: bytes");
     header("Content-type: image/jpg");
     header("Content-Disposition: attachment; filename=image.jpg");
-    echo @readfile(Imagejpeg($this->image,'',100),"r");
+    echo @readfile(Imagejpeg($this->image,null,100),"r");
     exit;
   }
 }
