@@ -39,6 +39,7 @@ $cs_lang['user_gb'] = 'Benutzer G&auml;stebuch - Benutzer Name:';
 
 $cs_lang['option']  = 'Globale Einstellungen';
 $cs_lang['lock'] = 'Eintr&auml;ge freischalten';
+$cs_lang['captcha_users'] = 'Sicherheitscode bei Benutzern';
 $cs_lang['unhide'] = 'Wieder Einblenden';
 $cs_lang['hide'] = 'Ausblenden und f&uuml;r Niemanden mehr sichtbar machen';
 $cs_lang['hide_done'] = 'G&auml;stebuch Eintrag wurde ausgeblendet.';

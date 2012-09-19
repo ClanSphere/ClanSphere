@@ -34,6 +34,7 @@ $cs_lang['error_skype']   = '- Skype name is incorrect.';
 
 $cs_lang['option']  = 'Global options';
 $cs_lang['lock'] = 'Unlock entries';
+$cs_lang['captcha_users'] = 'Captcha for users';
 $cs_lang['unhide'] = 'Unhide again';
 $cs_lang['hide'] = 'Hide for everyone';
 $cs_lang['hide_done'] = 'Entry is now hidden';

@@ -67,9 +67,11 @@ $data['tpl']['preview'] = '';
 $data['tpl']['extension'] = '';
 $data['tpl']['captcha'] = '';
 
-if($users_id == 0) {
-  $captcha = extension_loaded('gd') ? 1 : 0;
+if(empty($users_id))
   $data['if']['guest'] = TRUE;
+
+if(empty($users_id) OR !empty($cs_options['captcha_users'])) {
+  $captcha = extension_loaded('gd') ? 1 : 0;
   $data['if']['captcha'] = TRUE;
 }
 
@@ -145,12 +147,6 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
         $g_error .= $cs_lang['error_url'] . cs_html_br(1);
       }
     }
-    
-    //captcha
-    if (!cs_captchacheck($_POST['captcha'])) {
-      $g_error .= $cs_lang['captcha_false'] . cs_html_br(1);
-    }
-
   }
   else {
     //if user
@@ -165,6 +161,14 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
     $cs_gbook['gbook_url'] = $cs_user['users_url'];
     $cs_gbook['gbook_town'] = $cs_user['users_place'];
   }
+  
+    //captcha
+	if(empty($users_id) OR !empty($cs_options['captcha_users'])) {
+	
+		if (!cs_captchacheck($_POST['captcha'])) {
+		  $g_error .= $cs_lang['captcha_false'] . cs_html_br(1);
+		}
+	}
 
   $cs_gbook['gbook_time'] = cs_time();
   $cs_gbook['gbook_ip'] = $ip;
@@ -219,14 +223,17 @@ if(!empty($g_error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   foreach($cs_gbook AS $key => $value)
     $data['gbook'][$key] = cs_secure($value);
 
-  if($users_id == 0) {
+  if(empty($users_id))
     $data['tpl']['extension'] = cs_subtemplate(__FILE__,$data,'gbook','extension');
+
+  if(empty($users_id) OR !empty($cs_options['captcha_users'])) {
     
     if(!empty($captcha)) {
       $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
       $data['tpl']['captcha'] = cs_subtemplate(__FILE__,$data,'gbook','captcha');
     }
   }
+
   $data['abcode']['smileys'] = cs_abcode_smileys('gbook_text');
   $data['abcode']['features'] = cs_abcode_features('gbook_text');
 
