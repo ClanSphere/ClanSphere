@@ -9,6 +9,8 @@
 /web.config
 /nbproject
 /uploads/cache/*.tmp
+/uploads/gallery/pics/*.jpg
+/uploads/gallery/thumbs/*.jpg
 /uploads/imprint/*.txt
 /uploads/logs/actions/*.log
 /uploads/logs/errors/*.log

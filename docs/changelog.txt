@@ -1,9 +1,14 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.3 Patch 3 >> 2012-XX-XX
+ClanSphere 2011.3 Patch 3 >> 2012-09-XX
 ___________________________________________________________
 
+-- Recommended PHP version changed to 5.4.7
+-- Line and file endings are now unified in the GIT source code repository
+
+-> Added captcha requirement option for users to guestbook mod (hajo)
+-> Fixed gallery images not shown with most current PHP GD extension (fr33z3m4n)
 -> Fixed head messages not shown in board listcat (reported by rapid)
 -> Fixed icq profile links and removed status images as they don't work anymore (hajo)
 -> Fixed msn profile links by using the cs_html_msnmail function everywhere (hajo)
