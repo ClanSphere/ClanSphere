@@ -32,7 +32,7 @@ if (!empty($data['threads'])) {
 
   for ($run = 0; $run < $count_threads; $run++) {
     $data['threads'][$run]['threads_last_time'] = !empty($data['threads'][$run]['threads_last_time']) ? cs_date('unix',$data['threads'][$run]['threads_last_time'],1) : '';
-    $data['threads'][$run]['pages'] = $data['threads'][$run]['threads_comments'] <= $account['users_limit'] ? '' : cs_html_br(1) . $cs_lang['page'] . ' ' . cs_pages('board','thread',$data['threads'][$run]['threads_comments'],0,$data['threads'][$run]['threads_id'],0,0,1);
+    $data['threads'][$run]['pages'] = $data['threads'][$run]['threads_comments'] <= $account['users_limit'] ? '' : cs_html_br(1) . cs_pages('board','thread',$data['threads'][$run]['threads_comments'],0,$data['threads'][$run]['threads_id'],0,0,1);
     $data['threads'][$run]['users_nick'] = !empty($data['threads'][$run]['users_nick']) ? cs_html_br(1) . $cs_lang['from'] . ' ' . cs_user($data['threads'][$run]['users_id'],$data['threads'][$run]['users_nick'],$data['threads'][$run]['users_active'],$data['threads'][$run]['users_delete']) : '';
     $data['threads'][$run]['new_posts'] = last_comment($data['threads'][$run]['threads_id'], $account['users_id'], $account['users_limit']);
   }
