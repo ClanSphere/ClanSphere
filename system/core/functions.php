@@ -151,13 +151,13 @@ function cs_content_lang () {
   $lang = empty($account['users_id']) ? $cs_main['def_lang'] : $account['users_lang'];
 
   if(empty($account['users_id']) AND !empty($_COOKIE['cs_lang']))
-    $lang = $_COOKIE['cs_lang'];
-
-  $lang_new = '';
+  {
+    $lang_new = $_COOKIE['cs_lang'];
+  }
   if(!empty($_REQUEST['lang']))
+  {
     $lang_new = $_REQUEST['lang'];
-  elseif(!empty($_GET['lang']))
-    $lang_new = $_GET['lang'];
+  }
 
   if(!empty($lang_new)) {
     $allow = 0;
