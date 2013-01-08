@@ -19,8 +19,9 @@ function cs_themebar($source, $string, $mod, $action) {
     $data['data']['content'] = $string;
     $data['raw']['target'] = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
     $data['raw']['langfile'] = 'lang/' . $account['users_lang'] . '/' . $mod . '.php';
-    $phpsource = str_replace('\\', '/', str_replace($cs_main['def_path'], '', $source));
-    $data['raw']['phpsource'] = substr($phpsource, 1, strlen($phpsource));
+    $phpsource = str_ireplace($cs_main['def_path'], '', $source);
+    $phpsource = str_replace('\\', '/', $phpsource);
+    $data['raw']['phpsource'] = ltrim($phpsource, '/');
 
     // use lightweight version if explorer is not available
     if(empty($account['access_explorer']))
