@@ -1,4 +1,4 @@
 <a href="http://{banner:url}" target="_blank">
-  <img src="{banner:pic}" alt="{banner:alt}" />
+<img src="{page:path}{banner:pic}" alt="{banner:alt}" />
 </a>
 <br />
