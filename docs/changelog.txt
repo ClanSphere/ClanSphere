@@ -5,6 +5,7 @@ ClanSphere 2011.3 Patch 4 >> 2013-XX-XX
 ___________________________________________________________
 
 -> Updated CKEditor to 3.6.6
+-> Updated jQuery to 1.8.3
 
 
 ClanSphere 2011.3 Patch 3 >> 2013-01-17

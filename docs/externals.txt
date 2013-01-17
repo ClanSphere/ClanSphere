@@ -7,7 +7,7 @@ mod ckeditor:
 - CKEditor 3.6.6 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
 
 mod jquery:
-- jQuery 1.7.2 (http://www.jquery.com)
+- jQuery 1.8.3 (http://www.jquery.com)
 
 mod count:
 - amLine 1.6.4.1 (http://www.amcharts.com)
