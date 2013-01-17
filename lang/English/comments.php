@@ -33,6 +33,7 @@ $cs_lang['body_com_edit']  = 'Please indicate for text changes.';
 //Remove
 $cs_lang['head_com_remove']  = 'Remove comment';
 $cs_lang['mod_remove'] = 'Comment';
+$cs_lang['del_all'] = 'Delete all comments of this user?';
 
 //Errors
 $cs_lang['need_user']  = 'Please log in before writing comments.';
