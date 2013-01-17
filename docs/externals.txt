@@ -4,7 +4,7 @@ EXTERNALS
 ClanSphere uses parts of the following Software:
 
 mod ckeditor:
-- CKEditor 3.6.4 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
+- CKEditor 3.6.6 and FCKEditor Filebrowser 2.6.6 (http://www.ckeditor.com)
 
 mod jquery:
 - jQuery 1.7.2 (http://www.jquery.com)
