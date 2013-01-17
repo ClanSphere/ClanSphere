@@ -2,6 +2,7 @@
 /*.sqlite
 /.buildpath
 /.htaccess
+/.idea
 /.project
 /.settings
 /setup.php
