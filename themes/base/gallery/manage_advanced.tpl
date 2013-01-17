@@ -131,7 +131,7 @@
 {if:thumb}
 <table class="forum" style="width:{page:width}" cellpadding="0" cellspacing="{page:cellspacing}">
   <tr>
-    <td class="headb">{lang:delthumb}</td>
+     <td class="headb" colspan="2">{lang:delthumb}</td>
   </tr>
   {loop:thumbs}
   <tr>
