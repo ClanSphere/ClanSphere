@@ -8,7 +8,6 @@ $cs_get = cs_get('id,agree,cancel');
 $cols = 'comments_mod, comments_text, comments_id, users_id';
 $cs_com = cs_sql_select(__FILE__,'comments',$cols,'comments_id = ' . $cs_get['id'],0,0);
 
-$text = cs_substr($cs_com['comments_text'],0,15);
 $usid = (int) $cs_com['users_id'];
 
 if(isset($cs_get['cancel'])) {
@@ -30,7 +29,7 @@ elseif(isset($cs_get['del_all'])) {
 if(!empty($cs_com)) {
   $data = array();
   $data['head']['body'] = sprintf($cs_lang['remove_entry'],$cs_lang['mod_remove'],$cs_com['comments_id']);
-  $data['head']['com'] = $cs_com['comments_text'];
+  $data['head']['com'] = cs_secure($cs_com['comments_text']);
   $data['url']['agree'] = cs_url('comments','remove','id=' . $cs_get['id'] . '&amp;agree');
   $data['url']['cancel'] = cs_url('comments','remove','id=' . $cs_get['id'] . '&amp;cancel');
   $data['url']['del_all'] = cs_url('comments','remove','id=' . $cs_get['id'] . '&amp;del_all');
