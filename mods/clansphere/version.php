@@ -10,9 +10,9 @@ $local = array('version' => $cs_main['version_name'], 'published' => $cs_main['v
 
 $remote = array('version' => '-', 'published' => '1970-01-01', 'id' => 0);
 
-$remote_url_download = 'http://www.clansphere.net/index/files/listcat/where/14';
+$remote_url_download = 'http://www.clansphere.net/index/files/view/id/2';
 
-$remote_url_version = 'http://www.clansphere.net/version.txt';
+$remote_url_version = 'http://www.clansphere.net/clansphere/version.txt';
 
 $timeout = 10;
 

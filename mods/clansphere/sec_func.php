@@ -4,7 +4,7 @@
 
 function cs_cspnews($all = 0) {
 
-  $remote_url_secnews = 'http://www.clansphere.net/uploads/clansphere/sec_news.txt';
+  $remote_url_secnews = 'http://www.clansphere.net/clansphere/updates.txt';
 
   $remote_url_newsid = 'http://www.clansphere.net/index/news/view/id/';
 
