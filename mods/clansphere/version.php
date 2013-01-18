@@ -14,7 +14,7 @@ $remote_url_download = 'http://www.clansphere.net/index/files/view/id/2';
 
 $remote_url_version = 'http://www.clansphere.net/clansphere/version.txt';
 
-$timeout = 10;
+$timeout = 5;
 
 $allow_url_fopen = ini_get('allow_url_fopen');
 if(empty($allow_url_fopen)) {
@@ -22,6 +22,9 @@ if(empty($allow_url_fopen)) {
 }
 else {
   $content = '';
+
+  ini_set("default_socket_timeout", $timeout);
+
   $rfp = fopen($remote_url_version, 'r');
   if(is_resource($rfp)) {
     stream_set_timeout($rfp, $timeout);

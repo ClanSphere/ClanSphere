@@ -8,7 +8,7 @@ function cs_cspnews($all = 0) {
 
   $remote_url_newsid = 'http://www.clansphere.net/index/news/view/id/';
 
-  $timeout = 10;
+  $timeout = 5;
 
   $content = '';
 
@@ -35,6 +35,8 @@ function cs_cspnews($all = 0) {
     else {
       $opt_where = "options_mod = 'clansphere' AND options_name = 'sec_time'";
       cs_sql_update(__FILE__, 'options', array('options_value'), array(cs_time()), 0, $opt_where);
+
+      ini_set("default_socket_timeout", $timeout);
 
       $rfp = fopen($remote_url_secnews, 'r');
       if(is_resource($rfp)) {
