@@ -7,6 +7,7 @@ ___________________________________________________________
 -- Version and Update Check URLs have changed with this release
 -- Earlier releases might not get notified about future changes
 
+-> Changed version check download target to show update packages (hajo)
 -> Fixed files listcat showing an empty list of subcategories (hajo)
 -> Updated CKEditor to 3.6.6
 -> Updated CKEditor filebrowser to FCKEditor 2.6.9
