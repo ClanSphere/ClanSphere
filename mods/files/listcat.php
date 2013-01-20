@@ -35,19 +35,21 @@ $sub_where = "categories_mod = 'files' AND categories_access <= '" . $account['a
 $sub_where .= " AND categories_subid = '" . $categories_id . "'";
 $sub_data = cs_sql_select(__FILE__,'categories','*',$sub_where,'categories_name',0,0);
 $sub_loop = count($sub_data);
-$data['if']['subs'] = false;
-$data['subs'] = array();
+$data['if']['subcats'] = 0;
 
 if(!empty($sub_loop)) {
-  $data['if']['subs'] = true;
+  $data['if']['subcats'] = 1;
+  $data['subs'] = array();
+
   for($runb=0; $runb < $sub_loop; $runb++) {
     $data['subs'][$runb]['name'] = cs_secure($sub_data[$runb]['categories_name']);
     $data['subs'][$runb]['id'] = $sub_data[$runb]['categories_id'];
     $data['subs'][$runb]['count'] = cs_sql_count(__FILE__,'files',"categories_id = '" . $sub_data[$runb]['categories_id'] . "'");
-    $data['subs'][$runb]['if']['text'] = false;
-  if(!empty($sub_data[$runb]['categories_text'])) {
-    $data['subs'][$runb]['if']['text'] = true;
-    $data['subs'][$runb]['text'] = cs_secure($sub_data[$runb]['categories_text'],1); 
+    $data['subs'][$runb]['if']['text'] = 0;
+
+    if(!empty($sub_data[$runb]['categories_text'])) {
+      $data['subs'][$runb]['if']['text'] = 1;
+      $data['subs'][$runb]['text'] = cs_secure($sub_data[$runb]['categories_text'],1); 
     }
   }   
 }
@@ -70,8 +72,6 @@ for($run=0; $run<$files_loop; $run++) {
   $data['files'][$run]['name'] = $cs_files[$run]['files_name'];
   $data['files'][$run]['user'] = cs_user($cs_files[$run]['users_id'],$cs_files[$run]['users_nick'], $cs_files[$run]['users_active']);
   $data['files'][$run]['date'] = cs_date('unix',$cs_files[$run]['files_time'],1);
-  $data['files'][$run]['size'] = '';
-
   $data['files'][$run]['size'] = cs_filesize($cs_files[$run]['files_size']);
 
   $data['files'][$run]['filetypes'] = array();
@@ -80,12 +80,13 @@ for($run=0; $run<$files_loop; $run++) {
   $temp_loop = count($temp);
   $file_typ_array = array();
   $run_3 = '0';
+
   for ($run_2 = 1; $run_2 < $temp_loop; $run_2++) {
     $temp_a = explode("\n", $temp[$run_2]);
-  if(in_array($temp_a['3'],$file_typ_array,TRUE)) {} else {
-    $file_typ_array[$run_3] = $temp_a['3'];
-    $run_3++;
-  }
+    if(in_array($temp_a['3'],$file_typ_array,TRUE)) {} else {
+      $file_typ_array[$run_3] = $temp_a['3'];
+      $run_3++;
+    }
   }
   $loop_file_typ_array = count($file_typ_array);
   for ($run_2 = 0; $run_2 < $loop_file_typ_array; $run_2++) {

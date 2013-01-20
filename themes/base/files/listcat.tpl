@@ -8,6 +8,8 @@
   </tr>
 </table>
 <br />
+
+{if:subcats}
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb"> {lang:subcats}: </td>
@@ -19,6 +21,8 @@
   {stop:subs}
 </table>
 <br />
+{stop:subcats}
+
 <table class="forum" cellpadding="0" cellspacing="{page:cellspacing}" style="width:{page:width}">
   <tr>
     <td class="headb"> {sort:name} {lang:name}</td>
