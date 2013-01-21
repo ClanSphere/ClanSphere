@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: boardranks.php (Fri Dec  5 17:25:36 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang['mod_name'] = 'Forumr&auml;nge';
 $cs_lang['mod_text'] = 'Forumr&auml;nge verwalten und erstellen';

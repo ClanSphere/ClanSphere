@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: center_info.php 1822 2009-02-25 19:10:59Z fay-pain $
+// $Id$
 
 $cs_lang = cs_translate('gallery', 1);
 $data = array();

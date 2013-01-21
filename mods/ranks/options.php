@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: options.php 4120 2010-06-15 15:29:39Z hajo $
+// $Id$
 
 $cs_lang = cs_translate('ranks');
 

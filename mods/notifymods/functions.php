@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id$ 
+// $Id$
 
 function notifymods_mail($mod, $users_id=0, $var = NULL) {
   // $mail_text[$lang] = cs_translate('notifymods');  // not implicitly necessary

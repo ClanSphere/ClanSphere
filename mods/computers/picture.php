@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: picture.php (Tue Nov 25 19:31:27 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('computers');
 

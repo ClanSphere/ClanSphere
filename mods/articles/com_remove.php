@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: com_remove.php (Tue Nov 18 10:06:42 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('articles');
 $cs_post = cs_post('id');

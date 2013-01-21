@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: $
+// $Id$
+
 $cs_lang = cs_translate('wars');
 $cs_get = cs_get('catid');
 $data = array();
@@ -23,4 +24,3 @@ if(empty($data['wars'])) {
   $data['wars']['date'] = cs_date('unix',$data['wars']['wars_date'],1,1);
   echo cs_subtemplate(__FILE__,$data,'wars','navtop');
 }
-

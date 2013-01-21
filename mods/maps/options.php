@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: options.php 4596 2010-10-16 18:43:42Z Fr33z3m4n $
+// $Id$
+
 $cs_lang = cs_translate('maps');
 
 $data = array();
@@ -17,7 +18,7 @@ if(isset($_POST['submit'])) {
   cs_optionsave('maps', $save);
 
   cs_redirect($cs_lang['changes_done'],'options','roots');
-
 }
+
 $data['op'] = cs_sql_option(__FILE__,'maps');
 echo cs_subtemplate(__FILE__,$data,'maps','options');

@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
+
 $cs_lang = cs_translate('ajax');
 $cs_post = cs_post('ajax_reload');
 $files = cs_files();

@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
+
 if(defined('UPLOAD_PROTECTED') AND !empty($_SESSION)) {
   if(isset($_POST['remove'])) {
     $file = $_POST['remove'];

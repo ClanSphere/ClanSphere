@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: view.php (Tue Nov 25 11:32:52 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('joinus');
 $cs_get = cs_get('id');

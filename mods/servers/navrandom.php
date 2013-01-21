@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: navlist.php 4424 2010-08-22 12:11:49Z Fr33z3m4n $
+// $Id$
 
 $cs_lang = cs_translate('servers');
 

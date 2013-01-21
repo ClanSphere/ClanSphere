@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: $
+// $Id$
 
 $data['if']['access_explorer'] = FALSE;
 

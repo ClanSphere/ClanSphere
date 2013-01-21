@@ -1,10 +1,11 @@
 <?php 
 // ClanSphere 2010 - www.clansphere.net  
 // $Id$
-  
+
 $cs_lang = cs_translate('shoutbox');
 
 require 'mods/shoutbox/access.php';
+
 $captcha = extension_loaded('gd') ? 1 : 0;
   
 $shoutbox_count = cs_sql_count(__FILE__,'shoutbox');

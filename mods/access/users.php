@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
+
 $cs_lang = cs_translate('access');
 $cs_post = cs_post();
 $access_id = empty($_REQUEST['id']) ? 0 : $_REQUEST['id'];

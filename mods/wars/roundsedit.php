@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $id: roundsedit.php 1430 2008-12-10 13:08:44Z fay-pain $
+// $Id$
 
 $cs_lang = cs_translate('wars');
 $cs_post = cs_post('id');

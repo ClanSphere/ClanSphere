@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: wincache.php 5030 2012-02-03 20:04:49Z hajo $
+// $Id$
 
 function cs_cache_clear() {
 

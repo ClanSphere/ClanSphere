@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: info.php 1430 2008-12-10 13:08:44Z Fr33z3m4n $
+// $Id$
 
 function cs_pictures_select($mod, $fid = 0) {
   

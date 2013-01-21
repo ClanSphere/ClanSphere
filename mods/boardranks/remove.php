@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: remove.php (Tue Nov 25 13:20:50 CET 2008) fAY-pA!N
+// $Id$
+
 $cs_lang = cs_translate('boardranks');
 $cs_get = cs_get('id,agree,cancel');
 $boardranks_id = empty($cs_get['id']) ? 0 : $cs_get['id'];

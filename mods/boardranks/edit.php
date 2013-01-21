@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: edit.php (Fri Dec  5 17:10:53 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('boardranks');
 $cs_post = cs_post('id');

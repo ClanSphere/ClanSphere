@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
+
 $cs_lang = cs_translate('categories');
 $cs_get = cs_get('id,agree,cancel');
 $categories_id = empty($cs_get['id']) ? 0 : $cs_get['id'];

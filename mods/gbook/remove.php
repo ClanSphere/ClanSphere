@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
+
 $cs_lang = cs_translate('gbook');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');

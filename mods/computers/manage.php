@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: manage.php (Tue Nov 25 17:51:01 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('computers');
 $cs_post = cs_post('start,sort');

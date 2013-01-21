@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: options.php 4596 2010-10-16 18:43:42Z Fr33z3m4n $
+// $Id$
 
 require_once 'mods/clansphere/func_options.php';
 

@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: create.php (Fri Dec  5 16:57:59 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('boardranks');
 $data = array();

@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: create.php (Mon Dec  1 20:23:45 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('faq');
 require_once('mods/categories/functions.php');

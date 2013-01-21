@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: options.php 4120 2010-06-15 15:29:39Z hajo $
+// $Id$
 
 $cs_lang = cs_translate('files');
 
@@ -22,7 +22,6 @@ if(isset($_POST['submit'])) {
   cs_optionsave('files', $save);
 
   cs_redirect($cs_lang['changes_done'],'options','roots');
-
 }
 $data['op'] = cs_sql_option(__FILE__,'files');
 

@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
+
 $cs_lang = cs_translate('clans');
 $cs_get = cs_get('id,agree,cancel');
 $op_clans = cs_sql_option(__FILE__,'clans');

@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: picture.php 1775 2009-02-17 20:59:11Z duRiel $
+// $Id$
 
 $cs_lang = cs_translate('events');
 

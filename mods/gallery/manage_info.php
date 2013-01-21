@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: manage_info.php 1775 2009-02-17 20:59:11Z fay-pain $
+// $Id$
 
 $cs_lang = $cs_lang = cs_translate('gallery');
 $data = array();

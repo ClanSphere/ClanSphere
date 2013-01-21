@@ -1,6 +1,7 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// $Id: $
+// $Id$
+
 $cs_lang = cs_translate('medals');
 $cs_get = cs_get('id,confirm,');
 

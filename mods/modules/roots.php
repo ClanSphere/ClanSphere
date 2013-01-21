@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: roots.php (Tue Nov 25 22:47:53 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('modules');
 

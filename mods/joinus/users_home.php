@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: users_home.php (Tue Nov 25 10:27:23 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('joinus');
 $cs_option = cs_sql_option(__FILE__,'joinus');

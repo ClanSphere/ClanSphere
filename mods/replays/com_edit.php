@@ -1,6 +1,6 @@
 <?php
 // ClanSphere 2010 - www.clansphere.net
-// Id: com_edit.php (Tue Nov 18 10:35:38 CET 2008) fAY-pA!N
+// $Id$
 
 $cs_lang = cs_translate('replays');
 $cs_post = cs_post('id');
