@@ -66,7 +66,7 @@ $(function() {
   }
 ?>
                           extraPlugins : 'bbcode',
-                          removePlugins : 'bidi,button,dialogadvtab,div,filebrowser,flash,format,forms,horizontalrule,iframe,indent,justify,liststyle,pagebreak,showborders,stylescombo,table,tabletools,templates',
+                          removePlugins : 'bidi,button,dialogadvtab,div,flash,format,forms,horizontalrule,iframe,indent,justify,liststyle,pagebreak,showborders,stylescombo,table,tabletools,templates',
                           disableObjectResizing : true,
                           toolbar : [
                             ['Source', '-', 'Undo', 'Redo'],

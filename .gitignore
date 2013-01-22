@@ -10,6 +10,7 @@
 /web.config
 /nbproject
 /uploads/cache/*.tmp
+/uploads/ckeditor/image/*.jpg
 /uploads/gallery/pics/*.jpg
 /uploads/gallery/thumbs/*.jpg
 /uploads/imprint/*.txt
