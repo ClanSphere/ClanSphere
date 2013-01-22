@@ -16,10 +16,7 @@ if(empty($_SESSION['users_id']) OR empty($_SESSION['access_ckeditor']) OR $_SESS
 }
 else {
 
-  $pathinf = pathinfo($_SERVER['PHP_SELF']);
-  $dirname = $pathinf['dirname'] == '/' ? '/' : $pathinf['dirname'] . '/';
-  $dirname = str_replace('/mods/ckeditor/filemanager/connectors/php/', '', $dirname);
-  $userdir = $dirname . '/uploads/ckeditor/';
+  $userdir = 'uploads/ckeditor/';
   $enabled = true;
 }
 
