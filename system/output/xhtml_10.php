@@ -37,7 +37,13 @@ function cs_html_hr($width)
 function cs_html_img($url, $height = 0, $width = 0, $more = 0, $alt = '')
 {
   global $cs_main;
-  $internal = strpos($url, '://') === false ? $cs_main['php_self']['dirname'] : '';
+  $internal = '';
+  if(strpos($url, '://') === false) {
+    $prefix = strpos($url, $cs_main['php_self']['dirname']);
+    if($prefix === false OR $prefix > 1) {
+      $internal = $cs_main['php_self']['dirname'];
+    }
+  }
   $var = "<img src=\"" . $internal . str_replace(' ', '%20', $url) . "\" ";
   if (!empty($height) or !empty($width)) {
     $var .= 'style="';
