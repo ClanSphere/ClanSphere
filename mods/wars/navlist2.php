@@ -30,7 +30,7 @@ if (!empty($cs_wars)) {
 
     $cs_wars[$i]['game_icon'] = file_exists('uploads/games/' . $cs_wars[$i]['games_id'] . '.gif') ?
       cs_html_img('uploads/games/' . $cs_wars[$i]['games_id'] . '.gif') : '';
-    $secure_short = cs_secure($cs_wars[$i]['squads_name'] . ' vs ' . cs_secure($cs_wars[$i]['clans_short']));
+    $secure_short = cs_secure($cs_wars[$i]['squads_name']) . ' vs ' . cs_secure($cs_wars[$i]['clans_short']);
     $cs_wars[$i]['matchup'] = cs_link($secure_short,'wars','view','id=' . $cs_wars[$i]['wars_id']);
 
     $result = $cs_wars[$i]['wars_score1'] - $cs_wars[$i]['wars_score2'];
