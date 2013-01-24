@@ -27,7 +27,11 @@
   <tr>
     <td class="leftc">{icon:php} {lang:php_mod}</td>
     <td class="leftb">{software:php_mod}</td>
-    <td class="leftb" style="width:180px">{lang:zend_core} {software:zend_core}</td>
+    <td class="leftb" style="width:30%">{lang:zend_core} {software:zend_core}</td>
+  </tr>
+  <tr>
+    <td class="leftc">{icon:image} {lang:php_gd_ext}</td>
+    <td class="leftb" colspan="2">{software:php_gd_ext}</td>
   </tr>
 </table>
 <br />

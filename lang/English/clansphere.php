@@ -95,6 +95,7 @@ $cs_lang['zend_core'] = 'Zend Version';
 $cs_lang['display_err']  = 'Error handling';
 $cs_lang['m_quotes'] = 'Magic Quotes';
 $cs_lang['os'] = 'Operating System';
+$cs_lang['php_gd_ext']  = 'PHP GD-Extension';
 $cs_lang['php_extensions']  = 'PHP Extensions';
 $cs_lang['php_mod']  = 'PHP Module';
 $cs_lang['php_setup']  = 'PHP Setting';

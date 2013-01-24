@@ -96,6 +96,7 @@ $cs_lang['display_err']  = 'Fehlerausgabe';
 $cs_lang['m_quotes'] = 'Magische Anf&uuml;hrungszeichen';
 $cs_lang['os'] = 'Betriebssystem';
 $cs_lang['php_extensions']  = 'PHP Erweiterungen';
+$cs_lang['php_gd_ext']  = 'PHP GD-Erweiterung';
 $cs_lang['php_mod']  = 'PHP Modul';
 $cs_lang['php_setup']  = 'PHP Einstellung';
 $cs_lang['short_open_tag'] = 'PHP wie XML &ouml;ffnen';

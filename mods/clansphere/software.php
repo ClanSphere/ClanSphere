@@ -50,6 +50,13 @@ $data['software']['php_mode'] = php_sapi_name();
 $data['software']['php_mod'] = phpversion();
 $data['software']['zend_core'] = zend_version();
 
+$gd_vers = '-';
+if(extension_loaded('gd')) {
+  $gd_info = gd_info();
+  $gd_vers = $gd_info['GD Version'];
+}
+$data['software']['php_gd_ext'] = $gd_vers;
+
 $data['software']['file_uploads'] = empty($file_uploads) ? $cs_lang['off'] : $cs_lang['on'];
 $data['software']['check_file_uploads'] = empty($file_uploads) ? cs_icon('stop') : cs_icon('submit');
 $data['software']['recom_file_uploads'] = $cs_lang['on'];
