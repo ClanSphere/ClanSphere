@@ -11,7 +11,7 @@
 
 ClanSphere is a web portal software for clans, guilds, but also other groups.
 
-It is developed using PHP and intended to run on Apache 2 or Microsoft IIS 7.
+It is developed in PHP and runs on Apache, Lighttpd, Microsoft IIS and Nginx.
 
 Data storage requires one of MySQL, PostgreSQL, SQLite or Microsoft SQLSRV.
 
