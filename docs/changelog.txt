@@ -7,10 +7,11 @@ ___________________________________________________________
 -- Version and Update Check URLs have changed with this release
 -- Earlier releases might not get notified about future changes
 
--> Added php gd extension version to software overview (hajo)
--> Changed fckeditor filebrowser to exclude basepath in local urls (hajo)
+-> Added PHP GD Extension version to software overview (hajo)
+-> Added rewrite support (Pretty URLs) for Lighttpd and Nginx (hajo)
+-> Changed FCKEditor filebrowser to exclude basepath in local urls (hajo)
 -> Changed version check download target to show update packages (hajo)
--> Fixed ckeditor image filebrowser for admins in bbcode mode (hajo)
+-> Fixed CKEditor image filebrowser for admins in bbcode mode (hajo)
 -> Fixed files download page errors for non existing entries (hajo)
 -> Fixed files listcat showing an empty list of subcategories (hajo)
 -> Removed old cvs and svn version information from php files (hajo)

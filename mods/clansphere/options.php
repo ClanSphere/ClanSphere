@@ -77,9 +77,13 @@ else {
 
   $data['options'] = cs_sql_option(__FILE__, 'clansphere');
 
-  $data['if']['mod_rewrite'] = true;
-  if(!file_exists($cs_main['def_path'] . '/.htaccess') AND !file_exists($cs_main['def_path'] . '/web.config')) {
-    $data['if']['mod_rewrite'] = false;
+  # Supported webservers: Apache, Microsoft IIS, Lighttpd, Nginx
+  $data['if']['mod_rewrite'] = false;
+  if(file_exists($cs_main['def_path'] . '/.htaccess')
+  OR file_exists($cs_main['def_path'] . '/web.config')
+  OR file_exists($cs_main['def_path'] . '/ligttpd.conf')
+  OR file_exists($cs_main['def_path'] . '/nginx.conf')) {
+    $data['if']['mod_rewrite'] = true;
   }
 
   if (empty($data['options']['mod_rewrite'])) {

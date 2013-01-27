@@ -221,8 +221,8 @@ $cs_lang['del_install_file'] = 'Warning: It is strongly recommended to remove th
 // Options
 $cs_lang['url_rewrite'] = 'Pretty URLs';
 $cs_lang['maintenance_access'] = 'Maintenance access';
-$cs_lang['missing_htaccess'] = 'URL rewriting cannot be activated until, depending on the webserver, the .htaccess or web.config file is found.';
-$cs_lang['info_htaccess'] = 'This turns Apache mod_rewrite and IIS URL Rewrite on and off';
+$cs_lang['missing_htaccess'] = 'URL rewriting cannot be activated until a configuration file for a webserver is found';
+$cs_lang['info_htaccess'] = 'This turns URL rewriting (e.g. Apache mod_rewrite) on and off';
 $cs_lang['level'] = 'Level';
 $cs_lang['notfound_info'] = 'Treat requests to unknown modules or actions as errors';
 

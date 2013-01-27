@@ -5,6 +5,8 @@
 /.idea
 /.project
 /.settings
+/lighttpd.conf
+/nginx.conf
 /setup.php
 /setup*.php
 /web.config
