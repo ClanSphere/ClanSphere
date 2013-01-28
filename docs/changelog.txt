@@ -15,6 +15,7 @@ ___________________________________________________________
 -> Fixed files download page errors for non existing entries (hajo)
 -> Fixed files listcat showing an empty list of subcategories (hajo)
 -> Removed old cvs and svn version information from php files (hajo)
+-> Reverted slimbox ajax update due to sideeffects (hajo)
 -> Updated CKEditor to 3.6.6
 -> Updated CKEditor filebrowser to FCKEditor 2.6.9
 -> Updated jQuery to 1.8.3
