@@ -11,6 +11,7 @@ ___________________________________________________________
 -> Added rewrite support (Pretty URLs) for Lighttpd and Nginx (hajo)
 -> Changed version check download target to show update packages (hajo)
 -> Fixed CKEditor image filebrowser for admins in bbcode mode (hajo)
+-> Fixed cs_html_img not able to handle basepath image urls (hajo)
 -> Fixed files download page errors for non existing entries (hajo)
 -> Fixed files listcat showing an empty list of subcategories (hajo)
 -> Removed old cvs and svn version information from php files (hajo)
