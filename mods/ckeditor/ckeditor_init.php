@@ -22,7 +22,7 @@ if(!empty($mode)) {
 ?>
 $(function() {
 
-  var options_html = {  customConfig : 'config_html.js',
+  var options_html = {  customConfig : 'config_special.js',
                         language : '<?php echo $lang; ?>',
                         skin : '<?php echo $skin; ?>',
                         height : '<?php echo $height; ?>',
@@ -51,7 +51,7 @@ if(!empty($mode_abcode)) {
 ?>
 $(function() {
 
-  var options_abcode = {  customConfig : 'config_abcode.js',
+  var options_abcode = {  customConfig : 'config_special.js',
                           language : '<?php echo $lang; ?>',
                           skin : '<?php echo $skin; ?>',
                           baseHref : '<?php echo $path; ?>/',

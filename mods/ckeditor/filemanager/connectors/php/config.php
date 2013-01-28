@@ -11,25 +11,13 @@ session_start();
 
 if(empty($_SESSION['users_id']) OR empty($_SESSION['access_ckeditor']) OR $_SESSION['access_ckeditor'] < 3) {
 
-  $enabled = false;
   $userdir = false;
+  $enabled = false;
 }
 else {
 
-  $enabled = true;
   $userdir = 'uploads/ckeditor/';
-
-  // check for textarea mode (abcode or html)
-
-  $mode = isset($_GET['Mode']) ? $_GET['Mode'] : '';
-
-  if($mode != 'abcode') {
-
-    $pathinf = pathinfo($_SERVER['PHP_SELF']);
-    $dirname = $pathinf['dirname'] == '/' ? '/' : $pathinf['dirname'] . '/';
-    $dirname = str_replace('/mods/ckeditor/filemanager/connectors/php/', '', $dirname);
-    $userdir = $dirname . '/' . $userdir;
-  }
+  $enabled = true;
 }
 
 // end of clansphere related additions
@@ -171,14 +159,14 @@ $Config['FileTypesAbsolutePath']['Image']= ($Config['UserFilesAbsolutePath'] == 
 $Config['QuickUploadPath']['Image']    = $Config['FileTypesPath']['Image'] ;
 $Config['QuickUploadAbsolutePath']['Image']= $Config['FileTypesAbsolutePath']['Image'] ;
 
-$Config['AllowedExtensions']['Flash']  = array('flv') ;
+$Config['AllowedExtensions']['Flash']  = array('swf','flv') ;
 $Config['DeniedExtensions']['Flash']  = array() ;
 $Config['FileTypesPath']['Flash']    = $Config['UserFilesPath'] . 'flash/' ;
 $Config['FileTypesAbsolutePath']['Flash']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'flash/' ;
 $Config['QuickUploadPath']['Flash']    = $Config['FileTypesPath']['Flash'] ;
 $Config['QuickUploadAbsolutePath']['Flash']= $Config['FileTypesAbsolutePath']['Flash'] ;
 
-$Config['AllowedExtensions']['Media']  = array('aiff', 'asf', 'avi', 'bmp', 'fla', 'flv', 'gif', 'jpeg', 'jpg', 'mid', 'mov', 'mp3', 'mp4', 'mpc', 'mpeg', 'mpg', 'png', 'qt', 'ram', 'rm', 'rmi', 'rmvb', 'tif', 'tiff', 'wav', 'wma', 'wmv') ;
+$Config['AllowedExtensions']['Media']  = array('aiff', 'asf', 'avi', 'bmp', 'fla', 'flv', 'gif', 'jpeg', 'jpg', 'mid', 'mov', 'mp3', 'mp4', 'mpc', 'mpeg', 'mpg', 'png', 'qt', 'ram', 'rm', 'rmi', 'rmvb', 'swf', 'tif', 'tiff', 'wav', 'wma', 'wmv') ;
 $Config['DeniedExtensions']['Media']  = array() ;
 $Config['FileTypesPath']['Media']    = $Config['UserFilesPath'] . 'media/' ;
 $Config['FileTypesAbsolutePath']['Media']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'media/' ;
