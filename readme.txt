@@ -19,4 +19,4 @@ The current version is available under the terms of the 'New BSD License'.
 
 Our project website is located at http://www.clansphere.net
 
-Look into '/docs' for further documentation.
+Look into '/docs' and '/webserver' for further documentation.
