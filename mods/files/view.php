@@ -120,7 +120,7 @@ $files_mirror = $cs_file['files_mirror'];
 $temp = explode("-----", $files_mirror);
 $temp_loop = count($temp);
 
-if (isset($_REQUEST['target'])) {
+if(isset($_REQUEST['target']) AND is_array($cs_file)) {
   $files_cells = array('files_count');
   $files_save = array(++$cs_file['files_count']);
   cs_sql_update(__FILE__,'files',$files_cells,$files_save,$file_id,0,0);
@@ -147,11 +147,12 @@ $where_com = 'comments_mod = \'files\' AND comments_fid = ' . $file_id;
 $count_com = cs_sql_count(__FILE__,'comments',$where_com);
 
 if(empty($cs_file))
-  require 'mods/errors/403.php';
+  require 'mods/errors/404.php';
 else {
   echo cs_subtemplate(__FILE__,$data,'files','view');
 
   if(!empty($count_com))
     echo cs_comments_view($file_id,'files','view',$count_com);
+
   echo cs_comments_add($file_id,'files',$cs_file['files_close']);
 }

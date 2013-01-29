@@ -4,6 +4,7 @@ CHANGELOG
 ClanSphere 2011.3 Patch 5 >> 2013-XX-XX
 ___________________________________________________________
 
+-> Fixed files download handling for non-existing mirrors (hajo)
 
 
 ClanSphere 2011.3 Patch 4 >> 2013-01-28
