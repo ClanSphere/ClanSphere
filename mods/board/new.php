@@ -71,8 +71,9 @@ else {
     $data['threads'][$run]['last_time'] = '';
     if(!empty($thread['threads_last_time'])) {
       $date = cs_date('unix',$thread['threads_last_time'],1);
-      $goto = floor($thread['threads_comments'] / $account['users_limit']) * $account['users_limit'];
-      $goto .= '#' . $thread['threads_comments'];
+      $comments = ($thread['threads_comments'] == 0) ? 0 : $thread['threads_comments'] - 1;
+      $goto = floor($comments / $account['users_limit']) * $account['users_limit'];
+      $goto .= '#com' . $thread['threads_comments'];
       $data['threads'][$run]['last_time'] = cs_link($date,'board','thread','where=' . $thread['threads_id'] . '&amp;start=' . $goto);
       if(!empty($thread['users_id'])) {
         $data['threads'][$run]['last_user'] = cs_user($thread['users_id'],$thread['users_nick'], $thread['users_active']);
