@@ -4,6 +4,7 @@ CHANGELOG
 ClanSphere 2011.3 Patch 5 >> 2013-XX-XX
 ___________________________________________________________
 
+-> Fixed articles listcat page switch not working (hajo)
 -> Fixed files download handling for non-existing mirrors (hajo)
 
 

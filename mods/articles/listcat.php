@@ -5,6 +5,9 @@
 $cs_lang = cs_translate('articles');
 
 $cs_get = cs_get('id');
+if(empty($cs_get['id'])) {
+  $cs_get['id'] = empty($_REQUEST['where']) ? 0 : (int) $_REQUEST['where'];
+}
 
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'articles_headline DESC';
@@ -38,7 +41,6 @@ if (empty($category)) {
     $cs_articles[$run]['articles_user'] = cs_user($cs_articles[$run]['users_id'],$cs_articles_user['users_nick'],$cs_articles_user['users_active'],$cs_articles_user['users_delete']);
     $cs_articles[$run]['articles_date'] = cs_date('unix',$cs_articles[$run]['articles_time'],1);
     $cs_articles[$run]['articles_views'] = cs_secure($cs_articles[$run]['articles_views']) . ' ' . $cs_lang['xtimes'];
-    
   }
     
   $data['articles'] = $cs_articles;
