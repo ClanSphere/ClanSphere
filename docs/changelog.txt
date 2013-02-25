@@ -7,6 +7,7 @@ ___________________________________________________________
 -> Fixed board active and new page links to threads (patch by atajsic)
 -> Fixed articles listcat page switch not working (hajo)
 -> Fixed files download handling for non-existing mirrors (hajo)
+-> Removed version and icon requirement from games mod (hajo)
 
 
 ClanSphere 2011.3 Patch 4 >> 2013-01-28

@@ -11,7 +11,7 @@ $files = cs_files();
 $options = cs_sql_option(__FILE__, 'games');
 $img_filetypes = array('image/gif' => 'gif');
 
-$games_error = 3; 
+$games_error = 0; 
 $games_form = 1;
 
 $games_id = $_REQUEST['id'];
@@ -38,19 +38,11 @@ else {
 
 if(!empty($_POST['games_name'])) {
   $games_name = $_POST['games_name'];
-  $games_error--;
 }
 else {
   $errormsg .= $cs_lang['name_error'] . cs_html_br(1);
+  $games_error++;
 }  
-
-if(!empty($_POST['games_version'])) {
-  $games_version = $_POST['games_version'];
-  $games_error--;
-}
-else {
-  $errormsg .= $cs_lang['version_error'] . cs_html_br(1);
-}
 
 if(!empty($_POST['games_usk'])) {
   $games_usk = $_POST['games_usk'];
@@ -74,11 +66,9 @@ if(!empty($_POST['games_url'])) {
 
 $categories_id = empty($_POST['categories_name']) ? $categories_id : cs_categories_create('games',$_POST['categories_name']);
 
-if(!empty($categories_id)) {
-  $games_error--;
-}
-else {
+if(empty($categories_id)) {
   $errormsg .= $cs_lang['cat_error'] . cs_html_br(1);
+  $games_error++;
 }
 
 if(!empty($files['symbol']['tmp_name'])) {
@@ -113,10 +103,6 @@ if(!empty($files['symbol']['tmp_name'])) {
     $symbol_error++;
   }
 }
-elseif(!file_exists($cs_main['def_path'] . '/uploads/games/' . $games_id . '.gif')) {
-  $errormsg .= $cs_lang['no_icon'] . cs_html_br(1);
-  $games_error++;
-}
 
 $data['lang']['body'] = !isset($_POST['submit']) ? $cs_lang['body_edit'] : $errormsg;
 
@@ -130,10 +116,10 @@ if(isset($_POST['submit'])) {
 
     if($delete == 1){
       cs_unlink('games', $games_id . '.gif');
+      copy('uploads/games/0.gif', 'uploads/games/' . (int) $games_id . '.gif');
     } 
 
     if(!empty($files['symbol']['tmp_name']) AND $symbol_error == 0) {
-
       cs_unlink('games', $games_id . '.gif'); 
       $filename = $games_id . '.' . $extension;
       cs_upload('games',$filename,$files['symbol']['tmp_name']);

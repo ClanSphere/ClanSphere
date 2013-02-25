@@ -15,7 +15,7 @@
       </td>
     </tr>
     <tr>
-      <td class="leftc">{icon:kate} {lang:version} *</td>
+      <td class="leftc">{icon:agt_update-product} {lang:version}</td>
       <td class="leftb"><input type="text" name="games_version" value="{games:version}" maxlength="200" size="50" />
       </td>
     </tr>
@@ -45,7 +45,7 @@
       </td>
     </tr>
     <tr>
-      <td class="leftc">{icon:images} {lang:icon} *</td>
+      <td class="leftc">{icon:images} {lang:icon}</td>
       <td class="leftb"><input type="file" name="symbol" value="" />
         <br />
         <br />

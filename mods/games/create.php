@@ -11,7 +11,7 @@ $files = cs_files();
 $options = cs_sql_option(__FILE__, 'games');
 $img_filetypes = array('image/gif' => 'gif');
 
-$games_error = 3; 
+$games_error = 0;
 $games_form = 1;
 
 if(empty($_POST['datum_month']) OR empty($_POST['datum_day']) OR empty($_POST['datum_year'])) {
@@ -32,24 +32,16 @@ $errormsg = '';
 
 if(!empty($_POST['games_name'])) {
   $games_name = $_POST['games_name'];
-  $games_error--;
 } else {
   $errormsg .= $cs_lang['name_error'] . cs_html_br(1);
-}
-
-if(!empty($_POST['games_version'])) {
-  $games_version = $_POST['games_version'];
-  $games_error--;
-} else {
-  $errormsg .= $cs_lang['version_error'] . cs_html_br(1);
+  $games_error++;
 }
 
 $categories_id = empty($_POST['categories_name']) ? $categories_id : cs_categories_create('games',$_POST['categories_name']);
 
-if(!empty($categories_id)) {
-  $games_error--;
-} else {
+if(empty($categories_id)) {
   $errormsg .= $cs_lang['cat_error'] . cs_html_br(1);
+  $games_error++;
 }
 
 if(!empty($files['symbol']['tmp_name'])) {
@@ -82,10 +74,6 @@ if(!empty($files['symbol']['tmp_name'])) {
     $symbol_error++;
   }
 }
-else {
-  $errormsg .= $cs_lang['no_icon'] . cs_html_br(1);
-  $games_error++;
-}
 
 if(!empty($_POST['games_creator'])) {
   $games_creator = $_POST['games_creator'];
@@ -103,11 +91,15 @@ if(isset($_POST['submit']) && empty($games_error) && empty($symbol_error)) {
   $games_save = array($games_name,$games_version,$games_release,$games_creator,$categories_id,$games_url,$games_usk);
   cs_sql_insert(__FILE__,'games',$games_cells,$games_save);
 
+  $where = "games_name = '" . cs_sql_escape($games_name) . "'";
+  $getid = cs_sql_select(__FILE__,'games','games_id',$where);
+
   if(!empty($files['symbol']['tmp_name']) AND $symbol_error == 0) {
-    $where = "games_name = '" . cs_sql_escape($games_name) . "'";
-    $getid = cs_sql_select(__FILE__,'games','games_id',$where);
     $filename = $getid['games_id'] . '.' . $extension;
     cs_upload('games',$filename,$files['symbol']['tmp_name']);
+  }
+  else {
+    copy('uploads/games/0.gif', 'uploads/games/' . (int) $getid['games_id'] . '.gif');
   }
 
   cs_redirect($cs_lang['create_done'],'games');
