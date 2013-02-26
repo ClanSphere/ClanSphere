@@ -12,6 +12,7 @@ ___________________________________________________________
 -> Removed version and icon requirement from games mod (hajo)
 -> Removed msn account data due to service shutting down soon (hajo)
 -> Updated CKEditor to 3.6.6.1
+-> Updated jQuery to 1.9.1 [experimental]
 
 
 ClanSphere 2011.3 Patch 4 >> 2013-01-28
