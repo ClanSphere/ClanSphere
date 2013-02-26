@@ -58,7 +58,7 @@
       <td class="leftb" colspan="2">{setup:view_type}</td>
    </tr>
    <tr>
-      <td class="leftc">{icon:msn_invisible} {lang:invisible}</td>
+      <td class="leftc">{icon:goto} {lang:invisible}</td>
       <td class="leftb" colspan="2">{setup:users_invisible}</td>
    </tr>
    <tr>
