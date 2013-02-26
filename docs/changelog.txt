@@ -11,6 +11,7 @@ ___________________________________________________________
 -> Fixed spelling of some words in English translation (hajo)
 -> Removed version and icon requirement from games mod (hajo)
 -> Removed msn account data due to service shutting down soon (hajo)
+-> Updated CKEditor to 3.6.6.1
 
 
 ClanSphere 2011.3 Patch 4 >> 2013-01-28
