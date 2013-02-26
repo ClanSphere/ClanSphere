@@ -140,9 +140,9 @@
     </td>
   </tr>
   <tr>
-    <td class="leftc"> {icon:msn_protocol} {lang:msn}</td>
-    <td class="leftb"><input type="text" name="data[users_msn]" value="{users:users_msn}" maxlength="40" size="40" /></td>
-    <td class="centerc"><input type="checkbox" name="hidden[]" value="users_msn"  {hidden:users_msn} />
+    <td class="leftc"> {icon:jabber_protocol} {lang:jabber}</td>
+    <td class="leftb">{lang:jabber_info}<br /><input type="text" name="data[users_jabber]" value="{users:users_jabber}" maxlength="40" size="40" /></td>
+    <td class="centerc"><input type="checkbox" name="hidden[]" value="users_jabber"  {hidden:users_jabber} />
     </td>
   </tr>
   <tr>

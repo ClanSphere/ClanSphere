@@ -41,7 +41,7 @@ function getUserAvatar($avatar = '')
   return empty($avatar) ? '' : cs_html_img('uploads/board/' . $avatar) . cs_html_br(1);
 }
 
-function getUserIcons($cs_lang,$users_id,$nick,$hidden = 0,$email=0,$icq=0, $msn=0, $url=0, $skype=0)
+function getUserIcons($cs_lang,$users_id,$nick,$hidden = 0,$email=0,$icq=0, $jabber=0, $url=0, $skype=0)
 {
   global $account;
   $allow = $users_id == $account['users_id'] OR $account['access_users'] > 4 ? 1 : 0;
@@ -49,7 +49,7 @@ function getUserIcons($cs_lang,$users_id,$nick,$hidden = 0,$email=0,$icq=0, $msn
 
   if (in_array('users_email',$hidden) && empty($allow)) $email = '';
   if (in_array('users_icq',$hidden) && empty($allow)) $icq = '';
-  if (in_array('users_msn',$hidden) && empty($allow)) $msn = '';
+  if (in_array('users_jabber',$hidden) && empty($allow)) $jabber = '';
   if (in_array('users_skype',$hidden) && empty($allow)) $skype = '';
   if (in_array('users_url',$hidden) && empty($allow)) $url = '';
 
@@ -57,7 +57,7 @@ function getUserIcons($cs_lang,$users_id,$nick,$hidden = 0,$email=0,$icq=0, $msn
   $icons .= !empty($email) ? cs_html_mail($email,cs_icon('mail_generic')) : '';
   $icons .= $account['access_users'] >= 2 ? cs_link(cs_icon('mail_send'),'messages','create','to_id=' . $users_id,0,$cs_lang['send_message']) : '';
   $icons .= !empty($icq) ? cs_html_link('http://www.icq.com/people/' . $icq,cs_icon('licq'),1,0,$cs_lang['icq']) : '';
-  $icons .= !empty($msn) ? cs_html_msnmail($msn, cs_icon('msn_protocol')) : '';
+  $icons .= !empty($jabber) ? cs_html_jabbermail($jabber, cs_icon('jabber_protocol')) : '';
   $icons .= !empty($skype) ? cs_html_link('skype:' . $skype . '?userinfo',cs_html_img('http://mystatus.skype.com/smallicon/' . $skype,'16','16','0','Skype'),0,0,$cs_lang['skype']) : '';
   $icons .= !empty($url) ? cs_html_link('http://' . $url,cs_icon('gohome'),1,0,$cs_lang['homepage']) : '';
 

@@ -42,7 +42,7 @@ $sum= cs_sql_count(__FILE__,'comments',$where_com);
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $from .= 'LEFT JOIN {pre}_users usr ON thr.users_id = usr.users_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
-$select = 'frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.board_read AS board_read, frm.board_name AS board_name, frm.board_id AS board_id, thr.threads_time AS threads_time, thr.threads_text AS threads_text, thr.threads_important AS threads_important, thr.threads_headline AS threads_headline, thr.threads_view AS threads_view, thr.threads_last_time AS threads_last_time, thr.threads_id AS threads_id, thr.threads_edit AS threads_edit, thr.threads_close AS threads_close, cat.categories_name AS categories_name, cat.categories_id AS categories_id, usr.users_id AS users_id, usr.users_country AS users_country, usr.users_nick AS users_nick, usr.users_delete AS users_delete, usr.users_avatar AS users_avatar, usr.users_place AS users_place, usr.users_hidden AS users_hidden, usr.users_signature AS users_signature, usr.users_laston AS users_laston, usr.users_email AS users_email, usr.users_icq AS users_icq, usr.users_msn AS users_msn, usr.users_url AS users_url, usr.users_skype AS users_skype, usr.users_active AS users_active, usr.users_invisible AS users_invisible, frm.squads_id AS squads_id, thr.threads_ghost AS threads_ghost, thr.threads_ghost_thread AS threads_ghost_thread';
+$select = 'frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.board_read AS board_read, frm.board_name AS board_name, frm.board_id AS board_id, thr.threads_time AS threads_time, thr.threads_text AS threads_text, thr.threads_important AS threads_important, thr.threads_headline AS threads_headline, thr.threads_view AS threads_view, thr.threads_last_time AS threads_last_time, thr.threads_id AS threads_id, thr.threads_edit AS threads_edit, thr.threads_close AS threads_close, cat.categories_name AS categories_name, cat.categories_id AS categories_id, usr.users_id AS users_id, usr.users_country AS users_country, usr.users_nick AS users_nick, usr.users_delete AS users_delete, usr.users_avatar AS users_avatar, usr.users_place AS users_place, usr.users_hidden AS users_hidden, usr.users_signature AS users_signature, usr.users_laston AS users_laston, usr.users_email AS users_email, usr.users_icq AS users_icq, usr.users_jabber AS users_jabber, usr.users_url AS users_url, usr.users_skype AS users_skype, usr.users_active AS users_active, usr.users_invisible AS users_invisible, frm.squads_id AS squads_id, thr.threads_ghost AS threads_ghost, thr.threads_ghost_thread AS threads_ghost_thread';
 $where = 'thr.threads_id = "' . $id . '"';
 $data['thread'] = cs_sql_select(__FILE__,$from,$select,$where);
 
@@ -380,7 +380,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
     }
     //board_safemode($data['thread']['users_nick'], $data['thread']['threads_time'], $options);
     $data['thread_asc']['laston'] = cs_userstatus($data['thread']['users_laston'],$data['thread']['users_invisible'],1);
-    $iconcache[$data['thread']['users_id']] = getUserIcons($cs_lang,$data['thread']['users_id'],$data['thread']['users_nick'],$data['thread']['users_hidden'],$data['thread']['users_email'],$data['thread']['users_icq'],$data['thread']['users_msn'], $data['thread']['users_url'], $data['thread']['users_skype']);
+    $iconcache[$data['thread']['users_id']] = getUserIcons($cs_lang,$data['thread']['users_id'],$data['thread']['users_nick'],$data['thread']['users_hidden'],$data['thread']['users_email'],$data['thread']['users_icq'],$data['thread']['users_jabber'], $data['thread']['users_url'], $data['thread']['users_skype']);
     $data['thread_asc']['usericons'] = $iconcache[$data['thread']['users_id']];
     if(!empty($account['users_id']))
     {
@@ -405,7 +405,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
   // Antworten
   $from = 'comments com LEFT JOIN {pre}_users usr ON com.users_id = usr.users_id ';
   $where = "comments_mod = 'board' AND comments_fid = \"" . $id . "\"";
-  $select = 'users_nick, users_country, com.users_id AS users_id, users_avatar, users_delete, users_laston, users_invisible, users_place, users_hidden, comments_time, comments_edit, comments_fid, comments_text, users_signature, users_email ,users_msn, users_icq, users_skype,users_active,users_url, comments_id';
+  $select = 'users_nick, users_country, com.users_id AS users_id, users_avatar, users_delete, users_laston, users_invisible, users_place, users_hidden, comments_time, comments_edit, comments_fid, comments_text, users_signature, users_email ,users_jabber, users_icq, users_skype,users_active,users_url, comments_id';
   $order = 'comments_id '.$board_sort;
 
   $cs_comments = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
@@ -434,7 +434,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
       $cs_com[$run_2]['comments_text']  = $cs_comments[$run]['comments_text'];
       $cs_com[$run_2]['users_signature']  = $cs_comments[$run]['users_signature'];
       $cs_com[$run_2]['users_email']     = $cs_comments[$run]['users_email'];
-      $cs_com[$run_2]['users_msn']    = $cs_comments[$run]['users_msn'];
+      $cs_com[$run_2]['users_jabber']    = $cs_comments[$run]['users_jabber'];
       $cs_com[$run_2]['users_icq']    = $cs_comments[$run]['users_icq'];
       $cs_com[$run_2]['users_skype']  = $cs_comments[$run]['users_skype'];
       $cs_com[$run_2]['users_active']  = $cs_comments[$run]['users_active'];
@@ -575,7 +575,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
     $data['comment'][$run]['laston'] = cs_userstatus($cs_com[$run]['users_laston'],$cs_com[$run]['users_invisible'],1);
     //  echo cs_html_hr('100%');
     if (empty($iconcache[$cs_com[$run]['users_id']]))
-    $iconcache[$cs_com[$run]['users_id']] = getUserIcons($cs_lang,$cs_com[$run]['users_id'],$cs_com[$run]['users_nick'],$cs_com[$run]['users_hidden'],$cs_com[$run]['users_email'],$cs_com[$run]['users_icq'],$cs_com[$run]['users_msn'],$cs_com[$run]['users_url'],$cs_com[$run]['users_skype']);
+    $iconcache[$cs_com[$run]['users_id']] = getUserIcons($cs_lang,$cs_com[$run]['users_id'],$cs_com[$run]['users_nick'],$cs_com[$run]['users_hidden'],$cs_com[$run]['users_email'],$cs_com[$run]['users_icq'],$cs_com[$run]['users_jabber'],$cs_com[$run]['users_url'],$cs_com[$run]['users_skype']);
     $data['comment'][$run]['usericons'] = $iconcache[$cs_com[$run]['users_id']];
     if(!empty($account['users_id']))
     {
@@ -698,7 +698,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
     //board_safemode($data['thread']['users_nick'], $data['thread']['threads_time'], $options);
     $data['thread_desc']['laston'] = cs_userstatus($data['thread']['users_laston'],$data['thread']['users_invisible'],1);
     //echo cs_html_hr('100%');
-    $data['thread_desc']['users_icons'] = getUserIcons($cs_lang,$data['thread']['users_id'],$data['thread']['users_nick'],$data['thread']['users_hidden'],$data['thread']['users_email'],$data['thread']['users_icq'],$data['thread']['users_msn'], $data['thread']['users_url'], $data['thread']['users_skype']);
+    $data['thread_desc']['users_icons'] = getUserIcons($cs_lang,$data['thread']['users_id'],$data['thread']['users_nick'],$data['thread']['users_hidden'],$data['thread']['users_email'],$data['thread']['users_icq'],$data['thread']['users_jabber'], $data['thread']['users_url'], $data['thread']['users_skype']);
     $data['thread_desc']['remove'] = '';
     $data['thread_desc']['edit'] = '';
     $data['thread_desc']['quote'] = '';

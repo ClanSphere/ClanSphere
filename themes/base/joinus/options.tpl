@@ -46,10 +46,10 @@
         </td>
      </tr>
      <tr>
-        <td class="leftc">{icon:document} {lang:msn}</td>
+        <td class="leftc">{icon:document} {lang:jabber}</td>
         <td class="leftb">
-          <input type="radio" name="msn" value="1" {op:msn_yes} />{lang:yes}
-          <input type="radio" name="msn" value="0" {op:msn_no} />{lang:no}
+          <input type="radio" name="jabber" value="1" {op:jabber_yes} />{lang:yes}
+          <input type="radio" name="jabber" value="0" {op:jabber_no} />{lang:no}
         </td>
      </tr>
      <tr>

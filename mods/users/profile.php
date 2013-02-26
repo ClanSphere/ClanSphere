@@ -24,7 +24,7 @@ if(isset($_POST['submit'])) {
   $cs_user['users_place'] = $_POST['users_place'];
   $cs_user['users_adress'] = $_POST['users_adress'];
   $cs_user['users_icq'] = str_replace('-','',$_POST['users_icq']);
-  $cs_user['users_msn'] = $_POST['users_msn'];
+  $cs_user['users_jabber'] = $_POST['users_jabber'];
   $cs_user['users_skype'] = $_POST['users_skype'];
   $cs_user['users_email'] = $_POST['users_email'];
   $cs_user['users_url'] = $_POST['users_url'];
@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
   $hidden = array();
   $hidden_count = isset($_POST['hidden']) ? count($_POST['hidden']) : 0;
 
-  $canhid = array('users_name','users_surname','users_age','users_height','users_adress','users_place','users_icq','users_msn','users_skype','users_email','users_url','users_phone','users_mobile');
+  $canhid = array('users_name','users_surname','users_age','users_height','users_adress','users_place','users_icq','users_jabber','users_skype','users_email','users_url','users_phone','users_mobile');
   for($hc = 0; $hc < $hidden_count; $hc++) {
     if(in_array($_POST['hidden'][$hc],$canhid)) {
       $hidden[] = $_POST['hidden'][$hc];
@@ -90,7 +90,7 @@ if(isset($_POST['submit'])) {
   }
 }
 else {
-  $cells = 'users_nick, users_name, users_surname, users_sex, users_age, users_height, users_country, users_postalcode, users_place, users_adress, users_icq, users_msn, users_skype, users_email, users_url, users_phone, users_mobile, users_info, users_hidden';
+  $cells = 'users_nick, users_name, users_surname, users_sex, users_age, users_height, users_country, users_postalcode, users_place, users_adress, users_icq, users_jabber, users_skype, users_email, users_url, users_phone, users_mobile, users_info, users_hidden';
   $cs_user = cs_sql_select(__FILE__,'users',$cells,"users_id = '" . $account['users_id'] . "'");
   $hidden = explode(',',$cs_user['users_hidden']);
 }
@@ -125,7 +125,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['users']['users_place'] = cs_secure($cs_user['users_place']);
   $data['users']['users_adress'] = cs_secure($cs_user['users_adress']);
   $data['users']['users_icq'] = cs_secure($cs_user['users_icq']);
-  $data['users']['users_msn'] = cs_secure($cs_user['users_msn']);
+  $data['users']['users_jabber'] = cs_secure($cs_user['users_jabber']);
   $data['users']['users_skype'] = cs_secure($cs_user['users_skype']);
   $data['users']['users_email'] = cs_secure($cs_user['users_email']);
   $data['users']['users_url'] = cs_secure($cs_user['users_url']);
@@ -142,7 +142,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['hidden']['users_place'] = isset($hidden['users_place']) ? $checked : '';
   $data['hidden']['users_adress'] = isset($hidden['users_adress']) ? $checked : '';
   $data['hidden']['users_icq'] = isset($hidden['users_icq']) ? $checked : '';
-  $data['hidden']['users_msn'] = isset($hidden['users_msn']) ? $checked : '';
+  $data['hidden']['users_jabber'] = isset($hidden['users_jabber']) ? $checked : '';
   $data['hidden']['users_skype'] = isset($hidden['users_skype']) ? $checked : '';
   $data['hidden']['users_email'] = isset($hidden['users_email']) ? $checked : '';
   $data['hidden']['users_url'] = isset($hidden['users_url']) ? $checked : '';

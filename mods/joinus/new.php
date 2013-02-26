@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
   $data['join']['joinus_country'] = $_POST['joinus_country'];
   $data['join']['joinus_place'] = $_POST['joinus_place'];
   $data['join']['joinus_icq'] = empty($_POST['joinus_icq']) ? 0 : str_replace('-','',$_POST['joinus_icq']);
-  $data['join']['joinus_msn'] = $_POST['joinus_msn'];
+  $data['join']['joinus_jabber'] = $_POST['joinus_jabber'];
   $data['join']['joinus_email'] = $_POST['joinus_email'];
   $data['join']['joinus_lanact'] = $_POST['joinus_lanact'];
   $data['join']['joinus_webcon'] = $_POST['joinus_webcon'];
@@ -105,10 +105,10 @@ if(isset($_POST['submit'])) {
       $errormsg .= $cs_lang['no_icq'] . cs_html_br(1);
     }
   }
-  if(!empty($data['if']['msn'])) {
-    if(empty($data['join']['joinus_msn'])) {
+  if(!empty($data['if']['jabber'])) {
+    if(empty($data['join']['joinus_jabber'])) {
       $error++;
-      $errormsg .= $cs_lang['no_msn'] . cs_html_br(1);
+      $errormsg .= $cs_lang['no_jabber'] . cs_html_br(1);
     }
   }
   if(!empty($data['if']['game'])) {
@@ -208,7 +208,7 @@ else {
   $data['join']['joinus_country'] = 'fam';
   $data['join']['joinus_place'] = '';
   $data['join']['joinus_icq'] = '';
-  $data['join']['joinus_msn'] = '';
+  $data['join']['joinus_jabber'] = '';
   $data['join']['joinus_email'] = '';
   $data['join']['joinus_lanact'] = '';
   $data['join']['joinus_webcon'] = '';
@@ -218,7 +218,7 @@ else {
   $data2['join']['joinus_rules'] = 0;
 
   if(!empty($account['users_id'])) {
-    $fetch = 'users_nick, users_name, users_surname, users_age, users_country, users_place, users_icq, users_msn, users_email';
+    $fetch = 'users_nick, users_name, users_surname, users_age, users_country, users_place, users_icq, users_jabber, users_email';
     $cs_user = cs_sql_select(__FILE__,'users',$fetch,"users_id = '" . $account['users_id'] . "'");
     $data['join']['joinus_nick'] = $cs_user['users_nick'];
     $data['join']['joinus_name'] = $cs_user['users_name'];
@@ -227,7 +227,7 @@ else {
     $data['join']['joinus_country'] = $cs_user['users_country'];
     $data['join']['joinus_place'] = $cs_user['users_place'];
     $data['join']['joinus_icq'] = empty($cs_user['users_icq']) ? '' : $cs_user['users_icq'];
-    $data['join']['joinus_msn'] = $cs_user['users_msn'];
+    $data['join']['joinus_jabber'] = $cs_user['users_jabber'];
     $data['join']['joinus_email'] = $cs_user['users_email'];
     $data['if']['pass'] = 1;
     $data['if']['nopass'] = 0;

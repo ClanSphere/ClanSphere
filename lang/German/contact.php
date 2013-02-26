@@ -96,7 +96,7 @@ $cs_lang['editor'] = 'Bearbeiter';
 // send.php
 $cs_lang['err_direct']    = 'Diese Datei kann nicht direkt aufgerufen werden!';
 $cs_lang['icq']     = 'ICQ Nummer';
-$cs_lang['msn']     = 'MSN';
+$cs_lang['jabber']     = 'Jabber';
 $cs_lang['empty']   = 'nicht angegeben';
 $cs_lang['na']    = 'Nicht Verf&uuml;gbar';
 $cs_lang['all']    = 'Allgemein';

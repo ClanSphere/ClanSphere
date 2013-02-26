@@ -11,8 +11,8 @@
     <td class="leftb"><input type="text" name="gbook_icq" value="{gbook:gbook_icq}" maxlength="20" size="20" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-    <td class="leftb"><input type="text" name="gbook_msn" value="{gbook:gbook_msn}" maxlength="40" size="40" /></td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber}</td>
+    <td class="leftb"><input type="text" name="gbook_jabber" value="{gbook:gbook_jabber}" maxlength="40" size="40" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:skype} {lang:skype}</td>

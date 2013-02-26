@@ -353,7 +353,7 @@ $cs_lang['posts_per_day'] = ' Posts/Day';
 //users_home.php
 $cs_lang['last_threads']    = 'Latest thread actions';
 $cs_lang['send_message'] = 'Send Message';
-$cs_lang['send_mail'] = 'Send E-Mail';
+$cs_lang['send_mail'] = 'Send email';
 $cs_lang['icq'] = 'ICQ';
 $cs_lang['skype'] = 'Skype';
 $cs_lang['homepage'] = 'Homepage';

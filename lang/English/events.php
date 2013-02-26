@@ -120,7 +120,7 @@ $cs_lang['require'] = 'Requirements';
 $cs_lang['req_name'] = 'Name';
 $cs_lang['req_surname'] = 'Surname';
 $cs_lang['req_fullname'] = 'Full name';
-$cs_lang['req_fulladress'] = 'Full adress';
+$cs_lang['req_fulladress'] = 'Full address';
 $cs_lang['req_phone'] = 'Phone';
 $cs_lang['req_mobile'] = 'Cell Phone';
 $cs_lang['max_navbirthday'] = 'Datasets in the navbirthday';
@@ -153,7 +153,7 @@ $cs_lang['user_found']     = '- You are already signed in';
 $cs_lang['err_time']       = '- The event is canceled or has taken place';
 $cs_lang['err_age']        = '- Not old enough to signin for the event';
 $cs_lang['err_name']       = '- A full name is required';
-$cs_lang['err_adress']     = '- A full adress is required';
+$cs_lang['err_adress']     = '- A full address is required';
 $cs_lang['err_phone']      = '- Data too short or missing: Phone';
 $cs_lang['err_mobile']     = '- Data too short or missing: Cell Phone';
 

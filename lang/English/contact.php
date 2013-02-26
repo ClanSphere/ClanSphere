@@ -10,14 +10,14 @@ $cs_lang['task_done'] = 'Mark task as done';
 
 // options.php
 $cs_lang['body_options'] = 'Administration of settings in the module.';
-$cs_lang['def_org'] = 'E-Mail Prefix and Identifier';
-$cs_lang['def_mail'] = 'Default E-Mail';
+$cs_lang['def_org'] = 'Email Prefix and Identifier';
+$cs_lang['def_mail'] = 'Default email';
 $cs_lang['empty_uses_default'] = 'Leave blank to keep PHP default';
 $cs_lang['smtp_host'] = 'SMTP Host';
 $cs_lang['smtp_port'] = 'SMTP Port';
 $cs_lang['smtp_user'] = 'SMTP User';
 $cs_lang['smtp_pw'] = 'SMTP Password';
-$cs_lang['mailsig'] = 'E-Mail Signature';
+$cs_lang['mailsig'] = 'Email Signature';
 
 // blocklist
 $cs_lang['blocklist'] = 'Blocked Domains';
@@ -46,7 +46,7 @@ $cs_lang['body_archive'] = 'Here you find all answered messages.';
 $cs_lang['head_mail']  = 'Mail Form';
 $cs_lang['body_mail']  = 'Please fill out as many fields as possible.';
 $cs_lang['design']  = 'Design';
-$cs_lang['email']  = 'E-Mail';
+$cs_lang['email']  = 'Email';
 $cs_lang['general']  = 'General';
 $cs_lang['head']  = 'Subject';
 $cs_lang['help']  = 'Help';
@@ -81,7 +81,7 @@ $cs_lang['receiver'] = 'Receiver';
 $cs_lang['in_response'] = 'In response of your mail from %s:';
 
 // users_home.php
-$cs_lang['last_mails']    = 'Last E-mails';
+$cs_lang['last_mails']    = 'Last emails';
 
 // view.php
 $cs_lang['view'] = 'View';
@@ -96,7 +96,7 @@ $cs_lang['editor'] = 'Editor';
 // send.php
 $cs_lang['err_direct']    = 'You cannot access this file directly!';
 $cs_lang['icq']      = 'ICQ Number';
-$cs_lang['msn'] = 'MSN';
+$cs_lang['jabber'] = 'Jabber';
 $cs_lang['empty']  = 'not entered';
 $cs_lang['na']    = 'Not available';
 $cs_lang['all']    = 'General';
@@ -117,10 +117,10 @@ On %s at %s following message was sent with the IP %s :
 Name: %s
 Company: %s
 ICQ: %s
-E-Mail: %s
+Email: %s
 Concern: %s
 Subject: %s\n
 Message:
 %s
 \n
-This e-mail was automatically generated.";
+This email was automatically generated.";

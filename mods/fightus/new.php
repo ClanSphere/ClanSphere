@@ -28,7 +28,7 @@ if(isset($_POST['submit'])) {
   $cs_fightus['fightus_url'] = $_POST['fightus_url'];
   $cs_fightus['fightus_country'] = $_POST['fightus_country'];
   $cs_fightus['fightus_icq'] = empty($_POST['fightus_icq']) ? 0 : str_replace('-','',$_POST['fightus_icq']);
-  $cs_fightus['fightus_msn'] = $_POST['fightus_msn'];
+  $cs_fightus['fightus_jabber'] = $_POST['fightus_jabber'];
   $cs_fightus['fightus_email'] = $_POST['fightus_email'];
   $cs_fightus['fightus_date'] = cs_datepost('fight','unix');
   $cs_fightus['fightus_more'] = $_POST['fightus_more'];
@@ -86,18 +86,18 @@ else {
   $cs_fightus['fightus_url'] = '';
   $cs_fightus['fightus_country'] = 'fam';
   $cs_fightus['fightus_icq'] = '';
-  $cs_fightus['fightus_msn'] = '';
+  $cs_fightus['fightus_jabber'] = '';
   $cs_fightus['fightus_email'] = '';
   $cs_fightus['fightus_date'] = cs_time();
   $cs_fightus['fightus_more'] = '';
 
   if(!empty($account['users_id'])) {
-    $fetch = 'users_nick, users_country, users_icq, users_msn, users_email';
+    $fetch = 'users_nick, users_country, users_icq, users_jabber, users_email';
     $cs_user = cs_sql_select(__FILE__,'users',$fetch,"users_id = '" . $account['users_id'] . "'");
     $cs_fightus['fightus_nick'] = $cs_user['users_nick'];
     $cs_fightus['fightus_country'] = $cs_user['users_country'];
     $cs_fightus['fightus_icq'] = empty($cs_user['users_icq']) ? '' : $cs_user['users_icq'];
-    $cs_fightus['fightus_msn'] = $cs_user['users_msn'];
+    $cs_fightus['fightus_jabber'] = $cs_user['users_jabber'];
     $cs_fightus['fightus_email'] = $cs_user['users_email'];
   }
 }

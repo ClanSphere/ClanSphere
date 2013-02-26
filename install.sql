@@ -410,7 +410,7 @@ CREATE TABLE {pre}_fightus (
   fightus_since int(14) NOT NULL default '0',
   fightus_nick varchar(40) NOT NULL default '',
   fightus_icq int(12) NOT NULL default '0',
-  fightus_msn varchar(40) NOT NULL default '',
+  fightus_jabber varchar(40) NOT NULL default '',
   fightus_email varchar(40) NOT NULL default '',
   fightus_clan varchar(200) NOT NULL default '',
   fightus_short varchar(20) NOT NULL default '',
@@ -497,7 +497,7 @@ CREATE TABLE {pre}_gbook (
   gbook_nick varchar(20) NOT NULL default '',
   gbook_email varchar(40) NOT NULL default '',
   gbook_icq varchar(20) NOT NULL default '',
-  gbook_msn varchar(40) NOT NULL default '',
+  gbook_jabber varchar(40) NOT NULL default '',
   gbook_skype varchar(40) NOT NULL default '',
   gbook_url varchar(40) NOT NULL default '',
   gbook_town varchar(20) NOT NULL default '',
@@ -527,7 +527,7 @@ CREATE TABLE {pre}_joinus (
   joinus_country varchar(40) NOT NULL default '',
   joinus_place varchar(40) NOT NULL default '',
   joinus_icq int(12) NOT NULL default '0',
-  joinus_msn varchar(40) NOT NULL default '',
+  joinus_jabber varchar(40) NOT NULL default '',
   joinus_email varchar(40) NOT NULL default '',
   joinus_webcon varchar(80) NOT NULL default '',
   joinus_lanact varchar(80) NOT NULL default '',
@@ -565,7 +565,7 @@ CREATE TABLE {pre}_mail (
   mail_ip varchar(40) NOT NULL default '',
   mail_email varchar(80) NOT NULL default '',
   mail_icq int(12) NOT NULL default '0',
-  mail_msn varchar(40) NOT NULL default '',
+  mail_jabber varchar(40) NOT NULL default '',
   mail_firm varchar(200) NOT NULL default '',
   mail_subject varchar(200) NOT NULL default '',
   mail_message text,
@@ -771,7 +771,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_remote', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.3_Patch_5_GIT');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2013-01-29');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2013-02-26');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '87');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
@@ -844,7 +844,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('jo
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'place', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'country', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'icq', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'msn', '1');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'jabber', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'game', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'squad', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('joinus', 'webcon', '0');
@@ -1131,7 +1131,7 @@ CREATE TABLE {pre}_users (
   users_place varchar(40) NOT NULL default '',
   users_adress varchar(80) NOT NULL default '',
   users_icq int(12) NOT NULL default '0',
-  users_msn varchar(40) NOT NULL default '',
+  users_jabber varchar(40) NOT NULL default '',
   users_skype varchar(40) NOT NULL default '',
   users_email varchar(255) NOT NULL default '',
   users_emailregister varchar(255) NOT NULL default '',

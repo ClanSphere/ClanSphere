@@ -4,10 +4,13 @@ CHANGELOG
 ClanSphere 2011.3 Patch 5 >> 2013-XX-XX
 ___________________________________________________________
 
--> Fixed board active and new page links to threads (patch by atajsic)
+-> Added jabber account data as a replacement for msn (hajo)
 -> Fixed articles listcat page switch not working (hajo)
+-> Fixed board active and new page links to threads (patch by atajsic)
 -> Fixed files download handling for non-existing mirrors (hajo)
+-> Fixed spelling of some words in English translation (hajo)
 -> Removed version and icon requirement from games mod (hajo)
+-> Removed msn account data due to service shutting down soon (hajo)
 
 
 ClanSphere 2011.3 Patch 4 >> 2013-01-28

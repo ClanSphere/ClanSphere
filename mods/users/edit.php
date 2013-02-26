@@ -79,7 +79,7 @@ else {
                       'users_adress',
                       'users_place',
                       'users_icq',
-                      'users_msn',
+                      'users_jabber',
                       'users_skype',
                       'users_email',
                       'users_url',
@@ -153,7 +153,7 @@ else {
     // Get user from DB
     $cells = 'access_id, users_lang, users_nick, users_email, users_active, users_name, users_surname, users_sex, '
            . 'users_age, users_height, users_id, users_adress, users_postalcode, users_place, users_url, users_icq, '
-           . 'users_msn, users_skype, users_phone, users_mobile, users_info, users_signature, users_hidden, users_country, '
+           . 'users_jabber, users_skype, users_phone, users_mobile, users_info, users_signature, users_hidden, users_country, '
            . 'users_emailregister';
 
     $cs_user = cs_sql_select(__FILE__, 'users', $cells, 'users_id = ' . $users_id);
@@ -198,7 +198,7 @@ else {
     $data['hidden']['users_place'] = isset($hidden['users_place']) ? $checked : '';
     $data['hidden']['users_adress'] = isset($hidden['users_adress']) ? $checked : '';
     $data['hidden']['users_icq'] = isset($hidden['users_icq']) ? $checked : '';
-    $data['hidden']['users_msn'] = isset($hidden['users_msn']) ? $checked : '';
+    $data['hidden']['users_jabber'] = isset($hidden['users_jabber']) ? $checked : '';
     $data['hidden']['users_skype'] = isset($hidden['users_skype']) ? $checked : '';
     $data['hidden']['users_email'] = isset($hidden['users_email']) ? $checked : '';
     $data['hidden']['users_url'] = isset($hidden['users_url']) ? $checked : '';

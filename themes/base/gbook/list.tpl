@@ -19,7 +19,7 @@
         {gbook:time} <br /><br />
       {icon:personal} {gbook:users_nick} <br />
       {gbook:icon_town} {gbook:town} <br /><br />
-      {gbook:icon_mail} {gbook:icon_icq} {gbook:icon_msn} {gbook:icon_skype} {gbook:icon_url}<br />
+      {gbook:icon_mail} {gbook:icon_icq} {gbook:icon_jabber} {gbook:icon_skype} {gbook:icon_url}<br />
     </td>
     <td class="leftb">{gbook:text}</td>
   </tr>

@@ -27,8 +27,8 @@
     <td class="leftb" colspan="2"><input type="text" name="fightus_icq" value="{fightus:fightus_icq}" maxlength="12" size="12" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-    <td class="leftb" colspan="2"><input type="text" name="fightus_msn" value="{fightus:fightus_msn}" maxlength="40" size="40" /></td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber}</td>
+    <td class="leftb" colspan="2"><input type="text" name="fightus_jabber" value="{fightus:fightus_jabber}" maxlength="40" size="40" /></td>
   </tr>
   <tr>
     <td class="leftc">{icon:package_games} {lang:game}</td>

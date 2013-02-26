@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
     $create['users_age'] = $_POST['users_age'];
     $create['users_place'] = $_POST['users_place'];
     $create['users_icq'] = $_POST['users_icq'];
-    $create['users_msn'] = $_POST['users_msn'];
+    $create['users_jabber'] = $_POST['users_jabber'];
     $create['users_pwd'] = $_POST['users_pwd'];
     $conv_joinus = 1;
   }
@@ -103,7 +103,7 @@ else {
       $create['users_age'] = $cs_joinus['joinus_age'];
       $create['users_place'] = $cs_joinus['joinus_place'];
       $create['users_icq'] = $cs_joinus['joinus_icq'];
-        $create['users_msn'] = $cs_joinus['joinus_msn'];
+        $create['users_jabber'] = $cs_joinus['joinus_jabber'];
       $create['users_pwd'] = $cs_joinus['users_pwd'];
       $create['access_id'] = '3';
       $conv_joinus = 1;
@@ -163,8 +163,8 @@ else {
   $users_id = create_user($create['access_id'],$create['users_nick'],$create_['password'],$create['users_lang'],$create['users_email'],$create['users_country'],$create['users_timezone'],$create['users_dstime']);
 
   if(!empty($conv_joinus) AND !empty($users_id)) {
-    $array_keys = array('users_name', 'users_surname', 'users_age', 'users_place', 'users_icq', 'users_msn', 'users_pwd');
-    $array_values = array($create['users_name'], $create['users_surname'], $create['users_age'], $create['users_place'], $create['users_icq'], $create['users_msn'], $create['users_pwd']);
+    $array_keys = array('users_name', 'users_surname', 'users_age', 'users_place', 'users_icq', 'users_jabber', 'users_pwd');
+    $array_values = array($create['users_name'], $create['users_surname'], $create['users_age'], $create['users_place'], $create['users_icq'], $create['users_jabber'], $create['users_pwd']);
     cs_sql_update(__FILE__, 'users', $array_keys, $array_values, $users_id);
   }
 

@@ -33,7 +33,7 @@ $mail['name']          = empty($_POST['name']) ? '' : $_POST['name'];
 $mail['email']         = empty($_POST['email']) ? '' : $_POST['email'];
 $mail['why']           = empty($_POST['why']) ? '' : $_POST['why'];
 $mail['text']          = empty($_POST['text']) ? '' : $_POST['text'];
-$mail['msn']           = empty($_POST['msn']) ? '' : $_POST['msn'];
+$mail['jabber']           = empty($_POST['jabber']) ? '' : $_POST['jabber'];
 $mail['icq']           = empty($_POST['icq']) ? '' : str_replace('-','',$_POST['icq']);
 $mail['firm']          = empty($_POST['firm']) ? '' : $_POST['firm'];
 $mail['categories_id'] = empty($_POST['categories_id']) ? '' : $_POST['categories_id'];
@@ -122,8 +122,8 @@ else {
 
   settype($mail['icq'], 'integer');
 
-  $mail_cells = array('mail_name','mail_time','mail_ip','mail_email','mail_icq','mail_msn','mail_firm','categories_id','mail_subject','mail_message');
-  $mail_save = array($mail['name'],cs_time(),$ip,$mail['email'],$mail['icq'],$mail['msn'],$mail['firm'],$mail['categories_id'],$mail['why'],$mail['text']);
+  $mail_cells = array('mail_name','mail_time','mail_ip','mail_email','mail_icq','mail_jabber','mail_firm','categories_id','mail_subject','mail_message');
+  $mail_save = array($mail['name'],cs_time(),$ip,$mail['email'],$mail['icq'],$mail['jabber'],$mail['firm'],$mail['categories_id'],$mail['why'],$mail['text']);
   cs_sql_insert(__FILE__,'mail',$mail_cells,$mail_save);
 
   cs_cache_delete('count_mail_unread');

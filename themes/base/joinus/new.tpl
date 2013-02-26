@@ -97,8 +97,8 @@
     <td class="leftb"><input type="text" name="joinus_icq" value="{join:joinus_icq}" size="12" maxlength="12" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn} {if:msn}*{stop:msn}</td>
-    <td class="leftb"><input type="text" name="joinus_msn" value="{join:joinus_msn}" size="40" maxlength="40" /></td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber} {if:jabber}*{stop:jabber}</td>
+    <td class="leftb"><input type="text" name="joinus_jabber" value="{join:joinus_jabber}" size="40" maxlength="40" /></td>
   </tr>  
   <tr>
     <td class="leftc">{icon:package_games} {lang:game} {if:game}*{stop:game}</td>

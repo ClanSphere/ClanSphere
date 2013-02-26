@@ -37,5 +37,5 @@ $cs_lang['d_count_navall'] = 'Alltime visitors (not recommended)';
 
 $cs_lang['bookmark_add'] = 'Add to Favorites';
 $cs_lang['bookmark_addthis'] = 'Share with AddThis.com';
-$cs_lang['bookmark_view'] = 'View adress';
-$cs_lang['bookmark_not'] = 'Sharing this adress is disabled';
+$cs_lang['bookmark_view'] = 'View address';
+$cs_lang['bookmark_not'] = 'Sharing this address is disabled';

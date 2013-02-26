@@ -28,8 +28,8 @@
   <td class="leftb"><input type="text" name="icq" value="{mail:icq}" maxlength="20" size="20" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-  <td class="leftb"><input type="text" name="msn" value="{mail:msn}" maxlength="40" size="40" /></td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber}</td>
+  <td class="leftb"><input type="text" name="jabber" value="{mail:jabber}" maxlength="40" size="40" /></td>
   </tr>  
   <tr>
     <td class="leftc">{icon:kfind} {lang:request} *</td>

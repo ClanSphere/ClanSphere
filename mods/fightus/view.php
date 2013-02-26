@@ -13,7 +13,7 @@ $fightus_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 $data['fightus']['url_convert_clan'] = cs_url('clans','create','fightus=' . $fightus_id);
 $data['fightus']['url_convert_war'] = cs_url('wars','create','fightus=' . $fightus_id);
 
-$select = 'fightus_since, fightus_nick, fightus_email, fightus_icq, fightus_msn, games_id, squads_id, ';
+$select = 'fightus_since, fightus_nick, fightus_email, fightus_icq, fightus_jabber, games_id, squads_id, ';
 $select .= 'fightus_clan, fightus_short, fightus_country, fightus_url, fightus_date, fightus_more';
 $cs_fightus = cs_sql_select(__FILE__,'fightus',$select,"fightus_id = '" . $fightus_id . "'");
 
@@ -28,10 +28,10 @@ if(!empty($cs_fightus['fightus_icq'])) {
   $data['fightus']['icq'] = '-'; 
 }
 
-if(!empty($cs_fightus['fightus_msn'])) { 
-  $data['fightus']['msn'] = cs_html_msnmail($cs_fightus['fightus_msn']);
+if(!empty($cs_fightus['fightus_jabber'])) { 
+  $data['fightus']['jabber'] = cs_html_jabbermail($cs_fightus['fightus_jabber']);
 } else {
-  $data['fightus']['msn'] = '-'; 
+  $data['fightus']['jabber'] = '-'; 
 }
 
 if(!empty($cs_fightus['games_id'])) {

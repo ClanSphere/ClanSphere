@@ -47,8 +47,8 @@
     <td class="leftb">{join:icq}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-    <td class="leftb">{join:msn}</td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber}</td>
+    <td class="leftb">{join:jabber}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:package_games} {lang:game}</td>

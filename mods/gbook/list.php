@@ -18,9 +18,9 @@ $data['head']['getmsg'] = cs_getmsg();
 
 $from = 'gbook gbk LEFT JOIN {pre}_users usr ON gbk.users_id = usr.users_id';
 $select = 'gbk.gbook_id AS gbook_id, gbk.users_id AS users_id, gbk.gbook_time AS gbook_time, gbk.gbook_nick AS gbook_nick, ';
-$select .= 'gbk.gbook_email AS gbook_email, gbk.gbook_icq AS gbook_icq, gbk.gbook_msn AS gbook_msn, gbk.gbook_skype AS gbook_skype, ';
+$select .= 'gbk.gbook_email AS gbook_email, gbk.gbook_icq AS gbook_icq, gbk.gbook_jabber AS gbook_jabber, gbk.gbook_skype AS gbook_skype, ';
 $select .= 'gbk.gbook_url AS gbook_url, gbk.gbook_town AS gbook_town, gbk.gbook_text AS gbook_text, gbk.gbook_ip AS gbook_ip, ';
-$select .= 'usr.users_nick AS users_nick, usr.users_place AS users_place, usr.users_icq AS users_icq, usr.users_msn AS users_msn, ';
+$select .= 'usr.users_nick AS users_nick, usr.users_place AS users_place, usr.users_icq AS users_icq, usr.users_jabber AS users_jabber, ';
 $select .= 'usr.users_skype AS users_skype, usr.users_email AS users_email, usr.users_url AS users_url, usr.users_hidden AS users_hidden, usr.users_active AS users_active, usr.users_delete AS users_delete';
 $where = "gbook_users_id = '0' AND gbook_lock = '1'";
 $order = 'gbk.gbook_id DESC';
@@ -45,8 +45,8 @@ for($run=0; $run<$gbook_loop; $run++)
     $gbook[$run]['icon_mail'] = empty($mail) ? '' : cs_html_mail($mail,cs_icon('mail_generic'));
     $icq = cs_secure($cs_gbook[$run]['gbook_icq']);
     $gbook[$run]['icon_icq'] = empty($icq) ? '' : cs_html_link("http://www.icq.com/$icq",cs_icon('licq'));
-    $msn = cs_secure($cs_gbook[$run]['gbook_msn']);
-    $gbook[$run]['icon_msn'] = empty($msn) ? '' : cs_html_msnmail($msn,cs_icon('msn_protocol'));
+    $jabber = cs_secure($cs_gbook[$run]['gbook_jabber']);
+    $gbook[$run]['icon_jabber'] = empty($jabber) ? '' : cs_html_jabbermail($jabber,cs_icon('jabber_protocol'));
     $skype = cs_secure($cs_gbook[$run]['gbook_skype']);
     $url = 'http://mystatus.skype.com/smallicon/' . $skype;
     $gbook[$run]['icon_skype'] = empty($skype) ? '' : cs_html_link("skype:$skype?userinfo",cs_html_img($url,'16','16','0','Skype'),'0');
@@ -72,11 +72,11 @@ for($run=0; $run<$gbook_loop; $run++)
       $icq = empty($allow) ? '' : $icq;
     }
     $gbook[$run]['icon_icq'] = empty($cs_gbook[$run]['users_icq']) ? '' : $icq;
-    $msn = cs_html_msnmail($cs_gbook[$run]['users_msn'],cs_icon('msn_protocol'));
-    if(in_array('users_msn',$hidden)) {
-      $msn = empty($allow) ? '' : $msn;
+    $jabber = cs_html_jabbermail($cs_gbook[$run]['users_jabber'],cs_icon('jabber_protocol'));
+    if(in_array('users_jabber',$hidden)) {
+      $jabber = empty($allow) ? '' : $jabber;
     }
-    $gbook[$run]['icon_msn'] = empty($cs_gbook[$run]['users_msn']) ? '' : $msn;
+    $gbook[$run]['icon_jabber'] = empty($cs_gbook[$run]['users_jabber']) ? '' : $jabber;
     $url = 'http://mystatus.skype.com/smallicon/' . $cs_gbook[$run]['users_skype'];
     $skype = cs_html_link('skype:' . $cs_gbook[$run]['users_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');
     if(in_array('users_skype',$hidden)) {

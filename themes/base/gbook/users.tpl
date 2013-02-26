@@ -27,7 +27,7 @@
     <td class="leftb" style="width:160px"># {gbook:entry_count} <br />
       {icon:personal} {gbook:users_nick} <br />
       {gbook:icon_town} {gbook:town} <br />
-      {gbook:icon_mail} {gbook:icon_icq} {gbook:icon_msn} {gbook:icon_skype} {gbook:icon_url}<br />
+      {gbook:icon_mail} {gbook:icon_icq} {gbook:icon_jabber} {gbook:icon_skype} {gbook:icon_url}<br />
     </td>
     <td class="leftc">{gbook:text}</td>
   </tr>

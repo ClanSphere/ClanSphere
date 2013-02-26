@@ -77,8 +77,8 @@
     <td class="leftb">{users:icq}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-    <td class="leftb">{users:msn}</td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber}</td>
+    <td class="leftb">{users:jabber}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:skype} {lang:skype}</td>

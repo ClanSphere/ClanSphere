@@ -29,8 +29,8 @@
   <td class="leftb">{mail:mail_icq}</td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-  <td class="leftb">{mail:mail_msn}</td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber}</td>
+  <td class="leftb">{mail:mail_jabber}</td>
   </tr>  
   <tr>
     <td class="leftc">{icon:kdmconfig} {lang:firm}</td>

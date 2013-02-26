@@ -45,10 +45,10 @@ else {
   $data['join']['icq'] = cs_html_link('http://www.icq.com/people/' . $cs_joinus['joinus_icq'],$cs_joinus['joinus_icq']);
 }
 
-if(empty($cs_joinus['joinus_msn'])) { $data['join']['msn'] = '-'; } 
+if(empty($cs_joinus['joinus_jabber'])) { $data['join']['jabber'] = '-'; } 
 else { 
-  $cs_joinus['joinus_msn'] = cs_secure($cs_joinus['joinus_msn']);
-  $data['join']['msn'] = cs_html_msnmail($cs_joinus['joinus_msn']);
+  $cs_joinus['joinus_jabber'] = cs_secure($cs_joinus['joinus_jabber']);
+  $data['join']['jabber'] = cs_html_jabbermail($cs_joinus['joinus_jabber']);
 }
 
 if(empty($cs_joinus['games_id'])) { $data['join']['game'] = '-'; }

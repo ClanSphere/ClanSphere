@@ -75,8 +75,8 @@
     <td class="leftb" colspan="2"><input type="text" name="users_icq" value="{data:users_icq}" maxlength="12" size="12" /></td>
   </tr>
   <tr>
-    <td class="leftc">{icon:msn_protocol} {lang:msn}</td>
-    <td class="leftb" colspan="2"><input type="text" name="users_msn" value="{data:users_msn}" maxlength="40" size="40" /></td>
+    <td class="leftc">{icon:jabber_protocol} {lang:jabber}</td>
+    <td class="leftb" colspan="2">{lang:jabber_info}<br /><input type="text" name="users_jabber" value="{data:users_jabber}" maxlength="40" size="40" /></td>
   </tr>
   {stop:convert}
   <tr>

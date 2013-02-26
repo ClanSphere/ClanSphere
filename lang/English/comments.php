@@ -7,7 +7,7 @@ $cs_lang['mod_text']  = 'Adds a discussion function to modules';
 
 //Manage
 $cs_lang['module']  = 'Module';
-$cs_lang['ip']    = 'IP-Adress';
+$cs_lang['ip']    = 'IP address';
 $cs_lang['id']    = 'ID';
 $cs_lang['user']  = 'User';
 $cs_lang['details'] = 'Details';

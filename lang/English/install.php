@@ -103,13 +103,13 @@ $cs_lang['body_sql']  = 'Tables and Entries are made';
 
 $cs_lang['create_admin']  = 'Creation of an administrator account.';
 $cs_lang['nick']  = 'Nick';
-$cs_lang['email']  = 'E-Mail';
+$cs_lang['email']  = 'Email';
 $cs_lang['password'] = 'Password';
 $cs_lang['admin_done'] = 'Administrator successfully created';
 
 $cs_lang['short_nick'] = '- Entered nick is too short (min. 4)';
 $cs_lang['short_pwd'] = '- Entered password is too short (min. 4)';
-$cs_lang['email_false'] = '- Entered email-adress is not valid';
+$cs_lang['email_false'] = '- Entered email-address is not valid';
 
 $cs_lang['db_error'] = 'Database Error';
 $cs_lang['remove_and_again'] = 'Remove installed part and try again';

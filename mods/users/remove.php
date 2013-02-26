@@ -41,7 +41,7 @@ if(isset($_GET['agree'])) {
                       'users_place'=>'',
                       'users_adress'=>'',
                       'users_icq'=>0,
-                      'users_msn'=>'',
+                      'users_jabber'=>'',
                       'users_skype'=>'',
                       'users_email'=>$mail,
                       'users_url'=>'',

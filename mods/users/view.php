@@ -152,12 +152,12 @@ else {
   }
   $data['users']['icq'] = empty($cs_user['users_icq']) ? '--' : $content;
 
-  $cs_user['users_msn'] = cs_secure($cs_user['users_msn']);
-  $content = cs_html_msnmail($cs_user['users_msn']);
-  if(in_array('users_msn',$hidden)) {
+  $cs_user['users_jabber'] = cs_secure($cs_user['users_jabber']);
+  $content = cs_html_jabbermail($cs_user['users_jabber']);
+  if(in_array('users_jabber',$hidden)) {
     $content = empty($allow) ? '--' : cs_html_italic(1) . $content . cs_html_italic(0);
   }
-  $data['users']['msn'] = empty($cs_user['users_msn']) ? '--' : $content;
+  $data['users']['jabber'] = empty($cs_user['users_jabber']) ? '--' : $content;
 
   $cs_user['users_skype'] = cs_secure($cs_user['users_skype']);
   $content = cs_html_link('skype:' . $cs_user['users_skype'] . '?userinfo', $cs_user['users_skype']);

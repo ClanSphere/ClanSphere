@@ -51,11 +51,12 @@ $cs_lang['edit_profile'] = 'Edit profile';
 $cs_lang['edit_picture'] = 'Edit picture';
 
 $cs_lang['contact'] = 'Contact';
-$cs_lang['email'] = 'E-Mail';
-$cs_lang['emailregister'] = 'E-Mail at Registration';
+$cs_lang['email'] = 'Email';
+$cs_lang['emailregister'] = 'Email at Registration';
 $cs_lang['icq'] = 'ICQ';
 $cs_lang['mobile'] = 'Cell Phone';
-$cs_lang['msn'] = 'MSN';
+$cs_lang['jabber'] = 'Jabber';
+$cs_lang['jabber_info'] = 'Includes XMPP, Google Talk/Chat and other services';
 $cs_lang['skype'] = 'Skype';
 $cs_lang['info'] = 'Information';
 $cs_lang['message_send'] = 'Send Message';
@@ -67,14 +68,14 @@ $cs_lang['create_users']  = 'Create new Useraccounts.';
 $cs_lang['lang'] = 'Language';
 $cs_lang['password'] = 'Password';
 $cs_lang['extended'] = 'Extended';
-$cs_lang['send_mail'] = ' Send datas to e-mail';
+$cs_lang['send_mail'] = ' Send data to email';
 $cs_lang['reg_done'] = 'User successfully created.';
 $cs_lang['newsletter_reg'] = ' Get Newsletter';
 $cs_lang['short_nick'] = '- Nickname is too short (min. 4)';
 $cs_lang['nick_exists'] = '- Nickname already exists';
 $cs_lang['short_pwd'] = '- Password is too short (min. 4)';
-$cs_lang['email_exists'] = '- E-mail address already exists';
-$cs_lang['email_false'] = '- E-mail address is not valid';
+$cs_lang['email_exists'] = '- Email address already exists';
+$cs_lang['email_false'] = '- Email address is not valid';
 $cs_lang['no_access'] = '- Choose an access level';
 $cs_lang['access_denied'] = '- Chosen access level is higher than your own';
 $cs_lang['chars_in_nick'] = '- Not allowed Chars at Nick.';
@@ -90,8 +91,8 @@ $cs_lang['mail_reg_nick'] = "\n Nickname: ";
 $cs_lang['mail_reg_password'] = "\n Password: ";
 $cs_lang['mail_reg_password2'] = "You\'ve already supplied a password in JoinUs";
 $cs_lang['mail_reg_ip'] = "\n \n  IP ";
-$cs_lang['mail_reg_ask'] = "\n \n Please ask questions per e-mail to ";
-$cs_lang['mail_reg_end'] = "\n \n This e-mail is written with a text form.";
+$cs_lang['mail_reg_ask'] = "\n \n Please ask questions per email to ";
+$cs_lang['mail_reg_end'] = "\n \n This email is written with a text form.";
 
 // Mail Send PW (Admin request) 
 $cs_lang['mail_admin_sendpw_start'] = "Hello "; 
@@ -131,7 +132,7 @@ $cs_lang['signup'] = 'Register';
 $cs_lang['register_info']  = 'Create new Useraccount here.';
 $cs_lang['register_disabled'] = 'The registration for new users has been disabled by the webmaster.';
 $cs_lang['done'] = 'You can login now.';
-$cs_lang['done2'] = 'You soon get an e-mail with activation link.';
+$cs_lang['done2'] = 'You soon get an email with an activation link.';
 
 $cs_lang['mail_key'] = 'Activationlink';
 
@@ -225,13 +226,13 @@ $cs_lang['nextbirth_max_users'] = 'Dataset in nextbirth';
 $cs_lang['nextbirth_time_interval'] = 'Time interval of nextbirth';
 
 // SendPW
-$cs_lang['sendpw_info']  = 'Please indicate the e-mail address as it is in you user profile. ';
+$cs_lang['sendpw_info']  = 'Please indicate the email address as it is in you user profile. ';
 $cs_lang['sendpw_info'] .= 'After successful submission you\'ll receive information to ';
 $cs_lang['sendpw_info'] .= 'activate a new password.';
 $cs_lang['request'] = 'Request';
 
-$cs_lang['email_unknown'] = '- Indicated e-mail address not found.';
-$cs_lang['email_found'] = 'Please enter the key from the e-mail and ';
+$cs_lang['email_unknown'] = '- Indicated email address not found.';
+$cs_lang['email_found'] = 'Please enter the key from the email and ';
 $cs_lang['email_found'] .= 'a new password for your useraccount.';
 $cs_lang['error_key'] = '- Incorrect Key';
 $cs_lang['sendpw_done'] = 'Password successfully changed.';
@@ -257,7 +258,7 @@ $cs_lang['avatar'] = 'Avatar';
 $cs_lang['signature'] = 'Signature';
 
 $cs_lang['mail_no_link'] = '\n\nIf the activation link does not work for you, please copy and paste into your browsers address bar';
-$cs_lang['key_mail_false'] = '- Key or E-mail not valid';
+$cs_lang['key_mail_false'] = '- Key or email not valid';
 $cs_lang['already_activated'] = '- Account already activated';
 $cs_lang['account_activated'] = 'Account successfully activated';
 $cs_lang['activate_acc'] = 'Activate account';

@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
   $save['place']      = (int) $_POST['place'];
   $save['country']    = (int) $_POST['country'];
   $save['icq']       = (int) $_POST['icq'];
-  $save['msn']       = (int) $_POST['msn'];
+  $save['jabber']       = (int) $_POST['jabber'];
   $save['game']       = (int) $_POST['game'];
   $save['squad']       = (int) $_POST['squad'];
   $save['webcon']     = (int) $_POST['webcon'];
@@ -33,7 +33,7 @@ $data['op']['surname'] = empty($data['op']['surname']) ? $data['op']['surname_no
 $data['op']['place'] = empty($data['op']['place']) ? $data['op']['place_no'] = 'checked="checked"' : $data['op']['place_yes'] = 'checked="checked"';
 $data['op']['country'] = empty($data['op']['country']) ? $data['op']['country_no'] = 'checked="checked"' : $data['op']['country_yes'] = 'checked="checked"';
 $data['op']['icq'] = empty($data['op']['icq']) ? $data['op']['icq_no'] = 'checked="checked"' : $data['op']['icq_yes'] = 'checked="checked"';
-$data['op']['msn'] = empty($data['op']['msn']) ? $data['op']['msn_no'] = 'checked="checked"' : $data['op']['msn_yes'] = 'checked="checked"';
+$data['op']['jabber'] = empty($data['op']['jabber']) ? $data['op']['jabber_no'] = 'checked="checked"' : $data['op']['jabber_yes'] = 'checked="checked"';
 $data['op']['game'] = empty($data['op']['game']) ? $data['op']['game_no'] = 'checked="checked"' : $data['op']['game_yes'] = 'checked="checked"';
 $data['op']['squad'] = empty($data['op']['squad']) ? $data['op']['squad_no'] = 'checked="checked"' : $data['op']['squad_yes'] = 'checked="checked"';
 $data['op']['webcon'] = empty($data['op']['webcon']) ? $data['op']['webcon_no'] = 'checked="checked"' : $data['op']['webcon_yes'] = 'checked="checked"';

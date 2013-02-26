@@ -18,11 +18,11 @@ $from = 'manage';
 if (isset($_POST['from'])) $from = $_POST['from'];
 elseif (isset($_GET['from'])) $from = $_GET['from'];
 $from = cs_secure($from, 0, 0, 0, 0, 0);
-$select = 'users_id, gbook_nick, gbook_email, gbook_icq, gbook_msn, gbook_skype, gbook_url, gbook_town, gbook_text, gbook_time';
+$select = 'users_id, gbook_nick, gbook_email, gbook_icq, gbook_jabber, gbook_skype, gbook_url, gbook_town, gbook_text, gbook_time';
 $cs_gbook = cs_sql_select(__FILE__,'gbook',$select,"gbook_id = '" . (int) $gbook_id . "'");
 
 if(!empty($cs_gbook['users_id'])) {
-  $select = 'users_nick, users_email, users_place, users_icq, users_msn, users_skype, users_url';
+  $select = 'users_nick, users_email, users_place, users_icq, users_jabber, users_skype, users_url';
   $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = '" . (int) $cs_gbook['users_id'] . "'");
 }
 
@@ -34,7 +34,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
     $cs_gbook['gbook_nick'] = $_POST['gbook_nick'];
     $cs_gbook['gbook_email'] = $_POST['gbook_email'];
     $cs_gbook['gbook_icq'] = $_POST['gbook_icq'];
-    $cs_gbook['gbook_msn'] = $_POST['gbook_msn'];
+    $cs_gbook['gbook_jabber'] = $_POST['gbook_jabber'];
     $cs_gbook['gbook_skype'] = $_POST['gbook_skype'];
     $cs_gbook['gbook_town'] = $_POST['gbook_town'];
     $cs_gbook['gbook_url'] = $_POST['gbook_url'];
@@ -65,11 +65,11 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
       $error .= $cs_lang['error_email'] . cs_html_br(1);
     }
     
-    //check msn
-    if (!empty($cs_gbook['gbook_msn'])) {
+    //check jabber
+    if (!empty($cs_gbook['gbook_jabber'])) {
       $pattern = "/^[0-9a-zA-Z._\\-]+@[0-9a-zA-Z._\\-]{2,}\\.[a-zA-Z]{2,4}\$/";
-      if(!preg_match($pattern,$cs_gbook['gbook_msn'])) {
-        $error .= $cs_lang['error_msn'] . cs_html_br(1);
+      if(!preg_match($pattern,$cs_gbook['gbook_jabber'])) {
+        $error .= $cs_lang['error_jabber'] . cs_html_br(1);
       }
     }
     
@@ -118,8 +118,8 @@ if (isset($_POST['preview']) AND empty($error)) {
   $data['gbook']['icon_mail'] = cs_html_link('mailto:' . $cs_gbook['gbook_email'],cs_icon('mail_generic'));
    $icq = cs_html_link('http://www.icq.com/people/' . $cs_gbook['gbook_icq'],cs_icon('licq'));
   $data['gbook']['icon_icq'] = empty($cs_gbook['gbook_icq']) ? '' : $icq;
-   $msn = cs_html_msnmail($cs_gbook['gbook_msn'],cs_icon('msn_protocol'));
-  $data['gbook']['icon_msn'] = empty($cs_gbook['gbook_msn']) ? '' : $msn;
+   $jabber = cs_html_jabbermail($cs_gbook['gbook_jabber'],cs_icon('jabber_protocol'));
+  $data['gbook']['icon_jabber'] = empty($cs_gbook['gbook_jabber']) ? '' : $jabber;
    $url = 'http://mystatus.skype.com/smallicon/' . $cs_gbook['gbook_skype'];
    $skype = cs_html_link('skype:' . $cs_gbook['gbook_skype'] . '?userinfo',cs_html_img($url,'16','16','0','Skype'),'0');
   $data['gbook']['icon_skype'] = empty($cs_gbook['gbook_skype']) ? '' : $skype;
