@@ -1,5 +1,5 @@
-/*.patch
-/*.sqlite
+*.patch
+*.sqlite
 /.buildpath
 /.htaccess
 /.idea
@@ -12,7 +12,6 @@
 /web.config
 /nbproject
 /uploads/cache/*.tmp
-/uploads/ckeditor/image/*.jpg
 /uploads/gallery/pics/*.jpg
 /uploads/gallery/thumbs/*.jpg
 /uploads/games/[1-9].gif
