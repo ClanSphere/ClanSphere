@@ -4,10 +4,14 @@
 
 $cs_lang = cs_translate('users');
 
-$letter = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
-$search_name = empty($_POST['search_name']) ? 0 : $_POST['search_name'];
-$data['search']['name'] = empty($_POST['search_name']) ? '' : $_POST['search_name'];
-settype($access_id, 'integer');
+$data = array();
+
+$letter = empty($_REQUEST['where']) ? '' : $_REQUEST['where'];
+$search_name = empty($_REQUEST['search_name']) ? '' : $_REQUEST['search_name'];
+$data['search']['name'] = empty($search_name) ? '' : cs_secure($search_name);
+$search_url = rawurlencode(str_replace(array('/', '&', '\\'), '', $search_name));
+$match = $letter . '&nbsp;search_name=' . $search_url;
+
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'users_nick DESC';
 $cs_sort[2] = 'users_nick ASC';
@@ -20,20 +24,20 @@ $cs_sort[8] = 'access_id DESC';
 $sort = empty($_REQUEST['sort']) ? 2 : $_REQUEST['sort'];
 $order = $cs_sort[$sort];
 $where = "users_delete = '0'";
-$where = empty($letter) ? $where : "users_delete = '0' AND users_nick LIKE '" . cs_sql_escape($letter) . "%'";
-$where = empty($search_name) ? $where : "users_delete = '0' AND users_nick LIKE '%" . cs_sql_escape($search_name) . "%'"; 
+$where .= empty($letter) ? '' : " AND users_nick LIKE '" . cs_sql_escape($letter) . "%'";
+$where .= empty($search_name) ? '' : " AND users_nick LIKE '%" . cs_sql_escape($search_name) . "%'"; 
 $users_count = cs_sql_count(__FILE__, 'users', $where);
 
 $data['head']['total'] = $users_count;
-$data['head']['pages'] = cs_pages('users', 'manage', $users_count, $start, $letter, $sort);
+$data['head']['pages'] = cs_pages('users', 'manage', $users_count, $start, $match, $sort);
 $data['url']['form'] = cs_url('users', 'manage');
 
 $data['head']['message'] = cs_getmsg();
 
-$data['sort']['nick'] = cs_sort('users', 'manage', $start, $access_id, 1, $sort);
-$data['sort']['laston'] = cs_sort('users', 'manage', $start, $access_id, 3, $sort);
-$data['sort']['active'] = cs_sort('users', 'manage', $start, $access_id, 5, $sort);
-$data['sort']['access'] = cs_sort('users', 'manage', $start, $access_id, 7, $sort);
+$data['sort']['nick'] = cs_sort('users', 'manage', $start, $match, 1, $sort);
+$data['sort']['laston'] = cs_sort('users', 'manage', $start, $match, 3, $sort);
+$data['sort']['active'] = cs_sort('users', 'manage', $start, $match, 5, $sort);
+$data['sort']['access'] = cs_sort('users', 'manage', $start, $match, 7, $sort);
 
 $select = 'users_id, users_nick, users_laston, users_country, users_active, users_delete, users_invisible, access_id';
 $cs_users = cs_sql_select(__FILE__, 'users', $select, $where, $order, $start, $account['users_limit']);

@@ -13,6 +13,7 @@ ___________________________________________________________
 -> Removed ckeditor and fckeditor filebrowser (hajo)
    The ckeditor mod can be found in the module db from now on
 -> Removed version and icon requirements from games mod (hajo)
+-> Reworked users manage name search to allow for page turns (hajo)
 -> Updated jQuery to 1.9.1
 
 
