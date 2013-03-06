@@ -1,8 +1,10 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.3 Patch 5 >> 2013-03-XX
+ClanSphere 2011.4 >> 2013-03-06
 ___________________________________________________________
+
+-- Recommended PHP version changed to 5.4.12
 
 -> Added jabber account data as a replacement for MSN (hajo)
    MSN Chat Service ends on 8th of april due to the fusion with Skype
@@ -83,7 +85,7 @@ ___________________________________________________________
 -> Updated checks, information and links from svn to git (hajo)
 
 
-ClanSphere 2011.3 >> 2012-03-02 [Last Release]
+ClanSphere 2011.3 >> 2012-03-02
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.4.0
@@ -1013,6 +1015,3 @@ ___________________________________________________________
 - /system/core/tools.php: Added _svn to the ignore list of cs_paths (duriel)
 - /mods/shoutbox/create.php: Added a check for already taken nicknames (duriel)
 
-___________________________________________________________
-END OF FILE
-___________________________________________________________

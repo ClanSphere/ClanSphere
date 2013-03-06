@@ -54,7 +54,7 @@ $data['data']['ok'] = $ok[1];
 
 $check_recommended = true;
 
-$data['rc']['php'] = '5.4.10';
+$data['rc']['php'] = '5.4.12';
 $data['sv']['php'] = $data['av']['php'];
 $comparison = version_compare($data['av']['php'],$data['rc']['php'],'>=');
 if (empty($comparison)) { $data['sv']['php'] = '<div style="color:#B91F1D">' . $data['av']['php'] . '</div>'; $check_recommended = 0;}
