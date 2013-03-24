@@ -6,11 +6,11 @@ $cs_lang = cs_translate('users');
 
 $data = array();
 
-$letter = empty($_REQUEST['where']) ? '' : $_REQUEST['where'];
+$letter = empty($_REQUEST['where']) ? 0 : $_REQUEST['where'];
 $search_name = empty($_REQUEST['search_name']) ? '' : $_REQUEST['search_name'];
 $data['search']['name'] = empty($search_name) ? '' : cs_secure($search_name);
 $search_url = rawurlencode(str_replace(array('/', '&', '\\'), '', $search_name));
-$match = $letter . '&nbsp;search_name=' . $search_url;
+$match = empty($search_url) ? $letter : $letter . '&amp;search_name=' . $search_url;
 
 $start = empty($_REQUEST['start']) ? 0 : $_REQUEST['start'];
 $cs_sort[1] = 'users_nick DESC';
