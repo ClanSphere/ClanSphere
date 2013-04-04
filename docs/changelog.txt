@@ -4,10 +4,11 @@ CHANGELOG
 ClanSphere 2011.4 Patch 1 >> 2013-XX-XX
 ___________________________________________________________
 
+-> Downgraded jQuery to 1.8.3 [R1]
 -> Fixed users manage page switch not working in some cases (hajo)
 
 
-ClanSphere 2011.4 R1 >> 2013-03-08
+ClanSphere 2011.4 >> 2013-03-06
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.4.12
@@ -22,6 +23,7 @@ ___________________________________________________________
    The ckeditor mod can be found in the module db from now on
 -> Removed version and icon requirements from games mod (hajo)
 -> Reworked users manage name search to allow for page turns (hajo)
+-> Updated jQuery to 1.9.1
 
 
 ClanSphere 2011.3 Patch 4 >> 2013-01-28
