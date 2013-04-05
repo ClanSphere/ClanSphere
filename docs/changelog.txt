@@ -1,11 +1,13 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4 Patch 1 >> 2013-XX-XX
+ClanSphere 2011.4 R2 >> 2013-04-05
 ___________________________________________________________
 
 -> Downgraded jQuery to 1.8.3 [R1]
--> Fixed users manage page switch not working in some cases (hajo)
+   Replace mods/jquery/jquery.js to apply it
+-> Fixed users manage page turns not working in some cases [R2]
+   Replace mods/users/manage.php to apply it
 
 
 ClanSphere 2011.4 >> 2013-03-06
