@@ -24,7 +24,7 @@ function cs_repair_board ($thread_id)
   $q_user .= empty($thread_id) ? '' : " WHERE threads_id = " . (int) $thread_id;
   cs_sql_query(__FILE__, $q_user);
   
-  $q_repair = "UPDATE {pre}_threads SET threads_last_user = threads_user, "
+  $q_repair = "UPDATE {pre}_threads SET threads_last_user = users_id, "
             . "threads_last_time = threads_time WHERE threads_last_time = 0";
   cs_sql_query(__FILE__, $q_repair);
 }
