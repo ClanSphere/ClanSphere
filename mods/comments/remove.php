@@ -5,10 +5,25 @@
 $cs_lang = cs_translate('comments');
 $cs_get = cs_get('id,agree,cancel');
 
-$cols = 'comments_mod, comments_text, comments_id, users_id';
+$cols = 'comments_mod, comments_text, comments_id, comments_fid, users_id';
 $cs_com = cs_sql_select(__FILE__,'comments',$cols,'comments_id = ' . $cs_get['id'],0,0);
 
 $usid = (int) $cs_com['users_id'];
+
+function cs_repair_board ($thread_id)
+{
+  $q_time = "UPDATE {pre}_threads thr SET threads_last_time = (SELECT "
+          . "MAX(com.comments_time) FROM {pre}_comments com WHERE thr.threads_id = "
+          . "com.comments_fid AND com.comments_mod = 'board')";
+  $q_time .= empty($thread_id) ? '' : " WHERE threads_id = " . (int) $thread_id;
+  cs_sql_query(__FILE__, $q_time);
+         
+  $q_user = "UPDATE {pre}_threads thr SET threads_last_user = (SELECT com.users_id "
+          . "FROM {pre}_comments WHERE com.comments_fid = thr.threads_id GROUP BY "
+          . " com.comments_fid HAVING MAX(com.comments_time)";
+  $q_user .= empty($thread_id) ? '' : " WHERE threads_id = " . (int) $thread_id;
+  cs_sql_query(__FILE__, $q_user);
+}
 
 if(isset($cs_get['cancel'])) {
 
@@ -17,11 +32,15 @@ if(isset($cs_get['cancel'])) {
 elseif(isset($cs_get['agree'])) {
   cs_sql_delete(__FILE__,'comments',$cs_get['id']);
 
+  cs_repair_board($cs_com['comments_fid']);
+
   cs_redirect($cs_lang['del_true'],'comments','manage','where=' . $cs_com['comments_mod']);
 }
 elseif(isset($cs_get['del_all'])) {
 
   cs_sql_delete(__FILE__,'comments',$usid, 'users_id');
+
+  cs_repair_board();
 
   cs_redirect($cs_lang['del_true'],'comments','manage','where=' . $cs_com['comments_mod']);
 }

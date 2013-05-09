@@ -1,13 +1,15 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4 R2 >> 2013-04-05
+ClanSphere 2011.4 R3 >> 2013-05-09
 ___________________________________________________________
 
 -> Downgraded jQuery to 1.8.3 [R1]
    Replace mods/jquery/jquery.js to apply it
 -> Fixed users manage page turns not working in some cases [R2]
    Replace mods/users/manage.php to apply it
+-> Fixed board threads marked as unread for no reason due to deleted comments [R3]
+   Replace mods/comments/remove.php to apply it
 
 
 ClanSphere 2011.4 >> 2013-03-06
