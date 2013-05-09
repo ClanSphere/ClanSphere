@@ -32,7 +32,9 @@ if(isset($cs_get['cancel'])) {
 elseif(isset($cs_get['agree'])) {
   cs_sql_delete(__FILE__,'comments',$cs_get['id']);
 
-  cs_repair_board($cs_com['comments_fid']);
+  if($cs_com['comments_mod'] == 'board') {
+    cs_repair_board($cs_com['comments_fid']);
+  }
 
   cs_redirect($cs_lang['del_true'],'comments','manage','where=' . $cs_com['comments_mod']);
 }
