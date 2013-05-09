@@ -20,7 +20,7 @@ function cs_repair_board ($thread_id)
          
   $q_user = "UPDATE {pre}_threads thr SET threads_last_user = (SELECT com.users_id "
           . "FROM {pre}_comments WHERE com.comments_fid = thr.threads_id GROUP BY "
-          . " com.comments_fid HAVING MAX(com.comments_time)";
+          . " com.comments_fid HAVING MAX(com.comments_time))";
   $q_user .= empty($thread_id) ? '' : " WHERE threads_id = " . (int) $thread_id;
   cs_sql_query(__FILE__, $q_user);
 }
