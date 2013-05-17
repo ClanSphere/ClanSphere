@@ -10,7 +10,7 @@ $cs_com = cs_sql_select(__FILE__,'comments',$cols,'comments_id = ' . $cs_get['id
 
 $usid = (int) $cs_com['users_id'];
 
-function cs_repair_board ($thread_id)
+function cs_repair_board ($thread_id = 0)
 {
   $q_time = "UPDATE {pre}_threads thr SET threads_last_time = (SELECT "
           . "MAX(com.comments_time) FROM {pre}_comments com WHERE thr.threads_id = "
