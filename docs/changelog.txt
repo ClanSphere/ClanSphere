@@ -11,7 +11,7 @@ ___________________________________________________________
 -> Fixed users manage page turns not working in some cases [R2]
    Replace mods/users/manage.php to apply it
 -> Fixed board threads marked as unread for no reason due to deleted comments
-   Replace mods/comments/remove.php to apply it
+-> Updated copyright information
 
 
 ClanSphere 2011.4 >> 2013-03-06
