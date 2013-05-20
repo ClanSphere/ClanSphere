@@ -1,17 +1,18 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4.1 >> 2013-XX-XX
+ClanSphere 2011.4.1 >> 2013-05-20
 ___________________________________________________________
 
 -- Recommended PHP version changed to 5.4.15
 
 -> Downgraded jQuery to 1.8.3 [R1]
-   Replace mods/jquery/jquery.js to apply it
--> Fixed users manage page turns not working in some cases [R2]
-   Replace mods/users/manage.php to apply it
--> Fixed board threads marked as unread for no reason due to deleted comments
--> Updated copyright information
+-> Changed jabber info to no longer contain Google service examples (hajo)
+   Google combined the services to Hangouts which is not compatible with jabber
+-> Fixed board threads marked as unread for no reason due to deleted comments (hajo)
+   This fix only affects the mass deletion of comments over the comments mod
+-> Fixed users manage page turns not working in some cases (hajo) [R2]
+-> Updated copyright information (hajo)
 
 
 ClanSphere 2011.4 >> 2013-03-06
