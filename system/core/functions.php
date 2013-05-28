@@ -87,6 +87,7 @@ function cs_content_prepare($cs_main) {
   }
 
   $cs_main['show'] = 'mods/' . $cs_main['mod'] . '/' . $cs_main['action'] . '.php';
+  $cs_main['show-custom'] = 'mods/' . $cs_main['mod'] . '/' . $cs_main['action'] . '-CUSTOM.php';
 
   return $cs_main;
 }
@@ -120,6 +121,12 @@ function cs_content_check ($cs_main) {
     }
   }
 
+  if (file_exists($cs_main['show-custom'])) {
+      $cs_main['show'] = $cs_main['show-custom'];
+  }
+  echo '<pre>';
+  print_R($cs_main);
+  die;
   return $cs_main;
 }
 
