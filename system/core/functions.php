@@ -124,9 +124,6 @@ function cs_content_check ($cs_main) {
   if (file_exists($cs_main['show-custom'])) {
       $cs_main['show'] = $cs_main['show-custom'];
   }
-  echo '<pre>';
-  print_R($cs_main);
-  die;
   return $cs_main;
 }
 
