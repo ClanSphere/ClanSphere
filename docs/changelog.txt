@@ -1,6 +1,12 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2011.4.2 >> 2013-XX-XX
+___________________________________________________________
+
+-> Fixed boardvotes not usable on different accounts due to same ip (tom08)
+
+
 ClanSphere 2011.4.1 >> 2013-05-20
 ___________________________________________________________
 
