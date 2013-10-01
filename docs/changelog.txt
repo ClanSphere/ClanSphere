@@ -4,9 +4,13 @@ CHANGELOG
 ClanSphere 2011.4.2 >> 2013-XX-XX
 ___________________________________________________________
 
+-- Recommended PHP version set to 5.4.6 while newer is better
+-- It is the last version that fixes a known issue with this software
+
 -> Added board repair page to fix metadata issues caused by delete operations (hajo)
    Also helps to fix wrong data if your initial ClanSphere version is older than 2011
 -> Fixed boardvotes not usable on different accounts due to same ip (tom08)
+-> Fixed votes navlist random sort not used with mysqli
 
 
 ClanSphere 2011.4.1 >> 2013-05-20

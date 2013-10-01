@@ -19,7 +19,7 @@ unset($cs_db);
 $from = 'votes';
 $select = 'votes_id, votes_question, votes_election, votes_several';
 $where = "votes_access <= '" . $votes_access . "' AND votes_start <= '" . $time . "' AND votes_end >= '" . $time . "'";
-$sort = $type == 'mysql' ? '{random}' : 'votes_end ASC';
+$sort = (in_array($type, array('mysql', 'mysqli'))) ? '{random}' : 'votes_end ASC';
 $cs_votes = cs_sql_select(__FILE__,$from,$select,$where, $sort);
 $votes_loop = count($cs_votes);
 $votes_id = $cs_votes['votes_id'];
