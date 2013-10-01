@@ -6,6 +6,7 @@ $cs_lang = cs_translate('cash');
 $cs_post = cs_post('where,start,sort');
 $cs_get = cs_get('where,start,sort');
 $data = array();
+$data['op'] = cs_sql_option(__FILE__, 'cash');
 
 $user = empty($cs_get['where']) ? 0 : $cs_get['where'];
 if (!empty($cs_post['where']))  $user = $cs_post['where'];
@@ -65,8 +66,7 @@ for($run=0; $run<$over_loop; $run++) {
 $money_out = $money;
 $money_now = $money_in - $money_out;
 
-$user_money = cs_sql_option(__FILE__,'cash');
-$user_money = $user_money['month_out'];
+$user_money = $data['op']['month_out'];
 settype($user_money, 'float');
 $data['ov']['month_out'] = $user_money;
 

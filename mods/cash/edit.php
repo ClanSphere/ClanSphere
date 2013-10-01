@@ -6,6 +6,7 @@ $cs_lang = cs_translate('cash');
 $cs_post = cs_post('id');
 $cs_get = cs_get('id');
 $data = array();
+$data['op'] = cs_sql_option(__FILE__, 'cash');
 
 $cash_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 if (!empty($cs_post['id']))  $cash_id = $cs_post['id'];

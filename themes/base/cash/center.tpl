@@ -59,17 +59,17 @@
   <tr>
     <td class="leftb" style="width:20px"><img src="{page:path}symbols/clansphere/green.gif" alt="" /></td>
     <td class="rightb">{lang:in}</td>
-    <td class="leftb">{ov:in} {lang:euro}</td>
+    <td class="leftb">{ov:in} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftb"><img src="{page:path}symbols/clansphere/red.gif" alt="" /></td>
     <td class="rightb">{lang:out}</td>
-    <td class="leftb">{ov:out} {lang:euro}</td>
+    <td class="leftb">{ov:out} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftc"><img src="{page:path}symbols/clansphere/grey.gif" alt="" /></td>
     <td class="rightc" style="width:20px">{lang:now}</td>
-    <td class="leftc">{ov:now} {lang:euro}</td>
+    <td class="leftc">{ov:now} {op:currency}</td>
   </tr>
 </table>
 <br />
@@ -89,7 +89,7 @@
     <td class="centerc">{in:in_out}</td>
     <td class="leftc">{in:date}</td>
     <td class="leftc"><a href="{url:cash_view:id={in:id}}">{in:for}</a></td>
-    <td class="leftc">{in:money} {lang:euro}</td>
+    <td class="leftc">{in:money} {op:currency}</td>
   </tr>
   {stop:in}
 </table>
@@ -110,7 +110,7 @@
     <td class="centerc">{out:in_out}</td>
     <td class="leftc">{out:date}</td>
     <td class="leftc"><a href="{url:cash_view:id={out:id}}">{out:for}</a></td>
-    <td class="leftc">{out:money} {lang:euro}</td>
+    <td class="leftc">{out:money} {op:currency}</td>
   </tr>
   {stop:out}
 </table>

@@ -11,7 +11,6 @@ $cs_lang['head_center'] = 'Center';
 $cs_lang['body_info'] =  'All fields with * are required.';
 $cs_lang['money'] = 'Amount';
 $cs_lang['for'] = 'Purpose';
-$cs_lang['euro'] = 'Euro';
 $cs_lang['info'] = 'Infos';
 $cs_lang['inout'] = 'Kind';
 $cs_lang['new_cash'] = 'New payment';
@@ -57,6 +56,7 @@ $cs_lang['nonumber'] = 'No bank account data given';
 // Options
 $cs_lang['month_out'] = 'Monthly outgo:';
 $cs_lang['create_options'] = 'Options successfully changed.';
+$cs_lang['currency'] = 'Currency';
 
 // Users_view
 $cs_lang['user_cash_ok'] = 'Paid users';

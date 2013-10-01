@@ -3,9 +3,12 @@
 // $Id$
 
 $cs_lang = cs_translate('cash');
-$cs_get = cs_get('id');
 
+$cs_get = cs_get('id');
 $cash_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
+
+$data = array();
+$data['op'] = cs_sql_option(__FILE__, 'cash');
 
 $data['if']['not_allowed'] = FALSE;
 

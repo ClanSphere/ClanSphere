@@ -21,7 +21,7 @@
     <td class="leftb">{cash:user}</td>
     <td class="leftb">{cash:date}</td>
     <td class="leftb"><a href="{url:cash_view:id={cash:cash_id}}">{cash:cash_text}</a></td>
-    <td class="leftb">{cash:cash_money} {lang:euro}</td>    
+    <td class="leftb">{cash:cash_money} {op:currency}</td>    
   </tr>
   {stop:cash}
 </table>

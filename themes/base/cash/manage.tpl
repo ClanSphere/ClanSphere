@@ -23,12 +23,12 @@
   <tr>
     <td class="leftb" style="width:20px">{icon:money}</td>
     <td class="rightb">{lang:month_out}</td>
-    <td class="leftb">{ov:month_out} {lang:euro}</td>
+    <td class="leftb">{ov:month_out} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftb">{icon:money}</td>
     <td class="rightb">{lang:user_money}</td>
-    <td class="leftb">{ov:user_money} {lang:euro}</td>
+    <td class="leftb">{ov:user_money} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftb">{icon:personal}</td>
@@ -38,17 +38,17 @@
   <tr>
     <td class="leftb"><img src="{page:path}symbols/clansphere/green.gif" alt="" /></td>
     <td class="rightb">{lang:in}</td>
-    <td class="leftb">{ov:in} {lang:euro}</td>
+    <td class="leftb">{ov:in} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftb"><img src="{page:path}symbols/clansphere/red.gif" alt="" /></td>
     <td class="rightb">{lang:out}</td>
-    <td class="leftb">{ov:out} {lang:euro}</td>
+    <td class="leftb">{ov:out} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftc"><img src="{page:path}symbols/clansphere/grey.gif" alt="" /></td>
     <td class="rightc">{lang:now}</td>
-    <td class="leftc">{ov:now} {lang:euro}</td>
+    <td class="leftc">{ov:now} {op:currency}</td>
   </tr>
 </table>
 <br />
@@ -62,17 +62,17 @@
   <tr>
     <td class="leftb" style="width:20px"><img src="{page:path}symbols/clansphere/green.gif" alt="" /></td>
     <td class="rightb">{lang:payments_in}</td>
-    <td class="leftb">{ov:in} {lang:euro}</td>
+    <td class="leftb">{ov:in} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftb"><img src="{page:path}symbols/clansphere/red.gif" alt="" /></td>
     <td class="rightb">{lang:out}</td>
-    <td class="leftb">{ov:out} {lang:euro}</td>
+    <td class="leftb">{ov:out} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftc"><img src="{page:path}symbols/clansphere/grey.gif" alt="" /></td>
     <td class="rightc">{lang:now}</td>
-    <td class="leftc">{ov:now} {lang:euro}</td>
+    <td class="leftc">{ov:now} {op:currency}</td>
   </tr>
 </table>
 <br />
@@ -92,7 +92,7 @@
     <td class="leftc">{cash:users_link}</td>
     <td class="leftc">{cash:date}</td>
     <td class="leftc"><a href="{url:cash_view:id={cash:id}}">{cash:text}</a></td>
-    <td class="leftc">{cash:money} {lang:euro}</td>
+    <td class="leftc">{cash:money} {op:currency}</td>
     <td class="leftc">{cash:in_out}</td>
     <td class="leftc"><a href="{url:cash_edit:id={cash:id}}" title="{lang:edit}">{icon:edit}</a></td>
     <td class="leftc"><a href="{url:cash_remove:id={cash:id}}" title="{lang:remove}">{icon:editdelete}</a></td>

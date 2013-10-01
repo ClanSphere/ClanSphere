@@ -5,6 +5,7 @@
 $cs_lang = cs_translate('cash');
 
 $data = array();
+$data['op'] = cs_sql_option(__FILE__, 'cash');
 
 $users_nick = '';
 $cs_cash['users_id'] = 0;

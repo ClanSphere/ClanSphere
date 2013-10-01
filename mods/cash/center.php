@@ -6,6 +6,7 @@ $cs_lang = cs_translate('cash');
 $cs_post = cs_post('start,sort');
 $cs_get = cs_get('start,sort');
 $data = array();
+$data['op'] = cs_sql_option(__FILE__, 'cash');
 
 $start = empty($cs_get['start']) ? 0 : $cs_get['start'];
 if (!empty($cs_post['start']))  $start = $cs_post['start'];

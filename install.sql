@@ -729,6 +729,7 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('bo
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'max_navtop', '5');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('board', 'max_navtop2', '5');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('buddys', 'max_navlist', '8');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cash', 'currency', 'Euro');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cash', 'month_out', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('categories', 'max_width', '150');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('categories', 'max_height', '150');
@@ -767,9 +768,9 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cl
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_news', '581');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_remote', '1');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'sec_time', '0');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.4.1');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2013-05-20');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '90');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_name', '2011.4.2 GIT');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_date', '2013-10-01');
+INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('clansphere', 'version_id', '91');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'allow_unreg', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('comments', 'show_avatar', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('computers', 'max_width', '800');

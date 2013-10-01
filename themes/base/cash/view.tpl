@@ -16,7 +16,7 @@
   </tr>
   <tr>
     <td class="leftc" style="width:140px">{icon:money} {lang:money}</td>
-    <td class="leftb">{cash:money} {lang:euro}</td>
+    <td class="leftb">{cash:money} {op:currency}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:kate} {lang:for}</td>

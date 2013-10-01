@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <td class="leftc">{icon:money} {lang:money} *</td>
-    <td class="leftb"><input type="text" name="cash_money" value="{cash:cash_money}" maxlength="14" size="10" /> {lang:euro}</td>
+    <td class="leftb"><input type="text" name="cash_money" value="{cash:cash_money}" maxlength="14" size="10" /> {op:currency}</td>
   </tr>
   <tr>
     <td class="leftc">{icon:folder_yellow} {lang:inout} *</td>

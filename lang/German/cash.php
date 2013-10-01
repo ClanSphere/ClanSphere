@@ -11,7 +11,6 @@ $cs_lang['head_center'] = 'Zentrale';
 $cs_lang['body_info'] =  'Bitte alle Felder mit * ausf&uuml;llen.';
 $cs_lang['money'] = 'Betrag';
 $cs_lang['for'] = 'Zweck';
-$cs_lang['euro'] = 'Euro';
 $cs_lang['info'] = 'Infos';
 $cs_lang['inout'] = 'Art';
 $cs_lang['new_cash'] = 'Neue Zahlung';
@@ -57,6 +56,7 @@ $cs_lang['nonumber'] = 'Es wurden keine Kontodaten hinterlegt';
 // Options
 $cs_lang['month_out'] = 'Monatliche Ausgaben:';
 $cs_lang['create_options'] = 'Optionen wurden erfolgreich ge&auml;ndert.';
+$cs_lang['currency'] = 'W&auml;hrung';
 
 // Users_view
 $cs_lang['user_cash_ok'] = 'Bezahlte Benutzer';
