@@ -398,7 +398,7 @@ $cs_lang['abo_mail_text'] = 'Im abonnierten Thema "%s" ist ein neuer Beitrag von
 // metadata
 $cs_lang['repair_true']   = 'Reparatur durchgef&uuml;hrt';
 $cs_lang['repair_false']  = 'Reparatur abgebrochen';
-$cs_lang['metadata_info'] = 'Foren und Themen werden hierbei bestm&ouml;glich repariert. '
+$cs_lang['metadata_info'] = 'Alle Forenthemen werden hierbei bestm&ouml;glich repariert. '
                           . 'Die Korrekturen beseitigen Fehler, die z.B. durch L&ouml;schaktionen und '
                           . 'fr&uuml;heres Fehlverhalten in der Software entstanden sind. '
                           . 'Der Vorgang kann - je nach Datenmenge - mehrere Sekunden andauern.';

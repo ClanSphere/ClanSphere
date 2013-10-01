@@ -410,7 +410,7 @@ $cs_lang['abo_mail_text'] = 'In subscripted thread "%s" is a new post by "%s" av
 // metadata
 $cs_lang['repair_true']   = 'Repair done';
 $cs_lang['repair_false']  = 'Repair canceled';
-$cs_lang['metadata_info'] = 'Boards and threads are going to be repaired as good as possible. '
+$cs_lang['metadata_info'] = 'All boardthreads are going to be repaired as good as possible. '
                           . 'These corrections fix errors that e.g. occur due to delete operations and '
                           . 'past bugs in this software.'
                           . 'This process can take - depending on the amount of data - a few seconds';
