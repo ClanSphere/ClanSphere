@@ -10,6 +10,7 @@ $axx_file['thread_cut']   = 4;
 $axx_file['remove']       = 4;
 $axx_file['delatt_admin'] = 5;
 $axx_file['options']      = 5;
+$axx_file['metadata']     = 5;
 
 $axx_file['report']       = 2;
 $axx_file['reportdel']    = 4;

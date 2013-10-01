@@ -72,3 +72,22 @@ function cs_threads_comments($threads_id) {
 
   return $comments;
 }
+
+function cs_repair_board ($thread_id = 0)
+{
+  $q_time = "UPDATE {pre}_threads thr SET threads_last_time = (SELECT "
+          . "MAX(com.comments_time) FROM {pre}_comments com WHERE thr.threads_id = "
+          . "com.comments_fid AND com.comments_mod = 'board')";
+  $q_time .= empty($thread_id) ? '' : " WHERE threads_id = " . (int) $thread_id;
+  cs_sql_query(__FILE__, $q_time);
+         
+  $q_user = "UPDATE {pre}_threads thr SET threads_last_user = (SELECT com.users_id "
+          . "FROM {pre}_comments com WHERE com.comments_fid = thr.threads_id GROUP BY "
+          . " com.comments_fid HAVING MAX(com.comments_time))";
+  $q_user .= empty($thread_id) ? '' : " WHERE threads_id = " . (int) $thread_id;
+  cs_sql_query(__FILE__, $q_user);
+  
+  $q_repair = "UPDATE {pre}_threads SET threads_last_user = users_id, "
+            . "threads_last_time = threads_time WHERE threads_last_time = 0";
+  cs_sql_query(__FILE__, $q_repair);
+}

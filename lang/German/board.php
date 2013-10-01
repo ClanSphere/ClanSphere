@@ -156,6 +156,7 @@ $cs_lang['new_board'] = 'Neues Forum erstellen';
 $cs_lang['reports'] = 'Meldungen';
 $cs_lang['user'] = 'Benutzer';
 $cs_lang['sort'] = 'Sortieren';
+$cs_lang['repair'] = 'Reparatur';
 
 //modpanel.php
 $cs_lang['mod3'] = 'Modpanel';
@@ -393,3 +394,12 @@ $cs_lang['average_posts'] = 'Durchschnittliche Antworten pro Thema';
 
 // Abonnement
 $cs_lang['abo_mail_text'] = 'Im abonnierten Thema "%s" ist ein neuer Beitrag von "%s" vorhanden.';
+
+// metadata
+$cs_lang['repair_true']   = 'Reparatur durchgef&uuml;hrt';
+$cs_lang['repair_false']  = 'Reparatur abgebrochen';
+$cs_lang['metadata_info'] = 'Foren und Themen werden hierbei bestm&ouml;glich repariert. '
+                          . 'Die Korrekturen beseitigen Fehler, die z.B. durch L&ouml;schaktionen und '
+                          . 'fr&uuml;heres Fehlverhalten in der Software entstanden sind. '
+                          . 'Der Vorgang kann - je nach Datenmenge - mehrere Sekunden andauern.';
+$cs_lang['metadata_com']  = 'Hinweis: Die Massenl&ouml;schung im Kommentar-Modul f&uuml;hrt dies automatisch mit aus';

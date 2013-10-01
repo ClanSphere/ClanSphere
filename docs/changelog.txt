@@ -4,6 +4,8 @@ CHANGELOG
 ClanSphere 2011.4.2 >> 2013-XX-XX
 ___________________________________________________________
 
+-> Added board repair page to fix metadata issues caused by delete operations (hajo)
+   Also helps to fix wrong data if your initial ClanSphere version is older than 2011
 -> Fixed boardvotes not usable on different accounts due to same ip (tom08)
 
 

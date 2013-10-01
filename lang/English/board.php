@@ -160,6 +160,7 @@ $cs_lang['new_board'] = 'Create a new board';
 $cs_lang['reports'] = 'Reports';
 $cs_lang['user'] = 'User';
 $cs_lang['sort'] = 'Sort';
+$cs_lang['repair'] = 'Repair';
 
 //modpanel.php
 $cs_lang['mod3'] = 'Modpanel';
@@ -405,3 +406,12 @@ $cs_lang['average_posts'] = 'Average posts per thread';
 
 // Subscription
 $cs_lang['abo_mail_text'] = 'In subscripted thread "%s" is a new post by "%s" available.';
+
+// metadata
+$cs_lang['repair_true']   = 'Repair done';
+$cs_lang['repair_false']  = 'Repair canceled';
+$cs_lang['metadata_info'] = 'Boards and threads are going to be repaired as good as possible. '
+                          . 'These corrections fix errors that e.g. occur due to delete operations and '
+                          . 'past bugs in this software.'
+                          . 'This process can take - depending on the amount of data - a few seconds';
+$cs_lang['metadata_com']  = 'Note: The mass deletion within the comments module executes this automatically';
