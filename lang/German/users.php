@@ -99,7 +99,7 @@ $cs_lang['mail_reg_end'] = "\n \n Diese Email wurde &uuml;ber ein Formular angef
 $cs_lang['mail_admin_sendpw_start'] = "Hallo ";
 $cs_lang['mail_admin_sendpw_content'] = "\n\n Von einem Admin wurde ein neues Passwort f&uuml;r deinen Account erstellt.";
 $cs_lang['mail_admin_sendpw_pass'] = "\n\n Dein Neues Passwort lautet: ";
-$cs_lang['mail_admin_sendpw_url'] = "\n\n Mit diesem Passwort und deinem Nick kannst du dich absofort auf %s einloggen.";
+$cs_lang['mail_admin_sendpw_url'] = "\n\n Mit diesem Passwort und deinem Nick kannst du dich ab sofort auf %s einloggen.";
 $cs_lang['mail_admin_sendpw_end'] = "\n\n\nMit freundlichen Gr&uuml;&szlig;en\n";
 $cs_lang['mail_admin_sendpw_ok'] = "Neues Passwort wurde erstellt, und per eMail verschickt.";
 
