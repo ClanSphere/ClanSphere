@@ -1,14 +1,14 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4.2 >> 2013-XX-XX
+ClanSphere 2011.4.2 >> 2013-10-14
 ___________________________________________________________
 
--- Recommended PHP version set to 5.4.6 while newer is better
--- It is the last version that fixes a known issue with this software
+-- Recommended PHP version is now the last one that fixes a known issue: 5.4.6
+-- Newer versions of PHP should work the same or even better
 
 -> Added board repair page to fix thread metadata issues (hajo)
-   Also helps to fix wrong data if your initial ClanSphere version is older than 2011
+   Also helps to fix wrong data if your initial ClanSphere version was older than 2011
 -> Added currency name option to cash module (hajo)
 -> Fixed banners rotation not working when only one banner is found (hajo)
 -> Fixed boardvotes not usable on different accounts due to same ip (tom08)
