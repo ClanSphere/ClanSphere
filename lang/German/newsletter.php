@@ -14,6 +14,19 @@ $cs_lang['text'] = 'Text';
 $cs_lang['new_newsletter'] = 'Neuer Newsletter';
 $cs_lang['successfull'] = 'Es wurde(n) %s Mail(s) versendet.';
 
+#labels
+$cs_lang['squads']      = 'Squads';
+$cs_lang['group']       = 'Gruppe';
+$cs_lang['section']     = 'Abteilung';
+$cs_lang['team']        = 'Team';
+$cs_lang['class']       = 'Klasse';
+$cs_lang['clan']        = 'Clan';
+$cs_lang['association'] = 'Verein';
+$cs_lang['club']        = 'Club';
+$cs_lang['guild']       = 'Gilde';
+$cs_lang['enterprise']  = 'Firma';
+$cs_lang['school']      = 'Schule';
+
 #errors
 $cs_lang['require'] = 'Bitte alle Felder mit * ausf&uuml;llen';
 $cs_lang['no_subject'] = '- Es muss ein Betreff angegeben werden';
