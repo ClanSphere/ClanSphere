@@ -4,8 +4,9 @@
 
 function cs_newsletter_to($select) {
 
-  $cs_lang = cs_translate('newsletter');
-  # TODO: Make $select work and insert clan and squad translation naming switch
+  $cs_lang   = cs_translate('newsletter');
+  $op_squads = cs_sql_option(__FILE__,'squads','label');
+  $op_clans  = cs_sql_option(__FILE__,'clans','label');
 
   $dp = cs_html_option('----','0',1);
   $dp .= cs_html_option($cs_lang['all_users'],'1');
@@ -15,13 +16,13 @@ function cs_newsletter_to($select) {
     $dp .= cs_html_option('&nbsp;&nbsp;&nbsp;' . cs_secure($value['access_name']),'2?' .$value['access_id']);
   }
 
-  $dp .= cs_html_option(' &raquo;' .$cs_lang['squad'],'');
+  $dp .= cs_html_option(' &raquo;' .$cs_lang[$op_squads['label']],'');
   $squads = cs_sql_select(__FILE__,'squads','squads_id, squads_name',0,'squads_name',0,0);
   $squads = empty($squads) ? array() : $squads;
   foreach($squads AS $squad) {
     $dp .= cs_html_option('&nbsp;&nbsp;&nbsp;' . cs_secure($squad['squads_name']),'3?' .$squad['squads_id']);
   }   
-  $dp .= cs_html_option('&raquo;' .$cs_lang['clan'],'');
+  $dp .= cs_html_option('&raquo;' .$cs_lang[$op_clans['label']],'');
 
   $clans = cs_sql_select(__FILE__,'clans','clans_id, clans_name',0,'clans_name',0,0);
   $clans = empty($clans) ? array() : $clans;
