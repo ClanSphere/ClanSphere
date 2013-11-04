@@ -14,6 +14,19 @@ $cs_lang['text'] = 'Text';
 $cs_lang['new_newsletter'] = 'New Newsletter';
 $cs_lang['successfull'] = '%s Mails were sent.';
 
+#labels
+$cs_lang['squads']      = 'Squads';
+$cs_lang['group']       = 'Groups';
+$cs_lang['section']     = 'Sections';
+$cs_lang['team']        = 'Teams';
+$cs_lang['class']       = 'Classes';
+$cs_lang['clan']        = 'Clan';
+$cs_lang['association'] = 'Association';
+$cs_lang['club']        = 'Club';
+$cs_lang['guild']       = 'Guild';
+$cs_lang['enterprise']  = 'Enterprise';
+$cs_lang['school']      = 'School';
+
 #errors
 $cs_lang['require'] = 'Please fill out all * marked fields';
 $cs_lang['no_subject'] = '- A subject must be input';
