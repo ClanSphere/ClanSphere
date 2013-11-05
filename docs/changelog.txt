@@ -1,6 +1,13 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2011.4.3 >> 2013-XX-XX
+___________________________________________________________
+
+-> Fixed games mod version data not saved (hajo)
+-> Fixed newsletter mod not handling name selection for clan and squad mod (palle)
+
+
 ClanSphere 2011.4.2 >> 2013-10-14
 ___________________________________________________________
 
@@ -106,7 +113,7 @@ ___________________________________________________________
 -- New default template and theme made by Seron with optimizations by equal
 
 -> Fixed board file handling issues (patches by Tazzernator)
--> Fixed category sorting in rules manage (palle!)
+-> Fixed category sorting in rules manage (palle)
 -> Fixed forward not translated in messages mod (hajo)
 -> Fixed new countries not usable due to database limitations (reported by mindcrime)
 -> Fixed no selection error message in maps mod not working (hajo)
@@ -124,7 +131,7 @@ ___________________________________________________________
 -> Added new country icons and dropdown entries (hajo)
 -> Fixed email line-endings and user email activation issues (hajo)
 -> Fixed language switching problems (hajo)
--> Fixed options and removal in maps mod (palle!)
+-> Fixed options and removal in maps mod (palle)
 -> Fixed php error handling with @ sign (hajo)
 -> Fixed some sql queries that don't follow the standard (patches by pico)
 -> Improved magic_quotes detection and handling (hajo)
@@ -370,7 +377,7 @@ ___________________________________________________________
 -> Reworked board/navtop (spongebob)
 -> Reworked cups mod (spongebob)
 -> Reworked events mod (hajo)
--> Reworked wars mod (palle!)
+-> Reworked wars mod (palle)
 -> Reworked cookie settings and security to use a hash value (hajo)
 -> Reworked how and what install plus clansphere mod check for in the webserver environment (hajo)
 -> Switched from FCKEditor to the most current version of the CKEditor (hajo)
