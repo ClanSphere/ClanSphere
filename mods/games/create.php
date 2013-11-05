@@ -83,6 +83,10 @@ if(!empty($_POST['games_url'])) {
   $games_url = $_POST['games_url'];
 }
 
+if(!empty($_POST['games_version'])) {
+  $games_version = $_POST['games_version'];
+}
+
 $data['lang']['body'] = !isset($_POST['submit']) ? $cs_lang['body_create'] : $errormsg;
 
 if(isset($_POST['submit']) && empty($games_error) && empty($symbol_error)) {

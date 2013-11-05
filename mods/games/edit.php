@@ -64,6 +64,10 @@ if(!empty($_POST['games_url'])) {
   $games_url = $_POST['games_url'];
 }
 
+if(!empty($_POST['games_version'])) {
+  $games_version = $_POST['games_version'];
+}
+
 $categories_id = empty($_POST['categories_name']) ? $categories_id : cs_categories_create('games',$_POST['categories_name']);
 
 if(empty($categories_id)) {
