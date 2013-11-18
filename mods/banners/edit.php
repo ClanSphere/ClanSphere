@@ -23,11 +23,6 @@ if(isset($_POST['submit'])) {
   $error = 0;
   $message = '';
 
-  if(isset($_POST['delete']) AND $_POST['delete'] == TRUE AND file_exists($cs_banners['banners_picture'])) {
-    unlink($cs_banners['banners_picture']);
-    $cs_banners['banners_picture'] = '';
-  }
-
   $img_size = false;
   if(!empty($files['picture']['tmp_name']))
     $img_size = getimagesize($files['picture']['tmp_name']);
@@ -95,7 +90,7 @@ if(isset($_POST['submit'])) {
   
   if(empty($cs_banners['categories_id'])) {
     $error++;
-  $message .= $cs_lang['no_cat'] . cs_html_br(1);
+    $message .= $cs_lang['no_cat'] . cs_html_br(1);
   }
   
   $where = "banners_name = '" . cs_sql_escape($cs_banners['banners_name']) . "'";
@@ -158,4 +153,4 @@ else {
   cs_sql_update(__FILE__,'banners',$banners_cells,$banners_save,$banners_id);
   
   cs_redirect($cs_lang['changes_done'], 'banners') ;
-}  
+}
