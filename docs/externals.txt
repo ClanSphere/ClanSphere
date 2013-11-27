@@ -13,4 +13,4 @@ mod servers:
 - GameQ 1.12 (http://gameq.sourceforge.net)
 
 mod lightbox:
-- Slimbox 2.0.4 for jQuery (http://www.digitalia.be/software/slimbox2)
+- Slimbox 2.0.5 for jQuery (http://www.digitalia.be/software/slimbox2)

@@ -7,6 +7,7 @@ ___________________________________________________________
 -> Fixed banners edit containing multiple ways to remove the picture (hajo)
 -> Fixed games mod version data not saved (hajo)
 -> Fixed newsletter mod not handling name selection for clan and squad mod (palle)
+-> Updated slimbox to 2.05 (hajo)
 
 
 ClanSphere 2011.4.2 >> 2013-10-14
