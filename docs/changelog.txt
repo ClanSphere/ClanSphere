@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4.3 >> 2013-XX-XX
+ClanSphere 2011.4.3 >> 2013-12-06
 ___________________________________________________________
 
 -> Fixed banners edit containing multiple ways to remove the picture (hajo)
