@@ -1,5 +1,5 @@
 <?php
-// ClanSphere 2010 - www.clansphere.net
+// ClanSphere 2010 - www.clansphere.neta
 // $Id$
 
 $cs_lang = cs_translate('awards');
