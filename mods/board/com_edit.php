@@ -36,12 +36,12 @@ $thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_edit',"users_id = '
 
 //Sicherheitsabfrage Beginn
 if(!empty($cs_thread['board_pwd'])) {
-  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $cs_thread['board_id'] . '"';
+  $where = 'users_id = ' . $account['users_id'] . ' AND board_id = ' . $cs_thread['board_id'];
   $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
 }
 
 if(!empty($cs_thread['squads_id']) AND $account['access_board'] < $cs_thread['board_access']) {
-  $sq_where = "users_id = '" . $account['users_id'] . "' AND squads_id = '" . $cs_thread['squads_id'] . "'";
+  $sq_where = "users_id = " . $account['users_id'] . " AND squads_id = " . $cs_thread['squads_id'];
   $check_sq = cs_sql_count(__FILE__,'members',$sq_where);
 }
 
@@ -326,7 +326,7 @@ else {
     $remainder = $count_com % $account['users_limit'];
     $start = $count_com % $account['users_limit'] == 0 ? $count_com - $remainder - $account['users_limit'] : $count_com - $remainder;
   } else {
-    $where = "comments_fid = \"" . $fid . "\" AND comments_mod = 'board' AND comments_id > \"" . $comments_id . "\"";
+    $where = "comments_fid = " . $fid . " AND comments_mod = 'board' AND comments_id > " . $comments_id;
     $after = cs_sql_count(__FILE__,'comments',$where);
     $start = $after - $after % $account['users_limit'];
   }

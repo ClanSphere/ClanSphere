@@ -18,14 +18,14 @@ $from = 'board frm INNER JOIN {pre}_categories cat ON frm.categories_id = cat.ca
 #$from .= " INNER JOIN {pre}_members mem ON frm.squads_id = mem.squads_id AND mem.users_id = '" . $account['users_id'] . "'";
 $select = 'frm.board_pwd AS board_pwd, frm.board_name AS board_name, cat.categories_name AS categories_name, ';
 $select .= 'frm.board_id AS board_id, cat.categories_id AS categories_id, frm.board_access AS board_access, frm.squads_id AS squads_id';
-$where = "frm.board_id = '" . $board_id . "'";
+$where = "frm.board_id = " . $board_id;
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where,0,0,1);
 if(!empty ($cs_thread['board_pwd'])) {
-  $where = "users_id = '" . $account['users_id'] . "' AND board_id = '" . $cs_thread['board_id'] . "'";
+  $where = "users_id = " . $account['users_id'] . " AND board_id = " . $cs_thread['board_id'];
   $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
 }
 if(!empty($cs_thread['squads_id'])) {
-  $where = "squads_id = '" . $cs_thread['squads_id'] . "' AND users_id = '" .$account['users_id'] . "'";
+  $where = "squads_id = " . $cs_thread['squads_id'] . " AND users_id = " .$account['users_id'];
   $check_sq = cs_sql_count(__FILE__,'members',$where);
 }
 
@@ -43,7 +43,7 @@ if(!empty($errorpage)) {
 
 #check mod
 $acc_mod = 0;
-$check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = "' . $account['users_id'] . '"',0,0,1);
+$check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = ' . $account['users_id'],0,0,1);
 if(!empty($check['boardmods_modpanel']) OR $account['access_board'] == 5) {
   $acc_mod = 1;
 }

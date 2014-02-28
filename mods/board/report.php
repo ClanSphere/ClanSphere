@@ -27,12 +27,12 @@ $cs_thread = cs_sql_select(__FILE__,$from,$select,$where,0,0,1);
 
 //Sicherheitsabfrage Beginn
 if(!empty($cs_thread['board_pwd'])) {
-  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $cs_thread['board_id'] . '"';
+  $where = 'users_id = ' . $account['users_id'] . ' AND board_id = ' . $cs_thread['board_id'];
   $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
 }
 
 if(!empty($cs_thread['squads_id']) AND $account['access_board'] < $cs_thread['board_access']) {
-  $sq_where = "users_id = '" . $account['users_id'] . "' AND squads_id = '" . $cs_thread['squads_id'] . "'";
+  $sq_where = "users_id = " . $account['users_id'] . " AND squads_id = " . $cs_thread['squads_id'];
   $check_sq = cs_sql_count(__FILE__,'members',$sq_where);
 }
 
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])) {
     $error++;
     $errormsg .= $cs_lang['no_text'] . cs_html_br(1);
   }
-  $exists = cs_sql_count(__FILE__,'boardreport',"threads_id = '" . $tid . "' AND comments_id = '" . $cid . "'");
+  $exists = cs_sql_count(__FILE__,'boardreport',"threads_id = " . $tid . " AND comments_id = " . $cid);
   if(!empty($exists)) {
     $error++;
     $errormsg .= $cs_lang['report_exists'] . cs_html_br(1);

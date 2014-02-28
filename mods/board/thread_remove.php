@@ -17,22 +17,22 @@ $check_pw = 1;
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $select = 'frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.board_id AS board_id, thr.threads_headline AS threads_headline, ';
 $select .= 'thr.users_id AS users_id, frm.squads_id AS squads_id';
-$where = "thr.threads_id = '" . $thread_id . "'";
+$where = "thr.threads_id = " . $thread_id;
 $cs_thread = cs_sql_select(__FILE__,$from,$select,$where);
 
 //Sicherheitsabfrage Beginn
 $cs_boardfiles = cs_sql_select(__FILE__,'boardfiles','boardfiles_name,boardfiles_id',"threads_id='" . (int) $thread_id . "'",0,0,0);
 $cs_boardfiles_loop = count($cs_boardfiles); 
 
-$thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_del',"users_id = '" . $account['users_id'] . "'",0,0,1);
+$thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_del',"users_id = " . $account['users_id'],0,0,1);
 
 if(!empty($cs_thread['board_pwd'])) {
-  $where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $cs_thread['board_id'] . '"';
+  $where = 'users_id = ' . $account['users_id'] . ' AND board_id = ' . $cs_thread['board_id'];
   $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
 }
 
 if(!empty($cs_thread['squads_id'])) {
-  $where = "squads_id = '" . $cs_thread['squads_id'] . "' AND users_id = '" .$account['users_id'] . "'";
+  $where = "squads_id = " . $cs_thread['squads_id'] . " AND users_id = " .$account['users_id'];
   $check_sq = cs_sql_count(__FILE__,'members',$where);
 }
 
@@ -41,7 +41,7 @@ if(empty($thread_id) || (count($cs_thread) == 0))
   return errorPage('thread_remove', $cs_lang);
 
 if($account['access_board'] >= $cs_thread['board_access']) {
-  $where_com = "comments_mod = 'board' AND comments_fid = '" . $thread_id . "'";
+  $where_com = "comments_mod = 'board' AND comments_fid = " . $thread_id;
   $sum= cs_sql_count(__FILE__,'comments',$where_com);  
   if($account['access_comments'] >= 5 OR !empty($thread_mods['boardmods_del'])) {
     $allowed = 1;
@@ -73,19 +73,19 @@ if(isset($_POST['agree'])) {
   
   cs_sql_delete(__FILE__,'threads',$thread_id);
   $query = "DELETE FROM {pre}_comments WHERE comments_mod='board' AND ";
-  $query .= "comments_fid='" . $thread_id . "'";
+  $query .= "comments_fid=" . $thread_id;
   cs_sql_query(__FILE__,$query); 
-  $query = "DELETE FROM {pre}_abonements WHERE threads_id='" . $thread_id . "'";
+  $query = "DELETE FROM {pre}_abonements WHERE threads_id=" . $thread_id;
   cs_sql_query(__FILE__,$query);
-  $query = "DELETE FROM {pre}_boardfiles WHERE threads_id='" . $thread_id . "'";
+  $query = "DELETE FROM {pre}_boardfiles WHERE threads_id=" . $thread_id;
   cs_sql_query(__FILE__,$query);
-  $query = "DELETE FROM {pre}_boardvotes WHERE threads_id='" . $thread_id . "'";
+  $query = "DELETE FROM {pre}_boardvotes WHERE threads_id=" . $thread_id;
   cs_sql_query(__FILE__,$query);
   $query = "DELETE FROM {pre}_voted WHERE voted_mod='board' AND ";
-  $query .= "voted_fid='" . $thread_id . "'";
+  $query .= "voted_fid=" . $thread_id;
   cs_sql_query(__FILE__,$query);
   // Delte GhostLinks
-  $query = "DELETE FROM {pre}_threads WHERE threads_ghost_thread = '" . $thread_id ."'";
+  $query = "DELETE FROM {pre}_threads WHERE threads_ghost_thread = " . $thread_id;
   cs_sql_query(__FILE__,$query);
   
 
