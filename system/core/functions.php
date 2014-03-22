@@ -206,7 +206,7 @@ function cs_init($predefined) {
   $cs_logs = array('php_errors' => '', 'errors' => '', 'sql' => '', 'queries' => 0, 'warnings' => 1, 'dir' => 'uploads/logs');
   $cs_main['cellspacing'] = 1;
   $cs_main['def_lang'] = empty($cs_main['def_lang']) ? 'English' : $cs_main['def_lang'];
-  $cs_main['def_theme'] = 'base';
+  $cs_main['def_theme'] = empty($cs_main['def_theme']) ? 'base' : $cs_main['def_theme'];
   $cs_main['xsrf_protection'] = true;
   $cs_main['zlib'] = true;
   

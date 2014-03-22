@@ -97,7 +97,7 @@ function cs_cache_template($filename) {
 function cs_cache_theme($mod, $action) {
 
   global $cs_main;
-  $tpl_temp = 'thm_' . $mod . '_' . $action . '_' . $cs_main['php_self']['filename'];
+  $tpl_temp = 'thm_' . $cs_main["def_theme"] . '_' . $mod . '_' . $action . '_' . $cs_main['php_self']['filename'];
   $tpl_data = cs_cache_load($tpl_temp);
 
   $tpl_real = cs_subtemplate_check($mod, $action);
