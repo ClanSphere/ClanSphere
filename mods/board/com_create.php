@@ -37,7 +37,7 @@ $select  = 'thr.threads_headline AS threads_headline, frm.board_name AS board_na
 $select .= 'cat.categories_name AS categories_name, thr.threads_id AS threads_id, frm.board_id AS board_id, ';
 $select .= 'cat.categories_id AS categories_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, frm.squads_id AS squads_id';
 if (empty($last_comment)) $select .= ', thr.users_id AS users_id, thr.threads_time AS threads_time';
-$where = "thr.threads_id = " . $fid;
+$where = "thr.threads_id = " . (int)$fid;
 $data['thread'] = cs_sql_select(__FILE__,$from,$select,$where);
 
 if (empty($last_comment)) {
@@ -47,12 +47,12 @@ if (empty($last_comment)) {
 
 //Sicherheitsabfrage Beginn 
 if(!empty($data['thread']['board_pwd'])) {
-  $where = 'users_id = ' . $account['users_id'] . ' AND board_id = ' . $data['thread']['board_id'];
+  $where = 'users_id = ' . (int)$account['users_id'] . ' AND board_id = ' . (int)$data['thread']['board_id'];
   $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
 }
 
 if(!empty($data['thread']['squads_id']) AND $account['access_board'] < $data['thread']['board_access']) {
-  $sq_where = "users_id = " . $account['users_id'] . " AND squads_id = " . $data['thread']['squads_id'];
+  $sq_where = "users_id = " . (int)$account['users_id'] . " AND squads_id = " . (int)$data['thread']['squads_id'];
   $check_sq = cs_sql_count(__FILE__,'members',$sq_where);
 }
 if(empty($fid) || (count($data['thread']) == 0)) {
@@ -68,7 +68,7 @@ if($account['users_id'] == $last_comment['users_id'] && ( $options['doubleposts'
 
 #check mod
 $acc_close = 0;
-$check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = ' . $account['users_id'],0,0,1);
+$check_mod = cs_sql_select(__FILE__,'boardmods','boardmods_modpanel','users_id = ' . (int)$account['users_id'],0,0,1);
 if(!empty($check_mod['boardmods_modpanel']) OR $account['access_board'] == 5) {
   $acc_close = 1;
 }
@@ -94,7 +94,7 @@ if(isset($_REQUEST['quote']) OR isset($_POST['fquote'])) {
            . 'thr.board_id = brd.board_id LEFT JOIN {pre}_members mem ON brd.squads_id = mem.squads_id AND mem.users_id = ' . $account['users_id'];
     $fields = 'cmt.users_id AS users_id, cmt.comments_text AS comments_text, cmt.comments_time AS comments_time, '
             . 'cmt.comments_fid AS comments_fid, thr.threads_id AS threads_id, brd.board_access AS board_access';
-    $conditions = "cmt.comments_id = " . cs_sql_escape($def[1]) . " AND (brd.board_access <= '" . $account['access_board'] . "' OR mem.users_id = " . $account['users_id'] . ")";
+    $conditions = "cmt.comments_id = " . (int)$def[1] . " AND (brd.board_access <= '" . (int)$account['access_board'] . "' OR mem.users_id = " . (int)$account['users_id'] . ")";
     $quote = cs_sql_select($file, $joins, $fields, $conditions);
     $cs_users = cs_sql_select(__FILE__,'users','users_id, users_nick', "users_id = '" . $quote['users_id'] . "'");
     $ori_text = '[quote]' .$quote['comments_text']. '[/quote]';
@@ -137,7 +137,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
   }
 
   //check doublepost
-  $find = 'comments_mod = \'board\' AND comments_fid = ' . $fid;
+  $find = "comments_mod = 'board' AND comments_fid = " . (int)$fid;
   $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_time',$find,'comments_id DESC');
   $time = cs_time();
 
@@ -152,7 +152,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
   }
 
   //check flood
-  $where = 'users_id = ' . $account['users_id'] . ' AND comments_mod = \'board\'';
+  $where = "users_id = " . (int)$account['users_id'] . " AND comments_mod = 'board'";
   $flood = cs_sql_select(__FILE__,'comments','comments_time',$where,'comments_time DESC');
   $maxtime = $flood['comments_time'] + $cs_main['def_flood'];
 
@@ -162,7 +162,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview']) OR isset($_POST['advanced
   }
 
   //check close
-  $board = cs_sql_select(__FILE__,'threads','threads_close',"threads_id = " . $fid);
+  $board = cs_sql_select(__FILE__,'threads','threads_close',"threads_id = " . (int)$fid);
   if(!empty($board['threads_close'])) {
     $error .= $cs_lang['not_able'] . cs_html_br(1);
   }
@@ -333,7 +333,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
 
   $data['com']['fid'] = $fid;
 
-  $where = "comments_mod = 'board' AND comments_fid = " . $fid;
+  $where = "comments_mod = 'board' AND comments_fid = " . (int)$fid;
   $count_com = cs_sql_count(__FILE__,'comments',$where);
   if(!empty($count_com)) {
     $data['if']['com_form'] = FALSE;
@@ -344,7 +344,7 @@ if(!empty($error) OR isset($_POST['preview']) OR !isset($_POST['submit']) OR iss
  echo cs_subtemplate(__FILE__,$data,'board','com_create');
 }
 else {
-  $opt = "comments_mod = 'board' AND comments_fid = " . $fid;
+  $opt = "comments_mod = 'board' AND comments_fid = " . (int)$fid;
   $count_com = cs_sql_count(__FILE__,'comments',$opt);
 
   $options = cs_sql_option(__FILE__,'board');
@@ -434,7 +434,7 @@ else {
   }
   // END Abo-Mail
 
-  $where = "comments_mod = 'board' AND comments_fid = " . $fid;
+  $where = "comments_mod = 'board' AND comments_fid = " . (int)$fid;
   $count_com = cs_sql_count(__FILE__,'comments',$where);
 
   $add_start = empty($start) ? '' : '&start=' . $start;

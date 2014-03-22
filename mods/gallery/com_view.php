@@ -37,7 +37,7 @@ if(empty($gallery_loop)) {
 } else {
 
     $select = 'folders_id, folders_name, folders_picture, folders_text, sub_id, folders_advanced';
-    $where = "folders_mod = 'gallery' AND folders_id = " . $cs_gallery['folders_id'];
+    $where = "folders_mod = 'gallery' AND folders_id = " . (int)$cs_gallery['folders_id'];
     $cs_folders = cs_sql_select(__FILE__,'folders',$select,$where);
 
     $advanced = empty($cs_folders['folders_advanced']) ? '0,0,0,0' : $cs_folders['folders_advanced'];

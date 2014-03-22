@@ -27,7 +27,7 @@ $data['head']['dropdown'] = cs_dropdown('categories_id','categories_name',$categ
 
 $data['head']['message'] = cs_getmsg();
 
-$cat_where = empty($categories_id) ? 0 : 'categories_id = ' . $categories_id;
+$cat_where = empty($categories_id) ? 0 : 'categories_id = ' . (int)$categories_id;
 $cells = 'articles_headline, articles_id, articles_time, users_id';
 
 $cs_articles = cs_sql_select(__FILE__,'articles', $cells,$cat_where,$order,$start,$account['users_limit']);

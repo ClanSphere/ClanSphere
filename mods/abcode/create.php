@@ -98,7 +98,7 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['action']['form'] = cs_url('abcode','create');
 
   $sel = 'selected="selected"';
-  $data['word']['cut'] = !empty($op_abcode['word_cut']) ? 'maxlength=' . $op_abcode['word_cut'] : '';
+  $data['word']['cut'] = !empty($op_abcode['word_cut']) ? 'maxlength="' . $op_abcode['word_cut'] . '"' : '';
   $data['select']['img'] = $cs_abcode['abcode_func'] == 'img' ? $sel : '';
   $data['select']['str'] = $cs_abcode['abcode_func'] == 'str' ? $sel : '';
 

@@ -12,9 +12,9 @@ settype($clans_id,'integer');
 $op_clans = cs_sql_option(__FILE__,'clans');
 $img_filetypes = array('gif','jpg','png');
 
-$own = "users_id = " . $account['users_id'];
+$own = "users_id = " . (int)$account['users_id'];
 $cells = 'clans_name, clans_short, clans_tag, clans_tagpos, clans_country, clans_url, clans_since, clans_pwd, clans_picture';
-$cs_clans = cs_sql_select(__FILE__,'clans',$cells,$own . " AND clans_id = " . $clans_id);
+$cs_clans = cs_sql_select(__FILE__,'clans',$cells,$own . " AND clans_id = " . (int)$clans_id);
 
 $picture = empty($cs_clans['clans_picture']) ? '' : $cs_clans['clans_picture'];
 
@@ -105,7 +105,7 @@ if(isset($_POST['submit'])) {
   }
 
   $where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
-  $where .= " AND clans_id != " . $clans_id;
+  $where .= " AND clans_id != " . (int)$clans_id;
   $search = cs_sql_count(__FILE__,'clans',$where);
 
   if(!empty($search)) {

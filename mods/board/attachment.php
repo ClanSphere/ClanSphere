@@ -24,7 +24,7 @@ if(!empty($_GET['id'])) {
     $cs_thread_file = cs_sql_select(__FILE__,$tables,'*',$where,0,0,1);
     if(!empty($cs_thread_file)) {
       if(!empty($cs_thread_file['squads_id']) AND $account['access_board'] < $cs_thread_file['board_access']) {
-	    $sq_where = 'users_id = ' . $account['users_id'] . ' AND squads_id = ' . $cs_thread_file['squads_id'];
+	    $sq_where = 'users_id = ' . (int)$account['users_id'] . ' AND squads_id = ' . (int)$cs_thread_file['squads_id'];
         $check_sq = cs_sql_count(__FILE__,'members',$sq_where);
 		if(empty($check_sq)) {
           $forbidden = 'Not in valid squad';

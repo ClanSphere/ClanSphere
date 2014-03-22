@@ -30,7 +30,7 @@ $columns = 'events_id, events_name, events_time, events_needage, events_guestsma
 $data['events'] = cs_sql_select(__FILE__,'events',$columns,$where,0,0,1);
 $data['events']['time'] = cs_date('unix',$data['events']['events_time'],1);
 
-$count_where = "events_id = " . $events_id . " AND eventguests_status = ";
+$count_where = "events_id = " . (int)$events_id . " AND eventguests_status = ";
 $data['count']['status_0'] = cs_sql_count(__FILE__, 'eventguests', $count_where . '0');
 $data['count']['status_3'] = cs_sql_count(__FILE__, 'eventguests', $count_where . '3');
 $data['count']['status_4'] = cs_sql_count(__FILE__, 'eventguests', $count_where . '4');

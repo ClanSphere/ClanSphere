@@ -23,7 +23,7 @@ if(isset($_POST['submit'])) {
   $cs_clans['clans_url'] = $_POST['clans_url'];
   $cs_clans['clans_since'] = cs_datepost('since','date');
   
-  $picture = cs_sql_select(__FILE__,'clans','clans_picture',"clans_id = " . $clans_id);
+  $picture = cs_sql_select(__FILE__,'clans','clans_picture',"clans_id = " . (int)$clans_id);
   
   $cs_clans['clans_picture'] = empty($_POST['clans_picture']) ? $picture['clans_picture'] : $_POST['clans_picture'];
   $cs_clans['clans_pwd'] = $_POST['clans_pwd'];
@@ -107,7 +107,7 @@ if(empty($cs_clans['clans_short'])) {
 }
   
 $where = "clans_name = '" . cs_sql_escape($cs_clans['clans_name']) . "'";
-$where .= " AND clans_id != " . $clans_id;
+$where .= " AND clans_id != " . (int)$clans_id;
 $search = cs_sql_count(__FILE__,'clans',$where);
 
 if(!empty($search)) {
@@ -117,7 +117,7 @@ if(!empty($search)) {
 }
 else {
   $cells = 'clans_name, clans_short, clans_tag, clans_tagpos, clans_country, clans_url, clans_since, clans_pwd, clans_picture, users_id';
-  $cs_clans = cs_sql_select(__FILE__,'clans',$cells,"clans_id = " . $clans_id);
+  $cs_clans = cs_sql_select(__FILE__,'clans',$cells,"clans_id = " . (int)$clans_id);
   $cs_users = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . (int) $cs_clans['users_id']);
   $users_nick = $cs_users['users_nick'];
 }

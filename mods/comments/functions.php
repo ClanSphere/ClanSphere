@@ -64,7 +64,7 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
       $users_place = empty($com_place);
       $com[$run]['place'] = !empty($users_place) ? '-' : $cs_com[$run]['users_place'];
 
-      $who = "users_id = " . $cs_com[$run]['users_id'];
+      $who = "users_id = " . (int)$cs_com[$run]['users_id'];
       $count_user_com = cs_sql_count(__FILE__,'comments',$who);
 
       $com[$run]['posts'] = $count_user_com;
@@ -133,7 +133,7 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
 
   settype($com_fid,'integer');
   settype($close,'integer');
-  $where = "comments_mod = " . cs_sql_escape($mod) . " AND comments_fid = " . $com_fid;
+  $where = "comments_mod = " . cs_sql_escape($mod) . " AND comments_fid = " . (int)$com_fid;
   $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_ip',$where,'comments_id DESC');
 
   $ip = cs_getip();
@@ -218,7 +218,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
 
       $text = $_POST['comments_text'];
 
-      $find = "comments_mod = ".$mod." AND comments_fid = " . $com_fid;
+      $find = "comments_mod = " . cs_sql_escape($mod) . " AND comments_fid = " . (int)$com_fid;
       $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_ip',$find,'comments_id DESC');
 
       $ip = cs_getip();
@@ -256,14 +256,14 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
         if($account['users_id'] == $last_from['users_id']) {
             $error .= $cs_lang['last_own'] . cs_html_br(1);
         }
-        $where = "users_id = " . $account['users_id'];
+        $where = "users_id = " . (int)$account['users_id'];
       }
 
       if(empty($text)) {
         $error .= $cs_lang['no_text'] . cs_html_br(1);
       }
 
-      $and_mod = " AND comments_mod = '".$mod."'";
+      $and_mod = " AND comments_mod = '" . cs_sql_escape($mod) . "'";
       $flood = cs_sql_select(__FILE__,'comments','comments_time',$where . $and_mod,'comments_time DESC');
       $maxtime = $flood['comments_time'] + $cs_main['def_flood'];
       if($maxtime > cs_time()) {
@@ -312,7 +312,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
         $place = empty($cs_user['users_place']) ? '-' : $cs_user['users_place'];
         $data['prev']['place'] = cs_secure($place);
 
-        $who = "users_id = " . $userid;
+        $who = "users_id = " . (int)$userid;
         $count_com[$userid] = cs_sql_count(__FILE__,'comments',$who);
         $data['prev']['posts'] = $count_com[$userid];
       } else {
@@ -322,7 +322,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
       }
 
 
-      $opt = "comments_mod = '".$mod."' AND comments_fid = " . $com_fid;
+      $opt = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = " . (int)$com_fid;
       $count_com = cs_sql_count(__FILE__,'comments',$opt);
       $data['prev']['count_com'] = ($count_com + 1);
       $data['prev']['date'] = cs_date('unix',cs_time(),1);
@@ -351,13 +351,13 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
       echo cs_subtemplate(__FILE__,$data,'comments','com_create');
 
       require_once('mods/comments/functions.php');
-      $com_where = "comments_mod = '".$mod."' AND comments_fid = ".$com_fid;
+      $com_where = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = " . (int)$com_fid;
       $count = cs_sql_count(__FILE__,'comments',$com_where);
       cs_comments_view($com_fid,$mod,'com_create',$count,false,5);
 
     }
     elseif(empty($quote_id)) {
-      $opt = "comments_mod = '" . $mod . "' AND comments_fid = " . $com_fid;
+      $opt = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = " . (int)$com_fid;
       $count_com = cs_sql_count(__FILE__,'comments',$opt);
       $start = floor($count_com / $account['users_limit']) * $account['users_limit'];
 
@@ -390,7 +390,7 @@ function cs_comments_edit($mod,$action,$com_id,$mod_name,$more = 'id') {
   $guestnick = '';
 
   $cells = 'users_id, comments_text, comments_time, comments_fid, comments_edit, comments_guestnick';
-  $cs_comments = cs_sql_select(__FILE__,'comments',$cells,"comments_id = " . $com_id);
+  $cs_comments = cs_sql_select(__FILE__,'comments',$cells,"comments_id = " . (int)$com_id);
   $com_fid = $cs_comments['comments_fid'];
 
   if ($account['access_comments'] >= 4 OR $account['users_id'] == $cs_comments['users_id']) {
@@ -442,7 +442,7 @@ function cs_comments_edit($mod,$action,$com_id,$mod_name,$more = 'id') {
       $data['if']['preview'] = true;
       $userid = $account['users_id'];
       $select = 'users_nick, users_laston, users_place, users_country, users_active, users_invisible, users_delete';
-      $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = " . $userid);
+      $cs_user = cs_sql_select(__FILE__,'users',$select,"users_id = " . (int)$userid);
 
       if(empty($cs_comments['users_id'])) {
         $data['if']['guest_prev'] = TRUE;
@@ -468,7 +468,7 @@ function cs_comments_edit($mod,$action,$com_id,$mod_name,$more = 'id') {
         $data['prev']['posts'] = $count_com[$userid];
       }
 
-      $opt = "comments_mod = '".$mod."' AND comments_fid = " . $com_fid;
+      $opt = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = " . (int)$com_fid;
       $count_com = cs_sql_count(__FILE__,'comments',$opt);
       $data['prev']['count_com'] = ($count_com + 1);
       $data['prev']['date'] = cs_date('unix',cs_time(),1);
@@ -492,7 +492,7 @@ function cs_comments_edit($mod,$action,$com_id,$mod_name,$more = 'id') {
       echo cs_subtemplate(__FILE__,$data,'comments','com_edit');
     }
     else {
-      $opt = "comments_mod = '" . $mod . "' AND comments_fid = " . $com_fid;
+      $opt = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = " . (int)$com_fid;
       $opt .= " AND comments_id <= '" . $com_id . "'";
       $count_com = cs_sql_count(__FILE__,'comments',$opt);
       $start = floor($count_com / $account['users_limit']) * $account['users_limit'];
@@ -531,9 +531,9 @@ function cs_comments_remove($mod,$action,$com_id,$mod_name,$more = 'id') {
   $data['head']['mod'] = $mod_name;
 
   $cells = 'comments_fid, comments_id';
-  $cs_comments = cs_sql_select(__FILE__,'comments',$cells,"comments_id = " . $com_id);
+  $cs_comments = cs_sql_select(__FILE__,'comments',$cells,"comments_id = " . (int)$com_id);
   $com_fid = $cs_comments['comments_fid'];
-  $where = "comments_id > '" . $com_id . "' AND comments_fid = " . $com_fid;
+  $where = "comments_id > '" . $com_id . "' AND comments_fid = " . (int)$com_fid;
   $where .= " AND comments_mod = '" . $mod . "'";
   $before = cs_sql_count(__FILE__,'comments',$where);
   $start = floor($before / $account['users_limit']) * $account['users_limit'];

@@ -19,19 +19,19 @@ $check_pw = 1;
 $from = 'threads thr INNER JOIN {pre}_board frm ON thr.board_id = frm.board_id ';
 $from .= 'INNER JOIN {pre}_categories cat ON frm.categories_id = cat.categories_id';
 $select = 'thr.threads_headline AS threads_headline, frm.board_name AS board_name, cat.categories_name AS categories_name, thr.users_id AS users_id, thr.threads_id AS threads_id, thr.threads_edit AS threads_edit, frm.board_id AS board_id, frm.board_pwd AS board_pwd, frm.board_access AS board_access, cat.categories_id AS categories_id, frm.squads_id AS squads_id';
-$where = "thr.threads_id = " . $thread_id;
+$where = "thr.threads_id = " . (int)$thread_id;
 $board = cs_sql_select(__FILE__,$from,$select,$where);
 
-$thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_edit',"users_id = " . $account['users_id'],0,0,1);
+$thread_mods = cs_sql_select(__FILE__,'boardmods','boardmods_edit',"users_id = " . (int)$account['users_id'],0,0,1);
 
 //Sicherheitsabfrage Beginn
 if(!empty($board['board_pwd'])) {
-  $where = 'users_id = ' . $account['users_id'] . ' AND board_id = ' . $board['board_id'];
+  $where = 'users_id = ' . (int)$account['users_id'] . ' AND board_id = ' . (int)$board['board_id'];
   $check_pw = cs_sql_count(__FILE__,'boardpws',$where);
 }
 
 if(!empty($board['squads_id'])) {
-  $where = "squads_id = " . $board['squads_id'] . " AND users_id = " .$account['users_id'];
+  $where = "squads_id = " . (int)$board['squads_id'] . " AND users_id = " . (int)$account['users_id'];
   $check_sq = cs_sql_count(__FILE__,'members',$where);
 }
 //secure check
@@ -59,7 +59,7 @@ $data['head']['boardlinks'] = $head;
 
 $thread_error = 2;
 $thread_form = 1;
-$thread_edit = cs_sql_select($file,'threads','*',"threads_id = " . $thread_id);
+$thread_edit = cs_sql_select($file,'threads','*',"threads_id = " . (int)$thread_id);
 $board['threads_headline'] = $thread_edit['threads_headline'];
 $board['threads_text'] = $thread_edit['threads_text'];
 $thread_time = $thread_edit['threads_time'];
@@ -104,7 +104,7 @@ $check = cs_sql_count(__FILE__,'boardfiles','threads_id =' . $thread_id . ' AND 
 if(!empty($check) AND empty($_POST)) {
   $from = 'boardfiles';
   $select = 'boardfiles_id, threads_id, users_id, boardfiles_name';
-  $where = "threads_id = " . $thread_id . " AND comments_id = 0";
+  $where = "threads_id = " . (int)$thread_id . " AND comments_id = 0";
   $cs_boardfiles = cs_sql_select(__FILE__,$from,$select,$where,'','','');
   $run_loop_files = count($cs_boardfiles);
   $files = '1';
