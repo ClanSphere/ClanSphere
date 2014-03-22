@@ -80,7 +80,7 @@ for ($run_1 = 0; $run_1 < $count_categories; $run_1++) {
 
       $check_pw = 1;
       if (!empty($board['board_pwd'])) {
-        $pw_where = 'users_id = "' . $account['users_id'] . '" AND board_id = "' . $board['board_id'] . '"';
+        $pw_where = 'users_id = ' . $account['users_id'] . ' AND board_id = ' . $board['board_id'];
         $check_pw = cs_sql_count(__FILE__, 'boardpws', $pw_where);
       }
 

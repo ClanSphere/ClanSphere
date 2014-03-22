@@ -92,7 +92,7 @@ else {
   $cs_clans['clans_pwd'] = '';
 
   if(!empty($_GET['fightus'])) {
-    $fightus_where = "fightus_id = '" . cs_sql_escape($_GET['fightus']) . "'";
+    $fightus_where = "fightus_id = " . cs_sql_escape($_GET['fightus']);
     $cs_fightus = cs_sql_select(__FILE__,'fightus','*',$fightus_where);
     if(!empty($cs_fightus)) {
         $cs_clans['clans_name'] = $cs_fightus['fightus_clan'];
