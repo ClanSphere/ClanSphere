@@ -1,6 +1,15 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2011.4.4 >> 2014-03-XX
+___________________________________________________________
+
+-> Fixed cache problems with multiple theme usage (patch by github.com/testerjoe)
+-> Fixed GET and REQUEST data handling for 'id' and 'sort' (jam2)
+-> Fixed SQL incompatibilities with PostgreSQL (pull request by github.com/tbe)
+   Updated with fixes and enhancements (hajo)
+
+
 ClanSphere 2011.4.3 >> 2013-12-06
 ___________________________________________________________
 
