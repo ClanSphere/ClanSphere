@@ -213,3 +213,13 @@ input, textarea, select {
   top:50%;
   right:50%;
 }
+
+/* Right identation of lists in content */
+#content ol{
+	margin-left: 18px;
+}
+
+#content ul li{
+	list-style: disc;
+	margin-left: 14px;
+}
