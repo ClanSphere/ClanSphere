@@ -82,7 +82,11 @@ else {
   $report_cells = array('threads_id', 'comments_id', 'users_id', 'boardreport_time', 'boardreport_text');
   $report_save = array($tid, $cid, $account['users_id'], cs_time(), $report);
   cs_sql_insert(__FILE__,'boardreport',$report_cells,$report_save);
+  
+  cs_cache_delete('count_boardreport');
+  
   require_once('mods/notifymods/functions.php');
+  
   $users_nick = cs_sql_select(__FILE__,'users','users_nick','users_id = ' . $account['users_id']);
   notifymods_mail('board', $account['users_id'], array($users_nick['users_nick'], $cs_thread['threads_headline'], $report));
   cs_redirect($cs_lang['report_success'], 'board', 'thread', 'where=' . $tid);

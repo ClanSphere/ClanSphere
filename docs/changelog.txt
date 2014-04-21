@@ -1,12 +1,13 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4.4 >> 2014-03-XX
+ClanSphere 2011.4.4 >> 2014-04-XX
 ___________________________________________________________
 
+-> Added boardreports count to users navlogin view (hajo)
 -> Fixed cache problems with multiple theme usage (patch by github.com/testerjoe)
 -> Fixed GET and REQUEST data handling for 'id' and 'sort' (jam2)
--> Fixed SQL incompatibilities with PostgreSQL (pull request by github.com/tbe)
+-> Fixed SQL incompatibilities with PostgreSQL (patch by github.com/tbe)
    Updated with fixes and enhancements (hajo)
 
 

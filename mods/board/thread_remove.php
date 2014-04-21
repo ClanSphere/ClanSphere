@@ -97,6 +97,8 @@ if(isset($_POST['agree'])) {
   # Remove attached boardreports if there are any
   cs_sql_delete(__FILE__, 'boardreport', $thread_id, 'threads_id');
   
+  cs_cache_delete('count_boardreport');
+  
   cs_redirect($cs_lang['del_true'],'board','listcat','where='.$cs_thread['board_id']);
 }
 

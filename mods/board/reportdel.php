@@ -8,6 +8,8 @@ $report_id = $_GET['id'];
 if(isset($_GET['agree'])) {
 
   cs_sql_delete(__FILE__,'boardreport',$report_id);
+  
+  cs_cache_delete('count_boardreport');
 
   cs_redirect($cs_lang['del_true'],'board','reportlist');
 }

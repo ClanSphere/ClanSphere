@@ -86,6 +86,7 @@ if(isset($_POST['agree'])) {
   
   # Remove attached boardreport if there is one
   cs_sql_delete(__FILE__, 'boardreport', $comments_id, 'comments_id');
+  cs_cache_delete('count_boardreport');
 
   $more = 'where=' . $com_fid . '&amp;start=' . $start;
 
