@@ -6,7 +6,7 @@ $cs_lang = cs_translate('static');
 
 $cs_option = cs_sql_option(__FILE__, 'static');
 
-$static_id = (int) $_GET['id'];
+$static_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $where = "static_id = '" . $static_id . "' AND static_access <= '" . $account['access_static'] . "'";
 $cells = 'static_title, static_text, static_table, static_admins, static_comments';
