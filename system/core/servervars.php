@@ -60,10 +60,10 @@ if ($port !== FALSE)
 $cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => $cs_main['php_self']['dirname'], 'domain' => $domain);
 
 # set some request and get data to integer for backwards compatibility with old modules
-if(isset($_GET['id']))       settype($_GET['id'],'integer');
-if(isset($_REQUEST['id']))   settype($_REQUEST['id'],'integer');
-if(isset($_GET['sort']))     settype($_GET['sort'],'integer');
-if(isset($_REQUEST['sort'])) settype($_REQUEST['sort'],'integer');
+settype($_GET['id'],'integer');
+settype($_REQUEST['id'],'integer');
+settype($_GET['sort'],'integer');
+settype($_REQUEST['sort'],'integer');
 # preserved for navlogin functionality
 unset($_GET['style']);
 
