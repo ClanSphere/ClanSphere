@@ -1,6 +1,14 @@
 CHANGELOG
 --------------------------
 
+ClanSphere 2011.4.4 R2 >> 2014-05-04
+___________________________________________________________
+
+-> Fixed SQL errors regarding comments_mod (hajo)
+-> Reverted change for 'id' and 'sort' GET and REQUEST behaviour (hajo)
+   Too many (older) modules depend on those settings
+
+
 ClanSphere 2011.4.4 >> 2014-04-21
 ___________________________________________________________
 
