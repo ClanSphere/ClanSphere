@@ -52,8 +52,10 @@ else {
   }
 
   $data['users']['link'] = cs_user($account['users_id'], $account['users_nick']);
-
-  $data['if']['panel'] = ($cs_main['def_admin'] == 'separated' AND $cs_main['tpl_file'] != 'admin.htm') ? 1 : 0;
+  
+  $active_panel = ($cs_main['def_admin'] == 'separated' AND $cs_main['tpl_file'] != 'admin.htm');
+  $data['if']['panel'] = ($active_panel AND $account['access_clansphere'] >= 3) ? 1 : 0;
+  
   $data['if']['messages'] = $account['access_messages'] >= 2 ? 1 : 0;
   $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
   $data['if']['joinus'] = (empty($data['if']['panel']) AND $account['access_joinus'] >= 3) ? 1 : 0;
@@ -68,25 +70,25 @@ else {
     $data['messages']['new'] = $messages_count_new;
   }
 
-  if(empty($data['if']['panel']) AND $account['access_contact'] >= 3) {
+  if(!$active_panel AND $account['access_contact'] >= 3) {
     $data['contact']['new'] = cs_cache_load('count_mail_unread');
     if($data['contact']['new'] === false)
       $data['contact']['new'] = cs_cache_save('count_mail_unread', (int) cs_sql_count(__FILE__,'mail','mail_answered = 0'));
   }
 
-  if(empty($data['if']['panel']) AND $account['access_joinus'] >= 3) {
+  if(!$active_panel AND $account['access_joinus'] >= 3) {
     $data['joinus']['joinus_count'] = cs_cache_load('count_joinus');
     if($data['joinus']['joinus_count'] === false)
       $data['joinus']['joinus_count'] = cs_cache_save('count_joinus', (int) cs_sql_count(__FILE__,'joinus'));
   }
 
-  if(empty($data['if']['panel']) AND $account['access_fightus'] >= 3) {
+  if(!$active_panel AND $account['access_fightus'] >= 3) {
     $data['fightus']['fightus_count'] = cs_cache_load('count_fightus');
     if($data['fightus']['fightus_count'] === false)
       $data['fightus']['fightus_count'] = cs_cache_save('count_fightus', (int) cs_sql_count(__FILE__,'fightus'));
   }
 
-  if(!empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) {
+  if($active_panel AND $account['access_clansphere'] >= 3) {
     $data['link']['panel'] = cs_url('clansphere', 'admin', '', 'admin');
   }
 
