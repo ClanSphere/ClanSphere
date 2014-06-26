@@ -133,7 +133,7 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
 
   settype($com_fid,'integer');
   settype($close,'integer');
-  $where = "comments_mod = " . cs_sql_escape($mod) . " AND comments_fid = " . (int)$com_fid;
+  $where = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = " . (int)$com_fid;
   $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_ip',$where,'comments_id DESC');
 
   $ip = cs_getip();
@@ -218,7 +218,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
 
       $text = $_POST['comments_text'];
 
-      $find = "comments_mod = " . cs_sql_escape($mod) . " AND comments_fid = " . (int)$com_fid;
+      $find = "comments_mod = '" . cs_sql_escape($mod) . "' AND comments_fid = " . (int)$com_fid;
       $last_from = cs_sql_select(__FILE__,'comments','users_id, comments_ip',$find,'comments_id DESC');
 
       $ip = cs_getip();

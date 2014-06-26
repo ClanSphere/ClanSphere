@@ -20,6 +20,7 @@ $cs_lang['register'] = 'Register';
 $cs_lang['sendpw'] = 'Send password';
 $cs_lang['system'] = 'System';
 $cs_lang['panel'] = 'Administration';
+$cs_lang['boardreports'] = 'Boardreports';
 
 // Manage
 $cs_lang['new_user']  = 'New User';

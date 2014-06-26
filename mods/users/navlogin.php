@@ -60,6 +60,7 @@ else {
   $data['if']['contact'] = (empty($data['if']['panel']) AND $account['access_contact'] >= 3) ? 1 : 0;
   $data['if']['joinus'] = (empty($data['if']['panel']) AND $account['access_joinus'] >= 3) ? 1 : 0;
   $data['if']['fightus'] = (empty($data['if']['panel']) AND $account['access_fightus'] >= 3) ? 1 : 0;
+  $data['if']['boardreport'] = (empty($data['if']['panel']) AND $account['access_board'] >= 4) ? 1 : 0;
   $data['if']['admin'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 3) ? 1 : 0;
   $data['if']['system'] = (empty($data['if']['panel']) AND $account['access_clansphere'] >= 4) ? 1 : 0;
   $data['if']['more'] = (empty($data['if']['contact']) AND empty($data['if']['admin']) AND empty($data['if']['panel'])) ? 0 : 1;
@@ -86,6 +87,12 @@ else {
     $data['fightus']['fightus_count'] = cs_cache_load('count_fightus');
     if($data['fightus']['fightus_count'] === false)
       $data['fightus']['fightus_count'] = cs_cache_save('count_fightus', (int) cs_sql_count(__FILE__,'fightus'));
+  }
+
+  if(!$active_panel AND $account['access_board'] >= 4) {
+    $data['boardreport']['boardreport_count'] = cs_cache_load('count_boardreport');
+    if($data['boardreport']['boardreport_count'] === false)
+      $data['boardreport']['boardreport_count'] = cs_cache_save('count_boardreport', (int) cs_sql_count(__FILE__,'boardreport', 'boardreport_done = 0'));
   }
 
   if($active_panel AND $account['access_clansphere'] >= 3) {

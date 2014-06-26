@@ -9,7 +9,13 @@ $data = array();
 $error = 0;
 $errormsg = '';
 
-$id = isset($_POST['id']) ? $_POST['id'] : $_GET['id'];
+$id = isset($_POST['id']) ? $_POST['id'] : 0;
+
+if (empty($id)) {
+
+  $id = isset($_GET['id']) ? $_GET['id'] : 0;
+}
+
 settype($id,'integer');
 
 $captcha = 0;

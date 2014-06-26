@@ -1,12 +1,22 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4.4 >> 2014-03-XX
+ClanSphere 2011.4.4 R2 >> 2014-05-04
 ___________________________________________________________
 
+-> Fixed SQL errors regarding comments_mod (hajo)
+-> Reverted change for 'id' and 'sort' GET and REQUEST behaviour (hajo)
+   Too many (older) modules depend on those settings
+
+
+ClanSphere 2011.4.4 >> 2014-04-21
+___________________________________________________________
+
+-> Added boardreports count to users navlogin view (hajo)
 -> Fixed cache problems with multiple theme usage (patch by github.com/testerjoe)
 -> Fixed GET and REQUEST data handling for 'id' and 'sort' (jam2)
--> Fixed SQL incompatibilities with PostgreSQL (pull request by github.com/tbe)
+-> Fixed HTML lists not indented correctly (tom08)
+-> Fixed SQL incompatibilities with PostgreSQL (patch by github.com/tbe)
    Updated with fixes and enhancements (hajo)
 
 

@@ -236,7 +236,7 @@ if($account['access_board'] < $data['thread']['board_access'] AND empty($check_s
         $data['if']['vote_result'] = true;
 
         $select = 'voted_id, users_id, voted_ip, voted_answer';
-        $where = "voted_fid = (int)$id AND voted_mod = 'board'";
+        $where = 'voted_fid = ' . (int)$id . " AND voted_mod = 'board'";
         $cs_voted = cs_sql_select(__FILE__,'voted',$select,$where,'','0','0');
         $voted_loop = count($cs_voted);
         $temp = explode("\n", $cs_thread_votes['boardvotes_election']);

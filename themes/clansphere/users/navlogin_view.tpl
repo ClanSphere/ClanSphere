@@ -14,6 +14,9 @@
   		{if:fightus}
 		<li><a href="{url:fightus_manage}">{lang:fightus}</a> ({fightus:fightus_count})</li>
 		{stop:fightus}
+        {if:boardreport}
+        <li><a href="{url:board_reportlist}">{lang:boardreports}</a> ({boardreport:boardreport_count})</li>
+        {stop:boardreport}
   		{if:admin}
 		<li><a href="{url:clansphere_admin}">{lang:admin}</a></li>
 		{stop:admin}
