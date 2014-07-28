@@ -4,6 +4,7 @@
 
 $cs_lang = cs_translate('contact');
 
+require_once('mods/captcha/functions.php');
 $captcha = extension_loaded('gd') ? 1 : 0;
 $data = array();
 $error = 0;
@@ -47,7 +48,7 @@ $mail['categories_id'] = empty($_POST['categories_id']) ? '' : $_POST['categorie
 if(isset($_POST['submit'])) {
   
   if(empty($account['users_id'])) {
-    if (!cs_captchacheck($_POST['captcha'])) {
+    if (!cs_captchaverify()) {
       $error++;
       $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
     }
@@ -137,6 +138,6 @@ else {
   cs_mail($cs_contact['def_mail'],$mail['why'],$message,$mail['email']);
 }
 
-$data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+$data['captcha']['img'] = cs_captchashow();
 
 echo cs_subtemplate(__FILE__,$data,'contact','mail');

@@ -123,6 +123,7 @@ function cs_comments_view($com_fid,$mod,$action,$sum,$asc = true,$limit = 0) {
 function cs_comments_add($com_fid,$mod,$close = 0) {
 
   $cs_lang = cs_translate('comments');
+  require_once('mods/captcha/functions.php');
 
   global $account;
   $cs_abcode = cs_sql_option(__FILE__,'abcode');
@@ -166,7 +167,7 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
       $data['if']['guest'] = TRUE;
       if(extension_loaded('gd')) {
         $data['if']['captcha'] = TRUE;
-        $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+        $data['captcha']['img'] = cs_captchashow();
       }
     }
 
@@ -183,6 +184,7 @@ function cs_comments_add($com_fid,$mod,$close = 0) {
 function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 0,$more = 'id') {
 
   $cs_lang = cs_translate('comments');
+  require_once('mods/captcha/functions.php');
 
   global $account, $cs_main;
 
@@ -242,7 +244,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
             $error .= $cs_lang['nick_exists'] . cs_html_br(1);
           }
         }
-        if (!cs_captchacheck($_POST['captcha'])) {
+        if (!cs_captchaverify()) {
           $error .= $cs_lang['captcha_false'] . cs_html_br(1);
         }
         if($ip == $last_from['comments_ip']) {
@@ -342,7 +344,7 @@ function cs_commments_create($com_fid,$mod,$action,$quote_id,$mod_name,$close = 
         $data['com']['guestnick'] = $guestnick;
         if(extension_loaded('gd')) {
           $data['if']['captcha'] = TRUE;
-          $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+          $data['captcha']['img'] = cs_captchashow();
         }
       }
       $data['com']['text'] = $text;

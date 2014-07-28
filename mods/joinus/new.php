@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('joinus');
+require_once('mods/captcha/functions.php');
 
 include_once('lang/' . $account['users_lang'] . '/countries.php');
 
@@ -174,7 +175,7 @@ if(isset($_POST['submit'])) {
     $errormsg .= sprintf($cs_lang['flood_on'], $diff);
   }
   if(empty($account['users_id'])) {
-    if (!cs_captchacheck($_POST['captcha'])) {
+    if (!cs_captchaverify()) {
       $error++;
       $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
     }
@@ -277,7 +278,7 @@ if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit'])))
   $data['rules']['link'] = cs_html_link(cs_url('rules','list'),$cs_lang['rules']);
   $data['joinus']['rules_selected'] = !empty($data2['join']['joinus_rules']) ? 'checked="checked"' : '';
   if(!empty($captcha)) {
-          $data['join']['captcha_img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+          $data['join']['captcha_img'] = cs_captchashow();
           $data['if']['captcha'] = 1;
   }
 

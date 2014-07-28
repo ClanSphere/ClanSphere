@@ -8,6 +8,7 @@ $op_users = cs_sql_option(__FILE__,'users');
 $cs_contact = cs_sql_option(__FILE__, 'contact');
 
 require_once('mods/users/functions.php');
+require_once('mods/captcha/functions.php');
 
 $data = array();
 
@@ -82,7 +83,7 @@ if(empty($op_users['register'])) {
   }
 
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
-      if(!cs_captchacheck($_POST['captcha'])) {
+      if(!cs_captchaverify()) {
         $error++;
         $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
       }
@@ -134,7 +135,7 @@ if(empty($op_users['register'])) {
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {
     if(!empty($captcha)) {
       $data['if']['captcha'] = 1;
-      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+      $data['captcha']['img'] = cs_captchashow();
     }
   }
   if(empty($op_users['def_register']) OR $op_users['def_register'] == '2') {

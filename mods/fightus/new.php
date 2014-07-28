@@ -7,6 +7,7 @@ $cs_lang = cs_translate('fightus');
 $op_users = cs_sql_option(__FILE__,'users');
 
 include_once('lang/' . $account['users_lang'] . '/countries.php');
+require_once('mods/captcha/functions.php');
 
 $data = array();
 $data['head']['getmsg'] = cs_getmsg();
@@ -71,7 +72,7 @@ if(isset($_POST['submit'])) {
     $error .= sprintf($cs_lang['flood_on'], $diff);
   }
   if(empty($account['users_id'])) {
-    if (!cs_captchacheck($_POST['captcha'])) {
+    if (!cs_captchaverify()) {
         $error .= $cs_lang['captcha_false'] . cs_html_br(1);
     }
   }    
@@ -145,7 +146,7 @@ if(!empty($data['if']['form']) AND (!empty($error) OR !isset($_POST['submit'])))
 
   if(!empty($captcha)) {
     $data['if']['captcha'] = TRUE;
-    $data['fightus']['captcha_img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+    $data['fightus']['captcha_img'] = cs_captchashow();
   }
 }
 elseif(!empty($data['if']['form'])) {

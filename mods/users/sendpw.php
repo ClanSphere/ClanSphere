@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('users');
+require_once('mods/captcha/functions.php');
 
 $cs_contact = cs_sql_option(__FILE__, 'contact');
 
@@ -19,7 +20,7 @@ if(isset($_POST['submit'])) {
   $sendpw['email'] = $_POST['email'];
   $sendpw['email_send'] = empty($_POST['email_send']) ? 0 : 1;
   
-  if (empty($sendpw['email_send']) && !cs_captchacheck($_POST['captcha'])) {
+  if (empty($sendpw['email_send']) && !cs_captchaverify()) {
     $error++;
     $errormsg .= $cs_lang['captcha_false'] . cs_html_br(1);
   }
@@ -121,7 +122,7 @@ if(empty($success)) {
     $data['lang']['request'] = $cs_lang['request'];
     $data['lang']['reset'] = $cs_lang['reset'];
 
-    $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+    $data['captcha']['img'] = cs_captchashow();
 
     echo cs_subtemplate(__FILE__,$data,'users','sendpw_1');
   }

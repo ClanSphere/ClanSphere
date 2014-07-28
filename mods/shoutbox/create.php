@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('shoutbox');
+require_once('mods/captcha/functions.php');
 
 $captcha = extension_loaded('gd') ? 1 : 0;
 
@@ -38,7 +39,7 @@ if(isset($_POST['submit'])) {
     $error .= cs_html_br(1) . '- ' . sprintf($cs_lang['too_long'],$signs);
   }
   
-  if(empty($account['users_id']) && !cs_captchacheck($_POST['captcha'],1)) {
+  if(empty($account['users_id']) && !cs_captchaverify(1)) {
     $error .= cs_html_br(1) . ' ' . $cs_lang['captcha_false'] . cs_html_br(1);
   }
   
@@ -76,7 +77,7 @@ if(isset($_POST['submit'])) {
     $data['form']['message'] = cs_secure($cs_shout['shoutbox_text']);
     
     if(!empty($captcha) && empty($account['users_id'])) {
-      $data['form']['captcha'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time() . '&mini');
+      $data['form']['captcha'] = cs_captchashow();
       $data['form']['show'] = cs_subtemplate(__FILE__,$data,'shoutbox','captcha');
     } else {
       $data['form']['show'] = '';

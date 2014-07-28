@@ -46,7 +46,7 @@
   {if:captcha}
   <tr>
     <td class="leftc">{icon:lockoverlay} {lang:security_code} *</td>
-  <td class="leftb">{captcha:img}<input type="text" name="captcha" value="" maxlength="8" size="8" /></td>
+  <td class="leftb">{captcha:img}</td>
   </tr>
   {stop:captcha}
   <tr>

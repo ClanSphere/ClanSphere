@@ -85,8 +85,7 @@
   <tr>
     <td class="leftc">{icon:lockoverlay} {lang:security_code} *</td>
     <td class="leftb">
-      {fightus:captcha_img}<br />
-      <input type="text" name="captcha" value="" maxlength="8" size="8" />
+      {fightus:captcha_img}
     </td>
   </tr>
   {stop:captcha}

@@ -3,6 +3,7 @@
 // $Id$
 
 $cs_lang = cs_translate('gbook');
+require_once('mods/captcha/functions.php');
 
 $cs_post = cs_post('id,from');
 $cs_get = cs_get('id,from');
@@ -165,7 +166,7 @@ if(isset($_POST['submit']) OR isset($_POST['preview'])) {
     //captcha
 	if(empty($users_id) OR !empty($cs_options['captcha_users'])) {
 	
-		if (!cs_captchacheck($_POST['captcha'])) {
+		if (!cs_captchaverify()) {
 		  $g_error .= $cs_lang['captcha_false'] . cs_html_br(1);
 		}
 	}
@@ -229,7 +230,7 @@ if(!empty($g_error) OR !isset($_POST['submit']) OR isset($_POST['preview'])) {
   if(empty($users_id) OR !empty($cs_options['captcha_users'])) {
     
     if(!empty($captcha)) {
-      $data['captcha']['img'] = cs_html_img('mods/captcha/generate.php?time=' . cs_time());
+      $data['captcha']['img'] = cs_captchashow();
       $data['tpl']['captcha'] = cs_subtemplate(__FILE__,$data,'gbook','captcha');
     }
   }
