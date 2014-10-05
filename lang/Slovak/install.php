@@ -2,215 +2,215 @@
 
 // $Id$
 
-$cs_lang['mod_name']  = 'Inštalácia';
-$cs_lang['modtext']  = 'Inštalova ClanSphere';
+$cs_lang['mod_name']  = 'InÅ¡talÃ¡cia';
+$cs_lang['modtext']  = 'InÅ¡talovaÅ¥ ClanSphere';
 
 $cs_lang['head_list']  = 'Zoznam';
-$cs_lang['body_list']  = 'Vitaj v inštalácii ClanSphere!' . cs_html_br(2) . 'Prosím vyber jazyk:';
+$cs_lang['body_list']  = 'Vitaj vÂ inÅ¡talÃ¡cii ClanSphere!' . cs_html_br(2) . 'ProsÃ­m vyber jazyk:';
 
 $cs_lang['lang'] = 'Jazyk';
 
-$cs_lang['language_choose'] = 'Vıber jazyka';
-$cs_lang['install_check'] = 'Kontrola inštalácie';
+$cs_lang['language_choose'] = 'VÃ½ber jazyka';
+$cs_lang['install_check'] = 'Kontrola inÅ¡talÃ¡cie';
 $cs_lang['license'] = 'Licencia';
 $cs_lang['configuration'] = 'Nastavenie';
-$cs_lang['database'] = 'Databáza';
-$cs_lang['login'] = 'Prihlásenie';
+$cs_lang['database'] = 'DatabÃ¡za';
+$cs_lang['login'] = 'PrihlÃ¡senie';
 
-$cs_lang['this_is_compatible_check'] = 'Tu je kontrola, èi tvoj webserer podporuje ClanSphere.';
-$cs_lang['enough'] = 'Dos';
-$cs_lang['compatible_database'] = 'Kompatibilná databáza';
+$cs_lang['this_is_compatible_check'] = 'Tu je kontrola, Äi tvoj webserer podporuje ClanSphere.';
+$cs_lang['enough'] = 'DosÅ¥';
+$cs_lang['compatible_database'] = 'KompatibilnÃ¡ databÃ¡za';
 $cs_lang['change'] = 'Zmena';
 $cs_lang['create_admin_head'] = 'Vytvor webmaster';
-$cs_lang['last_check'] = 'Posledná kontrola';
+$cs_lang['last_check'] = 'PoslednÃ¡ kontrola';
 
 $cs_lang['check'] = 'Kontrola';
-$cs_lang['found'] = 'Našiel';
-$cs_lang['required'] = 'Poadovanı';
-$cs_lang['any']  = 'Hociktorı';
-$cs_lang['recommend'] = 'Odporúèanı';
+$cs_lang['found'] = 'NaÅ¡iel';
+$cs_lang['required'] = 'PoÅ¾adovanÃ½';
+$cs_lang['any']  = 'HociktorÃ½';
+$cs_lang['recommend'] = 'OdporÃºÄanÃ½';
 $cs_lang['php_mod']  = 'PHP Modul';
-$cs_lang['db_support']  = 'Podporované databázy';
+$cs_lang['db_support']  = 'PodporovanÃ© databÃ¡zy';
 $cs_lang['short_open_tag'] = 'Otvor PHP ako XML';
-$cs_lang['file_uploads'] = 'Nahraj súbory';
+$cs_lang['file_uploads'] = 'Nahraj sÃºbory';
 $cs_lang['reg_global'] = 'Registruj Globals';
-$cs_lang['magic_quotes'] = 'Špeciálne zámeny';
-$cs_lang['safe_mode'] = 'Šetriaci mód';
-$cs_lang['trans_sid'] = 'Transparentnı QQSessionID';
-$cs_lang['basedir_restriction'] = 'Základovı odresár obmedzenı';
-$cs_lang['allow_url_fopen'] = 'Povo¾ vzdialené súbory';
+$cs_lang['magic_quotes'] = 'Å peciÃ¡lne zÃ¡meny';
+$cs_lang['safe_mode'] = 'Å etriaci mÃ³d';
+$cs_lang['trans_sid'] = 'TransparentnÃ½ QQSessionID';
+$cs_lang['basedir_restriction'] = 'ZÃ¡kladovÃ½ odresÃ¡r obmedzenÃ½';
+$cs_lang['allow_url_fopen'] = 'PovoÄ¾ vzdialenÃ© sÃºbory';
 $cs_lang['allow_url_include'] = 'Allow remote include';
 $cs_lang['gd_extension'] = 'GD rozsah';
-$cs_lang['off']  = 'Vypnú';
-$cs_lang['on'] = 'Zapnú';
+$cs_lang['off']  = 'VypnÃºÅ¥';
+$cs_lang['on'] = 'ZapnÃºÅ¥';
 
-$cs_lang['check_perfect'] = 'Všetky nastavenia sú vporiadku, moete zaèa ClanSphere!';
-$cs_lang['check_ok'] = 'ClanSphere pôjde v tomto rozhraní, avšak niektoré nastavenia nie sú dostaèujúce.';
-$cs_lang['check_failed'] = 'Kvôli problémov zobrazenım vyššie nie je moné inštalova ClanSphere!';
+$cs_lang['check_perfect'] = 'VÅ¡etky nastavenia sÃº vporiadku, moÅ¾ete zaÄaÅ¥ ClanSphere!';
+$cs_lang['check_ok'] = 'ClanSphere pÃ´jde vÂ tomto rozhranÃ­, avÅ¡ak niektorÃ© nastavenia nie sÃº dostaÄujÃºce.';
+$cs_lang['check_failed'] = 'KvÃ´li problÃ©mov zobrazenÃ½m vyÅ¡Å¡ie nie je moÅ¾nÃ© inÅ¡talovaÅ¥ ClanSphere!';
 
 $cs_lang['head_complete']  = 'Koniec';
-$cs_lang['rem_install']  = '- Odstráò inštalaèné  súbory';
-$cs_lang['set_chmod']  = '- Nové práva pre odresáre (CHMOD)';
-$cs_lang['remove_file'] = 'Prosím odstráò manuálne súbor:';
-$cs_lang['err_chmod']  = 'Chyba: Prosím nstav práva pre adresár "uploads",';
-$cs_lang['err_chmod']  .= ' tak isto ako všetky pod adresáre manuálne na CHMOD 777';
+$cs_lang['rem_install']  = '- OdstrÃ¡Åˆ inÅ¡talaÄnÃ©  sÃºbory';
+$cs_lang['set_chmod']  = '- NovÃ© prÃ¡va pre odresÃ¡re (CHMOD)';
+$cs_lang['remove_file'] = 'ProsÃ­m odstrÃ¡Åˆ manuÃ¡lne sÃºbor:';
+$cs_lang['err_chmod']  = 'Chyba: ProsÃ­m nstav prÃ¡va pre adresÃ¡r "uploads",';
+$cs_lang['err_chmod']  .= ' tak isto ako vÅ¡etky pod adresÃ¡re manuÃ¡lne na CHMOD 777';
 
-$cs_lang['login']  = 'Prihlásenie';
+$cs_lang['login']  = 'PrihlÃ¡senie';
 
 $cs_lang['head_license']  = 'Licencia';
-$cs_lang['body_license']  = 'Sú poadované podmienky pre pouitie';
+$cs_lang['body_license']  = 'SÃº poÅ¾adovanÃ© podmienky pre pouÅ¾itie';
 
-$cs_lang['accept_done'] = 'Podmienky úspešne prijaté';
-$cs_lang['accept_license'] = 'Preèítané a akceptované';
+$cs_lang['accept_done'] = 'Podmienky ÃºspeÅ¡ne prijatÃ©';
+$cs_lang['accept_license'] = 'PreÄÃ­tanÃ© a akceptovanÃ©';
 $cs_lang['not_accepted'] = '- Akceptovali ste podmienky';
-$cs_lang['send'] = 'Posla';
+$cs_lang['send'] = 'PoslaÅ¥';
 
 $cs_lang['head_settings']  = 'Nastavenie';
-$cs_lang['body_settings']  = 'Vytváranie programového súboru pre portál';
+$cs_lang['body_settings']  = 'VytvÃ¡ranie programovÃ©ho sÃºboru pre portÃ¡l';
 
-$cs_lang['hash'] = 'Typ kódovania';
-$cs_lang['hash_info'] = 'Sha1 je odporúèaná';
-$cs_lang['type'] = 'Typ databázy';
-$cs_lang['type_info'] = 'Vo väèšine prípadov toto bude MySQL (mysql)';
-$cs_lang['subtype'] = 'Engine dfatabázového úloiska';
+$cs_lang['hash'] = 'Typ kÃ³dovania';
+$cs_lang['hash_info'] = 'Sha1 je odporÃºÄanÃ¡';
+$cs_lang['type'] = 'Typ databÃ¡zy';
+$cs_lang['type_info'] = 'Vo vÃ¤ÄÅ¡ine prÃ­padov toto bude MySQL (mysql)';
+$cs_lang['subtype'] = 'Engine dfatabÃ¡zovÃ©ho ÃºloÅ¾iska';
 $cs_lang['subtype_info'] = 'MySQL iba! Defaults to myisam if empty';
-$cs_lang['place'] = 'Umiestnenie databázy';
-$cs_lang['place_info'] = 'Vlo IP, DNS, alebo niè pre UNIX Domain Socket';
-$cs_lang['sqlite_info'] = 'Ak SQLite prosím vlo celú cestu k databázovım súborom.';
-$cs_lang['user'] = 'Pouívatel (Databáza)';
-$cs_lang['pwd'] = 'Heslo (Databáza)';
-$cs_lang['db_name'] = 'Názov databázy';
-$cs_lang['prefix'] = 'Predèíslie tabu¾ky';
+$cs_lang['place'] = 'Umiestnenie databÃ¡zy';
+$cs_lang['place_info'] = 'VloÅ¾ IP, DNS, alebo niÄ pre UNIX Domain Socket';
+$cs_lang['sqlite_info'] = 'Ak SQLite prosÃ­m vloÅ¾ celÃº cestu kÂ databÃ¡zovÃ½m sÃºborom.';
+$cs_lang['user'] = 'PouÅ¾Ã­vatel (DatabÃ¡za)';
+$cs_lang['pwd'] = 'Heslo (DatabÃ¡za)';
+$cs_lang['db_name'] = 'NÃ¡zov databÃ¡zy';
+$cs_lang['prefix'] = 'PredÄÃ­slie tabuÄ¾ky';
 $cs_lang['more'] = 'Viac';
-$cs_lang['save_actions'] = ' Záznam databázovıch poiadaviek.';
-$cs_lang['save_errors'] = ' Záznam benıch portálovıch chıb.';
-$cs_lang['charset'] = 'Znaková sada';
+$cs_lang['save_actions'] = ' ZÃ¡znam databÃ¡zovÃ½ch poÅ¾iadaviek.';
+$cs_lang['save_errors'] = ' ZÃ¡znam beÅ¾nÃ½ch portÃ¡lovÃ½ch chÃ½b.';
+$cs_lang['charset'] = 'ZnakovÃ¡ sada';
 
-$cs_lang['no_hash'] = '-  Typ kódovania musí by vybratı!';
-$cs_lang['no_type'] = '- Typ databázy musí by vybratı';
-$cs_lang['no_name'] = '- Meno nesmie by prázdne';
-$cs_lang['prefix_err'] = '- Prázne alebo nesprávne predèíslie. Špeciálne znakové sady nie sú prípustné!';
+$cs_lang['no_hash'] = '-  Typ kÃ³dovania musÃ­ byÅ¥ vybratÃ½!';
+$cs_lang['no_type'] = '- Typ databÃ¡zy musÃ­ byÅ¥ vybratÃ½';
+$cs_lang['no_name'] = '- Meno nesmie byÅ¥ prÃ¡zdne';
+$cs_lang['prefix_err'] = '- PrÃ¡zne alebo nesprÃ¡vne predÄÃ­slie. Å peciÃ¡lne znakovÃ© sady nie sÃº prÃ­pustnÃ©!';
 $cs_lang['db_err'] = '- DB chyba:';
-$cs_lang['file_err'] = '- Programové súbory nemôu by zapísané, pozri chmod!';
+$cs_lang['file_err'] = '- ProgramovÃ© sÃºbory nemÃ´Å¾u byÅ¥ zapÃ­sanÃ©, pozri chmod!';
 
-$cs_lang['save_file'] = 'Prosím skopíruj a vlo obsah súboru s názvom "setup.php" a umiestni ho do clansphere základného adresáru. Reštartuj inštaláciu!';
+$cs_lang['save_file'] = 'ProsÃ­m skopÃ­ruj aÂ vloÅ¾ obsah sÃºboru sÂ nÃ¡zvom "setup.php" aÂ umiestni ho do clansphere zÃ¡kladnÃ©ho adresÃ¡ru. ReÅ¡tartuj inÅ¡talÃ¡ciu!';
 
-$cs_lang['setup_exists'] = 'Existujúci programovı súbor nájdenı.';
-$cs_lang['inst_create_done'] = 'Databáza nájdená a programovı súbor vytvorrenı.';
+$cs_lang['setup_exists'] = 'ExistujÃºci programovÃ½ sÃºbor nÃ¡jdenÃ½.';
+$cs_lang['inst_create_done'] = 'DatabÃ¡za nÃ¡jdenÃ¡ aÂ programovÃ½ sÃºbor vytvorrenÃ½.';
 
-$cs_lang['head_sql']  = 'Databáza';
-$cs_lang['body_sql']  = 'Tabulky a prístupy spravené';
+$cs_lang['head_sql']  = 'DatabÃ¡za';
+$cs_lang['body_sql']  = 'Tabulky aÂ prÃ­stupy spravenÃ©';
 
-$cs_lang['create_admin']  = 'Vytvorenie úètu administrátora.';
+$cs_lang['create_admin']  = 'Vytvorenie ÃºÄtu administrÃ¡tora.';
 $cs_lang['nick']  = 'Nick';
 $cs_lang['email']  = 'Email';
 $cs_lang['password'] = 'Heslo';
-$cs_lang['admin_done'] = 'Administrátor úspešne vytvorenı';
+$cs_lang['admin_done'] = 'AdministrÃ¡tor ÃºspeÅ¡ne vytvorenÃ½';
 
-$cs_lang['short_nick'] = '- Vloenı nick je príliš krátky (min. 4)';
-$cs_lang['short_pwd'] = '- Vloené heslo je príliš krátke (min. 4)';
-$cs_lang['email_false'] = '- Vloená emailová adresa nie je platná';
+$cs_lang['short_nick'] = '- VloÅ¾enÃ½ nick je prÃ­liÅ¡ krÃ¡tky (min. 4)';
+$cs_lang['short_pwd'] = '- VloÅ¾enÃ© heslo je prÃ­liÅ¡ krÃ¡tke (min. 4)';
+$cs_lang['email_false'] = '- VloÅ¾enÃ¡ emailovÃ¡ adresa nie je platnÃ¡';
 
-$cs_lang['db_error'] = 'Chyba databázy';
-$cs_lang['remove_and_again'] = 'Odstráò inštalovanú èas a odstráò';
+$cs_lang['db_error'] = 'Chyba databÃ¡zy';
+$cs_lang['remove_and_again'] = 'OdstrÃ¡Åˆ inÅ¡talovanÃº ÄasÅ¥ a odstrÃ¡Åˆ';
 
-$cs_lang['guest']  = 'Hos';
-$cs_lang['community']  = 'Pouívate¾';
-$cs_lang['member']  = 'Èlen';
-$cs_lang['orga']  = 'Organizátor';
+$cs_lang['guest']  = 'HosÅ¥';
+$cs_lang['community']  = 'PouÅ¾Ã­vateÄ¾';
+$cs_lang['member']  = 'ÄŒlen';
+$cs_lang['orga']  = 'OrganizÃ¡tor';
 $cs_lang['admin']  = 'Webmaster';
 
 // Labels
-$cs_lang['show_groups_as'] = 'Uká skupiny ako';
+$cs_lang['show_groups_as'] = 'UkÃ¡Å¾ skupiny ako';
 
 $cs_lang['clan'] = 'Klan';
-$cs_lang['association'] = 'Drustvo';
+$cs_lang['association'] = 'DruÅ¾stvo';
 $cs_lang['club'] = 'Klub';
 $cs_lang['guild'] = 'Spolok';
 $cs_lang['enterprise'] = 'Podnik';
-$cs_lang['school'] = 'Škola';
+$cs_lang['school'] = 'Å kola';
 
-$cs_lang['show_subgroups_as'] = 'Uká podskupiny ako';
+$cs_lang['show_subgroups_as'] = 'UkÃ¡Å¾ podskupiny ako';
 
-$cs_lang['squads'] = 'Èata';
+$cs_lang['squads'] = 'ÄŒata';
 $cs_lang['groups'] = 'Skupiny';
 $cs_lang['sections'] = 'Sekcie';
-$cs_lang['teams'] = 'Tímy';
+$cs_lang['teams'] = 'TÃ­my';
 $cs_lang['class'] = 'Trieda';
 
-$cs_lang['show_members_as'] = 'Uká èlenov ako';
+$cs_lang['show_members_as'] = 'UkÃ¡Å¾ Älenov ako';
 
-$cs_lang['members'] = 'Èlenovia';
+$cs_lang['members'] = 'ÄŒlenovia';
 $cs_lang['employees'] = 'Zamestnanci';
-$cs_lang['teammates'] = 'Tímovı kolegovia';
-$cs_lang['classmates'] = 'Spoluiaci';
+$cs_lang['teammates'] = 'TÃ­movÃ½ kolegovia';
+$cs_lang['classmates'] = 'SpoluÅ¾iaci';
 
-$cs_lang['full_install'] = 'Inštalácia kompletná';
+$cs_lang['full_install'] = 'InÅ¡talÃ¡cia kompletnÃ¡';
 $cs_lang['module_select'] = 'Vyber moduly';
 
-$cs_lang['mark_all'] = 'Vyznaè všetky';
-$cs_lang['unmark_all'] = 'Odznaè všetky';
+$cs_lang['mark_all'] = 'VyznaÄ vÅ¡etky';
+$cs_lang['unmark_all'] = 'OdznaÄ vÅ¡etky';
 
-$cs_lang['database_modselect'] = 'Prosím vyber databázu &raquo; moduly';
-$cs_lang['select_module'] = 'Proísm vyber moduly ktoré budú inštalované';
-$cs_lang['sys_module'] = 'Systém modulov';
-$cs_lang['opt_module'] = 'Volite¾né moduly';
-$cs_lang['install'] = 'Inštaluj';
+$cs_lang['database_modselect'] = 'ProsÃ­m vyber databÃ¡zu &raquo; moduly';
+$cs_lang['select_module'] = 'ProÃ­sm vyber moduly ktorÃ© budÃº inÅ¡talovanÃ©';
+$cs_lang['sys_module'] = 'SystÃ©m modulov';
+$cs_lang['opt_module'] = 'VoliteÄ¾nÃ© moduly';
+$cs_lang['install'] = 'InÅ¡taluj';
 $cs_lang['abcode'] = 'Abcode';
-$cs_lang['access'] = 'Prístup';
-$cs_lang['article'] = 'Èlánky';
+$cs_lang['access'] = 'PrÃ­stup';
+$cs_lang['article'] = 'ÄŒlÃ¡nky';
 $cs_lang['awards'] = 'Vyznamenanie';
-$cs_lang['banner'] = 'Zástavy';
-$cs_lang['board'] = 'Tabu¾a';
+$cs_lang['banner'] = 'ZÃ¡stavy';
+$cs_lang['board'] = 'TabuÄ¾a';
 $cs_lang['boardmods'] = 'Boardmods';
 $cs_lang['boardranks'] = 'Boardranks';
-$cs_lang['buddys'] = 'Kámoši';
+$cs_lang['buddys'] = 'KÃ¡moÅ¡i';
 $cs_lang['captcha'] = 'Captcha';
 $cs_lang['cash'] = 'Peniaze';
-$cs_lang['categories'] = 'Kategórie';
+$cs_lang['categories'] = 'KategÃ³rie';
 $cs_lang['clans'] = 'Klany';
 $cs_lang['clansphere'] = 'ClanSphere';
-$cs_lang['comments'] = 'Komentáre';
-$cs_lang['computers'] = 'Poèítaèe';
+$cs_lang['comments'] = 'KomentÃ¡re';
+$cs_lang['computers'] = 'PoÄÃ­taÄe';
 $cs_lang['contact'] = 'Kontakt';
-$cs_lang['count'] = 'Poèítadlo';
+$cs_lang['count'] = 'PoÄÃ­tadlo';
 $cs_lang['errors'] = 'Chyby';
 $cs_lang['events'] = 'Udalosti';
 $cs_lang['explorer'] = 'Explorer';
 $cs_lang['faq'] = 'F.A.Q.';
 $cs_lang['ckeditor'] = 'WYSIWYG CKeditor';
 $cs_lang['fightus'] = 'Bojuj';
-$cs_lang['files'] = 'Súbory';
-$cs_lang['gallery'] = 'Galéria';
+$cs_lang['files'] = 'SÃºbory';
+$cs_lang['gallery'] = 'GalÃ©ria';
 $cs_lang['games'] = 'Hry';
-$cs_lang['gbook'] = 'Kniha návštev';
-$cs_lang['history'] = 'História';
+$cs_lang['gbook'] = 'Kniha nÃ¡vÅ¡tev';
+$cs_lang['history'] = 'HistÃ³ria';
 $cs_lang['joinus'] = 'Pripoj sa';
 $cs_lang['links'] = 'Linky';
 $cs_lang['linkus'] = 'Spoj sa s nami';
-$cs_lang['logs'] = 'Záznamy';
+$cs_lang['logs'] = 'ZÃ¡znamy';
 $cs_lang['maps'] = 'Mapy';
-$cs_lang['members'] = 'Èlenovia';
-$cs_lang['messages'] = 'Správy';
+$cs_lang['members'] = 'ÄŒlenovia';
+$cs_lang['messages'] = 'SprÃ¡vy';
 $cs_lang['modules'] = 'Moduly';
 $cs_lang['news'] = 'Novinky';
-$cs_lang['newsletter'] = 'Leták';
-$cs_lang['options'] = 'Monosti';
+$cs_lang['newsletter'] = 'LetÃ¡k';
+$cs_lang['options'] = 'MoÅ¾nosti';
 $cs_lang['partner'] = 'Partneri';
 $cs_lang['quotes'] = 'Ceny';
-$cs_lang['ranks'] = 'Úrovne';
-$cs_lang['replays'] = 'Záznamy';
-$cs_lang['rules'] = 'Pravidlá';
-$cs_lang['search'] = 'H¾ada';
+$cs_lang['ranks'] = 'Ãšrovne';
+$cs_lang['replays'] = 'ZÃ¡znamy';
+$cs_lang['rules'] = 'PravidlÃ¡';
+$cs_lang['search'] = 'HÄ¾adaÅ¥';
 $cs_lang['servers'] = 'Servery';
 $cs_lang['shoutbox'] = 'Shoutbox';
-$cs_lang['squads'] = 'Èaty';
-$cs_lang['static'] = 'Statc stránky';
-$cs_lang['updates'] = 'Aktualizácie';
-$cs_lang['users'] = 'Pouívatelia';
-$cs_lang['usersgallery'] = 'Galéria pouívate¾ov';
+$cs_lang['squads'] = 'ÄŒaty';
+$cs_lang['static'] = 'Statc strÃ¡nky';
+$cs_lang['updates'] = 'AktualizÃ¡cie';
+$cs_lang['users'] = 'PouÅ¾Ã­vatelia';
+$cs_lang['usersgallery'] = 'GalÃ©ria pouÅ¾Ã­vateÄ¾ov';
 $cs_lang['votes'] = 'Hlasy';
-$cs_lang['wars'] = 'Klanové vojny';
-$cs_lang['wizard'] = 'Inštalaènı prieskumník';
-$cs_lang['clansphere_core'] = 'ClanSphere základe';
+$cs_lang['wars'] = 'KlanovÃ© vojny';
+$cs_lang['wizard'] = 'InÅ¡talaÄnÃ½ prieskumnÃ­k';
+$cs_lang['clansphere_core'] = 'ClanSphere zÃ¡klade';
 $cs_lang['metatags'] = 'Metatagy';
