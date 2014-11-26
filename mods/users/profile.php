@@ -32,6 +32,12 @@ if(isset($_POST['submit'])) {
   $cs_user['users_mobile'] = $_POST['users_mobile'];
   $cs_user['users_info'] = $_POST['users_info'];
 
+  // Add fallback for msn
+  if (isset($_POST['users_msn'])) {
+    $hintJabber = 'The field users_msn was replaced by users_jabber. Please correct your themes!';
+    cs_error(__FILE__, $hintJabber);
+  }
+
   $hidden = array();
   $hidden_count = isset($_POST['hidden']) ? count($_POST['hidden']) : 0;
 

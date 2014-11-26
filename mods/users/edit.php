@@ -259,7 +259,16 @@ else {
     if($old_nick['users_nick'] != $cs_user['users_nick']) {
       change_nick($users_id, $old_nick['users_nick']);
     }
-    
+
+    $hintJabber = '';
+    // Add fallback for msn
+    if (isset($cs_user['users_msn']) && !isset($cs_user['users_jabber'])) {
+        $cs_user['users_jabber'] = $cs_user['users_msn'];
+        unset($cs_user['users_msn']);
+        $hintJabber = 'The field users_msn was replaced by users_jabber. Please correct your themes!';
+        cs_error(__FILE__, $hintJabber);
+        $hintJabber = '<br />' . $hintJabber;
+    }
     // DB update
     $users_cells = array_keys($cs_user);
     $users_save = array_values($cs_user);
@@ -268,6 +277,6 @@ else {
     cs_cache_delete('navbirth');
     cs_cache_delete('nextbirth');
 
-    cs_redirect($cs_lang['changes_done'], 'users');
+    cs_redirect($cs_lang['changes_done'] . $hintJabber, 'users');
   }
 }
