@@ -61,11 +61,12 @@ if(isset($_POST['submit'])) {
   if(empty($error) AND cs_upload('banners', $filename, $files['picture']['tmp_name']) OR !empty($error) AND extension_loaded('gd') AND cs_resample($files['picture']['tmp_name'], 'uploads/banners/' . $filename, $op_banners['max_width'], $op_banners['max_height'])) {
       $error = 0;
       $message = '';
-      
+
+      $filename = 'uploads/banners/' . $filename;
     if($cs_banners['banners_picture'] != $filename AND file_exists($cs_banners['banners_picture'])) {
         unlink($cs_banners['banners_picture']);
       }
-      $cs_banners['banners_picture'] = 'uploads/banners/' . $filename;
+      $cs_banners['banners_picture'] = $filename;
     }
     else {
       $message .= $cs_lang['up_error'];
