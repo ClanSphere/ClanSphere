@@ -7,6 +7,7 @@ ___________________________________________________________
 -> Added captcha switch (clansphere standard, recaptcha and are you a human) (jam2)
 -> Add id on events/navcal-Navlist (tom08)
 -> Add fallback for users_msn on users/edit and users/profile. Please update your custom themes! (tom08)
+-> Introduce a repository for languages (https://github.com/ClanSphere/Languages), with a Slovak Translation (thx to callus) (tom08)
 
 
 ClanSphere 2011.4.4 R2 >> 2014-05-04
