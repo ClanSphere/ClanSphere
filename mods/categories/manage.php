@@ -47,8 +47,9 @@ $data['sort']['name'] = cs_sort('categories','manage',$start,$where,1,$sort);
 $data['sort']['url'] = cs_sort('categories','manage',$start,$where,3,$sort);
 
 $select = 'categories_id, categories_name, categories_url, categories_subid';
-$data['cat'] = cs_sql_select(__FILE__,'categories',$select,$mdp,$order,$start,$account['users_limit']);
+$data['cat'] = cs_sql_select(__FILE__,'categories',$select,$mdp,$order,0,0);
 $data['cat'] = cs_catsort($data['cat']);
+$data['cat'] = array_slice($data['cat'], $start, $account['users_limit']);
 $categories_loop = !empty($data['cat']) ? count($data['cat']) : '';
 
 
