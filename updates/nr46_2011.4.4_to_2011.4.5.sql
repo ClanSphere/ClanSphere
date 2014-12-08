@@ -13,3 +13,4 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('ca
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha','areyouahuman_publisher_key','');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha','areyouahuman_lightbox','0');
 
+ALTER TABLE {pre}_account CHANGE account_iban account_iban VARCHAR( 43 ) NULL default NULL;

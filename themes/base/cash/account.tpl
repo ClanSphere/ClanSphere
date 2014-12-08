@@ -35,7 +35,7 @@
  </tr>
  <tr>
   <td class="leftc">{lang:iban}</td>
-  <td class="leftb"><input type="text" name="iban" size="25" maxlength="25"  value="{account:account_iban}" /></td>
+  <td class="leftb"><input type="text" name="iban" size="27" maxlength="43"  value="{account:account_iban}" /></td>
  </tr> 
  <tr>
   <td class="leftc">{lang:bic}</td>

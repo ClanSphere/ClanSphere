@@ -104,7 +104,7 @@ CREATE TABLE {pre}_account (
   account_number varchar(15) NOT NULL default '',
   account_bcn varchar(15) NOT NULL default '',
   account_bank varchar(40) NOT NULL default '',
-  account_iban varchar(25) NOT NULL default '',
+  account_iban varchar(43) NOT NULL default '',
   account_bic varchar(25) NOT NULL default '',
   PRIMARY KEY (account_id)
 ){engine};

@@ -9,7 +9,7 @@ ___________________________________________________________
 -> Add fallback for users_msn on users/edit and users/profile. Please update your custom themes! (tom08)
 -> Introduce a repository for languages (https://github.com/ClanSphere/Languages), with a Slovak Translation (thx to callus) (tom08)
 -> Fixed problem with directly removed new uploaded banner on edit if banner has same filetype as previous banner (tom08)
-
+-> IBAN field was too short, set length to 43 characters (tom08)
 
 ClanSphere 2011.4.4 R2 >> 2014-05-04
 ___________________________________________________________
