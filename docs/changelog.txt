@@ -1,7 +1,7 @@
 CHANGELOG
 --------------------------
 
-ClanSphere 2011.4.5 >> 2014-xx-xx
+ClanSphere 2011.4.5 >> 2014-12-09
 ___________________________________________________________
 
 -> Added captcha switch (clansphere standard, recaptcha and are you a human) (jam2)
