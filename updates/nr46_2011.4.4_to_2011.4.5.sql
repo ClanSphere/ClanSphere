@@ -1,5 +1,5 @@
 UPDATE {pre}_options SET options_value = '2011.4.5' WHERE options_mod = 'clansphere' AND options_name = 'version_name';
-UPDATE {pre}_options SET options_value = '2014-xx-xx' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
+UPDATE {pre}_options SET options_value = '2014-12-09' WHERE options_mod = 'clansphere' AND options_name = 'version_date';
 UPDATE {pre}_options SET options_value = '97' WHERE options_mod = 'clansphere' AND options_name = 'version_id';
 
 
