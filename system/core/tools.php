@@ -390,33 +390,33 @@ function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit
   $more = 'start=' . $last . $add_where . $add_sort;
   
   $theme = $cs_main["def_theme"];
-  $result = (empty($small) AND $actual != 1) ? cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => '&lt;')),'static','pages_link') : '';
+  $result = (empty($small) AND $actual != 1) ? cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => '&lt;')),'templates','pages_link') : '';
 
   $run = 0;
   while($maxpages > 0) {
     $run++;
     if($pages > 9 AND $maxpages == 6 AND $actual > 5) {
-	  $result .= cs_subtemplate($theme, Array("pages" => Array("text" => "...")),'static','pages_text');
+	  $result .= cs_subtemplate($theme, Array("pages" => Array("text" => "...")),'templates','pages_text');
       $run = $actual > $pages - 4 ? $pages - 5 : $actual - 1;
     }
     if($pages > 9 AND $maxpages == 3 AND ($actual + 4) < $pages) {
-	  $result .= cs_subtemplate($theme,Array("pages" => Array("text" => "...")),'static','pages_text');
+	  $result .= cs_subtemplate($theme,Array("pages" => Array("text" => "...")),'templates','pages_text');
       $run = $pages - 2;
     }
     if($run == $actual AND empty($small)) {
-      $result .= cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => $run, "class" => "active")),'static','pages_link');
+      $result .= cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => $run, "class" => "active")),'templates','pages_link');
     }
     else {
       $more = 'start=' . ($run - 1) * $limit . $add_where . $add_sort;
-      $result .= cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => $run)),'static','pages_link');
+      $result .= cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => $run)),'templates','pages_link');
     }
     $maxpages--;
   }
   $more = 'start=' . $next . $add_where . $add_sort;
-  $result .= (empty($small) AND $actual != $pages) ? cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => '&gt;')),'static','pages_link') : '';
+  $result .= (empty($small) AND $actual != $pages) ? cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => '&gt;')),'templates','pages_link') : '';
   
   $cs_lang = cs_translate($mod);
-  return cs_subtemplate($theme, Array("pages" => Array("title" => $cs_lang['page'], "list" => $result)), 'static', 'pages');
+  return cs_subtemplate($theme, Array("pages" => Array("title" => $cs_lang['page'], "list" => $result)), 'templates', 'pages');
 
 }
 
