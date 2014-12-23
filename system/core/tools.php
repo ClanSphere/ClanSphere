@@ -367,7 +367,7 @@ function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_
 
 function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit = 0, $small = 0, $more = 0) {
 
-  global $account;
+  global $account, $cs_main;
   settype($sort, 'integer');
   settype($start, 'integer');
   settype($limit, 'integer');
@@ -389,7 +389,7 @@ function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit
   $next = $actual >= $pages ? ($pages - 1) * $limit : $start + $limit;
   $more = 'start=' . $last . $add_where . $add_sort;
   
-  $theme = $GLOBALS["cs_main"]["def_theme"];
+  $theme = $cs_main["def_theme"];
   $result = (empty($small) AND $actual != 1) ? cs_subtemplate($theme, Array("pages" => Array("link" => cs_url($mod,$action,$more), "text" => '&lt;')),'static','pages_link') : '';
 
   $run = 0;
