@@ -24,13 +24,13 @@
 /templates/*
 /themes/*
 
-\!/templates/base/
-\!/templates/clansphere/
-\!/templates/index.html
+!/templates/base/
+!/templates/clansphere/
+!/templates/index.html
 
-\!/themes/base/
-\!/themes/clansphere/
-\!/themes/custom/
-\!/themes/.htaccess
-\!/themes/index.html
-\!/themes/web.config
+!/themes/base/
+!/themes/clansphere/
+!/themes/custom/
+!/themes/.htaccess
+!/themes/index.html
+!/themes/web.config
