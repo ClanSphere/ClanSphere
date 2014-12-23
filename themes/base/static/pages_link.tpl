@@ -1,0 +1,1 @@
+<a href="{pages:link}" class="{pages:class}">{pages:text}</a>
