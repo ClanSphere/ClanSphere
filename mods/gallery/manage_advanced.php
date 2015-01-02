@@ -152,7 +152,7 @@ if(isset($_POST['submit']))
         $levels++;
       }
 
-      $levels = 0;
+      $levels = 1;
       $data['show']['options'] = '';
       while($levels < 2)
       {
