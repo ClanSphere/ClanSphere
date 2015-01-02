@@ -131,7 +131,7 @@ else {
   }
 
   $data['users']['registered'] = cs_date('unix',$cs_user['users_register'],1);
-  $data['users']['laston'] = !empty($cs_users['users_invisible']) ? '--' : cs_date('unix',$cs_user['users_laston'],1);
+  $data['users']['laston'] = !empty($cs_user['users_invisible']) ? '--' : cs_date('unix',$cs_user['users_laston'],1);
 
   $content = cs_html_mail($cs_user['users_email']);
   if(in_array('users_email',$hidden)) {
