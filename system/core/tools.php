@@ -531,8 +531,10 @@ function cs_unlink($mod, $filename, $sub = '') {
       return FALSE;
     }
   }
-  else
+  else {
+    cs_error($target,'cs_unlink - Failed to remove the file because file doesn\'t exist');
     return FALSE;
+  }
 }
 
 function cs_upload($mod,$filename,$upname, $ajaxclean = 1) {
