@@ -24,6 +24,7 @@ if(isset($_POST['submit'])) {
   $cs_squads['squads_pwd'] = $_POST['squads_pwd'];
   $cs_squads['squads_fightus'] = empty($_POST['squads_fightus']) ? 0 : 1;
   $cs_squads['squads_joinus'] = empty($_POST['squads_joinus']) ? 0 : 1;
+  $cs_squads['squads_hidden'] = empty($_POST['squads_hidden']) ? 0 : 1;
   $cs_squads['squads_text'] = $_POST['squads_text'];
   
   $error = '';
@@ -75,6 +76,7 @@ else {
   $cs_squads['squads_pwd'] = '';
   $cs_squads['squads_fightus'] = 0;
   $cs_squads['squads_joinus'] = 0;
+  $cs_squads['squads_hidden'] = 0;
   $cs_squads['squads_text'] = '';
 }
 
@@ -98,8 +100,9 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $checked = 'checked="checked"';
   $data['squads']['own_check'] = empty($cs_squads['squads_own']) ? '' : $checked;
   
-   $data['squads']['joinus_check'] = empty($cs_squads['squads_joinus']) ? '' : $checked ;
-   $data['squads']['fightus_check'] = empty($cs_squads['squads_fightus']) ? '' : $checked ;
+  $data['squads']['joinus_check'] = empty($cs_squads['squads_joinus']) ? '' : $checked ;
+  $data['squads']['fightus_check'] = empty($cs_squads['squads_fightus']) ? '' : $checked ;
+  $data['squads']['squads_check'] = empty($cs_squads['squads_hidden']) ? '' : $checked;
    
   $data['lang']['clan_label'] = $cs_lang[$op_clans['label']];
   $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',0,'clans_name',0,0);

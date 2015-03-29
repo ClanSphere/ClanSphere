@@ -103,6 +103,7 @@ $cs_lang['more']  = 'More';
 $cs_lang['hidden'] = 'hide';
 $cs_lang['joinus'] = 'joinus';
 $cs_lang['fightus'] = 'fightus and wars';
+$cs_lang['squads_members'] = 'squads and members';
 
 $cs_lang['pic_infos'] = 'Informationbox';
 $cs_lang['max_width'] = 'Maximum width: ';

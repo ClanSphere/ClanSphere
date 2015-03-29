@@ -21,7 +21,7 @@ $data['if']['gamesmod'] = empty($account['access_games']) ? FALSE : TRUE;
 $img_filetypes = array('gif','jpg','png');
 
 $cells  = 'squads_id, clans_id, games_id, squads_name, squads_order, squads_pwd, squads_picture, ';
-$cells .= 'squads_own, squads_joinus, squads_fightus, squads_text';
+$cells .= 'squads_own, squads_joinus, squads_fightus, squads_text, squads_hidden';
 $cs_squads = cs_sql_select(__FILE__,'squads',$cells,'squads_id = "' . $squads_id . '"');
 
 
@@ -36,6 +36,7 @@ if(isset($_POST['submit'])) {
   $cs_squads['squads_picture'] = $_POST['squads_picture'];
   $cs_squads['squads_fightus'] = empty($_POST['squads_fightus']) ? 0 : 1;
   $cs_squads['squads_joinus'] = empty($_POST['squads_joinus']) ? 0 : 1;
+  $cs_squads['squads_hidden'] = empty($_POST['squads_hidden']) ? 0 : 1;
   $cs_squads['squads_text'] = $_POST['squads_text'];
   
   $error = '';
@@ -120,9 +121,11 @@ if(!empty($error) OR !isset($_POST['submit'])) {
   $data['lang']['own_label'] = $cs_lang['own_'.$op_clans['label']];
   $checked = 'checked="checked"';
   $data['squads']['own_check'] = empty($cs_squads['squads_own']) ? '' : $checked;
-  
-   $data['squads']['joinus_check'] = empty($cs_squads['squads_joinus']) ? '' : $checked ;
-   $data['squads']['fightus_check'] = empty($cs_squads['squads_fightus']) ? '' : $checked ;
+
+  $data['squads']['joinus_check'] = empty($cs_squads['squads_joinus']) ? '' : $checked ;
+  $data['squads']['fightus_check'] = empty($cs_squads['squads_fightus']) ? '' : $checked ;
+  $data['squads']['hidden_check'] = empty($cs_squads['squads_hidden']) ? '' : $checked ;
+
    
   $data['lang']['clan_label'] = $cs_lang[$op_clans['label']];
   $cs_clans = cs_sql_select(__FILE__,'clans','clans_name,clans_id',0,'clans_name',0,0);

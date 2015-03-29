@@ -8,7 +8,8 @@ $cs_lang = cs_translate('members');
 $op_members = cs_sql_option(__FILE__,'members');
 
 $squads_order = 'squads_order, squads_name';
-$cs_squads = cs_sql_select(__FILE__,'squads','*','squads_own = \'1\'',$squads_order,0,0);
+$where = 'squads_own = \'1\' AND squads_hidden = 0';
+$cs_squads = cs_sql_select(__FILE__,'squads','*',$where,$squads_order,0,0);
 $squads_loop = count($cs_squads);
 
 $data['lang']['mod_name'] = $cs_lang[$op_members['label']];

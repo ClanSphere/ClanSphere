@@ -20,7 +20,8 @@ $cs_sort[2] = 'sqd.squads_name ASC';
 $cs_sort[3] = 'cln.clans_name DESC';
 $cs_sort[4] = 'cln.clans_name ASC';
 $order = $cs_sort[$sort];
-$squads_count = cs_sql_count(__FILE__,'squads');
+$where = 'squads_hidden = 0';
+$squads_count = cs_sql_count(__FILE__,'squads', $where);
 
 
 $data['head']['mod'] = $cs_lang[$op_squads['label'].'s'];
@@ -35,7 +36,7 @@ $data['lang']['clans_label'] = $cs_lang[$op_clans['label']];
 $select = 'sqd.squads_name AS squads_name, sqd.clans_id AS clans_id, cln.clans_name AS ';
 $select .= 'clans_name, sqd.squads_id AS squads_id, sqd.games_id AS games_id';
 $from = 'squads sqd INNER JOIN {pre}_clans cln ON sqd.clans_id = cln.clans_id';
-$data['squads'] = cs_sql_select(__FILE__,$from,$select,0,$order,$start,$account['users_limit']);
+$data['squads'] = cs_sql_select(__FILE__,$from,$select,$where,$order,$start,$account['users_limit']);
 $squads_loop = count($data['squads']);
 
 
@@ -45,10 +46,8 @@ for($run=0; $run<$squads_loop; $run++) {
   if(file_exists('uploads/games/' . $data['squads'][$run]['games_id'] . '.gif')) {
      $data['squads'][$run]['games_img'] = cs_html_img('uploads/games/' . $data['squads'][$run]['games_id'] . '.gif');
   }
-   $data['squads'][$run]['squads_name'] = cs_secure($data['squads'][$run]['squads_name']);
-   $data['squads'][$run]['clans_name'] = cs_secure($data['squads'][$run]['clans_name']);
+  $data['squads'][$run]['squads_name'] = cs_secure($data['squads'][$run]['squads_name']);
+  $data['squads'][$run]['clans_name'] = cs_secure($data['squads'][$run]['clans_name']);
   $data['squads'][$run]['id'] = $data['squads'][$run]['squads_id'];
-  $data['squads'][$run]['clans_id'] = $data['squads'][$run]['clans_id'];
-  
 }
 echo cs_subtemplate(__FILE__,$data,'squads','list');

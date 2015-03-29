@@ -11,7 +11,8 @@ $tables = 'squads sq INNER JOIN {pre}_clans cln ON sq.clans_id = cln.clans_id';
 $cells  = 'sq.squads_id AS squads_id, sq.games_id AS games_id, sq.squads_name AS squads_name, ';
 $cells .= 'sq.clans_id AS clans_id, cln.clans_tagpos AS clans_tagpos, sq.squads_text AS squads_text, ';
 $cells .= 'cln.clans_tag AS clans_tag, sq.squads_picture AS squads_picture';
-$cs_squads = cs_sql_select(__FILE__,$tables,$cells,'squads_own = \'1\'','squads_order, squads_name',0,0);
+$where = 'squads_own = \'1\' AND squads_hidden = 0';
+$cs_squads = cs_sql_select(__FILE__,$tables,$cells,$where,'squads_order, squads_name',0,0);
 
 $squads_loop = count($cs_squads);
 $members_count = cs_sql_count(__FILE__,'members',0,'users_id');

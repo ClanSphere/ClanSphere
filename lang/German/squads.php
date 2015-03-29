@@ -103,6 +103,7 @@ $cs_lang['more']  = 'Erweitert';
 $cs_lang['hidden'] = 'Verstecken';
 $cs_lang['joinus'] = 'JoinUs';
 $cs_lang['fightus'] = 'FightUs und Wars';
+$cs_lang['squads_members'] = 'Squads/Mitglieder';
 
 $cs_lang['pic_infos'] = 'Infobox';
 $cs_lang['max_width'] = 'Maximale Breite: ';

@@ -1080,6 +1080,7 @@ CREATE TABLE {pre}_squads (
   squads_own int(2) NOT NULL default '0',
   squads_joinus int(2) NOT NULL default '0',
   squads_fightus int(2) NOT NULL default '0',
+  squads_hidden int(2) NOT NULL default '0',
   squads_text text,
   PRIMARY KEY (squads_id),
   UNIQUE (squads_name)
