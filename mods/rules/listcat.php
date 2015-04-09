@@ -11,7 +11,7 @@ $categories_id = empty($cs_get['id']) ? 0 : $cs_get['id'];
 $where = "categories_id = '" . $categories_id . "' AND categories_access <= '" . $account['access_rules'] . "'";
 $data['cat_data'] = cs_sql_select(__FILE__,'categories','categories_name, categories_text',$where,0,0);
 
-if(isset($data['cat_data']['name'])) {
+if(isset($data['cat_data']['categories_name'])) {
   $data['cat_data']['name'] = cs_secure($data['cat_data']['categories_name']);
   $data['cat_data']['text'] = cs_secure($data['cat_data']['categories_text'],1);
 }
