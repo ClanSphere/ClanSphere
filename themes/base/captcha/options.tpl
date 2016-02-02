@@ -28,19 +28,6 @@
           <td class="leftc">{icon:personal} {lang:recaptcha_privatekey}</td>
           <td class="leftb"><input type="text" name="recaptcha_private_key" value="{options:recaptcha_private_key}" maxlength="50" size="50" /></td>
       </tr>
-      <tr>
-          <td class="leftc">{icon:groupevent} {lang:areyouahuman_publisher_key}</td>
-          <td class="leftb"><input type="text" name="areyouahuman_publisher_key" value="{options:areyouahuman_publisher_key}" maxlength="50" size="50" /></td>
-          <td class="leftb" rowspan="3">{lang:areyouahuman_information}</td>
-      </tr>
-      <tr>
-          <td class="leftc">{icon:personal} {lang:areyouahuman_scoring_key}</td>
-          <td class="leftb"><input type="text" name="areyouahuman_scoring_key" value="{options:areyouahuman_scoring_key}" maxlength="50" size="50" /></td>
-      </tr>
-      <tr>
-          <td class="leftc">{icon:thumbnail} {lang:areyouahuman_lightbox}</td>
-          <td class="leftb"><input type="checkbox" name="areyouahuman_lightbox" value="1"{checked:areyouahuman_lightbox}/></td>
-      </tr>
      <tr>
        <td class="leftc">{icon:ksysguard} {lang:options}</td>
         <td class="leftb" colspan="2"><input type="submit" name="submit" value="{lang:edit}" /></td>

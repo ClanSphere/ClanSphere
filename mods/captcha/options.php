@@ -18,15 +18,8 @@ if(!empty($_POST['submit']))
   $option['method'] = in_array($_POST['method'], $available_captchas) ? $_POST['method'] : false;
   $option['recaptcha_public_key'] = empty($_POST['recaptcha_public_key']) ? null : $_POST['recaptcha_public_key'];
   $option['recaptcha_private_key'] = empty($_POST['recaptcha_private_key'])? null : $_POST['recaptcha_private_key'];
-  $option['areyouahuman_publisher_key'] = empty($_POST['areyouahuman_publisher_key']) ? null : $_POST['areyouahuman_publisher_key'];
-  $option['areyouahuman_scoring_key'] = empty($_POST['areyouahuman_scoring_key']) ? null : $_POST['areyouahuman_scoring_key'];
-  $option['areyouahuman_lightbox'] = empty($_POST['areyouahuman_lightbox']) ? '' : '1';
 
-  if(($option['method'] == 'recaptcha' AND (empty($option['recaptcha_public_key']) OR empty($option['recaptcha_private_key']))) OR $option['method'] == false)
-  {
-    $option['method'] = 'standard';
-  }
-  elseif(($option['method'] == 'areyouahuman' AND (empty($option['areyouahuman_publisher_key']) OR empty($option['areyouahuman_scoring_key']))) OR $option['method'] == false)
+  if((($option['method'] == 'recaptcha' OR $option['method'] == 'recaptchav2') AND (empty($option['recaptcha_public_key']) OR empty($option['recaptcha_private_key']))) OR $option['method'] == false)
   {
     $option['method'] = 'standard';
   }
@@ -42,9 +35,6 @@ else
 
 $data['options']['recaptcha_public_key'] = $option['recaptcha_public_key'];
 $data['options']['recaptcha_private_key'] = $option['recaptcha_private_key'];
-$data['options']['areyouahuman_publisher_key'] = $option['areyouahuman_publisher_key'];
-$data['options']['areyouahuman_scoring_key'] = $option['areyouahuman_scoring_key'];
-$data['checked']['areyouahuman_lightbox'] = empty($option['areyouahuman_lightbox']) ? '' : ' checked="checked"';
 
 $run = 0;
 foreach($available_captchas AS $captcha)

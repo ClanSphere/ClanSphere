@@ -733,9 +733,6 @@ INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('bu
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha', 'method', 'standard');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha', 'recaptcha_private_key', '');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha', 'recaptcha_public_key', '');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha', 'areyouahuman_scoring_key', '');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha', 'areyouahuman_publisher_key', '');
-INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('captcha', 'areyouahuman_lightbox', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cash', 'currency', 'Euro');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('cash', 'month_out', '0');
 INSERT INTO {pre}_options (options_mod, options_name, options_value) VALUES ('categories', 'max_width', '150');

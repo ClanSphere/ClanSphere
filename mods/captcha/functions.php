@@ -5,27 +5,26 @@
 global $available_captchas, $captcha_option;
 $captcha_option['options'] = cs_sql_option(__FILE__,'captcha');
 $available_captchas = array(
-  'standard',
-  'recaptcha',
-  'areyouahuman'
+    'standard',
+    'recaptcha',
+    'recaptchav2'
 );
 
 function cs_captchashow($mini = 0)
 {
-  global $cs_main,$captcha_option;
-  if(check_captcha_methode() == 'recaptcha')
+  global $cs_main,$captcha_option,$com_lang;
+  if(check_captcha_methode() == 'recaptchav2')
+  {
+    require_once('recaptchav2_autoload.php');
+    $lang= $com_lang['short'];
+    return '<div class="g-recaptcha" data-sitekey="'.$captcha_option['options']['recaptcha_public_key'].'"></div>
+            <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl='.$lang.'"></script>';
+  }
+  elseif(check_captcha_methode() == 'recaptcha')
   {
     require_once('recaptchalib.php');
     $error = isset($cs_main['captcha_error']) ? $cs_main['captcha_error'] : '';
     return recaptcha_get_html($captcha_option['options']['recaptcha_public_key'], $error);
-  }
-  elseif(check_captcha_methode() == 'areyouahuman')
-  {
-    require_once('mods/captcha/ayah.php');
-    $ayah = new AYAH();
-    $cs_lang = cs_translate('captcha');
-    $lightbox = $captcha_option['options']['areyouahuman_lightbox'] ? $cs_lang['lightbox_message'] : '';
-    return $lightbox. $ayah->getPublisherHTML();
   }
   else
   {
@@ -40,14 +39,33 @@ function cs_captchaverify($mini = 0)
 {
   global $cs_main,$captcha_option;
 
-  if(check_captcha_methode() == 'recaptcha')
+  if(check_captcha_methode() == 'recaptchav2')
+  {
+    require_once('recaptchav2_autoload.php');
+    if (isset($_POST["g-recaptcha-response"])) {
+      $recaptcha = new \ReCaptcha\ReCaptcha($captcha_option['options']['recaptcha_private_key']);
+      // If file_get_contents() is locked down on your PHP installation to disallow
+      // its use with URLs, then you can use the alternative request method instead.
+      // This makes use of fsockopen() instead.
+      //  $recaptcha = new \ReCaptcha\ReCaptcha($secret, new \ReCaptcha\RequestMethod\SocketPost());
+      $resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+
+
+      if ($resp->isSuccess()) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  elseif(check_captcha_methode() == 'recaptcha')
   {
     require_once('recaptchalib.php');
     if (isset($_POST["recaptcha_response_field"])) {
       $resp = recaptcha_check_answer ($captcha_option['options']['recaptcha_private_key'],
-        $_SERVER["REMOTE_ADDR"],
-        $_POST["recaptcha_challenge_field"],
-        $_POST["recaptcha_response_field"]);
+          $_SERVER["REMOTE_ADDR"],
+          $_POST["recaptcha_challenge_field"],
+          $_POST["recaptcha_response_field"]);
 
       if ($resp->is_valid) {
         return true;
@@ -55,21 +73,6 @@ function cs_captchaverify($mini = 0)
         $cs_main['captcha_error'] = $resp->error;
         return false;
       }
-    }
-  }
-  elseif(check_captcha_methode() == 'areyouahuman')  
-  {
-    require_once("ayah.php");
-    $ayah = new AYAH();
-    $score = $ayah->scoreResult();
-
-    if ($score)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
     }
   }
   else
@@ -81,14 +84,13 @@ function cs_captchaverify($mini = 0)
 function check_captcha_methode()
 {
   global $captcha_option;
-  if($captcha_option['options']['method'] == 'recaptcha' AND !empty($captcha_option['options']['recaptcha_private_key']) AND !empty($captcha_option['options']['recaptcha_public_key']))
+  if($captcha_option['options']['method'] == 'recaptchav2' AND !empty($captcha_option['options']['recaptcha_private_key']) AND !empty($captcha_option['options']['recaptcha_public_key']))
+  {
+    return 'recaptchav2';
+  }
+  elseif($captcha_option['options']['method'] == 'recaptcha' AND !empty($captcha_option['options']['recaptcha_private_key']) AND !empty($captcha_option['options']['recaptcha_public_key']))
   {
     return 'recaptcha';
-  }
-  if($captcha_option['options']['method'] == 'areyouahuman' AND !empty($captcha_option['options']['areyouahuman_scoring_key']) AND !empty
-    ($captcha_option['options']['areyouahuman_publisher_key']))
-  {
-    return 'areyouahuman';
   }
   else
   {
