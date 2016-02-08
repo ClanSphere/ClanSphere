@@ -1,0 +1,1 @@
+{pages:title} {pages:list}
