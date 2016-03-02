@@ -2,7 +2,6 @@
 // ClanSphere 2010 - www.clansphere.net
 // $Id$
 
-
 function multiarray_search ($array, $innerkey, $value) {
   foreach ($array AS $outerkey => $innerarray) {
   if ($innerarray[$innerkey] == $value)
@@ -11,9 +10,61 @@ function multiarray_search ($array, $innerkey, $value) {
   return FALSE;
 }
 
+/*
+******************************************************************************************
+Funktion "addsubfolders"
+******************************************************************************************
+Zusatzfunktion, die von der "cs_foldersort" aufgerufen wird, und die hiearchische 
+Strukturierung der Ordnerdatensätze übernimmt. Sie ersetzt den originalen
+Sortierungs-/Strukturierungscode in der "cs_foldersort"-Funktion, der nicht richtig
+funktioniert, wenn die Ordnerdatensätze in der Tabelle "cs_folders" nicht bereits über
+die "folders_position"-Spalte korrekt vorsortiert sind.
+******************************************************************************************
+Funktionsweise:
+  Die Funktion ruft sich hierzu rekursiv für jede Unterordnerebene selbst auf, durchläuft
+  das ursprüngliche Ordnerdatensatz-Array und fügt alle zur aktuellen Unterordnerebene
+  gehörenden Array-Elemente an das Ende des Ergebnis-Arrays an.
+  Je tiefer die Unterordnerebene, desto höher der Wert des "$layer"-Parameters.
+  Der aktuelle Wert des "$layer"-Parameters wird den Ordnerdatensätzen der aktuellen
+  Unterordnerebene zugewiesen (Eigenschaft "layer").
+  Die "layer"-Eigenschaft der Ordnerdatensätze wird später von der aufrufenden PHP-Seite
+  verwendertet, um die Ordnerzeilen entsprechend optisch eingerückt darzustellen.
+****************************************************************************************** 
+Parameter:
+  $array      Ursprüngliches, aus der Datenbank gelesenes Array mit den Ordnerdatensätzen
+  $result     Ergebnis-Array, das die fertig strukturierten Ordnerdatensätze inkl.
+              Ebeneninformation beinhaltet (Eigenschaft "layer")
+  $parentid   ID des übergeordneten Ordners, dessen Unterordner zum Ergebnis-Array 
+              hinzugefügt werden sollen
+  $layer      Aktuelle Unterordnerebene
+******************************************************************************************
+*/
+function addsubfolders($array, $result, $parentid, $layer)
+{
+    $count = count($array);
+    
+    for ($i = 0; $i < $count; $i++)
+    {
+        if ($array[$i]['sub_id'] == $parentid)
+        {
+            $array[$i]['layer'] = $layer;
+            $result[] = $array[$i];
+            
+            $layer++;
+            $result = addsubfolders($array, $result, $array[$i]['folders_id'], $layer);
+            $layer--;
+        }
+    }
+        
+    return $result;
+}
+
 function cs_foldersort ($array, $id = 0) {
   
   if (empty($array)) return 0;
+     
+  /*
+  *** Obsolet, ersetzt durch Funktion "addsubfolders" ***
   
   $count = count($array);
   $result = array();
@@ -31,10 +82,15 @@ function cs_foldersort ($array, $id = 0) {
       }
       $pos = multiarray_search($result, 'folders_id', $array[$i]['sub_id']);
       $array[$i]['layer'] = $result[$pos]['layer'] + 1;
+      
       $result = array_merge(array_slice($result, 0, $pos + $order), array($array[$i]), array_slice($result, $pos + $order));
+     
       $order++;
     }
   }
+  */
+  
+  $result = addsubfolders($array, array(), 0, 0);
   
   if (!empty($id)) {
     $count = count($result);
