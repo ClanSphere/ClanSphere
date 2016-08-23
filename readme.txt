@@ -17,6 +17,6 @@ Data storage requires one of MySQL, PostgreSQL, SQLite or Microsoft SQLSRV.
 
 The current version is available under the terms of the 'New BSD License'.
 
-Our project website is located at http://www.clansphere.net
+Our project website is located at http://www.csphere.eu
 
 Look into '/docs' and '/webserver' for further documentation.
