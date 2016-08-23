@@ -21,16 +21,4 @@
 /uploads/rss/*.xml
 /uploads/users/nopicture.*
 
-/templates/*
-/themes/*
-
-!/templates/base/
-!/templates/clansphere/
-!/templates/index.html
-
-!/themes/base/
-!/themes/clansphere/
-!/themes/custom/
-!/themes/.htaccess
-!/themes/index.html
-!/themes/web.config
+.DS_Store

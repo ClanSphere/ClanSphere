@@ -442,8 +442,8 @@ CREATE TABLE {pre}_files (
 
 CREATE TABLE {pre}_folders (
   folders_id {serial},
-  users_id int(8) NOT NULL default '0', 
-  sub_id int(8) NOT NULL default '0', 
+  users_id int(8) NOT NULL default '0',
+  sub_id int(8) NOT NULL default '0',
   folders_mod varchar(80) NOT NULL default '',
   folders_name varchar(80) NOT NULL default '',
   folders_picture varchar(80) NOT NULL default '',
@@ -559,7 +559,7 @@ CREATE TABLE {pre}_linkus (
 
 CREATE TABLE {pre}_mail (
   mail_id {serial},
-  categories_id int(8) NOT NULL default '0',    
+  categories_id int(8) NOT NULL default '0',
   mail_name varchar(200) NOT NULL default '',
   mail_time int(14) NOT NULL default '0',
   mail_ip varchar(40) NOT NULL default '',
