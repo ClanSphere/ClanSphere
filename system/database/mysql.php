@@ -5,29 +5,28 @@
 function cs_sql_connect($cs_db, $test = 0) {
 
   $error = '';
-  if(!extension_loaded('mysql')) {
+  if (!extension_loaded('mysql')) {
     $error = 'PHP extension mysql must be activated!';
-  }
-  else {
+  } else {
     $connect = mysql_connect($cs_db['place'], $cs_db['user'], $cs_db['pwd']) OR $error = mysql_error();
   }
-  if(empty($error)) {
+  if (empty($error)) {
     mysql_select_db($cs_db['name']) OR $error = mysql_error($connect);
   }
 
   global $cs_main;
   $sql_charset = strtolower($cs_main['charset']);
-  if(empty($error) AND $sql_charset == 'utf-8') {
+  if (empty($error) AND $sql_charset == 'utf-8') {
     # since php 5.2.3 - depends on mysql libs, too
-    if(function_exists('mysql_set_charset'))
+    if (function_exists('mysql_set_charset'))
     mysql_set_charset('utf8', $connect);
     else
     mysql_unbuffered_query("SET NAMES 'utf8'", $connect) OR $error = mysql_error();
   }
 
-  if(empty($test) AND empty($error))
+  if (empty($test) AND empty($error))
   return $connect;
-  elseif(empty($test))
+  elseif (empty($test))
   cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
   else
   return $error;
@@ -123,10 +122,10 @@ function cs_sql_option($cs_file, $mod) {
       }
       mysql_free_result($sql_data);
       cs_log_sql($cs_file, $sql_query);
-        if(count($cs_template)) {
-            foreach($cs_template AS $navlist => $value) {
-          if($navlist == $mod) {
-              $new_result = array_merge($new_result,$value);
+        if (count($cs_template)) {
+            foreach ($cs_template AS $navlist => $value) {
+          if ($navlist == $mod) {
+              $new_result = array_merge($new_result, $value);
               }
             }
           }
@@ -145,14 +144,13 @@ function cs_sql_query($cs_file, $sql_query, $more = 0) {
   $sql_query = str_replace('{pre}', $cs_db['prefix'], $sql_query);
   if ($sql_data = mysql_query($sql_query, $cs_db['con'])) {
     $result = array('affected_rows' => mysql_affected_rows($cs_db['con']));
-    if(!empty($more)) {
+    if (!empty($more)) {
       while ($sql_result = mysql_fetch_assoc($sql_data)) {
         $result['more'][] = $sql_result;
       }
       mysql_free_result($sql_data);
     }
-  }
-  else {
+  } else {
     cs_error_sql($cs_file, 'cs_sql_query', cs_sql_error(0, $sql_query));
     $result = 0;
   }
@@ -168,15 +166,15 @@ function cs_sql_replace($replace) {
   $version = mysql_get_server_info($cs_db['con']) or cs_error_sql(__FILE__, 'cs_sql_replace', cs_sql_error(0, $sql_insert));
   $myv = explode('.', $version);
   settype($myv[2], 'integer');
-  if($myv[0] > 4 OR $myv[0] == 4 AND $myv[1] > 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] > 7)
+  if ($myv[0] > 4 OR $myv[0] == 4 AND $myv[1] > 1 OR $myv[0] == 4 AND $myv[1] == 1 AND $myv[2] > 7)
   $engine = ' ENGINE=' . $subtype . ' DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
   else
   $engine = ' TYPE=' . $subtype . ' CHARACTER SET utf8';
 
-  $replace = str_replace('{optimize}','OPTIMIZE TABLE',$replace);
-  $replace = str_replace('{serial}','int(8) unsigned NOT NULL auto_increment',$replace);
-  $replace = str_replace('{engine}',$engine,$replace);
-  return preg_replace("=create index (\S+) on (\S+) (\S+)=si",'ALTER TABLE $2 ADD KEY $1 $3',$replace);
+  $replace = str_replace('{optimize}', 'OPTIMIZE TABLE', $replace);
+  $replace = str_replace('{serial}', 'int(8) unsigned NOT NULL auto_increment', $replace);
+  $replace = str_replace('{engine}', $engine, $replace);
+  return preg_replace("=create index (\S+) on (\S+) (\S+)=si", 'ALTER TABLE $2 ADD KEY $1 $3', $replace);
 }
 
 function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_order = 0, $first = 0, $max = 1, $cache = 0)
@@ -218,8 +216,9 @@ function cs_sql_select($cs_file, $sql_table, $sql_select, $sql_where = 0, $sql_o
   cs_log_sql($cs_file, $sql_query);
 
   if (!empty($new_result)) {
-    if (!empty($cache))
-    cs_cache_save($cache, $new_result);
+    if (!empty($cache)) {
+        cs_cache_save($cache, $new_result);
+    }
 
     return $new_result;
   }
@@ -243,8 +242,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
   $sql_update = 'UPDATE ' . $cs_db['prefix'] . '_' . $sql_table . $set . ' WHERE ';
   if (empty($sql_where)) {
     $sql_update .= $sql_table . '_id = ' . $sql_id;
-  }
-  else {
+  } else {
     $sql_update .= $sql_where;
   }
   mysql_query($sql_update, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_update', cs_sql_error(0, $sql_update));
@@ -259,7 +257,7 @@ function cs_sql_version($cs_file) {
   $sql_infos = array('data_free' => 0, 'data_size' => 0, 'index_size' => 0, 'tables' => 0, 'names' => array());
   $sql_query = "SHOW TABLE STATUS LIKE '" . cs_sql_escape($cs_db['prefix'] . '_') . "%'";
   $sql_data = mysql_query($sql_query, $cs_db['con']) or cs_error_sql($cs_file, 'cs_sql_version', cs_sql_error(0, $sql_query));
-  while($row = mysql_fetch_assoc($sql_data)) {
+  while ($row = mysql_fetch_assoc($sql_data)) {
     $sql_infos['data_size'] += $row['Data_length'];
     $sql_infos['index_size'] += $row['Index_length'];
     $sql_infos['data_free'] += ($subtype == 'innodb') ? 0 : $row['Data_free'];
@@ -282,7 +280,7 @@ function cs_sql_error($object = 0, $query = 0) {
 
   global $cs_db;
   $error_string = mysql_error($cs_db['con']);
-  if(!empty($query))
+  if (!empty($query))
     $error_string .= ' --Query: ' . $query;
   return $error_string;
 }

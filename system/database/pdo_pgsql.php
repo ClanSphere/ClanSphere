@@ -7,7 +7,7 @@ require_once 'system/database/pdo.php';
 function cs_sql_connect($cs_db, $test = 0) {
 
   $error = '';
-  if(!extension_loaded('pdo') OR !extension_loaded('pdo_pgsql')) {
+  if (!extension_loaded('pdo') OR !extension_loaded('pdo_pgsql')) {
     $error = 'PHP extensions pdo and pdo_pgsql must be activated!';
   }
   else {
@@ -16,20 +16,20 @@ function cs_sql_connect($cs_db, $test = 0) {
     try {
       $connect = new PDO('pgsql:' . $param, $cs_db['user'], $cs_db['pwd']);
     }
-    catch(PDOException $err) {
+    catch (PDOException $err) {
       $error = $err->getMessage();
     }
   }
 
   global $cs_main;
   $sql_charset = strtolower($cs_main['charset']);
-  if(empty($error) AND $sql_charset == 'utf-8')
+  if (empty($error) AND $sql_charset == 'utf-8')
     $connect->exec("set client_encoding to 'UNICODE'");
 
-  if(empty($test) AND empty($error)) {
+  if (empty($test) AND empty($error)) {
     return $connect;
   }
-  elseif(empty($test)) {
+  elseif (empty($test)) {
     cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
   }
   else {
@@ -39,10 +39,10 @@ function cs_sql_connect($cs_db, $test = 0) {
 
 function cs_sql_replace($replace) {
 
-  $replace = str_replace('{optimize}','VACUUM',$replace);
-  $replace = str_replace('{serial}','serial NOT NULL',$replace);
-  $replace = str_replace('{engine}','',$replace);
-  return preg_replace("=int\((.*?)\)=si",'integer',$replace);
+  $replace = str_replace('{optimize}', 'VACUUM', $replace);
+  $replace = str_replace('{serial}', 'serial NOT NULL', $replace);
+  $replace = str_replace('{engine}', '', $replace);
+  return preg_replace("=int\((.*?)\)=si", 'integer', $replace);
 }
 
 function cs_sql_version($cs_file) {

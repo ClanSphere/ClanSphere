@@ -9,39 +9,39 @@ function cs_cache_dirs($dir, $lang, $return_startup = 0) {
   $cachename = $dir . '_' . $lang;
   $content = cs_cache_load($cachename);
 
-  if($content === false) {
+  if ($content === false) {
     $startup = array();
     $cs_lang_old = $cs_lang;
     $info = array();
     $dirlist = cs_paths($dir);
     unset($dirlist['index.html'], $dirlist['.htaccess'], $dirlist['web.config']);
     $directories = array_keys($dirlist);
-    foreach($directories as $target) {
+    foreach ($directories as $target) {
       $this_info = $dir . '/' . $target . '/info.php';
-      if(file_exists($this_info)) {
+      if (file_exists($this_info)) {
         $mod_info = array('show' => array());
         include($this_info);
         $name = empty($mod_info['name']) ? '[' . $target . ']' : $mod_info['name'];
-        if(isset($info[$name])) {
+        if (isset($info[$name])) {
           cs_error($this_info, 'cs_cache_dirs - Translated name "' . $name . '" is already in use');
         }
         else {
           $info[$name] = $mod_info;
           $info[$name]['name'] = $name;
           $info[$name]['dir'] = $target;
-          if($dir == 'mods' AND !empty($mod_info['startup']))
+          if ($dir == 'mods' AND !empty($mod_info['startup']))
             $startup[$target] = TRUE;
         }
         unset($info[$name]['text'], $info[$name]['url'], $info[$name]['team'], $info[$name]['creator']);
       }
-      elseif(is_dir($dir . '/' . $target)) {
+      elseif (is_dir($dir . '/' . $target)) {
         cs_error($this_info, 'cs_cache_dirs - Required file not found');
       }
     }
     ksort($info);
     $cs_lang = $cs_lang_old;
 
-    if($dir == 'mods' AND cs_cache_load('startup') === false)
+    if ($dir == 'mods' AND cs_cache_load('startup') === false)
       cs_cache_save('startup', array_keys($startup));
 
     cs_cache_save($cachename, $info);
@@ -60,8 +60,8 @@ function cs_cache_template($filename) {
   $tpl_temp = 'tpl_' . $cs_main['template'] . '_' . $cs_main['php_self']['filename'] . '_' . $filename;
   $tpl_data = cs_cache_load($tpl_temp);
 
-  if($tpl_data != false)
-    if($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
+  if ($tpl_data != false)
+    if ($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
 
   $tpl_data = file_get_contents($tpl_real);
@@ -69,13 +69,13 @@ function cs_cache_template($filename) {
 
   $tpl_data = str_replace('{func:path}', $cs_main['php_self']['dirname'], $tpl_data);
 
-  if(strpos($tpl_data, 'id="csp_content"') !== false)
+  if (strpos($tpl_data, 'id="csp_content"') !== false)
     cs_error($tpl_real, 'cs_cache_template - The ID tag "csp_content" is reserved for AJAX');
-  if(strpos($tpl_data, '{func:stylesheet}') === false)
+  if (strpos($tpl_data, '{func:stylesheet}') === false)
     $tpl_data = str_ireplace('</head>', '{func:stylesheet}</head>', $tpl_data);
-  if(strpos($tpl_data, '{func:javascript}') === false)
+  if (strpos($tpl_data, '{func:javascript}') === false)
     $tpl_data = str_ireplace('</body>', '{func:javascript}</body>', $tpl_data);
-  if(strpos($tpl_data, '{func:debug}') === false)
+  if (strpos($tpl_data, '{func:debug}') === false)
     $tpl_data = preg_replace('=\<body(.*?)\>=si', "<body\\1{func:body_add}>\n{func:debug}", $tpl_data, 1);
   else
     $tpl_data = preg_replace('=\<body(.*?)\>=si', '<body\\1{func:body_add}>', $tpl_data, 1);
@@ -102,10 +102,10 @@ function cs_cache_theme($mod, $action) {
 
   $tpl_real = cs_subtemplate_check($mod, $action);
 
-  if($tpl_real === false)
+  if ($tpl_real === false)
     return false;
-  elseif($tpl_data != false)
-    if($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
+  elseif ($tpl_data != false)
+    if ($cs_main['cache_mode'] != 'file' OR filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp'))
       return $tpl_data;
 
   $tpl_data = file_get_contents($tpl_real);

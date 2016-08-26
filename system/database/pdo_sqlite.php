@@ -7,22 +7,22 @@ require_once 'system/database/pdo.php';
 function cs_sql_connect($cs_db, $test = 0) {
 
   $error = '';
-  if(!extension_loaded('pdo') OR !extension_loaded('pdo_sqlite')) {
+  if (!extension_loaded('pdo') OR !extension_loaded('pdo_sqlite')) {
     $error = 'PHP extensions pdo and pdo_sqlite must be activated!';
   }
   else {
     try {
       $connect = new PDO('sqlite:' . $cs_db['name']);
     }
-    catch(PDOException $err) {
+    catch (PDOException $err) {
       $error = $err->getMessage();
     }
   }
 
-  if(empty($test) AND empty($error)) {
+  if (empty($test) AND empty($error)) {
     return $connect;
   }
-  elseif(empty($test)) {
+  elseif (empty($test)) {
     cs_error_sql(__FILE__, 'cs_sql_connect', $error, 1);
   }
   else {
@@ -32,10 +32,10 @@ function cs_sql_connect($cs_db, $test = 0) {
 
 function cs_sql_replace($replace) {
 
-  $replace = str_replace('{optimize}','VACUUM',$replace);
-  $replace = str_replace('{serial}','integer',$replace);
-  $replace = str_replace('{engine}','',$replace);
-  return preg_replace("=int\((.*?)\)=si",'integer',$replace);
+  $replace = str_replace('{optimize}', 'VACUUM', $replace);
+  $replace = str_replace('{serial}', 'integer', $replace);
+  $replace = str_replace('{engine}', '', $replace);
+  return preg_replace("=int\((.*?)\)=si", 'integer', $replace);
 }
 
 function cs_sql_version($cs_file) {
@@ -51,13 +51,12 @@ function cs_sql_version($cs_file) {
   $sql_infos['server'] = str_replace('undefined', '', $sql_infos['server']);
 
   $sql_query = 'SELECT COUNT(*) FROM sqlite_master WHERE type = \'table\' AND name LIKE \'' . $cs_db['prefix'] . '_%\'';
-  if($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
+  if ($sql_data = $cs_db['con']->query($sql_query, PDO::FETCH_NUM)) {
       $sql_result = $sql_data->fetch();
       $sql_data = NULL;
       $sql_infos['tables'] = $sql_result[0];
       $sql_infos['data_size'] = filesize($cs_db['name']);
-  }
-  else {
+  } else {
       $error = $cs_db['con']->errorInfo();
       cs_error_sql($cs_file, 'cs_sql_count', $error[2]);
       $sql_infos['tables'] = 0;

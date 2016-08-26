@@ -14,7 +14,7 @@ function cs_cache_clear() {
 function cs_cache_delete($name, $ttl = 0) {
 
   $token = empty($ttl) ? $name : 'ttl_' . $name;
-  if(apc_exists($token))
+  if (apc_exists($token))
     apc_delete($token);
 }
 
@@ -22,7 +22,7 @@ function cs_cache_info() {
 
   $form = array();
   $info = apc_cache_info('user');
-  foreach($info['cache_list'] AS $num => $data) {
+  foreach ($info['cache_list'] AS $num => $data) {
     $handle = $data['info'] . ' (' . $num . ')';
     $form[$handle] = array('name' => $handle, 'time' => $data['mtime'], 'size' => $data['mem_size']);
   }
@@ -33,7 +33,7 @@ function cs_cache_info() {
 function cs_cache_load($name, $ttl = 0) {
 
   $token = empty($ttl) ? $name : 'ttl_' . $name;
-  if(apc_exists($token)) {
+  if (apc_exists($token)) {
       return apc_fetch($token);
   }
 
@@ -45,7 +45,7 @@ function cs_cache_save($name, $content, $ttl = 0) {
   $token = empty($ttl) ? $name : 'ttl_' . $name;
   cs_cache_delete($token);
 
-  if(is_bool($content))
+  if (is_bool($content))
     cs_error($name, 'cs_cache_save - It is not allowed to just store a boolean');
   else
     apc_store($token, $content, $ttl);

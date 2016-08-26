@@ -32,13 +32,11 @@ function cs_looptemplate($source, $string, $data)
           }
         }
         $string .= $content[3][0];
-      }
-      else
+      } else
       {
         cs_error($source, 'cs_looptemplate - Loop not found: "' . $subname . '"');
       }
-    }
-    elseif (is_array($subdata))
+    } elseif (is_array($subdata))
     {
       foreach ($subdata as $name => $value)
       {
@@ -51,8 +49,9 @@ function cs_looptemplate($source, $string, $data)
 
 function cs_conditiontemplate($string, $data)
 {
-  if (!isset($data['if']))
-    return $string;
+  if (!isset($data['if'])) {
+      return $string;
+  }
 
     foreach ($data['if'] as $condition => $value) {
     $replace = array('', '\\1');
@@ -66,7 +65,7 @@ function cs_templateurl($matches) {
 
   $action = empty($matches[3]) ? 'list' : $matches[3];
   $base = empty($matches[1]) ? 0 : $matches[1];
-  if(empty($matches[4]))
+  if (empty($matches[4]))
     $more = 0;
   else
   {
@@ -89,19 +88,19 @@ function cs_subtemplate($source, $data, $mod, $action = 'list', $navfiles = 0)
 
   $string = preg_replace_callback("={lang:([\S]*?)}=i", 'cs_templatelang', $string);
 
-  if($cs_main['xsrf_protection'] === true)
+  if ($cs_main['xsrf_protection'] === true)
     $string = preg_replace_callback("/<form(.*?)method=\"post\"(.*?)>/i", 'cs_xsrf_protection_field', $string);
 
-  if(!empty($navfiles))
+  if (!empty($navfiles))
   {
     $string = cs_tokenizer_split($string);
     $theme = cs_tokenizer_parse($string);
     $string = '';
-    foreach($theme AS $num => $content)
+    foreach ($theme AS $num => $content)
       $string .= $content;
   }
 
-  if(!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
+  if (!empty($cs_main['themebar']) AND (!empty($cs_main['developer']) OR $account['access_clansphere'] > 4)) {
 
     include_once 'mods/clansphere/themebar.php';
     $string = cs_themebar($source, $string, $mod, $action);
@@ -115,9 +114,9 @@ function cs_subtemplate_check($mod, $action) {
   global $cs_main;
   $theme_file = 'themes/' . $cs_main['def_theme'] . '/' . $mod . '/' . $action . '.tpl';
 
-  if($cs_main['def_theme'] != 'base' and !file_exists($theme_file))
+  if ($cs_main['def_theme'] != 'base' and !file_exists($theme_file))
     $theme_file = 'themes/base/' . $mod . '/' . $action . '.tpl';
-  if(file_exists($theme_file))
+  if (file_exists($theme_file))
     return $theme_file;
   else {
     cs_error($theme_file, 'cs_subtemplate_check - Theme file not found');
@@ -128,16 +127,16 @@ function cs_subtemplate_check($mod, $action) {
 function cs_xsrf_protection_field($matches) {
   global $cs_main;
   static $xsrf_key;
-  if(!isset($_SESSION['cs_xsrf_keys']) || !is_array($_SESSION['cs_xsrf_keys'])) {
+  if (!isset($_SESSION['cs_xsrf_keys']) || !is_array($_SESSION['cs_xsrf_keys'])) {
     $_SESSION['cs_xsrf_keys'] = array();
   }
-  if(empty($xsrf_key)) {
+  if (empty($xsrf_key)) {
     
     # disable browser / proxy caching
     header("Cache-Control: max-age=0, no-cache, no-store, must-revalidate");
     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
     
-    $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
+    $xsrf_key = ($cs_main['ajaxrequest'] && isset($_REQUEST['xhr_nocontent']) && !empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
     $_SESSION['cs_xsrf_keys'][] = $xsrf_key;
   }
   
@@ -149,12 +148,12 @@ function cs_wrap_templatefile($matches)
   global $cs_main;
   $nav = $matches[0] . '_' . $matches[1];
   $exceptions = array('clansphere_navmeta');
-  if(!in_array($nav, $exceptions)) {
-    if(isset($cs_main['ajax']) AND $cs_main['ajax']) {
-      $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
+  if (!in_array($nav, $exceptions)) {
+    if (isset($cs_main['ajax']) AND $cs_main['ajax']) {
+      $spans = array('count_navday', 'count_navone', 'count_navall', 'count_navmon', 'count_navusr', 'count_navyes', 'clansphere_navtime');
 
-      $id = str_replace('=','-', implode('-', $matches));
-      $el = !in_array($nav,$spans) ? 'div' : 'span';
+      $id = str_replace('=', '-', implode('-', $matches));
+      $el = !in_array($nav, $spans) ? 'div' : 'span';
       return "<{$el} id=\"cs_navlist_{$id}\" class=\"cs_navlist\">" . cs_templatefile($matches) . "</{$el}>";
     }
   }
@@ -164,9 +163,9 @@ function cs_wrap_templatefile($matches)
 function cs_template_info($template) {
   global $cs_main;
   $tpl_navlist = array();
-  if(file_exists('templates/' . $template . '/info.php')) {
+  if (file_exists('templates/' . $template . '/info.php')) {
     require_once 'templates/' . $template . '/info.php';
-    if(isset($mod_info['navlist'])) {
+    if (isset($mod_info['navlist'])) {
       $tpl_navlist = $mod_info['navlist'];
     }
   }
@@ -177,10 +176,10 @@ function cs_templatefile($matches)
 {
   $return = '';
   $file = 'mods/' . $matches[0] . '/' . $matches[1] . '.php';
-  if(!file_exists($file)) {
+  if (!file_exists($file)) {
     cs_error($file, 'cs_templatefile - File not found');
     $match_count = count($matches);
-    for($i = 0; $i < $match_count; $i++)
+    for ($i = 0; $i < $match_count; $i++)
       $return .= 'm[' . $i . '] ' . $matches[$i] . ' - ';
       return $return;
   }
@@ -188,8 +187,8 @@ function cs_templatefile($matches)
   # only one get parameter is allowed
   $param = NULL;
   $value = NULL;
-  if(!empty($matches[2])) {
-    if(empty($matches[3]) AND $pos = strpos($matches[2], '=')) {
+  if (!empty($matches[2])) {
+    if (empty($matches[3]) AND $pos = strpos($matches[2], '=')) {
       $matches[3] = substr($matches[2], $pos + 1);
       $matches[2] = substr($matches[2], 0, $pos);
     }
@@ -204,7 +203,7 @@ function cs_filecontent($file, $param = NULL, $value = NULL)
 {
   global $account, $cs_main;
 
-  if($param != NULL) {
+  if ($param != NULL) {
     $backup = isset($_GET[$param]) ? $_GET[$param] : NULL;
     $_GET[$param] = $value;
   }
@@ -214,8 +213,8 @@ function cs_filecontent($file, $param = NULL, $value = NULL)
   $content = ob_get_contents();
   ob_end_clean();
 
-  if($param != NULL)
-    if(isset($backup))
+  if ($param != NULL)
+    if (isset($backup))
       $_GET[$param] = $backup;
     else
       unset($_GET[$param]);
@@ -232,13 +231,14 @@ function cs_templatelang($matches)
 
 function cs_getmsg()
 {
-  if (!isset($_SESSION['message']) || empty($_SESSION['message']))
-    return '';
+  if (!isset($_SESSION['message']) || empty($_SESSION['message'])) {
+      return '';
+  }
 
   $data = array();
 
   if (!empty($_SESSION['messageadd'])) {
-    $add = explode(',',$_SESSION['messageadd'],2);
+    $add = explode(',', $_SESSION['messageadd'], 2);
     $data['msg']['icon'] = empty($add[0]) ? '' : cs_icon($add[0]);
     $data['msg']['id'] = empty($add[1]) ? 'msg_normal' : $add[1];
     unset($_SESSION['messageadd']);
@@ -254,7 +254,7 @@ function cs_getmsg()
 
 function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $icon = 0)
 {
-  if($mod != "install" && $message) {
+  if ($mod != "install" && $message) {
       cs_redirectmsg($message, $id, $icon);
   }
 
@@ -262,8 +262,8 @@ function cs_redirect($message, $mod, $action = 'manage', $more = '', $id = 0, $i
 
   $more = explode('#', $more);
 
-  foreach($persistent_params AS $p) {
-    if(isset($_REQUEST[$p])) {
+  foreach ($persistent_params AS $p) {
+    if (isset($_REQUEST[$p])) {
       $more[0] .= !empty($more[0]) ? '&' : '';
       $more[0] .= $p . '=' . $_REQUEST[$p];
     }
@@ -300,22 +300,22 @@ function cs_scriptload($mod, $type, $file, $top = 0, $media = 'screen') {
 
   global $cs_main;
   $script = '';
-  if(!isset($cs_main['scriptload']))
+  if (!isset($cs_main['scriptload']))
     $cs_main['scriptload'] = array('javascript' => '', 'stylesheet' => '');
 
-  if(strpos($file, '://') === false)
+  if (strpos($file, '://') === false)
     $target = $cs_main['php_self']['dirname'] . 'mods/' . $mod . '/' . $file;
   else
     $target = $file;
 
-  if($type == 'javascript')
+  if ($type == 'javascript')
     $script = '<script src="' . $target . '" type="text/javascript"></script>' . "\r\n";
-  elseif($type == 'stylesheet')
+  elseif ($type == 'stylesheet')
     $script = '<link rel="stylesheet" href="' . $target . '" type="text/css" media="' . $media . '" />' . "\r\n";
 
-  if(!isset($cs_main['scriptload'][$type]))
+  if (!isset($cs_main['scriptload'][$type]))
     cs_error($target, 'cs_scriptload - Incorrect filetype specified: ' . $type);
-  elseif(empty($top))
+  elseif (empty($top))
     $cs_main['scriptload'][$type] .= $script;
   else
     $cs_main['scriptload'][$type] = $script . $cs_main['scriptload'][$type];
@@ -327,11 +327,11 @@ function cs_tokenizer_split($content)
   $parts   = count($content);
   $ajax    = 0;
 
-  for($i = 1; $i < $parts; $i++)
+  for ($i = 1; $i < $parts; $i++)
   {
-    if(substr($content[$i], 0, 5) != 'func:')
+    if (substr($content[$i], 0, 5) != 'func:')
     {
-      if(substr($content[$i], -7, 7) == '|noajax')
+      if (substr($content[$i], -7, 7) == '|noajax')
       {
         $content[$i] = substr($content[$i], 0, -7);
         $ajax = 1;
@@ -339,7 +339,7 @@ function cs_tokenizer_split($content)
 
       $content[$i] = explode(':', $content[$i]);
 
-      if($ajax == 1)
+      if ($ajax == 1)
       {
         $content[$i][99] = 'noajax';
       }
@@ -358,11 +358,11 @@ function cs_tokenizer_parse($template)
   global $cs_main;
   $parts = count($template);
 
-  for($i = 1; $i < $parts; $i++)
+  for ($i = 1; $i < $parts; $i++)
   {
-    if(is_array($template[$i]))
+    if (is_array($template[$i]))
     {
-      if(isset($template[$i]['noajax']) OR empty($cs_main['ajax']))
+      if (isset($template[$i]['noajax']) OR empty($cs_main['ajax']))
         $template[$i] = cs_templatefile(array_flip($template[$i]));
       else
         $template[$i] = cs_wrap_templatefile(array_flip($template[$i]));
@@ -387,9 +387,9 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   if (!empty($account['users_tpl']))
     $cs_main['template'] = $account['users_tpl'];
   if (!empty($_GET['template']))
-    $cs_main['template'] = str_replace(array('.','/'),'',$_GET['template']);
+    $cs_main['template'] = str_replace(array('.', '/'), '', $_GET['template']);
   if (!empty($_SESSION['tpl_preview']))
-    $cs_main['template'] = str_replace(array('.','/'),'',$_SESSION['tpl_preview']);
+    $cs_main['template'] = str_replace(array('.', '/'), '', $_SESSION['tpl_preview']);
   if ($tpl_file == 'error.htm')
     $cs_main['template'] = 'install';
   if ($cs_main['template'] != $cs_main['def_tpl'] AND !is_dir('templates/' . $cs_main['template']))
@@ -400,7 +400,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
   {
     cs_error($tpl_path, 'cs_template - Template file not found');
     $msg = 'Template file not found: ' . $tpl_file;
-    if($tpl_file != 'error.htm')
+    if ($tpl_file != 'error.htm')
       die(cs_error_internal('tpl', $msg));
     else
       die($msg);
@@ -436,8 +436,7 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
     $cs_logs['php_errors'] = nl2br($cs_logs['php_errors']);
     $cs_logs['errors'] = nl2br($cs_logs['errors']);
     $logsql = cs_log_format('sql');
-  }
-  else
+  } else
   {
     $cs_logs['php_errors'] = '';
     $cs_logs['errors'] = 'Developer mode is turned off';
@@ -463,14 +462,14 @@ function cs_template($cs_micro, $tpl_file = 'index.htm')
 
   # Assemble content parts
   $result = '';
-  foreach($template AS $num => $content)
-    if(array_key_exists($content, $replace))
+  foreach ($template AS $num => $content)
+    if (array_key_exists($content, $replace))
       $result .= $replace[$content];
     else
       $result .= $content;
 
   # Enable zlib output compression if possible
-  if(!empty($cs_main['zlib']) AND extension_loaded('zlib'))
+  if (!empty($cs_main['zlib']) AND extension_loaded('zlib'))
     ob_start('ob_gzhandler');
 
   # Send content type header with charset

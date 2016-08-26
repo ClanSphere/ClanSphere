@@ -4,7 +4,7 @@
 
 # check for and remove magic quotes
 $mq_gpc = ini_get('magic_quotes_gpc');
-if(!empty($mq_gpc)) {
+if (!empty($mq_gpc)) {
   function cs_stripslashes($content) {
     $result = is_array($content) ? array_map('cs_stripslashes', $content) : stripslashes($content);
     return $result;
@@ -19,32 +19,32 @@ if(!empty($mq_gpc)) {
 $_SERVER['PHP_SELF'] = htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES);
 $cs_main['def_path'] = getcwd();
 $cs_main['php_self'] = pathinfo($_SERVER['SCRIPT_NAME']);
-if($cs_main['php_self']['dirname']{0} == '\\')
+if ($cs_main['php_self']['dirname']{0} == '\\')
   $cs_main['php_self']['dirname']{0} = '/';
 $cs_main['php_self']['dirname'] = $cs_main['php_self']['dirname'] == '/' ? '/' : $cs_main['php_self']['dirname'] . '/';
   // workaround since filename is available as of php 5.2.0
-if(!isset($cs_main['php_self']['filename']))
+if (!isset($cs_main['php_self']['filename']))
   $cs_main['php_self']['filename'] = substr($cs_main['php_self']['basename'], 0, strrpos($cs_main['php_self']['basename'], '.'));
 $domain = htmlspecialchars($_SERVER['HTTP_HOST'], ENT_QUOTES);
 $cs_main['php_self']['website'] = 'http://' . $domain;
 
 # handle mod_rewrite params and split them for default usage
-if(empty($_GET['mod']) AND empty($_GET['action'])) {
-  if(empty($_GET['params']))
+if (empty($_GET['mod']) AND empty($_GET['action'])) {
+  if (empty($_GET['params']))
     $cs_main['php_self']['params'] = isset($_SERVER['REQUEST_URI']) ? substr($_SERVER['REQUEST_URI'], strlen($cs_main['php_self']['dirname'] . $cs_main['php_self']['filename'])) : '';
   else
     $cs_main['php_self']['params'] = $_GET['params'];
 }
-if(!empty($cs_main['php_self']['params']{1})) {
+if (!empty($cs_main['php_self']['params']{1})) {
 
   $params = explode('/', $cs_main['php_self']['params']);
-  $_GET['mod'] =  empty($params[1]) ? '' : $params[1];
+  $_GET['mod'] = empty($params[1]) ? '' : $params[1];
   $_GET['action'] = empty($params[2]) ? 'list' : $params[2];
   $pm_cnt = count($params);
 
-  for($i=3;$i<$pm_cnt;$i++) {
-    if(!empty($params[$i]) AND !empty($params[($i+1)]) OR !isset($params[($i+1)])) {
-      $value = isset($params[($i+1)]) ? $params[($i+1)] : 1;
+  for ($i = 3; $i < $pm_cnt; $i++) {
+    if (!empty($params[$i]) AND !empty($params[($i + 1)]) OR !isset($params[($i + 1)])) {
+      $value = isset($params[($i + 1)]) ? $params[($i + 1)] : 1;
       $_GET['' . $params[$i] . ''] = $value;
       $_REQUEST['' . $params[$i] . ''] = $value;
       $i++;
@@ -55,15 +55,16 @@ if(!empty($cs_main['php_self']['params']{1})) {
 # define basic settings for cookies
 $domain = (strpos($domain, '.') !== FALSE) ? $domain : '';
 $port = strpos($domain, ':'); 
-if ($port !== FALSE)
+if ($port !== FALSE) {
   $domain = substr($domain, 0, $port);
+}
 $cs_main['cookie'] = array('lifetime' => (cs_time() + 2592000), 'path' => $cs_main['php_self']['dirname'], 'domain' => $domain);
 
 # set some request and get data to integer for backwards compatibility with old modules
-settype($_GET['id'],'integer');
-settype($_REQUEST['id'],'integer');
-settype($_GET['sort'],'integer');
-settype($_REQUEST['sort'],'integer');
+settype($_GET['id'], 'integer');
+settype($_REQUEST['id'], 'integer');
+settype($_GET['sort'], 'integer');
+settype($_REQUEST['sort'], 'integer');
 # preserved for navlogin functionality
 unset($_GET['style']);
 
@@ -77,7 +78,7 @@ function cs_servervars($mode, $integers = 0, $unharmed = 0) {
   $mode = strtolower($mode);
   $vars = $mode == 'post' ? $_POST : $_GET;
   if (is_string($integers))
-    $integers = explode(',',$integers);
+    $integers = explode(',', $integers);
   if (!is_array($integers))
     $integers = array($integers);
 
@@ -92,9 +93,9 @@ function cs_servervars($mode, $integers = 0, $unharmed = 0) {
 
 function cs_get($integers = 0, $unharmed = 0) {
 
-  return cs_servervars('get',$integers,$unharmed);
+  return cs_servervars('get', $integers, $unharmed);
 }
 function cs_post($integers = 0, $unharmed = 0) {
 
-  return cs_servervars('post',$integers,$unharmed);
+  return cs_servervars('post', $integers, $unharmed);
 }
