@@ -10,7 +10,7 @@ function cs_captcha($hash)
     $bgc = ImageColorAllocate($img, rand(0, 80), rand(0, 80), rand(0, 80));
     ImageFill($img, 0, 0, $bgc);
 
-    for ($i=1;$i<$chars;$i++) {
+    for ($i = 1; $i < $chars; $i++) {
         $linecolor = ImageColorAllocate($img, rand(0, 150), rand(0, 150), rand(0, 150));
         ImageLine($img, $i * 20, 0, $i * 20, $height, $linecolor);
     }
@@ -25,7 +25,7 @@ function cs_captcha($hash)
     ImageLine($img, 0, 0, 0, $height - 1, $linecolor);
     ImageLine($img, $charsize - 1, 0, $charsize - 1, $height - 1, $linecolor);
 
-    for ($i=0;$i<$chars;$i++) {
+    for ($i = 0; $i < $chars; $i++) {
         $textcolor = ImageColorAllocate($img, rand(100, 250), rand(100, 250), rand(100, 250));
         ImageString($img, rand(3, 5), rand(($i * 20 + 2), ($i * 20 + 8)), rand(2, $height - 20), $hash{$i}, $textcolor);
     }

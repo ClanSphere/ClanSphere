@@ -6,7 +6,7 @@
 */
 
 if (!function_exists('json_encode')) {
-    function json_encode($a=false)
+    function json_encode($a = false)
     {
         if (is_null($a)) {
             return 'null';
@@ -45,7 +45,7 @@ if (!function_exists('json_encode')) {
             return '[' . join(',', $result) . ']';
         } else {
             foreach ($a as $k => $v) {
-                $result[] = json_encode($k).':'.json_encode($v);
+                $result[] = json_encode($k) . ':' . json_encode($v);
             }
             return '{' . join(',', $result) . '}';
         }

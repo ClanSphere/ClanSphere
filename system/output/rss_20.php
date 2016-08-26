@@ -12,7 +12,7 @@ function cs_rss_mode($func)
     }
 }
 
-function cs_rss_channel($func, $mod='', $title = 0, $link = 0, $desc = 0)
+function cs_rss_channel($func, $mod = '', $title = 0, $link = 0, $desc = 0)
 {
     if (!empty($func)) {
         global $cs_main;

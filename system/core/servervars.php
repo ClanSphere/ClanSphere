@@ -39,13 +39,13 @@ if (empty($_GET['mod']) and empty($_GET['action'])) {
 }
 if (!empty($cs_main['php_self']['params']{1})) {
     $params = explode('/', $cs_main['php_self']['params']);
-    $_GET['mod'] =  empty($params[1]) ? '' : $params[1];
+    $_GET['mod'] = empty($params[1]) ? '' : $params[1];
     $_GET['action'] = empty($params[2]) ? 'list' : $params[2];
     $pm_cnt = count($params);
 
-    for ($i=3;$i<$pm_cnt;$i++) {
-        if (!empty($params[$i]) and !empty($params[($i+1)]) or !isset($params[($i+1)])) {
-            $value = isset($params[($i+1)]) ? $params[($i+1)] : 1;
+    for ($i = 3; $i < $pm_cnt; $i++) {
+        if (!empty($params[$i]) and !empty($params[($i + 1)]) or !isset($params[($i + 1)])) {
+            $value = isset($params[($i + 1)]) ? $params[($i + 1)] : 1;
             $_GET['' . $params[$i] . ''] = $value;
             $_REQUEST['' . $params[$i] . ''] = $value;
             $i++;
