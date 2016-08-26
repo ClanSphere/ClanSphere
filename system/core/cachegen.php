@@ -109,7 +109,7 @@ function cs_cache_theme($mod, $action)
     if ($tpl_real === false) {
         return false;
     } elseif ($tpl_data != false) {
-        if ($cs_main['cache_mode'] != 'file' or filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp')) {
+        if ($cs_main['cache_mode'] != 'file' || filemtime($tpl_real) < filemtime('uploads/cache/' . $tpl_temp . '.tmp')) {
             return $tpl_data;
         }
     }

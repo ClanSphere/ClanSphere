@@ -353,7 +353,7 @@ function cs_ajaxwrap()
 
     header('Content-Type:application/json');
 
-    if (empty($cs_main['public']) and $account['access_clansphere'] < $cs_main['maintenance_access']) {
+    if (empty($cs_main['public']) && $account['access_clansphere'] < $cs_main['maintenance_access']) {
         return json_encode(array('location' => '', 'reload' => 1));
     }
     if (!isset($_REQUEST['xhr_nocontent'])) {

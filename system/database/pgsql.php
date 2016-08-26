@@ -108,8 +108,8 @@ function cs_sql_option($cs_file, $mod)
         if (!$options[$mod] = cs_cache_load('op_' . $mod)) {
             $sql_query = 'SELECT options_name, options_value FROM  ' . $cs_db['prefix'] . '_' . 'options';
             $sql_query .= " WHERE options_mod='" . $mod . "'";
-            $sql_data = pg_query($cs_db['con'], $sql_query) or
-      cs_error_sql($cs_file, 'cs_sql_option', cs_sql_error(0, $sql_query), 1);
+            $sql_data = pg_query($cs_db['con'], $sql_query) ||
+            cs_error_sql($cs_file, 'cs_sql_option', cs_sql_error(0, $sql_query), 1);
             while ($sql_result = pg_fetch_assoc($sql_data)) {
                 $name = $sql_result['options_name'];
                 $new_result[$name] = $sql_result['options_value'];
