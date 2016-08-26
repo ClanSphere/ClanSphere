@@ -363,7 +363,7 @@ function cs_ajaxwrap()
 
         $pathPrefix = str_replace('\\', '/', $cs_main['php_self']['dirname'] . $cs_main['php_self']['filename']) . '/';
 
-        $uri = preg_replace('/^(.*?)\.php\??(.*?)$/s', '\\2', $_SERVER['REQUEST_URI']) ;
+        $uri = preg_replace('/^(.*?)\.php\??(.*?)$/s', '\\2', $_SERVER['REQUEST_URI']);
         $uri = preg_replace('/[&\?\/]?(xhr_navlists[=\/])[^&\/]*/s', '', $uri);
         $uri = str_replace(array('&xhr=1', '/xhr/1', '&xhr_nocontent=1', 'params=/', '/params//', $pathPrefix), '', $uri);
         $uri = preg_replace('/' . str_replace('/', '\/', $cs_main['php_self']['dirname']) . '/s', '', $uri, 0);
@@ -381,7 +381,7 @@ function cs_ajaxwrap()
         $navlists = array();
         foreach ($navs as $nav) {
             $navlist = explode('-', $nav);
-            if ($navlist[1]!='func') {
+            if ($navlist[1] != 'func') {
                 $navlists[$nav] = cs_templatefile($navlist);
             }
         }

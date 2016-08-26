@@ -33,7 +33,7 @@ function cs_sql_count($cs_file, $sql_table, $sql_where = 0, $distinct = 0)
     global $cs_db;
     $row = empty($distinct) ? '*' : 'DISTINCT ' . $distinct;
 
-    $sql_query = 'SELECT COUNT('.$row.') FROM ' . $cs_db['prefix'] . '_' . $sql_table;
+    $sql_query = 'SELECT COUNT(' . $row . ') FROM ' . $cs_db['prefix'] . '_' . $sql_table;
     $sql_query .= empty($sql_where) ? '' : ' WHERE ' . $sql_where;
 
     $sql_query = str_replace('{pre}', $cs_db['prefix'], $sql_query);
@@ -71,14 +71,14 @@ function cs_sql_insert($cs_file, $sql_table, $sql_cells, $sql_content)
     global $cs_db;
     $max = count($sql_cells);
     $set = " (";
-    for ($run=0; $run<$max; $run++) {
+    for ($run = 0; $run < $max; $run++) {
         $set .= $sql_cells[$run];
         if ($run != $max - 1) {
             $set .= ",";
         }
     }
     $set .= ") VALUES ('";
-    for ($run=0; $run<$max; $run++) {
+    for ($run = 0; $run < $max; $run++) {
         $set .= pg_escape_string((string) $sql_content[$run]);
         if ($run != $max - 1) {
             $set .= "','";
@@ -211,7 +211,7 @@ function cs_sql_update($cs_file, $sql_table, $sql_cells, $sql_content, $sql_id, 
     settype($sql_id, 'integer');
     $max = count($sql_cells);
     $set = ' SET ';
-    for ($run=0; $run<$max; $run++) {
+    for ($run = 0; $run < $max; $run++) {
         $set .= $sql_cells[$run] . "='" . pg_escape_string((string) $sql_content[$run]);
         if ($run != $max - 1) {
             $set .= "', ";

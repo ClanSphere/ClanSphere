@@ -127,7 +127,7 @@ function cs_xsrf_protection_field($matches)
         header("Cache-Control: max-age=0, no-cache, no-store, must-revalidate");
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 
-        $xsrf_key = ($cs_main['ajaxrequest']&&isset($_REQUEST['xhr_nocontent'])&&!empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
+        $xsrf_key = ($cs_main['ajaxrequest'] && isset($_REQUEST['xhr_nocontent']) && !empty($_SESSION['cs_xsrf_keys'])) ? end($_SESSION['cs_xsrf_keys']) : md5(microtime() . rand());
         $_SESSION['cs_xsrf_keys'][] = $xsrf_key;
     }
 
@@ -141,7 +141,7 @@ function cs_wrap_templatefile($matches)
     $exceptions = array('clansphere_navmeta');
     if (!in_array($nav, $exceptions)) {
         if (isset($cs_main['ajax']) and $cs_main['ajax']) {
-            $spans = array('count_navday','count_navone','count_navall','count_navmon','count_navusr','count_navyes','clansphere_navtime');
+            $spans = array('count_navday', 'count_navone', 'count_navall', 'count_navmon', 'count_navusr', 'count_navyes', 'clansphere_navtime');
 
             $id = str_replace('=', '-', implode('-', $matches));
             $el = !in_array($nav, $spans) ? 'div' : 'span';

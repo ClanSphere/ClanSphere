@@ -107,7 +107,7 @@ function cs_checkdirs($dir, $show = 0)
 function cs_date($mode, $data, $show_time = 0, $show_date = 1, $format = 0)
 {
     global $com_lang;
-    if ($mode=='date' and preg_match('=-=', $data)) {
+    if ($mode == 'date' and preg_match('=-=', $data)) {
         $explode = explode('-', $data);
         $data = mktime(0, 0, 1, $explode[1], $explode[2], $explode[0]);
     } else {
@@ -346,7 +346,7 @@ function cs_mimetype($file)
     }
 
     $zip_type = 'application/x-zip-compressed';
-    $mimes = array('jpg' => 'image/jpeg','jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
+    $mimes = array('jpg' => 'image/jpeg', 'jpeg' => 'image/jpeg', 'jpe' => 'image/jpeg',
     'gif' => 'image/gif', '.zip' => $zip_type, 'png' => 'image/png');
 
     $ending = strtolower(substr(strrchr($file, '.'), 1));
@@ -356,8 +356,8 @@ function cs_mimetype($file)
 // Sends a private message
 function cs_message($users_id = 0, $messages_subject, $messages_text, $users_id_to)
 {
-    $messages_cells = array('users_id','messages_time','messages_subject','messages_text','users_id_to','messages_show_receiver');
-    $messages_save = array($users_id,cs_time(),$messages_subject,$messages_text,$users_id_to,1);
+    $messages_cells = array('users_id', 'messages_time', 'messages_subject', 'messages_text', 'users_id_to', 'messages_show_receiver');
+    $messages_save = array($users_id, cs_time(), $messages_subject, $messages_text, $users_id_to, 1);
 
     cs_sql_insert(__FILE__, 'messages', $messages_cells, $messages_save);
 }
@@ -408,7 +408,7 @@ function cs_pages($mod, $action, $records, $start, $where = 0, $sort = 0, $limit
         $maxpages--;
     }
     $more = 'start=' . $next . $add_where . $add_sort;
-    $result .= (empty($small) and $actual != $pages) ? ' ' . cs_link('&gt;', $mod, $action, $more): '';
+    $result .= (empty($small) and $actual != $pages) ? ' ' . cs_link('&gt;', $mod, $action, $more) : '';
 
     $cs_lang = cs_translate($mod);
     $result = $cs_lang['page'] . ' ' . $result;
@@ -476,7 +476,7 @@ function cs_substr($string, $start, $length = 0)
 function cs_timediff($unix = 0, $reverse = 0)
 {
     global $account;
-    $unix = empty($reverse) ? ((int) $unix + $account['users_timezone']) : ((int)$unix - $account['users_timezone']);
+    $unix = empty($reverse) ? ((int) $unix + $account['users_timezone']) : ((int) $unix - $account['users_timezone']);
     if (empty($account['users_dstime']) and date('I', $unix) != '0' or $account['users_dstime'] == 'on') {
         $unix = empty($reverse) ? ($unix + 3600) : ($unix - 3600);
     }
@@ -492,7 +492,7 @@ function cs_translate($mod, $main = 0)
     $cs_lang = array();
 
     if (empty($lang_main)) {
-        require 'lang/'.$lang.'/system/main.php';
+        require 'lang/' . $lang . '/system/main.php';
         $lang_main = $cs_lang;
         $cs_lang = array();
     }
@@ -543,8 +543,7 @@ function cs_upload($mod, $filename, $upname, $ajaxclean = 1)
         chmod($target, 0755);
         $return = true;
     } else {
-        $message = is_writable($path) ? 'cs_upload - Failed to save the file' :
-      'cs_upload - Failed to save the file because of missing permission';
+        $message = is_writable($path) ? 'cs_upload - Failed to save the file' : 'cs_upload - Failed to save the file because of missing permission';
         cs_error($target, $message);
         $return  = false;
     }
@@ -623,10 +622,9 @@ function cs_userstatus($laston = 0, $invisible = 0, $mode = 0)
     $on_week = cs_time() - 604800;
 
     if ($mode == 1 || $mode == 2) {
-        $text = $on_now <= $laston && empty($invisible) ? '<div class="uonline">' . $cs_lang['online']  . '</div>' :
-      '<div class="uoffline">' . $cs_lang['offline'] . '</div>';
+        $text = $on_now <= $laston && empty($invisible) ? '<div class="uonline">' . $cs_lang['online'] . '</div>' : '<div class="uoffline">' . $cs_lang['offline'] . '</div>';
         if ($on_week >= $laston) {
-            $text = '<div class="uinactive">' . $cs_lang['inactive']   .'</div>';
+            $text = '<div class="uinactive">' . $cs_lang['inactive'] . '</div>';
         }
     }
     if ($mode != 1) {
