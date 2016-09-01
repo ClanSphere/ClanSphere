@@ -31,7 +31,7 @@ $switch[1] = $cs_lang['on'];
 
 $check_required = true;
 
-$data['rq']['php'] = '5.0';
+$data['rq']['php'] = '5.4';
 $data['av']['php'] = phpversion();
 $data['ok']['php'] = $ok[version_compare($data['av']['php'],$data['rq']['php'],'>=')];
 if ($data['ok']['php'] != $ok[1]) { $check_required = false; }

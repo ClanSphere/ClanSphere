@@ -12,19 +12,27 @@ if(isset($_POST['submit'])) {
   $cs_user = cs_sql_select(__FILE__,'users','users_pwd',"users_id = '" . $account['users_id'] . "'");
 
   global $cs_db;
-  if($cs_db['hash'] == 'md5') { 
+  if(isset($cs_db['hash']) && $cs_db['hash'] == 'md5' && strlen($cs_user['users_pwd']) < 50) {
     $sec_pwd = md5($pwd['current']);
-    $new_pwd = md5($pwd['new']);
+    $new_pwd = cs_pwhash($pwd['new']);
   }
-  elseif($cs_db['hash'] == 'sha1') { 
+  elseif(isset($cs_db['hash']) && $cs_db['hash'] == 'sha1' && strlen($cs_user['users_pwd']) < 50) { 
     $sec_pwd = sha1($pwd['current']);
-    $new_pwd = sha1($pwd['new']);  
+    $new_pwd = cs_pwhash($pwd['new']);  
+  } else {
+    $new_pwd = cs_pwhash($pwd['new']); 
   }
 
   $error = '';
   
-  if($cs_user['users_pwd'] != $sec_pwd) {
-    $error .= $cs_lang['wrong_current_pwd'] . cs_html_br(1);
+  if(!isset($cs_db['hash']) || strlen($cs_user['users_pwd']) > 50) {
+    if(!cs_pwverify($pwd['current'],$cs_user['users_pwd'])) {
+      $error .= $cs_lang['wrong_current_pwd'] . cs_html_br(1);
+    }
+  } else {
+    if($cs_user['users_pwd'] != $sec_pwd) {
+      $error .= $cs_lang['wrong_current_pwd'] . cs_html_br(1);
+    }
   }
 
   $pwd2 = str_replace(' ','',$pwd['new']);

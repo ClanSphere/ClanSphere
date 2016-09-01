@@ -41,17 +41,6 @@
 <form method="post" id="install_settings" action="{url_install:install_settings}">
 <table class="forum" style="width: 100%" cellpadding="0" cellspacing="1">
  <tr>
-  <td class="leftc">{lang:hash} *</td>
-  <td class="leftb">
-    <select name="hash">
-      <option value="0">----</option>
-      <option value="md5"{selected:md5}>Md5 = Message-Digest Algorithm</option>
-      <option value="sha1"{selected:sha1}>Sha1 = Secure Hash Algorithm 1</option>
-     </select><br />
-    {lang:hash_info}
-   </td>
- </tr>
- <tr>
   <td class="leftc">{lang:type} *</td>
   <td class="leftb">
     <select name="type">

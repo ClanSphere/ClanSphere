@@ -56,7 +56,6 @@ if($cs_main['xsrf_protection']===TRUE && !empty($_POST)) {
   if(empty($given_key) || !in_array($given_key, $needed_keys)) {
     $_SESSION['cs_xsrf_keys'] = array();
     $referer = empty($_SERVER['HTTP_REFERER']) ? 'empty' : $_SERVER['HTTP_REFERER'];
-
     if(!empty($cs_main['developer']))
       cs_error(__FILE__, 'XSRF Protection triggered: Array(' . implode(', ', $needed_keys) . ') does not include "' . $given_key . '", Referer: ' . $referer);
 
@@ -70,17 +69,10 @@ if(empty($_POST)) {
 }
 
 if(empty($_SESSION['users_id'])) {
-
   if(isset($_POST['login'])) {
     $login['method'] = 'form';
     $login['nick'] = $_POST['nick'];
-    $login['password'] = $_POST['password'];
-    if($cs_db['hash']=='md5') {
-      $login['securepw'] = md5($login['password']);
-    }
-    if($cs_db['hash']=='sha1') {
-      $login['securepw'] = sha1($login['password']);
-    }
+    $login['securepw'] = $_POST['password'];
     if(isset($_POST['cookie'])) {
       $login['cookie'] = $_POST['cookie'];
     }
@@ -100,8 +92,21 @@ if(empty($_SESSION['users_id'])) {
 
   if(isset($login['method'])) {
     $login_db = cs_sql_select(__FILE__,'users','*',$login_where);
+    if(strlen($login_db['users_pwd']) < 50 && isset($cs_db['hash'])) {
+        $temphash = $cs_db['hash'] == 'md5' ? md5($login['securepw']) : sha1($login['securepw']);
+        $checkpw = $login_db['users_pwd'] == $temphash ? true : false;
+        if($checkpw) {
+            $newhash = cs_pwhash($login['securepw']);
+            $cells = array('users_pwd');
+            $content = array($newhash);
+            cs_sql_update(__FILE__,'users',$cells,$content,$login_db['users_id'], 0, 0);
+            $login_db['users_pwd'] = $newhash;
+        }
+    } else {
+        $checkpw = cs_pwverify($login['securepw'], $login_db['users_pwd']);
+    }
 
-    if(!empty($login_db['users_pwd']) AND ($login['method'] == 'cookie' OR $login_db['users_pwd'] == $login['securepw'])) {
+    if(!empty($login_db['users_pwd']) AND ($login['method'] == 'cookie' OR $checkpw)) {
       if(empty($login_db['users_active']) || !empty($login_db['users_delete']))
         $login['error'] = 'closed'; 
       elseif($login['method'] == 'cookie' AND ($login['cookietime'] < $login_db['users_cookietime'] OR $login['cookietime'] > cs_time()))

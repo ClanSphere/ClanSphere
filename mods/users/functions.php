@@ -26,11 +26,7 @@ function generate_code($anz = 0) {
 function create_user($access,$nick,$pwd,$lang,$email,$country,$timezone,$dst,$newsletter = 0,$active = 1,$empty = 0,$regkey = '') {
 
   global $cs_db, $cs_main;
-  if($cs_db['hash'] == 'md5') { 
-    $sec_pwd = md5($pwd); 
-  } elseif($cs_db['hash'] == 'sha1') { 
-    $sec_pwd = sha1($pwd);
-  }
+  $sec_pwd = cs_pwhash($pwd); 
 
   $op_users = cs_sql_option(__FILE__,'users');
   $picture = empty($op_users['def_picture']) ? '' : 'nopicture.jpg';

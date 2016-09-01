@@ -11,7 +11,6 @@ $setup_exists = file_exists('setup.php') ? 1 : 0;
 
 if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) {
 
-  $cs_db['hash'] = $_POST['hash'];
   $cs_db['type'] = $_POST['type'];
   $cs_db['subtype'] = $_POST['subtype'];
   $cs_db['place'] = $_POST['place'];
@@ -25,10 +24,6 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
   $error = 0;
   $errormsg = '';
 
-  if(empty($cs_db['hash'])) {
-    $error++;
-    $errormsg .= $cs_lang['no_hash'] . cs_html_br(1);
-  }
   if(empty($cs_db['type'])) {
     $error++;
     $errormsg .= $cs_lang['no_type'] . cs_html_br(1);
@@ -57,7 +52,6 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
   }
   if(empty($error)) {
 
-    $setup_php = "<?php\n\n\$cs_db['hash'] = '" . $cs_db['hash'] . "'; # don't change!\n";
     $setup_php .= "\$cs_db['type'] = '" . $cs_db['type'] . "';\n";
     $setup_php .= "\$cs_db['subtype'] = '" . $cs_db['subtype'] . "';\n";
     $setup_php .= "\$cs_db['place'] = '" . $cs_db['place'] . "';\n";
@@ -93,7 +87,7 @@ if(empty($setup_exists) AND (isset($_POST['create']) OR isset($_POST['view']))) 
 }
 else {
 
-  $cs_db = array('hash' => '', 'type' => '', 'subtype' => '', 'place' => 'localhost', 'user' => '', 'pwd' => '', 'name' => '', 'prefix' => 'cs');
+  $cs_db = array('type' => '', 'subtype' => '', 'place' => 'localhost', 'user' => '', 'pwd' => '', 'name' => '', 'prefix' => 'cs');
   $log = array('save_actions' => 0, 'save_errors' => 0);
 }
 
@@ -122,9 +116,6 @@ if(!empty($setup_exists)) {
 } else {
 
   $data['if']['display_form'] = true;
-
-  $data['selected']['md5'] = $cs_db['hash'] == 'md5' ? ' selected="selected"' : '';
-  $data['selected']['sha1'] = $cs_db['hash'] == 'sha1' ? ' selected="selected"' : '';
 
   $data['data']['types'] = '';
 

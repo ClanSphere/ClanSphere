@@ -49,12 +49,8 @@ if(isset($_POST['submit'])) {
     if(empty($error)) {
       
       global $cs_db;
-      if($cs_db['hash'] == 'md5') { 
-        $sec_pwd = md5($sendpw['new_pwd']);
-      }
-      elseif($cs_db['hash'] == 'sha1') { 
-        $sec_pwd = sha1($sendpw['new_pwd']);
-      }
+      $sec_pwd = cs_pwhash($sendpw['new_pwd']);
+
       $cells = array('users_pwd');
       $content = array($sec_pwd);
       cs_sql_update(__FILE__,'users',$cells,$content,$key2['users_id']);

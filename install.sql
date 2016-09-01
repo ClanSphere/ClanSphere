@@ -166,7 +166,7 @@ CREATE TABLE {pre}_board (
   board_name varchar(80) NOT NULL default '',
   board_text varchar(200) NOT NULL default '',
   board_time int(11) NOT NULL default '0',
-  board_pwd varchar(40) NOT NULL default '',
+  board_pwd varchar(255) NOT NULL default '',
   board_threads int(8) NOT NULL default '0',
   board_comments int(8) NOT NULL default '0',
   board_order int(2) NOT NULL default '0',
@@ -304,7 +304,7 @@ CREATE TABLE {pre}_clans (
   clans_url varchar(80) NOT NULL default '',
   clans_since varchar(12) NOT NULL default '',
   clans_picture varchar(80) NOT NULL default '',
-  clans_pwd varchar(40) NOT NULL default '',
+  clans_pwd varchar(255) NOT NULL default '',
   PRIMARY KEY (clans_id),
   UNIQUE (clans_name)
 ){engine};
@@ -533,7 +533,7 @@ CREATE TABLE {pre}_joinus (
   joinus_lanact varchar(80) NOT NULL default '',
   joinus_date varchar(12) NOT NULL default '',
   joinus_more text,
-  users_pwd varchar(40) NOT NULL default '',
+  users_pwd varchar(255) NOT NULL default '',
   PRIMARY KEY (joinus_id)
 ){engine};
 
@@ -1073,7 +1073,7 @@ CREATE TABLE {pre}_squads (
   squads_name varchar(80) NOT NULL default '',
   squads_picture varchar(80) NOT NULL default '',
   squads_order int(4) NOT NULL default '0',
-  squads_pwd varchar(40) NOT NULL default '',
+  squads_pwd varchar(255) NOT NULL default '',
   squads_own int(2) NOT NULL default '0',
   squads_joinus int(2) NOT NULL default '0',
   squads_fightus int(2) NOT NULL default '0',
@@ -1122,7 +1122,7 @@ CREATE TABLE {pre}_users (
   users_id {serial},
   access_id int(4) NOT NULL default '0',
   users_nick varchar(40) NOT NULL default '',
-  users_pwd varchar(40) NOT NULL default '',
+  users_pwd varchar(255) NOT NULL default '',
   users_name varchar(80) NOT NULL default '',
   users_surname varchar(80) NOT NULL default '',
   users_sex varchar(8) NOT NULL default '',

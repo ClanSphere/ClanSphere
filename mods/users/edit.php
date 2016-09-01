@@ -32,11 +32,7 @@ else {
 
     global $cs_db;
     $sPass = generate_code(8);
-    if($cs_db['hash'] == 'md5') { 
-      $aPass['users_pwd'] = md5($sPass); 
-    } elseif($cs_db['hash'] == 'sha1') { 
-      $aPass['users_pwd'] = sha1($sPass);
-    }
+    $aPass['users_pwd'] = cs_pwhash($sPass); 
 
     // DB update
     $users_cells = array_keys($aPass);
