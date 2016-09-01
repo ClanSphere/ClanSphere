@@ -54,12 +54,7 @@ if (empty($cs_board['board_name']) or $account['access_board'] < $cs_board['boar
   elseif(empty($check_pw)) {
     global $cs_db;
     $sec_pw = isset($_POST['sec_pw']) ? $_POST['sec_pw'] : 0;
-    
-    if ($cs_db['hash'] == 'md5') {
-      $sec_pw = md5($sec_pw);
-    } elseif ($cs_db['hash'] == 'sha1') {
-      $sec_pw = sha1($sec_pw);
-    }
+    $sec_pw = sha1($sec_pw);
     
     if ($sec_pw == $cs_board['board_pwd'] and !empty($account['users_id'])) {
       $board_cells = array('users_id', 'board_id');

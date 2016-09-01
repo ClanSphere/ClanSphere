@@ -109,11 +109,8 @@ else {
 
   if(!empty($new_board_pwd)) {
     global $cs_db;
-    if($cs_db['hash'] == 'md5')
-      $board['board_pwd'] = md5($new_board_pwd);
-    elseif($cs_db['hash'] == 'sha1') 
-      $board['board_pwd'] = sha1($new_board_pwd);
-      $sql_del = 1;
+    $board['board_pwd'] = sha1($new_board_pwd);
+    $sql_del = 1;
   }
   
   if(!empty($board_pwdel)) {

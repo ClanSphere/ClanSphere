@@ -84,9 +84,6 @@ else
 {
   global $cs_db;
   if(!empty($data['create']['board_pwd'])) {
-    if($cs_db['hash'] == 'md5') 
-      $data['create']['board_pwd'] = md5($data['create']['board_pwd']);
-    elseif($cs_db['hash'] == 'sha1')
       $data['create']['board_pwd'] = sha1($data['create']['board_pwd']);
   }
   $board_cells = array_keys($data['create']);
